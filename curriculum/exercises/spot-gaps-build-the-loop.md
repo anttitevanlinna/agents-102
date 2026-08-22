@@ -22,8 +22,6 @@ Open a new Claude Code session in the existing M5 worktree (`../<repo>-m5`), no 
 - Read from the recorded coordinates, not a branch or transcript search. Both sessions recorded their transcript paths: M4 in `task.md`, M5 in the protected `Run coordinates` block at the top of `plan.md`.
 - You hold the contrast; the agent reads both sessions off disk. You are not tracing git refs by hand. Point it at the coordinates and let it pull both sessions side by side.
 
-> **Only one session?** Skipping M5 leaves you the un-packaged run with nothing to set beside it. Read that one session on its own: where the agent lost the goal, where it went past its evidence, where it called the work done too early. Rank what you find and cut the stale rule the read kills. The contrast is what you lose; the ranked gap map is not.
-
 Ask Claude to read both sessions side by side and name where packaging caught, where it missed, and what new shapes of drift it introduced.
 
 {{prompt:spot-gaps-build-the-loop-1}}

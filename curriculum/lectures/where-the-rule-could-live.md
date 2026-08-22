@@ -2,7 +2,7 @@
 
 You can extract any rules into their own `.md` file. Eventually your Claude files get too big. Let's simulate a few uses for your `backlog-refinement-rules.md`.
 
-## Where the file gets read
+## Three agents using the file
 
 - **Slack triage.** A request lands in a thread; `@Claude` routes it into Claude Code on the web, or a Slack app hands the thread to an agent runtime. The agent reads the thread plus `backlog-refinement-rules.md` and replies with the suggested split or the next question.
 - **Issue webhook.** A teammate opens, edits, or labels a GitHub issue; a GitHub Actions workflow or GitHub App picks it up. The agent runs with the file in context: it proposes labels, asks for missing info, or splits the issue into smaller tickets. The file decides what a well-shaped ticket looks like.

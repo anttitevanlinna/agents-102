@@ -24,7 +24,7 @@ Ask Claude to describe what changed in its behaviour when plan mode turned on.
 
 Watch what comes back. Sometimes Claude names the read-only state directly, sometimes the specific instructions it is following. Skip if you trust the framing.
 
-## What a good plan has
+## Five things a good plan has
 
 - **A specific file list.** Not "update the config." *Which* config, *which* keys. A plan that names three files has made three decisions. A plan that says "the relevant files" has made zero.
 - **An early runnable slice.** Find the first step after which something runs end-to-end. A plan that builds layer by layer (data, then services, then UI) answers "the last one," and every wrong guess stays hidden until then. A plan that stands up a thin end-to-end slice early gets checked by reality from step two onward.
@@ -32,7 +32,7 @@ Watch what comes back. Sometimes Claude names the read-only state directly, some
 - **Named assumptions.** Good plans flag what they're assuming (library versions, schema shapes, whether a teammate's migration ran last week). A plan without assumptions isn't assumption-free; it's just assumption-silent.
 - **A list of non-goals.** What the plan will *not* touch. Every adjacent improvement looks helpful, so the agent does the ones you never ruled out. (Dex Horthy)
 
-## Pressures that make bad plans look good
+## Three pressures that make bad plans look good
 
 - **Structure is persuasive.** A 7-item plan with section headers and bold text looks like a decision. It often isn't. It's a draft formatted like a decision.
 - **Reasonableness passes for rightness.** Each step sounds reasonable, so the plan sounds right. But reasonable steps in the wrong order, or with one missing, still ship a bug. Judge what the steps add up to, not how each one reads.

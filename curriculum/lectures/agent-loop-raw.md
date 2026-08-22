@@ -4,7 +4,7 @@ Before the security loop, look at the agent loop without polish.
 
 The raw loop takes three plain questions. No special setup. No hidden vocabulary. Just the model explaining how it sees its own working surface.
 
-Three plain questions, one at a time, on the screen. Watch the tool list come back rather than typing along.
+Ask these one at a time:
 
 {{prompt:agent-loop-raw-1}}
 

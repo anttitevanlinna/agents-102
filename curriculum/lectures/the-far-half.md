@@ -8,7 +8,7 @@
 - The map lights its other side now. Verification, Absorption, Outcome. The rest of the training goes there, starting with the session you send off in this module.
 - The labelled strands are the same ones from M2. The solid ones are loops you have already run; the faint ones, checking and prototyping, are what this half is about.
 
-## Long-running work adds new concerns
+## Long-running work adds three new concerns
 
 - Long-running is not more of the same. So far you sat inside every loop: you read each reply, caught each wobble as it happened. When the agent runs for an hour without you watching, that quick feedback goes quiet. You stop seeing every move and meet the result at the end, all at once.
 - **Verification** tells you whether the result is any good. Tests, checks, reads, judges: everything that pushes back on the work before you accept it. On a long session, this stops being a glance and becomes a job.

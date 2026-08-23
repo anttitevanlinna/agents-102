@@ -50,6 +50,7 @@ Noun-run for the agent sitting is banned in student-facing body — engineers do
 | **subagent** | Code's word; Cowork's UI says *agent* — runtime forks may differ, pedagogy never does | `check_prompts.md §25, §10` |
 | **Teacher Claude** / **Builder Claude** | the self-study personas: Teacher facilitates, Builder executes exercises | `.claude/skills/self-study/SKILL.md`; self-study surfaces only |
 | **the loop** / **compounding** | the compound loop (Klaassen lineage): taught in full once at the first module, varied after, never repeated as ceremony | `check_student_facing.md §7`; `compound-and-close` |
+| **compound engineering** / **compounding** (definition) | Klaassen, verbatim: *"each unit of engineering work should make subsequent units easier — not harder"*; features *"teach the system new capabilities"*, bug fixes *"eliminate entire categories of future bugs"*, codified patterns *"become tools for future work"*; over time *"the codebase becomes easier to understand, easier to modify, and easier to trust"*. Object = the system that does the next work: codebase, tests, docs, checks, artefacts, instructions. A rules file is the first instance taught (M1), never the class. Body prose never narrows *compound* to *write the rules file*; when a verifier, reference artefact, doc fix or test is produced, it may be named as compounding. Source stamp lives in `getting-going.md` | `how-this-training-was-built` (definition on surface); `compound-and-close` (first instance) |
 
 ## House coinages — named concepts
 

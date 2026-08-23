@@ -1,7 +1,7 @@
 {
   "class": "technical",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/spot-gaps-build-the-loop.md",
-  "body_sha": "9a7b987214c97ff2853fdc1deb102f01ca5af347255e818877e08d6dc8f363f1",
+  "body_sha": "8105dcb7ae76465f940d684ef28d1141cdb212f384768b0b54cafba28dfcb18a",
   "verdict": "PASS",
   "training": "ae101",
   "rules_evaluated": [
@@ -10,7 +10,7 @@
       "rule_index": "1",
       "rule_lead": "Training platform = Claude Code (CLI + Desktop) + Cowork.",
       "verdict": "PASS",
-      "evidence": "L23 `Open a fresh session in the Module 5 worktree, `../<repo>-m5`.` — the only runtime named anywhere in the file is a Claude Code session; `grep -ci 'claude.ai' file` -> 0. No Claude.ai-only affordance is leaned on.",
+      "evidence": "Only runtime named anywhere in the file is a Claude Code session (`grep -inE 'cowork|claude\\.ai'` → 0 hits). L23 raw: “Open a fresh session in the Module 5 worktree.” No Claude.ai-only affordance leaned on; AE101 is Code-only per `curriculum/CLAUDE.md` § Scope, consistent.",
       "fix_hint": null,
       "blocking": false
     },
@@ -19,7 +19,7 @@
       "rule_index": "2",
       "rule_lead": "Cloud/remote features carry Git dependency — out of scope for our training dir.",
       "verdict": "N/A",
-      "evidence": "Rule governs repo tooling / infra / harness surfaces (eval runners, hooks, gates, build + audit scripts, Cowork, org-content boundaries), not a student-facing module body. This file asserts no capability of that surface.",
+      "evidence": "File makes no cloud/remote-feature claim; nothing to check.",
       "fix_hint": null,
       "blocking": false
     },
@@ -28,7 +28,7 @@
       "rule_index": "3",
       "rule_lead": "Local scheduled tasks catch up on wake, but only once, only for runs missed in last 7 days.",
       "verdict": "N/A",
-      "evidence": "Rule governs repo tooling / infra / harness surfaces (eval runners, hooks, gates, build + audit scripts, Cowork, org-content boundaries), not a student-facing module body. This file asserts no capability of that surface.",
+      "evidence": "File makes no scheduled-task / Routines claim; nothing to check.",
       "fix_hint": null,
       "blocking": false
     },
@@ -37,7 +37,7 @@
       "rule_index": "4",
       "rule_lead": "Verify capabilities BEFORE asserting, not after.",
       "verdict": "PASS",
-      "evidence": "Two platform assertions in body, both checked this session against an in-repo canonical page rather than memory: L23 `the branches share `.git`, and each run recorded its transcript path` vs `reference/claude-code-for-engineers.md` L383-391 (§26 `the transcript folder usually follows the working directory where that session ran` + `write its transcript path down while you have it`). Match.",
+      "evidence": "Two live platform claims verified this session against canonical in-repo doc rather than memory: (a) L23 raw “the branches share `.git`” — correct, git worktrees share one `.git`; (b) L23 raw “each run recorded its transcript path” — matched against `reference/claude-code-for-engineers.md` §26 (“The modules do this, recording the path into `task.md` on the un-packaged session and `plan.md` on the packaged re-send”). Both hold.",
       "fix_hint": null,
       "blocking": false
     },
@@ -46,7 +46,7 @@
       "rule_index": "4b",
       "rule_lead": "Compendium platform claims rot at 60 days.",
       "verdict": "N/A",
-      "evidence": "Rule governs repo tooling / infra / harness surfaces (eval runners, hooks, gates, build + audit scripts, Cowork, org-content boundaries), not a student-facing module body. This file asserts no capability of that surface.",
+      "evidence": "Rule governs repo tooling / infra / harness / process surfaces (eval runners, hooks, gates, quality-stamp tooling, audit scripts, judge/orchestrator conduct), not this student-facing module-index file's content. Nothing in the file asserts or depends on that surface.",
       "fix_hint": null,
       "blocking": false
     },
@@ -55,7 +55,7 @@
       "rule_index": "4a",
       "rule_lead": "Maintain living capability notes for both runtimes; consult before asserting.",
       "verdict": "N/A",
-      "evidence": "Rule governs repo tooling / infra / harness surfaces (eval runners, hooks, gates, build + audit scripts, Cowork, org-content boundaries), not a student-facing module body. This file asserts no capability of that surface.",
+      "evidence": "Rule governs repo tooling / infra / harness / process surfaces (eval runners, hooks, gates, quality-stamp tooling, audit scripts, judge/orchestrator conduct), not this student-facing module-index file's content. Nothing in the file asserts or depends on that surface.",
       "fix_hint": null,
       "blocking": false
     },
@@ -64,7 +64,7 @@
       "rule_index": "4c",
       "rule_lead": "Don't extend known mechanism into adjacent context without verifying it fires there.",
       "verdict": "N/A",
-      "evidence": "Rule governs repo tooling / infra / harness surfaces (eval runners, hooks, gates, build + audit scripts, Cowork, org-content boundaries), not a student-facing module body. This file asserts no capability of that surface.",
+      "evidence": "File makes no cross-runtime template/mechanism extension claim (no `$ARGUMENTS`, hook, or slash-command-into-skill pattern present); nothing to check.",
       "fix_hint": null,
       "blocking": false
     },
@@ -73,7 +73,7 @@
       "rule_index": "4d",
       "rule_lead": "Fix the contract, not the broken recovery.",
       "verdict": "N/A",
-      "evidence": "Rule governs repo tooling / infra / harness surfaces (eval runners, hooks, gates, build + audit scripts, Cowork, org-content boundaries), not a student-facing module body. This file asserts no capability of that surface.",
+      "evidence": "File makes no defensive-recovery prompt pattern (file carries zero fenced prompts); nothing to check.",
       "fix_hint": null,
       "blocking": false
     },
@@ -82,7 +82,7 @@
       "rule_index": "5",
       "rule_lead": "Practitioner observation beats docs lookup.",
       "verdict": "N/A",
-      "evidence": "Rule governs repo tooling / infra / harness surfaces (eval runners, hooks, gates, build + audit scripts, Cowork, org-content boundaries), not a student-facing module body. This file asserts no capability of that surface.",
+      "evidence": "File makes no practitioner-observation-vs-docs conflict; nothing to check.",
       "fix_hint": null,
       "blocking": false
     },
@@ -91,7 +91,7 @@
       "rule_index": "5a",
       "rule_lead": "Live-test beats docs for runtime-behavior claims.",
       "verdict": "N/A",
-      "evidence": "Rule governs repo tooling / infra / harness surfaces (eval runners, hooks, gates, build + audit scripts, Cowork, org-content boundaries), not a student-facing module body. This file asserts no capability of that surface.",
+      "evidence": "Covered under id 6/6e below (mtime-fragility guidance mechanically re-verified against the compendium's own prescribed fix); no separate live-test-vs-docs conflict here.",
       "fix_hint": null,
       "blocking": false
     },
@@ -100,7 +100,7 @@
       "rule_index": "6",
       "rule_lead": "Known correct Claude Code facts (easy to get wrong):",
       "verdict": "PASS",
-      "evidence": "Closest-to-violating platform sentence is L23's git-worktree claim. Verified against reference §26: a linked worktree encodes to its own `~/.claude/projects/<encoded-cwd>/` folder, which is exactly why the module tells the student both runs are readable via *recorded paths* rather than by recency. No fact stated that the reference contradicts.",
+      "evidence": "File invokes none of the easy-to-get-wrong facts this rule lists (plan mode, connectors, scheduling primitives, subagent-vs-custom-agent, turn-streaming) in a way that could contradict them — only “session” vocabulary is used (see id 7).",
       "fix_hint": null,
       "blocking": false
     },
@@ -109,16 +109,16 @@
       "rule_index": "6b",
       "rule_lead": "When tool feature behaves differently than expected, update curriculum — not student's workaround.",
       "verdict": "N/A",
-      "evidence": "Rule governs repo tooling / infra / harness surfaces (eval runners, hooks, gates, build + audit scripts, Cowork, org-content boundaries), not a student-facing module body. This file asserts no capability of that surface.",
+      "evidence": "File makes no “tool behaved differently than expected” narrative; nothing to check.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": "6d",
-      "rule_lead": "Auto-load surface = FIVE things — three filenames + project `.claude/rules/` + user `~/.claude/rules/`.",
-      "verdict": "N/A",
-      "evidence": "Rule governs repo tooling / infra / harness surfaces (eval runners, hooks, gates, build + audit scripts, Cowork, org-content boundaries), not a student-facing module body. This file asserts no capability of that surface.",
+      "rule_lead": "Auto-load surface = SIX things — four filenames + project `.claude/rules/` + user `~/.claude/rules/`.",
+      "verdict": "PASS",
+      "evidence": "File names `./CLAUDE.local.md` (L15, L109–110, L118 maintainer) as a rules location the student cuts a rule from — accurate: CLAUDE.local.md is one of the six auto-load surfaces (§6d), filename-based, walked up from cwd. File makes no auto-load-surface-count or -mechanics claim that could be wrong.",
       "fix_hint": null,
       "blocking": false
     },
@@ -127,7 +127,7 @@
       "rule_index": "6f",
       "rule_lead": "Compendium pointers inside files = autoload-redundant.",
       "verdict": "N/A",
-      "evidence": "Rule governs repo tooling / infra / harness surfaces (eval runners, hooks, gates, build + audit scripts, Cowork, org-content boundaries), not a student-facing module body. This file asserts no capability of that surface.",
+      "evidence": "Rule governs repo tooling / infra / harness / process surfaces (eval runners, hooks, gates, quality-stamp tooling, audit scripts, judge/orchestrator conduct), not this student-facing module-index file's content. Nothing in the file asserts or depends on that surface.",
       "fix_hint": null,
       "blocking": false
     },
@@ -135,8 +135,8 @@
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": "6e",
       "rule_lead": "Transcript-by-mtime selection fragile when current session writes target folder.",
-      "verdict": "N/A",
-      "evidence": "Rule governs repo tooling / infra / harness surfaces (eval runners, hooks, gates, build + audit scripts, Cowork, org-content boundaries), not a student-facing module body. This file asserts no capability of that surface.",
+      "verdict": "PASS",
+      "evidence": "Push-back move (L136 raw) reproduces this rule's exact prescribed fix almost verbatim: “if M4 and M5 share a cwd, recency alone can grab the wrong attempt; filter by a phrase unique to that send-off's opening prompt instead” vs compendium's “Use marker-based selection: filter transcripts by content containing distinctive moment … Mtime-only valid only when current cwd differs …” Correct application, not a violation.",
       "fix_hint": null,
       "blocking": false
     },
@@ -145,7 +145,7 @@
       "rule_index": "6c",
       "rule_lead": "PreToolUse/PostToolUse hooks read env from harness, not from agent Bash subshells.",
       "verdict": "N/A",
-      "evidence": "Rule governs repo tooling / infra / harness surfaces (eval runners, hooks, gates, build + audit scripts, Cowork, org-content boundaries), not a student-facing module body. This file asserts no capability of that surface.",
+      "evidence": "File makes no hook/env-propagation claim; nothing to check.",
       "fix_hint": null,
       "blocking": false
     },
@@ -154,7 +154,7 @@
       "rule_index": "6g",
       "rule_lead": "Edit-time prompt-edit gate's approval detector MUST parse the transcript deterministically (partial-line-tolerant) — never jq/grep under `pipefail`.",
       "verdict": "N/A",
-      "evidence": "Rule governs repo tooling / infra / harness surfaces (eval runners, hooks, gates, build + audit scripts, Cowork, org-content boundaries), not a student-facing module body. This file asserts no capability of that surface.",
+      "evidence": "File makes no prompt-edit-gate/transcript-parsing claim; nothing to check.",
       "fix_hint": null,
       "blocking": false
     },
@@ -163,7 +163,7 @@
       "rule_index": "7",
       "rule_lead": "Sessions = unit of work — write \"start a new session in X,\" not \"open Claude Code in X.\"",
       "verdict": "PASS",
-      "evidence": "L23 `Open a fresh session in the Module 5 worktree` — session-as-unit phrasing, not `open Claude Code in X`. `grep -c 'open Claude Code in' file` -> 0.",
+      "evidence": "L23 raw: “Open a fresh session in the Module 5 worktree” — correct “session” vocabulary, not “open Claude Code in X.”",
       "fix_hint": null,
       "blocking": false
     },
@@ -172,7 +172,7 @@
       "rule_index": "7b",
       "rule_lead": "Cross-working-directory boundaries always open `new`; evidence travels by disk.",
       "verdict": "PASS",
-      "evidence": "L132 maintainer: `M6 opens a fresh session in the M5 worktree at `../<repo>-m5` where both runs already live`. M5's cwd differs from M6's, so a fresh session (not `--resume`) is correct per 7b; evidence travels by disk (`.git` + transcript paths).",
+      "evidence": "M6 opens in the M5 worktree, a different working directory from wherever M4/M5 ran — a cross-cwd boundary — and the file correctly says “fresh session” (= new), never “resume,” consistent with §7b.",
       "fix_hint": null,
       "blocking": false
     },
@@ -181,7 +181,7 @@
       "rule_index": "7c",
       "rule_lead": "Same-cwd recovery defaults to `--resume`, not `new`.",
       "verdict": "N/A",
-      "evidence": "Rule governs repo tooling / infra / harness surfaces (eval runners, hooks, gates, build + audit scripts, Cowork, org-content boundaries), not a student-facing module body. This file asserts no capability of that surface.",
+      "evidence": "File makes no same-cwd recovery scenario; nothing to check.",
       "fix_hint": null,
       "blocking": false
     },
@@ -190,7 +190,7 @@
       "rule_index": "7a",
       "rule_lead": "CLAUDE.md describes runtime, not just task.",
       "verdict": "N/A",
-      "evidence": "Rule governs repo tooling / infra / harness surfaces (eval runners, hooks, gates, build + audit scripts, Cowork, org-content boundaries), not a student-facing module body. This file asserts no capability of that surface.",
+      "evidence": "File is student curriculum, not a working-folder CLAUDE.md being authored; runtime-naming-in-CLAUDE.md rule doesn't apply to this surface.",
       "fix_hint": null,
       "blocking": false
     },
@@ -199,7 +199,7 @@
       "rule_index": "8",
       "rule_lead": "F-Secure curriculum off-limits.",
       "verdict": "N/A",
-      "evidence": "Rule governs repo tooling / infra / harness surfaces (eval runners, hooks, gates, build + audit scripts, Cowork, org-content boundaries), not a student-facing module body. This file asserts no capability of that surface.",
+      "evidence": "File makes no F-Secure content; nothing to check.",
       "fix_hint": null,
       "blocking": false
     },
@@ -208,7 +208,7 @@
       "rule_index": "9",
       "rule_lead": "No premature infrastructure.",
       "verdict": "N/A",
-      "evidence": "Rule governs repo tooling / infra / harness surfaces (eval runners, hooks, gates, build + audit scripts, Cowork, org-content boundaries), not a student-facing module body. This file asserts no capability of that surface.",
+      "evidence": "“Optional challenges” ask the student to build their own tooling (skill loader, eval-as-PR-check, telemetry system) on their own stack; this is not Bosser proposing repo infrastructure.",
       "fix_hint": null,
       "blocking": false
     },
@@ -217,7 +217,7 @@
       "rule_index": "10",
       "rule_lead": "External org content.",
       "verdict": "N/A",
-      "evidence": "Rule governs repo tooling / infra / harness surfaces (eval runners, hooks, gates, build + audit scripts, Cowork, org-content boundaries), not a student-facing module body. This file asserts no capability of that surface.",
+      "evidence": "File makes no external-org-content boundary issue; nothing to check.",
       "fix_hint": null,
       "blocking": false
     },
@@ -225,8 +225,8 @@
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": "11",
       "rule_lead": "Destructive operations need confirmation.",
-      "verdict": "PASS",
-      "evidence": "Only destructive move in scope is the student's own rule deletion, L109 `shows at least one rule deleted (compound-by-subtraction), the deletion commit visible in git history`. Confirmation is the git commit itself and the deletion is scoped to a file the student authored in M1.",
+      "verdict": "N/A",
+      "evidence": "No destructive repo operation performed or prescribed by this file's content (the 2026-07-05 maintainer note documents a past git-rm, already landed, not a live instruction here).",
       "fix_hint": null,
       "blocking": false
     },
@@ -235,7 +235,7 @@
       "rule_index": "12",
       "rule_lead": "No \"as-is\" imports from internet.",
       "verdict": "N/A",
-      "evidence": "Rule governs repo tooling / infra / harness surfaces (eval runners, hooks, gates, build + audit scripts, Cowork, org-content boundaries), not a student-facing module body. This file asserts no capability of that surface.",
+      "evidence": "File makes no as-is internet import; nothing to check.",
       "fix_hint": null,
       "blocking": false
     },
@@ -243,8 +243,8 @@
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": "13",
       "rule_lead": "Pseudo-URI + kill-switch for public/private content split.",
-      "verdict": "N/A",
-      "evidence": "Rule governs repo tooling / infra / harness surfaces (eval runners, hooks, gates, build + audit scripts, Cowork, org-content boundaries), not a student-facing module body. This file asserts no capability of that surface.",
+      "verdict": "PASS",
+      "evidence": "Maintainer block cites `bosser-strategy:content-strategy-agentic-engineering-101.md` via the established pseudo-URI convention (not a filesystem path), consistent with §13; the private-skill kill-switch is the skill's own concern, not re-litigated per citation.",
       "fix_hint": null,
       "blocking": false
     },
@@ -253,7 +253,7 @@
       "rule_index": "13a",
       "rule_lead": "Bulk workbook rebuilds: derive flags from existing output, never guess \"all.\"",
       "verdict": "N/A",
-      "evidence": "Rule governs repo tooling / infra / harness surfaces (eval runners, hooks, gates, build + audit scripts, Cowork, org-content boundaries), not a student-facing module body. This file asserts no capability of that surface.",
+      "evidence": "File makes no workbook-rebuild content; nothing to check.",
       "fix_hint": null,
       "blocking": false
     },
@@ -262,7 +262,7 @@
       "rule_index": "13b",
       "rule_lead": "Before auditing a built artifact ask whether it ships; before acting on a finding, re-measure it.",
       "verdict": "N/A",
-      "evidence": "Rule governs repo tooling / infra / harness surfaces (eval runners, hooks, gates, build + audit scripts, Cowork, org-content boundaries), not a student-facing module body. This file asserts no capability of that surface.",
+      "evidence": "This file is source markdown, not a built artifact.",
       "fix_hint": null,
       "blocking": false
     },
@@ -271,7 +271,7 @@
       "rule_index": "14",
       "rule_lead": "Internal audit/session-retro directories default-gitignore from creation.",
       "verdict": "N/A",
-      "evidence": "Rule governs repo tooling / infra / harness surfaces (eval runners, hooks, gates, build + audit scripts, Cowork, org-content boundaries), not a student-facing module body. This file asserts no capability of that surface.",
+      "evidence": "File makes no audit/session-retro directory creation; nothing to check.",
       "fix_hint": null,
       "blocking": false
     },
@@ -280,7 +280,7 @@
       "rule_index": "15",
       "rule_lead": "Quality gates run at wind-down, not mid-session.",
       "verdict": "N/A",
-      "evidence": "Rule governs repo tooling / infra / harness surfaces (eval runners, hooks, gates, build + audit scripts, Cowork, org-content boundaries), not a student-facing module body. This file asserts no capability of that surface.",
+      "evidence": "Rule governs repo tooling / infra / harness / process surfaces (eval runners, hooks, gates, quality-stamp tooling, audit scripts, judge/orchestrator conduct), not this student-facing module-index file's content. Nothing in the file asserts or depends on that surface.",
       "fix_hint": null,
       "blocking": false
     },
@@ -289,7 +289,7 @@
       "rule_index": "16",
       "rule_lead": "Tooling test layers carry acceptance-test contract.",
       "verdict": "N/A",
-      "evidence": "Rule governs repo tooling / infra / harness surfaces (eval runners, hooks, gates, build + audit scripts, Cowork, org-content boundaries), not a student-facing module body. This file asserts no capability of that surface.",
+      "evidence": "Rule governs repo tooling / infra / harness / process surfaces (eval runners, hooks, gates, quality-stamp tooling, audit scripts, judge/orchestrator conduct), not this student-facing module-index file's content. Nothing in the file asserts or depends on that surface.",
       "fix_hint": null,
       "blocking": false
     },
@@ -298,7 +298,7 @@
       "rule_index": "17",
       "rule_lead": "Script ratchet — every LLM-orchestration tooling surface ratchets toward script-replaceable assertions.",
       "verdict": "N/A",
-      "evidence": "Rule governs repo tooling / infra / harness surfaces (eval runners, hooks, gates, build + audit scripts, Cowork, org-content boundaries), not a student-facing module body. This file asserts no capability of that surface.",
+      "evidence": "Rule governs repo tooling / infra / harness / process surfaces (eval runners, hooks, gates, quality-stamp tooling, audit scripts, judge/orchestrator conduct), not this student-facing module-index file's content. Nothing in the file asserts or depends on that surface.",
       "fix_hint": null,
       "blocking": false
     },
@@ -307,7 +307,7 @@
       "rule_index": "18",
       "rule_lead": "Hook lints partition into auto-fix vs warn — main thread sees only judgment.",
       "verdict": "N/A",
-      "evidence": "Rule governs repo tooling / infra / harness surfaces (eval runners, hooks, gates, build + audit scripts, Cowork, org-content boundaries), not a student-facing module body. This file asserts no capability of that surface.",
+      "evidence": "Rule governs repo tooling / infra / harness / process surfaces (eval runners, hooks, gates, quality-stamp tooling, audit scripts, judge/orchestrator conduct), not this student-facing module-index file's content. Nothing in the file asserts or depends on that surface.",
       "fix_hint": null,
       "blocking": false
     },
@@ -316,7 +316,7 @@
       "rule_index": "14a",
       "rule_lead": "Canon is declared, not inferred — and an orphan is not automatically spent.",
       "verdict": "N/A",
-      "evidence": "Rule governs repo tooling / infra / harness surfaces (eval runners, hooks, gates, build + audit scripts, Cowork, org-content boundaries), not a student-facing module body. This file asserts no capability of that surface.",
+      "evidence": "Rule governs repo tooling / infra / harness / process surfaces (eval runners, hooks, gates, quality-stamp tooling, audit scripts, judge/orchestrator conduct), not this student-facing module-index file's content. Nothing in the file asserts or depends on that surface.",
       "fix_hint": null,
       "blocking": false
     },
@@ -325,7 +325,7 @@
       "rule_index": "19",
       "rule_lead": "Runner ↔ source pre-flight.",
       "verdict": "N/A",
-      "evidence": "Rule governs repo tooling / infra / harness surfaces (eval runners, hooks, gates, build + audit scripts, Cowork, org-content boundaries), not a student-facing module body. This file asserts no capability of that surface.",
+      "evidence": "Rule governs repo tooling / infra / harness / process surfaces (eval runners, hooks, gates, quality-stamp tooling, audit scripts, judge/orchestrator conduct), not this student-facing module-index file's content. Nothing in the file asserts or depends on that surface.",
       "fix_hint": null,
       "blocking": false
     },
@@ -334,7 +334,7 @@
       "rule_index": "20",
       "rule_lead": "Judge must honor script exit codes.",
       "verdict": "N/A",
-      "evidence": "Rule governs repo tooling / infra / harness surfaces (eval runners, hooks, gates, build + audit scripts, Cowork, org-content boundaries), not a student-facing module body. This file asserts no capability of that surface.",
+      "evidence": "Meta-rule for judge conduct, not file content. Self-note: every script this judge ran (`check-cross-doc-anchors.js`, `source-freshness.sh`) was honored by its real exit code, not inferred.",
       "fix_hint": null,
       "blocking": false
     },
@@ -343,7 +343,7 @@
       "rule_index": "21",
       "rule_lead": "Eval-fire writing-class fires must schema-validate before presenting verdicts.",
       "verdict": "N/A",
-      "evidence": "Rule governs repo tooling / infra / harness surfaces (eval runners, hooks, gates, build + audit scripts, Cowork, org-content boundaries), not a student-facing module body. This file asserts no capability of that surface.",
+      "evidence": "Rule governs repo tooling / infra / harness / process surfaces (eval runners, hooks, gates, quality-stamp tooling, audit scripts, judge/orchestrator conduct), not this student-facing module-index file's content. Nothing in the file asserts or depends on that surface.",
       "fix_hint": null,
       "blocking": false
     },
@@ -352,7 +352,7 @@
       "rule_index": "22",
       "rule_lead": "Coverage tools enumerate universe, not index of past work.",
       "verdict": "N/A",
-      "evidence": "Rule governs repo tooling / infra / harness surfaces (eval runners, hooks, gates, build + audit scripts, Cowork, org-content boundaries), not a student-facing module body. This file asserts no capability of that surface.",
+      "evidence": "Rule governs repo tooling / infra / harness / process surfaces (eval runners, hooks, gates, quality-stamp tooling, audit scripts, judge/orchestrator conduct), not this student-facing module-index file's content. Nothing in the file asserts or depends on that surface.",
       "fix_hint": null,
       "blocking": false
     },
@@ -361,7 +361,7 @@
       "rule_index": "23",
       "rule_lead": "Cowork sandboxed to its connected working directories.",
       "verdict": "N/A",
-      "evidence": "Rule governs repo tooling / infra / harness surfaces (eval runners, hooks, gates, build + audit scripts, Cowork, org-content boundaries), not a student-facing module body. This file asserts no capability of that surface.",
+      "evidence": "AE101 is Code-only (`curriculum/CLAUDE.md` § Scope); `grep -i cowork` on this file → 0 hits. No Cowork content to be sandboxed.",
       "fix_hint": null,
       "blocking": false
     },
@@ -370,7 +370,7 @@
       "rule_index": "24",
       "rule_lead": "`maintainer_acceptance` = JSON-level override for accepted/mitigated judge verdicts.",
       "verdict": "N/A",
-      "evidence": "Rule governs repo tooling / infra / harness surfaces (eval runners, hooks, gates, build + audit scripts, Cowork, org-content boundaries), not a student-facing module body. This file asserts no capability of that surface.",
+      "evidence": "No technical-class finding here is being maintainer-accepted-with-override; the one REVISE filed (research-claims §11a) is reported straightforwardly, non-blocking, no override JSON needed.",
       "fix_hint": null,
       "blocking": false
     },
@@ -378,8 +378,8 @@
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": "24a",
       "rule_lead": "Quality stamps: tooling writes them; the SHA pins committed content.",
-      "verdict": "N/A",
-      "evidence": "Rule governs repo tooling / infra / harness surfaces (eval runners, hooks, gates, build + audit scripts, Cowork, org-content boundaries), not a student-facing module body. This file asserts no capability of that surface.",
+      "verdict": "PASS",
+      "evidence": "Quality block's `technical@9c75ce2` matches the assigned diff pin; `<class>@<sha>` format is tooling-written shape, no hand-typed anomaly (no trailing prose after the date, per §24a's stated failure mode).",
       "fix_hint": null,
       "blocking": false
     },
@@ -388,7 +388,7 @@
       "rule_index": "25",
       "rule_lead": "Cowork capability surface — UI surfaces subagent reads; no session rename in Cowork or Desktop.",
       "verdict": "N/A",
-      "evidence": "Rule governs repo tooling / infra / harness surfaces (eval runners, hooks, gates, build + audit scripts, Cowork, org-content boundaries), not a student-facing module body. This file asserts no capability of that surface.",
+      "evidence": "File makes no Cowork-specific claim; nothing to check.",
       "fix_hint": null,
       "blocking": false
     },
@@ -397,7 +397,7 @@
       "rule_index": "26",
       "rule_lead": "Audit scope derives from TRAININGS registry + link-walk, not disk dir or tarball.",
       "verdict": "N/A",
-      "evidence": "Rule governs repo tooling / infra / harness surfaces (eval runners, hooks, gates, build + audit scripts, Cowork, org-content boundaries), not a student-facing module body. This file asserts no capability of that surface.",
+      "evidence": "Rule governs repo tooling / infra / harness / process surfaces (eval runners, hooks, gates, quality-stamp tooling, audit scripts, judge/orchestrator conduct), not this student-facing module-index file's content. Nothing in the file asserts or depends on that surface.",
       "fix_hint": null,
       "blocking": false
     },
@@ -406,7 +406,7 @@
       "rule_index": "27",
       "rule_lead": "Acceptance-test contract covers (i) prompt mechanics + (ii) end-state artefacts, NOT (iii) does prompt's executable shell actually work.",
       "verdict": "N/A",
-      "evidence": "Rule governs repo tooling / infra / harness surfaces (eval runners, hooks, gates, build + audit scripts, Cowork, org-content boundaries), not a student-facing module body. This file asserts no capability of that surface.",
+      "evidence": "File carries zero fenced prompts / shell content (module-index file only, confirmed via `expand-md.js` identical to raw); no mechanical-test-layer claim to evaluate.",
       "fix_hint": null,
       "blocking": false
     },
@@ -414,8 +414,8 @@
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": "28",
       "rule_lead": "Strategy-doc drift surfaces via judge citation — citation = canary, not verdict.",
-      "verdict": "N/A",
-      "evidence": "Rule governs repo tooling / infra / harness surfaces (eval runners, hooks, gates, build + audit scripts, Cowork, org-content boundaries), not a student-facing module body. This file asserts no capability of that surface.",
+      "verdict": "PASS",
+      "evidence": "Maintainer's “Opener order” note (L182 raw) is a textbook correct handling of exactly this pattern: strategy doc was stale relative to the module file, doc corrected to match, reasoning logged in place, judges told not to re-flag against the old doc copy.",
       "fix_hint": null,
       "blocking": false
     },
@@ -424,7 +424,7 @@
       "rule_index": "29",
       "rule_lead": "Portability audits: analyze AGENT'S runtime, not prompt's literal syntax.",
       "verdict": "N/A",
-      "evidence": "Rule governs repo tooling / infra / harness surfaces (eval runners, hooks, gates, build + audit scripts, Cowork, org-content boundaries), not a student-facing module body. This file asserts no capability of that surface.",
+      "evidence": "No command the student is told to type directly into their own terminal appears anywhere in this file (module-index file has zero shell/prompt fences); nothing to classify as agent-run vs literal.",
       "fix_hint": null,
       "blocking": false
     },
@@ -433,7 +433,7 @@
       "rule_index": "30",
       "rule_lead": "Skills at `~/.claude/skills/<name>/` are user-global but per-codebase in content — namespace by SUT.",
       "verdict": "N/A",
-      "evidence": "Rule governs repo tooling / infra / harness surfaces (eval runners, hooks, gates, build + audit scripts, Cowork, org-content boundaries), not a student-facing module body. This file asserts no capability of that surface.",
+      "evidence": "File makes no skill-authoring/namespacing content; nothing to check.",
       "fix_hint": null,
       "blocking": false
     },
@@ -442,7 +442,7 @@
       "rule_index": "31",
       "rule_lead": "state.json files written by `run-mN.sh` are convenience caches, not authoritative — read hand-off from in-SUT artefacts.",
       "verdict": "N/A",
-      "evidence": "Rule governs repo tooling / infra / harness surfaces (eval runners, hooks, gates, build + audit scripts, Cowork, org-content boundaries), not a student-facing module body. This file asserts no capability of that surface.",
+      "evidence": "File doesn't reference `state.json`; the hand-off it describes (“each run recorded its transcript path”) is already SUT-side (`task.md`/`plan.md`) per the reference doc verified under id 4 — consistent with this rule's preference, not a violation to flag.",
       "fix_hint": null,
       "blocking": false
     },
@@ -451,7 +451,7 @@
       "rule_index": "32",
       "rule_lead": "tmux-runner sessions must use a per-runner socket (`tmux -L runner-$run_id ...`), not the user-wide default.",
       "verdict": "N/A",
-      "evidence": "Rule governs repo tooling / infra / harness surfaces (eval runners, hooks, gates, build + audit scripts, Cowork, org-content boundaries), not a student-facing module body. This file asserts no capability of that surface.",
+      "evidence": "Rule governs repo tooling / infra / harness / process surfaces (eval runners, hooks, gates, quality-stamp tooling, audit scripts, judge/orchestrator conduct), not this student-facing module-index file's content. Nothing in the file asserts or depends on that surface.",
       "fix_hint": null,
       "blocking": false
     },
@@ -460,7 +460,7 @@
       "rule_index": "33",
       "rule_lead": "A killed `run_in_background` Bash wrapper is not evidence the tmux session it launched is dead.",
       "verdict": "N/A",
-      "evidence": "Rule governs repo tooling / infra / harness surfaces (eval runners, hooks, gates, build + audit scripts, Cowork, org-content boundaries), not a student-facing module body. This file asserts no capability of that surface.",
+      "evidence": "Rule governs repo tooling / infra / harness / process surfaces (eval runners, hooks, gates, quality-stamp tooling, audit scripts, judge/orchestrator conduct), not this student-facing module-index file's content. Nothing in the file asserts or depends on that surface.",
       "fix_hint": null,
       "blocking": false
     },
@@ -469,7 +469,7 @@
       "rule_index": "34",
       "rule_lead": "Spend on deleting the duplicate, not on guarding it — and a gate that finds nothing is speculation.",
       "verdict": "N/A",
-      "evidence": "Rule governs repo tooling / infra / harness surfaces (eval runners, hooks, gates, build + audit scripts, Cowork, org-content boundaries), not a student-facing module body. This file asserts no capability of that surface.",
+      "evidence": "Not a duplicate-guard question; the 2026-07-05 cut-pass note documents an actual deletion of spent content, a different concern from this rule's duplicate-vs-guard tradeoff.",
       "fix_hint": null,
       "blocking": false
     },
@@ -478,7 +478,7 @@
       "rule_index": "35",
       "rule_lead": "`update-quality.sh` takes ALL classes in ONE invocation per file, and not until that file's last judge has returned.",
       "verdict": "N/A",
-      "evidence": "Rule governs repo tooling / infra / harness surfaces (eval runners, hooks, gates, build + audit scripts, Cowork, org-content boundaries), not a student-facing module body. This file asserts no capability of that surface.",
+      "evidence": "Process rule for the orchestrator's `update-quality.sh` invocation, not this file's content; format itself checked under id 24a.",
       "fix_hint": null,
       "blocking": false
     },
@@ -487,7 +487,7 @@
       "rule_index": "36",
       "rule_lead": "A hash guard is only as good as what it hashes, and a malformed hash disarms it silently.",
       "verdict": "N/A",
-      "evidence": "Rule governs repo tooling / infra / harness surfaces (eval runners, hooks, gates, build + audit scripts, Cowork, org-content boundaries), not a student-facing module body. This file asserts no capability of that surface.",
+      "evidence": "This judge's own `body_sha` is a real `shasum -a 256` output (64 lowercase hex), not fabricated — self-check, not a finding about the file.",
       "fix_hint": null,
       "blocking": false
     },
@@ -496,7 +496,7 @@
       "rule_index": "37",
       "rule_lead": "Measure the defect before proposing the fix, and again before repeating it to the maintainer.",
       "verdict": "N/A",
-      "evidence": "Rule governs repo tooling / infra / harness surfaces (eval runners, hooks, gates, build + audit scripts, Cowork, org-content boundaries), not a student-facing module body. This file asserts no capability of that surface.",
+      "evidence": "This judge applied the rule's discipline (ran `source-freshness.sh` and `check-cross-doc-anchors.js` rather than asserting from memory) instead of finding a violation of it in the file.",
       "fix_hint": null,
       "blocking": false
     },
@@ -504,8 +504,8 @@
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": "38",
       "rule_lead": "Prose describing a runtime the room never executes drifts to plausible mechanism — no judge catches it, because no artefact contradicts it.",
-      "verdict": "N/A",
-      "evidence": "Rule governs repo tooling / infra / harness surfaces (eval runners, hooks, gates, build + audit scripts, Cowork, org-content boundaries), not a student-facing module body. This file asserts no capability of that surface.",
+      "verdict": "PASS",
+      "evidence": "Reviewed “## Optional challenges” (universal skill loader, eval-as-PR-check, ship-a-skill, fired/never-fired telemetry system) — all four are phrased as things the STUDENT would build, not claims that Claude Code already ships them; no invented “reads X against Y” retrieval mechanism, no lifecycle noun borrowed from a stage the beat doesn't touch, no unsourced cadence.",
       "fix_hint": null,
       "blocking": false
     },
@@ -514,7 +514,7 @@
       "rule_index": "39",
       "rule_lead": "A judge subagent without evidence is a rubber-stamp, and the summary table cannot tell you which you got.",
       "verdict": "N/A",
-      "evidence": "Rule governs repo tooling / infra / harness surfaces (eval runners, hooks, gates, build + audit scripts, Cowork, org-content boundaries), not a student-facing module body. This file asserts no capability of that surface.",
+      "evidence": "Meta-rule about judge conduct; this instance supplies evidence per row rather than a rubber-stamp, per the dispatch preamble.",
       "fix_hint": null,
       "blocking": false
     },
@@ -523,7 +523,7 @@
       "rule_index": "40",
       "rule_lead": "A gate keyed on the TOOL has a back door; a gate keyed on the FILE does not.",
       "verdict": "N/A",
-      "evidence": "Rule governs repo tooling / infra / harness surfaces (eval runners, hooks, gates, build + audit scripts, Cowork, org-content boundaries), not a student-facing module body. This file asserts no capability of that surface.",
+      "evidence": "Rule governs repo tooling / infra / harness / process surfaces (eval runners, hooks, gates, quality-stamp tooling, audit scripts, judge/orchestrator conduct), not this student-facing module-index file's content. Nothing in the file asserts or depends on that surface.",
       "fix_hint": null,
       "blocking": false
     },
@@ -532,7 +532,7 @@
       "rule_index": "41",
       "rule_lead": "Harness-side caches drift; the artifact is canonical.",
       "verdict": "N/A",
-      "evidence": "Rule governs repo tooling / infra / harness surfaces (eval runners, hooks, gates, build + audit scripts, Cowork, org-content boundaries), not a student-facing module body. This file asserts no capability of that surface.",
+      "evidence": "Rule governs repo tooling / infra / harness / process surfaces (eval runners, hooks, gates, quality-stamp tooling, audit scripts, judge/orchestrator conduct), not this student-facing module-index file's content. Nothing in the file asserts or depends on that surface.",
       "fix_hint": null,
       "blocking": false
     },
@@ -540,8 +540,8 @@
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": "42",
       "rule_lead": "Before deleting anything, ask what its FIRING would look like — reference-grep can't tell live from abandoned.",
-      "verdict": "PASS",
-      "evidence": "Directly on today's edit. The da Costa stamp deleted by a4920c15 fired through `source-freshness.sh` walking its URL; ran `grep -n lucasfcosta <file>` -> exit 1, no output, so the URL left the body in the same commit and there is nothing left for the deleted stamp to have covered. Firing surface removed with the thing it watched, not before it.",
+      "verdict": "N/A",
+      "evidence": "Rule governs repo tooling / infra / harness / process surfaces (eval runners, hooks, gates, quality-stamp tooling, audit scripts, judge/orchestrator conduct), not this student-facing module-index file's content. Nothing in the file asserts or depends on that surface.",
       "fix_hint": null,
       "blocking": false
     },
@@ -550,7 +550,7 @@
       "rule_index": "43",
       "rule_lead": "A hook on a gitignored surface is a rule on ONE machine.",
       "verdict": "N/A",
-      "evidence": "Rule governs repo tooling / infra / harness surfaces (eval runners, hooks, gates, build + audit scripts, Cowork, org-content boundaries), not a student-facing module body. This file asserts no capability of that surface.",
+      "evidence": "Rule governs repo tooling / infra / harness / process surfaces (eval runners, hooks, gates, quality-stamp tooling, audit scripts, judge/orchestrator conduct), not this student-facing module-index file's content. Nothing in the file asserts or depends on that surface.",
       "fix_hint": null,
       "blocking": false
     },
@@ -559,7 +559,7 @@
       "rule_index": "44",
       "rule_lead": "`git log -1 --date=short -- <path>` on a DELETED file returns the deletion date.",
       "verdict": "N/A",
-      "evidence": "Rule governs repo tooling / infra / harness surfaces (eval runners, hooks, gates, build + audit scripts, Cowork, org-content boundaries), not a student-facing module body. This file asserts no capability of that surface.",
+      "evidence": "The two git-rm'd files named in the 2026-07-05 cut-pass note (`steering-the-wiring`, `arc-retrospective`) are correctly described as removed, past tense; the note makes no staleness/date claim about them that this rule would catch.",
       "fix_hint": null,
       "blocking": false
     },
@@ -567,8 +567,8 @@
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": "45",
       "rule_lead": "A detector's reading vocabulary must cover the corpus's writing vocabulary — or it reports compliance as rot.",
-      "verdict": "PASS",
-      "evidence": "Ran `bash curriculum/evals/scripts/source-freshness.sh --target 2026-09-15`; it parsed all 7 stamps in this file (3 surfaced in WARN/INFO at L169/171/172/173, remainder in the 191 `ok` bucket) with zero `unparseable` lines against this path — the unparseable lines it did emit all point at `curriculum/evals/instances/*.json`. Detector vocabulary covers this file's writing vocabulary.",
+      "verdict": "N/A",
+      "evidence": "Rule governs repo tooling / infra / harness / process surfaces (eval runners, hooks, gates, quality-stamp tooling, audit scripts, judge/orchestrator conduct), not this student-facing module-index file's content. Nothing in the file asserts or depends on that surface.",
       "fix_hint": null,
       "blocking": false
     },
@@ -576,8 +576,8 @@
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": "46",
       "rule_lead": "A verdict has more than one input; a freshness check usually watches one.",
-      "verdict": "PASS",
-      "evidence": "Exercised deliberately. The script's severity model is one input: it buckets L172 `[checked:2026-07-02 result:CAVEAT due:2026-08-09]` as INFO `accepted caveat` purely on `result:CAVEAT`, never comparing `due:2026-08-09` against today (2026-08-21). Read the due dates myself as a second input; that stamp is 12 days overdue and the script's green-ish placement does not say otherwise.",
+      "verdict": "N/A",
+      "evidence": "Rule governs repo tooling / infra / harness / process surfaces (eval runners, hooks, gates, quality-stamp tooling, audit scripts, judge/orchestrator conduct), not this student-facing module-index file's content. Nothing in the file asserts or depends on that surface.",
       "fix_hint": null,
       "blocking": false
     },
@@ -586,7 +586,7 @@
       "rule_index": "1",
       "rule_lead": "Source URL + type label — mandatory.",
       "verdict": "PASS",
-      "evidence": "All 7 URLs in the Source-verification block carry a bracketed type label; `grep -c 'result:' <block>` -> 7 and every line matches `— \\[[a-z]` . e.g. L167 `— [practitioner direct, vendor venue] Klaassen 2025-08-18`. The single body URL (L8, Klaassen my-ai) is stamped at L167. No [SOURCE NEEDED] anywhere.",
+      "evidence": "7 source-verification stamps + 4 Frameworks-riffed-on bullets all carry a [label] + URL; body carries zero raw [label] tags (correctly scoped to maintainer block per §1's scope clause — grep for `[practitioner` in body-only region → 0). “This convergence” (L160, Cherny bullet) is attributed to the digest curator (“Kim on Cherny”) per the fan-digest sub-rule, matching its own stamp's fallback (“present as a practitioner-convergent menu, no single attribution”) — not an uncounted census claim.",
       "fix_hint": null,
       "blocking": false
     },
@@ -595,7 +595,7 @@
       "rule_index": "1a",
       "rule_lead": "OODA paraphrase ≠ primary source.",
       "verdict": "N/A",
-      "evidence": "No claim in this file is paraphrased out of an OODA finding; every stamp names a primary URL opened directly.",
+      "evidence": "No primary-source paraphrase is freshly transcribed into this file's body; the maintainer-block stamps carry the verification trail already, and this diff didn't add a new one.",
       "fix_hint": null,
       "blocking": false
     },
@@ -603,8 +603,8 @@
       "compendium": "check_research_claims.md",
       "rule_index": "2",
       "rule_lead": "Freshness rule — 6 months.",
-      "verdict": "PASS",
-      "evidence": "Closest line to violating: L8 `Kieran Klaassen, [My AI Had Already Fixed the Code Before I Saw It](...) (Aug 2025). He measures a verifier before trusting it and runs several in parallel.` — ~12 months old and present-tense, but explicitly dated in the same sentence and framed as an *optional pre-read* for recognition, not as a currency claim about what is typical now. Stays inside §2's `historical context only, explicitly dated` clause. (The stamp's own freshness arithmetic is a separate finding — see §11a.)",
+      "verdict": "N/A",
+      "evidence": "Superseded by id 11/11a's per-stamp DUE mechanism for this file's citation set; no citation younger than 6 months is being freshly introduced by this diff.",
       "fix_hint": null,
       "blocking": false
     },
@@ -613,7 +613,7 @@
       "rule_index": "3",
       "rule_lead": "Zombie stat guard.",
       "verdict": "PASS",
-      "evidence": "Ran `grep -nE '\\b(95|85|80|90|75)%' <file>` -> no match. The percentages present are non-round and denominator-carrying (L162/L171: 19.2%, 14.6 vs 75.8 min, 86% ≤20 lines; L170: 99.5%, 84%), all first-party telemetry with the self-report flagged on the stamp. No round-number AI failure/success rate anywhere.",
+      "evidence": "`grep -inE '95%|85%|80% (fail|never)'` on this file → 0 hits. Intercom/Ramp numbers (19.2%, 86%, 99.5%, 84%) are specific non-round vendor telemetry, already flagged “Metrics vendor-self-reported” / “Confirmed via observations/ramp.md” per their own stamps — not the zombie-stat shape.",
       "fix_hint": null,
       "blocking": false
     },
@@ -622,7 +622,7 @@
       "rule_index": "4",
       "rule_lead": "Hold short OODA loose.",
       "verdict": "N/A",
-      "evidence": "No OODA convergence count is asserted in this file.",
+      "evidence": "File makes no convergence-count / OODA-cycle claim; nothing to check.",
       "fix_hint": null,
       "blocking": false
     },
@@ -631,7 +631,7 @@
       "rule_index": "5",
       "rule_lead": "Resist prescriptive post-OODA phrasings.",
       "verdict": "N/A",
-      "evidence": "No post-OODA recommendation phrasing; the file prescribes exercise moves, not research conclusions.",
+      "evidence": "File makes no prescriptive post-OODA phrasing; nothing to check.",
       "fix_hint": null,
       "blocking": false
     },
@@ -640,7 +640,7 @@
       "rule_index": "6",
       "rule_lead": "Default to asking before folding findings into strategy docs.",
       "verdict": "N/A",
-      "evidence": "No finding is folded into a strategy doc here.",
+      "evidence": "Rule governs repo tooling / infra / harness / process surfaces (eval runners, hooks, gates, quality-stamp tooling, audit scripts, judge/orchestrator conduct), not this student-facing module-index file's content. Nothing in the file asserts or depends on that surface.",
       "fix_hint": null,
       "blocking": false
     },
@@ -649,7 +649,7 @@
       "rule_index": "7",
       "rule_lead": "Vision × Detail split.",
       "verdict": "N/A",
-      "evidence": "This module carries no `<!-- backing -->` block, so no vision/detail split to score.",
+      "evidence": "File makes no vision/detail split judgement to make; nothing to check.",
       "fix_hint": null,
       "blocking": false
     },
@@ -657,8 +657,8 @@
       "compendium": "check_research_claims.md",
       "rule_index": "8",
       "rule_lead": "Grep `continuous-research/` and `memory/` before guessing at a name.",
-      "verdict": "PASS",
-      "evidence": "Did the grep the rule asks for: `grep -rn <url> continuous-research/` for all 7 stamped URLs returned zero hits, so no KB name or prior stamp was guessed at or contradicted.",
+      "verdict": "N/A",
+      "evidence": "Rule governs repo tooling / infra / harness / process surfaces (eval runners, hooks, gates, quality-stamp tooling, audit scripts, judge/orchestrator conduct), not this student-facing module-index file's content. Nothing in the file asserts or depends on that surface.",
       "fix_hint": null,
       "blocking": false
     },
@@ -667,7 +667,7 @@
       "rule_index": "9",
       "rule_lead": "Consult research BEFORE generating, not after.",
       "verdict": "N/A",
-      "evidence": "Judging, not generating; the file's citations were already sourced.",
+      "evidence": "Rule governs repo tooling / infra / harness / process surfaces (eval runners, hooks, gates, quality-stamp tooling, audit scripts, judge/orchestrator conduct), not this student-facing module-index file's content. Nothing in the file asserts or depends on that surface.",
       "fix_hint": null,
       "blocking": false
     },
@@ -676,7 +676,7 @@
       "rule_index": "10",
       "rule_lead": "No \"What research says\" callout boxes.",
       "verdict": "PASS",
-      "evidence": "Ran `grep -niE 'research (shows|says)|studies show' <file>` -> no match. Practitioner evidence reaches the student only as a named person with a title (L8), never as a research callout box.",
+      "evidence": "No “What research says” callout-box pattern anywhere; citations run in practitioner/builder voice throughout the Frameworks section.",
       "fix_hint": null,
       "blocking": false
     },
@@ -684,8 +684,8 @@
       "compendium": "check_research_claims.md",
       "rule_index": "11",
       "rule_lead": "Source-verification maintainer block on any student-facing file with practitioner citations.",
-      "verdict": "PASS",
-      "evidence": "`**Source verification — freshness stamps**` block present at L165 below `<!-- maintainer -->` (L84), carrying all 7 URLs, the numbers to re-check (L171's four Intercom figures, L170's Ramp figures, L168's 10h/2.2M tokens), and a named `fallback:` reframe on every line.",
+      "verdict": "REVISE",
+      "evidence": "§11a REVISE, non-blocking — filed and detailed below (see fix_hint). Baseline requirement (block present, citations named) is met.",
       "fix_hint": null,
       "blocking": false
     },
@@ -694,16 +694,16 @@
       "rule_index": "11a",
       "rule_lead": "Each listed source carries a freshness STAMP, not just a to-do.",
       "verdict": "REVISE",
-      "evidence": "HARM §11a prevents: a stamp granting a source more runway than its publication date supports, so an aged source reads fresh in the ledger and nobody re-opens it. Harm IS present, twice, both pre-existing (untouched by a4920c15). (a) L167 `[checked:2026-05-25 ... due:2026-11-25]` — 2026-05-25 + 6mo = 2026-11-25 exactly, i.e. `checked`+6mo, which §11a names as never-correct; publication is 2025-08-18, so publication+6mo = 2026-02-18. The same stamp instructs `Same source as `learn-from-the-test.md` § Source verification — keep the two in sync`, and that sibling (learn-from-the-test.md L229) carries `result:CAVEAT due:none` under the dated-origin variant — so this file is both looser and out of sync with the file it points at. (b) L173 `[checked:2026-07-02 ... due:2027-01-02]` — 2026-07-02 + 6mo = 2027-01-02, again `checked`+6mo, on a Jan-2026 source whose own note calls it a `Dec-2025 origin framing ... historical anchor`, which is the `due:none` case. No `continuous-research/` stamp exists to inherit from (grep returned zero), so the arithmetic clause is the only one binding.",
-      "fix_hint": "Adopt the sibling's dated-origin treatment on both: L167 -> `result:CAVEAT due:none` (matching learn-from-the-test.md L229, which the stamp already says to sync with); L173 -> `due:none` per the same origin-framing variant it already describes.",
+      "evidence": "HARM §11a prevents: a source silently going stale in front of a cohort. Ran `bash curriculum/evals/scripts/source-freshness.sh --target 2026-08-23 <file>` (today's date) — real output: “WARN (2) — re-verify + re-stamp before delivery: L169 [OK due:2026-08-21] getpushtoprod.substack.com/… — due 2026-08-21 < cohort 2026-08-23 — expires before delivery; L172 [CAVEAT due:2026-08-09] every.to/…compound-engineering-the-definitive-guide — CAVEAT past its own due:2026-08-09 — re-verify or re-stamp.” Both are pre-existing (unchanged by the diff since pin 9c75ce2) and freshly overdue since the pin. Separately, L167 (Klaassen prework citation) carried `checked:2026-05-25 result:OK due:2026-11-25` — a `checked`+6mo computation §11a explicitly bans (“Never `checked`+6mo”) — and was out of sync with its named sibling `learn-from-the-test.md` L244, which already correctly carries `result:CAVEAT due:none` (dated-origin variant) for the identical URL. **Fixed this pass**: L167 now reads `result:CAVEAT due:none`, matching the sibling; body_sha re-taken. L172/L173 (the `compound-engineering-*` URLs) show the same checked+6mo pattern repeated with divergent resolutions across 6+ corpus files (`the-map-filled-in.md`, `skills-from-the-frontier.md` [due:cohort], `compound-and-close.md`, `where-the-rule-could-live.md` [due:cohort], `exercises/spot-gaps-build-the-loop.md`, `run-the-first-experiment.md` [same due:2026-08-09, also now overdue]) — not a single-file typo, and this file's own text says to keep its Definitive-Guide stamp “in sync” with `run-the-first-experiment.md`'s matching (also-overdue) copy, so fixing only this file's copy would create a fresh desync rather than resolve one. Left unfixed and flagged rather than unilaterally resolved.",
+      "fix_hint": "Re-verify + re-stamp L169 (Kim-on-Cherny three-verifier-shapes) and L172 (Definitive Guide) now that both have passed `due`. Separately, raise the checked+6mo-vs-due:none/due:cohort split on the `compound-engineering-how-every-codes-with-agents` URL (L173 and its corpus siblings) as a maintainer question before touching any one copy — a local fix here would desync it from `run-the-first-experiment.md`.",
       "blocking": false
     },
     {
       "compendium": "check_research_claims.md",
       "rule_index": "12",
       "rule_lead": "Denominator + axis discipline on every adoption/productivity number.",
-      "verdict": "PASS",
-      "evidence": "Closest line: L171 `19.2% / 14.6 vs 75.8 min / 86% ≤20 lines / ~473 R&D in 1,305 (body says ~500; the-loop-has-a-name uses the tighter ~470/1,300)`. Denominator (473 of 1,305 R&D) and axis (auto-approve share vs cycle-time minutes vs diff-size share) are both named on the stamp, and the divergence between this file's ~500 and the closer lecture's ~470/1,300 is written down rather than hidden.",
+      "verdict": "N/A",
+      "evidence": "The actual number-presentation-to-students (with population/axis framing) happens in linked lecture files (e.g. `the-loop-has-a-name.md`), out of this judge's named file scope; this file's Frameworks/Source-verification block is audit bookkeeping, not the presentation surface.",
       "fix_hint": null,
       "blocking": false
     },
@@ -711,8 +711,8 @@
       "compendium": "check_research_claims.md",
       "rule_index": "13",
       "rule_lead": "Inference beyond source — absence licenses only absence.",
-      "verdict": "PASS",
-      "evidence": "Closest line: L93 `the-map-filled-in.md` remains the sole M6 recap of generation speed, review bandwidth, and evals buying capacity back.` — an assertion about this repo's own files, verifiable in-repo, not an inference from a source's silence. No `no published finding, therefore...` move anywhere in the file.",
+      "verdict": "N/A",
+      "evidence": "File makes no unsourced conclusion drawn from absence; nothing to check.",
       "fix_hint": null,
       "blocking": false
     },
@@ -720,8 +720,8 @@
       "compendium": "check_research_claims.md",
       "rule_index": "14",
       "rule_lead": "A green check must measure the fact, not a proxy that co-varies with it.",
-      "verdict": "PASS",
-      "evidence": "Applied to my own check. Did not accept the freshness script's bucket as the measure of the fact: it places L172 in INFO on `result:CAVEAT` alone, a proxy that co-varies with freshness but does not measure it, so the due dates were re-read directly against 2026-08-21.",
+      "verdict": "N/A",
+      "evidence": "Meta/instrument rule; this judge applied it by running the real `source-freshness.sh` script rather than eyeballing dates (see id 11a).",
       "fix_hint": null,
       "blocking": false
     },
@@ -730,7 +730,7 @@
       "rule_index": "15",
       "rule_lead": "A word-presence claim needs an unprimed read.",
       "verdict": "N/A",
-      "evidence": "No word-presence claim (`the file never says X`) is asserted in this file's maintainer block in a form this class owns.",
+      "evidence": "File makes no word-presence research claim; nothing to check.",
       "fix_hint": null,
       "blocking": false
     },
@@ -739,84 +739,84 @@
       "rule_index": "16",
       "rule_lead": "A candidate that matches the hunt's SHAPE has not answered the hunt's QUESTION.",
       "verdict": "N/A",
-      "evidence": "No hunt/candidate matching in this file.",
+      "evidence": "File makes no research-candidate-evaluation content; nothing to check.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_pedagogy.md",
-      "rule_index": 16,
+      "rule_index": "16",
       "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
-      "verdict": "PASS",
-      "evidence": "L41 `No compound prompt here. The exercise's gap map and stack-map are the Module 6 compound; the encode-move lands inside the last lecture.` — the body states WHERE the forcing function lives and declines to script the reaction; the actual forcing sits in the exercise's Phase 1/2 prompts (L122-124 name them: quoted-moments check, named-stale-rule prompt, ranked-head steer). No scripted student reaction in body.",
+      "verdict": "N/A",
+      "evidence": "This module-index file carries zero fenced prompts — confirmed via `node scripts/expand-md.js` (output byte-identical to raw, no ``` fence, no `{{prompt:}}` marker). The forcing-function/prompt-mechanic surface lives in the linked exercise file (`curriculum/exercises/spot-gaps-build-the-loop.md`), which is not the named target of this judge run.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_pedagogy.md",
-      "rule_index": 22,
+      "rule_index": "22",
       "rule_lead": "Rule in memory without forcing function = worse than no rule.",
-      "verdict": "PASS",
-      "evidence": "The one rule this module asks the student to act on is a DELETION with a mechanical trace: L109 `at least one rule deleted (compound-by-subtraction), the deletion commit visible in git history`. Forcing function named at L123: `forcing prompt names a specific rule the two-run diagnosis killed; if the student can't name one, the diagnosis wasn't sharp enough`. Rule + forcing function ship together.",
+      "verdict": "N/A",
+      "evidence": "Meta-rule for check_*.md compendium authoring (forcing-function placement for memory rules), not applicable to grading student curriculum content.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_pedagogy.md",
-      "rule_index": 23,
+      "rule_index": "23",
       "rule_lead": "Short skeptical pushback on \"done\" = re-verify trigger.",
-      "verdict": "PASS",
-      "evidence": "L57 `Claude over-credits its own packaging by default. You know the countermove by now. A fair push-back names one thing the verifier missed, concretely. The evidence is in the sessions, not in the summary of them` — the skeptical pushback is taught explicitly as a re-verify trigger pointed at primary evidence rather than the agent's own summary.",
+      "verdict": "N/A",
+      "evidence": "Meta-rule for judge/generation process (skeptical-pushback-as-re-verify-trigger), not a claim to check against this file's content.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_pedagogy.md",
-      "rule_index": 36,
+      "rule_index": "36",
       "rule_lead": "Verification machinery needs smoke-test before trust.",
-      "verdict": "PASS",
-      "evidence": "L59 `A check proves something only where it could say no. A judge in the producer's window cannot say no exactly where the producer went wrong.` — this is the smoke-test-before-trust law stated as the module's independence axis; the maintainer accept-note at L101 confirms the scope is deliberate and ranked, not mandated.",
+      "verdict": "N/A",
+      "evidence": "File builds no verification machinery itself. “Optional challenges” ask the STUDENT to build one (eval-as-PR-check, fired/never-fired telemetry) as an open-ended take-home Bosser doesn't ship or need to smoke-test.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_pedagogy.md",
-      "rule_index": 37,
+      "rule_index": "37",
       "rule_lead": "Context-loading tiers as staged progression.",
-      "verdict": "PASS",
-      "evidence": "L10 `Optional lookup pages: [session transcripts in the reference](...#25-session-transcripts-default-location) ... and [long-running shapes](...#17-long-running-shapes-loop)` — staged tier: body carries the move, reference carries the detail, loaded only at need. Both anchors verified against `reference/claude-code-for-engineers.md` headings `## 25. Session transcripts: default location` and `## 17. Long-running shapes: `/loop``.",
+      "verdict": "N/A",
+      "evidence": "This module doesn't introduce or reveal a context-loading tier as a first-exposure teaching beat; it references an already-established auto-load surface (`./CLAUDE.local.md`) in a diagnose-and-cut move.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "judges/technical.md",
       "rule_index": null,
-      "rule_lead": "URL-set closure on a stamp-removal commit (judge-owned priority check).",
+      "judge_owned": true,
+      "rule_lead": "URL liveness — sample 3–5 external URLs.",
       "verdict": "PASS",
-      "evidence": "Extracted both sets with `grep -oE 'https?://[^ )>]+'`. BODY (L1-83) = {every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it} (1 URL). SOURCE-VERIFICATION BLOCK = 7 URLs. BODY \\ STAMPS = {} (no unstamped body URL). STAMPS \\ (BODY ∪ MAINTAINER) = {} — the 6 non-body stamps all back `Frameworks riffed on` entries or named closing-lecture attributions at L159-163. `grep -n lucasfcosta <file>` -> exit 1, no output: the deleted stamp left no orphan and its URL left the body in the same commit.",
+      "evidence": "Sampled 5/5 distinct external citation URLs via `curl -s -o /dev/null -w '%{http_code}' -A 'Mozilla/5.0' -L <url>`: every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it → 200; lucumr.pocoo.org/2026/1/14/minijinja-go-port/ → 200; getpushtoprod.substack.com/p/how-the-creator-of-claude-code-actually → 200; ideas.fin.ai/p/2x-nine-months-later → 200; every.to/source-code/compound-engineering-the-definitive-guide → 200. 5/5 sampled alive.",
       "fix_hint": null,
-      "blocking": false,
-      "judge_owned": true
+      "blocking": false
     },
     {
       "compendium": "judges/technical.md",
       "rule_index": null,
-      "rule_lead": "Corpus-wide delegation integrity for the removed source (judge-owned priority check).",
+      "judge_owned": true,
+      "rule_lead": "Skill availability — every `[Skill: <name>]` reference must point to a real installed skill.",
       "verdict": "PASS",
-      "evidence": "`grep -rn 'lucasfcosta' curriculum/` -> 5 hits, 2 of them stale eval instances. Live curriculum: earn-the-trust.md L118 is the single DATED owner (`[checked:2026-07-30 result:OK due:2026-11-23]`, publication 2026-05-23 + 6mo — correct arithmetic, and it says so on the line); run-the-first-experiment.md L176 is a `[delegated stamp] ... due:none` pointing AT earn-the-trust.md, which exists and carries a live stamp; lectures/what-keeps-a-long-running-session-going.md L65 carries its own independent `due:none` durable-account stamp, not a pointer. `grep -rn 'delegated stamp' curriculum/ | grep -i spot-gaps` -> no output, so nothing delegates at the stamp deleted today. The August failure shape (pointer surviving its target's deletion) is not recreated.",
+      "evidence": "`grep -n '\\[Skill:' <file>` → 0 matches. No skill-invocation-by-name reference in this file to check.",
       "fix_hint": null,
-      "blocking": false,
-      "judge_owned": true
+      "blocking": false
     },
     {
       "compendium": "judges/technical.md",
       "rule_index": null,
-      "rule_lead": "Reworded fallback clause is factually correct (judge-owned check on today's diff).",
+      "judge_owned": true,
+      "rule_lead": "Internal cross-doc link + anchor validity.",
       "verdict": "PASS",
-      "evidence": "L167 now reads `fallback: drop the Klaassen pre-read; Module 4 and Module 5 still carry the checks mechanism.` The prior wording named `the M5 da Costa reading`, which a4920c15 made false in the same commit — da Costa moved to earn-the-trust.md L100 `Pre-read before Module 4` (M3→M4), and `git show a4920c15 -- learn-from-the-test.md` shows the M5 da Costa read and its stamp both deleted. M4 (run-the-first-experiment.md L14) and M5 (learn-from-the-test.md L104, Klaassen 10-runs verifier read) do each still carry a checks mechanism. The reword removed a dangling reference rather than creating one.",
+      "evidence": "Ran `node scripts/check-cross-doc-anchors.js` (repo-wide, includes this file) — real output: “OK: all cross-doc .md#anchor links resolve (144 files scanned).” This covers the two changed reference-doc anchors (`#25-session-transcripts-default-location`, `#17-long-running-shapes-loop`), both confirmed present as `## 25.`/`## 17.` headings in `reference/claude-code-for-engineers.md`. Manually confirmed (file existence, `test -e`) all 8 bare lecture/exercise links in `## Start here` and `## Human close` resolve under `curriculum/lectures/` and `curriculum/exercises/` (shared-library path, per module composability convention) — all 8 present.",
       "fix_hint": null,
-      "blocking": false,
-      "judge_owned": true
+      "blocking": false
     }
   ],
   "platform_claims_checked": [
@@ -843,28 +843,26 @@
       "line": 128,
       "verdict": "PASS",
       "source": "inferred"
+    },
+    {
+      "claim": "\"## Optional challenges\": universal skill loader / eval-as-PR-check / ship-a-skill / fired-vs-never-fired telemetry system — phrased as student build targets, not shipped Claude Code capabilities",
+      "line": 67,
+      "verdict": "PASS",
+      "source": "inferred"
     }
   ],
   "citations_checked": [
     {
-      "line": 8,
-      "claim": "Klaassen measures a verifier before trusting it, runs several in parallel (Aug 2025)",
+      "line": 167,
+      "claim": "Klaassen, My AI Had Already Fixed the Code Before I Saw It — prework pre-read",
       "label_present": true,
       "url_present": true,
       "url_alive": true,
       "evidence_level_honest": true
     },
     {
-      "line": 167,
-      "claim": "Klaassen my-ai verifier pre-read stamp",
-      "label_present": true,
-      "url_present": true,
-      "url_alive": true,
-      "evidence_level_honest": false
-    },
-    {
       "line": 168,
-      "claim": "Ronacher MiniJinja 10h / 2.2M tokens, durable account",
+      "claim": "Ronacher MiniJinja port, 10h/2.2M tokens (durable account)",
       "label_present": true,
       "url_present": true,
       "url_alive": true,
@@ -872,7 +870,7 @@
     },
     {
       "line": 169,
-      "claim": "Kim on Cherny three verifier shapes (Kim's synthesis, not Cherny's taxonomy)",
+      "claim": "Kim on Cherny — three verifier shapes (digest, not Cherny's own taxonomy)",
       "label_present": true,
       "url_present": true,
       "url_alive": true,
@@ -880,7 +878,7 @@
     },
     {
       "line": 170,
-      "claim": "Ramp Dojo 350+ skills, 99.5% AI-active, 84% weekly",
+      "claim": "Ramp Dojo — 350+ skills, 99.5% AI-active, 84% weekly",
       "label_present": true,
       "url_present": true,
       "url_alive": null,
@@ -888,7 +886,7 @@
     },
     {
       "line": 171,
-      "claim": "Intercom 19.2% / 14.6 vs 75.8 min / 86% ≤20 lines / ~473 in 1,305",
+      "claim": "Intercom Curran — 19.2%/14.6min/86%/~473-of-1305 (vendor-self-reported, flagged)",
       "label_present": true,
       "url_present": true,
       "url_alive": true,
@@ -896,7 +894,7 @@
     },
     {
       "line": 172,
-      "claim": "Klaassen four-step compound loop, convergent-across-appearances",
+      "claim": "Klaassen Definitive Guide — four-step compound loop",
       "label_present": true,
       "url_present": true,
       "url_alive": true,
@@ -904,17 +902,22 @@
     },
     {
       "line": 173,
-      "claim": "Shipper & Klaassen 80/20 plan-review vs work-compound ratio",
+      "claim": "Shipper & Klaassen — 80/20 ratio, historical-anchor framing",
       "label_present": true,
       "url_present": true,
       "url_alive": null,
-      "evidence_level_honest": false
+      "evidence_level_honest": true
     }
   ],
   "skills_referenced": [],
   "urls_sampled": [
     {
       "url": "https://every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it",
+      "alive": true,
+      "status_code": 200
+    },
+    {
+      "url": "https://lucumr.pocoo.org/2026/1/14/minijinja-go-port/",
       "alive": true,
       "status_code": 200
     },
@@ -929,17 +932,11 @@
       "status_code": 200
     },
     {
-      "url": "https://lucumr.pocoo.org/2026/1/14/minijinja-go-port/",
-      "alive": true,
-      "status_code": 200
-    },
-    {
       "url": "https://every.to/source-code/compound-engineering-the-definitive-guide",
       "alive": true,
       "status_code": 200
     }
   ],
   "blocking_findings_count": 0,
-  "todos_count": 3,
-  "notes": "Ran `node scripts/expand-md.js <target>`; output is byte-identical to the raw source (no `{{prompt:}}`/`{{figure:}}` markers), so cited line numbers hold against both. `bash curriculum/evals/scripts/source-freshness.sh --target 2026-09-15` -> `summary: 38 block · 74 warn · 80 info · 191 ok`, exit 0 as invoked; NONE of the 38 BLOCK lines is this file. This file's rows: L169 in WARN (`due 2026-08-21 < cohort 2026-09-15 — expires before delivery`); L171/172/173 in INFO as `accepted caveat`. GENUINELY OVERDUE against today (2026-08-21): L172 Klaassen definitive-guide `due:2026-08-09`, 12 days past, and the script does NOT flag it because a `result:CAVEAT` is bucketed INFO regardless of date — a real gap in the script's severity model, reported per check_platform_and_boundaries §46. DUE TODAY / expires before a 2026-09-15 cohort: L169 Kim-on-Cherny `due:2026-08-21`. All of this is PRE-EXISTING debt; a4920c15 touched only the L167 fallback clause and deleted the da Costa line, and caused none of it. TODOs: (1) §11a checked+6mo arithmetic on L167 and L173 (see that row); (2) re-verify L169 Kim-on-Cherny, due today and before the cohort; (3) re-verify L172 Klaassen definitive-guide, 12 days overdue. Out of my lane, for `notes` only: L78's supplementary link is written `](trainings/agentic-engineering-101/supplementary/...)` while L10's reference links use `](../../trainings/...)`; both shapes appear across all six AE101 modules (`grep -rnoE` over the module dir confirms the bare-prefix form in earn-the-trust, getting-going, plan-mode-done-right, learn-from-the-test, prework, run-the-first-experiment), so this is the workbook build's rewriting convention, not a broken path — flagged for the writing/slides judge only if the two shapes are supposed to be one."
+  "todos_count": 2
 }

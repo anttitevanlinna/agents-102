@@ -1,66 +1,39 @@
 {
   "class": "behavior",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/learn-from-the-test.md",
-  "body_sha": "e3c436f52dabf6a057351c63058817e43c828b8acbab1d0c1798ac9995e0c0e4",
+  "body_sha": "7802baf33f0c78306dc94904efc28c48c09ca04d8b2470f49ce0e19d95515db8",
   "verdict": "PASS",
   "training": "ae101",
-  "trace_status": "cached",
-  "generated_at": "2026-08-04T00:00:00.000Z",
-  "content_sha": "e3c436f52dabf6a057351c63058817e43c828b8acbab1d0c1798ac9995e0c0e4",
-  "prompts_evaluated": 3,
+  "trace_status": "full_regen",
+  "generated_at": "2026-08-23T00:00:00.000Z",
+  "content_sha": "7802baf33f0c78306dc94904efc28c48c09ca04d8b2470f49ce0e19d95515db8",
+  "prompts_evaluated": 1,
   "blocking_findings_count": 0,
-  "todos_count": 2,
+  "todos_count": 1,
   "prompts_findings": [
     {
       "prompt_index": 1,
-      "prompt_lead": "Read `./task.md`. Use the branch named in its `Run coordinates (do not rewrite o",
+      "prompt_lead": "Are we done-done? By done-done I mean: 1) tests are added at",
       "verdict": "TODO",
       "load_bearing": true,
       "risks_fired": [
-        {
-          "pattern_id": "preamble-before-action",
-          "confidence": "low",
-          "evidence": "Fence chains 6 sub-steps (read task.md, resolve branch from protected block, verify branch, find/confirm commit, spin worktree, copy files, report) with no in-fence 'No preamble' suppressor, but the body sentence right after the closing fence reads 'Claude will narrate before acting. It usually opens with a plan summary listing the six sub-steps, then runs them. Skim past the opening; look for the shell-command output confirming the worktree path and which files copied across.'",
-          "fix_hint": "check_prompts.md rule 17 body-callout mitigation already satisfied (names the narration + gives a skim-past cue); no prompt edit needed. Belt-and-braces option only: add an in-fence 'No preamble.' as the fence's last line if the trainer wants zero narration rather than skim-past."
-        },
         {
           "pattern_id": "self-report-inflation",
-          "confidence": "med",
-          "evidence": "The fence's confirmation ask is 'Tell me the worktree path and confirm which files copied across' — worded to confirm positive copies, not to name what was checked-and-absent versus checked-and-failed. `<repo-name>` is Claude-inferred and feeds the cp source paths, and the copy step only ever checks two hardcoded paths (root `CLAUDE.local.md`, root `observations/`) — a personal-rules file living elsewhere is structurally outside what Claude was asked to look for, so 'confirm which files copied' cannot surface its absence.",
-          "fix_hint": "Fence-level fix (not applied — read-only judge): after the two `cp` lines, add 'If either source path does not exist, say so explicitly and name the exact path you checked — do not silently skip.' The body's existing post-fence paragraph ('Check the copy landed before you go on...') already names the right failure and recovery move but sits one section earlier than the fence, separated by a heading and a Session widget — moving it to directly after the narration sentence would tighten the adjacency the carve-out expects."
-        }
-      ]
-    },
-    {
-      "prompt_index": 2,
-      "prompt_lead": "/clear",
-      "verdict": "PASS",
-      "load_bearing": false,
-      "risks_fired": []
-    },
-    {
-      "prompt_index": 3,
-      "prompt_lead": "Before you start, write a protected block at the top of `plan.md` headed `Run co",
-      "verdict": "TODO",
-      "load_bearing": true,
-      "risks_fired": [
-        {
-          "pattern_id": "preamble-before-action",
           "confidence": "low",
-          "evidence": "Fence carries 5 distinct moves (write coordinates block, self-augment ask, run the task, follow the don't-paper-over/RUN-NOTES rules, report in three lists) with no in-fence suppressor and no post-fence body sentence naming narration specifically. Held at low, not med, because this is an explicit walk-away send-off ('I'm walking away' in-fence, 'the laptop stays awake... while it runs' in body) — the student isn't reading live, so preamble narration doesn't cost top-of-response attention the way it would in a watched exchange.",
-          "fix_hint": "Walk-away framing already defuses most of the cost of this risk; if the trainer still wants a clean transcript, lead the fence with 'No preamble — write the coordinates block first.'"
+          "evidence": "Bare self-grading ask ('Are we done-done?... Answer per point') with no adjacent body callout on THIS specific answer's honesty. Downgraded to low under the evidence-backed carve-out: the fence itself requires 'evidence from this session' per point, and the maintainer block's own design note states the per-point answer is deliberately planted into the M4 transcript that `exercises/diagnose-and-resend.md` Phase 1 later reads under that file's 'assume about 10% of the account misrepresents the run' prior and plausible-but-wrong lens — verified live: Phase 1's prompt reads 'the recorded transcript' whole, with quoted-moment enforcement, not a filtered slice that would exclude this answer.",
+          "fix_hint": "check_prompts.md's evidence-backed Debrief carve-out (prompt-behavior template) applies but only partially — 'evidence from this session' is weaker than the artifact-level quoting the carve-out's strongest examples use. If the maintainer wants the mitigation load-bearing rather than structurally-implicit, one clause after the fence naming that this answer is itself data the next phase re-checks (mirroring `diagnose-and-resend.md`'s own RLHF callout next to `ae101-m5-rerun-packaged`) would close the gap; not filed as a blocking finding because the harm — an inflated answer shipping unchallenged — is already absorbed by Phase 1's whole-transcript read."
+        },
+        {
+          "pattern_id": "self-audit-charity",
+          "confidence": "low",
+          "evidence": "Claude is asked to judge its own prior work (tests/acceptance/docs/security) with no fresh-session or adversarial framing in the fence. Same downgrade basis as self-report-inflation above: the evidence-ask plus the downstream Phase-1 read of the same transcript substitute for a local push-back move.",
+          "fix_hint": "Same as self-report-inflation row — no separate action needed if the maintainer treats the transcript-reads-itself design as the intended mitigation; note it explicitly in-body if a future sim run wants this at PASS rather than TODO."
         },
         {
           "pattern_id": "niceness-tax",
           "confidence": "low",
-          "evidence": "In-fence report format resists softening structurally ('no narrative, no hedging'; 'did NOT ship — each item, no \"partial\" / \"mostly\" / \"in progress\"'; 'verifier — last output line of each run, pasted verbatim'). Body callout immediately after the fence names the exact risk — 'RLHF will frame partial failures as partial successes, \"shipped most of it, hit a snag on X.\"' — and gives a recovery move with student agency: 'ask the agent to list the artifacts that didn't ship and quote the verifier output verbatim where it fired. You decide whether to push.'",
-          "fix_hint": "check_prompts.md body-callout mitigation carve-out (default-acceptance/preamble/heavy-run family) applies cleanly — already shipped. No further edit needed."
-        },
-        {
-          "pattern_id": "self-report-inflation",
-          "confidence": "low",
-          "evidence": "Same structural evidence as niceness-tax (verbatim verifier paste, binary shipped/did-NOT-ship split, explicit no-qualification language) plus the adjacent body naming the RLHF-framing risk with a pushback move.",
-          "fix_hint": "Evidence-backed Debrief carve-out (prompt-behavior template) applies directly — artifact-level reporting with verbatim evidence lines is required, not a self-graded summary. No further edit needed."
+          "evidence": "The M4 run this Q&A audits was deliberately left to underdeliver (per `diagnose-and-resend.md`'s own maintainer note), so at least one of the four points (docs, security) plausibly has a true answer of 'no' or 'partial' — RLHF softening could report partial coverage as done. The paragraph immediately after the fence addresses a different concern (promoting the definition to `./CLAUDE.md`), not this risk. Held at low because the section's stated job is evidence-gathering for Phase 1's later read, not an in-the-moment trust decision.",
+          "fix_hint": "No fence edit needed if Phase 1's whole-transcript skepticism is accepted as the mitigation; a maintainer accept-note naming this explicitly would let a future judge score this PASS outright instead of TODO."
         }
       ]
     }

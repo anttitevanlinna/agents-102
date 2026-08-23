@@ -1,7 +1,7 @@
 {
   "class": "storytelling",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/reference/claude-code-for-engineers.md",
-  "body_sha": "ccf4a7aae7128190ede676d3a3dedc6a67860bf2281df7ff9d48a4437546a0bf",
+  "body_sha": "5b8fb3dd4e54b8c022d737241ce256756da80f3e2275d44a1abf499662632593",
   "verdict": "PASS",
   "training": "ae101",
   "module_mood_contract": "N/A — flat quick-reference surface, no per-module mood contract; register target is clean lookup, no ceremony, trusts the reader as competent",
@@ -39,7 +39,7 @@
       "rule_index": 4,
       "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
       "verdict": "N/A",
-      "evidence": "This rule is check_lectures-scoped to lecture/slide headers per the compendium's lecture-writing frontmatter; the file's own Quality line already carries an independently-PASSed `slides` class judgment (compendium-audited 2026-08-07, slides PASS) which is the primary owner of header/body slide-shape checks per content-rules.md's Slide-rendered-files routing to check_slides.md. Duplicating that lane here would be an unowned claim, not extra coverage.",
+      "evidence": "This rule is check_lectures-scoped to lecture/slide headers per the compendium's lecture-writing frontmatter; the file's own Quality line already carries an independently-PASSed `slides` class judgment (compendium-audited 2026-08-19, slides@fa43db7c PASS) which is the primary owner of header/body slide-shape checks per content-rules.md's Slide-rendered-files routing to check_slides.md. Duplicating that lane here would be an unowned claim, not extra coverage.",
       "fix_hint": null,
       "blocking": false
     },
@@ -49,6 +49,15 @@
       "rule_lead": "A slide's BODY is size-bounded, not just its header (§4's sibling).",
       "verdict": "N/A",
       "evidence": "Same reasoning as §4: slide-body sizing is check_slides.md's lane (already PASSed on this file's Quality line), not storytelling's.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 6,
+      "rule_lead": "A prompt inside a lecture is a trainer show-and-tell, never a room follow-along.",
+      "verdict": "N/A",
+      "evidence": "New rule (added 2026-08-20) scoped explicitly by its own text to `curriculum/lectures/**` — \"This holds for every {{prompt:<key>}} / inline **Prompt** block ... — and it is the DEFAULT\" — and it names its own carve-out: \"Not covered: exercise prompts, prework prompts, and prompts on reference/supplementary pages, all of which the student runs themselves.\" This file is `curriculum/trainings/agentic-engineering-101/reference/claude-code-for-engineers.md` — a reference page, named verbatim in the rule's own exclusion list. Its one prompt (§27, lines 395-409, a copy-paste transcript-finding prompt) is student-run by design, not a trainer demo — consistent with the rule's carve-out, not in tension with it.",
       "fix_hint": null,
       "blocking": false
     },
@@ -151,10 +160,45 @@
     "stealing_the_mood": []
   },
   "teaching_moment_lands": "N/A — no named teaching moment on this file; it is a reference, not the vehicle for a module's teaching beat. The 'teaching moment lands' judgment (no check_strategy_tie_in rule_index per template) does not apply to a flat lookup surface.",
+  "drift_rules_reread": [
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 6,
+      "verdict_reached": "N/A — added as `rules_evaluated` row above. The rule's own text scopes it to `curriculum/lectures/**` and explicitly carves out \"prompts on reference/supplementary pages\" as student-run. This file is that carve-out by name."
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 44,
+      "verdict_reached": "N/A, not a rules_evaluated row (pedagogy-class-owned, not storytelling-owned per the story template's completeness contract — recorded here only). (a) Plug points: file has no `## Plug Points` section; reference genre doesn't carry them (module-only concept). (b) UX: the file's single prompt (§27) is self-contained — no invented setup, no cross-exercise hand-off, path it references (`~/.claude/projects/`) is named in the fence itself. No harm present."
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 52,
+      "verdict_reached": "N/A, not a rules_evaluated row (pedagogy-owned). Grepped body for `**Session**` widget shape — zero matches (only prose mentions of the word \"session\", never the bold-verb-quoted-name widget form). File is a flat lookup with no exercise phases to open or fork a session; the widget's placement patterns (exercise-top, module-opener, lecture-top, mid-exercise re-fork) have no home here by genre."
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 56,
+      "verdict_reached": "N/A, not a rules_evaluated row (pedagogy-owned). Re-read at current wording including the 2026-08-23 amendment (\"Run the <1-min diagnostic, do not assume it\" — slow silent misses like context creep get the instrument, not a callout). Candidate text: §23 item 3 (line 355) — \"No per-session budget cap... Watch the scrollback for drift\" is exactly the silent-slow-miss shape the amendment names. But §56 governs how curriculum AUTHORS fix an AUDIT FINDING inside an EXERCISE (\"force action in prompt/pre-flight\" is the alternative to a callout) — this file states at its own top, \"No pedagogy, no hand-holding\": it is documentation of a platform limitation, not an authored exercise with a prompt/pre-flight apparatus of its own to carry a forcing function. If a genuine forcing-function gap exists for this risk, it belongs to the M4 exercise this reference supports (cross-ref line 647: \"M4 ... 24 (session-left-running for un-packaged send-off)\"), not to the lookup entry describing the gotcha. No harm present in THIS file's text."
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 61,
+      "verdict_reached": "N/A, not a rules_evaluated row (pedagogy-owned). Rule governs a process discipline for proposing SKILL.md/framework/tool changes (walk a runtime trace before proposing surgery). This file's body proposes no skill, framework, or tool change anywhere — it is pure documentation of Claude Code's existing, verified runtime behaviour (memory hierarchy, hooks, skills, long-running primitives). No proposal exists in the body for this rule to bind."
+    }
+  ],
+  "accept_notes_found": [
+    "2026-08-19 maintainer note, item (1): the laptop-sleep line's wording (\"a session you walk away from\") is an accepted fix per `check_student_facing.md §22`; the remaining `/schedule tomorrow at 9am` string is a named false-positive (product's own command syntax) — do not re-flag.",
+    "2026-08-19 maintainer note, item (2): the Claude:agent noun ratio (244:3, measured) is an accepted non-defect for this file — reference page about a named product, §21 assigns 'agent' to acting behaviour only. Do not sweep it.",
+    "2026-08-15 maintainer note: page-wide doc re-verify log, corrections attributed to 'docs win' contract (no maintainer call needed, not an accept-note in the authorisation sense but a standing verification log).",
+    "2026-08-02→2026-08-15 'Freshness lesson' note: standing guidance to cite research-preview option counts by shape, not by number, unless the check is fresh — not an accept-note against a specific rule, a durable authoring instruction for this file."
+  ],
   "notes": [
-    "Cached trace at curriculum/evals/sim-cache/ae101--reference--claude-code-for-engineers.persona.json was stale (content_sha a3125a10... vs actual 91ee49e4...); the section numbers it cited (old §5, §7, §16) don't exist in the current file after the 2026-08-15 renumbering documented in the file's own maintainer block. Regenerated in full before judging; trace_status: regenerated.",
-    "Out of storytelling's lane, flagged here only: check_prompts.md rule 2 (\"Every prompt block: one-sentence action lead-in\") looks unmet at lines 393-397 — the §27 'Prompt' fenced block has no <20-word action lead-in sentence before the '**Prompt**' label, only the H2 header. This is a writing/technical-class mechanical-shape concern, not a storytelling one, and is not filed as a rules_evaluated row here per the dispatch preamble's lane discipline.",
-    "Confusion flag worth a maintainer look though not blocking: lines 187-190 (§9 Shift+Tab cycle description) makes the reader re-read twice to confirm the starting 'auto' and the trailing optional 'auto' are the same toggle position — a writing-class clarity note, surfaced here because it showed up in the persona trace."
+    "Staleness reason for this run: rule-drift (pin fa43db7c). Diff fa43db7c..HEAD touches only: (1) §23 item 1 wording ('overnight sessions' → 'a session you walk away from', already accepted per the maintainer's 2026-08-19 note above), (2) the 2026-08-19 maintainer note itself, (3) the Quality stamp bump. No other body prose changed. Re-read check_lectures §6, check_pedagogy §§44/52/56/61 at current wording per the dispatch instructions — see drift_rules_reread. All five came back N/A / no harm present; none produced a REVISE.",
+    "Cached trace at curriculum/evals/sim-cache/ae101--reference--claude-code-for-engineers.persona.json had content_sha 91ee49e4... against the pre-diff body; current body_sha is 4c93ae2f.... Regenerated: updated content_sha/phase_sha/generated_at and the one persona_action clause that referenced the now-superseded 'overnight' framing (persona_action never quoted the old line verbatim, so no other text needed correcting). trace_status: regenerated.",
+    "Did not scope this read to the diff — walked the whole expanded body per the dispatch instructions. Found no pre-existing violation the prior diff-scoped passes had missed on this file.",
+    "Out of storytelling's lane, flagged here only: check_prompts.md rule 2 (\"Every prompt block: one-sentence action lead-in\") still looks unmet at lines 393-397 — the §27 'Prompt' fenced block has no <20-word action lead-in sentence before the '**Prompt**' label, only the H2 header. Unchanged since the prior instance; still a writing/technical-class mechanical-shape concern, not filed as a rules_evaluated row here per the dispatch preamble's lane discipline.",
+    "Confusion flag worth a maintainer look though not blocking: lines 187-190 (§9 Shift+Tab cycle description) makes the reader re-read twice to confirm the starting 'auto' and the trailing optional 'auto' are the same toggle position — a writing-class clarity note, carried forward from the prior trace, still present at the same line numbers (unaffected by this diff's line range)."
   ],
   "blocking_findings_count": 0,
   "todos_count": 2

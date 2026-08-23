@@ -1,26 +1,27 @@
 {
   "class": "slides",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/learn-from-the-test.md",
-  "body_sha": "0898ae529668be75551af889e7b11204530cd3e3e0057049b3e4b99b028f166d",
-  "verdict": "PASS",
+  "body_sha": "386b06e9b90f203102699662200b5ab8ad66685f566910b4c83e04cc5ee8e814",
+  "verdict": "REVISE",
   "training": "ae101",
   "chunk_map": [
-    {"index": 0, "heading": "H1 (title slide, no lede)", "lines": "1-1"},
-    {"index": 1, "heading": "Big Idea", "lines": "3-4"},
-    {"index": 2, "heading": "Prework", "lines": "6-10"},
-    {"index": 3, "heading": "What You'll Learn", "lines": "12-18"},
-    {"index": 4, "heading": "Start here", "lines": "20-28"},
-    {"index": 5, "heading": "Your mid-run worries hint at missing checks", "lines": "30-36"},
-    {"index": 6, "heading": "Set up the worktree", "lines": "38-52"},
-    {"index": 7, "heading": "Key Concepts", "lines": "54-58"},
-    {"index": 8, "heading": "Inspect your results (fork: flag:no-module:spot-gaps-build-the-loop)", "lines": "60-67"},
-    {"index": 9, "heading": "Back to the map, one last time (fork: flag:no-module:spot-gaps-build-the-loop)", "lines": "69-81"},
-    {"index": 10, "heading": "Optional challenges", "lines": "83-90"},
-    {"index": 11, "heading": "Bring to Module 6 (fork: flag:module:spot-gaps-build-the-loop)", "lines": "92-97"},
-    {"index": 12, "heading": "Pre-reads before Module 6 (fork: flag:module:spot-gaps-build-the-loop)", "lines": "99-105"},
-    {"index": 13, "heading": "Next (fork: flag:module:spot-gaps-build-the-loop)", "lines": "107-111"}
+    {"index": 0, "heading": "H1 (title slide, no lede)", "lines": "1-2"},
+    {"index": 1, "heading": "Big Idea", "lines": "3-5"},
+    {"index": 2, "heading": "Prework", "lines": "6-11"},
+    {"index": 3, "heading": "What You'll Learn", "lines": "12-19"},
+    {"index": 4, "heading": "Start here", "lines": "20-25"},
+    {"index": 5, "heading": "Say what done-done means", "lines": "26-39"},
+    {"index": 6, "heading": "Your mid-run worries hint at missing checks", "lines": "40-47"},
+    {"index": 7, "heading": "Set up the worktree", "lines": "48-63"},
+    {"index": 8, "heading": "Key Concepts", "lines": "64-71"},
+    {"index": 9, "heading": "Inspect your results (fork: flag:no-module:spot-gaps-build-the-loop)", "lines": "72-79"},
+    {"index": 10, "heading": "Back to the map, one last time (fork: flag:no-module:spot-gaps-build-the-loop)", "lines": "80-93"},
+    {"index": 11, "heading": "Optional challenges", "lines": "94-103"},
+    {"index": 12, "heading": "Bring to Module 6 (fork: flag:module:spot-gaps-build-the-loop)", "lines": "104-109"},
+    {"index": 13, "heading": "Pre-reads before Module 6 (fork: flag:module:spot-gaps-build-the-loop)", "lines": "110-115"},
+    {"index": 14, "heading": "Next (fork: flag:module:spot-gaps-build-the-loop)", "lines": "116-120"}
   ],
-  "notes": "Two runtime-fork branches at the closer per rule 14's 'runtime forks count as one branch': chunks 8-9 (flag:no-module:spot-gaps-build-the-loop) vs chunks 11-13 (flag:module:spot-gaps-build-the-loop) are mutually exclusive alternatives, never co-present in one render. `node scripts/check-slide-size.js --file <this file> --report` resolved only 11 slides via applyContentFlags — the module-present branch (11-13) is the one that actually composes when M6 exists in the deployment, so it is treated as the primary sequential-read path; chunks 8-9 were also read and evaluated on their own internal sequence (0-7,10,8,9) since the compendium requires each fork's own sequential coherence.",
+  "notes": "Re-judged at HEAD against pin ba5ccf5 (prior slides verdict PASS at that pin). Diff-region cause: `## Say what done-done means` (new chunk 5, raw lines 26-39) was inserted between the `Start here` chunk (4) and the two closing-lecture include-links, which used to sit inside `Start here`'s own chunk. That insertion silently orphans a pre-existing, previously-correct spatial pointer in chunk 4 — a rule-12 regression the diff did not touch textually but did break structurally. Two runtime-fork branches at the closer, same as the prior instance: chunks 9-10 (flag:no-module:spot-gaps-build-the-loop) vs chunks 12-14 (flag:module:spot-gaps-build-the-loop) are mutually exclusive alternatives, never co-present in one render; both forks were read for their own internal sequential coherence (0-8,11,9,10 and 0-8,11,12,13,14). Maintainer block read in full: two accept-notes found (`accept_notes_found`), neither covers the chunk-4/chunk-5 interaction below. `node scripts/check-slide-deixis.js --file <this file> --report` returns clean (only 'the bullets back' at line 58, maintainer-attested) because its OBJ word list does not include 'lecture' — the mechanical gate has a vocabulary gap here; this is a genuine miss caught only by the sequential hand-read the template requires, not a false positive against the tool's silence. Confirmed against ba5ccf5's own recorded instance: that file's rule-1 evidence explicitly said 'chunk 4 line 24 \"the lecture below\" resolves within the same chunk (lines 26/28 carry the two lecture links) — see rule 12' — i.e. the prior PASS was conditioned on exactly the adjacency this diff removed. `Key Concepts` (chunk 8) gained a fifth bullet ('The verifier, the reference artefact and the plan are compounding...') that the file's own maintainer note (raw line 134, 2026-08-15) declares a four-line, verbatim, closed block — a `check_writing.md` §3 / maintainer-currency question, not a `check_slides.md` rule, so out of this class's lane on principle. Moot as of this read regardless: a neighbour session landed a working-tree edit on this exact file WHILE this judge was running (uncommitted, on top of already-committed db2a68a4 'M5 Key Concepts: the verifier, reference and plan are compounding too'), adding a dated note at the same location acknowledging the block is five lines now and the 2026-08-15 note is stale on the count — body_sha above reflects the file including that concurrent edit. Confirms the observation was correct; the maintainer-currency fix is already in hand from elsewhere and needs no action from this instance. Slide-size (`--report`) shows 12 composed slides, 0 oversized, new chunk 5 at 119w/0b — comfortably under cap. `check-slide-numbering.js` and `check-slide-deixis.js` both exit clean on the file.",
   "rules_evaluated": [
     {
       "compendium": "check_slides.md",
@@ -28,7 +29,7 @@
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Closest candidates checked and cleared: chunk 7 (Key Concepts) line 55 'The model already knows the public field' has no antecedent for 'the public field' anywhere in this file's own body — but the maintainer block (raw line 121: 'Key Concepts (Antti-decided 2026-08-15): the four lines ARE the block, verbatim... maps to a beat the module teaches — the three theory slides mid-deck in lectures/what-packaging-is.md') is an explicit accept-note that these four lines are reminders of content taught in the linked, module-inlined lecture (linked at chunk 6, lines 50/52, which precedes Key Concepts in this file's chunk order) — per dispatch-preamble 'check the file's maintainer block for an existing accept-note before flagging.' Chunk 8 line 66 'the kit' resolves via `check_slides.md` §1's own named carve-out example ('the loop, the verifier, the six phases') and `curriculum/vocabulary.md` line 37 ('kit ... threaded from earn-the-trust', i.e. M1) — arc-earned spine vocabulary, not a per-slide re-earn. Chunk 9 line 73 'the map' is the training's recurring spine metaphor (heading itself: 'Back to the map, one last time'), arc-earned. Chunk 4 line 24 'the lecture below' resolves within the same chunk (lines 26/28 carry the two lecture links) — see rule 12.",
+      "evidence": "Considered and cleared as a rule-1 candidate: chunk 4 (Start here) line 22 'the lecture below hands you the lenses to read it with' is a plain cataphoric pointer ('a lecture is coming') whose noun class ('lecture') is self-describing and needs no prior antecedent — unlike the compendium's own 'Never named' example ('before the three things get named', a specific enumerated promise), this is ordinary forward narration, and the compendium's own worked distinction ('the failure modes above' passes §1, fails §12) puts this exact shape — resolvable concept, broken spatial claim — on the §12 side of the line, not §1's. Scored there instead; see rule 12 (REVISE). Chunk 5 line 30 'This one runs in the session you sent off' resolves two lines later in the SAME chunk when the actual prompt block appears (line 32) — ordinary 'answer this:' discourse structure, not a stranded referent. Chunk 8 line 65 'the public field' is covered by the file's own maintainer accept-note (raw line 134: the four/five Key Concepts lines map to the three theory slides in `lectures/what-packaging-is.md`, reminders of content taught there, not new terms needing in-file naming). Chunk 9 line 76 'the kit' and chunk 10 line 84 'the map' are arc-earned spine vocabulary (kit named across M1-M5 per `curriculum/vocabulary.md`; 'the map' is this training's recurring spine figure, and chunk 10's own header — 'Back to the map, one last time' — re-earns it in-chunk regardless).",
       "fix_hint": null,
       "blocking": true
     },
@@ -38,7 +39,7 @@
       "rule_lead": "Cross-file and positional callbacks.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Closest candidate: chunk 6 line 48 'In the two closing lectures, the headings carry the claims' names the referent by function (closing lectures) not by file position, and the two lecture links (lines 50, 52) sit in the same chunk immediately after — not a cross-file positional pointer. No 'the opening lecture said...' style unnamed cross-file callback found anywhere in the body.",
+      "evidence": "Closest candidate: chunk 7 line 58 'In the two closing lectures, the headings carry the claims' names the referent by function (the two closing lectures) not by file position, and the two lecture links (lines 60, 62) sit in the same chunk immediately after. New chunk 5's `{{prompt:ae101-m5-done-done}}` and its framing prose stay entirely within this file; no 'the opening lecture said...'-style unnamed cross-file callback appears anywhere in the body.",
       "fix_hint": null,
       "blocking": true
     },
@@ -48,7 +49,7 @@
       "rule_lead": "Every backward reference points at a beat that exists.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Chunk 4 line 24 'The M1 countermove rides along: tell the agent what output you want' — verified against `training-architecture.md:100` ('M1 teach ... move: tell the LLM what output you want') and `lectures/the-machine-you-just-met.md:29`, plus the M1→M2→M3→M5 selective-reading arc documented in this file's own maintainer block (raw line 117: 'the M5 reminder leg of the selective-reading arc (M1 teach → M2 exception → M3 take-into-use → M5 remind)'). The beat exists and the arc position matches. Chunk 4 lines 22/26/28 'You sent off an un-packaged session ... the lecture below' resolves to M4's send-off, consistent with the maintainer block's repeated M4-send-off references.",
+      "evidence": "Chunk 4 line 24 'The M1 countermove rides along: tell the agent what output you want' — verified against `training-architecture.md:100` ('M1 teach ... move: tell the LLM what output you want') and the M1->M2->M3->M5 selective-reading arc documented in this file's own maintainer block (raw line 130: 'the M5 reminder leg of the selective-reading arc'). New chunk 5's 'The session you sent off declared done at some point' and 'This one runs in the session you sent off' both resolve to the M4 send-off named across chunks 1/4/6, which the maintainer's 'Done-done opener' note (raw line 124) confirms is a live, existing beat, not a dead one.",
       "fix_hint": null,
       "blocking": true
     },
@@ -58,7 +59,7 @@
       "rule_lead": "Live-demo beats survive a text read.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "No guess-before-reveal live-demo instruction anywhere in the body; this is a module file (metadata/LO/links/closer prose), not a demo lecture.",
+      "evidence": "No guess-before-reveal live-demo instruction anywhere in the body, including new chunk 5 (a prompt-and-explain beat, not a guess/predict beat). This is a module file (metadata/LO/links/closer prose), not a demo lecture.",
       "fix_hint": null,
       "blocking": true
     },
@@ -68,7 +69,7 @@
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Every chunk carries a self-standing claim or list even in isolation: chunk 1 (Big Idea, one sentence, self-contained), chunk 10 (Optional challenges, four self-contained bullets), chunk 13 (Next, two self-contained sentences). No chunk is a bare wait-state or single context-dependent bullet.",
+      "evidence": "Every chunk carries a self-standing claim, prompt, or list. New chunk 5 (119 words: definition, the prompt itself, and a closing compounding move) is self-carrying on its own. Chunk 11 (Optional challenges, four self-contained bullets) and chunk 14 (Next, two self-contained sentences) likewise clear. No chunk is a bare wait-state or single context-dependent bullet.",
       "fix_hint": null,
       "blocking": false
     },
@@ -78,7 +79,7 @@
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Closest candidate: chunk 6 'Set up the worktree' (lines 38-52) also carries the dense-slides blockquote and links to two closing lectures (packaging/gate) unrelated to worktree mechanics — the header does not preview that content, but it does not CONTRADICT it either (no claim in the header is falsified by the extra links); this reads as slide-size breadth, not a header/content mismatch, so it stays PASS rather than a rule-6 REVISE. All other headers (Big Idea, Prework, What You'll Learn, Start here, Your mid-run worries hint at missing checks, Key Concepts, Inspect your results, Back to the map one last time, Optional challenges, Bring to Module 6, Pre-reads before Module 6, Next) are true summaries of their own chunk content.",
+      "evidence": "New chunk 5 header 'Say what done-done means' is literally true of its content: the chunk hands the student a prompt that has their own agent state a done-done definition against four concrete points. Closest pre-existing candidate: chunk 7 'Set up the worktree' (lines 48-63) also carries the dense-slides blockquote and two closing-lecture links unrelated to worktree mechanics — breadth, not a header/content contradiction, so stays PASS. All other headers are true summaries of their own chunk content.",
       "fix_hint": null,
       "blocking": false
     },
@@ -88,7 +89,7 @@
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Grepped the full body for each sub-item's shape: no 'Not X. Not Y. Z.' construction anywhere; no anaphora/epistrophe triple (no repeated sentence-opener run); no self-grading superlative ('one of the most useful...' etc. — none found); no number-with-own-retraction pattern (numbers present — 'three lenses', 'three shapes', 'four sittings' — are all stated plainly, never hedged then walked back); no abstraction-noun-stack coinages; no verb triplet with an empty leg. All five sub-items clear across all chunks.",
+      "evidence": "Grepped the full body, including new chunk 5, for each sub-item's shape: no 'Not X. Not Y. Z.' construction; no anaphora/epistrophe triple; no self-grading superlative (chunk 5's 'small context trick' and 'buys repeated fast verification' describe mechanism, not value, and are not superlatives); no number-with-own-retraction (chunk 5's fenced prompt numbers 1)-4) sit inside a code fence, exempt per scope, and are plain enumerated criteria, never hedged); no abstraction-noun-stack coinage; no verb triplet with an empty leg. All five sub-items clear across all chunks including the new one.",
       "fix_hint": null,
       "blocking": true
     },
@@ -98,7 +99,7 @@
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "`grep -inE \"surface|firing|compendium|forcing function|\\bbeat\\b|\\bmood\\b|Connections\"` over body lines 1-112 returns exactly one hit: chunk 5 line 32 'a worry surfaced' — ordinary engineering verb use, explicitly the rule's own NOT-dialect carve-out ('surface as ordinary engineering verb'). No noun-form 'surface', 'firing', 'compendium', 'forcing function', 'beat', 'mood', or proper-noun 'Connections' anywhere in the body.",
+      "evidence": "`grep -niE '\\b(compendium|forcing function|beat|surfaces?|firing|mood|writing surface)\\b'` over the body (lines 1-120) returns zero matches. New chunk 5 uses only engineer-register terms (done-done, context trick, transcript, CLAUDE.md/CLAUDE.local.md). No repo-internal vocabulary anywhere in the body.",
       "fix_hint": null,
       "blocking": true
     },
@@ -108,7 +109,7 @@
       "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Per-chunk bold audit: chunk 3 (What You'll Learn) five bolded LO verbs (Diagnose/Pair/Build/Assemble/Re-send) — N/A per rule 9's own LO-template exception. Chunk 4 '**Long sessions, short reads.**' (4 words) — one handle, within the ≤1-per-slide budget. Chunk 6 '**Dense slides.**' (2 words) — one handle. Chunk 9 '**The wall**' (2 words) — one handle across the whole long chunk. Chunk 12 '**Read,**' x2 — pre-reads/menu carve-out, mode word only, matches the rule's own worked example verbatim. No chunk exceeds one bolded handle outside an exempted list/menu/LO section, and no bold spans a whole sentence.",
+      "evidence": "New chunk 5 (raw lines 26-39) carries zero bold spans — every emphasis is a code span (`./CLAUDE.md`, `./CLAUDE.local.md`), not `**bold**`. Budget of <=1 handle per slide holds trivially at 0. Pre-existing chunks 3 (What You'll Learn, one bolded verb per bullet, LO-shape template per `module-shape.md`) and 8 (Key Concepts, zero bold) unaffected by the diff.",
       "fix_hint": null,
       "blocking": false
     },
@@ -118,7 +119,7 @@
       "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/learn-from-the-test.md --report`: reports 11 resolved slides (Set up the worktree, Pre-reads before Module 6, Optional challenges, Your mid-run worries hint at missing checks, What You'll Learn, Start here, Prework, Key Concepts, Bring to Module 6, Big Idea, Next) via the renderer's applyContentFlags resolving the module-present fork — confirms every `##` section in this module file, including the LO block and closer, actually reaches the composed deck; none is dropped as a phase-less orphan section the way prework/supplementary/reference sections were in the 2026-07-09 incident this rule cites.",
+      "evidence": "`node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/learn-from-the-test.md --report` resolves and prints new chunk 5 ('Say what done-done means', 119 words) alongside all 12 composed slides (the two runtime forks counted as one branch each per rule 14's own convention) — it is not gated behind any `<!--flag:...-->` and is unconditional, so it reaches the composed deck for every module variant.",
       "fix_hint": null,
       "blocking": true
     },
@@ -128,7 +129,7 @@
       "rule_lead": "Numbering — position is computed, content ordinals are linted.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "Ran `node scripts/check-slide-numbering.js curriculum/trainings/agentic-engineering-101/learn-from-the-test.md` → 'OK — 61 files, Phase/Step numbering consistent.' This file contains no `## Phase N:` / `## N.` step headers to lint (module file, not a phased exercise); 'Module 6' references (chunks 6, 11-13) are cross-file module-index refs, not in-file content ordinals.",
+      "evidence": "`node scripts/check-slide-numbering.js --file curriculum/trainings/agentic-engineering-101/learn-from-the-test.md` -> 'OK — 1 files, Phase/Step numbering consistent.' No hand-numbered `## Phase N:`/`## N.` headers in this module file; the fenced prompt's 1)-4) list is content inside an exempt fence, not a slide-position ordinal.",
       "fix_hint": null,
       "blocking": false
     },
@@ -136,10 +137,10 @@
       "compendium": "check_slides.md",
       "rule_index": 12,
       "rule_lead": "Page geometry dies at the cut; reading order survives.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Ran `node scripts/check-slide-deixis.js --file curriculum/trainings/agentic-engineering-101/learn-from-the-test.md` → 'OK — 1 files, no page-geometry pointers across the slide cut.' A separate run without --file confirmed the one match in the file ('the bullets back', chunk 6 line 48) is maintainer-attested ok (checker output: 'ok ...learn-from-the-test.md:48 [the bullets back] — maintainer-attested'). Manually checked 'the lecture below' (chunk 4, line 22) — the two lecture links it points at (lines 26, 28) sit in the same chunk, so it is a same-slide reading-order pointer, not a page-geometry one, and the mechanical checker did not flag it.",
-      "fix_hint": null,
+      "verdict": "REVISE",
+      "chunks_flagged": [4],
+      "evidence": "chunk 4 \"Start here\": line 22: \"the lecture below hands you the lenses to read it with.\" At pin ba5ccf5 this was true on the projected slide — the two lecture include-links ('[Lecture: Reading the return]', '[Lecture: Learning through contrast]') sat in the SAME `##` chunk, two lines down (that pin's own recorded rule-1/rule-3 evidence says so explicitly: 'lines 26/28 carry the two lecture links'). This diff inserted new chunk 5 ('## Say what done-done means', raw lines 26-39) between the blockquote that closes chunk 4 and those two links, so the links now render on a DIFFERENT slide, two chunks later. Harm: on the composed 'Start here' slide, a trainer or solo reader sees the sentence promise a lecture 'below' and finds nothing under it but an unrelated 'Long sessions, short reads' aside — the actual lecture (its name not yet given either) surfaces only after an entire intervening 'Say what done-done means' slide, with no cue tying the two together. This is the textbook shape of the rule's own canonical failure (prework's 'the repo itself (picked in Step 1 below)' stranded three slides ahead of Step 1). Not maintainer-attested: the file's one 'Slide deixis accepted' note (raw line 149) covers a different phrase ('the bullets back', a verb phrase) and the new 'Done-done opener' note (raw line 124) documents the insertion's placement and pedagogy but never addresses this side effect on the preceding slide. Mechanical gate `node scripts/check-slide-deixis.js --file <this file> --report` returns clean, but only because its geometry-object word list omits 'lecture' — confirmed by reading the script (`scripts/check-slide-deixis.js` OBJ regex: prompt/step/phase/section/list/instruction/example/law/rule/block/command/quote/link/table/diagram/note/bullet/paragraph/... — no 'lecture'); the tool's silence is a vocabulary gap, not a clearance.",
+      "fix_hint": "Drop the geometry claim on this slide: name the thing or use reading order instead of 'below' — e.g. 'the two lectures ahead hand you the lenses' — since the links no longer sit on this slide.",
       "blocking": true
     },
     {
@@ -148,7 +149,7 @@
       "rule_lead": "In-deck links work now; whether they EARN their place is open.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "This section is explicitly a review surface, never a gate ('Inventory a file's exposure with `node scripts/check-slide-deixis.js --links` (review aid, never gates)'). All in-body links in this file name the document in the link text (e.g. '[Lecture: Reading the return]', '[Exercise: Fork the worktree, carry the evidence]', '[original Ralph]') rather than locating it by page position, so nothing here trips the surviving carve-out either. No action owed.",
+      "evidence": "N/A per the rule's own scope note: the four `[Lecture: ...](lectures/...)` and two `[Exercise: ...](exercises/...)` links in this file are structural include-links (standalone-paragraph pattern, `module-shape.md`'s inlining mechanism) — 'never in scope' for §13 by the compendium's own text. §13 is a review surface, not a gate, and no non-structural in-body link was added by this diff.",
       "fix_hint": null,
       "blocking": false
     },
@@ -158,7 +159,7 @@
       "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/learn-from-the-test.md --report`: largest chunk is 'Set up the worktree' at 140 words / 0 bullets, well under the 210-word cap; largest bullet-count is 'What You'll Learn' at 5 bullets, under the 6-bullet cap. Summary line: 'oversized: 0 ... every slide is within limits' across all 11 resolved slides.",
+      "evidence": "`node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/learn-from-the-test.md --report` -> oversized: 0 across 12 composed slides (limits 210w/6b). New chunk 5 'Say what done-done means' measures 119 words / 0 bullets — well inside cap. Largest chunk is 'Set up the worktree' at 140 words / 0 bullets, also inside cap. Chunk 8 'Key Concepts' now carries 5 bullets (was 4 at the prior pin) at 74 words — still under the 6-bullet ceiling the script gates on.",
       "fix_hint": null,
       "blocking": false
     },
@@ -168,11 +169,11 @@
       "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "Rule 15 splits exercise headings (imperative/phase-label) from lecture headings (declarative claims); this is neither — it is a module file whose section headers (Big Idea, Prework, What You'll Learn, Key Concepts, Next, etc.) are architecture-mandated per `check_student_facing.md §17` and `curriculum/module-shape.md`, outside rule 15's two-register split.",
+      "evidence": "N/A: this file is a module file, not an exercise or a lecture — §15's binding split (exercise = imperative/phase label, lecture = claim) is scoped to those two student-facing types. New header 'Say what done-done means' is imperative, matching this module's own house pattern for action-sections ('Set up the worktree', 'Start here'); pre-existing declarative-style module headers ('Your mid-run worries hint at missing checks') sit alongside it in the same file without contradiction, since module headers are not governed by the exercise/lecture split.",
       "fix_hint": null,
       "blocking": false
     }
   ],
-  "blocking_findings_count": 0,
+  "blocking_findings_count": 1,
   "todos_count": 0
 }

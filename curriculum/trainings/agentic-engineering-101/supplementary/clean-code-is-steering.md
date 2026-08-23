@@ -110,8 +110,8 @@ The more powerful the coding agent, the more important the steering system.
 
 **Source-access note:** original X pages may require login or be intermittently inaccessible; the X messages are linked in context in the body. Research pass also used public mirrors, a Security Now transcript, Uncle Bob's `arch-view` repository, and adjacent practitioner writing from Simon Willison and Armin Ronacher.
 
-**Quality:** compendium-audited 2026-08-19 (writing@8651e524 story@8651e524 technical@b3143a4 behavior@b3143a4 pedagogy@8651e524 strategy@9697944 slides@8651e524)
-- judges @8651e524: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-23 (writing@b55cd28b story@b55cd28b technical@b55cd28b behavior@b3143a4 pedagogy@b55cd28b strategy@9697944 slides@b55cd28b)
+- judges @b55cd28b: writing PASS, story PASS, technical PASS (verify-refuted), behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 <!-- backing -->
 

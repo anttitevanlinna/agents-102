@@ -1,7 +1,7 @@
 {
   "class": "slides",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/supplementary/clean-code-is-steering.md",
-  "body_sha": "98f1d0f3a51334e576f9cf57548d7b60be318c04d4aec17fa82771898073f8b6",
+  "body_sha": "5a642f95de0c9f4173644f3c2e2a5a622dd85acb65b3e45b0e7a03086264a379",
   "verdict": "PASS",
   "training": "ae101",
   "chunk_map": [
@@ -23,7 +23,7 @@
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Re-derived post-fix: chunk 5 line 59 now reads 'CRAP pairs a unit's complexity with its test coverage, so a tangled unit with thin tests scores worst. Both expose code that is hard to trust under change.' — 'Both' resolves to CRAP + complexity metrics, both named in the same sentence and the bold lead 'CRAP and complexity metrics.' Maintainer accept-note (line 109) records this as the settled §19/§1 resolution; no pronoun proposed per that note. Checked all other chunks for pronoun/demonstrative antecedents (line 15 'That alone', line 19 'This is the mercury problem', line 23 'this is where', line 67 'it needs instruments', line 63 'This is classic Clean Code') — each resolves against the immediately preceding sentence inside the same chunk. Harm (unresolvable referent) absent everywhere.",
+      "evidence": "Re-judged after the AI/model→agent/LLM word-swap diff (8651e524..HEAD, lines 17,23,47,55,63). Chunk 0 line 17 'the agent's raw power' is the file's first use of 'agent' — checked with `grep -n -iE '\\bagent' ` (all hits printed in this session): no in-file antecedent precedes it, but 'agent' is AE101's own spine noun (the training is literally Agentic Engineering) established long before this supplementary page in the module arc — arc-earned spine vocabulary carve-out, not a coined referent needing binding. Chunk 2 (line 47) now reads 'agent's search space… asking the LLM to infer… the agent has a concrete signal… the agent has more room to improvise' — 'LLM' and 'agent' name the same underlying system under the split `curriculum/vocabulary.md` line 48 already prescribes ('thinking → the LLM; acting → the agent'): 'infer' is the thinking verb (correctly LLM), 'has a concrete signal' / 'has more room to improvise' are acting-register (correctly agent) — the pronoun 'it' in 'gives it many small, local tripwires' binds to the nearest antecedent 'the LLM'. Not ambiguous, just two controlled terms doing their controlled jobs. Chunks 4 and 6 each re-use 'agent(s)'/'agentic' already named earlier in the SAME chunk before switching to 'an agent' (chunk 4 line 55: 'agents can generate…' then 'an agent to satisfy'; chunk 6 line 63: 'the agentic reason' then 'An agent operating…' twice) — clean in-chunk antecedents. Chunk 5's CRAP-gloss pronoun question is the maintainer's own accept-note (line 109): 'Both' at line 59 binds to 'CRAP' + 'complexity metrics' both named in the same bolded lead — scored PASS per that note, no pronoun proposed. Checked every other demonstrative in the body (line 15 'That alone', line 19 'This is the mercury problem', line 21, line 23 'this is where', line 63 'This is classic Clean Code', line 67 'it needs instruments', line 73 'a clue', line 105 'the steering system') — each resolves against the immediately preceding sentence inside its own chunk. Harm (an unresolvable referent stalling a reader) absent everywhere.",
       "fix_hint": null,
       "blocking": true
     },
@@ -33,7 +33,7 @@
       "rule_lead": "Cross-file and positional callbacks.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "No callback to another curriculum file by position anywhere in body; all links are external X citations, named by platform not located by page position.",
+      "evidence": "No callback to another curriculum file by position anywhere in body; all links are external X citations, named by platform ('Uncle Bob, [X](url)'), not located by page position. Diff touched only single-word swaps inside sentences, none link-adjacent.",
       "fix_hint": null,
       "blocking": true
     },
@@ -43,7 +43,7 @@
       "rule_lead": "Every backward reference points at a beat that exists.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "This is a standalone supplementary reading, not an exercise/lecture inside a module arc; no 'the X you did/saw' beat references appear anywhere in body.",
+      "evidence": "Standalone supplementary reading, not an exercise/lecture inside a module arc; no 'the X you did/saw' beat references anywhere in body, before or after the diff.",
       "fix_hint": null,
       "blocking": true
     },
@@ -53,7 +53,7 @@
       "rule_lead": "Live-demo beats survive a text read.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "No guess-before-reveal structure anywhere in the file; it is expository practitioner-synthesis prose, not a live-demo beat.",
+      "evidence": "No guess-before-reveal structure anywhere in the file; expository practitioner-synthesis prose only. The diff's word-swaps sit inside declarative sentences, not a demo beat.",
       "fix_hint": null,
       "blocking": true
     },
@@ -63,7 +63,7 @@
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Every ## chunk (1-9) carries a self-contained claim about one named practice plus at least one supporting quote; none is a bare wait-state or single context-dependent bullet.",
+      "evidence": "Every ## chunk (1-9) carries a self-contained claim about one named practice plus at least one supporting quote or elaboration; none is a bare wait-state or single context-dependent bullet. Unaffected by the diff (word-level swaps only, no structural change).",
       "fix_hint": null,
       "blocking": false
     },
@@ -73,7 +73,7 @@
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Closest candidate: chunk 9 header 'A prompt biases the agent, it does not bind it' (line 93) vs. body 'Natural language is not enough. Human language needs formal support: tests, tools, structure, metrics, and feedback loops.' (line 95) — the header's bias/bind framing is a synthesis of that sentence plus the Dijkstra quote rather than a verbatim restatement, but the chunk does not contradict it; it stays inside. All other headers (Acceptance tests / Unit tests / TDD / Mutation testing / Metrics / Small units / Architecture / Human's job) restate their chunk's opening bolded-lead sentence near-verbatim.",
+      "evidence": "Chunk 2 header 'Unit tests shrink the agent's room to improvise' (line 45) now matches its own closing sentence even more tightly post-diff: 'When the tests are absent, vague, or too broad, the agent has more room to improvise' (line 47) — 'agent' replacing 'model' pulls the body noun into alignment with the header's own noun. Chunk 9 header 'A prompt biases the agent, it does not bind it' (line 93) vs body 'Natural language is not enough… tests, tools, structure, metrics, and feedback loops' (line 95) is a synthesis of that sentence plus the Dijkstra quote rather than verbatim, but stays inside, unaffected by the diff. All other headers (Acceptance tests / TDD / Mutation testing / Metrics / Small units / Architecture / Human's job) restate their chunk's opening bolded-lead sentence near-verbatim, none touched by the word-swap diff.",
       "fix_hint": null,
       "blocking": false
     },
@@ -83,7 +83,7 @@
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "No 'Not X. Not Y. Z.' constructions in body prose. Closest candidate for anaphora-triple sub-item: chunk 8 lines 85-91, the verbatim Uncle Bob quote 'Assemblers were faster... Compilers were faster... AIs are faster... Deal with it.' This is an attributed, oEmbed-verified direct quote (source stamp martin-ais-are-faster, line 139) — per dispatch-preamble, altering or flagging a verbatim quote to satisfy a cadence rule would falsify sourced text, so this is reported as a rule question rather than filed REVISE: the triple-parallel structure is Martin's own words, not authored cadence. No self-grading superlatives, no number+retraction shape, no abstraction-noun stacks, no empty-leg verb triplets found elsewhere in body.",
+      "evidence": "Ran fresh greps this session over body (lines 1-106): `grep -n -E '\\. Not [A-Za-z]+\\.'` → 0 hits (no 'Not X. Not Y. Z.'); `grep -n -iE 'one of the most|most useful|best way|game-chang|revolution'` → 0 hits (no self-grading superlative); `grep -n -iE 'could be (more|less)|roughly|approximately'` → 0 hits (no number+retraction shape). Closest anaphora-triple candidate is the verbatim, oEmbed-verified Uncle Bob quote at lines 85-91 ('Assemblers were faster… Compilers were faster… AIs are faster… Deal with it.') — an attributed direct quote (source stamp martin-ais-are-faster), not authored cadence, so altering it to satisfy this rule would falsify sourced text; reported as a rule question, not filed REVISE, consistent with the prior instance. No abstraction-noun stacks or empty-leg verb triplets found. None of the diff's five word-swaps (AI/model → agent/LLM) touches this rule's shapes.",
       "fix_hint": null,
       "blocking": true
     },
@@ -93,7 +93,7 @@
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Grepped body for repo/maintainer vocabulary (surface-as-noun, firing, compendium, forcing function, beat, mood, Connections) — none present. 'Steering' is the page's own coined, explicitly-defined thesis term ('So Clean Code becomes steering.' line 27), not repo-internal dialect smuggled onto a slide.",
+      "evidence": "Ran `grep -n -iE '\\b(surface|firing|compendium|forcing function|\\bbeat\\b|\\bmood\\b|Connections)\\b'` over body lines 1-106 this session → 0 hits. 'LLM' (line 47, new post-diff) is not repo-internal dialect — it is standard industry vocabulary and is one of the three controlled terms `curriculum/vocabulary.md` line 48 explicitly names for student-facing body use ('LLM / the agent / Claude'). 'Steering' remains the page's own coined, explicitly-defined thesis term (line 27), displayed not smuggled.",
       "fix_hint": null,
       "blocking": true
     },
@@ -103,7 +103,7 @@
       "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Chunks 1-8 each carry exactly one bolded handle at the chunk open (**Acceptance Tests.**, **Unit Tests.**, **TDD.**, **Mutation Testing.**, **CRAP and complexity metrics.**, **Small Decoupled Units.**, **Architecture Visibility.**, **Human Mental Model.**), all ≤5 words, consistent with the ≤1-per-slide budget and handle-cap. Chunk 0 and chunk 9 carry zero bold. No whole-sentence bolding anywhere.",
+      "evidence": "Chunks 1-8 each still carry exactly one bolded handle at the chunk open (**Acceptance Tests.**, **Unit Tests.**, **TDD.**, **Mutation Testing.**, **CRAP and complexity metrics.**, **Small Decoupled Units.**, **Architecture Visibility.**, **Human Mental Model.**), all ≤5 words. Chunk 0 and chunk 9 carry zero bold. The diff's word-swaps all landed in unbolded body sentences (lines 17, 23, 47, 55, 63) — bold inventory unchanged from prior instance.",
       "fix_hint": null,
       "blocking": false
     },
@@ -113,7 +113,7 @@
       "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "File is a `.../supplementary/*.md` page; maintainer Quality note (line 113-114) records a prior slides@9697944 PASS on this same structural shape and the current session's edit only touched chunk 5's body text, not wrapper/section structure. Not independently re-verified with headless Chrome in this session (no browser tooling run); carried forward as unchanged structurally rather than freshly measured.",
+      "evidence": "Read `site/layouts/slides.js` lines 229-262 this session (not carried forward from a prior claim): in the composed whole-handbook deck, `buildDeckModel` walks `root.querySelectorAll(':scope > section.module')` — the comment at line 237 states explicitly 'A prose section with no phases — prework, supplementary, reference — is slide-ified in place under a kind-labelled divider,' i.e. supplementary pages get a top-level `section.module` wrapper and reach the deck. When this file is opened standalone (`!phases.length` branch, line 229-232), `buildSingleDoc(root, …)` renders it directly with no phase filtering. Either path reaches the deck; the diff only changed body words, not the file's section/heading structure, so presence is unaffected by this edit.",
       "fix_hint": null,
       "blocking": true
     },
@@ -123,7 +123,7 @@
       "rule_lead": "Numbering — position is computed, content ordinals are linted.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "No `## Phase N:` or `## N.` step headers anywhere in body; all nine ## headings are declarative claims with no hand-numbering.",
+      "evidence": "No `## Phase N:` or `## N.` step headers anywhere in body; all nine ## headings are declarative claims with no hand-numbering, unaffected by the diff.",
       "fix_hint": null,
       "blocking": false
     },
@@ -133,7 +133,7 @@
       "rule_lead": "Page geometry dies at the cut; reading order survives.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "grep -n -iE '\\b(below|above|further down|at the top of this page|see below|a few paragraphs)\\b' over the body: 0 hits above the maintainer cut (only hits are inside the maintainer-block source-verification note at line 143, out of scope).",
+      "evidence": "Ran `node scripts/check-slide-deixis.js --file curriculum/trainings/agentic-engineering-101/supplementary/clean-code-is-steering.md` this session → 'OK — 1 files, no page-geometry pointers across the slide cut.' Also ran `grep -n -iE '\\b(below|above|further down|at the top of this page|see below|a few paragraphs)\\b'` over body lines 1-106 → 0 hits (all matches of these words live in the out-of-scope maintainer block, line 143).",
       "fix_hint": null,
       "blocking": true
     },
@@ -143,7 +143,7 @@
       "rule_lead": "In-deck links work now; whether they EARN their place is open.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "All body links are external citation links to x.com posts, link text '[X]' naming the platform, attached to an inline 'Uncle Bob, [X](url)' attribution — not in-deck navigation and not located by page position. No structural include-links or in-page anchors in body.",
+      "evidence": "All body links are external citation links to x.com posts, link text '[X]' naming the platform, attached to an inline 'Uncle Bob, [X](url)' attribution — not in-deck navigation and not located by page position. No structural include-links or in-page anchors in body. Diff did not touch any link.",
       "fix_hint": null,
       "blocking": false
     },
@@ -153,7 +153,7 @@
       "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Ran: node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/supplementary/clean-code-is-steering.md. Output: 'files: 1  slides: 9  limits: 210 words / 6 bullets / oversized: 0 / ✓ every slide is within limits'.",
+      "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/supplementary/clean-code-is-steering.md` this session. Output: 'files: 1  slides: 9  limits: 210 words / 6 bullets  oversized: 0  ✓ every slide is within limits.' The diff's five word-swaps are all same-word-count substitutions (AI's→agent's, AI→agent, model→LLM, model→agent, model→agent×2), so no slide's count could have moved.",
       "fix_hint": null,
       "blocking": false
     },
@@ -163,7 +163,7 @@
       "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "This file is a lecture-shaped reading (no exercise phases), so all headings should be claims per the lecture branch of the rule. All nine ## headings are declarative claims ('Metrics are the dashboard, not the wheel', 'Small units leave fewer places to hide', etc.), none are imperative or phase-label shaped.",
+      "evidence": "This file is a lecture-shaped reading (no exercise phases), so all headings should be claims per the lecture branch of the rule. All nine ## headings remain declarative claims ('Metrics are the dashboard, not the wheel', 'Small units leave fewer places to hide', etc.) — no heading text was touched by the diff.",
       "fix_hint": null,
       "blocking": false
     }

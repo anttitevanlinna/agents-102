@@ -1,7 +1,7 @@
 {
   "class": "storytelling",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/supplementary/skill-stacking.md",
-  "body_sha": "81cee6d4eed3d7d0ec80a58759b35b72afbd3b8e468409b214bad3a3845a29c5",
+  "body_sha": "ae556fa9f94d832caa3d1dcd7c75998889de1370392b4bc08357cedf9e5d2af4",
   "verdict": "PASS",
   "training": "ae101",
   "module_mood_contract": "practitioner fluency (M6, spot-gaps-build-the-loop) — this supplementary is the composing-the-workflow lecture's pointed-to worked example, read post-M6",
@@ -30,7 +30,7 @@
       "rule_index": 3,
       "rule_lead": "No cross-module sequencing in lecture bodies.",
       "verdict": "PASS",
-      "evidence": "grep -n 'M6\\|M3\\|M5\\|M2\\|M1\\\\b' skill-stacking.md → hits only inside the '<!-- maintainer -->' block (lines 176), none in student-facing body above the fence. Body itself carries no module numbering or forward/back reference.",
+      "evidence": "grep -n 'M[0-9]' skill-stacking.md (re-run against current HEAD, post-diff) → single hit, line 179, inside the '<!-- maintainer -->' block (the 'Runtime fork collapsed 2026-08-19' note). Zero hits in student-facing body above the fence (line 174). The 2026-08-23 diff only touched three body sentences (line ~40, ~102, ~131-133, all count-phrasing tweaks — 'Four mechanisms' -> 'The mechanisms', etc.) plus the maintainer/backing blocks below the fence; none introduced module numbering to the body.",
       "fix_hint": null,
       "blocking": false
     },
@@ -53,6 +53,15 @@
       "blocking": false
     },
     {
+      "compendium": "check_lectures.md",
+      "rule_index": 6,
+      "rule_lead": "A prompt inside a lecture is a trainer show-and-tell, never a room follow-along.",
+      "verdict": "N/A",
+      "evidence": "Rule 6 is dated 2026-08-20, after this file's last story pass (c7e8f1e4, 2026-08-19) — the reason this pin was flagged rule-drift. Doubly N/A: (1) its own text scopes to 'every {{prompt:<key>}} / inline **Prompt** block in curriculum/lectures/**' and explicitly excludes 'prompts on reference/supplementary pages, all of which the student runs themselves' — this file lives at curriculum/trainings/agentic-engineering-101/supplementary/, not curriculum/lectures/. (2) grep -c '{{prompt:' + grep -c '\\*\\*Prompt\\*\\*' skill-stacking.md both return 0 — the only fence in the file is the illustrative SKILL.md-contract code block at lines 21-25 (not a student-copied prompt), matching the maintainer's own Quality note: 'behavior N/A (no student-copied prompt blocks; the only fence is a SKILL.md frontmatter illustration)'.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
       "compendium": "check_pedagogy.md",
       "rule_index": 16,
       "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
@@ -66,7 +75,7 @@
       "rule_index": 27,
       "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
       "verdict": "PASS",
-      "evidence": "No 'discuss with', 'share with your neighbor', 'take N seconds and compare' or trainer-cue language anywhere in the body. Closest candidate: 'Map your own kit' (line 163) addresses the reader directly with reflective questions ('Is it a route... a leaf... an orchestrator... a hand-off?') aimed at the reader's own artifact, not at a pair/room interaction — stays inside the carve-out for solo reflective prompts, not a cohort-management cue.",
+      "evidence": "No 'discuss with', 'share with your neighbor', 'take N seconds and compare' or trainer-cue language anywhere in the body (re-checked against current HEAD). Closest candidate: 'Map your own kit' (line 163) addresses the reader directly with reflective questions ('Is it a route... a leaf... an orchestrator... a hand-off?') aimed at the reader's own artifact, not at a pair/room interaction — stays inside the carve-out for solo reflective prompts, not a cohort-management cue.",
       "fix_hint": null,
       "blocking": false
     },
@@ -75,7 +84,7 @@
       "rule_index": 1,
       "rule_lead": "Mood contract named.",
       "verdict": "PASS",
-      "evidence": "Mood contract = practitioner fluency (M6 worked example). Close beat ('Map your own kit', lines 163-172) is the TEACHING beat (self-application, not setup) — mood-floor 8+/10 applies. Regenerated trace scores close.mood_score=8: the collapsed fork removed the stale premise ('You shipped a second skill in M6') that previously stalled the self-application at 6/10; the surviving wording ('Take any skill you have written, or the next one you would write', line 165) names an artifact every post-M6 reader actually holds (M3's skill, or the not-yet-run M6 handoff), so the beat lands without a false-premise snag.",
+      "evidence": "Mood contract = practitioner fluency (M6 worked example). Close beat ('Map your own kit', lines 163-172) is the TEACHING beat (self-application, not setup) — mood-floor 8+/10 applies. Regenerated trace (content_sha 3c71d17e..., matches current file) scores close.mood_score=8: the 2026-08-23 diff only touched three restated-count sentences upstream of the close and the maintainer/backing blocks below the fence; the close itself is byte-identical to the 2026-08-19 pass, and the fix that lifted it to 8 (removing the stale M6-branch premise) still holds.",
       "fix_hint": null,
       "blocking": true
     },
@@ -93,7 +102,7 @@
       "rule_index": 3,
       "rule_lead": "Lead with discipline, not failure mode.",
       "verdict": "PASS",
-      "evidence": "Section headers name disciplines/structures, not failure modes: 'The three-layer model', 'Composition mechanisms', 'Design principles', 'Map your own kit'. No failure-word lead anywhere in the visible body.",
+      "evidence": "Section headers name disciplines/structures, not failure modes: 'The three-layer model', 'Composition mechanisms', 'Design principles', 'Map your own kit'. No failure-word lead anywhere in the visible body. The 2026-08-23 wording edits (count phrasing only) don't touch any header.",
       "fix_hint": null,
       "blocking": false
     },
@@ -102,7 +111,7 @@
       "rule_index": 4,
       "rule_lead": "Strategy-fidelity check.",
       "verdict": "PASS",
-      "evidence": "This IS the fix under review: the prior draft's close front-ran a downstream artifact ('You shipped a second skill in M6') that M6 (spot-gaps-build-the-loop.md, per the 2026-08-01 cut) no longer produces inside the module — M6's close now yields a handoff prompt run later, not an in-module second skill. The maintainer block (lines 176-178) documents the correction and the verified fact that an M6 student still has an M3-authored skill to hold up instead. Body no longer claims an artifact the module doesn't ship; front-run risk against spot-gaps-build-the-loop.md is resolved.",
+      "evidence": "Re-verified today against the current spot-gaps-build-the-loop.md: line 89 of that exercise ('you build the handoff prompt from them') confirms M6's close still produces a handoff prompt, not an in-module second skill — the maintainer note's factual claim (lines 179) still holds. The prior draft's front-run risk ('You shipped a second skill in M6') stays fixed; nothing in the 2026-08-23 diff reopens it.",
       "fix_hint": null,
       "blocking": true
     },
@@ -141,5 +150,6 @@
     "stealing_the_mood": []
   },
   "blocking_findings_count": 0,
-  "todos_count": 0
+  "todos_count": 0,
+  "notes": "Staleness reason = rule-drift, pin c7e8f1e4. Re-read all five named rules at current wording via rule.js. check_lectures §6 IS story-owned (story is primary owner of check_lectures, full coverage required) and is added as a new rules_evaluated row above (N/A) — it postdates the c7e8f1e4 pass (dated 2026-08-20), which is the reason this pin was flagged rule-drift; the c7e8f1e4-pinned instance only covered check_lectures 1-5. check_pedagogy §44/§52/§56/§61 are NOT story-owned (story's template lists only §16 and §27 under 'Specific judgments storytelling owns'; the pedagogy class judge is primary owner of the rest) — per dispatch-preamble.md, reaching into a sibling class's numbered rules is an unowned claim, not extra coverage, so these are verified here but deliberately NOT emitted as rules_evaluated rows. Verification for the record: §44 N/A (no '## Plug Points' section; no student-pasted prompts to walk prompt-to-prompt; sanity-checked the one navigable-path claim present — ls curriculum/trainings/agentic-engineering-101/supplementary/skill-stacking/ confirms 01-meta-model.svg, 02-ship-anatomy.svg, 03-workflows.svg all exist, no broken link). §52 N/A (grep -c '\\*\\*Session\\*\\*' skill-stacking.md -> 0; no session-opening/forking beat). §56 N/A by my read (no exercise/prompt/pre-flight step in this file, so no callout-vs-forcing-function fix-shape decision is on the table, including under the 2026-08-23 silent-slow-miss amendment) — flagging a real divergence: the pedagogy class's own instance (ae101--supplementary--skill-stacking.pedagogy.json, still pinned to the stale body_sha 81cee6d4..., i.e. not yet re-run against current HEAD) scores this rule PASS, reading the maintainer's 2026-08-19 frontmatter-correction note as the body-callout-style fix the rule prefers. Both readings are defensible (N/A: nothing IS an audit-fix-shape decision here; PASS: the one correction present took the callout shape). Leaving this for the pedagogy judge's own re-run rather than overwriting its verdict from here. §61 N/A (no SKILL.md/framework/tool-change proposal in this artifact; it documents an existing kit, framed explicitly as 'read for the patterns, not for copying'). Own-diff read (c7e8f1e4..HEAD): three body sentences dropped restated counts ('Four mechanisms' -> 'The mechanisms', 'Six workflow archetypes. Five funnel...' -> 'The workflow archetypes: all but one funnel...', 'Three companion diagrams'/'all three' -> 'Companion diagrams'/'all of them') — each count is still recoverable from the adjacent numbered list, table, or image blocks, so no comprehension or mood cost; plus a maintainer Quality-line addition and a backing Sources-line elaboration, both below the fence. None of these touch a storytelling-owned rule. Sim trace regenerated (content_sha mismatch: cached a454b0c1... vs current 3c71d17e...) at curriculum/evals/sim-cache/ae101--supplementary--skill-stacking.persona.json; scores unchanged (8/8) since the close beat and the teaching-moment mechanism list are untouched by the diff. No student-facing body edits made. Did not re-verify the M3-skill-ownership half of the maintainer note's claim (not touched by this diff, not flagged by any of the five re-read rules) — flagging as unverified-but-out-of-scope rather than asserting it."
 }

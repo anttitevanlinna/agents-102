@@ -8,7 +8,7 @@
 
 **The point:** every push-back is a hint toward your own rules.
 
-The PR shipped and the ticket is closed. Now compound the session, the closing step of compound engineering. No retro questionnaire: the session is the evidence.
+The PR shipped and the ticket is closed. Now compound the session: make the next one easier with what this one taught. A rules file is the simplest place to start; later it will be a test, a doc, a check. No retro questionnaire: the session is the evidence.
 
 The rules land in `./CLAUDE.local.md`, and the choice is deliberate. It is the simplest store for personal rules there is: one file, gitignored, read at the top of every session in this repo. And it parks the bigger question: where a team's rules and guardrails should live.
 
@@ -71,7 +71,7 @@ You can check the recurring cost by asking Claude how many tokens your rules fil
 Claims
 - `session-is-the-evidence` · vision · "the session is the evidence" ← none-owed
 - `no-three-question-retro` · vision · "No retro questionnaire" ← none-owed
-- `compound-step-is-klaassens` · borrowed · "the closing step of compound engineering" ← klaassen-expanded-loop, klaassen-compound-run
+- `compound-definition-plain` · borrowed · "make the next one easier with what this one taught" ← klaassen-definitive-guide (plain-words paraphrase of the core philosophy; the Compound-step lineage, formerly anchored on "the closing step of compound engineering", now lives only in Claude's own summary per the Frameworks note below; re-anchored 2026-08-23 when the coinage widened per `vocabulary.md` § compound engineering)
 - `not-drafting-from-a-blank-page` · vision · "You are not drafting from a blank page. The agent reads the session for you." ← none-owed
 - `heads-up-before-close-flushes-wip` · detail · "A heads-up that you are about to compact or end the session flushes out work in progress." ← maintainer-attested-flush
 - `quote-the-moment-back` · vision · "Quote the specific session moment back at Claude." ← none-owed

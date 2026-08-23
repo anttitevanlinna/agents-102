@@ -175,7 +175,7 @@ Claims
 - `cherny-moves-without-a-framework` · detail · "Practitioner moves without a published framework, Boris Cherny" ← cherny-thread, howborisusesclaudecode
 - `ronacher-counter-position` · detail · "Counter-position, Armin Ronacher" ← ronacher-bottleneck, ronacher-pi, ronacher-psychosis
 - `dino-single-orchestrator-by-design` · detail · "**A single orchestrator** by deliberate design. `/ship` is the only skill that composes others." ← dino-skill-stacking
-- `dino-seven-design-principles` · detail · "**Seven design principles** that the system enforces." ← dino-skill-stacking
+- `dino-design-principles` · detail · "**Design principles** the system enforces." ← dino-skill-stacking
 - `dino-gates-fire-positionally` · detail · "**Mandatory gates fire positionally**, mid-workflow, by predicate." ← dino-skill-stacking
 - `pick-what-resembles-your-day` · vision · "Three filters that work better than ranking" ← none-owed
 

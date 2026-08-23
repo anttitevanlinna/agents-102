@@ -34,6 +34,9 @@
 
 const fs = require('fs');
 const path = require('path');
+const CR = require(path.join(__dirname, '..', 'site/layouts/curriculum.js'));
+const { loadRegistry } = require('./compile-prompts.js');
+const { loadFigures } = require('./compile-figures.js');
 
 const ROOT = path.resolve(__dirname, '..');
 const THEORY_PLAN = path.join(ROOT, 'theory-plan.md');
@@ -303,7 +306,7 @@ function bodyCitations(text) {
  * Audit one file's text. Returns { findings, lawsUsed }.
  * `file` is carried through onto findings purely as a label.
  */
-function auditText(text, { laws, now, stanceWindow, file = '<text>' } = {}) {
+function auditText(text, { laws, now, stanceWindow, file = '<text>', expand = t => t } = {}) {
   const findings = [];
   const lawsUsed = new Set();
   const add = (sev, code, line, msg) => findings.push({ sev, code, file, line, msg });
@@ -360,8 +363,14 @@ function auditText(text, { laws, now, stanceWindow, file = '<text>' } = {}) {
    * everything ABOVE the block rather than above the maintainer fence: a few
    * anchors legitimately quote maintainer prose, and this check exists to catch
    * drift, not to relitigate where an anchor may point.
+   *
+   * `{{figure:}}` / `{{prompt:}}` markers expand first. A figure body is
+   * student-facing prose — labels and caption included — so a claim anchored on
+   * one is correctly placed, and matching the raw file reported drift on three
+   * intact lectures at once. Judges read the expanded view for the same reason
+   * (`judges/_dispatch-preamble.md`); this takes the same one.
    */
-  const prose = normalizeAnchor(text.slice(0, text.indexOf(OPEN)));
+  const prose = normalizeAnchor(expand(text.slice(0, text.indexOf(OPEN))));
   for (const c of claims) {
     const phrase = normalizeAnchor(stripAnchorQuotes(c.anchor));
     if (!phrase) continue;
@@ -478,10 +487,15 @@ function main() {
 
   const files = opts.paths.flatMap(p => walk(p)).filter((v, i, a) => a.indexOf(v) === i).sort();
 
+  // Same order build-workbook.js uses, so an anchor sees the text a student does.
+  const prompts = loadRegistry();
+  const figures = loadFigures();
+  const expand = t => CR.expandFigures(CR.expandPrompts(t, prompts), figures);
+
   for (const abs of files) {
     const rel = path.relative(ROOT, abs);
     const text = fs.readFileSync(abs, 'utf8');
-    const r = auditText(text, { laws, now, stanceWindow: opts.stanceWindow, file: rel });
+    const r = auditText(text, { laws, now, stanceWindow: opts.stanceWindow, file: rel, expand });
     findings.push(...r.findings);
     for (const k of r.lawsUsed) lawsUsed.add(k);
     for (const k of (r.kbRefs || [])) {

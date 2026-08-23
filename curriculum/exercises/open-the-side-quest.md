@@ -93,7 +93,7 @@ Claims
 - `user-scope-skills-cross-lanes` · detail · "It installs to user scope, so it crosses back to the main lane on its own, and you never carry it by hand." ← cc-skills-user-scope
 - `security-is-the-main-quest` · vision · "Security is the main quest. Start it in your repo." ← none-owed
 - `two-sessions-one-history` · vision · "two Claude Code sessions running side by side on one git history" ← none-owed
-- `side-lane-waits` · vision · "The quality side waits." ← none-owed
+- `side-lane-waits` · vision · "the quality side waits until you author" ← none-owed
 
 Sources
 - git-worktree-docs `[checked:2026-05-15 result:OK due:none]` https://git-scm.com/docs/git-worktree — [tool docs] `git worktree add` creates a second working directory sharing one `.git`, branching from the current HEAD unless told otherwise. Untracked and gitignored files (which is what `CLAUDE.local.md` is) are not shared between worktrees — they exist per working directory, which is why the body says they are copied at fork time and diverge after. **`due:none`:** worktree semantics are two decades stable, and applying a six-month window to them would flag core Git as STALE — the artifact-of-the-rule case the foundational variant exists for. fallback: none needed.

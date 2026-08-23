@@ -543,3 +543,42 @@ test('anchors may escape the quotes they contain', () => {
   assert.equal(findings.some(f => f.code === 'ANCHOR-DRIFT'), false,
     `escaped inner quotes must normalise: ${JSON.stringify(findings)}`);
 });
+
+/*
+ * A `{{figure:<key>}}` include is student-facing prose: the figure body carries
+ * the labels and caption the page teaches from, so a claim anchored on one is
+ * correctly placed. The check read the RAW file, where the marker is still a
+ * marker, and reported three lectures drifted on the same line — the soil line
+ * (`act under uncertainty · competence sets the ceiling · cross personal →
+ * team`), which lives in `curriculum/figures/map-engine*.md` and reaches every
+ * body through the include. Three false ERRORs against intact bodies, on files
+ * stamped all-PASS. Judges are already told to read the expanded view
+ * (`judges/_dispatch-preamble.md`); the audit takes the same one.
+ */
+test('an anchor quoting figure-include text is not ANCHOR-DRIFT', () => {
+  const expand = t => t.replace('{{figure:map-engine}}',
+    '<figure class="diagram">act under uncertainty · competence sets the ceiling</figure>');
+  const { findings } = audit(
+    '# A lecture\n\n{{figure:map-engine}}\n\n' +
+    '<!-- backing -->\n\n' +
+    '**Claims**\n- `a` · vision · "competence sets the ceiling" ← none-owed\n\n' +
+    '<!-- /backing -->\n',
+    { expand }
+  );
+  assert.equal(findings.some(f => f.code === 'ANCHOR-DRIFT'), false,
+    `figure-carried anchor must not fire: ${JSON.stringify(findings)}`);
+});
+
+test('expansion does not excuse a genuinely drifted anchor', () => {
+  const expand = t => t.replace('{{figure:map-engine}}',
+    '<figure class="diagram">act under uncertainty</figure>');
+  const { findings } = audit(
+    '# A lecture\n\n{{figure:map-engine}}\n\n' +
+    '<!-- backing -->\n\n' +
+    '**Claims**\n- `a` · vision · "a phrase in neither body nor figure" ← none-owed\n\n' +
+    '<!-- /backing -->\n',
+    { expand }
+  );
+  assert.equal(findings.some(f => f.code === 'ANCHOR-DRIFT'), true,
+    `real drift must still error under expansion: ${JSON.stringify(findings)}`);
+});

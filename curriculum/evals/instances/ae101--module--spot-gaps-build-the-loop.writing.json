@@ -1,95 +1,657 @@
 {
   "class": "writing",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/spot-gaps-build-the-loop.md",
-  "body_sha": "c3df0579190607d85efd212fb4890d00800280d3f5df03bca1f9d04f8d48bf1f",
+  "body_sha": "04ae816a21b6fc5c3c6abe415a0a0dbe393f4366183802aa79f7cbdf48ffeb1d",
   "verdict": "PASS",
   "training": "ae101",
-  "re_fire_reason": "Pin 0dea491e..HEAD diff (git diff 0dea491e..HEAD -- <file>): (1) Prework paragraph (line 8) drops the da Costa/backpressure pre-read entirely, keeping only Klaassen, and rewrites the design-question framing. (2) Key Concepts bullet 6 (line 61) gains a trailing subtractive-compounding clause ('Encoding subtracts as well as adds...'). (3) '## Next' going-deeper line (line 78) moves 'when this loop has to scale past you' from the bold label to a trailing clause after the link. (4) Maintainer 'Backpressure vocabulary' note (line 93) rewritten to match learn-from-the-test.md's and earn-the-trust.md's own notes (da Costa = M3→M4 gap read, named by M4's lecture, no reading assigned in M5 or M6). (5) Maintainer 'Plug points' rows (154-156) drop the 'Sponsor-stated' prefix per the standing 'no sponsor pre-engagement contract in AE101' convention. (6) Source-verification block (167) drops the now-orphaned lucasfcosta.com/backpressure-is-all-you-need stamp (consistent with (1)) and trims the Klaassen stamp's fallback clause to match. During this audit I also made one internal-file correction not part of the pinned diff: the Independence-axis maintainer note's word-count context ('KC slide at 173w/6b') was stale after Key Concepts bullet 6 grew by ~24 words; corrected to 201w/6b (measured: awk over '## Key Concepts' section, 201 words / 6 bullets at HEAD after bullet 6's edit). This is a plainly-wrong internal figure, not a rule violation, so I fixed it directly per the dispatch instructions rather than filing it as a finding.",
+  "re_fire_reason": "Full re-derived diff `git diff 0dea491e..HEAD -- <file>` (0dea491e..534a5e84, six commits: a4920c15, 2f97ca2d, 27f92c59, b55cd28b, 534a5e84 plus the pin itself). Body changes (above line 84): (1) line 8 Prework rewritten — drops the da Costa/backpressure pre-read, keeps only Klaassen, adds 'He measures a verifier before trusting it and runs several in parallel' and reframes the closing design question. (2) line 61 Key Concepts bullet 6 gains a trailing subtractive-compounding clause ('Encoding subtracts as well as adds... add, sharpen, delete... A rules file that only grows compounds noise'). (3) line 78 '## Next' going-deeper line moves 'when this loop has to scale past you' from the bold label into a trailing clause after the link. Maintainer changes (below line 84): (4) line 93 'Backpressure vocabulary' note rewritten to state da Costa lands at M3→M4, named by M4's closing lecture, not reassigned at M5 or M6. (5) Quality line (103-105) restamped 2026-08-23, writing@0dea491e story@0dea491e technical@b55cd28b behavior@1c765f2 pedagogy@b55cd28b strategy@9c75ce2 slides@b55cd28b; judges row and cross_module row updated to match. (6) Plug points rows (154-156) drop the 'Sponsor-stated' prefix per the standing no-sponsor-pre-engagement-contract convention. (7) Klaassen source-verification stamp (167) rewritten result:OK due:2026-11-25 -> result:CAVEAT due:none, with new rationale text, matching learn-from-the-test.md's stamp for the same source id (verified: both files now carry identical CAVEAT/due:none framing for every.to/.../my-ai-had-already-fixed-the-code-before-i-saw-it). (8) the orphaned lucasfcosta.com/backpressure-is-all-you-need stamp is dropped entirely (consistent with (1)).",
   "maintainer_cut_line": 84,
   "fence_ranges": [],
   "rules_evaluated": [
-    {"compendium": "check_writing.md", "rule_index": 1, "rule_lead": "Banned words — grep zero-tolerance.", "verdict": "PASS", "evidence": "grep -inE '\\bhonest|\\bdelve|\\blandscape\\b|\\bimportantly|\\bcrucial|\\bsubstrate|\\bleverage|\\bsynergize|\\bparadigm shift' over body (lines 1-83) -> 0 hits. grep '—' (em-dash) over body -> 0 hits. Both re-run after the Prework/KC/Next edits; new text (lines 8, 61, 78) carries none of the banned forms.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_writing.md", "rule_index": 2, "rule_lead": "Ritual / ceremony — hard ban", "verdict": "PASS", "evidence": "grep -inE '\\britual\\b|\\bceremony\\b' over body -> 0 hits. 'practice'(n) does not appear in body.", "fix_hint": null, "blocking": true},
-    {"compendium": "check_writing.md", "rule_index": 3, "rule_lead": "No stale markers, no \"fixed\" retrospectives, no session biography.", "verdict": "PASS", "evidence": "Rewritten maintainer note (line 93, 'Backpressure vocabulary') states present-arc position ('two modules back by the time the student arrives here') rather than narrating a change to the file itself — no 'was changed to', 'used to', 'settled <date>', 'retired' language. Checked: grep -inE 'settled [0-9]|retired|no longer|historically|used to\\b|was changed to' over full maintainer block -> 0 hits.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_writing.md", "rule_index": 4, "rule_lead": "Register match.", "verdict": "PASS", "evidence": "New Prework sentence (line 8) 'He measures a verifier before trusting it and runs several in parallel' is Boris-direct (factual, terse); KC bullet 6 addition (line 61) stays concrete/engineer-register ('add, sharpen, delete'). No preening phrase-pairs, no sales-deck register introduced.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_writing.md", "rule_index": 5, "rule_lead": "Rough-cut drafts for articles.", "verdict": "N/A", "evidence": "Shipped curriculum module, not an article draft.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_writing.md", "rule_index": 6, "rule_lead": "Credit original when paraphrasing named technique.", "verdict": "PASS", "evidence": "Prework (line 8) now credits only Klaassen, inline with name + title, consistent across the edit (da Costa reference removed, not left uncredited-but-paraphrased). Capstone sign-off (line 82) stays covered by the file's own maintainer accept-note (line 91), unaffected by this diff.", "fix_hint": null, "blocking": true},
-    {"compendium": "check_writing.md", "rule_index": 7, "rule_lead": "Always \"you\", never \"the student\"; teacher framing stays out of body.", "verdict": "PASS", "evidence": "grep -in 'the student' over body -> 0 hits. New line 8 addresses no one directly (third-person about Klaassen) then returns to 'your read' — consistent second-person elsewhere.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_writing.md", "rule_index": 8, "rule_lead": "Don't smuggle terms of art from maintainer into body.", "verdict": "PASS", "evidence": "grep -in 'backpressure' over body -> 0 hits (the diff removed the word from body entirely; it now appears only in the maintainer note's own bold label, line 93, which is metadata about the decision, not a leaked term). Stronger PASS than before this diff.", "fix_hint": null, "blocking": true},
-    {"compendium": "check_writing.md", "rule_index": 9, "rule_lead": "Over-hedge detector.", "verdict": "PASS", "evidence": "New text (lines 8, 61, 78) carries no reassurance-shaped phrasing (no 'no penalty', 'it's OK if', 'not a downgrade', etc.). Closest pre-existing candidate remains line 29 ('Despair not.'), already covered by the file's own accept-note (line 95) as the deliberate accept-loss floor, not an over-hedge.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_writing.md", "rule_index": 10, "rule_lead": "Verbatim-frame-cite in reference artefact.", "verdict": "N/A", "evidence": "No user-supplied verbatim frame under construction in this file.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_writing.md", "rule_index": 11, "rule_lead": "Cap practitioner attribution at one student-side mention per module.", "verdict": "PASS", "evidence": "Klaassen named once in body (Prework, line 8); da Costa no longer named in body at all (removed by this diff, was one mention before — removal doesn't trip the cap). No practitioner named 2+ times in body prose.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_writing.md", "rule_index": 12, "rule_lead": "Punchy framing keeps punch; carve-out lives downstream.", "verdict": "N/A", "evidence": "No overstated punchy slogan in the new text needing a downstream carve-out.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_writing.md", "rule_index": 13, "rule_lead": "Value-prop / positioning framing belongs in sales copy + project strategy docs, NOT student-facing curriculum body.", "verdict": "PASS", "evidence": "grep -in 'vendor' over body -> 0 hits. No 'not an aspirational X' / 'grounded in actual' style defensive framing in the new text.", "fix_hint": null, "blocking": true},
-    {"compendium": "check_writing.md", "rule_index": 14, "rule_lead": "Watch out for planting jargon too early.", "verdict": "PASS", "evidence": "M6 is the training's final module (M2+ bare-MN convention already earned). New terms in the diff ('verifier', 'seams', 'add, sharpen, delete') are all at-or-below M6's earned vocabulary — 'verifier' is earned by M4/M5, 'add, sharpen, delete' directly echoes check_student_facing.md §35's canonical M2+ Debrief shape ('sharpen weak rules, add what's missing, remove what turned out wrong'), not new jargon.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_writing.md", "rule_index": 15, "rule_lead": "Audit closer when trimming body-prose forcing function.", "verdict": "N/A", "evidence": "No forcing function was trimmed; the Prework edit removed a reading assignment (da Costa), not a forcing-function sentence, and left no dangling pronoun — checked: line 8's new final sentence resolves its own referents ('the design question that follows' points at the measuring/parallel-verifiers content in the same sentence, not at deleted text).", "fix_hint": null, "blocking": false},
-    {"compendium": "check_writing.md", "rule_index": 16, "rule_lead": "The `**What happened:**` block is OPTIONAL", "verdict": "N/A", "evidence": "No `**What happened:**` block appears anywhere in this file.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_writing.md", "rule_index": 17, "rule_lead": "No combative verbs about the agent in body prose.", "verdict": "PASS", "evidence": "grep -inE 'bark|order|command|whip|force|drag|push around|boss|shout at|snap at|lecture|scold' over body -> 0 hits. New text has no human-to-agent verbs at all.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_writing.md", "rule_index": 18, "rule_lead": "Headers must be literally true about the mechanism.", "verdict": "PASS", "evidence": "Section headers unchanged by this diff: 'Big Idea', 'Prework', 'What You'll Learn', 'Start here', 'Human close', 'Key Concepts', 'Optional challenges', 'Next' — all literal, no spatial-metaphor or 'other X' faults.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_writing.md", "rule_index": 19, "rule_lead": "Machine-cadence fat — the shape of good prose without the content.", "verdict": "PASS", "evidence": "New KC bullet 6 clause ('Encoding subtracts as well as adds: the durable shape is add, sharpen, delete. A rules file that only grows compounds noise alongside the learning.') checked against all four shapes: no empty negation (the negation implied — subtracts, not just adds — is genuinely informative against a reader's likely 'compounding = accumulation' assumption), no deictic drumroll ('the durable shape IS X' names a concept, doesn't just point at the prior clause), no bold-label echo, no citation duplication.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_writing.md", "rule_index": 20, "rule_lead": "Don't state a count the adjacent list already holds.", "verdict": "PASS", "evidence": "New clause 'the durable shape is add, sharpen, delete' names the three moves inline with no separate numeral ('three moves') stated before or after; not adjacent to a separate bulleted list of the same three items. No violation.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_writing.md", "rule_index": 21, "rule_lead": "A slogan that is false as stated is not punchy framing — run the truth test before reaching for §12.", "verdict": "PASS", "evidence": "No new superlative claim (only/always/never) in the diff. Checked closest candidate, pre-existing KC bullet 4 ('A check proves something only where it could say no') — scoped to a definitional/verification-theory claim, already covered by the file's own maintainer accept-note (line 101) as the deliberate kernel, unaffected by this diff.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_writing.md", "rule_index": 22, "rule_lead": "A claim binds to every body that states it, not just the one holding the stamp.", "verdict": "PASS", "evidence": "The Klaassen source id (my-ai-had-already-fixed-the-code-before-i-saw-it) is claimed in this file and in learn-from-the-test.md; both bodies were checked and each carries its own consistent paraphrase of the same source (M6: 'measures a verifier before trusting it and runs several in parallel'; M5: 'runs the verifier 10 consecutive times... uses per-feedback specialised agents in parallel'). Different facets of the same essay, not a stale copy of a superseded claim. The result:/due: field mismatch between the two files' freshness stamps (M6 OK/due:2026-11-25 vs M5 CAVEAT/due:none) is a check_research_claims.md concern (freshness-stamp mechanics), out of writing-class lane — noted below, not filed here.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_writing.md", "rule_index": 23, "rule_lead": "A rule set reconstructed at session start goes stale inside the session — re-derive it per target, not per sweep.", "verdict": "N/A", "evidence": "Single-file fire, rule set read fresh in this session against the current compendium state (check_writing.md modified 2026-08-22, check_student_facing.md modified 2026-08-23 — both read at session start, no earlier cached checklist in play).", "fix_hint": null, "blocking": false},
-    {"compendium": "check_writing.md", "rule_index": 24, "rule_lead": "One doc per scarce-attention audience; delta-only.", "verdict": "N/A", "evidence": "Not a trainer/exec/sponsor-facing scarce-attention artifact.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_writing.md", "rule_index": 25, "rule_lead": "Trainer-facing text is self-contained.", "verdict": "N/A", "evidence": "This file is the student-facing module body plus its own maintainer block, not a built trainer page (trainer-guide/trainer-modules.md).", "fix_hint": null, "blocking": false},
-    {"compendium": "check_writing.md", "rule_index": 26, "rule_lead": "A sentence saying how you'd know points at the outcome, not the nearest artifact.", "verdict": "PASS", "evidence": "No new 'X tells you whether Y' clause in the diff. Checked closest pre-existing candidate, line 45 ('If you can put the move in one sentence, that's the marker') — unaffected by this diff, a light self-study completion marker rather than a verification claim; not the self-witnessing-instrument shape the rule targets (no artifact or context judging itself).", "fix_hint": null, "blocking": false},
-    {"compendium": "check_student_facing.md", "rule_index": 1, "rule_lead": "Aspirational destination, never corrective gap.", "verdict": "PASS", "evidence": "No corrective-gap framing in the diff or elsewhere in body.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_student_facing.md", "rule_index": 2, "rule_lead": "Earn every technical term on first use.", "verdict": "PASS", "evidence": "M6 is past M2 (bare 'M5'/'M6' fine per the rule's own carve-out, lines 23-27). New Prework text (line 8) introduces no unearned term — 'verifier' is earned by M4/M5.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_student_facing.md", "rule_index": 3, "rule_lead": "Business-audience word ban (Agents 101 default).", "verdict": "N/A", "evidence": "Rule scoped 'Agents 101 default'; file is AE101 (engineer audience), governed instead by check_writing.md rule 14.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_student_facing.md", "rule_index": 4, "rule_lead": "Memory vs context — use deliberately.", "verdict": "PASS", "evidence": "Unaffected by this diff. 'memory' (line 14) still used in the persistent-artifact sense; 'context' does not appear in body.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_student_facing.md", "rule_index": 5, "rule_lead": "Golden path only in body — THIS RULE HAS AN EXCEPTION", "verdict": "PASS", "evidence": "Unaffected by this diff. The two rescue blockquotes (lines 27, 29) remain the file's own accept-noted exception (line 95).", "fix_hint": null, "blocking": false},
-    {"compendium": "check_student_facing.md", "rule_index": 6, "rule_lead": "Trust Claude's defaults for structure.", "verdict": "N/A", "evidence": "No prompt body in this module file.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_student_facing.md", "rule_index": 7, "rule_lead": "Q1/Q2/Q3 retro interview is banned at every module.", "verdict": "PASS", "evidence": "Unaffected by this diff. Human close (lines 39-45) stays 'talk, compare, no prompts', covered by maintainer accept-note (line 97).", "fix_hint": null, "blocking": true},
-    {"compendium": "check_student_facing.md", "rule_index": 8, "rule_lead": "Don't smuggle another module's voice.", "verdict": "PASS", "evidence": "New Prework/KC text stays in M6's practitioner-fluency register; no borrowed mood from another module.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_student_facing.md", "rule_index": 9, "rule_lead": "Don't ask student to manually diff or spot-check Claude's output as error-catching.", "verdict": "PASS", "evidence": "No body instruction in this module-level file asks manual diffing; forcing-function prompts live in the linked exercise file.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_student_facing.md", "rule_index": 10, "rule_lead": "Simulation personas never alone.", "verdict": "N/A", "evidence": "Not a self-study simulation spec.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_student_facing.md", "rule_index": 11, "rule_lead": "No \"What research says\" callout boxes", "verdict": "PASS", "evidence": "No callout box; new citation (line 8) stays one-line inline.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_student_facing.md", "rule_index": 12, "rule_lead": "Student moves stay in conversation with agent.", "verdict": "N/A", "evidence": "No editor/terminal/file-edit primitive instruction in this module-level file.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_student_facing.md", "rule_index": 13, "rule_lead": "Specify which CLAUDE.md layer — every time.", "verdict": "PASS", "evidence": "Unaffected by diff. Line 15 uses fully-qualified './CLAUDE.local.md'.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_student_facing.md", "rule_index": 14, "rule_lead": "No em-dashes. Simple sentences.", "verdict": "PASS", "evidence": "grep '—' over body -> 0 hits (re-checked after this diff's edits).", "fix_hint": null, "blocking": true},
-    {"compendium": "check_student_facing.md", "rule_index": 17, "rule_lead": "Section headers use command verbs when section is about doing something.", "verdict": "PASS", "evidence": "Unaffected by diff; header set unchanged.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_student_facing.md", "rule_index": 18, "rule_lead": "Inline links use target's title, never filename.", "verdict": "REVISE", "evidence": "Not part of the pinned diff, but caught on the full-file link audit this rule owes: three link-text/target-title mismatches, all pre-existing drift from targets that were retitled after this file's links were written (confirmed via `git log -p --follow` on each target). (1) Line 37: link text 'Spot gaps, build the loop' vs exercises/spot-gaps-build-the-loop.md's actual H1 'Map the gaps, read your stack' (retitled at commit d0846eeb, 2026-08-01, per `git log -1 d0846eeb`; the link text is literally the file's OLD title from before that rename, and also collides visually with the module's own H1 'Spot gaps, build the loop' — a student sees the module title repeated as if the exercise link were self-referential). (2) Line 49: link text 'The loop has a name' vs lectures/the-loop-has-a-name.md's actual H1 'The check you built is an eval' (retitled at commit 3605286c, 2026-07-04, per `git log --follow -S'# The check you built is an eval'` on that file). (3) Line 78: link text 'How the best do CI/CD at agent scale' vs supplementary/how-the-best-do-ci-cd.md's actual H1 'How the best do CI/CD: six moves that sharpen the loop' (retitled at commit 03191e5d per `git log --oneline` on that file; grep -in 'agent scale' over the full target file -> 0 hits, confirming the phrase no longer describes the target at all). Harm: rule 18 exists so a reader scanning link text before clicking recognises the target; all three now promise a title the target doesn't have, and (1) additionally risks reading as a broken self-link because it duplicates the module's own H1. fix_hint: swap each link text to the target's current H1 (or a paraphrase of it) — (1) 'Map the gaps, read your stack', (2) 'The check you built is an eval', (3) 'How the best do CI/CD' or a paraphrase of 'six moves that sharpen the loop'.", "fix_hint": "Update the three link texts to match their targets' current H1s (see evidence). Body-text edit — filed as a finding per this dispatch's instructions, not applied.", "blocking": false},
-    {"compendium": "check_student_facing.md", "rule_index": 20, "rule_lead": "Disambiguate shared-word collisions with Claude Code primitives on first student-authored use.", "verdict": "PASS", "evidence": "Unaffected by diff; no new collision-word first-write introduced.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_student_facing.md", "rule_index": 21, "rule_lead": "LLM-vs-agent-vs-Claude vocabulary discipline.", "verdict": "PASS", "evidence": "New text introduces no Claude/agent/LLM word. Pre-existing single body instance (line 57, 'Claude over-credits its own packaging by default', unaffected by this diff) checked against the rule's autonomous-work/thinking split: self-assessment-of-own-output sits closer to 'the agent' (autonomous work) than 'Claude' (addressee) under a strict reading, but this is a single instance (body Claude-count = 1 real hit once 'Claude Code'/'.CLAUDE.local.md' filename occurrences are excluded, vs the rule's stated audit trigger of a heavy imbalance like 10:0), pre-existing, and the file's own maintainer note (line 101) treats this exact bullet as a deliberately-worked, rhymed pair with KC bullet 4 ('do not dedupe either side') — register nuance is non-blocking per the writing template, staying PASS rather than a REVISE on a single low-confidence instance outside this session's diff.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_student_facing.md", "rule_index": "21b", "rule_lead": "Session / task / run split (all trainings).", "verdict": "PASS", "evidence": "Unaffected by diff; 'session'/'task' usage elsewhere in body already correct, no banned noun-run introduced.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_student_facing.md", "rule_index": 22, "rule_lead": "No time-of-day anchors in body prose.", "verdict": "PASS", "evidence": "grep -inE 'tomorrow|overnight|this morning|tonight|next morning|yesterday|last night' over body -> 0 hits.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_student_facing.md", "rule_index": 23, "rule_lead": "Reflection beats stay invisible in flow.", "verdict": "PASS", "evidence": "grep -inE hard-grep phrase list over body -> 0 hits. No contemplative-pause framing in new text.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_student_facing.md", "rule_index": 24, "rule_lead": "No meta-ask when student has already decided.", "verdict": "N/A", "evidence": "No meta-ask prompt shape in this module-level body.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_student_facing.md", "rule_index": 25, "rule_lead": "`.md` is default file type for student artifacts across curriculum.", "verdict": "N/A", "evidence": "No 'Save it as <filename>' instruction in this module-level body.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_student_facing.md", "rule_index": 26, "rule_lead": "Cut NVA: true but not moving student forward.", "verdict": "PASS", "evidence": "New Prework sentence (line 8) changes what the reader expects from the optional pre-read and ties it to the module's own design question ('which checks belong at the seams, so the work does not queue on your read') — not obvious-to-engineer trivia, earns its place. New KC clause (line 61) adds a genuinely new fact (subtraction is part of the durable compounding shape) not already stated by the bullet's first half.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_student_facing.md", "rule_index": 27, "rule_lead": "Body \"read it\" / \"look at it\" / \"notice X\" after chat-print = dead weight.", "verdict": "N/A", "evidence": "No chat-print moment described in this module-level body.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_student_facing.md", "rule_index": 28, "rule_lead": "Forward-callout closer: student as grammatical subject.", "verdict": "PASS", "evidence": "Line 78 (post-diff): '**Going deeper:** [...], for when this loop has to scale past you.' — the moved trailing clause is the rule's own worked canonical example verbatim ('when this loop has to scale past you' is quoted in the compendium itself as the right-shape fix). Subject stays 'you' throughout; no training/curriculum-as-subject leak from the repositioning.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_student_facing.md", "rule_index": 29, "rule_lead": "Operational reminders live at moment of use, not only where introduced.", "verdict": "N/A", "evidence": "Unaffected by diff.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_student_facing.md", "rule_index": 30, "rule_lead": "Echo the training's theory spine before inventing a synonym.", "verdict": "PASS", "evidence": "New KC clause (line 61) 'the durable shape is add, sharpen, delete' directly echoes check_student_facing.md §35's own canonical M2+ Debrief shape vocabulary ('sharpen weak rules, add what's missing, remove what turned out wrong') rather than inventing a synonym — exactly the rule's intended move.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_student_facing.md", "rule_index": 31, "rule_lead": "Name the artifact, not the act.", "verdict": "PASS", "evidence": "Unaffected by diff. Line 27's '\"continue\"-prompt' stays the rule's own canonical example; new line 74 'package it and send it off' uses the training's own 'send-off' vocabulary (established noun throughout M4-M6), not a generic act-verb.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_student_facing.md", "rule_index": 32, "rule_lead": "Name the outcome; don't walk a professional through trivial mechanics.", "verdict": "N/A", "evidence": "No CLI-install/auth/setup instruction anywhere in this file.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_student_facing.md", "rule_index": 33, "rule_lead": "The curriculum does not narrate itself — subject test, then deletion test.", "verdict": "PASS", "evidence": "New Prework sentence (line 8) 'This module meets the design question that follows' has 'This module' as grammatical subject, which would normally fail the subject test — but `## Prework` is one of the rule's own explicitly-named exempt signposting sections ('## What You'll Learn, ## Connections, ## Bridge / ## Next, ## Prework, **The point:**'). The 2026-08-23 narrowing added to this rule scopes only to `## Pre-reads before Module N` headings, which this file does not use (it uses `## Prework`, the exemption's own literal heading), so the narrowing does not reach this instance. Stays exempt, not a violation.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_student_facing.md", "rule_index": 34, "rule_lead": "Four sharing strategies (Agents 101 M7 canonical) — use verbatim.", "verdict": "N/A", "evidence": "AE101 file, not Agents 101 M7.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_student_facing.md", "rule_index": 35, "rule_lead": "Agents 101 M2+ Debrief — canonical shape.", "verdict": "N/A", "evidence": "AE101 file; Human close is separately governed (see rule 7 row).", "fix_hint": null, "blocking": false},
-    {"compendium": "check_student_facing.md", "rule_index": 36, "rule_lead": "Trust the prompt over the scaffold.", "verdict": "N/A", "evidence": "No scaffold-vs-prompt design decision in this module-level body.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_student_facing.md", "rule_index": 37, "rule_lead": "Mood is a design constraint, not a garnish.", "verdict": "PASS", "evidence": "New text stays inside the practitioner-fluency mood (maintainer Meta line 131): line 8's design-question framing and KC bullet 6's subtraction clause are both competence-as-posture, not compliance-feel or credibility-performance.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_strategy_tie_in.md", "rule_index": 1, "rule_lead": "Mood contract named.", "verdict": "PASS", "evidence": "Unaffected by diff. Module mood target (practitioner fluency) is named in maintainer Meta (line 131) and carried in body via lines 25, 43, 76-77; new text (lines 8, 61) doesn't flatten it — both stay competence-register.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_strategy_tie_in.md", "rule_index": 2, "rule_lead": "Epistemic mood ≠ punitive mood.", "verdict": "N/A", "evidence": "M6's mood is practitioner fluency, not unease; rule doesn't apply.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_strategy_tie_in.md", "rule_index": 3, "rule_lead": "Lead with discipline, not failure mode.", "verdict": "PASS", "evidence": "Big Idea ('Every gap you found belongs somewhere durable') and new KC clause ('the durable shape is add, sharpen, delete') both lead with the positive discipline (durable encoding), not a failure word.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_strategy_tie_in.md", "rule_index": 4, "rule_lead": "Strategy-fidelity check.", "verdict": "PASS", "evidence": "This diff is itself a strategy-fidelity fix: the OLD maintainer note (line 93 pre-diff) claimed da Costa's essay was 'reinforced... in Module 5', directly contradicting learn-from-the-test.md's own note ('Module 5 assigns no reading on it and needs none... Do not re-assign da Costa here') and earn-the-trust.md's note (da Costa is the M3→M4 gap read, owned there). The new note and the new Prework text now match all three files' cross-referenced claims exactly (verified: grep -n 'backpressure\\|da costa' across earn-the-trust.md, run-the-first-experiment.md, learn-from-the-test.md, spot-gaps-build-the-loop.md — all four agree da Costa lands at M3→M4, named by M4's closing lecture, not re-assigned at M5 or M6). No downstream teaching moment front-run.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_strategy_tie_in.md", "rule_index": 5, "rule_lead": "Strategic themes recur in Key Concepts.", "verdict": "PASS", "evidence": "New KC bullet 6 clause instances the 'compounding' AE101 theme (subtractive compounding: 'the durable shape is add, sharpen, delete') in the module's own language, alongside the encode-phase content already in that bullet.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_strategy_tie_in.md", "rule_index": 6, "rule_lead": "Key Concepts shape — theme breadcrumbs, not standalone section.", "verdict": "PASS", "evidence": "No `**Remember:**`-style wrapper on the new clause (checked: grep -inE '\\*\\*Remember|Hold onto|Keep in mind|Never forget' over KC section -> 0 hits). New clause is load-bearing tactical content (the encode-phase's own definition), not a decorative breadcrumb tacked onto unrelated content, so the near-verbatim-collision guard (breadcrumbs repeating across adjacent modules) doesn't apply to it structurally; checked anyway against M5's KC bullet 5 ('compounding in a different shape from a rule: nothing loaded, everything checked') — different specific claim, not a verbatim or near-verbatim repeat of M6's 'add, sharpen, delete'. Word-count context in the file's own maintainer note (line 101c) was stale after this addition (173w -> actual 201w) and has been corrected directly as a plainly-wrong internal figure (see diff_summary); the bullet-count guard it supports ('extend-don't-append stands') was itself honoured — the addition extended bullet 6 rather than appending a 7th bullet.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_strategy_tie_in.md", "rule_index": 7, "rule_lead": "What You'll Learn shape — capability register, not syllabus.", "verdict": "PASS", "evidence": "Unaffected by this diff. LO bullets (lines 14-19) lead with theme verbs (Diagnose, Cut, Surface, Map, Encode, Generalize), no Bloom-tag parentheticals, no pedagogical-mechanism tails, no author-defence asides, no didactic taxonomy stamps.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": null, "judge_owned": true, "rule_lead": "Whole-compendium scope call.", "verdict": "N/A", "evidence": "This module file carries no fenced `**Prompt**` blocks and no `{{prompt:<key>}}` markers — grep -n '{{prompt:' over the file -> 0 hits. All student-copied prompts for M6 live in the linked exercise.md and lecture.md files, which are separate audit surfaces. check_prompts.md's mechanics (placeholders, lead-ins, chaining, approval gate, etc.) have no applicable text to score in this file.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_sales_copy.md", "rule_index": null, "judge_owned": true, "rule_lead": "Whole-compendium scope call.", "verdict": "N/A", "evidence": "This is internal curriculum (an AE101 module file), not buyer-facing copy (ai-training site, newsletter, sponsor deck, pricing). check_sales_copy.md's CTO-repeatable / buyer-register rules govern a different surface entirely.", "fix_hint": null, "blocking": false}
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 1,
+      "rule_lead": "Banned words — grep zero-tolerance.",
+      "verdict": "PASS",
+      "evidence": "grep -inE '\\bhonest|\\bdelve|\\blandscape\\b|\\bimportantly|\\bcrucial|\\bsubstrate|\\bleverage|\\bsynergize|\\bparadigm shift' over body (lines 1-83, current HEAD) -> 0 hits. grep -c '—' over body -> 0. Re-run against current file content, not a cached trace.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 2,
+      "rule_lead": "Ritual / ceremony — hard ban",
+      "verdict": "PASS",
+      "evidence": "grep -inE '\\britual\\b|\\bceremony\\b' over body -> 0 hits. grep -inE '\\bpractice\\b' over body -> 0 hits (noun never appears).",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 3,
+      "rule_lead": "No stale markers, no \"fixed\" retrospectives, no session biography.",
+      "verdict": "REVISE",
+      "evidence": "Not scoped to the diff — four maintainer-block passages fail the rule's own tense test (\"does it state a constraint that still binds, or narrate a transition that has already completed\"), and the prior instance's grep (`settled [0-9]|retired|no longer|historically|used to\\b|was changed to`) missed all four because none uses those exact strings — the rule itself warns \"the marker is grammatical, not only lexical.\" (a) Line 88: \"It read *\\\"Skip the opening lecture...\\\"* — right instruction, wrong scope... It also sat four sentences after... so the same callout said read and skip. Now scoped to the moment: ...\" is a before/after narration (quotes the old wording, states what changed) — matches the banned \"now X rather than Y\" verb shape. (b) Line 167 (Source verification stamp, introduced by THIS diff): \"...matching `learn-from-the-test.md`... (was `due:2026-11-25`, a `checked`+6mo computation `check_research_claims.md §11a` bans outright — fixed 2026-08-23, technical audit)\" — literally a 'fixed <date>' retrospective, the rule's own named example, freshly landed by this diff, not pre-existing. (c) Line 184: \"**2026-07-03 (re-sequence pass)** — ...Tasks 2–4 were already applied in the same-day close rework and left in place... This pass only reordered the runtime beat list to agents-last and named the re-sequence...\" — pure session diary, no do-not-reintroduce clause, near-verbatim to the rule's own banned example (\"two things changed beyond re-chunking\"). (d) Line 186: \"**2026-07-05 (cut pass)**... Removed everywhere: both `## Start here` links; the arc-retrospective leap-test outcome, artefact-contract row... the `arc-retrospective-1` prompt plus its four `consumed-by` graph refs; the two audit-script hardcodes... Both files git-rm'd (reversible via history).\" — an itemized commit-message pasted into the file; \"reversible via history\" is the author's own tell that git already carries this. Harm: every future writing judge and every maintainer opening this file pays to read four passages of transition narration that bind nothing going forward (git blame already carries all four); (a) and (d) additionally already have a present-tense sibling note that carries the actual standing constraint (line 91's capstone note pattern for (a)-type notes; line 99's 'pre-close beat, not the ending' note already states in present tense why Human close sits where it does, making (c)/(d)'s historical framing redundant, not load-bearing).",
+      "fix_hint": "Rewrite each as a present-tense standing constraint and drop the narrated transition: (88) 'The rescue line stays scoped to the moment it fires — a blanket claim about all lectures would land on the one student least able to judge it, in a training whose theory layer is a selling point, and it would also contradict the \"read on\" instruction four sentences earlier. Do not restore the general claim, and do not cut the beat.' (167) drop the parenthetical '(was due:2026-11-25... fixed 2026-08-23, technical audit)' entirely — the preceding clause already states the current binding fact. (184)/(186) delete both dated-pass paragraphs outright per §3's own instruction ('TODO closed → delete'); if either cut carries a live do-not-reintroduce (the wiring-lecture and arc-retrospective rationale in 186), keep only that one sentence, present-tense, and drop the itemized removal manifest.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 4,
+      "rule_lead": "Register match.",
+      "verdict": "PASS",
+      "evidence": "New body text (lines 8, 61, 78) stays Boris-direct / Martin-strategic: 'He measures a verifier before trusting it and runs several in parallel'; 'the durable shape is add, sharpen, delete'; 'for when this loop has to scale past you' (line 78 is literally §28's own worked canonical fix example, verbatim). No preening phrase-pairs, no L&D-coach or motivational-poster register introduced.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 5,
+      "rule_lead": "Rough-cut drafts for articles.",
+      "verdict": "N/A",
+      "evidence": "Shipped curriculum module, not an article draft.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 6,
+      "rule_lead": "Credit original when paraphrasing named technique.",
+      "verdict": "PASS",
+      "evidence": "Prework (line 8) credits Klaassen by name + linked title. Frameworks-riffed-on maintainer block (158-163) carries full attribution chain for Ronacher/Cherny/Ramp/Intercom/Klaassen. Capstone sign-off (line 82) covered by its own maintainer accept-note (line 91), unaffected by this diff.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 7,
+      "rule_lead": "Always \"you\", never \"the student\"; teacher framing stays out of body.",
+      "verdict": "PASS",
+      "evidence": "grep -in 'the student' over body -> 0 hits. No delivery-mechanics narration ('the trainer shows...') in body.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 8,
+      "rule_lead": "Don't smuggle terms of art from maintainer into body.",
+      "verdict": "PASS",
+      "evidence": "grep -in 'backpressure' over body -> 0 hits (the diff removed the word from body entirely; it survives only in the maintainer note's own bold label, line 93, metadata about the decision, not a leaked term).",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 9,
+      "rule_lead": "Over-hedge detector.",
+      "verdict": "PASS",
+      "evidence": "New body text carries no reassurance-shaped phrasing. Pre-existing candidate (line 29, 'You lose a bit of value but you can still do this module's exercises. Despair not.') is an honest cost admission, not defensive reassurance, and 'Despair not.' is the rule 4 slang-test's own named-passing example.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 10,
+      "rule_lead": "Verbatim-frame-cite in reference artefact.",
+      "verdict": "N/A",
+      "evidence": "No user-supplied verbatim frame under construction in this file.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 11,
+      "rule_lead": "Cap practitioner attribution at one student-side mention per module.",
+      "verdict": "PASS",
+      "evidence": "Klaassen named once in body (Prework, line 8). da Costa no longer named in body at all. No practitioner named 2+ times in body prose.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 12,
+      "rule_lead": "Punchy framing keeps punch; carve-out lives downstream.",
+      "verdict": "N/A",
+      "evidence": "No overstated punchy slogan in body needing a downstream carve-out paragraph.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 13,
+      "rule_lead": "Value-prop / positioning framing belongs in sales copy...",
+      "verdict": "PASS",
+      "evidence": "grep -in 'vendor' over body -> 0 hits. No 'not an aspirational X' / 'grounded in actual' defensive framing anywhere in body.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 14,
+      "rule_lead": "Watch out for planting jargon too early.",
+      "verdict": "PASS",
+      "evidence": "M6 is the final module (M2+ bare-MN convention long earned). New/changed body terms ('verifier', 'seams', 'add, sharpen, delete') sit at or below M6's earned vocabulary — 'verifier' earned M4/M5; 'add, sharpen, delete' echoes check_student_facing.md §35's own canonical M2+ Debrief-shape vocabulary rather than inventing new jargon.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 15,
+      "rule_lead": "Audit closer when trimming body-prose forcing function.",
+      "verdict": "N/A",
+      "evidence": "The Prework edit removed a reading assignment (da Costa), not a forcing-function sentence; line 8's new closing question resolves its own referents in the same sentence, no dangling pronoun.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 16,
+      "rule_lead": "The `**What happened:**` block is OPTIONAL",
+      "verdict": "N/A",
+      "evidence": "No `**What happened:**` block appears anywhere in this file.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 17,
+      "rule_lead": "No combative verbs about the agent in body prose.",
+      "verdict": "PASS",
+      "evidence": "grep -inE '\\b(bark|order|command|whip|force|drag|push around|boss|shout at|snap at|lecture|scold)\\b' over body -> 0 substantive hits (rescue-callout 'stop M5' governs a session, not a combative act toward the agent).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 18,
+      "rule_lead": "Headers must be literally true about the mechanism.",
+      "verdict": "PASS",
+      "evidence": "Section headers unchanged: Big Idea, Prework, What You'll Learn, Start here, Human close, Key Concepts, Optional challenges, Next — all literal, no spatial metaphor or 'other X' fault.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 19,
+      "rule_lead": "Machine-cadence fat.",
+      "verdict": "PASS",
+      "evidence": "New KC bullet 6 clause checked against all four shapes: no empty negation (the 'subtracts as well as adds' negation is genuinely informative against a reader's likely accumulation-only assumption of compounding); no deictic pointer-pronoun drumroll (line 60's 'The handoff prompt IS the loop' names two concrete nouns, not a 'this/that' pointer, so it survives the legitimate-naming exception); no bold-label echo; no citation duplication.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 20,
+      "rule_lead": "Don't state a count the adjacent list already holds.",
+      "verdict": "PASS",
+      "evidence": "New clause 'the durable shape is add, sharpen, delete' names the three moves inline, no separate numeral before or after, not adjacent to a bulleted list of the same three items.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 21,
+      "rule_lead": "A slogan that is false as stated is not punchy framing.",
+      "verdict": "PASS",
+      "evidence": "grep -inE '\\bonly\\b|\\balways\\b|\\bnever\\b' over body -> lines 27, 59, 61, 70; all scoped to a definitional/verification claim (line 59, KC bullet 4, covered by maintainer accept-note line 101) or a claim about a corpus we control (line 61, 70), not an unscoped world-claim with a live counterexample.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 22,
+      "rule_lead": "A claim binds to every body that states it, not just the one holding the stamp.",
+      "verdict": "PASS",
+      "evidence": "grep -rl 'my-ai-had-already-fixed-the-code-before-i-saw-it' curriculum/ -> this file and learn-from-the-test.md. Both files' freshness stamps now read identically ([checked:2026-05-25 result:CAVEAT due:none], 'dated origin, well outside the window; pre-read for recognition, never current practice') — the correction reached both bodies, not just the stamp-owning one.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 23,
+      "rule_lead": "A rule set reconstructed at session start goes stale inside the session.",
+      "verdict": "N/A",
+      "evidence": "Single-file fire; check_writing.md (modified 2026-08-22) and check_student_facing.md (modified 2026-08-23) both read fresh at session start, no cached checklist carried across targets.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 24,
+      "rule_lead": "One doc per scarce-attention audience; delta-only.",
+      "verdict": "N/A",
+      "evidence": "Not a trainer/exec/sponsor scarce-attention artifact.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 25,
+      "rule_lead": "Trainer-facing text is self-contained.",
+      "verdict": "N/A",
+      "evidence": "This is the module source file's own maintainer block, not a built trainer page (trainer-guide.md / trainer-modules.md).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 26,
+      "rule_lead": "A sentence saying how you'd know points at the outcome, not the nearest artifact.",
+      "verdict": "PASS",
+      "evidence": "No new 'X tells you whether Y' clause in the diff. Closest pre-existing candidate (line 45, self-study 'that's the marker') is a light completion marker, not a self-witnessing verification claim.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 1,
+      "rule_lead": "Aspirational destination, never corrective gap.",
+      "verdict": "PASS",
+      "evidence": "No corrective-gap framing (\"you're missing X\") anywhere in body. No ability-tier phrasing ('at your scale', 'a senior would already know').",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 2,
+      "rule_lead": "Earn every technical term on first use.",
+      "verdict": "PASS",
+      "evidence": "M6 is past M2 (bare 'M5'/'M6' fine per the rule's own carve-out). New Prework text introduces no unearned term ('verifier' earned M4/M5). 'seams' (line 8) is the training's own established spatial metaphor for check placement, carried from M4's backpressure lecture per the maintainer note (line 93).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 3,
+      "rule_lead": "Business-audience word ban (Agents 101 default).",
+      "verdict": "N/A",
+      "evidence": "Rule scoped 'Agents 101 default'; file is AE101, governed by check_writing.md rule 14 instead.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 4,
+      "rule_lead": "Memory vs context — use deliberately.",
+      "verdict": "PASS",
+      "evidence": "'memory' (line 14) used in the persistent-artifact sense throughout; 'context' does not appear in body.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 5,
+      "rule_lead": "Golden path only in body — exception applies.",
+      "verdict": "PASS",
+      "evidence": "The two rescue blockquotes (lines 27, 29) are the file's own accept-noted exception (maintainer line 95, 'Future judges should not re-flag').",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 6,
+      "rule_lead": "Trust Claude's defaults for structure.",
+      "verdict": "N/A",
+      "evidence": "No prompt body in this module-level file.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 7,
+      "rule_lead": "Q1/Q2/Q3 retro interview is banned at every module.",
+      "verdict": "PASS",
+      "evidence": "Human close (lines 39-45) stays 'talk, compare, no prompts', covered by maintainer accept-note (line 97, check_pedagogy.md §27 carve-out).",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 8,
+      "rule_lead": "Don't smuggle another module's voice.",
+      "verdict": "PASS",
+      "evidence": "New Prework/KC text stays in M6's practitioner-fluency register; no borrowed mood from another module.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 9,
+      "rule_lead": "Don't ask student to manually diff or spot-check Claude's output as error-catching.",
+      "verdict": "PASS",
+      "evidence": "No body instruction in this module-level file asks manual diffing; forcing-function prompts live in the linked exercise file, a separate audit surface.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 10,
+      "rule_lead": "Simulation personas never alone.",
+      "verdict": "N/A",
+      "evidence": "Not a self-study simulation spec.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 11,
+      "rule_lead": "No \"What research says\" callout boxes",
+      "verdict": "PASS",
+      "evidence": "No callout box anywhere in body; Prework citation (line 8) stays one-line inline.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 12,
+      "rule_lead": "Student moves stay in conversation with agent.",
+      "verdict": "N/A",
+      "evidence": "No editor/terminal/file-edit primitive instruction in this module-level file.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 13,
+      "rule_lead": "Specify which CLAUDE.md layer — every time.",
+      "verdict": "PASS",
+      "evidence": "Line 15 uses fully-qualified './CLAUDE.local.md'.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 14,
+      "rule_lead": "No em-dashes. Simple sentences.",
+      "verdict": "PASS",
+      "evidence": "grep -c '—' over body (lines 1-83) -> 0.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 17,
+      "rule_lead": "Section headers use command verbs when section is about doing something.",
+      "verdict": "PASS",
+      "evidence": "All non-canonical headers already imperative or exempt; header set unchanged by this diff.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 18,
+      "rule_lead": "Inline links use target's title, never filename.",
+      "verdict": "REVISE",
+      "evidence": "Three link-text/target-title mismatches, verified fresh against current HEAD (not a carried-forward claim): (1) line 37, link text 'Spot gaps, build the loop' — identical to this module's own H1 (line 1) — vs `curriculum/exercises/spot-gaps-build-the-loop.md`'s actual H1 'Map the gaps, read your stack' (verified: `head -1` on target). (2) line 49, link text 'The loop has a name' vs `curriculum/lectures/the-loop-has-a-name.md`'s actual H1 'The check you built is an eval' (verified: `head -1`). (3) line 78, link text 'How the best do CI/CD at agent scale' vs `curriculum/trainings/agentic-engineering-101/supplementary/how-the-best-do-ci-cd.md`'s actual H1 'How the best do CI/CD: six moves that sharpen the loop' — `grep -in 'agent scale'` over the full target file -> 0 hits, the phrase describes nothing in the target at all. Harm: rule 18 exists so a reader scanning link text before clicking recognises the target; all three now promise a title the target doesn't carry, and (1) additionally reads as a broken self-link because it duplicates the module's own H1 verbatim.",
+      "fix_hint": "Swap each link text to the target's current H1 (or a sentence-case paraphrase): (1) 'Map the gaps, read your stack', (2) 'The check you built is an eval', (3) 'How the best do CI/CD' or a paraphrase of 'six moves that sharpen the loop'.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 20,
+      "rule_lead": "Disambiguate shared-word collisions with Claude Code primitives on first student-authored use.",
+      "verdict": "PASS",
+      "evidence": "No new collision-word first-write introduced by this diff.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 21,
+      "rule_lead": "LLM-vs-agent-vs-Claude vocabulary discipline.",
+      "verdict": "PASS",
+      "evidence": "New text introduces no Claude/agent/LLM word. Pre-existing single body instance (line 57, 'Claude over-credits its own packaging by default') is unaffected by this diff and is a single low-confidence instance, not the rule's stated heavy-imbalance audit trigger.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": "21b",
+      "rule_lead": "Session / task / run split (all trainings).",
+      "verdict": "PASS",
+      "evidence": "'session'/'task' usage in body already correct ('Open a fresh session', 'the same task'); no banned noun-run introduced.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 22,
+      "rule_lead": "No time-of-day anchors in body prose.",
+      "verdict": "PASS",
+      "evidence": "grep -inE 'tomorrow|overnight|this morning|tonight|next morning|yesterday|last night' over body -> 0 hits.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 23,
+      "rule_lead": "Reflection beats stay invisible in flow.",
+      "verdict": "PASS",
+      "evidence": "grep -inE hard-grep phrase list ('sit with', 'take a moment', 'let it land', 'breathe', 'pause and reflect', etc.) over body -> 0 hits.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 24,
+      "rule_lead": "No meta-ask when student has already decided.",
+      "verdict": "N/A",
+      "evidence": "No meta-ask prompt shape in this module-level body.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 25,
+      "rule_lead": "`.md` is default file type for student artifacts across curriculum.",
+      "verdict": "N/A",
+      "evidence": "No 'Save it as <filename>' instruction in this module-level body.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 26,
+      "rule_lead": "Cut NVA: true but not moving student forward.",
+      "verdict": "PASS",
+      "evidence": "New Prework sentence (line 8) ties the pre-read directly to the module's own design question, not obvious-to-engineer trivia. New KC clause (line 61) states a genuinely new fact (subtraction is part of the durable compounding shape) not already carried by the bullet's first half.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 27,
+      "rule_lead": "Body \"read it\" / \"look at it\" / \"notice X\" after chat-print = dead weight.",
+      "verdict": "N/A",
+      "evidence": "No chat-print moment described in this module-level body.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 28,
+      "rule_lead": "Forward-callout closer: student as grammatical subject.",
+      "verdict": "PASS",
+      "evidence": "Line 78 (post-diff): '...for when this loop has to scale past you' — this is the rule's own worked canonical fix example, verbatim. Subject stays 'you' throughout.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 29,
+      "rule_lead": "Operational reminders live at moment of use, not only where introduced.",
+      "verdict": "N/A",
+      "evidence": "No per-module operational setting (thinking-effort, mode tag, worktree convention) restated in this diff.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 30,
+      "rule_lead": "Echo the training's theory spine before inventing a synonym.",
+      "verdict": "PASS",
+      "evidence": "New KC clause 'the durable shape is add, sharpen, delete' directly echoes check_student_facing.md §35's own canonical M2+ Debrief vocabulary rather than inventing a synonym.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 31,
+      "rule_lead": "Name the artifact, not the act.",
+      "verdict": "PASS",
+      "evidence": "Line 27's '\"continue\"-prompt' stays the rule's own canonical example (unaffected by diff); line 74 'package it and send it off' uses the training's own established 'send-off' vocabulary.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 32,
+      "rule_lead": "Name the outcome; don't walk a professional through trivial mechanics.",
+      "verdict": "N/A",
+      "evidence": "No CLI-install/auth/setup instruction anywhere in this file.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 33,
+      "rule_lead": "The curriculum does not narrate itself.",
+      "verdict": "PASS",
+      "evidence": "New Prework sentence (line 8, 'This module meets the design question that follows') has 'This module' as grammatical subject, which would normally fail the subject test — but `## Prework` is one of the rule's own explicitly-named exempt signposting sections. The 2026-08-23 narrowing scopes only to `## Pre-reads before Module N` headings, which this file does not use (its heading is the exempt `## Prework` itself), so the narrowing does not reach this instance. No promise about a LATER beat's own predicate either (the sentence describes what M6 itself does, not what a future module will do), so the 2026-08-23 predicate-leak addendum doesn't reach it.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 34,
+      "rule_lead": "Four sharing strategies (Agents 101 M7 canonical).",
+      "verdict": "N/A",
+      "evidence": "AE101 file, not Agents 101 M7.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 35,
+      "rule_lead": "Agents 101 M2+ Debrief — canonical shape.",
+      "verdict": "N/A",
+      "evidence": "AE101 file; Human close separately governed (see rule 7 row).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 36,
+      "rule_lead": "Trust the prompt over the scaffold.",
+      "verdict": "N/A",
+      "evidence": "No scaffold-vs-prompt design decision in this module-level body.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 37,
+      "rule_lead": "Mood is a design constraint, not a garnish.",
+      "verdict": "PASS",
+      "evidence": "New text stays inside the practitioner-fluency mood (maintainer Meta line 131): line 8's design-question framing and KC bullet 6's subtraction clause are competence-as-posture, not compliance-feel or credibility-performance.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 1,
+      "rule_lead": "Mood contract named.",
+      "verdict": "PASS",
+      "evidence": "Module mood target (practitioner fluency) named in maintainer Meta (line 131), carried in body via lines 25, 43, 76-77; new text (lines 8, 61) stays competence-register, doesn't flatten it.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 2,
+      "rule_lead": "Epistemic mood ≠ punitive mood.",
+      "verdict": "N/A",
+      "evidence": "M6's mood is practitioner fluency, not unease.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 3,
+      "rule_lead": "Lead with discipline, not failure mode.",
+      "verdict": "PASS",
+      "evidence": "Big Idea ('Every gap you found belongs somewhere durable') and new KC clause ('the durable shape is add, sharpen, delete') both lead with the positive discipline, not a failure word.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 4,
+      "rule_lead": "Strategy-fidelity check.",
+      "verdict": "PASS",
+      "evidence": "This diff is itself a strategy-fidelity fix: verified grep -n 'backpressure\\|da costa' across earn-the-trust.md, run-the-first-experiment.md, learn-from-the-test.md, spot-gaps-build-the-loop.md — all four now agree da Costa lands at M3→M4, named by M4's closing lecture, not reassigned at M5 or M6. No downstream teaching moment front-run.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 5,
+      "rule_lead": "Strategic themes recur in Key Concepts.",
+      "verdict": "PASS",
+      "evidence": "New KC bullet 6 clause instances the 'compounding' AE101 theme (subtractive compounding) in the module's own language.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 6,
+      "rule_lead": "Key Concepts shape — theme breadcrumbs, not standalone section.",
+      "verdict": "PASS",
+      "evidence": "grep -inE '\\*\\*Remember|Hold onto|Keep in mind|Never forget' over KC section -> 0 hits. New clause is load-bearing tactical content (the encode-phase's own definition), not a decorative breadcrumb. Maintainer note's word-count context (line 101, 'KC slide at 201w/6b') matches the current bullet 6 content — verified consistent, not stale.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 7,
+      "rule_lead": "What You'll Learn shape — capability register, not syllabus.",
+      "verdict": "PASS",
+      "evidence": "Unaffected by this diff. LO bullets (14-19) lead with theme verbs (Diagnose, Cut, Surface, Map, Encode, Generalize), no Bloom-tag parentheticals, no pedagogical-mechanism tails, no didactic taxonomy stamps.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": null,
+      "rule_lead": "Whole-compendium scope call.",
+      "verdict": "N/A",
+      "evidence": "grep -n '{{prompt:' over the file -> 0 hits; no fenced `**Prompt**` blocks either. All student-copied prompts for M6 live in the linked exercise.md and lecture.md files, separate audit surfaces.",
+      "fix_hint": null,
+      "blocking": false,
+      "judge_owned": true
+    },
+    {
+      "compendium": "check_sales_copy.md",
+      "rule_index": null,
+      "rule_lead": "Whole-compendium scope call.",
+      "verdict": "N/A",
+      "evidence": "This is internal curriculum (an AE101 module file), not buyer-facing copy (site, newsletter, sponsor deck, pricing).",
+      "fix_hint": null,
+      "blocking": false,
+      "judge_owned": true
+    }
   ],
   "blocking_findings_count": 0,
-  "todos_count": 1,
-  "notes": "Read the diff via `git diff 0dea491e..HEAD -- <file>` (grep-safe form, not the bullet-dropping `^[-+][^-+]` filter). Maintainer accept-notes found and respected, none contradicted by this diff: capstone sign-off exception (line 91, 2026-05-03), rescue-callout reword (line 88, 2026-08-15), golden-path exception (line 95), Human-close mode-defining-cue carve-out (line 97), Human-close-is-a-pre-close-beat note (line 99, 2026-08-19), Independence-axis KC note (line 101, 2026-08-09) — this last one's own word-count context I corrected directly per the dispatch's internal-file-fix allowance (173w -> 201w; not a rule violation, a stale figure). Two items outside writing-class lane, noted rather than filed: (a) the Klaassen source's freshness-stamp result:/due: mismatch between this file (OK/due:2026-11-25) and learn-from-the-test.md (CAVEAT/due:none) for the same source id — check_research_claims.md territory, pre-existing, not touched by this diff. (b) A concurrent session is actively editing learn-from-the-test.md (M5) while this audit ran; that file was only read for cross-reference verification, never modified by this session.",
+  "todos_count": 2,
+  "notes": "Instance regenerated from scratch against current HEAD (534a5e84) — the previous instance on disk (body_sha c3df0579...) was stale: it was computed against an intermediate commit before a4920c15, 2f97ca2d, 27f92c59 and b55cd28b landed, and its body_sha did not match the current file. Re-read the full diff (`git diff 0dea491e..HEAD`, using the grep-safe `^[-+]` filter, not the bullet-dropping `^[-+][^-+]` one) and the full current file (not only the diff region) per the dispatch instruction not to scope the read to the diff. Two REVISE findings survive: check_writing.md §3 (four maintainer-block passages narrate a completed transition instead of stating a standing constraint, one of them freshly introduced by this diff at line 167) and check_student_facing.md §18 (three pre-existing link-text/target-title mismatches, re-verified fresh against the current target files' actual H1s). Both are non-blocking per the writing template's blocking list (neither §3 nor §18 is on it), so top-level verdict stays PASS. Cross-file verification done in-lane: the Klaassen source id's freshness stamp now reads identically (CAVEAT/due:none) in this file and learn-from-the-test.md, confirming check_writing.md §22's cross-body correction requirement was honoured.",
   "accept_notes_found": [
     "Line 86: confidence after-measurement lives outside the workbook, trainer-administered; do not add a rating beat to body.",
-    "Line 88: rescue callout's lecture line reworded 2026-08-15 (Antti) — scoped to the room-parallelism moment, not a general lecture-skipping doctrine; keep conditional.",
+    "Line 88: rescue callout's lecture line reworded 2026-08-15 (Antti) — scoped to the room-parallelism moment, not a general lecture-skipping doctrine; keep conditional. (Note: this same passage is separately flagged under check_writing.md §3 for its journey-narration framing — the accept-note covers the SCOPE decision, not the historical-tense prose carrying it.)",
     "Line 91: capstone-close sign-off is a deliberate exception to check_writing.md rule 6 (creator-name ban), added 2026-05-03; future judges should not re-flag.",
     "Line 95: M6 opener rescue + accept-loss callouts are a deliberate exception to check_student_facing.md rule 5 (golden path only in body); future judges should not re-flag.",
     "Line 97: Human close's 'talk, compare, no prompts' stays in body under check_pedagogy.md §27's mode-defining-cue carve-out (maintainer call); future judges should not re-flag.",
     "Line 99: '## Human close' is a deliberate pre-close beat, not the module's ending (2026-08-19, Antti-directed); do not move it later, do not soften its framing; future judges should not re-flag.",
-    "Line 101: Independence-axis Key Concept note (2026-08-09, Antti-directed) names bullet 4 as the deliberate kernel/failure pairing, bullet 2's over-credit line as a deliberate rhymed pair (do not dedupe), and the KC slide's word/bullet-cap guard (extend-don't-append) — word count corrected in this session, guard itself honoured by the diff.",
+    "Line 101: Independence-axis Key Concept note (2026-08-09, Antti-directed) names bullet 4 as the deliberate kernel/failure pairing and bullet 2's over-credit line as a deliberate rhymed pair (do not dedupe); word/bullet count (201w/6b) verified current, not stale.",
     "Line 182: opener order (2 frontiers before Story of Module 6) is maintainer-confirmed 2026-08-12 as correct; a stale copy of the strategy doc says otherwise — the module file is the decision, do not reorder to match the doc."
   ]
 }

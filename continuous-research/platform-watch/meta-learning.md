@@ -65,6 +65,12 @@ Proven patterns for how to research effectively. Promoted from observations when
 
 Each entry: cycle number, date, what the researcher learned about researching.
 
+### Cycle 193 — 2026-08-23
+
+Direct article fetch caught a zombie content problem that search-result summaries would have missed: arturmarkus.com published a "first €47M EU fines" story that search snippets presented as real enforcement news, but fetching the article revealed it "deliberately withholds company identities" and is speculative/fictional. Learning: for regulatory enforcement claims (especially firsts — "first fine," "first enforcement action"), always fetch the source directly rather than trusting the search snippet framing, because fictional/speculative AI-generated "news" is now mimicking real enforcement reporting closely enough to fool snippet-level review.
+
+Cross-platform verification of multiple Watch items in a single cycle is more efficient than platform-by-platform tracking when items converge on the same deadline (Cursor/SpaceX Q3 close, Assistants API T-3, EU AI Act T+21 all needed one cycle each). The cycle resolved four open Watch items simultaneously with roughly the same query count that a single-platform cycle would use. Learning: when 3+ Watch items share a deadline cluster, run a dedicated cross-platform cycle rather than waiting for each platform's scheduled cycle to cover it.
+
 ### Cycle 192 — 2026-08-22
 
 Live-fetching the primary source (AI Now Institute PoC publication) resolved a three-cycle ambiguity in one query: prior cycles noted "no CVE acknowledgment" without knowing whether this meant "in progress" or "out of scope." The source document itself contained both the fix framing ("not a version bump — architectural change required") and the disclosure scope statement ("not within scope of security disclosure policies"). Learning: when repeated absence of CVE acknowledgment is the finding, fetching the primary PoC document directly is more productive than searching for Anthropic's response — it often contains the vendor's own framing of the gap.

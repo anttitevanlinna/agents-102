@@ -14,8 +14,14 @@ answers:
 
 # OpenAI — ChatGPT / Codex / Operator — Platform State
 
-Last updated: 2026-08-18 (cycle 189)
-OODA cycles: 38
+Last updated: 2026-08-23 (cycle 193)
+OODA cycles: 42
+
+**Cycle 193 updates (August 23, 2026) — ASSISTANTS API T-3 LOW SURFACE PANIC / DOUBLE MIGRATION BURDEN CONFIRMED (Prompt Dashboard → November 30 second deprecation; 5 community replies at T-3; stateless-by-default confirmed; Azure=Foundry, OpenAI=Responses splits stand):**
+
+**⚠️ ASSISTANTS API SHUTDOWN AUGUST 26 — T-3 DAYS — DOUBLE MIGRATION BURDEN DISCOVERED; LOW SURFACE PANIC.** Three days to hard stop and developer community shows measured problem-solving, not panic. **New finding: double migration burden** — the Prompt Dashboard path (often offered as "easier") leads to Prompt Objects, which face their own deprecation November 30, 2026 — teams following this "easier" path will migrate twice within 4 months. Only 5 community replies to the "Assistants API → Responses API: this is not a 1:1 migration" thread at T-3 — low surface panic. Architecture confirmed: Responses API = stateless-by-default (explicit `previous_response_id` chaining required, developer owns state), synchronous-by-default. Instructions parameter remains a first-class API field (no Prompt Dashboard required for this). Azure path = Microsoft Foundry Agents (NOT Responses API) — two distinct migration ecosystems. August 26 Day-0 production failure reports (app downtime, public incidents) are the next data point. ([community.openai.com Aug 8 2026](https://community.openai.com/t/assistants-api-responses-api-this-is-not-a-1-1-migration/1371092) — [practitioner direct]; [community.openai.com page 2 Aug 2026](https://community.openai.com/t/assistants-api-beta-deprecation-august-26-2026-sunset/1354666?page=2) — [practitioner direct]; [learn.microsoft.com Aug 2026](https://learn.microsoft.com/en-us/answers/questions/5790094/will-azure-openai-assistants-api-specifically-be-d) — [vendor documentation])
+
+**Watch Cycle 194:** Assistants API Day-0 (August 26 — public production failures, X.com/HN incident reports?); reckoning week August 26–September 5; any OpenAI emergency extension or grace period.
 
 **Cycle 189 updates (August 18, 2026) — ASSISTANTS API T-8 HARD STOP CONFIRMED NO EXTENSION (August 14 product update was last realistic announcement window; no extension signal present; Zoho 100+ page thread is only enterprise panic proxy; hard stop August 26 stands):**
 

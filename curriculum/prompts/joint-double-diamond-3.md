@@ -18,7 +18,7 @@ Write my initial stance on the sponsor challenge.
 
 Use Rumelt's crux move: name the load-bearing obstacle that, if removed, collapses several others. Then name the direction I currently favor.
 
-Your ground is my own memory/, sources/, agents/, module-1/ through module-7/ outputs, plus my context-manifest.md so you know what I don't have. Do not read other participants' stance.md files yet. This first note should carry my agent's own position.
+Your ground is my own memory/, sources/, agents/, module-1/ through module-7/ outputs — including module-7/monday.md — plus my context-manifest.md so you know what I don't have. Do not read other participants' stance.md files yet. This first note should carry my agent's own position.
 
 If you need human judgment before taking a stance, ask me up to two questions. After I answer, write the stance.
 

@@ -76,7 +76,7 @@ Karpathy's LLM Wiki post, and the candidate Lindenberg memory-architecture piece
 [Module 2 prework](lectures/module-2-prework.md)
 
 ## Next
-You just made great output AND packaged what you learned into a file the agent can re-read next time. That's the move that compounds. Module 2 takes the same idea and systematises it (the memory, the agents, the room rules) so every future module's work builds on every previous one.
+The output now travels with a file the agent can re-read next time. That's the move that compounds. Module 2 takes the same idea and systematises it (the memory, the agents, the room rules) so every future module's work builds on every previous one.
 
 <!-- maintainer -->
 

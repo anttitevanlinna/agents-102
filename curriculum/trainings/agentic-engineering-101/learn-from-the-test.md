@@ -23,6 +23,16 @@ You sent off an un-packaged session. You walk in with the artefact in front of y
 
 > **Long sessions, short reads.** The M1 countermove rides along: tell the agent what output you want. Ranked findings first, detail on request, the full record on disk.
 
+## Say what done-done means
+
+The session you sent off declared done at some point. Against what? Nothing in the repo said. A done-done definition is a small context trick that buys repeated fast verification: every run, and every check you build, measures against the same line.
+
+This one runs in the session you sent off. Its answer lands in the transcript you are about to read.
+
+{{prompt:ae101-m5-done-done}}
+
+Prompting this over and over is not the way. The real move is putting the definition in `./CLAUDE.md` once, where every session reads it and no session has to be told. On your own repo that is a PR-sized change; `./CLAUDE.local.md` first if you want to live with it a week.
+
 [Lecture: Reading the return](lectures/reading-the-return.md)
 
 [Lecture: Learning through contrast](lectures/learning-through-contrast.md)
@@ -110,6 +120,8 @@ Module 6 reads the packaged session: subtler misses, subtler drift. The question
 
 <!-- maintainer -->
 
+**Done-done opener (Antti-directed 2026-08-23).** `## Say what done-done means` sits between the Start-here aside and *Reading the return*, and it needs a finished M4 send-off: the student pastes `ae101-m5-done-done` into that session, so the per-point audit lands in the transcript `diagnose-and-resend` reads. That is the trick: the transcript inspects itself before M5 reads it, with the original context still live. Question form rather than a file write for that reason. The four points are Antti's basic done-done. The closing paragraph names the compounding half (definition goes to `./CLAUDE.md` once; prompting it repeatedly is the anti-pattern) and keeps the M1 personal-first pattern for the team file. Trainer may demo on the screen first; the answer must be the student's own session's (`check_lectures.md` §6 carve-out), so do not convert to trainer-only. Do not add a done-means criterion or a write-to-CLAUDE.md prompt; the student decides whether and where the definition lands.
+
 **`## Inspect your results` stays prose, no fence (accepted 2026-08-20).** Flagged as M5's only loop-closing diagnostic sitting outside a prompt block. It is deliberate. The section renders only for the no-M6 variant (`<!--flag:no-module:spot-gaps-build-the-loop-->`), and it fires after the sitting ends, on a return whose artefact paths do not exist at authoring time, so a fence would have to invent them. The module's prompts belong to `diagnose-and-resend`; this is the close that hands a no-M6 student the loop in their own words. Do not add a fence, and do not cut it.
 
 **Slide-size splits (2026-07-10, hand slides-audit):** two pre-existing oversized chunks split at conceptual seams, zero wording changes — `## Re-send the same task, packaged` + `## Send it off and read the report cold` carve the re-send narrative out of `## Key Concepts` (was 430w); `## Run the fork from the original repo` carves execution out of the worktree rationale (was 309w). Headers are command-verb, build-squint checked. Key Concepts now ends at its sixth bullet as the section name promises.
@@ -148,7 +160,7 @@ header and handle per slide, never read bullets aloud. Two registers, one instru
 **Meta (trainer):**
 - **Primary Bloom's level:** Analyze + Evaluate + Create
 - **Pacing:** Runtime is computed — `node scripts/calculate-time.js learn-from-the-test`. Trainer demos slowly, room copy-pastes concurrently. The closing lecture sits after Debrief + Re-send, where M4 has no closer of its own — it names Ronacher's three-pattern from felt evidence, so it cannot come earlier.
-- **Transitions:** connections 5 @start "Connections" · debrief 12 @after:diagnose-and-resend "Debrief" · bridge 3 @end "Bridge"
+- **Transitions:** connections 5 @start "Connections" · done-done 3 @start "Say what done-done means" · debrief 12 @after:diagnose-and-resend "Debrief" · bridge 3 @end "Bridge"
 - **Fork is a band because the spread is real.** Machine time is ~1 min (`ae101-m5-worktree-setup` runner turns); the rest is coordinates-read, copy-verification and Day-2 re-entry fumble. Ceiling is judgement, not observation.
 - **Charge:** reading-the-return 5 — it is an in-room M5 opener, charged since 2026-08-12. It was previously charged 0 on the premise that M4's Debrief handed it out as a pre-read; M4 has no Debrief, nothing made it prework, and M5's body asserted the student had read it.
 - **Prep / bridge timing:** Entis/Klaassen interview 30 min; Klaassen compound-engineering guide 15–20 min; Klaassen verifier article 10 min.

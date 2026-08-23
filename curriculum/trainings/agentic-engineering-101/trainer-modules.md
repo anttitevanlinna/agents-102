@@ -376,14 +376,15 @@ Never cut: the send-off itself, and never rescue the un-packaged run. A weak fir
 
 **Flow.**
 
-1. Lectures — [Reading the return](./#lectures-reading-the-return) (in-room opener, full read — not a pre-read) + [Learning through contrast](./#lectures-learning-through-contrast)
-2. Your mid-run worries hint at missing checks — short module-body beat: the mid-run worry from M4 is tested against the return before it earns a check
-3. Exercise — [Fork the worktree, carry the evidence](./#exercises-fork-the-worktree) (15 min): runs from the ORIGINAL repo, the worktree doesn't exist yet. Claude reads the `Run coordinates` block in `task.md` and forks `../<repo>-m5` from the `m4/<slug>` starting-point commit, copying `CLAUDE.local.md` and `observations/` across
-4. Exercise — [Diagnose and re-send](./#exercises-diagnose-and-resend) (68 min, Phases 1–5, in a new session in the worktree). Phase 5 is the re-send and now sits inside the exercise: a new session in the worktree by default (fresh context; the exercise scrollback is heavy), or clear the exercise session in place; then the packaged re-send prompt, and the walk-away report gets read cold. **Four-sitting cut:** the exercise's own last section, *Bring the worktree's work home*, fires here — `CLAUDE.local.md` and `observations/` copied back to the original repo at the end of the exercise, not at the module's close
-5. Debrief (12 min)
-6. Lecture — [What packaging is](./#lectures-what-packaging-is) (closer; the three-pattern earned from felt evidence — don't squeeze it)
-7. Lecture — [The gate is a claim too](./#lectures-the-gate-is-a-claim) (final closer, 9 min; the verifier the student just built is a claim, not proof; closes on the delegation-frontier zoom-out)
-8. Four-sitting close only: *Inspect your results* (module body — how to read the packaged return once it lands after the sitting: same three lenses, worries tested against the artefact, what recurs names the next check), then *Back to the map, one last time* (opens on the `map-engine-m4-open` figure; the wall, what crosses to the team, and how)
+1. Say what done-done means — opener before the lectures; each student pastes `ae101-m5-done-done` into their M4 send-off session so the per-point audit is in the transcript they are about to read. Demo it on the screen first if the room needs the shape. Needs a finished M4 session; a student without one skips it and reads the return cold.
+2. Lectures — [Reading the return](./#lectures-reading-the-return) (in-room opener, full read — not a pre-read) + [Learning through contrast](./#lectures-learning-through-contrast)
+3. Your mid-run worries hint at missing checks — short module-body beat: the mid-run worry from M4 is tested against the return before it earns a check
+4. Exercise — [Fork the worktree, carry the evidence](./#exercises-fork-the-worktree) (15 min): runs from the ORIGINAL repo, the worktree doesn't exist yet. Claude reads the `Run coordinates` block in `task.md` and forks `../<repo>-m5` from the `m4/<slug>` starting-point commit, copying `CLAUDE.local.md` and `observations/` across
+5. Exercise — [Diagnose and re-send](./#exercises-diagnose-and-resend) (68 min, Phases 1–5, in a new session in the worktree). Phase 5 is the re-send and now sits inside the exercise: a new session in the worktree by default (fresh context; the exercise scrollback is heavy), or clear the exercise session in place; then the packaged re-send prompt, and the walk-away report gets read cold. **Four-sitting cut:** the exercise's own last section, *Bring the worktree's work home*, fires here — `CLAUDE.local.md` and `observations/` copied back to the original repo at the end of the exercise, not at the module's close
+6. Debrief (12 min)
+7. Lecture — [What packaging is](./#lectures-what-packaging-is) (closer; the three-pattern earned from felt evidence — don't squeeze it)
+8. Lecture — [The gate is a claim too](./#lectures-the-gate-is-a-claim) (final closer, 9 min; the verifier the student just built is a claim, not proof; closes on the delegation-frontier zoom-out)
+9. Four-sitting close only: *Inspect your results* (module body — how to read the packaged return once it lands after the sitting: same three lenses, worries tested against the artefact, what recurs names the next check), then *Back to the map, one last time* (opens on the `map-engine-m4-open` figure; the wall, what crosses to the team, and how)
 
 **Exercise goals.**
 

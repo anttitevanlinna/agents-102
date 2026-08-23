@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# chain-agents-101.sh — arrange, then drive Agents 101 prework -> M1 -> M2 in
+# chain-agents-101.sh — arrange, then drive Agents 101 prework through M6 in
 # one growing training dir (fresh claude session per module, same cwd).
 #
 # PURPOSE (read this): the assertions are the floor, not the point. This chain
@@ -10,17 +10,14 @@
 # out/. After a green-or-red run, read the transcripts against the prompt
 # sequence and log findings in a101-runner-findings.md.
 #
-# Vertical slice: prework + M1 + M2. M3-M8 deferred (M8 explicitly OUT — needs
-# a synthetic peer room).
-#
-# Slice grows as modules land: prework + M1 + M2 + M3 (… M4-M6 next). M7/M8
-# deferred (M8 explicitly OUT — needs a synthetic peer room). The chain runs
+# Scenarios exist through M6. M7 is not yet modeled; M8 is explicitly out
+# because it needs a synthetic peer room. The chain runs
 # LIVE end to end so each module builds on the prior module's real on-disk
 # output — no entry-state seeding, because the cross-module handoff seams are
 # exactly what this runner exists to catch. Default --to stays m2 (the validated
-# floor); pass --to m3 to extend once M3 is confirmed green.
+# floor); pass --to m3, m4a, m4b, m5, or m6 to extend the live run.
 #
-# Usage: chain-agents-101.sh [--from prework|m1|m2|m3] [--to ...] [--no-arrange]
+# Usage: chain-agents-101.sh [--from prework|m1|m2|m3|m4a|m4b|m5|m6] [--to ...] [--no-arrange]
 set -euo pipefail
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 

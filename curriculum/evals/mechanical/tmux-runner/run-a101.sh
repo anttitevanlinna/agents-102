@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# run-a101.sh — drive Agents 101 (prework | m1 | m2) end-to-end against the
+# run-a101.sh — drive one Agents 101 scenario (prework through M6) against the
 # synthetic persona kit. One parameterized runner, not three near-copies.
 #
 # Agents 101 has no code SUT — it has a *person*. The synthetic persona kit
@@ -21,7 +21,7 @@
 # rules files) not git commits — so assertions are file-exists + grep-evidence
 # + mtime-advanced, not new-commit/tree-hash.
 #
-# Usage: run-a101.sh --module {prework|m1|m2} [--cwd DIR] [--material DIR]
+# Usage: run-a101.sh --module {prework|m1|m2|m3|m4a|m4b|m5|m6} [--cwd DIR] [--material DIR]
 set -euo pipefail
 
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"

@@ -80,33 +80,13 @@ Don't split M4 across the days. The M1-M2-M4 / M5-M3-M6 reorder exists; it's a c
 
 {{runtime-map:getting-going}}
 
-**Mood.** Joyful creation, *"it works, on my repo."* Check: the student narrates the fix as a TDD move they'd have done anyway. Fix: name what was agentic — orient → fix → close → compound on their repo, a close-out in their team's register, a rules file born from the session.
+**Prep.** Demo on a repo where tests run locally; tell students the same.
 
-**Cues.** Two minutes on the room-agreement slides, inside the opening ten; not a policy lecture. *How this training was built* is Antti's first-hand story: read it in narrator voice, the opening line says so. Bug pick is the one variable that breaks M1: too small (30-second fix, nothing worth introspecting) or too large (no close in the slot). Nothing is homework; the loop finishes in the room.
+**Generally:** a stuck student asks their own Claude first. You step in only for the three below.
 
-**Push-backs.**
-
-- Claude jumps to a fix → *"Back up. What's the failing test that would prove this bug exists?"*
-- Diff approved under 30 s → *"Find me one line you'd have written differently. Not wrong, just different."*
-- Introspection prompt skipped → *"What did Claude choose not to read, and does that match what you expected?"*
-- All five tracker rules accepted → *"Which of the five did the agent guess at?"*
-- Close-out shipped unread → *"Read it against the comments already on that ticket. Same team?"*
-- Rules file accepted unread → *"Read it aloud. Would a teammate run the same loop from this in six months?"*
-- Compound summary name-drops without quoting → *"Quote the session moment that earned rule X, or take it out."*
-
-**Gotchas.**
-
-- No test infrastructure on the bug's path → log "no verifier on this path" as a rule; a real finding, M4's audit picks it up.
-- `/context` read as prose → *"Type it. Look at the number."*
-- Fix over 35 min: the bug wasn't trivial. Let it finish, trim the compound exercise. Under 15 min: too small; offer a second bug.
-- No connector and no `gh` → the agent writes the close-out, the student pastes it. Don't stop the room to install anything.
-- Connector added live and not showing → `/mcp`; then `claude --resume <session-id>`. One student, not the room.
-- No ticket → the agent offers to create one; tracker unreachable → markdown ticket in the repo, link the PR.
-- Wizard-move demo: three fresh Claude Code sessions, each in an empty directory outside any repo, so nothing loads. If session 2 answers Finnish-adjacent anyway: *"It remembered — the lecture's point one step early."* Run a third session clean.
-
-**If behind, cut in order.** 1. The two optional Fix tests-first prompts. 2. Close the ticket's second-ticket suggestion and the push-back-on-five paragraph (~15 instead of 20). 3. Orient and introspect at its 15-min floor. 4. Connections and lecture framing. Never: the failing test before the fix, the diff-line push-back, the conventions read before the close-out.
-
-**Demo repo.** Owned, active repo, clean tree; a trivial bug from prework ready to paste. Regenerate: rerun the prework bug-surfacing conversation.
+- **Bug fix runs long** → move on when two-thirds of the room are through. Nothing downstream needs a green PR.
+- **No repo or no bug from prework** → they do the prework now and join at Fix tests-first. Don't hold the room.
+- **Your wizard demo** → three fresh Claude Code sessions, each in an empty folder outside any repo. Dry-run it once. If session 2 still answers Finnish: *"it remembered — that's the point, one step early."*
 
 </section>
 <!--/flag:module:getting-going-->
@@ -116,38 +96,16 @@ Don't split M4 across the days. The M1-M2-M4 / M5-M3-M6 reorder exists; it's a c
 
 ### M2 — Plan mode, done right
 
-**Slot.** 2-day cohort: Day 1, 10:50–12:50 (2h, straight through). Four-sitting track: sitting 2, 2h. Phase 5 follows Phase 4 directly; the exercise's own "Stop" carries the beat. **Runs 3 min past its slot**, so know the cut list. Thinking effort `medium`.
+**Slot.** 2-day cohort: Day 1, 10:50–12:50 (2h, straight through). Four-sitting track: sitting 2, 2h. **Runs 3 min past its slot.** Thinking effort `medium`.
 
 **Runtime map.**
 
 {{runtime-map:plan-mode-done-right}}
 
-**Mood.** Grounded competence, *"two reads, not one."* Check: at Phase 5 the student says the second read caught everything. Fix: point at the soft item their push-back caught that the second read re-softened.
+**Prep.** Your demo `CLAUDE.local.md` must hold one rule that obviously belongs in a skill (a multi-step procedure only some sessions need), or the closing `name-what-moves` demo returns "none" and the room sees nothing move.
 
-**Cues.** The non-execution is the module's bet; a student who wants to run the plan: name it, park it. The Debrief has no projected section by design: Claude proposes a plan-reading rule, you push for one specific to this codebase. *How instructions grow* ends with `ae101-m2-name-what-moves` run live on your demo repo: your `./CLAUDE.local.md` must hold one rule that obviously belongs in a skill, or the demo returns "none" and the room sees nothing move.
-
-**Four-sitting cut.** No M3, so this sitting closes on the M4 task-pick (the module's own `## Next`). Hold five minutes for it and say it out loud; it is the one piece of homework the track has, and sitting 3 is built on it arriving sized.
-
-**Push-backs.**
-
-- Approved under 60 s, nothing sent → *"Pick No, keep planning. Send one soft item first."*
-- Push-back names no step, no words → *"Which step, which words? What would a senior reviewer catch?"*
-- Revised plan no sharper → *"Did it sharpen, or acknowledge and re-soften? Again."*
-- Stops after two questions → *"What would the next question still change in execution? Nothing material → lock it."*
-- Debrief rubric is generic → *"A pattern specific to THIS codebase, from THIS session."*
-
-**Gotchas.**
-
-- **The integrate prompt can wipe the rules file.** `./CLAUDE.local.md` is gitignored, no git undo. Watch the diff: add, not replace. Overwritten → the old rules are in this session's scrollback; ask Claude to restore them before the session closes.
-- No fitting task → three-candidate conversation: multi-file, 30–60 min of agent work, touching the wrong file matters.
-- A walk-down turn crawls past 10 min → stop it, ask what's slow, relax that requirement.
-- The plan file is laptop-local (`~/.claude/plans/`); teammates never see it unless copied into the repo.
-- A shell command runs during plan mode → pre-approved commands do; expected.
-- Walk-down done under 15 min → task too small; name the floor at Debrief (~30 min of agent work).
-
-**If behind, cut in order.** 1. Lecture's three-pressures section to 60 s. 2. Timebox the walk-down: approve the latest sharpened plan, go to Phase 5. 3. Debrief to 10 min, keep the pattern-naming. Never: Phase 5's stop.
-
-**Demo repo.** M1's `./CLAUDE.local.md` and the shipped fix; a multi-file backlog task surfaced. Regenerate: rerun M1's compound prompt; three-candidate conversation for the task.
+- **Plan mode hasn't returned when Phase 3 should start** → the task is too big. Stop it, *"plan only the first slice"*, restart. 8–12 min is normal; past 20 nobody waits.
+- **The integrate prompt wiped `CLAUDE.local.md`** (gitignored, no git undo) → the old rules are still in this session's scrollback; restore from there before the session closes. Check the diff after every student's integrate: add, not replace.
 
 </section>
 <!--/flag:module:plan-mode-done-right-->

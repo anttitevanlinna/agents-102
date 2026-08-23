@@ -531,4 +531,136 @@ test('a single-instance cross_module row reports that one instance', () => {
   assert.deepStrictEqual(crossRow(row).instances, ['ae101--module-set--prework-m3'])
 })
 
+// --- linkFinder: ownership follows INCLUDE links, not any mention ----------
+//
+// Pins a bug found 2026-08-23 (AE101 "clear the queue" sweep): linkFinder
+// resolved ownership with a bare `txt.includes(basename)` over every module
+// file, so ANY mention counted as a link. Three kinds of mention are not
+// ownership and all three fired:
+//   1. a maintainer-block source stamp naming another training's file
+//      (`ae101/run-the-first-experiment.md` names `lectures/evals-as-steering.md`
+//      to delegate a shared URL check) — AE101 does not teach that lecture;
+//   2. a punch-list bullet, `pre-cohort-todos.md` listing three Claude Basics
+//      leftovers under a heading that says they are linked from NOTHING — the
+//      list of orphans is what made them look owned;
+//   3. a card/backlog reference written as a relative path (`../../exercises/x.md`).
+// Result: 5 foreign files and 35 of 92 (file,class) pairs sat on AE101's board.
+//
+// Ownership means the build INLINES the file into that training's module, and
+// the build's own definition of that is CR.INCLUDE_LINK_RE — a standalone
+// paragraph `[Title](exercises|lectures/slug.md)`. Same regex, one source of
+// truth, so a link shape the build ignores can never confer ownership.
+const fsx = require('node:fs')
+const pathx = require('node:path')
+const osx = require('node:os')
+const { linkFinder } = require('./scan-stale-classes.js')
+
+function fixture(files) {
+  const root = fsx.mkdtempSync(pathx.join(osx.tmpdir(), 'linkfinder-'))
+  for (const [rel, body] of Object.entries(files)) {
+    const abs = pathx.join(root, rel)
+    fsx.mkdirSync(pathx.dirname(abs), { recursive: true })
+    fsx.writeFileSync(abs, body)
+  }
+  return root
+}
+
+test('linkFinder: a standalone include link confers ownership', () => {
+  const root = fixture({
+    'curriculum/trainings/agentic-engineering-101/getting-going.md':
+      'intro\n\n[Compound and close](exercises/compound-and-close.md)\n\nmore\n',
+  })
+  assert.deepStrictEqual(
+    linkFinder(root)('curriculum/exercises/compound-and-close.md'),
+    ['agentic-engineering-101'])
+})
+
+test('linkFinder: a source-stamp mention is NOT ownership', () => {
+  const root = fixture({
+    // real shape, ae101/run-the-first-experiment.md:175
+    'curriculum/trainings/agentic-engineering-101/run-the-first-experiment.md':
+      '- `[checked:2026-08-21 result:OK]` https://x/y — **This is the module that owns the check** ' +
+      '— `lectures/evals-as-steering.md` and `trainings/agents-101/evaluations.md` name the same piece and can delegate here.\n',
+    'curriculum/trainings/agents-101/evaluations.md':
+      '[Lecture: Evals as steering](lectures/evals-as-steering.md)\n',
+  })
+  assert.deepStrictEqual(
+    linkFinder(root)('curriculum/lectures/evals-as-steering.md'),
+    ['agents-101'])
+})
+
+test('linkFinder: a punch-list bullet naming an orphan is NOT ownership', () => {
+  const root = fixture({
+    // real shape, ae101/pre-cohort-todos.md:180-185
+    'curriculum/trainings/agentic-engineering-101/pre-cohort-todos.md':
+      'Each is linked from zero trainings or from two or more:\n' +
+      '- `curriculum/lectures/the-data-question.md`\n' +
+      '- `curriculum/exercises/personal-site-with-guardrails.md`\n',
+  })
+  assert.deepStrictEqual(linkFinder(root)('curriculum/lectures/the-data-question.md'), [])
+  assert.equal(trainingOf('curriculum/lectures/the-data-question.md', linkFinder(root)), null)
+})
+
+test('linkFinder: a relative-path card reference is NOT ownership', () => {
+  const root = fixture({
+    // real shape, ae101/pre-cohort-todos.md:96
+    'curriculum/trainings/agentic-engineering-101/pre-cohort-todos.md':
+      '- Cheap card drafted, lands in M1 [compound-and-close.md](../../exercises/compound-and-close.md) § *What you built*.\n',
+    'curriculum/trainings/agents-101/m1.md':
+      '[Compound and close](exercises/compound-and-close.md)\n',
+  })
+  assert.deepStrictEqual(
+    linkFinder(root)('curriculum/exercises/compound-and-close.md'),
+    ['agents-101'])
+})
+
+test('linkFinder: a trainer-modules anchor link is NOT ownership', () => {
+  const root = fixture({
+    // real shape, agents-101/trainer-modules.md:223 — anchors into the built page,
+    // not a file include; the build never inlines from these.
+    'curriculum/trainings/agents-101/trainer-modules.md':
+      '**Flow.** Fresh session → [evals as steering](./#lectures-evals-as-steering) → Debrief.\n',
+  })
+  assert.deepStrictEqual(linkFinder(root)('curriculum/lectures/evals-as-steering.md'), [])
+})
+
+test('linkFinder: a longer slug sharing a prefix does not confer ownership', () => {
+  const root = fixture({
+    // claude-basics includes `-cb` variant; the bare slug must not match it
+    'curriculum/trainings/claude-basics/personal-site-with-guardrails.md':
+      '[Exercise: Paint by agent](exercises/personal-site-with-guardrails-cb.md)\n',
+    'curriculum/trainings/agents-101/getting-going.md':
+      '[Exercise: Paint by agent with guardrails](exercises/personal-site-with-guardrails.md)\n',
+  })
+  assert.deepStrictEqual(
+    linkFinder(root)('curriculum/exercises/personal-site-with-guardrails.md'),
+    ['agents-101'])
+})
+
+test('linkFinder: kind must match — a lecture slug does not match an exercise link', () => {
+  const root = fixture({
+    'curriculum/trainings/agents-101/m1.md': '[T](exercises/test-and-learn.md)\n',
+  })
+  assert.deepStrictEqual(linkFinder(root)('curriculum/lectures/test-and-learn.md'), [])
+})
+
+test('linkFinder: two trainings including the same file yield both, so trainingOf can refuse', () => {
+  const root = fixture({
+    'curriculum/trainings/agents-101/m1.md': '[X](exercises/shared.md)\n',
+    'curriculum/trainings/agentic-engineering-101/m1.md': '[X](exercises/shared.md)\n',
+  })
+  assert.deepStrictEqual(
+    linkFinder(root)('curriculum/exercises/shared.md').sort(),
+    ['agentic-engineering-101', 'agents-101'])
+  assert.equal(trainingOf('curriculum/exercises/shared.md', linkFinder(root)), null)
+})
+
+test('linkFinder: an include link with trailing whitespace still counts', () => {
+  const root = fixture({
+    'curriculum/trainings/agents-101/m1.md': '[X](exercises/shared.md)   \n',
+  })
+  assert.deepStrictEqual(linkFinder(root)('curriculum/exercises/shared.md'), ['agents-101'])
+})
+
+
 console.log(`\n${n} tests passed`)

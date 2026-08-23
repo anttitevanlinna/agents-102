@@ -32,6 +32,9 @@ const { execFileSync } = require('node:child_process')
 const fs = require('node:fs')
 const path = require('node:path')
 const { driftedClasses, loadLedger } = require('./compendium-drift.js')
+// The build's own definition of an include link. Shared, never re-derived:
+// ownership must mean exactly what inlining means, or the two drift apart.
+const CR = require(path.join(__dirname, '..', '..', '..', 'site/layouts/curriculum.js'))
 
 const CLASSES = ['writing', 'story', 'technical', 'behavior', 'pedagogy', 'strategy', 'slides']
 const BULK_BODY_LINES = 15
@@ -413,12 +416,30 @@ function trainingOf(relpath, findLinkers, preferredTraining = null) {
   return null
 }
 
-// Which trainings link this shared file, by basename, across module files.
+// Which trainings INCLUDE this shared file, across their module files.
+//
+// Ownership is inlining, not mention. A bare basename search read a source
+// stamp that delegates a URL check to another training's lecture, a punch-list
+// bullet enumerating orphans, and a backlog card's relative path as ownership,
+// putting 5 foreign files on AE101's board. The build inlines exactly the
+// standalone-paragraph `[Title](exercises|lectures/slug.md)` shape, so that is
+// the shape that confers ownership — CR.INCLUDE_LINK_RE, the build's own
+// constant, so the two cannot drift.
+function includesSlug(txt, kind, slug) {
+  const re = new RegExp(CR.INCLUDE_LINK_RE.source, 'gm')
+  let m
+  while ((m = re.exec(txt)) !== null) if (m[2] === `${kind}/${slug}`) return true
+  return false
+}
+
 function linkFinder(repo) {
   return (relpath) => {
-    const base = path.basename(relpath)
-    const root = path.join(repo, 'curriculum/trainings')
+    const kind = relpath.includes('/exercises/') ? 'exercises'
+      : relpath.includes('/lectures/') ? 'lectures' : null
     const owners = []
+    if (!kind) return owners
+    const slug = path.basename(relpath, '.md')
+    const root = path.join(repo, 'curriculum/trainings')
     let trainings
     try { trainings = fs.readdirSync(root) } catch { return owners }
     for (const t of trainings) {
@@ -432,7 +453,7 @@ function linkFinder(repo) {
         if (!f.endsWith('.md')) continue
         let txt
         try { txt = fs.readFileSync(path.join(dir, f), 'utf8') } catch { continue }
-        if (txt.includes(base)) { owners.push(t); break }
+        if (includesSlug(txt, kind, slug)) { owners.push(t); break }
       }
     }
     return owners

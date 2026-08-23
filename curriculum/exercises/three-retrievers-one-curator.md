@@ -87,7 +87,7 @@ You just ran **Recipe 3**'s parallel-retrieval shape: three retrievers fanning o
 
 **Frameworks riffed on:**
 - One-agent-per-recurring-workflow (Bosser stance) — across workflows you build many; within a single workflow, splitting earns its keep only when access, dialect, or stance forces it. The 3 retrievers are one of those rare within-workflow cases (different access, different dialect).
-- "The filesystem is the meeting room" — file-based agentic coordination (Boris Cherny / Anthropic observation), emerges experientially, named in the bridging lecture. **TODO:** add URL [SOURCE NEEDED — likely Cherny's *Claude Code* engineering talk or the Anthropic engineering blog; verify and pin].
+- **Owned synthesis:** "The filesystem is the meeting room" names the file-based coordination students experience here and in the bridging lecture.
 
 **Plug points:**
 - The three source zones — wiki / docs / internet. Prompt language is permissive (student names their wiki and doc store inline — Confluence / Notion / SharePoint wiki / Guru; OneDrive / SharePoint / Google Drive). No swap needed; the retrievers ask.

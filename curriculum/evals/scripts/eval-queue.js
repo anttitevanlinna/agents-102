@@ -31,7 +31,8 @@
 'use strict'
 const fs = require('node:fs')
 const path = require('node:path')
-const { scanFile, typeOf, trainingOf, linkFinder, CLASSES } = require('./scan-stale-classes.js')
+const { scanFile, typeOf, trainingOf, linkFinder, gitIo, CLASSES } = require('./scan-stale-classes.js')
+const makeIo = gitIo
 
 // Maintainer- and trainer-facing files that live in a training dir but are not
 // student surfaces. trainer-modules/trainer-guide are built trainer pages
@@ -246,16 +247,10 @@ function main(argv) {
   process.stdout.write(render(items, scope, unowned, unreadable, want, scanned) + '\n')
 }
 
-// scan-stale-classes keeps gitIo private; mirror it rather than fork the file.
-const { execFileSync } = require('node:child_process')
-function makeIo(repo) {
-  return {
-    readFile: p => { try { return fs.readFileSync(path.join(repo, p), 'utf8') } catch { return null } },
-    gitDiff: (sha, p) => { try { return execFileSync('git', ['diff', sha, '--', p], { cwd: repo, encoding: 'utf8', maxBuffer: 32 * 1024 * 1024 }) } catch { return '' } },
-    validSha: sha => { try { execFileSync('git', ['rev-parse', '--verify', '-q', `${sha}^{commit}`], { cwd: repo, stdio: 'ignore' }); return true } catch { return false } },
-  }
-}
-
-module.exports = { buildUniverse, isSurface, collect, CLASSES }
+// The board reads the router's io, it does not keep its own. The previous copy
+// omitted ruleDrift, so a moved compendium rule was invisible here while the
+// router saw it — one engine, two answers, and the wrong one on the surface
+// people actually read. Same object now, so they cannot disagree.
+module.exports = { buildUniverse, isSurface, collect, makeIo, CLASSES }
 
 if (require.main === module) main(process.argv.slice(2))

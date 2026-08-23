@@ -14,6 +14,18 @@ const { buildUniverse, isSurface, collect } = require('./eval-queue.js')
 let n = 0
 function test(name, fn) { fn(); n++; console.log(`ok ${n} - ${name}`) }
 
+// One io helper, declaring every hook scanFile needs. Six copies of this object
+// used to sit inline, each omitting ruleDrift, which is how the board lost the
+// rule-drift axis without a single failing test: the omission was the default.
+function testIo(root, drifted = []) {
+  return {
+    readFile: p => { try { return fs.readFileSync(path.join(root, p), 'utf8') } catch { return null } },
+    gitDiff: () => '',
+    validSha: () => true,
+    ruleDrift: () => new Set(drifted),
+  }
+}
+
 function fixture() {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), 'eval-queue-'))
   const w = (rel, body) => {
@@ -29,6 +41,12 @@ function fixture() {
   w('curriculum/trainings/t-one/autumn-gaps.md', '# gaps\n\n<!-- maintainer -->\n\nNot student material.\n')
   w('curriculum/trainings/t-one/supplementary/deep-dive.md', `# Deep dive\n${clean}\n`)
   w('curriculum/trainings/t-one/reference/lookup.md', `# Lookup\n${clean}\n`)
+  // A file with real per-class pins. Rule-drift only speaks about a PINNED
+  // class — an unpinned one is already 'never' — so the drift axis needs a
+  // surface whose Quality line actually names shas.
+  const pinned = '**Quality:** compendium-audited 2026-01-01 (writing@abc1234 story@abc1234 technical@abc1234 behavior@abc1234 pedagogy@abc1234 strategy@abc1234 slides@abc1234)\n'
+    + '- judges @abc1234: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS\n'
+  w('curriculum/trainings/t-one/pinned-module.md', `# Pinned module\n\nStudent body.\n\n<!-- maintainer -->\n${pinned}`)
   w('curriculum/exercises/do-a-thing.md', '# Do a thing\n')
   w('curriculum/exercises/shared-thing.md', '# Shared thing\n')
   w('curriculum/lectures/orphan-lecture.md', '# Orphan\n')
@@ -50,6 +68,7 @@ test('buildUniverse: collects modules, supplementary, reference, shared pool', (
     'curriculum/lectures/prose-lecture.md',
     'curriculum/lectures/short-lecture.md',
     'curriculum/trainings/t-one/getting-going.md',
+    'curriculum/trainings/t-one/pinned-module.md',
     'curriculum/trainings/t-one/reference/lookup.md',
     'curriculum/trainings/t-one/shared.md',
     'curriculum/trainings/t-one/supplementary/deep-dive.md',
@@ -90,11 +109,7 @@ test('isSurface: a real module stays in', () => {
 // a defaulted training.
 test('collect: unlinked shared file lands in unowned, not items', () => {
   const root = fixture()
-  const io = {
-    readFile: p => { try { return fs.readFileSync(path.join(root, p), 'utf8') } catch { return null } },
-    gitDiff: () => '',
-    validSha: () => true,
-  }
+  const io = testIo(root)
   const { items, unowned } = collect(root, io, 'all')
   assert.ok(unowned.includes('curriculum/lectures/orphan-lecture.md'))
   assert.ok(!items.some(i => i.slug === 'orphan-lecture'))
@@ -102,11 +117,7 @@ test('collect: unlinked shared file lands in unowned, not items', () => {
 
 test('collect: linked exercise resolves its owning training and owes every class', () => {
   const root = fixture()
-  const io = {
-    readFile: p => { try { return fs.readFileSync(path.join(root, p), 'utf8') } catch { return null } },
-    gitDiff: () => '',
-    validSha: () => true,
-  }
+  const io = testIo(root)
   const { items } = collect(root, io, 'all')
   const ex = items.find(i => i.slug === 'do-a-thing')
   assert.strictEqual(ex.training, 't-one')
@@ -120,22 +131,14 @@ test('collect: linked exercise resolves its owning training and owes every class
 // owes nothing — it must not appear at all, or the queue cries wolf.
 test('collect: fully-passed file is absent from the queue', () => {
   const root = fixture()
-  const io = {
-    readFile: p => { try { return fs.readFileSync(path.join(root, p), 'utf8') } catch { return null } },
-    gitDiff: () => '',
-    validSha: () => true,
-  }
+  const io = testIo(root)
   const { items } = collect(root, io, 'all')
   assert.ok(!items.some(i => i.slug === 'getting-going'))
 })
 
 test('collect: --training filter keeps only the wanted training', () => {
   const root = fixture()
-  const io = {
-    readFile: p => { try { return fs.readFileSync(path.join(root, p), 'utf8') } catch { return null } },
-    gitDiff: () => '',
-    validSha: () => true,
-  }
+  const io = testIo(root)
   const two = collect(root, io, 't-two').items
   const one = collect(root, io, 't-one').items
   assert.ok(two.length > 0)
@@ -149,11 +152,7 @@ test('collect: --training filter keeps only the wanted training', () => {
 // target-training work from a supposedly complete queue.
 test('collect: explicit training owns a multiply-linked shared surface', () => {
   const root = fixture()
-  const io = {
-    readFile: p => { try { return fs.readFileSync(path.join(root, p), 'utf8') } catch { return null } },
-    gitDiff: () => '',
-    validSha: () => true,
-  }
+  const io = testIo(root)
   const all = collect(root, io, 'all')
   assert.ok(all.unowned.includes('curriculum/exercises/shared-thing.md'))
 
@@ -167,15 +166,47 @@ test('collect: explicit training owns a multiply-linked shared surface', () => {
 // by surface kind far more often than by reason.
 test('collect + type filter: keeps only the named surface kinds', () => {
   const root = fixture()
-  const io = {
-    readFile: p => { try { return fs.readFileSync(path.join(root, p), 'utf8') } catch { return null } },
-    gitDiff: () => '',
-    validSha: () => true,
-  }
+  const io = testIo(root)
   const { items } = collect(root, io, 'all')
   const kept = items.filter(i => ['module', 'exercise'].includes(i.type))
   assert.ok(kept.every(i => i.type !== 'supplementary' && i.type !== 'reference'))
   assert.ok(kept.some(i => i.type === 'exercise'))
+})
+
+// --- the board must carry every staleness axis the router knows -------------
+//
+// eval-queue mirrored scan-stale's gitIo and dropped ruleDrift, so a compendium
+// rule could move and the board still read all-green. On 2026-08-23 six rules had
+// moved (three that day) and `--training ae101` reported 0 rule-drift while the
+// router reported five drifted classes on three files. The board is the surface
+// people ask "are we green?" — an axis it cannot see does not exist.
+test('collect: a fully-pinned, fully-passed file is absent while no rule has moved', () => {
+  const root = fixture()
+  const { items } = collect(root, testIo(root), 'all')
+  assert.ok(!items.some(i => i.slug === 'pinned-module'))
+})
+
+test('collect: a class whose compendium rule moved shows on the board as rule-drift', () => {
+  const root = fixture()
+  const { items } = collect(root, testIo(root, ['pedagogy']), 'all')
+  const ex = items.find(i => i.slug === 'pinned-module')
+  assert.ok(ex, 'a fully-passed file must reappear once a rule under it moves')
+  assert.deepStrictEqual(ex.classes, ['pedagogy'])
+  assert.strictEqual(ex.detail.pedagogy, 'rule-drift')
+})
+
+test('makeIo: the board builds its io from the router, drift axis included', () => {
+  const { makeIo } = require('./eval-queue.js')
+  const io = makeIo(process.cwd())
+  for (const k of ['readFile', 'gitDiff', 'validSha', 'ruleDrift']) {
+    assert.equal(typeof io[k], 'function', `the board's io must supply ${k}`)
+  }
+})
+
+test('makeIo is the router gitIo itself, not a copy that can drift from it', () => {
+  const { makeIo } = require('./eval-queue.js')
+  const { gitIo } = require('./scan-stale-classes.js')
+  assert.strictEqual(makeIo, gitIo)
 })
 
 console.log(`\n1..${n}`)

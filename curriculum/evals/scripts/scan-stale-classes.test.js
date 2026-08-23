@@ -128,6 +128,7 @@ function io(diffByPath, valid = true) {
     readFile: () => DOC,
     gitDiff: (sha, p) => diffByPath[p] || '',
     validSha: () => valid,
+    ruleDrift: () => new Set(),
   }
 }
 const ITEM = { file: 'curriculum/exercises/x.md', type: 'exercise', slug: 'x', instanceSlug: 'ae101--exercise--x', classes: ['writing', 'story', 'technical', 'behavior', 'pedagogy', 'strategy', 'slides'] }
@@ -146,7 +147,7 @@ test('filterItems: registry prompt change keeps behavior', () => {
 })
 test('filterItems: unpinned class always kept', () => {
   const noPinDoc = DOC.replace(/behavior@bbb2222 /, '')
-  const myIo = { readFile: () => noPinDoc, gitDiff: () => '', validSha: () => true }
+  const myIo = { readFile: () => noPinDoc, gitDiff: () => '', validSha: () => true, ruleDrift: () => new Set() }
   const { items } = filterItems([{ ...ITEM, classes: ['behavior'] }], myIo)
   assert.deepStrictEqual(items[0].classes, ['behavior'])
 })
@@ -295,7 +296,7 @@ test('trainingOf: duplicate linkers from one training still resolve', () => {
 // matched only the later ones, so the leading class fell through to 'never'
 // on every unpinned file: a class judged clean, re-queued forever.
 function rowIo(body) {
-  return { readFile: () => body, gitDiff: () => '', validSha: () => true }
+  return { readFile: () => body, gitDiff: () => '', validSha: () => true, ruleDrift: () => new Set() }
 }
 const CLEAN_ROW = '# T\n**Quality:** compendium-audited 2026-01-01 ()\n- judges @abc1234: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS\n'
 
@@ -353,6 +354,7 @@ function setIo(files, diffs) {
     readFile: p => (p in files ? files[p] : null),
     gitDiff: (sha, p) => (diffs[`${sha}:${p}`] || ''),
     validSha: sha => sha !== 'deadbee',
+    ruleDrift: () => new Set(),
   }
 }
 const DIR = 'curriculum/trainings/agentic-engineering-101'
@@ -490,10 +492,33 @@ test('scanFile: a pin whose compendium rule moved is stale even with an untouche
   assert.equal(r.detail.writing, 'rule-drift')
 })
 
-test('scanFile: no ledger (io without ruleDrift) claims nothing', () => {
+test('scanFile: an explicit empty ledger is silent', () => {
   assert.deepStrictEqual(scanFile('curriculum/lectures/x.md', driftIo([])).classes, [])
+})
+
+// Fail closed on the HOOK, silent on the LEDGER. The two absences look alike and
+// are not: an empty ledger means "no rule has moved", which is a real answer and
+// stays quiet; a missing ruleDrift hook means the CALLER forgot, and answering
+// "nothing is stale" to that is a lie the board printed for weeks. eval-queue.js
+// mirrored gitIo minus this one key, and every one of its own tests hand-rolled
+// an io the same way, so the rule-drift axis was invisible on the only surface
+// anyone reads to ask "are we green?". An optional hook is not a guard.
+test('scanFile: an io that forgets ruleDrift throws rather than dropping the axis', () => {
   const noAxis = { readFile: () => DRIFT_DOC, gitDiff: () => '', validSha: () => true }
-  assert.deepStrictEqual(scanFile('curriculum/lectures/x.md', noAxis).classes, [])
+  assert.throws(() => scanFile('curriculum/lectures/x.md', noAxis), /ruleDrift/)
+})
+
+test('filterItems: an io that forgets ruleDrift throws rather than dropping the axis', () => {
+  const noAxis = { readFile: () => DRIFT_DOC, gitDiff: () => '', validSha: () => true }
+  assert.throws(() => filterItems([{ file: 'curriculum/lectures/x.md', classes: ['writing'] }], noAxis), /ruleDrift/)
+})
+
+test('gitIo: the real io carries every hook scanFile needs, drift axis included', () => {
+  const { gitIo } = require('./scan-stale-classes.js')
+  const io = gitIo(process.cwd())
+  for (const k of ['readFile', 'gitDiff', 'validSha', 'ruleDrift']) {
+    assert.equal(typeof io[k], 'function', `gitIo must supply ${k}`)
+  }
 })
 
 test('scanFile: a file that BOTH moved and drifted still reports diff-region', () => {

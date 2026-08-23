@@ -282,7 +282,22 @@ function promptKeys(text) {
 }
 
 // items: [{file, type, slug, instanceSlug, classes}]; io: {readFile, gitDiff, validSha}
+// Every staleness axis must be supplied explicitly. An io missing a hook is a
+// caller that forgot, not a repo with nothing to report, and the two used to be
+// indistinguishable: `io.ruleDrift && ...` answered "nothing is stale" to both.
+// eval-queue.js mirrored gitIo minus this one key and the board silently lost
+// the rule-drift axis. Absent hook -> throw; empty ledger -> silent, which is
+// what gitIo returns when nobody has run `compendium-drift.js --repin`.
+function requireIo(io, where) {
+  for (const k of ['readFile', 'gitDiff', 'validSha', 'ruleDrift']) {
+    if (typeof io[k] !== 'function') {
+      throw new TypeError(`${where}: io is missing ${k}(). Build it with gitIo(repo), or pass ${k}: () => new Set() to say so out loud.`)
+    }
+  }
+}
+
 function filterItems(items, io) {
+  requireIo(io, 'filterItems')
   const out = []
   const report = []
   for (const item of items) {
@@ -300,7 +315,7 @@ function filterItems(items, io) {
       if (!io.validSha(sha)) { kept.push({ cls, reason: 'bad-sha' }); continue }
       if (!(sha in cache)) cache[sha] = changeTags(meta, parseHunks(io.gitDiff(sha, item.file))).tags
       if (cache[sha].has(cls)) { kept.push({ cls, reason: 'diff-region' }); continue }
-      if (io.ruleDrift && io.ruleDrift(sha).has(cls)) { kept.push({ cls, reason: 'rule-drift' }); continue }
+      if (io.ruleDrift(sha).has(cls)) { kept.push({ cls, reason: 'rule-drift' }); continue }
       if (cls === 'behavior' && keys.some(k => io.gitDiff(sha, `curriculum/prompts/${k}.md`).trim() !== '')) {
         kept.push({ cls, reason: 'registry-prompt' }); continue
       }
@@ -314,6 +329,7 @@ function filterItems(items, io) {
 
 // Full scan: derive classes needing (re-)judge for one file, v2-compatible for unpinned.
 function scanFile(relpath, io) {
+  requireIo(io, 'scanFile')
   const text = io.readFile(relpath)
   if (text === null) return null
   const pins = extractPins(text)
@@ -328,7 +344,7 @@ function scanFile(relpath, io) {
     if (sha) {
       if (!io.validSha(sha)) { classes.push(cls); detail[cls] = 'bad-sha'; continue }
       if (!(sha in cache)) cache[sha] = changeTags(meta, parseHunks(io.gitDiff(sha, relpath))).tags
-      if (!(sha in driftCache)) driftCache[sha] = io.ruleDrift ? io.ruleDrift(sha) : new Set()
+      if (!(sha in driftCache)) driftCache[sha] = io.ruleDrift(sha)
       let stale = cache[sha].has(cls)
       let reason = 'diff-region'
       if (!stale && cls === 'behavior') stale = promptKeys(text).some(k => io.gitDiff(sha, `curriculum/prompts/${k}.md`).trim() !== '')
@@ -507,6 +523,6 @@ function main(argv) {
   process.exit(2)
 }
 
-module.exports = { parseHunks, buildLineMeta, changeTags, extractPins, judgesRow, blockRow, promptKeys, filterItems, scanFile, typeOf, trainingOf, linkFinder, CLASSES, EXTRA_CLASSES, crossRow, panelRow, crossState, panelState }
+module.exports = { gitIo, requireIo, parseHunks, buildLineMeta, changeTags, extractPins, judgesRow, blockRow, promptKeys, filterItems, scanFile, typeOf, trainingOf, linkFinder, CLASSES, EXTRA_CLASSES, crossRow, panelRow, crossState, panelState }
 
 if (require.main === module) main(process.argv.slice(2))

@@ -19,4 +19,4 @@ Use these StoryBrand beats for the help section: Character (the colleague — he
 
 Skip Stakes and Call-to-Action — no fear-framing, no "book a chat." The site's vibe is the CTA.
 
-Walk me through the five beats one at a time. Take whatever shape of answer I give. After the fifth answer, regenerate `module-1/site.html` — keep my name and identity at the top, keep my current work front and centre, apply the tuned StoryBrand to the help section. Reshape how the help section sounds, not as a new bullet list — in the voice. Keep the edge in my answers; don't soften.
+Walk me through the five beats. Ask one beat, wait for my answer, then ask the next. Do not show me the remaining beats. Take whatever shape of answer I give. After the fifth answer, regenerate `module-1/site.html` — keep my name and identity at the top, keep my current work front and centre, apply the tuned StoryBrand to the help section. Reshape how the help section sounds, not as a new bullet list — in the voice. Keep the edge in my answers; don't soften.

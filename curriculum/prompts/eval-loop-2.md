@@ -45,3 +45,5 @@ When the loop stops:
 - In chat, show me the same summary in under 12 lines.
 
 Do not stop for confirmation between rounds.
+
+No preamble. Start by computing and recording the judge's starting SHA, then run round 1.

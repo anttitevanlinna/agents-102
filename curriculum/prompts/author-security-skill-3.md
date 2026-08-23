@@ -29,7 +29,7 @@ Lens 2 - AGENT-SECURITY. Check what the agent can reach, what sensitive material
 
 For each pattern, the lens produces one or two specific risks in the target system, ranked, with one suggested agent mitigation per risk - scope, split, filter, gate, or review. These sit on top of normal company controls (network controls, identity and access management, logging, vendor/security review), not in place of them. Name that explicitly in the lens's preamble.
 
-Before you save anything, grill me on missing details that can sharpen the lens or that would ruin the audit run. Cover both lenses, especially the policy lens, where there is no named-class rail to fall back on. Don't stop at one question. I'll tell you when enough is enough.
+Before you save anything, grill me on missing details that can sharpen the lens or that would ruin the audit run. Ask no more than three questions in a round, wait for my answers, then ask one final round only if a load-bearing gap remains. Do not show a longer hidden list. Recommend the answer you infer where the files already point to one. Cover both lenses, especially the policy lens, where there is no named-class rail to fall back on.
 
 After I answer, save the files. Keep the SKILL.md tight: when to use it, the two lenses it applies, the report shape each lens produces. Show me what you saved and confirm this package-complete checklist:
 - module-4/skills/security-audit/SKILL.md

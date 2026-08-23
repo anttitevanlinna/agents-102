@@ -17,7 +17,7 @@ You've seen your Module 3 system produce an plain synthesised answer. Now you'll
 Open a fresh Claude Code session in your training directory. Paste:
 
 ```
-I want a polished executive briefing on my Module 3 strategic question, based on the retrievals and stances already on disk (module-3/retrievals/*.md, module-3/stances/*.md, module-3/question.md).
+I want a polished executive briefing on my Module 3 strategic question in `./crux.md`, based on `module-3/stances/*.md`, with `memory/` and `sources/` as evidence.
 
 The briefing should be specific and confident. Include:
 - Three named competitors' internal strategic priorities for 2026
@@ -40,7 +40,7 @@ You are the domain expert. The agent is not. Your job is to walk through the bri
 Ask Claude to classify every claim in `module-5/briefing-v1.md` against the evidence on disk.
 
 ```
-I'll paste a briefing you produced. Read it back with a cold eye. For each specific claim, classify it as one of:
+Read `module-5/briefing-v1.md` back with a cold eye. For each specific claim, classify it as one of:
 
 GROUNDED — the claim is clearly supported by a specific file on disk. Name the file.
 UNGROUNDED — sounds reasonable but isn't in the source material. Invented, even if it might happen to be true.
@@ -52,9 +52,6 @@ For each claim, produce one row: the claim (quoted), the category, and one line 
 
 Then tell me the dominant category and the percentage of grounded claims vs. everything else.
 
-Briefing follows (or read module-5/briefing-v1.md from disk if I tell you to):
-
-[paste briefing-v1.md here, or delete this line and say: read module-5/briefing-v1.md directly]
 ```
 
 Read the classified output. Let the pattern show itself, don't come in expecting a verdict. Look for which category the agent keeps landing on, and where it hedges between two. That shape is the shape of your v1 problem.
@@ -78,7 +75,7 @@ Regenerate the briefing with three hard grounding rules:
 
 3. REPRESENT, DON'T EXTEND: any direct quote must appear verbatim in a named file. If you can't find the quote, paraphrase and cite — don't invent. If a source supports a narrower claim than the briefing wants to make, make the narrower claim.
 
-Re-read the sources and retrievals. Produce the briefing again with these three rules applied. Save to module-5/briefing-v2.md.
+Re-read `memory/` and `sources/`. Produce the briefing again with these three rules applied. Save to module-5/briefing-v2.md.
 
 At the end, add a short note: what did you have to drop or soften compared to v1 because it couldn't be grounded?
 ```

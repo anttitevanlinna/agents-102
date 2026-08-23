@@ -38,7 +38,8 @@ sharing decision I'm working on. Cover four things:
      recurring meeting they could stop attending.
 
 Then confirm or correct each piece with me using a numbered-options format.
-Present five to eight questions, one at a time or as a single numbered list.
+Ask one question, wait for my answer, then ask the next. Do not show the
+remaining question list. Ask five to eight questions total.
 Each question gets three or four lettered options (a / b / c / d) drawn from
 my memory. I reply with the letter (or letters). Don't ask me to type
 freeform answers — the point is that you already have most of this on disk,

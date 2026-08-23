@@ -12,9 +12,9 @@ produces:
   - id: m8-proposals
     location: shared-folder/<participant>/proposal.md
 ---
-Read my stance.md and cross-check.md. Then write my proposal for the shared surface.
+Read `stance.md` and `cross-check.md` from the exact participant subfolder where you wrote `context-manifest.md`. Then write my proposal for the shared surface.
 
-Write proposal.md in my named subfolder:
+Write `proposal.md` in that same subfolder:
 - Crux, one sentence.
 - Guiding policy, one sentence.
 - Two experiments, each with owner, two-week test, success signal.

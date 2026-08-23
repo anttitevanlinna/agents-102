@@ -36,8 +36,10 @@ sharing decision I'm working on. Cover four things:
      shifted, loyalty to an incumbent preserved, reputation protected, a
      recurring meeting they could stop attending.
 
-Then use your ask-questions tool to confirm or correct each piece. Five to eight
-questions, each with three or four options you drew from my memory. I'll pick.
+Then use your ask-questions tool to confirm or correct each piece. Ask one
+question, wait for my answer, then ask the next. Do not show the remaining
+question list. Ask five to eight questions total, each with three or four
+options drawn from my memory. I'll pick.
 Don't ask me to type freeform answers — the point is that you already have most
 of this on disk.
 

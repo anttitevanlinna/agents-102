@@ -12,9 +12,9 @@ produces:
   - id: m8-cross-check
     location: shared-folder/<participant>/cross-check.md
 ---
-Read my own stance.md in my named subfolder, then read three to five neighbouring stance.md files from other participant subfolders in the shared folder.
+Reuse the exact participant subfolder where you wrote `context-manifest.md`. Read its `stance.md`, then read three to five neighbouring `stance.md` files from other participant subfolders in the shared folder.
 
-Write cross-check.md in my named subfolder with:
+Write `cross-check.md` in that same subfolder with:
 - One thing another agent saw that my stance missed.
 - One disagreement I keep after reading the neighbours.
 - One evidence gap that appears across more than one stance.

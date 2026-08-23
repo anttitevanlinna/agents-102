@@ -14,7 +14,7 @@ produces:
 ---
 Read midway-instructions.md and selection-board.md at the shared folder root. Follow the injected instructions before writing.
 
-Write critique.md in my named subfolder.
+Write `critique.md` in the exact participant subfolder where you wrote `context-manifest.md`.
 
 If midway-instructions.md tells me to cross-pollinate, first read the required participant folders and name which files changed my critique.
 

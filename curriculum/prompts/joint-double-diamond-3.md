@@ -30,4 +30,4 @@ Rules:
 - Name the human judgment call I am least certain about.
 - Name one risk or objection my stance is weak against.
 
-Save stance.md in my named subfolder in the shared folder.
+Save `stance.md` in the exact participant subfolder where you wrote `context-manifest.md`.

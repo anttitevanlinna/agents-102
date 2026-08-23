@@ -13,7 +13,6 @@ Look at what you have shipped.
 
 - The shape fires on any workflow with a quality bar, not only agent sessions. A code-review checklist, a deployment gate, an internal-doc rubric. Anywhere you can describe *meets the bar*, you can write the check.
 - Naming it is what lets you reuse it. Once you see the verifier, the judge, and the gate as the same primitive, you can place that primitive in more places. On a pull request. On a nightly run. On the next agent that does the same class of work. On the team's shared kit.
-- Latency is the axis you place it on. Cheap deterministic checks run in seconds and steer the agent's next move. Judges run in minutes, in the background. Expensive judgement waits at a named gate. A check in the wrong lane either slows the loop or never fires in time to change it.
 
 ## The eval primitive scales unchanged
 

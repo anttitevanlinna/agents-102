@@ -5,12 +5,12 @@ The tool that builds tools compounds.
 
 ## Prework
 
-Run the Module 7 next-step artifact, test one assumption, ask for one name, and talk to one person. Then read Risto on acting on the future and building hypotheses, and Rumelt on crux / *Good Strategy Bad Strategy*.
+Run the Module 7 next-step artifact, test one assumption, ask for one name, and talk to one person. Then revisit the three thinking disciplines you used there: find the crux, ask what would have to be true, and run a pre-mortem.
 
 ## What You'll Learn
 After this module, you will be able to:
 - **Use** your Claude runtime to generate a new agent that extends your system
-- **Orchestrate** three thinking-disciplines from Rumelt, Roger Martin, and Klein and Kahneman at room scale against a real company question
+- **Orchestrate** three thinking disciplines at room scale against a real company question
 - **Produce** a strategy kernel, suggested agent set, and two-week plan grounded in your actual files
 - **Read** the flywheel, the cycle that just sharpened the kernel is the one that keeps sharpening it
 
@@ -32,7 +32,7 @@ Hold that. Module 8 doesn't answer it. It shows you the shape of an answer you'l
 
 [Exercise: Agent Proposal Forum (diagnose and guide)](exercises/joint-double-diamond.md)
 
-The three thinking-disciplines you applied in Module 7 on your own sharing problem run again here at room scale on the sponsor challenge. *Crux* shapes each initial stance (Rumelt). Cross-checks force agents to notice rival evidence before they publish proposals. *What would have to be true?* and *pre-mortem* appear when agents criticize the synthesizer's choices and propose better ideas. Same disciplines, named inline in the prompts. Bigger instrument.
+The three thinking disciplines you applied in Module 7 on your own sharing problem run again here at room scale on the sponsor challenge. Finding the *crux* shapes each initial stance. Cross-checks force agents to notice rival evidence before they publish proposals. *What would have to be true?* and *pre-mortem* appear when agents criticize the synthesizer's choices and propose better ideas. Same disciplines, named inline in the prompts. Bigger instrument.
 
 ## Debrief
 
@@ -61,7 +61,7 @@ Read Claude's summary. Push back where it's wrong. Some of what didn't resolve s
 
 ## Next
 
-The plan you just produced is a set of assumptions dressed as work. Label them. Start the concurrent pieces, and design experiments for the uncertain ones. That's the first move after Agents 101. Agents 101 is Step 1 of 5 (Make Your Own is next). You don't graduate. You have a flywheel.
+The plan you just produced is a set of assumptions dressed as work: label them, start the concurrent pieces, and design experiments for the uncertain ones. Agents 101 is the first of five steps, with Make Your Own next; you leave with a flywheel, not a graduation.
 
 <!-- maintainer -->
 
@@ -80,7 +80,7 @@ The plan you just produced is a set of assumptions dressed as work. Label them. 
 - **Where these numbers come from:** demo from this block's own **Demo time:** line; debrief from the body ("Five minutes."). Every beat here has no file of its own, so nothing else prices it.
 - **Primary Bloom's level:** Create
 - **Demo time:** ~5 minutes.
-- **Materials (trainer):** demo agent that generates another agent (for the short lecture); separate SharePoint/OneDrive shared deliberation folder posted in chat at the start of the module; one subfolder per participant; buyer/sponsor challenge prompt; one or two central synthesizer prompts; midpoint instruction injection by the synthesizer through `midway-instructions.md`; domain prediction framework (rules codified + correctness verifiable + talent constrained). The three thinking-disciplines — Rumelt on *crux*, Martin on *what would have to be true?*, Klein and Kahneman on *pre-mortem* — are used in M7 as plain exercise moves and can be named explicitly here at room scale. **No pre-shipped strategy skills anywhere in Agents 101** (M4 is the canonical personal-skill authoring module).
+- **Materials (trainer):** demo agent that generates another agent (for the short lecture); separate SharePoint/OneDrive shared deliberation folder posted in chat at the start of the module; one subfolder per participant; buyer/sponsor challenge prompt; one or two central synthesizer prompts; midpoint instruction injection by the synthesizer through `midway-instructions.md`; domain prediction framework (rules codified + correctness verifiable + talent constrained). The three thinking disciplines — finding the *crux*, asking *what would have to be true?*, and running a *pre-mortem* — are used in M7 as plain exercise moves and can be named explicitly here at room scale. **No pre-shipped strategy skills anywhere in Agents 101** (M4 is the canonical personal-skill authoring module).
 - **Plug points:** CTO/sponsor present; company's own strategy question feeds into all agents
 
 **Artefact contracts**

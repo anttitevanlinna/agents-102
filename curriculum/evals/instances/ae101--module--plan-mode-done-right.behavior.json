@@ -1,63 +1,90 @@
 {
   "class": "behavior",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/plan-mode-done-right.md",
+  "body_sha": "65f63c69a48b64d47e514980461cc08ac2abf56b36612c502449471f42210c8c",
   "verdict": "PASS",
   "training": "ae101",
-  "trace_status": "cached",
-  "prompts_evaluated": 2,
+  "trace_status": "full_regen",
+  "prompts_evaluated": 3,
   "prompts_findings": [
     {
       "prompt_index": 1,
       "prompt_lead": "are these rules auto-loaded to each session context?",
       "verdict": "PASS",
-      "load_bearing": false,
+      "load_bearing": true,
       "risks_fired": []
     },
     {
       "prompt_index": 2,
       "prompt_lead": "If one branch from this session sharpened how plans get made in this codebase, w",
       "verdict": "TODO",
-      "load_bearing": false,
+      "load_bearing": true,
       "risks_fired": [
         {
           "pattern_id": "self-report-inflation",
           "confidence": "med",
-          "evidence": "'If nothing earned itself, say so and stop' asks Claude to judge whether the session it co-produced earned a compound; RLHF bias toward finding something means the negative branch fires rarely even on thin sessions. Partially offset by the artifact-level evidence gate ('show me which branch you picked, the moment that earned it, and why') per the evidence-backed-Debrief carve-out — the gate constrains HOW Claude reports, not WHETHER it finds something.",
-          "fix_hint": "Optional hardening only if cohorts surface inflated rules: 'if the branch is something any developer would already know, or not specific to THIS codebase from THIS session, say so and stop.' Non-blocking on this non-load-bearing module-close prompt either way."
+          "evidence": "curriculum/prompts/ae101-m2-integrate-branch.md body closing line 'If nothing earned itself, say so and stop.' Claude co-produced the session; RLHF bias favors finding something over the null branch. The artifact-level evidence gate in the same fence ('show me which branch you picked, the moment that earned it, and why') and the pushback callout at raw module line 48 ('If the saved rule could apply to any codebase, ask for one specific to this session.') constrain HOW Claude reports, not WHETHER it finds something — partial mitigation only, held at med.",
+          "fix_hint": "Optional hardening only if cohorts surface inflated rules: 'if the branch is something any developer would already know, or not specific to THIS codebase from THIS session, say so and stop.' This prompt is not a card candidate without evidence it's actually firing."
         },
         {
           "pattern_id": "self-audit-charity",
           "confidence": "low",
-          "evidence": "Carve-out applied — body blockquote right after the fence ('LLM self-charity may creep in. If the saved rule reads generic, ask for one specific to this session.') names the charity risk and gives a pushback move.",
-          "fix_hint": "No action needed; the existing body blockquote already does the job."
+          "evidence": "Carve-out applied — raw module line 48 body blockquote ('Claude may reframe the session into a smart-sounding general rule. If the saved rule could apply to any codebase, ask for one specific to this session.') names the charity risk and gives a pushback move.",
+          "fix_hint": "No action needed; the existing callout already does the job."
         },
         {
           "pattern_id": "file-preservation-gap",
           "confidence": "low",
-          "evidence": "'The file gets the rule alone' is deliberately ambiguous per the prompt registry's own maintainer note on ae101-m2-integrate-branch.md ('Deliberate imprecision — do NOT tighten... wants the student to catch that alone could overwrite ./CLAUDE.local.md and nuke M1's rules'). check_pedagogy.md rule 51 (deliberate-antipattern, flagged-by-design) applies, and the check_prompts.md integrate-verb personal-scope carve-out separately applies (body lead-in says 'integrate'; fence carries 'personal file, not team ./CLAUDE.md' + 'create + gitignore if missing'). Body callout right after the fence ('Watch the diff: integrating should add the new rule, not overwrite') further neutralises it.",
-          "fix_hint": "Leave as-is — tightening the wording removes the precision-prompting lesson this beat exists to teach (per the registry's own maintainer note)."
+          "evidence": "'The file gets the rule alone' is deliberately ambiguous per curriculum/prompts/ae101-m2-integrate-branch.md's own frontmatter note ('Deliberate imprecision — do NOT tighten... wants the student to catch that alone could overwrite ./CLAUDE.local.md and nuke M1's rules'), echoed in this module's maintainer block ('Line 56's recovery sentence stays in body — maintainer call 2026-08-02'). check_pedagogy.md rule 51 (deliberate-antipattern, flagged-by-design) applies, and check_prompts.md's integrate-verb personal-scope carve-out separately applies: raw module line 42 lead-in uses 'integrate', the fence carries 'personal file, not team ./CLAUDE.md' + 'create + gitignore if missing'.",
+          "fix_hint": "Leave as-is — tightening the wording removes the precision-prompting lesson the registry's own note says this beat exists to teach."
         },
         {
           "pattern_id": "overwrite-anxiety",
           "confidence": "low",
-          "evidence": "Same evidence and carve-out stack as file-preservation-gap — personal-scope + create-if-missing narrows the destructive branch; the risk is the intended M2 lesson, not an accident.",
+          "evidence": "Same evidence and carve-out stack as file-preservation-gap.",
           "fix_hint": "No action needed — same rationale as file-preservation-gap."
         },
         {
           "pattern_id": "preamble-before-action",
           "confidence": "low",
-          "evidence": "Conditional structure ('If one branch... write; if nothing, say so and stop') could invite reasoning-aloud, but the body primer right after the fence ('Feel free to jump direct at the diff in ./CLAUDE.local.md; Claude's preamble is optional reading') satisfies check_prompts.md rule 17(b)'s skim-past-primer carve-out.",
+          "evidence": "The conditional structure ('If one branch... write; if nothing, say so and stop') could invite reasoning-aloud, but raw module line 50 ('Feel free to jump direct at the diff in ./CLAUDE.local.md; Claude's preamble is optional reading') satisfies check_prompts.md rule 17(b)'s skim-past-primer carve-out.",
           "fix_hint": "No action needed; existing skim-past primer covers it."
         },
         {
           "pattern_id": "reading-burden",
           "confidence": "low",
-          "evidence": "Body callout 'Watch the diff: integrating should add the new rule, not overwrite ./CLAUDE.local.md' asks the student to manually catch a correctness defect (check_pedagogy.md rule 30 territory). check_pedagogy.md rule 51 deliberate-antipattern exemption applies: the diff-watch is the detection mechanism for the same deliberately-ambiguous 'alone' wording documented in the registry's maintainer note, not an independent defect.",
-          "fix_hint": "Accepted-by-design per rule 51; no fix owed. If cohorts show students skipping the diff-watch, consider a stronger imperative rather than removing the ambiguity."
+          "evidence": "Raw module line 46 asks the student to confirm the diff added the rule and kept the old ones, and to restore from scrollback if it overwrote. This is the pedagogy §31(a) prescribed fix for self-report-inflation (verify at artifact), and the module's maintainer block accepts it by name as time-critical, not an independent defect.",
+          "fix_hint": "Accepted-by-design; no fix owed."
+        }
+      ]
+    },
+    {
+      "prompt_index": 3,
+      "prompt_lead": "Did this session run into planning gaps, conflicting information, or other conte",
+      "verdict": "TODO",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "self-audit-charity",
+          "confidence": "med",
+          "evidence": "curriculum/prompts/ae101-m2-tidier.md body closing clause 'Or none, if nothing did.' Claude is asked to grade its own planning session for friction it caused; no body pushback callout near raw module lines 52-64 names the charity risk or gives a recovery move for a suspicious 'none' (unlike the sibling prompt two beats earlier, whose callout sits at raw line 48). 'Name each one and where the fix belongs' asks for concrete naming, a partial mitigant, but there is no quote-the-evidence gate and no adjacent pushback line.",
+          "fix_hint": "A one-line pushback callout after the fence ('If Claude says none, ask what almost tripped the plan') would give the honest-negative branch friction, matching the shape already used for the sibling prompt earlier in this same section. Narrow-lens suggestion only — the maintainer block already declines a fix-it prompt or done-means criterion by design; whether this specific addition is worth it is an authoring call, not this judge's."
+        },
+        {
+          "pattern_id": "niceness-tax",
+          "confidence": "low",
+          "evidence": "Same 'Or none, if nothing did' hatch could let Claude round a real but minor friction point down to a clean negative; redundant with the self-audit-charity finding above, held at low to avoid double-weighting one root cause.",
+          "fix_hint": "Covered by the self-audit-charity fix_hint above; no separate action."
+        },
+        {
+          "pattern_id": "preamble-before-action",
+          "confidence": "low",
+          "evidence": "Single reflective question, not a 4+-step or plan-mode prompt, so check_prompts.md rule 17's mandatory-suppressor trigger does not apply. No skim-past primer exists nearby, but the fence's scope (a short module-close reflection) keeps stakes low.",
+          "fix_hint": "No action needed at this scale; revisit only if the section grows more steps."
         }
       ]
     }
   ],
   "blocking_findings_count": 0,
-  "todos_count": 1
+  "todos_count": 2
 }

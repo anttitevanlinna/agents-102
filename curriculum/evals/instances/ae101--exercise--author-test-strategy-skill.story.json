@@ -1,7 +1,7 @@
 {
   "class": "storytelling",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/author-test-strategy-skill.md",
-  "body_sha": "3b2ff169de1c79cfee4bc866d2f355494910341ba8b6d5af6452dac4eb312a10",
+  "body_sha": "dbda709aa5d5b300944b9ecae0c795dfc93e5528068dc8e588f106fba4b0cf42",
   "verdict": "PASS",
   "training": "ae101",
   "module_mood_contract": "earned trust, culminating — author one skill, invoke on a real feature, ship personal-first (M3 Ex3)",
@@ -39,26 +39,26 @@
       "rule_index": 4,
       "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
       "verdict": "PASS",
-      "evidence": "Ran through the file's 7 slides (node scripts/expand-md.js output). Every `##` header names the concept or move it covers and asserts only what the body supports: 'Phase 1: Author the skill through conversation', 'Answer from how your codebase really tests', 'Phase 2: Invoke the skill on this codebase', 'Sharpen the skill from what came back', 'Phase 3: Ship the skill personal-first', 'Decide if it graduates to the team', 'What this sets up'. Closest-to-violating candidate: 'What this sets up' is a stock structural bridge heading (chrome, paired with the standard 'What happened:' widget label), not a concept-argument header — it stays inside because it names its own content plainly (the M4 handoff + skills-folder state) rather than teasing an unresolved claim. No empty containers, no orphan mystery, no dropped qualifiers, no unsupported universals.",
+      "evidence": "Re-ran through the file's 7 slides at HEAD (node scripts/expand-md.js output, body_sha 45377f5d...). Headers unchanged by the ba5ccf5..HEAD diff (only Phase-2/Phase-3 bullet text and the maintainer block moved): 'Phase 1: Author the skill through conversation', 'Answer from how your codebase really tests', 'Phase 2: Invoke the skill on this codebase', 'Sharpen the skill from what came back', 'Phase 3: Ship the skill personal-first', 'Decide if it graduates to the team', 'What this sets up'. Each names the concept/move it covers and asserts only what the body supports. Closest-to-violating: 'What this sets up' is stock structural-bridge chrome (paired with the 'What happened:' widget), not a concept-argument header — stays inside because it names its own content plainly (M4 handoff + skills-folder state) rather than teasing an unresolved claim.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_lectures.md",
       "rule_index": 5,
-      "rule_lead": "A slide's BODY is size-bounded, not just its header.",
+      "rule_lead": "A slide's BODY is size-bounded, not just its header (§4's sibling).",
       "verdict": "PASS",
-      "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/exercises/author-test-strategy-skill.md` → output: 'files: 1  slides: 7  limits: 210 words / 6 bullets' / 'oversized: 0' / '✓ every slide is within limits'.",
+      "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/exercises/author-test-strategy-skill.md` at HEAD (27f92c59) → 'files: 1  slides: 7  limits: 210 words / 6 bullets' / 'oversized: 0' / '✓ every slide is within limits'. The ba5ccf5..HEAD diff only trimmed words (dropped a repeated install path from two bullets), so this PASS is a re-confirmation, not a new risk.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_pedagogy.md",
       "rule_index": 16,
-      "rule_lead": "Forcing functions stay, scripted reactions go; forcing functions live in prompts, not body prose.",
+      "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
       "verdict": "PASS",
-      "evidence": "The 'ask the skill its own weakest part' ask sits as optional body prose under '## Sharpen the skill from what came back' (not in a fence). Rule 16's own Boundary 2 (2026-08-02) permits a body-only ask for light/conversational-fold register PROVIDED the file carries a maintainer accept-note — this file's maintainer block has one: 'Accept-with-mitigation (check_pedagogy.md §56): no dedicated push-back move for a skipped self-critique ask.' Harm check: is this student-facing forcing function actually unreachable by a speed-runner? No — the SAME move (disclose-weakest-part) is re-run as the training's real mandatory forcing function one module beat later, inside a fence: earn-the-trust.md § 'Sharpen the skill from evidence' → {{prompt:ae101-m3-sharpen-skill}}, explicitly marked 'The skill sharpen is mandatory.' A student who skims past this file's optional body ask still hits the fenced, mandatory version at module close.",
-      "fix_hint": "Non-blocking: the informal in-exercise ask and the module's mandatory fenced prompt cover near-identical ground (disclose weakest part) minutes apart — could read as repetitive to a careful student. Author's call whether that's a deliberate light-then-real double pass or worth trimming one instance.",
+      "evidence": "The 'ask the skill its own weakest part' ask still sits as optional body prose under '## Sharpen the skill from what came back' (line unchanged by the diff). Rule 16's Boundary 2 permits a body-only ask for light/conversational-fold register PROVIDED the file carries a maintainer accept-note — this file's maintainer block still has one: 'Accept-with-mitigation (check_pedagogy.md §56): no dedicated push-back move for a skipped self-critique ask.' Rule-drift check: §56 was amended 2026-08-23 to add a 'run the <1-min diagnostic, don't assume it' clause for slow/silent misses (rules-file bloat, context creep) — read the amendment in full; it does not reach this case. A skipped self-critique here is neither slow nor silent: it's a single-beat, immediately-observable miss, and it is still caught minutes later by the training's real mandatory forcing function inside a fence — earn-the-trust.md § 'Sharpen the skill from evidence' → {{prompt:ae101-m3-sharpen-skill}}, explicitly marked 'The skill sharpen is mandatory.' The accept-note survives the rule move unaltered.",
+      "fix_hint": "Non-blocking, unchanged from prior pin: the informal in-exercise ask and the module's mandatory fenced prompt cover near-identical ground minutes apart — could read as repetitive to a careful student. Author's call.",
       "blocking": false
     },
     {
@@ -66,16 +66,16 @@
       "rule_index": 27,
       "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
       "verdict": "PASS",
-      "evidence": "Ran `grep -niE \"discuss with|share what|tell the room|compare with|neighbor|neighbour|pair up|take .* min and (compare|share|discuss)\" curriculum/exercises/author-test-strategy-skill.md` → zero matches (empty output). No authored conversation cues; every sentence is about the work (interview, artifact, invocation, ship decision) or the third carve-out's sparing room-naming ('Show it to your staff engineer over coffee. Send it to the channel.') which describes the TEAM-PR follow-up conversation, not a live in-room cue.",
+      "evidence": "Ran `grep -niE \"discuss with|share what|tell the room|compare with|neighbor|neighbour|pair up|take .* min and (compare|share|discuss)\" curriculum/exercises/author-test-strategy-skill.md` against HEAD → zero matches (empty output). No authored conversation cues; every sentence is about the work (interview, artifact, invocation, ship decision) or the third carve-out's sparing room-naming ('Show it to your staff engineer over coffee. Send it to the channel.'), which describes the team-PR follow-up conversation, not a live in-room cue.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 1,
-      "rule_lead": "Mood contract named; per-beat mood lands (8+/10, 7 = facilitator-premium, <7 = REVISE).",
+      "rule_lead": "Mood contract named.",
       "verdict": "PASS",
-      "evidence": "Regenerated trace (curriculum/evals/sim-cache/ae101--exercise--author-test-strategy-skill.persona.json, all 4 phase SHAs current against body_sha). Mood contract: 'earned trust, culminating.' Phase scores: 8, 8, 7, 8; close 8. All 4 beats are teaching beats (author, invoke-and-grade, sharpen, ship-and-decide-team-boundary) — none are mechanical setup, so the mood-floor applies to all four and none falls below the 7 REVISE line. Phase 3 ('Sharpen the skill from what came back') sits at facilitator-premium 7: correctly placed right after Phase 2's self-graded 'is it good?' but stays optional body prose with no dedicated in-file push-back move for a skimming student — what would lift it to 8 is a light trainer catch or fenced nudge, deliberately not added per the maintainer's Accept-with-mitigation note.",
+      "evidence": "Regenerated trace (curriculum/evals/sim-cache/ae101--exercise--author-test-strategy-skill.persona.json). Own diff check found body_sha changed since the ba5ccf5 pin (45377f5d... vs the trace's stale 250119...), so re-ran per-phase SHA compare: phase 1 (7d570dcb...) and phase 3 (0e97fbe6...) SHAs matched cache exactly and were reused; phase 2 and phase 4 SHAs mismatched (both trimmed a repeated install-path sentence) and were regenerated. Mood contract: 'earned trust, culminating.' Phase scores after regeneration: 8, 8, 7, 8; close 8 — unchanged from the prior pin, because the two edited bullets only cut an already-established fact (the path was stated once already, in Phase 1, and a new maintainer note — 'Install mechanic is stated once' — makes that deliberate) rather than removing content a student needed. Mood-floor sub-clause: all 4 beats are teaching beats (author, invoke-and-grade, sharpen, ship-and-decide-team-boundary), none are mechanical setup, so the floor applies to all four and none falls below the 7 REVISE line. Phase 3 ('Sharpen the skill from what came back') sits at facilitator-premium 7 for the same reason as the prior pin: correctly placed right after Phase 2's self-graded 'is it good?', stays optional body prose with no dedicated in-file push-back move, and the maintainer's Accept-with-mitigation note (§16 above) is why it stays there deliberately.",
       "fix_hint": null,
       "blocking": false
     },
@@ -84,7 +84,7 @@
       "rule_index": 2,
       "rule_lead": "Epistemic mood ≠ punitive mood.",
       "verdict": "PASS",
-      "evidence": "Trace mood_notes across all 4 phases read as competence/agency framing ('earned competence', 'reads as competence, not a script', 'names the boundary plainly'), never shame. The self-critique ask is framed as sharpening a strength ('disclose its own weakest part'), not confessing a fault; the same-window bias line ('The grade is biased by design') names a structural fact about self-grading, not a student error.",
+      "evidence": "Regenerated trace's mood_notes across all 4 phases still read as competence/agency framing ('earned competence', 'reads as competence, not a script', 'names the boundary plainly'), never shame. The self-critique ask is framed as sharpening a strength, not confessing a fault; the same-window bias line ('The grade is biased by design') names a structural fact about self-grading, not a student error. The diff touched none of this language.",
       "fix_hint": null,
       "blocking": false
     },
@@ -93,16 +93,16 @@
       "rule_index": 3,
       "rule_lead": "Lead with discipline, not failure mode.",
       "verdict": "PASS",
-      "evidence": "Top-line point: 'test strategy authored generically is a pyramid diagram' — names the failure shape (pyramid) only as the negative case the discipline (codebase-specific, conversationally-authored strategy) addresses, not as the title. Section headers throughout lead with positive moves ('Author the skill through conversation', 'Sharpen the skill from what came back', 'Ship the skill personal-first'), none failure-named.",
+      "evidence": "Top-line point (unchanged by the diff): 'test strategy authored generically is a pyramid diagram' — names the failure shape (pyramid) only as the negative case the discipline addresses, not as the title. Section headers throughout lead with positive moves ('Author the skill through conversation', 'Sharpen the skill from what came back', 'Ship the skill personal-first'), none failure-named.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 4,
-      "rule_lead": "Strategy-fidelity check (consolidates front-run, module-to-module arc, Big Idea fidelity, mood-doesn't-resolve-early).",
+      "rule_lead": "Strategy-fidelity check.",
       "verdict": "PASS",
-      "evidence": "Checked against bosser-strategy:content-strategy-agentic-engineering-101.md § M3 in detail and § M4 in detail. Big Idea fidelity: file's 'test strategy authored generically is a pyramid diagram' matches strategy's 'curated-then-authored... theory × codebase-knowledge' framing for Ex3 exactly. Module-to-module arc: file's close bullet ('Module 4 reads this skill as part of the system you have: it walks a real task against everything you've built, and the test-strategy skill is the quality-criterion anchor in that walk') is a near-verbatim match to the strategy doc's M4-in-detail text ('Walk what you've built... Framework named: gap analysis — walk the system you have against the system the task needs'). Front-run: the exercise's own optional 'disclose weakest part' body-ask (Phase 'Sharpen the skill from what came back') covers the same move as the module's mandatory close beat one section later (earn-the-trust.md, {{prompt:ae101-m3-sharpen-skill}}) — checked and it does NOT collapse the module close's felt-evidence, since the module version is the fenced, evidenced, mandatory pass and this file's version is explicitly lighter/optional and maintainer-accepted (check_pedagogy.md §56 accept-note); the module beat still lands as the real payoff. Mood-doesn't-resolve-early: N/A concern here — M3's 'earned trust' mood is designed to resolve fully within M3 (not stewing forward), and M4's mood ('curious readiness') doesn't depend on M3 staying unresolved.",
+      "evidence": "Re-read bosser-strategy:content-strategy-agentic-engineering-101.md § 'M3 in detail' and 'M4 in detail' live (private GDrive doc, current as of this session) against the post-diff body, because the diff's substantive change — 'sponsor-named test framework...' → 'The codebase's test framework...' plug point, and the P3/watch-for bullets dropping 'pre-engagement contract' language — is exactly the kind of edit this rule exists to catch. Strategy doc's own Ex3 description says the team PR is 'a strong follow-up... mediated by human conversation, not auto-promoted' and never names a sponsor-provided team-kit home for M3 — the file's new wording ('Team-kit home unresolved... Promotion to a team home is a later human conversation') matches this exactly and is a tighter fit than the pre-diff wording, not a drift. Module-to-module arc (unchanged text): the close bullet ('Module 4 reads this skill as part of the system you have...') is a near-verbatim match to the strategy doc's M4 gap-analysis framing. Front-run check (unchanged): the exercise's own optional self-critique ask does not collapse the module's mandatory close beat, per §16 above.",
       "fix_hint": null,
       "blocking": false
     },
@@ -139,7 +139,7 @@
     "close_score": 8,
     "any_below_8": true,
     "stealing_the_mood": [
-      "Phase 'Sharpen the skill from what came back' (mood 7) — facilitator-premium: correctly placed, self-critique ask lands right where self-charity risk peaks, but stays optional body prose with no dedicated in-file push-back move; maintainer has explicitly accepted this (check_pedagogy.md §56) since the module's mandatory fenced prompt covers the real forcing function one beat later."
+      "Phase 'Sharpen the skill from what came back' (mood 7) — facilitator-premium: correctly placed, self-critique ask lands right where self-charity risk peaks, but stays optional body prose with no dedicated in-file push-back move; maintainer has explicitly accepted this (check_pedagogy.md §56 accept-note, re-verified against §56's 2026-08-23 amendment) since the module's mandatory fenced prompt covers the real forcing function one beat later."
     ]
   },
   "blocking_findings_count": 0,

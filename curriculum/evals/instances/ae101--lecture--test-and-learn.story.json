@@ -1,10 +1,10 @@
 {
   "class": "storytelling",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/test-and-learn.md",
-  "body_sha": "1869870f47ffa9e98a42144e45fba319dddc25c6ddf9a5c068fa02280ee89529",
+  "body_sha": "55852a7ca0aaab2aa8b4fa3047d276e2119086e589c4f84d4eeb9c2f0c09cc77",
   "verdict": "PASS",
   "training": "ae101",
-  "module_mood_contract": "Curious readiness — \"I've built enough to try something; let's see what the agent does with it.\" Stakes back in the room, no compliance framing. M4 must NOT feel tidy — the un-packaged run's messiness stews into M5's rescue. (Per bosser-strategy:content-strategy-agentic-engineering-101.md § M4 in detail.)",
+  "module_mood_contract": "Curious readiness — \"I've built enough to try something; let's see what the agent does with it.\" Stakes back in the room, no compliance framing. M4 must NOT feel tidy — the un-packaged session's messiness stews into M5's rescue. (Per bosser-strategy:content-strategy-agentic-engineering-101.md § M4 in detail.)",
   "trace_status": "regenerated",
   "rules_evaluated": [
     {
@@ -12,7 +12,7 @@
       "rule_index": 1,
       "rule_lead": "Meta-frame lectures = closers, not openers.",
       "verdict": "PASS",
-      "evidence": "Harm the rule guards: a lecture that narrates a pattern the student already lived, told before the exercise, reads as abstract claim instead of recognition. Not present here — the lecture meta line (maintainer block) states it 'sets up M4's walk-and-send-off exercise' and 'names the spirit ... and the one move the exercise opens with' — prospective arming, not retrospective naming. Strategy doc places this lecture before the exercise in the M4 sequence. PASS.",
+      "evidence": "Harm the rule guards: a lecture that narrates a pattern the student already lived, told before the exercise, reads as abstract claim instead of recognition. Not present here — the maintainer block's 'Lecture meta' line states it 'sets up M4's walk-and-send-off exercise' and 'names the spirit ... and the one move the exercise opens with' — prospective arming, not retrospective naming of a lived pattern. Placement diagnostic: showing the spirit + one operational primitive (gap analysis) = opener/mid-module vocabulary, not a closer's recognition beat. PASS.",
       "fix_hint": null,
       "blocking": false
     },
@@ -21,7 +21,7 @@
       "rule_index": 2,
       "rule_lead": "Minimal lecturing before contrast-mood exercises.",
       "verdict": "PASS",
-      "evidence": "M4 is contrast-mood (learn through doing the un-packaged send-off; M5 does the naming). Dosage present: spirit (slide 1, 90 words), arc framing (slide 2, 76 words), one operational primitive — gap analysis (slide 3, 78 words) — plus cancel-permission operating rule (slide 4, 92 words). No named practitioner term is taught: grep for 'Ronacher'/'three-pattern' in the body returns only the deliberate absence enumeration ('no plan.md, no verifier, no reference artifact', line 13) naming what ISN'T here, never Ronacher's name. Matches maintainer block: 'Not named in this body ... M5 owns the naming.' Total body ~336 words across 4 slides — arms, does not teach.",
+      "evidence": "M4 is contrast-mood (learn-through-doing the un-packaged send-off; naming happens in M5). Ran `node scripts/check-slide-size.js --file curriculum/lectures/test-and-learn.md --report`: 4 slides, 90/76/78/92 words (spirit / arc-framing / gap-analysis-as-one-primitive / cancel-permission FAQ) — matches the rule's max dosage (spirit + diagnostic lens + one operational primitive + direct FAQ), nothing beyond it. Ran `awk '/<!-- maintainer -->/{exit}{print}' curriculum/lectures/test-and-learn.md | grep -inE 'Ronacher|three-pattern'` → zero hits above the fence (all 8 corpus hits sit in the maintainer/backing blocks). The named practitioner term Ronacher's three-pattern is present only as a deliberate absence enumeration ('no plan.md, no verifier, no reference artifact') per the maintainer's own note — never taught by name. Body arms; M5 teaches.",
       "fix_hint": null,
       "blocking": false
     },
@@ -30,7 +30,7 @@
       "rule_index": 3,
       "rule_lead": "No cross-module sequencing in lecture bodies.",
       "verdict": "PASS",
-      "evidence": "Ran: `awk '/<!-- maintainer -->/{exit} {print}' curriculum/lectures/test-and-learn.md | grep -nE 'M[0-9]|Module [0-9]'` → zero hits (empty output). No bridges, forward-references, or module numbering above the maintainer fence.",
+      "evidence": "Ran `awk '/<!-- maintainer -->/{exit}{print}' curriculum/lectures/test-and-learn.md | grep -nE 'M[0-9]|Module [0-9]'` → zero hits (empty output). No bridges, forward-references, or module numbering above the maintainer fence. All `M[0-9]`/module-name occurrences in the raw file (verified separately) sit inside the maintainer and backing blocks, which are exempt (internal notes, not body prose).",
       "fix_hint": null,
       "blocking": false
     },
@@ -39,7 +39,7 @@
       "rule_index": 4,
       "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
       "verdict": "PASS",
-      "evidence": "Four headers: 'Every send-off is an experiment' (claim), 'The two-session arc' (names a structure the body defines, not an empty container like 'The move'), 'Gap analysis: walk your system against the task' (names + one-clause definition, precedent-consistent with 'Gates decay'-style failure/claim headers), 'Cancel is legitimate; traces are data' (claim). No two slides share a header. No unsupported universals, no category errors, no dropped qualifiers checked against body content — each header's claim is exactly what its slide's body supports, nothing stronger.",
+      "evidence": "Four headers, unchanged by the diff under review: 'Every send-off is an experiment' (claim), 'The two-session arc' (names a structure the body defines), 'Gap analysis: walk your system against the task' (names + one-clause definition), 'Cancel is legitimate; traces are data' (claim). No two slides share a header. No unsupported universals, no category errors, no dropped qualifiers — each header's claim is exactly what its slide's body supports.",
       "fix_hint": null,
       "blocking": false
     },
@@ -48,7 +48,16 @@
       "rule_index": 5,
       "rule_lead": "A slide's BODY is size-bounded, not just its header.",
       "verdict": "PASS",
-      "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/lectures/test-and-learn.md --report`. Output: 4 slides, limits 210 words / 6 bullets; largest slide 'Cancel is legitimate; traces are data' = 92 words / 3 bullets; smallest 'The two-session arc' = 76 words / 3 bullets. `oversized: 0`, exit message '✓ every slide is within limits'.",
+      "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/lectures/test-and-learn.md --report`. Output: 4 slides, limits 210 words / 6 bullets; largest 'Cancel is legitimate; traces are data' = 92 words / 3 bullets; smallest 'The two-session arc' = 76 words / 3 bullets. `oversized: 0`, '✓ every slide is within limits'. Counts identical to the pre-diff instance — the run→session word swap is a same-length substitution, no slide grew.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 6,
+      "rule_lead": "A prompt inside a lecture is a trainer show-and-tell, never a room follow-along.",
+      "verdict": "N/A",
+      "evidence": "Ran `grep -nE '\\{\\{prompt:|^\\*\\*Prompt\\*\\*' curriculum/lectures/test-and-learn.md` → zero hits. This lecture carries no `{{prompt:<key>}}` marker and no inline `**Prompt**` block, so the rule has no surface to bind: there is no prompt to be either trainer-demo or student-run.",
       "fix_hint": null,
       "blocking": false
     },
@@ -57,7 +66,7 @@
       "rule_index": 16,
       "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
       "verdict": "N/A",
-      "evidence": "This file carries no student-copied prompt fences (`{{prompt:` / `**Prompt**` both absent — this is prework/lecture, the exercise it arms lives in a separate file). There is no forcing function for the body to be explaining instead of enacting. The one number in body prose ('fifteen to thirty minutes is enough', line 27) is a pacing calibration in suggestion register ('is enough', not a bare imperative count), which the rule's own boundary clause allows to stay in body.",
+      "evidence": "No student-copied prompt fences exist in this file (confirmed under check_lectures §6 above), so there is no forcing function for body prose to be explaining instead of enacting. The one number in body prose ('fifteen to thirty minutes is enough') is a pacing calibration in suggestion register ('is enough', not a bare imperative count), which the rule's own boundary clause allows to stay in body.",
       "fix_hint": null,
       "blocking": false
     },
@@ -66,7 +75,7 @@
       "rule_index": 27,
       "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
       "verdict": "PASS",
-      "evidence": "Harm guarded: an authored conversation cue collapses trainer's room-reading judgement into a scripted beat. Grepped body for 'discuss', 'neighbor/neighbour', 'share with', 'talk to', 'take N seconds and', 'the room' (case-insensitive): zero hits. Every sentence addresses the individual reader about the work (the experiment stance, the two-session arc, gap analysis, cancel permission), never the room or a pairing instruction.",
+      "evidence": "Harm guarded: an authored conversation cue collapses the trainer's room-reading judgement into a scripted beat. Ran `awk '/<!-- maintainer -->/{exit}{print}' curriculum/lectures/test-and-learn.md | grep -inE 'discuss|neighbou?r|share with|talk to|take [0-9]+ seconds|the room'` → exit code 1, zero matches. Every sentence addresses the individual reader about the work (the experiment stance, the two-session arc, gap analysis, cancel permission), never the room or a pairing instruction.",
       "fix_hint": null,
       "blocking": false
     },
@@ -75,7 +84,7 @@
       "rule_index": 1,
       "rule_lead": "Mood contract named.",
       "verdict": "PASS",
-      "evidence": "Trace regenerated this run (content_sha f847497a..., matching current body_sha — prior cached trace at content_sha 6fec7bb8... was stale against the file's Aug-15 edits and was regenerated). Phase 1 mood_score 8, close mood_score 8 — both at the teaching-beat floor. Classification: the whole deck is a TEACHING beat (spirit-naming, arc-framing, permission-granting), none of it compresses into a parenthetical without losing the arc, so the floor correctly applies and is met, not exempted.",
+      "evidence": "Trace regenerated this run at curriculum/evals/sim-cache/ae101--lecture--test-and-learn.persona.json (content_sha 55852a7c... now matches current body_sha; the cached trace at content_sha f847497a... predated the run→session vocabulary-sweep edit landed in commit 1c9215cd and was stale). Phase 1 mood_score 8, close mood_score 8 — both at the teaching-beat floor. Classification: the whole deck is a TEACHING beat (spirit-naming, arc-framing, permission-granting), none of it compresses into a parenthetical without losing the arc, so the floor correctly applies and is met, not exempted. The wording change itself is mood-neutral: same claims, same slide count, the trace's own mood_note calls it 'a wash on mood.'",
       "fix_hint": null,
       "blocking": false
     },
@@ -84,7 +93,7 @@
       "rule_index": 2,
       "rule_lead": "Epistemic mood ≠ punitive mood.",
       "verdict": "PASS",
-      "evidence": "Trace mood_note (phase 1): 'none of this reads as compliance (\"make sure you do this right\") or performance-anxiety.' Slide 4 locates the three failure tells in Claude's behavior ('hallucinating file paths', 'contradicting its own earlier steps', 'missing a requirement') — never the student's — and frames stopping early as the operator's right to a readable result, matching the maintainer's 2026-08-01 correction (line 49: 'It's an operating rule, not a safety net').",
+      "evidence": "Trace mood_note (phase 1): 'none of this reads as compliance (\"make sure you do this right\") or performance-anxiety.' Slide 4 locates the three failure tells in Claude's behavior ('hallucinating file paths', 'contradicting its own earlier steps', 'missing a requirement') — never the student's — and frames stopping early as the operator's right to a readable result, matching the maintainer's 2026-08-01 correction (maintainer block: 'It's an operating rule, not a safety net').",
       "fix_hint": null,
       "blocking": false
     },
@@ -102,7 +111,7 @@
       "rule_index": 4,
       "rule_lead": "Strategy-fidelity check (consolidates front-run check, module-to-module arc, Big Idea fidelity, mood-doesn't-resolve-early).",
       "verdict": "PASS",
-      "evidence": "Front-run: Ronacher's three-pattern stays unnamed (confirmed by grep above) — M5 keeps its naming payoff per strategy doc's M4/M5 split ('the pedagogy is contrast, not prescription ... each piece earns its name ... after the M4 evidence is read'). Big Idea fidelity: body opens 'You are testing, and you are learning' — matches strategy doc's 'Spirit: testing and learning' verbatim. Module-to-module arc: trace close.mood_note — lecture 'ends on the cancel-permission bullet, not on a forward-reference to what happens after — doesn't pre-resolve the exercise's uncertainty or tip into M5's teaching moment.' Mood-doesn't-resolve-early: no summary of what the exercise will produce; the un-tidy result stays open for M5 to diagnose, consistent with the module contract ('M4 must NOT feel tidy').",
+      "evidence": "Front-run: Ronacher's three-pattern stays unnamed above the fence (confirmed under check_lectures §2/§3 greps) — M5 keeps its naming payoff, per the maintainer's own note ('M5 owns the naming'). Big Idea fidelity: body opens 'You are testing, and you are learning' — matches the module's spirit unchanged by this diff. Module-to-module arc: trace close.mood_note — lecture 'ends on the cancel-permission bullet, not on a forward-reference to what happens after — doesn't pre-resolve the exercise's uncertainty or tip into M5's teaching moment.' Mood-doesn't-resolve-early: no summary of what the exercise will produce; the un-tidy result stays open for M5 to diagnose, consistent with the module contract ('M4 must NOT feel tidy'). The run→session edit under review touches none of these four facets — it is a same-referent vocabulary correction (vocabulary.md: noun 'run' for the agent's sitting is banned in student-facing body; 'session' is the platform's own word), not a claim, sequencing, or arc change.",
       "fix_hint": null,
       "blocking": false
     },
@@ -139,7 +148,7 @@
       "judge_owned": true,
       "rule_lead": "Whole-compendium scope call.",
       "verdict": "N/A",
-      "evidence": "check_prompts.md's scope is 'anything inside a fenced code block with copy-this affordance for a student.' This lecture contains zero such fences — no `{{prompt:<key>}}` marker, no `**Prompt**` block. No rule in this compendium has a surface to bind here.",
+      "evidence": "check_prompts.md's scope is 'anything inside a fenced code block with copy-this affordance for a student.' This lecture contains zero such fences — no `{{prompt:<key>}}` marker, no `**Prompt**` block (confirmed under check_lectures §6). No rule in this compendium has a surface to bind here.",
       "fix_hint": null,
       "blocking": false
     },
@@ -149,7 +158,7 @@
       "judge_owned": true,
       "rule_lead": "Whole-compendium scope call.",
       "verdict": "N/A",
-      "evidence": "check_workshop.md fires when a beat's output belongs to the group, not a participant (adjudication, attributed contribution, shared record). This lecture is individual comprehension-only prework read by a lone reader before the exercise — no beat's output belongs to a group.",
+      "evidence": "check_workshop.md fires when a beat's output belongs to the group, not a participant (adjudication, attributed contribution, shared record, group round). This lecture is individual comprehension-only prework read by a lone reader before the exercise — no beat's output belongs to a group, and the exercise it arms (walk-and-send-off) is likewise a solo send-off, not a room-scale beat.",
       "fix_hint": null,
       "blocking": false
     }
@@ -164,5 +173,5 @@
   },
   "blocking_findings_count": 0,
   "todos_count": 0,
-  "notes": "Teaching moment lands (no check_strategy_tie_in rule_index owns this per template — recorded here): trace shows zero confusion_flags and zero under_scaffolded_phases; the tourist/practitioner sentence and gap-analysis question both register as portable takeaways the persona would carry unprompted into the exercise. Sim trace regenerated this run — prior cache (content_sha 6fec7bb8...) predated the file's 2026-08-15 body edits and did not match current body_sha; new trace confirms the current body reads the same way (same 4 slides, same claims) at content_sha f847497a... Prior instance for this file (overwritten by this run) had a duplicate check_strategy_tie_in.md rule_index-6 row and a missing rule_index-5 row; fixed here — one row per rule, §5/§6/§7 each present once."
+  "notes": "Staleness reason for this re-fire: diff-region. `git diff 382adbec..HEAD -- curriculum/lectures/test-and-learn.md` (full diff read, not grep-filtered) showed exactly two things: (1) a body word swap 'run'→'session' in the closing FAQ bullet ('For this first run/session, fifteen to thirty minutes is enough. Run/Session length follows...'), matching the same swap already made in the backing block's `engineers-run-for-hours`/`fifteen-to-thirty-minutes` claim quotes by commit 43c6b753 (backing-anchor sync after the body moved); (2) the Quality-stamp line itself being bumped through two later re-judge passes (writing/slides classes), which never touched story's own pin — story was still pinned at 382adbec against a body from BEFORE the run→session edit (commit 1c9215cd, which postdates 382adbec per `git merge-base --is-ancestor`). Traced the swap to `curriculum/vocabulary.md` line 25: 'Noun-run for the agent sitting is banned in student-facing body — engineers don't say it. Enforcement: check_student_facing.md §21b' — confirms this was a deliberate vocabulary-compliance fix, not a drive-by edit, and explains why it reads as a strict clarity improvement rather than a regression: 'session' now matches 'session one'/'session two' from the arc section two slides earlier, removing a small terminology seam. Sim trace regenerated (was stale: cached content_sha f847497a... predated the edit; new content_sha 55852a7c... matches current body_sha) — mood held at 8/8, trace's own note calls the wording change 'a wash on mood.' Read all six full T3 compendiums in scope (check_lectures, check_pedagogy, check_prompts, check_strategy_tie_in, check_workshop) plus the story judge template and dispatch preamble in full before scoring, per the task's required reading order. No REVISE found anywhere in scope; no rule question raised for the maintainer."
 }

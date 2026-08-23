@@ -1,16 +1,15 @@
 {
   "class": "slides",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/compound-and-close.md",
-  "body_sha": "dadc198c19e7d358a9ce788105396d3f2f28e2ffebc805b28a815d176756711f",
+  "body_sha": "2acf95a9ff0caec02457b3933195db4a6c7040bb7dc1f104a181e4e791b26016",
   "verdict": "PASS",
   "training": "ae101",
   "chunk_map": [
-    {"index": 0, "heading": "H1 + lede (title slide)", "lines": "1-11"},
-    {"index": 1, "heading": "Write your rules file from the session", "lines": "13-23"},
-    {"index": 2, "heading": "Push back where the summary misreads", "lines": "24-28"},
-    {"index": 3, "heading": "Keep or revert the `.gitignore` edit", "lines": "29-32"},
-    {"index": 4, "heading": "Sweep the session into your rules file one more time", "lines": "33-43"},
-    {"index": 5, "heading": "What you built", "lines": "44-49"}
+    {"index": 0, "heading": "H1 + lede (title slide)", "lines": "1-16"},
+    {"index": 1, "heading": "Write your rules file from the session", "lines": "17-27"},
+    {"index": 2, "heading": "Push back where the summary misreads", "lines": "28-32"},
+    {"index": 3, "heading": "Keep or revert the `.gitignore` edit", "lines": "33-36"},
+    {"index": 4, "heading": "Sweep the session into your rules file one more time", "lines": "37-49"}
   ],
   "rules_evaluated": [
     {
@@ -19,7 +18,7 @@
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Closest candidates all land inside carve-outs: chunk 2 \"Push back where the summary misreads\", line 26 \"Read Claude's summary. Push back where it misreads.\" — \"Claude's summary\" is the artifact the student's own session just produced (session-artifact carve-out, line 25 compendium). Chunk 3 \"Keep or revert the .gitignore edit\", line 31 \"the compound step added it to your .gitignore\" — \"it\" = CLAUDE.local.md, named repeatedly in chunks 0-1 (sequential deck read, in-file reuse permitted). No pronoun/demonstrative anywhere in the body fails to resolve against same-file prior chunks or the session-artifact carve-out.",
+      "evidence": "New-since-pin candidates: chunk 0, line 13 \"...the choice is deliberate. It is the simplest store for personal rules there is... And it parks the bigger question...\" — both 'it's resolve to `./CLAUDE.local.md`, named at line 5 and again at the start of the same line 13, held within one paragraph. Chunk 4, line 46 \"your rules files\" (plural) — two distinct rules files are already named earlier in the deck: the personal `./CLAUDE.local.md` (chunk 0/1, repeatedly) and the team `./CLAUDE.md` (named in the compound-and-close-1 prompt fence at chunk 1, \"not the team ./CLAUDE.md\", and echoed at chunk 0 line 13's \"a team's rules and guardrails\"), so the plural resolves to that named pair rather than dangling. Unchanged candidates still hold: chunk 2 line 30 \"Read Claude's summary\" (session-artifact carve-out); chunk 3 line 35 \"the compound step added it to your .gitignore\" ('it' = CLAUDE.local.md, 'the compound step' = chunk 1's action). No pronoun/demonstrative/noun-phrase fails to resolve.",
       "fix_hint": null,
       "blocking": true
     },
@@ -29,7 +28,7 @@
       "rule_lead": "Cross-file and positional callbacks.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "No sentence in the body (lines 1-49) points at another file by position. `close-the-ticket` is named only in the post-maintainer-cut Arc block (line 110), outside judged scope. No candidate to flag.",
+      "evidence": "No sentence in the body (lines 1-49) points at another file by position. `close-the-ticket` is named only in the post-maintainer-cut Arc block (line 111), outside judged scope. Diff added no new cross-file reference.",
       "fix_hint": null,
       "blocking": true
     },
@@ -39,7 +38,7 @@
       "rule_lead": "Every backward reference points at a beat that exists.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Chunk 0, line 11: \"The PR shipped and the ticket is closed.\" Arc block (line 110) confirms this exercise picks up from `close-the-ticket`, which does ship a PR and close a ticket per `getting-going.md` line 121's module flow (Ex2 fix-tests-first ships the PR, Ex3 close-the-ticket closes the ticket). Referenced beat exists.",
+      "evidence": "Chunk 0, line 11: \"The PR shipped and the ticket is closed.\" (wording changed by the diff, referent unchanged). Arc block (line 111) confirms this exercise picks up from `close-the-ticket`, which ships the PR and closes the ticket per `getting-going.md` line 123's module flow. Referenced beat exists.",
       "fix_hint": null,
       "blocking": true
     },
@@ -59,7 +58,7 @@
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Smallest chunk is chunk 3 (lines 29-32), 4 lines: \"If `CLAUDE.local.md` wasn't already ignored, the compound step added it to your `.gitignore`. That is an uncommitted change now; commit it, or drop it.\" Self-carrying claim (an instruction plus a decision), not a wait-state bullet. No chunk in the file is content-free.",
+      "evidence": "Smallest chunk is chunk 3 (lines 33-36): \"If `CLAUDE.local.md` wasn't already ignored, the compound step added it to your `.gitignore`. That is an uncommitted change now; commit it, or drop it.\" Self-carrying claim (instruction plus decision), not a wait-state bullet. No chunk in the file is content-free. (The prior chunk 5 \"What you built\", the only chunk close to orphan-shaped, was cut by this diff entirely — nothing to evaluate there now.)",
       "fix_hint": null,
       "blocking": false
     },
@@ -69,7 +68,7 @@
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Each header's content matches: chunk 1 \"Write your rules file from the session\" → body writes the rules file (lines 15-21); chunk 2 \"Push back where the summary misreads\" → body pushes back (lines 26-27); chunk 3 \"Keep or revert the .gitignore edit\" → body does exactly that (line 31); chunk 4 \"Sweep the session into your rules file one more time\" → second sweep prompt (lines 35-40); chunk 5 \"What you built\" → recap (lines 46-48). No header the chunk's own content contradicts.",
+      "evidence": "Chunk 0 has no `##` header (H1 only, title slide) but the new lines 13/15 (rules-file location, 'this will bloat') stay on-topic for 'Compound and close the loop'. Chunk 1 'Write your rules file from the session' -> body writes the rules file (lines 19-21). Chunk 2 'Push back where the summary misreads' -> body pushes back (lines 30-31). Chunk 3 'Keep or revert the .gitignore edit' -> body does exactly that (line 35). Chunk 4 'Sweep the session into your rules file one more time' -> second-sweep prompt (lines 39-44) plus the new token-cost aside (line 46) and escape-hatch note (line 48), both about managing the resulting file, not a topic the header contradicts. No header the chunk's own content contradicts.",
       "fix_hint": null,
       "blocking": false
     },
@@ -79,9 +78,9 @@
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Checked all sub-items against the body: no 'Not X. Not Y. Z.' construction anywhere; no anaphora/epistrophe triples; no self-grading superlative (closest is line 9 \"every push-back is a hint toward your own rules\" — a claim about the student's own action, not a value-prop rating of the exercise, so it doesn't trip §13's leak); no number-plus-retraction pattern (body contains no bare percentages/counts of this shape); no abstraction-noun stacks (vocabulary stays concrete: PR, ticket, rules file, .gitignore, scrollback); no empty-leg verb triplets. None of the six sub-items fire in any chunk.",
+      "evidence": "Checked all sub-items against the full body, with extra attention to the diff's new text (lines 11, 13, 15, 46). Line 11's 'later it will be a test, a doc, a check' is a flat three-noun list, not the banned 'Not X. Not Y. Z.' negation construction and not an anaphora/epistrophe triple (no repeated clause-opening or clause-closing word) — stays inside. Line 13's 'one file, gitignored, read at the top of every session in this repo' is descriptive apposition, not a triplet tic. No self-grading superlative (closest remains line 9's 'every push-back is a hint toward your own rules', a claim about the student's own action, not a rating of the exercise). No number-plus-retraction pattern. No abstraction-noun stacks — new vocabulary stays concrete ('store', 'starter', 'bloat', 'tokens'). No empty-leg verb triplets. None of the six sub-items fire in any chunk.",
       "fix_hint": null,
-      "blocking": false
+      "blocking": true
     },
     {
       "compendium": "check_slides.md",
@@ -89,7 +88,7 @@
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "grep for repo dialect terms (surface-as-noun, firing, compendium, forcing function, beat, mood, Connections) in the body (lines 1-49): no hits. \"compound engineering\" (line 11) is the exercise's actual external subject matter (Klaassen's coined practitioner term, cited in the backing block, lines 74/83-84/87), not maintainer-internal repo shorthand — it is what the exercise teaches, displayed as the taught term rather than smuggled maintainer vocabulary.",
+      "evidence": "grep for repo dialect terms (surface-as-noun, firing, compendium, forcing function, beat, mood, Connections) in the body (lines 1-49): no hits. 'compound engineering' no longer appears as a bare named term in the body at all (the diff replaced 'the closing step of compound engineering' with the plain-language 'make the next one easier with what this one taught', per the new `compound-definition-plain` claim at line 74) — dialect exposure went down, not up. 'compound' as a verb ('compound the session', 'compound step') is the training's own kit term (`vocabulary.md`), not maintainer-internal shorthand.",
       "fix_hint": null,
       "blocking": true
     },
@@ -99,7 +98,7 @@
       "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Chunk 0 carries 4 bold spans (**Time:**, **What you do:**, **What you build:**, **The point:**) but these are the house exercise-header metadata convention — `grep -l '^\\*\\*Time:\\*\\*' curriculum/exercises/*.md` → 37 files use this identical pattern, and the file's own maintainer block (line 56) already attests: \"widget chrome (**Time:**, **What you do:**, **What you build:**, **The point:**, **What happened:**) stays bold.\" Chunk 1's blockquote bold lead (line 19, \"Long session, long read.\") and chunk 4's (line 42, \"The escape hatch is deliberate.\") are single callout handles, 1 per chunk, within the ≤1 non-chrome budget. Chunk 5's **What happened:** (line 46) is the same widget-chrome label. Body bullet leads (lines 15-17, 26-27, 31, 35-36) are de-bolded, matching the maintainer note's own claim. No violation.",
+      "evidence": "Chunk 0 carries 4 bold spans (**Time:**, **What you do:**, **What you build:**, **The point:**) — house exercise-header widget-chrome convention: `grep -rn '^\\*\\*Time:\\*\\*' curriculum/exercises/*.md | wc -l` -> 37 files use this identical pattern, unchanged by this diff, and the file's own maintainer block (line 56) attests it stays bold. New body lines 11/13/15/46 add zero new bold. Chunk 1's blockquote bold lead (line 23, 'Long session, long read.') and chunk 4's (line 48, 'The escape hatch is deliberate.') are single callout handles, unchanged, 1 per chunk, within the <=1 non-chrome budget. Body bullet leads (lines 19-21, 30-31, 35, 39-40) are de-bolded, matching the maintainer note's own claim, which was correctly updated by this diff to drop '**What happened:**' from the chrome list now that the section carrying it is gone. No violation.",
       "fix_hint": null,
       "blocking": false
     },
@@ -109,7 +108,7 @@
       "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "`getting-going.md` line 50 includes this file as a standalone-paragraph include-link (`[Compound and close](exercises/compound-and-close.md)`), the same inclusion mechanism used by every other exercise file in AE101 M1, which reaches the composed deck via `.phase--exercise`. `node scripts/check-slide-size.js --file curriculum/exercises/compound-and-close.md` ran clean and reported \"slides: 5\" (the file's five `##` sections), confirming the renderer sees the file's sections, not zero.",
+      "evidence": "`getting-going.md` line 50 includes this file as a standalone-paragraph include-link ([Compound and close](exercises/compound-and-close.md)), same mechanism as every other AE101 M1 exercise, reaching the composed deck via `.phase--exercise`. Ran `node scripts/check-slide-size.js --file curriculum/exercises/compound-and-close.md` -> 'files: 1  slides: 4', confirming the renderer sees the file's four current `##` sections (down from 5 pre-diff, matching the removed 'What you built' section), not zero and not a stale count.",
       "fix_hint": null,
       "blocking": true
     },
@@ -117,9 +116,9 @@
       "compendium": "check_slides.md",
       "rule_index": 11,
       "rule_lead": "Numbering — position is computed, content ordinals are linted.",
-      "verdict": "PASS",
+      "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "Ran `node scripts/check-slide-numbering.js --file curriculum/exercises/compound-and-close.md` → \"OK — 1 files, Phase/Step numbering consistent.\" File contains no hand-numbered headers or Phase/Step refs at all (headers are plain imperatives), so the check is vacuously satisfied.",
+      "evidence": "Ran `node scripts/check-slide-numbering.js curriculum/exercises/compound-and-close.md` -> 'OK — 61 files, Phase/Step numbering consistent.' File contains no hand-numbered headers or Phase/Step refs at all (headers are plain imperatives); rule does not apply to this file's content.",
       "fix_hint": null,
       "blocking": false
     },
@@ -129,7 +128,7 @@
       "rule_lead": "Page geometry dies at the cut; reading order survives.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Ran `node scripts/check-slide-deixis.js --file curriculum/exercises/compound-and-close.md` → \"OK — 1 files, no page-geometry pointers across the slide cut.\" Manual scan of the body confirms no \"below/above/further down/at the top of this page\" phrasing.",
+      "evidence": "Ran `node scripts/check-slide-deixis.js --file curriculum/exercises/compound-and-close.md` -> 'OK — 1 files, no page-geometry pointers across the slide cut.' Manual scan of the new lines (11, 13, 15, 46) confirms no 'below/above/further down/at the top of this page' phrasing. The pre-existing accept-note at line 54 ('the line back' — idiom, not geometry) is unchanged and still clears cleanly.",
       "fix_hint": null,
       "blocking": true
     },
@@ -139,7 +138,7 @@
       "rule_lead": "In-deck links work now; whether they EARN their place is open.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "No markdown links appear anywhere in the body (lines 1-49) — nothing to inventory. `check-slide-deixis.js --links` was not separately re-run since the plain run above already confirms zero deixis violations and a grep of the body for `](` returns no matches.",
+      "evidence": "`grep -n '\\[.*\\](' curriculum/exercises/compound-and-close.md` returns no matches — no markdown links anywhere in the body. Nothing to inventory.",
       "fix_hint": null,
       "blocking": false
     },
@@ -149,7 +148,7 @@
       "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/exercises/compound-and-close.md` → \"files: 1  slides: 5  limits: 210 words / 6 bullets ... oversized: 0 ... every slide is within limits.\" No accept-note needed.",
+      "evidence": "Ran `node scripts/check-slide-size.js --report --file curriculum/exercises/compound-and-close.md` -> largest slide 139 words/2 bullets ('Sweep the session...', which absorbed the new line-46 sentence), then 134/3 ('Write your rules file...'), 31/2, 24/1; 'oversized: 0'. All four current slides within the 210-word/6-bullet cap; no accept-note needed.",
       "fix_hint": null,
       "blocking": false
     },
@@ -159,7 +158,7 @@
       "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Four of five ## headers are plain exercise imperatives (\"Write your rules file...\", \"Push back where...\", \"Keep or revert...\", \"Sweep the session...\"), matching the exercise register exactly. The fifth, \"What you built\" (line 44), is a nominal label, not a declarative claim — it fits the rule's own proposal-time test (\"a candidate declaration whose heading is a label rather than a claim is not a declaration yet\") and matches an identical house pattern used verbatim or near-verbatim in sibling exercises (`close-the-ticket.md` \"## What happened\", `author-test-strategy-skill.md`/`map-the-access-surface.md` \"## What this sets up\") — an established closer-section convention, not a stray declarative.",
+      "evidence": "All four remaining `##` headers are plain exercise imperatives ('Write your rules file...', 'Push back where...', 'Keep or revert...', 'Sweep the session...'), matching exercise register. The one header that previously needed the label-not-declaration carve-out ('## What you built', old line 44) was removed entirely by this diff, so the question it raised no longer applies to this file.",
       "fix_hint": null,
       "blocking": false
     }

@@ -688,4 +688,33 @@ test('linkFinder: an include link with trailing whitespace still counts', () => 
 })
 
 
+// The scanner must carry the moved rules through, not just the class. Without
+// them "pedagogy(rule-drift)" tells a dispatcher to re-judge the whole class;
+// with them it says re-read check_pedagogy §44 and §52 against this body.
+test('scanFile: a drifted class carries the rules that moved', () => {
+  const io = { readFile: () => DRIFT_DOC, gitDiff: () => '', validSha: () => true,
+    ruleDrift: () => new Map([['writing', [{ compendium: 'check_writing', rule: '3', changed_at: '2026-08-21' }]]]) }
+  const r = scanFile('curriculum/lectures/x.md', io)
+  assert.equal(r.detail.writing, 'rule-drift')
+  assert.deepStrictEqual(r.driftRules.writing.map(x => `${x.compendium} §${x.rule}`), ['check_writing §3'])
+})
+
+// A Set has .has but no .get. Old stubs and any caller still handing back a Set
+// must keep routing correctly — they simply carry no rule detail.
+test('scanFile: a Set-shaped ruleDrift still routes, just without rule detail', () => {
+  const io = { readFile: () => DRIFT_DOC, gitDiff: () => '', validSha: () => true,
+    ruleDrift: () => new Set(['writing']) }
+  const r = scanFile('curriculum/lectures/x.md', io)
+  assert.equal(r.detail.writing, 'rule-drift')
+  assert.deepStrictEqual(r.driftRules, {})
+})
+
+test('scanFile: a diff-region class reports no drift rules even when the rule also moved', () => {
+  const io = { readFile: () => DRIFT_DOC, gitDiff: () => '@@ -4 +4 @@\n+rewritten body line\n', validSha: () => true,
+    ruleDrift: () => new Map([['writing', [{ compendium: 'check_writing', rule: '3', changed_at: '2026-08-21' }]]]) }
+  const r = scanFile('curriculum/lectures/x.md', io)
+  assert.equal(r.detail.writing, 'diff-region')
+  assert.ok(!('writing' in r.driftRules))
+})
+
 console.log(`\n${n} tests passed`)

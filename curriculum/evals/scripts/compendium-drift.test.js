@@ -145,3 +145,49 @@ test('ledger encoding: the live ledger on disk decodes and matches the compendiu
   assert.deepEqual(D.diffLedger(ledger, D.readCompendia(D.MEM)), {},
     'compendium drift is unpinned — run: node curriculum/evals/scripts/compendium-drift.js --repin')
 })
+
+// --- driftedRules: WHICH rules moved, not just which classes ---------------
+//
+// driftedClasses walks every rule's changed_at and then throws that away,
+// returning classes only. So one moved rule billed a full re-judge of every
+// class that compendium feeds, corpus-wide: on 2026-08-23 six rules had moved
+// and AE101 owed 230 pairs, most of them judges re-reading a body no rule
+// touched. The ledger already knows the answer — a drifted class needs THOSE
+// rules re-checked, not a fresh audit. Map, not Set, so every existing
+// `.has(cls)` caller keeps working against the richer return unchanged.
+test('driftedRules: names the compendium and rule behind each drifted class', () => {
+  const ledger = { compendia: { check_p: { classes: ['pedagogy', 'story'], rules: {
+    44: { h: 'a', changed_at: '2026-08-23' },
+    52: { h: 'b', changed_at: '2026-08-23' },
+    61: { h: 'c', changed_at: '2026-01-01' },
+  } } } }
+  const m = D.driftedRules(ledger, '2026-08-19')
+  assert.deepEqual([...m.keys()].sort(), ['pedagogy', 'story'])
+  assert.deepEqual(m.get('pedagogy').map(r => `${r.compendium} §${r.rule}`), ['check_p §44', 'check_p §52'])
+  assert.ok(!m.get('story').some(r => r.rule === '61'), 'a rule that moved BEFORE the pin is not owed')
+})
+
+test('driftedRules: two compendiums feeding one class merge into that class list', () => {
+  const ledger = { compendia: {
+    check_a: { classes: ['technical'], rules: { 6: { h: 'a', changed_at: '2026-08-23' } } },
+    check_b: { classes: ['technical'], rules: { 44: { h: 'b', changed_at: '2026-08-22' } } },
+  } }
+  const got = D.driftedRules(ledger, '2026-08-19').get('technical').map(r => `${r.compendium} §${r.rule}`).sort()
+  assert.deepEqual(got, ['check_a §6', 'check_b §44'])
+})
+
+test('driftedRules: same-day tie and null pin behave exactly as driftedClasses', () => {
+  const ledger = { compendia: { check_p: { classes: ['pedagogy'], rules: { 1: { h: 'a', changed_at: '2026-08-19' } } } } }
+  assert.equal(D.driftedRules(ledger, '2026-08-19').size, 0)
+  assert.equal(D.driftedRules(ledger, null).size, 0)
+})
+
+test('driftedRules: a rule added after baseline (changed_at null) is not drift', () => {
+  const ledger = { compendia: { check_p: { classes: ['pedagogy'], rules: { 2: { h: 'a', changed_at: null } } } } }
+  assert.equal(D.driftedRules(ledger, '2026-01-01').size, 0)
+})
+
+test('driftedClasses stays a Set of exactly the classes driftedRules keys', () => {
+  const ledger = { compendia: { check_p: { classes: ['pedagogy', 'story'], rules: { 1: { h: 'a', changed_at: '2026-08-23' } } } } }
+  assert.deepEqual([...D.driftedClasses(ledger, '2026-08-01')].sort(), [...D.driftedRules(ledger, '2026-08-01').keys()].sort())
+})

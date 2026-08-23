@@ -129,14 +129,30 @@ function repin(ledger, current, date) {
 // Which judge classes owe a re-run for a pin taken on `pinDate` (ISO yyyy-mm-dd).
 // Strictly greater: a rule stamped the same day a judge ran is ambiguous, and
 // staling on a tie makes every repin day look like a corpus-wide invalidation.
-function driftedClasses(ledger, pinDate) {
-  const out = new Set()
+// Which RULES moved after a pin, grouped by the class each one is owed against.
+// The pin says a verdict was taken on a date; the ledger says rule R was rewritten
+// after it. That names a bounded re-check — re-read these rules against this body
+// — where the class alone only says "re-judge everything this compendium feeds".
+// Returns a Map so `.has(cls)` still answers the old question and `.get(cls)`
+// answers the new one; a Set stub in a test keeps working against both.
+function driftedRules(ledger, pinDate) {
+  const out = new Map()
   if (!pinDate) return out
-  for (const c of Object.values(ledger.compendia || {})) {
-    const moved = Object.values(c.rules).some(r => r.changed_at && r.changed_at > pinDate)
-    if (moved) for (const cls of c.classes || []) out.add(cls)
+  for (const [name, c] of Object.entries(ledger.compendia || {})) {
+    const moved = Object.entries(c.rules)
+      .filter(([, r]) => r.changed_at && r.changed_at > pinDate)
+      .map(([rule, r]) => ({ compendium: name, rule, changed_at: r.changed_at }))
+    if (!moved.length) continue
+    for (const cls of c.classes || []) {
+      if (!out.has(cls)) out.set(cls, [])
+      out.get(cls).push(...moved)
+    }
   }
   return out
+}
+
+function driftedClasses(ledger, pinDate) {
+  return new Set(driftedRules(ledger, pinDate).keys())
 }
 
 // On disk a rule is one line: "<hash>" while it has never been seen to move,
@@ -203,6 +219,6 @@ function main(argv) {
   return 1
 }
 
-module.exports = { encodeLedger, decodeLedger, parseRuleChunks, parseEvalClasses, readCompendia, diffLedger, repin, driftedClasses, loadLedger, hash, MEM, LEDGER }
+module.exports = { encodeLedger, decodeLedger, parseRuleChunks, parseEvalClasses, readCompendia, diffLedger, repin, driftedClasses, driftedRules, loadLedger, hash, MEM, LEDGER }
 
 if (require.main === module) process.exit(main(process.argv.slice(2)))

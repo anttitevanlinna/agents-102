@@ -31,7 +31,7 @@
 const { execFileSync } = require('node:child_process')
 const fs = require('node:fs')
 const path = require('node:path')
-const { driftedClasses, loadLedger } = require('./compendium-drift.js')
+const { driftedRules, loadLedger } = require('./compendium-drift.js')
 // The build's own definition of an include link. Shared, never re-derived:
 // ownership must mean exactly what inlining means, or the two drift apart.
 const CR = require(path.join(__dirname, '..', '..', '..', 'site/layouts/curriculum.js'))
@@ -339,6 +339,9 @@ function scanFile(relpath, io) {
   const driftCache = {}
   const classes = []
   const detail = {}
+  // Which rules a drifted class owes a re-read of. Empty when nothing drifted,
+  // and empty for a Set-shaped ruleDrift, which routes but carries no detail.
+  const driftRules = {}
   for (const cls of CLASSES) {
     const sha = pins[cls]
     if (sha) {
@@ -350,7 +353,11 @@ function scanFile(relpath, io) {
       if (!stale && cls === 'behavior') stale = promptKeys(text).some(k => io.gitDiff(sha, `curriculum/prompts/${k}.md`).trim() !== '')
       // The other axis of staleness: the FILE held still but the RULE moved.
       // Reported second so a file that also drifted still reads as diff-region.
-      if (!stale && driftCache[sha].has(cls)) { stale = true; reason = 'rule-drift' }
+      if (!stale && driftCache[sha].has(cls)) {
+        stale = true; reason = 'rule-drift'
+        const rules = typeof driftCache[sha].get === 'function' ? driftCache[sha].get(cls) : null
+        if (rules && rules.length) driftRules[cls] = rules
+      }
       if (stale) { classes.push(cls); detail[cls] = reason }
     } else if (new RegExp(`${VERDICT_LEAD}${cls} REVISE`).test(row)) {
       classes.push(cls); detail[cls] = 'revise'
@@ -365,7 +372,7 @@ function scanFile(relpath, io) {
     if (st.reason) extra[cls] = st.reason
     if (st.sha || st.set) extraDetail[cls] = st
   }
-  return { classes, detail, extra, extraDetail }
+  return { classes, detail, driftRules, extra, extraDetail }
 }
 
 // The compendiums are untracked, so no git diff can see a rule move. The ledger
@@ -384,7 +391,7 @@ function gitIo(repo) {
       if (sha in driftMemo) return driftMemo[sha]
       let when = null
       try { when = execFileSync('git', ['show', '-s', '--format=%cs', sha], { cwd: repo, encoding: 'utf8' }).trim() } catch { when = null }
-      return (driftMemo[sha] = driftedClasses(ledger, when))
+      return (driftMemo[sha] = driftedRules(ledger, when))
     },
   }
 }

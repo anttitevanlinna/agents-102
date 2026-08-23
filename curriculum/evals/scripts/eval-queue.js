@@ -116,6 +116,9 @@ function collect(repo, io, want) {
       file: rel, type, slug, training,
       instanceSlug: `${training}--${type}--${slug}`,
       classes: r.classes, detail: r.detail,
+      // Which rules a drifted class owes a re-read of. A dispatcher fires those
+      // rules against this body instead of re-running the whole class.
+      driftRules: r.driftRules || {},
     })
   }
   return { items, scope, unowned, unreadable }
@@ -181,6 +184,32 @@ function renderScope(scope) {
 
 const DISPLAY = { module: 'mod', exercise: 'exr', lecture: 'lec', supplementary: 'sup', reference: 'ref' }
 
+// A moved rule stales the same class on every file pinned before it, so printing
+// the rule numbers per row repeats one fact 57 times. Name each moved rule once,
+// with the classes it bills and how many pairs it is responsible for; the per-item
+// detail rides in --json for the dispatcher.
+function renderDrift(items) {
+  const byRule = new Map()
+  for (const it of items) {
+    for (const [cls, rules] of Object.entries(it.driftRules || {})) {
+      for (const r of rules) {
+        const k = `${r.compendium} §${r.rule}`
+        if (!byRule.has(k)) byRule.set(k, { changed_at: r.changed_at, classes: new Set(), pairs: 0 })
+        byRule.get(k).classes.add(cls)
+        byRule.get(k).pairs++
+      }
+    }
+  }
+  if (!byRule.size) return []
+  const out = ['', 'RULE DRIFT — these rules moved after the pins below them; re-read the rule, do not re-judge the class:']
+  const rows = [...byRule.entries()].sort((a, b) => (b[1].changed_at || '').localeCompare(a[1].changed_at || '') || a[0].localeCompare(b[0]))
+  for (const [k, v] of rows) {
+    out.push(`  ${k.padEnd(34)} moved ${v.changed_at}  bills ${[...v.classes].sort().join('/')}  (${v.pairs} pairs)`)
+  }
+  out.push(`  Read one rule with: node curriculum/evals/scripts/rule.js <surface> <N>`)
+  return out
+}
+
 function render(items, scope, unowned, unreadable, want, scanned) {
   const out = []
   out.push(`=== EVAL QUEUE — training: ${want} ===`)
@@ -210,6 +239,7 @@ function render(items, scope, unowned, unreadable, want, scanned) {
   out.push(`  by class:  ${tally(byClass)}`)
   out.push(`  reasons: never = no PASS on the judges row · diff-region = body edit routed to this class since its pin · revise = last verdict REVISE · bad-sha = pin points at no commit`)
   out.push(`  scope reasons: set-drift = a member of the pinned set moved in its body · no-set = row names no set to diff · unpinned = state carries no sha · finding = a persona withheld its signature`)
+  out.push(...renderDrift(items))
   out.push(...renderScope(scope))
   if (unowned.length) {
     out.push('')

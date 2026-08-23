@@ -62,14 +62,14 @@ Compare Claude's picks to what you expected. Where cold-Claude sees generic, you
 
 ## Key Concepts
 - Guardrails are structured context, not a checklist
-- You are the world's best evaluator of your own profile. Domain expertise IS the eval
+- You are the world's best evaluator of your own profile. Your domain expertise is the test
 - The guardrail IS the control: average output becomes great not because you prompted better, but because the context became specific enough to steer it
 
 ## Bring to Module 2
 
-**A live challenge on your mind**, and Confluence and OneDrive connectors you have verified. Module 2 systematises the work around a real problem; an invented one costs you the session's whole point.
+**A live challenge on your mind**, and working access to Confluence and OneDrive. Module 2 systematises the work around a real problem; an invented one costs you the session's whole point.
 
-Run the <span class="rt-code">plan-mode primer</span><span class="rt-cowork">plan-first primer</span> before you come.
+Complete the linked Module 2 prework before you come.
 
 Come to Module 2 without a live challenge and you'll be choosing one while the memory build is already underway. Your call.
 

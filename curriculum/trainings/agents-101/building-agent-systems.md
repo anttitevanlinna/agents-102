@@ -22,11 +22,11 @@ Module 2 turns to your real challenge. The empty `memory/`, `sources/`, and `age
 
 Module 1 was the rehearsal. A site, a voice sharpened, fabrication caught by the only person in the room who could catch it. Now the training turns to work. The rest of it builds on the challenge you actually get paid to move, because that's where the system has to stand up.
 
-You saw Karpathy's LLM Wiki post in the prework. What's the difference between asking an LLM a question and having an LLM maintain a knowledge base for you? We'll build one shortly.
+You saw Karpathy's LLM Wiki post in the prework. What's the difference between asking an LLM a question and having an LLM maintain a knowledge base for you? You'll build one shortly.
 
 ## Name the challenge you're carrying
 
-Then the real one: what's the challenge you're carrying right now that isn't solved yet? The thing that's been open in your head for weeks, maybe longer. Not a task. A challenge. Hold it. We're going to build a memory around it.
+Then the real one: what's the challenge you're carrying right now that isn't solved yet? The thing that's been open in your head for weeks, maybe longer. Not a task. A challenge. Hold it. You're going to build a memory around it.
 
 And one more: if everything you've read, drafted, and half-figured-out on that challenge moved into a memory an agent could read and sharpen, what changes back at work?
 

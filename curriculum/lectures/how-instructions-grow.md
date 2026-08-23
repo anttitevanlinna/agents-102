@@ -28,7 +28,7 @@ This training stops short of the full system: rules that prune themselves, evide
 
 ## Keep your context where it loads optimally
 
-The rule and context management prompts you have run work on every type of context engineering file: CLAUDE files, skills, rule files, and whatever you have rolled yourself. Moving material between them is also something you ask Claude to do.
+Variations of the rule and context management prompts you have run work on every type of context engineering file: CLAUDE files, skills, rule files, and whatever you have rolled yourself. Moving material between them is also something you ask Claude to do.
 
 This one runs on the screen; run it on your own files whenever you like.
 

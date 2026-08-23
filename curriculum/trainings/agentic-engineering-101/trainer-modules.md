@@ -90,7 +90,7 @@ Don't split M4 across the days. The M1-M2-M4 / M5-M3-M6 reorder exists; it's a c
 
 ### M2 — Plan mode, done right
 
-**Slot.** 2-day cohort: Day 1, 10:50–12:50 (2h, straight through). Four-sitting track: sitting 2, 2h. **Runs 3 min past its slot.** Thinking effort `medium`.
+**Slot.** 2-day cohort: Day 1, 10:50–12:50 (2h, straight through). Four-sitting track: sitting 2, 2h. **Runs 7 min past its slot.** Thinking effort `medium`.
 
 **Runtime map.**
 
@@ -149,7 +149,7 @@ Don't split M4 across the days. The M1-M2-M4 / M5-M3-M6 reorder exists; it's a c
 
 ### M5 — Learn from the test, re-send packaged
 
-**Slot.** 2-day cohort: Day 2, 10:50–12:50 (2h; the re-send fires at close and runs through lunch). Four-sitting track: sitting 4, the finale. **Runs about 13 min past 2h by design; plan for it, don't cut for it.** Book 2h15 if you can; if not, end on the gate lecture's last landed slide and point at the rest. Start the fork the moment the room settles.
+**Slot.** 2-day cohort: Day 2, 10:50–12:50 (2h; the re-send fires at close and runs through lunch). Four-sitting track: sitting 4, the finale. **Runs about 16 min past 2h by design; plan for it, don't cut for it.** Book 2h15 if you can; if not, end on the gate lecture's last landed slide and point at the rest. Start the fork the moment the room settles.
 
 **Runtime map.**
 

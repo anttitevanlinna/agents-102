@@ -66,6 +66,7 @@ Gitignored files (your `CLAUDE.local.md`, `observations/`) don't ride into a wor
 - The missing evidence is the interaction of this task, model, repository, and setup.
 - The experiment promotes a candidate to tested-here; the local optimum stays ahead.
 - The agent makes evidence cheap; the engineer decides what it means and what becomes durable practice.
+- The verifier, the reference artefact and the plan are compounding in a different shape from a rule: nothing loaded, everything checked.
 
 <!--flag:no-module:spot-gaps-build-the-loop-->
 ## Inspect your results

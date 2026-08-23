@@ -49,7 +49,7 @@ Push back on anything that doesn't match your sense of the work. That's the patt
 
 **Then, Claude as cold critic.** Now that you've reflected on your own experience, get an unbiased verdict.
 
-Ask Claude to spawn <span class="rt-code">a subagent</span><span class="rt-cowork">an agent</span> to read the site cold.
+Ask Claude to open a second, independent reader (<span class="rt-code">a subagent</span><span class="rt-cowork">an agent</span>) with only the site as context.
 
 {{prompt:a101-m1-debrief-cold-critic}}
 

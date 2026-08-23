@@ -33,8 +33,8 @@ Pick the shape that resembles your day.
 
 **Emphasis budget (Antti-directed "go very lightly on the bold"):** bold = handles only — slide 1: **skill** + **footprint** sub-spans (third bullet plain); slide 2: the four wiring mechanisms (**an explicit load** / **an orchestrator** / **routing** / **a hand-off**) plus **leaf** at its definition; *pilot* stays plain as the chart-to-field bridge; all other bullets plain (the chart caption already carries "the value is the order, not the count") — per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Lede, SVG, and the two supplementary links carry no bold.
 
-**Quality:** compendium-audited 2026-08-19 (writing@d363cfd3 story@d363cfd3 technical@1c765f2 behavior@1c765f2 pedagogy@d363cfd3 strategy@1c765f2 slides@d363cfd3)
-- judges @d363cfd3: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-23 (writing@a1ddfae2 story@d363cfd3 technical@1c765f2 behavior@1c765f2 pedagogy@d363cfd3 strategy@1c765f2 slides@a1ddfae2)
+- judges @a1ddfae2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **Redesign (2026-07-04).** Rebuilt from a weak field-survey pointer (lede + five-approaches slide + how-to-read slide + link) into a concrete teacher + pointer: lede + one figure slide (the passage, your kit placed) + one mechanics slide (four composition mechanisms) + two reads. Antti flagged the prior version weak: it name-dropped five practitioners one bullet each and taught nothing about what a workflow-of-skills *is*. The five-approaches walk now lives ONLY in `workflow-composition-lineages.md` (which already carries those attributions); `skill-stacking.md` (Dino's worked example) is promoted to the primary deepening read. Net: two survey slides out, one figure + one mechanics slide in.
 

@@ -51,12 +51,12 @@ The loop is the shape. The bug today was the excuse.
 - **“Automated quality judges” is deliberate M1 language.** It describes the testing machinery without pre-planting the M6 word *eval*.
 - **The rule and commit counts are repository snapshots.** Before a cohort, re-run `find <canonical-memory-dir> -maxdepth 1 -type f -name 'check_*.md' | wc -l`, `rg --no-filename '^[0-9]+[a-z]?\.[[:space:]]+\*\*' <canonical-memory-dir>/check_*.md | wc -l`, and `git rev-list --count HEAD`; update both body and backing if the results are no longer 12 / 302 / 1,447. The active-rule regex deliberately excludes italic “Moved to…” redirects. The commit count is this repo's whole history, curriculum and research and tooling alike, and the body claims only that it took that many passes, never that each one touched a module.
 - **The tmux claim is bounded.** The runner has driven real Claude Code sessions through M1–M6 on working codebases. The full M1–M6 wrapper is documented on Lemmings; later-module variants exist for Codesearch and Picoshare. Do not turn this into “three codebases passed end to end.”
-- **Klaassen is named twice on the student surface across M1, deliberately.** `compound-and-close` prints the loop; this closer connects the student's work to the name. A third M1 mention would still breach the cap.
+- **Klaassen is named twice on the student surface across M1, and both are on this page.** Line 29 connects the student's work to the name; the definitional slide attributes the quoted definition. `compound-and-close` prints the loop but names the practice rather than the person, so it carries neither of the two. Two is the cap; a third M1 mention breaches it.
 - **The quoted forcing-function rule is a specimen, not introduced vocabulary.** It is verbatim `check_pedagogy.md §16` and makes the correction-to-rule move concrete.
 - **File is size-gate exempt** (story lecture).
 
-**Quality:** sim-passed 2026-08-19 (writing@b5d15c39 story@1480362 technical@2b5a60a behavior@1480362 pedagogy@1480362 strategy@1480362 slides@b5d15c39)
-- judges @b5d15c39: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** sim-passed 2026-08-23 (writing@a1ddfae2 story@a1ddfae2 technical@a1ddfae2 behavior@1480362 pedagogy@a1ddfae2 strategy@1480362 slides@a1ddfae2)
+- judges @a1ddfae2: writing PASS, story PASS (verify-refuted), technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **Meta (trainer):**
 - **Primary Bloom's level:** Understand — recognise the compound loop in the training's construction after running it.

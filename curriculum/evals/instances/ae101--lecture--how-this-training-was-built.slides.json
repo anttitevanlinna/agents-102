@@ -1,14 +1,17 @@
 {
   "class": "slides",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/how-this-training-was-built.md",
-  "body_sha": "052c3510b77a651d37871649497814d521f9313f8c714431ae02862bf3ab17f9",
+  "body_sha": "636cf1d5007b4216dc40bff70814bc2da9292dd4917c7de37d854682c14c22f0",
   "verdict": "PASS",
   "training": "ae101",
+  "maintainer_cut_line": 44,
+  "fence_ranges": [],
   "chunk_map": [
-    {"index": 0, "heading": "H1/lede: How this training was built", "lines": "1-3"},
+    {"index": 0, "heading": "H1 + lede", "lines": "1-4"},
     {"index": 1, "heading": "Everything starts as a few bulletpoints somewhere", "lines": "5-13"},
     {"index": 2, "heading": "Then we tested the training", "lines": "15-23"},
-    {"index": 3, "heading": "You just ran the same loop", "lines": "25-30"}
+    {"index": 3, "heading": "You just ran the same loop", "lines": "25-29"},
+    {"index": 4, "heading": "What compounds", "lines": "31-42"}
   ],
   "rules_evaluated": [
     {
@@ -17,7 +20,7 @@
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Closest candidates: chunk 2 line 23 \"The rules file you just wrote is the first piece\" and chunk 3 line 30 \"The bug today was the excuse\" both point at student-authored session artifacts (CLAUDE.local.md from compound-and-close, the fix from fix-tests-first) rather than anything named inside this file. Harm rule 1 prevents is a reader unable to resolve a term at all; here the module-arc-beats-in-openers/closers carve-out applies directly (this lecture closes M1, per maintainer 'Arc position: closes M1') and both beats verified present in getting-going.md's M1 exercise list (fix-tests-first, compound-and-close). No unresolved referent found.",
+      "evidence": "Sequential read of chunks 0-4 turns up no unresolved referent. Chunk 3 header 'You just ran the same loop' (line 25) introduces 'loop' and the same sentence-group resolves it in-chunk ('This build story is the shape you just ran'); chunk 4 header 'What compounds' (line 31) reuses 'compound engineering' named one slide earlier at line 29 ('Kieran Klaassen calls this **compound engineering**') — a term introduced on an earlier slide and reused, explicitly not a violation. Chunk 4's closer 'The loop is the shape' (line 42) calls back to the same chunk-3 vocabulary, one slide back, same file — allowed. Session-artifact carve-out applies to 'the rules file you just wrote' (chunk 2, line 23) and 'the file you wrote today' (chunk 4, line 40): verified against the module's include order in curriculum/trainings/agentic-engineering-101/getting-going.md (lines 50/52/54) that compound-and-close.md (Ex4, 'write your rules file' / './CLAUDE.local.md') runs immediately before this lecture in M1 — the referent is the student's lived module, per the carve-out. Harm (a reader losing the thread) is absent throughout.",
       "fix_hint": null,
       "blocking": true
     },
@@ -27,7 +30,7 @@
       "rule_lead": "Cross-file and positional callbacks.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "No callback to another file by position anywhere in body. Chunk 3 opener line 25 \"This build story is the shape you just ran\" sums the file's own prior two chunks — explicitly allowed as a closer doing its job. No 'the opening lecture said' style phrasing present.",
+      "evidence": "grep -n for any 'the opening lecture said' / positional-callback shape across the body (lines 1-43) returns nothing. The closest candidate is chunk 2 line 21, 'Modules 1-6' inside 'a tmux runner drives real Claude Code sessions through Modules 1-6 against working codebases' — this names a technical test-coverage fact about the QA tooling (matches the backing block's tmux-runner source stamp), not a positional pointer at another file or a pedagogical map reveal to the student; it stays inside. No in-body link exists to check for un-named-document phrasing (confirmed under rule 13).",
       "fix_hint": null,
       "blocking": true
     },
@@ -37,7 +40,7 @@
       "rule_lead": "Every backward reference points at a beat that exists.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Two backward references checked against getting-going.md's current M1 include list: line 23 \"the rules file you just wrote\" resolves to compound-and-close.md ('Compound the session into a personal rules file at ./CLAUDE.local.md'); line 30 \"the bug today\" resolves to fix-tests-first.md (the M1 trivial-bug fix). Both beats present in the module's current exercise set — no dead reference.",
+      "evidence": "Two backward references checked against the live module: 'the rules file you just wrote' (chunk 2, line 23) and 'wrote what the session taught you into ./CLAUDE.local.md' (chunk 3, line 27). Ran: grep -n 'CLAUDE.local.md|rules file|## ' curriculum/exercises/compound-and-close.md -> confirms '## Write your rules file from the session' (line 17) and 'The rules land in ./CLAUDE.local.md' (line 13). Module include order (getting-going.md lines 50/52/54) places compound-and-close before this lecture in M1. Both beats exist and precede this file.",
       "fix_hint": null,
       "blocking": true
     },
@@ -47,7 +50,7 @@
       "rule_lead": "Live-demo beats survive a text read.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "No guess-before-reveal or live-demo instruction anywhere in this file; it is a closing narrative, not a demo beat.",
+      "evidence": "No guess/predict-before-reveal instruction anywhere in the body (grep for 'guess'/'predict' returns nothing) — this is a narrative story lecture with no live-demo beat for the rule to check.",
       "fix_hint": null,
       "blocking": true
     },
@@ -57,7 +60,7 @@
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "All three body chunks carry a self-standing claim: chunk 1 (186w) the training's rules were built from specific corrected failures; chunk 2 (154w) the testing stack catches differing failure modes; chunk 3 (68w) the student just ran the same compound loop. None is a wait-state or single context-dependent bullet.",
+      "evidence": "All four ## chunks carry multi-sentence, self-carrying content (chunk 1: 186 words per check-slide-size.js --report; chunk 2: 154 words; chunk 3: 57 words but a complete claim+payoff; chunk 4: 121 words / 4 bullets). None is a single context-dependent wait-state bullet.",
       "fix_hint": null,
       "blocking": false
     },
@@ -67,7 +70,7 @@
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Each header is a true summary of its chunk's content under a sequential read: 'Everything starts as a few bulletpoints somewhere' (chunk describes the strategy-doc-to-rules origin), 'Then we tested the training' (chunk describes judges/simulation/tmux runner), 'You just ran the same loop' (chunk names the student's own just-completed M1 loop). No header contradicted by its own chunk.",
+      "evidence": "Checked each header against its chunk body: 'Everything starts as a few bulletpoints somewhere' (line 5) is echoed by the first sentence 'At first, this training was a strategy document: seven headings and thirty bulletpoints' (line 7) — true. 'Then we tested the training' (line 15) is carried by the judges/simulation/tmux content that follows — true. 'You just ran the same loop' (line 25) is carried by 'This build story is the shape you just ran on your own repo' (line 27) — true. 'What compounds' (line 31) is carried by Klaassen's definition and the four bullets that follow — true, no header is contradicted by its own content.",
       "fix_hint": null,
       "blocking": false
     },
@@ -77,7 +80,7 @@
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Checked all sub-items per chunk: no 'Not X. Not Y. Z.' construction anywhere. Closest anaphora candidate line 11 'Some were too broad. Some fired in the wrong place.' is a pair, not a triple, so it doesn't trip the third-leg-empty test. No self-grading superlatives (no 'most useful'/'one of the best' phrasing). Number-with-caveat candidate line 13 '302 active rules and subrules across 12 checklists, written over 1,447 commits. Neither count is a claim that more rules make better work' is not the banned shape (a number retracting its own accuracy) — it states the count plainly and then bounds what inference the count licenses, which is a different move than 'about 10%... could be more, could be less'. No abstraction-noun stacks (no 'bounded-window reality' style phrasing); vocabulary throughout is concrete (rules, checklists, commits, judges, simulations, tmux runner). Verb triplet at line 27 'found the useful wrongness, corrected it, and wrote what the session taught you' — all three verbs answer 'what does this concretely mean' on their own (found/corrected/wrote), no empty leg.",
+      "evidence": "Checked each sub-item across all four chunks. 'Not X. Not Y. Z.' construction: grep -n '. Not ' over lines 1-43 returns nothing. Anaphora/epistrophe triples: closest candidate is chunk 1 line 11 'Some were too broad. Some fired in the wrong place' — a PAIR, not a triple, explicitly not the banned shape. Self-grading superlatives: none found (no 'one of the most...' or equivalent). Number + own retraction: closest candidate is chunk 1 line 13 '302 active rules and subrules across 12 checklists, written over 1,447 commits. Neither count is a claim that more rules make better work' — this is not the banned hedge-the-measurement tic (the number is stated with full confidence and mechanically verified per the backing block's compendium-snapshot stamp); it is a distinct move, a caution against a specific misreading (more rules != better work), and the maintainer's own Watch-fors block (line 74) REQUIRES this exact sentence ('The rule count reads as a quality score. The following sentence must keep explaining what the count does and does not show') — deliberate, not a tic. Abstraction-noun stacks: none found. Verb triplets with an empty leg: none found.",
       "fix_hint": null,
       "blocking": false
     },
@@ -87,7 +90,7 @@
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "'automated quality judges' (line 17) is covered by the maintainer block's explicit accept-note: '\"Automated quality judges\" is deliberate M1 language... without pre-planting the M6 word eval.' The quoted rule 'Forcing functions stay, scripted reactions go.' (line 9) is a displayed specimen, not used vocabulary, and the maintainer block names the quoted rule per the rule-8 carve-out ('The quoted forcing-function rule is a specimen... verbatim check_pedagogy.md §16'). No other repo-internal terms (compendium, surface-as-noun, beat, mood, Connections) appear anywhere in the body.",
+      "evidence": "No occurrence of compendium/surface-as-noun/beat/mood/Connections-as-proper-noun in the body. Two near-misses checked and cleared: (1) chunk 1 line 9, 'Forcing functions stay, scripted reactions go' — verbatim check_pedagogy.md §16, quoted as a specimen (the correction-to-rule move made concrete), covered by the compendium's own 'maintainer rule quoted as a specimen' exception and by the maintainer block's own note at line 55 naming this exact quote; displayed, not used as vocabulary. (2) chunk 1 line 11, 'Some fired in the wrong place' — 'fired' here is ordinary rule-engine/trigger vocabulary (a rule 'fires'), not the repo-specific coinages the rule targets (compendium, surface-as-noun); applying the rule's own register test ('weigh audience register... genuinely repo-internal' vs 'ordinary shop vocabulary'), an AE101 engineer IC parses 'fired' without translation. 'tmux' (chunk 2, line 21) is a real external tool name, pre-cleared by the maintainer's Register check block (line 79: 'Engineer-audience terms (tmux, automated quality judges, prompt behavior) are used only where their mechanics add value').",
       "fix_hint": null,
       "blocking": true
     },
@@ -97,7 +100,7 @@
       "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Only one bold span in the whole body: line 29 '**compound engineering**', a coined-term handle at 2 words, well inside the ≲5-word cap, and the maintainer block confirms this is deliberate ('The only bold student-side handle is **compound engineering**'). Chunks 1 and 2 carry zero bold elements. Budget of ≤1 bolded element per slide respected throughout; no whole-sentence bold anywhere.",
+      "evidence": "grep -no for '**...**' spans across the whole body (lines 1-43) returns exactly one hit: line 29, '**compound engineering**' (2 words, a coined-term handle, inside chunk 3). Zero bold in chunks 0, 1, 2, and 4 (including the new 'What compounds' slide's four bullets and closer). Matches the maintainer's own standing constraint at line 49: 'Narrative slides stay prose paragraphs. The only bold student-side handle is **compound engineering**.' Well within the <=1-per-slide, <=5-word handle cap.",
       "fix_hint": null,
       "blocking": false
     },
@@ -107,7 +110,7 @@
       "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "File is included from getting-going.md as a standard bracketed lecture list item, '[How this training was built](lectures/how-this-training-was-built.md)', the same include shape every other M1 lecture/exercise uses (confirmed by reading the file's Start-here-through-end content list) — this is the phase--lecture wrapper shape that reaches the composed deck, not a phase-less prose section of the kind that has previously gone missing (prework/supplementary/reference). Not independently re-measured in a headless-browser build this run; PASS is on structural-convention grounds, flagged here for the record rather than silently assumed.",
+      "evidence": "Ran: node scripts/check-slide-size.js --file curriculum/lectures/how-this-training-was-built.md --include-stories --report -> 'files: 1  slides: 4' with all four ## headings listed (Everything starts..., Then we tested..., What compounds, You just ran...). This is the same file-set/slide-composition machinery build-workbook.js uses, confirming all four chunks including the new 'What compounds' slide are counted as real composed-deck slides, not dropped.",
       "fix_hint": null,
       "blocking": true
     },
@@ -117,7 +120,7 @@
       "rule_lead": "Numbering — position is computed, content ordinals are linted.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "No hand-numbered headers, no 'Phase N:'/'Step N.' content ordinals anywhere in this file's three `##` headings.",
+      "evidence": "File has no 'Phase N:' or 'N.' step headers (all four ## headings are claim-style, no numeric prefixes) so there is no content ordinal for this rule to lint. Ran: node scripts/check-slide-numbering.js --file curriculum/lectures/how-this-training-was-built.md -> 'OK — 1 files, Phase/Step numbering consistent.' (real output, exit 0).",
       "fix_hint": null,
       "blocking": false
     },
@@ -127,7 +130,7 @@
       "rule_lead": "Page geometry dies at the cut; reading order survives.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "No page-position pointers (below/above/further down/at the top of this page) anywhere in the body. `node scripts/check-slide-deixis.js --file` not run separately; manual scan of all four chunks found zero geometry phrases to check against.",
+      "evidence": "Ran: node scripts/check-slide-deixis.js --file curriculum/lectures/how-this-training-was-built.md -> 'OK — 1 files, no page-geometry pointers across the slide cut.' (real output, exit 0). Manual scan of the new chunk 4 also finds no 'below/above/further down' phrasing; 'that list' (line 40) points at the four bullets immediately preceding it in the SAME chunk, which is the explicitly-passing same-chunk-use case.",
       "fix_hint": null,
       "blocking": true
     },
@@ -137,7 +140,7 @@
       "rule_lead": "In-deck links work now; whether they EARN their place is open.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "No markdown links anywhere in the body (title bracket links only exist in the enclosing module file, not this lecture's own body). Nothing to check against §13.",
+      "evidence": "grep -n for markdown link syntax across body lines 1-43 returns zero hits — the body carries no in-deck links at all, so there is nothing for this review-only, non-gating rule to inventory.",
       "fix_hint": null,
       "blocking": false
     },
@@ -145,9 +148,9 @@
       "compendium": "check_slides.md",
       "rule_index": 14,
       "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
-      "verdict": "N/A",
+      "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "File is on the STORY_EXEMPT list in scripts/check-slide-size.js and the maintainer block carries the matching accept ('File is size-gate exempt (story lecture)'), so the cap does not gate this file. Measured anyway per dispatch instructions: `node scripts/check-slide-size.js --file curriculum/lectures/how-this-training-was-built.md --include-stories --report` → chunk 1 186w/0 bullets, chunk 2 154w/0 bullets, chunk 3 68w/0 bullets, oversized: 0 — all three chunks would clear the cap even without the exemption.",
+      "evidence": "This file is a named, code-level exemption: scripts/check-slide-size.js line 68 hard-codes STORY_EXEMPT = new Set(['how-this-training-was-built', 'story-of-module-6']) with the comment 'Narrative lectures: read at home / told as a story, not squinted off a slide. Named exceptions per Antti.' Matches the maintainer block's own line 56, 'File is size-gate exempt (story lecture).' This is the tooled, permanent story-lecture category, not the ad-hoc file-level workaround the rule's prose warns against. Ran anyway with --include-stories --report to confirm no real overflow: chunk 1 186w/0b, chunk 2 154w/0b, chunk 4 (the new slide) 121w/4b, chunk 3 57w/0b — 'oversized: 0' even unexempted, well under 210 words / 6 bullets on every chunk including the new one.",
       "fix_hint": null,
       "blocking": false
     },
@@ -157,7 +160,7 @@
       "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "This is a lecture, so all three body headings must be claims, not imperatives or phase labels: 'Everything starts as a few bulletpoints somewhere', 'Then we tested the training', 'You just ran the same loop' — all three are declarative statements, none is an instruction or a bare label.",
+      "evidence": "Three of four ## headings are unambiguous declarative claims (line 5 'Everything starts as a few bulletpoints somewhere', line 15 'Then we tested the training', line 25 'You just ran the same loop'). The new chunk 4 header 'What compounds' (line 31) is a topic-framing noun phrase rather than a subject-predicate assertion; the actual law ('each unit of engineering work should make subsequent units easier, not harder') sits in the body (line 33), not the header. Read against the rule's own carve-outs — catalogue entries naming their subject (Ralph, The numbers) are explicitly not violations, and the rule's own precedent (Antti 2026-08-15 on what-packaging-is.md, 'not every header owes a claim') licenses a topic-naming header where the definitional content follows in the body — the header stays inside: it accurately telegraphs the slide's topic to a reader scanning headers only, and the definitional claim itself is present on the slide (rule 6 is separately satisfied). Genuinely a close call because this IS the file's one law/consolidation slide, where the rule says the claim requirement binds hardest and the what-packaging-is precedent was an H1/title, not a ## heading — flagged as a rule_question rather than treated as settled.",
       "fix_hint": null,
       "blocking": false
     }

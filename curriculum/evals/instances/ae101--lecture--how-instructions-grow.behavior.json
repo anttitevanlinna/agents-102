@@ -1,31 +1,101 @@
 {
   "class": "behavior",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/how-instructions-grow.md",
-  "body_sha": "b76698258adca803013c220d37674010e79367b207462e1c4872a3782028ab60",
+  "body_sha": "d43d96f836ce8e170a6e9765f798e9d79de14385adc3e5e749d3be8c86f1bd11",
   "verdict": "PASS",
   "training": "ae101",
   "trace_status": "full_regen",
-  "prompts_evaluated": 0,
-  "prompts_findings": [],
+  "prompts_evaluated": 1,
+  "prompts_findings": [
+    {
+      "prompt_index": 1,
+      "prompt_lead": "Check out ./CLAUDE.local.md and the repository ./CLAUDE.md. If any parts appear that",
+      "verdict": "TODO",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "preamble-before-action",
+          "confidence": "low",
+          "evidence": "Prompt opens straight into the read with no 'No preamble' suppressor; check_prompts.md §17's structural trigger (4+ named sub-steps or plan mode) is not met, so a suppressor is not owed, but a live-demo read-and-judge task can still open with a scene-setting sentence.",
+          "fix_hint": "Optional trailing 'No preamble' clause if the trainer wants the return to open directly on named candidates; not required at this prompt's length."
+        },
+        {
+          "pattern_id": "self-audit-charity",
+          "confidence": "low",
+          "evidence": "Content in ./CLAUDE.local.md was seeded via an earlier Claude-run compound step (registry requires: claude-local-md ← prompt:compound-and-close-1), so Claude partly judges material it helped write. The prompt-behavior template's evidence-backed carve-out applies: the fence names concrete evidence surfaces (the two files themselves) and the built-in null case ('Or none, if nothing appears that way') normalises a negative finding, removing the pull toward manufacturing a positive one.",
+          "fix_hint": "Optional over-flag nudge ('name every plausible candidate, even minor ones') would tighten the charity risk further, though the named-file evidence-surface carve-out (check_pedagogy.md §31) already mitigates it."
+        }
+      ]
+    }
+  ],
   "blocking_findings_count": 0,
-  "todos_count": 0,
+  "todos_count": 1,
   "rules_evaluated": [
     {
       "compendium": "check_prompts.md",
-      "rule_index": null,
-      "judge_owned": true,
-      "verdict": "N/A",
-      "evidence": "Ran node scripts/expand-md.js curriculum/lectures/how-instructions-grow.md and grep -c '\\*\\*Prompt\\*\\*' on the expanded output → 0. File body is two SVG figures plus prose (double-loop learning, rules ceiling, positive-form-vs-prohibitions); no `**Prompt**` fenced block above the maintainer cut, no `{{prompt:<key>}}` marker in source. check_prompts.md rules address prompt-block construction and have no target here.",
-      "notes": "Whole-file scope call: no prompt-behavior class applies."
+      "rule_index": 17,
+      "rule_lead": "Preamble before action — design around it.",
+      "verdict": "PASS",
+      "evidence": "§17's structural trigger (4+ named sub-steps, or plan-mode invocation) obligates a 'No preamble' suppressor or a body skim-past primer. This prompt is 2 clauses ('check out the two files' / 'name the parts, or say none') with no plan mode declared, so the trigger doesn't fire and nothing is owed. Harm §17 prevents: 2-4 sentences of narration burying a multi-item plan in the student's top-attention slot — that harm scales with plan size, and here the return is a short live-demo answer the trainer reads aloud, so even an unmitigated one-line narration wouldn't bury the finding. Residual low-confidence risk logged in the sim-cache trace, not a rule violation."
     },
     {
       "compendium": "check_pedagogy.md",
+      "rule_index": 31,
+      "rule_lead": "Self-report + self-audit charity — verify at artifact, over-flag or fresh-session for critique.",
+      "verdict": "PASS",
+      "evidence": "The prompt has Claude read the two named files live and name what it finds — it is not asked to summarize or grade a report of its own prior work from memory, the shape §31 exists to catch (Claude inflating or pulling punches on an unverifiable self-report). The rule's own 'verify at artifact' remedy is structurally the mechanism this prompt already uses. Residual low-confidence charity risk (Claude under-naming candidates in a file it helped seed via M1's compound step) logged in the sim-cache trace at low confidence per the template's evidence-backed carve-out, not blocking."
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 16,
+      "rule_lead": "Overwrite anxiety — name overwrite default on regeneration.",
+      "verdict": "N/A",
+      "evidence": "The fence contains no write, update, or regenerate instruction on either file — Claude is asked only to read and name candidates. §16 governs prompts that ask Claude to write; nothing here reaches that surface."
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 13,
+      "rule_lead": "Artifact-realism check.",
+      "verdict": "PASS",
+      "evidence": "Registry requires: names claude-local-md sourced from prompt:compound-and-close-1, with a note tracing both the trainer's seeded demo-repo copy and a student's own M1-born file — the dependency is verified against an earlier module's send-off, not assumed. ./CLAUDE.md carries no requires entry, but the fence's own null case ('Or none, if nothing appears that way') absorbs an empty or thin repo file gracefully rather than failing loud."
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 22,
+      "rule_lead": "Prompt-body edits require maintainer approval — registry files AND inline blocks.",
+      "verdict": "PASS",
+      "evidence": "This is a genuinely new registry key (ae101-m2-name-what-moves, committed 463679ac and refined a8b03fd5, both git-log-verified this session) with no .claude/prompt-approvals/ae101-m2-name-what-moves.confirmed marker anywhere in repo history (`git log --all -- '.claude/prompt-approvals/*name-what-moves*'` → empty output). Traced the mechanism instead of assuming violation: `git config core.hooksPath` → .githooks; .githooks/pre-commit is present, executable, and its body-diff check would gate a brand-new prompt file ('New file with no HEAD version. Gate.') requiring interactive y/N unless a fresh marker exists (the Claude-Code card-flow bridge). Both commits are authored AND committed by Antti directly (`git show -s --format=%B` carries no Claude co-author trailer) — this landed through the hook's separate tool-agnostic git-level y/N path, its own header calling that path 'second-line defence catching commits from any tool.' The registry note ('approved prompt-ok same day') corroborates. Harm §22(e)'s marker exists to prevent: a headless Claude-Code-initiated commit dead-ending with no human in the loop. That harm requires a Claude-Code-mediated commit; this one was human-initiated and human-confirmed at the git layer directly, so the marker's absence carries no live risk here."
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 24,
+      "rule_lead": "Don't restate session CWD inside prompt body.",
+      "verdict": "PASS",
+      "evidence": "Prompt references ./CLAUDE.local.md and ./CLAUDE.md — relative, ./-prefixed per rule 45's root-save convention, no absolute path or cd command in the fence."
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 15,
+      "rule_lead": "Question-dump default — `in turn` too soft; two legal shapes.",
+      "verdict": "N/A",
+      "evidence": "No question sequence posed to the student in this fence — it is a single read-and-name request to Claude, not a multi-question interview. §15 doesn't reach a prompt asking zero questions."
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 27,
+      "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
+      "verdict": "PASS",
+      "evidence": "Addressing the dispatch note's concern (b) directly: body around the prompt reads 'This one runs on the screen; run it on your own files whenever you like' — offer-grammar ('whenever you like'), no imperative to discuss, share, or pause with a neighbour. The trainer's read-aloud instruction lives in the maintainer block only ('Trainer runs the prompt on the demo repo and reads the return aloud'), facilitator-only material per §25/§27, not student-facing text. No mandated performance on cue in the body."
+    },
+    {
+      "compendium": "prompt-behavior.md",
       "rule_index": null,
       "judge_owned": true,
-      "verdict": "N/A",
-      "evidence": "check_pedagogy.md's behavior-relevant rules (self-report inflation, default-acceptance, plan-mode approval inflation, source-type blindness, self-audit charity) are all triggered by a student-facing prompt inviting a specific Claude response pattern. No prompt exists in this file for any such pattern to fire against.",
-      "notes": "Same absence as check_prompts.md row above."
+      "rule_lead": "Class-level catalog verdict",
+      "verdict": "PASS",
+      "evidence": "Full walk of all 15 catalog patterns (curriculum/evals/simulation-behavior.md) against the file's single fenced prompt: 13 of 15 don't apply at all (no write/regenerate, no citations, no plan mode, no question sequence, no multi-sample method); 2 fire at low confidence (preamble-before-action, self-audit-charity), both non-blocking per verdict rules (low confidence → TODO regardless of load_bearing). Per-prompt verdict: TODO. Top-level: PASS, 0 REVISE, 1 TODO. This corrects the file's stale Quality-line claim 'behavior N/A (no prompt blocks on this page)' — the fifth slide added 2026-08-23 introduced the file's first-ever prompt block, so N/A is no longer the correct status; PASS is."
     }
   ],
-  "notes": "File re-fired per dispatch because it grew from two to four projected slides since its last full audit (per maintainer block, third slide on the rules ceiling and fourth on positive-form-vs-prohibitions were added 2026-08-19). Growth is prose/figure only — no prompt blocks were added. The behavior class has no unit of analysis in this file and returns N/A rather than forced PASS/REVISE rows."
+  "rule_questions": [],
+  "notes": "Dispatch notes (a) declared-stop paragraph read and (c) M2 time overrun (127/120 min) are out of behavior-class lane — no prompt fence is involved in either, and neither check_prompts.md nor check_pedagogy.md owns lecture dosage/timing (that is check_lectures.md, not in this judge's scope). Flagging for the judges/process that do own those surfaces rather than inventing a rule here. §22 approval-marker absence was investigated in full and resolved clean (see rules_evaluated row 22)."
 }

@@ -1,35 +1,35 @@
 {
   "class": "writing",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/the-wizard-move.md",
-  "body_sha": "04c0706cad688561b842d044ea3cc6f6e3f0ca31ea43e54ef3f824919698e696",
+  "body_sha": "97653529e78bab5a43107e03ced3159887739208ca8ff46322a40bfb6ac9d341",
   "verdict": "PASS",
   "training": "ae101",
   "rules_evaluated": [
     {
       "compendium": "check_writing.md",
       "rule_index": 1,
-      "rule_lead": "Banned words - grep zero-tolerance.",
+      "rule_lead": "Banned words — grep zero-tolerance.",
       "verdict": "PASS",
-      "evidence": "grep -inE banned-word list + em-dash over body lines 1-28 -> 0 hits",
-      "fix_hint": "No fix needed",
-      "blocking": false
+      "evidence": "sed -n '1,28p' the-wizard-move.md | grep -inE '\\bhonest|\\bdelve|\\blandscape|\\bimportantly|\\bcrucial|\\bsubstrate|\\bleverage|\\bsynergize|\\bparadigm shift' -> 0 hits; grep -c '—' on body -> 0.",
+      "fix_hint": null,
+      "blocking": true
     },
     {
       "compendium": "check_writing.md",
       "rule_index": 2,
-      "rule_lead": "Ritual / ceremony - hard ban",
+      "rule_lead": "Ritual / ceremony — hard ban",
       "verdict": "PASS",
-      "evidence": "grep -in 'ritual|ceremony|practice(n)' body -> 0 hits",
-      "fix_hint": "No fix needed",
-      "blocking": false
+      "evidence": "sed -n '1,28p' the-wizard-move.md | grep -inE '\\britual|\\bceremony|\\bpractice\\b' -> 0 hits in body.",
+      "fix_hint": null,
+      "blocking": true
     },
     {
       "compendium": "check_writing.md",
       "rule_index": 3,
-      "rule_lead": "No stale markers, no fixed retrospectives, no session biography.",
-      "verdict": "PASS",
-      "evidence": "body lines 1-28 carry no dated provenance, no session-biography clauses",
-      "fix_hint": "No fix needed",
+      "rule_lead": "No stale markers, no \"fixed\" retrospectives, no session biography.",
+      "verdict": "REVISE",
+      "evidence": "Harm this rule prevents: changelog/journey narration bloating a ledger meant to state current claim-readiness, going stale and duplicating what is already stated as present-tense fact elsewhere. Harm IS present. Line 95: \"`[resolved:2026-08-23]` **Surface corrected.** The 2026-07-30 flag and its 2026-08-01 resolution were about claude.ai cross-chat search and incognito; the demo runs in Claude Code (Antti, 2026-08-23).\" narrates a completed transition (\"were about X ... now Y\") rather than a standing fact -- the banned shape per §3's tense test (\"was changed to Y\", \"used to be\"). Per backing-format.md's own spec (\"Cleared on resolution -- resolved items leave no residue ... An empty Flagged list is deleted, not kept as a stub\"), a resolved Flagged item should be redistributed to Stance/OODA/Sources and removed, not left as a `[resolved:...]` residue entry -- this entry violates the format its own compendium defines. content-rules.md explicitly bars \"this is bookkeeping, not prose\" as an excuse for maintainer/<!-- backing --> content, so scope is not in question. Same shape recurs at line 76 inside the demo-fires-live source stamp: \"The earlier stamp here tracked claude.ai cross-chat search and incognito; that surface was never the demo's (Antti, 2026-08-23) and its findings do not transfer.\" Everything actionable in both clauses is already stated as present-tense fact in the Demo watch-fors standing instruction (line 55, three-fresh-sessions-in-an-empty-directory) and in the same source line's forward instruction (\"Owed before each cohort: three fresh sessions in an empty directory ... then `result:ATTESTED`\"), so cutting both clauses loses nothing actionable -- the fix does not degrade the artefact, it removes duplicated journey narration and brings the Flagged entry into the format its own spec (backing-format.md) requires.",
+      "fix_hint": "Delete the `[resolved:2026-08-23]` Flagged entry (line 95) per backing-format.md's own rule that cleared items are removed, not left as a residue note. Trim the \"The earlier stamp here tracked ...\" clause from the demo-fires-live source line (76) to a bare present-tense scope statement if any residue is wanted at all.",
       "blocking": false
     },
     {
@@ -37,8 +37,8 @@
       "rule_index": 4,
       "rule_lead": "Register match.",
       "verdict": "PASS",
-      "evidence": "Maintainer block names Voice: Seth x Rory x Risto (line 47); body lines 5,17,21,27 read warm/direct/counterintuitive, consistent with that declared register",
-      "fix_hint": "No fix needed",
+      "evidence": "Maintainer block line 47 carries an existing, previously-audited accept-note: \"**Voice:** Seth × Rory × Risto — warm + counterintuitive + direct\" with rationale at line 52 (\"Not adapted for engineers. The universality is the point\"). Body reads warm + counterintuitive + direct throughout, e.g. line 21: \"The move is loading the right context before the question, not a clever prompt or a slash command you didn't know.\" Diff only swapped 'window'->'session'; register untouched. Not re-litigated here -- see rule_questions for the AE101-quintet-vs-Agents-101-trio tension, which predates this diff and passed writing@efe8d58d.",
+      "fix_hint": null,
       "blocking": false
     },
     {
@@ -46,44 +46,44 @@
       "rule_index": 5,
       "rule_lead": "Rough-cut drafts for articles.",
       "verdict": "N/A",
-      "evidence": "File is a lecture, not an article draft",
+      "evidence": "Rule scopes to article drafts; this is a finished lecture file.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_writing.md",
       "rule_index": 6,
-      "rule_lead": "Credit original when paraphrasing named technique. / creator-name + author-we ban",
+      "rule_lead": "Credit original when paraphrasing named technique.",
       "verdict": "PASS",
-      "evidence": "grep for Antti/the creator/the author -> 0 hits in body; sole 'we' hit (line 9) is inside quoted demo dialogue *\"What should we have for dinner?\"* - exempt (quoted-voice carve-out)",
-      "fix_hint": "No fix needed",
-      "blocking": false
+      "evidence": "No named practitioner or framework is credited or paraphrased in body prose (lines 1-28). Brown et al. 2020 and Anthropic's prompting docs are cited only in the backing block below the cut, exempt from student-facing crediting. No 'we'/creator-name violations: grep '\\bAntti\\b|\\bthe creator\\b|\\bthe author\\b' on body -> 0 hits (all four whole-file hits at lines 32, 46, 74, 76 sit below the maintainer cut).",
+      "fix_hint": null,
+      "blocking": true
     },
     {
       "compendium": "check_writing.md",
       "rule_index": 7,
       "rule_lead": "Always \"you\", never \"the student\"; teacher framing stays out of body.",
       "verdict": "PASS",
-      "evidence": "grep 'the student' over body -> 0 hits; body consistently addresses reader as you (lines 5,9,11,17,19,21)",
-      "fix_hint": "No fix needed",
-      "blocking": false
+      "evidence": "Body addresses the reader as 'you' throughout: line 5 'You already know Claude Code', line 17 'You, in a way, compel the right output', line 19 'You told it who you are', line 27 'You become the Claude wizard'. No instance of 'the student' or delivery-mechanics narration ('the trainer shows...') in body.",
+      "fix_hint": null,
+      "blocking": true
     },
     {
       "compendium": "check_writing.md",
       "rule_index": 8,
       "rule_lead": "Don't smuggle terms of art from maintainer into body.",
       "verdict": "PASS",
-      "evidence": "Maintainer/backing framework name is 'the compound ladder' (law:the-compound-ladder, line 80); body's plain verb 'compound' (line 5) is ordinary English, not the coined framework label itself, so this is not a maintainer-only-term leak",
-      "fix_hint": "No fix needed",
-      "blocking": false
+      "evidence": "Body's one load-bearing term ('wizard') is coined and earned inside the body itself (title + closing paragraph), not smuggled from the maintainer block. No maintainer-only terminology (e.g. 'demo watch-fors', 'salvage', source-stamp vocabulary) appears above the cut.",
+      "fix_hint": null,
+      "blocking": true
     },
     {
       "compendium": "check_writing.md",
       "rule_index": 9,
       "rule_lead": "Over-hedge detector.",
       "verdict": "PASS",
-      "evidence": "No reassurance-shaped sentences in body; 'But not as reliably.' (line 13) is a calibrated finding, not an apology",
-      "fix_hint": "No fix needed",
+      "evidence": "grep -inE 'no penalty|fine way to|it.s OK if|no consolation prize|not a downgrade|not a box-check|you are not on the hook' on body -> 0 hits.",
+      "fix_hint": null,
       "blocking": false
     },
     {
@@ -91,7 +91,7 @@
       "rule_index": 10,
       "rule_lead": "Verbatim-frame-cite in reference artefact.",
       "verdict": "N/A",
-      "evidence": "Not a reference artefact",
+      "evidence": "This rule governs capturing a user-supplied verbal frame verbatim in a reference artefact; this file is a lecture, not that authoring situation.",
       "fix_hint": null,
       "blocking": false
     },
@@ -100,7 +100,7 @@
       "rule_index": 11,
       "rule_lead": "Cap practitioner attribution at one student-side mention per module.",
       "verdict": "N/A",
-      "evidence": "No practitioner named in body",
+      "evidence": "No practitioner is named in body prose at all (0 mentions), so the one-per-module cap has nothing to trip.",
       "fix_hint": null,
       "blocking": false
     },
@@ -109,8 +109,8 @@
       "rule_index": 12,
       "rule_lead": "Punchy framing keeps punch; carve-out lives downstream.",
       "verdict": "PASS",
-      "evidence": "Line 21 'The move is loading the right context before the question, not a clever prompt or a slash command you didn't know' holds broadly for this lecture's scope; no overreach requiring a boundary paragraph",
-      "fix_hint": "No fix needed",
+      "evidence": "Closest candidate, line 21: \"The move is loading the right context before the question, not a clever prompt or a slash command you didn't know.\" This does not overreach into a claim needing a downstream boundary paragraph -- it is a definitional statement the two demos (lines 9-13, 19) already substantiate directly above it, and line 13's own hedge (\"But not as reliably\") already carries the honesty a carve-out would otherwise supply.",
+      "fix_hint": null,
       "blocking": false
     },
     {
@@ -118,34 +118,34 @@
       "rule_index": 13,
       "rule_lead": "Value-prop / positioning framing belongs in sales copy + project strategy docs, NOT student-facing curriculum body.",
       "verdict": "PASS",
-      "evidence": "grep for flag phrases (not an aspirational, not a vendor, unlike consultancy, grounded in actual, not theoretical, vendor) over body -> 0 hits",
-      "fix_hint": "No fix needed",
-      "blocking": false
+      "evidence": "grep -inE 'not an aspirational|not a vendor|this isn.t marketing|the real practitioners|unlike consultancy|grounded in actual|not theoretical|\\bvendor\\b' on body -> 0 hits.",
+      "fix_hint": null,
+      "blocking": true
     },
     {
       "compendium": "check_writing.md",
       "rule_index": 14,
       "rule_lead": "Watch out for planting jargon too early.",
-      "verdict": "REVISE",
-      "evidence": "Line 5: 'This is where you find out how your way of working can compound, and how much further it lets you reach.' 'Compound' is this training's central load-bearing theory term (backing block names 'the compound ladder', line 80) and this is the opening sentence of M1's opener - the earliest possible arc position, with no prior earning anywhere upstream and no concrete unfold accompanying the word here. Harm: a reader meets the training's core abstraction cold, before any grounding, which is exactly the failure mode this rule exists to prevent.",
-      "fix_hint": "Swap the abstract noun for a concrete preview per the rule's own worked example (e.g. name what compounding will look like - fixing one bug, one habit repeated - rather than naming 'compound' itself), or let this sentence land only after the loop section has done the unfolding.",
+      "verdict": "PASS",
+      "evidence": "Body's only curriculum-vocabulary term of note is 'session', which vocabulary.md §The work marks as the platform's own plain word (not a coined term needing an earning primer), and line 5 ('You already know Claude Code') establishes the audience already operates sessions before the term is used. No LLM-internal jargon (token, embedding, inference, etc.) appears in body.",
+      "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_writing.md",
       "rule_index": 15,
-      "rule_lead": "Audit closer when trimming body-prose forcing function. / pronoun-referent check on any closer.",
+      "rule_lead": "Audit closer when trimming body-prose forcing function.",
       "verdict": "PASS",
-      "evidence": "Closing sentences (lines 21, 27) - pronouns/demonstratives ('the question', 'it', 'The fix', 'The loop') each resolve to one clear antecedent in the preceding sentence; no dangling reference",
-      "fix_hint": "No fix needed",
+      "evidence": "No forcing function was trimmed in this diff. Second clause (fires on any closer, not only post-trim): closing line 27, \"You become the Claude wizard by running the loop on real work and letting the habit sharpen. Not by reading about it.\" -- pronoun 'it' resolves unambiguously to 'running the loop on real work', the sentence immediately prior; no competing referent.",
+      "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_writing.md",
       "rule_index": 16,
-      "rule_lead": "The **What happened:** block is OPTIONAL.",
+      "rule_lead": "The `**What happened:**` block is OPTIONAL — default is to omit it (Antti-directed 2026-08-12, mandation removed from `curriculum/exercises/README.md`).",
       "verdict": "N/A",
-      "evidence": "This is a lecture, not an exercise recap",
+      "evidence": "This is a lecture, not an exercise; no 'What happened' recap block applies.",
       "fix_hint": null,
       "blocking": false
     },
@@ -154,8 +154,8 @@
       "rule_index": 17,
       "rule_lead": "No combative verbs about the agent in body prose.",
       "verdict": "PASS",
-      "evidence": "grep for bark/order/command/whip/force/drag/boss/shout at/snap at/lecture/scold -> only 'command' matched, at line 21 as the noun 'a slash command', not a verb describing action on the agent - false positive, no real violation",
-      "fix_hint": "No fix needed",
+      "evidence": "grep -inE '\\bbark|\\border|\\bcommand|\\bwhip|\\bforce|\\bdrag|\\bpush around|\\bboss|\\bshout at|\\bsnap at|\\blecture|\\bscold' on body -> 0 hits. Closest word, line 17 'compel' ('You, in a way, compel the right output by having the right stuff in the context') is not on the banned combative list, is hedged by 'in a way', and describes indirect context-loading influence, not command-and-control of the agent.",
+      "fix_hint": null,
       "blocking": false
     },
     {
@@ -163,17 +163,17 @@
       "rule_index": 18,
       "rule_lead": "Headers must be literally true about the mechanism.",
       "verdict": "PASS",
-      "evidence": "'Context is King' (line 7), 'You steer the answer by loading context' (line 15), 'The loop is what you repeat' (line 23) - each survives a literal cold read against its section's claim; no spatial-metaphor contradiction, no unlabeled 'other X'",
-      "fix_hint": "No fix needed",
+      "evidence": "Headers: 'Context is King', 'You steer the answer by loading context', 'The loop is what you repeat'. None uses a spatial/structural metaphor contradicting the mechanism, and none presupposes an unnamed primary via 'other X'.",
+      "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_writing.md",
       "rule_index": 19,
-      "rule_lead": "Machine-cadence fat - the shape of good prose without the content.",
+      "rule_lead": "Machine-cadence fat — the shape of good prose without the content.",
       "verdict": "PASS",
-      "evidence": "No empty negation, deictic drumroll ('That is the X'), bold-label echo, or citation duplication found in body lines 1-28",
-      "fix_hint": "No fix needed",
+      "evidence": "Line 13 'But not as reliably' and line 21 'not a clever prompt or a slash command you didn't know' are negations against expectations the maintainer block documents as real (line 56: 'Engineers come in expecting a clever-prompt flex'), not empty negation against a strawman. No 'That is the X' deictic drumroll, no bold-label echo, no citation/appendix duplication in body.",
+      "fix_hint": null,
       "blocking": false
     },
     {
@@ -181,34 +181,34 @@
       "rule_index": 20,
       "rule_lead": "Don't state a count the adjacent list already holds.",
       "verdict": "N/A",
-      "evidence": "No adjacent enumerated list in body",
+      "evidence": "Body has no bullet list paired with an adjacent count statement; the three-session demo is narrated sequentially in prose, not enumerated as a list.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_writing.md",
       "rule_index": 21,
-      "rule_lead": "A slogan that is false as stated is not punchy framing - run the truth test before reaching for #12.",
+      "rule_lead": "A slogan that is false as stated is not punchy framing — run the truth test before reaching for §12.",
       "verdict": "PASS",
-      "evidence": "No only/always/never/nothing-else superlative asserted about how the world works in body",
-      "fix_hint": "No fix needed",
+      "evidence": "sed -n '1,28p' | grep -inE '\\bonly\\b|\\balways\\b|\\bnever\\b|\\bnothing else\\b|\\bthe one thing that\\b' -> 0 hits. No superlative claim in body to truth-test.",
+      "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_writing.md",
       "rule_index": 22,
       "rule_lead": "A claim binds to every body that states it, not just the one holding the stamp.",
-      "verdict": "N/A",
-      "evidence": "Cross-file backing-claim consistency check; requires a corpus-wide grep for reused source ids which was not run this pass (single-file writing read) - not evaluated, not a body-prose defect on this file alone",
+      "verdict": "PASS",
+      "evidence": "Firing moment is editing a body line a Claim quotes. All 7 Claim anchors (lines 63-69) were checked verbatim against the current body and match exactly, unchanged by the diff (e.g. 'context-conditions-next-answer' anchor still matches line 13 verbatim; 'the-move-is-loading-context' anchor still matches line 21 verbatim). grep -rl 'demo-fires-live' / 'role-prompting-capability' / 'in-context-conditioning' curriculum/ -> only this file and its own eval-instance caches; no other student-facing body states these claims, so no cross-file correction is owed.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_writing.md",
       "rule_index": 23,
-      "rule_lead": "A rule set reconstructed at session start goes stale inside the session.",
+      "rule_lead": "A rule set reconstructed at session start goes stale inside the session — re-derive it per target, not per sweep.",
       "verdict": "N/A",
-      "evidence": "Meta-rule about sweep hygiene across multiple targets; not applicable to a single-file verdict",
+      "evidence": "This rule governs multi-file sweep methodology; this dispatch is a single-file audit, not a sweep, so the caching failure mode the rule targets does not apply.",
       "fix_hint": null,
       "blocking": false
     },
@@ -217,7 +217,7 @@
       "rule_index": 24,
       "rule_lead": "One doc per scarce-attention audience; delta-only.",
       "verdict": "N/A",
-      "evidence": "File is not a trainer/exec/sponsor scarce-attention doc",
+      "evidence": "This rule governs consolidating scarce-attention-audience docs (trainer/exec/sponsor); this file is a single lecture, not a candidate for splitting or merging into another audience doc.",
       "fix_hint": null,
       "blocking": false
     },
@@ -226,7 +226,7 @@
       "rule_index": 25,
       "rule_lead": "Trainer-facing text is self-contained.",
       "verdict": "N/A",
-      "evidence": "File is student-facing, not trainer-facing",
+      "evidence": "This rule governs built trainer-facing pages (trainer-guide.md, trainer-modules.md). This file's own maintainer block pointing at `check_slides §9` / `check_slides §4` (lines 32-33) is author/maintainer-facing metadata, not a delivered trainer page, so it is not the artefact this rule governs.",
       "fix_hint": null,
       "blocking": false
     },
@@ -235,35 +235,35 @@
       "rule_index": 26,
       "rule_lead": "A sentence saying how you'd know points at the outcome, not the nearest artifact.",
       "verdict": "N/A",
-      "evidence": "No 'X tells you whether Y' / 'you'll know it worked when' clause present in body",
+      "evidence": "No 'X tells you whether Y' / 'you'll know it worked when' construction appears in body.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
       "rule_index": 1,
-      "rule_lead": "Contemplative-pause theatre",
+      "rule_lead": "Contemplative-pause theatre:",
       "verdict": "PASS",
-      "evidence": "grep hard-list (sit with, take a moment, breathe, let it land, pause and reflect) over body -> 0 hits",
-      "fix_hint": "No fix needed",
-      "blocking": false
+      "evidence": "Hard-grep list (`tell the person|sitting next to you|share with your neighbor|tell the room|say .* out loud|name .* in chat|call it out|read aloud|say it aloud|sit with|take a moment|let it land|pause and reflect|breathe`) on body -> 0 hits. Line 11 'Take a guess before it runs' is a testable predictive-cognition instruction driving the demo's own mechanism (matches the maintainer's 'Guess before reveal' standing constraint, line 33), not a wellness-coach pause -- distinguishable from the banned 'take a moment to' shape by naming the concrete cognitive act rather than announcing a pause.",
+      "fix_hint": null,
+      "blocking": true
     },
     {
       "compendium": "check_student_facing.md",
       "rule_index": 2,
-      "rule_lead": "Room-share commands",
+      "rule_lead": "Room-share commands:",
       "verdict": "PASS",
-      "evidence": "grep hard-list (tell the room, say X out loud, name X in chat, call it out) over body -> 0 hits",
-      "fix_hint": "No fix needed",
-      "blocking": false
+      "evidence": "Same hard-grep sweep as rule 1 above -> 0 hits. No 'say X out loud'/'tell the room' construction in body; this lecture has no student-facing prompts or room-share moments at all (it is trainer-delivered demo narration).",
+      "fix_hint": null,
+      "blocking": true
     },
     {
       "compendium": "check_student_facing.md",
       "rule_index": 3,
       "rule_lead": "No narrating student's past or present state.",
       "verdict": "PASS",
-      "evidence": "No exercise-recap or present-state ascription in this lecture body",
-      "fix_hint": "No fix needed",
+      "evidence": "Closer, line 27: 'You become the Claude wizard by running the loop on real work...' -- future-tense informing ('become'), not re-narrating a completed past action; falls under the rule's own carve-out ('future-tense informing ... signposting, fine'). Nothing has happened yet at this point in the arc (this is the M1 opener, before the exercise), so there is no prior student action to patronizingly re-narrate.",
+      "fix_hint": null,
       "blocking": false
     },
     {
@@ -271,7 +271,7 @@
       "rule_index": 4,
       "rule_lead": "No overclaim of student verification or coverage.",
       "verdict": "N/A",
-      "evidence": "No verification/audit/sign-off ask present in this lecture",
+      "evidence": "No verify/audit/sign-off/trust ask appears in this lecture; it is pure demo narration, not an exercise with a verification instruction.",
       "fix_hint": null,
       "blocking": false
     },
@@ -279,171 +279,171 @@
       "compendium": "check_student_facing.md",
       "rule_index": 5,
       "rule_lead": "No scheduling the student's attention.",
-      "verdict": "PASS",
-      "evidence": "No 'come back for the bullets / read it later' consumption-scheduling language present",
-      "fix_hint": "No fix needed",
+      "verdict": "N/A",
+      "evidence": "grep -inE 'come back for|read them after|for the second read|save it for later' on body -> 0 hits; no consumption-guidance sentence exists to scope-test.",
+      "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
-      "rule_index": "1",
+      "rule_index": 1,
       "rule_lead": "Aspirational destination, never corrective gap.",
       "verdict": "PASS",
-      "evidence": "Line 5 names a destination ('how much further it lets you reach'), never a deficiency; no ability-tier language ('at your scale', 'a senior would already know') present",
-      "fix_hint": "No fix needed",
+      "evidence": "Body names the destination ('the Claude wizard', line 27) without asserting a deficiency ('you're missing X'). grep -inE 'at your scale|for a beginner|once you.re more experienced|a senior would already know' on body -> 0 hits. The 'wizard' identity criterion is forward-tense ('You become...by running the loop'), not a verdict on the reader's current state -- satisfies the reachable-at-this-point-in-the-arc test since nothing about becoming a wizard is asserted as already true or already failed.",
+      "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
-      "rule_index": "2",
+      "rule_index": 2,
       "rule_lead": "Earn every technical term on first use.",
-      "verdict": "REVISE",
-      "evidence": "Line 5: 'This is where you find out how your way of working can compound' - per this rule's own sub-clause (a), curriculum load-bearing terms including 'compounding' must be replaced with an anticipatory unfold until the module earns the abstract noun; used here cold, in the opening line of M1, with no concrete preview attached in the same sentence. 'Context' (this lecture's actual taught term) is fine - it gets earned through the two-window demo that follows.",
-      "fix_hint": "Anticipatory-unfold the term per the rule's worked example (compounding has somewhere to land -> concretely preview what repeating the loop gets you) rather than naming 'compound' before any grounding.",
+      "verdict": "PASS",
+      "evidence": "'Wizard' is the one load-bearing term and is earned entirely within this file's own body (built up through three demos, then named). 'Session' is audience-assumed-known per §2's carve-out (Claude Code product vocabulary an engineer audience already owns) and per line 5's own precondition ('You already know Claude Code').",
+      "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
-      "rule_index": "3",
+      "rule_index": 3,
       "rule_lead": "Business-audience word ban (Agents 101 default).",
       "verdict": "PASS",
-      "evidence": "Same banned-word grep as check_writing #1 - 0 hits in body",
-      "fix_hint": "No fix needed",
+      "evidence": "Body contains no unearned tech word regardless of which audience frame applies (plain vocabulary throughout: fact, role, preference, constraint, context, loop). Even under the stricter Agents-101-flavored default this rule states, nothing in body would flinch an SVP-marketing reader.",
+      "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
-      "rule_index": "4",
-      "rule_lead": "Memory vs context - use deliberately.",
+      "rule_index": 4,
+      "rule_lead": "Memory vs context — use deliberately.",
       "verdict": "PASS",
-      "evidence": "Body never uses 'memory'; uses 'context' consistently and correctly for ambient runtime state (lines 7-21), matching the rule's definition",
-      "fix_hint": "No fix needed",
+      "evidence": "Body uses 'context' precisely throughout (ambient runtime state that conditions the next answer) and never uses 'memory' at all -- grep -in 'memory' on body -> 0 hits, so there is no blurring to check.",
+      "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
-      "rule_index": "5",
-      "rule_lead": "Golden path only in body.",
+      "rule_index": 5,
+      "rule_lead": "Golden path only in body — THIS RULE HAS AN EXCEPTION; read to the boundary before cutting anything.",
       "verdict": "PASS",
-      "evidence": "No troubleshooting/recovery/what-if-X-fails branch present; body stays a calm forward narrative",
-      "fix_hint": "No fix needed",
+      "evidence": "Body is calm forward-moving narrative with no troubleshooting/recovery branch. (The genuine recovery branch -- 'Salvage if session 2 answers Finnish-adjacent anyway' -- correctly sits below the maintainer cut at line 55, since it is a trainer-delivery recovery, not a student-facing one; students never run this demo themselves.)",
+      "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
-      "rule_index": "6",
+      "rule_index": 6,
       "rule_lead": "Trust Claude's defaults for structure.",
       "verdict": "N/A",
-      "evidence": "No fenced prompt in this file",
+      "evidence": "No prompt or output-structure instruction exists in this lecture to check against this rule.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
-      "rule_index": "7",
-      "rule_lead": "Q1/Q2/Q3 retro interview is banned at every module.",
+      "rule_index": 7,
+      "rule_lead": "Q1/Q2/Q3 retro interview is banned at every module. Compound-shape varies per module — never repeat same Debrief.",
       "verdict": "N/A",
-      "evidence": "No Debrief/retro content in this lecture",
+      "evidence": "This file is the M1 opener lecture, not a Debrief section.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
-      "rule_index": "8",
+      "rule_index": 8,
       "rule_lead": "Don't smuggle another module's voice.",
       "verdict": "PASS",
-      "evidence": "Maintainer block enforces 'Zero map references. M1 is protected' (line 36); body carries no map/later-module content",
-      "fix_hint": "No fix needed",
+      "evidence": "Content is self-consistent M1-opener register throughout; no borrowed later-module mood or pattern is evident (and the maintainer block explicitly bans a specific cross-module leak -- 'Zero map references. M1 is protected; the map arrives at M2', line 36 -- honored, grep -in 'map' on body -> 0 hits).",
+      "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
-      "rule_index": "9",
+      "rule_index": 9,
       "rule_lead": "Don't ask student to manually diff or spot-check Claude's output as error-catching.",
       "verdict": "N/A",
-      "evidence": "No instruction lines in this lecture at all - pure narrated demo, no student action asked",
+      "evidence": "This lecture contains no instruction lines at all (no fenced prompts, no do/look-lines) for this rule's actor-and-mechanism test to apply to.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
-      "rule_index": "10",
+      "rule_index": 10,
       "rule_lead": "Simulation personas never alone.",
       "verdict": "N/A",
-      "evidence": "No self-study simulation referenced",
+      "evidence": "Rule governs self-study simulation persona pairing; not applicable to lecture body content.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
-      "rule_index": "11",
+      "rule_index": 11,
       "rule_lead": "No \"What research says\" callout boxes",
       "verdict": "PASS",
-      "evidence": "No callout box present in body",
-      "fix_hint": "No fix needed",
+      "evidence": "No callout box of that shape appears in body; the research backing (Brown et al. 2020) is entirely in the backing block below the cut, not surfaced in body as a callout.",
+      "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
-      "rule_index": "12",
+      "rule_index": 12,
       "rule_lead": "Student moves stay in conversation with agent.",
       "verdict": "N/A",
-      "evidence": "No student move/prompt instructed in this lecture body",
+      "evidence": "This lecture has no student move at all -- it is trainer-delivered live demo narration; the student watches, they do not execute a prompt themselves in this file.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
-      "rule_index": "13",
-      "rule_lead": "Specify which CLAUDE.md layer - every time.",
-      "verdict": "PASS",
-      "evidence": "Line 25 says 'a rules file' generically while describing the loop in the abstract (no fenced prompt, no concrete file path asserted); it makes no governance claim about a specific CLAUDE.md layer, so there is nothing mis-specified to flag",
-      "fix_hint": "No fix needed",
+      "rule_index": 13,
+      "rule_lead": "Specify which CLAUDE.md layer — every time.",
+      "verdict": "N/A",
+      "evidence": "grep -in 'CLAUDE.md' on body -> 0 hits; no CLAUDE.md reference to disambiguate.",
+      "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
-      "rule_index": "14",
+      "rule_index": 14,
       "rule_lead": "No em-dashes. Simple sentences.",
       "verdict": "PASS",
-      "evidence": "grep '\u2014' over body -> 0 hits",
-      "fix_hint": "No fix needed",
-      "blocking": false
+      "evidence": "sed -n '1,28p' the-wizard-move.md | grep -c '—' -> 0.",
+      "fix_hint": null,
+      "blocking": true
     },
     {
       "compendium": "check_student_facing.md",
-      "rule_index": "17",
+      "rule_index": 17,
       "rule_lead": "Section headers use command verbs when section is about doing something.",
       "verdict": "PASS",
-      "evidence": "Headers ('Context is King', 'You steer the answer by loading context', 'The loop is what you repeat') are declarative noun/sentence-shaped, which is the rule's own exception for lectures where the reader's job is understanding, not doing",
-      "fix_hint": "No fix needed",
+      "evidence": "Headers ('Context is King', 'You steer the answer by loading context', 'The loop is what you repeat') are declarative noun/statement-phrase headers, permitted by this rule's own carve-out: 'Lectures + reference sections may use declarative noun-phrase headers ... since reader's job = understanding, not doing.' This file is a lecture.",
+      "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
-      "rule_index": "18",
+      "rule_index": 18,
       "rule_lead": "Inline links use target's title, never filename.",
       "verdict": "N/A",
-      "evidence": "No links in body",
+      "evidence": "grep -inE '\\[[^]]+\\]\\(' on body -> 0 hits; no inline links in body to check.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
-      "rule_index": "20",
+      "rule_index": 20,
       "rule_lead": "Disambiguate shared-word collisions with Claude Code primitives on first student-authored use.",
       "verdict": "N/A",
-      "evidence": "Body does not use any contested word (memory/skill/rule/plan/agent/subagent) that collides with a Claude Code primitive",
+      "evidence": "None of the colliding terms (memory, skill, rule, plan, agent, subagent) appears as a student-authored artifact in this lecture. Line 25's 'a rules file' is a generic future-loop example, not this file's own first-authored-use moment. No deictic ('here'/'this'/'above'/'below') sits next to a write/save/note/put/drop verb.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
-      "rule_index": "21",
+      "rule_index": 21,
       "rule_lead": "LLM-vs-agent-vs-Claude vocabulary discipline.",
       "verdict": "PASS",
-      "evidence": "Body uses 'Claude' throughout for product/UI/invocation references ('Claude answers', 'Claude suggests') consistently, no agent/LLM conflation",
-      "fix_hint": "No fix needed",
+      "evidence": "Body Claude-count = 8, agent-count = 0 (grep -o '\\bClaude\\b' / grep -io '\\bagent\\b' on body). This is NOT the assistant-shaped-framing failure the rule's audit signal targets: the entire lecture is conversational Q&A (addressee/response turns -- 'the first prompt is...Claude answers...'), never autonomous multi-step file-writing or tool-calling work, so 'Claude' as addressee/product is the rule's own prescribed word for exactly this content ('invocation/addressee -> Claude'; 'the agent' is reserved for acting/execution content, which this demo does not depict).",
+      "fix_hint": null,
       "blocking": false
     },
     {
@@ -451,794 +451,191 @@
       "rule_index": "21b",
       "rule_lead": "Session / task / run split (all trainings).",
       "verdict": "PASS",
-      "evidence": "Line 25 'your next session reads first' uses 'session' correctly for one sitting of the agent",
-      "fix_hint": "No fix needed",
+      "evidence": "This is the diff's central rule. Body now uses 'session' (registry-canonical, vocabulary.md line 20: 'the platform's own word') in place of the prior 'window'; grep -in 'window' on body -> 0 hits, confirming the swap is complete. Noun-run for the agent sitting is not used anywhere in body: line 11's 'before it runs' is verb-run ('it runs' = the second prompt executes), which is unrestricted per this rule. On the 'one session, one task' law: each of the three demo sessions runs two prompts (a fact question, then the dinner question), but both prompts together ARE the one task each session performs -- 'show how an earlier exchange conditions this session's next answer' -- not two independent, unbundled work items; the two-prompt structure is intrinsic to what a context-conditioning demo has to show and could not be split across sessions without destroying the demonstration. No violation of the law as stated.",
+      "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
-      "rule_index": "22",
+      "rule_index": 22,
       "rule_lead": "No time-of-day anchors in body prose.",
       "verdict": "PASS",
-      "evidence": "grep tomorrow/overnight/this morning/tonight/next morning/yesterday/last night over body -> 0 hits",
-      "fix_hint": "No fix needed",
+      "evidence": "grep -inE 'tomorrow|overnight|this morning|tonight|next morning|yesterday|last night' on body -> 0 hits.",
+      "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
-      "rule_index": "23",
+      "rule_index": 23,
       "rule_lead": "Reflection beats stay invisible in flow.",
       "verdict": "PASS",
-      "evidence": "No self-aware pedagogy header or contemplative-pause sentence-prefix in body",
-      "fix_hint": "No fix needed",
+      "evidence": "grep -inE 'pause before you promote|meta-moment|the reflection beat|step back|moment of truth' on body -> 0 hits. Line 11 'Take a guess before it runs' is the rule's own permitted shape ('natural transition sentence with command verb' whose 'action carries reflection'), not a wellness-coach prefix announcing that reflection is happening.",
+      "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
-      "rule_index": "24",
+      "rule_index": 24,
       "rule_lead": "No meta-ask when student has already decided.",
       "verdict": "N/A",
-      "evidence": "No prompt content in this lecture",
+      "evidence": "No prompts exist in this file for a meta-ask to appear in.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
-      "rule_index": "25",
-      "rule_lead": ".md is default file type for student artifacts across curriculum.",
+      "rule_index": 25,
+      "rule_lead": "`.md` is default file type for student artifacts across curriculum.",
       "verdict": "N/A",
-      "evidence": "No 'Save it as <filename>' instruction present",
+      "evidence": "No student artifact is saved by any instruction in this lecture.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
-      "rule_index": "26",
+      "rule_index": 26,
       "rule_lead": "Cut NVA: true but not moving student forward.",
       "verdict": "PASS",
-      "evidence": "Line 5's audience statement ('You already know Claude Code') sets a real precondition for the lecture rather than an obvious/administrative aside; no clause found that fails the 'does this change what the student does/decides next' test",
-      "fix_hint": "No fix needed",
+      "evidence": "The diff's only body change (window->session, three sentences) is a direct terminology correction, not an addition of new detail; no new NVA clause was introduced to body by this diff.",
+      "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
-      "rule_index": "27",
+      "rule_index": 27,
       "rule_lead": "Body \"read it\" / \"look at it\" / \"notice X\" after chat-print = dead weight.",
       "verdict": "N/A",
-      "evidence": "No chat-print moment narrated in this lecture",
+      "evidence": "No chat-print moment (Claude printing a table/list/artifact) exists in this lecture for a dead 'read it' follow-on to attach to.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
-      "rule_index": "28",
+      "rule_index": 28,
       "rule_lead": "Forward-callout closer: student as grammatical subject.",
-      "verdict": "N/A",
-      "evidence": "No forward-looking aside gesturing at later modules present in body",
+      "verdict": "PASS",
+      "evidence": "Closer, line 27: subject is 'You' throughout ('You become the Claude wizard by running the loop...'). Passes all four failure modes: not training-as-subject, no coach-imperative ('watch for X'), no unanchored 'they', no role-shift (stays in the reader's own 'you').",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
-      "rule_index": "29",
+      "rule_index": 29,
       "rule_lead": "Operational reminders live at moment of use, not only where introduced.",
       "verdict": "N/A",
-      "evidence": "No thinking-effort/model/mode/worktree setting referenced",
+      "evidence": "No per-module operational setting (thinking-effort, model, mode tag, slash-command, worktree path) is referenced in this lecture.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
-      "rule_index": "30",
+      "rule_index": 30,
       "rule_lead": "Echo the training's theory spine before inventing a synonym.",
       "verdict": "PASS",
-      "evidence": "Body reuses the training's own spine vocabulary ('the loop', 'Context is King') rather than inventing a synonym - positive compliance",
-      "fix_hint": "No fix needed",
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": "31",
-      "rule_lead": "Name the artifact, not the act.",
-      "verdict": "N/A",
-      "evidence": "No act-verb (typing/saying) narrated around a prompt in this lecture",
+      "evidence": "Body reaches for the training's own established term correctly: header 'The loop is what you repeat' and line 27 both use 'the loop' (the training's house term for the compound cycle) rather than inventing a neutral synonym like 'the cycle' or 'the habit'.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
-      "rule_index": "32",
+      "rule_index": 31,
+      "rule_lead": "Name the artifact, not the act.",
+      "verdict": "PASS",
+      "evidence": "Body consistently frames messages as the noun 'prompt', never as an act-verb: line 9 'the first prompt is *\"What is the capital of Italy?\"*', line 11 'the first prompt is', line 19 'The first prompt:'. grep -inE 'typing |type in|say to Claude|tell it to' on body -> 0 hits.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 32,
       "rule_lead": "Name the outcome; don't walk a professional through trivial mechanics.",
       "verdict": "N/A",
-      "evidence": "No setup/CLI-mechanics instruction in this lecture",
+      "evidence": "No setup/installation/login instruction exists in this lecture.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
-      "rule_index": "33",
-      "rule_lead": "The curriculum does not narrate itself - subject test, then deletion test.",
-      "verdict": "REVISE",
-      "evidence": "Line 5: 'This is where you find out how your way of working can compound...' - subject test: the sentence's grammatical/notional subject is 'This' (the lecture) describing its own function, rather than the student's repo/agent/task/artifact. It reads as the lecture narrating what it is about to do, the shape this rule's landed cuts target (e.g. 'A later module commits your working tree...'). Deletion test: cutting the wrapper and stating the claim directly ('Your way of working can compound...') loses nothing. Judgment call, flagged for the maintainer: 'Who this is for' performs a function close to the exempt '## What You'll Learn' section, so this may be a legitimate boundary question rather than a clean violation.",
-      "fix_hint": "Drop the self-referential frame and state the claim directly as a fact about the reader's work, e.g. 'Your way of working can compound here, and reach further than you think.'",
+      "rule_index": 33,
+      "rule_lead": "The curriculum does not narrate itself — subject test, then deletion test.",
+      "verdict": "PASS",
+      "evidence": "Candidate line, 5 (inside '## Who this is for'): 'This is where you find out how your way of working can compound, and how much further it lets you reach.' Subject test: 'this' names what the lecture offers (functionally identical to the exempt '## What You'll Learn' section's job -- naming what the reader gets, not positioning where the arc sits or promising a LATER beat's work). Deletion test: cutting the sentence would remove the section's entire stated purpose (it is a one-sentence audience-framing header, not a padded arc-position aside); the section's job IS this sentence. Not the banned shape (no promise about a later module, no arc/training as actor doing something TO the student). See rule_questions for whether 'Who this is for' should be added to this rule's literal exemption list.",
+      "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
-      "rule_index": "34",
-      "rule_lead": "Four sharing strategies (Agents 101 M7 canonical).",
+      "rule_index": 34,
+      "rule_lead": "Four sharing strategies (Agents 101 M7 canonical) — use verbatim.",
       "verdict": "N/A",
-      "evidence": "Not M7 content, not Agents 101",
+      "evidence": "This file is AE101 M1, not Agents 101 M7 sharing content.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
-      "rule_index": "35",
-      "rule_lead": "Agents 101 M2+ Debrief - canonical shape.",
+      "rule_index": 35,
+      "rule_lead": "Agents 101 M2+ Debrief — canonical shape.",
       "verdict": "N/A",
-      "evidence": "File is AE101, not Agents 101; no Debrief here",
+      "evidence": "This file is AE101 content, not an Agents 101 M2+ Debrief.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
-      "rule_index": "36",
+      "rule_index": 36,
       "rule_lead": "Trust the prompt over the scaffold.",
       "verdict": "N/A",
-      "evidence": "No scaffold/prompt content in this lecture",
+      "evidence": "No scaffold-vs-prompt choice is presented in this lecture (it contains no student-run prompts or scaffolds at all).",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
-      "rule_index": "37",
+      "rule_index": 37,
       "rule_lead": "Mood is a design constraint, not a garnish.",
       "verdict": "N/A",
-      "evidence": "No verification/check-the-URL step present that could break a sustained-doubt mood; mood is correctly kept out of body and stated only in the maintainer block",
+      "evidence": "This rule targets Debrief/Close/Bridge sections specifically; this file is an opener lecture and carries no Debrief/Close/Bridge section. Mood contract for this file's arc position lives in check_strategy_tie_in.md's scope (Big Idea / Mood), which this file does not carry either (see check_strategy_tie_in.md row below).",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_prompts.md",
-      "rule_index": 1,
-      "rule_lead": "prompt-block rule #1",
+      "rule_index": null,
+      "judge_owned": true,
+      "rule_lead": "N/A",
       "verdict": "N/A",
-      "evidence": "File contains zero fenced code blocks / **Prompt** blocks anywhere (verified: no ``` markers in the raw source) - this compendium's scope (copy-this affordance for a student) never triggers",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 2,
-      "rule_lead": "prompt-block rule #2",
-      "verdict": "N/A",
-      "evidence": "File contains zero fenced code blocks / **Prompt** blocks anywhere (verified: no ``` markers in the raw source) - this compendium's scope (copy-this affordance for a student) never triggers",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 3,
-      "rule_lead": "prompt-block rule #3",
-      "verdict": "N/A",
-      "evidence": "File contains zero fenced code blocks / **Prompt** blocks anywhere (verified: no ``` markers in the raw source) - this compendium's scope (copy-this affordance for a student) never triggers",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 4,
-      "rule_lead": "prompt-block rule #4",
-      "verdict": "N/A",
-      "evidence": "File contains zero fenced code blocks / **Prompt** blocks anywhere (verified: no ``` markers in the raw source) - this compendium's scope (copy-this affordance for a student) never triggers",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 5,
-      "rule_lead": "prompt-block rule #5",
-      "verdict": "N/A",
-      "evidence": "File contains zero fenced code blocks / **Prompt** blocks anywhere (verified: no ``` markers in the raw source) - this compendium's scope (copy-this affordance for a student) never triggers",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 6,
-      "rule_lead": "prompt-block rule #6",
-      "verdict": "N/A",
-      "evidence": "File contains zero fenced code blocks / **Prompt** blocks anywhere (verified: no ``` markers in the raw source) - this compendium's scope (copy-this affordance for a student) never triggers",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 7,
-      "rule_lead": "prompt-block rule #7",
-      "verdict": "N/A",
-      "evidence": "File contains zero fenced code blocks / **Prompt** blocks anywhere (verified: no ``` markers in the raw source) - this compendium's scope (copy-this affordance for a student) never triggers",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 8,
-      "rule_lead": "prompt-block rule #8",
-      "verdict": "N/A",
-      "evidence": "File contains zero fenced code blocks / **Prompt** blocks anywhere (verified: no ``` markers in the raw source) - this compendium's scope (copy-this affordance for a student) never triggers",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 9,
-      "rule_lead": "prompt-block rule #9",
-      "verdict": "N/A",
-      "evidence": "File contains zero fenced code blocks / **Prompt** blocks anywhere (verified: no ``` markers in the raw source) - this compendium's scope (copy-this affordance for a student) never triggers",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 10,
-      "rule_lead": "prompt-block rule #10",
-      "verdict": "N/A",
-      "evidence": "File contains zero fenced code blocks / **Prompt** blocks anywhere (verified: no ``` markers in the raw source) - this compendium's scope (copy-this affordance for a student) never triggers",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 11,
-      "rule_lead": "prompt-block rule #11",
-      "verdict": "N/A",
-      "evidence": "File contains zero fenced code blocks / **Prompt** blocks anywhere (verified: no ``` markers in the raw source) - this compendium's scope (copy-this affordance for a student) never triggers",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 12,
-      "rule_lead": "prompt-block rule #12",
-      "verdict": "N/A",
-      "evidence": "File contains zero fenced code blocks / **Prompt** blocks anywhere (verified: no ``` markers in the raw source) - this compendium's scope (copy-this affordance for a student) never triggers",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 13,
-      "rule_lead": "prompt-block rule #13",
-      "verdict": "N/A",
-      "evidence": "File contains zero fenced code blocks / **Prompt** blocks anywhere (verified: no ``` markers in the raw source) - this compendium's scope (copy-this affordance for a student) never triggers",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 14,
-      "rule_lead": "prompt-block rule #14",
-      "verdict": "N/A",
-      "evidence": "File contains zero fenced code blocks / **Prompt** blocks anywhere (verified: no ``` markers in the raw source) - this compendium's scope (copy-this affordance for a student) never triggers",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 15,
-      "rule_lead": "prompt-block rule #15",
-      "verdict": "N/A",
-      "evidence": "File contains zero fenced code blocks / **Prompt** blocks anywhere (verified: no ``` markers in the raw source) - this compendium's scope (copy-this affordance for a student) never triggers",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 16,
-      "rule_lead": "prompt-block rule #16",
-      "verdict": "N/A",
-      "evidence": "File contains zero fenced code blocks / **Prompt** blocks anywhere (verified: no ``` markers in the raw source) - this compendium's scope (copy-this affordance for a student) never triggers",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 17,
-      "rule_lead": "prompt-block rule #17",
-      "verdict": "N/A",
-      "evidence": "File contains zero fenced code blocks / **Prompt** blocks anywhere (verified: no ``` markers in the raw source) - this compendium's scope (copy-this affordance for a student) never triggers",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 18,
-      "rule_lead": "prompt-block rule #18",
-      "verdict": "N/A",
-      "evidence": "File contains zero fenced code blocks / **Prompt** blocks anywhere (verified: no ``` markers in the raw source) - this compendium's scope (copy-this affordance for a student) never triggers",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 19,
-      "rule_lead": "prompt-block rule #19",
-      "verdict": "N/A",
-      "evidence": "File contains zero fenced code blocks / **Prompt** blocks anywhere (verified: no ``` markers in the raw source) - this compendium's scope (copy-this affordance for a student) never triggers",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 20,
-      "rule_lead": "prompt-block rule #20",
-      "verdict": "N/A",
-      "evidence": "File contains zero fenced code blocks / **Prompt** blocks anywhere (verified: no ``` markers in the raw source) - this compendium's scope (copy-this affordance for a student) never triggers",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 21,
-      "rule_lead": "prompt-block rule #21",
-      "verdict": "N/A",
-      "evidence": "File contains zero fenced code blocks / **Prompt** blocks anywhere (verified: no ``` markers in the raw source) - this compendium's scope (copy-this affordance for a student) never triggers",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 22,
-      "rule_lead": "prompt-block rule #22",
-      "verdict": "N/A",
-      "evidence": "File contains zero fenced code blocks / **Prompt** blocks anywhere (verified: no ``` markers in the raw source) - this compendium's scope (copy-this affordance for a student) never triggers",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 23,
-      "rule_lead": "prompt-block rule #23",
-      "verdict": "N/A",
-      "evidence": "File contains zero fenced code blocks / **Prompt** blocks anywhere (verified: no ``` markers in the raw source) - this compendium's scope (copy-this affordance for a student) never triggers",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 24,
-      "rule_lead": "prompt-block rule #24",
-      "verdict": "N/A",
-      "evidence": "File contains zero fenced code blocks / **Prompt** blocks anywhere (verified: no ``` markers in the raw source) - this compendium's scope (copy-this affordance for a student) never triggers",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 25,
-      "rule_lead": "prompt-block rule #25",
-      "verdict": "N/A",
-      "evidence": "File contains zero fenced code blocks / **Prompt** blocks anywhere (verified: no ``` markers in the raw source) - this compendium's scope (copy-this affordance for a student) never triggers",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 26,
-      "rule_lead": "prompt-block rule #26",
-      "verdict": "N/A",
-      "evidence": "File contains zero fenced code blocks / **Prompt** blocks anywhere (verified: no ``` markers in the raw source) - this compendium's scope (copy-this affordance for a student) never triggers",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 27,
-      "rule_lead": "prompt-block rule #27",
-      "verdict": "N/A",
-      "evidence": "File contains zero fenced code blocks / **Prompt** blocks anywhere (verified: no ``` markers in the raw source) - this compendium's scope (copy-this affordance for a student) never triggers",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 28,
-      "rule_lead": "prompt-block rule #28",
-      "verdict": "N/A",
-      "evidence": "File contains zero fenced code blocks / **Prompt** blocks anywhere (verified: no ``` markers in the raw source) - this compendium's scope (copy-this affordance for a student) never triggers",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 29,
-      "rule_lead": "prompt-block rule #29",
-      "verdict": "N/A",
-      "evidence": "File contains zero fenced code blocks / **Prompt** blocks anywhere (verified: no ``` markers in the raw source) - this compendium's scope (copy-this affordance for a student) never triggers",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 30,
-      "rule_lead": "prompt-block rule #30",
-      "verdict": "N/A",
-      "evidence": "File contains zero fenced code blocks / **Prompt** blocks anywhere (verified: no ``` markers in the raw source) - this compendium's scope (copy-this affordance for a student) never triggers",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 31,
-      "rule_lead": "prompt-block rule #31",
-      "verdict": "N/A",
-      "evidence": "File contains zero fenced code blocks / **Prompt** blocks anywhere (verified: no ``` markers in the raw source) - this compendium's scope (copy-this affordance for a student) never triggers",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 32,
-      "rule_lead": "prompt-block rule #32",
-      "verdict": "N/A",
-      "evidence": "File contains zero fenced code blocks / **Prompt** blocks anywhere (verified: no ``` markers in the raw source) - this compendium's scope (copy-this affordance for a student) never triggers",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 33,
-      "rule_lead": "prompt-block rule #33",
-      "verdict": "N/A",
-      "evidence": "File contains zero fenced code blocks / **Prompt** blocks anywhere (verified: no ``` markers in the raw source) - this compendium's scope (copy-this affordance for a student) never triggers",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 34,
-      "rule_lead": "prompt-block rule #34",
-      "verdict": "N/A",
-      "evidence": "File contains zero fenced code blocks / **Prompt** blocks anywhere (verified: no ``` markers in the raw source) - this compendium's scope (copy-this affordance for a student) never triggers",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 35,
-      "rule_lead": "prompt-block rule #35",
-      "verdict": "N/A",
-      "evidence": "File contains zero fenced code blocks / **Prompt** blocks anywhere (verified: no ``` markers in the raw source) - this compendium's scope (copy-this affordance for a student) never triggers",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 36,
-      "rule_lead": "prompt-block rule #36",
-      "verdict": "N/A",
-      "evidence": "File contains zero fenced code blocks / **Prompt** blocks anywhere (verified: no ``` markers in the raw source) - this compendium's scope (copy-this affordance for a student) never triggers",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 37,
-      "rule_lead": "prompt-block rule #37",
-      "verdict": "N/A",
-      "evidence": "File contains zero fenced code blocks / **Prompt** blocks anywhere (verified: no ``` markers in the raw source) - this compendium's scope (copy-this affordance for a student) never triggers",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 38,
-      "rule_lead": "prompt-block rule #38",
-      "verdict": "N/A",
-      "evidence": "File contains zero fenced code blocks / **Prompt** blocks anywhere (verified: no ``` markers in the raw source) - this compendium's scope (copy-this affordance for a student) never triggers",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": "38a",
-      "rule_lead": "prompt-block rule #38a",
-      "verdict": "N/A",
-      "evidence": "File contains zero fenced code blocks / **Prompt** blocks anywhere (verified: no ``` markers in the raw source) - this compendium's scope (copy-this affordance for a student) never triggers",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 39,
-      "rule_lead": "prompt-block rule #39",
-      "verdict": "N/A",
-      "evidence": "File contains zero fenced code blocks / **Prompt** blocks anywhere (verified: no ``` markers in the raw source) - this compendium's scope (copy-this affordance for a student) never triggers",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 40,
-      "rule_lead": "prompt-block rule #40",
-      "verdict": "N/A",
-      "evidence": "File contains zero fenced code blocks / **Prompt** blocks anywhere (verified: no ``` markers in the raw source) - this compendium's scope (copy-this affordance for a student) never triggers",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": "40a",
-      "rule_lead": "prompt-block rule #40a",
-      "verdict": "N/A",
-      "evidence": "File contains zero fenced code blocks / **Prompt** blocks anywhere (verified: no ``` markers in the raw source) - this compendium's scope (copy-this affordance for a student) never triggers",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": "40b",
-      "rule_lead": "prompt-block rule #40b",
-      "verdict": "N/A",
-      "evidence": "File contains zero fenced code blocks / **Prompt** blocks anywhere (verified: no ``` markers in the raw source) - this compendium's scope (copy-this affordance for a student) never triggers",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 41,
-      "rule_lead": "prompt-block rule #41",
-      "verdict": "N/A",
-      "evidence": "File contains zero fenced code blocks / **Prompt** blocks anywhere (verified: no ``` markers in the raw source) - this compendium's scope (copy-this affordance for a student) never triggers",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 42,
-      "rule_lead": "prompt-block rule #42",
-      "verdict": "N/A",
-      "evidence": "File contains zero fenced code blocks / **Prompt** blocks anywhere (verified: no ``` markers in the raw source) - this compendium's scope (copy-this affordance for a student) never triggers",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 43,
-      "rule_lead": "prompt-block rule #43",
-      "verdict": "N/A",
-      "evidence": "File contains zero fenced code blocks / **Prompt** blocks anywhere (verified: no ``` markers in the raw source) - this compendium's scope (copy-this affordance for a student) never triggers",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 44,
-      "rule_lead": "prompt-block rule #44",
-      "verdict": "N/A",
-      "evidence": "File contains zero fenced code blocks / **Prompt** blocks anywhere (verified: no ``` markers in the raw source) - this compendium's scope (copy-this affordance for a student) never triggers",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 45,
-      "rule_lead": "prompt-block rule #45",
-      "verdict": "N/A",
-      "evidence": "File contains zero fenced code blocks / **Prompt** blocks anywhere (verified: no ``` markers in the raw source) - this compendium's scope (copy-this affordance for a student) never triggers",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 46,
-      "rule_lead": "prompt-block rule #46",
-      "verdict": "N/A",
-      "evidence": "File contains zero fenced code blocks / **Prompt** blocks anywhere (verified: no ``` markers in the raw source) - this compendium's scope (copy-this affordance for a student) never triggers",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 47,
-      "rule_lead": "prompt-block rule #47",
-      "verdict": "N/A",
-      "evidence": "File contains zero fenced code blocks / **Prompt** blocks anywhere (verified: no ``` markers in the raw source) - this compendium's scope (copy-this affordance for a student) never triggers",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 48,
-      "rule_lead": "prompt-block rule #48",
-      "verdict": "N/A",
-      "evidence": "File contains zero fenced code blocks / **Prompt** blocks anywhere (verified: no ``` markers in the raw source) - this compendium's scope (copy-this affordance for a student) never triggers",
+      "evidence": "Whole-compendium N/A: check_prompts.md fires on fenced `**Prompt**` blocks / prompt registry entries. grep -n '```' and grep -n '\\*\\*Prompt\\*\\*' on the full file -> 0 hits both; this lecture contains no prompt content (no FENCE_RANGES at all).",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_sales_copy.md",
-      "rule_index": 1,
-      "rule_lead": "sales-copy rule #1",
+      "rule_index": null,
+      "judge_owned": true,
+      "rule_lead": "N/A",
       "verdict": "N/A",
-      "evidence": "File is a student-facing curriculum lecture, not buyer-facing copy (site/newsletter/sponsor deck/pricing) - out of this compendium's scope",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_sales_copy.md",
-      "rule_index": 2,
-      "rule_lead": "sales-copy rule #2",
-      "verdict": "N/A",
-      "evidence": "File is a student-facing curriculum lecture, not buyer-facing copy (site/newsletter/sponsor deck/pricing) - out of this compendium's scope",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_sales_copy.md",
-      "rule_index": 3,
-      "rule_lead": "sales-copy rule #3",
-      "verdict": "N/A",
-      "evidence": "File is a student-facing curriculum lecture, not buyer-facing copy (site/newsletter/sponsor deck/pricing) - out of this compendium's scope",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_sales_copy.md",
-      "rule_index": 4,
-      "rule_lead": "sales-copy rule #4",
-      "verdict": "N/A",
-      "evidence": "File is a student-facing curriculum lecture, not buyer-facing copy (site/newsletter/sponsor deck/pricing) - out of this compendium's scope",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_sales_copy.md",
-      "rule_index": 5,
-      "rule_lead": "sales-copy rule #5",
-      "verdict": "N/A",
-      "evidence": "File is a student-facing curriculum lecture, not buyer-facing copy (site/newsletter/sponsor deck/pricing) - out of this compendium's scope",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_sales_copy.md",
-      "rule_index": 6,
-      "rule_lead": "sales-copy rule #6",
-      "verdict": "N/A",
-      "evidence": "File is a student-facing curriculum lecture, not buyer-facing copy (site/newsletter/sponsor deck/pricing) - out of this compendium's scope",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_sales_copy.md",
-      "rule_index": 7,
-      "rule_lead": "sales-copy rule #7",
-      "verdict": "N/A",
-      "evidence": "File is a student-facing curriculum lecture, not buyer-facing copy (site/newsletter/sponsor deck/pricing) - out of this compendium's scope",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_sales_copy.md",
-      "rule_index": 8,
-      "rule_lead": "sales-copy rule #8",
-      "verdict": "N/A",
-      "evidence": "File is a student-facing curriculum lecture, not buyer-facing copy (site/newsletter/sponsor deck/pricing) - out of this compendium's scope",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_sales_copy.md",
-      "rule_index": 9,
-      "rule_lead": "sales-copy rule #9",
-      "verdict": "N/A",
-      "evidence": "File is a student-facing curriculum lecture, not buyer-facing copy (site/newsletter/sponsor deck/pricing) - out of this compendium's scope",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_sales_copy.md",
-      "rule_index": 10,
-      "rule_lead": "sales-copy rule #10",
-      "verdict": "N/A",
-      "evidence": "File is a student-facing curriculum lecture, not buyer-facing copy (site/newsletter/sponsor deck/pricing) - out of this compendium's scope",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_sales_copy.md",
-      "rule_index": 11,
-      "rule_lead": "sales-copy rule #11",
-      "verdict": "N/A",
-      "evidence": "File is a student-facing curriculum lecture, not buyer-facing copy (site/newsletter/sponsor deck/pricing) - out of this compendium's scope",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_sales_copy.md",
-      "rule_index": 12,
-      "rule_lead": "sales-copy rule #12",
-      "verdict": "N/A",
-      "evidence": "File is a student-facing curriculum lecture, not buyer-facing copy (site/newsletter/sponsor deck/pricing) - out of this compendium's scope",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_sales_copy.md",
-      "rule_index": 13,
-      "rule_lead": "sales-copy rule #13",
-      "verdict": "N/A",
-      "evidence": "File is a student-facing curriculum lecture, not buyer-facing copy (site/newsletter/sponsor deck/pricing) - out of this compendium's scope",
+      "evidence": "Whole-compendium N/A: check_sales_copy.md fires on buyer-facing copy (site, newsletter, sponsor decks, pricing). This is student-facing AE101 curriculum, not buyer-facing copy.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
-      "rule_index": 1,
-      "rule_lead": "strategy-tie-in rule #1",
+      "rule_index": null,
+      "judge_owned": true,
+      "rule_lead": "N/A",
       "verdict": "N/A",
-      "evidence": "File is a lecture with no Big Idea / Mood(deliberate) / Key Concepts student-facing sections and no cross-module sequencing claim - out of this compendium's scope",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": 2,
-      "rule_lead": "strategy-tie-in rule #2",
-      "verdict": "N/A",
-      "evidence": "File is a lecture with no Big Idea / Mood(deliberate) / Key Concepts student-facing sections and no cross-module sequencing claim - out of this compendium's scope",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": 3,
-      "rule_lead": "strategy-tie-in rule #3",
-      "verdict": "N/A",
-      "evidence": "File is a lecture with no Big Idea / Mood(deliberate) / Key Concepts student-facing sections and no cross-module sequencing claim - out of this compendium's scope",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": 4,
-      "rule_lead": "strategy-tie-in rule #4",
-      "verdict": "N/A",
-      "evidence": "File is a lecture with no Big Idea / Mood(deliberate) / Key Concepts student-facing sections and no cross-module sequencing claim - out of this compendium's scope",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": 5,
-      "rule_lead": "strategy-tie-in rule #5",
-      "verdict": "N/A",
-      "evidence": "File is a lecture with no Big Idea / Mood(deliberate) / Key Concepts student-facing sections and no cross-module sequencing claim - out of this compendium's scope",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": 6,
-      "rule_lead": "strategy-tie-in rule #6",
-      "verdict": "N/A",
-      "evidence": "File is a lecture with no Big Idea / Mood(deliberate) / Key Concepts student-facing sections and no cross-module sequencing claim - out of this compendium's scope",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": 7,
-      "rule_lead": "strategy-tie-in rule #7",
-      "verdict": "N/A",
-      "evidence": "File is a lecture with no Big Idea / Mood(deliberate) / Key Concepts student-facing sections and no cross-module sequencing claim - out of this compendium's scope",
+      "evidence": "Whole-compendium N/A: check_strategy_tie_in.md fires on 'Big Idea, Mood (deliberate), Key Concepts (invariant...), cross-module sequencing claims' -- all module-file sections. This is a lectures/ file with none of `## Big Idea`, `## Key Concepts`, `## What You'll Learn`, or a Mood (deliberate) paragraph; those sections belong to the AE101 module file (`getting-going.md`) that links to this lecture, not to this file.",
       "fix_hint": null,
       "blocking": false
     }
   ],
   "blocking_findings_count": 0,
-  "todos_count": 3
+  "todos_count": 1,
+  "rule_questions": [
+    "check_writing.md §4: this file's maintainer 'Voice' note (line 47) pins the Agents-101 trio (Seth x Rory x Risto) for a file that now serves as AE101's M1 opener, where §4's default is the AE101 quintet (Boris x Martin x Godin x Sutherland x Siilasmaa). The maintainer block's own rationale (line 52, 'Not adapted for engineers. The universality is the point') reads as a deliberate carve-out and this passed writing@efe8d58d already, so this is not filed as a REVISE -- but if §4 is meant to bind AE101 files without exception, the rule would need to say explicitly when a borrowed-verbatim cross-training lecture is exempt from the destination training's voice contract, rather than leaving it to an unreferenced maintainer note.",
+    "check_student_facing.md §33: '## Who this is for' functions identically to the exempt '## What You'll Learn' (both are audience/scope framing before the work begins), but is not literally named in §33's exemption list. I read it as within the exemption's spirit (see PASS evidence above) rather than filing a REVISE, but the rule would be more precise if it named 'Who this is for' (or generalized to 'any canonical audience-framing header') rather than requiring a judge to reason about functional equivalence each time this header pattern appears.",
+    "check_student_facing.md §21b: does 'one session, one task' intend to bar a demo session from containing two sequential, thematically-linked prompts (as this file's three-session demo does), or does it govern only whether real technical WORK gets unbundled across the wrong number of sessions? I read the law as not reaching narrative-demo choreography (see PASS evidence above), but the rule text does not say so explicitly and a stricter reading is available."
+  ],
+  "notes": "Structural quirk in check_student_facing.md, not a finding against this file: the intro blockquote (lines 17-49) runs its OWN numbered list 1-5 ('Contemplative-pause theatre' / 'Room-share commands' / 'No narrating student's past or present state' / 'No overclaim...' / 'No scheduling...'), independent of and overlapping in number with the main body's separate 1-37 list. This produces two check_student_facing.md rows sharing rule_index 1, two sharing rule_index 2, etc. in this instance -- both are real, distinct rules with distinct rule_lead text; the collision is in the compendium's own numbering, not an error in this audit. Flagging per dispatch-preamble instruction to say so rather than silently resolve it. Separately: rule numbers 15, 16, and 19 do not exist anywhere in check_student_facing.md as top-level bolded numbered items (verified: no 'Moved to' stub, no line matching ^1[5-9]\\.) -- likely retired without a stub during a past renumbering; not fabricated here, and not counted toward the completeness contract since no such rule currently exists to evaluate. Maintainer-side inconsistency (not a body REVISE, per the task's own framing): maintainer line 33's standing constraint still reads 'Both windows get narrated before the live run' after the body's diff-driven swap to 'session' -- the constraint's substance (guess precedes reveal for both) still holds and is honored by the body, but its vocabulary is now stale against the body it governs. Worth a maintainer word-swap ('windows'->'sessions') in the same family as the already-updated Meta/Time line, but out of scope for a writing-class body verdict."
 }

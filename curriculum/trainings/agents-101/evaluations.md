@@ -28,7 +28,7 @@ The question shifts at Module 6. What if the work kept getting sharper, not beca
 
 [Lecture: Evals as steering](lectures/evals-as-steering.md)
 
-> We work on text again because text is easy to inspect. The same pattern applies to actions. An agent action starts as text: a proposed mail, a ticket update, a CRM change, a query, a command. Check the proposal before it becomes the action.
+> Text is easy to inspect, so this module uses it again. The same pattern applies to actions. An agent action starts as text: a proposed mail, a ticket update, a CRM change, a query, a command. Check the proposal before it becomes the action.
 >
 > Keep adding connectors to your key systems. Some of the biggest wow happens when your agent starts combining insight across systems. Progress from you taking actions the agent proposes, to letting the agent take safe actions itself. Stay safe. Start small. Then scale.
 

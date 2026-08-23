@@ -30,7 +30,7 @@ Open `module-8/extension-brief.md`. Write four lines, no more:
 
 - The gap. One sentence. *"I don't have anything that does X."*
 - The job it gets done. One sentence. *"On Mondays I need to Y; today I Z by hand."*
-- What it reads. Which files, which `memory/` pages, which sources.
+- What it reads. Which files, which `memory/` pages, which sources. For PDFs or slide exports, how it checks that body text was actually extracted.
 - What it writes. One file, named (or an output shape, described).
 
 If the brief takes more than five minutes, your gap is too big. Narrow it.

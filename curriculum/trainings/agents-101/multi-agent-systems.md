@@ -21,7 +21,7 @@ Module 3 writes its working outputs under `module-3/` and sharpens the root `./C
 
 Last module you were the librarian. You searched Confluence, pulled from OneDrive, chased down practitioner articles (by hand). Today you hire three agents to do that search, and three more to decide what it means. What do you expect will get lost between them?
 
-First, a small boundary shift. We work mostly with text in this training: prompts, notes, memory files, source briefs, rules. But text is also where action starts. A Slack post, a ticket update, a calendar note, a command: before another system obeys it, the agent has produced words.
+First, a small boundary shift. Most of this training's working artifacts are text: prompts, notes, memory files, source briefs, rules. But text is also where action starts. A Slack post, a ticket update, a calendar note, a command: before another system obeys it, the agent has produced words.
 
 [Demo: Agent that takes action](lectures/agent-that-takes-action.md)
 

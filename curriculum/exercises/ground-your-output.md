@@ -37,7 +37,7 @@ Open `module-5/briefing-v1.md`. Read it as if you were about to forward it. Some
 
 You are the domain expert. The agent is not. Your job is to walk through the briefing, claim by claim, and mark each one: is it grounded, and how well?
 
-Copy the briefing into this prompt and paste (or, if v1 ran long, skip the paste and tell Claude to read `module-5/briefing-v1.md` directly, both work):
+Ask Claude to classify every claim in `module-5/briefing-v1.md` against the evidence on disk.
 
 ```
 I'll paste a briefing you produced. Read it back with a cold eye. For each specific claim, classify it as one of:
@@ -108,11 +108,11 @@ Write one line to `module-5/still-uncertain.md`: *"Even with grounded output, th
 
 **What happened:**
 
-You produce an ungrounded briefing, classify where the ground is and isn't with your domain expertise, add three rules that force the agent to cite or stop, regenerate a grounded version, and judge what you gained and lost. You walk out with the grounding loop as a practice you can run on any output, any Monday, and a clear-eyed sense of what grounding reaches and what it doesn't.
+You produce an ungrounded briefing, classify where the ground is and isn't with your domain expertise, add three rules that force the agent to cite or stop, regenerate a grounded version, and judge what you gained and lost. You walk out with a grounding loop you can run on any output, any Monday, and a clear-eyed sense of what grounding reaches and what it doesn't.
 
 **The point:**
 
-There is truth out there. Your sources carry shards of it. The agent's job is to stay connected to the ground; when it can't, it invents. Spotting the gap between the output and the ground is your expertise. Encoding rules that make the agent prefer "I don't know" over invention is your leverage. The confidence of the output is not evidence of its truth; its grounding is. Train your eye today, encode the discipline into rules, let the rules carry it when you're not in the room.
+There is truth out there. Your sources carry shards of it. The agent's job is to stay connected to the ground; when it can't, it invents. Spotting the gap between the output and the ground is your expertise. Rules make the agent prefer "I don't know" over invention. The confidence of the output is not evidence of its truth; its grounding is. Train your eye today, encode the discipline into rules, let the rules carry it when you're not in the room.
 
 <!-- maintainer -->
 

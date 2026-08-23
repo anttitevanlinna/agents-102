@@ -22,7 +22,7 @@ One thing to think about before class: *what is one expertise you would want you
 
 **Reading 2. Agent risk is layered on normal security, not a replacement for it.**
 
-Classical software security is a mature discipline. It has network controls, access rights, audit trails, vendor review, accepted-risk decisions, and named owners. Agent security inherits this. Everything below is what agent systems add ON TOP, not what they replace.
+Classical software security is a mature discipline. It has network controls, access rights, audit trails, third-party security review, accepted-risk decisions, and named owners. Agent security inherits this. Everything below is what agent systems add ON TOP, not what they replace.
 
 *What agent systems add to the risk picture.*
 

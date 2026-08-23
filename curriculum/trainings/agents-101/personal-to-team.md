@@ -33,7 +33,7 @@ Start with the move that matters most: **interview for the job.** Your teammate 
 
 ## Pick the sharing shape
 
-Then the candidates: **four sharing shapes that work in practice.** Share the context, share a skill, share the output (push), share an interface (pull). The fifth shape, "share the whole agent," is the one that sounds right and doesn't hold up. You'll see why in the next hour.
+Then the candidates: **four sharing shapes that hold up under real use.** Share the context, share a skill, share the output (push), share an interface (pull). The fifth shape, "share the whole agent," is the one that sounds right and doesn't hold up. You'll see why in the next hour.
 
 The pressure tests after that stay practical: what's the absorption bottleneck, what must be true for the teammate to switch, and why might they go back to the incumbent six months from now?
 

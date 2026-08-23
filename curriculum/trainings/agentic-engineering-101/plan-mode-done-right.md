@@ -49,6 +49,8 @@ If a branch from the second-pass read sharpened how plans get made in this codeb
 
 Feel free to jump direct at the diff in `./CLAUDE.local.md`; Claude's preamble is optional reading.
 
+All of these rule and context management prompts work on every type of context engineering file: CLAUDE files, skills, rule files, and whatever you have rolled yourself. Moving material between them is also something you ask Claude to do.
+
 [Lecture: Where the rule could live](lectures/where-the-rule-could-live.md)
 
 [Lecture: How instructions grow](lectures/how-instructions-grow.md)

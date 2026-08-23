@@ -22,7 +22,8 @@ function testIo(root, drifted = []) {
     readFile: p => { try { return fs.readFileSync(path.join(root, p), 'utf8') } catch { return null } },
     gitDiff: () => '',
     validSha: () => true,
-    ruleDrift: () => new Set(drifted),
+    // A Map, like gitIo returns: .has(cls) routes, .get(cls) names the rules.
+    ruleDrift: () => new Map(drifted.map(c => [c, [{ compendium: 'check_x', rule: '1', changed_at: '2026-08-23' }]])),
   }
 }
 
@@ -207,6 +208,14 @@ test('makeIo is the router gitIo itself, not a copy that can drift from it', () 
   const { makeIo } = require('./eval-queue.js')
   const { gitIo } = require('./scan-stale-classes.js')
   assert.strictEqual(makeIo, gitIo)
+})
+
+test('collect items carry the reason per class, so --json can tell a dispatcher WHY', () => {
+  const root = fixture()
+  const { items } = collect(root, testIo(root, ['pedagogy']), 'all')
+  const ex = items.find(i => i.slug === 'pinned-module')
+  assert.strictEqual(ex.detail.pedagogy, 'rule-drift')
+  assert.deepStrictEqual(Object.keys(ex.driftRules), ['pedagogy'])
 })
 
 console.log(`\n1..${n}`)

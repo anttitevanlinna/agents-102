@@ -275,7 +275,11 @@ function main(argv) {
       .filter(it => it.classes.length > 0)
   }
   if (argv.includes('--json')) {
-    process.stdout.write(JSON.stringify(items.map(({ detail, ...i }) => i), null, 1) + '\n')
+    // detail rides along: a dispatcher needs WHY a class is owed, not only that
+    // it is. Stripping it while driftRules rode through left the JSON able to say
+    // which rules moved but not whether the class was stale for that reason at all.
+    // filterItems reads file+classes only, so extra keys pass through --filter.
+    process.stdout.write(JSON.stringify(items, null, 1) + '\n')
     process.stderr.write(render(items, scope, unowned, unreadable, want, scanned) + '\n')
     return
   }

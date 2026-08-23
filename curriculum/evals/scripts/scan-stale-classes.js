@@ -519,7 +519,7 @@ function main(argv) {
         process.stderr.write(`${rel}\tSKIPPED — cannot resolve owning training (shared file linked from 0 or 2+ trainings). Name the training explicitly rather than defaulting.\n`)
         continue
       }
-      out.push({ file: rel, type, slug, training, instanceSlug: `${training}--${type}--${slug}`, classes: r.classes })
+      out.push({ file: rel, type, slug, training, instanceSlug: `${training}--${type}--${slug}`, classes: r.classes, detail: r.detail, driftRules: r.driftRules })
       process.stderr.write(`${rel}\t[${training}] ${r.classes.map(c => `${c}(${r.detail[c]})`).join(' ')}\n`)
     }
     process.stdout.write(JSON.stringify(out, null, 1) + '\n')

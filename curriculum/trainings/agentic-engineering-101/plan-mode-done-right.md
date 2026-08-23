@@ -88,7 +88,7 @@ Optional. The security frame Module 3 works in.
 
 **Read:** Simon Willison, [The lethal trifecta for AI agents](https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/) (June 2025). Names the threat class that combines private data, untrusted content, and external communication into a compromise surface.
 
-**Read:** Simon Willison, [Designing agentic loops](https://simonwillison.net/2025/Sep/30/designing-agentic-loops/) (September 2025). What to decide before an agent runs with less supervision: what it can reach, what it must not touch, and where the blast radius ends. Module 3 draws that boundary for your own repo.
+**Read:** Simon Willison, [Designing agentic loops](https://simonwillison.net/2025/Sep/30/designing-agentic-loops/) (September 2025). What to decide before an agent runs with less supervision: what it can reach, what it must not touch, and where the blast radius ends.
 
 **Optional deeper scan:** [OWASP Top 10 for LLM Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/). Broader checklist covering prompt injection, insecure output handling, data leakage, and the rest of the surface.<!--/flag:module:earn-the-trust--><!--flag:no-module:earn-the-trust-->## Pre-reads before Module 4
 
@@ -107,6 +107,10 @@ The test for a right-sized one: hours of agent work, not minutes; several files,
 The next sitting opens on that task and spends most of its time walking your system against it. Come without one and you'll be picking while the walk is already underway. Your call.<!--/flag:no-module:earn-the-trust-->
 
 <!-- maintainer -->
+
+**"Try to bully plan mode into a bad architecture" stands, Antti-directed 2026-08-23.** A writing judge filed it under `check_writing.md` §17 (no combative verbs about the agent). Rejected: the bullying is intentional and carries the teaching goal — the bullet asks the student to press a bad idea deliberately and record where Claude holds and where it caves, so the ugly verb names the instrument. §17 gained the matching carve-out the same day (a beat whose point IS the bad register), scoped to the probe, not to surrounding prose. Do not soften this verb.
+
+**Willison pre-read's trailing "Module 3 draws that boundary for your own repo" cut, Antti-directed 2026-08-23.** `check_student_facing.md` §33: subject is a module, and the predicate promises a later beat's job (the predicate-leak clause added 2026-08-23). Line 86 already carries the M3 framing once, and of AE101's three pre-reads sections this was the only one narrating a later module. §33 now states that `## Pre-reads before Module N` does NOT inherit `## Prework`'s exemption. Do not restore the clause.
 
 **Big Idea cut from four sentences to one, Antti-directed 2026-08-12.** Prior text: *"A second-pass grilling can press a plan harder than you need to consume. Your own read catches the decisions your codebase experience makes visible; the agent starts walking the branches you may not see. Keep the highest-value sharpenings. Stop when the plan is good enough to generate."* Four sentences of the module summarising its own `when-a-plan-is-good` § *Two reads, paired* slide before the student reached it, with `## What You'll Learn` restating the same arc immediately below in the more precise register. It was briefly moved below this fence, then restored: `slides.js:264` renders the Big Idea as the **subtitle on the module divider slide**, so this is title-card copy projected on a wall, not a body section — below the fence it left M2 the only module with a bare title card. Spec and the ~30-word ceiling now live in `curriculum/module-shape.md` § Big Idea; `check_student_facing.md` §33's exemption was narrowed the same day to cover what a module earns, never where it sits.
 

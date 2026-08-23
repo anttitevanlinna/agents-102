@@ -101,7 +101,7 @@ Ask Claude to compare versions and name three generic claims.
 One thing to know: Claude is reading its own work in the chat where it just wrote it. That's a warm-session self-audit, and the LLM tends to be lovely about its own prior output. If the three picks come back soft (*"could be a touch more specific,"* not *"this whole line is wrong"*), ask Claude to over-flag with no charity and run it again. Or open a fresh task, paste just the Phase 1 site cold, and run the same prompt without the rest of the context riding along. Cold reads catch sharper picks.
 
 
-Read Claude's three answers. Those are the LLM filling in gaps with statistical defaults. What most LinkedIn profiles of people like you look like, not what's actually true of you. Not a bug. It's what happens when context is thin. Context fixed it. You'll meet this mechanism again in Module 5 when the stakes are higher.
+Read Claude's three answers. Those are the LLM filling in gaps with generic guesses: what most LinkedIn profiles of people like you look like, not what's actually true of you. Not a bug. It's what happens when context is thin. Context fixed it. You'll meet this mechanism again in Module 5 when the stakes are higher.
 
 No regeneration in this phase. Just observation.
 
@@ -162,3 +162,6 @@ You just ran **Recipe 1** end-to-end: baseline without context, colleague-as-buy
 | 5 Look-back | Warm-session self-audit | Charitable picks; under-flagging | Use the body callout: over-flag with no charity, or run the audit cold in a fresh task. |
 | 6 Free iteration | Iterate until *"yes, this is me"* | Perfectionism consumes the close | Time-box one last contrast, choose the version that lands, and stop. |
 | 7 Close | Write the rules file | Chat summary rounds corners | Open `module-1/personal-brand-generation.md` and inspect the first two or three rules at the artifact. |
+
+**Quality:** compendium-audited 2026-08-23 (writing@725101ec story@725101ec technical@725101ec behavior@725101ec pedagogy@725101ec strategy@725101ec slides@725101ec)
+- judges @725101ec: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

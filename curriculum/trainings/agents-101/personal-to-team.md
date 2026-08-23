@@ -61,7 +61,7 @@ Read Claude's summary. Push back where it's wrong. *"The teammate's job wasn't v
 
 - **Interview for the outcome before designing the solution.** The teammate's job comes first, your candidate second. The agent does the heavy lifting: your memory already carries most of that job, so it reads what's on disk, drafts a Jobs-to-be-Done hypothesis, then asks a bounded set of questions. Not freeform chat.
 - **The outcome statement is the design contract.** *"Minimize/increase [metric] when [doing the job]."* A candidate that doesn't move the metric isn't a candidate.
-- **The third outcome vector is where the interview earns its keep.** Dependency removed, anxiety reduced, scope expanded, workload shifted. Speed and quality alone means it went shallow.
+- **The third outcome is where the interview earns its keep.** Dependency removed, anxiety reduced, scope expanded, workload shifted. Speed and quality alone means it went shallow.
 - **Access is easy; absorption is the scarce thing.** The technical plan fills quickly; the people plan stalls on names.
 - **The four sharing shapes are a design language, not a menu.** Context / skill / output (push) / interface (pull). "Share the whole agent" is not on the list. Pick one to three, stack where useful.
 - **The people plan weighs equal to the technical plan; replacement is the test.** Every job already has a current solution: Excel, a colleague, gut feel. Not *"will they adopt my agent?"* but *"what would have to be true for them to replace it?"*
@@ -80,8 +80,9 @@ The sharing plan leaves the room and meets the organisation. What comes back fro
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-08-23 (writing@725101ec story@725101ec technical@725101ec behavior@725101ec pedagogy@725101ec strategy@725101ec slides@725101ec)
-- judges @725101ec: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-23 (writing@194c81b0 story@194c81b0 technical@725101ec behavior@725101ec pedagogy@194c81b0 strategy@725101ec slides@194c81b0)
+- judges @194c81b0: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+- cross_module @194c81b0: PASS — set=[prework,getting-going,building-agent-systems,multi-agent-systems,security,output-quality,evaluations,personal-to-team,agents-building-agents]
 
 **Mood target:** Generous impulse — the student starts from one teammate's job, not an abstract rollout obligation.
 

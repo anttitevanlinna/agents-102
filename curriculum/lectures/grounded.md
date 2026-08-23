@@ -4,9 +4,9 @@ There is truth out there. Your sources carry shards of it. Your agent, left to i
 
 When you ask it for something your sources support, it produces grounded output. When you ask it for something your sources don't support, it still produces something. The difference between those two states is invisible in the tone of the output. That's the whole problem.
 
-PS: today's four detection techniques ran against the Mata v. Avianca pre-read before class. The story mostly held. And still: source triangulation caught an unsourced "small firm" descriptor and an unsupported "ten minutes" estimate. Entailment caught the story making Schwartz's timeline too clean. Citation integrity caught a direct quote that did not appear in the linked sanctions order. Counter-evidence found a source conflict where CNBC blurred the $5,000 sanction and the court order was more precise. That is the point. Even a careful teaching case benefits from the check.
+The four detection techniques reveal different failure shapes. Against the Mata v. Avianca pre-read, source triangulation caught an unsourced "small firm" descriptor and an unsupported "ten minutes" estimate. Entailment caught the story making Schwartz's timeline too clean. Citation integrity caught a direct quote that did not appear in the linked sanctions order. Counter-evidence found a source conflict where CNBC blurred the $5,000 sanction and the court order was more precise. Even a careful teaching case benefits from the check.
 
-PPS: the story got fixed, and the four detectors ran again. Source triangulation, entailment, and citation integrity came back clean. Counter-evidence still found the CNBC-vs-court-record conflict on the $5,000 sanction, and the revised story followed the primary court record. A re-run months later caught one more smoothing the earlier passes had walked past; it is fixed, and the next pass may catch another. That is the loop: check, tighten, rerun, keep the remaining uncertainty visible.
+After revision, source triangulation, entailment, and citation integrity came back clean. Counter-evidence still found the CNBC-vs-court-record conflict on the $5,000 sanction, and the revised story followed the primary court record. A later rerun caught one more smoothing the earlier passes had walked past. That is the loop: check, tighten, rerun, keep the remaining uncertainty visible.
 
 **Why this happens, in one sentence.**
 
@@ -152,5 +152,5 @@ OODA
 
 **Lecture meta:** *Closer beat is the lead-in to Phase 0 of the Hallucination benchmark exercise. Trainer pivots straight from the "Phase 0 is next" line into the exercise — no separate transition.*
 
-**Quality:** compendium-audited 2026-08-03 (writing@3d8309c story@3d8309c technical@5fc7188 behavior@5fc7188 pedagogy@5fc7188 strategy@5fc7188 slides@3d8309c)
-- judges @3d8309c: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-23 (writing@ab36a5e6 story@ab36a5e6 technical@ab36a5e6 behavior@5fc7188 pedagogy@ab36a5e6 strategy@5fc7188 slides@ab36a5e6)
+- judges @ab36a5e6: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

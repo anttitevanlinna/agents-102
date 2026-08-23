@@ -28,7 +28,7 @@ sharing decision I'm working on. Cover four things:
    dependency on someone else).
 3. Their current hire for this job — what they use today. Excel, a colleague,
    their gut, a vendor tool, nothing. Every job already has an incumbent.
-4. Three candidate outcome vectors — what "better" would mean for them:
+4. Three candidate outcomes — what "better" would mean for them:
    - Speed (same job, faster)
    - Quality (same job, less variance, better output)
    - Other — inferred from my context, not assumed. Something specific:

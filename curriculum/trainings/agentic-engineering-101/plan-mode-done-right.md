@@ -49,6 +49,18 @@ If a branch from the second-pass read sharpened how plans get made in this codeb
 
 Feel free to jump direct at the diff in `./CLAUDE.local.md`; Claude's preamble is optional reading.
 
+## Leave the repo tidier than you found it
+
+The Boy Scout rule: leave the campground tidier than you found it. A rule in your file is one way to compound a session. Anything the plan tripped on is another, and it fixes things for everyone with nothing loaded.
+
+- **Planning gaps.** A file the agent didn't know about, a convention it guessed. Write it down where the next planner will read it: the README, an ADR, the module's own doc.
+- **Conflicting information.** Two docs that disagree, a comment that contradicts the code, an ADR nobody retired. Pick the truth and delete the rest.
+- **Other context.** A missing test, a misleading name, a script with no usage line. The agent will trip on it again; so will a colleague.
+
+Ask Claude whether it met any of these.
+
+{{prompt:ae101-m2-tidier}}
+
 [Lecture: Where the rule could live](lectures/where-the-rule-could-live.md)
 
 [Lecture: How instructions grow](lectures/how-instructions-grow.md)
@@ -108,6 +120,8 @@ The next sitting opens on that task and spends most of its time walking your sys
 
 **Line 56's recovery sentence stays in body — maintainer call 2026-08-02.** *"If it did overwrite, the old rules are still in this session's scrollback; ask Claude to restore them."* This is `check_student_facing.md` §5's own boundary case, not a violation of it: the failure is plausible (the prompt is fair to misread as a replace), the rescue is non-obvious (that the old rules survive in scrollback is not something a student would guess), and it is one tight line of state-plus-one-move. It is also **time-critical** — the scrollback dies with the session, so a student who finds the overwrite after closing has lost the rules for good. Body is the only surface that reaches them while the rescue still works. A writing judge has flagged this once and the orchestrator then proposed routing it below the maintainer fence, which §5 explicitly calls deletion. Do not cut it, and do not "move it to the trainer" — the fence is stripped from every rendered surface.
 
+**Boy Scout slide (Antti-directed 2026-08-23).** `## Leave the repo tidier than you found it` sits after the save-the-rule asides because compounding had drifted toward rules; the push-back exercise just produced the evidence that the repo's own context was the defect. Three bullets (planning gaps, conflicting information, other context) are Antti's; the slide names the fix at source as the compound that loads nothing. `ae101-m2-tidier` is naming-only with the "or none" hatch, reads the session, no file dependency. Fixing is the student's call, in-session or never; do not add a fix-it prompt or a done-means criterion. The Boy Scout rule is used as a folk idiom, unattributed on purpose; citing Martin's *Clean Code* coinage would owe a stamp for a line that carries no claim.
+
 **Prompt register — `push-back-on-the-plan-4` deliberately short.** The closing question (`are these rules auto-loaded to each session context?`) is intentionally end-of-session-tired-engineer register: lowercase, no end punctuation, single short question. It models the casual ask a real engineer types after a long session, contrasting with the longer earlier prompts. **The question is also deliberately answerable — a small introspection beat plus mild repetition (Antti 2026-08-13).** The load map on `extract-the-task-shaping-rule`'s *Where rules can live* slide states the answer; the value here is the agent introspecting its own loading, and the repeat is the retention dose (`check_pedagogy.md` §9b). Do not flag the table, or any earlier auto-load statement, as spoiling this question. **Distance shrank 2026-08-14 and the ask stays unchanged (Antti: "repetition is fine").** The soft-compound moved up to sit directly after that exercise, so the table is now the previous screen rather than a lecture away. Adjacency is not the objection a judge will think it is: the table states what loads, the prompt makes the agent report what it actually loaded, and hearing the same fact twice from two different sources one screen apart is the dose working, not a redundancy. Do not re-raise this at any distance. Audit-class judges flagging it as a stylistic outlier should treat as accepted-by-design. The note belongs to whichever file fences the prompt — here, the `push-back-on-the-plan-4` marker in `## Save the rule if it earned itself`, matching the registry's `origin:`. Move it if the prompt moves.
 
 **Source verification — freshness stamps (`source-freshness.sh`; format `curriculum/source-freshness-format.md`).**
@@ -128,7 +142,7 @@ This module points at four sources in body and owned a stamp for none of them; t
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply + Analyze + Evaluate (the compare-the-two-reads beat is the Evaluate beat)
 - **Pacing:** Runtime is computed — `node scripts/calculate-time.js plan-mode-done-right`. Trainer demos slowly, room copy-pastes concurrently. Self-study follow-along runs comparably; simple-prompting beats are quick.
-- **Transitions:** connections 10 @start "Connections: the approved-unread plan" · soft-compound 3 @after:extract-the-task-shaping-rule "Save the rule if it earned itself" · debrief 7 @after:how-instructions-grow "Debrief" · bridge 5 @end "Bridge"
+- **Transitions:** connections 10 @start "Connections: the approved-unread plan" · soft-compound 3 @after:extract-the-task-shaping-rule "Save the rule if it earned itself" · tidier 2 @after:extract-the-task-shaping-rule "Leave the repo tidier than you found it" · debrief 7 @after:how-instructions-grow "Debrief" · bridge 5 @end "Bridge"
 - **No charge on `push-back-on-the-plan`** — rationale in that exercise's block.
 - **Prep timing:** backlog-task surfacing 10 min; optional progression page 5 min; optional Cherny video 30 min; optional multi-session reference 10 min; Module 3 pre-reads 10–15 min (trifecta) + 10 min (agentic loops); optional OWASP scan 20 min. In cuts without M3 the three are replaced by the Module 4 pre-read, Willison's *Designing agentic loops*, 10 min.
 - **Mood target:** grounded competence — *"I can feel when a plan is good before approving it, and I know the move is two reads, not one."* Watch for: mood drift toward *"the second read did everything; my push-back was pointless."* Diagnostic: student at P5 reports the second-pass read caught the interesting stuff. Fix: trainer surfaces the contrast — *"your push-back caught the soft item the second read re-softened; your voice-of-experience beats the agent's breadth on that axis."*

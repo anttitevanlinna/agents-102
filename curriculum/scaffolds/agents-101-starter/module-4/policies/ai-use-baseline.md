@@ -1,6 +1,6 @@
 # AI-use — Nordic baseline policy
 
-A conservative default AI-use policy for organisations that haven't yet published their own. Nordic organisations typically converge on these rules within 6–18 months of serious AI adoption; this file encodes the endpoint.
+A conservative classroom default for organisations that have not supplied their own AI-use policy. It provides a concrete policy surface for the exercise; it is not a claim about what every Nordic organisation has adopted.
 
 **Important:** if the buying organisation has published its own AI-use policy, this baseline is replaced by customer-specific policy reference material. The student runs those files raw, then packages the useful checks into their own reusable security expertise during Module 4.
 

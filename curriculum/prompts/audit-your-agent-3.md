@@ -3,6 +3,11 @@ key: audit-your-agent-3
 dest: Claude Code
 runtime: any
 origin: exercises/audit-your-agent
+requires:
+  - id: policy-report
+    source: prompt:audit-your-agent-1
+  - id: security-report
+    source: prompt:audit-your-agent-2
 produces:
   - id: security-reports
     location: outputs/policy-report-raw.md, outputs/policy-report.md, outputs/security-report.md

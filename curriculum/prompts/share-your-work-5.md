@@ -3,6 +3,18 @@ key: share-your-work-5
 dest: Builder Claude
 runtime: any
 origin: exercises/share-your-work
+requires:
+  - id: m7-jtbd
+    source: prompt:share-your-work-1
+  - id: m7-bottleneck
+    source: prompt:share-your-work-3
+  - id: m7-technical-plan
+    source: prompt:share-your-work-4
+  - id: m7-people-plan
+    source: prompt:share-your-work-4
+produces:
+  - id: m7-assumptions
+    location: module-7/assumptions.md
 ---
 Read module-7/jtbd.md, module-7/absorption-bottleneck.md, module-7/technical-plan.md, and module-7/people-plan.md.
 

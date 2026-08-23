@@ -85,7 +85,8 @@ test('every module include in every training actually resolves', () => {
   const { execSync } = require('node:child_process');
   const root = path.join(__dirname, '..');
   const files = execSync('git ls-files "curriculum/trainings/*/*.md"', { cwd: root })
-    .toString().trim().split('\n').filter(Boolean);
+    .toString().trim().split('\n').filter(Boolean)
+    .filter(f => fs.existsSync(path.join(root, f)));
   let checked = 0;
   const dead = [];
   for (const f of files) {

@@ -22,6 +22,7 @@ const {
   BODY_PRIMITIVES,
   validate,
 } = require('./validate-prompt-graph.js');
+const { loadRegistry } = require('./compile-prompts.js');
 
 test('findStalePrimitives: id present in the graph → not stale', () => {
   const known = new Set(['memory-folder', 'claude-local-md']);
@@ -66,4 +67,32 @@ test('live AE101 graph: every real BODY_PRIMITIVES id resolves (no CONFIG-STALE)
   assert.deepEqual(configStale, [], `unexpected CONFIG-STALE: ${JSON.stringify(configStale)}`);
   // And the real primitives are non-empty (the check is actually exercising something).
   assert.ok(BODY_PRIMITIVES.length >= 1);
+});
+
+test('live Agents 101 graph declares the load-bearing prompt handoffs', () => {
+  const registry = loadRegistry();
+  const edges = [
+    ['personal-site-with-guardrails-2', 'm1-site', 'prompt:personal-site-with-guardrails-1'],
+    ['name-your-challenge-2', 'challenge-md', 'prompt:name-your-challenge-1'],
+    ['build-your-challenge-memory-3', 'challenge-sources', 'prompt:build-your-challenge-memory-2'],
+    ['name-your-crux-2', 'crux-md', 'prompt:name-your-crux-1'],
+    ['three-retrievers-one-curator-1', 'crux-md', 'prompt:name-your-crux-2'],
+    ['author-security-skill-2', 'policy-report-raw', 'prompt:author-security-skill-1'],
+    ['audit-your-agent-3', 'security-report', 'prompt:audit-your-agent-2'],
+    ['hallucination-bakeoff-2', 'm5-briefing', 'prompt:hallucination-bakeoff-1'],
+    ['hallucination-bakeoff-5', 'm5-detector-outputs', 'prompt:hallucination-bakeoff-3'],
+    ['eval-loop-2', 'generation-tactic', 'prompt:eval-loop-1'],
+    ['share-your-work-3', 'm7-jtbd', 'prompt:share-your-work-1'],
+    ['share-your-work-6', 'm7-assumptions', 'prompt:share-your-work-5'],
+    ['joint-double-diamond-3', 'm8-sponsor-challenge', 'prompt:joint-double-diamond-1'],
+    ['joint-double-diamond-8', 'm8-critiques', 'prompt:joint-double-diamond-7'],
+  ];
+
+  for (const [key, id, source] of edges) {
+    const requires = Array.isArray(registry[key].requires) ? registry[key].requires : [];
+    assert.ok(
+      requires.some((edge) => edge.id === id && edge.source === source),
+      `${key} must require ${id} from ${source}`
+    );
+  }
 });

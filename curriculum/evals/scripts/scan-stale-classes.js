@@ -394,19 +394,22 @@ function typeOf(relpath) {
 // 2026-08-12 run stamped `ae101--exercise--name-your-challenge.*` for a file
 // linked only from agents-101/building-agent-systems.md.
 //
-// Ambiguous (two trainings link it) or orphaned (none do) returns null. The
-// caller warns and skips; it must never silently pick one.
+// Ambiguous (two trainings link it) or orphaned (none do) returns null unless
+// the caller supplied an explicit preferred training and that training is one
+// of the linkers. An explicit target is resolution, not a guess.
 const TRAINING_PREFIX = {
   'agentic-engineering-101': 'ae101',
   'agents-101': 'agents-101',
   'claude-basics': 'claude-basics',
 }
 
-function trainingOf(relpath, findLinkers) {
+function trainingOf(relpath, findLinkers, preferredTraining = null) {
   const m = relpath.match(/curriculum\/trainings\/([^/]+)\//)
   if (m) return TRAINING_PREFIX[m[1]] || m[1]
   const owners = [...new Set(findLinkers ? findLinkers(relpath) : [])]
-  if (owners.length === 1) return TRAINING_PREFIX[owners[0]] || owners[0]
+    .map(owner => TRAINING_PREFIX[owner] || owner)
+  if (preferredTraining && owners.includes(preferredTraining)) return preferredTraining
+  if (owners.length === 1) return owners[0]
   return null
 }
 

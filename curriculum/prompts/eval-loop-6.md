@@ -3,6 +3,12 @@ key: eval-loop-6
 dest: Builder Claude
 runtime: any
 origin: exercises/eval-loop
+requires:
+  - id: eval-loop-inputs
+    source: student-input
+produces:
+  - id: reusable-eval-loop
+    location: student-selected working folder
 ---
 Set up a fixed-judge loop for one of my outputs.
 

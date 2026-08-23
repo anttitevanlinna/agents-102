@@ -1,5 +1,7 @@
 # A101 ↔ AE101 parity — goal reference
 
+<!-- maintainer -->
+
 Maintainer doc. Not student-facing. Working reference for the parity effort; check every proposed change against § *Goal* and § *Out of scope* before doing it.
 
 ## Goal
@@ -70,11 +72,10 @@ Verified present for A101 — do not re-investigate, do not "fix":
 
 | Was here | Now |
 |---|---|
-| Source-verification blocks / `checked:` stamps | § 3 Source verification |
-| `<!-- backing -->` blocks, `cross_module` row, Quality-line position | § 4 Maintainer contract normalization |
+| Source-validation work that remains delivery-dependent | § 2 Capability dry-runs |
+| Backing blocks, `cross_module` row, Quality-line position | § 4 Maintainer contract normalization |
 | The two Pass-1 supplementaries; `agent-trigger-list` paths | § 7 Scaffold and reference disposition |
 | The 7-class re-judge bill, `audit-eval-coverage` wiring, 159 legacy instances | § 8 Eval instances to fill |
-| The sparse prompt graph | § 12 Prompt-registry catch-up audit |
 | Optional challenges, trainer run-sheets, Key Concepts placement, the theory handbook | § 6 Unclear / design-choice flags |
 
 This doc keeps what `pre-cohort-todos.md` has no room for: the goal, the scope test, what parity was taken to mean, the gates table, and the log of what was found and why. Read it to understand the effort; read the punchlist to do the next piece of work.

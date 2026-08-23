@@ -9,7 +9,7 @@ Run the Module 7 next-step artifact, test one assumption, ask for one name, and 
 
 ## What You'll Learn
 After this module, you will be able to:
-- **Use** Claude Code to generate a new agent that extends your system
+- **Use** your Claude runtime to generate a new agent that extends your system
 - **Orchestrate** three thinking-disciplines from Rumelt, Roger Martin, and Klein and Kahneman at room scale against a real company question
 - **Produce** a strategy kernel, suggested agent set, and two-week plan grounded in your actual files
 - **Read** the flywheel, the cycle that just sharpened the kernel is the one that keeps sharpening it
@@ -34,15 +34,6 @@ Hold that. Module 8 doesn't answer it. It shows you the shape of an answer you'l
 
 The three thinking-disciplines you applied in Module 7 on your own sharing problem run again here at room scale on the sponsor challenge. *Crux* shapes each initial stance (Rumelt). Cross-checks force agents to notice rival evidence before they publish proposals. *What would have to be true?* and *pre-mortem* appear when agents criticize the synthesizer's choices and propose better ideas. Same disciplines, named inline in the prompts. Bigger instrument.
 
-## Key Concepts
-
-- **Self-improvement**: each cycle sharpens the next. Proposals read sharper than initial stances because the agents cross-check before publishing, then critiques sharpen the synthesizer's selection.
-- **Org capability**: many agents reading and proposing in parallel produce a kernel, agent set, and plan grounded in your own files, not a single consultant's read.
-- **The three predictable walls past the laptop loop**: data access, runtime platform, discoverability. The plan already names which wall bites first for your company. Seeing them is the sign the kernel works.
-- **Domain prediction framework**: rules codified + correctness verifiable + talent constrained = agent-ready. Apply it to your company's 200 processes to pick the first 5 to try.
-- **Thinking disciplines you take home as named moves.** Crux, *what would have to be true?*, pre-mortem aren't props and they aren't installed skills. They're portable disciplines you ask Claude to run on any decision too big to eyeball.
-- **Grounding when agents read agents.** Every agent publishes what it read, what it couldn't find, and what it inferred without a source. Every claim cites the file it came from. Without that rule, agents reading agents smoothly hallucinate each other's memory.
-
 ## Debrief
 
 Five minutes. Claude reviews the session and sharpens whichever file carried the load: the central synthesizer's rules, the strategy kernel, the agent set, the plan, or the rules that governed how the agents argued. The evidence is what you produced: the context manifests, stances, cross-checks, proposals, selection board, synthesizer-injected midpoint instructions, critiques, pushbacks, kernel, agent set, and plan. Claude reviews, rewrites the most load-bearing file in place, reports what changed. You push back on anything that's off.
@@ -59,6 +50,15 @@ This is a self-audit of a live agent round. Convenient, not neutral. If the summ
 
 Read Claude's summary. Push back where it's wrong. Some of what didn't resolve shouldn't resolve. It's the live edge of the work. The flywheel that sharpened the file just now is the one that will sharpen it again after Agents 101, on the next problem, on the one after that, on the one you don't yet know you have. You just watched it compound.
 
+## Key Concepts
+
+- **Self-improvement**: each cycle sharpens the next. Proposals read sharper than initial stances because the agents cross-check before publishing, then critiques sharpen the synthesizer's selection.
+- **Org capability**: many agents reading and proposing in parallel produce a kernel, agent set, and plan grounded in your own files, not a single consultant's read.
+- **The three predictable walls past the laptop loop**: data access, runtime platform, discoverability. The plan already names which wall bites first for your company. Seeing them is the sign the kernel works.
+- **Domain prediction framework**: rules codified + correctness verifiable + talent constrained = agent-ready. Apply it to your company's 200 processes to pick the first 5 to try.
+- **Thinking disciplines you take home as named moves.** Crux, *what would have to be true?*, pre-mortem aren't props and they aren't installed skills. They're portable disciplines you ask Claude to run on any decision too big to eyeball.
+- **Grounding when agents read agents.** Every agent publishes what it read, what it couldn't find, and what it inferred without a source. Every claim cites the file it came from. Without that rule, agents reading agents smoothly hallucinate each other's memory.
+
 ## Next
 
 The plan you just produced is a set of assumptions dressed as work. Label them. Start the concurrent pieces, and design experiments for the uncertain ones. That's the first move after Agents 101. Agents 101 is Step 1 of 5 (Make Your Own is next). You don't graduate. You have a flywheel.
@@ -68,8 +68,9 @@ The plan you just produced is a set of assumptions dressed as work. Label them. 
 **Quality:** compendium-audited 2026-05-02 (writing@3d7e76c story@3d7e76c)
 - judges @3d7e76c: writing PASS, story PASS, technical grandfathered, behavior REVISE (accepted residual per memory/compounded/2026-05-02-pedagogy-debrief-prompts-residual-med-risk-by-design.md)
 
-**TODO (Cowork edition review 2026-04-29):**
-- First learning goal says "Use Claude Code to generate a new agent." Runtime-fork or neutralize for Cowork so the goal remains "use the runtime to generate a new agent" without making Cowork feel like a secondary path.
+**Mood target:** Awe and curiosity — the student leaves wanting the next move, not feeling tidily graduated.
+
+**Push-back moves / Watch-fors / Decision points:** [M8 run sheet](trainer-modules.md#m8-glance) owns the live cues, recovery paths, protected beats, and cut order.
 
 **Identity-naming close (trainer):**
 - In-room only. The sponsor who sat alongside the room for all eight modules may name what happened in one sentence: *"You are now agent builders. You built agents that do real work on company data. You can do it again on the next problem."* Keep it spoken, not student-facing body copy. No certificate. No graduation.
@@ -116,9 +117,6 @@ Runtime default:
 - Midway through, the central synthesizer writes `midway-instructions.md`; later agent prompts consume that file directly as injected operating rules. Participants do not hand-prompt the cross-pollination behavior or edit local `CLAUDE.md` for this step.
 - Pushback is live: humans talk in the room, then steer their agents to publish critiques, corrections, or better ideas. The central synthesizer reads those files and rewrites the selection, agent set, plan, or kernel.
 
-Still to dry-run:
-- Exact OneDrive/SharePoint sync timing with 10-20 concurrent writers.
-- Whether the central synthesizer prompt should be generated during the agent-generates-agent demo or pasted inline. **Not** as a pre-shipped skill.
 - No self-study variant for this capstone. A solo substitute would remove the live heterogeneity, shared write surface, cross-checks, proposal critique, and human decision layer that make the exercise work.
 
 Detailed notes: `memory/project_m8_joint_panel.md`.

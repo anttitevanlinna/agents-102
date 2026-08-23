@@ -3,6 +3,13 @@ key: build-your-challenge-memory-2
 dest: Claude Code
 runtime: any
 origin: exercises/build-your-challenge-memory
+requires:
+  - id: curation-plan
+    source: prompt:build-your-challenge-memory-1
+produces:
+  - id: challenge-sources
+    location: sources/
+    note: fetched content and reference files for the agreed plan
 ---
 For every source in the curation plan we just agreed, create one file in sources/. Use the best method per source:
 

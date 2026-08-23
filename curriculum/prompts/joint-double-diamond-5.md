@@ -3,6 +3,14 @@ key: joint-double-diamond-5
 dest: Builder Claude
 runtime: any
 origin: exercises/joint-double-diamond
+requires:
+  - id: m8-stance
+    source: prompt:joint-double-diamond-3
+  - id: m8-cross-check
+    source: prompt:joint-double-diamond-4
+produces:
+  - id: m8-proposals
+    location: shared-folder/<participant>/proposal.md
 ---
 Read my stance.md and cross-check.md. Then write my proposal for the shared surface.
 

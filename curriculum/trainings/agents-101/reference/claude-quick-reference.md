@@ -99,7 +99,7 @@ Read the file filename.ext in this project. Summarize it in 3 lines.
 Open filename.ext. Change the heading to "New heading." Save.
 ```
 
-*Official docs: Claude Code's file tools (Read / Write / Edit) and project scope.*
+*Official docs: [Claude Code tools reference](https://code.claude.com/docs/en/tools-reference), including Read, Write, and Edit.*
 
 ## Connectors, let Claude Code read your real data
 
@@ -142,7 +142,7 @@ Skills are scoped capabilities: bundles of instructions and permissions that mak
 
 You'll build skills in Module 4. For now, know that they exist, they're files, and they scope what Claude can do when the skill is active.
 
-*Official docs: Claude Code Skills, file format, install location, permissions model, and examples.*
+*Official docs: [Claude Code Skills](https://code.claude.com/docs/en/skills), including file format, install locations, invocation, and examples.*
 
 ## Subagents, when one Claude isn't enough
 
@@ -150,7 +150,7 @@ For tasks that need specialized agents working on different parts of a problem, 
 
 You'll use this in Module 3. For now, know that Claude can delegate.
 
-*Official docs: Claude Code Subagents, invocation patterns, parallelism, and passing context.*
+*Official docs: [Claude Code Subagents](https://code.claude.com/docs/en/sub-agents), including invocation patterns, isolation, parallelism, and returned context.*
 
 ## New conversation, new project, context hygiene
 

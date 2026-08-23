@@ -3,6 +3,20 @@ key: hallucination-bakeoff-5
 dest: Claude Code
 runtime: any
 origin: exercises/hallucination-bakeoff
+requires:
+  - id: m5-briefing
+    source: prompt:hallucination-bakeoff-1
+  - id: m5-evidence-roster
+    source: prompt:hallucination-bakeoff-1
+  - id: m5-claim-pool
+    source: prompt:hallucination-bakeoff-2
+  - id: m5-detector-outputs
+    source: prompt:hallucination-bakeoff-3
+produces:
+  - id: m5-adjudication
+    location: module-5/adjudicated-claims.md
+  - id: m5-scoreboard
+    location: module-5/scoreboard.md
 ---
 You are the scorer for a four-way detector benchmark. Your inputs:
 

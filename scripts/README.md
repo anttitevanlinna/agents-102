@@ -16,7 +16,7 @@ Outputs:
 ```text
 site/clients/<customer>/index.html
 site/clients/<customer>/<training>/index.html
-site/clients/<customer>/<training>/trainer-guide.html   # if curriculum/trainings/<training>/trainer-guide.md exists
+site/clients/<customer>/<training>/trainer-modules.html # if curriculum/trainings/<training>/trainer-modules.md exists
 site/clients/<customer>/<training>/ae101-content.tar.gz   # AE101 only
 site/clients/<customer>/<training>/agents-101-starter.tar.gz   # Agents 101 only
 ```

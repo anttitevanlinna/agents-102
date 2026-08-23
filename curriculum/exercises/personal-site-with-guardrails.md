@@ -18,7 +18,7 @@ The site is the canvas. The real move is iterate and learn: change the context, 
 
 *5 min*
 
-The baseline is boring on purpose. You need it boring so you can feel how much the later phases change. Don't skip it, even if your instinct is "I know what's coming."
+The baseline is boring on purpose. You need it boring so you can feel how much the later phases change.
 
 Three small steps:
 
@@ -98,6 +98,8 @@ Ask Claude to compare versions and name three generic claims.
 
 {{prompt:personal-site-with-guardrails-5}}
 
+One thing to know: Claude is reading its own work in the chat where it just wrote it. That's a warm-session self-audit, and the LLM tends to be lovely about its own prior output. If the three picks come back soft (*"could be a touch more specific,"* not *"this whole line is wrong"*), ask Claude to over-flag with no charity and run it again. Or open a fresh task, paste just the Phase 1 site cold, and run the same prompt without the rest of the context riding along. Cold reads catch sharper picks.
+
 
 Read Claude's three answers. Those are the LLM filling in gaps with statistical defaults. What most LinkedIn profiles of people like you look like, not what's actually true of you. Not a bug. It's what happens when context is thin. Context fixed it. You'll meet this mechanism again in Module 5 when the stakes are higher.
 
@@ -124,7 +126,7 @@ Ask Claude to write your first generation rules file.
 {{prompt:personal-site-with-guardrails-6}}
 
 
-Claude writes the file and summarises in chat. Push back on anything that doesn't match what we actually did. That's your first packaged agent behavior: text the model can re-read at the start of any future personal-brand task. Different name from CLAUDE.md (you'll meet that in Module 2), same fundamental mechanism: instructions in a file.
+Claude writes the file and summarises in chat. Read the summary, then open `module-1/personal-brand-generation.md` and inspect the first two or three rules end to end. The chat summary rounds corners; the file is the thing that travels. Push back on anything in the file that doesn't match what you actually did. That's your first packaged agent behavior: text the model can re-read at the start of any future personal-brand task. Different name from CLAUDE.md (you'll meet that in Module 2), same fundamental mechanism: instructions in a file.
 
 ## See the mechanism repeat in every phase
 
@@ -144,5 +146,19 @@ You just ran **Recipe 1** end-to-end: baseline without context, colleague-as-buy
 
 <!-- maintainer -->
 
-**Deferred per student-facing-first rule:**
-- Facilitator notes: watch-fors (generic Phase 2 answers; Phase 3 strengths that don't serve anyone specific; Phase 4 hate-list that doesn't flip cleanly), decision points, per-phase timings (Phase 6 free iteration tends to run long), Claude Code setup prerequisites.
+**Leap test — three observable outcomes a participant should be able to point at by Monday:**
+1. A `module-1/site.html` they would happily forward to a colleague without flinching.
+2. A `module-1/personal-brand-generation.md` they can invoke on the next personal-shaped writing task without retyping the framework.
+3. A felt distinction between *"generic"* and *"genuinely mine"*: they can point at lines in the Phase 1 baseline and Phase 6 result and name what changed.
+
+**Per-phase failure mode + escape hatch:**
+
+| Phase | Forcing function | Dominant failure | Escape hatch |
+|---|---|---|---|
+| 1 Baseline | Paste full LinkedIn → observe generic output | Participant curates the paste so the later contrast vanishes | Re-paste the full page, including navigation and sidebar text. The mess is the point. |
+| 2 StoryBrand | Walk five beats one at a time, then regenerate | One-word answers do not name the help shape | Ask for one concrete colleague example whenever an answer is generic. |
+| 3 Strengths | Strengths shape the voice | Generic virtues such as *"organised"* | Ask for the strength a close colleague would name, with a moment that proves it. |
+| 4 Anti-branding | Hate list inverted into voice | Categories instead of specifics | Replace each category with the actual sentence or meeting moment behind it. |
+| 5 Look-back | Warm-session self-audit | Charitable picks; under-flagging | Use the body callout: over-flag with no charity, or run the audit cold in a fresh task. |
+| 6 Free iteration | Iterate until *"yes, this is me"* | Perfectionism consumes the close | Time-box one last contrast, choose the version that lands, and stop. |
+| 7 Close | Write the rules file | Chat summary rounds corners | Open `module-1/personal-brand-generation.md` and inspect the first two or three rules at the artifact. |

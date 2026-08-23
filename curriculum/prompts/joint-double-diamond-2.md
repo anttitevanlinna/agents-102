@@ -4,6 +4,12 @@ dest: Builder Claude
 context: run once after challenge.md exists
 runtime: any
 origin: exercises/joint-double-diamond
+requires:
+  - id: m7-artifacts
+    source: prompt:share-your-work-6
+produces:
+  - id: m8-context-manifest
+    location: shared-folder/<participant>/context-manifest.md
 ---
 Use the shared folder the trainer posted in chat. Create a subfolder named after me if it does not exist. Write context-manifest.md in that subfolder. List:
 - Which modules' working folders I carry (module-1 through module-7).

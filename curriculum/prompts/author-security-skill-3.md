@@ -3,6 +3,14 @@ key: author-security-skill-3
 dest: Claude Code
 runtime: any
 origin: exercises/author-security-skill
+requires:
+  - id: policy-report-raw
+    source: prompt:author-security-skill-1
+  - id: security-package-plan
+    source: prompt:author-security-skill-2
+produces:
+  - id: authored-security-skill
+    location: module-4/skills/security-audit/
 ---
 Author the reusable security check now. Two lenses.
 

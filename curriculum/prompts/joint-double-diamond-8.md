@@ -3,6 +3,17 @@ key: joint-double-diamond-8
 dest: central synthesizer
 runtime: any
 origin: exercises/joint-double-diamond
+requires:
+  - id: m8-sponsor-challenge
+    source: prompt:joint-double-diamond-1
+  - id: m8-selection-board
+    source: external
+  - id: m8-midway-instructions
+    source: prompt:joint-double-diamond-6
+  - id: m8-proposals
+    source: prompt:joint-double-diamond-5
+  - id: m8-critiques
+    source: prompt:joint-double-diamond-7
 produces:
   - id: m8-deliberation
     location: shared folder root — strategy-kernel.md and the synthesis files

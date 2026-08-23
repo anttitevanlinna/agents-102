@@ -11,7 +11,7 @@ Set up Claude Code or Cowork. Build a snake game as HTML. Connect your calendar 
 After this module, you will be able to:
 - **Generate** an HTML one-pager and read what the agent put in it
 - **Apply** structured guardrails and see how the output changes
-- **Identify** fabrication in LLM output where your domain knowledge says it's wrong
+- **Evaluate** LLM output against your domain knowledge and identify where it is wrong
 - **Package** what you learned into reusable generation rules
 
 ## Start here
@@ -27,11 +27,6 @@ This module's outputs land in `module-1/`.
 [Exercise: Paint by agent with guardrails](exercises/personal-site-with-guardrails.md)
 
 [Closing: Iterate and learn](lectures/what-just-happened.md)
-
-## Key Concepts
-- Guardrails are structured context, not a checklist
-- You are the world's best evaluator of your own profile. Domain expertise IS the eval
-- The guardrail IS the control: average output becomes great not because you prompted better
 
 ## Debrief
 
@@ -63,6 +58,11 @@ One pattern to watch. Asked the most-uniquely-you line first, the LLM warms into
 
 Compare Claude's picks to what you expected. Where cold-Claude sees generic, your context is still thin; add one more sharp detail there. Then ask Claude to regenerate the site. Where Claude's pick of *"uniquely you"* matches your own gut: solid ground.
 
+## Key Concepts
+- Guardrails are structured context, not a checklist
+- You are the world's best evaluator of your own profile. Domain expertise IS the eval
+- The guardrail IS the control: average output becomes great not because you prompted better, but because the context became specific enough to steer it
+
 ## Bring to Module 2
 
 **A live challenge on your mind**, and Confluence and OneDrive connectors you have verified. Module 2 systematises the work around a real problem; an invented one costs you the session's whole point.
@@ -82,6 +82,10 @@ You just made great output AND packaged what you learned into a file the agent c
 
 **Quality:** compendium-audited 2026-05-04
 - judges: writing PASS, story PASS, behavior PASS (see instances/getting-going.*.json); technical grandfathered
+
+**Mood target:** Joyful creation — the student leaves with something recognizably theirs, not a technical warm-up.
+
+**Push-back moves / Watch-fors / Decision points:** [M1 run sheet](trainer-modules.md#m1-glance) owns the live cues, recovery paths, protected beats, and cut order.
 
 **Meta (trainer):**
 - **Transitions:** opening 10 @start "Opening: how we work in this room" · debrief 5 @end "Debrief: retro + cold read" · bridge 3 @end "Bridge"

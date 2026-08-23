@@ -3,6 +3,11 @@ key: eval-loop-5
 dest: Claude Code
 runtime: any
 origin: exercises/eval-loop
+requires:
+  - id: m6-run-artifacts
+    source: prompt:eval-loop-2
+  - id: generation-tactic
+    source: prompt:eval-loop-2
 ---
 Show me module-6/eval-notes.md and ./generation-tactic.md.
 

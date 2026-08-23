@@ -3,6 +3,14 @@ key: build-your-challenge-memory-7
 dest: Claude Code
 runtime: any
 origin: exercises/build-your-challenge-memory
+requires:
+  - id: challenge-memory
+    source: prompt:build-your-challenge-memory-3
+  - id: new-memory-source
+    source: student-input
+produces:
+  - id: challenge-memory
+    location: memory/ (integrate in place)
 ---
 Take the source below and integrate it into the memory. Steps:
 

@@ -3,6 +3,12 @@ key: hallucination-bakeoff-2
 dest: Claude Code
 runtime: any
 origin: exercises/hallucination-bakeoff
+requires:
+  - id: m5-briefing
+    source: prompt:hallucination-bakeoff-1
+produces:
+  - id: m5-claim-pool
+    location: module-5/claim-pool.md
 ---
 Open `module-5/briefing.md`. Extract exactly 30 varied claims from the briefing.
 

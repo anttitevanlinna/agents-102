@@ -6,17 +6,17 @@
 
 Two reads. Both prime moves the Module 3 exercise leans on. Neither asks you to build anything. Just to arrive with your eyes calibrated.
 
-**Reading 1. Five practitioners, automating their life.**
+**Reading 1. Five practitioners, automating their work.**
 
 Before you build multi-agent, see what a single well-shaped agent already does in the wild. Not toy demos. Working practitioners who've folded Claude Code into daily research, writing, and shipping.
 
 Five people worth knowing. **Pick three. Read one piece each.**
 
-1. **Simon Willison** (*simonwillison.net*). Daily public journal of using Claude Code (and his own `llm` CLI) on real projects: Datasette, research notes, blog automation. Browse the recent "Claude Code" tag.
-2. **Andrej Karpathy** (*karpathy.ai + X.com/karpathy*). Showed you the LLM Wiki pattern already in Module 2 prework; talks publicly about how he uses coding agents day to day. Look at his recent threads and podcast appearances.
-3. **Thorsten Ball** (*thorstenball.com + the Sourcegraph blog*). Direct, opinionated essays from someone who ships agent tooling for a living. Read his most recent piece on Claude Code.
-4. **Mitchell Hashimoto** (*mitchellh.com*). HashiCorp founder, now Ghostty. Writes candidly about using Claude Code as daily driver on his own codebases. Find his "how I use Claude Code" posts.
-5. **Geoffrey Huntley** (*ghuntley.com*). Long-form on agentic coding and personal workflow automation. Read his most recent "agents" piece.
+1. **Simon Willison.** Browse his current [Claude Code field notes](https://simonwillison.net/tags/claude-code/). Pick one worked example where he shows the prompt, artifact, test, or correction rather than only announcing a feature.
+2. **Edward Harker.** Read [How I use Claude Code](https://edwardharker.com/2026/05/16/how-i-use-claude-code/) (16 May 2026). Look for the operating routine around the agent, not a magic prompt.
+3. **Armin Ronacher.** Read [The Coming Loop](https://lucumr.pocoo.org/2026/6/23/the-coming-loop/) (23 June 2026). Notice what changes when the human designs the loop and its feedback instead of driving every step.
+4. **Thariq Shihipar.** Read [The unreasonable effectiveness of HTML](https://claude.com/blog/using-claude-code-the-unreasonable-effectiveness-of-html) (20 May 2026). Track why changing the review artifact changes how closely the human stays in the work.
+5. **Daniel Bilsborough.** Read [Claude Code: The Practitioner's Guide](https://partner.danielbilsborough.com/claude-code) (updated 6 August 2026). Look for the plain-text memory and the boundary where consequential work still needs a person.
 
 For each one you pick, note one thing in plain language: *what is this person automating that they used to do by hand, and what's the move that made it work?* Three bullets, one per practitioner. Keep the note somewhere you'll see on training day.
 
@@ -40,7 +40,7 @@ When the job is done, it returns a single result to the main agent and disappear
 
 *What you don't need.* You don't need to write an agent definition file for Module 3. You don't need to use the `/agents` slash command. Defining your own reusable <span class="rt-code">subagents</span><span class="rt-cowork">agents</span> is a later move; launching ones that the main <span class="rt-code">session</span><span class="rt-cowork">task</span> describes on the fly is what Phase 2 uses, and plain-language prompting is enough.
 
-For the full reference, search *"<span class="rt-code">Claude Code subagents</span><span class="rt-cowork">Cowork agents</span>"* in Anthropic's docs or open Claude's in-app help. You're after the shape: *helper with instructions, own context, returns a result. You summon it by asking.*
+For the full reference, <span class="rt-code">open Anthropic's [subagent documentation](https://code.claude.com/docs/en/sub-agents)</span><span class="rt-cowork">open Claude's in-app help and search for *agents*</span>. You're after the shape: *helper with instructions, own context, returns a result. You summon it by asking.*
 
 **What to bring to class:** the three one-line practitioner takeaways. That's it. Module 3 runs on the memory you already built in Module 2.
 
@@ -57,9 +57,13 @@ For the full reference, search *"<span class="rt-code">Claude Code subagents</sp
 - Module 2 completed; memory in place.
 - Web access — all five practitioner sites are public.
 
-**URL verification owed (before first delivery):**
-- Confirm each of the five practitioners has a Claude-Code-relevant piece from the last 6 months in personal-workflow terms. The names and domains are solid; specific recent titles should be captured closer to delivery so freshness holds. For each of the five, run a quick per-practitioner crawl; swap any whose recent output has drifted.
-- Subagent documentation URL — find the current Anthropic docs URL and either link it directly or update the "search for..." instruction with the exact path. Verify via `claude-code-guide` capability check.
+**Source verification:**
+- `[checked:2026-08-23 result:OK due:cohort]` https://simonwillison.net/tags/claude-code/ — [practitioner direct, dynamic] current worked Claude Code field notes. fallback: select one dated post from the tag before delivery.
+- `[checked:2026-08-23 result:OK due:2026-11-16]` https://edwardharker.com/2026/05/16/how-i-use-claude-code/ — [practitioner direct] dated account of a working Claude Code routine. fallback: swap for another dated direct workflow account.
+- `[checked:2026-08-23 result:OK due:2026-12-23]` https://lucumr.pocoo.org/2026/6/23/the-coming-loop/ — [practitioner direct] dated account of designing agent loops and feedback. fallback: keep the loop question and swap the reading.
+- `[checked:2026-08-23 result:OK due:2026-11-20]` https://claude.com/blog/using-claude-code-the-unreasonable-effectiveness-of-html — [vendor practitioner direct] Thariq Shihipar's dated account of changing the review artifact to stay in the loop. fallback: use another dated Claude Code team workflow account.
+- `[checked:2026-08-23 result:OK due:cohort]` https://partner.danielbilsborough.com/claude-code — [practitioner direct, maintained] dated account of plain-text memory, long-running work, and human review boundaries. fallback: replace if the maintained page loses its visible update date.
+- `[checked:2026-08-23 result:OK due:cohort]` https://code.claude.com/docs/en/sub-agents — [vendor docs, capability] isolated context, delegation, natural-language invocation, and return to the main conversation. fallback: use the documentation index at https://code.claude.com/docs/llms.txt and locate the current subagents page.
 
 **Capability notes (confirmed, no check owed):**
 - Subagent launch phrasing ("Launch a subagent to…" / "Launch these three subagents in parallel") confirmed by Antti as working reliably in current Claude Code — no `claude-code-guide` check needed.
@@ -71,9 +75,9 @@ For the full reference, search *"<span class="rt-code">Claude Code subagents</sp
 - Participant hits a paywall or dead link on one of the practitioner sites — swap for another from the list; the shape of the exercise survives with any three.
 
 **Why this composition (vs. alternatives):**
-- Karpathy's LLM Wiki was Module 2 prework; listed here but NOT the assigned single piece — keeps the Module 2 reading distinct and primes students to read something of his *other* than the Wiki post.
-- The five selected span: tooling-maker (Ball), builder (Hashimoto), researcher-communicator (Willison), teacher-researcher (Karpathy), workflow-practitioner (Huntley). Different vantage points on the same "one agent, real work" move.
-- Alternative candidates considered but not selected: Matt Pocock (too novice-angled — Module 2 prework already cites his plan-mode video), Steve Yegge (Sourcegraph, adjacent to Ball — duplication), Armin Ronacher (strong candidate — swap-in if any of the five drifts).
+- Karpathy's LLM Wiki stays distinct as Module 2 prework instead of being assigned twice.
+- The five selected span researcher-communicator (Willison), product builder (Harker), framework maintainer (Ronacher), Claude Code team practitioner (Shihipar), and business operator (Bilsborough). Different vantage points on the same "one agent, real work" move.
+- Mitchell Hashimoto's *My AI Adoption Journey* remains a strong alternative, but its 5 February 2026 publication date has moved just outside the six-month current-practice window. Thorsten Ball and Geoffrey Huntley remain alternatives when they publish a directly relevant, dated piece inside that window.
 - Pre-2026-05-14 versions of this file framed the reading as Claude Code vs. a fabricated "OpenClaw" tool. The hallucination propagated into `continuous-research/findings/archive/` (`computer-use-and-nordic-signals-march-24-2026.md`, `cycle-70-march-24-2026-h18.md`, `practitioner-signals-march-2026-cycle-update.md`) and `continuous-research/platform-watch/cross-platform/runs/2026-03-22-cycle48.md` (referenced "ClawHub" + a fabricated CVE). Sweep those before any rebuild that leans on the archive.
 
 **Deferred per student-facing-first rule:**

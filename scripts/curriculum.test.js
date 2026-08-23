@@ -34,6 +34,47 @@ const {
 } = require('../site/layouts/curriculum.js');
 const audit = require('../scripts/audit-eval-coverage.js');
 
+test('Agents 101 module recaps follow teaching and Next closes the body', () => {
+  const trainingDir = path.join(__dirname, '..', 'curriculum', 'trainings', 'agents-101');
+  const modules = TRAININGS['agents-101'].modules;
+
+  for (const module of modules) {
+    const source = fs.readFileSync(path.join(trainingDir, `${module.slug}.md`), 'utf8');
+    const body = source.split(/^<!--\s*maintainer\s*-->$/m)[0];
+    const headings = [...body.matchAll(/^## (.+)$/gm)].map(match => match[1]);
+    const keyConcepts = headings.indexOf('Key Concepts');
+    const next = headings.indexOf('Next');
+
+    assert.notEqual(keyConcepts, -1, `${module.slug}: missing Key Concepts`);
+    assert.equal(next, headings.length - 1, `${module.slug}: Next must be the last body section`);
+
+    const afterRecap = headings.slice(keyConcepts + 1, next);
+    assert.ok(
+      afterRecap.every(heading => /^(Bring to Module|Pre-reads? before Module)/.test(heading)),
+      `${module.slug}: teaching section follows Key Concepts: ${afterRecap.join(', ')}`
+    );
+  }
+});
+
+test('Agents 101 maintainer blocks point to the trainer contract and name the mood', () => {
+  const trainingDir = path.join(__dirname, '..', 'curriculum', 'trainings', 'agents-101');
+  const modules = TRAININGS['agents-101'].modules;
+
+  modules.forEach((module, index) => {
+    const source = fs.readFileSync(path.join(trainingDir, `${module.slug}.md`), 'utf8');
+    const maintainer = source.split(/^<!--\s*maintainer\s*-->$/m)[1] || '';
+    const runSheet = `trainer-modules.md#m${index + 1}-glance`;
+
+    assert.match(maintainer, /^\*\*Mood target:\*\*/m, `${module.slug}: mood target missing`);
+    assert.match(
+      maintainer,
+      /^\*\*Push-back moves \/ Watch-fors \/ Decision points:\*\*/m,
+      `${module.slug}: trainer contract pointer missing`
+    );
+    assert.ok(maintainer.includes(runSheet), `${module.slug}: trainer contract must point to ${runSheet}`);
+  });
+});
+
 test('configured Markdown opens external and supplementary/reference links in a new tab', () => {
   configureMarked(marked);
   const html = marked.parse([
@@ -678,6 +719,21 @@ function trimHandbook(key) {
 const glanceIds = md => [...md.matchAll(/id="([a-z0-9-]+-glance)"/g)].map(m => m[1]);
 const glanceHrefs = md => [...md.matchAll(/href="#([a-z0-9-]+-glance)"/g)].map(m => m[1]);
 
+test('Agents 101 owns one current trainer handbook', () => {
+  const dir = path.join(ROOT, 'curriculum/trainings/agents-101');
+  const handbook = path.join(dir, 'trainer-modules.md');
+  const legacyGuide = path.join(dir, 'trainer-guide.md');
+
+  assert.equal(fs.existsSync(handbook), true, 'Agents 101 needs trainer-modules.md for done-done');
+  assert.equal(fs.existsSync(legacyGuide), false, 'the legacy generic guide must not compete with the handbook');
+
+  const md = fs.readFileSync(handbook, 'utf8');
+  const expected = ['start-glance'].concat(
+    TRAININGS['agents-101'].modules.map((module, index) => `m${index + 1}-glance`));
+  assert.deepEqual(glanceHrefs(md), expected, 'every A101 handbook section needs a tab');
+  assert.deepEqual(glanceIds(md), expected, 'every A101 handbook tab needs a section');
+});
+
 test('trainer handbook: every cut has a tab strip that matches its sections', () => {
   assert.ok(HANDBOOK_KEYS.length, 'expected at least one training with a trainer handbook');
   HANDBOOK_KEYS.forEach(key => {
@@ -736,7 +792,8 @@ test('no student-facing file links a training page without its trainings/ prefix
   const files = execSync(
     'git ls-files "curriculum/trainings/*/*.md" "curriculum/exercises/*.md" "curriculum/lectures/*.md"',
     { cwd: root, maxBuffer: 1 << 24 },
-  ).toString().trim().split('\n').filter(Boolean);
+  ).toString().trim().split('\n').filter(Boolean)
+    .filter(f => fs.existsSync(require('node:path').join(root, f)));
 
   const ANY = /\]\(([^)\s]*(?:supplementary|reference)\/[a-z0-9-]+\.md[^)]*)\)/g;
   const OK = /^(?:\.\.\/)*trainings\/[a-z0-9-]+\/(?:reference|supplementary)\/[a-z0-9-]+\.md(?:#[^)]*)?$/;

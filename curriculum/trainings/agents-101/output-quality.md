@@ -6,7 +6,7 @@ You don't pick a quality check because someone said so. You run several on your 
 
 ## Prework
 
-Agent-sprawl reading from Module 4 covered shadow agents and the 82%-think-protected / 24%-have-visibility pattern. Now read [The Missing Check](lectures/module-5-prework.md): two public-record cases with documented organisational root causes.
+Carry forward Module 4's risk discipline, then read [The Missing Check](lectures/module-5-prework.md): two public-record cases with documented organisational root causes.
 
 Walk in with one sentence per case: "the missing organisational check was X."
 
@@ -31,14 +31,6 @@ This module measures what the system actually says inside its scope. Four detect
 [Exercise: Hallucination benchmark](exercises/hallucination-bakeoff.md)
 
 [Lecture: Self-consistency after the scoreboard](lectures/self-consistency-after-scoreboard.md)
-
-## Key Concepts
-- **Benchmarking as a pattern.** N candidates on the same input, scorer measures, winner (or ensemble) is kept. Portable to any quality judgment you'll automate: tone, brand, compliance, steering.
-- **The real move is building the thing that benchmarks the detectors.** Run one benchmark and you have seen what evaluating evaluators looks like. It transfers to every future quality question.
-- **Empirical method selection over authority.** You don't pick a detector because the docs or a paper said so. You run several against your own output and your own benchmark, and the data names the winner.
-- **The scoreboard is the artifact.** Precision, recall, coverage, measured per detector on the same claim pool. Read it row by row and you can name why one won and where another lost.
-- **A judge is narrow on purpose.** The winning judge file says what it catches and names its known limit. Narrow tools that work beat broad tools that pretend.
-- **Grounded is the discipline; the benchmark is how you build the check.** A judge measured against a benchmark is what keeps output connected to the ground when you're not in the room. A small benchmark proves the method; a production judge wants hundreds of claims and learns from its own corrections.
 
 ## Debrief
 
@@ -67,6 +59,14 @@ Read [What is an Agent, The autonomy ladder](trainings/agents-101/supplementary/
 
 Having added the checking step before acting, this is also the suitable place to introduce a human-in-the-loop check. You have both the agent-created action proposal at hand and the report on output quality. That means the expert is not reviewing a blank page or a vague concern; they are reviewing the proposed action, the evidence behind it, and the known limit of the check that passed it.
 
+## Key Concepts
+- **Benchmarking as a pattern.** N candidates on the same input, scorer measures, winner (or ensemble) is kept. Portable to any quality judgment you'll automate: tone, brand, compliance, steering.
+- **The real move is building the thing that benchmarks the detectors.** Run one benchmark and you have seen what evaluating evaluators looks like. It transfers to every future quality question.
+- **Empirical method selection over authority.** You don't pick a detector because the docs or a paper said so. You run several against your own output and your own benchmark, and the data names the winner.
+- **The scoreboard is the artifact.** Precision, recall, coverage, measured per detector on the same claim pool. Read it row by row and you can name why one won and where another lost.
+- **A judge is narrow on purpose.** The winning judge file says what it catches and names its known limit. Narrow tools that work beat broad tools that pretend.
+- **Grounded is the discipline; the benchmark is how you build the check.** A judge measured against a benchmark is what keeps output connected to the ground when you're not in the room. A small benchmark proves the method; a production judge wants hundreds of claims and learns from its own corrections.
+
 ## Pre-reads before Module 6
 
 Ethan Mollick, "Garbage Can and Bitter Lesson."
@@ -75,6 +75,10 @@ Ethan Mollick, "Garbage Can and Bitter Lesson."
 The benchmark ran once. Thirty claims, four detectors, one judge. Now imagine the benchmark has three hundred claims, the judge runs on every build, and its own corrections feed back into the next round. That's evals.
 
 <!-- maintainer -->
+
+**Mood target:** Mechanical rescue — the student can see which measured method worked without pretending quality is solved.
+
+**Push-back moves / Watch-fors / Decision points:** [M5 run sheet](trainer-modules.md#m5-glance) owns the live cues, recovery paths, protected beats, and cut order.
 
 **Meta (trainer):**
 - **Transitions:** connections 5 @start "Connections" · debrief 5 @end "Debrief" · agent actions 3 @end "Agent actions" · bridge 3 @end "Bridge"
@@ -121,18 +125,7 @@ The benchmark ran once. Thirty claims, four detectors, one judge. Now imagine th
 - **M6 = the judge as infrastructure.** Scaled benchmark, scheduled runs, corrections feed back, the steering counterpart (encoding preference for a product/brand attribute).
 - Don't cross-teach. M5's benchmark earns M6's automation.
 
-**Lecture implications (owed):**
-- `grounded.md` lecture body sets up the benchmark — "there IS truth out there; your agent is a statistical generator with no model of it; *which detection method works for your output is an empirical question*." Introduce grounded-ness as the discipline, then pivot to benchmarking as the way to build the check. Compound reliability math stays.
-- `self-consistency-after-scoreboard.md` is trainer-led after the judge is saved. It shows self-consistency as a different question, includes optional run prompts, and carries the take-home transfer prompt.
-
-**Capability checks owed (before first delivery):**
-- Four subagents spawned in parallel, each reading the claim pool + evidence roster and writing to `module-5/detectors/<name>.md`. Three-subagent version is confirmed working in M3; four should behave identically. Dry-run to confirm.
-- Scorer reading four detector files + benchmark and producing a stable scoreboard table with precision/recall. If numbers swing wildly run-to-run, tighten the computation spec in the prompt.
-- `judges/groundedness-judge.md` handoff to Module 6's first exercise — confirm M6 expects this path verbatim. Align in the same edit if not.
-
 **Why one exercise, not two:** the benchmark is a single bounded activity with a four-phase internal arc (target + benchmark → detectors → scorer → judge). Adding a second exercise here would steal M6's Steering-eval beat. M5 stays focused on the benchmarking pattern; evals are M6's instrument.
-
-**DEFERRED** (pre-first-cohort): Capability dry-run on Module 5's four-subagent spawn + scorer stability. Four-spawn shape is confirmed in production via Module 3's parallel retrievers; Module 5's pipeline + scorer-stability check needs a real benchmark run on real briefing input.
 
 **Quality:** compendium-audited 2026-05-04 (writing@92b7e79 story@92b7e79 technical@92b7e79 behavior@92b7e79)
 - judges @92b7e79: writing PASS, story PASS, technical PASS, behavior PASS
@@ -143,7 +136,3 @@ The benchmark ran once. Thirty claims, four detectors, one judge. Now imagine th
 | Module 5 benchmark artifacts | `module-5/evidence-roster.md`, `module-5/briefing.md`, `module-5/claim-pool.md`, `module-5/detectors/`, `module-5/adjudicated-claims.md`, `module-5/scoreboard.md` | M5 hallucination benchmark | M5 Debrief; M6 eval-loop setup; M7 sharing diagnosis |
 | Groundedness judge | `judges/groundedness-judge.md` | M5 benchmark winner packaging | M6 eval loop as fixed yardstick; M7-M8 quality infrastructure |
 | Root groundedness rules | `./CLAUDE.md` groundedness checks | M5 Debrief | M6-M8 fresh sessions before trusted outputs or actions |
-
-**Source-verification owed (pre-first-cohort):**
-- Mata v. Avianca (S.D.N.Y. 2023) — public court record; add URL to the court filing or a reputable secondary source.
-- Deloitte Australia / DEWR welfare-compliance report (2025) — add URL (widely reported but no anchor in file).

@@ -3,6 +3,14 @@ key: joint-double-diamond-7
 dest: Builder Claude
 runtime: any
 origin: exercises/joint-double-diamond
+requires:
+  - id: m8-selection-board
+    source: external
+  - id: m8-midway-instructions
+    source: prompt:joint-double-diamond-6
+produces:
+  - id: m8-critiques
+    location: shared-folder/<participant>/critique.md
 ---
 Read midway-instructions.md and selection-board.md at the shared folder root. Follow the injected instructions before writing.
 

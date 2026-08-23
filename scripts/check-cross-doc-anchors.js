@@ -27,7 +27,11 @@ const SRC_DIRS = ['curriculum/trainings', 'curriculum/exercises', 'curriculum/le
 
 // Markdown link whose target is a .md with a #fragment.
 const LINK_RE = /\]\(([^)\s]*\.md)#([^)\s]+)\)/g;
-const HEADING_ID_RE = /<h[1-6][^>]*\bid="([^"]+)"/g;
+// Raw-HTML sections are first-class renderer targets too. Trainer handbooks use
+// `<section id="m1-glance">` because the same id drives both the tab CSS and
+// inbound run-sheet links; restricting this scan to heading ids made valid
+// rendered anchors look broken.
+const RENDERED_ID_RE = /\bid="([^"]+)"/g;
 
 function walk(dir, acc) {
     for (const name of fs.readdirSync(dir)) {
@@ -47,7 +51,7 @@ function idsFor(file) {
     const html = marked.parse(md);
     const ids = new Set();
     let m;
-    while ((m = HEADING_ID_RE.exec(html)) !== null) ids.add(m[1]);
+    while ((m = RENDERED_ID_RE.exec(html)) !== null) ids.add(m[1]);
     idCache.set(file, ids);
     return ids;
 }

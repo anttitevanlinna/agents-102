@@ -3,6 +3,20 @@ key: three-retrievers-one-curator-5
 dest: Claude Code
 runtime: any
 origin: exercises/three-retrievers-one-curator
+requires:
+  - id: crux-md
+    source: prompt:name-your-crux-2
+  - id: challenge-memory
+    source: prompt:build-your-challenge-memory-7
+  - id: m3-wiki-retrieval
+    source: prompt:three-retrievers-one-curator-1
+  - id: m3-docs-retrieval
+    source: prompt:three-retrievers-one-curator-2
+  - id: m3-internet-retrieval
+    source: prompt:three-retrievers-one-curator-3
+produces:
+  - id: m3-curated-memory
+    location: memory/ and memory/_synthesis-m3.md
 ---
 No plan or preamble — enter the loop now.
 

@@ -3,6 +3,16 @@ key: author-security-skill-1
 dest: Claude Code
 runtime: any
 origin: exercises/author-security-skill
+requires:
+  - id: working-tree-scaffold
+    source: prompt:a101-prework-extract-tarball
+  - id: root-claude-md
+    source: prompt:a101-m2-debrief-claude-md
+  - id: m3-agent-work
+    source: prompt:three-minds-one-synthesis-1
+produces:
+  - id: policy-report-raw
+    location: outputs/policy-report-raw.md
 ---
 Read everything in module-4/policies/. Use those policy references to audit the agent system: the memory in memory/, the sources in sources/, the agent files in agents/, the root CLAUDE.md, and the multi-agent runs in module-3/stances/.
 

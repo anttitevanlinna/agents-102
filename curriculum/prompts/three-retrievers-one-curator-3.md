@@ -3,6 +3,12 @@ key: three-retrievers-one-curator-3
 dest: Claude Code
 runtime: any
 origin: exercises/three-retrievers-one-curator
+requires:
+  - id: crux-md
+    source: prompt:name-your-crux-2
+produces:
+  - id: m3-internet-retrieval
+    location: sources/internet-retrieval.md
 ---
 No preamble — propose your author list now.
 

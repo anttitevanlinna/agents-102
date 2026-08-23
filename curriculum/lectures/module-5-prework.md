@@ -26,15 +26,17 @@ Read:
 
 The Australian government's Department of Employment and Workplace Relations commissioned Deloitte for A$439,000 to review the department's welfare-compliance automation system, an independent assurance review of systems that already use automated decision-making on real Australian citizens.
 
-The report was published in July 2025. In early October, Dr. Christopher Rudge, a health-and-welfare-law academic at the University of Sydney, read it carefully and found something odd. The report cited academic sources that didn't exist. It attributed a quote to a federal court judge that the judge had never said. All told, up to 20 fabricated references.
+The final report was dated 4 July 2025. By August, Dr. Christopher Rudge, a health-and-welfare-law academic at the University of Sydney, had raised concerns about references that did not exist and a quote attributed to a federal court judge who had never said it. Subsequent reporting counted up to 20 fabricated references.
 
-On **3 October 2025**, Deloitte published a revised version. An appendix disclosed, for the first time, that the report had been produced with assistance from **Azure OpenAI's GPT-4o**, hosted inside the department's own Azure tenancy. Three days later, the government announced Deloitte would refund the final contract installment.
+On **3 October 2025**, the department published Deloitte's revised version. It disclosed use of **Azure OpenAI GPT-4o** in the review. Freedom-of-information records add an important distinction: a department-hosted toolchain supported code analysis, while Deloitte also used generative-AI tools to complete and format citations. Three days after publication, the government announced Deloitte would refund the final contract installment.
 
-The second-order detail is the one that lands hardest: Rudge reviewed the revised version too. Some of the fabricated citations had been replaced, with new fabricated citations. Whatever Deloitte's fix was, it did not include the step that would have caught them. The same failure mode recurred inside the corrective response.
+The second-order detail is the one that lands hardest: Rudge reviewed the revised version too and reported that some false references had been replaced with new false references. The department then replaced that September version again on **3 February 2026** to address further identified corrections. Whatever the first fix was, the same failure shape survived inside the corrective response.
 
 The fact that the revision repeated the failure tells you the verification step still wasn't built in. What that step would have been is the sentence you bring to class.
 
 Read:
+- The department's current report page and correction history: [DEWR, Targeted Compliance Framework Assurance Review – Final Report](https://www.dewr.gov.au/assuring-integrity-targeted-compliance-framework/resources/targeted-compliance-framework-assurance-review-final-report)
+- The released correspondence describing the approved toolchain, publishing uses, review, and missed errors: [Department of Finance, FOI 25-26-084 Document 1](https://www.finance.gov.au/sites/default/files/foi-25-26-084-document-1.pdf)
 - The Guardian's account, including Rudge's findings and the refund: [Guardian, Deloitte to pay money back to Albanese government after using AI in A$440,000 report](https://www.theguardian.com/australia-news/2025/oct/06/deloitte-to-pay-money-back-to-albanese-government-after-using-ai-in-440000-report)
 - The Register's technical summary, including the GPT-4o disclosure and the "new fake refs in the revision" detail: [The Register, Deloitte to refund part of A$440k Australian report after AI snafu](https://www.theregister.com/2025/10/06/deloitte_ai_report_australia/)
 
@@ -90,12 +92,14 @@ That's it. No reading list. No ten-bullet rundown of every headline agent failur
 - Rudge's finding of "up to 20" fabricated references + fabricated judicial quote is from his own published analysis and Guardian coverage — stable.
 
 **URL verification:**
-- `[checked:2026-08-03 result:BLOCKED due:asap]` https://law.justia.com/cases/federal/district-courts/new-york/nysdce/1:2022cv01461/575368/54/ — HTTP 403 to automated fetchers; likely bot-gate, human-browser behaviour unconfirmed. Students on the pre-read will hit whatever Justia serves. fallback: CourtListener carries the full extracted text.
-- `[checked:2026-08-03 result:OK due:cohort]` https://www.courtlistener.com/docket/63107798/54/mata-v-avianca-inc/ — full text of docket 54, used for the 2026-08-03 detector re-run.
-- `[checked:2026-08-03 result:OK due:cohort]` https://www.cnbc.com/2023/06/22/judge-sanctions-lawyers-whose-ai-written-filing-contained-fake-citations.html — content verified; CNBC's own og:title has drifted from the original headline, link still resolves.
-- `[checked:never result:NEEDED due:cohort]` https://www.theguardian.com/australia-news/2025/oct/06/deloitte-to-pay-money-back-to-albanese-government-after-using-ai-in-440000-report — cited in body; open before first delivery.
-- `[checked:never result:NEEDED due:cohort]` https://www.theregister.com/2025/10/06/deloitte_ai_report_australia/ — cited in body; open before first delivery.
-- Case-law aggregators occasionally reshuffle URLs; re-verify at the pre-delivery pass.
+- `[checked:2026-08-23 result:OK due:none]` https://law.justia.com/cases/federal/district-courts/new-york/nysdce/1:2022cv01461/575368/54/ — [primary court record, historical] full sanctions opinion resolves and supports the six fabricated opinions, joint $5,000 sanction, and gatekeeping duty. fallback: CourtListener carries docket 54.
+- `[checked:2026-08-23 result:OK due:none]` https://www.courtlistener.com/docket/63107798/54/mata-v-avianca-inc/ — [primary court-record mirror, historical] full text of docket 54. fallback: Justia link above.
+- `[checked:2026-08-23 result:OK due:none]` https://www.cnbc.com/2023/06/22/judge-sanctions-lawyers-whose-ai-written-filing-contained-fake-citations.html — [contemporaneous secondary, historical] case chronology and reaction; the body follows the order where the headline's sanction rendering differs.
+- `[checked:2026-08-23 result:OK due:none]` https://www.dewr.gov.au/assuring-integrity-targeted-compliance-framework/resources/targeted-compliance-framework-assurance-review-final-report — [primary government record, historical correction trail] review dates and the 3 February 2026 replacement of the September report. fallback: use the page's downloadable final report.
+- `[checked:2026-08-23 result:OK due:none]` https://www.finance.gov.au/sites/default/files/foi-25-26-084-document-1.pdf — [primary FOI record, historical] engagement, approved Azure-hosted toolchain, publishing uses, review process, and errors missed. fallback: DEWR's related correspondence release.
+- `[checked:2026-08-23 result:OK due:none]` https://www.dewr.gov.au/download/17410/correspondence-relating-targeted-compliance-framework-assurance-review-final-report/41820/correspondence-relating-targeted-compliance-framework-assurance-review-final-report/pdf — [primary FOI record, historical] correction correspondence and the Azure OpenAI GPT-4o terminology. fallback: Department of Finance FOI record above.
+- `[checked:2026-08-23 result:OK due:none]` https://www.theguardian.com/australia-news/2025/oct/06/deloitte-to-pay-money-back-to-albanese-government-after-using-ai-in-440000-report — [contemporaneous secondary, historical] Rudge's findings and refund. fallback: primary government correction trail above.
+- `[checked:2026-08-23 result:OK due:none]` https://www.theregister.com/2025/10/06/deloitte_ai_report_australia/ — [contemporaneous secondary, historical] technical summary and Rudge's repeated-reference finding. fallback: primary government correction trail above.
 
 **Frameworks riffed on:**
 - **Citation re-verification** — the lecture's Technique 1. Mata v. Avianca is its clearest real-world case; the prework lands the student with the frame before the lecture formalises the technique.

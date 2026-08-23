@@ -3,6 +3,18 @@ key: hallucination-bakeoff-1
 dest: Claude Code
 runtime: any
 origin: exercises/hallucination-bakeoff
+requires:
+  - id: crux-md
+    source: prompt:name-your-crux-2
+  - id: m3-agent-work
+    source: prompt:three-minds-one-synthesis-1
+  - id: m3-curated-memory
+    source: prompt:three-retrievers-one-curator-5
+produces:
+  - id: m5-evidence-roster
+    location: module-5/evidence-roster.md
+  - id: m5-briefing
+    location: module-5/briefing.md
 ---
 Spawn one subagent to create the benchmark target.
 

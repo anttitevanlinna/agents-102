@@ -1,10 +1,11 @@
 # Agent-Ready Data
 
+<!-- maintainer -->
+
 How leading companies make their data and systems available to agents. A progression of approaches, each with different effort, blast radius, and payoff. Your mental model of "what we'd have to put in place" matures as the training goes: files in Module 2, tools and permissions in Module 4, team-wide access in Module 7, organisational layer in Module 8.
 
 The frame: **agents get data through five shapes, files, MCP, CLIs, headless SaaS, and semantic models.** Each shape is a real answer; the right answer depends on who the agent serves and what the data already looks like. A company that understands all five can place each of its 200 processes on the right rung. A company that only knows one (usually "build a custom integration") ships one agent a year.
 
-<!-- maintainer -->
 **Pass 1 skeleton, 2026-04-19.** Each section is a stub with framing + intended examples. Pass 2 fills in named-practitioner examples as the relevant modules get built.
 
 Module touchpoints:

@@ -3,6 +3,14 @@ key: joint-double-diamond-3
 dest: Builder Claude
 runtime: any
 origin: exercises/joint-double-diamond
+requires:
+  - id: m8-sponsor-challenge
+    source: prompt:joint-double-diamond-1
+  - id: m8-context-manifest
+    source: prompt:joint-double-diamond-2
+produces:
+  - id: m8-stance
+    location: shared-folder/<participant>/stance.md
 ---
 Read challenge.md at the shared folder root.
 

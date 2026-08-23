@@ -22,12 +22,15 @@ function fixture() {
   }
   const clean = '**Quality:** compendium-audited 2026-01-01 ()\n- judges @abc: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS\n'
   w('curriculum/trainings/t-one/getting-going.md', `# Getting going\n${clean}\n[Ex](exercises/do-a-thing.md)\n`)
+  w('curriculum/trainings/t-one/shared.md', `# Shared in one\n${clean}\n[Shared](exercises/shared-thing.md)\n`)
+  w('curriculum/trainings/t-two/shared.md', `# Shared in two\n${clean}\n[Shared](exercises/shared-thing.md)\n`)
   w('curriculum/trainings/t-one/timings.md', '# timings\n')
   w('curriculum/trainings/t-one/pre-cohort-todos.md', '# todos\n')
   w('curriculum/trainings/t-one/autumn-gaps.md', '# gaps\n\n<!-- maintainer -->\n\nNot student material.\n')
   w('curriculum/trainings/t-one/supplementary/deep-dive.md', `# Deep dive\n${clean}\n`)
   w('curriculum/trainings/t-one/reference/lookup.md', `# Lookup\n${clean}\n`)
   w('curriculum/exercises/do-a-thing.md', '# Do a thing\n')
+  w('curriculum/exercises/shared-thing.md', '# Shared thing\n')
   w('curriculum/lectures/orphan-lecture.md', '# Orphan\n')
   // A short lecture: real student body, then its maintainer fence high up the
   // file. The fence is where the maintainer block STARTS, not what the file IS.
@@ -42,12 +45,15 @@ test('buildUniverse: collects modules, supplementary, reference, shared pool', (
   const u = buildUniverse(root)
   assert.deepStrictEqual(u.sort(), [
     'curriculum/exercises/do-a-thing.md',
+    'curriculum/exercises/shared-thing.md',
     'curriculum/lectures/orphan-lecture.md',
     'curriculum/lectures/prose-lecture.md',
     'curriculum/lectures/short-lecture.md',
     'curriculum/trainings/t-one/getting-going.md',
     'curriculum/trainings/t-one/reference/lookup.md',
+    'curriculum/trainings/t-one/shared.md',
     'curriculum/trainings/t-one/supplementary/deep-dive.md',
+    'curriculum/trainings/t-two/shared.md',
   ])
 })
 
@@ -130,8 +136,31 @@ test('collect: --training filter keeps only the wanted training', () => {
     gitDiff: () => '',
     validSha: () => true,
   }
-  assert.strictEqual(collect(root, io, 't-two').items.length, 0)
-  assert.ok(collect(root, io, 't-one').items.length > 0)
+  const two = collect(root, io, 't-two').items
+  const one = collect(root, io, 't-one').items
+  assert.ok(two.length > 0)
+  assert.ok(two.every(i => i.training === 't-two'))
+  assert.ok(one.length > 0)
+  assert.ok(one.every(i => i.training === 't-one'))
+})
+
+// An explicit --training removes the ambiguity for a shared-library surface
+// linked from multiple trainings. Leaving it UNOWNED here silently drops real
+// target-training work from a supposedly complete queue.
+test('collect: explicit training owns a multiply-linked shared surface', () => {
+  const root = fixture()
+  const io = {
+    readFile: p => { try { return fs.readFileSync(path.join(root, p), 'utf8') } catch { return null } },
+    gitDiff: () => '',
+    validSha: () => true,
+  }
+  const all = collect(root, io, 'all')
+  assert.ok(all.unowned.includes('curriculum/exercises/shared-thing.md'))
+
+  const one = collect(root, io, 't-one').items.find(i => i.slug === 'shared-thing')
+  const two = collect(root, io, 't-two').items.find(i => i.slug === 'shared-thing')
+  assert.strictEqual(one.training, 't-one')
+  assert.strictEqual(two.training, 't-two')
 })
 
 // --type is what turns the queue into a dispatchable batch: a sweep is scoped

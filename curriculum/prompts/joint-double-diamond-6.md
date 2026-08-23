@@ -3,6 +3,14 @@ key: joint-double-diamond-6
 dest: central synthesizer
 runtime: any
 origin: exercises/joint-double-diamond
+requires:
+  - id: m8-selection-board
+    source: external
+  - id: m8-cross-check
+    source: prompt:joint-double-diamond-4
+produces:
+  - id: m8-midway-instructions
+    location: shared-folder-root/midway-instructions.md
 ---
 Read selection-board.md at the shared folder root and every participant cross-check.md.
 

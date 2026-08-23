@@ -3,6 +3,12 @@ key: three-retrievers-one-curator-2
 dest: Claude Code
 runtime: any
 origin: exercises/three-retrievers-one-curator
+requires:
+  - id: crux-md
+    source: prompt:name-your-crux-2
+produces:
+  - id: m3-docs-retrieval
+    location: sources/docs-retrieval.md
 ---
 You are the docs retriever for my challenge. Your job: find the relevant recent documents and email threads for ./crux.md (the crux you named in the opening, plus the ## Question section).
 

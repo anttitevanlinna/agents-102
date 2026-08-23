@@ -4,6 +4,9 @@ dest: buyer/sponsor agent
 context: run once at the start
 runtime: any
 origin: exercises/joint-double-diamond
+produces:
+  - id: m8-sponsor-challenge
+    location: shared-folder-root/challenge.md
 ---
 Use the shared folder the trainer posted in chat. Write challenge.md at the shared folder root.
 

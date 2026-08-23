@@ -8,7 +8,7 @@ requires:
     source: prompt:personal-agent-homework-1
 produces:
   - id: morning-agent-brief
-    path: module-2/morning-agent/morning.md
+    location: module-2/morning-agent/morning.md
 ---
 I'm setting up a daily agent that reads my challenge memory every morning and reports back as a stylised HTML page. Ask me, one at a time:
 

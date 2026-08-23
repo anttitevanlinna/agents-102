@@ -3,6 +3,13 @@ key: name-your-challenge-2
 dest: Claude Code
 runtime: any
 origin: exercises/name-your-challenge
+requires:
+  - id: challenge-md
+    source: prompt:name-your-challenge-1
+produces:
+  - id: curation-seed
+    location: scrollback
+    note: source scavenger-hunt list for the memory curation plan
 ---
 Based on the challenge brief you just wrote, suggest where I'd go looking for raw material. Specifically:
 

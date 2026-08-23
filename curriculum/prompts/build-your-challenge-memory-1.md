@@ -3,6 +3,15 @@ key: build-your-challenge-memory-1
 dest: Claude Code
 runtime: any
 origin: exercises/build-your-challenge-memory
+requires:
+  - id: challenge-md
+    source: prompt:name-your-challenge-1
+  - id: curation-seed
+    source: prompt:name-your-challenge-2
+produces:
+  - id: curation-plan
+    location: scrollback
+    note: agreed source plan used by the next prompt
 ---
 I'm building a knowledge memory for one specific challenge I'm working on. Do this in three beats:
 

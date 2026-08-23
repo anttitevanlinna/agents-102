@@ -3,6 +3,18 @@ key: eval-loop-1
 dest: Claude Code
 runtime: any
 origin: exercises/eval-loop
+requires:
+  - id: crux-md
+    source: prompt:name-your-crux-2
+  - id: m3-curated-memory
+    source: prompt:three-retrievers-one-curator-5
+  - id: groundedness-judge
+    source: prompt:hallucination-bakeoff-8
+produces:
+  - id: generation-tactic
+    location: ./generation-tactic.md
+  - id: m6-calibration-briefing
+    location: module-6/fresh-briefing.md
 ---
 Three things, in sequence:
 

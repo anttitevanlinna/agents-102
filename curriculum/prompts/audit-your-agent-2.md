@@ -3,6 +3,12 @@ key: audit-your-agent-2
 dest: Claude Code
 runtime: any
 origin: exercises/audit-your-agent
+requires:
+  - id: installed-security-skill
+    source: prompt:author-security-skill-4
+produces:
+  - id: security-report
+    location: outputs/security-report.md
 ---
 Apply the agent-security lens to every agent in agents/. Run both checks: what each agent can reach, and the named risk patterns the lens carries.
 

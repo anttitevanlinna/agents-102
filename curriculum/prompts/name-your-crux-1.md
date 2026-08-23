@@ -3,6 +3,12 @@ key: name-your-crux-1
 dest: Claude Code
 runtime: any
 origin: exercises/name-your-crux
+requires:
+  - id: challenge-memory
+    source: prompt:build-your-challenge-memory-7
+produces:
+  - id: crux-md
+    location: ./crux.md
 ---
 Look at my challenge memory. Find the load-bearing obstacle: the one thing that, if solved, unlocks the others. Richard Rumelt calls this the "crux."
 

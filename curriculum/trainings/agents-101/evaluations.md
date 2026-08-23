@@ -38,13 +38,6 @@ The question shifts at Module 6. What if the work kept getting sharper, not beca
 
 [Closing: The new human role in the loop](lectures/new-human-role-in-the-loop.md)
 
-## Key Concepts
-- **Eval as infrastructure.** The judge moves from object to live machinery. It's not inspected, it's watched.
-- **Role separation.** Generation and judging happen in separate agents. The generator does not grade itself.
-- **Walk-away autonomy.** The system runs; you come back to the notes.
-- **The work gets sharper because the judge stays still.** The main session reads what the judge flagged each round and rewrites `./generation-tactic.md`. The judge doesn't move. That's why round 3's score has anything to say about round 1's. A yardstick you rewrite is not a yardstick.
-- **Loop ownership.** One session owns the loop: dispatch generator, dispatch judge, update tactic, repeat. The fan-out shape, now running a quality discipline instead of a content discipline.
-
 ## Debrief
 
 Five minutes. Claude reviews the eval loop's run and sharpens the generator's tactic file one more time. The evidence is the round-by-round trail: what changed in the tactic, what the judge kept catching, what the tactic never absorbed. Claude reviews, rewrites the tactic in place, reports what changed. The judge file stays untouched. That's the integrity of the loop. You push back on anything that's off.
@@ -59,6 +52,13 @@ Ask Claude to read the round trail and sharpen the generator's tactic beyond wha
 Read Claude's summary. Push back where it's wrong. *"That rule is too vague, make it observable"* / *"you added a rule the tactic already had after round 2."* The artifact: the sharpened `./generation-tactic.md` plus one line added to the Module 6 eval-notes file naming the first always-on eval you'll run when work resumes. This is the module's thesis made literal. The work got sharper across rounds because the same judge kept catching the same kinds of misses and the tactic kept absorbing them.
 
 This is Claude auditing a tactic it helped sharpen. That is acceptable here because the round files and judge notes are the evidence. If the summary sounds too kind, ask the sharper follow-up: *"Which rule did you claim to remove but actually kept under another name? Quote both lines."*
+
+## Key Concepts
+- **Eval as infrastructure.** The judge moves from object to live machinery. It's not inspected, it's watched.
+- **Role separation.** Generation and judging happen in separate agents. The generator does not grade itself.
+- **Walk-away autonomy.** The system runs; you come back to the notes.
+- **The work gets sharper because the judge stays still.** The main session reads what the judge flagged each round and rewrites `./generation-tactic.md`. The judge doesn't move. That's why round 3's score has anything to say about round 1's. A yardstick you rewrite is not a yardstick.
+- **Loop ownership.** One session owns the loop: dispatch generator, dispatch judge, update tactic, repeat. The fan-out shape, now running a quality discipline instead of a content discipline.
 
 ## Bring to Module 7
 
@@ -77,6 +77,10 @@ You just built an eval that improves itself. The system can now keep pressure on
 
 **Quality:** compendium-audited 2026-06-06 (writing@ade2ec9)
 - judges @ade2ec9: writing PASS, story PASS, technical PASS, behavior PASS (see instances/evaluations.*.json), pedagogy grandfathered, strategy grandfathered
+
+**Mood target:** Unleashed leverage — the student sees the loop improve work while the human owns the yardstick and boundary.
+
+**Push-back moves / Watch-fors / Decision points:** [M6 run sheet](trainer-modules.md#m6-glance) owns the live cues, recovery paths, protected beats, and cut order.
 
 **Meta (trainer):**
 - **Transitions:** connections 5 @start "Connections" · debrief 5 @end "Debrief" · bridge 3 @end "Bridge"
@@ -107,10 +111,8 @@ You just built an eval that improves itself. The system can now keep pressure on
 
 **Strategic close:** Keep the grounded eval loop snappy as the main event. `new-human-role-in-the-loop.md` adds steering eval as a closing prompt: Claude asks questions, offers example dimensions to choose from, keeps asking until the dimension is judgeable, then saves `./goal-nudger-eval.md`. The distinction is floor/ceiling: grounded/fidelity evals keep work attached to evidence, brief, or policy; steering/excellence evals create positive pressure to overperform on a chosen dimension.
 
-**Capability checks owed (before first delivery):** see `exercises/eval-loop.md` maintainer section: generation/judging agent separation, file-write reliability, judge immutability, and tactic rewrite reliability.
-
-**Source-verification owed (pre-first-cohort):**
-- Ethan Mollick, *The Bitter Lesson versus The Garbage Can* — https://www.oneusefulthing.org/p/the-bitter-lesson-versus-the-garbage [practitioner direct]. Re-verify URL at delivery; if the post is no longer public, reframe the opener as Mollick's practitioner question about bitter-lesson scaling vs. organisational mess and cite the replacement source.
-- LLM-as-judge canonical reference (Zheng et al., MT-Bench 2023) — maintainer-only cite for facilitator prep if asked in-room where the term comes from.
+**Sources:**
+- `[checked:2026-08-23 result:OK due:cohort]` https://www.oneusefulthing.org/p/the-bitter-lesson-versus-the-garbage — [practitioner direct] Mollick's framing of bitter-lesson scaling against the organisational "garbage can" problem used in the opener. fallback: retain the question and remove the named attribution.
+- `[checked:2026-08-23 result:OK due:none]` https://arxiv.org/abs/2306.05685 — [primary research, historical concept] Zheng et al.'s MT-Bench paper as the maintainer-only origin reference for LLM-as-judge. fallback: keep the plain "judge agent" term without the research attribution.
 
 **Dependency on M5:** hard. `judges/groundedness-judge.md` must exist on disk as the benchmark winner before this module runs. M5's facilitator closing must name the handoff: *"That judge you just picked — tomorrow it becomes infrastructure."*

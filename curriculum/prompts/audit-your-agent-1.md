@@ -3,6 +3,14 @@ key: audit-your-agent-1
 dest: Claude Code
 runtime: any
 origin: exercises/audit-your-agent
+requires:
+  - id: installed-security-skill
+    source: prompt:author-security-skill-4
+  - id: policy-report-raw
+    source: prompt:author-security-skill-1
+produces:
+  - id: policy-report
+    location: outputs/policy-report.md
 ---
 /security-audit — load the skill
 

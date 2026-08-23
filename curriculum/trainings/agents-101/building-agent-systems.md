@@ -40,11 +40,6 @@ Keep the same <span class="rt-code">session</span><span class="rt-cowork">task</
 
 [Lecture: Compounding](lectures/compounding.md)
 
-## Key Concepts
-- **Three layers**: raw sources (the originals, untouched) → the memory (maintained by the agent, sharpens over time) → the rules file (`CLAUDE.md`) that keeps the shape consistent
-- **Plain text beats databases here** because language models are strongest at reading and writing text. No setup, no extra tools.
-- **Persistence + automation = system.** Neither alone is enough.
-
 ## Debrief
 
 Five minutes. A retro, **and the first `./CLAUDE.md` at this directory.** Module 2 opened on an empty training-dir root: no rules file. The memory flow ran end to end (curate → ingest → build → update → maintain), and the rules that actually matter for YOUR agent are now visible, visible in what worked, what rubbed, what got repeated. Claude writes the rules file from the session. You push back on anything off.
@@ -63,6 +58,11 @@ What Claude leaves out is often the signal. A clean summary that names three rul
 > Your agent is "right" when it works. Every miss is context you haven't written yet. Sharpen the memory, tighten a rule, rewrite the prompt. You won't spot the next mistakes by re-reading the files you already have. You spot them by running the system and watching where it bends.
 
 Watching where it bends is continuous improvement, done by hand. Every miss turns into a line of context that stops the next miss. Later in the training you'll learn the move that bends the curve: the agent spots its own misses and proposes its own fixes. You stop being the only pair of eyes.
+
+## Key Concepts
+- **Three layers**: raw sources (the originals, untouched) → the memory (maintained by the agent, sharpens over time) → the rules file (`CLAUDE.md`) that keeps the shape consistent
+- **Plain text beats databases here** because language models are strongest at reading and writing text. No setup, no extra tools.
+- **Persistence + automation = system.** Neither alone is enough.
 
 ## Bring to Module 3
 
@@ -86,11 +86,16 @@ Before the next module, try making a few more agents you actually need. Pick by 
 **Quality:** compendium-audited 2026-05-02 (behavior@9ddfac3)
 - judges @9ddfac3: writing grandfathered, story grandfathered, technical grandfathered, behavior PASS
 
+**Mood target:** Satisfied compounding — the student sees a living system around the challenge, not a folder-setup exercise.
+
+**Push-back moves / Watch-fors / Decision points:** [M2 run sheet](trainer-modules.md#m2-glance) owns the live cues, recovery paths, protected beats, and cut order.
+
 **Opening connector demo (trainer, 5 min):** Place after the opening questions and before `Name your next big challenge`. Use non-sensitive trainer material. Ask Claude to answer one small work question by checking two connected systems and the open web: for example, a wiki page, a recent document or meeting note, and one outside source. The point is not the answer. The point is the moment where Claude combines clues that normally live in separate places.
 
 **Meta (trainer):**
 - **Transitions:** connector demo 5 @start "Opening connector demo" · debrief 5 @end "Debrief" · bridge 3 @end "Bridge"
 - **Where these numbers come from:** connector demo from this block's own "(trainer, 5 min)"; debrief from the body ("Five minutes."). Every beat here has no file of its own, so nothing else prices it.
+- **Charge:** personal-agent-homework 0 — the 35-minute setup is completed between sittings so Module 3 opens on a week of observation.
 - **Charge:** module-3-prework 0 — same: inlined for findability, read between sittings.
 - **Primary Bloom's level:** Apply → Analyze
 - **Prework time:** 30-35 minutes. Challenge choice 5, connector check 5, plan-mode or plan-first primer 15, Karpathy 5-10.

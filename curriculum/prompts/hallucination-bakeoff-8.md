@@ -3,6 +3,9 @@ key: hallucination-bakeoff-8
 dest: Claude Code
 runtime: any
 origin: exercises/hallucination-bakeoff
+requires:
+  - id: m5-scoreboard
+    source: prompt:hallucination-bakeoff-5
 produces:
   - id: m5-evidence-artifacts
     location: module-5/briefing.md, module-5/claim-pool.md, module-5/scoreboard.md

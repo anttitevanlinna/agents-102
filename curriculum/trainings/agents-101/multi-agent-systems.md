@@ -9,11 +9,11 @@ Hire three agents to search. Three more to decide. The filesystem is the meeting
 
 ## What You'll Learn
 After this module, you will be able to:
-- **Design** a multi-agent setup in two shapes: parallel sessions on shared files (retrieval) and subagents inside one session (synthesis)
+- **Design** a multi-agent setup in two shapes: independent tasks on shared files (retrieval) and forked helper agents returning to one lead task (synthesis)
 - **Build** three retrieval agents, each speaking its own source's dialect, and a synthesizer that coordinates three <span class="rt-code">subagent</span><span class="rt-cowork">agent</span> personas
 - **Analyze** handoff failure modes (where conflicts get papered over, dialects clash, the synthesizer averages to beige)
 - **Create** a framework-guided answer to a real strategic question about your own challenge
-- **Evaluate** when splitting earns its keep, when separate sessions beat subagents, and when one good agent with a good prompt wins
+- **Evaluate** when splitting earns its keep, when independent tasks beat forked helpers, and when one good agent with a good prompt wins
 
 ## Start here
 
@@ -35,13 +35,6 @@ First, a small boundary shift. We work mostly with text in this training: prompt
 
 [Lecture: Debugging stuck agents](lectures/debugging-stuck-agents.md)
 
-## Key Concepts
-- **Two multi-agent shapes in Claude Code.** Separate sessions on shared files (long-running, independent, visible). <span class="rt-code">Subagents</span><span class="rt-cowork">Agents</span> inside one session (quick parallel thinking, bounded return). Different shapes, different territories.
-- **Splitting earns its keep when the agents genuinely can't be one.** Different source access, different dialect, different stance. Faking multi-agent with one prompt is the tell that you didn't need to split.
-- **Seams are where it fails.** Conflicts get dropped, dialects clash, the synthesizer averages everything into beige. Where the pieces meet is what to watch.
-- **Three stances beat one summarizer.** Three <span class="rt-code">subagents</span><span class="rt-cowork">agents</span> (a backward-from-end planner, a *what-would-have-to-be-true* experimenter, and a counterintuitive reframer, the Rory seat) each interrogate the retrieved material from a different angle, harder to do well in one head, in one pass. A fourth <span class="rt-code">subagent</span><span class="rt-cowork">agent</span>, the synthesizer, combines them.
-- **Frameworks are the synthesizer's spine.** Without one, it tends to summarise. With a framework (a strategy kernel by default), it picks.
-
 ## Debrief
 
 Five minutes. Claude reviews the session and sharpens the rules that govern how your agents divide the work. The evidence is the four agent prompts, the retrieval files, the synthesizer's briefing, and the conversation. Claude reviews them, rewrites the training-dir root rules file (`./CLAUDE.md`) in place, reports what changed. You push back on anything that's off.
@@ -54,6 +47,13 @@ Notice what this prompt insists on: harsh audit, two seams minimum, specific evi
 ## Push back on the summary
 
 Read Claude's summary. Push back where it's wrong. *"No, the planner and the reframer really did need to be separate."* *"You missed where the Confluence retriever kept normalising before writing."* The unease you feel about the synthesized briefing is not something to close today. It stays. Hold it as a question, not a fix.
+
+## Key Concepts
+- **Two multi-agent shapes.** Independent tasks on shared files (long-running, separate, visible). Forked <span class="rt-code">subagents</span><span class="rt-cowork">agents</span> returning to one lead task (quick parallel thinking, bounded return). Different shapes, different territories.
+- **Splitting earns its keep when the agents genuinely can't be one.** Different source access, different dialect, different stance. Faking multi-agent with one prompt is the tell that you didn't need to split.
+- **Seams are where it fails.** Conflicts get dropped, dialects clash, the synthesizer averages everything into beige. Where the pieces meet is what to watch.
+- **Three stances beat one summarizer.** Three <span class="rt-code">subagents</span><span class="rt-cowork">agents</span> (a backward-from-end planner, a *what-would-have-to-be-true* experimenter, and a counterintuitive reframer, the Rory seat) each interrogate the retrieved material from a different angle, harder to do well in one head, in one pass. A fourth <span class="rt-code">subagent</span><span class="rt-cowork">agent</span>, the synthesizer, combines them.
+- **Frameworks are the synthesizer's spine.** Without one, it tends to summarise. With a framework (a strategy kernel by default), it picks.
 
 ## Bring to Module 4
 
@@ -79,13 +79,14 @@ Between now and Module 4, keep working on your real problem. You're close to an 
 **Quality:** compendium-audited 2026-05-03
 - judges: not yet judge-audited
 
-**TODO (Cowork edition review 2026-04-29):**
-- Learning goals and Key Concepts still leak Code-only terminology in Cowork rendering: "subagents inside one session", "when separate sessions beat subagents", and "Two multi-agent shapes in Claude Code." Runtime-fork or neutralize those lines so Cowork students see agents/tasks language while preserving the same learning goals.
+**Mood target:** Unsettled competence — the synthesis is useful, but the student leaves asking whether it is right.
 
-**Module time (trainer):** ≈ 75 min total. Crux opener (with question) ~8 min, *Three retrievers, one curator* ~28 min, *Three minds, one synthesis* ~22 min (incl. Close), *When to split* lecture 8–10 min, *Debugging stuck agents* callout ~4 min, Debrief ~5 min. Each exercise's own time label is exercise-only; schedule the whole module against the sum.
+**Push-back moves / Watch-fors / Decision points:** [M3 run sheet](trainer-modules.md#m3-glance) owns the live cues, recovery paths, protected beats, and cut order.
+
+**Timing:** `timings.md` is the canonical generated budget. Do not maintain a second total in this module.
 
 - **Transitions:** crux opener 8 @start "Crux opener + the question" · debrief 5 @end "Debrief" · bridge 3 @end "Bridge"
-- **Where these numbers come from:** crux opener and debrief both from the **Module time (trainer):** line above. Every beat here has no file of its own, so nothing else prices it.
+- **Where these numbers come from:** crux opener is the authored room estimate; debrief comes from the body ("Five minutes."). Every beat here has no file of its own, so nothing else prices it.
 - **Charge:** module-4-prework 0 — same: inlined for findability, read between sittings.
 
 **Artefact contracts**
@@ -114,10 +115,3 @@ Between now and Module 4, keep working on your real problem. You're close to an 
 - Roger Martin's *what-would-have-to-be-true* assumption test (the experimenter stance) — also threaded through the curriculum's throughlines (see lecture-guardrails → Strategy as assumptions)
 - Rory Sutherland's behavioural-economics counterintuitive reframe (the reframer stance) — named explicitly; the Rory seat
 - One-agent-per-recurring-workflow (Bosser stance) — many agents across workflows, usually one within. M3 deliberately puts the student inside the rare within-workflow case where access + dialect + stance force splitting; the lecture closes with the across-workflow rule
-
-**Watch-fors (deferred to facilitator notes pass):**
-- Phase 1: starting 3+1 Claude Code sessions on the same directory is the single highest-friction step — pre-flight check with the room before turning them loose; name which session is which
-- Retrievers return non-comparable outputs by design; student may try to "normalise" them — that's exactly what the synthesizer is for
-- Synthesizer left un-prompted will average to beige; prompt must force "show me where these disagree" before the summary
-- Phase 2: subagent invocation is new for most participants; demo once, then let them drive
-- Rory seat is a live moral hazard — easy for the student to write a "be witty" prompt that produces dad jokes. Coach toward Sutherland's actual move: *reframe the problem, question the obvious take, steal an analogy from an unrelated field.* Wit is a byproduct, not the instruction.

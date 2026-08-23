@@ -3,9 +3,18 @@ key: share-your-work-6
 dest: Builder Claude
 runtime: any
 origin: exercises/share-your-work
+requires:
+  - id: m7-jtbd
+    source: prompt:share-your-work-1
+  - id: m7-technical-plan
+    source: prompt:share-your-work-4
+  - id: m7-people-plan
+    source: prompt:share-your-work-4
+  - id: m7-assumptions
+    source: prompt:share-your-work-5
 produces:
   - id: m7-artifacts
-    location: module-7/jtbd.md, module-7/people-plan.md, module-7/assumptions.md, module-7/failure-stories.md
+    location: module-7/jtbd.md, module-7/branch.md, module-7/absorption-bottleneck.md, module-7/technical-plan.md, module-7/people-plan.md, module-7/assumptions.md, module-7/failure-stories.md
 ---
 It is six months from now. My teammate
 kept using their current hire. My candidate sat unused, or they tried it twice

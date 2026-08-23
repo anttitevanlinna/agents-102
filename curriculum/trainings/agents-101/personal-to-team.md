@@ -5,7 +5,7 @@ You can't really share an agent. You can share context, a skill, the output, or 
 
 ## Prework
 
-Absorption bottleneck pre-read: your organisation cannot absorb capability faster than people can understand it, trust it, and fit it into existing work. Walk in with one example where access existed but real use did not follow.
+No reading packet. Walk in with one example where people had access to a tool or process but real use did not follow. That example is the only required preparation for this module.
 
 ## What You'll Learn
 After this module, you will be able to:
@@ -41,15 +41,6 @@ One observation to keep in your back pocket while you run the exercise: **access
 
 [Exercise: Share your work](exercises/share-your-work.md)
 
-## Key Concepts
-
-- **Interview for the outcome before designing the solution.** The teammate's job comes first, your candidate second. The agent does the heavy lifting: your memory already carries most of that job, so it reads what's on disk, drafts a Jobs-to-be-Done hypothesis, then asks a bounded set of questions. Not freeform chat.
-- **The outcome statement is the design contract.** *"Minimize/increase [metric] when [doing the job]."* A candidate that doesn't move the metric isn't a candidate.
-- **The third outcome vector is where the interview earns its keep.** Dependency removed, anxiety reduced, scope expanded, workload shifted. Speed and quality alone means it went shallow.
-- **Access is easy; absorption is the scarce thing.** The technical plan fills quickly; the people plan stalls on names.
-- **The four sharing shapes are a design language, not a menu.** Context / skill / output (push) / interface (pull). "Share the whole agent" is not on the list. Pick one to three, stack where useful.
-- **The people plan weighs equal to the technical plan, and firing the incumbent is the test.** Every job already has a current hire: Excel, a colleague, gut feel. Not *"will they adopt my agent?"* but *"what would have to be true for them to fire what they use now?"*
-
 ## Debrief
 
 Five minutes. Claude reviews the sharing deliverable and sharpens whichever sharing-artifact file you produced (a skill file, an interface description, an output schedule, a context export). The evidence is what's in your Module 7 folder: your JTBD outcome statement, the patterns you picked, the technical plan, the people plan, assumptions, and failure stories. Claude reviews, rewrites the sharing artifact in place, reports what changed. You push back on anything that's off.
@@ -64,6 +55,15 @@ Notice what this prompt insists on: name the path, overwrite in place, quote the
 
 Read Claude's summary. Push back where it's wrong. *"The teammate's job wasn't vague, you just didn't see it"* / *"you pulled too much out of the skill, put the edge cases back."* The artifact: the sharpened sharing file itself, plus one line in your Module 7 next-step file naming the first move. Save the conversation. It's the bridge to when work resumes.
 
+## Key Concepts
+
+- **Interview for the outcome before designing the solution.** The teammate's job comes first, your candidate second. The agent does the heavy lifting: your memory already carries most of that job, so it reads what's on disk, drafts a Jobs-to-be-Done hypothesis, then asks a bounded set of questions. Not freeform chat.
+- **The outcome statement is the design contract.** *"Minimize/increase [metric] when [doing the job]."* A candidate that doesn't move the metric isn't a candidate.
+- **The third outcome vector is where the interview earns its keep.** Dependency removed, anxiety reduced, scope expanded, workload shifted. Speed and quality alone means it went shallow.
+- **Access is easy; absorption is the scarce thing.** The technical plan fills quickly; the people plan stalls on names.
+- **The four sharing shapes are a design language, not a menu.** Context / skill / output (push) / interface (pull). "Share the whole agent" is not on the list. Pick one to three, stack where useful.
+- **The people plan weighs equal to the technical plan, and firing the incumbent is the test.** Every job already has a current hire: Excel, a colleague, gut feel. Not *"will they adopt my agent?"* but *"what would have to be true for them to fire what they use now?"*
+
 ## Bring to Module 8
 
 **Run the next-step artifact.** Test one assumption. Ask for one name. Talk to one person. Module 8 works from what happened when the sharing plan touched the real organisation, so it needs a plan that has touched one.
@@ -77,13 +77,16 @@ The sharing plan leaves the room and meets the organisation. What comes back fro
 **Quality:** compendium-audited 2026-05-02 (writing@9ddfac3)
 - judges @9ddfac3: writing PASS, story grandfathered, technical grandfathered, behavior grandfathered
 
+**Mood target:** Generous impulse — the student starts from one teammate's job, not an abstract rollout obligation.
+
+**Push-back moves / Watch-fors / Decision points:** [M7 run sheet](trainer-modules.md#m7-glance) owns the live cues, recovery paths, protected beats, and cut order.
+
 **Meta (trainer):**
 - **Transitions:** framing 12 @start "Framing: interview for the job, four sharing shapes" · debrief 5 @end "Debrief" · bridge 3 @end "Bridge"
 - **Where these numbers come from:** framing from this block's own **Framing time:** line, taken at its ceiling; debrief from the body ("Five minutes."). Every beat here has no file of its own, so nothing else prices it.
 - **Primary Bloom's level:** Analyze → Evaluate
 - **Framing time:** 10–12 minutes. No separate lecture file; the framing runs straight into the exercise.
-- **Source-verification debt — Access-Trust Gap stat.** Earlier drafts carried *"54–95% access, 5–22% production trust, gap always wider than 35 points."* The number range circulates across consultancy reports and analyst posts, but the original methodology, sample size, and definition of "production trust" couldn't be traced inside the 6-month freshness window per `check_research_claims.md` § zombie-stat rule. `[UNVERIFIED STAT]` — current draft is qualitative ("wide gap, in our work"). If a verified primary source surfaces (sample size, methodology, recency under 6 months), restore the number with inline citation; otherwise keep qualitative.
-- **Materials (trainer):** Pattern catalog ships in the Agents 101 starter at `patterns/personal-to-team-patterns.md` — student's Builder Claude reads it directly from the training directory. Branch-selection framing ready. Absorption bottleneck framing in the module. **No pre-shipped strategy skills** (M4 is the canonical personal-skill authoring module). The three thinking-disciplines — Rumelt on *crux*, Roger Martin on *what would have to be true?*, Klein and Kahneman on *pre-mortem* — are used as exercise mechanics but mostly kept out of student-facing exposition.
+- **Materials (trainer):** Pattern catalog ships in the Agents 101 starter at `patterns/personal-to-team-patterns.md` — student's Builder Claude reads it directly from the training directory. Branch-selection framing ready. The student's one access-without-use example is the complete prework load; there is no three-walls or strategy reading packet. **No pre-shipped strategy skills** (M4 is the canonical personal-skill authoring module). Rumelt on *crux*, Roger Martin on *what would have to be true?*, and Klein and Kahneman on *pre-mortem* remain facilitator/background lineage for exercise mechanics, not required student reading.
 - **Plug points:** Participant's organization (who would own this?); buyer infrastructure reality (cloud agent platform vs. personal Claudes only).
 
 **Artefact contracts**

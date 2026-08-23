@@ -3,6 +3,13 @@ key: personal-site-with-guardrails-4
 dest: Claude Code
 runtime: any
 origin: exercises/personal-site-with-guardrails
+requires:
+  - id: m1-site
+    source: prompt:personal-site-with-guardrails-3
+produces:
+  - id: m1-site
+    location: module-1/site.html
+    note: anti-branding and presentation revision in place
 ---
 Hey Claude — apply anti-branding (Adam Grant's energy audit version) to my personal site. I'll paste a list of things I hate about work right after this. For each:
 1. Take the hate.

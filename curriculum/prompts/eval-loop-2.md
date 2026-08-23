@@ -3,6 +3,15 @@ key: eval-loop-2
 dest: Claude Code
 runtime: any
 origin: exercises/eval-loop
+requires:
+  - id: generation-tactic
+    source: prompt:eval-loop-1
+  - id: groundedness-judge
+    source: prompt:hallucination-bakeoff-8
+  - id: crux-md
+    source: prompt:name-your-crux-2
+  - id: m3-curated-memory
+    source: prompt:three-retrievers-one-curator-5
 produces:
   - id: m6-run-artifacts
     location: module-6/eval-notes.md, module-6/runs/round-1/

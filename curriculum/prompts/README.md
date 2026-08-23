@@ -61,7 +61,7 @@ Then list the top-level entries so I can see the layout.
 | `anchors` | no | list of `{move, span}` | reserved for future prompt-anatomy highlights; passed through to `prompts.json` but not rendered today. `move` is a move-catalog id, `span` is the verbatim quoted clause (see `curriculum/trainings/agentic-engineering-101/reference/prompt-anatomy.md`) |
 | `note` | no | string | informal carve-out / context; readable inline alongside the structured fields |
 
-**Linter:** every `requires.id` with `source: prompt:<key>` must resolve to a real producer; every `consumed-by` reference must match a downstream `requires.id`. Run with `python3` over the corpus; see `/Users/anttitevanlinna/Projects/agents-102` for the inline check script (no dedicated binary yet).
+**Linters:** `node scripts/lint-prompts.js` checks registry/reference integrity. `node scripts/validate-prompt-graph.js --training <training-key>` checks producer/consumer ordering and source matches for one training. `node scripts/lint-prompt-bodies.js --training <training-key>` checks the rendered prompt bodies.
 
 **Gate behaviour:** edits to dependency-graph fields (between the leading `---` markers) are NOT card-gated per `check_prompts.md` rule 22; frontmatter is metadata, the prompt body is the student-pasted content. See `.claude/hooks/prompt-edit-gate.sh` for the region-aware enforcement.
 

@@ -3,6 +3,9 @@ key: personal-site-with-guardrails-6
 dest: Claude Code
 runtime: any
 origin: exercises/personal-site-with-guardrails
+requires:
+  - id: m1-site
+    source: prompt:personal-site-with-guardrails-4
 produces:
   - id: m1-brand-rules
     location: module-1/personal-brand-generation.md

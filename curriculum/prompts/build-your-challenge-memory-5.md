@@ -3,6 +3,12 @@ key: build-your-challenge-memory-5
 dest: Claude Code
 runtime: any
 origin: exercises/build-your-challenge-memory
+requires:
+  - id: challenge-memory
+    source: prompt:build-your-challenge-memory-3
+produces:
+  - id: challenge-agent
+    location: agents/<job-slug>.md
 ---
 Help me create my first custom agent as a markdown file in agents/. Ask me these one at a time. Wait for my answer before asking the next. Do not show me the question list.
 

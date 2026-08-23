@@ -6,6 +6,8 @@ origin: agents-101/multi-agent-systems
 requires:
   - id: m3-agent-work
     source: prompt:three-minds-one-synthesis-1
+  - id: m3-curated-memory
+    source: prompt:three-retrievers-one-curator-5
 produces:
   - id: memory-health-plan
     location: scrollback (shown before files change)

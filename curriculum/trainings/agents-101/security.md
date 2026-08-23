@@ -30,13 +30,6 @@ You've had three agents search your company and three more decide. What doesn't 
 
 [Exercise: Audit your agent](exercises/audit-your-agent.md)
 
-## Key Concepts
-- **Certainty is a fantasy; the discipline is the answer.** Agents add non-determinism, unbounded inputs, and emergent tool use on top of security work. You never get a proof, you get a loop, and what remains after it you name and accept on record.
-- **Policy files first, reusable expertise second, two lenses in one check you authored.** The files in `module-4/policies/` are source material: run them raw once, then package the useful check as a personal skill, which is how an agent borrows expertise. One lens carries what your company decided is off-limits, the other named risk patterns and an access review. You did not have to become a security specialist; you had to know what mattered and dictate it.
-- **Prompt injection is a class, not a footnote.** Direct injection arrives in the user's input, indirect in a source the agent retrieves. Both turn well-formed English into the attack surface, which classical perimeter misses.
-- **"I can't tell" is a real answer.** Most rows land here: not failures, the plain state of a non-deterministic system. Closing one takes evidence.
-- **Mitigations are layered, not replacements.** Scope, split, filter, gate, review sit on top of network controls, access management, logging. Concluding that the agent check replaces security ships a breach.
-
 ## Debrief
 
 Five minutes. Claude reviews the audit session and compounds one to five rules into the root `CLAUDE.md` for future sessions. The evidence is what the audit produced: the raw policy report, the packaged policy report, the security report with its residual decision, the "I can't tell" rows, and the mitigation you applied. Claude updates `CLAUDE.md` and reports what changed. You push back on anything that's off.
@@ -53,13 +46,22 @@ A skill is close to the *how* of doing something. You can think of it as a proce
 
 That is why skills travel. A good skill is not tied to one chat, one project, or one agent. It packages the repeatable method so you can apply it across projects and agents, then sharpen it when reality shows where the method was thin.
 
+It is also the simplest sharing move you have built so far. Give a teammate the skill, install it in their runtime, and they can call the same method without reconstructing your prompt history. That does not make it a deployed service or solve ownership. Module 7 compares this skill-shaped handoff with three other sharing shapes: shared context, shared output, and an interface.
+
+## Key Concepts
+- **Certainty is a fantasy; the discipline is the answer.** Agents add non-determinism, unbounded inputs, and emergent tool use on top of security work. You never get a proof, you get a loop, and what remains after it you name and accept on record.
+- **Policy files first, reusable expertise second, two lenses in one check you authored.** The files in `module-4/policies/` are source material: run them raw once, then package the useful check as a personal skill, which is how an agent borrows expertise. One lens carries what your company decided is off-limits, the other named risk patterns and an access review. You did not have to become a security specialist; you had to know what mattered and dictate it.
+- **Prompt injection is a class, not a footnote.** Direct injection arrives in the user's input, indirect in a source the agent retrieves. Both turn well-formed English into the attack surface, which classical perimeter misses.
+- **"I can't tell" is a real answer.** Most rows land here: not failures, the plain state of a non-deterministic system. Closing one takes evidence.
+- **Mitigations are layered, not replacements.** Scope, split, filter, gate, review sit on top of network controls, access management, logging. Concluding that the agent check replaces security ships a breach.
+
 ## Bring to Module 5
 
 **One sentence per case: "the missing organisational check was X."** Both cases are named in the pre-reads that follow. Module 5 opens on what a check would have caught, and the sentence is what you check it against.
 
 ## Pre-reads before Module 5
 
-Agent-sprawl reading: shadow agents, and the 82%-think-protected / 24%-have-visibility pattern. Then Mata v. Avianca (S.D.N.Y. 2023) and the Deloitte Australia / DEWR welfare-compliance report (2025), both in the lecture that follows.
+Read Mata v. Avianca (S.D.N.Y. 2023) and the Deloitte Australia / DEWR welfare-compliance report (2025), both in the lecture that follows. Carry the risk discipline from this module into both cases: what check was missing around the agent's output?
 
 [The Missing Check](lectures/module-5-prework.md)
 
@@ -73,15 +75,13 @@ Remember also: agent actions start as text. A tool call, an email draft, a CRM u
 **Quality:** compendium-audited 2026-05-03
 - judges: not yet judge-audited
 
-**Cohort-facilitator audit (2026-04-25, fixes applied 2026-04-26):**
-- **Time math owed re-verification.** The first exercise now includes a raw policy run before packaging and the Cowork personal-skill creation step; the second exercise now carries load/apply/mitigate. Current rough budget: lecture 8 + run/package 40 + audit 35 + Connections 5 + Debrief 5 + transitions ~= 98-103 min. Fits 1h45 with tight transitions; needs facilitator pass.
-- 90-min facilitator dry-run before first cohort. Specifically: Exercise 1 Cowork personal-skill creation moment, Exercise 2 load moment with one Cowork colleague + one CLI colleague, and one colleague playing the freezing-SVP for Exercise 1 Phase 1.
+**Mood target:** Deepened unease without blame — the student has a practice for risk, not a promise of certainty.
 
-**TODO — skills-as-sharing-preview callout (M4 → M7 bridge):** add a short callout or mini-lecture (likely inside *Build More Skills For Recurring How*, or as a sibling section right after) framing *"Skills is the simplest way to share agents."* The student has just authored a personal skill in Exercise 1, so the line lands experientially: a skill is a portable file, not a deployed service — drop it in a teammate's `~/.claude/skills/` and they have the same expertise. Foreshadows M7's four sharing strategies (context / skill / output / interface) from inside M4 without resolving them — names *one* of the four so M7's catalogue still earns its keep. Close-condition: callout exists in body; M7 *From Personal to Team* still introduces the full four-way frame and references back to the M4 skill the student already shipped.
+**Push-back moves / Watch-fors / Decision points:** [M4 run sheet](trainer-modules.md#m4-glance) owns the live cues, recovery paths, protected beats, and cut order.
 
 **Meta (trainer):**
 - **Transitions:** connections 5 @start "Connections" · debrief 5 @end "Debrief" · more skills 3 @end "Build more skills for recurring how" · bridge 3 @end "Bridge"
-- **Where these numbers come from:** connections and debrief from the **Time budget:** line below ("Connections + Debrief ~10-15"); more-skills is an estimate. Every beat here has no file of its own, so nothing else prices it.
+- **Where these numbers come from:** debrief comes from the body ("Five minutes."); connections and more-skills are authored room estimates. Every beat here has no file of its own, so nothing else prices it.
 - **Charge:** module-5-prework 0 — same: inlined for findability, read between sittings.
 - **Primary Bloom's level:** Create → Analyze → Evaluate (authoring + applying + evaluating residual)
 - **Module 4 sequencing decision:** policy reference files are source material first, not a prebuilt skill. Students run everything in `module-4/policies/` raw once, see what that produces, then package the useful check as reusable expertise. Exercise 1 ends at the personal skill; for Cowork, creating and saving the skill is part of that package step. Exercise 2 loads the skill, applies both lenses, and mitigates one risk.
@@ -114,16 +114,18 @@ Remember also: agent actions start as text. A tool call, an email draft, a CRM u
 - Belief — name what you don't know — lands implicitly in the "I can't tell" column. Not announced; earned by the student writing one themselves.
 - Belief — practice beats external proof — anchors the lecture's core message. Named in maintainer-space, experienced in body.
 
-**Capability check owed (per-runtime package + load):** see *Run and package a security skill* exercise maintainer block — Cowork personal-skill creation through *Customize → Skills → New → Create with Claude*, Desktop/CLI standalone-skill install into `~/.claude/skills/security-audit/`, plain-language invocation reliability across all three runtimes, loaded-skill visibility on session start. Run `claude-code-guide` before first delivery.
+**Runtime verification:** Claude Code's personal-skill path and automatic or direct invocation are documentation-backed below. The [M4 run sheet](trainer-modules.md#m4-glance) owns the remaining pre-delivery Cowork authoring/load rehearsal and the fallback if packaging fails.
+
+**Sources:**
+- `[checked:2026-08-23 result:OK due:cohort]` https://code.claude.com/docs/en/skills — [vendor docs, capability] personal skills live at `~/.claude/skills/<skill-name>/SKILL.md`; Claude can invoke a matching skill automatically or the user can invoke it directly. fallback: follow the documentation index at https://code.claude.com/docs/llms.txt to the current Skills page.
 
 **Customer prep (sold separately):**
 - Customer-policy reference distillation — 0.5–1 day of Antti's time per customer. Inputs: data-usage policy, security policy, AI-use policy (optional), sector rules. Output: `module-4/policies/*.md` reference files the student runs raw and then packages. The reusable check the student authors during Module 4 is also theirs to keep; it travels with them after training.
 
-**Watch-fors (deferred to facilitator notes pass):**
-- Shame spiral. A student whose agent violates outright will treat it as personal failure. The lecture's frame ("certainty is a fantasy") lands this, but coach in room: *"The variance across the room is the teaching moment. No one got a clean report."*
-- "I can't tell" avoidance. Students will try to push ambiguous rows into clear buckets. Coach: *"'I can't tell' is the correct answer when the evidence isn't there. Leaving it plain is the discipline."*
-- Over-mitigation. A student picks one risk and tries to mitigate three. Coach back: *"Run the full loop on one. We're practising the loop, not clearing the backlog."*
-- Skill as magic. Students may treat the report as ground truth. The reusable check is an expert, not an oracle — it can miss things, especially on the attack class the student under-specified. Plant the doubt in debrief: *"Where would this check's report itself be wrong?"*
-- Generic GDPR check. The Phase 2 dictation in *Run and package a security skill* was too thin and the policy lens reads like a generic policy template. Catch this before the audit runs; the audit on a generic lens produces generic findings.
-
-**Time budget:** total currently ~98-103 min. *Run and package a security skill* ~40, *Audit your agent* ~35, Connections + Debrief ~10-15. Fits 1h45 with tight transitions; facilitator time-boxing still matters.
+**Customer-policy prep checklist:**
+1. Inventory the supplied data-use, security, AI-use, retention, access, and sector-rule documents; record owner, version date, and source for each.
+2. Mark every document as included, superseded, out of scope, or missing. Conflicts and missing decisions become explicit gaps; do not resolve them by inventing policy.
+3. Distill only rules the source supports into `module-4/policies/*.md`, preserving the source pointer and the evidence needed to classify compliant / violating / `I can't tell`.
+4. Remove customer secrets and personal data that the exercise does not need. Confirm the cohort runtime and connector permissions can read the remaining files.
+5. Peer-review the distilled set against the originals, then run the raw-policy prompt once before delivery. Keep the report as trainer evidence, not as a student-shipped answer.
+6. Replace the Nordic baseline files for the in-company build; never ship a pre-authored `security-audit` skill. Students still author the reusable check themselves.

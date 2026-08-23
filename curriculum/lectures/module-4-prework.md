@@ -65,13 +65,12 @@ Three to five lines, plain language, the things you would not want a generic pol
 - `module-4/policies/` reference material available from the prework starter — input the student runs raw, then packages into reusable security expertise in Module 4. Per the no-pre-shipped-skill rule, no security skill files ship in Module 4; the student authors them.
 - No connector changes since Module 3.
 
-**Capability notes (confirmed, no check owed):**
-- CLI standalone skills under `~/.claude/skills/<name>/SKILL.md` auto-load in a fresh session.
-- Skill invocation via plain-language prompting ("apply the X lens of the reusable security check to Y") is the standard pattern; slash commands are used only when exact dispatch matters.
+**Source verification:**
+- `[checked:2026-08-23 result:OK due:cohort]` https://code.claude.com/docs/en/skills — [vendor docs, capability] personal skill path, supporting-file shape, automatic discovery, and direct invocation. fallback: use the documentation index at https://code.claude.com/docs/llms.txt to locate the current Skills page.
+- `[checked:2026-08-23 result:OK due:2027-02-23]` https://genai.owasp.org/llmrisk/llm01-prompt-injection/ — [technical standard] direct and indirect prompt injection definitions plus scope/filter/gate/review mitigation families. fallback: use the current OWASP GenAI prompt-injection entry.
+- `[checked:2026-08-23 result:OK due:2027-02-23]` https://genai.owasp.org/2025/12/09/owasp-top-10-for-agentic-applications-the-benchmark-for-agentic-security-in-the-age-of-autonomous-ai/ — [technical standard] agent-specific risk layering, including goal hijack, tool misuse, identity/privilege abuse, and supply-chain vulnerabilities. fallback: use OWASP's current Agentic Applications Top 10 index.
 
-**Capability checks owed (before first delivery):**
-- Per-runtime authoring + install paths — see *Run and package a security skill* and *Audit your agent* maintainer blocks.
-- Verify (via `claude-code-guide`) whether current Claude Code surfaces a visible indicator when a skill loads. If yes, add one cue line to *Audit your agent* Phase 1. If no, skip; autocomplete remains the load cue.
+**Runtime rehearsal:** per-runtime authoring/install and loaded-skill cues remain a pre-delivery dry-run owned by the Agents 101 punchlist and M4 run sheet. Do not infer a Cowork click-path from the Claude Code docs.
 
 **Watch-fors:**
 - A security-literate student reads Reading 2 and pushes back ("classical security already does residual risk"). They are right — the point is not that classical security is obsolete, it is that the cadence shifts and four new attack classes are added by name. Coach in Module 4 Connections: *"What about agent systems makes your existing discipline still apply, and which four classes do you need to add to your threat model?"*

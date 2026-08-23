@@ -3,6 +3,18 @@ key: share-your-work-1
 dest: Builder Claude
 runtime: any
 origin: exercises/share-your-work
+requires:
+  - id: challenge-sources
+    source: prompt:build-your-challenge-memory-2
+  - id: m3-curated-memory
+    source: prompt:three-retrievers-one-curator-5
+  - id: m5-evidence-artifacts
+    source: prompt:hallucination-bakeoff-8
+  - id: m6-run-artifacts
+    source: prompt:eval-loop-2
+produces:
+  - id: m7-jtbd
+    location: module-7/jtbd.md
 ---
 Read my memory/, sources/, module-3/, module-5/, and module-6/.
 

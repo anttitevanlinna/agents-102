@@ -3,6 +3,17 @@ key: hallucination-bakeoff-4
 dest: Claude Code
 runtime: any
 origin: exercises/hallucination-bakeoff
+requires:
+  - id: m5-briefing
+    source: prompt:hallucination-bakeoff-1
+  - id: m5-evidence-roster
+    source: prompt:hallucination-bakeoff-1
+  - id: m5-claim-pool
+    source: prompt:hallucination-bakeoff-2
+produces:
+  - id: m5-detector-outputs
+    location: module-5/detectors/
+    note: Cowork runtime variant of the four detector files
 ---
 Run four detectors on `module-5/claim-pool.md` in parallel. Each detector is an agent with a different method. Each reads `module-5/claim-pool.md`, `module-5/briefing.md`, `module-5/evidence-roster.md`, and the rostered evidence files named there. Each writes its findings as a list of claim-pool claims flagged, with one line of reasoning per claim.
 

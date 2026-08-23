@@ -3,6 +3,11 @@ key: three-minds-one-synthesis-1
 dest: Claude Code
 runtime: any
 origin: exercises/three-minds-one-synthesis
+requires:
+  - id: crux-md
+    source: prompt:name-your-crux-2
+  - id: m3-curated-memory
+    source: prompt:three-retrievers-one-curator-5
 produces:
   - id: m3-agent-work
     location: module-3/stances/

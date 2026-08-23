@@ -360,7 +360,11 @@ function expandedStudentText(file, seen = new Set()) {
   for (const event of events) {
     out += raw.slice(cursor, event.index);
     const includePath = resolveInclude(event.href);
-    if (fs.existsSync(includePath)) {
+    // `module-N-prework` links are completed between sittings for the named
+    // next module. Expanding them into the module that links them attributes
+    // their examples and artefacts to the wrong stage.
+    const isBetweenSessionPrework = /^exercises\/module-\d+-prework$/.test(event.href);
+    if (fs.existsSync(includePath) && !isBetweenSessionPrework) {
       const expanded = expandedStudentText(includePath, seen);
       out += `\n\n<!-- included: ${event.href} -->\n\n`;
       out += expanded.text;

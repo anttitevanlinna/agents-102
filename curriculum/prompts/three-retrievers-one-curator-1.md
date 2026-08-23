@@ -3,6 +3,12 @@ key: three-retrievers-one-curator-1
 dest: Claude Code
 runtime: any
 origin: exercises/three-retrievers-one-curator
+requires:
+  - id: crux-md
+    source: prompt:name-your-crux-2
+produces:
+  - id: m3-wiki-retrieval
+    location: sources/wiki-retrieval.md
 ---
 You are the wiki retriever for my challenge. Your job: find every piece of internal wiki material that matters to ./crux.md (the crux you named in the opening, plus the ## Question section). Read the question first.
 

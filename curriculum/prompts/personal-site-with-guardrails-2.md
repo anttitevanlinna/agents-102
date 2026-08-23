@@ -3,6 +3,13 @@ key: personal-site-with-guardrails-2
 dest: Claude Code
 runtime: any
 origin: exercises/personal-site-with-guardrails
+requires:
+  - id: m1-site
+    source: prompt:personal-site-with-guardrails-1
+produces:
+  - id: m1-site
+    location: module-1/site.html
+    note: StoryBrand-tuned revision in place
 ---
 Hey Claude — apply Donald Miller's StoryBrand framework to the COLLEAGUE-HELP SECTION of my personal site, but tuned for ONE goal: when a colleague reads it, they think "this is the person I want to work with more, on the things they're great at." Not buying a service. Not booking a call. A colleague relationship.
 

@@ -3,6 +3,12 @@ key: build-your-challenge-memory-8
 dest: Claude Code
 runtime: any
 origin: exercises/build-your-challenge-memory
+requires:
+  - id: challenge-memory
+    source: prompt:build-your-challenge-memory-7
+produces:
+  - id: memory-audit
+    location: scrollback
 ---
 Review the memory for real problems of three kinds: contradictions between topic pages; claims that need a source pointer but don't have one; older pages that likely went stale given what's in the newer sources. Also check that index.md links every page in memory/.
 

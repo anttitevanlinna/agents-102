@@ -3,6 +3,18 @@ key: share-your-work-4
 dest: Builder Claude
 runtime: any
 origin: exercises/share-your-work
+requires:
+  - id: m7-jtbd
+    source: prompt:share-your-work-1
+  - id: m7-branch
+    source: external
+  - id: m7-bottleneck
+    source: prompt:share-your-work-3
+produces:
+  - id: m7-technical-plan
+    location: module-7/technical-plan.md
+  - id: m7-people-plan
+    location: module-7/people-plan.md
 ---
 Read module-7/jtbd.md, module-7/branch.md, and module-7/absorption-bottleneck.md. Help me draft two files in
 parallel — a technical plan and a people plan. Both are about whether this

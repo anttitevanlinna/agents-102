@@ -109,6 +109,17 @@ test('a charge requires a stated reason', () => {
   assert.equal(bad['some-slug'], undefined);
 });
 
+test('Agents 101 scheduled-agent homework does not consume Module 2 room time', () => {
+  const training = computeTraining('agents-101');
+  const module = training.modules.find(item => item.slug === 'building-agent-systems');
+  const homework = module.beats.find(item => item.slug === 'personal-agent-homework');
+
+  assert.ok(homework, 'Module 2 must keep the scheduled-agent homework in its handoff');
+  assert.equal(homework.band.hi, 35, 'the participant still receives a 35-minute homework estimate');
+  assert.equal(homework.charged.hi, 0, 'between-session homework must not consume live room time');
+  assert.match(homework.why, /between sittings/i);
+});
+
 // ── verdicts ─────────────────────────────────────────────────────────────────
 
 test('a band whose ceiling clears the cap FITS', () => {

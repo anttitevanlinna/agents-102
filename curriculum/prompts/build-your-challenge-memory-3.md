@@ -3,6 +3,13 @@ key: build-your-challenge-memory-3
 dest: Claude Code
 runtime: any
 origin: exercises/build-your-challenge-memory
+requires:
+  - id: challenge-sources
+    source: prompt:build-your-challenge-memory-2
+produces:
+  - id: challenge-memory
+    location: memory/
+    note: cited topic pages plus memory/index.md
 ---
 Read every real-content file in sources/. For each major topic you find, create a markdown file in memory/ with a clear title, 3–5 key claims, and an "open questions" section for things the sources disagree on or leave unclear. Then write memory/index.md that links to every topic page with a one-line description.
 

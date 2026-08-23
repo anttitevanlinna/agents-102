@@ -3,6 +3,14 @@ key: extend-your-system-1
 dest: Builder Claude
 runtime: any
 origin: exercises/extend-your-system
+requires:
+  - id: m8-extension-brief
+    source: student-input
+  - id: challenge-agent
+    source: prompt:build-your-challenge-memory-5
+produces:
+  - id: m8-extension-agent
+    location: agents/<slug>.md
 ---
 Read module-8/extension-brief.md. Build the agent described in it. Write the agent file to agents/<slug>.md — the slug comes from the job, not the technology.
 

@@ -94,7 +94,7 @@ emit_universe() {
       base=$(basename "$f")
       # Tracking + maintainer-only files are not eval surfaces
       case "$base" in
-        pre-cohort-todos.md|trainer-guide.md|training-architecture.md) continue ;;
+        ae101-parity.md|pre-cohort-todos.md|trainer-guide.md|trainer-modules.md|training-architecture.md|timings.md|README.md|CLAUDE.md) continue ;;
       esac
       printf 'U\t%s\ttrainings/%s/%s\n' "$tr_short" "$tr_dir" "$base"
     done

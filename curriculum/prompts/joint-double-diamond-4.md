@@ -3,6 +3,14 @@ key: joint-double-diamond-4
 dest: Builder Claude
 runtime: any
 origin: exercises/joint-double-diamond
+requires:
+  - id: m8-stance
+    source: prompt:joint-double-diamond-3
+  - id: m8-neighbour-stances
+    source: external
+produces:
+  - id: m8-cross-check
+    location: shared-folder/<participant>/cross-check.md
 ---
 Read my own stance.md in my named subfolder, then read three to five neighbouring stance.md files from other participant subfolders in the shared folder.
 

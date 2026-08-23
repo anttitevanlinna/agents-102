@@ -13,8 +13,9 @@
 //   curriculum/trainings/<t>/{supplementary,reference}/*.md
 //   curriculum/{exercises,lectures}/*.md     shared pool, owned by whichever
 //                                            training's modules link them
-// A shared file no training links, or two do, is UNOWNED: reported, never
-// guessed at — the instance prefix would be a coin flip (see trainingOf).
+// A shared file no training links, or two do under --training all, is UNOWNED:
+// reported, never guessed at. An explicit --training resolves a multi-owner
+// file when that training is one of its actual linkers (see trainingOf).
 //
 // Usage:
 //   node curriculum/evals/scripts/eval-queue.js [--training ae101|agents-101|claude-basics|all]
@@ -93,7 +94,7 @@ function collect(repo, io, want) {
   const unowned = []
   const unreadable = []
   for (const rel of buildUniverse(repo)) {
-    const training = trainingOf(rel, findLinkers)
+    const training = trainingOf(rel, findLinkers, want === 'all' ? null : want)
     if (!training) { unowned.push(rel); continue }
     if (want !== 'all' && training !== want) continue
     const r = scanFile(rel, io)

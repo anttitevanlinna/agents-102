@@ -13,4 +13,13 @@ produces:
     location: scrollback (shown before files change)
     note: restructures memory/ + sources/ after approval
 ---
-Look at memory/ and sources/ against this module's fresh retrievals. Check overall health: coverage gaps the retrievers exposed, pages now stale, structure still serving the challenge. Name at least one drop candidate; an all-green health check means you didn't look hard enough. Restructure if deemed needed (rename, merge, split, drop). Show me what you'd do before changing files.
+Look at `memory/` and `sources/` against this module's fresh retrievals.
+
+Check overall health:
+- coverage gaps the retrievers exposed
+- pages now stale
+- whether the structure still serves the challenge
+
+Name at least one drop candidate; an all-green health check means you didn't look hard enough.
+
+If restructuring is needed, propose the renames, merges, splits, or drops. Show me the plan before changing any files.

@@ -133,7 +133,7 @@ Ask Claude what this file could drive later.
 
 **Plug points:**
 - Student's own session scrollback (the M2 plan-mode work)
-- Sponsor-stated rules home for students who pick the team-shareable path
+- The team's rules home for students who pick the team-shareable path
 
 **Frameworks riffed on (attributed at the lecture, not in this exercise's body):**
 - The three automation shapes are named in `lectures/where-the-rule-could-live.md`. This exercise stays anchored to the student's own session evidence.

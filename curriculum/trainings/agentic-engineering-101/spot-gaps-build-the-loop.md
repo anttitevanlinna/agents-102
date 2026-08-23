@@ -151,9 +151,9 @@ Antti
 
 **Plug points (trainer):**
 - The student's two run artefacts (Phase 1 input material)
-- Sponsor-stated team-kit home (second-skill ship destination for team-PR candidates)
-- Sponsor-stated memory home (where gaps-belong-in-memory land)
-- Sponsor-stated team-rule review cadence (named so the team-PR flag at ship doesn't become the compound-loop bottleneck)
+- Team-kit home, if the team has one (second-skill ship destination for team-PR candidates)
+- Memory home (where gaps-belong-in-memory land)
+- The team's rule-review cadence (named so the team-PR flag at ship doesn't become the compound-loop bottleneck)
 
 **Frameworks riffed on (attributed in closer):**
 - **Ronacher's three-pattern** — Armin Ronacher `[practitioner direct]`. Re-named in the closing lecture as a scaffold the student is now ready to sharpen, not a fixed recipe.

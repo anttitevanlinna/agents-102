@@ -79,10 +79,10 @@ The field rules stay in the scrollback. The next exercise sweeps this whole sess
 - **Ticket has no comments** — nothing to read a register off. The field conventions still land; the close-out register falls back to the description's own wording.
 
 **Decision points:**
-- **Sponsor stated a tracker the cohort's Claude Code cannot reach.** The paste path covers the read; for the write, fall back to a markdown ticket in the repo (*"write a ticket into `docs/tickets/` and link the PR"*). Sponsor gets a signal.
+- **The team's tracker is one the cohort's Claude Code cannot reach.** The paste path covers the read; for the write, fall back to a markdown ticket in the repo (*"write a ticket into `docs/tickets/` and link the PR"*).
 
 **Plug points:**
-- Sponsor-stated ticket tracker (Linear / Jira / GitHub Issues / other) — the field vocabulary the agent reverse-engineers is the sponsor's own; a tracker with disciplined labels yields sharper rules than one without, and that gap is itself worth naming to the room.
+- The team's ticket tracker (Linear / Jira / GitHub Issues / other) — the field vocabulary the agent reverse-engineers is the team's own; a tracker with disciplined labels yields sharper rules than one without, and that gap is itself worth naming to the room.
 
 **Leap test** (per `check_pedagogy.md` rule 45 — three observable Monday outcomes on the engineer's own codebase by the next working day):
 1. **Pastes a real ticket into a session and asks what the fields encode**, before shaping a task from it. Falsifiable: scrollback shows a ticket pasted and a conventions question, not just a task hand-off.

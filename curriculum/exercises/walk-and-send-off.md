@@ -137,9 +137,9 @@ OODA
 
 **Plug points:**
 - Student's own task you'd send off rather than nudge bit by bit (Phase 1 pick)
-- Sponsor-stated rules-file home (Phase 2 rule-sharpening target)
-- Sponsor-stated memory / business-rules home (Phase 2 fill destination for business-rules pointer)
-- Sponsor-stated ADR convention (memory already references; no new move here)
+- Rules-file home (Phase 2 rule-sharpening target)
+- Memory / business-rules home (Phase 2 fill destination for business-rules pointer)
+- The repo's ADR convention (memory already references; no new move here)
 
 **Decision points (pacing):**
 - **Phase 1 >15 min** — task is too big. Force a slice.

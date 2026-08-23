@@ -562,8 +562,8 @@ including the personal rules file compounded since sitting 1.
 **Plain AE101 does.** A worktree is a fresh checkout, so gitignored files do not ride along. AE101
 copies them with two conditional `cp` lines inside the setup prompt
 (`ae101-m5-worktree-setup.md:29`) and asks Claude to confirm which files copied across. If
-`CLAUDE.local.md` lives somewhere else — and `learn-from-the-test.md:166` says the sponsor's own
-convention overrides — or the copy is skipped, the packaged run runs without rules the un-packaged run
+`CLAUDE.local.md` lives somewhere else — and `learn-from-the-test.md` once said a sponsor convention
+could override (that plug point is gone, 2026-08-23) — or the copy is skipped, the packaged run runs without rules the un-packaged run
 had. No later beat re-checks it.
 
 **In the room.** The student runs the contrast, reads a difference and attributes it to packaging. It

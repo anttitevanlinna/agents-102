@@ -69,7 +69,7 @@ Ask Claude to fork a sibling worktree and copy your personal rules across. The p
 
 **Why two windows, not two tabs:** projection legibility. The trainer's screen-share shows both worktrees side by side from minute one. Cognitive separation matches the Quality versus Security framing.
 
-**Plug points:** student's Module 2 inherited repo (main window); worktree directory name (default `../<repo>-m3-quality`, sponsor or student override allowed); fresh branch name on the side (default `m3/quality`).
+**Plug points:** student's Module 2 inherited repo (main window); worktree directory name (default `../<repo>-m3-quality`, student override allowed); fresh branch name on the side (default `m3/quality`).
 
 **The same-folder trap stays trainer-side — do not add an in-body sentence.** Concurrent writers clobbering one working directory is not agent knowledge, it is plumbing this audience already has, so stating it in body pre-empts what the room brings with it and instructs people who do not need instructing (`check_student_facing.md` §1). The mistake still happens under time pressure, and that is what the push-back note below is for: a coaching correction in the room, not a teaching beat in the deck. The mechanism sits in `reference/multi-session-git.md` § *Opening N Claude Code sessions on the same codebase* and below this fence; its absence from the deck is deliberate, not a leak.
 

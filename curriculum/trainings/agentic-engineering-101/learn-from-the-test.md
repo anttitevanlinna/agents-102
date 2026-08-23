@@ -194,9 +194,9 @@ header and handle per slide, never read bullets aloud. Two registers, one instru
 - **Whole-room mood below 7:** learning through contrast isn't landing. Check Phase 1: did the diagnosis name SPECIFIC failures with quoted moments, or did it stay generic? Specificity is where this mood lives.
 
 **Plug points (trainer):**
-- The student's M4 artefact (Phase 1 source material) — un-packaged-run trace from M4's send-off; sponsor-stated artefact-storage location if the cohort uses one
-- Sponsor-stated rules-file home (Debrief rewrite target, same as M4) — `./CLAUDE.local.md` is the repo-personal default; sponsor's actual convention overrides
-- Sponsor-stated test/CI conventions (Phase 3 shell-hook verifier shape integrates here) — sponsor names the test framework + CI gate convention so the verifier shape matches what teammates already run
+- The student's M4 artefact (Phase 1 source material) — un-packaged-run trace from M4's send-off
+- Rules-file home (Debrief rewrite target, same as M4) — `./CLAUDE.local.md`
+- The repo's test/CI conventions (Phase 3 shell-hook verifier shape integrates here) — the verifier shape matches what teammates already run
 
 **Leap test** (per `check_pedagogy.md` rule 45 — three observable Monday-morning outcomes the engineer exhibits on their own codebase by the next working day):
 1. **Reads an agent's long-running artefact through three named failure-mode lenses** (goal drift, context rot, plausible-but-wrong) and grounds the diagnosis in quoted moments. Falsifiable: a real artefact-read explains what each lens reveals in specific evidence, not a generic summary; one moment may support more than one lens.
@@ -208,7 +208,7 @@ header and handle per slide, never read bullets aloud. Two registers, one instru
 | Artefact | Stable identifier | Produced by | Consumed by |
 |---|---|---|---|
 | M5 worktree branch + SHA (packaged-run starting state) | `m5/<task-slug>` branch in worktree at `../<repo>-m5`, forked from M4's `m4/<task-slug>` SHA | Set up the Module 5 worktree prompt | M5 packaged re-send (runs in worktree); M6 diff (compares M5 packaged-run output to M4 un-packaged-run output) |
-| Reference artefact | task-local reference file in the task-scoped folder Phase 4 proposes (sponsor plug point; Claude names the path and filename at lock-in) | Phase 4 (assemble-reference-and-plan) | M5 re-send prompt — Claude reads the reference at the start of the packaged run; M6 diff (does the reference scope still match what shipped?) |
+| Reference artefact | task-local reference file in the task-scoped folder Phase 4 proposes (Claude names the path and filename at lock-in) | Phase 4 (assemble-reference-and-plan) | M5 re-send prompt — Claude reads the reference at the start of the packaged run; M6 diff (does the reference scope still match what shipped?) |
 | Plan.md | `plan.md` in the same task-scoped folder, next to the reference | Phase 4 | M5 re-send (Claude re-reads plan.md when it drifts); M6 diff |
 | Verifier | path named in Phase 3's build prompt (typically `verifier.sh`, `evals/judge.md`, or a stop-hook config), recorded as plan.md's `verifier` line | Phase 3 (build-verifier) | M5 re-send (reads the invocation off plan.md's verifier line and fires it per the cadence recorded there); M6's diff reads the verifier as the sharper-verifier home's precedent |
 | Run notes from packaged re-send | `RUN-NOTES.md` at worktree root | Re-send prompt — Claude writes in-flight when stuck | M6 diff (subtler-misses pattern; the dominant gap's home often surfaces in the notes) |

@@ -8,7 +8,7 @@ requires:
     source: prompt:ae101-prework-download-tarball
 produces:
   - id: ae101-content-dir
-    location: ~/Documents/ae101-content/ (or sponsor-stated path)
+    location: ~/Documents/ae101-content/
     consumed-by:
       - module:getting-going
       - prompt:ae101-prework-screen-and-ready

@@ -162,7 +162,7 @@ OODA
 **Plug points:**
 - Student's M4 un-packaged artefact + M5 packaged re-run artefact (Phase 1 source material; both already in the repo + session transcripts).
 - Repo's skill home convention if any (install paths + team-kit route → `training-architecture.md` § Skills).
-- Sponsor-stated or team-stated code-review conventions (feeds the sidestep's primitives ranking, where code-review is one of the named primitives, and the handoff prompt that follows). Phase 2 is study plus shapes plus the optional sidestep; nothing in it builds a judge.
+- The team's code-review conventions (feeds the sidestep's primitives ranking, where code-review is one of the named primitives, and the handoff prompt that follows). Phase 2 is study plus shapes plus the optional sidestep; nothing in it builds a judge.
 
 **Decision points (pacing):**
 - **Phase 1 >20 min** — over-diffing. The diff is data for the rule cut, not an essay. Force a rank and move on.

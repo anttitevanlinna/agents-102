@@ -120,23 +120,23 @@ Ask Claude whether this ADR rides into future sessions automatically.
 - STRIDE output overwhelms the student. Normal on first pass. The teaching is *reject most*, not *address all*.
 - Student argues with a threat the skill surfaced because they'd already thought about it. Good — that IS the team-kit feed. Trainer push: *"note it in the ADR's Alternatives considered — 'threat X considered, mitigated by Y which already exists.'"*
 - Student says *"STRIDE doesn't really fit this feature."* Might be right (low-risk internal service) or might be avoidance. Trainer push: *"name one surface and one STRIDE category — if neither category applies, you're right; if one does, let's pick."*
-- ADR home not resolved — sponsor's pre-engagement contract hadn't named one. Default to `docs/adr/` and flag at Debrief.
+- ADR home not resolved — the repo has no convention. Default to `docs/adr/` and flag at Debrief.
 
 **Plug points:**
 - Student's access surface map from Ex1 (in the temp directory Claude chose; path in scrollback) — Phase 1 input
-- Sponsor-stated ADR home (from pre-engagement contract) — Phase 3 output path
+- The repo's ADR home — Phase 3 output path
 - Curated STRIDE skill — ships in content folder at `content/skills/stride/SKILL.md`, installed to `~/.claude/skills/stride/SKILL.md` at prework.
 
 **Leap test** (per `check_pedagogy.md` rule 45 — three observable Monday-morning outcomes the student exhibits on their own codebase by the next working day):
 1. **Writes a most-plausible-incident story before picking the STRIDE threat to harden against.** Falsifiable: the ADR's Context or scrollback shows the incident story preceded the threat pick, not the other way around.
 2. **Rejects the other STRIDE threats explicitly in the ADR's Alternatives considered.** Falsifiable: the ADR's Alternatives section names at least two threats and the reason each was rejected (acceptable risk, already mitigated, out of scope), not left as backlog.
-3. **Writes the hardening decision as an ADR in the repo's convention with all four standard sections (context, decision, alternatives, constraint).** Falsifiable: a file at the sponsor-stated ADR path with the four sections filled in, not a stub.
+3. **Writes the hardening decision as an ADR in the repo's convention with all four standard sections (context, decision, alternatives, constraint).** Falsifiable: a file at the repo's ADR path with the four sections filled in, not a stub.
 
 **Artefact contracts** (per `check_cross_module.md` §5):
 
 | Artefact | Stable identifier | Produced by | Consumed by |
 |---|---|---|---|
-| Hardening-decision ADR | Sponsor-stated ADR home; default `docs/adr/NNNN-slug.md` | Phase 3 (`{{prompt:threat-model-with-stride-3}}`) | M3 Ex3 *Author your test-strategy skill* (the hardening decision becomes a test case the test-strategy invocation reads); M4 Phase 2 walk-and-fill (audit subagent reads ADRs as part of *"system you have"*) |
+| Hardening-decision ADR | the repo's ADR convention; default `docs/adr/NNNN-slug.md` | Phase 3 (`{{prompt:threat-model-with-stride-3}}`) | M3 Ex3 *Author your test-strategy skill* (the hardening decision becomes a test case the test-strategy invocation reads); M4 Phase 2 walk-and-fill (audit subagent reads ADRs as part of *"system you have"*) |
 
 **Per-phase failure modes** (per `check_pedagogy.md` rule 47 — every phase shipping a forcing function names its dominant failure and one recovery move):
 

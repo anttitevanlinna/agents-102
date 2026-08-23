@@ -132,7 +132,7 @@ Optional, when your sessions start running heavy: [The context ceiling and token
 - **Transitions:** connections 10 @start · debrief 12 @after:author-test-strategy-skill · bridge 3 @end
 - **Prep timing:** Willison lethal-trifecta pre-read 10–15 min; Willison agentic-loops pre-read 10 min; optional OWASP deeper scan 20 min; optional backpressure pre-read (this file's `## Pre-read before Module 4`) 15 min.
 - **Mood target:** earned trust — *"the way I work with agents is something my staff engineer and my CISO can sign off on, before I even try anything big."* Watch for: mood drift toward compliance-feeling. Diagnostic: student at Ex2 frames STRIDE as checkbox. Fix: trainer surfaces the ADR — *"you just made a real architectural call under named pressure; that's not compliance, that's design."*
-- **Delivery architecture** (content folder, compounding-artifact split, skills install, no training-dir state): canonical in `training-architecture.md` §Material distribution / §Working directory model / §Rule files / §Skills. Not restated here. M3-specific: the content folder holds three curated skills (`access-control-analysis` + `stride` + `security-tools`); the authored test-strategy skill ships personal-first to `~/.claude/skills/test-strategy/SKILL.md`, with a sponsor-stated team-kit home as the eventual destination via human conversation (not an auto-PR). The four-layer rule-file hierarchy is in `reference/claude-code-for-engineers.md § 1`.
+- **Delivery architecture** (content folder, compounding-artifact split, skills install, no training-dir state): canonical in `training-architecture.md` §Material distribution / §Working directory model / §Rule files / §Skills. Not restated here. M3-specific: the content folder holds three curated skills (`access-control-analysis` + `stride` + `security-tools`); the authored test-strategy skill ships personal-first to `~/.claude/skills/test-strategy/SKILL.md`, with a team-kit home as the eventual destination via human conversation (not an auto-PR). The four-layer rule-file hierarchy is in `reference/claude-code-for-engineers.md § 1`.
 
 **Push-back moves:**
 - **Connections blocker** — student can't pick a feature. Trainer runs three-candidate conversation with the feature-size rule; pushes against "too large" (the default failure mode — engineers over-estimate scope).
@@ -147,7 +147,7 @@ Optional, when your sessions start running heavy: [The context ceiling and token
 **Watch-fors (cross-phase):**
 - Feature sprawl — student brings the whole epic. Cap at Connections; redirect to a sliceable sub-part.
 - Curated-skill reverence — student treats the STRIDE skill as oracle. Remind: the skill is good; the decision is yours.
-- Team-kit home unresolved — sponsor non-answer is fine. The test-strategy skill ships to personal `~/.claude/skills/test-strategy/` (personal-first, matching M1's `CLAUDE.local.md` pattern). Promotion to a team home (repo's `.claude/skills/`, shared Git repo, monorepo `.claude/`) is a later human conversation, not an M3 forcing function. If the cohort spontaneously decides on a team-kit home at any module (a student proposes it, the room agrees), capture the decision in the cohort overrides log.
+- Team-kit home unresolved — fine. The test-strategy skill ships to personal `~/.claude/skills/test-strategy/` (personal-first, matching M1's `CLAUDE.local.md` pattern). Promotion to a team home (repo's `.claude/skills/`, shared Git repo, monorepo `.claude/`) is a later human conversation, not an M3 forcing function. If the cohort spontaneously decides on a team-kit home at any module (a student proposes it, the room agrees), capture the decision in the cohort overrides log.
 - Skill-authoring-by-typing — student opens an editor to hand-write SKILL.md. Redirect to conversation: the authoring move is prompting Claude, pushing back, not keyboard-crafting markdown.
 - Team-worthy flag drifts to generic — student frames the team-worthy decision as "yes, every team should know about STRIDE." Push: name a codebase-specific call (an auth pattern, an ADR convention, a verifier) — not a universal claim.
 
@@ -158,22 +158,22 @@ Optional, when your sessions start running heavy: [The context ceiling and token
 - **Whole room mood below 7:** earned-trust isn't landing. Check: did the hardening decision in Ex2 feel real (a call the student would defend) or theatrical (a menu pick)? Did the test-strategy skill's invocation surface codebase-specific things (real) or generic pyramid wisdom (theatrical)? If theatrical, the feature was probably too small.
 
 **Plug points (trainer):**
-- Student's own feature (surfaced in Connections) — small, ship-this-week scope; sponsor-stated examples by team type (web / back / data / ML) help calibration when student stalls
-- Sponsor-stated ADR home (Ex2) — `docs/adr/NNNN-slug.md` is the default; sponsor's actual convention overrides if different
-- Sponsor-stated team-kit home (for skill promotion when teams choose it) — pre-engagement contract surfaces this if the team has one. M3's authored skill ships personal at `~/.claude/skills/test-strategy/` regardless. Sponsor non-answer needs no spin-up; cohort may emerge a team-kit home spontaneously at any module and log it as override.
-- Sponsor-named test framework / mocking policy (Ex3 authoring conversation) — what Claude asks the student to encode; student answers from the codebase, not generic
+- Student's own feature (surfaced in Connections) — small, ship-this-week scope
+- ADR home (Ex2) — the repo's own convention if it has one; `docs/adr/NNNN-slug.md` otherwise
+- Team-kit home (for skill promotion when teams choose it) — M3's authored skill ships personal at `~/.claude/skills/test-strategy/` regardless; a cohort may settle a team-kit home spontaneously at any module.
+- The codebase's test framework / mocking policy (Ex3 authoring conversation) — what Claude asks the student to encode; student answers from the codebase, not generic
 - Push-back moves at each rubber-stamp risk
 
 **Leap test** (per `check_pedagogy.md` rule 45 — three observable Monday-morning outcomes the student exhibits on their own codebase by the next working day):
 1. **Invokes a curated security skill (access-control-analysis or STRIDE) as a subagent on a real PR before review.** Falsifiable: the PR review shows a comment quoting the skill's structured output, or the student's commit message references the surface delta the skill flagged.
-2. **Writes an ADR for one architectural decision under named pressure**, with alternatives + the constraint that picked the winner, in the repo's ADR convention. Falsifiable: a new file at the sponsor-stated ADR path with the four standard sections (context, decision, alternatives, constraint).
+2. **Writes an ADR for one architectural decision under named pressure**, with alternatives + the constraint that picked the winner, in the repo's ADR convention. Falsifiable: a new file at the repo's ADR path with the four standard sections (context, decision, alternatives, constraint).
 3. **Invokes the authored test-strategy skill on a feature without being prompted to.** Falsifiable: scrollback of a normal working session shows *"invoke the test-strategy skill on this"* (or equivalent) without a teacher cue earlier in the session.
 
 **Artefact contracts** (per `check_cross_module.md` §5 — every produced artefact is a contract row with stable identifier + producing prompt + consuming module):
 
 | Artefact | Stable identifier | Produced by | Consumed by |
 |---|---|---|---|
-| Architecture Decision Record | sponsor-stated ADR home; default `docs/adr/NNNN-slug.md` | Exercise 2 (STRIDE → hardening decision → ADR write) | M4 Phase 2 walk-and-fill (audit subagent reads ADRs as part of *"system you have"*) |
+| Architecture Decision Record | the repo's ADR convention; default `docs/adr/NNNN-slug.md` | Exercise 2 (STRIDE → hardening decision → ADR write) | M4 Phase 2 walk-and-fill (audit subagent reads ADRs as part of *"system you have"*) |
 | Test-strategy skill | `~/.claude/skills/test-strategy/SKILL.md` | Exercise 3 (one-question-at-a-time authoring conversation; user-level personal install, auto-discovered every session) | M4 Phase 2 walk-and-fill (audit subagent reads as part of system); M5 verifier-build (test-strategy informs the eval shape); M6 close (the *Composing the workflow* kit counts it among the moves you already own) |
 | Personal rules update | `./CLAUDE.local.md` (repo-personal, gitignored) | "Sharpen the skill from evidence" prompt at module close (Claude rewrites from session evidence; user pushes back) | Every future session in this repo (auto-loads at session-cold start); specifically M4 onward sees M3's rule additions as part of personal context |
 

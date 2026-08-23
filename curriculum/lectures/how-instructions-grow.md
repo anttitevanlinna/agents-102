@@ -69,7 +69,7 @@ Optional, before your rules files grow: [The context ceiling and token efficienc
 - `good-runs-earn-rules` · vision · "when a session gets something exactly right, that is worth a rule too" ← none-owed
 
 **Sources**
-- claude-memory `[checked:2026-08-04 result:OK due:cohort]` https://code.claude.com/docs/en/memory — [capability] Project `CLAUDE.md` is shared team instruction; `CLAUDE.local.md` is personal project-specific instruction. Both load into session context within their scope. fallback: use the sponsor-stated instruction homes and remove the auto-load wording.
+- claude-memory `[checked:2026-08-04 result:OK due:cohort]` https://code.claude.com/docs/en/memory — [capability] Project `CLAUDE.md` is shared team instruction; `CLAUDE.local.md` is personal project-specific instruction. Both load into session context within their scope. fallback: name the repo's own instruction files and remove the auto-load wording.
 - claude-skills `[checked:2026-08-04 result:OK due:cohort]` https://code.claude.com/docs/en/skills — [capability] Skills package reusable instructions and supporting files; their full content loads when Claude invokes them rather than occupying every session's context. Project and personal skill locations both exist. fallback: say "reusable instruction package" and remove the loading claim.
 - argyris-double-loop `[checked:2026-08-04 result:OK due:none]` https://hbr.org/1977/09/double-loop-learning-in-organizations — [academic/research] Argyris presents the distinction between correction within existing objectives and learning that challenges underlying policies and objectives. fallback: keep the two feedback paths and remove the name.
 

@@ -99,7 +99,7 @@ Ask Claude to invoke the skill on this codebase and grade what it produced in th
 - **P1 missed detail.** Student mentions something in conversation that doesn't make it into SKILL.md. Trainer catches: *"you said X earlier — is that in the skill? if not, add it."*
 - **P2 invoke-skip.** Student ships without running the skill. Trainer push: *"authoring without invocation is theatre. Run it on this codebase and ask 'is it good?'"*
 - **P2 invoke-output-weak.** Output is generic. Sign the skill itself is weak. Trainer push: *"the output is only as good as the skill. What in the skill would you sharpen to get a better output? sharpen the skill, then re-invoke."*
-- **P3 ship-confusion.** Team-kit home ambiguous. Trainer checks: *"the skill ships to your personal `~/.claude/skills/test-strategy/SKILL.md` (Claude wrote it there in Phase 1). That's the ship for today. The team-PR move is a separate human conversation later, after teammates have weighed in. The pre-engagement contract's team-kit slot names where a skill goes if it graduates, not whether this one ships now."*
+- **P3 ship-confusion.** Team-kit home ambiguous. Trainer checks: *"the skill ships to your personal `~/.claude/skills/test-strategy/SKILL.md` (Claude wrote it there in Phase 1). That's the ship for today. The team-PR move is a separate human conversation later, after teammates have weighed in."*
 
 **Accept-with-mitigation (`check_pedagogy.md` §56):** no dedicated push-back move for a skipped self-critique ask. The body line above ("ask the skill itself to name its own weakest part...") is the fix; not every miss needs a trainer catch too.
 
@@ -107,11 +107,11 @@ Ask Claude to invoke the skill on this codebase and grade what it produced in th
 - Student opens an editor to hand-craft SKILL.md. Redirect to conversation — the authoring move is prompting Claude, not keyboard-crafting markdown. This rule is load-bearing for the training; catch it every time.
 - Student's codebase has genuinely no integration tests. Good signal — the skill encodes that (*"integration coverage is aspirational; unit + e2e are load-bearing today"*) rather than pretending.
 - Student over-specifies the skill's output shape in Phase 1. Trust Claude's default SKILL.md shape (frontmatter + instructions). Don't ship a template.
-- Team-kit home was not resolved in the pre-engagement contract. That's fine; the skill ships to personal `~/.claude/skills/test-strategy/SKILL.md` regardless. Personal-first is the through-line (matches M1's `CLAUDE.local.md`). Promotion to a team home is a later human conversation; sponsor non-answer does not block this exercise. If the cohort spontaneously decides on an org-level home, trainer logs the decision in the cohort overrides log.
+- Team-kit home unresolved. That's fine; the skill ships to personal `~/.claude/skills/test-strategy/SKILL.md` regardless. Personal-first is the through-line (matches M1's `CLAUDE.local.md`). Promotion to a team home is a later human conversation. If the cohort spontaneously decides on an org-level home, trainer logs the decision in the cohort overrides log.
 
 **Plug points:**
 - This codebase/repository in the m3-quality worktree — Phase 2 invocation target (the worktree holds the full repo; no cross-window artifact needed)
-- Sponsor-named test framework / mocking policy / CI gate convention — Phase 1 authoring conversation surfaces these as the codebase-specific encoding the skill ships
+- The codebase's test framework / mocking policy / CI gate convention — Phase 1 authoring conversation surfaces these as the codebase-specific encoding the skill ships
 
 <!-- backing -->
 

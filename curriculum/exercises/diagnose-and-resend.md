@@ -219,7 +219,7 @@ OODA
 **Plug points:**
 - Student's own M4 artefact (Phase 1 source material)
 - Repo's existing CI / hook / pre-commit conventions (Phase 3 shell-hook integration)
-- Sponsor-stated task-scoped folder convention (Phase 4 file paths)
+- Task-scoped folder convention (Phase 4 file paths)
 
 **Decision points (pacing):**
 - **Phase 1 >20 min** — over-diagnosis; force ranking and a single dominant.

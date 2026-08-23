@@ -135,10 +135,10 @@ The next module opens with what came back, or what you caught before it went fur
 - **Whole-room mood below 7:** curious readiness isn't landing. Check: did the pick conversation produce real tasks (curiosity) or compliance ones (performance)? If compliance, Phase 1 trainer push-back wasn't sharp enough. Task-selection is where this mood starts or dies.
 
 **Plug points (trainer):**
-- Student's own task you'd send off rather than nudge bit by bit (Connections pick) — sponsor-stated example tasks by team type (web / back / data / ML) help calibration when the student stalls
-- Sponsor-stated rules-file home (Phase 2 rule-sharpening lands here) — `./CLAUDE.local.md` is the repo-personal default; sponsor's actual convention overrides
-- Sponsor-stated observations / business-rules home (Phase 2 fill destination) — `observations/` is the cross-session default; sponsor's actual convention (e.g., `docs/business-rules/`, `wiki/policy/`) overrides
-- Sponsor-stated tracker (Phase 1 task surfacing) — Linear / Jira / GitHub Issues; if MCP is wired, Claude can read the tracker for candidates given the criteria first
+- Student's own task you'd send off rather than nudge bit by bit (Connections pick)
+- Rules-file home (Phase 2 rule-sharpening lands here) — `./CLAUDE.local.md`
+- Observations / business-rules home (Phase 2 fill destination) — `observations/` by default; wherever the repo already keeps business rules (e.g., `docs/business-rules/`, `wiki/policy/`) if it has a place
+- The team's tracker (Phase 1 task surfacing) — Linear / Jira / GitHub Issues; if MCP is wired, Claude can read the tracker for candidates given the criteria first
 
 **Leap test** (per `check_pedagogy.md` rule 45 — three observable Monday-morning outcomes the engineer exhibits on their own codebase by the next working day):
 1. **Pins a SHA on a fresh branch before dispatching any long-running agent task.** Falsifiable: git log shows a `<prefix>/<slug>` branch with a "starting point" commit message before the agent's first task-execution commit.
@@ -150,7 +150,7 @@ The next module opens with what came back, or what you caught before it went fur
 | Artefact | Stable identifier | Produced by | Consumed by |
 |---|---|---|---|
 | M4 starting-point branch + SHA | `m4/<task-slug>` branch at the short SHA Claude reports after the commit prompt; both written into the protected `Run coordinates` block in `task.md` — the load-bearing stable identifier, not scrollback and not `./CLAUDE.local.md` | "Commit the current state…" prompt in *Send the task off* (line 49) | M5 worktree-setup prompt reads the `Run coordinates` block in `task.md` directly and forks `../<repo>-m5` from the named branch + SHA, so the packaged re-run starts from the same code state as the un-packaged run |
-| Filled gap entries | `observations/` (cross-session default) or sponsor-stated business-rules home | Phase 2 walk-and-fill prompts — observation written, rule articulated, business-rules pointer wired | M5 packaged re-send (the agent loads the same observations + the new packaging on top); M6 Phase 1 reads the worktree copy as part of the system that produced both runs |
+| Filled gap entries | `observations/` (cross-session default) or the repo's existing business-rules home | Phase 2 walk-and-fill prompts — observation written, rule articulated, business-rules pointer wired | M5 packaged re-send (the agent loads the same observations + the new packaging on top); M6 Phase 1 reads the worktree copy as part of the system that produced both runs |
 | M4 session transcript | `~/.claude/projects/<project-folder>/<session-id>.jsonl` (Claude Code's default storage) | The Claude Code session running the M4 walk + send-off; persisted by the runtime, not by an explicit prompt | M5 opening — the M5 session reads the M4 transcript directly to ground the *"what came back"* read |
 
 **Per-phase failure mode + escape hatch** (per `check_pedagogy.md` rule 47 — every phase shipping a forcing function names its dominant failure and one recovery move):

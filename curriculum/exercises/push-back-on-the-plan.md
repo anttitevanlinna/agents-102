@@ -139,10 +139,10 @@ Then just hit stop.
 - **No agent-wait charge.** P4 blocks on the student, and P2's plan-mode wait carries no other budgeted beat — nothing shares those minutes.
 - **Execution-free by design.** The student does not run the code. The exercise is about reading a plan well; execution is M3's concern. When asked *"why don't we execute?"* the trainer answers: *"you've done the work of making the plan good; recognising a good plan is the skill."*
 - **"Stop" repeats across the What-you-do line, the Approve section and the Phase 5 heading — deliberate.** The Approve section closes with *"Then just hit stop."* (operational stop — the student hits stop after approving so plan-mode does not roll into execution). Phase 5's heading opens with *"Stop, then surface the patterns"* (pedagogical stop — surface what the session showed, do not execute). It read *"name the pattern you ran"* until 2026-08-14 (Antti): the student names nothing here, the prompt asks Claude to, and the phase's own beats are the comparison of what each read caught. **The prompt was deliberately left alone** — its third question still asks for the repeatable move, and the tension with the module file's *"Claude may reframe the session into a smart-sounding general rule"* callout is known and accepted; only the heading was mis-framing the beat. The What-you-do line carries the governor for both. Same word, two registers, both load-bearing.
-- **Artifact locations — governed by the pre-engagement contract:**
+- **Artifact locations:**
   - Plan file → Claude Code's plan directory (auto, descriptive filename)
   - Execution artifacts (diff, PR) → student's real repo
-  - Compound-step rules update → personal `CLAUDE.local.md` at repo root (gitignored); team-worthy rules flagged for separate PR against sponsor-stated team rules home (`CLAUDE.md` at root, `.claude/CLAUDE.md`, or `AGENTS.md` per pre-engagement contract). See `reference/claude-code-for-engineers.md § 1`.
+  - Compound-step rules update → personal `CLAUDE.local.md` at repo root (gitignored); team-worthy rules flagged for separate PR against the team's rules home (`CLAUDE.md` at root, `.claude/CLAUDE.md`, or `AGENTS.md`, whichever the repo uses). See `reference/claude-code-for-engineers.md § 1`.
   - No training-dir state.
 - **Attribution at P5** is terse. Claude names the design pattern first; "plan-mode approval inflation" is the label the exercise hands them after they've already defeated it. Don't front-load.
 
@@ -213,7 +213,7 @@ Flagged
 **Plug points:**
 - Student's own repo (chosen in prework, carried from M1)
 - Student's own backlog task (surfaced at P1)
-- Sponsor-stated rules home for the Debrief's Compound step
+- Rules home for the Debrief's Compound step
 
 **Push-back moves:**
 - **P1:** if student can't surface a fitting task, trainer runs the three-candidate conversation. Criteria: multi-file, 30–60 min agent work, touching wrong file matters.

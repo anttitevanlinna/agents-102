@@ -102,7 +102,7 @@ Don't split M4 across the days. The M1-M2-M4 / M5-M3-M6 reorder exists; it's a c
 - No connector and no `gh` → the agent writes the close-out, the student pastes it. Don't stop the room to install anything.
 - Connector added live and not showing → `/mcp`; then `claude --resume <session-id>`. One student, not the room.
 - No ticket → the agent offers to create one; tracker unreachable → markdown ticket in the repo, link the PR.
-- Wizard-move demo: all windows incognito (ghost icon, outside a project). Cross-chat memory leaks window 1 into window 2. If window 2 answers Finnish-adjacent anyway: *"It remembered — the lecture's point one step early."* Run a third window clean.
+- Wizard-move demo: three fresh Claude Code sessions, each in an empty directory outside any repo, so nothing loads. If session 2 answers Finnish-adjacent anyway: *"It remembered — the lecture's point one step early."* Run a third session clean.
 
 **If behind, cut in order.** 1. The two optional Fix tests-first prompts. 2. Close the ticket's second-ticket suggestion and the push-back-on-five paragraph (~15 instead of 20). 3. Orient and introspect at its 15-min floor. 4. Connections and lecture framing. Never: the failing test before the fix, the diff-line push-back, the conventions read before the close-out.
 

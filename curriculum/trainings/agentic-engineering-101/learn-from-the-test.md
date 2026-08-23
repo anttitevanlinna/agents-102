@@ -19,7 +19,7 @@ After this module, you will be able to:
 
 ## Start here
 
-You sent off an un-packaged session. You walk in with the artefact in front of you; the lecture below hands you the lenses to read it with.
+You sent off an un-packaged session. You walk in with the artefact in front of you; the lecture ahead hands you the lenses to read it with.
 
 > **Long sessions, short reads.** The M1 countermove rides along: tell the agent what output you want. Ranked findings first, detail on request, the full record on disk.
 

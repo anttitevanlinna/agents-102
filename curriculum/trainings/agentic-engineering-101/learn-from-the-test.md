@@ -56,7 +56,6 @@ Gitignored files (your `CLAUDE.local.md`, `observations/`) don't ride into a wor
 - The missing evidence is the interaction of this task, model, repository, and setup.
 - The experiment promotes a candidate to tested-here; the local optimum stays ahead.
 - The agent makes evidence cheap; the engineer decides what it means and what becomes durable practice.
-- The diff says what shipped; the transcript says how it got there. Read one without the other and you miss either the mechanism or the result.
 
 <!--flag:no-module:spot-gaps-build-the-loop-->
 ## Inspect your results

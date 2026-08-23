@@ -3,16 +3,16 @@
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/getting-going.md",
   "verdict": "PASS",
   "training": "ae101",
-  "body_sha": "b07fe02ab2eb436c9268b37379c3ea1581a2c70aeb6dc51e27e409e5592b505a",
-  "class_pin": "a0449afa",
-  "diff_summary": "Since a0449afa, the ONLY student-facing (above-<!-- maintainer -->) change is one Key Concepts bullet (line 61): appended 'It is the simplest personal store, and a starter. Everyone sees how it will bloat almost immediately.' after the existing CLAUDE.local.md sentence. Every other diff hunk (source-freshness due:cohort edits, a new LO accept-note, the Opening-bid install mechanic wording, the Plug points wording, and the Quality stamp) sits below the maintainer cut and is out of writing-class scope.",
+  "body_sha": "90c8bbc12fb2f099da063aad26ed7b419c33bed29ad8ffc04a0b62eb9446b3ca",
+  "class_pin": "7fb973dd",
+  "diff_summary": "git diff 7fb973dd..HEAD on this file touches only two things: (1) Optional-challenges line 71, 'route it to the right instruction surface' -> 'route it to the right rules file' (already-landed check_slides §8 fix, out of this class's scope, re-confirmed clean here); (2) the Quality-line stamp rewrite itself. Per the dispatch instruction not to scope the read to the diff, this pass re-read the FULL body against the live compendiums rather than trusting the small diff, because check_student_facing.md §33 gained a predicate-leak / pre-reads-non-exemption clause TODAY (2026-08-23) and the only file it had been checked against so far was a sibling module (plan-mode-done-right.md, Antti-ruled in commit 392c4e65). That full re-read found one new, previously-unflagged instance of the same pattern in THIS file's own Pre-reads section (line 79) that no diff-scoped pass could have reached, since line 79 predates 7fb973dd untouched. One older non-blocking finding (rule 26, line 61) carries forward unchanged from the a0449afa-era instance: the text at that line has not moved since, and re-reading it fresh I still find the harm present.",
   "rules_evaluated": [
     {
       "compendium": "check_writing.md",
       "rule_index": 1,
       "rule_lead": "Banned words — grep zero-tolerance.",
       "verdict": "PASS",
-      "evidence": "Mechanical: `sed -n '1,87p' getting-going.md | grep -inE '\\bhonest|\\bdelve|\\blandscape\\b|\\bimportantly|\\bcrucial|\\bsubstrate|\\bleverage\\b|\\bsynergize|\\bparadigm shift'` -> 0 hits. Em-dash check `grep -n '—'` on body (lines 1-87) -> 0 hits.",
+      "evidence": "Mechanical: `awk '/^<!-- maintainer -->/{exit}{print}' getting-going.md | grep -inE '\\bhonest|\\bdelve|\\blandscape\\b|\\bimportantly|\\bcrucial|\\bsubstrate|\\bleverage\\b|\\bsynergize|\\bparadigm shift'` -> 0 hits (verified against a planted test string first to confirm the grep works). Em-dash check `grep -n '—'` on body (lines 1-87) -> 0 hits.",
       "fix_hint": null,
       "blocking": true
     },
@@ -39,7 +39,7 @@
       "rule_index": 4,
       "rule_lead": "Register match.",
       "verdict": "PASS",
-      "evidence": "Judgement: body reads AE101 quintet-consistent (Boris-terse instructions in What You'll Learn; Rory-flavoured wry aside at line 61 'Everyone sees how it will bloat almost immediately'). Closest-to-violating line: line 61's new clause reads slightly loose/vague ('Everyone', 'almost immediately') versus Boris-terse precision, but stays inside voice as a legitimate Sutherland-style wry aside, not L&D-coach or motivational-poster register.",
+      "evidence": "Judgement: body reads AE101 quintet-consistent throughout (Boris-terse instructions in What You'll Learn; Rory-flavoured wry aside at line 61). 'route it to the right rules file' (line 71) is plainer and more Boris-concrete than its predecessor, an improvement, not a regression. No L&D-coach or motivational-poster register found.",
       "fix_hint": null,
       "blocking": false
     },
@@ -57,7 +57,7 @@
       "rule_index": 6,
       "rule_lead": "Credit original when paraphrasing named technique.",
       "verdict": "PASS",
-      "evidence": "Willison (line 12), Horthy (line 79), Cherny (line 81, 83), Klaassen (maintainer Frameworks block, out of scope) all credited by name at point of paraphrase. Creator-name / author-we sub-clauses: mechanical grep '\\bAntti\\b|\\bthe creator\\b|\\bthe author\\b' on body -> 0 hits. 'we' appears once in body, only inside the section heading '## How we work in this room' (line 22) -> substituting 'the training authors' for 'we' there reads as clearly wrong (room-collective, not author-we), passes the diagnostic.",
+      "evidence": "Willison (line 12), Horthy (line 79), Cherny (line 81, 83) all credited by name at point of paraphrase, each with a link. Klaassen credited in the maintainer Frameworks block, out of body scope. Creator-name / author-we sub-clauses: mechanical grep '\\bAntti\\b|\\bthe creator\\b|\\bthe author\\b' on body -> 0 hits. 'we' appears once in body, only inside the section heading '## How we work in this room' (line 22) and its content (line 26 uses 'the trainer' third-person, not 'we'). Diagnostic: substituting 'the training authors' for 'we' there reads as clearly wrong -> this is room-collective (trainer+peers+student), not author-we, so it passes the diagnostic and stays outside the ban's KEEP-list-only scope on that basis (the harm the rule prevents -- an author speaking as organisational authority -- is not present in a heading naming who is in the room).",
       "fix_hint": null,
       "blocking": true
     },
@@ -66,7 +66,7 @@
       "rule_index": 7,
       "rule_lead": "Always \"you\", never \"the student\"; teacher framing stays out of body.",
       "verdict": "PASS",
-      "evidence": "Body addresses the reader as 'you' throughout (Prework, What You'll Learn, Freedom to choose). No 'the student' third-person phrasing found. 'Start here' trick-share paragraph is the Connections-opener room-harvest carve-out, matching the file's own maintainer accept-note at line 110.",
+      "evidence": "Body addresses the reader as 'you' throughout (Prework, What You'll Learn, Freedom to choose). No 'the student' third-person phrasing found (mechanical grep 0 hits). Line 26 ('The trainer keeps the room moving; they are not the debugger...') names the trainer's role as classroom-culture information the student needs, not a stage-direction telling the trainer what to do/show/say -- distinct from the banned delivery-mechanics shape. 'Start here' trick-share paragraph is the Connections-opener room-harvest carve-out, matching the file's own maintainer accept-note.",
       "fix_hint": null,
       "blocking": true
     },
@@ -75,7 +75,7 @@
       "rule_index": 8,
       "rule_lead": "Don't smuggle terms of art from maintainer into body.",
       "verdict": "PASS",
-      "evidence": "Maintainer-only terms (leap test, artefact contracts, plug points, push-back moves) stay below the fence. 'compounding' in the Big Idea (line 6) is covered by the Big-Idea structural carve-out and lands operationally in this module's own Ex4 (compound-and-close, referenced via Key Concepts line 61-62).",
+      "evidence": "Maintainer-only terms (leap test, artefact contracts, plug points, push-back moves) stay below the fence. 'compounding' in the Big Idea (line 6) is covered by the Big-Idea structural carve-out and lands operationally in this module's own Ex4 (compound-and-close, referenced via Key Concepts line 61-62). Line 71's edit ('the right rules file', was 'the right instruction surface') removes rather than adds a term-of-art -- plainer, not a new leak.",
       "fix_hint": null,
       "blocking": true
     },
@@ -102,7 +102,7 @@
       "rule_index": 11,
       "rule_lead": "Cap practitioner attribution at one student-side mention per module.",
       "verdict": "PASS",
-      "evidence": "Cherny is named twice in body prose: line 81 ('Cherny walks through how he and the team actually use the tool...') and line 83 ('Cherny calls parallel worktrees his single biggest productivity unlock...'). Both sit inside the Pre-reads/reading-list surface, which the 2026-08-15 carve-out treats as attribution-bookkeeping-exempt by default, and the two mentions do different work (general demo overview vs a specific worktree-technique claim) rather than repeating the same credit. Stays inside, but see rule_questions for the genuine two-mentions-in-one-reading-list ambiguity.",
+      "evidence": "Cherny is named twice in body prose: line 81 ('Cherny walks through how he and the team actually use the tool...') and line 83 ('Cherny calls parallel worktrees his single biggest productivity unlock...'). Both sit inside the Pre-reads reading-list surface, which the 2026-08-15 'prereads and links don't count' carve-out treats as attribution-bookkeeping-exempt, and the two mentions do different work (general demo overview vs a specific worktree-technique claim). Genuinely close call preserved as a rule_question below rather than silently resolved either way.",
       "fix_hint": null,
       "blocking": false
     },
@@ -120,7 +120,7 @@
       "rule_index": 13,
       "rule_lead": "Value-prop / positioning framing belongs in sales copy + project strategy docs, NOT student-facing curriculum body.",
       "verdict": "PASS",
-      "evidence": "Closest-to-violating line: line 75, Pre-reads lede 'Optional. Do them and Module 2's moves land as things you've already seen.' Pattern-echoes the sub-clause's banned-shape vocabulary ('how it lands'/'lands as recognition'). Stays inside because the clause states a concrete reader payoff (less unfamiliarity in M2), not curriculum-internal sequencing logic for its own sake, and each of the four following items carries substantial reader-gain content of its own (Horthy's thesis, Cherny's technique) with at most one plain pickup-clause each, matching the rule's explicit allowance. See rule_questions — this call is genuinely close.",
+      "evidence": "Mechanical: grep for 'vendor|not an aspirational|not a vendor|this isn.t marketing|the real practitioners|unlike consultancy|grounded in actual|not theoretical|from the person running it' on body -> 0 hits. No defensive-against-vendor framing found.",
       "fix_hint": null,
       "blocking": true
     },
@@ -129,7 +129,7 @@
       "rule_index": 14,
       "rule_lead": "Watch out for planting jargon too early.",
       "verdict": "PASS",
-      "evidence": "'AE101' is earned explicitly at first use (line 81: '(AE101 from here on)'). 'compounding' carried via the Big-Idea structural carve-out. Module-number convention correctly uses full 'Module 2' form throughout (this file is M1/prework-adjacent; bare 'M2' abbreviation is not yet earned per the sibling compendium's own M1-uses-full-form rule), consistent with the earning discipline this rule polices.",
+      "evidence": "'AE101' earned explicitly at first use (line 81: '(AE101 from here on)'). 'compounding' carried via the Big-Idea structural carve-out. Module-number convention correctly uses full 'Module 2' form throughout (this file is M1, where the abbreviation is not yet earned per check_student_facing §2), consistent with the earning discipline this rule polices.",
       "fix_hint": null,
       "blocking": false
     },
@@ -138,7 +138,7 @@
       "rule_index": 15,
       "rule_lead": "Audit closer when trimming body-prose forcing function.",
       "verdict": "PASS",
-      "evidence": "No trimmed forcing-function scars found; pronoun/demonstrative referent check on section closers (Big Idea close, Next section close, Key Concepts final bullet) found no ambiguous 'it/this/that' with more than one plausible referent.",
+      "evidence": "No trimmed forcing-function scars found; pronoun/demonstrative referent check on section closers (Big Idea close, Next section close, Key Concepts final bullet, Optional-challenges final bullet after the line-71 edit) found no ambiguous 'it/this/that' with more than one plausible referent.",
       "fix_hint": null,
       "blocking": false
     },
@@ -165,7 +165,7 @@
       "rule_index": 18,
       "rule_lead": "Headers must be literally true about the mechanism.",
       "verdict": "PASS",
-      "evidence": "Checked all body `##` headers ('How we work in this room', 'Freedom to choose', 'Start here', 'Pre-reads before Module 2', 'Optional challenges', 'Next') against their section content; none contradicts its mechanism or uses an unanchored 'other X'.",
+      "evidence": "Checked all body `##` headers ('How we work in this room', 'Freedom to choose', 'Start here', 'Key Concepts', 'Optional challenges', 'Pre-reads before Module 2', 'Next') against their section content; none contradicts its mechanism or uses an unanchored 'other X'.",
       "fix_hint": null,
       "blocking": false
     },
@@ -174,7 +174,7 @@
       "rule_index": 19,
       "rule_lead": "Machine-cadence fat — the shape of good prose without the content.",
       "verdict": "PASS",
-      "evidence": "No empty-negation, deictic-drumroll ('That is the X'), bold-label-echo, or citation/appendix-duplication patterns found in body on a full read.",
+      "evidence": "No deictic-drumroll ('That is the X') or bold-label-echo patterns found (mechanical greps 0 hits). Empty-negation check: line 59 ('not ground truth... not the things themselves') negates against a real plausible prior for engineers new to agentic self-reports -- legitimate, not empty. Line 30 ('Not too fast, not too slow') is a short economical aside, not cadence-fat.",
       "fix_hint": null,
       "blocking": false
     },
@@ -201,7 +201,7 @@
       "rule_index": 22,
       "rule_lead": "A claim binds to every body that states it, not just the one holding the stamp.",
       "verdict": "N/A",
-      "evidence": "No re-verified/corrected source claim in this pass requiring cross-file propagation; the diff's only body change (Key Concepts line 61) adds no cited factual claim.",
+      "evidence": "No re-verified/corrected source claim in this pass requiring cross-file propagation; the only body-region diff since 7fb973dd (line 71) adds no cited factual claim.",
       "fix_hint": null,
       "blocking": false
     },
@@ -209,8 +209,8 @@
       "compendium": "check_writing.md",
       "rule_index": 23,
       "rule_lead": "A rule set reconstructed at session start goes stale inside the session — re-derive it per target, not per sweep.",
-      "verdict": "N/A",
-      "evidence": "Process rule for multi-file sweeps, not a content check against this single file's prose; this pass re-read the live compendiums fresh for this one target.",
+      "verdict": "PASS",
+      "evidence": "This pass re-read check_writing.md and check_student_facing.md fresh rather than reusing a cached rule set, which is what surfaced the line-79 finding below: §33's predicate-leak/pre-reads clause landed TODAY, in a commit scoped to a sibling file, and a cached rule set from before that commit would have missed it here too.",
       "fix_hint": null,
       "blocking": false
     },
@@ -390,7 +390,7 @@
       "rule_index": 20,
       "rule_lead": "Disambiguate shared-word collisions with Claude Code primitives on first student-authored use.",
       "verdict": "PASS",
-      "evidence": "No first-authored-use of a collision term (memory/skill/plan/agent) requiring disambiguation in this file's body. Deictics ('here', 'this') checked; each has a clear proximate referent.",
+      "evidence": "No first-authored-use of a collision term (memory/skill/plan/agent) requiring disambiguation in this file's body. 'loop' names two things in this file (the training's orient->fix->close->compound cycle at line 57, and the `/loop` scheduled-task feature at line 68); the backtick-slash code formatting on the latter, plus its babysit-a-PR context, disambiguates visually without a prose collision-note, so no violation. Deictics ('here', 'this') checked; each has a clear proximate referent.",
       "fix_hint": null,
       "blocking": false
     },
@@ -399,7 +399,7 @@
       "rule_index": 21,
       "rule_lead": "LLM-vs-agent-vs-Claude vocabulary discipline.",
       "verdict": "PASS",
-      "evidence": "'the agent's self-report', 'the agent's account of the repo' used for acting/self-report framing; 'Claude' used at invocation/addressee points ('Ask Claude what is wrong'). No lopsided Claude-count-vs-agent-count skew in this short body.",
+      "evidence": "'the agent's self-report', 'the agent's account of the repo' used for acting/self-report framing; 'Claude' used at invocation/addressee points ('Ask Claude what is wrong'). Line 25's 'what the model actually does' is a looser third term outside the agent/Claude/LLM split, but it is ordinary engineer shorthand in a non-agency-load-bearing sentence, not an assistant-vs-agent conflation -- stays inside. No lopsided Claude-count-vs-agent-count skew in this short body.",
       "fix_hint": null,
       "blocking": false
     },
@@ -453,8 +453,8 @@
       "rule_index": 26,
       "rule_lead": "Cut NVA: true but not moving student forward.",
       "verdict": "REVISE",
-      "evidence": "Harm this rule prevents: true-but-inert prose that costs reading time without changing what the student decides, does, or notices next -- for a professional audience whose read is time-pressured. Harm present: line 61's newly added clause 'It is the simplest personal store, and a starter. Everyone sees how it will bloat almost immediately.' states something obvious to any working engineer who has used a dotfile/config/rules file before (that a lightly-maintained personal file accumulates cruft), and it changes no decision or next action -- the bullet's actual teaching content (evidence-grounded, personal-first, team-worthy-rules-get-promoted) was already fully stated in the sentence before it. Fails the rule's own 'fastest NVA screen': is this obvious to a working engineer? Yes.",
-      "fix_hint": "Cut the two added sentences; the bullet's teaching point is already complete without them. If the bloat-and-prune dynamic is worth keeping, it earns its place by connecting to a concrete next action (e.g. the team-worthy-rules-earn-a-PR pattern) rather than as a standalone observation.",
+      "evidence": "Harm this rule prevents: true-but-inert prose that costs reading time without changing what the student decides, does, or notices next, for a professional audience whose read is time-pressured. Harm present: line 61's clause 'It is the simplest personal store, and a starter. Everyone sees how it will bloat almost immediately.' states something obvious to any working engineer who has kept a dotfile or config file before (a lightly-maintained personal file accumulates cruft), and it does not change any decision or next action the student takes -- the bullet's actual teaching content (evidence-grounded vs blank-drafted, personal-first, team-worthy rules earn their own PR) is already complete in the sentence before it. Fails the rule's own fastest screen ('is this obvious to a working engineer? Yes -> cut'). Re-verified fresh on this pass (unchanged since the a0449afa-era instance; carried forward as still-live, not stale).",
+      "fix_hint": "Cut the two added sentences; the bullet's teaching point is already complete without them. If the bloat-and-prune dynamic is worth keeping, it earns its place by connecting to a concrete next action (e.g. the team-worthy-rules-earn-a-PR pattern, or Ex4's integrate-don't-append move) rather than as a standalone observation.",
       "blocking": false
     },
     {
@@ -471,7 +471,7 @@
       "rule_index": 28,
       "rule_lead": "Forward-callout closer: student as grammatical subject.",
       "verdict": "PASS",
-      "evidence": "Next section closes on 'Your rules file gets read at the top of that session' (line 86) — subject is the student's own artifact, passing the subject test; no training/system-as-subject, coach-imperative, or role-gating found.",
+      "evidence": "Next section closes on 'Your rules file gets read at the top of that session' (line 86) — subject is the student's own artifact, passing the subject test; no training/system-as-subject, coach-imperative, or role-gating found. This is the canonically-exempt '## Next' section, so §33's stricter subject/predicate test does not additionally apply here.",
       "fix_hint": null,
       "blocking": false
     },
@@ -497,8 +497,8 @@
       "compendium": "check_student_facing.md",
       "rule_index": 31,
       "rule_lead": "Name the artifact, not the act.",
-      "verdict": "PASS",
-      "evidence": "No fenced prompts in this file's body, so no act-verb ('typing', 'saying', 'tell it to') pattern around quoted prompt content to check; N/A-adjacent but no violation present either way.",
+      "verdict": "N/A",
+      "evidence": "No fenced prompts in this file's body, so no act-verb ('typing', 'saying', 'tell it to') pattern around quoted prompt content to check.",
       "fix_hint": null,
       "blocking": false
     },
@@ -515,9 +515,9 @@
       "compendium": "check_student_facing.md",
       "rule_index": 33,
       "rule_lead": "The curriculum does not narrate itself — subject test, then deletion test.",
-      "verdict": "PASS",
-      "evidence": "Closest-to-violating line: line 75, Pre-reads lede 'Optional. Do them and Module 2's moves land as things you've already seen.' Subject is nominally 'Module 2's moves' (a later beat), which the plain subject test would cut as arc-positioning; it stays inside because the predicate names a concrete reader payoff (recognition reduces load in M2) rather than pure curriculum cartography, and 'Pre-reads before Module 2' functions as forward-preview scaffolding the way the canonical 'Next' section does, even though it is not literally on the exempt heading list. This call is genuinely close — see rule_questions.",
-      "fix_hint": null,
+      "verdict": "REVISE",
+      "evidence": "Harm this rule (and its 2026-08-23 pre-reads-non-exemption / predicate-leak amendment) prevents: a pre-read annotation that stops describing the reading and instead makes a promise about what a later module will do, which is cartography dressed as orientation and, per the rule's own worked precedent today, a cheque a later beat must cash. Harm present: line 79's trailing clause, '...The cure he lands on is human review made affordable by upfront planning, which is where Module 2 goes next.' names 'Module 2' as the destination and states what it will cover -- the exact shape Antti ruled a violation and cut TODAY in the sibling file plan-mode-done-right.md ('...where the blast radius ends. Module 3 draws that boundary for your own repo.' -> cut, commit 392c4e65). '## Pre-reads before Module 2' is not on the exempt-heading list (What You'll Learn, Connections, Bridge/Next, Prework, The point), and §33 states explicitly that pre-reads sections do NOT inherit Prework's exemption. This module's own '## Next' section (line 85-86) already states the same content accurately and legitimately ('Module 2 is where plan mode earns its keep... a second pass that pressure-tests the plan before you approve it'), so the line-79 clause is also redundant with a passage that already carries the framing once, mirroring the redundancy half of the sibling ruling ('Line 86 already carries the M3 framing once'). No accept-note in this file's maintainer block covers this specific line. This appears to be a pre-existing instance of the pattern that the sibling-file audit (which produced the 'of AE101's three pre-reads sections, exactly one narrated a later module' finding) did not reach, since that audit was scoped to plan-mode-done-right.md.",
+      "fix_hint": "Cut the trailing clause so the entry stops at what Horthy's essay argues: '...The cure he lands on is human review made affordable by upfront planning.' The '## Next' section already states what Module 2 does; no promise needs restating here.",
       "blocking": false
     },
     {
@@ -552,7 +552,7 @@
       "rule_index": 37,
       "rule_lead": "Mood is a design constraint, not a garnish.",
       "verdict": "PASS",
-      "evidence": "M1's stated mood target (maintainer Meta block) is joyful creation; Big Idea and Key Concepts content matches it. The new line-61 clause ('Everyone sees how it will bloat almost immediately') was checked against mood drift and reads as an in-voice wry aside (Sutherland-style counterintuitive realism), not a resolving-the-doubt or premature-rescue wrong-edit for this module.",
+      "evidence": "M1's stated mood target (maintainer Meta block) is joyful creation; Big Idea and Key Concepts content matches it. Line 61's clause (separately flagged under rule 26) reads as an in-voice wry aside, not a resolving-the-doubt or premature-rescue wrong-edit for this module.",
       "fix_hint": null,
       "blocking": false
     },
@@ -561,7 +561,7 @@
       "rule_index": null,
       "rule_lead": "Foundational principle intro-block (contemplative-pause / room-share / overclaim / narrating-state / scheduling-attention) — embedded numbered items inside the blockquote preamble, not separately tracked to avoid rule_index collision with the outer numbered list.",
       "verdict": "PASS",
-      "evidence": "Reviewed all five: contemplative-pause hard-grep 0 hits; room-share hard-grep 0 hits and 'Ask Claude what is wrong, or ask out loud' (line 26) reads as offer-grammar naming two channels, not a mandated performance-on-cue; overclaim N/A (no verification-ask content in this file); narrating-student-state — no closer pat-on-head found (the line-61 addition is about the artifact's own state, not the student's, and is separately flagged under rule 26 above); scheduling-the-student's-attention N/A (Pre-reads section names a natural before/after-M2 checkpoint, not a within-document read-order instruction).",
+      "evidence": "Reviewed all five: contemplative-pause hard-grep 0 hits; room-share hard-grep 0 hits and 'Ask Claude what is wrong, or ask out loud' (line 26) reads as offer-grammar naming two channels (agent or peers), not a mandated performance-on-cue -- passes all four tells (no artifact, no scheduled cue, student's own confusion as subject, offer grammar) and is the only such line in the file, satisfying the one-per-file dosage cap; overclaim N/A (no verification-ask content in this file); narrating-student-state — no closer pat-on-head found (the line-61 addition is about the artifact's own state, not the student's, and is separately flagged under rule 26 above); scheduling-the-student's-attention N/A (Pre-reads section names a natural before/after-M2 checkpoint, not a within-document read-order instruction).",
       "fix_hint": null,
       "blocking": true
     },
@@ -597,7 +597,7 @@
       "rule_index": 4,
       "rule_lead": "Strategy-fidelity check.",
       "verdict": "PASS",
-      "evidence": "Checked cross-module claims: 'Module 2 is where plan mode earns its keep' (Next) correctly defers plan-mode teaching to M2 rather than front-running it. The LO 'Compound the session into a personal rules file' is explicitly scoped narrow per the file's own maintainer accept-note (line 108) to avoid front-running the wider compound-engineering concept.",
+      "evidence": "Checked cross-module claims: 'Module 2 is where plan mode earns its keep' (Next) correctly defers plan-mode teaching to M2 rather than front-running it. The LO 'Compound the session into a personal rules file' is explicitly scoped narrow per the file's own maintainer accept-note to avoid front-running the wider compound-engineering concept. Line 79's cartography clause (flagged under check_student_facing §33 above) is also a soft strategy-fidelity concern in the same direction -- naming M2's content ahead of M2 -- but is scored under §33, not duplicated here.",
       "fix_hint": null,
       "blocking": false
     },
@@ -633,7 +633,7 @@
       "rule_index": null,
       "rule_lead": "Prompt-block design checklist (whole compendium) — no fenced code blocks in this file.",
       "verdict": "N/A",
-      "evidence": "Mechanical: `grep -n '```'` on the full file -> no matches (confirmed against dispatch preamble's fence-check requirement). This compendium's scope is explicitly 'anything inside a fenced code block with copy-this affordance'; this module overview file contains none (prompts live in the linked exercise files, out of this file's scope).",
+      "evidence": "Mechanical: `grep -n '```'` on the full file -> no matches. This compendium's scope is explicitly 'anything inside a fenced code block with copy-this affordance'; this module overview file contains none (prompts live in the linked exercise files, out of this file's scope).",
       "fix_hint": null,
       "blocking": false,
       "judge_owned": true
@@ -650,10 +650,10 @@
     }
   ],
   "blocking_findings_count": 0,
-  "todos_count": 1,
+  "todos_count": 2,
   "rule_questions": [
-    "check_writing.md §13 / check_student_facing.md §33: the Pre-reads-before-Module-2 lede ('Optional. Do them and Module 2's moves land as things you've already seen.', line 75) sits exactly on the boundary the compendiums' own examples name ('lands as recognition', 'how it lands' as banned designer-reason shapes vs. a legitimate one-clause reader-payoff). For the rule to clearly resolve this either way, it would need to say whether a section-level lede sentence (as opposed to a per-item annotation) is held to the same 'at most one plain clause on how the module picks it up' allowance, and whether 'Pre-reads before Module 2' functions as an exempt forward-preview section the way '## Next' does even though it isn't on the literal exempt-heading list. The maintainer's line-96 'Slide size accepted' note discusses this section's annotation style but is answering a check_slides.md word-count question, not this one, so it isn't read here as a dispositive accept-note for either concern.",
-    "check_writing.md §11: Cherny is named twice in the Pre-reads reading list (line 81 general demo, line 83 specific worktree-technique claim). Both fall inside the 2026-08-15 prereads-and-links carve-out's generally-exempt surface, but the carve-out's own closing sentence ('fires on prose that names the practitioner as actor/authority') arguably still catches the second mention on its own terms. Worth a maintainer call on whether two distinct-function citations of the same practitioner within one reading list should count toward the one-mention cap, or whether the reading-list exemption is meant to cover the whole section regardless of mention count."
+    "check_student_facing.md §33: line 75's section lede ('Optional. Do them and Module 2's moves land as things you've already seen.') names 'Module 2' and predicts how it will feel, the same surface shape as the line-79 clause filed as REVISE above -- but it is the SECTION'S OWN lede, not a per-item reading annotation, and it functions structurally like a mini '## Next' preview for the section rather than a claim smuggled inside one reading's description. The settled 2026-08-23 ruling (commit 392c4e65) explicitly fixed a per-item annotation's trailing clause; it did not address a section-level lede, and the file's 'Slide size accepted' maintainer note (which discusses this section's word-count/annotation style for a different rule, check_slides, not §33) doesn't resolve it either. Left as PASS with this question open rather than filed as a second REVISE, since the rule's own worked precedent doesn't clearly reach this shape and a maintainer call would settle it either way.",
+    "check_writing.md §11: Cherny is named twice in the Pre-reads reading list (line 81 general demo, line 83 specific worktree-technique claim). Both fall inside the 2026-08-15 prereads-and-links carve-out's generally-exempt surface, but the carve-out's own closing sentence ('fires on prose that names the practitioner as actor/authority') arguably still catches both mentions on its own terms, since both do name Cherny as actor. Worth a maintainer call on whether two distinct-function citations of the same practitioner within one reading list should count toward the one-mention cap, or whether the reading-list exemption is meant to cover the whole section regardless of mention count. (Carried forward unchanged from the prior instance; not re-litigated fresh here.)"
   ],
-  "notes": "Two secondary compendiums scored as whole-file N/A rows rather than per-rule breakdowns (check_prompts.md: 0 fenced blocks in file; check_sales_copy.md: not buyer-facing copy) — matches this class's non-primary ownership of those compendiums per check_writing.md's completeness contract, which mandates full per-rule coverage only for check_writing.md and check_student_facing.md. check_student_facing.md's intro blockquote ('Foundational principle') carries its own embedded numbered items (1-5: contemplative-pause, room-share, overclaim, narrating-state, scheduling-attention) that share numbering with the outer rule list (1-37); these were reviewed but rolled into one judge_owned row to avoid a rule_index collision with the outer list's rules 1-5. Cross-class observation, not scored here: the Quality stamp at the bottom of the maintainer block records writing@a0449afa as already-PASS — this instance supersedes that stamp for the current body_sha."
+  "notes": "Full-body re-read (not diff-scoped) per the dispatch instruction, because check_student_facing.md §33 gained a predicate-leak / pre-reads-non-exemption clause on 2026-08-23 (today) and the only file it had been checked against was a sibling module. That re-read found one new REVISE (rule 33, line 79) that no diff-scoped pass against this file's own small 7fb973dd..HEAD diff could have reached. One older non-blocking REVISE (rule 26, line 61) carries forward unchanged from the a0449afa-era instance -- re-verified fresh, not copied blind. Two secondary compendiums scored as whole-file N/A rows rather than per-rule breakdowns (check_prompts.md: 0 fenced blocks in file; check_sales_copy.md: not buyer-facing copy) — matches this class's non-primary ownership of those compendiums per check_writing.md's completeness contract, which mandates full per-rule coverage only for check_writing.md and check_student_facing.md. check_student_facing.md's intro blockquote ('Foundational principle') carries its own embedded numbered items (1-5) that share numbering with the outer rule list; these were reviewed but rolled into one judge_owned row to avoid a rule_index collision. Both REVISE findings are non-blocking per the writing-judge template's blocking list (neither rule 26 NVA nor rule 33 curriculum-narrates-itself is in the blocking-rule set), so top-level verdict is PASS with 2 open todos -- consistent with how the sibling file's own §33 finding was stamped today ('PASS:2-todos-carded' in commit c8998c47) rather than held. The Quality line at the bottom of the maintainer block currently records writing@7fb973dd as already-PASS; this instance is the actual re-judgment behind that stamp for the current body_sha and supersedes the stale a0449afa-era instance content that predated it on disk."
 }

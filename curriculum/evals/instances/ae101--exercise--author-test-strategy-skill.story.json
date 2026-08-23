@@ -1,7 +1,7 @@
 {
   "class": "storytelling",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/author-test-strategy-skill.md",
-  "body_sha": "dbda709aa5d5b300944b9ecae0c795dfc93e5528068dc8e588f106fba4b0cf42",
+  "body_sha": "a914b5cec7612cdb5a799cf0001b9a884b4d50109b46bbf4735f3d28ba6b3550",
   "verdict": "PASS",
   "training": "ae101",
   "module_mood_contract": "earned trust, culminating — author one skill, invoke on a real feature, ship personal-first (M3 Ex3)",
@@ -12,7 +12,7 @@
       "rule_index": 1,
       "rule_lead": "Meta-frame lectures = closers, not openers.",
       "verdict": "N/A",
-      "evidence": "File lives at curriculum/exercises/author-test-strategy-skill.md, not curriculum/lectures/ — this rule fires on lecture placement, and there is no lecture here to place.",
+      "evidence": "File lives at curriculum/exercises/author-test-strategy-skill.md, not curriculum/lectures/ — this rule fires on lecture placement and there is no lecture here to place.",
       "fix_hint": null,
       "blocking": false
     },
@@ -21,7 +21,7 @@
       "rule_index": 2,
       "rule_lead": "Minimal lecturing before contrast-mood exercises.",
       "verdict": "N/A",
-      "evidence": "Rule governs a lecture's dosage before a contrast-mood exercise (M5-style). This file IS an exercise, not a pre-exercise lecture, and M3 is not a contrast-mood module.",
+      "evidence": "Rule governs a lecture's dosage before a contrast-mood exercise (M5-style). This file IS the exercise, not a pre-exercise lecture, and M3 is not a contrast-mood module.",
       "fix_hint": null,
       "blocking": false
     },
@@ -30,7 +30,7 @@
       "rule_index": 3,
       "rule_lead": "No cross-module sequencing in lecture bodies.",
       "verdict": "N/A",
-      "evidence": "Rule text is scoped to lecture bodies specifically ('lectures teach, module files sequence'). This is an exercise file; its 'What this sets up' section naming M4 is the sanctioned module-to-module arc handoff evaluated under check_strategy_tie_in §4, not a lecture-body violation.",
+      "evidence": "Rule text is scoped to lecture bodies ('lectures teach, module files sequence'). This is an exercise file; its 'What this sets up' section naming Module 4 (unchanged by the diff-region) is the sanctioned module-to-module arc handoff evaluated under check_strategy_tie_in §4, not a lecture-body violation.",
       "fix_hint": null,
       "blocking": false
     },
@@ -39,7 +39,7 @@
       "rule_index": 4,
       "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
       "verdict": "PASS",
-      "evidence": "Re-ran through the file's 7 slides at HEAD (node scripts/expand-md.js output, body_sha 45377f5d...). Headers unchanged by the ba5ccf5..HEAD diff (only Phase-2/Phase-3 bullet text and the maintainer block moved): 'Phase 1: Author the skill through conversation', 'Answer from how your codebase really tests', 'Phase 2: Invoke the skill on this codebase', 'Sharpen the skill from what came back', 'Phase 3: Ship the skill personal-first', 'Decide if it graduates to the team', 'What this sets up'. Each names the concept/move it covers and asserts only what the body supports. Closest-to-violating: 'What this sets up' is stock structural-bridge chrome (paired with the 'What happened:' widget), not a concept-argument header — stays inside because it names its own content plainly (M4 handoff + skills-folder state) rather than teasing an unresolved claim.",
+      "evidence": "Re-read all 7 `##` headers at current HEAD (body_sha 97eb4b6b...) via `grep -n '^## ' curriculum/exercises/author-test-strategy-skill.md`: 'Phase 1: Author the skill through conversation', 'Answer from how your codebase really tests', 'Phase 2: Invoke the skill on this codebase', 'Sharpen the skill from what came back', 'Phase 3: Ship the skill personal-first', 'Decide if it graduates to the team', 'What this sets up'. Byte-identical to the last-verified pin — `git diff 7fb973dd..HEAD` touches only the pre-Phase-1 Quick-timebox blockquote (not a header) and the Quality-stamp label, so no header text moved. Each header still names the concept/move it covers and asserts only what its body supports.",
       "fix_hint": null,
       "blocking": false
     },
@@ -48,7 +48,16 @@
       "rule_index": 5,
       "rule_lead": "A slide's BODY is size-bounded, not just its header (§4's sibling).",
       "verdict": "PASS",
-      "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/exercises/author-test-strategy-skill.md` at HEAD (27f92c59) → 'files: 1  slides: 7  limits: 210 words / 6 bullets' / 'oversized: 0' / '✓ every slide is within limits'. The ba5ccf5..HEAD diff only trimmed words (dropped a repeated install path from two bullets), so this PASS is a re-confirmation, not a new risk.",
+      "evidence": "Ran fresh: `node scripts/check-slide-size.js --file curriculum/exercises/author-test-strategy-skill.md` at current HEAD → 'files: 1  slides: 7  limits: 210 words / 6 bullets' / 'oversized: 0' / '✓ every slide is within limits'. The diff-region edit (dropping 'This is the longest beat in Module 3 and the place where' from the pre-Phase-1 timebox note) sits before the first `##` and shortens the file, so this PASS is a re-confirmation on a smaller body, not a new risk.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 6,
+      "rule_lead": "A prompt inside a lecture is a trainer show-and-tell, never a room follow-along.",
+      "verdict": "N/A",
+      "evidence": "Rule text scopes itself explicitly: 'This holds for every {{prompt:<key>}} / inline **Prompt** block in curriculum/lectures/**' and lists 'exercise prompts... all of which the student runs themselves' under 'Not covered'. This file is curriculum/exercises/author-test-strategy-skill.md; both its {{prompt:author-test-strategy-skill-1}} and {{prompt:author-test-strategy-skill-2}} are exercise prompts the student pastes and runs themselves, matching the carve-out by name.",
       "fix_hint": null,
       "blocking": false
     },
@@ -57,7 +66,7 @@
       "rule_index": 16,
       "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
       "verdict": "PASS",
-      "evidence": "The 'ask the skill its own weakest part' ask still sits as optional body prose under '## Sharpen the skill from what came back' (line unchanged by the diff). Rule 16's Boundary 2 permits a body-only ask for light/conversational-fold register PROVIDED the file carries a maintainer accept-note — this file's maintainer block still has one: 'Accept-with-mitigation (check_pedagogy.md §56): no dedicated push-back move for a skipped self-critique ask.' Rule-drift check: §56 was amended 2026-08-23 to add a 'run the <1-min diagnostic, don't assume it' clause for slow/silent misses (rules-file bloat, context creep) — read the amendment in full; it does not reach this case. A skipped self-critique here is neither slow nor silent: it's a single-beat, immediately-observable miss, and it is still caught minutes later by the training's real mandatory forcing function inside a fence — earn-the-trust.md § 'Sharpen the skill from evidence' → {{prompt:ae101-m3-sharpen-skill}}, explicitly marked 'The skill sharpen is mandatory.' The accept-note survives the rule move unaltered.",
+      "evidence": "The 'ask the skill itself to name its own weakest part' ask still sits as optional body prose under '## Sharpen the skill from what came back' (that section is outside the diff-region — `git diff 7fb973dd..HEAD` does not touch lines 46-53). Rule 16's Boundary 2 permits a body-only ask for light/conversational-fold register PROVIDED the file carries a maintainer accept-note — confirmed still present: 'Accept-with-mitigation (check_pedagogy.md §56): no dedicated push-back move for a skipped self-critique ask.' Re-read §56 in full at current HEAD (modified: 2026-08-23T13:19:32.350Z, includes the 'Run the <1-min diagnostic, do not assume it' clause added same day for slow/silent misses like rules-file bloat or context creep): a skipped self-critique here is a single-beat, immediately-observable miss recoverable in well under a minute, not a slow silent accumulation, so the amendment does not pull this case into the forcing-function branch. It is also caught minutes later by the training's real mandatory forcing function inside a fence — earn-the-trust.md § 'Sharpen the skill from evidence' → {{prompt:ae101-m3-sharpen-skill}}, marked mandatory. The accept-note holds.",
       "fix_hint": "Non-blocking, unchanged from prior pin: the informal in-exercise ask and the module's mandatory fenced prompt cover near-identical ground minutes apart — could read as repetitive to a careful student. Author's call.",
       "blocking": false
     },
@@ -66,7 +75,7 @@
       "rule_index": 27,
       "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
       "verdict": "PASS",
-      "evidence": "Ran `grep -niE \"discuss with|share what|tell the room|compare with|neighbor|neighbour|pair up|take .* min and (compare|share|discuss)\" curriculum/exercises/author-test-strategy-skill.md` against HEAD → zero matches (empty output). No authored conversation cues; every sentence is about the work (interview, artifact, invocation, ship decision) or the third carve-out's sparing room-naming ('Show it to your staff engineer over coffee. Send it to the channel.'), which describes the team-PR follow-up conversation, not a live in-room cue.",
+      "evidence": "Ran fresh: `grep -niE \"discuss with|share what|tell the room|compare with|neighbor|neighbour|pair up|take .* min and (compare|share|discuss)\" curriculum/exercises/author-test-strategy-skill.md` against current HEAD → zero matches (empty output). No authored conversation cues anywhere in the file, including the edited timebox line. The 'Show it to your staff engineer over coffee. Send it to the channel.' bullet (unchanged by the diff) describes the team-PR follow-up conversation, not a live in-room cue, and stays inside the third carve-out.",
       "fix_hint": null,
       "blocking": false
     },
@@ -75,7 +84,7 @@
       "rule_index": 1,
       "rule_lead": "Mood contract named.",
       "verdict": "PASS",
-      "evidence": "Regenerated trace (curriculum/evals/sim-cache/ae101--exercise--author-test-strategy-skill.persona.json). Own diff check found body_sha changed since the ba5ccf5 pin (45377f5d... vs the trace's stale 250119...), so re-ran per-phase SHA compare: phase 1 (7d570dcb...) and phase 3 (0e97fbe6...) SHAs matched cache exactly and were reused; phase 2 and phase 4 SHAs mismatched (both trimmed a repeated install-path sentence) and were regenerated. Mood contract: 'earned trust, culminating.' Phase scores after regeneration: 8, 8, 7, 8; close 8 — unchanged from the prior pin, because the two edited bullets only cut an already-established fact (the path was stated once already, in Phase 1, and a new maintainer note — 'Install mechanic is stated once' — makes that deliberate) rather than removing content a student needed. Mood-floor sub-clause: all 4 beats are teaching beats (author, invoke-and-grade, sharpen, ship-and-decide-team-boundary), none are mechanical setup, so the floor applies to all four and none falls below the 7 REVISE line. Phase 3 ('Sharpen the skill from what came back') sits at facilitator-premium 7 for the same reason as the prior pin: correctly placed right after Phase 2's self-graded 'is it good?', stays optional body prose with no dedicated in-file push-back move, and the maintainer's Accept-with-mitigation note (§16 above) is why it stays there deliberately.",
+      "evidence": "Cached trace (curriculum/evals/sim-cache/ae101--exercise--author-test-strategy-skill.persona.json) had a stale content_sha (45377f5d...) that matched neither the state before nor after the diff-region edit, and its phase-1 confusion_flag referenced an unrelated earlier edit dated '2026-08-12' that does not describe the actual 7fb973dd..HEAD change — per the dispatch preamble, discarded rather than trusted. Regenerated phase 1 directly against the live file: new phase_sha `2c4c59d3...` (sed -n '1,33p' | shasum -a 256, the same line-range+shasum method independently confirmed exact-matching on phases 2 and 3's untouched cached hashes). The diff-region edit removes only an inaccurate comparative claim from the pre-Phase-1 timebox note ('the longest beat in Module 3' — false; the commit message for ac93ec5c notes three M3 exercises are all stamped 20 minutes, a three-way tie) and tightens the sentence; it touches no teaching content (the interview/authoring beat is unchanged). Diagnostic: could this note be compressed into a parenthetical without breaking the arc? Yes — it already reads as one — so it is setup/pacing framing, not a teaching beat, and sits inside the phase-1 teaching beat's envelope without altering what the persona learns there. Phase scores after re-verification: 8, 8, 7, 8; close 8 — unchanged, because the edited sentence carries no teaching content. Mood-floor sub-clause: all 4 simulated beats are teaching beats (author, invoke-and-grade, sharpen, ship-and-decide-team-boundary); none falls below the 7 REVISE line. Phase 3 ('Sharpen the skill from what came back', outside the diff-region, lines 46-53 unchanged) sits at facilitator-premium 7 for the same reason as the prior pin: correctly placed right after Phase 2's self-graded 'is it good?', stays optional body prose with no dedicated in-file push-back move, covered by the maintainer's Accept-with-mitigation note (§16 above).",
       "fix_hint": null,
       "blocking": false
     },
@@ -84,7 +93,7 @@
       "rule_index": 2,
       "rule_lead": "Epistemic mood ≠ punitive mood.",
       "verdict": "PASS",
-      "evidence": "Regenerated trace's mood_notes across all 4 phases still read as competence/agency framing ('earned competence', 'reads as competence, not a script', 'names the boundary plainly'), never shame. The self-critique ask is framed as sharpening a strength, not confessing a fault; the same-window bias line ('The grade is biased by design') names a structural fact about self-grading, not a student error. The diff touched none of this language.",
+      "evidence": "The edited sentence ('Authoring conversations spiral here. Keep it tight: ...') names a process risk (spiraling conversations) and a discipline to counter it, in the same not-knowing/practical register as the rest of the file — no shame framing introduced or removed. Body language elsewhere (untouched by the diff, lines 46-53, 62-65) still reads as competence/agency framing ('The grade is biased by design', 'Push back, and you got the real review for free'), never confession-of-fault.",
       "fix_hint": null,
       "blocking": false
     },
@@ -93,7 +102,7 @@
       "rule_index": 3,
       "rule_lead": "Lead with discipline, not failure mode.",
       "verdict": "PASS",
-      "evidence": "Top-line point (unchanged by the diff): 'test strategy authored generically is a pyramid diagram' — names the failure shape (pyramid) only as the negative case the discipline addresses, not as the title. Section headers throughout lead with positive moves ('Author the skill through conversation', 'Sharpen the skill from what came back', 'Ship the skill personal-first'), none failure-named.",
+      "evidence": "Top-line point (unchanged by the diff): 'test strategy authored generically is a pyramid diagram' — names the failure shape only as the negative case the discipline addresses. Section headers throughout lead with positive moves ('Author the skill through conversation', 'Sharpen the skill from what came back', 'Ship the skill personal-first'), none failure-named. The diff-region edit removes a factual claim, not a header or a discipline/failure framing choice.",
       "fix_hint": null,
       "blocking": false
     },
@@ -102,7 +111,7 @@
       "rule_index": 4,
       "rule_lead": "Strategy-fidelity check.",
       "verdict": "PASS",
-      "evidence": "Re-read bosser-strategy:content-strategy-agentic-engineering-101.md § 'M3 in detail' and 'M4 in detail' live (private GDrive doc, current as of this session) against the post-diff body, because the diff's substantive change — 'sponsor-named test framework...' → 'The codebase's test framework...' plug point, and the P3/watch-for bullets dropping 'pre-engagement contract' language — is exactly the kind of edit this rule exists to catch. Strategy doc's own Ex3 description says the team PR is 'a strong follow-up... mediated by human conversation, not auto-promoted' and never names a sponsor-provided team-kit home for M3 — the file's new wording ('Team-kit home unresolved... Promotion to a team home is a later human conversation') matches this exactly and is a tighter fit than the pre-diff wording, not a drift. Module-to-module arc (unchanged text): the close bullet ('Module 4 reads this skill as part of the system you have...') is a near-verbatim match to the strategy doc's M4 gap-analysis framing. Front-run check (unchanged): the exercise's own optional self-critique ask does not collapse the module's mandatory close beat, per §16 above.",
+      "evidence": "`git diff 7fb973dd..HEAD -- curriculum/exercises/author-test-strategy-skill.md` shows the diff-region touches only the pre-Phase-1 timebox sentence and the Quality-stamp label — zero touch to plug points, the Phase 1-3 bodies, the 'What this sets up' M4 handoff, or any strategic framing. The substantive strategy-fidelity content (module-to-module arc to M4's gap-analysis framing, front-run check against the exercise's own optional self-critique not pre-empting the module's mandatory close) was verified against bosser-strategy:content-strategy-agentic-engineering-101.md at the prior pin (27f92c59, ancestor of 7fb973dd) with direct quotes matching this file's wording, and none of that text has moved since. The edit itself is a strategy-neutral accuracy fix (dropping a false comparative claim about M3 exercise lengths), not a sequencing or framing change.",
       "fix_hint": null,
       "blocking": false
     },

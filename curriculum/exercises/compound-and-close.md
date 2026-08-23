@@ -10,6 +10,8 @@
 
 The PR shipped and the ticket is closed. Now compound the session, the closing step of compound engineering. No retro questionnaire: the session is the evidence.
 
+The rules land in `./CLAUDE.local.md`, and the choice is deliberate. Two reasons. It is the simplest store for personal rules there is: one file, gitignored, read at the top of every session in this repo. And it parks the bigger question, where a team's rules and guardrails should live, until Module 2. What it is not is the place for everything. Every line in a CLAUDE file rides into every session and spends the same context the work runs on. Keep it lean.
+
 ## Write your rules file from the session
 
 - Claude reviews the whole scrollback in one shot and drafts your rules from how you actually worked.

@@ -10,7 +10,7 @@
 
 The PR shipped and the ticket is closed. Now compound the session, the closing step of compound engineering. No retro questionnaire: the session is the evidence.
 
-The rules land in `./CLAUDE.local.md`, and the choice is deliberate. It is the simplest store for personal rules there is: one file, gitignored, read at the top of every session in this repo. And it parks the bigger question, where a team's rules and guardrails should live, which this training maps but does not settle for you.
+The rules land in `./CLAUDE.local.md`, and the choice is deliberate. It is the simplest store for personal rules there is: one file, gitignored, read at the top of every session in this repo. And it parks the bigger question: where a team's rules and guardrails should live.
 
 This file is a starter. Everyone sees how this will bloat almost immediately.
 

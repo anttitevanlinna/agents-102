@@ -186,7 +186,7 @@ Never cut: the failing test before the fix, the diff-line push-back, and the con
 5. Exercise — [Extract the task-shaping rule](./#exercises-extract-the-task-shaping-rule) (15 min)
 6. Save the rule if it earned itself — two short prompts in the module body; opportunistic integrate into `./CLAUDE.local.md`, only if a branch changed how the student reads plans
 7. Lecture — [Where the rule could live](./#lectures-where-the-rule-could-live) (names Slack triage / issue webhook / scheduled read)
-8. Lecture — [How instructions grow](./#lectures-how-instructions-grow) (two-slide close: one common route from real work to rules and skills; Argyris's second loop returns durable learning to future context)
+8. Lecture — [How instructions grow](./#lectures-how-instructions-grow) (five-slide close: one common route from real work to rules and skills; Argyris's second loop; the rules ceiling and the declared stop; *Keep your context where it loads optimally*, where you run `ae101-m2-name-what-moves` on the demo repo and read the return aloud. **Prep:** the demo repo's `./CLAUDE.local.md` must hold one rule that obviously belongs in a skill, a multi-step procedure that only some sessions need, or the demo returns "none" and the room sees nothing move. Students may run it on their own files; naming only, nothing is written.)
 
 **Exercise goals.**
 

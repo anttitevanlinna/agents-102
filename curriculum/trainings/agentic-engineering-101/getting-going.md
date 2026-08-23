@@ -58,7 +58,7 @@ After this module, you will be able to:
 - `/context` shows what landed in the window. What didn't land is real, and you choose what fills the next round. (`/context` is oldskool; ccstatusline, or ask Claude to set up the built-in status line.) Context is what you put in it.
 - The agent's self-report is a hypothesis, not ground truth. Read it as the agent's account of the repo and the session, not the things themselves. The scrollback is the machine's reflection; current state lives on disk.
 - A failing test is what makes the fix checkable. Without it, the fix is a guess that happens to compile
-- A `./CLAUDE.local.md` built from session evidence reads different from one drafted blank: concrete, specific, yours. Personal layer first; team-worthy rules earn their own PR. `./CLAUDE.local.md` is the simplest personal store, and it leaves where a team keeps its rules for Module 2. Not everything belongs in a CLAUDE file: every line rides into every session.
+- A `./CLAUDE.local.md` built from session evidence reads different from one drafted blank: concrete, specific, yours. Personal layer first; team-worthy rules earn their own PR. It is the simplest personal store, and a starter. Everyone sees how it will bloat almost immediately.
 - The loop ends outside the code. The close-out lands in the tracker your team reads, and that tracker encodes conventions living in the tickets. One ticket is enough to start reading them back
 
 ## Optional challenges

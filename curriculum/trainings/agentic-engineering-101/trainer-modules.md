@@ -74,7 +74,7 @@ Don't split M4 across the days. The M1-M2-M4 / M5-M3-M6 reorder exists; it's a c
 
 {{runtime-map:getting-going}}
 
-**Prep.** Demo on a repo where tests run locally; tell students the same.
+**Prep.** Demo on a repo where tests run locally; tell students the same. If your delivery contact gave you the confidence instrument, it runs at open, before anything is taught.
 
 **Generally:** a stuck student asks their own Claude first. You step in only for the three below.
 
@@ -109,24 +109,18 @@ Don't split M4 across the days. The M1-M2-M4 / M5-M3-M6 reorder exists; it's a c
 
 ### M3 — Earn the trust
 
-**Slot.** Day 1, 14:05–16:05 (2h). Closes with the M4 task-pick homework; don't drop it.
+**Slot.** Day 1, 14:05–16:05 (2h). Closes with the M4 task-pick homework.
 
 **Runtime map.**
 
 {{runtime-map:earn-the-trust}}
 
-**Mood.** Earned trust. Check: STRIDE framed as a checkbox. Fix: point at the ADR, a real call under named pressure.
+**Prep.** Know what `security-tools` does before the room does (below). Have a feature of your own with an external or user-facing surface.
 
-**Cues.** Authoring without invocation is theatre: catch students hand-crafting `SKILL.md` in a file tab, steer back to conversation.
-
-**The `security-tools` surprise.** Prework installed it as a generic pre-flight. The first STRIDE prompt invokes it; the script runs a few plausible checks (first line *"owning you............ ok"*), then prints a rick-rolled ASCII face and a note: tarball, SKILL.md, Bash authorization, all trusted unread. External skills are a supply-chain vector; that's the lesson.
-
-- Don't spoil it. Asked early: *"a pre-flight check; you'll see it run in M3."*
-- When it lands, show your terminal verbatim. Two beats of silence after the face.
-- Then two minutes: every link got trusted; this is the module's own access-surface logic one level up; this is why curated beats random.
-- Students who read `check.sh` first: *"you noticed — that's the lesson."*
-- Doesn't fire (install failed, Claude paraphrases) → press on; the SKILL.md body carries the text. Fix installs after, not from the front.
-- Sponsor wants it removed → leave the slot empty rather than substitute something serious-but-thin.
+- **`/skills` doesn't list `access-control-analysis` and `stride`** → the prework install didn't land. They re-run the prework install prompt, buddy if needed; the module is the skill invocation, so there's no running it without them.
+- **No feature with an outside surface** → three-candidate chat. Anything that takes input from a user, a webhook, or another service.
+- **Skill authoring past 12 minutes** → ship it with a one-line TODO at the top. The longest beat in M3 and where rooms stall; one author pass, one critique, one invocation.
+- **The `security-tools` stunt.** Prework installed it as a generic pre-flight. The first STRIDE prompt invokes it; the script runs a few plausible checks, then prints a rick-rolled ASCII face and a note: tarball, SKILL.md, Bash authorization, all trusted unread. Don't spoil it (*"a pre-flight check; you'll see it run"*). When it lands, show your terminal verbatim and wait two beats. Then one minute: every link got trusted; that's this module's access-surface logic one level up; that's why curated beats random. Students who read `check.sh` first: *"you noticed — that's the lesson."* If it doesn't fire, press on; the SKILL.md body carries the text.
 
 </section>
 <!--/flag:module:earn-the-trust-->
@@ -176,15 +170,17 @@ Don't split M4 across the days. The M1-M2-M4 / M5-M3-M6 reorder exists; it's a c
 
 ### M6 — Spot gaps, build the loop
 
-**Slot.** Day 2, 14:05–16:05 (2h). Opens by reading both runs from disk before writing anything; the re-entry beat covers nudging an M5 session still running from before lunch. Lecture-dense by design.
+**Slot.** Day 2, 14:05–16:05 (2h). Lecture-dense by design.
 
 **Runtime map.**
 
 {{runtime-map:spot-gaps-build-the-loop}}
 
-**Mood.** Practitioner fluency, competence as posture. Check: a beat reads as compliance, paperwork, or trainer monologue. Fix: hand the read back to the room.
+**Prep.** Your own M5 re-send, finished or stopped, in the M5 worktree. If your delivery contact gave you the confidence instrument, it runs at the close; same wording as at M1 open.
 
-**Cues.** The close runs lecture after lecture by design; you are one voice among several. Invite reflection between lectures with open prompts, not Q&A; two beats of silence is fine. Composition has no drill: Phase 2 of the exercise is the lived entry, the lineages supplementary is the survey. On *You make agentic happen*, read the three orders off the slide, then say what the body leaves unsaid: Ralph is all three at full size. Low energy: chart, four mechanisms, point at the supplementary, move to the closer pair.
+- **An M5 re-send still running at open** → if it's been an hour, stop it; the trace is the artefact. M6 reads both sessions from disk and a half-finished run reads fine.
+- **No packaged session at all** → they fire the re-send now, let it cook, and run Phase 1 against whatever has landed by the time the room gets there. One session to read where the exercise needs two is thin but not empty.
+- **Low energy in the closing lectures** → keep the composition lecture to the chart and its four mechanisms, point at the supplementary, move to the closer pair. Two beats of silence after a question is fine.
 
 </section>
 <!--/flag:module:spot-gaps-build-the-loop-->

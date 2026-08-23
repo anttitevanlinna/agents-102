@@ -96,7 +96,7 @@ Strategy and module file change in the same edit. Drift = process bug.
 
 ## Parallel subagents
 
-Each agent owns a **disjoint set of files**. Two on same file = race. Check overlap before second dispatch. Read-race too: don't Edit a file while a dispatched judge/reader subagent has it in scope — quoted evidence + line numbers bind to the snapshot. Sequence: collect verdicts → edit → re-fire.
+Each agent owns a **disjoint set of files**. Two on same file = race. Check overlap before second dispatch. Read-race too: don't Edit a file while a dispatched judge/reader subagent has it in scope — quoted evidence + line numbers bind to the snapshot. Sequence: collect verdicts → edit → re-fire. **Sibling judges race each other, and "disjoint files" does not cover it (2026-08-23).** N classes fan out over ONE file by design, so the disjoint-set rule never fires; grant any of them write permission — even scoped to maintainer blocks — and one judge edits while its siblings read. Caught by `stamp-safe`: a pedagogy verdict recorded a `body_sha` matching **no committed version**, i.e. a body that existed only between two writes. Rule: **on a multi-class fan-out, judges are read-only, full stop.** A judge that spots a wrong maintainer note, dead locator or bad source stamp returns it as a finding; the orchestrator applies it after all classes on that file have returned. The tell that you got this wrong is a recorded sha matching no commit — not a mismatch with HEAD, which is ordinary staleness, but a match with nothing.
 
 ## Classroom delivery — default
 

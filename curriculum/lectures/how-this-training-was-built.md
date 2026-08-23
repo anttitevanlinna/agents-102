@@ -27,6 +27,18 @@ None of these checks replaces another, as they catch differing failure modes. Yo
 This build story is the shape you just ran on your own repo. Claude's first read was partly wrong. You found the useful wrongness, corrected it, and wrote what the session taught you into `./CLAUDE.local.md` for the next session.
 
 Kieran Klaassen calls this **compound engineering**: work produces evidence; evidence improves the system that does the next work.
+
+## What compounds
+
+Klaassen's definition: each unit of engineering work should make subsequent units easier, not harder. What that looks like, in his words:
+
+- Features teach the system new capabilities instead of adding fragility.
+- Bug fixes eliminate entire categories of future bugs.
+- Patterns, once codified, become tools for future work.
+- Over time the codebase becomes easier to understand, modify, and trust.
+
+Nothing on that list is a rules file. The file you wrote today is the smallest unit that qualifies: a pattern, codified, that the next session reads. A test that proves the bug is the same move in a different file. So is a doc that stops lying.
+
 The loop is the shape. The bug today was the excuse.
 
 <!-- maintainer -->
@@ -35,6 +47,7 @@ The loop is the shape. The bug today was the excuse.
 - **The opening narrator-frame line names Antti — deliberate rule-6 exception (maintainer call 2026-08-01).** The lecture is a first-hand account; the frame line converts a non-author trainer from witness to narrator. The creator-name lint will flag it; do not strip.
 - **Zero map references and no cross-module sequencing.** M1 is map-protected, and the module file's `## Next` carries the bridge.
 - **Narrative slides stay prose paragraphs.** The only bold student-side handle is **compound engineering**.
+- **`## What compounds` is the definitional slide (Antti-directed 2026-08-23).** Opens Klaassen's four bullets after the attribution line and before the closer. Exists because the term was coined at Ex4 as *write the rules file* and the wide definition arrived only as a one-liner here; the slide says the file is an instance, not the class. The one bulleted slide in a prose lecture, accepted: a quoted definition is a list. Keep the closer line last.
 - **“Automated quality judges” is deliberate M1 language.** It describes the testing machinery without pre-planting the M6 word *eval*.
 - **The rule and commit counts are repository snapshots.** Before a cohort, re-run `find <canonical-memory-dir> -maxdepth 1 -type f -name 'check_*.md' | wc -l`, `rg --no-filename '^[0-9]+[a-z]?\.[[:space:]]+\*\*' <canonical-memory-dir>/check_*.md | wc -l`, and `git rev-list --count HEAD`; update both body and backing if the results are no longer 12 / 302 / 1,447. The active-rule regex deliberately excludes italic “Moved to…” redirects. The commit count is this repo's whole history, curriculum and research and tooling alike, and the body claims only that it took that many passes, never that each one touched a module.
 - **The tmux claim is bounded.** The runner has driven real Claude Code sessions through M1–M6 on working codebases. The full M1–M6 wrapper is documented on Lemmings; later-module variants exist for Codesearch and Picoshare. Do not turn this into “three codebases passed end to end.”
@@ -84,6 +97,8 @@ Format → `curriculum/backing-format.md`.
 - `klaassen-names-it` · borrowed · “Kieran Klaassen calls this **compound engineering**” ← klaassen-definitive-guide
 - `compound-work-improves-next-work` · borrowed · “work produces evidence; evidence improves the system that does the next work” ← klaassen-definitive-guide
 - `claudes-first-read-partly-wrong` · vision · “Claude's first read was partly wrong.” ← none-owed — design-stance about the just-run exercise, not a measured claim: the orient read always leaves a skipped slice, and the introspection prior (“about 10% … made up”, hedged there) makes findable wrongness the expected case. “Partly” carries the same hedge; do not strengthen to a rate.
+- `klaassen-definition-bullets` · borrowed · "each unit of engineering work should make subsequent units easier, not harder" + the four bullets ← klaassen-definitive-guide (close paraphrase of the source's core-philosophy paragraph, verified live 2026-08-23; wording registered in `vocabulary.md` § compound engineering)
+- `rules-file-is-an-instance` · vision · "The file you wrote today is the smallest unit that qualifies" ← none-owed
 - `loop-is-the-shape` · vision · “The loop is the shape. The bug today was the excuse.” ← none-owed
 
 **Sources**
@@ -94,7 +109,7 @@ Format → `curriculum/backing-format.md`.
 - simulation-stack `[checked:2026-08-05 result:OK due:cohort]` `curriculum/evals/simulation.md`, `curriculum/evals/simulation-behavior.md` — [maintainer-attested] Class A defines the three engineer-reader perspectives; Class B separately reasons over likely prompt behavior. fallback: describe only the currently configured simulation classes.
 - tmux-runner `[checked:2026-08-05 result:OK due:cohort]` `curriculum/evals/mechanical/tmux-runner/README.md`, `curriculum/evals/mechanical/tmux-runner/lemmings-chain-runbook.md` — [maintainer-attested] The runner preserves the real Claude Code TTY surface. The Lemmings M1–M6 chain was validated through the wrapper; Codesearch and Picoshare carry later-module variants. fallback: narrow the body to the latest live-validated span.
 - claude-local-md-autoload `[checked:2026-07-30 result:CAVEAT due:cohort]` https://code.claude.com/docs/en/memory.md — [capability] `CLAUDE.local.md` is a first-class personal project instruction file loaded in later sessions. The M1 prompt adds it to `.gitignore`; Claude Code does not do that automatically. fallback: if auto-load changes, rewrite the final slide's mechanism.
-- klaassen-definitive-guide `[checked:2026-07-30 result:OK due:2027-01-30]` https://every.to/source-code/compound-engineering-the-definitive-guide — [practitioner direct, vendor venue] Kieran Klaassen, Feb 9 2026. First-person account and sole byline. The core mechanism is that each unit of engineering work makes subsequent units easier. fallback: keep the loop description and drop the attribution if the name changes.
+- klaassen-definitive-guide `[checked:2026-08-23 result:OK due:2027-02-23]` https://every.to/source-code/compound-engineering-the-definitive-guide — [practitioner direct, vendor venue] Kieran Klaassen, Feb 9 2026. First-person account and sole byline. The core mechanism is that each unit of engineering work makes subsequent units easier. fallback: keep the loop description and drop the attribution if the name changes.
 
 **Frameworks**
 - Compound engineering · [borrow:practitioner-coined] · law:the-compound-ladder · ← klaassen-definitive-guide

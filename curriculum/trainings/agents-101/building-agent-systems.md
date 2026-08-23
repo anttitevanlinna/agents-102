@@ -5,7 +5,7 @@ A system remembers, grows, and compounds. Chat doesn't. Your next big challenge 
 
 ## Prework
 
-[Module 2 prework](lectures/module-2-prework.md). (1) Bring a live challenge on your mind. The challenge gets pinned down in class. (2) Verify your Confluence and OneDrive connectors. (3) <span class="rt-code">Plan-mode primer.</span><span class="rt-cowork">Plan-first primer.</span> (4) Karpathy's LLM Wiki post.
+[Module 2 prework](lectures/module-2-prework.md). (1) Bring a live challenge on your mind. The challenge gets pinned down in class. (2) Verify your Confluence and OneDrive connectors. (3) <span class="rt-code">Plan-mode primer.</span><span class="rt-cowork">Plan-first primer.</span> (4) Karpathy's LLM Wiki post. (5) The candidate Lindenberg memory-architecture piece from the same prework page, if you had room.
 
 ## What You'll Learn
 After this module, you will be able to:
@@ -16,7 +16,9 @@ After this module, you will be able to:
 - **Evaluate** whether the memory is compounding or merely growing
 
 ## Start here
-Module 2 turns to your real challenge. A fresh session keeps Module 1's personal-site scrollback out of the way. The empty `memory/`, `sources/`, and `agents/` folders are already there from prework, ready to fill. Your Module 1 generation-rules file stays scoped to `module-1/`. The wider root `CLAUDE.md` doesn't exist yet. You'll write your first version at the end of this module (Debrief), grounded in what actually happens during the exercise.
+Start a fresh <span class="rt-code">Claude Code session</span><span class="rt-cowork">Cowork task</span> at `~/Documents/agents-101/`. The fresh start keeps Module 1's personal-site scrollback out of the way.
+
+Module 2 turns to your real challenge. The empty `memory/`, `sources/`, and `agents/` folders are already there from prework, ready to fill. Your Module 1 generation-rules file stays scoped to `module-1/`; neither it nor `module-1/site.html` is an input to this build. The wider root `CLAUDE.md` doesn't exist yet. You'll write your first version at the end of this module (Debrief), grounded in what actually happens during the exercise.
 
 Module 1 was the rehearsal. A site, a voice sharpened, fabrication caught by the only person in the room who could catch it. Now the training turns to work. The rest of it builds on the challenge you actually get paid to move, because that's where the system has to stand up.
 
@@ -70,11 +72,15 @@ Watching where it bends is continuous improvement, done by hand. Every miss turn
 
 [Schedule your personal agent](exercises/personal-agent-homework.md)
 
+Come to Module 3 without a week of agent runs and you'll be guessing at split points while the multi-agent exercise is already underway. Your call.
+
 ## Pre-reads before Module 3
 
 [Agent Trigger List, After Module 2](trainings/agents-101/supplementary/agent-trigger-list.md#after-module-2-start-noticing-trigger-moments), for noticing when real work should call the agent. Then selected sections from [What is an Agent](../../trainings/agents-101/supplementary/what-is-an-agent.md) on tools, memory, and context.
 
 [Before Module 3](exercises/module-3-prework.md)
+
+Once the scheduled run and prework are saved, end this module's <span class="rt-code">session</span><span class="rt-cowork">task</span>; Module 3 starts fresh at `~/Documents/agents-101/`.
 
 ## Next
 You have an agent doing real work on your challenge. But the job is getting too big for one agent. What do you split?
@@ -83,8 +89,8 @@ Before the next module, try making a few more agents you actually need. Pick by 
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-05-02 (behavior@9ddfac3)
-- judges @9ddfac3: writing grandfathered, story grandfathered, technical grandfathered, behavior PASS
+**Quality:** compendium-audited 2026-08-23 (writing@725101ec story@725101ec technical@725101ec behavior@725101ec pedagogy@725101ec strategy@725101ec slides@725101ec)
+- judges @725101ec: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **Mood target:** Satisfied compounding — the student sees a living system around the challenge, not a folder-setup exercise.
 

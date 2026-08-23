@@ -92,10 +92,12 @@ Open [What is an Agent, LLM vs chat](trainings/agents-101/supplementary/what-is-
 
 You walk into Module 1 with <span class="rt-code">Claude Code</span><span class="rt-cowork">Cowork</span> working, calendar access checked, a snake game, a meetings summary, and a 2-page read. Five things. Not nothing. Module 1 just gets going.
 
+Once those five things are ready, end the prework <span class="rt-code">session</span><span class="rt-cowork">task</span>; Module 1 starts fresh at `~/Documents/agents-101/`.
+
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-05-04
-- judges: writing PASS, story PASS, technical PASS, behavior PASS (see instances/prework.*.json)
+**Quality:** compendium-audited 2026-08-23 (writing@725101ec story@725101ec technical@725101ec behavior@725101ec pedagogy@725101ec strategy@725101ec slides@725101ec)
+- judges @725101ec: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **Packaging:**
 - `<CONTENT_URL>` is build-time substituted by `scripts/build-workbook.js` per customer. Example rendered URL: `https://agents102.bosser.consulting/clients/acme/agents-101/agents-101-starter.tar.gz`. Source markdown carries the placeholder so substitution is auditable; rendered workbooks never show it.

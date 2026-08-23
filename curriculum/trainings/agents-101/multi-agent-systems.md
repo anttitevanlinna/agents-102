@@ -17,6 +17,8 @@ After this module, you will be able to:
 
 ## Start here
 
+Start a fresh <span class="rt-code">Claude Code session</span><span class="rt-cowork">Cowork task</span> at `~/Documents/agents-101/`.
+
 Module 3 writes its working outputs under `module-3/` and sharpens the root `./CLAUDE.md` in the Debrief, building on what Module 2 created at the training-directory root (`./CLAUDE.md`, `memory/`, `sources/`, `agents/`).
 
 Last module you were the librarian. You searched Confluence, pulled from OneDrive, chased down practitioner articles (by hand). Today you hire three agents to do that search, and three more to decide what it means. What do you expect will get lost between them?
@@ -55,7 +57,7 @@ Read Claude's summary. Push back where it's wrong. *"No, the planner and the ref
 - **Three stances beat one summarizer.** Three <span class="rt-code">subagents</span><span class="rt-cowork">agents</span> (a backward-from-end planner, a *what-would-have-to-be-true* experimenter, and a counterintuitive reframer, the Rory seat) each interrogate the retrieved material from a different angle, harder to do well in one head, in one pass. A fourth <span class="rt-code">subagent</span><span class="rt-cowork">agent</span>, the synthesizer, combines them.
 - **Frameworks are the synthesizer's spine.** Without one, it tends to summarise. With a framework (a strategy kernel by default), it picks.
 
-## Bring to Module 4
+## Optional memory check before Module 4
 
 **Optional move: pressure-test the memory.** If you've added much to `sources/` this module, run this between modules to let the new evidence pressure-test the memory's shape. Skip if memory's still serving you.
 
@@ -69,6 +71,8 @@ Memory is a working artefact, sharpened by what it bumps into.
 
 [Before Module 4](lectures/module-4-prework.md)
 
+Once the optional check and pre-reads are handled, end this module's <span class="rt-code">session</span><span class="rt-cowork">task</span>; Module 4 starts fresh at `~/Documents/agents-101/`.
+
 ## Next
 You just built something that works across three systems. Which means it just gained access to three systems. What's the worst thing it could do with that?
 
@@ -76,8 +80,8 @@ Between now and Module 4, keep working on your real problem. You're close to an 
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-05-03
-- judges: not yet judge-audited
+**Quality:** compendium-audited 2026-08-23 (writing@725101ec story@725101ec technical@725101ec behavior@725101ec pedagogy@725101ec strategy@725101ec slides@725101ec)
+- judges @725101ec: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **Mood target:** Unsettled competence — the synthesis is useful, but the student leaves asking whether it is right.
 

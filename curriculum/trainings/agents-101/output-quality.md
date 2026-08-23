@@ -18,7 +18,9 @@ After this module, you will be able to:
 
 ## Start here
 
-In Module 3 the synthesized answer sat at an uneasy distance. You'd stake your reputation on some of it and not all of it, and you couldn't yet say which. Your Module 4 residuals stay named, not solved (that's a different axis, and it stays where you put it).
+Start a fresh <span class="rt-code">Claude Code session</span><span class="rt-cowork">Cowork task</span> at `~/Documents/agents-101/`.
+
+In Module 3 the synthesized answer sat at an uneasy distance: you'd stake your reputation on some of it without knowing which. Your Module 4 residuals stay named, not solved; that is a different axis.
 
 This module is the rescue. Not full closure: your Module 3 doubt and your Module 4 residuals stay where they are. One shape of output, measured, with the limits the judge can't reach named on its face. Module 6 turns the benchmark you build here into a check that runs on every build.
 
@@ -70,6 +72,8 @@ Having added the checking step before acting, this is also the suitable place to
 ## Pre-reads before Module 6
 
 Ethan Mollick, "Garbage Can and Bitter Lesson."
+
+Once the judge and pre-read are ready, end this module's <span class="rt-code">session</span><span class="rt-cowork">task</span>; Module 6 starts fresh at `~/Documents/agents-101/`.
 
 ## Next
 The benchmark ran once. Thirty claims, four detectors, one judge. Now imagine the benchmark has three hundred claims, the judge runs on every build, and its own corrections feed back into the next round. That's evals.
@@ -127,8 +131,8 @@ The benchmark ran once. Thirty claims, four detectors, one judge. Now imagine th
 
 **Why one exercise, not two:** the benchmark is a single bounded activity with a four-phase internal arc (target + benchmark → detectors → scorer → judge). Adding a second exercise here would steal M6's Steering-eval beat. M5 stays focused on the benchmarking pattern; evals are M6's instrument.
 
-**Quality:** compendium-audited 2026-05-04 (writing@92b7e79 story@92b7e79 technical@92b7e79 behavior@92b7e79)
-- judges @92b7e79: writing PASS, story PASS, technical PASS, behavior PASS
+**Quality:** compendium-audited 2026-08-23 (writing@725101ec story@725101ec technical@725101ec behavior@725101ec pedagogy@725101ec strategy@725101ec slides@725101ec)
+- judges @725101ec: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **Artefact contracts**
 | Artefact | Stable identifier | Produced by | Consumed by |

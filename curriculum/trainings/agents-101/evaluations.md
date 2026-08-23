@@ -16,6 +16,8 @@ After this module, you will be able to:
 
 ## Start here
 
+Start a fresh <span class="rt-code">Claude Code session</span><span class="rt-cowork">Cowork task</span> at `~/Documents/agents-101/`.
+
 Did you read Ethan Mollick's [*The Bitter Lesson versus The Garbage Can*](https://www.oneusefulthing.org/p/the-bitter-lesson-versus-the-garbage)?
 
 His question is the right opener for Module 6: will the bitter lesson apply inside your company? Can agents get better if you define the outcome and let them find the path, or does the organisational mess still matter too much?
@@ -64,19 +66,23 @@ This is Claude auditing a tactic it helped sharpen. That is acceptable here beca
 
 **Monday's first five agent calls, written down**, using [Agent Trigger List](../../trainings/agents-101/supplementary/agent-trigger-list.md). Pick one call that should run through the eval loop before anyone relies on it, and write the trigger into your working notes. Module 7 is about handing work to other people, and it needs real calls to hand over.
 
+Come to Module 7 without five real agent calls and you'll be inventing a handoff while the sharing exercise is already underway. Your call.
+
 ## Pre-reads before Module 7
 
 The [Cookbook for Agent System Design](../../trainings/agents-101/supplementary/cookbook-for-agent-system-design.md) is your practitioner reference for everything after this module. Eight recipes mapped one-to-one to the modules you just ran. Three canonical dishes (a program manager agent, a shared-inbox triage agent, the continuous research system that lives inside this very repo) showing recipe composition in production. Twelve named components, eighteen data sources, twenty named dishes in the index. When the next Monday-shaped problem lands, this is where the moves live without the training scaffolding around them.
 
 Glance through [What is an Agent](../../trainings/agents-101/supplementary/what-is-an-agent.md) end to end. The words should now point at things you have actually built: context, memory, tools, other agents, boundaries, judges, loops, and autonomy rungs.
 
+Once the trigger and references are ready, end this module's <span class="rt-code">session</span><span class="rt-cowork">task</span>; Module 7 starts fresh at `~/Documents/agents-101/`.
+
 ## Next
 You just built an eval that improves itself. The system can now keep pressure on its own output when you are not watching every step. The close is not "trust the agent." The close is "trust the loop you can inspect."
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-06-06 (writing@ade2ec9)
-- judges @ade2ec9: writing PASS, story PASS, technical PASS, behavior PASS (see instances/evaluations.*.json), pedagogy grandfathered, strategy grandfathered
+**Quality:** compendium-audited 2026-08-23 (writing@725101ec story@725101ec technical@725101ec behavior@725101ec pedagogy@725101ec strategy@725101ec slides@725101ec)
+- judges @725101ec: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **Mood target:** Unleashed leverage — the student sees the loop improve work while the human owns the yardstick and boundary.
 

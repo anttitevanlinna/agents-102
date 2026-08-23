@@ -5,7 +5,7 @@ You can't really share an agent. You can share context, a skill, the output, or 
 
 ## Prework
 
-No reading packet. Walk in with one example where people had access to a tool or process but real use did not follow. That example is the only required preparation for this module.
+No new reading packet. Revisit the [Cookbook for Agent System Design](../../trainings/agents-101/supplementary/cookbook-for-agent-system-design.md) and glance through [What is an Agent](../../trainings/agents-101/supplementary/what-is-an-agent.md) end to end; both are references you built through the earlier modules. Walk in with one example where people had access to a tool or process but real use did not follow.
 
 ## What You'll Learn
 After this module, you will be able to:
@@ -16,6 +16,8 @@ After this module, you will be able to:
 - **Name** the likely adoption failure before it happens, including the social failure that's hardest to see
 
 ## Start here
+
+Start a fresh <span class="rt-code">Claude Code session</span><span class="rt-cowork">Cowork task</span> at `~/Documents/agents-101/`.
 
 Module 7 is the first half of the extension package. It reads the agent system you built across Modules 2-6, writes sharing work under `module-7/`, and saves a next-step file that Module 8 uses.
 
@@ -66,7 +68,11 @@ Read Claude's summary. Push back where it's wrong. *"The teammate's job wasn't v
 
 ## Bring to Module 8
 
-**Run the next-step artifact.** Test one assumption. Ask for one name. Talk to one person. Module 8 works from what happened when the sharing plan touched the real organisation, so it needs a plan that has touched one.
+**Run `module-7/monday.md`.** Test one assumption. Ask for one name. Talk to one person. Module 8 works from what happened when the sharing plan touched the real organisation, so it needs a plan that has touched one.
+
+Come to Module 8 without one tested assumption or named person and you'll be reconstructing the contact while the opening exercise is already using the evidence. Your call.
+
+Once the evidence is written down, end this module's <span class="rt-code">session</span><span class="rt-cowork">task</span>; Module 8 starts fresh at `~/Documents/agents-101/`.
 
 ## Next
 
@@ -74,8 +80,8 @@ The sharing plan leaves the room and meets the organisation. What comes back fro
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-05-02 (writing@9ddfac3)
-- judges @9ddfac3: writing PASS, story grandfathered, technical grandfathered, behavior grandfathered
+**Quality:** compendium-audited 2026-08-23 (writing@725101ec story@725101ec technical@725101ec behavior@725101ec pedagogy@725101ec strategy@725101ec slides@725101ec)
+- judges @725101ec: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **Mood target:** Generous impulse — the student starts from one teammate's job, not an abstract rollout obligation.
 
@@ -94,7 +100,7 @@ The sharing plan leaves the room and meets the organisation. What comes back fro
 |---|---|---|---|
 | Module 7 sharing package | `module-7/jtbd.md`, `module-7/branch.md`, `module-7/absorption-bottleneck.md`, `module-7/technical-plan.md`, `module-7/people-plan.md`, `module-7/assumptions.md`, `module-7/failure-stories.md` | M7 sharing exercise | M7 Debrief; M8 prework and sponsor-question grounding |
 | Module 7 sharing artifact | chosen file under `module-7/` | M7 Debrief rewrite | M8 run-next-step prework and post-training adoption test |
-| Module 7 next-step file | `module-7/monday.md` | M7 sharing exercise | M8 prework and capstone input |
+| Module 7 next-step file | `module-7/monday.md` | M7 Phase 7 closing instruction | M8 prework and `joint-double-diamond-3` stance ground |
 
 **Plug Points (trainer):**
 

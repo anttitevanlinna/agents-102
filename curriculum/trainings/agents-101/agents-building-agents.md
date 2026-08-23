@@ -5,7 +5,7 @@ The tool that builds tools compounds.
 
 ## Prework
 
-Run the Module 7 next-step artifact, test one assumption, ask for one name, and talk to one person. Then revisit the three thinking disciplines you used there: find the crux, ask what would have to be true, and run a pre-mortem.
+Run `module-7/monday.md`, test one assumption, ask for one name, and talk to one person. Then revisit the three thinking disciplines you used there: find the crux, ask what would have to be true, and run a pre-mortem.
 
 ## What You'll Learn
 After this module, you will be able to:
@@ -16,7 +16,9 @@ After this module, you will be able to:
 
 ## Start here
 
-Module 8 reads the full agent system, the Module 7 next-step file, and the sponsor challenge. The room-scale work uses a separate shared deliberation folder. At the start, the shared folder is nearly empty: each participant gets one folder named after them, the buyer/sponsor seeds `challenge.md`, and one or two central synthesizer agents write the selection, agent-set, and plan files at the shared root.
+Start a fresh <span class="rt-code">Claude Code session</span><span class="rt-cowork">Cowork task</span> at `~/Documents/agents-101/`. That local session reads the full agent system and `module-7/monday.md`; the room-scale exercise uses a separate shared deliberation folder so participant files do not blur into the local stack.
+
+At the start, the shared folder is nearly empty: each participant gets one folder named after them, the buyer/sponsor seeds `challenge.md`, and one or two central synthesizer agents write the selection, agent-set, and plan files at the shared root.
 
 Eight modules of compounding sit on disk. A memory. Agents that read it. Skills that audit the agents. Judges that catch the skills drifting. Each module raised a ceiling. Today the ceiling moves on its own.
 
@@ -64,8 +66,8 @@ The plan you just produced is a set of assumptions dressed as work: label them, 
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-05-02 (writing@3d7e76c story@3d7e76c)
-- judges @3d7e76c: writing PASS, story PASS, technical grandfathered, behavior REVISE (accepted residual per memory/compounded/2026-05-02-pedagogy-debrief-prompts-residual-med-risk-by-design.md)
+**Quality:** compendium-audited 2026-08-23 (writing@725101ec story@725101ec technical@725101ec behavior@725101ec pedagogy@725101ec strategy@725101ec slides@725101ec)
+- judges @725101ec: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **Mood target:** Awe and curiosity — the student leaves wanting the next move, not feeling tidily graduated.
 
@@ -85,6 +87,7 @@ The plan you just produced is a set of assumptions dressed as work: label them, 
 **Artefact contracts**
 | Artefact | Stable identifier | Produced by | Consumed by |
 |---|---|---|---|
+| Module 7 next-step evidence | `module-7/monday.md` | M7 Phase 7 closing instruction and between-module test | M8 prework and initial stance ground |
 | Module 8 extension brief | `module-8/extension-brief.md` | M8 extend-your-system exercise | M8 new-agent build and demo |
 | New extension agent | `agents/<slug>.md` | M8 extend-your-system exercise | M8 demo; post-training system extension |
 | Shared deliberation folder | trainer-posted SharePoint/OneDrive folder | M8 room setup | All M8 room-scale agents and central synthesizers |

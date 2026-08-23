@@ -5,7 +5,7 @@ You can't tell if your agent is safe by looking at its output. You need a way to
 
 ## Prework
 
-[Before Module 4](lectures/module-4-prework.md). Two reads: (1) personal skills as the package format that carries expertise into your agent, (2) agent risk layered on top of normal security work (company controls stay in place; agents add new ways for access, context, and instructions to go wrong).
+Read [Agent Trigger List, After Module 3](trainings/agents-101/supplementary/agent-trigger-list.md#after-module-3-notice-when-one-agent-is-not-enough), selected sections from [What is an Agent](../../trainings/agents-101/supplementary/what-is-an-agent.md) on multi-agent coordination, and [Before Module 4](lectures/module-4-prework.md). The Module 4 prework adds two reads: (1) personal skills as the package format that carries expertise into your agent, (2) agent risk layered on top of normal security work.
 
 ## What You'll Learn
 After this module, you will be able to:
@@ -17,6 +17,8 @@ After this module, you will be able to:
 - **Evaluate** residual risk: what's left after mitigation, and what future sessions need before they touch the system
 
 ## Start here
+
+Start a fresh <span class="rt-code">Claude Code session</span><span class="rt-cowork">Cowork task</span> at `~/Documents/agents-101/`.
 
 Module 4 reads the Module 3 system, the root `./CLAUDE.md`, and the policy reference files under `module-4/policies/`. It writes reports under `outputs/` and compounds security operating rules back into `./CLAUDE.md`.
 
@@ -59,11 +61,15 @@ It is also the simplest sharing move you have built so far. Give a teammate the 
 
 **One sentence per case: "the missing organisational check was X."** Both cases are named in the pre-reads that follow. Module 5 opens on what a check would have caught, and the sentence is what you check it against.
 
+Come to Module 5 without the two missing-check sentences and you'll be reconstructing them while the benchmark is already comparing detectors. Your call.
+
 ## Pre-reads before Module 5
 
 Read Mata v. Avianca (S.D.N.Y. 2023) and the Deloitte Australia / DEWR welfare-compliance report (2025), both in the lecture that follows. Carry the risk discipline from this module into both cases: what check was missing around the agent's output?
 
 [The Missing Check](lectures/module-5-prework.md)
+
+Once the two sentences are saved, end this module's <span class="rt-code">session</span><span class="rt-cowork">task</span>; Module 5 starts fresh at `~/Documents/agents-101/`.
 
 ## Next
 The agent is scoped, the residual risk is named. But the output *inside* the scope. Can you trust what it actually says?
@@ -72,8 +78,8 @@ Remember also: agent actions start as text. A tool call, an email draft, a CRM u
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-05-03
-- judges: not yet judge-audited
+**Quality:** compendium-audited 2026-08-23 (writing@725101ec story@725101ec technical@725101ec behavior@725101ec pedagogy@725101ec strategy@725101ec slides@725101ec)
+- judges @725101ec: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **Mood target:** Deepened unease without blame — the student has a practice for risk, not a promise of certainty.
 

@@ -16,6 +16,8 @@ After this module, you will be able to:
 
 ## Start here
 
+Start a fresh <span class="rt-code">Claude Code session</span><span class="rt-cowork">Cowork task</span> at `~/Documents/agents-101/`.
+
 This module's outputs land in `module-1/`.
 
 **The question, to you:** when you've used ChatGPT or Claude for your own work (a bio, a pitch, a post), where did the output come out generic? Was there ever a moment where it actually felt like yours, and if so, what made the difference?
@@ -69,19 +71,23 @@ Compare Claude's picks to what you expected. Where cold-Claude sees generic, you
 
 Run the <span class="rt-code">plan-mode primer</span><span class="rt-cowork">plan-first primer</span> before you come.
 
+Come to Module 2 without a live challenge and you'll be choosing one while the memory build is already underway. Your call.
+
 ## Pre-reads before Module 2
 
 Karpathy's LLM Wiki post, and the candidate Lindenberg memory-architecture piece if you have room.
 
 [Module 2 prework](lectures/module-2-prework.md)
 
+Once the prework is saved, end this module's <span class="rt-code">session</span><span class="rt-cowork">task</span>; Module 2 starts fresh at `~/Documents/agents-101/`.
+
 ## Next
 The output now travels with a file the agent can re-read next time. Module 2 systematises that compounding move through memory, agents, and room rules so every future module builds on the work before it.
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-05-04
-- judges: writing PASS, story PASS, behavior PASS (see instances/getting-going.*.json); technical grandfathered
+**Quality:** compendium-audited 2026-08-23 (writing@725101ec story@725101ec technical@725101ec behavior@725101ec pedagogy@725101ec strategy@725101ec slides@725101ec)
+- judges @725101ec: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **Mood target:** Joyful creation — the student leaves with something recognizably theirs, not a technical warm-up.
 
@@ -99,9 +105,9 @@ The output now travels with a file the agent can re-read next time. Module 2 sys
 **Artefact contracts**
 | Artefact | Stable identifier | Produced by | Consumed by |
 |---|---|---|---|
-| Module 1 working folder | `module-1/` | M1 exercise writes visible outputs | M1 debrief and M2 boundary framing |
-| Module 1 personal site | `module-1/site.html` | M1 guardrailed generation exercise | M1 cold-critic read; M2 contrast with system work |
-| Module 1 generation rules | `module-1/personal-brand-generation.md` | M1 exercise close and Debrief rewrite | M1 retro; M2 scoped-rule contrast; later module demonstrations of rule compounding |
+| Module 1 working folder | `module-1/` | M1 exercise writes visible outputs | M1 Debrief only; M2 deliberately starts its wider system at the training root |
+| Module 1 personal site | `module-1/site.html` | M1 guardrailed generation exercise | M1 cold-critic read only |
+| Module 1 generation rules | `module-1/personal-brand-generation.md` | M1 exercise close and Debrief rewrite | M1 retro only; it stays scoped to `module-1/` and is not an M2 input |
 
 **Plug Points (trainer):**
 - **The trainer's CLAUDE.md** has a default (differentiation / storytelling / framing). Variant: orgs with a brand guide can substitute. Default works on its own.

@@ -138,6 +138,8 @@ the fourth line is deliberate; keep it. Do not re-expand with mechanics bullets:
 and evidence-in-artefact reminders live in the exercise body and the closer lectures, and a KC bullet
 restating them is a duplicate, not a recap.
 
+**Fifth line landed 2026-08-23 (db2a68a4, Antti), same day as the revert above (baa6bc88) — this note is stale on the count.** The block is five lines now, not four: "The verifier, the reference artefact and the plan are compounding in a different shape from a rule: nothing loaded, everything checked." The shape rule above still holds (no mechanics-restating bullet, no duplication of the exercise/closer content) — this line maps to the module's own artefacts rather than a `what-packaging-is` theory slide, so it sits outside the original "each maps to a beat" claim too. Read the block as five lines; don't revert to four on this note's authority without updating it first.
+
 **Multisession permission carrier (Antti 2026-08-15): M5 alone, one line** at the close of *Your mid-run
 worries hint at missing checks* — control → no babysitting → a second session beside this one. M4 declined (its
 stamps stay current). Ledger corrections that travel with this: `training-architecture.md` row 7 (parallel
@@ -232,7 +234,7 @@ header and handle per slide, never read bullets aloud. Two registers, one instru
 **Source verification — freshness stamps (`source-freshness.sh`; format `curriculum/source-freshness-format.md`).**
 
 - `[checked:2026-08-15 result:OK due:2027-02-15]` https://ghuntley.com/ralph/ — [practitioner direct] Geoffrey Huntley's original Ralph account describes the repeated agent loop named in the challenge. fallback: describe a minimal fresh-context coding loop without the Ralph name.
-- `[checked:2026-08-15 result:OK due:2027-02-15]` https://claude.com/blog/introducing-dynamic-workflows-in-claude-code — [platform primary] Anthropic's launch post names `ultracode` as the effort setting that lets Claude decide when to use a dynamic workflow, and warns that it can consume substantially more tokens. fallback: use a manually designed multi-agent workflow with the same scope and budget cap.
+- `[checked:2026-08-15 result:OK due:cohort]` https://claude.com/blog/introducing-dynamic-workflows-in-claude-code — [platform primary] Anthropic's launch post names `ultracode` as the effort setting that lets Claude decide when to use a dynamic workflow, and warns that it can consume substantially more tokens. fallback: use a manually designed multi-agent workflow with the same scope and budget cap.
 - `[checked:2026-08-15 result:OK due:cohort]` https://code.claude.com/docs/en/agent-teams — [platform docs] Agent teams provide a lead, independent teammates, a shared task list, and direct inter-agent messaging. fallback: run the four roles in separate sessions and pass their notes through the orchestrator by hand.
 - `[checked:2026-08-09 result:OK due:none]` `lectures/the-machine-you-just-met.md:sharma-sycophancy-2023` — [delegated stamp] The re-send beat's *"RLHF is a big part of why: agreeable answers won the preference round"* — hedge (*a big part*) matches the source's "driven in part"; the second clause is M1's slide title verbatim, and that lecture's backing owns the dated Sharma check plus the do-not-strengthen-to-sole-cause guard. `due:none` — a delegation does not expire; the delegate's stamp is what `source-freshness.sh` walks. fallback: drop the mechanism clause; "Expect partial failures framed as partial successes" stands alone.
 
@@ -246,7 +248,7 @@ header and handle per slide, never read bullets aloud. Two registers, one instru
 - **Ronacher's three-pattern** — Armin Ronacher. Earns its name in the closing lecture, not before.
 - **Cherny's three stop-hook shapes** — Boris Cherny. Phase 3 names the menu; attribution lives in M6's module-file Frameworks section (`the-loop-has-a-name.md` body never names Cherny). Hook system reference (event names, config shape, when-to-reach-for-hooks): `claude-code-for-engineers.md` § 34.
 - **Compound engineering** — Kieran Klaassen. Debrief self-compound, fifth rep for the student.
-- **Hook-vs-prompt partition (must vs should)** — convergent practitioner pattern; named in the closing lecture's *"Hooks always fire"* section.
+- **Hook-vs-prompt partition (must vs should)** — this training's framing, worked from the mechanism: a hook fires whether or not the model cooperates, a prompt asks. Named in the closing lecture's *"Hooks always fire"* section. Not a practitioner convergence and not attributed to one — the other three rows here name a person because they can.
 
 **First-cohort observation questions:**
 - Verifier-shape calibration: does the three-shape menu cover the failure modes students surface, or does a fourth/fifth shape want naming?

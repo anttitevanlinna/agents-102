@@ -55,15 +55,9 @@ Don't split M4 across the days. The M1-M2-M4 / M5-M3-M6 reorder exists; it's a c
 **Craft that isn't on the workbook page.**
 
 - Quote before summary: if Claude can't quote the line, diff, commit or transcript moment, the claim doesn't carry.
-- Task size is pedagogy and the most common failure. Push early, both directions.
-- Teach the shipped prompt; show a better way only when you have one — never on a send-off prompt, its under-specification is the curriculum.
-- Don't front-run the next module. A move that's right in real life can still be wrong before the curriculum earns it: name it, park it.
-- Never clear scrollback mid-phase; chains depend on what just happened.
-- Mood: each tab names a target, a Check and a Fix. Never poll the room. Run the Check; if the target's visibly absent, run the Fix.
-- One broken laptop: 30 seconds, then a buddy. The room-agreement slide already said you're not the debugger — mean it.
-- Narrate agent waits; never apologize for them.
-- Quiet first beat is a Nordic norm, not no-signal. Make the opener concrete.
-- Fast room: deeper, not padded. Slow room: cut asides, don't sprint.
+- Teach the shipped prompt. Never improve a send-off prompt; its under-specification is the curriculum.
+- A stuck student asks their own Claude first. One broken laptop: 30 seconds, then a buddy.
+- Narrate agent waits; never apologize for them. A quiet first beat is a Nordic norm, not no-signal.
 
 **After each sitting.** Note what slipped and what fired while it's fresh; send it to your delivery contact (ArcticRex).
 
@@ -142,39 +136,16 @@ Don't split M4 across the days. The M1-M2-M4 / M5-M3-M6 reorder exists; it's a c
 
 ### M4 — Run the first experiment
 
-**Slot.** 2-day cohort: Day 2, 08:30–10:30 (2h). Four-sitting track: sitting 3, 2h. Phase 1 is a 2-minute confirm because the task came in as homework. Runs uncompressed at 2h.
+**Slot.** 2-day cohort: Day 2, 08:30–10:30 (2h). Four-sitting track: sitting 3, 2h. Phase 1 is a 2-minute confirm because the task came in as homework.
 
 **Runtime map.**
 
 {{runtime-map:run-the-first-experiment}}
 
-**Mood.** Curious readiness. Check: *"is this enough?"* on repeat through Phase 2. Fix: *"enough is a question for M5; the experiment is the point."*
+**Prep.** Your demo repo needs M1–M2 artefacts and a task you scoped. The send-off you demo runs live; don't pre-run it.
 
-**Cues.** M4 is deliberately incomplete. Start the closing lecture only once the un-packaged session is running; three conditions only (durable state, feedback, a boundary), one question: *"what in this session can notice a wrong step without you?"* Observation, not repair; don't name M5's artefacts. Memory-word allergy: some engineers bristle; grant the criticism of auto-memory, then point at the distinction — `observations/` is files they wrote, gitignored, read when a prompt names the path.
-
-**Push-backs.**
-
-- Gap deferred as "architectural, not contextual" (the highest-stakes one) → *"If the audit calls it context, it's context. M5 needs an interesting failure, not a boring one. Fill it."*
-- Wants a plan.md or verifier before sending → *"Un-packaged is by design. Don't pre-empt M5."*
-- Tries to close all five gaps → *"Three is the budget."*
-- Hesitates at the final prompt → *"Stop it when you've seen enough. Traces are data."*
-
-**Gotchas.**
-
-- Typo-fix or quarter-long epic at Connections → three-candidate conversation. Downstream prompts cannot rescue the wrong task.
-- Audit returns 12–15 items → re-run with the ranked top five enforced.
-- The gap-fill question tool caps at four options; print the fifth as a note.
-- Markers missed → *"Read me back the branch and the short SHA. Noted somewhere you'll find at M5?"* The fork depends on exactly those.
-- Laptop sleep freezes the session: awake, plugged in, lid open. Stop only after a tool call finishes; mid-call interrupts can corrupt the transcript.
-- Agent stalls → the module body has the nudge prompt. A handful is the dose; past ten the student has become the agent.
-- **Do not improve the send-off prompt.** The show-a-better-way license doesn't apply here.
-- No business-rules layer → the gap is the finding; one line in `observations/`.
-
-**If behind, cut in order.** 1. Connections 10 → 5. 2. The Bridge. 3. Phase 2→3 banter to ~5 min. Never: the send-off, and never rescue the run.
-
-**Demo repo.** Task picked and scoped, "done" nameable in one sentence; M1–M2 artefacts present; unrelated WIP committed or branched, the closing commit snapshots the tree. Regenerate: three-candidate conversation; rerun M1's compound and M2's extract prompts.
-
-**Four-sitting cut.** No M3: the task-pick came from M2's close; the audit's conditional phrasing ("any skills you've authored", "any ADRs") resolves cleanly against the repo's existing conventions. Before the room leaves: branch, SHA and transcript path read back aloud; the run will finish days before sitting 4 and a stopped run counts; nobody touches the `m4/` branch during the week.
+- **Task is the wrong size despite the homework** → three-candidate chat, push both ways. A smaller task that runs the whole arc beats a bigger one that can't be scoped in 10 minutes.
+- **Before anyone leaves** → ask each student to check they have the branch, the short SHA and the transcript path somewhere they'll find next sitting. The fork depends on exactly those.
 
 </section>
 <!--/flag:module:run-the-first-experiment-->
@@ -184,40 +155,18 @@ Don't split M4 across the days. The M1-M2-M4 / M5-M3-M6 reorder exists; it's a c
 
 ### M5 — Learn from the test, re-send packaged
 
-**Slot.** 2-day cohort: Day 2, 10:50–12:50 (2h; the re-send fires at close and runs through lunch). Four-sitting track: sitting 4, the finale. **Runs about 13 min past 2h by design; plan for it, don't cut for it.** Book 2h15 if you can; if not, end on the gate lecture's last landed slide and point at the rest, the closing decks read headings-first. Start the fork the moment the room settles.
+**Slot.** 2-day cohort: Day 2, 10:50–12:50 (2h; the re-send fires at close and runs through lunch). Four-sitting track: sitting 4, the finale. **Runs about 13 min past 2h by design; plan for it, don't cut for it.** Book 2h15 if you can; if not, end on the gate lecture's last landed slide and point at the rest. Start the fork the moment the room settles.
 
 **Runtime map.**
 
 {{runtime-map:learn-from-the-test}}
 
-**Mood.** Learning through contrast. Check: at Phase 3 the student picks the safest verifier shape regardless of their failure. Fix: *"the verifier matches the failure, not the comfort. Which was yours?"*
+**Prep.** You need your own M4 run on disk: the `m4/<slug>` branch, `task.md` with its coordinates, the transcript. Regenerate by re-running M4's send-off for 15–30 min; that's enough.
 
-**Cues.** Headroom goes to the worktree fork (students fumble it) and the two closing lectures; trim the front, never the closers. Land each closing slide's header and bolded handle, never read the bullets. Word embargo: don't say *three-pattern* or *Ronacher* before the closing lecture; the felt evidence earns the name there.
-
-**Push-backs.**
-
-- Eight failures listed → *"Pick the dominant. The verifier fits one shape."*
-- Failures framed as own fault → *"The run was supposed to underdeliver. Quote me one moment of goal drift."*
-- Verifier shape mismatches failure → *"Qualitative wants a judge. Deterministic wants a hook. Drift wants a re-feed."*
-- Rewrites `CLAUDE.local.md` instead of a task-scoped reference → *"The reference lives next to plan.md. The rules file is for the codebase."*
-- Hesitates at the second send-off → *"Same task, packaged. The point is the contrast, not nailing it."*
-
-**Gotchas.**
-
-- **Wrong window.** The exercise session must be in the worktree. Enforce before Phase 1.
-- The fork sketch shows a literal `../<repo-name>-m5`; if Claude creates that directory name, stop it and give the real one.
-- Check the copy landed: the fork output must name both `CLAUDE.local.md` and `observations/` at the worktree path, or you've changed two variables.
-- Coordinates missing → the SHA Claude reported before the send-off; failing that, the merge-base of the `m4/` branch. The exercise body carries all three rungs.
-- **No M4 artefact at all** → the student runs M4 now, compressed, on their own repo; 15–30 min of run is enough; they trail the room and finish M5 as homework. Never hand them a stand-in artefact.
-- Thin artefact (closed laptop, out of credit) → *"the artefact is whatever's there: commits, modified files, the transcript under `~/.claude/projects/<project>/`."*
-- Verifier won't wire as a hook → run it manually by prompt, that counts; don't burn the slot on hook registration.
-- Re-send report reads polished → ask for the artefacts that didn't ship and the verifier output verbatim.
-
-**If behind, cut in order.** 1. Phase 4 at a half-page reference + half-page plan.md. 2. Take verifier time from Phase 4. 3. Force a single dominant failure past 20 min of diagnosis. Never compress the two closing lectures.
-
-**Demo repo.** The `m4/<slug>` branch with its starting-point commit; `task.md` with `Run coordinates`; the M4 transcript; `CLAUDE.local.md` and `observations/` ready to copy. Regenerate: rerun M4's send-off section, let it run 15–30 min.
-
-**Four-sitting cut.** No M3: only M1's rules and M4's observations cross into the worktree; the re-send's conditional requirements on a test-strategy skill and STRIDE ADRs resolve to absent. This sitting is the finale: the bring-home closes the exercise; the module closes on *Inspect your results* and the map's last read. The packaged return lands after the sitting ends and nobody reads it with you — say so, and say the workbook carries the read.
+- **No M4 artefact at all** → they run M4's send-off now on their own repo and let it cook, then watch along with the room. The exercise itself is theirs to do on their own time. Never hand them a stand-in run.
+- **Exercise session opened in the original repo, not the worktree** → everything lands on the M4 branch and the contrast is dead. `pwd` before Phase 1, every student.
+- **Verifier won't wire as a hook** → running it by prompt counts. Nobody burns the slot on hook registration.
+- **Phase 4 past 25 minutes** → the reference is becoming a manifesto. Half a page each, *"lock it in"*, re-send before the sitting ends. The meticulous take 1–2 hours on a long-run plan; there is no time for that here, and the contrast doesn't need it.
 
 </section>
 <!--/flag:module:learn-from-the-test-->

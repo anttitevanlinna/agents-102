@@ -10,7 +10,7 @@
 
 **The point:** test strategy authored generically is a pyramid diagram.
 
-> **Quick timebox note.** This is the longest beat in Module 3 and the place where authoring conversations spiral. Keep it tight: one author pass, one self-critique, one invocation, ship.
+> **Quick timebox note.** Authoring conversations spiral here. Keep it tight: one author pass, one self-critique, one invocation, ship.
 
 ---
 

@@ -102,7 +102,7 @@ Optional. The thinking Module 4 asks you to do before you step away from a sessi
 
 **Pick one scoped task you'd send off rather than nudge bit by bit: a real slice. Bigger than a typo-fix, smaller than an epic.**
 
-The test for a right-sized one: hours of agent work, not minutes; several files, with requirements that have to be woven together rather than one change repeated; "done" you can say in one sentence; and something you'd happily run on a throwaway branch. A migration, a gnarly refactor, a test-coverage push, an API cutover. The task you have been putting off because it needs babysitting is usually it.
+The test for a right-sized one: hours of agent work, not minutes; several files, with requirements that have to be woven together rather than one change repeated; and something you'd happily run on a throwaway branch. A migration, a gnarly refactor, a test-coverage push, an API cutover. The task you have been putting off because it needs babysitting is usually it.
 
 The next sitting opens on that task and spends most of its time walking your system against it. Come without one and you'll be picking while the walk is already underway. Your call.<!--/flag:no-module:earn-the-trust-->
 

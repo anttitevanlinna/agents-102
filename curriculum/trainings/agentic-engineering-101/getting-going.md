@@ -68,7 +68,7 @@ Pick one when you want a side quest before Module 2.
 - Use [`/loop`](https://code.claude.com/docs/en/scheduled-tasks) to babysit one PR until its checks pass and its review threads are quiet.
 - Create a morning [routine](https://code.claude.com/docs/en/routines) that triages new Jira issues, investigates likely root causes, and leaves an evidence trail.
 - Sweep 100 resolved PR comments. Cluster repeated feedback, find missing repository rules, and reject any proposed rule without three examples.
-- Automate rule compounding. After each session, capture one evidenced lesson, route it to the right instruction surface, and check whether it helps next time.
+- Automate rule compounding. After each session, capture one evidenced lesson, route it to the right rules file, and check whether it helps next time.
 
 ## Pre-reads before Module 2
 

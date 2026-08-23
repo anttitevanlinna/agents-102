@@ -1,8 +1,8 @@
 {
   "class": "slides",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/author-test-strategy-skill.md",
-  "body_sha": "dbda709aa5d5b300944b9ecae0c795dfc93e5528068dc8e588f106fba4b0cf42",
-  "verdict": "REVISE",
+  "body_sha": "97eb4b6b9d4a389048fca23cefcc06e014fee9aee9550469486f420a66607670",
+  "verdict": "PASS",
   "training": "ae101",
   "chunk_map": [
     { "index": 0, "heading": "H1 + lede (title slide)", "lines": "1-16" },
@@ -21,7 +21,7 @@
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Closest candidate: chunk 1 line 23 'The reasons for personal-first land in Phase 3' — a forward pointer, but it names the destination heading explicitly (Phase 3, an actual `##` that exists at chunk 5) instead of leaning on an unresolved pronoun; §12's own 'name the thing' fix is exactly this shape, so it stays inside. All in-file backward references resolve against an earlier chunk of the same file: chunk 5 line 58 'wrote it in Phase 1' → chunk 1; 'Phase 2's invoke-and-critique' → chunk 3; chunk 4 line 52 'Module 3 installs' and chunk 7 line 71 'Module 4 reads this skill' are arc-earned module-name vocabulary (carve-out). Chunk 7 line 74 'came over at the fork' resolves via the session-artifacts carve-out — same paragraph already names 'the side-quest worktree' as the live session state in front of the student.",
+      "evidence": "Closest candidate: chunk 1 line 23 'The reasons for personal-first land in Phase 3' — a forward pointer, but it names the destination heading explicitly (Phase 3, an actual `##` that exists at chunk 5) instead of leaning on an unresolved pronoun. All in-file backward references resolve against an earlier chunk of the same file: chunk 5 line 58 'wrote it in Phase 1' → chunk 1; chunk 5 line 58 'Phase 2's invoke-and-critique' → chunks 3+4 (the un-headed 'Sharpen the skill' section is Phase 2's own continuation, same pairing pattern as chunk 1/2's 'Phase 1' / 'Answer from...' split); chunk 4 line 52 'Module 3 installs' and chunk 7 line 71 'Module 4 reads this skill' are arc-earned module-name vocabulary (carve-out). Chunk 7 line 74 'came over at the fork' resolves via the session-artifacts carve-out — same sentence already names 'the side-quest worktree' as the live session state in front of the student. Re-checked chunk 6 line 67 'The module's close sharpens it from what the invocation showed' this pass: not a coined proper term needing prior naming (unlike 'the loop'/'the verifier'), reads as plain English for 'the end of the module', and resolves against a real beat — `grep -n 'author-test-strategy-skill' curriculum/trainings/agentic-engineering-101/pre-cohort-todos.md` this session surfaces the actual M3 closer prompt (`ae101-m3-sharpen-skill`) that does this sharpening — so it isn't even a dangling forward pointer, just under-specific narration about a beat that exists (rule 3 territory, also clear). Also re-checked chunk 0 line 13 post-fix: 'Authoring conversations spiral here' — 'Authoring' is grounded by chunk 0 line 7 ('author a test-strategy skill for your codebase through conversation'), same chunk as the note itself; 'here' is deictic to the current exercise (Window/Time chrome, lines 3/5), not a broken pointer.",
       "fix_hint": null,
       "blocking": true
     },
@@ -31,7 +31,7 @@
       "rule_lead": "Cross-file and positional callbacks.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "No 'the opening lecture said' style backward callback into another file's content anywhere in the body. Closest candidate: chunk 7 line 71 'Module 4 reads this skill' — names the destination module by number, doesn't quote or locate content inside it by position, and functions as a closer pointing forward (permitted per §2's own text on closers).",
+      "evidence": "No 'the opening lecture said' style backward callback into another file's content anywhere in the body. Closest candidate: chunk 7 line 71 'Module 4 reads this skill' — names the destination module by number, doesn't quote or locate content inside it by position, and functions as a closer pointing forward (permitted per §2's own text on closers). Chunk 6 line 67 'The module's close' is the same shape — names the beat by its functional role, not by page position.",
       "fix_hint": null,
       "blocking": true
     },
@@ -41,7 +41,7 @@
       "rule_lead": "Every backward reference points at a beat that exists.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "No 'the X you did/saw' callback to another exercise or lecture's beat anywhere in body. The only backward references (chunk 5 line 58 'Phase 1', 'Phase 2's invoke-and-critique') point at this same file's own earlier `##` chunks (governed by rule 1, verified above), not at a sibling module beat — rule 3's failure shape (a dead cross-beat reference) doesn't apply here.",
+      "evidence": "No 'the X you did/saw' callback to another exercise or lecture's beat anywhere in body. The only backward references (chunk 5 line 58 'Phase 1', 'Phase 2's invoke-and-critique') point at this same file's own earlier `##` chunks (governed by rule 1, verified above), not at a sibling module beat — rule 3's failure shape (a dead cross-beat reference) doesn't apply here. (Chunk 6 line 67's forward-looking 'the module's close' is confirmed live under rule 1's evidence, not dead.)",
       "fix_hint": null,
       "blocking": true
     },
@@ -81,7 +81,7 @@
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Checked all 5 sub-items across all 8 chunks. `grep -n 'Not [A-Z][a-z]*\\. Not'` on the file → 0 hits, no 'Not X. Not Y. Z.' construction. No anaphora/epistrophe triples found. No self-grading superlative found (closest: chunk 0 line 11 'test strategy authored generically is a pyramid diagram' — a claim about a failure mode in general, not praise of this exercise's own value; chunk 0 line 13 'the longest beat in Module 3' grades duration/pacing, not usefulness). No number-with-retraction pattern (file carries no hedged numbers, only plain durations like 'Time: 20 minutes'). No verb-triplet with an empty leg. Chunk 4 line 49 'same-window self-charity' is a coined handle naming a real mechanism (invoke-then-self-grade in one context window), not an abstraction-noun stack standing in for something concrete.",
+      "evidence": "Checked all 5 sub-items across all 8 chunks on the current body. `grep -inE 'Not [A-Z][a-z]+\\.' curriculum/exercises/author-test-strategy-skill.md` this session → 0 hits, no 'Not X. Not Y. Z.' construction. No anaphora/epistrophe triples found; chunk 0 line 13's 'one author pass, one self-critique, one invocation, ship' is a 3-item anaphora but each leg names a distinct concrete step (write / evaluate / run), not a padded restatement, and the phrase is cited verbatim as an intentional claim in the backing block (`hardened-by-critique-and-invocation`). `grep -inE 'most (useful|important|valuable)|one of the (best|most)|best (way|move|skill)|greatest' curriculum/exercises/author-test-strategy-skill.md` this session → 0 hits, no self-grading superlative anywhere (the prior 'longest beat in Module 3' specimen is gone from the body per the fix). No number-with-retraction pattern (file carries no hedged numbers, only plain durations like 'Time: 20 minutes'). No verb-triplet with an empty leg. Chunk 4 line 49 'same-window self-charity' is a coined handle naming a real mechanism explained in the same sentence (invoke-then-self-grade in one context window), not an abstraction-noun stack standing in for something concrete.",
       "fix_hint": null,
       "blocking": true
     },
@@ -89,10 +89,10 @@
       "compendium": "check_slides.md",
       "rule_index": 8,
       "rule_lead": "Internal dialect never lands on a slide.",
-      "verdict": "REVISE",
-      "chunks_flagged": [0],
-      "evidence": "chunk 0 line 13: '> **Quick timebox note.** This is the longest beat in Module 3 and the place where authoring conversations spiral.' — 'beat' is one of rule 8's own named specimens of maintainer/authorial dialect (curriculum-designer shorthand for a bounded activity segment), used here in exactly that sense, on the title-slide callout every student and trainer reads first. No carve-out covers it: it isn't the ordinary-engineering-verb sense of 'surface', not a canonical `##`-section name, not a locked file's attested scheme, and not a rule quoted as a specimen — it's plain narration using repo-internal shorthand. Harm: an engineer in the room either doesn't parse 'beat' (drumbeat? heartbeat? story beat?) or reads it as design-jargon rather than plain pacing talk, which is exactly the register break §8 exists to prevent on a projected slide. Confirmed unexempted: line 13 sits above the `<!-- maintainer -->` cut (line 76) with no fenced block anywhere in the raw file, and the maintainer block carries no dated accept-note authorizing this word. Fix is trivial and doesn't touch the claim: swap 'beat' for a plain pacing word.",
-      "fix_hint": "Swap 'beat' for a plain word an engineer would use for a time-boxed stretch — e.g. 'stretch', 'segment', or 'activity' ('This is the longest stretch in Module 3...').",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "RESOLVED since the prior instance's REVISE. `grep -c 'longest beat' curriculum/exercises/author-test-strategy-skill.md` this session → 0; `grep -ci 'Authoring conversations spiral here' curriculum/exercises/author-test-strategy-skill.md` this session → 1. Chunk 0 line 13 now reads '> **Quick timebox note.** Authoring conversations spiral here. Keep it tight: one author pass, one self-critique, one invocation, ship.' — the offending word 'beat' (a named specimen in this rule's own dialect list) is gone; the superlative claim it sat inside ('the longest beat in Module 3') is also gone, not renamed, per the commit message (`ac93ec5c`): the claim was false (three M3 exercises are stamped 20 minutes each — a three-way tie, not a superlative), so dropping rather than relabeling was the correct move, not a word-swap that would have left a false claim standing under different vocabulary. `grep -inE '\\bsurface\\b|\\bfiring\\b|\\bcompendium\\b|\\bforcing function\\b|\\bbeat\\b|\\bmood\\b|\\bConnections\\b' <(sed -n '1,75p' curriculum/exercises/author-test-strategy-skill.md)` this session → 0 hits: no other repo-internal dialect term anywhere in body. The fixed sentence still carries its operational content (spiral risk + the fix: one pass, one critique, one invocation, ship) — the beat that mattered (the timebox warning) is intact, only the false/jargon-laden decoration is gone.",
+      "fix_hint": null,
       "blocking": true
     },
     {
@@ -101,7 +101,7 @@
       "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "`grep -n '\\*\\*' curriculum/exercises/author-test-strategy-skill.md` on lines 1-75 (body) → hits only at 3,5,7,9,11,13,67,74, all widget/label chrome (Time:/Window:/What you do:/What you build:/The point:/Quick timebox note./What happened:/Note), matching the file's own dated accept-note ('Emphasis pass 2026-07-09, Antti-directed') listing exactly that chrome set as untouched. Zero bold spans inside narrative bullet prose in any chunk.",
+      "evidence": "`grep -n '\\*\\*' curriculum/exercises/author-test-strategy-skill.md` this session, body-only (lines 1-75) → hits only at 3,5,7,9,11,13,67,74, all widget/label chrome (Time:/Window:/What you do:/What you build:/The point:/Quick timebox note./What happened:/Note), matching the file's own dated accept-note ('Emphasis pass 2026-07-09, Antti-directed') listing exactly that chrome set as untouched, citing `check_slides.md §9` by name. Zero bold spans inside narrative bullet prose in any chunk; ≤1 non-chrome handle per slide (chunk 0's 'Quick timebox note.' label, 3 words, within the ≲5-word handle cap).",
       "fix_hint": null,
       "blocking": false
     },
@@ -111,7 +111,7 @@
       "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "`grep -rn 'author-test-strategy-skill' curriculum/trainings/agentic-engineering-101/earn-the-trust.md` → line 41: '[Exercise: Author your test-strategy skill](exercises/author-test-strategy-skill.md)', a standard module-3 exercise include. File carries no `<!--flag:module:X-->`/`<!--flag:no-module:X-->` runtime forks, so none of its 8 chunks can be resolved-away by `applyContentFlags`; it composes as a plain `.phase--exercise` include like every other exercise file, one of the two selectors `buildDeckModel` walks. No signal any section is deck-dropped.",
+      "evidence": "`grep -rn 'author-test-strategy-skill' curriculum/trainings/agentic-engineering-101/earn-the-trust.md` this session → line 41: '[Exercise: Author your test-strategy skill](exercises/author-test-strategy-skill.md)', a standard module-3 exercise include. File carries no `<!--flag:module:X-->`/`<!--flag:no-module:X-->` runtime forks, so none of its 8 chunks can be resolved-away by `applyContentFlags`; it composes as a plain `.phase--exercise` include like every other exercise file, one of the two selectors `buildDeckModel` walks. No signal any section is deck-dropped.",
       "fix_hint": null,
       "blocking": true
     },
@@ -121,7 +121,7 @@
       "rule_lead": "Numbering — position is computed, content ordinals are linted.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Ran `node scripts/check-slide-numbering.js` in this session → 'OK — 61 files, Phase/Step numbering consistent.' Phase 1/Phase 2/Phase 3 headers run consecutively from 1, and every in-file 'Phase N' text reference (chunk 1 line 23, chunk 5 line 58) resolves to a real header in this file.",
+      "evidence": "Ran `node scripts/check-slide-numbering.js` this session → 'OK — 61 files, Phase/Step numbering consistent.' Phase 1/Phase 2/Phase 3 headers run consecutively from 1, and every in-file 'Phase N' text reference (chunk 1 line 23, chunk 5 line 58) resolves to a real header in this file.",
       "fix_hint": null,
       "blocking": false
     },
@@ -131,7 +131,7 @@
       "rule_lead": "Page geometry dies at the cut; reading order survives.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Ran `node scripts/check-slide-deixis.js --file curriculum/exercises/author-test-strategy-skill.md` in this session → 'OK — 1 files, no page-geometry pointers across the slide cut.' No 'below/above/at the top of this page' phrasing anywhere in the body.",
+      "evidence": "Ran `node scripts/check-slide-deixis.js --file curriculum/exercises/author-test-strategy-skill.md` this session → 'OK — 1 files, no page-geometry pointers across the slide cut.' No 'below/above/at the top of this page' phrasing anywhere in the body.",
       "fix_hint": null,
       "blocking": true
     },
@@ -141,7 +141,7 @@
       "rule_lead": "In-deck links work now; whether they EARN their place is open.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "`grep -n '\\[.*\\](' curriculum/exercises/author-test-strategy-skill.md` → 0 hits. No in-body cross-doc links exist in this file to review; §13 is a non-gating review surface and there is nothing on it here.",
+      "evidence": "`grep -n '\\[.*\\](' curriculum/exercises/author-test-strategy-skill.md` this session, body-only (lines 1-75) → 0 hits. No in-body cross-doc links exist in this file to review; §13 is a non-gating review surface and there is nothing on it here.",
       "fix_hint": null,
       "blocking": false
     },
@@ -151,7 +151,7 @@
       "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/exercises/author-test-strategy-skill.md` in this session → 'files: 1  slides: 7  limits: 210 words / 6 bullets  oversized: 0 — every slide is within limits.'",
+      "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/exercises/author-test-strategy-skill.md` this session → 'files: 1  slides: 7  limits: 210 words / 6 bullets  oversized: 0 — every slide is within limits.' No accept-note needed and none present.",
       "fix_hint": null,
       "blocking": false
     },
@@ -161,11 +161,11 @@
       "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "6 of 7 body `##` headers are imperative or Phase-labels ('Answer from how your codebase really tests', 'Sharpen the skill from what came back', 'Decide if it graduates to the team', 'Phase 1/2/3: ...'). Closest edge case: chunk 7 'What this sets up' (line 69) — not imperative, not a declarative law-claim, but it matches §15's own explicit non-violation category, 'orientation headers' (cf. its examples 'You are here', 'The far half opens'): it orients the reader to forward-looking context rather than posing as a declaration. (A prior instance of this file's slides verdict flagged this same heading as a rule-15 open question before the compendium carried this carve-out; the carve-out now resolves it — the rule moved, not the body.)",
+      "evidence": "6 of 7 body `##` headers are imperative or Phase-labels ('Answer from how your codebase really tests', 'Sharpen the skill from what came back', 'Decide if it graduates to the team', 'Phase 1/2/3: ...'). Closest edge case: chunk 7 'What this sets up' (line 69) — not imperative, not a declarative law-claim, but matches §15's explicit non-violation category, 'orientation headers' (cf. its examples 'You are here', 'The far half opens'): it orients the reader to forward-looking context rather than posing as a declaration.",
       "fix_hint": null,
       "blocking": false
     }
   ],
-  "blocking_findings_count": 1,
+  "blocking_findings_count": 0,
   "todos_count": 0
 }

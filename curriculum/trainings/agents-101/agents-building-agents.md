@@ -12,7 +12,7 @@ After this module, you will be able to:
 - **Use** your Claude runtime to generate a new agent that extends your system
 - **Orchestrate** three thinking disciplines at room scale against a real company question
 - **Produce** a strategy kernel, suggested agent set, and two-week plan grounded in your actual files
-- **Read** the flywheel, the cycle that just sharpened the kernel is the one that keeps sharpening it
+- **Explain** how the deliberation cycle sharpens the strategy kernel and the next agent set
 
 ## Start here
 
@@ -55,7 +55,6 @@ Read Claude's summary. Push back where it's wrong. Some of what didn't resolve s
 - **Self-improvement**: each cycle sharpens the next. Proposals read sharper than initial stances because the agents cross-check before publishing, then critiques sharpen the synthesizer's selection.
 - **Org capability**: many agents reading and proposing in parallel produce a kernel, agent set, and plan grounded in your own files, not a single consultant's read.
 - **The three predictable walls past the laptop loop**: data access, runtime platform, discoverability. The plan already names which wall bites first for your company. Seeing them is the sign the kernel works.
-- **Domain prediction framework**: rules codified + correctness verifiable + talent constrained = agent-ready. Apply it to your company's 200 processes to pick the first 5 to try.
 - **Thinking disciplines you take home as named moves.** Crux, *what would have to be true?*, pre-mortem aren't props and they aren't installed skills. They're portable disciplines you ask Claude to run on any decision too big to eyeball.
 - **Grounding when agents read agents.** Every agent publishes what it read, what it couldn't find, and what it inferred without a source. Every claim cites the file it came from. Without that rule, agents reading agents smoothly hallucinate each other's memory.
 

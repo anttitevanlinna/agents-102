@@ -10,7 +10,7 @@ We are about to find out.
 
 But one thing is already clear: humans will not cope with all the detail for very long.
 
-Not at the current pace. Not with every briefing, every source, every claim, every update, every generated mail, every agent action. You can stay inside one loop. You cannot stay inside all of them.
+At the current pace, people cannot continuously inspect every briefing, source, claim, update, generated mail, and agent action. You can stay inside one loop. You cannot stay inside all of them.
 
 That is why evals matter.
 
@@ -26,7 +26,7 @@ You did not hunt for every bad claim by hand.
 
 You set up a benchmark. One briefing. Thirty claims. Four detectors. One scorer.
 
-The point was not that any detector sounded clever. The point was that the same claim pool went through the same evidence surface, and the scoreboard named which method actually caught the misses.
+The point was not that any detector sounded clever. The point was that the same claim pool went through the same evidence set, and the scoreboard named which method actually caught the misses.
 
 Then you saved the winner as `judges/groundedness-judge.md`.
 

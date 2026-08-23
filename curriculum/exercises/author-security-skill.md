@@ -104,7 +104,7 @@ The reusable check exists now, with two lenses and four named risk patterns cove
 
 **The point:**
 
-The policy files are source material. The reusable check is the expert in the room. Eyeballing every file by hand is not. The check carries judgment about what matters in this system, with the four named risk patterns as the forcing function. Agent mitigations sit on top of normal company controls, not in place of them. The package is ready; the first loaded use should be the real audit.
+The policy files are source material. The reusable check is the expert in the room. Eyeballing every file by hand is not. The check carries judgment about what matters in this system, with all four named risk patterns built in as mandatory checks. Agent mitigations sit on top of normal company controls, not in place of them. The package is ready; the first loaded use should be the real audit.
 
 <!-- maintainer -->
 

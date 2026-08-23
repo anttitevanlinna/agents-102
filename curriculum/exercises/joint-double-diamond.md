@@ -1,14 +1,14 @@
 # Exercise: Agent Proposal Forum, diagnose and guide
 
-**Time:** 70 minutes, in nine room beats, each with its own budget.
+**Time:** 70 minutes, in nine timed stages.
 
 **What you do:**
 
-In Module 7 you ran three thinking-disciplines on your own sharing problem: Rumelt's *crux*, Roger Martin's *what would have to be true?*, Klein and Kahneman's *pre-mortem*. One person, one problem. Today the buyer or sponsor seeds a live company challenge, and the room's agents form a proposal forum around it: take an initial stance, cross-check with each other, make proposals on the shared surface, criticize the emerging selections, and let one or two central synthesizers keep choosing the best ideas.
+In Module 7 you ran three thinking-disciplines on your own sharing problem: Rumelt's *crux*, Roger Martin's *what would have to be true?*, Klein and Kahneman's *pre-mortem*. One person, one problem. Today the buyer or sponsor seeds a live company challenge, and the room's agents form a proposal forum around it: take an initial stance, cross-check with each other, publish proposals in the shared folder, criticize the emerging selections, and let one or two central synthesizers keep choosing the best ideas.
 
-The deliverable: a Rumelt-style strategy kernel (diagnosis, guiding policy, near-term experiments, ranked risks), a suggested set of agents, and the plan. Not the CEO's strategy from a consulting deck. Not an averaged room consensus. Your strategy, selected from the strongest claims your agents can defend against each other, then turned into an agent build-out and execution plan.
+The deliverable: your Rumelt-style strategy kernel (diagnosis, guiding policy, near-term experiments, ranked risks), selected from the strongest claims your agents can defend against each other, then turned into a suggested agent set and execution plan.
 
-The shape is closer to a governed agent forum than a relay. Agents start privately enough to have a point of view, ask their human for missing judgment when useful, cross-check with other agents, then move onto the shared proposal surface. The central synthesizers do not summarize everything. They keep publishing selections, and the other agents keep criticizing and improving those selections.
+The shape is closer to a governed agent forum than a relay. Agents start privately enough to have a point of view, ask their human for missing judgment when useful, cross-check with other agents, then publish in the shared proposal folder. The central synthesizers do not summarize everything. They keep publishing selections, and the other agents keep criticizing and improving those selections.
 
 The steps start in this sequence, but the room is not a clean queue. Agents continue reading, revising, and reacting while later steps begin. The sequence is the launch order, not a ban on overlap.
 
@@ -17,7 +17,7 @@ The steps start in this sequence, but the room is not a clean queue. Agents cont
 1. Sponsor challenge: buyer or sponsor writes `challenge.md` at the shared root. This is the prompt the room argues with.
 2. Grounding: every agent writes `context-manifest.md` so others can see what it carries and what it doesn't.
 3. Initial stance and cross-check: every agent writes `stance.md`, then reads neighbouring stances and writes `cross-check.md`.
-4. Shared proposal surface: every agent writes `proposal.md`; one or two central synthesizers publish `selection-board.md`.
+4. Shared proposals: every agent writes `proposal.md`; one or two central synthesizers publish `selection-board.md`.
 5. Critique loop: agents write `critique.md` with better ideas; the synthesizer updates `selection-board.md`.
 6. Conclusion: the synthesizer writes `strategy-kernel.md`, `agent-set.md`, and `plan.md`.
 
@@ -49,7 +49,7 @@ Every agent in the room reads the sponsor challenge and takes its own opening st
 
 *8 min*
 
-Once everyone's `stance.md` is published, each agent reads three to five neighbouring stances. The trainer assigns neighbours, or each participant picks the folders to their left and right. This is not yet the proposal round. The job is to discover what your stance missed before you publish a proposal to the shared surface.
+Once everyone's `stance.md` is published, each agent reads three to five neighbouring stances. The trainer assigns neighbours, or each participant picks the folders to their left and right. This is not yet the proposal round. The job is to discover what your stance missed before you publish a proposal in the shared folder.
 
 {{prompt:joint-double-diamond-4}}
 
@@ -57,7 +57,7 @@ Once everyone's `stance.md` is published, each agent reads three to five neighbo
 
 *12 min*
 
-Every agent now publishes a proposal on the shared surface. This is where the Moltbook-like social mechanic matters: ideas move between agents, but the file history still shows who changed their mind and why.
+Every agent now publishes a proposal in the shared folder. This is where the Moltbook-like social mechanic matters: ideas move between agents, but the file history still shows who changed their mind and why.
 
 {{prompt:joint-double-diamond-5}}
 
@@ -65,7 +65,7 @@ Every agent now publishes a proposal on the shared surface. This is where the Mo
 
 *8 min*
 
-Now the central synthesizer reads the first shared proposal surface and starts choosing. One synthesizer is enough; two is better if the room is large or politically diverse. If using two, Synthesizer A picks strongest ideas; Synthesizer B names the best objections, evidence gaps, and unsafe assumptions. The sponsor reads both, pushes back, and the synthesizer rewrites.
+Now the central synthesizer reads the first proposals in the shared folder and starts choosing. One synthesizer is enough; two is better if the room is large or politically diverse. If using two, Synthesizer A picks strongest ideas; Synthesizer B names the best objections, evidence gaps, and unsafe assumptions. The sponsor reads both, pushes back, and the synthesizer rewrites.
 
 Central synthesizer prompt: *"Read challenge.md and every participant subfolder in the shared folder the trainer posted in chat. Use each stance.md, cross-check.md, and proposal.md. Do not average the room. Write selection-board.md at the shared folder root with: best crux, best guiding policy move, best two-week experiment, best objection, most dangerous evidence gap, and strongest unresolved disagreement. For each selection, cite the participant file it came from and explain why it currently beats the alternatives. Mark the board as provisional."* The sponsor reads the output, pushes back, the agent re-synthesises.
 
@@ -73,11 +73,11 @@ Central synthesizer prompt: *"Read challenge.md and every participant subfolder 
 
 *5 min*
 
-The room now knows something it didn't know when the exercise began: which disagreements matter, which evidence gaps are dangerous, and what bad synthesis would smooth over. The central synthesizer now injects operating instructions onto the shared surface. Participants do not hand-prompt the cross-pollination behavior; their agents consume the synthesizer's instruction file in the next step.
+The room now knows something it didn't know when the exercise began: which disagreements matter, which evidence gaps are dangerous, and what bad synthesis would smooth over. The central synthesizer now publishes operating instructions in the shared folder. Participants do not hand-prompt the cross-pollination behavior; their agents consume the synthesizer's instruction file in the next step.
 
 {{prompt:joint-double-diamond-6}}
 
-From this point forward, every agent prompt begins by reading `midway-instructions.md`. The instruction injection lives on the shared surface; it is not a participant-authored `CLAUDE.md` update.
+From this point forward, every agent prompt begins by reading `midway-instructions.md`. The instruction file lives in the shared folder; it is not a participant-authored `CLAUDE.md` update.
 
 ## Phase 7: Criticize and propose better ideas
 

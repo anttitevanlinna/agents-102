@@ -140,7 +140,7 @@ In self-study, ask Teacher Claude to read all your module-7 files and push back 
 
 **What happened:**
 
-The interview will surprise you. Your memory already knew 80% of this teammate's job. The agent surfaces it in a shape you can use. The outcome vector you didn't expect (the third one: anxiety, dependency, scope, workload) is usually the one that actually matters.
+The interview will surprise you. Your memory already knew much of this teammate's job. The agent surfaces it in a shape you can use. The outcome vector you didn't expect (the third one: anxiety, dependency, scope, workload) is usually the one that actually matters.
 
 Your pattern selection will look different under the outcome test than under the infrastructure test. Patterns you'd have picked because they're easy don't move the metric. Patterns you'd have ruled out because they seem hard turn out to be the only ones that do the job. That's the reframe.
 

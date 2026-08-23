@@ -6,13 +6,13 @@ Self-consistency asks a different question: *if the agent writes the briefing ag
 
 That is useful, but it is not the yardstick. A claim can be stable and still unsupported if both runs repeat the same bad assumption. A claim can be grounded and still be phrased differently. Drift is a warning signal, not proof of fabrication.
 
-This is why self-consistency sits after the scoring, not inside the scoring panel. The scoreboard tells you which groundedness detector earned the judge file. Self-consistency shows another shape of uncertainty: the model's answer may not be reproducible even when the evidence surface stays fixed.
+This is why self-consistency sits after the scoring, not inside the scoring panel. The scoreboard tells you which groundedness detector earned the judge file. Self-consistency shows another shape of uncertainty: the model's answer may not be reproducible even when the evidence set stays fixed.
 
 This is optional, and it runs on the screen by default: watch the two briefings come back rather than typing along. Working alone, run it yourself. Either way, you don't need the output to complete Module 5.
 
 Two runs is a demo, not a measurement. With N=2, a claim that appears in both could still be the model's bias toward a popular framing. A claim that drifts could be an edge case in the next sample. The signal starts to firm up around N=5 to 10. Patterns emerge from the noise. For a production check (the kind Module 6's eval loop wires up), you'd want N=20 to 30, where stability across runs starts to mean something. Today's two-run is an illustration of a different kind of uncertainty, not yet the full technique you'd ship.
 
-Claude spawns a subagent that generates a second briefing from the same evidence surface, blind to the first run.
+Claude spawns a subagent that generates a second briefing from the same evidence set, blind to the first run.
 
 {{prompt:self-consistency-after-scoreboard-1}}
 

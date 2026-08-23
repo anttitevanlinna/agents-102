@@ -10,7 +10,7 @@ No reading packet. Walk in with one example where people had access to a tool or
 ## What You'll Learn
 After this module, you will be able to:
 - **Interview** for your teammate's job-to-be-done using the agentic JTBD pattern, and write the outcome statement as the design contract
-- **Select** the smallest shareable surface (share context / share a skill / share the output / share an interface) for the outcome the teammate wants moved
+- **Select** the smallest shareable form (share context / share a skill / share the output / share an interface) for the outcome the teammate wants moved
 - **Redesign** for shared use: technical plan + people plan (ownership, governance, operating, accountability, propagation)
 - **Test** the switch the teammate would make and surface the assumptions they'd need to absorb
 - **Name** the likely adoption failure before it happens, including the social failure that's hardest to see

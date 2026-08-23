@@ -106,7 +106,7 @@ The benchmark ran once. Thirty claims, four detectors, one judge. Now imagine th
 - **Benchmarking** — Antti-run pattern. Empirical method selection over authority.
 - **Precision / recall / coverage** — standard eval vocabulary introduced by being measured, not lectured.
 - **Benchmark** — the word is earned by the student writing one in two minutes.
-- **Compound reliability math** (85% × 10 steps ≈ 20% end-to-end) — carried in the lecture, makes the "why measure, not guess" case.
+- **Illustrative compound reliability math** (if each step is 85% reliable, ten steps compound to about 20% end-to-end) — carried in the lecture, makes the "why measure, not guess" case.
 
 **Philosophy callout (sparing):**
 - Belief — name what you don't know — lands in the judge's "Known limit:" line. Student-written.

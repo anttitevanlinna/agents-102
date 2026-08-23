@@ -2,7 +2,7 @@
 
 Before the security loop, look at the agent loop without polish.
 
-The raw loop takes three plain questions. No special setup. No hidden vocabulary. Just the model explaining how it sees its own working surface.
+The raw loop takes three plain questions. No special setup. No hidden vocabulary. Just the model explaining what it can see and do in its current environment.
 
 Ask Claude which tools it can use right now.
 

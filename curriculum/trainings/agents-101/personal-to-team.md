@@ -62,7 +62,7 @@ Read Claude's summary. Push back where it's wrong. *"The teammate's job wasn't v
 - **The third outcome vector is where the interview earns its keep.** Dependency removed, anxiety reduced, scope expanded, workload shifted. Speed and quality alone means it went shallow.
 - **Access is easy; absorption is the scarce thing.** The technical plan fills quickly; the people plan stalls on names.
 - **The four sharing shapes are a design language, not a menu.** Context / skill / output (push) / interface (pull). "Share the whole agent" is not on the list. Pick one to three, stack where useful.
-- **The people plan weighs equal to the technical plan, and firing the incumbent is the test.** Every job already has a current hire: Excel, a colleague, gut feel. Not *"will they adopt my agent?"* but *"what would have to be true for them to fire what they use now?"*
+- **The people plan weighs equal to the technical plan; replacement is the test.** Every job already has a current solution: Excel, a colleague, gut feel. Not *"will they adopt my agent?"* but *"what would have to be true for them to replace it?"*
 
 ## Bring to Module 8
 

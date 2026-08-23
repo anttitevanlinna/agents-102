@@ -49,7 +49,7 @@ Push back on anything that doesn't match your sense of the work. That's the patt
 
 **Then, Claude as cold critic.** Now that you've reflected on your own experience, get an unbiased verdict.
 
-Ask Claude to open a second, independent reader (<span class="rt-code">a subagent</span><span class="rt-cowork">an agent</span>) with only the site as context.
+Ask Claude to open a second, independent reader with only the site as context. <span class="rt-code">Claude Code calls that reader a subagent.</span><span class="rt-cowork">Cowork calls that reader an agent.</span>
 
 {{prompt:a101-m1-debrief-cold-critic}}
 
@@ -76,7 +76,7 @@ Karpathy's LLM Wiki post, and the candidate Lindenberg memory-architecture piece
 [Module 2 prework](lectures/module-2-prework.md)
 
 ## Next
-The output now travels with a file the agent can re-read next time. That's the move that compounds. Module 2 takes the same idea and systematises it (the memory, the agents, the room rules) so every future module's work builds on every previous one.
+The output now travels with a file the agent can re-read next time. Module 2 systematises that compounding move through memory, agents, and room rules so every future module builds on the work before it.
 
 <!-- maintainer -->
 

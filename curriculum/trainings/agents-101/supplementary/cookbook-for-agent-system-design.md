@@ -4,9 +4,9 @@ A practitioner's cookbook for turning chat into agent systems you can stake work
 
 A real cookbook has three layers: recipes, base preparations, and an index of dishes. *Le Guide Culinaire* is mostly the index; Escoffier's genius was the named preparations, not the dishes. Same shape here.
 
-The eight recipes are deliberately short. They are the base preparations: small, named, reusable. The three canonical dishes are where the detail lives. That is the point: you do not read eight lessons here. You watch the recipes compose into working systems.
+The eight recipes are deliberately short. They are the base preparations: small, named, reusable. The three worked dishes are where the detail lives. That is the point: you do not read eight lessons here. You watch the recipes compose into working systems.
 
-Eight recipes. Three canonical dishes. Eleven named components. Eighteen data sources. Twenty named dishes in the index. Mix and match.
+Eight recipes. Three worked dishes. Eleven named components. Eighteen data sources. Twenty named dishes in the index. Mix and match.
 
 ## Recipe catalogue
 
@@ -110,9 +110,9 @@ Eight moves to compose, not eight steps to follow. Reach for the one the dish ne
 
 ---
 
-## Canonical Dish 1, The Program Manager Agent
+## Worked Dish 1, The Program Manager Agent
 
-A program manager at a multi-team Nordic software organisation built this over a fortnight in 2026 using Claude Code Desktop on macOS. The problem was not that she lacked visibility. She had meetings, Jira, Confluence, Slack, and a good memory. The problem was that commitments lived in different rooms. A promise made in a leadership meeting became a Jira ticket two days later, got softened in a team sync, then disappeared into a plan page nobody re-read until the date had passed.
+This illustrative composite follows a program manager at a multi-team Nordic software organisation building with Claude Code Desktop on macOS. The problem is not that she lacks visibility. She has meetings, Jira, Confluence, Slack, and a good memory. The problem is that commitments live in different rooms. A promise made in a leadership meeting becomes a Jira ticket two days later, gets softened in a team sync, then disappears into a plan page nobody re-reads until the date has passed.
 
 The agent's job was simple: keep the live programme state accurate, then draft the smallest useful nudge before a commitment slipped too far.
 
@@ -162,9 +162,9 @@ The durable artifact was not the morning output. It was the memory plus rules th
 
 ---
 
-## Canonical Dish 2, The Shared-Inbox Triage Agent
+## Worked Dish 2, The Shared-Inbox Triage Agent
 
-A customer-support team at a B2B SaaS company built this in early 2026 with Claude Code and scheduled execution on macOS. The team had a shared inbox that mixed outage reports, billing questions, named-customer escalations, vague procurement threads, security reports, and marketing messages dressed up as urgency.
+This illustrative composite follows a customer-support team at a B2B SaaS company using Claude Code with scheduled execution on macOS. Their shared inbox mixes outage reports, billing questions, named-customer escalations, vague procurement threads, security reports, and marketing messages dressed up as urgency.
 
 The old process was human scanning. It worked because experienced people could read between lines. It failed because the inbox never stopped, the cues were uneven, and the most important messages were not always the cleanest ones.
 
@@ -268,7 +268,7 @@ Most checks have two outcomes: pass, fail. The canonical dishes use three: pass,
 
 The third row looks like a cop-out and is the load-bearing piece. A binary classifier forces ambiguous cases into false confidence; the third row catches them and hands them back with the ambiguity intact, named, addressable.
 
-The shared-inbox agent's most valuable output was its five "I can't tell" emails per week, not the routes it got right. The research system's most valuable rejections were the ones it could not resolve. The PM agent's flag-it-back-to-me move on commitments without owners is the same shape, one zoom level in. When a check could plausibly go either way, the agent says so.
+The shared-inbox pattern's most valuable output is often the "I can't tell" email, not the route it gets right. The research system's most valuable rejections are the ones it cannot resolve. The PM pattern's flag-it-back-to-me move on commitments without owners is the same shape, one zoom level in. When a check could plausibly go either way, the agent says so.
 
 Build agents that name their own ambiguity. They are more useful than agents that are confidently wrong.
 
@@ -421,20 +421,20 @@ Add a recipe when the move is reliable enough that a working practitioner would 
 
 <!-- maintainer -->
 
-**Status:** Pass 3.5 — fresh-eyes editorial pass. *I can't tell* promoted from Components bullet (count 12 → 11) to its own section *The third row* between Dish 3 and Components; the cookbook's design philosophy gets dedicated framing. Recipe catalogue gains a *moves, not steps* lead-in. Dish 2 procurement-blocker vignette lifted forward (one fleshed scene replaces three sentence-each anecdotes). Dish 3 closes with a standing-residual paragraph on the freshness-window trade. Eight short recipes each carrying a Why, three full dishes (program manager agent, shared-inbox triage agent, continuous research system), 11 named components, 18 data sources, 20 indexed dishes. Recipe coverage in worked dishes: R2 (Dish 1), R3 + R6 (Dish 3), R4 (Dish 2). External-ship blockers remaining: R5 / R7 / R8 worked dishes still owed (one each), and case-consent / source verification on Dishes 1 and 2.
+**Status:** Pass 3.6 — provenance correction. Dishes 1 and 2 are explicitly labelled illustrative composites; Dish 3 is the house-built continuous-research system. Eight short recipes each carry a Why, with three full worked dishes, 11 named components, 18 data sources, and 20 indexed dishes. Recipe coverage in worked dishes: R2 (Dish 1), R3 + R6 (Dish 3), R4 (Dish 2). R5 / R7 / R8 still owe worked dishes.
 
 **Drift prevention:** when a module's Big Idea or named artefacts change, the matching recipe updates in the same edit. The cookbook is the take-home catalogue; if it lags the module, the buyer-side reading goes stale. Sweep cookbook against module Big Ideas at every cycle close. **Same rule for components and data sources** — when a module renames a component or adds a data source, the relevant Components / Data sources entry updates in the same edit. The Index entries are downstream of both: a renamed component ripples to every Index dish that composes it.
 
-**Canonical-dish discipline (Chez Panisse):** long-form dishes must be real agents built by Antti or a consenting customer. Pseudonymise to CRM standard (no real prospect names — use *"a program manager at a multi-team Nordic software org"* etc.). Date-stamp and runtime-tag every dish. Frame as *one* shape, not THE shape — readers adapt, not copy. Dishes must demonstrate recipe composition across at least three recipes; otherwise the dish is too thin for this chapter.
+**Worked-dish discipline (Chez Panisse):** every long-form dish must identify its provenance: a house-built system, a consenting and pseudonymised customer build, or an explicitly labelled illustrative composite. Date-stamp and runtime-tag real builds; never imply that a composite is a customer case. Frame each as *one* shape, not THE shape — readers adapt, not copy. Dishes must demonstrate recipe composition across at least three recipes; otherwise the dish is too thin for this chapter.
 
-**Index discipline (Escoffier + gloss):** the *Index of agent shapes* is indicative archetypes, not a portfolio of customer builds. **Each entry is two reads, not one** (Pass 1.10): an italicised one-line of what the dish does, then the components-formula and recipe pin. Cold-recall test: a graduate one month out should grok an entry without flipping back to Components. Index entries don't claim a specific build; they claim *this is a recognisable agent shape*. The line between Chez Panisse worked examples (real, dated, runtime-tagged) and Escoffier index entries (archetype, no build claim) must stay visible to the reader.
+**Index discipline (Escoffier + gloss):** the *Index of agent shapes* is indicative archetypes, not a portfolio of customer builds. **Each entry is two reads, not one** (Pass 1.10): an italicised one-line of what the dish does, then the components-formula and recipe pin. Cold-recall test: a graduate one month out should grok an entry without flipping back to Components. Index entries don't claim a specific build; they claim *this is a recognisable agent shape*. The line between sourced builds, labelled composites, and index archetypes must stay visible to the reader.
 
 **Components discipline (11, not 28):** components are named techniques the recipes already lean on; the chapter makes them addressable from the Index. Naming bar: a candidate component must (a) have a name a practitioner could recall, (b) recur across more than one recipe or be a closed set the audience would name on sight, (c) be small enough to be a building block, not a whole recipe, AND (d) appear by name in at least two Index entries OR be a closed-set named list (5 risk patterns, 5 mitigations, 3 thinking disciplines, 4 sharing strategies). Failing (d), the bit lives inline in the recipe that introduces it. Pass 1.10 cut 16 entries that were either single-use or already named in recipe bodies; the cookbook stopped doubling as a glossary. Pass 3.5 promoted *I can't tell* out of Components into its own *The third row* section — the verdict is the cookbook's load-bearing design philosophy, not a generic named technique.
 
 **Build order:**
 - Pass 1 (2026-04-19): structural placeholder, Recipes 1–3 seeded.
 - Pass 1.5 (2026-05-02): Recipes 4–8 promoted from "Future recipes" bullets to current-shape stubs that name micro-catalogues. Closes the buyer-visible drift gap before first-cohort sales.
-- Pass 1.7 (2026-05-02): first three real-life worked examples added (R2 PM agent, R3 research system, R4 email triage). Recipes 1, 5, 6, 7, 8 still owe one each — sourced from Antti's own engagements first, customer work with explicit consent only.
+- Pass 1.7 (2026-05-02): first three worked examples added (R2 PM agent, R3 research system, R4 email triage). **Correction 2026-08-23:** Dishes 1 and 2 did not carry auditable consent or provenance records and are now labelled illustrative composites; Dish 3 remains the house-built example. Recipes 1, 5, 6, 7, 8 still owe one each.
 - Pass 1.8 (2026-05-02): Escoffier-flavoured *Index of agent shapes* added (10 archetypes, 2–4 lines each). Distinct from worked examples — index entries don't claim specific builds, they claim recognisable shapes. Distribution across recipes: R2 (7), R3 (1), R4 (1), R5 (4), R6 (4), R7 (2), R8 (1).
 - Pass 1.9 (2026-05-04): Three-chapter Escoffier reorganisation. (a) Opening introduces *Le Guide Culinaire* as the load-bearing analogy and names the three chapters that follow the recipes. (b) **Components** chapter — 28 named techniques in 9 families. (c) **Data sources** chapter — 18 named raw-material sources in 5 families. (d) Index of agent shapes refit to terse format (*name. components. recipes.*) and expanded from 10 to 20 entries. Combined recipe distribution across all 20 dishes: R2 ×12, R3 ×3, R4 ×4, R5 ×9, R6 ×8, R7 ×2, R8 ×1.
 - Pass 1.10 (2026-05-04, late): Rory & Roger pass — cookbook tightened for revisitation. (a) Components cut from 28 → 12 (eight named pieces + four closed-set lists). The dropped 16 fold into recipe bodies where they earn at moment of use; the cookbook no longer doubles as a glossary. (b) Index of agent shapes — each of the 20 entries gets a one-line *what it does* gloss before the components-formula; cold-recall now works without a Components lookup. (c) Escoffier opening tightened from ~150 words to ~70. Same load-bearing analogy, less lecture. (d) Data sources lead-in stripped of fonds-chapter framing; the section is reference, not metaphor. Net: shorter, denser, easier to land on a Tuesday morning. Highest-impact change is the Index gloss; biggest cut is the Components shrink.

@@ -76,7 +76,7 @@ Claims
 - `best-mitigation-is-the-one-you-dont-need` · borrowed · "The best mitigation is the one you don't need." ← cultural-vocab
 
 Sources
-- iso-31000 `[checked:2026-05-15 result:OK due:none]` https://www.iso.org/standard/65694.html — [standards body] ISO 31000, risk management: the assess → treat → evaluate-residual → accept-or-avoid cycle, and *residual risk* as the term for what remains after treatment. NIST's risk-management framework carries the same vocabulary. **Foundational, `due:none`** — a standard's definitions do not expire on a six-month clock, and the lecture takes the vocabulary while explicitly dropping the bureaucracy around it. fallback: teach the four steps without the standard's name; the loop is recognisable to anyone with regulated-industry exposure.
+- iso-31000 `[checked:2026-05-15 result:OK due:none]` https://www.iso.org/standard/65694.html — [academic/research] ISO's primary standards record for ISO 31000: the assess → treat → evaluate-residual → accept-or-avoid cycle, and *residual risk* as the term for what remains after treatment. NIST's risk-management framework carries the same vocabulary. **Foundational, `due:none`** — a standard's definitions do not expire on a six-month clock, and the lecture takes the vocabulary while explicitly dropping the bureaucracy around it. fallback: teach the four steps without the standard's name; the loop is recognisable to anyone with regulated-industry exposure.
 
 Frameworks
 - Assess → mitigate → reassess → decide · [borrow:risk management] · law:none · ← iso-31000 — classical loop, reshaped for agent systems

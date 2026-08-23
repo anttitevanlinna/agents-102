@@ -33,7 +33,7 @@ Somewhere during the un-packaged send-off a worry surfaced: did it touch the mig
 
 Test that worry against the return. Where the return bears it out, the worry names your first check. Where it doesn't, the artefact wins: it is first-hand data from the real run, and the worry is not.
 
-Acting without full control is the job from here on. Build the check, send again. The checks pay twice: a session they steer is a session you don't babysit, and a session you don't babysit can run beside another. Beside, not on top of: independent reads, investigations and reviews parallelise, while coupled writes and shared decisions do not.
+Acting without full control is the job from here on. Build the check, send again. The checks pay twice: a session they steer is a session you don't babysit, and a session you don't babysit can run beside another.
 
 ## Set up the worktree
 

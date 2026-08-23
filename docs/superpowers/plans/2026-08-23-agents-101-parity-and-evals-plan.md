@@ -13,7 +13,9 @@
 
 ## Task 2: Fix surface classification
 
-**Files:** `curriculum/evals/scripts/eval-queue.js`, `curriculum/evals/scripts/status.sh`, associated tests, `curriculum/trainings/agents-101/ae101-parity.md`, the two outline supplementaries.
+**Files:** `curriculum/evals/scripts/eval-queue.js`, associated tests, `curriculum/trainings/agents-101/ae101-parity.md`, the two outline supplementaries.
+
+> **2026-08-23:** `status.sh` and `status.test.sh` were deleted (Antti's call) — the status grid read JSON instances instead of Quality pins, printed 4 of 7 classes, and leaked other trainings through `--training`. There is no status grid left to keep classification consistent with; `eval-queue.js` is the single board. Step 1 below now means the queue only.
 
 1. Add failing tests showing maintainer-only parity/planning pages do not enter the student eval queue or status grid.
 2. Implement one consistent classification fix.

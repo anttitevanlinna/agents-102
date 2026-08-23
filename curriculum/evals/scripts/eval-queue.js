@@ -2,11 +2,16 @@
 // eval-queue — "what still owes a judge?" in one command.
 //
 // scan-stale-classes.js answers that per file you already named. The naming was
-// the manual step: status.sh knows the universe but only prints 4 of the 7
-// classes and reads JSON instances (which lag the file's own Quality pins),
-// while audit-eval-coverage.js counts rule×file holes, not judge runs. This
-// walks the universe itself and hands every (file, class) pair still owing a
-// judge to scanFile — the same routing the pre-ship audit trusts.
+// the manual step: this walks the universe itself and hands every (file, class)
+// pair still owing a judge to scanFile — the same routing the pre-ship audit
+// trusts. audit-eval-coverage.js answers a different question (rule×file holes,
+// not judge runs) and stands.
+//
+// status.sh printed a rival grid and was deleted 2026-08-23: it read the JSON
+// instances rather than each file's own Quality pins, so it lagged; it showed 4
+// of the 7 classes; and its --training filter leaked other trainings' files into
+// the grid. Two boards disagreeing is worse than one, and the one sourced from
+// derived state is the one that says green.
 //
 // Universe per training:
 //   curriculum/trainings/<t>/*.md            modules (maintainer-only excluded)

@@ -52,7 +52,7 @@ const path = require('node:path')
 const crypto = require('node:crypto')
 const { execFileSync } = require('node:child_process')
 const { buildUniverse } = require('./eval-queue.js')
-const { parseHunks, buildLineMeta, changeTags, trainingOf, linkFinder } = require('./scan-stale-classes.js')
+const { parseHunks, buildLineMeta, changeTags, trainingOf, typeOf, linkFinder } = require('./scan-stale-classes.js')
 
 const SIM_DIR = 'curriculum/evals/sim-cache'
 const NAME_RE = /^(.+)\.(behavior|persona)\.json$/
@@ -77,9 +77,17 @@ function git(repo, args) {
 // first in the directory listing and classified one training's trace against
 // the other's body. Scoped key wins; bare key is the fallback for shared-pool
 // files and older indexes that carry no scoped entries at all.
+// The surface types a trace stem may carry between the training and the slug.
+// `spot-gaps-build-the-loop` is a real AE101 module AND a real AE101 exercise,
+// so the type segment is not decoration either: without it the module's trace
+// resolves to the exercise's body, and a rename would put one on top of the
+// other.
+const TYPES = new Set(['module', 'exercise', 'lecture', 'supplementary', 'reference', 'module-set'])
+
 function resolveSlug(idx, stem) {
   const seg = stem.split('--')
   const training = seg.length > 1 ? seg[0] : null
+  const type = seg.length > 2 && TYPES.has(seg[1]) ? seg[1] : null
   // Does some OTHER training own this exact file? Then a bare-key hit is that
   // training's body and must be refused. A file no training scopes is shared or
   // unowned, and anyone may name it — refusing there turns resolvable traces
@@ -88,6 +96,10 @@ function resolveSlug(idx, stem) {
     .some(([k, v]) => v === rel && k.includes('::') && k.split('::')[0] !== training)
   let slug = seg[seg.length - 1]
   while (slug) {
+    // Most specific first: training + type + slug, then training + slug, then
+    // bare. A wrong type segment falls through rather than orphaning a trace
+    // whose file is otherwise unambiguous.
+    if (training && type && idx.has(`${training}::${type}::${slug}`)) return idx.get(`${training}::${type}::${slug}`)
     if (training && idx.has(`${training}::${slug}`)) return idx.get(`${training}::${slug}`)
     if (idx.has(slug)) {
       const rel = idx.get(slug)
@@ -112,7 +124,13 @@ function slugIndex(repo) {
     const slug = path.basename(rel, '.md')
     if (!idx.has(slug)) idx.set(slug, rel)
     const training = trainingOf(rel, findLinkers)
-    if (training) idx.set(`${training}::${slug}`, rel)
+    if (training) {
+      // Bare-scoped key is last-wins and therefore ambiguous for a slug owned by
+      // two surface types; the typed key is the one that disambiguates.
+      if (!idx.has(`${training}::${slug}`)) idx.set(`${training}::${slug}`, rel)
+      const ty = typeOf(rel)
+      if (ty) idx.set(`${training}::${ty}::${slug}`, rel)
+    }
   }
   return idx
 }

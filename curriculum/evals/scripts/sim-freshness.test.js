@@ -192,6 +192,66 @@ test('slugIndex keys a module both bare and training-scoped, and keeps both trai
   assert.notStrictEqual(idx.get('ae101::getting-going'), idx.get('agents-101::getting-going'))
 })
 
+test('a slug that is both a module and an exercise resolves by the type segment', () => {
+  // `spot-gaps-build-the-loop` is a real AE101 module AND a real AE101 exercise.
+  // The trace stem carries `module` / `exercise` precisely to tell them apart,
+  // and resolveSlug read only the last segment — so the MODULE's persona trace
+  // was classified against the EXERCISE's body, and check-trace-names would have
+  // renamed it onto the exercise's own name and deleted one of the two.
+  const { resolveSlug } = require('./sim-freshness.js')
+  const M = 'curriculum/trainings/agentic-engineering-101/spot-gaps-build-the-loop.md'
+  const E = 'curriculum/exercises/spot-gaps-build-the-loop.md'
+  const idx = new Map([
+    ['spot-gaps-build-the-loop', M],
+    ['ae101::spot-gaps-build-the-loop', E],
+    ['ae101::module::spot-gaps-build-the-loop', M],
+    ['ae101::exercise::spot-gaps-build-the-loop', E],
+  ])
+  assert.strictEqual(resolveSlug(idx, 'ae101--module--spot-gaps-build-the-loop'), M)
+  assert.strictEqual(resolveSlug(idx, 'ae101--exercise--spot-gaps-build-the-loop'), E)
+})
+
+test('a variant stem still resolves when no type segment is present', () => {
+  const { resolveSlug } = require('./sim-freshness.js')
+  const M = 'curriculum/trainings/ae/learn-from-the-test.md'
+  const idx = new Map([
+    ['learn-from-the-test', M],
+    ['ae101::learn-from-the-test', M],
+    ['ae101::module::learn-from-the-test', M],
+  ])
+  assert.strictEqual(resolveSlug(idx, 'ae101--autumn-learn-from-the-test'), M)
+  assert.strictEqual(resolveSlug(idx, 'ae101--module--learn-from-the-test'), M)
+})
+
+test('a type segment naming a type the slug does not have falls back, it does not fail', () => {
+  // `ae101--lecture--fork-the-worktree` when fork-the-worktree is an exercise:
+  // the type is wrong but the training and slug are right, and refusing here
+  // would orphan a trace whose file is unambiguous.
+  const { resolveSlug } = require('./sim-freshness.js')
+  const E = 'curriculum/exercises/fork-the-worktree.md'
+  const idx = new Map([
+    ['fork-the-worktree', E],
+    ['ae101::fork-the-worktree', E],
+    ['ae101::exercise::fork-the-worktree', E],
+  ])
+  assert.strictEqual(resolveSlug(idx, 'ae101--lecture--fork-the-worktree'), E)
+})
+
+test('slugIndex keys a same-slug module/exercise pair separately by type', () => {
+  const { slugIndex } = require('./sim-freshness.js')
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'simfresh-type-'))
+  const body = '# T\n\nStudent body.\n\n<!-- maintainer -->\n**Quality:** writing PASS\n'
+  fs.mkdirSync(path.join(root, 'curriculum/trainings/agentic-engineering-101'), { recursive: true })
+  fs.mkdirSync(path.join(root, 'curriculum/exercises'), { recursive: true })
+  fs.writeFileSync(path.join(root, 'curriculum/trainings/agentic-engineering-101/dual.md'),
+    `${body}\n[Ex](exercises/dual.md)\n`)
+  fs.writeFileSync(path.join(root, 'curriculum/exercises/dual.md'), body)
+  const idx = slugIndex(root)
+  assert.strictEqual(idx.get('ae101::module::dual'), 'curriculum/trainings/agentic-engineering-101/dual.md')
+  assert.strictEqual(idx.get('ae101::exercise::dual'), 'curriculum/exercises/dual.md')
+  assert.notStrictEqual(idx.get('ae101::module::dual'), idx.get('ae101::exercise::dual'))
+})
+
 test('an orphaned trace does not leak into every training\'s report', () => {
   // The two `unresolved` pushes sat ABOVE the training filter, so a trace whose
   // slug resolves to nothing appeared under `--training ae101`, `agents-101` and

@@ -95,8 +95,8 @@ imperative that asks the room to run it.
 
 **§3 disposition (was 4×M5 + 5×M6 above the fence; now zero):** "walked into M5" → lede recast without ref · "start of M5" (failure modes) → folded into slide-1 mapping bullets · "M5 teaches the extend camp" → "the extend camp is the one you just ran" · "Bridge to M6" (all 5×M6 + "M5 asks") → module file `## Next` per §3; no refs remain above the fence.
 
-**Quality:** compendium-audited 2026-08-24 (writing@5df71aa6 story@5df71aa6 technical@1c765f2 behavior@1c765f2 pedagogy@5df71aa6 strategy@1c765f2 slides@5df71aa6)
-- judges @5df71aa6: writing PASS (drift-recheck), story PASS (drift-recheck), technical PASS, behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS (drift-recheck)
+**Quality:** compendium-audited 2026-08-24 (writing@5df71aa6 story@5df71aa6 technical@10a10d2b behavior@1c765f2 pedagogy@5df71aa6 strategy@1c765f2 slides@5df71aa6)
+- judges @10a10d2b: writing PASS (drift-recheck), story PASS (drift-recheck), technical PASS, behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS (drift-recheck)
 - source-freshness stamped 2026-05-25; MiniJinja and getpushtoprod stamps re-verified 2026-07-02 (stamps in Source verification block; run `source-freshness.sh --target <cohort-date>`).
 **Lecture meta:** *10–15 min closing lecture for M5, deck-shaped. Names the three-pattern after you have built each piece. Earns the name from felt evidence, not from a slide deck delivered cold. The M6 bridge lives in the module file's `## Next`, not here.*
 **Word count:** ~1260 words body.

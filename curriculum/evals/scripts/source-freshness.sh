@@ -42,7 +42,30 @@ done
 # grep every stamp line: file:line:content. Require a real date (20YY-) or
 # `never` after checked: so prose examples (`[checked:… result:… due:…]`) in
 # docs are not parsed as stamps.
-matches="$(grep -rnE '`\[checked:(20[0-9][0-9]-|never)' "${PATHS[@]}" 2>/dev/null || true)"
+# `*.fixture.md` holds deliberately-broken stamps for the parser's own tests. It
+# lives under curriculum/, so a directory walk read it and reported its BLOCKED
+# example rows as real corpus BLOCKs — 2 of 8 on the live corpus, a quarter of
+# this gate's own output, in the number people quote before a cohort. Pruned on
+# a WALK only: naming a fixture explicitly is a deliberate act and still scans,
+# which is how the fixture gets exercised on purpose. So the paths are split,
+# and the exclusion is applied to the recursive half alone.
+STAMP_RE='`\[checked:(20[0-9][0-9]-|never)'
+dirs=(); files=()
+for p in "${PATHS[@]}"; do
+  if [[ -d "$p" ]]; then dirs+=("$p"); else files+=("$p"); fi
+done
+matches=""
+if [[ ${#dirs[@]} -gt 0 ]]; then
+  # curriculum/evals/ is judge machinery, not corpus: an instance JSON whose
+  # evidence QUOTES a stamp parses as one. All 32 stamp-shaped lines under it
+  # were machinery — 28 instances, 3 scripts, 1 lint, none a real citation.
+  matches="$(grep -rnE --exclude='*.fixture.md' "$STAMP_RE" "${dirs[@]}" 2>/dev/null \
+    | grep -vE '(^|/)curriculum/evals/' || true)"
+fi
+if [[ ${#files[@]} -gt 0 ]]; then
+  more="$(grep -nHE "$STAMP_RE" "${files[@]}" 2>/dev/null || true)"
+  [[ -n "$more" ]] && matches="${matches:+$matches$'\n'}$more"
+fi
 
 if [[ -z "$matches" ]]; then
   echo "No source-freshness stamps found under: ${PATHS[*]}"

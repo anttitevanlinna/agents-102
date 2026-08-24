@@ -79,8 +79,14 @@ function collect(fileArgs = []) {
     files = fileArgs.map((f) => (path.isAbsolute(f) ? f : path.join(repo, f)));
   } else {
     const dir = path.join(repo, '.claude/workflows');
+    // `*.test.js` in this directory tests the workflows; it is not one. Running
+    // the runtime parse over a CommonJS test file fails on syntax the runtime
+    // would never see, which is a red that says nothing about any workflow.
     files = fs.existsSync(dir)
-      ? fs.readdirSync(dir).filter((f) => f.endsWith('.js')).map((f) => path.join(dir, f))
+      ? fs
+          .readdirSync(dir)
+          .filter((f) => f.endsWith('.js') && !f.endsWith('.test.js'))
+          .map((f) => path.join(dir, f))
       : [];
   }
   return files.map((f) => ({ file: path.relative(repo, f), body: fs.readFileSync(f, 'utf8') }));

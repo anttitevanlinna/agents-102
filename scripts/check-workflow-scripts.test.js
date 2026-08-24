@@ -64,6 +64,12 @@ test('every shipped workflow passes both checks', () => {
   }
 });
 
+test('a .test.js beside the workflows is a test, not a workflow', () => {
+  const dir = path.resolve(__dirname, '../.claude/workflows');
+  assert.ok(fs.existsSync(path.join(dir, 'eval-sweep.test.js')), 'fixture: the test file should exist');
+  assert.equal(collect().filter((w) => w.file.endsWith('.test.js')).length, 0);
+});
+
 test('the checker reads a real file off disk', () => {
   const p = tmp(GOOD);
   assert.equal(parseAsRuntimeWould(fs.readFileSync(p, 'utf8')), null);

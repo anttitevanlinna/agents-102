@@ -16,7 +16,7 @@ The one trainer doc. **Start here** once; the module tab open during each sittin
 
 ### Start here
 
-**The job.** Engineers who already use Claude Code; don't teach it from zero. You project the workbook page, demo each prompt slowly on your own repo, the room copy-pastes into theirs. Time budget is `max(trainer, student)`. There is no private trainer pane — keep this tab open in a second browser tab. Anything about delivery architecture: ask your delivery contact, don't improvise it.
+**The job.** Engineers who already use Claude Code; don't teach it from zero. You project the workbook page, demo each prompt slowly on your own repo, the room copy-pastes into theirs. There is no private trainer pane — keep this tab open in a second browser tab. Anything about delivery architecture: ask your delivery contact, don't improvise it.
 
 **Prep.** The TTT was the prep. Keep its artefacts (rules file, branches, `task.md`, transcripts): they are your demo starting states, listed per tab. Before each sitting, re-run only the beats you fumbled, then walk the prompt chain against the tab. Lectures have a floor: reading the projected slide aloud is acceptable delivery — the bar is fielding one question.
 

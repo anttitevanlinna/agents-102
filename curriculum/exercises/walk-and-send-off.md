@@ -80,7 +80,7 @@ A fill looks like one of these shapes (the audit tags each gap with one):
 
 <!-- maintainer -->
 
-**Phase 1 carries the §34 ceiling in one bullet, not two (2026-08-14 merge, 2026-08-15 correction).** The phase used to open with two bullets — the sizing formula, then *Bring one or two candidates* — and the formula was the third printing of a line the module prework and the previous module's `## Next` already carry, so they were merged (Antti: *"two first bulletpoints redundant?"*). The merge dropped the ceiling half, which `check_pedagogy.md` §34 mandates at **both** placements (*"prework + Phase 1 commit"*), and a pedagogy judge caught it the same day. Restored as a bolded tail on the single bullet: the de-duplication holds, the callout is present and bolded where the student actually picks. Do not re-merge it away, and do not split it back into two bullets.
+**Phase 1 carries the §34 ceiling in one bullet, not two (2026-08-14, Antti-directed).** `check_pedagogy.md` §34 mandates the ceiling at both placements (*"prework + Phase 1 commit"*); here it sits as a bolded tail on the single sizing bullet, where the student actually picks. The module prework and the previous module's `## Next` already carry the sizing line, so it is not printed a third time. Do not re-merge the ceiling away, and do not split it back into two bullets.
 
 **View summary:** You choose a task large enough to expose drift, ask the agent to find the thinnest parts of your existing context, fill only the worst gaps, and send the task off un-packaged. That first run becomes evidence for the next module.
 

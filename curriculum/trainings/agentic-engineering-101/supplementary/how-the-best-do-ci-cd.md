@@ -105,7 +105,7 @@ In order of appearance:
 
 <!-- maintainer -->
 
-**Status:** Pass 2 rewrite 2026-05-15. Replaces Pass 1 rewrite (same date) which carried 8 OODA-pending slots. Two OODA cycles dispatched (3 parallel subagents each) populated all slots; Move 5 reframed mid-cycle per maintainer redirect (skills-as-CI-check, not skills-as-generic-kit-accretion).
+**Move 5 is skills-as-CI-check, not skills-as-generic-kit-accretion.** A skill earns its place here by becoming a check, a verifier or a rule the loop runs — not by accreting into a general-purpose kit. Maintainer redirect, and the distinction the move is built on; do not broaden it back.
 
 **Audience pin:** AE101 IC who has lived M1–M6. NOT a CTO. NOT a platform/staff engineer reading over the CTO's shoulder. The supplementary is the IC's next-altitude reading after shipping their second skill: the same loop, slightly wider lens.
 
@@ -163,16 +163,6 @@ OODA
 - last-run: 2026-08-01
 
 <!-- /backing -->
-**Iteration log:**
-
-- 2026-05-15 (Pass 2.1, critical-review fixes): nine fixes landed after critical-review subagent flagged: (1) Klaassen M1 claim softened from "runs review findings back into CLAUDE.md/AGENTS.md/skills" to "named the loop" — original mechanic-claim was not in the URL; the concrete mechanism lives in Move 5 (Shapira + Larson). (2) Stripe "1,300 PRs/week" corrected to "over 1,000" per source. (3) Stripe "quarantined EC2 instance" corrected to "isolated devbox." (4) Hamel co-author Shankar dropped — not co-bylined. (5) Hamel freshness conflict logged for re-fetch. (6) Cherny distillation author Choudhary → Jadhav. (7) Charles X URL replaced with Rachitsky's creatoreconomy.so write-up (X was auth-walled). (8) Charles 99.5%/84% conflation corrected. (9) Cursor Bugbot label kept as `[practitioner direct, vendor venue]` with explicit caveat in maintainer that the 52%→80% number is self-reported and not load-bearing. All 12 sources now ship with verified claims; one open item (Hamel freshness) flagged for re-fetch.
-
-- 2026-05-15 (Pass 2): All 8 OODA-pending slots populated. Move 5 reframed mid-cycle from "skills compound generically" to "skills become CI checks / verifiers / rules" per maintainer redirect. Source reshuffle: Shapira (originally proposed for Move 1) moved to Move 5 as the cleanest skill-becomes-CI-check loop; Cursor Bugbot promoted to Move 1 secondary. Move 4 lead changed from Cherny to Husain + Shankar (OODA confirmed the "three verifier shapes" framing is downstream synthesis, not Cherny's own — he names two: Stop hook + background agent). Move 2 ships single-cite (Cloudflare carries the move alone — no clean non-Klaassen second exists). Move 3 frames Intercom + Stripe as two org-scale bets on the same question, with the IC-altitude case named as a published gap. Sources section added to bottom of body per maintainer direction (visible to students; source-type labels stay maintainer-only per `check_research_claims.md` §1).
-
-- 2026-05-15 (Pass 1 rewrite): replaced original CTO-targeted version after audience-mismatch + mood-collision review. 4 of 12 example slots populated; 8 OODA-pending markers shipped for follow-up.
-
-- 2026-04-24 (original Pass 1): CTO-targeted, replaced.
-
 **Org-diversity check:** 12 cites across 11 organisations. Anthropic appears twice (Cherny M4 secondary, Wolff M6 secondary) — accepted because the two practitioners are distinct individuals making distinct claims about different layers of the loop. Attribution cap per `check_writing.md` rule 11 is per-practitioner; both Cherny and Wolff are one-mention each.
 
 **Vendor-venue cites flagged in body as "<org>'s own numbers":** Cursor (M1), Cloudflare (M2), Intercom (M3), Stripe (M3), Ramp (M5). Per `memory/compounded/2026-05-14-research_claims-vendor-venue-practitioner-byline.md`, operational facts are evidence and self-reported metrics are flagged. **Edge case — Cursor Bugbot:** critical-review pass flagged this as borderline `[vendor press release]` (Level 0) under strict reading. Kept as `[practitioner direct, vendor venue]` because Michael Zhao (Cursor employee) is the named byline and the operational mechanism (learned-rules promote/demote across 110K repos) is what we cite. The 52% → 80% resolution-rate number is Cursor's self-reported and called out inline as such; not load-bearing on the move's argument.

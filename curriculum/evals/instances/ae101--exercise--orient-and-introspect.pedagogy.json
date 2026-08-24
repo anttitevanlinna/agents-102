@@ -1,7 +1,7 @@
 {
   "class": "pedagogy",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/orient-and-introspect.md",
-  "body_sha": "5220d246852c2c271a46f7e6ba2c4dace7ac602d0c0619ea38d5d3b890990aae",
+  "body_sha": "22181a2093015f8c44954b7c7ee37c2cd9a4e64808baf17aa1ee041ffdab2235",
   "verdict": "PASS",
   "training": "ae101",
   "rules_evaluated": [
@@ -424,7 +424,7 @@
       "rule_index": 44,
       "rule_lead": "Plug points + UX.",
       "verdict": "PASS",
-      "evidence": "\"Student's own repo (chosen in prework)\" is genuinely integration-load-bearing — the entire exercise runs on it, not a nominal checkbox. UX: three prompts, each one paste, no megaprompt, no undiscoverable path.",
+      "evidence": "Re-checked at current wording (a)+(b). (a) \"Student's own repo (chosen in prework)\" names the KIND of org context (the student's codebase), not a vague slot, and every downstream prompt (repo read, skip-report, /context) is genuinely dependent on it — absence would gut the exercise, so this is load-bearing, not a section-end checkbox. (b) UX: three single-paste prompts, no invented setup, no named-but-undiscoverable file path, hand-off to `fix-tests-first` names an artefact (the mapped context) that actually exists after this exercise.",
       "fix_hint": null,
       "blocking": false
     },
@@ -432,10 +432,10 @@
       "compendium": "check_pedagogy.md",
       "rule_index": 45,
       "rule_lead": "Per-exercise leap test — 3 observable Monday outcomes.",
-      "verdict": "PASS",
-      "evidence": "All three leap-test lines name concrete, falsifiable verbs (\"runs /context ... without being prompted\", \"asks Claude what it skipped ... before taking any code action\", \"spot-checks ... by quoting a specific file or function\"), each with a falsifiability clause.",
-      "fix_hint": null,
-      "blocking": true
+      "verdict": "REVISE",
+      "evidence": "Leap test #1: \"Runs `/context` on a working session and reads the used percentage without being prompted.\" This names \"the used percentage\" as the observable success proxy. But the same maintainer block's own \"context frame is a target, not a gauge\" note explicitly rejects percentage-as-the-metric for this file's design: \"Both the free-percentage and used-percentage framings were written and both rejected... Do not restore 'the free percentage is the number that matters'... or any fuel-gauge phrasing.\" Harm: a trainer using leap test #1 to certify Monday transfer will look for a student who glances at a percentage and stops — exactly the gauge-reading habit the file's own design note disclaims (\"`/context` reports what is being carried and cannot report whether it is the right load\"). The proxy is fully falsifiable (so this is not the missing/unfalsifiable failure §45 usually blocks on) but it operationalizes the wrong half of the file's own stated aim. Non-blocking: the exercise's actual prompts and body teach the right thing; only this one leap-test clause uses stale vocabulary.",
+      "fix_hint": "Drop \"the used percentage\" from leap test #1 — e.g. \"reads what `/context` reports\" — so the falsifiable proxy stops contradicting the file's own target-not-gauge design note.",
+      "blocking": false
     },
     {
       "compendium": "check_pedagogy.md",
@@ -496,7 +496,16 @@
       "rule_index": 52,
       "rule_lead": "Session widget shape and placement.",
       "verdict": "PASS",
-      "evidence": "`**Session** *(new, \"Module 1 - Orient and introspect\")*` sits at exercise-top, matching pattern (a) exercise-top default.",
+      "evidence": "Re-checked at current wording (placement patterns a-d). `**Session** *(new, \"Module 1 - Orient and introspect\")*` sits at the very top of the file, before the lead-in trio — pattern (a) exercise-top default, correct for the module's first exercise. Rename prompt is a plain fenced `/rename` command; renderer's job to wrap CLI-only chrome, not the author's, matching the rule's \"authors write plain markdown\" clause.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "52a",
+      "rule_lead": "Module prose carrying a **Session** widget or a {{prompt:}} fence is an exercise that has not been extracted.",
+      "verdict": "N/A",
+      "evidence": "This IS the already-extracted exercise file (curriculum/exercises/orient-and-introspect.md), not module prose carrying an inline Session widget or prompt fence — the rule targets the opposite direction (module file still holding exercise machinery). No module file is in scope for this dispatch.",
       "fix_hint": null,
       "blocking": false
     },
@@ -505,7 +514,7 @@
       "rule_index": "52b",
       "rule_lead": "Widgets carry semantics, not just emphasis.",
       "verdict": "PASS",
-      "evidence": "Session widget correctly starts a real new session; no HOX/Note misuse for volume.",
+      "evidence": "Re-checked at current wording. The Session widget is used for its literal meaning (starts a real new session); no HOX/Note co-opted for volume. Nothing in this short atomic file needed a widget that does not already exist in the palette.",
       "fix_hint": null,
       "blocking": false
     },
@@ -514,7 +523,7 @@
       "rule_index": "52c",
       "rule_lead": "Exercise lead-in trio — three slots, three tenses, ~15 words each, no colon-list.",
       "verdict": "PASS",
-      "evidence": "This file is the compendium's own cited reference shape (9/12/7 words for do/build/point); current lead-in text still matches that register with no colon-list.",
+      "evidence": "Re-checked at current wording, incl. the 2026-08-23 canonical-home note. AE101 scope applies (this file). Word counts verified mechanically: do=10, build=12, point=7 (`echo -n \"...\" | wc -w`). Compendium's own citation of this file as the 9/12/7 reference is stale on the \"do\" count (actual 10, not 9) — a drift in the RULE's worked example, not a defect in this file: the line is still one sentence, ~15 words, no colon-list, correct now-tense (\"have Claude read your repo, then interrogate what it read\"). Flagged in notes for the compendium, not filed as a body REVISE.",
       "fix_hint": null,
       "blocking": false
     },
@@ -523,7 +532,7 @@
       "rule_index": "52d",
       "rule_lead": "Finding the point — contestable half, not the closer's reveal.",
       "verdict": "PASS",
-      "evidence": "\"the context window is not your codebase\" is the compendium's own worked example of a landed point (§52d), a genuinely contestable framing rather than a settled description.",
+      "evidence": "Re-checked at current wording (a)-(d) incl. 2026-08-23 scope note. \"the context window is not your codebase\" is literally the rule's own cited example of a landed, contestable point (§52d(c): M1's landed set), and the closing section doesn't hoard a bigger reveal the point should have deferred to — no closer-spend violation.",
       "fix_hint": null,
       "blocking": false
     },
@@ -559,7 +568,7 @@
       "rule_index": 56,
       "rule_lead": "Engineer-audience audit fixes default to body callout, not forcing function.",
       "verdict": "PASS",
-      "evidence": "Both recoverable risks in this file (fan-out, self-report bias) are handled as body callouts, consistent with the AE101 default.",
+      "evidence": "Re-checked at current wording incl. the 2026-08-23 addendum (slow silent misses take the forcing-function branch even for engineers, cheapest form = re-running an already-taught instrument like /context). This file is not fixing an audit finding, but it is the exercise that FIRST teaches /context as a forced prompt rather than a body callout — i.e. it already matches the addendum's prescribed shape rather than being in tension with it. The two recoverable risks that ARE present (fan-out on the repo read, self-report confabulation) are correctly handled as body callouts per the base rule (<1-min diagnostic: both are noticeable and recoverable within the same session).",
       "fix_hint": null,
       "blocking": false
     },
@@ -604,7 +613,7 @@
       "rule_index": 61,
       "rule_lead": "Verify mechanism before proposing surgery.",
       "verdict": "N/A",
-      "evidence": "No skill/framework/tool-change proposal is made by this read-only evaluation.",
+      "evidence": "Re-checked at current wording. This exercise proposes no SKILL.md/framework/tool change; the rule's verify-the-negative concern (does default Claude behavior already handle it before adding machinery) has nothing to attach to in a plain read-and-introspect exercise.",
       "fix_hint": null,
       "blocking": false
     },
@@ -652,9 +661,27 @@
       "evidence": "First exercise of M1; no upstream module artefact dependency to rescue.",
       "fix_hint": null,
       "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 66,
+      "rule_lead": "Three-pass build — finish each pass across ALL modules before starting the next.",
+      "verdict": "PASS",
+      "evidence": "File exhibits full Pass-3 completeness: exact Claude Code commands (`/rename`, `/context`), named failure modes with trainer diagnostics (Watch-fors + pushes), a time-box (`Time: 20 minutes`), and a named plug-point default (student's own repo). Nothing here reads as a stalled Pass-1/Pass-2 skeleton.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": null,
+      "judge_owned": true,
+      "rule_lead": "Whole-compendium scope call — is this file workshop-shaped?",
+      "verdict": "N/A",
+      "evidence": "check_workshop.md does not apply: this exercise is one student alone in a Claude Code session at their own repo. No beat's output belongs to a group — no adjudication, no attributed contribution into a shared record, no room-scale decision. Per check_workshop.md's own trigger clause (\"Not triggered by: students doing individual work in the same room at the same time... The distinction is where the artefact lands, not where the bodies are\"), this is co-located individual work at most, governed by check_pedagogy.md alone.",
+      "fix_hint": null,
+      "blocking": false
     }
   ],
   "blocking_findings_count": 0,
-  "todos_count": 0
+  "todos_count": 1
 }
-

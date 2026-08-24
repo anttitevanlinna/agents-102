@@ -1,35 +1,35 @@
 {
   "class": "technical",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/run-the-first-experiment.md",
-  "body_sha": "e9b30555eea8c4a28ad9c938bcdd2cde3d7d1ea37fc80fcccd5a1304230a5d75",
+  "body_sha": "25b7a412bfcccc41ca10b5dd37c41d8547742fae4a7f40f8b567d2f377350077",
   "verdict": "PASS",
   "training": "ae101",
   "rules_evaluated": [
     {
       "compendium": "check_research_claims.md",
       "rule_index": 1,
-      "rule_lead": "Source URL + type label \u2014 mandatory.",
+      "rule_lead": "Source URL + type label — mandatory.",
       "verdict": "PASS",
-      "evidence": "All 9 body URLs are stamped in the maintainer block (L173-180) and every stamp carries a label; labels sit below `<!-- maintainer -->` only, per the scope sub-clause \u2014 `grep -c '\\[practitioner\\|\\[platform docs\\|\\[delegated' curriculum/trainings/agentic-engineering-101/run-the-first-experiment.md` with a range cap at L1-167 finds no label in body prose (re-verified live: `sed -n '1,167p' <file> | grep -c '\\['` \u2192 0). Closest to violating: L173 labels the docs page `[platform docs]`, a variant outside \u00a71's enumerated taxonomy, where the sibling stamp for the identical URL (`curriculum/lectures/the-agent-loop.md:92`) uses `[capability]` \u2014 re-confirmed live, still true today. Stays inside: the label is honest about the evidence level (vendor docs, Level 0-ish) and the body uses it only for a mechanism claim, not an outcome claim; the taxonomy harm (laundering an unclear evidence level) is absent. The label-inheritance question is filed under \u00a711a where it's actionable.",
-      "fix_hint": "Align L173's label with the sibling's `[capability]` on next re-stamp.",
+      "evidence": "Body carries zero `[label]` tokens (`sed -n '1,86p' <file> | grep -c '\\['` -> 0, correct per the scope sub-clause: labels live only in the maintainer block). All 7 body-cited external URLs (da Costa L14, Horthy L16, Shumer L57, Pocock L58, /goal L60, Mollick L72, Entis/Klaassen L78, Klaassen-guide L82 — 8 links) resolve to a stamp at L173-181, and every stamp carries a label: `[practitioner direct]` x3 (Shumer, Pocock, Mollick), `[platform docs]` x1 (/goal), `[practitioner direct, vendor venue]` x1 (Klaassen guide), `[practitioner analysis]` x1 (Entis), `[delegated stamp]` x2 (da Costa, Horthy). Closest to violating: L173's `[platform docs]` is a variant spelling not in §1's literal enumerated list (which has no `platform docs` entry) — stays inside because it is transparently honest about evidence level (vendor/Anthropic docs, mechanism claim only) and the taxonomy question is actionable under §11a, not a labeling gap here.",
+      "fix_hint": "Align L173's label with the taxonomy's closest entry (`[vendor press release]` reads wrong for docs; consider a literal `[vendor docs]`/`[platform docs]` addition to §1's enumerated list instead).",
       "blocking": false
     },
     {
       "compendium": "check_research_claims.md",
       "rule_index": "1a",
-      "rule_lead": "OODA paraphrase \u2260 primary source.",
+      "rule_lead": "OODA paraphrase ≠ primary source.",
       "verdict": "PASS",
-      "evidence": "The Mollick claim added today was verified by direct fetch of https://www.oneusefulthing.org/p/the-bitter-lesson-versus-the-garbage in this session, not transcribed from an OODA paraphrase. Both stamped quotes returned verbatim off the page: `\"encoding human understanding into an AI tends to be worse than just letting the AI figure out how to solve the problem\"` and `\"problems, solutions, and decision-makers are dumped in together\"`. `grep -rn 'oneusefulthing.org/p/the-bitter' continuous-research/` \u2192 0 hits, so there was no OODA paraphrase in the chain to drift from.",
+      "evidence": "`grep -rln 'oneusefulthing.org/p/the-bitter\\|lucasfcosta.com/blog/backpressure\\|somethingbig.ai/gauntlet-loop\\|mattpocock/skills.*wayfinder' continuous-research/` -> 0 hits: none of the file's live citations trace to an OODA paraphrase in the research pipeline. Each maps to a maintainer-block quote/claim narrow enough to be primary-source-checkable (e.g. L173 Shumer: 'splits an inspectable artifact among builders and fresh critics, compares it with a concrete bar, and repeats' — a description, not a transcribed OODA finding).",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_research_claims.md",
       "rule_index": 2,
-      "rule_lead": "Freshness rule \u2014 6 months.",
+      "rule_lead": "Freshness rule — 6 months.",
       "verdict": "PASS",
-      "evidence": "Closest to violating: L177, `[checked:2026-08-21 result:OK due:none]` on a piece published 2025-07-28 (~13 months old), well outside the 6-month window. It stays inside because \u00a72 explicitly allows older sources as historical context when explicitly dated \u2014 body L72 dates it in-line (`(July 2025)`), and the stamp itself records a live re-verification 2026-08-21. \u00a72a's durable-account carve-out does NOT apply and the stamp correctly does not invoke it: an essay's argument is not `a specific completed event`. This is a maintainer decision, the same shape as the precedent at `getting-going.md:106` (Cherny video, kept outside the window `by maintainer decision`, re-confirmed live today) and the Willison exception at `plan-mode-done-right.md:121`. \u00a72b also holds: the body uses the piece for an open question, not a live position, and the fallback (`drop the pre-read`) is a real fallback, not the banned standing-order form.",
-      "fix_hint": "Optional parity: state 'not a \u00a72a carve-out; no compendium rule waives the clock here' explicitly in the stamp, matching plan-mode-done-right.md's phrasing.",
+      "evidence": "Every dated stamp is inside or explicitly exempted from the window. L179 Mollick (published 2025-07-28, ~13 months old) is the one outlier and the stamp names the exemption itself: 'Outside the 6-month window by decision: named framing piece, dated in body, same treatment as the Cherny video exception in getting-going.md.' §2a's durable-account carve-out correctly does NOT apply (an essay's argument is not a specific completed event) and the stamp does not claim it. All other stamps (Shumer/Pocock checked 2026-08-15, /goal checked 2026-08-15, Entis checked 2026-07-02 due 2026-10-22, da Costa delegated) sit inside 6 months of their check date.",
+      "fix_hint": null,
       "blocking": false
     },
     {
@@ -37,7 +37,7 @@
       "rule_index": 3,
       "rule_lead": "Zombie stat guard.",
       "verdict": "PASS",
-      "evidence": "`grep -nE '\\b(95|85|80|90|70)%' curriculum/trainings/agentic-engineering-101/run-the-first-experiment.md` \u2192 exit 1, no matches. Grep validated against a planted string (`echo '95% fail' | grep -nE '\\b(95|85|80|90|70)%'` \u2192 matches). The only percentage in the file is L60's `10% smaller`, a task target the student sets for their own repo, not a failure/success rate imported as evidence.",
+      "evidence": "`grep -nE '\\b(95|85|80|90|70)%' curriculum/trainings/agentic-engineering-101/run-the-first-experiment.md` -> exit 1, 0 matches (planted-string check: `echo '95% fail' | grep -nE '\\b(95|85|80|90|70)%'` -> matches, confirming the grep isn't silently broken). Only percentage in the file is L60's `10%` — a task-sizing target the student sets for their own repo, not an imported failure/success rate.",
       "fix_hint": null,
       "blocking": false
     },
@@ -46,7 +46,7 @@
       "rule_index": 4,
       "rule_lead": "Hold short OODA loose.",
       "verdict": "N/A",
-      "evidence": "No OODA output, convergence claim or practitioner count in this file; every citation is a single named source presented as one person's piece.",
+      "evidence": "No convergence claim or practitioner-count assertion anywhere in the file; every citation names one person's own piece.",
       "fix_hint": null,
       "blocking": false
     },
@@ -55,7 +55,7 @@
       "rule_index": 5,
       "rule_lead": "Resist prescriptive post-OODA phrasings.",
       "verdict": "N/A",
-      "evidence": "No post-OODA reporting surface here; the maintainer block records landed decisions with dates and attributions (L92-100), not open design recommendations.",
+      "evidence": "No post-OODA design-recommendation prose; maintainer block records landed, dated decisions (L90-102), not open proposals.",
       "fix_hint": null,
       "blocking": false
     },
@@ -64,16 +64,16 @@
       "rule_index": 6,
       "rule_lead": "Default to asking before folding findings into strategy docs.",
       "verdict": "N/A",
-      "evidence": "Curriculum module, not a strategy doc; no finding is folded anywhere by this file.",
+      "evidence": "Curriculum module file, not a strategy doc; nothing here folds a research finding into strategy.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_research_claims.md",
       "rule_index": 7,
-      "rule_lead": "Vision \u00d7 Detail split.",
+      "rule_lead": "Vision × Detail split.",
       "verdict": "PASS",
-      "evidence": "Detail-layer claims all carry backing: eight named practitioners (Mollick, Shumer, Pocock, Klaassen, Entis, da Costa, Willison, Horthy) each resolve to a stamp at L169-178. Closest to violating is vision-layer prose at L74 (`Traces are data. Stopping a session that has gone off the rails is reading, not failing.`) \u2014 it makes no practitioner or numeric claim, so it needs no KB backing and correctly has none.",
+      "evidence": "Detail-layer claims (Shumer, Pocock, Mollick, da Costa, Horthy, Entis, Klaassen) all resolve to a maintainer-block stamp with backing. Vision-layer prose (L50 'Traces are data. Stopping a session that has gone off the rails is reading, not failing.') makes no practitioner or numeric claim and correctly carries none.",
       "fix_hint": null,
       "blocking": false
     },
@@ -82,7 +82,7 @@
       "rule_index": 8,
       "rule_lead": "Grep `continuous-research/` and `memory/` before guessing at a name.",
       "verdict": "PASS",
-      "evidence": "Ran `grep -rn 'oneusefulthing.org/p/the-bitter' continuous-research/` \u2192 0 hits, and `grep -rln 'oneusefulthing' . --exclude-dir=.git` \u2192 the URL appears in `continuous-research/source-roster.md` etc. only as the author name, never as a stamped source. So \u00a711a's inherit-the-research-file's-`due` clause has nothing upstream to inherit from and L175 is free to set its own judgement.",
+      "evidence": "`grep -rn 'oneusefulthing.org/p/the-bitter' continuous-research/` -> 0 hits; §11a's inherit-the-research-file's-due clause has nothing upstream to bind to, so L179 is free to set its own due (`due:none`, maintainer decision) without contradicting an existing research-file judgement.",
       "fix_hint": null,
       "blocking": false
     },
@@ -91,7 +91,7 @@
       "rule_index": 10,
       "rule_lead": "No \"What research says\" callout boxes.",
       "verdict": "PASS",
-      "evidence": "No callout box in the file. Closest to violating is the L70-84 `## Pre-reads before Module 5` block, which is a reading list, not a research callout: each entry is one inline builder-voice line (L72 `Two ways to bet on getting an agent through a messy organisation.`) with no `research shows` framing and no evidence-level vocabulary.",
+      "evidence": "No callout box anywhere. Closest: the L68-82 `## Pre-reads before Module 5` block is a reading list — inline builder-voice one-liners per entry (L72 'Two ways to bet on getting an agent through a messy organisation.') — with zero 'research shows'/evidence-ladder vocabulary in body.",
       "fix_hint": null,
       "blocking": false
     },
@@ -100,7 +100,7 @@
       "rule_index": 11,
       "rule_lead": "Source-verification maintainer block on any student-facing file with practitioner citations.",
       "verdict": "PASS",
-      "evidence": "Block present at L168 (`**Source verification \u2014 freshness stamps ...**`) with 10 entries covering all 9 body URLs plus one explicit no-stamp-owed line (L174, Uncle Bob via internal supplementary). Every entry carries a named fallback framing, e.g. L175 `fallback: drop the pre-read; the block's other four still stand.`",
+      "evidence": "Block present at L172 with 10 stamp lines covering all 8 body URLs, plus one explicit no-stamp-owed line (L178, Uncle Bob via internal supplementary — consistent with the internal-file carve-out). Every stamp names a fallback, e.g. L179 'fallback: drop the pre-read; the block's other four still stand.'",
       "fix_hint": null,
       "blocking": false
     },
@@ -109,8 +109,8 @@
       "rule_index": "11a",
       "rule_lead": "Each listed source carries a freshness STAMP, not just a to-do.",
       "verdict": "REVISE",
-      "evidence": "Two items, opposite outcomes. (a) L173's `/goal` stamp \u2014 PASSES NOW. The prior fire on this file (pinned a7f3966, instance body_sha c7d515a4\u2026 computed against the pre-fix body at commit 9657595c^) found `due:2027-02-15` on a Claude Code capability claim, in violation of \u00a711a's unified-scope clause (`a Claude Code capability claim \u2026 same stamp, due:cohort`). Commit 9657595c fixed exactly this: `git show 9657595c -- <file>` shows `due:2027-02-15` \u2192 `due:cohort` on the `/goal` line, and the live file today reads `[checked:2026-08-15 result:OK due:cohort]` at L173, verified by direct read. (b) L174 is a live, still-open instance of the harm \u00a711a exists to prevent: source debt that goes uncollected past its own scheduled date. `[checked:2026-07-02 result:CAVEAT due:2026-08-09]` on the Klaassen compound-engineering guide is 14 days overdue against today (2026-08-23). Mechanically demonstrated: `bash curriculum/evals/scripts/source-freshness.sh --target 2026-09-15` (re-run this session) now correctly routes this row into `WARN (95) \u2014 re-verify + re-stamp before delivery` with the note `CAVEAT past its own due:2026-08-09 \u2014 re-verify or re-stamp` (commit 2f97ca2d fixed the CAVEAT-due comparison the prior instance's \u00a714 finding identified; before that fix the same row sat silently in `INFO \u2014 accepted caveat`, per the prior instance's own captured output). HARM: the citation backs a claim about Klaassen's Every.to guide that the stamp's own fallback already flags as volatile (`the loop expanded 2026-05-29 and a count is what dated last time`) \u2014 an editable practitioner page whose specific naming (`plan/work/review/compound`) could have shifted again in the two weeks since the recheck came due, unnoticed. Not yet BLOCK-tier: the script's own target-date classification (WARN, not BLOCK) reflects that the actual cohort has runway before this becomes ship-blocking, and the body citation is already hedged to a thesis-level claim rather than a specific count.",
-      "fix_hint": "Re-open https://every.to/source-code/compound-engineering-the-definitive-guide, confirm the plan/work/review/compound framing and the 'each unit makes the next easier' thesis still hold, and re-stamp L174 with a fresh checked/due date.",
+      "evidence": "Two items in the diff region, opposite outcomes. (a) L180's da Costa stamp — PASSES, and the delegation-integrity claim it now makes is TRUE. The prior conditional structure (`<!--flag:module:earn-the-trust-->`...da Costa...`<!--flag:no-module:earn-the-trust-->`...Willison...) was collapsed to one unconditional da Costa line at L14, and the stamp text updated to 'unconditional across every cut ... plan-mode-done-right.md carries the equivalent Pre-reads before Module 4 assignment for cuts that drop M3.' Verified live: `plan-mode-done-right.md:93-97` does carry a `no-module:earn-the-trust` flagged `## Pre-reads before Module 4` block assigning da Costa's essay directly, and its own maintainer note (L113) explicitly confirms 'run-the-first-experiment.md's matching ## Prework callback names da Costa unconditionally, no flag' — the two files were edited in coordination, not just this one in isolation. The removed Willison stamp is correctly gone since the URL is no longer cited in this file's body at all (`grep -n simonwillison <file>` -> 0 hits). (b) L176's Klaassen compound-engineering-guide stamp — `[checked:2026-07-02 result:CAVEAT due:2026-08-09]` — is 15 days overdue against today (2026-08-24), re-confirmed by running the actual gate live: `bash curriculum/evals/scripts/source-freshness.sh --target 2026-09-15` places this exact row (line 176) in `WARN — re-verify + re-stamp before delivery` with the note `CAVEAT past its own due:2026-08-09 — re-verify or re-stamp`. HARM: the citation backs a specific naming (`plan/work/review/compound`) on Klaassen's Every.to guide that the stamp's own fallback already flags as volatile ('the loop expanded 2026-05-29 and a count is what dated last time') — an editable practitioner page that could have moved again in the six weeks since the recheck came due, unnoticed by anything that reads a stamp instead of the page. Not BLOCK-tier: the script's own WARN (not BLOCK) classification reflects real runway before cohort delivery, and this is pre-existing (not part of the diff being judged) — same row, same overdue date, flagged by the prior technical pass and still unaddressed.",
+      "fix_hint": "Re-open https://every.to/source-code/compound-engineering-the-definitive-guide, confirm the plan/work/review/compound framing and the thesis still hold, re-stamp L176 with a fresh checked/due date.",
       "blocking": false
     },
     {
@@ -118,16 +118,16 @@
       "rule_index": 12,
       "rule_lead": "Denominator + axis discipline on every adoption/productivity number.",
       "verdict": "N/A",
-      "evidence": "No adoption or productivity number in the file; the only figure is L60's self-set `10%` codebase-size target.",
+      "evidence": "No adoption or productivity percentage in the file; the only figure is L60's self-set 10% codebase-size target, not an imported statistic.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_research_claims.md",
       "rule_index": 13,
-      "rule_lead": "Inference beyond source \u2014 absence licenses only absence.",
+      "rule_lead": "Inference beyond source — absence licenses only absence.",
       "verdict": "PASS",
-      "evidence": "Closest to violating: L72 `Mollick does not call the winner.` \u2014 a claim about what the source does NOT do, exactly the shape \u00a713 polices. It stays inside because the absence was verified rather than inferred: an unprimed fetch returned the essay's own closing line, `The companies betting on either answer are already making their moves, and we will soon get to learn what game we're actually playing.` The essay genuinely leaves the question open, and the body asserts nothing beyond that.",
+      "evidence": "Closest to violating: L72 'Mollick does not call the winner' — a claim about what the source does NOT do. It stays inside a verified absence: WebFetch of the live page this session returned the essay's own closing line ('The companies betting on either answer are already making their moves, and we will soon get to learn what game we're actually playing'), confirming the essay genuinely leaves the question open; the body asserts nothing beyond that.",
       "fix_hint": null,
       "blocking": false
     },
@@ -136,7 +136,7 @@
       "rule_index": 14,
       "rule_lead": "A green check must measure the fact, not a proxy that co-varies with it.",
       "verdict": "PASS",
-      "evidence": "The proxy-vs-fact gap this rule polices at `source-freshness.sh` is fixed. Commit 2f97ca2d (`The freshness gate learns to read a CAVEAT's own due date`) makes the script compare a CAVEAT row's own due date against `--target`/today instead of accepting any `result:CAVEAT` as `accepted caveat` regardless of date. Verified live this session: `bash curriculum/evals/scripts/source-freshness.sh --target 2026-09-15` now places L174 (`[checked:2026-07-02 result:CAVEAT due:2026-08-09]`, the Klaassen guide) in `WARN \u2014 re-verify + re-stamp before delivery` with the explicit note `CAVEAT past its own due:2026-08-09 \u2014 re-verify or re-stamp`, where the prior run (captured in the pre-fix instance) placed the identical row in `INFO \u2014 accepted caveat` and never surfaced it. The instrument now measures the fact it claims to measure for this file's one CAVEAT row. The underlying source debt this now correctly surfaces is filed at `check_research_claims.md \u00a711a`, not here, to avoid double-counting one fix.",
+      "evidence": "The one instrument this file's citations depend on (`source-freshness.sh`'s CAVEAT-due comparison) measures the fact it claims to: re-run live this session (`bash curriculum/evals/scripts/source-freshness.sh --target 2026-09-15; echo EXIT=$?` -> `EXIT=1`, nonzero, fail-closed on real BLOCK rows), and L176's overdue CAVEAT correctly lands in WARN, not in a silently-accepted INFO bucket. The instrument's own noise problem (BLOCK bucket self-pollution from `evals/instances/` + fixture rows) is filed separately at §45/§46 below, not double-counted here.",
       "fix_hint": null,
       "blocking": false
     },
@@ -145,7 +145,7 @@
       "rule_index": 15,
       "rule_lead": "A word-presence claim needs an unprimed read.",
       "verdict": "PASS",
-      "evidence": "This rule fired on my own method and I obeyed it. My first fetch named both target strings verbatim in the prompt \u2014 a primed read, inadmissible for a presence claim \u2014 and it came back muddled, quoting one sentence as `surrounding` and then restating my own string back at me. I re-fetched cold (`how does this essay define (a) the bitter lesson and (b) the garbage can model ... quote the essay's own defining sentences verbatim`), naming neither string, and the page volunteered both unprompted: `encoding human understanding into an AI tends to be worse than just letting the AI figure out how to solve the problem, and adding enough computing power until it can do it better than any human` and `problems, solutions, and decision-makers are dumped in together, and decisions often happen when these elements collide randomly`. L175's two quotes are exact truncations of these, so the stamp survives an unprimed read.",
+      "evidence": "Applied to my own method for the one presence-shaped claim in scope (L72's 'does not call the winner'): I fetched the Mollick page with a neutral prompt naming neither target phrase ('what does this page say about who wins — quote the closing argument verbatim') rather than asking directly whether it names a winner, and the page volunteered the open-ended closing line unprompted. The claim survives an unprimed read.",
       "fix_hint": null,
       "blocking": false
     },
@@ -154,7 +154,7 @@
       "rule_index": 16,
       "rule_lead": "A candidate that matches the hunt's SHAPE has not answered the hunt's QUESTION.",
       "verdict": "N/A",
-      "evidence": "No discovery sweep or candidate scoring in this artefact; sources are assigned reads, not search returns being admitted against a bar.",
+      "evidence": "No discovery sweep or candidate-scoring shape in this artefact; every cited source is an assigned read, not a search result being admitted against a bar.",
       "fix_hint": null,
       "blocking": false
     },
@@ -163,16 +163,16 @@
       "rule_index": 1,
       "rule_lead": "Training platform = Claude Code (CLI + Desktop) + Cowork.",
       "verdict": "PASS",
-      "evidence": "`grep -n 'claude.ai' <file>` \u2192 exit 1. The runtime named throughout is Claude Code: L116 `the send-off happens IN the same session the student used for walk + fill + frame + retro \u2014 no new session, no scheduled agent, no cloud runner`. No Claude.ai-only feature is leaned on.",
+      "evidence": "`grep -n 'claude\\.ai' <file>` -> exit 1, 0 hits. Runtime named throughout is Claude Code: L118 'the send-off happens IN the same session ... no new session, no scheduled agent, no cloud runner.' No claude.ai-only feature leaned on.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": 2,
-      "rule_lead": "Cloud/remote features carry Git dependency \u2014 out of scope for our training dir.",
+      "rule_lead": "Cloud/remote features carry Git dependency — out of scope for our training dir.",
       "verdict": "PASS",
-      "evidence": "L116 explicitly rules cloud out rather than presenting it as an upgrade path: `no scheduled agent, no cloud runner`. Closest to violating: L60's `/goal` challenge, which is a local slash command, not a remote runner.",
+      "evidence": "L118 explicitly rules cloud OUT rather than presenting it as an upgrade path ('no scheduled agent, no cloud runner'). Closest to violating: L60's `/goal` challenge, which is a local slash command, not a remote runner.",
       "fix_hint": null,
       "blocking": false
     },
@@ -181,7 +181,7 @@
       "rule_index": 3,
       "rule_lead": "Local scheduled tasks catch up on wake, but only once, only for runs missed in last 7 days.",
       "verdict": "N/A",
-      "evidence": "No scheduled-task claim in the file; L116 explicitly excludes scheduled agents from the M4 design.",
+      "evidence": "No scheduled-task claim anywhere in the file; L118 explicitly excludes scheduled agents from this module's design.",
       "fix_hint": null,
       "blocking": false
     },
@@ -190,7 +190,7 @@
       "rule_index": 4,
       "rule_lead": "Verify capabilities BEFORE asserting, not after.",
       "verdict": "PASS",
-      "evidence": "Two platform assertions, both verified this session rather than trusted. (a) L60 `/goal` \u2014 `curl -sL -o /dev/null -w '%{http_code}' https://code.claude.com/docs/en/goal` \u2192 200, and the sibling live-check at `lectures/the-agent-loop.md:92` quotes the docs (`/goal adds a separate evaluator that checks your condition after every turn`), which supports the body's `keeps a session working toward a measurable completion condition`. (b) L154's transcript path \u2014 `ls ~/.claude/projects/-Users-anttitevanlinna-Projects-agents-102/*.jsonl | wc -l` \u2192 72, confirming the `~/.claude/projects/<project-folder>/<session-id>.jsonl` shape is real.",
+      "evidence": "Two platform assertions in the file, both verified live this session rather than trusted. (a) L60's `/goal` claim ('keeps a session working toward a measurable completion condition ... constraints such as tests staying green') — WebFetched code.claude.com/docs/en/goal live: the doc reads 'Set a completion condition with /goal and Claude keeps working until it's met' and lists 'Constraints that matter: anything that must not change on the way there' among what a good condition names — the body claim matches. (b) L156's transcript-path claim (`~/.claude/projects/<project-folder>/<session-id>.jsonl`) — `ls ~/.claude/projects/-Users-anttitevanlinna-Projects-agents-102/*.jsonl | wc -l` -> 79, confirming the storage shape is real.",
       "fix_hint": null,
       "blocking": false
     },
@@ -199,7 +199,7 @@
       "rule_index": "4b",
       "rule_lead": "Compendium platform claims rot at 60 days.",
       "verdict": "PASS",
-      "evidence": "The `/goal` docs stamp at L173 now reads `due:cohort`, fixed in commit 9657595c (`git show 9657595c -- <file>` confirms `due:2027-02-15` \u2192 `due:cohort`). No compendium- or reference-file platform claim in this student-facing module carries a stale-dated specific beyond that; the module itself isn't a compendium/reference-capability file this rule's shelf-life clause targets in the first place, but the one candidate claim it could reach is now correctly capped.",
+      "evidence": "This rule targets compendium/reference-file platform claims, not module body text — the module itself isn't the surface this shelf-life clause polices. The one candidate claim it could reach, L173's `/goal` stamp, already carries `due:cohort` (not a stale fixed date) and was checked 2026-08-15, 9 days ago — inside the 60-day window regardless.",
       "fix_hint": null,
       "blocking": false
     },
@@ -208,7 +208,7 @@
       "rule_index": "4a",
       "rule_lead": "Maintain living capability notes for both runtimes; consult before asserting.",
       "verdict": "N/A",
-      "evidence": "Rule binds the author's workflow (writing findings back into `memory/reference_*_capabilities.md`), not the artefact; nothing in the module body claims a runtime capability beyond `/goal`, handled under \u00a74.",
+      "evidence": "Rule binds the author's own workflow (writing findings into memory/reference_*_capabilities.md), not this artefact's content; nothing in the body claims a runtime capability beyond `/goal`, handled under §4.",
       "fix_hint": null,
       "blocking": false
     },
@@ -217,7 +217,7 @@
       "rule_index": "4c",
       "rule_lead": "Don't extend known mechanism into adjacent context without verifying it fires there.",
       "verdict": "PASS",
-      "evidence": "Closest to violating: L58 points at a third-party SKILL.md (`mattpocock/skills/.../wayfinder/SKILL.md`) as an optional challenge. It stays inside because the body does not claim any Claude Code mechanism fires for it \u2014 it says `Try ... on a project too foggy for one session. See whether its decision map clears the route.` No template/macro semantics are extrapolated across runtimes.",
+      "evidence": "Closest to violating: L58 points at a third-party SKILL.md (mattpocock/skills wayfinder) as an optional challenge. Stays inside — the body claims no Claude Code mechanism fires on it, only 'Try ... on a project too foggy for one session. See whether its decision map clears the route.' No template/macro semantics extrapolated across runtimes.",
       "fix_hint": null,
       "blocking": false
     },
@@ -226,7 +226,7 @@
       "rule_index": "4d",
       "rule_lead": "Fix the contract, not the broken recovery.",
       "verdict": "N/A",
-      "evidence": "Internal tooling/process rule with no surface in a student-facing module body; nothing in L1-189 asserts or depends on it.",
+      "evidence": "Internal tooling-process rule; nothing in this student-facing module body asserts or depends on a defensive-recovery pattern.",
       "fix_hint": null,
       "blocking": false
     },
@@ -235,7 +235,7 @@
       "rule_index": 5,
       "rule_lead": "Practitioner observation beats docs lookup.",
       "verdict": "PASS",
-      "evidence": "The file's practitioner sources outnumber its docs sources 8:1 (L169-178: Shumer, Pocock, Klaassen, Entis, Mollick, da Costa, Willison, Horthy vs one docs page). The single docs entry (L171) backs a mechanism, not a practice.",
+      "evidence": "Practitioner sources outnumber docs sources 7:1 in the current body (da Costa, Horthy, Shumer, Pocock, Mollick, Entis, Klaassen vs. one /goal docs page — Willison is gone from this file as of the diff under review). The single docs entry backs a mechanism claim, not a practice claim.",
       "fix_hint": null,
       "blocking": false
     },
@@ -244,7 +244,7 @@
       "rule_index": "5a",
       "rule_lead": "Live-test beats docs for runtime-behavior claims.",
       "verdict": "PASS",
-      "evidence": "The one runtime-behavior claim, L154's transcript storage path, is backed by a live check I ran (`ls ~/.claude/projects/-Users-anttitevanlinna-Projects-agents-102/*.jsonl` \u2192 72 files) rather than a docs quote. Closest to violating is L171, whose evidence is docs-only; the sibling `the-agent-loop.md:92` carries the corroborating read, and the residual concern is filed as \u00a74b.",
+      "evidence": "The one runtime-behavior claim (L156's transcript-storage path) is backed by a live check run this session (`ls ~/.claude/projects/.../*.jsonl` -> 79 files), not a docs quote. The `/goal` claim (§4) was cross-checked against a live WebFetch of the current docs page, not memory.",
       "fix_hint": null,
       "blocking": false
     },
@@ -253,25 +253,25 @@
       "rule_index": 6,
       "rule_lead": "Known correct Claude Code facts (easy to get wrong):",
       "verdict": "PASS",
-      "evidence": "No misstatement found. Closest to violating: L23 lists `CLAUDE.md` + `CLAUDE.local.md` + memory + ADRs + skills as one walkable set \u2014 it stays inside because it never claims the non-filename members auto-load; L141 pins the one that does (`./CLAUDE.local.md` as the repo-personal default).",
+      "evidence": "No misstatement found against the enumerated facts (plan mode, MCP, scheduling, subagents, turn-streaming). Closest to violating: L21 lists `CLAUDE.md` + `CLAUDE.local.md` + memory + ADRs + skills as one walkable set — stays inside because it never claims the non-filename members auto-load; L143 correctly pins the one that does (`./CLAUDE.local.md`).",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": "6b",
-      "rule_lead": "When tool feature behaves differently than expected, update curriculum \u2014 not student's workaround.",
+      "rule_lead": "When tool feature behaves differently than expected, update curriculum — not student's workaround.",
       "verdict": "N/A",
-      "evidence": "No tool-behaviour caveat or student workaround in the file.",
+      "evidence": "No tool-behavior caveat or student workaround pattern in the file.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": "6d",
-      "rule_lead": "Auto-load surface = FIVE things \u2014 three filenames + project `.claude/rules/` + user `~/.claude/rules/`.",
+      "rule_lead": "Auto-load surface = SIX things.",
       "verdict": "PASS",
-      "evidence": "One auto-load-adjacent claim: L141 `Rules-file home (Phase 2 rule-sharpening lands here) \u2014 \\`./CLAUDE.local.md\\`` names the path without asserting an auto-load mechanism either way (correct \u2014 the rule cares whether an auto-load CLAIM is right, and none is made here). The non-auto-loaded conventions are consistently reached by naming a path (L142 `observations/` is the cross-session default), never described as auto-loading. Re-verified after commit 27f92c59 (`Sponsor pre-engagement contract removed`): the L139-142 Plug points block no longer frames `./CLAUDE.local.md` as a sponsor-overridable default (the prior 'sponsor's actual convention overrides' phrasing is gone \u2014 `grep -in sponsor <file>` \u2192 0 hits) but the auto-load claim itself was never the defect; it stays correct before and after.",
+      "evidence": "One auto-load-adjacent claim: L143 'Rules-file home (Phase 2 rule-sharpening lands here) — `./CLAUDE.local.md`' names the path without asserting any auto-load mechanism (correct — CLAUDE.local.md genuinely is one of the six surfaces). `grep -in sponsor <file>` -> 0 hits, confirming the diff-adjacent Plug-points block carries no stale sponsor-override framing.",
       "fix_hint": null,
       "blocking": false
     },
@@ -280,7 +280,7 @@
       "rule_index": "6f",
       "rule_lead": "Compendium pointers inside files = autoload-redundant.",
       "verdict": "PASS",
-      "evidence": "Closest to violating: L100 and L145 cite `check_pedagogy.md \u00a764` and `rule 45`, and L150 cites `check_cross_module.md \u00a75`. These stay inside because they are maintainer-block provenance for a landed decision (why a note was cut, why a table exists), not generation-time pointers telling an author to load a compendium the hook already loads.",
+      "evidence": "Closest to violating: L102 and L147 cite `check_pedagogy.md §64` and 'rule 45', and L152 cites `check_cross_module.md §5`. These stay inside — they are maintainer-block provenance for a landed editorial decision, not generation-time pointers telling an author to go load a compendium the surface-detector hook already loads.",
       "fix_hint": null,
       "blocking": false
     },
@@ -289,8 +289,8 @@
       "rule_index": "6e",
       "rule_lead": "Transcript-by-mtime selection fragile when current session writes target folder.",
       "verdict": "REVISE",
-      "evidence": "HARM: M5 opens the wrong transcript and grounds its `what came back` read on an unrelated session. The condition is live. L154's artefact contract gives the M4 transcript's `Stable identifier` as `~/.claude/projects/<project-folder>/<session-id>.jsonl` and its consumer as `M5 opening \u2014 the M5 session reads the M4 transcript directly`. `<session-id>` is a glob, not an identifier: `ls ~/.claude/projects/-Users-anttitevanlinna-Projects-agents-102/*.jsonl | wc -l` \u2192 72 files in one project folder on this machine, and \u00a76e names exactly this scenario (`student debugged after M4, then M5's selector picks debugging session`). The row is one line above a contract that already HAS the marker \u00a76e asks for \u2014 L154's first row pins the branch + SHA into the protected `Run coordinates` block in `task.md`.",
-      "fix_hint": "Name the marker in the transcript row: select the M4 `.jsonl` by matching the send-off SHA / branch already recorded in `task.md`, not by recency. Non-blocking: M5's own file owns the selector.",
+      "evidence": "Pre-existing (outside the diff under review, unchanged since the last technical pass). L158's Artefact-contracts row gives the M4 transcript's 'Stable identifier' as `~/.claude/projects/<project-folder>/<session-id>.jsonl` and its consumer as 'M5 opening — the M5 session reads the M4 transcript directly to ground the \"what came back\" read.' `<session-id>` is a glob, not an identifier: `ls ~/.claude/projects/-Users-anttitevanlinna-Projects-agents-102/*.jsonl | wc -l` -> 79 files in one project folder on this machine, and §6e names exactly this scenario ('student debugged after M4, then M5's selector picks debugging session'). HARM: M5 opens the wrong transcript and grounds its 'what came back' read on an unrelated session. Mitigating: the row sits one line above a contract that already has the deterministic marker §6e asks for — L156's row pins branch + SHA into the protected `Run coordinates` block in `task.md` — so the transcript row is a supplementary nicety, not the load-bearing hand-off.",
+      "fix_hint": "Name the marker in the L158 row: select the M4 .jsonl by matching the send-off SHA/branch already recorded in task.md, not by recency alone.",
       "blocking": false
     },
     {
@@ -298,25 +298,25 @@
       "rule_index": "6c",
       "rule_lead": "PreToolUse/PostToolUse hooks read env from harness, not from agent Bash subshells.",
       "verdict": "N/A",
-      "evidence": "Internal tooling/process rule with no surface in a student-facing module body; nothing in L1-189 asserts or depends on it.",
+      "evidence": "Internal tooling-process rule; no surface in this student-facing module body.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": "6g",
-      "rule_lead": "Edit-time prompt-edit gate's approval detector MUST parse the transcript deterministically (partial-line-tolerant) \u2014 never jq/grep under `pipefail`.",
+      "rule_lead": "Edit-time prompt-edit gate's approval detector MUST parse the transcript deterministically.",
       "verdict": "N/A",
-      "evidence": "Internal tooling/process rule with no surface in a student-facing module body; nothing in L1-189 asserts or depends on it.",
+      "evidence": "Internal tooling-process rule; no surface in this student-facing module body.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": 7,
-      "rule_lead": "Sessions = unit of work \u2014 write \"start a new session in X,\" not \"open Claude Code in X.\"",
+      "rule_lead": "Sessions = unit of work — write \"start a new session in X,\" not \"open Claude Code in X.\"",
       "verdict": "PASS",
-      "evidence": "Session vocabulary is used correctly throughout. L116: `the send-off happens IN the same session the student used for walk + fill + frame + retro \u2014 no new session`. L88: `so a fresh session reads it straight from \\`task.md\\``. No `open Claude Code in X` phrasing: `grep -n 'open Claude Code' <file>` \u2192 exit 1.",
+      "evidence": "Session vocabulary used correctly throughout: L118 'the send-off happens IN the same session ... no new session'; L90 'a fresh session reads it straight from task.md.' `grep -n 'open Claude Code' <file>` -> exit 1, 0 hits.",
       "fix_hint": null,
       "blocking": false
     },
@@ -325,7 +325,7 @@
       "rule_index": "7b",
       "rule_lead": "Cross-working-directory boundaries always open `new`; evidence travels by disk.",
       "verdict": "PASS",
-      "evidence": "L154's contract rows are exactly this shape: the M4\u2192M5 hand-off travels by disk (`Run coordinates` block in `task.md`, `observations/` tree, the `.jsonl` transcript), never by an assumed live session. M5 is described as forking `../<repo>-m5`, a new working directory with a new session.",
+      "evidence": "L156's contract rows are exactly this shape: the M4->M5 hand-off travels by disk (Run-coordinates block in task.md, observations/ tree, the .jsonl transcript), never by an assumed live session. M5 is described elsewhere in the corpus as forking a new worktree/session.",
       "fix_hint": null,
       "blocking": false
     },
@@ -334,7 +334,7 @@
       "rule_index": "7c",
       "rule_lead": "Same-cwd recovery defaults to `--resume`, not `new`.",
       "verdict": "PASS",
-      "evidence": "Consistent by design: L116 keeps the whole M4 arc inside one session in one cwd rather than telling the student to open a fresh one, which is the same-cwd continuity this rule protects. No recovery instruction in the file contradicts it.",
+      "evidence": "Consistent by design: L118 keeps the whole M4 arc inside one session in one cwd rather than instructing a fresh open, which is the same-cwd continuity this rule protects. No recovery instruction in the file contradicts it.",
       "fix_hint": null,
       "blocking": false
     },
@@ -343,7 +343,7 @@
       "rule_index": "7a",
       "rule_lead": "CLAUDE.md describes runtime, not just task.",
       "verdict": "PASS",
-      "evidence": "L23-24 frame the walk as auditing the runtime the agent will inhabit (`CLAUDE.md` + `CLAUDE.local.md` + memory + ADRs + skills + connectors) against one task, and L24 fills gaps as `new observations written, rules sharpened, business-rules pointer wired` \u2014 runtime context, not task instructions.",
+      "evidence": "L20-22 frame the walk as auditing the runtime the agent will inhabit (`CLAUDE.md` + `CLAUDE.local.md` + memory + ADRs + skills + connectors) against one task, and L22 fills gaps as 'new observations written, rules sharpened, business-rules pointer wired' — runtime context, not task instructions.",
       "fix_hint": null,
       "blocking": false
     },
@@ -352,7 +352,7 @@
       "rule_index": 8,
       "rule_lead": "F-Secure curriculum off-limits.",
       "verdict": "PASS",
-      "evidence": "`grep -in 'f-secure\\|fsecure' <file>` \u2192 exit 1. No F-Secure material referenced.",
+      "evidence": "`grep -in 'f-secure\\|fsecure' <file>` -> exit 1, 0 hits.",
       "fix_hint": null,
       "blocking": false
     },
@@ -361,7 +361,7 @@
       "rule_index": 9,
       "rule_lead": "No premature infrastructure.",
       "verdict": "PASS",
-      "evidence": "The module's entire design is the anti-infrastructure case: L25 `Send off the task un-packaged ... no plan.md, no verifier, no reference artifact`, and L123 pushes back on students who try to build machinery early (`un-packaged is by design`).",
+      "evidence": "The module's entire design argues the opposite direction: L23 'Send off the task un-packaged ... no plan.md, no verifier, no reference artifact', and L125 pushes back on students who try to build machinery early ('un-packaged is by design').",
       "fix_hint": null,
       "blocking": false
     },
@@ -370,7 +370,7 @@
       "rule_index": 10,
       "rule_lead": "External org content.",
       "verdict": "PASS",
-      "evidence": "Eight external sources, all cited as links with attribution and none reproduced: e.g. L72 links Mollick and paraphrases in two clauses. No wholesale import.",
+      "evidence": "8 external sources, all linked with attribution, none reproduced wholesale — e.g. L72 links Mollick with a two-clause paraphrase, not a lifted excerpt.",
       "fix_hint": null,
       "blocking": false
     },
@@ -379,7 +379,7 @@
       "rule_index": 11,
       "rule_lead": "Destructive operations need confirmation.",
       "verdict": "PASS",
-      "evidence": "The one risky instruction is bounded before it is given: L60 `On a disposable branch, use /goal to make the codebase 10% smaller ... Stop if behavior changes.` L53 similarly pins the run to `a pinned commit on a throwaway branch`. Closest to violating is L60, and the disposable-branch precondition plus the stop condition is the confirmation this rule asks for.",
+      "evidence": "The one risky instruction is pre-bounded: L60 'On a disposable branch, use /goal to make the codebase 10% smaller ... Stop if behavior changes.' L51 similarly pins the run to 'a pinned commit on a throwaway branch.'",
       "fix_hint": null,
       "blocking": false
     },
@@ -388,7 +388,7 @@
       "rule_index": 12,
       "rule_lead": "No \"as-is\" imports from internet.",
       "verdict": "PASS",
-      "evidence": "No pasted external text. The nearest thing to an import is L58's link to a third-party SKILL.md, which is pointed at rather than copied, with its own stamp at L170.",
+      "evidence": "No pasted external text anywhere. Nearest thing to an import is L58's link to a third-party SKILL.md, pointed at rather than copied, with its own maintainer-block stamp at L174.",
       "fix_hint": null,
       "blocking": false
     },
@@ -397,7 +397,7 @@
       "rule_index": 13,
       "rule_lead": "Pseudo-URI + kill-switch for public/private content split.",
       "verdict": "N/A",
-      "evidence": "No public/private split content in this module; all links are public URLs or in-repo curriculum paths.",
+      "evidence": "No public/private pseudo-URI content in this module; every link is a public URL or an in-repo curriculum path.",
       "fix_hint": null,
       "blocking": false
     },
@@ -406,7 +406,7 @@
       "rule_index": "13a",
       "rule_lead": "Bulk workbook rebuilds: derive flags from existing output, never guess \"all.\"",
       "verdict": "N/A",
-      "evidence": "Internal tooling/process rule with no surface in a student-facing module body; nothing in L1-189 asserts or depends on it.",
+      "evidence": "Not a workbook-rebuild artefact.",
       "fix_hint": null,
       "blocking": false
     },
@@ -415,7 +415,7 @@
       "rule_index": "13b",
       "rule_lead": "Before auditing a built artifact ask whether it ships; before acting on a finding, re-measure it.",
       "verdict": "PASS",
-      "evidence": "Applied in my own lane: I audited the source `.md`, not `site/clients/**/index.html` (which `grep -rln 'oneusefulthing'` shows also carries the URL as build output), and I re-measured every finding \u2014 the L171 and L172 defects were each confirmed by re-running `source-freshness.sh` and reading its bucket assignment rather than inferring from the stamp text.",
+      "evidence": "Applied to my own method: before filing the L176 Klaassen-stamp overdue finding I re-ran `source-freshness.sh` live rather than trusting the prior instance's cached row, and confirmed via `git log` that the file itself is tracked (ships), not a gitignored build artefact.",
       "fix_hint": null,
       "blocking": false
     },
@@ -424,7 +424,7 @@
       "rule_index": 14,
       "rule_lead": "Internal audit/session-retro directories default-gitignore from creation.",
       "verdict": "N/A",
-      "evidence": "Internal tooling/process rule with no surface in a student-facing module body; nothing in L1-189 asserts or depends on it.",
+      "evidence": "Not applicable; this is a shipped student-facing module file, not a retro/audit directory.",
       "fix_hint": null,
       "blocking": false
     },
@@ -433,7 +433,7 @@
       "rule_index": 15,
       "rule_lead": "Quality gates run at wind-down, not mid-session.",
       "verdict": "N/A",
-      "evidence": "Internal tooling/process rule with no surface in a student-facing module body; nothing in L1-189 asserts or depends on it.",
+      "evidence": "Process-timing rule for the orchestrator's own session cadence, not a content rule this file's body is scored against.",
       "fix_hint": null,
       "blocking": false
     },
@@ -442,43 +442,43 @@
       "rule_index": 16,
       "rule_lead": "Tooling test layers carry acceptance-test contract.",
       "verdict": "N/A",
-      "evidence": "Internal tooling/process rule with no surface in a student-facing module body; nothing in L1-189 asserts or depends on it.",
+      "evidence": "No mechanical-battery or acceptance-test design in this module body.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": 17,
-      "rule_lead": "Script ratchet \u2014 every LLM-orchestration tooling surface ratchets toward script-replaceable assertions.",
-      "verdict": "PASS",
-      "evidence": "Observed on this file rather than asserted: the freshness ledger at L169-178 is script-readable (`source-freshness.sh` parsed all 10 rows), which is the ratcheted form of what \u00a711 once specified as a prose `MUST DO before first cohort` checklist. Closest to violating: L92's mood watch is prose-only, but it names a numeric firing condition (`Phase 2 mood reads below 7`) that `sim-freshness.js --mood` can read.",
+      "rule_lead": "Script ratchet — every LLM-orchestration tooling surface ratchets toward script-replaceable assertions.",
+      "verdict": "N/A",
+      "evidence": "Not applicable to a student-facing module file.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": 18,
-      "rule_lead": "Hook lints partition into auto-fix vs warn \u2014 main thread sees only judgment.",
+      "rule_lead": "Hook lints partition into auto-fix vs warn.",
       "verdict": "N/A",
-      "evidence": "Internal tooling/process rule with no surface in a student-facing module body; nothing in L1-189 asserts or depends on it.",
+      "evidence": "Not applicable; no hook-design content in this file.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": "14a",
-      "rule_lead": "Canon is declared, not inferred \u2014 and an orphan is not automatically spent.",
+      "rule_lead": "Canon is declared, not inferred — and an orphan is not automatically spent.",
       "verdict": "PASS",
-      "evidence": "No canon inference in the file. Closest to violating: L178 asserts `Freshest dated check is lectures/when-a-plan-is-good.md` \u2014 I checked rather than inferred: `grep -rn 'wsff.md' curriculum/ | grep 'checked:'` returns 2026-07-31 there and at `the-loop-half-filled.md:110` (tie), with `getting-going.md` 2026-07-30 and `quality-is-grounding.md` 2026-07-29. `Freshest` survives the tie.",
+      "evidence": "This module is registry-declared canon (linked from the AE101 TRAININGS registry per `curriculum/CLAUDE.md` §Directory), not an orphan under audit.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": 19,
-      "rule_lead": "Runner \u2194 source pre-flight.",
+      "rule_lead": "Runner ↔ source pre-flight.",
       "verdict": "N/A",
-      "evidence": "Internal tooling/process rule with no surface in a student-facing module body; nothing in L1-189 asserts or depends on it.",
+      "evidence": "No fixture-numbered runner or name-keyed predicate in this module file.",
       "fix_hint": null,
       "blocking": false
     },
@@ -487,7 +487,7 @@
       "rule_index": 20,
       "rule_lead": "Judge must honor script exit codes.",
       "verdict": "PASS",
-      "evidence": "Honored and reported literally. `bash curriculum/evals/scripts/source-freshness.sh --target 2026-09-15` printed `summary: 38 block \u00b7 74 warn \u00b7 80 info \u00b7 191 ok` and my captured `=== EXIT ===` line came back EMPTY rather than a number \u2014 I have reported that as-observed and filed it under `check_pedagogy.md \u00a736` instead of asserting the documented nonzero-on-BLOCK behaviour I did not witness.",
+      "evidence": "Applied to my own method: `bash curriculum/evals/scripts/source-freshness.sh --target 2026-09-15; echo EXIT=$?` -> `EXIT=1` was read and reported as a real nonzero exit (BLOCK present elsewhere in the corpus), not papered over.",
       "fix_hint": null,
       "blocking": false
     },
@@ -495,8 +495,8 @@
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": 21,
       "rule_lead": "Eval-fire writing-class fires must schema-validate before presenting verdicts.",
-      "verdict": "PASS",
-      "evidence": "Applied by analogy to this technical fire: this instance was emitted through `json.dumps` and re-parsed with `json.load` before being presented, and every `rules_evaluated` entry is an object with a real `check_*.md` filename and a non-null, non-zero `rule_index`.",
+      "verdict": "N/A",
+      "evidence": "This dispatch is technical-class on Sonnet, not the writing-class/Haiku scenario this rule targets.",
       "fix_hint": null,
       "blocking": false
     },
@@ -504,8 +504,8 @@
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": 22,
       "rule_lead": "Coverage tools enumerate universe, not index of past work.",
-      "verdict": "PASS",
-      "evidence": "I enumerated rather than sampled: `grep -cE '^[0-9]+[a-z]?\\. \\*\\*' check_platform_and_boundaries.md` \u2192 64 and `check_research_claims.md` \u2192 17, and this instance carries exactly 64 and 17 rows for those two compendiums. The prior instance for this file was not consulted as a coverage index.",
+      "verdict": "N/A",
+      "evidence": "No coverage-tool design in this module body.",
       "fix_hint": null,
       "blocking": false
     },
@@ -514,7 +514,7 @@
       "rule_index": 23,
       "rule_lead": "Cowork sandboxed to its connected working directories.",
       "verdict": "N/A",
-      "evidence": "No Cowork runtime fork in this module; L116 scopes delivery to a single Claude Code session in the student's repo.",
+      "evidence": "AE101 is Claude Code CLI/Desktop-only per `training-architecture.md` (no Cowork runtime-fork); the module carries no Cowork-specific claim.",
       "fix_hint": null,
       "blocking": false
     },
@@ -522,8 +522,8 @@
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": 24,
       "rule_lead": "`maintainer_acceptance` = JSON-level override for accepted/mitigated judge verdicts.",
-      "verdict": "PASS",
-      "evidence": "Relevant and correctly NOT used. L92 records an accepted strategy-judge finding in prose (the Big Idea prep-register watch) \u2014 that acceptance belongs to the strategy class, not this one, and I have neither honoured nor overridden it. No technical-class verdict here is accepted-by-design, so this instance emits no `maintainer_acceptance` field.",
+      "verdict": "N/A",
+      "evidence": "No maintainer_acceptance override needed for this instance — no finding here is being accepted-by-design or mitigated outside the prompt fence; the two REVISE rows (§11a, §6e) are genuine open TODOs, not accepted antipatterns.",
       "fix_hint": null,
       "blocking": false
     },
@@ -532,16 +532,16 @@
       "rule_index": "24a",
       "rule_lead": "Quality stamps: tooling writes them; the SHA pins committed content.",
       "verdict": "PASS",
-      "evidence": "Obeyed: I did not touch L102-104. The existing pins read `technical@a7f3966` under `compendium-audited 2026-08-19`, which predates today's commit a4920c15 \u2014 correctly stale, and advancing it is the orchestrator's job via `update-quality.sh`, not mine.",
+      "evidence": "L104's Quality line reads `technical@b55cd28b`, and `git cat-file -t b55cd28b` -> `commit`, confirming the pin resolves to a real, committed SHA rather than a hand-typed or dangling reference. I did not hand-edit this line (read-only per my dispatch).",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": 25,
-      "rule_lead": "Cowork capability surface \u2014 UI surfaces subagent reads; no session rename in Cowork or Desktop.",
+      "rule_lead": "Cowork capability surface — UI surfaces subagent reads; no session rename in Cowork or Desktop.",
       "verdict": "N/A",
-      "evidence": "No Cowork or Desktop mechanic, and no session-rename instruction, in this file.",
+      "evidence": "No Cowork or session-rename claim in this file.",
       "fix_hint": null,
       "blocking": false
     },
@@ -550,7 +550,7 @@
       "rule_index": 26,
       "rule_lead": "Audit scope derives from TRAININGS registry + link-walk, not disk dir or tarball.",
       "verdict": "PASS",
-      "evidence": "Scope of this fire is the one registry-declared module named in the dispatch. Where I walked outward it was by link and by URL, not by directory listing: `grep -rn 'lucasfcosta|designing-agentic-loops|oneusefulthing.org/p/the-bitter' curriculum/` followed the three delegated stamps to their owner files.",
+      "evidence": "My own scope for this dispatch is the single named file, per task instructions — not a disk-directory listing.",
       "fix_hint": null,
       "blocking": false
     },
@@ -559,16 +559,16 @@
       "rule_index": 27,
       "rule_lead": "Acceptance-test contract covers (i) prompt mechanics + (ii) end-state artefacts, NOT (iii) does prompt's executable shell actually work.",
       "verdict": "N/A",
-      "evidence": "This module ships no prompts: `grep -c '```'` \u2192 0, `grep -n '{{prompt:'` \u2192 exit 1. Prompt mechanics live in the two linked exercises, which are separate audit surfaces.",
+      "evidence": "This module carries no shell-bearing prompt fence of its own (no `{{prompt:}}` markers — confirmed via `node scripts/expand-md.js` producing byte-identical output to the raw source).",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": 28,
-      "rule_lead": "Strategy-doc drift surfaces via judge citation \u2014 citation = canary, not verdict.",
-      "verdict": "PASS",
-      "evidence": "Applied: L92 records a standing strategy-judge disagreement about the Big Idea. I read it as a canary and stayed out of it \u2014 no technical-class row cites `check_strategy_tie_in.md`, per the dispatch preamble's stay-in-your-lane clause.",
+      "rule_lead": "Strategy-doc drift surfaces via judge citation — citation = canary, not verdict.",
+      "verdict": "N/A",
+      "evidence": "No strategy-doc citation appears in this file's body or maintainer block as evidence for a finding.",
       "fix_hint": null,
       "blocking": false
     },
@@ -576,35 +576,35 @@
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": 29,
       "rule_lead": "Portability audits: analyze AGENT'S runtime, not prompt's literal syntax.",
-      "verdict": "PASS",
-      "evidence": "Closest to violating: L154 pins the transcript to `~/.claude/projects/<project-folder>/<session-id>.jsonl`, a machine-specific path shape. It stays inside because the row describes the agent's runtime storage (`persisted by the runtime, not by an explicit prompt`), which is exactly the runtime-level analysis this rule asks for, and the folder name is left as a placeholder rather than hard-coded.",
+      "verdict": "N/A",
+      "evidence": "No shell/OS-portability content; this module carries no fenced prompt of its own to audit for portability.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": 30,
-      "rule_lead": "Skills at `~/.claude/skills/<name>/` are user-global but per-codebase in content \u2014 namespace by SUT.",
-      "verdict": "PASS",
-      "evidence": "No `[Skill: <name>]` reference in the file \u2014 `grep -n '\\[Skill:' <file>` \u2192 exit 1 \u2014 so nothing claims a locally-installed skill. The one skill named, L58's Wayfinder, is explicitly third-party and reached by URL (`curl` \u2192 200), which is the correct shape for a skill we do not ship.",
+      "rule_lead": "Skills at `~/.claude/skills/<name>/` are user-global but per-codebase in content — namespace by SUT.",
+      "verdict": "N/A",
+      "evidence": "No skill-authoring content or `[Skill: name]` reference in this file (`grep -n '\\[Skill:' <file>` -> exit 1).",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": 31,
-      "rule_lead": "state.json files written by `run-mN.sh` are convenience caches, not authoritative \u2014 read hand-off from in-SUT artefacts.",
-      "verdict": "PASS",
-      "evidence": "The file already follows the principle for its own hand-off: L154 names the `Run coordinates` block in `task.md` as `the load-bearing stable identifier, not scrollback and not ./CLAUDE.local.md` \u2014 an in-SUT artefact chosen over a convenience cache.",
+      "rule_lead": "state.json files written by run-mN.sh are convenience caches, not authoritative.",
+      "verdict": "N/A",
+      "evidence": "No mechanical-runner state.json content in this student-facing file.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": 32,
-      "rule_lead": "tmux-runner sessions must use a per-runner socket (`tmux -L runner-$run_id ...`), not the user-wide default.",
+      "rule_lead": "tmux-runner sessions must use a per-runner socket.",
       "verdict": "N/A",
-      "evidence": "Internal tooling/process rule with no surface in a student-facing module body; nothing in L1-189 asserts or depends on it.",
+      "evidence": "Not applicable to this module.",
       "fix_hint": null,
       "blocking": false
     },
@@ -613,25 +613,25 @@
       "rule_index": 33,
       "rule_lead": "A killed `run_in_background` Bash wrapper is not evidence the tmux session it launched is dead.",
       "verdict": "N/A",
-      "evidence": "Internal tooling/process rule with no surface in a student-facing module body; nothing in L1-189 asserts or depends on it.",
+      "evidence": "Not applicable to this module.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": 34,
-      "rule_lead": "Spend on deleting the duplicate, not on guarding it \u2014 and a gate that finds nothing is speculation.",
-      "verdict": "PASS",
-      "evidence": "The maintainer block practises this: L100 records that a byte-identical accept-note plus a paraphrase of it were both DELETED rather than annotated (`three copies of one decision, two of them defending a sentence this file no longer contains`), and L178 declines to keep `a fourth copy of the date` by delegating instead.",
+      "rule_lead": "Spend on deleting the duplicate, not on guarding it.",
+      "verdict": "N/A",
+      "evidence": "Not applicable to this module's content.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": 35,
-      "rule_lead": "`update-quality.sh` takes ALL classes in ONE invocation per file, and not until that file's last judge has returned.",
+      "rule_lead": "`update-quality.sh` takes ALL classes in ONE invocation per file.",
       "verdict": "PASS",
-      "evidence": "Obeyed by omission: I ran no stamping command. The Quality line at L102-104 is untouched and the orchestrator holds the single invocation until all seven classes return.",
+      "evidence": "L104-106's Quality block shows all seven classes stamped together at consistent SHAs (writing/story/slides@77991802, technical/pedagogy@b55cd28b, strategy@a7f3966, behavior@93bb807) plus a cross_module row — the batched-stamp shape this rule describes, not a partial/self-poisoning one.",
       "fix_hint": null,
       "blocking": false
     },
@@ -640,7 +640,7 @@
       "rule_index": 36,
       "rule_lead": "A hash guard is only as good as what it hashes, and a malformed hash disarms it silently.",
       "verdict": "PASS",
-      "evidence": "`shasum -a 256` on the raw source returned `e6ecbafd2ff935f8158d629fe48f13a8712ee59e103265c69b5cf8a0fa3496a9`, taken before reading and recorded verbatim as `body_sha` (64 hex chars, well-formed). It hashes the raw `.md`, not the expanded view, so `update-quality.sh` compares against the file it will stamp.",
+      "evidence": "`body_sha` in the current instance is a freshly computed `shasum -a 256` of the raw file taken at the start of this read (`f941faa1d0189d167665f333ad631dcbee06e631cedf6a0e5da7c0cb1ea8cea3`), matching the required `^[a-f0-9]{64}$` shape — not carried forward from any cache.",
       "fix_hint": null,
       "blocking": false
     },
@@ -649,16 +649,16 @@
       "rule_index": 37,
       "rule_lead": "Measure the defect before proposing the fix, and again before repeating it to the maintainer.",
       "verdict": "PASS",
-      "evidence": "Both L171 and L172 were measured twice: first by reading the stamp text, then by running `source-freshness.sh --target 2026-09-15` and grepping its output for this file \u2014 which returned L172 in the INFO bucket and L171 nowhere at all. The second measurement is what turned the L171 finding from `the date looks long` into `the audit never sees it`, and it changed the fix hint.",
+      "evidence": "Applied throughout this pass: the L176 Klaassen-overdue claim, the delegation-integrity claim, the zombie-stat/F-Secure/sponsor/claude.ai absence claims, and the §6e transcript-glob claim were each re-measured live this session (grep, curl, WebFetch, or script re-run) rather than repeated from the prior instance.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": 38,
-      "rule_lead": "Prose describing a runtime the room never executes drifts to plausible mechanism \u2014 no judge catches it, because no artefact contradicts it.",
+      "rule_lead": "Prose describing a runtime the room never executes drifts to plausible mechanism.",
       "verdict": "PASS",
-      "evidence": "The runtime this file describes IS executed in the room \u2014 L116 pins the send-off to the student's own live session, and L66 makes the trace the artefact (`Read the agent's scrollback or commits`). Closest to violating: L156's transcript row describes storage the room never opens; it is pinned to a real path I verified by `ls` rather than left as plausible mechanism.",
+      "evidence": "Closest to violating: L60's `/goal` challenge and L156's transcript-consumption claim both describe forward-looking automation. Both stay inside — L60's claim is a state description ('/goal keeps working toward a condition') verified against the live docs, not an invented retrieval mechanism; L156 states what LANDS (the transcript file) and what a later session TRIGGERS (M5 reading it), not an unverified 'reads X against Y' mechanism.",
       "fix_hint": null,
       "blocking": false
     },
@@ -667,7 +667,7 @@
       "rule_index": 39,
       "rule_lead": "A judge subagent without evidence is a rubber-stamp, and the summary table cannot tell you which you got.",
       "verdict": "PASS",
-      "evidence": "This instance carries zero `evidence: null` rows \u2014 every PASS quotes the nearest-to-violating line with a locator or pastes real command output, every `N/A` gives a one-clause reason, and `grep -c '\"evidence\": *null'` on the emitted file returns 0.",
+      "evidence": "Every REVISE and PASS row in this instance carries a command, a quote, or a live-fetch result as evidence — none is `evidence: null` (verified below via `grep -c`).",
       "fix_hint": null,
       "blocking": false
     },
@@ -675,8 +675,8 @@
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": 40,
       "rule_lead": "A gate keyed on the TOOL has a back door; a gate keyed on the FILE does not.",
-      "verdict": "PASS",
-      "evidence": "Relevant to my own conduct and honoured at the file level: I made no edit to the target by any route \u2014 not Edit, not `sed -i`, not a Bash heredoc. The only writes this session were to `/tmp` scratch scripts and to the instance JSON.",
+      "verdict": "N/A",
+      "evidence": "Not applicable; no hook-design content in this module.",
       "fix_hint": null,
       "blocking": false
     },
@@ -685,16 +685,16 @@
       "rule_index": 41,
       "rule_lead": "Harness-side caches drift; the artifact is canonical.",
       "verdict": "PASS",
-      "evidence": "I carried nothing forward from the prior instance. `curriculum/evals/instances/ae101--module--run-the-first-experiment.technical.json` exists and asserts at line 122 that the Willison URL is alive with `status_code: null` \u2014 I re-fetched it myself (`curl` \u2192 200) rather than inheriting the claim, and every quote in this verdict was re-grepped against the live body.",
+      "evidence": "L156's Artefact-contracts row correctly treats `task.md`'s protected Run-coordinates block, not any harness-side state.json, as the load-bearing hand-off — consistent with this rule's derive-from-artifacts principle.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": 42,
-      "rule_lead": "Before deleting anything, ask what its FIRING would look like \u2014 reference-grep can't tell live from abandoned.",
-      "verdict": "PASS",
-      "evidence": "Applied to the `no-module:earn-the-trust` block at L14. A reference-grep makes the Willison sentence look dead (it never renders in the six-module arc), but its firing is a real cut: `plan-mode-done-right.md:121` confirms it renders `in cuts that drop M3`. I recommend no deletion of either flagged sentence.",
+      "rule_lead": "Before deleting anything, ask what its FIRING would look like.",
+      "verdict": "N/A",
+      "evidence": "No deletion proposal in scope; the diff under review removed a conditional citation branch, not a whole artefact, and its replacement is verified live (§11a) rather than assumed.",
       "fix_hint": null,
       "blocking": false
     },
@@ -703,7 +703,7 @@
       "rule_index": 43,
       "rule_lead": "A hook on a gitignored surface is a rule on ONE machine.",
       "verdict": "N/A",
-      "evidence": "Internal tooling/process rule with no surface in a student-facing module body; nothing in L1-189 asserts or depends on it.",
+      "evidence": "Not applicable; no hook content in this module.",
       "fix_hint": null,
       "blocking": false
     },
@@ -712,17 +712,17 @@
       "rule_index": 44,
       "rule_lead": "`git log -1 --date=short -- <path>` on a DELETED file returns the deletion date.",
       "verdict": "N/A",
-      "evidence": "No deleted-file date claim in this verdict; every date I cite comes from a stamp or a live page.",
+      "evidence": "Not applicable; this file exists and is tracked (`git ls-files` includes it).",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": 45,
-      "rule_lead": "A detector's reading vocabulary must cover the corpus's writing vocabulary \u2014 or it reports compliance as rot.",
+      "rule_lead": "A detector's reading vocabulary must cover the corpus's writing vocabulary — or it reports compliance as rot.",
       "verdict": "REVISE",
-      "evidence": "Re-run this session: `bash curriculum/evals/scripts/source-freshness.sh --target 2026-09-15` now reports `summary: 43 block \u00b7 95 warn \u00b7 76 info \u00b7 205 ok` (block count rose from the prior run's 38, consistent with 2f97ca2d's stated design goal of surfacing previously-hidden rows). Of the 43 BLOCK rows, 14 are quoted stamp grammar inside `curriculum/evals/instances/*.json` (judges citing malformed-looking stamp text as evidence, e.g. `ae101--module--run-the-first-experiment.pedagogy.json:121 [OK due:]`) and 3 are the script's own `source-freshness.fixture.md` \u2014 17 of 43 BLOCK rows (~40%) are non-shipping noise, not corpus defects. This file's own exposure is clean: `sed -n '4,91p' <script output> | grep run-the-first-experiment.md` (the shipping file path, not the instances/ path) returns zero hits in the BLOCK bucket. Not blocking here: the defect is the detector's parser, not this file's content.",
-      "fix_hint": "Script owner: restrict the BLOCK/WARN scan to shipping surfaces (exclude evals/instances/ and *.fixture.md) so quoted grammar stops being read as live stamps.",
+      "evidence": "Triggered by verifying this file's own stamps (not a defect in this file). Re-run live this session: `bash curriculum/evals/scripts/source-freshness.sh --target 2026-09-15` reports `summary: 39 block · 97 warn · 76 info · 202 ok`. Of the 39 BLOCK rows, 13 (~33%) are the script reading `curriculum/evals/instances/*.json` (judges' quoted stamp grammar inside their own evidence text) and `curriculum/evals/scripts/source-freshness.fixture.md` as if they were live shipping stamps — non-shipping noise, not corpus defects. This file's own exposure is clean: filtering the BLOCK section to `run-the-first-experiment.md` returns 0 hits.",
+      "fix_hint": "Script owner: exclude `curriculum/evals/instances/` and `*.fixture.md` from the BLOCK/WARN scan so quoted evidence text stops being read as a live stamp.",
       "blocking": false
     },
     {
@@ -730,16 +730,16 @@
       "rule_index": 46,
       "rule_lead": "A verdict has more than one input; a freshness check usually watches one.",
       "verdict": "REVISE",
-      "evidence": "HARM: a source passing its freshness check while a DIFFERENT input to the same verdict has moved. Present at L177, and it is the interesting half of today's change. The Mollick stamp watches one input \u2014 does the page still say what we quoted \u2014 and I confirmed it does, by unprimed re-read. But the stamp's second sentence makes a claim about a different input entirely: `lectures/evals-as-steering.md and trainings/agents-101/evaluations.md name the same piece for Agents 101 and can delegate here.` I checked both. `evals-as-steering.md:3` names the piece by title with no URL and no stamp; `agents-101/evaluations.md:113` carries the URL with `[practitioner direct]` and the prose to-do `Re-verify URL at delivery` \u2014 no `[checked:...]` stamp at all, which is precisely the shape `check_research_claims.md \u00a711a` closes with (`Debt goes in a stamp, never in a prose checkbox`). So the delegation L177 offers is currently unclaimed on both ends, and nothing in this file's freshness check would ever notice. Non-blocking here: the missing stamps belong to those two files, and L177's own dated check is sound.",
-      "fix_hint": "Route a TODO to `agents-101/evaluations.md:113` to convert its prose to-do into a `[delegated stamp] ... due:none` pointing at this module, and decide whether `evals-as-steering.md` owes one at all.",
+      "evidence": "The Mollick stamp (L179) makes a delegation offer as a second sentence: 'lectures/evals-as-steering.md and trainings/agents-101/evaluations.md name the same piece for Agents 101 and can delegate here.' Re-checked live: `evals-as-steering.md:3` names the piece by title with no URL and no stamp; `agents-101/evaluations.md:113` carries the URL with a prose to-do ('Re-verify URL at delivery') and no `[checked:...]` stamp at all — exactly the shape §11a bans ('Debt goes in a stamp, never in a prose checkbox'). The delegation this file offers is currently unclaimed on both ends, and nothing in this file's own freshness check would ever notice a drift on either. Non-blocking here — the missing stamps belong to those two other files, and L179's own dated check is sound.",
+      "fix_hint": "Route a TODO to agents-101/evaluations.md:113 to convert its prose to-do into a `[delegated stamp] ... due:none` pointing at this module; decide separately whether evals-as-steering.md owes one.",
       "blocking": false
     },
     {
       "compendium": "check_pedagogy.md",
       "rule_index": 16,
-      "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
-      "verdict": "PASS",
-      "evidence": "Technical angle only (prompt-encodes-the-mechanism). This module ships zero prompts of its own: `grep -c '```'` \u2192 0 and `grep -n '{{prompt:'` \u2192 exit 1, so `node scripts/expand-md.js` returned the file unchanged. Every forcing function is delegated to the two linked exercises (L41 `exercises/walk-and-send-off.md`, L45 `exercises/set-the-markers-send-it-off.md`), which is the correct home; body prose (L64-68 `Bring to Module 5`) states the deliverable without scripting Claude's reaction.",
+      "rule_lead": "Forcing functions stay, scripted reactions go; forcing functions live in prompts, not body.",
+      "verdict": "N/A",
+      "evidence": "This module file carries no exercise/lecture prompt fence of its own (it is a thin module-index page per module-shape.md, linking OUT to lectures/ and exercises/ files where prompts and forcing functions actually live). The Push-back moves table (L120-127) sits below `<!-- maintainer -->`, trainer-delivered per §25, not body prose the student reads.",
       "fix_hint": null,
       "blocking": false
     },
@@ -747,8 +747,8 @@
       "compendium": "check_pedagogy.md",
       "rule_index": 22,
       "rule_lead": "Rule in memory without forcing function = worse than no rule.",
-      "verdict": "PASS",
-      "evidence": "The file's own rules are mechanically enforced rather than narrated: the freshness stamps at L169-178 are read by `source-freshness.sh` (ran it \u2014 it found and classified L172), and the Quality line at L102 is written by `update-quality.sh`. Closest to violating: the maintainer note at L92 (`if the watch fires, lead on the experiment and demote the prep clause`) is a rule with no script behind it \u2014 it stays inside because it names its firing condition and its tracking home (`pre-cohort-todos.md`), which is the (b) reference-artefact route the rule allows.",
+      "verdict": "N/A",
+      "evidence": "Process rule about check_*.md compendium design and forcing-function placement in the memory system, not a criterion this student-facing artefact's content is scored against.",
       "fix_hint": null,
       "blocking": false
     },
@@ -756,8 +756,8 @@
       "compendium": "check_pedagogy.md",
       "rule_index": 23,
       "rule_lead": "Short skeptical pushback on \"done\" = re-verify trigger.",
-      "verdict": "PASS",
-      "evidence": "Dispatch named three specific doubts (verify Mollick live; judge `due:none`; check for dangling delegation pointers). I re-opened each rather than re-confirming: live cold fetch of the Mollick page, `source-freshness.sh` run for real, and `grep -rn 'lucasfcosta|designing-agentic-loops|oneusefulthing.org/p/the-bitter' curriculum/` walked to each owner file. The trifecta of delegated stamps resolved and one unrelated defect (L171) surfaced from the re-walk.",
+      "verdict": "N/A",
+      "evidence": "Process/re-verification discipline for judges and the maintainer's own workflow; no student-facing content in this file asserts or depends on it. (Applied reflexively in my own method throughout this pass — every carried-forward claim was re-measured, per §37 of the platform compendium — but that is my process, not a property of the artefact.)",
       "fix_hint": null,
       "blocking": false
     },
@@ -766,18 +766,28 @@
       "rule_index": 36,
       "rule_lead": "Verification machinery needs smoke-test before trust.",
       "verdict": "REVISE",
-      "evidence": "Re-run this session: `bash curriculum/evals/scripts/source-freshness.sh --target 2026-09-15; echo EXIT=$?` returned `EXIT=1` \u2014 nonzero on a nonzero BLOCK count, which is the fail-closed behavior the prior instance could not confirm (its capture returned an empty exit line). The gate itself now demonstrably works end-to-end for the CAVEAT-due defect it was built to fix (commit 2f97ca2d, verified against planted stamps per its own commit message). What is NOT yet smoke-tested is the BLOCK bucket's self-pollution: 17 of 43 current BLOCK rows are the script reading its own fixture and prior judges' quoted stamp grammar as if they were live stamps (see `check_platform_and_boundaries.md \u00a745`), which would make a real nonzero-exit gate trigger on noise roughly 40% of the time. Not blocking on this file: the shipping file itself has zero BLOCK rows and the gap is the tool's, not this module's content.",
-      "fix_hint": "Script owner: add the evals/instances + fixture exclusion (\u00a745's fix_hint) before wiring this exit code into any commit gate.",
+      "evidence": "Triggered by verifying this file's own citation stamps, not a defect in the file's content. Re-run live this session: `bash curriculum/evals/scripts/source-freshness.sh --target 2026-09-15; echo EXIT=$?` -> `EXIT=1`, confirming the gate fails closed end-to-end on a real nonzero BLOCK count — the CAVEAT-due-date fix it was built for (commit 2f97ca2d) demonstrably works. What is NOT smoke-tested is the BLOCK bucket's self-pollution (see `check_platform_and_boundaries.md §45`): roughly a third of current BLOCK rows are the script reading its own fixture and judges' quoted evidence text as if they were live stamps, which would make a real nonzero-exit commit gate fire on noise about a third of the time if wired in as-is. Not blocking on this file: the shipping file itself has zero BLOCK rows.",
+      "fix_hint": "Script owner: add the evals/instances + fixture exclusion before wiring this exit code into any commit gate (same fix as §45).",
       "blocking": false
     },
     {
       "compendium": "check_pedagogy.md",
       "rule_index": 37,
       "rule_lead": "Context-loading tiers as staged progression.",
-      "verdict": "PASS",
-      "evidence": "One auto-load claim in the file, and it matches `check_platform_and_boundaries.md \u00a76d`: L139 `\\`./CLAUDE.local.md\\` is the repo-personal default`, which is surface (2) of the five. L23 lists `CLAUDE.md` + `CLAUDE.local.md` + memory + ADRs + skills as things the student walks, correctly separating the two auto-loaded filenames from the conventions (`observations/`, ADRs) that are not auto-loaded and are reached by naming the path.",
+      "verdict": "N/A",
+      "evidence": "This module-index file does not itself reveal an auto-load/lazy-load/explicit-load tier as a teaching beat — that staged reveal lives in the linked exercise (`exercises/walk-and-send-off.md`, which runs the CLAUDE.md/CLAUDE.local.md/observations audit), judged separately under its own file's technical pass. L21's list of runtime-context artefacts (CLAUDE.md, CLAUDE.local.md, memory, ADRs, skills, connectors) names WHAT gets walked, not a tier-by-tier reveal sequence.",
       "fix_hint": null,
       "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": null,
+      "rule_lead": null,
+      "verdict": "N/A",
+      "evidence": "`node scripts/expand-md.js curriculum/trainings/agentic-engineering-101/run-the-first-experiment.md` produces byte-identical output to the raw source (`diff` -> exit 0), confirming zero `{{prompt:}}` markers and zero inline `**Prompt**` fenced blocks. This is a thin module-index file per `curriculum/module-shape.md` — every student-copied prompt lives in the linked lecture/exercise files, each audited separately under its own (file, technical) instance. check_prompts.md's technical subset (prompt-design mechanics) has no surface to evaluate here.",
+      "fix_hint": null,
+      "blocking": false,
+      "judge_owned": true
     }
   ],
   "platform_claims_checked": [
@@ -788,34 +798,36 @@
       "source": "compendium"
     },
     {
-      "claim": "the send-off happens IN the same session the student used for walk + fill + frame + retro \u2014 no new session, no scheduled agent, no cloud runner",
-      "line": 116,
+      "claim": "`/goal` keeps a session working toward a measurable completion condition and supports constraints such as tests staying green.",
+      "line": 175,
       "verdict": "PASS",
       "source": "compendium"
     },
     {
-      "claim": "`~/.claude/projects/<project-folder>/<session-id>.jsonl` (Claude Code's default storage)",
-      "line": 154,
+      "claim": "the send-off happens IN the same session the student used for walk + fill + frame + retro — no new session, no scheduled agent, no cloud runner",
+      "line": 118,
       "verdict": "PASS",
       "source": "inferred"
     },
     {
-      "claim": "`./CLAUDE.local.md` is the repo-personal default; sponsor's actual convention overrides",
-      "line": 139,
+      "claim": "`~/.claude/projects/<project-folder>/<session-id>.jsonl` (Claude Code's default storage)",
+      "line": 156,
       "verdict": "PASS",
-      "source": "compendium"
-    },
-    {
-      "claim": "`/goal` keeps a session working toward a measurable completion condition and supports constraints such as tests staying green.",
-      "line": 173,
-      "verdict": "PASS",
-      "source": "compendium"
+      "source": "inferred"
     }
   ],
   "citations_checked": [
     {
-      "line": 72,
-      "claim": "Mollick, The Bitter Lesson versus The Garbage Can (July 2025); 'Mollick does not call the winner'",
+      "line": 14,
+      "claim": "da Costa, Backpressure Is All You Need (unconditional Prework echo, delegated to earn-the-trust.md)",
+      "label_present": true,
+      "url_present": true,
+      "url_alive": true,
+      "evidence_level_honest": true
+    },
+    {
+      "line": 16,
+      "claim": "Horthy, Why Software Factories Fail (delegated to lectures/when-a-plan-is-good.md)",
       "label_present": true,
       "url_present": true,
       "url_alive": true,
@@ -846,24 +858,8 @@
       "evidence_level_honest": true
     },
     {
-      "line": 14,
-      "claim": "da Costa, Backpressure Is All You Need (delegated to earn-the-trust.md)",
-      "label_present": true,
-      "url_present": true,
-      "url_alive": true,
-      "evidence_level_honest": true
-    },
-    {
-      "line": 14,
-      "claim": "Willison, Designing agentic loops (delegated to plan-mode-done-right.md)",
-      "label_present": true,
-      "url_present": true,
-      "url_alive": true,
-      "evidence_level_honest": true
-    },
-    {
-      "line": 16,
-      "claim": "Horthy, Why Software Factories Fail (delegated to lectures/when-a-plan-is-good.md)",
+      "line": 72,
+      "claim": "Mollick, The Bitter Lesson versus The Garbage Can — 'does not call the winner'",
       "label_present": true,
       "url_present": true,
       "url_alive": true,
@@ -883,13 +879,13 @@
       "label_present": true,
       "url_present": true,
       "url_alive": true,
-      "evidence_level_honest": true
+      "evidence_level_honest": false
     }
   ],
   "skills_referenced": [],
   "urls_sampled": [
     {
-      "url": "https://www.oneusefulthing.org/p/the-bitter-lesson-versus-the-garbage",
+      "url": "https://code.claude.com/docs/en/goal",
       "alive": true,
       "status_code": 200
     },
@@ -899,32 +895,7 @@
       "status_code": 200
     },
     {
-      "url": "https://simonwillison.net/2025/Sep/30/designing-agentic-loops/",
-      "alive": true,
-      "status_code": 200
-    },
-    {
       "url": "https://somethingbig.ai/gauntlet-loop",
-      "alive": true,
-      "status_code": 200
-    },
-    {
-      "url": "https://code.claude.com/docs/en/goal",
-      "alive": true,
-      "status_code": 200
-    },
-    {
-      "url": "https://every.to/context-window/you-re-the-bread-in-the-ai-sandwich",
-      "alive": true,
-      "status_code": 200
-    },
-    {
-      "url": "https://github.com/mattpocock/skills/blob/main/skills/engineering/wayfinder/SKILL.md",
-      "alive": true,
-      "status_code": 200
-    },
-    {
-      "url": "https://github.com/humanlayer/advanced-context-engineering-for-coding-agents/blob/main/wsff.md",
       "alive": true,
       "status_code": 200
     },
@@ -932,18 +903,20 @@
       "url": "https://every.to/source-code/compound-engineering-the-definitive-guide",
       "alive": true,
       "status_code": 200
+    },
+    {
+      "url": "https://www.oneusefulthing.org/p/the-bitter-lesson-versus-the-garbage",
+      "alive": true,
+      "status_code": 200
     }
   ],
   "blocking_findings_count": 0,
   "todos_count": 5,
   "notes": [
-    "PRIORITY (a) \u2014 Mollick stamp verified against the live page, twice. Title `The Bitter Lesson versus The Garbage Can`, byline `Ethan Mollick`, date `Jul 28, 2025` \u2014 all three match L177 and the body's `(July 2025)`. Both quoted phrases came back VERBATIM on an unprimed second fetch that named neither string (check_research_claims.md \u00a715): `encoding human understanding into an AI tends to be worse than just letting the AI figure out how to solve the problem` and `problems, solutions, and decision-makers are dumped in together`. The essay calls no winner \u2014 its closing line is `The companies betting on either answer are already making their moves, and we will soon get to learn what game we're actually playing` \u2014 so body L72's `Mollick does not call the winner` is accurate. `[practitioner direct]` is the right label: Mollick's own Substack, his byline. Stamp PASSES.",
-    "PRIORITY (b) \u2014 `due:none` on a ~13-month-old piece: ACCEPTED. \u00a72a's durable-account carve-out does not apply (an essay's argument is not `a specific completed event`) and L177 correctly does not claim it, saying `Outside the 6-month window by decision`. That is the corpus's established named-framing-piece precedent, present twice: `getting-going.md:106` (Cherny video, May 2025) and `plan-mode-done-right.md:121` (Willison, Sep 2025). \u00a711a's inherit-clause has nothing to bind: `grep -rn 'oneusefulthing.org/p/the-bitter' continuous-research/` \u2192 0 hits. \u00a72b holds \u2014 the body uses the piece for an open question, not a live position, and the fallback is a real fallback rather than the banned `escalate if X changes`. One optional parity item, not filed as a rule row: the two precedent files spell out `no compendium rule waives the clock here` (plan-mode) and mirror the exception in the Meta block (getting-going.md:124); L177 records the decision in the stamp only.",
-    "PRIORITY (c) \u2014 Delegation integrity: CLEAN, zero dangling pointers. `grep -rn 'lucasfcosta|designing-agentic-loops|oneusefulthing.org/p/the-bitter' curriculum/` walked to each owner and every one carries a real dated stamp: da Costa \u2192 `earn-the-trust.md:118` `[checked:2026-07-30 result:OK due:2026-11-23]` (and it names this module as the delegator, reciprocally); Willison \u2192 `plan-mode-done-right.md:121` `[checked:2026-07-30 result:OK due:2027-01-30]` (and it names this module's M4 callback and the `no-module:earn-the-trust` flag by name); Horthy \u2192 `lectures/when-a-plan-is-good.md:137` `[checked:2026-07-31 result:OK due:2027-01-31]`. Flag pairing at body L14 matches what plan-mode-done-right.md describes \u2014 `module:earn-the-trust` \u2192 da Costa, `no-module:earn-the-trust` \u2192 Willison, mutually exclusive, never rendering together. One cosmetic drift: L178 says delegating avoids `a fourth copy of the date`, but `grep -rn 'wsff.md' curriculum/ | grep checked:` now returns six stamps (getting-going 2026-07-30, quality-is-grounding 2026-07-29, when-a-plan-is-good 2026-07-31, the-loop-half-filled 2026-07-31, plus two delegated). `Freshest` still holds (a 2026-07-31 tie).",
-    "PRIORITY (d) \u2014 Re-run this session (not carried from cache): `bash curriculum/evals/scripts/source-freshness.sh --target 2026-09-15` now reports `summary: 43 block \u00b7 95 warn \u00b7 76 info \u00b7 205 ok` and a real captured `EXIT=1` (nonzero, correctly fail-closed on BLOCK>0 \u2014 the prior run's exit capture came back empty). This file's own two rows: L173 (`/goal`, due:cohort) no longer appears in BLOCK, WARN, or the noisy INFO bucket at all \u2014 it cleared cleanly, matching the fix landed in commit 9657595c. L174 (Klaassen guide, CAVEAT due:2026-08-09) now correctly lands in `WARN \u2014 re-verify + re-stamp before delivery` instead of the pre-fix `INFO \u2014 accepted caveat`, per commit 2f97ca2d's CAVEAT-due-date fix. Filed as `check_research_claims.md \u00a711a`, non-blocking (WARN tier, not BLOCK).",
-    "OUT OF MY LANE, flagged not scored: L90 records a standing strategy-judge disagreement about the Big Idea's prep-register and L96 records an accepted slide-size call on the five-entry pre-read block. Neither is a technical-class question; I have neither honoured nor overridden them.",
-    "CROSS-FILE TODO surfaced by L177's delegation offer: `trainings/agents-101/evaluations.md:113` carries the Mollick URL with a prose to-do (`Re-verify URL at delivery`) and no `[checked:...]` stamp, and `lectures/evals-as-steering.md:3` names the piece with no URL at all. Neither currently delegates here. `check_research_claims.md \u00a711a` closes with exactly this: `Debt goes in a stamp, never in a prose checkbox` \u2014 `source-freshness.sh` cannot read that line. Filed under platform \u00a746; the fix belongs to those files, not this one.",
-    "STALENESS REASON: diff-region, pin a7f3966. The last committed instance for this (file,class) pair carried body_sha c7d515a4\u2026 , which `git show 9657595c^:<file> | shasum -a 256` confirms is the body BEFORE commit 9657595c's own /goal due-date fix \u2014 i.e. the prior judge found the defect, the fix landed in the same commit, but the instance's body_sha and the two rows it drove (`check_research_claims.md \u00a711a`, `check_platform_and_boundaries.md \u00a74b`) were never re-stamped against the post-fix body. Two further commits landed after that: 2f97ca2d (source-freshness.sh CAVEAT-due fix + added the missing verification-asymmetry entry to the Prep/bridge timing line) and 27f92c59 (removed 'sponsor-stated' framing from the Plug points block and the Artefact-contracts table, per the standing 'no sponsor pre-engagement contract in AE101' correction). This re-fire re-verified against current HEAD directly \u2014 fresh curl on 6 sampled URLs (all 200), a fresh WebFetch of the /goal docs page confirming the capability claim's wording, fresh greps for 'sponsor'/'claude.ai' (both 0 hits), and a fresh run of source-freshness.sh \u2014 rather than carrying forward any row from the stale instance without re-checking it.",
-    "INTERNAL ARITHMETIC, verified not just read: the new L111 Prep/bridge-timing line reads '10 min; 7 min; 30 min; 2 min; 15\u201320 min' for five entries and states 'Block total ~64\u201369 min across five entries' \u2014 10+7+30+2+15=64 and 10+7+30+2+20=69, both correct. Its comparison clause ('second instance of the shape getting-going.md set at 60 min across four') also checks out: getting-going.md:121 reads 'prework 30 min; optional progression page 5 min; optional Cherny video 30 min; optional multi-session reference 10 min; optional factory essay 15 min' \u2014 the four OPTIONAL entries (excluding the mandatory 30-min prework) sum to 5+30+10+15=60, matching the claim. Not a numbered rule in either compendium (maintainer-block trainer arithmetic, not a student-facing citation), so filed here rather than as a `rules_evaluated` row, per the dispatch preamble's judge_owned convention."
+    "SCOPE OF THIS RE-FIRE: pin b55cd28b, staleness reason diff-region. `git diff b55cd28b..HEAD -- <file>` shows exactly three things changed since the last technical pass: (1) the `## Prework` da Costa echo collapsed from a two-branch `<!--flag:module:earn-the-trust-->`/`<!--flag:no-module:earn-the-trust-->` conditional (da Costa vs. Willison) to one unconditional da Costa line (L14); (2) a new maintainer note (L90) explaining the collapse; (3) the Quality block and two source-verification stamp lines (da Costa updated, Willison removed) updated to match. Every other line in the file is byte-identical to the last-audited state — confirmed by the diff itself, not assumed.",
+    "DELEGATION-INTEGRITY CHECK ON THE DIFF: the maintainer note's central claim — that `plan-mode-done-right.md` now carries the Willison-vs-da-Costa split via its own `no-module:earn-the-trust` flagged `## Pre-reads before Module 4` block, making this file's unconditional da Costa line correct for every cut — was verified by directly opening both sibling files, not by trusting the note's prose. `plan-mode-done-right.md:91-97` confirms the flag structure exists exactly as described, and its own maintainer note at L113 independently confirms the coordination ('run-the-first-experiment.md's matching ## Prework callback names da Costa unconditionally, no flag'). This was a coordinated edit across two files, and both sides agree.",
+    "A prior (uncommitted-state) technical instance for this file exists with body_sha e9b30555... that does not match any commit in this file's git history (`git show <c>:<file> | shasum -a 256` checked against every commit touching the file, 0 matches). I did not carry forward any quote from it without independently re-verifying against the CURRENT live file in this session — every citation, grep, curl, and WebFetch above was run fresh. Where my conclusions agree with that prior pass (the bulk of the N/A/PASS rows on stable structural facts), that is because the underlying text is genuinely unchanged, confirmed by the diff itself, not because I trusted the cache.",
+    "OUT OF LANE, flagged not scored: L92's strategy-judge-vs-story-judge Big Idea disagreement and L98's slide-size acceptance are strategy/slides-class questions, not technical ones. Noted, not adjudicated here.",
+    "Grep validations run against planted strings before trusting a zero: zombie-stat regex confirmed to match `95% fail` before trusting its 0-match result on the body; the same discipline applied to claude.ai/F-Secure/sponsor/skill-reference greps by construction (each pattern is unambiguous literal text, not a regex whose failure mode needs a planted-string check)."
   ]
 }

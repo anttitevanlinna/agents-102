@@ -218,4 +218,29 @@ test('collect items carry the reason per class, so --json can tell a dispatcher 
   assert.deepStrictEqual(Object.keys(ex.driftRules), ['pedagogy'])
 })
 
+test('collect: `scanned` counts the wanted training, not the whole universe', () => {
+  // The board prints "<scanned> surfaces scanned" directly under a header that
+  // names one training, so a universe-wide count reads as that training's own
+  // size. It reported 128 for AE101 on 2026-08-24 — the corpus total across
+  // every training — which inflates coverage in the one line people quote.
+  const root = fixture()
+  const io = testIo(root)
+  const universe = buildUniverse(root).length
+  const all = collect(root, io, 'all')
+  const two = collect(root, io, 't-two')
+
+  // Every surface is either scanned or unowned; nothing falls between.
+  assert.strictEqual(all.scanned + all.unowned.length, universe)
+
+  // The regression itself: a training that owns two surfaces must not report the
+  // universe's size. The parts do NOT sum to the whole here and that is correct —
+  // an explicit --training claims a multiply-linked shared file that reads as
+  // UNOWNED under `all` — so the invariant is the ceiling, not a partition.
+  assert.strictEqual(two.scanned, 2)
+  assert.ok(two.scanned < universe, 'one training must not report the whole universe')
+  assert.ok(all.scanned <= universe)
+  assert.ok(!two.items.some(i => i.file.includes('/t-one/')),
+    'a surface owned by another training must not be counted')
+})
+
 console.log(`\n1..${n}`)

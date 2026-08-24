@@ -9,7 +9,7 @@ requires:
     source: scrollback (student input at M2 Prework / Connections)
 produces:
   - id: initial-plan
-    location: plan file (Claude Code default location in working directory)
+    location: ~/.claude/plans/<slug>-<adjective>-<animal>.md (Claude Code default; user-keyed and laptop-local, not in the repo)
     consumed-by:
       - prompt:push-back-on-the-plan-2
 ---

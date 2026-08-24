@@ -122,6 +122,83 @@ test('a customer-variant trace resolves to the surface it walked', () => {
   assert.ok(typeof slugIndex === 'function')
 })
 
+test('a same-slug collision resolves to the training the trace names', () => {
+  // `getting-going` and `prework` exist in BOTH ae101 and agents-101. The stem
+  // carries the training precisely so the two never collide — but resolveSlug
+  // took `stem.split('--').pop()` and threw the prefix away, and slugIndex is
+  // first-wins over a directory listing where `agentic-engineering-101` sorts
+  // ahead of `agents-101`. So every agents-101 getting-going trace was being
+  // classified against AE101's body: a wrong freshness verdict, not a display
+  // nit, and it surfaced under `--training ae101` wearing an agents-101 name.
+  const { resolveSlug } = require('./sim-freshness.js')
+  const idx = new Map([
+    ['getting-going', 'curriculum/trainings/agentic-engineering-101/getting-going.md'],
+    ['ae101::getting-going', 'curriculum/trainings/agentic-engineering-101/getting-going.md'],
+    ['agents-101::getting-going', 'curriculum/trainings/agents-101/getting-going.md'],
+  ])
+  assert.strictEqual(resolveSlug(idx, 'agents-101--module--getting-going'),
+    'curriculum/trainings/agents-101/getting-going.md')
+  assert.strictEqual(resolveSlug(idx, 'ae101--module--getting-going'),
+    'curriculum/trainings/agentic-engineering-101/getting-going.md')
+})
+
+test('a training-scoped miss does not silently fall through to another training', () => {
+  // Falling back to the bare slug is right when the training simply has no
+  // scoped entry (an older index, a shared-pool file). It is wrong when the
+  // named training exists in the index and does not own this slug — that is the
+  // collision above wearing a different hat.
+  const { resolveSlug } = require('./sim-freshness.js')
+  const idx = new Map([
+    ['prework', 'curriculum/trainings/agentic-engineering-101/prework.md'],
+    ['ae101::prework', 'curriculum/trainings/agentic-engineering-101/prework.md'],
+    ['agents-101::getting-going', 'curriculum/trainings/agents-101/getting-going.md'],
+  ])
+  assert.strictEqual(resolveSlug(idx, 'agents-101--module--prework'), null)
+})
+
+test('slugIndex keys a module both bare and training-scoped, and keeps both trainings', () => {
+  const { slugIndex } = require('./sim-freshness.js')
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'simfresh-idx-'))
+  const body = '# T\n\nStudent body.\n\n<!-- maintainer -->\n**Quality:** writing PASS\n'
+  for (const t of ['agentic-engineering-101', 'agents-101']) {
+    fs.mkdirSync(path.join(root, 'curriculum/trainings', t), { recursive: true })
+    fs.writeFileSync(path.join(root, 'curriculum/trainings', t, 'getting-going.md'), body)
+  }
+  const idx = slugIndex(root)
+  assert.ok(idx.has('getting-going'), 'bare slug key kept for back-compat')
+  assert.strictEqual(idx.get('ae101::getting-going'),
+    'curriculum/trainings/agentic-engineering-101/getting-going.md')
+  assert.strictEqual(idx.get('agents-101::getting-going'),
+    'curriculum/trainings/agents-101/getting-going.md')
+  // The bug in one line: the bare key can only name one of the two.
+  assert.notStrictEqual(idx.get('ae101::getting-going'), idx.get('agents-101::getting-going'))
+})
+
+test('an orphaned trace does not leak into every training\'s report', () => {
+  // The two `unresolved` pushes sat ABOVE the training filter, so a trace whose
+  // slug resolves to nothing appeared under `--training ae101`, `agents-101` and
+  // `claude-basics` alike. Four rows in the AE101 mood report on 2026-08-24 were
+  // other trainings' or nobody's, which is how a no-score list reads longer than
+  // the hole it describes.
+  const { collect } = require('./sim-freshness.js')
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'simfresh-leak-'))
+  fs.mkdirSync(path.join(root, 'curriculum/evals/sim-cache'), { recursive: true })
+  fs.mkdirSync(path.join(root, 'curriculum/trainings/agentic-engineering-101'), { recursive: true })
+  fs.writeFileSync(path.join(root, 'curriculum/trainings/agentic-engineering-101/real.md'),
+    '# Real\n\nStudent body.\n\n<!-- maintainer -->\n**Quality:** writing PASS\n')
+  const w = (n, o) => fs.writeFileSync(path.join(root, 'curriculum/evals/sim-cache', n), JSON.stringify(o))
+  w('agents-101--module--nowhere.persona.json', { phases: [] })
+  w('no-prefix-at-all.persona.json', { phases: [] })
+
+  const ae = collect(root, 'ae101').map(r => r.name)
+  assert.ok(!ae.includes('agents-101--module--nowhere.persona.json'),
+    'a trace naming another training must not appear under this one')
+
+  const all = collect(root, 'all').map(r => r.name)
+  assert.ok(all.includes('agents-101--module--nowhere.persona.json'), 'still visible under --training all')
+  assert.ok(all.includes('no-prefix-at-all.persona.json'), 'a prefix-less orphan is still reported somewhere')
+})
+
 test('moodBeats reads every phase score and the close, and stays silent otherwise', () => {
   const { moodBeats } = require('./sim-freshness.js')
   const beats = moodBeats({

@@ -36,7 +36,7 @@ Sim sweeps and platform-capability checks are not tracked here. The `curriculum-
 
 - **`[watch]` `walk-and-send-off-3` option-cap juggling is a workaround for an AskUserQuestion tool limit, not a clean fix.** The 2026-05-27 arcticrex run hit invalid-params on the first AskUserQuestion in M4 (`walk-and-send-off-2`'s audit surfaced 5 gaps; the agent offered all 5 as options; the tool caps options at 4). Fixed by coaching the prompt to offer the four most material as options and, after the student picks, print the left-off gaps as a post-selection FYI. Smell: curriculum prose absorbing a tool constraint the agent should arguably respect on its own. **Accepted as the pragmatic fix for first cohort.** **Fires if** the tool's option cap changes (the "four" wording goes stale), OR the post-pick FYI list reads as noise / confuses a cohort student. Fix when it fires: revisit whether the audit upstream (`walk-and-send-off-2`) should cap its own gap count instead of pushing the cap onto the selection prompt.
 
-- **`[watch]` `extract-the-task-shaping-rule.md` pedagogy stays REVISE by design (§16 `@import` ask in body, not fence).** The full disposition lives in the file's own maintainer block (standing watch, reaffirmed 2026-08-02): the wiring stays the student's choice; a pedagogy REVISE is the expected steady state. Fires if a cohort run shows a student picking a non-auto-load path and missing the wire; fix then: fence it as a question in `extract-the-task-shaping-rule-2.md` (gated, `curriculum/prompts/*.md`).
+- **`[watch]` `extract-the-task-shaping-rule.md` keeps the §16 `@import` ask in body, not fence.** The full disposition lives in the file's own maintainer block (standing watch, reaffirmed 2026-08-02): the wiring stays the student's choice. **The trigger is field evidence, not a verdict** — the pedagogy class reads PASS and §16 is not scored against this file, so a green Quality block says nothing about this watch either way. Fires if a cohort run shows a student picking a non-auto-load path and missing the wire; fix then: fence it as a question in `extract-the-task-shaping-rule-2.md` (gated, `curriculum/prompts/*.md`).
 
 - **`[watch]` `ae101-m3-sharpen-skill` rewrites the test-strategy SKILL.md in place with no pre-save checkpoint.** `check_prompts.md` §20 wants a grill beat before a downstream-consumed artefact is overwritten; this prompt shows before/after only AFTER the write, substituting a post-hoc *"read the sharpen with a skeptical eye"* section. The technical judge read it as probably-intentional (the skeptical-read section carries an over-flag / fresh-session escalation, and the write is a small in-place section edit, not a whole-file assembly). **Accepted as-is for first cohort.** **Fires if** a student's sharpen silently degrades a section M4/M5/M6 later depends on and the post-hoc read doesn't catch it. **Fix when it fires:** add a light pre-save beat, or record the accept-by-design in the prompt's frontmatter `note:` so the judge stops re-raising it (gated, `curriculum/prompts/*.md`).
 
@@ -54,20 +54,11 @@ Every AE101 surface is stamped all-PASS; these are the TODOs judges logged along
 
 - **The M4→M5 reading list is priced for the wrong side of the gap.** `run-the-first-experiment.md § Pre-reads before Module 5` ships five entries at ~64–69 min, second instance of the shape `getting-going.md` set at 60 min across four. The frame that justifies the load, *"Optional prep while it's still running"*, lives in `learn-from-the-test.md § Prework` where the student reads it after the gap has passed: the reading is designed for the dead time inside the un-watched send-off, which is the right use of a walk-away wait, and the assigning side never says so. *"Start with the first"* names a real 10-minute compliant path, but *"The rest point at the same surprise"* presents four as a set, so a student who stops after Mollick cannot tell whether they are done or behind. **Fix when it fires:** one sentence in the assigner's lede carrying both the walk-away framing and an explicit floor. **Fires if** a cohort's M5 opens with students who read nothing.
 - **`source-freshness.sh` cannot see a `result:CAVEAT` stamp go past its own due date, and 4 already have.** Lines 88–91 escalate on `due` only for `result:OK`, with the rationale that *"a paywalled source is deferred, not a content defect"*. That reasoning fits `BLOCKED`. It does not fit a `CAVEAT` whose author wrote a real calendar date: 33 CAVEAT stamps corpus-wide carry one, 29 future and **4 already past**, and all 4 sit in the INFO bucket where a green run hides them. Landed instance: `spot-gaps-build-the-loop.md` Klaassen *Definitive Guide* `due:2026-08-09`, 12 days over and invisible. **Maintainer call, not a fix-agent one** — the current behaviour is a documented decision and re-bucketing moves rows across the whole corpus. Narrowest change: keep the exemption for `due:none`/`due:asap` on CAVEAT, escalate only a CAVEAT carrying a past calendar date to WARN. **Fires now**, silently, every run.
-- **`push-back-on-the-plan-1`'s registry metadata puts the plan file in the wrong place.** Its `produces:` block reads `location: plan file (Claude Code default location in working directory)`. The live test behind `when-a-plan-is-good.md`'s `cc-plan-file` stamp found `getPlanFilePath` building `<plans-dir>/<slug>.md` under `~/.claude/plans/`, laptop-local, which is also what `trainer-modules.md` and the `~/.claude/plans/` watch above both state. Three surfaces say user-keyed, one says working directory. **Fix:** correct the `location:` field to `~/.claude/plans/<slug>-<adjective>-<animal>.md`. Metadata only, no body prose moves, no student reads the string.
-- **100 stamps corpus-wide set `due` to exactly `checked`+6mo — not two (recount 2026-08-23).** The bullet below was written against a two-file sample; a corpus scan finds the shape in ~40 files, and three more were found and fixed by judges the same day (Ronacher on `test-and-learn`, Willison on `plan-mode-done-right`, Klaassen on `spot-gaps-build-the-loop`). At that density it is the default behaviour, not a slip. **`source-freshness-format.md`'s own worked example (line 18) matches the banned shape and shows no publication date**, so the one place that teaches the rule cannot demonstrate it. Not all 100 are wrong — where a source was published the day it was checked, `checked`+6mo IS publication+6mo — which is why this needs a detector plus per-source verification, never a sweep. Two moves, in order: fix the example so it carries a publication date, then teach `source-freshness.sh` to flag `due == checked + 6 months` as suspect. Original two-file note follows.
-- **Two AE101 stamps set `due` to exactly `checked`+6mo**, which `check_research_claims.md` §11a names as never-correct (due follows publication, not the day someone looked): `spot-gaps-build-the-loop.md` Klaassen verifier article `due:2026-11-25` and Shipper/Klaassen `due:2027-01-02`. The first also runs looser than the sibling stamp it instructs syncing with (`learn-from-the-test.md`, `result:CAVEAT due:none`).
+- **100 stamps corpus-wide set `due` to exactly `checked`+6mo — not two (recount 2026-08-23).** The bullet below was written against a two-file sample; a corpus scan finds the shape in ~40 files, and three more were found and fixed by judges the same day (Ronacher on `test-and-learn`, Willison on `plan-mode-done-right`, Klaassen on `spot-gaps-build-the-loop`). At that density it is the default behaviour, not a slip. **`source-freshness-format.md`'s own worked example (line 18) matches the banned shape and shows no publication date**, so the one place that teaches the rule cannot demonstrate it. Not all 100 are wrong — where a source was published the day it was checked, `checked`+6mo IS publication+6mo — which is why this needs a detector plus per-source verification, never a sweep. Two moves, in order: fix the example so it carries a publication date, then teach `source-freshness.sh` to flag `due == checked + 6 months` as suspect.
 - **`spot-gaps-build-the-loop.md` § Next bolds a ten-word lead clause** (*"Going deeper, when this loop has to scale past you:"*) against `check_slides.md` §9's ≲5-word handle cap. Trim to *"Going deeper:"*.
 - ~~M2's six-module branch names M3's task with no bring-or-scramble stakes line.~~ **Closed 2026-08-22 (Antti), no change owed.** The other gaps carry a stakes line because arriving empty costs room time: no task picked and you pick while the exercise runs, no session and there is nothing to diagnose. **M3 does not require the plan file.** Its `## Prework` names the *feature* as the artefact and accepts a backlog item, a Jira or Linear ticket, or a design doc in its place; the plan file is the default path, not a dependency. Nothing is lost by arriving without it, so a stakes line here has to invent a consequence, which `check_writing.md` §21 rules out. **The shape asymmetry is the correct state.** Judges reading for pattern completeness should not re-raise. (Do not justify this with *"the file is in the student's repo"* — it is not; see the `~/.claude/plans/` watch above.)
 
 
-
-## Never-judged supplementaries and reference pages — non-blocking findings (2026-08-19 sweep)
-
-Banked from the first full judge pass over the six AE101 surfaces that had never been judged in any class. Blocking findings were fixed and re-fired in the same pass; these are the ones that survived as non-blocking and are worth one deliberate decision each.
-
-
-**The tooling finding from this sweep shipped 2026-08-20.** `update-quality.sh`'s stale-verdict guard hashed the whole file while `scan-stale-classes` routes staleness per region, so a two-word repair re-owed every class. The guard now asks `stamp-safe.js` whether the diff since the recorded `body_sha` actually reaches the class being stamped, and stamps when it does not. It fails closed at every uncertain fork: a sha matching no committed version answers UNKNOWN and still hard-fails, because an unanchored hash is the case that fabricates evidence rather than merely losing it. Six tests in `stamp-safe.test.js`.
 
 ## Hunt for buried gold
 
@@ -156,16 +147,21 @@ changed becomes invented evidence rather than missing evidence, which is the fai
 `memory/compounded/2026-08-19-platform-a-stale-cache-fabricates-evidence-not-just-staleness.md`
 records.
 
-- **58 unanchored.** The trace's `content_sha` matches no committed version of its file, raw or
+**The script owns the counts; this section owns the shapes.** Numbers written down here go stale
+the next time anyone edits a body, and a stale number in a punch list reads as a measurement.
+
+- **Unanchored.** The trace's `content_sha` matches no committed version of its file, raw or
   `expand-md`-expanded. Either it hashed a working-tree state that was never committed on its own,
-  or the hash was not computed at all: 18 of them carry 16-hex strings where sha256 is 64. These
-  cannot be aged, only regenerated.
-- **47 body-moved.** Student-facing prose changed under the trace. Worst drift:
-  `the-map-filled-in` (177 body lines), `the-far-half` (111), `the-loop-half-filled` (105).
-- **11 persona traces carry no mood score at all.** Three are exercises, where
+  or the hash was not computed at all — a large minority carry 16-hex strings where sha256 is 64.
+  These cannot be aged, only regenerated.
+- **Body-moved.** Student-facing prose changed under the trace. The long-standing worst three are
+  `the-map-filled-in`, `the-far-half` and `the-loop-half-filled`, and they have held that position
+  across every run since this section was written.
+- **Persona traces carrying no mood score at all.** Three are exercises, where
   `simulation.md` §When makes the persona run required: `fork-the-worktree`,
   `open-the-side-quest`, `orient-and-introspect`. The rest are lectures and modules, where it is
-  optional. Triage, not a failure list.
+  optional. Triage, not a failure list. Note the `--mood` half of the reader does **not** honour
+  `--training`, so its no-score list carries other trainings' rows too.
 
 Sequencing note: a trace regenerated before a stamp goes stale again the moment
 `update-quality.sh` writes the Quality line, so regenerate as part of a judged pass, not as a
@@ -177,17 +173,18 @@ standalone sweep.
 prefix would be a coin flip. The refusal is right, and the consequence is that these four sit
 outside the AE101 count in both directions: never counted clean, never counted owing.
 
-- `curriculum/exercises/personal-site-with-guardrails.md`
+- `curriculum/exercises/ground-your-output.md`
 - `curriculum/lectures/how-do-you-make-your-system-learn.md`
 - `curriculum/lectures/the-data-question.md`
 - `curriculum/lectures/why-mostly-right-fails.md`
 
-Each is linked from zero trainings or from two or more. Checked 2026-08-20: `personal-site-with-guardrails`
-is claude-basics + agents-101, and the three lectures are linked from nothing at all, so no AE101 beat
-projects any of the four. The AE101 count is therefore honest; the exposure is that three lectures sit
-in the shared pool provably unjudged and silently so, which is an Agents 101 question, not a pre-cohort one.
-The same run recovered `first-scheduled-agent`, `agent-ready-data` and `personal-to-company-gap`, which were
-invisible for a different reason (see the sim-cache section) and now show real owing on the Agents 101 queue.
+Each is linked from zero trainings or from two or more, so no AE101 beat projects any of the four and
+the AE101 count is honest. Run the queue for the current list rather than trusting this one: membership
+turns over as files are linked and unlinked, and `personal-site-with-guardrails` has already left it.
+`ground-your-output` is a different case from the three lectures — `agents-101/output-quality.md` names
+it in prose as superseded reading, which is not an include link, so it reads as linked from nothing.
+The exposure is that unjudged shared-pool files are silently unjudged, which is an Agents 101 question,
+not a pre-cohort one.
 
 ## A second tab that lands on the right slide
 

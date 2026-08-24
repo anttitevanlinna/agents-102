@@ -71,10 +71,23 @@ function git(repo, args) {
 // are two personas walking one file. Peel leading tokens until the index knows
 // the name. Peeling only ever shortens, so a wrong guess resolves to nothing
 // rather than to a neighbour.
+// A trace stem is `<training>--[<surface>--][<variant>-]<slug>`. The training
+// half is not decoration: `getting-going` and `prework` exist in both ae101 and
+// agents-101, so resolving on the bare tail picked whichever training sorted
+// first in the directory listing and classified one training's trace against
+// the other's body. Scoped key wins; bare key is the fallback for shared-pool
+// files and older indexes that carry no scoped entries at all.
 function resolveSlug(idx, stem) {
-  let slug = stem.split('--').pop()
+  const seg = stem.split('--')
+  const training = seg.length > 1 ? seg[0] : null
+  const scopedIndex = training && [...idx.keys()].some(k => k.startsWith(`${training}::`))
+  let slug = seg[seg.length - 1]
   while (slug) {
-    if (idx.has(slug)) return idx.get(slug)
+    if (training && idx.has(`${training}::${slug}`)) return idx.get(`${training}::${slug}`)
+    // The named training HAS scoped entries and none of them is this slug, so a
+    // bare-key hit would be another training's file. Refuse it: an orphan is a
+    // visible hole, a wrong resolution is an invisible wrong answer.
+    if (!scopedIndex && idx.has(slug)) return idx.get(slug)
     const cut = slug.indexOf('-')
     if (cut === -1) return null
     slug = slug.slice(cut + 1)
@@ -82,11 +95,16 @@ function resolveSlug(idx, stem) {
   return null
 }
 
+// Two keys per surface: `<slug>` (first wins, back-compat) and
+// `<training>::<slug>` (exact). resolveSlug prefers the scoped one.
 function slugIndex(repo) {
   const idx = new Map()
+  const findLinkers = linkFinder(repo)
   for (const rel of buildUniverse(repo)) {
     const slug = path.basename(rel, '.md')
     if (!idx.has(slug)) idx.set(slug, rel)
+    const training = trainingOf(rel, findLinkers)
+    if (training) idx.set(`${training}::${slug}`, rel)
   }
   return idx
 }
@@ -159,15 +177,32 @@ function collect(repo, want) {
   try { names = fs.readdirSync(path.join(repo, SIM_DIR)).filter(f => f.endsWith('.json')).sort() }
   catch { return rows }
 
+  // An unresolved trace still belongs to somebody: its own stem names the
+  // training. Reporting it under every training made one training's orphan read
+  // as three trainings' holes — and a no-score list longer than the hole it
+  // describes is a list people stop reading. A trace with no derivable prefix
+  // belongs to nobody and shows only under `--training all`.
+  const named = stem => { const seg = stem.split('--'); return seg.length > 1 ? seg[0] : null }
+  const inScope = t => want === 'all' || t === want
+
   for (const name of names) {
     const m = NAME_RE.exec(name)
-    if (!m) { rows.push({ name, verdict: 'unresolved', note: 'filename is not <slug>.<behavior|persona>.json' }); continue }
+    if (!m) {
+      if (want === 'all') rows.push({ name, verdict: 'unresolved', note: 'filename is not <slug>.<behavior|persona>.json' })
+      continue
+    }
     const [, stem, cls] = m
     const rel = resolveSlug(idx, stem)
-    if (!rel) { rows.push({ name, cls, verdict: 'unresolved', note: `no surface matches ${stem.split('--').pop()} — trace is orphaned` }); continue }
+    if (!rel) {
+      const claimed = named(stem)
+      if (want === 'all' || (claimed !== null && claimed === want)) {
+        rows.push({ name, cls, training: claimed, verdict: 'unresolved', note: `no surface matches ${stem.split('--').pop()} — trace is orphaned` })
+      }
+      continue
+    }
 
     const training = trainingOf(rel, findLinkers) || 'shared'
-    if (want !== 'all' && training !== want) continue
+    if (!inScope(training)) continue
 
     let trace
     try { trace = JSON.parse(fs.readFileSync(path.join(repo, SIM_DIR, name), 'utf8')) }

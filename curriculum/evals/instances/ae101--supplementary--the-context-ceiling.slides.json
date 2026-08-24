@@ -1,178 +1,241 @@
 {
-  "class": "slides",
-  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/supplementary/the-context-ceiling.md",
-  "body_sha": "81bec075e65185318a51888a1e2954af62ba2b67f55d6cdd49beff09a0777c56",
-  "verdict": "REVISE",
-  "training": "ae101",
-  "chunk_map": [
-    {"index": 0, "heading": "H1 + lede", "lines": "1-9"},
-    {"index": 1, "heading": "What \"efficient\" actually measures", "lines": "11-16"},
-    {"index": 2, "heading": "Put a number on it", "lines": "17-35"},
-    {"index": 3, "heading": "The craft: keep the window clean", "lines": "37-43"},
-    {"index": 4, "heading": "The craft: spend and route wisely", "lines": "45-53"},
-    {"index": 5, "heading": "More rules, worse edits", "lines": "55-59"},
-    {"index": 6, "heading": "The folklore: numbers that don't survive a second look", "lines": "61-69"},
-    {"index": 7, "heading": "Drivers of inefficient context: the durable ones", "lines": "71-77"},
-    {"index": 8, "heading": "Drivers of inefficient context: the loud ones", "lines": "79-85"},
-    {"index": 9, "heading": "Drivers of inefficient context: fanning out is its own bill", "lines": "87-89"},
-    {"index": 10, "heading": "One lever, two payoffs", "lines": "91-93"},
-    {"index": 11, "heading": "Now go clean your window", "lines": "95-101"},
-    {"index": 12, "heading": "Sources: quality and craft", "lines": "103-110"},
-    {"index": 13, "heading": "Sources: cost and other drivers", "lines": "112-119"}
-  ],
-  "rules_evaluated": [
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 1,
-      "rule_lead": "Referent resolution under a sequential deck read.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Sequential read of all 14 chunks: every pronoun/demonstrative resolves within-chunk or against an earlier-named term of the same file (e.g. chunk 8 line 79 'The other kind' resolves against chunk 7's 'two kinds' split; chunk 10 line 93 'a subagent doing your noisy reading' resolves against chunk 4's 'Subagent as a firewall'). 'Module 3' (chunk 4 line 49) is itself an unambiguous, fully-named referent under this rule — it does not fail resolution. (Its problem is temporal/positional validity across the file's documented multiple entry points, which is a rule 2 concern, filed there.) No never-named, no vague-with-history, no stranded-by-rechunk referent found otherwise.",
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 2,
-      "rule_lead": "Cross-file and positional callbacks.",
-      "verdict": "REVISE",
-      "chunks_flagged": [4],
-      "evidence": "Chunk 4 \"The craft: spend and route wisely\", line 49: \"You'll meet it properly, mechanism and trade-off both, in Module 3.\" This replaced \"...later in the training.\" in commit 1c9215cd (2026-08-20), which lands AFTER this file's slides class was last stamped (pin 3902c345, 2026-08-19, per the current Quality line) — this exact sentence has never been slides-judged before now. The maintainer Placement block (line ~135) documents THREE entry points for this one file: M2 close (final slide of `how-instructions-grow.md`), M3 module close (`earn-the-trust.md`), and M4 prework (`run-the-first-experiment.md`). Module order per `site/layouts/curriculum.js` TRAININGS['agentic-engineering-101'].modules: M1 getting-going, M2 plan-mode-done-right, M3 earn-the-trust, M4 run-the-first-experiment. The sentence is future tense ('You'll meet') and is only true from the M2-close entry point. At the M3-close entry point it describes the very module the reader is finishing as still forthcoming; at the M4-prework entry point it is flatly false — that reader has already completed M3, where subagents are in fact already used (`earn-the-trust.md` lines 23-24: 'Invoke curated ... skills ... each as a subagent, fresh context' and 'Split jobs between subagent and main thread', with the mechanism/trade-off detail linked from the module's own Prework at line 18). Rule 11 states the same principle directly: 'Cross-file phase refs → maintainer block only, file-qualified (body cross-file positional callbacks already banned per §2)' — a body sentence identifying content by its ordinal position in the cross-file module arc is exactly what §2 bans, whether phrased relatively ('the opening lecture') or by absolute ordinal ('Module 3'); the harm is the same, a claim whose truth depends on where in the arc the reader currently sits, and this file is placed at three different arc positions by design. Harm: a reader who arrives via the M4-prework placement — a position the maintainer block itself specifies — is told a primitive they already used two module-closes ago is still to come, which reads as an authoring error or makes them doubt whether what M3 gave them was 'the real' treatment. That is a trust cost on a page whose whole second half ('The folklore') is built to earn the reader's trust in its own accuracy.",
-      "fix_hint": "Name the primitive by its claim/mechanism rather than a module ordinal (e.g. drop the module reference and let 'You'll meet it properly, mechanism and trade-off both' stand alone, or name what the trade-off actually is in one clause) so the sentence holds at all three documented entry points; if a module pointer is wanted for the M2-close reading specifically, it belongs in the maintainer block per rule 11, not the shared body all three entry points render.",
-      "blocking": true
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 3,
-      "rule_lead": "Every backward reference points at a beat that exists.",
-      "verdict": "N/A",
-      "chunks_flagged": [],
-      "evidence": "This is a supplementary reference page, not a live-session exercise/lecture with a module beat set. Grepped for '(you did|saw|caught|just|built|wrote|made|ran)' across the body: the one hit, chunk 11 line 101 'the one you just let go of', is a generic present-tense metaphor about the reader's own hypothetical action (start-clean/compact), not a backward pointer to a specific prior module beat. No 'the X you did/saw' construction against a module exercise exists in the file. Rule has nothing to apply to.",
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 4,
-      "rule_lead": "Live-demo beats survive a text read.",
-      "verdict": "N/A",
-      "chunks_flagged": [],
-      "evidence": "No guess-before-reveal demo instruction anywhere in the file. The one interactive beat (chunk 2, 'Put a number on it', lines 17-35) is a compute-and-observe prompt (ask Claude to price the bloat), not a guess/predict-then-reveal beat, so there is no reveal-ordering to check.",
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 5,
-      "rule_lead": "No orphan slides.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Every chunk carries a self-standing claim even read cold: e.g. chunk 9 'Drivers of inefficient context: fanning out is its own bill' (lines 87-89), the shortest chunk in the file at 3 sentences, still states its own thesis (fan-out is a real but contested cost, treat as a ceiling not a default) rather than leaning on a wait-state or one context-dependent bullet. No chunk is a bare context-dependent fragment.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 6,
-      "rule_lead": "Header self-carries at projection distance.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Checked all 13 `##` headers against their own chunk body under the sequential read; each is a literally true summary (e.g. line 87 'fanning out is its own bill' matches its body's fan-out-cost claim; line 61 'The folklore: numbers that don't survive a second look' matches the two debunked round-number claims that follow). Closest call: line 45 'The craft: spend and route wisely' against its third bullet, 'Keep what you carry lean' (line 53) — reads more like restraint on input than active spend/routing, but the chunk's own framing sentence ('The rest are about what you do with the work once it's in front of you') covers it loosely enough that the header still holds as a fair summary.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 7,
-      "rule_lead": "LLM-cadence caps.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Grepped body (lines 1-120) for 'Not X. Not Y.' constructions (zero), anaphora/epistrophe triples (zero), self-grading superlatives (zero matches of the training/exercise praising its own usefulness), number+own-retraction pairs (zero — all figures, e.g. the $10/$2 comparison at line 33 and the 23-54% at line 9, are stated once with sourcing, never hedged-then-undercut), abstraction-noun stacks (zero; 'Absorption bottleneck' only appears in the backing block below the maintainer cut, out of body scope), and empty-leg verb triplets (zero). Closest call: line 41 'the cheapest quality upgrade there is, and the most skipped' is superlative-shaped but grades the /clear habit, not this page/training/exercise, so it does not match `check_writing.md §13`'s value-prop-leak target (a claim about the training's own usefulness).",
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 8,
-      "rule_lead": "Internal dialect never lands on a slide.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Grepped body for surface(noun)/firing/compendium/forcing function/beat/mood/Connections across lines 1-120. Two near-misses, both cleared: line 43 'beat a vector index' is the ordinary verb sense (outperform), not the dialect noun. Line 83's header 'The tool and MCP surface' and its body use 'surface' in the standard software-engineering sense (API surface / attack surface, the interface area a tool's descriptions occupy) — exactly the ordinary-engineering-usage carve-out the rule states, not the repo-internal 'writing surface' content-authoring sense it bans. No repo/maintainer vocabulary reaches the room.",
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 9,
-      "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Chunks 3, 4, 7, 8, 9 each carry 1-3 bolded move-names (e.g. **Start clean.**, **Pass paths, not paste.** on chunk 3; **The codebase the agent reads.**, **Thin memory, both directions.** on chunk 7), each within the 5-word handle cap. This file is a registered AE101 supplementary (`site/layouts/curriculum.js` TRAININGS[...].supplementaries), which §9 names directly as a lookup surface: 'consulted, not read through... bold is navigational.' Each named craft/driver move functions exactly as the rule's own reading-list/menu carve-out describes — bold marks the entry a scanning reader looks for, not decoration — so the flat per-slide budget is off for these list-shaped chunks; the ≲5-word handle cap still binds and every instance measured stays under it. Chunk 6's two folklore-quote handles ('\"Caching saves you 90 percent.\"' line 65, '\"Compaction is always lossy, so always hand off.\"' line 67) exceed 5 words but carry the maintainer accept-note at line 123 ('Future judges should score §9 N/A on that section rather than propose a trim') — scored per that accept-note, not re-flagged.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 10,
-      "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Verified the actual wrapping mechanism, not file-type precedent: `scripts/build-workbook.js` line 834 renders every registered supplementary as `<section class=\"phase phase--lecture\" id=\"supplementary-${slug}\">...</section>` — the exact `.phase--lecture` wrapper `buildDeckModel` (`site/layouts/slides.js`) requires to compose a section into the deck. `site/layouts/slides.js` line 205 additionally confirms supplementary ids get a labelled 'Supplementary' kind code in the deck's section index. This file is registered in `CR.TRAININGS['agentic-engineering-101'].supplementaries` (`site/layouts/curriculum.js`), so it reaches the composed deck under the S-kind divider; not omitted.",
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 11,
-      "rule_lead": "Numbering — position is computed, content ordinals are linted.",
-      "verdict": "N/A",
-      "chunks_flagged": [],
-      "evidence": "No hand-numbered `## Phase N:` or `## N.` step headers anywhere in the file (checked all 13 `##` headers, lines 11-112: none carries a leading ordinal or Phase/Step label). Rule's in-file numbering-lint has nothing to apply to. The cross-file 'Module 3' reference (chunk 4, line 49) is the shape rule 11's own clause routes to §2 ('Cross-file phase refs → maintainer block only... already banned per §2'); filed there as the REVISE, not duplicated here.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 12,
-      "rule_lead": "Page geometry dies at the cut; reading order survives.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Ran `node scripts/check-slide-deixis.js --file curriculum/trainings/agentic-engineering-101/supplementary/the-context-ceiling.md` → output: 'OK — 1 files, no page-geometry pointers across the slide cut.' Manual grep for above/below/further down/top of this/see below/this page found: line 5 'even far below the window's limit' (numeric-threshold sense, not page position — clean); line 15 'the rest of this page is about closing it' (whole-document self-reference, true in both layouts, not a positional pointer — clean); line 53 'loads at the top of each window' (describes context-window mechanics, not page position — clean); line 69 'check it against your own /context ... before you trust it' near 'this page' — same whole-document sense as line 15. No positional pointer across the cut found.",
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 13,
-      "rule_lead": "In-deck links work now; whether they EARN their place is open.",
-      "verdict": "N/A",
-      "chunks_flagged": [],
-      "evidence": "Grepped body (lines 1-120) for markdown links `](`: zero in-body prose links. The only links in the file are the two Sources sections (chunks 12-13), external https URLs, which the maintainer note explicitly frames as deliberate student-facing end-matter, not audit content. Nothing to inventory under this review surface.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 14,
-      "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/supplementary/the-context-ceiling.md` → output: 'files: 1   slides: 13   limits: 210 words / 6 bullets   oversized: 0' / '✓ every slide is within limits'. No accept-note needed.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 15,
-      "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
-      "verdict": "N/A",
-      "chunks_flagged": [],
-      "evidence": "Rule 15 governs the exercise-imperative vs lecture-claim heading split; its own measurement note scopes it to 'the 15 AE101 exercise files'. This file is neither an exercise nor a lecture but a supplementary reference page. Its own maintainer Meta note attests 'Reference register: declarative section headers, verb-led move lead-ins' as this surface's deliberate register, matching what the headers actually do (a mix of claim-headers like 'More rules, worse edits' and imperative/label headers like 'Put a number on it', 'Now go clean your window'). Rule's exercise/lecture split does not name this file type; scored N/A by scope, not by exemption.",
-      "fix_hint": null,
-      "blocking": false
-    }
-  ],
-  "blocking_findings_count": 1,
-  "todos_count": 0,
-  "notes": "Only substantive finding: rule 2, chunk 4 line 49, the 'later in the training' → 'in Module 3' edit (commit 1c9215cd, 2026-08-20) made a previously-vague forward pointer concrete, and concrete is where it breaks — this file has three documented entry points and the sentence is false at two of them. The prior slides instance for this file (body_sha a52da5...) passed rule 2 against the OLD 'later in the training' text and was correct to do so under that text; it never saw this edit, because the edit landed after that instance's pin. This is a fresh finding, not a re-litigation. Rule 9's craft/driver bolded-move-name chunks were judged against the lookup-surface carve-out (this file is a registered supplementary); rule 10 was verified against the actual build-workbook.js/slides.js wrapping mechanism rather than file-type precedent, closing the prior instance's 'not verified live' caveat for the presence question specifically (still not checked against a rendered browser session, but the source-level wrapping contract is unambiguous)."
+ "class": "slides",
+ "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/supplementary/the-context-ceiling.md",
+ "body_sha": "81bec075e65185318a51888a1e2954af62ba2b67f55d6cdd49beff09a0777c56",
+ "verdict": "REVISE",
+ "training": "ae101",
+ "chunk_map": [
+  {
+   "index": 0,
+   "heading": "H1 + lede",
+   "lines": "1-9"
+  },
+  {
+   "index": 1,
+   "heading": "What \"efficient\" actually measures",
+   "lines": "11-16"
+  },
+  {
+   "index": 2,
+   "heading": "Put a number on it",
+   "lines": "17-35"
+  },
+  {
+   "index": 3,
+   "heading": "The craft: keep the window clean",
+   "lines": "37-43"
+  },
+  {
+   "index": 4,
+   "heading": "The craft: spend and route wisely",
+   "lines": "45-53"
+  },
+  {
+   "index": 5,
+   "heading": "More rules, worse edits",
+   "lines": "55-59"
+  },
+  {
+   "index": 6,
+   "heading": "The folklore: numbers that don't survive a second look",
+   "lines": "61-69"
+  },
+  {
+   "index": 7,
+   "heading": "Drivers of inefficient context: the durable ones",
+   "lines": "71-77"
+  },
+  {
+   "index": 8,
+   "heading": "Drivers of inefficient context: the loud ones",
+   "lines": "79-85"
+  },
+  {
+   "index": 9,
+   "heading": "Drivers of inefficient context: fanning out is its own bill",
+   "lines": "87-89"
+  },
+  {
+   "index": 10,
+   "heading": "One lever, two payoffs",
+   "lines": "91-93"
+  },
+  {
+   "index": 11,
+   "heading": "Now go clean your window",
+   "lines": "95-101"
+  },
+  {
+   "index": 12,
+   "heading": "Sources: quality and craft",
+   "lines": "103-110"
+  },
+  {
+   "index": 13,
+   "heading": "Sources: cost and other drivers",
+   "lines": "112-119"
+  }
+ ],
+ "rules_evaluated": [
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 1,
+   "rule_lead": "Referent resolution under a sequential deck read.",
+   "verdict": "PASS",
+   "chunks_flagged": [],
+   "evidence": "Sequential read of all 14 chunks: every pronoun/demonstrative resolves within-chunk or against an earlier-named term of the same file (e.g. chunk 8 line 79 'The other kind' resolves against chunk 7's 'two kinds' split; chunk 10 line 93 'a subagent doing your noisy reading' resolves against chunk 4's 'Subagent as a firewall'). 'Module 3' (chunk 4 line 49) is itself an unambiguous, fully-named referent under this rule — it does not fail resolution. (Its problem is temporal/positional validity across the file's documented multiple entry points, which is a rule 2 concern, filed there.) No never-named, no vague-with-history, no stranded-by-rechunk referent found otherwise.",
+   "fix_hint": null,
+   "blocking": true
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 2,
+   "rule_lead": "Cross-file and positional callbacks.",
+   "verdict": "REVISE",
+   "chunks_flagged": [
+    4
+   ],
+   "evidence": "Chunk 4 \"The craft: spend and route wisely\", line 49: \"You'll meet it properly, mechanism and trade-off both, in Module 3.\" This replaced \"...later in the training.\" in commit 1c9215cd (2026-08-20), which lands AFTER this file's slides class was last stamped (pin 3902c345, 2026-08-19, per the current Quality line) — this exact sentence has never been slides-judged before now. The maintainer Placement block (line ~135) documents THREE entry points for this one file: M2 close (final slide of `how-instructions-grow.md`), M3 module close (`earn-the-trust.md`), and M4 prework (`run-the-first-experiment.md`). Module order per `site/layouts/curriculum.js` TRAININGS['agentic-engineering-101'].modules: M1 getting-going, M2 plan-mode-done-right, M3 earn-the-trust, M4 run-the-first-experiment. The sentence is future tense ('You'll meet') and is only true from the M2-close entry point. At the M3-close entry point it describes the very module the reader is finishing as still forthcoming; at the M4-prework entry point it is flatly false — that reader has already completed M3, where subagents are in fact already used (`earn-the-trust.md` lines 23-24: 'Invoke curated ... skills ... each as a subagent, fresh context' and 'Split jobs between subagent and main thread', with the mechanism/trade-off detail linked from the module's own Prework at line 18). Rule 11 states the same principle directly: 'Cross-file phase refs → maintainer block only, file-qualified (body cross-file positional callbacks already banned per §2)' — a body sentence identifying content by its ordinal position in the cross-file module arc is exactly what §2 bans, whether phrased relatively ('the opening lecture') or by absolute ordinal ('Module 3'); the harm is the same, a claim whose truth depends on where in the arc the reader currently sits, and this file is placed at three different arc positions by design. Harm: a reader who arrives via the M4-prework placement — a position the maintainer block itself specifies — is told a primitive they already used two module-closes ago is still to come, which reads as an authoring error or makes them doubt whether what M3 gave them was 'the real' treatment. That is a trust cost on a page whose whole second half ('The folklore') is built to earn the reader's trust in its own accuracy.",
+   "fix_hint": "Name the primitive by its claim/mechanism rather than a module ordinal (e.g. drop the module reference and let 'You'll meet it properly, mechanism and trade-off both' stand alone, or name what the trade-off actually is in one clause) so the sentence holds at all three documented entry points; if a module pointer is wanted for the M2-close reading specifically, it belongs in the maintainer block per rule 11, not the shared body all three entry points render.",
+   "blocking": true
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 3,
+   "rule_lead": "Every backward reference points at a beat that exists.",
+   "verdict": "N/A",
+   "chunks_flagged": [],
+   "evidence": "This is a supplementary reference page, not a live-session exercise/lecture with a module beat set. Grepped for '(you did|saw|caught|just|built|wrote|made|ran)' across the body: the one hit, chunk 11 line 101 'the one you just let go of', is a generic present-tense metaphor about the reader's own hypothetical action (start-clean/compact), not a backward pointer to a specific prior module beat. No 'the X you did/saw' construction against a module exercise exists in the file. Rule has nothing to apply to.",
+   "fix_hint": null,
+   "blocking": true
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 4,
+   "rule_lead": "Live-demo beats survive a text read.",
+   "verdict": "N/A",
+   "chunks_flagged": [],
+   "evidence": "No guess-before-reveal demo instruction anywhere in the file. The one interactive beat (chunk 2, 'Put a number on it', lines 17-35) is a compute-and-observe prompt (ask Claude to price the bloat), not a guess/predict-then-reveal beat, so there is no reveal-ordering to check.",
+   "fix_hint": null,
+   "blocking": true
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 5,
+   "rule_lead": "No orphan slides.",
+   "verdict": "PASS",
+   "chunks_flagged": [],
+   "evidence": "Every chunk carries a self-standing claim even read cold: e.g. chunk 9 'Drivers of inefficient context: fanning out is its own bill' (lines 87-89), the shortest chunk in the file at 3 sentences, still states its own thesis (fan-out is a real but contested cost, treat as a ceiling not a default) rather than leaning on a wait-state or one context-dependent bullet. No chunk is a bare context-dependent fragment.",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 6,
+   "rule_lead": "Header self-carries at projection distance.",
+   "verdict": "PASS",
+   "chunks_flagged": [],
+   "evidence": "Checked all 13 `##` headers against their own chunk body under the sequential read; each is a literally true summary (e.g. line 87 'fanning out is its own bill' matches its body's fan-out-cost claim; line 61 'The folklore: numbers that don't survive a second look' matches the two debunked round-number claims that follow). Closest call: line 45 'The craft: spend and route wisely' against its third bullet, 'Keep what you carry lean' (line 53) — reads more like restraint on input than active spend/routing, but the chunk's own framing sentence ('The rest are about what you do with the work once it's in front of you') covers it loosely enough that the header still holds as a fair summary.",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 7,
+   "rule_lead": "LLM-cadence caps.",
+   "verdict": "PASS",
+   "chunks_flagged": [],
+   "evidence": "Grepped body (lines 1-120) for 'Not X. Not Y.' constructions (zero), anaphora/epistrophe triples (zero), self-grading superlatives (zero matches of the training/exercise praising its own usefulness), number+own-retraction pairs (zero — all figures, e.g. the $10/$2 comparison at line 33 and the 23-54% at line 9, are stated once with sourcing, never hedged-then-undercut), abstraction-noun stacks (zero; 'Absorption bottleneck' only appears in the backing block below the maintainer cut, out of body scope), and empty-leg verb triplets (zero). Closest call: line 41 'the cheapest quality upgrade there is, and the most skipped' is superlative-shaped but grades the /clear habit, not this page/training/exercise, so it does not match `check_writing.md §13`'s value-prop-leak target (a claim about the training's own usefulness).",
+   "fix_hint": null,
+   "blocking": true
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 8,
+   "rule_lead": "Internal dialect never lands on a slide.",
+   "verdict": "PASS",
+   "chunks_flagged": [],
+   "evidence": "Grepped body for surface(noun)/firing/compendium/forcing function/beat/mood/Connections across lines 1-120. Two near-misses, both cleared: line 43 'beat a vector index' is the ordinary verb sense (outperform), not the dialect noun. Line 83's header 'The tool and MCP surface' and its body use 'surface' in the standard software-engineering sense (API surface / attack surface, the interface area a tool's descriptions occupy) — exactly the ordinary-engineering-usage carve-out the rule states, not the repo-internal 'writing surface' content-authoring sense it bans. No repo/maintainer vocabulary reaches the room.",
+   "fix_hint": null,
+   "blocking": true
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 9,
+   "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
+   "verdict": "PASS",
+   "chunks_flagged": [],
+   "evidence": "Chunks 3, 4, 7, 8, 9 each carry 1-3 bolded move-names (e.g. **Start clean.**, **Pass paths, not paste.** on chunk 3; **The codebase the agent reads.**, **Thin memory, both directions.** on chunk 7), each within the 5-word handle cap. This file is a registered AE101 supplementary (`site/layouts/curriculum.js` TRAININGS[...].supplementaries), which §9 names directly as a lookup surface: 'consulted, not read through... bold is navigational.' Each named craft/driver move functions exactly as the rule's own reading-list/menu carve-out describes — bold marks the entry a scanning reader looks for, not decoration — so the flat per-slide budget is off for these list-shaped chunks; the ≲5-word handle cap still binds and every instance measured stays under it. Chunk 6's two folklore-quote handles ('\"Caching saves you 90 percent.\"' line 65, '\"Compaction is always lossy, so always hand off.\"' line 67) exceed 5 words but carry the maintainer accept-note at line 123 ('Future judges should score §9 N/A on that section rather than propose a trim') — scored per that accept-note, not re-flagged.",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 10,
+   "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
+   "verdict": "PASS",
+   "chunks_flagged": [],
+   "evidence": "Verified the actual wrapping mechanism, not file-type precedent: `scripts/build-workbook.js` line 834 renders every registered supplementary as `<section class=\"phase phase--lecture\" id=\"supplementary-${slug}\">...</section>` — the exact `.phase--lecture` wrapper `buildDeckModel` (`site/layouts/slides.js`) requires to compose a section into the deck. `site/layouts/slides.js` line 205 additionally confirms supplementary ids get a labelled 'Supplementary' kind code in the deck's section index. This file is registered in `CR.TRAININGS['agentic-engineering-101'].supplementaries` (`site/layouts/curriculum.js`), so it reaches the composed deck under the S-kind divider; not omitted.",
+   "fix_hint": null,
+   "blocking": true
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 11,
+   "rule_lead": "Numbering — position is computed, content ordinals are linted.",
+   "verdict": "N/A",
+   "chunks_flagged": [],
+   "evidence": "No hand-numbered `## Phase N:` or `## N.` step headers anywhere in the file (checked all 13 `##` headers, lines 11-112: none carries a leading ordinal or Phase/Step label). Rule's in-file numbering-lint has nothing to apply to. The cross-file 'Module 3' reference (chunk 4, line 49) is the shape rule 11's own clause routes to §2 ('Cross-file phase refs → maintainer block only... already banned per §2'); filed there as the REVISE, not duplicated here.",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 12,
+   "rule_lead": "Page geometry dies at the cut; reading order survives.",
+   "verdict": "PASS",
+   "chunks_flagged": [],
+   "evidence": "Ran `node scripts/check-slide-deixis.js --file curriculum/trainings/agentic-engineering-101/supplementary/the-context-ceiling.md` → output: 'OK — 1 files, no page-geometry pointers across the slide cut.' Manual grep for above/below/further down/top of this/see below/this page found: line 5 'even far below the window's limit' (numeric-threshold sense, not page position — clean); line 15 'the rest of this page is about closing it' (whole-document self-reference, true in both layouts, not a positional pointer — clean); line 53 'loads at the top of each window' (describes context-window mechanics, not page position — clean); line 69 'check it against your own /context ... before you trust it' near 'this page' — same whole-document sense as line 15. No positional pointer across the cut found.",
+   "fix_hint": null,
+   "blocking": true
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 13,
+   "rule_lead": "In-deck links work now; whether they EARN their place is open.",
+   "verdict": "N/A",
+   "chunks_flagged": [],
+   "evidence": "Grepped body (lines 1-120) for markdown links `](`: zero in-body prose links. The only links in the file are the two Sources sections (chunks 12-13), external https URLs, which the maintainer note explicitly frames as deliberate student-facing end-matter, not audit content. Nothing to inventory under this review surface.",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 14,
+   "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
+   "verdict": "PASS",
+   "chunks_flagged": [],
+   "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/supplementary/the-context-ceiling.md` → output: 'files: 1   slides: 13   limits: 210 words / 6 bullets   oversized: 0' / '✓ every slide is within limits'. No accept-note needed.",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 15,
+   "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
+   "verdict": "N/A",
+   "chunks_flagged": [],
+   "evidence": "Rule 15 governs the exercise-imperative vs lecture-claim heading split; its own measurement note scopes it to 'the 15 AE101 exercise files'. This file is neither an exercise nor a lecture but a supplementary reference page. Its own maintainer Meta note attests 'Reference register: declarative section headers, verb-led move lead-ins' as this surface's deliberate register, matching what the headers actually do (a mix of claim-headers like 'More rules, worse edits' and imperative/label headers like 'Put a number on it', 'Now go clean your window'). Rule's exercise/lecture split does not name this file type; scored N/A by scope, not by exemption.",
+   "fix_hint": null,
+   "blocking": false
+  }
+ ],
+ "blocking_findings_count": 1,
+ "todos_count": 0,
+ "notes": "Only substantive finding: rule 2, chunk 4 line 49, the 'later in the training' → 'in Module 3' edit (commit 1c9215cd, 2026-08-20) made a previously-vague forward pointer concrete, and concrete is where it breaks — this file has three documented entry points and the sentence is false at two of them. The prior slides instance for this file (body_sha a52da5...) passed rule 2 against the OLD 'later in the training' text and was correct to do so under that text; it never saw this edit, because the edit landed after that instance's pin. This is a fresh finding, not a re-litigation. Rule 9's craft/driver bolded-move-name chunks were judged against the lookup-surface carve-out (this file is a registered supplementary); rule 10 was verified against the actual build-workbook.js/slides.js wrapping mechanism rather than file-type precedent, closing the prior instance's 'not verified live' caveat for the presence question specifically (still not checked against a rendered browser session, but the source-level wrapping contract is unambiguous).",
+ "resolution": {
+  "settled": "refuted",
+  "at": "534a5e84",
+  "note": "Filed, refuted, row stamped PASS (verify-refuted) in 534a5e84. The refuters' reasoning was not carried into any tracked file, so the findings below are the original judge's read, not a live defect. Re-file only on fresh evidence against the current body."
+ }
 }

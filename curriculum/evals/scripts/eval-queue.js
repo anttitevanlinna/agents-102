@@ -99,10 +99,15 @@ function collect(repo, io, want) {
   const scope = []
   const unowned = []
   const unreadable = []
+  // Counted here, not from buildUniverse at the call site: the board prints this
+  // under a header naming ONE training, so the universe-wide length read as that
+  // training's own size and inflated every coverage claim quoting it.
+  let scanned = 0
   for (const rel of buildUniverse(repo)) {
     const training = trainingOf(rel, findLinkers, want === 'all' ? null : want)
     if (!training) { unowned.push(rel); continue }
     if (want !== 'all' && training !== want) continue
+    scanned++
     const r = scanFile(rel, io)
     if (!r) { unreadable.push(rel); continue }
     const type = typeOf(rel)
@@ -126,7 +131,7 @@ function collect(repo, io, want) {
       driftRules: r.driftRules || {},
     })
   }
-  return { items, scope, unowned, unreadable }
+  return { items, scope, unowned, unreadable, scanned }
 }
 
 // Cross_module stamps every module in the set, so N modules owing one re-run
@@ -266,8 +271,7 @@ function main(argv) {
   const types = (arg('--type', null) || '').split(',').filter(Boolean)
   const io = makeIo(repo)
 
-  let { items, scope, unowned, unreadable } = collect(repo, io, want)
-  const scanned = buildUniverse(repo).length
+  let { items, scope, unowned, unreadable, scanned } = collect(repo, io, want)
   if (types.length) items = items.filter(it => types.includes(it.type))
   if (reason) {
     items = items

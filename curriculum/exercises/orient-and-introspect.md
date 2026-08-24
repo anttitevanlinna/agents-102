@@ -65,8 +65,8 @@ Run `/context` to see how much of the window is used and what fills it.
 
 **Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** All bullet leads de-bolded to plain bullets; no named laws or coined terms in this body, so no handles kept. Widget chrome (`**Time:**`, `**Session**`, `**What you do:**`, `**What you build:**`, `**The point:**`) and the blockquote callout untouched, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Wording near-verbatim; no claims added or cut.
 
-**Quality:** compendium-audited 2026-08-19 (writing@1480362 story@a7f3966 technical@1480362 behavior@1480362 pedagogy@1480362 strategy@1480362 slides@1480362)
-- judges @a7f3966: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-24 (writing@1480362 story@5df71aa6 technical@1480362 behavior@1480362 pedagogy@1480362 strategy@1480362 slides@1480362)
+- judges @5df71aa6: writing PASS, story PASS (drift-recheck), technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 **Meta (trainer):**
 - **Primary Bloom's level:** Analyze (read Claude's self-report against `/context`).
 - **Atomic — no phase markers.** One conversation with the agent; the interrogation has no seam to cut on. Line 3 is authored, not generated.

@@ -20,7 +20,7 @@ The one trainer doc. **Start here** once; the module tab open during each sittin
 
 **Prep.** The TTT was the prep. Keep its artefacts (rules file, branches, `task.md`, transcripts): they are your demo starting states, listed per tab. Before each sitting, re-run only the beats you fumbled, then walk the prompt chain against the tab. Lectures have a floor: reading the projected slide aloud is acceptable delivery — the bar is fielding one question.
 
-<!--flag:module:spot-gaps-build-the-loop-->**Two-day cohort schedule.** Default rhythm: 08:30 start, 1h15 lunch, 20-min breaks. Commitments: M1–M3 Day 1, M4–M6 Day 2, lunch between M5 and M6 so both async sessions produce something M6 can read.
+<!--flag:module:spot-gaps-build-the-loop-->**Two-day cohort schedule.** M1–M3 Day 1, M4–M6 Day 2, lunch between M5 and M6 so both async sessions produce something M6 can read.
 
 | Day 1 | Block |
 |---|---|
@@ -68,7 +68,7 @@ Don't split M4 across the days. The M1-M2-M4 / M5-M3-M6 reorder exists; it's a c
 
 ### M1 — Getting going + context
 
-**Slot.** 2-day cohort: Day 1, 08:30–10:30 (2h). Four-sitting track: sitting 1, 2h. Thinking effort `high`.
+**Slot.** 2-day cohort: Day 1 (2h). Four-sitting track: sitting 1, 2h. Thinking effort `high`.
 
 **Runtime map.**
 
@@ -90,7 +90,7 @@ Don't split M4 across the days. The M1-M2-M4 / M5-M3-M6 reorder exists; it's a c
 
 ### M2 — Plan mode, done right
 
-**Slot.** 2-day cohort: Day 1, 10:50–12:50 (2h, straight through). Four-sitting track: sitting 2, 2h. **Runs 7 min past its slot.** Thinking effort `medium`.
+**Slot.** 2-day cohort: Day 1 (2h, straight through). Four-sitting track: sitting 2, 2h. Thinking effort `medium`.
 
 **Runtime map.**
 
@@ -109,7 +109,7 @@ Don't split M4 across the days. The M1-M2-M4 / M5-M3-M6 reorder exists; it's a c
 
 ### M3 — Earn the trust
 
-**Slot.** Day 1, 14:05–16:05 (2h). Closes with the M4 task-pick homework.
+**Slot.** Day 1 (2h). Closes with the M4 task-pick homework.
 
 **Runtime map.**
 
@@ -130,7 +130,7 @@ Don't split M4 across the days. The M1-M2-M4 / M5-M3-M6 reorder exists; it's a c
 
 ### M4 — Run the first experiment
 
-**Slot.** 2-day cohort: Day 2, 08:30–10:30 (2h). Four-sitting track: sitting 3, 2h. Phase 1 is a 2-minute confirm because the task came in as homework.
+**Slot.** 2-day cohort: Day 2 (2h). Four-sitting track: sitting 3, 2h.
 
 **Runtime map.**
 
@@ -149,7 +149,7 @@ Don't split M4 across the days. The M1-M2-M4 / M5-M3-M6 reorder exists; it's a c
 
 ### M5 — Learn from the test, re-send packaged
 
-**Slot.** 2-day cohort: Day 2, 10:50–12:50 (2h; the re-send fires at close and runs through lunch). Four-sitting track: sitting 4, the finale. **Runs about 16 min past 2h by design; plan for it, don't cut for it.** Book 2h15 if you can; if not, end on the gate lecture's last landed slide and point at the rest. Start the fork the moment the room settles.
+**Slot.** 2-day cohort: Day 2 (2h). Four-sitting track: sitting 4, the finale.
 
 **Runtime map.**
 
@@ -170,7 +170,7 @@ Don't split M4 across the days. The M1-M2-M4 / M5-M3-M6 reorder exists; it's a c
 
 ### M6 — Spot gaps, build the loop
 
-**Slot.** Day 2, 14:05–16:05 (2h). Lecture-dense by design.
+**Slot.** Day 2 (2h). Lecture-dense by design.
 
 **Runtime map.**
 
@@ -185,4 +185,4 @@ Don't split M4 across the days. The M1-M2-M4 / M5-M3-M6 reorder exists; it's a c
 </section>
 <!--/flag:module:spot-gaps-build-the-loop-->
 
-<!-- maintainer — tab contract: every module tab and its nav link sit inside a matching `flag:module:<slug>` pair, so a cut's handbook carries a tab exactly when the cut runs that module. build-workbook.js resolves this file from the parent contentKey and applies the flags against the cut's own module list. A new tab needs its flag pair in BOTH the nav strip and the section. The Start here tab's two-day schedule is keyed on `module:spot-gaps-build-the-loop` (M6 = six-module sentinel); the `no-module:` branch carries the weekly-sittings contract and the between-sittings chain. The Four-sitting paragraphs on M2/M4/M5 are unflagged on purpose: flags do not nest, and the parser throws on the inner pair. Runtime maps are placeholders expanded from `scripts/calculate-time.js`; no tab states a total or verdict of its own. Scope rule (2026-08-23): Slot, runtime map, mood Check/Fix, verbatim push-backs, gotchas, cut order, demo state. No Flow, no exercise goals, no Big idea — the projected workbook page carries those. -->
+<!-- maintainer — tab contract: every module tab and its nav link sit inside a matching `flag:module:<slug>` pair, so a cut's handbook carries a tab exactly when the cut runs that module. build-workbook.js resolves this file from the parent contentKey and applies the flags against the cut's own module list. A new tab needs its flag pair in BOTH the nav strip and the section. The Start here tab's two-day schedule is keyed on `module:spot-gaps-build-the-loop` (M6 = six-module sentinel); the `no-module:` branch carries the weekly-sittings contract and the between-sittings chain. The Four-sitting paragraphs on M2/M4/M5 are unflagged on purpose: flags do not nest, and the parser throws on the inner pair. Runtime maps are placeholders expanded from `scripts/calculate-time.js`; no tab states a total or verdict of its own. Scope rule (2026-08-23): Slot, runtime map, mood Check/Fix, verbatim push-backs, gotchas, cut order, demo state. No Flow, no exercise goals, no Big idea — the projected workbook page carries those. Slot lines state day + duration only ("Day 1 (2h)"), never clock time — the Start-here schedule tables are the one place a reshuffle gets edited; a clock time repeated on a tab drifts the next time the tables move (2026-08-24). Same reasoning kills a Slot line restating a runtime-map overrun number ("runs N min past") once the map below it computes OVER/FITS, or a Slot line stating Flow-level phase timing the workbook page already owns. -->

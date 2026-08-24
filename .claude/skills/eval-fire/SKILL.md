@@ -14,6 +14,15 @@ Fires one eval class against one or more curriculum files. The class determines 
 - **Triaging what still owes a judge** — `npm run evals:queue` (`curriculum/evals/scripts/eval-queue.js`) walks the universe and derives every (file, class) pair still owing, from each file's own Quality pins.
 - **High-stakes story sweep:** `/eval-fire story --personas 3` runs the audience triangle (mid-layer / opinionated senior / fast operator). Default is single canonical persona; the flag is opt-in for cohort-imminent or sponsor-critical files.
 - **NOT** for a full ship-time audit — that's `/curriculum-pre-ship-audit`, which dispatches all four classes in parallel and adds source-verify + capability-check + Quality-tag check on top.
+- **NOT for clearing the queue.** More than a handful of (file, class) pairs → `.claude/workflows/eval-sweep.js`, below.
+
+## Clearing a queue: use the workflow, do not hand-write the dispatch
+
+`Workflow({scriptPath: '.claude/workflows/eval-sweep.js', args: {items, confirm, sets}})`, where `items` is `eval-queue.js --training <t> --json` with a per-class `pins` map attached. It fires one judge per pair, adversarially verifies every **blocking** finding with two lenses, and returns what survived plus what died, named, so a re-fire targets the deaths rather than the set.
+
+**Do not write a fresh dispatch script per sweep.** Six were hand-built in one 2026-08-24 session and every copy drifted from the one before it: one lost the read-only clause and five verdicts died to a sibling write-race; one crashed on a refuter that returned null and lost a whole pipeline's adjudication; one forced a binary `PASS|REVISE` schema, so a judge with a non-blocking observation had to report REVISE and the orchestrator read a TODO as a gate. Agent-written dispatch drifts exactly the way agent-written prose does, and the remedy is the same one: a single artefact, edited in place. The workflow carries the read-only clause, the null-refuter guard, the `PASS_WITH_TODOS` rung, and the bullet-safe diff warning; a copy carries whichever of those the copier remembered.
+
+**Judges are read-only, no exceptions** (project `curriculum/CLAUDE.md` § *Parallel subagents*). The orchestrator applies findings after every class on a file has returned, then stamps — Step 6.5's ordering, which the workflow does not do for you.
 
 ## What it does NOT do
 

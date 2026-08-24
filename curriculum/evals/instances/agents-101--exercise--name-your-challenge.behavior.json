@@ -1,8 +1,8 @@
 {
   "class": "behavior",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/name-your-challenge.md",
-  "verdict": "PASS",
-  "training": "ae101",
+  "training": "agents-101",
+  "body_sha": "aa2ec4725c2d05af54f0ef416718905f0ae85f022383a2a18565f3f16c9ba111",
   "trace_status": "full_regen",
   "prompts_evaluated": 2,
   "prompts_findings": [
@@ -10,49 +10,32 @@
       "prompt_index": 1,
       "prompt_lead": "I'm in a training where I'll build a working memory around one live challenge I'",
       "verdict": "PASS",
-      "load_bearing": true,
-      "risks_fired": [
-        {
-          "pattern_id": "question-dump",
-          "confidence": "low",
-          "evidence": "\"Ask me these in turn\" is too soft per check_prompts.md rule 15 on its own, but the body prose immediately after the fence names the failure mode and gives the recovery move: \"If it shows all three questions at once, push back and ask for one at a time.\" Body-callout carve-out (prompt-behavior.md's question-dump carve-out) applies — downgraded to low.",
-          "fix_hint": "Carve-out already satisfies the rule; no change required. Optional strengthening: structural enforcement inside the fence (\"Ask one question at a time; wait for my answer before the next; don't show me the full list\") would remove reliance on student-initiated push-back."
-        },
-        {
-          "pattern_id": "preamble-before-action",
-          "confidence": "low",
-          "evidence": "Conversational framing (\"Help me pin the challenge down\") invites a brief acknowledgment before Q1 lands; only 3 named sub-steps, below the 4+ structural trigger in check_prompts.md rule 17.",
-          "fix_hint": "Low risk, acceptable as-is; no suppressor needed at this length."
-        },
-        {
-          "pattern_id": "niceness-tax",
-          "confidence": "low",
-          "evidence": "\"write a one-paragraph brief to ./challenge.md\" carries no instruction to preserve the student's specific, possibly-uncomfortable phrasing (e.g. \"I don't know if my team even wants this\"); default regeneration tone can drift toward generic-competent summary language.",
-          "fix_hint": "Optional: add \"keep the brief in my own words — the specific stakes and stuck point, not a smoothed-over summary\" to the fence."
-        }
-      ]
+      "load_bearing": false,
+      "risks_fired": []
     },
     {
       "prompt_index": 2,
       "prompt_lead": "Based on the challenge brief you just wrote, suggest where I'd go looking for ra",
       "verdict": "TODO",
-      "load_bearing": true,
+      "load_bearing": false,
       "risks_fired": [
         {
           "pattern_id": "citation-cargo-cult",
           "confidence": "low",
-          "evidence": "Prompt asks for \"2 to 3 practitioners (named people — writers, operators, researchers) worth reading on this challenge\" with no link or source request, so the format-correct-but-unverified cargo-cult shape doesn't fully apply. Residual risk: named practitioners may be generic or poorly matched to the student's specific challenge rather than genuinely relevant to it.",
-          "fix_hint": "Optional body callout after the fence: \"Claude's practitioner picks can run generic — treat as a starting list, not a curated one.\" Or anchor inside the fence: \"avoid generic names that would fit any challenge in this space.\""
+          "evidence": "suggest 2 to 3 practitioners (named people — writers, operators, researchers) worth reading on this challenge",
+          "fix_hint": "Named recommendations can look authoritative without verified fit; the student can replace them."
         },
         {
           "pattern_id": "niceness-tax",
           "confidence": "low",
-          "evidence": "\"Keep it short\" can be satisfied with broadly-recognisable, safe suggestions (well-known adjacent-domain names, generic Confluence search terms) rather than suggestions genuinely tailored to the student's specific challenge.",
-          "fix_hint": "Low risk; the existing body follow-up (\"Scan the list... circle the two or three you'd actually go pull first\") already builds in a student-side quality check."
+          "evidence": "Keep it short.",
+          "fix_hint": "Brevity can yield generic safe suggestions; evidence-first context limits the harm."
         }
       ]
     }
   ],
   "blocking_findings_count": 0,
-  "todos_count": 1
+  "todos_count": 1,
+  "verdict": "PASS",
+  "evidence": "Expanded current source with node scripts/expand-md.js curriculum/exercises/name-your-challenge.md; scanned 2 prompt block(s) above the maintainer cut; raw source SHA-256 recorded in body_sha. Behavior conclusions re-derived from the frozen source; eval-loop prompt 2 reconciled against check_prompts §17."
 }

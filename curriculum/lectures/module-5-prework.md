@@ -123,5 +123,5 @@ That's it. No reading list. No ten-bullet rundown of every headline agent failur
 - Variant note: Mid-Management variant can add a closing paragraph — "if your organisation has AI policy but no verification discipline, which one actually catches the failure?" — pushing the ownership question. Skipped for Agents 101.
 - Facilitator briefing deferred.
 
-**Quality:** compendium-audited 2026-08-03 (writing@12fbd42 story@12fbd42 technical@5fc7188 behavior@5fc7188 pedagogy@3d8309c strategy@5fc7188 slides@12fbd42)
-- judges @12fbd42: writing PASS, story PASS, technical PASS (verify-refuted), behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-23 (writing@725101ec story@725101ec technical@725101ec behavior@5fc7188 pedagogy@ab36a5e6 strategy@5fc7188 slides@725101ec)
+- judges @ab36a5e6: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

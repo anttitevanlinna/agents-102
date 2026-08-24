@@ -131,8 +131,9 @@ The benchmark ran once. Thirty claims, four detectors, one judge. Now imagine th
 
 **Why one exercise, not two:** the benchmark is a single bounded activity with a four-phase internal arc (target + benchmark → detectors → scorer → judge). Adding a second exercise here would steal M6's Steering-eval beat. M5 stays focused on the benchmarking pattern; evals are M6's instrument.
 
-**Quality:** compendium-audited 2026-08-23 (writing@725101ec story@725101ec technical@725101ec behavior@725101ec pedagogy@725101ec strategy@725101ec slides@725101ec)
-- judges @725101ec: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-23 (writing@194c81b0 story@725101ec technical@725101ec behavior@725101ec pedagogy@725101ec strategy@725101ec slides@194c81b0)
+- judges @194c81b0: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+- cross_module @090407d3: PASS — set=[prework,getting-going,building-agent-systems,multi-agent-systems,security,output-quality,evaluations,personal-to-team,agents-building-agents]
 
 **Artefact contracts**
 | Artefact | Stable identifier | Produced by | Consumed by |

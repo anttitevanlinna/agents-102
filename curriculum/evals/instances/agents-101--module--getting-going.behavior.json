@@ -1,65 +1,33 @@
 {
   "class": "behavior",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agents-101/getting-going.md",
-  "verdict": "PASS",
   "training": "agents-101",
+  "body_sha": "abe73c681de3b7eecf317e7832a4ce553bbecaebb8010c3413c16c0bcefaf895",
+  "content_sha": "d4f48e3c8740c9e62454f59e1e1a35818a65eb2d1b8a79e3cfe6a99cc6f1eee7",
+  "verdict": "PASS",
   "trace_status": "full_regen",
   "prompts_evaluated": 2,
   "prompts_findings": [
     {
       "prompt_index": 1,
-      "prompt_lead": "Read `module-1/personal-brand-generation.md`. Then re-read what we did building ",
+      "prompt_sha": "08c8a7006bb887170e87dde7f85bb3ea93673eef213f4f9a696701d4705b7bc0",
+      "prompt_lead": "Start by reading the file. No plan or preamble.",
       "verdict": "PASS",
       "load_bearing": true,
-      "risks_fired": [
-        {
-          "pattern_id": "self-report-inflation",
-          "confidence": "low",
-          "evidence": "Run a retro: which moves landed, which fell flat, where context broke through, where the output stayed generic. Compare the rules file to the actual work. Sort each rule into keep, sharpen, or drop.",
-          "fix_hint": "Add an adversarial floor ('Assume the rules file is 30% wrong. Find which 30%') or a minimum-drop constraint ('If fewer than 2 drops, you are being charitable') to force the retro past RLHF charity."
-        },
-        {
-          "pattern_id": "self-audit-charity",
-          "confidence": "low",
-          "evidence": "Find what's still surface; don't defend the file as-is.",
-          "fix_hint": "The anti-defense instruction partially suppresses charity but doesn't structurally prevent it; pairing with an over-flag directive ('be harsher than necessary') or a fresh-session subagent audit of the rules file would close the gap."
-        },
-        {
-          "pattern_id": "preamble-before-action",
-          "confidence": "low",
-          "evidence": "Then re-read what we did building the site. Run a retro: which moves landed, which fell flat...",
-          "fix_hint": "Prepend 'Immediately read the file. No plan, no preamble.' to suppress preamble-before-action on a multi-step retro task."
-        },
-        {
-          "pattern_id": "niceness-tax",
-          "confidence": "low",
-          "evidence": "tell me in 2–3 lines: what got sharpened, what got added, what got dropped, and why.",
-          "fix_hint": "Replace open-ended summary with a structured output format: 'List: dropped (rule text + reason), sharpened (before → after), added (rule text + why missing).' — removes soft-framing room."
-        }
-      ]
+      "risks_fired": [],
+      "evidence": "The prompt names the existing personal rules file, requires an evidence-backed retro against the actual session, explicitly says not to defend it, and specifies overwrite-in-place plus a change report; the surrounding Debrief supplies the evidence-backed self-audit carve-out."
     },
     {
       "prompt_index": 2,
-      "prompt_lead": "Spawn a subagent to give an unbiased read on `module-1/site.html`. The subagent",
-      "verdict": "TODO",
+      "prompt_sha": "f8ca52b6ec5c296801b6b8f55ac262ef2cfc0adab09cda7e6f073ab3176d3314",
+      "prompt_lead": "Spawn a subagent to give an unbiased read on `module-1/site.html`.",
+      "verdict": "PASS",
       "load_bearing": true,
-      "risks_fired": [
-        {
-          "pattern_id": "self-report-inflation",
-          "confidence": "low",
-          "evidence": "Spawn a subagent to give an unbiased read on `module-1/site.html`. The subagent should read it cold, with no memory of building it.",
-          "fix_hint": "Instruct the subagent explicitly to treat every line as written by a stranger and flag the line that could appear on any professional's site unchanged — sharpens the cold-read framing structurally."
-        },
-        {
-          "pattern_id": "niceness-tax",
-          "confidence": "low",
-          "evidence": "Quote the one line that feels most uniquely this person (not the best line, the most UNIQUELY them).",
-          "fix_hint": "Add 'Do not qualify your generic pick. Quote it plain; do not add context about why it might be valid.' to remove hedging room on the generic-line call."
-        }
-      ]
+      "risks_fired": [],
+      "evidence": "The prompt requests a cold independent read and two contrasting verbatim lines; the surrounding body names the praise-order softening risk and tells the student to weigh their own judgment."
     }
   ],
   "blocking_findings_count": 0,
-  "todos_count": 1,
-  "rerun_note": "PASS after Agents 101 rebase and surgical prompt/body edits on 2026-05-04; body-callout/self-audit calibration applied where evidence-backed Debriefs are intentional."
+  "todos_count": 0,
+  "evidence": "Ran `node scripts/expand-md.js curriculum/trainings/agents-101/getting-going.md`; expanded output contained 2 prompt fences. Raw source SHA-256 is recorded in body_sha, expanded output SHA-256 in content_sha, and every finding has a current prompt_sha plus non-null evidence."
 }

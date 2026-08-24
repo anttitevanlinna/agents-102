@@ -1,0 +1,91 @@
+{
+  "class": "behavior",
+  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/personal-site-with-guardrails.md",
+  "training": "agents-101",
+  "body_sha": "c24ae6a4a7b58f92e09948323226e665e5b9cb1b9d8acb4ad622ca84c9f8c0fd",
+  "trace_status": "full_regen",
+  "prompts_evaluated": 6,
+  "prompts_findings": [
+    {
+      "prompt_index": 1,
+      "prompt_lead": "Build me a personal HTML one-pager site from the LinkedIn profile below. Save it",
+      "verdict": "PASS",
+      "load_bearing": false,
+      "risks_fired": []
+    },
+    {
+      "prompt_index": 2,
+      "prompt_lead": "Hey Claude — apply Donald Miller's StoryBrand framework to the COLLEAGUE-HELP SE",
+      "verdict": "TODO",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "overwrite-anxiety",
+          "confidence": "med",
+          "evidence": "After the fifth answer, regenerate module-1/site.html",
+          "fix_hint": "Regenerating a prior artifact without explicit overwrite can trigger a collision pause or duplicate."
+        }
+      ]
+    },
+    {
+      "prompt_index": 3,
+      "prompt_lead": "Use the strengths below as voice-shaping context for the site — letting them cha",
+      "verdict": "TODO",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "overwrite-anxiety",
+          "confidence": "med",
+          "evidence": "Then regenerate module-1/site.html.",
+          "fix_hint": "The canonical regeneration lacks explicit overwrite behavior."
+        }
+      ]
+    },
+    {
+      "prompt_index": 4,
+      "prompt_lead": "Hey Claude — apply anti-branding (Adam Grant's energy audit version) to my perso",
+      "verdict": "TODO",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "overwrite-anxiety",
+          "confidence": "med",
+          "evidence": "After step 4, regenerate module-1/site.html.",
+          "fix_hint": "The iterative rewrite can still trigger a new-file question."
+        }
+      ]
+    },
+    {
+      "prompt_index": 5,
+      "prompt_lead": "Look at the very first site you generated from just my LinkedIn profile, before ",
+      "verdict": "TODO",
+      "load_bearing": false,
+      "risks_fired": [
+        {
+          "pattern_id": "self-audit-charity",
+          "confidence": "low",
+          "evidence": "Find three specific claims you made in that version that turned out to be generic, empty, or wrong",
+          "fix_hint": "Concrete before/after claims constrain charitable review."
+        }
+      ]
+    },
+    {
+      "prompt_index": 6,
+      "prompt_lead": "Write a generation rules file at `module-1/personal-brand-generation.md` — a por",
+      "verdict": "TODO",
+      "load_bearing": false,
+      "risks_fired": [
+        {
+          "pattern_id": "self-report-inflation",
+          "confidence": "low",
+          "evidence": "summarize in 4–6 lines what's in the file",
+          "fix_hint": "The summary is checkable and followed by inspection."
+        }
+      ]
+    }
+  ],
+  "blocking_findings_count": 0,
+  "todos_count": 5,
+  "verdict": "PASS",
+  "evidence": "Expanded current source with node scripts/expand-md.js curriculum/exercises/personal-site-with-guardrails.md; scanned 6 prompt block(s) above the maintainer cut; raw source SHA-256 recorded in body_sha. Behavior conclusions re-derived from the frozen source; eval-loop prompt 2 reconciled against check_prompts §17."
+}

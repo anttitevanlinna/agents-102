@@ -193,3 +193,6 @@ Supporting research inline via prework: absorption bottleneck. Access-trust and 
 - **Append-vs-integrate on Phase 4.** Assumption-test should reshape the plans' confidence, not append a new "assumptions" paragraph. Prompt says so; watch the output.
 - **Plan-mode preamble bloat on Phase 3.** Prime students to scroll past.
 - **TODOs in the pattern catalog.** The catalog ships WIP. Where a pattern's Example field says `[TODO]`, the student invents one for their situation — that's the designed experience, not a bug. If students flag "this isn't filled in" as a problem, reframe: *"the scaffold is filled in — name, context, forces, solution, traps, people plan. The example is yours to write. That's the practitioner move."*
+
+**Quality:** compendium-audited 2026-08-24 (writing@725101ec story@725101ec technical@725101ec behavior@b865cc47 pedagogy@725101ec strategy@725101ec slides@725101ec)
+- judges @b865cc47: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

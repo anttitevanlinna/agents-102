@@ -29,3 +29,6 @@ You can try the same three prompts in your own session. The goal is not to memor
 **Trainer:** run the three prompts one at a time on the projected session and read each return out loud; the room watches. The self-run invitation lands later in the body, deliberately after the mechanism has been named (`check_lectures.md` §6).
 
 **Role in Module 4:** Short Claude Code demo before the risk lecture. Shows raw agent mechanics: tools available, tool selection via descriptions and schemas, text becoming action through runtime mediation. Keep it live when possible. If runtime answers vary, treat the variance as the lesson: tools are environment-specific, the loop shape is stable.
+
+**Quality:** compendium-audited 2026-08-23 (writing@725101ec story@725101ec technical@725101ec behavior@725101ec pedagogy@725101ec strategy@725101ec slides@725101ec)
+- judges @725101ec: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

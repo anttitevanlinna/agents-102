@@ -11,3 +11,6 @@ That is the first system boundary. Context tells the agent what world it is in. 
 **Time:** 5 minutes.
 
 **Role in Module 2:** Short trainer demo before the main memory exercise. Shows context + guardrail + schedule as the smallest visible agent system. Keep proposal-only unless runtime support and cohort permissions are verified.
+
+**Quality:** compendium-audited 2026-08-23 (writing@725101ec story@725101ec technical@725101ec behavior@725101ec pedagogy@725101ec strategy@725101ec slides@725101ec)
+- judges @725101ec: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

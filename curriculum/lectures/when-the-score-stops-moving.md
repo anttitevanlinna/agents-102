@@ -28,5 +28,5 @@ Created 2026-06-06 in the M1–M6 tmux-runner fix pass (finding C10). Not yet co
 
 **Source verification:** none owed. No external sources cited; the content is internal to the loop the student just ran.
 
-**Quality:** compendium-audited 2026-06-06 (writing@ade2ec9 story@ade2ec9 technical@ade2ec9 strategy@ade2ec9)
-- judges @ade2ec9: writing PASS, story PASS, technical PASS, behavior N/A (no-prompt-blocks), pedagogy N/A (lecture-not-a-module), strategy PASS
+**Quality:** compendium-audited 2026-08-23 (writing@725101ec story@725101ec technical@ab36a5e6 strategy@ade2ec9 slides@725101ec)
+- judges @ab36a5e6: writing PASS, story PASS, technical PASS, behavior N/A (no-prompt-blocks), pedagogy N/A (lecture-not-a-module), strategy PASS, slides PASS

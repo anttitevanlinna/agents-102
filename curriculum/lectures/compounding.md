@@ -52,7 +52,8 @@ Claude comes back with three pointed requests. Answer one. Let it update the pag
 **§6 carve-out, the answer must be theirs (checked 2026-08-20).** Logged in `pre-cohort-todos.md` as a lecture prompt owing the trainer-demo sweep. It is not: the prompt reads *"Look at the memory I just built"* and *"pull the missing insight out of my head"* — the student's own memory pages and the student's own head. A trainer demo returns the wrong machine's answer. The body now names the student's own memory beside the prompt, which is §6's tell. Leave it student-run.
 
 
-**Quality:** maintainer-reviewed 2026-04-29
+**Quality:** maintainer-reviewed 2026-08-23 (writing@725101ec story@725101ec technical@725101ec behavior@725101ec pedagogy@725101ec strategy@725101ec slides@725101ec)
+- judges @725101ec: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **Time:** 10 minutes.
 

@@ -19,5 +19,5 @@ A reference document that grows across the training. Each module that adds a new
 
 **TODO:** the sections listed here get written as each module's exercise stabilizes.
 
-**Quality:** compendium-audited 2026-05-03 (writing@bb9c1d5)
-- judges @bb9c1d5: writing PASS, story N/A (stub-no-content), technical N/A (stub-no-content), behavior N/A (no-student-prompt-blocks)
+**Quality:** compendium-audited 2026-08-23 (writing@725101ec pedagogy@725101ec strategy@725101ec slides@725101ec)
+- judges @725101ec: writing PASS, story N/A (stub-no-content), technical N/A (stub-no-content), behavior N/A (no-student-prompt-blocks), pedagogy PASS, strategy PASS, slides PASS

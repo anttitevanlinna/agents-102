@@ -21,3 +21,6 @@ Now: five minutes with Claude. The debrief.
 <!-- maintainer -->
 
 **Time:** 8 minutes.
+
+**Quality:** compendium-audited 2026-08-23 (writing@725101ec story@725101ec technical@725101ec behavior@725101ec pedagogy@725101ec strategy@725101ec slides@725101ec)
+- judges @725101ec: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

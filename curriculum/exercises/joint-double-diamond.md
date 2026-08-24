@@ -173,3 +173,6 @@ You do not graduate. You have a flywheel.
 - **Synthesis flattening.** The central synthesizer will smooth disagreements into averages. Nudge: *"Pick the stronger idea, name the rejected alternative, and explain why it lost."*
 - **Better-idea critique turning into a PowerPoint.** The test is not *is this alternative plausible?* — it's *does this beat the current selection, and what would have to be true this week?* Push: *"Name the better idea or concede the selection holds."*
 - **Pre-mortem ducking the social failure.** Agents will write technical failure stories because they're easier. Check all three stories: if the social-failure one reads generic, push: *"The social failure should name a specific person, role, or political fault line. Try again."*
+
+**Quality:** compendium-audited 2026-08-23 (writing@725101ec story@725101ec technical@725101ec behavior@194c81b0 pedagogy@725101ec strategy@725101ec slides@725101ec)
+- judges @194c81b0: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

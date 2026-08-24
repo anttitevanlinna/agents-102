@@ -173,3 +173,6 @@ This covers most observed fabrication patterns in LLM output. The five-category 
 - Facilitator notes (watch-fors above).
 - Decision point: thin Module 3 systems may not fabricate enough to teach. Fallback: add "blend with internet search for context" to Phase 1. Noted in plug points.
 - Variant note: Mid-Management variant can extend the Close — "who in your organisation is the domain expert for a given output? How do you make sure their expertise is encoded in the grounding rules?" — turning the loop into an org-design question.
+
+**Quality:** compendium-audited 2026-08-23 (writing@725101ec story@725101ec technical@725101ec behavior@725101ec pedagogy@725101ec strategy@725101ec slides@725101ec)
+- judges @725101ec: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

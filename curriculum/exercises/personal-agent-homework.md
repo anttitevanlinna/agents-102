@@ -112,5 +112,5 @@ A memory that sits there is a document. A memory that gets read by an agent on a
 **Capability check owed:**
 - Verify via `claude-code-guide` that a scheduled local task can reliably write HTML files to an arbitrary path inside the working directory (nothing sandboxed about `module-2/morning-agent/latest.html`). Also verify that `Run now` opens a session with full working-directory context including the root `CLAUDE.md`. Both assumed throughout Phase 4; neither should be left to training-day discovery.
 
-**Quality:** compendium-audited 2026-05-09 (behavior@56f9332)
-- judges @56f9332: writing grandfathered, story grandfathered, technical grandfathered, behavior PASS
+**Quality:** compendium-audited 2026-08-23 (behavior@725101ec pedagogy@725101ec strategy@725101ec slides@725101ec)
+- judges @725101ec: writing grandfathered, story grandfathered, technical grandfathered, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

@@ -135,3 +135,6 @@ Use the agent at the moment where context, judgment, repetition, or safe action 
 **Strategic role:** Converts the six-module capability arc into daily invocation habits. The student leaves with a trigger list, not just a sense of possibility.
 
 **Voice target:** practical, low-ceremony, action-forward. No productivity-hack energy.
+
+**Quality:** compendium-audited 2026-08-23 (writing@725101ec story@725101ec technical@725101ec behavior@725101ec pedagogy@725101ec strategy@725101ec slides@725101ec)
+- judges @725101ec: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

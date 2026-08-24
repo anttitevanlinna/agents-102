@@ -36,8 +36,8 @@ Same move: iterate if it's a topic restatement instead of a real call; save when
 
 - **Atomic — no phase markers.** One conversation; the second prompt appends to the same `crux.md` in the same session, so there is nothing to cut between them. Line 3 is authored, not generated.
 
-**Quality:** compendium-audited 2026-05-09 (behavior@56f9332)
-- judges @56f9332: writing grandfathered, story grandfathered, technical grandfathered, behavior PASS
+**Quality:** compendium-audited 2026-08-23 (behavior@725101ec pedagogy@725101ec strategy@725101ec slides@725101ec)
+- judges @725101ec: writing grandfathered, story grandfathered, technical grandfathered, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **Role in Module 3:** Opening exercise. Produces `./crux.md` with two sections — the crux (load-bearing obstacle) and the question (sharpest decision the crux blocks). Both are read by the retrievers, stances, and synthesizer in `three-retrievers-three-minds.md`.
 

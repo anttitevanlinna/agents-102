@@ -80,9 +80,9 @@ The sharing plan leaves the room and meets the organisation. What comes back fro
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-08-23 (writing@194c81b0 story@194c81b0 technical@725101ec behavior@725101ec pedagogy@194c81b0 strategy@725101ec slides@194c81b0)
-- judges @194c81b0: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
-- cross_module @194c81b0: PASS — set=[prework,getting-going,building-agent-systems,multi-agent-systems,security,output-quality,evaluations,personal-to-team,agents-building-agents]
+**Quality:** compendium-audited 2026-08-24 (writing@b865cc47 story@194c81b0 technical@725101ec behavior@725101ec pedagogy@194c81b0 strategy@b865cc47 slides@b865cc47)
+- judges @b865cc47: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+- cross_module @090407d3: PASS — set=[prework,getting-going,building-agent-systems,multi-agent-systems,security,output-quality,evaluations,personal-to-team,agents-building-agents]
 
 **Mood target:** Generous impulse — the student starts from one teammate's job, not an abstract rollout obligation.
 

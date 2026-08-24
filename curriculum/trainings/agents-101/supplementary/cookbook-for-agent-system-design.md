@@ -462,5 +462,5 @@ Add a recipe when the move is reliable enough that a working practitioner would 
 
 *(Quote drafted for Antti's voice; edit freely or swap.)*
 
-**Quality:** compendium-audited 2026-05-04 (technical@4ada935)
-- judges @4ada935: writing grandfathered, story grandfathered, technical PASS, behavior grandfathered
+**Quality:** compendium-audited 2026-08-23 (technical@ab36a5e6 pedagogy@ab36a5e6 strategy@ab36a5e6 slides@ab36a5e6)
+- judges @ab36a5e6: writing grandfathered, story grandfathered, technical PASS, behavior grandfathered, pedagogy PASS, strategy PASS, slides PASS

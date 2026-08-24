@@ -48,8 +48,8 @@ A whole module just showed you multi-agent works. Next Monday, you will be tempt
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-05-03 (writing@60b1b6c)
-- judges @60b1b6c: writing PASS, story grandfathered, technical grandfathered, behavior grandfathered
+**Quality:** compendium-audited 2026-08-24 (writing@ab36a5e6 story@b865cc47 pedagogy@725101ec strategy@725101ec slides@725101ec)
+- judges @b865cc47: writing PASS, story PASS, technical grandfathered, behavior grandfathered, pedagogy PASS, strategy PASS, slides PASS
 
 **Time:** 10 minutes.
 

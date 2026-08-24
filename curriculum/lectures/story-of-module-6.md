@@ -68,8 +68,8 @@ Antti
 
 **Slide deixis accepted:** "paragraphs above" (check_slides.md §12) — *"the framing I said, a few paragraphs above, we would cut"* points inside its own `## Things that went sideways` chunk, four paragraphs up on the same slide. Story lecture, read not projected; the geometry is true where it stands.
 
-**Quality:** compendium-audited 2026-08-19 (writing@6c8f1bba story@6c8f1bba technical@b3143a4 behavior@b3143a4 pedagogy@5fc7188 strategy@b3143a4 slides@6c8f1bba)
-- judges @6c8f1bba: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-24 (writing@1abb84c6 story@1abb84c6 technical@1abb84c6 behavior@b3143a4 pedagogy@1abb84c6 strategy@b3143a4 slides@1abb84c6)
+- judges @1abb84c6: writing PASS (drift-recheck), story PASS (drift-recheck), technical PASS (drift-recheck), behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS (drift-recheck)
 - source-verified 2026-05-25: Geoff Charles quote confirmed verbatim against ramp.md (practitioner direct, 2026-04-09); public X primary paywalled — attribution disposition open for maintainer (see source-verification block below)
 **Time:** 9 min at presentation pace. ~1050 words body. **Voice timing:** L3 framing line is read by the trainer aloud as setup; the body is then read as the memo, signed at close.
 

@@ -97,8 +97,8 @@ Ask Claude what this file could drive later.
 
 **Emphasis budget (`check_slides.md §9`):** no bolded handles in the body; all bullet leads plain. Widget chrome (`**Time:**`, `**What you do:**`, `**What you build:**`, `**The point:**`, `**What happened:**`) untouched, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. (The 2026-08-12 story-ticket pass added a slide and two backing claims, both logged below; the no-claims-added clause above described the earlier slides-only pass and is kept as its record, not as a current description of the file.)
 
-**Quality:** compendium-audited 2026-08-19 (writing@ba5ccf5 story@ba5ccf5 technical@bc8e9e6 behavior@ba5ccf5 pedagogy@ba5ccf5 strategy@1c765f2 slides@ba5ccf5)
-- judges @ba5ccf5: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-24 (writing@1abb84c6 story@1abb84c6 technical@1abb84c6 behavior@ba5ccf5 pedagogy@1abb84c6 strategy@1c765f2 slides@1abb84c6)
+- judges @1abb84c6: writing PASS (drift-recheck), story PASS (drift-recheck), technical PASS (drift-recheck), behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS (drift-recheck)
 - cohorts: none yet
 
 **Meta (trainer):**

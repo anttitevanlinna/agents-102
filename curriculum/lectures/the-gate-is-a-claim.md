@@ -125,5 +125,5 @@ OODA
 
 <!-- /backing -->
 
-**Quality:** compendium-audited 2026-08-23 (writing@a1ddfae2 story@a1ddfae2 technical@a1ddfae2 behavior@1c765f2 pedagogy@7824be46 strategy@1c765f2 slides@a1ddfae2)
-- judges @a1ddfae2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-24 (writing@a1ddfae2 story@a1ddfae2 technical@a1ddfae2 behavior@1c765f2 pedagogy@1abb84c6 strategy@1c765f2 slides@a1ddfae2)
+- judges @1abb84c6: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS

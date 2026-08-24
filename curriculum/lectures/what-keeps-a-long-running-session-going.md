@@ -74,5 +74,5 @@ When your agent stops for missing information, check whether there was a way for
 
 <!-- /backing -->
 
-**Quality:** compendium-audited 2026-08-15 (writing@296bb3a story@0774e2f technical@93bb807 behavior@93bb807 pedagogy@0774e2f strategy@93bb807 slides@0774e2f)
-- judges @296bb3a: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-24 (writing@1abb84c6 story@1abb84c6 technical@1abb84c6 behavior@93bb807 pedagogy@1abb84c6 strategy@93bb807 slides@1abb84c6)
+- judges @1abb84c6: writing PASS (drift-recheck), story PASS (drift-recheck), technical PASS (drift-recheck), behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS (drift-recheck)

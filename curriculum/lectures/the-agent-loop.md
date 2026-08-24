@@ -45,8 +45,8 @@ Ask where that list comes from.
 
 **Plural round shape (Antti-directed, 2026-08-01).** A single round carries as many tool calls as the step needs, and independent calls go out together. Bullet 1 reads *"uses tools"*; bullet 3 reads *"tool calls → results"*. Bullet 2 was always plural (*"executes the tool calls… feeds results back in"*) and is untouched. Do not re-singularise any of the three: a student watching an hour-long run sees batched calls on screen, and a serial machine on the slide would be contradicted inside the same module. Stamp: `parallel-tool-calls`, maintainer-attested.
 
-**Quality:** compendium-audited 2026-08-19 (writing@f25d58a6 story@f25d58a6 technical@1c765f2 behavior@1c765f2 pedagogy@eaae8cd strategy@1c765f2 slides@f25d58a6)
-- judges @f25d58a6: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-24 (writing@1abb84c6 story@1abb84c6 technical@1abb84c6 behavior@1c765f2 pedagogy@1abb84c6 strategy@1c765f2 slides@1abb84c6)
+- judges @1abb84c6: writing PASS (drift-recheck), story PASS (drift-recheck), technical PASS (drift-recheck), behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS (drift-recheck)
 
 **Meta:** *M4 teaching lecture, ~5 minutes projected. Audience: the engineer about to send a multi-hour task off in this same session. The three prompts demonstrate the loop on the student's live session; that's the teaching move — the anatomy slide is scaffolding for the prompts, not the lesson.*
 

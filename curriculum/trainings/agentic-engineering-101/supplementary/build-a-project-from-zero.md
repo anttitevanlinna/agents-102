@@ -33,8 +33,8 @@ The running game, the test suite, the commit history, and the one bug you spotte
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-08-19 (writing@577de87d story@577de87d technical@148adf6 behavior@148adf6 pedagogy@577de87d strategy@148adf6 slides@577de87d)
-- judges @577de87d: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-24 (writing@1abb84c6 story@1abb84c6 technical@1abb84c6 behavior@148adf6 pedagogy@1abb84c6 strategy@148adf6 slides@1abb84c6)
+- judges @1abb84c6: writing PASS (drift-recheck), story PASS (drift-recheck), technical PASS (drift-recheck), behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS (drift-recheck)
 
 **Meta:** *Opt-in prework alternative for the student who arrives without a usable repo. ~200 words. Golden-path only. Replaces the thin "ask your trainer for a fallback repo" escape hatch in `prework.md` §1 with a self-service build. The Lemmings game is the same SUT the test-harness uses (`arrange-lemmings.sh`, `test-strategy-lemmings`), so a student who builds it lands on a codebase the harness already understands.*
 

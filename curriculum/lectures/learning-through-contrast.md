@@ -14,8 +14,8 @@ This session shows how the agent handled your task and codebase.
 
 **Filename is the module-mood name — accepted residue (Antti 2026-08-15).** The file no longer teaches contrast by name; H1 and content are the diagnostic stance. "Learning through contrast" is M5's mood target, which this lecture opens. A rename costs a build-chain sweep (~35 refs, including eval-instance filenames) plus a full re-judge for zero student-visible change — students see the H1, never the slug. Piggyback a rename only on a real content edit that stales the pins anyway.
 
-**Quality:** compendium-audited 2026-08-15 (writing@0774e2f story@0774e2f technical@1c765f2 behavior@1c765f2 pedagogy@0774e2f strategy@1c765f2 slides@0774e2f)
-- judges @0774e2f: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-24 (writing@1abb84c6 story@1abb84c6 technical@1abb84c6 behavior@1c765f2 pedagogy@1abb84c6 strategy@1c765f2 slides@1abb84c6)
+- judges @1abb84c6: writing PASS (drift-recheck), story PASS (drift-recheck), technical PASS (drift-recheck), behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS (drift-recheck)
 **Word count:** ~100 words body.
 
 **Time:** ~2 min at presentation pace. This is a room-opener, not a topic.

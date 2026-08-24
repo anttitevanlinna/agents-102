@@ -159,7 +159,7 @@ header and handle per slide, never read bullets aloud. Two registers, one instru
 
 **Quality:** sim-passed 2026-08-24 (writing@e5364af8 story@39a1454e technical@19d444f0 behavior@b55cd28b pedagogy@b55cd28b strategy@b55cd28b slides@9242fa71)
 - judges @e5364af8: writing PASS, story PASS, technical PASS (verify-refuted), behavior PASS, pedagogy PASS, strategy PASS (verify-refuted), slides PASS
-- cross_module @e5364af8: PASS — set=[run-the-first-experiment,learn-from-the-test,spot-gaps-build-the-loop]; 2 pairs, 0 blocking; see instances/ae101--module-set--m4-m5-m6.cross_module.json
+- cross_module @37aa983b: PASS — set=[run-the-first-experiment,learn-from-the-test,spot-gaps-build-the-loop]; 2 pairs, 0 blocking; see instances/ae101--module-set--m4-m5-m6.cross_module.json
 **Meta (trainer):**
 - **Primary Bloom's level:** Analyze + Evaluate + Create
 - **Pacing:** Runtime is computed — `node scripts/calculate-time.js learn-from-the-test`. Trainer demos slowly, room copy-pastes concurrently. The closing lecture sits after Debrief + Re-send, where M4 has no closer of its own — it names Ronacher's three-pattern from felt evidence, so it cannot come earlier.

@@ -6,13 +6,13 @@
     "curriculum/trainings/agentic-engineering-101/spot-gaps-build-the-loop.md"
   ],
   "body_sha": {
-    "curriculum/trainings/agentic-engineering-101/run-the-first-experiment.md": "e9b30555eea8c4a28ad9c938bcdd2cde3d7d1ea37fc80fcccd5a1304230a5d75",
-    "curriculum/trainings/agentic-engineering-101/learn-from-the-test.md": "b006d841a49e17cbbd29cf7f47723f906949b334cffe7784e97bed3cf67d0477",
-    "curriculum/trainings/agentic-engineering-101/spot-gaps-build-the-loop.md": "04ae816a21b6fc5c3c6abe415a0a0dbe393f4366183802aa79f7cbdf48ffeb1d"
+    "curriculum/trainings/agentic-engineering-101/run-the-first-experiment.md": "25b7a412bfcccc41ca10b5dd37c41d8547742fae4a7f40f8b567d2f377350077",
+    "curriculum/trainings/agentic-engineering-101/learn-from-the-test.md": "4c0f151477aa291c05177e8c2d8b079054fc60f5d32a430074be204660e30244",
+    "curriculum/trainings/agentic-engineering-101/spot-gaps-build-the-loop.md": "d724b2c9a33c94b8a7217bd316899d1449e4de5fd51cef06de0ec6faf7834108"
   },
   "training": "ae101",
   "verdict": "PASS",
-  "re_fire_context": "Re-fire against pin 0dea491e, all three set members drifted since. Diff highlights: (1) da Costa's 'Backpressure Is All You Need' relocated OUT of the M4→M5 and M5→M6 seams entirely -- now solely the M3→M4 gap read owned by earn-the-trust.md (out of this set), with M4's own send-off callback switched from Willison to da Costa (behind the module:earn-the-trust flag) and both M5's and M6's 'backpressure vocabulary' maintainer notes rewritten to match. Verified the chain lands consistently: earn-the-trust.md §Pre-read-before-Module-4 assigns it (2026-08-21, Antti-directed, same day as M4's Mollick change), M4's closing lecture what-keeps-a-long-running-session-going.md names 'backpressure' in the room (grep-confirmed), M5 and M6 both now say 'assigns no reading on it, needs none' and neither uses the word in body. (2) M4 gained a new lead pre-read (Mollick, 'The Bitter Lesson versus The Garbage Can') in '## Pre-reads before Module 5', echoed correctly in M5's '## Prework' one-liner with matching link and 'the one to start with' framing -- covered by an in-file accept-note (2026-08-21). (3) M5 gained a new body section '## Say what done-done means' with a new prompt {{prompt:ae101-m5-done-done}} designed to be pasted back into the M4 send-off session so its transcript self-audits before diagnose-and-resend reads it. Read the prompt registry file directly (curriculum/prompts/ae101-m5-done-done.md): its own note calls the finished-M4-session precondition 'soft ... not a graph dependency', i.e. the content owner already priced in that the M4 session may not be resumable and the prompt still produces a coherent generic answer either way -- so no rescue callout is missing by omission, it's a documented soft-fail design. Flagged as a non-blocking maintainer note in `notes` below rather than a finding, per the harm-presence test (no dead end, no crash, only a silently thinner pedagogical payoff for an already-optional trick). (4) Coordinated 'sponsor-stated X' → 'the repo's X' / 'the team's X' de-sponsoring sweep across all three files' maintainer Plug-points lists -- grep confirms zero 'sponsor' residue left in any of the three files; matches the standing compounded correction against sponsor-prework framing. (5) Reference-file anchor for Cherny's stop-hook menu in M5 corrected from §13 (was 'Skills', wrong) to §34 ('Hooks: runtime extension points', right) -- header-numbering check confirms §34 is correct; improvement, not a seam defect, and outside cross_module's own lane (technical/link correctness) regardless.",
+  "re_fire_context": "Fresh full read, not diff-scoped. Prior recorded pass (cross_module@e5364af8, still cited by learn-from-the-test.md:162 and spot-gaps-build-the-loop.md:105) carried body_sha values for all three files that match NO commit in this repo's history (checked every commit touching each file, git-show + shasum, zero hits) -- so that prior instance write predates or postdates the commit it was stamped against, a stamp-safe race of exactly the kind CLAUDE.md's 'sibling judges race each other' rule warns about. Not re-litigated here as a finding (no content harm: this session re-verified the actual current content independently, below) but flagged in notes for the tooling owner. Content-wise: comparing HEAD against the last commit whose Quality-line-cited cross_module verdict is externally corroborated (43bb766e, 'Set E: two cross-module sets PASS') -- `git diff 43bb766e HEAD -- <3 files>` shows learn-from-the-test.md and spot-gaps-build-the-loop.md byte-identical (git-show shas at 43bb766e match current shas exactly), and run-the-first-experiment.md changed ONLY in its own Quality-line/Meta bookkeeping (cross_module citation flipped to the unrelated m3-m4 set @5df71aa6, per-class shas refreshed to 2026-08-24) -- zero body-prose, Bridge/Next/Homework/Pre-reads, or artefact-contract-table changes in any of the three files. All 7 rule verdicts below were independently re-derived from the current file text (not copied from the prior instance), and land the same as the prior pass.",
   "module_pairs_evaluated": [
     {
       "from": "curriculum/trainings/agentic-engineering-101/run-the-first-experiment.md",
@@ -22,8 +22,8 @@
           "compendium": "check_cross_module.md",
           "rule_index": 1,
           "rule_lead": "Peek at the next module before adding a second exercise.",
-          "verdict": "N/A",
-          "evidence": "M4 still ships exactly two exercises (walk-and-send-off, set-the-markers-send-it-off) and M5 still ships exactly two (fork-the-worktree, diagnose-and-resend) -- unchanged by this diff, no new second-exercise event to check against the M5 boundary. New content this diff (the Mollick pre-read, the done-done section) is body prose and a prompt block, not a new exercise.",
+          "verdict": "PASS",
+          "evidence": "run-the-first-experiment.md ships exactly two exercises (line 39 walk-and-send-off, line 43 set-the-markers-send-it-off; `grep -c '^\\[Exercise:' run-the-first-experiment.md` = 2). learn-from-the-test.md:48-54 '## Set up the worktree' explicitly forks the SHA the second exercise pins ('fork the un-packaged session's starting SHA into a sibling worktree'), and run-the-first-experiment.md's own artefact-contract table row 1 (line 156) names the exact consuming prompt: 'M5 worktree-setup prompt reads the Run coordinates block in task.md directly and forks ../<repo>-m5'. M5 survives the boundary M4's second exercise created; no silent contract break.",
           "fix_hint": null,
           "blocking": false
         },
@@ -32,7 +32,7 @@
           "rule_index": 2,
           "rule_lead": "Between-module reading appears in two places.",
           "verdict": "PASS",
-          "evidence": "M4 '## Bring to Module 5' + '## Pre-reads before Module 5' (run-the-first-experiment.md:62-82) now lists 5 entries: Mollick (new lead, https://www.oneusefulthing.org/p/the-bitter-lesson-versus-the-garbage), Uncle Bob supplementary, Entis/Klaassen interview, Verification asymmetry supplementary, Klaassen Compound Engineering guide. M5 '## Prework' (learn-from-the-test.md:10) echoes all 5, same 5 URLs verbatim, in one compressed sentence: 'read Ethan Mollick, [...], the one to start with; read [Clean Code Is Steering...]; watch Laura Entis on Kieran Klaassen [...]; read [Verification asymmetry]; read [Compound Engineering: The Definitive Guide].' Symmetric duplication intact after the Mollick addition.",
+          "evidence": "run-the-first-experiment.md:62-82 ('## Bring to Module 5' + '## Pre-reads before Module 5') lists 5 entries: Mollick (lead, 'Start with the first'), Uncle Bob supplementary, Entis/Klaassen interview, Verification asymmetry supplementary, Klaassen Compound Engineering guide. learn-from-the-test.md:10 '## Prework' echoes all 5 in one sentence with matching links and 'the one to start with' framing. `grep -n 'oneusefulthing.org/p/the-bitter-lesson-versus-the-garbage'` on both files confirms the Mollick URL is byte-identical at run-the-first-experiment.md:72 and learn-from-the-test.md:10 (each file's second hit at :179/:241 is that file's own source-verification stamp, not a second body copy). Symmetric duplication confirmed by direct grep, not inference.",
           "fix_hint": null,
           "blocking": false
         },
@@ -41,7 +41,7 @@
           "rule_index": 3,
           "rule_lead": "Cross-module artefact contracts must be explicit at both ends.",
           "verdict": "PASS",
-          "evidence": "Unchanged by this diff: M4's 'Commit the current state…' prompt (ae101-m4-commit-starting-point) writes the m4/<task-slug> branch + SHA into task.md's protected Run coordinates block (run-the-first-experiment.md:154); M5 '## Set up the worktree' (learn-from-the-test.md:48-50) explicitly forks that SHA into a sibling worktree. Filled-gap-entries and M4-session-transcript rows (run-the-first-experiment.md:155-156) likewise unchanged and both ends still named (worktree-setup prompt copies gitignored files per learn-from-the-test.md:52; Connections-blocker push-back at learn-from-the-test.md:176 names the transcript path explicitly). The new done-done section adds a fresh USE of the M4 session (paste-back, not just read) but doesn't need a new contract row: it reuses the same M4-session-transcript identifier already on the books, and its own registry note (curriculum/prompts/ae101-m5-done-done.md) explicitly marks the M4-session precondition 'soft ... not a graph dependency' -- deliberately not a hard artefact contract.",
+          "evidence": "run-the-first-experiment.md:152-158 3-row table: (1) M4 branch+SHA, produced by the commit-starting-point prompt in set-the-markers-send-it-off.md, consumed by M5's worktree-setup prompt reading task.md's Run coordinates block; (2) filled gap entries in observations/, consumed by M5 packaged re-send + M6 Phase 1; (3) M4 session transcript at the default Claude Code path, consumed by 'M5 opening ... to ground the what came back read'. learn-from-the-test.md:48-54 body names the fork explicitly; learn-from-the-test.md:212 artefact table row 1 names the identifier 'm5/<task-slug> branch ... forked from M4's m4/<task-slug> SHA' -- matches M4's producing identifier exactly. Transcript consumption is also named on the receiving side outside the table: learn-from-the-test.md:176 push-back move gives the literal path '~/.claude/projects/<project>/'.",
           "fix_hint": null,
           "blocking": false
         },
@@ -50,7 +50,7 @@
           "rule_index": 4,
           "rule_lead": "Session boundaries and working directories are designed, not implicit.",
           "verdict": "PASS",
-          "evidence": "Unchanged by this diff. M4 close (run-the-first-experiment.md:86) names the artefact ('a fresh session reads it straight from task.md'); M5's worktree path ../<repo>-m5 is named explicitly in M5's own artefact-contract table (learn-from-the-test.md:212) and Meta delivery-architecture line (learn-from-the-test.md:171), matching the compendium's own canonical M4-original-repo→M5-worktree example. The new '## Say what done-done means' section names its own session explicitly in body prose ('This one runs in the session you sent off', learn-from-the-test.md:30) rather than leaving it implicit -- it just doesn't repeat the M4-close instruction to keep that session reachable, which is the soft-precondition point noted under rule 3 above, not a rule-4 ambiguity (the session IS named, just not guaranteed available).",
+          "evidence": "Matches the compendium's own canonical case verbatim ('M4 opens new in original repo; M5 opens new in ../<repo>-m5 worktree'). run-the-first-experiment.md:86 names continuity via task.md at close; delivery mechanics are delegated to training-architecture.md per run-the-first-experiment.md:118 Meta line (canonical-elsewhere pattern the compendium's rule 4 permits). learn-from-the-test.md:48-54 body names the worktree fork with rationale ('so the second session starts from the same code state as the first') in student-facing prose, not only in the maintainer Meta line (learn-from-the-test.md:171 restates it for the trainer, consistent, not the only copy).",
           "fix_hint": null,
           "blocking": false
         },
@@ -59,7 +59,7 @@
           "rule_index": 5,
           "rule_lead": "Every produced file is a contract row in the maintainer block.",
           "verdict": "PASS",
-          "evidence": "run-the-first-experiment.md:150-156 still carries the 3-row Artefact contracts table (branch+SHA, filled gap entries, session transcript), unchanged by this diff. No new cross-module-crossing artefact was introduced this diff that lacks a row -- the done-done audit's output lives inside the same M4 session transcript already covered by the existing row.",
+          "evidence": "run-the-first-experiment.md:152-158 table covers all three M4-produced, M5-consumed artefacts (branch+SHA, filled gap entries, session transcript) -- no M4-produced artefact that M5 body reads (worktree fork, gitignored CLAUDE.local.md/observations copy, task.md coordinates) is missing a row.",
           "fix_hint": null,
           "blocking": false
         },
@@ -68,7 +68,7 @@
           "rule_index": 6,
           "rule_lead": "Cross-module structural-failure rescue callouts at module open.",
           "verdict": "N/A",
-          "evidence": "Unchanged by this diff. M4's send-off runs inside the same room-time session as the rest of M4 (Meta line, run-the-first-experiment.md:116: '15-30 minutes ... no new session'), not an overnight/day-2 autonomous run the way M5→M6 is, so M5's '## Start here' carries no rescue callout for a thin/missing M4 artefact -- consistent with the compendium's own canonical case, which only names the M6 rescue for the M5→M6 gap.",
+          "evidence": "M4's send-off runs inside the same room-time session as the rest of M4 -- run-the-first-experiment.md:118 Meta line: '15-30 minutes is enough ... no new session, no scheduled agent, no cloud runner'. It is not an overnight/day-2 autonomous run the way M5's packaged re-send is (that gap gets the M6 rescue instead), so learn-from-the-test.md '## Start here' correctly carries no rescue callout for a thin/missing M4 artefact. Matches the compendium's own canonical case, which names the rescue only for the M5->M6 gap.",
           "fix_hint": null,
           "blocking": false
         },
@@ -77,7 +77,7 @@
           "rule_index": 8,
           "rule_lead": "Bring-or-scramble plain-stakes-line shape at module homework boundaries.",
           "verdict": "PASS",
-          "evidence": "run-the-first-experiment.md:66, unchanged by this diff: 'Come to Module 5 without a session that got some way into the task and you'll be scrambling for material while the read is already underway. Your call.' Canonical form, stakes from the clock/exercise, not room comparison. The new Mollick pre-read paragraph sits in '## Pre-reads before Module 5', a separate, explicitly discursive section per the file's own 'Slide size accepted' maintainer note (run-the-first-experiment.md:96) -- rule 8's one-sentence canonical form applies to the Bring-section stakes line specifically, not to the annotated pre-reads block.",
+          "evidence": "run-the-first-experiment.md:66 -- 'Come to Module 5 without a session that got some way into the task and you'll be scrambling for material while the read is already underway. Your call.' Canonical shape: student-as-subject, choice preserved ('Your call'), and the cost is framed against the next module's own clock ('the read is already underway', i.e. M5's Phase-1 diagnostic read) -- not against other students ('the room'). No next-module-mechanics explainer, no head-start prompt, no unearned jargon.",
           "fix_hint": null,
           "blocking": false
         }
@@ -91,8 +91,8 @@
           "compendium": "check_cross_module.md",
           "rule_index": 1,
           "rule_lead": "Peek at the next module before adding a second exercise.",
-          "verdict": "N/A",
-          "evidence": "M5 still has two exercises (fork-the-worktree, diagnose-and-resend); M6 still has one (spot-gaps-build-the-loop). No new second-exercise addition in this diff to check against the M6 boundary.",
+          "verdict": "PASS",
+          "evidence": "learn-from-the-test.md ships exactly two exercises (line 54 fork-the-worktree, line 56 diagnose-and-resend; `grep -c '^\\[Exercise:'` = 2). spot-gaps-build-the-loop.md:23 '## Start here' opens: 'Open a fresh session in the Module 5 worktree, ../<repo>-m5. Both sessions are readable: the branches share .git, and each run recorded its transcript path.' -- explicitly survives the two-exercise M5 boundary by naming both artefacts the two exercises produced.",
           "fix_hint": null,
           "blocking": false
         },
@@ -101,7 +101,7 @@
           "rule_index": 2,
           "rule_lead": "Between-module reading appears in two places.",
           "verdict": "PASS",
-          "evidence": "M5 '## Bring to Module 6' + '## Pre-reads before Module 6' (learn-from-the-test.md:104-114, inside the module:spot-gaps-build-the-loop flag block) lists Klaassen 'My AI Had Already Fixed the Code Before I Saw It' only -- da Costa dropped this diff. M6 '## Prework' (spot-gaps-build-the-loop.md:8) echoes the SAME single Klaassen link with matching framing (measures/trusts a verifier, runs several in parallel) and ALSO drops da Costa in the same diff. Symmetric duplication intact through the coordinated removal -- both ends moved together, not just one.",
+          "evidence": "learn-from-the-test.md:104-114 (inside the `flag:module:spot-gaps-build-the-loop` block) '## Bring to Module 6' + '## Pre-reads before Module 6' lists one entry: Klaassen, 'My AI Had Already Fixed the Code Before I Saw It'. spot-gaps-build-the-loop.md:6-8 '## Prework' echoes the same title, same framing (measures a verifier before trusting it, runs several in parallel). `grep -n 'every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it'` confirms the URL is byte-identical at learn-from-the-test.md:114 and spot-gaps-build-the-loop.md:8. M6's Prework also lists two 'Optional lookup pages' (session-transcripts and long-running-shapes reference anchors) not echoed at M5's close -- these are M6-native reference lookups, not M5-assigned homework, so rule 2's symmetric-duplication requirement does not reach them.",
           "fix_hint": null,
           "blocking": false
         },
@@ -110,7 +110,7 @@
           "rule_index": 3,
           "rule_lead": "Cross-module artefact contracts must be explicit at both ends.",
           "verdict": "PASS",
-          "evidence": "Unchanged by this diff: learn-from-the-test.md:208-219 carries a 7-row Artefact contracts table (worktree branch+SHA, reference, plan.md, verifier, RUN-NOTES.md, CLAUDE.local.md copy, observations copy, session transcript), each with a named M6 consumer. M6 '## Start here' (spot-gaps-build-the-loop.md:23) explicitly reads them: 'Open a fresh session in the Module 5 worktree, ../<repo>-m5. Both sessions are readable: the branches share .git, and each run recorded its transcript path.' Both ends named; the done-done Q&A added upstream in M5 just becomes additional content inside the existing M4-transcript / M5-session-transcript identifiers already on this table, no new row needed.",
+          "evidence": "learn-from-the-test.md:208-219 8-row table (worktree branch+SHA, reference artefact, plan.md, verifier, RUN-NOTES.md, CLAUDE.local.md copy, observations copy, session transcript) -- every row's Consumed-by column names M6 explicitly (e.g. row 1: 'M6 diff (compares M5 packaged-run output to M4 un-packaged-run output)'; row 8: 'M6 opening session reads M5 transcript directly'). spot-gaps-build-the-loop.md:23 names the worktree path and 'each run recorded its transcript path' on the receiving side, matching the identifiers the producing table names.",
           "fix_hint": null,
           "blocking": false
         },
@@ -119,7 +119,7 @@
           "rule_index": 4,
           "rule_lead": "Session boundaries and working directories are designed, not implicit.",
           "verdict": "PASS",
-          "evidence": "Unchanged by this diff. M6 '## Start here' names the working directory explicitly: 'Open a fresh session in the Module 5 worktree, ../<repo>-m5' (spot-gaps-build-the-loop.md:23) -- matches the compendium's own canonical case verbatim.",
+          "evidence": "spot-gaps-build-the-loop.md:23 names the working directory explicitly: 'Open a fresh session in the Module 5 worktree, ../<repo>-m5.' Its Meta line (132) -- 'M6 opens a fresh session in the M5 worktree at ../<repo>-m5 where both runs already live' -- matches the compendium's own canonical case verbatim: 'M6 continues in M5 worktree (no new fork)'; a fresh session opens, but no new worktree fork happens.",
           "fix_hint": null,
           "blocking": false
         },
@@ -128,7 +128,7 @@
           "rule_index": 5,
           "rule_lead": "Every produced file is a contract row in the maintainer block.",
           "verdict": "PASS",
-          "evidence": "learn-from-the-test.md:208-219 (7-row table) unchanged by this diff. No new M5-produced, M6-consumed artefact was introduced this diff.",
+          "evidence": "Same 8-row table as rule 3 (learn-from-the-test.md:208-219) -- no M5-produced, M6-consumed artefact lacks a row.",
           "fix_hint": null,
           "blocking": false
         },
@@ -137,7 +137,7 @@
           "rule_index": 6,
           "rule_lead": "Cross-module structural-failure rescue callouts at module open.",
           "verdict": "PASS",
-          "evidence": "Unchanged by this diff. M6 '## Start here' (spot-gaps-build-the-loop.md:27-29) carries exactly two consecutive blockquotes: 'Packaged session thin or missing? You can still rescue it...' and 'Just can't get the M5 session working? ... Despair not.' M6's maintainer block (line 95) documents the exception verbatim. Rescue gate + accept-loss floor both present, note present.",
+          "evidence": "spot-gaps-build-the-loop.md:27-29 carries exactly two consecutive blockquotes in '## Start here': 'Packaged session thin or missing? You can still rescue it...' (rescue-gate: nudge / fresh re-send / read on) and 'Just can't get the M5 session working? ... Despair not.' (accept-loss floor). The exception is documented in the maintainer block at line 95 ('M6 opener rescue + accept-loss callouts -- deliberate exception to check_student_facing.md rule 5'). Both gate and floor present, note present, per rule 6's requirement.",
           "fix_hint": null,
           "blocking": false
         },
@@ -146,7 +146,7 @@
           "rule_index": 8,
           "rule_lead": "Bring-or-scramble plain-stakes-line shape at module homework boundaries.",
           "verdict": "PASS",
-          "evidence": "learn-from-the-test.md:108, unchanged by this diff: 'Come to Module 6 without the packaged session and you'll have one session to read where the exercise needs two. Your call.' Canonical form, stakes from the exercise's own requirement, not room comparison.",
+          "evidence": "learn-from-the-test.md:108 -- 'Come to Module 6 without the packaged session and you'll have one session to read where the exercise needs two. Your call.' Student-as-subject, choice preserved, cost framed against the exercise's own structural requirement ('the exercise needs two') rather than room comparison. No mechanics-explainer, no head-start prompt, no unearned jargon.",
           "fix_hint": null,
           "blocking": false
         }
@@ -156,9 +156,8 @@
   "blocking_findings_count": 0,
   "todos_count": 0,
   "notes": [
-    "Rule 7 (audit-discipline: walk M(N-1) close before flagging M(N) as spec drift) and Rule 9 (read every sibling exercise before opining) are meta-rules for the auditor's own process per the judge template ('judges don't fire this directly'). No rows emitted for either; this session's own read order walked M4 close before M5 open and M5 close before M6 open, and both M5's exercises (fork-the-worktree, diagnose-and-resend) were checked via their maintainer-documented prompt names and artefact-contract rows before any recommendation was formed.",
-    "Non-blocking observation, not filed as a finding (harm-presence test failed -- see re_fire_context item 3 for the full trace): M5's new '## Say what done-done means' section (learn-from-the-test.md:26-34) is designed to be run inside the SAME M4 send-off session so its answer lands in that session's own transcript ('the original context still live', per the maintainer note at line 124). Neither M4's close nor M5's own Prework tells the student to keep that session reachable across the module boundary, and M5's Prework explicitly anticipates the M4 session may have 'ran out of credit' (line 8) -- a state that would prevent the trick from working as designed. However the prompt's own registry entry (curriculum/prompts/ae101-m5-done-done.md) calls this precondition 'soft ... not a graph dependency' and the prompt text itself is self-contained (no file read, generic done-done question) -- so a student who can't reach the original M4 session still gets a coherent, useful answer from any current session; they just lose the self-inspecting-transcript trick silently, with no crash and no dead end. Surfaced here as a rule question for the maintainer rather than a REVISE: if the trick's fidelity matters enough to protect, M4's close or M5's Prework could name 'keep this session reachable' as an explicit ask; if the soft-fail is genuinely fine (as the registry note suggests it's meant to be), no change is owed.",
-    "Verified, not filed (matches an in-file accept-note, not a defect): the new Mollick pre-read paragraph in M4 (run-the-first-experiment.md:72) tells the student what M5 does ('you start adding checks around a session: each one is a claim that this is a place the model still needs you, and claims like that expire') ahead of M5 actually teaching it -- which on its face reads like rule 8's failure mode (a), explaining the next module's mechanics ahead of time. But the file's own maintainer block (run-the-first-experiment.md:94, dated 2026-08-21, Antti-directed) documents this as the deliberate stance-setting purpose of leading the pre-reads block with Mollick specifically so the tension travels into M5 as an open question. Accept-note covers it; not filed as a finding.",
-    "Verified, not filed (fix, not a defect): grep confirms zero remaining 'sponsor' references across all three files after this diff's Plug-points de-sponsoring sweep (was 'sponsor-stated tracker/rules-file home/observations home' etc., now 'the team's tracker' / 'Rules-file home ... ./CLAUDE.local.md' / 'wherever the repo already keeps business rules'). Matches the standing compounded correction against sponsor-prework framing (memory: feedback_no_sponsor_prework_contract.md). Out of cross_module's lane regardless (maintainer-block bookkeeping, not a student-facing seam), noted only because it touched all three files' Plug-points sections in the same diff and I wanted to confirm none was missed."
+    "Rule 7 (audit-discipline: walk M(N-1) close before flagging M(N) as spec drift) and Rule 9 (read every sibling exercise before opining on one) are meta-rules for the auditor's own process per the judge template ('judges don't fire this directly'). No rows emitted. This session walked M4 close before M5 open and M5 close before M6 open in that order; rule 9 is N/A -- no single-exercise redesign recommendation was formed this session.",
+    "TOOLING ANOMALY, not a content finding: the pre-existing instance file (overwritten by this write) recorded body_sha values for all three module-set members that match NO commit in this repo's git history for those paths (verified: `git show <c>:<path> | shasum -a 256` for every commit touching each of the 3 files, zero matches to the recorded shas). The instance's own commit message ('Set E: two cross-module sets PASS, the last writing class PASS', 43bb766e) does correspond to a real commit, but the file content at that commit hashes differently from what the prior instance recorded -- a stamp-safe race matching the exact failure mode curriculum/CLAUDE.md's 'sibling judges race each other' rule was written to catch (a recorded sha matching no commit, not merely stale against HEAD). This write's body_sha map was computed against a verified-clean working tree at HEAD (394a896b, `git status --short` empty for all three paths, re-confirmed with a post-read `git diff` also empty) so it does not carry the same defect forward. Surfacing for the tooling/orchestrator owner to check whether the prior write raced a concurrent edit.",
+    "Informational, non-blocking: run-the-first-experiment.md's own Quality line (line 106) currently cites a DIFFERENT cross_module verdict (@5df71aa6, set=[earn-the-trust,run-the-first-experiment], the M3-M4 set) rather than this M4-M5-M6 set's verdict, even though this file is also a member of this set. learn-from-the-test.md:162 and spot-gaps-build-the-loop.md:105 both still cite this set's prior (e5364af8) verdict correctly. This looks like ordinary last-writer-wins behavior for a file that belongs to two overlapping cross_module sets (each Quality line has room for one cross_module citation), not a cross_module compendium rule violation -- none of the 9 rules govern which set's citation a shared member's Quality line displays. Noted for whoever owns Quality-line format/stamping, not filed as a finding."
   ]
 }

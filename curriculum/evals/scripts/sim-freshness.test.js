@@ -156,6 +156,24 @@ test('a training-scoped miss does not silently fall through to another training'
   assert.strictEqual(resolveSlug(idx, 'agents-101--module--prework'), null)
 })
 
+test('an UNOWNED shared file still resolves — strictness is about collisions, not orphans', () => {
+  // The refusal above exists to stop one training's trace binding to another
+  // training's body. A shared-pool file that NO training links has no scoped key
+  // at all, and refusing it there turned two real, resolvable agents-101 traces
+  // into reported orphans. The test is whether the bare hit belongs to a
+  // DIFFERENT training, not whether a scoped key happens to exist.
+  const { resolveSlug } = require('./sim-freshness.js')
+  const idx = new Map([
+    ['ground-your-output', 'curriculum/exercises/ground-your-output.md'],   // no scoped key: unowned
+    ['agents-101::getting-going', 'curriculum/trainings/agents-101/getting-going.md'],
+    ['getting-going', 'curriculum/trainings/agents-101/getting-going.md'],
+  ])
+  assert.strictEqual(resolveSlug(idx, 'agents-101--exercise--ground-your-output'),
+    'curriculum/exercises/ground-your-output.md')
+  assert.strictEqual(resolveSlug(idx, 'ae101--exercise--ground-your-output'),
+    'curriculum/exercises/ground-your-output.md', 'unowned means anyone may name it')
+})
+
 test('slugIndex keys a module both bare and training-scoped, and keeps both trainings', () => {
   const { slugIndex } = require('./sim-freshness.js')
   const root = fs.mkdtempSync(path.join(os.tmpdir(), 'simfresh-idx-'))

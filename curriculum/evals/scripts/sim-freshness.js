@@ -80,14 +80,22 @@ function git(repo, args) {
 function resolveSlug(idx, stem) {
   const seg = stem.split('--')
   const training = seg.length > 1 ? seg[0] : null
-  const scopedIndex = training && [...idx.keys()].some(k => k.startsWith(`${training}::`))
+  // Does some OTHER training own this exact file? Then a bare-key hit is that
+  // training's body and must be refused. A file no training scopes is shared or
+  // unowned, and anyone may name it — refusing there turns resolvable traces
+  // into reported orphans, which is the opposite of the point.
+  const ownedByAnother = rel => [...idx.entries()]
+    .some(([k, v]) => v === rel && k.includes('::') && k.split('::')[0] !== training)
   let slug = seg[seg.length - 1]
   while (slug) {
     if (training && idx.has(`${training}::${slug}`)) return idx.get(`${training}::${slug}`)
-    // The named training HAS scoped entries and none of them is this slug, so a
-    // bare-key hit would be another training's file. Refuse it: an orphan is a
-    // visible hole, a wrong resolution is an invisible wrong answer.
-    if (!scopedIndex && idx.has(slug)) return idx.get(slug)
+    if (idx.has(slug)) {
+      const rel = idx.get(slug)
+      // An orphan is a visible hole; a wrong resolution is an invisible wrong
+      // answer, so the collision case loses and the shared case wins.
+      if (!training || !ownedByAnother(rel)) return rel
+      return null
+    }
     const cut = slug.indexOf('-')
     if (cut === -1) return null
     slug = slug.slice(cut + 1)

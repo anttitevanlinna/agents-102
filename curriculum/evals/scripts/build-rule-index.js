@@ -58,14 +58,41 @@ function readAll(mem) {
 }
 
 // The literal chunk for one rule id — same boundaries the pin hasher uses.
+// `52` returns §52 with its sub-rules folded in — callers rely on that, and a
+// parent read without its carve-outs is the failure the whole tier exists to
+// prevent. `52c` returns just that sub-rule. Fetching a sub-rule by its own
+// number used to return nothing at all: the letter was parsed and then dropped
+// by a `!s.sub` filter, so rule.js answered "no §52c" on a rule sitting in the
+// file, and an agent told a rule does not exist does not go looking.
 function ruleBody(md, id) {
   const lines = String(md).split('\n')
   const starts = []
   lines.forEach((t, i) => { const m = /^(\d+)([a-z]?)\.\s+\*\*/.exec(t); if (m) starts.push({ id: m[1], sub: m[2], line: i }) })
-  const k = starts.findIndex(s => s.id === id && !s.sub)
+  const want = /^(\d+)([a-z]?)$/.exec(String(id))
+  if (!want) return ''
+  const [, num, sub] = want
+  let k = starts.findIndex(s => s.id === num && s.sub === sub)
+  // Second authoring shape: an indented bold run inside the parent's body
+  // (`   **11a. ...**`). Five sub-rules use it, and one of them is the
+  // source-freshness stamp rule that .claude/rules/content-rules.md cites by
+  // number — so a fetch that only knows line-start numbering answers "no such
+  // rule" on a rule the rules file tells you to read.
+  if (k < 0 && sub) {
+    const re = new RegExp(`^\\s+\\*\\*${num}${sub}\\.`)
+    const at = lines.findIndex(t => re.test(t))
+    if (at < 0) return ''
+    const nextRule = /^(?:\d+[a-z]?\.\s+\*\*|\s+\*\*\d+[a-z]\.)/
+    let stop = lines.length
+    for (let j = at + 1; j < lines.length; j++) if (nextRule.test(lines[j])) { stop = j; break }
+    return lines.slice(at, stop).join('\n')
+  }
   if (k < 0) return ''
   let end = lines.length
-  for (let j = k + 1; j < starts.length; j++) if (!starts[j].sub) { end = starts[j].line; break }
+  // A sub-rule ends at the very next rule start of any kind; a parent runs on
+  // until the next parent, swallowing its own children.
+  for (let j = k + 1; j < starts.length; j++) {
+    if (sub || !starts[j].sub) { end = starts[j].line; break }
+  }
   return lines.slice(starts[k].line, end).join('\n')
 }
 

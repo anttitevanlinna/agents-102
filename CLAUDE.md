@@ -33,6 +33,7 @@ Shared tree, multiple live sessions. Assume a neighbour is inside your files.
 - `main` = shared KB; OODA pushes direct (gates enforced). Users + experimental → branches, Antti merges.
 - **Never bare `git commit`** → `git commit -m msg --only -- <paths>` (flags before `--`). Index = shared state, so `git add` can't protect a commit; `--only` ignores it. Read column 1 of `git status --short`, not only column 2.
 - **Never** `git stash` / `reset` / `checkout` / `restore` on dirty paths; no rebasing. WIP is deliberate — don't manufacture clean state. `git pull` complains → `git fetch` or commit.
+- **`--only` guards the INDEX, not the neighbour's working tree.** It commits the working-tree state of the paths you name, so an agent's uncommitted edit inside one of those files rides in under your message. Naming explicit paths does not narrow it to your own hunks. Before committing any path a live peer may hold, `git diff -- <path>` and read whose hunks they are — then the collision procedure below, not a path-scoped commit.
 - **Same-file collision** (neighbour inside your file): `git diff -- <f>` → read hunks → `git apply --cached` your `@@` blocks only → plain `git commit`. `--stat` is blind to this.
 - **Before delete/overwrite:** delete only the leaf you created. Unexplained edit in a shared tree = colleague, not bug — check `ps` + mtimes before "restoring".
 

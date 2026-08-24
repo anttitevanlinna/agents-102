@@ -262,25 +262,29 @@ async function verify(v, phase) {
 
 phase('Judge')
 
-const fromQueue = await pipeline(
-  JOBS,
-  j => agent(judgePrompt(j), { label: `${j.cls}:${String(j.file).split('/').pop().replace(/\.md$/, '')}`, phase: 'Judge', schema: VERDICT_SCHEMA, model: 'sonnet' }),
-  v => (v ? verify(v, 'Verify') : v),
-)
+// The three lanes are independent — a cross_module set does not wait on a class
+// judge, and a confirmation does not wait on either. Awaiting them in turn made
+// a 1-item + 2-confirm + 2-set run take three sequential rounds instead of one,
+// for no ordering the work actually needs.
+const [fromQueue, fromConfirm, fromSets] = await parallel([
+  () => pipeline(
+    JOBS,
+    j => agent(judgePrompt(j), { label: `${j.cls}:${String(j.file).split('/').pop().replace(/\.md$/, '')}`, phase: 'Judge', schema: VERDICT_SCHEMA, model: 'sonnet' }),
+    v => (v ? verify(v, 'Verify') : v),
+  ),
+  () => pipeline(
+    CONFIRM,
+    c => agent(confirmPrompt(c), { label: `confirm:${c.cls}:${String(c.file).split('/').pop().replace(/\.md$/, '')}`, phase: 'Judge', schema: VERDICT_SCHEMA, model: 'sonnet' }),
+    v => (v ? verify(v, 'Verify') : v),
+  ),
+  () => pipeline(
+    SETS,
+    s => agent(setPrompt(s), { label: `cross_module:${s.name}`, phase: 'Judge', schema: VERDICT_SCHEMA, model: 'sonnet' }),
+    v => (v ? verify(v, 'Verify') : v),
+  ),
+])
 
-const fromConfirm = await pipeline(
-  CONFIRM,
-  c => agent(confirmPrompt(c), { label: `confirm:${c.cls}:${String(c.file).split('/').pop().replace(/\.md$/, '')}`, phase: 'Judge', schema: VERDICT_SCHEMA, model: 'sonnet' }),
-  v => (v ? verify(v, 'Verify') : v),
-)
-
-const fromSets = await pipeline(
-  SETS,
-  s => agent(setPrompt(s), { label: `cross_module:${s.name}`, phase: 'Judge', schema: VERDICT_SCHEMA, model: 'sonnet' }),
-  v => (v ? verify(v, 'Verify') : v),
-)
-
-const done = [...fromQueue, ...fromConfirm, ...fromSets].filter(Boolean)
+const done = [...(fromQueue || []), ...(fromConfirm || []), ...(fromSets || [])].filter(Boolean)
 const expected = JOBS.length + CONFIRM.length + SETS.length
 const surviving = done.filter(v => (v.confirmed || []).length)
 log(`eval-sweep: ${done.length}/${expected} returned · ${done.filter(v => v.verdict === 'PASS').length} PASS · ${done.filter(v => v.verdict === 'PASS_WITH_TODOS').length} PASS+todos · ${surviving.length} with a finding surviving both refuters`)

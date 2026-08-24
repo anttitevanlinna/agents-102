@@ -46,6 +46,15 @@ const ITEMS = input.items || []
 const CONFIRM = input.confirm || []   // [{file, slug, cls, pin, finding, applied, checks:[[cmd, expected]]}]
 const SETS = input.sets || []         // [{training, name, members:[rel...]}]
 
+// A dispatched unit is identified by its own key, never by matching a returned
+// verdict's file string back against the request. That match used to compare
+// `v.class === j.cls` and a basename suffix, which for a cross_module set means
+// comparing against `undefined` and against a semicolon-joined member list — so
+// every set reported as missing while `returned` said it came back. A run that
+// contradicts itself in two adjacent fields is worse than one that just fails.
+const keyOf = u => (u.cls ? `${u.cls}:${u.file}` : `cross_module:${u.name}`)
+const tag = (verdict, unit) => (verdict ? Object.assign(verdict, { _key: keyOf(unit) }) : verdict)
+
 const JOBS = []
 for (const it of ITEMS) {
   for (const cls of it.classes || []) {
@@ -270,22 +279,23 @@ const [fromQueue, fromConfirm, fromSets] = await parallel([
   () => pipeline(
     JOBS,
     j => agent(judgePrompt(j), { label: `${j.cls}:${String(j.file).split('/').pop().replace(/\.md$/, '')}`, phase: 'Judge', schema: VERDICT_SCHEMA, model: 'sonnet' }),
-    v => (v ? verify(v, 'Verify') : v),
+    (v, j) => (v ? verify(v, 'Verify').then(r => tag(r, j)) : v),
   ),
   () => pipeline(
     CONFIRM,
     c => agent(confirmPrompt(c), { label: `confirm:${c.cls}:${String(c.file).split('/').pop().replace(/\.md$/, '')}`, phase: 'Judge', schema: VERDICT_SCHEMA, model: 'sonnet' }),
-    v => (v ? verify(v, 'Verify') : v),
+    (v, c) => (v ? verify(v, 'Verify').then(r => tag(r, c)) : v),
   ),
   () => pipeline(
     SETS,
     s => agent(setPrompt(s), { label: `cross_module:${s.name}`, phase: 'Judge', schema: VERDICT_SCHEMA, model: 'sonnet' }),
-    v => (v ? verify(v, 'Verify') : v),
+    (v, s) => (v ? verify(v, 'Verify').then(r => tag(r, s)) : v),
   ),
 ])
 
+const UNITS = [...JOBS, ...CONFIRM, ...SETS].map(u => Object.assign(u, { _key: keyOf(u) }))
 const done = [...(fromQueue || []), ...(fromConfirm || []), ...(fromSets || [])].filter(Boolean)
-const expected = JOBS.length + CONFIRM.length + SETS.length
+const expected = UNITS.length
 const surviving = done.filter(v => (v.confirmed || []).length)
 log(`eval-sweep: ${done.length}/${expected} returned · ${done.filter(v => v.verdict === 'PASS').length} PASS · ${done.filter(v => v.verdict === 'PASS_WITH_TODOS').length} PASS+todos · ${surviving.length} with a finding surviving both refuters`)
 
@@ -293,9 +303,7 @@ return {
   returned: done.length,
   expected,
   // Named so the orchestrator can re-fire exactly what died rather than the set.
-  missing: [...JOBS, ...CONFIRM, ...SETS]
-    .filter(j => !done.some(v => v.class === j.cls && String(v.file || '').endsWith(String(j.file || j.name || '').split('/').pop())))
-    .map(j => `${j.cls || 'cross_module'}:${j.file || j.name}`),
+  missing: UNITS.filter(u => !done.some(v => v._key === u._key)).map(u => u._key),
   summary: done.map(v => ({
     file: v.file, class: v.class, verdict: v.verdict, body_sha: v.body_sha,
     evidence_null_count: v.evidence_null_count,

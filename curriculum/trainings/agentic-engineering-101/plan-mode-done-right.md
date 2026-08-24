@@ -208,7 +208,7 @@ This module points at four sources in body and owned a stamp for none of them; t
 | Phase forcing function | Dominant failure mode | Escape hatch |
 |---|---|---|
 | P1 — *"surface a multi-file task that fits the criteria"* | P1 blocker — student can't find a fitting task | Trainer runs three-candidate conversation. Criteria: multi-file, 30–60 min agent work, touching wrong file matters. |
-| P3 — *"push back twice via keep-planning-with-feedback"* | P3 rubber-stamp — student approves under 60s with no push-back | Trainer push: *"pick keep-planning-with-feedback — send one soft item before approving."* |
+| P3 — *"push back twice via No, keep planning"* | P3 rubber-stamp — student approves under 60s with no push-back | Trainer push: *"pick No, keep planning — send one soft item before approving."* |
 | P3 — *"the push-back names a step number AND a specific word"* | P3 generic push-back — messages lack specifics | Trainer push: *"which step, which words? say the thing you'd want a senior reviewer to catch."* |
 | P3 — *"verify the push-back actually sharpened the plan, not re-softened"* | P3 softening on regeneration — Claude acknowledges and re-softens | Trainer push: *"did Claude actually sharpen it, or did it acknowledge and re-soften? push back again."* |
 | P4 — *"judge what another branch would still change"* | P4 value-skip — student stops without judging what remains | Trainer push: *"what would the next question still change in execution? If nothing material, lock it in. If one branch still matters, take that one."* |

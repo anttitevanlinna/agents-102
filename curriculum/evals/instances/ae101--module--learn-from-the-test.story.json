@@ -1,18 +1,18 @@
 {
   "class": "storytelling",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/learn-from-the-test.md",
-  "body_sha": "386b06e9b90f203102699662200b5ab8ad66685f566910b4c83e04cc5ee8e814",
+  "body_sha": "2b72725decf8a0d502e727e1012b685d93035c8b323c15a51f94b3fe680658dd",
   "verdict": "PASS",
   "training": "ae101",
   "module_mood_contract": "learning through contrast — \"I can feel what packaging adds now; I couldn't have read it as a lecture.\"",
-  "trace_status": "regenerated",
+  "trace_status": "cached",
   "rules_evaluated": [
     {
       "compendium": "check_lectures.md",
       "rule_index": 1,
       "rule_lead": "Meta-frame lectures = closers, not openers.",
       "verdict": "PASS",
-      "evidence": "Reading order unchanged by today's diff: openers `[Lecture: Reading the return]` (L36) and `[Lecture: Learning through contrast]` (L38) sit before both exercises; closers `[Lecture: What packaging is]` (L60) and `[Lecture: The gate is a claim too]` (L62) sit after. The new `## Say what done-done means` section (L26-34) is inserted before the openers, not a lecture itself and names no practitioner, so it doesn't change opener/closer classification of the four actual lecture links.",
+      "evidence": "Re-read raw file this session. Openers `[Lecture: Reading the return]` (L36) and `[Lecture: Learning through contrast]` (L38) sit before both exercises (L54, L56); closers `[Lecture: What packaging is]` (L60) and `[Lecture: The gate is a claim too]` (L62) sit after Debrief. Confirmed against strategy doc live this session (`content-strategy-agentic-engineering-101.md` §M5 in detail, L402-409): reading-the-return is the assigned pre-read, learning-through-contrast the in-room opener, what-packaging-is + the-gate-is-a-claim the two closing lectures — 'M5 is the only module in the arc that earns a closing meta-lecture ... they land AFTER the student lives the pattern.' `## Say what done-done means` (L26-38, new since pin ba5ccf5) sits before the two openers, names no practitioner and no framework, and is prose+prompt, not a lecture file — doesn't touch the four lectures' opener/closer classification.",
       "fix_hint": null,
       "blocking": false
     },
@@ -21,7 +21,7 @@
       "rule_index": 2,
       "rule_lead": "Minimal lecturing before contrast-mood exercises.",
       "verdict": "PASS",
-      "evidence": "The two pre-exercise lectures (Reading the return, Learning through contrast) are unchanged by today's diff. The new done-done beat (L26-34) is body prose + a fenced prompt, not a lecture, so §2's literal subject doesn't reach it, but I checked it against the rule's own diagnostic anyway: it names no practitioner, no Ronacher three-pattern, no failure-mode↔packaging pairing — it arms (one operational primitive: a self-audit prompt) rather than teaches (mapping frameworks). Runtime charge is 3 min per the Transitions line (L164), consistent with a light beat.",
+      "evidence": "Module mood is 'learning through contrast' (Meta block L170), so this is a live contrast-mood dosage check, not N/A. The two pre-exercise lecture links are unchanged content since ba5ccf5. Checked the new `## Say what done-done means` (L26-38) against the rule's own diagnostic even though it isn't a lecture file: `grep -n Ronacher` on raw lines 1-121 returns zero hits (only maintainer-block mentions at L124/141/150/165/183) — no framework name pre-empted. The beat arms one operational primitive (a self-audit prompt against a plain repo bar) rather than teaching the three-pattern or the failure-mode↔packaging pairing; strategy doc confirms the closer alone 'names Ronacher's three-pattern from felt evidence' (L400). Charged 3 min at `- **Transitions:**` (L166), consistent with a light arming beat, not a lecture.",
       "fix_hint": null,
       "blocking": false
     },
@@ -30,7 +30,7 @@
       "rule_index": 3,
       "rule_lead": "No cross-module sequencing in lecture bodies.",
       "verdict": "N/A",
-      "evidence": "Target is a module file, not a lecture; §3's own remedy is to move sequencing INTO the module file, which is exactly what this file is. `grep -n 'M[0-9]\\|Module [0-9]'` on lines 1-121 hits L108, L110, L116, L118 (Bring to Module 6 / Pre-reads before Module 6 / Next) — all in the module's own sanctioned close section.",
+      "evidence": "Target is a module file, not a lecture file — the rule's own remedy is that cross-module sequencing belongs IN the module file's `## Next`/`## Bring to Module N`, which is exactly this file's role. `grep -nE 'M[0-9]|Module [0-9]'` on raw lines 1-121 hits L24 (M1 countermove callback), L52 (Module 1/3/6 worktree carry-over), and L104/108/110/118 (Bring to Module 6 / Pre-reads before Module 6 / Next) — all inside the module's own sanctioned close section or a pre-existing callback, none of them a lecture-file body.",
       "fix_hint": null,
       "blocking": false
     },
@@ -39,7 +39,7 @@
       "rule_index": 4,
       "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
       "verdict": "PASS",
-      "evidence": "12 slide headers, checked against `node scripts/check-slide-size.js --file <path>` (12 slides, 0 oversized). The one new header, `## Say what done-done means` (L26), squints correctly (names the one thing: articulate and check a completion definition) and the truth clause holds (body delivers exactly that: a definition, a forcing-function audit, a compounding move). It is command-verb-shaped, which #17's default bans on a slide header — but its payload IS a live do-move (a prompt the student pastes into their own live session), which is the named carve-out ('See the loop in your live session'). No two headers repeat; the one rationed orientation header (`## Back to the map, one last time`, L80) is unchanged and still the sole instance.",
+      "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/learn-from-the-test.md` fresh this session: 'files: 1  slides: 12  limits: 210 words / 6 bullets ... oversized: 0 ... every slide is within limits.' The one header new since ba5ccf5, `## Say what done-done means` (L26), squints correctly — names the one thing (state and check a completion definition) — and the truth clause holds: body delivers exactly a definition (L28), a live self-audit prompt (L32), and the compounding move (L34). It is command-verb-shaped, which the header rule's #17-inherited default bans, but its payload IS a live do-move the student runs in their own session (parallel to check_lectures.md §6's 'See the loop in your live session' example) — the named carve-out applies. No two headers repeat; the sole rationed orientation header (`## Back to the map, one last time`, L80) is unchanged since ba5ccf5.",
       "fix_hint": null,
       "blocking": false
     },
@@ -48,7 +48,7 @@
       "rule_index": 5,
       "rule_lead": "A slide's BODY is size-bounded, not just its header (§4's sibling).",
       "verdict": "PASS",
-      "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/learn-from-the-test.md` after today's edits: \"files: 1   slides: 12   limits: 210 words / 6 bullets ... oversized: 0 ... ✓ every slide is within limits\". Slide count rose from 11 to 12 (the new done-done section is its own slide) and stayed within cap.",
+      "evidence": "Same run as §4, this session: `node scripts/check-slide-size.js --file <path>` → 12 slides, 210w/6-bullet limits, 0 oversized. The new `## Say what done-done means` slide (L26-38) is short: one definition paragraph, one fenced prompt (excluded from word count per the rule's own carve-out), one compounding-move paragraph — well under the ceiling.",
       "fix_hint": null,
       "blocking": false
     },
@@ -57,7 +57,7 @@
       "rule_index": 6,
       "rule_lead": "A prompt inside a lecture is a trainer show-and-tell, never a room follow-along.",
       "verdict": "N/A",
-      "evidence": "Rule's own scope is `curriculum/lectures/**`; this prompt (`{{prompt:ae101-m5-done-done}}`, L32) sits in a module file, not a lecture. The design is consistent with the rule's own carve-out in spirit ('the answer must be theirs') regardless: the maintainer block (L124) names this explicitly and cites `check_lectures.md §6 carve-out` by number, and the prompt's registry note confirms 'student-run in the M4 send-off session (trainer may demo first)' with `Approved prompt-ok 2026-08-23`.",
+      "evidence": "Rule's own scope is `curriculum/lectures/**`; the done-done prompt (`{{prompt:ae101-m5-done-done}}`, L32) sits in a module file, not a lecture file. Consistent with the rule's spirit regardless: maintainer block L124 explicitly cites 'check_lectures.md §6 carve-out' ('the answer must be the student's own session's ... do not convert to trainer-only'), and the registry file `curriculum/prompts/ae101-m5-done-done.md` (re-read fresh this session) confirms: 'M5 opener, student-run in the M4 send-off session (trainer may demo first) ... so the per-point done-done audit lands in the transcript diagnose-and-resend reads.' Correctly self-run, not a trainer-only demo, whether or not §6 technically binds a module file.",
       "fix_hint": null,
       "blocking": false
     },
@@ -66,7 +66,7 @@
       "rule_index": 1,
       "rule_lead": "Mood contract named.",
       "verdict": "PASS",
-      "evidence": "L168 names the contract, two drift directions, a diagnostic and a trainer fix (unchanged by today's diff). Re-checked against the new done-done beat specifically: it neither resolves the contrast mood early (it produces a self-audit that, given M4 was designed to underdeliver, more likely surfaces a gap than reassurance) nor drifts toward the punitive register the strategy doc's Mood section warns against.",
+      "evidence": "Meta block (L170) names the contract, two drift directions, a diagnostic and a trainer fix, unchanged since ba5ccf5. Checked the done-done beat against it fresh: the self-audit is more likely to surface a gap than reassure (the M4 run was task-designed to underdeliver, per strategy doc L396 'Not great ... drift, missed requirements, plausible-but-wrong'), so it doesn't resolve the contrast early; register stays epistemic not punitive (see §2 below).",
       "fix_hint": null,
       "blocking": true
     },
@@ -75,7 +75,7 @@
       "rule_index": 2,
       "rule_lead": "Epistemic mood ≠ punitive mood.",
       "verdict": "PASS",
-      "evidence": "Done-done beat's framing is 'Against what? Nothing in the repo said' — a not-knowing question about the SYSTEM (no definition existed), not an accusation about the student or the agent. Mid-run-worries beat (L44) states 'the artefact adjudicates' rather than 'you were wrong to worry' — worry is tested, not shamed.",
+      "evidence": "Done-done framing: 'Against what? Nothing in the repo said' (L28) — a not-knowing question about the SYSTEM's missing definition, not an accusation of the student or the agent. The adjacent 'Your mid-run worries' beat (L44-46) states 'the artefact wins' / tests the worry rather than 'you were wrong to worry' — tested, not shamed. Both registers unchanged since ba5ccf5's predecessor text; the worries beat itself is outside this diff's hunks.",
       "fix_hint": null,
       "blocking": false
     },
@@ -84,7 +84,7 @@
       "rule_index": 3,
       "rule_lead": "Lead with discipline, not failure mode.",
       "verdict": "PASS",
-      "evidence": "Unchanged by today's diff: Big Idea (L4) leads on steering, the discipline, with failure modes as the object diagnosed. The new done-done section leads the same way — 'A done-done definition is a small context trick that buys repeated fast verification' (L28) names the discipline (define completion, check against it) before any failure is implied.",
+      "evidence": "Big Idea (L4) leads on steering, the discipline, unchanged. The new section leads the same way: 'Say what done-done means' (L26) and 'A done-done definition is a small context trick that buys repeated fast verification' (L28) name the discipline (define completion, check against it) before any failure is implied.",
       "fix_hint": null,
       "blocking": false
     },
@@ -93,7 +93,7 @@
       "rule_index": 4,
       "rule_lead": "Strategy-fidelity check.",
       "verdict": "PASS",
-      "evidence": "Checked against `content-strategy-agentic-engineering-101.md` § M5-in-detail (read live via bosser-strategy skill). BIG IDEA FIDELITY: the done-done beat is a direct instance of the Big Idea's own claim ('the session you already ran is the evidence for what the next one needs') — it literally re-reads the M4 session as evidence. FRONT-RUN: the done-done audit's four points (tests/acceptance/docs/security) are a different axis from the three failure-mode lenses (goal drift/context rot/plausible-but-wrong) that 'Reading the return' plants and Phase 1 of diagnose-and-resend scores — no vocabulary or reveal is spent early; Ronacher's three-pattern is still named only in the closer (L169, L233 both restate the hold, unchanged). MOOD DOESN'T RESOLVE EARLY: see §1. Two things NOT covered by a rule_index, recorded here per instruction: (a) the strategy doc's own M5 spec ('Five moves', 'Delivery shape') does not yet mention a done-done beat — this is new content ahead of the private doc, consistent with the `curriculum/CLAUDE.md` § Alignment norm being a live process gap rather than a fidelity violation, since the beat doesn't contradict anything the doc does say; (b) the doc's Pre-reads-before-M5 section says 'Mollick leads and stands apart... four argue check more' matching the current Prework list exactly (verified: Mollick first, then Clean Code Is Steering / Entis-Klaassen / Verification asymmetry / Compound Engineering, four after).",
+      "evidence": "Read `content-strategy-agentic-engineering-101.md` §M5 in detail live via bosser-strategy this session (L394-447). TWO findings, both positive. (a) PREWORK HUNK: the diff's first change adds Ethan Mollick's piece as the lead item in `## Prework` (L10), in exactly the order and framing the strategy doc's 'Pre-reads before M5' section prescribes (L434-441: item 0 Mollick 'the one to start with', then 1 Clean Code, 2 Entis/Klaassen, 3 Verification asymmetry, 4 Klaassen Compound Engineering) — this closes a prior gap (the module was previously missing the lead piece the strategy doc calls for) rather than opening one. (b) DONE-DONE BEAT: grepped the full strategy-doc M5 section (L394-447) plus a whole-file `grep -in 'done-done'` — zero hits anywhere in the private doc. The beat doesn't contradict anything the doc says (it instances the Big Idea directly: 'the session you already ran is the evidence for what the next one needs' reads the M4 artifact before anything else, matching L396's 'M5 opens with the return'), and the maintainer block names it Antti-directed 2026-08-23 (L124) — so this scores PASS with the doc-currency gap carried as a note, not a violation, per `curriculum/CLAUDE.md § Alignment`. FRONT-RUN check: the audit's four points (tests/acceptance/docs/security) are a different axis from the three failure-mode lenses (goal drift/context rot/plausible-but-wrong); Ronacher's three-pattern still names only in the closer (confirmed zero body-text hits above). MODULE-ARC check: `## Next` (L116-118, 'subtler misses, subtler drift ... do all our tasks pass, and who reviewed what') matches the strategy doc's M6 spirit paragraph near-verbatim (L451, 'subtler misses this time, subtler drift').",
       "fix_hint": null,
       "blocking": true
     },
@@ -102,7 +102,7 @@
       "rule_index": 5,
       "rule_lead": "Strategic themes recur in Key Concepts.",
       "verdict": "N/A",
-      "evidence": "Module-only section owned by the strategy judge per this template's class split (storytelling carries §§1-4 only; §§5/6/7 govern Key Concepts and What You'll Learn and are the strategy judge's call on a module file).",
+      "evidence": "Module-only section owned by the strategy judge per this template's class split (storytelling carries §§1-4 only; §§5/6/7 govern Key Concepts and What You'll Learn on a module file, scored by the strategy judge).",
       "fix_hint": null,
       "blocking": false
     },
@@ -111,7 +111,7 @@
       "rule_index": 6,
       "rule_lead": "Key Concepts shape — theme breadcrumbs, not standalone section.",
       "verdict": "N/A",
-      "evidence": "Same class split as §5. Flagging for the strategy judge's attention in `notes`: the block is now 5 lines against an internal maintainer note that says 'the four lines ARE the block, verbatim' (L134) — I corrected the note's stale count (see diff_summary) but the shape call on whether 5 lines still passes §6 belongs to the strategy judge.",
+      "evidence": "Same class split as §5, scored by the strategy judge. For context only: Key Concepts is 5 bullets (L65-69), confirmed by direct count this session (`sed -n '/^## Key Concepts/,/^<!--flag/p'`); the fifth bullet (L69) is new since ba5ccf5 per the maintainer block's own dated addendum (L141, 2026-08-23, 'Read the block as five lines').",
       "fix_hint": null,
       "blocking": false
     },
@@ -120,7 +120,7 @@
       "rule_index": 7,
       "rule_lead": "What You'll Learn shape — capability register, not syllabus.",
       "verdict": "N/A",
-      "evidence": "Same class split as §5/§6. What You'll Learn (L12-18) untouched by today's diff (`git diff ba5ccf5 HEAD` shows no hunk in that range).",
+      "evidence": "Same class split as §5/§6, scored by the strategy judge. What You'll Learn (L12-18) is outside every hunk in `git diff ba5ccf5..HEAD -- <file>` — unchanged this pin.",
       "fix_hint": null,
       "blocking": false
     },
@@ -129,7 +129,7 @@
       "rule_index": 16,
       "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
       "verdict": "PASS",
-      "evidence": "The done-done beat's forcing function (the 4-point audit: tests/acceptance/docs/security) lives entirely inside `{{prompt:ae101-m5-done-done}}` (registry file confirms the four points are only in the fence). Body prose (L28, L30, L34) explains WHY a done-done definition matters and what to do with it AFTER the audit, but never states the four points themselves — no leak. `## Inspect your results` (L72-78) still carries its pre-existing maintainer accept-note (L126) for the fenceless-by-design carve-out, unchanged by today's diff.",
+      "evidence": "The done-done beat's forcing function (the 4-point audit: tests/acceptance/docs/security) lives entirely inside the registry-sourced fence (`{{prompt:ae101-m5-done-done}}`, L32); read `curriculum/prompts/ae101-m5-done-done.md` fresh this session — the four points exist only in the prompt body, not restated in module prose. Body prose (L28, L34) explains WHY a done-done definition matters and what to do with the answer AFTER the audit, never states the four points themselves. `## Inspect your results` (L72-82) still carries its pre-existing maintainer accept-note (L126, unchanged) for its fenceless-by-design carve-out.",
       "fix_hint": null,
       "blocking": true
     },
@@ -138,7 +138,7 @@
       "rule_index": 27,
       "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
       "verdict": "PASS",
-      "evidence": "Ran `grep -nEi 'discuss|compare with|neighbou|the room|share what|tell the room|pair up|90 seconds|take a minute' <file>` against the current body (lines 1-121): zero matches. Validated the pattern isn't silently broken with a planted string (`printf 'take 90 seconds and compare with the person next to you' | grep -nEi '...'` → matches at line 1, confirming the zero above is real). The one hit anywhere in the file is L171, inside the maintainer block (Backpressure vocabulary note), not student-facing.",
+      "evidence": "Ran `sed -n '1,121p' curriculum/trainings/agentic-engineering-101/learn-from-the-test.md | grep -nEi 'discuss|compare with|neighbou|the room|share what|tell the room|pair up|90 seconds|take a minute|talk to'` this session on the current raw body → 0 matches, exit 1. Validated the pattern against a planted violation string (`printf 'take 90 seconds and compare with the person next to you' | grep ...` → 1 match at line 1), confirming the zero is real, not a broken grep.",
       "fix_hint": null,
       "blocking": false
     },
@@ -148,7 +148,7 @@
       "judge_owned": true,
       "rule_lead": "Whole-compendium scope call.",
       "verdict": "N/A",
-      "evidence": "check_workshop.md does not apply: no beat in this file has an output that belongs to the group rather than to the individual student. The done-done audit, worktree fork, diagnose-and-resend exercise and re-send are all individual work in the student's own session/worktree; no adjudication, attribution, or shared-record beat exists here. Per check_workshop.md's own trigger clause: 'Not triggered by: students doing individual work in the same room at the same time.'",
+      "evidence": "check_workshop.md does not apply: no beat in this file has an output belonging to the group rather than the individual student. The done-done audit, worktree fork, diagnose-and-resend exercise, and packaged re-send are all individual work in the student's own session/worktree; no adjudication, attribution, or shared-record beat exists anywhere in the file. Per check_workshop.md's own trigger clause: 'Not triggered by: students doing individual work in the same room at the same time.'",
       "fix_hint": null,
       "blocking": false
     }
@@ -159,17 +159,19 @@
     "any_below_8": false,
     "stealing_the_mood": []
   },
-  "teaching_moment": "M5's teaching moment is the contrast itself — the student can only name what packaging adds because they read their own un-packaged failure first, and it triggers across skill variation because the artefact is theirs and Phase 1 of diagnose-and-resend forces quoted moments rather than summary. Today's largest addition, the done-done opener, adds a second self-adjudicated data point on a different axis (completion criteria, not the three failure-mode lenses) without naming any packaging vocabulary early, so it feeds the contrast rather than diluting it. The teaching moment survives across a reasonable skill range: even a persona whose M4 session passed the done-done audit cleanly still meets goal drift / context rot / plausible-but-wrong in Phase 1, because those are a different failure axis the audit doesn't screen for.",
+  "teaching_moment": "M5's teaching moment is the contrast itself — the student can only name what packaging adds because they read their own un-packaged failure first, and it triggers across skill variation because the artefact is theirs and Phase 1 of diagnose-and-resend forces quoted moments rather than summary. The done-done opener adds a second self-adjudicated data point on a different axis (completion criteria, not the three failure-mode lenses) without spending any packaging vocabulary early — Ronacher's three-pattern still names only in the closer, confirmed by a zero-hit grep of the body this session — so it feeds the contrast rather than diluting it. Survives across a reasonable skill range: even a persona whose M4 session passes the done-done audit cleanly still meets goal drift / context rot / plausible-but-wrong in Phase 1, because those are a different failure axis the audit doesn't screen for.",
   "notes": [
-    "URGENT, out-of-lane (pedagogy/technical/cross_module territory, not a story-class rule): ran `node scripts/calculate-time.js learn-from-the-test` after today's edits. Total is 136 min against BOTH the `cohort-2day` cap (120, fixed slot 10:50-12:50 per `timings.md`) and the `sitting-2h` cap (120) — OVER by 16 min on each. Cross-checked the three sibling AE101 flagship modules with the same script: earn-the-trust 112 (FITS, 8 min float), run-the-first-experiment 105 (FITS, 15 min float), spot-gaps-build-the-loop 113 (FITS, 7 min float). learn-from-the-test is the only one of the four currently over cap. Today's diff adds 3 of the 16 minutes (the new done-done beat, charged at the `- **Transitions:**` line, L164); the other 13 minutes were already over before this diff (confirmed: 136 - 3 = 133, still over 120 by 13). Not flagged in `pre-cohort-todos.md` (grepped for 'learn-from-the-test' and 'M5' — no runtime/overrun item found) nor annotated anywhere in this file as an accepted, by-design overrun. One caveat before this is treated as an unconditional defect: the strategy doc's own § M5-in-detail 'Format dependency' section says 'M5 send-off runs through lunch (~75 min)' for the 2-day default shape, describing the packaged re-send as unattended agent time that may already be intended to run past the in-room slot boundary — I could not determine from the module file or `timings.md` whether `calculate-time.js`'s beat-kind model (`transition`/`lecture`/`exercise`) already accounts for that asymmetry or whether the OVER verdict is exactly the gap the schedule design is meant to absorb. Given it is the sole outlier among four sibling modules, computed by the corpus's own canonical, always-trusted script ('a cap is a container, not a verdict... computed, never typed' — `timings.md`), and worsened by today's own diff, this reads as real and worth a maintainer decision either way: trim ~16 min (candidates: the new done-done beat if judged cuttable, or the `reading-the-return` lecture's 5-min charge — recently raised from 0, per L166's Meta note), or annotate an accepted overrun with the lunch-overlap rationale so the script and future judges stop re-flagging it.",
-    "Fixed a stale internal accept-note (plainly wrong, corrected directly per this dispatch's standing permission, not carded): the maintainer block's 'Key Concepts (Antti-decided 2026-08-15)' note asserted 'the four lines ARE the block, verbatim' (L134). Commit history shows Antti reverted a different fifth bullet same-day citing this exact note (baa6bc88, 09:52) then added a new, different fifth bullet later the same day (db2a68a4, 16:19: 'The verifier, the reference artefact and the plan are compounding in a different shape from a rule...'). The note was never updated after the second commit, so it stated a false count against the shipped body (5 lines, not 4). Appended a dated correction (L141) rather than rewriting, preserving the original decision's reasoning and the shape rule it still carries. `diff_summary` and `body_sha` reflect this edit.",
-    "Non-blocking, for the strategy judge: §6 (Key Concepts shape) territory — the block grew from 4 to 5 lines today (db2a68a4) after an earlier attempt at a 5th line was reverted same day for violating the 'verbatim four lines' decision (baa6bc88). Both edits are Antti's own commits, so this reads as a superseding decision rather than a drift, but the strategy judge should confirm the new 5th line still satisfies §6's shape rules (ceiling of 1-3 breadcrumbs, no restated mechanics) independent of the stale-note question above, which I fixed on the count only.",
-    "Non-blocking, for the pedagogy judge: the done-done prompt hardcodes Antti's four points (tests/acceptance/docs/security) with no explicit forced-customization moment ('is this the right bar for YOUR repo?') — possible §32(a) territory (offered defaults get adopted verbatim). The maintainer block's own accept-note addresses adoption of the ARTEFACT ('student decides whether and where the definition lands') but not customization of the CONTENT of the four points themselves. Worth a pedagogy-class read; not scored here since §32 isn't in story's owned list.",
-    "Non-blocking, for the writing/technical/prompts judge: the body sentence immediately before `{{prompt:ae101-m5-done-done}}` (L30, 'This one runs in the session you sent off. Its answer lands in the transcript you are about to read.') doesn't mirror the prompt's opening clause ('Are we done-done?') per check_prompts.md §38, and doesn't read as a command-verb action lead-in per §2 ('Ask Claude to...' shape) — it's scene-setting (where it runs, what happens to the output) rather than a semantic summary of what the prompt asks. Not scored here: check_prompts.md's numbered rules aren't in story's owned list (only check_lectures is primary-owned; check_pedagogy/check_strategy_tie_in are scoped to the specific judgments listed in the template; check_prompts has no such carve-out stated, so I did not file rules_evaluated rows against it, consistent with the prior cached instance's practice).",
-    "Verified, not a defect: two internal-file changes in today's diff were spot-checked against their actual targets and hold up. (1) The 'Connections blocker' trainer-push link anchor changed from `#10-session-transcripts-read-what-actually-happened` to `#25-session-transcripts-default-location` — confirmed `claude-code-for-engineers.md` L365 is `## 25. Session transcripts: default location`, slug matches. (2) The Cherny hook-system citation changed from '§ 13' to '§ 34' — confirmed L478 is `## 34. Hooks: runtime extension points`. Both are mechanical link/locator fixes (page geometry), not card-shaped.",
-    "Verified, not a defect: the maintainer note change 'the source essay is the M3→M4 gap read (earn-the-trust.md § Pre-read before Module 4)' — confirmed `earn-the-trust.md` L100 carries da Costa's Backpressure essay under exactly that heading, and `run-the-first-experiment.md` L14 echoes it as a Module-3 callback. The claim is accurate.",
-    "Verified, not a defect: the sponsor-language removal in the maintainer block's Plug Points and Artefact Contracts sections (commit 27f92c59, 'sponsor-stated X' → 'the repo's own convention') is internal-only (below the maintainer fence, never student-facing) and matches the standing project memory `feedback_no_sponsor_prework_contract.md` ('No sponsor pre-engagement contract in AE101 — homes = the repo's own convention, default if none'). Positive correction, no action needed.",
-    "Persistent-TODO staleness (check_pedagogy §63, out of lane — flagging for whoever owns `pre-cohort-todos.md`): item 3 in that file's punch list ('The diff and the transcript are two different evidence layers... Action: new bullet in M5 `## Key Concepts`') recommended exactly the bullet Antti reverted in baa6bc88 ('the four lines are a verbatim echo... the bullet went in without it being read'). That punchlist item now reads as rejected-by-design, not open, but I did not edit `pre-cohort-todos.md` — out of this file's scope."
+    "Sim-cache freshness (re-checked this session): `curriculum/evals/sim-cache/ae101--module--learn-from-the-test.persona.json` (generated_at 2026-08-23T00:00:00Z). Reused its 8-phase mood read (phase_scores [8,8,8,null,9,9,8,8], close 8) after re-reading the current raw body against each phase's line range and confirming no phase's teaching content or mood-relevant wording has shifted since generation — the only textual change inside a phase range since the trace was written is L22's 'the lecture below' → 'the lecture ahead' (a single directional word fixed by an earlier commit for the reason that a slide has no 'below'), which has no bearing on comprehension or mood for a persona reading it for the first time. Per this dispatch's read-only constraint on the target file, did not write a merged trace back to the sim-cache file.",
+    "URGENT, out-of-lane (pedagogy/technical/cross_module territory, not a story-class rule), re-verified fresh this session: `node scripts/calculate-time.js learn-from-the-test` → Total 136 min against both the `cohort-2day` cap and `sitting-2h` cap (120 each) — OVER by 16 min on each. Re-ran the same script against the three sibling AE101 flagship modules: earn-the-trust 112 (fits), run-the-first-experiment 105 (fits), spot-gaps-build-the-loop 113 (fits) — learn-from-the-test remains the sole outlier. `pre-cohort-todos.md` still carries no bullet naming this file's runtime (grepped fresh: no match). Caveat unchanged: the strategy doc's own §M5 'Format dependency' section says the 2-day default's M5 send-off 'runs through lunch (~75 min)', which may already be the schedule's intended absorption of some overrun — can't tell from the module file or `timings.md` whether `calculate-time.js`'s beat model accounts for that. This is a repeat of a finding from a prior pass on this file; it remains true and unaddressed today.",
+    "Out-of-lane, for the check_prompts.md judge (not scored here — check_prompts rules aren't in story's owned list): `curriculum/prompts/ae101-m5-done-done.md`'s frontmatter note asserts 'Approved prompt-ok 2026-08-23,' and the registry file itself is committed (`git log` shows commit d6642b45 adding it), but no `.claude/prompt-approvals/ae101-m5-done-done.confirmed` marker exists anywhere in `.claude/prompt-approvals/` (checked via `find` and `ls`, verified this session) or in git history for that path (`git log --all -- .claude/prompt-approvals/ae101-m5-done-done.confirmed` returns nothing). check_prompts.md §22(e) requires the marker be written 'immediately' on approval as the durable approval record and the pre-commit hook's headless clear-path; its absence here means either the marker step was skipped or the file was named/placed differently. Not a story-class finding — flagging for the prompts judge to verify and, if genuinely missing, either write the marker retroactively or re-run the approval step.",
+    "Out-of-lane, for the technical/pedagogy judge: the Meta block's 'Prep / bridge timing' line (L169, 'Entis/Klaassen interview 30 min; Klaassen compound-engineering guide 15–20 min; Klaassen verifier article 10 min') doesn't list reading times for the two other prework pieces now confirmed present in `## Prework` (L10) — Mollick's Bitter Lesson piece (strategy doc gives ~10 min) and Clean Code Is Steering — nor for Verification asymmetry. Predates this diff in part (Clean Code + Verification asymmetry were already unlisted before ba5ccf5) but the Mollick addition makes the omission slightly worse. Documentary only; doesn't affect the 136-min in-room runtime figure above, which excludes optional prework.",
+    "Not a defect, re-verified fresh this session: the maintainer block's stale-count self-correction on Key Concepts (L134 says 'four lines... verbatim'; L141 dated 2026-08-23 says 'stale on the count... read the block as five lines') was already applied to the file before this read — confirmed present and the count it asserts (5 bullets, L65-69) matches the current body.",
+    "Non-blocking, for the strategy judge: the Key Concepts block's fifth bullet (L69, landed 2026-08-23 per the maintainer note) is new since ba5ccf5 and should get an independent §6 shape read (ceiling of 1-3 breadcrumbs, no restated mechanics) — scored §6 N/A here per this template's class split; flagging since it's new territory.",
+    "Non-blocking, for the pedagogy judge: the done-done prompt hardcodes Antti's four points (tests/acceptance/docs/security) with no explicit forced-customization moment ('is this the right bar for YOUR repo?') — possible §32(a) territory (offered defaults get adopted verbatim). The maintainer's accept-note (L124) addresses adoption of the ARTEFACT ('the student decides whether and where the definition lands') but not customization of the CONTENT of the four points. Not scored here — §32 isn't in story's owned list.",
+    "Non-blocking, for the writing/prompts judge: the body sentence immediately before the fence (L30, 'This one runs in the session you sent off. Its answer lands in the transcript you are about to read.') doesn't mirror the prompt's opening clause ('Are we done-done?') per check_prompts.md §38, and reads as scene-setting rather than a semantic action lead-in per §2. Not scored here — check_prompts.md rules aren't in story's owned list.",
+    "Verified fresh this session, not a defect: two locator changes since ba5ccf5 both resolve correctly. (1) `claude-code-for-engineers.md#25-session-transcripts-default-location` (L176) — confirmed that file's own heading is exactly `## 25. Session transcripts: default location`. (2) Cherny hook-system citation '§ 34' (L249) — confirmed that file's heading is exactly `## 34. Hooks: runtime extension points`. Both mechanical link/locator fixes, not card-shaped.",
+    "Verified fresh this session, not a defect: the Backpressure-vocabulary maintainer note (L173, 'the source essay is the M3→M4 gap read — earn-the-trust.md § Pre-read before Module 4') checks out — `earn-the-trust.md` carries exactly that heading with da Costa's essay cited under it, and `run-the-first-experiment.md`'s Prework section echoes it as a Module-3 callback under the `flag:module:earn-the-trust` variant.",
+    "Verified, not a defect: the sponsor-language removal in the maintainer block ('sponsor-stated X' → 'the repo's own convention', visible at L200-201/L294-297) is internal-only, below the maintainer fence, and matches the standing project memory `feedback_no_sponsor_prework_contract.md`."
   ],
   "blocking_findings_count": 0,
   "todos_count": 2

@@ -65,6 +65,12 @@ Proven patterns for how to research effectively. Promoted from observations when
 
 Each entry: cycle number, date, what the researcher learned about researching.
 
+### Cycle 194 — 2026-08-24
+
+Absence in official vendor changelogs is sometimes more informative than a positive finding: three GitHub changelogs covering August 2026 confirm Polaris did not ship as a forced default — the "model expansion" framing in the August 17 roundup directly contradicts the Build 2026 "replaces GPT-4 Turbo as default" announcement. This repositioned a stale Watch item without any practitioner interview needed.
+
+Behavioral pattern convergence (Opus 5 over-engineering) reached L3 from three surfaces before any single practitioner produced a definitive review — Theo's direct quote, a Reddit aggregation, and Every.to's root-cause analysis arrived independently and from different angles. Learning: behavioral convergence can be confirmed faster via multi-surface simultaneous search than by waiting for a single authoritative practitioner review. Waiting for Willison or Osmani to write the canonical post would have delayed a finding that multiple weaker-but-independent sources already confirmed.
+
 ### Cycle 193 — 2026-08-23
 
 Direct article fetch caught a zombie content problem that search-result summaries would have missed: arturmarkus.com published a "first €47M EU fines" story that search snippets presented as real enforcement news, but fetching the article revealed it "deliberately withholds company identities" and is speculative/fictional. Learning: for regulatory enforcement claims (especially firsts — "first fine," "first enforcement action"), always fetch the source directly rather than trusting the search snippet framing, because fictional/speculative AI-generated "news" is now mimicking real enforcement reporting closely enough to fool snippet-level review.

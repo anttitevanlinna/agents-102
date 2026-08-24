@@ -112,3 +112,32 @@ test('approvalGaps: reports every gap, sorted, not just the first', () => {
   };
   assert.deepEqual(approvalGaps(reg, new Set(['m-key'])), ['a-key', 'z-key']);
 });
+
+/*
+ * The asymmetry that makes this check machine-scoped. The frontmatter claim is
+ * TRACKED (curriculum/prompts/ is in git); the marker is NOT (.gitignore:5 ignores
+ * .claude/*). So a claim travels to every clone and its marker never does. On a
+ * fresh clone or in CI, every claiming prompt looks like a skipped step (e) and the
+ * gate goes red for no defect.
+ *
+ * The check is only meaningful where the evidence lives. A machine holding no
+ * approval records at all has no basis to judge — that is scoping, not fail-open:
+ * on the machine where approvals actually happen the directory is populated, so a
+ * skipped step (e) still fires there, which is the only place it can be skipped.
+ */
+const { approvalGapsScoped } = require('./lint-prompts.js');
+
+test('approvalGapsScoped: with markers present, a claim missing its own marker is a gap', () => {
+  const reg = { 'a-key': { note: 'approved prompt-ok' }, 'b-key': { note: 'approved prompt-ok' } };
+  assert.deepEqual(approvalGapsScoped(reg, new Set(['b-key'])), ['a-key']);
+});
+
+test('approvalGapsScoped: an empty marker store judges nothing — not this machine', () => {
+  const reg = { 'a-key': { note: 'approved prompt-ok' }, 'b-key': { note: 'approved prompt-ok' } };
+  assert.deepEqual(approvalGapsScoped(reg, new Set()), []);
+});
+
+test('approvalGapsScoped: one marker is enough to make the store authoritative', () => {
+  const reg = { 'a-key': { note: 'approved prompt-ok' } };
+  assert.deepEqual(approvalGapsScoped(reg, new Set(['unrelated-key'])), ['a-key']);
+});

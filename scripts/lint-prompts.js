@@ -39,6 +39,16 @@ function approvalGaps(registry, markers) {
     .sort();
 }
 
+// The claim is tracked, the marker is not (.gitignore ignores .claude/*), so a
+// claim reaches every clone while its marker stays on the machine that approved it.
+// A store holding nothing therefore has no basis to judge: scoping the check to
+// where its evidence lives, not opening a hole. On the machine where approvals
+// happen the store is populated, which is the only machine step (e) can be skipped on.
+function approvalGapsScoped(registry, markers) {
+  if (!markers || markers.size === 0) return [];
+  return approvalGaps(registry, markers);
+}
+
 function readMarkers() {
   try {
     return new Set(fs.readdirSync(APPROVALS_DIR)
@@ -126,14 +136,15 @@ function main() {
 
   // 3. A frontmatter note claiming approval owes its marker (§22e).
   const markers = readMarkers();
-  for (const key of approvalGaps(registry, markers)) {
+  for (const key of approvalGapsScoped(registry, markers)) {
     errors.push(`approval claimed with no marker: ${key} — frontmatter says prompt-ok, .claude/prompt-approvals/${key}.confirmed does not exist`);
     errors.push('  the marker is the durable record and pre-commit\'s only headless clear-path (check_prompts.md §22e)');
     errors.push('  do NOT write it to clear this — it records the maintainer\'s decision; ask them to confirm');
   }
 
   console.log(`Registry:    ${Object.keys(registry).length} prompts at ${path.relative(ROOT, REGISTRY_DIR)}`);
-  console.log(`Approvals:   ${markers.size} marker(s) at ${path.relative(ROOT, APPROVALS_DIR)}`);
+  console.log(`Approvals:   ${markers.size} marker(s) at ${path.relative(ROOT, APPROVALS_DIR)}`
+    + (markers.size === 0 ? ' — none on this machine, so approval claims are not checked here' : ''));
   console.log(`References:  ${refs.size} unique keys across ${files.length} curriculum .md files`);
 
   if (warnings.length) {
@@ -151,4 +162,4 @@ function main() {
 
 if (require.main === module) main();
 
-module.exports = { stripCodeMentions, findReferences, walkMarkdown, claimsApproval, approvalGaps, readMarkers, REFERENCE_RE };
+module.exports = { stripCodeMentions, findReferences, walkMarkdown, claimsApproval, approvalGaps, approvalGapsScoped, readMarkers, REFERENCE_RE };

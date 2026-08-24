@@ -63,7 +63,7 @@ Create `prework/module-2-start.md` in your training directory. Add:
 - the first source Claude can read about it, or the fallback you will use (identify it here; Module 2 handles the content);
 - the planning control you will use before Claude writes files: plan mode in Claude Code, or a plan-first request in Cowork.
 
-This file is the first handoff into your system. Module 2's opening interview turns the challenge line into `./challenge.md`. The memory build starts with the source line and uses the planning-control line before its first multi-file write. The note is not a spare checklist: each line has a named consumer, and the file stays behind as the record of where the system started.
+This file is the first handoff into your system. Module 2 will build `./challenge.md` from the challenge line, start its memory from the source line, and use the planning-control line before its first multi-file write. The note is not a spare checklist: each line has a named consumer, and the file stays behind as the record of where the system started.
 
 If one line is still blank, you now know exactly what to resolve before class. Do not fill the gap with a plausible answer. Name the fallback instead.
 
@@ -79,8 +79,8 @@ Module 2 takes that idea and applies it to your challenge. The memory will be sm
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-08-24 (writing@59ea5508 story@59ea5508 pedagogy@59ea5508 strategy@725101ec slides@59ea5508)
-- judges @59ea5508: writing PASS, story PASS, technical grandfathered, behavior grandfathered, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-24 (writing@05ca65cf story@05ca65cf pedagogy@05ca65cf strategy@725101ec slides@05ca65cf)
+- judges @05ca65cf: writing PASS, story PASS, technical grandfathered, behavior grandfathered, pedagogy PASS, strategy PASS, slides PASS
 
 **Time:** 37 minutes. 5 to choose the challenge, 5 to check connectors, 15 for the plan-mode primer, 2 for the readiness note, 10 for Karpathy.
 

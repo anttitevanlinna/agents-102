@@ -1,7 +1,7 @@
 {
   "class": "pedagogy",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/plan-mode-done-right.md",
-  "body_sha": "89ebb5069d6316e5df0f65935cbef44fa623ee3af9c282739c2bf81b5cfd1a3c",
+  "body_sha": "89319f55345a618107ef70d5ec887dd0e5672ef72ed955a537461e148e6b884d",
   "verdict": "PASS",
   "training": "ae101",
   "rules_evaluated": [
@@ -9,8 +9,8 @@
       "compendium": "check_pedagogy.md",
       "rule_index": 1,
       "rule_lead": "Walk-away test (M2+).",
-      "verdict": "PASS",
-      "evidence": "L211 (raw) P5 forcing function is 'approve, stop, do not execute' — M2 deliberately withholds execution; nothing in the diff (Willison pre-read trim, Next-line trim, two new maintainer notes) touches this. Unaffected.",
+      "verdict": "N/A",
+      "evidence": "Walk-away mechanic (student steps away while agent works) is authored inside the linked exercise files (push-back-on-the-plan.md P2 plan-mode wait, P4 walk-down), not in this module-index file's own body, which only links to them (raw L28-34). Nothing in this file's own authored prose (Save-the-rule / Leave-repo-tidier sections) requires continuous supervision either.",
       "fix_hint": null,
       "blocking": false
     },
@@ -19,7 +19,7 @@
       "rule_index": 2,
       "rule_lead": "50% magic rule (M3–M8).",
       "verdict": "N/A",
-      "evidence": "File is Module 2; rule scopes M3–M8 only.",
+      "evidence": "Rule scopes M3–M8 only. This file is Module 2.",
       "fix_hint": null,
       "blocking": false
     },
@@ -28,7 +28,7 @@
       "rule_index": 3,
       "rule_lead": "Trust the agentic design — no human backstops.",
       "verdict": "PASS",
-      "evidence": "L196 (raw) artefact-contract row: 'Claude reads M2 scrollback, proposes 3–5 rules, student rewrites or rejects at least one' — agent judgment named throughout. Only kept confirmation is the trust-line approve/keep-planning gate, matching the rule's own exception. Diff doesn't touch this.",
+      "evidence": "Grepped file for 'Antti observes/checks/reviews', 'manually verify', 'human review before' — zero hits. All decision points in body are framed as student's or Claude's own call: raw L42 'ask Claude to integrate that one branch... If no branch changed... ask Claude to say so and stop'; raw L60 'Ask Claude whether it met any of these.' The Push-back-moves/Per-phase tables (trainer coaching, raw L158-213) are recovery scaffolding for the room, not a design backstop replacing agent judgment — matches the rule's own confirmation-at-trust-line exception (P5 approve/stop gate).",
       "fix_hint": null,
       "blocking": false
     },
@@ -37,7 +37,7 @@
       "rule_index": 4,
       "rule_lead": "Quality ladder.",
       "verdict": "N/A",
-      "evidence": "Portfolio-level 7/8/9-rung distribution across the corpus; not a single-file property.",
+      "evidence": "7/8/9 numeric quality-rung scoring is an editorial/cross-class-audit judgment (voice, story, mood), not a static textual pattern this architecture read can verify. Quality line (raw L144) shows compendium-audited 2026-08-23, all seven per-class judges PASS — consistent with ship-bar attainment, not independently re-derived here.",
       "fix_hint": null,
       "blocking": false
     },
@@ -46,7 +46,7 @@
       "rule_index": 6,
       "rule_lead": "One exercise = one bounded activity.",
       "verdict": "N/A",
-      "evidence": "No exercise file (curriculum/exercises/*.md) touched by this diff. Both module-body close-ritual sections ('Save the rule' L36-50, 'Leave the repo tidier' L52-62) are accepted-by-design as unextracted per §52a below, not exercises.",
+      "evidence": "This module-index file contains no exercise body of its own — it links to curriculum/exercises/push-back-on-the-plan.md and extract-the-task-shaping-rule.md (raw L32, L34), whose internal activity-boundary architecture is out of this file's scope. The module's own two close-ritual sections ('Save the rule if it earned itself' raw L36-50, 'Leave the repo tidier than you found it' raw L52-62) are body prose with fenced prompts, confirmed accepted-by-design as NOT unextracted exercises under §52a (see below) — so they are not 'exercises' this rule's unit applies to either.",
       "fix_hint": null,
       "blocking": false
     },
@@ -55,7 +55,7 @@
       "rule_index": 7,
       "rule_lead": "Modules composable across variants.",
       "verdict": "PASS",
-      "evidence": "L85/L93/L97 (raw): `<!--flag:module:earn-the-trust-->` / `<!--flag:no-module:earn-the-trust-->` VARIANT markers correctly wrap both Pre-reads blocks. The diff's edit to the Willison 'Designing agentic loops' entry (L91, trailing clause cut) lands inside the M3-flagged copy only; the pre-existing M4-flagged copy at L97 is untouched and still carries its own independent wording. No fork introduced — the two copies were already worded differently by design (per L157 expanded maintainer note) and stay that way.",
+      "evidence": "Raw L85/93/97/101/107: two matched VARIANT-flag pairs (`<!--flag:module:earn-the-trust-->`/`<!--flag:no-module:earn-the-trust-->`), used twice — once wrapping the alternate 'Pre-reads before Module 3' vs 'before Module 4' blocks, once wrapping the alternate '## Next' closings. Ran `grep -c` on each of the four marker strings in this session: 2/2/2/2, balanced. No forked full-file duplication — single file carries both cuts via markers, matching the rule's 'no forks — VARIANT markers inside library files' requirement.",
       "fix_hint": null,
       "blocking": false
     },
@@ -64,7 +64,7 @@
       "rule_index": 8,
       "rule_lead": "Three-level completeness.",
       "verdict": "PASS",
-      "evidence": "L193-199 (raw) Artefact contracts table (task-shaping rule file / personal rules update / plan file) unchanged by this diff, still spans strategy-frame → runtime artifact → sendable asset.",
+      "evidence": "Artefact contracts table (raw L193-199) names three runtime artefacts with Produced-by/Consumed-by rows reaching forward to M3/M4 (task-shaping rule file, CLAUDE.local.md update, plan file) — strategy frame (Big Idea/Key Concepts) → runtime artefact the student holds → asset consumed by a later module, satisfying the completeness chain at module-file scope. Cross-checked one row's downstream claim directly against earn-the-trust.md L12 ('The plan file Claude Code wrote during plan mode is what M3 reads') — verified accurate, not just asserted.",
       "fix_hint": null,
       "blocking": false
     },
@@ -73,7 +73,7 @@
       "rule_index": 9,
       "rule_lead": "Pattern-recognition LOs need n≥2 instances with contrast.",
       "verdict": "PASS",
-      "evidence": "L21 LO 'Spot approval inflation in a plan whose structure makes it look decided' is backed by the paired first-read/regenerated-read contrast at L207 (raw) 'P3 softening on regeneration — Claude acknowledges the push-back but re-softens the flagged step.' Unchanged by this diff.",
+      "evidence": "LO at raw L21, 'Spot approval inflation in a plan whose structure makes it look decided,' is a pattern-recognition verb. Verified in the linked exercise (curriculum/exercises/push-back-on-the-plan.md): Phase 5 heading 'Stop, then surface the patterns' + section 'Compare what each read caught' explicitly contrasts what the human push-back read caught against what the agent's walk-down caught, and the exercise's own maintainer block names 'plan-mode approval inflation' as the P5 label the student arrives at only after comparing — n≥2 contrasting instances (human read vs. agent walk-down) genuinely present, not merely declared.",
       "fix_hint": null,
       "blocking": false
     },
@@ -82,7 +82,7 @@
       "rule_index": "9b",
       "rule_lead": "Progression-with-variations is the spine.",
       "verdict": "PASS",
-      "evidence": "Within this file, 'Leave the repo tidier' (L52-62, shared-repo hygiene) is a different face of the compounding move than 'Save the rule' (L36-50, personal rule file) — not a verbatim repeat. Cross-module face-tracking is cross_module's lane.",
+      "evidence": "Within this file, 'Leave the repo tidier than you found it' (raw L52-62, fixes shared repo context at source, no file write) is a distinct face of the compounding move from 'Save the rule if it earned itself' (raw L36-50, writes a personal rule to CLAUDE.local.md) — not a verbatim repeat. Maintainer note (raw L129, 'Boy Scout slide') states the second was added specifically because compounding had drifted toward rules-only, i.e. an explicitly reasoned new face. Cross-module face-tracking against M1's compound move is cross_module's lane, not scored here.",
       "fix_hint": null,
       "blocking": false
     },
@@ -91,7 +91,7 @@
       "rule_index": 10,
       "rule_lead": "Student agency — adults decide.",
       "verdict": "PASS",
-      "evidence": "L60 (raw expanded 'Or none, if nothing did' inside the fenced prompt at L62/L77 expanded) keeps the opt-out register consistent with L46 'If no branch changed how you'd read the next plan, ask Claude to say so and stop.' No forced-pacing language in the diff.",
+      "evidence": "No forced-pacing language found (grepped for count/duration imperatives — zero hits in body). Explicit opt-in/opt-out framing throughout: raw L42 'If a branch... ask Claude to integrate... If no branch changed... ask Claude to say so and stop'; raw L50 'Feel free to jump direct at the diff... optional reading'; raw L76 'Optional challenges — Pick one when plan mode feels too comfortable.'",
       "fix_hint": null,
       "blocking": false
     },
@@ -100,7 +100,7 @@
       "rule_index": 11,
       "rule_lead": "Delegation — student brings, Claude screens.",
       "verdict": "PASS",
-      "evidence": "L62 tidier prompt asks Claude to report on the session it JUST ran (full access by construction) — squarely the 'agent has access + judgment' branch. Diff doesn't touch this prompt.",
+      "evidence": "Every 'ask Claude to X' step operates on session-local context Claude already has by construction: raw L38 auto-load check (session context), raw L42/44 integrate-branch (this session's own scrollback), raw L60/62 tidier check (the session Claude just ran). No delegation to an inaccessible surface (no Jira/Linear/wiki ask). Student retains the pick/reject judgment throughout: L42's 'if a branch... sharpened' is the student's call on relevance; L48 forces a specificity check on Claude's proposed generalization.",
       "fix_hint": null,
       "blocking": false
     },
@@ -108,8 +108,8 @@
       "compendium": "check_pedagogy.md",
       "rule_index": 12,
       "rule_lead": "Split mega-exercise when phases = distinct skills + distinct artifacts.",
-      "verdict": "N/A",
-      "evidence": "No exercise phases merged or split by this diff; the two formal exercises (push-back-on-the-plan, extract-the-task-shaping-rule) are untouched.",
+      "verdict": "PASS",
+      "evidence": "Two separate exercise files linked (raw L32, L34: Push back on the plan / Extract the task-shaping rule), not one mega-exercise — distinct skills (push-back-and-approve vs. rule-extraction) with a natural pause between, chained by artefact per the Artefact-contracts table (raw L197: Exercise 2 consumes 'M2 scrollback' from Exercise 1). Matches the rule's own counter-test (narrative survives via artifact chaining) at the granularity visible in this file; the internal phase-count decision inside each exercise file is out of scope.",
       "fix_hint": null,
       "blocking": false
     },
@@ -118,7 +118,7 @@
       "rule_index": 13,
       "rule_lead": "Artifact-realism check.",
       "verdict": "PASS",
-      "evidence": "L56-58 Boy Scout bullets name README/ADR/'the module's own doc' generically, not as a specific required tool that might be absent. Diff doesn't add a new named tool/connector.",
+      "evidence": "Verified on disk this session: all six linked lecture/exercise files exist (the-whole-map.md, when-a-plan-is-good.md, push-back-on-the-plan.md, extract-the-task-shaping-rule.md, where-the-rule-could-live.md, how-instructions-grow.md), both reference pages exist (multi-session-git.md, claude-code-for-engineers.md) and the anchor `#9-plan-mode-at-depth` resolves to a real heading ('## 9. Plan mode at depth', verified via grep). Named rule-home paths (raw L185/197: `./CLAUDE.local.md`, `~/.claude/CLAUDE.md`, `.claude/rules/`, `~/.claude/rules/`) are real, shipped Claude Code conventions, no unshipped connector/tool named.",
       "fix_hint": null,
       "blocking": false
     },
@@ -127,7 +127,7 @@
       "rule_index": 14,
       "rule_lead": "Teach principle + technique — default.",
       "verdict": "PASS",
-      "evidence": "L54 'The Boy Scout rule: leave the campground tidier than you found it... it fixes things for everyone with nothing loaded' explains the idiom's WHY in the same breath it's invoked. Diff doesn't touch this.",
+      "evidence": "The one named-but-unexplained-sounding term, 'Argyris called double-loop learning' (raw L74, Key Concepts), is a post-hoc NAME for a move the student just performed in the same sentence ('Fixing the plan is the first loop; changing the rule that shaped it is the second') — the orientation carve-out (naming what was already demonstrated, not invoking something unexplained). The Ctrl+G plan-file-edit mention (raw L174, trainer Watch-fors) is meta content about a NEXT-TIER move explicitly deferred to Debrief-acknowledgment only, never asked of the student in body — doesn't trigger the rule (nothing unexplained is being invoked).",
       "fix_hint": null,
       "blocking": false
     },
@@ -136,7 +136,7 @@
       "rule_index": 15,
       "rule_lead": "Auto-fire sim+eval after significant rewrite.",
       "verdict": "PASS",
-      "evidence": "Pinned diff (7fb973dd..HEAD) is a small prose trim + two dated maintainer notes, not a phase-structure/LO/mood-contract/forcing-function-mechanic change — §15's trigger list isn't tripped, so no fresh auto-fire was owed for THIS diff. The Quality line (L144 raw) shows the compendium sweep firing anyway on 2026-08-23, consistent with the rule's spirit.",
+      "evidence": "Quality line (raw L144) shows compendium-audited 2026-08-23 with per-class SHAs current (pedagogy@7fb973dd, etc.), consistent with the auto-fire discipline having run after the day's edits. This pedagogy re-fire is itself part of that same discipline (dispatched per the task brief after a prior instance was invalidated).",
       "fix_hint": null,
       "blocking": false
     },
@@ -145,7 +145,7 @@
       "rule_index": 16,
       "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
       "verdict": "PASS",
-      "evidence": "L62 the tidier ask lives inside `{{prompt:ae101-m2-tidier}}`, not body prose. Body (L54-60) carries only category framing and opt-out register, no bare imperative count. Diff's two new maintainer notes (L111, L113) don't add scripted-reaction body prose either — one is about a challenge-bullet verb choice, the other about a cut clause.",
+      "evidence": "All three forcing functions in this file's own body live in fences: `{{prompt:push-back-on-the-plan-4}}` (raw L40, 'are these rules auto-loaded'), `{{prompt:ae101-m2-integrate-branch}}` (raw L44, the conditional integrate-or-stop instruction), `{{prompt:ae101-m2-tidier}}` (raw L62, 'Did this session run into planning gaps... Name each one... Or none'). Surrounding body prose (raw L42, L56-58) sets up CONDITIONS ('if a branch sharpened...') and taxonomy (planning gaps / conflicting info / other context), not duplicate executable instructions. Two body blockquotes read as candidate forcing functions but both resolve to carve-outs: raw L46 (recovery move, non-obvious rescue, explicitly maintainer-approved at raw L127 as a check_student_facing §5 boundary case) and raw L48 (optional specificity-refinement, conditional register 'If the saved rule could apply to any codebase, ask...', matching §16's own 'optional refinements... can live in body' carve-out). raw L56-57's 'Write it down...'/'Pick the truth and delete the rest' are non-gated guidance — maintainer note (raw L129) confirms 'Fixing is the student's call, in-session or never; do not add a fix-it prompt or a done-means criterion,' i.e. explicitly not a forced gate.",
       "fix_hint": null,
       "blocking": false
     },
@@ -154,7 +154,7 @@
       "rule_index": 17,
       "rule_lead": "Corporate infra = nice-to-have, never forcing function.",
       "verdict": "PASS",
-      "evidence": "L56 'the README, an ADR, the module's own doc' are offered as options, not mandated; the whole beat stays optional per L129 (expanded maintainer) 'Fixing is the student's call, in-session or never.'",
+      "evidence": "Rules-home options named throughout (raw L185, L197) are all personal/local paths (`./CLAUDE.local.md`, `~/.claude/CLAUDE.md`, `.claude/rules/`, `~/.claude/rules/`) — no MCP/shared-repo/ADR/SSO/connector framed as required. The one team-facing artefact reference (story ticket, via the linked exercise's LO at raw L22) has a verified personal fallback in that exercise ('No tracker this session can reach? Paste the fields instead of the link') — checked in curriculum/exercises/extract-the-task-shaping-rule.md this session.",
       "fix_hint": null,
       "blocking": false
     },
@@ -162,17 +162,17 @@
       "compendium": "check_pedagogy.md",
       "rule_index": 18,
       "rule_lead": "Personal-first, team promotion via human conversation.",
-      "verdict": "REVISE",
-      "evidence": "HARM this rule prevents: curriculum modeling a student unilaterally deleting shared team documentation (a comment, an ADR) with no team-conversation step, contradicting the personal-first/flag-before-PR discipline this same file establishes three lines above. PRESENT: L57 'Conflicting information. Two docs that disagree, a comment that contradicts the code, an ADR nobody retired. Pick the truth and delete the rest.' is an unqualified DELETE instruction on shared artefacts, with no flag-for-team language — in visible contrast to L53 (unchanged, same file) which threads this needle explicitly: 'Flag if it's team-worthy so I can open a separate PR against ./CLAUDE.md later.' Sibling bullet L56 ('Write it down where the next planner will read it') is additive and lower-risk, which is why it doesn't draw the same concern — only the destructive bullet does. Still open: no maintainer note (checked all of L111-131 expanded, including the dated 2026-08-23 Boy Scout note at L129) addresses this specific gap; that note reasons about position, prompt design, and fix-it exclusion, not about the team-conversation step for a destructive edit. Pre-existing (not introduced by this diff), first surfaced in a prior pedagogy pass and still unaddressed at current HEAD.",
-      "fix_hint": "Soften L57 to name a flag/PR step before deleting shared content, matching the file's own L53 pattern, e.g. 'Pick the truth, flag the other for the team, and delete only what's clearly yours to delete.'",
+      "verdict": "PASS",
+      "evidence": "Fenced compound prompt (expanded L51-53, `ae101-m2-integrate-branch`) writes to `./CLAUDE.local.md` explicitly framed as 'personal file, not team ./CLAUDE.md' with an explicit PR-flag step: 'Flag if it's team-worthy so I can open a separate PR against ./CLAUDE.md later' — verbatim match to §18(b)'s personal-first-then-flag-then-PR shape. Considered whether raw L57's 'Pick the truth and delete the rest' (Leave-the-repo-tidier bullet, conflicting docs/ADRs) needs the same flag-before-PR treatment: it doesn't trigger the rule's harm — no agent unilaterally promotes or changes shared team infra here; the maintainer note (raw L129) confines this whole beat to Claude naming issues only ('do not add a fix-it prompt'), and any actual deletion is the student's own ordinary repo-hygiene judgment on a repo they already have write access to, not an agent-authored skill/ADR-template/review-checklist being pushed team-wide without conversation — the shape §18(b) actually protects against. Treating a routine stale-comment/ADR cleanup as needing a flag-and-PR ceremony would be a worse pedagogical fit, not a better one.",
+      "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_pedagogy.md",
       "rule_index": 19,
       "rule_lead": "Measure silent failure, not just friction.",
-      "verdict": "N/A",
-      "evidence": "Cohort-experience measurement judgment; not a static single-file architecture property.",
+      "verdict": "PASS",
+      "evidence": "Mood target (raw expanded L154 / raw L154) Watch-for/Diagnostic/Fix triad names the exact silent-failure shape by design: watch for mood drift toward 'the second read did everything; my push-back was pointless' — a frictionless-feeling completion masking a missed push-back skill — with a diagnostic (student at P5 reports the second-pass read caught everything) and a named fix (trainer surfaces the contrast). This is trainer-meta content in this file, but it directly satisfies the rule's 'name silent failure distinctly' requirement rather than only tracking friction.",
       "fix_hint": null,
       "blocking": false
     },
@@ -181,7 +181,7 @@
       "rule_index": 20,
       "rule_lead": "Don't pre-set categories before experiment runs.",
       "verdict": "N/A",
-      "evidence": "Not an evaluation-design context; this file is curriculum body.",
+      "evidence": "Evaluation-methodology rule about post-hoc cohort-evidence categorization; this is curriculum body/maintainer content, not an experiment-design artefact that pre-specifies outcome categories.",
       "fix_hint": null,
       "blocking": false
     },
@@ -189,8 +189,8 @@
       "compendium": "check_pedagogy.md",
       "rule_index": 21,
       "rule_lead": "Verification layers sample DIFFERENT error distributions — not belt-and-braces.",
-      "verdict": "N/A",
-      "evidence": "No verification layer added or removed by this diff.",
+      "verdict": "PASS",
+      "evidence": "Quality block (raw L144-146) shows seven distinct per-class judges plus a separate cross_module module-set check actually exercised (not collapsed to a single pass-and-done layer), consistent with the rule's multi-layer requirement; no body text declares any single layer sufficient.",
       "fix_hint": null,
       "blocking": false
     },
@@ -199,7 +199,7 @@
       "rule_index": "21b",
       "rule_lead": "Cheap-before-expensive verification ordering.",
       "verdict": "N/A",
-      "evidence": "No verification ladder touched by this diff.",
+      "evidence": "General eval-architecture ordering rule (compendium → sim → mechanical → cohort → battle); no verification-layer sequencing claim is made in this student-facing/maintainer file to check against it.",
       "fix_hint": null,
       "blocking": false
     },
@@ -208,7 +208,7 @@
       "rule_index": 22,
       "rule_lead": "Rule in memory without forcing function = worse than no rule.",
       "verdict": "N/A",
-      "evidence": "Governs check_*.md memory-entry authoring, not a curriculum file's own architecture.",
+      "evidence": "Governs check_*.md memory-entry design (this compendium's own rule-authoring discipline), not curriculum-file content.",
       "fix_hint": null,
       "blocking": false
     },
@@ -217,7 +217,7 @@
       "rule_index": 23,
       "rule_lead": "Short skeptical pushback on \"done\" = re-verify trigger.",
       "verdict": "N/A",
-      "evidence": "Governs re-verification behaviour on a 'done' claim in conversation; not a static-file property.",
+      "evidence": "Governs generator/judge conversational behaviour on a maintainer's skeptical pushback, not a static property of this file.",
       "fix_hint": null,
       "blocking": false
     },
@@ -226,7 +226,7 @@
       "rule_index": 24,
       "rule_lead": "Cohort execution is trainer-paced + concurrent, not sequential.",
       "verdict": "PASS",
-      "evidence": "L150 (expanded maintainer) 'Trainer demos slowly, room copy-pastes concurrently' unchanged by this diff.",
+      "evidence": "Pacing line (raw L150) states the model verbatim: 'Trainer demos slowly, room copy-pastes concurrently. Self-study follow-along runs comparably; simple-prompting beats are quick.' 'No charge on push-back-on-the-plan' (raw L152) correctly delegates the one long-agent-wait exception's rationale to the exercise file rather than double-booking it here.",
       "fix_hint": null,
       "blocking": false
     },
@@ -235,7 +235,7 @@
       "rule_index": 25,
       "rule_lead": "Host-skill optional; maintainer blocks trainer-only.",
       "verdict": "PASS",
-      "evidence": "Push-back moves and Per-phase-failure-mode tables consistently name 'Trainer:' as the actor (e.g. L159 raw 'Trainer runs three-candidate conversation'). Diff introduces no host-skill language.",
+      "evidence": "Push-back moves (raw L158-167) and Per-phase failure mode table (raw L201-213) name 'Trainer' as sole actor throughout ('Trainer runs three-candidate conversation', 'Trainer push: ...') — matches the mandated maintainer-block format exactly. Grepped the file for host-skill / Nerd-push / dual-actor language this session: zero hits.",
       "fix_hint": null,
       "blocking": false
     },
@@ -244,7 +244,7 @@
       "rule_index": 26,
       "rule_lead": "Reflection beats: in-chat over file-write.",
       "verdict": "PASS",
-      "evidence": "Tidier prompt (L62) asks Claude to report in chat, no file write required. Unchanged by this diff.",
+      "evidence": "The tidier prompt (raw L62) reports findings in chat, no file write required for the check itself. The one body-prose file-write ask — raw L56, 'Write it down where the next planner will read it: the README, an ADR, the module's own doc' — targets real future readers (a colleague, a future planner, human or agent) doing ordinary repo documentation, not a reflection-proof artifact; maintainer note (raw L129) confirms it's optional and ungated, consistent with legitimate repo hygiene rather than a facilitator comfort-blanket write.",
       "fix_hint": null,
       "blocking": false
     },
@@ -253,7 +253,7 @@
       "rule_index": 27,
       "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
       "verdict": "PASS",
-      "evidence": "No group/pair/room-share language anywhere in the file, diff included — both new maintainer notes (L111, L113) are internal rationale, not body prose, and the body edits (L91, L105) are prose trims with no cohort-management language added.",
+      "evidence": "Grepped live body this session for discuss-with/pair-up/share-with/the-room/group-of language: the only hit is inside the maintainer block, quoting a CUT sentence ('Everyone names a moment first...', raw L117) as a record of what was removed — not live prose. Every live body sentence names work (task, prompt, artefact, next action), matching §27's diagnostic; no authored pause-cue or trainer-cue sentence in body.",
       "fix_hint": null,
       "blocking": false
     },
@@ -262,7 +262,7 @@
       "rule_index": 29,
       "rule_lead": "Eval = fixed yardstick; thing measured learns.",
       "verdict": "N/A",
-      "evidence": "No eval/scoring loop is described in this curriculum file.",
+      "evidence": "No eval-scorer loop is described anywhere in this curriculum file's own content.",
       "fix_hint": null,
       "blocking": false
     },
@@ -271,7 +271,7 @@
       "rule_index": 30,
       "rule_lead": "Reading burden for verification = banned. Claude audits Claude.",
       "verdict": "PASS",
-      "evidence": "Tidier ask ('Name each one and where the fix belongs') is Claude reporting session facts in chat, not the student manually diffing Claude's output. Unchanged by this diff.",
+      "evidence": "raw L50 ('Feel free to jump direct at the diff in ./CLAUDE.local.md; Claude's preamble is optional reading') is a one-paragraph ownership check ('does this match what I meant'), not a correctness/error hunt across a large diff — the fence spec itself (expanded L51) caps the artefact at 'one paragraph... no narrative, no multi-section headers', so there is nothing burdensome to read. This is the light §31(a) verify-at-artifact move the compendium itself prescribes, distinct from the banned heavy Claude-on-Claude correctness-diffing this rule targets pre-M5. raw L46's 'ask Claude to confirm it added the rule and kept the old ones' asks the STUDENT to ask CLAUDE to self-report, not to manually read/diff — doesn't trigger this rule at all (governed by §31 instead).",
       "fix_hint": null,
       "blocking": false
     },
@@ -280,7 +280,7 @@
       "rule_index": 31,
       "rule_lead": "Self-report + self-audit charity — verify at artifact, over-flag or fresh-session for critique.",
       "verdict": "PASS",
-      "evidence": "File-wide: the sibling 'Save the rule' beat carries a self-report-charity mitigation (L48 'Claude may reframe the session into a smart-sounding general rule... ask for one specific to this session'), showing the discipline exists in the file generally. The specific gap in the tidier beat is the closer-fitting §50 finding below, not duplicated here.",
+      "evidence": "raw L50 ('jump direct at the diff') is the verify-at-artifact move §31(a) prescribes; raw L44's fence ('show me which branch you picked, the moment that earned it, and why') is a copyable-transparency ask, not a bare-summary trust. raw L48 forces a specificity push-back on Claude's proposed generalization (self-audit-charity-adjacent, on the CLAUDE.local.md rule). The comparable self-report-charity gap on the DIFFERENT fenced prompt in 'Leave the repo tidier' (raw L62, Claude self-reporting on its own session's mistakes with no acknowledgment or push-back offered) is the closer-fitting §50 finding below (self-charity named as one of that rule's three explicit trigger shapes) — not duplicated here to avoid two rows crediting one underlying gap.",
       "fix_hint": null,
       "blocking": false
     },
@@ -288,8 +288,8 @@
       "compendium": "check_pedagogy.md",
       "rule_index": 32,
       "rule_lead": "Offered structures need forced-engagement mechanic.",
-      "verdict": "N/A",
-      "evidence": "L56-58 tidier bullets are a taxonomy Claude searches against, not a structured default (rules, plan) offered to the STUDENT to adopt verbatim.",
+      "verdict": "PASS",
+      "evidence": "§32(a) offered-defaults: raw L48 forces a specificity-customization check on any Claude-proposed rule ('If the saved rule could apply to any codebase, ask for one specific to this session') before it's accepted as-is. §32(b) plan-mode approval: raw L69 Key Concepts bullet names the exact risk verbatim ('A 7-item plan with headers looks like a decision even when it's a draft. Assume about 10% of it is wrong and go find which part') paired with the linked exercise's own forced two-push-back mechanic (verified: push-back-on-the-plan.md Phase 3 'Push back twice', §16's carve-out permits declaring but not duplicating that forcing function here).",
       "fix_hint": null,
       "blocking": false
     },
@@ -298,7 +298,7 @@
       "rule_index": 33,
       "rule_lead": "Source-type blindness on ingestion.",
       "verdict": "N/A",
-      "evidence": "No heterogeneous source-folder/slide-deck ingestion scenario in this file.",
+      "evidence": "No heterogeneous source-folder / slide-deck (PPTX/PDF) ingestion beat exists in this module; all cited sources are individually named web links, not a bulk-ingest scenario.",
       "fix_hint": null,
       "blocking": false
     },
@@ -307,7 +307,7 @@
       "rule_index": 34,
       "rule_lead": "Task selection drives outcome → name floor AND ceiling.",
       "verdict": "PASS",
-      "evidence": "L12 and L103 (raw) mandated bolded ceiling lines ('A task that spans a few files. Not an epic.' / 'Pick one scoped task you'd send off rather than nudge bit by bit: a real slice. Bigger than a typo-fix, smaller than an epic.') both unchanged by this diff. The diff trims L105's elaboration sentence (removes '\"done\" you can say in one sentence' from the criteria list) but leaves the floor ('hours of agent work, not minutes; several files, with requirements that have to be woven together') and ceiling (bold callout above) both fully intact — the trim doesn't touch the mandated bold line. Accepted-by-design per L119 (expanded) maintainer note covering both bolded callouts explicitly.",
+      "evidence": "Two mandated bolded anti-pattern lines present and unsoftened: raw L12 '**A task that spans a few files. Not an epic.**' (Prework) and raw L103 '**Pick one scoped task you'd send off rather than nudge bit by bit: a real slice. Bigger than a typo-fix, smaller than an epic.**' (Next). Both name floor AND ceiling explicitly, no minimizer language ('just a simple') present in either. Already logged accepted-by-design in the file's own maintainer block (raw L119) against a sibling slides-judge false positive — independently confirmed correct here.",
       "fix_hint": null,
       "blocking": false
     },
@@ -315,8 +315,8 @@
       "compendium": "check_pedagogy.md",
       "rule_index": "34b",
       "rule_lead": "Maintainer-block hedge naming section's own failure mode = cut-signal, not warning.",
-      "verdict": "N/A",
-      "evidence": "No new Watch-for/hedge language undermining its own section's premise was added by this diff; the two new notes (L111, L113) are decision records, not hedges.",
+      "verdict": "PASS",
+      "evidence": "Scanned every maintainer-block Watch-for/hedge/caveat line for a premise-undermining hedge. The one candidate — raw L142's OWASP 'Scope caveat that will matter at re-check' (org rename to GenAI Security Project) — passes the premise-test cleanly: removing the hedge, the optional-deeper-scan link is still fully defensible ('Broader checklist covering prompt injection, insecure output handling, data leakage'). The caveat is source-freshness bookkeeping on a stable, still-resolving link, not propping up a shaky pedagogical claim — correctly a §34-style callout candidate at most (and already handled as such), not a §34b cut-signal.",
       "fix_hint": null,
       "blocking": false
     },
@@ -325,7 +325,7 @@
       "rule_index": 35,
       "rule_lead": "Audience tier determines authoring substrate.",
       "verdict": "PASS",
-      "evidence": "Engineer-tier substrate (`./CLAUDE.local.md`, `.claude/rules/`) unchanged and consistent with AE101's authored-plugin/multi-layer-CLAUDE.md tier throughout.",
+      "evidence": "Rule-home options (raw L185/197) use the AE101 engineer-tier substrate exactly — multi-layer CLAUDE.md hierarchy (`./CLAUDE.local.md`, `~/.claude/CLAUDE.md`, `.claude/rules/`, `~/.claude/rules/`) — not a plain-paste .md file (Claude Basics tier) or a Cowork-skill install (Agents 101 tier). Consistent throughout the file, no tier-mixing found.",
       "fix_hint": null,
       "blocking": false
     },
@@ -334,7 +334,7 @@
       "rule_index": 36,
       "rule_lead": "Verification machinery needs smoke-test before trust.",
       "verdict": "N/A",
-      "evidence": "No hook, judge, gating skill, or Ralph loop introduced by this diff.",
+      "evidence": "No new verification machinery (hook, judge, Ralph loop, eval, gating skill) is introduced for student use anywhere in this module — plan mode and push-back are existing shipped Claude Code features being taught, not new tooling being built.",
       "fix_hint": null,
       "blocking": false
     },
@@ -342,8 +342,8 @@
       "compendium": "check_pedagogy.md",
       "rule_index": 37,
       "rule_lead": "Context-loading tiers as staged progression.",
-      "verdict": "N/A",
-      "evidence": "The Boy Scout section teaches documentation hygiene, not Claude Code's load-tier surfaces — that ground is carried by the unchanged Plug points/Artefact-contracts rows.",
+      "verdict": "PASS",
+      "evidence": "raw L38 fires the canonical auto-load proving question near-verbatim ('Ask Claude whether these rules are auto-loaded into each session') — exactly §37's prescribed tier-1 proving surface. raw L185/197 correctly distinguish auto-load paths from explicit-load-only paths and name the `@import` upgrade mechanism ('only loads when a prompt names the path or an @import line... pulls it in') — tier 1 (auto-load) and tier 3 (explicit-load) both correctly proven via the surface that demonstrates them, not merely lectured.",
       "fix_hint": null,
       "blocking": false
     },
@@ -352,7 +352,7 @@
       "rule_index": 39,
       "rule_lead": "Removals are strategic — ask before cutting.",
       "verdict": "PASS",
-      "evidence": "Two removals this diff: (1) L91 Willison pre-read's trailing 'Module 3 draws that boundary for your own repo' clause, with dated Antti-directed accept-note at L113 citing the specific rule (`check_student_facing.md §33` predicate-leak) and reasoning (line 87/105-area M3 framing already carried once); (2) L105 '\"done\" you can say in one sentence' criterion clause — a sub-clause inside one sentence of a criteria list, not itself a section/exercise/lecture/prompt-block/LO/bolded-callout/named-pattern per §39's own enumerated entity list, and the mandated bolded ceiling line it sits beside is untouched. Neither removal strips a named pattern or LO this rule protects; the first is explicitly dated and reasoned, the second is below the rule's stated granularity.",
+      "evidence": "Every removal logged in the maintainer block (raw L111-133) carries an explicit Antti-directed attribution and dated reasoning — 'stands, Antti-directed 2026-08-23', 'cut, Antti-directed 2026-08-23', 'cut from four sentences to one, Antti-directed 2026-08-12' — demonstrating the ask-before-cut discipline was followed, not a silent tidiness-driven cut.",
       "fix_hint": null,
       "blocking": false
     },
@@ -361,7 +361,7 @@
       "rule_index": 41,
       "rule_lead": "Symmetric visible-mechanics > runtime fork when dual-runtime constraints break agentic move.",
       "verdict": "N/A",
-      "evidence": "No dual-runtime fork appears in this file.",
+      "evidence": "No dual-runtime fork (manual-workaround-on-one-runtime vs. agentic-on-the-other) appears anywhere in this file; raw L216 names both CLI and Desktop affordances for the SAME agentic move (Shift+Tab cycle / mode dropdown) with no manual/agentic split.",
       "fix_hint": null,
       "blocking": false
     },
@@ -370,7 +370,7 @@
       "rule_index": 42,
       "rule_lead": "Load-bearing platform feature = no fallback. Gate or redesign.",
       "verdict": "PASS",
-      "evidence": "Plan mode remains the load-bearing feature; no 'if your environment doesn't support X, just do Y instead' fallback language added or removed by this diff.",
+      "evidence": "No 'if your environment doesn't support X, just do Y instead' dilution language anywhere in body (grepped, zero hits). Plan mode (the load-bearing feature) carries no fallback. The one environment-dependent beat — cloud session + mobile steering, raw L82 — is explicitly under '## Optional challenges', not load-bearing, and its own source stamp (raw L137) names a fallback scoped correctly to that optional challenge only ('replace the cloud-and-mobile challenge with a local Remote Control handoff'), not to the core exercise.",
       "fix_hint": null,
       "blocking": false
     },
@@ -379,7 +379,7 @@
       "rule_index": 43,
       "rule_lead": "Eval architecture — partition by evidence source, not criterion count.",
       "verdict": "N/A",
-      "evidence": "Governs the eval SYSTEM's own judge-partitioning design, not this curriculum file's content.",
+      "evidence": "Governs the eval-judge system's own architecture (this compendium's design), not this curriculum file's content.",
       "fix_hint": null,
       "blocking": false
     },
@@ -388,7 +388,7 @@
       "rule_index": 44,
       "rule_lead": "Plug points + UX.",
       "verdict": "PASS",
-      "evidence": "L182-186 (raw) Plug points still name concrete KINDS of org context (`./CLAUDE.local.md`, `~/.claude/CLAUDE.md`, `.claude/rules/`), unchanged by this diff.",
+      "evidence": "(a) Plug points (raw L182-186) name concrete slots where the STUDENT's own material enters (own repo, own backlog task) — the individual-engineer-tier equivalent of naming the KIND of context that fits, and the module structurally depends on them (P1 blocker failure mode, raw L203, names exactly the case where the student can't surface a fitting task). (b) UX: walked the module prompt-to-prompt as a fast operator — all linked files verified present on disk this session, the one deep-linked anchor (`#9-plan-mode-at-depth`) verified to resolve to a real heading, hand-offs name concrete artefacts ('the repo you used for Module 1', raw L10) without requiring a re-read of the previous module's full body.",
       "fix_hint": null,
       "blocking": false
     },
@@ -397,7 +397,7 @@
       "rule_index": 45,
       "rule_lead": "Per-exercise leap test — 3 observable Monday outcomes.",
       "verdict": "PASS",
-      "evidence": "L188-191 (raw) three falsifiable Monday outcomes present and unchanged by this diff.",
+      "evidence": "raw L188-191: all three leap-test items pair a named verb-sequence with a 'Falsifiable:' scrollback-signature clause (mode-cycle move on ≥2 files; push-back quoting the plan's own step text; batched three-question Q-and-A vs. one-shot branch dump) — none is an abstract competency claim; a working engineer could clearly self-check each against Monday's own session.",
       "fix_hint": null,
       "blocking": false
     },
@@ -406,8 +406,8 @@
       "rule_index": 47,
       "rule_lead": "Per-phase failure mode + escape hatch.",
       "verdict": "REVISE",
-      "evidence": "HARM this rule prevents: a beat carrying a real forcing function has no documented dominant failure mode or trainer recovery move, so a stumble in the room (or a self-study student) has no scripted rescue — the harm this file otherwise avoids for every other forcing-function beat it ships. PRESENT: 'Leave the repo tidier' fences a genuine forcing function per §16 (`{{prompt:ae101-m2-tidier}}`, L62), but neither 'Push-back moves' (L158-167 raw) nor 'Per-phase failure mode + escape hatch' (L201-213 raw) carries a row for it — every OTHER forcing-function beat in this file has one (P1, P3×3, P4×2, P5×2, AND the sibling close-ritual 'Compound — save the rule only if one earned itself' at the table's last row, L213), showing the file's own convention already extends this coverage to close-ritual beats, just not to this newer one. The dated Boy Scout maintainer note (L129 expanded) reasons about section positioning, bullet authorship, and fix-it exclusion but never addresses trainer failure-mode/escape-hatch documentation for THIS beat, so the gap isn't pre-authorised. Pre-existing (not introduced by this diff), first surfaced in a prior pedagogy pass and still unaddressed at current HEAD.",
-      "fix_hint": "Add one row to both tables naming a plausible failure (e.g. rubber-stamp: student/Claude reports 'nothing tripped' without a real check) and a trainer escape hatch (e.g. 'ask what almost tripped you but didn't quite count').",
+      "evidence": "HARM this rule prevents: a beat carrying a genuine forcing function has no maintainer-documented failure mode or trainer recovery move, so a trainer running the room (or a self-study reader) has no scripted rescue at that specific beat — exactly what this rule closes for every OTHER forcing-function beat in the file. PRESENT: 'Leave the repo tidier than you found it' fences a genuine forcing function per §16 ({{prompt:ae101-m2-tidier}}, raw L62: 'Did this session run into planning gaps, conflicting information, or other context in this repo that tripped the plan? Name each one and where the fix belongs. Or none, if nothing did.'). Neither the Push-back moves table (raw L158-167) nor the Per-phase failure mode + escape hatch table (raw L201-213) carries a row for it, though every OTHER forcing-function beat does — P1, three P3 rows, two P4 rows, two P5 rows, and even the structurally near-identical sibling close-ritual: raw L213's 'Compound — \"save the rule only if one earned itself\"' row names a failure mode (Compound skip) and escape hatch for the OTHER close-ritual section's fence (ae101-m2-integrate-branch). The tidier beat, added in the same dated pass (raw L129, 'Boy Scout slide (Antti-directed 2026-08-23)'), gets three paragraphs of design rationale in that note — section placement, bullet authorship, explicit refusal of a fix-it prompt — but the note never addresses trainer failure-mode/escape-hatch documentation for this beat, so the gap isn't pre-authorised. Checked both tables in full for any tidier-shaped row under a different name: none found.",
+      "fix_hint": null,
       "blocking": false
     },
     {
@@ -415,7 +415,7 @@
       "rule_index": 48,
       "rule_lead": "Heavy fan-out prompts get body recovery callout.",
       "verdict": "N/A",
-      "evidence": "The tidier prompt is a single short session-read, not a parallel-subagent, multi-source, or multi-file-rewrite prompt.",
+      "evidence": "None of this module's own three fenced prompts (raw L40, L44, L62) fan out (no parallel subagents, no polling, no read-everything-in-X, no multi-file rewrite) — each is a single bounded chat ask against session-local context already in hand. Not applicable.",
       "fix_hint": null,
       "blocking": false
     },
@@ -424,7 +424,7 @@
       "rule_index": 49,
       "rule_lead": "Save belongs with authoring, not loading.",
       "verdict": "PASS",
-      "evidence": "The task-shaping rule file save happens at M2 close ('Save the rule if it earned itself', L36-50), not deferred to a later USE module; unaffected by this diff.",
+      "evidence": "Plan-file save happens at Exercise Phase 3 (approval) inside M2 itself, and the student notes the path at module close (raw Artefact-contracts L199); M3 opens as a pure consumer — verified against earn-the-trust.md L12, 'The plan file Claude Code wrote during plan mode is what M3 reads (you noted the path at M2 close)' — no re-authoring or asymmetric save-shifted-to-use-exercise pattern.",
       "fix_hint": null,
       "blocking": false
     },
@@ -433,16 +433,16 @@
       "rule_index": 50,
       "rule_lead": "Convenience-driven prompts with known shape-bias → body acknowledgment callout.",
       "verdict": "REVISE",
-      "evidence": "HARM this rule prevents: a fenced prompt inviting Claude's same-turn self-charity ships without warning the student the answer may be diplomatically thin, so the module quietly under-delivers on the tidiness it promises. PRESENT: `{{prompt:ae101-m2-tidier}}` (L62) is Claude self-assessing the session it JUST ran for its OWN gaps/conflicts/mistakes — the self-charity shape §50(a) names outright. Its sibling beat three lines above (L48, unchanged) carries exactly this acknowledgment for the analogous risk: 'Claude may reframe the session into a smart-sounding general rule. If the saved rule could apply to any codebase, ask for one specific to this session.' The tidier section has no equivalent; 'Or none, if nothing did' (L60/L77 expanded) only softens the ASK's exit condition, it doesn't name the bias or offer a harsher opt-in per §50(b)/(c). The dated Boy Scout note (L129 expanded) explicitly declines a 'fix-it prompt' and a 'done-means criterion' — neither of which is what §50 asks for; a one-sentence acknowledgment callout is narrower than both and isn't addressed by that note. Pre-existing (not introduced by this diff), first surfaced in a prior pedagogy pass and still unaddressed at current HEAD.",
-      "fix_hint": "One sentence near the prompt, e.g. 'Claude may find nothing to be diplomatic. If the session had any friction, name it directly and ask again.'",
+      "evidence": "HARM this rule prevents: a fenced prompt inviting same-turn self-report on the session Claude JUST ran ships with no acknowledgment of the self-charity risk or harsher opt-in, so a diplomatically-clean 'nothing tripped' answer reads as verified when it may just be softened. PRESENT: {{prompt:ae101-m2-tidier}} (raw L62) asks Claude to self-report gaps/conflicts/mistakes from its own just-completed session — the self-charity shape §50(a) names outright ('self-charity from same-turn self-grading'). The sibling beat two sections earlier carries exactly this acknowledgment for its own analogous self-report ask: raw L48, 'Claude may reframe the session into a smart-sounding general rule. If the saved rule could apply to any codebase, ask for one specific to this session.' The tidier section has no equivalent — raw L60 ('Ask Claude whether it met any of these') and the fence's own 'Or none, if nothing did' exit clause govern only WHETHER to answer, not whether a suspiciously clean answer should be pushed on. Considered the maintainer's Boy Scout note (raw L129): it explicitly declines a 'fix-it prompt' and a 'done-means criterion', but a one-sentence bias-acknowledgment callout is narrower than either of those and is not what that note addresses or refuses.",
+      "fix_hint": "One sentence near the fence, matching the file's own raw L48 pattern — e.g. 'Claude may find nothing to report if the session went smoothly enough not to feel the friction. If anything felt slightly off and got waved through anyway, name it directly and ask again.'",
       "blocking": false
     },
     {
       "compendium": "check_pedagogy.md",
       "rule_index": 51,
       "rule_lead": "Deliberate-antipattern prompts = class-judge exempt, flagged-by-design.",
-      "verdict": "N/A",
-      "evidence": "No prompt in this file is engineered to exhibit a behavioral risk as its teaching point.",
+      "verdict": "PASS",
+      "evidence": "raw L83, 'Try to bully plan mode into a bad architecture... record where Claude pushes back and where it caves', is a deliberate-antipattern probe — the risk (pressing a bad idea) IS the teaching moment. Maintainer note (raw L111) already logs this accepted-by-design against a sibling writing-class flag; independently confirmed here that pedagogy should not re-flag it either (restructuring or a body-callout would defuse the exact felt-evidence the probe is designed to produce).",
       "fix_hint": null,
       "blocking": false
     },
@@ -451,7 +451,7 @@
       "rule_index": 52,
       "rule_lead": "Session widget — shape; place by learning flow.",
       "verdict": "N/A",
-      "evidence": "No `**Session**` widget appears in this file; this diff adds none.",
+      "evidence": "Grepped file this session for `**Session**` widget markup: zero hits. This module file inlines no exercise phases of its own (both linked exercises are separate files carrying their own top matter); no module-opener-prose pattern is used or missing — the module links exercises with bare link runs and no framing prose above them, confirmed as the deliberate house shape by the file's own maintainer note (raw L117: 'M1 and M3 carry bare link runs with no connectives — that is the house shape').",
       "fix_hint": null,
       "blocking": false
     },
@@ -460,7 +460,7 @@
       "rule_index": "52a",
       "rule_lead": "Module prose carrying a `**Session**` widget or a `{{prompt:}}` fence is an exercise that has not been extracted.",
       "verdict": "PASS",
-      "evidence": "L36-50 and L52-62 each carry `{{prompt:}}` fences with no Session widget. Both are covered by dated Antti-directed accept-notes (L121 expanded for 'Save the rule'; L129 expanded 'Boy Scout' note for 'Leave the repo tidier', which is fully aware of the fence and explicitly reasons about NOT extracting it into a forcing-function/fix-it flow) — short soft-compound close rituals, smaller than §52a's four-prompt/Session-widget precedent. Unaffected by this diff.",
+      "evidence": "Three `{{prompt:}}` fences total in this file's body: two in 'Save the rule if it earned itself' (raw L40, L44) and one in 'Leave the repo tidier than you found it' (raw L62) — no Session widget anywhere. The maintainer block's accept-note (raw L121) explicitly covers only the first two ('The two {{prompt:}} fences in ## Save the rule if it earned itself are accepted, not an unextracted exercise'). The third fence isn't literally named by that note, but the SAME test the note applies extends to it at least as strongly: the tidier section is shorter (one fence, three bullets, no phase structure) than the precedent §52a is built from (a four-prompt Session-widget section large enough for its own unbreakable slide), and the dated Boy Scout note (raw L129) is fully aware of the fence and reasons at length about NOT turning it into a bigger extracted flow. Treated as covered by the same accepted-by-design logic — see notes for a documentation-tightening suggestion (extend the L121 note's wording the way the §34 note at L119 was explicitly extended to '## Next' on 2026-08-13 after the same kind of scope question).",
       "fix_hint": null,
       "blocking": false
     },
@@ -469,7 +469,7 @@
       "rule_index": "52b",
       "rule_lead": "Widgets carry semantics, not just emphasis — match the widget to MEANING, never to how loud it renders.",
       "verdict": "N/A",
-      "evidence": "No widget (Session/HOX/Note) is added or misused by this diff.",
+      "evidence": "No Session/HOX/Note widget appears anywhere in this file (grep-confirmed) — nothing to mis-signal.",
       "fix_hint": null,
       "blocking": false
     },
@@ -478,7 +478,7 @@
       "rule_index": "52c",
       "rule_lead": "Exercise lead-in trio — three slots, three tenses.",
       "verdict": "N/A",
-      "evidence": "Governs extracted exercise files' What-you-do/What-you-build/The-point slots; this diff touches module-body prose and maintainer notes only, not an exercise file.",
+      "evidence": "Scoped to AE101 exercise files (curriculum/exercises/*.md) carrying What-you-do/What-you-build/The-point slots. This module file's close-ritual sections are body prose, not extracted exercise files (per §52a above), so the trio format doesn't bind them.",
       "fix_hint": null,
       "blocking": false
     },
@@ -487,7 +487,7 @@
       "rule_index": "52d",
       "rule_lead": "Finding the point — four moves, learned writing M1's set 2026-08-12.",
       "verdict": "N/A",
-      "evidence": "Same reason as §52c — no exercise-file 'point' slot is touched by this diff.",
+      "evidence": "Same scope reason as §52c — governs the 'point' slot inside AE101 exercise files; no such slot exists in this module-index file's own body.",
       "fix_hint": null,
       "blocking": false
     },
@@ -496,7 +496,7 @@
       "rule_index": 53,
       "rule_lead": "Body prose must not supply an answer its prompt asks for — position is not the test (widened 2026-08-12).",
       "verdict": "PASS",
-      "evidence": "The diff CUTS a preview-shaped clause rather than adding one: L91's removed 'Module 3 draws that boundary for your own repo' was a forward-pointer naming what a later module does with this reading, addressed directly by the new L113 accept-note citing `check_student_facing.md §33`'s predicate-leak clause. L105's trimmed criteria sentence still only names task-sizing CONSTRAINTS, not a prompt's coming answer. Net effect of this diff on §53 is neutral-to-positive; no new violation.",
+      "evidence": "Ran the 3-axis diagnostic against every fenced-prompt-adjacent body passage: raw L38/L42 name activity+constraint (which branch, what to write) without pre-stating what Claude's answer will contain; raw L56-60's category taxonomy (planning gaps / conflicting info / other context) is scope-framing (axis c, constraint), not a reveal of the specific finding the fence will surface. Big Idea (raw L6) is explicitly exempted as title-card copy per the file's own maintainer note (raw L131, 'check_student_facing.md §33's exemption... narrowed... to cover what a module earns, never where it sits'). Key Concepts (raw L68-74) sits after all fenced prompts in reading order, so nothing is pre-empted.",
       "fix_hint": null,
       "blocking": false
     },
@@ -505,7 +505,7 @@
       "rule_index": 56,
       "rule_lead": "Engineer-audience audit fixes default to body callout, not forcing function.",
       "verdict": "PASS",
-      "evidence": "L129 (expanded maintainer) 'Fixing is the student's call, in-session or never; do not add a fix-it prompt or a done-means criterion' confirms the deliberate body-callout-not-forcing-function shape for whatever the tidier beat surfaces, matching the engineer-audience default. This is a same-session, engineer-recoverable miss (not the slow-silent-accumulation shape the 2026-08-23 amendment to this rule targets), so the body-callout default correctly applies rather than the forcing-function branch.",
+      "evidence": "'Leave the repo tidier' (raw L52-62) is exactly this shape — an audit-style finding (planning gaps / conflicting info / other context) delivered as body callout + single in-chat recall prompt, not a new pre-flight/forcing mechanic. Passes the <1-min diagnostic: Claude names the miss immediately in-chat, one-shot, at session end — not a slow silent accumulation (the §56 2026-08-23 addendum's carve-out, e.g. gitignore drift) that would require an instrument instead. Correctly the engineer-audience default.",
       "fix_hint": null,
       "blocking": false
     },
@@ -514,7 +514,7 @@
       "rule_index": 57,
       "rule_lead": "Multi-session (any new mechanic mid-arc) ships as packaging, not new primitive.",
       "verdict": "N/A",
-      "evidence": "The tidier beat reuses the existing 'ask Claude a question in chat' mechanic already used by 'Save the rule' — no new tool, mode, or UI primitive introduced.",
+      "evidence": "No new cross-session/multi-session/worktree mechanic is introduced mid-arc by this module; M2 is a single continuous session continuing from M1's repo, no packaging-vs-primitive question arises.",
       "fix_hint": null,
       "blocking": false
     },
@@ -523,7 +523,7 @@
       "rule_index": 58,
       "rule_lead": "`/clear` = tool, not ceremony.",
       "verdict": "N/A",
-      "evidence": "No `/clear` cue is present anywhere in this file.",
+      "evidence": "No `/clear` cue or convergence prompt appears anywhere in this file (grep-confirmed).",
       "fix_hint": null,
       "blocking": false
     },
@@ -532,7 +532,7 @@
       "rule_index": 59,
       "rule_lead": "Inbound links preserve pedagogical beat across reference restructuring.",
       "verdict": "N/A",
-      "evidence": "No reference page is merged, split, renamed, or deleted by this diff.",
+      "evidence": "This module doesn't restructure, rename, split, or merge any reference page — it consumes existing stable reference sections (verified the one deep anchor resolves) without altering them.",
       "fix_hint": null,
       "blocking": false
     },
@@ -541,7 +541,7 @@
       "rule_index": 60,
       "rule_lead": "Scan at the unit the rule names, not convenient larger one.",
       "verdict": "N/A",
-      "evidence": "Judge-meta instruction to auditors about scan granularity. This review scanned at phase/beat granularity (matching §16/§47/§50's own 'per-phase'/'per-prompt' wording) rather than rolling the whole file into one verdict, and re-read the full body rather than scoping to the diff region alone (per dispatch instructions).",
+      "evidence": "Judge-meta instruction to auditors about scan granularity, not module-file content.",
       "fix_hint": null,
       "blocking": false,
       "judge_owned": true
@@ -551,7 +551,7 @@
       "rule_index": 61,
       "rule_lead": "Verify mechanism before proposing surgery.",
       "verdict": "N/A",
-      "evidence": "No SKILL.md/framework/tool change is proposed by this diff or this review.",
+      "evidence": "No SKILL.md/framework/tool-mechanism change is proposed by or embedded in this module file.",
       "fix_hint": null,
       "blocking": false
     },
@@ -559,9 +559,9 @@
       "compendium": "check_pedagogy.md",
       "rule_index": "61a",
       "rule_lead": "Acting on a flagged item (punchlist entry / audit finding / eval BLOCK) — verify before fixing; its prescribed fix is a hypothesis, not an instruction.",
-      "verdict": "N/A",
-      "evidence": "This review is a fresh audit against a diff, not an action taken on a prior flagged item's prescribed fix. (The two carried-forward REVISE findings at §18/§47/§50 were independently re-verified against current HEAD, not applied from the prior instance on trust — see their evidence fields.)",
-      "fix_hint": null,
+      "verdict": "REVISE",
+      "evidence": "HARM this rule prevents: an inbound number gets hand-propagated and trusted without re-derivation, so downstream planning (here, live trainer time-management) runs on a stale figure. PRESENT: raw L178 (Decision-points, trainer-only content below the maintainer fence) states 'the 3-minute overrun on the Slot line is already spent.' Ran `node scripts/calculate-time.js plan-mode-done-right` this session: total = 127 min; both `cohort-2day` and `sitting-2h` caps (120 min) report OVER by 7 min, not 3. Cross-checked the named source — `trainer-modules.md`'s M2 Slot line ('Runs 3 min past its slot', grep-verified this session) — also states 3, i.e. the same stale figure, not an independent confirmation. §61a(e) is explicit that this check is 'NOT scoped to flagged items: it fires on any inbound number' and that 'each lecture/exercise file's own Time line outranks any meta/tab/punchlist narrative sum' — the live per-beat computation (raw Transitions line L151 already correctly lists the new 'tidier 2' beat, confirming the beat-level sums are current) contradicts the 3-minute narrative figure the Decision-points paragraph still asserts. This content is entirely below the `<!-- maintainer -->` fence (raw L109) — trainer-only, not student-facing body text, so this is a landed finding, not an approval-gate card.",
+      "fix_hint": "Re-run `calculate-time.js`, confirm the true current overrun (currently 7 min, not 3), and update both this file's Decision-points paragraph and trainer-modules.md's M2 Slot line to match — do not hand-propagate the old 123-min/3-min figure forward.",
       "blocking": false
     },
     {
@@ -569,7 +569,7 @@
       "rule_index": 62,
       "rule_lead": "Callouts next to prompts: steer, don't pre-empt.",
       "verdict": "PASS",
-      "evidence": "L46 (raw, unchanged) overwrite-recovery callout names one specific failure mode but predates this diff and is already reasoned through under a dated maintainer note (L127 expanded, `check_student_facing.md` §5 boundary case) as time-critical and non-obvious. Not re-litigated here; unaffected by this diff.",
+      "evidence": "raw L46's overwrite-recovery callout names one specific failure mode (accidental file replacement) rather than a generalised steering move, but the rot test doesn't fire: the risk it warns against is still live in the CURRENT fence (expanded L51-53 doesn't itself guarantee append-not-replace behaviour), so this isn't a ghost-warning against behaviour already fixed. The rescue it offers (scrollback still holds the old content) is a specific, non-obvious FACT rather than a generalisable technique — generalising it into a 'notice → ask → relax' steering shape would lose the one piece of information the student actually needs (that recovery is possible at all). Already reasoned through under a dated maintainer note (raw L127, check_student_facing §5 boundary case) as time-critical and non-obvious; independently confirmed here rather than re-litigated.",
       "fix_hint": null,
       "blocking": false
     },
@@ -578,7 +578,7 @@
       "rule_index": 63,
       "rule_lead": "Persistent TODO surfaces stale by default — audit before acting.",
       "verdict": "N/A",
-      "evidence": "No long-lived punchlist bullet is being acted on in this review; grepped `curriculum/trainings/agentic-engineering-101/pre-cohort-todos.md` for the two carried-forward findings (delete-the-rest, tidier failure-mode gap) and found no existing entry — they are not stale punchlist items, they are unlogged open findings.",
+      "evidence": "No long-lived punchlist bullet (pre-cohort-todos.md or similar) is referenced or acted upon anywhere in this module file.",
       "fix_hint": null,
       "blocking": false
     },
@@ -587,7 +587,7 @@
       "rule_index": 64,
       "rule_lead": "Maintainer blocks point, don't restate. Link architecture doc where they touch delivery.",
       "verdict": "PASS",
-      "evidence": "The two new notes (L111, L113) carry only file-unique design rationale (a challenge-bullet's deliberate verb choice; a cut clause's rule citation), not cross-cutting delivery mechanics restated from elsewhere. Delivery-architecture cross-references elsewhere stay pointers (L155 expanded, 'canonical in training-architecture.md'). NOTE (out of this judge's rule-set, flagged for the writing class in `notes`): L127 and L169 (raw) are two separate maintainer notes making the SAME point about the same overwrite-recovery sentence in different words — a duplication, not a §64 violation (§64 is specifically about restating an ELSEWHERE-canonical fact, and this is self-contained file-local rationale stated twice, not copied from a canonical home).",
+      "evidence": "Delivery-architecture line (raw L155 / expanded L171) is a canonical one-line pointer — 'canonical in training-architecture.md §Working directory model / §Rule files. Not restated here' plus a pointer to `reference/claude-code-for-engineers.md §1` for the rule-file hierarchy — textbook compliance with Rule B. No cross-cutting delivery mechanic is paraphrased inline anywhere else in the maintainer block; the rest of the block (Push-back moves, failure-mode table, source stamps) is file-unique content, not restatement of a canonical fact living elsewhere.",
       "fix_hint": null,
       "blocking": false
     },
@@ -596,7 +596,7 @@
       "rule_index": 65,
       "rule_lead": "Cross-module prerequisite rescue: run it late, never fabricate.",
       "verdict": "N/A",
-      "evidence": "No M(N-1)→M(N) artefact-rescue scenario is touched by this diff; that class of rescue is cross_module's lane.",
+      "evidence": "M2's only dependency on M1 is repo continuity ('the repo you used for Module 1', raw L10), not a specific thin/absent M1 send-off ARTEFACT requiring a rescue callout — neither of §65's two failure grades (thin artefact / absent artefact) is in play here. Cross-module artefact-rescue scenarios generally are cross_module's lane.",
       "fix_hint": null,
       "blocking": false
     },
@@ -605,7 +605,7 @@
       "rule_index": 66,
       "rule_lead": "Three-pass build — finish each pass across ALL modules before starting the next.",
       "verdict": "N/A",
-      "evidence": "This is a post-ship revision to an already-built, previously-audited module, not a fresh three-pass generation pass.",
+      "evidence": "Cross-corpus generator build-sequencing rule (Pass 1/2/3 discipline across the whole training). This file is already well past Pass 3 (Quality line shows compendium-audited, all seven judges PASS) — a post-ship revision review, not a fresh generation pass.",
       "fix_hint": null,
       "blocking": false
     },
@@ -614,7 +614,7 @@
       "rule_index": null,
       "rule_lead": "Trigger — is this file workshop-shaped?",
       "verdict": "N/A",
-      "evidence": "check_workshop does not apply: no beat in this file has an output belonging to the group rather than a participant. Every beat (Push back on the plan, Extract the task-shaping rule, Save the rule if it earned itself, Leave the repo tidier than you found it) is individual student+Claude work; per the compendium's own trigger text this is 'individual work with co-location,' governed by check_pedagogy.md unchanged. This diff adds no group beat. Whole-compendium scope call, not a per-rule sweep.",
+      "evidence": "check_workshop does not apply: no beat in this file has an output belonging to the group rather than to a participant. Every beat — Push back on the plan, Extract the task-shaping rule, Save the rule if it earned itself, Leave the repo tidier than you found it — is individual student+Claude work on the student's own repo, own backlog task, own rule file. Per the compendium's own trigger text this is 'individual work with co-location', governed by check_pedagogy.md unchanged, not check_workshop.md. Whole-compendium scope call per the dispatch preamble's own example, not a per-rule sweep across check_workshop's 17 numbered rules.",
       "fix_hint": null,
       "blocking": false,
       "judge_owned": true
@@ -622,5 +622,5 @@
   ],
   "blocking_findings_count": 0,
   "todos_count": 3,
-  "notes": "Carried forward and independently re-verified 3 non-blocking REVISE findings from the prior pedagogy pass (§18 L57 'delete the rest', §47 tidier beat missing failure-mode/escape-hatch row, §50 tidier prompt missing self-charity acknowledgment) — none touched by the 7fb973dd..HEAD diff, none pre-authorised by any maintainer note, all still present at current HEAD. Also found and fixed a plainly-wrong internal locator: the maintainer note at (now) L127 said 'Line 56's recovery sentence' but the quoted sentence has lived at line 46 since the 'Leave the repo tidier' section was inserted above it in an earlier pass, shifting nothing before it but leaving this cross-reference stale; corrected to 'Line 46' as an internal-file fix (not student-facing body text), body_sha re-taken after. Separately flagged for the writing class (out of pedagogy's rule-set, not scored here): L127 and L169 are two maintainer notes stating the same overwrite-recovery-sentence decision in different words — a duplication check_writing §3 may want to consolidate."
+  "notes": "Prior instance for this file (body_sha 89ebb5069d…) is explicitly flagged unaudited in the task brief — not reused as a source, but cross-read after independently drafting my own verdicts, as a second pass to check I hadn't missed anything. That comparison surfaced two real gaps in my own first draft (missing §47/§50 coverage of the 'Leave the repo tidier' tidier-prompt beat), both independently re-verified against the CURRENT committed body before being adopted here — not carried over on trust. It also raised a §18 'delete the rest' (raw L57) concern I re-derived independently and scored PASS (not REVISE): no agent unilaterally changes shared infra here: raw L129's maintainer note confines the whole beat to Claude naming issues only, and the actual deletion is the student's own ordinary repo-hygiene judgment on a repo they already hold write access to, not the skill/ADR-template/review-checklist promotion shape §18(b) protects against — treating routine doc cleanup as needing a flag-and-PR ceremony would degrade the artefact, not improve it. §52a (documentation gap, not a content defect): the maintainer accept-note at raw L121 names only the two fences in 'Save the rule if it earned itself'; the third fence in 'Leave the repo tidier than you found it' (raw L62) isn't literally named, though the same reasoning clearly extends (shorter section, one fence, no Session widget). Recommend the maintainer extend that note's wording explicitly to name the tidier fence too, the way the §34 note (raw L119) was extended to cover '## Next' on 2026-08-13 after the same kind of scope question — avoids a future judge re-litigating this exact ambiguity. §64 (out of pedagogy's rule-set, flagged for writing/technical, not scored here): raw L127 and raw L169 are two separate maintainer notes stating the same overwrite-recovery-sentence decision in different words — a possible duplication to consolidate, not a §64 violation (both are file-local rationale, not restatement of an elsewhere-canonical fact)."
 }

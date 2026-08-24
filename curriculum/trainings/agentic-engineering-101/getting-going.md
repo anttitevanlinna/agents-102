@@ -181,4 +181,4 @@ The shipped PR and the closed ticket are both produced this module and both live
 
 **Quality:** compendium-audited 2026-08-23 (writing@12148d77 story@12148d77 technical@12148d77 behavior@1480362 pedagogy@12148d77 strategy@7fb973dd slides@39466781)
 - judges @12148d77: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
-- cross_module @99aeb416: PASS — set=[prework,getting-going,plan-mode-done-right,earn-the-trust]; 3 pairs, 0 blocking; see instances/ae101--module-set--prework-m3.cross_module.json
+- cross_module @e5364af8: PASS — set=[prework,getting-going,plan-mode-done-right,earn-the-trust]; 3 pairs, 0 blocking; see instances/ae101--module-set--prework-m3.cross_module.json

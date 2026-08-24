@@ -34,7 +34,7 @@ Round 3: 0.1% → 0.01%.
 
 The same compounding that destroys single-pass reliability *builds* loop-based reliability. One generation pass is a trap; a test-and-fix loop is the escape. Three rounds of the illustration land at parts-per-ten-thousand, a place you don't reach by making one pass better. You reach it by looping.
 
-This is the shape of the rest of the training. Now you'll run the test side: a benchmark to find the detector that works on *your* output. Later the winning detector goes inside a loop that runs the full test-fix-test cycle without you. That's evals. The compounding-error math is the problem; the compounding-check math is the answer.
+Now you'll run the test side: a benchmark to find the detector that works on *your* output. The compounding-error math is the problem; the compounding-check math is the answer.
 
 **The word is grounded.**
 
@@ -66,7 +66,7 @@ Four candidates, chosen because they fail in different directions, so the scoreb
 
 Four candidates, four different failure modes. In the exercise, they run as four parallel agents on the same 30-claim pool, each writing findings to its own file. A scorer adjudicates the claims against the evidence and measures the detectors: precision, recall, coverage. The scoreboard is the mechanism. You don't argue with it; you read it.
 
-The winner (or an ensemble of the top two) becomes a judge file you carry forward, to where the judge stops being something you run and becomes something that runs itself.
+The winner (or an ensemble of the top two) becomes a judge file you carry forward.
 
 **What this buys you.**
 
@@ -74,7 +74,7 @@ Not certainty. Certainty isn't available. What you buy is a *grounded choice abo
 
 That last clause is the one that matters. Grounded output names what it doesn't know. A grounded judge names what it can't catch. Ungrounded output pretends to know everything; a cargo-cult judge pretends to catch everything. The difference looks small on the page. In a decision room, it's the difference between a memo that holds up and a memo that detonates.
 
-Now you run the benchmark. Well, not by hand. You set up four detectors, a claim pool, and a scorer. The agents do the work. You watch the scoreboard fill in. The winner becomes a judge file you keep, headed for a loop that runs and improves itself.
+Now you run the benchmark. Well, not by hand. You set up four detectors, a claim pool, and a scorer. The agents do the work. You watch the scoreboard fill in. The winner becomes a judge file you keep.
 
 Phase 0 is next: a fresh briefing, then a 30-claim pool extracted from it. The claim pool is the measuring surface the rest of the exercise turns on. Keep the main session blind until the claims exist.
 
@@ -152,5 +152,5 @@ OODA
 
 **Lecture meta:** *Closer beat is the lead-in to Phase 0 of the Hallucination benchmark exercise. Trainer pivots straight from the "Phase 0 is next" line into the exercise — no separate transition.*
 
-**Quality:** compendium-audited 2026-08-23 (writing@ab36a5e6 story@ab36a5e6 technical@ab36a5e6 behavior@5fc7188 pedagogy@ab36a5e6 strategy@5fc7188 slides@ab36a5e6)
-- judges @ab36a5e6: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-24 (writing@b865cc47 story@b865cc47 technical@ab36a5e6 behavior@5fc7188 pedagogy@ab36a5e6 strategy@5fc7188 slides@b865cc47)
+- judges @b865cc47: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

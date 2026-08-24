@@ -4,7 +4,7 @@
 
 **What you do:**
 
-Bring one live challenge, check what Claude can read about it, and learn plan mode. In Cowork, learn the prompt-level version that simulates the same control point.
+Bring one live challenge, check what Claude can read about it, learn plan mode, and leave yourself a three-line readiness note. In Cowork, learn the prompt-level version that simulates the same control point.
 
 Module 1 was a contained creation. Module 2 turns toward work that already has history: meetings, notes, decisions, half-written documents, wiki pages, people, constraints. The point is not to prepare a perfect brief. The point is to arrive with enough real material that the memory can start from your world instead of generic internet shape.
 
@@ -55,20 +55,34 @@ Either way: know what the plan-mode simulation looks like, and why you'd reach f
 
 ---
 
+## Start the Module 2 handoff
+
+Create `prework/module-2-start.md` in your training directory. Add:
+
+- the live challenge you are bringing;
+- the first source Claude can read about it, or the fallback you will use (identify it here; Module 2 handles the content);
+- the planning control you will use before Claude writes files: plan mode in Claude Code, or a plan-first request in Cowork.
+
+This file is the first handoff into your system. Module 2's opening interview turns the challenge line into `./challenge.md`. The memory build starts with the source line and uses the planning-control line before its first multi-file write. The note is not a spare checklist: each line has a named consumer, and the file stays behind as the record of where the system started.
+
+If one line is still blank, you now know exactly what to resolve before class. Do not fill the gap with a plausible answer. Name the fallback instead.
+
+---
+
 ## Read the memory frame
 
 Karpathy's [LLM Wiki gist](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f) is short. Read it for the mental model: the useful system is not a single answer, but a living pile of text the agent can read, maintain, and improve.
 
 Module 2 takes that idea and applies it to your challenge. The memory will be smaller than a wiki and more personal than a knowledge base. It starts as plain text because plain text is the easiest thing for the agent to read and rewrite.
 
-**Bring to Module 2:** one live challenge, connector status checked, plan mode understood <span class="rt-cowork">(or the Cowork simulation understood)</span>, and Karpathy's memory frame in your head.
+**Bring to Module 2:** `prework/module-2-start.md` and Karpathy's memory frame in your head. You have not built the brief or memory early; you have created the small artifact both of them will consume.
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-05-03 (writing@60b1b6c)
-- judges @60b1b6c: writing PASS, story grandfathered, technical grandfathered, behavior grandfathered
+**Quality:** compendium-audited 2026-08-24 (writing@59ea5508 story@59ea5508 pedagogy@59ea5508 strategy@725101ec slides@59ea5508)
+- judges @59ea5508: writing PASS, story PASS, technical grandfathered, behavior grandfathered, pedagogy PASS, strategy PASS, slides PASS
 
-**Time:** 35 minutes. 5 to choose the challenge, 5 to check connectors, 15 for the plan-mode primer, 10 for Karpathy.
+**Time:** 37 minutes. 5 to choose the challenge, 5 to check connectors, 15 for the plan-mode primer, 2 for the readiness note, 10 for Karpathy.
 
 **Role in Module 2:** Lightweight prework designed to survive being skipped. The challenge-naming moved from prework into the main session (`name-your-challenge.md`, first 15 min of Module 2) because students skip prework and Module 2 Phase 1 stalls for anyone who arrives without a pinned challenge. Connector verification and plan-mode primer stay in prework — they're *useful* before class but not load-bearing if missed (fallback: facilitator triages connector issues live, Code gets a 60-second plan-mode primer and Cowork gets the prompt-level simulation in Phase 1).
 

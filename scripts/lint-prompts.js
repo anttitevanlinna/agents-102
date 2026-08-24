@@ -18,6 +18,34 @@ const REGISTRY_DIR = path.join(CURRICULUM, 'prompts');
 // Eval reports quote markers verbatim as evidence (incl. retired ones); they
 // are records, not rendered curriculum — never count them as references.
 const EVALS_DIR = path.join(CURRICULUM, 'evals');
+const APPROVALS_DIR = path.join(ROOT, '.claude', 'prompt-approvals');
+
+// check_prompts.md §22(e): the card flow completes at marker-write, not at
+// "approved". The marker is the durable approval record AND .githooks/pre-commit's
+// only headless clear-path, so a missing one dead-ends the next body edit at a
+// no-tty abort. `prompt-ok` is the rule's token — the bare word "approved" is not.
+const APPROVAL_TOKEN = /prompt-ok/i;
+
+function claimsApproval(entry) {
+  return APPROVAL_TOKEN.test((entry && entry.note) || '');
+}
+
+// A frontmatter note asserting approval with no marker behind it. The converse is
+// NOT a gap: the marker IS the record, and a note that simply omits the token
+// claims nothing.
+function approvalGaps(registry, markers) {
+  return Object.keys(registry)
+    .filter(k => claimsApproval(registry[k]) && !markers.has(k))
+    .sort();
+}
+
+function readMarkers() {
+  try {
+    return new Set(fs.readdirSync(APPROVALS_DIR)
+      .filter(f => f.endsWith('.confirmed'))
+      .map(f => f.slice(0, -'.confirmed'.length)));
+  } catch { return new Set(); }
+}
 
 // Both {{prompt:key}} and its cut-candidate sibling {{cut:key|reason}} count as
 // a reference to `key` — a cut candidate is still "used", so it must not trip the
@@ -96,7 +124,16 @@ function main() {
     }
   }
 
+  // 3. A frontmatter note claiming approval owes its marker (§22e).
+  const markers = readMarkers();
+  for (const key of approvalGaps(registry, markers)) {
+    errors.push(`approval claimed with no marker: ${key} — frontmatter says prompt-ok, .claude/prompt-approvals/${key}.confirmed does not exist`);
+    errors.push('  the marker is the durable record and pre-commit\'s only headless clear-path (check_prompts.md §22e)');
+    errors.push('  do NOT write it to clear this — it records the maintainer\'s decision; ask them to confirm');
+  }
+
   console.log(`Registry:    ${Object.keys(registry).length} prompts at ${path.relative(ROOT, REGISTRY_DIR)}`);
+  console.log(`Approvals:   ${markers.size} marker(s) at ${path.relative(ROOT, APPROVALS_DIR)}`);
   console.log(`References:  ${refs.size} unique keys across ${files.length} curriculum .md files`);
 
   if (warnings.length) {
@@ -114,4 +151,4 @@ function main() {
 
 if (require.main === module) main();
 
-module.exports = { stripCodeMentions, findReferences, walkMarkdown, REFERENCE_RE };
+module.exports = { stripCodeMentions, findReferences, walkMarkdown, claimsApproval, approvalGaps, readMarkers, REFERENCE_RE };

@@ -57,3 +57,58 @@ test('walk skips the registry and evals dirs', () => {
   assert.equal(files.filter(f => f.includes(sep + 'prompts' + sep)).length, 0);
   assert.equal(files.filter(f => f.includes(sep + 'evals' + sep)).length, 0);
 });
+
+/*
+ * Approval markers. check_prompts.md §22(e): the card flow completes when
+ * `.claude/prompt-approvals/<key>.confirmed` is written, NOT when the human
+ * says prompt-ok. The rule's own text records the step being skipped on
+ * 2026-05-24 and 2026-05-25; on 2026-08-23 it was skipped three more times
+ * (ae101-m2-name-what-moves, ae101-m2-tidier, ae101-m5-done-done — all three
+ * attest approval in frontmatter, none has a marker). Nothing checked, so
+ * nothing noticed. The marker is also the pre-commit hook's only headless
+ * clear-path, so a missing one dead-ends a future body edit at a no-tty abort.
+ */
+const { approvalGaps, claimsApproval } = require('./lint-prompts.js');
+
+test('claimsApproval: the prompt-ok token in a note is an approval claim', () => {
+  assert.equal(claimsApproval({ note: 'Four points are Antti\'s. Approved prompt-ok 2026-08-23.' }), true);
+  assert.equal(claimsApproval({ note: 'Antti-worded 2026-08-23, approved prompt-ok same day.' }), true);
+});
+
+test('claimsApproval: case-insensitive, matching the rule token', () => {
+  assert.equal(claimsApproval({ note: 'approved PROMPT-OK 2026-08-23' }), true);
+});
+
+test('claimsApproval: a note with no token claims nothing', () => {
+  assert.equal(claimsApproval({ note: 'M5 opener, student-run in the send-off session.' }), false);
+  assert.equal(claimsApproval({}), false);
+  assert.equal(claimsApproval({ note: null }), false);
+});
+
+test('claimsApproval: the word approved alone is not the token', () => {
+  assert.equal(claimsApproval({ note: 'Approved by Antti 2026-08-23.' }), false);
+});
+
+test('approvalGaps: a claim with no marker is a gap', () => {
+  const gaps = approvalGaps({ 'a-key': { note: 'approved prompt-ok 2026-08-23' } }, new Set());
+  assert.deepEqual(gaps, ['a-key']);
+});
+
+test('approvalGaps: a claim with its marker is clean', () => {
+  const gaps = approvalGaps({ 'a-key': { note: 'approved prompt-ok 2026-08-23' } }, new Set(['a-key']));
+  assert.deepEqual(gaps, []);
+});
+
+test('approvalGaps: a marker without a claim is not a gap — the marker is the record', () => {
+  const gaps = approvalGaps({ 'a-key': { note: 'no token here' } }, new Set(['a-key']));
+  assert.deepEqual(gaps, []);
+});
+
+test('approvalGaps: reports every gap, sorted, not just the first', () => {
+  const reg = {
+    'z-key': { note: 'approved prompt-ok' },
+    'a-key': { note: 'approved prompt-ok' },
+    'm-key': { note: 'approved prompt-ok' },
+  };
+  assert.deepEqual(approvalGaps(reg, new Set(['m-key'])), ['a-key', 'z-key']);
+});

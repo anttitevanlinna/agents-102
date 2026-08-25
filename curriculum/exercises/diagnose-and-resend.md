@@ -1,6 +1,6 @@
 # Diagnose and *package*
 
-**Time:** 68 minutes.
+**Time:** 60 minutes.
 
 **Session** *(new, "Module 5 worktree session")*
 
@@ -22,7 +22,7 @@ In the worktree at `../<repo>-m5` (set up at module open).
 
 ## Phase 1: Read what the failed run did
 
-*15 min*
+*10 min*
 
 - You're diagnosing, not fixing. The un-packaged run was supposed to underdeliver. What came back is data, not blame.
 - Two places hold the story. The repo's git history (commits on the `m4/<slug>` branch, files modified, branch state, all visible from the worktree) tells you *what* the agent did. That run's session transcript, at the path recorded in `task.md`, tells you *how* it got there, drift and dead-ends included.
@@ -89,7 +89,7 @@ Read what Claude proposes. Push back if the verifier covers the wrong shape (a g
 
 ## Phase 4: Write the reference and plan.md
 
-*20 min*
+*17 min*
 
 Ask Claude to assemble both, scoped to the same task, in conversation.
 

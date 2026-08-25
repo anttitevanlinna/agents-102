@@ -2,10 +2,10 @@
 key: what-packaging-is-1
 dest: Claude Code
 runtime: any
-origin: lectures/what-packaging-is
+origin: lectures/hooks-always-fire
 ---
-Propose five hooks for this repo and the work we just did, beyond formatting and linting.
+Name the top five hooks you see people actually using with Claude Code, beyond formatting and linting.
 
-For each, name the Claude Code event it fires on, the specific thing in this repo or this session it would catch, and the line I'd skip without it.
+Cross-reference each with this repo: the event it fires on, and the specific file, convention, or failure mode here it would catch. If one doesn't apply to this repo, say so.
 
-Skip suggestions any team could want. No preamble. List them.
+No preamble. List them.

@@ -84,5 +84,5 @@ For the full reference, <span class="rt-code">open Anthropic's [subagent documen
 - Facilitator notes: Module 3 opening Connections can start with "which practitioner surprised you most?" as a warm entry into the multi-agent frame.
 - Variant note: for the Mid-Management training, replace the subagent primer with a higher-level reading on team-scale agent coordination (reuse the practitioner list as-is; the "ceiling" calibration holds).
 
-**Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@725101ec technical@725101ec behavior@725101ec pedagogy@725101ec strategy@725101ec slides@725101ec)
-- judges @d3ff749e: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@5755beb6 technical@725101ec behavior@725101ec pedagogy@725101ec strategy@725101ec slides@725101ec)
+- judges @5755beb6: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

@@ -85,5 +85,5 @@ Three to five lines, plain language, the things you would not want a generic pol
 - Facilitator notes: Module 4 opening Connections can start with *"What is one expertise you would want your agent to borrow?"* as a warm entry into the personal-skills frame.
 - Variant note: for the Mid-Management training, Reading 2 leans harder on the layered framing and lighter on the named attack classes — the mental-model shift is what matters, not the class-by-class enumeration.
 
-**Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@725101ec technical@725101ec behavior@725101ec pedagogy@725101ec strategy@725101ec slides@725101ec)
-- judges @d3ff749e: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@5755beb6 technical@725101ec behavior@725101ec pedagogy@725101ec strategy@725101ec slides@725101ec)
+- judges @5755beb6: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

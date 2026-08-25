@@ -86,8 +86,8 @@ The output now travels with a file the agent can re-read next time. Module 2 sys
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-08-25 (writing@2072737a story@725101ec technical@725101ec behavior@725101ec pedagogy@725101ec strategy@194c81b0 slides@2072737a)
-- judges @2072737a: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-25 (writing@2072737a story@5755beb6 technical@725101ec behavior@725101ec pedagogy@725101ec strategy@194c81b0 slides@2072737a)
+- judges @5755beb6: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - cross_module @2072737a: PASS — set=[prework,getting-going,building-agent-systems,multi-agent-systems,security,output-quality,evaluations,personal-to-team,agents-building-agents]
 
 **Mood target:** Joyful creation — the student leaves with something recognizably theirs, not a technical warm-up.

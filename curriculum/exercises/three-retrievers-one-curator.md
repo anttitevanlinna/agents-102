@@ -55,7 +55,7 @@ In Session 3, tell this session to act as your internet retriever and stream pra
 
 {{prompt:three-retrievers-one-curator-3}}
 
-If Claude rubber-stamps a weak author list, push back before fetching: *"Replace vendor/analyst sources with practitioners writing from their own operating experience in the last 6 months."*
+If Claude rubber-stamps a weak author list, push back before fetching: *"Replace second-hand architecture summaries with dated first-person accounts from people running the work."*
 
 
 Heads-up: retrievers tend to wrap up early. A clean-looking *Conflicts and gaps* section reads like the work is done; usually it isn't. If the file feels thinner than the question deserves, the prompt below is your nudge to keep them chugging.

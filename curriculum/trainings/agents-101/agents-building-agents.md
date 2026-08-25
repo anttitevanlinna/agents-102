@@ -55,7 +55,7 @@ Read Claude's summary. Push back where it's wrong. Some of what didn't resolve s
 ## Key Concepts
 
 - **Self-improvement**: each cycle sharpens the next. Proposals read sharper than initial stances because the agents cross-check before publishing, then critiques sharpen the synthesizer's selection.
-- **Org capability**: many agents reading and proposing in parallel produce a kernel, agent set, and plan grounded in your own files, not a single consultant's read.
+- **Org capability**: many agents reading and proposing in parallel produce a kernel, agent set, and plan with every recommendation traceable to the file it came from.
 - **The three predictable walls past the laptop loop**: data access, runtime platform, discoverability. The plan already names which wall bites first for your company. Seeing them is the sign the kernel works.
 - **Thinking disciplines you take home as named moves.** Crux, *what would have to be true?*, pre-mortem aren't props and they aren't installed skills. They're portable disciplines you ask Claude to run on any decision too big to eyeball.
 - **Grounding when agents read agents.** Every agent publishes what it read, what it couldn't find, and what it inferred without a source. Every claim cites the file it came from. Without that rule, agents reading agents smoothly hallucinate each other's memory.
@@ -68,7 +68,7 @@ The plan you just produced is a set of assumptions dressed as work: label them, 
 
 **Quality:** compendium-audited 2026-08-23 (writing@194c81b0 story@194c81b0 technical@725101ec behavior@725101ec pedagogy@194c81b0 strategy@725101ec slides@194c81b0)
 - judges @194c81b0: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
-- cross_module @090407d3: PASS — set=[prework,getting-going,building-agent-systems,multi-agent-systems,security,output-quality,evaluations,personal-to-team,agents-building-agents]
+- cross_module @2072737a: PASS — set=[prework,getting-going,building-agent-systems,multi-agent-systems,security,output-quality,evaluations,personal-to-team,agents-building-agents]
 
 **Mood target:** Awe and curiosity — the student leaves wanting the next move, not feeling tidily graduated.
 

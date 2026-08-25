@@ -130,7 +130,7 @@ Close the session with three files at the shared folder root:
 
 **What happened:**
 
-One agent working alone can't produce a company-grade strategy kernel grounded in your actual data. Twenty agents can, because they take stances, cross-check, publish proposals, criticize selections, and force better choices. Crux finds the load-bearing obstacle. Cross-checks expose blind spots. Critiques keep the synthesizer candid. Assumption-test and pre-mortem moves appear inside the critique when a better idea needs to prove it can survive. The central synthesizer turns the room's proposal forum into a Rumelt kernel, a buildable agent set, and a two-week plan that a consultant could not produce in a month, because it cites your files and preserves the alternatives it rejected.
+The forum produced a strategy kernel grounded in your own files because the agents took stances, cross-checked, published proposals, criticized selections, and forced better choices. Crux found the load-bearing obstacle. Cross-checks exposed blind spots. Critiques kept the synthesizer candid. Assumption-test and pre-mortem moves appeared inside the critique when a better idea needed to prove it could survive. The central synthesizer turned those proposals into a Rumelt kernel, a buildable agent set, and a two-week plan that cites its evidence and preserves the alternatives it rejected.
 
 The forum didn't converge on the first try. Pushback rounds were the work. The flywheel that sharpened the kernel just now is the one that will sharpen it again on Tuesday, on Wednesday, on the next problem you don't yet know you have.
 

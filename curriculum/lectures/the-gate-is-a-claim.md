@@ -3,6 +3,7 @@
 Say the re-send comes back green. The verifier you built reads the work and passes it. A passing result is only as trustworthy as the check that produced it. The check itself needs verification.
 
 ## Passing is not proof
+<!--tier:2-->
 
 - A gate only means what the gate can see. Green is a claim about the check, not a fact about the work. A result passes for three different reasons that look identical from outside: the judge is miscalibrated, the gate got gamed, or the session was a lucky sample.
 - The check you built is itself a claim that wants verifying. The same scrutiny you point at the agent's work points at the thing that judges the work. A gate nobody has verified is a gate trusted on vibes.
@@ -10,23 +11,27 @@ Say the re-send comes back green. The verifier you built reads the work and pass
 - The three countermoves share one property: independence. Each rests the verdict on something the system under test does not control: labels the judge never produced, a check the agent never sees, sessions beyond this one. A same-window double-check has none of it; the second read inherits the first one's framing: shared framing, shared blind spots. A second call is a second opinion only when something changed.
 
 ## The judge needs calibrating against your labels
+<!--tier:2-->
 
 - An LLM judge is another untested component. Until you compare its verdicts with your own review, you do not know its false-pass rate, how often it approves work you would reject.
 - The move: compare a handful of your own judgements with the judge's verdicts, and teach the judge until you converge. You are looking for disagreement patterns, not a significance test. Re-check when the model or the task shifts. Hamel Husain reports better than 90% agreement after three iterations of exactly this loop.
 - A good gate starts from real traces, not imagined failures. Read sessions that actually happened, sort the real failures into buckets, and write the first check for the biggest bucket. A gate built from the armchair catches the failures you pictured and misses the ones you have.
 
 ## Gates decay
+<!--tier:2-->
 
 - **Goodhart's law:** when a measure becomes a target, it ceases to be a good measure. The agent is an optimizer aimed straight at your gate: it may special-case tests, keyword-stuff work for the judge, or edit assertions until they pass. No malice needed: optimization pressure finds the cheapest path to green.
 - Passing while missing the intent is a signature, not bad luck. When work clears the gate and still is not what you meant, the gate has decayed into a target. That is a reason to refresh the gate, not to shrug.
 - The countermoves are a hold-out and an integrity check. Keep a check the agent never sees, so nothing can optimize against it. After a suspicious pass, inspect the gate itself (the test file, the judge prompt, the asserts), not only its verdict.
 
 ## One session is a sample
+<!--tier:3-->
 
 - The agent's behavior is a distribution, not a property. One green session is an anecdote with survivorship bias. Reachable and dependable are different claims: passing once shows the task is reachable, passing again and again shows it is dependable. The second collapses far faster than the first.
 - Before crediting an improvement, run it repeatedly. A new rule, a new prompt, a new gate: judge it on pass rates across several sessions, not on the one session that followed the change. On a single session you cannot separate the change from ordinary session-to-session variance.
 
 ## Change on recurrence, not on noise
+<!--tier:3-->
 
 - One stochastic miss is not a process failure. A system with session-to-session variance produces the odd miss even when nothing is wrong. Rewriting a rule after every single miss does not tighten the process, it churns it. W. Edwards Deming called this **tampering**: chasing ordinary variance case by case adds noise of its own.
 - React on recurrence. The same failure shape returning is signal. That is when the rule changes, the gate refreshes, or the skill ships.
@@ -35,6 +40,7 @@ Say the re-send comes back green. The verifier you built reads the work and pass
 A gate is one more claim in the system. Build it, then hold it to the same bar it holds the work to.
 
 ## The delegation frontier
+<!--tier:2-->
 
 {{figure:delegation-frontier}}
 

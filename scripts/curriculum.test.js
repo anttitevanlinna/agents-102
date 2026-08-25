@@ -23,6 +23,7 @@ const { marked } = require('marked');
 const {
   expandPrompts,
   expandFigures,
+  expandTiers,
   moduleOrdinal,
   moduleNumber,
   applyContentFlags,
@@ -133,6 +134,18 @@ test('expandFigures: {{figure:foo}} expands to the registry block', () => {
   const out = expandFigures('before\n\n{{figure:foo}}\n\nafter', { foo: block });
   assert.match(out, /<figure class="diagram"><svg><\/svg><\/figure>/);
   assert.doesNotMatch(out, /\{\{figure:/);
+});
+
+test('expandTiers: <!--tier:N--> on its own line becomes a hidden slide-tier block', () => {
+  const out = expandTiers('## A slide\n<!--tier:2-->\n\nbody');
+  assert.match(out, /<div class="slide-tier" data-tier="2" hidden><\/div>/);
+  assert.doesNotMatch(out, /<!--tier:/);
+});
+
+test('expandTiers: only 1|2|3 expand; inline or malformed markers pass through', () => {
+  assert.equal(expandTiers('<!--tier:4-->'), '<!--tier:4-->');
+  assert.equal(expandTiers('text <!--tier:2--> text'), 'text <!--tier:2--> text');
+  assert.equal(expandTiers('no markers'), 'no markers');
 });
 
 test('expandFigures: unknown key passes through permissively, throws in strict mode', () => {

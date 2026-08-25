@@ -214,6 +214,7 @@
             .then(expandIncludes)
             .then(function (md) { return CurriculumRuntime.expandPrompts(md, PROMPT_REGISTRY); })
             .then(function (md) { return CurriculumRuntime.expandFigures(md, FIGURE_REGISTRY); })
+            .then(CurriculumRuntime.expandTiers)
             .then(rewriteCrossDocLinks)
             .then(function (md) {
                 return CurriculumRuntime.rewriteImageTargets(md, function (target) { return docDir + target; });

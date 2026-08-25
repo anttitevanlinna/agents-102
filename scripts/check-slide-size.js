@@ -209,6 +209,9 @@ function measureOneRuntime(body) {
     // include machinery — paste blocks / cut ribbons / covered regions, not read
     if (/^\{\{[^}]*\}\}$/.test(trimmed) || /^\{\{\/[^}]*\}\}$/.test(trimmed)) continue;
 
+    // standalone HTML comments (`<!--tier:N-->` and kin) — markers, not prose
+    if (/^<!--.*-->$/.test(trimmed)) continue;
+
     if (/^# /.test(trimmed)) { continue; }    // H1 title (own card)
 
     if (/^## /.test(trimmed)) {

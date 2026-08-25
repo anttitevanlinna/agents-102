@@ -3,6 +3,7 @@
 The packaged re-send is running and the laptop is closed again. What you assembled to get there has names.
 
 ## One session, plotted
+<!--tier:2-->
 
 One long session, drawn as a sea passage.
 
@@ -18,29 +19,34 @@ Packaging decides what catches problems during the handoff.
 A standing check pushes back before the next wrong step builds on the last one. That is the difference between a final review and feedback inside the passage.
 
 ## Reference and plan
+<!--tier:2-->
 
 - Each piece turns up on its own across practitioner write-ups. This training combined them into one kit and gave them names. Geoffrey Huntley's Ralph is the one published practice that runs all three at once. Armin Ronacher's January 2026 MiniJinja port ran two of them and named neither. You built all three today off your own failures, which beats a citation. On the map, the kit is what stands in for you at Verification.
 - **Reference artefact**, against goal drift. A spec the agent reads and re-reads: success criteria, pointers at the relevant memory, named constraints. The spec on disk stays readable mid-session when the buried instructions in the conversation no longer are. In Ronacher's MiniJinja port, the original Rust snapshot tests played this role; in your re-send, the reference you assembled plays it.
 - **plan.md** the agent owns and mutates, against context rot. A working document that holds durable state across the task: the agent reads it at every session boot, updates it as decisions land, re-reads it when the working window fills. What got ruled out an hour ago is written down, not remembered. Ralph leans on exactly this primitive to bootstrap entire greenfield projects.
 
 ## The verifier completes the three-pattern
+<!--tier:2-->
 
 - **External verifier**, against plausible-but-wrong. An automated check that decides whether a piece of agent-produced work meets a quality bar. Your job is to spot when quality is passable and nudge the agent along to done-done.
 - The menu you picked from is practitioner-lived. Kim's writeup of Boris Cherny has him reaching for all three shapes in his long-running practice; the menu form is Kim's synthesis. You built one against your dominant failure. The other two sit alongside the three-pattern for next time.
 
 ## The model has read the field
+<!--tier:3-->
 
 - The weights hold the written record: the setup posts, the plan-file templates, the verifier write-ups, the reversals that followed them. More of the field than you will read in a career.
 - Ask for best practice and that is what answers: a well-read average of what other people published about other repos, frozen at a cutoff while the consensus keeps moving. Steer it as hard as you like: what it holds about your next run is a forecast.
 - Whether this field ever settles into a real best practice is an open question. Either way, today's playbooks are **candidates**.
 
 ## The missing evidence is local
+<!--tier:3-->
 
 - Much of what shapes your setup is on the record, and the agent can survey it: the test suite's shape, the merge rules in CI, the age of everything in git.
 - What no survey returns: how this task, this model, this repository and this setup behave together in a run. No document holds it because, until the run, there is nothing to document. Asked ahead, the model predicts. **A prediction is not a measurement.**
 - So a playbook stays a candidate until something tests it here, and nothing published can run that local test for you.
 
 ## The optimum is local, and it moves
+<!--tier:3-->
 
 - An A/B on your own repo: the same task without the kit, then with it. The un-packaged send-off is the baseline; the packaged experiment testing the kit is running right now.
 - Where the two sessions disagree, you'll know something no write-up could have told you: which failure the kit catches here, and which still recurs.
@@ -49,11 +55,13 @@ A standing check pushes back before the next wrong step builds on the last one. 
 - What's tested holds in review: *"measured here, this catches it, watch."*
 
 ## Hooks always fire
+<!--tier:2-->
 
 - A **hook** fires on a named event, and the agent has no say in whether it runs. Session start, prompt submit, before each tool call, after each tool call, on stop, plus a few more. The runtime fires the script whether or not the model remembers it exists.
 - Hooks exist because the LLM is forgetful. Drift, half-remembered rules: the longer the session runs, the less you can trust the agent to hit a step that "should" happen every time. Hooks don't forget.
 
 ## Hooks for must-happen, prompts for taste
+<!--tier:2-->
 
 - **Must happen goes in a hook**; recommended stays in a prompt or rule. Anything that breaks the work if it skips belongs in a hook: the verifier you just wrote, a pre-commit guard, a session-start context loader. Anything taste-shaped or context-dependent stays in a prompt where the LLM weighs it. Hooks are the runtime's "I will not forget," bought at the cost of flexibility.
 - Your repo has demands that don't show up in someone else's article. The verifier you built was one hook against one failure; the same primitive maps to more. This one runs on the screen. Watch the list come back rather than typing along.
@@ -63,6 +71,7 @@ A standing check pushes back before the next wrong step builds on the last one. 
 The ones worth keeping are tied to a specific file, convention, or failure mode in this repo, not a generic team-could-want-this.
 
 ## Every re-feed pass starts a fresh session
+<!--tier:2-->
 
 - **Re-feed**, the third shape on the verifier menu: loop the same prompt with a check baked in, and the agent re-runs on top of the previous round's output until the check passes.
 - Each pass is a new session, not a continuation of the last one. What carries over is what sits on disk: the work the previous pass wrote, and the check that judged it. Nothing from the conversation survives.

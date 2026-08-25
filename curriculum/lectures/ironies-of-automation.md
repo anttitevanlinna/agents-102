@@ -1,12 +1,14 @@
 # The ironies of automation
 
 ## Monitoring and takeover run on the same reps
+<!--tier:2-->
 
 - This is a 1983 argument, not an AI take. Lisanne Bainbridge, studying industrial automation: automate the reliable middle of a task, and the human keeps exactly two jobs. Monitor for the rare failure. Take over when it happens.
 - Both jobs demand hands-on fluency. Monitoring only works if you can tell wrong from right at a glance. Takeover only works if the manual skill is still there. Both ride on the reps of doing the task yourself.
 - The irony: daily automation quietly removes those reps. Skills deteriorate when they are not used. The better the automation, the less you do the task by hand, and the worse you are at the moment you are needed most. Bainbridge's phrasing: a formerly experienced operator who has been monitoring an automated process "may now be an inexperienced one."
 
 ## Trust and vigilance move in opposite directions
+<!--tier:2-->
 
 - Earned trust is exactly what breeds the miss. Watch a system that is highly but imperfectly reliable, and your own detection performance degrades. The automation-studies literature named this **overreliance**: trusting the machine past the point where you still catch its errors (Parasuraman and Riley's use, misuse, disuse).
 - The more tasks the agent lands cleanly, the worse you get at catching the one that doesn't. Each clean task is real evidence of competence and real erosion of your vigilance, at the same time. The more autonomy the agent earns, the worse a watcher you quietly become.

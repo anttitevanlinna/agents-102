@@ -27,7 +27,7 @@
                 { slug: 'building-agent-systems', title: 'Building Agent Systems' },
                 { slug: 'multi-agent-systems',    title: 'Multi-Agent Systems' },
                 { slug: 'security',               title: 'Security' },
-                { slug: 'output-quality',         title: 'Output Quality and Hallucination Control' },
+                { slug: 'output-quality',         title: 'Grounded Output' },
                 { slug: 'evaluations',            title: 'Evaluations' },
                 { slug: 'personal-to-team',       title: 'From Personal to Team' },
                 { slug: 'agents-building-agents', title: 'Agents Building Agents (The Flywheel)' }
@@ -746,6 +746,24 @@
         return out;
     }
 
+    // Slide-tier marker: `<!--tier:N-->` (N = 1|2|3) on its own line, directly
+    // under the `##` heading it grades. Trainer-facing skip guidance:
+    //   1 = core (an exercise depends on it; the default when untagged)
+    //   2 = recognition (names what the room just did; skip costs naming)
+    //   3 = story / extra theory (skip freely)
+    // Expanded here into an inert hidden block so it survives marked() and
+    // cloneNode(); the Slides layout reads it and renders a small corner token.
+    // Long-read renders nothing (hidden block element). Untagged slides carry
+    // no token — absence means core.
+    var TIER_MARKER_RE = /^<!--tier:([123])-->[ \t]*$/gm;
+
+    function expandTiers(md) {
+        if (!md || md.indexOf('<!--tier:') === -1) return md;
+        return md.replace(TIER_MARKER_RE, function (m, n) {
+            return '<div class="slide-tier" data-tier="' + n + '" hidden></div>';
+        });
+    }
+
     function extractParent(md) {
         var m = md.match(/<!--\s*parent:\s*([a-zA-Z0-9_-]+)\s*-->/);
         return m ? m[1] : null;
@@ -1431,6 +1449,7 @@
         renderPromptBlock: renderPromptBlock,
         expandPrompts: expandPrompts,
         expandFigures: expandFigures,
+        expandTiers: expandTiers,
         PROMPT_INCLUDE_RE: PROMPT_INCLUDE_RE,
         FIGURE_INCLUDE_RE: FIGURE_INCLUDE_RE,
         RUNTIME_MAP_RE: RUNTIME_MAP_RE,

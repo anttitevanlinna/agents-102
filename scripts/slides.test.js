@@ -59,7 +59,7 @@ const FIXTURE = `
     <section class="phase phase--lecture" id="lectures-painting-the-picture">
       <div class="phase-kicker">Lecture</div>
       <h1>Painting the picture</h1>
-      <h2>Slide A</h2><p>body</p>
+      <h2>Slide A</h2><div class="slide-tier" data-tier="3" hidden></div><p>body</p>
     </section>
     <section class="phase phase--exercise" id="exercises-orient-and-introspect">
       <div class="phase-kicker">Exercise</div>
@@ -199,6 +199,34 @@ test('covers and dividers carry the section code but no ordinal', () => {
   model.slides.filter(s => s.isDivider || s.isCover).forEach(s => {
     assert.equal(s.secNum, undefined, (s.title || '') + ' has no ordinal');
   });
+});
+
+// ── slide tiers ──────────────────────────────────────────────────────────────
+// A hidden `.slide-tier` block (from `<!--tier:N-->` via expandTiers) stamps
+// its slide with data-tier and a small corner token; untagged slides carry
+// neither. Trainer skip guidance — deck-only chrome, invisible in long-read.
+
+test('a tier-tagged slide carries data-tier, a corner token, and the model tier', () => {
+  const { model } = buildDeck();
+  const tagged = model.slides.find(s => (s.navLabel || s.title) === 'Slide A');
+  assert.equal(tagged.tier, '3', 'model records the tier');
+  assert.equal(tagged.el.getAttribute('data-tier'), '3', 'slide section stamped');
+  const badge = tagged.el.querySelector('.slide__tier');
+  assert.ok(badge, 'corner token rendered');
+  assert.equal(badge.textContent, 'T3');
+  assert.ok(badge.getAttribute('title'), 'token explains itself on hover');
+});
+
+test('untagged slides carry no tier stamp and no token', () => {
+  const { model } = buildDeck();
+  const plain = model.slides.find(s => (s.navLabel || s.title) === 'Step one');
+  assert.equal(plain.tier, null);
+  assert.equal(plain.el.getAttribute('data-tier'), null);
+  assert.equal(plain.el.querySelector('.slide__tier'), null);
+});
+
+test('slides.css styles the tier token', () => {
+  assert.match(SLIDES_CSS, /\.slide__tier\s*\{/, 'slides.css must carry the .slide__tier rule');
 });
 
 // ── left-rail rendering (needs the real open(), not just the model) ─────────

@@ -42,6 +42,31 @@
 .deck .slide.theme-dark .hox-block__body,
 .deck .slide.theme-dark .note-block__body { color: var(--fg); }
 
+/* ── slide tier token ───────────────────────────────────────────────────────
+   Trainer-facing skip guidance from `<!--tier:N-->` markers (deck-only chrome;
+   long-read renders nothing). T2 = recognition, skippable under time pressure;
+   T3 = story/extra theory, skip freely. Untagged slides are core and carry no
+   token. Deliberately quiet: legible to the trainer at the lectern, wallpaper
+   to the room. Colors are literal (not var()) so the token reads the same on
+   light and `.theme-dark` slides. */
+.deck .slide__tier {
+  position: absolute; top: .9rem; right: 1.1rem; z-index: 8;
+  font-family: var(--font-display, inherit); font-size: .68rem;
+  letter-spacing: .14em; font-variant-numeric: tabular-nums;
+  padding: .18rem .5rem; border-radius: 99px; border: 1px solid transparent;
+  opacity: .75; pointer-events: auto; cursor: help;
+}
+.deck .slide__tier--2 { color: #7c6f5a; border-color: rgba(124, 111, 90, .45); }
+.deck .slide__tier--3 { color: #a99a80; border-color: rgba(169, 154, 128, .4); border-style: dashed; }
+.deck .slide.theme-dark .slide__tier--2 { color: #a99a80; border-color: rgba(169, 154, 128, .5); }
+.deck .slide.theme-dark .slide__tier--3 { color: #7c6f5a; border-color: rgba(124, 111, 90, .55); }
+/* explicit T1 tag, if an author writes one: same quiet treatment as T2 */
+.deck .slide__tier--1 { color: #7c6f5a; border-color: rgba(124, 111, 90, .45); }
+.deck .slide.theme-dark .slide__tier--1 { color: #a99a80; border-color: rgba(169, 154, 128, .5); }
+
+/* rail: tier-3 rows dim so the skippable tail is scannable at a glance */
+.deck__rail-item--tier3 .deck__rail-label { opacity: .6; }
+
 /* ── deck shell ─────────────────────────────────────────────────────────── */
 body.slides-active { overflow: hidden; }
 .deck { position: fixed; inset: 0; z-index: 1000; display: flex; flex-direction: column;

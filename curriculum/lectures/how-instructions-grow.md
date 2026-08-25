@@ -1,6 +1,7 @@
 # How instructions grow
 
 ## Some rules grow into skills
+<!--tier:2-->
 
 Start with real work. Capture the smallest useful lesson in `./CLAUDE.local.md`, then sharpen it from evidence. Share a short standing rule through `./CLAUDE.md` when the team should inherit it.
 
@@ -11,6 +12,7 @@ When a rule expands into a repeatable way of doing a job, extract it into a **sk
 This is one common route, not a promotion ladder. A useful skill can also emerge directly from repeated work.
 
 ## The second loop
+<!--tier:3-->
 
 [Chris Argyris called the deeper move double-loop learning](https://hbr.org/1977/09/double-loop-learning-in-organizations). The first loop corrects the action. The second questions the governing rule or assumption that shaped the action.
 
@@ -19,6 +21,7 @@ This is one common route, not a promotion ladder. A useful skill can also emerge
 `./CLAUDE.local.md` and `./CLAUDE.md` shape every session in their scope. A skill joins context when the work calls for it. The right instructions grow from evidence, then shape future context.
 
 ## Rules have a ceiling
+<!--tier:2-->
 
 You can make rules now. The ceiling comes sooner than you'd guess: every always-loaded rule rides into every session, billed against the same attention that does the work. Past a point the context bloats, and quality degrades in ways that are hard to pin. The work starts passing your rules and missing your point.
 
@@ -27,12 +30,14 @@ The cure is not better rules; it is where the rules live. Keep `./CLAUDE.md` and
 This training stops short of the full system: rules that prune themselves, evidence that routes itself to the right file, a team deciding what loads for everyone. Exact details of the context information lifecycle are for your team to automate right, in a way that fits your team workflow.
 
 ## Prohibitions stop; taste steers
+<!--tier:2-->
 
 A rules file that grows only from corrections turns into a list of don'ts. Prohibitions are weak instructions: each one stops a single behaviour and puts nothing in its place. Anyone who has told a child "don't do that" knows the result. Acting right is learned from what good looks like, and from hearing it when it happens.
 
 The positive form is also shorter. Saying what you want, with the reason, usually takes fewer words than the cage of no-statements built around everything you don't. And it generalizes: a taste statement steers in situations no prohibition anticipated. So when a session gets something exactly right, that is worth a rule too. Capture the good example beside the corrections.
 
 ## Keep your context where it loads optimally
+<!--tier:2-->
 
 Variations of the rule and context management prompts you have run work on every type of context engineering file: CLAUDE files, skills, rule files, and whatever you have rolled yourself. Moving material between them is also something you ask Claude to do.
 

@@ -3,6 +3,7 @@
 What follows is Antti's story of building this training, in his own words.
 
 ## Everything starts as a few bulletpoints somewhere
+<!--tier:3-->
 
 At first, this training was a strategy document: seven headings and thirty bulletpoints. It looked complete in the way a good list can look complete. Then the bulletpoints became module prototypes, and the gaps became visible.
 
@@ -13,6 +14,7 @@ The rules were corrected too. Some were too broad. Some fired in the wrong place
 The system behind this training currently has 302 active rules and subrules across 12 checklists, written over 1,447 commits. Neither count is a claim that more rules make better work. They show how much specific judgment had to be written down, and how many passes it took, to reach control over the training's style.
 
 ## Then we tested the training
+<!--tier:3-->
 
 Rules shape a draft, but they still leak. Major changes therefore go through automated quality judges, each reading through a focused lens: writing, story, technical accuracy, agent behavior, pedagogy, strategy, cross-module fit, and slide design.
 
@@ -23,12 +25,14 @@ Then a tmux runner drives real Claude Code sessions through Modules 1–6 agains
 None of these checks replaces another, as they catch differing failure modes. You build similar scaffolding for your own repo throughout the training. The rules file you just wrote is the first piece.
 
 ## You just ran the same loop
+<!--tier:2-->
 
 This build story is the shape you just ran on your own repo. Claude's first read was partly wrong. You found the useful wrongness, corrected it, and wrote what the session taught you into `./CLAUDE.local.md` for the next session.
 
 Kieran Klaassen calls this **compound engineering**: work produces evidence; evidence improves the system that does the next work.
 
 ## What compounds
+<!--tier:2-->
 
 Klaassen's definition: each unit of engineering work should make subsequent units easier, not harder. What that looks like, in his words:
 

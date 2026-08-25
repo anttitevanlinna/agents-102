@@ -89,6 +89,16 @@
     });
   }
 
+  // ── slide tiers ───────────────────────────────────────────────────────────
+  // `<!--tier:N-->` markers in the markdown arrive as hidden `.slide-tier`
+  // blocks (curriculum.js expandTiers). Deck-only chrome: a small corner token
+  // telling the trainer how skippable the slide is. Untagged slides = core.
+  var TIER_INFO = {
+    '1': 'Core — the work ahead depends on this slide',
+    '2': 'Recognition — names what the room already did; skippable under time pressure',
+    '3': 'Story / extra theory — skip freely'
+  };
+
   // ── slide construction ────────────────────────────────────────────────────
   function slideSection(cls, dark) {
     var sec = el('section', 'slide' + (cls ? ' ' + cls : '') + (dark ? ' theme-dark' : ''));
@@ -177,10 +187,18 @@
       sec.appendChild(body);
       if (body.querySelector('.diagram, svg, img')) sec.classList.add('slide--diagram');
       if (body.querySelector('.diagram, svg, table, pre')) sec.classList.add('slide--wide');
+      var tier = null, tm = body.querySelector('.slide-tier[data-tier]');
+      if (tm && !g.isCover) {
+        tier = tm.getAttribute('data-tier');
+        sec.setAttribute('data-tier', tier);
+        var badge = el('span', 'slide__tier slide__tier--' + tier, { title: TIER_INFO[tier] || '' });
+        badge.textContent = 'T' + tier;
+        sec.appendChild(badge);
+      }
       var title;
       if (g.isCover) title = docTitle || o.title || 'Cover';
       else { var hh = body.querySelector('h2'); title = hh ? textOf(hh) : 'Slide'; }
-      out.push({ el: sec, title: title, navLabel: title, isCover: g.isCover, isDivider: false });
+      out.push({ el: sec, title: title, navLabel: title, isCover: g.isCover, isDivider: false, tier: tier });
     });
     return { slides: out, title: docTitle };
   }
@@ -404,7 +422,8 @@
       var cls = 'deck__rail-item'
         + (s.isDivider ? ' deck__rail-item--divider' : '')
         + (s.el.classList.contains('slide--module') ? ' deck__rail-item--module' : '')
-        + (s.isCover ? ' deck__rail-item--cover' : '');
+        + (s.isCover ? ' deck__rail-item--cover' : '')
+        + (s.tier ? ' deck__rail-item--tier' + s.tier : '');
       var btn = el('button', cls, { 'data-index': k });
       var num = el('span', 'deck__rail-num');
       num.textContent = s.isCover ? '•'

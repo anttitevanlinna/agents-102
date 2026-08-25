@@ -194,7 +194,7 @@ function readMd(absPath) {
   // pointing at the offending file via the path included in the error.
   try {
     const expanded = CR.expandPrompts(stripped, PROMPT_REGISTRY, { strict: true });
-    return CR.expandFigures(expanded, FIGURE_REGISTRY, { strict: true });
+    return CR.expandTiers(CR.expandFigures(expanded, FIGURE_REGISTRY, { strict: true }));
   } catch (e) {
     throw new Error(`${path.relative(ROOT, absPath)}: ${e.message}`);
   }

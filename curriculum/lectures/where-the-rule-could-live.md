@@ -3,12 +3,14 @@
 You can extract any rules into their own `.md` file. Eventually your Claude files get too big. Let's simulate a few uses for your `backlog-refinement-rules.md`.
 
 ## Three agents using the file
+<!--tier:2-->
 
 - **Slack triage.** A request lands in a thread; `@Claude` routes it into Claude Code on the web, or a Slack app hands the thread to an agent runtime. The agent reads the thread plus `backlog-refinement-rules.md` and replies with the suggested split or the next question.
 - **Issue webhook.** A teammate opens, edits, or labels a GitHub issue; a GitHub Actions workflow or GitHub App picks it up. The agent runs with the file in context: it proposes labels, asks for missing info, or splits the issue into smaller tickets. The file decides what a well-shaped ticket looks like.
 - **Scheduled read.** Once a day, a scheduled agent runs with the file in context, reads the backlog top-to-bottom, and proposes a re-shape: which items want to merge, which want to split, which want to die. You arrive to a proposal, not a queue.
 
 ## The file is steady; the agent moves
+<!--tier:2-->
 
 - The file is the steady part; the agent is the moving part. Across all three agents, better rules produce better tickets.
 - The file travels. Slack thread, issue event, daily schedule; Claude Code on the web, GitHub Actions, a scheduled agent. Trigger and runtime are wiring choices; the file rides along unchanged. Put it somewhere the agent can read, and each of the three is a wiring decision, not a rewrite.

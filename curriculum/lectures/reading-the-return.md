@@ -20,6 +20,7 @@
 - Check the artefact against all three. No evidence for one is a clean result; a failure outside the menu gets its own name.
 
 ## The same three checks at larger scale
+<!--tier:2-->
 
 - In January 2026, Armin Ronacher ran a port between two languages in ten hours of agent time. 2.2 million tokens.
 - In May 2026, Jarred Sumner rewrote Bun in Rust the same way, over eleven days, peaking at about sixty-four agents at a time. He was on an unreleased model, so read the scale as where this is going, not as a target to match.

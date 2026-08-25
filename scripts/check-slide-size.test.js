@@ -59,6 +59,21 @@ function writeFixture(name, body) {
   return rel;
 }
 
+test('a standalone tier marker adds no words and no bullets', (t) => {
+  const rel = writeFixture('tiered.md', [
+    '# Fixture', '',
+    '## Tagged slide',
+    '<!--tier:2-->', '',
+    '- One bullet of real prose here.', ''
+  ].join('\n'));
+  t.after(() => fs.rmSync(path.join(ROOT, rel), { force: true }));
+  const { out } = run(['--report', '--file', rel]);
+  const m = out.split('\n').map(l => l.match(/^\s*(\d+)\s+(\d+)\s{2}Tagged slide\b/)).find(Boolean);
+  assert.ok(m, 'slide measured: ' + out);
+  assert.equal(+m[2], 1, 'one bullet');
+  assert.equal(+m[1], 7, 'marker contributes zero words (the bullet line alone)');
+});
+
 test('the accepted-overflow declaration, against a fixture', async (t) => {
   assert.doesNotThrow(
     () => execFileSync('git', ['check-ignore', '-q', 'tmp/'], { cwd: ROOT, stdio: 'ignore' }),

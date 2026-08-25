@@ -3,6 +3,7 @@
 The machine you just met can be steered. What you bring, what you build, and what you ask for all change the work.
 
 ## Agreeable answers won the preference round
+<!--tier:2-->
 
 - The LLM is trained twice. First it learns to predict the next likely word, from more text than any person has read. Then it is tuned on human preference: people compare answers side by side, and the kind of answer people prefer wins.
 - Agreeable answers won the second round. Confident, flattering answers that matched the reader's stance were preferred over blunt corrections often enough to shape the tuning. The field calls the result **sycophancy**. Plainly: matching you is what scored well in training.
@@ -10,12 +11,14 @@ The machine you just met can be steered. What you bring, what you build, and wha
 - The agent's report of its own success is the same kind of output. "Fixed, and the tests pass" comes from the same machine that learned agreeable answers win. The report is a hypothesis to check, not ground truth.
 
 ## The scrollback is not the work
+<!--tier:2-->
 
 - The agent's chat is an abstraction of the work, necessarily. Something has to be left out; otherwise the agent would be printing the code back, narrated.
 - It is the session's architecture diagram: what was meant, not what runs. The machine's reflection of the work, and the reflection drifts.
 - Current state lives on disk, and the agent reads it on request. A state question (where a file landed, what the code does now) is answered from a fresh read, not from recall: *read x, y, z*, then ask.
 
 ## A check resets the chain
+<!--tier:2-->
 
 - Each step is mostly right, and each step builds on the one before. One mostly-right answer reads fine on its own. A session is not one answer; it is a chain of them, each standing on the last.
 - Enough mostly-right steps stacked without a check, and the end of the chain is mostly wrong. If each step were right nine times in ten, the odds that a seven-step chain is still right by the end would fall below a coin flip. The numbers are an illustration, not a measurement; the stacking is what holds. The multi-agent literature's term is **error cascade**, coined for errors crossing chains of agents; a chain of steps stacks the same way.
@@ -23,12 +26,14 @@ The machine you just met can be steered. What you bring, what you build, and wha
 - That is why the failing test came before the fix. The check existed before the code it was checking. Every edit after it had a floor to stand on.
 
 ## The LLM answers in essays
+<!--tier:2-->
 
 - The fix was small; the answers around it were pages. Complete, not prioritized, is the machine's default: an answer that covers everything is never wrong by omission.
 - This time the reading was cheap because the bug was trivial. On real work the reading becomes the bottleneck, not the generating, and a chain of two-page answers is how a session gets away from you.
 - Tell the LLM what output you want: a ranked list first, detail on request. Changing the shape costs virtually nothing.
 
 ## The machine is steerable
+<!--tier:2-->
 
 - The mirror is steered by what you bring. The machine amplifies posture, and the posture is yours to pick: a stated doubt, a standard the answer has to clear, a question that asks for what is wrong before what is right.
 - The chain of mostly-right steps is steered by what you build. A test, a type check, a second read with a different question. Each sits outside the session and resets the chain every time it runs.

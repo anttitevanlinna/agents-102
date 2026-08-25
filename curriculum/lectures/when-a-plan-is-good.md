@@ -14,6 +14,7 @@
 - Feel free to muse on what the heck the agent is reading, and why. Aka context engineering.
 
 ## Optional: ask plan mode directly
+<!--tier:3-->
 
 A 30-second move first. Enter plan mode in your own session right now and ask Claude what shifted from its side.
 
@@ -45,11 +46,13 @@ Watch what comes back. Sometimes Claude names the read-only state directly, some
 - Check the revision, not the acknowledgement. The agent agrees easily. A flagged step can come back softened rather than sharpened. A push-back is finished when the regenerated plan is sharper, not when Claude says it heard you.
 
 ## Find is easier than judge
+<!--tier:2-->
 
 - Generating candidates is cheap for the agent; judging them is where you're needed. Stuck naming a soft item? Ask Claude which step it's least confident about. That answer is a candidate.
 - The agent finds, you judge, and everything from here sharpens one side or the other. The split runs through the whole discipline.
 
 ## Plan review is a high-leverage gate
+<!--tier:2-->
 
 - A plan is a check before implementation. One correction can redirect every step that follows before the agent turns the plan into code.
 - What the plan doesn't decide, the agent decides mid-run, inside work in flight, and you will not notice. A wrong call propagates across files, and the wrongness tangles with everything built after it: what would have been a line edit in the plan becomes an untangling job in the code.
@@ -57,6 +60,7 @@ Watch what comes back. Sometimes Claude names the read-only state directly, some
 - You don't have to execute a plan to know it's good. Recognizing one is the skill.
 
 ## What you can test and check sets your complexity ceiling
+<!--tier:2-->
 
 {{figure:delegation-frontier}}
 

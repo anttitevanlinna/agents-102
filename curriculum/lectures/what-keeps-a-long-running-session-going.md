@@ -3,6 +3,7 @@
 The session is working. Watch what already helps it continue, and where it still waits for you.
 
 ## Durable state keeps the place
+<!--tier:2-->
 
 - A long-running session needs a place it can recover its position from. The live context moves and eventually fills; files on disk survive.
 - Compaction makes room by summarising that live context. An unattended session relies on automatic compaction and whatever it can re-read from disk.
@@ -12,18 +13,21 @@ The session is working. Watch what already helps it continue, and where it still
 > **Subagents isolate context.** A bounded search or noisy investigation can run in a separate context and return only its summary to the main session.
 
 ## Feedback keeps the direction
+<!--tier:2-->
 
 - The session can produce changes faster than you can judge them. Every unread diff joins a queue downstream of the agent.
 - Flow engineering calls the push from a slower downstream stage **backpressure**: slow down, stop, or redirect when the next stage cannot safely accept more.
 - During the handoff, feedback has to come from the system itself. You judge the result when you return.
 
 ## A boundary decides whether to continue
+<!--tier:2-->
 
 - Some boundaries already stand without you: tests, types, lint, permission limits, and explicit stop or ask conditions. Each can catch a problem and send the work back for correction before later steps build on it.
 - The question is not how many checks the repo has. It is what notices first when this particular session goes wrong.
 - Watch what catches problems, where the session waits for you, and where nothing pushes back. That is part of the result you bring back.
 
 ## What stops a long run before done-done
+<!--tier:2-->
 
 - It stops and waits. Sometimes on you: a decision it will not take alone, posed as a question, with nobody there to answer. Sometimes on the world: a ticket it cannot open, a credential it does not have, information it decides is out of reach, so it stops rather than guesses. Whether that information was truly unreachable is your call on return, not its.
 - It declares done on the part it managed. Tests pass, the summary is confident, and the piece it quietly dropped goes unmentioned. You find this one on return, not during.

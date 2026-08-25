@@ -66,6 +66,7 @@ Plan mode takes minutes on real codebases. Eight to twelve isn't unusual. Use th
 > **Too many low-level questions? Steer up.** If Claude keeps asking about implementation detail (which helper, a variable name, error-message wording), tell it: ask me about requirements, not low-level design. The branches worth the time change what 'done' means; the rest you'd settle in verification.
 
 ## Switch to a picker if you prefer one
+<!--tier:3-->
 
 - If you would rather answer from a structured picker, ask Claude to switch to AskUserQuestion once the walk-down is rolling, and add any steering of your own.
 
@@ -78,6 +79,7 @@ Plan mode takes minutes on real codebases. Eight to twelve isn't unusual. Use th
 > **Timebox check.** If branches are still surfacing when your time is up, approve the sharpened plan as it stands and move to Phase 5.
 
 ## Run the original grill-me if you want the full hour
+<!--tier:3-->
 
 *Credit: Matt Pocock for the original [`grill-me`](https://github.com/mattpocock/skills/blob/62f43a1/skills/productivity/grill-me/SKILL.md) skill. The walk-down prompt is abbreviated to fit the 15-minute slot. The original is fully relentless and can run an hour. Optional:*
 

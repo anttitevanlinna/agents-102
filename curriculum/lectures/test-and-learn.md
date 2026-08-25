@@ -30,8 +30,8 @@ You're new to this country: the stretch where the agent runs alone and you don't
 
 - section-3 sweep 2026-07-02: 0 refs remaining to fix — the plan's 5 M5-refs (plus M1–M4 hits) were already removed by the same-day slides-only pass above; verified zero `M[0-9]`/module-name hits above the fence. 3 arc-temporal phrases judged not-sequencing ("from here on", "every future hand-off", the two-run arc — no module named; exercise-internal arc). Owning module `run-the-first-experiment.md` confirmed carrying the dropped sequencing in `## Start here` (short-loops contrast) and `## Next` ("Module 5 opens with...").
 
-**Quality:** compendium-audited 2026-08-23 (writing@a1ddfae2 story@7fb973dd technical@7fb973dd behavior@1c765f2 pedagogy@7fb973dd strategy@1c765f2 slides@a1ddfae2)
-- judges @7fb973dd: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-26 (writing@a197cc46 story@a197cc46 technical@7fb973dd behavior@1c765f2 pedagogy@7fb973dd strategy@1c765f2 slides@a197cc46)
+- judges @a197cc46: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 **Lecture meta:** *~10 min lecture, deck-shaped (3 slides + kicker). Sets up M4's walk-and-send-off exercise. Names the spirit of the two-session arc; the gap-analysis naming rides with the exercise since 2026-08-25.*
 **Word count:** ~340 words body (post slide rework).
 

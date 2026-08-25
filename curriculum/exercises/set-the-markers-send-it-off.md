@@ -53,7 +53,7 @@ Ask Claude to run the scoped task end-to-end in this same session.
 
 - Keep the laptop awake and plugged in (power settings → prevent sleep on power).
 - Nudge by hand: answer a question, correct a path, push back on visible drift. Past ten or so interventions, you have become the agent; call it and read what is there.
-- If the run goes completely off the rails, stop it. The trace is the result either way.
+- If the session goes completely off the rails, stop it. The trace is the result either way.
 
 If Claude stalls, ask it to keep going. The nudge reads as encouragement and lands as a taunt.
 
@@ -82,7 +82,9 @@ If Claude stalls, ask it to keep going. The nudge reads as encouragement and lan
 - Trace preservation: Claude Code scrollback is the artifact M5 reads. Anything the student's configured for conversation logging continues.
 - **Capability verified:** laptop-sleep freezes the session (not resumable on wake); Ctrl+C mid-tool-call can corrupt the `.jsonl`; no per-session token budget. Details in `reference/claude-code-for-engineers.md § 17`.
 
-**Placement:** the last exercise of M4. The two closing lectures sit below it in the module file and run while the task is already going: `what-keeps-a-long-running-session-going` rides the live session, then `ironies-of-automation` closes the module (moved there 2026-08-25). This file owns only what the student does.
+**Placement:** the last exercise of M4. The two closing lectures sit below it in the module file and run while the task is already going: `what-keeps-a-long-running-session-going` rides the live session, then `ironies-of-automation` closes the module. This file owns only what the student does.
+
+**Vocabulary (2026-08-26):** noun-*run* → *session* at the off-the-rails bullet, per `vocabulary.md § The work` (sweep-confirmed §21b finding). The leap test's *run* is trainer-side, outside §21b scope.
 
 **Lean-intro trim (2026-08-25, Antti-approved):** Phase 1's stance bullet (*"Your rules files, memory, ADRs and skills are what they are… shows up when you read what comes back."*) cut — `test-and-learn` installed that stance a lecture earlier; this slide's job is the two markers. Do not restore.
 

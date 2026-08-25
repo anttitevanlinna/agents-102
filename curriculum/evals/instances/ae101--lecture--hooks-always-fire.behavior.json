@@ -1,0 +1,62 @@
+{
+  "class": "behavior",
+  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/hooks-always-fire.md",
+  "body_sha": "6e4f678785dc937f4ab95e48b49d142ee5feac5733568c5c774b237de0ce98e4",
+  "shape_hash": "0f7defa9943cfa44",
+  "content_sha": "db60570a72afc4c20e4b58a8737ff50332bc82209964aeca5aebc88f51d3414a",
+  "generated_at": "2026-08-25T00:00:00Z",
+  "verdict": "PASS_WITH_TODOS",
+  "training": "ae101",
+  "trace_status": "generated_first_time",
+  "prompts_evaluated": 1,
+  "prompts_findings": [
+    {
+      "prompt_index": 1,
+      "prompt_sha": "e8d7c78d41157a2718373f282c38c2da6ed90c56d046a8d32e24adcb023663c4",
+      "prompt_lead": "Name the top five hooks you see people actually using with Claude Code, beyond",
+      "verdict": "TODO",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "niceness-tax",
+          "confidence": "low",
+          "evidence": "\"If one doesn't apply to this repo, say so.\" is the standard RLHF-charity countermeasure per check_prompts.md #13/#14 shape (explicit permission for an honest negative). Residual risk: Claude could still stretch a strained justification for all five rather than naming a genuine non-fit, but the fence already carries the mitigation the pattern calls for.",
+          "fix_hint": "No edit warranted; the fallback clause already does the work the pattern asks for."
+        },
+        {
+          "pattern_id": "preamble-before-action",
+          "confidence": "low",
+          "evidence": "\"No preamble. List them.\" is the in-fence suppressor check_prompts.md #17 names as the fix (a), though the rule itself calls a bare in-fence line \"partial suppression\" so residual risk isn't fully zeroed. The task is one compound ask (name five, cross-reference two facets each), not the 4+ named-substep shape #17's structural trigger targets, so no further scaffolding is owed.",
+          "fix_hint": "No edit warranted; the existing suppressor matches the rule's own recommended fix."
+        },
+        {
+          "pattern_id": "citation-cargo-cult",
+          "confidence": "low",
+          "evidence": "\"the specific file, convention, or failure mode here it would catch\" asks for repo-grounded specifics with no explicit \"verify it exists first\" clause, which is where format-correct-but-unsupported claims usually enter. Mitigated three ways the maintainer block already documents: this runs inside an agentic Claude Code session with live tool access to the actual repo (not an offline citation), the maintainer's Delivery note has the trainer run it \"on the projected repo\" so a fabricated file/convention is visible to the room in real time, and the closing body line (\"tied to a specific file, convention, or failure mode in this repo, not a generic team-could-want-this\") is the explicit test the delivery block says to read the returned list against.",
+          "fix_hint": "No edit warranted; live-repo tool access plus the trainer's read-against-the-closing-line design is the same shape as an evidence-backed-Debrief carve-out."
+        }
+      ]
+    }
+  ],
+  "blocking_findings_count": 0,
+  "todos_count": 1,
+  "catalog_coverage": [
+    {"pattern_id": "file-preservation-gap", "status": "not_fired", "prompt_indices": [], "why": "The prompt writes nothing; it's a name-and-cross-reference query with no target file to preserve or overwrite."},
+    {"pattern_id": "reading-burden", "status": "not_fired", "prompt_indices": [], "why": "The room reads the returned list for pattern-recognition (specific vs. generic) as the lecture's designed teaching moment, not to manually catch a correctness error in Claude's work."},
+    {"pattern_id": "niceness-tax", "status": "fired", "confidence": "low", "prompt_indices": [1], "why": "\"If one doesn't apply to this repo, say so\" is the honest-negative countermeasure; see prompts_findings for full evidence."},
+    {"pattern_id": "question-dump", "status": "not_fired", "prompt_indices": [], "why": "Single compound request, not a sequence of questions posed to the student."},
+    {"pattern_id": "overwrite-anxiety", "status": "not_fired", "prompt_indices": [], "why": "No file destination or overwrite decision is in play."},
+    {"pattern_id": "preamble-before-action", "status": "fired", "confidence": "low", "prompt_indices": [1], "why": "In-fence \"No preamble. List them.\" suppressor present; see prompts_findings for full evidence."},
+    {"pattern_id": "append-vs-integrate", "status": "not_fired", "prompt_indices": [], "why": "No \"add X and regenerate\" instruction; nothing is being appended to or integrated into an existing artifact."},
+    {"pattern_id": "plan-mode-preamble-bloat", "status": "not_fired", "prompt_indices": [], "why": "No `permission-mode` declared (registry frontmatter: runtime: any) and no plan-mode invocation in the fence."},
+    {"pattern_id": "citation-gap-asymmetry", "status": "not_fired", "prompt_indices": [], "why": "The fence requires cross-referencing EACH of the five uniformly (event + specific file/convention/failure mode, or an explicit non-fit) -- it structurally forecloses the asymmetric-evidence shape the pattern describes rather than inviting it."},
+    {"pattern_id": "self-report-inflation", "status": "not_fired", "prompt_indices": [], "why": "Claude is not grading its own prior work; it is naming external hooks and reading the live repo fresh."},
+    {"pattern_id": "default-acceptance", "status": "not_fired", "prompt_indices": [], "why": "No artifact or default set is offered for the student to adopt verbatim; this is an observed demo list, and the room does not install it into their own repos as-is."},
+    {"pattern_id": "plan-mode-approval-inflation", "status": "not_fired", "prompt_indices": [], "why": "No plan-mode plan is produced or approved."},
+    {"pattern_id": "source-type-blindness", "status": "not_fired", "prompt_indices": [], "why": "No heterogeneous source-folder ingestion (slides/PDFs/decks) is happening; this is a direct live-repo read."},
+    {"pattern_id": "citation-cargo-cult", "status": "fired", "confidence": "low", "prompt_indices": [1], "why": "Repo-grounded specifics with no explicit verify-first clause; see prompts_findings for full evidence and mitigation."},
+    {"pattern_id": "self-audit-charity", "status": "not_fired", "prompt_indices": [], "why": "The prompt no longer frames this as critiquing Claude's own prior session work (the pre-extraction wording asked about 'the work we just did'; the current registry body asks what hooks 'people actually using with Claude Code' choose, then cross-references the live repo) -- nothing self-referential to audit charitably."}
+  ],
+  "evidence": "Read curriculum/lectures/hooks-always-fire.md in full (17-line maintainer-cut body per curriculum/evals/scripts/derive-body-view.js; body_sha af27166c... taken at start of read) and its expanded view via `node scripts/expand-md.js curriculum/lectures/hooks-always-fire.md` (content_sha db60570a...). One `{{prompt:what-packaging-is-1}}` marker resolves to one **Prompt** fenced block; verified the registry body at curriculum/prompts/what-packaging-is-1.md matches the expanded output exactly. Ran `node curriculum/evals/scripts/prefill-instance.js curriculum/lectures/hooks-always-fire.md behavior` -- reported 'no prior instance', so every row is mine; recorded shape_hash 0f7defa9943cfa44 (recomputed with the prefill script's own SHAPE_KEYS + slide-bucket formula from the derived signals) for the next run to carry forward. A prior sim-cache trace exists at curriculum/evals/sim-cache/ae101--lecture--what-packaging-is.behavior.json (generated 2026-08-01, pre-extraction) for what was structurally the same slide, but its prompt text (\"Propose five hooks for this repo and the work we just did...\") is not the current registry body (\"Name the top five hooks you see people actually using with Claude Code... Cross-reference each with this repo...\") -- prompt_sha differs (a9516dcf... vs. the current e8d7c78d..., both computed via python3 hashlib.sha256 against the exact fenced text), and the old prompt's self-referential 'the work we just did' framing (which drove its self-audit-charity finding) is gone from the live text. Treated as full fresh evaluation per the dispatch-preamble's cached-trace rule, not carried forward. Read the full check_prompts.md (48 rules) and check_pedagogy.md (67 rules, moved-stubs excluded) compendiums per the template's compendium_paths input. Checked the maintainer block for accept-notes before flagging anything (accept_notes_found lists all four dated lines) -- none of the three low-confidence risks below contradicts a documented accept-note; all three are reported at low confidence specifically because the file's own design (fallback clause, in-fence suppressor, live-repo delivery mechanic) already does what each pattern's fix calls for, per the dispatch-preamble's per-rule harm test ('the obvious fix would degrade the artefact' does not apply here -- there is no fix to make, only a residual to note).",
+  "notes": "Single-prompt file (one {{prompt:}} marker). Deliberately did not carry forward the pre-extraction cache's self-audit-charity finding -- the maintainer's rewrite (2026-08-25, extraction commit) removed the self-referential 'the work we just did' framing that drove it; the current prompt asks about externally-known hooks, then cross-references the live repo, which is a different shape. This is in-lane for check_prompts.md/check_pedagogy.md only; a technical-class observation (whether the prompt's static mechanics -- action lead-in, no placeholders -- are correctly formed) is out of this judge's lane per the template's own scope note ('Static prompt mechanics... belong to the technical judge') and is not reported here even as a todo."
+}

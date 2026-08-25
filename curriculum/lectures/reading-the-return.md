@@ -38,8 +38,8 @@
 
 **Suspect-on-all-three slide cut whole (2026-08-25, Antti-directed, in three steps):** first the mechanism-recap bullet (slide 2 taught each mechanism one slide earlier), then the clean-result clause, then the last surviving line and the header. Its claim rows are gone with it. Do not rebuild the slide; the lenses slide plus the Diagnose-first closer carry the read. Ripple noted: the exact phrase "statistical machine" no longer appears in this lecture, so `the-loop-has-a-name.md`'s recognition callback now leans on slide 2's next-likely-word sentence instead of a verbatim echo. The theory-promotion note above describes the slide as promoted in 2026-07; this trim supersedes its statistical-machine clause.
 
-**Quality:** compendium-audited 2026-08-24 (writing@5df71aa6 story@77991802 technical@5df71aa6 behavior@1c765f2 pedagogy@77991802 strategy@1c765f2 slides@5df71aa6)
-- judges @77991802: writing PASS (drift-recheck), story PASS, technical PASS (drift-recheck), behavior PASS, pedagogy PASS, strategy PASS, slides PASS (drift-recheck)
+**Quality:** compendium-audited 2026-08-26 (writing@a197cc46 story@77991802 technical@5df71aa6 behavior@1c765f2 pedagogy@a197cc46 strategy@1c765f2 slides@a197cc46)
+- judges @a197cc46: writing PASS, story PASS, technical PASS (drift-recheck), behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 **Word count:** ~410 words body (post slide rework + theory promotion).
 
 **Slide-size guard:** the mechanism restatements in **Goal drift** (*"the original ask competes with everything generated since"*) and **Plausible-but-wrong** (*"whether the work is right or not"*) are deliberate doubling — the three modes are the lens the whole far half depends on, and the doubling is what makes them stick (same principle as the deliberate-reinforcement carve-out in `check_writing.md` #11). Do not propose cutting them. If the slide grows past the cap, split at **Plausible-but-wrong** rather than trimming restatements.

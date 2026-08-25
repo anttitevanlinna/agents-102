@@ -1,18 +1,19 @@
 {
   "class": "storytelling",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/walk-and-send-off.md",
-  "body_sha": "8e0979e9dde39394b2353672a33ccd8f769c67395c1388ee7812eff283cc92fa",
+  "body_sha": "b878e7cfad2b090dfb9d43d090dc730359c13228ae8e2b9a372e76263ad35d2d",
+  "shape_hash": "2831c9dd6f527ac5",
   "verdict": "PASS",
   "training": "ae101",
-  "module_mood_contract": "curious readiness — \"I've built enough to try; let's see what the agent does\" (M4 main exercise, per run-the-first-experiment.md Meta block + content-strategy-agentic-engineering-101.md row M4 + §M4-in-detail)",
-  "trace_status": "regenerated",
+  "module_mood_contract": "curious readiness — \"I've built enough to try; let's see what the agent does\" (bosser-strategy:content-strategy-agentic-engineering-101.md row M4, line 246; re-confirmed live this pass, § M4 in detail lines 366-392)",
+  "trace_status": "cached",
   "rules_evaluated": [
     {
       "compendium": "check_lectures.md",
       "rule_index": 1,
       "rule_lead": "Meta-frame lectures = closers, not openers.",
       "verdict": "N/A",
-      "evidence": "File is `curriculum/exercises/walk-and-send-off.md`, an exercise (Phase 1 / Phase 2 structure, forcing-function prompts), not a lecture. No lecture-placement question applies — there is nothing here to place before or after an exercise.",
+      "evidence": "check_lectures.md's own frontmatter scopes the whole compendium to \"writing or placing a lecture.\" File is curriculum/exercises/walk-and-send-off.md — a Phase 1/Phase 2 exercise with forcing-function prompts, not a lecture — so there is no lecture placement to score.",
       "fix_hint": null,
       "blocking": false
     },
@@ -21,7 +22,7 @@
       "rule_index": 2,
       "rule_lead": "Minimal lecturing before contrast-mood exercises.",
       "verdict": "N/A",
-      "evidence": "File is the exercise itself (M4, curious-readiness mood, not a contrast-mood module per the strategy doc), not a lecture preceding one. No pre-exercise lecture dosage to score.",
+      "evidence": "File is the exercise itself, not a lecture preceding one. M4 is a curious-readiness module (bosser-strategy row 246), not a contrast-mood module (that shape is M5, \"learning through contrast\" per row 247) — so even by analogy there is no pre-exercise lecture dosage to score here.",
       "fix_hint": null,
       "blocking": false
     },
@@ -30,7 +31,7 @@
       "rule_index": 3,
       "rule_lead": "No cross-module sequencing in lecture bodies.",
       "verdict": "N/A",
-      "evidence": "Rule targets lecture body prose specifically (\"lectures teach, module files sequence\"). This is an exercise; its module-arc handoff (Phase 1→Phase 2→sibling exercise) is exercise-internal sequencing, not the cross-module lecture-body leak the rule polices.",
+      "evidence": "Rule targets lecture body prose (\"lectures teach, module files sequence\"). This is an exercise file. Grepped the body for module-number/cross-module refs anyway: none above the maintainer fence (\"next module\" appears at lines 34 and 54, but names no module number and is exercise-internal forward-reference, the kind rule 32 of check_prompts.md treats as fine even inside a fence — not the M[0-9]-naming leak this rule polices).",
       "fix_hint": null,
       "blocking": false
     },
@@ -39,7 +40,25 @@
       "rule_index": 4,
       "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
       "verdict": "N/A",
-      "evidence": "Rule is scoped to lecture/slide headers (\"the handbook is scanned cold\"). This file's `##` headers are exercise phase/beat headers (e.g. line 21 'Phase 1: Pick the task you'll send off', line 74 'Compare notes, then tidy the folder'), which the pedagogy/writing judges own, not the lecture-header squint test.",
+      "evidence": "Rule is scoped by the compendium's own frontmatter to lecture writing/placement (\"The handbook is scanned cold\" refers to lecture headers specifically). This file's eight `##` headers (lines 21, 31, 36, 48, 52, 62, 71, 75) are exercise phase/beat headers, owned by check_pedagogy.md and check_writing.md, not this lecture-scoped squint test. (check_slides.md is the cross-surface squint-test owner for any file the Slides layout chunks — separate class, separate judge.)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 5,
+      "rule_lead": "A slide's BODY is size-bounded, not just its header (§4's sibling).",
+      "verdict": "PASS",
+      "evidence": "Rule text explicitly widens scope past lectures: \"Exercise slides count too.\" Ran the enforcing script this session: `node scripts/check-slide-size.js --file curriculum/exercises/walk-and-send-off.md` → \"files: 1  slides: 8  limits: 210 words / 6 bullets ... oversized: 0 ... ✓ every slide is within limits\", exit 0. Densest section by hand-count is `## Match each fill to its shape and home` (lines 62-70, 4 bullets, ~186 words excluding the {{prompt}} lines) — closest to the 210-word ceiling but under it and under the 6-bullet cap.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 6,
+      "rule_lead": "A prompt inside a lecture is a trainer show-and-tell, never a room follow-along.",
+      "verdict": "N/A",
+      "evidence": "Rule's own text: \"Not covered: exercise prompts, prework prompts, and prompts on reference/supplementary pages, all of which the student runs themselves.\" This file's three prompts (lines 29, 46, 60) are exercise prompts the student pastes and runs personally — explicit carve-out, not this rule's target.",
       "fix_hint": null,
       "blocking": false
     },
@@ -48,7 +67,7 @@
       "rule_index": 16,
       "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
       "verdict": "PASS",
-      "evidence": "Body lead-ins are one line each and hand the actual mechanic to the fence: line 27 'Ask Claude to screen your candidates, scope the winner, and add them after the colon.' precedes {{prompt:walk-and-send-off-1}} (line 29); line 43 'Ask Claude to run the audit as a subagent and return a ranked top-five.' precedes {{prompt:walk-and-send-off-2}} (line 45); line 57 'Ask Claude to walk the picked gaps one at a time, with AskUserQuestion.' precedes {{prompt:walk-and-send-off-3}} (line 59). None of the three lead-ins narrates HOW the forcing function works (ranking discipline, AskUserQuestion loop, per-shape destination mapping) — that machinery lives inside the prompt bodies per the maintainer block's own account of the 2026-05-21 rewrite ('scaffold the gap-fill structurally with AskUserQuestion by name'). Removal test: cutting any of the three lead-in sentences would only cost a verb naming the tool call, not the pedagogy.",
+      "evidence": "Each of the three lead-ins is a one-line verb-cue, not a mechanism explanation: line 27 \"Ask Claude to screen your candidates, scope the winner, and add them after the colon.\" precedes {{prompt:walk-and-send-off-1}} (line 29); line 44 \"Ask Claude to run the audit as a subagent and return a ranked top-five.\" precedes {{prompt:walk-and-send-off-2}} (line 46); line 58 \"Ask Claude to walk the picked gaps one at a time, with AskUserQuestion.\" precedes {{prompt:walk-and-send-off-3}} (line 60). The actual machinery — the three screening criteria, the ranked-top-5 enforcement, the AskUserQuestion pick-then-walk loop with per-shape destination mapping — lives inside the fences, confirmed by reading the expanded prompt bodies (scripts/expand-md.js output). Removal test: deleting any of the three lead-in sentences costs only a verb naming the tool call, not the pedagogy — the fence still enforces ranking / the four-shape menu / the ask-one-at-a-time loop on its own. Cross-checked against the private strategy doc's own account (content-strategy-agentic-engineering-101.md line 142): \"M4 models it silently (walk-and-send-off-2 enforces ranked-top-five)\" — the design intent is that the discipline lives in the prompt, not narrated in body prose, and the body matches that intent.",
       "fix_hint": null,
       "blocking": true
     },
@@ -57,7 +76,7 @@
       "rule_index": 27,
       "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room. No authored conversations except the three carve-outs.",
       "verdict": "PASS",
-      "evidence": "One room line in the whole file, and it fits the third carve-out (room may be named sparingly, ≤1 line, no addressee, no mandated report-back): line 78 'Compare notes with the people around you: what surfaced, where the audit missed, when the agent went lazy.' — invitational, not a scripted utterance/pause cue. The maintainer block (line 91) confirms this deliberately: 'the room naming moved into bullet (a), which keeps this file at exactly one room line.' No other 'discuss with', 'tell the room', or 'share with your neighbor' shapes anywhere in the body — the time-check blockquote above it (line 76) is pure timing ('Five to ten minutes here'), not a cohort-management cue in the banned sense.",
+      "evidence": "Grepped the body for discuss/share/tell-the-room/neighbor/pair-up/compare-notes shapes: exactly one hit, line 79 \"Compare notes with the people around you: what surfaced, where the audit missed, when the agent went lazy.\" Fits the third carve-out (room may be named sparingly, ≤1 line, no mandated utterance/addressee/report-back): invitational, no scripted line to say, no partner assignment. The maintainer block (line 92) confirms the design intent directly — \"the room naming moved into bullet (a), which keeps this file at exactly one room line\" — and my independent grep confirms the count matches the claim: exactly one. The adjacent blockquote (line 77, \"Five to ten minutes here\") is pure timing, not a cohort-management cue in the banned sense (no discuss/share verb). No other pause-cue, scripted utterance, or \"discuss with...\" sentence anywhere in the body.",
       "fix_hint": null,
       "blocking": true
     },
@@ -66,7 +85,7 @@
       "rule_index": 1,
       "rule_lead": "Mood contract named; mood lands 8+/10 per teaching beat (mood-floor exempt on setup/launch beats).",
       "verdict": "PASS",
-      "evidence": "Regenerated trace (both phases stale against 2026-08-14/15 body edits, regenerated this pass): Phase 1 mood_score=8, Phase 2 mood_score=8, close mood_score=8 (`curriculum/evals/sim-cache/ae101--exercise--walk-and-send-off.persona.json` phases[0].mood_score, phases[1].mood_score, close.mood_score). Both phases classified as TEACHING beats (task-scoping discipline; audit-and-fill discipline), not setup — mood-floor 8+ applies and is met at every beat, no beat below 7.",
+      "evidence": "Sim-cache trace (curriculum/evals/sim-cache/ae101--exercise--walk-and-send-off.persona.json), content_sha bf2f1c26... matches this file's current sha — verified live via `shasum -a 256` this session, and spot-checked three persona_action quotes against the raw body (line 25 candidate-bullet, line 40 gap-analysis bullet, line 54 pick-two-or-three bullet) — all verbatim matches. Phase 1 mood_score=8, Phase 2 mood_score=8, close mood_score=8. Both phases classify as TEACHING beats (task-scoping discipline; audit-and-fill discipline are the pedagogical moves themselves, not mechanical setup) — mood-floor 8+ applies at every beat and is met, no beat below 7.",
       "fix_hint": null,
       "blocking": true
     },
@@ -75,7 +94,7 @@
       "rule_index": 2,
       "rule_lead": "Epistemic mood ≠ punitive mood.",
       "verdict": "PASS",
-      "evidence": "Module mood contract is 'curious readiness,' not shame. Trace mood_notes carry no having-done-wrong framing: phase1 'Picking is mine, screening is the agent's — division of labor lands'; phase2 'Sponge-not-rock still lands — picking two-three of five reads as discipline.' Push-back beats (line 33, line 70) are framed as correction of the agent's read, never as the student having erred.",
+      "evidence": "Module mood contract is curious readiness, not unease/shame. Push-back beats are framed as correcting the agent's read, never the student's error: line 33 \"Push back when the screening goes off-topic, or misses something you know about the codebase\"; line 50 \"The ranking is Claude's read of your system. Tell it what's wrong, what's missing, and what you'd move up\"; line 73 \"If Claude says something about your codebase you didn't tell it, ask where it read that.\" All three name the agent as the source of the gap, not the student. Trace mood_notes carry the same register (phase2 mood_note: \"Sponge-not-rock still lands... a mild echo, not a drag on mood\") — no having-done-wrong framing anywhere in body or trace.",
       "fix_hint": null,
       "blocking": false
     },
@@ -84,7 +103,7 @@
       "rule_index": 3,
       "rule_lead": "Lead with discipline, not failure mode (Big Idea titling).",
       "verdict": "N/A",
-      "evidence": "Rule targets a module's `## Big Idea` section title. This exercise file carries no Big Idea heading (that section lives in the module file, run-the-first-experiment.md, which this class doesn't own per the pedagogy/strategy split — this judge scoped to the exercise file named in {{file_path}}). The closest candidate, the Phase 2 header 'Build the ranked list of what will hurt the agent' (line 36), is a phase-scoped description of the audit's target (what will hurt the agent on this task), not a Big-Idea title mislabeling a discipline as a failure mode — the file's own point is the gap-finding discipline, and 'what will hurt' names the audit's object, not the section's identity.",
+      "evidence": "Rule targets `## Big Idea` section titling. This exercise file carries no Big Idea heading (grepped `^## ` — 8 headers, none named Big Idea; that section lives in the sibling module file run-the-first-experiment.md, owned by the strategy judge at module scope). Checked the closest candidate anyway: the Phase 2 header changed this cycle from 'Build the ranked list of what will hurt the agent' to 'Walk your system against the task' (git diff 1abb84c6..HEAD) — the new header is, if anything, further from a failure-mode title than the old one, naming the discipline (walking the system) rather than its object (what will hurt).",
       "fix_hint": null,
       "blocking": false
     },
@@ -93,7 +112,7 @@
       "rule_index": 4,
       "rule_lead": "Strategy-fidelity: no front-run of downstream teaching moment; module-to-module arc; Big Idea fidelity; mood doesn't resolve early — consolidated verdict.",
       "verdict": "PASS",
-      "evidence": "Trace arc_flow_note (regenerated, re-verified against run-the-first-experiment.md this pass): the file's close hands off structurally (module file places this exercise's link immediately before '## Send the task off' and the sibling exercise link) rather than narratively pre-empting it — no in-file '## What closes the module' preview (maintainer block confirms this was cut 2026-08-12 as duplication). Close mood_note: 'nothing here resolves M5's rescue early, and nothing here claims the send-off already happened' — readiness-without-completion mood (M4's contract) holds through the close; the un-packaged run stays deliberately thin per the file's own Stance block ('a deliberately un-packaged first run teaches more than a lecture about packaging would'), which is exactly the M4→M5 contrast the strategy doc's mood-arc table requires M4 not to resolve.",
+      "evidence": "Four facets checked. (a) No front-run: read bosser-strategy:content-strategy-agentic-engineering-101.md § M5 in detail (lines 396-417) live this pass — Ronacher's three-pattern, Cherny's stop-hook shapes, and the verifier-build all stay M5-exclusive; this file names none of them, and its lone new term ('Gap analysis', line 40) is a different, generic, unrelated framework. (b) Module-to-module arc: the module file (run-the-first-experiment.md lines 39-41) places this exercise's include-link immediately before the sibling exercise's link inside one `## Start here` section, no in-file preview paragraph on either side — confirmed by direct read, not by the sim-cache (whose prior arc_flow_note cited a nonexistent '## Send the task off' heading; corrected in the cache this pass, see notes). (c) Big Idea fidelity: strategy doc line 375-376 prescribes Phase 1 as candidate-screening-by-three-criteria and Phase 2 as 'gap analysis — walk the system you have against the system the task needs', named as a framework — this file's Phase 1 prompt (line 29 fence) and Phase 2 opening bullet (line 40, \"**Gap analysis**: walk the system you have against the system the task needs.\") match the prescribed language near-verbatim. (d) Mood doesn't resolve early: close mood_note in trace states \"nothing here resolves M5's rescue early, and nothing here claims the send-off already happened\" — confirmed by body read: the file ends on the tidy-up bullet (line 80), no send-off, no packaging, no artifact-recipe language anywhere.",
       "fix_hint": null,
       "blocking": true
     },
@@ -102,7 +121,7 @@
       "rule_index": 5,
       "rule_lead": "Strategic themes recur in Key Concepts (module-only section).",
       "verdict": "N/A",
-      "evidence": "No `## Key Concepts` heading in this file — that section lives in the module file. Exercise files don't carry it; strategy judge owns Key Concepts fidelity at module scope.",
+      "evidence": "No `## Key Concepts` heading in this file (grepped `^## ` — 8 headers, none match). Lives in the module file; strategy judge owns it at module scope.",
       "fix_hint": null,
       "blocking": false
     },
@@ -120,7 +139,7 @@
       "rule_index": 7,
       "rule_lead": "What You'll Learn shape — capability register (module-only section).",
       "verdict": "N/A",
-      "evidence": "No `## What You'll Learn` heading in this file — that section lives in the module file, not the shared-library exercise.",
+      "evidence": "No `## What You'll Learn` heading in this file (grepped `^## ` — 8 headers, none match). That section lives in the module file (run-the-first-experiment.md line 18), not the shared-library exercise.",
       "fix_hint": null,
       "blocking": false
     }
@@ -132,6 +151,6 @@
     "stealing_the_mood": []
   },
   "blocking_findings_count": 0,
-  "todos_count": 0,
-  "notes": "Teaching moment lands (no check_strategy_tie_in rule_index, per template — recorded here not as a rules_evaluated row): the audit-and-fill discipline ('find the thin spots before the agent does') fires reliably across the regenerated trace regardless of persona skill — the Phase 2 prompt enforces ranked-top-5 + AskUserQuestion structurally, so a skimming fast-operator still gets the scaffolded pick-then-walk loop rather than a wall of text they could skip. No under_scaffolded_phases or ambiguous_instructions in the regenerated trace. check_workshop.md and check_prompts.md are both in {{compendium_paths}} (storytelling listed in their eval_classes) but story.md's 'Specific judgments storytelling owns' list names no rule from either file for this class to evaluate — reviewed for applicability only, no rules_evaluated rows filed to avoid an unowned-lane claim per the dispatch preamble. check_workshop.md's own trigger doesn't fire on this file: the Compare-notes beat (line 78) is individual work co-located in the room, not a group-owned artefact ('the distinction is where the artefact lands, not where the bodies are') — task.md, observations/, and CLAUDE.local.md all land as the individual student's artefacts. Two facts carried forward from the prior cache as maintainer notes, not story findings, because they live in a different file: (1) run-the-first-experiment.md's own maintainer block still claims Gap analysis was 'Named in Phase 2 as \"walk the system you have against the system the task needs\"' — that phrase is absent from this file's Phase 2 body (confirmed again this pass), matching this file's own backing block which records the absence as deliberate; the drift is in the module file's maintainer prose. (2) Phase 1's mood_note flags (non-blocking) that no explicit self-check diagnostic against oversizing exists in body or prompt — the restored §34 ceiling clause plus Claude's own screen are the only nets."
+  "todos_count": 1,
+  "notes": "Teaching moment lands (no check_strategy_tie_in rule_index, per template — recorded here, not as a rules_evaluated row): trace's under_scaffolded_phases and ambiguous_instructions are both empty; the gap-finding discipline fires structurally (ranked-top-5 + AskUserQuestion enforced in-fence) regardless of persona skill, so a fast operator skimming past body prose still gets the scaffolded loop. check_workshop.md's own trigger does not fire on this file: the one room beat (line 79, 'Compare notes with the people around you') is individual work co-located in the room, not a group-owned artefact — task.md, observations/, and CLAUDE.local.md all land as the individual student's own artefacts, not a shared record. check_prompts.md and check_workshop.md both list storytelling in their eval_classes and are present in compendium_paths, but story.md's own 'Specific judgments storytelling owns' section names no rule from either file for this class to file rules_evaluated rows against — reviewed for applicability, no rows filed, per the dispatch preamble's 'stay in your lane' clause. TODO (non-blocking, tooling not content): the sim-cache trace's arc_flow_note previously asserted a '## Send the task off' heading in run-the-first-experiment.md that does not exist in the live file (grep-checked: no such heading; the two exercise includes in fact sit unseparated under one '## Start here' section, lines 25-43). This did not change any per-rule verdict here — the underlying claim (structural, non-narrative handoff) still holds once verified against the real file structure — but it was a fabricated-heading trace error of exactly the kind the dispatch preamble warns about. Corrected the cache's arc_flow_note in place this session (curriculum/evals/sim-cache/ae101--exercise--walk-and-send-off.persona.json) rather than leaving the wrong claim to be copied forward by a future reader of the cache."
 }

@@ -93,8 +93,8 @@ A fill looks like one of these shapes (the audit tags each gap with one):
 
 **Prompt register — `walk-and-send-off-3` rewritten 2026-05-21.** Earlier "deliberately short" speed-up shape (*"You propose solutions and ask questions. Use the ask-questions tool to speed up my work."*) was the cohort's single biggest individual failure mode (M4 12:36Z + 12:37Z: outright-skipped exercise). Rewritten to scaffold the gap-fill structurally with `AskUserQuestion` by name + pick-then-walk loop + per-shape destination mapping (`observations/` for observations and brought-in material; `./CLAUDE.local.md` for rule sharpening; connector setup for connector wiring). The fourth shape is **Bring the material in**, and it asks the student to fetch the document, not to label the gap — do not reintroduce a naming-only tag, in body or registry. Pairs with `author-test-strategy-skill-1`'s 2026-05-21 close — same family fix (replace push-back-by-convention with tool-by-name). Body restructured so the prompt is the default flow, not an opt-in speed-up; conversational-example bullets demoted to "what a fill looks like" reference after the prompt fence, each bullet now naming the matching destination.
 
-**Quality:** compendium-audited 2026-08-24 (writing@1abb84c6 story@1abb84c6 technical@1abb84c6 behavior@19249df pedagogy@1abb84c6 strategy@1c765f2 slides@1abb84c6)
-- judges @1abb84c6: writing PASS (drift-recheck), story PASS (drift-recheck), technical PASS (drift-recheck), behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS (drift-recheck)
+**Quality:** compendium-audited 2026-08-26 (writing@a197cc46 story@a197cc46 technical@1abb84c6 behavior@19249df pedagogy@a197cc46 strategy@1c765f2 slides@a197cc46)
+- judges @a197cc46: writing PASS, story PASS, technical PASS (drift-recheck), behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **Word count:** ~790 words body.
 

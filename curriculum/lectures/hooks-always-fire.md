@@ -42,3 +42,6 @@ Format → `curriculum/backing-format.md`. Rows moved verbatim from `what-packag
 (none — the hook is a platform primitive, not a borrowed frame.)
 
 <!-- /backing -->
+
+**Quality:** compendium-audited 2026-08-26 (writing@a197cc46 story@a197cc46 technical@a197cc46 behavior@a197cc46 pedagogy@a197cc46 strategy@a197cc46 slides@a197cc46)
+- judges @a197cc46: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

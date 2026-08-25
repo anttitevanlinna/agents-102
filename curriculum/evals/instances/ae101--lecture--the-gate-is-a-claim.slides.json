@@ -1,17 +1,18 @@
 {
   "class": "slides",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/the-gate-is-a-claim.md",
-  "body_sha": "d03d6900f881c2adb71bbd59fe102c505aa8a3aad22b0e843a19d114eb1fa210",
+  "body_sha": "4d35fb97cdcfae6afb78a2180bf571adc0f4ca09ef433c7f269536c3d7932759",
+  "shape_hash": "326c29788cefc702",
   "verdict": "PASS",
   "training": "ae101",
   "chunk_map": [
-    {"index": 0, "heading": "H1 + lede: \"The gate is a claim too\"", "lines": "1-4"},
-    {"index": 1, "heading": "Passing is not proof", "lines": "5-11"},
-    {"index": 2, "heading": "The judge needs calibrating against your labels", "lines": "12-17"},
+    {"index": 0, "heading": "H1 (no lede — cut 2026-08-25): \"The gate is a claim too\"", "lines": "1"},
+    {"index": 1, "heading": "Passing is not proof", "lines": "3-9"},
+    {"index": 2, "heading": "The judge needs calibrating against your own judgement", "lines": "11-16"},
     {"index": 3, "heading": "Gates decay", "lines": "18-23"},
-    {"index": 4, "heading": "One session is a sample", "lines": "24-28"},
-    {"index": 5, "heading": "Change on recurrence, not on noise", "lines": "29-36"},
-    {"index": 6, "heading": "The delegation frontier", "lines": "37-46"}
+    {"index": 4, "heading": "One session is a sample", "lines": "25-29"},
+    {"index": 5, "heading": "Change on recurrence, not on noise", "lines": "31-36"},
+    {"index": 6, "heading": "The delegation frontier", "lines": "38-47"}
   ],
   "rules_evaluated": [
     {
@@ -20,7 +21,7 @@
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm: a reader who cannot resolve a pronoun/demonstrative/noun mid-deck loses the thread. Checked the two diff sites plus a full sequential pass. (a) chunk 3 line 20 'The agent is an optimizer' (swapped from 'The LLM'): 'the agent' is not a forward reference — it is FIRST used in this very file at chunk 1 line 9 ('ask your agent to walk you through...') and reused at chunk 1 line 10, chunk 3 line 22, chunk 4 line 26 — established well before chunk 3 under the sequential read, so the swap trades one already-resolved noun for another already-resolved noun. Not a violation. (b) chunk 6 line 45 (new bitter-lesson bullet): 'the next model' (x2) is a self-contained forward-looking phrase needing no antecedent (parallel to 'the next release'); 'it' in 'what it needs' binds to 'the next model' in the same sentence; 'your gates and workflow, yours or the agent's' binds to 'gate'/'agent', both established since chunk 0/1. (c) chunk 0 line 3 'the re-send'/'the verifier you built': confirmed via `grep -n '^\\[' curriculum/trainings/agentic-engineering-101/learn-from-the-test.md` that this lecture is included directly after `exercises/diagnose-and-resend.md` (via `what-packaging-is.md`) — module-arc-beats-in-openers/closers carve-out applies, the referent is the student's just-finished exercise, not a missing slide. Harm absent throughout.",
+      "evidence": "Harm: a reader who cannot resolve a pronoun/demonstrative/definite noun mid-deck loses the thread. Chunk 0's pre-slide lede was cut 2026-08-25 (backing block: \"re-anchored... when the pre-slide preamble was cut\"), so chunk 1 now opens cold with 'the judge is miscalibrated, the gate got gamed' (line 6) -- the closest candidate to a Never-Named violation, since no prior text in this file names a judge. Checked the module-arc-beats-in-openers/closers carve-out directly against the sibling files rather than trusting the maintainer block: `grep -n '^\\[' curriculum/trainings/agentic-engineering-101/learn-from-the-test.md` shows this lecture (line 56) is included immediately after `[Lecture: What packaging is]` (line 54), which follows `[Exercise: Diagnose and re-send]` (line 50); `grep -n '\\bjudge\\b' curriculum/exercises/diagnose-and-resend.md` line 74 has the student building/choosing 'a judge' as a verifier shape, and `curriculum/lectures/what-packaging-is.md:63` states this file 'is expanded by a whole lecture' for that shape. The referent is the student's just-built artefact, not a missing slide -- carve-out applies, grounded in the actual sibling text, not assumed. Rest of the sequential pass: 'the check' (line 6, second sentence) resolves within the same bullet against 'a gate' from the first sentence; 'these'/'The three countermoves' (lines 8-9) resolve against the list two clauses earlier in the same bullet; 'this loop' (line 15) and 'this'/'tampering' (line 34) are cataphoric, resolved by the colon that immediately follows in the same sentence; 'the model'/'the gates' (line 45) and 'your gates and workflow' (line 47) continue arc-earned vocabulary from lines 6-23. Harm absent throughout.",
       "fix_hint": null,
       "blocking": true
     },
@@ -30,7 +31,7 @@
       "rule_lead": "Cross-file and positional callbacks.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm: a slide pointing at another file by position strands the reader who starts the deck elsewhere. `sed -n '1,46p' curriculum/lectures/the-gate-is-a-claim.md | grep -niE 'the opening lecture|earlier module|previous module|last module|the module before|as we (saw|said) (earlier|before)'` -> exit 1, zero hits. Also `grep -nE '\\bM[0-9]\\b'` over the body -> exit 1, zero hits — no cross-module position refs anywhere in body. Harm absent.",
+      "evidence": "Harm: a slide pointing at another file by position strands a reader who starts the deck elsewhere. `sed -n '1,48p' curriculum/lectures/the-gate-is-a-claim.md | grep -niE 'the opening lecture|earlier module|previous module|last module|the module before|as we (saw|said) (earlier|before)'` -> exit 1, zero hits. `grep -nE '\\bM[0-9]\\b'` over the same range -> exit 1, zero hits -- no cross-module position references anywhere in body. The delegation-frontier figure is reused verbatim across three files via the shared `{{figure:delegation-frontier}}` marker, but that is shared-source figure reuse, not a prose callback pointing at another file's position. Harm absent.",
       "fix_hint": null,
       "blocking": true
     },
@@ -40,7 +41,7 @@
       "rule_lead": "Every backward reference points at a beat that exists.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm: 'the X you did' pointing at a beat the current module set no longer contains. Only backward-facing beat reference in body is chunk 0's 'the re-send'/'the verifier you built'. Confirmed live: `learn-from-the-test.md` line 56 includes `exercises/diagnose-and-resend.md` and line 60/62 include `what-packaging-is.md` then this file, in that order — the referenced re-send and verifier both exist as the immediately-prior exercise. Harm absent.",
+      "evidence": "Harm: 'the X you did/built' pointing at a beat the current module set no longer contains. Backward-facing beats in body: line 7 'The check you built', line 21 'your gate'. Confirmed live against the module's current include order (`grep -n '^\\[' curriculum/trainings/agentic-engineering-101/learn-from-the-test.md`): line 50 `[Exercise: Diagnose and re-send]`, line 54 `[Lecture: What packaging is]`, line 56 this file -- the verifier/gate the student built is the immediately-prior exercise, present and unmoved. Harm absent.",
       "fix_hint": null,
       "blocking": true
     },
@@ -50,7 +51,8 @@
       "rule_lead": "Live-demo beats survive a text read.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "No guess/predict-before-reveal beat in this lecture. `sed -n '1,46p' ... | grep -niE 'guess|predict before'` -> exit 1, zero hits. Rule does not apply to this file.",
+      "evidence": null,
+      "na_reason": "no guess/predict-before-reveal beat in this lecture (`sed -n '1,48p' curriculum/lectures/the-gate-is-a-claim.md | grep -niE 'guess|predict before'` -> exit 1, zero hits)",
       "fix_hint": null,
       "blocking": true
     },
@@ -60,7 +62,7 @@
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm: a slide that says nothing standalone. Line closest to the concern is chunk 0's lede (title slide, only 2 sentences after the H1) — but it carries a full self-sufficient thesis ('A passing result is only as trustworthy as the check that produced it. The check itself needs verification.'), not a wait-state or context-dependent fragment, so it stays inside. All other chunks carry 2-5 substantive bullets each (see chunk_map word/bullet counts below). Harm absent everywhere.",
+      "evidence": "Harm: a chunk that says nothing standalone. Closest candidate is chunk 4 ('One session is a sample'), the thinnest slide post-2026-08-25 trim at 65w/2b (see rule 14's --report breakdown) after losing its survivorship-bias sentence and its variance-mechanism sentence -- but its two remaining bullets each still carry a complete, independent claim: the distribution-vs-property distinction plus the reachable-vs-dependable split (line 28), and the run-it-repeatedly instruction (line 29). Neither is a wait-state or a context-dependent fragment. Every other chunk carries 3-5 substantive bullets. Harm absent.",
       "fix_hint": null,
       "blocking": false
     },
@@ -70,7 +72,7 @@
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm: a header the chunk's own content contradicts. Line closest to violating is chunk 6 line 45, the new bitter-lesson bullet, which shifts topic from the reach/calibration mechanics of bullets 1-4 to model-obsolescence — it stays inside 'The delegation frontier' because it extends bullet 4's own claim ('The frontier moves outward only as fast as the gates behind it', line 44) one step further: the gates that define today's frontier are themselves time-limited, so the frontier's motion is doubly qualified, not a new topic. Every other chunk's header (Gates decay/One session is a sample/etc.) is a direct label of its own bullets. Harm absent.",
+      "evidence": "Harm: a header the chunk's own content contradicts. Closest candidate is chunk 2's third bullet (line 16, 'A good gate starts from real traces, not imagined failures...') under the header 'The judge needs calibrating against your own judgement' -- it shifts from comparing verdicts to your own review (line 14) toward how the gate itself gets built from real failure data, but it stays inside because error-analysis-first is the source of the 'own judgement' the header names: you cannot calibrate against judgements you never formed, and forming them from real traces rather than imagined ones is the same practice one step upstream. Every other header (Passing is not proof / Gates decay / One session is a sample / Change on recurrence / The delegation frontier) is a direct label of its own bullets. Harm absent.",
       "fix_hint": null,
       "blocking": false
     },
@@ -80,7 +82,7 @@
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm: cadence tics that read as machine-written filler. Checked each sub-item mechanically against the body (lines 1-46), each grep validated against a planted positive first: (a) 'Not X. Not Y. Z.' construction: `grep -nE '\\bNot [A-Za-z].*\\. Not [A-Za-z]'` -> 0 hits (planted 'Not slow. Not fast. Right.' matched, confirming the grep works). (b) Anaphora/epistrophe triples: scanned for any word opening 3+ consecutive sentences -> max repeat count was 2 ('The'), no triple found. (c) Self-grading superlatives: `grep -niE 'one of the most|the most (useful|important|valuable)|extremely (useful|important)'` -> 0 hits. (d) Number + own retraction: `grep -niE 'could be (more|less)|roughly|approximately|about [0-9]'` -> 0 hits; the '90% agreement after three iterations' figure (line 15) is stated once, never walked back. (e) Abstraction-noun stacks: manual read of all 46 lines found no compound like 'the bounded-window reality' — nouns stay concrete (gate, judge, agent, session, model). (f) Verb triplets with an empty leg: `grep -nE '\\bIt [A-Za-z]+\\.\\s*It [A-Za-z]+\\.'` -> 0 hits. Harm absent on every sub-item.",
+      "evidence": "Harm: cadence tics that read as machine-written filler; each sub-item checked against the current body (lines 1-48). (a) 'Not X. Not Y. Z.' construction: `grep -nE 'Not [A-Za-z]+\\. *Not '` -> 0 hits. (b) Anaphora/epistrophe triples: manual scan of all bullet-opening words, max consecutive repeat is 2 ('The check'/'The same' in adjacent clauses of line 7, not sentence-openers), no triple found; `grep -nE 'Every [a-zA-Z]+ [a-z]+ed'` -> 0 hits. (c) Self-grading superlatives (value-prop leak): `grep -niE 'one of the (most|best)|most (useful|valuable|important) (move|thing|part)'` -> 0 hits. (d) Number + own retraction: the only number in the body is line 15's '90% agreement after three iterations', stated once and never walked back; `grep -niE 'could be (more|less)|roughly|about [0-9]'` -> 0 hits, so no retraction pattern exists to trip this sub-item. (e) Abstraction-noun stacks: manual read found no compound like 'the bounded-window reality' -- nouns stay concrete throughout (gate, judge, agent, session, model, reach, calibration); `grep -nE 'the [a-z-]+-(window|shaped|driven|based) [a-z]+'` -> 0 hits. (f) Verb triplets with an empty leg: `grep -nE '\\bIt [a-z]+s?\\. *It [a-z]+s?\\. *It [a-z]+s?\\.'` -> 0 hits. Harm absent on every sub-item.",
       "fix_hint": null,
       "blocking": true
     },
@@ -90,7 +92,7 @@
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm: repo/maintainer vocabulary projected on a wall the room cannot parse. `sed -n '1,46p' curriculum/lectures/the-gate-is-a-claim.md | grep -niE 'compendium|forcing function|\\bsurface\\b|firing|\\bbeat\\b|\\bmood\\b|Connections'` -> exit 1, zero hits (validated: the same grep against a planted 'the forcing function fires' string matched, so the zero is real, not a broken pattern). Body vocabulary throughout is engineer-plain: gate, judge, agent, session, model, reach, calibration. Harm absent.",
+      "evidence": "Harm: repo/maintainer vocabulary projected on a wall the room cannot parse. `grep -niE '\\b(surface|firing|compendium|forcing function|beat|mood|cohort|trainer|workbook|maintainer|repo|artefact|artifact|pedagogy|arc)\\b' curriculum/evals/body-views/ae101--lecture--the-gate-is-a-claim.body.txt` -> exit 1, zero hits. The `<!--tier:N-->` HTML comments are non-rendering directive markup (stripped at render, never projected as text), not a dialect leak. Body vocabulary throughout is engineer-plain: gate, judge, agent, session, model, reach, calibration. Harm absent.",
       "fix_hint": null,
       "blocking": true
     },
@@ -100,7 +102,7 @@
       "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm: bold sprayed across whole lead sentences instead of marking a handle. `grep -n '\\*\\*' curriculum/lectures/the-gate-is-a-claim.md` over the body shows exactly 3 bold spans, one per slide, each a short naming sub-span, not a whole sentence: line 20 '**Goodhart's law**' (Gates decay slide), line 31 '**tampering**' (Change-on-recurrence slide), line 45 '**bitter lesson**' (delegation-frontier slide, the new bullet). This matches the maintainer's 2026-07-09 emphasis-pass note exactly (2 handles) plus the 2026-08-21 addition (1 more), and each slide carries ≤1 bold element -- inside budget. The new bullet's bold is a naming handle (Sutton's term), same treatment as the other two, not a lead-sentence bolding regression. Harm absent.",
+      "evidence": "Harm: bold sprayed across whole lead sentences instead of marking a handle. `grep -noE '\\*\\*[^*]+\\*\\*' curriculum/evals/body-views/ae101--lecture--the-gate-is-a-claim.body.txt` -> exactly 3 bold spans: line 21 '**Goodhart's law**' (Gates decay slide), line 34 '**tampering**' (Change-on-recurrence slide), line 47 '**bitter lesson**' (delegation-frontier slide). Each is a short naming sub-span, not a whole sentence, and each slide carries at most 1 -- matches the maintainer's 2026-07-09 emphasis-pass note (2 handles) plus the 2026-08-21 bitter-lesson addition (1 more) exactly. Slides 1, 2, and 4 carry zero bold, as the maintainer block states. Harm absent.",
       "fix_hint": null,
       "blocking": false
     },
@@ -110,7 +112,7 @@
       "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm: a slide silently absent from the composed deck while present in long-read. Confirmed via `grep -rn \"the-gate-is-a-claim\" curriculum/trainings/` that `learn-from-the-test.md` line 62 includes this file with the standard structural include-link pattern `[Lecture: The gate is a claim too](lectures/the-gate-is-a-claim.md)`, the same wrapper shape every other AE101 lecture uses to reach `.phase--lecture` in the composed deck. No new phase-less prose section was added by this diff (both changes are inside existing bulleted `##` chunks). Harm absent; did not independently re-run the headless-Chrome deck build for this specific file since the mechanism itself (§13) is already fixed and guarded by `scripts/slides.test.js`.",
+      "evidence": "Harm: a slide silently absent from the composed deck while present in long-read. `grep -rn \"the-gate-is-a-claim\" curriculum/trainings/agentic-engineering-101/learn-from-the-test.md` -> line 56, `[Lecture: The gate is a claim too](lectures/the-gate-is-a-claim.md)`, the standard structural include-link pattern every AE101 lecture uses to reach `.phase--lecture` in the composed deck (confirmed this is the only include site: `grep -rn \"the-gate-is-a-claim\" curriculum/trainings/` returns one other hit, and it is prose in `spot-gaps-build-the-loop.md` naming the law, not an include). The whole file is a single flat sequence of `##` chunks with no separate prework/supplementary section that could be selectively dropped. Harm absent; did not independently re-run the headless-Chrome deck build since the mechanism itself is fixed and guarded by `scripts/slides.test.js` per this compendium's own rule-13 note.",
       "fix_hint": null,
       "blocking": true
     },
@@ -118,9 +120,9 @@
       "compendium": "check_slides.md",
       "rule_index": 11,
       "rule_lead": "Numbering — position is computed, content ordinals are linted.",
-      "verdict": "N/A",
+      "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "No `## Phase N:` or `## N.` step headers in this file (all six headers are plain claim/topic headers, no ordinals). `node scripts/check-slide-numbering.js` -> 'OK -- 61 files, Phase/Step numbering consistent.' Rule does not apply to this file's heading shape.",
+      "evidence": "No `## Phase N:` or `## N.` step headers in this file -- all six headers are plain claim/topic headers, no ordinals to lint. `node scripts/check-slide-numbering.js --file curriculum/lectures/the-gate-is-a-claim.md` -> 'OK -- 1 files, Phase/Step numbering consistent.' Ran in this session; harm absent.",
       "fix_hint": null,
       "blocking": false
     },
@@ -130,7 +132,7 @@
       "rule_lead": "Page geometry dies at the cut; reading order survives.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm: a body pointer that aims at a wall once the renderer cuts at `##` (below, above, at the top of this page). `node scripts/check-slide-deixis.js --file curriculum/lectures/the-gate-is-a-claim.md` -> 'OK -- 1 files, no page-geometry pointers across the slide cut.' Mechanical, ran in this session. Harm absent.",
+      "evidence": "Harm: a body pointer that aims at a wall once the renderer cuts at `##` (below, above, at the top of this page). `node scripts/check-slide-deixis.js --file curriculum/lectures/the-gate-is-a-claim.md` -> 'OK -- 1 files, no page-geometry pointers across the slide cut.' Ran in this session. Supporting manual grep: `grep -niE '\\b(below|above|further down|at the top|see below|earlier in this (page|module)|next slide|this page)\\b'` over the body -> exit 1, zero hits. Harm absent.",
       "fix_hint": null,
       "blocking": true
     },
@@ -140,7 +142,8 @@
       "rule_lead": "In-deck links work now; whether they EARN their place is open.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "`sed -n '1,46p' curriculum/lectures/the-gate-is-a-claim.md | grep -n '\\['` -> exit 1, zero hits: no markdown links anywhere in this file's body. Rule is a review surface for in-body links, which this file carries none of.",
+      "evidence": null,
+      "na_reason": "no markdown links in body (`sed -n '1,48p' curriculum/lectures/the-gate-is-a-claim.md | grep -n '\\['` -> exit 1, zero hits; `node scripts/check-slide-deixis.js --links --file curriculum/lectures/the-gate-is-a-claim.md` reports the rule as a review surface with none present here)",
       "fix_hint": null,
       "blocking": false
     },
@@ -150,7 +153,7 @@
       "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm: a slide the renderer/room cannot actually fit. `node scripts/check-slide-size.js --file curriculum/lectures/the-gate-is-a-claim.md` -> 'files: 1  slides: 6  limits: 210 words / 6 bullets / oversized: 0 / every slide is within limits'. `--report` breakdown: Passing is not proof 209w/4b, The delegation frontier 209w/5b (the changed slide, exactly matching the maintainer's own quoted 209w/5b against the 6-bullet cap), Gates decay 137w/3b (the other changed slide, well under cap), Change on recurrence 137w/3b, The judge needs calibrating 133w/3b, One session is a sample 95w/2b. Both diff sites land inside the mechanical cap with real headroom or at the confirmed 1-word/1-bullet margin the maintainer block claims. Harm absent.",
+      "evidence": "Harm: a slide the renderer/room cannot actually fit. `node scripts/check-slide-size.js --file curriculum/lectures/the-gate-is-a-claim.md` -> 'files: 1  slides: 6  limits: 210 words / 6 bullets  oversized: 0 / every slide is within limits'. `--report` breakdown, largest first: The delegation frontier 209w/5b, Passing is not proof 198w/4b, Gates decay 137w/3b, The judge needs calibrating against your own judgement 133w/3b, Change on recurrence not on noise 99w/3b, One session is a sample 65w/2b. The 209w/5b figure matches the maintainer block's own quoted number for the bitter-lesson slide exactly (one word of headroom against the 210 cap). Slide 1 ('Passing is not proof') sits at 198w/4b, comfortably under cap after the 2026-08-25 kicker-sentence cut the maintainer block documents. Harm absent; ran in this session.",
       "fix_hint": null,
       "blocking": false
     },
@@ -160,7 +163,17 @@
       "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm: a lecture header reading as a bare label where the room needs a landed claim. All six `##` headers checked: 'Passing is not proof', 'The judge needs calibrating against your labels', 'Gates decay', 'One session is a sample', 'Change on recurrence, not on noise' are all declarative claims. 'The delegation frontier' is a catalogue entry naming its subject (parallel to the rule's own cleared examples 'Ralph', 'The numbers') -- explicitly a NOT-violation. This rule postdates the slides-judge template's blocking/non-blocking partition (added 2026-08-15/19, template's rules-9-14 paragraph stops at 14) so it is unlisted there; classifying by the template's own stated principle -- 'I cannot follow this' is blocking, 'this could be tighter' is a TODO -- a label-vs-claim header slip does not block comprehension of the slide beneath it, so I score it non-blocking (TODO), same bucket as sibling rule 6 (header self-carry). Harm absent regardless: no header in this file needed reclassifying.",
+      "evidence": "Harm: a lecture header reading as a bare label/instruction where the room needs a landed claim. All six `##` headers checked: 'Passing is not proof', 'The judge needs calibrating against your own judgement', 'Gates decay', 'One session is a sample' are direct declarative claims. 'Change on recurrence, not on noise' is the closest candidate to an imperative reading -- but parses as an elliptical claim ('[The] change [happens] on recurrence, not on noise'), parallel in construction to 'Gates decay' ('[The] gates [do] decay'), and the maintainer block itself files it among the deck's five named laws ('don't-tamper (change on recurrence)'), not as an instruction to the reader. 'The delegation frontier' is a catalogue entry naming its subject, matching this rule's own cleared examples ('Ralph', 'The numbers') -- explicit not-a-violation. Harm absent.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 16,
+      "rule_lead": "A bullet earns its slot or dies — three classes that read as rigour and carry nothing.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Harm: a bullet that reads as rigour but adds nothing beyond what the slide already holds. The one known instance of class (c), the aphorism kicker ('A gate is one more claim in the system. Build it, then hold it to the same bar it holds the work to.', restating the H1), was already cut 2026-08-25 per the maintainer block's own dated note citing this exact rule ('check_slides.md §16 class c'); confirmed absent from the current body -- `grep -n 'one more claim in the system'` over the body -> exit 1, zero hits. Checked the remaining body for fresh instances of all three classes: (a) doctrine restatement -- no law or lens is re-announced after already doing its work; each of the five laws states once. (b) self-referential design commentary -- no line tells the student they are inside a pedagogy; body stays first-order about gates, judges and delegation throughout. (c) aphorism kicker -- checked every chunk's final bullet: line 9 (independence unifier) and line 47 (bitter lesson) are the two candidates that could read as closers, but both introduce genuinely new content beyond their header (independence as the property unifying law 1's three countermoves; model-obsolescence as a second, harder constraint on the frontier) rather than restating it, so neither is a koan. Harm absent; the maintainer-documented cut is the sole prior violation and it does not recur.",
       "fix_hint": null,
       "blocking": false
     }

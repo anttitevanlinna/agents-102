@@ -1,110 +1,155 @@
 {
   "class": "storytelling",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/what-packaging-is.md",
-  "body_sha": "b58afd063127a59fee0121750a2eaf20f61efa4cab8ac9ee9149dfcc61a686d1",
-  "verdict": "PASS",
+  "verdict": "PASS_WITH_TODOS",
   "training": "ae101",
-  "module_mood_contract": "learning through contrast — \"I can feel what packaging adds now; I couldn't have read it as a lecture\" (bosser-strategy:content-strategy-agentic-engineering-101.md § M5 in detail)",
+  "body_sha": "4d106bf108bf69fda1a8994c2fa22e683f8e4dbc2fb6f0f2b6404efb928f9484",
+  "shape_hash": "predates shape_hash — prefill-instance.js reported no prior instance to carry from; every row below is newly derived",
+  "module_mood_contract": "learning through contrast — \"I can feel what packaging adds now; I couldn't have read it as a lecture\" (M5 closing lecture, in-room after Debrief + the packaged re-send, before M6)",
   "trace_status": "regenerated",
+  "diff_pin": "5df71aa6",
+  "diff_summary": "Since 5df71aa6 the file dropped from 9 to 7 slides: the two hook slides ('Hooks always fire', 'Hooks for must-happen, prompts for taste') plus their fenced prompt were extracted to the new lecture curriculum/lectures/hooks-always-fire.md, wired before the M5 exercises (module file confirms the new link placement). The sea-passage chart's two trailer lines were cut as restated doctrine. Slide 3's provenance walkthrough ('This training combined them into one kit... Huntley is the one published practice... Ronacher ran two of them and named neither... which beats a citation') was trimmed to one sentence: 'The menu is a synthesis across practitioners (Cherny, Huntley, Ronacher); no single write-up carries it.' The backing block's claims/sources/stance were updated in step (huntley-triad-count, klaassen-stop-coding, cc-hooks-docs sources dropped since the content they backed left the file; three-pattern-is-a-synthesis claim replaces the old combined-into-one-kit + cherny-reaches-for-all-three + ronacher-two-of-three claims). Word count 1260→1010, presentation time 14→11 min, slide count 9→7, all with maintainer notes updated to match. Quality stamps re-run at the new SHA.",
   "rules_evaluated": [
     {
       "compendium": "check_lectures.md",
-      "rule_index": 1,
+      "rule_index": "1",
       "rule_lead": "Meta-frame lectures = closers, not openers.",
       "verdict": "PASS",
-      "evidence": "Strategy doc (M5 in detail): \"Closing lecture (lectures/what-packaging-is.md) — included in the module's ## Closing section after Debrief.\" File's own maintainer block, line 106: \"Delivery mode: In-room close after Debrief.\" This is the naming-a-pattern-already-lived shape §1 requires for closers, not a ceiling shown at open.",
+      "evidence": "File's own maintainer block: \"Delivery mode: In-room close after Debrief.\" Strategy doc (content-strategy-agentic-engineering-101.md §M5-in-detail): \"M5 is the only module in the arc that earns a closing meta-lecture (compounded rule: meta-frame lectures are closers, not openers — they land AFTER the student lives the pattern).\" The three-pattern (reference/plan.md/verifier) is named here only after the student built each piece in exercises/diagnose-and-resend.md — recognition, not prescription. Lede L3 states this directly: \"What you assembled to get there has names.\"",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_lectures.md",
-      "rule_index": 2,
+      "rule_index": "2",
       "rule_lead": "Minimal lecturing before contrast-mood exercises.",
       "verdict": "N/A",
-      "evidence": "Rule scopes PRE-exercise openers in contrast-mood modules. This file runs after diagnose-and-resend and after Debrief (confirmed above), not before it — the rule's unit (opener dosage) doesn't apply to a closer.",
+      "evidence": null,
+      "na_reason": "Rule targets pre-exercise openers; this file is the M5 closer, delivered after diagnose-and-resend and Debrief, not before it.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_lectures.md",
-      "rule_index": 3,
+      "rule_index": "3",
       "rule_lead": "No cross-module sequencing in lecture bodies.",
       "verdict": "PASS",
-      "evidence": "Ran `awk '/<!-- maintainer -->/{exit} {print NR\": \"$0}' curriculum/lectures/what-packaging-is.md | grep -nE 'M[0-9]|Module [0-9]'` → 0 matches. No M4/M5/M6 module-numbering or forward-bridge above the fence; the maintainer block itself documents the M6 bridge was deliberately moved to the module file's `## Next` (line ~86: \"'Bridge to M6' (all 5×M6 + \\\"M5 asks\\\") → module file `## Next` per §3; no refs remain above the fence\").",
+      "evidence": "`sed -n '1,60p' curriculum/lectures/what-packaging-is.md | grep -nE 'M[0-9]|[Mm]odule [0-9]|[Mm]odule-[0-9]'` → zero hits (body region is lines 1-60 per derive-body-view.js body_regions). All M6-bridge language (\"your verifier IS your first eval\") lives in the module file's own `## Next` section (learn-from-the-test.md:110-112: \"Module 6 reads the packaged session...\"), not in this lecture, matching the rule and the strategy doc's own note that the M6 bridge \"lives in the module file's `## Next`, not in the lecture.\"",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_lectures.md",
-      "rule_index": 4,
+      "rule_index": "4",
       "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
       "verdict": "PASS",
-      "evidence": "9 `##` headers, each names a claim or a concept the body under it supports, none duplicated: \"One session, plotted\" (frame), \"Reference and plan\" (concept-named — file's own maintainer note line 84 records this as Antti-approved: \"Naming two concepts is a valid header; not every header owes a claim\"), \"The verifier completes the three-pattern\" (claim, supported by body naming external-verifier as the third piece), \"The model has read the field\" / \"The missing evidence is local\" / \"The optimum is local, and it moves\" (each a claim the body under it states directly), \"Hooks always fire\" / \"Hooks for must-happen, prompts for taste\" (claims, matched by body), \"Every re-feed pass starts a fresh session\" (claim, matched by first body bullet almost verbatim post-edit). No orphan-mystery or empty-container headers found.",
+      "evidence": "Seven headers, all unique (`grep -n '^## ' curriculum/lectures/what-packaging-is.md` → 5 distinct claim-shaped headers + one already-accepted concept-named header). Six assert what the body argues (\"The verifier completes the three-pattern\", \"The model has read the field\", \"The missing evidence is local\", \"The optimum is local, and it moves\", \"Every re-feed pass starts a fresh session\", \"One session, plotted\") and none oversteps what the body supports — the theory headers stay hedged where the body stays hedged (L35 \"an open question\"). Closest-to-violating: L17 \"## Reference and plan\" names two concepts rather than asserting a claim, but the maintainer block already carries a dated accept-note for exactly this (L73: \"`## Reference and plan` stays concept-named (Antti 2026-08-15). Naming two concepts is a valid header; not every header owes a claim.\"). No pedagogy/contemplative header, no em-dash in any header, no orientation-beat overuse.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_lectures.md",
-      "rule_index": 5,
+      "rule_index": "5",
       "rule_lead": "A slide's BODY is size-bounded, not just its header.",
       "verdict": "PASS",
-      "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/lectures/what-packaging-is.md` → \"files: 1  slides: 9  limits: 210 words / 6 bullets  oversized: 0 ... ✓ every slide is within limits\". Mechanical, exit clean.",
+      "evidence": "`node scripts/check-slide-size.js --file curriculum/lectures/what-packaging-is.md` → \"files: 1 slides: 7 limits: 210 words / 6 bullets, oversized: 0 / ✓ every slide is within limits\". Per-slide manual count (excluding the figure include) confirms: One session plotted 170w/4b, Reference and plan 143w/3b, The verifier completes the three-pattern 69w/2b, The model has read the field 100w/3b, The missing evidence is local 98w/3b, The optimum is local and it moves 130w/5b, Every re-feed pass starts a fresh session 154w/4b — largest is 170w, well under the 210w ceiling, and bullets never exceed 5.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": "6",
+      "rule_lead": "A prompt inside a lecture is a trainer show-and-tell, never a room follow-along.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "derive-body-view signal has_prompt_blocks: false, confirmed by grep for '{{prompt:' over the body region (zero hits) — the file's only prompt (`what-packaging-is-1`) and its two hooks slides were extracted to hooks-always-fire.md on 2026-08-25 (maintainer L65), so this file now carries no prompt block to judge.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_pedagogy.md",
-      "rule_index": 16,
+      "rule_index": "16",
       "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
-      "verdict": "PASS",
-      "evidence": "Line 59 lead-in (\"Ask Claude to propose five hooks tied to this repo, beyond formatting and linting\") + line 61 `{{prompt:what-packaging-is-1}}` carries the sole forcing function (ask Claude to propose repo-specific hooks) inside the fence, per rule's \"Location: in fence, not body.\" Line 63, after the fence (\"The ones worth keeping are tied to a specific file, convention, or failure mode in this repo, not a generic team-could-want-this\"), is a judgment criterion for the returned list, not a second scripted instruction — passes the removal test (cutting it loses a quality bar, not pedagogy).",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "No prompt blocks and no student-performed action in this file at all — it is a pure recognition/naming closer with zero forcing-function content to place correctly or incorrectly.",
       "fix_hint": null,
-      "blocking": true
+      "blocking": false
     },
     {
       "compendium": "check_pedagogy.md",
-      "rule_index": 27,
+      "rule_index": "27",
       "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
       "verdict": "PASS",
-      "evidence": "Full-body scan (lines 1–70, above the maintainer fence) for authored conversation cues (\"discuss with\", \"share with\", \"tell the room\", pair/group instructions) → none found. Every sentence addresses the student's own artefact, the model, or the repo — no cohort-management prose, no carve-out needed.",
+      "evidence": "`sed -n '1,60p' curriculum/lectures/what-packaging-is.md | grep -inE \"discuss|compare|share (this|your|with)|neighbor|neighbour|tell the room|talk to (the|your)\"` → zero hits. Body never authors a conversation, pause cue, or comparison prompt. The one place the file DOES lean on the room (slide 3's compressed synthesis line needing trainer framing so it doesn't read as \"made up\") is handled correctly per this rule's own design: the framing move is assigned to the trainer in the Watch-fors section (L153, below the maintainer fence, not in the body a student reads), exactly the split this rule requires — body carries the claim, trainer carries the delivery.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
-      "rule_index": 1,
+      "rule_index": "1",
       "rule_lead": "Mood contract named.",
       "verdict": "PASS",
-      "evidence": "trace.module_mood_contract quotes the strategy doc's M5 mood line verbatim (\"learning through contrast — 'I can feel what packaging adds now; I couldn't have read it as a lecture'\", bosser-strategy:content-strategy-agentic-engineering-101.md § M5 in detail). trace.phases[0].mood_score = 8, trace.close.mood_score = 9 — both clear the 8+ teaching-beat floor (this beat is teaching, not setup: it names three artefacts and a theory frame, not mechanical launch prose).",
+      "evidence": "Mood contract (content-strategy-agentic-engineering-101.md §Mood arc + §M5-in-detail): \"learning through contrast — 'I can feel what packaging adds now; I couldn't have read it as a lecture.'\" Lede (L3) opens on exactly this: \"What you assembled to get there has names\" — recognition of what the student already built, not new instruction. Sim trace (regenerated this session, content_sha b8252fb8, matching current body): phase mood_score 9, close mood_score 9, both above the 8+ teaching-beat floor; no beat scored below 7. `any_below_8: false`.",
       "fix_hint": null,
-      "blocking": true
+      "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
-      "rule_index": 2,
+      "rule_index": "2",
       "rule_lead": "Epistemic mood ≠ punitive mood.",
       "verdict": "PASS",
-      "evidence": "Register throughout is not-knowing, not having-done-wrong: \"A prediction is not a measurement\" (line 40), \"Whether this field ever settles into a real best practice is an open question\" (line 35), \"The engineer decides\" (line 48). No shame-toned line found (\"you missed\", \"you should have\") in the body.",
+      "evidence": "The theory passage's open question is framed as not-knowing, never as having-done-wrong: L35 \"Whether this field ever settles into a real best practice is an open question\"; L41 \"Asked ahead, the model predicts. A prediction is not a measurement.\" No line frames the student's own M4/M5 work as a mistake to feel bad about — the un-packaged run's shortfalls were already processed at reading-the-return.md and learning-through-contrast.md; this closer only names what now exists, in curious rather than corrective register.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
-      "rule_index": 3,
+      "rule_index": "3",
       "rule_lead": "Lead with discipline, not failure mode.",
       "verdict": "PASS",
-      "evidence": "Section headers name disciplines, not failure words: \"Reference and plan\", \"The verifier completes the three-pattern\", \"Hooks always fire\", \"Hooks for must-happen, prompts for taste\", \"Every re-feed pass starts a fresh session\". Failure words (drift, plausible-but-wrong) appear only inside body prose as the negative case each discipline addresses (e.g. line 28: \"External verifier, against plausible-but-wrong\"), never as a title.",
+      "evidence": "All seven headers name a discipline, mechanism, or positive claim (\"The optimum is local, and it moves\", \"Every re-feed pass starts a fresh session\"); none is titled with a failure word (hallucination, fabrication, violation). Failure modes (drift, goal confusion, plausible-but-wrong) appear only as the negative case a named discipline addresses, per the rule's own shape, e.g. L12-13 names drift then immediately pairs it with the check that catches it.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
-      "rule_index": 4,
+      "rule_index": "4",
       "rule_lead": "Strategy-fidelity check.",
       "verdict": "PASS",
-      "evidence": "Consolidated read (front-run check + module-to-module arc + Big Idea fidelity + mood-doesn't-resolve-early). Module-to-module arc: the M6 bridge (\"your verifier IS your first eval\") named in the strategy doc's M5-in-detail spec is absent from this file's body by design — the file's own maintainer block documents it was moved to the module file's `## Next`, which is what check_lectures.md §3 requires; correct redistribution, not a leak. Big Idea: three-pattern earned from felt M4 evidence, matching the strategy doc's \"pedagogy is contrast, not prescription\" directive, and the lede/§26 watch-fors explicitly guard against \"reads as repetition rather than naming.\" Mood doesn't resolve early: no M6 content (verifier-as-eval, kit-by-accretion encode-phase) pre-empted in body. **Note, not a defect:** the strategy doc's M5-in-detail spec (older snapshot) still lists three beats this file no longer carries — Intercom tier-case org-scale anchor, a five-camp context-window divergence, and the 80/20 planning-ratio beat. All three are accounted for in this file's own maintainer block as dated, Antti-directed cuts with named new homes (Intercom → M6 `the-loop-has-a-name.md`; five-camp/context-window → M4's durable-state slide; 80/20 → cut entirely, its personal axis folded into the theory passage, stamped home `the-map-filled-in.md`). Per the dispatch preamble's accept-note check, a documented maintainer decision is not a REVISE target — flagging here as a note for the maintainer to sync the strategy doc's M5 section against the shipped cuts, not as a fix owed by this lecture.",
-      "fix_hint": "Strategy doc content-strategy-agentic-engineering-101.md § M5 in detail could be updated to match the three documented cuts, so future strategy-fidelity reads don't re-surface stale expectations.",
-      "blocking": true
+      "evidence": "Consolidates four facets checked together. (a) Big Idea fidelity: module Big Idea (\"the session you already ran is the evidence for what the next one needs\") maps directly onto L50 \"The engineer decides: what counts, what the evidence means, what earns promotion into durable practice.\" (b) Front-run check: body never names M6, \"eval\", the Intercom tier case, or the 80/20 ratio — all three were deliberately relocated (maintainer L65, cross-checked against strategy doc's own note that these three beats \"moved out of this lecture on 2026-08-14/15 and are not M5 material\"); confirmed absent by the same M[0-9]/module grep as rule 3. (c) Module-to-module arc: M6 handoff lives only in the module file's `## Next` (verified above), not this file. (d) Mood doesn't resolve early: body never uses \"verdict\", \"proof\", or the header phrase \"one session is a sample\" reserved for the-gate-is-a-claim.md's own slide 4 (`grep -inE 'verdict|proof|one session is a sample|settle'` over the body → only the one deliberately-open \"settles\" line at L35). The gate lecture's question stays unresolved here, as the maintainer block requires.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": "5",
+      "rule_lead": "Strategic themes recur in Key Concepts.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Key Concepts is a module-file section (learn-from-the-test.md ## Key Concepts); this lecture file carries no such heading. Module-owning judge (strategy class) carries this verdict.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": "6",
+      "rule_lead": "Key Concepts shape — theme breadcrumbs, not standalone section.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Same as §5 — no Key Concepts section exists in this lecture file.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": "7",
+      "rule_lead": "What You'll Learn shape — capability register, not syllabus.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "No What You'll Learn section in this lecture file — owned by the module file (learn-from-the-test.md ## What You'll Learn).",
+      "fix_hint": null,
+      "blocking": false
     },
     {
       "compendium": "check_workshop.md",
@@ -112,27 +157,28 @@
       "judge_owned": true,
       "rule_lead": "Trigger — is this file workshop-shaped?",
       "verdict": "N/A",
-      "evidence": "No beat in this file has an output belonging to a group rather than a participant — it is a solo closing-lecture read (student + Claude), not a room-scale adjudication/attribution/promotion beat. check_workshop.md does not apply at any grain.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": null,
-      "judge_owned": true,
-      "rule_lead": "Scope note — storytelling is not primary owner of this compendium.",
-      "verdict": "N/A",
-      "evidence": "check_prompts.md's numbered rules (lead-in shape, fence hygiene, chaining, permission-mode) are writing/technical-class territory per the story template's own \"Evaluate\" section, which does not list check_prompts among storytelling's owned facets. The one storytelling-relevant overlap — forcing function lives in the prompt fence, not body prose — is scored above under check_pedagogy.md §16, which is storytelling's actual home for that judgment. Recorded here so the compendium isn't silently skipped from the dispatch list.",
+      "evidence": "derive-body-view signal group_beat_markers: true is a false positive against the whole file, not the body: every 'room'/'trainer' hit (`grep -n -iE '\\broom\\b|\\bpair\\b|\\bgroup\\b|\\btrainer\\b' curriculum/lectures/what-packaging-is.md`) lands at lines 63, 87, 97, 128-129, 151, 153-154 — all inside the maintainer/backing/watch-fors blocks (below line 61), none inside the body region (1-60). Nothing in the body produces an artefact that belongs to the group rather than to each individual student; this is a solo-consumption closer with a live trainer, not a room-scale adjudication or shared-record beat. Whole-file N/A is correct here (not an over-application per the carve-out's own per-beat caution) because the file has no beat at all whose output is a group artefact.",
       "fix_hint": null,
       "blocking": false
     }
   ],
   "mood_summary": {
-    "phase_scores": [8],
+    "phase_scores": [9],
     "close_score": 9,
     "any_below_8": false,
     "stealing_the_mood": []
   },
+  "teaching_moment_lands": "Robust across skim variation. The module file's own callout above this lecture's link (\"Dense slides. In the two closing lectures, the headings carry the claims; the bullets back them up. Follow the headings; pick the detail that interests you most.\") explicitly licenses header-only skimming, and the three-pattern's three names survive that mode: 'Reference artefact', 'plan.md', and 'External verifier' are each bolded at the start of their own bullet (L20-27), recoverable even by a reader who reads only bolded spans. The one place the closer introduces new vocabulary cold (Cherny, L28) is not actually cold: the exercise (diagnose-and-resend.md Phase 3) already had the student pick from the same three-shape menu without naming its source, so the closer's attribution lands as recognition of a menu already used, not an unfamiliar term arriving unglossed.",
+  "todos": [
+    {
+      "note": "Private strategy doc (content-strategy-agentic-engineering-101.md §M5-in-detail, 'Closing lecture' bullet) still describes this file as carrying 'a full 4-paragraph teaching section' on hooks plus a prompt asking Claude to propose repo-specific hooks. That content was extracted to hooks-always-fire.md on 2026-08-25 (this file's own maintainer block documents the move, and the module file's link order confirms it). The lecture file itself is correct and internally consistent with the extraction; only the private strategy doc's description of it has gone stale. Not a defect in curriculum/lectures/what-packaging-is.md — flagging so the strategy doc gets a matching one-line update.",
+      "rule": "check_strategy_tie_in.md §4 (strategy-fidelity, doc-side)"
+    },
+    {
+      "note": "curriculum/trainings/agentic-engineering-101/pre-cohort-todos.md:81 cites 'what-packaging-is.md:237' — the file is 160 lines total (60-line body + maintainer/backing/watch-fors tail), so line 237 does not exist and predates the 2026-08-25 extraction that shortened the file. Not this file's defect; flagging for whoever next touches that punchlist entry, per check_pedagogy.md §63's audit-before-acting guidance on persistent TODO surfaces.",
+      "rule": "check_pedagogy.md §63 (persistent TODO surfaces stale by default)"
+    }
+  ],
   "blocking_findings_count": 0,
-  "todos_count": 0
+  "todos_count": 2
 }

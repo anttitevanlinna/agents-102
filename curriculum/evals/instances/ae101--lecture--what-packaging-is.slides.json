@@ -1,20 +1,19 @@
 {
   "class": "slides",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/what-packaging-is.md",
-  "body_sha": "2e1bf27a176c2b2a62a49438b8c420a0f3078883349aa5a5e92a11f0760367da",
+  "body_sha": "4d106bf108bf69fda1a8994c2fa22e683f8e4dbc2fb6f0f2b6404efb928f9484",
+  "shape_hash": "1a45f572c31f174d",
   "verdict": "PASS",
   "training": "ae101",
   "chunk_map": [
     {"index": 0, "heading": "# What packaging is (lede)", "lines": "1-4"},
-    {"index": 1, "heading": "## One session, plotted", "lines": "5-19"},
-    {"index": 2, "heading": "## Reference and plan", "lines": "20-25"},
-    {"index": 3, "heading": "## The verifier completes the three-pattern", "lines": "26-30"},
-    {"index": 4, "heading": "## The model has read the field", "lines": "31-36"},
-    {"index": 5, "heading": "## The missing evidence is local", "lines": "37-42"},
-    {"index": 6, "heading": "## The optimum is local, and it moves", "lines": "43-50"},
-    {"index": 7, "heading": "## Hooks always fire", "lines": "51-55"},
-    {"index": 8, "heading": "## Hooks for must-happen, prompts for taste", "lines": "56-64"},
-    {"index": 9, "heading": "## Every re-feed pass starts a fresh session", "lines": "65-71"}
+    {"index": 1, "heading": "## One session, plotted", "lines": "5-16"},
+    {"index": 2, "heading": "## Reference and plan", "lines": "17-23"},
+    {"index": 3, "heading": "## The verifier completes the three-pattern", "lines": "24-29"},
+    {"index": 4, "heading": "## The model has read the field", "lines": "30-36"},
+    {"index": 5, "heading": "## The missing evidence is local", "lines": "37-43"},
+    {"index": 6, "heading": "## The optimum is local, and it moves", "lines": "44-52"},
+    {"index": 7, "heading": "## Every re-feed pass starts a fresh session", "lines": "53-60"}
   ],
   "rules_evaluated": [
     {
@@ -23,7 +22,7 @@
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Fresh re-fire this session against re-hashed body 7bda57b9... (git diff HEAD~1 confirms the ONLY change since the last-judged body is chunk 8 line 59: em-dash sentence split in two: 'This one runs on the screen — watch the list come back rather than typing along.' -> 'This one runs on the screen. Watch the list come back rather than typing along.'). Chunks 0-7 and 9 unchanged from the prior sound PASS; re-verified independently this session (own read of raw lines 1-71, own cross-file greps against diagnose-and-resend.md and site/layouts/curriculum.js) with no new finding. CHANGED REGION, chunk 8 (lines 56-64), weighed specifically per dispatch instruction: 'This one runs on the screen. Watch the list come back rather than typing along.' Neither 'this one' nor 'the list' has an explicit noun antecedent earlier in the sentence -- the immediately preceding clause names only 'the same primitive' (hooks in general) and 'the verifier you built' (a past, already-built hook), neither of which 'this one' can restate without contradiction (a hook already built does not newly 'run on the screen'). Both terms resolve only forward, to `{{prompt:what-packaging-is-1}}` two lines below in the SAME chunk (expanded via `node scripts/expand-md.js`, prompt body ends 'List them.' -- the noun 'list' never appears verbatim before that). This is weaker than the pre-split version: conjoined by an em-dash, 'this one runs on the screen -- watch the list come back' read as one clause whose second half continued the first's momentum toward the prompt block directly under it; split into two sentences, 'the list' now opens a fresh sentence with no antecedent noun of its own, which is the specific risk the dispatch flagged. Weighed against the rule text: the file's own precedent for same-chunk forward pointing is rule 12's carve-out ('same-`##`-chunk use passes... the test is whether the referent sits inside the SAME chunk'), and chunk 8 is four lines total (2 bullets + prompt block + 1 closer) -- short enough that a reader takes in bullet 2 and the prompt block as one glance, not as isolated sequential prose the `##` cut stranded. Harm test (per dispatch preamble): does a reader fail to understand what 'this one' / 'the list' point to? On this chunk's actual visual shape -- the prompt sits two lines under the demonstrative, nothing else competes as a candidate referent -- the answer is no; a single unambiguous candidate sits in view. PASS, but flagged as a materially closer call than the pre-split body: if the maintainer wants a version immune to a stricter reading, 'this one' -> 'the hook below' removes the ambiguity outright without adding a sentence.",
+      "evidence": "Fresh judge, seven-slide body (was nine before the 2026-08-25 hooks extraction — chunks 7/8 in the stale prior instance no longer exist in this file). Full sequential read, chunk by chunk. Closest call: chunk 2 line 20 'On the map, the kit is what stands in for you at Verification' — 'the kit' has no prior in-body naming (grep '\\bkit\\b' curriculum/lectures/what-packaging-is.md this session: first body hit is line 20; nothing in chunk 0 or chunk 1). Stays inside on two carve-outs read together: (a) session-artifact carve-out — this lecture is the module's in-room close 'after Debrief' (maintainer L97), placed directly after the diagnose-and-resend exercise whose Phase 5 is literally 'Re-send it, packaged' (confirmed: `grep -n '^## ' curriculum/exercises/diagnose-and-resend.md` this session shows Phase 5 exists) — 'the kit' is the artefact-set (reference + plan.md + verifier) the student's own just-run session assembled, which the carve-out names as exempt ('the PR, the failing test... the diff'-shaped definite references); (b) chunk 0's own lede, 'What you assembled to get there has names,' primes exactly this referent one chunk earlier. All later 'the kit' uses (chunk 6, lines 47-48) reuse the term chunk 2 established — fine per the rule's own NOT-violations clause. Everything else resolves cleanly: 'the diagnose-and-re-send you just ran' (chunk 1, line 13) and 'your re-send' (chunk 2, line 21) are the same session-artifact carve-out. 'the un-packaged send-off' (chunk 6, line 47) resolves via the enclosing module's Prework ('Walk in with your un-packaged session'), which per rule 1's module-signposting clause counts as prior context since Prework sits before this lecture's include-link in `learn-from-the-test.md` deck order (confirmed by reading the module file). 'The menu' (chunk 3, line 28) resolves against the two named pieces chunk 2 just gave plus chunk 3's own first bullet naming the third — full history holds it. 'Three-pattern' is coined in chunk 3's own header, which is the file's intended naming beat (maintainer watch-for: 'The three-pattern earns its name HERE'), not a forward-pointing violation.",
       "fix_hint": null,
       "blocking": true
     },
@@ -33,7 +32,7 @@
       "rule_lead": "Cross-file and positional callbacks.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Re-run this session: `sed -n '1,71p' curriculum/lectures/what-packaging-is.md | grep -nE \"opening lecture|earlier lecture|prior lecture|previous lecture|last lecture|earlier module|prior module|previous module|previous slide|earlier slide\"` -> zero hits. All practitioner citations named directly with same-sentence unpacking, never located by file position. Unaffected by the chunk-8 change.",
+      "evidence": "`sed -n '1,60p' curriculum/lectures/what-packaging-is.md | grep -nE \"opening lecture|earlier lecture|prior lecture|previous lecture|last lecture|earlier module|prior module|previous module|previous slide|earlier slide|that (lecture|module)\"` run this session -> exit 1, zero hits. Practitioner citations (Ronacher, Huntley, Cherny) are all named directly by name/title, never located by file position -- Ronacher gets 'Armin Ronacher's January 2026 MiniJinja port' (chunk 2, line 21), Huntley gets 'Geoffrey Huntley's Ralph practice' (chunk 2, line 22), both unpacked in the same sentence per the rule's own example shape.",
       "fix_hint": null,
       "blocking": true
     },
@@ -43,7 +42,7 @@
       "rule_lead": "Every backward reference points at a beat that exists.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "`grep -n \"^## Phase\" curriculum/exercises/diagnose-and-resend.md` this session confirms Phase 1-5 headers current, including Phase 3's verifier-build step (matches chunk 3 'the menu you picked from' and chunk 8 'the verifier you just wrote'/'you built'). Unaffected by the chunk-8 change (same backward reference, unchanged wording).",
+      "evidence": "`grep -n \"^## \" curriculum/exercises/diagnose-and-resend.md` this session confirms 'Phase 5: Re-send it, packaged' at line 103 and 'Phase 3: Build the verifier for your worst failure' at line 59 -- both current. These back chunk 1's 'the diagnose-and-re-send you just ran' (line 13) and chunk 2/3's implicit 'the reference/verifier you assembled' (lines 21, 28). Confirmed the file's own module inclusion via `grep -n what-packaging-is curriculum/trainings/agentic-engineering-101/learn-from-the-test.md` -> line 54, sitting directly after the `diagnose-and-resend.md` include-link, so the backward reference targets the immediately-preceding beat, not a stale one.",
       "fix_hint": null,
       "blocking": true
     },
@@ -53,7 +52,8 @@
       "rule_lead": "Live-demo beats survive a text read.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "`sed -n '1,71p' curriculum/lectures/what-packaging-is.md | grep -nEi \"guess|predict a|take a guess\"` this session -> zero hits: no guess-before-reveal construction anywhere in the file. Separately, per the dispatch's check_lectures.md §6 concern (a prompt in a lecture is trainer show-and-tell, not follow-along): chunk 8's new sentence names the split explicitly on a cold read of the chunk ALONE, no trainer voice needed -- 'Watch the list come back rather than typing along' states outright that the reader is watching, not typing, immediately above the prompt block it describes. This satisfies the intent behind rule 4/§6 even though rule 4 itself (guess-then-reveal shape) has nothing in this file to bind to.",
+      "evidence": null,
+      "na_reason": "no guess-before-reveal construction (has_prompt_blocks: false; grep for guess/predict -> 0 hits this session)",
       "fix_hint": null,
       "blocking": true
     },
@@ -63,7 +63,7 @@
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "All 9 content chunks carry a self-standing claim on re-read this session. Chunk 8 in particular still states a full principle in its first bullet ('Must happen goes in a hook; recommended stays in a prompt or rule') independent of the changed second bullet.",
+      "evidence": "All 7 content chunks carry a self-standing claim independent of any other chunk: chunk 1 (chart + drift/check/guardrail claims), chunk 2 (two named artefacts), chunk 3 (verifier + synthesis claim), chunk 4 (weights hold the field, candidates), chunk 5 (local evidence, prediction-not-measurement), chunk 6 (A/B, engineer decides), chunk 7 (re-feed mechanism). None is a bare wait-state or single context-dependent bullet.",
       "fix_hint": null,
       "blocking": false
     },
@@ -73,7 +73,7 @@
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Chunk 8's header 'Hooks for must-happen, prompts for taste' is answered verbatim by its own unchanged first bullet 'Must happen goes in a hook; recommended stays in a prompt or rule.' The changed sentence sits in the second bullet and does not touch the header's own truth claim.",
+      "evidence": "Checked each of the 7 headers against its own chunk's content. Strongest self-carry: chunk 6 'The optimum is local, and it moves' is answered verbatim by its own closing bullet, line 49, 'The local optimum stays ahead, moving when your stack moves'; chunk 7 'Every re-feed pass starts a fresh session' is answered by line 57, 'Each pass is a new session, not a continuation of the last one.' No header is contradicted by its chunk's body.",
       "fix_hint": null,
       "blocking": false
     },
@@ -83,9 +83,9 @@
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "`grep -nE \"Not [A-Z][a-z]*\\. Not \" curriculum/lectures/what-packaging-is.md` and a superlative grep both zero hits this session, body-wide. The split sentence in chunk 8 is now two short declaratives, not a triplet or anaphora construction -- no new cadence tic introduced by the split.",
+      "evidence": "Body-wide this session: `grep -nE \"Not [A-Z][a-z]*\\. Not \" curriculum/lectures/what-packaging-is.md` -> exit 1, zero hits (no 'Not X. Not Y. Z.'). `grep -niE \"one of the (most|best)|the most useful|incredibly (useful|powerful)\" curriculum/lectures/what-packaging-is.md` -> exit 1, zero hits (no self-grading superlative). No numeric claim anywhere in the body to retract (no percentages/counts stated then walked back). Closest look: chunk 6 line 50, 'it runs the task, reads its own transcript, diffs the returns' -- a three-verb list, but each leg names a distinct concrete action (run / read / diff), none empty, so the 'verb triplets where a leg is empty' sub-item does not fire. No anaphora/epistrophe triple found anywhere (no repeated sentence-opening structure with a padded third leg). 'goal drift', 'context rot', 'plausible-but-wrong' are the training's own defined failure-mode vocabulary (established at module Big Idea / exercise level), not abstraction-noun-stack filler standing in for a concrete thing being avoided.",
       "fix_hint": null,
-      "blocking": false
+      "blocking": true
     },
     {
       "compendium": "check_slides.md",
@@ -93,7 +93,7 @@
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "`sed -n '1,71p' curriculum/lectures/what-packaging-is.md | grep -nE \"\\bsurface\\b|\\bfiring\\b|\\bcompendium\\b|\\bforcing function\\b|\\bbeat\\b|\\bmood\\b|\\bConnections\\b\"` this session -> zero hits in body scope. Chunk 8's changed sentence introduces no dialect terms.",
+      "evidence": "`sed -n '1,60p' curriculum/lectures/what-packaging-is.md | grep -nE \"\\bsurface\\b|\\bfiring\\b|\\bcompendium\\b|\\bforcing function\\b|\\bbeat\\b|\\bmood\\b|\\bConnections\\b\"` run this session -> exit 1, zero hits in body scope. The `<!--tier:N-->` markers are HTML comments (invisible in rendered output, mechanism annotation only), not text a projected slide displays, so they are outside rule 8's 'lands on a slide' test. 'candidates' and 'tested-here' are training-taught vocabulary defined in the same chunk that uses them, not repo-authorial jargon.",
       "fix_hint": null,
       "blocking": true
     },
@@ -103,8 +103,8 @@
       "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Chunk 8 carries exactly 1 bold span ('Must happen goes in a hook', line 58), within the <=1-per-slide budget and unaffected by the second-bullet split (no bold added or removed there). Body-wide recount this session: `awk 'NR<=71' curriculum/lectures/what-packaging-is.md | grep -noE '\\*\\*[^*]+\\*\\*'` matches the prior sweep's per-chunk counts (chunk 2 = 2, all others <=1). Same prior rule-question stands (three spans exceed the literal <=5-word guidance but each is a sole, coined law/principle tracked in the backing ledger, not incidental sentence emphasis) -- not filed as REVISE.",
-      "fix_hint": null,
+      "evidence": "`awk 'NR<=60' curriculum/lectures/what-packaging-is.md | grep -noE '\\*\\*[^*]+\\*\\*'` this session: line 13 '**A check is a position fix**', line 21 '**Reference artefact**', line 22 '**plan.md**', line 27 '**External verifier**', line 35 '**candidates**', line 41 '**A prediction is not a measurement.**', line 50 '**The engineer decides**', line 56 '**Re-feed**'. Per-chunk count: chunk 1=1, chunk 2=2, chunk 3=1, chunk 4=1, chunk 5=1, chunk 6=1, chunk 7=1 -- at or under the <=1-per-slide budget except chunk 2's two, which fits the rule's own 'a law/consolidation slide may carry one handle per law' exception (chunk 2 names two of the three-pattern's three pieces, one handle each). Closest call, held as PASS but flagged for the maintainer: lines 13 and 41 bold a full six-word clause ('A check is a position fix' / 'A prediction is not a measurement.') rather than a <=5-word sub-span, which is literally over the rule's stated handle-length cap even though the per-slide count is within budget. Both are the file's own coined maxims (line 13's law is named in the backing block's Frameworks ledger as 'Dead reckoning and the position fix'; line 41's phrasing is one of the two lines the backing block flags as Antti-blessed, deliberate wording), and this exact pattern was reviewed by the prior instance on the pre-hooks-extraction body and not filed as REVISE for the same reason (sole coined law/principle, not incidental sentence emphasis). Held to that precedent rather than re-litigating; surfaced as a todo, not a finding.",
+      "fix_hint": "If the maintainer wants the letter of the <=5-word handle cap satisfied literally, trim each to a sub-span (e.g. bold only 'position fix' / 'not a measurement') and let the rest of the clause sit unbolded -- optional, non-blocking.",
       "blocking": false
     },
     {
@@ -113,7 +113,7 @@
       "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "`grep -n \"flag:\" curriculum/lectures/what-packaging-is.md` this session -> zero hits, no content-flag forking. `node scripts/expand-md.js curriculum/lectures/what-packaging-is.md` exits 0 with both `{{figure:session-sea-passage}}` and `{{prompt:what-packaging-is-1}}` resolved inside their chunks. File confirmed included via standard include-link in `curriculum/trainings/agentic-engineering-101/learn-from-the-test.md` line 50.",
+      "evidence": "`grep -n \"flag:\" curriculum/lectures/what-packaging-is.md` this session -> exit 1, zero hits: no content-flag forking, so nothing to resolve per-branch. `node scripts/expand-md.js curriculum/lectures/what-packaging-is.md` this session exits 0 and resolves `{{figure:session-sea-passage}}` inline inside chunk 1. `grep -n what-packaging-is curriculum/trainings/agentic-engineering-101/learn-from-the-test.md` -> line 54, a standard `[Lecture: ...](lectures/...)` include-link (the ordinary inclusion mechanism the renderer's `buildDeckModel` picks up), not a phase-less prose aside.",
       "fix_hint": null,
       "blocking": true
     },
@@ -123,7 +123,8 @@
       "rule_lead": "Numbering — position is computed, content ordinals are linted.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "`node scripts/check-slide-numbering.js --file curriculum/lectures/what-packaging-is.md` run this session -> 'OK — 1 files, Phase/Step numbering consistent.' (exit 0). No `## Phase N:` / `## N.` headers in this file; nothing for the rule to bind to.",
+      "evidence": null,
+      "na_reason": "no `## Phase N:`/`## N.` step headers in this file (check-slide-numbering.js: OK, 0 headers of that shape)",
       "fix_hint": null,
       "blocking": false
     },
@@ -133,7 +134,7 @@
       "rule_lead": "Page geometry dies at the cut; reading order survives.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "`node scripts/check-slide-deixis.js --file curriculum/lectures/what-packaging-is.md --report` run this session -> no output, exit 0. Manual corroboration: `sed -n '1,71p' curriculum/lectures/what-packaging-is.md | grep -nE \"\\babove\\b|\\bbelow\\b|further down|top of this|see below|this page\"` -> zero hits. Chunk 8's changed sentence uses no positional-geometry language ('below', 'above') even though its referent sits below within the chunk -- the pointer is a bare demonstrative, which is rule 1's concern (evaluated there), not rule 12's.",
+      "evidence": "`node scripts/check-slide-deixis.js --file curriculum/lectures/what-packaging-is.md --report` run this session -> no output, exit 0 (nothing flagged, nothing to accept). Manual corroboration: `sed -n '1,60p' curriculum/lectures/what-packaging-is.md | grep -nE \"\\babove\\b|\\bbelow\\b|further down|top of this|see below|this page\"` -> exit 1, zero hits. No positional-geometry language anywhere in the body.",
       "fix_hint": null,
       "blocking": true
     },
@@ -143,7 +144,8 @@
       "rule_lead": "In-deck links work now; whether they EARN their place is open.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "`sed -n '1,71p' curriculum/lectures/what-packaging-is.md | grep -nF \"](\"` this session -> zero hits. No markdown links in the body.",
+      "evidence": null,
+      "na_reason": "no markdown links in the body (grep '](' -> 0 hits)",
       "fix_hint": null,
       "blocking": false
     },
@@ -153,7 +155,7 @@
       "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Ran this session: `node scripts/check-slide-size.js --file curriculum/lectures/what-packaging-is.md` -> stdout: '======================================================================\\nSlide-size check — agentic-engineering-101\\n  files: 1   slides: 9   limits: 210 words / 6 bullets\\n  oversized: 0\\n======================================================================\\n\\n✓ every slide is within limits' (exit 0). All 9 slides clear both axes; the one-sentence split in chunk 8 adds negligible words and does not approach the cap. No accept-note needed.",
+      "evidence": "Ran this session: `node scripts/check-slide-size.js --file curriculum/lectures/what-packaging-is.md` -> 'files: 1   slides: 7   limits: 210 words / 6 bullets\\n  oversized: 0\\n✓ every slide is within limits' exit 0. All 7 slides clear both axes; no accept-note needed or present.",
       "fix_hint": null,
       "blocking": false
     },
@@ -161,18 +163,28 @@
       "compendium": "check_slides.md",
       "rule_index": 15,
       "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
-      "verdict": "REVISE",
-      "chunks_flagged": [1, 8],
-      "evidence": "Re-read this session with the 2026-08-19 generalisation in mind (orientation headers, catalogue entries, and phase/section labels are NOT violations). Chunk 1 'One session, plotted' is a scene-setting title for the chart figure -- reads as a catalogue-entry-shaped label naming its subject (the session, plotted as a chart), close to the generalisation's own example set ('Ralph', 'The numbers'). Chunk 8 'Hooks for must-happen, prompts for taste' is an elliptical parallel-structure label (implied 'are'), not a subject-verb claim in the shape of 'Passing is not proof' / 'Gates decay'. Both headers self-carry their chunk under rule 6, and 'Reference and plan' (chunk 2, same file) already carries a maintainer accept-note on the identical structural grounds ('not every header owes a claim'). Filing this as a maintainer-scope corpus question rather than a per-file defect: the 2026-08-19 generalisation's carve-out list (orientation / catalogue / phase-label) may already cover chunk 1 and chunk 8 by function even without a per-file accept-note, in which case this is not a live REVISE at all -- but no accept-note names either header, so the letter of the rule is unresolved. Consistent with the prior instance's finding; unaffected by the chunk-8 body change (the heading itself did not change).",
-      "fix_hint": "Maintainer call: either extend the carve-out already granted to 'Reference and plan' to cover chunk 1 and chunk 8 by the same function-not-wording test the 2026-08-19 generalisation states, or add a per-header accept-note, or rewrite as claims. Non-blocking either way.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "All 7 headers checked against the 2026-08-19 generalisation (orientation / catalogue / phase-label headers are NOT violations, and 'not every header owes a claim'). Claim-shaped (5 of 7, subject-verb-complement): 'The verifier completes the three-pattern', 'The model has read the field', 'The missing evidence is local', 'The optimum is local, and it moves', 'Every re-feed pass starts a fresh session'. 'Reference and plan' already carries an explicit maintainer accept-note (L73, Antti 2026-08-15: 'not every header owes a claim'). 'One session, plotted' fits the rule's own NOT-violation class 'catalogue entries naming their subject' (parallel to the rule's own listed examples 'The numbers', 'Verification, named') -- it names the chart's subject (one session, plotted as a passage), not a claim slide, and needs no separate accept-note since the compendium states this class as a standing carve-out rather than a per-file exception. No header reads as a mislabeled claim opportunity.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 16,
+      "rule_lead": "A bullet earns its slot or dies — three classes that read as rigour and carry nothing.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Read every bullet in all 7 chunks against the three classes (doctrine restatement, self-referential design commentary, aphorism kicker). No class-(b) hit: nothing in the body talks about the curriculum's own pedagogy or design. Closest class-(a)/(c) calls, both held as adding new content rather than pure restatement: chunk 5's closing bullet ('So a playbook stays a candidate until something tests it here...', line 42) echoes chunk 4's 'candidates' but adds the local-test condition that chunk 4 didn't state, setting up chunk 6's promotion mechanism -- progression, not recap. Chunk 6's third bullet closes with 'The local optimum stays ahead, moving when your stack moves' (line 49), which does restate the header, but it is the second half of a bullet whose first half ('a wide first fix that narrows as more experiments land') introduces the promotion mechanism -- not a bare kicker, and not the slide's last bullet (two more follow). The maintainer block already documents one class-(a) cut on this exact file (L77, 2026-08-25: the two sea-passage trailer lines removed 'after the chart already argued it, check_slides.md §16 class a'), confirming this rule has already been swept against this body once; no fresh instance found.",
+      "fix_hint": null,
       "blocking": false
     }
   ],
   "blocking_findings_count": 0,
   "todos_count": 1,
   "notes": [
-    "Body change since the last-judged instance is exactly one sentence in chunk 8 (git diff HEAD~1 verified this session): em-dash split into two sentences to satisfy check_writing.md §1. `sed -n '1,71p' ... | grep '—'` (body scope only) this session -> zero hits: the em-dash is fully out of the body; the prior instance's out-of-lane note about a surviving em-dash no longer applies to this body.",
-    "Rule 1 chunk 8 is the specific region the dispatch asked to re-verify. Verdict held at PASS but is now flagged as a materially closer call than the pre-split body (see rule 1 evidence) -- the split sentence weakens, but per this session's re-analysis does not break, same-chunk resolution of 'this one' / 'the list' against the prompt block two lines below.",
-    "Rule 15 unresolved corpus question carried forward unchanged from the prior instance (chunk headings themselves were not touched by this edit); non-blocking, todos_count=1."
+    "This file shrank from 9 slides to 7 between the pin (5df71aa6) and HEAD: the two 'Hooks always fire' / 'Hooks for must-happen, prompts for taste' slides plus their demo prompt were extracted whole into curriculum/lectures/hooks-always-fire.md on 2026-08-25 and re-wired earlier in the module (before the M5 exercises). A prior slides instance on disk for this slug still described the 9-slide body; it predates shape_hash (prefill-instance.js reported 'prior instance predates shape_hash — cannot verify N/A validity') so nothing carried forward and every row above was freshly judged against the current 7-slide body.",
+    "Rule 9 todo: lines 13 and 41 each bold a full ~6-word clause rather than a <=5-word sub-span. Held as PASS on precedent (both are the file's own coined maxims, one tied to a named Frameworks-ledger law, the other Antti-blessed wording flagged in the backing block) but worth a maintainer glance -- see rule 9 evidence and fix_hint.",
+    "Two mechanical checkers referenced by the dispatch template live at scripts/check-slide-deixis.js and scripts/check-slide-size.js at repo root, not under curriculum/evals/scripts/ -- ran them from there this session; check-slide-numbering.js is also at scripts/ root."
   ]
 }

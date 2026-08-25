@@ -1,10 +1,11 @@
 {
   "class": "storytelling",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/the-far-half.md",
-  "body_sha": "6d5b444a9b95bc68ce2d43d482d65a3f6e9c560318175501bbd32ca2b9819baf",
-  "verdict": "PASS",
+  "body_sha": "6978dce272aa9a70c45816205521b3c0fe92185f9491e12638f73f54a4bc3778",
+  "shape_hash": "b7f7d6040e269cc4",
+  "verdict": "PASS_WITH_TODOS",
   "training": "ae101",
-  "module_mood_contract": "curious readiness — 'I've built enough to try; let's see what the agent does.' (bosser-strategy:content-strategy-agentic-engineering-101.md § M4 in detail — Mood: curious readiness)",
+  "module_mood_contract": "curious readiness — 'I've built enough to try; let's see what the agent does.' (bosser-strategy:content-strategy-agentic-engineering-101.md § M4 in detail, line 384: \"Mood: curious readiness — 'I've built enough to try something; let's see what the agent does with it.' Stakes back in the room; no compliance framing.\")",
   "trace_status": "regenerated",
   "rules_evaluated": [
     {
@@ -12,7 +13,7 @@
       "rule_index": 1,
       "rule_lead": "Meta-frame lectures = closers, not openers.",
       "verdict": "PASS",
-      "evidence": "Not a meta-frame closer (no pattern-just-lived being named back). Placement diagnostic per rule: this is a ceiling-showing opener (the engine-map reveal, lines 5-8) — those go at the beginning per the rule's own text. Strategy doc confirms M4 open placement: 'M4 doesn't prepare, it tests' (content-strategy-agentic-engineering-101.md line 368).",
+      "evidence": "Placement diagnostic (naming a pattern / showing a ceiling / teaching vocabulary): this is a ceiling-showing opener — the engine-map reveal (line 5, {{figure:map-engine-m4-open}}) plus the one bullet at line 7 ('The map lights its other side now... The rest of the training goes there') shows there is more territory ahead, without naming back a pattern the student already lived through. Ceiling-showing lectures belong at the beginning per the rule's own text, and maintainer line 31 confirms intended placement: 'M4 open, the far-half... map reveal.' Strategy doc corroborates the opener framing directly: 'M4 doesn't prepare, it tests' (content-strategy-agentic-engineering-101.md line 368).",
       "fix_hint": null,
       "blocking": false
     },
@@ -20,17 +21,18 @@
       "compendium": "check_lectures.md",
       "rule_index": 2,
       "rule_lead": "Minimal lecturing before contrast-mood exercises.",
-      "verdict": "PASS",
-      "evidence": "Three slides, ~140 words of teaching content (check-slide-size.js confirms 0 oversized, well under the 210w/slide ceiling). Content stays at spirit + one operational primitive (three one-sentence governor definitions) + the closing question. No practitioner terms named (no Osmani, no 'sampling loop'), no framework mapped to a problem, no tradeoff argued with reasons — that work is explicitly deferred, per the file's own maintainer 'Container discipline' note: 'No packaging law is named — no 0.85ⁿ, no convergence triad, no principal–agent, no hybrid-vs-autonomous, no backpressure.'",
+      "verdict": "N/A",
+      "evidence": "Rule text scopes itself explicitly: 'Contrast-mood modules (M5-style: learn through doing the thing, name it after)'. This lecture opens M4, whose strategy-doc mood is 'curious readiness' (content-strategy-agentic-engineering-101.md line 384) — contrast-mood is M5's mood ('learning through contrast', line 258 Mood arc), not M4's. The rule's own trigger condition is absent from this file's placement, so it does not reach it. (Noted for completeness: the maintainer's 'Container discipline' note at line 29 independently applies an equivalent minimal-teaching restraint here — no packaging law is named — but that is the maintainer's own design choice, not this rule firing.)",
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "na_reason": "file opens M4 (curious readiness); rule scoped to M5-style contrast-mood pre-exercise lectures only"
     },
     {
       "compendium": "check_lectures.md",
       "rule_index": 3,
       "rule_lead": "No cross-module sequencing in lecture bodies.",
       "verdict": "PASS",
-      "evidence": "grep -nE 'M[0-9]|Module' on the body above the maintainer fence (lines 1-21) → 0 hits. The only forward/backward references are map-position language ('The near half is behind you', 'the far half opens') which the rule's own carve-out exempts ('Map-position refs (\"the far half of the map\") = spine-anchoring, not sequencing — stay').",
+      "evidence": "Mechanical: `sed -n '1,20p' curriculum/lectures/the-far-half.md | grep -nE 'M[0-9]|Module [0-9]'` run this session on the body region (lines 1-20, per body_regions in the derived view) → 0 matches, exit 1. The only forward/backward-looking language is map-position phrasing ('The map lights its other side now', line 7; 'the far half opens', line 3 header), which the rule's own carve-out exempts verbatim: 'Map-position refs (\"the far half of the map\") = spine-anchoring, not sequencing — stay.' Module numbers appear only in the maintainer/backing blocks (lines 21-83, outside the body region), covered separately by the arc-lecture carve-out the maintainer cites at line 29 ('Module ranges in body = arc-lecture carve-out').",
       "fix_hint": null,
       "blocking": false
     },
@@ -39,25 +41,45 @@
       "rule_index": 4,
       "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
       "verdict": "PASS",
-      "evidence": "Three headers, no duplicates. (1) 'Back to the map: the far half opens' — the rule's orientation carve-out (position not concept, rationed to ONE beat per arc lecture) covers this exactly; it is the file's single orientation beat. (2) 'Long-running work adds three new concerns' — squints to the concept (long sessions bring new demands the near half didn't); truth clause holds, the three bullets below immediately name and define the three concerns. Not an empty container ('The move'/'The spirit') — it commits to a specific claim. (3) 'Your first un-packaged long session' — names the concept (the un-packaged run itself); body supports it, no unsupported universals.",
+      "evidence": "Three headers (line 3, 9, 16), no duplicates, no em-dashes. (1) 'Back to the map: the far half opens' (line 3) — this file is one of the map family (backing block line 48: 'Sibling copies: the-loop-half-filled.md, the-map-filled-in.md'; figure 'derived from the-whole-map.md's canvas'), so the rule's orientation carve-out ('the single orientation beat in a map/closer lecture') covers it exactly, and it is the file's only orientation-shaped header (ration of one respected). (2) 'Long-running work adds three new concerns' (line 9) — squints to a real claim (long sessions bring concerns the near half didn't); truth clause holds because the three bullets immediately underneath (lines 12-14) name and define exactly three: Verification, Absorption, Outcome. Not an empty container. (3) 'Your first un-packaged long session' (line 16) — names the concept (the send-off itself); body supports it (line 18: 'goes off un-packaged, on purpose'), no unsupported universal.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_lectures.md",
       "rule_index": 5,
-      "rule_lead": "A slide's BODY is size-bounded, not just its header.",
+      "rule_lead": "A slide's BODY is size-bounded, not just its header (§4's sibling).",
       "verdict": "PASS",
-      "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/lectures/the-far-half.md` in this session. Output: 'files: 1  slides: 3  limits: 210 words / 6 bullets / oversized: 0' and '✓ every slide is within limits'. Exit confirmed clean (no oversized slides reported).",
+      "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/lectures/the-far-half.md` this session. Output: 'files: 1  slides: 3  limits: 210 words / 6 bullets  oversized: 0' and '✓ every slide is within limits', exit 0. Per-slide bullet counts verified separately by grep: slide 1 = 1 bullet, slide 2 = 4 bullets, slide 3 = 2 bullets — all ≤6.",
       "fix_hint": null,
       "blocking": false
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 6,
+      "rule_lead": "A prompt inside a lecture is a trainer show-and-tell, never a room follow-along.",
+      "verdict": "N/A",
+      "evidence": "No fenced `**Prompt**` block or `{{prompt:...}}` marker anywhere in the file. Confirmed both by the derived view's signal (has_prompt_blocks: false) and directly: `grep -nE '\\*\\*Prompt\\*\\*|\\{\\{prompt:' curriculum/lectures/the-far-half.md` → 0 matches this session. Nothing for the rule to bind.",
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "no prompt blocks in file (signals.has_prompt_blocks: false)"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 16,
+      "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
+      "verdict": "N/A",
+      "evidence": "This rule polices where a forcing function lives once one exists in the file; this lecture has no `{{prompt}}`/`**Prompt**` fence to misplace one into (see check_lectures.md §6 evidence). The actual forcing function for the send-off this lecture arms the student for lives downstream in `walk-and-send-off.md` / `what-keeps-a-long-running-session-going.md`, not here. The closest candidate line, 'One long session goes off un-packaged, on purpose' (line 18), describes what the coming exercise does rather than scripting a reaction inside this file, so even read generously it does not trip the rule.",
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "no prompt fence in this lecture to hold or misplace a forcing function"
     },
     {
       "compendium": "check_pedagogy.md",
       "rule_index": 27,
       "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
       "verdict": "PASS",
-      "evidence": "Body has no 'discuss with...', no pair/room-share cues, no authored pause beat. All three slides are about the WORK (the map, the three concerns, the un-packaged run and its question) not cohort management. The one carve-out-shaped line in the file ('One question to carry into the session...') is directed at the individual student's own reflection, not a room instruction — it does not tell anyone to talk to a neighbor, so it doesn't even reach for the 'room may be named' carve-out; it simply isn't a cohort-management sentence.",
+      "evidence": "Grepped the body for conversation-cue shapes ('discuss', 'share', 'neighbor', 'tell the room', 'pair up') — zero hits. All three slides stay on the WORK (the map, the three concerns, the send-off and its question), never on cohort management. The line closest to reading as a cue is line 19, 'One question to carry into the session. When the agent takes a hundred steps alone, what makes you trust the result at the end?' — it stays inside the rule because it addresses the individual student's own carried question, not an instruction to talk to, compare with, or share with anyone else; it doesn't even reach for the 'room may be named sparingly' carve-out because it never names the room at all.",
       "fix_hint": null,
       "blocking": false
     },
@@ -66,7 +88,7 @@
       "rule_index": 1,
       "rule_lead": "Mood contract named.",
       "verdict": "PASS",
-      "evidence": "Regenerated persona trace (curriculum/evals/sim-cache/ae101--lecture--the-far-half.persona.json, content_sha 0b523dd5... matches current body_sha) scores phase 1 mood_score 8 and close mood_score 8 — both at the required 8+/10 teaching-beat floor. This is a TEACHING beat (defines Verification/Absorption/Outcome), not setup, so the floor applies and is met.",
+      "evidence": "Beat classification per the rule's own diagnostic: this is a TEACHING beat (it defines three new concepts — Verification/Absorption/Outcome — not merely positions the student for the next thing), so the 8+/10 floor applies, not the setup exemption. Regenerated persona trace this session (curriculum/evals/sim-cache/ae101--lecture--the-far-half.persona.json, content_sha e837adcf... matches current body_sha exactly) scores the single phase 8/10 and the close 8/10 — both at the floor. Mood contract 'curious readiness' is stated explicitly in the trace and matches the strategy doc (line 384) verbatim in spirit.",
       "fix_hint": null,
       "blocking": false
     },
@@ -75,7 +97,7 @@
       "rule_index": 2,
       "rule_lead": "Epistemic mood ≠ punitive mood.",
       "verdict": "PASS",
-      "evidence": "Closing question is 'what makes you trust the result at the end?' — not-knowing framing, no 'you messed up' language anywhere in the body. Matches the strategy doc's explicit mood: 'Stakes back in the room; no compliance framing' (line 384).",
+      "evidence": "Closing question (line 19) is 'what makes you trust the result at the end?' — a not-knowing framing ('I'd like to know and I can't yet'), not a having-done-wrong one. No 'you messed up', no blame language anywhere in the body. Matches the strategy doc's explicit instruction for this mood: 'Stakes back in the room; no compliance framing' (line 384).",
       "fix_hint": null,
       "blocking": false
     },
@@ -84,7 +106,7 @@
       "rule_index": 3,
       "rule_lead": "Lead with discipline, not failure mode.",
       "verdict": "PASS",
-      "evidence": "The three governor bullets lead with the positive discipline name and bold it first word ('**Verification** tells you...', '**Absorption** determines...', '**Outcome** determines...') before any failure mode is implied. No fabrication/violation/hallucination-style lead.",
+      "evidence": "The three governor bullets (lines 12-14) each lead with the positive discipline name, bolded first: '**Verification** tells you...', '**Absorption** determines...', '**Outcome** determines...' — no fabrication/violation/hallucination-style lead. Slide 2's header, 'Long-running work adds three new concerns' (line 9), uses the neutral word 'concerns' rather than a failure word (risk/danger/mistake); read against the rule's intent (title names a discipline, not a failure mode) this stays on the discipline side of the line.",
       "fix_hint": null,
       "blocking": false
     },
@@ -93,9 +115,39 @@
       "rule_index": 4,
       "rule_lead": "Strategy-fidelity check.",
       "verdict": "PASS",
-      "evidence": "Checked against content-strategy-agentic-engineering-101.md § M4 in detail (lines 366-392). Front-run check: file does not name 'backpressure', the two-run arc, or M5's three-pattern — matches the maintainer's own Container-discipline note and the strategy doc's sequencing ('the closing lecture asks you to notice... backpressure' happens at M4's *close*, not this opener). Big Idea fidelity: opens with 'M4 doesn't prepare, it tests' spirit via the map reveal, matches. Module-to-module arc: hands off cleanly into the un-packaged send-off the strategy doc describes as M4's move 5. Mood-doesn't-resolve-early: the closing question is left genuinely open ('what makes you trust the result at the end?'), nothing here tidies the felt experience the un-packaged run and M5's diagnosis are supposed to supply.",
+      "evidence": "Checked directly against content-strategy-agentic-engineering-101.md § M4 in detail (read this session, lines 366-392). Front-run check: file names none of 'backpressure', the two-run M4/M5 arc, or M5's three-pattern reveal — grep for these terms in the body returns 0, matching the maintainer's own 'Container discipline' note (line 29: 'The post-launch M4 closer names backpressure after the session starts; M5 builds and calibrates the checks; M6 composes them') and the strategy doc's own sequencing (line 382, backpressure is earned in the closer `what-keeps-a-long-running-session-going.md`, not this opener). Big Idea fidelity: opens on the 'testing, not preparing' spirit (strategy line 368) via the map reveal and the un-packaged framing (line 18: 'exactly as it stands. Nothing added for the occasion' mirrors strategy line 381's 'use the system as it stands; do not add a new long-run recipe'). Module-to-module arc: hands off cleanly — the persona trace confirms the beat is read right after Connections' task-pick/screen step and carries its closing question straight into the send-off exercise the strategy doc names as M4's move 5. Mood-doesn't-resolve-early: the closing question is left genuinely open (no answer supplied), so nothing here pre-empts the felt experience the un-packaged run and M5's diagnosis are supposed to supply.",
       "fix_hint": null,
       "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 5,
+      "rule_lead": "Strategic themes recur in Key Concepts.",
+      "verdict": "N/A",
+      "evidence": "This rule governs a module file's student-facing `## Key Concepts` heading. `grep -n \"Key Concepts\" curriculum/lectures/the-far-half.md` → 0 matches this session; this is a lecture file with no such section (module-shape.md reserves Key Concepts for module index files). The strategy judge owns this rule on the M4 module file.",
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "lecture, not a module file — no ## Key Concepts section"
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 6,
+      "rule_lead": "Key Concepts shape — theme breadcrumbs, not standalone section.",
+      "verdict": "N/A",
+      "evidence": "Same absence as §5 — no `## Key Concepts` section exists in this file to carry a breadcrumb. Not applicable to a lecture.",
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "lecture, not a module file — no ## Key Concepts section"
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 7,
+      "rule_lead": "What You'll Learn shape — capability register, not syllabus.",
+      "verdict": "N/A",
+      "evidence": "`grep -n \"What You'll Learn\" curriculum/lectures/the-far-half.md` → 0 matches this session. This is a lecture, not a module index file; no `## What You'll Learn` section exists here for the rule to bind.",
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "lecture, not a module file — no ## What You'll Learn section"
     },
     {
       "compendium": "check_prompts.md",
@@ -103,7 +155,7 @@
       "judge_owned": true,
       "rule_lead": "N/A — whole compendium",
       "verdict": "N/A",
-      "evidence": "No fenced code blocks / copy-this prompt affordance anywhere in this lecture body; the file is prose + one figure include. check_prompts.md does not apply.",
+      "evidence": "No fenced code block or copy-this prompt affordance anywhere in this file. Confirmed by signals.has_prompt_blocks: false and by direct grep this session (`grep -nE '\\*\\*Prompt\\*\\*|\\{\\{prompt:'` → 0 hits). check_prompts.md's 48 rules all presuppose a prompt block to bind to; none can fire structurally on this file.",
       "fix_hint": null,
       "blocking": false
     },
@@ -113,7 +165,7 @@
       "judge_owned": true,
       "rule_lead": "N/A — whole compendium",
       "verdict": "N/A",
-      "evidence": "No beat here produces an artefact belonging to a group rather than to the individual student — this is a solo-read container lecture, no room-scale adjudication/attribution beat. check_workshop.md does not apply.",
+      "evidence": "No beat in this file produces an artefact belonging to a group rather than to the individual student — this is a solo-read container lecture (map reveal + three definitional bullets + a question the student carries alone into the next exercise), no room-scale adjudication, attribution, or shared-record beat. The derived view's group_beat_markers signal fires true only on the bare word 'team' at line 14 ('crosses the wall from you to the team') — that sentence describes an individual's work eventually reaching the team, not a room-scale beat happening now, so it is a false positive against check_workshop's own trigger definition ('the output belongs to the group, not to a participant'). check_workshop.md's rules do not reach a file with no group beat.",
       "fix_hint": null,
       "blocking": false
     }
@@ -123,8 +175,25 @@
     "close_score": 8,
     "any_below_8": false,
     "stealing_the_mood": [],
-    "teaching_moment_lands": "PASS (judge-owned, no rule_index) — the felt problem ('you stop seeing every move and meet the result at the end, all at once') and the three governor definitions land reliably per the regenerated trace across a mid-level-engineer persona read; the closing question is carried forward as open, not resolved. Two non-blocking confusion flags recorded in the trace (unnamed loop-strand labels on the figure; ambiguity over whether the closing question wants an out-loud answer) — neither drags mood below 7 and neither is this class's rule to file (figure-legibility/body-instruction-clarity belong to writing/technical, not storytelling)."
+    "teaching_moment_lands": "PASS (judge-owned, no rule_index) — the felt problem ('when the agent runs for an hour without you watching, that quick feedback goes quiet', line 11) and the three governor definitions land reliably for the regenerated mid-level-engineer persona; the closing question is carried forward open, not resolved, matching the strategy doc's M4 mood. Two non-blocking confusion flags recurred across both the prior (now-stale) trace and this session's freshly regenerated one despite unrelated prose trims landing in between — that recurrence across two independent generations is itself evidence these are structural, not wording artefacts. See todos."
   },
+  "todos": [
+    {
+      "rule": "check_lectures.md (figure legibility, adjacent to §4/§5)",
+      "line": 5,
+      "note": "The engine-map figure at line 5 draws five loop-strand labels inside the lit far half (THE PROTOTYPING LOOP, THE BUILD LOOP, THE AGENT'S OWN LOOP, THE CHECKING LOOP, THE COMPOUNDING LOOP) plus CROSSING THE WALL, and none of the three body bullets name any of them. Persona trace (both the stale 2026-08-19 version and this session's regeneration) independently flags the same gap: a trainer-led room fills it live, but a self-paced or cold reader has nothing in the text to resolve it against. Non-blocking — delivery_mode is in-room/projected, and the maintainer's own STATUS line frames this as a 5-min container, not a teaching lecture, so under-explaining the figure's ambient detail is arguably by design. Worth a maintainer look if the file is ever repurposed for self-study."
+    },
+    {
+      "rule": "check_strategy_tie_in.md §1 (mood lands)",
+      "line": 13,
+      "note": "The Absorption bullet ('the gap between generating and reading decides your real throughput', line 13) is the most abstract of the three governor definitions and, unlike Verification ('stops being a glance and becomes a job') and Outcome ('crosses the wall from you to the team'), carries no concrete grounding clause. Trace mood holds at 8/10 (floor is 8), but both trace generations name this specific bullet as the one that keeps the beat from a 9. Non-blocking; a one-clause concrete hook would close the gap."
+    },
+    {
+      "rule": "check_pedagogy.md (adjacent to §26 reflection-beat register)",
+      "line": 19,
+      "note": "The closing question ('what makes you trust the result at the end?', line 19) names no mode — answer aloud, jot a line, or hold silently are all consistent with the text as written. Persona trace flags this same ambiguity across both generations. Non-blocking in an in-room delivery (the trainer sets the mode live), but worth a one-clause steer if the file is ever read outside a trainer-led room."
+    }
+  ],
   "blocking_findings_count": 0,
-  "todos_count": 0
+  "todos_count": 3
 }

@@ -1,17 +1,20 @@
 {
   "class": "storytelling",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/what-keeps-a-long-running-session-going.md",
-  "verdict": "PASS",
+  "body_sha": "922ffdf0b04550e40500b8be623fcceb797927ac0ab155977310f6eab4817350",
+  "shape_hash": "776191893f0953c7",
+  "verdict": "PASS_WITH_TODOS",
   "training": "ae101",
-  "module_mood_contract": "curious readiness — \"I've built enough to try something; let's see what the agent does with it.\" M4 closer, read while the un-packaged send-off session remains active; observes without repairing the run and does not name M5's artifact recipe.",
-  "trace_status": "generated_first_time",
+  "module_mood_contract": "curious readiness — \"I've built enough to try something; let's see what the agent does with it.\" M4's post-send-off observational beat, read while the un-packaged session remains active; ironies-of-automation now closes the module after it (re-sequenced 2026-08-25, commit 5dd2806a), and reading-the-return opens the next module.",
+  "trace_status": "regenerated",
+  "regeneration_note": "Cached persona.json content_sha (b781bd4d...) mismatched the current file (922ffdf0...). Diffed the two shas' source commits: the mismatch is entirely a <!--tier:2--> marker added under each ## header (commit 5429a935, inert in long-read, renders only a Slides-layout corner token) plus a maintainer-block-only Placement rewrite (commit 5dd2806a) — the four slides' own prose is byte-identical to the prior trace's source. Regenerated per the dispatch preamble ('a content_sha that does not match the current body means REGENERATE, not proceed') rather than assumed-safe-to-reuse; scores held at 8/8 on independent re-read, and the close note now correctly names ironies-of-automation as the next hop instead of reading-the-return.",
   "rules_evaluated": [
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 1,
       "rule_lead": "Mood contract named (mood-floor 8+/10 on TEACHING beats).",
       "verdict": "PASS",
-      "evidence": "No `## Phase` headers, so the whole body is SHA-keyed as one phase per the judge template. trace.phases[0].mood_score=8, trace.close.mood_score=8 (fresh trace generated this session, cache written to curriculum/evals/sim-cache/ae101--lecture--what-keeps-a-long-running-session-going.persona.json, content_sha b781bd4d...). All four `##` sections (including the new fourth, added 2026-08-14) are TEACHING beats — each names a concept (durable state, feedback/backpressure, boundary, stop-conditions), none are mechanical setup — so the 8+ floor applies across the board and is met.",
+      "evidence": "Regenerated trace this session (curriculum/evals/sim-cache/ae101--lecture--what-keeps-a-long-running-session-going.persona.json, content_sha=922ffdf0...): phases[0].mood_score=8, close.mood_score=8. All four `##` sections are TEACHING beats (each names a concept the student watches for on their own return — durable state, feedback/backpressure, boundary, stop-conditions); none are mechanical setup/launch, so the 8+ floor applies across the board and is met.",
       "fix_hint": null,
       "blocking": true
     },
@@ -20,7 +23,7 @@
       "rule_index": 2,
       "rule_lead": "Epistemic mood, not punitive.",
       "verdict": "PASS",
-      "evidence": "The new fourth slide's bullets target the AGENT's behavior/belief (\"the agent decides information is out of reach\", \"declares done on the part it managed\"), not the student. The maintainer block names the mechanism explicitly as \"the belief is the stopper, not the reachability, and re-judging it is the student's move on return\" — a diagnostic frame, not blame. The kicker (\"check whether there was a way for it to uncover that. Usually there was.\") is phrased as a check to run, not an accusation of student failure. No \"you failed / you did this wrong\" language anywhere in body (read in full).",
+      "evidence": "All four bullets on the last slide (L32-35) target the AGENT's behavior/belief ('it declares done on the part it managed', 'information it decides is out of reach'), not the student's conduct. The kicker (L37) is phrased as a check to run ('check whether there was a way for it to uncover that'), not an accusation. Maintainer block frames the roster explicitly as diagnostic (L47: 'the belief is the stopper, not the reachability, and re-judging it is the student's move on return'). No 'you failed'/'you did this wrong' language anywhere in the read body (full read, L1-38).",
       "fix_hint": null,
       "blocking": false
     },
@@ -29,7 +32,7 @@
       "rule_index": 3,
       "rule_lead": "Lead with discipline, not failure mode.",
       "verdict": "PASS",
-      "evidence": "This rule targets a module-level Big Idea line; a lecture carries none. At slide-header level, three of four headers stay positive-discipline-shaped (\"Durable state keeps the place\", \"Feedback keeps the direction\", \"A boundary decides whether to continue\"). The new fourth header, \"What stops a long run before done-done\", names a topic/question rather than a blame word (no fabrication/violation/hallucination-style label), mirroring the file's own question-shaped title (\"What keeps a long-running session going?\") — consistent with the existing register, not a new failure-lead pattern.",
+      "evidence": "Three of four headers are positive-discipline-shaped ('Durable state keeps the place' L5, 'Feedback keeps the direction' L15, 'A boundary decides whether to continue' L22). The fourth ('What stops a long run before done-done', L29) names a topic/question rather than a blame word (no fabrication/violation/hallucination-style label), mirroring the file's own title format ('What keeps a long-running session going?') rather than introducing a new failure-lead pattern.",
       "fix_hint": null,
       "blocking": false
     },
@@ -37,9 +40,9 @@
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 4,
       "rule_lead": "Strategy-fidelity — consolidates front-run check, module-to-module arc, Big Idea fidelity, and mood-doesn't-resolve-early into one verdict.",
-      "verdict": "REVISE",
-      "evidence": "Facets checked on THIS file's own body, all clean: front-run — zero M5 vocabulary (\"goal drift\" / \"context rot\" / \"plausible-but-wrong\") or artifact-recipe language anywhere in the read body. Big Idea fidelity — \"You observe what exists without repairing the run\" tracks the strategy doc's M4 spirit verbatim (\"You observe what exists without repairing the run\", content-strategy-agentic-engineering-101.md line 382). Mood-doesn't-resolve-early — the kicker defers the actual read to return (\"check ... on return\"), it does not resolve M5's diagnostic in place. Module-to-module arc — the close (\"check whether there was a way ... usually there was\") hands cleanly to reading-the-return.md's open (\"what would have caught this earlier in the session?\"). HARM found and verified, not in this file's body but in three sibling descriptions of it that are now stale: `run-the-first-experiment.md:92` (\"the three-slide observational closer\") and `:97` (\"a three-slide observational beat\"), plus `trainer-modules.md:326` (\"three-condition observation\") all still describe the pre-2026-08-14 shape. `git log` confirms the fourth slide landed in commit 5ff124e (2026-08-14 16:40), and the private AE101 strategy doc (`content-strategy-agentic-engineering-101.md`, M4 section) was last modified 2026-08-12 (`stat` confirmed) and still reads \"Three conditions, and only three\" — predates the commit. This is the exact drift `curriculum/CLAUDE.md` § Alignment names as a process bug (\"Strategy and module file change in the same edit\"), and it is not cosmetic: `run-the-first-experiment.md`'s own \"Charge: what-keeps-a-long-running-session-going 0\" trainer-pacing line was written against the 3-slide/~4-min beat, not the shipped 4-slide/~5-min one. Recorded non-blocking because the defect is not in this lecture's own body (which is sound) but in the sibling files' descriptions of it — fixing it means editing `run-the-first-experiment.md`, `trainer-modules.md`, and the private strategy doc, none of which are in scope for this judge to touch.",
-      "fix_hint": "Sync run-the-first-experiment.md's maintainer block (lines 92, 97) and trainer-modules.md line 326 to \"four slides / ~5 min\", and re-check whether the M4 module's \"Charge: ...0\" pacing figure still holds against the added slide; update the private strategy doc's M4 section off the same commit (5ff124e) so it no longer reads \"Three conditions, and only three.\"",
+      "verdict": "PASS",
+      "evidence": "Front-run: `grep -nE 'M[0-9]|[Mm]odule' <(sed -n '1,38p' <file>)` run this session → 0 hits (exit 1); no M5 vocabulary or artifact-recipe language in the body. Big Idea fidelity: read the private strategy doc this session via the bosser-strategy skill (content-strategy-agentic-engineering-101.md:382) — 'You observe what exists without repairing the run, and the lecture does not name Module 5's artifact recipe' matches this file's own maintainer framing verbatim in spirit (L41, L47). Mood-doesn't-resolve-early: the kicker (L37) defers the actual read to 'on return', it does not resolve M5's diagnostic work in place. One item checked and resolved: the strategy doc line 382 still reads 'Three conditions, and only three' against this file's shipped fourth slide/condition (added 2026-08-14) — but that addition carries its own dated accept-note in this file's maintainer block (L47: 'The fourth slide (2026-08-14, Antti-directed) inverts the lecture's own frame, and its roster is a maintainer call'), so the divergence from the strategy doc is maintainer-authorized on THIS file's side, not a fidelity violation of this lecture. Separately verified the OTHER staleness the prior instance (pin 1abb84c6) flagged here is now fixed: `grep -rn 'three-slide|three-condition|3-slide' run-the-first-experiment.md trainer-modules.md` run this session → 0 hits; run-the-first-experiment.md:112 now correctly reads 'the four-slide observational closer'. Logged the still-open strategy-doc wording as a non-blocking todo (informational, private doc, outside curriculum repo).",
+      "fix_hint": null,
       "blocking": false
     },
     {
@@ -47,7 +50,7 @@
       "rule_index": 5,
       "rule_lead": "Strategic themes recur in Key Concepts.",
       "verdict": "N/A",
-      "evidence": "Module-only section (Key Concepts is a module-file, student-facing heading). This file is a lecture with no Key Concepts section.",
+      "evidence": "Module-only, student-facing section. This file is a lecture; no `## Key Concepts` heading present (confirmed by full read).",
       "fix_hint": null,
       "blocking": false
     },
@@ -56,7 +59,7 @@
       "rule_index": 6,
       "rule_lead": "Key Concepts shape — theme breadcrumbs, not standalone section.",
       "verdict": "N/A",
-      "evidence": "Module-only section. Not applicable to a lecture file.",
+      "evidence": "Module-only section, not present on this lecture.",
       "fix_hint": null,
       "blocking": false
     },
@@ -65,16 +68,16 @@
       "rule_index": 7,
       "rule_lead": "What You'll Learn shape — capability register, not syllabus.",
       "verdict": "N/A",
-      "evidence": "Module-only section. Not applicable to a lecture file.",
+      "evidence": "Module-only section. No `## What You'll Learn` heading on this lecture.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_lectures.md",
       "rule_index": 1,
-      "rule_lead": "Meta-frame lectures are closers, not openers.",
+      "rule_lead": "Meta-frame lectures = closers, not openers.",
       "verdict": "PASS",
-      "evidence": "Positioned as M4's last lecture (`run-the-first-experiment.md` line 45, after the send-off exercise at line 43). It arms a forward-looking watch-list on a session whose outcome is still unknown, rather than naming a pattern the student already fully lived through — matches the \"vocabulary lands mid-module\" + \"closer\" diagnostic. The new fourth slide keeps the same shape: it names stop-conditions to watch FOR, not a result already seen.",
+      "evidence": "Placement diagnostic: this lecture teaches a watch-list/vocabulary (durable state / backpressure / boundary / stop-conditions) applied to a session whose OUTCOME IS STILL UNKNOWN when read ('read while the un-packaged session remains active', L41) — this matches 'conceptual lecture introducing vocabulary lands mid-module where the vocab earns itself', not a meta-frame lecture naming a pattern already fully lived (that requires the outcome to already exist) and not a pure opening ceiling-demo. Cross-checked ground truth across three sources this session: run-the-first-experiment.md:117 ('a four-slide observational beat after the send-off... `ironies-of-automation.md` closes the module after it, moved from between the exercises 2026-08-25'), and ironies-of-automation.md's own maintainer block ('Lands as recognition now that it closes the module') both confirm ironies-of-automation is now M4's literal last lecture post-resequencing (commit 5dd2806a), not this file. This file's L41 ('M4 closer after the send-off') reads consistently with run-the-first-experiment.md:112's own phrase for this same file ('the four-slide observational closer... spends the room's attention, not the module's clock') — both use 'closer' to mean closing off the send-off's dead air, not claiming to be the module's final lecture; L41 itself already signals more happens after ('remains active'). Read across all three files together this is coherent, not contradictory — logged as a todo only for optional wording crispness, not a placement violation.",
       "fix_hint": null,
       "blocking": false
     },
@@ -83,7 +86,7 @@
       "rule_index": 2,
       "rule_lead": "Minimal lecturing before contrast-mood exercises.",
       "verdict": "N/A",
-      "evidence": "M4's mood is curious readiness, not the M5 contrast-mood module this rule targets, and this lecture is M4's closer (after the send-off), not a pre-exercise opener.",
+      "evidence": "M4's mood is curious readiness (strategy doc + this file's own maintainer, L41/L47), not the M5-style contrast-mood ('learn through doing, name it after') this rule targets. This lecture also rides mid-exercise (during the still-running send-off) rather than sitting pre-exercise as an opener.",
       "fix_hint": null,
       "blocking": false
     },
@@ -92,7 +95,7 @@
       "rule_index": 3,
       "rule_lead": "No cross-module sequencing in lecture bodies.",
       "verdict": "PASS",
-      "evidence": "`sed -n '1,33p' curriculum/lectures/what-keeps-a-long-running-session-going.md | grep -nE \"M[0-9]|module|Module\"` run this session returns zero hits on the student-facing body (lines 1-33, above the maintainer fence). All module-number and slide-count cross-references (the M4/M5 wiring discussion) live in the maintainer block only, which is exempt.",
+      "evidence": "`grep -nE 'M[0-9]|[Mm]odule' <(sed -n '1,38p' curriculum/lectures/what-keeps-a-long-running-session-going.md)` run this session → 0 hits (grep exit code 1). All module-number and cross-lecture sequencing language (the M4/M5/ironies-of-automation/reading-the-return wiring) lives below the `<!-- maintainer -->` fence (L39+), which is exempt.",
       "fix_hint": null,
       "blocking": false
     },
@@ -101,7 +104,7 @@
       "rule_index": 4,
       "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
       "verdict": "PASS",
-      "evidence": "`grep -n \"^## \"` returns 4 distinct headers, no duplicates: \"Durable state keeps the place\", \"Feedback keeps the direction\", \"A boundary decides whether to continue\", \"What stops a long run before done-done\" — each names the one thing its own bullets argue; none are empty-container or orphan-mystery shaped. Truth clause on the new header carries a deliberate tension the maintainer block already attests to: bullet 4 (\"It spends the whole run on one obstacle ... This one never stopped at all\") reads as if it contradicts a header about what STOPS a run, and the maintainer block names this directly as the intended point (\"a slide titled what stops a run closing on the one that did not is the point, not an inconsistency to tidy\") — an attested accept-note, treated as N/A per the judge brief rather than re-flagged as a truth-clause violation. `grep -nP \"\\x{2014}\"` on lines 1-33 returns zero em-dash hits in body.",
+      "evidence": "All four headers checked individually. 'Durable state keeps the place' (L5) — names durable state as the concept, asserts a supported claim (bullets on files-on-disk/rules/observations surviving a turn). 'Feedback keeps the direction' (L15) — names feedback/backpressure, body supports the steering claim. 'A boundary decides whether to continue' (L22) — names boundary, body supports (tests/types/lint/permission limits catching and returning work). 'What stops a long run before done-done' (L29) — question-topic header naming stop-conditions, mirrors the file's own title format rather than being an empty container or orphan mystery; body's four bullets support it. `grep -n '^## '` this session confirms no two slides share a header; `grep -P '\\x{2014}'` on the headers → 0 hits (no em-dash). All four are declarative noun-phrase/claim-shaped, not command verbs — matches the lecture carve-out.",
       "fix_hint": null,
       "blocking": false
     },
@@ -110,7 +113,16 @@
       "rule_index": 5,
       "rule_lead": "A slide's BODY is size-bounded, not just its header.",
       "verdict": "PASS",
-      "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/lectures/what-keeps-a-long-running-session-going.md` this session. Output: \"files: 1   slides: 4   limits: 210 words / 6 bullets ... oversized: 0 ... ✓ every slide is within limits.\" All four slides, including the new fourth, fit the cap.",
+      "evidence": "Word counts computed this session with a script that excludes `<!--tier:2-->` marker lines per slide (blockquote widget and kicker line included, matching the rule's plain reading): slide 1 'Durable state keeps the place' = 128 words / 4 bullets (+1 blockquote widget, not counted as a bullet); slide 2 'Feedback keeps the direction' = 66 words / 3 bullets; slide 3 'A boundary decides whether to continue' = 83 words / 3 bullets; slide 4 'What stops a long run before done-done' = 189 words / 4 bullets (including the closing kicker paragraph, L37). All four are under the 210-word ceiling and at or under 6 bullets.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 6,
+      "rule_lead": "A prompt inside a lecture is a trainer show-and-tell, never a room follow-along.",
+      "verdict": "N/A",
+      "evidence": "No `{{prompt:<key>}}` markers and no fenced `**Prompt**` blocks anywhere in this file (view.signals.has_prompt_blocks=false; view.fence_ranges=[]; confirmed by full read of the expanded view — the only special block is the `>` blockquote widget at L13, which is not a prompt).",
       "fix_hint": null,
       "blocking": false
     },
@@ -119,16 +131,36 @@
       "rule_index": 16,
       "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
       "verdict": "N/A",
-      "evidence": "`grep -n \"^\\*\\*Prompt\\*\\*\\|{{prompt:\"` on the file returns zero hits. Pure observational lecture with no fenced prompt block or `{{prompt:}}` marker to misplace.",
+      "evidence": "This rule binds session-exercise machinery (a move student/Claude performs, fenced vs body placement). This file is a lecture with zero prompts and zero Claude-performed actions — there is nothing for a forcing function to be misplaced out of. The kicker (L37) is a self-directed observation habit for the STUDENT's own later return, not an instruction Claude executes, so the in-fence/in-body distinction this rule polices does not reach it.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_pedagogy.md",
       "rule_index": 27,
-      "rule_lead": "Body teaches the work; trainer manages the room outside text.",
+      "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
       "verdict": "PASS",
-      "evidence": "`grep -niE` for discuss/share-with/tell-the-room/compare-with/take-N-seconds/neighbor/pair-up/turn-to on lines 1-33 returns zero hits. All four slides, including the new fourth, are about the WORK (what the session is doing, what to check on return) — no cohort-management sentence anywhere.",
+      "evidence": "Grepped this session for authored conversation cues: `grep -inE 'discuss|neighbor|neighbour|pair up|compare with'` → 0 hits; `grep -inE 'share your|share what|talk to the'` → 0 hits. Every sentence in the body (L1-38) names durable-state/feedback/boundary/stop-condition mechanics or the self-directed kicker check — all WORK, not cohort management. view.signals.group_beat_markers=true is a false positive traced this session to L9's 'Compaction makes room by summarising...' (the word 'room' inside an idiom, not a classroom reference) — verified via a targeted regex match against the exact same pattern the signal uses; no actual group/pair/room-share cue exists in the body.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": null,
+      "judge_owned": true,
+      "rule_lead": "Whole-compendium scope call — is this file workshop-shaped?",
+      "verdict": "N/A",
+      "evidence": "No beat's output belongs to a group; this is a solo lecture read by one student during their own individual send-off session. view.signals.group_beat_markers=true traced to the same false-positive substring ('makes room') addressed under check_pedagogy §27 above — not an actual group/adjudication/attribution beat. check_workshop.md's rules 1-17 do not fire on this file.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": null,
+      "judge_owned": true,
+      "rule_lead": "Whole-compendium scope call — does this file carry any student-copied prompt?",
+      "verdict": "N/A",
+      "evidence": "view.signals.has_prompt_blocks=false; view.fence_ranges=[]; no `{{prompt:}}` markers and no `**Prompt**` fenced blocks anywhere in the file (confirmed by full read). check_prompts.md's 48 rules bind prompt-block design; nothing in this file is a prompt block for any of them to fire on.",
       "fix_hint": null,
       "blocking": false
     }
@@ -140,6 +172,22 @@
     "stealing_the_mood": []
   },
   "blocking_findings_count": 0,
-  "todos_count": 1,
-  "body_sha": "32328409361fddb627ff510825ee3b2a93910fe72edb924294c4a0266bdb3063"
+  "todos_count": 3,
+  "todos": [
+    {
+      "rule": "check_writing.md §3 (out of story's lane — flagged for the writing judge)",
+      "note": "Maintainer L41 ('M4 closer after the send-off') and L43 ('`ironies-of-automation` follows it as the module's closing lecture') sit four lines apart using 'closer' in two different senses after the 2026-08-25 resequencing (commit 5dd2806a) — read together with run-the-first-experiment.md:112/117 and ironies-of-automation.md's own maintainer block, both readings resolve to a coherent (not contradictory) claim, but a future skim of L41 alone could misread this file as still being M4's final lecture. Optional: reword L41 to 'M4's post-send-off observational beat' to match run-the-first-experiment.md's own phrasing and remove the ambiguity outright.",
+      "line": 41
+    },
+    {
+      "rule": "check_strategy_tie_in.md §4 (informational, outside curriculum repo)",
+      "note": "Private strategy doc content-strategy-agentic-engineering-101.md:382 still reads 'Three conditions, and only three' against this file's shipped fourth condition/slide (added 2026-08-14, accept-noted at L47 of this file's own maintainer block). The divergence is maintainer-authorized on this file's side, not a fidelity defect here, but the strategy doc's own wording is now stale and worth a sync pass whenever that doc is next touched.",
+      "line": null
+    },
+    {
+      "rule": "check_slides.md (out of story's lane — flagged for the slides judge)",
+      "note": "All four `<!--tier:2-->` markers (added commit 5429a935) tag every slide in this lecture as 'recognition, skippable under time pressure', but run-the-first-experiment.md:112 documents this beat as already zero-cost on the module clock ('spends the room's attention, not the module's clock' — it rides the send-off's own dead air). Tagging a zero-marginal-cost beat as time-pressure-skippable doesn't save any clock time and would drop the fourth slide's named 2026-08-14 teaching moment if a trainer acts on the tag literally. Worth a check on whether tier:2 was the intended tag here versus untagged (core).",
+      "line": 6
+    }
+  ]
 }

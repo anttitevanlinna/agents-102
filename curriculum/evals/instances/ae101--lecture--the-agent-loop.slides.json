@@ -1,13 +1,14 @@
 {
   "class": "slides",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/the-agent-loop.md",
-  "body_sha": "e9be15a12b4cb3045b64d5f095dff2fb68ac6c7bb577f38f477dacbc74be2ef6",
+  "body_sha": "630ca9ce93247c1cfabdbb60e5cdd23c3bac3460989ffcac2e07989f28299fd4",
+  "shape_hash": "1903646330181a65",
   "verdict": "PASS",
   "training": "ae101",
   "chunk_map": [
     {"index": 0, "heading": "The agent loop (H1)", "lines": "1-1"},
-    {"index": 1, "heading": "The agent, the harness, the loop", "lines": "3-8"},
-    {"index": 2, "heading": "See the loop in your live session", "lines": "10-40"}
+    {"index": 1, "heading": "See the loop in your live session", "lines": "3-18"},
+    {"index": 2, "heading": "The agent, the harness, the loop", "lines": "19-26"}
   ],
   "rules_evaluated": [
     {
@@ -16,7 +17,7 @@
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Chunk 1 line 5 defines **agent** in place; line 6 defines **agent harness** in place; line 7 defines **agent loop** in place — each term named at its own point of use, no forward or unnamed reference. Chunk 2 line 30 'Ask where that list comes from' — 'that list' resolves to the tools list requested two prompts earlier at line 22, same chunk, same file, deck-plausible retention. Closest-to-violating candidate: chunk 2 line 34 'Explain how you know what tools you can call in this session' — 'this session' is the student's own live Claude Code session (present, not a file referent), stays inside the exempt category of live/session deixis rather than a broken antecedent.",
+      "evidence": "Chunk 0 (line 1) names 'The agent loop' as the file's own subject, reused at chunk 1 line 3 and chunk 2 line 19/24 — the explicit chunk-0-lede-noun carve-out. Chunk 1 resolves entirely in-chunk: 'that list' (line 15) -> the tool list requested two lines earlier (lines 11/13); 'this session' (lines 11, 13, and inside the line-17 prompt) is the student's own live-session deixis; 'the same set' and 'the list you gave me earlier' (both inside the line-17 prompt) resolve to the tool list Claude itself will have just produced in that same live exchange. Chunk 2 resolves in-chunk: 'that iteration' (line 24) -> 'each iteration' (line 22); 'this same loop' (line 25) -> 'the agent loop' just named (line 24). Harm check: the rule exists to stop a reader from hitting a term with nowhere to anchor it. Closest candidate: raw line 9 ({{prompt:ae101-agent-loop-ascii}}, expands to) 'Name the harness, the LLM, the tool-call step, and how tool results feed back to the LLM' -- 'the harness' is used here two slides before its own definition at line 23. Confirmed via `git diff 1abb84c6..HEAD -- curriculum/lectures/the-agent-loop.md` that the 2026-08-25 reorder moved this prompt ahead of the definitional slide that used to precede it (at the pinned commit, '## The agent, the harness, the loop' was chunk 1 and 'See the loop...' was chunk 2 -- the reverse of today's order). It stays inside because the sentence is an instruction addressed to the student's live Claude Code session, not an assertion the human reader must parse unaided -- the human copy-pastes it and Claude's own answer supplies the term, and the very next slide formalizes it. 'The LLM' and 'the tool-call step' are ordinary compositional engineering vocabulary for this audience, not file-coined terms needing prior naming. Filed as a rule-question in `notes`, not a REVISE, per the dispatch preamble: the harm is marginal (the addressee is the model, not the reader) and the 'fix' of reordering back or rewording away from 'harness' runs against the maintainer's own same-day, explicit 'Do not restore anatomy-first' instruction (line 31).",
       "fix_hint": null,
       "blocking": true
     },
@@ -24,9 +25,9 @@
       "compendium": "check_slides.md",
       "rule_index": 2,
       "rule_lead": "Cross-file and positional callbacks.",
-      "verdict": "N/A",
+      "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "No sentence in the body (lines 1-40) points at another file by position; the only file-adjacent references live in the maintainer/backing blocks (out of scope, below the `<!-- maintainer -->` cut at line 42).",
+      "evidence": "Scanned both chunks (lines 3-26) for a pointer at another file by position -- none found; the only other-product mentions are named, not located ('Claude Code is one harness; Cursor, Cline, Gemini CLI are others.', line 23), naming four products as parallel examples of the defined term rather than a callback to another file's content. `grep -niE 'the opening lecture|the previous module|earlier lecture|earlier module|above|below|further down|at the top of this|see below'` on lines 1-26 -> 0 hits. Closest candidate: line 23's product list -- stays inside because it names things, doesn't locate content by page position, and isn't a callback to a prior slide or file.",
       "fix_hint": null,
       "blocking": true
     },
@@ -34,9 +35,9 @@
       "compendium": "check_slides.md",
       "rule_index": 3,
       "rule_lead": "Every backward reference points at a beat that exists.",
-      "verdict": "N/A",
+      "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "No 'the X you did/saw/caught' construction anywhere in the body.",
+      "evidence": "No 'the X you did/saw/caught' construction anywhere in the body. `grep -niE 'the (bug|ticket|pr|diff|test|run) you (did|saw|caught|ran)'` on lines 1-26 -> 0 hits. Closest candidate: line 15 'Ask where that list comes from' -- a forward-looking investigative prompt, not a backward claim about a beat the student already completed; nothing to resolve against the module's exercise/lecture set.",
       "fix_hint": null,
       "blocking": true
     },
@@ -46,7 +47,8 @@
       "rule_lead": "Live-demo beats survive a text read.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "No guess-then-reveal structure; the three prompts (lines 14-40) are open exploration ('Dig into whatever catches you'), not a predict-then-check beat.",
+      "evidence": null,
+      "na_reason": "no guess/predict-before-reveal construction present -- all three prompts are investigate-and-observe (run it, see what comes back), never a guess-first-then-check structure",
       "fix_hint": null,
       "blocking": true
     },
@@ -56,7 +58,7 @@
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Chunk 1 carries a full four-part definition standalone. Chunk 2 carries three complete prompt widgets plus framing sentences ('Three prompts. Dig into whatever catches you.') — self-carrying, not a wait-state bullet.",
+      "evidence": "Chunk 1 carries three full live-prompt widgets plus their framing sentences (lines 3-17), each self-carrying. Chunk 2 carries four complete definitional bullets (lines 22-25). Neither chunk is a bare wait-state or single context-dependent bullet.",
       "fix_hint": null,
       "blocking": false
     },
@@ -66,7 +68,7 @@
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Chunk 1 header 'The agent, the harness, the loop' truthfully summarizes its three definitional bullets. Chunk 2 header 'See the loop in your live session' truthfully summarizes the three live-introspection prompts that follow.",
+      "evidence": "Chunk 1 header 'See the loop in your live session' (line 3) truthfully covers all three prompts: drawing the loop as a diagram, listing its tools, and tracing where the tool list and its injection mechanism come from -- all live introspection of 'the loop' in the student's own session. Chunk 2 header 'The agent, the harness, the loop' (line 19) names exactly the three terms its three defining bullets (lines 22-24) install; the fourth bullet (line 25, long-running sessions) directly extends 'the loop' already in the header rather than contradicting it.",
       "fix_hint": null,
       "blocking": false
     },
@@ -76,7 +78,7 @@
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Checked each sub-item across both chunks: no 'Not X. Not Y. Z.' construction; no anaphora/epistrophe triple; no self-grading superlative in body (the only superlative-adjacent language, 'one of the most useful moves', does not appear anywhere in this file); no number-with-retraction; no abstraction-noun stack; line 8's 'context and tool results' is not an empty-leg verb triplet. Closest candidate: line 7 'Prompt → reason → tool calls → results → reason again' is a repeated-verb chain but each stage names a distinct concrete step, not a rhetorical triple.",
+      "evidence": "Checked every sub-item across both chunks. No 'Not X. Not Y. Z.' construction (`grep -E 'Not .*\\. Not .*\\.'` on lines 1-26 -> 0 hits). No anaphora/epistrophe triple -- line 24's 'Prompt -> reason -> tool calls -> results -> reason again' is a single arrow-chain of distinct concrete stages, not a rhetorical repeat. No self-grading superlative anywhere in the body. No number-with-retraction ('Three prompts' line 5 and 'Four parts' line 22 are plain unretracted counts). No abstraction-noun stack. Closest candidate for the empty-leg verb-triplet check: line 23's 'exposes tool definitions to the LLM, executes the tool calls, and feeds results back in' -- three verbs, but each survives 'what does this concretely mean?' on its own (presents the tool API / runs the call / returns the result), so no leg is empty.",
       "fix_hint": null,
       "blocking": true
     },
@@ -86,7 +88,7 @@
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Scanned lines 1-40 for surface(-as-noun), firing, compendium, forcing function, beat, mood, Connections-as-proper-noun: none present. 'Agent harness' is the taught vocabulary term itself (the lesson), not repo/authorial dialect leaking onto a slide.",
+      "evidence": "Scanned both chunks for repo/authorial dialect (surface-as-noun, firing, compendium, forcing function, beat, mood, Connections-as-proper-noun): `grep -niE '\\bsurface\\b|\\bfiring\\b|\\bcompendium\\b|forcing function|\\bbeat\\b|\\bmood\\b|\\bconnections\\b'` on lines 1-26 -> 0 hits (this is my own grep, not one of the view's pre-proven planted patterns, so treated as a supporting check, not a mechanical PASS on its own). Judgement call: 'agent harness' (line 23) and 'agent loop' (lines 19, 24) are the vocabulary this lecture exists to install for the student -- taught terms, not backstage authoring dialect -- and none of the compendium's own banned terms appear. Closest candidate: '<!--tier:2-->' (line 20) reads like internal tooling shorthand, but it is an HTML comment consumed by `expandTiers()` into a hidden, non-rendered `.slide-tier` marker (`site/layouts/curriculum.js:758`, `scripts/curriculum.test.js:140-147`) used identically across a dozen other AE101 lecture files (e.g. `how-instructions-grow.md`, `what-packaging-is.md`); it never lands as visible text on a projected slide, so it does not trip this rule.",
       "fix_hint": null,
       "blocking": true
     },
@@ -96,7 +98,7 @@
       "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Chunk 1 carries 3 bolded handles (**agent** line 5, **agent harness** line 6, **agent loop** line 7), each a single-word/two-word sub-span naming the term being defined, on a slide that defines exactly 3 terms; the 4th bullet (line 8) is deliberately un-bolded. Maintainer block (line 44 of expanded view) records this as an Antti-directed emphasis pass done specifically 'per check_slides.md §9' to bring the slide under the very-light-bold directive — an existing accept-note per the dispatch preamble's instruction to check the maintainer block before flagging. Reading this as a >1-bold violation would be scoring the corpus for obeying the rule the note cites, the same trap §9's own text warns against for its two listed exceptions.",
+      "evidence": "Chunk 1 (lines 3-18): 0 bold spans (`grep -n '\\*\\*'` on lines 3-18 -> 0 hits), matching the maintainer's own note that 'the live-session prompts slide carried no bold and is untouched' (line 29, accept-note). Chunk 2 (lines 22-25): exactly 3 bolded sub-spans, one per defined term (**agent** line 22, **agent harness** line 23, **agent loop** line 24), each <=2 words; the 4th bullet (line 25) is deliberately un-bolded. This is a maintainer-attested emphasis pass (line 29, dated 2026-07-09, done explicitly 'per check_slides.md §9') reducing a definitional slide's three named terms to one handle each -- the same shape the rule's own 'law/consolidation slide may carry one handle per law' allowance describes, here one handle per defined term. Accept-note found and applied; not re-flagged.",
       "fix_hint": null,
       "blocking": false
     },
@@ -106,7 +108,7 @@
       "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "This is a standard lecture body inlined into a module's `.phase--lecture` wrapper per the shared-library pattern (`curriculum/lectures/`); no phase-less prose section present. `node scripts/check-slide-size.js --file curriculum/lectures/the-agent-loop.md` ran and reported 2 slides measured for this file (exit 0), confirming both `##` chunks are visible to the slide tooling that reads the same deck-model contract.",
+      "evidence": "Both `##` sections sit directly under the file's H1 with no prework/supplementary/reference wrapper between them; the file is a plain lecture (`curriculum/lectures/`), which reaches the composed deck as a normal `.phase--lecture` body per §10's own contract. No phase-less prose section, no content living outside a `##` chunk that could be dropped by `buildDeckModel`. `node scripts/check-slide-size.js --file curriculum/lectures/the-agent-loop.md` independently confirms the tooling sees exactly 2 slides for this file, matching the 2 body `##` headings -- nothing silently absent from the deck model.",
       "fix_hint": null,
       "blocking": true
     },
@@ -114,9 +116,10 @@
       "compendium": "check_slides.md",
       "rule_index": 11,
       "rule_lead": "Numbering — position is computed, content ordinals are linted.",
-      "verdict": "PASS",
+      "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "`node scripts/check-slide-numbering.js --file curriculum/lectures/the-agent-loop.md` → 'OK — 1 files, Phase/Step numbering consistent.' (exit 0). No hand-numbered headers or Phase/Step refs in this file.",
+      "evidence": null,
+      "na_reason": "no `## Phase N:` / `## N.` step headers present -- both `##` headings are plain titles, not content ordinals (confirmed: `node scripts/check-slide-numbering.js --file curriculum/lectures/the-agent-loop.md` -> 'OK — 1 files, Phase/Step numbering consistent.')",
       "fix_hint": null,
       "blocking": false
     },
@@ -126,7 +129,7 @@
       "rule_lead": "Page geometry dies at the cut; reading order survives.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "`node scripts/check-slide-deixis.js --file curriculum/lectures/the-agent-loop.md` → 'OK — 1 files, no page-geometry pointers across the slide cut.' (exit 0). No 'above/below/at the top of this page' constructions in body.",
+      "evidence": "`node scripts/check-slide-deixis.js --file curriculum/lectures/the-agent-loop.md` -> 'OK — 1 files, no page-geometry pointers across the slide cut.' (exit 0). No 'above/below/further down/at the top of this page/see below' language anywhere in the body; the closest spatial-sounding phrase is line 25's 'hour after hour', a duration phrase, not a page-position pointer.",
       "fix_hint": null,
       "blocking": true
     },
@@ -136,7 +139,8 @@
       "rule_lead": "In-deck links work now; whether they EARN their place is open.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "No in-body links in this file's body (lines 1-40); only the three fenced `{{prompt:...}}` widgets, which are not links.",
+      "evidence": null,
+      "na_reason": "no in-body links present -- `grep -n '\\]('` on lines 1-26 -> 0 hits (signals.has_urls: false)",
       "fix_hint": null,
       "blocking": false
     },
@@ -146,7 +150,7 @@
       "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "`node scripts/check-slide-size.js --file curriculum/lectures/the-agent-loop.md` → 'files: 1  slides: 2  limits: 210 words / 6 bullets' / 'oversized: 0' / '✓ every slide is within limits' (exit 0).",
+      "evidence": "`node scripts/check-slide-size.js --file curriculum/lectures/the-agent-loop.md` -> 'files: 1  slides: 2  limits: 210 words / 6 bullets' / 'oversized: 0' / '✓ every slide is within limits' (exit 0).",
       "fix_hint": null,
       "blocking": false
     },
@@ -154,14 +158,31 @@
       "compendium": "check_slides.md",
       "rule_index": 15,
       "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
-      "verdict": "REVISE",
-      "chunks_flagged": [1, 2],
-      "evidence": "Chunk 1 'The agent, the harness, the loop' (line 3) is a noun-phrase label, not a lecture-class claim (contrast the rule's own examples 'Passing is not proof', 'Gates decay'). Chunk 2 'See the loop in your live session' (line 10) reads as imperative ('See...'), the exercise-heading grammar, not a lecture claim. Per dispatch task instructions: this rule has fired consistently corpus-wide since it landed 2026-08-15 and is reported here as a note for one corpus-wide decision, not a per-file finding — flagged for completeness, not as a file-specific defect.",
-      "fix_hint": "Hold for the corpus-wide rule-15 decision rather than a local rewrite.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Chunk 2 header 'The agent, the harness, the loop' (line 19) is a catalogue entry naming its subject -- the same shape the compendium's own 2026-08-19 carve-out clears by example ('Ralph', 'The numbers', 'Verification, named'): it names the three terms the slide defines, it does not need to assert a claim about them. Chunk 1 header 'See the loop in your live session' (line 3) is an orientation/activity header directing the reader into a live-session exercise, functionally the same as the carve-out's 'You are here' / 'The far half opens' examples -- it orients rather than argues. Neither is a law/consolidation beat where §15's claim requirement binds. (This file's prior slides-instance, judged before the 2026-08-19 carve-outs existed, flagged this as an open corpus question; those carve-outs now resolve it directly, matching how the corpus scores every other non-declarative lecture header of this shape.)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 16,
+      "rule_lead": "A bullet earns its slot or dies — three classes that read as rigour and carry nothing.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Read every bullet/sentence in both chunks against the three low-value classes. Chunk 1: 'Three prompts. Dig into whatever catches you.' (line 5) is a plain scoping instruction, not doctrine restatement or design commentary -- no prior claim is re-announced, and it never tells the student they're inside a pedagogy. Chunk 2's four bullets each add unique defining content (agent / agent harness / agent loop / long-running-session-is-the-same-loop) -- none restates a claim the slide already made, none comments on the curriculum's own design, and no bullet closes with an aphorism restating its own header. No candidate for any of the three classes found in this file.",
+      "fix_hint": null,
       "blocking": false
     }
   ],
   "blocking_findings_count": 0,
-  "todos_count": 1,
-  "notes": "Rule 15 fired (both chunk headers are labels/imperative, not lecture-class claims) — per dispatch instructions this is a known corpus-wide pattern since 2026-08-15 and is surfaced here as a note for one house-wide decision, not filed as blocking. All mechanical checks (check-slide-size.js, check-slide-numbering.js, check-slide-deixis.js) ran clean, exit 0, on this file."
+  "todos_count": 0,
+  "accept_notes_found": [
+    "L29: Emphasis pass (2026-07-09, Antti-directed) — bold reduced to 3 term sub-spans (agent/agent harness/agent loop) explicitly per check_slides.md §9; 4th bullet de-bolded; the live-session prompts slide carries no bold.",
+    "L31: Slide order flipped (2026-08-25, Antti-directed) — prompts slide now leads, definitional slide follows tagged T2; H1 attested to carry the 'the loop' referent for the reordered opening slide; 'Do not restore anatomy-first.'",
+    "L49: Plural round shape (Antti-directed, 2026-08-01, stamp: parallel-tool-calls) — bullets 1 and 3 deliberately pluralized to match bullet 2's always-plural phrasing, so the deck never shows a serial tool-call machine; relevant to rule 7's verb-triplet check."
+  ],
+  "notes": [
+    "Rule question for the maintainer (check_slides.md §1, not filed as REVISE): the 2026-08-25 reorder moves the ASCII-diagram prompt ('Name the harness, the LLM, the tool-call step...', raw line 9) ahead of 'agent harness''s own definition (raw line 23) — a genuine forward reference to a file-coined term, confirmed absent at the pinned commit (harness was defined first, prompts ran second, before today's flip). Judged PASS because the text addresses the student's live Claude Code session (copy-paste instruction), not the human reader's own comprehension, and the maintainer's same-day note (line 31) explicitly forbids restoring anatomy-first. But that reorder note attests only that the H1 covers the 'the loop' referent and is silent on 'the harness' — if discovery-before-definition sequencing like this is meant to be a standing pattern, it may be worth a named carve-out in check_slides.md §1 (parallel to the existing session-artifact carve-out) rather than leaving each judge to make the harm call fresh."
+  ]
 }

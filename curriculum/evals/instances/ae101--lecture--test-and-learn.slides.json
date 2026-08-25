@@ -1,15 +1,22 @@
 {
   "class": "slides",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/test-and-learn.md",
-  "body_sha": "55852a7ca0aaab2aa8b4fa3047d276e2119086e589c4f84d4eeb9c2f0c09cc77",
-  "verdict": "PASS",
-  "training": "ae101",
+  "body_sha": "fc1a9f0803faf84c5c37a4a614c58f46e3be24175f91a500be3d08c85307ac5d",
+  "verdict": "PASS_WITH_TODOS",
+  "training": "agentic-engineering-101",
   "chunk_map": [
-    {"index": 0, "heading": "# Test and learn (title)", "lines": "1-1"},
-    {"index": 1, "heading": "Every send-off is an experiment", "lines": "3-9"},
-    {"index": 2, "heading": "The two-session arc", "lines": "11-15"},
-    {"index": 3, "heading": "Gap analysis: walk your system against the task", "lines": "17-21"},
-    {"index": 4, "heading": "Cancel is legitimate; traces are data", "lines": "23-27"}
+    {"index": 0, "heading": "# Test and learn (title, no lede)", "lines": "1-2"},
+    {"index": 1, "heading": "Every send-off is an experiment", "lines": "3-10"},
+    {"index": 2, "heading": "The two-session arc", "lines": "11-16"},
+    {"index": 3, "heading": "Cancel is legitimate; traces are data", "lines": "17-22"}
+  ],
+  "accept_notes_found": [
+    "L25: Emphasis pass (2026-07-09, Antti-directed \"go very lightly on the bold\") — slide 1 joined into prose paragraphs, koan stays plain, remaining slides keep zero-bold bullets. Verified: 0 '**' hits in body (lines 1-22).",
+    "L27: Gap-analysis slide moved out (2026-08-25, Antti-directed) — the gap-analysis ## section and its claim/framework row moved to exercises/walk-and-send-off.md Phase 2. Confirmed via git diff a1ddfae2..HEAD: the '## Gap analysis' chunk is gone; body now has 3 ## chunks, not 4.",
+    "L29: Slides-only pass (2026-07-02, unaudited) — module numerals (M1-M5) scrubbed from body, Ronacher's three-pattern name dropped, closing operational line converted into last slide's third bullet.",
+    "L31: section-3 sweep (2026-07-02) — verified zero M[0-9]/module-name hits above the fence; 3 arc-temporal phrases judged not-sequencing.",
+    "L33-36: Quality stamp compendium-audited 2026-08-23, slides@a1ddfae2 PASS (prior slides verdict, now superseded by this run at HEAD).",
+    "L45: Watch-for correction (2026-08-01) on the cancel-is-legitimate delivery framing — a delivery-note fix, not a body-text matter; body itself makes no attribution-to-the-field claim."
   ],
   "rules_evaluated": [
     {
@@ -18,7 +25,7 @@
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Diff-risk line: chunk 4, line 27: \"For this first session, fifteen to thirty minutes is enough.\" \"this first session\" resolves to \"Session one\" named in chunk 2, line 13 (\"Session one goes now, un-packaged...\") under the sequential deck read carve-out (term introduced on an earlier slide, reused) — only one candidate session exists by this point in the deck, so it is not vague-with-history. Also checked chunk 4 line 25 \"stop it\": \"it\" resolves in-sentence to \"Claude\" named earlier in the same clause. No unresolved referent found.",
+      "evidence": "Closest candidate: chunk 2 \"The two-session arc\", line 14, \"watch each packaging piece close a specific gap you just saw\" — \"packaging piece\" resolves against the SAME chunk's prior bullet (line 13: \"no plan.md, no verifier, no reference artifact\"), which enumerates exactly what a packaging piece would be. Also checked: line 9 \"this country\" self-defines via its own appositive (\"the stretch where the agent runs alone...\"); line 9 \"it\" (travel it) = \"this country\", same sentence; line 13 \"it\" (you've given it) = \"the agent\", same sentence; line 19 \"stop it\" = \"Claude\", same sentence; line 21 \"your checks\" is a generic possessive noun, not a pronoun needing an antecedent. No never-named, vague-with-history, or re-chunk-stranded referent found.",
       "fix_hint": null,
       "blocking": true
     },
@@ -28,7 +35,7 @@
       "rule_lead": "Cross-file and positional callbacks.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Closest candidate: chunk 1, line 9: \"You're new to this country: the stretch where the agent runs alone and you don't watch each step.\" The \"country\" metaphor is module-arc vocabulary named in the enclosing module's own opener (run-the-first-experiment.md maintainer note: \"the far half names the country\") and reused here by NAME, not by page position, so it clears §2's ban on locating another file positionally (the module-include-order carve-out under rule 1 applies). grep confirms zero phrases matching cross-file positional patterns (\"opening lecture said\", \"earlier module\", \"prior module\", \"last lecture\") anywhere in body lines 1-27: `sed -n '1,27p' ... | grep -niE \"opening lecture|earlier module|prior module|the module before|last lecture\"` -> no output.",
+      "evidence": "grep for cross-file callback phrasing (\"the opening lecture\", \"earlier lecture\", \"the prework\", \"this workbook\") over body lines 1-22 -> 0 hits. Closest candidate: chunk 2, line 14, \"after you've read the return\" — plain-English noun phrase for what session one produced (described two lines earlier in the same chunk), not a pointer to another file by position; the word \"return\" is used the same way, unbolded, throughout this corpus (e.g. learn-from-the-test.md lines 14, 42, 68) so it reads as ordinary register, not a locational callback to the M5 lecture titled \"Reading the return\".",
       "fix_hint": null,
       "blocking": true
     },
@@ -38,7 +45,8 @@
       "rule_lead": "Every backward reference points at a beat that exists.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "No backward \"the X you did/saw/caught\" beat reference exists in this file's body. Ran: `sed -n '1,27p' curriculum/lectures/test-and-learn.md | grep -niE \"you (did|saw|caught|ran|wrote|built|made)\"` -> no output.",
+      "evidence": null,
+      "na_reason": "no \"the X you did/saw/caught\" backward-beat phrasing in body (grep over lines 1-22 for you (did|saw|caught|ran|wrote|built) -> 0 hits); this lecture sits before its module's exercise, not after",
       "fix_hint": null,
       "blocking": true
     },
@@ -48,7 +56,8 @@
       "rule_lead": "Live-demo beats survive a text read.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "No guess-then-reveal demo structure in this lecture (it is a spirit/framing lecture, not a follow-along demo). Ran: `sed -n '1,27p' curriculum/lectures/test-and-learn.md | grep -niE \"guess|predict|before you (watch|see)\"` -> no output.",
+      "evidence": null,
+      "na_reason": "no guess/predict-before-reveal construction present (grep for guess|predict|before you (watch|see|run) -> 0 hits; signals.has_prompt_blocks=false, no demo beat in this lecture)",
       "fix_hint": null,
       "blocking": true
     },
@@ -58,7 +67,7 @@
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Every chunk carries multiple self-carrying sentences/bullets, not a lone wait-state line: chunk 1 (lines 3-9) develops the experiment framing and the tourist/practitioner claim across 3 paragraphs; chunk 2 (11-15) states the full two-session contrast in 3 bullets; chunk 3 (17-21) defines gap-analysis, its question, and the find-vs-judge split; chunk 4 (23-27) covers cancel-is-legitimate, trace sufficiency, and session length in 3 bullets. No chunk is a single context-dependent fragment.",
+      "evidence": "Each of chunks 1-3 carries a self-carrying claim with concrete content: chunk 1 = the experiment framing + tourist/practitioner koan (lines 5-9); chunk 2 = the two-session structure with the un-packaged/packaged contrast (lines 13-15); chunk 3 = the cancel rule with a concrete stop-signal list plus the timebox (lines 19-21). None is a bare wait-state or single context-dependent bullet.",
       "fix_hint": null,
       "blocking": false
     },
@@ -68,7 +77,7 @@
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Line closest to drifting from its header: chunk 4 header \"Cancel is legitimate; traces are data\" vs line 27 \"Session length follows the task and how well your checks guide it.\" — this bullet doesn't literally say \"cancel\" but stays inside the header's second clause (traces ARE data, so how much trace/session you need is the header's own topic); it continues directly from line 26's \"beats hours of trace you can't read,\" the same claim the header states. This placement is an unchanged carryover from the maintainer's 2026-07-02 slides-only pass (\"its unique operational line... CONVERTED into the last slide's third bullet\"), reviewed and passed at two prior pins; the run-to-session diff does not touch structure.",
+      "evidence": "Chunk 1 header \"Every send-off is an experiment\" is near-verbatim line 5 (\"Every send-off from here on is an experiment\") — literal match. Chunk 2 header \"The two-session arc\" is a catalogue-style subject label the two bullets (lines 13-14, two sessions) and closer (line 15) directly instantiate — no contradiction. Chunk 3 header \"Cancel is legitimate; traces are data\" is verbatim line 19's opening clause. No header the chunk's own content contradicts.",
       "fix_hint": null,
       "blocking": false
     },
@@ -78,7 +87,7 @@
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Checked every sub-item across all 4 body chunks. \"Not X. Not Y. Z.\" construction: absent (grep for repeated \"Not \" clause opens found none). Anaphora/epistrophe triples: closest candidate is the diff itself — \"session\" appears 3x across chunk 4 lines 26-27 (\"A short session\", \"this first session\", \"Session length\") — but this does NOT match the rule's specific pattern, which requires a structural triple of PARALLEL sentence-initial or sentence-final repeats (the compendium's own example: \"Every session inherited... Every session got better. Every session reached...\"). Here the 3 uses sit in different grammatical positions (object of preposition, adverbial-clause noun, subject) across only 2 sentences, not a 3-clause parallel structure, so rule 7's anaphora/epistrophe sub-item does not fire. (Flagged separately in `notes` as a check_writing.md register/repetition question, out of this class's lane.) Self-grading superlatives: absent. Number + own retraction: \"twenty minutes\" (line 25) and \"fifteen to thirty minutes\" (line 27) are both stated once, not retracted afterward — not this pattern. Abstraction-noun stacks: absent (\"thin spots\", \"gaps\" are concrete, not abstraction-stacked). Verb triplets with an empty leg: absent.",
+      "evidence": "Checked each sub-item over body lines 1-22: (a) \"Not X. Not Y. Z.\" construction — grep 'Not ' -> 0 hits in body region. (b) anaphora/epistrophe triples — only one 'Every' in body (line 5), no repeated sentence-initial phrase; line 5's apparatus/setup/data list is a single parallel-clause sentence, not a 3-sentence anaphoric build. (c) self-grading superlatives — grep -i 'most (useful|important|powerful|effective)|one of the (best|most)' -> 0 hits. (d) number + own retraction — 'twenty minutes' (line 19) and 'fifteen to thirty minutes' (line 21) are thresholds/ranges, not a hedged-then-retracted single figure; no 'could be more, could be less' pattern. (e) abstraction-noun stacks — none found; 'this country'/'the stretch' (line 9) is a concrete extended metaphor, not an abstraction-noun compound. (f) verb triplets with an empty leg — none found. No sub-item fires.",
       "fix_hint": null,
       "blocking": false
     },
@@ -88,7 +97,7 @@
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Checked body vocabulary against the repo-dialect list (surface-as-noun, firing, compendium, forcing function, beat, mood, Connections-as-proper-noun): none present. Closest candidate: chunk 3, line 19: \"Claude audits your setup as a subagent\" — \"subagent\" is Claude Code's own platform/runtime terminology (Task-tool subagents), ordinary vocabulary for the AE101 engineer-IC audience, not repo-authoring dialect; \"session\" is likewise the platform's own word per `curriculum/vocabulary.md` line ~17, not maintainer jargon. \"trace\" and \"gap analysis\" are standard engineering/business terms.",
+      "evidence": "Checked body lines 1-22 for repo/maintainer dialect (surface-as-noun, firing, compendium, forcing function, beat, mood, Connections-as-proper-noun) -> 0 hits. \"send-off\" (line 3, 5) is the training's own controlled student-facing term (vocabulary.md line 39: earned at walk-and-send-off, this lecture's own next beat) not repo-internal maintainer jargon, and its premature-use question (it appears in this lecture's own header/body one beat before its formal earning point) is check_writing.md §14 territory per this compendium's own carve-out text (\"Premature use still fails check_writing.md §14 ... that's a writing-class flag, not a slides one\") — noted here, not filed as a slides finding, kept out of this class's lane.",
       "fix_hint": null,
       "blocking": true
     },
@@ -98,7 +107,7 @@
       "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "grep for `**` in body (lines 1-27): `sed -n '1,27p' curriculum/lectures/test-and-learn.md | grep -n '\\*\\*'` -> exactly one hit, line 19: \"**Gap analysis**\" — a single ≲2-word handle on chunk 3, zero bold on chunks 1, 2, 4. Matches the maintainer block's own 2026-07-09 emphasis-pass record (\"Slides 2 and 4 keep bullets with zero bold. Slide 3 keeps one handle\"). The run->session diff added no bold.",
+      "evidence": "grep -c '\\*\\*' over body lines 1-22 -> 0. Zero bold anywhere in the body, well under the <=1-per-slide budget on all three chunks. Matches the maintainer's own 2026-07-09 emphasis-pass accept-note (L25).",
       "fix_hint": null,
       "blocking": false
     },
@@ -108,17 +117,18 @@
       "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "`grep -rn \"test-and-learn\" curriculum/trainings/` shows the file is pulled in via a standalone-paragraph include link at `curriculum/trainings/agentic-engineering-101/run-the-first-experiment.md:37`: \"[Lecture: Test and learn](lectures/test-and-learn.md)\" — the same structural pattern every other lecture in the corpus uses to reach the `.phase--lecture` wrapper the deck builder reads. Unaffected by the run->session diff.",
+      "evidence": "This file is included via the standard bracket syntax `[Lecture: Test and learn](lectures/test-and-learn.md)` at curriculum/trainings/agentic-engineering-101/run-the-first-experiment.md:37, the same include convention every AE101 lecture uses to reach the module's rendered .phase--lecture wrapper (curriculum/module-shape.md's standard pattern). No phase-less standalone prose section in this file that would be dropped from the deck; the whole body is the lecture content itself, not a supplementary/reference aside. Judgement call on inclusion convention, not a build run.",
       "fix_hint": null,
-      "blocking": false
+      "blocking": true
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 11,
       "rule_lead": "Numbering — position is computed, content ordinals are linted.",
-      "verdict": "PASS",
+      "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "No hand-numbered `## Phase N:` / `## N.` headers in this file (confirmed: all 4 `##` headers are prose claims/labels, no leading ordinal). Ran `node scripts/check-slide-numbering.js` -> \"OK — 61 files, Phase/Step numbering consistent.\" (real output, this session).",
+      "evidence": null,
+      "na_reason": "no hand-numbered headers or Phase N/Step N content headers in this file; ran `node scripts/check-slide-numbering.js curriculum/lectures/test-and-learn.md` -> \"OK — 60 files, Phase/Step numbering consistent\" (repo-wide run, this file included and clean)",
       "fix_hint": null,
       "blocking": false
     },
@@ -128,7 +138,7 @@
       "rule_lead": "Page geometry dies at the cut; reading order survives.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Ran `node scripts/check-slide-deixis.js` (full-corpus, includes this file) -> \"OK — 61 files, no page-geometry pointers across the slide cut.\" (real output, this session). No \"below/above/further down/at the top of this page\" phrasing anywhere in body.",
+      "evidence": "Ran `node scripts/check-slide-deixis.js --file curriculum/lectures/test-and-learn.md` -> \"OK — 1 files, no page-geometry pointers across the slide cut.\" Manual grep for below|above|further down|at the top|see below|a few paragraphs over body lines 1-22 -> 0 hits, confirming the mechanical result.",
       "fix_hint": null,
       "blocking": true
     },
@@ -138,7 +148,8 @@
       "rule_lead": "In-deck links work now; whether they EARN their place is open.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "No markdown links of any kind in the body. Ran: `sed -n '1,27p' curriculum/lectures/test-and-learn.md | grep -n '\\[.*\\]('` -> no output.",
+      "evidence": null,
+      "na_reason": "no in-body markdown links present; grep '](' over body lines 1-22 -> 0 hits; ran `node scripts/check-slide-deixis.js --links --file curriculum/lectures/test-and-learn.md` (review-surface script, non-gating) which returned only its standing boilerplate, no link rows for this file",
       "fix_hint": null,
       "blocking": false
     },
@@ -148,7 +159,7 @@
       "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/lectures/test-and-learn.md` -> \"files: 1  slides: 4  limits: 210 words / 6 bullets  oversized: 0 ... every slide is within limits\" (real output, this session). The run->session word swap is a like-for-like substitution, no length change.",
+      "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/lectures/test-and-learn.md --report`: \"Cancel is legitimate; traces are data\" 92 words / 3 bullets; \"Every send-off is an experiment\" 90 words / 0 bullets; \"The two-session arc\" 76 words / 3 bullets. Summary line: \"files: 1  slides: 3  limits: 210 words / 6 bullets ... oversized: 0\". All three chunks well under both axes, no accept-note needed.",
       "fix_hint": null,
       "blocking": false
     },
@@ -158,12 +169,30 @@
       "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "This file is a lecture, so headings must be claims (or fall under a stated NOT-violation). Chunk 1 \"Every send-off is an experiment\" and chunk 4 \"Cancel is legitimate; traces are data\" are full declarative claims. Chunk 2 \"The two-session arc\" and chunk 3 \"Gap analysis: walk your system against the task\" are noun-phrase/label headers, but both fall under the rule's own NOT-violation carve-out for \"catalogue entries naming their subject\" (comparable to the compendium's own examples \"Ralph\", \"The numbers\") — each names the concept the chunk then unpacks. All four headers unchanged by the run->session diff. NOTE: rule 15 is absent from both the explicit blocking-true and blocking-false lists in judges/slides.md (only rules 1-4/8/10/12 and 5/6/9/11/13/14 are enumerated) — same gap the template itself flags for rules 9-14 pre-2026-08-13. Applying the stated principle (\"I cannot follow this\" = blocking, \"could be tighter\" = TODO), a header-grammar/mood mismatch does not block comprehension, so classified non-blocking here; flagged for the maintainer in `notes`.",
+      "evidence": "Chunk 1 \"Every send-off is an experiment\" and chunk 3 \"Cancel is legitimate; traces are data\" are both full declarative claims, correct for a lecture. Chunk 2 \"The two-session arc\" is a bare noun phrase, but it fits the rule's own catalogue-entry exemption (\"Ralph\", \"The numbers\", \"Verification, named\") — it names the subject the two bullets and closer unpack, rather than asserting a claim about it, and the chunk's actual claim (\"The contrast is the lesson\") lands as its closing line instead. Not scored as a violation under the stated carve-out.",
       "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 16,
+      "rule_lead": "A bullet earns its slot or dies — three classes that read as rigour and carry nothing.",
+      "verdict": "REVISE",
+      "chunks_flagged": [2],
+      "evidence": "chunk 2 \"The two-session arc\": line 15: \"The contrast is the lesson. Un-packaged first is by design.\" — class (b), self-referential design commentary: the body telling the student the sequencing choice is deliberate, after the two prior bullets (lines 13-14) already showed the two sessions in full. \"Un-packaged first is by design\" is the compendium's own quoted worked example of this exact violation class (check_slides.md §16(b) parenthetical). Checked for an accept-note first: the maintainer block's dated notes (2026-07-02, 2026-07-09, 2026-08-25) all predate §16's 2026-08-25 authoring and never address this specific bullet under this rule, so no accept-note covers it. Distinguished from the tourist/practitioner koan two chunks earlier, which the maintainer's own watch-for note explicitly attests as load-bearing and which §16 carves out (\"Fenced/attested koans with maintainer keep-notes are out of scope\") — this clause carries no such attestation.",
+      "fix_hint": "Cut \"Un-packaged first is by design\" (or the whole second sentence); \"The contrast is the lesson\" alone still lands the payoff of the two bullets above it without narrating the curriculum's own choice.",
       "blocking": false
     }
   ],
   "blocking_findings_count": 0,
-  "todos_count": 0,
-  "notes": "Diff scope confirmed via `git diff 382adbec -- curriculum/lectures/test-and-learn.md`: the only body change is lines 26-27, run->session (twice each), matching vocabulary.md's noun-run ban. RE-EVAL FOCUS (out of my lane, for check_writing.md/check_student_facing.md attention): the swap now puts 'session' 3x within 2 sentences on the closing slide (line 26 'A short session...', line 27 'this first session...' / 'Session length...'). Under check_slides.md's own referent-resolution carve-out this is explicitly fine (reused established term, single resolvable antecedent), and it does not match rule 7's anaphora/epistrophe-triple pattern (no parallel sentence-initial/final structure) or any other numbered cadence sub-item, so no slides-class rule fires — but the density reads as a candidate for a check_writing.md word-repetition/register rule, and is worth a second look there even though this class clears it. Separately, rule 15 (heading grammar) is unlisted in the template's explicit blocking/non-blocking partition (same gap previously called out for rules 9-14 before 2026-08-13) — worth adding to the partition so future judges don't each reclassify it independently."
+  "todos_count": 1,
+  "todos": [
+    {
+      "rule": "check_slides.md §16",
+      "chunk": 2,
+      "line": 15,
+      "note": "\"Un-packaged first is by design\" is self-referential design commentary (§16(b)) — matches the rule's own worked example near-verbatim. Non-blocking: the slide is still fully followable without it, this is a tightening cut, not a comprehension failure. Fix hint: cut the second sentence, keep \"The contrast is the lesson.\""
+    }
+  ],
+  "notes": "Diff pin a1ddfae2..HEAD for this file: the '## Gap analysis: walk your system against the task' chunk (formerly slide 3) was removed whole and its content relocated to exercises/walk-and-send-off.md Phase 2, per the maintainer's 2026-08-25 accept-note; the body now chunks to 3 slides (was 4). Also touched by the diff: maintainer-block-only prose edits (emphasis-pass wording, quality stamp refresh, word count, time estimate) and a source-stamp due-date correction (ronacher-long-runs-worse) — none of these are slides-class matter, noted only for completeness of the diff read. check_slides.md §16 is a rule newly added 2026-08-25 (same day as the diff) and this file has not previously been judged against it; the one REVISE above is the first time this specific rule has been checked here, not a regression."
 }

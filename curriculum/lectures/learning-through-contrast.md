@@ -3,7 +3,7 @@
 ## Diagnose first, fix later
 
 - The session may have stopped, finished, or run out of credit. Whatever came back is data.
-- **Diagnose first. Fix later.** When an agent gets something wrong, the reflex is to fix it immediately: edit the prompt, add a constraint, reach for the next tool. This module holds that reflex off. The failures earn the validation that catches them.
+- When an agent gets something wrong, the reflex is to fix it immediately: edit the prompt, add a constraint, reach for the next tool. This module holds that reflex off. The failures earn the validation that catches them.
 - The arc is *test → learn → encode*. The un-packaged send-off was the test. This is the learn. The encode turns what the read finds into durable checks.
 
 <!-- maintainer -->
@@ -28,7 +28,7 @@
 
 Claims
 - `artefact-is-data` · vision · "Whatever came back is data." ← none-owed
-- `diagnose-first-fix-later` · vision · "Diagnose first. Fix later." ← none-owed
+- `diagnose-first-fix-later` · vision · "Diagnose first, fix later" ← none-owed — anchors on the slide header since 2026-08-25; the bolded bullet lead that repeated it (third statement in an 80-word lecture, after the H1 and the header) is cut
 - `test-learn-encode` · vision · "The arc is *test → learn → encode*." ← none-owed
 
 Sources

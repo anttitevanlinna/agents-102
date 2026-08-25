@@ -18,6 +18,8 @@ Run this from your original repo. If the session you sent off from is still open
 
 *15 min*
 
+- This module's work (diagnosis, verifier, reference, plan.md, and the re-send) runs in the worktree, so the second session starts from the same code state as the first.
+- Gitignored files (your `CLAUDE.local.md`, `observations/`) don't ride into a worktree, because git doesn't see them. The setup prompt copies them across, so what you built in Module 1<!--flag:module:earn-the-trust--> and Module 3<!--/flag:module:earn-the-trust--> comes with you. From there the two copies compound separately.<!--flag:module:spot-gaps-build-the-loop--> After Module 6 you decide what to merge back.<!--/flag:module:spot-gaps-build-the-loop-->
 - Claude works out `<repo-name>` from the working directory. If it picks the wrong repo or path, steer it in chat.
 
 Ask Claude to fork the worktree and copy your gitignored files across.
@@ -55,6 +57,8 @@ Ask Claude to fork the worktree and copy your gitignored files across.
 **Recovery ladder (2026-08-12, Antti-directed read).** The section heading is neutral (*Anchor the fork to the run coordinates*) because the first bullet is the normal path, not a fallback; a heading naming only the failure case contradicts its own opening line. Each bullet opens with its trigger rather than its remedy, so reading down the list is how the student locates which rung applies. **Rung three is deliberately approximate:** `git merge-base` returns the trunk commit *before* "M4 starting point", verified on this exercise's exact branch shape in a throwaway repo. The intervening commit only appends the coordinates block, so the source is identical and the rung holds — do not tighten the wording back to *"where the run started"*.
 
 **Placement:** immediately before `[Exercise: Diagnose and re-send]`. It must stay there — the diagnosis session opens *inside* the worktree this exercise creates.
+
+**Phase 1 opens with the moved-in rationale (2026-08-25, Antti-directed).** The module file's `## Set up the worktree` section folded in as the phase's first two bullets: why the work runs in the worktree, and why the gitignored files need the copy (with the Module 1/Module 3 and Module 6 runtime-fork flags verbatim). The module body's "Before the exercise session, fork the un-packaged session's starting SHA" setup line was dropped as duplicating this file's intro. Do not restore the section to the module body.
 
 **Quality:** compendium-audited 2026-08-24 (writing@1abb84c6 story@1abb84c6 technical@1abb84c6 behavior@61e7fc9 pedagogy@1abb84c6 strategy@61e7fc9 slides@1abb84c6)
 - judges @1abb84c6: writing PASS (drift-recheck), story PASS (drift-recheck), technical PASS (drift-recheck), behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS (drift-recheck)

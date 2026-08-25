@@ -45,12 +45,6 @@ Test that worry against the return. Where the return bears it out, the worry nam
 
 Acting without full control is the job from here on. Build the check, send again. The checks pay twice: a session they steer is a session you don't babysit, and a session you don't babysit can run beside another.
 
-## Set up the worktree
-
-Before the exercise session, fork the un-packaged session's starting SHA into a sibling worktree. This module's work (diagnosis, verifier, reference, plan.md, and the re-send) runs in the worktree, so the second session starts from the same code state as the first.
-
-Gitignored files (your `CLAUDE.local.md`, `observations/`) don't ride into a worktree, because git doesn't see them. The setup prompt copies them across, so what you built in Module 1<!--flag:module:earn-the-trust--> and Module 3<!--/flag:module:earn-the-trust--> comes with you. From there the two copies compound separately.<!--flag:module:spot-gaps-build-the-loop--> After Module 6 you decide what to merge back.<!--/flag:module:spot-gaps-build-the-loop-->
-
 [Exercise: Fork the worktree, carry the evidence](exercises/fork-the-worktree.md)
 
 [Exercise: Diagnose and re-send](exercises/diagnose-and-resend.md)
@@ -124,6 +118,8 @@ Module 6 reads the packaged session: subtler misses, subtler drift. The question
 **Done-done opener (Antti-directed 2026-08-23).** `## Say what done-done means` sits between the Start-here aside and *Reading the return*, and it needs a finished M4 send-off: the student pastes `ae101-m5-done-done` into that session, so the per-point audit lands in the transcript `diagnose-and-resend` reads. That is the trick: the transcript inspects itself before M5 reads it, with the original context still live. Question form rather than a file write for that reason. The four points are Antti's basic done-done. The closing paragraph names the compounding half (definition goes to `./CLAUDE.md` once; prompting it repeatedly is the anti-pattern) and keeps the M1 personal-first pattern for the team file. Trainer may demo on the screen first; the answer must be the student's own session's (`check_lectures.md` §6 carve-out), so do not convert to trainer-only. Do not add a done-means criterion or a write-to-CLAUDE.md prompt; the student decides whether and where the definition lands.
 
 **`## Inspect your results` stays prose, no fence (accepted 2026-08-20).** Flagged as M5's only loop-closing diagnostic sitting outside a prompt block. It is deliberate. The section renders only for the no-M6 variant (`<!--flag:no-module:spot-gaps-build-the-loop-->`), and it fires after the sitting ends, on a return whose artefact paths do not exist at authoring time, so a fence would have to invent them. The module's prompts belong to `diagnose-and-resend`; this is the close that hands a no-M6 student the loop in their own words. Do not add a fence, and do not cut it.
+
+**`## Set up the worktree` moved into `exercises/fork-the-worktree.md` as Phase 1 bullets (2026-08-25, Antti-directed).** Same pattern as M2's close-out move: the module body carries includes; the rationale (same-code-state, gitignored-files-don't-ride, runtime-fork flags intact) rides the exercise that runs it. The setup-line duplication with the exercise intro was trimmed in the fold.
 
 **Slide-size splits (2026-07-10, hand slides-audit):** two pre-existing oversized chunks split at conceptual seams, zero wording changes — `## Re-send the same task, packaged` + `## Send it off and read the report cold` carve the re-send narrative out of `## Key Concepts` (was 430w); `## Run the fork from the original repo` carves execution out of the worktree rationale (was 309w). Headers are command-verb, build-squint checked. Key Concepts now ends at its sixth bullet as the section name promises.
 

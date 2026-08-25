@@ -153,8 +153,8 @@ describes the artifact and hands the attention decision to the student — do no
 scheduling ("come back later", "read them after"). Trainer sibling in `trainer-modules.md` M5 says land the
 header and handle per slide, never read bullets aloud. Two registers, one instruction; keep them in step.
 
-**Quality:** sim-passed 2026-08-24 (writing@e5364af8 story@39a1454e technical@19d444f0 behavior@b55cd28b pedagogy@b55cd28b strategy@b55cd28b slides@9242fa71)
-- judges @e5364af8: writing PASS, story PASS, technical PASS (verify-refuted), behavior PASS, pedagogy PASS, strategy PASS (verify-refuted), slides PASS
+**Quality:** sim-passed 2026-08-25 (writing@441b361f story@441b361f technical@19d444f0 behavior@b55cd28b pedagogy@441b361f strategy@b55cd28b slides@441b361f)
+- judges @441b361f: writing PASS, story PASS, technical PASS (verify-refuted), behavior PASS, pedagogy PASS, strategy PASS (verify-refuted), slides PASS
 - cross_module @37aa983b: PASS — set=[run-the-first-experiment,learn-from-the-test,spot-gaps-build-the-loop]; 2 pairs, 0 blocking; see instances/ae101--module-set--m4-m5-m6.cross_module.json
 **Meta (trainer):**
 - **Primary Bloom's level:** Analyze + Evaluate + Create

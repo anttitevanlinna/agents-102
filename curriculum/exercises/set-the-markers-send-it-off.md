@@ -83,7 +83,7 @@ If Claude stalls, ask it to keep going. The nudge reads as encouragement and lan
 - Trace preservation: Claude Code scrollback is the artifact M5 reads. Anything the student's configured for conversation logging continues.
 - **Capability verified:** laptop-sleep freezes the session (not resumable on wake); Ctrl+C mid-tool-call can corrupt the `.jsonl`; no per-session token budget. Details in `reference/claude-code-for-engineers.md § 17`.
 
-**Placement:** the last beat of M4. The ironies lecture sits above the include in the module file (it frames the watcher's trap before the task leaves), and the two closing lectures sit below it (they run while the task is already going). This file owns only what the student does.
+**Placement:** the last exercise of M4. The two closing lectures sit below it in the module file and run while the task is already going: `what-keeps-a-long-running-session-going` rides the live session, then `ironies-of-automation` closes the module (moved there 2026-08-25). This file owns only what the student does.
 
 **Quality:** compendium-audited 2026-08-24 (writing@1abb84c6 story@1abb84c6 technical@1abb84c6 behavior@61e7fc9 pedagogy@1abb84c6 strategy@19249df slides@1abb84c6)
 - judges @1abb84c6: writing PASS (drift-recheck), story PASS (drift-recheck), technical PASS (drift-recheck), behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS (drift-recheck)

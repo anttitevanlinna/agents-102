@@ -38,11 +38,11 @@ The map has a far side. Before the first long session, see the country you are e
 
 [Exercise: Prep the run, fill the gaps](exercises/walk-and-send-off.md)
 
-[Lecture: The ironies of automation](lectures/ironies-of-automation.md)
-
 [Exercise: Set the markers, send it off](exercises/set-the-markers-send-it-off.md)
 
 [Lecture: What keeps a long-running session going?](lectures/what-keeps-a-long-running-session-going.md)
+
+[Lecture: The ironies of automation](lectures/ironies-of-automation.md)
 
 ## Key Concepts
 - The audit ranked the thin spots in your setup against one real task. You corrected the ranking, then filled the worst two or three.
@@ -114,7 +114,7 @@ The next module opens with what came back, or what you caught before it went fur
 - **Deliberate incompleteness:** M4 leaves the un-packaged send-off and the unfilled gaps beyond the top three open. The closer observes where existing boundaries fire, where the session waits, and where nothing pushes back. The trainer does not add packaging or patch the gaps before M5 reads the result.
 - **Mood target:** curious readiness — *"I've built enough to try; let's see what the agent does."* Watch for: mood drift toward compliance-feeling (*"did I prepare the right way?"*) or performance-anxiety (*"what if it fails?"*). Diagnostic: student at Phase 2 keeps asking *"is this enough?"* Fix: trainer reframes — *"enough is a question for M5. The experiment is the point."*
 - **Lecture wiring (2026-07-02):** `lectures/the-agent-loop.md` promoted from M1 supplementary (Antti-directed), inlined between the far-half opener and Test and learn. Beat rationale: the far half names the country, this names the machine about to walk it; its three introspection prompts run on the live session that will carry the send-off, so the tool list that comes back is the one the long run rides. Promotion record + eyeball questions in the lecture's maintainer block.
-- **Closing lecture wiring:** `lectures/what-keeps-a-long-running-session-going.md` is a four-slide observational beat after the send-off. It rides the active session and points at durable state, feedback, and boundaries already present without changing the un-packaged baseline.
+- **Closing lecture wiring:** `lectures/what-keeps-a-long-running-session-going.md` is a four-slide observational beat after the send-off. It rides the active session and points at durable state, feedback, and boundaries already present without changing the un-packaged baseline. `lectures/ironies-of-automation.md` closes the module after it (moved from between the exercises 2026-08-25, Antti-directed): the human-touch close, and a beat a trainer can skip cleanly because no exercise depends on it.
 - **Delivery architecture:** canonical in training-architecture.md §Working directory model / §Session boundaries. Not restated here. Module-specific: the send-off happens IN the same session the student used for walk + fill + frame + retro — no new session, no scheduled agent, no cloud runner. 15-30 minutes is enough for the clues the M5 read needs; engineers run these for hours at work, ambition grows with practice.
 
 **Push-back moves** (trainer delivers):
@@ -181,7 +181,7 @@ The next module opens with what came back, or what you caught before it went fur
 - `[checked:2026-07-31 result:OK due:none]` https://github.com/humanlayer/advanced-context-engineering-for-coding-agents/blob/main/wsff.md — [delegated stamp] Horthy, *Why Software Factories Fail*. Freshest dated check is `lectures/when-a-plan-is-good.md`. This module carries the pointer and its thesis, no number, so it delegates rather than keeping a fourth copy of the date. fallback: drop the pointer.
 
 **Frameworks riffed on (attributed in lecture):**
-- **Gap analysis** — generic business-analysis framework; no single attribution needed. The Phase 2 audit is this move and the body never names it: the label is universally known and adds nothing the ranked list does not already do.
+- **Gap analysis** — generic business-analysis framework; no single attribution needed. The Phase 2 audit is this move; `exercises/walk-and-send-off.md` names it once, on the slide directly before the audit prompt (moved there from the lecture 2026-08-25).
 - **Compound engineering** — Kieran Klaassen. Named on the student surface only as a Module 5 pre-read; this module deliberately runs no compound step, so the loop is carried rather than recited.
 
 **`practice` as a noun — ruling updated (Antti 2026-08-15): OK in AE101 body, sparingly; no earning beat owed (`check_writing.md §2`).** The old accept-note defended *"The practice is yours now"* in `## Start here`; that sentence is cut and the body now uses the noun zero times. Maintainer prose was always exempt (*"ambition grows with practice"* above is fine). If the noun returns to body, sparingly is the bar, not an engineered earning sentence.

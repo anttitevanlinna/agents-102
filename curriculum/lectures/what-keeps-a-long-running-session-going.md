@@ -40,7 +40,7 @@ When your agent stops for missing information, check whether there was a way for
 
 **Lecture meta:** *~5 min, four slides. M4 closer after the send-off, read while the un-packaged session remains active. The session is the specimen: each slide turns attention toward durable state, downstream feedback, and boundaries already present.*
 
-**Placement:** The observational close rides the active session after `ironies-of-automation` and before `reading-the-return`. It keeps curious readiness open. The trainer does not alter or package the active experiment.
+**Placement:** The observational close rides the active session straight after the send-off; `ironies-of-automation` follows it as the module's closing lecture (since 2026-08-25), and `reading-the-return` opens the next module. It keeps curious readiness open. The trainer does not alter or package the active experiment.
 
 **Time:** ~5 min at presentation pace. One slide per question: what keeps the place, what keeps the direction, what decides whether the session continues, and what stops it early.
 

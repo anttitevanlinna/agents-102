@@ -1,12 +1,5 @@
 # The agent loop
 
-## The agent, the harness, the loop
-
-- An **agent** is an LLM calling tools in a loop. Four parts: the context it reads, the tools it can call, the goal it works toward, and the autonomy to pick its own next step. Each iteration the LLM receives context (system prompt, conversation, tool results) and either responds to you or uses tools.
-- The **agent harness** is the surrounding code that runs the loop. It exposes tool definitions to the LLM, executes the tool calls, and feeds results back in. Claude Code is one harness; Cursor, Cline, Gemini CLI are others.
-- The **agent loop** is that iteration itself. Prompt → reason → tool calls → results → reason again, until the agent decides to stop.
-- A long-running session is this same loop, iterated. Out of the box, nothing new takes over when the session gets long; the loop keeps choosing the next step from context and tool results, hour after hour.
-
 ## See the loop in your live session
 
 Three prompts. Dig into whatever catches you.
@@ -23,9 +16,19 @@ Ask where that list comes from.
 
 {{prompt:ae101-agent-loop-tool-injection}}
 
+## The agent, the harness, the loop
+<!--tier:2-->
+
+- An **agent** is an LLM calling tools in a loop. Four parts: the context it reads, the tools it can call, the goal it works toward, and the autonomy to pick its own next step. Each iteration the LLM receives context (system prompt, conversation, tool results) and either responds to you or uses tools.
+- The **agent harness** is the surrounding code that runs the loop. It exposes tool definitions to the LLM, executes the tool calls, and feeds results back in. Claude Code is one harness; Cursor, Cline, Gemini CLI are others.
+- The **agent loop** is that iteration itself. Prompt → reason → tool calls → results → reason again, until the agent decides to stop.
+- A long-running session is this same loop, iterated. Out of the box, nothing new takes over when the session gets long; the loop keeps choosing the next step from context and tool results, hour after hour.
+
 <!-- maintainer -->
 
-**Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** definitional slide keeps bullets; bold reduced to the three defined terms as sub-spans — **agent** · **agent harness** · **agent loop** — and the fourth bullet de-bolded. Slide 2 (live-session prompts) carried no bold and is untouched; blockquote and `{{prompt:}}` refs byte-intact. Per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Wording near-verbatim; no claims added or cut.
+**Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** definitional slide keeps bullets; bold reduced to the three defined terms as sub-spans — **agent** · **agent harness** · **agent loop** — and the fourth bullet de-bolded. The live-session prompts slide carried no bold and is untouched; blockquote and `{{prompt:}}` refs byte-intact. Per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Wording near-verbatim; no claims added or cut.
+
+**Slide order flipped (2026-08-25, Antti-directed):** prompts slide first, definitional slide second and tagged T2. The doing leads — the student's own session draws the diagram and lists the tools — and the anatomy slide follows as the same content in text form, skippable by a trainer under time pressure. The H1 carries the referent for *"the loop"* on the opening slide. Do not restore anatomy-first; the meta note below already held that the anatomy slide is scaffolding for the prompts, and the order now says so.
 
 **Promotion (2026-07-02, Antti-directed):** M1 supplementary → M4 lecture, wired into `run-the-first-experiment.md § Start here`. Slide-format pass per `theory-plan.md` § Slide format + dosage: two slides (anatomy + live introspection). Body changes beyond re-chunking: the defining paragraph became slide-1 bullets (wording preserved); the fourth anatomy bullet (*a long-running session is this same loop, iterated*) is the ONLY new content — the M4-fit line. The three `{{prompt:ae101-agent-loop-*}}` refs are byte-intact. No packaging laws (0.85ⁿ / triad / principal–agent stay out until M5), no "one loop, three sizes" naming (M3's beat), no cross-module sequencing in body (`check_lectures §3`).
 

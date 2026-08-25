@@ -14,11 +14,6 @@ You're new to this country: the stretch where the agent runs alone and you don't
 - Session two goes packaged, after you've read the return. You find what went wrong, watch each packaging piece close a specific gap you just saw, and send the same task again.
 - The contrast is the lesson. Un-packaged first is by design.
 
-## Gap analysis: walk your system against the task
-
-- **Gap analysis**: walk the system you have against the system the task needs. Claude audits your setup as a subagent and returns a ranked list of thin spots.
-- Filling the worst few gaps is worth more than closing them all.
-
 ## Cancel is legitimate; traces are data
 
 - Cancel is legitimate; traces are data. If twenty minutes in you can see Claude hallucinating file paths, contradicting its own earlier steps, or missing a requirement that wasn't in the prompt, stop it. You have the data you came for.
@@ -27,7 +22,9 @@ You're new to this country: the stretch where the agent runs alone and you don't
 
 <!-- maintainer -->
 
-**Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** slide 1 (spirit opener) joined into three prose paragraphs, sentences near-verbatim; the tourist/practitioner koan stays plain. Slides 2 and 4 keep bullets with zero bold. Slide 3 keeps one handle: **Gap analysis** at its naming, rest of the lead plain. Closing march kicker untouched. Per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. No claims added or cut.
+**Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** slide 1 (spirit opener) joined into three prose paragraphs, sentences near-verbatim; the tourist/practitioner koan stays plain. The remaining slides keep bullets with zero bold. Closing march kicker untouched. Per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. No claims added or cut.
+
+**Gap-analysis slide moved out (2026-08-25, Antti-directed).** The two-bullet `## Gap analysis: walk your system against the task` slide now lives in `exercises/walk-and-send-off.md`, directly before the Phase-2 audit prompt — the naming lands where the move is run, not a lecture earlier. Its claim (`gap-analysis-is-a-question`) and the Gap-analysis framework row travelled with it. Do not restore the slide here; this lecture keeps the spirit and the arc, the exercise owns the move.
 
 **Slides-only pass (2026-07-02, unaudited):** prose deleted outright where a slide supersedes it (Path A; git carries it). Per-passage verdicts: stray leading `---` CUT · intro recap paragraph ("Three modules in... M1 closed a bug, M2 read one plan, M3 shipped a feature") SUBSUMED (the module file's `## Start here` already carries the short-loops-behind-you contrast; module numbering dies per §3) · "Today is structurally different / step away / come back whenever the next M5 slot lands" paragraph SUBSUMED into the module opener + `## Next` (sequencing lives there); its unique operational line (15–30 min is enough) CONVERTED into the last slide's third bullet · spirit section CONVERTED (slide 1; tourist/practitioner line kept as a bullet, load-bearing per delivery watch-for) · two-run arc CONVERTED (slide 2) with "M4 → M5" and "Run two. M5, packaged" module refs dead; "Ronacher's three-pattern" name DROPPED from body (attribution-cap fix, `check_writing §11`: Ronacher's M4 student-side mention lives in `reading-the-return.md`; M5 owns the naming — absence-enumeration "no plan.md, no verifier, no reference artifact" kept, deliberate) · gap-analysis section CONVERTED (slide 3; the find-vs-judge bullet is cut 2026-08-25 — the worst-few bullet arms the Phase-2 pick) · cancel-is-legitimate CONVERTED (slide 4) · "What happens after" section CUT ("M5 opens with the return" sequencing = module `## Next`'s job; "Rehearse, apply, fail, try again" dropped as redundant with slide 1) · closing march KEPT as kicker. §3 disposition: M1/M2/M3/M4 + 5×M5 refs all dead or subsumed; zero `M[0-9]` above the fence.
 
@@ -35,10 +32,10 @@ You're new to this country: the stretch where the agent runs alone and you don't
 
 **Quality:** compendium-audited 2026-08-23 (writing@a1ddfae2 story@7fb973dd technical@7fb973dd behavior@1c765f2 pedagogy@7fb973dd strategy@1c765f2 slides@a1ddfae2)
 - judges @7fb973dd: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
-**Lecture meta:** *10–12 min lecture, now deck-shaped (4 slides + kicker). Sets up M4's walk-and-send-off exercise. Names the spirit of the two-session arc and the one move the exercise opens with — gap analysis.*
-**Word count:** ~380 words body (post slide rework).
+**Lecture meta:** *~10 min lecture, deck-shaped (3 slides + kicker). Sets up M4's walk-and-send-off exercise. Names the spirit of the two-session arc; the gap-analysis naming rides with the exercise since 2026-08-25.*
+**Word count:** ~340 words body (post slide rework).
 
-**Time:** 12 min at presentation pace. Don't rush; don't pad. The "spirit" slide is load-bearing — it's where the experimental stance lands.
+**Time:** 10 min at presentation pace. Don't rush; don't pad. The "spirit" slide is load-bearing — it's where the experimental stance lands.
 
 **Philosophy callouts:** none this lecture. The spirit itself is the beat; a further philosophy tag would dilute.
 
@@ -57,7 +54,6 @@ Format → `curriculum/backing-format.md`. Absorbed 2026-08-01 from the legacy `
 - `tourist-vs-practitioner` · vision · "a tourist runs an agent and hopes; a practitioner runs a test and reads the data" ← none-owed
 - `un-packaged-first-by-design` · vision · "Session one goes now, un-packaged: no plan.md, no verifier, no reference artifact." ← none-owed
 - `contrast-is-the-lesson` · vision · "The contrast is the lesson. Un-packaged first is by design." ← none-owed
-- `gap-analysis-is-a-question` · borrowed · "**Gap analysis**: walk the system you have against the system the task needs." ← cultural-vocab
 - `cancel-is-legitimate` · vision · "Cancel is legitimate; traces are data." ← none-owed — the house's own operating rule for the exercise. **Was `detail` until 2026-08-01**, on the strength of the delivery note framing it as *what real operators do*; that framing was not evidenced and has been removed. See Flagged.
 - `any-trace-counts` · vision · "A result you can read is enough; you do not need a completed artifact." ← none-owed
 - `fifteen-to-thirty-minutes` · vision · "For this first session, fifteen to thirty minutes is enough." ← none-owed — the classroom timebox, the maintainer's own design call, set against a cohort whose real M4 long task ran 12 minutes.
@@ -75,7 +71,6 @@ Format → `curriculum/backing-format.md`. Absorbed 2026-08-01 from the legacy `
 - klaassen-definitive-guide `[checked:2026-07-30 result:OK due:2027-01-30]` https://every.to/source-code/compound-engineering-the-definitive-guide — [practitioner direct, vendor venue] Klaassen Definitive Guide (Feb 9 2026); re-verified live 2026-07-30, sole byline and first-person voice confirmed. Core thesis verbatim: *"each unit of engineering work should make subsequent units easier—not harder."* The term is still Klaassen's and still current — his most recent post on the thread is Jul 13 2026. Explicit plan/work/review/compound naming is NOT on this page; it is on the how-Every-codes piece, and Klaassen expanded the loop past four steps on 2026-05-29. Nothing in this lecture names a step count, so nothing here breaks. fallback: phrase as "the loop that runs through his work", ordinal-free; treat any Every.to outcome metric as vendor-self-reported.
 
 **Frameworks**
-- Gap analysis · [borrow:business analysis] · law:none · ← cultural-vocab. Generic; no single attribution. Named in body as *walk the system you have against the system the task needs.*
 - Ronacher's three-pattern · [borrow:practitioner-coined] · law:none · ← ronacher-agentic-coding. **Present only as deliberate absence** — "no plan.md, no verifier, no reference artifact." Not named in this body since the 2026-07-02 pass (attribution cap + M5 owns the naming). Do not restore the name here; `what-packaging-is` teaches it through contrast and the naming is that lecture's payoff.
 - Compound engineering · [borrow:practitioner-coined] · law:the-compound-ladder · ← klaassen-definitive-guide. Implicit in the test → learn → encode framing; not name-attributed here. Klaassen's one attribution slot in this training is at M1's debrief; from here on the loop is experienced, not recited.
 - Productive Failure / contrasting cases · [borrow:learning science] · **law:none — borrow considered and DECLINED 2026-08-01** · ← kapur-productive-failure, schwartz-bransford-time-for-telling, sinha-kapur-meta. The family is real and correctly named: Kapur builds explicitly on Schwartz & Bransford, and *"the contrast is the lesson"* is a fair English gloss of what they demonstrate. We are still not citing it, on the founding author's own instruction. Kapur's Limitations section restricts the finding to *"ontologically direct"* domains and says extending it past those is *"problematic"*; an autonomous agent misbehaving in a live codebase is the ontologically-emergent case he names. The meta-analysis then reports the effect **reversing** for domain-general skills, which is the closer analogue to professional engineering judgement. So the citation would borrow authority the studies withhold. **This entry exists to stop a later cycle adding Kapur as a helpful improvement.** The claim is ours, unattributed, and stronger for it — this would have been the third mis-borrow in this corpus after Conant–Ashby and Argyris & Schön.

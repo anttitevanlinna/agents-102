@@ -26,7 +26,7 @@
 
 **Scope held (framing-level only).** This is the opener version: it names the shape of the trap (vigilance erodes exactly as trust is earned) and stops there. The fix-moves — keep manual reps, calibrate your own miss rate, let gates carry the vigilance — belong to closer and consolidation material, not this opener. The post-launch M4 closer names the feedback constraint after the send-off starts. No goal-drift / context-rot / plausible-but-wrong is named here (M4 lets the student feel those; M5 names them). The application bullet stays generic ("the one that doesn't" lands cleanly) so it primes without spoiling the felt failure.
 
-**Placement rationale:** sits at `run-the-first-experiment.md § Send the task off`, immediately before the send-off mechanics — the "you are the watcher now" beat, where the trap (the better you trust the long run, the worse you watch it) bites hardest. Moved from the opening stack (arc-read finding: four lectures before the exercise was M4's biggest pacing drag; `check_lectures §2` wants a light open before a contrast-mood module). Framing lecture, not a teaching lecture — it arms a lens, it does not hand the fixes.
+**Placement rationale:** module closer — last beat of `run-the-first-experiment.md`, after `what-keeps-a-long-running-session-going.md` (moved 2026-08-25, Antti-directed; previously between the two exercises, before that in the opening stack). Two reasons, both his: the human touch lands at the close, once the student is a live watcher of their own run; and a lecture that sits between no exercises is one a layman trainer can skip cleanly. The lens still arms rather than teaches — the closing question *"when did you last do this kind of work by hand?"* is now literally the module's last word. `check_lectures §1` reads this as the natural home: it names a tension the student is inside by then.
 
 **Unwiring (promotion = relocation):** the M6 back-pointer was already removed this run (`spot-gaps-build-the-loop.md § Next`, see that file's 2026-07-03 wiring-cleanup note). Still open for the cleanup pass: the `ironies-of-automation` row in `TRAININGS['agentic-engineering-101'].supplementaries` (`site/layouts/curriculum.js`) and the `'supplementary/ironies-of-automation'` whitelist line in `scripts/build-workbook.js` — a promoted-to-lecture slug is inlined, not a registered supplementary, so both need the row dropped (mirror the `the-agent-loop` deregistration). Reversibility: git carries the supplementary + its registration. Only the module wiring edited in this pass.
 
@@ -37,9 +37,9 @@
 **Quality:** compendium-audited 2026-08-24 (writing@1abb84c6 story@1abb84c6 technical@1abb84c6 behavior@1c765f2 pedagogy@1abb84c6 strategy@1c765f2 slides@1abb84c6)
 - judges @1abb84c6: writing PASS (drift-recheck), story PASS (drift-recheck), technical PASS (drift-recheck), behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS (drift-recheck)
 
-**Mood target:** curious readiness held (the module's target), with the earned-trust paradox as a named tension. Primes rather than consolidates.
+**Mood target:** curious readiness held (the module's target), with the earned-trust paradox as a named tension. Lands as recognition now that it closes the module — the student is already watching a live run when the trap is named.
 
-**Time:** 3 min target (framing opener, projected). Past 3 in rehearsal = it has started teaching the fixes, which belong to the far half's closers, not here.
+**Time:** 3 min target (closing beat, projected). Past 3 in rehearsal = it has started teaching the fixes, which belong to the far half's closers, not here.
 
 **Voice:** Rory-reframe on the counterintuitive turn (trust and vigilance moving opposite ways), Boris-flat on the mechanism. Risto does NOT lead — forward-optimism would resolve the unease the opener means to open.
 

@@ -183,7 +183,9 @@ function scoreInstance(instancePath, truth) {
 
 function report() {
   if (!fs.existsSync(RUNS)) return []
-  const runs = fs.readdirSync(RUNS).filter(f => f.endsWith('.json'))
+  // Only `.run.json` — the sibling `.instance.json` files are judge output, not
+  // run records, and reading them as records prints a row of undefineds per variant.
+  const runs = fs.readdirSync(RUNS).filter(f => f.endsWith('.run.json'))
     .map(f => JSON.parse(fs.readFileSync(path.join(RUNS, f), 'utf8')))
     .sort((a, b) => (a.iteration || 0) - (b.iteration || 0))
   return runs

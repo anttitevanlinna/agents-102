@@ -1,0 +1,627 @@
+{
+  "class": "writing",
+  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/bench/fixtures/writing-5plant.md",
+  "verdict": "REVISE",
+  "training": "ae101",
+  "body_sha": "bb543761c48f1206116c8b80195c324d4f7586e783563dec4846fd627eaadd00",
+  "rules_evaluated": [
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 1,
+      "rule_lead": "Banned words — grep zero-tolerance.",
+      "verdict": "REVISE",
+      "evidence": "5: 'This is crucially the step that changes how the run behaves.' — body grep for the banned set returns 1 hit (derive-body-view.js banned_words, planted_proof true, body_hits 1). Harm the rule prevents: consultancy/lab register that flinches an engineer reader; present here, the adverb is doing no work the sentence needs.",
+      "fix_hint": "Cut 'crucially'; the sentence states the claim without it.",
+      "blocking": true
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 2,
+      "rule_lead": "Ritual / ceremony — hard ban in any curriculum/training surface.",
+      "verdict": "REVISE",
+      "evidence": "11: 'Treat this as a ritual you repeat at the start of every session.' — ritual_ceremony grep body_hits 1 (planted_proof true). Harm: the word reframes the exercise as ceremony, which is exactly the Scrum-retro register the curriculum exists to replace. Present.",
+      "fix_hint": "Word is 'exercise' (or 'move'/'step'): 'Run this at the start of every session.'",
+      "blocking": true
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 3,
+      "rule_lead": "No stale markers, no fixed retrospectives, no session biography.",
+      "verdict": "REVISE",
+      "evidence": "49: 'This section previously said something different; it was fixed on 2026-01-14.' — session_biography grep body_hits 1 ('previously') and dated_line body_hits 1, both in body region (lines 1-65), no fence, no accept-note. Verb states a transition, so the tense test fires as well as the grep. Harm: changelog in a student-facing body; the student loses nothing if it vanishes.",
+      "fix_hint": "Delete the sentence outright; history is git.",
+      "blocking": true
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 4,
+      "rule_lead": "Register match.",
+      "verdict": "REVISE",
+      "evidence": "37: 'There is no penalty if you skip this, and it is completely fine either way.' — apologetic coach register against the AE101 quintet (Boris x Martin x Godin x Sutherland x Siilasmaa). Peer voice does not reassure a professional that skipping is allowed. Non-blocking: register nuance, not a hard grep.",
+      "fix_hint": "Cut the sentence; the optional framing is already carried by 'Push back on the five.'",
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 5,
+      "rule_lead": "Rough-cut drafts for articles.",
+      "verdict": "N/A",
+      "evidence": "Rule governs article drafts for Antti's rewrite; this is an exercise body.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 6,
+      "rule_lead": "Credit original when paraphrasing named technique.",
+      "verdict": "PASS",
+      "evidence": "Closest: 13 'the agent can reverse-engineer your team's rules.' No named practitioner technique is paraphrased in body; grep for 'Antti', 'the creator', 'the author' in lines 1-65 returns nothing, and no author-'we' (author_we grep body_hits 0, planted_proof true).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 7,
+      "rule_lead": "Always \"you\", never \"the student\"; teacher framing stays out of body.",
+      "verdict": "REVISE",
+      "evidence": "24: 'At this point the student should notice the test is still red.' — the_student grep body_hits 1 (planted_proof true), line 24 is in body region and outside every fence. Harm: third-person teacher voice leaks into student-facing prose and the sentence reads as delivery mechanics rather than something the student can act on. Present.",
+      "fix_hint": "Either recast to second person or move below the maintainer fence; note the claim also contradicts line 62.",
+      "blocking": true
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 8,
+      "rule_lead": "Don't smuggle terms of art from maintainer into body.",
+      "verdict": "PASS",
+      "evidence": "Closest: 43 'Adding a connector is one command per tracker.' — 'connector' is the only maintainer-adjacent term in body and the maintainer block carries an explicit accept-note (L72, Antti 2026-08-18) overruling check_writing 8 findings on it. No other body term appears only in maintainer/strategy register.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 9,
+      "rule_lead": "Over-hedge detector.",
+      "verdict": "REVISE",
+      "evidence": "37: 'There is no penalty if you skip this, and it is completely fine either way.' — hits two of the rule's named flags ('no penalty', 'fine' shape). Harm: a senior engineer reads it and asks why the author thought this needed defending. Present. Non-blocking per template partition.",
+      "fix_hint": "Cut it; the optionality is already visible from the surrounding prose.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 10,
+      "rule_lead": "Verbatim-frame-cite in reference artefact.",
+      "verdict": "N/A",
+      "evidence": "Authoring-process rule about capturing a maintainer's verbal frame into a reference artefact; no reference artefact is being authored here.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 11,
+      "rule_lead": "Cap practitioner attribution at one student-side mention per module.",
+      "verdict": "N/A",
+      "evidence": "No practitioner is named anywhere in the body region (lines 1-65); the roster names sit in the backing block only.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 12,
+      "rule_lead": "Punchy framing keeps punch; carve-out lives downstream.",
+      "verdict": "REVISE",
+      "evidence": "55-58: '## Anything can be reverse-engineered' is followed by exactly two bullets (`sed -n '55,59p' ... | grep -c '^- '` returns 2), and neither names a boundary. The file's own stance block (134) asserts the boundary 'carries its boundary in the third bullet per check_writing.md 12' and tells judges to 'read the third bullet before flagging' — that bullet does not exist. Harm: a superlative slogan shipped with no carve-out, which is the exact configuration 12 exists to prevent, and the maintainer believes it is covered.",
+      "fix_hint": "Restore the boundary bullet (extraction quality tracks the quality of the artifact sampled) or correct the stance note; do not soften the header.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 13,
+      "rule_lead": "Value-prop / positioning framing belongs in sales copy + project strategy docs, NOT student-facing curriculum body.",
+      "verdict": "PASS",
+      "evidence": "Closest: 43 'it pays back on every session after this one.' — a payoff claim about the student's own sessions, not a positioning move; no 'vendor', no 'not aspirational', no marketing-vs-practitioner frame anywhere in lines 1-65.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 14,
+      "rule_lead": "Watch out for planting jargon too early.",
+      "verdict": "PASS",
+      "evidence": "Closest: 57 'reverse-engineered with an LLM'. 'LLM' is legal AE101 working vocabulary per 4's commonly-known-LLM-vocabulary clause; 'connector' is accept-noted at L72. No training-architecture term ('send-off', 'the back half') appears in body.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 15,
+      "rule_lead": "Audit closer when trimming body-prose forcing function.",
+      "verdict": "REVISE",
+      "evidence": "24: 'At this point the student should notice the test is still red.' — the closer of the first section introduces a definite 'the test' that has no antecedent anywhere in the file, and its claim is contradicted by 62 ('The loop that started with a failing test closed'). Read cold, the reader cannot point at what 'the test' is or what they are told to do. Non-blocking.",
+      "fix_hint": "Delete with the 7 fix; if a test reference is wanted, anchor it to the upstream fix explicitly.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 16,
+      "rule_lead": "The **What happened:** block is OPTIONAL — default is to omit it.",
+      "verdict": "PASS",
+      "evidence": "62-64 carries the three moves: count+noun ('Two things came out of one ticket: a close-out note ... and the conventions'), one qualifier ('your team has been encoding in its fields all along'), destination ('The field rules stay in the scrollback'). Past tense throughout, heading is retrospective. Within the 25-40 word band for the first sentence.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 17,
+      "rule_lead": "No combative verbs about the agent in body prose.",
+      "verdict": "PASS",
+      "evidence": "Closest: 39 'Push back on the five.' — push-back is house vocabulary for review pressure on a proposal, not a bark/order/command shape. Verbs directed at the agent elsewhere are 'ask' (33, 45), 'tell' (53), 'have' (7): all peer-flat.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 18,
+      "rule_lead": "Headers must be literally true about the mechanism.",
+      "verdict": "PASS",
+      "evidence": "Closest: 55 '## Anything can be reverse-engineered' — broad, but literally the section's claim and not a spatial metaphor contradicting the mechanism; no 'other X' header presupposing an unnamed primary. Its overreach is filed under 12, not here.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 19,
+      "rule_lead": "Machine-cadence fat — the shape of good prose without the content.",
+      "verdict": "PASS",
+      "evidence": "Closest: 5 'This is ... the step that changes how the run behaves.' — deictic, but 'this' resolves to the exercise the reader just opened, so it is not the empty pointer 19b bans. No empty negation, no bold-label echo, no citation duplication in lines 1-65.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 20,
+      "rule_lead": "Don't state a count the adjacent list already holds.",
+      "verdict": "PASS",
+      "evidence": "Closest: 33 'propose five bug rules.' — the numeral is the size of an ask sent to the agent, not a tally sitting above a visible list, and 39 ('Push back on the five') reuses it as a handle away from any enumeration. No count sits adjacent to the bullet lists at 28-31 or 57-58.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 21,
+      "rule_lead": "A slogan that is false as stated is not punchy framing — run the truth test before reaching for 12.",
+      "verdict": "PASS",
+      "evidence": "57 'Anything can be inspected and reverse-engineered with an LLM' is the superlative, and the maintainer has recorded it as a deliberate, contested, L1 stance in the backing block (132-135) rather than an unread claim. Scoped by its own appositive list to inspectable artifacts, so a true reading exists. The defect is the missing boundary bullet, filed under 12.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 22,
+      "rule_lead": "A claim binds to every body that states it, not just the one holding the stamp.",
+      "verdict": "N/A",
+      "evidence": "Cross-file rule; this fire is scoped to one bench fixture with no sibling body in the corpus.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 23,
+      "rule_lead": "A rule set reconstructed at session start goes stale inside the session — re-derive it per target, not per sweep.",
+      "verdict": "N/A",
+      "evidence": "Sweep-process rule addressed to the orchestrator, not a property of this body.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 24,
+      "rule_lead": "One doc per scarce-attention audience; delta-only.",
+      "verdict": "N/A",
+      "evidence": "Governs trainer/exec/sponsor artifacts; this is a student exercise body.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 25,
+      "rule_lead": "Trainer-facing text is self-contained.",
+      "verdict": "N/A",
+      "evidence": "No trainer-facing page here; the repo-path references (74, 97, 106) sit below the maintainer fence, whose audience is maintainers and judges.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 26,
+      "rule_lead": "A sentence saying how you'd know points at the outcome, not the nearest artifact.",
+      "verdict": "PASS",
+      "evidence": "Closest: 53 'Does it sound like the comments already on the ticket?' — the test points at an external artifact the student did not generate and can come back negative. No self-witnessing instrument in the body.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 1,
+      "rule_lead": "Aspirational destination, never corrective gap.",
+      "verdict": "PASS",
+      "evidence": "Closest: 24 'the student should notice the test is still red' — third-person, but it names no tier and asserts no deficiency, so 1's ability-level and identity-criterion clauses do not fire. No 'at your scale' / 'for a beginner' shapes; no tourist-vs-practitioner criterion.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 2,
+      "rule_lead": "Earn every technical term on first use.",
+      "verdict": "PASS",
+      "evidence": "43 'connector' is the only unearned-looking term; the maintainer block carries an explicit accept-note (L72, Antti 2026-08-18) ruling it assumed-known for the AE101 engineer audience and directing judges not to re-file. 'MCP' likewise. Everything else (ticket, tracker, labels, severity, repro steps, CI, config, API) is the audience's own working vocabulary.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 3,
+      "rule_lead": "No narrating student's past or present state.",
+      "verdict": "REVISE",
+      "evidence": "24: 'At this point the student should notice the test is still red.' — present-state ascription of what the reader is supposed to be perceiving, in the third person. Harm: patronising descriptive grammar wearing an imperative's hat, on a professional audience. Present. Non-blocking (the blocking half is filed under check_writing 7).",
+      "fix_hint": "Cut the sentence.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 4,
+      "rule_lead": "Memory vs context — use deliberately.",
+      "verdict": "PASS",
+      "evidence": "Closest: 64 'The field rules stay in the scrollback.' — scrollback is correctly treated as ambient session state that the next exercise must sweep, not as memory. No 'your context compounds' shape.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 5,
+      "rule_lead": "Golden path only in body — THIS RULE HAS AN EXCEPTION.",
+      "verdict": "PASS",
+      "evidence": "Closest: 18 'If there is no ticket for this bug, say so in the chat. The agent will offer to create one.' and 30 'No ticket of your own to read? Any other real ticket from your tracker works.' Both are plausible failures with non-obvious one-line rescues, so the boundary clause keeps them in body; routing them below the fence would delete them.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 6,
+      "rule_lead": "Trust Claude's defaults for structure.",
+      "verdict": "PASS",
+      "evidence": "Closest: 45 'Ask Claude to write the close-out, update the ticket, and report what it wrote.' — ask plus destination plus show-me, no imposed output shape. Body specifies no format for the close-out or the rules.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 7,
+      "rule_lead": "Q1/Q2/Q3 retro interview is banned at every module.",
+      "verdict": "N/A",
+      "evidence": "No Debrief or compound beat in this file; the maintainer block (70) states the fold is deliberately absent.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 8,
+      "rule_lead": "Don't smuggle another module's voice.",
+      "verdict": "PASS",
+      "evidence": "Closest: 55-58, the reverse-engineering generalisation. It closes on the beat's own move (read one artifact, extract the rules) rather than importing a later module's mood; the backing block records it as this file's own frame.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 9,
+      "rule_lead": "Don't ask student to manually diff or spot-check Claude's output as error-catching.",
+      "verdict": "PASS",
+      "evidence": "Closest: 53 'Does it sound like the comments already on the ticket? If the wording feels off or wrong, tell Claude which line and how you'd write it.' — reading for register is inside this rule's own exemption, and per the compendium's warning about that exemption, re-running the other clauses: the object is named (the comments on the ticket), the tell is named (wording feels off), the addressee is explicit (Claude), and the line is executable. Passes all of them.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 10,
+      "rule_lead": "Simulation personas never alone.",
+      "verdict": "N/A",
+      "evidence": "Governs self-study simulation scoring, not body prose.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 11,
+      "rule_lead": "No \"What research says\" callout boxes.",
+      "verdict": "PASS",
+      "evidence": "No callout box of any kind in lines 1-65; the file cites no research inline. Closest structure is the plain bullet list at 28-31.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 12,
+      "rule_lead": "Student moves stay in conversation with agent.",
+      "verdict": "PASS",
+      "evidence": "Closest: 17 'Open the ticket for the bug you fixed and paste its link.' — opening a tracker page and pasting into chat keeps the forcing function inside the conversation; no editor, git, or terminal primitive is made the forcing function anywhere in body.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 13,
+      "rule_lead": "Specify which CLAUDE.md layer — every time.",
+      "verdict": "N/A",
+      "evidence": "No CLAUDE.md reference in the body region; the one occurrence is at 104, below the maintainer fence.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 14,
+      "rule_lead": "No em-dashes. Simple sentences.",
+      "verdict": "PASS",
+      "evidence": "em_dash grep over the body region returns body_hits 0 with planted_proof true (derive-body-view.js). Sentences are short and declarative throughout.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 17,
+      "rule_lead": "Section headers use command verbs when section is about doing something.",
+      "verdict": "PASS",
+      "evidence": "Four of five section headers lead with a verb ('Read the ticket for your bug', 'Read the conventions off the ticket', 'Write the close-out and send it', 'Double-check the voice'). Closest to violating: 55 '## Anything can be reverse-engineered', a frame section whose job is understanding rather than doing, which the rule's lecture/reference clause allows.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 18,
+      "rule_lead": "Inline links use target's title, never filename.",
+      "verdict": "PASS",
+      "evidence": "43: '[MCP and connectors](../trainings/agentic-engineering-101/reference/mcp-and-connectors.md)' — link text is the target's H1 title, not a filename and not a code-span path. The `../` prefix is path form, governed by curriculum/module-shape.md and explicitly out of this rule's scope per its 2026-08-13 clause; not filed.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 20,
+      "rule_lead": "Disambiguate shared-word collisions with Claude Code primitives on first student-authored use.",
+      "verdict": "PASS",
+      "evidence": "Closest: 20 'Drop the ticket link after the colon.' — a deictic-free locator whose referent is the prompt immediately below, which the rule calls harmless. 'rules' at 31/33/39 means the team's tracker conventions and never Claude Code's rules surface; no 'memory', 'skill', or 'subagent' authored here.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 21,
+      "rule_lead": "LLM-vs-agent-vs-Claude vocabulary discipline.",
+      "verdict": "PASS",
+      "evidence": "Split is clean: thinking/capability keeps LLM (57 'reverse-engineered with an LLM'), autonomous acting takes the agent (18, 29, 30, 31, 58), invocation takes Claude (33, 45, 53). Body counts are roughly balanced (agent 6, Claude 3), so the 10:0 assistant-shaped audit signal does not fire.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": "21b",
+      "rule_lead": "Session / task / run split (all trainings).",
+      "verdict": "REVISE",
+      "evidence": "5: 'This is crucially the step that changes how the run behaves.' — noun-'run' standing for the agent's sitting, which is banned in student-facing body; the sentence means the session. It is not a test/CI/eval execution, a quoted line, or an artifact name. Harm: it re-blurs the session/task/run split the vocabulary registry exists to hold. Non-blocking.",
+      "fix_hint": "'how the session behaves' — or cut the sentence with the 1 fix.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 22,
+      "rule_lead": "No time-of-day anchors in body prose.",
+      "verdict": "PASS",
+      "evidence": "No 'tomorrow / overnight / this morning / tonight / yesterday' in lines 1-65. Closest temporal phrase: 11 'at the start of every session', which is session-relative, the replacement form the rule prescribes.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 23,
+      "rule_lead": "Reflection beats stay invisible in flow.",
+      "verdict": "PASS",
+      "evidence": "Closest: 11 'Treat this as a ritual you repeat at the start of every session.' — coach-adjacent, but it announces no reflection beat and carries none of the banned contemplative prefixes ('sit with', 'take a moment', 'let it land'). Its defect is lexical and is filed under check_writing 2.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 24,
+      "rule_lead": "No meta-ask when student has already decided.",
+      "verdict": "PASS",
+      "evidence": "Closest: 39 'Push back on the five.' — the five arrive from the prompt at 35 and the student acts on them rather than restating them; no body section carries an LO or a failure row without a prompt behind it.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 25,
+      "rule_lead": "`.md` is default file type for student artifacts across curriculum.",
+      "verdict": "PASS",
+      "evidence": "58: 'Extract a `.md` file.' — the only artifact extension named in body, and it is `.md`.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 26,
+      "rule_lead": "Cut NVA: true but not moving student forward.",
+      "verdict": "PASS",
+      "evidence": "Closest: 30 'One the agent just wrote carries none of your team's conventions.' — arguably obvious, but it forecloses the one substitution that would silently void the exercise, so it changes what the student does. The genuinely non-value-adding lines in this body (37, 49) are filed under check_writing 9 and 3.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 27,
+      "rule_lead": "Body \"read it\" / \"look at it\" / \"notice X\" after chat-print = dead weight.",
+      "verdict": "PASS",
+      "evidence": "Closest: 53 'Does it sound like the comments already on the ticket?' — a question with a follow-on direction attached, not a bare 'read it'. 24's 'should notice' is the nearer shape but is third-person narration, filed under check_writing 7 and check_student_facing 3.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 28,
+      "rule_lead": "Forward-callout closer: student as grammatical subject.",
+      "verdict": "PASS",
+      "evidence": "Closest: 43 'it pays back on every session after this one.' — the subject is the connector, not the training, and no imperative watch-for/look-out-for shape or role-gating appears. 64 fails a different rule (33) on cartography, not on the subject test.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 29,
+      "rule_lead": "Operational reminders live at moment of use, not only where introduced.",
+      "verdict": "N/A",
+      "evidence": "This exercise carries no per-module operational setting (thinking effort, model, mode tag, worktree path) that would owe a restatement.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 30,
+      "rule_lead": "Echo the training's theory spine before inventing a synonym.",
+      "verdict": "PASS",
+      "evidence": "Closest: 62 'The loop that started with a failing test closed.' — reaches for the house frame (the loop) rather than a neutral synonym. No invented coinage anywhere in body.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 31,
+      "rule_lead": "Name the artifact, not the act.",
+      "verdict": "PASS",
+      "evidence": "Grep tells ('typing ', 'type in', 'say to Claude', 'tell it to') return nothing in lines 1-65. Closest: 18 'say so in the chat', which names the channel rather than a keystroke.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 32,
+      "rule_lead": "Name the outcome; don't walk a professional through trivial mechanics.",
+      "verdict": "PASS",
+      "evidence": "43: 'Adding a connector is one command per tracker' states the outcome and points at the reference page instead of writing out an auth recipe. No `gh auth login`-style step list anywhere in body.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 33,
+      "rule_lead": "The curriculum does not narrate itself — subject test, then deletion test.",
+      "verdict": "REVISE",
+      "evidence": "64: 'The next exercise sweeps this whole session.' — subject is a later exercise and the predicate promises what that beat will do, which the 2026-08-23 predicate-leak clause names as cartography however the sentence starts. Delete it and 62 closes cleanly. Harm: a cheque the next exercise has to cash, in a recap section that is not on the exempt signposting list. Non-blocking, and worth a maintainer call: it may be deliberately answering where the rules go, in which case it owes an accept-note.",
+      "fix_hint": "Cut the clause, or state the present fact only ('The field rules stay in the scrollback.').",
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 34,
+      "rule_lead": "Four sharing strategies (Agents 101 M7 canonical) — use verbatim.",
+      "verdict": "N/A",
+      "evidence": "Agents 101 M7 canonical text; this is an AE101 M1 exercise.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 35,
+      "rule_lead": "Agents 101 M2+ Debrief — canonical shape.",
+      "verdict": "N/A",
+      "evidence": "Agents 101 Debrief shape; no Debrief in this file and the training is AE101.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 36,
+      "rule_lead": "Trust the prompt over the scaffold.",
+      "verdict": "PASS",
+      "evidence": "Three registry prompts carry the whole exercise (22, 35, 47) and no scaffold is shipped; the bug rules and the close-out are produced through the prompts, in the student's own tracker voice.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 37,
+      "rule_lead": "Mood is a design constraint, not a garnish.",
+      "verdict": "PASS",
+      "evidence": "AE101 M1's mood is earned trust, and the beat lands there (17-20, 45). Closest to the module's signature wrong-edit: 11 'Treat this as a ritual you repeat at the start of every session', which pushes toward ceremony register; filed lexically under check_writing 2.",
+      "fix_hint": null,
+      "blocking": false
+    }
+  ],
+  "findings": [
+    {
+      "rule": "check_writing.md 1",
+      "line": 5,
+      "quote": "This is crucially the step that changes how the run behaves.",
+      "harm": "Banned adverb in student-facing body; consultancy/lab register that flinches an engineer reader, and it carries no meaning the sentence loses without it.",
+      "fix": "Cut 'crucially'."
+    },
+    {
+      "rule": "check_writing.md 2",
+      "line": 11,
+      "quote": "Treat this as a ritual you repeat at the start of every session.",
+      "harm": "Hard-banned word on a curriculum surface; reframes the exercise as ceremony, the exact register the compound loop exists to replace.",
+      "fix": "'Run this at the start of every session.' — the word is exercise, move, or step."
+    },
+    {
+      "rule": "check_writing.md 7",
+      "line": 24,
+      "quote": "At this point the student should notice the test is still red.",
+      "harm": "Third-person teacher voice in student-facing body, and it reads as delivery mechanics rather than an action the reader can take. The claim is also unanchored ('the test' has no antecedent) and contradicts line 62.",
+      "fix": "Delete the sentence; if a trainer cue is wanted, it belongs below the maintainer fence."
+    },
+    {
+      "rule": "check_writing.md 3",
+      "line": 49,
+      "quote": "This section previously said something different; it was fixed on 2026-01-14.",
+      "harm": "Changelog in a student-facing body: a transition verb plus a bare date, telling the reader about an edit rather than about their work. History is git.",
+      "fix": "Delete the sentence outright."
+    }
+  ],
+  "todos": [
+    {
+      "rule": "check_writing.md 9",
+      "line": 37,
+      "note": "'There is no penalty if you skip this, and it is completely fine either way.' — over-hedge; two named flags in one sentence. Cut it."
+    },
+    {
+      "rule": "check_writing.md 4",
+      "line": 37,
+      "note": "Same sentence is the file's clearest register slip against the AE101 quintet: peer voice does not reassure a professional that skipping is allowed."
+    },
+    {
+      "rule": "check_writing.md 12",
+      "line": 55,
+      "note": "'## Anything can be reverse-engineered' ships with two bullets and no boundary paragraph, while the backing stance (line 134) tells judges the caveat lives 'in the third bullet'. Restore the boundary bullet or correct the stance note."
+    },
+    {
+      "rule": "check_writing.md 15",
+      "line": 24,
+      "note": "'the test is still red' — definite article with no antecedent in the file, and contradicted by line 62. Goes away with the rule-7 deletion."
+    },
+    {
+      "rule": "check_student_facing.md 3",
+      "line": 24,
+      "note": "Same sentence is present-state ascription of what the reader should be perceiving; patronising on a professional audience."
+    },
+    {
+      "rule": "check_student_facing.md 21b",
+      "line": 5,
+      "note": "'how the run behaves' — noun-run for the agent's sitting is banned in student-facing body; the word is session."
+    },
+    {
+      "rule": "check_student_facing.md 33",
+      "line": 64,
+      "note": "'The next exercise sweeps this whole session.' — later-beat predicate is cartography; delete and line 62 closes cleanly. If it is deliberately answering where the rules go, it owes an accept-note."
+    }
+  ],
+  "blocking_findings_count": 4,
+  "todos_count": 7
+}

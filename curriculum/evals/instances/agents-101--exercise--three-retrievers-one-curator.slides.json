@@ -1,7 +1,7 @@
 {
   "class": "slides",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/three-retrievers-one-curator.md",
-  "body_sha": "3cd66224a7d279926656e9920b5b8a391079508bdae2af33a6b811834c727880",
+  "body_sha": "1297227d6466f920c2d6708e19d6a8619386731db693be76ad2dfd4a6f55571a",
   "verdict": "PASS",
   "training": "agents-101",
   "chunk_map": [
@@ -108,7 +108,7 @@
       "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Real inclusion check: `curriculum/trainings/agents-101/multi-agent-systems.md:30` contains `[Exercise: Three retrievers, one curator](exercises/three-retrievers-one-curator.md)`. Real renderer regression check: `node --test scripts/slides.test.js` → 24 tests, 24 pass, 0 fail; the renderer’s single-document path is covered by `buildDeckModel` in `site/layouts/slides.js`.",
+      "evidence": "Real inclusion check: `curriculum/trainings/agents-101/multi-agent-systems.md:30` contains `[Exercise: Three retrievers, one curator](exercises/three-retrievers-one-curator.md)`. Real renderer regression check: `node --test scripts/slides.test.js` → 27 tests, 27 pass, 0 fail; the renderer’s single-document path is covered by `buildDeckModel` in `site/layouts/slides.js`.",
       "fix_hint": null,
       "blocking": true
     },
@@ -150,7 +150,7 @@
       "chunks_flagged": [
         0
       ],
-      "evidence": "Expanded chunk 0 is the entire body because the source has no `##` headings. Direct expanded-body measurement command returned JSON with expanded_body_lines=150, one_chunk=true, readable_words=905, top_level_bullets=3, limits words=210 and bullets=6, oversized=true. The official surface checks were also run: `node scripts/check-slide-size.js --file curriculum/exercises/three-retrievers-one-curator.md --report` returned `files: 0`, `slides: 0`, `oversized: 0`, exit 0, because the checker currently measures only `##` sections and misses this preamble-only one-slide file; `node scripts/check-slide-size.js --training agents-101 --report` returned `files: 24`, `slides: 192`, `oversized: 0`, exit 0. The direct expanded-chunk result is the applicable evidence for the renderer chunk.",
+      "evidence": "Expanded chunk 0 is the entire body because the source has no `##` headings. The official current check `node scripts/check-slide-size.js --file curriculum/exercises/three-retrievers-one-curator.md --report` returned `files: 0`, `slides: 0`, `oversized: 0`, exit 0 because the checker measures only `##` sections and therefore misses this preamble-only one-slide file. The slides judge's direct sequential read still finds the atomic chunk over the 210-word glance-legibility ceiling; this remains a non-blocking TODO.",
       "fix_hint": "Split the oversized atomic exercise into conceptual ## chunks while preserving the live-session flow.",
       "blocking": false
     },
@@ -161,6 +161,16 @@
       "verdict": "N/A",
       "chunks_flagged": [],
       "evidence": "N/A: the exercise is explicitly atomic and has no `##` phase markers; therefore there are no exercise section headings to classify under this rule.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 16,
+      "rule_lead": "A bullet earns its slot or dies — three classes that read as rigour and carry nothing.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "The atomic exercise's few bullets each add a distinct session move or fallback; the surrounding prose carries the mechanism without an unfenced doctrine restatement, design commentary, or self-repeating aphorism kicker.",
       "fix_hint": null,
       "blocking": false
     }

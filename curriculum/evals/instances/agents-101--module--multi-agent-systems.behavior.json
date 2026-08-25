@@ -2,8 +2,9 @@
   "class": "behavior",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agents-101/multi-agent-systems.md",
   "training": "agents-101",
-  "body_sha": "8f395e0765480f32c100cc1de4be76b42d78a6a2d89848b32d8492402473b23e",
-  "trace_status": "full_regen",
+  "body_sha": "841542748e0b016f061c72d4b9dcca7c917eb8218a78de9e579ee032c56b8a47",
+  "verdict": "PASS",
+  "trace_status": "partial_regen",
   "prompts_evaluated": 2,
   "prompts_findings": [
     {
@@ -16,7 +17,7 @@
           "pattern_id": "file-preservation-gap",
           "confidence": "med",
           "evidence": "Then rewrite CLAUDE.md. Integrate, don't append. Sharpen the rules... Add what's missing, remove what turned out wrong.",
-          "fix_hint": "A shared rules file can lose still-valid rules when the rewrite boundary is not explicit; that risk is present in the prompt shape."
+          "fix_hint": "A shared rules file can lose still-valid rules when the rewrite boundary is not explicit; name what must survive."
         }
       ]
     },
@@ -30,6 +31,42 @@
   ],
   "blocking_findings_count": 0,
   "todos_count": 1,
-  "verdict": "PASS",
-  "evidence": "Expanded current source with node scripts/expand-md.js curriculum/trainings/agents-101/multi-agent-systems.md; scanned 2 prompt block(s) above the maintainer cut; raw source SHA-256 recorded in body_sha. Behavior conclusions re-derived from the frozen source; eval-loop prompt 2 reconciled against check_prompts §17."
+  "rules_evaluated": {
+    "note": "Full 15-pattern catalog coverage for both prompts; prompt 1 has one medium-confidence load-bearing risk, which is nonblocking because REVISE requires one high-confidence risk or two medium-confidence risks. Prompt 2 has no fired risks.",
+    "prompt_1": [
+      {"pattern_id":"file-preservation-gap","status":"fired","confidence":"med","reason":"The prompt rewrites the shared ./CLAUDE.md and names integration but does not say which still-valid rules must survive."},
+      {"pattern_id":"reading-burden","status":"not-applicable","reason":"Claude scans the named artifacts; the student receives a short evidence report."},
+      {"pattern_id":"niceness-tax","status":"not-fired","reason":"Harsh audit language, seam evidence, and an explicit anti-diplomatic constraint resist softening."},
+      {"pattern_id":"question-dump","status":"not-applicable","reason":"No sequence of questions is posed to the student."},
+      {"pattern_id":"overwrite-anxiety","status":"not-applicable","reason":"The destination is explicit and the prompt says to rewrite ./CLAUDE.md in place."},
+      {"pattern_id":"preamble-before-action","status":"not-fired","reason":"The opening explicitly says to start by reading and gives no plan or preamble; no separate preamble is invited."},
+      {"pattern_id":"append-vs-integrate","status":"not-fired","reason":"The prompt explicitly says integrate, don't append, and asks for a rewritten better version."},
+      {"pattern_id":"plan-mode-preamble-bloat","status":"not-applicable","reason":"The prompt does not invoke plan mode."},
+      {"pattern_id":"citation-gap-asymmetry","status":"not-applicable","reason":"No factual-claim or citation output is requested."},
+      {"pattern_id":"self-report-inflation","status":"not-fired","reason":"The evidence-backed Debrief carve-out applies: named files, session evidence, seams, and omissions are required."},
+      {"pattern_id":"default-acceptance","status":"not-applicable","reason":"No weak default is offered for acceptance."},
+      {"pattern_id":"plan-mode-approval-inflation","status":"not-applicable","reason":"No plan-mode plan is requested."},
+      {"pattern_id":"source-type-blindness","status":"not-applicable","reason":"The prompt reviews existing retrieval artifacts but does not ingest or classify a source set."},
+      {"pattern_id":"citation-cargo-cult","status":"not-applicable","reason":"No citations are requested."},
+      {"pattern_id":"self-audit-charity","status":"not-fired","reason":"The evidence-backed Debrief carve-out applies: the audit must cite concrete artifacts and handoff losses, with student push-back immediately after."}
+    ],
+    "prompt_2": [
+      {"pattern_id":"file-preservation-gap","status":"not-applicable","reason":"The prompt only inspects memory and sources and proposes changes before any file change."},
+      {"pattern_id":"reading-burden","status":"not-applicable","reason":"Claude performs the health check; the student is not asked to proofread the corpus manually."},
+      {"pattern_id":"niceness-tax","status":"not-fired","reason":"The required drop candidate and all-green challenge push Claude toward a critical review."},
+      {"pattern_id":"question-dump","status":"not-applicable","reason":"No sequence of questions is posed to the student."},
+      {"pattern_id":"overwrite-anxiety","status":"not-applicable","reason":"No file change is requested; restructuring is only proposed before approval."},
+      {"pattern_id":"preamble-before-action","status":"not-applicable","reason":"The prompt has three checks and a conditional proposal, but does not trigger the four-step or plan-mode condition."},
+      {"pattern_id":"append-vs-integrate","status":"not-applicable","reason":"No regeneration with a new context source is requested."},
+      {"pattern_id":"plan-mode-preamble-bloat","status":"not-applicable","reason":"The prompt does not invoke plan mode."},
+      {"pattern_id":"citation-gap-asymmetry","status":"not-applicable","reason":"No factual-claim or citation output is requested."},
+      {"pattern_id":"self-report-inflation","status":"not-applicable","reason":"The prompt audits memory and sources, not Claude's own completed work."},
+      {"pattern_id":"default-acceptance","status":"not-applicable","reason":"No weak default is offered for acceptance."},
+      {"pattern_id":"plan-mode-approval-inflation","status":"not-applicable","reason":"No plan-mode plan is requested."},
+      {"pattern_id":"source-type-blindness","status":"not-fired","reason":"The task checks coverage, staleness, and structure rather than asking Claude to ingest uncategorized sources."},
+      {"pattern_id":"citation-cargo-cult","status":"not-applicable","reason":"No citations are requested."},
+      {"pattern_id":"self-audit-charity","status":"not-applicable","reason":"The prompt does not ask Claude to self-critique its own output."}
+    ]
+  },
+  "evidence": "node scripts/expand-md.js curriculum/trainings/agents-101/multi-agent-systems.md | shasum -a 256 -> a8eebca19a8a76320f0c4400b2c1838d0030a19b8c58bf900fd13bbaf93060a9; shasum -a 256 curriculum/trainings/agents-101/multi-agent-systems.md -> ef16da34d00090587b8f8910adc99aa8d4022e7f9f1f5746cd8053b3cddf4204; expanded view scanned 2 prompt blocks above the maintainer cut."
 }

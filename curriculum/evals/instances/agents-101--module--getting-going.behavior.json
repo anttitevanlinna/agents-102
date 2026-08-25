@@ -2,8 +2,8 @@
   "class": "behavior",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agents-101/getting-going.md",
   "training": "agents-101",
-  "body_sha": "abe73c681de3b7eecf317e7832a4ce553bbecaebb8010c3413c16c0bcefaf895",
-  "content_sha": "d4f48e3c8740c9e62454f59e1e1a35818a65eb2d1b8a79e3cfe6a99cc6f1eee7",
+  "body_sha": "c2544ac5e6e098a3fb427bd9f1055515f77daafcb05dd369c8eae49dbe41a36e",
+  "content_sha": "65c6287feb60341a5876ae9e21a45b39bd2d3f35bf9cf2932112dde15e5e0858",
   "verdict": "PASS",
   "trace_status": "full_regen",
   "prompts_evaluated": 2,
@@ -12,10 +12,16 @@
       "prompt_index": 1,
       "prompt_sha": "08c8a7006bb887170e87dde7f85bb3ea93673eef213f4f9a696701d4705b7bc0",
       "prompt_lead": "Start by reading the file. No plan or preamble.",
-      "verdict": "PASS",
+      "verdict": "TODO",
       "load_bearing": true,
-      "risks_fired": [],
-      "evidence": "The prompt names the existing personal rules file, requires an evidence-backed retro against the actual session, explicitly says not to defend it, and specifies overwrite-in-place plus a change report; the surrounding Debrief supplies the evidence-backed self-audit carve-out."
+      "risks_fired": [
+        {
+          "pattern_id": "preamble-before-action",
+          "confidence": "low",
+          "evidence": "The long retro prompt has 4+ named moves and its 'No plan or preamble' suppressor is at the opening rather than the final line; the residual risk is that Claude narrates before reading.",
+          "fix_hint": "If the residual matters in a live run, move the no-preamble cue to the final line or add a nearby primer telling the student to skim the opening and find the retro evidence."
+        }
+      ]
     },
     {
       "prompt_index": 2,
@@ -23,11 +29,27 @@
       "prompt_lead": "Spawn a subagent to give an unbiased read on `module-1/site.html`.",
       "verdict": "PASS",
       "load_bearing": true,
-      "risks_fired": [],
-      "evidence": "The prompt requests a cold independent read and two contrasting verbatim lines; the surrounding body names the praise-order softening risk and tells the student to weigh their own judgment."
+      "risks_fired": []
     }
   ],
   "blocking_findings_count": 0,
-  "todos_count": 0,
-  "evidence": "Ran `node scripts/expand-md.js curriculum/trainings/agents-101/getting-going.md`; expanded output contained 2 prompt fences. Raw source SHA-256 is recorded in body_sha, expanded output SHA-256 in content_sha, and every finding has a current prompt_sha plus non-null evidence."
+  "todos_count": 1,
+  "catalog_coverage": [
+    {"pattern_id":"file-preservation-gap","status":"not_fired","why":"Prompt 1 names the existing personal rules file and explicitly requires overwrite in place; prompt 2 writes no file."},
+    {"pattern_id":"reading-burden","status":"not_fired","why":"Claude is assigned the session and site reads; the student is not assigned manual proofreading for correctness."},
+    {"pattern_id":"niceness-tax","status":"not_fired","why":"Prompt 1 explicitly says to find what is wrong and not defend the rules file; prompt 2 asks for a generic line and the surrounding prose tells the student to trust their own gut."},
+    {"pattern_id":"question-dump","status":"not_fired","why":"Prompt 1's review questions are an internal audit checklist for Claude, not a sequential interview of the student."},
+    {"pattern_id":"overwrite-anxiety","status":"not_fired","why":"Prompt 1 gives the destination and says to overwrite it in place; prompt 2 has no file-write destination."},
+    {"pattern_id":"preamble-before-action","status":"fired","confidence":"low","prompt_index":1,"why":"Prompt 1 is a multi-move retro with an opening no-preamble cue but no final-line suppressor or nearby preamble primer; prompt 2 is short and bounded."},
+    {"pattern_id":"append-vs-integrate","status":"not_fired","why":"Prompt 1 explicitly says to overwrite in place, rewrite the file, and not append a retro-notes section."},
+    {"pattern_id":"plan-mode-preamble-bloat","status":"not_fired","why":"Neither prompt invokes plan mode; prompt 1 explicitly disallows a plan."},
+    {"pattern_id":"citation-gap-asymmetry","status":"not_fired","why":"Neither prompt requests sourced factual claims or citations."},
+    {"pattern_id":"self-report-inflation","status":"not_fired","why":"The evidence-backed Debrief carve-out applies: prompt 1 requires comparison with the actual session and artifact-level dropped, sharpened, and added changes; prompt 2 requests quoted site lines."},
+    {"pattern_id":"default-acceptance","status":"not_fired","why":"Neither prompt offers a default structure or candidate answer for Claude to accept uncritically."},
+    {"pattern_id":"plan-mode-approval-inflation","status":"not_fired","why":"Neither prompt produces a plan for approval."},
+    {"pattern_id":"source-type-blindness","status":"not_fired","why":"The prompts read the student's own session artifact and site; they do not ingest heterogeneous external sources."},
+    {"pattern_id":"citation-cargo-cult","status":"not_fired","why":"Neither prompt requests citations."},
+    {"pattern_id":"self-audit-charity","status":"not_fired","why":"Prompt 1 explicitly assumes the rules file is at least 30% wrong or thin and says not to defend it; prompt 2 uses an independent cold subagent and contrasting quoted lines."}
+  ],
+  "evidence": "Ran `node scripts/expand-md.js curriculum/trainings/agents-101/getting-going.md`; expanded output contained 2 prompt fences. Raw source SHA-256 is c2544ac5e6e098a3fb427bd9f1055515f77daafcb05dd369c8eae49dbe41a36e and expanded complete-output SHA-256 is 65c6287feb60341a5876ae9e21a45b39bd2d3f35bf9cf2932112dde15e5e0858. Recomputed prompt SHA-256 values are 08c8a7006bb887170e87dde7f85bb3ea93673eef213f4f9a696701d4705b7bc0 and f8ca52b6ec5c296801b6b8f55ac262ef2cfc0adab09cda7e6f073ab3176d3314. The first prompt carries one low-confidence preamble TODO; no high-confidence risk or pair of medium-confidence risks is present, so no actual blocking harm supports REVISE. All 15 catalog patterns are represented in catalog_coverage."
 }

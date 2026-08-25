@@ -16,7 +16,7 @@
           "pattern_id": "preamble-before-action",
           "confidence": "med",
           "evidence": "Three things, in sequence: 1. Write... 2. Run... 3. Run the judge...",
-          "fix_hint": "The long sequence invites plan narration before the first calibration write."
+          "fix_hint": "The three-step orchestration can invite brief plan narration before the first calibration write; the risk is nonblocking because the first artifact remains explicit."
         }
       ]
     },
@@ -59,5 +59,22 @@
   "blocking_findings_count": 0,
   "todos_count": 1,
   "verdict": "PASS",
-  "evidence": "Expanded current source with node scripts/expand-md.js curriculum/exercises/eval-loop.md; scanned 6 prompt block(s) above the maintainer cut; raw source SHA-256 recorded in body_sha. Behavior conclusions re-derived from the frozen source; eval-loop prompt 2 reconciled against check_prompts §17."
+  "catalog_coverage": [
+    {"pattern_id": "file-preservation-gap", "status": "not_fired", "why": "Prompt 1 creates named first-use artifacts; prompts 2 and 6 explicitly rewrite the tactic in place and prohibit versioned copies."},
+    {"pattern_id": "reading-burden", "status": "not_fired", "why": "The student is given concrete run artifacts and a push-back checkpoint, not manual proofreading for correctness."},
+    {"pattern_id": "niceness-tax", "status": "not_fired", "why": "No prompt asks Claude to soften a critique or stance; the body explicitly tells the student to push back where the result is too neat."},
+    {"pattern_id": "question-dump", "status": "not_fired", "why": "Prompt 4 structurally requires one snippet, then a wait for 'next'; no other prompt asks Claude to interview the student."},
+    {"pattern_id": "overwrite-anxiety", "status": "not_fired", "why": "Write destinations are named, and prompt 2/6 specify in-place tactic rewrites and no versioned copies."},
+    {"pattern_id": "preamble-before-action", "status": "fired", "confidence": "med", "prompt_index": 1, "why": "Prompt 1's three-step orchestration invites brief narration before the first write; prompt 2 and prompt 6 contain explicit no-preamble language."},
+    {"pattern_id": "append-vs-integrate", "status": "not_fired", "why": "No prompt asks Claude to add a section or new context to an existing document."},
+    {"pattern_id": "plan-mode-preamble-bloat", "status": "not_fired", "why": "No prompt invokes plan mode or asks for a plan artifact."},
+    {"pattern_id": "citation-gap-asymmetry", "status": "not_fired", "why": "Grounding inputs are named, but no prompt requests citation-bearing claims with an uneven cite-or-flag scope."},
+    {"pattern_id": "self-report-inflation", "status": "not_fired", "why": "Prompt 5 anchors its return questions in module-6/eval-notes.md and the final tactic; the evidence-backed debrief carve-out applies."},
+    {"pattern_id": "default-acceptance", "status": "not_fired", "why": "No prompt offers a weak default for Claude to accept uncritically; the body asks the student to push back on neat conclusions."},
+    {"pattern_id": "plan-mode-approval-inflation", "status": "not_fired", "why": "No plan-mode plan is presented for approval."},
+    {"pattern_id": "source-type-blindness", "status": "not_fired", "why": "The prompts use named project artifacts and memory as evidence; they do not ingest a heterogeneous source set requiring source-type classification."},
+    {"pattern_id": "citation-cargo-cult", "status": "not_fired", "why": "No prompt asks Claude to add citations."},
+    {"pattern_id": "self-audit-charity", "status": "not_fired", "why": "Prompt 5 asks for concrete score, change, and failure evidence from named files, while nearby prose gives the student a push-back recovery."}
+  ],
+  "evidence": "Ran node scripts/expand-md.js curriculum/exercises/eval-loop.md; expanded SHA-256 is 54695ade8a8ea36d37b8ed7c7a9faafbb6ac74261fb5a62aa2d0602e8b7ff794. Raw source SHA-256 is b3666e6d12b1f3cb74bf11b58419895833468be9fdbcc093f7f93e97623f2f9a. Six expanded prompt blocks were scanned; all six current prompt SHAs match the cache. The 15 catalog rows above provide full coverage. One med-confidence, nonblocking preamble TODO remains; no actual blocking harm is present, so the top-level verdict is PASS."
 }

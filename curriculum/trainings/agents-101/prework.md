@@ -96,9 +96,9 @@ Once those five things are ready, end the prework <span class="rt-code">session<
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-08-23 (writing@194c81b0 story@194c81b0 technical@725101ec behavior@725101ec pedagogy@725101ec strategy@725101ec slides@194c81b0)
-- judges @194c81b0: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
-- cross_module @090407d3: PASS — set=[prework,getting-going,building-agent-systems,multi-agent-systems,security,output-quality,evaluations,personal-to-team,agents-building-agents]
+**Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@194c81b0 technical@725101ec behavior@725101ec pedagogy@725101ec strategy@725101ec slides@194c81b0)
+- judges @d3ff749e: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+- cross_module @2072737a: PASS — set=[prework,getting-going,building-agent-systems,multi-agent-systems,security,output-quality,evaluations,personal-to-team,agents-building-agents]
 
 **Packaging:**
 - `<CONTENT_URL>` is build-time substituted by `scripts/build-workbook.js` per customer. Example rendered URL: `https://agents102.bosser.consulting/clients/acme/agents-101/agents-101-starter.tar.gz`. Source markdown carries the placeholder so substitution is auditable; rendered workbooks never show it.

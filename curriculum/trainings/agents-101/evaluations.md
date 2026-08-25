@@ -79,8 +79,8 @@ You just built an eval that improves itself. The system can now keep pressure on
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-08-24 (writing@2072737a story@725101ec technical@725101ec behavior@725101ec pedagogy@725101ec strategy@725101ec slides@2072737a)
-- judges @2072737a: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@725101ec technical@725101ec behavior@725101ec pedagogy@725101ec strategy@725101ec slides@2072737a)
+- judges @d3ff749e: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - cross_module @2072737a: PASS — set=[prework,getting-going,building-agent-systems,multi-agent-systems,security,output-quality,evaluations,personal-to-team,agents-building-agents]
 
 **Mood target:** Unleashed leverage — the student sees the loop improve work while the human owns the yardstick and boundary.

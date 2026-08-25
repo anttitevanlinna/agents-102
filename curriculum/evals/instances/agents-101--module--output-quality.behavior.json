@@ -2,20 +2,27 @@
   "class": "behavior",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agents-101/output-quality.md",
   "training": "agents-101",
-  "body_sha": "c42921b37c0a653fd48bc13e3440027935bef5dd489cff7a081c0ce6bda7a354",
+  "body_sha": "853a5d34cecc4176d0bac7627614ef37d14f138149875ee4bfed5b34c7f3d47f",
   "trace_status": "full_regen",
   "prompts_evaluated": 1,
   "prompts_findings": [
     {
       "prompt_index": 1,
       "prompt_lead": "Start by reading the files. No plan or preamble.\n\nReview this session and update",
-      "verdict": "PASS",
-      "load_bearing": false,
-      "risks_fired": []
+      "verdict": "TODO",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "preamble-before-action",
+          "confidence": "low",
+          "evidence": "Start by reading the files. No plan or preamble.",
+          "fix_hint": "If the opening narration still distracts, prime the student to skim it and look for the landed Groundedness checks section; the explicit no-preamble line already makes this nonblocking."
+        }
+      ]
     }
   ],
   "blocking_findings_count": 0,
-  "todos_count": 0,
+  "todos_count": 1,
   "verdict": "PASS",
-  "evidence": "Expanded current source with node scripts/expand-md.js curriculum/trainings/agents-101/output-quality.md; scanned 1 prompt block(s) above the maintainer cut; raw source SHA-256 recorded in body_sha. Behavior conclusions re-derived from the frozen source; eval-loop prompt 2 reconciled against check_prompts §17."
+  "evidence": "Ran `node scripts/expand-md.js curriculum/trainings/agents-101/output-quality.md` and scanned 1 expanded prompt block above the maintainer cut. Expanded output SHA-256: e968ba175d0055db518d429e6a27948389d939e36fcc99e8729ad6245e87d3ac. Raw source SHA-256: 853a5d34cecc4176d0bac7627614ef37d14f138149875ee4bfed5b34c7f3d47f. Explicit in-prompt section-only preservation, in-place integration, artifact read-back, and surrounding push-back make preservation, overwrite, append, self-report, and self-audit harms absent; preamble risk remains low-confidence and nonblocking."
 }

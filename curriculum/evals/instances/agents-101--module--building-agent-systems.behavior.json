@@ -2,7 +2,7 @@
   "class": "behavior",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agents-101/building-agent-systems.md",
   "training": "agents-101",
-  "body_sha": "67d20b06594d37cdaed057ed2c2362a3e3cfaa2dc75339dae370610925d49446",
+  "body_sha": "8cb7d91ee1fedbc2e89a54454d13b4b0284946026630156dd06227ab137da3b0",
   "verdict": "PASS",
   "trace_status": "partial_regen",
   "prompts_evaluated": 1,
@@ -12,11 +12,37 @@
       "prompt_lead": "Review this session and write the first version of CLAUDE.md at the training-dir root.",
       "verdict": "PASS",
       "load_bearing": true,
-      "risks_fired": [],
-      "evidence": "Expanded with `node scripts/expand-md.js curriculum/trainings/agents-101/building-agent-systems.md`; the prompt requires concrete artifact/session evidence, traceability for every rule, and explicit omissions. No catalog risk is high, or two med, on this hand-off prompt."
+      "risks_fired": [
+        {
+          "pattern_id": "preamble-before-action",
+          "confidence": "med",
+          "evidence": "The fence names seven substantial actions/evidence requirements and has no final 'No preamble' suppressor or nearby body primer telling the student to skim Claude's opening narration.",
+          "fix_hint": "Optionally add a final no-preamble suppressor or a nearby skim-past primer; one medium risk alone on a load-bearing prompt is nonblocking under the Class B verdict rules."
+        }
+      ]
     }
   ],
   "blocking_findings_count": 0,
   "todos_count": 0,
-  "evidence": "Raw source SHA-256 is recorded in body_sha; expanded content SHA and prompt SHA match the regenerated trace; no evidence field is null."
+  "rules_evaluated": {
+    "note": "Full 15-pattern catalog coverage for the expanded source; one medium-confidence load-bearing risk is nonblocking because the Class B threshold requires either one high-confidence risk or two medium-confidence risks for REVISE.",
+    "prompt_1": [
+      {"pattern_id":"file-preservation-gap","status":"not-applicable","reason":"Fresh first-version root CLAUDE.md."},
+      {"pattern_id":"reading-burden","status":"not-applicable","reason":"Claude scans; student receives a short report."},
+      {"pattern_id":"niceness-tax","status":"not-fired","reason":"Traceability, omissions, and adjacent push-back reduce the softening risk."},
+      {"pattern_id":"question-dump","status":"not-applicable","reason":"No student question sequence."},
+      {"pattern_id":"overwrite-anxiety","status":"not-applicable","reason":"The body establishes that no rules file exists yet."},
+      {"pattern_id":"preamble-before-action","status":"fired","confidence":"med","reason":"Multi-step prompt lacks the required suppressor or body primer."},
+      {"pattern_id":"append-vs-integrate","status":"not-applicable","reason":"First-version creation, not regeneration with new context."},
+      {"pattern_id":"plan-mode-preamble-bloat","status":"not-applicable","reason":"No plan mode."},
+      {"pattern_id":"citation-gap-asymmetry","status":"not-applicable","reason":"No factual-claim output is requested."},
+      {"pattern_id":"self-report-inflation","status":"not-fired","reason":"Evidence-backed Debrief carve-out."},
+      {"pattern_id":"default-acceptance","status":"not-fired","reason":"No offered default."},
+      {"pattern_id":"plan-mode-approval-inflation","status":"not-applicable","reason":"No plan-mode plan."},
+      {"pattern_id":"source-type-blindness","status":"not-applicable","reason":"No source ingestion/classification task."},
+      {"pattern_id":"citation-cargo-cult","status":"not-applicable","reason":"No citations requested."},
+      {"pattern_id":"self-audit-charity","status":"not-fired","reason":"Evidence-backed Debrief carve-out."}
+    ]
+  },
+  "evidence": "Raw source SHA-256 and expanded content SHA were recomputed in this session; the expanded view contains one prompt, its prompt SHA matches the retained cached prompt body, and the trace records all 15 catalog patterns with deterministic counts."
 }

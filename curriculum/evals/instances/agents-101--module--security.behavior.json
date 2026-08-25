@@ -2,20 +2,27 @@
   "class": "behavior",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agents-101/security.md",
   "training": "agents-101",
-  "body_sha": "0a47bf2e05de26c05cd4a98b41e2afdad757251e8d5419a5650c0fcbf0107dbe",
+  "body_sha": "7ea842a98bf1c4dc4d5588a04d0f635ddd97da8fbe60080437988f139775dc0a",
   "trace_status": "full_regen",
   "prompts_evaluated": 1,
   "prompts_findings": [
     {
       "prompt_index": 1,
       "prompt_lead": "Start by reading the files. No plan or preamble.\n\nReview this session and compou",
-      "verdict": "PASS",
-      "load_bearing": false,
-      "risks_fired": []
+      "verdict": "TODO",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "file-preservation-gap",
+          "confidence": "med",
+          "evidence": "Then update ./CLAUDE.md as the durable operating memory for this agent system. Add or sharpen 1-5 short security rules",
+          "fix_hint": "An update to a durable root file can still replace or omit existing content inside the target section; name the preserve boundary if that loss would matter."
+        }
+      ]
     }
   ],
   "blocking_findings_count": 0,
-  "todos_count": 0,
+  "todos_count": 1,
   "verdict": "PASS",
-  "evidence": "Expanded current source with node scripts/expand-md.js curriculum/trainings/agents-101/security.md; scanned 1 prompt block(s) above the maintainer cut; raw source SHA-256 recorded in body_sha. Behavior conclusions re-derived from the frozen source; eval-loop prompt 2 reconciled against check_prompts §17."
+  "evidence": "Expanded current source with node scripts/expand-md.js curriculum/trainings/agents-101/security.md; scanned 1 prompt block above the maintainer cut; raw source SHA-256 recorded in body_sha. The only surviving risk is nonblocking: the surrounding debrief names concrete evidence and twice instructs the student to push back, so self-report/self-audit concerns do not create a blocking harm."
 }

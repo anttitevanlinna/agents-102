@@ -2,23 +2,47 @@
   "class": "behavior",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agents-101/agents-building-agents.md",
   "training": "agents-101",
-  "source_commit": "725101ec",
-  "body_sha": "829719233837a8020e8fb0ebd87e95e285e4d8170613e063ff3f8b9be61b9ec8",
-  "content_sha": "5759ceb70e7adf4e9b8a9464a413209a930cded400319bf1f7b7f0717952fab6",
-  "trace_status": "full_regen",
+  "source_commit": "5429a935",
+  "body_sha": "7651507025a32b856f6df62ebe70f8f230cc9dbbd1b37e6400451761d7ee11d5",
+  "content_sha": "04a1c3aa618c1e731546d1f12da7db102cd8f6afe6afe2100d3527ee545dc390",
+  "trace_status": "partial_regen",
   "prompts_evaluated": 1,
   "prompts_findings": [
     {
       "prompt_index": 1,
+      "prompt_sha": "15e4992a22878c129e9c0a2337db5b14ceecf5e154f8e140f1b1d6d3285b2743",
       "prompt_lead": "Start by identifying the file path. No plan or preamble.\n\nReview this session an",
-      "verdict": "PASS",
+      "verdict": "TODO",
       "load_bearing": true,
-      "risks_fired": [],
-      "evidence": "Expanded with node scripts/expand-md.js; one prompt block. The prompt names the destination and overwrite-in-place behavior, explicitly says integrate rather than append, and preserves rules not contradicted by evidence. It starts with an action and 'No plan or preamble'. Concrete artifact inventory, stalls, under-specified roles, fast convergence, before/after quotes, unresolved decisions, and the adjacent harsher-read push-back constrain self-report inflation and self-audit charity. No catalog pattern reaches high confidence, and no pair of medium-confidence risks remains on this load-bearing prompt. Direct judge scoped to the 725101ec source blob; canonical Agents 101 strategy read from bosser-strategy/content-strategy.md."
+      "risks_fired": [
+        {
+          "pattern_id": "preamble-before-action",
+          "confidence": "low",
+          "evidence": "The prompt has four-plus named action moves and opens with 'No plan or preamble', but does not end with the structural suppressor or provide a nearby preamble-and-skim primer.",
+          "fix_hint": "Move a final no-preamble/first-action cue to the fence tail, or add a nearby skim-past primer if this residual behavior matters."
+        }
+      ]
     }
   ],
   "blocking_findings_count": 0,
-  "todos_count": 0,
+  "todos_count": 1,
   "verdict": "PASS",
-  "evidence": "Direct behavior judge for commit 725101ec. Ran node scripts/expand-md.js curriculum/trainings/agents-101/agents-building-agents.md; expanded output contained 1 prompt block. shasum -a 256 raw source -> c0de3cef4afad9dcfd28b8f5922bc3acdddeca9a579e805d6f925b4a68cc7f28; shasum -a 256 expanded output -> 5759ceb70e7adf4e9b8a9464a413209a930cded400319bf1f7b7f0717952fab6; fenced prompt SHA-256 -> 15e4992a22878c129e9c0a2337db5b14ceecf5e154f8e140f1b1d6d3285b2743. No evidence fields are null."
+  "catalog_coverage": [
+    {"pattern_id":"file-preservation-gap","status":"not_fired","why":"The prompt names the destination and says overwrite in place, preserve rules not contradicted by evidence, and integrate rather than append."},
+    {"pattern_id":"reading-burden","status":"not_fired","why":"Claude is asked to inspect the session and provide artifact-level before/after evidence; the student is not assigned manual correctness checking."},
+    {"pattern_id":"niceness-tax","status":"not_fired","why":"The prompt explicitly requires stalls, under-specified roles, fast convergence, unacted critiques, and unresolved decisions, preserving the sharp edge."},
+    {"pattern_id":"question-dump","status":"not_applicable","why":"The prompt asks Claude to audit a session; it does not ask Claude to interview the student with a sequence of questions."},
+    {"pattern_id":"overwrite-anxiety","status":"not_fired","why":"It explicitly identifies the file before rewriting, overwrites in place, and forbids a parallel version."},
+    {"pattern_id":"preamble-before-action","status":"fired","confidence":"low","why":"The multi-move prompt has an opening no-preamble cue, but lacks the rule's final-line suppressor or nearby primer."},
+    {"pattern_id":"append-vs-integrate","status":"not_fired","why":"The prompt explicitly says integrate, don't append, and says to rewrite the selected file as the better version."},
+    {"pattern_id":"plan-mode-preamble-bloat","status":"not_fired","why":"The prompt explicitly says no plan and does not invoke plan mode or request a plan artifact."},
+    {"pattern_id":"citation-gap-asymmetry","status":"not_applicable","why":"No sourced factual-claim or citation task is requested."},
+    {"pattern_id":"self-report-inflation","status":"not_fired","why":"The evidence-backed debrief carve-out applies: every claimed change must be tied to before/after quotes and concrete session artifacts."},
+    {"pattern_id":"default-acceptance","status":"not_applicable","why":"No offered defaults or candidate structure is presented for Claude to accept."},
+    {"pattern_id":"plan-mode-approval-inflation","status":"not_applicable","why":"No plan-mode plan is produced for approval."},
+    {"pattern_id":"source-type-blindness","status":"not_applicable","why":"The prompt reads named deliberation artifacts but does not ingest heterogeneous source types requiring extraction-depth classification."},
+    {"pattern_id":"citation-cargo-cult","status":"not_applicable","why":"No citations are requested."},
+    {"pattern_id":"self-audit-charity","status":"not_fired","why":"The evidence-backed debrief carve-out applies: the prompt requires concrete files, named failures, before/after quotes, and a harsher push-back read."}
+  ],
+  "evidence": "Ran `node scripts/expand-md.js curriculum/trainings/agents-101/agents-building-agents.md`; the expanded output contains 1 prompt fence. Recomputed raw source SHA-256 as 7651507025a32b856f6df62ebe70f8f230cc9dbbd1b37e6400451761d7ee11d5, expanded full-output SHA-256 as 04a1c3aa618c1e731546d1f12da7db102cd8f6afe6afe2100d3527ee545dc390, and fenced prompt SHA-256 as 15e4992a22878c129e9c0a2337db5b14ceecf5e154f8e140f1b1d6d3285b2743. The prompt SHA matched the existing cache, so the per-prompt trace was retained and the full-file hash was refreshed. Current check_prompts.md, check_pedagogy.md, dispatch preamble, and simulation-behavior.md were read; all 15 catalog patterns are represented in catalog_coverage. One low-confidence preamble risk yields one nonblocking TODO; no high-confidence risk or pair of medium-confidence risks is present, and no actual blocking harm supports REVISE."
 }

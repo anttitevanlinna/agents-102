@@ -198,5 +198,5 @@ You just ran **Recipe 5** end-to-end: a 30-claim benchmark you wrote yourself, f
 - M6 picks the judge up and turns it into infrastructure — scaled benchmark, scheduled runs, corrections feeding back, the steering counterpart (encoding preference, not groundedness).
 - Don't cross-teach. M5's benchmark earns M6's automation.
 
-**Quality:** compendium-audited 2026-08-23 (writing@725101ec story@725101ec technical@725101ec behavior@725101ec pedagogy@725101ec strategy@725101ec slides@725101ec)
-- judges @725101ec: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@725101ec technical@725101ec behavior@725101ec pedagogy@725101ec strategy@725101ec slides@725101ec)
+- judges @d3ff749e: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

@@ -116,5 +116,5 @@ You become the person who decides which details the system must never miss.
 
 **Mood target:** Module 6's lift. The student should feel the loop as relief plus expanded responsibility: the machine can crunch, but the human must choose the yardstick.
 
-**Quality:** compendium-audited 2026-08-23 (writing@725101ec story@725101ec technical@725101ec behavior@725101ec pedagogy@725101ec strategy@725101ec slides@725101ec)
-- judges @725101ec: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@725101ec technical@725101ec behavior@725101ec pedagogy@725101ec strategy@725101ec slides@725101ec)
+- judges @d3ff749e: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

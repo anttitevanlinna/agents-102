@@ -1,6 +1,7 @@
 {
   "class": "behavior",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/name-your-crux.md",
+  "verdict": "PASS",
   "training": "agents-101",
   "body_sha": "77c95ea0c8fcdffbb693bb6e140f73fda2b8876f706d6415c30ca4dfc09fecc6",
   "trace_status": "full_regen",
@@ -9,14 +10,14 @@
     {
       "prompt_index": 1,
       "prompt_lead": "Look at my challenge memory. Find the load-bearing obstacle: the one thing that,",
-      "verdict": "TODO",
+      "verdict": "PASS",
       "load_bearing": true,
       "risks_fired": [
         {
           "pattern_id": "preamble-before-action",
           "confidence": "med",
-          "evidence": "Look at my challenge memory. Find the load-bearing obstacle",
-          "fix_hint": "Claude may narrate reasoning before the crux sentence, delaying the decision handoff."
+          "evidence": "Look at my challenge memory. Find the load-bearing obstacle ... One sentence. Save it ... show me before saving.",
+          "fix_hint": "Optional first-response cue; the single med risk is nonblocking under the catalog verdict rule."
         }
       ]
     },
@@ -29,20 +30,56 @@
         {
           "pattern_id": "preamble-before-action",
           "confidence": "med",
-          "evidence": "Open ./crux.md and read the crux you just saved. What's the sharpest decision",
-          "fix_hint": "Claude may explain before giving the one sentence."
+          "evidence": "Open ./crux.md and read the crux ... What's the sharpest decision ... Append ... Show me before saving.",
+          "fix_hint": "Optional first-response cue; this does not reach the blocking threshold."
         },
         {
           "pattern_id": "default-acceptance",
           "confidence": "low",
-          "evidence": "Something like \"what's the right next move to unblock the crux, over the next 90 days?\" is a decent default",
-          "fix_hint": "The default can anchor a generic question, though nearby prose tells the student to push back."
+          "evidence": "Something like \"what's the right next move to unblock the crux, over the next 90 days?\" is a decent default.",
+          "fix_hint": "Keep the example visibly subordinate to deriving the decision from the student's crux; nearby iteration prose already supplies pushback."
         }
       ]
     }
   ],
   "blocking_findings_count": 0,
-  "todos_count": 2,
-  "verdict": "PASS",
-  "evidence": "Expanded current source with node scripts/expand-md.js curriculum/exercises/name-your-crux.md; scanned 2 prompt block(s) above the maintainer cut; raw source SHA-256 recorded in body_sha. Behavior conclusions re-derived from the frozen source; eval-loop prompt 2 reconciled against check_prompts §17."
+  "todos_count": 1,
+  "rules_evaluated": {
+    "note": "Completeness ledger covers all 15 Class B catalog patterns in simulation-behavior.md for each expanded prompt. check_prompts.md and check_pedagogy.md were read as adjacent-rule context; no technical or pedagogy-only rule is promoted into this behavior verdict.",
+    "prompt_1": [
+      {"pattern_id":"file-preservation-gap","status":"not-applicable","reason":"First-time write to ./crux.md; no existing content is being updated."},
+      {"pattern_id":"reading-burden","status":"not-applicable","reason":"Show-before-save and iteration ask for student judgment, not manual proofreading of output."},
+      {"pattern_id":"niceness-tax","status":"not-fired","reason":"The prompt names mechanism-level tests and the body explicitly tells the student to push back on a restatement."},
+      {"pattern_id":"question-dump","status":"not-applicable","reason":"No sequence of questions is posed to the student."},
+      {"pattern_id":"overwrite-anxiety","status":"not-applicable","reason":"The prompt creates ./crux.md and names the destination; it does not ask to add to an existing file."},
+      {"pattern_id":"preamble-before-action","status":"fired","confidence":"med","reason":"Several chained reads, tests, and a show-before-save hand-off invite a short narration before the proposal; one med risk is below REVISE threshold."},
+      {"pattern_id":"append-vs-integrate","status":"not-applicable","reason":"No new context is being integrated into an existing document."},
+      {"pattern_id":"plan-mode-preamble-bloat","status":"not-applicable","reason":"No plan mode or plan permission is invoked."},
+      {"pattern_id":"citation-gap-asymmetry","status":"not-applicable","reason":"No citation-backed factual output is requested."},
+      {"pattern_id":"self-report-inflation","status":"not-applicable","reason":"Claude proposes a crux from named evidence; it is not asked to grade its own work."},
+      {"pattern_id":"default-acceptance","status":"not-applicable","reason":"No substantive default is offered; the examples are tests for what a crux is."},
+      {"pattern_id":"plan-mode-approval-inflation","status":"not-applicable","reason":"No plan is produced for approval."},
+      {"pattern_id":"source-type-blindness","status":"not-applicable","reason":"The prompt reads the student's existing memory, not an ingestion set needing source classification."},
+      {"pattern_id":"citation-cargo-cult","status":"not-applicable","reason":"No citations are requested."},
+      {"pattern_id":"self-audit-charity","status":"not-applicable","reason":"Claude is not asked to self-critique a completed artifact."}
+    ],
+    "prompt_2": [
+      {"pattern_id":"file-preservation-gap","status":"not-applicable","reason":"The prompt explicitly appends a Question section and says not to overwrite the crux."},
+      {"pattern_id":"reading-burden","status":"not-applicable","reason":"The student is asked to iterate on a decision, not manually proofread Claude's output."},
+      {"pattern_id":"niceness-tax","status":"not-applicable","reason":"The task demands a sharp real call and the body tells the student to iterate when the result is a topic restatement."},
+      {"pattern_id":"question-dump","status":"not-applicable","reason":"The prompt asks Claude to produce one decision question; it does not ask Claude to interview the student."},
+      {"pattern_id":"overwrite-anxiety","status":"not-applicable","reason":"Append destination and preservation boundary are explicit."},
+      {"pattern_id":"preamble-before-action","status":"fired","confidence":"med","reason":"Read, infer, append, and show-before-save steps invite explanatory narration before the decision sentence; one med risk is below REVISE threshold."},
+      {"pattern_id":"append-vs-integrate","status":"not-applicable","reason":"The intended append operation is explicitly named, not ambiguous."},
+      {"pattern_id":"plan-mode-preamble-bloat","status":"not-applicable","reason":"No plan mode or plan permission is invoked."},
+      {"pattern_id":"citation-gap-asymmetry","status":"not-applicable","reason":"No citation-backed factual output is requested."},
+      {"pattern_id":"self-report-inflation","status":"not-applicable","reason":"Claude is asked to derive a question from the saved crux, not to self-grade."},
+      {"pattern_id":"default-acceptance","status":"fired","confidence":"low","reason":"The 90-day next-move example is labelled a decent default and can anchor a generic question, although nearby prose requires iteration toward a real call."},
+      {"pattern_id":"plan-mode-approval-inflation","status":"not-applicable","reason":"No plan is produced for approval."},
+      {"pattern_id":"source-type-blindness","status":"not-applicable","reason":"The prompt reads one local artifact; no source ingestion or source-type classification is requested."},
+      {"pattern_id":"citation-cargo-cult","status":"not-applicable","reason":"No citations are requested."},
+      {"pattern_id":"self-audit-charity","status":"not-applicable","reason":"Claude is not asked to audit its own prior work."}
+    ]
+  },
+  "evidence": "Ran `node scripts/expand-md.js curriculum/exercises/name-your-crux.md` and scanned the expanded body above the maintainer cut: 2 Prompt fences. Ran `shasum -a 256 curriculum/exercises/name-your-crux.md` -> 77c95ea0c8fcdffbb693bb6e140f73fda2b8876f706d6415c30ca4dfc09fecc6; expanded content SHA -> 6c5b3203b52925fa3a9ab36a91fd6973b5fd13c622fcb919e018999229de1d80; prompt SHAs -> 5528494091b90fd03c9599e732e30ed0e8b71130bd38f0b8bb91e852f7bf47ce and 2590a6da78502b133c9372f71b7ca38586e4bb952d1b28e8c1914dbacf3f3d15. Re-derived all 15 catalog judgments for both prompts. No high-confidence risk and no prompt has two med-confidence risks; blocking_findings_count=0. Prompt 2 has one low-confidence risk, so todos_count=1. Top-level verdict PASS; REVISE is reserved for actual blocking harm."
 }

@@ -18,5 +18,5 @@ Module 3 now asks the next question: if one agent can act, what changes when sev
 
 **Role in Module 3:** Short trainer demo before the first exercise. Re-runs the Module 2 scheduled-agent shape with one external action: send a low-stakes Slack message to a trainer-owned demo channel. Keep the action tiny and pre-approved. If Slack is unavailable, use the customer's equivalent team-chat demo channel only if the same guardrails hold; otherwise show a recorded run and keep the lesson on action boundary.
 
-**Quality:** compendium-audited 2026-08-23 (writing@725101ec story@725101ec technical@725101ec behavior@725101ec pedagogy@725101ec strategy@725101ec slides@725101ec)
-- judges @725101ec: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@725101ec technical@725101ec behavior@725101ec pedagogy@725101ec strategy@725101ec slides@725101ec)
+- judges @d3ff749e: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

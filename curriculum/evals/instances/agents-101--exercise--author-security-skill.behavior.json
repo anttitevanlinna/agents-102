@@ -25,7 +25,14 @@
       "prompt_lead": "Author the reusable security check now. Two lenses.\n\nBuild one personal skill so",
       "verdict": "PASS",
       "load_bearing": true,
-      "risks_fired": []
+      "risks_fired": [
+        {
+          "pattern_id": "preamble-before-action",
+          "confidence": "med",
+          "evidence": "Before you save anything, grill me on missing details that can sharpen the lens or that would ruin the audit run.",
+          "fix_hint": "Prime the student for a brief narration or make the first action explicit if the opening preamble would disrupt the grill."
+        }
+      ]
     },
     {
       "prompt_index": 4,
@@ -37,7 +44,7 @@
           "pattern_id": "self-report-inflation",
           "confidence": "low",
           "evidence": "Confirm the installed path so I can verify with ls.",
-          "fix_hint": "The path is externally checkable."
+          "fix_hint": "Keep the independent ls verification as the check rather than relying on Claude's confirmation."
         }
       ]
     },
@@ -51,7 +58,7 @@
           "pattern_id": "self-report-inflation",
           "confidence": "low",
           "evidence": "Confirm the installed path so I can verify with ls.",
-          "fix_hint": "The path is externally checkable."
+          "fix_hint": "Keep an independent filesystem check as the acceptance check for the install."
         }
       ]
     },
@@ -65,7 +72,7 @@
           "pattern_id": "default-acceptance",
           "confidence": "low",
           "evidence": "Draft it, then surface the save action so I can save it.",
-          "fix_hint": "The student retains the save decision."
+          "fix_hint": "Keep the student-owned save action explicit so drafting does not silently become persistence."
         }
       ]
     }
@@ -73,5 +80,5 @@
   "blocking_findings_count": 0,
   "todos_count": 3,
   "verdict": "PASS",
-  "evidence": "Expanded current source with node scripts/expand-md.js curriculum/exercises/author-security-skill.md; scanned 6 prompt block(s) above the maintainer cut; raw source SHA-256 recorded in body_sha. Behavior conclusions re-derived from the frozen source; eval-loop prompt 2 reconciled against check_prompts §17."
+  "evidence": "Ran `node scripts/expand-md.js curriculum/exercises/author-security-skill.md`; expanded SHA-256 is 0b8a56112fc38242fea3249fbc68cebf538e974a921841ee2d9a5ae90515f8b7. Scanned 6 prompt blocks above the maintainer cut against all 15 catalog rows in simulation-behavior.md; raw source SHA-256 is a35480d84872877571429e778a23bbc5d686cdb19055a58d8225e782e6d9d927. One medium-confidence preamble invitation is non-blocking; three low-confidence TODOs remain, with no actual blocking harm."
 }

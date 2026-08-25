@@ -80,8 +80,8 @@ Between now and Module 4, keep working on your real problem. You're close to an 
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-08-24 (writing@2072737a story@2072737a technical@725101ec behavior@725101ec pedagogy@2072737a strategy@2072737a slides@2072737a)
-- judges @2072737a: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@2072737a technical@725101ec behavior@725101ec pedagogy@2072737a strategy@2072737a slides@2072737a)
+- judges @d3ff749e: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - cross_module @2072737a: PASS — set=[prework,getting-going,building-agent-systems,multi-agent-systems,security,output-quality,evaluations,personal-to-team,agents-building-agents]
 
 **Mood target:** Unsettled competence — the synthesis is useful, but the student leaves asking whether it is right.

@@ -67,7 +67,7 @@ Having added the checking step before acting, this is also the suitable place to
 - **Empirical method selection over authority.** You don't pick a detector because the docs or a paper said so. You run several against your own output and your own benchmark, and the data names the winner.
 - **The scoreboard is the artifact.** Precision, recall, coverage, measured per detector on the same claim pool. Read it row by row and you can name why one won and where another lost.
 - **A judge is narrow on purpose.** The winning judge file says what it catches and names its known limit. Narrow tools that work beat broad tools that pretend.
-- **Grounded is the discipline; the benchmark is how you build the check.** A judge measured against a benchmark is what keeps output connected to the ground when you're not in the room. A small benchmark proves the method; production evaluation wants hundreds of claims and accumulates new cases as versioned evidence. In Module 6, the scoring yardstick stays fixed while the generator improves under it.
+- **Grounded is the discipline; the benchmark builds the check.** A measured judge keeps output connected to the ground when you're absent. A small benchmark proves the method; production evaluation wants hundreds of claims and adds new cases as versioned evidence. In Module 6, the yardstick stays fixed while the generator improves.
 
 ## Pre-reads before Module 6
 

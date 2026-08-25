@@ -1,6 +1,6 @@
-# Exercise: Share your work
+# Exercise: Interview for the job and pick a candidate
 
-**Time:** 70 minutes. Some phases will run long. That's where the learning lives.
+**Time:** 25 minutes.
 
 **Session** *(new, "Module 7 - Personal to team")*
 
@@ -14,19 +14,13 @@ Your memory has been working for you for days now. It catches things you'd have 
 
 Hold the impulse. Then start with the teammate's work.
 
-You are not going to ask *"what should I share with my teammate?"* That question is builder-centered and it skips the one thing that actually decides whether sharing works: **the job** your teammate is trying to get done. This is the Jobs-to-be-Done frame from Clayton Christensen and collaborators. Your teammate doesn't want your agent. They want a job done. Your agent, your skill, your output, your interface: any of those is a candidate for hire. Does it do the job better than what they currently use?
+You are not going to ask *"what should I share with my teammate?"* That question is builder-centered and skips the one thing that decides whether sharing works: **the job** your teammate is trying to get done. This is the Jobs-to-be-Done frame from Clayton Christensen and collaborators. Your teammate doesn't want your agent. They want a job done. Your agent, your skill, your output, your interface: any of those is a candidate for hire. Does it do the job better than what they currently use?
 
-So the starting question is theirs, not yours: *what job is my teammate trying to get done, and which sharing shape does it?*
+The starting question is theirs, not yours: *what job is my teammate trying to get done, and which sharing shape does it?*
 
-You'll interview for that job (the agent reads your memory and does most of the work). You'll pick a candidate against the outcome, not against the infrastructure. You'll draft a technical plan and a people plan, side by side. You'll find the absorption bottleneck, test the switch, and name the likely failure before it happens. Some of it won't finish in the room. That's by design. The unfinished pieces are your Monday.
+## Interview for the job
 
-**What you do:**
-
-## Phase 1: Interview for the job
-
-*12 min*
-
-The context has been building since the first module. Your memory knows who your teammate is, what the work looks like, where the friction lives. The agent does the heavy lifting. It reads what's already there, drafts a hypothesis about the job, and asks you only the questions that plug real holes.
+This is a heavy read across the working set, and a shallow confident finish is as risky as over-reading. If Claude ranges too wide, interrupt with *"tell me what you've found so far, narrow to the files that bear on this teammate, then continue."* If it declares the job after a thin pass, say *"there's more here. Keep reading before you settle the hypothesis."*
 
 <div class="rt-code">
 
@@ -39,160 +33,44 @@ The context has been building since the first module. Your memory knows who your
 
 </div>
 
+Read `module-7/jtbd.md`. The test is specificity: does it name one teammate, their current way of doing the job, and an outcome you could observe? If it could describe anyone in the room, point to the generic line and ask the agent to try that part again.
 
-Read what lands. The test for Phase 1: did the agent tell you something you hadn't quite put into words, or did it give you back what you already thought? A hypothesis that just confirms you is a shallow read. Push back in chat (*"try again; the struggle is something else"*) and let it try once more. The third outcome is where this phase earns its keep. Speed and quality are the obvious dimensions. If the agent only returned speed and quality, ask it explicitly: *"if speed and quality stayed exactly where they are, what else would my teammate want different?"*
+## Pick against the outcome
 
-## Phase 2: Pick the candidate that moves the outcome
+Claude then compares candidates from `patterns/personal-to-team-patterns.md` against that outcome and writes your choice to `module-7/branch.md`.
 
-*13 min*
+The four sharing strategies are:
 
-You have an outcome statement. Now you pick what you'd offer the teammate. Two branches, both first-class.
-
-**Branch B. Personal Claudes only.** Most of the room is here. Your teammates run their own Claude Code. Sharing travels as files and skills. Three of the four sharing strategies were built for exactly this situation. Branch B often ships faster than Branch A because it doesn't wait on IT.
-
-**Branch A. You also have cloud agent infrastructure.** N8N, Cowork, Power Automate, Make, an internal platform someone on your team can deploy to. If you're here, you stack Branch A's extra patterns (central deployment, hosted interfaces, output push at scale) on top of Branch B. You don't skip the file-and-skill sharing; you add runtime to it.
-
-Pick based on what your company actually runs today. Not on what procurement might approve in Q3.
-
-## Pick patterns against the outcome test
-
-Have Builder Claude walk you through the pattern catalog at `patterns/personal-to-team-patterns.md` (shipped with this module's scaffold). It covers the four top-level strategies, then the patterns under each. Pick **one to three patterns.**
-
-The selection test is not *does this pattern fit my infrastructure?* Infrastructure is a constraint, not a guide. The selection test is:
-
-> **Does this candidate move the outcome metric?**
-
-If your outcome is *"minimize time to draft a customer briefing I'd stake my reputation on,"* an MCP-native context share probably doesn't do it. Slack-bot pull or scheduled morning push more likely does. If your outcome is *"reduce days when my forecast is off by more than 20%,"* a skill-share probably moves that metric. A Slack bot doesn't. The pattern has to do the job.
-
-Write `module-7/branch.md`. For each pattern picked, one sentence: *this pattern moves the outcome because [concrete mechanism].* Not *because it fits our infra.* The infra line is a footnote.
-
-**About the catalog.** It's live. Some patterns have full practitioner examples; some have `[TODO]` fields. Where you hit a TODO, that's your prompt to invent the pattern for your situation. The scaffold (name, context, forces, solution, traps, people plan) is there. Fill it against your outcome statement and move on.
-
-## Review the four sharing strategies
-
-The four strategies, as a reminder:
-
-1. **Share the context.** Your `memory/`, `sources/`, `CLAUDE.md`, `style.md` travel. Teammates build on top.
+1. **Share the context.** Your `memory/`, `sources/`, `CLAUDE.md`, and `style.md` travel. Teammates build on top.
 2. **Share a skill.** Extract one scoped capability. Teammates plug it in.
 3. **Share the output (push).** Schedule the agent. Output lands where the team looks.
-4. **Share an interface (pull).** Wrap the agent. Teammates invoke via Slack bot, Teams @mention, web form.
+4. **Share an interface (pull).** Wrap the agent. Teammates invoke it through a bot, mention, form, or endpoint.
 
 *"Share the whole agent"* is a vendor pitch and is NOT on the list.
 
-## Phase 3: Find the absorption bottleneck
+Read `module-7/branch.md`. Every picked candidate should name how it moves the teammate's outcome; infrastructure should appear only as a constraint. If the reason is merely *"we already have the platform,"* send it back.
 
-*5 min*
+## Carry the two files forward
 
-Before you draft plans, find the load-bearing obstacle. The sharing problem always has one, and it's almost never the technical one your builder brain surfaced first. Name the one obstacle that, if removed, would make several others easier.
-
-{{prompt:share-your-work-3}}
-
-
-Read what lands. If the bottleneck is technical ("we don't have a Slack bot"), push back. Technical obstacles are rarely the bottleneck at Week 1. If the bottleneck is social ("my teammate doesn't trust anything they didn't build themselves"), you've probably got it. Keep the file open; this obstacle anchors the work that follows.
-
-## Phase 4: Draft both plans
-
-*18 min*
-
-You're drafting two documents side by side. Neither is optional.
-
-{{prompt:share-your-work-4}}
-
-
-Answer plainly. The UNASSIGNED lines become the questions you walk into your manager's office with on Monday.
-
-## Phase 5: Test the switch assumptions
-
-*10 min*
-
-Your plans rest on assumptions. Some are wrong. The question is not *"will my agent work?"* That's a builder question. Use Roger Martin's question instead: *what would have to be true for this teammate, doing this job, to fire their current hire and use my candidate?*
-
-{{prompt:share-your-work-5}}
-
-
-Mark the two or three you'd actually test this week. Those are what you ship first, not the full rollout.
-
-## Phase 6: Name the likely failure
-
-*7 min*
-
-The plan is on paper. Six months from now, they went back to Excel. Why?
-
-{{prompt:share-your-work-6}}
-
-
-The third story is the one to read twice.
-
-## Phase 7: Closing
-
-*5 min*
-
-Monday isn't a deployment decision. It's a conversation.
-
-Write `module-7/monday.md` with:
-- The teammate I'll talk to first. (Just them. Not a rollout.)
-- The one question I'll actually ask about their job. (Not *"want to try my agent?"* but something like *"walk me through how you currently do X."*)
-- The assumption I'll test this week.
-
-In self-study, ask Teacher Claude to read all your module-7 files and push back on one thing: *"Is the outcome statement really the teammate's outcome, or is it the builder's wish dressed in their language?"* One sharp pushback beats a compliant summary.
-
-## Expect these four surprises
-
-**What happened:**
-
-The interview will surprise you. Your memory already knew much of this teammate's job. The agent surfaces it in a shape you can use. The outcome you didn't expect (the third one: anxiety, dependency, scope, workload) is usually the one that actually matters.
-
-Your pattern selection will look different under the outcome test than under the infrastructure test. Patterns you'd have picked because they're easy don't move the metric. Patterns you'd have ruled out because they seem hard turn out to be the only ones that do the job. That's the reframe.
-
-Your people plan will have more UNASSIGNED lines than you're comfortable with. Good. That's the absorption bottleneck in your own work, not an abstraction. The gap between a confident technical plan and a hedged people plan is the part that is easiest to miss.
-
-The failure stories will tell you things you half-knew. The third story (the failure you're not seeing) is usually some version of *"they never fired their current hire in the first place."*
-
-## Take the transferable move with you
-
-**The point:**
-
-Before you design a solution, **interview for the outcome.** That's the transferable skill. The sharing decision is one instance. Monday you'll face a different adoption problem (rolling out a new process, proposing a tool, onboarding a hire) and the move is the same. Agent reads your context. Drafts a hypothesis about the job someone is trying to get done. Asks you seven targeted questions. Produces a brief with an outcome statement. You pick the candidate that moves the outcome. You draft both plans. You test the switch, not the solution.
-
-A candidate picked because it fits the infrastructure is shopping. A candidate picked because it moves the outcome is design.
-
-You just ran **Recipe 7** end-to-end: the Jobs-to-be-Done interview for agents, the four sharing strategies (context, skill, output, interface), the technical plan paired with the people plan, the switch-test. After Agents 101, when the next teammate wants a slice of your system, the [Cookbook for Agent System Design](../trainings/agents-101/supplementary/cookbook-for-agent-system-design.md) is where the moves and components live without the training scaffolding.
+You now have the teammate's job and a candidate selected against it. [Design the sharing plan](design-the-sharing-plan.md) finds what would stop that candidate from being absorbed and turns it into a technical plan plus a people plan.
 
 <!-- maintainer -->
 
-**Facilitator notes:**
+**Atomic — no phase markers.** The interview produces the outcome test used immediately to select the candidate.
 
-- **Capability check before delivery:** confirm Claude Code's AskUserQuestion tool is available in the student's environment (student-facing name: "ask-questions tool"). The tool renders bounded multiple-choice questions inline and is the Phase 1 interaction primitive. If unavailable in a cohort's build, fall back to Claude asking structured questions one at a time with numbered options the student picks by number — mechanically similar, pedagogically weaker.
-- **Phase 1 is the magic beat.** The teaching moment is the student experiencing that the agent already had 80% of the teammate's job on disk, and that seven targeted questions plug the remaining 20%. If the agent's hypothesis just parrots back the student's own assumptions, the magic fails. Teacher Claude (self-study) or facilitator (in-room) nudges: *"Did the agent actually read your memory, or did it guess from file names? Find one claim in the JTBD brief that surprised you. If nothing surprised you, ask the agent to try again — the outcome is not the job you already had in mind."*
-- **Third-dimension surfacing.** If the three outcomes come back as speed / quality / (weak generic "other"), push: *"If speed and quality stayed flat, what else would your teammate want? Dependency removed? Anxiety reduced? Scope they could take on that they can't today? Workload shifted to someone else?"* The non-obvious dimension is where interviewing-for-outcomes earns its keep and is the lesson students take to Monday's adoption problem.
-- **Branch selection around 14 min in** (start of Phase 2). Most Nordic cohorts land heavily in Branch B — don't apologize for it, frame it as the plain pattern for most buyers on day one.
-- **Phase 2 selection test is *does this move the outcome*, not *does this fit my infra*.** Watch for students picking patterns because they're technically feasible rather than because they do the job. Nudge: *"Why would your teammate fire their current hire and use this? Answer that in one sentence. If you can't, pick a different pattern."*
-- **Phase 3 stall on people-plan names.** Their technical plan fills quickly; the people plan stalls on *who owns it?* That stall IS the teaching moment. Protect it. UNASSIGNED lines are the Monday artifact.
-- **Phases 4 and 5 are where students run out of time.** Designed. Before Phase 4 starts, say aloud: *"If you don't finish these, you have Monday's work. That's the intended outcome for at least half of you."* Removes the shame. Hardness is a feature.
-- **Monday's first move is a conversation, not a deployment.** If a student writes *"I'll deploy the Slack bot on Monday"* as their first move, push: *"Before deploying anything — what conversation are you having first? With whom? About what?"* The reframe — sharing starts with an interview, not a push — is the take-home.
-- **Closing beat:** in-room, pick three students to read their third failure story aloud. The third-story format forces useful disclosure. Self-study: Teacher Claude plays the pushback role on the outcome statement.
+**Leap test — next working day:**
 
-**Framework attributions:**
+- Opens `module-7/jtbd.md` and can name the teammate, incumbent, and observable outcome without reconstructing the interview.
+- Rejects a sharing candidate whose only advantage is infrastructure fit and records the mechanism in `module-7/branch.md`.
+- Uses the narrow/continue recovery on a heavy memory read instead of restarting or accepting a shallow finish.
 
-- Clayton Christensen — Jobs-to-be-Done, *Competing Against Luck*. The framing: people hire products for jobs.
-- Bob Moesta — the switch interview. The practitioner variant of JTBD used for small-team adoption decisions (*"tell me about the moment you decided to switch"*). Closer to what works here than the academic form.
-- Anthony Ulwick — Outcome-Driven Innovation. The outcome statement form: *"minimize/increase [metric] when [doing the job]."* The three-vector structure (speed, quality, other) is in the ODI lineage.
-- Richard Rumelt — *Good Strategy Bad Strategy*. Crux / load-bearing obstacle. Student-facing framing uses absorption bottleneck rather than named crux.
-- Roger Martin — *Playing to Win*. Strategy as assumptions / *what would have to be true?* Phase 4.
-- Gary Klein, Daniel Kahneman — pre-mortem. Student-facing framing uses failure stories.
+**Failure modes and escape hatches:**
 
-Supporting research inline via prework: absorption bottleneck. Access-trust and discoverability are useful facilitator lenses if the room needs them.
+- **Interview:** the hypothesis could describe anyone. Point to one generic claim and have the agent anchor it to a specific memory line or replace it.
+- **Candidate selection:** the student picks what the company already runs. Ask which outcome the candidate moves; if there is no concrete mechanism, send the choice back.
 
-**Pacing:** Phase 1: 12 / Phase 2: 13 / Phase 3: 18 / Phase 4: 10 / Phase 5: 7 / close: 5 = ~65 min. Fits the 55–70 window. Students running slow will compress Phase 2's pattern-catalog read and spend the time on Phase 3's people plan — fine.
+**Capability gate:** the Claude Code branch requires the ask-questions tool. Confirm it before delivery. If it is unavailable, resolve the environment or run the Cowork branch; do not replace the bounded interview with freeform chat.
 
-**Claude-behavior watch-fors:**
+**Why this is one bounded exercise:** interview and candidate selection are one decision. The first file supplies the outcome test the second file applies; there is no useful pause or independent deliverable between them.
 
-- **Ask-questions tool dump.** Some Claude Code builds will send all eight questions in a single AskUserQuestion call; others serialise one-at-a-time. Either renders fine — the student picks options; there's no freeform typing — but the one-at-a-time variant lets the agent refine mid-interview. Don't sweat it either way; flag if the tool returns freeform text prompts instead of bounded options (then the tool isn't actually being invoked, and you've fallen back to chat — nudge the student to re-run the Phase 1 prompt and name the tool explicitly).
-- **Memory-reading vs. guessing.** Claude will sometimes fabricate a confident JTBD hypothesis from file names alone without actually reading the files. Tell: the hypothesis is generic, cites no specific line. Fix prompt at top of Phase 1 already says "anchor every claim to a specific file and line in my memory." If the output still has no anchors, push: *"quote the sentence from my memory that made you think this."*
-- **Default-acceptance on Phase 1 hypothesis.** Students rubber-stamp what the agent returns. Teacher Claude or facilitator: *"pick one thing that's probably wrong. Ask it to try again on that piece."*
-- **Append-vs-integrate on Phase 4.** Assumption-test should reshape the plans' confidence, not append a new "assumptions" paragraph. Prompt says so; watch the output.
-- **Plan-mode preamble bloat on Phase 3.** Prime students to scroll past.
-- **TODOs in the pattern catalog.** The catalog ships WIP. Where a pattern's Example field says `[TODO]`, the student invents one for their situation — that's the designed experience, not a bug. If students flag "this isn't filled in" as a problem, reframe: *"the scaffold is filled in — name, context, forces, solution, traps, people plan. The example is yours to write. That's the practitioner move."*
-
-**Quality:** compendium-audited 2026-08-24 (writing@2072737a story@725101ec technical@725101ec behavior@b865cc47 pedagogy@725101ec strategy@725101ec slides@2072737a)
-- judges @2072737a: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Framework attributions:** Clayton Christensen and collaborators — Jobs-to-be-Done; Bob Moesta — switch interviews; Anthony Ulwick — outcome statements. The module body repeats the sharing taxonomy because it must frame the full module; this reusable exercise repeats it because it must also run independently.

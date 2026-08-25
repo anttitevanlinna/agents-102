@@ -249,7 +249,7 @@ The one trainer document for Agents 101. Read **Start here** before your first c
 
 **Big idea.** The teammate's job comes first. Context, skill, output, and interface are different sharing designs with different absorption costs.
 
-**Flow.** Fresh session at the training root → interview-for-the-job framing → four sharing shapes → [share your work](./#exercises-share-your-work) → Debrief sharpens the sharing artifact → Key Concepts → real-world test before M8.
+**Flow.** Fresh session at the training root → interview-for-the-job framing → four sharing shapes → [interview and pick](./#exercises-share-your-work) → [design both plans](./#exercises-design-the-sharing-plan) → [test and write Monday](./#exercises-test-the-sharing-plan) → Debrief sharpens the sharing artifact → Key Concepts → real-world test before M8.
 
 **Mood.** Generous impulse: *"This is working for me; could it help someone else?"* Check: the room starts with governance, deployment, or an abstract enterprise rollout. Fix: name one teammate, the job they are already hiring something to do, and the outcome that would make them switch.
 

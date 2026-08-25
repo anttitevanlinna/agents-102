@@ -15,6 +15,8 @@ requires:
 produces:
   - id: m7-jtbd
     location: module-7/jtbd.md
+  - id: m7-branch
+    location: module-7/branch.md
 ---
 Read my memory/, sources/, module-3/, module-5/, and module-6/.
 
@@ -52,3 +54,14 @@ When I'm done picking, write module-7/jtbd.md with:
 
 Anchor every claim to a specific file and line in my memory, plus the questions
 I answered. Show me the file before saving.
+
+Then read patterns/personal-to-team-patterns.md. Compare its candidates against
+the outcome in module-7/jtbd.md. Use the ask-questions tool to show me the three
+strongest candidates and the concrete mechanism by which each would move that
+outcome. Let me pick one to three. Do not recommend a candidate merely because
+it fits my infrastructure.
+
+Write module-7/branch.md. For every candidate I pick, include one sentence in
+this form: "This candidate moves the outcome because [concrete mechanism]."
+Record infrastructure as a constraint after the mechanism, not as the reason
+for the choice. Show me the file before saving.

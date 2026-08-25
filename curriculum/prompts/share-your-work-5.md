@@ -2,7 +2,7 @@
 key: share-your-work-5
 dest: Builder Claude
 runtime: any
-origin: exercises/share-your-work
+origin: exercises/test-the-sharing-plan
 requires:
   - id: m7-jtbd
     source: prompt:share-your-work-1
@@ -32,3 +32,7 @@ List the top five assumptions the switch depends on. For each:
 Order from most load-bearing to least. Save to module-7/assumptions.md.
 Let the assumption-test change the confidence in the plans — don't just append
 a new section. Show me before saving.
+
+Then ask me to select the two or three assumptions I will actually test this
+week. Mark those rows "SELECTED THIS WEEK" in module-7/assumptions.md and show
+me the updated file.

@@ -2,12 +2,12 @@
 key: share-your-work-3
 dest: Builder Claude
 runtime: any
-origin: exercises/share-your-work
+origin: exercises/design-the-sharing-plan
 requires:
   - id: m7-jtbd
     source: prompt:share-your-work-1
   - id: m7-branch
-    source: external
+    source: prompt:share-your-work-1
 produces:
   - id: m7-bottleneck
     location: module-7/absorption-bottleneck.md

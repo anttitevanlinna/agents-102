@@ -31,17 +31,21 @@ Two questions to warm up: who's the one person who came to mind just now? And wh
 
 ## Interview for the job
 
-Start with the move that matters most: **interview for the job.** Your teammate doesn't want your agent. They want a job done. Your agent, your skill, your output, your interface: any of those is a candidate for hire against whatever they're using now. That reframe moves the starting question from *"what should I share?"* (yours) to *"what job is my teammate trying to get done, and which sharing shape does it?"* (theirs). Phase 1 is that interview, and the agent does the heavy lifting. It reads your memory, drafts the hypothesis, asks you the five to eight questions that plug real holes.
+Start with the move that matters most: **interview for the job.** Your teammate doesn't want your agent. They want a job done. Your agent, your skill, your output, your interface: any of those is a candidate for hire against whatever they're using now. That reframe moves the starting question from *"what should I share?"* (yours) to *"what job is my teammate trying to get done, and which sharing shape does it?"* (theirs). The first exercise runs that interview, and the agent does the heavy lifting. It reads your memory, drafts the hypothesis, asks you the five to eight questions that plug real holes.
 
 ## Pick the sharing shape
 
 Then the candidates: **Sharing shapes.** (1) **Share the context** — teammates get your `memory/`, `sources/`, `CLAUDE.md` and build their own agents on top. (2) **Share a skill** — one scoped capability extracted. (3) **Share the output (push)** — scheduled deploy; the output lands where the team already looks. (4) **Share an interface (pull)** — Slack bot / Teams @mention / web form / endpoint; teammates invoke on demand. "Share the whole agent" is a vendor pitch and is not on the list.
 
-The pressure tests after that stay practical: what's the absorption bottleneck, what must be true for the teammate to switch, and why might they go back to the incumbent six months from now?
+Then test the absorption bottleneck, what must be true for a switch, and why the teammate might return to the incumbent.
 
 One observation to keep in your back pocket while you run the exercise: **access is not absorption.** Many companies have rolled out access far ahead of trust. People can reach the agent. That does not mean they know when to use it, trust it with real work, or have a way to encounter it in the flow of the day. You'll feel that gap yourself when your technical plan fills quickly and your people plan stalls on names.
 
-[Exercise: Share your work](exercises/share-your-work.md)
+[Exercise: Interview for the job and pick a candidate](exercises/share-your-work.md)
+
+[Exercise: Design the sharing plan](exercises/design-the-sharing-plan.md)
+
+[Exercise: Test the sharing plan](exercises/test-the-sharing-plan.md)
 
 ## Debrief
 
@@ -99,9 +103,9 @@ The sharing plan leaves the room and meets the organisation. What comes back fro
 **Artefact contracts**
 | Artefact | Stable identifier | Produced by | Consumed by |
 |---|---|---|---|
-| Module 7 sharing package | `module-7/jtbd.md`, `module-7/branch.md`, `module-7/absorption-bottleneck.md`, `module-7/technical-plan.md`, `module-7/people-plan.md`, `module-7/assumptions.md`, `module-7/failure-stories.md` | M7 sharing exercise | M7 Debrief; M8 prework and sponsor-question grounding |
+| Module 7 sharing package | `module-7/jtbd.md`, `module-7/branch.md`, `module-7/absorption-bottleneck.md`, `module-7/technical-plan.md`, `module-7/people-plan.md`, `module-7/assumptions.md`, `module-7/failure-stories.md` | M7 three sharing exercises | M7 Debrief; M8 prework and sponsor-question grounding |
 | Module 7 sharing artifact | chosen file under `module-7/` | M7 Debrief rewrite | M8 run-next-step prework and post-training adoption test |
-| Module 7 next-step file | `module-7/monday.md` | M7 Phase 7 closing instruction | M8 prework and `joint-double-diamond-3` stance ground |
+| Module 7 next-step file | `module-7/monday.md` | M7 test-the-sharing-plan closing prompt | M8 prework and `joint-double-diamond-3` stance ground |
 
 **Plug Points (trainer):**
 

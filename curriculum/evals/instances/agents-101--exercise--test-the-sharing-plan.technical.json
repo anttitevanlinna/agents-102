@@ -1,0 +1,971 @@
+{
+  "class": "technical",
+  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/test-the-sharing-plan.md",
+  "body_sha": "59290e0205aa642750e118e10899d57189b382b00947617c1fa044af877c764e",
+  "verdict": "PASS",
+  "training": "agents-101",
+  "rules_evaluated": [
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 1,
+      "rule_lead": "Training platform = Claude Code (CLI + Desktop) + Cowork.",
+      "verdict": "N/A",
+      "evidence": "Not applicable to this exercise surface.",
+      "fix_hint": "No platform, runtime, skill, infrastructure, or quality-stamp claim in the target.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 2,
+      "rule_lead": "Cloud/remote features carry Git dependency — out of scope for our training dir.",
+      "verdict": "N/A",
+      "evidence": "Not applicable to this exercise surface.",
+      "fix_hint": "No platform, runtime, skill, infrastructure, or quality-stamp claim in the target.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 3,
+      "rule_lead": "Local scheduled tasks catch up on wake, but only once, only for runs missed in last 7 days.",
+      "verdict": "N/A",
+      "evidence": "Not applicable to this exercise surface.",
+      "fix_hint": "No platform, runtime, skill, infrastructure, or quality-stamp claim in the target.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 4,
+      "rule_lead": "Verify capabilities BEFORE asserting, not after. Trigger = assertion — any sentence of form *\"Claude Code supports X\"* or *\"file Y does Z\"*, whether spoken in strategic conversation, written in plan, drafted in prose, or proposed as reshape. Invoke `claude-code-guide` with specific questions — feature name, GUI click-path, MCP dependencies, Git assumptions, current-as-of-date — before assertion goes out. Training-data memory of Claude Code goes stale within months; features land mid-year. Do not assert from memory. Trust-but-verify the capability-check agent too — WebFetch URL yourself when assertion load-bearing; agents can hallucinate credible-sounding official answers. Silence from lookup isn't absence. Press further if check-agent says *\"I couldn't find this\"*: *\"Did you check specific slash commands / settings sections, or just search?\"* Audit-mode not exempt. Rule fires on platform claims regardless of source — when auditing pre-existing curriculum, embedded platform claims (*\"this folder auto-loads,\"* *\"the agent reads here by default,\"* *\"X is a Claude Code primitive\"*) = assertions still needing verification, not established context. Trigger = \"fix-on-top-of-claim\", not just \"writing-a-new-sentence\". Vocabulary is an assertion too — naming a thing with a platform term (*\"project memory,\" \"skill,\" \"plan mode\"*) claims that term means what you think; reserved terms are often already taken (*\"project memory\" = `./CLAUDE.md`*, not the in-repo `observations/` convention — itself renamed from `.claude/memory/` 2026-05-26 to escape the auto-memory name reflex). Disambiguate by naming the location/mechanism, not by borrowing the reserved word. For a convention YOU control, a reserved-term collision (memory/context/skill/plan/agent) or a guarded-path home (`.claude/`) is fixed by RENAMING OUT of it, not by defending the clashing name with disambiguation prose",
+      "verdict": "N/A",
+      "evidence": "Not applicable to this exercise surface.",
+      "fix_hint": "No platform, runtime, skill, infrastructure, or quality-stamp claim in the target.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": "4b",
+      "rule_lead": "Compendium platform claims rot at 60 days.",
+      "verdict": "N/A",
+      "evidence": "Not applicable to this exercise surface.",
+      "fix_hint": "No platform, runtime, skill, infrastructure, or quality-stamp claim in the target.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": "4a",
+      "rule_lead": "Maintain living capability notes for both runtimes; consult before asserting.",
+      "verdict": "N/A",
+      "evidence": "Not applicable to this exercise surface.",
+      "fix_hint": "No platform, runtime, skill, infrastructure, or quality-stamp claim in the target.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": "4c",
+      "rule_lead": "Don't extend known mechanism into adjacent context without verifying it fires there.",
+      "verdict": "N/A",
+      "evidence": "Not applicable to this exercise surface.",
+      "fix_hint": "No platform, runtime, skill, infrastructure, or quality-stamp claim in the target.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": "4d",
+      "rule_lead": "Fix the contract, not the broken recovery.",
+      "verdict": "N/A",
+      "evidence": "Not applicable to this exercise surface.",
+      "fix_hint": "No platform, runtime, skill, infrastructure, or quality-stamp claim in the target.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 5,
+      "rule_lead": "Practitioner observation beats docs lookup.",
+      "verdict": "N/A",
+      "evidence": "Not applicable to this exercise surface.",
+      "fix_hint": "No platform, runtime, skill, infrastructure, or quality-stamp claim in the target.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": "5a",
+      "rule_lead": "Live-test beats docs for runtime-behavior claims. Platform claim about *what binary actually does* — slash command syntax, file-system auto-load paths, hook firing, settings precedence, install affordance — AND test takes <5 minutes → run it instead of (or in addition to) reading docs. Doc-derived answers (WebFetch or `claude-code-guide` agent) reliable for API shape, vocabulary, feature existence; unreliable for behavior. Cost differential between agent-read + live-test near-zero; signal differential huge. Negative-claim corollary: doc- or subagent-derived NEGATIVE — *\"feature X is absent / not exposed / impossible\"* — = highest-risk shape, because it makes you architect AROUND absence (e.g. entire fragile transcript-search built because agent supposedly \"couldn't\" know own session id; falsified by one `printenv CLAUDE_CODE_SESSION_ID` — var ships, undocumented in env-vars reference). Undocumented features ship; subagent's \"absent\" verdict sourced from docs + issue trackers NOT authoritative. Before building recovery/workaround/fallback machinery premised on platform limitation, run ≤2-min probe that would falsify it. Unprobeable in moment → mark `limitation assumed, live-probe owed` + don't harden against it yet. Eval/judge-verdict corollary:",
+      "verdict": "N/A",
+      "evidence": "Not applicable to this exercise surface.",
+      "fix_hint": "No platform, runtime, skill, infrastructure, or quality-stamp claim in the target.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 6,
+      "rule_lead": "Known correct Claude Code facts (easy to get wrong): Plan mode = Shift+Tab cycle OR `/plan` command (NOT Shift+P — shortcut does not exist; canonical docs at `code.claude.com/docs/en/permission-modes.md`). Connectors/MCP servers = `claude mcp add` (CLI), `/mcp` in-session, OR Settings → Connectors on claude.ai (verified 2026-05-14 via `code.claude.com/docs/en/mcp`). Scheduling = Routines sidebar → New routine → Local (Desktop GUI; folder required before save; fires only while app open + machine awake) OR `/loop <interval> <prompt>` in-session (session-scoped, 7-day expiry, needs v2.1.72+, ≤50 tasks/session) OR remote Routines (cloud, fires on schedule / API call / GitHub event; one-off runs supported) OR plain `schedule: cron` in a GitHub Actions workflow calling `anthropics/claude-code-action@v1` — the last one is GitHub's primitive, not Anthropic's, and needs no Routines entitlement. Remote Routines gate on TWO things, not one: Pro/Max/Team/Enterprise plan AND *Claude Code on the web enabled* (itself still research preview). Caps: Pro 5/day · Max 15/day · Team+Ent 25/day; cloud minimum interval 1 hour",
+      "verdict": "N/A",
+      "evidence": "Not applicable to this exercise surface.",
+      "fix_hint": "No platform, runtime, skill, infrastructure, or quality-stamp claim in the target.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": "6b",
+      "rule_lead": "When tool feature behaves differently than expected, update curriculum — not student's workaround.",
+      "verdict": "N/A",
+      "evidence": "Not applicable to this exercise surface.",
+      "fix_hint": "No platform, runtime, skill, infrastructure, or quality-stamp claim in the target.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": "6d",
+      "rule_lead": "Auto-load surface = SIX things — four filenames + project `.claude/rules/` + user `~/.claude/rules/`. Session cold-start: (1) `./CLAUDE.md` or `./.claude/CLAUDE.md` walked up from cwd, including subdirectory CLAUDE.md within project tree; (2) `./CLAUDE.local.md` walked up from cwd (gitignored); (3) `~/.claude/CLAUDE.md` (user-level, cross-repo); (4) managed-policy CLAUDE.md — macOS `/Library/Application Support/ClaudeCode/CLAUDE.md`, Linux/WSL `/etc/claude-code/CLAUDE.md`, Windows `C:\\Program Files\\ClaudeCode\\CLAUDE.md`, or the `claudeMd` key in `managed-settings.json`; every session on the machine, in every repository, loads before user and project, and `claudeMdExcludes` cannot exclude it (docs 2026-08-23). Org-deployed, so it is present on a customer laptop and absent from ours — the one surface a demo or an exercise cannot probe from here; (5) any `*.md` under `.claude/rules/` in project tree, discovered recursively (docs 2026-08-13) — directory-based, NOT `@import`-wired (verified 2026-05-24 by symmetric test: `.claude/rules/content-rules.md` loaded as project instruction with no `@import` and no hook injection; relocated `continuous-research/research-rules.md` did NOT load, ruling out prose-link-following); (6) any `*.md` under `~/.claude/rules/` — user-level, every project, loads before project rules so project wins (docs + live-probe 2026-08-13: sentinel file found by fresh headless `claude -p` cold-start). Three of the six are directory-keyed and three are not — an empty directory outside any repo clears (1), (2) and (5), and leaves (3), (4) and (6) fully loaded (live-probed 2026-08-23: `claude -p` in a fresh non-git empty dir quoted `~/.claude/CLAUDE.md`'s first heading). Any claim that a fresh session \"starts clean\" must say which three. `paths:`-frontmatter rules load on matching file read, not at cold start. Anything outside those six surfaces requires `@import` syntax inside auto-loaded CLAUDE.md — `@<path>` pulls target file's contents at load time (max 4 hops, docs 2026-08-13) — otherwise loads only when prompt names path. Separately, Claude Code's system auto-memory at `~/.claude/projects/<encoded-project>/memory/`, agent-written for own recall, surfaced via `/memory` — distinct from user-authored memory convention; dir keyed to the git repo, so worktrees share it, and outside a repo the working directory is the project root, so two sessions started in the same non-repo folder share one auto-memory dir (docs 2026-08-23). Curriculum claims of form *\"rules at path X auto-load\"* true only if X matches one of six surfaces OR is `@import`-wired from one. Context-cost implication: every byte under `.claude/rules/` paid every session — keep directory short. Subagent corollary: a non-fork subagent inherits all six surfaces — every CLAUDE.md level, `CLAUDE.local.md`, managed policy, both rules dirs — at spawn, with no action from the dispatching session (verified 2026-07-30 by live probe: dispatched subagent, tools forbidden, zero tool calls, quoted project CLAUDE.md + `.claude/rules/content-rules.md` + user-level `~/.claude/CLAUDE.md`; same probe saw NO `continuous-research/research-rules.md`). Built-in Explore and Plan are the only subagents that skip CLAUDE.md, and no setting changes that. Inheritance = snapshot of the parent's loaded set, NOT a fresh filesystem read at spawn",
+      "verdict": "N/A",
+      "evidence": "Not applicable to this exercise surface.",
+      "fix_hint": "No platform, runtime, skill, infrastructure, or quality-stamp claim in the target.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": "6f",
+      "rule_lead": "Compendium pointers inside files = autoload-redundant.",
+      "verdict": "N/A",
+      "evidence": "Not applicable to this exercise surface.",
+      "fix_hint": "No platform, runtime, skill, infrastructure, or quality-stamp claim in the target.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": "6e",
+      "rule_lead": "Transcript-by-mtime selection fragile when current session writes target folder.",
+      "verdict": "N/A",
+      "evidence": "Not applicable to this exercise surface.",
+      "fix_hint": "No platform, runtime, skill, infrastructure, or quality-stamp claim in the target.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": "6c",
+      "rule_lead": "PreToolUse/PostToolUse hooks read env from harness, not from agent Bash subshells. Setting env var via `export FOO=1` inside Bash tool call does NOT propagate to subsequent hook invocations — hook subshell inherits from Claude Code harness process. For session-wide overrides (test runs, bulk migrations, intentional gate bypass like `SKIP_PROMPT_GATE=1`), set env var at harness launch: terminal env before `claude` starts, OR `.claude/settings.local.json` `env:` block. Subagents inherit nothing useful from parent agent for hook purposes. Workarounds dodging hook matcher (Bash heredocs `cat > file <<EOF` bypass `Write|Edit|MultiEdit` PreToolUse matcher) work but exploit matcher gap, not documented escape hatch — if you reach for them, hook design incomplete OR env-var path wasn't usable from where you stood. Auto-mode classifier = SEPARATE enforcement layer from hook itself. Even with env var set correctly at command time (`SKIP_PROMPT_GATE=1 git commit ...`), classifier denies action as \"safety-check bypass without explicit authorization\". Maintainer card-approval in conversation does NOT translate to classifier authorization — classifier reads tool calls, not transcript context. To land deploy commit including prompt edits: card-approved path (PRIMARY, supersedes \"surface the command\"): write `.claude/prompt-approvals/<key>.confirmed` (one per staged prompt key, Write tool — Bash may classifier-block) then plain `git commit`; `.githooks/pre-commit` detects fresh markers (<1h, one-shot consume) + clears, no y/N.",
+      "verdict": "N/A",
+      "evidence": "Not applicable to this exercise surface.",
+      "fix_hint": "No platform, runtime, skill, infrastructure, or quality-stamp claim in the target.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": "6g",
+      "rule_lead": "Edit-time prompt-edit gate's approval detector MUST parse the transcript deterministically (partial-line-tolerant) — never jq/grep under `pipefail`. The hook (`.claude/hooks/prompt-edit-gate.sh`) fires WHILE the harness appends the triggering turn, so the final JSONL line is reliably partial. A detector that pipes `jq` (streaming/`--slurp`) → `awk`/`grep` under `set -o pipefail` fails on that partial line: `jq` exits non-zero, `pipefail` turns a real match into a silent false — same transcript yields DENY/ALLOW non-deterministically (pure timing noise). Fix:",
+      "verdict": "N/A",
+      "evidence": "Not applicable to this exercise surface.",
+      "fix_hint": "No platform, runtime, skill, infrastructure, or quality-stamp claim in the target.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 7,
+      "rule_lead": "Sessions = unit of work — write \"start a new session in X,\" not \"open Claude Code in X.\"",
+      "verdict": "N/A",
+      "evidence": "Not applicable to this exercise surface.",
+      "fix_hint": "No platform, runtime, skill, infrastructure, or quality-stamp claim in the target.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": "7b",
+      "rule_lead": "Cross-working-directory boundaries always open `new`; evidence travels by disk. Claude Code session resumption = per-working-directory. `return` verb (pick up by UUID or name, fall back to fresh at same cwd) only works inside one working directory. Worktree fork creates separate working directory; so does clone, separate-repo demo, Cowork sandbox swap. None allow resume — must open `new`. Prior session's evidence travels by disk: transcripts at `~/.claude/projects/<encoded-cwd>/<uuid>.jsonl` (from inside worktree, find original cwd via `git rev-parse --git-common-dir`, encode with `/` → `-`); git refs (branches, commits, SHAs) cross worktrees freely via shared `.git/`; gitignored files",
+      "verdict": "N/A",
+      "evidence": "Not applicable to this exercise surface.",
+      "fix_hint": "No platform, runtime, skill, infrastructure, or quality-stamp claim in the target.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": "7c",
+      "rule_lead": "Same-cwd recovery defaults to `--resume`, not `new`.",
+      "verdict": "N/A",
+      "evidence": "Not applicable to this exercise surface.",
+      "fix_hint": "No platform, runtime, skill, infrastructure, or quality-stamp claim in the target.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": "7a",
+      "rule_lead": "CLAUDE.md describes runtime, not just task.",
+      "verdict": "N/A",
+      "evidence": "Not applicable to this exercise surface.",
+      "fix_hint": "No platform, runtime, skill, infrastructure, or quality-stamp claim in the target.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 8,
+      "rule_lead": "F-Secure curriculum off-limits.",
+      "verdict": "N/A",
+      "evidence": "Not applicable to this exercise surface.",
+      "fix_hint": "No platform, runtime, skill, infrastructure, or quality-stamp claim in the target.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 9,
+      "rule_lead": "No premature infrastructure.",
+      "verdict": "N/A",
+      "evidence": "Not applicable to this exercise surface.",
+      "fix_hint": "No platform, runtime, skill, infrastructure, or quality-stamp claim in the target.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 10,
+      "rule_lead": "External org content.",
+      "verdict": "N/A",
+      "evidence": "Not applicable to this exercise surface.",
+      "fix_hint": "No platform, runtime, skill, infrastructure, or quality-stamp claim in the target.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 11,
+      "rule_lead": "Destructive operations need confirmation.",
+      "verdict": "N/A",
+      "evidence": "Not applicable to this exercise surface.",
+      "fix_hint": "No platform, runtime, skill, infrastructure, or quality-stamp claim in the target.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 12,
+      "rule_lead": "No \"as-is\" imports from internet. Skills, prompts, agent files, memory pages, rules files found on GitHub / blog posts / community Discords get forked + vetted + adapted, never imported raw. Three reasons: (1) copyright — unvetted license = IP risk to Bosser + customer's company; (2) most customer policies prohibit plain copy-paste of external code into internal repos; (3) shared skills often need vetting for quality + security surface. Practice: fork into `curriculum/skills/external/<author>/<skill>/`, preserve LICENSE + source-commit hash, adapt to context, credit originator (see `check_writing.md §6`). Also curriculum content",
+      "verdict": "N/A",
+      "evidence": "Not applicable to this exercise surface.",
+      "fix_hint": "No platform, runtime, skill, infrastructure, or quality-stamp claim in the target.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 13,
+      "rule_lead": "Pseudo-URI + kill-switch for public/private content split.",
+      "verdict": "N/A",
+      "evidence": "Not applicable to this exercise surface.",
+      "fix_hint": "No platform, runtime, skill, infrastructure, or quality-stamp claim in the target.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": "13a",
+      "rule_lead": "Bulk workbook rebuilds: derive flags from existing output, never guess \"all.\" Different client/training combos in `site/clients/` are built with different `build-workbook.js` flag combinations (base only; `--theory`; `--exercises`; `--no-trainer-docs`) — check the existing output file set (trainer-guide/trainer-modules present → no `--no-trainer-docs`; theory-handbook.html present → also run `--theory`; exercises-workbook.html present → also run `--exercises`) before rebuilding, rather than assuming one invocation covers everything. `site/clients/vip-*/` is an unconditional skip",
+      "verdict": "N/A",
+      "evidence": "Not applicable to this exercise surface.",
+      "fix_hint": "No platform, runtime, skill, infrastructure, or quality-stamp claim in the target.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": "13b",
+      "rule_lead": "Before auditing a built artifact ask whether it ships; before acting on a finding, re-measure it. `git check-ignore -v <path>` FIRST — `site/clients/` mixes tracked builds that ship with gitignored local rebuild targets (`goats/`, every `vip-*/`), and a dead anchor / stale claim / broken link inside the second kind is not a defect. `git ls-files site/clients` answers it tree-wide in one command. Second half: a ledger finding (`pre-cohort-todos.md`, a maintainer block, an audit report) records what was true the day it was written, and precision makes it LESS likely to be re-run",
+      "verdict": "N/A",
+      "evidence": "Not applicable to this exercise surface.",
+      "fix_hint": "No platform, runtime, skill, infrastructure, or quality-stamp claim in the target.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 14,
+      "rule_lead": "Internal audit/session-retro directories default-gitignore from creation.",
+      "verdict": "N/A",
+      "evidence": "Not applicable to this exercise surface.",
+      "fix_hint": "No platform, runtime, skill, infrastructure, or quality-stamp claim in the target.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 15,
+      "rule_lead": "Quality gates run at wind-down, not mid-session.",
+      "verdict": "N/A",
+      "evidence": "Not applicable to this exercise surface.",
+      "fix_hint": "No platform, runtime, skill, infrastructure, or quality-stamp claim in the target.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 16,
+      "rule_lead": "Tooling test layers carry acceptance-test contract. Black-box, scripted, deterministic, dispatched on Haiku. Mechanical layer at `curriculum/evals/mechanical/` tests prompt mechanics + continuation between exercises; content quality belongs to eval system (LLM-as-judge + persona sims). Diagnostic when designing or extending assertion: *\"Could fresh student answer this by reading file or running one-liner? Or does it require taste?\"* Latter → wrong layer; move to eval system. Reading scrollback to grade prose → wrong layer. Pin model at runner top (`Dispatch with model: \"haiku\".`) so future invocations inherit; constraint that Haiku must be able to execute assertion = forcing function keeping layer disciplined. (16a) Sentinel completion ≠ artifact delivery.",
+      "verdict": "N/A",
+      "evidence": "Not applicable to this exercise surface.",
+      "fix_hint": "No platform, runtime, skill, infrastructure, or quality-stamp claim in the target.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 17,
+      "rule_lead": "Script ratchet — every LLM-orchestration tooling surface ratchets toward script-replaceable assertions.",
+      "verdict": "N/A",
+      "evidence": "Not applicable to this exercise surface.",
+      "fix_hint": "No platform, runtime, skill, infrastructure, or quality-stamp claim in the target.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 18,
+      "rule_lead": "Hook lints partition into auto-fix vs warn — main thread sees only judgment.",
+      "verdict": "N/A",
+      "evidence": "Not applicable to this exercise surface.",
+      "fix_hint": "No platform, runtime, skill, infrastructure, or quality-stamp claim in the target.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": "14a",
+      "rule_lead": "Canon is declared, not inferred — and an orphan is not automatically spent. A repo that generates its own rules holds two look-alike species: the doc that governs generation, and the doc a session left behind. No regex splits them (a judge rubric and a compaction handoff are the same shape); reachability does — a governing doc is named from a surface that loads whether or not anyone opens it. Declare canon on an auto-loaded surface (`curriculum/CLAUDE.md` § *Canon*) and say in the declaration that anything unlisted is session material: read it, never cite it as a rule. Authority held only in a maintainer's head is one absence from being swept; a worklist for shipped work reads to the next session as work still owed. Second half is where the damage sits: reachability finds orphans, it does not say what one IS. Split by hand — spent → archive; canonical-but-under-linked",
+      "verdict": "N/A",
+      "evidence": "Not applicable to this exercise surface.",
+      "fix_hint": "No platform, runtime, skill, infrastructure, or quality-stamp claim in the target.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 19,
+      "rule_lead": "Runner ↔ source pre-flight. Any harness whose runner addresses test fixtures by file number (`prompt-NNN.txt`, `scenario-NN.json`, `fixture-NN.csv`) → static script must verify runner's labels still align with fixture content. Reordering source artefact rots runner silently. Judge LLM can't catch this; Actor will burn tokens reconciling. `bin/runner-mapping-check.sh` = M1 reference: keyword overlap of phase slug vs referenced fixture vs every other fixture; FAIL on misalignment, BLOCK before Actor dispatch. NAME drift — sister axis. Beyond NUMBER drift, any runner predicate selecting on load-bearing string (tool name, command name, slash-command name, skill name, hook name) must have smoke-test against real input fixture verifying predicate ever matches. The Task→Agent case: `jq '... tool_use.name == \"Task\" ...'` filtered every M3/M4/M6 mechanical runner for weeks; canonical Claude Code tool = `Agent`, predicate matched zero real transcripts, every PASS verdict silently routed through fallback branch designed for different failure mode. Doc-derived names rotate across releases; training-data memory worse. Diagnostic before trusting any `jq`/`grep`/`awk` predicate selecting on string name: did real input fixture verify predicate ever matches? No → harness testing nothing. Pre-flight script: parse each runner for string-equality predicates against transcript fields, replay against known-good fixture, FAIL if any predicate matches zero events. KEY-existence drift — third sister axis. Any test harness whose scenarios reference source-registry entries by literal key/slug (not file number, not a jq predicate) rots silently when the source entry is deleted — the registry's own consumed-by graph gets updated, but nothing cross-checks the harness. Diagnostic: for every scenario file, extract referenced keys and diff against the current registry's key list; any orphan is a dead turn waiting to fail a live run. Ship as a committed script (sibling of `runner-mapping-check.sh`), run in the same pass as updating consumed-by refs when cutting a prompt/exercise phase — not after a live run discovers it. LOCATION-and-SHAPE drift — fourth sister axis, and the only one that fails toward RED. The other three let a broken harness report green; this one fails a correct run, which costs an afternoon deciding whether the curriculum or the runner is wrong. Where a prompt lets the agent choose WHERE an artifact lands (`diagnose-and-resend-6`: \"propose the file paths, same task-scoped folder\"), the harness DISCOVERS it — pinned hint → search under the working tree → placeholder while it does not yet exist — and never hard-codes a path; the prompt's text is a fixture, the artifact's location is not. Where a prompt adds a required element to an artifact's SHAPE (a verifier-invocation line in `plan.md` that the re-send reads to know how to call the verifier), the harness owes a new assertion for that element, or the shape is a promise nobody collects. Diagnostic when a prompt body changes: does it move an artifact, or require a new part of one? Either → grep the harness for the old path/absent assertion before the next live run. Harness labels drift the same way: dispatch assertions on the prompt KEY, never the ordinal.",
+      "verdict": "N/A",
+      "evidence": "Not applicable to this exercise surface.",
+      "fix_hint": "No platform, runtime, skill, infrastructure, or quality-stamp claim in the target.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 20,
+      "rule_lead": "Judge must honor script exit codes. Judge runner says *\"PASS on exit 0\"* → non-zero exit (including exit 2 / boundary errors) = FAIL. LLM Judge cannot recover by reading scrollback or re-deriving assertion. Otherwise script ratchet (#17) decays: once Judge papers over broken script, every future broken script does same + `bin/` battery silently rots. Failure mode invisible because Judge report still says PASS. Discipline: every Judge runner assertion calling script ends with *\"PASS on exit 0; FAIL on any non-zero (including script error).\"* Judge's only job = capture exit code + first line of stdout. Inline corollary (recurrence ×2, 2026-08-13):",
+      "verdict": "N/A",
+      "evidence": "Not applicable to this exercise surface.",
+      "fix_hint": "No platform, runtime, skill, infrastructure, or quality-stamp claim in the target.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 21,
+      "rule_lead": "Eval-fire writing-class fires must schema-validate before presenting verdicts. Writing-class default model = Haiku 4.5 (cheapest tier for static prose lints), but Haiku degrades on schema fidelity: returns `rules_evaluated` as string entries instead of objects, omits required `evidence`/`fix_hint` fields, hallucinates line citations failing \"quoted substring at cited line\" check, emits REVISE verdicts contradicted by file's own maintainer block. Sonnet judges on same files honor schema cleanly. Orchestrator MUST validate returned JSON before acting: `rules_evaluated` entries lacking `evidence`/`fix_hint`, containing non-object types, or failing sample line-citation verify → escalate file to Sonnet re-fire + discard Haiku output. Default Haiku stays — escalation = exception path. Don't keep dispatching writing-class to Haiku + hand-correcting in orchestrator: converts eval system from forcing function into noise generator demanding manual greps to filter. (21a) The schema gate does not cover the failure that costs most, and the default is now `sonnet` (2026-08-19).",
+      "verdict": "N/A",
+      "evidence": "Not applicable to this exercise surface.",
+      "fix_hint": "No platform, runtime, skill, infrastructure, or quality-stamp claim in the target.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 22,
+      "rule_lead": "Coverage tools enumerate universe, not index of past work.",
+      "verdict": "N/A",
+      "evidence": "Not applicable to this exercise surface.",
+      "fix_hint": "No platform, runtime, skill, infrastructure, or quality-stamp claim in the target.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 23,
+      "rule_lead": "Cowork sandboxed to its connected working directories.",
+      "verdict": "N/A",
+      "evidence": "Not applicable to this exercise surface.",
+      "fix_hint": "No platform, runtime, skill, infrastructure, or quality-stamp claim in the target.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 24,
+      "rule_lead": "`maintainer_acceptance` = JSON-level override for accepted/mitigated judge verdicts.",
+      "verdict": "N/A",
+      "evidence": "Not applicable to this exercise surface.",
+      "fix_hint": "No platform, runtime, skill, infrastructure, or quality-stamp claim in the target.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": "24a",
+      "rule_lead": "Quality stamps: tooling writes them; the SHA pins committed content. Never hand-type a `Quality:` line — `update-quality.sh` is the only sanctioned writer, fed the real per-class verdicts. It defaults each `<class>@<sha>` to current HEAD, so the audited content MUST be committed BEFORE stamping, else the pin references a commit lacking it → spurious touch-degrade on next audit. Order: commit content → `update-quality.sh` → commit the stamp. Before stamping, reduce any pre-existing `Quality: none ... <prose>` line to a clean anchor (`Quality:",
+      "verdict": "N/A",
+      "evidence": "Not applicable to this exercise surface.",
+      "fix_hint": "No platform, runtime, skill, infrastructure, or quality-stamp claim in the target.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 25,
+      "rule_lead": "Cowork capability surface — UI surfaces subagent reads; no session rename in Cowork or Desktop.",
+      "verdict": "N/A",
+      "evidence": "Not applicable to this exercise surface.",
+      "fix_hint": "No platform, runtime, skill, infrastructure, or quality-stamp claim in the target.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 26,
+      "rule_lead": "Audit scope derives from TRAININGS registry + link-walk, not disk dir or tarball.",
+      "verdict": "N/A",
+      "evidence": "Not applicable to this exercise surface.",
+      "fix_hint": "No platform, runtime, skill, infrastructure, or quality-stamp claim in the target.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 27,
+      "rule_lead": "Acceptance-test contract covers (i) prompt mechanics + (ii) end-state artefacts, NOT (iii) does prompt's executable shell actually work.",
+      "verdict": "N/A",
+      "evidence": "Not applicable to this exercise surface.",
+      "fix_hint": "No platform, runtime, skill, infrastructure, or quality-stamp claim in the target.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 28,
+      "rule_lead": "Strategy-doc drift surfaces via judge citation — citation = canary, not verdict. `/curriculum-pre-ship-audit` class judge returns REVISE citing strategy doc as evidence (line numbers from `content-strategy-*.md`, \"the doc scopes the closer as X\") → orchestrator's next step NOT default to judge's fix-hint. Open cited section. Compare against curriculum reality maintainer last shipped. Three legal resolutions: (a) curriculum wrong → apply judge's fix; (b) doc stale → update doc, re-fire judge expecting PASS; (c) both right, audit rule mis-applied to this case → log judge override as `type: decision` entry. Citation surfaced divergence; audit-skill's job = route, not flatten. Detection signal:",
+      "verdict": "N/A",
+      "evidence": "Not applicable to this exercise surface.",
+      "fix_hint": "No platform, runtime, skill, infrastructure, or quality-stamp claim in the target.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 29,
+      "rule_lead": "Portability audits: analyze AGENT'S runtime, not prompt's literal syntax. Auditing ask-the-agent curriculum (AE101, Agents 101) for OS/shell/portability risk (Windows, Linux, shell differences) → unit of analysis = what *agent* does, not command text in prompt. Claude Code = shell-aware + translates intent — `cp -r`, `mkdir -p`, `grep` against `git branch`, `~/` paths sitting under natural-language lead-in (\"copy the gitignored files into the worktree…\") — into whatever shell tool it has: Git Bash, PowerShell tool, WSL, zsh. Agent-run Unix-isms = intent-illustration, not literal script; NOT portability risks, `runtime: any` on such prompt = true. Only genuinely flaggable command = one the *student* is told to type into own terminal (no agent translation) — ask-the-agent designs have ~none. Don't propose de-bashing agent-run prompts: surgery on mechanism that already works. Stamp-trust corollary: platform claim wearing \"verified <date>\" badge must itself be re-verified — confirm *binding* number against canonical doc rather than inheriting adjacent floor (Claude Code's Windows floor = 1809+",
+      "verdict": "N/A",
+      "evidence": "Not applicable to this exercise surface.",
+      "fix_hint": "No platform, runtime, skill, infrastructure, or quality-stamp claim in the target.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 30,
+      "rule_lead": "Skills at `~/.claude/skills/<name>/` are user-global but per-codebase in content — namespace by SUT.",
+      "verdict": "N/A",
+      "evidence": "Not applicable to this exercise surface.",
+      "fix_hint": "No platform, runtime, skill, infrastructure, or quality-stamp claim in the target.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 31,
+      "rule_lead": "state.json files written by `run-mN.sh` are convenience caches, not authoritative — read hand-off from in-SUT artefacts.",
+      "verdict": "N/A",
+      "evidence": "Not applicable to this exercise surface.",
+      "fix_hint": "No platform, runtime, skill, infrastructure, or quality-stamp claim in the target.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 32,
+      "rule_lead": "tmux-runner sessions must use a per-runner socket (`tmux -L runner-$run_id ...`), not the user-wide default.",
+      "verdict": "N/A",
+      "evidence": "Not applicable to this exercise surface.",
+      "fix_hint": "No platform, runtime, skill, infrastructure, or quality-stamp claim in the target.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 33,
+      "rule_lead": "A killed `run_in_background` Bash wrapper is not evidence the tmux session it launched is dead.",
+      "verdict": "N/A",
+      "evidence": "Not applicable to this exercise surface.",
+      "fix_hint": "No platform, runtime, skill, infrastructure, or quality-stamp claim in the target.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 34,
+      "rule_lead": "Spend on deleting the duplicate, not on guarding it — and a gate that finds nothing is speculation. Two failure modes, one budget. (a) *A new check that returns zero findings on the corpus it was written for is not safety, it is a guess wearing a gate's clothing* — delete it and report the deletion (2026-08-09: `findScheduleDrift`, ~45 lines comparing trainer day-tables to the caps table, zero hits because the two had always agreed; written minutes after correctly refusing the same build for prep timings). (b) *A duplicate that currently agrees is not safe, it is one nobody has broken yet* — remove the copy rather than adding a guard for it. Six exercises held a second `Time:` line matching the generated one; the argument for keeping them (\"the gate catches disagreement\") had already been falsified by a seventh, whose stale 18–22 against a leaf summing to 20 had reached a trainer tab. Deletion costs one edit; the guard costs a permanent surface. In always-loaded material the cost is worse than divergence: a stale copy is byte-for-byte as authoritative as a fresh one, so it is unfalsifiable at the point of reading, and in an auto-load chain it is often the copy read FIRST. Diagnostic is not *do the copies agree?* but *how many rebuild independently?* — more than one and the divergence is scheduled, only the date unknown (2026-08-20: `session-start.sh` advertised the diamond index as \"~8KB, 115 rules\" a day after it was cut to 2.5KB/21; the same six-way split had dropped `--repin` from the diamond header while CLAUDE.md kept it, leaving the main thread's first read the incomplete one). When a gate DOES earn its place, prove it fires by breaking the corpus deliberately and watching it go red before trusting a green run (§ pairs with the fail-closed rule). Diagnostic before writing a check: name the live defect it would have caught. None → do not write it. (c) A guard can be correct in code and unwired by config — find its RECEIPTS before trusting it. Every guard that runs leaves them: consumed one-shot markers, log lines, non-zero exits, audit rows. None on disk → it has never fired, whatever the source says. `.githooks/pre-commit` was correct and fail-closed and had never run once, because `core.hooksPath` pointed at `.git/hooks`; the tell was 39 uncollected approval markers, oldest 11 weeks. Reading the source proves nothing about invocation — test it in a scratch repo, red and green. And where a design claims two layers, test the one covering the other's known gap FIRST",
+      "verdict": "N/A",
+      "evidence": "Not applicable to this exercise surface.",
+      "fix_hint": "No platform, runtime, skill, infrastructure, or quality-stamp claim in the target.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 35,
+      "rule_lead": "`update-quality.sh` takes ALL classes in ONE invocation per file, and not until that file's last judge has returned. The guard hashes the WHOLE file (`shasum -a 256 \"$FILE\"`) and the script writes the Quality block into that same file. The sibling self-poisoning this rule was written for is FIXED — line ~541 rewrites another instance's `body_sha` only where the recorded value equals the pre-write hash, so instances that read the same body carry forward and genuinely stale ones still fail. A per-class loop no longer poisons itself; batch anyway, because it is one write instead of seven. What still strands a verdict is stamping while a judge on that file is STILL RUNNING (2026-08-19: two verdicts stamped on arrival while two judges were mid-read; the later story verdict had hashed the body first, refused, and cost a re-fire). The propagation deliberately will not rescue it — that judge read a different body. Correct shape: collect every class for a file, then `update-quality.sh <file> --writing PASS --slides PASS --pedagogy PASS --story REVISE:<note> …`. Diagnosing a refusal, three forks:",
+      "verdict": "N/A",
+      "evidence": "Not applicable to this exercise surface.",
+      "fix_hint": "No platform, runtime, skill, infrastructure, or quality-stamp claim in the target.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 36,
+      "rule_lead": "A hash guard is only as good as what it hashes, and a malformed hash disarms it silently. Three shapes, all live 2026-08-12/13. (a) Wrong region. `update-quality.sh` hashes the whole file including the Quality block it writes (→ §35); persona `phase_sha` hashes body-phase text, which for a prompt-carrying phase is a bare `{{prompt:}}` marker, so a rewritten prompt invalidates nothing — and it hashes the final phase to EOF, so maintainer-only edits fire it spuriously. Hash the region whose change would invalidate the claim: for a behavioural verdict that is the EXPANDED phase (`scripts/expand-md.js`), never the raw marker. (b) Unvalidated input fails OPEN. The stale-verdict guard extracts `body_sha` with `([a-f0-9]{64})`; any other length yields empty, and empty is treated as *pre-guard instance → skip the check*. A judge that writes a sha1, a truncated hash, or invented hex turns the guard OFF rather than tripping it (found: one 66-char, one 40-char). Treat present-but-malformed as FAIL, never as absent. Audit with `grep -o '\"body_sha\"[^,]*' curriculum/evals/instances/*.json` + assert `^[a-f0-9]{64}$`. (c) Hashes nobody computed.",
+      "verdict": "N/A",
+      "evidence": "Not applicable to this exercise surface.",
+      "fix_hint": "No platform, runtime, skill, infrastructure, or quality-stamp claim in the target.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 37,
+      "rule_lead": "Measure the defect before proposing the fix, and again before repeating it to the maintainer. A punch-list entry is a claim with a half-life: true when written, corpus moved, nothing re-checks it. Three of nine items reported in one session (2026-08-13) were not real — a \"duplicate\" rule that `grep -c` scored at 1; a scanner accused of over-firing that was reporting a genuine body line, silently rewritten by the em-dash auto-fix in `eval-class-router.sh`; a missing linter check whose corpus count came back 1 of 6 (the proposed ERROR would have shipped at an 83% false-positive rate). Run the cheapest falsifying command before a defect goes in a report — `grep -c` for a claimed duplicate, `git diff <pin> -- <file>` for a claimed false positive, a corpus count for a claimed missing check. Before writing a linter rule from one incident, count how the corpus already behaves: more violations than obediences means the convention is being misread, not under-enforced; put the count in the amendment so the next reader inherits evidence, not a hunch. Blame corollary:",
+      "verdict": "N/A",
+      "evidence": "Not applicable to this exercise surface.",
+      "fix_hint": "No platform, runtime, skill, infrastructure, or quality-stamp claim in the target.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 38,
+      "rule_lead": "Prose describing a runtime the room never executes drifts to plausible mechanism — no judge catches it, because no artefact contradicts it. Fires on any forward-looking automation beat (what an agent *could* do, wired later): the shapes slide, the \"where this goes next\" bullet, the trainer's what-if. Nine lines of M2's `where-the-rule-could-live.md` carried five wrong clauses, all fluent (2026-08-14, Antti). Contract: every clause states one of three things — what is in CONTEXT · what TRIGGERS · what LANDS. Anything else is decoration or invention; cut it. Three tells. (a) *X against Y* smuggles a retrieval mechanism nobody verified — *\"reads the issue against your `.md` file\"* is invented; the file is IN CONTEXT and the run happens inside it. Prefer the state description (*\"runs with your file in context\"*) over the mechanism metaphor. (b) A lifecycle noun from a stage the beat does not touch — *\"what counts as shippable\"* on a ticket-refinement beat; shipping is three gates later. Check the noun against what the artefact actually governs. (c) An unsourced cadence (*once a sprint*, *nightly*) — pick one the cited capability stamp supports, and re-read that stamp after any cadence or shape change: it was written to license the old one",
+      "verdict": "N/A",
+      "evidence": "Not applicable to this exercise surface.",
+      "fix_hint": "No platform, runtime, skill, infrastructure, or quality-stamp claim in the target.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 39,
+      "rule_lead": "A judge subagent without evidence is a rubber-stamp, and the summary table cannot tell you which you got. One writing-class sweep returned 13 files PASS / 702 rule verdicts / `evidence: null` on all 702, in 7 tool calls (2026-08-15). Re-dispatched with a contract, the same class on the same files produced three findings plus a live compendium-vs-registry contradiction the first pass had blessed. Check before believing: `grep -c '\"evidence\": *null' curriculum/evals/instances/*.json` against the verdict count, and tool-calls against file count (7 calls / 13 files = skim). Every judge dispatch owes an EVIDENCE CONTRACT:",
+      "verdict": "N/A",
+      "evidence": "Not applicable to this exercise surface.",
+      "fix_hint": "No platform, runtime, skill, infrastructure, or quality-stamp claim in the target.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 40,
+      "rule_lead": "A gate keyed on the TOOL has a back door; a gate keyed on the FILE does not. `PreToolUse`/`PostToolUse` matchers (`Write|Edit|MultiEdit`) miss every Bash-mediated write — `sed`, `python`, heredoc, redirect — and auto mode instructs agents to PREFER Bash for file changes. So the matcher gap is not a hole an agent occasionally reaches for (the 2026-05-09 framing, which is why that rule stopped firing); it is the paved default path. Any rule that must ALWAYS fire — banned-word lint, prompt-edit gate, artifact-write guard — belongs where the file is the trigger: the pre-commit gate, or a hook whose matcher includes `Bash` and re-derives touched paths from `git status` rather than trusting `tool_input`. Diagnostic when adding or auditing any hook: *if this same edit arrived via `sed`, would it still fire?* No → decorative for every session that prefers Bash. Agent corollary: after a Bash-only editing session, assume no PostToolUse hook ran and re-run its checks by hand before declaring done. A hook that doesn't fire emits nothing, so the session reads as clean. The pattern is already in this repo, applied once:",
+      "verdict": "N/A",
+      "evidence": "Not applicable to this exercise surface.",
+      "fix_hint": "No platform, runtime, skill, infrastructure, or quality-stamp claim in the target.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 41,
+      "rule_lead": "Harness-side caches drift; the artifact is canonical.",
+      "verdict": "N/A",
+      "evidence": "Not applicable to this exercise surface.",
+      "fix_hint": "No platform, runtime, skill, infrastructure, or quality-stamp claim in the target.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 42,
+      "rule_lead": "Before deleting anything, ask what its FIRING would look like — reference-grep can't tell live from abandoned. Three independent streams, each lying in its own direction: invocation telemetry (skills: `grep -ho '\"skill\":\"[a-z0-9:_-]*\"' ~/.claude/projects/*/*.jsonl`, dated by mtime — retention is weeks, so silence OUTSIDE the window proves nothing, and say which you have); static references (a thing can be lovingly cross-linked and never run — `/content-creation` had 57 refs and 0 fires); git recency (carried-along edits look like tending). Dead on all three = abandoned. Never-fired is three diagnoses, not one: (a) it's a PRODUCT not a tool — students/customers run it, maintainer silence is CORRECT, deleting ships a hole (security + test-strategy skills, self-study); (b) the TRIGGER is broken or superseded — fix the trigger, not the artifact (`mermaid-diagrams`: no refs, no fires, still maintains three live `.mmd` sources); (c) genuinely dead. Sharpest check for (c): verify the cited sections",
+      "verdict": "N/A",
+      "evidence": "Not applicable to this exercise surface.",
+      "fix_hint": "No platform, runtime, skill, infrastructure, or quality-stamp claim in the target.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 43,
+      "rule_lead": "A hook on a gitignored surface is a rule on ONE machine. `.gitignore` line 5 = `.claude/*`, re-including only `!.claude/skills/`, `!.claude/settings.json`, `!.claude/COPYRIGHT.md`. Everything else under `.claude/` — `.claude/hooks/` above all — is local-only: invisible to a colleague session, a fresh clone, and CI. It looks like infrastructure and behaves like a shell alias. Before writing any hook, `git check-ignore -v <path>`.",
+      "verdict": "N/A",
+      "evidence": "Not applicable to this exercise surface.",
+      "fix_hint": "No platform, runtime, skill, infrastructure, or quality-stamp claim in the target.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 44,
+      "rule_lead": "`git log -1 --date=short -- <path>` on a DELETED file returns the deletion date. So any staleness sweep ranked by last-commit date lists files that no longer exist, dated by their own funeral — and they sort to the top, looking maximally neglected. Filter by existence FIRST",
+      "verdict": "N/A",
+      "evidence": "Not applicable to this exercise surface.",
+      "fix_hint": "No platform, runtime, skill, infrastructure, or quality-stamp claim in the target.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 45,
+      "rule_lead": "A detector's reading vocabulary must cover the corpus's writing vocabulary — or it reports compliance as rot. An auditor is a READER before it is a judge; its parser encodes an assumption about how records are written, and every faithful record outside that assumption is filed as malformed. `audit-eval-coverage.js`: 2,163 data-hygiene warnings, ~2,000 of them judges doing exactly as instructed — sub-lettered rules written three ways (`rule_index:\"9b\"`; `rule_index:9` + lead `\"(9b) …\"`; + lead `\"9b. …\"`), compendium name minus `.md` (400×), four real compendiums missing from the namespace constant (2,826×), and 189 rows saying `N/A — moved stub`, which the judge templates require. Same narrowness ALSO loses coverage silently: an unkeyable verdict reads as never-judged (518 \"holes\" were really 304, a 41% under-report). Before trusting or acting on any detector output, sample the warnings and ask of each: corpus wrong, or reader narrow? Group by mechanical cause FIRST — one cause spanning hundreds of hits is nearly always a parser gap (real defects are heterogeneous; parser gaps are uniform). Teach the detector the shape of \"I looked and declined\"",
+      "verdict": "N/A",
+      "evidence": "Not applicable to this exercise surface.",
+      "fix_hint": "No platform, runtime, skill, infrastructure, or quality-stamp claim in the target.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 46,
+      "rule_lead": "A verdict has more than one input; a freshness check usually watches one. A quality pin is a commit sha, so `scan-stale-classes` could only ask *did the FILE move since the judge ran?* — while the other input to every verdict, the `check_*.md` rule it was judged against, sits outside the repo untracked, where no git diff reaches it. A rule could be rewritten wholesale and 445 pins stayed green; the axis had no instrument and the silence read as an all-clear. Enumerate the inputs the guarded verdict depends on, then ask of each whether the tool can observe it",
+      "verdict": "N/A",
+      "evidence": "Not applicable to this exercise surface.",
+      "fix_hint": "No platform, runtime, skill, infrastructure, or quality-stamp claim in the target.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 1,
+      "rule_lead": "Source URL + type label — mandatory.",
+      "verdict": "PASS",
+      "evidence": "line 48: typed [primary practitioner article] and [practitioner article] labels each carry a linked source; curl -L -I --max-time 15 returned martin:200 and klein:200.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": "1a",
+      "rule_lead": "OODA paraphrase ≠ primary source. Research subagent returns \"key claim\" as paraphrase rather than exact quote → orchestrator MUST re-fetch cited URL before transcribing claim into student-facing prose. OODA paraphrases drift — they conflate practitioner's framework with downstream instantiations, blend claims across sources, lose byline-specific phrasing primary-source verification depends on. Dispatch protocol: spawning research subagent whose findings become body claims → output format MUST request exact quotes (not paraphrases) for any claim that will be transcribed. Orchestrator protocol:",
+      "verdict": "N/A",
+      "evidence": "Not applicable to this exercise surface.",
+      "fix_hint": "No research claim of this rule type in the target.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 2,
+      "rule_lead": "Freshness rule — 6 months.",
+      "verdict": "N/A",
+      "evidence": "Not applicable to this exercise surface.",
+      "fix_hint": "No research claim of this rule type in the target.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 3,
+      "rule_lead": "Zombie stat guard.",
+      "verdict": "N/A",
+      "evidence": "Not applicable to this exercise surface.",
+      "fix_hint": "No research claim of this rule type in the target.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 4,
+      "rule_lead": "Hold short OODA loose.",
+      "verdict": "N/A",
+      "evidence": "Not applicable to this exercise surface.",
+      "fix_hint": "No research claim of this rule type in the target.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 5,
+      "rule_lead": "Resist prescriptive post-OODA phrasings.",
+      "verdict": "N/A",
+      "evidence": "Not applicable to this exercise surface.",
+      "fix_hint": "No research claim of this rule type in the target.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 6,
+      "rule_lead": "Default to asking before folding findings into strategy docs.",
+      "verdict": "N/A",
+      "evidence": "Not applicable to this exercise surface.",
+      "fix_hint": "No research claim of this rule type in the target.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 7,
+      "rule_lead": "Vision × Detail split.",
+      "verdict": "N/A",
+      "evidence": "Not applicable to this exercise surface.",
+      "fix_hint": "No research claim of this rule type in the target.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 8,
+      "rule_lead": "Grep `continuous-research/` and `memory/` before guessing at a name.",
+      "verdict": "N/A",
+      "evidence": "Not applicable to this exercise surface.",
+      "fix_hint": "No research claim of this rule type in the target.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 9,
+      "rule_lead": "Consult research BEFORE generating, not after.",
+      "verdict": "N/A",
+      "evidence": "Not applicable to this exercise surface.",
+      "fix_hint": "No research claim of this rule type in the target.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 10,
+      "rule_lead": "No \"What research says\" callout boxes.",
+      "verdict": "N/A",
+      "evidence": "Not applicable to this exercise surface.",
+      "fix_hint": "No research claim of this rule type in the target.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 11,
+      "rule_lead": "Source-verification maintainer block on any student-facing file with practitioner citations. Student-facing curriculum file (lecture, exercise, module, reference) carrying practitioner citations — named practitioner + specific URL + load-bearing number — MUST include `Source verification — MUST DO before first cohort:` section in maintainer block below `<!-- maintainer -->`. Section lists: (1) every URL to open against original; (2) every number to triple-check (hour counts, token counts, percentages, org sizes); (3) named fallback framing if specific source doesn't hold at verification (*\"if Cherny didn't enumerate three shapes, reframe as 'three shapes practitioners use' without single attribution\"*); (4) freshness re-check at delivery time (per §2's 6-month rule). Operating principle: sourcing through `continuous-research/` = staging step; final verification = opening URL.",
+      "verdict": "N/A",
+      "evidence": "Not applicable to this exercise surface.",
+      "fix_hint": "No research claim of this rule type in the target.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 12,
+      "rule_lead": "Denominator + axis discipline on every adoption/productivity number. Never ship an adoption/productivity % without naming (a) the POPULATION behind it — all-sector vs sector vs size-class vs individual-vs-org — AND (b) the METRIC AXIS it sits on — volume vs count vs share vs outcome. Same phenomenon swings 38%↔80% by denominator (all-sector vs NACE-J software) and 2X↔8X by axis",
+      "verdict": "N/A",
+      "evidence": "Not applicable to this exercise surface.",
+      "fix_hint": "No research claim of this rule type in the target.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 13,
+      "rule_lead": "Inference beyond source — absence licenses only absence. No published finding → the claim is \"X is not published\" and nothing further. NOT that the data exists, NOT why it's missing, NOT what would surface it, NOT \"just ask them.\" Before shipping any research conclusion: name the sentence in the source that states it. No such sentence → your inference, not a finding; label it (*\"my read is…\"*) or cut it. Fires hardest at synthesis time",
+      "verdict": "N/A",
+      "evidence": "Not applicable to this exercise surface.",
+      "fix_hint": "No research claim of this rule type in the target.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 14,
+      "rule_lead": "A green check must measure the fact, not a proxy that co-varies with it. Before trusting ANY verification instrument — grep, freshness gate, audit persona, linter, judge, subagent sweep — name in one clause what it actually measures, and what it would measure if the defect WERE present. Coincide → the instrument cannot separate them and its pass is uninformative. Three recurring tells: (a) the token you grep for legitimately appears in non-defect contexts (`2026-` inside freshness stamps — the grep is noisiest exactly where the defect lives, so it gets skipped there; use a semantic test instead, e.g. the tense test for changelog rot, `check_writing.md §3`); (b) the count includes the instrument's own fixtures (37 BLOCK, 2 on shipping surfaces — a correct number carrying no signal; filter to shipping surfaces before reading a gate's count); (c) the check confirms an annotation EXISTS rather than that it is TRUE. (c) is the dangerous one on research surfaces — `updated <date>`, `checked`, `re-verified` are claims somebody typed, not evidence, and an audit that reads them without opening the source launders the author's assertion into a verified fact. Any annotation that moves a source across the 6-month boundary owes a quotable on-page revision line. (d) the annotation was PARTIALLY updated — the structured field moved and the prose qualifier did not. (a)–(c) describe a *check* that never reached the fact; (d) describes a *write* that reached half of it. A stamp carrying both a machine field (`date`, `sha`, `result`) and a human qualifier (*\"predates X; re-audit before ship\"*, *\"unaudited\"*, *\"pending Y\"*) is one claim in two halves, and any tool or pass rewriting one half owes the other. A half-update is worse than no update: it manufactures a contradiction inside a single line, and prose beats a hash in every downstream reading because the caveat is specific, quotable and human. It also propagates at *rising* confidence — a gaps ledger or pre-cohort punch list that COUNTS these qualifiers inherits the error more confidently than the file that made it, since each reader is quoting a file rather than checking a fact. Diagnostic, and it is free: does the qualifier still parse against its own stamp's date?",
+      "verdict": "N/A",
+      "evidence": "Not applicable to this exercise surface.",
+      "fix_hint": "No research claim of this rule type in the target.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 15,
+      "rule_lead": "A word-presence claim needs an unprimed read. Naming the target string in a fetch prompt (*\"does this page use judge / verifier / gate?\"*) is a leading question put to a generative summarizer, and it will manufacture the hit: quotes containing the word from pages lacking it, `gate` matched inside `agent`, whole invented sentences. Not the §14 proxy failure — the instrument is not measuring the wrong thing, it is inventing the right thing. Procedure: fetch neutrally (*\"what does this page call an automated check?\"*), let the source volunteer its own vocabulary, THEN compare against your candidate list. Exploit the asymmetry: priming inflates presence, never absence. A primed fetch reporting *\"the word does not appear\"* is trustworthy — the pressure ran the other way — so negative results survive a primed read and positive ones do not. Any presence claim that reached you from a prompt naming the target is inadmissible until re-read cold",
+      "verdict": "N/A",
+      "evidence": "Not applicable to this exercise surface.",
+      "fix_hint": "No research claim of this rule type in the target.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 16,
+      "rule_lead": "A candidate that matches the hunt's SHAPE has not answered the hunt's QUESTION. When a search defines its target structurally — *has an owner, has a gate, one source to many consumers, version-controlled, composable* — every artefact with that topology reads as a hit, including ones doing a completely different job. Before scoring a candidate, say in one clause what the target must do, and check it does that; clearing the criteria is not doing the job. The bug is usually planted in the rubric, not the search. A bar made only of structural properties is a bar that unrelated solved problems pass, and a subagent answering it correctly hands back a wrong answer to the real question — so write at least one *functional* criterion into every bar you dispatch. Free diagnostic whenever the target is loop-shaped (compounding, memory, learning, anything meant to get better): check both directions.",
+      "verdict": "N/A",
+      "evidence": "Not applicable to this exercise surface.",
+      "fix_hint": "No research claim of this rule type in the target.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 1,
+      "rule_lead": "No placeholders inside fences. `[BRACKETS]`, `[path from step 1]`, `[your task]`, `[feature area]` → violation. Fixes: (a) prompt tells Claude to ask for value; (b) prompt references \"task we just scoped\"/\"file you just created\" + scrollback; (c) student pastes value as separate step; (d) open-hook (preferred for student-supplied input) — internal action paragraph first, single open-hook line + colon last, all in ONE fence. Student pastes, cursor lands after colon, types/pastes input, sends. Lead-in (rule 2) still fires + names fill-in slot (\"Ask Claude to write the failing test, fix root cause, show diff. Drop your bug after the colon.\"). No pre-prompt \"paste this into chat\" instructions. Qualifier:",
+      "verdict": "PASS",
+      "evidence": "Current body checked; no instance of the prohibited shape found.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 2,
+      "rule_lead": "Every prompt block: one-sentence action lead-in. Before `Prompt",
+      "verdict": "PASS",
+      "evidence": "Current body checked; no instance of the prohibited shape found.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 5,
+      "rule_lead": "Chain by back-reference + deterministic path, never invented alias.",
+      "verdict": "PASS",
+      "evidence": "Current body checked; no instance of the prohibited shape found.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 8,
+      "rule_lead": "Multi-sample methods need structural enforcement.",
+      "verdict": "PASS",
+      "evidence": "Current body checked; no instance of the prohibited shape found.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 13,
+      "rule_lead": "Citation discipline — extend cite-or-flag scope + quote supporting sentence. Two failure modes, same RLHF root, same fix-shape. (a) Citation-gap asymmetry: generic *\"cite or flag\"* lands asymmetrically — Claude cites specific facts (revenue, named entities, dates) + skips conventional-wisdom claims (industry truisms, *\"enterprise buyers prioritize integration\"*) as common knowledge. Extend scope: *\"cite-or-flag applies to every factual claim including conventional-wisdom + industry-truism; if you can't cite, mark [UNVERIFIED CONVENTIONAL WISDOM]\"*. Or design the gap as teaching moment (student locates uncited claims). (b) Citation cargo-cult:",
+      "verdict": "PASS",
+      "evidence": "Current body checked; no instance of the prohibited shape found.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 24,
+      "rule_lead": "Don't restate session CWD inside prompt body. Setup line above prompt set working directory; fence trusts it. Reference subpaths from session root (`agents/`, `module-3/wonder.md`, `./CLAUDE.md`), not absolute paths or `cd` commands. Restating absolute path inside fence = bookkeeping + creates second source of truth that drifts when directory convention changes. Carve-out:",
+      "verdict": "PASS",
+      "evidence": "Current body checked; no instance of the prohibited shape found.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 25,
+      "rule_lead": "`subagent` allowed in prompt blocks; explain why after prompt.",
+      "verdict": "PASS",
+      "evidence": "Current body checked; no instance of the prohibited shape found.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 31,
+      "rule_lead": "Prompts live in registry; module/exercise/lecture files reference by marker.",
+      "verdict": "PASS",
+      "evidence": "Current body checked; no instance of the prohibited shape found.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 32,
+      "rule_lead": "Module names in prompt prose are fine — they ground the session. A prompt body may name modules (`M1`–`M8`, \"Module 1\"). In a fixed-sequence training the session's own artifacts are module-numbered by design (branch `` `m4/<slug>` ``, worktree `` `../<repo>-m5` ``, commit `\"M4 starting point\"`, transcript slugs), so a prose \"M5\" is consonant with that namespace and points the agent at the right branch / worktree / transcript — grounding, not leakage. Consistent with `check_student_facing.md §2b`, which already treats prompts as agent-read (abbreviations fine there). Don't card, lint, or strip a module number from prompt prose. Boundary: in *\"merging back after Module 6 is the arc-retrospective's call\"* the defect is the dangling reference to a curricular event",
+      "verdict": "PASS",
+      "evidence": "Current body checked; no instance of the prohibited shape found.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 36,
+      "rule_lead": "Wide prompts split by logical move — paragraph breaks = cheapest scan-affordance. Prompt carries >2 logical moves (file-write rule + chat-output rule + null-case fallback; or sequential *\"Then X. Then Y.\"*; or conditional *\"If X, do A; if Y, do B\"*) → split into paragraphs by move, one move per paragraph. Short prompts (≤30 words / ≤2 moves) stay one paragraph. Sequential-build prompts where each step compounds tightly may stay one paragraph if breaking feels artificial. Diagnostic: read prompt aloud; each natural breath lands at paragraph break, not mid-clause. Common move-boundaries earning split: *\"In chat, ...\"* (file/chat output split), *\"If nothing earned itself, stop.\"* (null-case fallback), *\"Then ...\"* (sequential), *\"If X, do A; if Y, do B\"* (conditional). Wide single-paragraph prompts = continuous instruction-stream; Claude (and student) drop structural signals mid-paragraph. Fires at EDIT time too, not only authoring: a maintainer-approval card minimizes the diff against the current prompt; if that prompt is already a §36 violation, the minimal edit inherits its density. Re-run the read-aloud diagnostic against the RESULTING prompt, not the size of the diff. Sentence grain, not just paragraph grain:",
+      "verdict": "PASS",
+      "evidence": "Current body checked; no instance of the prohibited shape found.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 38,
+      "rule_lead": "Body lead-in mirrors prompt's opening phrasing.",
+      "verdict": "PASS",
+      "evidence": "Current body checked; no instance of the prohibited shape found.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 39,
+      "rule_lead": "Declare `permission-mode:` when paste requires specific Claude Code mode.",
+      "verdict": "PASS",
+      "evidence": "Current body checked; no instance of the prohibited shape found.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 40,
+      "rule_lead": "Verify session boundary before deciding prompt's context-carrying. Before deciding whether prompt must be self-contained (carry file refs, branch names, the \"how\") or may back-reference prior scrollback → verify session boundary by reading module + lecture body. NOT prompt's frontmatter `context:` line alone (hint, can be stale against module's real flow). Cold (fresh launch / after `/clear` / different cwd or git worktree / inside `Agent` sub-task — fresh context by default) → no shared scrollback, prompt must carry own context. Warm",
+      "verdict": "PASS",
+      "evidence": "Current body checked; no instance of the prohibited shape found.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 41,
+      "rule_lead": "Artifact-vs-STOP tail ordering — last imperative wins.",
+      "verdict": "PASS",
+      "evidence": "Current body checked; no instance of the prohibited shape found.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 42,
+      "rule_lead": "Headless-runner discipline — tail every prompt with no-AUQ guard.",
+      "verdict": "PASS",
+      "evidence": "Current body checked; no instance of the prohibited shape found.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 46,
+      "rule_lead": "Output shape — trust Claude's defaults, don't pad. Long prompts OK to ~1 page; paragraph structure mandatory. Prefer questions over slots",
+      "verdict": "PASS",
+      "evidence": "Current body checked; no instance of the prohibited shape found.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 47,
+      "rule_lead": "\"Add X and regenerate\" is a trap.",
+      "verdict": "PASS",
+      "evidence": "Current body checked; no instance of the prohibited shape found.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 48,
+      "rule_lead": "Vary closings deliberately. Each mechanic has a different strength; pick per exercise. Claude-as-cold-critic — reproducible, structured, produces an artifact; use when feedback quality matters, foreshadows LLM-as-judge. Pair exchange — social energy, quick, unexpected angles; use for bonding or where individual domain expertise matters; variable quality. Group discussion — collective pattern-finding; use when the room sees what no one alone can. Solo retro with Claude — private learning extraction; good for module debriefs. Show-your-work to the room",
+      "verdict": "PASS",
+      "evidence": "Current body checked; no instance of the prohibited shape found.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 16,
+      "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose. Forcing function = move student/Claude performs (\"ask the skill its weakest part\", \"invoke on the feature\", \"one question at a time\"). Scripted reaction = prescribed feeling/count/instinct (\"push back once\", \"two rounds max\", \"instinct is to scan; don't\"). Removal test: cutting collapses pedagogy = forcing function (keep); cutting only removes count-script = cut. Target: 2–3 forcing functions / 20–30 min exercise, ~0 count-scripts. Location: in fence, not body. Speed-runners skip body. Diagnostic: read each phase prompt-only, ignore body. Mood/skill/artifact still land? No → move into prompt. Carve-out: mandatory teaching prompts stay fenced; optional push-backs / refinements / \"if you want to take this further\" can live in body. Boundary — pacing calibrations survive as suggestions. A number that helps the student pace themselves (when to stop nudging, how long a scan should run) may stay in body in suggestion register (*or so*, *around*, *a fair ceiling*) — cut the prescription, keep the calibration. A bare imperative count (*\"two rounds max\"*) is still a script. Boundary 2 — not every student move needs a fence (2026-08-02, Antti).",
+      "verdict": "N/A",
+      "evidence": "Not applicable to this exercise surface.",
+      "fix_hint": "Technical subset is not engaged by this target.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 22,
+      "rule_lead": "Rule in memory without forcing function = worse than no rule.",
+      "verdict": "N/A",
+      "evidence": "Not applicable to this exercise surface.",
+      "fix_hint": "Technical subset is not engaged by this target.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 23,
+      "rule_lead": "Short skeptical pushback on \"done\" = re-verify trigger.",
+      "verdict": "N/A",
+      "evidence": "Not applicable to this exercise surface.",
+      "fix_hint": "Technical subset is not engaged by this target.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 36,
+      "rule_lead": "Verification machinery needs smoke-test before trust.",
+      "verdict": "N/A",
+      "evidence": "Not applicable to this exercise surface.",
+      "fix_hint": "Technical subset is not engaged by this target.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 37,
+      "rule_lead": "Context-loading tiers as staged progression.",
+      "verdict": "N/A",
+      "evidence": "Not applicable to this exercise surface.",
+      "fix_hint": "Technical subset is not engaged by this target.",
+      "blocking": false
+    }
+  ],
+  "platform_claims_checked": [],
+  "citations_checked": [
+    {
+      "line": 48,
+      "claim": "Roger Martin reverse-engineering question; Gary Klein premortem",
+      "label_present": true,
+      "url_present": true,
+      "url_alive": true,
+      "evidence_level_honest": true
+    }
+  ],
+  "skills_referenced": [],
+  "urls_sampled": [
+    {
+      "url": "https://rogerlmartin.com/docs/default-source/Articles/strategy/rotman_spring07_riskofstatusquo.pdf?sfvrsn=d2dd3b82_0",
+      "alive": true,
+      "status_code": 200
+    },
+    {
+      "url": "https://hbr.org/2007/09/performing-a-project-premortem",
+      "alive": true,
+      "status_code": 200
+    }
+  ],
+  "blocking_findings_count": 0,
+  "todos_count": 0
+}

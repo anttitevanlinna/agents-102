@@ -97,11 +97,6 @@ Ask Claude to assemble both, scoped to the same task, in conversation.
 
 > **Cut the grill when the package is good enough to re-send.** The prompt keeps looking because that is its job. Your threshold is practical: scope, success criteria, constraints, tests, and done are clear enough for the second session. Then say *lock it in.* Until then, neither file should change; push back if the agent rewrites between turns.
 
-## Check both files are for the agent, not you
-
-- Glance at both files for the rough shape. No need to read the details, unless you want to be meticulous.
-- Push back if the reference reads like generic long-running advice instead of this task's substance, or if plan.md reads like a project plan rather than something the agent rewrites as it goes.
-
 ## Approve
 
 Say *lock it in.* The agent writes both files.
@@ -150,12 +145,14 @@ Your `CLAUDE.local.md` and `observations/` have been building in the worktree si
 
 **The 10% recall in `## Make Claude show its work, make it dig` is the prior's third and last statement, by design.** `orient-and-introspect.md` § *Read the self-report, then spot-check it* sets it on the agent's read of a repo (maintainer-attested there), `plan-mode-done-right.md` § Key Concepts applies it to a plan, and this bullet applies it to a run transcript the student did not watch. Three instances, roughly two modules apart, a different artefact each time, each carrying its own action: progression-with-variation, not the refrain `check_pedagogy.md` §9b bans. This is the beat that earns it. In M1 and M2 the student can read the whole artefact by eye, so the prior costs nothing there; here it is the only affordable check, and asking the agent to locate its own quotes is the only one available when the agent holds the codebase and the student holds the lenses. The imperative *assume* and the *about* hedge travel from M1 and are load-bearing: the prior is an instruction to the reader, and a floor form would be a claim about the world. Do not harden it, and do not restate it as a general claim about agents. M1's double-hedge (*"could be more or less"*) stays M1's, so `check_slides.md` §7's number-plus-retraction sub-item does not fire here.
 
+**`## Check both files are for the agent, not you` is cut (2026-08-25, Antti: little value add).** The slide told an engineer how to glance at two files — the check-stuff teaching his 2026-08-25 cut pass removes on sight — and its push-back tells (generic-advice reference, project-plan-shaped plan.md) duplicate judgement the grill-note above already exercises. The flow runs prompt → grill-note → Approve. Do not restore; if a cohort ships agent-facing files written for humans, the tell belongs in the Phase-4 prompt, not a body slide.
+
 **Emphasis:** Bold is limited to title-page labels, widget chrome, the Phase 3 verifier-shape menu handles (**Background-agent verifier** / **Deterministic shell-hook** / **Ralph re-feed**), the Phase 4 stop-gate handle, and the two definitional handles on *The reference and plan.md* (**Reference** / **plan.md**). All other body prose stays unbolded.
 
 **Quality:** compendium-audited 2026-08-24 (writing@1abb84c6 story@1abb84c6 technical@1abb84c6 behavior@ca5e5c5 pedagogy@1abb84c6 strategy@1c765f2 slides@1abb84c6)
 - judges @1abb84c6: writing PASS (drift-recheck), story PASS (drift-recheck), technical PASS (drift-recheck), behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS (drift-recheck)
 
-**Word count:** ~810 words body.
+**Word count:** ~760 words body.
 
 **Leap test (Monday):** three observable verbs the engineer exhibits on their own codebase next working day:
 - builds a verifier scoped to one diagnosed failure mode before trusting a delegated run's output, instead of re-reading the whole return

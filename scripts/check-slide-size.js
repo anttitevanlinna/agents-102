@@ -66,7 +66,7 @@ for (let i = 0; i < argv.length; i++) {
 
 // Narrative lectures: read at home / told as a story, not squinted off a slide.
 // Named exceptions per Antti (the two story lectures). Slug-keyed.
-const STORY_EXEMPT = new Set(['how-this-training-was-built', 'story-of-module-6']);
+const STORY_EXEMPT = new Set(['story-of-module-6']);
 
 // Per-SLIDE accepted overflow, declared in the file's own maintainer block:
 //

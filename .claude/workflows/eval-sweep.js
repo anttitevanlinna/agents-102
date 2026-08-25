@@ -45,6 +45,9 @@ const input = Array.isArray(args) ? { items: args } : (args || {})
 const ITEMS = input.items || []
 const CONFIRM = input.confirm || []   // [{file, slug, cls, pin, finding, applied, checks:[[cmd, expected]]}]
 const SETS = input.sets || []         // [{training, name, members:[rel...]}]
+// Optional per-role model override: {models: {judge: 'sonnet', refute: 'haiku'}}.
+// Defaults preserve historical behavior: judges on sonnet, refuters inherit the session model.
+const MODELS = Object.assign({ judge: 'sonnet', refute: null }, input.models || {})
 
 // A dispatched unit is identified by its own key, never by matching a returned
 // verdict's file string back against the request. That match used to compare
@@ -249,7 +252,7 @@ async function verify(v, phase) {
   if (!blocking.length) return { ...v, adjudicated: [], confirmed: [], refuter_deaths: 0 }
   const judged = await parallel(blocking.flatMap((f, i) =>
     ['scope', 'harm'].map(lens => () =>
-      agent(refutePrompt(v, f, lens), { label: `refute-${lens}:${v.class}:${f.rule}`, phase, schema: REFUTE_SCHEMA, effort: 'high' })
+      agent(refutePrompt(v, f, lens), { label: `refute-${lens}:${v.class}:${f.rule}`, phase, schema: REFUTE_SCHEMA, effort: 'high', ...(MODELS.refute ? { model: MODELS.refute } : {}) })
         .then(r => ({ f, i, lens, r })))))
   const by = new Map()
   let deaths = 0
@@ -278,17 +281,17 @@ phase('Judge')
 const [fromQueue, fromConfirm, fromSets] = await parallel([
   () => pipeline(
     JOBS,
-    j => agent(judgePrompt(j), { label: `${j.cls}:${String(j.file).split('/').pop().replace(/\.md$/, '')}`, phase: 'Judge', schema: VERDICT_SCHEMA, model: 'sonnet' }),
+    j => agent(judgePrompt(j), { label: `${j.cls}:${String(j.file).split('/').pop().replace(/\.md$/, '')}`, phase: 'Judge', schema: VERDICT_SCHEMA, model: MODELS.judge }),
     (v, j) => (v ? verify(v, 'Verify').then(r => tag(r, j)) : v),
   ),
   () => pipeline(
     CONFIRM,
-    c => agent(confirmPrompt(c), { label: `confirm:${c.cls}:${String(c.file).split('/').pop().replace(/\.md$/, '')}`, phase: 'Judge', schema: VERDICT_SCHEMA, model: 'sonnet' }),
+    c => agent(confirmPrompt(c), { label: `confirm:${c.cls}:${String(c.file).split('/').pop().replace(/\.md$/, '')}`, phase: 'Judge', schema: VERDICT_SCHEMA, model: MODELS.judge }),
     (v, c) => (v ? verify(v, 'Verify').then(r => tag(r, c)) : v),
   ),
   () => pipeline(
     SETS,
-    s => agent(setPrompt(s), { label: `cross_module:${s.name}`, phase: 'Judge', schema: VERDICT_SCHEMA, model: 'sonnet' }),
+    s => agent(setPrompt(s), { label: `cross_module:${s.name}`, phase: 'Judge', schema: VERDICT_SCHEMA, model: MODELS.judge }),
     (v, s) => (v ? verify(v, 'Verify').then(r => tag(r, s)) : v),
   ),
 ])

@@ -30,36 +30,23 @@ Drop your task after the colon.
 
 Plan mode takes minutes on real codebases. Eight to twelve isn't unusual. Use the wait to chat with colleagues about what you're building.
 
-## Read the right stuff first
-
-- M1 named the countermove: steer how the agent best communicates with you; here, take the ranked list first.
-- A plan deserves more attention than ordinary agent output because approval hands it to generation. That does not make every line equally important.
-- Scan for the decisions most likely to change the work: files, design, assumptions, and verification. The few that matter most are the ones you'll push the agent back on in the steps ahead.
-
 ## Scan the plan before you push back
 
-- Open the plan file; the chat summary is secondary, the file is the artifact. The agent explores, writes a plan file with a descriptive name (e.g. `migrate-auth-hash-calm-otter.md`), and pauses for approval.
-- Notice which steps name files and which say "the relevant files." Notice which verification steps could actually fail and which are cosmetic. Notice which assumptions the plan is carrying silently. Start with the two or three places where a sharper answer would most change execution.
-- A good plan names the tests before any code; the tests are part of what "done" means, not something you bolt on after. If the tests section is thin or missing, that's a push-back.
-- Notice at what altitude the steps decide. Naming the file is one decision; naming the new function's signature, its types, and who calls it is the design. A step that stops at the file name defers the design to mid-run, and you will not notice. If the steps that matter stop at file names, that's a push-back.
-- When you have two push-backs forming in your head, move on.
+- A plan deserves more attention than ordinary agent output: approval hands it to generation. Not every line is equally important.
+- Open the plan file (descriptive name, e.g. `migrate-auth-hash-calm-otter.md`); the chat summary is secondary. Scan it against the five things a good plan has, and start where a sharper answer would most change execution.
+- Watch the altitude of the steps. Naming the file is one decision; the function's signature, its types, and who calls it is the design. A step that stops at the file name defers the design to mid-run, and you will not notice. That's a push-back.
+- Two push-backs forming in your head? Move on.
 
 ## Phase 3: Push back twice
 
 *12 min*
 
 - Don't approve yet. At the approval prompt, pick **No, keep planning**. That holds plan mode open. Send two push-backs on two different axes: one soft item, and one of (assumption · alternative). Your own words, your own concerns.
-- **Soft items:** the step that reads clean but skips over something. *"Update the config"* without which keys. *"Handle migration errors"* without what happens to rows mid-flight. The vagueness isn't a drafting slip; it's where the agent hasn't decided yet.
+- **Soft items:** the step that reads clean but skips over something. *"Update the config"* without which keys. *"Handle migration errors"* without what happens to rows mid-flight. The vagueness isn't a drafting slip; it's where the agent hasn't decided yet. Stuck picking one? Ask Claude which step it's least confident about. **The agent finds; you judge.**
 - **Assumptions:** something the plan is carrying silently that it shouldn't. A library version, a schema shape, a teammate's recent change the agent hasn't seen.
 - **Alternatives:** not just a flag; the change you'd make. Merge two steps that belong together. Reorder two steps whose sequence matters.
 
-## Catch the re-softening in the revised plan
-
-- Two messages, your phrasing, specific to what you saw. The agent acknowledges each, regenerates the plan, re-presents it.
-- This is where Claude's niceness bites: it can make the wrong choice and tell you, in nice words, that the problem is gone. Take the report-back with a grain of salt, always: read the flagged steps in the revised plan, and if the vagueness survived, push back again on that line.
-- Stuck on the soft item? Ask Claude which step it's least confident about. That answer is a candidate; whether it matters is your call. **The agent finds; you judge.**
-
-> **Two messages, then move on.** Two push-backs on two axes, plus one check that the regeneration held, is all Phase 3 asks. A third push-back may be forming. That is fine; it is the second-pass read's job to catch the rest. Send your two, check the revision once, and move to Phase 4.
+> **Two messages, then move on.** Two push-backs on two axes, plus one check that the regeneration held: read the flagged steps in the revised plan, not the agent's report of them, and if the vagueness survived, push back again on that line. A third push-back may be forming. That is fine; it is the second-pass read's job to catch the rest.
 
 ## Phase 4: Walk down the unresolved branches
 
@@ -124,7 +111,7 @@ Then just hit stop.
 
 **Design-altitude notice added (2026-07-29, Antti-directed, from Horthy's wsff.md program-design gap):** one bullet in *Scan the plan before you push back* teaching the file-list vs interface-level altitude read. (Header was *Read the plan…* until 2026-08-12; Antti caught read-vs-scan — the section instructs scanning, and reading a plan line by line is the move this training argues against.) Sits above the *Steer up* callout's line (its examples are helpers, variable names, error wording; signatures and callers are design).
 
-**Read-whole exception replaced (2026-08-09, Antti-directed cognitive-load correction):** *Read the right stuff first* restores M1's countermove (now phrased in-body as *steer how the agent best communicates with you*, per Antti 2026-08-19). The copied prompts still offer the full plan and exhaustive branch walk; the body makes that pressure a ceiling, not a completion requirement. The student takes the highest-value sharpenings and remains the stop gate.
+**Scan slide is deliberately lean (2026-08-25, Antti-directed concision pass: "don't teach software engineers how to check stuff unless there is something really missable").** One slide, four bullets: why a plan earns attention (approval hands it to generation), file-not-chat plus the pointer at the lecture's five things, the altitude read, the two-push-back stop rule. Do not re-add a notice-which walkthrough of the five things — that re-teaches the lecture's checklist one slide after it was taught — and do not re-add a tests-before-code bullet (an instance of the lecture's verification-could-fail criterion). The copied prompts still offer the full plan and exhaustive branch walk; the body makes that pressure a ceiling, not a completion requirement. The student takes the highest-value sharpenings and remains the stop gate.
 
 **Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** Handles kept bold: the **stop** governor closing the What-you-do line, the **No, keep planning** approval path, the three push-back axis menu items (**Soft items** / **Assumptions** / **Alternatives** — third axis renamed from *Committed changes* 2026-08-12, Antti: *"commit is a git word"*; the collision is live inside this training, `compound-and-close.md` using *uncommitted change* in the git sense one module earlier. Do not restore, and do not reach for *commit* / *edit* / *fix* / *proposal* as replacements — each collides with something this arc already owns, git, plan mode's blocked edit tools, M1's bug fix, and the plan itself), the coined term **Plan-mode approval inflation** at its naming moment (bold narrowed to the handle), and the law **Find is easier than judge** newly bolded at its naming moment; all other bullet/paragraph leads de-bolded. Widget chrome and blockquote callouts untouched, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Wording near-verbatim; no claims added or cut.
 
@@ -150,16 +137,15 @@ Then just hit stop.
 
 Claims
 - `first-pass-is-plausible` · vision · "the first pass is plausible, and usually not good enough." ← none-owed — Antti's own frame, near-verbatim. Replaces `two-reads-paired`, which restated *What you build* and then named the procedure; neither was a claim the exercise earns. Paired deliberately with `extract-the-task-shaping-rule`'s `an-agent-hands-you-generic-rules` — plausibility is M2's spine, stated once per exercise, and the repetition is `check_writing.md` §11's reinforcement carve-out rather than a tic. Do not vary one to break the echo.
-- `plan-attention-is-not-equal-attention` · vision · "A plan deserves more attention than ordinary agent output because approval hands it to generation. That does not make every line equally important." ← none-owed
-- `read-the-file-not-the-summary` · vision · "the chat summary is secondary, the file is the artifact" ← none-owed
+- `plan-attention-is-not-equal-attention` · vision · "A plan deserves more attention than ordinary agent output: approval hands it to generation. Not every line is equally important." ← none-owed
+- `read-the-file-not-the-summary` · vision · "the chat summary is secondary" ← none-owed
 - `plan-mode-mechanics` · detail · "In plan mode, name the task" ← cc-permission-modes — the Shift+Tab keystroke was cut here 2026-08-12 (Antti: *"M2 instructs now twice how to enable plan mode"*). `when-a-plan-is-good.md`'s `plan-mode-shift-tab` is the single copy and the one the freshness stamp watches; M1 runs without plan mode, so that lecture is the student's first encounter and its own optional beat exercises it before this file opens. Do not restore the keystroke here — the label churns (`⏸ plan mode on`, plus `/plan` as a second entry point) and two copies means two edits.
 - `keep-planning-with-feedback` · detail · "At the approval prompt, pick **No, keep planning**." ← cc-permission-modes
 - `plan-mode-takes-minutes` · vision · "Plan mode takes minutes on real codebases. Eight to twelve isn't unusual." ← none-owed
 - `steps-that-stop-at-file-names-defer-design` · vision · "A step that stops at the file name defers the design to mid-run, and you will not notice." ← none-owed — the noticing claim is deliberate (maintainer correction): whether anyone watches mid-generation varies, but a wrong design call reads as progress while it is being made. Do not revert to a nobody-is-reading claim. The taught mechanism lives in `when-a-plan-is-good.md`'s gate slide; this bullet is the point-of-use recall.
-- `tests-are-part-of-done` · vision · "the tests are part of what \"done\" means, not something you bolt on after" ← none-owed
 - `assumption-push-back-is-wwhtbt` · borrowed · "something the plan is carrying silently that it shouldn't" ← martin-wwhtbt
-- `re-softening-on-regeneration` · vision · "it can make the wrong choice and tell you, in nice words, that the problem is gone" ← none-owed — maintainer frame near-verbatim; the report-back grain-of-salt is M1's self-report-is-a-hypothesis recalled at point of use.
-- `find-is-easier-than-judge` · vision · "**The agent finds; you judge.**" ← none-owed — plain form 2026-08-12 (Antti: *"there is big idea behind that but students will not get it"*). The bare law read as two verbs with no objects and no actors, planted in a bullet that carries no unpacking. This wording is the corpus's own — `the-map-filled-in.md`'s consolidation already glosses the law exactly this way — and it names both actors, which the compressed form hid. The coinage itself is unchanged and still lands at `when-a-plan-is-good.md`'s slide, where the header is followed immediately by its mechanism.
+- `re-softening-on-regeneration` · vision · "read the flagged steps in the revised plan, not the agent's report of them" ← none-owed — the niceness mechanism compressed into the Phase-3 note box; the report-back grain-of-salt is M1's self-report-is-a-hypothesis recalled at point of use.
+- `find-is-easier-than-judge` · vision · "**The agent finds; you judge.**" ← none-owed — plain form 2026-08-12 (Antti: *"there is big idea behind that but students will not get it"*). The bare law read as two verbs with no objects and no actors, planted in a bullet that carries no unpacking. This wording is the corpus's own — `the-map-filled-in.md`'s consolidation already glosses the law exactly this way — and it names both actors, which the compressed form hid. This soft-items bullet is the coinage's only M2 home (the lecture's find-vs-judge slide is cut, 2026-08-25) and seeds the M5 verification-asymmetry naming.
 - `full-grilling-is-an-offer` · borrowed · "The prompt asks Claude to walk every unresolved branch, three questions at a time, with a recommendation for each." ← pocock-grill-me — the *"deliberately more pressure than you may need"* tail was cut 2026-08-12 (Antti: *"too early"*): it stated the payoff before the student had felt the pressure. The frame is not lost, it is placed — `when-a-plan-is-good.md` sets it up beforehand (*"Stop when another answer would no longer materially sharpen the plan"*; the *"offer, not an obligation"* sentence that used to open that bullet was cut 2026-08-14 as a forward reference to a word the lecture has not earned, and the stop-clause carries the permission on its own) and three beats in this file land it after the fact (*Stop when the read starts reaching*, the *Steer up* callout, the Timebox check). Do not restore it to Phase 4's opener.
 - `human-is-the-stop-gate` · vision · "The agent can keep walking; you decide when another answer is no longer worth the working memory it costs." ← none-owed
 - `pocock-credit` · detail · "Credit: Matt Pocock for the original [`grill-me`](https://github.com/mattpocock/skills/blob/62f43a1/skills/productivity/grill-me/SKILL.md) skill." ← pocock-grill-me

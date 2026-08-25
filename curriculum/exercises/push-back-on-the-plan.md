@@ -32,9 +32,8 @@ Plan mode takes minutes on real codebases. Eight to twelve isn't unusual. Use th
 
 ## Scan the plan before you push back
 
-- A plan deserves more attention than ordinary agent output: approval hands it to generation. Not every line is equally important.
+- A plan deserves more attention than ordinary agent output; not every line is equally important.
 - Open the plan file (descriptive name, e.g. `migrate-auth-hash-calm-otter.md`); the chat summary is secondary. Scan it against the five things a good plan has, and start where a sharper answer would most change execution.
-- Watch the altitude of the steps. Naming the file is one decision; the function's signature, its types, and who calls it is the design. A step that stops at the file name defers the design to mid-run, and you will not notice. That's a push-back.
 - Two push-backs forming in your head? Move on.
 
 ## Phase 3: Push back twice
@@ -111,7 +110,7 @@ Then just hit stop.
 
 **View summary:** You take a real multi-file task into plan mode, challenge the draft twice, then start a second-pass grilling and stop it when the valuable branches have landed. The result is an approved plan shaped by two different reads, with execution deliberately left for later.
 
-**Design-altitude notice added (2026-07-29, Antti-directed, from Horthy's wsff.md program-design gap):** one bullet in *Scan the plan before you push back* teaching the file-list vs interface-level altitude read. (Header was *Read the plan…* until 2026-08-12; Antti caught read-vs-scan — the section instructs scanning, and reading a plan line by line is the move this training argues against.) Sits above the *Steer up* callout's line (its examples are helpers, variable names, error wording; signatures and callers are design).
+**The altitude read is taught in the lecture only (Antti 2026-08-25, superseding the 2026-07-29 point-of-use recall).** `when-a-plan-is-good.md`'s gate slide carries the file-name-vs-design mechanism and its *you will not notice* tail; this file does not restate it. Do not re-add an altitude bullet to the scan slide. The *Steer up* callout still marks the design boundary at the walk-down (its examples are helpers, variable names, error wording; signatures and callers are design).
 
 **Scan slide is deliberately lean (2026-08-25, Antti-directed concision pass: "don't teach software engineers how to check stuff unless there is something really missable").** One slide, four bullets: why a plan earns attention (approval hands it to generation), file-not-chat plus the pointer at the lecture's five things, the altitude read, the two-push-back stop rule. Do not re-add a notice-which walkthrough of the five things — that re-teaches the lecture's checklist one slide after it was taught — and do not re-add a tests-before-code bullet (an instance of the lecture's verification-could-fail criterion). The copied prompts still offer the full plan and exhaustive branch walk; the body makes that pressure a ceiling, not a completion requirement. The student takes the highest-value sharpenings and remains the stop gate.
 
@@ -139,12 +138,11 @@ Then just hit stop.
 
 Claims
 - `first-pass-is-plausible` · vision · "the first pass is plausible, and usually not good enough." ← none-owed — Antti's own frame, near-verbatim. Replaces `two-reads-paired`, which restated *What you build* and then named the procedure; neither was a claim the exercise earns. Paired deliberately with `extract-the-task-shaping-rule`'s `an-agent-hands-you-generic-rules` — plausibility is M2's spine, stated once per exercise, and the repetition is `check_writing.md` §11's reinforcement carve-out rather than a tic. Do not vary one to break the echo.
-- `plan-attention-is-not-equal-attention` · vision · "A plan deserves more attention than ordinary agent output: approval hands it to generation. Not every line is equally important." ← none-owed
+- `plan-attention-is-not-equal-attention` · vision · "A plan deserves more attention than ordinary agent output; not every line is equally important." ← none-owed
 - `read-the-file-not-the-summary` · vision · "the chat summary is secondary" ← none-owed
 - `plan-mode-mechanics` · detail · "In plan mode, name the task" ← cc-permission-modes — the Shift+Tab keystroke was cut here 2026-08-12 (Antti: *"M2 instructs now twice how to enable plan mode"*). `when-a-plan-is-good.md`'s `plan-mode-shift-tab` is the single copy and the one the freshness stamp watches; M1 runs without plan mode, so that lecture is the student's first encounter and its own optional beat exercises it before this file opens. Do not restore the keystroke here — the label churns (`⏸ plan mode on`, plus `/plan` as a second entry point) and two copies means two edits.
 - `keep-planning-with-feedback` · detail · "At the approval prompt, pick **No, keep planning**." ← cc-permission-modes
 - `plan-mode-takes-minutes` · vision · "Plan mode takes minutes on real codebases. Eight to twelve isn't unusual." ← none-owed
-- `steps-that-stop-at-file-names-defer-design` · vision · "A step that stops at the file name defers the design to mid-run, and you will not notice." ← none-owed — the noticing claim is deliberate (maintainer correction): whether anyone watches mid-generation varies, but a wrong design call reads as progress while it is being made. Do not revert to a nobody-is-reading claim. The taught mechanism lives in `when-a-plan-is-good.md`'s gate slide; this bullet is the point-of-use recall.
 - `assumption-push-back-is-wwhtbt` · borrowed · "something the plan is carrying silently that it shouldn't" ← martin-wwhtbt
 - `re-softening-on-regeneration` · vision · "read the flagged steps in the revised plan, not the agent's report of them" ← none-owed — the niceness mechanism compressed into the Phase-3 note box; the report-back grain-of-salt is M1's self-report-is-a-hypothesis recalled at point of use.
 - `find-is-easier-than-judge` · vision · "**The agent finds; you judge.**" ← none-owed — plain form 2026-08-12 (Antti: *"there is big idea behind that but students will not get it"*). The bare law read as two verbs with no objects and no actors, planted in a bullet that carries no unpacking. This wording is the corpus's own — `the-map-filled-in.md`'s consolidation already glosses the law exactly this way — and it names both actors, which the compressed form hid. This soft-items bullet is the coinage's only M2 home (the lecture's find-vs-judge slide is cut, 2026-08-25) and seeds the M5 verification-asymmetry naming.

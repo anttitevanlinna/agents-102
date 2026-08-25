@@ -70,8 +70,8 @@ The hardest part of a memory isn't the tool. It's the scope. A memory about "our
 
 - **Atomic — no phase markers.** One interview that lands `./challenge.md`; previewing the sources is a tail-move inside it, not a beat beside it. Line 3 is authored, not generated.
 
-**Quality:** compendium-audited 2026-08-23 (behavior@725101ec pedagogy@725101ec strategy@725101ec slides@725101ec)
-- judges @725101ec: writing grandfathered, story grandfathered, technical grandfathered, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-25 (behavior@725101ec pedagogy@725101ec strategy@725101ec slides@4d9c4af2)
+- judges @4d9c4af2: writing grandfathered, story grandfathered, technical grandfathered, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **Role in Module 2:** This is the opening exercise of Module 2 — the first 15 minutes of the main session. Prework handed them the nudge ("bring a live challenge"); this exercise pins it into `./challenge.md` before `build-your-challenge-memory` runs. Do not treat as prework — students skip prework, and the rest of Module 2 cannot proceed without a pinned challenge.
 

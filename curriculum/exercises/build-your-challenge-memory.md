@@ -152,8 +152,8 @@ You just ran **Recipe 2** end-to-end: the three layers (sources, memory, rules f
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-08-25 (story@5755beb6 pedagogy@725101ec strategy@725101ec slides@725101ec)
-- judges @5755beb6: writing grandfathered, story PASS, technical grandfathered, behavior grandfathered, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-25 (story@5755beb6 pedagogy@725101ec strategy@725101ec slides@4d9c4af2)
+- judges @4d9c4af2: writing grandfathered, story PASS, technical grandfathered, behavior grandfathered, pedagogy PASS, strategy PASS, slides PASS
 
 **Frameworks riffed on:**
 - Karpathy's LLM Wiki pattern (prework) — the named idea the exercise operationalizes

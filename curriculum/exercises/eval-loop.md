@@ -154,5 +154,5 @@ This exercise is one of the three Agents 101 magic beats (M3, M6, M8). M5 picks 
 - The older manual groundedness loop fed judge output back to the generator by hand. This exercise automates that loop while keeping the judge fixed.
 - The older steering exercise was a useful second dimension, but a second full exercise steals focus from the magic beat. Steering now appears in the closing lecture as a compact goal-nudger eval.
 
-**Quality:** compendium-audited 2026-08-23 (behavior@725101ec pedagogy@725101ec strategy@725101ec slides@725101ec)
-- judges @725101ec: writing grandfathered, story grandfathered, technical grandfathered, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-25 (behavior@725101ec pedagogy@725101ec strategy@725101ec slides@4d9c4af2)
+- judges @4d9c4af2: writing grandfathered, story grandfathered, technical grandfathered, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

@@ -36,5 +36,5 @@ Claude builds a multi-method judge against any other output you want to quality-
 
 **Student action:** Optional. The trainer-on-screen default now sits above the fence where the room reads it (`check_lectures.md` §6); this line keeps the self-study path. If time is tight, trainer runs the demo on screen and students keep the concept. If self-study, students may run both prompts and read the comparison in chat scrollback (or ask Claude to save it to a file if they want to keep it).
 
-**Quality:** compendium-audited 2026-08-23 (behavior@725101ec pedagogy@725101ec strategy@725101ec slides@725101ec)
-- judges @725101ec: writing grandfathered, story grandfathered, technical grandfathered, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-25 (behavior@725101ec pedagogy@725101ec strategy@725101ec slides@4d9c4af2)
+- judges @4d9c4af2: writing grandfathered, story grandfathered, technical grandfathered, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

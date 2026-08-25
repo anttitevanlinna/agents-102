@@ -108,8 +108,8 @@ The policy files are source material. The reusable check is the expert in the ro
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-08-23 (behavior@725101ec pedagogy@725101ec strategy@725101ec slides@725101ec)
-- judges @725101ec: writing grandfathered, story grandfathered, technical grandfathered, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-25 (behavior@725101ec pedagogy@725101ec strategy@725101ec slides@4d9c4af2)
+- judges @4d9c4af2: writing grandfathered, story grandfathered, technical grandfathered, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **Pre-ship-audit findings 2026-04-26 (resolved + standing):**
 - ~~Phase 3 mood gate fails 8/10 under three-persona sim~~ — SUPERSEDED 2026-04-29 by the personal-skill shape. Re-sim owed after the skill-only refactor; prior run approved the two-lens security-check concept but assumed an older packaging shape.

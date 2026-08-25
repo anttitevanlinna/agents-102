@@ -106,8 +106,8 @@ You just ran **Recipe 4** end-to-end on your real system: the two-lens audit, th
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-08-23 (behavior@725101ec pedagogy@725101ec strategy@725101ec slides@725101ec)
-- judges @725101ec: writing grandfathered, story grandfathered, technical grandfathered, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-25 (behavior@725101ec pedagogy@725101ec strategy@725101ec slides@4d9c4af2)
+- judges @4d9c4af2: writing grandfathered, story grandfathered, technical grandfathered, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **TODO (Claude Code Desktop edition review 2026-04-29):**
 - Desktop skill-install step is body-only, not a prompt block, so `scripts/extract-training-prompts.js --training agents-101 --flavor desktop` under-represents the Desktop load path. Decide whether to label the Desktop install as a prompt or teach the extractor to capture install-instruction blocks.

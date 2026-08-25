@@ -79,8 +79,8 @@ Module 2 takes that idea and applies it to your challenge. The memory will be sm
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@5755beb6 pedagogy@35a6d1fa strategy@725101ec slides@35a6d1fa)
-- judges @5755beb6: writing PASS, story PASS, technical grandfathered, behavior grandfathered, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-25 (writing@d3ff749e story@5755beb6 pedagogy@35a6d1fa strategy@725101ec slides@4d9c4af2)
+- judges @4d9c4af2: writing PASS, story PASS, technical grandfathered, behavior grandfathered, pedagogy PASS, strategy PASS, slides PASS
 
 **Time:** 37 minutes. 5 to choose the challenge, 5 to check connectors, 15 for the plan-mode primer, 2 for the readiness note, 10 for Karpathy.
 

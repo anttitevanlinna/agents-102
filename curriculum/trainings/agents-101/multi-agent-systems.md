@@ -9,8 +9,8 @@ Hire three agents to search. Three more to decide. The filesystem is the meeting
 
 ## What You'll Learn
 After this module, you will be able to:
-- **Design** a multi-agent setup in two shapes: independent tasks on shared files (retrieval) and forked helper agents returning to one lead task (synthesis)
-- **Build** three retrieval agents, each speaking its own source's dialect, and a synthesizer that coordinates three <span class="rt-code">subagent</span><span class="rt-cowork">agent</span> personas
+- **Design** a multi-agent setup in two shapes: independent agents finding sources into shared files and helper agents returning different views to one lead task
+- **Build** three source-finding agents, each speaking its own source's dialect, and a synthesizer that coordinates three <span class="rt-code">subagent</span><span class="rt-cowork">agent</span> personas
 - **Analyze** handoff failure modes (where conflicts get papered over, dialects clash, the synthesizer averages to beige)
 - **Create** a framework-guided answer to a real strategic question about your own challenge
 - **Evaluate** when splitting earns its keep, when independent tasks beat forked helpers, and when one good agent with a good prompt wins
@@ -74,15 +74,15 @@ Memory is a working artefact, sharpened by what it bumps into.
 Once the optional check and pre-reads are handled, end this module's <span class="rt-code">session</span><span class="rt-cowork">task</span>; Module 4 starts fresh at `~/Documents/agents-101/`.
 
 ## Next
-You just built something that works across three systems. Which means it just gained access to three systems. What's the worst thing it could do with that?
+You just built something that works across the systems you connected. Which means it gained access to those systems. What's the worst thing it could do with that?
 
 Between now and Module 4, keep working on your real problem. You're close to an agent system that can actually crack your crux. Add an agent to solve a critical dependency? Add a visualisation of the plan? Prompt for what you need. Build.
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-08-24 (writing@090407d3 story@090407d3 technical@725101ec behavior@725101ec pedagogy@090407d3 strategy@090407d3 slides@090407d3)
-- judges @090407d3: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
-- cross_module @090407d3: PASS — set=[prework,getting-going,building-agent-systems,multi-agent-systems,security,output-quality,evaluations,personal-to-team,agents-building-agents]
+**Quality:** compendium-audited 2026-08-24 (writing@2072737a story@2072737a technical@725101ec behavior@725101ec pedagogy@2072737a strategy@2072737a slides@2072737a)
+- judges @2072737a: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+- cross_module @2072737a: PASS — set=[prework,getting-going,building-agent-systems,multi-agent-systems,security,output-quality,evaluations,personal-to-team,agents-building-agents]
 
 **Mood target:** Unsettled competence — the synthesis is useful, but the student leaves asking whether it is right.
 

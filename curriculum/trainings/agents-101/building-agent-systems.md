@@ -72,7 +72,7 @@ Watching where it bends is continuous improvement, done by hand. Every miss turn
 
 [Schedule your personal agent](exercises/personal-agent-homework.md)
 
-Come to Module 3 without a week of agent runs and you'll be guessing at split points while the multi-agent exercise is already underway. Your call.
+Come to Module 3 without a week of agent runs and you'll be reconstructing that evidence while the opening exercise is already underway. Your call.
 
 ## Pre-reads before Module 3
 
@@ -89,9 +89,9 @@ Before the next module, try making a few more agents you actually need. Pick by 
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-08-23 (writing@194c81b0 story@194c81b0 technical@725101ec behavior@725101ec pedagogy@194c81b0 strategy@725101ec slides@194c81b0)
-- judges @194c81b0: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
-- cross_module @090407d3: PASS — set=[prework,getting-going,building-agent-systems,multi-agent-systems,security,output-quality,evaluations,personal-to-team,agents-building-agents]
+**Quality:** compendium-audited 2026-08-24 (writing@2072737a story@194c81b0 technical@725101ec behavior@725101ec pedagogy@194c81b0 strategy@725101ec slides@2072737a)
+- judges @2072737a: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+- cross_module @2072737a: PASS — set=[prework,getting-going,building-agent-systems,multi-agent-systems,security,output-quality,evaluations,personal-to-team,agents-building-agents]
 
 **Mood target:** Satisfied compounding — the student sees a living system around the challenge, not a folder-setup exercise.
 

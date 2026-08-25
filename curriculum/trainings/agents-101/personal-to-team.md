@@ -5,11 +5,11 @@ You can't really share an agent. You can share context, a skill, the output, or 
 
 ## Prework
 
-No new reading packet. Revisit the [Cookbook for Agent System Design](../../trainings/agents-101/supplementary/cookbook-for-agent-system-design.md) and glance through [What is an Agent](../../trainings/agents-101/supplementary/what-is-an-agent.md) end to end; both are references you built through the earlier modules. Walk in with one example where people had access to a tool or process but real use did not follow.
+No new reading packet. Walk in with one example where people had access to a tool or process but real use did not follow.
 
 ## What You'll Learn
 After this module, you will be able to:
-- **Interview** for your teammate's job-to-be-done using the agentic JTBD pattern, and write the outcome statement as the design contract
+- **Interview** for your teammate's job-to-be-done using the agentic Jobs-to-be-Done pattern (Clayton Christensen and collaborators), and write the outcome statement as the design contract
 - **Select** the smallest shareable form (share context / share a skill / share the output / share an interface) for the outcome the teammate wants moved
 - **Redesign** for shared use: technical plan + people plan (ownership, governance, operating, accountability, propagation)
 - **Test** the switch the teammate would make and surface the assumptions they'd need to absorb
@@ -19,13 +19,13 @@ After this module, you will be able to:
 
 Start a fresh <span class="rt-code">Claude Code session</span><span class="rt-cowork">Cowork task</span> at `~/Documents/agents-101/`.
 
-Module 7 is the first half of the extension package. It reads the agent system you built across Modules 2-6, writes sharing work under `module-7/`, and saves a next-step file that Module 8 uses.
+You start with the agent system you built across Modules 2-6. By the end, `module-7/` holds the sharing plan and `module-7/monday.md` holds the next move.
 
-The stack on disk: a memory, synthesis across three source zones, skills that audit the system, a judge that got sharper by watching itself miss things. Somewhere in it is a thing that produced output worth trusting enough to check before a meeting. Once it was wrong; a correction landed; the correction stuck.
+The stack on disk: a memory, synthesis across three source zones, skills that audit the system, a fixed judge, and a generation tactic that got sharper under it. Somewhere in it is a thing that produces output worth checking before a meeting.
 
 The question that shows up on its own: *could this help someone else?*
 
-Hold that feeling. It's not a governance question yet. It's a generous one. At Module 7 it becomes a plan. Plainly, against real friction, without the sales pitch.
+Hold that feeling. It's not a governance question yet. It's a generous one. At Module 7 it becomes a plan, plainly and against real friction.
 
 Two questions to warm up: who's the one person who came to mind just now? And what makes you hesitate about actually handing this to them?
 
@@ -35,7 +35,7 @@ Start with the move that matters most: **interview for the job.** Your teammate 
 
 ## Pick the sharing shape
 
-Then the candidates: **four sharing shapes that hold up under real use.** Share the context, share a skill, share the output (push), share an interface (pull). The fifth shape, "share the whole agent," is the one that sounds right and doesn't hold up. You'll see why in the next hour.
+Then the candidates: **Sharing shapes.** (1) **Share the context** — teammates get your `memory/`, `sources/`, `CLAUDE.md` and build their own agents on top. (2) **Share a skill** — one scoped capability extracted. (3) **Share the output (push)** — scheduled deploy; the output lands where the team already looks. (4) **Share an interface (pull)** — Slack bot / Teams @mention / web form / endpoint; teammates invoke on demand. "Share the whole agent" is a vendor pitch and is not on the list.
 
 The pressure tests after that stay practical: what's the absorption bottleneck, what must be true for the teammate to switch, and why might they go back to the incumbent six months from now?
 
@@ -55,16 +55,16 @@ Notice what this prompt insists on: name the path, overwrite in place, quote the
 
 ## Push back on the summary
 
-Read Claude's summary. Push back where it's wrong. *"The teammate's job wasn't vague, you just didn't see it"* / *"you pulled too much out of the skill, put the edge cases back."* The artifact: the sharpened sharing file itself, plus one line in your Module 7 next-step file naming the first move. Save the conversation. It's the bridge to when work resumes.
+Push back where Claude's summary is wrong. *"The teammate's job wasn't vague, you just didn't see it"* / *"you pulled too much out of the skill, put the edge cases back."* The artifact: the sharpened sharing file itself, plus one line in your Module 7 next-step file naming the first move. Save the conversation. It's the bridge to when work resumes.
 
 ## Key Concepts
 
-- **Interview for the outcome before designing the solution.** The teammate's job comes first, your candidate second. The agent does the heavy lifting: your memory already carries most of that job, so it reads what's on disk, drafts a Jobs-to-be-Done hypothesis, then asks a bounded set of questions. Not freeform chat.
-- **The outcome statement is the design contract.** *"Minimize/increase [metric] when [doing the job]."* A candidate that doesn't move the metric isn't a candidate.
-- **The third outcome is where the interview earns its keep.** Dependency removed, anxiety reduced, scope expanded, workload shifted. Speed and quality alone means it went shallow.
-- **Access is easy; absorption is the scarce thing.** The technical plan fills quickly; the people plan stalls on names.
-- **The four sharing shapes are a design language, not a menu.** Context / skill / output (push) / interface (pull). "Share the whole agent" is not on the list. Pick one to three, stack where useful.
-- **The people plan weighs equal to the technical plan; replacement is the test.** Every job already has a current solution: Excel, a colleague, gut feel. Not *"will they adopt my agent?"* but *"what would have to be true for them to replace it?"*
+- **Outcome first.** The teammate's job comes first, your candidate second. The agent does the heavy lifting: your memory already carries most of that job, so it reads what's on disk, drafts a Jobs-to-be-Done hypothesis, then asks a bounded set of questions. Not freeform chat.
+- **Design contract.** The outcome statement is *"Minimize/increase [metric] when [doing the job]."* A candidate that doesn't move the metric isn't a candidate.
+- **Third outcome.** This is where the interview earns its keep: dependency removed, anxiety reduced, scope expanded, workload shifted. Speed and quality alone means it went shallow.
+- **Absorption.** Access is easy; absorption is scarce. The technical plan fills quickly; the people plan stalls on names.
+- **Sharing shapes.** Use the four sharing shapes as a design language, not a menu. "Share the whole agent" is not on the list. Pick one to three, stack where useful.
+- **Replacement test.** Roger Martin's question is the test: *"what would have to be true for them to replace it?"* The people plan weighs equal to the technical plan. Every job already has a current solution: Excel, a colleague, gut feel.
 
 ## Bring to Module 8
 
@@ -80,9 +80,9 @@ The sharing plan leaves the room and meets the organisation. What comes back fro
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-08-24 (writing@b865cc47 story@194c81b0 technical@725101ec behavior@725101ec pedagogy@194c81b0 strategy@b865cc47 slides@b865cc47)
-- judges @b865cc47: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
-- cross_module @090407d3: PASS — set=[prework,getting-going,building-agent-systems,multi-agent-systems,security,output-quality,evaluations,personal-to-team,agents-building-agents]
+**Quality:** compendium-audited 2026-08-24 (writing@2072737a story@2072737a technical@725101ec behavior@725101ec pedagogy@2072737a strategy@b865cc47 slides@2072737a)
+- judges @2072737a: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+- cross_module @2072737a: PASS — set=[prework,getting-going,building-agent-systems,multi-agent-systems,security,output-quality,evaluations,personal-to-team,agents-building-agents]
 
 **Mood target:** Generous impulse — the student starts from one teammate's job, not an abstract rollout obligation.
 

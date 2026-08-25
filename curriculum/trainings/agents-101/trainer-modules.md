@@ -187,7 +187,7 @@ The one trainer document for Agents 101. Read **Start here** before your first c
 
 <section class="module-glance" id="m5-glance">
 
-### M5 — Output Quality and Hallucination Control
+### M5 — Grounded Output
 
 **Big idea.** Grounding is a discipline. The student measures candidate detectors against their own benchmark and keeps a narrow judge whose limits are explicit.
 

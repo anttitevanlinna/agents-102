@@ -71,7 +71,7 @@ Compare Claude's picks to what you expected. Where cold-Claude sees generic, you
 
 Complete the linked Module 2 prework before you come.
 
-Come to Module 2 without a live challenge and you'll be choosing one while the memory build is already underway. Your call.
+Come to Module 2 without a live challenge and you'll be choosing one while the opening exercise is already underway. Your call.
 
 ## Pre-reads before Module 2
 
@@ -86,9 +86,9 @@ The output now travels with a file the agent can re-read next time. Module 2 sys
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-08-23 (writing@194c81b0 story@725101ec technical@725101ec behavior@725101ec pedagogy@725101ec strategy@194c81b0 slides@194c81b0)
-- judges @194c81b0: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
-- cross_module @090407d3: PASS — set=[prework,getting-going,building-agent-systems,multi-agent-systems,security,output-quality,evaluations,personal-to-team,agents-building-agents]
+**Quality:** compendium-audited 2026-08-25 (writing@2072737a story@725101ec technical@725101ec behavior@725101ec pedagogy@725101ec strategy@194c81b0 slides@2072737a)
+- judges @2072737a: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+- cross_module @2072737a: PASS — set=[prework,getting-going,building-agent-systems,multi-agent-systems,security,output-quality,evaluations,personal-to-team,agents-building-agents]
 
 **Mood target:** Joyful creation — the student leaves with something recognizably theirs, not a technical warm-up.
 

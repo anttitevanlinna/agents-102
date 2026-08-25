@@ -12,11 +12,11 @@
 
 Your memory has been working for you for days now. It catches things you'd have missed, keeps a tone you taught it, and produces something you check before meetings. The question arrives on its own: *could this help someone else?*
 
-Hold the impulse. Then do the opposite of what vendors want you to do.
+Hold the impulse. Then start with the teammate's work.
 
-You are not going to ask *"what should I share with my teammate?"* That question is builder-centered and it skips the one thing that actually decides whether sharing works: **the job your teammate is trying to get done.** Your teammate doesn't want your agent. They want a job done. Your agent, your skill, your output, your interface: any of those is a candidate for hire. Does it do the job better than what they currently use?
+You are not going to ask *"what should I share with my teammate?"* That question is builder-centered and it skips the one thing that actually decides whether sharing works: **the job** your teammate is trying to get done. This is the Jobs-to-be-Done frame from Clayton Christensen and collaborators. Your teammate doesn't want your agent. They want a job done. Your agent, your skill, your output, your interface: any of those is a candidate for hire. Does it do the job better than what they currently use?
 
-So the starting question is theirs, not yours: **what job is my teammate trying to get done, and which sharing shape does it?**
+So the starting question is theirs, not yours: *what job is my teammate trying to get done, and which sharing shape does it?*
 
 You'll interview for that job (the agent reads your memory and does most of the work). You'll pick a candidate against the outcome, not against the infrastructure. You'll draft a technical plan and a people plan, side by side. You'll find the absorption bottleneck, test the switch, and name the likely failure before it happens. Some of it won't finish in the room. That's by design. The unfinished pieces are your Monday.
 
@@ -40,7 +40,7 @@ The context has been building since the first module. Your memory knows who your
 </div>
 
 
-Read what lands. The test for Phase 1: did the agent tell you something you hadn't quite put into words, or did it give you back what you already thought? A hypothesis that just confirms you is a shallow read. Push back in chat (*"try again; the struggle is something else"*) and let it try once more. The third outcome vector is where this phase earns its keep. Speed and quality are the obvious axes. If the agent only returned speed and quality, ask it explicitly: *"if speed and quality stayed exactly where they are, what else would my teammate want different?"*
+Read what lands. The test for Phase 1: did the agent tell you something you hadn't quite put into words, or did it give you back what you already thought? A hypothesis that just confirms you is a shallow read. Push back in chat (*"try again; the struggle is something else"*) and let it try once more. The third outcome is where this phase earns its keep. Speed and quality are the obvious dimensions. If the agent only returned speed and quality, ask it explicitly: *"if speed and quality stayed exactly where they are, what else would my teammate want different?"*
 
 ## Phase 2: Pick the candidate that moves the outcome
 
@@ -48,7 +48,7 @@ Read what lands. The test for Phase 1: did the agent tell you something you hadn
 
 You have an outcome statement. Now you pick what you'd offer the teammate. Two branches, both first-class.
 
-**Branch B. Personal Claudes only.** Most of the room is here. Your teammates run their own Claude Code. Sharing travels as files and skills. Three of the four sharing strategies were built for exactly this situation. Branch B students often ship faster than Branch A because they don't wait on IT.
+**Branch B. Personal Claudes only.** Most of the room is here. Your teammates run their own Claude Code. Sharing travels as files and skills. Three of the four sharing strategies were built for exactly this situation. Branch B often ships faster than Branch A because it doesn't wait on IT.
 
 **Branch A. You also have cloud agent infrastructure.** N8N, Cowork, Power Automate, Make, an internal platform someone on your team can deploy to. If you're here, you stack Branch A's extra patterns (central deployment, hosted interfaces, output push at scale) on top of Branch B. You don't skip the file-and-skill sharing; you add runtime to it.
 
@@ -77,7 +77,7 @@ The four strategies, as a reminder:
 3. **Share the output (push).** Schedule the agent. Output lands where the team looks.
 4. **Share an interface (pull).** Wrap the agent. Teammates invoke via Slack bot, Teams @mention, web form.
 
-"Share the whole agent" is not on the list. It sounds right in a deck. It doesn't work in the field.
+*"Share the whole agent"* is a vendor pitch and is NOT on the list.
 
 ## Phase 3: Find the absorption bottleneck
 
@@ -88,7 +88,7 @@ Before you draft plans, find the load-bearing obstacle. The sharing problem alwa
 {{prompt:share-your-work-3}}
 
 
-Read what lands. If the bottleneck is technical ("we don't have a Slack bot"), push back. Technical obstacles are rarely the bottleneck at Week 1. If the bottleneck is social ("my teammate doesn't trust anything they didn't build themselves"), you've probably got it. Keep the file open; Phases 3 through 5 all aim at this obstacle.
+Read what lands. If the bottleneck is technical ("we don't have a Slack bot"), push back. Technical obstacles are rarely the bottleneck at Week 1. If the bottleneck is social ("my teammate doesn't trust anything they didn't build themselves"), you've probably got it. Keep the file open; this obstacle anchors the work that follows.
 
 ## Phase 4: Draft both plans
 
@@ -99,13 +99,13 @@ You're drafting two documents side by side. Neither is optional.
 {{prompt:share-your-work-4}}
 
 
-Answer plainly. The UNASSIGNED lines are the most valuable lines in this exercise. They are the questions you walk into your manager's office with on Monday.
+Answer plainly. The UNASSIGNED lines become the questions you walk into your manager's office with on Monday.
 
 ## Phase 5: Test the switch assumptions
 
 *10 min*
 
-Your plans rest on assumptions. Some are wrong. The question is not *"will my agent work?"* That's a builder question. The question is: *what would have to be true for this teammate, doing this job, to fire their current hire and use my candidate?*
+Your plans rest on assumptions. Some are wrong. The question is not *"will my agent work?"* That's a builder question. Use Roger Martin's question instead: *what would have to be true for this teammate, doing this job, to fire their current hire and use my candidate?*
 
 {{prompt:share-your-work-5}}
 
@@ -129,7 +129,7 @@ The third story is the one to read twice.
 
 Monday isn't a deployment decision. It's a conversation.
 
-Write `module-7/monday.md` with three lines:
+Write `module-7/monday.md` with:
 - The teammate I'll talk to first. (Just them. Not a rollout.)
 - The one question I'll actually ask about their job. (Not *"want to try my agent?"* but something like *"walk me through how you currently do X."*)
 - The assumption I'll test this week.
@@ -140,11 +140,11 @@ In self-study, ask Teacher Claude to read all your module-7 files and push back 
 
 **What happened:**
 
-The interview will surprise you. Your memory already knew much of this teammate's job. The agent surfaces it in a shape you can use. The outcome vector you didn't expect (the third one: anxiety, dependency, scope, workload) is usually the one that actually matters.
+The interview will surprise you. Your memory already knew much of this teammate's job. The agent surfaces it in a shape you can use. The outcome you didn't expect (the third one: anxiety, dependency, scope, workload) is usually the one that actually matters.
 
 Your pattern selection will look different under the outcome test than under the infrastructure test. Patterns you'd have picked because they're easy don't move the metric. Patterns you'd have ruled out because they seem hard turn out to be the only ones that do the job. That's the reframe.
 
-Your people plan will have more UNASSIGNED lines than you're comfortable with. Good. That's the absorption bottleneck in your own work, not an abstraction. The gap between a confident technical plan and a hedged people plan is the thing industry papers over.
+Your people plan will have more UNASSIGNED lines than you're comfortable with. Good. That's the absorption bottleneck in your own work, not an abstraction. The gap between a confident technical plan and a hedged people plan is the part that is easiest to miss.
 
 The failure stories will tell you things you half-knew. The third story (the failure you're not seeing) is usually some version of *"they never fired their current hire in the first place."*
 
@@ -164,7 +164,7 @@ You just ran **Recipe 7** end-to-end: the Jobs-to-be-Done interview for agents, 
 
 - **Capability check before delivery:** confirm Claude Code's AskUserQuestion tool is available in the student's environment (student-facing name: "ask-questions tool"). The tool renders bounded multiple-choice questions inline and is the Phase 1 interaction primitive. If unavailable in a cohort's build, fall back to Claude asking structured questions one at a time with numbered options the student picks by number — mechanically similar, pedagogically weaker.
 - **Phase 1 is the magic beat.** The teaching moment is the student experiencing that the agent already had 80% of the teammate's job on disk, and that seven targeted questions plug the remaining 20%. If the agent's hypothesis just parrots back the student's own assumptions, the magic fails. Teacher Claude (self-study) or facilitator (in-room) nudges: *"Did the agent actually read your memory, or did it guess from file names? Find one claim in the JTBD brief that surprised you. If nothing surprised you, ask the agent to try again — the outcome is not the job you already had in mind."*
-- **Third-axis surfacing.** If the three outcome vectors come back as speed / quality / (weak generic "other"), push: *"If speed and quality stayed flat, what else would your teammate want? Dependency removed? Anxiety reduced? Scope they could take on that they can't today? Workload shifted to someone else?"* The non-obvious axis is where interviewing-for-outcomes earns its keep and is the lesson students take to Monday's adoption problem.
+- **Third-dimension surfacing.** If the three outcomes come back as speed / quality / (weak generic "other"), push: *"If speed and quality stayed flat, what else would your teammate want? Dependency removed? Anxiety reduced? Scope they could take on that they can't today? Workload shifted to someone else?"* The non-obvious dimension is where interviewing-for-outcomes earns its keep and is the lesson students take to Monday's adoption problem.
 - **Branch selection around 14 min in** (start of Phase 2). Most Nordic cohorts land heavily in Branch B — don't apologize for it, frame it as the plain pattern for most buyers on day one.
 - **Phase 2 selection test is *does this move the outcome*, not *does this fit my infra*.** Watch for students picking patterns because they're technically feasible rather than because they do the job. Nudge: *"Why would your teammate fire their current hire and use this? Answer that in one sentence. If you can't, pick a different pattern."*
 - **Phase 3 stall on people-plan names.** Their technical plan fills quickly; the people plan stalls on *who owns it?* That stall IS the teaching moment. Protect it. UNASSIGNED lines are the Monday artifact.
@@ -194,5 +194,5 @@ Supporting research inline via prework: absorption bottleneck. Access-trust and 
 - **Plan-mode preamble bloat on Phase 3.** Prime students to scroll past.
 - **TODOs in the pattern catalog.** The catalog ships WIP. Where a pattern's Example field says `[TODO]`, the student invents one for their situation — that's the designed experience, not a bug. If students flag "this isn't filled in" as a problem, reframe: *"the scaffold is filled in — name, context, forces, solution, traps, people plan. The example is yours to write. That's the practitioner move."*
 
-**Quality:** compendium-audited 2026-08-24 (writing@725101ec story@725101ec technical@725101ec behavior@b865cc47 pedagogy@725101ec strategy@725101ec slides@725101ec)
-- judges @b865cc47: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-24 (writing@2072737a story@725101ec technical@725101ec behavior@b865cc47 pedagogy@725101ec strategy@725101ec slides@2072737a)
+- judges @2072737a: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

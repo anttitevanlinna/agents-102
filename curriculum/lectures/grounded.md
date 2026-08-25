@@ -26,7 +26,7 @@ The number doesn't tell you *what* will go wrong. It tells you that something wi
 
 **Now flip the math.**
 
-Say your briefing has a 10% fabrication rate: ten ungrounded claims in every hundred. In practice a first pass lands close to that; treat it as a working prior, not a measurement. You test. Say the detector catches 90% of them, the same prior run in reverse. You fix what the detector flagged. Test again. The detector catches 90% of what's left. Fix again.
+Say your briefing has a 10% fabrication rate: ten ungrounded claims in every hundred. A first pass often lands close to that; treat it as a working prior, not a measurement. You test. Say the detector catches 90% of them, the same prior run in reverse. You fix what the detector flagged. Test again. The detector catches 90% of what's left. Fix again.
 
 Round 1: 10% fabricated → 1% after fix.
 Round 2: 1% → 0.1% after fix.
@@ -76,7 +76,7 @@ That last clause is the one that matters. Grounded output names what it doesn't 
 
 Now you run the benchmark. Well, not by hand. You set up four detectors, a claim pool, and a scorer. The agents do the work. You watch the scoreboard fill in. The winner becomes a judge file you keep.
 
-Phase 0 is next: a fresh briefing, then a 30-claim pool extracted from it. The claim pool is the measuring surface the rest of the exercise turns on. Keep the main session blind until the claims exist.
+Next, you create a fresh briefing and extract a 30-claim pool from it. That pool is the benchmark input the rest of the exercise turns on. Keep the main session blind until the claims exist.
 
 <!-- maintainer -->
 
@@ -90,7 +90,7 @@ Phase 0 is next: a fresh briefing, then a 30-claim pool extracted from it. The c
 
 Claims
 - `single-pass-compound-decay` · detail · "Ten unverified steps in a row at 85% each would land near 20% end-to-end" ← compound-reliability-math
-- `first-pass-prior` · detail · "In practice a first pass lands close to that; treat it as a working prior, not a measurement." ← antti-first-pass-prior
+- `first-pass-prior` · detail · "A first pass often lands close to that; treat it as a working prior, not a measurement." ← antti-first-pass-prior
 - `loop-collapses-the-error-rate` · detail · "Round 1: 10% fabricated → 1% after fix." ← compound-reliability-math, antti-first-pass-prior
 - `mata-detector-first-pass` · detail · "today's four detection techniques ran against the Mata v. Avianca pre-read before class" ← mata-detector-passes
 - `mata-detector-rerun` · detail · "the story got fixed, and the four detectors ran again … A re-run months later caught one more smoothing the earlier passes had walked past" ← mata-detector-passes
@@ -152,5 +152,5 @@ OODA
 
 **Lecture meta:** *Closer beat is the lead-in to Phase 0 of the Hallucination benchmark exercise. Trainer pivots straight from the "Phase 0 is next" line into the exercise — no separate transition.*
 
-**Quality:** compendium-audited 2026-08-24 (writing@e5364af8 story@e5364af8 technical@ab36a5e6 behavior@5fc7188 pedagogy@ab36a5e6 strategy@5fc7188 slides@e5364af8)
-- judges @e5364af8: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-24 (writing@2072737a story@2072737a technical@ab36a5e6 behavior@5fc7188 pedagogy@ab36a5e6 strategy@5fc7188 slides@2072737a)
+- judges @2072737a: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

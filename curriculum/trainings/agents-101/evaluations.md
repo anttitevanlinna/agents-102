@@ -32,7 +32,7 @@ The question shifts at Module 6. What if the work kept getting sharper, not beca
 
 > Text is easy to inspect, so this module uses it again. The same pattern applies to actions. An agent action starts as text: a proposed mail, a ticket update, a CRM change, a query, a command. Check the proposal before it becomes the action.
 >
-> Keep adding connectors to your key systems. Some of the biggest wow happens when your agent starts combining insight across systems. Progress from you taking actions the agent proposes, to letting the agent take safe actions itself. Stay safe. Start small. Then scale.
+> Keep adding connectors to your key systems. Combining insight across systems can surface relationships no single system shows. Progress from you taking actions the agent proposes, to letting the agent take safe actions itself. Stay safe. Start small. Then scale.
 
 [Exercise: The eval loop runs itself](exercises/eval-loop.md)
 
@@ -59,7 +59,7 @@ This is Claude auditing a tactic it helped sharpen. That is acceptable here beca
 - **Eval as infrastructure.** The judge moves from object to live machinery. It's not inspected, it's watched.
 - **Role separation.** Generation and judging happen in separate agents. The generator does not grade itself.
 - **Walk-away autonomy.** The system runs; you come back to the notes.
-- **The work gets sharper because the judge stays still.** The main session reads what the judge flagged each round and rewrites `./generation-tactic.md`. The judge doesn't move. That's why round 3's score has anything to say about round 1's. A yardstick you rewrite is not a yardstick.
+- **Fixed judge.** The work gets sharper because the judge stays still. The main session reads what the judge flagged each round and rewrites `./generation-tactic.md`. The judge doesn't move. That's why round 3's score has anything to say about round 1's. A yardstick you rewrite is not a yardstick.
 - **Loop ownership.** One session owns the loop: dispatch generator, dispatch judge, update tactic, repeat. The fan-out shape, now running a quality discipline instead of a content discipline.
 
 ## Bring to Module 7
@@ -68,22 +68,20 @@ This is Claude auditing a tactic it helped sharpen. That is acceptable here beca
 
 Come to Module 7 without five real agent calls and you'll be inventing a handoff while the sharing exercise is already underway. Your call.
 
-## Pre-reads before Module 7
+The [Cookbook for Agent System Design](../../trainings/agents-101/supplementary/cookbook-for-agent-system-design.md) is an optional practitioner reference after this module. Eight recipes map to the modules you ran. Three canonical dishes show recipe composition in production. When the next Monday-shaped problem lands, this is where the moves live without the training scaffolding around them.
 
-The [Cookbook for Agent System Design](../../trainings/agents-101/supplementary/cookbook-for-agent-system-design.md) is your practitioner reference for everything after this module. Eight recipes mapped one-to-one to the modules you just ran. Three canonical dishes (a program manager agent, a shared-inbox triage agent, the continuous research system that lives inside this very repo) showing recipe composition in production. Twelve named components, eighteen data sources, twenty named dishes in the index. When the next Monday-shaped problem lands, this is where the moves live without the training scaffolding around them.
+Keep [What is an Agent](../../trainings/agents-101/supplementary/what-is-an-agent.md) as an optional lookup. Its words now point at things you have actually built: context, memory, tools, other agents, boundaries, judges, loops, and autonomy rungs. Neither document is Module 7 prework; the single access-without-use example is the whole load.
 
-Glance through [What is an Agent](../../trainings/agents-101/supplementary/what-is-an-agent.md) end to end. The words should now point at things you have actually built: context, memory, tools, other agents, boundaries, judges, loops, and autonomy rungs.
-
-Once the trigger and references are ready, end this module's <span class="rt-code">session</span><span class="rt-cowork">task</span>; Module 7 starts fresh at `~/Documents/agents-101/`.
+Once the trigger is written, end this module's <span class="rt-code">session</span><span class="rt-cowork">task</span>; Module 7 starts fresh at `~/Documents/agents-101/`.
 
 ## Next
 You just built an eval that improves itself. The system can now keep pressure on its own output when you are not watching every step. The close is not "trust the agent." The close is "trust the loop you can inspect."
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-08-23 (writing@194c81b0 story@725101ec technical@725101ec behavior@725101ec pedagogy@725101ec strategy@725101ec slides@194c81b0)
-- judges @194c81b0: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
-- cross_module @090407d3: PASS — set=[prework,getting-going,building-agent-systems,multi-agent-systems,security,output-quality,evaluations,personal-to-team,agents-building-agents]
+**Quality:** compendium-audited 2026-08-24 (writing@2072737a story@725101ec technical@725101ec behavior@725101ec pedagogy@725101ec strategy@725101ec slides@2072737a)
+- judges @2072737a: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+- cross_module @2072737a: PASS — set=[prework,getting-going,building-agent-systems,multi-agent-systems,security,output-quality,evaluations,personal-to-team,agents-building-agents]
 
 **Mood target:** Unleashed leverage — the student sees the loop improve work while the human owns the yardstick and boundary.
 

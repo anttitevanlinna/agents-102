@@ -63,6 +63,15 @@ function git(repo, args) {
   catch { return '' }
 }
 
+function contentView(repo, rel, cls) {
+  if (cls !== 'behavior') return fs.readFileSync(path.join(repo, rel), 'utf8')
+  return execFileSync(process.execPath, [path.join(repo, 'scripts/expand-md.js'), rel], {
+    cwd: repo,
+    encoding: 'utf8',
+    maxBuffer: 64 * 1024 * 1024,
+  })
+}
+
 // A trace names its file by slug only. The universe is the authority on where
 // that slug lives; a slug it does not carry is reported, never guessed at — the
 // same refusal eval-queue makes for UNOWNED files, for the same reason.
@@ -234,7 +243,7 @@ function collect(repo, want) {
     try { trace = JSON.parse(fs.readFileSync(path.join(repo, SIM_DIR, name), 'utf8')) }
     catch (e) { rows.push({ name, cls, file: rel, training, verdict: 'unresolved', note: `unparseable: ${e.message.slice(0, 60)}` }); continue }
 
-    const current = fs.readFileSync(path.join(repo, rel), 'utf8')
+    const current = contentView(repo, rel, cls)
     const { verdict, note } = classify(repo, rel, trace, current)
     const row = { name, cls, file: rel, training, generated_at: (trace.generated_at || '').slice(0, 10) || null, verdict, note }
     if (cls === 'persona') row.mood = { contract: trace.module_mood_contract || null, beats: moodBeats(trace) }
@@ -246,6 +255,7 @@ function collect(repo, want) {
 // Persona traces only: a behavior trace reasons about Claude's response
 // distribution and scores no mood.
 function moodBeats(trace) {
+  if (Array.isArray(trace.personas)) return trace.personas.flatMap(moodBeats)
   const beats = []
   for (const p of trace.phases || []) {
     if (typeof p.mood_score === 'number') {
@@ -344,6 +354,6 @@ function main(argv) {
   if (argv.includes('--gate') && rows.some(r => r.verdict === 'body-moved' || r.verdict === 'unanchored')) process.exit(1)
 }
 
-module.exports = { collect, classify, slugIndex, resolveSlug, historyShas, moodBeats }
+module.exports = { collect, classify, slugIndex, resolveSlug, historyShas, moodBeats, contentView }
 
 if (require.main === module) main(process.argv.slice(2))

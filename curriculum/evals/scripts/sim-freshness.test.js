@@ -291,3 +291,33 @@ test('moodBeats reads every phase score and the close, and stays silent otherwis
   assert.strictEqual(beats.at(-1).at, 'close')
   assert.deepStrictEqual(moodBeats({ phases: [] }), [], 'no scores means no beats, never an implied pass')
 })
+
+test('moodBeats reads the current persona-array trace shape', () => {
+  const { moodBeats } = require('./sim-freshness.js')
+  const beats = moodBeats({
+    personas: [{
+      persona: 'SVP operator',
+      phases: [
+        { phase_index: 1, phase_name: 'Start', mood_score: 8, mood_note: 'engaged' },
+        { phase_index: 2, phase_name: 'Build' },
+      ],
+      close: { mood_score: 9, mood_note: 'ready' },
+    }],
+  })
+  assert.deepStrictEqual(beats.map(b => b.score), [8, 9])
+  assert.deepStrictEqual(beats.map(b => b.at), ['phase 1: Start', 'close'])
+})
+
+test('behavior freshness reads the expanded prompt-registry view', () => {
+  const { contentView } = require('./sim-freshness.js')
+  const repo = path.resolve(__dirname, '../../..')
+  const rel = 'curriculum/trainings/agents-101/personal-to-team.md'
+  const raw = fs.readFileSync(path.join(repo, rel), 'utf8')
+  const expanded = execFileSync(process.execPath, ['scripts/expand-md.js', rel], {
+    cwd: repo,
+    encoding: 'utf8',
+  })
+  assert.notStrictEqual(expanded, raw, 'fixture must contain a prompt registry marker')
+  assert.strictEqual(contentView(repo, rel, 'behavior'), expanded)
+  assert.strictEqual(contentView(repo, rel, 'persona'), raw)
+})

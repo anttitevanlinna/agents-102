@@ -1,4 +1,4 @@
-# Output Quality and Hallucination Control
+# Grounded Output
 
 ## Big Idea
 You don't pick a quality check because someone said so. You run several on your own output, score them against a 30-claim benchmark, and keep the winner.
@@ -67,7 +67,7 @@ Having added the checking step before acting, this is also the suitable place to
 - **Empirical method selection over authority.** You don't pick a detector because the docs or a paper said so. You run several against your own output and your own benchmark, and the data names the winner.
 - **The scoreboard is the artifact.** Precision, recall, coverage, measured per detector on the same claim pool. Read it row by row and you can name why one won and where another lost.
 - **A judge is narrow on purpose.** The winning judge file says what it catches and names its known limit. Narrow tools that work beat broad tools that pretend.
-- **Grounded is the discipline; the benchmark is how you build the check.** A judge measured against a benchmark is what keeps output connected to the ground when you're not in the room. A small benchmark proves the method; a production judge wants hundreds of claims and learns from its own corrections.
+- **Grounded is the discipline; the benchmark is how you build the check.** A judge measured against a benchmark is what keeps output connected to the ground when you're not in the room. A small benchmark proves the method; production evaluation wants hundreds of claims and accumulates new cases as versioned evidence. In Module 6, the scoring yardstick stays fixed while the generator improves under it.
 
 ## Pre-reads before Module 6
 
@@ -76,7 +76,7 @@ Ethan Mollick, "Garbage Can and Bitter Lesson."
 Once the judge and pre-read are ready, end this module's <span class="rt-code">session</span><span class="rt-cowork">task</span>; Module 6 starts fresh at `~/Documents/agents-101/`.
 
 ## Next
-The benchmark ran once. Thirty claims, four detectors, one judge. Now imagine the benchmark has three hundred claims, the judge runs on every build, and its own corrections feed back into the next round. That's evals.
+The benchmark ran once. Thirty claims, four detectors, one judge. Now imagine the benchmark has three hundred claims, the judge runs on every build, and the generation tactic absorbs the judge's feedback between rounds. That's evals.
 
 <!-- maintainer -->
 
@@ -131,9 +131,9 @@ The benchmark ran once. Thirty claims, four detectors, one judge. Now imagine th
 
 **Why one exercise, not two:** the benchmark is a single bounded activity with a four-phase internal arc (target + benchmark → detectors → scorer → judge). Adding a second exercise here would steal M6's Steering-eval beat. M5 stays focused on the benchmarking pattern; evals are M6's instrument.
 
-**Quality:** compendium-audited 2026-08-23 (writing@194c81b0 story@725101ec technical@725101ec behavior@725101ec pedagogy@725101ec strategy@725101ec slides@194c81b0)
-- judges @194c81b0: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
-- cross_module @090407d3: PASS — set=[prework,getting-going,building-agent-systems,multi-agent-systems,security,output-quality,evaluations,personal-to-team,agents-building-agents]
+**Quality:** compendium-audited 2026-08-24 (writing@2072737a story@2072737a technical@725101ec behavior@725101ec pedagogy@2072737a strategy@2072737a slides@2072737a)
+- judges @2072737a: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+- cross_module @2072737a: PASS — set=[prework,getting-going,building-agent-systems,multi-agent-systems,security,output-quality,evaluations,personal-to-team,agents-building-agents]
 
 **Artefact contracts**
 | Artefact | Stable identifier | Produced by | Consumed by |

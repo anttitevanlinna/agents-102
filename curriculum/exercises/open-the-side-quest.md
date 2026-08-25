@@ -54,7 +54,7 @@ Ask Claude to fork a sibling worktree and copy your personal rules across. The p
 
 <!-- maintainer -->
 
-**Lean pass (2026-08-25, Antti-directed M3/M6 shorten, free hands):** cut "This is your main lane for Module 3." (dup of main-quest lead); worktree bullet condensed — dropped "It opens next to your repo…" and the second same-history/own-working-state restatement; two-windows bullet dropped "both visible at once" + "Each holds its own scrollback." Do not restore.
+**Lean pass (2026-08-25, Antti-directed M3/M6 shorten, free hands):** cut "This is your main lane for Module 3." (dup of main-quest lead); worktree bullet condensed — dropped "It opens next to your repo…" and the second same-history/own-working-state restatement; two-windows bullet dropped "both visible at once" + "Each holds its own scrollback." Do not restore. Carded and kept (Antti 2026-08-25): the *Read back the worktree path* slide — the explicit read-back beat stays; do not re-card.
 
 **View summary:** You open two agent sessions on one Git history: a security lane in the repository and a quality lane in a sibling worktree. The setup lets independent work continue safely while preserving a clear place for human control at merge.
 

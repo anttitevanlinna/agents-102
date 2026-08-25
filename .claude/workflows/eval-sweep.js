@@ -49,6 +49,19 @@ const SETS = input.sets || []         // [{training, name, members:[rel...]}]
 // Defaults preserve historical behavior: judges on sonnet, refuters inherit the session model.
 const MODELS = Object.assign({ judge: 'sonnet', refute: null }, input.models || {})
 
+// Evidence mode. `lean` (the default) is not a relaxation of the completeness
+// contract — the ledger still carries one row per rule. It moves who WRITES the
+// rows nothing turns on. Measured off the instances: average rows per instance
+// went 24→68 (writing), 14→100 (technical) between May and August as the
+// rulebook grew, and ~70% of those rows say N/A. `story`, the one class that
+// never adopted the contract, held flat at 15. The contract is right; asking a
+// language model to retype a constant 70 times per file is what is wrong.
+//
+// `full` restores the old behaviour verbatim for a sweep that must be able to
+// say it re-derived every row from scratch.
+const EVIDENCE_MODE = input.evidence === 'full' ? 'full' : 'lean'
+const PREFILL = input.prefill !== false
+
 // A dispatched unit is identified by its own key, never by matching a returned
 // verdict's file string back against the request. That match used to compare
 // `v.class === j.cls` and a basename suffix, which for a cross_module set means
@@ -120,13 +133,72 @@ Do not edit it at all — not the body, not the maintainer block, not a backing 
 
 Anything you would have fixed goes in \`findings\` (blocking) or \`todos\` (not). The orchestrator applies them after every class on this file has returned. The only file you write is your own instance JSON.`
 
-const EVIDENCE = `## Verdict discipline
+// The geometry every judge used to derive for itself, six times per file, each
+// into an unnamespaced scratch file that a concurrent judge on a different file
+// could overwrite. Now derived once, keyed by source sha, named by slug.
+const VIEW = `## Your geometry is already computed — do not re-derive it
+
+\`\`\`
+node curriculum/evals/scripts/derive-body-view.js <file>
+\`\`\`
+
+Writes \`curriculum/evals/body-views/<slug>.view.json\` and returns cached if the source sha is unchanged. It carries:
+
+- \`maintainer_cut\`, \`fence_ranges\`, \`body_regions\` — 1-indexed against the RAW source, which is what a citation means.
+- \`projections.body_numbered\` — the body with its raw line numbers, fences and maintainer tail already removed. **Grep THIS file.** A hit in it is in-region by construction, so the "verify the cited line is inside the body region" check your template describes is structural here, not something you perform.
+- \`greps\` — the mechanical patterns, each with \`planted_proof\`. A pattern with \`status: CLEAN\` was proven against a planted violation and then returned zero on this body: that is a real zero and you may cite it. \`UNPROVEN\` means the pattern proved nothing and decides nothing — check it yourself.
+- \`accept_notes\` — every dated line in the maintainer block, already extracted.
+- \`rule_inventory\` — the numbered-rule count per compendium, moved-stubs excluded. Use it for the completeness count instead of counting by hand.
+- \`signals\` — structural facts (has_prompt_blocks, has_urls, group_beat_markers, …). A rule that can only fire on a shape this file does not have is N/A, and the signal is the reason.
+
+Do not write your own body projection. Do not plant your own test string. Both are done above, and the unnamespaced scratch files judges used to write collided across concurrent files.`
+
+const EVIDENCE_LEAN = `## Verdict discipline
+
+- **A blocking finding owes a harm statement** — what goes wrong in the room or on the page. "Violates §N" with no harm is a citation, not a finding. A rule firing is not the harm arriving. Findings carry FULL evidence, always; nothing below relaxes that.
+- **Non-blocking goes in \`todos\`, and the verdict is PASS_WITH_TODOS.** Do not report REVISE to make an observation visible; REVISE means a gate, and a TODO escalated to a gate costs a maintainer decision that was never owed.
+- **The ledger stays complete; the prose does not.** One row per numbered rule, as always — a missing \`rule_index\` is an unproven coverage hole. But:
+  - a rule the prefill already resolved is ALREADY IN THE FILE. Leave it. Do not re-derive it, do not rewrite its evidence.
+  - a rule you mark **N/A** carries \`evidence: null\` and a \`na_reason\` of at most one clause, ideally naming the signal (\`"no prompt blocks"\`). Not a paragraph.
+  - a rule you mark **PASS on a mechanical check** cites the view's grep result — the pattern and its count — and nothing more.
+  - a rule you mark **PASS on judgement** still quotes the line closest to violating it, with line number, and says why it stays inside. This is where the class earns its keep and it is not abbreviated.
+- **A proven zero is evidence; an unproven one is not.** The view's \`planted_proof\` is what makes a zero citable. Never report a count from a pattern you did not see proven.
+- **No citing a tool you did not run.** If your evidence names a script, command or exit code, you must have RUN it in this session; paste the exact command and its real output. Never report that a checker "confirms" something from inference about what it probably does.
+- **Stay in your class.** Evaluate only the compendiums your template puts in scope. A verdict outside your lane is not extra coverage, it is an unowned claim that outranks nothing and can contradict something. Put it in \`todos\`.`
+
+const EVIDENCE_FULL = `## Verdict discipline
 
 - **A blocking finding owes a harm statement** — what goes wrong in the room or on the page. "Violates §N" with no harm is a citation, not a finding. A rule firing is not the harm arriving.
 - **Non-blocking goes in \`todos\`, and the verdict is PASS_WITH_TODOS.** Do not report REVISE to make an observation visible; REVISE means a gate, and a TODO escalated to a gate costs a maintainer decision that was never owed.
 - **A PASS owes evidence too.** A mechanically-checkable rule marked PASS carries the command result; a judgement rule marked PASS quotes the line closest to violating it, with line number, and says why it stays inside; a rule that does not apply is N/A with a one-clause reason. Nothing is PASS by default. Validate your own greps against a planted test string before trusting a zero.
 - **No citing a tool you did not run.** If your evidence names a script, command or exit code, you must have RUN it in this session; paste the exact command and its real output. Never report that a checker "confirms" something from inference about what it probably does.
 - **Stay in your class.** Evaluate only the compendiums your template puts in scope. A verdict outside your lane is not extra coverage, it is an unowned claim that outranks nothing and can contradict something. Put it in \`todos\`.`
+
+const EVIDENCE = EVIDENCE_MODE === 'full' ? EVIDENCE_FULL : EVIDENCE_LEAN
+
+
+// The prefill resolves the rows that turn on the file's SHAPE rather than its
+// prose — carried from the prior instance only when a shape hash proves the
+// structural inventory is unchanged, and only ever N/A or a proven-grep PASS.
+// A REVISE is never carried: that is a claim about prose, and prose is what
+// moved. No prior instance, an unreadable one, a changed shape or an unproven
+// grep all fall through to the judge.
+function prefillNote(j) {
+  if (!j.slug) return ''
+  return `
+## Rows already resolved — leave them alone
+
+\`\`\`
+node curriculum/evals/scripts/prefill-instance.js ${j.file} ${j.cls}
+\`\`\`
+
+Reports how many rows were carried (N/A, shape-hash verified) and how many are mechanical PASSes from a proven grep. **Those rows are already in your instance file. Do not re-derive them, do not rewrite their evidence, do not delete them** — they are part of the completeness ledger and the auditor counts them.
+
+If it reports \`no prior instance\`, \`shape changed\` or \`predates shape_hash\`, nothing was carried and every row is yours to fill as normal. That is the fail-closed path and it is not an error.
+
+Judge the rows it did NOT resolve. Record \`shape_hash\` at the top level of the instance you write, exactly as the prefill reports it — without it the next run cannot carry anything forward and pays this cost again.
+`
+}
 
 function judgePrompt(j) {
   const comps = (COMPENDIA[j.cls] || []).map(c => `${MEM}/${c}.md`).join('\n  - ')
@@ -149,6 +221,9 @@ Judges cite rule numbers and adjudicate boundary cases, so the \`_index/\` leads
 ## The read view
 
 \`node scripts/expand-md.js ${j.file}\` gives the student's view ({{prompt:}} / {{figure:}} expanded). Judge that; cite line numbers against the RAW source.
+
+${VIEW}
+${PREFILL ? prefillNote(j) : ''}
 ${diff}${drift}
 ## Before filing anything
 

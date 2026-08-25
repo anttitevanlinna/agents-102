@@ -1,6 +1,6 @@
 # Codify the rules, place the file
 
-**Time:** 15 minutes.
+**Time:** 20 minutes.
 
 **What you do:** surface task-shaping rules from the session you just ran, then read more off one story ticket.
 
@@ -14,7 +14,7 @@
 
 *8 min*
 
-- The rules are already in the session, unwritten; codifying them is the work. Each decision in the plan read carries indirect information about the rules you already work by.
+- The rules are already in the session, unwritten; codifying them is the work.
 - The agent reads the scrollback; you react to what it proposes. The scrollback is the right source here: the question is how you worked, not what is on disk.
 
 Ask Claude for the rules.
@@ -77,6 +77,38 @@ Ask Claude what this file could drive later.
 - A shape you could use has a trigger and a place for your file in the loop. If Claude offers only one, ask for two more.
 - Want the machinery? Ask about GitHub Actions, the Claude Code action, and Routines by name.
 
+## Phase 4: Save the rule if it earned itself
+
+*3 min*
+
+Ask Claude whether these rules are auto-loaded into each session.
+
+{{prompt:push-back-on-the-plan-4}}
+
+If a branch from the second-pass read sharpened how plans get made in this codebase, ask Claude to integrate that one branch into your personal `./CLAUDE.local.md`. If no branch changed how you'd read the next plan, ask Claude to say so and stop.
+
+{{prompt:ae101-m2-integrate-branch}}
+
+> This prompt is fair to read as replacing the file with only this rule, which would nuke the old rules. After it runs, ask Claude to confirm it added the rule and kept the old ones rather than overwrote `./CLAUDE.local.md`. Precise prompting is harder than it looks. If it did overwrite, the old rules are still in this session's scrollback; ask Claude to restore them.
+
+> Claude may reframe the session into a smart-sounding general rule. If the saved rule could apply to any codebase, ask for one specific to this session.
+
+Feel free to jump direct at the diff in `./CLAUDE.local.md`; Claude's preamble is optional reading.
+
+## Phase 5: Leave the repo tidier than you found it
+
+*2 min*
+
+The Boy Scout rule: leave the campground tidier than you found it. A rule in your file is one way to compound a session. Anything the plan tripped on is another, and it fixes things for everyone with nothing loaded.
+
+- **Planning gaps.** A file the agent didn't know about, a convention it guessed. Write it down where the next planner will read it: the README, an ADR, the module's own doc.
+- **Conflicting information.** Two docs that disagree, a comment that contradicts the code, an ADR nobody retired. Pick the truth and delete the rest.
+- **Other context.** A missing test, a misleading name, a script with no usage line. The agent will trip on it again; so will a colleague.
+
+Ask Claude whether it met any of these.
+
+{{prompt:ae101-m2-tidier}}
+
 <!-- maintainer -->
 
 **No connector pointer here — it belongs to M1 (2026-08-14, Antti).** `close-the-ticket` carries the single navigational pointer to `reference/mcp-and-connectors.md`, and `getting-going.md`'s maintainer block states that one-pointer contract. The paste fallback stays, because the student needs it at the moment the tracker is unreachable; the reach-for-next-time link was the duplicate. Do not re-add it.
@@ -97,13 +129,21 @@ Ask Claude what this file could drive later.
 
 **Emphasis budget (`check_slides.md §9`):** no bolded handles in the body; all bullet leads plain. Widget chrome (`**Time:**`, `**What you do:**`, `**What you build:**`, `**The point:**`, `**What happened:**`) untouched, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. (The 2026-08-12 story-ticket pass added a slide and two backing claims, both logged below; the no-claims-added clause above described the earlier slides-only pass and is kept as its record, not as a current description of the file.)
 
+**Lean-intro trim (2026-08-25, Antti-approved):** Phase 1's *"Each decision in the plan read carries indirect information about the rules you already work by"* cut — restated the bullet's first sentence at lower proof. Do not re-elaborate the lead-in.
+
+**Phase 4's two `{{prompt:}}` fences are a short soft-compound close ritual, not a buried exercise.** Ask whether the rules auto-load, then integrate one branch or say so and stop. (The old §52a acceptance note defended these fences while they lived in module prose; as exercise phases the tell no longer fires.)
+
+**Phase 5 Boy Scout slide (Antti-directed 2026-08-23; moved here 2026-08-25).** Sits after the save-the-rule phase because compounding had drifted toward rules; the push-back exercise just produced the evidence that the repo's own context was the defect. Three bullets (planning gaps, conflicting information, other context) are Antti's; the slide names the fix at source as the compound that loads nothing. `ae101-m2-tidier` is naming-only with the "or none" hatch, reads the session, no file dependency. Fixing is the student's call, in-session or never; do not add a fix-it prompt or a done-means criterion. The Boy Scout rule is used as a folk idiom, unattributed on purpose; citing Martin's *Clean Code* coinage would owe a stamp for a line that carries no claim.
+
+**Prompt register — `push-back-on-the-plan-4` deliberately short.** The closing question (`are these rules auto-loaded to each session context?`) is intentionally end-of-session-tired-engineer register: lowercase, no end punctuation, single short question. It models the casual ask a real engineer types after a long session, contrasting with the longer earlier prompts. **The question is also deliberately answerable — a small introspection beat plus mild repetition (Antti 2026-08-13).** The load map on this file's *Where rules can live* slide states the answer; the value here is the agent introspecting its own loading, and the repeat is the retention dose (`check_pedagogy.md` §9b). Do not flag the table, or any earlier auto-load statement, as spoiling this question — the table states what loads, the prompt makes the agent report what it actually loaded, and hearing the same fact twice from two sources a few screens apart is the dose working (Antti 2026-08-14: "repetition is fine"). Do not re-raise this at any distance; audit-class judges flagging it as a stylistic outlier should treat as accepted-by-design. The note belongs to whichever file fences the prompt — since 2026-08-25 that is this file's Phase 4.
+
 **Quality:** compendium-audited 2026-08-24 (writing@1abb84c6 story@1abb84c6 technical@1abb84c6 behavior@ba5ccf5 pedagogy@1abb84c6 strategy@1c765f2 slides@1abb84c6)
 - judges @1abb84c6: writing PASS (drift-recheck), story PASS (drift-recheck), technical PASS (drift-recheck), behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS (drift-recheck)
 - cohorts: none yet
 
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply (P1 surface, story-ticket read) + Evaluate (P1 reject/rewrite) + Understand (P3 read shapes)
-- **Placement:** inside the wider M2 slot — `node scripts/calculate-time.js plan-mode-done-right` for the current map; this file owns only its own `**Time:**` line. Sits AFTER `push-back-on-the-plan` and BEFORE the optional plan-reading-rule soft-compound. Two compound moves now close M2 with different scopes: this exercise captures task-shaping rules to a free-choice `.md`; the soft-compound integrates one plan-reading branch into `CLAUDE.local.md` if one earned itself.
+- **Placement:** inside the wider M2 slot — `node scripts/calculate-time.js plan-mode-done-right` for the current map; this file owns only its own `**Time:**` line. Sits AFTER `push-back-on-the-plan`; the closing lectures follow directly. Two compound moves close the exercise with different scopes: Phases 1–2 capture task-shaping rules to a free-choice `.md`; Phase 4's soft-compound integrates one plan-reading branch into `CLAUDE.local.md` if one earned itself. Phases 4–5 moved in from the module body 2026-08-25 (Antti-directed): the close-out rides the exercise, and the module file carries includes only.
 - **Mood target:** extension of grounded competence into capture-and-name. Student leaves: *"the rule sits in MY file at MY location; I see how this could automate; I'm not building it today — and that's the move."*
 - **Strategic beat:** *capture-your-world* (theme #5) made concrete via free-choice location; *non-agentic-default* (theme #6) made concrete via deferred application. The M2 discipline ("approve, don't execute") applied one layer up ("save, don't automate").
 - **Non-front-running checks:**

@@ -18,7 +18,6 @@ The same session that ran the audit. It already holds the scoped task.
 
 *5 min*
 
-- Your rules files, memory, ADRs and skills are what they are, and the agent runs against them as they stand. What needs sharpening shows up when you read what comes back.
 - Claude Code writes every session's scrollback to disk, live. The next session reads this one from that file.
 
 Ask Claude where the record of this session lives.
@@ -84,6 +83,8 @@ If Claude stalls, ask it to keep going. The nudge reads as encouragement and lan
 - **Capability verified:** laptop-sleep freezes the session (not resumable on wake); Ctrl+C mid-tool-call can corrupt the `.jsonl`; no per-session token budget. Details in `reference/claude-code-for-engineers.md § 17`.
 
 **Placement:** the last exercise of M4. The two closing lectures sit below it in the module file and run while the task is already going: `what-keeps-a-long-running-session-going` rides the live session, then `ironies-of-automation` closes the module (moved there 2026-08-25). This file owns only what the student does.
+
+**Lean-intro trim (2026-08-25, Antti-approved):** Phase 1's stance bullet (*"Your rules files, memory, ADRs and skills are what they are… shows up when you read what comes back."*) cut — `test-and-learn` installed that stance a lecture earlier; this slide's job is the two markers. Do not restore.
 
 **Quality:** compendium-audited 2026-08-24 (writing@1abb84c6 story@1abb84c6 technical@1abb84c6 behavior@61e7fc9 pedagogy@1abb84c6 strategy@19249df slides@1abb84c6)
 - judges @1abb84c6: writing PASS (drift-recheck), story PASS (drift-recheck), technical PASS (drift-recheck), behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS (drift-recheck)

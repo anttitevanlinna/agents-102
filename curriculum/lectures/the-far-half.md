@@ -4,7 +4,6 @@
 
 {{figure:map-engine-m4-open}}
 
-- The near half is behind you. Intent, Context, Work: how to aim the work, what the agent needs to know, how a loop runs and compounds. Every move so far lived there.
 - The map lights its other side now. Verification, Absorption, Outcome. The rest of the training goes there, starting with the session you send off in this module.
 
 ## Long-running work adds three new concerns
@@ -39,6 +38,8 @@
 
 - Family B judged 2026-07-03: B-star durability PASS — container reads whole voice-absent; spine-anchoring exemplary (every far-half phase names its map slot + governor-verb) and worldview-fit textbook recognition-before-naming ("you feel where it bites first"; backpressure is named in the post-launch M4 closer, then built and calibrated in M5 and composed in M6).
 
+**Slide-1 recap bullet cut (2026-08-25, Antti-approved):** *"The near half is behind you. Intent, Context, Work… Every move so far lived there."* — restated `the-whole-map`'s closing slide; the veiled-near-half figure carries the same content visually. The claim row went with it. Do not restore; the figure plus the lit-side bullet are the beat.
+
 **Quality:** compendium-audited 2026-08-24 (writing@1abb84c6 story@1abb84c6 technical@1abb84c6 behavior@1c765f2 pedagogy@1abb84c6 strategy@1c765f2 slides@1abb84c6)
 - judges @1abb84c6: writing PASS (drift-recheck), story PASS (drift-recheck), technical PASS (drift-recheck), behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS (drift-recheck)
 
@@ -48,7 +49,6 @@ Format → `curriculum/backing-format.md`. Figure provenance: derived from `the-
 
 **Claims**
 - `soil-line` · vision · "act under uncertainty · competence sets the ceiling · cross personal → team" ← none-owed
-- `near-half-behind-you` · vision · "The near half is behind you. Intent, Context, Work" ← none-owed
 - `long-running-is-not-more-of-the-same` · vision · "When the agent runs for an hour without you watching, that quick feedback goes quiet." ← none-owed
 - `verification-tests-result` · detail · "**Verification** tells you whether the result is any good. Tests, checks, reads, judges: everything that pushes back on the work before you accept it." ← osmani-outer-loop
 - `verification-becomes-a-job` · vision · "On a long session, this stops being a glance and becomes a job." ← none-owed

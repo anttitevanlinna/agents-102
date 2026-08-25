@@ -33,34 +33,6 @@ After this module, you will be able to:
 
 [Exercise: Extract the task-shaping rule](exercises/extract-the-task-shaping-rule.md)
 
-## Save the rule if it earned itself
-
-Ask Claude whether these rules are auto-loaded into each session.
-
-{{prompt:push-back-on-the-plan-4}}
-
-If a branch from the second-pass read sharpened how plans get made in this codebase, ask Claude to integrate that one branch into your personal `./CLAUDE.local.md`. If no branch changed how you'd read the next plan, ask Claude to say so and stop.
-
-{{prompt:ae101-m2-integrate-branch}}
-
-> This prompt is fair to read as replacing the file with only this rule, which would nuke the old rules. After it runs, ask Claude to confirm it added the rule and kept the old ones rather than overwrote `./CLAUDE.local.md`. Precise prompting is harder than it looks. If it did overwrite, the old rules are still in this session's scrollback; ask Claude to restore them.
-
-> Claude may reframe the session into a smart-sounding general rule. If the saved rule could apply to any codebase, ask for one specific to this session.
-
-Feel free to jump direct at the diff in `./CLAUDE.local.md`; Claude's preamble is optional reading.
-
-## Leave the repo tidier than you found it
-
-The Boy Scout rule: leave the campground tidier than you found it. A rule in your file is one way to compound a session. Anything the plan tripped on is another, and it fixes things for everyone with nothing loaded.
-
-- **Planning gaps.** A file the agent didn't know about, a convention it guessed. Write it down where the next planner will read it: the README, an ADR, the module's own doc.
-- **Conflicting information.** Two docs that disagree, a comment that contradicts the code, an ADR nobody retired. Pick the truth and delete the rest.
-- **Other context.** A missing test, a misleading name, a script with no usage line. The agent will trip on it again; so will a colleague.
-
-Ask Claude whether it met any of these.
-
-{{prompt:ae101-m2-tidier}}
-
 [Lecture: Where the rule could live](lectures/where-the-rule-could-live.md)
 
 [Lecture: How instructions grow](lectures/how-instructions-grow.md)
@@ -122,17 +94,13 @@ The next sitting opens on that task and spends most of its time walking your sys
 
 **The six-module `## Next` branch names M3's task and carries NO bring-or-scramble stakes line. That asymmetry is correct (Antti, 2026-08-22).** The other module gaps carry one because arriving empty costs room time: no task picked and you pick while the exercise runs; no session and there is nothing to diagnose. M3 does not require the plan file. Its `## Prework` names the *feature* as the artefact and accepts a backlog item, a Jira or Linear ticket, or a design doc instead, so nothing is lost by arriving without one and a stakes line here would have to invent a consequence — which `check_writing.md` §21 rules out. Judges reading for pattern completeness should not re-raise. Do not justify it with *"the file is in the student's repo"*: it is not, per the artefact-contract row above.
 
-**The two `{{prompt:}}` fences in `## Save the rule if it earned itself` are accepted, not an unextracted exercise.** `check_pedagogy.md` §52a treats a fence in module prose as a greppable tell, and this section matches it. It is not what the rule was built from: §52a's precedent is a four-prompt section with a Session widget, large enough that the deck gives it one unbreakable slide. This is a short soft-compound close ritual — ask whether the rules auto-load, then integrate one branch or say so and stop. Extracting it would bill a closing beat as its own file and cut a deck slide where the module wants to end. Accepted-by-design 2026-08-13 (Antti-directed): do not extract, do not re-raise.
+**The soft-compound and Boy Scout closes moved into `exercises/extract-the-task-shaping-rule.md` as Phases 4–5 (2026-08-25, Antti-directed).** The module body carries includes only between the exercises and the closing lectures now. Their design notes (fence acceptance, Boy Scout attribution call, `push-back-on-the-plan-4` register) travelled with the prompts to that file's maintainer block.
 
 **M2 issues no homework.** Do not add a `## Homework` section. The ticket read is no longer M1's alone: `extract-the-task-shaping-rule` runs the same move on a **story** ticket, where M1's `close-the-ticket` runs it on a **bug** ticket (2026-08-12, maintainer-directed). The split is by ticket kind, and the M2 instance is scoped to one short slide inside the existing exercise — not a second exercise, and not a homework beat.
 
 **The 10% line in `## Key Concepts` carries M1's attested prior, in M1's register.** `orient-and-introspect.md` § *Read the self-report, then spot-check it* holds it as *"about 10%… could be more or less"*, a loosely-held search budget, maintainer-attested there. This bullet applies the same prior to a plan instead of to the agent's read of a repo, and keeps the hedge plus the instruction register (*assume, then go find which part*) rather than stating a floor. The distinction is load-bearing: a floor is a claim about the world and gets quoted back at you; the prior is an instruction to the reader. `check_slides.md` §7's number-plus-retraction sub-item does not fire here (no retraction attached), and the attested double-hedge stays M1's alone. Do not harden this to *"at least"*, and do not add a retraction clause.
 
 **Line 46's recovery sentence stays in body — maintainer call 2026-08-02.** *"If it did overwrite, the old rules are still in this session's scrollback; ask Claude to restore them."* This is `check_student_facing.md` §5's own boundary case, not a violation of it: the failure is plausible (the prompt is fair to misread as a replace), the rescue is non-obvious (that the old rules survive in scrollback is not something a student would guess), and it is one tight line of state-plus-one-move. It is also **time-critical** — the scrollback dies with the session, so a student who finds the overwrite after closing has lost the rules for good. Body is the only surface that reaches them while the rescue still works. A writing judge has flagged this once and the orchestrator then proposed routing it below the maintainer fence, which §5 explicitly calls deletion. Do not cut it, and do not "move it to the trainer" — the fence is stripped from every rendered surface.
-
-**Boy Scout slide (Antti-directed 2026-08-23).** `## Leave the repo tidier than you found it` sits after the save-the-rule asides because compounding had drifted toward rules; the push-back exercise just produced the evidence that the repo's own context was the defect. Three bullets (planning gaps, conflicting information, other context) are Antti's; the slide names the fix at source as the compound that loads nothing. `ae101-m2-tidier` is naming-only with the "or none" hatch, reads the session, no file dependency. Fixing is the student's call, in-session or never; do not add a fix-it prompt or a done-means criterion. The Boy Scout rule is used as a folk idiom, unattributed on purpose; citing Martin's *Clean Code* coinage would owe a stamp for a line that carries no claim.
-
-**Prompt register — `push-back-on-the-plan-4` deliberately short.** The closing question (`are these rules auto-loaded to each session context?`) is intentionally end-of-session-tired-engineer register: lowercase, no end punctuation, single short question. It models the casual ask a real engineer types after a long session, contrasting with the longer earlier prompts. **The question is also deliberately answerable — a small introspection beat plus mild repetition (Antti 2026-08-13).** The load map on `extract-the-task-shaping-rule`'s *Where rules can live* slide states the answer; the value here is the agent introspecting its own loading, and the repeat is the retention dose (`check_pedagogy.md` §9b). Do not flag the table, or any earlier auto-load statement, as spoiling this question. **Distance shrank 2026-08-14 and the ask stays unchanged (Antti: "repetition is fine").** The soft-compound moved up to sit directly after that exercise, so the table is now the previous screen rather than a lecture away. Adjacency is not the objection a judge will think it is: the table states what loads, the prompt makes the agent report what it actually loaded, and hearing the same fact twice from two different sources one screen apart is the dose working, not a redundancy. Do not re-raise this at any distance. Audit-class judges flagging it as a stylistic outlier should treat as accepted-by-design. The note belongs to whichever file fences the prompt — here, the `push-back-on-the-plan-4` marker in `## Save the rule if it earned itself`, matching the registry's `origin:`. Move it if the prompt moves.
 
 **Source verification — freshness stamps (`source-freshness.sh`; format `curriculum/source-freshness-format.md`).**
 
@@ -153,7 +121,7 @@ This module points at four sources in body and owned a stamp for none of them; t
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply + Analyze + Evaluate (the compare-the-two-reads beat is the Evaluate beat)
 - **Pacing:** Runtime is computed — `node scripts/calculate-time.js plan-mode-done-right`. Trainer demos slowly, room copy-pastes concurrently. Self-study follow-along runs comparably; simple-prompting beats are quick.
-- **Transitions:** connections 10 @start "Connections: the approved-unread plan" · soft-compound 3 @after:extract-the-task-shaping-rule "Save the rule if it earned itself" · tidier 2 @after:extract-the-task-shaping-rule "Leave the repo tidier than you found it" · debrief 7 @after:how-instructions-grow "Debrief" · bridge 5 @end "Bridge"
+- **Transitions:** connections 10 @start "Connections: the approved-unread plan" · debrief 7 @after:how-instructions-grow "Debrief" · bridge 5 @end "Bridge"
 - **No charge on `push-back-on-the-plan`** — rationale in that exercise's block.
 - **Prep timing:** backlog-task surfacing 10 min; optional progression page 5 min; optional Cherny video 30 min; optional multi-session reference 10 min; Module 3 pre-reads 10–15 min (trifecta) + 10 min (agentic loops); optional OWASP scan 20 min. In cuts without M3 the three are replaced by the Module 4 pre-read, da Costa's *Backpressure Is All You Need*, 15 min.
 - **Mood target:** grounded competence — *"I can feel when a plan is good before approving it, and I know the move is two reads, not one."* Watch for: mood drift toward *"the second read did everything; my push-back was pointless."* Diagnostic: student at P5 reports the second-pass read caught the interesting stuff. Fix: trainer surfaces the contrast — *"your push-back caught the soft item the second read re-softened; your voice-of-experience beats the agent's breadth on that axis."*
@@ -200,7 +168,7 @@ This module points at four sources in body and owned a stamp for none of them; t
 | Artefact | Stable identifier | Produced by | Consumed by |
 |---|---|---|---|
 | Task-shaping rule file | Student-picked location. Auto-loaded: `./CLAUDE.local.md` (repo-personal), `~/.claude/CLAUDE.md` (cross-repo), or a rules file under `.claude/rules/` / `~/.claude/rules/`. Not auto-loaded but legal: a notes folder, `~/.claude/memory/<file>.md`, or any other path — read only when a prompt names the path or when an `@import` line inside an auto-loaded `CLAUDE.md` pulls it in. | Exercise 2 (extract-the-task-shaping-rule) — Claude reads M2 scrollback, proposes 3–5 rules, student rewrites or rejects at least one. If the picked path doesn't auto-load, Claude should also propose the `@import` wire-up so the rule fires next session. | M4 walk-and-fill Phase 1 (audit subagent reads `CLAUDE.md` / `CLAUDE.local.md` / `observations/` repo-level / ADRs / skills; user-level `~/.claude/memory/` is silent unless `@import`-wired from `~/.claude/CLAUDE.md`). Any future task-shaping conversation in the same loading scope. |
-| Personal rules update (optional, opportunistic) | `./CLAUDE.local.md` (repo-personal, gitignored) | "Save the rule if it earned itself" prompt at module close — Claude integrates one branch from the second-pass read, only if one earned itself | Every future session in this repo (auto-loads at session-cold start); M3 sharpens further with security/skill-authoring rules |
+| Personal rules update (optional, opportunistic) | `./CLAUDE.local.md` (repo-personal, gitignored) | "Save the rule if it earned itself" prompt — Phase 4 of `exercises/extract-the-task-shaping-rule.md`; Claude integrates one branch from the second-pass read, only if one earned itself | Every future session in this repo (auto-loads at session-cold start); M3 sharpens further with security/skill-authoring rules |
 | Plan file (from plan mode) | `~/.claude/plans/<slug>-<adjective>-<noun>.md` — fixed directory, generated filename. User-keyed and laptop-local, so it never rides the branch. Plan mode displays the path inline when it writes; the student notes it at module close for M3. The curriculum prescribes no location, which is the student-pick part — the directory itself is Claude Code's, not a choice anyone makes. | Exercise Phase 3 (`push-back-on-the-plan`) — plan mode writes the file when the student approves the plan after the push-back loop. | M3 prework / Ex1 input (earn-the-trust.md L12: "The plan file Claude Code wrote during plan mode is what M3 reads — you noted the path at M2 close."). |
 
 **Per-phase failure mode + escape hatch** (per `check_pedagogy.md` rule 47 — every phase shipping a forcing function names its dominant failure and one recovery move):

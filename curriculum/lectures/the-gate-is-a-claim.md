@@ -37,8 +37,6 @@ Say the re-send comes back green. The verifier you built reads the work and pass
 - React on recurrence. The same failure shape returning is signal. That is when the rule changes, the gate refreshes, or the skill ships.
 - Watch the regression-to-the-mean trap. After a bad session, the next session is usually better with no change at all. A tweak made right after a failure looks effective even when it did nothing.
 
-A gate is one more claim in the system. Build it, then hold it to the same bar it holds the work to.
-
 ## The delegation frontier
 <!--tier:2-->
 
@@ -130,6 +128,8 @@ OODA
 - last-run: 2026-08-01
 
 <!-- /backing -->
+
+**Closing aphorism cut (2026-08-25, Antti-approved):** *"A gate is one more claim in the system. Build it, then hold it to the same bar it holds the work to."* — hanging line restating the H1 (`check_slides.md` §16 class c). The deck now runs straight from the tampering slide into the delegation frontier. Do not restore.
 
 **Quality:** compendium-audited 2026-08-24 (writing@a1ddfae2 story@a1ddfae2 technical@a1ddfae2 behavior@1c765f2 pedagogy@1abb84c6 strategy@1c765f2 slides@a1ddfae2)
 - judges @1abb84c6: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS

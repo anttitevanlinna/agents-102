@@ -12,7 +12,7 @@
 
 ## Write the failing test and fix the root cause
 
-- **Tests-first, root-cause-driven.** The failing test is what makes the fix checkable. Without it, the fix is a guess that happens to compile. Write the test first, watch it fail, then fix the cause, not the symptom.
+- **Tests-first, root-cause-driven.** Write the test first, watch it fail, then fix the cause, not the symptom.
 - No plan mode here. On a trivial bug, plan mode is overhead.
 
 > **Small fix, small test.** A trivial bug wants one failing test and a tight fix, not a suite and a refactor. If Claude starts spinning up plenty of tests, or the change creeps past the bug, that's sprawl. Steer it back to one test that proves the bug and the smallest fix that passes it.
@@ -56,6 +56,8 @@ Drop your bug after the colon.
 
 **Declaration slide (2026-08-07, Antti-directed):** *There is always a next plausible answer* is a deliberate claim-shaped heading — the one non-imperative heading in this file, and that is the point: a claim among phase labels is what makes a declaration land inside an exercise. Do not flatten to a command verb; `check_student_facing.md` §17's verb rule covers do-sections, and this section names the machine-nature the interrogation just exhibited rather than asking for an action. Header truth guard: the body says *try to find*, never *finds* — do not strengthen. No bold; the file keeps its single handle. Second face of the produce-something prior in this file, and the pair is deliberate: the diff bullet says the agent *yields* under push (so its agreement settles nothing), this section says it always *produces* another plausible answer under digging. Same machine-nature, two different student moves, neither a restatement of the other — do not collapse them. Far-half naming is `reading-the-return.md` slide 1 (*The closing summary is not the artefact*), which reuses the *plausible* vocabulary planted here. Frame is the maintainer's own, near-verbatim.
 
+**Lean-intro trim (2026-08-25, Antti-approved):** the TDD rationale (*"The failing test is what makes the fix checkable. Without it, the fix is a guess that happens to compile."*) cut from the opening bullet — explaining tests-first to engineers. The imperative alone carries the beat; do not restore the why.
+
 **Quality:** compendium-audited 2026-08-24 (writing@1abb84c6 story@1abb84c6 technical@1abb84c6 behavior@1480362 pedagogy@1abb84c6 strategy@1480362 slides@1abb84c6)
 - judges @1abb84c6: writing PASS (drift-recheck), story PASS (drift-recheck), technical PASS (drift-recheck), behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS (drift-recheck)
 **Meta (trainer):**
@@ -67,8 +69,7 @@ Drop your bug after the colon.
 <!-- backing -->
 
 Claims
-- `tests-first-root-cause-driven-is-one-discipline` · vision · "**Tests-first, root-cause-driven.** The failing test is what makes the fix checkable." ← none-owed
-- `without-a-test-the-fix-is-a-guess` · vision · "Without it, the fix is a guess that happens to compile." ← none-owed
+- `tests-first-root-cause-driven-is-one-discipline` · vision · "**Tests-first, root-cause-driven.** Write the test first, watch it fail, then fix the cause, not the symptom." ← none-owed
 - `no-plan-mode-on-a-trivial-bug` · vision · "On a trivial bug, plan mode is overhead." ← none-owed
 - `agent-runs-the-loop-you-read-the-result` · vision · "The agent runs the loop; you read the result." ← none-owed
 - `your-own-wording-matters` · vision · "No pre-made prompt for the pushback." ← none-owed

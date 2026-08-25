@@ -17,7 +17,7 @@
 - M4 → M5 — Pass. M5 rescues groundedness while preserving M3’s doubt and M4’s residual risk (`output-quality.md:23-29`).
 - M5 → M6 — Pass. M5 now names the generation tactic as absorbing judge feedback while the scoring yardstick stays fixed (`output-quality.md:70,79`). M6 makes the same separation explicit (`evaluations.md:4,45,62`).
 - M6 → M7 — Pass. M7 inherits the fixed judge and sharpened generation tactic; the optional references are no longer framed as M7 prework (`evaluations.md:71-75`, `personal-to-team.md:22-28`).
-- M7 → M8 — Pass. M8 consumes the tested assumption, named person, and `module-7/monday.md` evidence (`personal-to-team.md:69-75`, `agents-building-agents.md:19-23`).
+- M7 → M8 — Pass. M8 consumes the tested assumption, named person, and `~/Documents/agents-101/module-7/monday.md` evidence (`personal-to-team.md:69-75`, `agents-building-agents.md:19-23`).
 
 ## Vocabulary / jargon drift
 

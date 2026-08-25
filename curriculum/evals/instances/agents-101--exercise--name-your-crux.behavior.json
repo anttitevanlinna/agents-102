@@ -10,7 +10,7 @@
     {
       "prompt_index": 1,
       "prompt_lead": "Look at my challenge memory. Find the load-bearing obstacle: the one thing that,",
-      "verdict": "PASS",
+      "verdict": "TODO",
       "load_bearing": true,
       "risks_fired": [
         {
@@ -19,7 +19,8 @@
           "evidence": "Look at my challenge memory. Find the load-bearing obstacle ... One sentence. Save it ... show me before saving.",
           "fix_hint": "Optional first-response cue; the single med risk is nonblocking under the catalog verdict rule."
         }
-      ]
+      ],
+      "prompt_sha": "5528494091b90fd03c9599e732e30ed0e8b71130bd38f0b8bb91e852f7bf47ce"
     },
     {
       "prompt_index": 2,
@@ -39,47 +40,112 @@
           "evidence": "Something like \"what's the right next move to unblock the crux, over the next 90 days?\" is a decent default.",
           "fix_hint": "Keep the example visibly subordinate to deriving the decision from the student's crux; nearby iteration prose already supplies pushback."
         }
-      ]
+      ],
+      "prompt_sha": "2590a6da78502b133c9372f71b7ca38586e4bb952d1b28e8c1914dbacf3f3d15"
     }
   ],
   "blocking_findings_count": 0,
-  "todos_count": 1,
-  "rules_evaluated": {
-    "note": "Completeness ledger covers all 15 Class B catalog patterns in simulation-behavior.md for each expanded prompt. check_prompts.md and check_pedagogy.md were read as adjacent-rule context; no technical or pedagogy-only rule is promoted into this behavior verdict.",
-    "prompt_1": [
-      {"pattern_id":"file-preservation-gap","status":"not-applicable","reason":"First-time write to ./crux.md; no existing content is being updated."},
-      {"pattern_id":"reading-burden","status":"not-applicable","reason":"Show-before-save and iteration ask for student judgment, not manual proofreading of output."},
-      {"pattern_id":"niceness-tax","status":"not-fired","reason":"The prompt names mechanism-level tests and the body explicitly tells the student to push back on a restatement."},
-      {"pattern_id":"question-dump","status":"not-applicable","reason":"No sequence of questions is posed to the student."},
-      {"pattern_id":"overwrite-anxiety","status":"not-applicable","reason":"The prompt creates ./crux.md and names the destination; it does not ask to add to an existing file."},
-      {"pattern_id":"preamble-before-action","status":"fired","confidence":"med","reason":"Several chained reads, tests, and a show-before-save hand-off invite a short narration before the proposal; one med risk is below REVISE threshold."},
-      {"pattern_id":"append-vs-integrate","status":"not-applicable","reason":"No new context is being integrated into an existing document."},
-      {"pattern_id":"plan-mode-preamble-bloat","status":"not-applicable","reason":"No plan mode or plan permission is invoked."},
-      {"pattern_id":"citation-gap-asymmetry","status":"not-applicable","reason":"No citation-backed factual output is requested."},
-      {"pattern_id":"self-report-inflation","status":"not-applicable","reason":"Claude proposes a crux from named evidence; it is not asked to grade its own work."},
-      {"pattern_id":"default-acceptance","status":"not-applicable","reason":"No substantive default is offered; the examples are tests for what a crux is."},
-      {"pattern_id":"plan-mode-approval-inflation","status":"not-applicable","reason":"No plan is produced for approval."},
-      {"pattern_id":"source-type-blindness","status":"not-applicable","reason":"The prompt reads the student's existing memory, not an ingestion set needing source classification."},
-      {"pattern_id":"citation-cargo-cult","status":"not-applicable","reason":"No citations are requested."},
-      {"pattern_id":"self-audit-charity","status":"not-applicable","reason":"Claude is not asked to self-critique a completed artifact."}
-    ],
-    "prompt_2": [
-      {"pattern_id":"file-preservation-gap","status":"not-applicable","reason":"The prompt explicitly appends a Question section and says not to overwrite the crux."},
-      {"pattern_id":"reading-burden","status":"not-applicable","reason":"The student is asked to iterate on a decision, not manually proofread Claude's output."},
-      {"pattern_id":"niceness-tax","status":"not-applicable","reason":"The task demands a sharp real call and the body tells the student to iterate when the result is a topic restatement."},
-      {"pattern_id":"question-dump","status":"not-applicable","reason":"The prompt asks Claude to produce one decision question; it does not ask Claude to interview the student."},
-      {"pattern_id":"overwrite-anxiety","status":"not-applicable","reason":"Append destination and preservation boundary are explicit."},
-      {"pattern_id":"preamble-before-action","status":"fired","confidence":"med","reason":"Read, infer, append, and show-before-save steps invite explanatory narration before the decision sentence; one med risk is below REVISE threshold."},
-      {"pattern_id":"append-vs-integrate","status":"not-applicable","reason":"The intended append operation is explicitly named, not ambiguous."},
-      {"pattern_id":"plan-mode-preamble-bloat","status":"not-applicable","reason":"No plan mode or plan permission is invoked."},
-      {"pattern_id":"citation-gap-asymmetry","status":"not-applicable","reason":"No citation-backed factual output is requested."},
-      {"pattern_id":"self-report-inflation","status":"not-applicable","reason":"Claude is asked to derive a question from the saved crux, not to self-grade."},
-      {"pattern_id":"default-acceptance","status":"fired","confidence":"low","reason":"The 90-day next-move example is labelled a decent default and can anchor a generic question, although nearby prose requires iteration toward a real call."},
-      {"pattern_id":"plan-mode-approval-inflation","status":"not-applicable","reason":"No plan is produced for approval."},
-      {"pattern_id":"source-type-blindness","status":"not-applicable","reason":"The prompt reads one local artifact; no source ingestion or source-type classification is requested."},
-      {"pattern_id":"citation-cargo-cult","status":"not-applicable","reason":"No citations are requested."},
-      {"pattern_id":"self-audit-charity","status":"not-applicable","reason":"Claude is not asked to audit its own prior work."}
-    ]
-  },
-  "evidence": "Ran `node scripts/expand-md.js curriculum/exercises/name-your-crux.md` and scanned the expanded body above the maintainer cut: 2 Prompt fences. Ran `shasum -a 256 curriculum/exercises/name-your-crux.md` -> 77c95ea0c8fcdffbb693bb6e140f73fda2b8876f706d6415c30ca4dfc09fecc6; expanded content SHA -> 6c5b3203b52925fa3a9ab36a91fd6973b5fd13c622fcb919e018999229de1d80; prompt SHAs -> 5528494091b90fd03c9599e732e30ed0e8b71130bd38f0b8bb91e852f7bf47ce and 2590a6da78502b133c9372f71b7ca38586e4bb952d1b28e8c1914dbacf3f3d15. Re-derived all 15 catalog judgments for both prompts. No high-confidence risk and no prompt has two med-confidence risks; blocking_findings_count=0. Prompt 2 has one low-confidence risk, so todos_count=1. Top-level verdict PASS; REVISE is reserved for actual blocking harm."
+  "todos_count": 2,
+  "evidence": "Full Luna re-fire at 2026-08-25T17:11:39.312Z: ran node scripts/expand-md.js curriculum/exercises/name-your-crux.md; raw source SHA-256 fa325653d15ab467a83c9e9161489046b39d43846f541749b1d54218ade2b1d8; expanded content SHA-256 c13cf8e1f3a1ff9a632b5e16c4f85cd90fc1a1c54ceb3bd03776791bed07fa8e; recomputed 2 fenced prompt SHA-256 values from the expanded view; evaluated every prompt against all 15 catalog patterns and the documented carve-outs. No high-confidence load-bearing risk and no prompt with two or more medium-confidence load-bearing risks; top-level verdict PASS.",
+  "content_sha": "c13cf8e1f3a1ff9a632b5e16c4f85cd90fc1a1c54ceb3bd03776791bed07fa8e",
+  "catalog_coverage": [
+    {
+      "pattern_id": "file-preservation-gap",
+      "status": "not_fired",
+      "prompt_indices": [],
+      "why": "No prompt may update an existing file without a stated preserve-versus-replace boundary."
+    },
+    {
+      "pattern_id": "reading-burden",
+      "status": "not_fired",
+      "prompt_indices": [],
+      "why": "The student is not assigned manual proofreading as the correctness check."
+    },
+    {
+      "pattern_id": "niceness-tax",
+      "status": "not_fired",
+      "prompt_indices": [],
+      "why": "No regeneration prompt asks Claude to soften an edge or stance without pinning it."
+    },
+    {
+      "pattern_id": "question-dump",
+      "status": "not_fired",
+      "prompt_indices": [],
+      "why": "Question sequences either have a one-at-a-time wait boundary or do not interview the student."
+    },
+    {
+      "pattern_id": "overwrite-anxiety",
+      "status": "not_fired",
+      "prompt_indices": [],
+      "why": "Fresh writes or explicit in-place/regeneration intent remove the modal collision pause where applicable."
+    },
+    {
+      "pattern_id": "preamble-before-action",
+      "status": "fired",
+      "confidence": "med",
+      "prompt_indices": [
+        1,
+        2
+      ],
+      "why": "The prompt is short or contains an explicit first-action/no-preamble cue unless the recorded medium invitation remains. Evidence is recorded for prompt indexes 1, 2 in the per-prompt findings."
+    },
+    {
+      "pattern_id": "append-vs-integrate",
+      "status": "not_fired",
+      "prompt_indices": [],
+      "why": "Add/regenerate instructions name whether context is appended or integrated where that choice exists."
+    },
+    {
+      "pattern_id": "plan-mode-preamble-bloat",
+      "status": "not_fired",
+      "prompt_indices": [],
+      "why": "No prompt invokes plan mode or asks for an oversized plan approval."
+    },
+    {
+      "pattern_id": "citation-gap-asymmetry",
+      "status": "not_fired",
+      "prompt_indices": [],
+      "why": "No prompt requests citation-bearing factual claims with an uneven cite-or-flag scope."
+    },
+    {
+      "pattern_id": "self-report-inflation",
+      "status": "not_fired",
+      "prompt_indices": [],
+      "why": "Artifact-level evidence or an independent check prevents a Claude summary from being the acceptance check where applicable."
+    },
+    {
+      "pattern_id": "default-acceptance",
+      "status": "fired",
+      "confidence": "low",
+      "prompt_indices": [
+        2
+      ],
+      "why": "No offered default is the sole path to a student-owned judgment, except where the recorded example remains visibly subordinate. Evidence is recorded for prompt index 2 in the per-prompt findings."
+    },
+    {
+      "pattern_id": "plan-mode-approval-inflation",
+      "status": "not_fired",
+      "prompt_indices": [],
+      "why": "No plan-mode approval artifact is requested."
+    },
+    {
+      "pattern_id": "source-type-blindness",
+      "status": "not_fired",
+      "prompt_indices": [],
+      "why": "No heterogeneous source-ingestion prompt lacks an extraction-depth or source-type check."
+    },
+    {
+      "pattern_id": "citation-cargo-cult",
+      "status": "not_fired",
+      "prompt_indices": [],
+      "why": "No prompt requests citations without requiring claim-level support integrity."
+    },
+    {
+      "pattern_id": "self-audit-charity",
+      "status": "not_fired",
+      "prompt_indices": [],
+      "why": "Self-critique prompts either require concrete evidence/over-flagging or are not asking Claude to grade its own work."
+    }
+  ],
+  "generated_at": "2026-08-25T17:13:34.677Z"
 }

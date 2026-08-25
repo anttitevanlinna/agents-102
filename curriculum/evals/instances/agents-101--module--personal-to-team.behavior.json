@@ -1,25 +1,26 @@
 {
   "class": "behavior",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agents-101/personal-to-team.md",
-  "training": "agents-101",
-  "body_sha": "8f567ca7a384de72045707c3d75078ec967bc7f27fe892d953b4bb1a463982c3",
-  "content_sha": "64d7343d220ed66d3d6f98ba07f83d38964db6996ba281508767798b4a6cbc6f",
+  "body_sha": "e68ab907dbc7c2606681dc8f04fcf2956ed87d5fe3fde8eb702ace882f5f9afe",
+  "content_sha": "394d666b8a62d08661932e747fa74c6b34fee12ab126f884977e714a5e70d88a",
+  "generated_at": "2026-08-25T17:08:50.300Z",
   "verdict": "PASS",
+  "training": "agents-101",
   "trace_status": "full_regen",
   "prompts_evaluated": 1,
   "prompts_findings": [
     {
       "prompt_index": 1,
       "prompt_sha": "fceaabdaee3db47b06cb1a6b2586c857612fc226315b4d87c739d4b9edfba221",
-      "prompt_lead": "Start by identifying the file path. No plan or preamble.",
+      "prompt_lead": "Start by identifying the file path. No plan or preamble.\n\nReview this session an",
       "verdict": "TODO",
       "load_bearing": true,
       "risks_fired": [
         {
           "pattern_id": "preamble-before-action",
           "confidence": "low",
-          "evidence": "Start by identifying the file path. No plan or preamble. -- the suppressor is present, but it is not the final line despite the prompt having four named action moves.",
-          "fix_hint": "If preamble appears in a live run, move the no-preamble instruction to the final line and name the first action."
+          "evidence": "Start by identifying the file path. No plan or preamble.",
+          "fix_hint": "Move the no-preamble cue to the final line or tell the student to skim the opening for the confirmed path and evidence report."
         }
       ]
     }
@@ -27,21 +28,99 @@
   "blocking_findings_count": 0,
   "todos_count": 1,
   "catalog_coverage": [
-    {"pattern_id": "file-preservation-gap", "status": "not_fired", "why": "The prompt names the chosen module-7 path and explicitly says overwrite in place, do not create a separate version, and integrate rather than append."},
-    {"pattern_id": "reading-burden", "status": "not_fired", "why": "Claude is asked to inspect the Module 7 files and provide quoted before-after evidence; the student is not assigned manual proofreading for correctness."},
-    {"pattern_id": "niceness-tax", "status": "not_fired", "why": "The prompt explicitly says to be harsher than feels polite, say plainly when names are missing, and keep the edge in the critique."},
-    {"pattern_id": "question-dump", "status": "not_fired", "why": "The prompt contains self-audit questions for Claude, not a sequence in which Claude interviews the student and must wait between questions."},
-    {"pattern_id": "overwrite-anxiety", "status": "not_fired", "why": "The destination and overwrite behavior are explicit: confirm the path, overwrite in place, and do not create a separate version."},
-    {"pattern_id": "preamble-before-action", "status": "fired", "confidence": "low", "why": "The prompt has a no-preamble suppressor, but the four-plus named action moves trigger the residual preamble risk because the suppressor is at the opening rather than the end."},
-    {"pattern_id": "append-vs-integrate", "status": "not_fired", "why": "The prompt explicitly distinguishes integration from appending and directs a rewrite through the job, surface-area, and people-plan context."},
-    {"pattern_id": "plan-mode-preamble-bloat", "status": "not_fired", "why": "The prompt says no plan and does not invoke plan mode or request a plan artifact."},
-    {"pattern_id": "citation-gap-asymmetry", "status": "not_fired", "why": "No citations, sourced claims, or citation-or-flag instruction is requested."},
-    {"pattern_id": "self-report-inflation", "status": "not_fired", "why": "The completion report is constrained by the artifact-level evidence requirement: every claimed change must quote before and after text, and unsupported claims are forbidden."},
-    {"pattern_id": "default-acceptance", "status": "not_fired", "why": "No offered defaults or candidate structure is presented for Claude to accept; the prompt requires concrete gaps and a named assumption."},
-    {"pattern_id": "plan-mode-approval-inflation", "status": "not_fired", "why": "No plan-mode plan is produced for approval."},
-    {"pattern_id": "source-type-blindness", "status": "not_fired", "why": "The prompt reads named Module 7 artifacts but does not ingest a heterogeneous source set or ask Claude to classify source types."},
-    {"pattern_id": "citation-cargo-cult", "status": "not_fired", "why": "No citations are requested."},
-    {"pattern_id": "self-audit-charity", "status": "not_fired", "why": "The prompt asks Claude to critique its work with concrete files, named JTBD/people-plan gaps, and before-after artifact quotes; the evidence-backed debrief carve-out applies."}
+    {
+      "pattern_id": "file-preservation-gap",
+      "status": "not_fired",
+      "prompt_indices": [],
+      "why": "No other prompt asks Claude to update an existing file without a clear preservation boundary."
+    },
+    {
+      "pattern_id": "reading-burden",
+      "status": "not_fired",
+      "prompt_indices": [],
+      "why": "Claude performs the evidence read or artifact check; the student is not assigned manual correctness proofreading."
+    },
+    {
+      "pattern_id": "niceness-tax",
+      "status": "not_fired",
+      "prompt_indices": [],
+      "why": "The prompt either has no stance-softening regeneration or explicitly asks for harsh, edge-preserving evidence."
+    },
+    {
+      "pattern_id": "question-dump",
+      "status": "not_fired",
+      "prompt_indices": [],
+      "why": "No prompt asks Claude to interview the student through a sequence of questions."
+    },
+    {
+      "pattern_id": "overwrite-anxiety",
+      "status": "not_fired",
+      "prompt_indices": [],
+      "why": "The prompt either creates a fresh artifact or explicitly names the destination and in-place overwrite behavior."
+    },
+    {
+      "pattern_id": "preamble-before-action",
+      "status": "fired",
+      "confidence": "low",
+      "prompt_indices": [
+        1
+      ],
+      "why": "The multi-step prompt shape meets the catalog trigger; surrounding no-preamble language mitigates but does not erase the residual."
+    },
+    {
+      "pattern_id": "append-vs-integrate",
+      "status": "not_fired",
+      "prompt_indices": [],
+      "why": "No unbounded add/regenerate instruction remains; integration or first-create intent is explicit where needed."
+    },
+    {
+      "pattern_id": "plan-mode-preamble-bloat",
+      "status": "not_fired",
+      "prompt_indices": [],
+      "why": "No prompt invokes plan mode or asks for a plan artifact for approval."
+    },
+    {
+      "pattern_id": "citation-gap-asymmetry",
+      "status": "not_fired",
+      "prompt_indices": [],
+      "why": "No prompt requests a body of sourced factual claims with an unscoped cite-or-flag rule."
+    },
+    {
+      "pattern_id": "self-report-inflation",
+      "status": "not_fired",
+      "prompt_indices": [],
+      "why": "Reports are constrained by concrete artifacts, quoted changes, or evidence-backed debrief requirements."
+    },
+    {
+      "pattern_id": "default-acceptance",
+      "status": "not_fired",
+      "prompt_indices": [],
+      "why": "No offered default or candidate structure invites uncritical acceptance."
+    },
+    {
+      "pattern_id": "plan-mode-approval-inflation",
+      "status": "not_fired",
+      "prompt_indices": [],
+      "why": "No plan-mode plan is produced for student approval."
+    },
+    {
+      "pattern_id": "source-type-blindness",
+      "status": "not_fired",
+      "prompt_indices": [],
+      "why": "No heterogeneous source-ingestion task requires source-type or extraction-depth classification."
+    },
+    {
+      "pattern_id": "citation-cargo-cult",
+      "status": "not_fired",
+      "prompt_indices": [],
+      "why": "No citations are requested without a sentence-level support check."
+    },
+    {
+      "pattern_id": "self-audit-charity",
+      "status": "not_fired",
+      "prompt_indices": [],
+      "why": "Evidence-backed debrief carve-outs, harsh instructions, or independent cold reads prevent an unsupported charitable self-critique."
+    }
   ],
-  "evidence": "Full Class B regeneration from the live target using `node scripts/expand-md.js curriculum/trainings/agents-101/personal-to-team.md`; scanned 1 expanded prompt fence above the maintainer cut. Raw body_sha=8f567ca7a384de72045707c3d75078ec967bc7f27fe892d953b4bb1a463982c3; expanded content_sha=64d7343d220ed66d3d6f98ba07f83d38964db6996ba281508767798b4a6cbc6f; prompt_sha=fceaabdaee3db47b06cb1a6b2586c857612fc226315b4d87c739d4b9edfba221. One load-bearing prompt has one low-confidence preamble-before-action TODO; no medium/high-confidence risks and no blocking findings. Deterministic counts: prompts_evaluated=1, blocking_findings_count=0, todos_count=1. Catalog coverage is complete: all 15 simulation-behavior patterns are represented."
+  "evidence": "Full Luna re-fire from the live source via scripts/expand-md.js. Raw whole-file SHA-256 is e68ab907dbc7c2606681dc8f04fcf2956ed87d5fe3fde8eb702ace882f5f9afe; expanded-output SHA-256 is 394d666b8a62d08661932e747fa74c6b34fee12ab126f884977e714a5e70d88a. Evaluated 1 student prompt block(s), each against all 15 catalog patterns and the judge carve-outs from prompt-behavior.md, simulation-behavior.md, check_prompts.md, and check_pedagogy.md. This is full_regen, not cache carry-forward. Single medium-confidence risks on load-bearing prompts remain PASS under the verdict rules; low-confidence risks are TODO; no high-confidence or two-medium load-bearing combination reaches REVISE."
 }

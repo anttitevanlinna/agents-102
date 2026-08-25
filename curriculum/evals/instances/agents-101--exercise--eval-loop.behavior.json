@@ -18,63 +18,149 @@
           "evidence": "Three things, in sequence: 1. Write... 2. Run... 3. Run the judge...",
           "fix_hint": "The three-step orchestration can invite brief plan narration before the first calibration write; the risk is nonblocking because the first artifact remains explicit."
         }
-      ]
+      ],
+      "prompt_sha": "f7d1adab005e05e260577a0b6ee774aa7ced8fd1656d286bbfbbbcced5c459d5"
     },
     {
       "prompt_index": 2,
       "prompt_lead": "Run an eval loop using my fixed judge.\n\nFixed judge:\n- Never edit judges/grounde",
       "verdict": "PASS",
       "load_bearing": true,
-      "risks_fired": []
+      "risks_fired": [],
+      "prompt_sha": "7768aa6905ab005b8934e1c3e1fc03c96f984222d1d0a7946a17564baf0441e9"
     },
     {
       "prompt_index": 3,
       "prompt_lead": "Claude: can we scale this by adding more generation tracks to try more options f",
       "verdict": "PASS",
       "load_bearing": false,
-      "risks_fired": []
+      "risks_fired": [],
+      "prompt_sha": "5b2f9a308211b74c5302e2badaa7cf0f1a71df5486f28950a3f0e6e62f009ed3"
     },
     {
       "prompt_index": 4,
       "prompt_lead": "Claude: what is the similarity to model training here? Tell me in 5 snippets, on",
       "verdict": "PASS",
       "load_bearing": false,
-      "risks_fired": []
+      "risks_fired": [],
+      "prompt_sha": "d80fbf3759f9da2538ff064da9711307fd45c43ce810dca8972efc38145810f5"
     },
     {
       "prompt_index": 5,
       "prompt_lead": "Show me module-6/eval-notes.md and ./generation-tactic.md.\n\nThen answer in five ",
       "verdict": "PASS",
       "load_bearing": false,
-      "risks_fired": []
+      "risks_fired": [],
+      "prompt_sha": "b1247140d542d9c06b22717d6178f645840a9db0d521e827e6ed07754b94628b"
     },
     {
       "prompt_index": 6,
       "prompt_lead": "Set up a fixed-judge loop for one of my outputs.\n\nRun the loop end to end:\n1. Wr",
       "verdict": "PASS",
       "load_bearing": true,
-      "risks_fired": []
+      "risks_fired": [],
+      "prompt_sha": "25474cf9c1863deae75fcbbd1e6e3a7d877a907feb8652b44dc743541a0ecf18"
     }
   ],
   "blocking_findings_count": 0,
   "todos_count": 1,
   "verdict": "PASS",
   "catalog_coverage": [
-    {"pattern_id": "file-preservation-gap", "status": "not_fired", "why": "Prompt 1 creates named first-use artifacts; prompts 2 and 6 explicitly rewrite the tactic in place and prohibit versioned copies."},
-    {"pattern_id": "reading-burden", "status": "not_fired", "why": "The student is given concrete run artifacts and a push-back checkpoint, not manual proofreading for correctness."},
-    {"pattern_id": "niceness-tax", "status": "not_fired", "why": "No prompt asks Claude to soften a critique or stance; the body explicitly tells the student to push back where the result is too neat."},
-    {"pattern_id": "question-dump", "status": "not_fired", "why": "Prompt 4 structurally requires one snippet, then a wait for 'next'; no other prompt asks Claude to interview the student."},
-    {"pattern_id": "overwrite-anxiety", "status": "not_fired", "why": "Write destinations are named, and prompt 2/6 specify in-place tactic rewrites and no versioned copies."},
-    {"pattern_id": "preamble-before-action", "status": "fired", "confidence": "med", "prompt_index": 1, "why": "Prompt 1's three-step orchestration invites brief narration before the first write; prompt 2 and prompt 6 contain explicit no-preamble language."},
-    {"pattern_id": "append-vs-integrate", "status": "not_fired", "why": "No prompt asks Claude to add a section or new context to an existing document."},
-    {"pattern_id": "plan-mode-preamble-bloat", "status": "not_fired", "why": "No prompt invokes plan mode or asks for a plan artifact."},
-    {"pattern_id": "citation-gap-asymmetry", "status": "not_fired", "why": "Grounding inputs are named, but no prompt requests citation-bearing claims with an uneven cite-or-flag scope."},
-    {"pattern_id": "self-report-inflation", "status": "not_fired", "why": "Prompt 5 anchors its return questions in module-6/eval-notes.md and the final tactic; the evidence-backed debrief carve-out applies."},
-    {"pattern_id": "default-acceptance", "status": "not_fired", "why": "No prompt offers a weak default for Claude to accept uncritically; the body asks the student to push back on neat conclusions."},
-    {"pattern_id": "plan-mode-approval-inflation", "status": "not_fired", "why": "No plan-mode plan is presented for approval."},
-    {"pattern_id": "source-type-blindness", "status": "not_fired", "why": "The prompts use named project artifacts and memory as evidence; they do not ingest a heterogeneous source set requiring source-type classification."},
-    {"pattern_id": "citation-cargo-cult", "status": "not_fired", "why": "No prompt asks Claude to add citations."},
-    {"pattern_id": "self-audit-charity", "status": "not_fired", "why": "Prompt 5 asks for concrete score, change, and failure evidence from named files, while nearby prose gives the student a push-back recovery."}
+    {
+      "pattern_id": "file-preservation-gap",
+      "status": "not_fired",
+      "prompt_indices": [],
+      "why": "No prompt may update an existing file without a stated preserve-versus-replace boundary."
+    },
+    {
+      "pattern_id": "reading-burden",
+      "status": "not_fired",
+      "prompt_indices": [],
+      "why": "The student is not assigned manual proofreading as the correctness check."
+    },
+    {
+      "pattern_id": "niceness-tax",
+      "status": "not_fired",
+      "prompt_indices": [],
+      "why": "No regeneration prompt asks Claude to soften an edge or stance without pinning it."
+    },
+    {
+      "pattern_id": "question-dump",
+      "status": "not_fired",
+      "prompt_indices": [],
+      "why": "Question sequences either have a one-at-a-time wait boundary or do not interview the student."
+    },
+    {
+      "pattern_id": "overwrite-anxiety",
+      "status": "not_fired",
+      "prompt_indices": [],
+      "why": "Fresh writes or explicit in-place/regeneration intent remove the modal collision pause where applicable."
+    },
+    {
+      "pattern_id": "preamble-before-action",
+      "status": "fired",
+      "confidence": "med",
+      "prompt_indices": [
+        1
+      ],
+      "why": "The prompt is short or contains an explicit first-action/no-preamble cue unless the recorded medium invitation remains. Evidence is recorded for prompt index 1 in the per-prompt findings."
+    },
+    {
+      "pattern_id": "append-vs-integrate",
+      "status": "not_fired",
+      "prompt_indices": [],
+      "why": "Add/regenerate instructions name whether context is appended or integrated where that choice exists."
+    },
+    {
+      "pattern_id": "plan-mode-preamble-bloat",
+      "status": "not_fired",
+      "prompt_indices": [],
+      "why": "No prompt invokes plan mode or asks for an oversized plan approval."
+    },
+    {
+      "pattern_id": "citation-gap-asymmetry",
+      "status": "not_fired",
+      "prompt_indices": [],
+      "why": "No prompt requests citation-bearing factual claims with an uneven cite-or-flag scope."
+    },
+    {
+      "pattern_id": "self-report-inflation",
+      "status": "not_fired",
+      "prompt_indices": [],
+      "why": "Artifact-level evidence or an independent check prevents a Claude summary from being the acceptance check where applicable."
+    },
+    {
+      "pattern_id": "default-acceptance",
+      "status": "not_fired",
+      "prompt_indices": [],
+      "why": "No offered default is the sole path to a student-owned judgment, except where the recorded example remains visibly subordinate."
+    },
+    {
+      "pattern_id": "plan-mode-approval-inflation",
+      "status": "not_fired",
+      "prompt_indices": [],
+      "why": "No plan-mode approval artifact is requested."
+    },
+    {
+      "pattern_id": "source-type-blindness",
+      "status": "not_fired",
+      "prompt_indices": [],
+      "why": "No heterogeneous source-ingestion prompt lacks an extraction-depth or source-type check."
+    },
+    {
+      "pattern_id": "citation-cargo-cult",
+      "status": "not_fired",
+      "prompt_indices": [],
+      "why": "No prompt requests citations without requiring claim-level support integrity."
+    },
+    {
+      "pattern_id": "self-audit-charity",
+      "status": "not_fired",
+      "prompt_indices": [],
+      "why": "Self-critique prompts either require concrete evidence/over-flagging or are not asking Claude to grade its own work."
+    }
   ],
-  "evidence": "Ran node scripts/expand-md.js curriculum/exercises/eval-loop.md; expanded SHA-256 is 54695ade8a8ea36d37b8ed7c7a9faafbb6ac74261fb5a62aa2d0602e8b7ff794. Raw source SHA-256 is b3666e6d12b1f3cb74bf11b58419895833468be9fdbcc093f7f93e97623f2f9a. Six expanded prompt blocks were scanned; all six current prompt SHAs match the cache. The 15 catalog rows above provide full coverage. One med-confidence, nonblocking preamble TODO remains; no actual blocking harm is present, so the top-level verdict is PASS."
+  "evidence": "Full Luna re-fire at 2026-08-25T17:11:39.312Z: ran node scripts/expand-md.js curriculum/exercises/eval-loop.md; raw source SHA-256 e0ea3cf0beb0b0ba3b978d2d642fefb2b6879560df439e9dde168f0117e62a2c; expanded content SHA-256 b553d8e61826f712466227f5632eb6f23025db9e5e0e81e01a1c5fad309262db; recomputed 6 fenced prompt SHA-256 values from the expanded view; evaluated every prompt against all 15 catalog patterns and the documented carve-outs. No high-confidence load-bearing risk and no prompt with two or more medium-confidence load-bearing risks; top-level verdict PASS.",
+  "content_sha": "b553d8e61826f712466227f5632eb6f23025db9e5e0e81e01a1c5fad309262db",
+  "generated_at": "2026-08-25T17:13:34.677Z"
 }

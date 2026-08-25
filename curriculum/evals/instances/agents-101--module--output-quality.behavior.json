@@ -1,13 +1,17 @@
 {
   "class": "behavior",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agents-101/output-quality.md",
+  "body_sha": "59e985c60a37f3278c38b99374bb637504733c1b88aa000ae3149677ad5c257c",
+  "content_sha": "2db84346d17a87063603a2c55dfd2f5e00f56201a69908d5ad16c32dc0550871",
+  "generated_at": "2026-08-25T17:08:50.300Z",
+  "verdict": "PASS",
   "training": "agents-101",
-  "body_sha": "853a5d34cecc4176d0bac7627614ef37d14f138149875ee4bfed5b34c7f3d47f",
   "trace_status": "full_regen",
   "prompts_evaluated": 1,
   "prompts_findings": [
     {
       "prompt_index": 1,
+      "prompt_sha": "b20a13a2518102d3a4b211e4774ea4e46dd0219820b1c35353815fad2c5b872f",
       "prompt_lead": "Start by reading the files. No plan or preamble.\n\nReview this session and update",
       "verdict": "TODO",
       "load_bearing": true,
@@ -16,13 +20,107 @@
           "pattern_id": "preamble-before-action",
           "confidence": "low",
           "evidence": "Start by reading the files. No plan or preamble.",
-          "fix_hint": "If the opening narration still distracts, prime the student to skim it and look for the landed Groundedness checks section; the explicit no-preamble line already makes this nonblocking."
+          "fix_hint": "Prime the student to skim the opening and look for the read-back of the landed Groundedness checks section."
         }
       ]
     }
   ],
   "blocking_findings_count": 0,
   "todos_count": 1,
-  "verdict": "PASS",
-  "evidence": "Ran `node scripts/expand-md.js curriculum/trainings/agents-101/output-quality.md` and scanned 1 expanded prompt block above the maintainer cut. Expanded output SHA-256: e968ba175d0055db518d429e6a27948389d939e36fcc99e8729ad6245e87d3ac. Raw source SHA-256: 853a5d34cecc4176d0bac7627614ef37d14f138149875ee4bfed5b34c7f3d47f. Explicit in-prompt section-only preservation, in-place integration, artifact read-back, and surrounding push-back make preservation, overwrite, append, self-report, and self-audit harms absent; preamble risk remains low-confidence and nonblocking."
+  "catalog_coverage": [
+    {
+      "pattern_id": "file-preservation-gap",
+      "status": "not_fired",
+      "prompt_indices": [],
+      "why": "No other prompt asks Claude to update an existing file without a clear preservation boundary."
+    },
+    {
+      "pattern_id": "reading-burden",
+      "status": "not_fired",
+      "prompt_indices": [],
+      "why": "Claude performs the evidence read or artifact check; the student is not assigned manual correctness proofreading."
+    },
+    {
+      "pattern_id": "niceness-tax",
+      "status": "not_fired",
+      "prompt_indices": [],
+      "why": "The prompt either has no stance-softening regeneration or explicitly asks for harsh, edge-preserving evidence."
+    },
+    {
+      "pattern_id": "question-dump",
+      "status": "not_fired",
+      "prompt_indices": [],
+      "why": "No prompt asks Claude to interview the student through a sequence of questions."
+    },
+    {
+      "pattern_id": "overwrite-anxiety",
+      "status": "not_fired",
+      "prompt_indices": [],
+      "why": "The prompt either creates a fresh artifact or explicitly names the destination and in-place overwrite behavior."
+    },
+    {
+      "pattern_id": "preamble-before-action",
+      "status": "fired",
+      "confidence": "low",
+      "prompt_indices": [
+        1
+      ],
+      "why": "The multi-step prompt shape meets the catalog trigger; surrounding no-preamble language mitigates but does not erase the residual."
+    },
+    {
+      "pattern_id": "append-vs-integrate",
+      "status": "not_fired",
+      "prompt_indices": [],
+      "why": "No unbounded add/regenerate instruction remains; integration or first-create intent is explicit where needed."
+    },
+    {
+      "pattern_id": "plan-mode-preamble-bloat",
+      "status": "not_fired",
+      "prompt_indices": [],
+      "why": "No prompt invokes plan mode or asks for a plan artifact for approval."
+    },
+    {
+      "pattern_id": "citation-gap-asymmetry",
+      "status": "not_fired",
+      "prompt_indices": [],
+      "why": "No prompt requests a body of sourced factual claims with an unscoped cite-or-flag rule."
+    },
+    {
+      "pattern_id": "self-report-inflation",
+      "status": "not_fired",
+      "prompt_indices": [],
+      "why": "Reports are constrained by concrete artifacts, quoted changes, or evidence-backed debrief requirements."
+    },
+    {
+      "pattern_id": "default-acceptance",
+      "status": "not_fired",
+      "prompt_indices": [],
+      "why": "No offered default or candidate structure invites uncritical acceptance."
+    },
+    {
+      "pattern_id": "plan-mode-approval-inflation",
+      "status": "not_fired",
+      "prompt_indices": [],
+      "why": "No plan-mode plan is produced for student approval."
+    },
+    {
+      "pattern_id": "source-type-blindness",
+      "status": "not_fired",
+      "prompt_indices": [],
+      "why": "No heterogeneous source-ingestion task requires source-type or extraction-depth classification."
+    },
+    {
+      "pattern_id": "citation-cargo-cult",
+      "status": "not_fired",
+      "prompt_indices": [],
+      "why": "No citations are requested without a sentence-level support check."
+    },
+    {
+      "pattern_id": "self-audit-charity",
+      "status": "not_fired",
+      "prompt_indices": [],
+      "why": "Evidence-backed debrief carve-outs, harsh instructions, or independent cold reads prevent an unsupported charitable self-critique."
+    }
+  ],
+  "evidence": "Full Luna re-fire from the live source via scripts/expand-md.js. Raw whole-file SHA-256 is 59e985c60a37f3278c38b99374bb637504733c1b88aa000ae3149677ad5c257c; expanded-output SHA-256 is 2db84346d17a87063603a2c55dfd2f5e00f56201a69908d5ad16c32dc0550871. Evaluated 1 student prompt block(s), each against all 15 catalog patterns and the judge carve-outs from prompt-behavior.md, simulation-behavior.md, check_prompts.md, and check_pedagogy.md. This is full_regen, not cache carry-forward. Single medium-confidence risks on load-bearing prompts remain PASS under the verdict rules; low-confidence risks are TODO; no high-confidence or two-medium load-bearing combination reaches REVISE."
 }

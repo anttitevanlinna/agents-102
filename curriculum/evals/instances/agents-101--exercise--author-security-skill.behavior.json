@@ -11,19 +11,21 @@
       "prompt_lead": "Read everything in module-4/policies/. Use those policy references to audit the ",
       "verdict": "PASS",
       "load_bearing": false,
-      "risks_fired": []
+      "risks_fired": [],
+      "prompt_sha": "ca5193219ab51830cf33d8657dfdad6f44e28263c6e017ee8bfcc628ae53491b"
     },
     {
       "prompt_index": 2,
       "prompt_lead": "I want to turn the useful parts of outputs/policy-report-raw.md into reusable se",
       "verdict": "PASS",
       "load_bearing": false,
-      "risks_fired": []
+      "risks_fired": [],
+      "prompt_sha": "b1d7b55ca9fefcc1f5997eb969d18505690c2a938c9f18126b072ee6a854e49c"
     },
     {
       "prompt_index": 3,
       "prompt_lead": "Author the reusable security check now. Two lenses.\n\nBuild one personal skill so",
-      "verdict": "PASS",
+      "verdict": "TODO",
       "load_bearing": true,
       "risks_fired": [
         {
@@ -32,7 +34,8 @@
           "evidence": "Before you save anything, grill me on missing details that can sharpen the lens or that would ruin the audit run.",
           "fix_hint": "Prime the student for a brief narration or make the first action explicit if the opening preamble would disrupt the grill."
         }
-      ]
+      ],
+      "prompt_sha": "011d6aa1c0cf4c2be7c4efc763d7990c968a5fbbb477a194db0bf6801e2ecacf"
     },
     {
       "prompt_index": 4,
@@ -46,7 +49,8 @@
           "evidence": "Confirm the installed path so I can verify with ls.",
           "fix_hint": "Keep the independent ls verification as the check rather than relying on Claude's confirmation."
         }
-      ]
+      ],
+      "prompt_sha": "517e883055bd4817458150c0d2d389e2e351456a1f379f15eb26d9c4c2ae8661"
     },
     {
       "prompt_index": 5,
@@ -60,7 +64,8 @@
           "evidence": "Confirm the installed path so I can verify with ls.",
           "fix_hint": "Keep an independent filesystem check as the acceptance check for the install."
         }
-      ]
+      ],
+      "prompt_sha": "517e883055bd4817458150c0d2d389e2e351456a1f379f15eb26d9c4c2ae8661"
     },
     {
       "prompt_index": 6,
@@ -74,11 +79,116 @@
           "evidence": "Draft it, then surface the save action so I can save it.",
           "fix_hint": "Keep the student-owned save action explicit so drafting does not silently become persistence."
         }
-      ]
+      ],
+      "prompt_sha": "2853b8af7714e175baefe77785110069135f750b5505c3a16dc7320704e0a2bd"
     }
   ],
   "blocking_findings_count": 0,
-  "todos_count": 3,
+  "todos_count": 4,
   "verdict": "PASS",
-  "evidence": "Ran `node scripts/expand-md.js curriculum/exercises/author-security-skill.md`; expanded SHA-256 is 0b8a56112fc38242fea3249fbc68cebf538e974a921841ee2d9a5ae90515f8b7. Scanned 6 prompt blocks above the maintainer cut against all 15 catalog rows in simulation-behavior.md; raw source SHA-256 is a35480d84872877571429e778a23bbc5d686cdb19055a58d8225e782e6d9d927. One medium-confidence preamble invitation is non-blocking; three low-confidence TODOs remain, with no actual blocking harm."
+  "evidence": "Full Luna re-fire at 2026-08-25T17:11:39.312Z: ran node scripts/expand-md.js curriculum/exercises/author-security-skill.md; raw source SHA-256 f32d7ccc8e3d1bf78508255a53f20f3f13545d28f4b015edfbee658801bcd3a9; expanded content SHA-256 66a843322c1504022e529ba4abe2a25c68bb48f0a59b15e9f4bfe51b7d0d7d7e; recomputed 6 fenced prompt SHA-256 values from the expanded view; evaluated every prompt against all 15 catalog patterns and the documented carve-outs. No high-confidence load-bearing risk and no prompt with two or more medium-confidence load-bearing risks; top-level verdict PASS.",
+  "content_sha": "66a843322c1504022e529ba4abe2a25c68bb48f0a59b15e9f4bfe51b7d0d7d7e",
+  "catalog_coverage": [
+    {
+      "pattern_id": "file-preservation-gap",
+      "status": "not_fired",
+      "prompt_indices": [],
+      "why": "No prompt may update an existing file without a stated preserve-versus-replace boundary."
+    },
+    {
+      "pattern_id": "reading-burden",
+      "status": "not_fired",
+      "prompt_indices": [],
+      "why": "The student is not assigned manual proofreading as the correctness check."
+    },
+    {
+      "pattern_id": "niceness-tax",
+      "status": "not_fired",
+      "prompt_indices": [],
+      "why": "No regeneration prompt asks Claude to soften an edge or stance without pinning it."
+    },
+    {
+      "pattern_id": "question-dump",
+      "status": "not_fired",
+      "prompt_indices": [],
+      "why": "Question sequences either have a one-at-a-time wait boundary or do not interview the student."
+    },
+    {
+      "pattern_id": "overwrite-anxiety",
+      "status": "not_fired",
+      "prompt_indices": [],
+      "why": "Fresh writes or explicit in-place/regeneration intent remove the modal collision pause where applicable."
+    },
+    {
+      "pattern_id": "preamble-before-action",
+      "status": "fired",
+      "confidence": "med",
+      "prompt_indices": [
+        3
+      ],
+      "why": "The prompt is short or contains an explicit first-action/no-preamble cue unless the recorded medium invitation remains. Evidence is recorded for prompt index 3 in the per-prompt findings."
+    },
+    {
+      "pattern_id": "append-vs-integrate",
+      "status": "not_fired",
+      "prompt_indices": [],
+      "why": "Add/regenerate instructions name whether context is appended or integrated where that choice exists."
+    },
+    {
+      "pattern_id": "plan-mode-preamble-bloat",
+      "status": "not_fired",
+      "prompt_indices": [],
+      "why": "No prompt invokes plan mode or asks for an oversized plan approval."
+    },
+    {
+      "pattern_id": "citation-gap-asymmetry",
+      "status": "not_fired",
+      "prompt_indices": [],
+      "why": "No prompt requests citation-bearing factual claims with an uneven cite-or-flag scope."
+    },
+    {
+      "pattern_id": "self-report-inflation",
+      "status": "fired",
+      "confidence": "low",
+      "prompt_indices": [
+        4,
+        5
+      ],
+      "why": "Artifact-level evidence or an independent check prevents a Claude summary from being the acceptance check where applicable. Evidence is recorded for prompt indexes 4, 5 in the per-prompt findings."
+    },
+    {
+      "pattern_id": "default-acceptance",
+      "status": "fired",
+      "confidence": "low",
+      "prompt_indices": [
+        6
+      ],
+      "why": "No offered default is the sole path to a student-owned judgment, except where the recorded example remains visibly subordinate. Evidence is recorded for prompt index 6 in the per-prompt findings."
+    },
+    {
+      "pattern_id": "plan-mode-approval-inflation",
+      "status": "not_fired",
+      "prompt_indices": [],
+      "why": "No plan-mode approval artifact is requested."
+    },
+    {
+      "pattern_id": "source-type-blindness",
+      "status": "not_fired",
+      "prompt_indices": [],
+      "why": "No heterogeneous source-ingestion prompt lacks an extraction-depth or source-type check."
+    },
+    {
+      "pattern_id": "citation-cargo-cult",
+      "status": "not_fired",
+      "prompt_indices": [],
+      "why": "No prompt requests citations without requiring claim-level support integrity."
+    },
+    {
+      "pattern_id": "self-audit-charity",
+      "status": "not_fired",
+      "prompt_indices": [],
+      "why": "Self-critique prompts either require concrete evidence/over-flagging or are not asking Claude to grade its own work."
+    }
+  ],
+  "generated_at": "2026-08-25T17:13:34.677Z"
 }

@@ -50,22 +50,6 @@ One long session, drawn as a sea passage.
 - The agent makes the evidence cheap: it runs the task, reads its own transcript, diffs the returns. **The engineer decides**: what counts, what the evidence means, what earns promotion into durable practice.
 - What's tested holds in review: *"measured here, this catches it, watch."*
 
-## Hooks always fire
-<!--tier:2-->
-
-- A **hook** fires on a named event, and the agent has no say in whether it runs. Session start, prompt submit, before each tool call, after each tool call, on stop, plus a few more. The runtime fires the script whether or not the model remembers it exists.
-- Hooks exist because the LLM is forgetful. Drift, half-remembered rules: the longer the session runs, the less you can trust the agent to hit a step that "should" happen every time. Hooks don't forget.
-
-## Hooks for must-happen, prompts for taste
-<!--tier:2-->
-
-- **Must happen goes in a hook**; recommended stays in a prompt or rule. Anything that breaks the work if it skips belongs in a hook: the verifier you just wrote, a pre-commit guard, a session-start context loader. Anything taste-shaped or context-dependent stays in a prompt where the LLM weighs it. Hooks are the runtime's "I will not forget," bought at the cost of flexibility.
-- Your repo has demands that don't show up in someone else's article. The verifier you built was one hook against one failure; the same primitive maps to more. This one runs on the screen. Watch the list come back rather than typing along.
-
-{{prompt:what-packaging-is-1}}
-
-The ones worth keeping are tied to a specific file, convention, or failure mode in this repo, not a generic team-could-want-this.
-
 ## Every re-feed pass starts a fresh session
 <!--tier:2-->
 
@@ -76,23 +60,13 @@ The ones worth keeping are tied to a specific file, convention, or failure mode 
 
 <!-- maintainer -->
 
-**`## Every re-feed pass starts a fresh session` exists to close a depth asymmetry across the verifier menu, and its scope is mechanism only.** The menu lives in `diagnose-and-resend.md`'s Phase 3, where the student picks from it; it names three shapes as peers and tells them *"match the failure, not your familiarity."* Shape 1 is expanded by a whole lecture (`the-gate-is-a-claim.md`); shape 2 by the two hook slides directly above; shape 3 has no expansion here. Runtime primitives (`/goal`, `/loop`, `/schedule`) belong to M6's `the-loop-has-a-name.md` and `agents-that-build-agents.md` and stay out of this slide by design, so the M6 elaboration has something to land. **M6's `## Ralph` slide is a graduation beat, not this slide's twin** — a lever sat in plain shell, Huntley reached for it, the next Ralph is yours — and mechanism bolted onto it would convert the training's closing beat into an explainer. A judge reading *re-anchoring* in the exercise's Ralph re-feed bullet as a dangling referent should resolve it here rather than propose a clause upstream.
+**`## Every re-feed pass starts a fresh session` exists to close a depth asymmetry across the verifier menu, and its scope is mechanism only.** The menu lives in `diagnose-and-resend.md`'s Phase 3, where the student picks from it; it names three shapes as peers and tells them *"match the failure, not your familiarity."* Shape 1 is expanded by a whole lecture (`the-gate-is-a-claim.md`); shape 2 by `hooks-always-fire.md`, pulled forward before the exercises 2026-08-25; shape 3 has no expansion here. Runtime primitives (`/goal`, `/loop`, `/schedule`) belong to M6's `the-loop-has-a-name.md` and `agents-that-build-agents.md` and stay out of this slide by design, so the M6 elaboration has something to land. **M6's `## Ralph` slide is a graduation beat, not this slide's twin** — a lever sat in plain shell, Huntley reached for it, the next Ralph is yours — and mechanism bolted onto it would convert the training's closing beat into an explainer. A judge reading *re-anchoring* in the exercise's Ralph re-feed bullet as a dangling referent should resolve it here rather than propose a clause upstream.
 
-**Slide 8's prompt is a trainer-run beat, not a follow-along (Antti 2026-08-20).** A 2026-08-20
-persona run scored this slide 5/10: a live generative task landing right after the deck's emotional
-peak, with nothing telling the room whether to run it. The material stays — the fix is the cue.
-Body now reads *"This one runs on the screen — watch the list come back rather than typing along,"*
-which is `check_slides.md` §4's own remedy for a demo beat that a text read breaks: keep the setup
-on the slide, move the doing to trainer delivery. Trainer runs `{{prompt:what-packaging-is-1}}` on
-the projected repo and reads the returned list against the closing line's test (tied to a specific
-file, convention or failure mode here — not a generic team-could-want-this). Do not restore an
-imperative that asks the room to run it.
-
-**Current shape (2026-08-14/15, Antti-directed):** nine slides. The three-pattern lands first; the theory passage (*The model has read the field* · *The missing evidence is local* · *The optimum is local, and it moves*, wording Antti-blessed) fills the middle; hooks and re-feed retain the implication end. Cut redistribution, all three documented: the Intercom tier case has its home in M6's `the-loop-has-a-name.md`, so M5 carries no duplicate; context-window management and the subagent-isolation callout live in M4's durable-state slide; **the 80/20 ratio slide is cut with its personal axis absorbed into the theory passage's engineer-decides bullet — the numeric ratio deliberately has no M5 slide, and its only stamped home is `the-map-filled-in.md` (M6).**
+**Current shape (2026-08-14/15, Antti-directed; hooks extracted 2026-08-25):** seven slides. The two hook slides + demo prompt now live in `hooks-always-fire.md`, wired before the M5 exercises (Antti: doable for laymen, helps complete the exercise); their claims and the cc-hooks-docs stamp travelled. The three-pattern lands first; the theory passage (*The model has read the field* · *The missing evidence is local* · *The optimum is local, and it moves*, wording Antti-blessed) fills the middle; re-feed retains the implication end. Cut redistribution, all three documented: the Intercom tier case has its home in M6's `the-loop-has-a-name.md`, so M5 carries no duplicate; context-window management and the subagent-isolation callout live in M4's durable-state slide; **the 80/20 ratio slide is cut with its personal axis absorbed into the theory passage's engineer-decides bullet — the numeric ratio deliberately has no M5 slide, and its only stamped home is `the-map-filled-in.md` (M6).**
 
 - Family B judged 2026-07-03: B-star durability PASS — keystone three-pattern (slides 2–3) recovers NAMED·PLACED·MECHANISM·GOVERNOR cold, placed at Verification; closer honors recognition-before-naming ("what you assembled… has names").
 
-**Slide progression:** chart → reference and plan → verifier → the theory passage → hooks → re-feed. The opener remains recognition-before-naming; the theory passage sits between the kit and its implications so the trophy is re-priced to *candidate* before the mechanics resume.
+**Slide progression:** chart → reference and plan → verifier → the theory passage → re-feed. The opener remains recognition-before-naming; the theory passage sits between the kit and its implications so the trophy is re-priced to *candidate* before the mechanics resume.
 
 **Noun-"run" on the theory slides (×5) — Antti-waived 2026-08-15.** The experiment sense (*"until the run, there is nothing to document"*, *"as more runs cross it"*), not session/task/run registry drift; the slides are about evidence produced by runs, and "session" would blur the claim. Do not flatten.
 
@@ -106,7 +80,7 @@ imperative that asks the room to run it.
 - judges @10a10d2b: writing PASS (drift-recheck), story PASS (drift-recheck), technical PASS, behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS (drift-recheck)
 - source-freshness stamped 2026-05-25; MiniJinja and getpushtoprod stamps re-verified 2026-07-02 (stamps in Source verification block; run `source-freshness.sh --target <cohort-date>`).
 **Lecture meta:** *10–15 min closing lecture for M5, deck-shaped. Names the three-pattern after you have built each piece. Earns the name from felt evidence, not from a slide deck delivered cold. The M6 bridge lives in the module file's `## Next`, not here.*
-**Word count:** ~1260 words body.
+**Word count:** ~1010 words body.
 
 **Theory passage (three slides after the three-pattern slide; wording Antti-blessed 2026-08-14/15):**
 projects while the packaged re-send is out — *"the packaged experiment testing the kit is running right
@@ -118,7 +92,7 @@ open question by design — do not resolve it in either direction. Two lines fla
 you will read in a career"* (volume claim, deliberately not a currency claim — the cutoff clause beside it
 carries currency). The module file's Key Concepts four-line summary maps to these slides.
 
-**Time:** 14 min at presentation pace (walked per-slide 2026-08-15: chart figure 3; eight prose slides ≈ 1.3–1.5 each).
+**Time:** 11 min at presentation pace (walked per-slide 2026-08-15 at 1.3–1.5 per prose slide, chart figure 3; minus ~3 for the two hook slides extracted 2026-08-25).
 
 **Delivery mode:** In-room close after Debrief.
 
@@ -136,11 +110,6 @@ Claims
 - `plan-md-against-context-rot` · vision · "**plan.md** the agent owns and mutates, against context rot." ← none-owed
 - `ralph-bootstraps-greenfield` · detail · "Geoffrey Huntley's Ralph practice leans on exactly this primitive to bootstrap entire greenfield projects" ← huntley-ralph
 - `external-verifier-against-plausible-but-wrong` · vision · "**External verifier**, against plausible-but-wrong." ← none-owed
-- `hook-fires-on-named-events` · detail · "Session start, prompt submit, before each tool call, after each tool call, on stop, plus a few more." ← cc-hooks-docs
-- `agent-has-no-say-whether-hook-runs` · detail · "the agent has no say in whether it runs" ← cc-hooks-docs
-- `hooks-exist-because-llm-forgetful` · vision · "Hooks exist because the LLM is forgetful." ← none-owed
-- `must-happen-goes-in-a-hook` · vision · "**Must happen goes in a hook**; recommended stays in a prompt or rule." ← none-owed
-- `keeper-hooks-are-repo-specific` · vision · "tied to a specific file, convention, or failure mode in this repo" ← none-owed
 - `re-read-cost-buys-a-clean-session` · vision · "That cost is the point: it buys a session with no drift in it." ← none-owed
 - `weights-hold-the-written-record` · detail · "The weights hold the written record: the setup posts, the plan-file templates, the verifier write-ups, the reversals that followed them." ← amp-handoff, amp-neo
 - `more-field-than-a-career` · vision · "More of the field than you will read in a career." ← none-owed
@@ -156,7 +125,6 @@ Sources
 - ronacher-minijinja `[checked:2026-08-01 result:OK due:none]` https://lucumr.pocoo.org/2026/1/14/minijinja-go-port/ — [practitioner direct] Ronacher MiniJinja Rust→Go port, 14 Jan 2026: snapshot tests as verifier, 10 h / 2.2M tokens, three pieces cleanly inferable. **Durable account, `due:none`** (`source-freshness-format.md` § Durable-account variant): a completed run reported first-hand does not expire, so swapping a perfect example purely on its date would trade accuracy for freshness. Figures re-verified verbatim on page 2026-08-01: *"Agent run duration: 10 hours (3 hours supervised)"*, *"Total tokens: 2.2 million"*. **The condition that binds is the date in body** — cite it as *"in January 2026"* so the account cannot read as current practice. "Three pieces cleanly inferable" is our reading of his description, not his naming. **And the naming scope is tighter than "not his naming" conveys — he does not use the words at all.** Full-text check 2026-08-01: *reference* occurs once, as an adjective for test files (*"Parse the reference insta `.snap` snapshots and compare output"*); *verify* occurs once as an ordinary verb (*"using insta to verify they match"*); *verifier* occurs zero times. Plan files appear only as the approach he **rejected** — *"Without switching branches, I would probably just make new sessions and have more plan files lying around"* — so the post is 2-of-3 as practice and 0-of-3 as vocabulary. A 14-post sweep of his archive (Nov 2025–Jul 2026, the full window) returns zero uses of *verifier* anywhere, including the three posts that discuss agent harnesses at length. His nearest statement of the idea names nothing: *"In an ideal world the agent has one command, that lints and compiles and it tells the agent if all worked out fine"* (*A Language For Agents*, 2026-02-09). fallback: cite him for the practice, never for the vocabulary.
 - huntley-ralph `[checked:2026-08-01 result:OK due:none]` https://ghuntley.com/ralph/ — [practitioner direct] **Huntley's Ralph, as he documented it (2025-07-14): all three pieces present together.** Plan: *"create/update a @fix_plan.md which is a bullet point list sorted in priority… ALWAYS KEEP @fix_plan.md up to do date with your learnings using a subagent"* (the filename is `@fix_plan.md`; our *plan.md* is a generic label for the shape, not his). Reference: *"study specs/\* to learn about the compiler specifications"*, diffed explicitly. Verifier: type-system backpressure plus *"run the tests for that unit of code that was improved"*. Greenfield-only by his own scoping — *"no way in heck would I use Ralph in an existing code base"* — which is what the body's "greenfield projects" tracks. A Bash loop over durable markdown; no ticket-triage claim. Still active per *everything is a ralph loop* (2026-01-17), which cites the original rather than restating the pieces. `due:none` because this is a durable first-hand account: re-reading it next year will not change what he wrote. fallback: cite as origin of the loop-prompt-over-durable-state technique; drop any application claim.
 - kim-on-cherny `[checked:2026-07-02 result:OK due:2026-08-21]` https://getpushtoprod.substack.com/p/how-the-creator-of-claude-code-actually — [practitioner analysis] Kim on Cherny (2026-02-21): Kim's "13 tips" writeup lists Cherny reaching for background-agent / agent-stop hook / Ralph re-feed. The three-shape taxonomy is KIM'S synthesis, NOT Cherny's own, and is ABSENT from the Orosz/Pragmatic Engineer interview. Body credits Cherny as a practitioner who uses all three, not as the taxonomy's author, and says so in the same sentence. **Due within the month — re-open before any autumn cohort.** fallback: present the three shapes as a practitioner-convergent menu, no single attribution.
-- cc-hooks-docs `[checked:2026-05-15 result:OK due:cohort]` https://code.claude.com/docs/en/hooks — [capability] hook events (SessionStart / UserPromptSubmit / PreToolUse / PostToolUse / Stop) fire on every named event, with no model discretion over whether the script runs; live-tested against this repo's `.claude/settings.json` on Claude Code 2.1.142. fallback: inline the event list from a re-test.
 - amp-handoff `[checked:2026-08-01 result:OK due:none]` https://ampcode.com/news/handoff — [practitioner direct, vendor] Amp (2025-10-23) rejected auto-compaction and bet on manual handoff: *"Compaction… always had downsides. It's lossy, for one."* Cited here ONLY as the first half of a dated reversal pair backing "the reversals" in the theory passage — a durable historical account, never current behaviour. fallback: drop the named pair; "the reversals" stands on the field's public record.
 - amp-neo `[checked:2026-08-01 result:OK due:none]` https://ampcode.com/news/neo — [practitioner direct, vendor venue] Amp rebuilt on 2026-05-06 and killed the feature: *"So handoff is out. Compaction is in."* The second half of the reversal pair — a team that shipped a feature to avoid compaction, then adopted compaction. Single vendor; cite as one team's reversal, never as a trend. fallback: as above.
 
@@ -189,4 +157,4 @@ OODA
 
 **Map-position clause (2026-07-02):** slide-1 lead bullet now places the three-pattern on the Field Map as "what stands in for you at Verification" — deliberately NOT an all-three-live-there claim (reference and plan.md guard the run mid-flight; the verifier is the piece that IS Verification); commissioned by theory-completeness-review finding #1, alongside the M6 consolidation closer `the-map-filled-in`.
 
-**Chart (eyeball queue):** the "One session, plotted" slide embeds the dead-reckoning chart from `protos/m4-run-chart-02-passage.html`, chosen by Antti 2026-07-02; protos 01 (terrain) and 03 (orienteering) remain in `protos/` as alternates. Only the svg carried over; the proto page's header strip did not (it names the drift wedge with a two-word label this lecture bans, so the wedge is described here without it). Pattern id renamed to `ps-reefhatch` to avoid collisions with other inlined charts. Slide count is 9 (was 7 before the 2026-07-06 size-split; `Reference and plan` and `Hooks always fire` each shed a slide); the budget question is eyeball queue #1. Open option: graft proto 03's course card (named gates per control: TESTS GREEN, SPEC STILL TRUE, NOTHING LEAKED, DIFF READS CLEAN) onto this chart if Antti wants gates named on-chart.
+**Chart (eyeball queue):** the "One session, plotted" slide embeds the dead-reckoning chart from `protos/m4-run-chart-02-passage.html`, chosen by Antti 2026-07-02; protos 01 (terrain) and 03 (orienteering) remain in `protos/` as alternates. Only the svg carried over; the proto page's header strip did not (it names the drift wedge with a two-word label this lecture bans, so the wedge is described here without it). Pattern id renamed to `ps-reefhatch` to avoid collisions with other inlined charts. Slide count is 7 (9 before the 2026-08-25 hooks extraction; 7 before the 2026-07-06 size-split; `Reference and plan` and `Hooks always fire` each shed a slide); the budget question is eyeball queue #1. Open option: graft proto 03's course card (named gates per control: TESTS GREEN, SPEC STILL TRUE, NOTHING LEAKED, DIFF READS CLEAN) onto this chart if Antti wants gates named on-chart.

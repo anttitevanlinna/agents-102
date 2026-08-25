@@ -43,6 +43,8 @@ Test that worry against the return. Where the return bears it out, the worry nam
 
 Acting without full control is the job from here on. Build the check, send again. The checks pay twice: a session they steer is a session you don't babysit, and a session you don't babysit can run beside another.
 
+[Lecture: Hooks always fire](lectures/hooks-always-fire.md)
+
 [Exercise: Fork the worktree, carry the evidence](exercises/fork-the-worktree.md)
 
 [Exercise: Diagnose and re-send](exercises/diagnose-and-resend.md)

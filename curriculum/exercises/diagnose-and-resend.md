@@ -121,7 +121,7 @@ Prefer to stay in the exercise session? Paste this to drop scrollback in-place:
 
 {{prompt:ae101-m5-clear-before-rerun}}
 
-## Send it off and read the report cold
+## Send it off
 
 Either way, the re-send prompt below stands alone: Claude finds the packaging in the worktree and reads it cold.
 

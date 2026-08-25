@@ -487,6 +487,7 @@ test('theory handbook build', async (t) => {
       'id="exercise-summary-walk-and-send-off"',
       'id="lectures-what-keeps-a-long-running-session-going"',
       'id="lectures-ironies-of-automation"',
+      'id="lectures-hooks-always-fire"',
       'id="exercise-summary-diagnose-and-resend"',
       'id="lectures-what-packaging-is"',
       'id="lectures-quality-is-grounding"',

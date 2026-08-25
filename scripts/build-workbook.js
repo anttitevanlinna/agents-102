@@ -165,6 +165,7 @@ const THEORY_HANDBOOK_MANIFEST = {
       'supplementary/verification-asymmetry',
     ]],
     ['M5', [
+      'lectures/hooks-always-fire',
       'exercises/diagnose-and-resend',
       'lectures/what-packaging-is',
       'lectures/the-gate-is-a-claim',

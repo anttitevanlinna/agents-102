@@ -55,8 +55,7 @@ Ask Claude to walk each diagnosed failure backwards into the validation that wou
 {{prompt:diagnose-and-resend-3}}
 
 
-Claude gives the full three-way mapping. Your decision is narrower: which failure cost most, and why the other two pieces belong. Once two or three quoted moments make that clear, leave the rest at summary depth. Phase 3 builds the verifier against the dominant failure; Phase 4 assembles the reference and plan.md.
-
+Claude gives the full three-way mapping. Your decision is narrower: which failure cost most, and why the other two pieces belong. Once two or three quoted moments make that clear, leave the rest at summary depth.
 ## Phase 3: Build the verifier for your worst failure
 
 *20 min*
@@ -105,7 +104,7 @@ Say *lock it in.* The agent writes both files.
 
 *3 min*
 
-Now the re-send. Same task, packaged this time, and notice the prompt: it shrank while the task stayed the same. The difference is your system, measured in words the prompt no longer needs. The packaging does the explaining; the prompt invokes it.
+Now the re-send. Same task, packaged this time, and notice the prompt: it shrank while the task stayed the same. The packaging does the explaining; the prompt invokes it.
 
 **Session** *(new, "M5 long-run")*
 

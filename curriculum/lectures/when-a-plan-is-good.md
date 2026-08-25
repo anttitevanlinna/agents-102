@@ -24,7 +24,7 @@ You press Shift+Tab until the status bar shows plan mode on. Then put the questi
 
 ## Three pressures that make bad plans look good
 
-- **Structure is persuasive.** A 7-item plan with section headers and bold text looks like a decision. It often isn't. It's a draft formatted like a decision.
+- **Structure is persuasive.** A 7-item plan with section headers and bold text looks like a decision. It's often just a draft formatted like a decision.
 - **Reasonableness passes for rightness.** Each step sounds reasonable, so the plan sounds right. But reasonable steps in the wrong order, or with one missing, still ship a bug. Judge what the steps add up to, not how each one reads.
 - **You already agree with it.** The plan matches what you'd have written, which feels like alignment. But it was written from a partial read of the codebase, and your instinct is not a check on it. Read it assuming something in there is wrong; there usually is.
 
@@ -100,7 +100,7 @@ Format → `curriculum/backing-format.md`.
 - `verification-step-could-fail` · vision · "*\"Run the tests\"* is cosmetic; *\"run `pytest tests/auth/ -k hash` and expect 14 passing, 0 failing\"* is a gate" ← none-owed
 - `named-assumptions` · vision · "A plan without assumptions isn't assumption-free; it's just assumption-silent." ← none-owed
 - `named-non-goals` · borrowed · "**A list of non-goals.** What the plan will *not* touch." ← horthy-create-plan
-- `structure-is-persuasive` · vision · "It's a draft formatted like a decision." ← none-owed
+- `structure-is-persuasive` · vision · "It's often just a draft formatted like a decision." ← none-owed
 - `reasonableness-passes-for-rightness` · vision · "reasonable steps in the wrong order, or with one missing, still ship a bug" ← none-owed
 - `you-already-agree-with-it` · vision · "Read it assuming something in there is wrong; there usually is." ← none-owed
 - `two-reads-catch-different-misses` · vision · "Your read and the agent's walk-down catch different misses" ← none-owed — nearest published support (v.j.k.'s four-parallel-reviewer disjointness experiment) measures tool-vs-tool, not human-vs-agent; the axis mismatch is why this stays vision and cites nothing

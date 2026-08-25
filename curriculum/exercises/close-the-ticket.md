@@ -45,7 +45,7 @@ Ask Claude to write the close-out, update the ticket, and report what it wrote.
 ## Anything can be reverse-engineered
 
 - The ticket is one instance. Anything can be inspected and reverse-engineered with an LLM: a codebase nobody documented, a CI pipeline, a config, an API you did not write, the system your team runs on and cannot explain.
-- The move is the same every time. Ask the agent to study the pipeline, the config, the undocumented code. Extract a `.md` file. Use that file as context in the next agent.
+- Ask the agent to study the pipeline, the config, the undocumented code. Extract a `.md` file. Use that file as context in the next agent.
 
 ## What happened
 

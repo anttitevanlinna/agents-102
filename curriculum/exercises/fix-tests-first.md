@@ -23,7 +23,7 @@ Drop your bug after the colon.
 
 ## Read the diff and push back on a line
 
-- The agent runs the loop; you read the result. The agent writes the failing test, watches it fail, fixes the code, watches it pass. Read the diff. If a line isn't what you'd have written, push back. Quote the line and say why. The agent yields if you push hard enough, so its agreement settles nothing. Whether your argument was actually better is your call.
+- The agent runs the loop; you read the result. Read the diff. If a line isn't what you'd have written, push back. Quote the line and say why. The agent yields if you push hard enough, so its agreement settles nothing. Whether your argument was actually better is your call.
 - Your own wording matters. No pre-made prompt for the pushback. The compound step reads this session's scrollback, so your push-back is what becomes a rule.
 
 ## Interrogate the fix for a deeper layer

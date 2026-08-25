@@ -5,10 +5,10 @@
 
 - A gate only means what the gate can see. Green is a claim about the check, not a fact about the work. A result passes for three different reasons that look identical from outside: the judge is miscalibrated, the gate got gamed, or the session was a lucky sample.
 - The check you built is itself a claim that wants verifying. The same scrutiny you point at the agent's work points at the thing that judges the work. A gate nobody has verified is a gate trusted on vibes.
-- Those three failure modes have different countermoves: compare the judge with your own labels, keep a separate check the agent never sees, or repeat the task across several sessions. You do not need to build these today; ask your agent to walk you through the relevant one when you need it.
-- The three countermoves share one property: independence. Each rests the verdict on something the system under test does not control: labels the judge never produced, a check the agent never sees, sessions beyond this one. A same-window double-check has none of it; the second read inherits the first one's framing: shared framing, shared blind spots.
+- Those three failure modes have different countermoves: compare the judge with your own judgements, keep a separate check the agent never sees, or repeat the task across several sessions. You do not need to build these today; ask your agent to walk you through the relevant one when you need it.
+- The three countermoves share one property: independence. Each rests the verdict on something the system under test does not control: judgements the judge never produced, a check the agent never sees, sessions beyond this one. A same-window double-check has none of it; the second read inherits the first one's framing: shared framing, shared blind spots.
 
-## The judge needs calibrating against your labels
+## The judge needs calibrating against your own judgement
 <!--tier:2-->
 
 - An LLM judge is another untested component. Until you compare its verdicts with your own review, you do not know its false-pass rate, how often it approves work you would reject.
@@ -25,8 +25,8 @@
 ## One session is a sample
 <!--tier:3-->
 
-- The agent's behavior is a distribution, not a property. Reachable and dependable are different claims: passing once shows the task is reachable, passing again and again shows it is dependable. The second collapses far faster than the first.
-- Before crediting an improvement, run it repeatedly. A new rule, a new prompt, a new gate: judge it on pass rates across several sessions, not on the one session that followed the change. On a single session you cannot separate the change from ordinary session-to-session variance.
+- The agent's behavior is a distribution, not a property. Reachable and dependable are different claims: passing once shows the task is reachable, passing again and again shows it is dependable.
+- Before crediting an improvement, run it repeatedly. A new rule, a new prompt, a new gate: judge it on pass rates across several sessions, not on the one session that followed the change.
 
 ## Change on recurrence, not on noise
 <!--tier:3-->
@@ -78,7 +78,7 @@ Claims
 - `gate-is-a-claim-too` · vision · "The check you built is itself a claim that wants verifying." ← none-owed — re-anchored 2026-08-25 when the pre-slide preamble was cut; the H1's thesis now rests on this slide-1 bullet
 - `green-is-a-claim-not-proof` · vision · "Green is a claim about the check, not a fact about the work." ← none-owed
 - `three-reasons-a-pass-looks-identical` · vision · "the judge is miscalibrated, the gate got gamed, or the session was a lucky sample" ← none-owed
-- `three-failures-have-different-countermoves` · vision · "compare the judge with your own labels, keep a separate check the agent never sees, or repeat the task across several sessions" ← none-owed
+- `three-failures-have-different-countermoves` · vision · "compare the judge with your own judgements, keep a separate check the agent never sees, or repeat the task across several sessions" ← none-owed
 - `countermoves-share-independence` · vision · "The three countermoves share one property: independence." ← none-owed
 - `judge-has-unknown-false-pass-rate` · vision · "Until you compare its verdicts with your own review, you do not know its false-pass rate" ← none-owed
 - `handful-teach-until-convergence` · vision · "compare a handful of your own judgements with the judge's verdicts, and teach the judge until you converge" ← none-owed
@@ -125,6 +125,8 @@ OODA
 - last-run: 2026-08-01
 
 <!-- /backing -->
+
+**"Labels" swapped out of body (2026-08-25, Antti-directed):** eval jargon the deck never earns; header now reads *against your own judgement*, both bullet uses read *judgements*. The word survives only in the ledger, where it is Husain's own. In the same pass, *One session is a sample* lost its two trailing mechanism sentences (*"The second collapses far faster"*, *"cannot separate the change from ordinary variance"*) — the recurrence slide next door owns variance.
 
 **Closing aphorism cut (2026-08-25, Antti-approved):** *"A gate is one more claim in the system. Build it, then hold it to the same bar it holds the work to."* — hanging line restating the H1 (`check_slides.md` §16 class c). The deck now runs straight from the tampering slide into the delegation frontier. Do not restore.
 

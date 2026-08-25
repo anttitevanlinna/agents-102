@@ -14,8 +14,14 @@ answers:
 
 # OpenAI — ChatGPT / Codex / Operator — Platform State
 
-Last updated: 2026-08-23 (cycle 193)
-OODA cycles: 42
+Last updated: 2026-08-25 (cycle 195)
+OODA cycles: 43
+
+**Cycle 195 updates (August 25, 2026) — ASSISTANTS API T-1: NO EMERGENCY EXTENSION; MEASURED COMMUNITY RESPONSE; ZAPIER NO-CODE BREAKAGE CONFIRMED; RECKONING WEEK STARTS TOMORROW:**
+
+**⚠️ ASSISTANTS API SHUTDOWN AUGUST 26 — T-1 — NO EXTENSION; RECKONING WEEK STARTS TOMORROW (L2).** One day before the hard stop: community forum shows ~21 posts with measured problem-solving (not panic). No emergency extension, grace period, or migration tooling announced. Feature parity gap confirmed by practitioners: Responses API lacks `truncation` control that Assistants had — not a 1:1 replacement. Trust erosion: developer asks "Is the new API a beta? How can we trust it?" No automated migration tool (unchanged). **NEW this cycle — Zapier no-code breakage confirmed:** Zapier deprecated all ChatGPT steps built on Assistants API; Zaps break automatically August 26 — no-code business users have no self-service migration path. This breakage won't surface as developer forum posts — it appears as "Zap stopped working" in business user dashboards. Azure path unchanged: Assistants API also retires August 26, migration to Foundry Agents with partial automation (unlike the fully manual OpenAI.com path). Reckoning week August 26–September 5: production failures, X.com/HN incident reports, public app downtime are the next data points. ([community.openai.com sunset thread, Aug 2026](https://community.openai.com/t/assistants-api-beta-deprecation-august-26-2026-sunset/1354666) — [practitioner direct]; [help.zapier.com Assistants deprecation, 2026](https://help.zapier.com/hc/en-us/articles/44865998484365-Important-update-ChatGPT-users-OpenAI-Assistants-API-deprecation) — [vendor documentation]; [learn.microsoft.com Foundry migration, Aug 2026](https://learn.microsoft.com/en-us/answers/questions/5790094/will-azure-openai-assistants-api-specifically-be-d) — [vendor documentation])
+
+**Watch Cycle 196 (August 26+):** Day-0 production failures — X.com/HN incident reports, enterprise app downtime, Zapier Zap failure volume, any OpenAI emergency announcement; reckoning week evidence August 26–September 5.
 
 **Cycle 193 updates (August 23, 2026) — ASSISTANTS API T-3 LOW SURFACE PANIC / DOUBLE MIGRATION BURDEN CONFIRMED (Prompt Dashboard → November 30 second deprecation; 5 community replies at T-3; stateless-by-default confirmed; Azure=Foundry, OpenAI=Responses splits stand):**
 

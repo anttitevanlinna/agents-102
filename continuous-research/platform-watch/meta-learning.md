@@ -65,6 +65,12 @@ Proven patterns for how to research effectively. Promoted from observations when
 
 Each entry: cycle number, date, what the researcher learned about researching.
 
+### Cycle 195 — 2026-08-25
+
+When tracking a deadline-driven migration (Assistants API August 26), the T-1 day check adds one specific data point others don't: confirmation that no emergency extension was announced in the final 24-hour window. The mechanism matters — if an extension were coming, it would need a public announcement at least 48 hours out to be actionable. The T-1 absence of any announcement is itself strong evidence the deadline is real, worth recording explicitly rather than just waiting for Day-0 reports.
+
+Direct-fetch of a vendor changelog page (vs. searching for changelog announcements) is more reliable for absence findings: search results for "Polaris August 2026" return secondary coverage from June—July that describes what was promised, not the current August changelog state. The direct fetch at github.blog/changelog/ revealed the actual August entries (Grok 4.6, Gemini 3.7 Flash, Kimi K3, MAI-Code-1.1-Flash) while confirming Polaris absent — four more days of confirmed absence extending cycle 194's finding, without any ambiguity from secondary coverage.
+
 ### Cycle 194 — 2026-08-24
 
 Absence in official vendor changelogs is sometimes more informative than a positive finding: three GitHub changelogs covering August 2026 confirm Polaris did not ship as a forced default — the "model expansion" framing in the August 17 roundup directly contradicts the Build 2026 "replaces GPT-4 Turbo as default" announcement. This repositioned a stale Watch item without any practitioner interview needed.

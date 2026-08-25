@@ -181,7 +181,7 @@ The next module opens with what came back, or what you caught before it went fur
 - `[checked:2026-07-31 result:OK due:none]` https://github.com/humanlayer/advanced-context-engineering-for-coding-agents/blob/main/wsff.md — [delegated stamp] Horthy, *Why Software Factories Fail*. Freshest dated check is `lectures/when-a-plan-is-good.md`. This module carries the pointer and its thesis, no number, so it delegates rather than keeping a fourth copy of the date. fallback: drop the pointer.
 
 **Frameworks riffed on (attributed in lecture):**
-- **Gap analysis** — generic business-analysis framework; no single attribution needed. The Phase 2 audit is this move; `exercises/walk-and-send-off.md` names it once, on the slide directly before the audit prompt (moved there from the lecture 2026-08-25).
+- **Gap analysis** — generic business-analysis framework; no single attribution needed. The Phase 2 audit is this move; `exercises/walk-and-send-off.md` names it once, in Phase 2's opening bullet (moved there from the lecture 2026-08-25).
 - **Compound engineering** — Kieran Klaassen. Named on the student surface only as a Module 5 pre-read; this module deliberately runs no compound step, so the loop is carried rather than recited.
 
 **`practice` as a noun — ruling updated (Antti 2026-08-15): OK in AE101 body, sparingly; no earning beat owed (`check_writing.md §2`).** The old accept-note defended *"The practice is yours now"* in `## Start here`; that sentence is cut and the body now uses the noun zero times. Maintainer prose was always exempt (*"ambition grows with practice"* above is fine). If the noun returns to body, sparingly is the bar, not an engineered earning sentence.

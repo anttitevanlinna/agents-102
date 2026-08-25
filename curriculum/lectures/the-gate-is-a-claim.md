@@ -1,7 +1,5 @@
 # The gate is a claim too
 
-Say the re-send comes back green. The verifier you built reads the work and passes it. A passing result is only as trustworthy as the check that produced it. The check itself needs verification.
-
 ## Passing is not proof
 <!--tier:2-->
 
@@ -77,7 +75,7 @@ Say the re-send comes back green. The verifier you built reads the work and pass
 <!-- backing -->
 
 Claims
-- `gate-is-a-claim-too` · vision · "A passing result is only as trustworthy as the check that produced it. The check itself needs verification." ← none-owed
+- `gate-is-a-claim-too` · vision · "The check you built is itself a claim that wants verifying." ← none-owed — re-anchored 2026-08-25 when the pre-slide preamble was cut; the H1's thesis now rests on this slide-1 bullet
 - `green-is-a-claim-not-proof` · vision · "Green is a claim about the check, not a fact about the work." ← none-owed
 - `three-reasons-a-pass-looks-identical` · vision · "the judge is miscalibrated, the gate got gamed, or the session was a lucky sample" ← none-owed
 - `three-failures-have-different-countermoves` · vision · "compare the judge with your own labels, keep a separate check the agent never sees, or repeat the task across several sessions" ← none-owed

@@ -33,17 +33,13 @@ Ask Claude to screen your candidates, scope the winner, and add them after the c
 - Push back when the screening goes off-topic, or misses something you know about the codebase.
 - You'll use this task again next module.
 
-## Gap analysis: walk your system against the task
-
-- **Gap analysis**: walk the system you have against the system the task needs. Claude audits your setup as a subagent and returns a ranked list of thin spots.
-- Filling the worst few gaps is worth more than closing them all.
-
-## Phase 2: Build the ranked list of what will hurt the agent
+## Phase 2: Walk your system against the task
 
 *45 min*
 
-- The agent reads `CLAUDE.md`, `CLAUDE.local.md`, memory, ADRs, and any skills you've authored, then ranks the five thin spots that will hurt it most on this task.
-- Heavy audit expected. Skim past the opening summary; the ranked thin-spots list is the payoff. If the ranked list comes back thin, push Claude to keep digging rather than letting a shallow pass stand as done. If it comes back long and unranked, send it back for five, ranked.
+- **Gap analysis**: walk the system you have against the system the task needs. Claude reads `CLAUDE.md`, `CLAUDE.local.md`, memory, ADRs, and any skills you've authored, then ranks the five thin spots that will hurt it most on this task.
+- Filling the worst few gaps is worth more than closing them all.
+- Heavy audit expected. Skim past the opening summary; the ranked list is the payoff. If it comes back thin, push Claude to keep digging; long and unranked, send it back for five, ranked.
 
 Ask Claude to run the audit as a subagent and return a ranked top-five.
 
@@ -109,13 +105,13 @@ A fill looks like one of these shapes (the audit tags each gap with one):
 Claims
 - `find-thin-spots-before-the-agent-does` · vision · "you find the thin spots before the agent does" ← none-owed
 - `gap-analysis-is-a-question` · borrowed · "**Gap analysis**: walk the system you have against the system the task needs." ← cultural-vocab — moved in from `lectures/test-and-learn.md` with its slide, 2026-08-25
-- `push-if-the-ranked-list-comes-back-thin` · vision · "If the ranked list comes back thin, push Claude to keep digging rather than letting a shallow pass stand as done." ← none-owed
+- `push-if-the-ranked-list-comes-back-thin` · vision · "If it comes back thin, push Claude to keep digging" ← none-owed
 
 Sources
 (none. Every claim is the exercise's own design stance or a move the student runs against their own repo. The one borrowed frame is generic business-analysis vocabulary that owes attribution by name only.)
 
 Frameworks
-- Gap analysis · [borrow:business analysis] · law:none · ← cultural-vocab — the Phase 2 audit is this move, and the body names it once, on the two-bullet slide directly before the audit prompt (moved in from `lectures/test-and-learn.md` 2026-08-25, Antti-directed: the naming lands where the move is run). Generic; no single attribution. One naming is the budget — do not elaborate it into a method section.
+- Gap analysis · [borrow:business analysis] · law:none · ← cultural-vocab — the Phase 2 audit is this move, and the body names it once, in Phase 2's opening bullet (moved in from `lectures/test-and-learn.md` 2026-08-25 Antti-directed, then merged into the phase slide on his "optimise text": the naming lands where the move is run). Generic; no single attribution. One naming is the budget — do not elaborate it into a method section.
 - Test and learn · [borrow:none] · law:variation-selection-retention · ← cultural-vocab — the un-packaged run is the variant this arc generates; the next module selects
 - Name the uncertainty before you move · [borrow:none] · law:name-the-uncertainty-before-you-move · ← none — the fit-check against long-run criteria is this governor fired before a send-off
 

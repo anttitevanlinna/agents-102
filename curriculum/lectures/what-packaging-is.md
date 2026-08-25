@@ -14,10 +14,6 @@ One long session, drawn as a sea passage.
 - Guardrails belong where damage cannot be undone. Fence the reef, not the open water. At an irreversible edge a standing check stays lit whether anyone remembers to look or not; where redo is cheap, let the session sail.
 - An unchecked session arrives confident, and wrong. Same start, no fixes, one wedge widening the whole way. The success report comes from the wrong harbor.
 
-Packaging decides what catches problems during the handoff.
-
-A standing check pushes back before the next wrong step builds on the last one. That is the difference between a final review and feedback inside the passage.
-
 ## Reference and plan
 <!--tier:2-->
 
@@ -104,6 +100,8 @@ imperative that asks the room to run it.
 
 **§3 disposition (was 4×M5 + 5×M6 above the fence; now zero):** "walked into M5" → lede recast without ref · "start of M5" (failure modes) → folded into slide-1 mapping bullets · "M5 teaches the extend camp" → "the extend camp is the one you just ran" · "Bridge to M6" (all 5×M6 + "M5 asks") → module file `## Next` per §3; no refs remain above the fence.
 
+**Sea-passage trailers cut (2026-08-25, Antti-approved):** the two hanging lines after the chart bullets (*"Packaging decides what catches problems during the handoff."* / *"A standing check pushes back before the next wrong step builds on the last one. That is the difference between a final review and feedback inside the passage."*) — doctrine restated after the chart already argued it (`check_slides.md` §16 class a). Their claim rows went with them. Do not restore.
+
 **Quality:** compendium-audited 2026-08-24 (writing@5df71aa6 story@5df71aa6 technical@10a10d2b behavior@1c765f2 pedagogy@5df71aa6 strategy@1c765f2 slides@5df71aa6)
 - judges @10a10d2b: writing PASS (drift-recheck), story PASS (drift-recheck), technical PASS, behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS (drift-recheck)
 - source-freshness stamped 2026-05-25; MiniJinja and getpushtoprod stamps re-verified 2026-07-02 (stamps in Source verification block; run `source-freshness.sh --target <cohort-date>`).
@@ -131,8 +129,6 @@ Claims
 - `check-is-a-position-fix` · vision · "**A check is a position fix**" ← none-owed
 - `guardrails-at-irreversible-edges` · vision · "Guardrails belong where damage cannot be undone. Fence the reef, not the open water." ← none-owed
 - `unchecked-run-confident-and-wrong` · vision · "An unchecked session arrives confident, and wrong." ← none-owed
-- `packaging-catches-problems-during-handoff` · vision · "Packaging decides what catches problems during the handoff." ← none-owed
-- `standing-check-pushes-back-inside-the-passage` · vision · "A standing check pushes back before the next wrong step builds on the last one." ← none-owed
 - `three-pattern-is-a-synthesis` · detail · "The menu is a synthesis across practitioners (Cherny, Huntley, Ronacher); no single write-up carries it" ← kim-on-cherny, huntley-ralph, ronacher-minijinja — the ownership form of the old combined-into-one-kit sentence (`check_research_claims.md §1` vocabulary-is-a-claim: synthesis owned, no field convergence asserted); each named practitioner's pieces are on the stamps.
 - `kit-stands-in-at-verification` · vision · "the kit is what stands in for you at Verification" ← none-owed
 - `reference-artefact-against-goal-drift` · vision · "**Reference artefact**, against goal drift." ← none-owed

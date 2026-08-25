@@ -48,10 +48,6 @@ Drop your bug after the colon.
 
 - How far you let Claude drive Git is your choice. Ask Claude to commit, push a branch, and open the PR.
 
-**What happened:** A real PR shipped. A failing test landed in the codebase before the fix did. The diff got read, at least one line got pushback, and the root-cause interrogation ran before the second TDD pass.
-
-*For those finishing early: chatter about making sure the LLM doesn't fake tests or write tests that just pass. How do you catch that efficiently?*
-
 <!-- maintainer -->
 
 **View summary:** You bring a real bug through a tests-first repair: prove it with a failing test, fix the root cause, interrogate the diff, and ship the PR. The artifact is working code whose evidence you have read and challenged.

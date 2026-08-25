@@ -141,7 +141,7 @@ Claims
 - `plan-attention-is-not-equal-attention` · vision · "A plan deserves more attention than ordinary agent output; not every line is equally important." ← none-owed
 - `read-the-file-not-the-summary` · vision · "the chat summary is secondary" ← none-owed
 - `plan-mode-mechanics` · detail · "In plan mode, name the task" ← cc-permission-modes — the Shift+Tab keystroke was cut here 2026-08-12 (Antti: *"M2 instructs now twice how to enable plan mode"*). `when-a-plan-is-good.md`'s `plan-mode-shift-tab` is the single copy and the one the freshness stamp watches; M1 runs without plan mode, so that lecture is the student's first encounter and its own optional beat exercises it before this file opens. Do not restore the keystroke here — the label churns (`⏸ plan mode on`, plus `/plan` as a second entry point) and two copies means two edits.
-- `keep-planning-with-feedback` · detail · "At the approval prompt, pick **No, keep planning**." ← cc-permission-modes
+- `keep-planning-with-feedback` · detail · "At the approval prompt, pick **No, keep planning**; the other two options approve and leave plan mode." ← cc-permission-modes
 - `plan-mode-takes-minutes` · vision · "Plan mode takes minutes on real codebases. Eight to twelve isn't unusual." ← none-owed
 - `assumption-push-back-is-wwhtbt` · borrowed · "something the plan is carrying silently that it shouldn't" ← martin-wwhtbt
 - `re-softening-on-regeneration` · vision · "read the flagged steps in the revised plan, not the agent's report of them" ← none-owed — the niceness mechanism compressed into the Phase-3 note box; the report-back grain-of-salt is M1's self-report-is-a-hypothesis recalled at point of use.

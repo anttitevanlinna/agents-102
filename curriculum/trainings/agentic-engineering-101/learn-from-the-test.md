@@ -35,8 +35,6 @@ Prompting this over and over is not the way. The real move is putting the defini
 
 [Lecture: Reading the return](lectures/reading-the-return.md)
 
-[Lecture: Learning through contrast](lectures/learning-through-contrast.md)
-
 ## Your mid-run worries hint at missing checks
 
 Somewhere during the un-packaged send-off a worry surfaced: did it touch the migration, did the tests really cover the edge. There was no way to check mid-session, and it nagged.

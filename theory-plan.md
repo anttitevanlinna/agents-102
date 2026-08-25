@@ -588,7 +588,7 @@ Full per-agent detail: workflow journal `wf_84956103-430` + each file's maintain
 3. **the-wizard-move** — deleted "with plan mode used deliberately" (drift vs getting-going Big Idea/LO: M1 = no plan mode). Confirm the module file was the intended truth.
 4. **gate-is-a-claim double-wired** (M5 pre-reads + M6 `## Next`) — unwire one if too much.
 5. **run-the-first-experiment.md:78** "…is the practice." → "…is the move." (second practice-as-noun beyond M4's budget; fixer skipped as pre-existing writing-PASS).
-6. **learning-through-contrast §3 carve-out** — backward "close of M4" defensible; forward "M6 will be the encode" is the weakest limb (module `## Next` already carries it).
+6. **learning-through-contrast §3 carve-out** — backward "close of M4" defensible; forward "M6 will be the encode" is the weakest limb (module `## Next` already carries it). *(Moot 2026-08-25: file merged into `reading-the-return.md`; neither sentence survives.)*
 8. **M6 two-bullet closers** (steering-the-wiring *You steer* · agents-that-build-agents *Where the loop ends*) below the 3–6 floor; deliberate, maintainer-flagged.
 9. **gate-is-a-claim numbers** — new verified ">90% in 3 iterations" (earn its slot?) + "Thirty outputs is plenty to start" reads as Husain's number, unanchored.
 10. **skills-from-the-frontier team-kit path** — fixed to personal-first `~/.claude/skills/test-strategy/`; verify against sponsor-contract intent.

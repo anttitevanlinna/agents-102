@@ -8,19 +8,25 @@
 
 ## Three failure modes you'll use to read
 
-- Practitioners hit the same three. Use them as lenses, not boxes: ground each finding in a quoted moment, and one moment can carry more than one mode.
+- Practitioners hit the same three. Use them as lenses, not boxes.
 - **Goal drift.** The instructions get buried as the conversation grows, and before long the agent is solving an adjacent problem with confidence. The LLM reasons from what fills the window now, and the original ask competes with everything generated since. Hard to spot until you compare what was asked against what was done.
 - **Context rot.** Signal-to-noise drops as the working window fills. The agent rehashes approaches it already ruled out two hours ago, because "ruled out two hours ago" no longer fits in the working window.
 - **Plausible-but-wrong.** Outputs look reasonable in isolation and don't match the original spec. The LLM produces the next likely word, not the next true one, so fluent and confident is its default finish whether the work is right or not. The most expensive to find: no obvious tell.
-- Your rules file is in that window too. Dex Horthy, on the failure: *"The longer your file gets, the more Claude seems to treat individual sections as optional."* One more question for the read: did the rules you compounded actually reach the work?
-
+- Your rules file is in that window too. Dex Horthy, on the failure: *"The longer your file gets, the more Claude seems to treat individual sections as optional."*
 ## Every long session is suspect on all three
 
 - Check the artefact against all three.
 
+## Diagnose first, fix later
+
+- When an agent gets something wrong, the reflex is to fix it immediately: edit the prompt, add a constraint, reach for the next tool. This module holds that reflex off. The failures earn the validation that catches them.
+- The arc is *test → learn → encode*. The un-packaged send-off was the test. This is the learn. The encode turns what the read finds into durable checks.
+
 <!-- maintainer -->
 
 **Practitioners *hit* the three; they do not *name* them the same.** The slide-2 lead says *"Practitioners hit the same three"* deliberately. The phenomena are well attested across named practitioner accounts — that claim is sound. The vocabulary claim is not: only **context rot** is real field vocabulary (coined on Hacker News, studied by Chroma across 18 models, adopted into Anthropic's engineering guidance, used unprompted by Ronacher and Osmani). *Goal drift* and *plausible-but-wrong* return zero named practitioners; they are our labels for phenomena the field describes constantly without settling on a word, which is a legitimate thing for a curriculum to do and not something to dress as consensus. **Writing/story judges: do not restore "name the same three" or "converge on this vocabulary."** The authority those words reached for is carried by *Every long session is suspect on all three*: an operational prior to check each lens, not a claim that every session contains every failure.
+
+**`learning-through-contrast.md` merged in as the closing slide (2026-08-25, Antti-directed).** Two M5 openers were doing one job — its *"Whatever came back is data"* opener duplicated slide 1's artefact bullet near-verbatim, and the diagnostic stance is the operational form of this file's driving question. The surviving unique bullets (reflex-off, test → learn → encode) now close this deck as `## Diagnose first, fix later`, handing the room into the exercises; the duplicate bullet died in the merge. The dissolved file's standing contracts carry forward here: the pre-read carries depth and the opener restates for the room — don't expand opener explanations, don't leak embargoed names (`vocabulary.md` § pre-read row points here now); the three-pattern stays unnamed, the exercise earns it; delivery lands "read first, fix later" slowly and hands straight to the exercise. Do not resurrect the file — its slug was M5's mood name, not its content.
 
 **Scale slide cut (2026-08-25, Antti-directed):** *The same three checks at larger scale* (Ronacher MiniJinja port, Sumner Bun rewrite) removed whole — the deck is back to 3 slides and this lecture stays on the student's own session. Claims and both source stamps went with it; `what-packaging-is.md` keeps its own MiniJinja stamp and point-of-use mention, unaffected. Do not restore the ports here.
 
@@ -68,6 +74,8 @@ Format → `curriculum/backing-format.md`. This is the file's only source and fr
 - `plausible-but-wrong` · detail · "Outputs look reasonable in isolation and don't match the original spec..." ← ooda-long-running-2026-04-21 — **unattested as a term anywhere.** The cited run carries no source for it, and a targeted hunt found none. It reads as a plain-English gloss on the next-likely-token mechanism, which is a fine thing for us to have written and not a name the field uses.
 - `rules-file-skimmed` · detail · "The longer your file gets, the more Claude seems to treat individual sections as optional." ← horthy-ignored-claude-md, tw-radar-instruction-bloat — verbatim Horthy, attributed in body; the Radar entry corroborates direction only (anonymised aggregate, Level 0) and stays out of body. The read-question framing is deliberate: a doubt to check against the student's own run, not settled mechanism. This backing block owns the evidence and current stance; M6's memo owns the aphorism.
 - `all-three-vigilance` · vision · "Check the artefact against all three." ← none-owed — the governor is vigilance across the three lenses, not a claim that every session contains every failure.
+- `diagnose-first-fix-later` · vision · "Diagnose first, fix later" ← none-owed — anchors on the closing slide's header; arrived 2026-08-25 with the `learning-through-contrast.md` merge.
+- `test-learn-encode` · vision · "The arc is *test → learn → encode*." ← none-owed
 
 **Sources**
 - ooda-long-running-2026-04-21 `[checked:2026-08-02 result:CAVEAT due:cohort]` `continuous-research/platform-watch/coding-agents/runs/2026-04-21-practitioner-long-running.md` — [internal OODA run] The cited basis for the three modes. **Read in full, and it carries less than it seems.** Goal drift rests on a SitePoint article its own note describes as a *"synthesis of practitioner reports"* — `[tech press]`, a digest, one source not many. Context rot rests on a single Medium post by an individual. Plausible-but-wrong carries **no source**. The run's own limitations section: *"Hard hour-by-hour failure-rate numbers. Practitioners describe qualitative drift; nobody published 'at hour N, P(failure)=X.'"* The body carries no clock claim; the CAVEAT is the thin per-mode sourcing above.
@@ -83,6 +91,7 @@ Format → `curriculum/backing-format.md`. This is the file's only source and fr
 
 **Frameworks**
 - Three failure modes (goal drift · context rot · plausible-but-wrong) · [borrow:none] · law:three-failure-modes · ← ooda-long-running-2026-04-21. The borrow ledger previously read *"convergence IS the citation."* That formulation is doing too much work: it converts an absence of attribution into a positive claim. Convergence is a thing you demonstrate by counting independent reporters, not a thing you assert when you cannot name one.
+- test → learn → encode · [borrow:none] · law:none · ← cultural-vocab
 - Reference artefact to diff against · [borrow:practitioner-coined] · law:none · ← ronacher-minijinja. **Present only as deliberate absence** — the body withholds it so M5 can land the contrast. Do not name it here.
 
 **Stance** `[stance:2026-08-01 level:L2]`

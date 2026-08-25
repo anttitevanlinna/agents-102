@@ -16,7 +16,6 @@ AE101 renders one `##` = one slide (`site/layouts/slides.js`). The 2026-07-02 sl
 
 - curriculum/lectures/agents-that-build-agents.md
 - curriculum/lectures/how-this-training-was-built.md
-- curriculum/lectures/learning-through-contrast.md
 - curriculum/lectures/painting-the-picture-with-the-llm.md
 - curriculum/lectures/quality-is-grounding.md
 - curriculum/lectures/reading-the-return.md

@@ -74,3 +74,6 @@ You now have the teammate's job and a candidate selected against it. [Design the
 **Why this is one bounded exercise:** interview and candidate selection are one decision. The first file supplies the outcome test the second file applies; there is no useful pause or independent deliverable between them.
 
 **Framework attributions:** Clayton Christensen and collaborators — Jobs-to-be-Done; Bob Moesta — switch interviews; Anthony Ulwick — outcome statements. The module body repeats the sharing taxonomy because it must frame the full module; this reusable exercise repeats it because it must also run independently.
+
+**Quality:** compendium-audited 2026-08-25 (writing@a4be944f story@a4be944f technical@a4be944f behavior@a4be944f pedagogy@a4be944f strategy@a4be944f slides@a4be944f)
+- judges @a4be944f: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

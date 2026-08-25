@@ -46,3 +46,6 @@ Read the two files side by side. `module-7/technical-plan.md` should name what m
 **Why this is one bounded exercise:** the bottleneck is the design constraint for both plans. The second step consumes the first artifact immediately; neither plan is complete without the other.
 
 **Framework attribution:** Richard Rumelt's crux discipline is used as the load-bearing-obstacle test. Student-facing language stays with *absorption bottleneck* because that is the concept being designed here.
+
+**Quality:** compendium-audited 2026-08-25 (writing@a4be944f story@a4be944f technical@a4be944f behavior@a4be944f pedagogy@a4be944f strategy@a4be944f slides@a4be944f)
+- judges @a4be944f: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

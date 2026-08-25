@@ -136,7 +136,6 @@ const THEORY_HANDBOOK_MANIFEST = {
       'exercises/fix-tests-first',
       'exercises/compound-and-close',
       'lectures/the-machine-you-just-met',
-      'lectures/how-this-training-was-built',
     ]],
     ['M2', [
       'lectures/the-whole-map',

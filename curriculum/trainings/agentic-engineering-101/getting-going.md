@@ -51,8 +51,6 @@ After this module, you will be able to:
 
 [The machine you just met](lectures/the-machine-you-just-met.md)
 
-[How this training was built](lectures/how-this-training-was-built.md)
-
 ## Key Concepts
 - The loop is orient → fix → close → compound
 - `/context` shows what landed in the window. What didn't land is real, and you choose what fills the next round. (`/context` is oldskool; ccstatusline, or ask Claude to set up the built-in status line.) Context is what you put in it.

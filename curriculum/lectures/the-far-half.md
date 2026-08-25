@@ -8,7 +8,7 @@
 
 ## Long-running work adds three new concerns
 
-- Long-running is not more of the same. So far you sat inside every loop: you read each reply, caught each wobble as it happened. When the agent runs for an hour without you watching, that quick feedback goes quiet. You stop seeing every move and meet the result at the end, all at once.
+- Long-running is not more of the same. So far you sat inside every loop: you read each reply, caught each wobble as it happened. When the agent runs for an hour without you watching, that quick feedback goes quiet.
 - **Verification** tells you whether the result is any good. Tests, checks, reads, judges: everything that pushes back on the work before you accept it. On a long session, this stops being a glance and becomes a job.
 - **Absorption** determines how much of the output you can actually take up. Generating is fast; reading, judging, and merging are not. On a long session the gap between the two decides your real throughput.
 - **Outcome** determines what survives the session. The fix you keep, the rule it taught you, and whether any of it crosses the wall from you to the team.

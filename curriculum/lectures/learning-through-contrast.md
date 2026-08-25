@@ -3,7 +3,7 @@
 ## Diagnose first, fix later
 
 - The session may have stopped, finished, or run out of credit. Whatever came back is data.
-- **Diagnose first. Fix later.** The move cuts against most engineering instinct. When an agent gets something wrong, the reflex is to fix it immediately: edit the prompt, add a constraint, reach for the next tool. This module holds that reflex off. The failures earn the validation that catches them.
+- **Diagnose first. Fix later.** When an agent gets something wrong, the reflex is to fix it immediately: edit the prompt, add a constraint, reach for the next tool. This module holds that reflex off. The failures earn the validation that catches them.
 - The arc is *test → learn → encode*. The un-packaged send-off was the test. This is the learn. The encode turns what the read finds into durable checks.
 
 <!-- maintainer -->

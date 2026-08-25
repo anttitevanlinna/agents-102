@@ -40,8 +40,8 @@ Plan mode takes minutes on real codebases. Eight to twelve isn't unusual. Use th
 
 *12 min*
 
-- Don't approve yet. At the approval prompt, pick **No, keep planning**. That holds plan mode open. Send two push-backs on two different axes: one soft item, and one of (assumption · alternative). Your own words, your own concerns.
-- **Soft items:** the step that reads clean but skips over something. *"Update the config"* without which keys. *"Handle migration errors"* without what happens to rows mid-flight. The vagueness isn't a drafting slip; it's where the agent hasn't decided yet. Stuck picking one? Ask Claude which step it's least confident about. **The agent finds; you judge.**
+- Don't approve yet. At the approval prompt, pick **No, keep planning**. Send two push-backs on two different axes: one soft item, and one of (assumption · alternative). Your own words, your own concerns.
+- **Soft items:** the step that reads clean but skips over something. *"Update the config"* without which keys. The vagueness isn't a drafting slip; it's where the agent hasn't decided yet. Stuck picking one? Ask Claude which step it's least confident about. **The agent finds; you judge.**
 - **Assumptions:** something the plan is carrying silently that it shouldn't. A library version, a schema shape, a teammate's recent change the agent hasn't seen.
 - **Alternatives:** not just a flag; the change you'd make. Merge two steps that belong together. Reorder two steps whose sequence matters.
 

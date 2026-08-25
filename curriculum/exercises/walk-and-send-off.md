@@ -52,7 +52,7 @@ Ask Claude to run the audit as a subagent and return a ranked top-five.
 ## Fill the worst two or three gaps
 
 - Pick the ones that will hurt the agent most, probably two or three, not all five. You'll see next module what the others were for.
-- New observations land in `observations/`, gitignored. That's the default home. If your team kit pins a different path, tell Claude which one and stay consistent with it. If `observations/` is new to your repo, ask Claude to add it to `.gitignore` before any writes; the fills below land there and you don't want them tracked.
+- New observations land in `observations/`, gitignored; if your team kit pins a different path, use that one. If the folder is new, ask Claude to add it to `.gitignore` before any writes.
 - The agent reads `observations/` when a prompt names the path, the same way it reads your ADRs. It is not auto-loaded the way `CLAUDE.md` and `CLAUDE.local.md` are.
 
 Ask Claude to walk the picked gaps one at a time, with AskUserQuestion.

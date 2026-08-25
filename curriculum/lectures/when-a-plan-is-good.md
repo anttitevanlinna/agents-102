@@ -12,7 +12,7 @@ You press Shift+Tab until the status bar shows plan mode on. Then put the questi
 
 {{prompt:when-a-plan-is-good-1}}
 
-- The read-only part is load-bearing. Plan mode isn't "Claude thinks before doing." It's "Claude writes a thing you can read, edit, and push back on before your source changes." Nothing edits your source until you approve.
+- Plan mode writes a thing you can read, edit, and push back on before your source changes. Nothing edits your source until you approve.
 
 ## Five things a good plan has
 
@@ -94,7 +94,7 @@ Format → `curriculum/backing-format.md`.
 **Claims**
 - `plan-mode-shift-tab` · detail · "You press Shift+Tab until the status bar shows plan mode on" ← cc-permission-modes
 - `plan-mode-read-only` · detail · "Nothing edits your source until you approve." ← cc-permission-modes
-- `plan-before-source-changes` · detail · "Claude writes a thing you can read, edit, and push back on before your source changes" ← cc-permission-modes — "your source" is the load-bearing scope: since v2.1.218 approved shell commands run during planning, so plan mode protects the source tree, not all state.
+- `plan-before-source-changes` · detail · "Plan mode writes a thing you can read, edit, and push back on before your source changes." ← cc-permission-modes — "your source" is the load-bearing scope: since v2.1.218 approved shell commands run during planning, so plan mode protects the source tree, not all state.
 - `specific-file-list` · vision · "A plan that names three files has made three decisions. A plan that says \"the relevant files\" has made zero." ← none-owed
 - `early-runnable-slice` · borrowed · "Find the first step after which something runs end-to-end" ← horthy-wsff, cockburn-walking-skeleton
 - `verification-step-could-fail` · vision · "*\"Run the tests\"* is cosmetic; *\"run `pytest tests/auth/ -k hash` and expect 14 passing, 0 failing\"* is a gate" ← none-owed

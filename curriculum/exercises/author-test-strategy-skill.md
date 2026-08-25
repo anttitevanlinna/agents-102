@@ -18,9 +18,9 @@
 
 *12 min*
 
-- Skills aren't hand-crafted; they're authored through conversation. You describe your codebase; the agent drafts the SKILL.md. You are not typing markdown into an editor.
+- Skills aren't hand-crafted; they're authored through conversation. You describe your codebase; the agent drafts the SKILL.md.
 - The ship destination is your personal skills folder. `~/.claude/skills/test-strategy/SKILL.md`, auto-discovered in every session you run, across every repo.
-- A test-strategy skill is team-shaped by nature, but it ships personal first. It encodes codebase conventions teammates share. The reasons for personal-first land in Phase 3; the team PR is a follow-up move that starts with a human conversation.
+- A test-strategy skill is team-shaped by nature, but it ships personal first. It encodes codebase conventions teammates share.
 
 Ask Claude to author the skill, asking one question at a time.
 
@@ -35,7 +35,7 @@ Ask Claude to author the skill, asking one question at a time.
 
 *6 min*
 
-- Authoring without invocation is theatre. The skill proves itself only when it runs on real code.
+- Authoring without invocation is theatre.
 - The skill is auto-discovered right here, and this worktree holds the full codebase. Invoke it on the code as it stands in front of you.
 - The agent reads the codebase; you read the strategy it produced and the grade it gave itself, and whether either one reads generic.
 
@@ -46,34 +46,35 @@ Ask Claude to invoke the skill on this codebase and grade what it produced in th
 ## Sharpen the skill from what came back
 
 - Before you ship, ask the skill itself to name its own weakest part: the assumption most likely wrong for this codebase, or what a teammate would push back on first. Push back on what it names; don't settle for reassurance.
-- The grade is biased by design. Claude invoked the skill it just helped author, then graded the result in the same context window: same-window self-charity. One paste, one wait, one read, convenient over rigorous.
+- The grade is biased by design. Claude invoked the skill it just helped author, then graded the result in the same context window: same-window self-charity.
 - Want a harsher read of the output too? Run it as two prompts. Invoke first, read the output, then a second prompt: *"Read that output as if you'd never seen the SKILL.md. Does it fit this codebase, or does it read generic?"* Either approach is fine.
-- If the strategy reads generic, sharpen the skill, not the output. A weak output is usually a weak skill. Sharpen the SKILL.md, then re-invoke.
-- Then decide: one re-invoke, or ship with a TODO. Re-invoke if the sharpen was substantive. Otherwise ship with a one-line TODO at the top naming what's unresolved. A skill that names its own gap is more useful to a teammate than one that pretends it's finished. The authoring muscle is what Module 3 installs.
+- If the strategy reads generic, sharpen the skill, not the output. A weak output is usually a weak skill.
+- Then decide: re-invoke if the sharpen was substantive, or ship with a one-line TODO at the top naming what's unresolved. A skill that names its own gap is more useful to a teammate than one that pretends it's finished.
 
 ## Phase 3: Ship the skill personal-first
 
 *2 min*
 
-- The skill is already shipped. The agent wrote it in Phase 1 and your push-back sharpened it during Phase 2's invoke-and-critique. There is no separate install step. That's the ship.
+- The skill is already shipped. The agent wrote it in Phase 1 and your push-back sharpened it during Phase 2's invoke-and-critique. There is no separate install step.
 
 ## Decide if it graduates to the team
 
 - A strong candidate for a team PR, after you talk to the team. A test-strategy skill encodes conventions teammates share: framework, mocking policy, integration boundary, flakiness patterns. Accurate for you, accurate for them.
-- The team PR starts with a conversation, not a commit. Show it to your staff engineer over coffee. Send it to the channel. Ask two teammates who'd use it whether it matches how they actually write tests on this codebase. Say yes, and you PR it. Push back, and you got the real review for free; sharpen the skill, ship it sharper.
+- The team PR starts with a conversation, not a commit. Ask two teammates who'd use it whether it matches how they actually write tests on this codebase. Say yes, and you PR it. Push back, and you got the real review for free.
 - Agents don't unilaterally change shared team infrastructure. You do.
-- Personal stays a fine final home. Not every skill graduates to a shared kit. The test: would teammates use it as-written, and does the skill carry enough codebase truth to survive their review.
+- Personal stays a fine final home. The test: would teammates use it as-written, and does the skill carry enough codebase truth to survive their review.
 
 **What happened:** One SKILL.md tuned to your codebase's actual testing conventions (framework, mocking policy, integration boundary, flakiness patterns, regression scope), living in your personal skills folder. Shipped. The module's close sharpens it from what the invocation showed.
 
 ## What this sets up
 
 - Module 4 reads this skill as part of the system you have: it walks a real task against everything you've built, and the test-strategy skill is the quality-criterion anchor in that walk.
-- Your personal skills folder now holds one file you authored from session evidence. Promotion to a team home is the conversation you start over coffee, not the move you make here.
 
 **Note** The side-quest worktree may still hold changes the agent made here: code, tests, scratch files. Its copy of `CLAUDE.local.md` came over at the fork and may have drifted from the one in your main repo. The skill crossed back on its own (it lives at user scope); everything else stays in the worktree. Those changes are yours to handle later: keep them, carry the useful parts to your main repo, or delete the worktree.
 
 <!-- maintainer -->
+
+**Lean pass (2026-08-25, Antti-directed M3/M6 shorten, free hands):** cut "You are not typing markdown into an editor." (widget header carries it); "The reasons for personal-first land in Phase 3…" (forward narration); "The skill proves itself only when it runs on real code." (restates theatre line); "One paste, one wait, one read, convenient over rigorous."; "Sharpen the SKILL.md, then re-invoke." (decide-bullet owns re-invoke); decide-bullet merged 5→2 sentences, "The authoring muscle is what Module 3 installs." out (§16b); "That's the ship."; team-PR bullet lost coffee/channel color + "sharpen the skill, ship it sharper"; "Not every skill graduates to a shared kit."; What-this-sets-up bullet 2 (personal-first + coffee dup). Do not restore.
 
 **Install mechanic is stated once.** The ship-destination bullet is the canonical statement of the skill's home and auto-discovery; the backing block cites it as `personal-skills-folder-auto-discovered`, so it must stay verbatim. Do not restate the install path anywhere else in body. Install paths and the team-kit route are canonical in `training-architecture.md` § Skills, which is a planning artefact and not a student page, so the pointer lives here and not in body.
 

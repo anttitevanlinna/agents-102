@@ -22,7 +22,7 @@ After this module, you will be able to:
 
 Open a fresh session in the Module 5 worktree, `../<repo>-m5`. Both sessions are readable: the branches share `.git`, and each run recorded its transcript path.
 
-You walk in holding two sessions of the same task. The un-packaged Module 4 send-off. The packaged Module 5 re-send. The contrast is the material. One session gave you a failure mode to name. Two sessions give you gaps the three-pattern didn't anticipate, and a shape for what to do about each one.
+You walk in holding two sessions of the same task. The un-packaged Module 4 send-off. The packaged Module 5 re-send. One session gave you a failure mode to name. Two sessions give you gaps the three-pattern didn't anticipate, and a shape for what to do about each one.
 
 > **Packaged session thin or missing?** You can still rescue it. If the M5 session is alive but stalled, nudge it once; a *"continue"*-prompt is usually enough. If it crashed or never started, paste the packaged re-send against your worktree fresh; let it catch up while you read on. M6 starts by reading; before it writes, decide whether to wait, stop M5, or accept the partial session as the artefact. If the room starts the lecture while you are still getting a session going, stay with the rescue and read it afterwards.
 
@@ -54,11 +54,11 @@ No compound prompt here. The exercise's gap map and stack-map are the Module 6 c
 
 ## Key Concepts
 - The three-pattern catches what it was shaped to catch. The gaps that surface after two sessions are data the pattern didn't anticipate, not proof the pattern failed
-- Claude over-credits its own packaging by default. You know the countermove by now. A fair push-back names one thing the verifier missed, concretely. The evidence is in the sessions, not in the summary of them
+- Claude over-credits its own packaging by default. A fair push-back names one thing the verifier missed, concretely. The evidence is in the sessions, not in the summary of them
 - Gaps sort into three homes: memory (rules that would have prevented the mistake upstream), sharper verifier (a check that would have fired mid-session), or new skill (a move packaged for future tasks)
 - A check proves something only where it could say no. A judge in the producer's window cannot say no exactly where the producer went wrong.
 - The handoff prompt IS the loop. It packages the stack-map into a move that authors the skill each shape calls for, when you run it.
-- Encoding is the third phase of test → learn → encode. Two sessions tested; the diagnosis learned; the handoff encodes. The loop closes when the lesson ships. Encoding subtracts as well as adds: the durable shape is add, sharpen, delete. A rules file that only grows compounds noise alongside the learning.
+- Encoding is the third phase of test → learn → encode. Two sessions tested; the diagnosis learned; the handoff encodes. Encoding subtracts as well as adds: the durable shape is add, sharpen, delete. A rules file that only grows compounds noise alongside the learning.
 
 ## Optional challenges
 
@@ -82,6 +82,8 @@ Keep on learning and sharing.
 Antti
 
 <!-- maintainer -->
+
+**Lean pass (2026-08-25, Antti-directed M3/M6 shorten, free hands):** Start-here cut "The contrast is the material." (the one-session/two-sessions pair carries it); KC bullet 2 cut "You know the countermove by now." (the deliberate rhyme with bullet 4 untouched); KC bullet 6 cut "The loop closes when the lesson ships." — `the-map-filled-in`'s test-learn-encode bullet keeps the line and owns it. Do not restore.
 
 **The confidence after-measurement fires at this module's Human close but lives OUTSIDE the workbook.** The measurement system is deliberately not in student-facing body; the trainer administers it. Canonical wording in `theory-plan.md` § Baseline instrument — verbatim-identical to the before-measurement or the delta measures the wording. Target delta +3. Do not add a rating beat to this file's body.
 

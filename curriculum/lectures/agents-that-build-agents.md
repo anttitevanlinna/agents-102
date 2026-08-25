@@ -12,11 +12,11 @@ What comes back is a candidate. You read it the way you read any prompt the agen
 
 ## The agent stops where your judgement begins
 
-Not the agent writing its own skills without you in the room. At the start of this training, you might have hoped that was the destination. At the close of M6, you know it is not. Agents that build agents is a collaboration in the same shape every other part of this training has been a collaboration. Claude proposes, you steer.
+Not the agent writing its own skills without you in the room. You might have hoped that was the destination at the start of this training; at the close of M6, you know it is not. Agents that build agents is a collaboration in the same shape as everything else here. Claude proposes, you steer.
 
 The agent's evidence stops at the disk. It can read the artefacts the loop produced. It cannot read the codebase knowledge in your head, the political situation around the team kit, the next quarter's roadmap, the bug your tech lead lost three days to last sprint. The plan it generates is grounded in the evidence on disk; the decision about which proposals to act on is grounded in evidence the agent does not have.
 
-Build the flywheel to run exactly that far. Let the agent run as far as it can on its own evidence, and stop at the moment your judgement is the input that matters. That is the practitioner shape. Anything further pretends the agent has access it does not have.
+Build the flywheel to run exactly that far. Let the agent run as far as it can on its own evidence, and stop at the moment your judgement is the input that matters. Anything further pretends the agent has access it does not have.
 
 ## The handoff prompt that builds your kit
 
@@ -43,7 +43,7 @@ while :; do cat PROMPT.md | claude-code; done
 - Geoffrey Huntley saw a lever. An agent runs, drifts, needs nudging. The fix already existed in shell: one line, no scaffolding.
 - He called it Ralph, after the Simpsons. Hacky, simple, powerful. The name stuck, and Ralph re-feed is one of the three verifier shapes on your menu, for when a multi-hour task wants a stop-and-check.
 - Months later, Claude Code shipped `/goal`. The runtime version of the same move: a condition, a check each turn. The shell hack is now a slash command.
-- Practitioners see levers first. The lever was sitting there in plain shell. Huntley reached for it. The runtime caught up later.
+- Practitioners see levers first.
 
 That's the M6 leap. The next Ralph is yours.
 
@@ -55,6 +55,8 @@ That's the M6 leap. The next Ralph is yours.
 The training closes. The flywheel does not.
 
 <!-- maintainer -->
+
+**Lean pass (2026-08-25, Antti-directed M3/M6 shorten, free hands):** what-this-is-not slide — hoped-destination pair merged to one sentence, "in the same shape every other part of this training has been a collaboration" tightened; cut "That is the practitioner shape." (§16a); Ralph moral bullet trimmed to "Practitioners see levers first." — its trailing three sentences restated bullets 1 and 3. Soil slide, handoff section, and the two-bullet closer untouched per their contracts. Do not restore.
 
 **Handoff-prompt forcing function, failure mode + escape hatch (`check_pedagogy.md` §47, added 2026-08-20).** Dominant failure is **plan-instead-of-prompt**: asked to turn the session's shapes into something that builds the kit, the agent returns an implementation plan, and the student saves it believing they have the artefact. The body says *"What comes back is a prompt, not a plan"* precisely because this is the common return, but that line diagnoses without recovering. Escape hatch, trainer or self: ask for the prompt itself, in the words you would paste into a fresh session, and check the return opens with an instruction rather than a numbered plan. Second failure is **thin shapes**, where M6 Phase 2's diagrams never got drawn and the handoff has nothing to package; recover by pointing at the ranked recurring work from the study prompt and building from the top two. Terminal beat, so nothing downstream breaks, but the student leaves without the one artefact the module exists to produce.
 

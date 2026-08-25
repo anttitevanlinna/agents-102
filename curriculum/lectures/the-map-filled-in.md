@@ -15,8 +15,8 @@ The map is back, one last time.
 {{figure:student-closed-loop}}
 
 - You drew a control loop. Shape the session before it moves, watch what comes back, correct, encode. That is **feedback control** around a non-deterministic agent, and it is the shape the whole map has had from the start.
-- The near half shapes; the far half corrects. Intent, context, and the plan set the target before the session starts. The far half reads what came back, takes up what passed, and encodes what the session taught. That is why the map has two halves: the near half aims the work before it moves, the far half responds to the result and changes the system so the next session starts better.
-- Verification is the sensor. A loop with no way to read its own result runs open: send the work off and hope. The checks you built are how this loop reads what came back. That is why they were never paperwork. They are the part that lets the system catch its own error before it ships.
+- The near half shapes; the far half corrects. Intent, context, and the plan set the target before the session starts; the far half reads what came back, takes up what passed, and encodes what the session taught, changing the system so the next session starts better.
+- Verification is the sensor. A loop with no way to read its own result runs open: send the work off and hope. The checks you built are how this loop reads what came back. They are the part that lets the system catch its own error before it ships.
 - The harness makes continuing possible. What a session gets right without you is set by what has accumulated around it: rules, durable state, checks, encoded corrections. The M4 send-off and the M5 re-send: same model, same harness, two different agents.
 
 ## Verification, named
@@ -46,13 +46,15 @@ The map is back, one last time.
 ## The map, filled in
 
 - Six modules, six phases, one loop. The first fix landed in Work, the plan push-back in Intent and Context, the send-off and the packaged re-send across Verification and Absorption, the encoded skill in Outcome. Every move in this training has a place on this map, and a move with a place is a move you can find again.
-- The moves came first; the names came after. Nothing on this map arrived as theory to apply later. Each law got its name at the moment the move was already yours, and a name is a handle: findable on Tuesday, transferable to a teammate, checkable when it stops working.
+- The moves came first; the names came after. Each law got its name at the moment the move was already yours, and a name is a handle.
 - Dashed is a state, not a place. The checking loop spent four modules marked by hand for now. Whatever runs by hand for now in your own work is the same kind of line: a loop waiting for a check that stands without you.
 - The M5 close left the delegation frontier as a warning: reach grows only as fast as the gates behind it. Every check that stands without you moves the frontier outward. Compounding, read from the frontier: reach grows and trust keeps up.
 
 *The next dashed loop is yours to draw solid.*
 
 <!-- maintainer -->
+
+**Lean pass (2026-08-25, Antti-directed M3/M6 shorten, free hands):** control-loop bullet 2 merged 4→2 sentences — the "That is why the map has two halves…" restatement folded into the shapes/corrects pair; the 2026-07-03 adversarial-verify fix's phase distribution (verification=read · absorption=take-up · outcome=encode + "changes the system") is intact in the merged wording. Bullet 3 cut "That is why they were never paperwork." Closing slide bullet 2 cut "Nothing on this map arrived as theory to apply later." + the handle triple ("findable on Tuesday, transferable…") — `the-loop-half-filled` owns that recitation at the M3 close; here "a name is a handle" suffices. Do not restore.
 
 **Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** law-consolidation file, keeps the most bold — one handle per law: Verification slide **Find is easier than judge** / **The three-pattern** (trimmed to sub-span) / **Verifier, judge, gate: every one an eval**; Absorption slide **Generation is fast; reading, judging, and merging are not** / **Review bandwidth is the constraint** (trimmed) / **The ratio runs near 80/20**; Outcome slide keeps its three law handles; control-loop slide bolds **feedback control** at its naming. Checking-loop re-show, governor, and closing slides de-bolded fully (governor question set italic, never bold); kicker + map-position tags + both SVGs untouched — per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Wording near-verbatim; no claims added or cut.
 

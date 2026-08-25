@@ -2,7 +2,7 @@
 
 ## Back to the map: near half filled
 
-- Three modules in, the near half is lived ground. M1 stepped into the territory without the map, on purpose. The map arrived at M2, and everything since has landed on its near half: Intent, Context, Work, and how a loop compounds. This close puts names on the ground covered.
+- Three modules in, the near half is lived ground. M1 stepped into the territory without the map, on purpose. The map arrived at M2, and everything since has landed on its near half: Intent, Context, Work, and how a loop compounds.
 - **One loop, three sizes.** The agent's act-observe-correct inside a session; your orient, act, verify, compound around each session (M1's orient, fix, compound, close cut at different joints); and the slow loop that carries a win from you to the team. Same shape at three altitudes; the strands the map draws (context, plan, build, checking) are the same shape again, each wearing different work.
 - A name is a handle, not a lesson. Every law coming up is a move already made. Naming it makes the move findable on Tuesday, transferable to a teammate, and checkable when it stops working.
 
@@ -45,6 +45,8 @@
 - Nothing from the near half retires. The loop, the model in the files, the ladder, and the governor keep running underneath. The far half adds the question the near half never made you ask: how do you trust work you didn't watch?
 
 <!-- maintainer -->
+
+**Lean pass (2026-08-25):** cut "This close puts names on the ground covered." (forward narration; the name-is-a-handle bullet carries the naming beat). Nothing else touched — dose verdict, control pair, and merge-bullet contracts all stand. Do not restore.
 
 **Merge bullet accepted as written (2026-08-19, Antti-directed):** *Control is exercised at the merge* is bounded by the two bullets around it. The one above states the side quest never merged and that this is the shape; the one below states that holding the merge until control is earned is the control working. A story judge read the bullet alone and stalled on a merge the student never performs. The beat resolves as a unit, so it stands unchanged; do not add a reconciling clause.
 

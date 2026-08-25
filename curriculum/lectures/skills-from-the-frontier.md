@@ -3,17 +3,17 @@
 ## What a skill is
 
 - A **skill** is a named, scoped capability the agent can invoke. A markdown file with a frontmatter header and a set of instructions, living in `.claude/skills/<name>/SKILL.md` or an equivalent team-kit home. Claude Code discovers it by name and pulls the body in when the work calls for it.
-- One frontier skill already reached you as a plain prompt. The second-pass walk-down against your plan file, where Claude asked you one question at a time about unresolved branches, was patterned on Matt Pocock's `grill-me` skill (MIT-licensed on GitHub, and billed there as "a relentless interview to sharpen a plan or design"). It arrived unpackaged because skills hadn't yet been introduced as a primitive. Today the packaging arrives: you invoke two curated skills and author one of your own.
+- One frontier skill already reached you as a plain prompt. The second-pass walk-down against your plan file, where Claude asked you one question at a time about unresolved branches, was patterned on Matt Pocock's `grill-me` skill (MIT-licensed on GitHub, and billed there as "a relentless interview to sharpen a plan or design"). Today the packaging arrives: you invoke two curated skills and author one of your own.
 - Skills are how agentic knowledge compounds across teammates. A Slack thread about "how to threat-model our webhook paths" dies in 48 hours. A STRIDE skill tuned to your stack lives as long as the repo.
 
 ## Borrowed judgement, or your own
 
-- Security practitioners. The two curated skills compress decades of judgement. STRIDE is Loren Kohnfelder and Praerit Garg's 1999 Microsoft memo, sharpened into a discipline by Adam Shostack's *Threat Modeling: Designing for Security* (2014). Access-control analysis threads back to Saltzer and Schroeder's 1975 least-privilege paper, still cited half a century on. The judgement these skills carry doesn't have to be in your head to be in your hands.
-- You, right now. The test-strategy skill you author has no curated version, and can't: a good test strategy depends on which framework you use, where the flaky tests actually fail, what "unit test" means in a system that talks to five external services. Nobody outside your team can write that skill well. Curating it would be theatre. So you author it in conversation: Claude asks what it needs to encode, and you push back where your codebase doesn't fit the default.
+- Security practitioners. The two curated skills compress decades of judgement. STRIDE is Loren Kohnfelder and Praerit Garg's 1999 Microsoft memo, sharpened into a discipline by Adam Shostack's *Threat Modeling: Designing for Security* (2014). Access-control analysis threads back to Saltzer and Schroeder's 1975 least-privilege paper, still cited half a century on.
+- You, right now. The test-strategy skill you author has no curated version, and can't: a good test strategy depends on which framework you use, where the flaky tests actually fail, what "unit test" means in a system that talks to five external services. So you author it in conversation: Claude asks what it needs to encode, and you push back where your codebase doesn't fit the default.
 
 ## Your authored skill starts personal, then compounds
 
-- Your skills folder, starting today. The skill you author ships to your personal `~/.claude/skills/test-strategy/`, auto-discovered in every session you run. Personal-first is the pattern your kit already follows: your `./CLAUDE.local.md` rules file is personal and gitignored, and the first authored skill lands the same way. Promotion to a team home is a human conversation and then a PR, later.
+- The skill you author ships to your personal `~/.claude/skills/test-strategy/`, auto-discovered in every session you run. Personal-first is the pattern your kit already follows: your `./CLAUDE.local.md` rules file is personal and gitignored, and the first authored skill lands the same way. Promotion to a team home is a human conversation and then a PR, later.
 - A team kit is built from engineers' own skills. The 267-skill plugin repo at Fin (Intercom) grew exactly that way, skill by skill, engineer by engineer: 153 contributors, 31% of R&D headcount active, by the company's own count, as of April 2026. Not a central team writing for everyone else.
 
 ## Two curated, one authored
@@ -34,11 +34,12 @@
 - The access-control skill flags surfaces; deciding is your job. What it got right, what it underweighted, what it missed that you know matters. Agreement is not the job; the delta is.
 - STRIDE does the breadth; you make one call. Resist the urge to harden against everything. Pick one threat worth the work and write the decision down as an ADR.
 - The authoring conversation will offer a generic test-pyramid default. Your codebase is not a pyramid. Push back until the skill reflects how your tests actually work.
-- Skills live in specific places. The curated ones were installed as personal skills at prework, so Claude Code auto-discovers them by name; you don't point at a path. The one you author lands in your personal kit at `~/.claude/skills/test-strategy/`. Don't invent new homes.
 
 Go.
 
 <!-- maintainer -->
+
+**Lean pass (2026-08-25, Antti-directed M3/M6 shorten, free hands):** cut "It arrived unpackaged because skills hadn't yet been introduced as a primitive." (§16b design commentary); "The judgement these skills carry doesn't have to be in your head to be in your hands." (kicker; the borrow slide carries the point); "Nobody outside your team can write that skill well. Curating it would be theatre." (restated the can't-be-curated lead); "Your skills folder, starting today." (padding lead); arming-slide bullet 4 (skills-live-in-specific-places — full dup of the personal-path bullet on the compounds slide + the exercise's canonical install statement). Do not restore.
 
 **Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** all slides kept bullets; bold reduced to two handles — the term **skill** at its slide-1 definition and the principle line **Don't make general what you don't practice yourself** on *Two curated, one authored*. All other leads de-bolded (Borrowed judgement, personal-then-compounds, trust artifacts, and arming slides now carry zero bold); "Go." kicker untouched. Per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Wording near-verbatim; no claims added or cut.
 

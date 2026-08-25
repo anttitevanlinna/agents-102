@@ -17,7 +17,7 @@
 - From here on, outputs get big. The access map runs pages, the STRIDE walk after it runs longer, and soon two windows produce at once.
 - The countermove from M1 goes to work: tell the agent what output you want. The prompts here route the heavy output to disk and keep the chat read short, the saved map first, then a walk-through of what stood out.
 - Your read is the short list, plus the two or three entries your own knowledge of the codebase flags. The file holds the rest until a decision needs it.
-- When an answer balloons into an essay anyway, say so: ranked list first, ten lines. One sentence buys the time back.
+- When an answer balloons into an essay anyway, say so: ranked list first, ten lines.
 
 ## Phase 1: Run the curated skill on your feature and save the map
 
@@ -30,7 +30,7 @@
 /skills
 ```
 
-- You should see `access-control-analysis` and `stride` listed under **User**. (If they're missing, check back where the prework extracted the bundle and installed the curated skills.) The Project list is whatever this repo ships; User is your personal skills. Skills you author later in Module 3 land in User too.
+- You should see `access-control-analysis` and `stride` listed under **User**. (If they're missing, check back where the prework extracted the bundle and installed the curated skills.) The Project list is whatever this repo ships; User is your personal skills.
 
 Ask Claude to list its installed skills, with storage location and context-load status.
 
@@ -44,19 +44,19 @@ Pick the feature and let the skill run. Ask Claude to invoke the access-control-
 
 {{prompt:map-the-access-surface-2}}
 
-The plan path you noted at Module 2's close is the best input here: it names the files, the flows, and the scope the feature actually touches. Paste it, or a ticket link, a design-doc path, or the feature description; Claude reads whatever you give it. Then send. Claude narrates what the skill is doing before the map appears; skip past the opening and look for the saved path when it lands. The skill walks the surfaces and produces the map.
+The plan path you noted at Module 2's close is the best input here: it names the files, the flows, and the scope the feature actually touches. Paste it, or a ticket link, a design-doc path, or the feature description; Claude reads whatever you give it. Then send. Claude narrates what the skill is doing before the map appears; skip past the opening and look for the saved path when it lands.
 
 ## Kick off the pass, then work the other window
 
 - The access-control pass is a breadth walk and takes a few minutes. That wait is the two-window move Module 3 installs: kick off a long task in one window, do active work in the other, come back when the first lands.
-- Switch to your m3-quality window now. While the map builds in m3-security, start *Author your test-strategy skill* there. It opens as a question-at-a-time conversation about how your codebase tests, so a couple of answers fit the wait. When the map lands back in m3-security, switch back to walk it and write the delta. Both windows are already open from *Open the side quest*; this is a focus switch, not a new session.
+- Switch to your m3-quality window now. While the map builds in m3-security, start *Author your test-strategy skill* there. It opens as a question-at-a-time conversation about how your codebase tests, so a couple of answers fit the wait. When the map lands back in m3-security, switch back to walk it and write the delta.
 
 ## Phase 2: Read the map back before you decide the delta
 
 *3 min*
 
 - You're back in m3-security now; the map landed here. The rest of this exercise runs in this window.
-- See the structured read before you decide. Ask Claude to walk you through the surface map in chat: categories, key findings, ambiguous spots. You want the structured read in front of you before you name your deltas in Phase 3.
+- See the structured read before you decide. Ask Claude to walk you through the surface map in chat: categories, key findings, ambiguous spots.
 
 {{prompt:map-the-access-surface-3}}
 
@@ -86,7 +86,6 @@ Then ask Claude to add the surface the skill missed but you know matters.
 *3 min*
 
 - You're about to hand this map to the STRIDE skill. Glance at it. If a teammate landing on this file cold would miss something the map assumes you know, add a one-line context header. If it reads clean, move on.
-- Your call.
 
 **What happened:** A short delta-note is on the record, and it is the artifact STRIDE reads next, not the raw skill output.
 
@@ -95,6 +94,8 @@ Then ask Claude to add the surface the skill missed but you know matters.
 The STRIDE exercise invokes the curated STRIDE skill on the map you just built. The surface map IS the input. If you rushed Phase 2, STRIDE threat-models a thin map; if you worked the delta, STRIDE has something real to chew on.
 
 <!-- maintainer -->
+
+**Lean pass (2026-08-25, Antti-directed M3/M6 shorten, free hands):** cut "One sentence buys the time back." (aphorism kicker, §16c); "Skills you author later in Module 3 land in User too." (forward plant; author exercise owns the destination); "The skill walks the surfaces and produces the map." (restatement); "Both windows are already open… focus switch, not a new session."; Phase-2 "You want the structured read in front of you…" (restated its own lead); the bare "Your call." bullet under Phase 4. Do not restore.
 
 **§48's premature-stop half is deliberately absent from the opener callout (declined 2026-08-15, after a pedagogy judge flagged it as a TODO).** §48 wants recovery named in both directions; this file's opener names only the over-read direction (*take the ranked ten, leave the rest on disk*). That is the failure this beat actually has: M3 is the first heavy curated-skill output and the risk is drowning in it. A shallow-stop callout here would be a gate for a defect that does not fire — Phase 2 already walks the student through reading the map before any decision, and `check_platform_and_boundaries.md` §34 is explicit that a check written for a failure nobody has seen is speculation wearing a gate's clothing. The judge reached the same read and filed it non-blocking. Re-add only if a cohort run shows a student declaring the access map done on a shallow pass.
 

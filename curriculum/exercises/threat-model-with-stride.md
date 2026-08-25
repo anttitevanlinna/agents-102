@@ -26,14 +26,14 @@ Ask Claude to invoke the STRIDE skill as a subagent on the access-surface map fr
 
 ## Read the threat list, expect more than you'll use
 
-- The output over-produces on purpose. It will have more entries than you want to deal with. You reject most of them in the next phase; that rejection is the point, not a failure of the scan.
+- The output over-produces on purpose. You reject most of its entries in the next phase; that rejection is the point, not a failure of the scan.
 - A scan that returns in seconds went shallow. The pass should take minutes. If it comes back instant, push back and re-run. Stay in this window while it works, and read what lands.
 
 ## Phase 2: Pick the one threat worth hardening against
 
 *8 min*
 
-- One threat, not five. You are picking a single threat worth hardening against. The move: name the worst realistic case first, and the hardening decision is usually obvious from there.
+- One threat, not five. The move: name the worst realistic case first, and the hardening decision is usually obvious from there.
 - The agent proposes the incident story; you judge whether it fits. You are not inventing the worst case from scratch. Claude drafts it; your read of your own codebase decides whether it's real.
 
 Ask Claude to propose the most plausible incident story and walk you through the STRIDE pick from there.
@@ -44,13 +44,13 @@ Ask Claude to propose the most plausible incident story and walk you through the
 ## Push back on the incident story, land the mitigation
 
 - The incident story is what makes STRIDE useful rather than performative. Read what Claude proposes. Push back if the story doesn't fit your codebase's reality.
-- Work with Claude to land on the right mitigation. You save it as the ADR next.
+- Work with Claude to land on the right mitigation.
 
 ## Phase 3: Write the decision as an ADR
 
 *5 min*
 
-- The ADR states the call, its alternatives, and the constraint that picked the winner. You write it in your repo's convention. It reads like one engineer explaining a call to another, not a compliance checkbox. It is the artifact your CISO would actually read.
+- The ADR states the call, its alternatives, and the constraint that picked the winner. You write it in your repo's convention. It is the artifact your CISO would actually read.
 - Have the agent draft it and show it before saving. You read the call before it lands on disk.
 
 Ask Claude to draft the ADR in your repo's convention and show it before saving.
@@ -66,7 +66,7 @@ Ask Claude to draft the ADR in your repo's convention and show it before saving.
 ## Check where the ADR landed
 
 - Check the path Claude proposed. Is the ADR in your main session's repo, or in the M3 worktree? If it's in the main repo, skip ahead.
-- If it landed in the worktree, the agent reasoned itself there. M3 forked a worktree at turn 1, and "this is M3 work" has been the scrollback's framing since. From the agent's vantage, the worktree was created specifically *for M3*, so M3's artifacts look like they belong there. The fork prompt called it "the side-quest"; the agent inferred "M3 = side-quest = worktree" and skipped the architectural detail that only the *quality* side belongs there. `pwd` would have answered differently. The agent reasoned forward from the conversation, not from the filesystem.
+- If it landed in the worktree, the agent reasoned itself there. The fork prompt called the worktree "the side-quest", and the scrollback has framed everything since as M3 work, so M3's artifacts look like they belong there. `pwd` would have answered differently. The agent reasoned forward from the conversation, not from the filesystem.
 - Just tell Claude to move it over.
 
 ## Ask whether the ADR loads into future sessions
@@ -80,15 +80,17 @@ Ask Claude whether this ADR rides into future sessions automatically.
 
 ## Save the map and the STRIDE walk before you clear
 
-- Not everything survived to disk. The skills returned their work into this session: the full access-surface map from Exercise 1, and the complete STRIDE walk here, including the threats you considered and set aside. The ADR holds the one decision. The analysis around it is real security documentation, and it clears when the session does.
+- The skills returned their work into this session: the full access-surface map from Exercise 1, and the complete STRIDE walk here, including the threats you considered and set aside. The ADR holds the one decision. The analysis around it is real security documentation, and it clears when the session does.
 
 > **Worth keeping?** Ask Claude to save the access-surface map and the STRIDE walk to your repo's `docs/` directory, next to the ADR, before you clear. Your CISO and the next engineer read what's on disk, not your scrollback.
 
 **What happened:** You made one call and wrote the ADR, and the decision shipped to the repo. The rest of the STRIDE output stayed in the session as evidence, not on disk.
 
-**What this sets up:** The next exercise authors a test-strategy skill and invokes it on this feature, which is now security-tested. The hardening decision becomes a test case in the test strategy. The ADR is in the repo. Your CISO has something to read.
+**What this sets up:** The next exercise authors a test-strategy skill and invokes it on this feature, which is now security-tested. The hardening decision becomes a test case in the test strategy.
 
 <!-- maintainer -->
+
+**Lean pass (2026-08-25, Antti-directed M3/M6 shorten, free hands):** cut "It will have more entries than you want to deal with." + "You are picking a single threat worth hardening against." (restatements); "You save it as the ADR next." (Phase-3 header carries it); Phase-3's "It reads like one engineer explaining a call to another, not a compliance checkbox." (verbatim-adjacent dup of the read-the-ADR slide, which keeps the line); worktree-inference bullet condensed 6→4 sentences (the M3=side-quest inference stated once, `pwd` + reasoned-from-conversation kept); "Not everything survived to disk."; closer's "The ADR is in the repo. Your CISO has something to read." (CISO landed in Phase 3). Do not restore.
 
 **View summary:** You run STRIDE across the mapped surface, reject most threats with reasons, and choose one hardening decision worth recording. The resulting architecture decision record turns a broad threat scan into one defensible engineering choice your team can inspect.
 

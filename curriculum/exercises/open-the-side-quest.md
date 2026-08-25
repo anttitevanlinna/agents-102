@@ -12,7 +12,7 @@ Module 3 runs in two windows. Security is the main quest in your chosen repo. Qu
 
 ## Fork the side worktree from your security lane
 
-- Security is the main quest. Start it in your repo. This is your main lane for Module 3. Access mapping, STRIDE, and the ADR all live here.
+- Security is the main quest. Start it in your repo. Access mapping, STRIDE, and the ADR all live here.
 
 **Session** *(new, "m3-security")*
 
@@ -20,7 +20,7 @@ Module 3 runs in two windows. Security is the main quest in your chosen repo. Qu
 /rename m3-security
 ```
 
-- A sibling worktree is a second working directory on the same git history. It opens next to your repo, useful when two unrelated changes run concurrently, each on its own branch and working state. `git worktree add` makes the sibling folder on its own branch; a new Claude Code session in another window works there; both sessions see the same git history but keep their own working state. The [Multi-session and Git survival guide](../trainings/agentic-engineering-101/reference/multi-session-git.md) carries the longer read.
+- A sibling worktree is a second working directory on the same git history. Useful when two unrelated changes run concurrently: `git worktree add` makes the sibling folder on its own branch, and a new Claude Code session in another window works there. The [Multi-session and Git survival guide](../trainings/agentic-engineering-101/reference/multi-session-git.md) carries the longer read.
 - Personal files like `CLAUDE.local.md` don't sync between worktrees. They get copied across once at fork time, then evolve independently.
 - Decide where to base the side worktree. It branches off your current local HEAD. Clean main is the safe default. If you want another base, switch to it before you fork.
 
@@ -49,10 +49,12 @@ Ask Claude to fork a sibling worktree and copy your personal rules across. The p
 
 ## Set the two windows side by side
 
-- Two windows, side by side, both visible at once. Each holds its own scrollback. Arrange them so neither disappears behind the other.
+- Two windows, side by side. Arrange them so neither disappears behind the other.
 - The move this module installs: when one window kicks off a long-running prompt, the other is where you work. You run security in the main window from here; the quality side waits until you author the test-strategy skill there.
 
 <!-- maintainer -->
+
+**Lean pass (2026-08-25, Antti-directed M3/M6 shorten, free hands):** cut "This is your main lane for Module 3." (dup of main-quest lead); worktree bullet condensed — dropped "It opens next to your repo…" and the second same-history/own-working-state restatement; two-windows bullet dropped "both visible at once" + "Each holds its own scrollback." Do not restore.
 
 **View summary:** You open two agent sessions on one Git history: a security lane in the repository and a quality lane in a sibling worktree. The setup lets independent work continue safely while preserving a clear place for human control at merge.
 

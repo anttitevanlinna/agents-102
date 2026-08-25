@@ -4,7 +4,7 @@
 
 **Session** *(new, "Module 6 worktree session")*
 
-Open a new Claude Code session in the existing M5 worktree (`../<repo>-m5`), no fork. M5's session may still be running the re-send. Leave it if that is the right call; M6 starts by reading both sessions from disk. Before M6 edits files or cuts rules, decide whether the M5 session is done enough, should be stopped, or should be treated as the partial artefact.
+Open a new Claude Code session in the existing M5 worktree (`../<repo>-m5`), no fork. M5's session may still be running the re-send; before this module edits files or cuts rules, decide whether it is done enough, should be stopped, or counts as the partial artefact.
 
 **What you do:** diff two sessions of the same task, then read your history for the work you repeat.
 
@@ -18,9 +18,9 @@ Open a new Claude Code session in the existing M5 worktree (`../<repo>-m5`), no 
 
 *20 min*
 
-- You hold two sessions of the same task. The un-packaged session sits on the `m4/<slug>` branch recorded in `task.md`; the packaged re-send sits on the `m5/<slug>` branch recorded in `plan.md`. Both are visible via git refs, since the worktree shares `.git` with the original repo.
+- You hold two sessions of the same task. The un-packaged session sits on the `m4/<slug>` branch recorded in `task.md`; the packaged re-send sits on the `m5/<slug>` branch recorded in `plan.md`.
 - Read from the recorded coordinates, not a branch or transcript search. Both sessions recorded their transcript paths: M4 in `task.md`, M5 in the protected `Run coordinates` block at the top of `plan.md`.
-- You hold the contrast; the agent reads both sessions off disk. You are not tracing git refs by hand. Point it at the coordinates and let it pull both sessions side by side.
+- You hold the contrast; the agent reads both sessions off disk. Point it at the coordinates and let it pull both sessions side by side.
 
 Ask Claude to read both sessions side by side and name where packaging caught, where it missed, and what new shapes of drift it introduced.
 
@@ -29,13 +29,13 @@ Ask Claude to read both sessions side by side and name where packaging caught, w
 ## Read the contrast, push back where it generalises
 
 - Skim past the opening plan. Claude will likely open with a four-dimension plan summary (*"I'll start with repo state across the m4/ branch, then..."*) before any quoted evidence lands. The contrast moments are what you're reading for.
-- Push back where Claude generalises. Two sessions means two bodies of evidence, and the teaching is in the contrast. If Claude writes *"the agent drifted on goal"* without naming which commit, which file, which scrollback line, re-run the prompt with the quote rule re-asserted.
+- Push back where Claude generalises. If Claude writes *"the agent drifted on goal"* without naming which commit, which file, which scrollback line, re-run the prompt with the quote rule re-asserted.
 - Expect over-credit on the packaging. A fair push-back is *"name one thing the verifier missed, concretely."* Close with a ranked gap list of three to five items and a dominant gap that shapes the rest of this phase.
 
 ## Cut one stale rule the diagnosis killed
 
 - Two sessions of the same task were the first real stress-test of `./CLAUDE.local.md`. Diagnosis surfaced rules that turned out wrong, never fired when they should have, or fired and made the session worse.
-- Cleaning is the compound move that keeps the loop fast. Rules-files have a half-life. Adding rules is only half of it; subtracting the dead ones is the other half.
+- Rules-files have a half-life. Adding rules is only half of it; subtracting the dead ones is the other half.
 
 Ask Claude to cut one rule the two-session diagnosis killed, or to say so and stop if all rules held.
 
@@ -50,7 +50,7 @@ Ask Claude to cut one rule the two-session diagnosis killed, or to say so and st
 
 *15 min*
 
-- Look wider than the two sessions. The dominant gap came from one task. The kinds of work you repeat run across everything you do, and most of them never get looked at directly. This is your stack. How wide you look, and what you choose to map, is yours.
+- Look wider than the two sessions. The dominant gap came from one task. The kinds of work you repeat run across everything you do, and most of them never get looked at directly. How wide you look, and what you choose to map, is yours.
 - Read your own history first. Your Claude Code sessions from every project are sitting on disk, and few engineers ever read them back.
 
 ## Scan your history for the work that recurs
@@ -65,7 +65,7 @@ Ask Claude to scan your sessions across every project and group the kinds of wor
 
 ## Draw your top work-shapes as diagrams
 
-- What comes back is the work you do over and over, grouped and ranked. Read for the few at the top you actually repeat. How far you take this is yours.
+- What comes back is the work you do over and over, grouped and ranked. Read for the few at the top you actually repeat.
 - A recurring kind of work has a shape. Steps in order, a branch, a loop back. Drawn, the shape is easier to recognise than described.
 
 Ask Claude to draw your top few work-shapes as simple diagrams.
@@ -84,7 +84,7 @@ Ask Claude to name the checking primitives the field already runs and rank the o
 
 {{prompt:spot-gaps-build-the-loop-primitives}}
 
-Expect the list to look familiar: test-writing, browser-testing, PR-building, lint and typecheck gates, compile and build, smoke-test on a real path, code-review, git-diff inspection, schema validation, eval suites for agent outputs. Your list won't be exact. The recognition is the point. The primitives Claude names are the ones your codebase already runs.
+Expect the list to look familiar: test-writing, browser-testing, PR-building, lint and typecheck gates, compile and build, smoke-test on a real path, code-review, git-diff inspection, schema validation, eval suites for agent outputs. Your list won't be exact. The primitives Claude names are the ones your codebase already runs.
 
 **What happened:** A one-screen gap map across memory / verifier / skill, one stale rule cut in place, and a diagrammed map of the work that recurs across your stack. The shapes stay in this session's scrollback; you build the handoff prompt from them.
 
@@ -93,6 +93,8 @@ Expect the list to look familiar: test-writing, browser-testing, PR-building, li
 **Note** The M5 worktree holds this module's work: `./CLAUDE.local.md` with the rule you cut, `observations/`, and M5's packaging. Your main repo's copies stopped at the fork, stale rule and all. What crosses back is yours: copy the worktree's versions over, take the parts you want, or leave them where they are.
 
 <!-- maintainer -->
+
+**Lean pass (2026-08-25, Antti-directed M3/M6 shorten, free hands):** session widget condensed 4→2 sentences (wait/stop/accept-partial decision kept; the module file's rescue callout carries the fuller triage); cut "Both are visible via git refs, since the worktree shares `.git`…" (module Start-here states it); "You are not tracing git refs by hand."; "Two sessions means two bodies of evidence, and the teaching is in the contrast." (§16a); "Cleaning is the compound move that keeps the loop fast."; "This is your stack."; "How far you take this is yours." (dup of Phase-2 lead's is-yours); "The recognition is the point." (claim-anchored final sentence carries it). Do not restore.
 
 **View summary:** You compare the un-packaged and packaged runs, rank what the second attempt still missed, cut one stale rule from your rules-file, and draw the work that recurs across your stack. The stack-map feeds the closing handoff move.
 

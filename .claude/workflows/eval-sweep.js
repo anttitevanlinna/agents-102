@@ -231,6 +231,28 @@ Report both integers: the rows you wrote yourself as \`rows_written_by_you\`, an
 // control prompt. Dead constants are invisible exactly in proportion to how
 // well they are commented, so `eval-sweep.test.js` now asserts the prompt text
 // each one produces.
+// The class templates were written for the skill door, which substitutes
+// `{{file_path}}`, `{{compendium_paths}}`, `{{trace_path}}` and
+// `{{catalog_path}}` before dispatch. This door hands the judge the template
+// PATH and asks it to read the file, so every placeholder arrives as literal
+// braces. Harmless for `{{file_path}}` (the header already names the file);
+// load-bearing for `story` and `behavior`, whose templates tell the judge to
+// read a sim-trace cache at `{{trace_path}}` and write the merged trace back
+// there. Bind them here instead.
+const TRACE_SUFFIX = { story: 'persona', behavior: 'behavior' }
+function paramsBlock(j) {
+  const rows = [`- \`{{file_path}}\` → \`${j.file}\``,
+                '- `{{compendium_paths}}` → the rulebook named above']
+  const suffix = TRACE_SUFFIX[j.cls]
+  if (suffix) {
+    rows.push(j.slug
+      ? `- \`{{trace_path}}\` → \`curriculum/evals/sim-cache/${j.slug}.${suffix}.json\``
+      : '- `{{trace_path}}` → **no slug was supplied, so no trace path exists.** Regenerate the trace rather than guessing a filename, and say so in `notes`.')
+  }
+  if (j.cls === 'behavior') rows.push('- `{{catalog_path}}` → `curriculum/evals/simulation-behavior.md`')
+  return `\n**Your template was written for a dispatcher that substitutes its placeholders. This one does not — bind them yourself:**\n\n${rows.join('\n')}\n`
+}
+
 function readSection(j) {
   const comps = (COMPENDIA[j.cls] || []).map(c => `${MEM}/${c}.md`).join('\n  - ')
   const preamble = NO_PREAMBLE
@@ -254,7 +276,7 @@ Every in-scope rule VERBATIM — full lead, full body, every carve-out — minus
   return `## Read
 
 ${preamble}
-2. \`curriculum/evals/judges/${TEMPLATE[j.cls]}\`
+2. \`curriculum/evals/judges/${TEMPLATE[j.cls]}\`${paramsBlock(j)}
 ${rulebook}
 
 Judges cite rule numbers and adjudicate boundary cases, so the \`_index/\` leads are never enough.

@@ -230,3 +230,59 @@ test('the contract file actually carries the mechanics both headers point at', (
   // reinstate the guard this work replaced.
   assert.doesNotMatch(contract, /run `grep -c '"evidence": \*null'` over the instances/);
 });
+
+test('template placeholders are bound, because this door does not substitute them', async () => {
+  // The class templates were written for the skill door, which substitutes
+  // {{file_path}} / {{trace_path}} / {{catalog_path}} before dispatch. This one
+  // hands over the template PATH, so the judge reads literal braces. Harmless
+  // for the file path; load-bearing for story and behavior, whose templates
+  // tell the judge to read a sim-trace at {{trace_path}} and write it back.
+  const behavior = await promptFor({});
+  assert.match(behavior, /`\{\{file_path\}\}` → `curriculum\/exercises\/e\.md`/);
+  assert.match(behavior, /`\{\{trace_path\}\}` → `curriculum\/evals\/sim-cache\/ae101--exercise--e\.behavior\.json`/);
+  assert.match(behavior, /`\{\{catalog_path\}\}` → `curriculum\/evals\/simulation-behavior\.md`/);
+});
+
+test('a story judge gets the persona trace; a class without a trace gets no trace line', async () => {
+  const seen = [];
+  const capture = async (prompt, opts) => { seen.push({ prompt, label: opts.label || '' }); return cleanJudge(prompt, opts); };
+  await run({ items: [
+    { file: 'curriculum/lectures/l.md', instanceSlug: 'ae101--lecture--l', classes: ['story', 'writing'], detail: {}, pins: {}, driftRules: {} },
+  ] }, capture);
+  const story = seen.find((x) => x.label.startsWith('story:')).prompt;
+  const writing = seen.find((x) => x.label.startsWith('writing:')).prompt;
+  assert.match(story, /`\{\{trace_path\}\}` → `curriculum\/evals\/sim-cache\/ae101--lecture--l\.persona\.json`/);
+  assert.doesNotMatch(story, /catalog_path/);
+  assert.doesNotMatch(writing, /trace_path/);
+});
+
+test('no slug means no invented trace filename', async () => {
+  const seen = [];
+  const capture = async (prompt, opts) => { seen.push({ prompt, label: opts.label || '' }); return cleanJudge(prompt, opts); };
+  await run({ items: [{ file: 'curriculum/lectures/l.md', classes: ['story'], detail: {}, pins: {}, driftRules: {} }] }, capture);
+  const story = seen.find((x) => x.label.startsWith('story:')).prompt;
+  assert.match(story, /no slug was supplied/);
+  assert.doesNotMatch(story, /sim-cache\/undefined/);
+});
+
+test('the confirmation and cross-module doors carry the contract too', async () => {
+  const seen = [];
+  const capture = async (prompt, opts) => { seen.push({ prompt, label: opts.label || '' }); return cleanJudge(prompt, opts); };
+  await run(ARGS, capture);
+  const confirm = seen.find((x) => x.label.startsWith('confirm:')).prompt;
+  const set = seen.find((x) => x.label.startsWith('cross_module:')).prompt;
+
+  // A confirmation is a full class judgement, not a check of the one edited
+  // line — the pass that missed the finding read the rest of the class too.
+  assert.match(confirm, /_dispatch-preamble\.md/);
+  assert.match(confirm, /derive-class-brief\.js/);
+  assert.match(confirm, /You are READ-ONLY on the target file/);
+  assert.match(confirm, /full class judgement, not a check of the one line/);
+
+  // The set judge has no per-file brief, but it still owes the contract and it
+  // still must not write the member files.
+  assert.match(set, /_dispatch-preamble\.md/);
+  assert.match(set, /You are READ-ONLY on the target file/);
+  assert.match(set, /check_cross_module\.md/);
+  assert.match(set, /body_sha` MAP/);
+});

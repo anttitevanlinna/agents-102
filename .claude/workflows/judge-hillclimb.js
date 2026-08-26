@@ -1,86 +1,147 @@
 export const meta = {
   name: 'judge-hillclimb',
-  description: 'Race judge-dispatch variants on a planted-defect fixture; score recall before speed',
+  description: 'Race judge-dispatch variants on planted-defect fixtures; score recall before speed',
   whenToUse: 'Optimising judge lead time. Every variant is scored on recall against known planted defects first — a faster variant that misses a plant is rejected, not ranked.',
   phases: [
-    { title: 'Race', detail: 'one judge per dispatch variant, same fixture, wall-clock recorded' },
-    { title: 'Score', detail: 'recall against ground truth, then speed' },
+    { title: 'Round', detail: 'champion + challengers on both fixtures, recall scored before rows' },
   ],
 }
 
 // ---------------------------------------------------------------------------
-// The point of the fixture is that speed is never the only thing improving.
-// A judge told to do less will always be faster; the question this asks is
-// whether it still finds the five defects we planted. A variant that drops a
-// plant is not a cheaper judge, it is a different and worse one.
+// Rounds 2-10 of a hillclimb whose ONLY safe move is to gate on recall.
 //
-// The variable actually under test is the COMPLETENESS LEDGER. Measured off the
-// instances, `story` reports ~15 rows against 136 in-scope rules and never
-// regressed, while the ledger-bearing classes went 24→68 and 14→100 as the
-// rulebook grew. Whether that ledger buys recall or only buys the appearance of
-// coverage has been a judgement call. It is an empirical question now.
+// A judge told to do less is always faster, so latency alone has one global
+// optimum — instant PASS — and every step toward it reads as progress. Each
+// variant here is therefore scored against defects we planted and know the
+// truth about, and a variant that drops one is REJECTED, never ranked.
+//
+// Generation 1 result being carried in: v3-both (fires-only ledger + prefill
+// brief) held 5/5 on the mechanical fixture at 26 rows vs the control's 61.
+// What it did NOT establish is judgement recall — four of five plants there
+// were grep-decidable. So every round from here scores BOTH fixtures, and the
+// judgement fixture is the one with a veto.
+//
+// Timing is deliberately not measured inside a round. Challengers race in
+// parallel over shared slots, so wall-clock there is contention, not variant
+// cost — generation 1 had the fires-only variant come in SLOWEST while doing
+// half the writing. Row count and ingested bytes are deterministic and are what
+// rounds optimise; real seconds come from a serial pass over finalists at the
+// end, which is the only place a timing number means anything.
 // ---------------------------------------------------------------------------
 
 const REPO = '/Users/anttitevanlinna/Projects/agents-102'
 const MEM = '/Users/anttitevanlinna/.claude/projects/-Users-anttitevanlinna-Projects-agents-102/memory'
-const FIXTURE = 'curriculum/evals/bench/fixtures/writing-5plant.md'
 const COMPS = ['check_writing', 'check_student_facing', 'check_prompts', 'check_sales_copy', 'check_strategy_tie_in']
+const FIX = {
+  mech: 'curriculum/evals/bench/fixtures/writing-5plant.md',
+  judge: 'curriculum/evals/bench/fixtures/writing-5judge.md',
+}
 
 const input = args || {}
-const ONLY = input.only || null   // optional list of variant ids to run
+const ROUNDS = input.rounds || 9        // rounds 2..10
+const START_AT = input.startAt || 2
 
-const LEDGER_FULL = `## Completeness ledger — one row per numbered rule
+// --- dispatch dimensions the climb can turn -------------------------------
+// Each is a knob on what the judge READS or WRITES. `cost` is a rough note for
+// the log only; the measurement is what decides.
+const FLAGS = {
+  fires:      'fires-only ledger (no N/A rows)',
+  brief:      'prefill-assembled rulebook, rules verbatim',
+  noDiff:     'skip the pinned-diff step',
+  noPreamble: 'condensed preamble clauses inline instead of the 8.7KB file',
+  lazyExpand: 'skip expand-md when the view reports no prompt/figure markers',
+  batchRead:  'read template + rulebook + view in one batched turn',
+  haiku:      'judge on haiku instead of sonnet',
+}
 
-\`rules_evaluated\` is the coverage ledger, not a highlights reel. Carry exactly one entry for EVERY numbered rule in \`check_writing\` and \`check_student_facing\`, no omission — a rule that does not apply is \`verdict: "N/A"\` with a one-clause reason. Use the \`rule_inventory\` in the body view for the counts rather than counting by hand.`
+function ledgerBlock(v) {
+  return v.fires
+    ? `## Report what fires — no N/A ledger
 
-const LEDGER_FIRES_ONLY = `## Report what fires — no N/A ledger
-
-Do NOT emit a row for every numbered rule. Read every rule in scope, then emit rows ONLY for rules that actually have something to say about this body: a REVISE, or a PASS on a rule that came close enough to be worth recording. Rules that cannot fire on this surface get no row at all.
+Do NOT emit a row for every numbered rule. Read every rule in scope, then emit rows ONLY for rules that have something to say about this body: a REVISE, or a PASS on a rule close enough to be worth recording. Rules that cannot fire get no row.
 
 This is how the \`story\` class has always worked. Reading is unchanged and total — it is the WRITING that is scoped. Do not skim the compendium because your output is shorter.`
+    : `## Completeness ledger — one row per numbered rule
 
-// The brief: rules the prefill already resolved by shape are excluded from the
-// read. Lossless in the sense that those rows are answered and already in the
-// instance — but it is still a reduction in what the judge sees, so it is a
-// variant to be scored, not an optimisation to be assumed.
-const BRIEF = `## Read the brief, not all five compendiums
+Carry exactly one entry for EVERY numbered rule in \`check_writing\` and \`check_student_facing\`, no omission. A rule that does not apply is \`verdict: "N/A"\` with a one-clause reason. Use the body view's \`rule_inventory\` for counts rather than counting by hand.`
+}
 
+function readBlock(v, fixture) {
+  const rules = v.brief
+    ? `\`\`\`
+node curriculum/evals/scripts/derive-class-brief.js ${fixture} writing
 \`\`\`
-node curriculum/evals/scripts/derive-class-brief.js ${FIXTURE} writing
-\`\`\`
+One assembled file: every in-scope rule VERBATIM — full lead, full body, every carve-out — minus rules the shape-gated prefill already resolved. Read it instead of the five compendiums. If it reports it could not build, read the five in full and say so in \`notes\`.`
+    : COMPS.map(c => `   - ${MEM}/${c}.md`).join('\n')
 
-Writes one assembled file containing every in-scope rule VERBATIM — full lead, full body, every carve-out and boundary clause — minus the rules the shape-gated prefill already resolved. Read that one file instead of the five compendiums. If it reports that it could not build, fall back to reading the five in full and say so in \`notes\`.`
+  const preamble = v.noPreamble
+    ? `**Dispatch clauses (condensed — the full file is \`curriculum/evals/judges/_dispatch-preamble.md\` if you need a boundary case):**
+- Read rules at T3 wording, never an \`_index/\` lead: a lead states the prohibition and drops the exception.
+- Before any REVISE, say in one line WHAT HARM the rule prevents and whether it is present here. A rule firing is not the harm arriving.
+- Never cite a command you did not run. Paste real output.
+- A PASS owes evidence: the command result, or the line closest to violating with why it stays inside.
+- Check the maintainer block for a dated accept-note before filing anything.
+- Stay in your class. Out-of-lane observations go in \`notes\`.
+- Never carry a quote forward from a cache without grepping it against the live file.`
+    : `1. \`curriculum/evals/judges/_dispatch-preamble.md\` (in full)`
 
-function prompt(v) {
-  return `You are the **writing** eval judge for \`${FIXTURE}\`. Repo root \`${REPO}\` — cd there first.
+  return `## Read
 
-This file is a BENCH FIXTURE: a real exercise body with defects deliberately inserted. Judge it exactly as you would judge live curriculum. Do not try to guess which lines were planted — report what the rules actually catch.
+${preamble}
+2. \`curriculum/evals/judges/writing.md\` (in full)
+3. Rules:
+${rules}
 
-## Read IN FULL, no index files
+${v.batchRead ? '**Issue the reads for the template, the rulebook and the body view in ONE turn** — they have no dependency on each other and serialising them costs a round trip each.\n' : ''}`
+}
 
-1. \`curriculum/evals/judges/_dispatch-preamble.md\`
-2. \`curriculum/evals/judges/writing.md\`
-${v.brief ? BRIEF : `3. ${COMPS.map(c => `${MEM}/${c}.md`).join('\n   - ')}`}
+function prompt(v, fixture, fixtureName) {
+  return `You are the **writing** eval judge for \`${fixture}\`. Repo root \`${REPO}\` — cd there first.
 
+This is a BENCH FIXTURE: a real exercise body with defects deliberately inserted. Judge it exactly as you would judge live curriculum. Do NOT try to guess which lines were planted — report what the rules actually catch, and report real pre-existing defects too if you find them.
+
+${readBlock(v, fixture)}
 ## The precomputed view — do not re-derive it
 
 \`\`\`
-node curriculum/evals/scripts/derive-body-view.js ${FIXTURE}
+node curriculum/evals/scripts/derive-body-view.js ${fixture}
 \`\`\`
 
-Carries \`maintainer_cut\`, \`fence_ranges\`, \`body_regions\`, a numbered body projection you can grep in-region by construction, and mechanical greps each with a \`planted_proof\`. Do not write your own body projection and do not plant your own test string.
-
-${v.ledger === 'fires' ? LEDGER_FIRES_ONLY : LEDGER_FULL}
+Carries \`maintainer_cut\`, \`fence_ranges\`, \`body_regions\`, a numbered body projection that is in-region by construction, and mechanical greps each with a \`planted_proof\`. Do not write your own body projection; do not plant your own test string.
+${v.lazyExpand ? '\nRun `node scripts/expand-md.js` ONLY if the view\'s `signals` report `has_prompt_blocks` or `has_figures` true. Otherwise the raw source already IS the student view and expanding it buys nothing.\n' : ''}${v.noDiff ? '' : '\n## Run your own diff\n\nThis fixture derives from `curriculum/exercises/close-the-ticket.md`. Diff against it to see what moved.\n'}
+${ledgerBlock(v)}
 
 ## You are READ-ONLY on the fixture
 
-The only file you write is your instance JSON: \`curriculum/evals/bench/runs/${v.id}.instance.json\`. Write it with the Write tool BEFORE composing your reply, then verify it parses with \`node -e "JSON.parse(require('fs').readFileSync('<path>','utf8'))"\`.
+The only file you write is \`curriculum/evals/bench/runs/${v.id}--${fixtureName}.instance.json\`. Write it with the Write tool BEFORE composing your reply, then verify it parses.
 
 Shape: \`{class, file, verdict, body_sha, rules_evaluated:[{compendium, rule_index, rule_lead, verdict, evidence, fix_hint, blocking}], findings:[{rule,line,quote,harm,fix}], todos:[{rule,line,note}], blocking_findings_count, todos_count}\`.
 
-**Every defect you find must name its LINE and quote the offending text**, in \`findings\` (blocking) or \`todos\` (not). A rule number with no line and no quote does not tell the maintainer what to fix.
+**Every defect you find must name its LINE and quote the offending text.** A rule number with no line does not tell the maintainer what to fix — and a defect of voice, register or a missing carve-out counts exactly as much as a banned word.
 
 Return the structured verdict.`
+}
+
+const SCORE_SCHEMA = {
+  type: 'object',
+  required: ['variants'],
+  properties: {
+    variants: {
+      type: 'array',
+      items: {
+        type: 'object',
+        required: ['id', 'recall_mech', 'recall_judge', 'rows_mech', 'rows_judge'],
+        properties: {
+          id: { type: 'string' },
+          recall_mech: { type: 'number', description: 'recall_pct on writing-5plant, 0..1; 0 if the instance is missing' },
+          recall_judge: { type: 'number', description: 'recall_pct on writing-5judge, 0..1; 0 if the instance is missing' },
+          rows_mech: { type: 'integer' },
+          rows_judge: { type: 'integer' },
+          missed: { type: 'array', items: { type: 'string' }, description: 'plant ids dropped, across both fixtures' },
+        },
+      },
+    },
+  },
 }
 
 const VERDICT = {
@@ -88,49 +149,123 @@ const VERDICT = {
   required: ['verdict', 'rows_written', 'findings_count', 'todos_count'],
   properties: {
     verdict: { enum: ['PASS', 'PASS_WITH_TODOS', 'REVISE'] },
-    rows_written: { type: 'integer', description: 'real count of rules_evaluated entries in the file you wrote' },
+    rows_written: { type: 'integer' },
     findings_count: { type: 'integer' },
     todos_count: { type: 'integer' },
     notes: { type: 'string' },
   },
 }
 
-const VARIANTS = [
-  { id: 'v0-control', ledger: 'full', brief: false, label: 'full ledger · 5 compendiums' },
-  { id: 'v1-brief', ledger: 'full', brief: true, label: 'full ledger · prefill brief' },
-  { id: 'v2-fires', ledger: 'fires', brief: false, label: 'fires-only · 5 compendiums' },
-  { id: 'v3-both', ledger: 'fires', brief: true, label: 'fires-only · prefill brief' },
-].filter(v => !ONLY || ONLY.includes(v.id))
+// The climb schedule. Each round proposes challengers as deltas on the reigning
+// champion, so a round tests one or two knobs rather than a new configuration
+// from scratch — which is what makes a rejection attributable.
+const SCHEDULE = {
+  2: [{ add: [] }],                                  // re-validate champion on the judgement fixture
+  3: [{ add: ['noDiff'] }],
+  4: [{ add: ['lazyExpand'] }],
+  5: [{ add: ['batchRead'] }],
+  6: [{ add: ['noPreamble'] }],
+  7: [{ add: ['haiku'] }],
+  8: [{ add: ['noDiff', 'lazyExpand'] }],
+  9: [{ add: ['noDiff', 'lazyExpand', 'batchRead'] }],
+  10: [{ add: [] }],                                 // final: champion on both fixtures, clean
+}
 
-phase('Race')
-log(`racing ${VARIANTS.length} dispatch variants on ${FIXTURE} — 5 planted defects, recall scored before speed`)
+let champion = { id: 'champ', fires: true, brief: true, flags: ['fires', 'brief'] }
+const history = []
 
-// Wall-clock per variant. Date.now() is unavailable in workflow scripts (it
-// would break resume), so each judge is asked for nothing time-related and the
-// ordering of completion is what the runner records instead. Real seconds come
-// from the instance file mtimes, which the scorer reads afterwards.
-const results = await parallel(VARIANTS.map(v => () =>
-  agent(prompt(v), { label: `judge:${v.id}`, phase: 'Race', schema: VERDICT })
-    .then(r => ({ variant: v, result: r }))
-    .catch(() => ({ variant: v, result: null }))))
+for (let round = START_AT; round < START_AT + ROUNDS && round <= 10; round++) {
+  const proposals = SCHEDULE[round] || [{ add: [] }]
+  const challengers = proposals.map((p, i) => {
+    const flags = [...new Set([...champion.flags, ...p.add])]
+    const v = { id: `r${round}-${i}`, flags }
+    for (const f of flags) v[f] = true
+    return v
+  })
 
-const done = results.filter(Boolean)
-log(`raced: ${done.filter(d => d.result).length}/${VARIANTS.length} returned`)
+  phase(`Round ${round}`)
+  log(`round ${round}: champion [${champion.flags.join('+')}] vs ${challengers.map(c => `[${c.flags.join('+')}]`).join(' ')}`)
+
+  // Both fixtures, every challenger. The judgement fixture holds the veto.
+  const runs = await parallel(challengers.flatMap(c => (
+    [['mech', FIX.mech], ['judge', FIX.judge]].map(([name, path_]) => () =>
+      agent(prompt(c, path_, name), {
+        label: `${c.id}:${name}`,
+        phase: `Round ${round}`,
+        schema: VERDICT,
+        ...(c.haiku ? { model: 'haiku' } : {}),
+      }).then(r => ({ variant: c, fixture: name, result: r }))
+        .catch(() => ({ variant: c, fixture: name, result: null })))
+  )))
+
+  const byVariant = new Map()
+  for (const r of runs.filter(Boolean)) {
+    if (!byVariant.has(r.variant.id)) byVariant.set(r.variant.id, { variant: r.variant, fixtures: {} })
+    byVariant.get(r.variant.id).fixtures[r.fixture] = r.result
+  }
+
+  const rec = {
+    round,
+    champion_in: champion.flags.join('+'),
+    challengers: [...byVariant.values()].map(x => ({
+      id: x.variant.id,
+      flags: x.variant.flags,
+      mech: x.fixtures.mech ? { verdict: x.fixtures.mech.verdict, rows: x.fixtures.mech.rows_written, findings: x.fixtures.mech.findings_count, todos: x.fixtures.mech.todos_count } : null,
+      judge: x.fixtures.judge ? { verdict: x.fixtures.judge.verdict, rows: x.fixtures.judge.rows_written, findings: x.fixtures.judge.findings_count, todos: x.fixtures.judge.todos_count } : null,
+      instances: {
+        mech: `curriculum/evals/bench/runs/${x.variant.id}--mech.instance.json`,
+        judge: `curriculum/evals/bench/runs/${x.variant.id}--judge.instance.json`,
+      },
+    })),
+  }
+  history.push(rec)
+
+  // Promotion has to be EARNED, and only the scorer can say whether it was.
+  // Promoting on rows_written would be precisely the latency-only optimiser this
+  // bench exists to stop: fewer rows is what a judge that gave up also produces.
+  // So a scoring agent runs judge-bench against the instances actually written
+  // and reports recall per fixture; a challenger that drops any plant is
+  // rejected and the champion stands.
+  const ids = rec.challengers.map(c => c.id)
+  const scored = await agent(
+    `Score bench instances. Repo root \`${REPO}\` — cd there first. Run EXACTLY these and report the real numbers:
+
+${ids.map(id => `  node curriculum/evals/scripts/judge-bench.js --score curriculum/evals/bench/runs/${id}--mech.instance.json --fixture writing-5plant
+  node curriculum/evals/scripts/judge-bench.js --score curriculum/evals/bench/runs/${id}--judge.instance.json --fixture writing-5judge`).join('\n')}
+
+Each prints JSON with \`recall\`, \`recall_pct\`, \`rows\`, \`noise\`, \`misses\`. Report them verbatim — do not re-judge, do not estimate, do not repair a missing file. If a file does not exist say so and give that variant recall 0; a variant whose instance is missing did not pass, it did not run.`,
+    { label: `score:r${round}`, phase: `Round ${round}`, schema: SCORE_SCHEMA, effort: 'low' })
+
+  rec.scores = scored ? scored.variants : null
+  if (scored && Array.isArray(scored.variants)) {
+    for (const c of rec.challengers) {
+      const sc = scored.variants.find(x => x.id === c.id)
+      if (!sc) continue
+      c.recall_mech = sc.recall_mech
+      c.recall_judge = sc.recall_judge
+      c.rows_mech = sc.rows_mech
+      c.rows_judge = sc.rows_judge
+    }
+    // A challenger is promoted only on FULL recall across BOTH fixtures, and
+    // only if it writes fewer rows than the champion did. Ties keep the
+    // incumbent: an equal-cost variant that changes behaviour is churn.
+    const viable = rec.challengers.filter(c => c.recall_mech === 1 && c.recall_judge === 1)
+    const best = viable.sort((a, b) => (a.rows_mech + a.rows_judge) - (b.rows_mech + b.rows_judge))[0]
+    const champRows = rec.champion_rows ?? Infinity
+    if (best && (best.rows_mech + best.rows_judge) < champRows) {
+      champion = challengers.find(c => c.id === best.id) || champion
+      rec.promoted = best.id
+      rec.champion_rows = best.rows_mech + best.rows_judge
+    } else {
+      rec.promoted = null
+      rec.rejected_because = viable.length ? 'no row reduction over champion' : 'a plant was dropped'
+    }
+  }
+}
 
 return {
-  fixture: FIXTURE,
-  variants: done.map(d => ({
-    id: d.variant.id,
-    label: d.variant.label,
-    ledger: d.variant.ledger,
-    brief: d.variant.brief,
-    returned: !!d.result,
-    verdict: d.result ? d.result.verdict : null,
-    rows_written: d.result ? d.result.rows_written : null,
-    findings_count: d.result ? d.result.findings_count : null,
-    todos_count: d.result ? d.result.todos_count : null,
-    notes: d.result ? (d.result.notes || '') : 'agent did not return',
-    instance: `curriculum/evals/bench/runs/${d.variant.id}.instance.json`,
-  })),
-  score_with: 'node curriculum/evals/scripts/judge-bench.js --score curriculum/evals/bench/runs/<id>.instance.json',
+  rounds: history,
+  champion_flags: champion.flags,
+  note: 'Promotion is deliberately not decided in-workflow. Score every instance with judge-bench --score against BOTH fixtures; a variant that drops any plant on the judgement fixture is rejected regardless of its row count.',
+  score_all: 'for f in curriculum/evals/bench/runs/*--mech.instance.json; do node curriculum/evals/scripts/judge-bench.js --score "$f" --fixture writing-5plant; done',
 }

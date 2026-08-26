@@ -76,6 +76,50 @@ const PLANTS = [
   },
 ]
 
+// Judgement-shaped plants. Generation 1 established that a fires-only ledger
+// holds recall on MECHANICAL defects — four of its five plants were grep-
+// decidable, so it proved the easy half and said nothing about the half the
+// completeness ledger actually claims to buy. These five cannot be grepped: each
+// needs the judge to hold a voice contract, a boundary convention or a scope
+// rule in mind and notice prose that violates it while matching no banned string.
+//
+// Detection for these leans on the LINE the judge cites rather than on matching
+// its wording, because there is no canonical phrasing for "this is the wrong
+// register" and a text matcher would score the judge's vocabulary instead of its
+// recall.
+const JUDGEMENT_PLANTS = [
+  {
+    id: 'register-slip',
+    rule: 'check_writing.md §4 (register match)',
+    text: 'This capability unlocks transformational value across your entire delivery organisation.',
+    detect: /register|voice|transformational|unlocks|marketing/i,
+  },
+  {
+    id: 'unearned-term',
+    rule: 'check_student_facing.md §2 (earn every technical term)',
+    text: 'Wire this through the subagent context window before you hit the compaction boundary.',
+    detect: /unearned|earn|primer|compaction|subagent context|term of art/i,
+  },
+  {
+    id: 'slogan-no-carveout',
+    rule: 'check_writing.md §12 (punchy framing owes a carve-out)',
+    text: 'Every test you write is a test the agent can never break.',
+    detect: /carve.?out|boundary|absolute|slogan|never break|overclaim/i,
+  },
+  {
+    id: 'value-prop-leak',
+    rule: 'check_writing.md §13 (positioning out of a teaching beat)',
+    text: 'Unlike vendor tooling that locks your team in, this approach keeps you in control of the work.',
+    detect: /positioning|value.?prop|vendor|marketing|defensive/i,
+  },
+  {
+    id: 'author-we',
+    rule: 'check_writing.md §6 (author-we ban)',
+    text: 'We believe the loop matters more than the model, and we built this training around that.',
+    detect: /author.?we|first.person|we believe|training.as.organisation/i,
+  },
+]
+
 // The base file. A real exercise, so the judge is reading genuine curriculum
 // prose rather than a synthetic body whose defects stand out against nothing.
 const BASE = 'curriculum/exercises/close-the-ticket.md'
@@ -100,6 +144,7 @@ function buildFixture(name, plantIds) {
     if (!lines[i].trim() || /^#{1,6}\s/.test(lines[i]) || /^\s*[-*]\s/.test(lines[i])) continue
     if (i + 1 < cut && !lines[i + 1].trim()) anchors.push(i)
   }
+  const ALL_PLANTS = [...PLANTS, ...JUDGEMENT_PLANTS]
   if (anchors.length < plantIds.length) {
     throw new Error(`base file has ${anchors.length} usable anchors, need ${plantIds.length}`)
   }
@@ -108,7 +153,7 @@ function buildFixture(name, plantIds) {
   // Insert from the bottom up so earlier insertions do not shift later anchors.
   const chosen = plantIds.map((id, k) => ({ id, at: anchors[Math.floor(k * anchors.length / plantIds.length)] }))
   for (const c of [...chosen].sort((a, b) => b.at - a.at)) {
-    const plant = PLANTS.find(p => p.id === c.id)
+    const plant = ALL_PLANTS.find(p => p.id === c.id)
     if (!plant) throw new Error(`unknown plant: ${c.id}`)
     lines.splice(c.at + 1, 0, '', plant.text)
   }
@@ -118,7 +163,7 @@ function buildFixture(name, plantIds) {
   const out = lines.join('\n')
   const finalLines = out.split('\n')
   for (const c of chosen) {
-    const plant = PLANTS.find(p => p.id === c.id)
+    const plant = ALL_PLANTS.find(p => p.id === c.id)
     const at = finalLines.findIndex(l => l === plant.text)
     planted.push({ id: plant.id, rule: plant.rule, line: at + 1, text: plant.text, detect: plant.detect.source, flags: plant.detect.flags })
   }
@@ -191,16 +236,17 @@ function report() {
   return runs
 }
 
-module.exports = { PLANTS, BASE, buildFixture, scoreInstance, report, BENCH, RUNS }
+module.exports = { PLANTS, JUDGEMENT_PLANTS, BASE, buildFixture, scoreInstance, report, BENCH, RUNS }
 
 if (require.main === module) {
   const argv = process.argv.slice(2)
   const arg = k => { const i = argv.indexOf(k); return i === -1 ? null : argv[i + 1] }
 
   if (argv.includes('--build')) {
-    const t = buildFixture('writing-5plant', PLANTS.map(p => p.id))
-    console.log(`built ${t.fixture} — ${t.planted.length} planted defects at lines ${t.planted.map(p => p.line).join(', ')}`)
-    console.log(`truth: ${path.relative(REPO, path.join(BENCH, 'fixtures', `${t.name}.truth.json`))}`)
+    for (const [name, pool] of [['writing-5plant', PLANTS], ['writing-5judge', JUDGEMENT_PLANTS]]) {
+      const t = buildFixture(name, pool.map(p => p.id))
+      console.log(`built ${t.fixture} — ${t.planted.length} defects at lines ${t.planted.map(p => p.line).join(', ')}`)
+    }
     process.exit(0)
   }
 

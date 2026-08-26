@@ -763,6 +763,24 @@
     },
     {
       "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 47,
+      "rule_lead": "\"It used to be fast\" is a regression report — diagnose it by trajectory, not by architecture.",
+      "verdict": "N/A",
+      "evidence": "Rule is a diagnostic method for the eval-system's own cost regressions (rules_evaluated row-count growth over time); it names no property of a curriculum artifact for a judge to check against this file's content.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 48,
+      "rule_lead": "A bench is silent about everything it cannot stage, and silence reads exactly like a pass.",
+      "verdict": "N/A",
+      "evidence": "Rule governs how to evaluate a judge-hillclimb fixture's blind spots; it is about the eval-instrument's own bench design, not a claim this supplementary page makes.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
       "rule_index": "24a",
       "rule_lead": "Quality stamps: tooling writes them; the SHA pins committed content.",
       "verdict": "N/A",
@@ -778,6 +796,36 @@
       "evidence": "Internal-tooling rule about scan-stale-classes.js freshness-check blind spots, unrelated to this file's subject matter.",
       "fix_hint": null,
       "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": null,
+      "judge_owned": true,
+      "rule_lead": "Whole-compendium scope call: check_prompts.md's 48 rules govern fenced **Prompt** blocks and {{prompt:}} markers.",
+      "verdict": "N/A",
+      "evidence": "Body view signal has_prompt_blocks=false; the only code fence in the file (lines 21-25) is a SKILL.md frontmatter illustration, not a student-copied prompt, matching the maintainer block's own behavior-class note ('no student-copied prompt blocks; the only fence is a SKILL.md frontmatter illustration'). No individual rule in this compendium has a subject to attach to on this file.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 1,
+      "rule_lead": "Banned words — grep zero-tolerance.",
+      "verdict": "PASS",
+      "evidence": "mechanical: /\\b(delve|delving|honest|honestly|importantly|crucial|crucially|substrate|synergize|paradigm shift)\\b/ over body projection curriculum/evals/body-views/ae101--supplementary--skill-stacking.body.txt → 0 hits; pattern proven against planted violation.",
+      "fix_hint": "",
+      "blocking": false,
+      "prefilled": true
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 2,
+      "rule_lead": "Ritual / ceremony — hard ban in any curriculum/training surface.",
+      "verdict": "PASS",
+      "evidence": "mechanical: /\\b(ritual|rituals|ceremony|ceremonies)\\b/ over body projection curriculum/evals/body-views/ae101--supplementary--skill-stacking.body.txt → 0 hits; pattern proven against planted violation.",
+      "fix_hint": "",
+      "blocking": false,
+      "prefilled": true
     }
   ],
   "platform_claims_checked": [
@@ -801,9 +849,9 @@
     },
     {
       "claim": "Skill frontmatter is quoted from the shipped docs ... field is user-invocable (hyphenated), it defaults to true ... allowed-tools pre-approves a tool set for the turn and does NOT restrict access; disallowed-tools is the restricting field.",
-      "line": 178,
+      "line": 181,
       "verdict": "PASS",
-      "source": "https://code.claude.com/docs/en/skills (live WebFetch 2026-08-19), re-derived independently of the maintainer note per dispatch instruction"
+      "source": "https://code.claude.com/docs/en/skills (live WebFetch, re-verified this dispatch, pin b55cd28b..HEAD), re-derived independently of the maintainer note per dispatch instruction"
     }
   ],
   "citations_checked": [],
@@ -811,6 +859,6 @@
   "urls_sampled": [],
   "blocking_findings_count": 0,
   "todos_count": 0,
-  "notes": "File carries no [Skill: name] bracket references, no {{prompt:}} markers, and no external URLs — surfaces 2, 3, 5 of the technical-class template are structurally empty for this file. Surface 1 (platform-capability claims) is the load-bearing surface here: the maintainer block's re-derived frontmatter facts were checked independently against a live fetch of code.claude.com/docs/en/skills rather than trusted from the prior run's summary or the note itself, per dispatch instruction. All three re-derived facts (user-invocable default+effect, allowed-tools pre-approve-not-restrict, disallowed-tools restrict) match the live docs verbatim in substance.\n\nRULE-DRIFT RE-AUDIT (2026-08-23, prior pin c7e8f1e4, staleness reason: rule-drift). git diff c7e8f1e4..HEAD on this file is five lines, all non-blocking for technical class: four wording trims removing hardcoded counts that duplicated the list below them ('Four mechanisms'→'The mechanisms', 'Six workflow archetypes...'→'The workflow archetypes: all but one funnel into `/ship`', 'Three companion diagrams'→'Companion diagrams', 'across all three'→'across all of them') — consonant with check_platform_and_boundaries.md §34's duplicate-value principle though filed under writing/story, not technical; and the dino-stack ATTESTED token gaining its date+context clause (see rule 1/2 evidence above), which is a technical-relevant improvement (check_research_claims.md §1 maintainer-attested format). Six named rules re-read at CURRENT wording per dispatch: check_pedagogy §44 (Plug points+UX) — N/A, file has no ## Plug Points section. §52 (Session widget shape) — N/A, no **Session** widgets (progressive-reading reference, not an exercise). §56 (engineer-audience audit-fix default = body callout, widened 2026-08-23 with the silent-slow-miss carve-out) — N/A, file presents no audit-finding fix of any kind. §61 (verify mechanism before proposing surgery) — N/A, file proposes no SKILL.md/framework change to our own tooling; it documents Dino's existing kit. All four are pedagogy-primary rules (technical's pedagogy lane is only §16/22/23/36/37 per this judge's own completeness contract) — recorded here in notes, not rules_evaluated, per dispatch-preamble's out-of-lane instruction. check_platform_and_boundaries §6 (known Claude Code facts: plan mode/connectors/scheduling/subagents-YAML/turn-streaming) — re-read in full; file's one adjacent mention ('the review step runs in a fresh sub-agent... unbiased-context property the old /clear step provided') describes Dino's own workflow design choice, asserts nothing about our platform's subagent mechanics, and doesn't contradict §6's turn-streaming/subagent facts. N/A, unchanged. §34 (spend on deleting the duplicate, not guarding it) — re-read in full; principle is realized in-body already (the four count-trims above), no live duplicate left to flag; rule's own worked examples (advertised index sizes, duplicate Time lines, unwired hooks) are internal-tooling shaped and don't map onto this reference page's remaining content. N/A, unchanged. MID-AUDIT COLLISION OBSERVED: this file carries a live uncommitted working-tree edit (git status ' M', stable across a 3s re-check) trimming one clause from the 'Skill frontmatter is quoted from the shipped docs' maintainer note (removes 'All three were wrong here until 2026-08-19 and were corrected against' — leaves the verification claim and the re-verify-against-live-docs instruction intact). Per CLAUDE.md multi-user hygiene this reads as a colleague session mid-edit, not a defect; this judge made no edit of its own and audited the current working-tree content as found. The trim doesn't touch any fact this judge's rule_index-4/platform_claims_checked entries depend on.",
+  "notes": "RULE-DRIFT + STALENESS RE-AUDIT (pin b55cd28b..HEAD, staleness reason: infra end-to-end verification). `git diff b55cd28b..HEAD -- <file>` is two lines, both inside the maintainer block, neither touching body content: the Quality header line advanced from '@c7e8f1e4' to '@b55cd28b' (all classes re-stamped, technical included), and the 'Skill frontmatter is quoted from the shipped docs' note dropped its clause 'All three were wrong here until 2026-08-19 and were corrected against' — a session-biography trim (check_writing.md territory, not technical's), leaving the verification claim and the re-verify-instruction intact. `body_sha` is IDENTICAL to the prior technical instance (ae556fa9f9...) — this exact trim was already present and already audited 'as found' when that instance was written (see the MID-AUDIT COLLISION note below, from the same session that produced this trim). No technical-class fact changed. Two new check_platform_and_boundaries.md rules landed since the prior audit (§47, §48, both dated 2026-08-25/26): both are eval-instrument/bench-design diagnostics with no subject in this file's content — N/A, added above. One check_prompts.md scope row added (judge_owned, N/A) recording explicitly that all 48 rules in that compendium have no fenced-prompt subject in this file, rather than leaving the compendium silently uncovered.\n\nFile carries no [Skill: name] bracket references, no {{prompt:}} markers, and no external URLs — surfaces 2, 3, 5 of the technical-class template are structurally empty for this file. Surface 1 (platform-capability claims) is the load-bearing surface here: the maintainer block's re-derived frontmatter facts were checked independently against a live fetch of code.claude.com/docs/en/skills rather than trusted from the prior run's summary or the note itself, per dispatch instruction. All three re-derived facts (user-invocable default+effect, allowed-tools pre-approve-not-restrict, disallowed-tools restrict) match the live docs verbatim in substance.\n\nRULE-DRIFT RE-AUDIT (2026-08-23, prior pin c7e8f1e4, staleness reason: rule-drift). git diff c7e8f1e4..HEAD on this file is five lines, all non-blocking for technical class: four wording trims removing hardcoded counts that duplicated the list below them ('Four mechanisms'→'The mechanisms', 'Six workflow archetypes...'→'The workflow archetypes: all but one funnel into `/ship`', 'Three companion diagrams'→'Companion diagrams', 'across all three'→'across all of them') — consonant with check_platform_and_boundaries.md §34's duplicate-value principle though filed under writing/story, not technical; and the dino-stack ATTESTED token gaining its date+context clause (see rule 1/2 evidence above), which is a technical-relevant improvement (check_research_claims.md §1 maintainer-attested format). Six named rules re-read at CURRENT wording per dispatch: check_pedagogy §44 (Plug points+UX) — N/A, file has no ## Plug Points section. §52 (Session widget shape) — N/A, no **Session** widgets (progressive-reading reference, not an exercise). §56 (engineer-audience audit-fix default = body callout, widened 2026-08-23 with the silent-slow-miss carve-out) — N/A, file presents no audit-finding fix of any kind. §61 (verify mechanism before proposing surgery) — N/A, file proposes no SKILL.md/framework change to our own tooling; it documents Dino's existing kit. All four are pedagogy-primary rules (technical's pedagogy lane is only §16/22/23/36/37 per this judge's own completeness contract) — recorded here in notes, not rules_evaluated, per dispatch-preamble's out-of-lane instruction. check_platform_and_boundaries §6 (known Claude Code facts: plan mode/connectors/scheduling/subagents-YAML/turn-streaming) — re-read in full; file's one adjacent mention ('the review step runs in a fresh sub-agent... unbiased-context property the old /clear step provided') describes Dino's own workflow design choice, asserts nothing about our platform's subagent mechanics, and doesn't contradict §6's turn-streaming/subagent facts. N/A, unchanged. §34 (spend on deleting the duplicate, not guarding it) — re-read in full; principle is realized in-body already (the four count-trims above), no live duplicate left to flag; rule's own worked examples (advertised index sizes, duplicate Time lines, unwired hooks) are internal-tooling shaped and don't map onto this reference page's remaining content. N/A, unchanged. MID-AUDIT COLLISION OBSERVED: this file carries a live uncommitted working-tree edit (git status ' M', stable across a 3s re-check) trimming one clause from the 'Skill frontmatter is quoted from the shipped docs' maintainer note (removes 'All three were wrong here until 2026-08-19 and were corrected against' — leaves the verification claim and the re-verify-against-live-docs instruction intact). Per CLAUDE.md multi-user hygiene this reads as a colleague session mid-edit, not a defect; this judge made no edit of its own and audited the current working-tree content as found. The trim doesn't touch any fact this judge's rule_index-4/platform_claims_checked entries depend on.",
   "shape_hash": "c4e97cd8f53c9097"
 }

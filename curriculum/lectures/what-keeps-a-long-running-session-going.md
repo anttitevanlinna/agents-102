@@ -38,9 +38,9 @@ When your agent stops for missing information, check whether there was a way for
 
 <!-- maintainer -->
 
-**Lecture meta:** *~5 min, four slides. M4 closer after the send-off, read while the un-packaged session remains active. The session is the specimen: each slide turns attention toward durable state, downstream feedback, and boundaries already present.*
+**Lecture meta:** *~5 min, four slides. Post-send-off read while the un-packaged session remains active. The session is the specimen: each slide turns attention toward durable state, downstream feedback, and boundaries already present.*
 
-**Placement:** The observational close rides the active session straight after the send-off; `ironies-of-automation` follows it as the module's closing lecture (since 2026-08-25), and `reading-the-return` opens the next module. It keeps curious readiness open. The trainer does not alter or package the active experiment.
+**Placement:** The observational close rides the active session straight after the send-off; `ironies-of-automation` follows it as the module's closing lecture, and `reading-the-return` opens the next module. It keeps curious readiness open. The trainer does not alter or package the active experiment.
 
 **Time:** ~5 min at presentation pace. One slide per question: what keeps the place, what keeps the direction, what decides whether the session continues, and what stops it early.
 
@@ -48,7 +48,7 @@ When your agent stops for missing information, check whether there was a way for
 
 **The last bullet's closing line is load-bearing** — the retry-churn case never stopped at all, so a slide titled *what stops a long-running session* closing on the one that did not is the point, not an inconsistency to tidy. It reads as a bare observation on purpose (2026-08-14): the *most expensive of the four* tail that first shipped with it was cut as NVA, since ranking the four changes nothing the student does and the bullet already shows the cost.
 
-**Vocabulary (2026-08-26):** slide-4 heading and its last bullet swapped noun-*run* → *long-running session* / *session* per `vocabulary.md § The work` (§21b sweep finding; the refuters' kill over-read the 2026-08-14 notes, which authorize the beat, not the noun). Backing quote for `spends-the-whole-run-on-one-obstacle` re-anchored; claim id kept stable.
+**Vocabulary (2026-08-26):** the slide-4 heading and its last bullet use *long-running session* / *session*, never noun-*run*, per `vocabulary.md § The work` (§21b) — the 2026-08-14 notes authorize the slide's beat, not its vocabulary. The `spends-the-whole-run-on-one-obstacle` claim id is a stable identifier, not body prose.
 
 <!-- backing -->
 

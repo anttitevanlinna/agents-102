@@ -52,7 +52,7 @@
 
 **Mood:** gate-skepticism after the build. The verifier just landed the packaged re-send; this names why a green gate can still lie. Register is Boris-precise plus a Rory reframe (green is a claim, not proof), NOT reassurance and NOT resolved optimism. The closer opens doubt about the gate; it does not close it.
 
-**Promoted** from `supplementary/the-gate-is-a-claim.md` to a proper M5-close lecture in slide format. Audited — see the Quality line below. *(Corrected 2026-07-31: this line denied its own audit while the file carried a 2026-07-27 all-PASS one. Present-tense state, not a changelog — `check_writing.md §3`.)*
+**Promoted** from `supplementary/the-gate-is-a-claim.md` to a proper M5-close lecture in slide format. Audited — see the Quality line below.
 
 **Placement:** M5 close, final lecture, immediately after `what-packaging-is.md`. Recognition-after-building (`check_lectures §1`): the student built a verifier and re-sent the packaged run before this page names the gate's own fallibility. No cross-module sequencing in the body (`check_lectures §3`); any onward pointer lives in the module file's `## Next`.
 

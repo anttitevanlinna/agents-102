@@ -80,7 +80,7 @@ One long session, drawn as a sea passage.
 - judges @d5aa7e3d: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - source-freshness stamped 2026-05-25; MiniJinja and getpushtoprod stamps re-verified 2026-07-02 (stamps in Source verification block; run `source-freshness.sh --target <cohort-date>`).
 **Lecture meta:** *10–15 min closing lecture for M5, deck-shaped. Names the three-pattern after you have built each piece. Earns the name from felt evidence, not from a slide deck delivered cold. The M6 bridge lives in the module file's `## Next`, not here.*
-**Word count:** ~1010 words body.
+**Word count:** ~940 words body.
 
 **Theory passage (three slides after the three-pattern slide; wording Antti-blessed 2026-08-14/15):**
 projects while the packaged re-send is out — *"the packaged experiment testing the kit is running right

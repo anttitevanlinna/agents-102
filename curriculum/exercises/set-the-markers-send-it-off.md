@@ -6,7 +6,7 @@
 
 The same session that ran the audit. It already holds the scoped task.
 
-**What you do:** pin where this run starts and where its record lives, then send the task off and step away.
+**What you do:** pin where this session starts and where its record lives, then send the task off and step away.
 
 **What you build:** a branch, a starting commit, and a transcript path the next session can find.
 
@@ -84,7 +84,7 @@ If Claude stalls, ask it to keep going. The nudge reads as encouragement and lan
 
 **Placement:** the last exercise of M4. The two closing lectures sit below it in the module file and run while the task is already going: `what-keeps-a-long-running-session-going` rides the live session, then `ironies-of-automation` closes the module. This file owns only what the student does.
 
-**Vocabulary (2026-08-26):** noun-*run* → *session* at the off-the-rails bullet, per `vocabulary.md § The work` (sweep-confirmed §21b finding). The leap test's *run* is trainer-side, outside §21b scope.
+**Vocabulary (2026-08-26):** body uses *session* for the agent's own sitting (the What-you-do line, the off-the-rails bullet), never noun-*run*, per `vocabulary.md § The work` (§21b). The leap test's *run* is trainer-side, outside §21b scope.
 
 **Lean-intro trim (2026-08-25, Antti-approved):** Phase 1's stance bullet (*"Your rules files, memory, ADRs and skills are what they are… shows up when you read what comes back."*) cut — `test-and-learn` installed that stance a lecture earlier; this slide's job is the two markers. Do not restore.
 

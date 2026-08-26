@@ -87,7 +87,7 @@ A fill looks like one of these shapes (the audit tags each gap with one):
 
 **`Wire a connector` stays, and owes no setup teaching.** (Antti 2026-08-13, closing a maintainer-call.) The objection was that AE101 never teaches connector setup, so the fill menu asks for a move the training has not equipped. The call: assume this audience already knows how to add a connector. It is ordinary working knowledge for the engineers in the room, not a curriculum coinage, so teaching it would be earning a term they already own — the failure mode `check_student_facing.md` §2 warns about, where over-applying the earn rule strips out the language that makes the material sound written by someone in the trade. Do not cut the shape, do not add a setup beat, and do not re-raise: the other three fills are file writes, this one is not, and that asymmetry is fine.
 
-**Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** bullet leads and the "Start clean." paragraph lead de-bolded; kept bold only on the four fill-shape menu handles (**Observation or rule** / **Sharpen an existing rule** / **Wire a connector** / **Bring the material in**); widget/label chrome untouched, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Wording near-verbatim; no claims added or cut.
+**Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** bullet leads and the "Start clean." paragraph lead de-bolded; bold stays on the four fill-shape menu handles (**Observation or rule** / **Sharpen an existing rule** / **Wire a connector** / **Bring the material in**) and Phase 2's **Gap analysis** lead; widget/label chrome untouched, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Wording near-verbatim; no claims added or cut.
 
 **The compare-notes beat is one slide, two moves, and the room line is deliberate (rebuilt 2026-08-14, Antti-directed).** The slide was a timing callout with the room-share folded into it and a single tidy bullet hanging below; it now reads as one beat: (a) compare notes with the people around you, (b) optionally run the folder tidy-up before the send-off. The callout is pure timing now, and **the room naming moved into bullet (a), which keeps this file at exactly one room line** — the ceiling `check_student_facing.md` §2 sets for the lifted acknowledge-the-room ban. *Compare notes with the people around you* names that others are present and that talking to them is worth doing; it mandates no utterance, no addressee, and no report-back, which is the line §2 actually draws. The 5–10 minute window is a trainer cue (catch-up for slower paces plus the banter beat on agent laziness). Do not re-flag as a room-share command, and do not add a second room line elsewhere in this file.
 
@@ -104,7 +104,7 @@ A fill looks like one of these shapes (the audit tags each gap with one):
 
 Claims
 - `find-thin-spots-before-the-agent-does` · vision · "you find the thin spots before the agent does" ← none-owed
-- `gap-analysis-is-a-question` · borrowed · "**Gap analysis**: walk the system you have against the system the task needs." ← cultural-vocab — moved in from `lectures/test-and-learn.md` with its slide, 2026-08-25
+- `gap-analysis-is-a-question` · borrowed · "**Gap analysis**: walk the system you have against the system the task needs." ← cultural-vocab — in from `lectures/test-and-learn.md` with its slide, 2026-08-25
 - `push-if-the-ranked-list-comes-back-thin` · vision · "If it comes back thin, push Claude to keep digging" ← none-owed
 
 Sources

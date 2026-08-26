@@ -36,7 +36,7 @@ Format → `curriculum/backing-format.md`. Rows moved verbatim from `what-packag
 - `keeper-hooks-are-repo-specific` · vision · "tied to a specific file, convention, or failure mode in this repo" ← none-owed
 
 **Sources**
-- cc-hooks-docs `[checked:2026-05-15 result:OK due:cohort]` https://code.claude.com/docs/en/hooks — [capability] hook events (SessionStart / UserPromptSubmit / PreToolUse / PostToolUse / Stop) fire on every named event, with no model discretion over whether the script runs; live-tested against this repo's `.claude/settings.json` on Claude Code 2.1.142. fallback: inline the event list from a re-test.
+- cc-hooks-docs `[checked:2026-08-25 result:OK due:cohort]` https://code.claude.com/docs/en/hooks — [capability] hook events (SessionStart / UserPromptSubmit / PreToolUse / PostToolUse / Stop) fire on every named event, with no model discretion over whether the script runs; the docs page lists 35 named hook events and all five body-named categories verbatim; live-tested against this repo's `.claude/settings.json` on Claude Code 2.1.142. fallback: inline the event list from a re-test.
 
 **Frameworks**
 (none — the hook is a platform primitive, not a borrowed frame.)

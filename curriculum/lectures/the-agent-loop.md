@@ -37,9 +37,8 @@ Ask where that list comes from.
 **Unwiring (promotion = relocation):** both M1 callout links removed — `getting-going.md` "if time allows" blockquote (deleted) and `compound-and-close.md` timebox note (pointer sentence trimmed; the note itself stays). Reversibility: git carries the old wiring — restoring = the two callout lines + the `the-agent-loop` row in `TRAININGS['agentic-engineering-101'].supplementaries` in `site/layouts/curriculum.js`.
 
 **Eyeball questions (Antti):**
-1. Placement beat: after the far-half container, before Test and learn — or later, right before the send-off prompts?
-2. The fourth anatomy bullet is the only new sentence — close enough to M3's loop-sizes beat to cut?
-3. The three prompts' registry `origin:` frontmatter still reads `agentic-engineering-101/supplementary/the-agent-loop` (documentation-only field per `compile-prompts.js`; left alone to avoid a registry edit). Update on the next prompt-registry pass?
+1. The fourth anatomy bullet is the only new sentence — close enough to M3's loop-sizes beat to cut?
+2. The three prompts' registry `origin:` frontmatter still reads `agentic-engineering-101/supplementary/the-agent-loop` (documentation-only field per `compile-prompts.js`; left alone to avoid a registry edit). Update on the next prompt-registry pass?
 
 **Definitional contract — this slide is downstream of Agents 101, not parallel to it.** The definition bullet lists **four parts** (context · tools · goal · autonomy). Agents 101's `supplementary/what-is-an-agent.md` lists **five facets** (multi-step work · context · tools · goal · bounded autonomy). The difference is one fold, not a disagreement: multi-step work is carried here by *"in a loop"*, which is the term this lecture exists to install. Two altitudes, one definition. Three standing rules for anyone editing this bullet:
 - **Don't re-cut the list without cutting the sibling.** Any properties named here must map onto that file's facets or the house is teaching two theories.

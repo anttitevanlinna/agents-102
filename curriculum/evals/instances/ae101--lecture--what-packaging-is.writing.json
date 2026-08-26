@@ -1,11 +1,11 @@
 {
   "class": "writing",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/what-packaging-is.md",
-  "body_sha": "4d106bf108bf69fda1a8994c2fa22e683f8e4dbc2fb6f0f2b6404efb928f9484",
+  "body_sha": "553ab54b136d0211d9ce199beeceadf02663b856a056a2d03f0b47a8e058061c",
   "shape_hash": "1a45f572c31f174d",
   "pin": "5df71aa6",
   "staleness_reason": "diff-region",
-  "verdict": "PASS",
+  "verdict": "PASS_WITH_TODOS",
   "training": "ae101",
   "accept_notes_found": [
     "L63/L65: dated provenance headers for the current seven-slide shape (2026-08-14/15, 2026-08-25 hooks-extraction) — corpus-standard dated attribution, not journey narration.",
@@ -38,10 +38,10 @@
       "compendium": "check_writing.md",
       "rule_index": 3,
       "rule_lead": "No stale markers, no 'fixed' retrospectives, no session biography.",
-      "verdict": "PASS",
-      "evidence": "Body-region greps: dated_line /\\b20\\d\\d-\\d\\d-\\d\\d\\b/ -> 0 hits (planted_proof:true, CLEAN); session_biography /\\b(caught live|now fixed|previously|used to say|MOVED)\\b/ -> 0 hits (planted_proof:true, CLEAN). Manual scan of lines 1-60 for transition verbs (relocated/moved/split/renamed/became/predates/since/used to) found none. Maintainer and backing blocks (lines 61-160, out of writing-class body scope per template §Scope) carry extensive dated provenance headers, which §3's own text explicitly permits ('84 of 101 AE101 files carry a dated provenance header... that is the corpus's decision record... it stays') — not flagged.",
-      "fix_hint": null,
-      "blocking": true
+      "verdict": "REVISE",
+      "evidence": "Body region (lines 1-60) is clean: dated_line /\\b20\\d\\d-\\d\\d-\\d\\d\\b/ -> 0 hits (planted_proof:true, CLEAN); session_biography /\\b(caught live|now fixed|previously|used to say|MOVED)\\b/ -> 0 hits (planted_proof:true, CLEAN); manual scan of lines 1-60 for transition verbs found none. But per this dispatch's own instruction ('Maintainer and <!-- backing --> blocks are prose and in scope for check_writing §3') and content-rules.md's explicit exclusion (a) ('maintainer blocks, <!-- backing --> blocks, source stamps... are all prose and all trip §3... their structured-field register is exactly what makes changelog feel like record-keeping'), the backing block is in scope for this rule, and its own top-level dated-provenance carve-out does NOT cover these two hits because they are not attribution headers, they are journey narration matching the rule's own banned list verbatim. Own grep, run this session: `awk 'NR>=61' curriculum/lectures/what-packaging-is.md | grep -noiE '\\b(used to|the old |no longer|historically|settled|retired|was changed to)\\b'` -> 2 hits: relative-line 46 'the old ' (absolute L106, Claims section: \"the ownership form of the **old combined-into-one-kit sentence** (check_research_claims.md §1...)\" — a direct 'the old X' hit, banned verbatim) and relative-line 79 'used to' (absolute L139, Stance section: \"the provenance walkthrough that **used to open** the slide is cut, credit lives on the stamps\" — a direct 'used to' hit, banned verbatim). Neither is an empirical finding that would need re-deriving if cut (the rule's stated exception): L106's actual load-bearing content is 'the ownership form... synthesis owned, no field convergence asserted', which stands without the old-sentence comparison; L139's actual load-bearing content is 'credit lives on the stamps', which stands without narrating what used to be there. Both are the exact journey-vs-state failure §3 exists to catch, just relocated one level down from the maintainer block into the backing block's Claims/Stance sections, which the prior pass on this rule did not scan (it checked only the maintainer block's top section for the dated-provenance carve-out).",
+      "fix_hint": "L106: drop 'of the old combined-into-one-kit sentence' -> 'the ownership form (check_research_claims.md §1 vocabulary-is-a-claim: synthesis owned, no field convergence asserted)'. L139: drop the used-to clause -> 'the provenance walkthrough is cut; credit lives on the stamps' (present-tense state, no journey verb).",
+      "blocking": false
     },
     {
       "compendium": "check_writing.md",
@@ -678,5 +678,5 @@
     }
   ],
   "blocking_findings_count": 0,
-  "todos_count": 0
+  "todos_count": 1
 }

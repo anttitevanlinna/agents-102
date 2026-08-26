@@ -34,8 +34,8 @@
 
 **Watch-fors (delivery):** if the paradox lands in rehearsal as *"you will miss the bad run"* (prediction) rather than a live tension to watch for, thin to one slide — fold the complacency half into the paradox slide and keep the closing question. Past 3 minutes = teaching the fixes; those belong to the far half's closers.
 
-**Quality:** compendium-audited 2026-08-26 (writing@a197cc46 story@a197cc46 technical@1abb84c6 behavior@1c765f2 pedagogy@1abb84c6 strategy@1c765f2 slides@a197cc46)
-- judges @a197cc46: writing PASS, story PASS, technical PASS (drift-recheck), behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-26 (writing@d5aa7e3d story@d5aa7e3d technical@1abb84c6 behavior@1c765f2 pedagogy@1abb84c6 strategy@1c765f2 slides@d5aa7e3d)
+- judges @d5aa7e3d: writing PASS, story PASS, technical PASS (drift-recheck), behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS
 
 **Mood target:** curious readiness held (the module's target), with the earned-trust paradox as a named tension. Lands as recognition now that it closes the module — the student is already watching a live run when the trap is named.
 

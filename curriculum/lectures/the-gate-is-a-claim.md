@@ -130,5 +130,5 @@ OODA
 
 **Closing aphorism cut (2026-08-25, Antti-approved):** *"A gate is one more claim in the system. Build it, then hold it to the same bar it holds the work to."* — hanging line restating the H1 (`check_slides.md` §16 class c). The deck now runs straight from the tampering slide into the delegation frontier. Do not restore.
 
-**Quality:** compendium-audited 2026-08-26 (writing@a197cc46 story@a197cc46 technical@a1ddfae2 behavior@1c765f2 pedagogy@a197cc46 strategy@1c765f2 slides@a197cc46)
-- judges @a197cc46: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-26 (writing@d5aa7e3d story@d5aa7e3d technical@a1ddfae2 behavior@1c765f2 pedagogy@d5aa7e3d strategy@1c765f2 slides@d5aa7e3d)
+- judges @d5aa7e3d: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

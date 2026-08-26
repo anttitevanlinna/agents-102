@@ -1,7 +1,7 @@
 {
   "class": "writing",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/compound-and-close.md",
-  "body_sha": "2acf95a9ff0caec02457b3933195db4a6c7040bb7dc1f104a181e4e791b26016",
+  "body_sha": "35ddab3eadd33044c6421a7f32a144025a3ad6b1bc2c4c74d274954b0b4c2871",
   "verdict": "PASS",
   "training": "ae101",
   "rules_evaluated": [
@@ -19,7 +19,7 @@
       "rule_index": 2,
       "rule_lead": "Ritual / ceremony — hard ban",
       "verdict": "PASS",
-      "evidence": "grep -inE '\\britual\\b|\\bceremony\\b' on body -> 0 hits; word 'exercise' used correctly at lines 5/7/9/56; 0 practice(n) uses anywhere in file.",
+      "evidence": "grep -inE '\\britual\\b|\\bceremony\\b' on body (lines 1-49) -> 0 hits; word 'exercise' used correctly at lines 5/7/9/56. grep -inc '\\bpractice\\b' on whole file -> 2, both in the maintainer/backing block below line 50 ('maintainer's own practice' line 82, 'the body names the practice (compound engineering)' line 92) -- exempt from writing-class lint per the template's fence/maintainer exclusion, and consistent with rule 2's own preference note ('Maintainer blocks across all files prefer exercise') being a soft steer, not the hard ban that governs only ritual/ceremony. 0 practice(n) uses in body.",
       "fix_hint": null,
       "blocking": true
     },
@@ -28,7 +28,7 @@
       "rule_index": 3,
       "rule_lead": "No stale markers, no \"fixed\" retrospectives, no session biography.",
       "verdict": "PASS",
-      "evidence": "New body lines 11/13/15/46 state present facts only ('The rules land in...', 'This file is a starter', 'You can check...'), no transition verbs. grep -inE 'settled|retired|no longer|historically|used to|the old |was changed to' on the whole file returns one hit at line 92 (Stance entry), which quotes its OWN prior 2026-08-12 dated decision already in force before this diff ('drop the sequence... which is what the corpus does everywhere the shape is not the lesson') — legitimate dated provenance under the rule's maintainer-block carve-out, not new journey-narration introduced by this diff. New Claims/Sources additions (lines 74, 83) state current facts ('The Compound-step lineage is not anchored here; it sits in Claude's own summary') without banned transition verbs.",
+      "evidence": "Body lines 11/13/15/46 state present facts only ('The rules land in...', 'This file is a starter', 'You can check...'), no transition verbs; body has 0 dated (`20\\d\\d-\\d\\d-\\d\\d`) lines (view.json greps.dated_line: body_hits 0, planted_proof true, status CLEAN). grep -noE 'settled|retired|no longer|historically|used to|the old |was changed to' on the whole file (run this session) -> 2 hits, both below the maintainer cut: line 84 ('...a stage in the new framing and not the old — this stamp holds to the printed arrow-sequence, not to his count') describes the cited PRACTITIONER's own evolving vocabulary, an empirical finding kept per the rule's own carve-out, not our-file journey-narration; line 92 ('the body no longer prints the sequence, so a further restructuring... goes back to being a stamp edit. Do not restore the diagram to the point') is a dated do-not-reintroduce clause, the exact shape the rule's maintainer-block carve-out keeps. Neither is in the body region (1-49), both exempt by template scope regardless. Claims/Sources entries (lines 74, 83) state current facts ('The Compound-step lineage is not anchored here; it sits in Claude's own summary') without banned transition verbs.",
       "fix_hint": null,
       "blocking": true
     },
@@ -118,7 +118,7 @@
       "rule_index": 13,
       "rule_lead": "Value-prop / positioning framing belongs in sales copy + project strategy docs, NOT student-facing curriculum body.",
       "verdict": "PASS",
-      "evidence": "grep -inE 'not an aspirational|not a vendor|this isn.t marketing|the real practitioners|unlike consultancy|grounded in actual|not theoretical|from the person running it|\\bvendor\\b' on body -> 0 hits.",
+      "evidence": "Drift re-read (rule moved, body pinned at 7fb973dd, no body diff since): current wording fetched via `node curriculum/evals/scripts/rule.js writing 13` this session, matches the compendium's live text verbatim. `awk 'NR<=49' curriculum/exercises/compound-and-close.md | grep -inE 'vendor|aspirational|marketing|consultan|grounded in actual|not theoretical|from the person running it|real practitioner'` (run this session) -> 0 hits on body lines 1-49. No vendor/marketing/consultancy-defense framing, no hard sub-rule 'vendor' hit, present anywhere in body.",
       "fix_hint": null,
       "blocking": true
     },
@@ -199,7 +199,7 @@
       "rule_index": 22,
       "rule_lead": "A claim binds to every body that states it, not just the one holding the stamp.",
       "verdict": "PASS",
-      "evidence": "New claim id `compound-definition-plain` (line 74) and its stamp on `klaassen-definitive-guide` (line 83, checked 2026-08-23) are new to this file; grep -rl 'compound-definition-plain' curriculum/ -> only this file and its own eval instance, no sibling body to keep in step. The pre-existing source id `klaassen-definitive-guide` carries independent dated stamps with independent quotes in five sibling files (getting-going.md, push-back-on-the-plan.md, how-this-training-was-built.md, test-and-learn.md, how-the-best-do-ci-cd.md) rather than copying this file's — each is its own verification, so this file's edit leaves no sibling pointing at a superseded quote. Note for the cross_module/research-claims class: getting-going.md explicitly delegates its OWN dated-check for this URL to push-back-on-the-plan.md, not to this file, and separately asserts 'the current loop sequence is a different claim with different URLs, stamped in exercises/compound-and-close.md' — worth a cross-file staleness check outside this class's remit, since this file dropped the printed loop sequence back on 2026-08-12.",
+      "evidence": "Claim id `compound-definition-plain` (line 74) and its stamp on `klaassen-definitive-guide` (line 83, checked 2026-08-23): `grep -rl 'compound-definition-plain' curriculum/` (run this session) -> only this file's own body/derived-view/eval-instance artifacts, no sibling body claims this id. Source id `klaassen-definitive-guide`: `grep -rl 'klaassen-definitive-guide' curriculum/lectures/*.md curriculum/exercises/*.md curriculum/trainings/agentic-engineering-101/*.md curriculum/trainings/agentic-engineering-101/supplementary/*.md` (run this session) -> 5 live siblings: `getting-going.md`, `how-the-best-do-ci-cd.md`, `push-back-on-the-plan.md`, `the-machine-you-just-met.md`, `test-and-learn.md` — each carries its own independent dated stamp/quote rather than copying this file's, so this file's own stamp leaves no sibling pointing at a superseded quote. (A prior instance of this row named `how-this-training-was-built.md` as one of the five; that file no longer exists under `curriculum/lectures/` — archived to `docs/archive/` — and does not carry the id; corrected list above is the live one.) Note for the cross_module/research-claims class: getting-going.md delegates its own dated-check for this URL to push-back-on-the-plan.md and separately asserts the printed loop sequence is a different claim stamped in this file — worth a cross-file staleness check outside this class's remit.",
       "fix_hint": null,
       "blocking": false
     },
@@ -1063,7 +1063,7 @@
       "rule_index": 6,
       "rule_lead": "\"What you build\" = 20-30 words.",
       "verdict": "PASS",
-      "evidence": "Line 7's '**What you build:**' widget is unchanged by this diff and sits at 24 words.",
+      "evidence": "Line 7 '**What you build:** a rules file written from session evidence. Concrete, specific, yours, and read at the top of every future session in this repo.' -> word count (excluding the bold label, counted this session) = 22 words, inside the 20-30 range.",
       "fix_hint": null,
       "blocking": false
     },

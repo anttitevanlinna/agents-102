@@ -58,8 +58,8 @@ Drop your bug after the colon.
 
 **Lean-intro trim (2026-08-25, Antti-approved):** the TDD rationale (*"The failing test is what makes the fix checkable. Without it, the fix is a guess that happens to compile."*) cut from the opening bullet — explaining tests-first to engineers. The imperative alone carries the beat; do not restore the why.
 
-**Quality:** compendium-audited 2026-08-24 (writing@1abb84c6 story@1abb84c6 technical@1abb84c6 behavior@1480362 pedagogy@1abb84c6 strategy@1480362 slides@1abb84c6)
-- judges @1abb84c6: writing PASS (drift-recheck), story PASS (drift-recheck), technical PASS (drift-recheck), behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS (drift-recheck)
+**Quality:** compendium-audited 2026-08-26 (writing@d065f8bc story@d065f8bc technical@1abb84c6 behavior@1480362 pedagogy@1abb84c6 strategy@1480362 slides@d065f8bc)
+- judges @d065f8bc: writing PASS, story PASS, technical PASS (drift-recheck), behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply (tests-first fix) + Analyze (read the diff against what you'd write).
 - **Atomic — no phase markers.** One TDD loop, start to PR; splitting it would name beats the student does not experience as separate. Line 3 is authored, not generated.

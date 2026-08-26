@@ -1,171 +1,185 @@
 {
-  "class": "slides",
-  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/extract-the-task-shaping-rule.md",
-  "body_sha": "3e10b46fe43b8e2a94c328b4e621b8fe9048dc781ba10e0e9b0b10929d64e15b",
-  "verdict": "PASS",
-  "training": "ae101",
-  "chunk_map": [
-    {"index": 0, "heading": "H1/lede", "lines": "1-12"},
-    {"index": 1, "heading": "Phase 1: Codify the rules from this session", "lines": "13-28"},
-    {"index": 2, "heading": "Reject or rewrite the generic rule", "lines": "29-32"},
-    {"index": 3, "heading": "Read more rules off one story ticket", "lines": "33-54"},
-    {"index": 4, "heading": "Phase 2: Save the file where you want it", "lines": "55-74"},
-    {"index": 5, "heading": "Where rules can live, and when they load", "lines": "75-89"},
-    {"index": 6, "heading": "Phase 3: What this file could automate later", "lines": "90-102"},
-    {"index": 7, "heading": "Read the shapes", "lines": "103-107"}
-  ],
-  "rules_evaluated": [
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 1,
-      "rule_lead": "Referent resolution under a sequential deck read.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "closest candidate: chunk 5 line 87 \"If the picked path only loads when named, ask for the `@import` line before you move on.\" — \"the picked path\" is not a verbatim earlier noun, but chunk 4 (\"Decide the location with Claude\") is the immediately preceding chunk naming the same act; this is immediate continuation of the prior slide's subject, an explicit non-violation per the rule's own carve-out (\"one more window\"-type continuation), not a stray referent.",
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 2,
-      "rule_lead": "Cross-file and positional callbacks.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "chunk 3 line 35: \"The same move you ran at M1 on a bug ticket, pointed at a story.\" — named by module code (M1), not located by position (\"the previous module\"); verified close-the-ticket.md (M1's exercise) does read a bug ticket (## Read the ticket for your bug, line 11), so the name resolves to a real, correctly-described artifact. Line 88's link to claude-code-for-engineers.md is named by title, not positioned on a page.",
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 3,
-      "rule_lead": "Every backward reference points at a beat that exists.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "chunk 3 lines 35-36: \"the same move you ran at M1\" / \"the bug fields\" — verified against curriculum/exercises/close-the-ticket.md, which currently carries '## Read the ticket for your bug' and '## Read the conventions off the ticket' (bug-ticket-conventions read). The referenced beat exists and matches the description; this is also the exact split the maintainer block documents (2026-08-12 rename note, line 122 of expanded view).",
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 4,
-      "rule_lead": "Live-demo beats survive a text read.",
-      "verdict": "N/A",
-      "chunks_flagged": [],
-      "evidence": "No guess-then-reveal construction anywhere in the body; the file has no live-demo beat for this rule to apply to.",
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 5,
-      "rule_lead": "No orphan slides.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "closest candidate: chunk 2 (lines 29-32), the shortest chunk, one bullet only — \"The rule that arrives generic... is the one to rewrite in your words, or reject.\" This is a self-carrying instruction (a complete claim/directive), not a wait-state or context-dependent fragment, so it stands on its own as a slide.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 6,
-      "rule_lead": "Header self-carries at projection distance.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "closest candidate: chunk 5 header \"Where rules can live, and when they load\" (line 75) against its content (a load-mechanism table, lines 77-83) — header states the table's exact content, no contradiction. All 7 headed chunks checked; each header is a literally true summary of its chunk's content.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 7,
-      "rule_lead": "LLM-cadence caps.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Scanned body for each sub-item: no 'Not X. Not Y. Z.' construction; no anaphora/epistrophe triples; no self-grading superlatives (checked closest candidate, chunk 6 line 94 'Ask Claude what this file could drive later' — plain, not a value-prop claim); no number+retraction pattern; no abstraction-noun stacks; no empty-leg verb triplets. All sub-items PASS.",
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 8,
-      "rule_lead": "Internal dialect never lands on a slide.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Grepped body for surface/firing/compendium/forcing function/beat/mood/Connections — none present. Closest candidate: line 87 'ask for the @import line' and line 85 'facilitated by hooks and router skills' use ordinary Claude Code platform vocabulary (hooks, skills, @import), not repo-internal maintainer dialect — these are documented product terms, not authorial shorthand.",
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 9,
-      "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Bold instances in body: chunk 0 widget chrome ('**Time:**', '**What you do:**', '**What you build:**', '**The point:**', lines 3-9) — exempt per widget-chrome carve-out; '**Prompt** *(Claude Code)*' labels at lines 22, 41, 64, 96 — structural widget label pattern used identically across the corpus, not a narrative bold. No bolded bullet leads or whole-sentence bolding anywhere in body prose.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 10,
-      "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Verified via grep: this exercise is included by curriculum/trainings/agentic-engineering-101/plan-mode-done-right.md (a real training module file), the standard exercise-include mechanism that reaches the composed deck through the module's `.phase--exercise` wrapper. Not a phase-less orphan file.",
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 11,
-      "rule_lead": "Numbering — position is computed, content ordinals are linted.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Ran `node scripts/check-slide-numbering.js curriculum/exercises/extract-the-task-shaping-rule.md` → \"OK — 61 files, Phase/Step numbering consistent.\" Phase 1/2/3 headers are hand-content ordinals (not slide-position numbers) and run consecutive; no in-file 'Phase K' prose references to verify beyond the headers themselves.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 12,
-      "rule_lead": "Page geometry dies at the cut; reading order survives.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Ran `node scripts/check-slide-deixis.js curriculum/exercises/extract-the-task-shaping-rule.md` → \"OK — 61 files, no page-geometry pointers across the slide cut.\" Closest candidate: chunk 3 line 39 'Drop a story ticket link after the colon' — the colon it points at ('Story ticket:', line 52) sits in the SAME chunk's fenced prompt, so this is the rule's own explicitly-passing same-chunk-paste-pointer pattern, not a violation.",
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 13,
-      "rule_lead": "In-deck links work now; whether they EARN their place is open.",
-      "verdict": "N/A",
-      "chunks_flagged": [],
-      "evidence": "Rule 13's second half states explicitly \"There is no rule here\" for the open earn-their-place question, and mechanism is settled/passing globally. The one in-body link (chunk 5, line 88, 'Claude Code for engineers') is named in the link text, not located by page geometry, satisfying the surviving requirement. Review surface only, never a gate.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 14,
-      "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/exercises/extract-the-task-shaping-rule.md` → \"files: 1  slides: 7  limits: 210 words / 6 bullets / oversized: 0 / ✓ every slide is within limits\".",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 15,
-      "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "closest candidate: chunk 5 header 'Where rules can live, and when they load' (line 75) — not literally imperative and not a phase label, but it is also not a declarative LAW-claim (the mood the rule targets); it is a topic label for a reference table, matching the same pattern as chunk 7's 'Read the shapes' family of non-Phase exercise headers elsewhere in the corpus. It does not create the imperative/declarative confusion the rule exists to prevent, so it stays inside the exercise-heading convention rather than crossing into lecture-claim territory.",
-      "fix_hint": null,
-      "blocking": false
-    }
-  ],
-  "blocking_findings_count": 0,
-  "todos_count": 0
+ "class": "slides",
+ "file": "curriculum/exercises/extract-the-task-shaping-rule.md",
+ "verdict": "PASS",
+ "training": "ae101",
+ "body_sha": "be40f1e5d1c7e27f9b52aad093ec1cfecf20e9c6515cd89369ce61b11b2d562b",
+ "shape_hash": "ae101--exercise--extract-the-task-shaping-rule",
+ "chunk_map": [
+  {"index": 0, "heading": "(title) Codify the rules, place the file", "lines": "1-12"},
+  {"index": 1, "heading": "Phase 1: Codify the rules from this session", "lines": "13-24"},
+  {"index": 2, "heading": "Reject or rewrite the generic rule", "lines": "25-28"},
+  {"index": 3, "heading": "Read more rules off one story ticket", "lines": "29-38"},
+  {"index": 4, "heading": "Phase 2: Save the file where you want it", "lines": "39-50"},
+  {"index": 5, "heading": "Where rules can live, and when they load", "lines": "51-65"},
+  {"index": 6, "heading": "Phase 3: What this file could automate later", "lines": "66-74"},
+  {"index": 7, "heading": "Read the shapes", "lines": "75-79"},
+  {"index": 8, "heading": "Phase 4: Save the rule if it earned itself", "lines": "80-97"},
+  {"index": 9, "heading": "Phase 5: Leave the repo tidier than you found it", "lines": "98-111"}
+ ],
+ "rules_evaluated": [
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 1,
+   "rule_lead": "Referent resolution under a sequential deck read.",
+   "verdict": "PASS",
+   "chunks_flagged": [],
+   "evidence": "Sequential read across all 10 chunks (0-9) confirms every pronoun/demonstrative/definite-noun resolves. Closest candidates: (a) chunk 5 line 63 'If the picked path only loads when named, ask for the `@import` line before you move on' -- 'the picked path' is an immediate continuation of chunk 4's subject ('Decide the location with Claude', line 46), a same-topic hand-off across adjacent chunks, not a stray referent; (b) chunk 7 line 77 'a place for your file in the loop' -- 'the loop' is arc-earned spine vocabulary (`curriculum/vocabulary.md:52`: 'the loop / compounding: taught in full once at the first module'), earned at M1, so it does not need to re-earn here at M2; (c) chunk 8 line 88 'a branch from the second-pass read' -- 'the second-pass read' names an artifact the student's own live session just produced in the immediately-preceding exercise `push-back-on-the-plan.md` (verified: 'The second read runs in this same session and still in plan mode', push-back-on-the-plan.md:54), so it resolves under the session-artifacts-in-exercises carve-out rather than needing in-file naming; also independently attested by the enclosing module file's own maintainer block (plan-mode-done-right.md:171: 'Claude integrates one branch from the second-pass read').",
+   "fix_hint": null,
+   "blocking": true
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 2,
+   "rule_lead": "Cross-file and positional callbacks.",
+   "verdict": "PASS",
+   "chunks_flagged": [],
+   "evidence": "No positional cross-file callback found. Chunk 3 line 31 names the source by module code and claim ('The same move you ran at M1 on a bug ticket'), not by position ('the previous module'). Chunk 5 line 64's link is named by title ('Claude Code for engineers'), not located on a page. Chunk 8 line 88's 'the second-pass read' names the activity by its own descriptor rather than positioning it ('the exercise before this one'), satisfying the naming requirement.",
+   "fix_hint": null,
+   "blocking": true
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 3,
+   "rule_lead": "Every backward reference points at a beat that exists.",
+   "verdict": "PASS",
+   "chunks_flagged": [],
+   "evidence": "Verified both backward references resolve against beats that currently exist. Ran `grep -n \"^## \" curriculum/exercises/close-the-ticket.md` -> confirms '## Read the ticket for your bug' (line 11) and '## Read the conventions off the ticket' (line 20), matching chunk 3 lines 31-32's 'the same move you ran at M1 on a bug ticket' / 'the bug fields'. Ran `grep -n \"second-pass\\|second read\" curriculum/exercises/push-back-on-the-plan.md` -> confirms 'run a second-pass grilling' (line 5), 'The second read runs in this same session' (line 54), 'runs a second-pass walk-down' (line 221), matching chunk 8 line 88's 'the second-pass read'. Both referenced beats exist in the current files.",
+   "fix_hint": null,
+   "blocking": true
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 4,
+   "rule_lead": "Live-demo beats survive a text read.",
+   "verdict": "N/A",
+   "chunks_flagged": [],
+   "evidence": null,
+   "na_reason": "no guess-before-reveal construction anywhere in body (`grep -niE \"guess|predict|reveal\"` on the body view returns zero hits)",
+   "fix_hint": null,
+   "blocking": true
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 5,
+   "rule_lead": "No orphan slides.",
+   "verdict": "PASS",
+   "chunks_flagged": [],
+   "evidence": "Shortest chunk checked: chunk 2 (lines 25-28), one bullet -- 'The rule that arrives generic, like \"pick tasks that span multiple files,\" is the one to rewrite in your words, or reject.' is a complete, self-carrying directive with a concrete example, not a wait-state fragment. All other chunks carry >=2 bullets, a table, or framing prose plus a prompt block; none is a bare context-dependent remainder.",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 6,
+   "rule_lead": "Header self-carries at projection distance.",
+   "verdict": "PASS",
+   "chunks_flagged": [],
+   "evidence": "Checked all 9 `##` headers against their chunk content; each states a literally true summary. Closest candidate: chunk 9 header 'Phase 5: Leave the repo tidier than you found it' (line 98) against content that only asks Claude to NAME planning gaps/conflicting info/other context rather than enforcing a fix (maintainer line 136: 'Fixing is the student's call ... do not add a fix-it prompt') -- but this is the standard Phase-label pattern shared by every other Phase header in this file ('Phase 3: Push back twice' is the rule's own cited example), not a contradiction: the header names the Boy Scout frame, the body explains applying it (bullet 1, line 104: 'Write it down where the next planner will read it'), which is what a Phase label promises.",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 7,
+   "rule_lead": "LLM-cadence caps.",
+   "verdict": "PASS",
+   "chunks_flagged": [],
+   "evidence": "Scanned all sub-items across the body: no 'Not X. Not Y. Z.' construction (`grep -n \"\\bNot\\b\"` clean); no anaphora/epistrophe triple (`grep -nE \"^\\s*-?\\s*(Every|Each|It) \"` clean); no self-grading superlative (`grep -niE \"most useful|one of the|best way|game.chang|essential|crucial\"` clean -- the only value-prop-adjacent line, chunk 6 line 70 'Ask Claude what this file could drive later', is plain, not a grading claim); the only numerals in body are the widget-chrome time budgets (lines 3, 15, 41, 68, 82, 100 -- '20 minutes', '8 min' etc, `grep -nE \"[0-9]+%|\\b[0-9]+ (min|minutes)\\b\"`), which carry no retraction/hedge, so no number+retraction pattern; no abstraction-noun stack; no empty-leg verb triplet. All sub-items clean.",
+   "fix_hint": null,
+   "blocking": true
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 8,
+   "rule_lead": "Internal dialect never lands on a slide.",
+   "verdict": "PASS",
+   "chunks_flagged": [],
+   "evidence": "Ran `grep -niE \"\\bsurface\\b|\\bfiring\\b|\\bcompendium\\b|forcing function|\\bbeat\\b|\\bmood\\b|\\bConnections\\b\"` on the body view -> one hit, chunk 0 line 5: 'surface task-shaping rules from the session you just ran' -- 'surface' used as the ordinary engineering VERB the compendium explicitly exempts ('surface the issue'), not the noun 'writing surface'. No other dialect terms present anywhere in body.",
+   "fix_hint": null,
+   "blocking": true
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 9,
+   "rule_lead": "Emphasis budget -- bold is for handles, and go very lightly.",
+   "verdict": "REVISE",
+   "chunks_flagged": [9],
+   "evidence": "Body-wide bold scan (`grep -nE \"\\*\\*[A-Za-z][^*]{0,60}\\*\\*\"` on body.txt) returns bold only at: chunk-0 widget chrome (lines 3, 5, 7, 9 -- exempt) and chunk 9 lines 104-106 -- '**Planning gaps.**', '**Conflicting information.**', '**Other context.**', three bolded checklist-item-name handles (each <=3 words, within the ~5-word span cap) on ONE slide. This is 3 handles against the default <=1-per-slide budget, and none of the rule's four named exemptions covers it: not a §34 task-sizing floor/ceiling callout, not a `## What You'll Learn` LO-template bullet, not a reading-list/menu slide (this is a taxonomy of failure categories with worked examples, not a scannable menu of options), not a reference/supplementary lookup surface (this is an ordinary exercise Phase). The maintainer block's own accept-note at line 130 ('no bolded handles in the body; all bullet leads plain') is now stale for this reading: it carries no date of its own and its parenthetical references the 2026-08-12 pass, sitting logically before the Phase-5 move recorded two entries later at line 136 ('Phase 5 Boy Scout slide ... moved here 2026-08-25') -- it describes the file as it stood before this slide existed, not the current body, so it does not function as a current, deliberate accept-note for these three bolds. Harm: minor -- each handle is short and the slide is not noisy, but the count is outside the stated budget with no matching exemption, which is exactly the ambiguity the maintainer would want to resolve rather than have re-litigated by every future judge.",
+   "fix_hint": "Either drop to one bolded handle (the strongest of the three) and leave the other two plain, or flatten all three to plain text -- a 3-item taxonomy reads fine unbolded; alternatively, if the triple-bold was deliberate, add a dated accept-note naming this as a checklist-enumeration exception.",
+   "blocking": false
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 10,
+   "rule_lead": "Presence precedes content -- verify against the composed deck, not long-read.",
+   "verdict": "PASS",
+   "chunks_flagged": [],
+   "evidence": "Ran `grep -n \"extract-the-task-shaping-rule\" curriculum/trainings/agentic-engineering-101/plan-mode-done-right.md` -> line 34: '[Exercise: Extract the task-shaping rule](exercises/extract-the-task-shaping-rule.md)', a standard exercise-include reaching the composed deck through the module's `.phase--exercise` wrapper. Not a phase-less orphan section.",
+   "fix_hint": null,
+   "blocking": true
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 11,
+   "rule_lead": "Numbering -- position is computed, content ordinals are linted.",
+   "verdict": "PASS",
+   "chunks_flagged": [],
+   "evidence": "Ran `node scripts/check-slide-numbering.js curriculum/exercises/extract-the-task-shaping-rule.md` -> 'OK -- 60 files, Phase/Step numbering consistent.' Phase headers run consecutive 1-5 (lines 13, 39, 66, 80, 98). No in-file 'Phase K' prose cross-references needing separate verification.",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 12,
+   "rule_lead": "Page geometry dies at the cut; reading order survives.",
+   "verdict": "PASS",
+   "chunks_flagged": [],
+   "evidence": "Ran `node scripts/check-slide-deixis.js curriculum/exercises/extract-the-task-shaping-rule.md` -> 'OK -- 60 files, no page-geometry pointers across the slide cut.' Closest candidate: chunk 3 line 35 'Drop a story ticket link after the colon' -- the colon lives in the expanded prompt-4 fence's closing line ('Story ticket:'), which sits inside the SAME chunk (lines 29-38), matching the rule's own same-chunk-paste-pointer pass case, not a violation.",
+   "fix_hint": null,
+   "blocking": true
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 13,
+   "rule_lead": "In-deck links work now; whether they EARN their place is open.",
+   "verdict": "PASS",
+   "chunks_flagged": [],
+   "evidence": "Ran `node scripts/check-slide-deixis.js --file curriculum/exercises/extract-the-task-shaping-rule.md --links` -> one in-body link, chunk 5 line 64: '[Claude Code for engineers](../trainings/agentic-engineering-101/reference/claude-code-for-engineers.md) is the long form: precedence, walk-up, the managed layer.' Named by title in the link text (the sentence still works with the link stripped), not located by page geometry -- satisfies the surviving requirement; the earn-their-place half is explicitly 'no rule' per the compendium and the click mechanism is settled/tested globally.",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 14,
+   "rule_lead": "Slide size -- 210 words / 6 bullets, and the cap is machine-checked.",
+   "verdict": "PASS",
+   "chunks_flagged": [],
+   "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/exercises/extract-the-task-shaping-rule.md --report` -> 9 slides, largest 'Where rules can live, and when they load' at 196 words / 2 bullets, all within 210 words / 6 bullets; 'oversized: 0'; '✓ every slide is within limits'.",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 15,
+   "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
+   "verdict": "PASS",
+   "chunks_flagged": [],
+   "evidence": "All 9 headers checked: 5 Phase-labels (Phase 1-5, imperative clause after the colon, matching the rule's own 'Phase 3: Push back twice' example) and 4 imperative/catalogue headers ('Reject or rewrite the generic rule', 'Read more rules off one story ticket', 'Where rules can live, and when they load', 'Read the shapes'). Closest candidate: chunk 5's 'Where rules can live, and when they load' (line 51) is neither imperative nor a Phase label, but matches the explicit non-violation carve-out 'catalogue entries naming their subject' (cf. the rule's own 'The numbers' / 'Verification, named' examples) -- a topic label for a reference table, not a law-claim needing declarative phrasing.",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 16,
+   "rule_lead": "A bullet earns its slot or dies -- three classes that read as rigour and carry nothing.",
+   "verdict": "PASS",
+   "chunks_flagged": [],
+   "evidence": "Read every bullet against the three low-value classes. Closest candidate: chunk 8 line 92's blockquote aside 'Precise prompting is harder than it looks' -- reads as a generic truism in isolation, but sits inside a genuinely actionable warning (confirm the file wasn't overwritten; recover from scrollback if it was) and does not close the slide (two more sentences of real instruction follow it, and it restates neither the header nor a `**The point:**` line), so it does not trip class (c) aphorism kicker. Chunk 9 line 102's 'A rule in your file is one way to compound a session' revisits the M1-earned compounding concept but varies it into a new angle (repo-level context gaps, not personal rules) rather than re-announcing a lens that already did its work, matching `check_pedagogy.md §9b`'s same-move-different-face pattern rather than tripping class (a) doctrine restatement. No self-referential design commentary (no 'you are inside a pedagogy' framing) and no hollow aphorism kicker found anywhere else in body.",
+   "fix_hint": null,
+   "blocking": false
+  }
+ ],
+ "blocking_findings_count": 0,
+ "todos_count": 1
 }

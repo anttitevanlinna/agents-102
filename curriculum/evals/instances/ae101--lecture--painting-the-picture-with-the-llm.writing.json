@@ -1,7 +1,7 @@
 {
   "class": "writing",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/painting-the-picture-with-the-llm.md",
-  "body_sha": "d46004c72d84ace68ea4cc43282b9c0fb4b52a5e8c6559349c3dfd4b3719eb64",
+  "body_sha": "60d1615b89e30222d9fab655b58149964a5d65489bc39bc412c07bec00888b47",
   "shape_hash": "1870b031fbe8c765",
   "verdict": "PASS",
   "training": "ae101",
@@ -30,7 +30,7 @@
       "rule_index": 3,
       "rule_lead": "No stale markers, no \"fixed\" retrospectives, no session biography.",
       "verdict": "PASS",
-      "evidence": "body (lines 1-28) carries no dated markers, no changelog verbs, no session-biography language; all provenance/history sits below the maintainer cut at line 29",
+      "evidence": "body (lines 1-28) carries no dated markers, no changelog verbs, no session-biography language; all provenance/history sits below the maintainer cut at line 29. Re-run 2026-08-26 widening scope to the maintainer+backing prose itself (per this dispatch's instruction that those blocks are in-scope for §3, stating what is TRUE NOW not the diff just recorded): `awk '/<!-- maintainer -->/{f=1} f' <file> | grep -inE '(relocated|moved|split|renamed|became|now .* rather than|predates|since|used to|previously|settled|retired|no longer|historically|restored after|was softened|renamed from|the old |was changed to)'` returns 4 hits, all false positives on close read — L37's 'Slides-only pass' paragraph ('CONVERTED', 'the old heading') is the one worth naming: it records a re-chunk verification (no cuts, no new theory, zero map references) and a do-not-reintroduce fact ('no inbound anchors to the old heading'), both explicitly KEPT categories per the rule's own boundary clause, not journey narration of a completed transition. The three Stance-block 'settled'/contested hits (L54, L56) describe the state of the research question, not the file's edit history, and are backing-format Stance-field content, outside this rule's target entirely. No REVISE.",
       "fix_hint": null,
       "blocking": false
     },
@@ -102,7 +102,7 @@
       "rule_index": 13,
       "rule_lead": "Value-prop / positioning framing belongs in sales copy + project strategy docs, NOT student-facing curriculum body.",
       "verdict": "PASS",
-      "evidence": "grep for 'vendor', 'not an aspirational', 'not theoretical', 'the real practitioners' etc. over body -> 0 matches; no positioning/defensive framing present",
+      "evidence": "grep for 'vendor', 'not an aspirational', 'not theoretical', 'the real practitioners' etc. over body -> 0 matches; no positioning/defensive framing present. Drift-recheck 2026-08-26 (staleness reason rule-drift, pin 77991802): fetched §13 fresh via `node curriculum/evals/scripts/rule.js writing 13`, wording identical to the compendium as read this session; the diff 77991802..HEAD on this file touches only the maintainer Quality-line SHA stamp, zero body-region bytes changed. Whole-file grep for `\\bvendor\\b` (not just body) returns one hit, at line 70, inside the backing block's Sources list ('[academic/research, vendor venue]', 'vendor-self-reported') describing a cited source's methodology limitation, not student-facing body prose defending against a vendor-story critique — outside this rule's surface (student-facing curriculum body) entirely. PASS reaffirmed.",
       "fix_hint": null,
       "blocking": true
     },
@@ -1363,5 +1363,5 @@
   "todos_count": 0,
   "findings": [],
   "todos": [],
-  "notes": "All 37 in-scope rules read in full from derive-class-brief.js output (rules_included=37, excluded=92 resolved by shape hash 1870b031fbe8c765 and parked in the prefill sidecar). No REVISE, blocking or non-blocking. The file's own maintainer/backing blocks (lines 29-100 of the raw source) preemptively document and accept-note the two lines a writing judge would otherwise most want to flag: the shotgun/cannon koan (line 19, check_writing.md §4/§12) and 'the sharp engineers stay sharp' (line 19, check_writing.md §21, check_strategy_tie_in.md §4) — both cross-checked against those accept-notes rather than flagged fresh."
+  "notes": "Re-fire 2026-08-26, staleness reason rule-drift on check_writing.md §13 (pin 77991802, commit message 'The T2 rule fetch answered \"no such rule\" on 32 rules that exist' — a rule.js resolution bug, not a rule-text edit). `git diff 77991802..HEAD -- curriculum/lectures/painting-the-picture-with-the-llm.md` shows only the maintainer Quality-line SHA stamps changed (writing@2b5a60a -> writing@77991802 etc.); zero body-region bytes moved. Re-fetched §13 fresh via `node curriculum/evals/scripts/rule.js writing 13`: wording matches the compendium verbatim, no textual drift, and the body still carries no vendor/positioning/defensive-marketing language (verified: PASS unchanged). Per this dispatch's explicit instruction, also widened check_writing.md §3 to the maintainer+backing prose itself (previously scoped body-only) and found one candidate passage (the 2026-07-02 'Slides-only pass' accept-note) that reads as journey narration on a shallow pass but survives on the rule's own KEEP category (re-chunk verification + do-not-reintroduce fact) — not a REVISE. 30 rules judged fresh this session per derive-class-brief.js (rules_included=30, excluded=99 resolved by shape hash 1870b031fbe8c765, parked in the prefill sidecar — merge still owed after write). No REVISE, blocking or non-blocking, found or re-found. The file's own maintainer/backing blocks preemptively document and accept-note the two lines a writing judge would otherwise most want to flag: the shotgun/cannon koan (line 19, check_writing.md §4/§12) and 'the sharp engineers stay sharp' (line 19, check_writing.md §21, check_strategy_tie_in.md §4) — both cross-checked against those accept-notes rather than flagged fresh."
 }

@@ -1,19 +1,18 @@
 {
   "class": "slides",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/when-a-plan-is-good.md",
-  "body_sha": "ca2297a6e661ac0b75251ece60daf93c330f517ed27a6124b158e05d7a8befce",
+  "body_sha": "52236f9fa1ce593a490e6b6e3c717e55462894095ab270180292ce875d9b8e50",
+  "shape_hash": "8039777dfcdd8e3e",
   "verdict": "PASS",
   "training": "ae101",
   "chunk_map": [
     {"index": 0, "heading": "H1 / Session widget (title slide)", "lines": "1-7"},
-    {"index": 1, "heading": "Plan mode changes the tools and the instructions", "lines": "9-14"},
-    {"index": 2, "heading": "Optional: ask plan mode directly", "lines": "16-25"},
-    {"index": 3, "heading": "Five things a good plan has", "lines": "27-33"},
-    {"index": 4, "heading": "Three pressures that make bad plans look good", "lines": "35-39"},
-    {"index": 5, "heading": "Two reads, paired", "lines": "41-45"},
-    {"index": 6, "heading": "Find is easier than judge", "lines": "47-50"},
-    {"index": 7, "heading": "Plan review is a high-leverage gate", "lines": "52-57"},
-    {"index": 8, "heading": "What you can test and check sets your complexity ceiling", "lines": "59-67"}
+    {"index": 1, "heading": "Ask plan mode what changed", "lines": "9-16"},
+    {"index": 2, "heading": "Five things a good plan has", "lines": "17-24"},
+    {"index": 3, "heading": "Three pressures that make bad plans look good", "lines": "25-30"},
+    {"index": 4, "heading": "Two reads, paired", "lines": "31-35"},
+    {"index": 5, "heading": "Plan review is a high-leverage gate", "lines": "36-42"},
+    {"index": 6, "heading": "What you can test and check sets your complexity ceiling", "lines": "43-53"}
   ],
   "rules_evaluated": [
     {
@@ -22,7 +21,7 @@
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Closest candidate: chunk 8 line 64 \"The plan read is a calibration move.\" — the exact compound 'plan read' is never used verbatim in chunks 1-7 (grep confirms), but chunks 3-7 (5 headings: Five things a good plan has / Three pressures / Two reads, paired / Find is easier than judge / Plan review is a high-leverage gate) are entirely the reading-and-reviewing-a-plan practice; a reader landing on chunk 8 has just spent five slides on exactly that activity, so 'the plan read' resolves as a natural label for what was just taught, not a forward or absent referent. Maintainer block line 77 pre-addresses this exact resolution (\"Sequential deck read resolves ... the plan read from the preceding slide\"), checked per dispatch-preamble maintainer-accept-note clause. Harm the rule prevents (reader stranded, no candidate referent) is absent: there is exactly one candidate and it was just built over 5 slides.",
+      "evidence": "Closest candidate: chunk 6 \"What you can test and check sets your complexity ceiling\", line 49: \"The plan read is a calibration move.\" 'The plan read' is not a term used verbatim earlier, but it composes two terms the deck already named: 'read' as the human's own review activity (chunk 4 line 33 \"Your read and the agent's walk-down catch different misses\"; chunk 5 line 41 \"Aim the read at the unknown that teaches you the most\") and 'the plan' (used throughout chunks 2-5). By chunk 6 a sequential reader has held both halves across the two immediately preceding slides, so the compound resolves rather than strands. Also checked: 'the agent's walk-down' (chunk 4 line 33) is defined in the same bullet it's used in (\"it can keep walking branches without getting bored\") — same-chunk, not a forward or absent referent. 'the three pressures' (chunk 6 line 50) points back to chunk 3's own header, one slide within normal deck-narration range. Harm the rule guards against (a reader stranded with no candidate antecedent) is absent in every case checked.",
       "fix_hint": null,
       "blocking": true
     },
@@ -32,7 +31,7 @@
       "rule_lead": "Cross-file and positional callbacks.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "No chunk points at another file by position. All references (Horthy credit, 'aka context engineering') are inline and self-contained; no 'the opening lecture said' style pointer in body.",
+      "evidence": "grep -inE 'below|above|further down|at the top|see below|earlier (module|lecture)|opening lecture|previous (module|lecture)|the last (lecture|module|exercise)' over body lines 1-53 → 0 hits. grep -inE '\\[[^]]+\\]\\(' (markdown link syntax) over the same range → 0 hits. No chunk names or locates another file by position; the only named practitioner (Dex Horthy, chunk 2 line 20) is a person credit, not a file callback.",
       "fix_hint": null,
       "blocking": true
     },
@@ -42,7 +41,8 @@
       "rule_lead": "Every backward reference points at a beat that exists.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "No 'the X you did/saw' construction anywhere in body — file has no backward-pointing beat references to check.",
+      "evidence": null,
+      "na_reason": "Meta block states primer-before-exercise pedagogy; grep -inE 'you (did|saw|caught|just)|the (run|pr|ticket|diff|bug) you' over body found one incidental hit (chunk 4 line 34 'what you did not see', describing the reader's own blind spot in a live read, not a backward pointer to a prior exercise/lecture beat) — no genuine dead-beat reference exists to check.",
       "fix_hint": null,
       "blocking": true
     },
@@ -52,7 +52,8 @@
       "rule_lead": "Live-demo beats survive a text read.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "No guess-before-reveal construction in this file.",
+      "evidence": null,
+      "na_reason": "grep -inE 'guess|predict|before you (watch|see|run)' over body → one hit (chunk 2 line 20, 'every wrong guess stays hidden until then', a metaphor about horizontal plans, not a guess-then-reveal instructional beat). No guess/predict-before-reveal construction present.",
       "fix_hint": null,
       "blocking": true
     },
@@ -62,7 +63,7 @@
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Every chunk (1-8) carries a self-sufficient claim or instruction of its own — e.g. chunk 2 (lines 16-25) is a full 30-second exercise with prompt and framing, not a bare wait-state bullet.",
+      "evidence": "Closest candidate: chunk 1 (\"Ask plan mode what changed\") is the thinnest slide — intro sentence + prompt + one bullet — but the bullet (line 15: \"Plan mode writes a thing you can read, edit, and push back on before your source changes. Nothing edits your source until you approve.\") is a self-carrying interpretive claim, not a bare wait-state. Every other chunk carries 2-5 substantive bullets of its own.",
       "fix_hint": null,
       "blocking": false
     },
@@ -72,7 +73,7 @@
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Checked all 8 headers against their chunk content: e.g. chunk 3 'Five things a good plan has' (line 27) is followed by exactly five bolded-handle bullets (lines 29-33); chunk 8's header names the ceiling claim the bullets then state (line 59 vs 63-67). No header is contradicted by its own content.",
+      "evidence": "Checked all 6 headers against their own chunk content: chunk 2 'Five things a good plan has' (line 17) is followed by exactly five bolded-handle bullets (lines 19-23); chunk 3 'Three pressures...' (line 25) by exactly three (lines 27-29); chunk 4 'Two reads, paired' (line 31) by two bullets about ordering the two reads (lines 33-34); chunk 6's header (line 43) states the claim the bullets then unpack (lines 48-52). Closest to a mismatch: chunk 5 'Plan review is a high-leverage gate' (line 36) — content is about deferred decisions and where to aim attention, not directly 'leverage', but 'gate' (a check before implementation, line 39) and 'high-leverage' (one correction redirects every later step, line 39) both hold; header not contradicted.",
       "fix_hint": null,
       "blocking": false
     },
@@ -82,7 +83,7 @@
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Scanned all 8 chunks for the five sub-items: no 'Not X. Not Y. Z.' construction; no anaphora/epistrophe triples; no self-grading superlatives ('high-leverage gate' at line 52 is a claim about mechanism, not a self-grading value-prop line like 'one of the most useful'); no number-with-retraction; no abstraction-noun stacks ('bounded-window reality'-style); no empty-leg verb triplets. All sub-items PASS.",
+      "evidence": "Scanned all 6 chunks for the five sub-items. 'Not X. Not Y. Z.' construction: 0 hits. Anaphora/epistrophe triples: 0 (chunk 6 has two separate 'Every ___' sentences in different, non-adjacent bullets — lines 48 and 52 — not a consecutive triple). Self-grading superlatives: 0 (no 'one of the most useful' style line anywhere; 'high-leverage' at line 36 is a mechanism claim, not self-praise). Number + own retraction: 0 — the only numbers are the worked verification example (line 21: 'expect 14 passing, 0 failing') and 'A 7-item plan' (line 27), both concrete, neither hedged/retracted. Abstraction-noun stacks: 0 (no 'bounded-window reality'-style compound). Empty-leg verb triplets: 0. All sub-items clean.",
       "fix_hint": null,
       "blocking": true
     },
@@ -92,7 +93,7 @@
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "No repo/authorial vocabulary (surface-as-noun, firing, compendium, forcing function, beat, mood) found in body. 'Ceiling' (chunk 8) and 'reach'/'calibration' (chunk 8) are taught curriculum vocabulary defined in-chunk, not maintainer dialect. 'Aka context engineering' (chunk 1, line 14) is an engineer-recognizable term, not repo-internal.",
+      "evidence": "Manual scan of body lines 1-53 for repo/maintainer vocabulary (surface-as-noun, firing, compendium, forcing function, beat, mood, Connections-as-proper-noun): 0 hits. 'Walk-down' (chunk 4, line 33) is house-coined per the backing block ('Decision-tree walk-down · [borrow:practitioner-coined]') but is defined in-line by ordinary shop language in the same sentence ('it can keep walking branches without getting bored or skipping the dull ones') — an engineer parses it without curriculum-internal knowledge, unlike 'compendium' or 'surface'-as-noun. 'Ceiling', 'reach', 'calibration' (chunk 6) are taught curriculum vocabulary defined in the same chunk, not maintainer-only dialect.",
       "fix_hint": null,
       "blocking": true
     },
@@ -102,7 +103,7 @@
       "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Chunks 1, 2, 5, 6, 7, 8 carry zero bold in body (confirmed against raw source). Chunks 3 and 4 carry 5 and 3 bolded handles respectively (one per checklist item: 'A specific file list.', 'An early runnable slice.', etc.) — explicitly the checklist-item-name allowance the rule itself carves out, and the file's own maintainer block (line 81, 'Emphasis pass') documents this exact decision (per-item handles kept, all other slides de-bolded) as the 2026-07-09 Antti-directed pass. No slide exceeds the checklist exception.",
+      "evidence": "Bold count per chunk: chunk 1 = 0, chunk 2 = 5 (checklist-item handles: **A specific file list.** / **An early runnable slice.** / **A verification step** (trimmed to sub-span) / **Named assumptions.** / **A list of non-goals.**), chunk 3 = 3 (**Structure is persuasive.** / **Reasonableness passes for rightness.** / **You already agree with it.**), chunks 4-6 = 0. Chunks 2 and 3 exceed the default ≤1-per-slide budget, but the maintainer block's dated accept-note (L66, 2026-07-09, Antti-directed \"go very lightly on the bold\") explicitly authorizes exactly this shape on 'the two checklist slides' by name, matching all 3 named items on chunk 3 and the 3 named items on chunk 2 that predate the later criteria expansion (the 2 bullets added after, L64, carry bold by the same documented convention). Each handle is ≤5 words (a checklist-item name, explicitly one of the rule's own licensed categories), and every non-checklist slide sits at zero bold, satisfying the budget everywhere the accept-note doesn't apply.",
       "fix_hint": null,
       "blocking": false
     },
@@ -110,9 +111,9 @@
       "compendium": "check_slides.md",
       "rule_index": 10,
       "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
-      "verdict": "N/A",
+      "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "All body content sits under plain '##' sections with no phase-less prose section that would be dropped by buildDeckModel; this file is a shared lecture (curriculum/lectures/), and whether it is correctly wrapped when included reaches the composed deck is a module-inclusion property outside this single file's own markup — nothing in the file itself creates a phase-less orphan section.",
+      "evidence": "This lecture file has no phase-less prose section of its own (no '## Prework', '## Supplementary', '## Reference' heading) sitting outside the lecture body that a `.phase--lecture` wrapper could fail to carry into buildDeckModel — the entire file is H1 + Session widget + six `##` chunks + maintainer/backing cut, uniformly wrapped as one shared lecture per curriculum/CLAUDE.md's include convention. Nothing in this file's own markup creates a section at risk of the drop pattern named in the rule (prework/supplementary/reference dropped from the deck); that risk lives at the including module's wrapper, not in this file.",
       "fix_hint": null,
       "blocking": true
     },
@@ -120,9 +121,10 @@
       "compendium": "check_slides.md",
       "rule_index": 11,
       "rule_lead": "Numbering — position is computed, content ordinals are linted.",
-      "verdict": "PASS",
+      "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "Ran `node scripts/check-slide-numbering.js --file curriculum/lectures/when-a-plan-is-good.md` → \"OK — 1 files, Phase/Step numbering consistent.\" exit 0. File has no 'Phase N:' or 'N.' step headers to begin with (all headers are plain claims), so the rule is vacuously satisfied and mechanically confirmed.",
+      "evidence": null,
+      "na_reason": "No `## Phase N:`/`## N.` step headers in body (grep -inE '## Phase|## [0-9]+\\.' → 0 hits); ran `node scripts/check-slide-numbering.js curriculum/lectures/when-a-plan-is-good.md` → \"OK — 60 files, Phase/Step numbering consistent.\" (corpus run, this file included, no flag).",
       "fix_hint": null,
       "blocking": false
     },
@@ -132,7 +134,7 @@
       "rule_lead": "Page geometry dies at the cut; reading order survives.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Ran `node scripts/check-slide-deixis.js --file curriculum/lectures/when-a-plan-is-good.md` → \"OK — 1 files, no page-geometry pointers across the slide cut.\" exit 0.",
+      "evidence": "Ran `node scripts/check-slide-deixis.js curriculum/lectures/when-a-plan-is-good.md` → \"OK — 60 files, no page-geometry pointers across the slide cut.\" (corpus run, this file included, exit 0). Manual grep -inE 'below|above|further down|at the top|see below' over body lines 1-53 → 0 hits independently; no candidate phrase to cite as closest-to-violating.",
       "fix_hint": null,
       "blocking": true
     },
@@ -142,7 +144,8 @@
       "rule_lead": "In-deck links work now; whether they EARN their place is open.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "No markdown links present anywhere in this file's body (verified against raw source lines 1-67) — nothing to inventory.",
+      "evidence": null,
+      "na_reason": "signals.has_urls: false; grep -inE '\\[[^]]+\\]\\(' over body → 0 hits — no in-body links to inventory or review.",
       "fix_hint": null,
       "blocking": false
     },
@@ -152,7 +155,7 @@
       "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/lectures/when-a-plan-is-good.md` → \"files: 1  slides: 8  limits: 210 words / 6 bullets  oversized: 0 ... every slide is within limits\" exit 0.",
+      "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/lectures/when-a-plan-is-good.md` → \"files: 1  slides: 6  limits: 210 words / 6 bullets  oversized: 0\" / \"✓ every slide is within limits\", exit 0.",
       "fix_hint": null,
       "blocking": false
     },
@@ -160,14 +163,33 @@
       "compendium": "check_slides.md",
       "rule_index": 15,
       "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
-      "verdict": "REVISE",
-      "chunks_flagged": [2],
-      "evidence": "Chunk 2 heading (line 16) \"Optional: ask plan mode directly\" is a label/imperative shape, not a claim — this is a lecture file per the compendium's split (lecture headings = claims). Per dispatch instructions this rule has fired on nine lectures this sweep already and is pending one corpus-wide maintainer decision (instruction #5) — reported here as a note, not carried into blocking_findings_count.",
-      "fix_hint": "Corpus-wide maintainer decision pending; no per-file fix proposed.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Chunk 1's header ('Ask plan mode what changed', line 9) is imperative, not a claim — this is a lecture, so the rule's default would expect a claim. The maintainer block's dated accept-note (L68, 2026-08-25, Antti-directed) explicitly defends this exact header as \"a do-move imperative (`check_lectures §4` live-do carve-out)\" for the specific reason that the prompt's answer must come from the student's own session. The two law/consolidation headers meet the binding requirement as full declarative claims: chunk 5 'Plan review is a high-leverage gate' (line 36) and chunk 6 'What you can test and check sets your complexity ceiling' (line 43). Chunks 2-4 ('Five things a good plan has' / 'Three pressures that make bad plans look good' / 'Two reads, paired') are catalogue-style headers naming their subject, matching the rule's own 'catalogue entries naming their subject' carve-out. Blocking classification (rule added after the template's explicit partition, principle applied per the compendium's own instruction): a mismatched header grammar costs polish, not comprehension — a reader can still follow an imperative-shaped lecture header — so this rule is non-blocking, same family as rule 6.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 16,
+      "rule_lead": "A bullet earns its slot or dies — three classes that read as rigour and carry nothing.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Checked all bullets across all 6 chunks against the three classes (doctrine restatement, self-referential design commentary, aphorism kicker). Closest candidate: chunk 6, line 51, \"Push reach past what you can check and you have not delegated more. You are checking less.\" reads kicker-shaped (short, punchy, closes a bullet run) but introduces a genuine new distinction (delegating vs. checking) not stated anywhere earlier in the file or restating the chunk's own header — it earns its slot rather than re-announcing an already-landed point. No self-referential curriculum-design commentary found anywhere (the file never talks about its own pedagogy to the student). No doctrine-restatement instances — the mechanism bullets in chunks 5 and 6 each add new content rather than re-stating a split that already did its work. Blocking classification (rule added after the template's explicit partition, principle applied): a low-value bullet wastes attention but doesn't block comprehension, so non-blocking, same family as rule 7's non-superlative sub-items.",
+      "fix_hint": null,
       "blocking": false
     }
   ],
   "blocking_findings_count": 0,
-  "todos_count": 1,
-  "notes": "Rule 15 (heading grammar) fires on chunk 2's heading ('Optional: ask plan mode directly') per dispatch instruction #5 — reported as a note per standing corpus-wide-decision status, not scored as a per-file blocking or TODO count against the deterministic verdict formula (todos_count above includes it only as an informational line item; it does not affect verdict since rule 15 is not yet assigned to the blocking/non-blocking partition in the template)."
+  "todos_count": 0,
+  "accept_notes_found": [
+    "L64: Criteria slide, two expansions from the same practitioner (2026-07-29 and 2026-07-31, both Antti-directed, both from Dex Horthy) — documents the five-bullet checklist's growth from three to five and the un-bolded/bolded credit split.",
+    "L66: Emphasis pass (2026-07-09, Antti-directed \"go very lightly on the bold\") — authorizes per-item bold handles on the two checklist slides (chunks 2 and 3) by name; relied on to clear rule 9.",
+    "L68: Opening slide (2026-08-25, Antti-directed) — defends chunk 1's imperative header and prompt-led restructure, including the do-move/live-do carve-out; relied on to clear rule 15.",
+    "L70: Slides-only pass (2026-07-02, unaudited) — records prior CUT decisions (agenda line, wait-state bullet, run-it-only-if kicker) as already-settled deletions, not open questions.",
+    "L74: Deck notes — records that 'plan-mode approval inflation' and the find-vs-judge split are deliberately not taught in this file (2026-08-25, Antti-called cut).",
+    "L76: Deferral bullet on the gate slide (2026-08-08, Antti-directed frame, near-verbatim) — attests the deferred-decision mechanism's wording and its status as the mechanism's only M2 home.",
+    "L78: Quality line — compendium-audited 2026-08-24 stamp, predates this pass."
+  ],
+  "notes": "Out-of-lane observation, not filed as a slides finding: the view's mechanical grep flagged one 'leverage' hit in the body (`leverage_verb`, body_hits: 1) on chunk 5's header 'Plan review is a high-leverage gate' (line 36). This is an adjectival compound ('high-leverage'), not the banned verb form (leverage/leverages/leveraging) the pattern is aimed at, and any banned-verb rule for it belongs to check_writing.md, not check_slides.md — left for the writing-class judge."
 }

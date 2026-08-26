@@ -1,36 +1,208 @@
 {
   "class": "storytelling",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/compound-and-close.md",
+  "body_sha": "35ddab3eadd33044c6421a7f32a144025a3ad6b1bc2c4c74d274954b0b4c2871",
+  "shape_hash": "0f7defa9943cfa44",
   "verdict": "PASS",
   "training": "ae101",
   "module_mood_contract": "M1 joyful creation — \"it works, on my repo\"; this is the fourth and closing exercise, where the session becomes ./CLAUDE.local.md.",
-  "trace_status": "regenerated",
-  "body_sha": "2acf95a9ff0caec02457b3933195db4a6c7040bb7dc1f104a181e4e791b26016",
+  "trace_status": "cached",
+  "drift_check": {
+    "pin": "7fb973dd",
+    "staleness_reason": "rule-drift",
+    "rules_reread": [
+      {
+        "surface": "lectures",
+        "rule": "5",
+        "current_wording_verified": true,
+        "verdict_against_body": "PASS — mechanically confirmed this session, see check_lectures.md rule 5 row below",
+        "note": "Wording unchanged from what a prior read would have seen (still ~210 words / ≤6 bullets, 'Exercise slides count too' already present). The prior instance's row for this rule was itself wrong, not just stale: it marked N/A on the premise that 'the lecture slide-size ceiling script governs lecture files, not this surface' — but `scripts/check-slide-size.js`'s own file-set (read this session) is derived from each AE101 module's `exercises/<slug>` AND `lectures/<slug>` includes, and the rule's own text says exercise slides count. Corrected to PASS, backed by a live tool run against this exact file. This is the rule the orchestrator flagged for re-derivation, and re-deriving it changed the row."
+      }
+    ]
+  },
+  "diff_since_pin": "git diff 7fb973dd..HEAD -- curriculum/exercises/compound-and-close.md: one hunk only, the Quality-line stamp (compendium-audited 2026-08-19 → 2026-08-23, story@ba5ccf5 → story@7fb973dd, all seven judge shas refreshed). No body text (raw lines 1-49) changed. Confirmed via `shasum -a 256` and via `node curriculum/evals/scripts/sim-freshness.js --json` reporting this file's persona trace as verdict 'stamp-only', note 'maintainer region only since 43c6b753' (real command, this session).",
+  "accept_notes_found": [
+    "L54 (raw, maintainer): \"Slide deixis accepted: 'the line back' — idiom ... not page geometry.\" A check_writing/check_slides-lane deixis call; honored, not re-litigated here.",
+    "L56 (raw, maintainer): \"Scope is the rules file only ... do not add a connector or close-out step back into this file.\" Deliberate completeness boundary — the ticket beat's own artifact is out of scope for this exercise by design; not treated as a missing-artifact defect.",
+    "L82 (backing, Sources): maintainer-attested-flush `[checked:2026-08-12 result:ATTESTED due:none]` — a check_research_claims freshness matter (attested, no URL owed), out of story's lane; noted only.",
+    "L92–96 (backing, Stance): \"2026-08-12: the printed arrow-sequence was dropped ... Do not restore the diagram to the point.\" The operative, most recent design decision for this file — attribution and the loop sequence stay out of student-facing body prose. The `decided:` bullet at L95 (\"print the current sequence in full, 2026-08-02\") reads as still-current if read on its own, but the dated bullet above it (L92) is later and supersedes it; used the L92 bullet as authoritative for this file's actual body, per its own most-recent date. Flagging for the writing judge in `notes` below (check_writing §3 territory, not story's to enforce) rather than filing here.",
+    "L126–129 (maintainer, Accept-with-mitigation): §32 forced-engagement and §50 convenience-bias-callout accept-with-mitigation notes (check_pedagogy.md territory) — pedagogy's own settled design-intent calls on rules outside story's narrowed scope (16/27 only); honored by not re-raising 32/50/51 here, not independently adjudicated."
+  ],
   "rules_evaluated": [
-    {"compendium":"check_lectures.md","rule_index":1,"rule_lead":"Meta-frame lectures = closers, not openers.","verdict":"N/A","evidence":"This is an exercise, not a lecture; the file has no lecture-placement question.","fix_hint":null,"blocking":false},
-    {"compendium":"check_lectures.md","rule_index":2,"rule_lead":"Minimal lecturing before contrast-mood exercises.","verdict":"N/A","evidence":"No lecture precedes an exercise inside this file, and M1 is joyful-creation, not a contrast-mood module (M5's shape per strategy doc).","fix_hint":null,"blocking":false},
-    {"compendium":"check_lectures.md","rule_index":3,"rule_lead":"No cross-module sequencing in lecture bodies.","verdict":"N/A","evidence":"Rule scopes lecture bodies specifically. The one cross-module reference in this file (\"Hands off to: M1 Bridge → M2\") sits under the raw-source Arc heading (line 112), below the maintainer fence, not in student-facing body prose, and this file is an exercise, not a lecture.","fix_hint":null,"blocking":false},
-    {"compendium":"check_lectures.md","rule_index":4,"rule_lead":"Slide/lecture headers pass the squint test AND the truth clause.","verdict":"N/A","evidence":"Raw-source headings (lines 17, 28, 33, 37) are exercise step headings, not lecture slide headers.","fix_hint":null,"blocking":false},
-    {"compendium":"check_lectures.md","rule_index":5,"rule_lead":"A slide's BODY is size-bounded, not just its header.","verdict":"N/A","evidence":"This is an exercise file; the lecture slide-size ceiling script (`check-slide-size.js`) governs lecture files, not this surface.","fix_hint":null,"blocking":false},
-    {"compendium":"check_pedagogy.md","rule_index":16,"rule_lead":"Forcing functions stay, scripted reactions go; forcing functions live in prompts, not body prose.","verdict":"PASS","evidence":"Both load-bearing artifact-writing moves stay fenced — compound prompt at raw line 25 ({{prompt:compound-and-close-1}}), sweep prompt at raw line 44 ({{prompt:compound-and-close-4}}); neither registry prompt changed since the pin (`git diff ba5ccf5..HEAD -- curriculum/prompts/compound-and-close-1.md curriculum/prompts/compound-and-close-4.md` → empty). The new raw-line-46 sentence (\"You can check the recurring cost by asking Claude how many tokens your rules files add to each session\") is an optional, unprescribed suggestion — no count, no mandated action — matching rule 16's boundary carve-out for optional refinements in body. Harm this rule guards against (a load-bearing move silently skippable because it only lives in body text a speed-runner skips) is absent: the two artifact-producing moves are inside prompts the student must paste; the new line asks nothing load-bearing.","fix_hint":null,"blocking":true},
-    {"compendium":"check_pedagogy.md","rule_index":27,"rule_lead":"Classroom = default delivery; body teaches work, trainer manages room.","verdict":"PASS","evidence":"Raw body lines 1-48, including the two new paragraphs at lines 13 and 15, describe the rules file, the CLAUDE.local.md choice, the push-back, the .gitignore decision, and the sweep — every sentence is about the artifact or the student's own next move. No pair/group/room-share phrase, no authored pause cue, no \"discuss with\" sentence anywhere in the body.","fix_hint":null,"blocking":false},
-    {"compendium":"check_pedagogy.md","rule_index":45,"rule_lead":"Per-exercise leap test — 3 observable Monday outcomes.","verdict":"PASS","evidence":"Maintainer Leap test block (raw lines 114-117), unchanged by this diff, names three falsifiable outcomes: compounds one rule from session evidence, runs a second sweep before closing, quotes the specific session moment that earned a rule. Each carries a falsifiability clause (file mtime/content diff, scrollback showing a second integrate turn, scrollback showing a quote-the-moment turn) rather than an abstract competency claim. Still accurate against the current body — neither forcing-function prompt moved.","fix_hint":null,"blocking":true},
-    {"compendium":"check_pedagogy.md","rule_index":47,"rule_lead":"Per-phase failure mode + escape hatch.","verdict":"PASS","evidence":"Maintainer table (raw lines 119-124), unchanged by this diff, maps both forcing functions to a named failure (retro confabulation; self-charity on rule self-review) and a named escape hatch (trainer's \"quote the specific session moment\" push; body callout below the prompt plus the harsher \"read each rule aloud\" push). Both required fields present for both phases; still accurate since the prompts and their surrounding push-back framing did not change.","fix_hint":null,"blocking":true},
-    {"compendium":"check_strategy_tie_in.md","rule_index":1,"rule_lead":"Mood lands / mood contract named.","verdict":"PASS","evidence":"Trace regenerated this session (curriculum/evals/sim-cache/ae101--exercise--compound-and-close.persona.json, content_sha 064b8661... matching `shasum -a 256` on the current file) scores all three teaching phases at 8/10 (write-the-rules-file — now including the two new framing paragraphs at raw lines 13/15 — push-back, sweep) and the close at 8/10; phase 3 (.gitignore keep/revert, raw lines 33-35) stays mechanical and mood-exempt (mood_score: null) — it compresses to a parenthetical without breaking the arc. Contract: M1 joyful creation, confirmed against content-strategy-agentic-engineering-101.md's M1 table row (\"it works, on my repo\").","fix_hint":null,"blocking":true},
-    {"compendium":"check_strategy_tie_in.md","rule_index":2,"rule_lead":"Epistemic mood, not punitive.","verdict":"PASS","evidence":"The new raw-line-15 sentence (\"This file is a starter. Everyone sees how this will bloat almost immediately.\") uses \"Everyone\" — a normalizing, not-your-fault register — and reads as candor about a known failure mode, not blame aimed at the student. Push-back section (raw lines 28-31) still treats a misread as something to correct with evidence, never as student error; trace phase-2 mood_note reads \"steering my own system, not confessing a mistake.\"","fix_hint":null,"blocking":false},
-    {"compendium":"check_strategy_tie_in.md","rule_index":3,"rule_lead":"Lead with discipline, not failure mode.","verdict":"PASS","evidence":"Raw line 11 now reads \"Now compound the session: make the next one easier with what this one taught\" — replacing the pin's \"the closing step of compound engineering\" wording, which the backing block's renamed claim `compound-definition-plain` (raw line 74) traces to a fresh live-checked Klaassen citation (raw line 83, `[checked:2026-08-23 result:OK]`). Still a positive-discipline lead, not a failure word; \"will bloat almost immediately\" (line 15) is an aside inside the body, not the module's title or lead sentence, so it stays inside the carve-out (\"failure mode becomes negative case the discipline addresses, not the title\").","fix_hint":null,"blocking":false},
-    {"compendium":"check_strategy_tie_in.md","rule_index":4,"rule_lead":"Strategy-fidelity: front-run check, module-to-module arc, Big Idea fidelity, mood doesn't resolve early — consolidated.","verdict":"PASS","evidence":"content-strategy-agentic-engineering-101.md's M1-detail section names the pre-engagement contract as \"rules home referenced at M1, team kit home at M3\" (that doc's line ~915) and its Material-tracking table logs \"Personal rules for this codebase ... (M1 onward): Default ./CLAUDE.local.md\" alongside \"Team-rule review cadence (M1 onward)\" (lines ~827-828). The new raw-line-13 paragraph (\"The rules land in ./CLAUDE.local.md ... And it parks the bigger question: where a team's rules and guardrails should live\") satisfies exactly that M1 touchpoint and explicitly defers rather than answers — it does not teach the personal-to-team destination or Argyris/Schön's double-loop mechanism, which the strategy doc's M2 section (\"Four-slide close — how instructions grow\", ~line 325) states is where \"M2 names the destination and loading behavior.\" No front-run. Big Idea (compounding) is honored throughout; the file still closes M1's loop in the room per that doc's line ~289 (\"The whole loop now closes in the room, so there is no open move carried into Module 2\"), matching the removal of the old closing \"## What you built\" section (now folded into the top-of-file \"What you build\" widget lead-in at raw line 7, so no completeness loss). NOTE for the maintainer, not a body defect: the same strategy doc's M1-detail section (~lines 292-296) describes an older design where compound-and-close's body prints Klaassen's loop and names him — that design was superseded by this file's own Stance block (raw line 92, dated 2026-08-12) and by `getting-going.md` line 179, which already documents attribution living inside Claude's live summary, not in body prose. The current body (no \"Klaassen\" anywhere in student-facing text) is internally consistent with those two in-repo, dated decisions; only the private GDrive strategy doc's older passage looks unrefreshed against them.","fix_hint":null,"blocking":true},
-    {"compendium":"check_strategy_tie_in.md","rule_index":5,"rule_lead":"Strategic themes recur in Key Concepts.","verdict":"N/A","evidence":"Key Concepts is a module-file-only section (student-facing heading `## Key Concepts`); this is a shared exercise file with no such section.","fix_hint":null,"blocking":false},
-    {"compendium":"check_strategy_tie_in.md","rule_index":6,"rule_lead":"Key Concepts shape — theme breadcrumbs, not standalone section.","verdict":"N/A","evidence":"Same as rule 5 — no Key Concepts section exists on this exercise file for a breadcrumb to attach to.","fix_hint":null,"blocking":false},
-    {"compendium":"check_strategy_tie_in.md","rule_index":7,"rule_lead":"What You'll Learn shape — capability register, not syllabus.","verdict":"N/A","evidence":"This exercise has no module-level `What You'll Learn` section; that section lives on the module file, not the shared exercise.","fix_hint":null,"blocking":false}
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 1,
+      "rule_lead": "Meta-frame lectures = closers, not openers.",
+      "verdict": "N/A",
+      "evidence": "This is an exercise file (curriculum/exercises/), not a lecture — the rule governs standalone lecture placement (opener vs. closer) within a module's lecture slots, which this file has none of.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 2,
+      "rule_lead": "Minimal lecturing before contrast-mood exercises.",
+      "verdict": "N/A",
+      "evidence": "Rule governs LECTURE dosage immediately before a contrast-mood (M5-style) exercise. This file's mood contract is M1 joyful-creation, not contrast-mood, and the file is itself an exercise with no preceding lecture content to dose.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 3,
+      "rule_lead": "No cross-module sequencing in lecture bodies.",
+      "verdict": "PASS",
+      "evidence": "Ran this session: `grep -nE '\\bM[0-9]\\b|Module [0-9]' curriculum/evals/body-views/ae101--exercise--compound-and-close.body.txt` → 0 hits, exit 1 (real output, this session). Rule is scoped to lecture bodies and this is an exercise, so arguably N/A by surface — checked on the merits anyway, free to verify from the body projection. The one module reference in the whole file (\"Hands off to: M1 Bridge → M2\", raw line 112, Arc section) sits below the maintainer fence, out of scope for this rule by design.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 4,
+      "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
+      "verdict": "PASS",
+      "evidence": "Rule's title (\"Slide/lecture headers\") and the sibling REVISE finding on `close-the-ticket.md` (curriculum/evals/instances/ae101--exercise--close-the-ticket.story.json, same class, same module) confirm this rule reaches exercise `##` headers too, not lecture headers only — so judged on the merits, not dismissed as lecture-only. All four raw headers pass squint cleanly: 'Write your rules file from the session' (L17, names action + source), 'Push back where the summary misreads' (L28, names action + object), 'Keep or revert the .gitignore edit' (L33, names the decision + object), 'Sweep the session into your rules file one more time' (L37, names action + object + repetition-qualifier). None are empty containers ('The move', 'The point') or orphan-mystery headers, and none share text with another slide. Truth clause: each header's claim is what its section body actually does — 'one more time' (L37) genuinely is the second/closing integration pass, not a repeat of L17's first pass. No corpus-recognized generic-recap label (e.g. 'What happened', flagged elsewhere in this same module's sibling file) appears here.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 5,
+      "rule_lead": "A slide's BODY is size-bounded, not just its header.",
+      "verdict": "PASS",
+      "evidence": "Ran this session: `node scripts/check-slide-size.js --file curriculum/exercises/compound-and-close.md` → \"files: 1   slides: 4   limits: 210 words / 6 bullets ... oversized: 0 ... ✓ every slide is within limits\" (real output, this session). This is the rule named in the drift-check — re-read at current wording (unchanged, exercise slides explicitly in scope, confirmed the script's own file-set is derived from each module's `exercises/<slug>` include) and re-verified mechanically against the current body. Corrects the prior instance's row, which had marked this N/A on a premise the tool itself disproves.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 6,
+      "rule_lead": "A prompt inside a lecture is a trainer show-and-tell, never a room follow-along.",
+      "verdict": "N/A",
+      "evidence": "Rule's explicit carve-out: \"Not covered: exercise prompts, prework prompts, and prompts on reference/supplementary pages, all of which the student runs themselves.\" Both `{{prompt:compound-and-close-1}}` (raw L25) and `{{prompt:compound-and-close-4}}` (raw L44) are exercise prompts the student pastes and runs on their own session/repo, not a lecture demo the trainer runs on a shared repo.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 16,
+      "rule_lead": "Forcing functions stay, scripted reactions go; forcing functions live in prompts, not body prose.",
+      "verdict": "PASS",
+      "evidence": "Harm the rule prevents: a load-bearing artifact-writing move hidden in body prose a speed-runner would skip. Both artifact-writing moves stay fenced — the compound prompt (raw L25) writes ./CLAUDE.local.md from session evidence; the sweep prompt (raw L44) integrates anything earned since. Body-only content is the carved-out kind: the push-back instruction (raw L30, \"Read Claude's summary. Push back where it misreads. Quote the specific session moment back at Claude.\") is an optional refinement/push-back, which rule 16's own text explicitly allows to live in body; the .gitignore keep-or-revert decision (raw L35) is light housekeeping with no downstream artifact dependency (also mood-exempt per the trace); the new token-cost line (raw L46, \"You can check the recurring cost...\") is an unprescribed, uncounted suggestion, not a scripted count or a load-bearing move. Neither prompt changed since the pin (confirmed via diff_since_pin above). Harm absent.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 27,
+      "rule_lead": "Classroom default: body teaches the work, trainer manages the room outside text.",
+      "verdict": "PASS",
+      "evidence": "Harm the rule prevents: authored conversation cues a self-study reader also has to sit through. Ran this session: `grep -niE \"discuss with|share with|pair up|tell the room|neighbor|neighbour|compare with the person\" curriculum/evals/body-views/ae101--exercise--compound-and-close.body.txt` → 0 hits, exit 1 (real output, this session). Every sentence in the body names WORK (the rules file, the session evidence, the push-back, the .gitignore decision, the sweep), never cohort management. None of the three carve-outs (Connections-opener room-harvest, sanctioned human-round mode-cue, room-naming ceiling) are invoked or needed. Harm absent.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": null,
+      "judge_owned": true,
+      "rule_lead": "Forcing function lives in prompts, not body prose (storytelling-owned facet, sibling of check_pedagogy §16).",
+      "verdict": "PASS",
+      "evidence": "Same finding as check_pedagogy §16 from the prompt-design side: both student-copied actions (compound-from-evidence, closing sweep) sit inside `**Prompt**` fences; nothing load-bearing depends on body prose a speed-runner would skip. check_prompts.md's remaining 47 rules are mechanical/technical (placeholders, canonical shape, chaining, session-boundary, permission-mode) and are owned by the writing/technical/behavior class instances for this file, not by storytelling — read in full this session for context on the maintainer's §32/§50/§51 accept-with-mitigation notes (open-hook rule 1, self-critique register rule 18), not for independent per-rule ownership here.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 1,
+      "rule_lead": "Mood contract named — mood lands (8+/10 at teaching beats).",
+      "verdict": "PASS",
+      "evidence": "Harm the rule prevents: a flat or over-earnest beat breaking joyful-creation immersion. Ran this session: `node curriculum/evals/scripts/sim-freshness.js --json` → this file's persona trace verdict 'stamp-only' (maintainer region only since 43c6b753), i.e. mechanically confirmed fresh against the current body despite the whole-file sha drift caused by the self-referential Quality stamp. Trace (curriculum/evals/sim-cache/ae101--exercise--compound-and-close.persona.json) scores all three teaching phases at 8/10 — write-the-rules-file, push-back, sweep — and close at 8/10; phase 3 (.gitignore keep/revert) correctly carries mood_score: null as a mechanical setup beat (compresses to a parenthetical without breaking the arc). Contract: M1 joyful creation, confirmed against content-strategy-agentic-engineering-101.md's M1 table row (\"it works, on my repo\") read live this session. No beat below 7, none below 8. Harm absent.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 2,
+      "rule_lead": "Epistemic mood, not punitive.",
+      "verdict": "PASS",
+      "evidence": "Harm the rule prevents: uncertainty framed as having-done-wrong rather than not-knowing-yet. Raw L15 (\"This file is a starter. Everyone sees how this will bloat almost immediately.\") uses a normalizing 'Everyone' — candor about a known failure mode, not blame at the student. Push-back section (raw L28-31) treats a misread as evidence to correct, never as student error; trace phase-2 mood_note reads \"steering my own system, not confessing a mistake.\" Harm absent.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 3,
+      "rule_lead": "Lead with discipline, not failure mode.",
+      "verdict": "PASS",
+      "evidence": "Harm the rule prevents: a title/header naming the failure the exercise averts rather than the practice it builds. Title (\"Compound and close the loop\") and raw L11 (\"Now compound the session: make the next one easier with what this one taught\") both lead with the positive discipline (compounding), never a failure word. 'will bloat almost immediately' (L15) is a body aside, not the title or lead sentence, so it stays inside the carve-out even though it names a failure mode in passing. Harm absent.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 4,
+      "rule_lead": "Strategy-fidelity check — no front-running, module arc intact, Big Idea fidelity, mood doesn't resolve early.",
+      "verdict": "PASS",
+      "evidence": "Harm the rule prevents: quiet divergence from the strategy doc's stated M1 sequencing or front-running M2's teaching moment. Read live this session (bosser-strategy skill) against content-strategy-agentic-engineering-101.md: M1 table row + item 4 (line ~275) both describe compound-and-close as writing ./CLAUDE.local.md from Ex1-3 session evidence with no Q1/Q2/Q3 interview, matching this file exactly; the 'no open move carried into Module 2' close (line 289) matches this file's own Arc hand-off; the personal/team-rule table (lines 827-828) and pre-engagement-contract line (~915, \"rules home referenced at M1\") match this file's L13 paragraph, which names the CLAUDE.local.md/team-rules split and explicitly defers the team-rules question rather than answering it — M2's own 'Four-slide close' section (line 325, \"M2 names the destination and loading behavior\") is exactly where that deferred question gets answered, so no front-run. Big Idea (compounding) honored throughout. **Maintainer note, not a body defect** (same disposition as the prior instance's finding, independently re-confirmed live this session, not resolved): the strategy doc still describes an older design at two passages — line 285 (\"`plan` is one of the stage names inside Klaassen's printed loop at M1\") and line 287 (\"Klaassen attribution lands in compound-and-close's own body, where the loop is printed... M1 names him twice, on purpose\") — where the loop sequence and Klaassen's name print in this file's student-facing body. That was true through the 2026-08-02 decision the doc describes, but this file's own Stance block (raw L92, dated 2026-08-12, later) reversed it: the printed arrow-sequence was dropped and attribution moved to live only inside Claude's own retro summary, not body prose. Checked whether the doc caught up elsewhere in the file (as it did for the sibling `close-the-ticket`'s 'Refinement' drift, confirmed resolved this session) — it has not; both passages still read as if the loop is printed. The current student-facing body (no 'Klaassen', no printed loop, anywhere in raw lines 1-49) is internally consistent with this file's own later, dated, deliberate decision, so no finding against the exercise file; the private strategy doc is the side that needs the refresh. Flagged in `notes` for the maintainer.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 5,
+      "rule_lead": "Strategic themes recur in Key Concepts.",
+      "verdict": "N/A",
+      "evidence": "Governs module-file `## Key Concepts` sections; this is an exercise file and carries no such section.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 6,
+      "rule_lead": "Key Concepts shape — theme breadcrumbs, not standalone section.",
+      "verdict": "N/A",
+      "evidence": "Governs module-file `## Key Concepts` sections; this is an exercise file and carries no such section.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 7,
+      "rule_lead": "What You'll Learn shape — capability register, not syllabus.",
+      "verdict": "N/A",
+      "evidence": "Governs module-file `## What You'll Learn` sections; this is an exercise file and carries no such section.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": null,
+      "judge_owned": true,
+      "rule_lead": "Trigger check — is this file workshop-shaped?",
+      "verdict": "N/A",
+      "evidence": "No beat's output belongs to a group rather than the individual student — the rules file, the push-back, the .gitignore decision, and the sweep are all one engineer's own session and own artifact. check_workshop's trigger condition (≥1 group-owned beat) does not fire; check_pedagogy governs this file unchanged, as evaluated above. signals.group_beat_markers: true in the derived view is a false-positive-shaped signal name — verified by reading the body directly rather than trusting the flag; the only plausibly 'group' language anywhere is the maintainer block's 'Plug points: Push-back moves at retro (trainer delivers)', which names a trainer-delivered push-back to one student, not a room-scale adjudication beat.",
+      "fix_hint": null,
+      "blocking": false
+    }
   ],
   "mood_summary": {
-    "phase_scores": [8, 8, null, 8],
+    "phase_scores": [
+      { "phase_index": 1, "phase_name": "Write your rules file from the session", "mood_score": 8 },
+      { "phase_index": 2, "phase_name": "Push back where the summary misreads", "mood_score": 8 },
+      { "phase_index": 3, "phase_name": "Keep or revert the .gitignore edit", "mood_score": null },
+      { "phase_index": 4, "phase_name": "Sweep the session into your rules file one more time", "mood_score": 8 }
+    ],
     "close_score": 8,
     "any_below_8": false,
     "stealing_the_mood": []
   },
-  "teaching_moment_note": "The named teaching moment — a rules file written from session evidence rather than interview, integrating rather than appending, corrected by quoted push-back — is still carried entirely inside the two fenced, unchanged prompts (raw lines 25, 44), so it survives regardless of persona skill level; a student who skips all body prose (including the two new framing paragraphs) still hits it because the prompt text itself performs the move. No fragility flag.",
   "blocking_findings_count": 0,
-  "todos_count": 0
+  "todos_count": 0,
+  "todos": [],
+  "notes": [
+    "Teaching-moment-lands (no rule_index, per completeness contract): the named teaching moment — a rules file written from session evidence rather than interview, integrating rather than appending, corrected by quoted push-back — is carried entirely inside the two fenced, unchanged prompts (raw L25, L44), so it survives regardless of persona skill level; a student who skips all body prose still hits it because the prompt text itself performs the move. No fragility flag.",
+    "Ledger correction from the prior story instance on this file (not a body defect): check_lectures.md rule 5 was previously marked N/A on the premise that its mechanical checker 'governs lecture files, not this surface' — a live run of `scripts/check-slide-size.js --file curriculum/exercises/compound-and-close.md` this session (and the rule's own 'Exercise slides count too' clause) disproves that premise. Corrected to PASS above; see drift_check.",
+    "Sibling-class observation, not filed as story REVISE: the backing block's Stance section (raw L91-96) carries a `decided:` bullet (L95, \"print the current sequence in full, 2026-08-02\") that reads as still-operative on its own, when the dated bullet above it (L92, 2026-08-12) has since reversed it. check_writing §3 territory (a block should state what is true now, not a superseded decision) — flagging for the writing judge, out of story's lane to file here.",
+    "Maintainer-facing, not exercise-facing: content-strategy-agentic-engineering-101.md lines 285 and 287 still describe Klaassen's loop as printed in this file's body ('M1 names him twice, on purpose'). This file's own later, dated Stance decision (raw L92, 2026-08-12) reversed that design, and the exercise's current body is correctly consistent with its own decision — the strategy doc is the side that has not caught up. Checked live this session; not resolved elsewhere in the doc (unlike the sibling `close-the-ticket` file's now-resolved 'Refinement' drift). See check_strategy_tie_in.md rule 4 row above for the full citation trail."
+  ]
 }

@@ -1,145 +1,152 @@
 {
   "class": "storytelling",
-  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/the-wizard-move.md",
-  "body_sha": "97653529e78bab5a43107e03ced3159887739208ca8ff46322a40bfb6ac9d341",
-  "verdict": "PASS",
+  "file": "curriculum/lectures/the-wizard-move.md",
+  "body_sha": "2afd1c048bea72fa90a7bf08742db9971e56ee81a79f384acb1fc05c30eb33bd",
+  "shape_hash": "1870b031fbe8c765",
+  "verdict": "PASS_WITH_TODOS",
   "training": "ae101",
-  "module_mood_contract": "joyful creation — 'it works, on my repo' (M1, content-strategy-agentic-engineering-101.md mood-arc table, line 243)",
+  "module_mood_contract": "joyful creation — 'it works, on my repo' (getting-going.md Meta block; content-strategy-agentic-engineering-101.md M1 row)",
   "trace_status": "regenerated",
-  "trace_regeneration_reason": "Cached trace content_sha (a9f3762c...) mismatched the current file's sha256 (97653529...) — the cache still quoted 'Two Claude chat windows' / 'the other window', text the 27f92c59 commit replaced with 'Two Claude Code sessions' / 'the other session'. Regenerated the single phase (no ## Phase headers in this file) against the live body at curriculum/evals/sim-cache/ae101--lecture--the-wizard-move.persona.json.",
+  "trace_regeneration_reason": "Cached trace at curriculum/evals/sim-cache/ae101--lecture--the-wizard-move.persona.json had content_sha 97653529e78bab5a43107e03ced3159887739208ca8ff46322a40bfb6ac9d341, which does not match the current body sha (6fa62df7...). The stale trace narrated the 'Who this is for' section and the cardiologist third-session example, both cut in commit b1911175. Regenerated in this session against the current two-section, three-header body and rewritten to the same cache path.",
   "rules_evaluated": [
     {
       "compendium": "check_lectures.md",
-      "rule_index": 1,
+      "rule_index": "1",
       "rule_lead": "Meta-frame lectures = closers, not openers.",
       "verdict": "PASS",
-      "evidence": "This file is a demo-showing-a-ceiling opener, not a meta-frame naming-a-pattern closer — rule 1's own diagnostic. Maintainer Meta: 'Placement: M1 opener, after Connections, before the exercise' (line 45); body content is a live two/three-session demo the student watches, not a recognition beat over something already lived (that closer role is explicitly reserved elsewhere: 'Don't steal the closer's kicker. \"Loop is the shape / bug was the excuse\" belongs to the M1 closer', line 35, and the strategy doc confirms M1's actual meta-frame closer is a different file: 'M1's closing lecture how-this-training-was-built.md is a closer, not opener... Opener slot stays with the-wizard-move.md', content-strategy-agentic-engineering-101.md line 925). The window→session wording swap under review touches only the demo's vehicle, not its opener-shaped function.",
+      "evidence": "Harm the rule prevents: telling a recognition beat before the student has lived the pattern flattens it into an abstract claim. Not present here — this file is a DEMO lecture showing a capability ceiling (context conditions the next answer), not a narrative naming a pattern the student already lived. Meta block L39: 'Placement: M1 opener, after Connections, before the exercise.' Body L1-9 opens directly on the two-session demo with no retrospective framing ('you just saw X; that was Y'). Rule's own diagnostic: 'Demo lectures showing a ceiling go at beginning' — this is exactly that shape, and the strategy doc (content-strategy-agentic-engineering-101.md L925) independently confirms 'Opener slot stays with the-wizard-move.md' against `how-this-training-was-built.md` as M1's actual closer.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_lectures.md",
-      "rule_index": 2,
+      "rule_index": "2",
       "rule_lead": "Minimal lecturing before contrast-mood exercises.",
       "verdict": "N/A",
-      "evidence": "Rule is scoped to 'Contrast-mood modules (M5-style: learn through doing the thing, name it after)'. M1's mood is joyful creation, the first beat of the mood arc ('joyful creation → grounded competence → earned trust → curious readiness → learning through contrast → practitioner fluency', content-strategy-agentic-engineering-101.md line 258) — contrast-mood is M5's shape, not M1's, so this rule's trigger condition is not met by the surface under review.",
+      "evidence": null,
+      "na_reason": "M1 is joyful-creation (content-strategy-agentic-engineering-101.md row 243), not a contrast-mood module; rule scoped to M5-style 'learn through doing, name it after' modules only.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_lectures.md",
-      "rule_index": 3,
+      "rule_index": "3",
       "rule_lead": "No cross-module sequencing in lecture bodies.",
       "verdict": "PASS",
-      "evidence": "Mechanical: `sed -n '1,28p' curriculum/lectures/the-wizard-move.md | grep -n -E 'M[0-9]|Module [0-9]'` → NO MATCHES (ran in this session). Body (above the maintainer fence) names no module number and no forward module reference; the close hands off generically ('Fix one trivial bug from your own backlog... your next session reads first') without naming M1/M2 by number, matching the rule's carve-out shape. Unaffected by the diff under review.",
+      "evidence": "Mechanical: `grep -nE 'M[0-9]' curriculum/evals/body-views/ae101--lecture--the-wizard-move.body.txt` (the 22-line body region, fences/maintainer already stripped) → exit 1, 0 hits, run in this session. No module numbering or forward-reference to a named module anywhere in body lines 1-22. Maintainer-block mentions of 'M2' (L28, L30) sit below the maintainer fence and are exempt by the rule's own scope (body-only).",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_lectures.md",
-      "rule_index": 4,
+      "rule_index": "4",
       "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
       "verdict": "PASS",
-      "evidence": "None of the four `##` headers were touched by the 27f92c59 diff (only body sentences under 'Context is King' changed window→session); re-verified cold against the current body regardless. 'Context is King' — canonical claim/handle carried verbatim from Agents 101 (maintainer: 'stolen verbatim from Agents 101'), names the concept and is supported by the demo underneath. 'You steer the answer by loading context' — claim header, body opens 'Context is whatever you tell it... You, in a way, compel the right output by having the right stuff in the context' — matches at the strength licensed. 'The loop is what you repeat' — claim header, body closes on exactly that line verbatim. 'Who this is for' — orientation-register header naming the audience-fit concept ('You already know Claude Code... how much further it lets you reach'), a standard module-opener framing device, not an empty container (it names WHO, which is the ONE thing the paragraph under it delivers). No two slides share a header; no em-dash/pedagogy-header violations found on inspection.",
+      "evidence": "Three headers, none shared, none an empty container or orphan-mystery: L3 'Context is King' names the concept the whole demo argues; L11 'You steer the answer by loading context' is a claim (agency: you control the output); L17 'The loop is what you repeat' is a claim (the loop, not the fix, is the unit). Truth clause: each is licensed by its own section — L5-9 demonstrates the King claim live, L13-15 explains the mechanism the steering claim asserts, L19-21 explains the loop/fix distinction directly. Closest-to-violating line: 'The loop is what you repeat' (L17) could misread as an unsupported universal ('always true of any fix'), but the body never claims universality, only names what recurs; it stays inside the truth clause. No em-dashes, no pedagogy/contemplative register, no command-verb headers.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_lectures.md",
-      "rule_index": 5,
+      "rule_index": "5",
       "rule_lead": "A slide's BODY is size-bounded, not just its header (§4's sibling).",
       "verdict": "PASS",
-      "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/lectures/the-wizard-move.md --report` in this session. Output: 'You steer the answer by loading context' 119w/0 bullets; 'Context is King' 104w/0 bullets; 'The loop is what you repeat' 61w/0 bullets; 'Who this is for' 26w/0 bullets. Summary: 'files: 1  slides: 4  limits: 210 words / 6 bullets  oversized: 0 — ✓ every slide is within limits'. All four well under the 210-word ceiling; the window→session word-swap is length-neutral (same sentence count, near-identical word count).",
+      "evidence": "Per-`##` word counts, computed in this session by splitting the raw body at `## ` headers and counting words excluding the header line: 'Context is King' = 104 words / 0 bullets; 'You steer the answer by loading context' = 58 words / 0 bullets; 'The loop is what you repeat' = 61 words / 0 bullets. All three well under the 210-word / 6-bullet ceiling; no fences or figures to exclude.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_lectures.md",
-      "rule_index": 6,
+      "rule_index": "6",
       "rule_lead": "A prompt inside a lecture is a trainer show-and-tell, never a room follow-along.",
       "verdict": "N/A",
-      "evidence": "Mechanical: `grep -n -E '\\{\\{prompt:|^\\*\\*Prompt\\*\\*' curriculum/lectures/the-wizard-move.md` → NO MATCHES (ran in this session). This lecture carries zero `{{prompt:<key>}}` markers and zero inline `**Prompt**` fenced blocks — the demo's three questions ('What is the capital of Italy?', 'What is the largest lake in Finland?', 'I'm a cardiologist preparing dinner for my patients') are described in prose as what the trainer types live, never staged as a copy-this block. Rule's subject (a fenced prompt block inside a lecture) does not exist on this file.",
+      "evidence": null,
+      "na_reason": "signal has_prompt_blocks: false, has_code_fences: false — file carries no {{prompt:}} marker and no fenced block of any kind.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_pedagogy.md",
-      "rule_index": 16,
+      "rule_index": "16",
       "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
       "verdict": "N/A",
-      "evidence": "Rule's mechanism is 'in fence, not body' — it presupposes a fenced prompt housing the forcing function. This file has no fenced prompt at all (confirmed under check_lectures §6 above); every demo beat is trainer-narrated prose, not a student- or Claude-executed move via a copied prompt. The 'guess before reveal' narrative device (line 11) is a reader-engagement beat governed by `check_slides §4` (out of this judge's compendium scope, and explicitly cited as such in the file's own maintainer block, line 33) — not a forcing function in rule 16's sense (a move Claude/student performs that a fence would otherwise house).",
+      "evidence": null,
+      "na_reason": "Lecture has no phases and no fenced prompts to check a forcing function against (has_prompt_blocks: false). The loop's actual forcing functions (tests-first, ticket-read, compound sweep) live in the exercise files (fix-tests-first.md, close-the-ticket.md, compound-and-close.md), which own this rule for their own bodies. L19-21 here previews what those exercises will ask, in the register of foreshadowing a lecture, not of enacting a forcing function itself.",
       "fix_hint": null,
-      "blocking": true
+      "blocking": false
     },
     {
       "compendium": "check_pedagogy.md",
-      "rule_index": 27,
+      "rule_index": "27",
       "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
       "verdict": "PASS",
-      "evidence": "Harm the rule prevents: an authored pause/compare/share cue converts a beat into cohort-management busywork the trainer already owns, stealing the trainer's judgment call on when to pause. Closest candidate: 'Take a guess before it runs. What does Claude suggest now?' (line 11) — reads as a pause-cue, but it addresses the individual reader's own silent prediction, not a room-share/pair/discuss instruction ('no group, pair, room-share... discuss with...'), and the file's own maintainer block carries a pre-existing, dated accept-note for exactly this passage: 'Guess before reveal. The guess paragraph precedes the Finnish-dinner answer. Both windows get narrated before the live run. `check_slides §4`' (line 33) — an existing accept-note per the dispatch preamble's instruction to check for one before flagging. No other body sentence names cohort pacing, comparison, or sharing; the close ('Fix one trivial bug... Log one decision. Seed a rules file...') is about the WORK, not room management. The window→session diff does not touch this line. Harm absent; PASS.",
+      "evidence": "Harm the rule prevents: authored conversation/pause cues turn a lecture into a scripted performance and steal the trainer's room-reading judgement. Not present — body has zero 'discuss with', 'share with your neighbor', or group-comparison sentences. Closest candidate: L7 'Take a guess before it runs. What does Claude suggest now?' — this is a rhetorical engagement device about the WORK (predicting the demo's outcome), not cohort management (pacing/comparing/sharing), and it is a documented maintainer accept-note ('Guess before reveal', L27) rather than a stray cue. Stays inside the rule.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
-      "rule_index": 1,
+      "rule_index": "1",
       "rule_lead": "Mood contract named.",
       "verdict": "PASS",
-      "evidence": "Trace-based (regenerated this session at curriculum/evals/sim-cache/ae101--lecture--the-wizard-move.persona.json, phase 1 = whole file, single phase). mood_score: 9; close.mood_score: 9. Diagnostic: this is a TEACHING beat (the demo IS the pedagogical move — context conditioning — not mechanical setup/launch), so the 8+/10 mood-floor applies and is cleared. Trace note: the window→session wording swap, if anything, sharpens the landing — the demo now runs in the persona's own daily tool (Claude Code, used daily for 2 weeks per the AE101 persona) rather than a claude.ai tab requiring translation, so 'this happens in MY sessions too' lands with one less hop. No beat below 8.",
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": 2,
-      "rule_lead": "Epistemic mood ≠ punitive mood.",
-      "verdict": "N/A",
-      "evidence": "Rule's trigger is explicit: 'When module's mood is \"unease\"...'. M1's deliberate mood is joyful creation (content-strategy-agentic-engineering-101.md line 243: 'Joyful creation — \"it works, on my repo\"'), not unease — the unease/punitive distinction this rule draws does not have a target to apply to on this module.",
+      "evidence": "M1's deliberate mood is joyful creation — 'it works, on my repo' (content-strategy-agentic-engineering-101.md row 243; getting-going.md Meta block L120). This file is the opener, so its job is to ARM that mood rather than fully deliver it (per check_lectures §2's opener/closer distinction, applied by analogy even though M1 isn't contrast-mood): the demo primes curiosity and a working mental model without pre-empting the felt payoff the exercises deliver. Trace phase 1 + close both score mood_score 9 against the joyful-creation contract (curriculum/evals/sim-cache/ae101--lecture--the-wizard-move.persona.json, regenerated this session) — nothing here flattens or resolves the mood early.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
-      "rule_index": 3,
+      "rule_index": "2",
+      "rule_lead": "Epistemic mood ≠ punitive mood.",
+      "verdict": "PASS",
+      "evidence": "The file's own hedge ('But not as reliably,' L9) reads as not-knowing/curiosity ('this doesn't always work the way you'd predict') rather than having-done-wrong. No line frames the reader's own prior sessions as a mistake; the tone throughout (L11-15, L19-21) is capability-framing ('you steer the answer'), never a correction of something the student did badly.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": "3",
       "rule_lead": "Lead with discipline, not failure mode.",
       "verdict": "PASS",
-      "evidence": "The lecture's own name/frame — 'the wizard move' / 'You become the Claude wizard' — is the strategy doc's own positive-framing handle: 'You become the Claude wizard... Never sold as a gap-fix' (content-strategy-agentic-engineering-101.md lines 9-12). 'But not as reliably' (line 13) hedges the demo's OWN reliability, not the student's competence or a failure the student committed — no punitive or failure-mode framing anywhere in body. Unaffected by the window→session diff.",
+      "evidence": "Title 'The wizard move' and all three body headers (L3, L11, L17) are discipline-named, not failure-named ('The wizard move' / 'Context is King' / 'You steer the answer by loading context' / 'The loop is what you repeat'). No slide is titled after a failure mode (e.g. no 'Context drift' or 'Forgetting to load context').",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
-      "rule_index": 4,
+      "rule_index": "4",
       "rule_lead": "Strategy-fidelity check.",
       "verdict": "PASS",
-      "evidence": "Consolidated per the story-judge Completeness contract (front-run check + module-to-module arc + Big Idea fidelity + mood-doesn't-resolve-early), all re-checked against the current diff. Front-run: body mentions no plan mode, no map, no Skill authoring (maintainer's own standing constraints already guard these, lines 34/36); the three-Claude-Code-sessions demo is trainer-run only, not a student multisession action, so it does not front-run the M1-optional-read #3 'Multi-session and Git: survival guide' or the M1→M2 Cherny-video parallel-worktrees beat that strategy explicitly reserves ('the multisession permission beat... You will want to run multiple sessions. Find your way to do it over time', line 301; 'single biggest productivity unlock... seen here first', line 296) — students only watch here, they do not open sessions themselves in this lecture. Big Idea fidelity: M1's Big Idea is 'Getting going + context' (line 243); this file IS the context half, matching. Arc handoff: close ('Fix one trivial bug from your own backlog... Seed a rules file your next session reads first... The loop is what you repeat') hands off cleanly into M1's own four-exercise loop (orient → fix → close → compound, line 279) without naming module numbers, consistent with check_lectures §3. Mood-doesn't-resolve-early: nothing in this joyful-creation opener resolves the later unease/contrast beats (M3/M5) early — no overlap of subject matter. The window→session terminology swap changes none of these four facets; it changes only which Claude Code product the demo runs inside, and running it in Claude Code (the audience's stated daily tool per 'Audience — the self-taught mid-layer' and 'already uses Claude Code daily' in the buyer section, line 16) is, if anything, better strategy fit than the prior claude.ai staging for an AE101 room.",
+      "evidence": "Consolidated facets checked: (a) front-run — body names no map (maintainer L30 'Zero map references' honored; body has zero mentions of a map), no plan mode (maintainer L28 honored; body never mentions plan mode), and grep for M[0-9] returned 0 hits (see check_lectures §3 row) — M2's plan-mode teaching moment and the M2 map-reveal both stay unspent. (b) Big Idea fidelity — M1's Big Idea (getting-going.md L6: 'Your first session should leave something behind that the next one can use') is honored by L19 'Seed a rules file your next session reads first,' the same idea in the lecture's own voice, without restating it verbatim. (c) module-to-module arc — N/A facet for this specific file: the-wizard-move.md is M1's OPENER, not its close (how-this-training-was-built.md is M1's closer per content-strategy row 925), so there is no close-to-next-module handoff for this file to carry; the facet is satisfied by the fact that nothing here reaches forward into a later module's beat. (d) mood-doesn't-resolve-early — joyful-creation mood is meant to fire early at M1's open, so there is no premature-resolution risk of the kind the rule guards against for later-arc unease modules.",
       "fix_hint": null,
-      "blocking": true
+      "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
-      "rule_index": 5,
+      "rule_index": "5",
       "rule_lead": "Strategic themes recur in Key Concepts.",
       "verdict": "N/A",
-      "evidence": "Governs a module-only section (student-facing heading `## Key Concepts`). This file is a lecture; it has no Key Concepts section. Per the story-judge template: N/A on a lecture, strategy judge owns this at module scope.",
+      "evidence": null,
+      "na_reason": "Lecture file, no `## Key Concepts` section (module-only heading; owned by getting-going.md's Key Concepts, which does carry the compounding/context themes).",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
-      "rule_index": 6,
+      "rule_index": "6",
       "rule_lead": "Key Concepts shape — theme breadcrumbs, not standalone section.",
       "verdict": "N/A",
-      "evidence": "Governs a module-only section (`## Key Concepts`). This file is a lecture; no such section exists here.",
+      "evidence": null,
+      "na_reason": "Lecture file, no `## Key Concepts` section.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
-      "rule_index": 7,
+      "rule_index": "7",
       "rule_lead": "What You'll Learn shape — capability register, not syllabus.",
       "verdict": "N/A",
-      "evidence": "Governs a module-only section (`## What You'll Learn`). This file is a lecture; no such section exists here.",
+      "evidence": null,
+      "na_reason": "Lecture file, no `## What You'll Learn` section (module-only heading).",
       "fix_hint": null,
       "blocking": false
     },
@@ -149,7 +156,8 @@
       "judge_owned": true,
       "rule_lead": "Whole-compendium scope call.",
       "verdict": "N/A",
-      "evidence": "check_prompts.md's scope is 'anything inside a fenced code block with copy-this affordance' for a student. Confirmed by grep (see check_lectures §6 evidence above): zero `{{prompt:}}` markers, zero `**Prompt**` blocks in this file. No student-copied prompt surface exists here for any of the compendium's 48 rules to attach to.",
+      "evidence": null,
+      "na_reason": "signals has_prompt_blocks: false and has_code_fences: false — no fenced block of any kind; check_prompts.md scopes to 'anything inside a fenced code block with copy-this affordance'.",
       "fix_hint": null,
       "blocking": false
     },
@@ -159,18 +167,23 @@
       "judge_owned": true,
       "rule_lead": "Whole-compendium scope call.",
       "verdict": "N/A",
-      "evidence": "check_workshop.md fires only where a beat's output belongs to the group, not to a participant (adjudication, attributed contribution, group decision, group round). This lecture has no group beat at all — it is a trainer-narrated demo the whole room watches together, then an individual close-out into the student's own next exercise. No artefact here belongs to 'the room' as distinct from each individual student.",
+      "evidence": null,
+      "na_reason": "signal group_beat_markers: false; a trainer-run lecture demo the whole room watches, not a group-adjudication or attributed-contribution beat — not workshop-shaped per check_workshop.md's own trigger test.",
       "fix_hint": null,
       "blocking": false
     }
   ],
+  "teaching_moment_lands": "PASS — the named teaching moment (context conditioning: an unrelated earlier exchange colors a later, different answer) is demonstrated live via a two-session fact/fact contrast (capital-of-Italy→dinner vs largest-lake-of-Finland→dinner). It does not depend on the student's own skill or prior knowledge to land — the contrast is externally visible regardless of the persona's Claude Code fluency, and the maintainer's own attested-delivery history (backing block, antti-dinner-demo-deliveries) backs its reliability across repeated cohort deliveries. Cutting the third (cardiologist) example per the pinned diff does not fragilize the moment; per the maintainer's own accept-note (L45) the fact/fact contrast alone carries the mechanism, and a third example only restated it.",
   "mood_summary": {
     "phase_scores": [9],
     "close_score": 9,
     "any_below_8": false,
     "stealing_the_mood": []
   },
-  "teaching_moment_lands": "PASS (judge-owned, no check_*.md rule_index — recorded here per story.md template instruction, not as a rules_evaluated row). Named teaching moment: 'context is whatever you tell it — the wizard move is loading the right context before the question' (lines 17-21). Reliably triggers across the regenerated trace regardless of the window→session wording: the mechanism under test (an earlier exchange conditioning a later, unrelated answer) is unchanged by which Claude Code product hosts the two/three demo instances, and the guess-before-reveal structure that lets the persona feel the effect land is untouched by the diff.",
+  "notes": [
+    "OUT OF LANE, not filed as a rules_evaluated row: curriculum/trainings/agentic-engineering-101/getting-going.md L121 (maintainer Meta block, 'Opening-bid install mechanic') still reads 'three fresh Claude Code sessions in an empty directory' describing this lecture's demo. Verified via `git log -p -- curriculum/trainings/agentic-engineering-101/getting-going.md` and a direct read of the current file (L121): the line was NOT touched by commit b1911175, which trimmed the-wizard-move.md's own demo to two sessions and added an explicit accept-note banning reintroduction of the third (cardiologist) example. getting-going.md is a different file and a different judge's primary territory (pedagogy/cross_module), so this is reported here as a todo rather than a finding against the-wizard-move.md, which is internally consistent throughout.",
+    "Body L13 lists four context types ('A fact. A role. A preference. A constraint.') but the body now demonstrates only one (fact, via the two-session dinner contrast) since the cardiologist role example was cut. This claim is classified `context-is-whatever-you-tell-it` · vision · none-owed in the backing block (not `detail`, no citation obligation), so it is not a research-claims defect; flagged here only as a minor storytelling texture note, not a violation of any rule this class owns — a demonstrated particular followed by a stated general class is a legitimate lecture move, and the persona trace (regenerated this session) did not flag it as a comprehension gap."
+  ],
   "blocking_findings_count": 0,
-  "todos_count": 0
+  "todos_count": 2
 }

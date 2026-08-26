@@ -62,6 +62,41 @@ const MODELS = Object.assign({ judge: 'sonnet', refute: null }, input.models || 
 const EVIDENCE_MODE = input.evidence === 'full' ? 'full' : 'lean'
 const PREFILL = input.prefill !== false
 
+// Dispatch mechanics the hillclimb validated. Serial timing on the judgement
+// fixture: control 398s / 66 rows, champion 196s / 21 rows, both scoring 5/5.
+// These three are pure mechanics — they change how the judge FETCHES, never
+// what it is accountable for — so they default on.
+const BRIEF = input.brief !== false          // one assembled rulebook, rules verbatim
+const LAZY_EXPAND = input.lazyExpand !== false // expand-md only when the view says there is something to expand
+const BATCH_READ = input.batchRead !== false   // template + rulebook + view fetched in one turn
+
+// Two knobs the climb also found "free", deliberately NOT defaulted — and the
+// reason is a property of the bench, not of the knobs.
+//
+//   noDiff      the fixture has no quality pin, so there was no pinned diff for
+//               dropping it to cost anything. Live dispatch routes staleness
+//               through that diff. The bench could not see what it removes.
+//   noPreamble  the preamble encodes incidents the fixture cannot stage: a
+//               cached quote outliving its body, a sha matching no commit, a
+//               judge wandering out of its lane. Ten planted defects say
+//               nothing about whether those protections still hold.
+//
+// Both looked free precisely BECAUSE the bench does not test what they protect.
+// A measurement's silence is not evidence of safety.
+const NO_DIFF = input.noDiff === true
+const NO_PREAMBLE = input.noPreamble === true
+
+// `fires` — the fires-only ledger — is the climb's biggest single win (74% fewer
+// rows at full recall on both fixtures) and is NOT wired in, because it is not
+// a dispatch change, it is a corpus-shape change. `audit-eval-coverage.js` reads
+// coverage off `rules_evaluated` and would read every absent N/A row as an
+// unproven hole: check_platform_and_boundaries §45 is the entry about exactly
+// this, a detector whose reading vocabulary no longer covers how the corpus is
+// written, reporting compliance as rot. Teach the auditor the new shape first,
+// then flip this. Shipping it blind would trade half an hour of sweep for a
+// coverage report nobody can believe.
+const FIRES_ONLY = input.evidence === 'fires'
+
 // A dispatched unit is identified by its own key, never by matching a returned
 // verdict's file string back against the request. That match used to compare
 // `v.class === j.cls` and a basename suffix, which for a cross_module set means

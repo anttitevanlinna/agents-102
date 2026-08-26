@@ -1,172 +1,170 @@
 {
-  "body_sha": "b7db3cd262c4e48239e9a605ee7e5b2c64ae4e706ad3fbc6be36439e38ea6f78",
-  "shape_hash": "418a6b732eed4d3a",
-  "class": "storytelling",
-  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/set-the-markers-send-it-off.md",
-  "verdict": "PASS",
-  "training": "ae101",
-  "module_mood_contract": "Curious readiness — \"I've built enough to try; let's see what the agent does.\" Strategy doc line 246: \"Pick the multi-hour task → walk what you've built against it → fill the worst gaps → settle the observations tree → send off un-packaged... The result will be 'not great' by design — that's the data M5 reads.\" M4 must not resolve early or feel tidy.",
-  "trace_status": "cached",
-  "rules_evaluated": [
-    {
-      "compendium": "check_lectures.md",
-      "rule_index": 1,
-      "rule_lead": "Meta-frame lectures = closers, not openers.",
-      "verdict": "N/A",
-      "evidence": "Lecture-placement rule; this file is an exercise, not a lecture, and names no pattern the student just lived through.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_lectures.md",
-      "rule_index": 2,
-      "rule_lead": "Minimal lecturing before contrast-mood exercises.",
-      "verdict": "N/A",
-      "evidence": "Rule governs lecture dosage placed BEFORE this exercise. This file is the protected exercise, not a lecture. (Consistent with the rule's spirit anyway: maintainer block's Placement note confirms no lecture precedes this file in the module — `test-and-learn.md` runs earlier as an M4-wide stance-setter, and the two closing lectures both sit AFTER it — verified against `curriculum/trainings/agentic-engineering-101/run-the-first-experiment.md:37,41,43,45`.)",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_lectures.md",
-      "rule_index": 3,
-      "rule_lead": "No cross-module sequencing in lecture bodies.",
-      "verdict": "N/A",
-      "evidence": "Rule text scopes explicitly to 'lecture bodies' and the module file's own ##Next/##Bridge machinery. This is an exercise body. Checked anyway (body_numbered lines 1-61): no 'M4'/'M5' cross-module prose in student text — the only module-shaped string is the git/session slug `m4-walk-send` (line 5, `**Session** *(continue, m4-walk-send)*`), a branch/session-naming convention per `check_prompts.md §32`, not curricular sequencing prose.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_lectures.md",
-      "rule_index": 4,
-      "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
-      "verdict": "PASS",
-      "evidence": "All 5 `##` headers judged directly (signals.slide_count: 5): 'Set the two return markers' (L17), 'Pin the starting point' (L27), 'Push it only if you want it off this laptop' (L36), 'Send it off' (L44), 'Nudge sparingly while it runs' (L52) each name a single concrete concept, no empty containers, no orphan mystery, no orientation-filler, no two headers share text, no em-dashes, no pedagogy/contemplative register. Truth clause holds against body: 'Push it only if...' (L36) is backed by the body's 'The commit is local, and that is the default' (L38) — no overclaim. Closest-to-borderline: 'Pin the starting point' (L27) is the vaguest noun phrase of the five, but the body directly under it ('Whatever sits in your working tree lands in this commit', L29) resolves 'starting point' to the commit unambiguously within the same glance, so it stays inside the squint test rather than reading as an empty container.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_lectures.md",
-      "rule_index": 5,
-      "rule_lead": "A slide's BODY is size-bounded, not just its header.",
-      "verdict": "PASS",
-      "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/exercises/set-the-markers-send-it-off.md` in this session. Output: 'files: 1  slides: 5  limits: 210 words / 6 bullets  oversized: 0' / '✓ every slide is within limits', exit 0. This is the rule-drift re-check named in the dispatch (lectures §5 re-read at current wording): current text still names the 210w/6-bullet ceiling enforced by this same script and still excludes `{{prompt:}}` lines from the count, which is exactly what the script does. No body change and no rule-text change moves this file's result.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_lectures.md",
-      "rule_index": 6,
-      "rule_lead": "A prompt inside a lecture is a trainer show-and-tell, never a room follow-along.",
-      "verdict": "N/A",
-      "evidence": "Rule scopes explicitly to `curriculum/lectures/**` prompts and names 'Not covered: exercise prompts... all of which the student runs themselves' as the carve-out. This file's four prompts are registry entries consumed from `curriculum/exercises/`, and every one is the student's own paste (locate transcript, commit, optional push, send-off, optional nudge) — direct match to the stated exemption.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_pedagogy.md",
-      "rule_index": 16,
-      "rule_lead": "Forcing functions stay, scripted reactions go; forcing functions live in prompts, not body prose.",
-      "verdict": "PASS",
-      "evidence": "The two load-bearing forcing functions (pin the coordinates, send the task off) are enacted entirely inside their fences ({{prompt:ae101-m4-commit-starting-point}}, {{prompt:ae101-m4-take-task-end-to-end}}); body prose around them only frames, never performs, the move. The closest-to-violating line is L55 ('Nudge by hand... Past ten or so interventions, you have become the agent; call it and read what is there.') — read against current §16 text it stays inside the named boundary clause: 'A number that helps the student pace themselves... may stay in body in suggestion register (or so, around, a fair ceiling) — cut the prescription, keep the calibration.' L55 carries 'or so' and a felt signal ('you have become the agent'), not a bare imperative count, and the maintainer block (L70) already carries the dated accept-note for this exact line, re-verified word-for-word against the CURRENT rule text in this session (matches, no drift).",
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_pedagogy.md",
-      "rule_index": 27,
-      "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
-      "verdict": "PASS",
-      "evidence": "Every sentence in the body is about the WORK: 'Ask Claude where the record...' (L23), 'Ask Claude to commit...' (L32), 'Ask Claude to push...' (L40), 'Ask Claude to run the scoped task...' (L48), 'If Claude stalls, ask it to keep going' (L58). No 'discuss with...', no pair/room-share cue, no scheduled pause. Closest-to-borderline: 'Nudge by hand: answer a question, correct a path, push back on visible drift' (L55) reads at first glance like a facilitator instruction but is addressed to the individual student managing their OWN agent, not the cohort — it stays inside because the object of the sentence is 'the agent', not 'the room'.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": 1,
-      "rule_lead": "Mood contract named / mood lands.",
-      "verdict": "PASS",
-      "evidence": "Trace (cached, content_sha matches current body_sha exactly): Phase 1 correctly classified setup/launch (mood_score: null, mood-exempt — pinning two markers compresses into a parenthetical without breaking the arc). Phase 2 mood_score 8/10 ('the prompt enacts stepping away in its own voice... the taunting nudge... keeps curious-readiness playful'). Close mood_score 8/10. No beat below 7; any_below_8: false.",
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": 2,
-      "rule_lead": "Epistemic mood ≠ punitive mood.",
-      "verdict": "PASS",
-      "evidence": "'The point: send it off plainly and you find out what you can't steer yet' (L13) and 'If the run goes completely off the rails, stop it. The trace is the result either way' (L56) are not-knowing framings ('find out', 'the result either way'), never having-done-wrong framings. No shame register anywhere in body.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": 3,
-      "rule_lead": "Lead with discipline, not failure mode.",
-      "verdict": "PASS",
-      "evidence": "Every header names a discipline, not a failure: 'Set the two return markers' (L17), 'Pin the starting point' (L27), 'Send it off' (L44), 'Nudge sparingly while it runs' (L52). 'What you build' (L11) and 'The point' (L13) likewise lead with the positive move (pin, send, watch), never a failure word as the title.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": 4,
-      "rule_lead": "Strategy-fidelity check (consolidates front-run check, module-to-module arc, Big Idea fidelity, mood-doesn't-resolve-early).",
-      "verdict": "PASS",
-      "evidence": "Front-run: grepped body_numbered for M5's reserved vocabulary ('plan.md', 'verifier', 'reference artifact') — zero hits in student body; those terms appear only in the maintainer block's trainer-facing failure-modes list (L75), never crossing into student text. Big Idea fidelity: this file is exactly strategy doc line 246's closing clause ('send off un-packaged... not great by design — that's the data M5 reads'), matched by 'send it off plainly and you find out what you can't steer yet' (L13). Module-to-module arc: 'What you build' (L11, 'a branch, a starting commit, and a transcript path the next session can find') hands off cleanly to M5, confirmed against `run-the-first-experiment.md:156`'s cross-module artefact table (M5's worktree-setup prompt reads the same Run-coordinates block). Re-verified the two lines this file's own diff since pin 1abb84c6 touched: (a) the cut Phase-1 stance bullet ('Your rules files, memory, ADRs and skills are what they are...') is confirmed already installed a lecture earlier — `curriculum/lectures/test-and-learn.md:5` carries the equivalent stance ('The agent is the apparatus, your rules and context are the setup, and the result is data.'), and that lecture precedes this exercise in the module file (`run-the-first-experiment.md:37` lecture, `:41` this exercise) — the trim loses nothing load-bearing; (b) the rewritten Placement paragraph ('the two closing lectures sit below it... `ironies-of-automation` closes the module (moved there 2026-08-25)') is confirmed accurate against `run-the-first-experiment.md:41,43,45` (exercise then both lectures, in that order) and its own maintainer note at `run-the-first-experiment.md:117` ('ironies-of-automation.md closes the module after it (moved from between the exercises 2026-08-25, Antti-directed)') — dates and claim match exactly. Mood-doesn't-resolve-early: close leaves an in-flight, unresolved artifact (trace close: 'No completion claim'), matching M4's 'must not feel tidy' requirement; the trim doesn't change this. Noted separately, not filed here: the maintainer block's OWN row-#11 tracking claim looks stale (see notes) — this is a maintainer-block citation-accuracy question, not a student-facing strategy-fidelity failure, since the student body still correctly carries no permission line either way.",
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": 5,
-      "rule_lead": "Strategic themes recur in Key Concepts.",
-      "verdict": "N/A",
-      "evidence": "Exercise file, no `## Key Concepts` heading — module-file-scoped rule.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": 6,
-      "rule_lead": "Key Concepts shape — theme breadcrumbs, not standalone section.",
-      "verdict": "N/A",
-      "evidence": "No `## Key Concepts` section in this file to shape.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": 7,
-      "rule_lead": "What You'll Learn shape — capability register, not syllabus.",
-      "verdict": "N/A",
-      "evidence": "No `## What You'll Learn` section in this file.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_workshop.md",
-      "rule_index": null,
-      "judge_owned": true,
-      "rule_lead": "Whole-compendium scope call: is this file workshop-shaped?",
-      "verdict": "N/A",
-      "evidence": "No beat's output belongs to a group. `signals.group_beat_markers: false` (derive-body-view). The whole file is one student continuing their own session — pinning their own coordinates, sending off their own agent run, nudging it themselves — matching check_workshop.md's own trigger definition verbatim ('Not triggered by: students doing individual work in the same room at the same time. That is an individual exercise with co-location, and check_pedagogy.md governs it unchanged'). check_pedagogy governs this file in full; no per-beat carve-out needed since there is no group beat to carve out.",
-      "fix_hint": null,
-      "blocking": false
-    }
-  ],
-  "mood_summary": {
-    "phase_scores": [
-      null,
-      8
-    ],
-    "close_score": 8,
-    "any_below_8": false,
-    "stealing_the_mood": []
+ "body_sha": "799be4fcf1ba86868089569bd8530f51c4fb1834537cdd7f9384afee7ca8fa59",
+ "shape_hash": "418a6b732eed4d3a",
+ "class": "storytelling",
+ "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/set-the-markers-send-it-off.md",
+ "verdict": "PASS",
+ "training": "ae101",
+ "module_mood_contract": "Curious readiness — \"I've built enough to try; let's see what the agent does.\" Strategy doc line 246: \"Pick the multi-hour task → walk what you've built against it → fill the worst gaps → settle the observations tree → send off un-packaged... The result will be 'not great' by design — that's the data M5 reads.\" M4 must not resolve early or feel tidy. (Re-verified this session directly against `content-strategy-agentic-engineering-101.md:246` via the bosser-strategy skill — quote unchanged since the prior audit.)",
+ "trace_status": "regenerated",
+ "rules_evaluated": [
+  {
+   "compendium": "check_lectures.md",
+   "rule_index": 1,
+   "rule_lead": "Meta-frame lectures = closers, not openers.",
+   "verdict": "N/A",
+   "evidence": "Lecture-placement rule; this file is an exercise, not a lecture, and names no pattern the student just lived through.",
+   "fix_hint": null,
+   "blocking": false
   },
-  "blocking_findings_count": 0,
-  "todos_count": 0,
-  "notes": [
-    "Teaching moment lands (no check_strategy_tie_in rule_index, per template): the send-off-and-walk-away moment fires reliably across skill variation. The trace's persona 'genuinely walks away per the body's instruction' in Phase 2, and the surrounding scaffolding (keep the laptop awake, nudge by hand, stop if off the rails, the trace is the result either way) gives explicit recovery guidance regardless of student confidence level, so the moment is not fragile to a less-experienced persona.",
-    "Maintainer-block staleness (not a storytelling rule, flagged for the technical/writing class): the accept-note paragraph (L66) states the strategy doc's row #11 permission question 'is under open decision at pre-cohort-todos.md, which is where a line for this file would be authorised.' Checked both sources this session: `pre-cohort-todos.md` currently carries zero bullets naming 'row #11' or multisession permission (grep, zero hits), and the strategy doc's own row #11 ledger entry already reads '...M4 declined (single-session by design), corrected 2026-08-15' — i.e. settled, not open. The underlying storytelling substance is unaffected either way (student body correctly carries no permission line under both readings), so this is not filed as a rules_evaluated REVISE — citation accuracy inside a maintainer block is outside this class's lane — but the 'under open decision' framing itself now looks stale and worth a maintainer-block tidy-up."
-  ]
+  {
+   "compendium": "check_lectures.md",
+   "rule_index": 2,
+   "rule_lead": "Minimal lecturing before contrast-mood exercises.",
+   "verdict": "N/A",
+   "evidence": "Rule governs lecture dosage placed BEFORE this exercise. This file is the protected exercise, not a lecture. Re-verified against `run-the-first-experiment.md:37,39,41,43,45` this session: order is `test-and-learn` (lecture) → `walk-and-send-off` (exercise) → THIS FILE (exercise) → `what-keeps-a-long-running-session-going` (lecture) → `ironies-of-automation` (lecture). No lecture sits between a prior beat and this one that would need minimal-dosage scrutiny.",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_lectures.md",
+   "rule_index": 3,
+   "rule_lead": "No cross-module sequencing in lecture bodies.",
+   "verdict": "N/A",
+   "evidence": "Rule text scopes explicitly to 'lecture bodies' and the module file's own ##Next/##Bridge machinery. This is an exercise body. Checked anyway (body_numbered lines 1-61): no 'M4'/'M5' cross-module prose in student text — the only module-shaped string is the git/session slug `m4-walk-send` (line 5, `**Session** *(continue, m4-walk-send)*`), a branch/session-naming convention per `check_prompts.md §32`, not curricular sequencing prose.",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_lectures.md",
+   "rule_index": 4,
+   "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
+   "verdict": "PASS",
+   "evidence": "All 5 `##` headers judged directly (signals.slide_count: 5, body-view confirmed unchanged): 'Set the two return markers' (L17), 'Pin the starting point' (L27), 'Push it only if you want it off this laptop' (L36), 'Send it off' (L44), 'Nudge sparingly while it runs' (L52) each name a single concrete concept, no empty containers, no orphan mystery, no orientation-filler, no two headers share text, no em-dashes, no pedagogy/contemplative register. Truth clause holds: 'Push it only if...' (L36) is backed by 'The commit is local, and that is the default' (L38) — no overclaim. Closest-to-borderline: 'Pin the starting point' (L27) is the vaguest noun phrase of the five, but the body directly under it ('Whatever sits in your working tree lands in this commit', L29) resolves 'starting point' to the commit unambiguously within the same glance, so it stays inside the squint test. No header text changed since the prior audit (diff since pin 1abb84c6 touched only L9, L21-cut-bullet, L56 wording and the maintainer block — none are headers).",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_lectures.md",
+   "rule_index": 5,
+   "rule_lead": "A slide's BODY is size-bounded, not just its header (§4's sibling).",
+   "verdict": "PASS",
+   "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/exercises/set-the-markers-send-it-off.md` in this session. Output: 'files: 1   slides: 5   limits: 210 words / 6 bullets' / 'oversized: 0' / '✓ every slide is within limits'. The 2026-08-25 bullet cut (Lean-intro trim) only shrinks Phase 1's word count further below the ceiling; no slide grew.",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_lectures.md",
+   "rule_index": 6,
+   "rule_lead": "A prompt inside a lecture is a trainer show-and-tell, never a room follow-along.",
+   "verdict": "N/A",
+   "evidence": "Rule scopes explicitly to `curriculum/lectures/**` prompts and names 'Not covered: exercise prompts... all of which the student runs themselves' as the carve-out. This file's four prompts are registry entries consumed from `curriculum/exercises/`, and every one is the student's own paste (locate transcript, commit, optional push, send-off, optional nudge) — direct match to the stated exemption.",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 16,
+   "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
+   "verdict": "PASS",
+   "evidence": "The two load-bearing forcing functions (pin the coordinates, send the task off) are enacted entirely inside their fences ({{prompt:ae101-m4-commit-starting-point}}, {{prompt:ae101-m4-take-task-end-to-end}}); body prose around them only frames, never performs, the move. Closest-to-violating line is L55 ('Nudge by hand... Past ten or so interventions, you have become the agent; call it and read what is there.') — unchanged text since the prior audit, still reads against the current §16 boundary clause: 'A number that helps the student pace themselves... may stay in body in suggestion register (or so, around, a fair ceiling)'. L55 carries 'or so' plus a felt signal, not a bare imperative count, and the maintainer block (L70) carries the dated accept-note for this exact line, re-verified word-for-word against the CURRENT rule text this session (matches, no drift). The one body change since the prior audit (L56: 'the run' → 'the session', a vocabulary swap per L87's Vocabulary note) doesn't touch a forcing function — it's inside an optional off-the-rails bullet, not a fenced prompt.",
+   "fix_hint": null,
+   "blocking": true
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 27,
+   "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
+   "verdict": "PASS",
+   "evidence": "Every sentence in the body is about the WORK: 'Ask Claude where the record...' (L23), 'Ask Claude to commit...' (L32), 'Ask Claude to push...' (L40), 'Ask Claude to run the scoped task...' (L48), 'If Claude stalls, ask it to keep going' (L58). No 'discuss with...', no pair/room-share cue, no scheduled pause. Closest-to-borderline: 'Nudge by hand: answer a question, correct a path, push back on visible drift' (L55) reads at first glance like a facilitator instruction but addresses the individual student managing their OWN agent, not the cohort — stays inside because the object is 'the agent', not 'the room'.",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_strategy_tie_in.md",
+   "rule_index": 1,
+   "rule_lead": "Mood contract named.",
+   "verdict": "PASS",
+   "evidence": "Trace regenerated this session at `curriculum/evals/sim-cache/ae101--exercise--set-the-markers-send-it-off.persona.json` (top-level content_sha now 89f09370... matching current body_sha; Phase 1 phase_sha 1de6a5e9... reused verbatim, still matches current raw lines 17-43; Phase 2 phase_sha recomputed to a47a8364... after the 'run'→'session' vocabulary swap on L56 moved it off the cached 51cf99c9..., and re-scored: mood unaffected by a controlled-vocabulary word swap). Phase 1: setup/launch, mood_score null (mood-exempt — pinning two markers compresses into a parenthetical without breaking the arc). Phase 2: mood_score 8/10 ('the prompt enacts stepping away in its own voice... the taunting nudge... keeps curious-readiness playful'). Close: mood_score 8/10. any_below_8: false; no beat below 7.",
+   "fix_hint": null,
+   "blocking": true
+  },
+  {
+   "compendium": "check_strategy_tie_in.md",
+   "rule_index": 2,
+   "rule_lead": "Epistemic mood ≠ punitive mood.",
+   "verdict": "PASS",
+   "evidence": "'The point: send it off plainly and you find out what you can't steer yet' (L13) and 'If the session goes completely off the rails, stop it. The trace is the result either way' (L56, current wording — was 'the run' pre-2026-08-26 vocabulary sweep) are not-knowing framings ('find out', 'the result either way'), never having-done-wrong framings. No shame register anywhere in body.",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_strategy_tie_in.md",
+   "rule_index": 3,
+   "rule_lead": "Lead with discipline, not failure mode.",
+   "verdict": "PASS",
+   "evidence": "Every header names a discipline, not a failure: 'Set the two return markers' (L17), 'Pin the starting point' (L27), 'Send it off' (L44), 'Nudge sparingly while it runs' (L52). 'What you build' (L11) and 'The point' (L13) likewise lead with the positive move (pin, send, watch), never a failure word as the title. No header text changed since the prior audit.",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_strategy_tie_in.md",
+   "rule_index": 4,
+   "rule_lead": "Strategy-fidelity check.",
+   "verdict": "PASS",
+   "evidence": "Front-run: grepped body_numbered for M5's reserved vocabulary ('plan.md', 'verifier', 'reference artifact') — zero hits in student body; those terms appear only in the maintainer block's trainer-facing failure-modes list (L75). Big Idea fidelity: matches strategy doc line 246's closing clause ('send off un-packaged... not great by design — that's the data M5 reads') via 'send it off plainly and you find out what you can't steer yet' (L13) — re-read the strategy doc directly this session (`content-strategy-agentic-engineering-101.md:246,368,381`), quote unchanged. Module-to-module arc: 'What you build' (L11, 'a branch, a starting commit, and a transcript path the next session can find') hands off to M5; re-verified this session against `curriculum/exercises/fork-the-worktree.md:39` ('Claude normally reads the protected Run coordinates block in task.md, uses the m4/<slug> branch named there, and forks from that branch's \"M4 starting point\" commit') — exact match, artefact-for-artefact. Mood-doesn't-resolve-early: close leaves an in-flight, unresolved artifact (trace close: 'No completion claim'), matching M4's 'must not feel tidy' requirement. **Row-#11 staleness flagged in the prior instance is now resolved, verified this session**: the maintainer block (L66) now reads 'it was settled 2026-08-15 (M4 declined, per the strategy doc's own row)' — checked directly against `content-strategy-agentic-engineering-101.md:901` ('| 11 | Multisession permission beat | ... | carried once by doing + once by line; M4 declined (single-session by design), corrected 2026-08-15 |'), exact match, and `pre-cohort-todos.md` carries zero bullets naming row #11 (grep, zero hits) — the prior instance's flagged citation-accuracy gap has closed; no residual issue.",
+   "fix_hint": null,
+   "blocking": true
+  },
+  {
+   "compendium": "check_strategy_tie_in.md",
+   "rule_index": 5,
+   "rule_lead": "Strategic themes recur in Key Concepts.",
+   "verdict": "N/A",
+   "evidence": "Exercise file, no `## Key Concepts` heading — module-file-scoped rule.",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_strategy_tie_in.md",
+   "rule_index": 6,
+   "rule_lead": "Key Concepts shape — theme breadcrumbs, not standalone section.",
+   "verdict": "N/A",
+   "evidence": "No `## Key Concepts` section in this file to shape.",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_strategy_tie_in.md",
+   "rule_index": 7,
+   "rule_lead": "What You'll Learn shape — capability register, not syllabus.",
+   "verdict": "N/A",
+   "evidence": "No `## What You'll Learn` section in this file.",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_workshop.md",
+   "rule_index": null,
+   "judge_owned": true,
+   "rule_lead": "Whole-file trigger check — is this file workshop-shaped?",
+   "verdict": "N/A",
+   "evidence": "No beat's output belongs to a group. `signals.group_beat_markers: false` (re-derived this session, unchanged). The whole file is one student continuing their own session — pinning their own coordinates, sending off their own agent run, nudging it themselves — matching check_workshop.md's own trigger definition verbatim ('Not triggered by: students doing individual work in the same room at the same time... check_pedagogy.md governs it unchanged'). check_pedagogy governs this file in full; no per-beat carve-out needed since there is no group beat to carve out.",
+   "fix_hint": null,
+   "blocking": false
+  }
+ ],
+ "mood_summary": {
+  "phase_scores": [null, 8],
+  "close_score": 8,
+  "any_below_8": false,
+  "stealing_the_mood": []
+ },
+ "blocking_findings_count": 0,
+ "todos_count": 0,
+ "notes": [
+  "Teaching moment lands (no check_strategy_tie_in rule_index, per template): the send-off-and-walk-away moment fires reliably across skill variation. The regenerated trace's persona 'genuinely walks away per the body's instruction' in Phase 2, and the surrounding scaffolding (keep the laptop awake, nudge by hand, stop if off the rails, the trace is the result either way) gives explicit recovery guidance regardless of student confidence level, so the moment is not fragile to a less-experienced persona. Unaffected by the 2026-08-26 vocabulary swap.",
+  "Closing the loop on the prior instance's flagged item: the maintainer-block staleness on the strategy doc's row #11 language ('under open decision' → now reads 'it was settled 2026-08-15 (M4 declined)') has been fixed since the last audit and is verified accurate against the strategy doc directly this session (see check_strategy_tie_in §4 evidence above). No further action.",
+  "Tooling note, not a file finding: `prefill-instance.js` reports `owed_to_judge: 137` for this (file, story) pair because its generic `COMPENDIA['story']` mapping counts the FULL rule inventory of check_lectures + check_pedagogy + check_prompts + check_strategy_tie_in + check_workshop (144 total, minus 7 carried N/A), not the narrower set story.md's own completeness contract actually owns (6 check_lectures + 2 named check_pedagogy facets + 7 check_strategy_tie_in + 1 whole-file check_workshop call = 16, matching this instance's row count and the prior PASS instance's). The script's `MECHANICAL` prefill also offered 2 check_writing.md rows (banned-words, ritual/ceremony, both clean) unconditionally regardless of class scope; excluded here per the dispatch preamble's 'stay in your lane' clause — check_writing is not in story's owned lane and is already covered by the file's own `.writing.json` instance. Neither is a defect in this file; both are worth a maintainer look at `prefill-instance.js`'s per-class scoping if the mismatch causes confusion in a future sweep."
+ ]
 }

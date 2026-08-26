@@ -172,6 +172,12 @@ const SCHEDULE = {
 }
 
 let champion = { id: 'champ', fires: true, brief: true, flags: ['fires', 'brief'] }
+// Carried ACROSS rounds. Read off the per-round record it was the gate's own
+// incumbent value was always undefined there, so `?? Infinity` fired every time
+// and every full-recall challenger promoted — including three rounds where rows
+// went UP (56 -> 56 -> 71). A hillclimb whose ratchet never engages is greedy
+// accumulation with a scoreboard.
+let championRows = Infinity
 const history = []
 
 for (let round = START_AT; round < START_AT + ROUNDS && round <= 10; round++) {
@@ -239,8 +245,22 @@ Each prints JSON with \`recall\`, \`recall_pct\`, \`rows\`, \`noise\`, \`misses\
   rec.scores = scored ? scored.variants : null
   if (scored && Array.isArray(scored.variants)) {
     for (const c of rec.challengers) {
-      const sc = scored.variants.find(x => x.id === c.id)
-      if (!sc) continue
+      // The scorer has returned one row per (variant, fixture) — ids like
+      // `r2-0--mech` — rather than one row per variant. Round 2 was recorded as
+      // dropping a plant when it had in fact scored 5/5 on both fixtures: an id
+      // mismatch reported as a recall failure, which is the single most
+      // expensive way for this harness to be wrong. Merge by prefix so the
+      // shape the scorer actually returns is read correctly, and take the MAX
+      // per fixture so a row carrying 0 for the fixture it did not score cannot
+      // masquerade as a miss.
+      const parts = scored.variants.filter(x => x.id === c.id || String(x.id).split('--')[0] === c.id)
+      if (!parts.length) continue
+      const sc = {
+        recall_mech: Math.max(...parts.map(x => x.recall_mech ?? 0)),
+        recall_judge: Math.max(...parts.map(x => x.recall_judge ?? 0)),
+        rows_mech: Math.max(...parts.map(x => x.rows_mech ?? 0)),
+        rows_judge: Math.max(...parts.map(x => x.rows_judge ?? 0)),
+      }
       c.recall_mech = sc.recall_mech
       c.recall_judge = sc.recall_judge
       c.rows_mech = sc.rows_mech
@@ -251,11 +271,11 @@ Each prints JSON with \`recall\`, \`recall_pct\`, \`rows\`, \`noise\`, \`misses\
     // incumbent: an equal-cost variant that changes behaviour is churn.
     const viable = rec.challengers.filter(c => c.recall_mech === 1 && c.recall_judge === 1)
     const best = viable.sort((a, b) => (a.rows_mech + a.rows_judge) - (b.rows_mech + b.rows_judge))[0]
-    const champRows = rec.champion_rows ?? Infinity
-    if (best && (best.rows_mech + best.rows_judge) < champRows) {
+    if (best && (best.rows_mech + best.rows_judge) < championRows) {
       champion = challengers.find(c => c.id === best.id) || champion
+      championRows = best.rows_mech + best.rows_judge
       rec.promoted = best.id
-      rec.champion_rows = best.rows_mech + best.rows_judge
+      rec.champion_rows = championRows
     } else {
       rec.promoted = null
       rec.rejected_because = viable.length ? 'no row reduction over champion' : 'a plant was dropped'

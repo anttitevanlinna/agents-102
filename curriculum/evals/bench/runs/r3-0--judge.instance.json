@@ -1,0 +1,322 @@
+{
+  "class": "writing",
+  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/bench/fixtures/writing-5judge.md",
+  "verdict": "REVISE",
+  "training": "ae101",
+  "body_sha": "d7914ecec0a63ef76e8a1d8f5a42bf81f74affc84fd5705604e885ba7e618f78",
+  "rules_evaluated": [
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 1,
+      "rule_lead": "Banned words — grep zero-tolerance.",
+      "verdict": "PASS",
+      "evidence": "Ran `awk '/^<!-- maintainer -->/{exit} /—/{print NR}' <file> | wc -l` -> 0 em-dashes in body; `grep -c '—' <file>` -> 17 (all below the cut), so the pattern is proven live, not a silent zero. derive-body-view greps banned_words / leverage_verb / ritual_ceremony all body_hits 0 with planted_proof true.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 4,
+      "rule_lead": "Register match.",
+      "verdict": "REVISE",
+      "evidence": "Harm the rule prevents: prose in the wrong voice for the AE101 engineer audience, which flinches the reader and costs trust. Present here. L5 'This capability unlocks transformational value across your entire delivery organisation.' is consultancy-deck register (Martin-deck, not Boris/Godin), with a growth-hack 'unlocks' the slang test in this rule names. L49 'We believe the loop matters more than the model, and we built this training around that.' is brochure register. L37 'Unlike vendor tooling that locks your team in' is competitive-positioning register. None of the five voices would write any of the three.",
+      "fix_hint": "Cut L5, L37 and L49 outright; nothing in the exercise depends on them and the quintet has no register that carries them.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 6,
+      "rule_lead": "Credit original when paraphrasing named technique.",
+      "verdict": "REVISE",
+      "evidence": "Sub-rule 'Author-\"we\" ban — first-person-plural extension'. Harm: body prose speaking as training-as-organisation makes the curriculum a party in the room and ages badly across trainers; it is the same anti-cult-of-personality root as the creator-name ban, and the harm is present. L49: 'We believe the loop matters more than the model, and we built this training around that.' Substituting 'the training authors' reads exactly as the diagnostic predicts. Confirmed by the precomputed view's author_we grep: body_hits 1, planted_proof true. Creator-name grep over lines 1-65 -> 0, so only the we-face fires.",
+      "fix_hint": "Delete the sentence. The 'Editorial-flourish carrier' clause applies: 'we believe' is carrying the flourish, so recasting to passive would keep the hagiography.",
+      "blocking": true
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 7,
+      "rule_lead": "Always \"you\", never \"the student\"; teacher framing stays out of body.",
+      "verdict": "PASS",
+      "evidence": "`grep -cE '\\bthe student\\b'` over lines 1-65 -> 0. Closest line is 18, 'If there is no ticket for this bug, say so in the chat' — second person throughout, addressee named, no delivery mechanics in body.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 8,
+      "rule_lead": "Don't smuggle terms of art from maintainer into body.",
+      "verdict": "REVISE",
+      "evidence": "Harm: a term the reader cannot cash stops the read and teaches the student that the page is talking past them. Present at L11: 'Wire this through the subagent context window before you hit the compaction boundary.' Nothing in this file's body earns subagent, context window or compaction boundary, and the maintainer block never introduces them either — the sentence has no earning moment anywhere in scope. The file's own accept-note (L72) covers 'connector' only, so the standing carve-out does not reach these three.",
+      "fix_hint": "Cut L11. It also names no actor and no mechanism, so nothing is lost operationally.",
+      "blocking": true
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 9,
+      "rule_lead": "Over-hedge detector.",
+      "verdict": "PASS",
+      "evidence": "No reassurance-shaped sentence in the body. Closest is L30, 'No ticket of your own to read? Any other real ticket from your tracker works.' — that is a rescue with a mechanism, not an absolution, and it carries the sting instead of removing it ('One the agent just wrote carries none of your team's conventions').",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 12,
+      "rule_lead": "Punchy framing keeps punch; carve-out lives downstream.",
+      "verdict": "REVISE",
+      "evidence": "Harm: a slogan whose boundary was cut leaves a claim the professional reader can falsify on sight, and there is no downstream paragraph to catch them. L55/L57: the heading 'Anything can be reverse-engineered' and 'Anything can be inspected and reverse-engineered with an LLM: a codebase nobody documented, a CI pipeline, a config, an API you did not write...' The section carries exactly two bullets (L57, L58) and no boundary clause. The file's own backing block at L134 asserts the opposite: 'The slide states it bare and carries its boundary in the third bullet per check_writing.md §12... That bullet is the whole caveat: extraction quality tracks the quality of the tracker data sampled.' There is no third bullet in the body. Either the carve-out bullet was lost or the keep-note is stale, and §3's keep-notes-bind clause makes the two a single edit surface.",
+      "fix_hint": "Restore the boundary bullet the backing block describes (extraction quality tracks the quality of the data sampled) or rewrite the stance note to match what the section now says.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 13,
+      "rule_lead": "Value-prop / positioning framing belongs in sales copy + project strategy docs, NOT student-facing curriculum body.",
+      "verdict": "REVISE",
+      "evidence": "Harm: positioning posture imported into a teaching beat reads defensive and treats the engineer as needing reassurance instead of evidence. Present twice. L37 'Unlike vendor tooling that locks your team in, this approach keeps you in control of the work.' trips both the base rule and the hard sub-rule that treats 'vendor' in student-facing body as suspect every time; it is also a bare competitive claim in an exercise about reading a tracker. L5 'This capability unlocks transformational value across your entire delivery organisation.' is a sales value-prop with no teaching content. Neither sits in the Agents 101 M7 taxonomy carve-out.",
+      "fix_hint": "Cut both lines. Neither carries a move, an artifact or a claim the exercise needs.",
+      "blocking": true
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 14,
+      "rule_lead": "Watch out for planting jargon too early.",
+      "verdict": "REVISE",
+      "evidence": "Harm: a term lifted above the arc's current vocabulary pre-spoils the module that owns it and hands the student a phrase they cannot use. L11 'Wire this through the subagent context window before you hit the compaction boundary.' sits in an in-class M1 exercise (maintainer block L70: 'In-class M1 exercise, third of four'), where subagent, context window and compaction boundary are all downstream vocabulary. Filed alongside check_student_facing §2; §8 covers the smuggle, this covers the arc position.",
+      "fix_hint": "Cut the line rather than translating it — the exercise asks for nothing that needs the concept.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 15,
+      "rule_lead": "Audit closer when trimming body-prose forcing function.",
+      "verdict": "REVISE",
+      "evidence": "Harm: a closer whose pronoun has more than one candidate referent makes the reader hunt. L53 'Does it sound like the comments already on the ticket?' opens the section 'Double-check the voice' with a bare 'it' whose nearest nouns are the ticket and the close-out note two sections up. The rule's own clause says this check is not post-trim-gated and fires on any closer or callout. Non-blocking: the referent is recoverable, but it takes a hunt on a cold read.",
+      "fix_hint": "Name the artifact: 'Does the close-out sound like the comments already on the ticket?'",
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 16,
+      "rule_lead": "The `**What happened:**` block is OPTIONAL — default is to omit it (Antti-directed 2026-08-12, mandation removed from `curriculum/exercises/README.md`).",
+      "verdict": "PASS",
+      "evidence": "L62-L64 is the three-move shape, not a replay. Move 1 count+noun: 'Two things came out of one ticket: a close-out note on the bug you shipped, and the conventions your team has been encoding in its fields all along.' Move 3 lands on destination: 'The field rules stay in the scrollback. The next exercise sweeps this whole session.' Past tense throughout, 47 words, no step sequence. Note for §20: the numeral 'Two' here is the endorsed move-1 shape, not a count adjacent to a bullet list.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 17,
+      "rule_lead": "No combative verbs about the agent in body prose.",
+      "verdict": "PASS",
+      "evidence": "Verbs describing student to agent stay peer-flat: 'Ask Claude to reverse-engineer...' (L33), 'tell Claude which line and how you'd write it' (L53), 'Ask the agent to study the pipeline' (L58). Closest to the line is L39 'Push back on the five.' — push back is the house frame for review-moved-upstream, not a combative verb about the agent.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 21,
+      "rule_lead": "A slogan that is false as stated is not punchy framing — run the truth test before reaching for §12.",
+      "verdict": "REVISE",
+      "evidence": "Harm: a claim with no true reading, aimed at a professional audience who will find the counterexample faster than the author. Present at L24: 'Every test you write is a test the agent can never break.' 'never' is the superlative tell, and the claim is asserted about how the world works, not about an artifact this corpus controls. Counterexample is one line away and inside this same training: an agent editing the test file, or changing the interface the test asserts on, breaks it — which is exactly the failure this arc's push-back beats exist to catch. Marked blocking because a demonstrably false sentence in projected body prose is a ship-stopper, not a polish item; the template's blocking list predates this rule.",
+      "fix_hint": "Cut it. The rule's own guidance applies: the fix is never a hedge, and the surrounding beat already carries the weight without this line.",
+      "blocking": true
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 26,
+      "rule_lead": "A sentence saying how you'd know points at the outcome, not the nearest artifact.",
+      "verdict": "PASS",
+      "evidence": "L39 'A second bug ticket from a different part of the system shows which rules hold beyond one sample.' points at an independent observation that can come back negative, rather than at the agent's own account of its read. That is the shape the rule asks for.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 2,
+      "rule_lead": "Earn every technical term on first use.",
+      "verdict": "REVISE",
+      "evidence": "Harm: a cold term-of-art at M1 stops the read and costs the student the sentence. L11 'Wire this through the subagent context window before you hit the compaction boundary.' carries three unearned Claude Code terms with no one-breath primer and no operational landing anywhere in this file. This is narrative prose, not a legend or an index, so the 2026-08-23 lookahead carve-out does not reach it; the audience-tier carve-out covers MCP/connector/CI/PR, not compaction. The maintainer accept-note at L72 is scoped to 'connector' only.",
+      "fix_hint": "Cut L11; if the concept is wanted at all it belongs in the module that lands compaction operationally.",
+      "blocking": true
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 9,
+      "rule_lead": "Don't ask student to manually diff or spot-check Claude's output as error-catching.",
+      "verdict": "REVISE",
+      "evidence": "Harm: a look-line with no named object promises direct access to a fact where only a generated artifact exists, and the student stares instead of moving. This rule names this exact file: 'The register beat in close-the-ticket sits inside this rule's own exemption... never checking that the same rule's actor-and-mechanism requirement was unmet in the same sentence.' L53: 'Does it sound like the comments already on the ticket? If the wording feels off or wrong, tell Claude which line and how you'd write it.' The exemption (reading for register, not error-catching) holds; the object clause does not — 'it' is never named as the agent's close-out. The tell is present and the addressee is explicit, so this is one clause short, not a rewrite.",
+      "fix_hint": "Name the object: 'Does the close-out Claude wrote sound like the comments already on the ticket?'",
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 14,
+      "rule_lead": "No em-dashes. Simple sentences.",
+      "verdict": "PASS",
+      "evidence": "`awk '/^<!-- maintainer -->/{exit} /—/{print NR}'` -> empty (0 hits) while the whole file carries 17, so the grep is proven. Body sentences are short and mostly single-clause; the longest, L28, splits on a colon rather than a dash.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 21,
+      "rule_lead": "LLM-vs-agent-vs-Claude vocabulary discipline.",
+      "verdict": "PASS",
+      "evidence": "Body counts over lines 1-65: 'the agent' 6, 'Claude' 3, and the split follows the rule — Claude as addressee ('Ask Claude to reverse-engineer...', L33), the agent for autonomous work (L18, L29). The single 'LLM' at L57 is the capability/thinking sentence, and the backing block at L125 records the deliberate split: 'One reshape on the record: LLM -> the agent on the three action steps...; the capability sentence keeps LLM.'",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 26,
+      "rule_lead": "Cut NVA: true but not moving student forward.",
+      "verdict": "REVISE",
+      "evidence": "Harm: body clauses that change nothing the student does or notices cost attention and teach skimming. Three of the four inserted lines are NVA on top of their register faults — L5 (a value claim with no move), L11 (an instruction naming no artifact in this exercise), L37 (a competitive comparison). Filing here as well because the cut is the fix in each case, and the NVA screen decides that faster than the register argument does. Not double-counted as blocking; the blocking rows are §13, §6, §8 and check_student_facing §2.",
+      "fix_hint": "Delete L5, L11 and L37; read the neighbours together afterwards — they join cleanly.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 33,
+      "rule_lead": "The curriculum does not narrate itself — subject test, then deletion test.",
+      "verdict": "PASS",
+      "evidence": "Closest line is L64, 'The next exercise sweeps this whole session.' — that is §16 move 3 (land on the destination, what reads the artifact next) and it states a present fact about where the field rules live, so it survives the subject test as written. L49's 'we built this training around that' is the real curriculum-as-subject leak and is filed under check_writing §6 and §13 rather than double-counted here.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 2,
+      "rule_lead": "Every prompt block: one-sentence action lead-in.",
+      "verdict": "REVISE",
+      "evidence": "All three fences carry a lead-in, so the base rule passes; 2a fires on the third. L45 'Ask Claude to write the close-out, update the ticket, and report what it wrote.' enumerates all three clauses of a four-line fence the student takes in at one glance ('Update the ticket: short close-out note... Tell me what you wrote.'). That is 2a's stated tell for the short case. L20 is the model of the dangling-colon sub-case and L33 mirrors its fence correctly.",
+      "fix_hint": "Cut to the opening move: 'Ask Claude to write the close-out and update the ticket.'",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 21,
+      "rule_lead": "Tell me what you wrote, not show me what you'll write.",
+      "verdict": "PASS",
+      "evidence": "The ticket-write fence (expanded L68) closes 'Tell me what you wrote.' — post-action report, not pre-confirm, on a side-effecting write into the team's tracker. Correct default; the irreversible-action carve-out does not apply to a ticket comment.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 31,
+      "rule_lead": "Prompts live in registry; module/exercise/lecture files reference by marker.",
+      "verdict": "PASS",
+      "evidence": "Body carries `{{prompt:close-the-ticket-1}}` (L22), `-2` (L35), `-3` (L47) on their own lines with a lead-in above each; no inline `**Prompt**` fence in source. Expanded view resolves all three to the canonical `**Prompt** *(Claude Code)*` shape, so §3 and §28 hold too.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 1,
+      "rule_lead": "No placeholders inside fences.",
+      "verdict": "PASS",
+      "evidence": "No bracketed slots in any of the three expanded fences. The first uses the open-hook shape correctly — internal action paragraphs, then a bare `Ticket:` last line, with L20 naming the fill-in slot — and the student genuinely holds the value (their own ticket), which is the qualifier's (b) diagnostic.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_sales_copy.md",
+      "rule_index": null,
+      "judge_owned": true,
+      "verdict": "N/A",
+      "evidence": "Whole-compendium scope call: this is a student-facing exercise body, not a public page, newsletter or deck, so no sales-copy rule fires on its own surface. The marketing-shaped lines at L5 and L37 are judged where they actually break something — check_writing §13, which exists precisely to keep this register out of curriculum body.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": null,
+      "judge_owned": true,
+      "verdict": "N/A",
+      "evidence": "Whole-compendium scope call: this file is an exercise, not a module. It carries no Big Idea, Key Concepts or What You'll Learn section, so §§3/5/6/7 have no surface; mood (§1) is a strategy/pedagogy-class call and is left to those judges rather than claimed here.",
+      "fix_hint": null,
+      "blocking": false
+    }
+  ],
+  "findings": [
+    {
+      "rule": "check_writing.md §6 (author-we ban)",
+      "line": 49,
+      "quote": "We believe the loop matters more than the model, and we built this training around that.",
+      "harm": "Body prose speaking as the training-as-organisation; substituting 'the training authors' for 'we' makes the sentence read exactly as the diagnostic predicts, and the editorial flourish 'we believe' is the leak the we was carrying.",
+      "fix": "Delete the sentence outright rather than recasting it to passive."
+    },
+    {
+      "rule": "check_writing.md §13 (value-prop / positioning leak, vendor sub-rule)",
+      "line": 37,
+      "quote": "Unlike vendor tooling that locks your team in, this approach keeps you in control of the work.",
+      "harm": "Competitive positioning imported into a teaching beat; the hard sub-rule treats 'vendor' in student-facing body as suspect every time, and this use is the defensive marketing shape the rule names.",
+      "fix": "Cut the line; the exercise loses nothing."
+    },
+    {
+      "rule": "check_writing.md §13 (value-prop leak) + §4 (register)",
+      "line": 5,
+      "quote": "This capability unlocks transformational value across your entire delivery organisation.",
+      "harm": "Sales value-prop in the top-of-exercise slot that owes the reader an action contract; consultancy-deck register no voice in the AE101 quintet would write, with a growth-hack 'unlocks'.",
+      "fix": "Cut the line; L7 'What you do' already carries the opening."
+    },
+    {
+      "rule": "check_student_facing.md §2 (earn every technical term) + check_writing.md §8/§14",
+      "line": 11,
+      "quote": "Wire this through the subagent context window before you hit the compaction boundary.",
+      "harm": "Three unearned Claude Code terms in one sentence, in an in-class M1 exercise, with no primer here and no operational landing in this file; it also names no actor and no mechanism, so the student cannot perform it or tell whether they did. The file's accept-note covers 'connector' only.",
+      "fix": "Cut the line; compaction belongs to the module that lands it operationally."
+    },
+    {
+      "rule": "check_writing.md §21 (slogan false as stated)",
+      "line": 24,
+      "quote": "Every test you write is a test the agent can never break.",
+      "harm": "'never' is asserted about how the world works and has no true reading — an agent that edits the test or changes the interface it asserts on breaks it, which is the failure this arc's push-back beats exist to catch. A professional audience finds the counterexample immediately, and the line stands alone with no carve-out to rescue it.",
+      "fix": "Cut it. Per the rule, the fix is never a hedge; the surrounding beat already carries the weight."
+    },
+    {
+      "rule": "check_writing.md §12 (punchy framing without downstream carve-out)",
+      "line": 57,
+      "quote": "Anything can be inspected and reverse-engineered with an LLM: a codebase nobody documented, a CI pipeline, a config, an API you did not write, the system your team runs on and cannot explain.",
+      "harm": "The section runs two bullets and no boundary clause, while the file's own backing block (L134) asserts the caveat 'is carried in the third bullet' and tells judges to read that bullet before flagging. There is no third bullet. Either the carve-out was lost or the keep-note is stale, and §3's keep-notes-bind-to-their-passage clause makes them one edit surface.",
+      "fix": "Restore the boundary bullet the stance note describes (extraction quality tracks the quality of the data sampled), or rewrite the note to match the section as it stands."
+    }
+  ],
+  "todos": [
+    {
+      "rule": "check_student_facing.md §9 (look-line names the object) + check_writing.md §15",
+      "line": 53,
+      "note": "'Does it sound like the comments already on the ticket?' — the object is never named; 'it' has the ticket and the close-out as candidates. Name it: 'Does the close-out Claude wrote sound like...'. The rule's own text flags this file as where the object clause was previously missed under cover of the register exemption."
+    },
+    {
+      "rule": "check_prompts.md §2a (lead-in length scales with the prompt)",
+      "line": 45,
+      "note": "'Ask Claude to write the close-out, update the ticket, and report what it wrote.' enumerates every clause of a four-line fence the student absorbs in one glance. Cut to the opening move."
+    },
+    {
+      "rule": "check_student_facing.md §26 (NVA)",
+      "line": 5,
+      "note": "L5, L11 and L37 are each NVA before they are register faults — none changes what the student does, decides or notices. Deleting all three leaves neighbours that join cleanly, which is the deletion test passing."
+    },
+    {
+      "rule": "check_writing.md §4 (register match, AE101 quintet)",
+      "line": 49,
+      "note": "With L5, L37 and L49 cut, the remaining body sits in Boris-direct plus Godin peer-warmth throughout; no further register work owed."
+    },
+    {
+      "rule": "check_writing.md §12 (carve-out restoration)",
+      "line": 57,
+      "note": "Whichever way the §12 finding is resolved, the backing-block stance at L134 and the body section must land in the same pass — a keep-note that describes a bullet the body does not have will re-manufacture this finding on every future judge."
+    },
+    {
+      "rule": "check_writing.md §14 (jargon planted too early)",
+      "line": 11,
+      "note": "Same line as the blocking §8/check_student_facing §2 finding: subagent, context window and compaction boundary are all downstream vocabulary at an in-class M1 exercise. Cutting L11 discharges all three rows."
+    }
+  ],
+  "blocking_findings_count": 5,
+  "todos_count": 7,
+  "notes": "derive-class-brief.js built cleanly (rules kept=129, dropped=0) and was read in full in place of the five compendiums; derive-body-view.js supplied maintainer_cut=66, fence_ranges=[], body_regions=[[1,65]], and its greps' planted_proof flags. Every cited line was re-verified against the raw source with grep -n. Blocking partition: the template's list (§1, §2, §6, §7, §13, §8, hard-greps) predates check_writing §21 and check_student_facing §2; I marked both blocking because a false claim and three unearned primitives in projected body prose are ship-stoppers rather than TODOs. Out-of-lane observations, not scored: the link at L43 uses a depth-counted ../ prefix, which is a path-form question owned by curriculum/module-shape.md § Cross-doc links, not by §18 (that rule governs link TEXT, and the text here is the target's title, which is correct). The maintainer block's stale third-bullet claim at L134 also has a §3 keep-notes-bind face; I filed it on the body side under §12 rather than opening a maintainer-block finding. The todos array carries 6 consolidated entries against todos_count 7 because check_writing §15 and check_student_facing §9 resolve on the same line (53) with the same edit; every non-blocking REVISE row is represented."
+}

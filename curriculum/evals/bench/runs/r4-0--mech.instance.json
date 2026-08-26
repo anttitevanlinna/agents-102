@@ -1,0 +1,300 @@
+{
+  "class": "writing",
+  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/bench/fixtures/writing-5plant.md",
+  "training": "ae101",
+  "verdict": "REVISE",
+  "body_sha": "bb543761c48f1206116c8b80195c324d4f7586e783563dec4846fd627eaadd00",
+  "body_regions": "lines 1-65 (maintainer_cut = 66, fence_ranges = none)",
+  "rules_evaluated": [
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 1,
+      "rule_lead": "Banned words - grep zero-tolerance.",
+      "verdict": "REVISE",
+      "evidence": "Harm: consultancy/lab register that flinches an engineer reader mid-instruction. Present: yes. L5 'This is crucially the step that changes how the run behaves.' matches the rule's own \\bcrucial pattern. Ran: node curriculum/evals/scripts/derive-body-view.js --json -> greps.banned_words body_hits = 1, planted_proof true, status HITS; greps.em_dash body_hits = 0. Confirmed on raw source: grep -n 'crucially' -> line 5.",
+      "fix_hint": "Drop the adverb; the sentence is stronger without it (and see rule 19 - the whole line is a drumroll).",
+      "blocking": true
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 2,
+      "rule_lead": "Ritual / ceremony - hard ban",
+      "verdict": "REVISE",
+      "evidence": "Harm: 'ritual' imports Scrum-ceremony register into a training that sells the loop as work, and the metaphor's key noun carries a negative valence used elsewhere in the corpus (rule 4 metaphor-keyword check). Present: yes. L11 'Treat this as a ritual you repeat at the start of every session.' Ran: derive-body-view --json -> greps.ritual_ceremony body_hits = 1, status HITS. grep -n confirms line 11, above the cut, outside any fence (fence_ranges empty).",
+      "fix_hint": "'ritual' -> 'exercise' / 'move', or cut the sentence: nothing downstream depends on it.",
+      "blocking": true
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 3,
+      "rule_lead": "No stale markers, no \"fixed\" retrospectives, no session biography.",
+      "verdict": "REVISE",
+      "evidence": "Harm: the file keeping its own changelog - a reader who never saw the previous version loses nothing if the clause vanishes, which is the rule's own tense test. Present: yes, in body prose (not a maintainer provenance header, so the 'do not file on a dated header alone' carve-out does not apply). L49 'This section previously said something different; it was fixed on 2026-01-14.' - transition verb ('previously said', 'was fixed') plus a bare date. Ran: derive-body-view --json -> greps.session_biography body_hits = 1 and greps.dated_line body_hits = 1, both status HITS; grep -n confirms both land on line 49.",
+      "fix_hint": "Delete the sentence outright. History is git.",
+      "blocking": true
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 6,
+      "rule_lead": "Timing location by surface.",
+      "verdict": "PASS",
+      "evidence": "Closest line: L3 '**Time:** 20 minutes.' - single label, total only, on line 3 directly below the H1 with blank lines either side, no phase breakdown and no slot context. Maintainer block L82 records the exercise as atomic ('Line 3 is authored, not generated'), so the calculate-time.js generated-total clause does not bind.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 7,
+      "rule_lead": "Always \"you\", never \"the student\"; teacher framing stays out of body.",
+      "verdict": "REVISE",
+      "evidence": "Harm: third-person teacher voice in student-facing body - the reader is addressed as a case being managed rather than as the person doing the work. Present: yes. L24 'At this point the student should notice the test is still red.' Ran: derive-body-view --json -> greps.the_student body_hits = 1, status HITS; grep -n confirms line 24, body region, no fence. Not the Connections room-harvest carve-out (this file has no Connections section) and not a maintainer block (cut is line 66).",
+      "fix_hint": "Second person, or cut: the line also asserts a red test in an exercise that runs after the fix has shipped (maintainer L70), which is a technical-class problem the rewrite should not preserve.",
+      "blocking": true
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 9,
+      "rule_lead": "Over-hedge detector.",
+      "verdict": "REVISE",
+      "evidence": "Harm: reassurance that signals the author thought the beat needed defending; a senior engineer reads it as 'why is the author telling me this is OK?'. Present: yes, and it carries the rule's named flag phrase verbatim. L37 'There is no penalty if you skip this, and it is completely fine either way.' - 'no penalty' is on the rule's flag list, and the second clause restates the first, so the sentence apologises twice for an optional beat. Verified by grep -n 'no penalty' -> line 37, above the cut.",
+      "fix_hint": "Cut the sentence; L39's 'Push back on the five' already carries the invitation without absolving anyone.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 12,
+      "rule_lead": "Punchy framing keeps punch; carve-out lives downstream.",
+      "verdict": "REVISE",
+      "evidence": "Harm: an unbounded slogan ships with no boundary paragraph, so the student over-reads it - exactly what the rule's remedy exists to stop. Present: yes, and the file's own backing block says the carve-out is supposed to be there. L55 header 'Anything can be reverse-engineered' + L57 'Anything can be inspected and reverse-engineered with an LLM: ...' land the punch; the section then has only two bullets (L57, L58) and no boundary. The stance note at L134 asserts the slogan 'carries its boundary in the third bullet per check_writing.md §12' and names that bullet's content as 'extraction quality tracks the quality of the tracker data sampled'. Ran: awk over lines 55-59 counting '^- ' -> 2; grep -c 'extraction quality' over the whole file -> 1, and that single hit is the stance note at L134, not the body. The carve-out bullet is missing from the body.",
+      "fix_hint": "Restore one boundary bullet after L57 naming the limit in concrete terms (extraction quality tracks the quality of what was sampled) and closing on a directional cue; do not hedge L57 itself.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 13,
+      "rule_lead": "Value-prop / positioning framing belongs in sales copy + project strategy docs, NOT student-facing curriculum body.",
+      "verdict": "PASS",
+      "evidence": "Closest line: L43 'Adding a connector is one command per tracker. [MCP and connectors](...) has them, and it pays back on every session after this one.' - 'pays back' is a benefit clause, but it names a mechanical payoff of a setup step, not a positioning stance. grep for the rule's hard sub-rule term 'vendor' over the body region returns nothing, and none of the flag phrases (not an aspirational, this isn't marketing, the real practitioners, grounded in actual, not theoretical) appear above line 66.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 16,
+      "rule_lead": "The `**What happened:**` block is OPTIONAL - default is to omit it",
+      "verdict": "PASS",
+      "evidence": "Closest passage: L60-L62 '## What happened' / 'Two things came out of one ticket: a close-out note on the bug you shipped, and the conventions your team has been encoding in its fields all along. The loop that started with a failing test closed.' Count + noun present, one qualifier ('your team has been encoding in its fields'), past tense throughout, ~45 words - inside the three-move shape rather than the 90-word replay failure mode. The exercise does leave durable artifacts (rules + a posted close-out), so inclusion is earned.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 17,
+      "rule_lead": "No combative verbs about the agent in body prose.",
+      "verdict": "PASS",
+      "evidence": "Closest line: L39 'Push back on the five.' - 'push back' is the training's own house noun/verb for steering, distinct from the banned 'push around'; the rule's banned list (bark, order, command, whip, force, drag, boss, shout at, snap at, scold) returns nothing over lines 1-65. Every other agent-directed verb in the body is peer-flat: 'Ask Claude to' (L33, L45), 'tell Claude which line' (L53), 'Ask the agent to study' (L58).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 19,
+      "rule_lead": "Machine-cadence fat - the shape of good prose without the content.",
+      "verdict": "REVISE",
+      "evidence": "Harm: shape (b), deictic drumroll - a pointer announcing a claim the same clause states, and here the pointer has no antecedent at all. Present: yes. L5 'This is crucially the step that changes how the run behaves.' sits directly under the Time line, so 'This' can only be resolving forward to a step not yet described; the rule's test (can you point at what 'that'/'this' refers to?) fails on a cold read. It is not the legitimate concept-naming case - no concept is named.",
+      "fix_hint": "Delete the line, or state the claim without the pointer once the step it refers to exists above it.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 21,
+      "rule_lead": "A slogan that is false as stated is not punchy framing - run the truth test before reaching for §12.",
+      "verdict": "PASS",
+      "evidence": "Closest line: L57 'Anything can be inspected and reverse-engineered with an LLM'. The superlative tell is there, but the rule's own remedy split points at §12 rather than §21 here: the file's stance block (L132-L135) records a dated maintainer decision to state the line bare and carry the boundary downstream, and the boundary content it names is a real scope limit, not a hedge. So the claim has a true reading under its intended scope and the defect is the missing carve-out, filed at §12 - cutting the superlative would overrule a maintainer ruling on the record.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 26,
+      "rule_lead": "A sentence saying how you'd know points at the outcome, not the nearest artifact.",
+      "verdict": "PASS",
+      "evidence": "Closest line: L53 'Does it sound like the comments already on the ticket? If the wording feels off or wrong, tell Claude which line and how you'd write it.' The test points at an external artifact the student did not generate (the comments already on the ticket), so it can come back negative - not a self-witnessing instrument. Minor register wart in the same line: 'off or wrong' is a doubled adjective where one would do.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 2,
+      "rule_lead": "Earn every technical term on first use.",
+      "verdict": "PASS",
+      "evidence": "Closest term: 'connector' at L43. The maintainer block carries an explicit accept-note at L72 ('\"Connector\" is assumed-known vocabulary (Antti 2026-08-18) ... findings on it are overruled - do not re-file'), and the 2026-08-18 carve-out puts assumed-known on the AE101 engineer audience tier. Every other term in the body (ticket, tracker, label, severity, repro steps, PR, CI, LLM) is ordinary professional vocabulary for this audience.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 9,
+      "rule_lead": "Don't ask student to manually diff or spot-check Claude's output as error-catching.",
+      "verdict": "PASS",
+      "evidence": "Closest line: L53's register read, which sits squarely inside this rule's own reading-for-register exemption. Actor and mechanism are named on every other instruction line: L17 'Open the ticket ... and paste its link', L33 'Ask Claude to reverse-engineer', L45 'Ask Claude to write the close-out ... and report what it wrote'. Speech verbs carry addressees (L18 'say so in the chat', L53 'tell Claude which line'). The one line that fails a person/framing test, L24, is filed at check_writing §7 rather than shoehorned here.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 14,
+      "rule_lead": "No em-dashes. Simple sentences.",
+      "verdict": "PASS",
+      "evidence": "Mechanical: ran awk '/^<!-- maintainer -->/{exit} /\\u2014/{print NR}' over the raw source, piped to wc -l -> 0. derive-body-view --json independently reports greps.em_dash body_hits = 0 with planted_proof true. Sentences in the body run short; the longest, L28, is a colon list rather than a nested clause.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 18,
+      "rule_lead": "Inline links use target's title, never filename.",
+      "verdict": "PASS",
+      "evidence": "Closest line: L43 '[MCP and connectors](../trainings/agentic-engineering-101/reference/mcp-and-connectors.md)'. Link text is the target's sentence-case title, not a filename and not a backticked path - which is what this rule governs. The '../' path form is module-shape.md's business, and the rule states in terms that a writing judge filing on the path form is misreading it, so no flag.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": "21b",
+      "rule_lead": "Session / task / run split (all trainings).",
+      "verdict": "REVISE",
+      "evidence": "Harm: noun-'run' for the agent's sitting collides with the controlled vocabulary the training uses for test/CI executions, so the student cannot tell which is meant. Present: yes, and the ambiguity is live in this very file, which talks about a failing test throughout. L5 'This is crucially the step that changes how the run behaves.' - noun-run for the agent sitting is banned in student-facing body; it is not a test/CI/eval execution, not a quoted artifact or branch name, and not the 'long-running' adjective. Verified at line 5 of the raw source, body region.",
+      "fix_hint": "'the session' if the sitting is meant; better, cut the line per §19.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 26,
+      "rule_lead": "Cut NVA: true but not moving student forward.",
+      "verdict": "PASS",
+      "evidence": "Closest line: L37 'There is no penalty if you skip this, and it is completely fine either way.' - it is NVA as well as over-hedge, but the sharper rule is check_writing §9 where it is already filed, so one finding rather than two on one sentence. Elsewhere the body is tight: the connector bullet at L43 is one clause plus a pointer, and the maintainer block at L74 records the three-routes expansion as already cut for exactly this reason.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 27,
+      "rule_lead": "Body \"read it\" / \"look at it\" / \"notice X\" after chat-print = dead weight.",
+      "verdict": "REVISE",
+      "evidence": "Harm: narrating the student's reading back at them after the agent has just printed to chat, with no next move attached. Present: yes. L24 'At this point the student should notice the test is still red.' lands immediately after the ticket-read prompt block at L22 and directs a generic notice with no follow-on decision - it does not name a column or row load-bearing for what follows, so the carve-out does not apply. The next line, L26, opens a new section.",
+      "fix_hint": "Cut the line. If a state check is genuinely wanted here, replace it with the next move rather than a notice.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 33,
+      "rule_lead": "The curriculum does not narrate itself - subject test, then deletion test.",
+      "verdict": "REVISE",
+      "evidence": "Harm: cartography - a clause promising what a later beat will do, which is a cheque that beat must cash. Present: yes. L64 'The field rules stay in the scrollback. The next exercise sweeps this whole session.' The first sentence states the present fact and is fine; the second takes 'the next exercise' as subject and describes the arc. '## What happened' is not one of the exempt signposting sections (What You'll Learn, Connections, Bridge/Next, Prework, The point). Deletion test: the two neighbours join cleanly without it.",
+      "fix_hint": "Cut the second sentence, or fold what the student needs into the present fact ('the field rules stay in the scrollback, so nothing needs writing down yet').",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 1,
+      "rule_lead": "No placeholders inside fences.",
+      "verdict": "PASS",
+      "evidence": "Ran node scripts/expand-md.js on the file and read all three expanded fences, plus grep -nE '\\[[A-Za-z ]+\\]' over curriculum/prompts/close-the-ticket-*.md -> no output. close-the-ticket-1 uses the open-hook form correctly: the fence ends 'Ticket:' on its own line with the student's input arriving after the colon, and the qualifier holds because the ticket link is something the student has more concretely than Claude could guess.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 2,
+      "rule_lead": "Every prompt block: one-sentence action lead-in.",
+      "verdict": "PASS",
+      "evidence": "All three markers carry a command-verb lead-in under 20 words: L20 'Drop the ticket link after the colon.', L33 'Ask Claude to reverse-engineer how your team handles bugs and propose five bug rules.', L45 'Ask Claude to write the close-out, update the ticket, and report what it wrote.' L20 is the §2a dangling-colon sub-case handled right - it names only what to drop in and does not summarise the fence above it.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 21,
+      "rule_lead": "Tell me what you wrote, not show me what you'll write.",
+      "verdict": "PASS",
+      "evidence": "The close-the-ticket-3 fence, expanded, ends 'Tell me what you wrote.' - post-action report on a side-effecting prompt (updating a live ticket), which is this rule's default. The irreversible/external-trust carve-out is not reached: a tracker comment is correctable after the fact.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 31,
+      "rule_lead": "Prompts live in registry; module/exercise/lecture files reference by marker.",
+      "verdict": "PASS",
+      "evidence": "All three prompts are markers, not inline fences: L22 {{prompt:close-the-ticket-1}}, L35 {{prompt:close-the-ticket-2}}, L47 {{prompt:close-the-ticket-3}}, each on its own line under its lead-in. Naming follows the shared-library convention <file-slug>-<n>. derive-body-view reports fence_ranges = [] for the file, consistent with no inline blocks.",
+      "fix_hint": null,
+      "blocking": false
+    }
+  ],
+  "findings": [
+    {
+      "rule": "check_writing.md §1",
+      "line": 5,
+      "quote": "This is crucially the step that changes how the run behaves.",
+      "harm": "Banned word 'crucially' - consultancy register that flinches an engineer reader mid-instruction.",
+      "fix": "Drop the adverb, or delete the line (it also trips §19 and §21b)."
+    },
+    {
+      "rule": "check_writing.md §2",
+      "line": 11,
+      "quote": "Treat this as a ritual you repeat at the start of every session.",
+      "harm": "Hard-banned word: imports Scrum-ceremony register into the move the training sells as work.",
+      "fix": "'exercise' or 'move', or cut - nothing downstream depends on the sentence."
+    },
+    {
+      "rule": "check_writing.md §3",
+      "line": 49,
+      "quote": "This section previously said something different; it was fixed on 2026-01-14.",
+      "harm": "Session biography in body prose: transition verbs plus a bare date, keeping a changelog where the file should state what is true.",
+      "fix": "Delete the sentence."
+    },
+    {
+      "rule": "check_writing.md §7",
+      "line": 24,
+      "quote": "At this point the student should notice the test is still red.",
+      "harm": "Third-person teacher framing in student-facing body; the reader is described rather than addressed.",
+      "fix": "Cut it. (Also flagged at check_student_facing §27, and the red-test claim contradicts the maintainer block's sequencing - technical class.)"
+    }
+  ],
+  "todos": [
+    {
+      "rule": "check_writing.md §9",
+      "line": 37,
+      "note": "'There is no penalty if you skip this, and it is completely fine either way.' - named flag phrase 'no penalty', and the second clause reassures twice. Cut."
+    },
+    {
+      "rule": "check_writing.md §12",
+      "line": 57,
+      "note": "'Anything can be inspected and reverse-engineered with an LLM' ships with no boundary bullet: the section has two bullets, and the stance note at L134 says the caveat lives in a third that does not exist. Restore one carve-out bullet ('extraction quality tracks the quality of what was sampled'); do not hedge L57."
+    },
+    {
+      "rule": "check_writing.md §19",
+      "line": 5,
+      "note": "'This is crucially the step that changes how the run behaves.' - deictic drumroll whose 'This' has no antecedent; it sits directly under the Time line, before any step exists."
+    },
+    {
+      "rule": "check_student_facing.md §21b",
+      "line": 5,
+      "note": "noun-'run' for the agent's sitting is banned in body; in a file about a failing test it also collides with test/CI 'run'. 'session', or cut the line."
+    },
+    {
+      "rule": "check_student_facing.md §27",
+      "line": 24,
+      "note": "'At this point the student should notice the test is still red.' - generic notice right after a chat-print, with no follow-on move."
+    },
+    {
+      "rule": "check_student_facing.md §33",
+      "line": 64,
+      "note": "'The next exercise sweeps this whole session.' - later-beat predicate in '## What happened', which is not an exempt signposting section. Neighbours join cleanly without it."
+    }
+  ],
+  "blocking_findings_count": 4,
+  "todos_count": 6,
+  "notes": "MAINTAINER_CUT = 66; FENCE_RANGES = [] (all three prompts are {{prompt:}} markers); body region = lines 1-65. signals.has_prompt_blocks was true, so node scripts/expand-md.js was run and the expanded fences were read. Every quoted line was re-verified against the raw source with grep -n. Two stale locators BELOW the cut, reported here rather than as body REVISEs because the writing template exempts maintainer blocks from body lints - both are check_writing §3 keep-notes-bind-to-their-passage cases and both will make a future judge re-derive a wrong conclusion: (a) L134 stance note says the slogan 'carries its boundary in the third bullet', but the section at L55-L58 has only two bullets and the caveat it names ('extraction quality tracks the quality of the tracker data sampled') appears nowhere in the body - that missing bullet is the §12 finding above; (b) L72 accept-note pins 'connector' to 'its line-35 use', but connector appears at line 43. Out-of-lane observations, not scored: L24 asserts the test is still red, while the maintainer block at L70 places this exercise after fix-tests-first with the PR already shipped - a technical/pedagogy contradiction that survives any rewording of the person problem. validate-backing.js runs clean on errors (0 error, 2 informational VISION-BACKED warns); all seven backing claim quotes match the body verbatim, so no §22 cross-body drift."
+}

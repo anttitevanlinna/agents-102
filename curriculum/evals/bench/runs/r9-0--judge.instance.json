@@ -1,0 +1,285 @@
+{
+  "class": "writing",
+  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/evals/bench/fixtures/writing-5judge.md",
+  "verdict": "REVISE",
+  "training": "ae101",
+  "body_sha": "adb3abd8a1e50e096a427d18ba341d64b8645fb2578905c2f537db8af7a89e81",
+  "rules_evaluated": [
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 13,
+      "rule_lead": "Value-prop / positioning framing belongs in sales copy + project strategy docs, NOT student-facing curriculum body.",
+      "verdict": "REVISE",
+      "evidence": "37:Unlike vendor tooling that locks your team in, this approach keeps you in control of the work. || 5:This capability unlocks transformational value across your entire delivery organisation.",
+      "fix_hint": "Cut both sentences outright. L37 is the hard sub-rule specimen (vendor lock-in framing inside a teaching beat); L5 is deck copy standing where the exercise owes a move.",
+      "blocking": true
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 6,
+      "rule_lead": "Author-we ban, first-person-plural extension (sub-rule of the credit/creator-name rule).",
+      "verdict": "REVISE",
+      "evidence": "49:We believe the loop matters more than the model, and we built this training around that.",
+      "fix_hint": "Substitute-test passes as author-we (the training authors believe). Drop the sentence; the editorial-flourish half (we believe / we built this training) is what the we was carrying, so recasting to passive would not save it.",
+      "blocking": true
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 2,
+      "rule_lead": "Earn every technical term on first use.",
+      "verdict": "REVISE",
+      "evidence": "11:Wire this through the subagent context window before you hit the compaction boundary.",
+      "fix_hint": "Three unearned terms in one line (subagent, context window, compaction boundary), none of which lands operationally anywhere in this exercise, so the assumed-known carve-out for MCP/connector/CI does not reach them. Cut the line.",
+      "blocking": true
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 14,
+      "rule_lead": "Watch out for planting jargon too early.",
+      "verdict": "REVISE",
+      "evidence": "11:Wire this through the subagent context window before you hit the compaction boundary.",
+      "fix_hint": "M1 arc position. Subagent and compaction are back-half vocabulary; planting them in an M1 widget line pre-spoils the module that teaches them.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 21,
+      "rule_lead": "A slogan that is false as stated is not punchy framing, run the truth test before reaching for the punchy-framing rule.",
+      "verdict": "REVISE",
+      "evidence": "24:Every test you write is a test the agent can never break.",
+      "fix_hint": "Superlative tell (never), asserted about how the world works, and the counterexample is one file over: an agent editing or regenerating a test is routine, and this very training has the agent touch tests. No true reading, so a downstream carve-out cannot rescue it. Cut.",
+      "blocking": true
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 12,
+      "rule_lead": "Punchy framing keeps punch; carve-out lives downstream.",
+      "verdict": "REVISE",
+      "evidence": "55:## Anything can be reverse-engineered",
+      "fix_hint": "The slogan stands bare. Its boundary paragraph is gone from the body: no line says extraction quality tracks the quality of the tracker data sampled. Restore one Boris-direct carve-out bullet after the slogan.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 9,
+      "rule_lead": "Don't ask student to manually diff or spot-check Claude's output as error-catching; every instruction line names an actor AND a mechanism.",
+      "verdict": "REVISE",
+      "evidence": "11:Wire this through the subagent context window before you hit the compaction boundary.",
+      "fix_hint": "Third axis: not executable. No actor, no mechanism, and no way for the student to tell they did it. Same line as the unearned-terms finding; one cut clears both.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 33,
+      "rule_lead": "The curriculum does not narrate itself, subject test then deletion test.",
+      "verdict": "REVISE",
+      "evidence": "49:We believe the loop matters more than the model, and we built this training around that. || 5:This capability unlocks transformational value across your entire delivery organisation.",
+      "fix_hint": "Subject test on both: the training and the capability, not the student's ticket, tracker or agent. Arc-positioning, cut.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 4,
+      "rule_lead": "Register match.",
+      "verdict": "REVISE",
+      "evidence": "5:This capability unlocks transformational value across your entire delivery organisation.",
+      "fix_hint": "None of the AE101 quintet writes this. Consultancy-deck register at line 5, the second line the student reads, and bare-noun unlock is the growth-hack tell in the slang test. Also the audience-contract flinch: transformational value is exactly the promise an engineer discounts.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 26,
+      "rule_lead": "Cut NVA: true but not moving student forward.",
+      "verdict": "REVISE",
+      "evidence": "24:Every test you write is a test the agent can never break.",
+      "fix_hint": "Non-sequitur as well as false: it sits between the ticket-read prompt and the conventions section and changes nothing the student understands, decides or does next.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 1,
+      "rule_lead": "Banned words, grep zero-tolerance.",
+      "verdict": "PASS",
+      "evidence": "body grep for the banned list and the em-dash returned 0 hits across lines 1-65 (view greps banned_words CLEAN, em_dash CLEAN, leverage_verb CLEAN, both with planted_proof true). Closest line is 5, transformational value, which is consultancy register but not on the list; it is filed under rules 4 and 13 instead.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 7,
+      "rule_lead": "Always you, never the student; teacher framing stays out of body.",
+      "verdict": "PASS",
+      "evidence": "the_student grep 0 body hits, planted_proof true. No delivery mechanics in body. Line 49 is first-person-plural, not third-person, so it is filed under rule 6.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 3,
+      "rule_lead": "No stale markers, no fixed retrospectives, no session biography.",
+      "verdict": "PASS",
+      "evidence": "dated_line and session_biography greps both 0 body hits, planted_proof true. No transition verbs in body prose; line 62, the loop that started with a failing test closed, is present-tense narrative of the student's own session, not a changelog of the file.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 2,
+      "rule_lead": "Ritual / ceremony, hard ban.",
+      "verdict": "PASS",
+      "evidence": "ritual_ceremony grep 0 body hits, planted_proof true; no practice(n) in body either.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 8,
+      "rule_lead": "Don't smuggle terms of art from maintainer into body.",
+      "verdict": "PASS",
+      "evidence": "Connector at line 43 is the closest call and is covered by the dated accept-note in the maintainer block at line 72, Antti 2026-08-18, which overrules writing rule 8 and student-facing rule 2 findings on that term by name. Not re-filed. Line 11's terms are unearned rather than maintainer-only, so they sit under student-facing rule 2.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 26,
+      "rule_lead": "A sentence saying how you'd know points at the outcome, not the nearest artifact.",
+      "verdict": "PASS",
+      "evidence": "Closest line is 53, Does it sound like the comments already on the ticket, which points at an external artifact the student did not write, so it is not self-witnessing. Line 43's it pays back on every session after this one is a promise rather than a how-you-know clause; noted, not filed.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 18,
+      "rule_lead": "Inline links use target's title, never filename.",
+      "verdict": "PASS",
+      "evidence": "43: link text is MCP and connectors, the target's H1 title, not a filename and not a backticked path. The relative path prefix is path form, governed elsewhere, and this rule explicitly warns judges off reading it as a link-text finding.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 21,
+      "rule_lead": "LLM vs agent vs Claude vocabulary discipline.",
+      "verdict": "PASS",
+      "evidence": "57 keeps LLM for the capability claim and 58 uses the agent for the three action steps; the backing block records that split as deliberate. Ask Claude at 33 and 45 is the addressee sense. Consistent throughout.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 16,
+      "rule_lead": "The What happened block is optional; standard shape when included, past tense for recap sections.",
+      "verdict": "PASS",
+      "evidence": "60-64: count plus noun (two things came out of one ticket), one qualifier (the conventions your team has been encoding in its fields), and it lands on a destination (the field rules stay in the scrollback; the next exercise sweeps this session). Past tense throughout. Two sentences.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 9,
+      "rule_lead": "Over-hedge detector.",
+      "verdict": "PASS",
+      "evidence": "Closest is 30, No ticket of your own to read? Any other real ticket from your tracker works. That is an alternative path stated flat, with no reassurance sentence appended absolving the reader. No no-penalty, fine way to, it's OK if shapes in body.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 17,
+      "rule_lead": "No combative verbs about the agent in body prose.",
+      "verdict": "PASS",
+      "evidence": "Body verbs for student-to-agent are ask, tell, have, push back on the five (39), which is peer-flat and aimed at the proposals rather than at the agent. No bark, order, command, force, boss.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 14,
+      "rule_lead": "No em-dashes. Simple sentences.",
+      "verdict": "PASS",
+      "evidence": "em_dash grep 0 body hits, planted_proof true.",
+      "fix_hint": null,
+      "blocking": false
+    }
+  ],
+  "findings": [
+    {
+      "rule": "check_writing.md 13",
+      "line": 37,
+      "quote": "Unlike vendor tooling that locks your team in, this approach keeps you in control of the work.",
+      "harm": "Rule 13 exists so a teaching beat is not spent defending the curriculum's positioning; the harm is a student reading a marketing frame where a move belongs, and deciding the training is selling. Present here in the rule's own specimen shape: the unlike-X-vendor construction, plus the hard sub-rule that treats vendor in body as suspect every time. This line sits between the conventions prompt and the push-back instruction and teaches nothing.",
+      "fix": "Delete the sentence. Nothing downstream depends on it."
+    },
+    {
+      "rule": "check_writing.md 13",
+      "line": 5,
+      "quote": "This capability unlocks transformational value across your entire delivery organisation.",
+      "harm": "Same harm, arriving earlier and doing more damage: it is the second line the student reads, immediately under the Time widget, so it sets the register for the whole page before any work starts. Deck copy, not a teaching sentence.",
+      "fix": "Delete. The What you do line at 7 already states what the exercise is for."
+    },
+    {
+      "rule": "check_writing.md 6 (author-we)",
+      "line": 49,
+      "quote": "We believe the loop matters more than the model, and we built this training around that.",
+      "harm": "The author-we ban prevents the training-as-organisation appearing as a character in the student's page; the harm is the same as a creator name, personal to people the student does not know and ageing badly. Present and confirmed mechanically: the view's author_we grep returns exactly one body hit and this is it. Substituting the training authors for we leaves the sentence intact, which is the diagnostic.",
+      "fix": "Cut the whole sentence. Recasting to passive would keep the editorial flourish (we believe), which rule 6 names as the thing the we was carrying."
+    },
+    {
+      "rule": "check_writing.md 21",
+      "line": 24,
+      "quote": "Every test you write is a test the agent can never break.",
+      "harm": "Rule 21 prevents a false sentence shipping under the protection of the punchy-framing rule; the harm is a professional audience finding the counterexample faster than the author did and discounting everything around it. Present: never is the superlative tell, the claim is about how the world works rather than about an artifact we control, and the counterexample is immediate, agents edit, regenerate and delete tests, including in this training's own exercises. No true reading exists, so a downstream carve-out cannot rescue it.",
+      "fix": "Cut. If a claim is wanted here, make it about what the test buys (a failure you can point at), not about what the agent cannot do."
+    },
+    {
+      "rule": "check_student_facing.md 2",
+      "line": 11,
+      "quote": "Wire this through the subagent context window before you hit the compaction boundary.",
+      "harm": "Rule 2 prevents a cold term stopping the reader mid-narrative. Present threefold, in an M1 exercise: subagent, context window and compaction boundary all arrive with no one-breath primer and none of them lands operationally anywhere in this file, which is the diagnostic the rule gives. The assumed-known carve-out covers industry-standard engineer vocabulary (MCP, connector, CI, PR); compaction boundary is house and back-half. The maintainer accept-note at line 72 is scoped to connector only and does not reach this line.",
+      "fix": "Cut the line. It also names no actor and no mechanism, so nothing is lost operationally."
+    },
+    {
+      "rule": "check_writing.md 12",
+      "line": 55,
+      "quote": "## Anything can be reverse-engineered",
+      "harm": "Rule 12 lets a slogan keep its punch only because a boundary paragraph sits one beat downstream; without it the overreach ships bare. The harm is present here and is specifically documented as absent-by-accident: the backing block's stance at line 132 tells a future judge to read the third bullet before flagging, calling it the whole caveat, extraction quality tracks the quality of the tracker data sampled. That bullet is not in the body. Grepping the body for extraction quality and tracker data returns nothing; the section is two bullets, neither of which bounds anything.",
+      "fix": "Restore one Boris-direct carve-out bullet after the two existing ones, naming that the read is only as good as the field discipline of what you point it at."
+    }
+  ],
+  "todos": [
+    {
+      "rule": "check_writing.md 14",
+      "line": 11,
+      "note": "Same line as the earned-terms finding: subagent and compaction are back-half vocabulary planted at M1. Clears with the cut."
+    },
+    {
+      "rule": "check_writing.md 4",
+      "line": 5,
+      "note": "Register: transformational value across your entire delivery organisation is consultancy deck, outside the AE101 quintet, and bare-noun unlock is the growth-hack tell. Clears with the cut."
+    },
+    {
+      "rule": "check_student_facing.md 33",
+      "line": 49,
+      "note": "Subject test: the training is the grammatical subject at 49 and the capability at 5. Arc-positioning, cut. Clears with the two cuts above."
+    },
+    {
+      "rule": "check_student_facing.md 9",
+      "line": 11,
+      "note": "Third axis, not executable: no actor, no mechanism, no way to tell it was done. Clears with the cut."
+    },
+    {
+      "rule": "check_student_facing.md 26",
+      "line": 24,
+      "note": "NVA non-sequitur between the ticket-read prompt and the conventions section, independent of the falsity. Clears with the cut."
+    },
+    {
+      "rule": "check_writing.md 26",
+      "line": 43,
+      "note": "it pays back on every session after this one is an unbacked promise rather than a how-you-know clause. Below the filing bar; flagging only so the next pass sees it was read."
+    }
+  ],
+  "blocking_findings_count": 4,
+  "todos_count": 6
+}

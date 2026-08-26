@@ -51,9 +51,9 @@ Ask Claude to propose the most plausible incident story and walk you through the
 *5 min*
 
 - The ADR states the call, its alternatives, and the constraint that picked the winner. You write it in your repo's convention. It is the artifact your CISO would actually read.
-- Have the agent draft it and show it before saving. You read the call before it lands on disk.
+- Have the agent draft it and save it, then read the diff before you decide whether to keep it.
 
-Ask Claude to draft the ADR in your repo's convention and show it before saving.
+Ask Claude to draft the ADR in your repo's convention, save it, and show you the diff.
 
 {{prompt:threat-model-with-stride-3}}
 
@@ -103,6 +103,8 @@ Ask Claude whether this ADR rides into future sessions automatically.
 - **Body intentionally has NO lead-in for the pre-flight** at the Phase 1 prompt fence. The body line above the fence reads only *"Ask Claude to invoke the STRIDE skill as a subagent on the access-surface map from Exercise 1."* — this deliberately violates the usual body-lead-in-mirrors-prompt rule (`check_prompts.md`). The surprise IS the pedagogy. Do not "fix" this drift in audit.
 - **Trainer move when it fires:** pause the room, ask who saw line 2 of the pre-flight output, name the lesson — every link in the trust chain (tarball → SKILL.md → Bash authorization) was authorized without reading. Resume; the stride subagent invocation does the real threat-model work.
 - **Source:** `pre-cohort-todos.md` *Surprise-skill live demo* entry; design refined 2026-05-21. Skill files at `content/skills/security-tools/`.
+
+**Save-then-diff (2026-08-26):** the ADR beat reports after the write — `threat-model-with-stride-3` saves to the path, then shows the diff (`check_prompts.md §21` post-action reporting). The body bullet and lead-in describe that order; do not add a pre-save gate to the prompt.
 
 **Quality:** compendium-audited 2026-08-26 (writing@1abb84c6 story@0e4f7c9e technical@1abb84c6 behavior@1c765f2 pedagogy@1abb84c6 strategy@1c765f2 slides@0e4f7c9e)
 - judges @0e4f7c9e: writing PASS (drift-recheck), story PASS, technical PASS (drift-recheck), behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS

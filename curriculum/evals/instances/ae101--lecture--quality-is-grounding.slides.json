@@ -3,134 +3,178 @@
  "file": "curriculum/lectures/quality-is-grounding.md",
  "verdict": "PASS",
  "training": "ae101",
- "body_sha": "74c007666d491d5692c41b2c19991798d1159cd4ebb3a35f1b07ce62589d8eb6",
+ "body_sha": "26223cca3484cc443f60a24da6e67495e0ca6e1cae1fd7efa4e12207c2216a68",
+ "shape_hash": "0e8c64fecfeaf2e0",
  "chunk_map": [
-  {
-   "chunk": 0,
-   "heading": "Quality is grounding (H1)",
-   "lines": "1"
-  },
-  {
-   "chunk": 1,
-   "heading": "Five moves, one quality discipline",
-   "lines": "3-9"
-  },
-  {
-   "chunk": 2,
-   "heading": "Decay clears the gate",
-   "lines": "11-15"
-  },
-  {
-   "chunk": 3,
-   "heading": "From spec-and-tests to grounding",
-   "lines": "17-23"
-  }
+  { "index": 0, "heading": "Quality is grounding (H1)", "lines": "1" },
+  { "index": 1, "heading": "Five moves, one quality discipline", "lines": "3-9" },
+  { "index": 2, "heading": "Decay clears the gate", "lines": "11-15" },
+  { "index": 3, "heading": "From spec-and-tests to grounding", "lines": "17-23" }
  ],
  "rules_evaluated": [
   {
-   "rule": 1,
-   "name": "Referent resolution under sequential deck read",
-   "blocking": true,
+   "compendium": "check_slides.md",
+   "rule_index": 1,
+   "rule_lead": "Referent resolution under a sequential deck read.",
    "verdict": "PASS",
-   "evidence": "Chunk1: M1/M2/M3/M5 named directly, covered by the file's own recorded consolidation carve-out (backing block, section-3 sweep 2026-07-02: 5 refs judged, 0 fixed, 5 carve-out). Chunk2: 'the verifier' resolves to chunk1's list ('...skill, verifier, loop'); 'the agent' and 'the discipline' resolve via chunk1 and AE101 arc-earned spine vocabulary. Chunk3: 'the discipline' resolves to chunk1; 'that signal' resolves to 'human signal' named two sentences earlier in the same chunk. No never-named or stranded referents found."
+   "chunks_flagged": [],
+   "evidence": "Chunk1: 'M1 opened with tests-first. M2 added plan push-back... M3 authored the test-strategy skill... M5 built the verifier...' — verified live against sibling module files, not just the maintainer's own claim: getting-going.md L18 'Fix the bug tests-first', plan-mode-done-right.md L19 'Push back twice on the plan', earn-the-trust.md L25 'Author a test-strategy skill through conversation', learn-from-the-test.md L16 'Build a verifier'. Also covered by the file's own recorded consolidation carve-out (backing block: section-3 sweep 2026-07-02, 5 refs judged, 5 carve-out). Chunk1's list item 'loop' (in 'Tests-first, plan push-back, skill, verifier, loop') is common-noun shorthand for 'the eval read' named one sentence earlier in the same chunk ('Two sessions diffed, every gap routed to the check...'), not a proper-noun forward-pointer to the companion closer 'The loop has a name' — no capitalization, no cross-file naming, resolves in-chunk. Chunk2: 'the verifier' resolves to chunk1's list; 'the blind spot' resolves to the two preceding in-chunk sentences about gates not firing on slow-landing costs; 'The countermoves' likewise resolves to the blind-spot problem just named. Chunk3: 'The discipline' resolves either in-chunk (the spec-and-tests theme two sentences up) or to chunk1's 'one quality discipline' (arc-earned, same file); 'that signal' resolves to 'human signal' one sentence earlier in the same chunk. No never-named, vague, or re-chunk-stranded referents found.",
+   "fix_hint": null,
+   "blocking": true
   },
   {
-   "rule": 2,
-   "name": "Cross-file and positional callbacks",
-   "blocking": true,
+   "compendium": "check_slides.md",
+   "rule_index": 2,
+   "rule_lead": "Cross-file and positional callbacks.",
    "verdict": "PASS",
-   "evidence": "Two links in chunk2: '[Why software factories fail]' and '[Clean Code Is Steering: Reading Uncle Bob's Agent Experiments]', both named by title in-sentence with the claim unpacked ('carries that story: modularity, architecture visibility, metrics that make decay readable'), not located by position. No 'the opening lecture said' style callbacks."
+   "chunks_flagged": [],
+   "evidence": "Two links, both in chunk2: '[Why software factories fail]' (external, github) and '[Clean Code Is Steering: Reading Uncle Bob's Agent Experiments]' (cross-file, supplementary page) — both named by full title in-sentence with the claim unpacked in the same sentence ('Dex Horthy argues... they learned against checks that answer fast...'; '...carries that story: modularity, architecture visibility, metrics that make decay readable'), not located by position. No 'the opening lecture said' style positional callback anywhere in the body.",
+   "fix_hint": null,
+   "blocking": true
   },
   {
-   "rule": 3,
-   "name": "Backward references point at a beat that exists",
-   "blocking": true,
+   "compendium": "check_slides.md",
+   "rule_index": 3,
+   "rule_lead": "Every backward reference points at a beat that exists.",
+   "verdict": "PASS",
+   "chunks_flagged": [],
+   "evidence": "Chunk1's M1/M2/M3/M5 claims each verified against the live host-module set (agentic-engineering-101, resolved via site/layouts/curriculum.js MODULES array: M1=getting-going, M2=plan-mode-done-right, M3=earn-the-trust, M5=learn-from-the-test): tests-first (getting-going.md L18, exercise fix-tests-first.md), plan push-back (plan-mode-done-right.md L19, exercise push-back-on-the-plan.md), test-strategy skill (earn-the-trust.md L25, exercise author-test-strategy-skill.md), verifier (learn-from-the-test.md L16). No dead beat. Not the canonical 'the X you did/saw/caught' phrasing (this is training-arc consolidation naming what past modules built, not a callback to the student's own immediately-prior action), but the underlying claim the rule protects — that a referenced beat is live — holds.",
+   "fix_hint": null,
+   "blocking": true
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 4,
+   "rule_lead": "Live-demo beats survive a text read.",
    "verdict": "N/A",
-   "evidence": "No 'the X you did/saw/caught' style beat references anywhere in the body — M1-M5 refs are training-arc consolidation material (rule 1), not module-beat callbacks needing a live target in the host module spot-gaps-build-the-loop.md."
+   "chunks_flagged": [],
+   "evidence": null,
+   "na_reason": "no guess-before-reveal construction anywhere in the file",
+   "fix_hint": null,
+   "blocking": true
   },
   {
-   "rule": 4,
-   "name": "Live-demo beats survive a text read",
-   "blocking": true,
+   "compendium": "check_slides.md",
+   "rule_index": 5,
+   "rule_lead": "No orphan slides.",
+   "verdict": "PASS",
+   "chunks_flagged": [],
+   "evidence": "All three body chunks (1-3) carry multi-sentence standalone paragraphs with a self-carrying claim; none is a bare wait-state or single context-dependent bullet. Chunk 0 is the H1-only title slide, the template's own prior-context exemption.",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 6,
+   "rule_lead": "Header self-carries at projection distance.",
+   "verdict": "PASS",
+   "chunks_flagged": [],
+   "evidence": "Closest call is chunk2: 'Decay clears the gate' reads on the idiom 'clears customs/a hurdle' (passes through undetected), matching the body's claim 'No gate fires on any of them, so a session can come back green... still leave the code worse'. Chunk1 header ('Five moves, one quality discipline') is summarized accurately by its own body naming exactly five moves then restating 'Five moves, one discipline'. Chunk3 header ('From spec-and-tests to grounding') matches its body's spec-and-tests description followed by 'The discipline has gone deeper since: grounding.' No header contradicted by its own chunk's content.",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 7,
+   "rule_lead": "LLM-cadence caps.",
+   "verdict": "PASS",
+   "chunks_flagged": [],
+   "evidence": "No 'Not X. Not Y. Z.' construction anywhere. Chunk3's 'Every push-back, every correction, every \"no, like this\"' is an anaphora triple whose third leg is a literal quoted exclamation — new concrete content vs. the two abstract nouns before it, clears the third-leg test. No self-grading superlatives (grep for 'most useful'/'one of the'-style value-prop leak: none). No number+retraction ('500K' and 'a million lines' both stand unhedged; the backing block confirms the million-line line is deliberately a rhetorical figure carrying no number-claim, not a retracted measurement). No abstraction-noun stacks — chunk2's three decay examples ('the shortcut cast, the try-catch that swallows an error, the module that grew a second job') are concrete instances, the rule's own recommended fix shape, not a violation. No empty-leg verb triplets anywhere.",
+   "fix_hint": null,
+   "blocking": "self-grading-superlative sub-item only; other sub-items non-blocking per template"
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 8,
+   "rule_lead": "Internal dialect never lands on a slide.",
+   "verdict": "PASS",
+   "chunks_flagged": [],
+   "evidence": "'Grounding' (bolded, chunk3) is the lecture's own coined pedagogical term being explicitly taught to the room in the sentence that names it, not maintainer shop-talk — distinct in kind from banned terms (surface-as-noun, firing, compendium, forcing function, beat, mood, Connections). 'Gate' (chunk2, chunk1 heading) is ordinary engineering vocabulary (quality gate / CI gate), ungated by §8. 'The eval read', 'the verifier', 'the discipline', 'the agentic engineer' are AE101 curriculum vocabulary an engineer in the room can parse, not repo-internal dialect. No hits on the banned-term list.",
+   "fix_hint": null,
+   "blocking": true
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 9,
+   "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
+   "verdict": "PASS",
+   "chunks_flagged": [],
+   "evidence": "Zero bold in chunks 0-2, deliberate per maintainer block ('Zero bold on the new slide' for the 2026-07-29 decay addition; both original slides recast from bolded-claim bullets to prose paragraphs 2026-07-09). Chunk3 carries exactly one bolded handle — **grounding**, one word — at its naming beat, inside both the ≤1-per-slide budget and the ≲5-word handle cap.",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 10,
+   "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
+   "verdict": "PASS",
+   "chunks_flagged": [],
+   "evidence": "File is included via the standalone include-link '[Quality is grounding](lectures/quality-is-grounding.md)' at spot-gaps-build-the-loop.md L35, inside that module's '## Start here' section. scripts/build-workbook.js wraps every lecture-slug include in the generic '<section class=\"phase phase--lecture\">' wrapper (L278) that buildDeckModel reads — the same mechanism every other AE101 shared lecture uses, so this file reaches the composed deck; no phase-less prose section of its own.",
+   "fix_hint": null,
+   "blocking": true
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 11,
+   "rule_lead": "Numbering — position is computed, content ordinals are linted.",
    "verdict": "N/A",
-   "evidence": "No guess-before-reveal construction anywhere in the file."
+   "chunks_flagged": [],
+   "evidence": null,
+   "na_reason": "no hand-numbered headers or Phase/Step refs in this file — mechanical: `node scripts/check-slide-numbering.js curriculum/lectures/quality-is-grounding.md` -> 'OK — 60 files, Phase/Step numbering consistent.'",
+   "fix_hint": null,
+   "blocking": false
   },
   {
-   "rule": 5,
-   "name": "No orphan slides",
-   "blocking": false,
+   "compendium": "check_slides.md",
+   "rule_index": 12,
+   "rule_lead": "Page geometry dies at the cut; reading order survives.",
    "verdict": "PASS",
-   "evidence": "All three body chunks carry multi-sentence standalone content; none is a bare wait-state or single context-dependent bullet."
+   "chunks_flagged": [],
+   "evidence": "Mechanical: `node scripts/check-slide-deixis.js curriculum/lectures/quality-is-grounding.md` -> 'OK — 60 files, no page-geometry pointers across the slide cut.' Manual grep for below/above/further-down/at-the-top-of-this-page confirms zero hits in the body region (the one 'below the fence' hit found by grep is in the maintainer block at L35, not body).",
+   "fix_hint": null,
+   "blocking": true
   },
   {
-   "rule": 6,
-   "name": "Header self-carries at projection distance",
-   "blocking": false,
-   "verdict": "PASS",
-   "evidence": "Closest call is chunk2: 'Decay clears the gate' reads on the 'clears a hurdle/customs' idiom (passes through undetected), matching the body's claim that 'No gate fires... a session can come back green' despite decay. Chunk1 header ('Five moves, one quality discipline') is summarized accurately by its own body listing exactly five named moves then restating 'one discipline.' Chunk3 header ('From spec-and-tests to grounding') matches its body's spec-and-tests-era description followed by 'The discipline has gone deeper since: grounding.' No header contradicted by its chunk's content."
-  },
-  {
-   "rule": 7,
-   "name": "LLM-cadence caps",
-   "blocking": "self-grading-superlative sub-item only",
-   "verdict": "PASS",
-   "evidence": "No 'Not X. Not Y. Z.' construction anywhere. Chunk3's 'Every push-back, every correction, every \"no, like this\"' is an anaphora triple whose third leg is a literal quoted example — new concrete content, not a restatement, so it clears the third-leg test. No self-grading superlatives, no number-with-retraction, no abstraction-noun stacks (chunk2's three decay examples — 'the shortcut cast, the try-catch that swallows an error, the module that grew a second job' — are concrete instances, the rule's own recommended fix pattern, not a violation), no empty-leg verb triplets."
-  },
-  {
-   "rule": 8,
-   "name": "Internal dialect never lands on a slide",
-   "blocking": true,
-   "verdict": "PASS",
-   "evidence": "'Grounding' (bolded, chunk3) is the lecture's own coined pedagogical term being explicitly taught to the room, not authorial shop-talk (distinct from banned terms like surface/firing/compendium/beat/forcing-function). 'Gate' is standard engineering vocabulary (quality gate), not repo-internal dialect. 'The agentic engineer', 'the discipline', 'the verifier' are established AE101 curriculum vocabulary, not maintainer dialect."
-  },
-  {
-   "rule": 9,
-   "name": "Emphasis budget",
-   "blocking": false,
-   "verdict": "PASS",
-   "evidence": "Zero bold in chunks 0-2 (deliberate per maintainer block: 'Zero bold on the new slide' for chunk2, and the 2026-07-09 emphasis pass recast both original slides to prose). Chunk3 carries exactly one bolded handle — **grounding** — at its naming beat, within the ≤1-per-slide budget."
-  },
-  {
-   "rule": 10,
-   "name": "Presence precedes content",
-   "blocking": true,
-   "verdict": "PASS",
-   "evidence": "File is included via standalone include-link '[Quality is grounding](lectures/quality-is-grounding.md)' in curriculum/trainings/agentic-engineering-101/spot-gaps-build-the-loop.md line 35, the AE101 M6 host module rendered under section.module — reaches the composed deck per the standard AE101 lecture-inclusion pattern."
-  },
-  {
-   "rule": 11,
-   "name": "Numbering",
-   "blocking": false,
-   "verdict": "PASS",
-   "evidence": "Mechanical: node scripts/check-slide-numbering.js curriculum/lectures/quality-is-grounding.md -> 'OK — 61 files, Phase/Step numbering consistent.' No hand-numbered headers or Phase/Step refs in this file."
-  },
-  {
-   "rule": 12,
-   "name": "Page geometry dies at the cut",
-   "blocking": true,
-   "verdict": "PASS",
-   "evidence": "Mechanical: node scripts/check-slide-deixis.js curriculum/lectures/quality-is-grounding.md -> 'OK — 61 files, no page-geometry pointers across the slide cut.' No 'below/above/further down' style pointers in body."
-  },
-  {
-   "rule": 13,
-   "name": "In-deck links",
-   "blocking": false,
+   "compendium": "check_slides.md",
+   "rule_index": 13,
+   "rule_lead": "In-deck links work now; whether they EARN their place is open.",
    "verdict": "N/A",
-   "evidence": "Mechanism settled globally 2026-08-12 (in-deck anchor routing fixed, guarded by scripts/slides.test.js); the two links in this file are external cross-file links already evaluated under rule 2 (named-not-located). The 'do they earn their place' question is explicitly open and not a rule to score against."
+   "chunks_flagged": [],
+   "evidence": null,
+   "na_reason": "no same-page fragment (#anchor) links in this file — the two links present are external (github) and cross-document (a supplementary page), unaffected by the settled same-deck anchor-routing fix; both already scored under rule 2 for named-not-located",
+   "fix_hint": null,
+   "blocking": false
   },
   {
-   "rule": 14,
-   "name": "Slide size",
-   "blocking": false,
+   "compendium": "check_slides.md",
+   "rule_index": 14,
+   "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
    "verdict": "PASS",
-   "evidence": "Mechanical: node scripts/check-slide-size.js --file curriculum/lectures/quality-is-grounding.md -> 'slides: 3, limits: 210 words / 6 bullets, oversized: 0 — every slide is within limits.' No maintainer accept-note needed."
+   "chunks_flagged": [],
+   "evidence": "Mechanical: `node scripts/check-slide-size.js --file curriculum/lectures/quality-is-grounding.md` -> 'files: 1  slides: 3  limits: 210 words / 6 bullets  oversized: 0 — every slide is within limits.' No maintainer accept-note needed or present.",
+   "fix_hint": null,
+   "blocking": false
   },
   {
-   "rule": 15,
-   "name": "Heading grammar is the mood switch",
-   "blocking": false,
+   "compendium": "check_slides.md",
+   "rule_index": 15,
+   "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
    "verdict": "PASS",
-   "evidence": "This is a lecture file; all three body headings are claim-shaped (compressed declaratives): 'Decay clears the gate' is a full-sentence claim; 'Five moves, one quality discipline' and 'From spec-and-tests to grounding' are copula-dropped theses each verified true against their own chunk's content under rule 6. No imperative or bare phase-label heading anywhere. Rule's 2026-08-15 measurement was scoped to exercise files (108 headings/15 files); no comparable measurement exists for lecture files, but none of these three headings instructs an action or labels a phase — closest-call judgment resolves to PASS."
+   "chunks_flagged": [],
+   "evidence": "Lecture file — headings must be claims, not imperative/phase labels. 'Decay clears the gate' is a full subject-verb-object claim (matches the rule's own 'Gates decay' example). 'Five moves, one quality discipline' and 'From spec-and-tests to grounding' are copula-dropped noun-phrase theses naming their subject, matching the rule's explicit non-violation class 'catalogue entries naming their subject' (cf. 'The numbers', 'Verification, named') rather than bare phase labels or imperatives. No heading instructs an action. Blocking classification: this rule postdates the template's original true/false partition (same gap the template itself flags for rules 9-14); applying the template's own stated principle — blocking = comprehension/trust failure, non-blocking = polish on a working slide — a heading-grammar register question is polish, same class as rule 6, so scored blocking:false here.",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 16,
+   "rule_lead": "A bullet earns its slot or dies — three classes that read as rigour and carry nothing.",
+   "verdict": "N/A",
+   "chunks_flagged": [],
+   "evidence": null,
+   "na_reason": "no markdown bullet lines in this file's body (prose-only paragraphs, confirmed by grep for leading '- '); the one doctrine-restatement instance this rule targets ('Not one move learned in one module; the discipline, threaded through the whole training.') was already cut from chunk1 in the 2026-08-25 lean pass per the maintainer's own accept-note at L27, which cites the exact class this rule now names",
+   "fix_hint": null,
+   "blocking": false
   }
  ],
  "blocking_findings_count": 0,

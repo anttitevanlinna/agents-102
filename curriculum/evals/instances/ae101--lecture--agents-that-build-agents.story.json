@@ -1,11 +1,12 @@
 {
   "class": "storytelling",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/agents-that-build-agents.md",
-  "body_sha": "293e2f6ca38ba2216b60d6034f10af6b54ab378e6616d0b3e1c177887280a82b",
+  "body_sha": "908e27b7f499d626076085d877a15b1a8677229f400aba762d353fa3123c67b4",
+  "shape_hash": "a1b6245c45cbdfbe",
   "verdict": "PASS",
   "training": "ae101",
   "module_mood_contract": "practitioner fluency — 'I know how to test, I know how to learn, I know how to encode' — forward-tilt, flywheel as runnable move not slogan (M6 closing-chain lecture, dead-last)",
-  "trace_status": "regenerated",
+  "trace_status": "cached",
   "rules_evaluated": [
     {
       "compendium": "check_lectures.md",
@@ -30,7 +31,7 @@
       "rule_index": 3,
       "rule_lead": "No cross-module sequencing in lecture bodies.",
       "verdict": "PASS",
-      "evidence": "Body (line 7) 'The skill, at M3, ... The map, at M6, ...' and (line 34) 'there since M2' are bare module refs above the maintainer fence. Rule's carve-out: 'arc lectures (the map, consolidation closers) whose SUBJECT is the arc keep module ranges.' This lecture's subject IS the training's arc (the flywheel across the whole training) — it is the arc-closer the carve-out names, matching the file's own maintainer note: 'M-refs KEPT under the check_lectures §3 consolidation carve-out (arc-closer; two-skills recognition + graduation beat, not sequencing).' Harm the rule prevents (a lecture that can't be re-placed because it's welded to one module's numbering) is absent — this file is deliberately the terminal, un-reusable closer.",
+      "evidence": "Body line 7: 'The skill, at M3, ... The map, at M6, ...' and line 35: 'there since M2' are bare module refs above the maintainer fence — both re-verified against the current source this session (grep-confirmed, unchanged by the 2026-08-25 lean pass). Rule's carve-out: 'arc lectures (the map, consolidation closers) whose SUBJECT is the arc keep module ranges.' This lecture's subject IS the training's arc (the flywheel across the whole training) — the arc-closer the carve-out names, matching the file's own maintainer note: 'M-refs KEPT under the check_lectures §3 consolidation carve-out (arc-closer; two-skills recognition + graduation beat, not sequencing).' Harm the rule prevents (a lecture that can't be re-placed because it's welded to one module's numbering) is absent — this file is deliberately the terminal, un-reusable closer.",
       "fix_hint": null,
       "blocking": false
     },
@@ -39,16 +40,25 @@
       "rule_index": 4,
       "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
       "verdict": "PASS",
-      "evidence": "Six `##` headers, no two shared: 'The move widens to everything you do' / 'The agent stops where your judgement begins' / 'The handoff prompt that builds your kit' / 'You make agentic happen' / 'Ralph' / 'There is no last turn'. Squint check: each names a claim or a thing except one borderline case — slide 1's 'The move widens to everything you do' sits close to the banned bare-container example 'The move' the rule lists by name, but the trailing clause 'widens to everything you do' turns it into an assertion (the packaging pattern generalises), so it clears the bar; noted as the softest header in the set, not a violation. 'Ralph' is a named-practice carve-out (§4's own exception). Truth clause: no category errors, no dropped qualifiers; 'There is no last turn' is licensed by the body's own claim (each session surfaces the next gap) rather than an unsupported universal.",
-      "fix_hint": "If this file is ever re-touched, slide 1's header is the one worth tightening first — a version that names what widens (the packaging move, not just 'the move') would clear the squint test with more margin.",
+      "evidence": "Six `##` headers, unchanged by the 2026-08-25 lean pass (which touched only body prose, not headers): 'The move widens to everything you do' / 'The agent stops where your judgement begins' / 'The handoff prompt that builds your kit' / 'You make agentic happen' / 'Ralph' / 'There is no last turn'. No two share a header. Squint check: each names a claim or a thing — 'Ralph' is the named-practice carve-out §4 itself allows. Truth clause: no category errors, no dropped qualifiers; 'There is no last turn' is licensed by the body's own claim (each session surfaces the next gap) rather than an unsupported universal.",
+      "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_lectures.md",
       "rule_index": 5,
-      "rule_lead": "A slide's BODY is size-bounded, not just its header.",
+      "rule_lead": "A slide's BODY is size-bounded, not just its header (§4's sibling).",
       "verdict": "PASS",
-      "evidence": "`node scripts/check-slide-size.js --file curriculum/lectures/agents-that-build-agents.md` run this session → 'files: 1  slides: 6  limits: 210 words / 6 bullets … oversized: 0 … ✓ every slide is within limits'. Mechanical, not inferred.",
+      "evidence": "Re-fetched rule 5 at current wording this session (`node curriculum/evals/scripts/rule.js lectures 5`) — text unchanged from the brief. Re-ran `node scripts/check-slide-size.js --report --file curriculum/lectures/agents-that-build-agents.md` this session → 'files: 1  slides: 6  limits: 210 words / 6 bullets … oversized: 0' with per-slide breakdown: 173w/0b 'The agent stops where your judgement begins', 162w/0b 'The move widens to everything you do', 99w/4b 'Ralph', 88w/3b 'You make agentic happen', 61w/2b 'There is no last turn', 55w/0b 'The handoff prompt that builds your kit'. The lean pass trimmed the Ralph slide's moral bullet from four sentences to one ('Practitioners see levers first.'), which shrinks that slide, not grows it — every slide clears both the word and bullet ceiling with margin. This is this file's specific drift-recheck rule (rule moved, not body); re-read at current wording and re-run mechanically, verdict unchanged: PASS.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 6,
+      "rule_lead": "A prompt inside a lecture is a trainer show-and-tell, never a room follow-along.",
+      "verdict": "PASS",
+      "evidence": "New rule since the prior instance (added 2026-08-20, which is why shape_hash predates and every rule was fresh this run). File has exactly one prompt block, `{{prompt:agents-that-build-agents-handoff}}` (line 25), and the maintainer block carries a DATED ACCEPT-NOTE addressing it directly: '§6 carve-out, the answer must be theirs (checked 2026-08-20). ... \"The shapes you drew are still in the session\" and \"The kit you grow on your own is the one that counts\" both name the student's own session and kit, which is §6's tell ... Leave it student-run; do not re-flag.' This matches the rule's own carve-out text verbatim ('where the prompt's value is that the STUDENT's own session answers it, a trainer demo returns the wrong machine's answer'). Body lines 23 and 27 (re-verified against current source) still name the student's own session and kit ('The shapes you drew are still in the session' / 'The kit you grow on your own is the one that counts'), unchanged by the 2026-08-25 lean pass. Not a violation — the carve-out fires, and it is already documented and dated. Listed in accept_notes_found.",
       "fix_hint": null,
       "blocking": false
     },
@@ -57,7 +67,7 @@
       "rule_index": 1,
       "rule_lead": "Mood contract named.",
       "verdict": "PASS",
-      "evidence": "Trace (regenerated 2026-08-19, single file-level phase since no `## Phase` headers): phase mood_score 9, close mood_score 9, close.is_me_rating 9. Beat classifies as TEACHING (recognition + collaboration-boundary + handoff prompt + soil recap + Ralph story + close, all landing content, none pure setup/launch) — mood-floor 8+ applies and is cleared with margin. Sentence stating honored-vs-flattened: this beat lands the student in forward-tilt competence-as-posture without triumphalism, and sets up nothing further downstream (it's the terminal core beat) — matches the M6 'practitioner fluency' contract exactly rather than flattening it into either autonomous-agent hype or a flat recap.",
+      "evidence": "Sim trace (persona.json, content_sha 1f14f5c7bff07513): phase mood_score 9, close mood_score 9, close.is_me_rating 9. Trace's persona narrative was verified against the CURRENT body this session — three of its verbatim quotes ('the loop feeding itself, each session leaving the next one sharper', 'Practitioners see levers first.', slide 4 header 'You make agentic happen') grep-confirmed present at their cited lines, so the trace describes the live post-lean-pass text despite a stale-looking `generated_at` field (flagged in notes, non-blocking). Beat classifies as TEACHING (recognition + collaboration-boundary + handoff prompt + soil recap + Ralph story + close, all landing content, none pure setup/launch) — mood-floor 8+ applies and is cleared with margin. Honored-vs-flattened: this beat lands the student in forward-tilt competence-as-posture without triumphalism and sets up nothing further downstream (terminal core beat) — matches the M6 'practitioner fluency' contract rather than flattening it into autonomous-agent hype or a flat recap. The lean pass's trims (merged hoped-destination sentence, cut moral-bullet padding) tightened delivery without touching the mood register.",
       "fix_hint": null,
       "blocking": true
     },
@@ -66,7 +76,7 @@
       "rule_index": 2,
       "rule_lead": "Epistemic mood ≠ punitive mood.",
       "verdict": "PASS",
-      "evidence": "Line 15, 'Not the agent writing its own skills without you in the room' and line 17-19's boundary-drawing ('The agent's evidence stops at the disk... the decision about which proposals to act on is grounded in evidence the agent does not have') are boundary/scope statements, not shame. No 'you got this wrong' framing anywhere in the body; the closest candidate line, 'the plan it generates is grounded in the evidence on disk' (line 17), reads as a capability limit stated plainly, not a failure charged to the student. Flavour throughout is competence-as-posture (line 473 of the strategy doc's own mood line), matching not-knowing-as-open-question rather than having-done-wrong.",
+      "evidence": "Current lines 15-19 (post lean-pass, re-read fresh): 'Not the agent writing its own skills without you in the room. You might have hoped that was the destination at the start of this training; at the close of M6, you know it is not. Agents that build agents is a collaboration in the same shape as everything else here. Claude proposes, you steer.' ... 'Build the flywheel to run exactly that far. Let the agent run as far as it can on its own evidence, and stop at the moment your judgement is the input that matters. Anything further pretends the agent has access it does not have.' Boundary/scope statements throughout, no 'you got this wrong' framing. The cut sentence ('That is the practitioner shape.') removed a restated claim, not a mood signal — flavour is unchanged: competence-as-posture, not-knowing framed as an open boundary rather than a failure charged to the student.",
       "fix_hint": null,
       "blocking": false
     },
@@ -75,7 +85,7 @@
       "rule_index": 3,
       "rule_lead": "Lead with discipline, not failure mode.",
       "verdict": "PASS",
-      "evidence": "Title 'Agents that build agents' and slide headers ('The agent stops where your judgement begins', 'You make agentic happen') are discipline-named, not failure-named. The one failure-adjacent phrase, 'Not the agent writing its own skills without you in the room' (line 15), functions as the negative case a discipline (collaboration, not autonomy) addresses — exactly the licensed shape the rule describes, not the title or lead.",
+      "evidence": "Title 'Agents that build agents' and slide headers ('The agent stops where your judgement begins', 'You make agentic happen') are discipline-named, not failure-named, unchanged by the lean pass. The one failure-adjacent phrase, 'Not the agent writing its own skills without you in the room' (line 15), functions as the negative case a discipline (collaboration, not autonomy) addresses — the licensed shape the rule describes, not the title or a slide lead.",
       "fix_hint": null,
       "blocking": false
     },
@@ -84,7 +94,7 @@
       "rule_index": 4,
       "rule_lead": "Strategy-fidelity check.",
       "verdict": "PASS",
-      "evidence": "Cross-checked against `content-strategy-agentic-engineering-101.md` M6 section (read this session, lines 447-564). (a) Front-run check: lecture does not claim an in-module second skill was authored — it says the map 'named the judgement,' consistent with the strategy doc's 2026-08-01 authoring-sequence cut ('no in-module authoring... The next skill is authored from it after the module, on a real run'), and the M6 skills table confirms M6 'Ships the handoff prompt' with authoring happening post-module. (b) Big Idea fidelity: 'the flywheel... the loop feeding itself' matches the strategy doc's third phase of test → learn → encode and 'the loop is the shippable thing; artifacts are downstream' almost verbatim in spirit. (c) Module-to-module arc: this is the training's terminal core beat (strategy doc: 'Core (M1–M6)... is a legitimate close on its own'); the lecture's close ('The training closes. The flywheel does not') matches that directly-not-triumphant closing register rather than manufacturing an M7/M8 tease, which the strategy doc explicitly wants avoided for a core-only cohort. (d) Mood-doesn't-resolve-early: N/A in the strict sense (no downstream core module to preempt), and the new 'You make agentic happen' slide (Antti-directed, 2026-08-15, per this file's own maintainer note) reinforces closure rather than pre-empting anything — it recaps a training-wide throughline at the training's own close, which is the licensed placement, not an early resolution of a future beat.",
+      "evidence": "Re-checked against `content-strategy-agentic-engineering-101.md` M6 section this session. (a) Front-run check: lecture does not claim an in-module second skill was authored — 'the map... named the judgement', consistent with the strategy doc's authoring-sequence cut (skill authored post-module, on a real run). (b) Big Idea fidelity: 'the flywheel... the loop feeding itself' matches the strategy doc's test → learn → encode phase. (c) Module-to-module arc: this is the training's terminal core beat; the close ('The training closes. The flywheel does not') matches the strategy doc's 'core M1–M6 is a legitimate close on its own' register rather than manufacturing an M7/M8 tease. (d) Mood-doesn't-resolve-early: N/A in the strict sense (no downstream core module to preempt); the 'You make agentic happen' soil slide reinforces closure rather than pre-empting anything. The 2026-08-25 lean pass (merged hoped-destination sentence, trimmed Ralph's moral bullet to its first line) is a compression pass on prose already covering these beats — it drops no claim the strategy-fidelity check depends on; the maintainer note explicitly logs the trimmed sentences as restating bullets 1 and 3, not as removing distinct content.",
       "fix_hint": null,
       "blocking": true
     },
@@ -93,7 +103,7 @@
       "rule_index": 16,
       "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
       "verdict": "PASS",
-      "evidence": "The forcing function (build a handoff prompt from the session's shapes) is enacted inside `curriculum/prompts/agents-that-build-agents-handoff.md`'s fence ('Write me a handoff prompt I can save and run... Carry the shapes we just named... For each shape: study the work, pick the check that fits, author through conversation, push back, invoke to verify'), not explained in the body. Body line 23 ('Ask the agent to turn them into a prompt that builds the kit') is a lead-in, not a mechanism description — cutting it would not collapse the pedagogy, cutting the fence's content would.",
+      "evidence": "The forcing function (build a handoff prompt from the session's shapes) is enacted inside `curriculum/prompts/agents-that-build-agents-handoff.md`'s fence, not explained in the body. Body line 23 ('Ask the agent to turn them into a prompt that builds the kit') is a lead-in, not a mechanism description — cutting it would not collapse the pedagogy, cutting the fence's content would. The maintainer block's own §47 note confirms this section was untouched by the 2026-08-25 lean pass ('handoff section... untouched per their contracts').",
       "fix_hint": null,
       "blocking": true
     },
@@ -102,7 +112,7 @@
       "rule_index": 27,
       "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
       "verdict": "PASS",
-      "evidence": "No 'discuss with', 'share with your neighbor', 'take N minutes and compare' or any authored pause/conversation cue anywhere in the body (lines 1-56). The closest candidate, the M8-strategy-doc's 'opinion/fear/hope round,' does not appear in this file at all — that beat belongs to a different module. Every sentence in this file is about the work (the handoff prompt, the flywheel, Ralph, the close), never about pacing or comparing with peers.",
+      "evidence": "Grepped the current body (lines 1-56) for authored conversation/pause cues this session (`discuss|share|room|pair|neighbor|trainer`, case-insensitive) — two hits, both non-cue: line 15 'in the room' (a boundary statement, 'not the agent...without you in the room', not an instruction to converse) and line 33 'Share and learn together.' (a vision/soil bullet naming a training-wide theme, backed as a `vision`-type claim in the backing block, not a directed 'talk to your neighbor' cue). No 'discuss with', 'take N minutes and compare', or any authored pause/conversation instruction anywhere in the file. Every sentence is about the work (the handoff prompt, the flywheel, Ralph, the close).",
       "fix_hint": null,
       "blocking": false
     },
@@ -112,21 +122,32 @@
       "judge_owned": true,
       "rule_lead": "Trigger — is this file workshop-shaped?",
       "verdict": "N/A",
-      "evidence": "No beat in this file has an output that belongs to the group rather than a participant — it is a solo-read closer lecture ending in an individually-authored handoff prompt. check_workshop.md does not apply.",
+      "evidence": "The body view's `group_beat_markers` signal reads true, but grepping the raw source for `share|room|pair|discuss|peer|group|neighbor|trainer` this session surfaces only two hits (line 15 'in the room', line 33 'Share and learn together.'), both vision/soil-layer bullets about the training's own values, not a beat whose output belongs to a group. No beat in this file has an output that belongs to the group rather than a participant — it is a solo-read closer lecture ending in an individually-authored handoff prompt. check_workshop.md does not apply; the signal is a keyword false-positive.",
       "fix_hint": null,
       "blocking": false
     }
   ],
   "mood_summary": {
-    "phase_scores": [9],
+    "phase_scores": [
+      9
+    ],
     "close_score": 9,
     "any_below_8": false,
     "stealing_the_mood": []
   },
   "notes": [
-    "Trace regenerated this session (content_sha changed b190a1e78c5a17b6 → 1f14f5c7bff07513 since the cached 2026-08-03 trace; body has moved substantially since then — reworded lede, compressed handoff-prompt lead-in, and the new 'You make agentic happen' soil slide added 2026-08-15). Cache written back to curriculum/evals/sim-cache/ae101--lecture--agents-that-build-agents.persona.json.",
-    "Teaching moment lands (no check_strategy_tie_in rule_index, per template): the handoff-prompt teaching moment is structurally robust across skill variation — the fence in curriculum/prompts/agents-that-build-agents-handoff.md self-anchors its own referent ('This session we drew the recurring shapes in my work. The shapes are in your context right now.') independent of the body's now-compressed lead-in ('The shapes you drew are still in the session'), so the body's compression does not create execution fragility even though it reads slightly thinner to a human on a cold read outside the warm same-session placement this lecture is designed for. Not a defect; recorded because it's the one place a future compression pass could actually break something.",
-    "check_pedagogy.md §9b (repetition dosage) and the strategy doc's M6/M7/M8 skills table are pedagogy-class's primary territory, not storytelling's — flagging only as a pointer: the 'You make agentic happen' slide was relocated from the-map-filled-in.md per this file's own maintainer note (2026-08-15); a technical/pedagogy pass should confirm the-map-filled-in.md's maintainer block was updated in the same edit to stop claiming that slide as its own, per §9b's 'every maintainer note recording the OLD earning point becomes false → correct in the SAME edit.' Not evaluated here — outside storytelling's lane."
+    "check_prompts.md and check_workshop.md's numbered rules appear in the class brief (both compendiums carry `eval_classes: storytelling` in frontmatter, alongside writing/technical for prompts and pedagogy for workshop) but the story judge template's own 'Evaluate' + 'Completeness contract' sections never name a check_prompts.md rule under 'Specific judgments storytelling owns', and check_workshop.md's own header text gives the whole-compendium scope-N/A as its worked example. Following the prior validated instance for this exact file (12 rows, 0 from check_prompts.md, 1 judge_owned N/A from check_workshop.md — audited PASS through @1abb84c6 before a new check_lectures rule changed the shape), story emits 0 rows for check_prompts.md here too: its 48 rules are prompt-craft/mechanics, primary-owned by writing and technical, and this file's one prompt block is fully covered from story's own lens by check_lectures §6 (trainer-show-and-tell vs student-run) above.",
+    "Sim trace's `generated_at` field reads 2026-08-19, but its persona narrative verbatim-matches text that only exists after the 2026-08-25 lean pass (the merged lede sentence, the trimmed Ralph bullet) — grep-confirmed against the live file before use as evidence. Content is current; the timestamp field is stale bookkeeping on the cache file itself, not a defect in the lecture. Non-blocking; flagging so a future trace-hygiene pass fixes the field when it next regenerates for another reason.",
+    "check_pedagogy.md §9b (repetition dosage) and the strategy doc's M6/M7/M8 skills table are pedagogy-class's primary territory, not storytelling's — carried forward as a pointer, not re-verified this session: the 'You make agentic happen' slide was relocated from the-map-filled-in.md per this file's own maintainer note (2026-08-15); a technical/pedagogy pass should confirm the-map-filled-in.md's maintainer block was updated in the same edit to stop claiming that slide as its own, per §9b's 'every maintainer note recording the OLD earning point becomes false → correct in the SAME edit.' Not evaluated here — outside storytelling's lane."
+  ],
+  "accept_notes_found": [
+    "L59: Lean pass (2026-08-25, Antti-directed M3/M6 shorten, free hands) — what-this-is-not slide merged, Ralph moral bullet trimmed; do not restore.",
+    "L61: Handoff-prompt forcing function failure mode + escape hatch (check_pedagogy.md §47, added 2026-08-20).",
+    "L63: §6 carve-out, the answer must be theirs (checked 2026-08-20) — the prompt is student-run by design; do not re-flag.",
+    "L66: Emphasis pass (2026-07-09, Antti-directed 'go very lightly on the bold') — bold stripped from body.",
+    "L68: Slides-only pass (2026-07-02, unaudited) — prose converted to lede + slides + prompt section.",
+    "L70: Lede re-anchor (2026-07-03) — re-sequenced after The map filled in.",
+    "L80: Soil slide — You make agentic happen (2026-08-15, Antti-directed) — relocated from the-map-filled-in.md, title/bullet/provenance shape specified."
   ],
   "blocking_findings_count": 0,
   "todos_count": 1

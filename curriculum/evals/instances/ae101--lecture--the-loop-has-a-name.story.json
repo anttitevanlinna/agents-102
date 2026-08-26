@@ -1,7 +1,8 @@
 {
   "class": "storytelling",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/the-loop-has-a-name.md",
-  "body_sha": "b9674103ea8f368065662bb16658196534e7fb4040b612702eddf1001c162ffa",
+  "body_sha": "768a9f384739be43fc10635fa37ec7095ea94d62ace42dc49b99aff0226902a8",
+  "shape_hash": "334690d1473a541c",
   "verdict": "PASS",
   "training": "ae101",
   "module_mood_contract": "practitioner fluency — 'I know how to test, I know how to learn, I know how to encode.' Not confidence-as-performance; competence-as-posture.",
@@ -12,7 +13,7 @@
       "rule_index": 1,
       "rule_lead": "Meta-frame lectures = closers, not openers.",
       "verdict": "PASS",
-      "evidence": "Harm this rule prevents: a naming/recognition lecture told before the student has lived the pattern reads as an abstract claim instead of recognition, and steals its own payoff. Not present here — maintainer block: '12–15 min closing lecture for AE101 M6... closes core AE101'; sim trace confirms it fires directly after the spot-gaps-build-the-loop exercise and its Debrief, and the lecture's own opening move ('Look at what you have shipped') only works because the checks it names were just ranked minutes earlier by the student.",
+      "evidence": "Harm this rule prevents: a naming/recognition lecture told before the student has lived the pattern reads as an abstract claim instead of recognition, stealing its own payoff. Not present here — maintainer block line 49: '12–15 min closing lecture for AE101 M6 ... closes core AE101'; the file fires directly after the spot-gaps-build-the-loop exercise and its Debrief per the strategy doc's M6-in-detail section (Debrief is 'simple round ... M6 closes the core'), and the lecture's own opening move ('Look at what you have shipped') only works because the checks it names were just ranked minutes earlier by the student.",
       "fix_hint": null,
       "blocking": false
     },
@@ -30,7 +31,7 @@
       "rule_index": 3,
       "rule_lead": "No cross-module sequencing in lecture bodies.",
       "verdict": "PASS",
-      "evidence": "Harm this rule prevents: hardcoded module bridges ('M3 reads this file') turn a lecture into a non-reusable, non-relaced piece of shared library. Body carries five M5/M6 refs (lines 7, 9, 20, 26, 32: 'The thing you built at M5', 'M5 used verifier and gate...', 'your verifier from M5, scaled', 'the drift shape you saw at M5', 'the encode loop you ran at M6') — all are recognition of what the SAME module's own exercise just built, not sequencing pointers to a different file. Maintainer block names this explicitly as the check_lectures §3 consolidation carve-out (arc/closer lecture whose SUBJECT is naming what M5-M6 built). Carve-out applies cleanly; harm absent.",
+      "evidence": "Harm this rule prevents: hardcoded module bridges ('M3 reads this file') turn a lecture into non-reusable, non-replaceable shared library. Grep confirms M5/M6 refs at lines 7, 9, 20, 26, 32 (unchanged by the 2026-08-25 edit, which touched only lines 27 and 31 — neither an M5/M6 reference) — all are recognition of what the SAME module's own exercise just built, not sequencing pointers to a different file. Maintainer block (line 49) names this explicitly as the check_lectures §3 consolidation carve-out (arc/closer lecture whose SUBJECT is naming what M5-M6 built). Carve-out applies cleanly; harm absent.",
       "fix_hint": null,
       "blocking": false
     },
@@ -39,7 +40,7 @@
       "rule_index": 4,
       "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
       "verdict": "PASS",
-      "evidence": "Five headers checked: 'Eval' (single-word named-practice takeaway, carve-out applies), 'One primitive, placed wherever there's a bar' (claim the body supports: 'The shape fires on any workflow with a quality bar'), 'The eval primitive scales unchanged' (body: 'The shape doesn't change when the org gets big' — supports 'unchanged' as a claim about shape, not an unsupported universal about outcomes), 'The primitive that runs on cadence' (names the concept), 'Why the loop survives the model' (body argues exactly this via reference/plan/verifier/encode-as-stance-not-tooling). No two slides share a header. No em-dashes, no pedagogy-register headers ('The move', 'The question'). Closest-to-violating candidate is 'scales unchanged' for the universal-word clause, and it stays inside because the body's own claim is scoped to shape, not magnitude.",
+      "evidence": "Five headers unchanged by this edit (grep '^## ' confirms): 'Eval' (single-word named-practice takeaway, carve-out applies), 'One primitive, placed wherever there's a bar' (claim the body supports: 'The shape fires on any workflow with a quality bar'), 'The eval primitive scales unchanged' (body: 'The shape doesn't change when the org gets big' — scoped to shape, not an unsupported universal about outcomes), 'The primitive that runs on cadence' (names the concept), 'Why the loop survives the model' (body argues exactly this via reference/plan/verifier/encode-as-stance-not-tooling, now trimmed of the dated Opus-version aside but the argument itself is untouched). No two slides share a header, no em-dashes (grep confirms 0 in body), no pedagogy-register headers.",
       "fix_hint": null,
       "blocking": false
     },
@@ -48,7 +49,16 @@
       "rule_index": 5,
       "rule_lead": "A slide's BODY is size-bounded (~210 readable words AND ≤6 bullets).",
       "verdict": "PASS",
-      "evidence": "Mechanically checked. Command: `node curriculum/evals/scripts/check-slide-size.js --file curriculum/lectures/the-loop-has-a-name.md --report` (run from repo root). Output: 'words bul slide header ... 196 3 The primitive that runs on cadence ... 182 3 Why the loop survives the model ... 161 4 Eval ... 119 3 The eval primitive scales unchanged ... 92 2 One primitive, placed wherever there's a bar ... files: 1 slides: 5 limits: 210 words / 6 bullets ... oversized: 0 ... ✓ every slide is within limits'. All five slides under both the word and bullet ceilings.",
+      "evidence": "Mechanically checked, run fresh this session: `node scripts/check-slide-size.js --file curriculum/lectures/the-loop-has-a-name.md --report` (repo root). Real output: 'The primitive that runs on cadence' 172w/3bul; 'Why the loop survives the model' 167w/3bul; 'Eval' 161w/4bul; 'The eval primitive scales unchanged' 119w/3bul; 'One primitive, placed wherever there's a bar' 92w/2bul. Summary line: 'files: 1  slides: 5  limits: 210 words / 6 bullets ... oversized: 0 ... ✓ every slide is within limits.' All five slides comfortably under both ceilings; the 2026-08-25 trims shortened two slides further (both already well inside the limit before the trim).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 6,
+      "rule_lead": "A prompt inside a lecture is a trainer show-and-tell, never a room follow-along.",
+      "verdict": "N/A",
+      "evidence": "Rule binds `{{prompt:<key>}}` / inline `**Prompt**` fenced blocks inside `curriculum/lectures/**`. Body view signal `has_prompt_blocks: false`, `has_code_fences: false`; direct grep for fenced code blocks in the raw file returns 0. This lecture carries no prompt of any kind — nothing for the rule's trainer-vs-room distinction to apply to.",
       "fix_hint": null,
       "blocking": false
     },
@@ -57,7 +67,7 @@
       "rule_index": 16,
       "rule_lead": "Forcing functions stay, scripted reactions go; forcing functions live in prompts, not body prose.",
       "verdict": "N/A",
-      "evidence": "Rule binds session exercises with fenced, copy-this prompts that carry the load-bearing move. Grep for fenced code blocks in the file returns zero matches — this is a pure closing lecture with no student action to fence, so there is no forcing function to check for mislocation. Harm (a forcing function accidentally left loose in body prose, skippable by a speed-runner) cannot occur where no forcing function exists.",
+      "evidence": "Rule binds session exercises with fenced, copy-this prompts carrying the load-bearing move. Grep for fenced code blocks in the file returns 0 (confirmed fresh: `grep -c '```' curriculum/lectures/the-loop-has-a-name.md` → 0) — this is a pure closing lecture with no student action to fence, so there is no forcing function that could be mislocated into body prose.",
       "fix_hint": null,
       "blocking": false
     },
@@ -66,7 +76,7 @@
       "rule_index": 27,
       "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room outside text.",
       "verdict": "PASS",
-      "evidence": "Harm this rule prevents: authored conversation cues ('discuss with your neighbor', pause-cues) collapse trainer authority over pacing and read as scripted theatre in a room. Grep of the student-facing body (lines 1-36, above the maintainer fence) for discuss/share/pause/turn-to/talk-to/'the room' returns zero hits — the only 'the room' mentions live in the maintainer's Lecture-meta and Watch-fors notes (lines 47, 110), which are trainer-facing, not student body text. Body stays entirely on the work (naming evals, the Intercom numbers, scheduling primitives, the stance argument).",
+      "evidence": "Harm this rule prevents: authored conversation cues ('discuss with your neighbor', pause-cues) collapse trainer authority over pacing and read as scripted theatre. Fresh grep of the student-facing body (lines 1-36, above the maintainer fence) for discuss/share/pause/turn-to/talk-to/'the room' returns zero hits. Body stays entirely on the work (naming evals, the Intercom numbers, scheduling primitives, the model-independence argument); the two 2026-08-25 trims removed prose sentences, not conversation cues, so this verdict is unaffected by the edit.",
       "fix_hint": null,
       "blocking": false
     },
@@ -75,7 +85,7 @@
       "rule_index": 1,
       "rule_lead": "Mood contract named / mood-floor 8+ at teaching beats.",
       "verdict": "PASS",
-      "evidence": "Harm this rule prevents: a teaching beat that reads flat or compliance-shaped when the module's contract demands practitioner fluency. Regenerated Class A trace (whole body = one teaching beat, no setup-only sub-beats) scores mood_score 9 for the phase and close_score 9, is_me_rating 9 — all above the 8+ ship bar, none at the 7 facilitator-premium floor. Trace note: only soft spot is slide 3's Intercom numbers staying one enthusiastic trainer away from vendor-plug feel, which the file's own Watch-fors already flags as a delivery-pacing note, not a text defect.",
+      "evidence": "Harm this rule prevents: a teaching beat that reads flat or compliance-shaped when the module's contract demands practitioner fluency. Regenerated Class A trace (whole body = one teaching beat) scores mood_score 9 for the phase and close_score 9, is_me_rating 9 — all above the 8+ ship bar. The trace explicitly re-walked both 2026-08-25 trims and found neither weakens the beat: the cadence clause was rhetorical restatement, and the cut Opus-version line was itself a minor self-dating wrinkle whose removal is a small net gain. Only soft spot flagged (same as before the edit) is slide 3's Intercom numbers staying one enthusiastic trainer away from vendor-plug feel — already named in the file's own Watch-fors, not a text defect.",
       "fix_hint": null,
       "blocking": false
     },
@@ -84,7 +94,7 @@
       "rule_index": 2,
       "rule_lead": "Epistemic mood ≠ punitive mood.",
       "verdict": "PASS",
-      "evidence": "Harm this rule prevents: an 'unease' or challenge beat reading as 'I messed up' shame instead of 'I'd like to know and can't' not-knowing. This module's mood is fluency, not unease, but the adjacent risk is the model-replacement line (line 31, 'The specific Claude you used today will be replaced') landing as anxiety-inducing rather than epistemic. Trace: persona feels 'a small jolt... followed by relief at The work gets faster. The method does not' — the line resolves into permission, not shame or dread. Watch-fors §5 explicitly directs 'Flat epistemic candour, no sales varnish' for this exact beat, confirming the register is deliberate.",
+      "evidence": "Harm this rule prevents: a challenge beat reading as shame ('I messed up') instead of not-knowing ('I'd like to know and can't'). The load-bearing line here is line 31, 'The specific Claude you used today will be replaced, probably within months' — UNCHANGED by the 2026-08-25 edit (only the following sentence was trimmed). Trace: the line produces 'a small jolt ... followed by relief at The work gets faster. The method does not' — resolves into permission, not dread. Watch-fors (line 113) explicitly directs 'Flat epistemic candour, no sales varnish' for this exact beat, confirming the register is deliberate and untouched by the trim.",
       "fix_hint": null,
       "blocking": false
     },
@@ -93,7 +103,7 @@
       "rule_index": 3,
       "rule_lead": "Lead with discipline, not failure mode.",
       "verdict": "PASS",
-      "evidence": "Harm this rule prevents: titling/heading a teaching beat by the mistake it corrects rather than the practice it builds, which frames the student as already-wrong. All five headers and the title name a positive discipline or artifact ('eval', 'one primitive... placed', 'scales unchanged', 'runs on cadence', 'survives the model') — none lead with a failure word (no 'drift', 'rot', 'blind spot' as a header). The closest failure-adjacent language ('plausible-but-wrong is the default failure mode', line 32) is one clause inside a body sentence building toward the positive discipline (verifier), not a lead.",
+      "evidence": "Harm this rule prevents: titling a teaching beat by the mistake it corrects, framing the student as already-wrong. All five headers (unchanged by this edit, see check_lectures §4 evidence) name a positive discipline or artifact — none lead with a failure word. The closest failure-adjacent language ('plausible-but-wrong is the default failure mode', line 32) is one clause inside a body sentence building toward the positive discipline (verifier), not a lead, and this line was not touched by the 2026-08-25 edit.",
       "fix_hint": null,
       "blocking": false
     },
@@ -102,8 +112,8 @@
       "rule_index": 4,
       "rule_lead": "Strategy-fidelity — no front-running downstream teaching, module arc respected, Big Idea fidelity, mood resolves without stealing.",
       "verdict": "PASS",
-      "evidence": "Harm this rule prevents: a lecture claiming a teaching moment or resolution that belongs to a different module/lecture, or asserting a Big Idea the strategy doc doesn't license. Checked against `content-strategy-agentic-engineering-101.md` §'M6 in detail': (a) Big Idea fidelity — strategy's scripted framing ('your verifier is an eval; your judge is an eval; your gate is an eval... Practitioners call them judges when LLM-based, verifiers when deterministic, gates when placed in CI') is rendered faithfully in body lines 7-9, with the naming-as-definition-not-survey stance from the backing block's 2026-08-01 decision correctly NOT restored as a claimed convergence; the Ramp anchor case named in strategy is absent from body, but the maintainer block already records this as an intentional, dated decision (orphaned stamp, kept for provenance) — an existing accept-note, not a fresh foul. (b) Scheduled-agents section matches strategy's 'callout, not an exercise' instruction verbatim in shape (three fits named, explicit 'You do not have to wire it today'). (c) Module arc — maintainer block's stated closer chain (loop-has-a-name → the-map-filled-in → agents-that-build-agents) matches the strategy doc's Debrief section, which routes the arc-recognition work to the Human close + 'the-map-filled-in', consistent with this file naming no specific next lecture. (d) Mood resolution — this file resolves its OWN arc (the loop-survives-the-model permission beat) completely (trace close_score 9, is_me 9) while explicitly declining to claim the full M6 close, leaving that to the chain's later files ('Do not restore [a pointer to a named next beat]; the forward-lean... is thematic, not a tee') — earned resolution at this file's own scope, not a stolen or premature resolution of the larger arc.",
-      "fix_hint": null,
+      "evidence": "Read fresh against `content-strategy-agentic-engineering-101.md` § M6-in-detail this session. (a) Big Idea fidelity — strategy's 'Evals, named and explained' framing ('your verifier is an eval; your judge is an eval; your gate is an eval ... Practitioners call them judges when LLM-based, verifiers when deterministic, gates when placed in CI') is rendered faithfully in body lines 7-9, correctly NOT restored to a claimed-convergence 'practitioners say' framing per the backing block's 2026-08-01 decision. Anchor cases: strategy names both Ramp Dojo and Intercom; body carries only Intercom — an EXISTING, dated accept-note ('The geoffintech stamp above is orphaned ... kept for provenance', maintainer line 119), not a fresh foul, and unrelated to this edit. (b) Scheduled-agents section matches strategy's 'callout, not an exercise' instruction in shape (three fits named, 'You do not have to wire it today' — the exact permission phrase strategy specifies survives the 2026-08-25 trim, only its trailing elaboration was tightened). (c) Module arc — maintainer's stated closer chain (loop-has-a-name → the-map-filled-in → agents-that-build-agents) is consistent with strategy's routing of arc-recognition to the Human close. (d) Mood resolution — this file resolves its own arc completely (trace close_score 9) without pre-announcing a specific next lecture, correct for the first beat of a multi-file close. ONE OPEN QUESTION surfaced this session, not caused by the diff and not blocking: the strategy doc's M6 'In-class beats' list a dedicated 'Worktrees callout at M6 scheduled-agents section ... anchored on Cherny's single biggest productivity unlock ... includes the multisession permission line one more time' (strategy doc line ~493). A corpus grep (this lecture, the M6 module file `spot-gaps-build-the-loop.md`, and the M6 exercise file) finds no worktrees/Cherny/'single biggest productivity' text anywhere in M6 material — only a DIFFERENT, already-logged cut ('Steering the wiring' lecture, 2026-07-05, about worktree-evidence plumbing, not this recognition beat). Harm is low (the beat is explicitly a minor 'recognition, not novelty' addendum, not core to the cadence slide's own teaching moment, and worktrees are a different primitive from scheduled agents), so this is NOT filed as a REVISE — recorded as a todo for the maintainer to confirm whether the beat was cut/relocated or is a genuine gap.",
+      "fix_hint": "If the strategy doc's worktrees-callout beat is still intended, it wants one short paragraph on the 'primitive that runs on cadence' slide (or the M6 module file's own scheduled-agents prose) naming parallel worktrees + the multisession permission line — not a fix owed by this pass, a maintainer confirmation.",
       "blocking": false
     },
     {
@@ -143,6 +153,19 @@
     "stealing_the_mood": []
   },
   "blocking_findings_count": 0,
-  "todos_count": 0,
-  "notes": "Teaching-moment-lands (no rule_index, per completeness contract): PASS. Regenerated trace confirms all three carried takeaways land — eval-as-umbrella-word, the M2 dashed-checking-loop closing solid (trace calls this 'the best line in the lecture'), and the stance-survives-the-model permission beat, which the trace names as the lecture's emotionally load-bearing moment and the thing the persona will actually repeat to a colleague. Two named judgments in the task brief map into check_prompts and check_workshop, both of which are read-on-demand compendiums for this file but neither triggers: `check_prompts` — grep for fenced code blocks in the body returns zero; there is no student-copied prompt content in this lecture to misplace a forcing function into (folded into check_pedagogy §16 N/A above). `check_workshop` — no beat in this file has an output that belongs to a group rather than an individual; it is a lecture with no room-scale adjudication, so the compendium does not fire at all (not even as an N/A row — its trigger clause requires a group-owned artefact, absent here). Sim-cache staleness: the cached trace's content_sha (b811c97f...) did not match the current file's body_sha (5098cc86...) — the maintainer block confirms the body was edited today (naming bullet's trailing clause + the 'Reference because the goal drifts' bullet). Regenerated a fresh Class A trace via subagent per `simulation.md`, merged it into the cache file (overwritten in place), and judged against the fresh trace. Fresh trace's only two confusion_flags are both sub-blocking micro-friction (the added naming clause momentarily requires re-sorting which M5 artifact is which; 'send-off' vocabulary density on slide 4) — neither reaches ambiguous_instructions or under_scaffolded_phases in the trace's own close block, and neither maps to a REVISE-worthy compendium rule."
+  "todos_count": 1,
+  "notes": "Diff audited this run (pin 1abb84c6..HEAD, staleness reason diff-region): the maintainer's 2026-08-25 'Lean pass' trimmed exactly two clauses (cadence-slide's closing dependent clause on lines 27; the 'Opus 4.7 will be Opus 4.8' dated aside on line 31, folded into a durable 'Each replacement will be better' phrasing), both carrying a dated, explicit 'Do not restore' accept-note (line 39). Verified both trims against every owned rule above; neither introduces or resolves any story-class concern — they are pure length/pacing tightening, and if anything the cut Opus-version line removed a self-dating wrinkle the slide's own argument (models get replaced, the method doesn't) warns against. Teaching-moment-lands (no rule_index, per completeness contract): PASS. Regenerated trace confirms all three carried takeaways still land — eval-as-umbrella-word, the M2 dashed-checking-loop closing solid, and the stance-survives-the-model permission beat — unaffected by the trims. check_prompts.md (48 rules) and check_workshop.md (16 rules) were in the derived brief but are OUT OF SCOPE for the storytelling template, which lists neither compendium under 'compendiums in scope' or 'specific judgments storytelling owns'; no rows emitted for either, per the dispatch preamble's instruction not to reach into a sibling class's rules. Confirmed both would be structurally N/A anyway: check_prompts needs a prompt block (zero fenced code in this file, signal has_prompt_blocks:false) and check_workshop needs a beat whose output belongs to a group rather than a participant (this is a solo-read closing lecture with no participant-facing artifact at all; the view.json's group_beat_markers:true signal is a false positive from ordinary vocabulary — 'the team's shared kit' (line 15) and 'a human team that set the thresholds' (line 20) are illustrative CI/org references, not a room-scale beat, confirmed by direct re-grep of lines 1-36 for group/team/room/together/adjudicate). check_pedagogy.md's other 65 rules are the pedagogy judge's primary ownership per this template's explicit scope split; only §16 and §27 are storytelling-owned and both are rowed above. The one todo: check_strategy_tie_in §4's evidence above surfaces a possible gap between the strategy doc's M6 'In-class beats' (a worktrees + Cherny-attribution callout on the scheduled-agents beat) and the shipped M6 material (lecture, module, exercise) — not caused by this diff, low-harm, flagged for maintainer confirmation rather than filed as a finding.",
+  "accept_notes_found": [
+    "L39 Lean pass (2026-08-25, Antti-directed M3/M6 shorten, free hands) — cuts the Opus 4.7/4.8 line and condenses the cadence-bullet's trailing clause. 'Do not restore.' Directly covers both lines this pass's diff touched; both trims verified compliant.",
+    "L41 Emphasis pass (2026-07-09, Antti-directed 'go very lightly on the bold') — bold reduced to one handle across all five slides.",
+    "L43 Family B judged 2026-07-03 — B-star durability PASS, provenance note.",
+    "L45 Slides-only pass (2026-07-02, unaudited) — the ~950-word prose-to-slides conversion record; notes the deliberate cut of 'the word carries more weight in the vendor literature than it deserves.'",
+    "L47 Quality line — compendium-audited 2026-08-24, all seven classes PASS at pin 1abb84c6 (this run supersedes it at the current HEAD).",
+    "L79-80 Source stamps (curran-2x CAVEAT, cc-scheduling-primitives ATTESTED) — research-claims territory, not story's lane; noted only for completeness.",
+    "L87-104 Stance block + Flagged OODA entries (2026-08-01/02 decisions) — the naming-as-definition-not-survey decision and the ATTESTED scheduling stamp, both already reflected correctly in body per check_strategy_tie_in §4 evidence above.",
+    "L117 Edits (2026-07-02) — slide 1's map-placement clause and slide 4's convergence-to-synthesis re-hedge.",
+    "L119 Self-report scoping / orphaned Ramp(geoffintech) stamp — explicitly covers the Intercom-only, no-Ramp gap checked under check_strategy_tie_in §4.",
+    "L121 Cross-file stamp pointer — 'Do not restore [the convergence] phrase' re: slide 4's triad claim; confirmed still absent from current body.",
+    "L125 The closing kicker names no next lecture — explains why the kicker reads 'The loop feeds itself' rather than pointing at 'agents-that-build-agents'; matches current body's actual closing line."
+  ]
 }

@@ -1,18 +1,20 @@
 {
   "class": "storytelling",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/threat-model-with-stride.md",
-  "body_sha": "889ad91c28884c39728a1dbdd3990a94fd30fc2b4c244c6d2d220de4d751a839",
-  "verdict": "PASS",
+  "body_sha": "5514740991136695b2738eb72c74d71bf8b05ab06b9f57d12e7366a3e3aa91cd",
+  "shape_hash": "04c8bbd89721df08",
+  "verdict": "PASS_WITH_TODOS",
   "training": "ae101",
   "module_mood_contract": "earned trust, deepening (M3 Ex2 of 3) — student leaves with a real security call made under named pressure, not a compliance checkbox",
-  "trace_status": "regenerated",
+  "trace_status": "cached",
   "rules_evaluated": [
     {
       "compendium": "check_lectures.md",
       "rule_index": 1,
       "rule_lead": "Meta-frame lectures = closers, not openers.",
       "verdict": "N/A",
-      "evidence": "File is an exercise (Phase 1/2/3 + prompts), not a lecture — no meta-frame narrative section exists to place.",
+      "evidence": null,
+      "na_reason": "File is an exercise, not a lecture — no meta-frame narrative section to place.",
       "fix_hint": null,
       "blocking": false
     },
@@ -21,7 +23,8 @@
       "rule_index": 2,
       "rule_lead": "Minimal lecturing before contrast-mood exercises.",
       "verdict": "N/A",
-      "evidence": "No lecture precedes this exercise within the file; the exercise opens directly on the lede (What you do/build/point) and Phase 1.",
+      "evidence": null,
+      "na_reason": "No lecture precedes this exercise inside the file; it opens directly on the lede + Phase 1.",
       "fix_hint": null,
       "blocking": false
     },
@@ -30,7 +33,8 @@
       "rule_index": 3,
       "rule_lead": "No cross-module sequencing in lecture bodies.",
       "verdict": "N/A",
-      "evidence": "Rule targets lecture bodies specifically ('lectures teach, module files sequence'); this is an exercise. The two M3/M4 mentions present (line 68-69 'the M3 worktree' — diegetic reference to the student's own current-session fork, not a lecture forward-reference; line 139 Artefact-contracts table 'M3 Ex3'/'M4 Phase 2' — a maintainer-block table, not student body prose) don't trip a rule scoped to lecture-body cross-references.",
+      "evidence": null,
+      "na_reason": "Rule scopes to lecture bodies; this is an exercise, and its M3/M4 mentions (L66-70 diegetic worktree reference; L141 maintainer artefact-contracts table) aren't lecture-body forward-references.",
       "fix_hint": null,
       "blocking": false
     },
@@ -39,52 +43,62 @@
       "rule_index": 4,
       "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
       "verdict": "PASS",
-      "evidence": "Cold-read of all 9 `##` headers: 'Phase 1: Run the threat scan across your mapped surface', 'Read the threat list, expect more than you'll use', 'Phase 2: Pick the one threat worth hardening against', 'Push back on the incident story, land the mitigation', 'Phase 3: Write the decision as an ADR', 'Read the ADR, check the voice and the lens', 'Check where the ADR landed', 'Ask whether the ADR loads into future sessions', 'Save the map and the STRIDE walk before you clear'. Each names a concrete action or claim the body under it supports, none are empty containers ('The move', 'The names'), no dropped qualifiers or unsupported universals. No two share a header.",
+      "evidence": "Cold-read of all 9 `##` headers (L15,27,32,44,49,61,66,72,81): 'Phase 1: Run the threat scan across your mapped surface' / 'Read the threat list, expect more than you'll use' / 'Phase 2: Pick the one threat worth hardening against' / 'Push back on the incident story, land the mitigation' / 'Phase 3: Write the decision as an ADR' / 'Read the ADR, check the voice and the lens' / 'Check where the ADR landed' / 'Ask whether the ADR loads into future sessions' / 'Save the map and the STRIDE walk before you clear'. Each names a concrete action the body under it supports; none are empty containers, no dropped qualifiers or unsupported universals, no two share a header. Closest-to-violating: L81's header is the longest but still names a specific compound action, not a vague container.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_lectures.md",
       "rule_index": 5,
-      "rule_lead": "A slide's BODY is size-bounded (≤210 words, ≤6 bullets), exercise slides included.",
+      "rule_lead": "A slide's BODY is size-bounded, not just its header (§4's sibling).",
       "verdict": "PASS",
-      "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/exercises/threat-model-with-stride.md --report`. Output: 9 slides, largest 169 words / 1 bullet ('Save the map and the STRIDE walk before you clear'), all others 43-127 words / 2-3 bullets. Summary line: 'oversized: 0' / '✓ every slide is within limits'.",
+      "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/exercises/threat-model-with-stride.md`. Output: 'files: 1  slides: 9  limits: 210 words / 6 bullets' / 'oversized: 0' / '✓ every slide is within limits'. Re-run against the current (post-lean-pass) body specifically because the diff trimmed several slides further.",
       "fix_hint": null,
       "blocking": false
     },
     {
-      "compendium": "check_pedagogy.md",
-      "rule_index": 27,
-      "rule_lead": "Body teaches work, trainer manages room outside text — no authored conversation cues.",
-      "verdict": "PASS",
-      "evidence": "Grepped body for discuss/share with/neighbor/pair up/compare with/tell the room/talk to — zero hits. Body text throughout is about the WORK (the prompt, the artifact, the next action), e.g. line 27 'Ask Claude to invoke the STRIDE skill' / line 45 'Ask Claude to propose the most plausible incident story' / line 66 'Ask Claude to draft the ADR'. No cohort-management sentence present.",
+      "compendium": "check_lectures.md",
+      "rule_index": 6,
+      "rule_lead": "A prompt inside a lecture is a trainer show-and-tell, never a room follow-along.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Rule explicitly excludes exercise prompts ('Not covered: exercise prompts... which the student runs themselves'); all four prompts here are student-run.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_pedagogy.md",
       "rule_index": 16,
-      "rule_lead": "Forcing functions live in prompts, not body prose.",
+      "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
       "verdict": "PASS",
-      "evidence": "The three forcing functions — 'invoke STRIDE on the map' (Phase 1), 'name the worst realistic case, pick the one threat' (Phase 2), 'write the ADR with Alternatives considered' (Phase 3) — are each enacted inside their fenced `{{prompt:threat-model-with-stride-N}}` block, not narrated as instructions in body prose. Read-each-phase-prompt-only test: stripping body prose and reading only the three prompts still delivers all three moves (subagent dispatch + flag-not-pick / incident-story-then-map / draft-then-show-before-save). Body bullets above each fence explain WHY the move matters (e.g. 'that rejection is the point, not a failure of the scan'), not the move itself.",
+      "evidence": "The three forcing functions — 'invoke STRIDE on the map' (Phase 1), 'name the worst realistic case, pick the one threat' (Phase 2), 'write the ADR with Alternatives considered' (Phase 3) — are each enacted inside their `{{prompt:threat-model-with-stride-N}}` fence (L24, L41, L58), not narrated in body prose. Read-prompt-only test: stripping body and reading only the three fences still delivers all three moves. The lean-pass diff (this pin) removed body restatements ('You are picking a single threat worth hardening against.', 'You save it as the ADR next.') that were pure count-script/restatement, not forcing functions — cutting them changes nothing the fence does, consistent with this rule's removal test.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 27,
+      "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
+      "verdict": "PASS",
+      "evidence": "Grepped body for discuss/share with/neighbor/pair up/compare with/tell the room/talk to — zero hits. Every sentence is about the WORK: L22 'Ask Claude to invoke...', L39 'Ask Claude to propose...', L56 'Ask Claude to draft...', L74 'Ask Claude whether...'. No authored pause-cue, no cohort-management sentence.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 1,
-      "rule_lead": "Mood contract named — student leaves in the stated emotional state, doesn't resolve early.",
+      "rule_lead": "Mood contract named.",
       "verdict": "PASS",
-      "evidence": "Strategy doc (content-strategy-agentic-engineering-101.md line 245): M3 mood = 'Earned trust — the way I work with agents is something my staff engineer and my CISO can sign off on, before I even try anything big.' Trace phase mood_scores 8/9/9(peak Phase2)/8, close 8 — all clear the 8+ teaching-beat floor, none flatten into compliance-checkbox feeling (maintainer 'Watch for: compliance-feeling' diagnostic addressed by push-back move P3 quoted in maintainer block). Line 111 close hands to Ex3 without resolving Ex3's or M4's teaching moment ('The next exercise authors a test-strategy skill... The ADR is in the repo. Your CISO has something to read.') — sets up, doesn't preempt.",
+      "evidence": "Strategy doc (content-strategy-agentic-engineering-101.md L245): M3 mood = 'Earned trust — the way I work with agents is something my staff engineer and my CISO can sign off on, before I even try anything big.' Persona trace (regenerated against current, post-lean-pass body; quotes verified against live file) phase mood_scores 8/9/8, close 8 — all clear the 8+ teaching-beat floor, none resolve into compliance-checkbox flatness (maintainer Watch-for 'compliance-feeling' is addressed by the P3 push-back 'write it for the engineer who takes over this feature in six months'). Close (L87-89) hands to Ex3 without pre-empting Ex3's or M4's teaching moment.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 2,
-      "rule_lead": "Epistemic mood, not punitive.",
+      "rule_lead": "Epistemic mood ≠ punitive mood.",
       "verdict": "PASS",
-      "evidence": "No M3-relevant mood in this file is 'unease' — mood target is earned trust, so the epistemic/punitive test applies to how mistakes are handled within that trust register. Line 86-88 (worktree misfire) is framed as 'the agent reasoned itself there... The fork prompt called it the side-quest; the agent inferred...' — describes the AGENT's reasoning chain, not the student having erred; maintainer push P3 reads 'write it for the engineer who takes over this feature in six months' (curiosity register), not shame language.",
+      "evidence": "This file's mood is earned trust, not unease, so the punitive-risk surface is the worktree misfire (L66-70). It is framed as the AGENT's reasoning chain ('the agent reasoned itself there... The fork prompt called the worktree \"the side-quest\"... The agent reasoned forward from the conversation, not from the filesystem') — an epistemic fact about how the agent inferred location, not a student failure. Trace phase-3 mood_note explicitly: 'reads as an interesting fact about how the agent reasoned (epistemic), not a mistake the student made (not punitive).'",
       "fix_hint": null,
       "blocking": false
     },
@@ -93,16 +107,16 @@
       "rule_index": 3,
       "rule_lead": "Lead with discipline, not failure mode.",
       "verdict": "PASS",
-      "evidence": "Title (H1, line 1) 'Pick one threat, record the decision' — discipline-named (the decision-making move), not a failure word. 'The point' (line 11) 'STRIDE's value is rejection, not enumeration' names the discipline (structured rejection) rather than leading on the failure case it guards against (over-hardening / analysis paralysis). 'STRIDE' itself is a carve-out-eligible canonical-result name per the sibling rule, but the file doesn't lean on the acronym as its title — the title is the discipline.",
+      "evidence": "Title (L1) 'Pick one threat, record the decision' names the discipline (the decision), not a failure word. 'The point' (L11) 'STRIDE's value is rejection, not enumeration' names the positive discipline of structured rejection rather than leading on the failure it guards (over-hardening/analysis paralysis). STRIDE itself is carve-out-eligible as a named canonical result, but the title doesn't lean on the acronym — it leads on the decision.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 4,
-      "rule_lead": "Strategy-fidelity check (front-run check + module-to-module arc + Big Idea fidelity + mood-doesn't-resolve-early, consolidated).",
+      "rule_lead": "Strategy-fidelity check.",
       "verdict": "PASS",
-      "evidence": "Big Idea fidelity: strategy doc line 245 names M3's Big Idea as 'Software factory (tech) + team integration (how) via team-kit seed + first authored skill'; this file (Ex2 of 3) delivers the 'software factory' security-discipline half via STRIDE + ADR, consistent with the doc's three-exercise breakdown (line 245: '(2) invoke curated STRIDE skill, pick one hardening decision → ADR'). Front-run check: lines 90-101 (auto-load-check beat) name that 'Module 4 will tell Claude exactly which artifacts to read... and that explicit list is the lesson' — this teases M4's forward arc without executing M4's lesson (the file states the boundary — ADRs don't auto-load — but does not walk the explicit read-list M4 owns), consistent with strategy doc's own forward-reference carve-out (content-strategy §7c: 'module names in tail... fine, signals forward-arc'). Module-to-module arc: file's close (lines 109-111) hands off to Ex3 exactly as strategy doc states the M3 handoff ('the hardening decision becomes a test case in the test strategy' — matches strategy doc's Artefact-contracts row and its own text verbatim: 'M3 Ex3 Author your test-strategy skill (the hardening decision becomes a test case the test-strategy invocation reads)'). Mood doesn't resolve early: confirmed under rule 1 above — Ex2's earned-trust arc stays open into Ex3, doesn't pre-empt M4's accumulation mood or M5's rescue mood.",
+      "evidence": "Read content-strategy-agentic-engineering-101.md M3-detail section directly (L333-365, M4-detail L366-390). Big-Idea fidelity: strategy doc's Ex2 description (L343) 'pick the threat worth hardening against, write the decision as an ADR in the repo's convention (sponsor-stated home; default docs/adr/NNNN-slug.md). The framework picks the threat if you've named the worst case right. No menu-shopping.' matches this file's Phase 2 ('name the worst realistic case first') and push-back P2 verbatim. Front-run check: L79 'Module 4 will tell Claude exactly which artifacts to read... and that explicit list is the lesson' previews M4's gap-analysis walk (strategy doc L376: Claude audits root CLAUDE.md + memory + ADRs + M3 skill + connectors) without executing M4's technique — states only the auto-load boundary, a minimal seed rather than a front-run. Module-to-module arc: close (L89) 'The next exercise authors a test-strategy skill and invokes it on this feature... The hardening decision becomes a test case in the test strategy' matches strategy doc's stated M3 Ex2→Ex3 handoff exactly. Mood-doesn't-resolve-early: confirmed under §1.",
       "fix_hint": null,
       "blocking": false
     },
@@ -111,7 +125,8 @@
       "rule_index": 5,
       "rule_lead": "Strategic themes recur in Key Concepts.",
       "verdict": "N/A",
-      "evidence": "Rule governs module-file 'Key Concepts' sections. This is an exercise file — no Key Concepts heading exists here; strategy judge owns theme-recurrence at the module-file level.",
+      "evidence": null,
+      "na_reason": "No Key Concepts heading — module-file-only section.",
       "fix_hint": null,
       "blocking": false
     },
@@ -120,7 +135,8 @@
       "rule_index": 6,
       "rule_lead": "Key Concepts shape — theme breadcrumbs, not standalone section.",
       "verdict": "N/A",
-      "evidence": "No Key Concepts section in this exercise file.",
+      "evidence": null,
+      "na_reason": "No Key Concepts section in this exercise file.",
       "fix_hint": null,
       "blocking": false
     },
@@ -129,18 +145,652 @@
       "rule_index": 7,
       "rule_lead": "What You'll Learn shape — capability register, not syllabus.",
       "verdict": "N/A",
-      "evidence": "No What You'll Learn section in this exercise file — that heading lives on module files only.",
+      "evidence": null,
+      "na_reason": "No What You'll Learn section — module-file-only heading.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 1,
+      "rule_lead": "No placeholders inside fences.",
+      "verdict": "PASS",
+      "evidence": "Extracted all 4 fenced prompt bodies from the expanded view and grepped for `[A-Za-z_-]` bracket patterns: zero hits. `docs/adr/NNNN-slug.md` (P3) is a real path convention, not a `[bracket]` placeholder.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 2,
+      "rule_lead": "Every prompt block: one-sentence action lead-in.",
+      "verdict": "PASS",
+      "evidence": "P1 L22 'Ask Claude to invoke the STRIDE skill as a subagent on the access-surface map from Exercise 1.' (16 words). P2 L39 'Ask Claude to propose the most plausible incident story and walk you through the STRIDE pick from there.' (17 words). P3 L56 'Ask Claude to draft the ADR in your repo's convention and show it before saving.' (15 words). P4 L74 'Ask Claude whether this ADR rides into future sessions automatically.' (10 words). All command-verb, under 20 words.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 3,
+      "rule_lead": "Canonical shape — lead-in, label with destination, blank line, fence.",
+      "verdict": "PASS",
+      "evidence": "All 4 registry entries render as lead-in / `**Prompt** *(Claude Code)*` / blank line / fence (verified in expanded.md). No `copy →` prefix, no `*(end of prompt)*` closer, no blockquote wrapping.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 4,
+      "rule_lead": "Installed Skills invoke by name, never path.",
+      "verdict": "PASS",
+      "evidence": "P1 fence: 'Run the security-tools skill' / 'invoke the stride skill' — name-only. Grepped fence text for 'content/skills' and '~/.claude/skills': zero hits (those paths appear only in the maintainer block, never inside a fence).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 5,
+      "rule_lead": "Chain by back-reference + deterministic path, never invented alias.",
+      "verdict": "PASS",
+      "evidence": "P1 fence: 'the access-surface map from the previous exercise (path is earlier in this scrollback)... Find the access-surface map's path in this scrollback before dispatching' — back-reference anchor without inventing a filename. Registry frontmatter also chains `requires: prompt:map-the-access-surface-5` / `prompt:threat-model-with-stride-1/2` explicitly.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 6,
+      "rule_lead": "Chained-prompt isolation — don't leak downstream pipeline.",
+      "verdict": "PASS",
+      "evidence": "P1's 'Don't pick yet — I'll decide next' prevents Claude from pre-grilling P2's pick rather than leaking it; it enforces the isolation the rule wants, not a violation of it. P2 doesn't reference P3's ADR format; P3 doesn't pre-empt P4's auto-load question.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 7,
+      "rule_lead": "No session-resets mid-phase.",
+      "verdict": "PASS",
+      "evidence": "No prompt offers `/clear` or a new session; the exercise stays in one window ('Window: the main quest window') across all 4 prompts.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 8,
+      "rule_lead": "Multi-sample methods need structural enforcement.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "No self-consistency/ensemble/majority-vote method used anywhere in this exercise.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 9,
+      "rule_lead": "Markdown shout (**bold**, *italic*) inside fenced prompts = dead weight in Claude Code.",
+      "verdict": "PASS",
+      "evidence": "Grepped all 4 extracted fence bodies for the `*` character: zero occurrences in any fence.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 10,
+      "rule_lead": "Runtime-fork prompts: paired divs, shared chip.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "AE101 is Code-only, no dual-runtime fork (rule's own text: 'AE101 Code-only, ignores pattern').",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 11,
+      "rule_lead": "Runtime-mechanical scaffolding asymmetry — MORE in less-fluent fork, not less.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Cowork-specific (Agents 101); AE101 has no Cowork fork.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 12,
+      "rule_lead": "Append-vs-integrate — name integration mode on regeneration with new context source.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "No regeneration-with-new-context-source prompt in this exercise.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 13,
+      "rule_lead": "Citation discipline — extend cite-or-flag scope + quote supporting sentence.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "No cite-or-flag research/synthesis prompt here.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 14,
+      "rule_lead": "Niceness tax — name the edge or pin the line on regeneration.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "No voice/positioning regeneration prompt in this exercise.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 15,
+      "rule_lead": "Question-dump default — `in turn` too soft; two legal shapes.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "No prompt walks the student through a Claude-posed question sequence; P2 is Claude producing an analysis, not interviewing the student.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 16,
+      "rule_lead": "Overwrite anxiety — name overwrite default on regeneration.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "P3 creates a new ADR file; no existing-file regeneration/overwrite scenario.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 17,
+      "rule_lead": "Preamble before action — design around it.",
+      "verdict": "PASS",
+      "evidence": "P1 fence names ~5 named actions (pre-flight, invoke stride, run in subagent, save, flag, report), technically at the structural-trigger threshold, but carries no in-fence 'No preamble' suppressor or body primer. Judged PASS because the specific harm the rule guards (chatty preamble eating the student's highest-attention slot before plan-mode content they must read line-by-line) doesn't apply here: this is a fire-and-forget subagent dispatch whose payoff (the returned threat list) is read only after the subagent completes, not a live narrated plan review. Trace confusion_flags for Phase 1 name only the pre-flight-ordering half-beat (deliberate per maintainer), not preamble noise.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 18,
+      "rule_lead": "Self-critique register, not defense, when Claude interrogates own work.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "No prompt in this exercise asks Claude to critique its own prior output.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 19,
+      "rule_lead": "Minimal hand-off + Claude self-augments for send-off prompts.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Not a long-running walk-away send-off; this is a 20-minute in-room exercise.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 20,
+      "rule_lead": "Grill before save — collaborative quality at artefact assembly.",
+      "verdict": "PASS",
+      "evidence": "P3 doesn't literally ask 'grill me before you save' but achieves the rule's goal (catch gaps before persistence while student is present) via the equivalent mechanism the body specifies: 'Have the agent draft it and show it before saving. You read the call before it lands on disk' (L54), paired with the explicit voice/lens push-back at L63-64. No walk-away gap exists for a missed grill to matter here.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 21,
+      "rule_lead": "Tell me what you wrote, not show me what you'll write.",
+      "verdict": "PASS",
+      "evidence": "P3/body uses show-before-save ('show it before saving', L54; 'then show me the diff' in-fence) rather than post-action report, which is the rule's non-default branch. Judged PASS, not REVISE, because the show-before-save here is not correctness-verification busywork (the harm rule 21 targets) but the exercise's central voice/frame-check teaching moment ('Read the ADR, check the voice and the lens', L61-64) — an ADR is a decision-of-record whose voice the student is meant to own before persistence. See todos for the residual tension against the rule's literal carve-out wording.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 22,
+      "rule_lead": "Prompt-body edits require maintainer approval — registry files AND inline blocks.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Process rule governing how prompt edits get approved; not a property of the shipped artefact to verify (and no prompt-body edit occurred in the pinned diff — only body prose above the fences changed).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 23,
+      "rule_lead": "Artifact destinations are explicit subpaths, never naked filenames (Agents 101-specific).",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Explicitly Agents-101-scoped by the rule's own text; AE101 uses the student's own repo, repo conventions decide path (matches P3's 'whatever the repo uses').",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 24,
+      "rule_lead": "Don't restate session CWD inside prompt body.",
+      "verdict": "PASS",
+      "evidence": "No fence restates an absolute path or `cd` command; all paths are repo-relative or repo-convention-detected (`docs/adr/`).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 25,
+      "rule_lead": "`subagent` allowed in prompt blocks; explain why after prompt.",
+      "verdict": "PASS",
+      "evidence": "P1 fence: 'Run stride in a subagent so the six-category output doesn't flood this thread' — the why is stated. Surrounding body bullets (L19-20) already explain 'The subagent does the walk; you read the result. It runs in fresh context against the map, not the raw code' before the fence, satisfying the rule's own carve-out ('unless surrounding setup already obvious').",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 26,
+      "rule_lead": "Maintainer-approval edits — ONE-AT-A-TIME, PRIORITY-ORDERED, FOUR-FIELD cards.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Process rule for how findings get surfaced to the maintainer; not a property of the shipped file.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 27,
+      "rule_lead": "Name consumer at write time — `Save it as <path>` requires downstream reader.",
+      "verdict": "PASS",
+      "evidence": "Consumer named for the ADR: L54/L63 'It is the artifact your CISO would actually read' and push-back move 'write it for the engineer who takes over this feature in six months'. Consumer named for the optional docs/ persist (L85): 'Your CISO and the next engineer read what's on disk, not your scrollback.'",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 28,
+      "rule_lead": "Strong-bold prompt label is exactly `**Prompt**` — custom labels break renderer.",
+      "verdict": "PASS",
+      "evidence": "All 4 registry prompts render label exactly '**Prompt** *(Claude Code)*' (verified in expanded.md); no custom label text.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 29,
+      "rule_lead": "Normal work request before orchestration.",
+      "verdict": "PASS",
+      "evidence": "All 4 prompts read as things an engineer would actually type: 'Run the security-tools skill first...', 'Walk me through picking...', 'Write an ADR for the hardening decision we just made...', 'Will ADRs auto-load to future sessions?'. None open with 'Ask me which...' orchestration-bloat framing.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 30,
+      "rule_lead": "Live-test corrections preserve operator workflow.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Process rule for editing during live-test sessions; not a property of the shipped file to check.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 31,
+      "rule_lead": "Prompts live in registry; module/exercise/lecture files reference by marker.",
+      "verdict": "PASS",
+      "evidence": "All 4 prompts are `{{prompt:threat-model-with-stride-N}}` markers (L24, L41, L58, L76) with registry files at `curriculum/prompts/threat-model-with-stride-{1..4}.md`, frontmatter carrying key/dest/runtime/origin/requires/produces. No inline `**Prompt**` block in the source.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 32,
+      "rule_lead": "Module names in prompt prose are fine — they ground the session.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "No module-number reference appears inside any of the 4 fences (grepped for `M[0-9]`, zero hits) — rule affirms a pattern that simply doesn't occur here.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 33,
+      "rule_lead": "Git-output greps asserting exact-N need multi-result fallback.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "No prompt greps git log/branch output for a specific marker.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 34,
+      "rule_lead": "Disambiguation, anchors, and decision logic that bind Claude live INSIDE prompt fence.",
+      "verdict": "PASS",
+      "evidence": "Read each fence in isolation: P1 carries 'Find the access-surface map's path in this scrollback before dispatching' inside the fence itself. P3 carries its own decision logic ('check for an existing docs/adr/ folder or whatever the repo uses; if there isn't one, use docs/adr/NNNN-slug.md') inside the fence, not deferred to a body callout.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 35,
+      "rule_lead": "Repeated Q&A → premature re-edits. Separate iteration from persistence.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "No open multi-turn dialog loop that could prematurely mutate a persisted artifact file; the ADR is written once, in P3, after the discussion settles.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 36,
+      "rule_lead": "Wide prompts split by logical move — paragraph breaks = cheapest scan-affordance.",
+      "verdict": "PASS",
+      "evidence": "P1 is 2 paragraphs (main instruction set / path-finding + report-back). P3 is 3 paragraphs (write-ADR-with-format / ground-each-section / save-and-diff). P2 stays one paragraph despite 4 sequential clauses (propose→map→name→propose hardening) — judged inside the rule's own carve-out ('sequential-build prompts where each step compounds tightly may stay one paragraph if breaking feels artificial'): it's one continuous 'walk me through' flow where each step depends tightly on the last.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 37,
+      "rule_lead": "Orient saved rule by where it FIRES, not surface activity producing it.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "No CLAUDE.local.md/rule-saving prompt in this exercise.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 38,
+      "rule_lead": "Body lead-in mirrors prompt's opening phrasing.",
+      "verdict": "PASS",
+      "evidence": "P2: lead-in 'propose the most plausible incident story and walk you through' vs fence opening 'Walk me through picking... Start by proposing the most plausible incident story' — shares verb+noun-phrase. P3: 'draft the ADR in your repo's convention and show it before saving' vs fence 'Write an ADR... Use my repo's ADR convention... show me the diff' — mirrors. P4: 'whether this ADR rides into future sessions automatically' vs fence 'Will ADRs auto-load to future sessions?' — mirrors. P1 deliberately does NOT mirror (lead-in never mentions the security-tools pre-flight the fence opens with) — this is the documented 38a carve-out: maintainer block (L101-105) names which prompt carries the surprise (threat-model-with-stride-1), the mechanism (rick-roll echo line in collapsed Bash output), why the body lead-in is intentionally silent ('the surprise IS the pedagogy'), and the trainer move when it fires — all four elements 38a requires are present verbatim.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 39,
+      "rule_lead": "Declare `permission-mode:` when paste requires specific Claude Code mode.",
+      "verdict": "PASS",
+      "evidence": "Checked all 4 registry frontmatters (curriculum/prompts/threat-model-with-stride-{1..4}.md): none declare `permission-mode:`. None of the 4 prompts depend on plan/acceptEdits/auto/bypassPermissions mode — correct to omit.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 40,
+      "rule_lead": "Verify session boundary before deciding prompt's context-carrying.",
+      "verdict": "PASS",
+      "evidence": "Read the file end to end: no `/clear`, no fresh-session instruction, no worktree/cwd change between P1-P4 — one continuous warm session ('Window: the main quest window'). Back-references are therefore legitimate. 40b check: P3's 'the plausible incident story' and 'the threat we picked' are phrases actually typed by the student in P2's own fence text ('the most plausible incident story'), so they are genuinely in scrollback, not curriculum-coined labels the agent never saw.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 41,
+      "rule_lead": "Artifact-vs-STOP tail ordering — last imperative wins.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "No prompt grafts an ask-and-wait/STOP tail after a load-bearing write instruction (grepped fences for 'stop', zero hits); P3 ends 'Save the ADR to that path, then show me the diff' with no STOP.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 42,
+      "rule_lead": "Headless-runner discipline — tail every prompt with no-AUQ guard.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "This is an interactive classroom/self-study exercise, not a non-interactive tmux-runner/CI context the rule targets.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 43,
+      "rule_lead": "Long-running prompts stream progress — never go silent.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "P1 dispatches via the Agent/subagent tool, which does not stream intermediate output back to the parent thread regardless of in-fence instruction — there is no channel for a progress-streaming clause to use. The reactive half (check_pedagogy §48, present at L30: 'If it comes back instant, push back and re-run') is the correct and present mitigation for a fire-and-forget subagent call of this single-file scale.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 44,
+      "rule_lead": "A leading-looking line can be a forcing function; prefer the simpler prompt.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "The pinned diff touched only body prose above/below fences, not any fence content — no prompt-editing fix pass occurred to evaluate against this rule.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 45,
+      "rule_lead": "Prompt paths match Builder scope.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Agents-101-specific two-scope directory rule; AE101 uses the student's own repo with repo-detected conventions (matches P3's 'whatever the repo uses'), which is the rule's own AE101 carve-out.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 46,
+      "rule_lead": "Output shape — trust Claude's defaults, don't pad.",
+      "verdict": "PASS",
+      "evidence": "P3 specifies the four-section ADR shape (Context/Decision/Consequences/Alternatives considered), which is warranted under the rule's own exception ('Specify shape ONLY where the teaching moment depends on it') — the four sections ARE the teaching moment (leap test #3 requires 'all four standard sections'). No other prompt pads with unnecessary shape specs.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 47,
+      "rule_lead": "\"Add X and regenerate\" is a trap.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "No 'add X and regenerate' voice/framing-shaping prompt in this exercise.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 48,
+      "rule_lead": "Vary closings deliberately.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "This is a mid-training exercise ending on artifact-save, not a module-level Debrief/closing-mechanic choice among cold-critic/pair/group/solo-retro/show-work.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": 1,
+      "rule_lead": "Group beat ≠ parallel solo work.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "No group beat anywhere in this file — solo student+agent work throughout (STRIDE scan, threat pick, ADR write); the artefact belongs to the individual student, never to a room.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": 2,
+      "rule_lead": "The room's output is named as an artefact.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "No room-scale artefact; only the individual's ADR.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": 3,
+      "rule_lead": "React, don't author.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "No room-scale authoring-from-blank beat exists here.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": 4,
+      "rule_lead": "Pre-built material is a hard prerequisite, stated in the module.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "No workshop beat depending on day-of pre-built material; the exercise depends only on Exercise 1's own map, produced earlier in the same session.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": 5,
+      "rule_lead": "Attribution is stated by a human, recorded verbatim.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "No peer-attribution beat; this is a one-student exercise.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": 6,
+      "rule_lead": "Nothing is written over.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "No shared group record exists to be overwritten.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": 7,
+      "rule_lead": "Filing is invisible.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "No group-scale filing beat; not applicable to a solo exercise.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": 8,
+      "rule_lead": "Scope-of-sharing is declared before contribution, not after.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "No contribution-to-shared-tier moment; the ADR is the student's own repo artefact.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": 10,
+      "rule_lead": "A decision beat needs a real constraint.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Not a room-scale decision beat — this is check_pedagogy's forcing-function territory (already judged at §16), not check_workshop's.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": 11,
+      "rule_lead": "Group decisions are human, and named as such.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "No group decision exists in this file.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": 12,
+      "rule_lead": "Retrospective = group round, no prompts, trainer silent.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "No group retrospective beat in this file.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": 13,
+      "rule_lead": "Second-facilitator test.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "No room-mechanics beat whose second-facilitator delivery-risk applies; the file's trainer-facing mechanics live in the maintainer block's push-back/watch-for tables, not a group-beat design.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": 14,
+      "rule_lead": "Name the too-big and too-small room.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "No group beat with a room-size failure mode.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": 15,
+      "rule_lead": "Mixed-experience is the default room.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "No group-pairing beat; each student runs the exercise independently against their own feature.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": 16,
+      "rule_lead": "Room beats overrun; name the protected beat.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "No room-scale beat with a protected/cut trade-off; per-phase timing is already covered by check_pedagogy §21b/timing conventions, not check_workshop.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": 17,
+      "rule_lead": "No mechanical coverage — the trainer guide carries the load.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "This exercise IS mechanically coverable (four fenced prompts a runner can execute) — the rule's premise (nothing for the runner to type at) doesn't hold here.",
       "fix_hint": null,
       "blocking": false
     }
   ],
   "mood_summary": {
-    "phase_scores": [8, 9, 8],
+    "phase_scores": [
+      8,
+      9,
+      8
+    ],
     "close_score": 8,
     "any_below_8": false,
     "stealing_the_mood": []
   },
-  "notes": "Teaching-moment-lands check (no check_strategy_tie_in rule_index, per template): the named teaching moment — 'STRIDE's value is rejection, not enumeration,' operationalized as name-the-worst-case-first then pick — reliably triggers. Trace Phase 2 (the moment itself) scores 9/10 with zero confusion_flags, and the forcing function sits inside the prompt fence (verified under check_pedagogy rule 16 above), so a persona that skips body prose and pastes only the prompt still lands the moment. A less-skilled persona variant (skips the 'name the worst case first' framing bullet) would still hit the forcing function because the prompt itself instructs 'Start by proposing the most plausible incident story... then map that story' — the sequencing is enforced by the prompt's own structure, not by the student having read the framing bullet first. Judged robust across reasonable persona-skill variation.",
+  "notes": "Teaching-moment-lands (no check_strategy_tie_in rule_index, per template): the named teaching moment — 'STRIDE's value is rejection, not enumeration,' operationalized as name-the-worst-case-first then pick — reliably triggers. Trace Phase 2 (the moment itself) scores 9/10, zero confusion_flags, and the sequencing is enforced by the prompt's own structure ('Start by proposing... then map...'), not by the student having read a framing bullet first — robust across reasonable persona-skill variation. Persona trace (sim-cache/ae101--exercise--threat-model-with-stride.persona.json, generated_at 2026-08-19) was carried forward as `trace_status: cached` after verifying every quote it cites (tightened lede, trimmed worktree bullet, trimmed close sentence, the four prompt bodies) against the live post-lean-pass body — all matched; the trace's own generated_at timestamp appears stale relative to its content (it already narrates the trim), but content-match against the current file is what governs per the dispatch preamble, and it passed. Coverage observation, not a finding: the prior instance for this file (pre-dating shape_hash) scored only check_lectures (6) + check_pedagogy §16/§27 + check_strategy_tie_in (7) = 13 rows; the current derive-class-brief.js additionally puts check_prompts.md (48) and check_workshop.md (16) in story's scope, which this instance now covers for the first time.",
+  "accept_notes_found": [
+    "L93 Lean pass (2026-08-25, Antti-directed M3/M6 shorten, free hands) — body trims across all phases, 'Do not restore.'",
+    "L97 Emphasis pass (2026-07-09, Antti-directed 'go very lightly on the bold') — de-bolding sweep, no claims added/cut.",
+    "L99 Auto-load-check prompt (threat-model-with-stride-4) kept, not cut — flagged low-yield, judged load-bearing for the M4 seed.",
+    "L101-105 M3 supply-chain easter egg — DO NOT SPOIL IN BODY — names the surprised prompt, mechanism, why the body lead-in is silent, and the trainer move; satisfies check_prompts.md §38a's four required elements."
+  ],
   "blocking_findings_count": 0,
-  "todos_count": 0
+  "todos_count": 1,
+  "todos": [
+    {
+      "rule": "check_prompts.md §21",
+      "note": "Phase 3's show-before-save (pre-confirm) on the ADR write sits against §21's default preference for post-action report, whose stated carve-out is 'irreversible/external-trust-line actions' — an ADR is git-reversible, so a literal reading doesn't clear the carve-out. Judged PASS here because the pre-confirm is the exercise's explicit voice/frame-check teaching moment, not correctness-verification busywork. Flagging for the maintainer in case §21 wants an explicit third carve-out for 'artifact-of-record whose voice the student must own before persistence' distinct from 'technically irreversible.'"
+    }
+  ]
 }

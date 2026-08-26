@@ -1,10 +1,11 @@
 {
   "class": "storytelling",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/spot-gaps-build-the-loop.md",
-  "body_sha": "fce2824cb02989bfa66cea8543e2dbef8cffeef0f81eef9439f27d105c6b4872",
+  "body_sha": "e464fea79e8e460cbc9daffec77fa1694083026c5aab29b114378b2d6f442f60",
+  "shape_hash": "04c8bbd89721df08",
   "verdict": "PASS",
   "training": "ae101",
-  "module_mood_contract": "practitioner fluency — \"I know how to test, I know how to learn, I know how to encode.\" Not confidence-as-performance; competence-as-posture. (bosser-strategy:content-strategy-agentic-engineering-101.md § M6 in detail — spot gaps, build the loop; matches exercise maintainer block's own \"Mood target\" line verbatim in substance.)",
+  "module_mood_contract": "practitioner fluency — \"I know how to test, I know how to learn, I know what my stack repeats.\" Not confidence-as-performance; competence-as-posture. (matches exercise maintainer block's own \"Mood target\" line, raw line 115, verbatim in substance.)",
   "trace_status": "regenerated",
   "rules_evaluated": [
     {
@@ -12,7 +13,8 @@
       "rule_index": 1,
       "rule_lead": "Meta-frame lectures = closers, not openers.",
       "verdict": "N/A",
-      "evidence": "Target is an exercise file (curriculum/exercises/spot-gaps-build-the-loop.md), not a lecture. The rule governs lecture-placement decisions (opener vs. closer) that don't exist for this surface — no lecture-shaped file is being placed here.",
+      "evidence": null,
+      "na_reason": "target is an exercise file, not a lecture — no lecture-placement decision exists here",
       "fix_hint": null,
       "blocking": false
     },
@@ -21,7 +23,8 @@
       "rule_index": 2,
       "rule_lead": "Minimal lecturing before contrast-mood exercises.",
       "verdict": "N/A",
-      "evidence": "Rule governs pre-exercise LECTURE dosage. This file is the exercise itself, not the lecture preceding it; there is no lecture content in this file to over- or under-dose.",
+      "evidence": null,
+      "na_reason": "rule governs pre-exercise LECTURE dosage; this file is the exercise itself, carries no lecture content",
       "fix_hint": null,
       "blocking": false
     },
@@ -30,7 +33,7 @@
       "rule_index": 3,
       "rule_lead": "No cross-module sequencing in lecture bodies.",
       "verdict": "N/A",
-      "evidence": "Rule text is scoped to lecture bodies (\"lectures teach, module files sequence\"). This is an exercise. Note (not a storytelling-class finding): body lines 5-7 do reference the M5 worktree and both M4/M5 branches by module letter — that's necessary session-setup context for a cross-module exercise, not a lecture-body sequencing violation, and any concern about it belongs to check_pedagogy/check_student_facing, not this rule.",
+      "evidence": "Rule text is scoped to LECTURE bodies (\"lectures teach, module files sequence\"); this is an exercise. Checked whether the concern reaches here anyway: body lines 5, 7, 21-22 name M4/M5/M6 branches, worktrees and file coordinates (`m4/<slug>`, `../<repo>-m5`, `task.md`, `plan.md`). These are session-artifact coordinates in a fixed-sequence training where artifacts are module-numbered by design — exactly the case `check_prompts.md §32` (not this judge's compendium, cited only as corroboration) names as \"grounding, not leakage,\" distinct from a lecture's abstract forward-reference. No finding.",
       "fix_hint": null,
       "blocking": false
     },
@@ -39,16 +42,26 @@
       "rule_index": 4,
       "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
       "verdict": "PASS",
-      "evidence": "Applies broadly to slide headers (rule title names both \"slide\" and \"lecture\"), and this exercise renders as 9 slides. Checked all 9 `##` headers against squint (names the concept) + truth (asserts only what the body beneath supports): \"Phase 1: Diff the two sessions, rank the gaps\" (line 17), \"Read the contrast, push back where it generalises\" (29), \"Cut one stale rule the diagnosis killed\" (35), \"Say go, unless the cut spreads past the one rule\" (44), \"Phase 2: Find the work you repeat across your stack\" (49), \"Scan your history for the work that recurs\" (56), \"Draw your top work-shapes as diagrams\" (66), \"Sidestep: check your menu against the field's\" (77), \"Decide what crosses back to your main repo\" (91). No empty containers, no orphan mystery, no two headers share a title, no unsupported universals (\"always\"/\"every\"/\"unchanged\"). Each is a concept or a decision-cue matching its slide body.",
+      "evidence": "Applies broadly to slide headers (rule title names both \"slide\" and \"lecture\"); this exercise renders as 9 slides (`## ` count). Re-checked all 9 headers against squint (names the concept) + truth (asserts only what the body beneath supports) post the 2026-08-25 lean-pass edit, which touched only bullet prose, not headers: \"Phase 1: Diff the two sessions, rank the gaps\" (raw line 17), \"Read the contrast, push back where it generalises\" (29), \"Cut one stale rule the diagnosis killed\" (35), \"Say go, unless the cut spreads past the one rule\" (44), \"Phase 2: Find the work you repeat across your stack\" (49), \"Scan your history for the work that recurs\" (56), \"Draw your top work-shapes as diagrams\" (66), \"Sidestep: check your menu against the field's\" (77), \"Decide what crosses back to your main repo\" (91). No empty containers, no orphan mystery, no two headers share a title, no unsupported universals. Each names a concept or decision-cue matching its slide body.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_lectures.md",
       "rule_index": 5,
-      "rule_lead": "A slide's BODY is size-bounded, not just its header (exercise slides count too).",
+      "rule_lead": "A slide's BODY is size-bounded, not just its header (§4's sibling).",
       "verdict": "PASS",
-      "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/exercises/spot-gaps-build-the-loop.md --report`. Output: 9 slides, largest is \"Sidestep: check your menu against the field's\" at 149 words / 1 bullet; next \"Phase 1: Diff the two sessions, rank the gaps\" at 135w/3 bullets. Script summary: \"files: 1  slides: 9  limits: 210 words / 6 bullets — oversized: 0 — ✓ every slide is within limits.\" All 9 slides clear the 210w/6-bullet ceiling with margin.",
+      "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/exercises/spot-gaps-build-the-loop.md --report` fresh against the current (post-lean-pass) body. Output: 9 slides; largest is \"Sidestep: check your menu against the field's\" at 152 words / 1 bullet; next \"Phase 1: Diff the two sessions, rank the gaps\" at 113w/3 bullets. Script summary: \"files: 1  slides: 9  limits: 210 words / 6 bullets — oversized: 0 — ✓ every slide is within limits.\" All 9 slides clear the 210w/6-bullet ceiling with margin (the 2026-08-25 lean pass trimmed several slides further, e.g. Phase 1 dropped from 135w to 113w).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 6,
+      "rule_lead": "A prompt inside a lecture is a trainer show-and-tell, never a room follow-along.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "rule scopes explicitly to `curriculum/lectures/**`; this file is at `curriculum/exercises/`, and the rule's own text names exercise prompts as \"not covered\" (student-run by design)",
       "fix_hint": null,
       "blocking": false
     },
@@ -57,7 +70,7 @@
       "rule_index": 16,
       "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
       "verdict": "PASS",
-      "evidence": "All 4 load-bearing student moves (diff-the-runs, cut-a-rule, cross-project scan, draw-shapes) are encoded in fenced `**Prompt**` blocks (raw source lines 27, 59 [conditional], 89, 110). Body prose outside fences carries only optional push-backs explicitly carved out by the rule (\"A fair push-back is 'name one thing the verifier missed, concretely'\" — body, not fence) and suggestion-register pacing (\"Cut the scan when the top patterns are clear enough to use\" — no bare imperative count). No scripted-reaction count-scripts (\"push back once\", \"two rounds max\") found in body prose.",
+      "evidence": "All 4 load-bearing student moves (diff-the-runs, cut-a-rule, cross-project scan, draw-shapes) live in fenced `{{prompt:...}}` blocks (raw lines 27, 42, 64, 73), plus an optional fifth (primitives sidestep, line 85). None of these moved or were touched by the 2026-08-25 lean-pass edit. Body prose outside fences carries only carved-out optional push-backs (\"A fair push-back is 'name one thing the verifier missed, concretely'\" — line 33) and suggestion-register pacing (\"Cut the scan when the top patterns are clear enough to use\" — line 60, no bare imperative count). Applied the removal test to each of the seven sentences the lean pass cut (raw line 97's accept-note): 'Both are visible via git refs...', 'You are not tracing git refs by hand.', 'the teaching is in the contrast' (Phase 1); 'This is your stack.', a duplicate 'How far you take this is yours.', 'The recognition is the point.' (Phase 2); 'Cleaning is the compound move that keeps the loop fast.' — every one is connective/restatement flavor prose, none is a forcing function or a push-back instruction, so cutting them collapses no pedagogy. No scripted-reaction count-scripts found in body prose.",
       "fix_hint": null,
       "blocking": true
     },
@@ -66,16 +79,25 @@
       "rule_index": 27,
       "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
       "verdict": "PASS",
-      "evidence": "Grepped body (above maintainer fence) for authored conversation cues — \"discuss with\", \"compare with the person next to you\", \"share what you noticed\", \"tell the room\" — zero matches. Every sentence targets the artifact or the next prompt (e.g. \"Push back where Claude generalises\", \"Ask Claude to cut one rule...\"), never cohort pacing. No carve-out cues used either (no room-naming sentence present, so no accept-note owed).",
+      "evidence": "Grepped body (lines 1-94, above the maintainer fence) for authored conversation cues: `grep -inE '\\b(group|team|room|together|shared record|adjudicat)\\w*' ` on lines 1-94 → 3 hits, all false positives on inspection: line 58 \"...let the answers land together\" (describes the STUDENT's own two prompt-outputs converging, not a room-share cue), line 62 \"group the kinds of work that recur\" (verb = categorize, addressed to Claude, not the room), line 68 \"grouped and ranked\" (same sense). Zero authored \"discuss with\", \"share with your neighbor\", \"tell the room\" style cues. Every sentence targets the artifact or the next prompt. No carve-out cues used, so no accept-note is owed.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 45,
+      "rule_lead": "Per-exercise leap test — 3 observable Monday outcomes.",
+      "verdict": "PASS",
+      "evidence": "Maintainer block's \"Leap test (Monday):\" (raw lines 153-156) names three verbs: (1) \"holds a diagrammed map of the work they repeat across their stack, and reads a new task against it before sending the task off\", (2) \"cuts a stale rule from their own CLAUDE.local.md once a run's evidence shows it never fired or fired wrong\", (3) \"reads a run's gaps as a ranked list with the dominant one named, instead of treating every miss as equally worth fixing\". Applied the isolation diagnostic to each: a working engineer (or a colleague watching them) could tell, without further context, whether they consulted the map before sending a task, whether they cut a rule on evidence, and whether their gap-read is ranked-with-a-named-dominant vs flat. All three are observable actions/artifact-uses, not abstract competency claims (\"understands testing\" would fail; these don't).",
       "fix_hint": null,
       "blocking": true
     },
     {
       "compendium": "check_pedagogy.md",
       "rule_index": 47,
-      "rule_lead": "Per-phase failure mode + escape hatch (rule text: \"Story judge blocks ship without both\").",
+      "rule_lead": "Per-phase failure mode + escape hatch.",
       "verdict": "PASS",
-      "evidence": "Maintainer block \"Failure modes + diagnostics\" (raw lines 156-160) names a failure mode + diagnostic/escape-hatch for every phase: Phase 1 gets two (\"generalised diff\" w/ quote-enforcement escape at line 157; \"packaging-over-credit\" w/ named trainer push at line 158), Phase 2 gets one (\"wider-look sprawl\" w/ \"point at the ranked head and move on\" escape at line 159), plus a cross-phase \"Rule-cut dodge\" diagnostic (line 160). Both phases with forcing functions have a named dominant failure mode and a named recovery move.",
+      "evidence": "Maintainer block \"Failure modes + diagnostics\" (raw lines 158-162) names a failure mode + escape hatch for every phase carrying a forcing function: Phase 1 gets two — \"generalised diff\" w/ quote-enforcement re-run escape (159), \"packaging-over-credit\" w/ named trainer push \"name one thing the verifier missed, concretely. Quote the scrollback.\" (160); Phase 2 gets \"wider-look sprawl\" w/ \"point at the ranked head and move on\" escape (161); plus a cross-phase \"Rule-cut dodge\" diagnostic (162). None of these lines were touched by the 2026-08-25 lean pass (confirmed via the diff: only the body-prose lean-pass bullets and the Quality stamp changed; the Failure modes / Leap test / Placement / Mood target maintainer sections are untouched). Both forcing-function-bearing phases have a named dominant failure mode and a named recovery move.",
       "fix_hint": null,
       "blocking": true
     },
@@ -84,7 +106,7 @@
       "rule_index": 1,
       "rule_lead": "Mood contract named.",
       "verdict": "PASS",
-      "evidence": "Exercise's own maintainer block states \"Mood target: practitioner fluency — 'I know how to test, I know how to learn, I know what my stack repeats.'\" (raw line 166), matching the strategy doc's M6 mood contract in substance (practitioner fluency, competence-as-posture). Regenerated single-persona trace scores mood_score 8 at both phase-ends and close — no beat below 7 (mood-floor bar).",
+      "evidence": "Exercise's own maintainer block states \"Mood target: practitioner fluency — 'I know how to test, I know how to learn, I know what my stack repeats.'\" (raw line 115), matching the strategy doc's M6 mood contract (practitioner fluency, competence-as-posture). Regenerated single-persona trace (this session, sim-cache/ae101--exercise--spot-gaps-build-the-loop.persona.json) scores mood_score 8 at both phase-ends and at close — no beat below 7 (mood-floor bar), and the 2026-08-25 cuts were verified connective-prose-only (see check_pedagogy §16 evidence) so the mood carries forward from the prior 2026-08-19 trace unchanged.",
       "fix_hint": null,
       "blocking": true
     },
@@ -93,7 +115,7 @@
       "rule_index": 2,
       "rule_lead": "Epistemic mood ≠ punitive mood.",
       "verdict": "PASS",
-      "evidence": "The exercise's core move is diagnostic (\"where packaging caught\", \"where it missed\") not shame-based. Cut-rule beat is framed as evidence-following (\"Find the one rule the two-session diagnosis showed is wrong, stale, or never fires\" — raw line 64) not as correcting a personal mistake. No \"you got this wrong\" framing found; the register throughout is a practitioner reading a system, consistent with trace mood_note at Phase 1: \"The second run isn't treated as a win lap — it becomes subtler evidence to read.\"",
+      "evidence": "Core move is diagnostic (\"where packaging caught, where it missed\", line 25) not shame-based. Cut-rule beat is framed as evidence-following (\"Ask Claude to cut one rule the two-session diagnosis killed, or to say so and stop if all rules held\", line 40) not as correcting a personal mistake. Closest-to-violating word checked: \"killed\" (line 35 header, \"Cut one stale rule the diagnosis killed\") reads as a diagnosis-outcome verb about a RULE, not a failure label pinned on the student — stays inside the rule. No \"you got this wrong\" framing anywhere in the body.",
       "fix_hint": null,
       "blocking": true
     },
@@ -102,16 +124,16 @@
       "rule_index": 3,
       "rule_lead": "Lead with discipline, not failure mode.",
       "verdict": "PASS",
-      "evidence": "Title \"Map the gaps, read your stack\" and phase headers (\"Diff the two sessions, rank the gaps\", \"Find the work you repeat across your stack\") name disciplines (mapping, diffing, ranking, reading), not failure words. Closest-to-violating line checked: \"Cut one stale rule the diagnosis killed\" (raw line 35) uses \"killed\" but as a diagnosis-outcome verb describing evidence, not a failure label pinned on the student — stays inside the rule.",
+      "evidence": "Title \"Map the gaps, read your stack\" (line 1) and phase headers (\"Diff the two sessions, rank the gaps\", \"Find the work you repeat across your stack\") name disciplines (mapping, diffing, ranking, reading), not failure words. No canonical-result carve-out invoked or needed.",
       "fix_hint": null,
       "blocking": true
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 4,
-      "rule_lead": "Strategy-fidelity check (consolidates front-run check, module-to-module arc, Big Idea fidelity, mood-doesn't-resolve-early).",
+      "rule_lead": "Strategy-fidelity check.",
       "verdict": "PASS",
-      "evidence": "Cross-checked against bosser-strategy:content-strategy-agentic-engineering-101.md § M6 in detail. Big Idea fidelity: strategy's \"Three moves\" (1. Diff against the baseline, 2. Name the gaps/name the loop, 3. Map the stack, route the gap) map 1:1 onto the exercise's Phase 1 (diff+rank+cut) and Phase 2 (stack scan+shapes+route). Front-run check: the strategy doc's 2026-08-01 \"authoring-sequence cut\" removed the in-module second-skill build — confirmed absent from the current exercise body (ends at \"Decide what crosses back\", no second-skill authoring sequence), so the exercise correctly does NOT front-run the closing lecture's handoff-prompt move. Module-to-module arc: the exercise's close (\"the shapes carry into the close\", raw line 89) hands off cleanly to the strategy's stated M6 close (encode-move as closing lecture's handoff prompt) without pre-empting it. Mood-doesn't-resolve-early: N/A concern for M6 specifically — M6 is the arc's fluency landing per strategy (\"You close the laptop at M6 holding the move\"), not a stew-mood module whose unease must survive to a later module; nothing here front-runs a downstream unresolved mood.",
+      "evidence": "Structural claims (Big Idea fidelity, front-run check, module-to-module arc) all depend on phase order, prompt set, and the closing beat — none of which the 2026-08-25 diff touched (it trimmed prose sentences inside existing bullets only; no phase, prompt, or heading was added, removed, or reordered). Re-verified against the current body directly: the file still runs Phase 1 (diff+rank+cut, lines 17-48) into Phase 2 (stack scan+shapes+optional-sidestep, lines 49-94), closes on \"Decide what crosses back to your main repo\" (line 91) without authoring a second-skill build or any handoff-prompt content the strategy doc reserves for the closing lecture, and the maintainer's own \"Placement\" (raw line 113) and \"Mood target\" (115) lines — both untouched by this diff — still accurately describe the current structure. No front-running, no arc break introduced by this edit.",
       "fix_hint": null,
       "blocking": true
     },
@@ -120,7 +142,8 @@
       "rule_index": 5,
       "rule_lead": "Strategic themes recur in Key Concepts.",
       "verdict": "N/A",
-      "evidence": "Module-only section rule (governs a module file's `## Key Concepts` heading). This is an exercise file with no Key Concepts section; the strategy judge owns this rule on the corresponding module file, not here.",
+      "evidence": null,
+      "na_reason": "module-only section rule (governs a module file's Key Concepts heading); this is an exercise file with no such section",
       "fix_hint": null,
       "blocking": false
     },
@@ -129,7 +152,8 @@
       "rule_index": 6,
       "rule_lead": "Key Concepts shape — theme breadcrumbs, not standalone section.",
       "verdict": "N/A",
-      "evidence": "Module-only section rule; no Key Concepts section exists in this exercise file.",
+      "evidence": null,
+      "na_reason": "module-only section rule; no Key Concepts section exists in this exercise file",
       "fix_hint": null,
       "blocking": false
     },
@@ -138,7 +162,8 @@
       "rule_index": 7,
       "rule_lead": "What You'll Learn shape — capability register, not syllabus.",
       "verdict": "N/A",
-      "evidence": "Module-only section rule; no What You'll Learn section exists in this exercise file.",
+      "evidence": null,
+      "na_reason": "module-only section rule; no What You'll Learn section exists in this exercise file",
       "fix_hint": null,
       "blocking": false
     }
@@ -149,10 +174,12 @@
     "any_below_8": false,
     "stealing_the_mood": []
   },
-  "teaching_moment_and_arc_notes": "Teaching moment (\"I know how to test, I know how to learn\") reliably triggers across the persona triangle: the regenerated single canonical persona (mid-level engineer, 2 weeks Claude Code) and the prior 2026-08-09 three-persona cache (mid-layer, opinionated senior, fast operator — all superseded slices but directionally consistent) all land the diff+rank+cut arc and the stack-scan-with-stop-gate arc without fragility; the fast-operator variant compresses but does not skip either forcing function. Arc flow: Phase 1 (diff two known runs) widens cleanly into Phase 2 (scan the whole stack) via the explicit \"Look wider than the two sessions\" transition line (raw line 78), and the dominant-gap routing decided inside Phase 1's own prompt is reused (not re-asked) by Phase 2's optional sidestep — resolved by commit cbdd84d since the prior trace, which removed a genuine ambiguity the 2026-08-09 cache had flagged.",
+  "teaching_moment_and_arc_notes": "Teaching moment (\"two runs are enough to place every lesson\" / \"I know how to test, I know how to learn\") reliably triggers across the persona: Phase 1's diff+rank+cut forcing functions and Phase 2's stack-scan-with-stop-gate forcing functions are unchanged by the 2026-08-25 lean pass, which removed only connective/restatement prose (verified sentence-by-sentence against check_pedagogy §16's removal test — none load-bearing). Arc flow: Phase 1 (diff two known runs) widens into Phase 2 (scan the whole stack) via the explicit \"Look wider than the two sessions\" transition (line 53); the dominant-gap routing decided inside Phase 1's cut-rule prompt is reused, not re-asked, by Phase 2's optional sidestep (line 83's \"rank the ones that fit your gap\").",
   "notes": [
-    "check_workshop.md is in the storytelling compendium set by eval_classes but its own trigger (\"the output belongs to the group, not a participant\") does not fire on this file — every beat is individual work (student's own two sessions, own CLAUDE.local.md, own stack). No rows filed against it; filing an N/A row against one of its rule indices risked implying the file was assessed as workshop-shaped when it structurally isn't.",
-    "check_prompts.md is in the storytelling compendium set by eval_classes, but the story template's 'Specific judgments storytelling owns' section names no check_prompts rule, and its dispatch is primarily writing/technical. No rows filed; the one storytelling-relevant prompt-design concern (forcing functions belong in fences) is owned by and filed under check_pedagogy.md rule 16 instead, per the template's explicit ownership list."
+    "check_workshop.md is in the assembled brief (eval_classes includes storytelling on it) but the story template's ownership statements never name it, and its own rule 1 supplies the removal test that decides this file: \"remove the room — does the beat still produce the same artefact? Yes → it is individual.\" Every beat here is solo work (student's own two sessions, own CLAUDE.local.md, own stack); grepping the body for group/team/room/together/adjudicate (the view.json's own group_beat_markers signal) surfaced 3 hits, all false positives on inspection (see check_pedagogy §27 evidence). No rows filed against check_workshop.md; filing N/A rows against its 16 rule indices would imply the file was assessed as workshop-shaped when its own rule 1 says it structurally isn't.",
+    "check_prompts.md is in the assembled brief for the same eval_classes reason, but the story template's 'Specific judgments storytelling owns' list names no check_prompts.md rule, and check_pedagogy.md §43(c) (itself in my owned scope) explicitly draws this boundary: 'Canonical split: persona-reader (Class A — mood/confusion/\"this is me\", story judge) and prompt-behavior (Class B — per-prompt risk vs 15-pattern catalog, prompt-behavior judge).' check_prompts.md's 48 rules are exactly that 15+-pattern prompt-mechanics catalog — Class B's (behavior judge's) job, not story's. No rows filed; the one storytelling-relevant prompt-design concern (forcing functions belong in fences, not body) is owned by and filed under check_pedagogy.md rule 16 instead, per the template's explicit ownership list.",
+    "Ran prefill-instance.js --write before judging: it reported 'prior instance predates shape_hash — cannot verify N/A validity', so 0 rows were parked and every rule in the brief (144, across all 5 assembled compendiums) was mine to resolve fresh — no coverage was silently inherited.",
+    "check_pedagogy.md rule 45 (leap test) was added to this run's owned-rule set beyond the prior instance's coverage: its own rule text says 'Story judge blocks ship on missing/unfalsifiable leap tests,' the same explicit self-assignment pattern rule 47 uses ('Story judge blocks ship without both'), which the prior instance did cite. Treating one self-assigning rule as owned and not the other was inconsistent; both are filed here."
   ],
   "blocking_findings_count": 0,
   "todos_count": 0

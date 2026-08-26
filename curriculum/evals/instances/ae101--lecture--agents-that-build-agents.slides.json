@@ -1,170 +1,216 @@
 {
-  "class": "slides",
-  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/agents-that-build-agents.md",
-  "body_sha": "293e2f6ca38ba2216b60d6034f10af6b54ab378e6616d0b3e1c177887280a82b",
-  "verdict": "PASS",
-  "training": "ae101",
-  "chunk_map": [
-    {"index": 0, "heading": "Agents that build agents (H1 + lede)", "lines": "1-3"},
-    {"index": 1, "heading": "The move widens to everything you do", "lines": "5-11"},
-    {"index": 2, "heading": "The agent stops where your judgement begins", "lines": "13-19"},
-    {"index": 3, "heading": "The handoff prompt that builds your kit", "lines": "21-35"},
-    {"index": 4, "heading": "You make agentic happen", "lines": "37-43"},
-    {"index": 5, "heading": "Ralph", "lines": "45-56"},
-    {"index": 6, "heading": "There is no last turn", "lines": "58-63"}
-  ],
-  "rules_evaluated": [
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 1,
-      "rule_lead": "Referent resolution under a sequential deck read.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "chunk 0 line 3: \"The map you just drew\" resolves via module-arc-beats carve-out (this lecture is dead-last, placed directly after `the-map-filled-in.md` per module file `spot-gaps-build-the-loop.md` lines 49-53). chunk 2 line 17: \"the loop\" resolves via arc-earned spine vocabulary (named in `the-loop-has-a-name.md`, two beats earlier in the same module). chunk 3 line 23: \"the shapes you drew\" resolves via the same module-arc carve-out. Closest-to-violating: chunk 4 line 43 \"there since M2\" — arc-earned M-ref, not a violation. No unresolved pronoun/demonstrative found across all 7 chunks.",
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 2,
-      "rule_lead": "Cross-file and positional callbacks.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "chunk 0 line 3 names the referenced lecture's content (\"a dashed loop, yours to draw solid\"), not its position; no file is located by position anywhere in body. grep for positional phrasing (\"opening lecture said\", \"earlier module said\") = 0 hits in body.",
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 3,
-      "rule_lead": "Every backward reference points at a beat that exists.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Verified against `curriculum/trainings/agentic-engineering-101/spot-gaps-build-the-loop.md` lines 49-53: module 6 lecture order is `the-loop-has-a-name.md` → `the-map-filled-in.md` → `agents-that-build-agents.md`, matching this file's maintainer Placement block exactly. \"The map you just drew\" (chunk 0) and \"the shapes you drew\" (chunk 3) both resolve to the immediately-preceding lecture, which exists and is sequenced immediately before this file.",
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 4,
-      "rule_lead": "Live-demo beats survive a text read.",
-      "verdict": "N/A",
-      "chunks_flagged": [],
-      "evidence": "No guess-before-reveal demo beat anywhere in the body; this is a closer lecture, not a live-run exercise.",
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 5,
-      "rule_lead": "No orphan slides.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "All 7 chunks carry a self-standing claim or worked beat (e.g. chunk 6 line 58 \"There is no last turn. Each session surfaces the next gap.\" stands alone). None is a bare wait-state or single context-dependent bullet.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 6,
-      "rule_lead": "Header self-carries at projection distance.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Each header is confirmed by its chunk's content: chunk 1 \"The move widens to everything you do\" is borne out by lines 7-9 (skill → map, same move); chunk 5 \"Ralph\" is borne out by the bash block + bullets naming Ralph. No header contradicted by its chunk.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 7,
-      "rule_lead": "LLM-cadence caps.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "\"Not X. Not Y. Z.\" — 0 hits (line 13 is a single \"Not X\" negation, not the triple construction). Anaphora triple — chunk 6 line 60 \"Each session surfaces the next gap. Each gap proposes the next move. Each move makes the next session cheaper.\" is anaphoric in form but each leg introduces new concrete content (gap → move → cost), not padding restatement; closest-to-violating line, kept as PASS. Self-grading superlatives — grep for \"one of the most/best\" = 0 hits. Number + retraction — 0 numeric claims with a hedge-and-retract pattern. Abstraction-noun stacks — no \"X reality\"/\"reached for Y\" style phrase found. Verb triplets with an empty leg — line 61 \"grows, sharpen, accumulate\" each survives \"what does this concretely mean\" (kit grows, rules sharpen, skills accumulate) — none empty.",
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 8,
-      "rule_lead": "Internal dialect never lands on a slide.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "grep for surface(-as-noun)/firing/compendium/forcing function/beat/mood/Connections in body = 0 hits. \"the practitioner shape\" (line 19) is ordinary engineer-register prose, not repo dialect.",
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 9,
-      "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "chunk 4 (\"You make agentic happen\") carries 3 bolded handles (lines 31-33), over the ≤1-per-slide default budget, but the file's own maintainer block (line 81, \"Soil slide\" note) states \"(a) one bold handle per order = the law-slide pattern\" as a deliberate, Antti-directed accept-note for exactly this slide. §9's own text permits \"a law/consolidation slide may carry one handle per law.\" Accept-note present in file; no edit owed. Rest of body carries zero bold (confirmed by grep, matches the 2026-07-09 Emphasis-pass maintainer note).",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 10,
-      "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Entire body (lines 1-63) sits inside one continuous lecture body above the maintainer cut, included via `[Agents that build agents](lectures/agents-that-build-agents.md)` in `spot-gaps-build-the-loop.md` line 53, which reaches the composed deck through the module's `.phase--lecture` wrapper. No phase-less stray prose section exists outside the H1-to-cut span.",
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 11,
-      "rule_lead": "Numbering — position is computed, content ordinals are linted.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "`node scripts/check-slide-numbering.js --file curriculum/lectures/agents-that-build-agents.md` → \"OK — 1 files, Phase/Step numbering consistent.\" exit 0. No hand-numbered `## Phase N:`/`## N.` headers in this file (M-refs are prose, not headers).",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 12,
-      "rule_lead": "Page geometry dies at the cut; reading order survives.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "`node scripts/check-slide-deixis.js --file curriculum/lectures/agents-that-build-agents.md` → \"OK — 1 files, no page-geometry pointers across the slide cut.\" exit 0.",
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 13,
-      "rule_lead": "In-deck links work now; whether they EARN their place is open.",
-      "verdict": "N/A",
-      "chunks_flagged": [],
-      "evidence": "No in-body markdown links present in the body (grep for `](` in lines 1-63 = 0 hits). Nothing to inventory.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 14,
-      "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "`node scripts/check-slide-size.js --file curriculum/lectures/agents-that-build-agents.md` → \"files: 1  slides: 6  limits: 210 words / 6 bullets / oversized: 0 / every slide is within limits.\" exit 0.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 15,
-      "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "5 of 6 body headers read as claims (\"The move widens to everything you do\", \"The agent stops where your judgement begins\", \"You make agentic happen\", \"There is no last turn\", and the noun-phrase-as-claim \"The handoff prompt that builds your kit\"). Chunk 5's \"Ralph\" is a bare proper-noun label, not a claim sentence — closest-to-violating header. Checked against corpus precedent: `grep -rn \"^## \" curriculum/lectures/*.md` shows other short topic-label lecture headers already in house convention (\"Bridge\", \"Eval\", \"Compounding\", \"Optional\"), so a single-word named-concept header alongside claim headers is established practice, not a drift from rule 15's split (whose measured scope and worked examples are the exercise-imperative-vs-lecture-claim split, not a mandate that every lecture header individually be a full claim sentence). No reader-confusion harm present; forcing \"Ralph\" into a claim-shaped header would flatten a deliberate closer beat that echoes the bash block below it. Accepted as house convention, not filed as REVISE.",
-      "fix_hint": null,
-      "blocking": false
-    }
-  ],
-  "blocking_findings_count": 0,
-  "todos_count": 0
+ "class": "slides",
+ "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/agents-that-build-agents.md",
+ "body_sha": "908e27b7f499d626076085d877a15b1a8677229f400aba762d353fa3123c67b4",
+ "shape_hash": "a1b6245c45cbdfbe",
+ "verdict": "REVISE",
+ "training": "ae101",
+ "chunk_map": [
+  {
+   "index": 0,
+   "heading": "Agents that build agents (H1 + lede)",
+   "lines": "1-3"
+  },
+  {
+   "index": 1,
+   "heading": "The move widens to everything you do",
+   "lines": "5-11"
+  },
+  {
+   "index": 2,
+   "heading": "The agent stops where your judgement begins",
+   "lines": "13-19"
+  },
+  {
+   "index": 3,
+   "heading": "The handoff prompt that builds your kit",
+   "lines": "21-27"
+  },
+  {
+   "index": 4,
+   "heading": "You make agentic happen",
+   "lines": "29-35"
+  },
+  {
+   "index": 5,
+   "heading": "Ralph",
+   "lines": "37-48"
+  },
+  {
+   "index": 6,
+   "heading": "There is no last turn",
+   "lines": "50-55"
+  }
+ ],
+ "rules_evaluated": [
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 1,
+   "rule_lead": "Referent resolution under a sequential deck read.",
+   "verdict": "REVISE",
+   "chunks_flagged": [
+    3
+   ],
+   "evidence": "chunk 3 \"The handoff prompt that builds your kit\": raw line 25 is the marker `{{prompt:agents-that-build-agents-handoff}}`; expanded (`node scripts/expand-md.js curriculum/lectures/agents-that-build-agents.md`, expanded line 25) it renders \"**Prompt** *(Claude Code, same session, at the close after the stack scan)*\" onto the slide. \"The stack scan\" is a never-named referent: it does not appear anywhere in this file's body (lines 1-56), and it never appears in ANY student-facing text in the module. It exists only in `curriculum/exercises/spot-gaps-build-the-loop.md`'s own maintainer block (lines 111, 113 — confirmed past that file's `<!-- maintainer -->` cut at line 95 via `grep -n \"<!-- maintainer -->\"`), where the exercise's own Phase 2 IS named for the student, but as \"## Phase 2: Find the work you repeat across your stack\" (line 49) — never as \"the stack scan.\" A student reading this slide, in either layout, has no named beat to attach \"the stack scan\" to; the ONLY place that phrase exists in the whole training is internal authoring shorthand that leaked into the rendered prompt-block frontmatter (`curriculum/prompts/agents-that-build-agents-handoff.md` line 4: `context: same session, at the close after the stack scan`). Not a page-geometry issue (rule 12) — \"after X\" is a legitimate reading-order pointer — the noun X itself never resolves. Harm is real and concrete: this is the timing cue for when to run the capstone handoff prompt, and it fails to land for exactly the reader it addresses.",
+   "fix_hint": "Rename the prompt's `context:` phrase to name the beat by its actual student-facing claim (e.g. \"after you found the recurring work across your stack\", echoing the exercise's own heading), not the maintainer-only shorthand \"the stack scan.\"",
+   "blocking": true
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 2,
+   "rule_lead": "Cross-file and positional callbacks.",
+   "verdict": "PASS",
+   "chunks_flagged": [],
+   "evidence": "Every cross-beat reference names content, not position: chunk 0 line 3 \"The map you just drew ended on a dashed loop, yours to draw solid\" names the claim (verified verbatim against `the-map-filled-in.md` line 67's kicker: \"The next dashed loop is yours to draw solid\"), never \"the previous lecture said\"; chunk 6's close sums this file's own arc, which is a closer doing its job per the rule's own carve-out. `grep -niE \"the (opening|previous|earlier) (lecture|module) (said|showed)\" curriculum/lectures/agents-that-build-agents.md` → 0 hits.",
+   "fix_hint": null,
+   "blocking": true
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 3,
+   "rule_lead": "Every backward reference points at a beat that exists.",
+   "verdict": "PASS",
+   "chunks_flagged": [],
+   "evidence": "Re-verified against the live module file `curriculum/trainings/agentic-engineering-101/spot-gaps-build-the-loop.md`: include order is `spot-gaps-build-the-loop.md` (exercise, line 37) -> `composing-the-workflow.md` (47) -> `the-loop-has-a-name.md` (49) -> `the-map-filled-in.md` (51) -> `agents-that-build-agents.md` (53, this file). Chunk 0's \"the map you just drew\" resolves to `the-map-filled-in.md`, immediately preceding and confirmed present. Chunk 3's \"the shapes you drew\" resolves to the exercise's own body heading \"## Draw your top work-shapes as diagrams\" (`spot-gaps-build-the-loop.md` line 66, student-facing, above that file's own maintainer cut at line 95) — a real, currently-existing beat earlier in the same module's include order. Contrast with the rule-1 finding above: \"shapes\" is earned in student-facing prose; \"the stack scan\" is not.",
+   "fix_hint": null,
+   "blocking": true
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 4,
+   "rule_lead": "Live-demo beats survive a text read.",
+   "verdict": "N/A",
+   "chunks_flagged": [],
+   "evidence": "No guess-before-reveal construction anywhere in the body; this is a closer lecture (dead-last training beat), not a live-run/demo exercise.",
+   "fix_hint": null,
+   "blocking": true
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 5,
+   "rule_lead": "No orphan slides.",
+   "verdict": "PASS",
+   "chunks_flagged": [],
+   "evidence": "All 7 chunks carry a multi-sentence, self-standing claim or worked beat (e.g. chunk 6 lines 50-53 stand alone as the training's closing statement; chunk 5 pairs a runnable bash one-liner with its own narrated bullets). None is a bare wait-state or single context-dependent bullet.",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 6,
+   "rule_lead": "Header self-carries at projection distance.",
+   "verdict": "PASS",
+   "chunks_flagged": [],
+   "evidence": "Each header is borne out by its own chunk: chunk 2 \"The agent stops where your judgement begins\" is exactly what lines 15-19 argue (evidence stops at the disk, judgement is the input); chunk 6 \"There is no last turn\" is literally the chunk's opening sentence (line 51). No header contradicted by its content.",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 7,
+   "rule_lead": "LLM-cadence caps.",
+   "verdict": "PASS",
+   "chunks_flagged": [],
+   "evidence": "\"Not X. Not Y. Z.\" — `grep -n \"^Not \\|\\. Not \"` → 1 hit, line 15 \"Not the agent writing its own skills without you in the room.\", a single \"Not X\" negation followed by unrelated sentences, not the banned triple. Self-grading superlatives — `grep -niE \"one of the (most|best)\"` → 0 hits. Number + retraction — `grep -nE \"[0-9]+%|about [0-9]|roughly [0-9]\"` → 0 hits. Anaphora triple (chunk 6, lines 51-52: \"Each session surfaces the next gap. Each gap proposes the next move. Each move makes the next session cheaper.\") — third leg carries concrete new content (cost) closing the cycle back to \"session,\" not padding; kept as PASS, closest-to-violating line in this file. Abstraction-noun stacks / verb triplets with an empty leg — line 53's \"grows, sharpen, accumulate\" (kit/rules/skills) each survives \"what does this concretely mean\" independently; none empty.",
+   "fix_hint": null,
+   "blocking": true
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 8,
+   "rule_lead": "Internal dialect never lands on a slide.",
+   "verdict": "PASS",
+   "chunks_flagged": [],
+   "evidence": "`grep -niE \"\\bsurface\\b|\\bfiring\\b|\\bcompendium\\b|forcing function|\\bbeat\\b|\\bmood\\b|\\bConnections\\b\" curriculum/lectures/agents-that-build-agents.md` returns hits only at lines 61+, all inside the maintainer/backing region (cut at line 57) — 0 hits in body lines 1-56.",
+   "fix_hint": null,
+   "blocking": true
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 9,
+   "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
+   "verdict": "PASS",
+   "chunks_flagged": [],
+   "evidence": "`grep -n '\\*\\*' ` on body lines 1-56 -> exactly 3 bold spans, all in chunk 4 (\"You make agentic happen\", lines 31-33), one per bullet/law (\"Act under uncertainty.\", \"Competence sets the ceiling.\", \"Cross personal -> team.\"). Rest of the body carries zero bold, matching the 2026-07-09 Emphasis-pass maintainer note (line 66). Rule 9's own text: \"a law/consolidation slide may carry one handle per law\" — this is exactly that shape, and the maintainer's Soil-slide note (line 80) independently attests \"(a) one bold handle per order = the law-slide pattern.\" No edit owed; the 2026-08-25 lean-pass diff did not touch this chunk.",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 10,
+   "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
+   "verdict": "PASS",
+   "chunks_flagged": [],
+   "evidence": "Entire body (lines 1-56) sits inside one continuous lecture file included via `[Agents that build agents](lectures/agents-that-build-agents.md)` at `curriculum/trainings/agentic-engineering-101/spot-gaps-build-the-loop.md` line 53, which reaches the composed deck through the module's lecture-phase wrapper (files under `curriculum/lectures/` render as `.phase--lecture`, per `site/layouts/slides.js`'s `buildDeckModel`). No phase-less stray prose section exists outside the H1-to-maintainer-cut span.",
+   "fix_hint": null,
+   "blocking": true
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 11,
+   "rule_lead": "Numbering — position is computed, content ordinals are linted.",
+   "verdict": "PASS",
+   "chunks_flagged": [],
+   "evidence": "`node scripts/check-slide-numbering.js --file curriculum/lectures/agents-that-build-agents.md` -> \"OK — 1 files, Phase/Step numbering consistent.\" exit 0. No hand-numbered `## Phase N:`/`## N.` headers in this file; M-refs (M2/M3/M6) are prose, not headers, and are not slide-position ordinals.",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 12,
+   "rule_lead": "Page geometry dies at the cut; reading order survives.",
+   "verdict": "PASS",
+   "chunks_flagged": [],
+   "evidence": "`node scripts/check-slide-deixis.js --file curriculum/lectures/agents-that-build-agents.md` -> \"OK — 1 files, no page-geometry pointers across the slide cut.\" exit 0. \"At the close after the stack scan\" (chunk 3) uses reading-order phrasing (\"after X\"), which survives the cut per this rule's own text — its defect is a rule-1 unresolved referent, not a rule-12 geometry failure, and is filed there instead.",
+   "fix_hint": null,
+   "blocking": true
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 13,
+   "rule_lead": "In-deck links work now; whether they EARN their place is open.",
+   "verdict": "N/A",
+   "chunks_flagged": [],
+   "evidence": "`grep -n \"\\](\"` on body lines 1-56 -> 0 hits. No in-body markdown links present; nothing to inventory or adjudicate.",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 14,
+   "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
+   "verdict": "PASS",
+   "chunks_flagged": [],
+   "evidence": "`node scripts/check-slide-size.js --file curriculum/lectures/agents-that-build-agents.md` -> \"files: 1  slides: 6  limits: 210 words / 6 bullets ... oversized: 0 ... every slide is within limits.\" exit 0.",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 15,
+   "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
+   "verdict": "PASS",
+   "chunks_flagged": [],
+   "evidence": "5 of 6 body headers are claim-shaped (\"The move widens to everything you do\", \"The agent stops where your judgement begins\", \"The handoff prompt that builds your kit\", \"You make agentic happen\", \"There is no last turn\"). Chunk 5's header \"Ralph\" is a bare proper-noun label — the rule's own NOT-violations list names this exact case verbatim: \"catalogue entries naming their subject (*Ralph*, *The numbers*, *Verification, named*)\". Closest-to-violating header, and the compendium settles it directly rather than by house-convention inference.",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 16,
+   "rule_lead": "A bullet earns its slot or dies — three classes that read as rigour and carry nothing.",
+   "verdict": "PASS",
+   "chunks_flagged": [],
+   "evidence": "Checked all 9 body bullets (chunk 4 x3, chunk 5 x4, chunk 6 x2) against the three classes. Closest-to-violating: chunk 6 line 52's anaphora-triple close (\"Each move makes the next session cheaper\") echoes chunk 1 line 7's \"Every packaged move makes the next session cheaper\" near-verbatim — a candidate (a) doctrine restatement. Kept as PASS: this is the training's dead-last beat (per maintainer Placement block, `agents-that-build-agents` is the final lecture of the final module), and the echo is the deliberate full-circle closing device (session -> gap -> move -> cheaper session, looping back to \"session\") rather than a meta-announcement of a lens already used — rule 2's own text grants closers latitude to sum the whole deck (\"a closer summing the whole deck is a closer doing its job\"), and cutting the echo would break a deliberate repetition per the dispatch preamble's own carve-out. \"Practitioners see levers first.\" (chunk 5 line 46, trimmed by the 2026-08-25 lean pass) is the generalizing moral the anecdote earns, not a (c) aphorism kicker restating the header \"Ralph\" or a `**The point:**` line — it introduces the priority (notice available levers) the preceding three bullets illustrate but never state outright. No (b) self-referential design commentary found: \"This one closes the module\" (chunk 3 line 23) and \"Agents that build agents is a collaboration in the same shape as everything else here\" (chunk 2 line 15) are substantive orientation/consolidation claims about the subject matter and the module's structure, not the curriculum narrating its own pedagogical design.",
+   "fix_hint": null,
+   "blocking": false
+  }
+ ],
+ "blocking_findings_count": 1,
+ "todos_count": 0,
+ "resolution": {
+  "settled": "refuted",
+  "at": "2026-08-26",
+  "note": "Sole blocking finding (slides §1 forward-ref at L25) killed by refuters: the handoff chunk names its own object and the shapes-you-drew referent rides the lecture prior beat, in-sequence by design. No finding survives; PASS stamped per adjudication."
+ }
 }

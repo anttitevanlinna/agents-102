@@ -2,44 +2,46 @@
   "class": "storytelling",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/quality-is-grounding.md",
   "verdict": "PASS",
+  "body_sha": "26223cca3484cc443f60a24da6e67495e0ca6e1cae1fd7efa4e12207c2216a68",
+  "shape_hash": "0e8c64fecfeaf2e0",
   "training": "ae101",
   "module_mood_contract": "practitioner fluency — 'I know how to test, I know how to learn, I know how to encode'",
-  "trace_status": "regenerated",
-  "note_on_prior_instance": "Only on-disk change since the 2026-08-02 audit (content_sha 40539a4... -> ab7314756...) is the 2026-08-03 factual correction 'a few of them' -> 'two of them' in Slide 3's Agentics-Helsinki line, plus the matching source-stamp/stance-block re-attestation (backing block, non-student-facing). Re-read the full file end to end against every rule below rather than diffing; the substitution is a count-word swap inside an already-attributed vision-tier claim and moves no rule's verdict. Trace phase-1 persona_action updated to reflect the corrected count; mood scores, confusion flags, and every rules_evaluated verdict from the prior instance are unchanged and re-verified live: node scripts/check-slide-size.js reports 3 slides / 0 oversized against the current file; the-map-filled-in.md still carries its self-labeled §1 closer placement; spot-gaps-build-the-loop.md's Start-here sequence is unchanged.",
+  "trace_status": "cached",
+  "note_on_prior_instance": "Pinned diff 1abb84c6..HEAD touches only the maintainer block: a 2026-08-25 'Lean pass' cut one sentence from the end of Slide 1's body ('Not one move learned in one module; the discipline, threaded through the whole training.') and deleted the matching backing-block claim row `discipline-not-one-move-per-module`; the Quality line's per-class SHAs and dates updated to the 2026-08-24 re-audit with '(drift-recheck)' tags. No slide was added, removed, or reordered; no header changed; no prompt/fence/group-beat shape appeared. Re-read the full current body end to end against every rule in the brief rather than diffing, per instructions. Prior instance predated `shape_hash`/`body_sha` fields entirely (prefill fell through: 'prior instance predates shape_hash — cannot verify N/A validity'), so every row below is freshly judged against the live file, not carried on trust. Two prior-instance defects fixed in this pass: (1) `check_prompts.md` and `check_workshop.md` whole-compendium N/A notes were previously filed under a fabricated `rule_index: 1` with an invented `rule_lead` that does not match either compendium's real rule 1 text — refiled per the dispatch preamble's own example as `rule_index: null, judge_owned: true`. (2) `check_workshop.md` (16 rules, now assembled in the brief) had no row at all in the prior instance; added.",
   "rules_evaluated": [
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 1,
-      "rule_lead": "Mood lands — 8+/10 per teaching beat; below 7 = REVISE.",
+      "rule_lead": "Mood contract named. ... Mood-floor (8+/10 per beat, <7 = REVISE) applies to TEACHING beats only.",
       "verdict": "PASS",
-      "evidence": "trace.phases[0].mood_score=8, trace.close.mood_score=8. Single teaching phase (lecture has no ## Phase headers; three prose sections render as three slides). All three beats (arc-recognition, decay blind-spot, spec-and-tests-to-grounding reframe) are TEACHING beats — mood-floor applies — and all clear 8. No mechanical setup beat present to exempt. The count-word correction ('two of them') sits inside slide 3's opener and does not change its register or mood.",
+      "evidence": "Cached trace `ae101--lecture--quality-is-grounding.persona.json` content_sha=ab7314756... matches the CURRENT body's un-fenced text exactly (the only on-disk change since the trace was generated is inside the maintainer block, below the trace's read boundary, so the trace's phase_sha is still valid for the student-facing content it scored). phases[0].mood_score=8, close.mood_score=8. Lecture has no `## Phase` headers so the whole body is one phase covering all three slides; all three (arc-recognition, decay blind-spot, spec-and-tests-to-grounding reframe) are TEACHING beats, not mechanical setup — mood-floor applies and clears 8 at both the phase and the close.",
       "fix_hint": null,
       "blocking": true
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 2,
-      "rule_lead": "Epistemic mood, not punitive mood.",
+      "rule_lead": "Epistemic mood ≠ punitive mood.",
       "verdict": "PASS",
-      "evidence": "Closing question ('How do you know it's right?') is open, not accusatory — trace.phases[0].persona_action reads it as 'a real question I carry into the exercise unresolved,' not a rebuke. The decay slide states the blind spot in general terms ('No gate fires on any of them, so a run can come back green and still leave the code worse than it found it') — a diagnostic claim about checks, not an accusation that the student personally shipped decay. trace confusion_flags register only a beat of ambiguity, not a shame/correction reading.",
+      "evidence": "Line 23: 'The agentic engineer maxes that signal out. You ship a million lines of new stuff. How do you know it's right?' is an open not-knowing question, matching the backing block's own stance note that this line 'carries no stamp and should not... a rhetorical figure rather than a claim.' Line 13 states the decay blind spot in general terms about checks ('No gate fires on any of them, so a session can come back green and still leave the code worse than it found it') — a diagnostic claim about tooling, not an accusation that the reader personally shipped decay. Nothing in the body reads as 'I messed up.'",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 3,
-      "rule_lead": "Lead with discipline, not failure mode.",
+      "rule_lead": "Lead with discipline, not failure mode. Carve-out — named canonical results keep their names.",
       "verdict": "PASS",
-      "evidence": "Lecture opens 'The quality arc ran the whole training' and closes on 'grounding' — positive disciplines lead. The middle slide's header 'Decay clears the gate' names a failure mode, but as the negative case the discipline (grounding, gates, tests) addresses, not as the lecture's title or Big Idea — matches the rule's explicit allowance ('failure mode becomes negative case the discipline addresses, not the title'). Sibling precedent cited in the rule text itself ('Gates decay', 'Passing is not proof') covers exactly this shape at slide-header level.",
+      "evidence": "Title 'Quality is grounding' and slide-1 header 'Five moves, one quality discipline' both lead with the positive discipline; the file closes on 'grounding' (line 21), not on a failure word. The one failure-shaped header, 'Decay clears the gate' (line 11), sits as the MIDDLE slide naming the negative case the discipline (gates, tests, grounding) addresses — matching the rule's explicit allowance that a failure mode may become 'the negative case the discipline addresses, not the title.' The rule's own corpus precedent list ('Gates decay', 'Passing is not proof') names this exact shape at slide-header granularity.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 4,
-      "rule_lead": "Strategy-fidelity — CONSOLIDATES front-run check, module-to-module arc, Big Idea fidelity, and mood-doesn't-resolve-early into one verdict.",
+      "rule_lead": "Strategy-fidelity check. CONSOLIDATES front-run check, module-to-module arc, Big Idea fidelity, and mood-doesn't-resolve-early into one verdict.",
       "verdict": "PASS",
-      "evidence": "Big Idea fidelity: matches M6's spot-gaps-build-the-loop framing (test -> learn -> encode arc) — the decay slide reinforces why encoding into a skill matters, doesn't substitute a different Big Idea. Module-to-module arc: `curriculum/trainings/agentic-engineering-101/spot-gaps-build-the-loop.md` ## Start here sequence unchanged (the-2-frontiers -> story-of-module-6 -> quality-is-grounding -> exercise); this file's own Time: line still books 3-5 min. Front-run check: the decay slide names Horthy's blind-spot argument and links out to `clean-code-is-steering.md` for depth rather than teaching it inline — a pointer, not a preemption; `the-loop-has-a-name.md` (M6's closer) still owns eval/verifier/judge/gate naming untouched by this slide. Mood-doesn't-resolve-early: the closing question stays open per the maintainer's own watch-for ('Let it sit. Don't answer it for the room'); the 2026-08-03 count correction touches only a factual detail inside slide 3's opener, not the close.",
+      "evidence": "Big Idea fidelity: matches `spot-gaps-build-the-loop.md`'s test->learn->encode M6 arc (Leap test line 109, mood target line 133 'practitioner fluency'); the decay slide reinforces why encoding into a checkable skill matters rather than substituting a different Big Idea. Module-to-module arc: `spot-gaps-build-the-loop.md` `## Start here` sequence (grep confirms: the-2-frontiers -> story-of-module-6 -> quality-is-grounding -> exercise) is unchanged by the pinned diff; this file's own maintainer 'Time: 5 min' line is untouched. Front-run check: line 15 names Horthy's blind-spot argument and links out to `clean-code-is-steering.md` by title for depth rather than teaching it inline (a pointer, not a preemption); the file never names 'eval', 'judge', or 'gate' as the technical M6 artefact `the-loop-has-a-name.md` (M6's closer, per maintainer meta line 37) is built to introduce. Mood-doesn't-resolve-early: the closing question (line 23) stays open per the file's own watch-for ('Let it sit. Don't answer it for the room', line 86); the pinned diff removed one retrospective sentence from slide 1 and did not touch the close at all.",
       "fix_hint": null,
       "blocking": true
     },
@@ -48,7 +50,7 @@
       "rule_index": 5,
       "rule_lead": "Strategic themes recur in Key Concepts.",
       "verdict": "N/A",
-      "evidence": "Key Concepts is a module-file, student-facing heading; this is a lecture file with no Key Concepts section. Governed by the module file (`spot-gaps-build-the-loop.md`), owned by the strategy judge.",
+      "evidence": "Lecture file, no `## Key Concepts` heading (module-file-only section). Owned by the strategy judge on `spot-gaps-build-the-loop.md`.",
       "fix_hint": null,
       "blocking": false
     },
@@ -57,7 +59,7 @@
       "rule_index": 6,
       "rule_lead": "Key Concepts shape — theme breadcrumbs, not standalone section.",
       "verdict": "N/A",
-      "evidence": "No Key Concepts section on a lecture file. Module-only, owned by the strategy judge.",
+      "evidence": "No Key Concepts section on a lecture file.",
       "fix_hint": null,
       "blocking": false
     },
@@ -66,7 +68,7 @@
       "rule_index": 7,
       "rule_lead": "What You'll Learn shape — capability register, not syllabus.",
       "verdict": "N/A",
-      "evidence": "No What You'll Learn section on a lecture file. Module-only, owned by the strategy judge.",
+      "evidence": "No What You'll Learn section on a lecture file.",
       "fix_hint": null,
       "blocking": false
     },
@@ -75,16 +77,16 @@
       "rule_index": 16,
       "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
       "verdict": "N/A",
-      "evidence": "Lecture carries zero fenced `**Prompt**` blocks — it is a 3-5 min read-aloud stakes-setter with no student action. No forcing function exists to check placement of.",
+      "evidence": "Body view signals confirm `has_prompt_blocks: false`. Zero fenced `**Prompt**` blocks in this file — it is a 3-5 min read-aloud stakes-setter with no student action, so there is no forcing function whose placement (prompt vs. body) could be checked.",
       "fix_hint": null,
       "blocking": true
     },
     {
       "compendium": "check_pedagogy.md",
       "rule_index": 27,
-      "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room outside text.",
+      "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room outside text. No group, pair, room-share.",
       "verdict": "PASS",
-      "evidence": "No 'discuss with...', 'share with your neighbor', 'tell the room', pair-share, or pause-cue sentence anywhere in the body, including the decay slide. The closing question is a rhetorical/epistemic hand-off to the exercise, not a cohort-management instruction. Body is narrative/teaching register throughout all three sections.",
+      "evidence": "Grepped the body (lines 1-23): no 'discuss with', 'share with your neighbor', 'tell the room', 'take N minutes', or pause-cue sentence anywhere. The closing question (line 23) hands off to the exercise, it does not instruct a room activity. All authored cohort-management language ('Read in-room early in M6...', the Watch-fors delivery notes) lives in the maintainer block (lines 39-41, 82-88), below the fence, which is the trainer's material, not the body.",
       "fix_hint": null,
       "blocking": false
     },
@@ -93,25 +95,25 @@
       "rule_index": 1,
       "rule_lead": "Meta-frame lectures = closers, not openers. Placement diagnostic: naming a pattern (closer), showing a ceiling (opener), or teaching vocabulary (mid-module)?",
       "verdict": "REVISE",
-      "evidence": "Slide 1 narrates a pattern already lived (M1 tests-first -> M2 plan push-back -> M3 skill -> M5 verifier) in the closer-shaped register the rule targets ('naming a pattern... recognition of pattern made visible'). It is placed as the OPENER, immediately before the M6 exercise (`## Start here`: the-2-frontiers -> story-of-module-6 -> quality-is-grounding -> exercise). Sibling comparison inside the same module: `the-map-filled-in.md` does the same kind of arc-consolidation work and self-labels in its own maintainer block as 'Consolidation and recognition, NOT new teaching (check_lectures §1)' — and IS placed at M6's close, after the exercise and Debrief. Two arc-consolidation lectures in the same module take opposite placements under the same rule. Mitigating factor unchanged from the prior audit: the M1-M5 material named is already lived by the time the student reads this (M6), so 'told after those exercises' is satisfied for that portion; only the forward clause ('Today adds the fifth move') and the decay slide (a genuinely new frame, not recap) are told before M6's own exercise, and both stay general — no specific gap-routing given away. The 2026-08-03 count correction is a factual detail swap inside slide 3 and doesn't touch this placement tension either way.",
-      "fix_hint": "Either move the arc-recognition content (Slide 1) to sit after the exercise (e.g. folded into the Human close alongside `the-map-filled-in.md`, which already does this work at the same module), or keep it as opener but recast Slide 1 from a module-by-module recitation into a forward ceiling-statement rather than a five-item retrospective list.",
+      "evidence": "Slide 1 (lines 3-9) narrates a pattern already lived across five prior modules (M1 tests-first -> M2 plan push-back -> M3 skill -> M5 verifier) in the closer-shaped register the rule targets ('naming a pattern... recognition of pattern made visible'), but this file is placed as the OPENER, immediately before M6's own exercise (maintainer meta line 37: 'placed early between story-of-module-6.md and the main exercise'). Sibling comparison in the same module: `the-map-filled-in.md` does the same arc-consolidation work and self-labels 'Consolidation and recognition, NOT new teaching (check_lectures §1)' while sitting at M6's CLOSE, after the exercise and Human close. Two arc-consolidation lectures in one module take opposite placements under the same rule. Mitigating factor, unchanged by the pinned diff: the M1-M5 material itself was already lived by the time a student reaches M6, so the closer-shaped recap partially satisfies 'told after' for that portion; only the forward clause ('Today adds the fifth move', line 7) and the decay slide (new framing, not recap) are told before M6's own exercise, and both stay general rather than pre-solving anything the exercise will surface. The 2026-08-25 Lean-pass cut one retrospective sentence from the end of slide 1 ('Not one move learned in one module...') — a small reduction in recitation weight, not a resolution of the placement tension: the four-module recap and the closer-shaped register both remain.",
+      "fix_hint": "Either move the arc-recognition content (Slide 1) to sit after the exercise (folded into the Human close alongside `the-map-filled-in.md`, which already does this work in the same module), or keep it as opener but recast Slide 1 from a module-by-module recitation into a forward ceiling-statement.",
       "blocking": false
     },
     {
       "compendium": "check_lectures.md",
       "rule_index": 2,
-      "rule_lead": "Minimal lecturing before contrast-mood exercises.",
+      "rule_lead": "Minimal lecturing before contrast-mood exercises. Max dosage for contrast-mood opener: spirit + diagnostic lenses + one operational primitive + direct-descriptive FAQ if load-bearing.",
       "verdict": "N/A",
-      "evidence": "Rule targets contrast-mood modules (M5-style: learn through doing, name it after). M6's mood contract is practitioner fluency (stakes-setting register), not contrast/unease. This lecture precedes M6's exercise, which is not a contrast-mood exercise.",
+      "evidence": "Rule scopes to 'Contrast-mood modules (M5-style: learn through doing the thing, name it after)'. `spot-gaps-build-the-loop.md` line 133 states M6's mood target as 'practitioner fluency... competence-as-posture', not a contrast/unease mood; the module's own named failure shapes to avoid are 'compliance-feel', 'paperwork-feel', 'credibility-performance', 'trainer-monologue retrospective' (line 133) — a different register than the contrast-mood archetype this rule binds. This lecture precedes a practitioner-fluency exercise, not a contrast-mood one.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_lectures.md",
       "rule_index": 3,
-      "rule_lead": "No cross-module sequencing in lecture bodies. Carve-out: arc lectures whose SUBJECT is the arc keep module ranges.",
+      "rule_lead": "No cross-module sequencing in lecture bodies. Carve-out: arc lectures (the map, consolidation closers) whose SUBJECT is the arc keep module ranges.",
       "verdict": "PASS",
-      "evidence": "Body names M1/M2/M3/M5 in Slide 1; the carve-out applies — the lecture's entire subject is the cross-module quality arc itself (title: 'Quality is grounding' / 'Five moves, one quality discipline'), not a bridge or forward-reference to a specific downstream module beat. All refs are backward-looking material about moves already completed. The decay slide adds no module-numbered reference (it links out to a supplementary file, `clean-code-is-steering.md`, by title, not by module number). Matches the file's own maintainer-logged section-3 sweep (2026-07-02: 5 refs judged, 0 fixed, 5 carve-out) — unaffected by the 2026-08-03 count-word edit since that edit added zero new M-number references.",
+      "evidence": "Line 5 names M1/M2/M3/M5 by number. The carve-out applies directly: the lecture's entire subject is the cross-module quality arc itself (title 'Quality is grounding', slide-1 header 'Five moves, one quality discipline'), not a bridge to a specific downstream beat. Matches the file's own maintainer-logged 'section-3 sweep 2026-07-02: 5 refs judged... 5 carve-out' (line 35). The decay slide adds no new module-numbered reference (its one link is by title, `clean-code-is-steering.md`, not by module number). Unaffected by the pinned diff, which touched no M-number reference.",
       "fix_hint": null,
       "blocking": false
     },
@@ -120,7 +122,7 @@
       "rule_index": 4,
       "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
       "verdict": "PASS",
-      "evidence": "Three headers, all claim-shaped and distinct: 'Five moves, one quality discipline' (squint: five prior moves compose one discipline; truth: body lists exactly five named moves, 'That's the quality kit you walk out with'). 'Decay clears the gate' (squint: names what the fast-check kit can't see; truth: body argues 'No gate fires on any of them, so a run can come back green and still leave the code worse than it found it' — the header states exactly what the body proves, no unsupported universal). 'From spec-and-tests to grounding' (squint: names the pivot; truth: body narrates spec-and-tests as the recurring theme, then 'The discipline has gone deeper since... grounding'; the 'two of them' count correction strengthens rather than weakens the truth clause, since the body now states the maintainer-attested figure precisely). No empty containers, no orphan mood headers, no duplicate headers among the three.",
+      "evidence": "Three distinct headers, all claim-shaped. 'Five moves, one quality discipline' — squint: five prior moves compose one discipline; truth: body lists exactly five named moves and closes the slide 'That's the quality kit you walk out with' (line 9). 'Decay clears the gate' — squint: names what the fast-check kit can't see; truth: body states 'No gate fires on any of them, so a session can come back green and still leave the code worse than it found it' (line 13), matching the header's claim with no unsupported universal. 'From spec-and-tests to grounding' — squint: names the pivot; truth: body narrates spec-and-tests as the recurring theme (line 19) then 'The discipline has gone deeper since: grounding' (line 21). No empty containers, no orphan-mood headers, no two slides share a header.",
       "fix_hint": null,
       "blocking": false
     },
@@ -129,16 +131,36 @@
       "rule_index": 5,
       "rule_lead": "A slide's BODY is size-bounded, not just its header — under ~210 readable words AND ≤6 bullets per slide.",
       "verdict": "PASS",
-      "evidence": "Mechanically re-verified against the current on-disk file: `node scripts/check-slide-size.js --file curriculum/lectures/quality-is-grounding.md` reports 3 slides, 0 oversized, against the 210-word/6-bullet limits ('every slide is within limits'). The 2026-08-03 edit is a one-word substitution ('a few' -> 'two'), net zero word-count change on the section it sits in. Manual word count per section unchanged from prior audit: 'Five moves, one quality discipline' 110w, 'Decay clears the gate' 125w, 'From spec-and-tests to grounding' ~115w — all comfortably under 210, zero bullets in any (all three are prose paragraphs, matching the file's own 2026-07-09 'go very lightly on the bold' emphasis pass).",
+      "evidence": "Re-fetched rule 5's CURRENT wording live via `node curriculum/evals/scripts/rule.js lectures 5` (staleness reason: rule-drift) — text is verbatim identical to the brief's copy, so no wording actually moved between the 1abb84c6 pin and HEAD as far as this rule is concerned; the body is re-checked against the current text regardless. Mechanically verified: `node scripts/check-slide-size.js --file curriculum/lectures/quality-is-grounding.md --report` -> 'Five moves, one quality discipline' 96w/0 bullets, 'Decay clears the gate' 122w/0 bullets, 'From spec-and-tests to grounding' 115w/0 bullets; summary 'files: 1 slides: 3 ... oversized: 0' / 'every slide is within limits'. All three comfortably under 210 words, zero bullets (prose paragraphs per the file's own 2026-07-09 'go very lightly on the bold' emphasis pass).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 6,
+      "rule_lead": "A prompt inside a lecture is a trainer show-and-tell, never a room follow-along.",
+      "verdict": "N/A",
+      "evidence": "No `{{prompt:<key>}}` or inline `**Prompt**` block anywhere in this file (signals.has_prompt_blocks: false). Rule has no attachment surface.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_prompts.md",
-      "rule_index": 1,
-      "rule_lead": "(Whole-compendium N/A note, not a per-rule finding.) check_prompts.md governs fenced **Prompt** blocks a student copies.",
+      "rule_index": null,
+      "judge_owned": true,
+      "rule_lead": "Whole-compendium scope call, not a per-rule finding.",
       "verdict": "N/A",
-      "evidence": "File carries zero fenced code blocks / **Prompt** labels — it is a read-aloud stakes-setter lecture with no student-copied content, unchanged by the 2026-08-03 count correction. check_prompts.md's per-prompt design rules have no attachment surface anywhere in this file.",
+      "evidence": "check_prompts.md's 48 rules all govern the shape and mechanics of fenced `**Prompt**`/`{{prompt:<key>}}` blocks a student copies. Body view confirms `has_prompt_blocks: false` and zero fenced code blocks anywhere in this file — it is a read-aloud stakes-setter with no student-copied content. No individual rule in this compendium has an attachment surface here. (Refiling note: the prior instance cited this whole-compendium call under a fabricated `rule_index: 1` with an invented `rule_lead` that does not match check_prompts.md's real rule 1 — 'No placeholders inside fences.' Refiled here per the dispatch preamble's own worked example, `rule_index: null, judge_owned: true`.)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": null,
+      "judge_owned": true,
+      "rule_lead": "Whole-compendium scope call, not a per-rule finding.",
+      "verdict": "N/A",
+      "evidence": "check_workshop.md's 16 rules govern group-scale beats whose artefact belongs to the room, not an individual. Body view confirms `group_beat_markers: false`; this file is a solo-read/projected stakes-setter lecture with no adjudication, no room-decision, no attribution, no group artefact of any kind. No individual rule in this compendium has an attachment surface here. (Coverage note: the prior instance for this file carried no row at all for check_workshop.md; added now that the brief assembles it.)",
       "fix_hint": null,
       "blocking": false
     }
@@ -150,9 +172,29 @@
     "stealing_the_mood": [],
     "teaching_moment_lands": {
       "verdict": "PASS",
-      "note": "The spec-and-tests -> grounding reframe lands reliably for a persona 2 weeks into Claude Code who has lived M1-M5 and holds the actual artefacts (skill file, verifier) Slide 1 names — recognition is concrete (own files), not abstract praise, so the moment survives reasonable persona-skill variation. The decay slide strengthens rather than dilutes this: it gives the persona a name for a gap they've already felt, which trace.phases[0] shows landing as recognition, not lecture. Delivery-dependent risk, unchanged in kind from the prior audit and unaffected by the 2026-08-03 count correction: if Slide 1 is read as a flat module-by-module list rather than voiced as 'all five are one discipline,' it drifts toward this module's own named mood-stealing failure shape, 'trainer-monologue retrospective.' Captured as the fix_hint on check_lectures rule_index 1 rather than a blocking failure — the risk is in execution, not in the text as written."
+      "note": "The spec-and-tests -> grounding reframe lands reliably for the persona: two weeks into Claude Code, having lived M1-M5 and holding the actual artefacts (skill file, verifier) slide 1 names, so the recognition is concrete rather than abstract praise. The decay slide strengthens this: it names a gap the persona has already felt without having a word for it. Delivery-dependent risk (unchanged by the pinned diff): reading slide 1 as a flat module-by-module list rather than voicing 'all five are one discipline' would drift toward this module's own named mood-stealing failure shape, 'trainer-monologue retrospective' (spot-gaps-build-the-loop.md line 133). Captured as the fix_hint on check_lectures rule_index 1, not as a blocking failure — the risk is in delivery, not in the text as written."
     }
   },
   "blocking_findings_count": 0,
-  "todos_count": 1
+  "todos_count": 1,
+  "drift_rules_reread": [
+    {
+      "rule": "lectures §5",
+      "current_wording_matches_brief": true,
+      "verdict": "PASS, re-verified mechanically (check-slide-size.js: 3 slides, 0 oversized, largest 122w/0 bullets)"
+    }
+  ],
+  "accept_notes_found": [
+    "L27 Lean pass (2026-08-25): cut retrospective sentence + matching backing claim row; do not restore.",
+    "L29 Decay slide added (2026-07-29, Antti-directed): placement rationale for the middle slide, avoids the word 'grounding' on purpose, runtime ~5 min, zero bold.",
+    "L31 Emphasis pass (2026-07-09, Antti-directed 'go very lightly on the bold'): bulleted claims recast to prose paragraphs; one bold survives on 'grounding'.",
+    "L33 Slides-only pass (2026-07-02, unaudited): two paragraphs converted to two slides near-verbatim; M1/M2/M3/M5 refs kept under check_lectures §3 consolidation carve-out.",
+    "L35 section-3 sweep 2026-07-02: 5 refs judged, 0 fixed, 5 carve-out (consolidation arc-lecture).",
+    "L60 antti-agentics-helsinki source stamp: maintainer-attested, no URL owed.",
+    "L61 luma-agentics-helsinki source stamp: practitioner-direct, event verified live, dated-historical phrasing allowed.",
+    "L62 horthy-wsff source stamp: practitioner-direct vendor-venue, explicit fallback to convergent-observation if the name must drop, incident telemetry explicitly NOT imported.",
+    "L69 Stance block dated 2026-08-01, level L1.",
+    "L78 last-run: 2026-08-01 (OODA).",
+    "L90 Quality line: compendium-audited 2026-08-24, all seven classes PASS (six as drift-recheck)."
+  ]
 }

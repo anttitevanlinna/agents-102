@@ -140,3 +140,29 @@ test('a healthy merge carries no warning', () => {
   assert.equal(r.added, 2)
   assert.equal(r.warning, undefined)
 })
+
+test('the shape hash is stamped even when nothing was parked — otherwise a cold class stays cold', () => {
+  // The loop: no shape_hash → prefill reports "predates shape_hash" → parks
+  // nothing → if the write were gated on added rows, the hash is never
+  // recorded → the next run falls through identically. Forever.
+  const { dirs } = sandbox()
+  parkRows(dirs, [])
+  const inst = path.join(dirs.instancesDir, `${slug}.${CLS}.json`)
+  fs.writeFileSync(inst, JSON.stringify({ rules_evaluated: [ROW('check_writing.md', 1)] }, null, 2))
+
+  const r = mergeIntoInstance(FILE, CLS, dirs)
+  assert.equal(r.added, 0)
+  assert.equal(r.shape_hash_stamped, 'abc123')
+  assert.equal(JSON.parse(fs.readFileSync(inst, 'utf8')).shape_hash, 'abc123')
+})
+
+test('a shape hash that already matches is not rewritten', () => {
+  const { dirs } = sandbox()
+  parkRows(dirs, [])
+  const inst = path.join(dirs.instancesDir, `${slug}.${CLS}.json`)
+  fs.writeFileSync(inst, JSON.stringify({ shape_hash: 'abc123', rules_evaluated: [] }, null, 2))
+  const before = fs.statSync(inst).mtimeMs
+  const r = mergeIntoInstance(FILE, CLS, dirs)
+  assert.equal(r.shape_hash_stamped, null)
+  assert.equal(fs.statSync(inst).mtimeMs, before)
+})

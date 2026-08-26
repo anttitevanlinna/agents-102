@@ -250,7 +250,7 @@ function mergeIntoInstance(fileArg, cls, { apply = true, viewsDir = VIEWS, insta
   const view = derive(fileArg, { write: false })
   const scp = sidecarPath(view.slug, cls, viewsDir)
   const instPath = path.join(instancesDir, `${view.slug}.${cls}.json`)
-  const res = { slug: view.slug, class: cls, added: 0, already_present: 0, rows_after: 0, status: 'ok' }
+  const res = { slug: view.slug, class: cls, added: 0, already_present: 0, rows_after: 0, shape_hash_stamped: null, status: 'ok' }
 
   let doc
   try { doc = JSON.parse(fs.readFileSync(scp, 'utf8')) } catch { res.status = 'no sidecar — nothing was parked, every row was the judge\'s'; return res }
@@ -270,9 +270,18 @@ function mergeIntoInstance(fileArg, cls, { apply = true, viewsDir = VIEWS, insta
     present.add(rowKey(r))
     res.added++
   }
-  if (doc.shape_hash && !inst.shape_hash) inst.shape_hash = doc.shape_hash
+  // Stamping the shape hash matters MOST on the run where nothing was parked.
+  // A cold class carries no `shape_hash`, so the prefill falls through with
+  // `predates shape_hash`, parks nothing, and — if the write were gated on rows
+  // being added — never records the hash that would warm the NEXT run. The class
+  // stays cold forever and pays the full cost every time, which is exactly the
+  // loop the prefill exists to break.
+  if (doc.shape_hash && inst.shape_hash !== doc.shape_hash) {
+    inst.shape_hash = doc.shape_hash
+    res.shape_hash_stamped = doc.shape_hash
+  }
   res.rows_after = inst.rules_evaluated.length
-  if (apply && res.added) writeJsonPreservingIndent(instPath, inst)
+  if (apply && (res.added || res.shape_hash_stamped)) writeJsonPreservingIndent(instPath, inst)
   // §49's companion. A judge that re-derived the parked rows leaves an instance
   // byte-comparable to one that did not: same ledger, same verdict, same hash,
   // four times the clock. `already_present` is the one place it shows, so say so
@@ -305,6 +314,7 @@ if (require.main === module) {
   if (rest.includes('--merge')) {
     const r = mergeIntoInstance(file, cls)
     console.log(`${r.slug}.${cls}: ${r.added} prefilled rows spliced in · ${r.already_present} the judge already wrote · ${r.rows_after} rows total  [${r.status}]`)
+    if (r.shape_hash_stamped) console.log(`      shape_hash ${r.shape_hash_stamped} recorded — the next run on an unchanged shape carries its N/A rows forward`)
     if (r.warning) console.error(`WARN  ${r.warning}`)
     process.exit(0)
   }

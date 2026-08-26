@@ -125,7 +125,10 @@ const VERDICT_SCHEMA = {
   type: 'object',
   required: ['file', 'class', 'verdict', 'body_sha', 'ungrounded_count', 'rows_written_by_you', 'rows_spliced_by_merge', 'diff_summary', 'findings', 'todos'],
   properties: {
-    file: { type: 'string' },
+    // The TARGET file, not the instance you wrote. A story judge returned its
+    // own instance path here and the summary then named the wrong file as the
+    // thing judged — harmless in a one-item run, unreadable in a sweep of 70.
+    file: { type: 'string', description: 'the curriculum file you judged, exactly as the header names it — NOT the instance JSON you wrote' },
     class: { type: 'string' },
     // PASS_WITH_TODOS is the rung a binary schema kept collapsing into REVISE.
     // A judge with a non-blocking observation must be able to say so without

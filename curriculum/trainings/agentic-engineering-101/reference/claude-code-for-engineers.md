@@ -477,7 +477,7 @@ Docs: [cli-reference § system-prompt flags](https://code.claude.com/docs/en/cli
 
 ## 34. Hooks: runtime extension points
 
-A hook is a small script the runtime invokes on a named event. The script fires deterministically: the agent has no say in whether it runs. The closing lecture on packaging names that property *"hooks always fire."* It's what makes hooks the right home for anything that **must** happen versus what's **recommended** (prompts and `CLAUDE.md` rules carry the recommended layer).
+A hook is a small script the runtime invokes on a named event. The script fires deterministically: the agent has no say in whether it runs. The M5 lecture *Hooks always fire* names that property. It's what makes hooks the right home for anything that **must** happen versus what's **recommended** (prompts and `CLAUDE.md` rules carry the recommended layer).
 
 **Ten events carry almost everything you'll write.** The docs define 31 in total; reach for the full list when none of these fits (re-verified 2026-08-15 against `code.claude.com/docs/en/hooks`):
 
@@ -563,7 +563,7 @@ The hook script receives JSON on stdin (event metadata, tool name + args for too
 
 **Debugging hooks that don't fire:** run `claude --debug hooks` to see hook-loading and event-firing logs. Useful when `/memory` confirms the config is loaded but the hook still isn't running on the expected event.
 
-**AE101 cross-refs:** M5 closer lecture (`what-packaging-is.md`) names hooks as the runtime primitive behind Cherny's shell-hook verifier shape.<!--flag:module:earn-the-trust--> M3 leans on hooks implicitly via a PostToolUse routing pattern, shown as a worked example rather than something you author at M3.<!--/flag:module:earn-the-trust-->
+**AE101 cross-refs:** M5's pre-exercise lecture (`hooks-always-fire.md`) names hooks as the runtime primitive; the closer (`what-packaging-is.md`) carries Cherny's shell-hook verifier shape on its menu.<!--flag:module:earn-the-trust--> M3 leans on hooks implicitly via a PostToolUse routing pattern, shown as a worked example rather than something you author at M3.<!--/flag:module:earn-the-trust-->
 
 Docs: [hooks](https://code.claude.com/docs/en/hooks).
 

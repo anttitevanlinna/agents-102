@@ -655,7 +655,7 @@ are not delegating more. You are checking less."* No trainer-script item, and a 
 headings describing a session that does not exist. The hand-off to the customer's closing workshop stays
 theirs to author, same as gap 7.
 
-**Still open from this gap:** `learning-through-contrast.md:7` — *"M4 was the test. This is the learn."*
+**Still open from this gap** *(locator dead 2026-08-26: that lecture was dissolved into `reading-the-return.md` on 2026-08-25 and the quoted line did not survive the merge — re-anchor against `reading-the-return.md` if this gap reopens)*: `learning-through-contrast.md:7` — *"M4 was the test. This is the learn."*
 — on slide one of a sitting the room knows as the fourth of four. Left alone deliberately: that lecture's
 subject *is* the M4-to-M5 arc, its maintainer block declares the anchors a considered carve-out, and a
 flag there would gut the lecture rather than trim it. Trainer-script item, and a one-liner rather than

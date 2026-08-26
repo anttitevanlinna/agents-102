@@ -183,7 +183,8 @@ This module points at four sources in body and owned a stamp for none of them; t
 | P4 — *"reject at least one recommended answer"* | P4 auto-accept — student accepts every recommended answer | Trainer push: *"reject at least one recommended answer if it's wrong for your codebase — the second read's recommendations are defaults, not prescriptions."* |
 | P5 — *"approve, stop, do not execute"* | P5 execution-creep — student executes the plan anyway | Trainer push: *"making the plan good IS the work; recognising a good plan is the skill this module installs."* |
 | P5 — *"name the pattern: human read → push-back → agent walk-down → approve"* | P5 deflection — student reports *"the second read did all the work"* | Trainer push: *"quote one thing your push-back caught that the second read would have missed."* |
-| Compound — *"save the rule only if one earned itself"* | Compound skip — student skips the compound when one DID earn itself | Trainer push: *"did any branch from the second read change how you'd read the next plan? if yes, integrate it now; if no, the Bridge is next."* |
+
+The save-the-rule and Boy Scout beats live in `exercises/extract-the-task-shaping-rule.md` (Phases 4–5), and their failure modes live in that file's Push-back moves / Watch-fors.
 
 **Frameworks riffed on (attributed in-exercise or at Debrief):**
 - **Plan mode** (Anthropic Claude Code). Activation: Shift+Tab cycle (CLI) or the mode dropdown (Desktop). Push-back via *No, keep planning* at the approval prompt — chat-based, the exercise's path. Reference: https://code.claude.com/docs/en/permission-modes.md `[capability]`. Anthropic's own docs on Anthropic's own product are a capability reference, never `[practitioner direct]`. Live stamp lives on `exercises/push-back-on-the-plan.md`; keep the two in step.

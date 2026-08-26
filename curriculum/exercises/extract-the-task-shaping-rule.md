@@ -165,11 +165,15 @@ Ask Claude whether it met any of these.
 - **Story-ticket read — file written early** — the agent takes *"add them to the rules"* as an instruction to create a rules file, and the placement decision is made before the student makes it. `extract-the-task-shaping-rule-4`'s fence says not to; `-1` carries no such guard and runs earlier, so this is the recovery either way. Trainer push: *"ask Claude where it put them. If it wrote a file, have it tell you the path and then make the location decision yourself in the next step — the file it picked is a default, not your call."*
 - **Story-ticket read — confident read off an unreachable ticket** — the session cannot open the tracker and the agent produces conventions anyway. Trainer push: *"ask it which fields it actually saw. If it can't quote them, paste the fields and re-run."*
 - **P3 building-instinct** — student starts asking Claude to write the Slack bot. Trainer push: *"the lecture is next. Today is capture; application is downstream."*
+- **P4 compound-skip** — student skips the integrate when a branch DID earn itself. Trainer push: *"did any branch from the second read change how you'd read the next plan? if yes, integrate it now; if no, the prompt's own hatch is to say so and stop."*
+- **P5 fix-it creep** — student starts fixing the named defects with two minutes on the clock. Trainer push: *"naming is the exercise; fixing is your call, in-session or never."*
 
 **Watch-fors:**
 - **P1 too long** — student over-reads, won't accept any rule as good enough. Decision: send the timer; the rule that ships imperfect rides into M3 and sharpens there.
 - **P2 student saves to a Agents 101-style training-dir path** — they may have prework muscle memory. Trainer push: *"AE101 has no training-dir; the rule lives in your tooling, not the training's."*
 - **P3 Claude proposes one shape only** — push for two more; the lecture grounds three.
+- **P4 overwrite** — `./CLAUDE.local.md` replaced instead of appended. The body callout carries the recovery (the old rules live in this session's scrollback); it has to run before the session closes — the scrollback dies with it.
+- **P5 generic tidiness** — Claude names litter the plan never tripped on. Push: *"which planning step tripped on this? If none did, take the 'or none' hatch."*
 
 **Plug points:**
 - Student's own session scrollback (the M2 plan-mode work)

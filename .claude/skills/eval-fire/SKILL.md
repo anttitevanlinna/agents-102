@@ -128,7 +128,7 @@ After you write your instance, and before you reply:
 node curriculum/evals/scripts/prefill-instance.js <file_path> <class> --merge
 ```
 
-Skipping `--merge` loses exactly the rules the brief dropped — a coverage hole that reads as a clean run.
+Skipping `--merge` loses exactly the rules the brief dropped — a coverage hole that reads as a clean run. Report both integers: the rows you wrote yourself, and the number `--merge` spliced in. A judge that re-derives the parked rows produces an instance byte-comparable to one that did not — the two integers are the only place it shows.
 
 ## Before filing anything
 

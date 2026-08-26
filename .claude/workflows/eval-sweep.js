@@ -123,7 +123,7 @@ for (const it of ITEMS) {
 
 const VERDICT_SCHEMA = {
   type: 'object',
-  required: ['file', 'class', 'verdict', 'body_sha', 'ungrounded_count', 'diff_summary', 'findings', 'todos'],
+  required: ['file', 'class', 'verdict', 'body_sha', 'ungrounded_count', 'rows_written_by_you', 'rows_spliced_by_merge', 'diff_summary', 'findings', 'todos'],
   properties: {
     file: { type: 'string' },
     class: { type: 'string' },
@@ -132,6 +132,12 @@ const VERDICT_SCHEMA = {
     // the orchestrator reading it as a gate.
     verdict: { enum: ['PASS', 'PASS_WITH_TODOS', 'REVISE'] },
     body_sha: { type: 'string', description: 'shasum -a 256 of the file, first 64 hex, taken when you START reading' },
+    // §49's companion. Re-deriving the parked rows costs only time, so it is
+    // invisible in a finished instance: same ledger, same verdict, same hash.
+    // Splitting the ledger by who wrote each row turns a four-minute tax into a
+    // two-integer diff the orchestrator can see without timing anything.
+    rows_written_by_you: { type: 'integer', description: 'rows YOU judged and wrote. Should be about what the class brief said it kept — much higher means you re-derived rows the prefill had already parked.' },
+    rows_spliced_by_merge: { type: 'integer', description: 'the integer `prefill-instance.js --merge` reported splicing in. Zero when the prefill parked nothing; near-zero when the prefill parked plenty means you did its work again.' },
     ungrounded_count: { type: 'integer', description: 'real integer from `check-instance-evidence.js` on the instance you wrote — a finding with no quote or harm, a REVISE or judgement PASS with no evidence, an N/A with no reason. A terse N/A is healthy and is NOT counted.' },
     diff_summary: { type: 'string', description: 'what the pinned diff actually changed, from the diff YOU ran' },
     drift_rules_reread: { type: 'array', items: { type: 'string' } },
@@ -214,7 +220,7 @@ After you write your instance, and before you reply:
 node curriculum/evals/scripts/prefill-instance.js ${j.file} ${j.cls} --merge
 \`\`\`
 
-Report the number it splices in. \`no prior instance\`, \`shape changed\` or \`predates shape_hash\` means nothing was parked and every row is yours — the fail-closed path, not an error. Record \`shape_hash\` at the top level of your instance exactly as the prefill reports it.
+Report both integers: the rows you wrote yourself as \`rows_written_by_you\`, and the number \`--merge\` splices in as \`rows_spliced_by_merge\`. \`no prior instance\`, \`shape changed\` or \`predates shape_hash\` means nothing was parked and every row is yours — the fail-closed path, not an error. Record \`shape_hash\` at the top level of your instance exactly as the prefill reports it.
 `
 }
 
@@ -434,6 +440,7 @@ return {
   summary: done.map(v => ({
     file: v.file, class: v.class, verdict: v.verdict, body_sha: v.body_sha,
     ungrounded_count: v.ungrounded_count,
+    rows: { judged: v.rows_written_by_you, spliced: v.rows_spliced_by_merge },
     diff_summary: v.diff_summary,
     drift_rules_reread: v.drift_rules_reread || [],
     accept_notes_found: v.accept_notes_found || [],

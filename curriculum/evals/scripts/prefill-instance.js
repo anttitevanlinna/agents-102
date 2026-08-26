@@ -273,6 +273,14 @@ function mergeIntoInstance(fileArg, cls, { apply = true, viewsDir = VIEWS, insta
   if (doc.shape_hash && !inst.shape_hash) inst.shape_hash = doc.shape_hash
   res.rows_after = inst.rules_evaluated.length
   if (apply && res.added) writeJsonPreservingIndent(instPath, inst)
+  // §49's companion. A judge that re-derived the parked rows leaves an instance
+  // byte-comparable to one that did not: same ledger, same verdict, same hash,
+  // four times the clock. `already_present` is the one place it shows, so say so
+  // here rather than leaving it to whoever happens to be timing the run.
+  const parked = (doc.rows || []).length
+  if (parked && res.already_present > res.added) {
+    res.warning = `${res.already_present} of ${parked} parked rows were re-derived by the judge — the prefill saved nothing on those. The brief omitted them; a row for a rule not in the brief is work already done.`
+  }
   return res
 }
 
@@ -297,6 +305,7 @@ if (require.main === module) {
   if (rest.includes('--merge')) {
     const r = mergeIntoInstance(file, cls)
     console.log(`${r.slug}.${cls}: ${r.added} prefilled rows spliced in · ${r.already_present} the judge already wrote · ${r.rows_after} rows total  [${r.status}]`)
+    if (r.warning) console.error(`WARN  ${r.warning}`)
     process.exit(0)
   }
   if (rest.includes('--write')) {

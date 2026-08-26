@@ -113,3 +113,30 @@ test('writeSidecar parks rows outside the instance corpus, never in it', () => {
   // Whatever the prefill decided, the sidecar is a claim about THIS body.
   assert.equal(doc.source_sha, sourceSha)
 })
+
+test('re-deriving the parked rows is reported, because nothing else shows it', () => {
+  // The instance a judge leaves behind is byte-comparable whether it used the
+  // parked rows or retyped them: same ledger, same verdict, same hash. On the
+  // run that caught this, 75 of 77 parked rows were re-derived and every
+  // downstream signal was clean — only the clock knew, at 416s against 99s.
+  const { dirs } = sandbox()
+  const parked = [ROW('check_prompts.md', 4), ROW('check_prompts.md', 5), ROW('check_prompts.md', 6)]
+  parkRows(dirs, parked)
+  const inst = path.join(dirs.instancesDir, `${slug}.${CLS}.json`)
+  fs.writeFileSync(inst, JSON.stringify({ rules_evaluated: parked.slice(0, 2) }, null, 2))
+
+  const r = mergeIntoInstance(FILE, CLS, dirs)
+  assert.equal(r.added, 1)
+  assert.equal(r.already_present, 2)
+  assert.match(r.warning, /2 of 3 parked rows were re-derived/)
+})
+
+test('a healthy merge carries no warning', () => {
+  const { dirs } = sandbox()
+  parkRows(dirs, [ROW('check_prompts.md', 4), ROW('check_prompts.md', 5)])
+  fs.writeFileSync(path.join(dirs.instancesDir, `${slug}.${CLS}.json`),
+    JSON.stringify({ rules_evaluated: [ROW('check_writing.md', 1)] }, null, 2))
+  const r = mergeIntoInstance(FILE, CLS, dirs)
+  assert.equal(r.added, 2)
+  assert.equal(r.warning, undefined)
+})

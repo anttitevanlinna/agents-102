@@ -45,7 +45,7 @@ Ask Claude to write the close-out, update the ticket, and report what it wrote.
 ## Anything can be reverse-engineered
 
 - The ticket is one instance. Anything can be inspected and reverse-engineered with an LLM: a codebase nobody documented, a CI pipeline, a config, an API you did not write, the system your team runs on and cannot explain.
-- Ask the agent to study the pipeline, the config, the undocumented code. Extract a `.md` file. Use that file as context in the next agent.
+- Ask Claude to study the pipeline, the config, the undocumented code. Extract a `.md` file. Use that file as context in the next agent.
 
 ## What happened
 
@@ -113,7 +113,7 @@ Claims
 
 Sources
 - maintainer-frame `[checked:2026-08-03 result:ATTESTED due:none]` — [maintainer-attested] Antti's own working frame, given verbatim in session and carried near-verbatim into the closing slide: *"Anything can be inspected and reverse engineered with LLM. The move is: ask LLM to study it. Extract .md file. Use .md file as context in the next agent."* Per `check_research_claims.md §1` a maintainer-attested claim is the author's own word and owes no URL. One reshape on the record: *LLM* → *the agent* on the three action steps, per the acting-versus-thinking vocabulary split; the capability sentence keeps *LLM*. fallback: cut the generalisation and the exercise stands as a tracker read, losing the Monday-morning transfer.
-- No other source owed. The body cites no practitioner and asserts no platform capability beyond the frame above. The one external pointer is to a local reference page, which carries its own stamps. (*Refinement* left this file 2026-08-12 when the beat was scoped to bugs, and was NOT re-homed — M2's story-ticket read does the activity without naming it, and `extract-the-task-shaping-rule-3` already describes backlog work in plain words. The term is retired from AE101 body prose; if a later pass wants it back, it earns itself at M2, not here.)
+- No other source owed. The body cites no practitioner and asserts no platform capability beyond the frame above. The one external pointer is to a local reference page, which carries its own stamps. (*Refinement* is not used in AE101 body prose — M2's story-ticket read does the activity without naming it, and `extract-the-task-shaping-rule-3` describes backlog work in plain words. If a later pass wants the term, it earns itself at M2, not here.)
 
 Frameworks
 - Access-trust gap · [borrow:none] · law:access-trust-gap · ← none — reaching past the repo is the first place granted access outruns earned trust

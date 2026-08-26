@@ -98,7 +98,7 @@ First-cohort overload response (root diagnosis: big outputs + unfamiliar ground 
 Arc, five beats in the six-module arc, each anchored in a shipped surface. Beat 3 is M3's: a cut without M3 runs the arc in four beats, and the take-into-use step does not fire.
 
 1. **M1 teach**, `lectures/the-machine-you-just-met.md`, output-shape slide *The LLM answers in essays*; move: tell the LLM what output you want because changing the shape costs virtually nothing.
-2. **M2 pressure + stop gate**, `exercises/push-back-on-the-plan.md` § *Read the right stuff first*; the copied prompts deliberately offer a full plan and an exhaustive branch walk, while the body tells the student to consume only the sharpenings worth making before generation.
+2. **M2 pressure + stop gate**, `exercises/push-back-on-the-plan.md` § *Scan the plan before you push back*; the copied prompts deliberately offer a full plan and an exhaustive branch walk, while the body tells the student to consume only the sharpenings worth making before generation.
 3. **M3 take-into-use**, `exercises/map-the-access-surface.md` opener *Take the ranked ten, leave the rest on disk*; closer pair in `lectures/the-loop-half-filled.md` (*Reading was never the control* · *The branch is the permission*).
 4. **M4 silent model**, `walk-and-send-off-2` enforces ranked-top-five; exercise body carries skim-to-payoff cues.
 5. **M5 remind + convert**, `learn-from-the-test.md` § *Long sessions, short reads* blockquote + § *Your mid-run worries hint at missing checks*.

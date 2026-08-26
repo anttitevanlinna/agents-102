@@ -1,6 +1,6 @@
 # Getting going + context
 
-> Run M1 on `high` thinking effort (the training default).
+> Run Module 1 on `high` thinking effort (the training default).
 
 ## Big Idea
 Your first session should leave something behind that the next one can use. Otherwise you have a clever assistant and no compounding.
@@ -41,9 +41,9 @@ After this module, you will be able to:
 
 [The wizard move](lectures/the-wizard-move.md)
 
-[Orient and introspect](exercises/orient-and-introspect.md)
+[Orient and map the window](exercises/orient-and-introspect.md)
 
-[Fix tests-first](exercises/fix-tests-first.md)
+[Prove the bug, then ship the fix](exercises/fix-tests-first.md)
 
 [Close the ticket](exercises/close-the-ticket.md)
 
@@ -118,7 +118,7 @@ Module 2 is where plan mode earns its keep: multi-file work, and a second pass t
 - **Transitions:** opening 10 @start "Opening: two room-agreement slides + trick-share" · bridge 5 @end "Bridge"
 - **Prep timing:** prework 30 min; optional progression page 5 min; optional Cherny video 30 min; optional multi-session reference 10 min; optional factory essay 15 min.
 - **Mood target:** joyful creation — *"it works, on my repo."* Watch for: mood drift toward technical warm-up (the bug feels arbitrary, the loop feels mechanical, "this is just a TDD fix I do anyway"). Diagnostic: student narrates Ex2 as a generic engineering move with no surprise. Fix: trainer surfaces the agentic specificity — *"the loop you just ran was orient → fix → close → compound on YOUR repo, with a close-out written in your team's own register and a rules file born from how YOU just worked. That's not a bug fix; that's the instrument starting to play your music."*
-- **Opening-bid install mechanic:** the wizard-move lecture's live demo (the dinner-question context trick, three fresh Claude Code sessions in an empty directory; the question is deliberately not about code) installs the mood → Connections harvests tricks each student brought → Ex1 (orient-and-introspect) each student runs the orient + introspect move on their own repo → Ex2 (fix-tests-first) TDD bug fix, ship the PR → Ex3 (close-the-ticket) read the team's tracker conventions off one real ticket, close the bug's ticket in that register → Ex4 (compound-and-close) compound `./CLAUDE.local.md` from session evidence, the tracker read included. No separate module-level Debrief.
+- **Opening-bid install mechanic:** the wizard-move lecture's live demo (the dinner-question context trick, two fresh Claude Code sessions each in its own empty directory; the question is deliberately not about code) installs the mood → Connections harvests tricks each student brought → Ex1 (orient-and-introspect) each student runs the orient + introspect move on their own repo → Ex2 (fix-tests-first) TDD bug fix, ship the PR → Ex3 (close-the-ticket) read the team's tracker conventions off one real ticket, close the bug's ticket in that register → Ex4 (compound-and-close) compound `./CLAUDE.local.md` from session evidence, the tracker read included. No separate module-level Debrief.
 - **Delivery architecture** (content folder, working-dir model, compounding-artifact split, no training-dir state): canonical in `training-architecture.md` §Working directory model / §Material distribution / §Rule files. Not restated here. The four-layer rule-file hierarchy is in `reference/claude-code-for-engineers.md § 1`.
 - **Claude Code specifics** (MCP install per tracker, tenant-admin fallbacks): `curriculum/trainings/agentic-engineering-101/reference/mcp-and-connectors.md`. No in-class beat installs a connector; the page is the student's own path when they want one, and the exercise body carries a single navigational pointer at it.
 - **Freshness-rule exception — Cherny *Mastering Claude Code in 30 minutes* (May 2025).** Kept outside the 6-month window by decision; pedagogy match unbeaten by successors.
@@ -174,7 +174,7 @@ The shipped PR and the closed ticket are both produced this module and both live
 
 **Frameworks riffed on:**
 - **TDD (test-driven development)** — Ex2's tests-first, root-cause-driven fix. Recognized framework the engineer audience already knows; the rule written into `./CLAUDE.local.md` at Ex4 is the student's own TDD-style preference.
-- **Compound engineering** — Kieran Klaassen, [Compound Engineering: The Definitive Guide](https://every.to/source-code/compound-engineering-the-definitive-guide) (Every Inc.) [practitioner direct, vendor venue]. Cite this URL for the term and the each-unit-makes-the-next-easier thesis, never for a step count: the step names live elsewhere and the loop's staging moves; Ex4's compound summary prints the current sequence, whose stamps live in `exercises/compound-and-close.md`, while this URL's own stamp is delegated per the Source verification block above. Attributed inside Claude's Ex4 compound summary, not in a lecture.
+- **Compound engineering** — Kieran Klaassen, [Compound Engineering: The Definitive Guide](https://every.to/source-code/compound-engineering-the-definitive-guide) (Every Inc.) [practitioner direct, vendor venue]. Cite this URL for the term and the each-unit-makes-the-next-easier thesis, never for a step count: the step names live elsewhere and the loop's staging moves; Ex4's compound summary prints the current sequence, whose stamps live in `exercises/compound-and-close.md`, while this URL's own stamp is delegated per the Source verification block above. Attributed inside Claude's Ex4 compound summary and in `lectures/the-machine-you-just-met.md`'s closing beat.
 **Pre-cohort open items:** `curriculum/trainings/agentic-engineering-101/pre-cohort-todos.md`.
 
 **Quality:** compendium-audited 2026-08-26 (writing@d065f8bc story@d065f8bc technical@12148d77 behavior@1480362 pedagogy@d065f8bc strategy@d065f8bc slides@d065f8bc)

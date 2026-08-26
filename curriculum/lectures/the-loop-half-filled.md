@@ -64,7 +64,7 @@
 
 **Artifact contract (Family B):** per named law → {NAME · MAP-POSITION · MECHANISM · GOVERNOR}. Each law bullet now carries name + map position + mechanism recoverable from the slide alone; the governor slide carries the one near-half governor. Judge against `theory-evals.md` B★ (durability-without-voice) and B2 (dose — flag the kept-5 verdict to the judge).
 
-**Attribution discipline:** names stay maintainer-side throughout. M3's student-side attribution budget is spent in `skills-from-the-frontier.md` (`check_writing.md` #11), so no practitioner is credited in this body. Full provenance, stamps and the limits on each borrow now live in the backing block below — read it before re-crediting any law here, because two of the attributions this file used to carry were wrong.
+**Attribution discipline:** names stay maintainer-side throughout. M3's student-side attribution budget is spent in `skills-from-the-frontier.md` (`check_writing.md` #11), so no practitioner is credited in this body. Full provenance, stamps and the limits on each borrow live in the backing block below — read it before re-crediting any law here; the stamps carry each borrow's limits, including two `result:CORRECTED` entries.
 
 **Delivery mode:** In-room close, projected. The map with the near half filled in IS the slide.
 

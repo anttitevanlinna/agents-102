@@ -20,7 +20,7 @@ After this module, you will be able to:
 
 ## Start here
 
-Open a fresh session in the Module 5 worktree, `../<repo>-m5`. Both sessions are readable: the branches share `.git`, and each run recorded its transcript path.
+Open a fresh session in the Module 5 worktree, `../<repo>-m5`. Both sessions are readable: the branches share `.git`, and each session recorded its transcript path.
 
 You walk in holding two sessions of the same task. The un-packaged Module 4 send-off. The packaged Module 5 re-send. One session gave you a failure mode to name. Two sessions give you gaps the three-pattern didn't anticipate, and a shape for what to do about each one.
 
@@ -28,13 +28,13 @@ You walk in holding two sessions of the same task. The un-packaged Module 4 send
 
 > **Just can't get the M5 session working?** You lose a bit of value but you can still do this module's exercises. Despair not.
 
-[The 2 frontiers](lectures/the-2-frontiers.md)
+[The 2 frontiers of learning](lectures/the-2-frontiers.md)
 
 [Story of Module 6](lectures/story-of-module-6.md)
 
 [Quality is grounding](lectures/quality-is-grounding.md)
 
-[Spot gaps, build the loop](exercises/spot-gaps-build-the-loop.md)
+[Map the gaps, read your stack](exercises/spot-gaps-build-the-loop.md)
 
 ## Human close
 
@@ -46,7 +46,7 @@ No compound prompt here. The exercise's gap map and stack-map are the Module 6 c
 
 [Composing the workflow](lectures/composing-the-workflow.md)
 
-[The loop has a name](lectures/the-loop-has-a-name.md)
+[The check you built is an eval](lectures/the-loop-has-a-name.md)
 
 [The map, filled in](lectures/the-map-filled-in.md)
 
@@ -87,7 +87,7 @@ Antti
 
 **The confidence after-measurement fires at this module's Human close but lives OUTSIDE the workbook.** The measurement system is deliberately not in student-facing body; the trainer administers it. Canonical wording in `theory-plan.md` § Baseline instrument — verbatim-identical to the before-measurement or the delta measures the wording. Target delta +3. Do not add a rating beat to this file's body.
 
-**The rescue callout's lecture line is triage, not a ranking of lectures against exercises (reworded 2026-08-15, Antti).** It read *"Skip the opening lecture. Practice is core. Lectures can be read later."* — right instruction, wrong scope: a doctrine about all lectures, stated to the one student least able to judge it, in a training whose theory layer is a selling point. It also sat four sentences after *"let it catch up while you read on"*, so the same callout said read and skip. Now scoped to the moment: *"If the room starts the lecture while you are still getting a session going, stay with the rescue and read it afterwards."* The room-parallelism is the point — others sit the lecture while this student fixes a session — so keep the line, and keep it conditional. Do not restore the general claim, and do not cut the beat: a stranded student needs permission to spend room time on the rescue.
+**The rescue callout's lecture line is triage, not a ranking of lectures against exercises (2026-08-15, Antti).** The line is scoped to the moment: *"If the room starts the lecture while you are still getting a session going, stay with the rescue and read it afterwards."* The room-parallelism is the point — others sit the lecture while this student fixes a session — so keep the line, and keep it conditional. Do not widen it into a lectures-are-skippable doctrine, and do not cut the beat: a stranded student needs permission to spend room time on the rescue.
 
 
 **Capstone-close sign-off — deliberate exception to `check_writing.md` rule 6** (creator-name ban). The `## Next` section closes with a personal sign-off from the curriculum author (the bare-name line after *"Keep on learning and sharing."*). M6 is the AE101 core arc's final module; the close earns the human voice that the practitioner-fluency mood warrants. Per the rule's second exception (added 2026-05-03), the signature is in-scope-by-design for capstone-module closes. Future judges should not re-flag.
@@ -100,7 +100,7 @@ Antti
 
 **`## Human close` is a pre-close beat, not the module's ending (2026-08-19, Antti-directed: *"human close can be a beat before actual full closing. It is deliberately there to have the time for closing conversations."*).** The slot buys room time for the closing conversation while the closer lecture chain, `## Key Concepts`, `## Optional challenges` and `## Next` still follow. A story judge scoring close mood reads those four trailing sections as an ending that will not end and files `check_strategy_tie_in.md` §1 against the beat's own framing (*"no compound prompt here... talk, compare, no prompts"*, the identity line, the self-study *"Close the laptop"*). The trailing count is the design and it is not high: M6 carries fewer sections after its last teaching beat than M4 or M5, neither `## Bring to Module N` nor `## Pre-reads` applying to the terminal module. Do not move the beat later, do not fold it into `## Next`, and do not soften its framing to acknowledge what follows — the conversation needs a named slot, and the name is what makes a trainer stop for it. The self-study variant's *"Close the laptop"* is the solo form of the same break. Future judges should not re-flag.
 
-**Independence axis on the eval-taxonomy Key Concept (2026-08-09, Antti-directed; buried-gold item):** bullet 4 closes with the kernel (*a check proves something only where it could say no*) and the failure named engineer-plain (*a judge in the producer's window cannot say no exactly where the producer went wrong*). Independence — who judges, relative to who produced — is the only axis this bullet carries. Mechanism (deterministic/LLM) and placement (CI) belong to `the-loop-has-a-name.md`'s naming slide, which this section precedes in deck order; stating them here hands the closer's payload over two slides early, against `vocabulary.md`'s don't-pre-plant line on *eval*. The word itself still lands in `## What You'll Learn`, where signposting is allowed to name what the module earns. `check_pedagogy §9b` variation of the M5 closer's independence law (`the-gate-is-a-claim.md` slide 1, the second-call law): M5 states the law; this bullet makes it the build-time question. Guards: (a) do not escalate to a prescription ("always use a fresh session") — the M5 accept-note keeps the countermove ladder ranked, not mandated; (b) KC bullet 2's over-credit line is the worked instance two bullets up — the rhyme is deliberate, do not dedupe either side; (c) KC slide at 201w/6b, at the bullet cap — extend-don't-append stands.
+**Independence axis on the eval-taxonomy Key Concept (2026-08-09, Antti-directed; buried-gold item):** bullet 4 closes with the kernel (*a check proves something only where it could say no*) and the failure named engineer-plain (*a judge in the producer's window cannot say no exactly where the producer went wrong*). Independence — who judges, relative to who produced — is the only axis this bullet carries. Mechanism (deterministic/LLM) and placement (CI) belong to `the-loop-has-a-name.md`'s naming slide, which this section precedes in deck order; stating them here hands the closer's payload over two slides early, against `vocabulary.md`'s don't-pre-plant line on *eval*. The word itself still lands in `## What You'll Learn`, where signposting is allowed to name what the module earns. `check_pedagogy §9b` variation of the M5 closer's independence law (`the-gate-is-a-claim.md` slide 1, the second-call law): M5 states the law; this bullet makes it the build-time question. Guards: (a) do not escalate to a prescription ("always use a fresh session") — the M5 accept-note keeps the countermove ladder ranked, not mandated; (b) KC bullet 2's over-credit line is the worked instance two bullets up — the rhyme is deliberate, do not dedupe either side; (c) KC slide at 188w/6b, at the bullet cap — extend-don't-append stands.
 
 **Quality:** compendium-audited 2026-08-26 (writing@0e4f7c9e story@0e4f7c9e technical@b55cd28b behavior@1c765f2 pedagogy@b55cd28b strategy@0e4f7c9e slides@0e4f7c9e)
 - judges @0e4f7c9e: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
@@ -166,7 +166,7 @@ Antti
 
 **Source verification — freshness stamps (`source-freshness.sh`; format `curriculum/source-freshness-format.md`).**
 
-- `[checked:2026-05-25 result:CAVEAT due:none]` https://every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it — [practitioner direct, vendor venue] Klaassen 2025-08-18; the `## Prework` gap pre-read. Dated origin, well outside the window; pre-read for recognition, never current practice; `due:none` per the dated-origin variant, matching `learn-from-the-test.md` § Source verification (was `due:2026-11-25`, a `checked`+6mo computation `check_research_claims.md §11a` bans outright — fixed 2026-08-23, technical audit). fallback: drop the Klaassen pre-read; Module 4 and Module 5 still carry the checks mechanism.
+- `[checked:2026-05-25 result:CAVEAT due:none]` https://every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it — [practitioner direct, vendor venue] Klaassen 2025-08-18; the `## Prework` gap pre-read. Dated origin, well outside the window; pre-read for recognition, never current practice; `due:none` per the dated-origin variant, matching `learn-from-the-test.md` § Source verification (`check_research_claims.md §11a` bans `checked`+6mo computed dues). fallback: drop the Klaassen pre-read; Module 4 and Module 5 still carry the checks mechanism.
 - `[checked:2026-08-01 result:OK due:none]` https://lucumr.pocoo.org/2026/1/14/minijinja-go-port/ — [practitioner direct] Ronacher MiniJinja, 14 Jan 2026: reference / plan.md-equivalent / verifier, 10 h / 2.2M tokens. **Durable account, `due:none`** (`source-freshness-format.md` § Durable-account variant, added 2026-08-01) — a completed run reported first-hand does not expire; the previous swap-at-Sep-2026 instruction is withdrawn. Figures re-verified verbatim 2026-08-01. Still binding: date it in body (*"in January 2026"*) so it reads as an account rather than as current practice.
 - `[checked:2026-07-02 result:OK due:2026-08-21]` https://getpushtoprod.substack.com/p/how-the-creator-of-claude-code-actually — [practitioner analysis] Kim on Cherny (2026-02-21): the three verifier shapes (background agent / agent-stop hook / Ralph Wiggin plugin, verbatim) are KIM'S synthesis, NOT Cherny's own taxonomy, and are ABSENT from the Orosz interview. fallback: present as a practitioner-convergent menu, no single attribution.
 - `[checked:2026-05-25 result:OK due:2026-10-08]` https://x.com/geoffintech/status/2042002590758572377 — [practitioner direct] Charles CPO: 350+ skill Dojo, 99.5% AI-active, 84% coding-agents weekly. Confirmed via observations/ramp.md; that X status is link-only (author + date oEmbed-verified April 8 2026). fallback: "hundreds of skills" if the number is contested.

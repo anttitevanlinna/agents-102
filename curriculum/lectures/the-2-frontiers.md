@@ -15,7 +15,7 @@
 **Quality:** compendium-audited 2026-08-26 (writing@0e4f7c9e story@0e4f7c9e technical@1abb84c6 behavior@1c765f2 pedagogy@1abb84c6 strategy@1c765f2 slides@0e4f7c9e)
 - judges @0e4f7c9e: writing PASS, story PASS, technical PASS (drift-recheck), behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS
 
-**Lecture meta:** *~2 min opener for Module 6, before "Story of Module 6." Echoes Module 1's "Painting the picture" closer — same two frontiers, recurring at the capstone open. The recurrence is the point. One slide IS the lecture.*
+**Lecture meta:** *~2 min opener for Module 6, before "Story of Module 6." Echoes Module 1's "Painting the picture" opener — same two frontiers, recurring at the capstone open. The recurrence is the point. One slide IS the lecture.*
 
 **Meta:**
 - **Time:** ~2 minutes.
@@ -26,7 +26,7 @@
 **Watch-fors (delivery):**
 - Don't answer the two frontiers. They are the arc's open questions.
 - Don't gloss "agents building agents." The phrase lands by being short.
-- Pairs with M1's closer: same two questions, second time. The recurrence carries.
+- Pairs with M1's opener: same two questions, second time. The recurrence carries.
 
 **Carve-out — first-person-plural "we":** room-collective at capstone module open. Sibling of Agents 101 M8 `joint-double-diamond.md` precedent (`check_writing.md` rule 6 carve-out). *We* here means the room (trainer + cohort) at the arc-close — not the training authors. Future writing-judges should not re-flag.
 

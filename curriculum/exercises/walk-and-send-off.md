@@ -111,7 +111,7 @@ Sources
 (none. Every claim is the exercise's own design stance or a move the student runs against their own repo. The one borrowed frame is generic business-analysis vocabulary that owes attribution by name only.)
 
 Frameworks
-- Gap analysis · [borrow:business analysis] · law:none · ← cultural-vocab — the Phase 2 audit is this move, and the body names it once, in Phase 2's opening bullet (moved in from `lectures/test-and-learn.md` 2026-08-25 Antti-directed, then merged into the phase slide on his "optimise text": the naming lands where the move is run). Generic; no single attribution. One naming is the budget — do not elaborate it into a method section.
+- Gap analysis · [borrow:business analysis] · law:none · ← cultural-vocab — the Phase 2 audit is this move, and the body names it once, in Phase 2's opening bullet (in from `lectures/test-and-learn.md`, 2026-08-25 Antti-directed; the naming lands where the move is run). Generic; no single attribution. One naming is the budget — do not elaborate it into a method section.
 - Test and learn · [borrow:none] · law:variation-selection-retention · ← cultural-vocab — the un-packaged run is the variant this arc generates; the next module selects
 - Name the uncertainty before you move · [borrow:none] · law:name-the-uncertainty-before-you-move · ← none — the fit-check against long-run criteria is this governor fired before a send-off
 

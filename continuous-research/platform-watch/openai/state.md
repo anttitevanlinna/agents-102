@@ -14,8 +14,14 @@ answers:
 
 # OpenAI — ChatGPT / Codex / Operator — Platform State
 
-Last updated: 2026-08-25 (cycle 195)
-OODA cycles: 43
+Last updated: 2026-08-26 (cycle 196)
+OODA cycles: 44
+
+**Cycle 196 updates (August 26, 2026) — ASSISTANTS API DAY-0: HARD STOP EXECUTING; NO PUBLIC INCIDENTS IN FIRST HOURS; SILENCE IS THE STORY; T+1–T+7 RECKONING WINDOW ACTIVE:**
+
+**✅ ASSISTANTS API HARD STOP AUGUST 26 — DAY-0 EXECUTING; ZERO PUBLIC INCIDENT REPORTS IN FIRST HOURS (L2).** Hard shutdown confirmed: endpoints `/v1/assistants`, `/v1/threads`, and all run-step sub-endpoints return hard errors from today. No extension, no grace period, no emergency announcement. OpenAI overall 100% operational (268ms median, zero incidents per monitoring) — the shutdown registers as deliberate 4xx errors, not an outage. **The Day-0 silence is the story:** zero X.com posts, zero HN threads, zero Reddit threads, no named company reporting production failures in the first hours. Structural interpretation: a 12-month deprecation window with a specific end date appears sufficient for high-stakes developers to migrate proactively; long-tail impact (small apps, Zapier no-code users) surfaces T+1 to T+7 as business dashboard alerts ("Zap stopped working"), not developer forum posts. **Zapier breakage confirmed at Day-0:** 6 of 7 deprecated ChatGPT actions have no migration path; 1 auto-migrated but turned off (manual reactivation required). Unresolved parity gaps entered the shutdown: `.docx` unsupported, polling loop requires architectural rewrite (not config change), dashboard migration path leads to double-migration trap (Prompt Objects sunset November 30, 2026). **Watch T+1 to T+7:** community.openai.com new threads with 410/deprecated errors; X.com "openai assistants api broken" last 48h; Reddit /r/openai production failures; Zapier community threads; any OpenAI incident acknowledgment. ([developers.openai.com/api/docs/deprecations fetched Aug 26 2026](https://developers.openai.com/api/docs/deprecations) — [vendor documentation]; [downforai.com/openai Aug 26 2026](https://downforai.com/openai) — [domain trade publication / monitoring]; [community.openai.com sunset thread Aug 26 2026](https://community.openai.com/t/assistants-api-beta-deprecation-august-26-2026-sunset/1354666) — [practitioner direct]; [help.zapier.com Assistants deprecation 2026](https://help.zapier.com/hc/en-us/articles/44865998484365-Important-update-ChatGPT-users-OpenAI-Assistants-API-deprecation) — [vendor documentation])
+
+**Watch Cycle 197 (T+1 to T+7):** Community forum new threads with deprecated endpoint errors; X.com "assistants api broken" last 48h; Reddit production failure reports; Zapier community Zap failure threads; any OpenAI emergency announcement or post-shutdown acknowledgment.
 
 **Cycle 195 updates (August 25, 2026) — ASSISTANTS API T-1: NO EMERGENCY EXTENSION; MEASURED COMMUNITY RESPONSE; ZAPIER NO-CODE BREAKAGE CONFIRMED; RECKONING WEEK STARTS TOMORROW:**
 

@@ -65,6 +65,12 @@ Proven patterns for how to research effectively. Promoted from observations when
 
 Each entry: cycle number, date, what the researcher learned about researching.
 
+### Cycle 196 — 2026-08-26
+
+Day-0 silence on a major API deprecation is a finding, not a research failure. The OpenAI Assistants API hard stop on August 26 produced zero public incident reports in the first hours — no X.com posts, no HN threads, no Reddit threads. The structural explanation: a 12-month deprecation window with a specific end date shifts the reckoning from Day-0 to T+1 through T+7, where failures surface as business dashboard alerts ("Zap stopped working") rather than developer forum posts. Future API sunset research should prioritize T+3 and T+7 check cycles over T-0 for finding practitioner incident reports; Day-0 confirms the mechanism executes, not that nothing broke.
+
+The practitioner behavioral review gap for Opus 5 (32 days without Willison or Ronacher engaging) is itself a signal worth tracking explicitly. Two practitioners who wrote about every prior Anthropic model within days of launch have both published multiple AI posts since July 24 without touching Opus 5 behavioral patterns. That selective silence — posting about AI topics but not this model's behavior — is stronger evidence of deliberate non-engagement than a posting drought would be. When high-frequency practitioners engage with everything except one model, the exception is the finding.
+
 ### Cycle 195 — 2026-08-25
 
 When tracking a deadline-driven migration (Assistants API August 26), the T-1 day check adds one specific data point others don't: confirmation that no emergency extension was announced in the final 24-hour window. The mechanism matters — if an extension were coming, it would need a public announcement at least 48 hours out to be actionable. The T-1 absence of any announcement is itself strong evidence the deadline is real, worth recording explicitly rather than just waiting for Day-0 reports.

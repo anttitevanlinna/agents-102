@@ -1,13 +1,23 @@
 # Coding Agent Platforms — Platform State
 
-Last updated: 2026-08-25 (cycle 195)
-OODA cycles: 50
+Last updated: 2026-08-26 (cycle 196)
+OODA cycles: 51
 
 ## Focus
 
 Coding agents as the **meta-platform** for the agentic transformation. This is NOT a developer tools category — it's the factory that builds the factories. Coding agents build the MCP servers, the business agents, the evals, the integrations. Every other platform watch category depends on this one. Copilot Studio can't build another Copilot Studio agent. Agentforce can't extend Agentforce. Coding agents compound — each cycle makes the next cycle faster.
 
-## Key Verdict (as of 2026-08-25)
+## Key Verdict (as of 2026-08-26)
+
+**CYCLE 196 UPDATE — POLARIS ABSENT THROUGH AUG 25 (10 weeks post-Build-2026; palette expansion confirmed as August strategy); ASSISTANTS API DAY-0 EXECUTING (hard stop confirmed, zero public incidents first hours, Day-0 silence is the story; T+1–T+7 reckoning window now active); WILLISON/RONACHER OPUS 5 SILENCE EXTENDS TO DAY 32 (behavioral review still absent; Ronacher published 3 AI posts Aug 19-24, none about Opus 5; Willison published daily Aug 16-25, none about Opus 5 behavioral patterns).**
+
+**Polaris GitHub Copilot default — absent through August 25 (Cycle 196, 10 weeks post-Build-2026).** GitHub changelog for August 22–25 contains zero entries about Polaris becoming default or GPT-4 Turbo retirement. August 25 entries: Rule insights dashboard GA, Copilot Customize tab GA, security advisory user-blocking, ruleset path exceptions — integration features, not model defaults. All press coverage asserting "Polaris default in August 2026" traces to the June 2 Build 2026 announcement, not any primary GitHub source. Palette expansion strategy for August 2026 confirmed: Grok 4.6, Gemini 3.7 Flash, MAI-Code-1.1-Flash, Kimi K3 added as model choices. **Cycle 196 conclusion:** "Polaris as forced default" = strategy repositioned, not delayed. 10 weeks without changelog confirmation is the confirmed finding. ([github.blog/changelog/ direct fetch Aug 25 2026](https://github.blog/changelog/) — [vendor documentation])
+
+**Assistants API Day-0: hard stop executing, zero public incidents in first hours (Cycle 196).** August 26 hard stop executing as planned. Zero X.com/HN/Reddit incident reports found in first hours. OpenAI overall 100% operational — shutdown registers as deliberate 4xx errors, not outage. Zapier: 6 of 7 deprecated ChatGPT actions have no migration path; 1 auto-migrated but turned off. Unresolved parity gaps entered shutdown: .docx unsupported, polling loop requires full architectural rewrite, dashboard path leads to double-migration trap (November 30 second sunset). T+1–T+7 reckoning window now active — check community.openai.com new threads with deprecated endpoint errors, X.com "assistants api broken" last 48h, Reddit /r/openai. (See Cycle 196 run log at `cross-platform/runs/2026-08-26-0900.md`)
+
+**Willison/Ronacher Opus 5 (Day 32): behavioral review still absent (Cycle 196).** Willison published August 16, 19, 20, 21, 22, 23, 24, 25 posts — zero about Opus 5 behavioral patterns. His only Opus 5 content remains August 9 system prompt export control documentation. Ronacher published three AI posts: "What Is Reasoning" (Aug 19), "Fast and Hard Code" (Aug 22), "Anger, Anxiety and Agency" (Aug 24) — none about Opus 5. Direct fetch of Aug 22 post confirmed no model-specific content. Thirty-two days post-launch, neither of the two highest-signal behavioral practitioners has engaged with Opus 5's behavioral character. L3 over-engineering convergence (cycle 194: Theo + Reddit + Every.to) stands without corroboration or challenge. ([simonwillison.net/tags/claude/ fetched Aug 25 2026](https://simonwillison.net/tags/claude/) — [practitioner direct]; [lucumr.pocoo.org/tags/ai/ fetched Aug 25 2026](https://lucumr.pocoo.org/tags/ai/) — [practitioner direct])
+
+**Watch Cycle 197:** Assistants API T+1–T+7 reckoning (community.openai.com deprecated endpoint error threads; X.com "assistants api broken" last 48h; Zapier community Zap failure threads); Polaris — any practitioner direct report of Polaris as a model choice in Copilot picker; Willison/Ronacher Opus 5 behavioral review (Day 33+).
 
 **CYCLE 195 UPDATE — POLARIS ABSENT FROM GITHUB CHANGELOG THROUGH AUG 21 (9 weeks post-Build-2026; Copilot August = model palette expansion, not default replacement: Grok 4.6, Gemini 3.7 Flash, Kimi K3, MAI-Code-1.1-Flash added; no Polaris default change in any changelog entry); ASSISTANTS API T-1 NO EMERGENCY EXTENSION (hard stop proceeds August 26; community forum 21 posts measured problem-solving; Zapier no-code breakage scope reiterated; reckoning week starts tomorrow); WILLISON OPUS 5 BEHAVIORAL REVIEW STILL ABSENT (Day 17; only system prompt documentation published).**
 

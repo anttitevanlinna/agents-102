@@ -108,3 +108,125 @@ test('a surviving finding is reported; a refuted one is not', async () => {
   const survived = await run(ARGS, withFinding(false));
   assert.equal(survived.summary.reduce((n, s) => n + s.confirmed.length, 0), 1);
 });
+
+// ---------------------------------------------------------------------------
+// Every knob must reach the prompt.
+//
+// BRIEF, LAZY_EXPAND, BATCH_READ, NO_DIFF, NO_PREAMBLE and FIRES_ONLY shipped
+// declared, documented with the measurements that justified them, and read by
+// nothing: the workflow advertised a 51% reduction and dispatched the control
+// prompt. No test could have caught it, because the tests only ever looked at
+// the accounting. A dead constant is invisible in exact proportion to how well
+// it is commented — so these assert the prompt TEXT each flag produces.
+// ---------------------------------------------------------------------------
+
+async function promptFor(extra) {
+  const seen = [];
+  const capture = async (prompt, opts) => {
+    seen.push({ prompt, label: opts.label || '' });
+    return cleanJudge(prompt, opts);
+  };
+  await run({ ...ARGS, ...extra }, capture);
+  const j = seen.find((x) => x.label.startsWith('behavior:'));
+  assert.ok(j, 'the class judge was never dispatched');
+  return j.prompt;
+}
+
+test('the default dispatch carries every mechanic the hillclimb validated', async () => {
+  const p = await promptFor({});
+  assert.match(p, /derive-class-brief\.js/, 'BRIEF: the assembled rulebook');
+  assert.match(p, /derive-body-view\.js/, 'the precomputed geometry');
+  assert.match(p, /prefill-instance\.js .* --write/, 'PREFILL: park the resolved rows');
+  assert.match(p, /prefill-instance\.js .* --merge/, 'PREFILL: and splice them back, or the ledger loses them');
+  assert.match(p, /in ONE turn/, 'BATCH_READ: independent reads issued together');
+  assert.match(p, /only if `has_prompt_blocks` or `has_figures`/, 'LAZY_EXPAND');
+  assert.match(p, /check-instance-evidence\.js/, 'the guard that replaced the raw null-grep');
+  assert.doesNotMatch(p, /grep -c '"evidence": \*null'/, 'the raw grep counts healthy N/A rows and means nothing now');
+});
+
+test('brief:false falls back to reading the compendiums in full', async () => {
+  const p = await promptFor({ brief: false });
+  assert.doesNotMatch(p, /derive-class-brief\.js/);
+  assert.match(p, /Read IN FULL, no index files/);
+  assert.match(p, /check_prompts\.md/);
+});
+
+test('the fallback compendium list survives even when the brief is on', async () => {
+  // If the brief cannot build, the judge needs somewhere to go. A flag that
+  // removes the fallback trades a slow judge for a blind one.
+  const p = await promptFor({});
+  assert.match(p, /check_prompts\.md/);
+  assert.match(p, /If it cannot build, read these in full/);
+});
+
+test('noDiff removes the diff and says so, rather than silently dropping it', async () => {
+  const on = await promptFor({});
+  assert.match(on, /git diff abc1234\.\.HEAD/);
+  const off = await promptFor({ noDiff: true });
+  assert.doesNotMatch(off, /git diff abc1234\.\.HEAD/);
+  assert.match(off, /say so in `diff_summary` rather than describing a diff you did not run/);
+});
+
+test('noPreamble downgrades the contract read and admits it is unmeasured', async () => {
+  const p = await promptFor({ noPreamble: true });
+  assert.match(p, /it is not free, it is unmeasured/);
+  const d = await promptFor({});
+  assert.match(d, /_dispatch-preamble\.md` IN FULL/);
+});
+
+test('the fires-only ledger is off unless asked for, and warns when asked for', async () => {
+  assert.doesNotMatch(await promptFor({}), /no N\/A ledger/);
+  const p = await promptFor({ evidence: 'fires' });
+  assert.match(p, /no N\/A ledger/);
+  assert.match(p, /audit-eval-coverage\.js` must already understand it/);
+});
+
+test('evidence:full appends the from-scratch discipline as an override', async () => {
+  assert.doesNotMatch(await promptFor({}), /A PASS owes evidence too/);
+  assert.match(await promptFor({ evidence: 'full' }), /A PASS owes evidence too/);
+});
+
+test('every judge prompt is read-only on the target, in every mode', async () => {
+  for (const mode of [{}, { brief: false }, { noDiff: true }, { evidence: 'full' }, { evidence: 'fires' }]) {
+    assert.match(await promptFor(mode), /You are READ-ONLY on the target file/, JSON.stringify(mode));
+  }
+});
+
+test('both dispatch doors name the same mechanics, or one of them is a rumour', async () => {
+  // The skill and this workflow are the two ways a judge gets fired. They share
+  // one contract file, but each writes its own parameter header — and a header
+  // that forgets a step is how the same file judged by the same class got two
+  // different protocols depending on which door it came through.
+  const skill = fs.readFileSync(path.join(__dirname, '..', 'skills', 'eval-fire', 'SKILL.md'), 'utf8');
+  const prompt = await promptFor({});
+  for (const mechanic of [
+    '_dispatch-preamble.md',
+    'derive-class-brief.js',
+    'derive-body-view.js',
+    'prefill-instance.js',
+    '--write',
+    '--merge',
+    'check-instance-evidence.js',
+    'expand-md.js',
+    // The one instruction a judge can ignore with nothing looking wrong
+    // afterwards: the merged ledger is identical whether the rows were parked
+    // or retyped, and only the clock knows. A live run caught a judge
+    // re-deriving 75 of 77 parked rows.
+    'ONLY for the rules your brief contains',
+  ]) {
+    assert.match(prompt, new RegExp(mechanic.replace(/[.]/g, '\\.')), `workflow header dropped ${mechanic}`);
+    assert.match(skill, new RegExp(mechanic.replace(/[.]/g, '\\.')), `eval-fire SKILL.md dropped ${mechanic}`);
+  }
+});
+
+test('the contract file actually carries the mechanics both headers point at', () => {
+  const contract = fs.readFileSync(
+    path.join(__dirname, '..', '..', 'curriculum', 'evals', 'judges', '_dispatch-preamble.md'), 'utf8');
+  assert.match(contract, /## Mechanics/);
+  for (const s of ['derive-body-view.js', 'derive-class-brief.js', 'prefill-instance.js', '--merge', 'check-instance-evidence.js']) {
+    assert.match(contract, new RegExp(s.replace(/[.]/g, '\\.')), `contract missing ${s}`);
+  }
+  // Pointing at a contract that still prescribes the meaningless grep would
+  // reinstate the guard this work replaced.
+  assert.doesNotMatch(contract, /run `grep -c '"evidence": \*null'` over the instances/);
+});

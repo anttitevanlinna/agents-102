@@ -78,7 +78,7 @@ function build(fileArg, cls) {
     const { out } = prefill(fileArg, cls)
     if (out.reason === 'ok' && out.carried.length) {
       resolved = new Set(out.carried.map(r => `${r.compendium}|${r.rule_index}`))
-      prefillNote = `${out.carried.length} rules already resolved N/A by shape hash ${out.shape_hash} — excluded below, their rows are already in the instance`
+      prefillNote = `${out.carried.length} rules resolved N/A by shape hash ${out.shape_hash} — excluded below, rows parked in the prefill sidecar`
     } else if (out.reason !== 'ok') {
       prefillNote = `prefill fell through (${out.reason}) — every rule included`
     }
@@ -120,9 +120,19 @@ function build(fileArg, cls) {
     `- ${prefillNote}`,
     failures.length ? `- **UNREADABLE, read these yourself: ${failures.join(', ')}**` : '- all compendiums read',
     '',
-    'Excluded rules are NOT unjudged — their N/A rows are already written into your',
-    'instance by the prefill and count toward the completeness ledger. Do not re-add',
-    'them and do not re-derive them.',
+    '**A rule that is not in this brief is already answered. Do not emit a row for it.**',
+    'Excluded rules are NOT unjudged — their N/A rows are parked in the prefill sidecar',
+    'and count toward the completeness ledger. Do not re-add them, do not re-derive',
+    'them, do not restate their reasons. Re-deriving them is the entire cost this',
+    'brief exists to remove, and it is invisible in the output: the ledger looks',
+    'identical either way.',
+    '',
+    'They are not in your instance yet, and nothing puts them there but you:',
+    '',
+    `    node curriculum/evals/scripts/prefill-instance.js <file> ${cls} --merge`,
+    '',
+    'Run that AFTER you write your instance. Skip it and the ledger loses exactly the',
+    'rules this brief dropped, which is a coverage hole that looks like a clean run.',
   ].join('\n')
 
   const out = header + parts.join('')
@@ -141,8 +151,14 @@ if (require.main === module) {
   try { r = build(file, cls) } catch (e) { console.error(`FAIL: ${e.message}`); process.exit(1) }
   if (rest.includes('--stdout')) { process.stdout.write(r.text); process.exit(0) }
   fs.mkdirSync(OUT_DIR, { recursive: true })
-  const base = path.basename(file).replace(/\.md$/, '')
-  const p = path.join(OUT_DIR, `${base}.${cls}.brief.md`)
+  // Slug, not basename. `spot-gaps-build-the-loop` is both a module and an
+  // exercise; two concurrent judges on the two files would write and read one
+  // `spot-gaps-build-the-loop.writing.brief.md`, and the second would judge
+  // against the first's rulebook. This is the same collision the body view was
+  // renamed to fix on 2026-08-25 — one artefact got the fix, its sibling did not.
+  const { derive } = require('./derive-body-view.js')
+  const slug = derive(file, { write: false }).slug
+  const p = path.join(OUT_DIR, `${slug}.${cls}.brief.md`)
   fs.writeFileSync(p, r.text)
   const pct = r.allBytes ? (100 * (r.allBytes - r.keptBytes) / r.allBytes).toFixed(1) : '0.0'
   console.log(`${path.relative(REPO, p)}  rules kept=${r.kept} dropped=${r.dropped}  ${r.allBytes}B -> ${r.keptBytes}B (${pct}% less)`)

@@ -80,48 +80,120 @@ For the **cross_module** class, the compendium is fixed: `check_cross_module.md`
 
 For the **voice_panel** class, there is no `eval_classes:` glob — the calibration set is fixed by the template: `check_writing.md` §4, `compounded/2026-04-25-writing-ae101-voice-quartet.md`, and the `Mood target` line from the maintainer block of the module the file belongs to. A persona cannot judge a beat without knowing which mood it was engineered for, so resolve the mood target before dispatch and pass it in the prompt. No sim trace.
 
-### Step 3 — Read the judge prompt template
+### Step 3 — Build the dispatch prompt
 
-`curriculum/evals/judges/<class>.md` is the prompt template (for `behavior`, the file is `prompt-behavior.md`). Read it once. Substitute `{{file_path}}`, `{{compendium_paths}}`, `{{trace_path}}` (for `story` and `behavior`), and `{{catalog_path}}` (for `behavior` only) into the template.
+**There is one dispatch contract and you do not retype it.** `curriculum/evals/judges/_dispatch-preamble.md` carries every clause a judge must obey — the T3-not-index rule, harm-before-REVISE, no-citing-a-tool-you-did-not-run, a-PASS-owes-evidence, stay-in-your-class, `body_sha`, the four things a `rules_evaluated` row must get right, and §Mechanics (what is precomputed and must not be re-derived). It used to be duplicated into this step under a keep-in-sync note; the copies diverged, and the same file judged by the same class got a different protocol depending on whether the dispatch came through this skill or through `eval-sweep.js`.
 
-**Marker-aware reading (post-prompts-registry refactor).** The judge templates now instruct subagents to run `node scripts/expand-md.js {{file_path}}` before scanning, so `{{prompt:<key>}}` markers resolve into the canonical `**Prompt** + fenced block` shape the judges' regex / line-count logic was written for. `{{file_path}}` stays the raw source path — only the read view shifts. If a judge template predates this refactor and still reads the raw file directly, expand-md.js is the helper to wire in (see `prompt-behavior.md` for the canonical shape).
+So the prompt you dispatch is a short parameter header over that contract. Substitute and send verbatim:
 
-Trace path resolution:
+```
+You are the **<class>** eval judge for `<file_path>`. Repo root `/Users/anttitevanlinna/Projects/agents-102` — cd there first.
+
+## Read
+
+1. `curriculum/evals/judges/_dispatch-preamble.md` IN FULL — the dispatch contract, including §Mechanics, which tells you what not to re-derive.
+2. `curriculum/evals/judges/<template>`
+3. Your rulebook:
+```
+node curriculum/evals/scripts/derive-class-brief.js <file_path> <class>
+```
+Every in-scope rule VERBATIM — full lead, full body, every carve-out — minus the rules the prefill resolved. If it cannot build, read these in full instead and say so in `notes`:
+  - <compendium_paths>
+
+Judges cite rule numbers and adjudicate boundary cases, so the `_index/` leads are never enough.
+
+**Issue the template read, the rulebook and the body view in ONE turn** — they have no dependency on each other.
+
+## The read view
+
+The body view's `signals` tell you whether there is anything to expand. Run `node scripts/expand-md.js <file_path>` only if `has_prompt_blocks` or `has_figures` is true. Cite line numbers against the RAW source either way.
+
+## Your geometry is already computed
+
+```
+node curriculum/evals/scripts/derive-body-view.js <file_path>
+```
+
+## Rows resolved before you started — park them, then splice them
+
+```
+node curriculum/evals/scripts/prefill-instance.js <file_path> <class> --write
+```
+
+**Emit rows ONLY for the rules your brief contains.** A rule the brief omitted is parked and answered; writing your own row for it is the whole cost this mechanism removes, and it is invisible afterwards because the finished ledger looks identical either way.
+
+After you write your instance, and before you reply:
+
+```
+node curriculum/evals/scripts/prefill-instance.js <file_path> <class> --merge
+```
+
+Skipping `--merge` loses exactly the rules the brief dropped — a coverage hole that reads as a clean run.
+
+## Before filing anything
+
+Read the `<!-- maintainer -->` block for dated accept-notes; the body view has already extracted them. A finding against a documented accept-note is a false positive that costs real attention.
+
+## You are READ-ONLY on the target file
+
+Not the body, not the maintainer block, not a backing block, not a source stamp. Other judges are reading this same file right now. Anything you would have fixed goes in `findings` (blocking) or `todos` (not). The only file you write is your own instance JSON.
+
+## Write the instance
+
+Overwrite `curriculum/evals/instances/<slug>.<class>.json`, with `body_sha` and `shape_hash` at top level. Then run and report the real integer:
+
+```
+node curriculum/evals/scripts/check-instance-evidence.js curriculum/evals/instances/<slug>.<class>.json
+```
+
+Return the structured verdict.
+```
+
+Template file per class is the Class table's `Judge prompt` column (`behavior` → `prompt-behavior.md`). `<slug>` is `<training>--<surface-type>--<file-slug>`, surface-type derived from the parent directory — `curriculum/trainings/<t>/` → `module`, `curriculum/exercises/` → `exercise`, `curriculum/lectures/` → `lecture`, `.../supplementary/` → `supplementary`, `.../reference/` → `reference`. Directory-derived, never basename-keyed, so a module and an exercise sharing a slug (`spot-gaps-build-the-loop` is both) never collide. `derive-body-view.js` prints the slug it resolved — use that rather than assembling it by hand.
+
+Trace path resolution, for the two classes that have one:
 - `story`: `curriculum/evals/sim-cache/<training>--<surface-type>--<file-slug>.persona.json`
 - `behavior`: `curriculum/evals/sim-cache/<training>--<surface-type>--<file-slug>.behavior.json`
 
-`<file-slug>` is the basename without `.md`; `<training>` is the short training key (`ae101` / `agents-101` / `claude-basics`) that prefixes the instance filenames, resolved the same way as `{{strategy_doc_paths}}` in Step 2 (file path `curriculum/trainings/<dir>/...`, or slug-match against the TRAININGS registry for shared exercise/lecture files). The prefix disambiguates same-slug files across trainings — `getting-going` exists in both Agents 101 and AE101, and a bare slug would feed the wrong training's trace to the judge. `<surface-type>` is derived from the file's parent directory (`curriculum/trainings/<t>/` → `module`, `curriculum/exercises/` → `exercise`, `curriculum/lectures/` → `lecture`, `curriculum/trainings/<t>/supplementary/` → `supplementary`, `curriculum/trainings/<t>/reference/` → `reference`) — directory-derived, not basename-keyed, so a module and an exercise sharing a slug (`spot-gaps-build-the-loop` is both) never collide.
+Pass the trace path as `{{trace_path}}` and, for `behavior` only, `curriculum/evals/simulation-behavior.md` as `{{catalog_path}}`. A cached trace is a claim about a body that may no longer exist — the contract's last clause governs it.
+
+**When the target is stale against a pin**, add the diff block the workflow adds:
+
+```
+## Run your own diff
+
+Pin `<pin>`, staleness reason **<reason>**.
+
+git diff <pin>..HEAD -- <file_path>
+
+Do not filter with `grep -E '^[-+][^-+]'` — it drops every markdown bullet line. Do not scope your read to the diff: findings are routinely pre-existing lines every diff-scoped pass skipped.
+```
 
 ### Step 4 — Dispatch the subagent
 
 Use the `Agent` tool with:
 - `subagent_type: "general-purpose"`
-- `model:` matching the class — **sonnet for every judge class.** Writing ran on haiku until 2026-08-19; it passed the schema gate and failed on judgement (out-of-lane rules, cross-file false positives), which no JSON validation catches. Haiku belongs on the mechanical batteries (`check_platform_and_boundaries.md` §16/§17), where a wrong answer shows in the output's shape. → `check_platform_and_boundaries.md` §21a
+- `model:` **sonnet for every judge class.** Writing ran on haiku until 2026-08-19; it passed the schema gate and failed on judgement (out-of-lane rules, cross-file false positives), which no JSON validation catches. A 2026-08-26 hillclimb re-confirmed it on a planted-defect bench: haiku held mechanical recall at 5/5 and fell to 3/5 on judgement, dropping exactly the unearned term of art and the slogan shipped without its carve-out. Haiku belongs on the mechanical batteries (`check_platform_and_boundaries.md` §16/§17), where a wrong answer shows in the output's shape. → `check_platform_and_boundaries.md` §21a
 - `description:` `"<class>-class judge: <basename>"` per file
-- `prompt:` the substituted judge template, with `.claude/rules/content-rules.md` prepended verbatim (per the subagent rule-injection convention in project CLAUDE.md). For `story --personas N > 1`, append a single line `personas: N` to the substituted prompt — the judge interprets it.
-- **Append this clause verbatim to every dispatched judge prompt, every class:**
+- `prompt:` the Step 3 header, with `.claude/rules/content-rules.md` prepended verbatim (per the subagent rule-injection convention in project CLAUDE.md)
 
-  > Before marking any rule REVISE, state in the `evidence` field, in one line, WHAT HARM that rule exists to prevent and whether that harm is actually present here. A rule firing is not the harm arriving: rules encode cheap proxies (a count, a string, a location) for expensive concerns (credential-collecting, dialect-smuggling, body clutter), and a proxy matches on shape while the harm lives in purpose. Read the whole rule including any boundary or exception clause before scoring — exceptions are often stated after the prohibition, and a judge that pattern-matches the ban will stop early. If the harm is absent, or if the obvious fix would degrade the artefact (falsify a verbatim quote, delete a rescue the student needs, break a deliberate repetition), do NOT file a REVISE: report it as a rule question for the maintainer, and say what the rule would have to say to be right. Check the file's maintainer block for an existing accept-note on the passage before flagging it at all.
-
-  Three maintainer rejections on 2026-08-02 — all of correctly-fired checks whose proposed fixes made the material worse — are why this is mandatory rather than advisory. → `memory/compounded/2026-08-02-content_creation-a-rule-firing-is-not-the-harm-arriving.md`
-- **Append this verbatim too — no citing a tool you did not run:**
-
-  > If your evidence names a script, command, or exit code, you must have RUN it in this session. Paste the exact command and its real output or exit status into the `evidence` field. Never write that a checker "confirms" something, or report an exit code, from inference about what the checker probably does. If you did not run it, say what you observed directly and say the mechanical claim is unverified.
-
-
-  > **A PASS owes evidence too — this is the half the rules above did not cover, and it failed on 2026-08-15.** One writing sweep returned 702 rule verdicts across 13 files, all PASS, all `evidence: null`, in 7 tool calls; the summary table was indistinguishable from a real clean sweep. So: a mechanically-checkable rule marked PASS carries the command result in `evidence` (`grep -c '—' → 0 in body`); a judgement rule marked PASS quotes the line that comes CLOSEST to violating it, with line number, and says why it stays inside; a rule that does not apply to this file is `N/A` with a one-clause reason. **Nothing is PASS by default.** Validate your own greps against a planted test string before trusting a zero. **Orchestrator side:** before believing any sweep, run `grep -c '"evidence": *null'` over the instances it wrote and compare tool-call count to file count — a skim is visible in both numbers and in neither summary.
-  **Orchestrator side of the same rule: re-run any tool result a judge cites before acting on the finding.** A cited command is the one claim in a verdict you can check in three seconds. On 2026-08-12 a story judge filed a blocking finding reading *"`scripts/check-slide-size.js` confirms, gate exits 1"* — the script exits 0. Its bullet count was true; only the corroboration was invented, and acting on the verdict as written would have edited a student-facing slide to satisfy a check that was already passing. When a judge's own observation and its mechanical corroboration disagree, the disagreement IS the finding: one of the two instruments is broken, and it is often not the one you suspect. That chase is what surfaced a gate which had never opened a module file. → `memory/compounded/2026-08-08-platform-verification-tooling-must-fail-closed.md` §4
-- **Append this verbatim too — stay in your class:**
-
-  > Evaluate ONLY the compendiums your template puts in scope. Reaching into a sibling class's rules feels thorough and is the opposite: a verdict outside your lane is not extra coverage, it is an unowned claim that outranks nothing and can contradict something. If you notice a problem belonging to another class, put it in `notes`, never in `rules_evaluated`.
-
-  Caught 2026-08-13: a writing judge scored `check_slides.md` 14/14 PASS on `run-the-first-experiment.md` while the slides judge — which had grepped both loci and run three checkers — filed a rule-9 finding on the identical body. Two instance files then disagreed about one rule and neither recorded that a disagreement existed, so whichever a successor read first became the truth. **Orchestrator side:** when two classes report on the same rule, the one whose template OWNS it wins, and the other verdict is a defect in the losing judge's scope, not a tie to adjudicate on evidence.
-
-- **Every judge records `body_sha` at the top level of its instance JSON** — `shasum -a 256 <file>` on the raw source, taken when it starts reading. A verdict is a claim about the body the judge READ; in a multi-session repo the file moves under running judges, and a verdict stamped at current HEAD then describes text that no longer exists. `update-quality.sh` REFUSES to stamp when a recorded `body_sha` doesn't match the file (instances without the field predate the guard and stamp as before). Caught live on 2026-08-02: a concurrent session's pedagogy verdict quoted a clause cut one minute before it was written, and read as a clean PASS.
+For `story --personas N > 1`, append a single line `personas: N` — the judge interprets it.
 
 If multiple file paths were passed, dispatch one subagent per file, all in a single message (parallel).
 
-**Voice_panel dispatches six per file, not one.** Each gets one persona card from the template plus the calibration set, and each returns its own JSON object (`persona`, `pleased`, `delight`, `misses`, `weakest_passage`, `would_sign`). Give each subagent ONLY its own card: a panel where every seat has read every other seat's brief is one judge with six voices, which is the failure the panel exists to avoid. The four appended clauses above still apply, except that a persona's job IS to name the weakest passage — a persona reporting nothing amiss and no weakest passage has not read the file, and that is a broken run, not a clean one. Synthesize after all six return, per the template's synthesis section (all six sign → PLEASED; Sami's misses rank first; run the maintainer-guard grep before listing anything).
+**Voice_panel dispatches six per file, not one.** Each gets one persona card from the template plus the calibration set, and each returns its own JSON object (`persona`, `pleased`, `delight`, `misses`, `weakest_passage`, `would_sign`). Give each subagent ONLY its own card: a panel where every seat has read every other seat's brief is one judge with six voices, which is the failure the panel exists to avoid. The contract still applies, except that a persona's job IS to name the weakest passage — a persona reporting nothing amiss and no weakest passage has not read the file, and that is a broken run, not a clean one. Synthesize after all six return, per the template's synthesis section.
+
+**Orchestrator side, before believing anything that comes back:**
+
+```
+node curriculum/evals/scripts/check-instance-evidence.js curriculum/evals/instances/<slug>.<class>.json
+```
+
+Exits 1 on an ungrounded verdict — a finding with no quote or harm, a REVISE or judgement PASS with no evidence, an N/A with no reason at all. A terse N/A is healthy and is not counted; the raw `grep -c '"evidence": *null'` this step used to prescribe now mixes the two populations and means nothing. Compare tool-call count to file count as well: a skim is visible in both numbers and in neither summary.
+
+**Re-run any tool result a judge cites before acting on the finding.** A cited command is the one claim in a verdict you can check in three seconds. On 2026-08-12 a story judge filed a blocking finding reading *"`scripts/check-slide-size.js` confirms, gate exits 1"* — the script exits 0. Its bullet count was true; only the corroboration was invented, and acting on the verdict as written would have edited a student-facing slide to satisfy a check that was already passing. When a judge's own observation and its mechanical corroboration disagree, the disagreement IS the finding: one of the two instruments is broken, and it is often not the one you suspect. → `memory/compounded/2026-08-08-platform-verification-tooling-must-fail-closed.md` §4
+
+**When two classes report on the same rule, the one whose template OWNS it wins**, and the other verdict is a defect in the losing judge's scope, not a tie to adjudicate on evidence. Caught 2026-08-13: a writing judge scored `check_slides.md` 14/14 PASS on `run-the-first-experiment.md` while the slides judge — which had grepped both loci and run three checkers — filed a rule-9 finding on the identical body. Two instance files then disagreed about one rule and neither recorded that a disagreement existed.
 
 ### Step 5 — Aggregate
 

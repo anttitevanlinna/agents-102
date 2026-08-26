@@ -33,9 +33,28 @@
 // never REVISE, because a REVISE is a claim about prose and prose is exactly
 // what changed.
 //
+// Nothing here writes the instance the judge is about to write. An earlier
+// version of the dispatch prompt — and the brief's own header — told the judge
+// "those rows are already in your instance file", and no code path had ever put
+// them there. The judge then skipped exactly the rules the brief had dropped
+// from its rulebook, so a prefilled fire lost those rows from the ledger in
+// silence, which is the coverage hole the completeness contract exists to make
+// impossible. Two artefacts asserted a write; none performed it.
+//
+// The fix is deliberately NOT "make the prefill overwrite the instance". The
+// prior instance is a real verdict until a new one replaces it, and a judge that
+// dies mid-run would leave a stub where a verdict used to be. So the resolved
+// rows go to a SIDECAR, and are spliced in AFTER the judge has written its own
+// file:
+//
+//   --write   resolve and park the rows in body-views/<slug>.<cls>.prefill.json
+//   --merge   splice any parked row the judge did not write into the instance
+//
 // Usage:
 //   node curriculum/evals/scripts/prefill-instance.js <file.md> <class>
 //   node curriculum/evals/scripts/prefill-instance.js <file.md> <class> --json
+//   node curriculum/evals/scripts/prefill-instance.js <file.md> <class> --write
+//   node curriculum/evals/scripts/prefill-instance.js <file.md> <class> --merge
 'use strict'
 const crypto = require('node:crypto')
 const fs = require('node:fs')
@@ -44,6 +63,21 @@ const { derive, COMPENDIA } = require('./derive-body-view.js')
 
 const REPO = path.resolve(__dirname, '..', '..', '..')
 const INSTANCES = path.join(REPO, 'curriculum', 'evals', 'instances')
+const VIEWS = path.join(REPO, 'curriculum', 'evals', 'body-views')
+
+// A corpus written at indent 2 re-serialised at indent 1 turns a one-field
+// addition into a whole-file rewrite: 295 files, 134,308 insertions, and in a
+// tree with a live peer that is a conflict on every future write. Read the
+// indent the file already uses and write it back.
+function indentOf(raw) {
+  const m = raw.match(/^\{\n( +)"/)
+  return m ? m[1].length : 2
+}
+function writeJsonPreservingIndent(p, obj) {
+  let indent = 2
+  try { indent = indentOf(fs.readFileSync(p, 'utf8')) } catch { /* new file: repo default */ }
+  fs.writeFileSync(p, JSON.stringify(obj, null, indent) + '\n')
+}
 
 // The shape hash. Deliberately excludes anything prose-valued: two bodies with
 // the same structural inventory have the same set of inapplicable rules, however
@@ -176,12 +210,75 @@ function backfill({ apply = false, quietMinutes = 10 } = {}) {
     const v = d2(d.file, { write: false })
     if (apply) {
       d.shape_hash = shapeHash(v.signals)
-      fs.writeFileSync(p, JSON.stringify(d, null, 1) + '\n')
+      writeJsonPreservingIndent(p, d)
     }
     rows.stamped++
   }
   return rows
 }
+
+
+// ---------------------------------------------------------------------------
+// The sidecar. `prefill()` decides; these two move the rows.
+// ---------------------------------------------------------------------------
+
+// The two directories are injectable so the tests can exercise the splice
+// without writing into the live instance corpus a peer session may be reading.
+function sidecarPath(slug, cls, viewsDir = VIEWS) { return path.join(viewsDir, `${slug}.${cls}.prefill.json`) }
+
+const rowKey = r => `${r.compendium}|${r.rule_index}`
+
+function writeSidecar(fileArg, cls, { viewsDir = VIEWS } = {}) {
+  const { out } = prefill(fileArg, cls)
+  const rows = [...out.carried, ...out.mechanical]
+  const doc = {
+    file: out.file, slug: out.slug, class: cls,
+    source_sha: out.source_sha, shape_hash: out.shape_hash,
+    reason: out.reason, owed_to_judge: out.owed_to_judge,
+    rows,
+  }
+  fs.mkdirSync(viewsDir, { recursive: true })
+  fs.writeFileSync(sidecarPath(out.slug, cls, viewsDir), JSON.stringify(doc, null, 2) + '\n')
+  return doc
+}
+
+// Splice AFTER the judge writes. A row the judge wrote itself wins — it read the
+// body, the sidecar only read a hash — so this adds what is missing and never
+// overwrites what is present. `source_sha` is checked because a sidecar built
+// against a body that has since moved describes a file the instance is not about.
+function mergeIntoInstance(fileArg, cls, { apply = true, viewsDir = VIEWS, instancesDir = INSTANCES } = {}) {
+  const view = derive(fileArg, { write: false })
+  const scp = sidecarPath(view.slug, cls, viewsDir)
+  const instPath = path.join(instancesDir, `${view.slug}.${cls}.json`)
+  const res = { slug: view.slug, class: cls, added: 0, already_present: 0, rows_after: 0, status: 'ok' }
+
+  let doc
+  try { doc = JSON.parse(fs.readFileSync(scp, 'utf8')) } catch { res.status = 'no sidecar — nothing was parked, every row was the judge\'s'; return res }
+  if (doc.source_sha !== view.source_sha) { res.status = `sidecar is for a different body (${doc.source_sha} != ${view.source_sha}) — refusing to merge`; return res }
+
+  let inst
+  try { inst = JSON.parse(fs.readFileSync(instPath, 'utf8')) } catch {
+    res.status = 'instance not written yet — run this AFTER the judge writes its instance'
+    return res
+  }
+  if (!Array.isArray(inst.rules_evaluated)) { res.status = 'instance has no rules_evaluated array — refusing to merge'; return res }
+
+  const present = new Set(inst.rules_evaluated.filter(r => r && typeof r === 'object').map(rowKey))
+  for (const r of doc.rows || []) {
+    if (present.has(rowKey(r))) { res.already_present++; continue }
+    inst.rules_evaluated.push(r)
+    present.add(rowKey(r))
+    res.added++
+  }
+  if (doc.shape_hash && !inst.shape_hash) inst.shape_hash = doc.shape_hash
+  res.rows_after = inst.rules_evaluated.length
+  if (apply && res.added) writeJsonPreservingIndent(instPath, inst)
+  return res
+}
+
+module.exports.writeSidecar = writeSidecar
+module.exports.mergeIntoInstance = mergeIntoInstance
+module.exports.sidecarPath = sidecarPath
 
 module.exports.backfill = backfill
 
@@ -194,8 +291,19 @@ if (require.main === module) {
   }
   const [file, cls, ...rest] = process.argv.slice(2)
   if (!file || !cls) {
-    console.error('usage: prefill-instance.js <file.md> <class> [--json]')
+    console.error('usage: prefill-instance.js <file.md> <class> [--json|--write|--merge]')
     process.exit(1)
+  }
+  if (rest.includes('--merge')) {
+    const r = mergeIntoInstance(file, cls)
+    console.log(`${r.slug}.${cls}: ${r.added} prefilled rows spliced in · ${r.already_present} the judge already wrote · ${r.rows_after} rows total  [${r.status}]`)
+    process.exit(0)
+  }
+  if (rest.includes('--write')) {
+    const doc = writeSidecar(file, cls)
+    console.log(`${doc.slug}.${cls}: ${doc.rows.length} rows parked in body-views/${doc.slug}.${cls}.prefill.json · ${doc.owed_to_judge ?? '?'} owed to you  [${doc.reason}]`)
+    console.log('These rows are NOT in your instance yet. Write your own rows, then run this same command with --merge.')
+    process.exit(0)
   }
   const { out } = prefill(file, cls)
   if (rest.includes('--json')) { console.log(JSON.stringify(out, null, 1)); process.exit(0) }

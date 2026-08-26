@@ -123,7 +123,7 @@ for (const it of ITEMS) {
 
 const VERDICT_SCHEMA = {
   type: 'object',
-  required: ['file', 'class', 'verdict', 'body_sha', 'evidence_null_count', 'diff_summary', 'findings', 'todos'],
+  required: ['file', 'class', 'verdict', 'body_sha', 'ungrounded_count', 'diff_summary', 'findings', 'todos'],
   properties: {
     file: { type: 'string' },
     class: { type: 'string' },
@@ -132,7 +132,7 @@ const VERDICT_SCHEMA = {
     // the orchestrator reading it as a gate.
     verdict: { enum: ['PASS', 'PASS_WITH_TODOS', 'REVISE'] },
     body_sha: { type: 'string', description: 'shasum -a 256 of the file, first 64 hex, taken when you START reading' },
-    evidence_null_count: { type: 'integer', description: 'real integer from grep -c on the instance you wrote; N/A rows legitimately carry null, only a FINDING with null evidence is ungrounded' },
+    ungrounded_count: { type: 'integer', description: 'real integer from `check-instance-evidence.js` on the instance you wrote — a finding with no quote or harm, a REVISE or judgement PASS with no evidence, an N/A with no reason. A terse N/A is healthy and is NOT counted.' },
     diff_summary: { type: 'string', description: 'what the pinned diff actually changed, from the diff YOU ran' },
     drift_rules_reread: { type: 'array', items: { type: 'string' } },
     accept_notes_found: { type: 'array', items: { type: 'string' } },
@@ -168,39 +168,6 @@ Do not edit it at all — not the body, not the maintainer block, not a backing 
 
 Anything you would have fixed goes in \`findings\` (blocking) or \`todos\` (not). The orchestrator applies them after every class on this file has returned. The only file you write is your own instance JSON.`
 
-// The geometry every judge used to derive for itself, six times per file, each
-// into an unnamespaced scratch file that a concurrent judge on a different file
-// could overwrite. Now derived once, keyed by source sha, named by slug.
-const VIEW = `## Your geometry is already computed — do not re-derive it
-
-\`\`\`
-node curriculum/evals/scripts/derive-body-view.js <file>
-\`\`\`
-
-Writes \`curriculum/evals/body-views/<slug>.view.json\` and returns cached if the source sha is unchanged. It carries:
-
-- \`maintainer_cut\`, \`fence_ranges\`, \`body_regions\` — 1-indexed against the RAW source, which is what a citation means.
-- \`projections.body_numbered\` — the body with its raw line numbers, fences and maintainer tail already removed. **Grep THIS file.** A hit in it is in-region by construction, so the "verify the cited line is inside the body region" check your template describes is structural here, not something you perform.
-- \`greps\` — the mechanical patterns, each with \`planted_proof\`. A pattern with \`status: CLEAN\` was proven against a planted violation and then returned zero on this body: that is a real zero and you may cite it. \`UNPROVEN\` means the pattern proved nothing and decides nothing — check it yourself.
-- \`accept_notes\` — every dated line in the maintainer block, already extracted.
-- \`rule_inventory\` — the numbered-rule count per compendium, moved-stubs excluded. Use it for the completeness count instead of counting by hand.
-- \`signals\` — structural facts (has_prompt_blocks, has_urls, group_beat_markers, …). A rule that can only fire on a shape this file does not have is N/A, and the signal is the reason.
-
-Do not write your own body projection. Do not plant your own test string. Both are done above, and the unnamespaced scratch files judges used to write collided across concurrent files.`
-
-const EVIDENCE_LEAN = `## Verdict discipline
-
-- **A blocking finding owes a harm statement** — what goes wrong in the room or on the page. "Violates §N" with no harm is a citation, not a finding. A rule firing is not the harm arriving. Findings carry FULL evidence, always; nothing below relaxes that.
-- **Non-blocking goes in \`todos\`, and the verdict is PASS_WITH_TODOS.** Do not report REVISE to make an observation visible; REVISE means a gate, and a TODO escalated to a gate costs a maintainer decision that was never owed.
-- **The ledger stays complete; the prose does not.** One row per numbered rule, as always — a missing \`rule_index\` is an unproven coverage hole. But:
-  - a rule the prefill already resolved is ALREADY IN THE FILE. Leave it. Do not re-derive it, do not rewrite its evidence.
-  - a rule you mark **N/A** carries \`evidence: null\` and a \`na_reason\` of at most one clause, ideally naming the signal (\`"no prompt blocks"\`). Not a paragraph.
-  - a rule you mark **PASS on a mechanical check** cites the view's grep result — the pattern and its count — and nothing more.
-  - a rule you mark **PASS on judgement** still quotes the line closest to violating it, with line number, and says why it stays inside. This is where the class earns its keep and it is not abbreviated.
-- **A proven zero is evidence; an unproven one is not.** The view's \`planted_proof\` is what makes a zero citable. Never report a count from a pattern you did not see proven.
-- **No citing a tool you did not run.** If your evidence names a script, command or exit code, you must have RUN it in this session; paste the exact command and its real output. Never report that a checker "confirms" something from inference about what it probably does.
-- **Stay in your class.** Evaluate only the compendiums your template puts in scope. A verdict outside your lane is not extra coverage, it is an unowned claim that outranks nothing and can contradict something. Put it in \`todos\`.`
-
 const EVIDENCE_FULL = `## Verdict discipline
 
 - **A blocking finding owes a harm statement** — what goes wrong in the room or on the page. "Violates §N" with no harm is a citation, not a finding. A rule firing is not the harm arriving.
@@ -209,7 +176,11 @@ const EVIDENCE_FULL = `## Verdict discipline
 - **No citing a tool you did not run.** If your evidence names a script, command or exit code, you must have RUN it in this session; paste the exact command and its real output. Never report that a checker "confirms" something from inference about what it probably does.
 - **Stay in your class.** Evaluate only the compendiums your template puts in scope. A verdict outside your lane is not extra coverage, it is an unowned claim that outranks nothing and can contradict something. Put it in \`todos\`.`
 
-const EVIDENCE = EVIDENCE_MODE === 'full' ? EVIDENCE_FULL : EVIDENCE_LEAN
+// Lean is not a block of prose any more — it is `_dispatch-preamble.md`
+// §Mechanics, which every judge reads in full anyway. `full` is the escape
+// hatch: an override appended after the preamble for a sweep that must be able
+// to say it re-derived every row from scratch.
+const EVIDENCE = EVIDENCE_MODE === 'full' ? EVIDENCE_FULL : ''
 
 
 // The prefill resolves the rows that turn on the file's SHAPE rather than its
@@ -218,51 +189,97 @@ const EVIDENCE = EVIDENCE_MODE === 'full' ? EVIDENCE_FULL : EVIDENCE_LEAN
 // A REVISE is never carried: that is a claim about prose, and prose is what
 // moved. No prior instance, an unreadable one, a changed shape or an unproven
 // grep all fall through to the judge.
+//
+// The `--merge` half is not decoration. `derive-class-brief.js` DROPS exactly
+// the rules the sidecar holds, so a judge that runs `--write` and skips
+// `--merge` loses those rows from the ledger — a coverage hole that reads as a
+// clean run. An earlier version of this note asserted the rows were "already in
+// your instance file" and no code path had ever put them there.
 function prefillNote(j) {
   if (!j.slug) return ''
   return `
-## Rows already resolved — leave them alone
+## Rows resolved before you started — park them, then splice them
 
 \`\`\`
-node curriculum/evals/scripts/prefill-instance.js ${j.file} ${j.cls}
+node curriculum/evals/scripts/prefill-instance.js ${j.file} ${j.cls} --write
 \`\`\`
 
-Reports how many rows were carried (N/A, shape-hash verified) and how many are mechanical PASSes from a proven grep. **Those rows are already in your instance file. Do not re-derive them, do not rewrite their evidence, do not delete them** — they are part of the completeness ledger and the auditor counts them.
+Parks the shape-resolved rows in a sidecar and tells you how many are yours.
 
-If it reports \`no prior instance\`, \`shape changed\` or \`predates shape_hash\`, nothing was carried and every row is yours to fill as normal. That is the fail-closed path and it is not an error.
+**Emit rows ONLY for the rules your brief contains.** A rule the brief omitted is parked and answered; writing your own row for it is the whole cost this mechanism removes, and it is invisible afterwards because the finished ledger looks identical either way. Measured on the run that caught it: a judge re-derived 75 of 77 parked N/A rows and the merge had nothing left to splice.
 
-Judge the rows it did NOT resolve. Record \`shape_hash\` at the top level of the instance you write, exactly as the prefill reports it — without it the next run cannot carry anything forward and pays this cost again.
+After you write your instance, and before you reply:
+
+\`\`\`
+node curriculum/evals/scripts/prefill-instance.js ${j.file} ${j.cls} --merge
+\`\`\`
+
+Report the number it splices in. \`no prior instance\`, \`shape changed\` or \`predates shape_hash\` means nothing was parked and every row is yours — the fail-closed path, not an error. Record \`shape_hash\` at the top level of your instance exactly as the prefill reports it.
 `
 }
 
-function judgePrompt(j) {
+// Every flag below now reaches the dispatched prompt. They did not, for one
+// release: BRIEF, LAZY_EXPAND, BATCH_READ, NO_DIFF, NO_PREAMBLE and FIRES_ONLY
+// were all declared, documented with the measurements that justified them, and
+// read by nothing. The workflow advertised a 51% reduction and dispatched the
+// control prompt. Dead constants are invisible exactly in proportion to how
+// well they are commented, so `eval-sweep.test.js` now asserts the prompt text
+// each one produces.
+function readSection(j) {
   const comps = (COMPENDIA[j.cls] || []).map(c => `${MEM}/${c}.md`).join('\n  - ')
+  const preamble = NO_PREAMBLE
+    ? `1. **Dispatch contract:** \`curriculum/evals/judges/_dispatch-preamble.md\` — skim for boundary cases only (this run was dispatched with \`noPreamble\`, which the bench measured as free because it cannot stage a stale cache or an out-of-lane verdict; it is not free, it is unmeasured).`
+    : `1. \`curriculum/evals/judges/_dispatch-preamble.md\` IN FULL — the dispatch contract, including §Mechanics, which tells you what not to re-derive.`
+  const rulebook = BRIEF
+    ? `3. Your rulebook:
+\`\`\`
+node curriculum/evals/scripts/derive-class-brief.js ${j.file} ${j.cls}
+\`\`\`
+Every in-scope rule VERBATIM — full lead, full body, every carve-out — minus the rules the prefill resolved. If it cannot build, read these in full instead and say so in \`notes\`:
+  - ${comps}`
+    : `3. Read IN FULL, no index files:
+  - ${comps}`
+  const batch = BATCH_READ
+    ? `\n**Issue the template read, the rulebook and the body view in ONE turn** — they have no dependency on each other, and three sequential round-trips for three independent reads is the largest avoidable cost in a judge run.\n`
+    : ''
+  const expand = LAZY_EXPAND
+    ? `\n## The read view\n\nThe body view's \`signals\` tell you whether there is anything to expand. Run \`node scripts/expand-md.js ${j.file}\` only if \`has_prompt_blocks\` or \`has_figures\` is true; on a file with neither it returns the source and costs a read. Cite line numbers against the RAW source either way.\n`
+    : `\n## The read view\n\n\`node scripts/expand-md.js ${j.file}\` gives the student's view ({{prompt:}} / {{figure:}} expanded). Judge that; cite line numbers against the RAW source.\n`
+  return `## Read
+
+${preamble}
+2. \`curriculum/evals/judges/${TEMPLATE[j.cls]}\`
+${rulebook}
+
+Judges cite rule numbers and adjudicate boundary cases, so the \`_index/\` leads are never enough.
+${batch}${expand}
+## Your geometry is already computed
+
+\`\`\`
+node curriculum/evals/scripts/derive-body-view.js ${j.file}
+\`\`\`
+
+\`_dispatch-preamble.md\` §Mechanics says what it carries and what you therefore must not re-derive. Grep \`projections.body_numbered\`, not the source: a hit there is in-region by construction.`
+}
+
+function judgePrompt(j) {
   const drift = j.reason === 'rule-drift' && j.rules.length
     ? `\n## This class is stale because a RULE moved, not because the body did\n\nRe-read each at its CURRENT wording and check the body against it:\n\n${j.rules.map(r => `  - ${r}`).join('\n')}\n\nFetch with \`node curriculum/evals/scripts/rule.js <surface> <N>\` (surface = compendium name without \`check_\`; sub-rules like \`52c\` and \`11a\` resolve too). List each in \`drift_rules_reread\` with the verdict you reached. The body may not have moved at all — a clean diff is not a PASS on its own here, and the rest of the class is still a normal read.\n`
     : ''
-  const diff = j.pin
+  const diff = (j.pin && !NO_DIFF)
     ? `\n## Run your own diff\n\nPin \`${j.pin}\`, staleness reason **${j.reason}**.\n\n\`\`\`\ngit diff ${j.pin}..HEAD -- ${j.file}\n\`\`\`\n\n**Do not filter with \`grep -E '^[-+][^-+]'\`** — it silently drops every markdown bullet line (an added bullet is \`+- \`). Use \`grep -E '^[-+]' | grep -vE '^(\\+\\+\\+|---)'\` if you must. Do not scope your read to the diff: findings are routinely pre-existing lines every diff-scoped pass skipped.\n`
+    : (j.pin ? `\n## Staleness\n\nPin \`${j.pin}\`, reason **${j.reason}**. This run was dispatched with \`noDiff\`: say so in \`diff_summary\` rather than describing a diff you did not run.\n` : '')
+  const fires = FIRES_ONLY
+    ? `\n## Report what fires — no N/A ledger\n\nDo NOT emit a row for every numbered rule. Read every rule in scope, then emit rows ONLY for rules with something to say about this body. Reading is unchanged and total — it is the WRITING that is scoped. **This changes the shape of the corpus**: \`audit-eval-coverage.js\` must already understand it, or every absent row reads as an unproven hole.\n`
     : ''
   return `You are the **${j.cls}** eval judge for \`${j.file}\`. Repo root \`${REPO}\` — cd there first.
 
-## Read IN FULL, no index files
-
-1. \`curriculum/evals/judges/_dispatch-preamble.md\`
-2. \`curriculum/evals/judges/${TEMPLATE[j.cls]}\`
-3. ${comps}
-
-Judges cite rule numbers and adjudicate boundary cases, so the \`_index/\` leads are not enough.
-
-## The read view
-
-\`node scripts/expand-md.js ${j.file}\` gives the student's view ({{prompt:}} / {{figure:}} expanded). Judge that; cite line numbers against the RAW source.
-
-${VIEW}
+${readSection(j)}
 ${PREFILL ? prefillNote(j) : ''}
 ${diff}${drift}
 ## Before filing anything
 
-Read the \`<!-- maintainer -->\` block. It carries **dated accept-notes** where the maintainer authorised something a rule would otherwise catch. A finding against a documented accept-note is a false positive that costs real attention. List every accept-note you find in \`accept_notes_found\`.
+Read the \`<!-- maintainer -->\` block. It carries **dated accept-notes** where the maintainer authorised something a rule would otherwise catch. A finding against a documented accept-note is a false positive that costs real attention. List every accept-note you find in \`accept_notes_found\`. The body view has already extracted them.
 
 Maintainer and \`<!-- backing -->\` blocks are prose and in scope for \`check_writing §3\`: a block states what is TRUE NOW, not the diff it just recorded.
 
@@ -270,19 +287,17 @@ ${READ_ONLY}
 
 ## Write the instance
 ${j.slug ? `
-Overwrite \`curriculum/evals/instances/${j.slug}.${j.cls}.json\` in the shape already there, with \`body_sha\` at top level. Then run and report the real integer:
+Overwrite \`curriculum/evals/instances/${j.slug}.${j.cls}.json\` in the shape already there, with \`body_sha\` and \`shape_hash\` at top level. Then run and report the real integer:
 \`\`\`
-grep -c '"evidence": *null' curriculum/evals/instances/${j.slug}.${j.cls}.json
+node curriculum/evals/scripts/check-instance-evidence.js curriculum/evals/instances/${j.slug}.${j.cls}.json
 \`\`\`
-Its top-level \`verdict\` must match what you return here — a gate compares the two and fires when they disagree.
-` : ''}
-${EVIDENCE}
+It counts ungrounded verdicts only — a terse N/A is healthy and is not one. Report its count as \`ungrounded_count\`. Its top-level \`verdict\` must match what you return here — a gate compares the two and fires when they disagree.
+` : ''}${fires}${EVIDENCE}
 
 Return the structured verdict.`
 }
 
 function confirmPrompt(c) {
-  const comps = (COMPENDIA[c.cls] || []).map(x => `${MEM}/${x}.md`).join('\n  - ')
   const checks = (c.checks || []).map(([cmd, exp]) => `    ${cmd}\n      -> must print exactly ${exp}`).join('\n')
   return `You are the **${c.cls}** eval judge for \`${c.file}\`. Repo root \`${REPO}\` — cd there first.
 
@@ -300,14 +315,13 @@ If any number differs, the edit you were told about is not the edit on disk. Say
 
 ## Then judge the class properly
 
-Read IN FULL: \`curriculum/evals/judges/_dispatch-preamble.md\`, \`curriculum/evals/judges/${TEMPLATE[c.cls]}\`, and
-  - ${comps}
+${readSection({ file: c.file, cls: c.cls })}
 
 This is a full class judgement, not a check of the one line. The previous pass at this pin missed the finding you are confirming, so do not assume the rest of the class was read correctly either.
 
 ${READ_ONLY}
 
-Overwrite \`curriculum/evals/instances/${c.slug}.${c.cls}.json\`, \`body_sha\` at top level, and report \`evidence_null_count\`. If the fix swapped one violation for another, or removed the defect and broke the sentence, say so — that is not resolved.
+Overwrite \`curriculum/evals/instances/${c.slug}.${c.cls}.json\`, \`body_sha\` at top level, and report \`ungrounded_count\` from \`node curriculum/evals/scripts/check-instance-evidence.js\` on it. If the fix swapped one violation for another, or removed the defect and broke the sentence, say so — that is not resolved.
 
 ${EVIDENCE}
 
@@ -320,13 +334,13 @@ function setPrompt(s) {
 Members, in student order:
 ${s.members.map(m => `  - ${m}`).join('\n')}
 
-Read IN FULL: \`curriculum/evals/judges/cross-module.md\` and \`${MEM}/check_cross_module.md\`.
+Read IN FULL: \`curriculum/evals/judges/_dispatch-preamble.md\` (the dispatch contract), \`curriculum/evals/judges/cross-module.md\` and \`${MEM}/check_cross_module.md\`. §Mechanics applies per member file — derive each member's body view rather than projecting the bodies yourself.
 
 Judge the SET, not the files: every adjacent pair, both ends. A gap assigned at one end and not echoed at the other is the failure this class exists to catch — walk each pair in both directions and say which you walked.
 
 ${READ_ONLY}
 
-Overwrite \`curriculum/evals/instances/${s.training}--module-set--${s.name}.cross_module.json\` with a \`body_sha\` MAP (one sha per member) and a \`module_set\` array of the member paths. A row stamped on no member is invisible to the queue, so name the set exactly as above.
+Overwrite \`curriculum/evals/instances/${s.training}--module-set--${s.name}.cross_module.json\` with a \`body_sha\` MAP (one sha per member) and a \`module_set\` array of the member paths. Report \`ungrounded_count\` from \`check-instance-evidence.js\` on it. A row stamped on no member is invisible to the queue, so name the set exactly as above.
 
 ${EVIDENCE}
 
@@ -419,7 +433,7 @@ return {
   missing: UNITS.filter(u => !done.some(v => v._key === u._key)).map(u => u._key),
   summary: done.map(v => ({
     file: v.file, class: v.class, verdict: v.verdict, body_sha: v.body_sha,
-    evidence_null_count: v.evidence_null_count,
+    ungrounded_count: v.ungrounded_count,
     diff_summary: v.diff_summary,
     drift_rules_reread: v.drift_rules_reread || [],
     accept_notes_found: v.accept_notes_found || [],

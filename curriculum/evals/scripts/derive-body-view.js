@@ -241,7 +241,11 @@ function expand(abs) {
 function derive(fileArg, { write = true } = {}) {
   const abs = path.isAbsolute(fileArg) ? fileArg : path.join(REPO, fileArg)
   const rel = path.relative(REPO, abs)
-  const raw = fs.readFileSync(abs, 'utf8')
+  // A judge that mistypes a path gets a 12-frame ENOENT stack and has to decide
+  // whether the tool is broken or its argument was. Say which.
+  let raw
+  try { raw = fs.readFileSync(abs, 'utf8') }
+  catch (e) { throw new Error(`cannot read ${rel} (${e.code || e.message}) — check the path; nothing was derived`) }
   const sourceSha = sha256(raw)
   const slug = slugFor(rel)
 

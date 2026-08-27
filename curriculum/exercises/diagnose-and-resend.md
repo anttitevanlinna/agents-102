@@ -150,8 +150,9 @@ Your `CLAUDE.local.md` and `observations/` have been building in the worktree si
 
 **Emphasis:** Bold is limited to title-page labels, widget chrome, the Phase 3 verifier-shape menu handles (**LLM judge** / **Deterministic shell-hook** / **Ralph re-feed**), the Phase 4 stop-gate handle, and the two definitional handles on *The reference and plan.md* (**Reference** / **plan.md**). All other body prose stays unbolded.
 
-**Quality:** compendium-audited 2026-08-25 (writing@441b361f story@441b361f technical@1abb84c6 behavior@ca5e5c5 pedagogy@441b361f strategy@1c765f2 slides@441b361f)
-- judges @441b361f: writing PASS, story PASS, technical PASS (drift-recheck), behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-27 (writing@a50978f7 story@441b361f technical@1abb84c6 behavior@a50978f7 pedagogy@441b361f strategy@1c765f2 slides@a50978f7)
+- judges @441b361f: story PASS, technical PASS (drift-recheck), pedagogy PASS, strategy PASS
+- judges @a50978f7: writing PASS, slides PASS, behavior PASS
 
 **Word count:** ~760 words body.
 

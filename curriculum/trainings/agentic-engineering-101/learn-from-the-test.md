@@ -13,7 +13,7 @@ Optional prep while it's still running: read Ethan Mollick, [The Bitter Lesson v
 After this module, you will be able to:
 - **Diagnose** your un-packaged send-off through three named lenses, goal drift, context rot, plausible-but-wrong, grounded in quoted moments from the return
 - **Pair** each failure mode with the packaging that catches it: drift ↔ reference artefact, rot ↔ plan.md, plausible-but-wrong ↔ external verifier
-- **Build** a verifier shaped against your dominant failure using one of three shapes (background-agent, shell-hook, or Ralph re-feed)
+- **Build** a verifier shaped against your dominant failure using one of three shapes (LLM judge, shell-hook, or Ralph re-feed)
 - **Assemble** the reference artefact + plan.md in conversation, scoped to the same task you sent off
 - **Re-send** the packaged version of the same task
 
@@ -60,7 +60,6 @@ Acting without full control is the job from here on. Build the check, send again
 - The missing evidence is the interaction of this task, model, repository, and setup.
 - The experiment promotes a candidate to tested-here; the local optimum stays ahead.
 - The agent makes evidence cheap; the engineer decides what it means and what becomes durable practice.
-- The verifier, the reference artefact and the plan are compounding in a different shape from a rule: nothing loaded, everything checked.
 
 <!--flag:no-module:spot-gaps-build-the-loop-->
 ## Inspect your results
@@ -134,7 +133,9 @@ the fourth line is deliberate; keep it. Do not re-expand with mechanics bullets:
 and evidence-in-artefact reminders live in the exercise body and the closer lectures, and a KC bullet
 restating them is a duplicate, not a recap.
 
-**Fifth line landed 2026-08-23 (db2a68a4, Antti), same day as the revert above (baa6bc88) — this note is stale on the count.** The block is five lines now, not four: "The verifier, the reference artefact and the plan are compounding in a different shape from a rule: nothing loaded, everything checked." The shape rule above still holds (no mechanics-restating bullet, no duplication of the exercise/closer content) — this line maps to the module's own artefacts rather than a `what-packaging-is` theory slide, so it sits outside the original "each maps to a beat" claim too. Read the block as five lines; don't revert to four on this note's authority without updating it first.
+**Block is four lines, not five (Antti 2026-08-27, training run).** A fifth line landed 2026-08-23 (db2a68a4) — "The verifier, the reference artefact and the plan are compounding in a different shape from a rule: nothing loaded, everything checked." — and is now cut: the four lines above were deliberately only the first bullets, and the fifth mapped to no beat the deck teaches. The note above stands as written; four is the count.
+
+**Verifier-shape handle renamed, *background-agent verifier* → *LLM judge* (Antti 2026-08-27, training run).** "Background agent" now means detached async execution in the field (Cursor/Codex/`run_in_background`), which this shape is not — `diagnose-and-resend-4` offers slash-command, sub-task dispatch, or scheduled run. *Judge* is the discriminating word and was already load-bearing at M5 unearned: `the-gate-is-a-claim` runs a whole slide on calibrating *the judge*, and `diagnose-and-resend-3` hands the student "an LLM judge". The menu bullet now earns it lightly (judgement vs. the shell-hook's true-false), so the closer no longer assumes a word the module never introduced. **`eval` stays embargoed to M6**; `the-loop-has-a-name` reveal rewritten to place judge inside the family rather than rename M5's artefact. Registry: `vocabulary.md` verifier-shapes row.
 
 **Multisession permission carrier (Antti 2026-08-15): M5 alone, one line** at the close of *Your mid-run
 worries hint at missing checks* — control → no babysitting → a second session beside this one. M4 declined (its
@@ -198,7 +199,7 @@ header and handle per slide, never read bullets aloud. Two registers, one instru
 
 **Leap test** (per `check_pedagogy.md` rule 45 — three observable Monday-morning outcomes the engineer exhibits on their own codebase by the next working day):
 1. **Reads an agent's long-running artefact through three named failure-mode lenses** (goal drift, context rot, plausible-but-wrong) and grounds the diagnosis in quoted moments. Falsifiable: a real artefact-read explains what each lens reveals in specific evidence, not a generic summary; one moment may support more than one lens.
-2. **Builds a verifier shaped against the dominant failure mode** of a real long-running agent task, picking from the three-shape menu (background-agent, shell-hook, Ralph re-feed). Falsifiable: a verifier file exists at a stable path; its first 10 lines name the failure mode it targets and the check-shape that catches it.
+2. **Builds a verifier shaped against the dominant failure mode** of a real long-running agent task, picking from the three-shape menu (LLM judge, shell-hook, Ralph re-feed). Falsifiable: a verifier file exists at a stable path; its first 10 lines name the failure mode it targets and the check-shape that catches it.
 3. **Sends the same task twice with packaging as the changed variable**, reads the contrast. Falsifiable: two distinct agent runs of the same scoped task exist (un-packaged baseline + packaged re-run); the diff is the artefact M6 reads.
 
 **Artefact contracts** (per `check_cross_module.md` §5 — every produced artefact with a stable identifier gets a contract row):

@@ -12,7 +12,7 @@ In the worktree at `../<repo>-m5` (set up at module open).
 
 **HOX** You should be in the worktree now. Make sure you are not continuing in the original repo or on its branch.
 
-**What you do:** read the failed run through three failure-mode lenses, then build a verifier against your worst one.
+**What you do:** read the un-packaged run through three failure-mode lenses, then build a verifier against your worst one.
 
 **What you build:** a verifier, a reference, and a plan.md, each built against a failure you actually read.
 
@@ -20,7 +20,7 @@ In the worktree at `../<repo>-m5` (set up at module open).
 
 ---
 
-## Phase 1: Read what the failed run did
+## Phase 1: Read what the un-packaged run did
 
 *10 min*
 
@@ -62,11 +62,11 @@ Claude gives the full three-way mapping. Your decision is narrower: which failur
 
 - Pick the verifier shape that matches the failure that cost you most.
 
-- **Background-agent verifier.** Separate Claude session reads the produced work and judges it. Right when the failure was qualitative (style, fit, "did the answer the question").
+- **LLM judge.** A separate Claude session reads the produced work and judges it: an opinion, not a pass-fail script. Right when the failure was qualitative (style, fit, "did it answer the question").
 - **Deterministic shell-hook.** Tests, lint, type-check, compile, custom invariant. Right when the failure has a true-false answer (broke the build, touched the wrong directory). The shell-hook shape IS a Claude Code stop-hook; you will meet the word again if you extend the verifier to fire automatically between runs.
 - **Ralph re-feed.** Loop the prompt with a check baked in; the agent re-runs on top of the previous round's output until the check passes. Right when drift was the dominant failure and re-anchoring catches it.
 
-Ask Claude to build the verifier shape that matches your dominant failure, scoped to the task we ran un-packaged. Drop the shape name after the colon, one of: background-agent, shell-hook, Ralph re-feed.
+Ask Claude to build the verifier shape that matches your dominant failure, scoped to the task we ran un-packaged. Drop the shape name after the colon, one of: judge, shell-hook, Ralph re-feed.
 
 {{prompt:diagnose-and-resend-4}}
 
@@ -146,7 +146,9 @@ Your `CLAUDE.local.md` and `observations/` have been building in the worktree si
 
 **`## Check both files are for the agent, not you` is cut (2026-08-25, Antti: little value add).** The slide told an engineer how to glance at two files — the check-stuff teaching his 2026-08-25 cut pass removes on sight — and its push-back tells (generic-advice reference, project-plan-shaped plan.md) duplicate judgement the grill-note above already exercises. The flow runs prompt → grill-note → Approve. Do not restore; if a cohort ships agent-facing files written for humans, the tell belongs in the Phase-4 prompt, not a body slide.
 
-**Emphasis:** Bold is limited to title-page labels, widget chrome, the Phase 3 verifier-shape menu handles (**Background-agent verifier** / **Deterministic shell-hook** / **Ralph re-feed**), the Phase 4 stop-gate handle, and the two definitional handles on *The reference and plan.md* (**Reference** / **plan.md**). All other body prose stays unbolded.
+**"Failed run" is not the frame (Antti 2026-08-27, training run).** M4 has no failed run — the un-packaged send-off was designed to underdeliver, and students arrive with a return that partly worked. The Phase 1 header and the `What you do` line said "the failed run"; both now read "the un-packaged run", matching the bullet under the header and the module's own vocabulary. "Failure" still names the failure *modes* inside the run — that stays.
+
+**Emphasis:** Bold is limited to title-page labels, widget chrome, the Phase 3 verifier-shape menu handles (**LLM judge** / **Deterministic shell-hook** / **Ralph re-feed**), the Phase 4 stop-gate handle, and the two definitional handles on *The reference and plan.md* (**Reference** / **plan.md**). All other body prose stays unbolded.
 
 **Quality:** compendium-audited 2026-08-25 (writing@441b361f story@441b361f technical@1abb84c6 behavior@ca5e5c5 pedagogy@441b361f strategy@1c765f2 slides@441b361f)
 - judges @441b361f: writing PASS, story PASS, technical PASS (drift-recheck), behavior PASS, pedagogy PASS, strategy PASS, slides PASS
@@ -168,7 +170,7 @@ Claims
 - `you-hold-the-lenses-not-the-codebase` · vision · "You hold the three lenses. You are not holding the codebase." ← none-owed
 - `quote-beats-summary` · vision · "If a lens comes back without a quote from the run, send it back for one." ← none-owed
 - `ask-what-would-have-caught-it` · vision · "*what validation would have caught this in minutes, not hours?*" ← none-owed
-- `three-verifier-shapes` · detail · "**Background-agent verifier** … **Deterministic shell-hook** … **Ralph re-feed**" ← kim-on-cherny
+- `three-verifier-shapes` · detail · "**LLM judge** … **Deterministic shell-hook** … **Ralph re-feed**" ← kim-on-cherny
 - `shell-hook-is-a-stop-hook` · detail · "The shell-hook shape IS a Claude Code stop-hook" ← cc-hooks-docs
 - `untested-verifier-is-no-verifier` · vision · "A built-but-untested verifier is no verifier." ← none-owed
 - `reference-pins-the-task` · vision · "what the task is and what done looks like" ← none-owed

@@ -21,7 +21,7 @@ Build the verifier for my dominant failure, scoped to the task we ran un-package
 
 If shell-hook: write the script and tell me where it lives in this repo (CI config, `.claude/hooks/`, or pre-commit, whichever fits the repo's existing conventions).
 
-If background-agent: write the prompt and tell me how to invoke it (slash-command, sub-task dispatch, or scheduled run).
+If judge: write the prompt and tell me how to invoke it (slash-command, sub-task dispatch, or scheduled run).
 
 If Ralph re-feed: write the loop wrapper and the check it runs each iteration.
 

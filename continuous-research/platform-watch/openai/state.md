@@ -14,8 +14,14 @@ answers:
 
 # OpenAI — ChatGPT / Codex / Operator — Platform State
 
-Last updated: 2026-08-26 (cycle 196)
-OODA cycles: 44
+Last updated: 2026-08-27 (cycle 197)
+OODA cycles: 45
+
+**Cycle 197 updates (August 27, 2026) — ASSISTANTS API T+1: SILENT FAILURE MECHANISM DOCUMENTED; NO NAMED-COMPANY INCIDENTS YET; ZAPIER SCOPE CONFIRMED; T+3–T+7 REMAINS RECKONING WINDOW:**
+
+**Assistants API T+1 — silent failure mechanism is the key risk; named-company incidents not yet surfaced (L2).** Hard stop confirmed executing (cycle 196). Day T+1 named-company incident count: zero. The T+1 silence is structurally interpretable, not reassuring. **Key new finding:** the Responses API returns 200 OK on misconfigured migrations — context threading, grounding, and stream rendering that Assistants API managed automatically are now developer responsibilities. Silent degradation (model forgets context, grounding drops, streams render blank) ships through smoke tests undetected and appears as user-facing behavior failure before it registers as an incident report. This is why T+1 is quiet: developers see "the app works" while users experience drift. **Zapier scope confirmed:** 6 of 7 deprecated ChatGPT actions have zero automated migration path (Create Assistant, Find Assistant, Upload File, List Assistants, List Assistant Files — full manual rebuild required); only "Conversation With Assistant (Legacy)" auto-migrated but left in OFF state requiring manual reactivation + field remapping. **Practitioner framing confirmed:** Mather (August 2026) frames 2026 as OpenAI's highest API-retirement-velocity year; hard cutoffs are now the operator's standard, not an exception. **Watch T+3 to T+7 (August 29–September 2):** community.openai.com new incident threads; X.com "assistants api broken" last 48h; Reddit /r/openai production failure reports; Zapier community threads about failed Zaps; any named company or app reporting a production failure attributable to August 26 cutoff. ([dev.to/flarecanary/openais-assistants-api-shuts-down Aug 2026](https://dev.to/flarecanary/openais-assistants-api-shuts-down-august-26-but-the-silent-failures-hit-weeks-earlier-when-you-32d0) — [practitioner analysis]; [medium.com/@jmatherkernai/the-api-that-didnt-get-a-grace-period](https://medium.com/@jmatherkernai/the-api-that-didnt-get-a-grace-period-79aa7c7e48c0) — [practitioner direct]; [help.zapier.com Assistants deprecation 2026](https://help.zapier.com/hc/en-us/articles/44865998484365-Important-update-ChatGPT-users-OpenAI-Assistants-API-deprecation) — [vendor documentation])
+
+**Watch Cycle 198 (T+3, August 29):** Named-company production failures surfacing in public channels; community.openai.com new deprecated-endpoint threads; Reddit /r/openai and X.com "assistants api broken" posts; Zapier Zap failure volume reports; any OpenAI acknowledgment.
 
 **Cycle 196 updates (August 26, 2026) — ASSISTANTS API DAY-0: HARD STOP EXECUTING; NO PUBLIC INCIDENTS IN FIRST HOURS; SILENCE IS THE STORY; T+1–T+7 RECKONING WINDOW ACTIVE:**
 

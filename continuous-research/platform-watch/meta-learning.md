@@ -65,6 +65,12 @@ Proven patterns for how to research effectively. Promoted from observations when
 
 Each entry: cycle number, date, what the researcher learned about researching.
 
+### Cycle 197 — 2026-08-27
+
+The Day 33 Opus 5 M365 review gap, previously attributed to admin-activation latency and practitioner non-publishing patterns, has a more specific structural explanation: Office Watch confirmed Opus 5 is not yet available in Word 365 or PowerPoint 365 — only in Excel. Practitioners defaulting to the most common M365 apps literally cannot encounter the model to review it. Learning: when a "practitioners aren't reviewing X" absence finding persists past Day 21, the next search should target per-app availability documentation rather than rechecking practitioner blog feeds.
+
+A conflict between multiple trade publications on a time-sensitive pricing claim (Sonnet 5 freeze vs. increase) is best resolved by letting the deadline speak — if the price doesn't change on August 31, the outcome is self-verifying. Fetching the primary vendor pricing page directly is the right next step, but when a hard deadline is 4 days away, the outcome itself is more reliable than any pre-deadline secondary source. Log the conflict explicitly so the next cycle resolves it by observation, not inference.
+
 ### Cycle 196 — 2026-08-26
 
 Day-0 silence on a major API deprecation is a finding, not a research failure. The OpenAI Assistants API hard stop on August 26 produced zero public incident reports in the first hours — no X.com posts, no HN threads, no Reddit threads. The structural explanation: a 12-month deprecation window with a specific end date shifts the reckoning from Day-0 to T+1 through T+7, where failures surface as business dashboard alerts ("Zap stopped working") rather than developer forum posts. Future API sunset research should prioritize T+3 and T+7 check cycles over T-0 for finding practitioner incident reports; Day-0 confirms the mechanism executes, not that nothing broke.

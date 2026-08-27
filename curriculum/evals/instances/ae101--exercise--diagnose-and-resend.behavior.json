@@ -1,10 +1,11 @@
 {
   "class": "behavior",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/diagnose-and-resend.md",
-  "body_sha": "d96416c6ced9f9c940ca8fd2ad2ee9c8cfb8fe18d450ae9ab54913efbf5b15d6",
+  "body_sha": "2b9fc8ff42efa4d4b0bfe5289f837e89813c260a4fb9f65369be1daa0e5cbc01",
   "verdict": "PASS",
   "training": "ae101",
   "trace_status": "partial_regen",
+  "regen_note": "Re-fired 2026-08-27 against commit b1ba9165 ('M5 run fixes: KC back to four, no failed run, the shape is a judge'). Diffed the body against the last-judged version: two label renames outside any prompt fence ('the failed run' -> 'the un-packaged run' in the Phase 1 header/What-you-do line; 'Background-agent verifier' -> 'LLM judge' in the Phase 3 menu bullet and its emphasis/backing-claim echoes) plus one new maintainer note ('Failed run is not the frame'), none of which touch prompt content or risk shape. `git log --since=2026-08-13 -- curriculum/prompts/*.md` confirms exactly one prompt-registry file changed since the trace's last full regen: diagnose-and-resend-4.md ('If background-agent: ...' -> 'If judge: ...', same commit). Verified against the current expanded file (scripts/expand-md.js) that prompts 1,2,3,5,6,7,8 are byte-identical at the fence to what the prior instance judged; only prompt 4 is re-evaluated below, and its risk profile is unchanged because 'judge' occupies the same structural slot 'background-agent' held.",
   "prompts_evaluated": 8,
   "prompts_findings": [
     {
@@ -71,13 +72,13 @@
         {
           "pattern_id": "overwrite-anxiety",
           "confidence": "low",
-          "evidence": "Claude may pause around persistence, but the prompt deliberately says to show the verifier before saving and the student supplies the shape. This is the required collaboration gate, not harmful overwrite ambiguity.",
+          "evidence": "Claude may pause around persistence, but the prompt deliberately says to show the verifier before saving and the student supplies the shape ('judge' / 'shell-hook' / 'Ralph re-feed', post-rename). This is the required collaboration gate, not harmful overwrite ambiguity.",
           "fix_hint": "No edit; preserve the show-before-save gate."
         },
         {
           "pattern_id": "preamble-before-action",
           "confidence": "low",
-          "evidence": "The open-hook shape selection and concrete build request make a long plan opener unlikely; any brief narration does not add a decision for the student.",
+          "evidence": "The open-hook shape selection and concrete build request make a long plan opener unlikely; any brief narration does not add a decision for the student. The 'background-agent' -> 'judge' rename in this fence (commit b1ba9165) is a label swap in the same structural slot and does not change this reasoning.",
           "fix_hint": "No edit."
         }
       ]

@@ -1,163 +1,169 @@
 {
-  "class": "cross_module",
-  "module_set": [
-    "curriculum/trainings/agentic-engineering-101/run-the-first-experiment.md",
-    "curriculum/trainings/agentic-engineering-101/learn-from-the-test.md",
-    "curriculum/trainings/agentic-engineering-101/spot-gaps-build-the-loop.md"
-  ],
-  "body_sha": {
-    "curriculum/trainings/agentic-engineering-101/run-the-first-experiment.md": "25b7a412bfcccc41ca10b5dd37c41d8547742fae4a7f40f8b567d2f377350077",
-    "curriculum/trainings/agentic-engineering-101/learn-from-the-test.md": "4c0f151477aa291c05177e8c2d8b079054fc60f5d32a430074be204660e30244",
-    "curriculum/trainings/agentic-engineering-101/spot-gaps-build-the-loop.md": "d724b2c9a33c94b8a7217bd316899d1449e4de5fd51cef06de0ec6faf7834108"
-  },
-  "training": "ae101",
-  "verdict": "PASS",
-  "re_fire_context": "Fresh full read, not diff-scoped. Prior recorded pass (cross_module@e5364af8, still cited by learn-from-the-test.md:162 and spot-gaps-build-the-loop.md:105) carried body_sha values for all three files that match NO commit in this repo's history (checked every commit touching each file, git-show + shasum, zero hits) -- so that prior instance write predates or postdates the commit it was stamped against, a stamp-safe race of exactly the kind CLAUDE.md's 'sibling judges race each other' rule warns about. Not re-litigated here as a finding (no content harm: this session re-verified the actual current content independently, below) but flagged in notes for the tooling owner. Content-wise: comparing HEAD against the last commit whose Quality-line-cited cross_module verdict is externally corroborated (43bb766e, 'Set E: two cross-module sets PASS') -- `git diff 43bb766e HEAD -- <3 files>` shows learn-from-the-test.md and spot-gaps-build-the-loop.md byte-identical (git-show shas at 43bb766e match current shas exactly), and run-the-first-experiment.md changed ONLY in its own Quality-line/Meta bookkeeping (cross_module citation flipped to the unrelated m3-m4 set @5df71aa6, per-class shas refreshed to 2026-08-24) -- zero body-prose, Bridge/Next/Homework/Pre-reads, or artefact-contract-table changes in any of the three files. All 7 rule verdicts below were independently re-derived from the current file text (not copied from the prior instance), and land the same as the prior pass.",
-  "module_pairs_evaluated": [
+ "class": "cross_module",
+ "module_set": [
+  "curriculum/trainings/agentic-engineering-101/run-the-first-experiment.md",
+  "curriculum/trainings/agentic-engineering-101/learn-from-the-test.md",
+  "curriculum/trainings/agentic-engineering-101/spot-gaps-build-the-loop.md"
+ ],
+ "body_sha": {
+  "curriculum/trainings/agentic-engineering-101/run-the-first-experiment.md": "92092cecbf51b6e25a0d5b4d2d6638f7b88d0e2829a2953d0dcde2f814b23272",
+  "curriculum/trainings/agentic-engineering-101/learn-from-the-test.md": "f95b4eb3ccd451107f6fb3294eb1310da545449a19f3c79309e9864ec8c697ac",
+  "curriculum/trainings/agentic-engineering-101/spot-gaps-build-the-loop.md": "2ddf319249d2fbb640d9e770144b0e7be5420f5eb88e488911242f4c477ed964"
+ },
+ "training": "ae101",
+ "verdict": "PASS",
+ "module_pairs_evaluated": [
+  {
+   "from": "curriculum/trainings/agentic-engineering-101/run-the-first-experiment.md",
+   "to": "curriculum/trainings/agentic-engineering-101/learn-from-the-test.md",
+   "rules_evaluated": [
     {
-      "from": "curriculum/trainings/agentic-engineering-101/run-the-first-experiment.md",
-      "to": "curriculum/trainings/agentic-engineering-101/learn-from-the-test.md",
-      "rules_evaluated": [
-        {
-          "compendium": "check_cross_module.md",
-          "rule_index": 1,
-          "rule_lead": "Peek at the next module before adding a second exercise.",
-          "verdict": "PASS",
-          "evidence": "run-the-first-experiment.md ships exactly two exercises (line 39 walk-and-send-off, line 43 set-the-markers-send-it-off; `grep -c '^\\[Exercise:' run-the-first-experiment.md` = 2). learn-from-the-test.md:48-54 '## Set up the worktree' explicitly forks the SHA the second exercise pins ('fork the un-packaged session's starting SHA into a sibling worktree'), and run-the-first-experiment.md's own artefact-contract table row 1 (line 156) names the exact consuming prompt: 'M5 worktree-setup prompt reads the Run coordinates block in task.md directly and forks ../<repo>-m5'. M5 survives the boundary M4's second exercise created; no silent contract break.",
-          "fix_hint": null,
-          "blocking": false
-        },
-        {
-          "compendium": "check_cross_module.md",
-          "rule_index": 2,
-          "rule_lead": "Between-module reading appears in two places.",
-          "verdict": "PASS",
-          "evidence": "run-the-first-experiment.md:62-82 ('## Bring to Module 5' + '## Pre-reads before Module 5') lists 5 entries: Mollick (lead, 'Start with the first'), Uncle Bob supplementary, Entis/Klaassen interview, Verification asymmetry supplementary, Klaassen Compound Engineering guide. learn-from-the-test.md:10 '## Prework' echoes all 5 in one sentence with matching links and 'the one to start with' framing. `grep -n 'oneusefulthing.org/p/the-bitter-lesson-versus-the-garbage'` on both files confirms the Mollick URL is byte-identical at run-the-first-experiment.md:72 and learn-from-the-test.md:10 (each file's second hit at :179/:241 is that file's own source-verification stamp, not a second body copy). Symmetric duplication confirmed by direct grep, not inference.",
-          "fix_hint": null,
-          "blocking": false
-        },
-        {
-          "compendium": "check_cross_module.md",
-          "rule_index": 3,
-          "rule_lead": "Cross-module artefact contracts must be explicit at both ends.",
-          "verdict": "PASS",
-          "evidence": "run-the-first-experiment.md:152-158 3-row table: (1) M4 branch+SHA, produced by the commit-starting-point prompt in set-the-markers-send-it-off.md, consumed by M5's worktree-setup prompt reading task.md's Run coordinates block; (2) filled gap entries in observations/, consumed by M5 packaged re-send + M6 Phase 1; (3) M4 session transcript at the default Claude Code path, consumed by 'M5 opening ... to ground the what came back read'. learn-from-the-test.md:48-54 body names the fork explicitly; learn-from-the-test.md:212 artefact table row 1 names the identifier 'm5/<task-slug> branch ... forked from M4's m4/<task-slug> SHA' -- matches M4's producing identifier exactly. Transcript consumption is also named on the receiving side outside the table: learn-from-the-test.md:176 push-back move gives the literal path '~/.claude/projects/<project>/'.",
-          "fix_hint": null,
-          "blocking": false
-        },
-        {
-          "compendium": "check_cross_module.md",
-          "rule_index": 4,
-          "rule_lead": "Session boundaries and working directories are designed, not implicit.",
-          "verdict": "PASS",
-          "evidence": "Matches the compendium's own canonical case verbatim ('M4 opens new in original repo; M5 opens new in ../<repo>-m5 worktree'). run-the-first-experiment.md:86 names continuity via task.md at close; delivery mechanics are delegated to training-architecture.md per run-the-first-experiment.md:118 Meta line (canonical-elsewhere pattern the compendium's rule 4 permits). learn-from-the-test.md:48-54 body names the worktree fork with rationale ('so the second session starts from the same code state as the first') in student-facing prose, not only in the maintainer Meta line (learn-from-the-test.md:171 restates it for the trainer, consistent, not the only copy).",
-          "fix_hint": null,
-          "blocking": false
-        },
-        {
-          "compendium": "check_cross_module.md",
-          "rule_index": 5,
-          "rule_lead": "Every produced file is a contract row in the maintainer block.",
-          "verdict": "PASS",
-          "evidence": "run-the-first-experiment.md:152-158 table covers all three M4-produced, M5-consumed artefacts (branch+SHA, filled gap entries, session transcript) -- no M4-produced artefact that M5 body reads (worktree fork, gitignored CLAUDE.local.md/observations copy, task.md coordinates) is missing a row.",
-          "fix_hint": null,
-          "blocking": false
-        },
-        {
-          "compendium": "check_cross_module.md",
-          "rule_index": 6,
-          "rule_lead": "Cross-module structural-failure rescue callouts at module open.",
-          "verdict": "N/A",
-          "evidence": "M4's send-off runs inside the same room-time session as the rest of M4 -- run-the-first-experiment.md:118 Meta line: '15-30 minutes is enough ... no new session, no scheduled agent, no cloud runner'. It is not an overnight/day-2 autonomous run the way M5's packaged re-send is (that gap gets the M6 rescue instead), so learn-from-the-test.md '## Start here' correctly carries no rescue callout for a thin/missing M4 artefact. Matches the compendium's own canonical case, which names the rescue only for the M5->M6 gap.",
-          "fix_hint": null,
-          "blocking": false
-        },
-        {
-          "compendium": "check_cross_module.md",
-          "rule_index": 8,
-          "rule_lead": "Bring-or-scramble plain-stakes-line shape at module homework boundaries.",
-          "verdict": "PASS",
-          "evidence": "run-the-first-experiment.md:66 -- 'Come to Module 5 without a session that got some way into the task and you'll be scrambling for material while the read is already underway. Your call.' Canonical shape: student-as-subject, choice preserved ('Your call'), and the cost is framed against the next module's own clock ('the read is already underway', i.e. M5's Phase-1 diagnostic read) -- not against other students ('the room'). No next-module-mechanics explainer, no head-start prompt, no unearned jargon.",
-          "fix_hint": null,
-          "blocking": false
-        }
-      ]
+     "compendium": "check_cross_module.md",
+     "rule_index": 1,
+     "rule_lead": "Peek at the next module before adding a second exercise.",
+     "verdict": "N/A",
+     "evidence": "No exercise added or removed at this boundary in the current body: run-the-first-experiment.md keeps its two exercises (walk-and-send-off, set-the-markers-send-it-off) and learn-from-the-test.md its two (fork-the-worktree, diagnose-and-resend); no shape change to audit against.",
+     "fix_hint": null,
+     "blocking": false
     },
     {
-      "from": "curriculum/trainings/agentic-engineering-101/learn-from-the-test.md",
-      "to": "curriculum/trainings/agentic-engineering-101/spot-gaps-build-the-loop.md",
-      "rules_evaluated": [
-        {
-          "compendium": "check_cross_module.md",
-          "rule_index": 1,
-          "rule_lead": "Peek at the next module before adding a second exercise.",
-          "verdict": "PASS",
-          "evidence": "learn-from-the-test.md ships exactly two exercises (line 54 fork-the-worktree, line 56 diagnose-and-resend; `grep -c '^\\[Exercise:'` = 2). spot-gaps-build-the-loop.md:23 '## Start here' opens: 'Open a fresh session in the Module 5 worktree, ../<repo>-m5. Both sessions are readable: the branches share .git, and each run recorded its transcript path.' -- explicitly survives the two-exercise M5 boundary by naming both artefacts the two exercises produced.",
-          "fix_hint": null,
-          "blocking": false
-        },
-        {
-          "compendium": "check_cross_module.md",
-          "rule_index": 2,
-          "rule_lead": "Between-module reading appears in two places.",
-          "verdict": "PASS",
-          "evidence": "learn-from-the-test.md:104-114 (inside the `flag:module:spot-gaps-build-the-loop` block) '## Bring to Module 6' + '## Pre-reads before Module 6' lists one entry: Klaassen, 'My AI Had Already Fixed the Code Before I Saw It'. spot-gaps-build-the-loop.md:6-8 '## Prework' echoes the same title, same framing (measures a verifier before trusting it, runs several in parallel). `grep -n 'every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it'` confirms the URL is byte-identical at learn-from-the-test.md:114 and spot-gaps-build-the-loop.md:8. M6's Prework also lists two 'Optional lookup pages' (session-transcripts and long-running-shapes reference anchors) not echoed at M5's close -- these are M6-native reference lookups, not M5-assigned homework, so rule 2's symmetric-duplication requirement does not reach them.",
-          "fix_hint": null,
-          "blocking": false
-        },
-        {
-          "compendium": "check_cross_module.md",
-          "rule_index": 3,
-          "rule_lead": "Cross-module artefact contracts must be explicit at both ends.",
-          "verdict": "PASS",
-          "evidence": "learn-from-the-test.md:208-219 8-row table (worktree branch+SHA, reference artefact, plan.md, verifier, RUN-NOTES.md, CLAUDE.local.md copy, observations copy, session transcript) -- every row's Consumed-by column names M6 explicitly (e.g. row 1: 'M6 diff (compares M5 packaged-run output to M4 un-packaged-run output)'; row 8: 'M6 opening session reads M5 transcript directly'). spot-gaps-build-the-loop.md:23 names the worktree path and 'each run recorded its transcript path' on the receiving side, matching the identifiers the producing table names.",
-          "fix_hint": null,
-          "blocking": false
-        },
-        {
-          "compendium": "check_cross_module.md",
-          "rule_index": 4,
-          "rule_lead": "Session boundaries and working directories are designed, not implicit.",
-          "verdict": "PASS",
-          "evidence": "spot-gaps-build-the-loop.md:23 names the working directory explicitly: 'Open a fresh session in the Module 5 worktree, ../<repo>-m5.' Its Meta line (132) -- 'M6 opens a fresh session in the M5 worktree at ../<repo>-m5 where both runs already live' -- matches the compendium's own canonical case verbatim: 'M6 continues in M5 worktree (no new fork)'; a fresh session opens, but no new worktree fork happens.",
-          "fix_hint": null,
-          "blocking": false
-        },
-        {
-          "compendium": "check_cross_module.md",
-          "rule_index": 5,
-          "rule_lead": "Every produced file is a contract row in the maintainer block.",
-          "verdict": "PASS",
-          "evidence": "Same 8-row table as rule 3 (learn-from-the-test.md:208-219) -- no M5-produced, M6-consumed artefact lacks a row.",
-          "fix_hint": null,
-          "blocking": false
-        },
-        {
-          "compendium": "check_cross_module.md",
-          "rule_index": 6,
-          "rule_lead": "Cross-module structural-failure rescue callouts at module open.",
-          "verdict": "PASS",
-          "evidence": "spot-gaps-build-the-loop.md:27-29 carries exactly two consecutive blockquotes in '## Start here': 'Packaged session thin or missing? You can still rescue it...' (rescue-gate: nudge / fresh re-send / read on) and 'Just can't get the M5 session working? ... Despair not.' (accept-loss floor). The exception is documented in the maintainer block at line 95 ('M6 opener rescue + accept-loss callouts -- deliberate exception to check_student_facing.md rule 5'). Both gate and floor present, note present, per rule 6's requirement.",
-          "fix_hint": null,
-          "blocking": false
-        },
-        {
-          "compendium": "check_cross_module.md",
-          "rule_index": 8,
-          "rule_lead": "Bring-or-scramble plain-stakes-line shape at module homework boundaries.",
-          "verdict": "PASS",
-          "evidence": "learn-from-the-test.md:108 -- 'Come to Module 6 without the packaged session and you'll have one session to read where the exercise needs two. Your call.' Student-as-subject, choice preserved, cost framed against the exercise's own structural requirement ('the exercise needs two') rather than room comparison. No mechanics-explainer, no head-start prompt, no unearned jargon.",
-          "fix_hint": null,
-          "blocking": false
-        }
-      ]
+     "compendium": "check_cross_module.md",
+     "rule_index": 2,
+     "rule_lead": "Between-module reading appears in two places.",
+     "verdict": "PASS",
+     "evidence": "Assigner run-the-first-experiment.md:68-82 `## Pre-reads before Module 5` lists five: Mollick Bitter-Lesson-vs-Garbage-Can (L72), Clean Code Is Steering supplementary (L76), Entis-on-Klaassen Bread-in-the-Sandwich (L78), Verification asymmetry supplementary (L80), Klaassen Compound Engineering Definitive Guide (L82). Echo learn-from-the-test.md:10 `## Prework` names the identical five in one sentence, same order, same links. 5/5 matched.",
+     "fix_hint": null,
+     "blocking": false
+    },
+    {
+     "compendium": "check_cross_module.md",
+     "rule_index": 3,
+     "rule_lead": "Cross-module artefact contracts must be explicit at both ends.",
+     "verdict": "PASS",
+     "evidence": "Producing side run-the-first-experiment.md:156 artefact-contracts row — \"M4 starting-point branch + SHA\" at `m4/<task-slug>` written into the protected `Run coordinates` block in `task.md`, produced by the commit prompt in `exercises/set-the-markers-send-it-off.md`. Consuming side learn-from-the-test.md:209 artefact-contracts row — \"M5 worktree branch + SHA ... forked from M4's `m4/<task-slug>` SHA\", produced by \"Set up the Module 5 worktree prompt\" (linked at learn-from-the-test.md:48 `[Exercise: Fork the worktree, carry the evidence]`). Both ends name the same stable identifier, not an implicit \"the file should be there\" phrase.",
+     "fix_hint": null,
+     "blocking": false
+    },
+    {
+     "compendium": "check_cross_module.md",
+     "rule_index": 4,
+     "rule_lead": "Session boundaries and working directories are designed, not implicit.",
+     "verdict": "PASS",
+     "evidence": "run-the-first-experiment.md:86 `## Next` — \"You pinned the starting point and recorded where this session lives, so a fresh session reads it straight from `task.md`.\" learn-from-the-test.md links the worktree-fork exercise at L48; the module body itself carries no explicit cwd sentence, but the maintainer block (learn-from-the-test.md:121) records the deliberate move — \"`## Set up the worktree` moved into `exercises/fork-the-worktree.md` as Phase 1 bullets ... same pattern as M2's close-out move: the module body carries includes; the rationale rides the exercise that runs it.\" Same accepted shape as the earlier M1→M2 pair in `ae101--module-set--m3-m4.cross_module.json`; no contested \"same repo\" ambiguity exists at this boundary since the worktree fork is the only path named.",
+     "fix_hint": null,
+     "blocking": false
+    },
+    {
+     "compendium": "check_cross_module.md",
+     "rule_index": 5,
+     "rule_lead": "Cross-module artefact contracts — every produced file is a contract row in the maintainer block.",
+     "verdict": "PASS",
+     "evidence": "run-the-first-experiment.md:152-158 carries a three-row table (starting-point branch+SHA, filled gap entries, session transcript). learn-from-the-test.md:205-216 carries a seven-row table (worktree branch+SHA, reference artefact, plan.md, verifier, RUN-NOTES.md, CLAUDE.local.md copy, observations copy, session transcript). No produced file/branch artefact at this boundary lacks a row.",
+     "fix_hint": null,
+     "blocking": false
+    },
+    {
+     "compendium": "check_cross_module.md",
+     "rule_index": 6,
+     "rule_lead": "Cross-module structural-failure rescue — body-prose callouts at module open when the prior module's send-off can fail.",
+     "verdict": "N/A",
+     "evidence": "learn-from-the-test.md `## Start here` (L20-22) carries no rescue blockquote for a thin/missing M4 send-off; the rule is a MAY, and the only recovery path offered is the trainer push-back at learn-from-the-test.md:173 (\"the artefact is whatever's there ... Open a fresh Claude Code session in the repo and ask it to read what the M4 run touched\"), not a body-prose callout. Closest to violating: M6 does carry the equivalent body callouts for a failed M5 run under a materially similar risk (a multi-hour unwatched send-off that can stall or run out of time in a 2-day cohort), so the same risk class is handled two different ways across the two boundaries — noted as a todo below, not filed as REVISE because §6 never obligates the callout, only permits it.",
+     "fix_hint": null,
+     "blocking": false
+    },
+    {
+     "compendium": "check_cross_module.md",
+     "rule_index": 8,
+     "rule_lead": "Bring-or-scramble plain-stakes-line shape at module homework boundaries.",
+     "verdict": "PASS",
+     "evidence": "run-the-first-experiment.md:66 — \"Come to Module 5 without a session that got some way into the task and you'll be scrambling for material while the read is already underway. Your call.\" Canonical form, cost from M5's own reading beat, not the room (`grep -c 'while the room is already' curriculum/trainings/agentic-engineering-101/run-the-first-experiment.md` -> 0). No next-module mechanics explained, no head-start prompt, no unearned vocabulary.",
+     "fix_hint": null,
+     "blocking": false
     }
-  ],
-  "blocking_findings_count": 0,
-  "todos_count": 0,
-  "notes": [
-    "Rule 7 (audit-discipline: walk M(N-1) close before flagging M(N) as spec drift) and Rule 9 (read every sibling exercise before opining on one) are meta-rules for the auditor's own process per the judge template ('judges don't fire this directly'). No rows emitted. This session walked M4 close before M5 open and M5 close before M6 open in that order; rule 9 is N/A -- no single-exercise redesign recommendation was formed this session.",
-    "TOOLING ANOMALY, not a content finding: the pre-existing instance file (overwritten by this write) recorded body_sha values for all three module-set members that match NO commit in this repo's git history for those paths (verified: `git show <c>:<path> | shasum -a 256` for every commit touching each of the 3 files, zero matches to the recorded shas). The instance's own commit message ('Set E: two cross-module sets PASS, the last writing class PASS', 43bb766e) does correspond to a real commit, but the file content at that commit hashes differently from what the prior instance recorded -- a stamp-safe race matching the exact failure mode curriculum/CLAUDE.md's 'sibling judges race each other' rule was written to catch (a recorded sha matching no commit, not merely stale against HEAD). This write's body_sha map was computed against a verified-clean working tree at HEAD (394a896b, `git status --short` empty for all three paths, re-confirmed with a post-read `git diff` also empty) so it does not carry the same defect forward. Surfacing for the tooling/orchestrator owner to check whether the prior write raced a concurrent edit.",
-    "Informational, non-blocking: run-the-first-experiment.md's own Quality line (line 106) currently cites a DIFFERENT cross_module verdict (@5df71aa6, set=[earn-the-trust,run-the-first-experiment], the M3-M4 set) rather than this M4-M5-M6 set's verdict, even though this file is also a member of this set. learn-from-the-test.md:162 and spot-gaps-build-the-loop.md:105 both still cite this set's prior (e5364af8) verdict correctly. This looks like ordinary last-writer-wins behavior for a file that belongs to two overlapping cross_module sets (each Quality line has room for one cross_module citation), not a cross_module compendium rule violation -- none of the 9 rules govern which set's citation a shared member's Quality line displays. Noted for whoever owns Quality-line format/stamping, not filed as a finding."
-  ]
+   ]
+  },
+  {
+   "from": "curriculum/trainings/agentic-engineering-101/learn-from-the-test.md",
+   "to": "curriculum/trainings/agentic-engineering-101/spot-gaps-build-the-loop.md",
+   "rules_evaluated": [
+    {
+     "compendium": "check_cross_module.md",
+     "rule_index": 1,
+     "rule_lead": "Peek at the next module before adding a second exercise.",
+     "verdict": "N/A",
+     "evidence": "No exercise count change at this boundary: learn-from-the-test.md keeps two exercises and spot-gaps-build-the-loop.md keeps one (`Map the gaps, read your stack`); nothing to peek against.",
+     "fix_hint": null,
+     "blocking": false
+    },
+    {
+     "compendium": "check_cross_module.md",
+     "rule_index": 2,
+     "rule_lead": "Between-module reading appears in two places.",
+     "verdict": "PASS",
+     "evidence": "Assigner learn-from-the-test.md:103-107 `## Pre-reads before Module 6` names one entry, Klaassen [My AI Had Already Fixed the Code Before I Saw It](https://every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it). Echo spot-gaps-build-the-loop.md:8 `## Prework` — \"Optional pre-read before this module: Kieran Klaassen, [My AI Had Already Fixed the Code Before I Saw It]... (Aug 2025).\" Same URL, one-line framing at each end. 1/1 matched.",
+     "fix_hint": null,
+     "blocking": false
+    },
+    {
+     "compendium": "check_cross_module.md",
+     "rule_index": 3,
+     "rule_lead": "Cross-module artefact contracts must be explicit at both ends.",
+     "verdict": "PASS",
+     "evidence": "Producing side learn-from-the-test.md:209-216 names the M5 worktree branch+SHA, reference artefact, plan.md, verifier, RUN-NOTES.md, and the copied CLAUDE.local.md/observations, each with a stable identifier. Consuming side spot-gaps-build-the-loop.md:23 `## Start here` — \"Open a fresh session in the Module 5 worktree, `../<repo>-m5`. Both sessions are readable: the branches share `.git`, and each session recorded its transcript path.\" Names the exact worktree path and both sessions' transcripts directly in body, not an implicit \"from the previous run\" phrase.",
+     "fix_hint": null,
+     "blocking": false
+    },
+    {
+     "compendium": "check_cross_module.md",
+     "rule_index": 4,
+     "rule_lead": "Session boundaries and working directories are designed, not implicit.",
+     "verdict": "PASS",
+     "evidence": "spot-gaps-build-the-loop.md:23 opens with the working directory named explicitly (`../<repo>-m5` worktree), matching the compendium's own canonical example (\"M6 continues in M5 worktree, no new fork\"). learn-from-the-test.md's close (`## Next`, L109-111) does not separately name a `/clear`, but the open's explicit path removes the contested-\"same repo\" ambiguity the rule's symptom clause is written against — there is only one folder named at this boundary.",
+     "fix_hint": null,
+     "blocking": false
+    },
+    {
+     "compendium": "check_cross_module.md",
+     "rule_index": 5,
+     "rule_lead": "Cross-module artefact contracts — every produced file is a contract row in the maintainer block.",
+     "verdict": "PASS",
+     "evidence": "learn-from-the-test.md:205-216 carries the seven-row table (see rule 3 evidence). No M5-produced file/branch artefact lacks a row.",
+     "fix_hint": null,
+     "blocking": false
+    },
+    {
+     "compendium": "check_cross_module.md",
+     "rule_index": 6,
+     "rule_lead": "Cross-module structural-failure rescue — body-prose callouts at module open when the prior module's send-off can fail.",
+     "verdict": "PASS",
+     "evidence": "spot-gaps-build-the-loop.md `## Start here` carries exactly two consecutive blockquotes (L27 \"Packaged session thin or missing?\" naming nudge / fresh re-send / skip-and-catch-up-later; L29 \"Just can't get the M5 session working? ... Despair not.\" as the accept-loss floor). Maintainer-block note present at L97: \"M6 opener rescue + accept-loss callouts — deliberate exception to `check_student_facing.md` rule 5 ... Future judges should not re-flag.\" Matches the rule's shape exactly.",
+     "fix_hint": null,
+     "blocking": false
+    },
+    {
+     "compendium": "check_cross_module.md",
+     "rule_index": 8,
+     "rule_lead": "Bring-or-scramble plain-stakes-line shape at module homework boundaries.",
+     "verdict": "PASS",
+     "evidence": "learn-from-the-test.md:101 — \"Come to Module 6 without the packaged session and you'll have one session to read where the exercise needs two. Your call.\" Deviates from the compendium's literal \"scrambling for Y\" phrasing but passes on substance: student-as-subject, choice preserved (\"Your call\"), and the cost named (one session vs. the two the exercise needs) comes from the exercise's own structure, not room comparison (`grep -c 'while the room is already' curriculum/trainings/agentic-engineering-101/learn-from-the-test.md` -> 0). None of the three named failure modes fire: no M6 mechanics explained beyond the session count, no head-start prompt, no unearned vocabulary. Noted as a todo for phrasing tightness, not filed as REVISE.",
+     "fix_hint": null,
+     "blocking": false
+    }
+   ]
+  }
+ ],
+ "blocking_findings_count": 0,
+ "todos_count": 2,
+ "todos": [
+  {
+   "pair": "run-the-first-experiment.md -> learn-from-the-test.md",
+   "rule": "check_cross_module.md §6",
+   "note": "M4->M5 offers no body-prose rescue callout for a thin/missing M4 send-off (only a trainer push-back), while M5->M6 does carry one for the structurally similar risk of a thin/missing M5 send-off. §6 is permissive (MAY), so this is not a gate, but the asymmetry is worth a maintainer look for consistency."
+  },
+  {
+   "pair": "learn-from-the-test.md -> spot-gaps-build-the-loop.md",
+   "rule": "check_cross_module.md §8",
+   "note": "learn-from-the-test.md:101's stakes line (\"you'll have one session to read where the exercise needs two\") departs from the compendium's canonical \"scrambling for Y while the exercise is already Z\" phrasing. It passes the substantive test (subject, choice, exercise-clock cost) so it is not a REVISE, but tightening it toward the canonical shape would remove the judgement call for future judges."
+  }
+ ]
 }

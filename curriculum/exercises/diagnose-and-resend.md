@@ -62,7 +62,7 @@ Claude gives the full three-way mapping. Your decision is narrower: which failur
 
 - Pick the verifier shape that matches the failure that cost you most.
 
-- **LLM judge.** A separate Claude session reads the produced work and judges it: an opinion, not a pass-fail script. Right when the failure was qualitative (style, fit, "did it answer the question").
+- **LLM judge.** Separate Claude session reads the produced work and judges it: an opinion, not a pass-fail script. Right when the failure was qualitative (style, fit, "did it answer the question").
 - **Deterministic shell-hook.** Tests, lint, type-check, compile, custom invariant. Right when the failure has a true-false answer (broke the build, touched the wrong directory). The shell-hook shape IS a Claude Code stop-hook; you will meet the word again if you extend the verifier to fire automatically between runs.
 - **Ralph re-feed.** Loop the prompt with a check baked in; the agent re-runs on top of the previous round's output until the check passes. Right when drift was the dominant failure and re-anchoring catches it.
 
@@ -146,7 +146,7 @@ Your `CLAUDE.local.md` and `observations/` have been building in the worktree si
 
 **`## Check both files are for the agent, not you` is cut (2026-08-25, Antti: little value add).** The slide told an engineer how to glance at two files — the check-stuff teaching his 2026-08-25 cut pass removes on sight — and its push-back tells (generic-advice reference, project-plan-shaped plan.md) duplicate judgement the grill-note above already exercises. The flow runs prompt → grill-note → Approve. Do not restore; if a cohort ships agent-facing files written for humans, the tell belongs in the Phase-4 prompt, not a body slide.
 
-**"Failed run" is not the frame (Antti 2026-08-27, training run).** M4 has no failed run — the un-packaged send-off was designed to underdeliver, and students arrive with a return that partly worked. The Phase 1 header and the `What you do` line said "the failed run"; both now read "the un-packaged run", matching the bullet under the header and the module's own vocabulary. "Failure" still names the failure *modes* inside the run — that stays.
+**The M4 return is never framed as a failed run (Antti 2026-08-27, training run).** M4 has no failed run: the un-packaged send-off is designed to underdeliver, and students arrive with a return that partly worked. The Phase 1 header and the `What you do` line say "the un-packaged run", matching the bullet under the header and the module's own vocabulary. "Failure" names the failure *modes* inside the run, not the run.
 
 **Emphasis:** Bold is limited to title-page labels, widget chrome, the Phase 3 verifier-shape menu handles (**LLM judge** / **Deterministic shell-hook** / **Ralph re-feed**), the Phase 4 stop-gate handle, and the two definitional handles on *The reference and plan.md* (**Reference** / **plan.md**). All other body prose stays unbolded.
 

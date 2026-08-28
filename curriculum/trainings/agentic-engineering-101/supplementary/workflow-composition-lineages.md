@@ -134,7 +134,7 @@ The dispatcher pattern **scales cross-repo**. Dino runs a pure-routing meta-laye
 
 ## How to pick what to study
 
-Three filters that work better than ranking:
+Filters that work better than ranking:
 
 1. **What shape is your real work?** If you're shipping multi-file engineering changes with clear phases and want a published framework you can install today, Klaassen. If you're already shipping things one skill at a time and want a model for runtime composition, Pocock. If your team is wrestling with parallel-writer chaos, Yan/Cognition. If your team has standardised on Amp's runtime, Metcalf and Amp by default.
 

@@ -133,7 +133,7 @@ OODA
 
 <!-- /backing -->
 
-**Prompt block:** `agents-that-build-agents-handoff` — the agent reads the recurring-work shapes and the ranked primitives menu from the session and writes the student a standalone, cold-runnable prompt that builds workflow skills across their whole stack (study then diagram then author). Re-anchored 2026-08-01 (authoring-sequence cut): requires `-shapes` + `-primitives`, not a shipped skill.
+**Prompt block:** `agents-that-build-agents-handoff` — the agent reads the recurring-work shapes and the ranked primitives menu from the session and writes the student a standalone, cold-runnable prompt that builds workflow skills across their whole stack (study then diagram then author). Anchoring (authoring-sequence cut, 2026-08-01): requires only `recurring-shape-diagrams` (the `-shapes` output), not a shipped skill — the registry entry is the authority on prerequisites.
 
 **Open for next pass:**
 - Real-cohort gold standard: the handoff-generator live-test that cleared pedagogy was sim-grade — constructed M6 context (six named shapes, a stand-in skill), and it predates the 2026-08-01 re-anchor (shapes + primitives, no shipped skill). A live-test on an actual student's M6 close (their real shapes, their ranked menu) is the real-cohort bar; owed until a cohort runs.

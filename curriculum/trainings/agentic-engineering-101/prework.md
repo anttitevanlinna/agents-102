@@ -13,7 +13,7 @@ The training runs on YOUR real work. You'll work at different task sizes across 
 Roughly in the order you'll reach for them:
 
 - **Trivial bug**, wanted on day one: a few lines here and there. Picked from your repo's backlog or a recurring annoyance.
-- **A small multi-file task**, soon after: work you'd ship today if you had the hour. Plan mode wants something a few files wide.<!--flag:module:earn-the-trust-->
+- **A small multi-file task**: work you'd ship today if you had the hour. Plan mode wants something a few files wide.<!--flag:module:earn-the-trust-->
 - **A small feature**: external or user-facing surface, shippable in a few hours.<!--/flag:module:earn-the-trust-->
 - **A bigger piece**: a refactor, or a feature with unknowns. Size this one by the agent rather than by yourself. Roughly 30 to 120 minutes of the agent working, not counting the time you spend writing prompts.
 
@@ -73,7 +73,7 @@ If Claude's screening feels like everything-at-once, ask Claude to use the AskUs
 
 Optional. One read, any time before the first session.
 
-**Read: Simon Willison, [Vibe engineering](https://simonwillison.net/2025/Oct/7/vibe-engineering/)** (October 2025). Willison draws the line between vibe coding and working with coding agents as an accountable engineer. You start Module 1's first bug fix on the accountable side of that line.
+**Read:** Simon Willison, [Vibe engineering](https://simonwillison.net/2025/Oct/7/vibe-engineering/) (October 2025). Willison draws the line between vibe coding and working with coding agents as an accountable engineer. You start Module 1's first bug fix on the accountable side of that line.
 
 ## Bring to Module 1
 
@@ -87,7 +87,7 @@ The opening question at Module 1: *what's your favourite Claude Code trick that 
 
 **The two `{{prompt:}}` fences in `## 5. Pick a trivial bug and confirm Module 1 readiness` are accepted, not an unextracted exercise.** `check_pedagogy.md` §52a treats a fence in module prose as a greppable tell for an exercise nobody extracted, and this section matches the tell. It is not the thing the rule was built from: §52a's precedent is a four-prompt section carrying a Session widget, big enough that the deck hands it one unbreakable slide. This is one screening prompt plus its fallback for when the screen arrives all-at-once — the second only fires if the first misbehaves. Extracting it would give prework an exercise file before the training starts. Accepted-by-design 2026-08-13 (Antti-directed): do not extract, do not re-raise.
 
-**2026-07-30 (pre-read wiring):** added `## Pre-read before Module 1` (Willison, *Vibe engineering*). Body touched — per-class Quality SHAs below predate; re-audit before ship. The read is optional and outside the 30-min prework runtime target (~15 min if taken).
+**Pre-read wiring (2026-07-30):** `## Pre-read before Module 1` (Willison, *Vibe engineering*) is optional and sits outside the 30-min prework runtime target (~15 min if taken).
 
 **Source verification — freshness stamps (`source-freshness.sh`; format `curriculum/source-freshness-format.md`).**
 

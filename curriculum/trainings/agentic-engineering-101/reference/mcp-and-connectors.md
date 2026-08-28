@@ -12,7 +12,7 @@ Three ways an action becomes callable in a Claude Code session:
 2. **Path 2, `claude mcp add` from the command line.** Install an MCP server directly. Covers connectors not in the Claude.ai directory, project-scoped servers (`.mcp.json` in the repo), and local stdio MCPs.
 3. **Path 3, first-party CLI via Bash.** When the work app ships a CLI (`gh`, `aws`, `gcloud`), Claude calls it through Bash. No MCP. Best ergonomics where the CLI exists; `gh` is the canonical case.
 
-Per-tracker install commands come next. Plugins distribute Path 2, `claude mcp add`, at scale, under *Plugins and marketplaces* on this page.
+Per-tracker install commands come next. Plugins distribute Path 2, `claude mcp add`, at scale, under *Plugins and marketplaces*.
 
 **Vocabulary.** MCP is the protocol. **Connector** = the wire into a work app (the word Claude Code's configuration uses). **Action** = a verb with effect in the world (*read ticket, comment, close*). **Tool** = the umbrella term for anything the model can call. A first-party CLI exposes actions through Bash; an MCP server exposes them through the protocol. Same end state from the agent's point of view.
 
@@ -57,7 +57,7 @@ Then in Claude Code:
 /mcp
 ```
 
-Browser opens; you sign in to your Atlassian org; scopes approve at user level. Once your org's first 3LO consent is complete (3LO is Atlassian's three-legged OAuth: the app, your org, and you each approve) and the domain is allowed, **individual engineers don't need per-install admin approval**. Admins control product scopes and which domains can connect, not whether individuals can install after that.
+Browser opens; you sign in to your Atlassian org; scopes approve at user level. Once your org's first 3LO consent is complete (3LO is Atlassian's three-legged OAuth: the app, your org, and you each approve) and the domain is allowed, individual engineers don't need per-install admin approval. Admins control product scopes and which domains can connect, not whether individuals can install after that.
 
 **Note:** the older `https://mcp.atlassian.com/v1/sse` endpoint stops working 2026-06-30 per [Atlassian's support docs](https://support.atlassian.com/rovo/docs/getting-started-with-the-atlassian-remote-mcp-server/). The current canonical endpoint is `/v1/mcp/authv2`.
 
@@ -135,8 +135,6 @@ Current gaps:
 - A new tracker becomes common enough in cohorts to warrant a section
 
 Bump the **Last verified** date at the top. Note what changed in the commit message. The exercises reading this file don't change.
-
-**Source verification (2026-05-14, subagent fact-check pass):** 22 claims checked against authoritative sources — 1 FAIL (`/plugin` Discover-tab GUI contradicted "no GUI marketplace" framing — rewritten), 3 DRIFTs (Rovo coverage list, Atlassian admin-gating absoluteness, managed-settings filename framing — all softened), 16 PASS, 1 UNVERIFIED-adjacent (Linear "no admin gate" matches practitioner behavior; changelog doesn't quote the negation — left as-is).
 
 **Source verification:**
 - `[checked:2026-07-26 result:OK due:cohort]` https://code.claude.com/docs/en/mcp — [capability] Claude Code MCP docs: confirms `claude mcp add --transport http <name> <url>` + `--header` flag syntax; SSE transport deprecated in favour of HTTP; documents Claude.ai connector inheritance ("MCP servers you've added in claude.ai... are automatically available in Claude Code") and the `ENABLE_CLAUDEAI_MCP_SERVERS=false` opt-out; confirms `managed-mcp.json` as the canonical enterprise-policy filename (Managed MCP configuration section). fallback: re-derive syntax from `claude mcp add --help`.

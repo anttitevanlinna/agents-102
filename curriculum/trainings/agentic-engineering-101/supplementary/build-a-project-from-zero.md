@@ -64,7 +64,7 @@ Claims
 - `four-task-sizes` · vision · "**Trivial bug:** … **Small multi-file task:** … **Small feature:**" ← none-owed
 
 Sources
-- cc-model-command `[checked:2026-05-15 result:OK due:cohort]` https://code.claude.com/docs/en/cli-reference — [capability] `/model <name>` switches the active model in-session. The only product claim on the page. fallback: tell the student to pick the mid-tier model however the current UI offers it.
+- cc-model-command `[checked:2026-08-28 result:OK due:cohort]` https://code.claude.com/docs/en/commands — [capability] `/model <name>` switches the active model in-session; the commands page carries the `/model [model]` row (the cli-reference page documents only the launch-time `--model` flag, so the stamp points here). The only product claim on the page. fallback: tell the student to pick the mid-tier model however the current UI offers it.
 
 Frameworks
 - Scaffolded practice · [borrow:pedagogy] · law:none · ← none — house design: manufacture a codebase that will produce each of the four task sizes the training needs

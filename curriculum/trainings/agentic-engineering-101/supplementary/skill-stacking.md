@@ -8,7 +8,7 @@ How Dino's Claude Code skills compose. Personal skills live in `~/.claude/skills
 
 ## TL;DR
 
-Skills are single-purpose named procedures. Four composition mechanisms stitch them into workflows: **explicit load**, **orchestrator sequencing** (`/ship`), **routing dispatch** (CLAUDE.md predicates), and **hand-off pipelines**. The system has a clear shape: read-only analysis clusters at the front of the lifecycle, mutating skills cluster in the middle, ops loops back to build. `/ship` is the spine: it absorbs the last four commands of every workflow (`/cp`, `/release-notes`, `/multi-agent-review`, `/ci`) into one user-typed verb.
+Skills are single-purpose named procedures. Composition mechanisms stitch them into workflows: **explicit load**, **orchestrator sequencing** (`/ship`), **routing dispatch** (CLAUDE.md predicates), and **hand-off pipelines**. The system has a clear shape: read-only analysis clusters at the front of the lifecycle, mutating skills cluster in the middle, ops loops back to build. `/ship` is the spine: it absorbs the closing commands of every workflow (`/cp`, `/release-notes`, `/multi-agent-review`, `/ci`) into one user-typed verb.
 
 ---
 

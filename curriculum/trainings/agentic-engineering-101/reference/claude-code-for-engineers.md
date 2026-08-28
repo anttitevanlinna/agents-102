@@ -192,7 +192,7 @@ Plan mode: Claude researches and proposes a plan instead of writing files. You a
 
 ## 10. Plan mode: approval paths and reading the plan
 
-**Three approval paths when the plan is ready** (live-verified 2026-08-15 against `code.claude.com/docs/en/permission-modes#analyze-before-you-edit-with-plan-mode`):
+**Approval paths when the plan is ready** (live-verified 2026-08-15 against `code.claude.com/docs/en/permission-modes#analyze-before-you-edit-with-plan-mode`):
 
 | Option | Behavior | Pick when |
 |---|---|---|
@@ -241,7 +241,7 @@ Docs: [sub-agents](https://code.claude.com/docs/en/sub-agents).
 
 Scoped, named capabilities. Markdown file with frontmatter + instructions, in a folder whose name becomes the command you type.
 
-**Three places a skill can live**, and they do not all mean the same thing:
+**Places a skill can live**, and they do not all mean the same thing:
 
 | Level | Path | Available in |
 |---|---|---|
@@ -253,7 +253,7 @@ Scoped, named capabilities. Markdown file with frontmatter + instructions, in a 
 
 ## 14. Skills: invocation and frontmatter
 
-**Two invocation modes:**
+**Invocation modes:**
 - Claude invokes it when the `description` matches what you are doing, which is what that field is for; write it as *when to use this*, not as a title
 - You invoke it explicitly by typing `/<skill-name>`
 
@@ -479,7 +479,7 @@ Docs: [cli-reference § system-prompt flags](https://code.claude.com/docs/en/cli
 
 A hook is a small script the runtime invokes on a named event. The script fires deterministically: the agent has no say in whether it runs. The M5 lecture *Hooks always fire* names that property. It's what makes hooks the right home for anything that **must** happen versus what's **recommended** (prompts and `CLAUDE.md` rules carry the recommended layer).
 
-**Ten events carry almost everything you'll write.** The docs define 31 in total; reach for the full list when none of these fits (re-verified 2026-08-15 against `code.claude.com/docs/en/hooks`):
+**The curated events below carry almost everything you'll write.** The docs' full event table runs several times longer and shifts between releases; reach for it when none of these fits (re-verified 2026-08-15 against `code.claude.com/docs/en/hooks`):
 
 | Event | Fires | Common use |
 |---|---|---|

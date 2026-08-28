@@ -130,7 +130,7 @@ Then just hit stop.
 - **Artifact locations:**
   - Plan file → Claude Code's plan directory (auto, descriptive filename)
   - Execution artifacts (diff, PR) → student's real repo
-  - Compound-step rules update → personal `CLAUDE.local.md` at repo root (gitignored); team-worthy rules flagged for separate PR against the team's rules home (`CLAUDE.md` at root, `.claude/CLAUDE.md`, or `AGENTS.md`, whichever the repo uses). See `reference/claude-code-for-engineers.md § 1`.
+  - Compound-step rules update → personal `CLAUDE.local.md` at repo root (gitignored); team-worthy rules flagged for separate PR against the team's rules home (`CLAUDE.md` at root or `.claude/CLAUDE.md`; `AGENTS.md` only where the repo has wired an `@AGENTS.md` import into CLAUDE.md — Claude Code does not read it natively). See `reference/claude-code-for-engineers.md § 1, § 8`.
   - No training-dir state.
 - **Attribution at P5** is terse. Claude names the design pattern first; "plan-mode approval inflation" is the label the exercise hands them after they've already defeated it. Don't front-load.
 

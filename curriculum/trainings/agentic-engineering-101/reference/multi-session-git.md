@@ -77,13 +77,13 @@ The reason: agents are confident and do not always read carefully enough at a me
 
 ## When NOT to run multi-session
 
-Three situations where one session beats three.
+Situations where one session beats three.
 
 1. **Ordering dependencies.** Schema migration, followed by data backfill, followed by the code that reads the new column. Each step has to finish before the next starts. Parallelising buys you nothing and risks running step 3 against pre-step-1 state.
 
 2. **Greedy parallelism on a small task.** Two 20-minute tasks spun up in parallel sounds like 20 minutes of calendar time, but if you spend 15 minutes coordinating worktrees and another 10 recovering from a conflict, you lost. One session, two tasks in sequence, done in 45 minutes.
 
-3. **You are new to the loop.** If you are still learning what "good" looks like in one session, adding a second session adds variables, not learning. Land the single-session loop first. Multi-session will still be waiting.
+3. **New to the loop.** If you are still learning what "good" looks like in one session, adding a second session adds variables, not learning. Land the single-session loop first. Multi-session will still be waiting.
 
 ## Close
 

@@ -53,7 +53,7 @@ The measure is not maximum delegation. It is knowing what to delegate, how far t
 - High reach splits on calibration. Measured gates produce calibrated agency. Unmeasured green produces reckless autonomy.
 - The frontier moves outward only as fast as the gates behind it. Push reach past calibration and you are checking less, not delegating more.
 
-At the high-reach edge, scale makes the distinction visible. In August 2026, Wollsén wrote in [This is getting ridiculous: I shipped 490 pull requests in June](https://positivelyfred.substack.com/p/this-is-getting-ridiculous-i-shipped) that he kept 30 to 40 sessions open and actively managed 10 to 15 through a working day. He estimated his four-engineer team delivered three to four times the value of an average team, far below the multiple suggested by its pull-request count.
+At the high-reach edge, scale makes the distinction visible. In August 2026, Wollsén wrote in [This is getting ridiculous: I shipped 490 pull requests in June](https://positivelyfred.substack.com/p/this-is-getting-ridiculous-i-shipped) that he kept 30 to 40 sessions open and actively managed 10 to 15 through a working day. By his own estimate, the value his four-engineer team delivered ran far below what its pull-request count alone would suggest — he kept output volume and delivered value on separate axes.
 
 Leverage is not reach alone. It is reach that trust can keep up with.
 
@@ -94,7 +94,7 @@ Claims
 
 Sources
 - fred-ai-native-playbook `[checked:2026-08-08 result:OK due:2026-09-04]` https://positivelyfred.substack.com/p/the-ai-native-engineering-playbook — [practitioner direct, commercial interest] Wollsén and McCrosky's March 2026 account supplies the Crawl/Walk/Run/Fly sequence and the moves summarized in body: agent in repo, agent-readable context and routines, then parallel orchestration. fallback: remove the stage labels and retain the engineer-active synthesis.
-- fred-throughput-account `[checked:2026-08-08 result:OK due:2027-02-08]` https://positivelyfred.substack.com/p/this-is-getting-ridiculous-i-shipped — [practitioner direct, commercial interest] Wollsén's August 2026 production account supplies the 30–40 open sessions, 10–15 actively managed sessions, and his own three-to-four-times value estimate. The body keeps PR volume and estimated delivered value on separate axes. fallback: remove the numbers and retain the qualitative constraint that parallel output can outrun organizational absorption.
+- fred-throughput-account `[checked:2026-08-08 result:OK due:2027-02-08]` https://positivelyfred.substack.com/p/this-is-getting-ridiculous-i-shipped — [practitioner direct, commercial interest] Wollsén's August 2026 production account supplies the 30–40 open sessions and 10–15 actively managed sessions figures, plus the volume-vs-value caution the body paraphrases number-free. His three-to-four-times value self-estimate is quarantined (`observations/wollsen-fredrik.md` § Numbers that must not be carried: self-estimate, no axis) and stays out of body. fallback: remove the numbers and retain the qualitative constraint that parallel output can outrun organizational absorption.
 
 Frameworks
 - Engineer-active progression · [borrow:none] · ← none — owned synthesis; a recurring sequence, not a rank assigned to a person

@@ -221,7 +221,7 @@ OODA
 
 **Decision points (pacing):**
 - **Phase 1 >20 min** — over-diagnosis; force ranking and a single dominant.
-- **Phase 1 <10 min** — under-engagement; diagnostic is whether quoted moments appear. If summary-only, redo with quote-enforcement.
+- **Phase 1 finishes without quoted moments** — under-engagement; the gate is quote-presence, not the clock. If summary-only, redo with quote-enforcement.
 - **Phase 3 verifier doesn't fire** — re-scope. The verifier is the load-bearing artefact for the re-send; spend extra time here over Phase 4 if needed.
 - **Phase 4 >25 min** — reference becoming a manifesto. Cap at half-page reference + half-page plan.md.
 - **Whole-room mood below 7** — learning through contrast isn't landing. Check Phase 1 specificity. If diagnoses stayed generic, the contrast in Phase 2 has nothing to bite into.

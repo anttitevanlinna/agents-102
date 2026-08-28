@@ -13,7 +13,7 @@ Optional prep while it's still running: read Ethan Mollick, [The Bitter Lesson v
 After this module, you will be able to:
 - **Diagnose** your un-packaged send-off through three named lenses, goal drift, context rot, plausible-but-wrong, grounded in quoted moments from the return
 - **Pair** each failure mode with the packaging that catches it: drift ↔ reference artefact, rot ↔ plan.md, plausible-but-wrong ↔ external verifier
-- **Build** a verifier shaped against your dominant failure using one of three shapes (LLM judge, shell-hook, or Ralph re-feed)
+- **Build** a verifier shaped against your dominant failure (LLM judge, shell-hook, or Ralph re-feed)
 - **Assemble** the reference artefact + plan.md in conversation, scoped to the same task you sent off
 - **Re-send** the packaged version of the same task
 
@@ -76,7 +76,7 @@ The packaged session returns after this sitting ends. The experiment produces it
 
 The map at sitting 2 had an edge nobody explained. A dashed line down the right side, `THE TEAM` beyond it, and along the bottom, in italics: *cross personal → team*.
 
-**The wall** is the line between what works for you and what works for someone else. A rule in your own `CLAUDE.local.md` sits on your side of it. The same rule in a repo's `CLAUDE.md`, loading into a teammate's session whether they asked for it or not, has crossed.
+**The wall** is the line between what works for you and what works for someone else. A rule in your own `./CLAUDE.local.md` sits on your side of it. The same rule in a repo's `./CLAUDE.md`, loading into a teammate's session whether they asked for it or not, has crossed.
 
 Everything built in these four sittings is on your side. The rules file, the observations, the verifier, the reference, the plan. That is the right order and not a shortfall: prove it on yourself, then promote. A rule promoted before it works on you is a rule your team has to live with, and a habit that never crosses stays yours alone.
 
@@ -120,8 +120,6 @@ Module 6 reads the packaged session: subtler misses, subtler drift. The question
 
 **`## Set up the worktree` moved into `exercises/fork-the-worktree.md` as Phase 1 bullets (2026-08-25, Antti-directed).** Same pattern as M2's close-out move: the module body carries includes; the rationale (same-code-state, gitignored-files-don't-ride, runtime-fork flags intact) rides the exercise that runs it. The setup-line duplication with the exercise intro was trimmed in the fold.
 
-**Slide-size splits (2026-07-10, hand slides-audit):** two pre-existing oversized chunks split at conceptual seams, zero wording changes — `## Re-send the same task, packaged` + `## Send it off and read the report cold` carve the re-send narrative out of `## Key Concepts` (was 430w); `## Run the fork from the original repo` carves execution out of the worktree rationale (was 309w). Headers are command-verb, build-squint checked. Key Concepts now ends at its sixth bullet as the section name promises.
-
 **Nag beat + reading reminder added (2026-07-10, Antti-directed cognitive-load arc):** (1) *Long sessions, short reads* blockquote in Start here — the M5 reminder leg of the selective-reading arc (M1 teach → M2 exception → M3 take-into-use → M5 remind), per `check_student_facing.md` §29 operational-reminder-at-moment-of-use. (2) New section *Your mid-run worries hint at missing checks* after Start here — reframes the M4 mid-run worry as a candidate the artefact adjudicates. Opener-dosage check: arming beat (spirit + one move), does not name Ronacher's three-pattern or the failure-mode↔packaging pairing — closer's beats intact. First para names a plausible mid-run worry: resonant-copy carve-out, don't flatten at re-audit.
 
 **Two corrections to that beat, 2026-08-14 (Antti: "may be misplaced, and it now contradicts a bit with the agent encodes from evidence").** (a) **The nag no longer writes the spec on its own.** It read *"Your nag is a spec, arriving one worry at a time. Each one names a check the session should have carried with it."* — which contradicts the module's own method, where `diagnose-and-resend` Phase 1 reads the artefact through three lenses and Phase 2 asks *what validation would have caught this* per **named failure**. The nag is a remembered feeling about a run the student was not watching, the exact source Phase 1 teaches them to distrust (*"assume about 10% of the account misrepresents the run"*). Body now tests the worry against the return, and **the artefact adjudicates**. Do not restore a wording where the feeling is the spec. (b) **The trio pre-announcement is cut** — *"the reference pins the goal, plan.md carries the state, the verifier runs the checks"* handed out all three roles before the student had diagnosed anything, and `what-packaging-is` exists to earn those names from felt evidence at the closer. The beat is now spirit plus one move, which is what the opener-dosage line above always claimed it was.
@@ -133,7 +131,7 @@ the fourth line is deliberate; keep it. Do not re-expand with mechanics bullets:
 and evidence-in-artefact reminders live in the exercise body and the closer lectures, and a KC bullet
 restating them is a duplicate, not a recap.
 
-**Block is four lines, not five (Antti 2026-08-27, training run).** A fifth line landed 2026-08-23 (db2a68a4) — "The verifier, the reference artefact and the plan are compounding in a different shape from a rule: nothing loaded, everything checked." — and is now cut: the four lines above were deliberately only the first bullets, and the fifth mapped to no beat the deck teaches. The note above stands as written; four is the count.
+**Block is four lines, not five (Antti 2026-08-27, training run).** The four lines are deliberately only the first bullets; do not re-add a fifth ("The verifier, the reference artefact and the plan are compounding in a different shape from a rule: nothing loaded, everything checked.") — it maps to no beat the deck teaches. The note above stands as written; four is the count.
 
 **The verifier-shape handle is *LLM judge* (Antti 2026-08-27, training run).** Not *background-agent verifier*: in the field that phrase means detached async execution, which this shape is not — `diagnose-and-resend-4` offers slash-command, sub-task dispatch, or scheduled run. *Judge* is the discriminating word, and M5 is where it must be earned: `the-gate-is-a-claim` runs a whole slide on calibrating *the judge*, and `diagnose-and-resend-3` hands the student "an LLM judge", so the exercise menu bullet earns it lightly (judgement vs. the shell-hook's true-false). **`eval` stays embargoed to M6**; `the-loop-has-a-name` places judge inside the family rather than renaming M5's artefact. Registry: `vocabulary.md` verifier-shapes row.
 

@@ -1,19 +1,56 @@
 {
   "class": "slides",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/supplementary/skill-stacking.md",
-  "body_sha": "ae556fa9f94d832caa3d1dcd7c75998889de1370392b4bc08357cedf9e5d2af4",
-  "verdict": "PASS",
+  "body_sha": "da482b4963dc258c971e1e40c8b2b3a3390ad5d92968d5b330c3d06a48ad6d3c",
+  "verdict": "PASS_WITH_TODOS",
   "training": "ae101",
+  "shape_hash": "c4e97cd8f53c9097",
   "chunk_map": [
-    {"index": 0, "heading": "Dino's skill stacking system (H1 + lede)", "lines": "1-8"},
-    {"index": 1, "heading": "## TL;DR", "lines": "9-13"},
-    {"index": 2, "heading": "## The three-layer model", "lines": "15-65"},
-    {"index": 3, "heading": "## Skill catalog by phase", "lines": "67-97"},
-    {"index": 4, "heading": "## Workflow shapes", "lines": "100-112"},
-    {"index": 5, "heading": "## Design principles", "lines": "115-126"},
-    {"index": 6, "heading": "## Diagrams", "lines": "129-150"},
-    {"index": 7, "heading": "## What's special about this stack", "lines": "153-160"},
-    {"index": 8, "heading": "## Map your own kit", "lines": "163-173"}
+    {
+      "index": 0,
+      "heading": "Dino's skill stacking system (H1 + lede)",
+      "lines": "1-8"
+    },
+    {
+      "index": 1,
+      "heading": "## TL;DR",
+      "lines": "9-14"
+    },
+    {
+      "index": 2,
+      "heading": "## The three-layer model",
+      "lines": "15-65"
+    },
+    {
+      "index": 3,
+      "heading": "## Skill catalog by phase",
+      "lines": "67-97"
+    },
+    {
+      "index": 4,
+      "heading": "## Workflow shapes",
+      "lines": "100-112"
+    },
+    {
+      "index": 5,
+      "heading": "## Design principles",
+      "lines": "115-127"
+    },
+    {
+      "index": 6,
+      "heading": "## Diagrams",
+      "lines": "129-151"
+    },
+    {
+      "index": 7,
+      "heading": "## What's special about this stack",
+      "lines": "153-161"
+    },
+    {
+      "index": 8,
+      "heading": "## Map your own kit",
+      "lines": "163-173"
+    }
   ],
   "rules_evaluated": [
     {
@@ -22,7 +59,7 @@
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Fresh full-body re-read against pin c7e8f1e4..HEAD, which only reworded four sentences (chunk 2 line 40 'Four mechanisms' -> 'The mechanisms'; chunk 4 line 102 'Six workflow archetypes. Five funnel...' -> 'The workflow archetypes: all but one funnel...'; chunk 6 lines 131/133 'Three companion diagrams'/'used across all three' -> 'Companion diagrams'/'used across all of them') plus maintainer/backing-block additions below the cut. None of the three touched a referent's antecedent: line 40 'The mechanisms' still resolves to the same-chunk header '### Layer 3: Composition mechanisms' (line 38); line 102 'The workflow archetypes' resolves to the same-chunk header '## Workflow shapes' (line 100) and is now MORE accurate (table has 6 rows, one of which explicitly 'Doesn't ship' at line 109, matching 'all but one'); line 133 'all of them' resolves to 'diagrams' in the immediately preceding sentence (line 131), same chunk. Re-checked chunk 8 line 165 'Dino's four mechanisms' against chunk 0 line 5 and chunk 1 line 11 ('Four composition mechanisms' / 'The four composition mechanisms') -- both untouched by the diff, still present, still resolve. No pronoun/demonstrative anywhere in the body lacks an in-file antecedent.",
+      "evidence": "body_sha is byte-identical to the last-judged instance (ae556fa9\u2026), so no wording changed. Fresh read of all 9 chunks: every pronoun/demonstrative resolves in-file. Chunk 8 line 165 'Hold it up against Dino's four mechanisms' resolves to chunk 0 line 5 / chunk 1 line 11 ('The four composition mechanisms this page names are the move' / 'Four composition mechanisms stitch them into workflows'), both earlier in the same file. Chunk 5's numbered principles ('The loop', 'CLAUDE.md', '`/ship`') all name terms already earned in chunk 2's Layer 3 and chunk 3's catalog. No forward reference, no stranded antecedent found.",
       "fix_hint": null,
       "blocking": true
     },
@@ -32,27 +69,7 @@
       "rule_lead": "Cross-file and positional callbacks.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "No chunk points at another file by position. The diff's wording changes ('The workflow archetypes...', 'Companion diagrams ship with this doc') name their subjects directly rather than locating them by page position. Closest candidate: chunk 8 line 165 'Hold it up against Dino's four mechanisms' names the mechanisms directly ('the section above' would fail; this doesn't say that); passes.",
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 3,
-      "rule_lead": "Every backward reference points at a beat that exists.",
-      "verdict": "N/A",
-      "chunks_flagged": [],
-      "evidence": "grep -niE 'you (did|saw|caught|ran|shipped|wrote|built|sent)|the (module|exercise|lecture) you' against the body: 0 hits. No 'the X you did/saw' beat-reference construction present anywhere; this is a standalone supplementary reading with no module-beat callbacks. Chunk 8's 'Take any skill you have written, or the next one you would write' is deliberately general per the maintainer block's 2026-08-19 note (the M6-specific branch was collapsed precisely so this reads true for every student, not only M6 students), so it isn't a backward reference to a specific beat at all.",
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 4,
-      "rule_lead": "Live-demo beats survive a text read.",
-      "verdict": "N/A",
-      "chunks_flagged": [],
-      "evidence": "grep -niE 'guess|predict' against the body: 0 hits. No guess-before-reveal construction anywhere in the body.",
+      "evidence": "No chunk points at another file by position. Closest candidate: chunk 8 line 165 'Hold it up against Dino's four mechanisms' names the mechanisms directly rather than locating them ('the section above' would fail this; the actual text doesn't say that) \u2014 passes. This is a standalone supplementary page with no other-file references at all.",
       "fix_hint": null,
       "blocking": true
     },
@@ -62,7 +79,7 @@
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Every chunk carries a self-standing claim or list of its own (checked all 9, including chunk 6 'Diagrams' which could read thin but carries the marker legend plus three captioned figures, and chunk 8 which carries its own four-question checklist). The three reworded sentences (chunks 2, 4, 6) each still open their chunk with a standalone claim, not a context-dependent fragment.",
+      "evidence": "Checked all 9 chunks; each carries a self-standing claim or list. Thinnest candidate is chunk 6 'Diagrams' (lines 129-151): carries the marker legend ([R]/[C]/[O]) plus three captioned figures \u2014 not a wait-state or context-only fragment, self-carrying.",
       "fix_hint": null,
       "blocking": false
     },
@@ -72,7 +89,7 @@
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Checked all 8 non-title headers against their content; each is literally true of its chunk (e.g. line 100 '## Workflow shapes' matches the reworded intro 'The workflow archetypes...' plus the 6-row table; line 129 '## Diagrams' matches the reworded 'Companion diagrams ship with this doc' plus three captioned figures). No header contradicted by its own body, before or after the diff's wording changes.",
+      "evidence": "Checked all 8 non-title headers against their chunk content; each is literally true. E.g. line 100 '## Workflow shapes' matches the reworded line 102 'The workflow archetypes: all but one funnel into `/ship`' plus the 6-row table; line 129 '## Diagrams' matches line 131 'Companion diagrams ship with this doc' plus the three figures. No header contradicted by its own chunk.",
       "fix_hint": null,
       "blocking": false
     },
@@ -82,7 +99,7 @@
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Re-ran per sub-item against the current body, closest candidate quoted, none violating: (a) 'Not X. Not Y. Z.' -- grep -niE '\\bNot [A-Z][a-z]+\\. Not ' = 0 hits. (b) anaphora/epistrophe triples -- grep -niE '(Every|Each|No) [a-z]+.*(Every|Each|No) [a-z]+.*(Every|Each|No) [a-z]+' = 0 hits; closest structural list is the 7-item Design Principles enumeration, a numbered list not an anaphoric triple. (c) self-grading superlatives -- closest is chunk 7 line 155 'Unusually high analysis-to-action ratio' describing Dino's own stack (an external worked example), not a value-prop claim about this curriculum's usefulness; not a violation. (d) number + own retraction -- grep -niE 'about [0-9]+%|could be more|could be less|roughly [0-9]+' = 0 hits. (e) abstraction-noun stacks -- grep -niE 'bounded-window|reached for (better|the)' = 0 hits. (f) verb triplets with an empty leg -- grep -niE '^\\s*It [a-z]+\\.' = 0 hits; no verb-triplet construction found.",
+      "evidence": "Ran fresh per sub-item, all zero: (a) grep -niE '\\bNot [A-Z][a-z]+\\. Not ' -> exit 1, 0 hits. (b) grep -niE '(Every|Each|No) [a-z]+.*(Every|Each|No) [a-z]+.*(Every|Each|No) [a-z]+' -> exit 1, 0 hits. (c) self-grading superlatives: grep -niE 'most useful|one of the (best|most)|genuinely useful' -> exit 1, 0 hits; closest is chunk 7 line 155 'Unusually high analysis-to-action ratio' but this describes Dino's external stack, not this curriculum's own value, so not a value-prop leak. (d) number+retraction: grep -niE 'about [0-9]+%|could be more|could be less|roughly [0-9]+' -> exit 1, 0 hits. (e) abstraction-noun stacks: grep -niE 'bounded-window|reached for (better|the)' -> exit 1, 0 hits. (f) verb-triplet empty leg: grep -niE '^\\s*It [a-z]+\\.' -> exit 1, 0 hits.",
       "fix_hint": null,
       "blocking": false
     },
@@ -92,38 +109,21 @@
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "grep -niE 'surface(s)?\\b|firing|compendium|forcing function|\\bbeat(s)?\\b|\\bmood\\b|Connections' against the body: 2 hits, both 'surface' -- line 44 '`/access-control-analysis` produces a surface map consumed by `/stride`' and line 74 '`/stride`: threat-model pass against an access-surface map'. Both are the standard security-engineering term (attack-surface map), describing Dino's own tool, not the repo's writing-surface-as-noun dialect banned by this rule -- passes per the rule's own carve-out ('surface as ordinary engineering verb/noun in its domain sense is NOT dialect'). No other dialect term (firing, compendium, forcing function, beat, mood, Connections) appears anywhere in the body. (Prior instance's evidence said 'grep... none found', which understated the real grep result; corrected here -- the verdict is unchanged but the evidence is now accurate to what the grep actually returns.)",
+      "evidence": "grep -niE 'surface(s)?\\b|firing|compendium|forcing function|\\bbeat(s)?\\b|\\bmood\\b|Connections' curriculum/trainings/agentic-engineering-101/supplementary/skill-stacking.md, filtered to lines < maintainer cut (174): 2 hits, both 'surface' \u2014 line 44 '`/access-control-analysis` produces a surface map consumed by `/stride`' and line 74 '`/stride`: threat-model pass against an access-surface map'. Both are the standard security-engineering 'attack surface' term describing Dino's own tooling, not the repo's writing-surface-as-noun dialect \u2014 the rule's own carve-out clears ordinary-engineering-sense 'surface'. No other listed dialect term (firing, compendium, forcing function, beat, mood, Connections) appears in the body; the one 'firing' hit at line 179 sits in the maintainer block, out of scope.",
       "fix_hint": null,
       "blocking": true
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 9,
-      "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
+      "rule_lead": "Emphasis budget \u2014 bold is for handles, and go very lightly.",
       "verdict": "REVISE",
-      "chunks_flagged": [5, 7],
-      "evidence": "Standing finding, re-checked with fresh per-bullet word counts (both chunks are untouched by the pinned diff, which only edited chunks 2, 4 and 6). Chunk 5 'Design principles' bold-span word counts: 6, 6, 5, 3, 7, 4, 5 across its 7 bullets -- 3 of 7 clearly exceed the ~5-word handle cap (6, 6, 7 words). Chunk 7 'What's special about this stack' bold-span word counts: 3, 5, 4, 4, 4 across its 5 bullets -- none numerically exceeds 5. Correcting the prior instance's evidence, which claimed both chunks 'exceed it on every bullet': on a pure word-count read that overstates chunk 7 and 4 of chunk 5's 7 bullets. The REVISE nonetheless stands on the rule's OTHER, independent test: 'never a whole lead sentence' -- every single bullet in both chunks (12 of 12) bolds its ENTIRE lead sentence, full stop included, then continues in plain prose (e.g. line 122 '**Composition over inheritance.** Skills don't extend or wrap each other.'; line 155 '**Front-loaded read-only analysis.** Five PLAN-phase skills...'). That is the rule's own named violation shape verbatim: 'every bullet on a slide opens with a bolded sentence (the pre-2026-07-09 monoculture) -- flatten to handles or prose.' Handles must be a sub-span pulled from within a longer sentence, not the sentence itself however short. This is a supplementary/lookup page so the per-slide <=1-bold budget is waived by §9's reading-list/lookup-surface carve-out, but that carve-out explicitly preserves the handle-as-sub-span requirement ('bold the label, not the sentence after it'), which both chunks violate on every bullet.",
-      "fix_hint": "Pull a short label out of each lead and unbold the rest of the sentence (e.g. '**No duplication.** A skill never duplicates another's logic...' or '**Front-loaded analysis.** Five PLAN-phase skills...') in both Design Principles and What's special about this stack.",
-      "blocking": false
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 10,
-      "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
-      "verdict": "N/A",
-      "chunks_flagged": [],
-      "evidence": "This file is a standalone supplementary page (not included positionally inside a module's phase wrapper); there is no phase-less prose section riding along inside a module's deck that could be silently dropped the way rule 10's canonical failure describes. Did not run a headless-Chrome deck-presence check since no module include or phase wrapper is in play here; nothing in the pinned diff changed the file's include status.",
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 11,
-      "rule_lead": "Numbering — position is computed, content ordinals are linted.",
-      "verdict": "N/A",
-      "chunks_flagged": [],
-      "evidence": "Ran `node scripts/check-slide-numbering.js`: no output referencing skill-stacking.md (clean). No `## Phase N:` or `## N.` slide headers in the body (the three `### Layer 1/2/3` and five `### PLAN/BUILD/VERIFY/SHIP/OPS` headings are h3, not `##` slide cuts, and are not referenced elsewhere by 'Step K' phrasing). The numbered list in '## Design principles' (1-7) is ordinary body-content numbering, not a hand-numbered slide header.",
-      "fix_hint": null,
+      "chunks_flagged": [
+        5,
+        7
+      ],
+      "evidence": "This is a supplementary/lookup page, so \u00a79's per-slide <=1-bold budget is waived by its reading-list/lookup-surface carve-out \u2014 but the handle cap (<=5 words, a SUB-SPAN, never a whole lead sentence) still binds and is violated on every bullet in both flagged chunks. Chunk 5 '## Design principles' (lines 115-126): all 7 bullets bold a complete lead clause ending in a period, then continue in plain prose, e.g. line 115 '**A skill never duplicates another's logic.** `/tdd` references `/testing`...' (bold span = 7 words, a full sentence, not a sub-span) and line 116 '**Orchestrators sequence and gate, never reimplement.**' (6 words, full sentence). Chunk 7 '## What's special about this stack' (lines 155-159): all 5 bullets do the same, e.g. line 158 '**Mandatory gates fire positionally.** `/ui` doesn't fire at session start...' \u2014 even where the bold span is <=5 words (line 155 '**Front-loaded read-only analysis.**' = 3 words, line 157 '**`/aios` is pure routing.**' = 4 words), it is still the ENTIRE lead sentence including terminal punctuation, which is the rule's own named violation shape verbatim: 'every bullet on a slide opens with a bolded sentence (the pre-2026-07-09 monoculture) \u2014 flatten to handles or prose.'",
+      "fix_hint": "Pull a short label out of each lead and unbold the rest (e.g. '**No duplication:** a skill never duplicates another's logic...') in both Design principles and What's special about this stack.",
       "blocking": false
     },
     {
@@ -132,39 +132,99 @@
       "rule_lead": "Page geometry dies at the cut; reading order survives.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Ran `node scripts/check-slide-deixis.js`. Real output: 'OK — 61 files, no page-geometry pointers across the slide cut.' (exit 0), which covers this file. Also grepped directly: grep -niE 'below|above|further down|at the top|this page|this section|see below|the previous (slide|section)|the next (slide|section)|earlier in this' against the body = 1 hit, line 5 'The four composition mechanisms this page names are the move' -- this is a self-reference to the document as a whole ('this page' = the file you're reading), not a positional pointer to content elsewhere on the page, so it does not trip the rule.",
+      "evidence": "Ran `node scripts/check-slide-deixis.js`. Real output: 'OK \u2014 60 files, no page-geometry pointers across the slide cut.' (exit 0), which covers this file. Also grepped the body directly for positional phrases: grep -niE 'below|above|further down|at the top|this page|this section|see below|the previous (slide|section)|the next (slide|section)|earlier in this' -> one in-body hit, line 5 'The four composition mechanisms this page names are the move' \u2014 a self-reference to the document as a whole ('this page' = the file itself), not a pointer to content elsewhere on a page; does not trip the rule. (Two further hits at lines 190/196 sit in the backing block, out of the body region.)",
       "fix_hint": null,
       "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 14,
+      "rule_lead": "Slide size \u2014 210 words / 6 bullets, and the cap is machine-checked.",
+      "verdict": "REVISE",
+      "chunks_flagged": [
+        2,
+        3,
+        5
+      ],
+      "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/supplementary/skill-stacking.md`. Real output: 'files: 1  slides: 8  limits: 210 words / 6 bullets\\n  oversized: 3\\n  \u26a0 \u2026skill-stacking.md:15 [321w, 13 bullets] ## The three-layer model\\n  \u26a0 \u2026skill-stacking.md:115 [7 bullets] ## Design principles\\n  \u26a0 \u2026skill-stacking.md:67 [19 bullets] ## Skill catalog by phase' (exit 1). Three chunks over cap: chunk 2 (321 words / 13 bullets), chunk 3 (19 bullets), chunk 5 (7 bullets). No `**Slide size accepted:**` accept-note for any of the three in the maintainer block.",
+      "fix_hint": "Per-slide `**Slide size accepted:** <heading> \u2014 <reason>` in the maintainer block (these are reference/lookup tables, which is a plausible reason), or split The three-layer model / Skill catalog by phase / Design principles into smaller `##` chunks.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 16,
+      "rule_lead": "A bullet earns its slot or dies \u2014 three classes that read as rigour and carry nothing.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Closest candidates checked against the three banned classes: (a) doctrine restatement \u2014 chunk 5 'Design principles' and chunk 7 'What's special about this stack' both echo facts shown earlier (e.g. line 116 '`/ship` adds value only through sequencing logic and stop conditions' echoes the Layer-3 orchestrator-composition description at line 47), but each bullet adds a NEW angle not stated before (line 116 adds the refactor directive 'If you'd write the same code in two skills, refactor'; chunk 7 line 156 adds the justification '`/ship` is the deliberate exception, justified by absorbing four end-of-workflow commands into one verb', which chunk 2/3 never state). This is a distillation/synthesis section, not the rule's named shape of an identical split re-announced with zero new content (contrast the rule's own example, a verbatim-repeated sentence). (b) self-referential design commentary \u2014 0 matches: this file is Dino's own third-party skill stack, not this curriculum telling the student they're inside a pedagogy; no 'you encounter the problems before the training names them' construction anywhere. (c) aphorism kicker \u2014 checked every section closer; none restates its own header as a koan (e.g. chunk 8 ends on the four-question checklist at lines 167-170, not a closing epigram). No instance of any of the three classes found.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 3,
+      "rule_lead": "Every backward reference points at a beat that exists.",
+      "verdict": "N/A",
+      "evidence": "grep -niE 'you (did|saw|caught|ran|shipped|wrote|built|sent)|the (module|exercise|lecture) you' against the body: 0 hits. No 'the X you did/saw' beat-reference construction present anywhere; this is a standalone supplementary reading with no module-beat callbacks. Chunk 8's 'Take any skill you have written, or the next one you would write' is deliberately general per the maintainer block's 2026-08-19 note (the M6-specific branch was collapsed precisely so this reads true for every student, not only M6 students), so it isn't a backward reference to a specific beat at all.",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "ae556fa9f94d832caa3d1dcd7c75998889de1370392b4bc08357cedf9e5d2af4",
+      "carried_shape": "c4e97cd8f53c9097"
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 4,
+      "rule_lead": "Live-demo beats survive a text read.",
+      "verdict": "N/A",
+      "evidence": "grep -niE 'guess|predict' against the body: 0 hits. No guess-before-reveal construction anywhere in the body.",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "ae556fa9f94d832caa3d1dcd7c75998889de1370392b4bc08357cedf9e5d2af4",
+      "carried_shape": "c4e97cd8f53c9097"
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 10,
+      "rule_lead": "Presence precedes content \u2014 verify against the composed deck, not long-read.",
+      "verdict": "N/A",
+      "evidence": "This file is a standalone supplementary page (not included positionally inside a module's phase wrapper); there is no phase-less prose section riding along inside a module's deck that could be silently dropped the way rule 10's canonical failure describes. Did not run a headless-Chrome deck-presence check since no module include or phase wrapper is in play here; nothing in the pinned diff changed the file's include status.",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "ae556fa9f94d832caa3d1dcd7c75998889de1370392b4bc08357cedf9e5d2af4",
+      "carried_shape": "c4e97cd8f53c9097"
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 11,
+      "rule_lead": "Numbering \u2014 position is computed, content ordinals are linted.",
+      "verdict": "N/A",
+      "evidence": "Ran `node scripts/check-slide-numbering.js`: no output referencing skill-stacking.md (clean). No `## Phase N:` or `## N.` slide headers in the body (the three `### Layer 1/2/3` and five `### PLAN/BUILD/VERIFY/SHIP/OPS` headings are h3, not `##` slide cuts, and are not referenced elsewhere by 'Step K' phrasing). The numbered list in '## Design principles' (1-7) is ordinary body-content numbering, not a hand-numbered slide header.",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "ae556fa9f94d832caa3d1dcd7c75998889de1370392b4bc08357cedf9e5d2af4",
+      "carried_shape": "c4e97cd8f53c9097"
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 13,
       "rule_lead": "In-deck links work now; whether they EARN their place is open.",
       "verdict": "N/A",
-      "chunks_flagged": [],
       "evidence": "grep -n '\\[.*\\](' against the body: 3 hits, all `![alt](skill-stacking/0N-*.svg)` image embeds (lines 139, 143, 147), no markdown hyperlinks and no in-page fragment links. Nothing for this rule to evaluate. (Two other files in the corpus link INTO this page by title -- confirmed via `check-slide-deixis.js --links` -- which is the linking file's rule-13 concern, not this file's.)",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 14,
-      "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
-      "verdict": "REVISE",
-      "chunks_flagged": [2, 3, 5],
-      "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/supplementary/skill-stacking.md`. Real output: '====================================================================== Slide-size check — agentic-engineering-101\\n  files: 1   slides: 8   limits: 210 words / 6 bullets\\n  oversized: 3\\n======================================================================\\n\\n  ⚠ trainings/agentic-engineering-101/supplementary/skill-stacking.md:15  [321w, 13 bullets]\\n      ## The three-layer model\\n  ⚠ trainings/agentic-engineering-101/supplementary/skill-stacking.md:115  [7 bullets]\\n      ## Design principles\\n  ⚠ trainings/agentic-engineering-101/supplementary/skill-stacking.md:67  [19 bullets]\\n      ## Skill catalog by phase' (exit code 1). Standing finding, re-verified against the current body: still 3 oversized slides, identical to the prior instance's re-verified count (the pinned diff didn't touch bullet counts in any of these three chunks). No maintainer-block accept-note present for any of the three.",
-      "fix_hint": "Per-slide `**Slide size accepted:** <heading> — <reason>` in the maintainer block, or trim bullets/words on The three-layer model, Design principles, and Skill catalog by phase.",
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "ae556fa9f94d832caa3d1dcd7c75998889de1370392b4bc08357cedf9e5d2af4",
+      "carried_shape": "c4e97cd8f53c9097"
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 15,
       "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
       "verdict": "N/A",
-      "chunks_flagged": [],
       "evidence": "Rule 15's imperative/declarative mood split is defined for exercise vs. lecture files specifically ('Exercise `##` headings = imperative... Lecture headings = claims'). This file is a supplementary reference/progressive-reading page, not an exercise or lecture, so the binary mood contract doesn't bind it the same way; headings here are a mix of topical labels ('Diagrams', 'Skill catalog by phase') and one imperative worksheet heading ('Map your own kit'), consistent with a lookup/reference register rather than a violation of either mood. None of the diff's wording changes touched a `##` header itself.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "ae556fa9f94d832caa3d1dcd7c75998889de1370392b4bc08357cedf9e5d2af4",
+      "carried_shape": "c4e97cd8f53c9097"
     }
   ],
   "blocking_findings_count": 0,

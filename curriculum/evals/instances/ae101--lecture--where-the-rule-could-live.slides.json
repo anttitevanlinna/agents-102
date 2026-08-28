@@ -1,13 +1,14 @@
 {
   "class": "slides",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/where-the-rule-could-live.md",
-  "body_sha": "02f8104622c5f6c713008b82f059c806472f32161525bd445ce467a2b61f25aa",
+  "body_sha": "e1d3edf642e728ae4c0fb5c2564e688919817e315f0768a159aebceb8f24cd8b",
+  "shape_hash": "776191893f0953c7",
   "verdict": "PASS",
   "training": "ae101",
   "chunk_map": [
     {"index": 0, "heading": "Where the rule could live (H1 + lede)", "lines": "1-4"},
-    {"index": 1, "heading": "Three agents using the file", "lines": "5-9"},
-    {"index": 2, "heading": "The file is steady; the agent moves", "lines": "11-16"}
+    {"index": 1, "heading": "Three agents using the file", "lines": "5-11"},
+    {"index": 2, "heading": "The file is steady; the agent moves", "lines": "12-18"}
   ],
   "rules_evaluated": [
     {
@@ -16,7 +17,7 @@
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "chunk 1 \"Three agents using the file\": \"the file\" (line 7, 8, 9) resolves to chunk 0 line 3's named `backlog-refinement-rules.md`. chunk 2 \"The file is steady; the agent moves\": line 13 \"all three agents\" and line 14 \"Slack thread, issue event, daily schedule; Claude Code on the web, GitHub Actions, a scheduled agent\" resolve to chunk 1's three named shapes and their mechanisms (lines 7-9). No forward-pointing or never-named referents found. Harm this rule prevents (a reader stranded mid-deck) is absent.",
+      "evidence": "chunk 1 \"Three agents using the file\": lines 8-10 use \"the file\" / \"it\" resolving to chunk 0 line 3's named `backlog-refinement-rules.md`. chunk 2 \"The file is steady; the agent moves\": line 15 \"all three agents\" resolves to chunk 1's three named bullets (Slack triage / Issue webhook / Scheduled read); lines 16-17's \"the file\" / \"those rules\" resolve to the same chunk-0 referent. \"the backlog\" (lines 10, 17) is a generic domain noun for this audience, not an in-file referent requiring a naming beat, so it does not trip the rule. Harm this rule guards against (a reader stranded mid-deck, unable to find what a word points to) is absent throughout.",
       "fix_hint": null,
       "blocking": true
     },
@@ -24,9 +25,9 @@
       "compendium": "check_slides.md",
       "rule_index": 2,
       "rule_lead": "Cross-file and positional callbacks.",
-      "verdict": "N/A",
+      "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "No callback to another file by position anywhere in the body (lines 1-16); the only cross-references are within this file (rule 1's territory). No navigational pointer to a separate document either.",
+      "evidence": "No chunk points at another file by position anywhere in the body (lines 1-18); every cross-reference is intra-file continuity, e.g. line 15's \"all three agents\" pointing back at chunk 1 (rule 1's territory, not a §2 concern). No document is named or located by page position either.",
       "fix_hint": null,
       "blocking": true
     },
@@ -36,7 +37,7 @@
       "rule_lead": "Every backward reference points at a beat that exists.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "No \"the X you did/saw/caught\" construction anywhere in the body. This is a closer lecture that simulates a hypothetical file, not a recap of a prior module beat.",
+      "evidence": "No \"the X you did/saw/caught\" construction anywhere in the body. This is a closer lecture simulating a hypothetical file, not a recap of a prior module beat — na_reason: no backward-beat phrasing present.",
       "fix_hint": null,
       "blocking": true
     },
@@ -46,7 +47,7 @@
       "rule_lead": "Live-demo beats survive a text read.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "No guess/predict instruction or outcome-reveal pairing anywhere in the body; this file has no demo beat.",
+      "evidence": "na_reason: no guess/predict instruction or outcome-reveal pairing anywhere in the body; this file has no demo beat.",
       "fix_hint": null,
       "blocking": true
     },
@@ -56,7 +57,7 @@
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "chunk 1 carries three self-contained shape descriptions (lines 7-9), each a full claim on its own. chunk 2 carries three bulleted claims (lines 13-15) plus the closer bullet (line 16, \"Agents build agents\"). Neither chunk is a bare wait-state or single context-dependent bullet.",
+      "evidence": "chunk 1 carries three self-contained shape descriptions (lines 8-10), each a full claim on its own. chunk 2 carries three bulleted claims (lines 15-17), each self-carrying. Neither chunk is a bare wait-state or single context-dependent bullet.",
       "fix_hint": null,
       "blocking": false
     },
@@ -66,7 +67,7 @@
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "chunk 1 header \"Three agents using the file\" (line 5): body lists exactly three agents (Slack triage / Issue webhook / Scheduled read), each using the file — literally true. chunk 2 header \"The file is steady; the agent moves\" (line 11): first bullet, line 13, restates the header verbatim (\"The file is the steady part; the agent is the moving part\") — the header is not contradicted anywhere in the chunk.",
+      "evidence": "chunk 1 header \"Three agents using the file\" (line 5): body lists exactly three named agents (Slack triage / Issue webhook / Scheduled read), each using the file — literally true, not contradicted. chunk 2 header \"The file is steady; the agent moves\" (line 12): line 15 restates the claim near-verbatim and lines 16-17 extend it (file travels unchanged, agents author agents); the chunk's own content never contradicts the header.",
       "fix_hint": null,
       "blocking": false
     },
@@ -76,7 +77,7 @@
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Checked all five sub-items against lines 5-16. No \"Not X. Not Y. Z.\" construction. No anaphora/epistrophe triple (the list at line 14, \"Slack thread, issue event, daily schedule…\", is an enumeration, not a repeated grammatical frame). No self-grading superlative. No number-plus-retraction. No abstraction-noun stack (\"steady part\"/\"moving part\" at lines 11/13 are concrete, not jargon nouns). Verb triplet at line 8 (\"it proposes labels, asks for missing info, or splits the issue into smaller tickets\") and at line 9 (\"which items want to merge, which want to split, which want to die\") — each leg answers \"what does this concretely mean?\" on its own; no empty leg.",
+      "evidence": "Checked all five sub-items against lines 5-18. No \"Not X. Not Y. Z.\" construction. No anaphora/epistrophe triple (the three chunk-1 bullets open on different subjects, not a repeated grammatical frame). No self-grading superlative anywhere. No number-plus-retraction. No abstraction-noun stack (\"steady part\"/\"moving part\", line 15, are concrete, not jargon nouns). Closest candidate for a verb triplet is line 10's \"which items want to merge, which want to split, which want to die\" — each leg answers \"what does this concretely mean?\" on its own; no empty leg, so it stays inside.",
       "fix_hint": null,
       "blocking": false
     },
@@ -86,7 +87,7 @@
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "No repo/maintainer dialect (surface-as-noun, firing, compendium, forcing function, beat, mood) anywhere in lines 5-16. \"the file\", \"agent\", \"rules\", \"tickets\" are ordinary engineer-register terms for AE101's audience.",
+      "evidence": "`sed -n '1,18p' curriculum/lectures/where-the-rule-could-live.md | grep -inE '\\b(surface|firing|compendium|forcing function|beat|mood|connections)\\b'` → no match (exit 1). \"the file\", \"agent\", \"rules\", \"tickets\", \"backlog\" are ordinary engineer-register terms for AE101's audience; the `<!--tier:2-->` markers on lines 6 and 13 are non-rendering machinery (hidden badge markup consumed by `site/layouts/slides.js`), not vocabulary a reader encounters.",
       "fix_hint": null,
       "blocking": true
     },
@@ -96,7 +97,7 @@
       "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "chunk 1: three bolded handles, one per bullet (**Slack triage.**, **Issue webhook.**, **Scheduled read.**, lines 7-9) — within the ≲5-word handle cap, one per bullet. chunk 2: exactly one bolded handle (**Agents build agents.**, line 16) per the file's own maintainer block emphasis-pass note (2026-07-09, \"slide 2 de-bolded except Agents build agents\"). Budget ≤1 element on most slides / one handle per law-carrying slide is respected on both chunks.",
+      "evidence": "chunk 1: three bolded handles, one per bullet (**Slack triage.**, **Issue webhook.**, **Scheduled read.**, lines 8-10) — each ≤2 words, well inside the ≲5-word handle cap. This exceeds the plain ≤1-per-slide budget on its face, but the maintainer block's dated accept-note (line 23, \"Emphasis pass 2026-07-09... slide 1 keeps bullets with the three shape-name handles... per theory-plan.md § Slide format — emphasis budget + check_slides.md §9\") explicitly reconciles this exact passage against this exact rule — accept-with-note, not a fresh finding. chunk 2: exactly one bolded handle (**Agents build agents.**, line 17), matching the same accept-note's \"slide 2 de-bolded except Agents build agents (recurring arc handle, becomes an M6 lecture title)\" — squarely within budget on its own terms.",
       "fix_hint": null,
       "blocking": false
     },
@@ -106,7 +107,7 @@
       "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "grep -rn \"where-the-rule-could-live\" curriculum/trainings/ → curriculum/trainings/agentic-engineering-101/plan-mode-done-right.md:52 includes it as a standalone-paragraph link (`[Lecture: Where the rule could live](lectures/where-the-rule-could-live.md)`), which is the include shape that reaches the composed deck (rule 10's own contract). Also listed in trainer-modules.md:194 as lecture 7 of that module. File reaches the deck.",
+      "evidence": "`grep -rln \"where-the-rule-could-live\" curriculum/trainings/` → `curriculum/trainings/agentic-engineering-101/plan-mode-done-right.md` (standard include-link, the shape that reaches the composed deck) and `pre-cohort-todos.md`. The file's whole body is two `##`-headed sections plus the H1/lede — no phase-less prose section, no prework/supplementary/reference wrapper gap of the kind rule 10 warns against — so nothing here is at risk of the deck-drop failure mode.",
       "fix_hint": null,
       "blocking": true
     },
@@ -116,7 +117,7 @@
       "rule_lead": "Numbering — position is computed, content ordinals are linted.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "`node scripts/check-slide-numbering.js --file curriculum/lectures/where-the-rule-could-live.md` → \"OK — 1 files, Phase/Step numbering consistent.\" (exit 0). File has no `## Phase N:` / `## N.` step headers to number in the first place — plain topic headings only.",
+      "evidence": "`node scripts/check-slide-numbering.js` → no output line for this file (clean; the script only reports files with Phase/Step numbering problems). na_reason: file has no `## Phase N:` / `## N.` step headers to number — plain topic headings only.",
       "fix_hint": null,
       "blocking": false
     },
@@ -126,7 +127,7 @@
       "rule_lead": "Page geometry dies at the cut; reading order survives.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "`node scripts/check-slide-deixis.js --file curriculum/lectures/where-the-rule-could-live.md --report` → empty output (no matches, cleared or otherwise; exit 0, also confirmed by the earlier plain run: \"OK — 1 files, no page-geometry pointers across the slide cut.\"). No \"below/above/further down\" constructions anywhere in the body.",
+      "evidence": "`node scripts/check-slide-deixis.js --file curriculum/lectures/where-the-rule-could-live.md` → \"OK — 1 files, no page-geometry pointers across the slide cut.\" (exit 0). Confirmed independently: `sed -n '1,18p' ... | grep -inE '\\b(below|above|further down|top of this page|see below)\\b'` → no match.",
       "fix_hint": null,
       "blocking": true
     },
@@ -136,7 +137,7 @@
       "rule_lead": "In-deck links work now; whether they EARN their place is open.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "No in-body markdown links in the body (lines 1-16) — only backtick-formatted file/product names (`backlog-refinement-rules.md`, `@Claude`). Rule 13 is a review surface for in-deck links specifically and never gates; nothing to inventory here.",
+      "evidence": "na_reason: no in-body markdown links in the body (signals.has_urls: false); only backtick-formatted names (`backlog-refinement-rules.md`, `@Claude`). Rule 13 is a review surface for in-deck links and never gates; nothing to inventory here.",
       "fix_hint": null,
       "blocking": false
     },
@@ -146,7 +147,7 @@
       "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "`node scripts/check-slide-size.js --file curriculum/lectures/where-the-rule-could-live.md` → \"files: 1  slides: 2  limits: 210 words / 6 bullets … oversized: 0 … every slide is within limits\" (exit 0). No accept-note needed.",
+      "evidence": "`node scripts/check-slide-size.js --file curriculum/lectures/where-the-rule-could-live.md` → \"files: 1  slides: 2  limits: 210 words / 6 bullets ... oversized: 0 ... every slide is within limits\" (exit 0). Word counts: chunk 1 = 150 words, chunk 2 = 76 words, both under 210; both chunks carry 3 bullets, under the 6-bullet cap. No accept-note needed.",
       "fix_hint": null,
       "blocking": false
     },
@@ -154,9 +155,19 @@
       "compendium": "check_slides.md",
       "rule_index": 15,
       "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
-      "verdict": "N/A",
+      "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Per dispatch note: rule 15 is pending one corpus-wide maintainer decision after firing on nine lectures this sweep; if it fires here it is reported as a note, not a per-file finding, and not scored as REVISE. Observation for the maintainer decision only: chunk 1's header \"Three agents using the file\" (line 5) reads as a topic label rather than a declarative claim, unlike chunk 2's header \"The file is steady; the agent moves\" (line 11), which is a claim. Not filed as a rule finding on this file.",
+      "evidence": "chunk 1 header \"Three agents using the file\" (line 5) is a catalogue entry naming its subject (three named agent-usage shapes follow), squarely inside the rule's own carve-out for catalogue headers — not a violation even though it reads as a label rather than a claim. chunk 2 header \"The file is steady; the agent moves\" (line 12) is a genuine declarative claim, and it sits exactly where the rule requires one: this is the file's law/consolidation beat, placed after the three shapes so it lands as recognition (maintainer's own \"Lecture meta\" note, line 31, names this placement explicitly). Both headers satisfy the rule on its own terms.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 16,
+      "rule_lead": "A bullet earns its slot or dies — three classes that read as rigour and carry nothing.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "None of the three low-value classes present. (a) doctrine restatement: chunk 2's first bullet (line 15, \"The file is the steady part; the agent is the moving part\") opens by near-repeating the header directly above it, the closest candidate in the file — but it is the beat's first and only articulation (not an Nth recitation across the arc) and the same sentence adds a corollary the header doesn't carry (\"Across all three agents, better rules produce better tickets\"), so it earns its slot rather than merely re-announcing a law already spent. (b) self-referential design commentary: no line describes the training's own pedagogy to the student. (c) aphorism kicker: no bullet closes by restating the header or an exercise's own point-line as a koan. Each remaining bullet (lines 8-10, 16-17) adds a distinct move, object, or claim the slide does not already hold.",
       "fix_hint": null,
       "blocking": false
     }

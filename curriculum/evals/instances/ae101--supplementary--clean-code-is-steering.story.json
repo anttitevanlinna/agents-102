@@ -1,18 +1,18 @@
 {
   "class": "storytelling",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/supplementary/clean-code-is-steering.md",
-  "body_sha": "5a642f95de0c9f4173644f3c2e2a5a622dd85acb65b3e45b0e7a03086264a379",
+  "body_sha": "c9f338d922b9916c6728af4837dfbf0094dc12fa8acc71c1f09dd135d1cbb371",
   "verdict": "PASS",
   "training": "ae101",
-  "module_mood_contract": "Optional pre-read in the M4->M5 gap (linked from run-the-first-experiment.md § Pre-reads before Module 5). Primes discipline-as-steering via a third-party practitioner's parallel journey; must not name M5's reference-artefact/plan.md/verifier three-pattern. Should land as recognition energy, not resolution.",
-  "trace_status": "regenerated",
+  "module_mood_contract": "Optional pre-read in the M4->M5 gap (linked from run-the-first-experiment.md line 76, § Pre-reads before Module 5; also cross-linked as optional prep from learn-from-the-test.md line 10). Primes discipline-as-steering via a third-party practitioner's parallel journey; must not name M5's reference-artefact/plan.md/verifier three-pattern (Ronacher's). Should land as recognition energy, not resolution.",
+  "trace_status": "cached",
   "rules_evaluated": [
     {
       "compendium": "check_lectures.md",
       "rule_index": 1,
       "rule_lead": "Meta-frame lectures = closers, not openers.",
       "verdict": "PASS",
-      "evidence": "File sits BEFORE the M4 send-off/M5 exercise (run-the-first-experiment.md § Pre-reads before Module 5, line 76), not a meta-frame naming a pattern the student already lived. `grep -niE 'reference artifact|plan\\.md|verifier|three-pattern|Ronacher' clean-code-is-steering.md` (run 2026-08-23 on current file, sha b62461bf...) returns two hits, both below the maintainer fence (source-access note, source stamp) — zero in student-facing body. Functions as an opener-role vocabulary primer; unaffected by this pass's terminology edits.",
+      "evidence": "File is linked as prework BEFORE the M5 exercise (`grep -n clean-code-is-steering run-the-first-experiment.md` -> line 76, 'Read,' placed in the M4 send-off gap; also learn-from-the-test.md:10, both pre-reads, run 2026-08-28), not a closer naming a pattern already lived. It teaches a third party's (Uncle Bob's) vocabulary rather than the curriculum's own M5 mechanism -- confirmed clean by the vocabulary-leak grep under rule 2.",
       "fix_hint": null,
       "blocking": false
     },
@@ -21,7 +21,7 @@
       "rule_index": 2,
       "rule_lead": "Minimal lecturing before contrast-mood exercises.",
       "verdict": "PASS",
-      "evidence": "M5 is the contrast-mood module this pre-read sits ahead of. Body names ONE practitioner (Uncle Bob) in his own voice; the six-tool taxonomy (acceptance tests, unit tests, TDD, mutation testing, metrics, small units) is his vocabulary, not the curriculum's M5 three-pattern vocabulary — confirmed by the zero-hit grep above. Unaffected by this session's word-choice edits (they touch actor nouns 'AI/model' -> 'agent'/'LLM', not the taxonomy content).",
+      "evidence": "`grep -niE 'ronacher|three-pattern|reference artifact|reference artefact|plan\\.md|verifier' clean-code-is-steering.md` (run 2026-08-28, current file): the one 'Ronacher' hit is at line 111, inside the maintainer block (maintainer_cut=107 per body-view), crediting Armin Ronacher as adjacent-practitioner research context -- not the M5-specific 'three-pattern' teaching term, and not student-facing. Zero hits in the body above the fence. Body teaches Uncle Bob's own six-tool taxonomy in his own voice, not the M5 vocabulary this pre-read is meant to arm the student for without pre-empting.",
       "fix_hint": null,
       "blocking": false
     },
@@ -30,7 +30,7 @@
       "rule_index": 3,
       "rule_lead": "No cross-module sequencing in lecture bodies.",
       "verdict": "PASS",
-      "evidence": "`grep -niE 'M[0-9]|Module [0-9]' clean-code-is-steering.md` (run 2026-08-23 on current file): zero hits anywhere in the file, above or below the maintainer fence.",
+      "evidence": "`grep -niE 'M[0-9]|Module [0-9]' clean-code-is-steering.md` (run 2026-08-28, current file): zero hits anywhere in the file, above or below the maintainer fence.",
       "fix_hint": null,
       "blocking": false
     },
@@ -39,16 +39,81 @@
       "rule_index": 4,
       "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
       "verdict": "PASS",
-      "evidence": "`grep -c '^## '` = 9 (run 2026-08-23, current file). All 9 headers unchanged by this pass's diff (8651e524..HEAD touches only in-paragraph actor nouns and one maintainer-note trim, no header line). Re-checked each header against the paragraph beneath it cold: each still argues or names exactly what it claims ('Metrics are the dashboard, not the wheel' still earns CRAP inline; 'Unit tests shrink the agent's room to improvise' still supported by 'make the agent's search space smaller').",
+      "evidence": "`grep -c '^## '` = 9 and `grep '^## ' | sort | uniq -c` shows no header repeated (run 2026-08-28, current file). Each of the 9 unchanged since last pass (diff b55cd28b..HEAD touches only the maintainer Quality line): each still argues or names exactly what the paragraph beneath supports -- e.g. 'Metrics are the dashboard, not the wheel' (line 57) is argued, not just labelled, by the CRAP-gloss paragraph beneath it; 'A prompt biases the agent, it does not bind it' (line 93) is argued by the Dijkstra/formalism close. No category error, no dropped qualifier, no unsupported universal found on a cold re-read of all 9.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_lectures.md",
       "rule_index": 5,
-      "rule_lead": "A slide's BODY is size-bounded, not just its header.",
+      "rule_lead": "A slide's BODY is size-bounded, not just its header (§4's sibling).",
       "verdict": "PASS",
-      "evidence": "`node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/supplementary/clean-code-is-steering.md` (run 2026-08-23, current file): '9 slides, 0 oversized, limits 210 words/6 bullets' — 'every slide is within limits'. This pass's word-for-word swaps (AI->agent, model->agent/LLM) are net-neutral on length.",
+      "evidence": "DRIFT RE-READ (flagged rule, re-fetched at current wording via the class brief, 2026-08-28: '~210 readable words AND ≤6 bullets... Enforced by scripts/check-slide-size.js'). Ran it myself this session: `node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/supplementary/clean-code-is-steering.md` -> '9 slides, 0 oversized, limits 210 words/6 bullets... every slide is within limits.' Body unchanged since the rule's current wording was last checked against it (diff b55cd28b..HEAD is maintainer-Quality-line-only), so this is a live confirming re-check, not a stale carry-forward.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 27,
+      "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
+      "verdict": "PASS",
+      "evidence": "`grep -niE 'discuss|compare with|share what|tell the room|pair up|turn to|take [0-9]+ (minutes|seconds)' clean-code-is-steering.md` (run 2026-08-28, current file): zero hits. Also re-checked the group_beat_markers:true signal from the body-view directly: the two hits behind it are 'room to improvise' (line 45/47, metaphor for an agent's search space) and 'CRAP pairs a unit's complexity' (line 59, the metric's own definition) -- neither is a cohort-management cue. Solo prework reading; no trainer-managed beat to author a cue for.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 1,
+      "rule_lead": "Mood contract named.",
+      "verdict": "PASS",
+      "evidence": "Trace at curriculum/evals/sim-cache/ae101--supplementary--clean-code-is-steering.persona.json, content_sha b62461bf..., matches the current body (only the maintainer Quality line moved since generation, and that line sits below maintainer_cut=107, outside the phase the trace SHA covers -- so the cache is current, no regeneration owed). phase_1 mood_score=8, close mood_score=8, both at the 8+ floor. Classified TEACHING beat (a named failure mode + a taxonomy carried forward, not mechanical setup) so the floor applies and is met. Persona note: 'Recognition energy without resolution, matching the contract... finish with the same unfinished business toward my own M4 run, not an answer to it.'",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 2,
+      "rule_lead": "Epistemic mood != punitive mood.",
+      "verdict": "PASS",
+      "evidence": "The named failure mode ('local success, global drift', line 21) is diagnosed in a third party's own public experiments, not framed as the student's error -- no 'you messed up' framing anywhere in the body. Trace close.mood_note: 'Leaves equipped with vocabulary and unease, not a solution' -- not-knowing, not having-done-wrong.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 3,
+      "rule_lead": "Lead with discipline, not failure mode.",
+      "verdict": "PASS",
+      "evidence": "Title 'Clean Code Is Steering' leads with the discipline. All 9 headers (re-grepped this session, line 41-93) name positive disciplines/tools ('Acceptance tests catch...', 'Metrics are the dashboard, not the wheel', 'Architecture needs an instrument panel too'); none is titled after a failure mode. 'Mercury problem' and 'local success, global drift' (lines 19-21) are named as the negative case the discipline addresses, in body prose, not as a section title.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 4,
+      "rule_lead": "Strategy-fidelity check.",
+      "verdict": "PASS",
+      "evidence": "Cross-checked against run-the-first-experiment.md line 76 ('It moves the question from \"the agent ran\" to \"what would have constrained the drift?\"') and against content-strategy-agentic-engineering-101.md's M5 pre-reads item. Front-run grep (M5 three-pattern vocabulary, re-run this session under check_lectures §2) returns 0 hits in body. `git diff b55cd28b..HEAD -- clean-code-is-steering.md` (run 2026-08-28): touches ONLY the maintainer Quality-stamp line -- no claim, section or taxonomy changed since the pin, so nothing to re-derive fidelity against beyond what's here. Body still ends on 'The more powerful the coding agent, the more important the steering system' -- a question posture, not a resolution.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": null,
+      "judge_owned": true,
+      "rule_lead": "Whole-compendium scope call, story's lane on check_prompts.md.",
+      "verdict": "N/A",
+      "evidence": "check_prompts.md scopes to 'anything inside a fenced code block with copy-this affordance.' `grep -n '{{prompt:'` and `grep -n '\\*\\*Prompt\\*\\*'` against the current file (run 2026-08-28): zero hits both ways -- confirmed also by the body-view's own signals.has_prompt_blocks: false. This is a citation essay (blockquoted tweets only), no fenced prompt exists for any of the compendium's 48 rules to apply to. story.md's own Completeness contract names specific owned judgments within check_pedagogy and check_strategy_tie_in but claims no specific check_prompts.md rule for story; on a file structurally carrying zero prompt fences, none could fire regardless.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": null,
+      "judge_owned": true,
+      "rule_lead": "Whole-compendium scope call, story's lane on check_workshop.md.",
+      "verdict": "N/A",
+      "evidence": "check_workshop.md rule 1's own trigger test: 'remove the room -- does the beat still produce the same artefact?' Yes here -- this is a solo prework reading (trace persona: 'reads the file as prework and reports comprehension + lingering questions'), no group-scale beat, no attributed contribution, no shared artefact. Re-checked the body-view's group_beat_markers:true signal directly this session (see check_pedagogy §27 evidence above): both hits behind it are metaphor/definition text ('room to improvise', 'CRAP pairs'), not an actual group beat. check_workshop does not apply: no beat's output belongs to the group.",
       "fix_hint": null,
       "blocking": false
     },
@@ -58,17 +123,10 @@
       "rule_lead": "A prompt inside a lecture is a trainer show-and-tell, never a room follow-along.",
       "verdict": "N/A",
       "evidence": "`grep -n '{{prompt:' clean-code-is-steering.md` and `grep -n '\\*\\*Prompt\\*\\*' clean-code-is-steering.md` (run 2026-08-23): zero hits either way. The file is a citation essay (blockquoted tweets), not a lecture carrying a fenced prompt — no prompt exists for this rule to govern. (Coverage note: the prior instance on disk omitted this rule entirely, a completeness gap in the eval record, not in the curriculum file; corrected here.)",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_pedagogy.md",
-      "rule_index": 27,
-      "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
-      "verdict": "PASS",
-      "evidence": "`grep -niE 'discuss|compare with|share what|tell the room|pair up|turn to|take [0-9]+ (minutes|seconds)' clean-code-is-steering.md` (run 2026-08-23, current file): zero hits. No authored conversation/pause cues; this is a solo prework reading, no trainer-managed beats to author.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "5a642f95de0c9f4173644f3c2e2a5a622dd85acb65b3e45b0e7a03086264a379",
+      "carried_shape": "1a75c7b77bffff49"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -76,44 +134,10 @@
       "rule_lead": "Forcing functions stay, scripted reactions go; forcing functions live in prompts, not body prose.",
       "verdict": "N/A",
       "evidence": "Supplementary reading with no phases, no exercise, no student-executed prompt fence anywhere in the file (confirmed by the zero-hit prompt grep under check_lectures §6 above). Rule governs exercise/module prompt-vs-body placement of a forcing function; this surface has no prompt to place one into.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": 1,
-      "rule_lead": "Mood contract named.",
-      "verdict": "PASS",
-      "evidence": "Regenerated trace (curriculum/evals/sim-cache/ae101--supplementary--clean-code-is-steering.persona.json, content_sha b62461bf..., matching current file): phase_1 mood_score=8, close mood_score=8, both at the 8+ floor. File classified as a TEACHING beat (a named failure mode + a taxonomy the persona carries forward, not mechanical setup), so the floor applies. Persona re-read against this session's diff (8651e524..HEAD: 5 actor-noun swaps 'AI/model'->'agent'/'LLM', one maintainer-note trim, one Quality-stamp bump) and scored it a coherence gain, not a mover: 'the swap actually tightens the throughline... now the same agent throughout' — mood_score unchanged at 8, held down by the same pre-existing structural ceiling (the six-item taxonomy runs catalog-ish through its middle third), not by anything this diff introduced.",
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": 2,
-      "rule_lead": "Epistemic mood != punitive mood.",
-      "verdict": "PASS",
-      "evidence": "Unaffected by this pass's edits. The named failure mode ('local success, global drift', unchanged) is diagnosed in a third party's own work, not framed as the student's error. No 'I messed up' framing anywhere in the body.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": 3,
-      "rule_lead": "Lead with discipline, not failure mode.",
-      "verdict": "PASS",
-      "evidence": "Title 'Clean Code Is Steering' leads with the discipline. All 9 headers (unchanged by this session's edits) name positive disciplines/tools ('Acceptance tests catch...', 'Metrics are the dashboard, not the wheel', etc.); none is titled after a failure mode.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": 4,
-      "rule_lead": "Strategy-fidelity check.",
-      "verdict": "PASS",
-      "evidence": "Cross-checked against run-the-first-experiment.md line 76 ('It moves the question from \"the agent ran\" to \"what would have constrained the drift?\"') and content-strategy-agentic-engineering-101.md § M5 pre-reads. Body's arc unaffected by this session's edits: still ends on 'The more powerful the coding agent, the more important the steering system' — a question posture, not a resolution. Front-run grep (three-pattern vocabulary, re-run above under §1) still returns 0 hits in body. Read the diff itself for scope creep beyond wording: `git diff 8651e524..HEAD -- clean-code-is-steering.md` touches only actor-noun word choice inside 5 existing sentences, one maintainer-note self-reference trim, and the Quality stamp — no new claim, no restructured section, no widened taxonomy.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "5a642f95de0c9f4173644f3c2e2a5a622dd85acb65b3e45b0e7a03086264a379",
+      "carried_shape": "1a75c7b77bffff49"
     },
     {
       "compendium": "check_strategy_tie_in.md",
@@ -121,8 +145,10 @@
       "rule_lead": "Strategic themes recur in Key Concepts.",
       "verdict": "N/A",
       "evidence": "Supplementary file; no `## Key Concepts` section exists in this surface type.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "5a642f95de0c9f4173644f3c2e2a5a622dd85acb65b3e45b0e7a03086264a379",
+      "carried_shape": "1a75c7b77bffff49"
     },
     {
       "compendium": "check_strategy_tie_in.md",
@@ -130,8 +156,10 @@
       "rule_lead": "Key Concepts shape — theme breadcrumbs, not standalone section.",
       "verdict": "N/A",
       "evidence": "No `## Key Concepts` section on this surface type (supplementary, not module).",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "5a642f95de0c9f4173644f3c2e2a5a622dd85acb65b3e45b0e7a03086264a379",
+      "carried_shape": "1a75c7b77bffff49"
     },
     {
       "compendium": "check_strategy_tie_in.md",
@@ -139,17 +167,42 @@
       "rule_lead": "What You'll Learn shape — capability register, not syllabus.",
       "verdict": "N/A",
       "evidence": "No `## What You'll Learn` section on this surface type (supplementary, not module).",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "5a642f95de0c9f4173644f3c2e2a5a622dd85acb65b3e45b0e7a03086264a379",
+      "carried_shape": "1a75c7b77bffff49"
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 1,
+      "rule_lead": "Banned words — grep zero-tolerance.",
+      "verdict": "PASS",
+      "evidence": "mechanical: /\\b(delve|delving|honest|honestly|importantly|crucial|crucially|substrate|synergize|paradigm shift)\\b/ over body projection curriculum/evals/body-views/ae101--supplementary--clean-code-is-steering.body.txt → 0 hits; pattern proven against planted violation.",
+      "fix_hint": "",
+      "blocking": false,
+      "prefilled": true
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 2,
+      "rule_lead": "Ritual / ceremony — hard ban in any curriculum/training surface.",
+      "verdict": "PASS",
+      "evidence": "mechanical: /\\b(ritual|rituals|ceremony|ceremonies)\\b/ over body projection curriculum/evals/body-views/ae101--supplementary--clean-code-is-steering.body.txt → 0 hits; pattern proven against planted violation.",
+      "fix_hint": "",
+      "blocking": false,
+      "prefilled": true
     }
   ],
   "mood_summary": {
-    "phase_scores": [8],
+    "phase_scores": [
+      8
+    ],
     "close_score": 8,
     "any_below_8": false,
     "stealing_the_mood": []
   },
   "blocking_findings_count": 0,
   "todos_count": 0,
-  "notes": "Re-fire for the 8651e524..HEAD diff (commits 12300acd, 1c9215cd): a five-instance terminology-consistency swap in body prose ('the AI's raw power'->'the agent's raw power'; 'so an AI can change it'->'so an agent can change it'; 'asking the model to infer'->'asking the LLM to infer'; 'harder for a model to satisfy'->'harder for an agent to satisfy'; both 'A model operating...' sentences->'An agent operating...'), a maintainer-note self-reference trim (cut 'and it took three passes to see that'), and a Quality-stamp SHA/date bump. Verified the swap left Uncle Bob's own quoted 'AI' usage and the two generic 'AI coding' framing lines at the top untouched (`grep -n '\\bAI\\b'` / `\\bmodel\\b'` / `\\bLLM\\b'`, run 2026-08-23) — correct, since those are either verbatim quotation or the industry-wide phenomenon, not the agent-actor inside Uncle Bob's anecdote. Read the full file cold, not diff-scoped, per this sweep's standing instruction; found no pre-existing storytelling defect the diff-scoped passes had missed. Re-derived rather than carried forward: header count re-grepped (9), check-slide-size.js re-run, cross-module/conversation/front-run/three-pattern greps re-run against the current sha, persona trace regenerated against the current content_sha (b62461bf..., see sim-cache file). Completeness fix: the on-disk instance before this pass carried only 5 of check_lectures.md's 6 numbered rules (rule 6 missing) — added here as N/A with evidence, since this file carries no prompt fence for §6 to govern. Teaching-moment-lands (judge-owned, no check_strategy_tie_in rule_index): PASS — the reframing toward 'what would have constrained the drift?' still lands independent of prior familiarity with Clean Code discipline; the terminology tightening reads as a coherence gain for the persona ('now the same agent throughout'), not a mover. Accept-notes on file (see accept_notes_found): the CRAP-gloss maintainer note resolves a check_writing §19 / check_slides §1 tension, out of storytelling's lane but checked so as not to double-flag; the backing-block Stance note directs 'Do not restore the old title,' also respected. No REVISE findings; nothing blocking."
+  "notes": "Re-fire against pin b55cd28b, staleness reason rule-drift on check_lectures §5. `git diff b55cd28b..HEAD -- clean-code-is-steering.md` (run 2026-08-28) touches only the maintainer Quality-stamp line (date/SHA bump, technical row gains '(verify-refuted)') -- no body change. Drift rule check_lectures §5 re-read at its current wording (see that row) and re-verified live via scripts/check-slide-size.js: still PASS, unaffected. Persona trace unchanged and still current (content_sha b62461bf... matches; the only file delta since generation sits in the maintainer block, below the phase boundary the trace hashes) -- trace_status cached, not regenerated. Teaching-moment-lands (judge-owned, no check_strategy_tie_in rule_index, per template instruction to record here rather than as a row): PASS -- the reframing toward 'what would have constrained the drift?' still lands independent of prior Clean Code familiarity; trace confirms the persona leaves with the named failure mode, the six-tool taxonomy, and the formalism claim, without the M5 mechanism. New this pass: found a second inbound link (learn-from-the-test.md:10, 'Optional prep while it's still running') alongside the known run-the-first-experiment.md:76 pre-read -- both frame the file as optional prework, consistent with the mood contract; not a strategy-fidelity concern. Also newly covered: check_prompts.md and check_workshop.md, both assembled into this brief by the class->compendium mapping (COMPENDIA.story) but never claimed by story.md's own Completeness contract for any specific rule number on this file -- recorded as one whole-compendium judge_owned N/A row each rather than either silently dropping the compendium or writing 48+16 unowned rows against rules the template does not claim. Out-of-lane items noticed but NOT scored here (belong to check_writing/check_slides, per the maintainer's own note at line 109 resolving a §19-vs-§1 tension; and the backing-block Stance directive 'Do not restore the old title' at line 154, a title/writing concern) -- listed in accept_notes_found only.",
+  "shape_hash": "1a75c7b77bffff49"
 }

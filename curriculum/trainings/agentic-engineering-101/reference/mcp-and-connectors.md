@@ -153,5 +153,5 @@ Bump the **Last verified** date at the top. Note what changed in the commit mess
 **Why a reference file and not inline in the exercise:**
 Claude Code's MCP surface moves. Atlassian deprecates endpoints. New connectors land monthly. If the exercise body carries install specifics, every cohort delivery ships against stale instructions within a quarter. The reference file is the single point of update; exercises point at it; students get current instructions without editorial churn.
 
-**Quality:** compendium-audited 2026-08-23 (writing@b55cd28b story@b55cd28b technical@b55cd28b behavior@b3143a4 pedagogy@b55cd28b strategy@b3143a4 slides@b55cd28b)
-- judges @b55cd28b: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-28 (writing@e11bbeb4 story@e11bbeb4 technical@b55cd28b behavior@b3143a4 pedagogy@b55cd28b strategy@b3143a4 slides@e11bbeb4)
+- judges @e11bbeb4: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

@@ -1,19 +1,55 @@
 {
   "class": "slides",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/reference/mcp-and-connectors.md",
-  "body_sha": "8c1f7859c295cc2b16af51866f73c0b10119d4ee05f7a0fbafda602b9ea44157",
+  "body_sha": "9fb8d906ba615a57c4cf884258d35ccedd27bc6e9a80506656a115d0c9c5f1b6",
   "verdict": "PASS",
   "training": "ae101",
   "chunk_map": [
-    {"index": 0, "heading": "H1 + lede", "lines": "1-6"},
-    {"index": 1, "heading": "Three paths to a work-app action", "lines": "7-20"},
-    {"index": 2, "heading": "GitHub Issues", "lines": "21-43"},
-    {"index": 3, "heading": "Jira: Atlassian Rovo MCP (official)", "lines": "44-65"},
-    {"index": 4, "heading": "Linear: first-party MCP (official)", "lines": "66-82"},
-    {"index": 5, "heading": "Other trackers (Asana, Shortcut, Azure DevOps, ServiceNow, etc.)", "lines": "83-88"},
-    {"index": 6, "heading": "Plugins and marketplaces: MCP servers bundled for distribution", "lines": "89-103"},
-    {"index": 7, "heading": "Marketplace governance: official vs team, and when to reach for plugin distribution", "lines": "104-113"},
-    {"index": 8, "heading": "What Claude Code doesn't do yet (as of 2026-08-19)", "lines": "114-123"}
+    {
+      "index": 0,
+      "heading": "H1 + lede",
+      "lines": "1-6"
+    },
+    {
+      "index": 1,
+      "heading": "Three paths to a work-app action",
+      "lines": "7-20"
+    },
+    {
+      "index": 2,
+      "heading": "GitHub Issues",
+      "lines": "21-43"
+    },
+    {
+      "index": 3,
+      "heading": "Jira: Atlassian Rovo MCP (official)",
+      "lines": "44-65"
+    },
+    {
+      "index": 4,
+      "heading": "Linear: first-party MCP (official)",
+      "lines": "66-82"
+    },
+    {
+      "index": 5,
+      "heading": "Other trackers (Asana, Shortcut, Azure DevOps, ServiceNow, etc.)",
+      "lines": "83-88"
+    },
+    {
+      "index": 6,
+      "heading": "Plugins and marketplaces: MCP servers bundled for distribution",
+      "lines": "89-103"
+    },
+    {
+      "index": 7,
+      "heading": "Marketplace governance: official vs team, and when to reach for plugin distribution",
+      "lines": "104-113"
+    },
+    {
+      "index": 8,
+      "heading": "What Claude Code doesn't do yet (as of 2026-08-19)",
+      "lines": "114-123"
+    }
   ],
   "rules_evaluated": [
     {
@@ -92,7 +128,7 @@
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "`grep -niE '\\bcompendium\\b|\\bforcing function\\b|\\bbeat\\b|\\bmood\\b|\\bsurface\\b' <file>` hits only 'surface' as a noun, lines 48 and 70 (unchanged by this diff): 'only admins can add at this surface.' This is the ordinary engineering sense (install/attack-surface, a place in a system where something plugs in), not the repo's meta-dialect ('writing surface'); AE101's engineer-IC register and the compendium's own audience-register carve-out ('surface as ordinary engineering verb... NOT dialect') cover the adjacent noun usage here. None of 'compendium', 'forcing function', 'beat', 'mood' appear anywhere in the body.",
+      "evidence": "`grep -noE '\\bcompendium\\b|\\bforcing function\\b|\\bbeat\\b|\\bmood\\b|\\bsurface\\b' <file>` inside the body region (lines 1-123): 'surface' at lines 30 ('The surface is broad: every GitHub REST/GraphQL endpoint is reachable via `gh api`'), 48 and 70 ('only admins can add at this surface') -- ordinary engineering sense (an install/attack surface, a place in a system something plugs into), not the repo's meta-dialect ('writing surface'); the compendium's own audience-register carve-out ('surface as ordinary engineering verb... NOT dialect') covers it. And 'beat' at line 110: '**When plugins beat `claude mcp add`.**' -- ordinary-English verb 'outperform' ('this approach beats that one'), a different part of speech and a different meaning from the curriculum's noun jargon for a narrative/session beat; no engineer in the room parses it as the latter. 'compendium' hits only at line 156, inside the `<!-- maintainer -->` cut (never rendered to students, so out of §8's scope by construction). 'forcing function' and 'mood' don't appear anywhere in the file.",
       "fix_hint": null,
       "blocking": true
     },
@@ -101,7 +137,9 @@
       "rule_index": 9,
       "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
       "verdict": "REVISE",
-      "chunks_flagged": [3],
+      "chunks_flagged": [
+        3
+      ],
       "evidence": "This file is a declared 'Flat lookup' (line 1) so the per-slide bold-count budget is off (§9 lookup-surface waiver) but the ≲5-word handle cap still binds, and bold placed mid-narrative is banned outright regardless of length. Scanned every `**...**` span in the body (word-count logic replicated from `check-slide-size.js`'s `stripInline`/`wordCount`, which drops backtick-code content before counting): only 3 spans exceed 5 words -- line 12 (6w, 'Path 2, `claude mcp add` from the command line.'), line 13 (6w, 'Path 3, first-party CLI via Bash.'), and line 60 (7w, 'individual engineers don't need per-install admin approval'). Lines 12-13 are the file's own core Path-1/2/3 taxonomy (this diff's whole point was to make these names cite-able from every later chunk per rule 1/2) -- trimming the bold to the number alone would sever the handle from the descriptive tag the rest of the document now points back at, degrading the artefact the diff just improved, so not filed. Line 60 is different in kind, not degree: it is bold placed mid-sentence on ordinary narrative/mechanism prose ('...and the domain is allowed, **individual engineers don't need per-install admin approval**. Admins control...'), which §9 bans outright ('Narrative... mechanism prose = no bold') independent of the word count. This exact specimen was already flagged in the prior slides-class instance at pin 6d477099 (five sibling instances in the same paragraph pattern were trimmed to true handles in this diff -- line 50 'CLI install', line 79 'Fallbacks', line 95 'Add a marketplace', line 23 'Default for AE101:', line 32 'When to add MCP instead.' -- but line 60 was not touched). Harm: on a lookup page a reader scans bold as the wayfinding cue to find their answer; a mid-paragraph emphasis clause that isn't a navigable entry point competes with the genuine section labels for the eye without functioning as one, which is exactly the finding-aid degradation §9's waiver exists to prevent.",
       "fix_hint": "Unbold line 60 entirely; the sentence reads fine as plain narrative and the true handle ('individual engineers') isn't a term anything else in the file cites back to.",
       "blocking": false
@@ -151,7 +189,9 @@
       "rule_index": 14,
       "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
       "verdict": "REVISE",
-      "chunks_flagged": [1],
+      "chunks_flagged": [
+        1
+      ],
       "evidence": "`node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/reference/mcp-and-connectors.md` -> oversized: 1, 'trainings/agentic-engineering-101/reference/mcp-and-connectors.md:7 [211w] ## Three paths to a work-app action' (exit 1). Confirmed diff-introduced: extracted chunk 1's body at commit 6d477099 (`git show 6d477099:<path>`) vs HEAD and ran the checker's own `stripInline`/`wordCount` logic on each -- 205 words before this diff, 211 after (the 'Path N,' labels added to the three list items plus ', `claude mcp add`,' in the following sentence added ~6 net words, tipping a slide that was already close to the cap over it). No `**Slide size accepted:** Three paths to a work-app action` line exists in the maintainer block (checked lines 124-157). Harm: this is a real gate, not just a judge opinion -- `npm test` runs `check-slide-size.js` unconditionally and currently fails on this file at HEAD.",
       "fix_hint": "Drop ~2 words from chunk 1 to clear the cap without losing the new Path-N naming -- e.g. cut 'on this page' from line 15 (redundant given the section is already named) or fold 'from the command line' out of item 2's bold lead since it's restated in the item's own body sentence.",
       "blocking": false
@@ -165,8 +205,19 @@
       "evidence": "Rule 15's grammar split is stated only for exercise headings (imperative/phase label) vs lecture headings (claims) -- this file is a reference page, a third file type the rule text doesn't address. Checked anyway for fit: all 8 headings, including the new split 'Marketplace governance: official vs team, and when to reach for plugin distribution' (line 104), are noun-phrase topic/catalogue labels naming their subject (explicit NOT-violation carve-out even if the rule did apply), consistent with the lookup-surface register the compendium describes at §9.",
       "fix_hint": null,
       "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 16,
+      "rule_lead": "A bullet earns its slot or dies — three classes that read as rigour and carry nothing.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Checked every bullet/list item and every chunk's closing sentence against the three classes. (a) Doctrine restatement: the Path 1/2/3 taxonomy (lines 11-13) and the 'Current gaps' bullets (lines 118-120) each add a distinct move or object (a different install mechanism; a different missing feature) rather than re-announcing a split already stated -- no bullet repeats a prior bullet's point. (b) Self-referential design commentary: none anywhere -- flat technical lookup page, zero pedagogy-of-the-training language ('you encounter X before it's named', 'this is by design'). (c) Aphorism kicker: no chunk closes on a koan restating its own header; closest candidate, chunk 7 line 110 'For a one-off solo install on one machine, plain Path 1 or Path 2 stays simpler.' -- stays inside because it's a concrete decision rule (which path, and when), not a restatement of the header 'Marketplace governance: official vs team, and when to reach for plugin distribution'.",
+      "fix_hint": null,
+      "blocking": false
     }
   ],
   "blocking_findings_count": 0,
-  "todos_count": 2
+  "todos_count": 2,
+  "shape_hash": "7b3d7617cecc027b"
 }

@@ -173,8 +173,8 @@ The answer is often "leaf today, route later" or "leaf today, hand-off when the 
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-08-23 (writing@b55cd28b story@b55cd28b technical@b55cd28b pedagogy@b55cd28b strategy@c7e8f1e4 slides@b55cd28b)
-- judges @b55cd28b: writing PASS, story PASS, technical PASS, behavior N/A (no student-copied prompt blocks; the only fence is a SKILL.md frontmatter illustration), pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-28 (writing@e11bbeb4 story@e11bbeb4 technical@b55cd28b pedagogy@b55cd28b strategy@c7e8f1e4 slides@e11bbeb4)
+- judges @e11bbeb4: writing PASS, story PASS, technical PASS, behavior N/A (no student-copied prompt blocks; the only fence is a SKILL.md frontmatter illustration), pedagogy PASS, strategy PASS, slides PASS
 
 **Runtime fork collapsed 2026-08-19.** `## Map your own kit` used to branch on whether the reader had done M6, and the module branch opened *"You shipped a second skill in M6."* The 2026-08-01 M6 cut removed the in-module second-skill build: M6's close now produces a handoff prompt the student runs later to author skills, so no skill ships inside the module (see `spot-gaps-build-the-loop.md` Artefact contracts). The surviving wording is true for every reader, M6 or not, because an M6 student has still written a skill back at M3. Do not restore the fork without an M6-produced skill to point at.
 

@@ -1,7 +1,7 @@
 {
   "class": "storytelling",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/supplementary/the-context-ceiling.md",
-  "body_sha": "81bec075e65185318a51888a1e2954af62ba2b67f55d6cdd49beff09a0777c56",
+  "body_sha": "4c382a366a929b1ffaf7b25cb115402fed5f996e2be32bbc166c6affbdc489b0",
   "verdict": "PASS",
   "training": "ae101",
   "module_mood_contract": "Reframes token efficiency from cost-thrift to context-quality (cost follows); teaches craft moves with independent convergence and teaches distrust of round-number folklore. Voice: Boris-flat for the mechanism, one Rory reframe at the open, no Risto over-lift at the close -- reference register, not a high-arc module.",
@@ -12,7 +12,7 @@
       "rule_index": 1,
       "rule_lead": "Mood contract named.",
       "verdict": "PASS",
-      "evidence": "Maintainer block states the contract explicitly ('Boris-flat for the mechanism, one Rory reframe at the open... No Risto over-lift at the close; this is reference, not a high-arc module'). The cached trace's content_sha (38e438ed...) did not match the current file (cc169942...) -- the body changed at commit 1c9215cd after the trace was generated -- so per the dispatch preamble's cached-trace caution this run REGENERATED the single phase (whole-file, per protocol) rather than proceeding on the stale quote. Regenerated trace scores phase mood_score 8, close mood_score 8, both >=8 floor for a teaching beat. This is a TEACHING beat (introduces and works through the craft/folklore reframe, not mechanical setup), so the mood-floor applies and is met at register-appropriate brevity throughout.",
+      "evidence": "Maintainer block states the contract explicitly: 'Voice: Boris-flat for the mechanism, one Rory reframe at the open (cost is a disguise for quality). No Risto over-lift at the close; this is reference, not a high-arc module.' (L129). The cached trace's content_sha (cc169942...) no longer matched the whole-file sha (81bec075...) -- verified this was a stamp-only drift: the diff since the last judge pin (b55cd28b) touches only the Quality-line stamp text inside the maintainer block, and every quoted line in the cached trace was re-checked byte-for-byte against the live body and found unchanged. Re-stamped the trace to the current sha rather than re-simulating from scratch (curriculum/evals/sim-cache/ae101--supplementary--the-context-ceiling.persona.json, generated_at 2026-08-28). Regenerated/re-verified trace: phase mood_score 8, close mood_score 8, both >=8 floor. This is a TEACHING beat (works through the craft/folklore reframe, not mechanical setup), so the mood-floor applies and is met at register-appropriate brevity throughout -- confirmed the craft-section lede ('Treat these as your defaults. The first two are about what you let in.', L39) reads as register-fidelity, not a lift failure, per the trace's own arc_flow_note.",
       "fix_hint": null,
       "blocking": false
     },
@@ -21,7 +21,34 @@
       "rule_index": 2,
       "rule_lead": "Epistemic mood ≠ punitive mood.",
       "verdict": "PASS",
-      "evidence": "No shame-register language found in body. The folklore section frames the reader's likely prior belief ('Token-efficiency advice arrives with confident, round numbers. Most do not hold.') as a correctable gap in the field's knowledge, not a personal failing -- 'Reading them critically is part of the skill,' not 'you got this wrong.' Same register in 'More rules, worse edits' ('Neither is fixed by writing better rules' -- diagnostic, not blame).",
+      "evidence": "No shame-register language anywhere in the body (re-read in full, L1-119). Closest-to-violating lines, and why they stay inside: 'Token-efficiency advice arrives with confident, round numbers. Most do not hold. Reading them critically is part of the skill.' (L63) frames the reader's likely prior belief as a correctable knowledge gap in the FIELD, not a personal failing -- 'the skill' is something to build, not something the reader lacked. 'A rules file has a quality ceiling of its own... Neither is fixed by writing better rules. The fix is where the rules live.' (L57, L59) diagnoses a system dynamic (rule-count vs. attention) and hands the reader a fix, never says the reader did it wrong. 'I read the More rules, worse edits section against my own bloating CLAUDE.md and feel mildly implicated' (trace persona_action) confirms the beat lands as self-recognition, not accusation -- epistemic, not punitive.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 4,
+      "rule_lead": "Strategy-fidelity check.",
+      "verdict": "PASS",
+      "evidence": "Consolidates front-run check + module-to-module arc + Big Idea fidelity + mood-doesn't-resolve-early per template instruction. FRONT-RUN CHECK, verified fresh this run against the live strategy doc (bosser-strategy:content-strategy-agentic-engineering-101.md, M3 section, read this session): 'Subagents introduced, deliberately. Ex1 and Ex2 invoke the curated skills as subagents... the primitive earns its first visible use at exactly the module where curated skills make their first visible use.' This is the explicit strategic claim the body must not front-run. Body L49 says only 'There is a way to hand it off and get back only the answer... You'll meet it properly, mechanism and trade-off both, in Module 3' -- names the payoff and destination, withholds the mechanism, which is exactly what the strategy doc reserves for M3. Grepped the M2 section of the strategy doc (lines 307-332, plan-mode-done-right) for 'subagent': zero hits -- M2 doesn't pre-empt it either, so the pointer lands cleanly between two modules that both leave it alone. Module order verified against site/layouts/curriculum.js (getting-going=M1, plan-mode-done-right=M2, earn-the-trust=M3, ...), and earn-the-trust.md's own body (grepped 'subagent') teaches exactly 'Split jobs between subagent and main thread' with mechanism and trade-off -- the naming pays off, it doesn't merely gesture. /context is treated as already-known per the maintainer's explicit 'Do not reintroduce run /context demonstrations here,' so no re-teaching front-runs M1's primitive either. BIG IDEA FIDELITY: opens 'Token efficiency sounds like a cost problem... That framing is mostly wrong' (L3) -- leads with the reframe the maintainer's Role note claims ('reframes token efficiency from a cost-thrift topic to a context-quality one'), not a different framing. MOOD-DOESN'T-RESOLVE-EARLY: the folklore section (L61-69) is deliberately UNRESOLVED as a genre -- it exists to teach permanent distrust of round numbers ('check it against your own /context before you trust it', L69), not to close the topic; nothing here forecloses a downstream module's teaching moment, and the file's own multiple entry points (M2 close / M3 close / M4 prework) mean it isn't racing toward one module's reveal. MODULE-TO-MODULE ARC: N/A in the single-successor sense (standalone supplementary read at three entry points per the maintainer's Placement note, not a module with one designated next), and it closes self-contained ('Now go clean your window', L95-101).",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 27,
+      "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
+      "verdict": "PASS",
+      "evidence": "mechanical: grep -niE 'discuss with|share with|tell the room|compare with the person|take [0-9]+ (seconds|minutes)|turn to|pair up|talk to your neighbor' over the raw file -> 0 hits. Also checked the body-view's group_beat_markers signal, which reports true on this file -- traced it to the actual regex (/\\b(group|team|room|together|shared record|adjudicat)\\w*/i) and found only two matches, both false positives with no cohort-management sense: 'Anthropic's engineering team' (L7, credits a company team) and 'the team-level, PR-reviewed one' (L53, describes which CLAUDE.md tier, not a room beat). No pause-cues, no group/pair instructions, no trainer-cue beats anywhere in the file. Every sentence targets the work (the window, the tokens, the craft moves) or the reader's own reasoning, never cohort management -- consistent with this being a solo progressive reading, not a room-scale beat (check_workshop.md is N/A wholesale for the same reason, noted below, not scored here since story's template assigns it no check_workshop rows for this file).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 5,
+      "rule_lead": "A slide's BODY is size-bounded, not just its header (§4's sibling).",
+      "verdict": "N/A",
+      "evidence": "RULE-DRIFT RE-CHECK (task-flagged staleness reason for this class; re-fetched current wording via `node curriculum/evals/scripts/rule.js lectures 5` this run rather than trusting the parked verdict). Current text still scopes to the same mechanism as before ('Enforced by scripts/check-slide-size.js'), so went past the compendium's own prose to the enforcement script itself: scripts/check-slide-size.js L56-59 states in its own comment, 'The training scan covers modules and the files they include; reference and supplementary pages sit outside it,' and its default file-set builder (fileSetFromTraining) walks only training modules + their exercise/lecture includes -- this file (curriculum/trainings/agentic-engineering-101/supplementary/the-context-ceiling.md) is never in that set. This is independent, code-level confirmation of what content-rules.md's own surface list already says ('Slide-rendered files ... AE101 lectures/exercises/modules') -- supplementary is deliberately excluded from both the rule's declared trigger surface and its mechanical gate, not merely un-checked. (Separately verified via site/layouts/slides.js that the Slides deck DOES render this file, chunked at every ##, under a kind-labelled 'Supplementary' divider -- so the file is readable in Slides, but check_lectures's own enforcement script still doesn't hold it to the projection word/bullet ceiling, matching the rule's textually-scoped trigger list. The distinction is deliberate: the file is read in the deck by a self-paced reader following an entry-point link, not walked slide-by-slide by a trainer at the room's pace, which is the harm §5 exists to prevent.) Same conclusion as the parked verdict, reached independently rather than carried forward, per the task's explicit instruction to re-derive this one rule regardless of prefill status.",
       "fix_hint": null,
       "blocking": false
     },
@@ -31,17 +58,10 @@
       "rule_lead": "Lead with discipline, not failure mode.",
       "verdict": "N/A",
       "evidence": "Rule scopes to Big Idea / title naming for a module. This is a supplementary reference page with no Big Idea section. The file's own title and opening ('Token efficiency sounds like a cost problem... That framing is mostly wrong') lead with a reframe, not a failure word. One section header, 'More rules, worse edits,' names a failure shape, but it is a mid-file section header in a reference page, not the artefact's Big Idea/title -- outside this rule's stated scope, and the section immediately pivots to the fix ('Neither is fixed by writing better rules. The fix is where the rules live'), so even read loosely against the rule's spirit there is no harm.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": 4,
-      "rule_lead": "Strategy-fidelity check.",
-      "verdict": "PASS",
-      "evidence": "Consolidates front-run check + module-to-module arc + Big Idea fidelity + mood-doesn't-resolve-early per template instruction. Front-run check: maintainer block places entry points at M2 close / M3 close / M4 prework; body (line 49) now names the deferral precisely -- 'There is a way to hand it off and get back only the answer... You'll meet it properly, mechanism and trade-off both, in Module 3' -- still describing the payoff, not the mechanism, so M3's (earn-the-trust.md's) own subagent teaching moment is protected, not front-run. Verified the pointer is factually correct, not just deferred: site/layouts/curriculum.js orders AE101 modules getting-going(M1)/plan-mode-done-right(M2)/earn-the-trust(M3)/run-the-first-experiment(M4)/..., and earn-the-trust.md body (grepped 'subagent') teaches exactly 'Split jobs between subagent and main thread' with mechanism and trade-off -- the naming pays off, it doesn't merely gesture. This also resolves a TODO the prior instance of this file logged ('later in the training' gave the reader no calibration) -- the fix landed since the last judge run, not a new drift. /context is treated as already-known per the maintainer's explicit 'Do not reintroduce run /context demonstrations here,' so no re-teaching front-runs M1's primitive either. Module-to-module arc: N/A in the module-file sense (standalone supplementary read at multiple entry points, not a single module with one designated successor), and it closes self-contained.",
-      "fix_hint": null,
-      "blocking": true
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "81bec075e65185318a51888a1e2954af62ba2b67f55d6cdd49beff09a0777c56",
+      "carried_shape": "81e57214a612a2af"
     },
     {
       "compendium": "check_strategy_tie_in.md",
@@ -49,8 +69,10 @@
       "rule_lead": "Strategic themes recur in Key Concepts.",
       "verdict": "N/A",
       "evidence": "Governs module-only Key Concepts sections. This file is a supplementary and has no ## Key Concepts heading. Strategy judge owns this rule on modules.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "81bec075e65185318a51888a1e2954af62ba2b67f55d6cdd49beff09a0777c56",
+      "carried_shape": "81e57214a612a2af"
     },
     {
       "compendium": "check_strategy_tie_in.md",
@@ -58,8 +80,10 @@
       "rule_lead": "Key Concepts shape — theme breadcrumbs, not standalone section.",
       "verdict": "N/A",
       "evidence": "No Key Concepts section on this supplementary.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "81bec075e65185318a51888a1e2954af62ba2b67f55d6cdd49beff09a0777c56",
+      "carried_shape": "81e57214a612a2af"
     },
     {
       "compendium": "check_strategy_tie_in.md",
@@ -67,8 +91,10 @@
       "rule_lead": "What You'll Learn shape — capability register, not syllabus.",
       "verdict": "N/A",
       "evidence": "No What You'll Learn section on this supplementary.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "81bec075e65185318a51888a1e2954af62ba2b67f55d6cdd49beff09a0777c56",
+      "carried_shape": "81e57214a612a2af"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -76,17 +102,10 @@
       "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
       "verdict": "N/A",
       "evidence": "This is a progressive reading (no phase structure, no session exercise), not a phased exercise with a graded forcing-function mechanic. The one inline prompt block ('price the bloat' calc) is additive/exploratory per the maintainer's own Placement note, not a load-bearing forcing function the body prose could steal by narrating it -- the body describes the arithmetic RESULT (the $10-to-$1.26 collapse) after the prompt, which is the payoff the student would only see by running it themselves.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_pedagogy.md",
-      "rule_index": 27,
-      "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
-      "verdict": "PASS",
-      "evidence": "Grepped the body for conversation-authoring shapes ('discuss with', 'share with', 'take 90 seconds', 'tell the room', 'compare with the person next to you') -- none found (grep -niE 'discuss with|share with|tell the room|compare with the person|take [0-9]+ (seconds|minutes)' on the file: 0 matches). No pause-cues, no group/pair instructions, no trainer-cue beats. Every sentence targets the work (the window, the tokens, the craft moves) or the reader's own reasoning, never cohort management.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "81bec075e65185318a51888a1e2954af62ba2b67f55d6cdd49beff09a0777c56",
+      "carried_shape": "81e57214a612a2af"
     },
     {
       "compendium": "check_lectures.md",
@@ -94,8 +113,10 @@
       "rule_lead": "Meta-frame lectures = closers, not openers.",
       "verdict": "N/A",
       "evidence": "This file is a supplementary reading in the training's supplementaries registry, not a lecture in curriculum/lectures/. Lecture-placement rules (opener/closer/mid-module) don't govern a progressive-reading surface with multiple entry points named by the maintainer block (M2 close, M3 close, M4 prework) rather than a single fixed slot.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "81bec075e65185318a51888a1e2954af62ba2b67f55d6cdd49beff09a0777c56",
+      "carried_shape": "81e57214a612a2af"
     },
     {
       "compendium": "check_lectures.md",
@@ -103,8 +124,10 @@
       "rule_lead": "Minimal lecturing before contrast-mood exercises.",
       "verdict": "N/A",
       "evidence": "Same surface-type reason as rule 1 -- this governs pre-exercise lecture dosage ahead of a contrast-mood module opener. This file sits at module closes / a module prework slot, not immediately pre-exercise inside a contrast-mood opener, and it is not a lecture.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "81bec075e65185318a51888a1e2954af62ba2b67f55d6cdd49beff09a0777c56",
+      "carried_shape": "81e57214a612a2af"
     },
     {
       "compendium": "check_lectures.md",
@@ -112,8 +135,10 @@
       "rule_lead": "No cross-module sequencing in lecture bodies.",
       "verdict": "N/A",
       "evidence": "Rule governs lecture bodies; this is a supplementary, and curriculum/CLAUDE.md types supplementaries as 'multi-section, progressive across modules' by design, unlike a lecture's re-placeable-shared-library requirement. Re-checked at current wording (rule-drift task) against the one body change since the last judge run: line 49 now reads '...in Module 3' where it previously read '...later in the training.' Grepped 'M[0-9]' above the maintainer fence: one hit, this line. Even read against the rule's spirit it is clean -- the reference is verified-accurate (see rule 4 evidence above) and names a destination, not curriculum apparatus (bridges/forward-references the rule targets), which is exactly the shape a supplementary's Entry-points design expects.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "81bec075e65185318a51888a1e2954af62ba2b67f55d6cdd49beff09a0777c56",
+      "carried_shape": "81e57214a612a2af"
     },
     {
       "compendium": "check_lectures.md",
@@ -121,17 +146,10 @@
       "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
       "verdict": "N/A",
       "evidence": "Supplementaries are not in check_slides.md's trigger list (AE101 lectures/exercises/modules only) and this file's own maintainer note explicitly directs future judges to treat its bold folklore handles as quoted claims under examination, not squint-test labels -- the file already carries a standing accept-note against a slide-shaped read of its ## headers.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_lectures.md",
-      "rule_index": 5,
-      "rule_lead": "A slide's BODY is size-bounded, not just its header.",
-      "verdict": "N/A",
-      "evidence": "Not a slide-rendered lecture/exercise/module surface per check_slides.md's trigger list; this is a long-read supplementary, not chunked to a per-## word/bullet ceiling.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "81bec075e65185318a51888a1e2954af62ba2b67f55d6cdd49beff09a0777c56",
+      "carried_shape": "81e57214a612a2af"
     },
     {
       "compendium": "check_lectures.md",
@@ -139,36 +157,39 @@
       "rule_lead": "A prompt inside a lecture is a trainer show-and-tell, never a room follow-along.",
       "verdict": "N/A",
       "evidence": "RULE-DRIFT CHECK (new rule since last judge run at 3902c345 -- prior instance's check_lectures coverage stopped at rule 5, count now 6). File is at curriculum/trainings/agentic-engineering-101/supplementary/the-context-ceiling.md, not curriculum/lectures/**, which is the rule's stated scope. The rule's own text explicitly carves this file's surface type out: 'Not covered: exercise prompts, prework prompts, and prompts on reference/supplementary pages, all of which the student runs themselves.' The file's single inline prompt ('Ask Claude to price the bloat...') is exactly this excluded case per the maintainer's Placement note (additive calc/exploration prompt, student-run) -- no trainer-demo second-person imperative is present or needed.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "81bec075e65185318a51888a1e2954af62ba2b67f55d6cdd49beff09a0777c56",
+      "carried_shape": "81e57214a612a2af"
     }
   ],
   "mood_summary": {
-    "phase_scores": [8],
+    "phase_scores": [
+      8
+    ],
     "close_score": 8,
     "any_below_8": false,
     "stealing_the_mood": []
   },
-  "teaching_moment_note": "Named teaching moment (maintainer Role: reframe cost-thrift to context-quality) lands robustly per the regenerated trace -- persona reports a concrete mental-model shift and the folklore section's self-distrust is what pushes the read from dry-reference to recommend-worthy. No fragility observed: the shift doesn't depend on a single sentence landing, it accumulates across the pricing example, the craft section, and the folklore reversal. The one body change since the last judge run (the Module-3 pointer) sharpens rather than dilutes this -- it resolves the prior instance's own logged TODO (a forward-reference the reader couldn't calibrate, and the regenerated trace's persona now confirms she can calibrate it) without pulling any of M3's teaching content forward.",
+  "teaching_moment_note": "Named teaching moment (maintainer Role: reframe cost-thrift to context-quality) lands robustly per the re-verified trace -- persona reports a concrete mental-model shift ('I stop worrying about the token meter and start worrying about the window's signal-to-noise') and the folklore section's self-distrust is what pushes the read from dry-reference to recommend-worthy. No fragility observed: the shift accumulates across the pricing example, the craft section, and the folklore reversal rather than depending on any single sentence landing. No body change since the last judge run (this pass confirmed the underlying prose is byte-identical; only the maintainer block's Quality-line stamp had moved), so no new front-run or arc risk was introduced -- the fresh strategy-doc read (M3 section) this run independently confirms the M2->M3 subagent deferral (L49) still lands exactly where the strategy doc reserves it.",
   "drift_rules_reread": [
-    "check_lectures §6 (added 2026-08-20, 'a prompt inside a lecture is a trainer show-and-tell') -- N/A: rule scope is curriculum/lectures/**, this file is a supplementary, and the rule's own text excludes 'prompts on reference/supplementary pages' by name. Added as a new rules_evaluated row (count now 6, matching current compendium) -- was the actual staleness driver for this file's story instance.",
-    "check_pedagogy §44 (Plug points + UX) -- N/A/PASS, not story-owned: no ## Plug Points section exists on this file (part a N/A); the file's sole prompt is self-contained with no invented setup or undiscoverable path (part b clean). Not added as a rules_evaluated row -- story's template lists only §16/§27 as owned check_pedagogy judgments; this belongs to the pedagogy judge's lane, noted here only to confirm no story-owned harm.",
-    "check_pedagogy §52 (Session widget placement patterns) -- N/A, not story-owned: no **Session** widget appears anywhere in this file, correctly, since a supplementary reading page is not an exercise-top/module-opener/lecture-top/mid-exercise-refork context. Not added as a row for the same lane reason as §44.",
-    "check_pedagogy §56 (engineer-audience audit fixes default to body callout, not forcing function -- amended 2026-08-23 to add: 'rules-file bloat, context creep... fail [the <1-min diagnostic] by construction... take the forcing-function branch even for engineers') -- checked closely because this file's own subject (CLAUDE.md bloat, 'More rules, worse edits') textually matches the amendment's named examples. Verdict: no harm present, do not file. The amendment's own origin (memory/compounded/2026-08-23-pedagogy-silent-slow-miss-gets-the-instrument-not-a-callout.md) is anchored to an EXERCISE preamble at the moment of artefact creation (M1 Ex4, where a student is actively authoring ./CLAUDE.local.md) -- a different situation from a supplementary read later, away from any specific artefact-creation moment. The forcing-function fix the rule wants (re-running /context after the file exists) already lives at that exercise moment and 'recurs through the exercises' per this file's own Placement note; re-adding it here would additionally violate the maintainer's explicit standing instruction 'Do not reintroduce run /context demonstrations here.' Not added as a rules_evaluated row (not story-owned; belongs to the pedagogy judge, who should apply the same reasoning if it re-fires there).",
-    "check_pedagogy §61 (Verify mechanism before proposing surgery) -- N/A, not story-owned: this rule binds someone proposing a SKILL.md/framework/tool change; this file proposes no such surgery. Not added as a row."
+    "check_lectures §5 (task-flagged rule-drift target) -- re-fetched current wording via rule.js, re-derived independently rather than trusting the parked N/A: N/A confirmed, and confirmed at a deeper level than the prior instance -- read scripts/check-slide-size.js directly and found its own comment ('reference and supplementary pages sit outside it') plus its file-set builder walking only training modules + their includes, which never reaches this supplementary. Same verdict as before, now grounded in the enforcement script's own code rather than only in content-rules.md's surface-list prose. Written as a fresh row in this instance (not left to the merge) per the task's explicit override."
   ],
   "notes": [
-    "check_prompts.md and check_workshop.md are in {{compendium_paths}} (eval_classes includes storytelling) but this template's 'Specific judgments storytelling owns' list assigns story no rules from either compendium for this file. check_workshop: N/A wholesale -- this is a solo progressive reading with no group/room-scale beat. check_prompts: the one inline prompt block's craft (registry migration status, prompt-body wording) belongs to the prompts/writing judges, not storytelling; not scored here to avoid an unowned claim outside this class's lane.",
-    "Re-read the full file (not diff-scoped) per task instruction, including the maintainer and backing blocks as check_writing §3 prose (out of story's lane to score, but read to confirm no accept-note was contradicted by a story-owned rule). Four maintainer notes found and checked against accept_notes_found below -- none collide with a story-owned finding.",
-    "Sim-cache regenerated at curriculum/evals/sim-cache/ae101--supplementary--the-context-ceiling.persona.json: old content_sha 38e438ed... (generated 2026-08-19, before the Module-3 edit at commit 1c9215cd on 2026-08-20) did not match current body's cc169942...; wrote a fresh single-phase entry rather than carrying the stale quote of the deleted 'later in the training' line forward as evidence.",
-    "The prior instance's one open TODO ('later in the training' -- no calibration for the reader) was resolved by the body edit this run judges (now 'in Module 3', verified accurate). Zero TODOs remain."
+    "check_prompts.md and check_workshop.md are in {{compendium_paths}} (eval_classes includes storytelling) but this template's 'Specific judgments storytelling owns' list assigns story no rules from either compendium for this file. check_workshop: N/A wholesale -- this is a solo progressive reading with no group/room-scale beat (verified the body-view's group_beat_markers=true signal is a false positive from unrelated uses of the word 'team', not an actual room beat; see the check_pedagogy §27 evidence above). check_prompts: the one inline prompt block's craft belongs to the prompts/writing judges, not storytelling; not scored here.",
+    "Re-read the full file (not diff-scoped) per task instruction, including the maintainer and backing blocks as check_writing §3 prose (out of story's lane to score, but read to confirm no accept-note was contradicted by a story-owned rule). Accept-notes found and checked against story-owned rules below -- none collide.",
+    "Sim-cache re-stamped, not re-simulated from scratch: cached content_sha (cc169942...) no longer matched the whole-file sha (81bec075...) because the maintainer block's Quality-line stamp had been rewritten since the trace was generated. Verified byte-for-byte that the student-facing body (everything before <!-- maintainer -->) is unchanged since the last judge pin -- the diff since b55cd28b touches only the stamp line -- so every quoted line in the cached persona narrative was re-confirmed against the live file rather than assumed, and the sha/generated_at were refreshed (curriculum/evals/sim-cache/ae101--supplementary--the-context-ceiling.persona.json) so the next judge's cache check isn't chasing a stamp-only mismatch again.",
+    "Diff since pin b55cd28b (git diff b55cd28b..HEAD -- <file>) touches ONLY the maintainer block's Quality-line stamp text (writing/story/technical/pedagogy/slides SHAs bumped from 3902c345 to b55cd28b, and a '(verify-refuted)' suffix added to the judges line) -- zero change to student-facing body prose. This class's staleness this run is entirely rule-drift (check_lectures §5), confirmed via task instruction, not a body edit.",
+    "This story instance now writes only the 5 rules the current brief actually owed it fresh (strategy_tie_in 1/2/4, pedagogy 27, lectures 5 as a task-mandated override); the remaining 10 story-owned rows (strategy_tie_in 3/5/6/7, pedagogy 16, lectures 1/2/3/4/6) were correctly parked N/A by the prefill sidecar under the unchanged shape_hash and are restored by --merge rather than re-derived.",
+    "Observed a prefill-sidecar quirk while inspecting curriculum/evals/scripts/prefill-instance.js: its MECHANICAL dict (banned-words / ritual-ceremony grep PASSes) is not filtered by class, so the story-class sidecar also parked two check_writing.md rows -- a compendium outside story's declared scope (check_lectures/pedagogy/prompts/strategy_tie_in/workshop only). check_writing.md is not story's lane per the dispatch preamble ('Evaluate ONLY the compendiums your template puts in scope'), so those two rows were excluded from this instance rather than merged in; the coverage hole this leaves (if any) belongs to the check_writing class judge, who owns and already carries those two rules in its own instance. Flagged here as a tooling observation for the maintainer, not a finding against the file."
   ],
   "accept_notes_found": [
-    "'Folklore handles are quotes, and quotes do not get trimmed to a word budget.' -- undated but explicit standing direction that check_slides §9's ~5-word bold-handle cap is N/A on the two folklore quote-handles ('Caching saves you 90 percent.', 'Compaction is always lossy, so always hand off.'); not story's lane, noted for the record.",
-    "'Do not reintroduce run /context demonstrations here.' (Placement section) -- undated but explicit; load-bearing for the check_pedagogy §56 drift-check above.",
+    "'Folklore handles are quotes, and quotes do not get trimmed to a word budget.' -- undated but explicit standing direction that check_slides §9's ~5-word bold-handle cap is N/A on the two folklore quote-handles ('Caching saves you 90 percent.', 'Compaction is always lossy, so always hand off.'); not story's lane (check_slides.md isn't in story's compendium set), noted for the record.",
+    "'Do not reintroduce run /context demonstrations here.' (Placement section) -- undated but explicit; load-bearing for both the check_strategy_tie_in §4 front-run check above and confirming no re-teaching of M1's primitive.",
     "'Closing italic aside is deliberate -- do not strip as session-biography.' -- undated but explicit; protects the 'Now go clean your window' closer from being misread as a stray reflection-artifact or off-tone digression.",
     "'Visible Sources list is deliberate.' -- undated but explicit; not story's lane (check_research_claims/writing territory), noted for the record."
   ],
   "blocking_findings_count": 0,
-  "todos_count": 0
+  "todos_count": 0,
+  "shape_hash": "81e57214a612a2af"
 }

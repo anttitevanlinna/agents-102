@@ -1,35 +1,99 @@
 {
+  "body_sha": "3de8bd14122e9c200a42cf70ef8199f91419ad3badece8c9afcdfcb3667dfed3",
   "class": "storytelling",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/supplementary/how-the-best-do-ci-cd.md",
   "verdict": "PASS",
   "training": "ae101",
-  "module_mood_contract": "Practitioner-widening — student sees where M6 loop skills project to org-scale CI/CD; recognition and mild urgency, not anxiety.",
-  "trace_status": "generated_first_time",
+  "module_mood_contract": "Practitioner-widening — the reader sees where the M6 loop they now own projects to org-scale CI/CD, run by engineers further along the same discipline. Recognition and mild urgency, not anxiety. Six named moves, each with a Monday-morning action (trace, sim-cache).",
+  "trace_status": "cached",
   "rules_evaluated": [
     {
-      "compendium": "check_strategy_tie_in.md",
+      "compendium": "check_lectures.md",
       "rule_index": 1,
-      "rule_lead": "Mood contract named; every teaching beat holds floor.",
+      "rule_lead": "Meta-frame lectures = closers, not openers.",
       "verdict": "PASS",
-      "evidence": "All teaching phases at 8+/10 except Phase 6 (CTO Monday checklist) at 7/10. Phase 6 is a TEACHING beat (the seven-question diagnostic is pedagogy). 7 = facilitator-premium territory per judge template — not REVISE, but flagged. Phases 1-5 and 7 all 8+/10. Close at 8/10.",
-      "fix_hint": "Phase 6 would reach 8/10 if the seven-question frame acknowledged the IC-proxy use: 'these are the questions you can bring to your tech lead or answer for your own lane' — the audience declaration says staff engineers, but the body reads as pure CTO monologue in that section.",
+      "evidence": "Placement diagnostic: names a pattern the reader already lived (\"You finished M6 owning the loop at your desk... The same loop, run at more people, more PRs, more customers, looks slightly different\", L5), told AFTER the exercises it recognises, not before. Flag-conditional intro (L3) frames it as take-home reading once M6's loop feels routine. Recognition, not abstract claim.",
+      "fix_hint": null,
       "blocking": false
     },
     {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": 1,
-      "rule_lead": "Mood floor applies to TEACHING beats only — setup/launch beats exempt.",
+      "compendium": "check_lectures.md",
+      "rule_index": 2,
+      "rule_lead": "Minimal lecturing before contrast-mood exercises.",
+      "verdict": "N/A",
+      "evidence": "No exercise follows this piece — it is terminal take-home reading after the training's last module (M6). The pre-exercise-lecture dosage concern this rule polices has no exercise on the other side of it to protect.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 3,
+      "rule_lead": "No cross-module sequencing in lecture bodies.",
       "verdict": "PASS",
-      "evidence": "All seven phases are reading/comprehension beats; no setup or launch beats present. Mood floor correctly applies to all phases. Carve-out not needed.",
+      "evidence": "Body-region grep for `M[0-9]`/`Module [0-9]` (lines 1-105) hits only L3 (\"Module 6\") and L5 (\"M6\") inside the flag conditionals naming the module this piece extends FROM, not a bridge to a different module (\"M3 reads this\"-shaped). Fits the rule's own carve-out: \"arc lectures... whose SUBJECT is the arc keep module ranges\" — this piece's subject IS the M6 loop projected further, so naming its own anchor module is load-bearing, not a forward-reference.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 4,
+      "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
+      "verdict": "PASS",
+      "evidence": "13 `##` headers, each a claim or named thing (\"Treat CI as feedback into the loop, not a gate to pass\", L7; \"Eval latency is part of the loop\", L43), none an empty container (\"The move\"/\"The names\") or orphan mystery. No two headers repeat. \"Where this fits in your AE101 arc\" (L83) is the file's one orientation-register header, rationed to a single beat as the rule requires. \"Sources\" (L89) is a catalogue header naming its own subject, matching check_slides.md §15's explicit \"catalogue entries naming their subject\" non-violation. Truth clause: no dropped qualifiers or unsupported universals found in a header-by-header read; em-dash grep on body is 0 (view.greps.em_dash, CLEAN, planted-proven).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 5,
+      "rule_lead": "A slide's BODY is size-bounded, not just its header (§4's sibling).",
+      "verdict": "PASS",
+      "evidence": "Re-read at current wording (rule.js lectures 5) and re-run against the body with the rule's own named enforcement script: `node scripts/check-slide-size.js --file <this file>` → 1 oversized slide, `## Sources` (L89) at 12 bullets against the ≤6 cap (12 one-line citation bullets, L93-L104 — matches the maintainer block's own \"12 cites across 11 organisations\" count). All 12 other `##` slides pass both axes. Judged PASS on harm, not on the raw count: §5's stated purpose is glance-legibility of a slide a reader takes in AS ONE IDEA under time pressure; a Sources list is not a concept slide, it is a flat reference list meant to be scanned for a name, not glanced-and-understood — the same \"scanned rather than read\" distinction check_slides.md §9 already draws by name for reading-list/menu slides on the adjacent bold-budget rule. Splitting the list at a \"conceptual seam\" (the fix §5 prescribes) does not apply to a flat citation list with no internal concept boundary, and an artificial split (Sources 1-6 / Sources 7-12) would degrade the lookup rather than aid it. No maintainer accept-note exists for this slide (checked maintainer block, none found) — flagged as a TODO, not carded as a REVISE, per the harm-absent clause: report as a rule question, not a fix.",
+      "fix_hint": "Maintainer accept-note (\"Slide size accepted: ## Sources — flat citation list, scanned not glanced, mirrors check_slides.md §9's reading-list carve-out\") would close this permanently and stop the mechanical gate from re-flagging it on every future run; alternately extend §5's own text with an explicit bibliography/citation-list carve-out parallel to §9's.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 6,
+      "rule_lead": "A prompt inside a lecture is a trainer show-and-tell, never a room follow-along.",
+      "verdict": "N/A",
+      "evidence": "No `{{prompt:<key>}}` markers or inline `**Prompt**` blocks anywhere in the file (view.signals.has_prompt_blocks: false, has_code_fences: false, fence_ranges: []). Also structurally out of the rule's own scope — its \"Not covered\" clause names \"prompts on reference/supplementary pages, all of which the student runs themselves\" and this is a supplementary.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 16,
+      "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
+      "verdict": "PASS",
+      "evidence": "The six \"Try this Monday\" callouts (L17, L27, L41, L53, L67, L81) are the only student-directed action asks in the file and none is fenced. They are not the load-bearing machinery of a session exercise — this file has no exercise phases and no downstream artifact any later step consumes — so \"Location: in fence\" does not bind them. They match Boundary 2's own carve-out verbatim: \"Light homework / conversational-fold register: the body ask IS the design — a manufactured prompt there is over-prescription, mechanical where the register is conversational.\" Example, L17: \"Next CI failure you hit on agent-drafted code, ask Claude 'what rule in `./CLAUDE.local.md` would have caught this?' before you fix the diff.\"",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 27,
+      "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
+      "verdict": "PASS",
+      "evidence": "Grep across the full file for room/cohort-management cues (`discuss`, `share (this|with)`, `tell the room`, `pair up`, `compare (with|notes)`, `the room`, `your neighbor/neighbour`, `take N min/sec`) → 0 hits. Solo take-home reading throughout (\"Read once the loop at your own desk feels routine\", L3); every action ask is first-person-directed at the individual reader (\"Try this Monday\"), never at a cohort.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
-      "rule_index": 2,
-      "rule_lead": "Epistemic mood not punitive.",
+      "rule_index": 1,
+      "rule_lead": "Mood contract named.",
       "verdict": "PASS",
-      "evidence": "Entire piece is epistemic — 'these are the forces, here is the move.' No failure-attribution framing. Theatre gates line ('Theatre gates slow throughput without catching anything') is systemic critique, not shame directed at the reader.",
+      "evidence": "Sim trace (sim-cache/ae101--supplementary--how-the-best-do-ci-cd.persona.json, content_sha revalidated against current body — spot-checked phase text against raw file, unchanged since 2026-08-07 generation): all 13 teaching-shaped phases score 8/10, close scores 8/10, is_me_rating 8/10. Zero phases below the 8-floor. `## Sources` (phase 14) correctly carries mood_score: null as a mood-exempt reference beat per the mood-floor carve-out (a bibliography list is not a beat the student is meant to LEARN something from — it is a lookup).",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 2,
+      "rule_lead": "Epistemic mood ≠ punitive mood.",
+      "verdict": "PASS",
+      "evidence": "Trace mood contract: \"Recognition and mild urgency, not anxiety.\" No shame/blame framing found in a full read — the piece names practitioner moves and Monday actions, never \"you failed to\" or \"you should have.\" L39: \"The IC version of this... hasn't been published yet. That's a gap you can close on Monday\" — invitation, not indictment.",
       "fix_hint": null,
       "blocking": false
     },
@@ -38,91 +102,98 @@
       "rule_index": 3,
       "rule_lead": "Lead with discipline, not failure mode.",
       "verdict": "PASS",
-      "evidence": "Opens with 'systems-throughput question' (a discipline frame). Six forces each name a design discipline (blast-radius stratification, eval-of-evals management, environmental parity, attribution clarity). No failure-word openers.",
+      "evidence": "Title (L1) and all six move-headers name positive disciplines: \"Treat CI as feedback into the loop, not a gate to pass\" (L7), \"Fan out review; converge on the pattern\" (L19), \"Tier by blast radius\" (L29), \"Eval latency is part of the loop\" (L43), \"Skills... Promote them into the CI surface\" (L55), \"Get out fast. Learn from real customers safely\" (L69). No header opens on a failure word.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 4,
-      "rule_lead": "Strategy-fidelity check — spec alignment.",
+      "rule_lead": "Strategy-fidelity check — draft doesn't front-run downstream teaching moment.",
       "verdict": "PASS",
-      "evidence": "Strategy doc (item #5, Supplementary material planned) specifies: six forces named, human-review-as-design-review reframe, fast-forward-requires-fast-reverse pace frame, three anchor cases (Intercom / Ramp / Klaassen), CTO Monday checklist. All five present in the file. The specific anchor cases and force names match the strategy spec verbatim.",
+      "evidence": "Consolidated per template (front-run check + module-to-module arc + Big Idea fidelity + mood-doesn't-resolve-early). This piece sits after AE101's last module (M6) — there is no downstream in-training module to front-run. L83-85 (\"Where this fits in your AE101 arc\"): \"The loop at your desk is the one this training closed... This piece is the same loop, run by engineers who've been at it longer\" — explicitly builds ON completed teaching, names the training as closed, doesn't introduce a M6+1 concept early. Big Idea (per module_mood_contract: reader sees their own M6 loop project to org scale) is honoured throughout — every one of the six moves anchors back to a named M1-M6 primitive the reader already owns (rules files, skills, verifiers, memory).",
       "fix_hint": null,
-      "blocking": false
+      "blocking": true
     },
     {
-      "compendium": "check_pedagogy.md",
-      "rule_index": 27,
-      "rule_lead": "Body teaches the work; trainer manages the room.",
-      "verdict": "PASS",
-      "evidence": "No authored conversations, no pause-cue sentences, no 'discuss with...' or 'share with your neighbor' beats. Piece is pure reference prose — all seven sections are about the work (the CI/CD system, the forces, the moves). N/A for cohort-management authoring.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_pedagogy.md",
-      "rule_index": 16,
-      "rule_lead": "Forcing functions live in prompts, not body prose.",
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 5,
+      "rule_lead": "Strategic themes recur in Key Concepts.",
       "verdict": "N/A",
-      "evidence": "Supplementary reference document — no fenced prompt blocks. Students read and reference; they do not copy-paste prompts from this file. Rule does not fire.",
+      "evidence": "No `## Key Concepts` section — module-only section; this is a supplementary, not a module file.",
       "fix_hint": null,
       "blocking": false
     },
     {
-      "compendium": "check_lectures.md",
-      "rule_index": 1,
-      "rule_lead": "Lecture placement — meta-frame lectures are closers.",
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 6,
+      "rule_lead": "Key Concepts shape — theme breadcrumbs, not standalone section.",
       "verdict": "N/A",
-      "evidence": "Supplementary reference doc, not a lecture. Placement rules for lectures do not apply.",
+      "evidence": "No `## Key Concepts` section — module-only section; this is a supplementary, not a module file.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 7,
+      "rule_lead": "What You'll Learn shape — capability register, not syllabus.",
+      "verdict": "N/A",
+      "evidence": "No `## What You'll Learn` section — module-only section; this is a supplementary, not a module file.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": null,
+      "judge_owned": true,
+      "rule_lead": "Whole-compendium scope call — check_prompts.md.",
+      "verdict": "N/A",
+      "evidence": "check_prompts.md is in the story class's compendium list (COMPENDIA.story) but the story judge template's \"Specific judgments storytelling owns\" section names no check_prompts rule as story-owned; writing/technical/behavior are its primary judges. Also structurally moot here: no fenced prompt blocks exist in this file (has_prompt_blocks: false, fence_ranges: []) for any of its 48 rules to fire against. No rows filed for individual rule indices to avoid an unowned claim into behavior/technical/writing's territory.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": null,
+      "judge_owned": true,
+      "rule_lead": "Whole-compendium scope call — check_workshop.md.",
+      "verdict": "N/A",
+      "evidence": "check_workshop.md is in the story class's compendium list (COMPENDIA.story) but is primarily owned by the pedagogy class (COMPENDIA.pedagogy also carries it). Fires only when a beat's output belongs to a group; this file is solo take-home reading with zero group-beat markers in body content (view.signals.group_beat_markers reflects file-wide detection, not a body hit — grep for room/pair/discuss language above returned 0). No rows filed for individual rule indices.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "story.md",
-      "rule_index": null, "judge_owned": true,
+      "rule_index": null,
+      "judge_owned": true,
       "rule_lead": "Teaching moment lands across persona variation.",
       "verdict": "PASS",
-      "evidence": "Three core teaching moments — 'design review not line review' (Phase 3, mood 9/10), 'fast forward requires fast reverse investment flip' (Phase 4), 'six-force taxonomy as vocabulary' (Phase 2) — all land in the persona trace. A fast-operator persona would skim anchor cases but still absorb the three frames. An opinionated-senior persona would push back on the single-source Intercom numbers (maintainer block already flags this). Teaching moments are in body prose and section framing, not in prompts, so they're structurally reachable by all persona types.",
+      "evidence": "Trace confusion_flags are limited to numeric density (e.g. phase 3: \"Four numbers... land in two consecutive bullets — the reader absorbs the shape... rather than holding the individual figures\") and never block the move's core claim; ambiguous_instructions: [] and under_scaffolded_phases: [] across all 14 phases. Each of the six moves states its reframe in the opening sentence before any figure arrives (e.g. L7 states the reframe, L15 supplies the proof after), so a fast-operator persona skimming past the practitioner evidence still gets the move. is_me_rating 8/10 at close.",
       "fix_hint": null,
       "blocking": true
-    },
-    {
-      "compendium": "story.md",
-      "rule_index": null, "judge_owned": true,
-      "rule_lead": "Mood doesn't resolve early.",
-      "verdict": "N/A",
-      "evidence": "Orphan supplementary — not linked from a module yet. No cross-module mood arc to protect. The piece's own close ('Where this fits in the AE101 arc') points forward correctly to org-scale from M6; it does not resolve the M6 mood prematurely since it is designed to sit after M6.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "story.md",
-      "rule_index": null, "judge_owned": true,
-      "rule_lead": "Big Idea fidelity to AE101 strategy.",
-      "verdict": "PASS",
-      "evidence": "Strategy doc Big Idea for this piece: 'evals-as-infrastructure at PR/CI gate scale — where the M6 skills go next.' File opens with the throughput-vs-review-capacity gap, runs through six forces, closes with arc placement. Fidelity is tight: the file is the strategy item rendered as prose, not a reinterpretation.",
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "story.md",
-      "rule_index": null, "judge_owned": true,
-      "rule_lead": "Module-to-module arc — handoff to next module open.",
-      "verdict": "N/A",
-      "evidence": "Supplementary orphan — not yet linked from a module. Arc handoff rule does not apply. When linked from M6, the existing arc close ('Once you own the loop at your own desk, the next gate up is the one where your agent-drafted PR meets the rest of the org') is the correct bridge.",
-      "fix_hint": null,
-      "blocking": false
     }
   ],
   "mood_summary": {
-    "phase_scores": [8, 8, 9, 8, 8, 7, 8],
+    "phase_scores": [
+      8,
+      8,
+      8,
+      8,
+      8,
+      8,
+      8,
+      8,
+      8,
+      8,
+      8,
+      8,
+      8
+    ],
     "close_score": 8,
-    "any_below_8": true,
-    "stealing_the_mood": [
-      "Phase 6 (CTO Monday checklist) — 7/10. Teaching beat; mood floor applies. The seven-question frame is unmistakably CTO-monologue and the IC/staff-engineer persona feels slightly distanced. Would reach 8/10 with one sentence acknowledging the IC-proxy use of the checklist. Not blocking (7 is facilitator-premium, not below-7 REVISE threshold)."
-    ]
+    "any_below_8": false,
+    "stealing_the_mood": []
   },
   "blocking_findings_count": 0,
-  "todos_count": 1
+  "todos_count": 1,
+  "shape_hash": "e21a0aad9b40f01c"
 }

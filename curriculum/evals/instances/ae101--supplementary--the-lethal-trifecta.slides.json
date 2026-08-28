@@ -3,6 +3,8 @@
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/supplementary/the-lethal-trifecta.md",
   "verdict": "PASS",
   "training": "ae101",
+  "body_sha": "c510744f8de60455a73fe99e2da013a9118960b8adc2c29b50e9e4814826afbf",
+  "shape_hash": "776191893f0953c7",
   "chunk_map": [
     {"index": 0, "heading": "The lethal trifecta (H1)", "lines": "1-2"},
     {"index": 1, "heading": "Three capabilities that must not meet", "lines": "3-7"},
@@ -17,7 +19,7 @@
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "Sequential read holds: chunk1 L5 names Willison's frame + the three legs inline before any bullet reuses them; 'leg'/'legs' (L6-7) reads off the just-listed three items. Closest calls, both resolve: chunk3 L17 'This asks who attacks the agent building it' -- 'This' = the trifecta frame, named at H1 and L5 ('Simon Willison's frame'); chunk3 L18 'The two audits compose' -- named one clause later in the SAME bullet ('An access-surface map and a STRIDE pass'), not a cross-chunk forward reference. chunk4 L23-26 'the three legs'/'a leg'/'the structure' all resolve to L5-7's list, arc-earned within this file. No pronoun/demonstrative anywhere lacks an in-file antecedent.",
       "fix_hint": null,
       "blocking": true
     },
@@ -27,7 +29,7 @@
       "rule_lead": "Cross-file and positional callbacks.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "Mechanical: grep for module/lecture/prework/earlier/previous/this-training pointer language over body_numbered returns zero hits. No sentence in any chunk locates a claim in another file by position; STRIDE and Willison are named by term/person, not positioned ('the opening lecture said'). N/A in effect but scored PASS since the rule is genuinely checkable and clean.",
       "fix_hint": null,
       "blocking": true
     },
@@ -37,6 +39,7 @@
       "rule_lead": "Every backward reference points at a beat that exists.",
       "verdict": "N/A",
       "chunks_flagged": [],
+      "na_reason": "no 'you did/saw/caught' backward-reference phrasing anywhere in body (grep confirms zero hits) -- this is a reference page with no exercise-beat callbacks",
       "evidence": null,
       "fix_hint": null,
       "blocking": true
@@ -47,6 +50,7 @@
       "rule_lead": "Live-demo beats survive a text read.",
       "verdict": "N/A",
       "chunks_flagged": [],
+      "na_reason": "no guess/predict/demo instruction anywhere in body (grep confirms zero hits) -- static reference page, no live-demo beat",
       "evidence": null,
       "fix_hint": null,
       "blocking": true
@@ -57,7 +61,7 @@
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "Every chunk carries 3-4 full bullets with its own self-carrying claim (chunk1: three-leg frame + structural nature + ordinary-wiring examples; chunk2: instruction/data inseparability + prompt injection; chunk3: agent-vs-system target shift + accident-vs-adversary split; chunk4: audit-and-cut procedure + Willison's constraint quote + filter critique + kicker). None is a bare wait-state or single context-dependent bullet.",
       "fix_hint": null,
       "blocking": false
     },
@@ -67,7 +71,7 @@
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "Checked each header against its chunk's content: L3 'Three capabilities that must not meet' -> chunk lists exactly three (L5) and argues they're structural, not risky (L6); L9 'An LLM can't reliably tell instructions from data' -> chunk's first bullet (L11) restates this near-verbatim and elaborates; L15 'The attacker targets the agent, not the system' -> chunk contrasts classic system-threat-modeling with agent-targeting (L17); L21 'Removing any one leg breaks the trifecta' -> chunk is entirely about auditing and cutting a leg (L23-26). No header is contradicted by its own chunk.",
       "fix_hint": null,
       "blocking": false
     },
@@ -77,7 +81,7 @@
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "Sub-item checks: 'Not X. Not Y. Z.' -- only one candidate, L6 'Not risky. Structural.', which is a single negation (one 'Not', not two), not the banned double-negation-then-affirmation shape -- stays inside. Anaphora/epistrophe triples -- grepped bullet openers across all four chunks (Simon/Not/The/An/So/The/An/Classic/The/An/Audit/Cutting/After), no three consecutive bullets share an opening word or clause shape. Self-grading superlatives -- grep for most/best/one-of-the returns zero. Number + retraction -- grep for digits in body content returns zero (no numbers appear at all, so nothing to retract). Abstraction-noun stacks -- scanned for coined nominalizations (none found; 'context window', 'attack surface' are standard security-engineering terms, not invented jargon). Verb triplets with an empty leg -- none present. No sub-item fires.",
       "fix_hint": null,
       "blocking": false
     },
@@ -87,7 +91,7 @@
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "Grepped surface|firing|compendium|forcing function|beat|mood|connections over body_numbered: single hit at L18, 'An access-surface map' -- ordinary security-engineering compound noun (attack-surface analysis), not the repo's writing-surface dialect sense; explicitly the carve-out's 'surface as ordinary engineering...noun' exemption. No other maintainer/repo vocabulary anywhere in body.",
       "fix_hint": null,
       "blocking": true
     },
@@ -97,7 +101,7 @@
       "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "Only one bold span in the whole body: **prompt injection** at L13, a two-word handle inside the <=5-word cap, one per slide (chunk2), zero bold elsewhere across all four chunks. Matches the maintainer block's dated Emphasis pass note (2026-07-09) verbatim: 'one handle kept bold: prompt injection ... all other bullet leads de-bolded.' Well inside the <=1-per-slide budget.",
       "fix_hint": null,
       "blocking": false
     },
@@ -107,9 +111,9 @@
       "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "Ran: grep -n \"supplementary\\|buildDeckModel\" site/layouts/slides.js and read buildDeckModel (lines 238-337). Confirmed the phase-less-prose branch (line 319-328: 'else { var kind = proseEyebrowOf(moduleEl); ... slides.push(makeDivider(kind, ...)); buildSingleDoc(moduleEl, {dark:false}).slides.forEach(...) }') routes supplementary sections with no .phase--* children through buildSingleDoc and into the composed deck under an S-kind divider -- this is the fix for the 2026-07-09 incident the rule documents, and it is live in the current renderer. Standalone open of this file also renders (buildDeckModel's !phases.length branch, line 247-250). The file is present in both deck contexts.",
       "fix_hint": null,
-      "blocking": false
+      "blocking": true
     },
     {
       "compendium": "check_slides.md",
@@ -117,7 +121,59 @@
       "rule_lead": "Numbering — position is computed, content ordinals are linted.",
       "verdict": "N/A",
       "chunks_flagged": [],
+      "na_reason": "no hand-numbered or Phase N:/Step N headers in this file",
       "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 12,
+      "rule_lead": "Page geometry dies at the cut; reading order survives.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Mechanical: `node scripts/check-slide-deixis.js --file curriculum/trainings/agentic-engineering-101/supplementary/the-lethal-trifecta.md` -> 'OK -- 1 files, no page-geometry pointers across the slide cut.' No 'above/below/further down/at the top of this page' phrasing anywhere in body.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 13,
+      "rule_lead": "In-deck links work now; whether they EARN their place is open.",
+      "verdict": "N/A",
+      "chunks_flagged": [],
+      "na_reason": "zero markdown links in body (grep for [text](...) returns nothing; signals.has_urls is false) -- nothing to review",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 14,
+      "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Mechanical: `node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/supplementary/the-lethal-trifecta.md` -> '4 slides, limits: 210 words / 6 bullets, oversized: 0'. Largest chunk (chunk1 and chunk4) carries 3-4 bullets each, well under the 6-bullet cap.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 15,
+      "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "RULE-DRIFT RECHECK (staleness reason for this class; re-fetched current wording via `node curriculum/evals/scripts/rule.js slides 15`). This is a supplementary reference page, not an exercise or lecture, but its own maintainer block frames it as law-teaching content ('Laws carried: lethal-trifecta -- instructions-vs-data inseparability'), which is exactly the case the current wording generalises to: 'The claim requirement binds law and consolidation slides -- where the header IS the teaching.' All four `##` headers are full declarative claims, not labels: L3 'Three capabilities that must not meet' asserts the trifecta's own prohibition (a law statement, not a bare catalogue noun like 'Ralph' or 'The numbers'); L9 'An LLM can't reliably tell instructions from data'; L15 'The attacker targets the agent, not the system'; L21 'Removing any one leg breaks the trifecta' -- all four state a claim the chunk then argues for. Satisfies the stricter (Lecture/law) bar even though the file's own type (supplementary) isn't named in the split, so the category ambiguity is moot: no reading of the current rule fails this body.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 16,
+      "rule_lead": "A bullet earns its slot or dies — three classes that read as rigour and carry nothing.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Checked all three sub-classes against every bullet. (a) doctrine restatement: none found -- each bullet introduces a distinct move (three-leg frame -> structural claim -> ordinary-wiring examples -> instruction/data inseparability -> prompt injection naming -> agent-vs-system target shift -> two-audits-compose -> accident-vs-adversary split -> audit procedure -> concrete mitigation examples -> Willison's constraint quote -> filter-inadequacy argument); no law is re-announced after already doing its work. (b) self-referential design commentary: zero hits -- this is a security-content reference page with no meta-pedagogy framing. (c) aphorism kicker: closest call is L28 'Three legs. Cut one.' -- a 4-word terminal line that compresses L23's 'Then cut one' and 'one goes'. It stays inside: it is plain closing prose, not a bullet (the rule's own frame is 'per bullet'); it doesn't restate the header verbatim (header states the law, kicker states the action); and the maintainer block records it as a deliberate addition ('Proper-length pass... closing kicker added'). Rule 16 postdates that edit (2026-08-25 vs 2026-08-12), so this isn't a stale accept-note dodging a live concern -- it's a genuinely close call on new-since-last-audit language, noted rather than filed as a finding.",
       "fix_hint": null,
       "blocking": false
     }

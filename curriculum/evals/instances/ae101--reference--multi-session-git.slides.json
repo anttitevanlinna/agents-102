@@ -1,8 +1,10 @@
 {
   "class": "slides",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/reference/multi-session-git.md",
-  "verdict": "PASS",
+  "verdict": "PASS_WITH_TODOS",
   "training": "ae101",
+  "body_sha": "40b154ba6d17d90f841020e4bc935981662709a843d6ae4b3dab5128eb3299ac",
+  "shape_hash": "8820c127e8f3ecfe",
   "chunk_map": [
     { "index": 0, "heading": "H1/lede — Multi-session and Git: survival guide", "lines": "1-6" },
     { "index": 1, "heading": "Why multi-session, why Git", "lines": "7-14" },
@@ -20,7 +22,7 @@
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "Every pronoun/demonstrative resolves inside its own chunk or against a term the same file already named earlier (chunk 2 line 23 \"Worktrees are the middle path\" reuses \"Worktrees\", named chunk 1 line 13; chunk 4 line 56 \"the bug-fix session\"/\"the feature session\" reuse the worktree names from chunk 3's numbered list, lines 39-41). No forward reference, no cross-chunk vague pronoun found.",
       "fix_hint": null,
       "blocking": true
     },
@@ -30,7 +32,7 @@
       "rule_lead": "Cross-file and positional callbacks.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "No chunk points at another file by position. Line 3 \"Optional homework between M1 and M2\" states scheduling placement, not a positional callback into another file's content.",
       "fix_hint": null,
       "blocking": true
     },
@@ -41,6 +43,7 @@
       "verdict": "N/A",
       "chunks_flagged": [],
       "evidence": null,
+      "na_reason": "file contains no \"the X you did/saw\" backward references to a module exercise/lecture beat",
       "fix_hint": null,
       "blocking": true
     },
@@ -51,6 +54,7 @@
       "verdict": "N/A",
       "chunks_flagged": [],
       "evidence": null,
+      "na_reason": "no guess/predict-then-reveal beat in this reference page",
       "fix_hint": null,
       "blocking": true
     },
@@ -60,7 +64,7 @@
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "Every chunk (1-7) carries multiple paragraphs or a numbered/bulleted list with self-carrying claims; none is a bare wait-state or single context-dependent bullet.",
       "fix_hint": null,
       "blocking": false
     },
@@ -80,7 +84,7 @@
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "Closest candidates: chunk 3 line 44 \"Each session has its own scrollback, its own working directory, its own branch\" and chunk 2 line 29 \"Two folders, two branches, zero checkout churn\" are anaphoric triples, but each leg names a genuinely distinct concrete noun (scrollback / working directory / branch; folders / branches / churn) rather than an empty repeat, so they stay inside the \"third leg carries new concrete content\" exception. No \"Not X. Not Y. Z.\" construction, no self-grading superlative, no number-then-retraction, no abstraction-noun stack found in the body.",
       "fix_hint": null,
       "blocking": false
     },
@@ -90,7 +94,7 @@
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "grep for surface(noun)/firing/compendium/forcing function/beat/mood/Connections found 0 hits in body. \"the loop\" (chunk 6 line 86) is arc-earned training vocabulary (named in check_slides.md §1's own NOT-violations example list), not maintainer-internal dialect, and this reference page sits after M1 where the term is earned.",
       "fix_hint": null,
       "blocking": true
     },
@@ -100,7 +104,7 @@
       "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
       "verdict": "REVISE",
       "chunks_flagged": [6],
-      "evidence": "chunk 6 \"When NOT to run multi-session\": line 86: \"3. **You are new to the loop.** If you are still learning what \\\"good\\\" looks like in one session, adding a second session adds variables, not learning.\" — bolds a full subject+verb lead sentence (a clause, not a sub-span handle), unlike its two list siblings (\"**Ordering dependencies.**\", \"**Greedy parallelism on a small task.**\") which bold noun-phrase handles.",
+      "evidence": "chunk 6 \"When NOT to run multi-session\": line 86: \"3. **You are new to the loop.** If you are still learning what \\\"good\\\" looks like in one session, adding a second session adds variables, not learning.\" — this file is a reference/lookup page so the per-slide bold-count budget is waived for its list-shaped sections (chunk 2's \"**Branches**/**Clones**/**Worktrees**\" and chunk 6's own siblings \"**Ordering dependencies.**\"/\"**Greedy parallelism on a small task.**\" are fine under that waiver), but the handle cap still binds. Item 3 bolds a full subject+verb clause (\"You are new to the loop\") rather than a noun-phrase label, unlike its two list siblings.",
       "fix_hint": "Recast to a noun-phrase handle matching the other two items, e.g. \"**New to the loop.**\"",
       "blocking": false
     },
@@ -110,7 +114,7 @@
       "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "File lives under curriculum/trainings/agentic-engineering-101/reference/ and is a flat reference page reached via a training include link (per maintainer block: \"Referenced from AE101 M1 homework\"), not a phase-less orphan section — it is the whole file, so the composed-deck presence question doesn't strand any subsection the way a prework/supplementary sub-block can.",
       "fix_hint": null,
       "blocking": false
     },
@@ -121,8 +125,60 @@
       "verdict": "N/A",
       "chunks_flagged": [],
       "evidence": null,
+      "na_reason": "no \"Phase N:\"/\"N.\" step headers; the file's numbered lists (chunk 3's flow, chunk 6's three situations) are ordinary bullets, not header-level ordinals, and `node scripts/check-slide-numbering.js --file <this file>` returned \"OK — Phase/Step numbering consistent\"",
       "fix_hint": null,
       "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 12,
+      "rule_lead": "Page geometry dies at the cut; reading order survives.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "`node scripts/check-slide-deixis.js --file curriculum/trainings/agentic-engineering-101/reference/multi-session-git.md` → \"OK — 1 files, no page-geometry pointers across the slide cut.\" Own read confirms: no \"below/above/further down/at the top of this page\" phrasing anywhere in the body.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 13,
+      "rule_lead": "In-deck links work now; whether they EARN their place is open.",
+      "verdict": "N/A",
+      "chunks_flagged": [],
+      "evidence": null,
+      "na_reason": "`grep -n '\\[.*\\](' <file>` finds links only in the maintainer block (source-stamp URLs); body has zero in-page or cross-doc links (signals.has_urls: false)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 14,
+      "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "`node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/reference/multi-session-git.md` → \"files: 1  slides: 7  limits: 210 words / 6 bullets  oversized: 0 — every slide is within limits\".",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 15,
+      "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "DRIFT RECHECK (rule moved, body unchanged since pin 1abb84c6 — diff is maintainer-block Quality-line only). Rule 15's binding split is exercise-imperative vs. lecture-claim; this file is a flat quick-reference page, neither. All 7 headings (\"Why multi-session, why Git\", \"Worktrees vs. branches vs. clones\", \"Opening N Claude Code sessions on the same codebase\", \"Stashing and switching between sessions\", \"Conflict recovery when two sessions edited the same file\", \"When NOT to run multi-session\", \"Close\") are topic/subject labels, matching the rule's own NOT-violations example \"catalogue entries naming their subject\" rather than attempting the claim-shape the rule tests. No candidate declarative-vs-label mismatch found.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 16,
+      "rule_lead": "A bullet earns its slot or dies — three classes that read as rigour and carry nothing.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Closest candidate: chunk 7 line 90 \"Two sessions is a milestone. Five is a habit. Ten is something you grow into.\" reads as a closer but is not an aphorism restating the header (\"Close\" is not a claim) or a preceding \"**The point:**\" line — it carries its own new numeric-progression content. No doctrine restatement or self-referential design-commentary bullet found anywhere in the body (the file never talks about the curriculum's own pedagogy).",
+      "fix_hint": null,
+      "blocking": true
     }
   ],
   "blocking_findings_count": 0,

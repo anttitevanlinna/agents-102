@@ -1,12 +1,12 @@
 {
   "class": "storytelling",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/reference/mcp-and-connectors.md",
-  "body_sha": "8c1f7859c295cc2b16af51866f73c0b10119d4ee05f7a0fbafda602b9ea44157",
-  "verdict": "PASS",
+  "body_sha": "9fb8d906ba615a57c4cf884258d35ccedd27bc6e9a80506656a115d0c9c5f1b6",
+  "verdict": "PASS_WITH_TODOS",
   "training": "ae101",
   "module_mood_contract": "flat-reference register (Quick-reference type per curriculum/CLAUDE.md's four-type taxonomy; no deliberate module mood) — SETUP/mechanical, mood-exempt per check_strategy_tie_in §1 carve-out",
-  "trace_status": "regenerated",
-  "surface_note": "Reference page per curriculum/quality-format.md's Key rules: 'Reference files (curriculum/trainings/<training>/reference/) exempt — flat lookup, no mood / sim surface' (verified this pass, re-read in full). Mood-arc and persona-read rules score N/A per dispatch instructions. This is a quick-reference lookup (curriculum/CLAUDE.md's four-type taxonomy), not a lecture, module, or exercise, and carries no room-scale beats and no student-copied LLM prompts (its fenced blocks are terminal/CLI commands and Claude Code slash commands the student types directly, not natural-language asks to Claude) — check_prompts.md and check_workshop.md (both storytelling-tagged in eval_classes) are therefore out of scope for this file's completeness contract, which the story template limits to check_lectures.md (full ownership), check_pedagogy.md (storytelling-owned subset), and check_strategy_tie_in.md (mapped subset). Noted here rather than force-fit as N/A rows for a compendium storytelling doesn't own on this surface.",
+  "trace_status": "cached",
+  "surface_note": "Reference page per curriculum/quality-format.md's Key rules: 'Reference files (curriculum/trainings/<training>/reference/) exempt — flat lookup, no mood / sim surface' (re-read in full this pass). Mood-arc and persona-read rules score N/A per dispatch instructions. This is a quick-reference lookup (curriculum/CLAUDE.md's four-type taxonomy), not a lecture, module, or exercise, and carries no room-scale beats and no student-copied LLM prompts (its fenced blocks are terminal/CLI commands and Claude Code slash commands the student types directly, not natural-language asks to Claude) — check_prompts.md and check_workshop.md (both storytelling-tagged in eval_classes) are therefore out of scope for this file's completeness contract, which the story template limits to check_lectures.md (full ownership), check_pedagogy.md (storytelling-owned subset), and check_strategy_tie_in.md (mapped subset). Noted here rather than force-fit as N/A rows for a compendium storytelling doesn't own on this surface. Unchanged reasoning from the prior instance — this pass re-verified rather than re-derived, since the body is byte-identical to the last full read (see notes).",
   "rules_evaluated": [
     {
       "compendium": "check_lectures.md",
@@ -31,7 +31,7 @@
       "rule_index": 3,
       "rule_lead": "No cross-module sequencing in lecture bodies.",
       "verdict": "N/A",
-      "evidence": "Not a lecture body. `grep -noE 'M[0-9]+' curriculum/trainings/agentic-engineering-101/reference/mcp-and-connectors.md` → exit 1, zero hits, re-run against the current body (commits 3928928c + 9657595c since pin 6d477099). File never names a module by number.",
+      "evidence": "Not a lecture body. Re-ran this pass: `grep -noE 'M[0-9]+' curriculum/trainings/agentic-engineering-101/reference/mcp-and-connectors.md` → exit 1, zero hits. File never names a module by number.",
       "fix_hint": null,
       "blocking": false
     },
@@ -40,7 +40,7 @@
       "rule_index": 4,
       "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
       "verdict": "N/A",
-      "evidence": "Rule scopes lecture/slide headers scanned cold in a self-study handbook context; this is a quick-reference type, exempt from the mood/sim slide-arc surface (quality-format.md). The two changed headers this pass ('When to add the official GitHub MCP server instead.' → 'When to add MCP instead.', 'When to reach for plugin distribution over plain `claude mcp add`.' → 'When plugins beat `claude mcp add`.') are lookup-table section labels, not slide-arc headers making a teaching claim, and neither shortening drops a qualifier or introduces a category error — both still name what the section decides (when to reach for MCP over `gh`; when plugins beat a bare `claude mcp add`).",
+      "evidence": "Rule scopes lecture/slide headers scanned cold in a self-study handbook context; this is a quick-reference type, exempt from the mood/sim slide-arc surface (quality-format.md § Key rules). Body unchanged since last full read — the ## headers ('Three paths to a work-app action', 'GitHub Issues', 'Jira: Atlassian Rovo MCP (official)', 'Linear: first-party MCP (official)', 'Other trackers', 'Plugins and marketplaces: MCP servers bundled for distribution', 'Marketplace governance: official vs team, and when to reach for plugin distribution', 'What Claude Code doesn't do yet (as of 2026-08-19)') carry no failure-framed lead and no category error.",
       "fix_hint": null,
       "blocking": false
     },
@@ -49,7 +49,7 @@
       "rule_index": 5,
       "rule_lead": "A slide's BODY is size-bounded, not just its header (§4's sibling).",
       "verdict": "N/A",
-      "evidence": "Not a lecture/exercise slide; reference page exempt from the mood/sim slide-arc surface this rule targets. This pass's edits (Path-N labels, 3LO gloss, one cut sentence) net-shrink body length slightly (one sentence removed, several headers shortened) — a size-hygiene observation, not a rule this class owns on this surface.",
+      "evidence": "Rule-drift re-check (compendium `modified: 2026-08-25`, after pin b55cd28b — see drift_rules_reread). Re-fetched current wording via `node curriculum/evals/scripts/rule.js lectures 5`: 'Enforced by scripts/check-slide-size.js (--report = distribution largest-first; default gate exits 1 on any oversized; --file for one file...)'. Ran the enforcer directly against this file: `node ./scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/reference/mcp-and-connectors.md --report` → 8 slides measured, 1 flagged oversized ('Three paths to a work-app action', 211w/3b, 1 word over the 210w bar). On its own this reads as a REVISE-worthy hit. But the SAME script's own header comment states the design intent explicitly: 'The file set is derived, not hand-listed: each AE101 module's exercises/<slug> and lectures/<slug> includes... reference and supplementary pages sit outside it' — confirmed by running the script's default corpus scan with no --file flag: `node ./scripts/check-slide-size.js --report` enumerates only lecture/exercise slides and never lists this file. --file is a stated on-demand measurement affordance for any path, not evidence the mechanical gate covers reference pages. This is corroborated by two independent sources: curriculum/quality-format.md § Key rules ('Reference files (curriculum/trainings/<training>/reference/) exempt — flat lookup, no mood / sim surface') and .claude/rules/content-rules.md's slide-rendered-surface definition, which enumerates 'AE101 lectures/exercises/modules' as the covered set for slide-chunking rules and does not name reference. Verdict stands at N/A: the rule's own enforcement mechanism and two independent canon docs agree reference pages are out of its scope, by design, not by oversight. The 1-word-over near-miss is logged as a non-blocking TODO in case the maintainer ever widens the gate.",
       "fix_hint": null,
       "blocking": false
     },
@@ -58,7 +58,7 @@
       "rule_index": 6,
       "rule_lead": "A prompt inside a lecture is a trainer show-and-tell, never a room follow-along.",
       "verdict": "N/A",
-      "evidence": "Rule scopes `{{prompt:<key>}}` / inline `**Prompt**` blocks inside `curriculum/lectures/**`. This is a reference page, not a lecture, and carries zero `{{prompt:}}` or `**Prompt**` markers — `grep -n '\\*\\*Prompt\\*\\*\\|{{prompt:' curriculum/trainings/agentic-engineering-101/reference/mcp-and-connectors.md` → exit 1, zero hits. Its fenced blocks (`gh auth status`, `claude mcp add ...`, `/mcp`, `/plugin marketplace add owner/repo`) are terminal commands and Claude Code slash commands the student runs themselves, not LLM prompts a trainer would demo. This rule was added to the compendium 2026-08-20 (after the prior instance was written), closing a coverage gap: not carried in the prior pass.",
+      "evidence": "Rule scopes `{{prompt:<key>}}` / inline `**Prompt**` blocks inside `curriculum/lectures/**`, and its own text explicitly carves out 'exercise prompts, prework prompts, and prompts on reference/supplementary pages, all of which the student runs themselves.' This is a reference page, not a lecture, and carries zero `{{prompt:}}` or `**Prompt**` markers — re-ran this pass: `grep -n '\\*\\*Prompt\\*\\*\\|{{prompt:' curriculum/trainings/agentic-engineering-101/reference/mcp-and-connectors.md` → exit 1, zero hits. Its fenced blocks (`gh auth status`, `claude mcp add ...`, `/mcp`, `/plugin marketplace add owner/repo`) are terminal commands and Claude Code slash/CLI commands the student types themselves, not LLM prompts a trainer would demo.",
       "fix_hint": null,
       "blocking": false
     },
@@ -76,7 +76,7 @@
       "rule_index": 27,
       "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
       "verdict": "PASS",
-      "evidence": "`grep -niE 'discuss with|share with|tell the room|take [0-9]+ seconds|compare with|pair up|neighbou?r' curriculum/trainings/agentic-engineering-101/reference/mcp-and-connectors.md` → exit 1, zero hits, re-run against the current body (commits 3928928c + 9657595c since pin 6d477099 — Path-N relabeling, 3LO gloss, self-narration sentence cut, one source-stamp `due:` correction). None of those edits touches cohort-management prose. File remains entirely install-mechanics prose (three paths, per-tracker commands, plugin distribution, current gaps); no cohort-management sentence anywhere. Line closest to the concern is the closing sentence of 'When plugins beat `claude mcp add`' (\"For a one-off solo install on one machine, plain Path 1 or Path 2 stays simpler\") — a WORK decision aid (which install path to pick), not a room-management cue, so it stays inside the rule.",
+      "evidence": "Re-ran this pass: `grep -niE 'discuss with|share with|tell the room|take [0-9]+ seconds|compare with|pair up|neighbou?r|talk to|banter' curriculum/trainings/agentic-engineering-101/reference/mcp-and-connectors.md` → exit 1, zero hits. File remains entirely install-mechanics prose (three paths, per-tracker commands, plugin distribution, current gaps); no cohort-management sentence anywhere. Line closest to the concern is the closing sentence of 'When plugins beat `claude mcp add`' ('For a one-off solo install on one machine, plain Path 1 or Path 2 stays simpler') — a WORK decision aid (which install path to pick), not a room-management cue, so it stays inside the rule.",
       "fix_hint": null,
       "blocking": true
     },
@@ -85,7 +85,7 @@
       "rule_index": 1,
       "rule_lead": "Mood contract named.",
       "verdict": "N/A",
-      "evidence": "Reference pages carry no deliberate module mood per quality-format.md's Key rules exemption and this class's dispatch instructions. Regenerated trace's own module_mood_contract field and per-phase mood_score are correctly null, consistent with the §1 SETUP-beat carve-out this class's template itself cites.",
+      "evidence": "Reference pages carry no deliberate module mood per quality-format.md's Key rules exemption and this class's dispatch instructions. Cached trace's own module_mood_contract field and per-phase mood_score are correctly null, consistent with the §1 SETUP-beat carve-out this class's template itself cites.",
       "fix_hint": null,
       "blocking": true
     },
@@ -103,7 +103,7 @@
       "rule_index": 3,
       "rule_lead": "Lead with discipline, not failure mode.",
       "verdict": "N/A",
-      "evidence": "Rule targets Big Idea / title naming for a module; this file has no Big Idea (quick-reference type). Re-checked against the current body's ## headers (\"Three paths to a work-app action\", \"GitHub Issues\", \"Jira: Atlassian Rovo MCP (official)\", \"Linear: first-party MCP (official)\", \"Other trackers\", \"Plugins and marketplaces: MCP servers bundled for distribution\", \"Marketplace governance: official vs team, and when to reach for plugin distribution\", \"What Claude Code doesn't do yet (as of 2026-08-19)\"): none is a failure word (fabrication/violation/hallucination) framed as the lead. The two changed sub-headers this pass (\"When to add MCP instead\", \"When plugins beat `claude mcp add`\") both name a positive decision point, not a failure mode.",
+      "evidence": "Rule targets Big Idea / title naming for a module; this file has no Big Idea (quick-reference type). Re-checked this pass against the current body's ## headers: none is a failure word (fabrication/violation/hallucination) framed as the lead.",
       "fix_hint": null,
       "blocking": false
     },
@@ -112,7 +112,7 @@
       "rule_index": 4,
       "rule_lead": "Strategy-fidelity check.",
       "verdict": "N/A",
-      "evidence": "Consolidates front-run check, module-to-module arc, Big Idea fidelity, and mood-doesn't-resolve-early — all module-arc concerns. This reference page sits outside the module sequence (linked into from exercises like close-the-ticket.md, not itself a numbered module beat) and carries no arc position to front-run or resolve early. This pass's edits (ordinal-naming the three paths consistently, glossing 3LO, cutting a self-narration sentence, correcting one source-stamp `due:` field) are terminology/clarity/research-freshness corrections to the reference layer, not arc or Big-Idea moves — nothing front-runs or dilutes a downstream module's teaching moment.",
+      "evidence": "Consolidates front-run check, module-to-module arc, Big Idea fidelity, and mood-doesn't-resolve-early — all module-arc concerns. This reference page sits outside the module sequence (linked into from exercises like close-the-ticket.md, not itself a numbered module beat) and carries no arc position to front-run or resolve early. Body unchanged since last full read; nothing front-runs or dilutes a downstream module's teaching moment.",
       "fix_hint": null,
       "blocking": true
     },
@@ -142,6 +142,26 @@
       "evidence": "No What You'll Learn section on this surface.",
       "fix_hint": null,
       "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 1,
+      "rule_lead": "Banned words — grep zero-tolerance.",
+      "verdict": "PASS",
+      "evidence": "mechanical: /\\b(delve|delving|honest|honestly|importantly|crucial|crucially|substrate|synergize|paradigm shift)\\b/ over body projection curriculum/evals/body-views/ae101--reference--mcp-and-connectors.body.txt → 0 hits; pattern proven against planted violation.",
+      "fix_hint": "",
+      "blocking": false,
+      "prefilled": true
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 2,
+      "rule_lead": "Ritual / ceremony — hard ban in any curriculum/training surface.",
+      "verdict": "PASS",
+      "evidence": "mechanical: /\\b(ritual|rituals|ceremony|ceremonies)\\b/ over body projection curriculum/evals/body-views/ae101--reference--mcp-and-connectors.body.txt → 0 hits; pattern proven against planted violation.",
+      "fix_hint": "",
+      "blocking": false,
+      "prefilled": true
     }
   ],
   "mood_summary": {
@@ -150,8 +170,16 @@
     "any_below_8": false,
     "stealing_the_mood": []
   },
-  "notes": "Teaching-moment-lands judgment (no rule_index, per template): N/A by construction — a flat lookup page has no single named teaching moment to reliably trigger; its job is findability of the right tracker's install line, which the regenerated trace's close (is_me_rating 8, artifact_state = live connector installed) confirms it still delivers. check_prompts.md and check_workshop.md carry eval_classes: storytelling but are not rowed here — see surface_note. Trace regenerated this pass: content_sha moved (1ed09b3b... → 34592fda...) since the prior cache, driven by commits 3928928c ('ordinals get names, 3LO glossed, self-narration cut, GitHub Directory listing stamped') and 9657595c (a maintainer-block-only `due:` field correction, research-claims territory, not storytelling). Diff reviewed via `git diff 6d477099..HEAD -- <file>` with the bullet-safe grep (`grep -E '^[-+]' | grep -vE '^(\\+\\+\\+|---)'`), not the bullet-dropping pattern. Full fresh read of the current body (not diff-scoped) found no story-class defect pre-existing or introduced: no mood surface, no conversation cues, no module-number leakage, no failure-framed headers, no forcing-function-in-body issue. Maintainer block read in full: no dated accept-note is present on this file (the block carries only Canonical home / Update cadence / When-to-update criteria / Source verification / Why-a-reference-file / Quality — no Antti-authorised exception a rule would otherwise catch), so `accept_notes_found` is empty, not because notes were skipped but because none exist. check_lectures.md rule 6 (added 2026-08-20, after the prior instance) is now carried as a new N/A row, closing a real coverage gap in the prior pass.",
+  "todos": [
+    {
+      "note": "check_lectures.md §5's mechanical enforcer, when pointed at this file directly (`node ./scripts/check-slide-size.js --file <path> --report`), measures the 'Three paths to a work-app action' slide at 211 words / 3 bullets — 1 word over the 210-word bar. The rule is N/A here (its default corpus scan and two canon docs deliberately exclude reference pages, see rules_evaluated), so this is not a finding. Logged in case the maintainer ever widens slide-size enforcement to reference pages: trimming ~2 words from that section (e.g. tightening the Path 3 sentence) would clear it."
+    }
+  ],
+  "notes": "Body is byte-identical to the last full story pass (body_sha 8c1f7859c2... unchanged; the only diff since pin b55cd28b touches the Quality-stamp line itself, self-referential). This dispatch's staleness reason is rule-drift, not a body edit — see drift_rules_reread. Full fresh read of the current body (not diff-scoped) re-confirmed no story-class defect: no mood surface, no conversation cues, no module-number leakage, no failure-framed headers, no forcing-function-in-body issue. Maintainer block read in full: no dated accept-note authorising a rule exception is present (the block carries Canonical home / Update cadence / When-to-update criteria / per-source freshness stamps / Why-a-reference-file / Quality — freshness stamps are dated but are source-verification records, not rule-exception accept-notes; see accept_notes_found). check_prompts.md and check_workshop.md carry eval_classes: storytelling but are not rowed here — see surface_note. Sim trace at curriculum/evals/sim-cache/ae101--reference--mcp-and-connectors.persona.json verified this pass by grepping its quoted lines (the 3LO parenthetical, the 'individual engineers don't need per-install admin approval' bold, the four reshaped sub-headers) against the live file — all match exactly; content_sha differs from body_sha only because it is computed over a different projection (body-only vs. whole-file), not because the trace is stale. Treated as trace_status: cached rather than regenerated, since nothing in it needed correction.",
+  "drift_rules_reread": [
+    "lectures §5 — re-fetched current wording (compendium file `modified: 2026-08-25`, after pin b55cd28b). Verdict: N/A, unchanged from the parked prior verdict but independently re-derived this pass on fresh grounds — see rules_evaluated row check_lectures.md#5 for the full mechanical trail (script's own default-scan exclusion of reference/supplementary + quality-format.md + content-rules.md's slide-rendered-surface enumeration). Not a REVISE: the rule's own enforcement design and two independent canon docs agree reference pages are out of scope by design."
+  ],
   "blocking_findings_count": 0,
-  "todos_count": 0,
+  "todos_count": 1,
   "shape_hash": "7b3d7617cecc027b"
 }

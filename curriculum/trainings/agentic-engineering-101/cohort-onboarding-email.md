@@ -24,8 +24,8 @@ Looking forward to it.
 
 **Not carried anywhere yet:** the license-activation and network/proxy checks lived only in this email's old body and now live nowhere. Decide whether prework should carry them before the next cohort, or whether the sponsor conversation covers licensing and the network check is redundant once the student opens a session.
 
-**Quality:** compendium-audited 2026-08-24 (writing@1abb84c6 behavior@1c765f2) — body rewritten 2026-08-12, re-audit owed before ship.
-- judges @1abb84c6: writing PASS (drift-recheck), story grandfathered, technical grandfathered, behavior PASS, pedagogy grandfathered, strategy grandfathered, slides N/A (not slide-rendered — email template)
+**Quality:** compendium-audited 2026-08-28 (writing@e11bbeb4 behavior@1c765f2) — body rewritten 2026-08-12, re-audit owed before ship.
+- judges @e11bbeb4: writing PASS, story grandfathered, technical grandfathered, behavior PASS, pedagogy grandfathered, strategy grandfathered, slides N/A (not slide-rendered — email template)
 - cross_module: N/A — an onboarding email, not a module in the sequence; no adjacent-pair seam to walk
 
 **Delivery architecture canonical home:** training-architecture.md (§Platform, §Material distribution, §Prework). Prework runtime, step breakdown, and skill-install mechanics live in prework.md's maintainer block. Don't restate either here.

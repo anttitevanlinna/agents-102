@@ -1,11 +1,11 @@
 {
   "class": "storytelling",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/supplementary/skill-stacking.md",
-  "body_sha": "ae556fa9f94d832caa3d1dcd7c75998889de1370392b4bc08357cedf9e5d2af4",
+  "body_sha": "da482b4963dc258c971e1e40c8b2b3a3390ad5d92968d5b330c3d06a48ad6d3c",
   "verdict": "PASS",
   "training": "ae101",
   "module_mood_contract": "practitioner fluency (M6, spot-gaps-build-the-loop) — this supplementary is the composing-the-workflow lecture's pointed-to worked example, read post-M6",
-  "trace_status": "regenerated",
+  "trace_status": "cached",
   "rules_evaluated": [
     {
       "compendium": "check_lectures.md",
@@ -30,7 +30,7 @@
       "rule_index": 3,
       "rule_lead": "No cross-module sequencing in lecture bodies.",
       "verdict": "PASS",
-      "evidence": "grep -n 'M[0-9]' skill-stacking.md (re-run against current HEAD, post-diff) → single hit, line 179, inside the '<!-- maintainer -->' block (the 'Runtime fork collapsed 2026-08-19' note). Zero hits in student-facing body above the fence (line 174). The 2026-08-23 diff only touched three body sentences (line ~40, ~102, ~131-133, all count-phrasing tweaks — 'Four mechanisms' -> 'The mechanisms', etc.) plus the maintainer/backing blocks below the fence; none introduced module numbering to the body.",
+      "evidence": "grep -n 'M[0-9]' skill-stacking.md re-run against current HEAD (body_sha ae556fa9…) → single hit, line 179, inside the '<!-- maintainer -->' block ('Runtime fork collapsed 2026-08-19' note, out of scope per §3's own 'above the maintainer fence' clause). Zero hits in student-facing body (lines 1-173). git diff b55cd28b..HEAD confirms zero body-line changes since the pin — the only diff is the maintainer Quality-stamp redate and a one-sentence trim inside the same block, so this PASS holds against the body as read.",
       "fix_hint": null,
       "blocking": false
     },
@@ -39,17 +39,17 @@
       "rule_index": 4,
       "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
       "verdict": "N/A",
-      "evidence": "Rule targets slide-rendered files (curriculum/CLAUDE.md scope for check_slides.md: 'AE101 lectures/exercises/modules'). Supplementaries are explicitly 'Not inlined' — not chunked into the Slides deck — so the cold-scan-under-projection mechanism this rule protects doesn't apply here.",
+      "evidence": "Same documented-scope basis as rule 5's evidence below (content-rules.md routes 'Slide-rendered files' to check_slides.md scoped 'AE101 lectures/exercises/modules'; scripts/check-slide-size.js's default file-set is derived only from module lecture/exercise includes, excluding supplementary). For the record, headers do pass squint+truth on inspection regardless: 'The three-layer model', 'Skill catalog by phase', 'Design principles', 'Map your own kit' each name a concept the body under them supports, no empty containers, no unsupported universals.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_lectures.md",
       "rule_index": 5,
-      "rule_lead": "A slide's BODY is size-bounded, not just its header.",
+      "rule_lead": "A slide's BODY is size-bounded, not just its header (§4's sibling).",
       "verdict": "N/A",
-      "evidence": "Same non-slide-rendered basis as rule 4 — this file is not chunked at `##` into projected slides, so the glance-legibility word/bullet ceiling doesn't bind it.",
-      "fix_hint": null,
+      "evidence": "RULE-DRIFT RE-CHECK (pin b55cd28b), re-read at current wording via rule.js — flagging a real scope contradiction rather than a clean pass. (1) DOCUMENTED SCOPE says this file is exempt: content-rules.md routes 'Slide-rendered files' to check_slides.md, explicitly scoped '(any file the Slides layout chunks at `##` — AE101 lectures/exercises/modules; every slides re-chunk pass)' — supplementary not listed; scripts/check-slide-size.js's own header comment confirms its default (gate-mode) file-set is 'derived... each AE101 module's exercises/<slug> and lectures/<slug> includes... deduped', which never reaches curriculum/trainings/.../supplementary/; and check_prompts.md §26's supplementary card-exemption (2026-08-15) states as its premise 'a supplementary... never reaches the composed Slides deck (check_slides.md §10)'. All three independently exclude this file. (2) BUT the renderer does NOT: site/layouts/slides.js buildDeckModel walks every `:scope > section.module` including phase-less prose sections, with an explicit comment 'A prose section with no phases — prework, supplementary, reference — is slide-ified in place under a kind-labelled divider' (git commit bfac52d1, 2026-07-14, predates every pin in play) — so check_prompts §26's stated premise is factually stale. The derive-body-view.js tooling agrees with the renderer, not the routing table: its own signals report `slide_count: 8` for this exact file. (3) Ran the mechanical enforcer directly against this file (`node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/supplementary/skill-stacking.md`) to settle what the numbers would say if scope were extended: exit 1, 3 of 8 `##` sections oversized — '## The three-layer model' (line 15): 321w/13 bullets vs the 210w/6-bullet ceiling; '## Skill catalog by phase' (line 67): 19 bullets; '## Design principles' (line 115): 7 bullets. Given the documented routing convention (which this file's own maintainer Quality line already reflects — 'slides PASS' at b55cd28b came from the check_slides.md judge, whose surface explicitly excludes this file type) is what currently governs ship decisions, N/A is the correct row here; the contradiction and the real numbers are filed as a todo for the maintainer rather than a REVISE against the body, since restructuring a deliberately dense 'read for the patterns, not for copying' reference page to fit a slide ceiling that may not even be meant to reach it is exactly the kind of fix that could degrade the artefact before the scope question is settled (dispatch-preamble.md: report as a rule question, don't file REVISE, when the harm's presence is genuinely contested).",
+      "fix_hint": "Maintainer decision needed, not a body edit: either (a) state explicitly in check_lectures.md §5 / check_slides.md's scope that supplementary+reference pages are exempt from the slide-size ceiling (matching the gate script's existing file-derivation and check_prompts §26's intent), and correct §26's stale 'never reaches the composed deck' premise to something like 'is exempt from the card-gate regardless of deck presence' — or (b) if supplementary pages are meant to be held to the same ceiling because the renderer does compose them, extend check-slide-size.js's default file-set to include supplementary/reference and then split this file's 3 oversized sections at a conceptual seam.",
       "blocking": false
     },
     {
@@ -57,7 +57,7 @@
       "rule_index": 6,
       "rule_lead": "A prompt inside a lecture is a trainer show-and-tell, never a room follow-along.",
       "verdict": "N/A",
-      "evidence": "Rule 6 is dated 2026-08-20, after this file's last story pass (c7e8f1e4, 2026-08-19) — the reason this pin was flagged rule-drift. Doubly N/A: (1) its own text scopes to 'every {{prompt:<key>}} / inline **Prompt** block in curriculum/lectures/**' and explicitly excludes 'prompts on reference/supplementary pages, all of which the student runs themselves' — this file lives at curriculum/trainings/agentic-engineering-101/supplementary/, not curriculum/lectures/. (2) grep -c '{{prompt:' + grep -c '\\*\\*Prompt\\*\\*' skill-stacking.md both return 0 — the only fence in the file is the illustrative SKILL.md-contract code block at lines 21-25 (not a student-copied prompt), matching the maintainer's own Quality note: 'behavior N/A (no student-copied prompt blocks; the only fence is a SKILL.md frontmatter illustration)'.",
+      "evidence": "Doubly N/A, re-verified against current wording: (1) its own text scopes to 'every {{prompt:<key>}} / inline **Prompt** block in curriculum/lectures/**' and explicitly excludes 'prompts on reference/supplementary pages, all of which the student runs themselves' — this file lives at curriculum/trainings/agentic-engineering-101/supplementary/, not curriculum/lectures/. (2) grep -c '{{prompt:' and grep -c '\\*\\*Prompt\\*\\*' both return 0 on the current body — the only fence in the file is the illustrative SKILL.md-contract code block at lines 21-25, matching the maintainer's own Quality note ('behavior N/A — no student-copied prompt blocks').",
       "fix_hint": null,
       "blocking": false
     },
@@ -66,7 +66,7 @@
       "rule_index": 16,
       "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
       "verdict": "N/A",
-      "evidence": "File has no fenced student-copy prompts and is prework/reading register, not a session exercise with a forcing function to place. 'Map your own kit' (lines 163-172) is a self-application reflection prompt, not a forcing function the file claims to enact mechanically.",
+      "evidence": "File has no fenced student-copy prompts and is prework/reading register, not a session exercise with a forcing function to place. 'Map your own kit' (lines 163-172) is a self-application reflection prompt in prose, not a forcing function the file claims to enact mechanically.",
       "fix_hint": null,
       "blocking": false
     },
@@ -75,7 +75,7 @@
       "rule_index": 27,
       "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
       "verdict": "PASS",
-      "evidence": "No 'discuss with', 'share with your neighbor', 'take N seconds and compare' or trainer-cue language anywhere in the body (re-checked against current HEAD). Closest candidate: 'Map your own kit' (line 163) addresses the reader directly with reflective questions ('Is it a route... a leaf... an orchestrator... a hand-off?') aimed at the reader's own artifact, not at a pair/room interaction — stays inside the carve-out for solo reflective prompts, not a cohort-management cue.",
+      "evidence": "grep -ni 'discuss with\\|share with your neighbor\\|take.*seconds and compare\\|talk to your neighbor' skill-stacking.md → 0 hits on current body. Closest candidate: 'Map your own kit' (line 163) addresses the reader directly with reflective questions about their own artifact ('Is it a route... a leaf... an orchestrator... a hand-off?') — solo self-application, not a pair/room interaction cue. Stays inside the reflective-prompt shape, not a cohort-management instruction.",
       "fix_hint": null,
       "blocking": false
     },
@@ -84,7 +84,7 @@
       "rule_index": 1,
       "rule_lead": "Mood contract named.",
       "verdict": "PASS",
-      "evidence": "Mood contract = practitioner fluency (M6 worked example). Close beat ('Map your own kit', lines 163-172) is the TEACHING beat (self-application, not setup) — mood-floor 8+/10 applies. Regenerated trace (content_sha 3c71d17e..., matches current file) scores close.mood_score=8: the 2026-08-23 diff only touched three restated-count sentences upstream of the close and the maintainer/backing blocks below the fence; the close itself is byte-identical to the 2026-08-19 pass, and the fix that lifted it to 8 (removing the stale M6-branch premise) still holds.",
+      "evidence": "Mood contract = practitioner fluency (M6 worked example). Close beat ('Map your own kit', lines 163-172) is the TEACHING beat (self-application, not setup) — mood-floor 8+/10 applies. Cached trace (curriculum/evals/sim-cache/ae101--supplementary--skill-stacking.persona.json, generated 2026-08-23) scores phase 1 mood_score=8, close mood_score=8. Re-verified the trace is still current: git diff b55cd28b..HEAD on the target file shows zero body-line changes (only the maintainer Quality-stamp and one sentence in the same block moved), so nothing the trace scored has since changed.",
       "fix_hint": null,
       "blocking": true
     },
@@ -93,7 +93,7 @@
       "rule_index": 2,
       "rule_lead": "Epistemic mood ≠ punitive mood.",
       "verdict": "PASS",
-      "evidence": "No student-inadequacy framing anywhere in body. Piece is analytical/descriptive about Dino's kit throughout ('Read for the patterns, not for copying', line 7); self-application close is curious ('ask', 'the answer is often'), never shaming about what the reader hasn't built.",
+      "evidence": "No student-inadequacy framing anywhere in current body. Piece is analytical/descriptive about Dino's kit throughout ('Read for the patterns, not for copying', line 7); self-application close is curious ('ask', 'the answer is often'), never shaming about what the reader hasn't built.",
       "fix_hint": null,
       "blocking": false
     },
@@ -102,7 +102,7 @@
       "rule_index": 3,
       "rule_lead": "Lead with discipline, not failure mode.",
       "verdict": "PASS",
-      "evidence": "Section headers name disciplines/structures, not failure modes: 'The three-layer model', 'Composition mechanisms', 'Design principles', 'Map your own kit'. No failure-word lead anywhere in the visible body. The 2026-08-23 wording edits (count phrasing only) don't touch any header.",
+      "evidence": "Title 'Dino's skill stacking system' and every `##` header ('The three-layer model', 'Composition mechanisms', 'Skill catalog by phase', 'Design principles', 'Map your own kit') name the positive discipline being taught, no failure-word framing anywhere in the file.",
       "fix_hint": null,
       "blocking": false
     },
@@ -111,9 +111,27 @@
       "rule_index": 4,
       "rule_lead": "Strategy-fidelity check.",
       "verdict": "PASS",
-      "evidence": "Re-verified today against the current spot-gaps-build-the-loop.md: line 89 of that exercise ('you build the handoff prompt from them') confirms M6's close still produces a handoff prompt, not an in-module second skill — the maintainer note's factual claim (lines 179) still holds. The prior draft's front-run risk ('You shipped a second skill in M6') stays fixed; nothing in the 2026-08-23 diff reopens it.",
+      "evidence": "Consolidates front-run check, module-to-module arc, Big Idea fidelity, and mood-doesn't-resolve-early for this file. The maintainer block's own 2026-08-19 note documents the fix that made the close true for every reader (M6-done or not) rather than front-running or presupposing a specific M6 outcome; body content and that fix are both unchanged since (git diff b55cd28b..HEAD: maintainer-block-only). No downstream teaching moment is pre-empted — this is a post-M6 pointed-to reading, not sequenced ahead of any module's teaching beat. Cached trace's close mood_note confirms the taxonomy 'sticks on first pass' for both M6-complete and M6-incomplete readers.",
       "fix_hint": null,
       "blocking": true
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": null,
+      "judge_owned": true,
+      "verdict": "N/A",
+      "evidence": "check_prompts.md's 48 rules are not story-owned per the template's completeness contract (only check_lectures is primary-owned; check_pedagogy/check_strategy_tie_in are narrowed to named judgments; check_prompts has no such carve-out, so its primary owner is the prompt/behavior class). Collapsed to one row rather than 48 individual N/A rows because filing each would be reaching into a sibling class's rules — but the file-level applicability is trivially checkable and worth recording: 0 fenced {{prompt:}} or **Prompt** blocks anywhere in the file (confirmed above under check_lectures §6), so no prompt-design rule has a fence to bind against here regardless of owner.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": null,
+      "judge_owned": true,
+      "verdict": "N/A",
+      "evidence": "check_workshop does not apply: no beat's output belongs to the group — this is a solo reading with a solo self-application close, no group beat, no room-scale adjudication, no attributed contribution. Note: the body-view's own `signals.group_beat_markers` reports true for this file, which I checked rather than trusted per dispatch-preamble.md ('UNPROVEN decides nothing — check it yourself'): grep -ni 'group|room|pair|workshop|peer|attribut|retrospective|adjudicat|everyone|cohort|share|discuss|trainer' skill-stacking.md returns zero hits on any workshop-relevant sense — the only matches are 'team' (Dino's team CLAUDE.md / team's component library / shared credentials, lines 33/55/79/80/121), unrelated to a room-scale beat. Treating the signal as a false positive on this file.",
+      "fix_hint": null,
+      "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
@@ -121,8 +139,10 @@
       "rule_lead": "Strategic themes recur in Key Concepts.",
       "verdict": "N/A",
       "evidence": "Governs module Key Concepts section. skill-stacking.md is a supplementary with no Key Concepts heading.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "ae556fa9f94d832caa3d1dcd7c75998889de1370392b4bc08357cedf9e5d2af4",
+      "carried_shape": "c4e97cd8f53c9097"
     },
     {
       "compendium": "check_strategy_tie_in.md",
@@ -130,8 +150,10 @@
       "rule_lead": "Key Concepts shape — theme breadcrumbs, not standalone section.",
       "verdict": "N/A",
       "evidence": "Same basis as rule 5 — no Key Concepts section on this surface type.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "ae556fa9f94d832caa3d1dcd7c75998889de1370392b4bc08357cedf9e5d2af4",
+      "carried_shape": "c4e97cd8f53c9097"
     },
     {
       "compendium": "check_strategy_tie_in.md",
@@ -139,17 +161,42 @@
       "rule_lead": "What You'll Learn shape — capability register, not syllabus.",
       "verdict": "N/A",
       "evidence": "Governs module 'What You'll Learn' section. skill-stacking.md is a supplementary with no such section.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "ae556fa9f94d832caa3d1dcd7c75998889de1370392b4bc08357cedf9e5d2af4",
+      "carried_shape": "c4e97cd8f53c9097"
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 1,
+      "rule_lead": "Banned words — grep zero-tolerance.",
+      "verdict": "PASS",
+      "evidence": "mechanical: /\\b(delve|delving|honest|honestly|importantly|crucial|crucially|substrate|synergize|paradigm shift)\\b/ over body projection curriculum/evals/body-views/ae101--supplementary--skill-stacking.body.txt → 0 hits; pattern proven against planted violation.",
+      "fix_hint": "",
+      "blocking": false,
+      "prefilled": true
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 2,
+      "rule_lead": "Ritual / ceremony — hard ban in any curriculum/training surface.",
+      "verdict": "PASS",
+      "evidence": "mechanical: /\\b(ritual|rituals|ceremony|ceremonies)\\b/ over body projection curriculum/evals/body-views/ae101--supplementary--skill-stacking.body.txt → 0 hits; pattern proven against planted violation.",
+      "fix_hint": "",
+      "blocking": false,
+      "prefilled": true
     }
   ],
   "mood_summary": {
-    "phase_scores": [8],
+    "phase_scores": [
+      8
+    ],
     "close_score": 8,
     "any_below_8": false,
     "stealing_the_mood": []
   },
   "blocking_findings_count": 0,
-  "todos_count": 0,
-  "notes": "Staleness reason = rule-drift, pin c7e8f1e4. Re-read all five named rules at current wording via rule.js. check_lectures §6 IS story-owned (story is primary owner of check_lectures, full coverage required) and is added as a new rules_evaluated row above (N/A) — it postdates the c7e8f1e4 pass (dated 2026-08-20), which is the reason this pin was flagged rule-drift; the c7e8f1e4-pinned instance only covered check_lectures 1-5. check_pedagogy §44/§52/§56/§61 are NOT story-owned (story's template lists only §16 and §27 under 'Specific judgments storytelling owns'; the pedagogy class judge is primary owner of the rest) — per dispatch-preamble.md, reaching into a sibling class's numbered rules is an unowned claim, not extra coverage, so these are verified here but deliberately NOT emitted as rules_evaluated rows. Verification for the record: §44 N/A (no '## Plug Points' section; no student-pasted prompts to walk prompt-to-prompt; sanity-checked the one navigable-path claim present — ls curriculum/trainings/agentic-engineering-101/supplementary/skill-stacking/ confirms 01-meta-model.svg, 02-ship-anatomy.svg, 03-workflows.svg all exist, no broken link). §52 N/A (grep -c '\\*\\*Session\\*\\*' skill-stacking.md -> 0; no session-opening/forking beat). §56 N/A by my read (no exercise/prompt/pre-flight step in this file, so no callout-vs-forcing-function fix-shape decision is on the table, including under the 2026-08-23 silent-slow-miss amendment) — flagging a real divergence: the pedagogy class's own instance (ae101--supplementary--skill-stacking.pedagogy.json, still pinned to the stale body_sha 81cee6d4..., i.e. not yet re-run against current HEAD) scores this rule PASS, reading the maintainer's 2026-08-19 frontmatter-correction note as the body-callout-style fix the rule prefers. Both readings are defensible (N/A: nothing IS an audit-fix-shape decision here; PASS: the one correction present took the callout shape). Leaving this for the pedagogy judge's own re-run rather than overwriting its verdict from here. §61 N/A (no SKILL.md/framework/tool-change proposal in this artifact; it documents an existing kit, framed explicitly as 'read for the patterns, not for copying'). Own-diff read (c7e8f1e4..HEAD): three body sentences dropped restated counts ('Four mechanisms' -> 'The mechanisms', 'Six workflow archetypes. Five funnel...' -> 'The workflow archetypes: all but one funnel...', 'Three companion diagrams'/'all three' -> 'Companion diagrams'/'all of them') — each count is still recoverable from the adjacent numbered list, table, or image blocks, so no comprehension or mood cost; plus a maintainer Quality-line addition and a backing Sources-line elaboration, both below the fence. None of these touch a storytelling-owned rule. Sim trace regenerated (content_sha mismatch: cached a454b0c1... vs current 3c71d17e...) at curriculum/evals/sim-cache/ae101--supplementary--skill-stacking.persona.json; scores unchanged (8/8) since the close beat and the teaching-moment mechanism list are untouched by the diff. No student-facing body edits made. Did not re-verify the M3-skill-ownership half of the maintainer note's claim (not touched by this diff, not flagged by any of the five re-read rules) — flagging as unverified-but-out-of-scope rather than asserting it."
+  "todos_count": 1,
+  "notes": "Staleness reason = rule-drift, pin b55cd28b. Re-derived check_lectures §5 fresh at current wording per the dispatch task (overriding the parked/carried N/A from the prior c7e8f1e4-pinned pass, which is superseded by this instance). Own diff read (b55cd28b..HEAD): the ONLY change to this file since the pin is inside the maintainer block — the Quality-stamp redate (2026-08-19@c7e8f1e4 -> 2026-08-23@b55cd28b, strategy unchanged at c7e8f1e4) and the removal of one sentence from the skill-frontmatter note ('All three were wrong here until 2026-08-19 and were corrected...'). Zero body-line changes, confirmed with `grep -E '^[-+]' | grep -vE '^(\\+\\+\\+|---)'` against the full diff, not a filtered pattern. Sim trace (curriculum/evals/sim-cache/ae101--supplementary--skill-stacking.persona.json, generated 2026-08-23) reused as CACHED, not regenerated — content_sha in the trace doesn't match either whole-file or maintainer-fence-trimmed sha256 I computed by hand (likely a different normalization the trace generator applies), but the substantive check that matters — body unchanged since the trace was written — is independently confirmed via the b55cd28b..HEAD diff above, so the cached mood scores (8/8 throughout) stand. TODO filed against check_lectures §5 evidence above: a genuine, evidenced scope contradiction between (a) content-rules.md's routing table + check-slide-size.js's default file-derivation + check_prompts §26's stated premise, all of which exempt supplementary pages from the slide-size ceiling, and (b) the actual renderer (site/layouts/slides.js, commit bfac52d1) and derive-body-view.js's own `slide_count: 8` signal, both of which DO compose this file into the Slides deck. Ran scripts/check-slide-size.js --file directly against this file to make the stakes concrete: 3 of 8 sections would be oversized if scope were extended (321w/13 bullets at line 15, 19 bullets at line 67, 7 bullets at line 115). Filed as a rule question for the maintainer, not a REVISE, per dispatch-preamble.md's guidance to not force a fix when the harm's applicability is genuinely contested and the obvious fix (splitting a deliberately dense reference page) could degrade the artefact before the scope question is settled. check_pedagogy §44/§52/§56/§61 verified but not emitted as rows (not story-owned): §44 N/A (no '## Plug Points' section); §52 N/A (0 '**Session**' hits); §56 N/A (no exercise/prompt/pre-flight step in this file); §61 N/A (no SKILL.md/tool-change proposal — documents an existing kit). check_prompts.md and check_workshop.md collapsed to one judge_owned row each (see rules_evaluated) rather than left silent, matching the template's own worked example for whole-compendium N/A calls.",
+  "shape_hash": "c4e97cd8f53c9097"
 }

@@ -3,17 +3,81 @@
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/supplementary/how-the-best-do-ci-cd.md",
   "verdict": "PASS",
   "training": "ae101",
+  "body_sha": "3de8bd14122e9c200a42cf70ef8199f91419ad3badece8c9afcdfcb3667dfed3",
+  "shape_hash": "e21a0aad9b40f01c",
   "chunk_map": [
-    {"index": 0, "heading": "H1 + lede", "lines": "1-6"},
-    {"index": 1, "heading": "1. Treat CI as feedback into the loop, not a gate to pass", "lines": "7-16"},
-    {"index": 2, "heading": "2. Fan out review; converge on the pattern", "lines": "17-26"},
-    {"index": 3, "heading": "3. Tier by blast radius. Make the Tier-1 case on your own PRs", "lines": "27-38"},
-    {"index": 4, "heading": "4. Eval latency is part of the loop", "lines": "39-48"},
-    {"index": 5, "heading": "5. Skills don't just live in your kit. Promote them into the CI surface", "lines": "49-60"},
-    {"index": 6, "heading": "6. Get out fast. Learn from real customers safely", "lines": "61-72"},
-    {"index": 7, "heading": "Where this fits in your AE101 arc", "lines": "73-78"},
-    {"index": 8, "heading": "Sources", "lines": "79-95"}
+    {
+      "index": 0,
+      "heading": "H1 + lede",
+      "lines": "1-6"
+    },
+    {
+      "index": 1,
+      "heading": "1. Treat CI as feedback into the loop, not a gate to pass",
+      "lines": "7-10"
+    },
+    {
+      "index": 2,
+      "heading": "Two proofs the loop compounds",
+      "lines": "11-18"
+    },
+    {
+      "index": 3,
+      "heading": "2. Fan out review; converge on the pattern",
+      "lines": "19-28"
+    },
+    {
+      "index": 4,
+      "heading": "3. Tier by blast radius. Make the Tier-1 case on your own PRs",
+      "lines": "29-34"
+    },
+    {
+      "index": 5,
+      "heading": "Stripe bets on the sandbox, not the slice",
+      "lines": "35-42"
+    },
+    {
+      "index": 6,
+      "heading": "4. Eval latency is part of the loop",
+      "lines": "43-48"
+    },
+    {
+      "index": 7,
+      "heading": "Cherny pairs a fast check with a slow one",
+      "lines": "49-54"
+    },
+    {
+      "index": 8,
+      "heading": "5. Skills don't just live in your kit. Promote them into the CI surface",
+      "lines": "55-60"
+    },
+    {
+      "index": 9,
+      "heading": "The skill catalogue scales: plan time to company-wide",
+      "lines": "61-68"
+    },
+    {
+      "index": 10,
+      "heading": "6. Get out fast. Learn from real customers safely",
+      "lines": "69-74"
+    },
+    {
+      "index": 11,
+      "heading": "Agents need the outer loop's signal too",
+      "lines": "75-82"
+    },
+    {
+      "index": 12,
+      "heading": "Where this fits in your AE101 arc",
+      "lines": "83-88"
+    },
+    {
+      "index": 13,
+      "heading": "Sources",
+      "lines": "89-105"
+    }
   ],
+  "chunk_map_note": "Prior instance's chunk_map (9 entries) merged each move's sub-heading ('Two proofs the loop compounds', 'Stripe bets on the sandbox, not the slice', 'Cherny pairs a fast check with a slow one', 'The skill catalogue scales', 'Agents need the outer loop's signal too') into its parent numbered move. The renderer cuts at every `##` — signals.slide_count=13 confirms 13 body headings, not 6. Re-chunked correctly here; this changes which chunk several bolded handles land in for rule 9.",
   "rules_evaluated": [
     {
       "compendium": "check_slides.md",
@@ -21,7 +85,7 @@
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "Closest candidate, chunk 5 \"Stripe bets on the sandbox, not the slice\" line 37: \"**Stripe** is a different point on the same spectrum.\" 'the same spectrum' was never literally named as 'spectrum' in the prior chunk (4, Intercom tiering), but stays inside: chunk 4 established the trade-off (gate strictness vs cycle time, sorted by risk) as its whole subject, and chunk 5 opens by contrasting Stripe's bet against it — immediate continuation of the previous slide's subject, the carved-out case. Also checked line 63 \"Larson at Imprint consults the same shape of artifact at plan time\" — 'artifact' resolves against AGENTS.md/rules-files/pre-commit-hooks named in the immediately preceding chunk (8). No never-named or vague-with-full-history referent found across the 14 chunks.",
       "fix_hint": null,
       "blocking": true
     },
@@ -31,7 +95,7 @@
       "rule_lead": "Cross-file and positional callbacks.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "Closest candidate, chunk 12 line 85: \"The loop at your desk is the one this training closed... This piece is the same loop, run by engineers who've been at it longer.\" Names the referent by content ('the loop', 'this training') not by file position ('the opening lecture said'), and functions as the closer summing the whole file against the training arc — the explicitly carved-out case, not a violation. No 'the opening lecture said X' style positional callback anywhere in the file; the only cross-doc gesture is the module-flag conditional lede (line 5), which names M6 by content ('two sessions of the same task, gap diagnosis...'), not position.",
       "fix_hint": null,
       "blocking": true
     },
@@ -41,7 +105,7 @@
       "rule_lead": "Every backward reference points at a beat that exists.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "Chunk 0 line 5 (module-flag branch): \"Two sessions of the same task, gap diagnosis, a second skill in `~/.claude/skills/`, one rule cut from `./CLAUDE.local.md`.\" Checked against `curriculum/trainings/agentic-engineering-101/spot-gaps-build-the-loop.md` (M6, the flagged module): 'Start here' (line 25) opens on 'two sessions of the same task' (M4 send-off + M5 re-send); 'What You'll Learn' line 14 has student Diagnose gaps routing to 'memory, sharper verifier, or new skill'; line 15 has student Cut one rule from `./CLAUDE.local.md`. All three named beats exist in the current M6 file. 'a second skill in ~/.claude/skills/' is a plausible compression of M6's skill-authoring LOs (lines 14, 19, 60) rather than a literal quote of that path in the module — module speaks of the skill destination generically, not the dotfile path — but the beat (gap routes to a new skill) is real, so this clears rule 3's 'beat exists' test; a literal-path mismatch, if one existed, would be a technical-class concern, not a slides one.",
       "fix_hint": null,
       "blocking": true
     },
@@ -53,7 +117,8 @@
       "chunks_flagged": [],
       "evidence": null,
       "fix_hint": null,
-      "blocking": true
+      "blocking": true,
+      "na_reason": "No guess-before-reveal live-demo structure anywhere in the file; the six 'Try this Monday' prompts are self-directed take-home actions, not a narrated demo with a guess line followed by an outcome line."
     },
     {
       "compendium": "check_slides.md",
@@ -61,7 +126,7 @@
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "Closest candidate, chunk 1 (shortest chunk, lines 7-10): header + one full paragraph (line 9, three sentences) + a Monday action (line 17, actually in chunk 2 under the corrected chunking — chunk 1 itself still carries a complete self-standing claim on line 9: 'A failing CI run is signal... Each red build sharpens the next session.'). Not a wait-state or single context-dependent bullet — a self-carrying claim. Every other chunk (checked all 14) carries at least one full paragraph plus a named practitioner example.",
       "fix_hint": null,
       "blocking": false
     },
@@ -71,7 +136,7 @@
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "Closest candidate, chunk 4 header (line 29) \"3. Tier by blast radius. Make the Tier-1 case on your own PRs\" — chunk 4's actual content (lines 29-34) only covers the tiering definition and Intercom's numbers; the 'make the case on your own PRs' action doesn't land until chunk 5's Try-this-Monday (line 41), under a different header ('Stripe bets on the sandbox, not the slice'). This is a promise fulfilled one chunk later rather than in the labelled chunk, but nothing in chunk 4 asserts something the content contradicts — rule 6's test is contradiction, not full-coverage — so it stays inside. Checked all 14 headers against their own chunk content; no header is contradicted by what follows it.",
       "fix_hint": null,
       "blocking": false
     },
@@ -81,7 +146,7 @@
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "Checked all five sub-items. (1) 'Not X. Not Y. Z.' banned construction: only one 'Not' sentence in the file, line 31 'Not all PRs deserve the same gate.' — a single negation, not the triple. (2) Anaphora triple: line 9 'About which memory rule should have caught the mistake upstream. About which verifier was too soft. About which skill ran on auto-pilot when it should have paused.' — three parallel legs, but each names a genuinely distinct concrete diagnostic target (rule / verifier / skill), clearing the 'third leg carries NEW concrete content' bar rather than tripping the intensifying-repetition ban. (3) Self-grading superlatives: grepped 'one of the most', 'most useful', 'most powerful', 'game-chang', 'revolutioniz' — zero hits; 'The best' is used as a repeated topic-sentence device (= 'the best engineers') describing external practitioners, never grading this training's own content. (4) Number + retraction: checked every stat (52%→80%, 19.2%/14.6min/75.8min/86%, 1,000+/week, 131,246/48,095/5,169/3m39s/0.6%) — none paired with a hedge/retraction. (5) Abstraction-noun stacks: closest candidate line 63 'the same shape of artifact' — resolves concretely via the immediately preceding chunk (AGENTS.md, rules files, pre-commit hooks) rather than floating free; not swapped for a fully concrete phrase but not opaque either. (6) Empty-leg verb triplets: none found.",
       "fix_hint": null,
       "blocking": false
     },
@@ -91,7 +156,7 @@
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "Grepped the banned-term list (surface-as-noun, firing, compendium, forcing function, beat, mood) against the body: zero hits for compendium/firing/forcing function/beat/mood. 'surface' appears twice as ordinary engineering usage — line 31 'different review surfaces' (analogous to 'attack surface', not our authoring-vocabulary noun sense) and 'CI surface' (chunk 8 header, same ordinary sense). 'gap diagnosis', 'packaging', 'the loop' are this training's own arc-earned spine vocabulary (M4-M6), not repo/maintainer dialect — out of scope for §8, in scope for §1's arc-earned carve-out instead.",
       "fix_hint": null,
       "blocking": true
     },
@@ -100,20 +165,27 @@
       "rule_index": 9,
       "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
       "verdict": "REVISE",
-      "chunks_flagged": [1, 2, 3, 4, 5, 6],
-      "evidence": "chunk 5 \"5. Skills don't just live in your kit...\": line 53: \"**Shapira at Elementor**\" / line 55: \"**Larson at Imprint**\" / line 57: \"**Charles runs Ramp's Dojo**\" / line 59: \"**Try this Monday.**\" — four bolded handles on one slide. Same shape (practitioner-name bold(s) + a bolded \"Try this Monday.\" cue) repeats on chunks 1, 2, 3, 4, and 6, running 2-3 bolds per slide against the stated budget of ≤1.",
-      "fix_hint": "Pick one bolded handle per move — likely the recurring 'Try this Monday.' cue as the checklist-item handle — and drop the practitioner-name bolding to plain text or italics.",
+      "chunks_flagged": [
+        2,
+        3,
+        5,
+        7,
+        9,
+        11
+      ],
+      "evidence": "Budget is ≤1 bolded element per slide (no menu/lookup-surface exemption applies — this is narrative essay prose, not a scanned reading list). Six of the fourteen chunks carry 2-3 bolded handles each: chunk 2 \"Two proofs the loop compounds\" (lines 11-18) has THREE — line 13 '**Klaassen at Every**', line 15 '**Cursor's Bugbot**', line 17 '**Try this Monday.**'; chunk 3 \"2. Fan out review...\" has two — line 23 '**Cloudflare engineering**', line 27 '**Try this Monday.**'; chunk 5 \"Stripe bets on the sandbox...\" has two — line 37 '**Stripe**', line 41 '**Try this Monday.**'; chunk 7 \"Cherny pairs a fast check...\" has two — line 51 '**Cherny on Claude Code**', line 53 '**Try this Monday.**'; chunk 9 \"The skill catalogue scales...\" has THREE — line 63 '**Larson at Imprint**', line 65 '**Charles runs Ramp's Dojo**', line 67 '**Try this Monday.**'; chunk 11 \"Agents need the outer loop's signal too\" has THREE — line 77 '**Majors at Honeycomb**', line 79 '**Wolff on the Claude Code team**', line 81 '**Try this Monday.**'. The pattern is consistent: a practitioner-name bold plus a 'Try this Monday.' bold, sometimes plus a second practitioner. Prior instance flagged this rule but against the WRONG (merged) chunk map, citing chunks 1-6; corrected chunk indices are 2, 3, 5, 7, 9, 11 above. Chunks 4, 6, 8 correctly carry exactly one bold each (within budget).",
+      "fix_hint": "Pick one bolded handle per chunk — likely the recurring 'Try this Monday.' action-cue as the checklist-item handle — and drop practitioner-name bolding to plain text; where two practitioners share a chunk (9, 11), only one chunk's worth of budget is available, so consider whether the sub-heading split should carry its own '##' to give each practitioner their own slide instead.",
       "blocking": false
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 10,
       "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
-      "verdict": "N/A",
+      "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "Verified in `site/layouts/slides.js` lines 251-258: for a composed (multi-section) deck, every top-level `section.module` is walked, and 'A prose section with no phases — prework, supplementary, reference — is slide-ified in place under a kind-labelled divider' (comment explicitly names supplementary and cites the 2026-07-09 incident this rule was written for as fixed). This file is a supplementary and is confirmed IN the composed deck, not dropped.",
       "fix_hint": null,
-      "blocking": false
+      "blocking": true
     },
     {
       "compendium": "check_slides.md",
@@ -121,11 +193,65 @@
       "rule_lead": "Numbering — position is computed, content ordinals are linted.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": null,
+      "evidence": "`node scripts/check-slide-numbering.js curriculum/trainings/agentic-engineering-101/supplementary/how-the-best-do-ci-cd.md` → 'OK — 60 files, Phase/Step numbering consistent.' exit 0. Manual check: the six move headers (lines 7, 19, 29, 43, 55, 69) are hand-numbered 1-6, consecutive from 1, and the file contains no in-body cross-reference by number to another move ('as move 3 showed') that a reorder could strand — each numbered move is self-contained.",
       "fix_hint": null,
       "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 12,
+      "rule_lead": "Page geometry dies at the cut; reading order survives.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "`node scripts/check-slide-deixis.js --file <this file> --report` → no output, exit 0 (nothing flagged). Grepped 'above|below|further down|top of this page|see below|see above' in the body: one hit, line 5 'None require permission from above to start trying.' — idiomatic ('from higher authority'), not a page-geometry pointer. No positional pointers to content elsewhere on the page found.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 13,
+      "rule_lead": "In-deck links work now; whether they EARN their place is open.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "`node scripts/check-slide-deixis.js --file <this file> --links` produced no file-specific findings (review-surface message only, this rule never gates). Body has no in-page/in-deck cross-doc links at all — only external citation URLs in the Sources chunk, each named by author + title, never located by page position.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 14,
+      "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
+      "verdict": "REVISE",
+      "chunks_flagged": [
+        13
+      ],
+      "evidence": "`node scripts/check-slide-size.js --file <this file>` → 'oversized: 1' — 'trainings/agentic-engineering-101/supplementary/how-the-best-do-ci-cd.md:89 [12 bullets] ## Sources'. The Sources chunk (lines 89-105) carries 12 citation bullets against the 6-bullet ceiling. Checked the maintainer block (lines 106-113) for a `**Slide size accepted:** ## Sources — <reason>` escape hatch: none present.",
+      "fix_hint": "Either add the maintainer accept-note naming '## Sources' (a citation list is a defensible exception to the narrative-slide cap), or split into two Sources sub-headings, or leave as a standing accept-with-note precedent for citation-list chunks generally.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 15,
+      "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
+      "verdict": "N/A",
+      "chunks_flagged": [],
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "Rule text binds only Exercise (imperative/phase-label) and Lecture (claim) headings; this is a third file type (supplementary) the rule doesn't name. Flagged as a rule question in todos rather than judged as a violation of a binding this file isn't clearly under."
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 16,
+      "rule_lead": "A bullet earns its slot or dies — three classes that read as rigour and carry nothing.",
+      "verdict": "N/A",
+      "chunks_flagged": [],
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "No qualifying prose bullets in the body — the file is written entirely in paragraphs; the only bulleted list is the Sources citation list (lines 93-104), which is a reference list, not a doctrine-restatement/design-commentary/aphorism-kicker bullet the rule targets."
     }
   ],
   "blocking_findings_count": 0,
-  "todos_count": 1
+  "todos_count": 3
 }

@@ -9,13 +9,13 @@ function test(name, fn) { fn(); n++; console.log(`ok ${n} - ${name}`) }
 
 // --- parseHunks ---
 test('parseHunks: full header', () => {
-  assert.deepStrictEqual(parseHunks('@@ -10,3 +12,4 @@ ctx\n+a\n'), [{ oldStart: 10, oldLen: 3, start: 12, len: 4, added: [12], removedAt: [] }])
+  assert.deepStrictEqual(parseHunks('@@ -10,3 +12,4 @@ ctx\n+a\n'), [{ oldStart: 10, oldLen: 3, start: 12, len: 4, added: [12], removedAt: [], removedText: [] }])
 })
 test('parseHunks: single-line shorthand', () => {
-  assert.deepStrictEqual(parseHunks('@@ -5 +6 @@\n'), [{ oldStart: 5, oldLen: 1, start: 6, len: 1, added: [], removedAt: [] }])
+  assert.deepStrictEqual(parseHunks('@@ -5 +6 @@\n'), [{ oldStart: 5, oldLen: 1, start: 6, len: 1, added: [], removedAt: [], removedText: [] }])
 })
 test('parseHunks: pure deletion', () => {
-  assert.deepStrictEqual(parseHunks('@@ -8,2 +7,0 @@\n-x\n-y\n'), [{ oldStart: 8, oldLen: 2, start: 7, len: 0, added: [], removedAt: [7, 7] }])
+  assert.deepStrictEqual(parseHunks('@@ -8,2 +7,0 @@\n-x\n-y\n'), [{ oldStart: 8, oldLen: 2, start: 7, len: 0, added: [], removedAt: [7, 7], removedText: ['x', 'y'] }])
 })
 
 // --- fixture file ---
@@ -718,3 +718,50 @@ test('scanFile: a diff-region class reports no drift rules even when the rule al
 })
 
 console.log(`\n${n} tests passed`)
+
+/* Regression 2026-08-28: a body cut at the END of the body staled nothing.
+ * A removed line has no position in the new file, so parseHunks anchors it at
+ * the slot it vacated. `buildLineMeta` runs on the file as it is NOW, so when
+ * the cut sat directly above `<!-- maintainer -->` that slot IS the fence in
+ * the post-cut text, tagLine filed it as bookkeeping, and deleting a whole
+ * `##` slide came back with zero tags. The compaction pass this fires on is
+ * all deletions, and trailing material is where the cuttable stuff lives, so
+ * the fail-open landed on exactly the edit it was meant to catch.
+ * Fixture is the POST-cut document — that is what the scanner reads. */
+const DOC_AFTER = DOC.split('\n').filter((_, k) => k < 15 || k > 17).join('\n')
+
+test('changeTags: body cut directly above the maintainer fence still tags', () => {
+  const diff = [
+    '@@ -15,7 +15,4 @@ ctx',
+    ' ',
+    '-## Bridge',
+    '-bridge prose',
+    '-',
+    ' <!-- maintainer -->',
+    '-**Quality:** old pins',
+    '+**Quality:** new pins',
+    ' - judges 2026-07-01 (writing PASS, story PASS)',
+    '',
+  ].join('\n')
+  const r = changeTags(buildLineMeta(DOC_AFTER), parseHunks(diff))
+  assert(r.tags.has('writing') && r.tags.has('slides'),
+    `cutting body prose must stale writing+slides, got ${JSON.stringify([...r.tags])}`)
+  assert(r.tags.has('story') && r.tags.has('pedagogy'),
+    `cutting a ## heading must stale story+pedagogy, got ${JSON.stringify([...r.tags])}`)
+  assert(r.changedBody > 0, 'removed body lines must count toward changedBody')
+})
+
+/* The other half: a cut INSIDE the maintainer block stays bookkeeping. The
+ * line above a maintainer line is also maintainer, so the fallback finds
+ * nothing and the fail-closed fix does not become a fire-on-everything fix. */
+test('changeTags: maintainer-only deletion still tags nothing', () => {
+  const diff = [
+    '@@ -17,2 +17,1 @@ ctx',
+    '-**Quality:** old pins',
+    ' - judges 2026-07-01 (writing PASS, story PASS)',
+    '',
+  ].join('\n')
+  const r = changeTags(buildLineMeta(DOC_AFTER), parseHunks(diff))
+  assert.deepStrictEqual([...r.tags].sort(), [],
+    `a maintainer-only deletion must stale nothing, got ${JSON.stringify([...r.tags])}`)
+})

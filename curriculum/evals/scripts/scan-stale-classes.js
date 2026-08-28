@@ -62,7 +62,7 @@ function parseHunks(diffText) {
       cur = {
         oldStart: +m[1], oldLen: m[2] === undefined ? 1 : +m[2],
         start: +m[3], len: m[4] === undefined ? 1 : +m[4],
-        added: [], removedAt: [],
+        added: [], removedAt: [], removedText: [],
       }
       hunks.push(cur)
       newLine = cur.start
@@ -71,7 +71,7 @@ function parseHunks(diffText) {
     if (!cur) continue
     if (line.startsWith('\\')) continue          // "\ No newline at end of file"
     if (line.startsWith('+')) { cur.added.push(newLine); newLine++ }
-    else if (line.startsWith('-')) cur.removedAt.push(newLine)
+    else if (line.startsWith('-')) { cur.removedAt.push(newLine); cur.removedText.push(line.slice(1)) }
     else newLine++                                // context
   }
   return hunks
@@ -138,15 +138,44 @@ function tagLine(m, tags) {
   return 1
 }
 
+/*
+ * A removed line has no position in the new file. `newLine` is the slot it
+ * vacated — the line that FOLLOWED it — and `meta` is built from the file as
+ * it is now. So a cut at the end of the body vacates the slot that
+ * `<!-- maintainer -->` has since slid into, tagLine reads the fence, files it
+ * as bookkeeping, and a deleted `##` slide stales nothing. Fail-open on the
+ * one edit shape a compaction pass is made of.
+ *
+ * Fix stays narrow: when the vacated slot yields no body line, fall back to
+ * the last surviving line ABOVE the removal. A cut inside the maintainer
+ * block still finds maintainer there, so this does not become fire-on-
+ * everything. When the vacated slot IS body, behaviour is unchanged.
+ */
+function tagRemoved(meta, L, text, tags) {
+  const at = meta[Math.min(L, meta.length) - 1]
+  const above = meta[Math.max(1, L - 1) - 1]
+  const anchor = at && at.region === 'body' ? at
+    : above && above.region === 'body' ? above
+      : at
+  if (!anchor || anchor.region !== 'body') return tagLine(anchor, tags)
+  // A deleted heading exists nowhere in the new file, so heading-ness (and the
+  // story+pedagogy tags that ride it) has to come off the removed text.
+  return tagLine({ ...anchor, text: text ?? anchor.text, heading: /^#{2,}\s/.test(text ?? '') }, tags)
+}
+
 function changeTags(meta, hunks) {
   const tags = new Set()
   let changedBody = 0
   for (const h of hunks) {
     if (h.len > 0) {
-      // Hand-built hunks (tests, callers) carry no `added`; fall back to the range.
-      const explicit = h.added ? h.added.concat(h.removedAt || []) : null
-      const lines = explicit || Array.from({ length: h.len }, (_, k) => h.start + k)
-      for (const L of lines) changedBody += tagLine(meta[Math.min(L, meta.length) - 1], tags)
+      if (h.added) {
+        for (const L of h.added) changedBody += tagLine(meta[Math.min(L, meta.length) - 1], tags)
+        const rt = h.removedText || []
+        h.removedAt.forEach((L, k) => { changedBody += tagRemoved(meta, L, rt[k], tags) })
+      } else {
+        // Hand-built hunks (tests, callers) carry no `added`; fall back to the range.
+        for (let k = 0; k < h.len; k++) changedBody += tagLine(meta[Math.min(h.start + k, meta.length) - 1], tags)
+      }
     } else {
       // pure deletion: anchor on surrounding lines; count removed lines if anchored in body
       const anchors = [Math.max(1, h.start), Math.min(meta.length, h.start + 1)]

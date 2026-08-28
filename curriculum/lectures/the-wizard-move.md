@@ -14,19 +14,13 @@ Context is whatever you tell it. A fact. A role. A preference. A constraint. All
 
 The move is loading the right context before the question, not a clever prompt or a slash command you didn't know.
 
-## The loop is what you repeat
-
-Fix one trivial bug from your own backlog, end-to-end. Log one decision. Seed a rules file your next session reads first.
-
-The fix happens once. The loop is what you repeat: a way of working, not one bug closed. You become the Claude wizard by running the loop on real work and letting the habit sharpen. Not by reading about it.
-
 <!-- maintainer -->
 
 **Standing constraints:**
 - **Zero bold on the narrative and demo slides** (Antti: *"go very lightly on the bold"*). Prose paragraphs, not bolded-claim bullets. `theory-plan.md § Slide format — emphasis budget` + `check_slides §9`.
 - **Guess before reveal.** The guess paragraph precedes the Finnish-dinner answer. Both sessions get narrated before the live run. `check_slides §4`.
 - **No plan mode on this surface.** M1's fix runs tests-first; plan mode earns its keep at M2. Any phrasing like *"with plan mode used deliberately"* is drift.
-- **Don't steal the closer's kicker.** *"Loop is the shape / bug was the excuse"* belongs to the M1 closer.
+- **The loop-over-the-fix beat belongs to the M1 closer, not here.** `the-machine-you-just-met.md` lands it after the four exercises as recognition (`## You just ran the same loop`, kicker *"The loop is the shape. The bug today was the excuse."*). This opener carries the context mechanism and stops. Do not restore a third slide that previews the loop, and do not steal the kicker.
 - **Zero map references.** M1 is protected; the map arrives at M2.
 - Openers carry no setup lede.
 
@@ -37,7 +31,7 @@ The fix happens once. The loop is what you repeat: a way of working, not one bug
 - compendium-audited 2026-04-26 (check_writing voice-quartet Seth-Rory-Risto, check_student_facing #14, check_lectures opener, check_strategy_tie_in)
 **Meta:**
 - **Placement:** M1 opener, after Connections, before the exercise.
-- **Time:** 10 min. 5–7 min lecture prose + 3 min live two-session demo in Claude Code. The demo runs in Claude Code, not claude.ai (Antti, 2026-08-23); the dinner question is deliberately not about code.
+- **Time:** 8 min. 5 min lecture prose + 3 min live two-session demo in Claude Code. The demo runs in Claude Code, not claude.ai (Antti, 2026-08-23); the dinner question is deliberately not about code.
 - **Voice:** Seth × Rory × Risto — warm + counterintuitive + direct.
 
 **The Context is King demo (stolen from Agents 101, trimmed to two sessions):**
@@ -58,8 +52,6 @@ Format → `curriculum/backing-format.md`.
 - `conditioning-is-unreliable` · detail · "But not as reliably." ← antti-dinner-demo-deliveries, dinner-demo-haiku-sample
 - `context-is-whatever-you-tell-it` · vision · "Context is whatever you tell it. A fact. A role. A preference. A constraint." ← none-owed
 - `the-move-is-loading-context` · vision · "The move is loading the right context before the question, not a clever prompt or a slash command you didn't know" ← none-owed
-- `loop-not-the-fix` · vision · "The fix happens once. The loop is what you repeat" ← none-owed
-- `wizard-by-running-not-reading` · vision · "You become the Claude wizard by running the loop on real work and letting the habit sharpen. Not by reading about it." ← none-owed
 
 **Sources**
 - in-context-conditioning `[checked:2026-07-30 result:CAVEAT due:none]` https://arxiv.org/abs/2005.14165 — [academic/research] Brown et al., *Language Models are Few-Shot Learners* (2020). Backs the MECHANISM and nothing beyond it: *"the model is conditioned on a natural language instruction and/or a few demonstrations of the task and is then expected to complete further instances of the task simply by predicting what comes next"* — prior text in the window conditions the next output, with no weight update. CAVEAT: every experiment in the paper is task demonstrations lifting downstream accuracy. It does not test an unrelated earlier exchange colouring a later, different question, which is exactly what the demo shows. **Do not cite it as evidence for the dinner effect.** Foundational, `due:none`. fallback: cite the mechanism and let the live demo carry the specific effect.
@@ -69,7 +61,6 @@ Format → `curriculum/backing-format.md`.
 
 **Frameworks**
 - Context conditioning · [borrow:ML research] · law:steering-is-executable-constraint-your-stance-is-the-ceiling · ← in-context-conditioning
-- The loop over the fix · [borrow:practitioner-coined] · law:the-compound-ladder · ← cultural-vocab. Body carries the recognition beat only; the ladder is not named on this surface.
 
 **Stance** `[stance:2026-08-01 level:L2]`
 - holds: the mechanism is foundational and not in doubt — prior text in the window conditions the next output, with no weight update (Brown et al. 2020). Note what that does and does not cover. The literature on file backs the *mechanism*. What backs the *specific* effect the demo shows, an unrelated earlier exchange colouring a later question, is the demo. For a claim the room watches happen in 60 seconds, a live check is the stronger warrant anyway, which is why this is taught as a demo and not as a citation. The product side is a standing precondition: the demo runs in fresh Claude Code sessions in an empty directory outside any repo, so nothing directory-keyed loads. The trainer's own user-scope rules load anyway and are the part that needs checking (instruction + salvage in Demo watch-fors).

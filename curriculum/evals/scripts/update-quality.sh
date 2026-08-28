@@ -192,6 +192,14 @@ check_instance_sha slides    "$state_slides"
 
 # ---- Read existing Quality block to support --keep ---------------------------
 keep_judges=""
+# A judges block can hold MORE than one row: the stamper itself writes one row
+# per pin sha, so a file whose classes were judged at different commits carries
+# `- judges @A: story PASS, …` and `- judges @B: writing PASS` side by side.
+# Capturing only the last row meant every class recorded in the earlier one fell
+# through to `grandfathered` on the next single-class stamp — the script writing
+# a shape it could not read back, and quietly downgrading five real verdicts to
+# "cannot tell whether this was ever judged". Accumulate them all.
+keep_judges_all=""
 keep_cross_module=""
 keep_voice_panel=""
 keep_maintainer=""
@@ -215,7 +223,7 @@ while IFS= read -r line; do
   fi
   if [[ $in_block -eq 1 ]]; then
     case "$line" in
-      "- judges:"*|"- judges "*)                     keep_judges="$line" ;;
+      "- judges:"*|"- judges "*)                     keep_judges="$line"; keep_judges_all+="${keep_judges_all:+$'\n'}$line" ;;
       "- cross_module:"*|"- cross_module "*)         keep_cross_module="$line" ;;
       "- voice_panel:"*|"- voice_panel "*)           keep_voice_panel="$line" ;;
       "- maintainer-reviewed:"*|"- maintainer-reviewed "*) : ;; # axis removed 2026-08-15 — stray rows dropped on re-stamp
@@ -321,21 +329,24 @@ prior_judges_behavior=""
 prior_judges_pedagogy=""
 prior_judges_strategy=""
 prior_judges_slides=""
-if [[ -n "$keep_judges" ]]; then
-  judges_body_prior="${keep_judges#*: }"
-  IFS=',' read -r -a verdict_arr <<< "$judges_body_prior"
-  for entry in "${verdict_arr[@]}"; do
-    entry="${entry#"${entry%%[![:space:]]*}"}"  # ltrim
-    case "$entry" in
-      writing\ *)   prior_judges_writing="$entry"   ;;
-      story\ *)     prior_judges_story="$entry"     ;;
-      technical\ *) prior_judges_technical="$entry" ;;
-      behavior\ *)  prior_judges_behavior="$entry"  ;;
-      pedagogy\ *)  prior_judges_pedagogy="$entry"  ;;
-      strategy\ *)  prior_judges_strategy="$entry"  ;;
-      slides\ *)    prior_judges_slides="$entry"    ;;
-    esac
-  done
+if [[ -n "$keep_judges_all" ]]; then
+  while IFS= read -r judges_line; do
+    [[ -z "$judges_line" ]] && continue
+    judges_body_prior="${judges_line#*: }"
+    IFS=',' read -r -a verdict_arr <<< "$judges_body_prior"
+    for entry in "${verdict_arr[@]}"; do
+      entry="${entry#"${entry%%[![:space:]]*}"}"  # ltrim
+      case "$entry" in
+        writing\ *)   prior_judges_writing="$entry"   ;;
+        story\ *)     prior_judges_story="$entry"     ;;
+        technical\ *) prior_judges_technical="$entry" ;;
+        behavior\ *)  prior_judges_behavior="$entry"  ;;
+        pedagogy\ *)  prior_judges_pedagogy="$entry"  ;;
+        strategy\ *)  prior_judges_strategy="$entry"  ;;
+        slides\ *)    prior_judges_slides="$entry"    ;;
+      esac
+    done
+  done <<< "$keep_judges_all"
 fi
 
 # Convert a rendered "<cls> PASS (note)" entry back to internal state value.
@@ -356,7 +367,7 @@ prior_state_for() {
 }
 
 if [[ $all_keep -eq 1 ]]; then
-  judges_row="${keep_judges:-- judges: not yet judge-audited}"
+  judges_row="${keep_judges_all:-- judges: not yet judge-audited}"
 else
   parts=""
   for pair in "writing $state_writing" "story $state_story" \

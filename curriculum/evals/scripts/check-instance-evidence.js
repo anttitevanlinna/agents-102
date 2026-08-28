@@ -65,10 +65,56 @@ function auditInstance(p) {
 
   const ungrounded = []
   const misfiled = []
-  const re = d.rules_evaluated
   let rows = 0
   let naNullEvidence = 0
   let shape = 'rule-ledger'
+
+  // Classes do not agree on where the ledger lives, and a guard that knows only
+  // one name passes every instance written by the others. cross_module nests its
+  // rows one per adjacent pair under `module_pairs_evaluated[].rules_evaluated`;
+  // the current behavior shape records `prompts_evaluated` as a COUNT and keeps
+  // its detail in `prompts_findings`, while older behavior instances key
+  // `rules_evaluated` by prompt. Reading only the top-level array reported all
+  // of them as clean with zero rows — which is the failure this guard exists to
+  // catch, committed by the guard itself.
+  let re = d.rules_evaluated
+
+  // The behavior class owes no rule ledger AT ALL, and demanding one is the
+  // third time this script has assumed a single shape. Its template records
+  // `prompts_findings[].risks_fired[]` — only the patterns that FIRED, a
+  // deliberate fires-only ledger — plus `prompts_evaluated` as a count. So audit
+  // it on its own terms: every fired risk owes evidence. What must never happen
+  // is the two failure modes meeting in the middle: demanding a ledger from a
+  // class that has none (false positive), or passing a class that owes one and
+  // wrote none (false negative, and the worse of the two).
+  if (re === undefined && Array.isArray(d.prompts_findings)) {
+    shape = 'fired-risk ledger (behavior class)'
+    for (const pf of d.prompts_findings) {
+      if (!pf || typeof pf !== 'object') { ungrounded.push({ at: 'prompts_findings', why: 'entry is not an object' }); continue }
+      const where = `prompt ${pf.prompt_index ?? '?'}`
+      if (!has(pf.verdict)) ungrounded.push({ at: where, why: 'prompt carries no verdict' })
+      for (const r of (Array.isArray(pf.risks_fired) ? pf.risks_fired : [])) {
+        rows++
+        if (!has(r.evidence)) ungrounded.push({ at: `${where} · ${r.pattern_id || '?'}`, why: 'fired risk with no evidence' })
+      }
+    }
+    // A count with no findings is the shape's legitimate clean result: no risk
+    // fired anywhere. Only an absent count means nobody looked.
+    if (!Number.isInteger(d.prompts_evaluated)) {
+      ungrounded.push({ at: 'instance', why: 'no `prompts_evaluated` count — nothing says how many prompts were read' })
+    }
+    return report()
+  }
+
+  if (re === undefined && Array.isArray(d.module_pairs_evaluated)) {
+    shape = 'per-pair ledger (cross_module class)'
+    re = d.module_pairs_evaluated.flatMap(pair => {
+      const inner = pair && pair.rules_evaluated
+      if (Array.isArray(inner)) return inner
+      ungrounded.push({ at: `${(pair && pair.from) || '?'} → ${(pair && pair.to) || '?'}`, why: 'pair carries no rules_evaluated array' })
+      return []
+    })
+  }
 
   if (Array.isArray(re)) {
     const objs = re.filter(r => r && typeof r === 'object')
@@ -99,6 +145,17 @@ function auditInstance(p) {
     }
   } else if (re !== undefined) {
     ungrounded.push({ at: 'rules_evaluated', why: `unreadable ledger: expected an array or a prompt-keyed object, got ${typeof re}` })
+  } else {
+    // No ledger under any name this guard knows. Never "clean": an instance
+    // with no rows is either a judge that wrote none or a shape nobody taught
+    // this script, and both need a person, not a pass.
+    shape = 'NO LEDGER FOUND'
+    const counts = ['prompts_evaluated', 'module_pairs_evaluated', 'rules_evaluated']
+      .filter(k => d[k] !== undefined).map(k => `${k}=${JSON.stringify(d[k]).slice(0, 40)}`)
+    ungrounded.push({
+      at: 'instance',
+      why: `no per-rule ledger found${counts.length ? ` (only ${counts.join(', ')} — a count is not a ledger)` : ''}`,
+    })
   }
 
   function push(r, at, why) {
@@ -112,15 +169,19 @@ function auditInstance(p) {
     if (!has(f.harm) || !has(f.quote)) ungrounded.push({ at: `finding ${f.rule || '?'}`, why: 'finding missing quote or harm' })
   }
 
-  return {
-    file: path.relative(REPO, p),
-    shape,
-    rows,
-    na_rows_null_evidence: naNullEvidence,
-    ungrounded_count: ungrounded.length,
-    misfiled_count: misfiled.length,
-    ungrounded,
-    misfiled,
+  return report()
+
+  function report() {
+    return {
+      file: path.relative(REPO, p),
+      shape,
+      rows,
+      na_rows_null_evidence: naNullEvidence,
+      ungrounded_count: ungrounded.length,
+      misfiled_count: misfiled.length,
+      ungrounded,
+      misfiled,
+    }
   }
 }
 

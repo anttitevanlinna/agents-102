@@ -1,10 +1,16 @@
 {
   "class": "behavior",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/author-test-strategy-skill.md",
+  "body_sha": "72e83ab3d2eb9e95c3c3a5678c6b0d4e6527f9b1d568d10d1a1407b76748c059",
+  "shape_hash": null,
   "verdict": "PASS",
   "training": "ae101",
-  "trace_status": "cached",
+  "trace_status": "full_regen",
+  "generated_at": "2026-08-28T00:00:00.000Z",
+  "content_sha": "e27db0745a4fc4ccd18d44debb9b0073d460fa8a3d65660f7831d604323bcfa2",
   "prompts_evaluated": 2,
+  "blocking_findings_count": 0,
+  "todos_count": 2,
   "prompts_findings": [
     {
       "prompt_index": 1,
@@ -12,9 +18,24 @@
       "verdict": "TODO",
       "load_bearing": true,
       "risks_fired": [
-        {"pattern_id": "question-dump", "confidence": "low", "evidence": "In-fence: 'Use the AskUserQuestion tool to interview me: one question per tool call, wait for my answer, then the next.'", "fix_hint": "No edit — AskUserQuestion one-per-call phrasing is the strongest legal shape; nothing to add."},
-        {"pattern_id": "overwrite-anxiety", "confidence": "low", "evidence": "'Show me before saving' is a pre-confirm gate on a first-time creation (no prior SKILL.md exists at this path earlier in the module flow), not an ambiguous update-or-overwrite case.", "fix_hint": "No edit — add overwrite-vs-new language only if a re-run/re-author scenario is designed in later."},
-        {"pattern_id": "default-acceptance", "confidence": "low", "evidence": "Carve-out (simulation-behavior.md 'default-acceptance ... body-callout mitigation'). In-fence 'Push back if my answer is generic' addresses Claude pushing back on the STUDENT; the body prose right after the fence ('Answer from how your codebase really tests') closes the complementary direction: 'Push back when Claude offers a default you don't like... The push-back is where the skill gets its codebase truth.'", "fix_hint": "No edit — body callout already names the failure mode and the push-back move."}
+        {
+          "pattern_id": "question-dump",
+          "confidence": "low",
+          "evidence": "In-fence structural enforcement, verbatim: 'Use the AskUserQuestion tool to interview me: one question per tool call, wait for my answer, then the next.' This is the catalog's strongest legal shape (a mechanical tool-call constraint), stronger than the body-callout carve-out in the template. Harm the rule guards against (Claude dumping all 7 topics as one form) is not present: the fence names the mechanism (tool, cadence) rather than just the outcome.",
+          "fix_hint": "None needed; this is the reference-quality shape for the pattern."
+        },
+        {
+          "pattern_id": "default-acceptance",
+          "confidence": "low",
+          "evidence": "In-fence 'Push back if my answer is generic' addresses Claude pushing on the STUDENT's answers. The body-callout mitigation for the complementary direction (Claude offering a weak default, student not pushing back) sits in the very next section: 'Push back when Claude offers a default you don't like. \"No, we don't mock the database...\" The push-back is where the skill gets its codebase truth.' Names the failure mode and the recovery move per the template's default-acceptance carve-out.",
+          "fix_hint": "None needed; both directions of the pattern are named on the page (in-fence for student-answer generic-ness, in-body for Claude-offered defaults)."
+        },
+        {
+          "pattern_id": "overwrite-anxiety",
+          "confidence": "low",
+          "evidence": "'Show me before saving' gates a first-time write to `~/.claude/skills/test-strategy/SKILL.md`; nothing in this exercise or the module sequence establishes that file as pre-existing before this phase (the maintainer block's install-mechanic note treats the ship-destination bullet as the sole canonical statement of this path, and nowhere frames it as a re-run). Fresh-install-context carve-out logic applies by analogy even though this is authored-not-installed: no collision norm exists to imply.",
+          "fix_hint": "None needed on the modal path; would only need a preserve-vs-replace clause if a future revision lets students re-run this exercise against an already-authored SKILL.md."
+        }
       ]
     },
     {
@@ -23,31 +44,25 @@
       "verdict": "TODO",
       "load_bearing": true,
       "risks_fired": [
-        {"pattern_id": "self-report-inflation", "confidence": "low", "evidence": "Evidence-backed Debrief carve-out. Body prose right after the fence ('Sharpen the skill from what came back') names the bias by mechanism ('same-window self-charity'), names the convenience tradeoff ('One paste, one wait, one read, convenient over rigorous'), and offers a concrete two-prompt fresh-read recovery. Grounded in the concrete artifact just produced, not an ungrounded self-grade.", "fix_hint": "No edit — body callout already names the bias and offers the two-prompt fresh-read alternative."},
-        {"pattern_id": "self-audit-charity", "confidence": "low", "evidence": "Same body callout as self-report-inflation names the charity mechanism and gives the fresh-read recovery move.", "fix_hint": "No edit — same callout covers this; carve-out applies."},
-        {"pattern_id": "niceness-tax", "confidence": "low", "evidence": "Self-grading questions are diagnostic/comparative rather than open praise-inviting ('does it read generic?', 'would a teammate ... ask for more?'), which structurally discourages a softened answer; the adjacent self-charity callout further names the bias mechanism though not softened tone by name.", "fix_hint": "Optional: layer one line onto the existing callout naming the softening/bluntness risk directly, not just the self-charity mechanism."}
+        {
+          "pattern_id": "self-report-inflation",
+          "confidence": "low",
+          "evidence": "Evidence-backed Debrief carve-out applies: the fence asks Claude to grade a concrete artifact it just produced (\"read the strategy you just produced\") against four pointed diagnostic questions (generic-vs-specific, load-bearing tests named, integration boundary named, teammate-adequacy), and the body paragraph immediately after the fence names the bias mechanism by name ('same-window self-charity') and offers a concrete recovery move (the two-prompt fresh-read alternative, quoted verbatim in body). Harm the rule guards against (an unchallenged inflated self-grade) is closed by the named recovery move, not merely gestured at.",
+          "fix_hint": "None needed; carve-out is fully satisfied — concrete artifact, pointed diagnostic questions, named bias, and a concrete alternative path."
+        },
+        {
+          "pattern_id": "self-audit-charity",
+          "confidence": "low",
+          "evidence": "Same body callout as self-report-inflation above satisfies this pattern's carve-out too: 'The grade is biased by design... same-window self-charity' names the charity mechanism directly, and the subsequent 'Sharpen the skill, not the output' + fresh-read alternative gives the student an actionable recovery.",
+          "fix_hint": "None needed; same carve-out basis as self-report-inflation."
+        },
+        {
+          "pattern_id": "niceness-tax",
+          "confidence": "low",
+          "evidence": "The self-grading questions in the fence are diagnostic/comparative rather than open praise-inviting ('does it read generic?', 'would a teammate... ask for more?'), which structurally discourages a softened answer. The adjacent body callout names the self-charity bias mechanism but does not use language like 'be blunt' or 'don't soften the answer' — it addresses the same-window bias, not tone specifically. Residual gap: a diplomatically-worded self-grade could still pass the stated questions without genuinely surfacing weakness.",
+          "fix_hint": "Optional: one clause alongside the existing self-charity callout naming the softening/bluntness risk directly (e.g. 'be blunt about what's weak — a diplomatic answer defeats the exercise'). Not filed as blocking: the diagnostic question shape already resists praise-only answers, and Phase 2's body text goes on to ask the student to push on the skill's self-named weakest part, which is a second, independent check on the same failure."
+        }
       ]
     }
-  ],
-  "blocking_findings_count": 0,
-  "todos_count": 2,
-  "catalog_coverage": [
-    {"pattern_id": "question-dump", "status": "fired", "confidence": "low", "prompt_index": 1, "why": "AskUserQuestion one-per-call phrasing structurally suppresses the dump; recorded per carve-out discipline."},
-    {"pattern_id": "overwrite-anxiety", "status": "fired", "confidence": "low", "prompt_index": 1, "why": "Show-before-save gate on a first-time file creation."},
-    {"pattern_id": "default-acceptance", "status": "fired", "confidence": "low", "prompt_index": 1, "why": "Body-callout carve-out names Claude's-offered-defaults failure mode and the push-back recovery."},
-    {"pattern_id": "self-report-inflation", "status": "fired", "confidence": "low", "prompt_index": 2, "why": "Evidence-backed Debrief carve-out; body callout names the same-window self-charity bias and a concrete recovery."},
-    {"pattern_id": "self-audit-charity", "status": "fired", "confidence": "low", "prompt_index": 2, "why": "Same carve-out as self-report-inflation."},
-    {"pattern_id": "niceness-tax", "status": "fired", "confidence": "low", "prompt_index": 2, "why": "Residual softening risk on the self-grade; diagnostic question framing plus the self-charity callout keep it below med."},
-    {"pattern_id": "file-preservation-gap", "status": "not_fired", "why": "Prompt 1 first-creates a new file (no prior artifact to preserve/replace); prompt 2 writes no file."},
-    {"pattern_id": "reading-burden", "status": "not_fired", "why": "No prompt asks the student to manually proofread Claude's output for correctness; prompt 2's self-grade is Claude auditing Claude, not the student."},
-    {"pattern_id": "preamble-before-action", "status": "not_fired", "why": "Neither prompt carries 4+ named sub-steps or invokes plan mode; each is a bounded two-macro-step ask below the structural trigger."},
-    {"pattern_id": "append-vs-integrate", "status": "not_fired", "why": "Neither prompt asks to add a section to an existing file."},
-    {"pattern_id": "plan-mode-preamble-bloat", "status": "not_fired", "why": "Plan mode is not invoked by either prompt."},
-    {"pattern_id": "citation-gap-asymmetry", "status": "not_fired", "why": "Neither prompt requests citation-bearing claims."},
-    {"pattern_id": "plan-mode-approval-inflation", "status": "not_fired", "why": "Plan mode is not invoked by either prompt."},
-    {"pattern_id": "source-type-blindness", "status": "not_fired", "why": "Both prompts read the student's own codebase directly; no heterogeneous external-source ingestion."},
-    {"pattern_id": "citation-cargo-cult", "status": "not_fired", "why": "Neither prompt requests citations."}
-  ],
-  "note": "Clean cache hit this run: computed SHA-256 of both fenced prompts against the scripts/expand-md.js EXPANDED view (prompt 1 => 9472fee7...; prompt 2 => a2edbb27...) and both matched the sim-cache's prompt_sha exactly (unchanged since the 2026-07-10 full_regen that corrected the prior stale/mismatched trace). Per the template's cache-lookup step, both entries were reused verbatim rather than regenerated; only content_sha and generated_at were refreshed in the trace to reflect the file's current full-file hash (unrelated body/maintainer-block edits elsewhere in the file do not touch prompt content). Re-verified against the current curriculum/exercises/author-test-strategy-skill.md on disk: the body callouts the carve-outs depend on (the 'Answer from how your codebase really tests' push-back paragraph after prompt 1; the 'Sharpen the skill from what came back' same-window self-charity paragraph after prompt 2) are still present, unchanged, and within ~3 paragraphs of their respective prompts, so the six carve-out-mitigated low-confidence risks below still qualify as accepted-not-blocking. check_prompts.md and check_pedagogy.md were read for adjacent-rule context per compendium_paths; neither lists 'behavior' as a primary-owning eval_class, so this class's completeness ledger is the 15-pattern catalog in simulation-behavior.md (catalog_coverage above: 6 fired at low confidence, 9 not_fired with reasons), consistent with prior runs on this file and with the sibling ae101--reading-the-return.behavior.json / ae101--where-the-rule-could-live.behavior.json precedent. Both prompts remain load_bearing: true (Phase 1 authoring conversation and Phase 2 invoke-and-self-grade are teaching-moment / hand-off beats, not housekeeping). Applying the verdict rules literally: no risk fires at high confidence and no prompt carries 2+ med-confidence risks, so blocking_findings_count is 0 and top-level verdict is PASS; every fired risk is confidence:low, which the rule reads as TODO regardless of load_bearing, so both prompts are TODO (todos_count: 2) — carve-out-accepted risks recorded for traceability, not defects requiring a prompt edit. The one genuinely open item remains the optional niceness-tax fix_hint on prompt 2 (name the softening/bluntness risk directly, not just the self-charity mechanism) — unresolved from the prior run, still non-blocking.",
-  "summary": "PASS with 2 non-blocking TODOs, both carve-out-accepted, on a clean cache hit (both prompt SHAs unchanged since the last full_regen). Prompt 1 (author via AskUserQuestion interview) fires question-dump/overwrite-anxiety/default-acceptance, all at low confidence and all mitigated by in-fence structure or the adjacent body callout naming the push-back move. Prompt 2 (invoke + same-turn self-grade) fires self-report-inflation/self-audit-charity/niceness-tax, all at low confidence; the body callout in 'Sharpen the skill from what came back' explicitly names the same-window self-charity bias and offers a two-prompt fresh-read escalation, satisfying the evidence-backed Debrief carve-out. No high-confidence or 2+-med-confidence risks on either prompt, so blocking_findings_count is 0."
+  ]
 }

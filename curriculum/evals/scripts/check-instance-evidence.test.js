@@ -84,3 +84,57 @@ test('a finding without a quote or a harm is ungrounded whatever else it carries
   assert.equal(a.ungrounded_count, 1)
   assert.match(a.ungrounded[0].why, /missing quote or harm/)
 })
+
+test("the behavior class owes no rule ledger, and is audited on its own terms", () => {
+  // Its template records only the risks that FIRED — a deliberate fires-only
+  // ledger — plus a count. Demanding rules_evaluated of it is a false positive,
+  // and the third time this script assumed one shape fits every class.
+  const a = auditInstance(tmp({
+    class: 'behavior',
+    prompts_evaluated: 2,
+    prompts_findings: [
+      { prompt_index: 1, verdict: 'PASS', risks_fired: [] },
+      { prompt_index: 2, verdict: 'REVISE', risks_fired: [{ pattern_id: 'niceness-tax', evidence: 'L65 asks for a self-grade' }] },
+    ],
+  }))
+  assert.match(a.shape, /behavior class/)
+  assert.equal(a.ungrounded_count, 0)
+  assert.equal(a.rows, 1)
+})
+
+test('a fired risk with no evidence is ungrounded, same as any other verdict', () => {
+  const a = auditInstance(tmp({
+    prompts_evaluated: 1,
+    prompts_findings: [{ prompt_index: 1, verdict: 'REVISE', risks_fired: [{ pattern_id: 'niceness-tax' }] }],
+  }))
+  assert.equal(a.ungrounded_count, 1)
+  assert.match(a.ungrounded[0].why, /fired risk with no evidence/)
+})
+
+test('a behavior instance with no count means nobody said how many prompts were read', () => {
+  const a = auditInstance(tmp({ prompts_findings: [] }))
+  assert.equal(a.ungrounded_count, 1)
+  assert.match(a.ungrounded[0].why, /no `prompts_evaluated` count/)
+})
+
+test("cross_module rows live one level down, under each adjacent pair", () => {
+  const a = auditInstance(tmp({
+    class: 'cross_module',
+    module_pairs_evaluated: [
+      { from: 'a.md', to: 'b.md', rules_evaluated: [{ compendium: 'check_cross_module.md', rule_index: 1, verdict: 'PASS', evidence: 'L12 names the gap' }] },
+      { from: 'b.md', to: 'c.md' },
+    ],
+  }))
+  assert.match(a.shape, /cross_module/)
+  assert.equal(a.rows, 1)
+  assert.equal(a.ungrounded_count, 1)
+  assert.match(a.ungrounded[0].why, /carries no rules_evaluated array/)
+})
+
+test('a class that owes a ledger and wrote none never reads as clean', () => {
+  // The false negative is the worse of the two: an instance with no rows used
+  // to print "clean (0 rows)" and pass every gate.
+  const a = auditInstance(tmp({ class: 'writing', verdict: 'PASS' }))
+  assert.equal(a.ungrounded_count, 1)
+  assert.equal(a.shape, 'NO LEDGER FOUND')
+})

@@ -382,6 +382,28 @@ assert_rc "$rc" "1" 'T21 unrecognised class state refuses instead of rendering a
 
 unset QUALITY_INSTANCES_DIR
 
+# ── T22 — a judges BLOCK can hold more than one row; read them all ───────────
+# The stamper writes one row per pin sha, so a file whose classes were judged at
+# different commits carries two rows. Capturing only the last one meant every
+# class recorded in the earlier row fell through to `grandfathered` on the next
+# single-class stamp — the script writing a shape it could not read back, and
+# silently downgrading five real verdicts to "cannot tell whether it ever ran".
+# Caught live on the-loop-has-a-name.md: a two-class stamp turned story,
+# technical, behavior, pedagogy and strategy from PASS into grandfathered.
+mkfix t22.md '# Lecture
+<!-- maintainer -->
+**Quality:** compendium-audited 2026-08-27 (writing@aaa1111 story@bbb2222 technical@bbb2222 behavior@bbb2222 pedagogy@bbb2222 strategy@bbb2222 slides@bbb2222)
+- judges @bbb2222: story PASS, technical PASS (drift-recheck), behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS
+- judges @aaa1111: writing PASS
+
+body text'
+run "$TMP/t22.md" --writing PASS --slides PASS --sha ccc3333 --date 2026-08-28 >/dev/null
+assert_no_grep "$TMP/t22.md" 'grandfathered'                 'T22 no verdict is downgraded by a stamp that did not judge it'
+assert_grep    "$TMP/t22.md" 'story PASS'                    'T22 a verdict from the OTHER judges row survives'
+assert_grep    "$TMP/t22.md" 'technical PASS (drift-recheck)' 'T22 and keeps its qualifying note'
+assert_grep    "$TMP/t22.md" 'writing PASS'                  'T22 the freshly stamped class is recorded'
+assert_grep    "$TMP/t22.md" 'slides PASS'                   'T22 both freshly stamped classes are recorded'
+
 echo "──────────────────────────────"
 echo "update-quality.test.sh: $pass passed, $fail failed"
 [[ $fail -eq 0 ]]

@@ -126,7 +126,7 @@ Optional, when your sessions start running heavy: [The context ceiling and token
 
 **Quality:** compendium-audited 2026-08-26 (writing@0e4f7c9e story@0e4f7c9e technical@7fb973dd behavior@1c765f2 pedagogy@7fb973dd strategy@7992fd0 slides@0e4f7c9e)
 - judges @0e4f7c9e: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
-- cross_module @5df71aa6: PASS — set=[earn-the-trust,run-the-first-experiment]; 1 pairs, 0 blocking; see instances/ae101--module-set--m3-m4.cross_module.json
+- cross_module @c277a9f4: PASS — set=[earn-the-trust,run-the-first-experiment]
 
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply + Evaluate + Create

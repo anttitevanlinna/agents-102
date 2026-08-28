@@ -76,8 +76,8 @@ One long session, drawn as a sea passage.
 
 **Sea-passage trailers cut (2026-08-25, Antti-approved):** the two hanging lines after the chart bullets (*"Packaging decides what catches problems during the handoff."* / *"A standing check pushes back before the next wrong step builds on the last one. That is the difference between a final review and feedback inside the passage."*) — doctrine restated after the chart already argued it (`check_slides.md` §16 class a). Their claim rows went with them. Do not restore.
 
-**Quality:** compendium-audited 2026-08-26 (writing@d5aa7e3d story@d5aa7e3d technical@10a10d2b behavior@1c765f2 pedagogy@d5aa7e3d strategy@1c765f2 slides@d5aa7e3d)
-- judges @d5aa7e3d: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-28 (writing@d5aa7e3d story@d5aa7e3d technical@0cea7581 behavior@0cea7581 pedagogy@d5aa7e3d strategy@1c765f2 slides@d5aa7e3d)
+- judges @0cea7581: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - source-freshness stamped 2026-05-25; MiniJinja and getpushtoprod stamps re-verified 2026-07-02 (stamps in Source verification block; run `source-freshness.sh --target <cohort-date>`).
 **Lecture meta:** *10–15 min closing lecture for M5, deck-shaped. Names the three-pattern after you have built each piece. Earns the name from felt evidence, not from a slide deck delivered cold. The M6 bridge lives in the module file's `## Next`, not here.*
 **Word count:** ~940 words body.

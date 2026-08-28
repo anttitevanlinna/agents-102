@@ -1,7 +1,7 @@
 {
  "class": "slides",
  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/learn-from-the-test.md",
- "body_sha": "f95b4eb3ccd451107f6fb3294eb1310da545449a19f3c79309e9864ec8c697ac",
+ "body_sha": "168fe93fb8600d4cbe7aae572b783f1a86b5943e69c65c18e041ab1fa370bb16",
  "verdict": "PASS",
  "training": "ae101",
  "chunk_map": [
@@ -76,16 +76,15 @@
    "lines": "109-114"
   }
  ],
- "notes": "Pin b1ba9165 (\"M5 run fixes: KC back to four, no failed run, the shape is a judge\"), staleness reason diff-region, prior pin body_sha 6ad2f857f1104390820a25fc953b68b3d5c432f570b982808673586808c14999. `git diff HEAD~3..HEAD -- curriculum/trainings/agentic-engineering-101/learn-from-the-test.md` shows exactly two body-region hunks: (a) raw line 16, What You'll Learn bullet 3, `background-agent` -> `LLM judge` inside the three-shape parenthetical; (b) raw lines 58-64, Key Concepts, the fifth bullet (\"The verifier, the reference artefact and the plan are compounding in a different shape from a rule: nothing loaded, everything checked.\") is deleted, block back to four lines. A third hunk touches the Leap-test wording (same background-agent -> LLM judge swap) but that line sits at raw ~202, inside the maintainer block (cut at 115) -- out of body scope for this class. Two more maintainer-only hunks add the two 2026-08-27 dated accept-notes documenting both changes. Chunk map is otherwise unchanged from the prior pin: no heading added, removed, or renamed; chunk boundaries re-verified against the current raw file this session (see chunk_map above, indices 0-13 stable).\n\nVerified this session, not carried from cache: `sed -n '1,115p' <file> | grep -niE 'background-agent|LLM judge|\\bjudge\\b'` -> exactly one hit, raw line 16 itself -- no stray `background-agent` reference survives elsewhere in the body, and `LLM judge` is not referenced again downstream (chunk 8's \"the verifier's green is a claim, not proof\" names no shape), so the swap creates no dangling forward pointer and no orphaned earlier reference. Key Concepts now reads four lines (`sed -n '58,63p' <file>` -> four bullets, matches the maintainer's dated \"Block is four lines, not five\" note).\n\nMechanical checks re-run fresh this session against the current raw file: `node scripts/check-slide-size.js --file <this file> --report` -> 11 composed slides (module-present fork), 0 oversized; largest unchanged at chunk 6 'Your mid-run worries hint at missing checks' 159w/0b; 'Key Concepts' now 52w/4b (was 74w/5b, consistent with the one-bullet cut); 'What You'll Learn' 97w/5b (bullet text length nearly identical, LLM judge vs background-agent). `node scripts/check-slide-deixis.js --file <this file>` -> 'OK — 1 files, no page-geometry pointers across the slide cut.' `node scripts/check-slide-numbering.js` (whole-repo) -> 'OK — 60 files, Phase/Step numbering consistent'; no Phase/Step headers in this file. Dialect grep re-validated against a freshly planted 'forcing function' line appended to a fresh extract of the current body (`/tmp/body_extract.txt`) -> caught at the new line; the same pattern against the real current body (`sed -n '1,115p' <file> | grep -niE 'compendium|forcing function|\\bbeat\\b|surfaces?\\b|firing|\\bmood\\b|writing surface'`) -> exit 1, zero hits. `grep -n '\\*\\*' <file> | awk -F: '$1<=115'` -> bold-span list unchanged by this diff (LLM judge/background-agent swap sits inside the pre-existing LO bold-verb span, adds no new bold). `grep -n 'The point:' <file>` -> zero matches, same as prior pin, rule 16(c)'s trigger shape has no candidate.\n\nMaintainer block read in full for accept-notes before filing anything; thirteen dated notes found (the eleven from the prior pin plus the two new 2026-08-27 notes covering exactly the two diff hunks), listed in accept_notes_found. Both diff regions are directly covered by their own dated accept-note; no undocumented change found in the body region.",
+ "notes": "Pin a50978f7, staleness reason diff-region. `git diff a50978f7..HEAD -- curriculum/trainings/agentic-engineering-101/learn-from-the-test.md` shows: (a) raw line 16, What You'll Learn bullet 3, drops the redundant lead-in 'using one of three shapes' -- 'Build a verifier shaped against your dominant failure using one of three shapes (LLM judge, shell-hook, or Ralph re-feed)' -> 'Build a verifier shaped against your dominant failure (LLM judge, shell-hook, or Ralph re-feed)'; the parenthetical menu itself is untouched. (b) raw line 79 (maintainer-block-adjacent body, chunk 9 'Back to the map'), 'The wall' paragraph: `CLAUDE.local.md` / `CLAUDE.md` gain a leading `./` -- a path-notation precision fix, no referent or dialect change. (c) two maintainer-only hunks: the dead 'Slide-size splits (2026-07-10...)' accept-note (referencing headers -- 'Re-send the same task, packaged', 'Run the fork from the original repo' -- that no longer exist in this body) is deleted, and the 'Block is four lines, not five' note is reworded to fold in the deleted note's content without the dangling header references; both are prose-scope, not slides-scope. (d) Quality-line pin/judge-SHA bump only. Chunk map unchanged from the prior pin: no heading added, removed, renamed, or reordered; boundaries re-verified against the current raw file this session (indices 0-13 stable, matches prior instance exactly).\n\nFull sequential deck read performed this session (not diff-scoped): every chunk 0-13 read in order holding prior-chunk context, per the class template. One judgment call surfaced and is recorded as a todo rather than a finding -- see todos. Everything else: no new referent break, no new cross-file positional callback, no new dead backward reference, no new cadence tic, no new dialect term, no new bold-budget overrun, no new page-geometry pointer, no new low-value bullet. `grep -n \"kit\"` against the body surfaced 'the kit' at chunk 8 (raw lines 69-70) with no in-file antecedent; verified against `curriculum/vocabulary.md` line 37 ('kit | the set the practitioner owns... | threaded from earn-the-trust') before ruling it arc-earned spine vocabulary, not a break -- logged so the grep trail is auditable.\n\nMechanical checks run fresh this session against the current raw file: `node scripts/check-slide-size.js --file <this file> --report` -> 11 composed slides (module-present fork), 0 oversized, largest still chunk 6 'Your mid-run worries hint at missing checks' 159w/0b; chunk 3 'What You'll Learn' 92w/5b (down slightly from 97w, matches the trimmed lead-in); chunk 7 'Key Concepts' 52w/4b, unaffected by this diff. `node scripts/check-slide-deixis.js --file <this file> --report` -> one hit, 'the bullets back' at line 52, status 'ok ... maintainer-attested', matching the file's own dated 'Slide deixis accepted' note; no other page-geometry pointer anywhere. `node scripts/check-slide-numbering.js` (whole-repo) -> 'OK — 60 files, Phase/Step numbering consistent'; no Phase/Step headers in this file. Dialect grep (`grep -niE 'compendium|forcing function|\\bbeat\\b|surfaces?\\b|firing|\\bmood\\b|writing surface'` over the body projection) -> zero hits; pattern's `planted_proof` in the body-view is CLEAN. Cadence-tic greps (`Not X. Not Y.` construction, self-grading superlatives, number+retraction, abstraction-noun stacks) run fresh over the body projection -> zero hits each. `grep -n '\\*\\*'` over the body -> 8 bold spans total, all inside the rule-9 named exceptions (five LO verbs at chunk 3, one blockquote handle each at chunks 4/6, '**The wall**' at chunk 9, '**Read,**' reading-list mode-word at chunk 12) -- none exceeds the ≤1-per-slide budget outside a template-mandated slide. `grep -n 'The point:' <file>` -> zero matches, rule 16(c)'s trigger shape has no candidate anywhere in the file.\n\nMaintainer block read in full for accept-notes before filing anything; twelve dated notes found (the removed 'Slide-size splits' note is gone, consistent with the diff), listed in accept_notes_found. Both live diff regions are either directly covered by an existing dated accept-note (the 'Block is four lines, not five' reword) or need none (the redundant-phrase trim and the `./` path fix are not rule-implicated). No undocumented change found in the body region.",
  "accept_notes_found": [
   "Done-done opener (Antti-directed 2026-08-23) -- placement + question-form + do-not-convert-to-trainer-only",
   "`## Inspect your results` stays prose, no fence (accepted 2026-08-20)",
   "`## Set up the worktree` moved into `exercises/fork-the-worktree.md` as Phase 1 bullets (2026-08-25, Antti-directed)",
-  "Slide-size splits (2026-07-10, hand slides-audit)",
   "Nag beat + reading reminder added (2026-07-10, Antti-directed cognitive-load arc)",
   "Two corrections to the nag beat (2026-08-14, Antti)",
   "Key Concepts: the four lines ARE the block, verbatim (Antti-decided 2026-08-15)",
-  "Block is four lines, not five (Antti 2026-08-27, training run) -- supersedes the fifth-line note, fifth bullet cut",
+  "Block is four lines, not five (Antti 2026-08-27, training run) -- reworded this pin to fold in the retired 'Slide-size splits' note's content, same four-line count",
   "Verifier-shape handle renamed, background-agent verifier -> LLM judge (Antti 2026-08-27, training run)",
   "Multisession permission carrier, M5 alone, one line (Antti 2026-08-15)",
   "Slide deixis accepted: \"the bullets back\" -- verb phrase, not a spatial pointer",
@@ -98,7 +97,7 @@
    "rule_lead": "Referent resolution under a sequential deck read.",
    "verdict": "PASS",
    "chunks_flagged": [],
-   "evidence": "Diff-region check: chunk 3's new 'LLM judge' menu item (raw line 16) is a bare parenthetical noun in a shape-menu list, not a pronoun/demonstrative needing an antecedent -- it names its own referent (a judge-shaped verifier) inline, same grammar as the two shapes either side of it ('shell-hook', 'Ralph re-feed'), neither of which is 'earned' elsewhere either. `grep -niE 'background-agent|LLM judge|\\bjudge\\b'` over the body (this session) confirms no leftover reference presupposes the old term and nothing downstream in the body treats 'LLM judge' as an already-established handle it must resolve against. Chunk 7's Key Concepts, now four bullets, carries no dangling reference to the deleted fifth bullet -- the fourth bullet ('The agent makes evidence cheap...') was always the last line and needs nothing after it. Closest calls from the prior pin re-checked and still clear: chunk 6 raw line 48's 'the worktree' (link-title convention + arc-earned vocabulary, `grep -n worktree curriculum/trainings/agentic-engineering-101/getting-going.md curriculum/trainings/agentic-engineering-101/earn-the-trust.md` this session confirms M1/M3 prior naming); chunk 9's 'the map' / 'sitting 2' (compendium's own arc-earned example, ordinal a five-sittings-in student can count).",
+   "evidence": "Closest call, re-checked fresh this session: chunk 3 'What You'll Learn' line 16 'Build a verifier shaped against your dominant failure (LLM judge, shell-hook, or Ralph re-feed)' -- 'Ralph re-feed' is not explained anywhere before this slide; the term is only taught via the linked lecture `what-packaging-is.md` (chunk 6) and only named in a worked example at chunk 10's 'Optional challenges' (line 91, 'Run Geoffrey Huntley's original Ralph'). Stays inside: `curriculum/vocabulary.md` line 63 registers 'verifier shapes | LLM judge · deterministic shell hook · Ralph re-feed' as a controlled training term threaded from `what-packaging-is`, and the phrase sits inside a `## What You'll Learn` LO bullet whose genre job (per `curriculum/module-shape.md`'s LO template) is to preview an outcome the module teaches later -- the reader needs only 'one of three named approaches' to follow the LO, not Ralph's definition, and the identical parenthetical (verbatim aside from a trimmed lead-in) has passed three prior slides pins unchanged. Second call: chunk 8 line 69 'the kit' -- no in-file antecedent, but `vocabulary.md` line 37 registers 'kit' as arc-earned spine vocabulary threaded from `earn-the-trust` (an earlier module), so the prior-module carve-out applies directly.",
    "fix_hint": null,
    "blocking": true
   },
@@ -108,7 +107,7 @@
    "rule_lead": "Cross-file and positional callbacks.",
    "verdict": "PASS",
    "chunks_flagged": [],
-   "evidence": "Unaffected by this diff (both hunks are same-chunk wording swaps/deletions, neither touches a cross-file link). No unnamed cross-file callback anywhere in the current body. Chunk 6's 'In the two closing lectures, the headings carry the claims' still names its referent by function with both links following inside the same chunk, matching the file's own dated 'Slide deixis accepted' note.",
+   "evidence": "Closest call: chunk 4 'Start here' line 24 blockquote 'The M1 countermove rides along: tell the agent what output you want.' -- names the source module by its ordinal (M1) rather than by title. Stays inside: the claim is unpacked in the same sentence ('tell the agent what output you want'), matching the rule's own worked passing example ('the opening lecture's infinite chameleon: the LLM that flatters you…' -- pass); a reader does not need to know where M1 sits in the deck to follow the claim. Chunk 6's 'In the two closing lectures, the headings carry the claims' resolves in-chunk (both named lecture links follow immediately after), matching the file's own dated 'Slide deixis accepted' note for the adjacent phrase.",
    "fix_hint": null,
    "blocking": true
   },
@@ -118,7 +117,7 @@
    "rule_lead": "Every backward reference points at a beat that exists.",
    "verdict": "PASS",
    "chunks_flagged": [],
-   "evidence": "Unaffected by this diff. Neither hunk touches a backward reference to a lecture/exercise beat -- one swaps a menu-item word, the other deletes a Key Concepts bullet with no beat-reference in it. Chunk 5's M4 send-off backward references still resolve against `run-the-first-experiment.md` / `walk-and-send-off.md` (`ls`, run this session, both present).",
+   "evidence": "Closest call: chunk 8 'Inspect your results' line 69 'Give it the read the first return got: the three lenses, your worries tested against the artefact' -- both 'the three lenses' and 'your worries' point backward at beats inside this same file (chunk 3/4's 'three named lenses' LO and chunk 6's 'Your mid-run worries hint at missing checks' section), both of which exist and precede chunk 8 in reading order under either fork. Chunk 5/9's repeated 'the session you sent off' / 'these four sittings' resolve against M4 (`run-the-first-experiment.md`), confirmed present in the training's module set (`ls curriculum/trainings/agentic-engineering-101/run-the-first-experiment.md` this session).",
    "fix_hint": null,
    "blocking": true
   },
@@ -128,7 +127,7 @@
    "rule_lead": "No orphan slides.",
    "verdict": "PASS",
    "chunks_flagged": [],
-   "evidence": "Neither diff hunk reduces a chunk to a bare link list or a wait-state bullet. Chunk 3 (What You'll Learn) still carries five distinct LO bullets after the word swap. Chunk 7 (Key Concepts) still carries four self-carrying doctrine bullets after the deletion, each a full independent claim -- not reduced below a self-carrying threshold. All 14 chunks carry a self-standing claim or list with its own lead sentence.",
+   "evidence": "Smallest slide in the deck is chunk 13 'Next' (28 words, exactly the two plain sentences the closer rule requires): 'Module 6 reads the packaged session: subtler misses, subtler drift.' + 'The question widens from did my task pass? to do all our tasks pass, and who reviewed what?' -- both are self-contained claims, not a wait-state or a single context-dependent bullet. Every other chunk carries a multi-sentence or multi-bullet self-standing claim; none reduces to a bare context-dependent fragment.",
    "fix_hint": null,
    "blocking": false
   },
@@ -138,7 +137,7 @@
    "rule_lead": "Header self-carries at projection distance.",
    "verdict": "PASS",
    "chunks_flagged": [],
-   "evidence": "Chunk 3 header 'What You'll Learn' still accurately covers its content after the LLM-judge swap -- the header makes no claim about which shapes are named, only that learning outcomes follow. Chunk 7 header 'Key Concepts' still accurately covers its content at four bullets (the section name promises key concepts, not a specific count) -- matches the maintainer's own framing that 'Key Concepts now ends at its sixth bullet as the section name promises' logic, here at its fourth. No header is contradicted by either diff hunk.",
+   "evidence": "Closest call: chunk 9 header 'Back to the map, one last time' -- 'one last time' could misread as a training-wide claim if this were the general-case fork. Stays inside: this chunk renders only under the no-M6 flag (`<!--flag:no-module:spot-gaps-build-the-loop-->`), where the header is literally true -- the last module in that deployed sequence, so the map genuinely appears one last time. Every other header (Big Idea, Prework, What You'll Learn, Start here, Say what done-done means, Your mid-run worries hint at missing checks, Key Concepts, Inspect your results, Optional challenges, Bring to Module 6, Pre-reads before Module 6, Next) is a literal, accurate summary of its own content on a fresh read.",
    "fix_hint": null,
    "blocking": false
   },
@@ -148,7 +147,7 @@
    "rule_lead": "LLM-cadence caps.",
    "verdict": "PASS",
    "chunks_flagged": [],
-   "evidence": "Full-body read this session, both diff regions specifically checked: chunk 3's edited bullet ('Build a verifier shaped against your dominant failure using one of three shapes (LLM judge, shell-hook, or Ralph re-feed)') is a plain parenthetical list, not a triple-anaphora or 'Not X. Not Y. Z.' construction. Chunk 7's now-four-bullet Key Concepts contains no self-grading superlative, no number-with-retraction, no abstraction-noun stack, no empty-leg verb triplet -- the deleted fifth bullet ('nothing loaded, everything checked') was itself a two-leg antithesis, not a cadence violation, and its removal introduces no new tic. Rest of the body unchanged from the prior pin's full read, which found none of these shapes anywhere else.",
+   "evidence": "Mechanical: fresh greps over the body projection this session for `Not [A-Z][a-z]*\\. Not `, self-grading superlatives (`one of the most|the best|the single|the ultimate`), number+retraction (`about [0-9]+%|could be more|could be less`), and abstraction-noun-stack candidates (`reality\\b|-ness\\b`) -> zero hits on all four. Closest judgment call: chunk 6 line 48 'a session they steer is a session you don't babysit, and a session you don't babysit can run beside another' -- a chain-repetition (anadiplosis) but only two legs, inside the rule's explicit 'cut to a pair' allowance, not a banned triple. No verb-triplet-with-empty-leg found anywhere in the body.",
    "fix_hint": null,
    "blocking": true
   },
@@ -158,7 +157,7 @@
    "rule_lead": "Internal dialect never lands on a slide.",
    "verdict": "PASS",
    "chunks_flagged": [],
-   "evidence": "`sed -n '1,115p' curriculum/trainings/agentic-engineering-101/learn-from-the-test.md | grep -niE 'compendium|forcing function|\\bbeat\\b|surfaces?\\b|firing|\\bmood\\b|writing surface'` (run this session) -> exit 1, zero hits; pattern re-proven this session by appending a planted 'forcing function' line to a fresh extract and catching it at the new line. 'LLM judge' is engineer-register vocabulary (the compendium's own §8 exception list treats 'judge' terminology as ordinary where the module has earned it, and the maintainer note confirms `the-gate-is-a-claim` and `diagnose-and-resend-3` already use 'judge' at this point in the arc) -- not repo-internal dialect. 'background-agent' (now removed) was itself plain engineering vocabulary, not dialect, so this swap is not a dialect fix; it is a precision fix per the maintainer note (avoiding collision with the field's own 'background agent' meaning), orthogonal to §8.",
+   "evidence": "Mechanical: `grep -niE 'compendium|forcing function|\\bbeat\\b|surfaces?\\b|firing|\\bmood\\b|writing surface' curriculum/evals/body-views/ae101--module--learn-from-the-test.body.txt` (run this session) -> zero hits; body-view's `greps.dialect`-equivalent patterns (em_dash, banned_words, ritual_ceremony, leverage_verb, the_student, author_we, session_biography, dated_line) all report `status: CLEAN` with `planted_proof: true`. 'LLM judge' (chunk 3/12) is engineer-register vocabulary the module itself has earned by this point in the arc (`the-gate-is-a-claim.md` runs a full slide on calibrating 'the judge'; `diagnose-and-resend-3` hands the student the same phrase) -- not repo-internal dialect.",
    "fix_hint": null,
    "blocking": true
   },
@@ -168,7 +167,7 @@
    "rule_lead": "Emphasis budget -- bold is for handles, and go very lightly.",
    "verdict": "PASS",
    "chunks_flagged": [],
-   "evidence": "`grep -n '\\*\\*' curriculum/trainings/agentic-engineering-101/learn-from-the-test.md | awk -F: '$1<=115'` (run this session) confirms the bold-span list is unchanged by this diff: the LLM-judge/background-agent swap sits inside the pre-existing chunk-3 LO bold-verb span ('**Build**'), adding no new bold; the Key Concepts bullet deletion removes a plain (unbolded) bullet, so the chunk's bold count (zero) is also unaffected. Every other bold span (five LO verbs, two ≤3-word blockquote handles, '**The wall**', '**Read,**') matches the prior pin's clearance, none exceeding the ≤1-handle budget outside the named LO-template and reading-list exceptions.",
+   "evidence": "Mechanical: `grep -n '\\*\\*' curriculum/evals/body-views/ae101--module--learn-from-the-test.body.txt` (run this session) -> 8 bold spans, all ≤3 words: five one-word LO verbs at chunk 3 lines 14-18 ('Diagnose'/'Pair'/'Build'/'Assemble'/'Re-send', the module-shape LO template's own bold, N/A exception), one 4-word blockquote handle at chunk 4 line 24 ('Long sessions, short reads.'), one 2-word blockquote handle at chunk 6 line 52 ('Dense slides.'), one 2-word handle at chunk 9 line 79 ('The wall'), and one reading-list mode-word at chunk 12 line 107 ('Read,' -- the exact `**Read:**`-shaped waiver the rule names). No slide carries more than one bolded element outside the two named template exceptions (LO verbs, reading-list mode-word).",
    "fix_hint": null,
    "blocking": false
   },
@@ -178,7 +177,7 @@
    "rule_lead": "Presence precedes content -- verify against the composed deck, not long-read.",
    "verdict": "PASS",
    "chunks_flagged": [],
-   "evidence": "`node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/learn-from-the-test.md --report` (run this session) -> 11 composed slides, module-present fork, matching the prior pin's count -- the diff changes wording/bullet-count inside two existing chunks, it does not add, remove, or move a `##` boundary, so deck presence is unaffected. Both edited chunks (What You'll Learn, Key Concepts) are plain top-level sections, unconditionally in the deck.",
+   "evidence": "Mechanical: `node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/learn-from-the-test.md --report` (run this session) -> 11 composed slides, module-present fork -- confirms every top-level section in this module file reaches the composed deck. This is a module file (`curriculum/trainings/agentic-engineering-101/`), which module-shape.md renders unconditionally under `section.module`, not a phase-less prose section that could be dropped the way prework/supplementary pages were in the 2026-07-09 incident this rule cites.",
    "fix_hint": null,
    "blocking": true
   },
@@ -188,7 +187,7 @@
    "rule_lead": "Page geometry dies at the cut; reading order survives.",
    "verdict": "PASS",
    "chunks_flagged": [],
-   "evidence": "`node scripts/check-slide-deixis.js --file curriculum/trainings/agentic-engineering-101/learn-from-the-test.md` (run this session) -> 'OK — 1 files, no page-geometry pointers across the slide cut.' Neither diff hunk introduces a spatial pointer ('above'/'below'/'at the top of this page') -- one is a same-line word swap, the other a bullet deletion. Rest of the body's deixis status unchanged from the prior pin.",
+   "evidence": "Mechanical: `node scripts/check-slide-deixis.js --file curriculum/trainings/agentic-engineering-101/learn-from-the-test.md --report` (run this session) -> one match, 'the bullets back' at line 52, marked 'ok ... maintainer-attested' against the file's own dated 'Slide deixis accepted' note (verb phrase 'back them up', not a spatial pointer). No other page-geometry pointer ('above'/'below'/'at the top of this page') anywhere in the body.",
    "fix_hint": null,
    "blocking": true
   },
@@ -198,7 +197,7 @@
    "rule_lead": "Slide size -- 210 words / 6 bullets, and the cap is machine-checked.",
    "verdict": "PASS",
    "chunks_flagged": [],
-   "evidence": "`node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/learn-from-the-test.md --report` (run this session) -> 11 slides, 0 oversized. Chunk 7 'Key Concepts' now 52 words / 4 bullets (down from 74w/5b, consistent with the one-bullet cut), well under both axes. Chunk 3 'What You'll Learn' 97 words / 5 bullets, essentially unchanged (word-length of 'LLM judge' vs 'background-agent' nearly identical). Largest slide still chunk 6 at 159w/0b, unaffected by this diff.",
+   "evidence": "Mechanical: `node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/learn-from-the-test.md --report` (run this session) -> 11 slides, 0 oversized. Largest is chunk 6 'Your mid-run worries hint at missing checks' at 159 words / 0 bullets; next is chunk 5 'Say what done-done means' at 115 words / 0 bullets; both well under the 210-word ceiling. No accept-note needed.",
    "fix_hint": null,
    "blocking": false
   },
@@ -208,7 +207,7 @@
    "rule_lead": "A bullet earns its slot or dies -- three classes that read as rigour and carry nothing.",
    "verdict": "PASS",
    "chunks_flagged": [],
-   "evidence": "Re-evaluated fresh this session with the diff regions as the focus. Chunk 3's edited LO bullet is a distinct Bloom-verb action ('Build'), no overlap with the other four -- swapping the shape name inside its parenthetical changes no structural role. Chunk 7's Key Concepts, now four bullets instead of five: the deleted fifth line ('The verifier, the reference artefact and the plan are compounding in a different shape from a rule: nothing loaded, everything checked') was itself the closest candidate for class (a) doctrine-restatement in the prior pin's read -- a shape-of-compounding claim that duplicated ground `what-packaging-is.md`'s theory slides and the closer lectures already cover, and the maintainer's own 2026-08-27 note confirms it 'mapped to no beat the deck teaches.' Its removal is exactly what rule 16 argues for; the remaining four bullets are the ones the maintainer's 2026-08-15 note already defended as mapping to a specific taught beat each, re-confirmed here. No bullet anywhere sits under a `**The point:**` line (`grep -n 'The point:' <file>` -> zero matches, run this session).",
+   "evidence": "Closest call: chunk 7's four Key Concepts lines read as aphoristic doctrine on a cold read ('The model already knows the public field.', etc.). Stays inside: the maintainer's dated 2026-08-15 note maps each of the four one-to-one to a specific theory slide mid-deck in `lectures/what-packaging-is.md', and its 2026-08-27 sibling note confirms the block is deliberately exactly these four, no more -- a KC bullet restating exercise/lecture mechanics would be the duplicate this rule bans, but these four are the compressed pointer TO those beats, not a restatement of them. `grep -n 'The point:' curriculum/evals/body-views/ae101--module--learn-from-the-test.body.txt` (run this session) -> zero matches; rule 16(c)'s aphorism-kicker trigger shape has no candidate anywhere in the file. Chunk 11/9's closing autonomy lines ('Your call.', 'Your call when it's ready.') are specific consequence statements tied to the immediately preceding sentence, not generic header restatements.",
    "fix_hint": null,
    "blocking": false
   },
@@ -220,7 +219,7 @@
    "evidence": "No guess-before-reveal live-demo instruction anywhere in the body, including the edited chunk 6. This is a module wrapper file (metadata, LOs, include-links, closer prose), not a demo lecture — no candidate shape for this rule exists here.",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "6ad2f857f1104390820a25fc953b68b3d5c432f570b982808673586808c14999",
+   "carried_from": "f95b4eb3ccd451107f6fb3294eb1310da545449a19f3c79309e9864ec8c697ac",
    "carried_shape": "94301cda9e6a5a78"
   },
   {
@@ -231,7 +230,7 @@
    "evidence": "`node scripts/check-slide-numbering.js` (whole-repo, run this session) → 'OK — 60 files, Phase/Step numbering consistent.' No hand-numbered `## Phase N:` / `## N.` headers anywhere in this module file, before or after this diff.",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "6ad2f857f1104390820a25fc953b68b3d5c432f570b982808673586808c14999",
+   "carried_from": "f95b4eb3ccd451107f6fb3294eb1310da545449a19f3c79309e9864ec8c697ac",
    "carried_shape": "94301cda9e6a5a78"
   },
   {
@@ -242,7 +241,7 @@
    "evidence": "The new '[Lecture: Hooks always fire](lectures/hooks-always-fire.md)' link and every other lecture/exercise link in this file are structural include-links (standalone-paragraph pattern), 'never in scope' for rule 13 by the compendium's own text. Rule 13 is a review surface, never a gate.",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "6ad2f857f1104390820a25fc953b68b3d5c432f570b982808673586808c14999",
+   "carried_from": "f95b4eb3ccd451107f6fb3294eb1310da545449a19f3c79309e9864ec8c697ac",
    "carried_shape": "94301cda9e6a5a78"
   },
   {
@@ -253,7 +252,7 @@
    "evidence": "This file is a module file, not an exercise or lecture — rule 15's binding split (exercise-imperative vs lecture-claim headings) is scoped to those two student-facing types by its own text. No header was added or renamed by this diff (only 'Set up the worktree' was deleted along with the section it labelled); the remaining headers are unaffected.",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "6ad2f857f1104390820a25fc953b68b3d5c432f570b982808673586808c14999",
+   "carried_from": "f95b4eb3ccd451107f6fb3294eb1310da545449a19f3c79309e9864ec8c697ac",
    "carried_shape": "94301cda9e6a5a78"
   },
   {
@@ -278,6 +277,12 @@
   }
  ],
  "blocking_findings_count": 0,
- "todos_count": 0,
+ "todos_count": 1,
+ "todos": [
+  {
+   "rule": "check_slides.md §1",
+   "note": "Rule 1 names a carve-out for vocabulary earned in a PRIOR module but has no explicit carve-out for a `## What You'll Learn` bullet naming a term the SAME module only teaches later (here: chunk 3's 'Ralph re-feed', not explained until chunk 6's linked lecture / chunk 10's worked example). Verdict stayed PASS on registered-vocabulary + LO-genre grounds (see rule 1's evidence), and the identical phrase has passed prior pins, but the compendium doesn't currently name this exception the way it names the prior-module one -- worth a line if this shape recurs."
+  }
+ ],
  "shape_hash": "94301cda9e6a5a78"
 }

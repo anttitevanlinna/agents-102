@@ -3,10 +3,10 @@
  "file": "curriculum/trainings/agentic-engineering-101/supplementary/verification-asymmetry.md",
  "training": "ae101",
  "verdict": "PASS",
- "body_sha": "c7422b3ca63d9a5908c9263c6ad26c6c39dfc33ba2d37ee1407595fac5dc42b1",
+ "body_sha": "6779d95776a76ef44f676d8c2968f90370ec7bde9b90dcb055ea83ab38da11bb",
  "shape_hash": "1870b031fbe8c765",
- "pin": "1abb84c6",
- "staleness_reason": "rule-drift",
+ "pin": "e11bbeb4",
+ "staleness_reason": "diff-region",
  "chunk_map": [
   {
    "index": 0,
@@ -37,7 +37,7 @@
    "blocking": true,
    "verdict": "PASS",
    "chunks_flagged": [],
-   "evidence": "Chunk 1 line 7: 'Jason Wei named the pattern... His corollary, **the verifier's rule**' — 'His' resolves to Wei, named two clauses earlier, same chunk. Chunk 2 line 13: 'M2 used this without naming it: **find is easier than judge**' — 'this' resolves to the cheap/expensive-check heuristic stated in lines 11-12, same chunk; 'the map' in the same bullet is arc-earned spine vocabulary per this rule's own carve-out list (verbatim example: 'the map'), not a fresh unexplained referent. Chunk 3 line 19: 'delegation-trap to delegation-win' reuses 'trap' named at chunk 2 line 12 — a term introduced on an earlier slide and reused, explicitly a NOT-violation. Closest borderline: chunk 2 header 'Why this decides what to delegate' — 'this' stays inside because the immediately preceding chunk (checking-cost vs doing-cost asymmetry) is the only candidate antecedent and a deck reader holds it. No never-named, vague, or stranded referents.",
+   "evidence": "Chunk 1 line 7: 'Jason Wei named the pattern... His corollary, **the verifier's rule**' — 'His' resolves to Wei, named two clauses earlier, same chunk. Chunk 2 line 13: 'M2 used this without naming it: **find is easier than judge**' — 'this' resolves to the cheap/expensive-check heuristic stated in lines 11-12, same chunk; 'the map' in the same bullet is arc-earned spine vocabulary (this rule's own carve-out example is literally 'the map'), not a fresh unexplained referent. Chunk 3 line 17-19 (edited since pin e11bbeb4: bullet now reads 'No cheap verifier? Keep the task, or build the verifier first and then delegate.', the fragment 'Two options.' was cut): 'trap' at line 19 reuses 'a trap' named at chunk 2 line 12, and 'delegation-trap to delegation-win' at line 19 reuses both halves of that same coinage — a term introduced on an earlier slide and reused, explicitly a NOT-violation. The edit itself introduces no new referent to resolve; 'the task' and 'the verifier' in the shortened bullet are the chunk's own header nouns. No never-named, vague, or stranded referents anywhere in the deck.",
    "fix_hint": null
   },
   {
@@ -47,28 +47,8 @@
    "blocking": true,
    "verdict": "PASS",
    "chunks_flagged": [],
-   "evidence": "Chunk 2 line 13: 'M2 used this without naming it: **find is easier than judge**' names the source by module and unpacks the claim in the same sentence — the rule's preferred form, not a positional pointer ('the opening lecture said'). Maintainer STATUS paragraph (line 27) documents this as a cleared, deliberate lineage-naming: 'already enacted in M2 body as \"find is easier than judge\"... the body's M2 back-reference is deliberate lineage-naming, kept per the audit's cheap-groundedness call... the ref is backward-naming of a lived moment, not sequencing.' No cross-file positional violation.",
+   "evidence": "Chunk 2 line 13: 'M2 used this without naming it: **find is easier than judge**' names the source by module and unpacks the claim in the same sentence — the rule's preferred form, not a positional pointer ('the opening lecture said'). Maintainer STATUS paragraph (line 27, unchanged since pin) documents this as cleared, deliberate lineage-naming: 'already enacted in M2 body as \"find is easier than judge\"... the body's M2 back-reference is deliberate lineage-naming, kept per the audit's cheap-groundedness call... the ref is backward-naming of a lived moment, not sequencing.' No cross-file positional violation.",
    "fix_hint": null
-  },
-  {
-   "compendium": "check_slides.md",
-   "rule_index": 3,
-   "rule_lead": "Every backward reference points at a beat that exists.",
-   "blocking": true,
-   "verdict": "N/A",
-   "chunks_flagged": [],
-   "evidence": null,
-   "na_reason": "No 'the X you did/saw/caught' beat-reference pattern in the body; this is an informational supplementary, not an exercise recap. The one backward reference (M2's law, chunk 2) is covered under rule 2 and is a named module/law reference, not a student-beat claim."
-  },
-  {
-   "compendium": "check_slides.md",
-   "rule_index": 4,
-   "rule_lead": "Live-demo beats survive a text read.",
-   "blocking": true,
-   "verdict": "N/A",
-   "chunks_flagged": [],
-   "evidence": null,
-   "na_reason": "No guess-before-reveal or live-demo construction anywhere in the body (signals: has_prompt_blocks false, has_figures false)."
   },
   {
    "compendium": "check_slides.md",
@@ -77,7 +57,7 @@
    "blocking": false,
    "verdict": "PASS",
    "chunks_flagged": [],
-   "evidence": "Each of the 3 content chunks carries 3 substantial, self-carrying bullets (lines 5-7, 11-13, 17-19) — none is a bare wait-state or single context-dependent fragment. Chunk 0 is the standard title-only H1 lede, not a content orphan.",
+   "evidence": "Each of the 3 content chunks carries 3 substantial, self-carrying bullets (lines 5-7, 11-13, 17-19) — none is a bare wait-state or single context-dependent fragment; the shortened line-18 bullet still carries a full claim (name the cheap verifier or build one before delegating). Chunk 0 is the standard title-only H1 lede, not a content orphan.",
    "fix_hint": null
   },
   {
@@ -87,17 +67,17 @@
    "blocking": false,
    "verdict": "PASS",
    "chunks_flagged": [],
-   "evidence": "'Checking can cost far less than doing' (line 3) is delivered by lines 5-7 (the asymmetry + Wei's rule). 'Why this decides what to delegate' (line 9) is delivered by lines 11-13 (cheap-check-delegates / expensive-check-traps + the M2 example) — the closest-to-violating case since the header is phrased as 'why' rather than a flat assertion, but the content directly cashes out the implied claim ('the asymmetry decides delegation'), so it stays inside. 'Every send-off needs a named cheap verifier' (line 15) is delivered by lines 17-19 (the verifier question + build-first option). No header the chunk's own content contradicts.",
+   "evidence": "'Checking can cost far less than doing' (line 3) is delivered by lines 5-7. 'Why this decides what to delegate' (line 9) is delivered by lines 11-13 — closest-to-violating case since it is phrased as 'why' rather than a flat assertion, but the content directly cashes out the implied claim, so it stays inside. 'Every send-off needs a named cheap verifier' (line 15) is delivered by lines 17-19, including the shortened line 18 — the trimmed wording still names the verifier question the header promises. No header the chunk's own content contradicts.",
    "fix_hint": null
   },
   {
    "compendium": "check_slides.md",
    "rule_index": 7,
    "rule_lead": "LLM-cadence caps.",
-   "blocking": false,
+   "blocking": true,
    "verdict": "PASS",
    "chunks_flagged": [],
-   "evidence": "Read all 9 body bullets against each sub-item: no 'Not X. Not Y. Z.' construction anywhere; no anaphora/epistrophe triples (no three-clause parallel repetition in any bullet); no self-grading superlatives about this page or the training's own value (line 18's 'more valuable half of the work' is generic verifier-authoring advice about the reader's future work, not self-praise of this exercise/training); no number-plus-retraction hedging (body carries no numeric claims at all — dated_line/url greps both CLEAN, 0 hits, planted-proof verified); no abstraction-noun stacks — 'delegation-trap to delegation-win' (line 19) and 'the full cost comes back to you at read time' (line 12) name concrete consequences, not fuzzed abstractions; no verb triplets with an empty leg. Closest-to-violating: line 19's 'delegation-trap to delegation-win' pairing echoes line 12's 'trap' but stays inside because it adds a new claim (task-family conversion), not empty repetition.",
+   "evidence": "Read all 9 body bullets against each sub-item, including the edited line 18. No 'Not X. Not Y. Z.' construction (the deleted fragment 'Two options.' was itself a candidate list-preamble, not a banned triad, and its removal only tightens the bullet). No anaphora/epistrophe triples anywhere. No self-grading superlatives (line 18's 'more valuable half of the work' is generic verifier-authoring advice about the reader's future work, not self-praise of this page or training). No number-plus-retraction hedging — body carries no numeric claims (dated_line grep: 0 hits, planted-proof CLEAN). No abstraction-noun stacks — 'delegation-trap to delegation-win' (line 19) and 'the full cost comes back to you at read time' (line 12) name concrete consequences. No verb triplets with an empty leg. Closest-to-violating: line 19 echoes line 12's 'trap' but adds a new claim (task-family conversion), so it stays inside.",
    "fix_hint": null
   },
   {
@@ -107,7 +87,7 @@
    "blocking": true,
    "verdict": "PASS",
    "chunks_flagged": [],
-   "evidence": "Body uses 'send-off' (heading line 15 + body lines 17, 19) and 'verifier' (throughout) — both are the page's own taught subject-matter vocabulary, not maintainer/repo dialect (surface-as-noun, firing, compendium, forcing function, beat, mood, Connections). 'Send-off' is AE101 course vocabulary for handing a task to the agent; the maintainer Placement note places this page at M4 ('where the send-off decision makes the asymmetry a governor'), i.e. after the term is established course-wide. Not on the banned-term list; not maintainer commentary bleeding into student prose.",
+   "evidence": "Body uses 'send-off' (heading line 15, body lines 17/19) and 'verifier' throughout — both are this page's own taught subject-matter vocabulary, not maintainer/repo dialect (surface-as-noun, firing, compendium, forcing function, beat, mood, Connections). Maintainer Placement note (line 29, unchanged) places this page at M4, after 'send-off' is course vocabulary. Not on the banned-term list; no maintainer commentary bleeding into student prose.",
    "fix_hint": null
   },
   {
@@ -117,7 +97,7 @@
    "blocking": false,
    "verdict": "PASS",
    "chunks_flagged": [],
-   "evidence": "Two bolded handles in the whole body: '**the verifier's rule**' (chunk 1 line 7, Wei's coinage at its naming, 4 words) and '**find is easier than judge**' (chunk 2 line 13, the M2 law at its recall, 5 words) — each within the ≲5-word handle cap and each the only bold on its chunk (≤1-per-slide budget met exactly). Chunk 3 has zero bold. Maintainer block (line 23) records a dated 2026-07-09 emphasis pass that de-bolded every other bullet lead specifically per this rule: 'all other bullet leads de-bolded, Wei quote plain, governor question plain, per theory-plan.md § Slide format — emphasis budget + check_slides.md §9.' Accept-note found and matches current body exactly.",
+   "evidence": "Two bolded handles in the whole body, unchanged by the line-18 edit: '**the verifier's rule**' (chunk 1 line 7, 4 words) and '**find is easier than judge**' (chunk 2 line 13, 5 words) — each within the ≲5-word handle cap and each the only bold on its chunk. Chunk 3, including the edited bullet, has zero bold. Maintainer block (line 23) records the dated 2026-07-09 emphasis pass that de-bolded every other bullet lead specifically per this rule; accept-note matches current body exactly.",
    "fix_hint": null
   },
   {
@@ -127,18 +107,8 @@
    "blocking": true,
    "verdict": "PASS",
    "chunks_flagged": [],
-   "evidence": "Read site/layouts/slides.js:240-265 directly: prose sections with no `.phase--*` wrapper (\"prework, supplementary, reference\") ARE slide-ified in place under `:scope > section.module`, assigned a kind code (S1... for supplementary) — the 2026-07-09 drop this rule warns about is the fixed state, not the current one. verification-asymmetry is registered at site/layouts/curriculum.js:67 inside the AE101 supplementaries array, so it reaches the composed deck as an S-coded section, not silently absent.",
+   "evidence": "Re-checked site/layouts/slides.js directly (grep for 'phase--', 'section.module', 'buildDeckModel'): buildDeckModel (line 238) walks `.phase--lecture, .phase--exercise` (line 240) then separately walks `:scope > section.module` (line 263) for phase-less prose sections, assigning a kind code — the 2026-07-09 drop this rule warns about is the fixed state, current at HEAD. verification-asymmetry is registered at site/layouts/curriculum.js:67 (re-grepped, line confirmed current: \"{ slug: 'verification-asymmetry', title: 'Verification asymmetry' }, // M4→M5\") inside the AE101 supplementaries array, so it reaches the composed deck as an S-coded section, not silently absent.",
    "fix_hint": null
-  },
-  {
-   "compendium": "check_slides.md",
-   "rule_index": 11,
-   "rule_lead": "Numbering — position is computed, content ordinals are linted.",
-   "blocking": false,
-   "verdict": "N/A",
-   "chunks_flagged": [],
-   "evidence": null,
-   "na_reason": "No `## Phase N:` / `## N.` step headers in this file; ran `node scripts/check-slide-numbering.js` and this file produced no output (no findings), confirming nothing to number."
   },
   {
    "compendium": "check_slides.md",
@@ -147,18 +117,8 @@
    "blocking": true,
    "verdict": "PASS",
    "chunks_flagged": [],
-   "evidence": "Mechanical: ran `node scripts/check-slide-deixis.js` and `node scripts/check-slide-deixis.js --report`; neither produced any output line naming this file (no page-geometry pointer found, no cleared-match entry either since there is nothing to clear). Body scan confirms: no 'below/above/further down/at the top of this page' phrasing anywhere in the 3 chunks.",
+   "evidence": "Ran `node scripts/check-slide-deixis.js --file curriculum/trainings/agentic-engineering-101/supplementary/verification-asymmetry.md` → 'OK — 1 files, no page-geometry pointers across the slide cut.' Body scan confirms: no 'below/above/further down/at the top of this page' phrasing anywhere in the 3 chunks, including the edited line 18.",
    "fix_hint": null
-  },
-  {
-   "compendium": "check_slides.md",
-   "rule_index": 13,
-   "rule_lead": "In-deck links work now; whether they EARN their place is open.",
-   "blocking": false,
-   "verdict": "N/A",
-   "chunks_flagged": [],
-   "evidence": null,
-   "na_reason": "signals.has_urls is false and no markdown link syntax appears anywhere in the body; the only cross-link (to what-keeps-a-long-running-session-going.md) lives in the maintainer Placement note, below the cut, out of scope for a body-links rule."
   },
   {
    "compendium": "check_slides.md",
@@ -167,7 +127,7 @@
    "blocking": false,
    "verdict": "PASS",
    "chunks_flagged": [],
-   "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/supplementary/verification-asymmetry.md` → 'files: 1  slides: 3  limits: 210 words / 6 bullets  oversized: 0 — every slide is within limits.' Each chunk carries 3 bullets, well under the 6-bullet cap.",
+   "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/supplementary/verification-asymmetry.md` → 'files: 1  slides: 3  limits: 210 words / 6 bullets  oversized: 0 — every slide is within limits.' Each chunk carries 3 bullets, well under the 6-bullet cap; the line-18 edit only shortens the chunk further.",
    "fix_hint": null
   },
   {
@@ -177,7 +137,7 @@
    "blocking": false,
    "verdict": "PASS",
    "chunks_flagged": [],
-   "evidence": "Re-fetched rule 15 at its current wording (node scripts/rule.js slides 15) before judging, per the drift instruction. This page is lecture-shaped doctrine (a 'Laws carried' page per its own maintainer block), not an exercise, so the claim standard applies. Two of three headings are flat declarative claims: 'Checking can cost far less than doing' (line 3), 'Every send-off needs a named cheap verifier' (line 15). The third, 'Why this decides what to delegate' (line 9), is the closest-to-violating case — phrased as a 'why' frame rather than a bald assertion like the rule's own examples ('Passing is not proof', 'Gates decay'). It stays inside because 'this decides what to delegate' is itself a compressed causal claim (the asymmetry determines the delegate/keep decision), not a topic label like the rule's exempted catalogue entries ('Ralph', 'The numbers') — the header IS the section's thesis, just fronted with 'why'. No imperative task-instruction headings anywhere (this is not an exercise), so no register mismatch.",
+   "evidence": "This page is lecture-shaped doctrine (a 'Laws carried' page per its own maintainer block), not an exercise, so the claim standard applies. Two of three headings are flat declarative claims: 'Checking can cost far less than doing' (line 3), 'Every send-off needs a named cheap verifier' (line 15). The third, 'Why this decides what to delegate' (line 9), is the closest-to-violating case — phrased as a 'why' frame rather than a bald assertion like the rule's own examples — but stays inside because 'this decides what to delegate' is itself a compressed causal claim (the asymmetry determines the delegate/keep decision), not a topic label. No imperative task-instruction headings anywhere.",
    "fix_hint": null
   },
   {
@@ -187,24 +147,90 @@
    "blocking": false,
    "verdict": "PASS",
    "chunks_flagged": [],
-   "evidence": "Checked all 9 bullets against the three classes. (a) doctrine restatement: none — each bullet either states a new move (ask-your-verifier, chunk 3 line 17) or adds a genuinely new claim rather than re-announcing an already-landed split; closest case is chunk 2 line 13 ('M2 used this without naming it... it runs through the whole far half of the map') which could read as re-invoking the delegate/trap split from lines 11-12, but it stays inside because it adds a new fact (this M2 law IS an instance of the asymmetry) plus a scope claim, not a bare re-announcement. (b) self-referential design commentary: none — no line tells the student they are inside a pedagogy or that the page's structure is deliberate. (c) aphorism kicker: closest case is the closing bullet, chunk 3 line 19 ('Every verifier you write converts one more task family from delegation-trap to delegation-win. That is why checks are worth authoring at all.') — it stays inside because it elevates the prior bullet's single-task framing (line 18: build a verifier, it outlives the session) to a task-FAMILY-level justification for the practice, a genuinely new priority claim, not a koan restating the header or a **The point:** line (this file has no such line).",
+   "evidence": "Checked all 9 bullets against the three classes, with particular attention to the edited line 18 since a trim is exactly where a bullet can collapse into a restatement. (a) doctrine restatement: none — the edit ('No cheap verifier? Keep the task, or build the verifier first and then delegate.') still adds two distinct options not stated elsewhere (keep vs. build-then-delegate), it does not re-announce a split already landed. Closest case remains chunk 2 line 13 ('M2 used this without naming it... it runs through the whole far half of the map'), which stays inside because it adds a new fact (this M2 law IS an instance of the asymmetry) plus a scope claim. (b) self-referential design commentary: none. (c) aphorism kicker: closest case is chunk 3 line 19 ('Every verifier you write converts one more task family from delegation-trap to delegation-win. That is why checks are worth authoring at all.') — stays inside because it elevates the prior bullet's single-task framing to a task-family-level justification, a new priority claim, not a koan restating the header (no **The point:** line exists in this file to restate).",
    "fix_hint": null
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 3,
+   "rule_lead": "Every backward reference points at a beat that exists.",
+   "verdict": "N/A",
+   "evidence": null,
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "f8270615e8bbe1fbbf3991a80f6c63a0af3097e2bf6ed6a3ce4e3bb0a242ed83",
+   "carried_shape": "1870b031fbe8c765"
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 4,
+   "rule_lead": "Live-demo beats survive a text read.",
+   "verdict": "N/A",
+   "evidence": null,
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "f8270615e8bbe1fbbf3991a80f6c63a0af3097e2bf6ed6a3ce4e3bb0a242ed83",
+   "carried_shape": "1870b031fbe8c765"
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 11,
+   "rule_lead": "Numbering — position is computed, content ordinals are linted.",
+   "verdict": "N/A",
+   "evidence": null,
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "f8270615e8bbe1fbbf3991a80f6c63a0af3097e2bf6ed6a3ce4e3bb0a242ed83",
+   "carried_shape": "1870b031fbe8c765"
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 13,
+   "rule_lead": "In-deck links work now; whether they EARN their place is open.",
+   "verdict": "N/A",
+   "evidence": null,
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "f8270615e8bbe1fbbf3991a80f6c63a0af3097e2bf6ed6a3ce4e3bb0a242ed83",
+   "carried_shape": "1870b031fbe8c765"
+  },
+  {
+   "compendium": "check_writing.md",
+   "rule_index": 1,
+   "rule_lead": "Banned words — grep zero-tolerance.",
+   "verdict": "PASS",
+   "evidence": "mechanical: /\\b(delve|delving|honest|honestly|importantly|crucial|crucially|substrate|synergize|paradigm shift)\\b/ over body projection curriculum/evals/body-views/ae101--supplementary--verification-asymmetry.body.txt → 0 hits; pattern proven against planted violation.",
+   "fix_hint": "",
+   "blocking": false,
+   "prefilled": true
+  },
+  {
+   "compendium": "check_writing.md",
+   "rule_index": 2,
+   "rule_lead": "Ritual / ceremony — hard ban in any curriculum/training surface.",
+   "verdict": "PASS",
+   "evidence": "mechanical: /\\b(ritual|rituals|ceremony|ceremonies)\\b/ over body projection curriculum/evals/body-views/ae101--supplementary--verification-asymmetry.body.txt → 0 hits; pattern proven against planted violation.",
+   "fix_hint": "",
+   "blocking": false,
+   "prefilled": true
   }
  ],
  "self_grading_superlative_subitem": {
   "blocking": true,
   "verdict": "PASS",
-  "evidence": "No self-grading superlative found anywhere in the body (see rule 7 evidence)."
+  "evidence": "No self-grading superlative found anywhere in the body, including the edited line 18 (see rule 7 evidence)."
  },
  "accept_notes_found": [
   "L23 maintainer: 2026-07-09 emphasis pass, cites check_slides.md §9 directly, clears the two bolded handles and the de-bolding of everything else.",
-  "L27 maintainer STATUS: clears the M2 back-reference (chunk 2 line 13) as deliberate lineage-naming per the theory audit's cheap-groundedness call, and notes check_lectures §3 sequencing ban does not bind a supplementary body."
+  "L25 maintainer: 2026-07-26 naming correction ('the verifier's law' -> 'the verifier's rule'), sourced to a BLOCKING finding and a live re-fetch of jasonwei.net; body and backing block agree with the correction, nothing to flag.",
+  "L27 maintainer STATUS: clears the M2 back-reference (chunk 2 line 13) as deliberate lineage-naming per the theory audit's cheap-groundedness call, and notes check_lectures §3 sequencing ban does not bind a supplementary body.",
+  "L29 maintainer Placement: cross-links this page to what-keeps-a-long-running-session-going.md and states M4/M5/M6 sequencing — navigational, not a slides-scope claim."
  ],
  "drift_rules_reread": [
-  "slides §15 — re-fetched current wording via scripts/rule.js; body headings checked against it; PASS, see rule 15 row (chunk 2's 'why'-framed header is the closest case and stays inside as a compressed causal claim, not a bare label)."
+  "slides §7 and §16 reread in full against the edited line 18 bullet ('Two options.' fragment removed since pin e11bbeb4) — both PASS, trim removes text without introducing a cadence tic or collapsing the bullet's content."
  ],
- "diff_summary": "git diff 1abb84c6..HEAD on this file touches only the Quality-line stamp (writing/story/technical/pedagogy/slides SHA bumped from 2b5a60a/9697944 to 1abb84c6, dated 2026-08-18 -> 2026-08-24, judge-verdict list annotated '(drift-recheck)'). No body, maintainer, or backing content changed since the pin — staleness here is entirely rule 15's wording drift, not a body edit.",
+ "diff_summary": "git diff e11bbeb4..HEAD on this file: (1) body line 18 edited — 'No cheap verifier? Two options. Keep the task, or build the verifier first and then delegate.' -> 'No cheap verifier? Keep the task, or build the verifier first and then delegate.' (the fragment 'Two options.' was cut, no other wording changed); (2) Quality line (line 67) bumped from compendium-audited 2026-08-24 to 2026-08-28, SHA pins updated (writing/story/slides 1abb84c6->e11bbeb4, technical 1abb84c6->8cc00874), judge-verdict annotations dropped their '(drift-recheck)' suffixes except pedagogy. No maintainer or backing-block content changed. Both diffs are within the body/maintainer regions this class covers; the line-18 trim was re-judged fresh against rules 1, 5, 6, 7, 9, 12, 14, 16 (all PASS, evidence updated above) and the Quality-line bump is bookkeeping outside slides scope.",
  "blocking_findings_count": 0,
  "todos_count": 0,
- "notes": "Mechanical checks (check-slide-deixis.js, check-slide-size.js, check-slide-numbering.js) all ran clean for this file. body has_prompt_blocks/has_figures both false, so expand-md.js was not run (would return source unchanged). Prefill --write parked 0 rows ('prior instance predates shape_hash') — every one of the 16 rules is judged fresh in this instance, none re-derived from a sidecar. Two judgement calls closest to the line, both resolved PASS with evidence: chunk 2's 'why'-framed header (rules 6 and 15) and chunk 3's closing bullet (rule 16c). No other-class (writing/pedagogy/research-claims) issues observed in passing; none logged here as this pass is slides-only per the dispatch contract."
+ "notes": "Mechanical checks re-run fresh this pass: check-slide-deixis.js (clean), check-slide-size.js (clean, 0 oversized), check-slide-numbering.js (no output for this file). has_prompt_blocks/has_figures both false per body view signals, so expand-md.js was not run (would return source unchanged) — cited line numbers verified against the raw source directly. Rules 3, 4, 11, 13 are out of this brief (prefill-instance.js --write parked them as N/A, carried_shape 1870b031fbe8c765, matching current shape_hash) and are NOT re-derived here; --merge run after writing this instance to splice them back in, alongside two check_writing.md rows (banned-words, ritual/ceremony) the same sidecar also parked — those two are outside slides' compendium scope and are reported here only because --merge adds whatever the sidecar holds, not because this judge evaluated check_writing.md. Two judgement calls closest to the line, both resolved PASS with evidence: chunk 2's 'why'-framed header (rules 6 and 15) and chunk 3's closing bullet (rule 16c) — unchanged from the pinned instance since neither sits in the edited bullet."
 }

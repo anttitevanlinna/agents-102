@@ -1,14 +1,15 @@
 {
   "class": "slides",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/fork-the-worktree.md",
-  "body_sha": "97a86e3cc761337a559435b3434b59034f60d667878bcc33a30dbc8e2fe810e9",
+  "body_sha": "588c1ae1484e61894b8e9e872e26115fa439cb250f8ef205d4ca4ad56a97a179",
+  "shape_hash": "632025a350bd415b",
   "verdict": "PASS",
   "training": "ae101",
   "chunk_map": [
     {"index": 0, "heading": "Fork the worktree, carry the evidence (H1/lede)", "lines": "1-16"},
-    {"index": 1, "heading": "Phase 1: Fork it", "lines": "17-28"},
-    {"index": 2, "heading": "Check the copy landed", "lines": "29-34"},
-    {"index": 3, "heading": "Anchor the fork to the run coordinates", "lines": "35-40"}
+    {"index": 1, "heading": "Phase 1: Fork it", "lines": "17-30"},
+    {"index": 2, "heading": "Check the copy landed", "lines": "31-36"},
+    {"index": 3, "heading": "Anchor the fork to the run coordinates", "lines": "37-42"}
   ],
   "rules_evaluated": [
     {
@@ -17,7 +18,7 @@
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Chunk 0: \"the commit your un-packaged run started at\" and chunk 3: \"the starting-point SHA Claude reported before the send-off\" resolve under the session-artifact carve-out (student's own prior send-off run). Chunk 1's \"the six sub-steps\" resolves in-chunk against the fenced {{prompt:ae101-m5-worktree-setup}} block sitting directly below it. Chunk 2's \"the output\"/\"the two paths Claude checked\" resolve against chunk 1's prompt run and CLAUDE.local.md/observations/ naming. No never-named or vague-with-history referents found.",
+      "evidence": "Body edited since the last slides pass (diff 441b361f..HEAD): L22 now reads 'so what you built in Module 1<!--flag:module:spot-gaps-build-the-loop--> and Module 4<!--/flag:...--> comes with you.' 'Module 1', 'Module 4', 'Module 6' are named modules, not pronouns -- arc-earned spine vocabulary per the compendium's own carve-out ('module names' listed explicitly). Chunk 0 L9 'the commit your un-packaged run started at' and chunk 3 L40 'the starting-point SHA Claude reported' both resolve under the session-artifact carve-out: they name the student's own prior M4 send-off, which this file's maintainer 'Placement' note (L59) guarantees precedes this exercise. Chunk 2's 'the output' (L33) and 'the two paths Claude checked' (L35) resolve against chunk 1's prompt run and the CLAUDE.local.md/observations/ naming two lines earlier in the same chunk. Chunk 3's 'the m4/<slug> branch', 'the Run coordinates block', 'the send-off' (L39-40) read as established M4 arc vocabulary (M4 = run-the-first-experiment, the module whose send-off this exercise forks from). No never-named or vague-with-history referent found under a sequential read.",
       "fix_hint": null,
       "blocking": true
     },
@@ -27,7 +28,7 @@
       "rule_lead": "Cross-file and positional callbacks.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "No chunk points at another file by position; all backward references are within-file or session-artifact-scoped.",
+      "evidence": "L22 names 'Module 1', 'Module 4', 'Module 6' by identity/number, never by page position ('the previous module', 'above'). No chunk points at another training file's content by position; the only other-file mention ('learn-from-the-test.md', 'task.md') lives in the maintainer block (out of body scope) or is a literal repo file path the student's own session holds (session artifact, exempt).",
       "fix_hint": null,
       "blocking": true
     },
@@ -37,7 +38,7 @@
       "rule_lead": "Every backward reference points at a beat that exists.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Chunk 3's \"before the send-off\" and chunk 0's \"your un-packaged run\" point at the student's own prior M4 send-off, which the module's own sequencing (this exercise's placement) guarantees already happened; no dead beat reference found.",
+      "evidence": "Verified against the current module bodies, not assumed: `grep -n \"CLAUDE.local.md\" getting-going.md` -> L20 'Compound the session into a personal rules file at ./CLAUDE.local.md' (M1 produces it); `grep -n \"observations\" run-the-first-experiment.md` -> L22/L144/L157 'new observations written' / 'Observations... home (Phase 2 fill destination)' / 'Filled gap entries | observations/... | Phase 2 walk-and-fill' (M4 produces observations/, confirmed against training-architecture.md too). So the current L22 claim 'what you built in Module 1 and Module 4 comes with you' names two beats that both exist and both actually produce the two named gitignored artifacts -- the earlier 'Module 1 and Module 3' wording this replaced was the dead/misattributed pairing (observations/ is an M4 artifact, not M3's), fixed in the commit this diff covers. 'Module 6' (L22, forward ref to 'After Module 6 you decide what to merge back') resolves against spot-gaps-build-the-loop.md L120 'eventual decision post-M6 about merging back to original repo'.",
       "fix_hint": null,
       "blocking": true
     },
@@ -47,7 +48,8 @@
       "rule_lead": "Live-demo beats survive a text read.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "No guess-before-reveal instruction anywhere in this file.",
+      "evidence": null,
+      "na_reason": "no guess-before-reveal instruction anywhere in this file",
       "fix_hint": null,
       "blocking": true
     },
@@ -57,7 +59,7 @@
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Every chunk (title metadata, Phase 1 prompt beat, copy-check, coordinate-recovery ladder) carries a self-standing claim.",
+      "evidence": "Every ## chunk carries a self-standing claim beyond a bare wait-state: chunk 1 (4 bullets + prompt) explains what runs in the worktree and why gitignored files need copying; chunk 2 (3 bullets) is the copy-verification check; chunk 3 (3 bullets) is the coordinate-recovery ladder. None is a single context-dependent bullet.",
       "fix_hint": null,
       "blocking": false
     },
@@ -67,7 +69,7 @@
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "\"Phase 1: Fork it\" → forking content; \"Check the copy landed\" → the copy-verification bullets; \"Anchor the fork to the run coordinates\" → the coordinates-recovery ladder (maintainer note confirms this heading was deliberately kept neutral because the first bullet is the normal path, not just the failure case). All headers match their chunk's content.",
+      "evidence": "'Phase 1: Fork it' (L17) covers forking the worktree, gitignored-file copying, and the fork prompt -- all forking-scoped. 'Check the copy landed' (L31) covers exactly output/manual-verify/extra-paths bullets. 'Anchor the fork to the run coordinates' (L37) is the maintainer-attested neutral heading (accept-note L57): the first bullet IS the normal run-coordinates path, so the header names the true primary case, not a mislabelled fallback.",
       "fix_hint": null,
       "blocking": false
     },
@@ -77,7 +79,7 @@
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "No \"Not X. Not Y. Z.\" construction, no anaphora/epistrophe triples, no self-grading superlatives, no unlabeled-number-with-retraction, no abstraction-noun stacks, no verb triplets with an empty leg, in any chunk.",
+      "evidence": "Checked each sub-item across all 4 chunks: no 'Not X. Not Y. Z.' construction; no anaphora/epistrophe triple; no self-grading superlative (closest is L13 'The point: a worktree lets you run the same task twice as a split test' -- a factual claim about the mechanic, not a value-prop judgement about the exercise); no number-with-retraction hedge; no abstraction-noun stack (concrete nouns throughout: worktree, commit, branch, SHA, CLAUDE.local.md, observations/); no verb triplet with an empty leg.",
       "fix_hint": null,
       "blocking": true
     },
@@ -87,37 +89,37 @@
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Vocabulary used (worktree, split test, gitignored, send-off, m4/<slug> branch, Run coordinates block) is training-established or ordinary engineering shop talk for AE101's IC audience, not repo-internal dialect (compendium, beat, forcing function, surface-as-noun). The prompt body itself is fenced and exempt.",
+      "evidence": "No repo/authorial vocabulary (surface-as-noun, firing, compendium, forcing function, beat, mood, Connections) found in the body. 'un-packaged'/'packaged' (L9, L21) and 'compound'/'compounding' (implicit via M1's CLAUDE.local.md reference) are AE101's own taught arc vocabulary, not maintainer dialect -- confirmed via `grep -rn compound curriculum/trainings/agentic-engineering-101/*.md`: getting-going.md L16/L55/L69 teaches 'orient -> fix -> close -> compound' as the M1 loop itself, and M5's own module title is 'Learn from the test, re-send packaged'.",
       "fix_hint": null,
       "blocking": true
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 9,
-      "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
+      "rule_lead": "Emphasis budget -- bold is for handles, and go very lightly.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Chunk 0's bold spans (Time, Session, What you do, What you build, The point) are the architecture-mandated exercise metadata labels, not bolded narrative sentences; chunk 1's \"Prompt\" is the Prompt widget's own mandated label. No chunk opens every bullet with a bolded lead.",
+      "evidence": "Chunk 0 carries 5 bolded spans (Time:, Session, What you do:, What you build:, The point:) but these are the exercise-opener widget template's own field labels, not narrative bold -- confirmed against `curriculum/widgets.md` L11/23, which mandates '**Session** *(verb, \"name\")*' as the fixed widget syntax; Time/What-you-do/What-you-build/The-point follow the identical corpus-wide exercise-opener shape used across every AE101 exercise file. Same logic as the compendium's own LO-bullet exception: the template mandates the bold, not the author. Chunks 1-3 carry zero narrative bold (only the '**Prompt** *(Claude Code)*' widget label, itself template-mandated) -- well inside the ≤1 budget.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 10,
-      "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
-      "verdict": "N/A",
+      "rule_lead": "Presence precedes content -- verify against the composed deck, not long-read.",
+      "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "This is an inlined exercise body under a `.phase--exercise` wrapper; no phase-less prose section at risk of dropping from the composed deck.",
+      "evidence": "This file is a standard curriculum/exercises/ include (per curriculum/CLAUDE.md: exercises are inlined) with the standard shape -- H1 + Time/Session/What-you fields + ##-headed phases + <!-- maintainer --> cut, no non-standard wrapper -- consumed by learn-from-the-test.md per this file's own maintainer 'Placement' note (L59: 'immediately before [Exercise: Diagnose and re-send]'). Standalone exercise includes reach the composed deck via the renderer's own phase-wrapping (wrapStandaloneInPhase, exported in site/layouts/curriculum.js), the same mechanism every other AE101 exercise file relies on; nothing in this file's shape departs from that pattern (no phase-less prose section, no reference/supplementary content).",
       "fix_hint": null,
-      "blocking": false
+      "blocking": true
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 11,
-      "rule_lead": "Numbering — position is computed, content ordinals are linted.",
+      "rule_lead": "Numbering -- position is computed, content ordinals are linted.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Only one content ordinal (\"Phase 1: Fork it\"), no other in-file \"Phase K\"/\"Step K\" reference to check. `node scripts/check-slide-numbering.js --file curriculum/exercises/fork-the-worktree.md` → \"OK — 1 files, Phase/Step numbering consistent.\"",
+      "evidence": "Mechanical: `node scripts/check-slide-numbering.js --file curriculum/exercises/fork-the-worktree.md` -> 'OK — 1 files, Phase/Step numbering consistent.' exit 0. Only one Phase-labelled header ('Phase 1: Fork it'), consecutive from 1; the maintainer block's own 'Phase 1' reference (L55) resolves to it.",
       "fix_hint": null,
       "blocking": false
     },
@@ -127,9 +129,9 @@
       "rule_lead": "Page geometry dies at the cut; reading order survives.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "No body instance of below/above/further down/at the top/see below; `node scripts/check-slide-deixis.js --file curriculum/exercises/fork-the-worktree.md` → \"OK — 1 files, no page-geometry pointers across the slide cut.\" (The one \"above the include\" hit is in the maintainer block, out of scope.)",
+      "evidence": "Mechanical: `node scripts/check-slide-deixis.js --file curriculum/exercises/fork-the-worktree.md` -> 'OK — 1 files, no page-geometry pointers across the slide cut.' exit 0. No 'above/below/further down/at the top of this page' phrasing found in a manual re-read either.",
       "fix_hint": null,
-      "blocking": false
+      "blocking": true
     },
     {
       "compendium": "check_slides.md",
@@ -137,21 +139,43 @@
       "rule_lead": "In-deck links work now; whether they EARN their place is open.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "No in-page links in this file's body.",
+      "evidence": null,
+      "na_reason": "no in-deck links in this file (has_urls: false; only bracket usage is the maintainer block's non-hyperlinked '[Exercise: Diagnose and re-send]' locator, out of body scope)",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 14,
-      "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
+      "rule_lead": "Slide size -- 210 words / 6 bullets, and the cap is machine-checked.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "`node scripts/check-slide-size.js --file curriculum/exercises/fork-the-worktree.md --report`: Anchor the fork to the run coordinates = 82 words / 3 bullets; Check the copy landed = 66 words / 3 bullets; Phase 1: Fork it = 52 words / 2 bullets. Summary: files 1, slides 3, oversized 0.",
+      "evidence": "Mechanical: `node scripts/check-slide-size.js --file curriculum/exercises/fork-the-worktree.md --report` -> Phase 1: Fork it = 131 words/4 bullets; Anchor the fork to the run coordinates = 82 words/3 bullets; Check the copy landed = 66 words/3 bullets. 'oversized: 0', exit 0. All well under 210/6.",
       "fix_hint": null,
       "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 15,
+      "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "This is an exercise file: all three ## headings are imperative/phase-label, not declarative claims -- 'Phase 1: Fork it' (phase label + imperative verb), 'Check the copy landed' (imperative), 'Anchor the fork to the run coordinates' (imperative). No declarative law-naming heading present, so none is being scored against the claim requirement; none needed one.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 16,
+      "rule_lead": "A bullet earns its slot or dies -- three classes that read as rigour and carry nothing.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Read every bullet against the three classes. None is doctrine restatement: L21 'This module's work (diagnosis, verifier, reference, plan.md, and the re-send) runs in the worktree' names concrete artefacts, not a re-announced split/lens; L33 'A rules file that didn't copy changes two variables instead of one, and the contrast stops meaning anything' explains a concrete failure consequence, first stated here, not a repeat of L13's 'split test' line; L41 'a commit or two before the run started, carrying the same code' states the merge-base rung's concrete caveat (per the maintainer's own accept-note on why it's deliberately approximate), not a kicker. None is self-referential design commentary (no 'this is by design' / pedagogy-naming line). None is an aphorism kicker restating its own header or a **The point:** line -- the file's **The point:** (L13) is the widget-mandated opener field itself, not echoed by any later bullet.",
+      "fix_hint": null,
+      "blocking": false
     }
   ],
   "blocking_findings_count": 0,
-  "todos_count": 0
+  "todos_count": 0,
+  "notes": "Diff since pin 441b361f is two changes: (1) L22's runtime-fork text moved from 'Module 1/Module 3' to 'Module 1/Module 4' -- this resolves the prior technical-class REVISE (check_platform_and_boundaries.md rule 4, stamped against body_sha 1fe92bac...) that observations/ is an M4 artifact, not M3's; verified the new text against getting-going.md and run-the-first-experiment.md, and it is now accurate. (2) The Quality stamp line updated. OUT-OF-SLIDES-SCOPE OBSERVATION for the maintainer/technical class: the SAME edit left the runtime-fork flag's gating KEY on <!--flag:module:spot-gaps-build-the-loop--> (M6) wrapping ' and Module 4' -- i.e. whether 'and Module 4' renders is still gated on M6's presence, not M4's. In the 'agentic-engineering-101-northwind' (team-track) cut (site/layouts/curriculum.js), M4 (run-the-first-experiment) IS present but M6 (spot-gaps-build-the-loop) is NOT, so under the current wiring that cut would drop 'and Module 4' even though M4 truly ran there and its observations/ do carry over -- the same category of misattribution the technical judge caught before, just relocated to a different curriculum cut. This is a content-flag correctness question (check_platform_and_boundaries.md territory, mirroring the resolved finding's own rule), not a slides-chunking/referent-resolution defect: none of check_slides.md's 16 rules governs which module a runtime-fork flag keys on, and the universal (non-team-track) referent -- 'Module 4 built observations/, and it exists' -- is true and resolves correctly under rule 1/3 regardless of which cut renders it. Flagging here only because the technical class's last pin (8cc00874) predates the commit that made this exact edit (038fffa4, 'Wave-5 findings land... stale wiring claims corrected'), so its PASS has not yet seen this specific text. No slides-class accept-note was needed; none of the 16 rules required one. All 4 mechanical checkers (numbering, deixis, size, plus the view's grep battery) ran clean against the current body."
 }

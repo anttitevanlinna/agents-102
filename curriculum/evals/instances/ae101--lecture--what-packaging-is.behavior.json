@@ -1,58 +1,945 @@
 {
   "class": "behavior",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/what-packaging-is.md",
+  "body_sha": "fd4256a46b799e9d078a041111c92412b5884f09d02d62cc05da0e3188f5d93d",
+  "shape_hash": "1a45f572c31f174d",
   "verdict": "PASS",
   "training": "ae101",
-  "trace_status": "cached",
-  "prompts_evaluated": 1,
-  "prompts_findings": [
+  "trace_status": "full_regen",
+  "prompts_evaluated": 0,
+  "prompts_findings": [],
+  "blocking_findings_count": 0,
+  "todos_count": 0,
+  "rules_evaluated": [
     {
-      "prompt_index": 1,
-      "prompt_lead": "Propose five hooks for this repo and the work we just did, beyond formatting and",
-      "verdict": "TODO",
-      "load_bearing": true,
-      "risks_fired": [
-        {
-          "pattern_id": "preamble-before-action",
-          "confidence": "low",
-          "evidence": "\"No preamble. List them.\" -- in-fence suppressor present, but check_prompts.md #17 itself calls a bare 'No preamble' line only partial suppression.",
-          "fix_hint": "If a sim run ever shows preamble creeping in ahead of the list, harden to 'No preamble. Open directly with hook 1.' -- not warranted at current confidence."
-        },
-        {
-          "pattern_id": "default-acceptance",
-          "confidence": "low",
-          "evidence": "Post-fence body: \"The ones worth keeping are tied to a specific file, convention, or failure mode in this repo, not a generic team-could-want-this.\" -- satisfies the body-callout mitigation carve-out (names the failure mode, gives a selection action).",
-          "fix_hint": "No prompt edit needed -- keep this sentence paired with the fence on any future revision to this section."
-        },
-        {
-          "pattern_id": "self-audit-charity",
-          "confidence": "low",
-          "evidence": "\"the specific thing in this repo or this session it would catch, and the line I'd skip without it\" asks Claude to name a real near-miss from its own prior work this session -- mitigated by the evidence-backed-artifact-level-specificity carve-out (named event + named trigger + named skipped line required, not a bare self-grade).",
-          "fix_hint": "If this shows up live as generic hooks dressed as specific ones, add an in-fence clause anchoring at least one hook to an actual near-miss from the session, not a theoretical one."
-        }
-      ]
+      "compendium": "check_prompts.md",
+      "rule_index": 1,
+      "rule_lead": "No placeholders inside fences.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks in file (has_prompt_blocks=false; 0 fences; 0 {{prompt:}} markers)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 2,
+      "rule_lead": "Every prompt block: one-sentence action lead-in.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks in file (has_prompt_blocks=false; 0 fences; 0 {{prompt:}} markers)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 3,
+      "rule_lead": "Canonical shape — lead-in, label with destination, blank line, fence.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks in file (has_prompt_blocks=false; 0 fences; 0 {{prompt:}} markers)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 4,
+      "rule_lead": "Installed Skills invoke by name, never path.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks in file (has_prompt_blocks=false; 0 fences; 0 {{prompt:}} markers)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 5,
+      "rule_lead": "Chain by back-reference + deterministic path, never invented alias.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks in file (has_prompt_blocks=false; 0 fences; 0 {{prompt:}} markers)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 6,
+      "rule_lead": "Chained-prompt isolation — don't leak downstream pipeline.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks in file (has_prompt_blocks=false; 0 fences; 0 {{prompt:}} markers)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 7,
+      "rule_lead": "No session-resets mid-phase.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks in file (has_prompt_blocks=false; 0 fences; 0 {{prompt:}} markers)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 8,
+      "rule_lead": "Multi-sample methods need structural enforcement.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks in file (has_prompt_blocks=false; 0 fences; 0 {{prompt:}} markers)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 9,
+      "rule_lead": "Markdown shout (`**bold**`, `*italic*`) inside fenced prompts = dead weight in Claude Code.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks in file (has_prompt_blocks=false; 0 fences; 0 {{prompt:}} markers)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 10,
+      "rule_lead": "Runtime-fork prompts: paired divs, shared chip.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks in file (has_prompt_blocks=false; 0 fences; 0 {{prompt:}} markers)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 11,
+      "rule_lead": "Runtime-mechanical scaffolding asymmetry — MORE in less-fluent fork, not less.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks in file (has_prompt_blocks=false; 0 fences; 0 {{prompt:}} markers)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 12,
+      "rule_lead": "Append-vs-integrate — name integration mode on regeneration with new context source.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks in file (has_prompt_blocks=false; 0 fences; 0 {{prompt:}} markers)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 13,
+      "rule_lead": "Citation discipline — extend cite-or-flag scope + quote supporting sentence.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks in file (has_prompt_blocks=false; 0 fences; 0 {{prompt:}} markers)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 14,
+      "rule_lead": "Niceness tax — name the edge or pin the line on regeneration.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks in file (has_prompt_blocks=false; 0 fences; 0 {{prompt:}} markers)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 15,
+      "rule_lead": "Question-dump default — `in turn` too soft; two legal shapes.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks in file (has_prompt_blocks=false; 0 fences; 0 {{prompt:}} markers)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 16,
+      "rule_lead": "Overwrite anxiety — name overwrite default on regeneration.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks in file (has_prompt_blocks=false; 0 fences; 0 {{prompt:}} markers)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 17,
+      "rule_lead": "Preamble before action — design around it.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks in file (has_prompt_blocks=false; 0 fences; 0 {{prompt:}} markers)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 18,
+      "rule_lead": "Self-critique register, not defense, when Claude interrogates own work.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks in file (has_prompt_blocks=false; 0 fences; 0 {{prompt:}} markers)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 19,
+      "rule_lead": "Minimal hand-off + Claude self-augments for send-off prompts.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks in file (has_prompt_blocks=false; 0 fences; 0 {{prompt:}} markers)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 20,
+      "rule_lead": "Grill before save — collaborative quality at artefact assembly.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks in file (has_prompt_blocks=false; 0 fences; 0 {{prompt:}} markers)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 21,
+      "rule_lead": "Tell me what you wrote, not show me what you'll write.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks in file (has_prompt_blocks=false; 0 fences; 0 {{prompt:}} markers)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 22,
+      "rule_lead": "Prompt-body edits require maintainer approval — registry files AND inline blocks.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks in file (has_prompt_blocks=false; 0 fences; 0 {{prompt:}} markers)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 23,
+      "rule_lead": "Artifact destinations are explicit subpaths, never naked filenames (Agents 101-specific).",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks in file (has_prompt_blocks=false; 0 fences; 0 {{prompt:}} markers)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 24,
+      "rule_lead": "Don't restate session CWD inside prompt body.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks in file (has_prompt_blocks=false; 0 fences; 0 {{prompt:}} markers)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 25,
+      "rule_lead": "`subagent` allowed in prompt blocks; explain why after prompt.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks in file (has_prompt_blocks=false; 0 fences; 0 {{prompt:}} markers)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 26,
+      "rule_lead": "Maintainer-approval edits — ONE-AT-A-TIME, PRIORITY-ORDERED, FOUR-FIELD cards.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no maintainer-judgement finding surfaced this pass to invoke the card process"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 27,
+      "rule_lead": "Name consumer at write time — `Save it as <path>` requires downstream reader.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks in file (has_prompt_blocks=false; 0 fences; 0 {{prompt:}} markers)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 28,
+      "rule_lead": "Strong-bold prompt label is exactly `**Prompt**` — custom labels break renderer.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks in file (has_prompt_blocks=false; 0 fences; 0 {{prompt:}} markers)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 29,
+      "rule_lead": "Normal work request before orchestration.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks in file (has_prompt_blocks=false; 0 fences; 0 {{prompt:}} markers)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 30,
+      "rule_lead": "Live-test corrections preserve operator workflow.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks in file (has_prompt_blocks=false; 0 fences; 0 {{prompt:}} markers)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 31,
+      "rule_lead": "Prompts live in registry; module/exercise/lecture files reference by marker.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks in file (has_prompt_blocks=false; 0 fences; 0 {{prompt:}} markers)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 32,
+      "rule_lead": "Module names in prompt prose are fine — they ground the session.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks in file (has_prompt_blocks=false; 0 fences; 0 {{prompt:}} markers)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 33,
+      "rule_lead": "Git-output greps asserting exact-N need multi-result fallback.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks in file (has_prompt_blocks=false; 0 fences; 0 {{prompt:}} markers)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 34,
+      "rule_lead": "Disambiguation, anchors, and decision logic that bind Claude live INSIDE prompt fence.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks in file (has_prompt_blocks=false; 0 fences; 0 {{prompt:}} markers)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 35,
+      "rule_lead": "Repeated Q&A → premature re-edits. Separate iteration from persistence.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks in file (has_prompt_blocks=false; 0 fences; 0 {{prompt:}} markers)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 36,
+      "rule_lead": "Wide prompts split by logical move — paragraph breaks = cheapest scan-affordance.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks in file (has_prompt_blocks=false; 0 fences; 0 {{prompt:}} markers)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 37,
+      "rule_lead": "Orient saved rule by where it FIRES, not surface activity producing it.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks in file (has_prompt_blocks=false; 0 fences; 0 {{prompt:}} markers)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 38,
+      "rule_lead": "Body lead-in mirrors prompt's opening phrasing.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks in file (has_prompt_blocks=false; 0 fences; 0 {{prompt:}} markers)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 39,
+      "rule_lead": "Declare `permission-mode:` when paste requires specific Claude Code mode.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks in file (has_prompt_blocks=false; 0 fences; 0 {{prompt:}} markers)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 40,
+      "rule_lead": "Verify session boundary before deciding prompt's context-carrying.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks in file (has_prompt_blocks=false; 0 fences; 0 {{prompt:}} markers)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 41,
+      "rule_lead": "Artifact-vs-STOP tail ordering — last imperative wins.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks in file (has_prompt_blocks=false; 0 fences; 0 {{prompt:}} markers)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 42,
+      "rule_lead": "Headless-runner discipline — tail every prompt with no-AUQ guard.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks in file (has_prompt_blocks=false; 0 fences; 0 {{prompt:}} markers)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 43,
+      "rule_lead": "Long-running prompts stream progress — never go silent.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks in file (has_prompt_blocks=false; 0 fences; 0 {{prompt:}} markers)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 44,
+      "rule_lead": "A leading-looking line can be a forcing function; prefer the simpler prompt.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks in file (has_prompt_blocks=false; 0 fences; 0 {{prompt:}} markers)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 45,
+      "rule_lead": "Prompt paths match Builder scope.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks in file (has_prompt_blocks=false; 0 fences; 0 {{prompt:}} markers)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 46,
+      "rule_lead": "Output shape — trust Claude's defaults, don't pad.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks in file (has_prompt_blocks=false; 0 fences; 0 {{prompt:}} markers)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 47,
+      "rule_lead": "\"Add X and regenerate\" is a trap.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks in file (has_prompt_blocks=false; 0 fences; 0 {{prompt:}} markers)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 48,
+      "rule_lead": "Vary closings deliberately.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks in file (has_prompt_blocks=false; 0 fences; 0 {{prompt:}} markers)"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "1",
+      "rule_lead": "Walk-away test (M2+).",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "outside behavior-class lane — check_pedagogy.md §1 governs a pedagogy-class design criterion, not prompt-invoked behavioral risk"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "2",
+      "rule_lead": "50% magic rule (M3–M8).",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "outside behavior-class lane — check_pedagogy.md §2 governs a pedagogy-class design criterion, not prompt-invoked behavioral risk"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "3",
+      "rule_lead": "Trust the agentic design — no human backstops.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "outside behavior-class lane — check_pedagogy.md §3 governs a pedagogy-class design criterion, not prompt-invoked behavioral risk"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "4",
+      "rule_lead": "Quality ladder.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "outside behavior-class lane — check_pedagogy.md §4 governs a pedagogy-class design criterion, not prompt-invoked behavioral risk"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "6",
+      "rule_lead": "One exercise = one bounded activity.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "outside behavior-class lane — check_pedagogy.md §6 governs a pedagogy-class design criterion, not prompt-invoked behavioral risk"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "7",
+      "rule_lead": "Modules composable across variants.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "outside behavior-class lane — check_pedagogy.md §7 governs a pedagogy-class design criterion, not prompt-invoked behavioral risk"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "8",
+      "rule_lead": "Three-level completeness.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "outside behavior-class lane — check_pedagogy.md §8 governs a pedagogy-class design criterion, not prompt-invoked behavioral risk"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "9",
+      "rule_lead": "Pattern-recognition LOs need n≥2 instances with contrast.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "outside behavior-class lane — check_pedagogy.md §9 governs a pedagogy-class design criterion, not prompt-invoked behavioral risk"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "9b",
+      "rule_lead": "Progression-with-variations is the spine.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "outside behavior-class lane — check_pedagogy.md §9b governs a pedagogy-class design criterion, not prompt-invoked behavioral risk"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "10",
+      "rule_lead": "Student agency — adults decide.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "outside behavior-class lane — check_pedagogy.md §10 governs a pedagogy-class design criterion, not prompt-invoked behavioral risk"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "11",
+      "rule_lead": "Delegation — student brings, Claude screens.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "outside behavior-class lane — check_pedagogy.md §11 governs a pedagogy-class design criterion, not prompt-invoked behavioral risk"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "12",
+      "rule_lead": "Split mega-exercise when phases = distinct skills + distinct artifacts.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "outside behavior-class lane — check_pedagogy.md §12 governs a pedagogy-class design criterion, not prompt-invoked behavioral risk"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "13",
+      "rule_lead": "Artifact-realism check.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "outside behavior-class lane — check_pedagogy.md §13 governs a pedagogy-class design criterion, not prompt-invoked behavioral risk"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "14",
+      "rule_lead": "Teach principle + technique — default.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "outside behavior-class lane — check_pedagogy.md §14 governs a pedagogy-class design criterion, not prompt-invoked behavioral risk"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "15",
+      "rule_lead": "Auto-fire sim+eval after significant rewrite.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "outside behavior-class lane — check_pedagogy.md §15 governs a pedagogy-class design criterion, not prompt-invoked behavioral risk"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "16",
+      "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "outside behavior-class lane — check_pedagogy.md §16 governs a pedagogy-class design criterion, not prompt-invoked behavioral risk"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "17",
+      "rule_lead": "Corporate infra = nice-to-have, never forcing function.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "outside behavior-class lane — check_pedagogy.md §17 governs a pedagogy-class design criterion, not prompt-invoked behavioral risk"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "18",
+      "rule_lead": "Personal-first, team promotion via human conversation.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "outside behavior-class lane — check_pedagogy.md §18 governs a pedagogy-class design criterion, not prompt-invoked behavioral risk"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "19",
+      "rule_lead": "Measure silent failure, not just friction.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "outside behavior-class lane — check_pedagogy.md §19 governs a pedagogy-class design criterion, not prompt-invoked behavioral risk"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "20",
+      "rule_lead": "Don't pre-set categories before experiment runs.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "outside behavior-class lane — check_pedagogy.md §20 governs a pedagogy-class design criterion, not prompt-invoked behavioral risk"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "21",
+      "rule_lead": "Verification layers sample DIFFERENT error distributions — not belt-and-braces.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "outside behavior-class lane — check_pedagogy.md §21 governs a pedagogy-class design criterion, not prompt-invoked behavioral risk"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "21b",
+      "rule_lead": "Cheap-before-expensive verification ordering.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "outside behavior-class lane — check_pedagogy.md §21b governs a pedagogy-class design criterion, not prompt-invoked behavioral risk"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "22",
+      "rule_lead": "Rule in memory without forcing function = worse than no rule.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "outside behavior-class lane — check_pedagogy.md §22 governs a pedagogy-class design criterion, not prompt-invoked behavioral risk"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "23",
+      "rule_lead": "Short skeptical pushback on \"done\" = re-verify trigger.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "outside behavior-class lane — check_pedagogy.md §23 governs a pedagogy-class design criterion, not prompt-invoked behavioral risk"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "24",
+      "rule_lead": "Cohort execution is trainer-paced + concurrent, not sequential.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "outside behavior-class lane — check_pedagogy.md §24 governs a pedagogy-class design criterion, not prompt-invoked behavioral risk"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "25",
+      "rule_lead": "Host-skill optional; maintainer blocks trainer-only.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "outside behavior-class lane — check_pedagogy.md §25 governs a pedagogy-class design criterion, not prompt-invoked behavioral risk"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "26",
+      "rule_lead": "Reflection beats: in-chat over file-write.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "outside behavior-class lane — check_pedagogy.md §26 governs a pedagogy-class design criterion, not prompt-invoked behavioral risk"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "27",
+      "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "outside behavior-class lane — check_pedagogy.md §27 governs a pedagogy-class design criterion, not prompt-invoked behavioral risk"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "29",
+      "rule_lead": "Eval = fixed yardstick; thing measured learns.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "outside behavior-class lane — check_pedagogy.md §29 governs a pedagogy-class design criterion, not prompt-invoked behavioral risk"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "30",
+      "rule_lead": "Reading burden for verification = banned. Claude audits Claude.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks in file (has_prompt_blocks=false; 0 fences; 0 {{prompt:}} markers) to exhibit this risk"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "31",
+      "rule_lead": "Self-report + self-audit charity — verify at artifact, over-flag or fresh-session for critique.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks in file (has_prompt_blocks=false; 0 fences; 0 {{prompt:}} markers) to exhibit this risk"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "32",
+      "rule_lead": "Offered structures need forced-engagement mechanic.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks in file (has_prompt_blocks=false; 0 fences; 0 {{prompt:}} markers) to exhibit this risk"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "33",
+      "rule_lead": "Source-type blindness on ingestion.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks in file (has_prompt_blocks=false; 0 fences; 0 {{prompt:}} markers) to exhibit this risk"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "34",
+      "rule_lead": "Task selection drives outcome → name floor AND ceiling.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "outside behavior-class lane — check_pedagogy.md §34 governs a pedagogy-class design criterion, not prompt-invoked behavioral risk"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "34b",
+      "rule_lead": "Maintainer-block hedge naming section's own failure mode = cut-signal, not warning.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "outside behavior-class lane — check_pedagogy.md §34b governs a pedagogy-class design criterion, not prompt-invoked behavioral risk"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "35",
+      "rule_lead": "Audience tier determines authoring substrate.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "outside behavior-class lane — check_pedagogy.md §35 governs a pedagogy-class design criterion, not prompt-invoked behavioral risk"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "36",
+      "rule_lead": "Verification machinery needs smoke-test before trust.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "outside behavior-class lane — check_pedagogy.md §36 governs a pedagogy-class design criterion, not prompt-invoked behavioral risk"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "37",
+      "rule_lead": "Context-loading tiers as staged progression.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "outside behavior-class lane — check_pedagogy.md §37 governs a pedagogy-class design criterion, not prompt-invoked behavioral risk"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "39",
+      "rule_lead": "Removals are strategic — ask before cutting.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "outside behavior-class lane — check_pedagogy.md §39 governs a pedagogy-class design criterion, not prompt-invoked behavioral risk"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "41",
+      "rule_lead": "Symmetric visible-mechanics > runtime fork when dual-runtime constraints break agentic move.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "outside behavior-class lane — check_pedagogy.md §41 governs a pedagogy-class design criterion, not prompt-invoked behavioral risk"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "42",
+      "rule_lead": "Load-bearing platform feature = no fallback. Gate or redesign.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "outside behavior-class lane — check_pedagogy.md §42 governs a pedagogy-class design criterion, not prompt-invoked behavioral risk"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "43",
+      "rule_lead": "Eval architecture — partition by evidence source, not criterion count.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "outside behavior-class lane — check_pedagogy.md §43 governs a pedagogy-class design criterion, not prompt-invoked behavioral risk"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "44",
+      "rule_lead": "Plug points + UX.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "outside behavior-class lane — check_pedagogy.md §44 governs a pedagogy-class design criterion, not prompt-invoked behavioral risk"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "45",
+      "rule_lead": "Per-exercise leap test — 3 observable Monday outcomes.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "outside behavior-class lane — check_pedagogy.md §45 governs a pedagogy-class design criterion, not prompt-invoked behavioral risk"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "47",
+      "rule_lead": "Per-phase failure mode + escape hatch.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "outside behavior-class lane — check_pedagogy.md §47 governs a pedagogy-class design criterion, not prompt-invoked behavioral risk"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "48",
+      "rule_lead": "Heavy fan-out prompts get body recovery callout.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks in file (has_prompt_blocks=false; 0 fences; 0 {{prompt:}} markers) to exhibit this risk"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "49",
+      "rule_lead": "Save belongs with authoring, not loading.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "outside behavior-class lane — check_pedagogy.md §49 governs a pedagogy-class design criterion, not prompt-invoked behavioral risk"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "50",
+      "rule_lead": "Convenience-driven prompts with known shape-bias → body acknowledgment callout.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks in file (has_prompt_blocks=false; 0 fences; 0 {{prompt:}} markers) to exhibit this risk"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "51",
+      "rule_lead": "Deliberate-antipattern prompts = class-judge exempt, flagged-by-design.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks in file (has_prompt_blocks=false; 0 fences; 0 {{prompt:}} markers) to exhibit this risk"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "52",
+      "rule_lead": "Session widget — `**Session** *(verb, \"name\")*` shape; place by learning flow.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "outside behavior-class lane — check_pedagogy.md §52 governs a pedagogy-class design criterion, not prompt-invoked behavioral risk"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "52b",
+      "rule_lead": "Widgets carry semantics, not just emphasis — match the widget to MEANING, never to how loud it renders.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "outside behavior-class lane — check_pedagogy.md §52b governs a pedagogy-class design criterion, not prompt-invoked behavioral risk"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "52a",
+      "rule_lead": "Module prose carrying a `**Session**` widget or a `{{prompt:}}` fence is an exercise that has not been extracted.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "outside behavior-class lane — check_pedagogy.md §52a governs a pedagogy-class design criterion, not prompt-invoked behavioral risk"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "52c",
+      "rule_lead": "Exercise lead-in trio — three slots, three tenses. A slot filled past its label is this corpus's most common defect.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "outside behavior-class lane — check_pedagogy.md §52c governs a pedagogy-class design criterion, not prompt-invoked behavioral risk"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "52d",
+      "rule_lead": "Finding the point — four moves, learned writing M1's set 2026-08-12.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "outside behavior-class lane — check_pedagogy.md §52d governs a pedagogy-class design criterion, not prompt-invoked behavioral risk"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "53",
+      "rule_lead": "Body prose must not supply an answer its prompt asks for — position is not the test (widened 2026-08-12).",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "outside behavior-class lane — check_pedagogy.md §53 governs a pedagogy-class design criterion, not prompt-invoked behavioral risk"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "56",
+      "rule_lead": "Engineer-audience audit fixes default to body callout, not forcing function.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "outside behavior-class lane — check_pedagogy.md §56 governs a pedagogy-class design criterion, not prompt-invoked behavioral risk"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "57",
+      "rule_lead": "Multi-session (any new mechanic mid-arc) ships as packaging, not new primitive.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "outside behavior-class lane — check_pedagogy.md §57 governs a pedagogy-class design criterion, not prompt-invoked behavioral risk"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "58",
+      "rule_lead": "`/clear` = tool, not ceremony.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "outside behavior-class lane — check_pedagogy.md §58 governs a pedagogy-class design criterion, not prompt-invoked behavioral risk"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "59",
+      "rule_lead": "Inbound links preserve pedagogical beat across reference restructuring.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "outside behavior-class lane — check_pedagogy.md §59 governs a pedagogy-class design criterion, not prompt-invoked behavioral risk"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "60",
+      "rule_lead": "Scan at the unit the rule names, not convenient larger one.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "outside behavior-class lane — check_pedagogy.md §60 governs a pedagogy-class design criterion, not prompt-invoked behavioral risk"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "61",
+      "rule_lead": "Verify mechanism before proposing surgery.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "outside behavior-class lane — check_pedagogy.md §61 governs a pedagogy-class design criterion, not prompt-invoked behavioral risk"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "61a",
+      "rule_lead": "Acting on a flagged item (punchlist entry / audit finding / eval BLOCK) — verify before fixing; its prescribed fix is a hypothesis, not an instruction.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "outside behavior-class lane — check_pedagogy.md §61a governs a pedagogy-class design criterion, not prompt-invoked behavioral risk"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "62",
+      "rule_lead": "Callouts next to prompts: steer, don't pre-empt.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "outside behavior-class lane — check_pedagogy.md §62 governs a pedagogy-class design criterion, not prompt-invoked behavioral risk"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "63",
+      "rule_lead": "Persistent TODO surfaces stale by default — audit before acting.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "outside behavior-class lane — check_pedagogy.md §63 governs a pedagogy-class design criterion, not prompt-invoked behavioral risk"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "64",
+      "rule_lead": "Maintainer blocks point, don't restate. Link architecture doc where they touch delivery.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "outside behavior-class lane — check_pedagogy.md §64 governs a pedagogy-class design criterion, not prompt-invoked behavioral risk"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "65",
+      "rule_lead": "Cross-module prerequisite rescue: run it late, never fabricate.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "outside behavior-class lane — check_pedagogy.md §65 governs a pedagogy-class design criterion, not prompt-invoked behavioral risk"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "66",
+      "rule_lead": "Three-pass build — finish each pass across ALL modules before starting the next.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "outside behavior-class lane — check_pedagogy.md §66 governs a pedagogy-class design criterion, not prompt-invoked behavioral risk"
+    },
+    {
+      "compendium": "prompt-behavior.md",
+      "rule_index": null,
+      "judge_owned": true,
+      "rule_lead": "Class-level catalog verdict",
+      "verdict": "PASS",
+      "evidence": "Full walk of the 15-pattern catalog (curriculum/evals/simulation-behavior.md) against this file: grep for `**Prompt**` and `{{prompt:` on the raw body → 0 hits both; derive-body-view's signals report has_prompt_blocks=false, fence_ranges=[]. The file's own maintainer block documents why: \"Current shape (2026-08-14/15, Antti-directed; hooks extracted 2026-08-25): seven slides. The two hook slides + demo prompt now live in `hooks-always-fire.md`... their claims and the cc-hooks-docs stamp travelled.\" This is the file that carried the prior instance's sole judged prompt (\"Propose five hooks for this repo...\"), and it is gone from this file by deliberate, dated, documented extraction — not an accidental drop. With prompts_evaluated=0, all 15 catalog patterns vacuously don't fire (no fence for any pattern to fire against) and both per-prompt and top-level verdict rules resolve to PASS by construction (no prompt reaches REVISE or TODO thresholds because no prompt exists). This corrects the stale prior instance (predates shape_hash, still carried the extracted prompt's findings as if load-bearing here) — the correct current status is PASS with zero prompts, not a carried-forward TODO on content that now lives in a different file."
     }
   ],
-  "blocking_findings_count": 0,
-  "todos_count": 1,
-  "rules_evaluated": [
-    {"pattern_id": "file-preservation-gap", "status": "not_fired", "why": "No file is being written or updated by this prompt -- output is a chat/code-block list ('List them'), not a file write."},
-    {"pattern_id": "reading-burden", "status": "not_fired", "why": "The post-fence curation instruction ('tied to a specific file, convention, or failure mode... not a generic team-could-want-this') is judgment-based selection among proposals, not manual proofreading of Claude's output for mechanical correctness."},
-    {"pattern_id": "niceness-tax", "status": "not_fired", "why": "This is a generative propose-task (design five hooks), not an evaluative review of existing work Claude might diplomatically soften; 'Skip suggestions any team could want' is itself an anti-genericity forcing function (check_prompts.md #44 shape), not a symptom of the pattern."},
-    {"pattern_id": "question-dump", "status": "not_fired", "why": "Prompt does not set up a Claude-led question sequence to the student; no interview shape present."},
-    {"pattern_id": "overwrite-anxiety", "status": "not_fired", "why": "No destination file is named for this prompt's output; nothing for Claude to hesitate about overwriting."},
-    {"pattern_id": "preamble-before-action", "status": "fired", "confidence": "low"},
-    {"pattern_id": "append-vs-integrate", "status": "not_fired", "why": "No existing file/section is being extended or merged into by this prompt."},
-    {"pattern_id": "plan-mode-preamble-bloat", "status": "not_fired", "why": "No plan-mode invocation -- no permission-mode: plan in the registry frontmatter, no plan-mode language in the fence."},
-    {"pattern_id": "citation-gap-asymmetry", "status": "not_fired", "why": "No citation or sourcing request in this prompt."},
-    {"pattern_id": "self-report-inflation", "status": "not_fired", "why": "Claude is not asked to grade or summarize the outcome of prior work; it is asked to propose forward-looking infrastructure (hooks), a generative not a self-reporting task."},
-    {"pattern_id": "default-acceptance", "status": "fired", "confidence": "low"},
-    {"pattern_id": "plan-mode-approval-inflation", "status": "not_fired", "why": "No plan-mode plan is produced by this prompt."},
-    {"pattern_id": "source-type-blindness", "status": "not_fired", "why": "No source-ingestion or classification task in this prompt."},
-    {"pattern_id": "citation-cargo-cult", "status": "not_fired", "why": "No citations requested by this prompt."},
-    {"pattern_id": "self-audit-charity", "status": "fired", "confidence": "low"}
-  ],
-  "compendium_scope_note": "check_prompts.md and check_pedagogy.md are this judge's always-loaded compendiums per the template's maintenance notes, but this judge's owned verdict surface is the 15-pattern behavioral catalog in simulation-behavior.md (the compendiums supply the adjacent rule text/carve-out definitions the catalog entries are compounded from). rules_evaluated above enumerates all 15 catalog patterns with a fired/not_fired verdict and evidence or why for each -- the completeness ledger for this judge's scope. Static-rule mechanics from check_prompts.md not tied to a catalog pattern (action lead-in placement, label shape, placeholder-freedom, chain back-reference, skill-invocation-by-name, artifact-vs-STOP tail ordering, etc.) are explicitly out of this class's scope per simulation-behavior.md ('No static-rule grading... Those = technical judge') and are graded in the sibling technical-class instance, not re-litigated here.",
-  "note": "Re-run against the on-disk file (2026-08-01), including uncommitted working-tree state. Body/prompt content unchanged since the prior run: the file's whole-content SHA moved (13560ff0...) only because the <!-- backing --> block's Sources/Stance/OODA/Flagged sections and the maintainer block accrued edits below the student-facing prose -- the fenced prompt content's own SHA (a9516dcf...) is byte-identical to the cached entry, so the cache-lookup step (SHA-per-prompt, not whole-file) reused the existing trace verbatim rather than regenerating. trace_status is therefore 'cached', not 'full_regen'. All body-callout carve-outs re-checked against current body text; same result as before. No risk reached med or high confidence; all three fired risks are low-confidence, which routes the per-prompt verdict to TODO per the template's verdict rules ('TODO if... confidence: low regardless'), rolling up to top-level PASS with zero blocking findings.",
-  "summary": "PASS -- the single prompt block (what-packaging-is-1, the 'propose five hooks' hand-off in the Hooks for must-happen, prompts for taste section) fires no high or med-confidence risk against the 15-pattern catalog. Three low-confidence risks logged for the record: preamble-before-action (in-fence suppressor present but only partial per the source rule), default-acceptance (mitigated by an explicit post-fence curation callout), and self-audit-charity (mitigated by the prompt's artifact-level specificity requirement on the named near-miss). Per-prompt verdict is TODO; top-level verdict is PASS. No blocking findings."
+  "rule_questions": [],
+  "notes": "This lecture carries zero `**Prompt**` fenced blocks and zero `{{prompt:}}` markers as of the current body (confirmed via grep on the raw source and derive-body-view's has_prompt_blocks=false signal). The prior instance (predates shape_hash, pinned to an older sim-cache trace) judged a hooks-proposal prompt that the maintainer block confirms was deliberately extracted to `curriculum/lectures/hooks-always-fire.md` on 2026-08-25, wired before the M5 exercises, with its claims and cc-hooks-docs stamp travelling. That extraction is an accept-note, not a defect: the prompt still exists and is still judged, just under a different file's behavior instance now, out of this judge's file-scoped lane. Re-ran the sim-cache trace to an empty prompts array matching the current body_sha (prior cache content_sha was already stale against both the pinned diff and the current body, from an even earlier revision). Prefill fell through entirely for this (file, class) pair (prior instance predates shape_hash — 0 rows parked), so every rule in the class brief (115: 48 check_prompts.md + 67 check_pedagogy.md) is judged fresh in this instance rather than carried from a sidecar; running prefill-instance.js --merge after this write parks nothing (0 rows were available to splice) but seeds the shape_hash-keyed instance so a future unchanged-shape run can park these N/A rows instead of re-deriving them. Diffed 1c765f2..HEAD in full (not grep-filtered) — the change is the M5 hooks-extraction + theory-passage rewrite described above; no residual prompt-shaped text (dangling 'Ask Claude to...' lead-in, orphaned fence marker) survived the extraction. No accept-note in the maintainer block bears on behavior-class content specifically beyond the extraction note itself, which is addressed above."
 }

@@ -60,5 +60,5 @@ Ask Claude to fork the worktree and copy your gitignored files across.
 
 **Phase 1 opens with the moved-in rationale (2026-08-25, Antti-directed).** The module file's `## Set up the worktree` section folded in as the phase's first two bullets: why the work runs in the worktree, and why the gitignored files need the copy (with the Module 1/Module 3 and Module 6 runtime-fork flags verbatim). The module body's "Before the exercise session, fork the un-packaged session's starting SHA" setup line was dropped as duplicating this file's intro. Do not restore the section to the module body.
 
-**Quality:** compendium-audited 2026-08-28 (writing@441b361f story@441b361f technical@8cc00874 behavior@61e7fc9 pedagogy@1abb84c6 strategy@61e7fc9 slides@441b361f)
-- judges @8cc00874: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-28 (writing@0cea7581 story@441b361f technical@8cc00874 behavior@61e7fc9 pedagogy@1abb84c6 strategy@61e7fc9 slides@0cea7581)
+- judges @0cea7581: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS

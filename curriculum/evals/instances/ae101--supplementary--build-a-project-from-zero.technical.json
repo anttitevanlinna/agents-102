@@ -1,22 +1,15 @@
 {
   "class": "technical",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/supplementary/build-a-project-from-zero.md",
-  "body_sha": "a221c3311482564023b0a9572335b1433072450a8b6211aff846ee2a15303172",
+  "body_sha": "302acf8e639a26c1ae95bd4d61f6a4db0c4de607086e2fa72cc51c326b7393ff",
   "shape_hash": "1870b031fbe8c765",
-  "verdict": "REVISE",
+  "verdict": "PASS_WITH_TODOS",
   "training": "ae101",
-  "notes": "Prefill fell through: 'no prior instance' (0 rows parked, ? owed) -- every row below is mine; --merge run after write spliced 0 rows (nothing parked, confirmed). Dispatched for rule-drift on platform_and_boundaries §45 (2026-08-28 fail-open corollary); git diff 1abb84c6..HEAD on this file shows only the Quality-block re-stamp (577de87d -> 1abb84c6, drift-recheck notes added) -- no body, maintainer-prose, or backing-block content change. check_prompts.md is in the derived brief (compendium_paths lists it) but this file carries zero prompt fences (has_prompt_blocks:false, fence_ranges:[]) and technical.md's own completeness contract makes check_platform_and_boundaries + check_research_claims the two PRIMARY-owned compendiums plus check_pedagogy's five named technical sub-rules (16, 22, 23, 36, 37); it never asks technical to itemize check_prompts.md's 48 rules on a file with no prompt content, so that compendium is recorded as one whole-compendium N/A row per the preamble's judge_owned shape. Independent of the drift trigger, live re-verification of the file's single citation (backing block L67) surfaced a genuine citation-URL mismatch: the stamped https://code.claude.com/docs/en/cli-reference does not document the `/model` in-session slash command it is cited for -- confirmed by two independent live fetches (WebFetch + raw curl of the exact URL) -- while the underlying capability claim itself is true and documented one page over, at code.claude.com/docs/en/commands. Filed as REVISE under check_research_claims.md §1 and §14 (see evidence). COLLISION NOTE (found at --merge time): another live session's commit (12ebdbfb 'Wave 4 clears its 51 seats...') landed on this file between read-start and write-time, re-stamping the writing/story/slides classes at a new pin (e11bbeb4) -- technical/behavior/pedagogy/strategy pins (1abb84c6/148adf6) are untouched. Diffed old-read vs current HEAD directly: body (L1-33) and backing block (L56-82, incl. the L67 citation this verdict turns on) are byte-identical; only the **Quality:**/judges lines (L36-37) changed. Re-ran derive-body-view.js against current HEAD to confirm: signals unchanged, shape_hash recomputes to the same 1870b031fbe8c765 recorded below. body_sha below is correctly the pre-collision read-start hash (a221c331...) per protocol ('taken when it starts reading'); current HEAD's whole-file hash is 2cd1e5604e8885a05e62b2086a78a25ceaff909dbd5138f8ea61080bf1eb3482 -- the mismatch is the Quality-stamp collision above, not a body change, so this verdict needs no re-read. prefill --merge (post-write) refused for the same reason ('sidecar is for a different body'), correctly fail-closed; it would have spliced 0 rows regardless since 0 were parked at --write time.",
-  "drift_rules_reread": [
-    {
-      "rule": "platform_and_boundaries §45",
-      "fetched_via": "node curriculum/evals/scripts/rule.js platform_and_boundaries 45",
-      "verdict": "No change to this file's technical verdict from the rule-drift trigger itself. Current wording (incl. the 2026-08-28 'fail-open corollary' addendum about check-instance-evidence.js reading only the rules_evaluated-array shape and missing the behavior/cross_module/no-ledger shapes, plus update-quality.sh's 'grandfathered' clobber bug) governs eval-tooling PARSER and WRITER correctness -- audit-eval-coverage.js, check-instance-evidence.js, update-quality.sh. Nothing in build-a-project-from-zero.md's body or maintainer block makes a claim this rule addresses; the rule has no student-facing surface to bind to. Direct relevance is to THIS instance's own shape: rules_evaluated below is a real array of objects (the shape check-instance-evidence.js reads), so this ledger does not fall into the parser gap the rule catalogs. Recorded as check_platform_and_boundaries §45 = N/A in the ledger, reason stated there. (The REVISE verdict below on check_research_claims §1/§14 was found independently while re-reading the file for this dispatch, not by §45 itself.)"
-    }
-  ],
+  "notes": "CONFIRMATION run on a fix to the prior technical REVISE (check_research_claims.md §1/§14: cc-model-command stamp cited https://code.claude.com/docs/en/cli-reference, which documents only the launch-time --model flag, for a claim about the in-session /model slash command). Verified the fix on disk before judging: `grep -c docs/en/commands` -> 1, `grep -c docs/en/cli-reference` -> 0, matching the dispatch's stated numbers exactly. `git show 038fffa4 -- <file>` shows the committed diff is exactly the described repoint (cli-reference -> commands, checked-date bumped 2026-05-15 -> 2026-08-28, one added clause explaining why the new URL was chosen); `git status --short` and `git diff HEAD` on the file are both empty, so the fix is committed, not floating -- satisfies check_platform_and_boundaries.md §24a's commit-before-stamp ordering. Independently re-verified the underlying claim live this session (WebFetch, not inference): code.claude.com/docs/en/commands returns the row '`/model [model]` | Switch the AI model and save it as your default for new sessions... press s on a row to switch for the current session only'; code.claude.com/docs/en/cli-reference was fetched again for contrast and confirmed to carry only the launch-time `--model` flag, no /model slash command. The repointed URL now supports the claim it is cited for. Rest of the class re-judged in full against the current body (shape_hash 1870b031fbe8c765 unchanged from the pinned run, confirming the body itself -- lines 1-33 -- did not move; only the backing-block Sources line changed). Followed the same completeness structure as the pinned instance this run supersedes: check_platform_and_boundaries.md and check_research_claims.md carry every numbered rule (this class's two PRIMARY-owned compendiums per technical.md's completeness contract); check_pedagogy.md carries only the five technical-owned sub-rules (16, 22, 23, 36, 37) named in the template, the pedagogy judge being primary owner of the rest; check_prompts.md is recorded as one judge_owned whole-compendium N/A row -- this file has zero fenced prompts and zero {{prompt:}} markers (has_prompt_blocks:false, fence_ranges:[], has_code_fences:false per derive-body-view.js), so none of its 48 rules have a surface to bind to here. prefill-instance.js --write parked 80 N/A rows carried from the prior instance by shape-hash match; those are not re-derived below per the brief's own instruction ('a rule that is not in this brief is already answered'). --merge run after writing this instance; rows_spliced_by_merge reported below is that command's real output. Every other row below (all N/A/PASS verdicts not touching the fixed citation) is unchanged in substance from the pinned instance -- only re-read and re-confirmed against the current maintainer-block text where the Quality/judges lines themselves had moved (writing/story/slides re-stamped at a sibling pin e11bbeb4 sometime after the prior technical read; technical/behavior/pedagogy/strategy stayed at 1abb84c6). One non-blocking TODO carries forward unchanged (L11 phrasing).",
   "accept_notes_found": [
-    "L36-37 -- Quality stamp: compendium-audited 2026-08-24, all seven classes PASS (several 'drift-recheck'). Prior technical PASS did not catch the citation-URL mismatch found this run; not re-litigated as a process failure, just noted as the reason this file is not a first-time REVISE.",
+    "L36 -- Quality stamp: compendium-audited 2026-08-28, technical pinned @1abb84c6 (this pin predates the current fix; the orchestrator re-stamps after this verdict lands). writing/story/slides moved to a sibling pin e11bbeb4 for unrelated reasons -- confirmed by re-reading L36-37 directly, not inherited from the prior instance.",
     "L52-54 -- 'Open decisions for maintainer' (how this interlocks with prework.md §1's fallback line; whether to wire prework.md to link here) -- explicitly open, not a technical-class concern, not treated as an accept-note licensing anything.",
-    "L72-75 -- Stance block: 'holds: nothing about the field... contested: nothing... would-move-it: nothing published. If the model lineup changes, the Sonnet instruction needs a name swap, not a rethink.' Read as the maintainer's own scoping of this file's evidentiary weight; consistent with the §7 (research_claims) PASS above."
+    "L72-75 -- Stance block: 'holds: nothing about the field... contested: nothing... would-move-it: nothing published. If the model lineup changes, the Sonnet instruction needs a name swap, not a rethink.' Read as the maintainer's own scoping of this file's evidentiary weight; consistent with the check_research_claims.md §7 PASS below."
   ],
   "rules_evaluated": [
     {
@@ -49,7 +42,7 @@
       "rule_index": 4,
       "rule_lead": "Verify capabilities BEFORE asserting, not after.",
       "verdict": "PASS",
-      "evidence": "The file's one load-bearing capability assertion is L9 'Set the model to Sonnet first with `/model sonnet`.' Live-verified this session: WebFetch https://code.claude.com/docs/en/commands confirms a documented `/model [model]` slash command ('Switch the AI model and save it as your default for new sessions... press s on a row to switch for the current session only'). Claim holds.",
+      "evidence": "The file's one load-bearing capability assertion is L9 'Set the model to Sonnet first with `/model sonnet`.' Live-verified this session: WebFetch https://code.claude.com/docs/en/commands confirms a documented `/model [model]` slash command ('Switch the AI model and save it as your default for new sessions... press s on a row to switch for the current session only'). Claim holds, and the backing-block citation now points at this exact page (see check_research_claims.md §1 below).",
       "fix_hint": null,
       "blocking": false
     },
@@ -99,7 +92,7 @@
       "rule_lead": "Live-test beats docs for runtime-behavior claims.",
       "verdict": "N/A",
       "evidence": null,
-      "na_reason": "the /model claim is feature-existence, not a behavior-in-doubt claim -- §5a's own carve-out ('doc-derived answers reliable for... feature existence') covers it; commands-reference doc-derived verification (§4) suffices"
+      "na_reason": "the /model claim is feature-existence, not a behavior-in-doubt claim -- §5a's own carve-out ('doc-derived answers reliable for... feature existence') covers it; the doc-derived verification under §4 suffices, and was independently re-run live this session"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -316,7 +309,7 @@
       "rule_lead": "Judge must honor script exit codes.",
       "verdict": "N/A",
       "evidence": null,
-      "na_reason": "no script-exit-code judging described in this file's content; this instance's own evidence-gathering used real command/WebFetch output throughout, not a topic grep"
+      "na_reason": "no script-exit-code judging described in this file's content; this instance's own evidence-gathering used real command/WebFetch output throughout (grep exit codes, WebFetch, git show/diff/status), not a topic grep"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -355,7 +348,7 @@
       "rule_index": "24a",
       "rule_lead": "Quality stamps: tooling writes them; the SHA pins committed content.",
       "verdict": "PASS",
-      "evidence": "L36: '**Quality:** compendium-audited 2026-08-24 (writing@1abb84c6 story@1abb84c6 technical@1abb84c6 behavior@148adf6 pedagogy@1abb84c6 strategy@148adf6 slides@1abb84c6)' is a clean anchor, nothing trailing the parenthetical SHA list -- matches update-quality.sh's tooling-written shape.",
+      "evidence": "L36: '**Quality:** compendium-audited 2026-08-28 (writing@e11bbeb4 story@e11bbeb4 technical@1abb84c6 behavior@148adf6 pedagogy@1abb84c6 strategy@148adf6 slides@e11bbeb4)' is a clean anchor, nothing trailing the parenthetical SHA list -- matches update-quality.sh's tooling-written shape. The content this technical pin (1abb84c6) currently references predates the citation fix (038fffa4, committed after 1abb84c6): correct per this rule's own ordering (commit content first, stamp after) -- the orchestrator re-stamps technical@<new-sha> once this verdict lands, which is what makes the pin accurate again.",
       "fix_hint": null,
       "blocking": false
     },
@@ -444,7 +437,7 @@
       "rule_index": 35,
       "rule_lead": "`update-quality.sh` takes ALL classes in ONE invocation per file, and not until that file's last judge has returned.",
       "verdict": "PASS",
-      "evidence": "L36-37: single '- judges @1abb84c6: writing PASS (drift-recheck), story PASS (drift-recheck), technical PASS (drift-recheck), behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS' row batches all seven classes under one pin, matching the required batched shape.",
+      "evidence": "L37: single '- judges @e11bbeb4: writing PASS, story PASS, technical PASS (drift-recheck), behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS' row batches all seven classes under one pin, matching the required batched shape. (This row records the LAST stamp event, at e11bbeb4; the file's L36 Quality line correctly shows technical/behavior/pedagogy/strategy still pinned at the earlier 1abb84c6 because they weren't touched by whatever produced the e11bbeb4 re-stamp -- consistent with the per-class touch model, not a batching violation.)",
       "fix_hint": null,
       "blocking": false
     },
@@ -454,7 +447,7 @@
       "rule_lead": "A hash guard is only as good as what it hashes, and a malformed hash disarms it silently.",
       "verdict": "N/A",
       "evidence": null,
-      "na_reason": "governs eval-tooling hash-guard implementation, not this training file's content. Self-check: body_sha recorded below was obtained from `shasum -a 256` on the raw file at read-start, matches the 64-hex-char pattern, not fabricated."
+      "na_reason": "governs eval-tooling hash-guard implementation, not this training file's content. Self-check: body_sha recorded above was obtained from `shasum -a 256` on the raw file at read-start, matches the 64-hex-char pattern and git HEAD's own content (confirmed via `git status --short` / `git diff HEAD`, both empty), not fabricated."
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -462,7 +455,7 @@
       "rule_lead": "Measure the defect before proposing the fix, and again before repeating it to the maintainer.",
       "verdict": "N/A",
       "evidence": null,
-      "na_reason": "process rule for punch-list authoring; not a claim in this file's content. Self-applied: the one factual claim checked this session (the /model citation) was independently live-verified via WebFetch + curl against the actual doc pages, not taken on trust from the stamp."
+      "na_reason": "process rule for punch-list authoring; not a claim in this file's content. Self-applied: the fix under confirmation this run was independently re-measured (grep counts + live WebFetch of both URLs), not taken on trust from the dispatch's stated numbers -- both numbers matched."
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -478,7 +471,7 @@
       "rule_lead": "A judge subagent without evidence is a rubber-stamp, and the summary table cannot tell you which you got.",
       "verdict": "N/A",
       "evidence": null,
-      "na_reason": "governs judge-dispatch evidence discipline (self-applied throughout this instance: real WebFetch/curl/shasum output attached to every mechanical verdict), not a claim within the training file itself"
+      "na_reason": "governs judge-dispatch evidence discipline (self-applied throughout this instance: real WebFetch/curl/grep/git-show/shasum output attached to every mechanical verdict), not a claim within the training file itself"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -526,7 +519,7 @@
       "rule_lead": "A detector's reading vocabulary must cover the corpus's writing vocabulary — or it reports compliance as rot.",
       "verdict": "N/A",
       "evidence": null,
-      "na_reason": "the named drift-trigger for this dispatch (see drift_rules_reread at top level). Re-read at current wording incl. the 2026-08-28 fail-open corollary on check-instance-evidence.js/update-quality.sh; it governs eval-tooling parser/writer correctness. This training file's body and maintainer block make no claim the rule addresses (no detector, audit, or verification-tooling content). This instance's own rules_evaluated is a real array of objects (the shape check-instance-evidence.js reads), so it doesn't fall into the parser gap the rule catalogs, and I ran --merge (0 rows spliced, none parked) rather than leaving the ledger silently short."
+      "na_reason": "governs eval-tooling parser/writer correctness (audit-eval-coverage.js, check-instance-evidence.js, update-quality.sh); not a claim this training file's body or maintainer block makes. This instance's own rules_evaluated is a real array of objects, the shape check-instance-evidence.js reads, so this ledger does not fall into the parser gap the rule catalogs."
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -567,16 +560,16 @@
       "rule_lead": "Prompt design mechanics (technical subset) — whole-compendium scope call.",
       "verdict": "N/A",
       "evidence": null,
-      "na_reason": "file carries zero prompt fences and zero registry `{{prompt:}}` markers (has_prompt_blocks:false, fence_ranges:[], has_code_fences:false). This supplementary is a deliberately narrative self-service walkthrough ('Ask Claude to...' prose), not an exercise built from `**Prompt**` fenced blocks -- per curriculum/CLAUDE.md's content-rules.md, check_prompts.md fires on a registry-entry or inline fenced-prompt body, neither of which exists here. technical.md's completeness contract names check_platform_and_boundaries + check_research_claims as the two PRIMARY-owned compendiums plus five named check_pedagogy technical sub-rules; it does not ask technical to itemize check_prompts.md's 48 rules on a file with no prompt content."
+      "na_reason": "file carries zero prompt fences and zero registry `{{prompt:}}` markers (has_prompt_blocks:false, fence_ranges:[], has_code_fences:false per derive-body-view.js). This supplementary is a deliberately narrative self-service walkthrough ('Ask Claude to...' prose), not an exercise built from `**Prompt**` fenced blocks. technical.md's completeness contract names check_platform_and_boundaries + check_research_claims as the two PRIMARY-owned compendiums plus five named check_pedagogy technical sub-rules; it does not ask technical to itemize check_prompts.md's 48 rules on a file with no prompt content."
     },
     {
       "compendium": "check_research_claims.md",
       "rule_index": 1,
       "rule_lead": "Source URL + type label — mandatory.",
-      "verdict": "REVISE",
-      "evidence": "The file's ONE citation is L67 (backing block, Sources): \"cc-model-command `[checked:2026-05-15 result:OK due:cohort]` https://code.claude.com/docs/en/cli-reference — [capability] `/model <name>` switches the active model in-session.\" Live-verified this session (WebFetch + raw curl of the exact cited URL, both independently): code.claude.com/docs/en/cli-reference documents ONLY the launch-time `--model` CLI flag (e.g. `claude --model claude-sonnet-...`) and contains no `/model` in-session slash command at all -- confirmed by curl'ing the raw page and grepping every 'model' occurrence (61 hits, all `--model`/`--fallback-model`/`--advisor` CLI-flag rows, none an interactive slash command). The claim IS true and IS documented, but on a DIFFERENT page: WebFetch of https://code.claude.com/docs/en/commands returns the exact matching row: '`/model [model]` | Switch the AI model and save it as your default for new sessions... press s on a row to switch for the current session only.' The URL cited does not support the claim it is attached to -- §1's mandatory-URL requirement is not met by a URL that, when opened, documents something else.",
-      "fix_hint": "repoint the stamp to https://code.claude.com/docs/en/commands (where `/model [model]` is actually documented), keeping the same checked-date/result/due grammar; cli-reference remains valid only for the separate `--model` launch-flag claim, which this file does not make",
-      "blocking": true
+      "verdict": "PASS",
+      "evidence": "The file's ONE citation is L67 (backing block, Sources): 'cc-model-command `[checked:2026-08-28 result:OK due:cohort]` https://code.claude.com/docs/en/commands — [capability] `/model <name>` switches the active model in-session; the commands page carries the `/model [model]` row (the cli-reference page documents only the launch-time `--model` flag, so the stamp points here).' Live-verified this session via two independent WebFetches: code.claude.com/docs/en/commands returns the exact matching row -- '`/model [model]` | Switch the AI model and save it as your default for new sessions... press s on a row to switch for the current session only' -- while code.claude.com/docs/en/cli-reference was re-fetched for contrast and confirmed to document only the launch-time `--model` flag, no in-session slash command. The cited URL now supports the claim it is attached to. This is a fix, not a fresh read: prior instance (this file's own history) filed REVISE here on 2026-08-28 because the stamp pointed at cli-reference; the maintainer's fix (commit 038fffa4, verified committed and clean via `git status`/`git diff HEAD`) repointed it to commands and bumped checked-date to today. grep confirms 0 occurrences of 'docs/en/cli-reference' and exactly 1 of 'docs/en/commands' in the file.",
+      "fix_hint": null,
+      "blocking": false
     },
     {
       "compendium": "check_research_claims.md",
@@ -584,14 +577,14 @@
       "rule_lead": "OODA paraphrase ≠ primary source.",
       "verdict": "N/A",
       "evidence": null,
-      "na_reason": "no OODA-subagent-paraphrase claim is transcribed in this file; the one claim is a direct capability assertion, live-verifiable against docs (see §1 finding above for the verification itself)"
+      "na_reason": "no OODA-subagent-paraphrase claim is transcribed in this file; the one claim is a direct capability assertion, live-verifiable against docs (see §1 above)"
     },
     {
       "compendium": "check_research_claims.md",
       "rule_index": 2,
       "rule_lead": "Freshness rule — 6 months.",
       "verdict": "PASS",
-      "evidence": "L67 stamp checked 2026-05-15, ~105 days before today (2026-08-28) -- within the 6-month window. The underlying capability was independently re-confirmed live this session (see §1/§4). §2a (durable-account carve-out) doesn't apply: not a first-hand practitioner account of a completed event, so no due:none dating question arises. §2b (due:none-scopes-citation) doesn't apply either: the stamp uses due:cohort, not due:none, so the two-stamp-lines failure mode this sub-clause targets cannot occur here.",
+      "evidence": "L67 stamp checked 2026-08-28 -- today's date, freshest possible. §2a (durable-account carve-out) doesn't apply: not a first-hand practitioner account of a completed event. §2b (due:none-scopes-citation) doesn't apply either: the stamp uses due:cohort, not due:none.",
       "fix_hint": null,
       "blocking": false
     },
@@ -666,7 +659,7 @@
       "rule_index": 11,
       "rule_lead": "Source-verification maintainer block on any student-facing file with practitioner citations.",
       "verdict": "PASS",
-      "evidence": "No practitioner citation is present (only a platform-capability citation), so the rule's literal trigger doesn't fire -- but per §11a's unified-scope clause ('a Claude Code capability claim is a source whose URL is the docs page... same stamp, due:cohort'), the same source-verification block IS owed and IS present: L66-67 carries a 'Sources' section with the required stamp grammar for the one capability claim. §11a's stamp-grammar requirement is also met: L67 uses the exact `[checked:YYYY-MM-DD result:RESULT due:DUE]` <url> — [label] <claim-anchor>. fallback: <reframe>. shape in full (checked-date, result, due, label, claim-anchor, fallback all present) -- no bare 'MUST DO' prose checkbox. Format compliance holds independent of the separate §1/§14 finding that the URL itself doesn't support the claim; this sub-clause governs the STAMP'S SHAPE, not the URL's correctness.",
+      "evidence": "No practitioner citation is present (only a platform-capability citation), so the rule's literal trigger doesn't fire -- but per §11a's unified-scope clause ('a Claude Code capability claim is a source whose URL is the docs page... same stamp, due:cohort'), the same source-verification block IS owed and IS present: L66-67 carries a 'Sources' section with the required stamp grammar for the one capability claim. §11a's stamp-grammar requirement is met in full: L67 uses the exact `[checked:YYYY-MM-DD result:RESULT due:DUE]` <url> — [label] <claim-anchor>. fallback: <reframe>. shape (checked-date, result, due, label, claim-anchor, fallback all present) -- no bare 'MUST DO' prose checkbox. Format compliance holds and now the URL itself is correct too (§1 above).",
       "fix_hint": null,
       "blocking": false
     },
@@ -690,10 +683,10 @@
       "compendium": "check_research_claims.md",
       "rule_index": 14,
       "rule_lead": "A green check must measure the fact, not a proxy that co-varies with it.",
-      "verdict": "REVISE",
-      "evidence": "Tell (c) directly: 'the check confirms an annotation EXISTS rather than that it is TRUE.' The L67 stamp carries `result:OK`, an annotation asserting the citation was verified -- but re-opening the cited URL this session (independently, twice: WebFetch + raw curl) shows the claim is NOT on that page. The annotation existed (someone wrote 'result:OK' on 2026-05-15) but was not true of the URL it names, and every subsequent Quality re-stamp (through 2026-08-24's technical 'drift-recheck' PASS) inherited that unverified 'OK' without anyone re-opening the link -- exactly the propagation-at-rising-confidence pattern §14 warns about. Same underlying defect as the §1 finding above, cited separately here because it names a different failure mode (a verification instrument trusting an annotation's existence over its truth) rather than the citation-mandatory rule itself.",
-      "fix_hint": "same fix as §1: repoint to code.claude.com/docs/en/commands, and when re-stamping, actually re-open the destination URL rather than re-asserting the prior result",
-      "blocking": true
+      "verdict": "PASS",
+      "evidence": "Tell (c) is the one previously in play: 'the check confirms an annotation EXISTS rather than that it is TRUE.' Prior verdict here was REVISE because L67's `result:OK` was an unopened annotation -- the stamp said OK but the destination page did not carry the claim. That is now resolved on the fact, not just the field: the checked-date was bumped to today AND the destination URL was actually re-opened and confirmed to carry `/model [model]` (WebFetch, quoted above under §1). The annotation and the reality it claims to describe now agree, verified by opening the page rather than trusting the field.",
+      "fix_hint": null,
+      "blocking": false
     },
     {
       "compendium": "check_research_claims.md",
@@ -750,6 +743,26 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "body does not teach/reveal auto-load/lazy-load/explicit-load context tiers as a pedagogical beat -- that belongs to module-level content per training-architecture.md, not this supplementary"
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 1,
+      "rule_lead": "Banned words — grep zero-tolerance.",
+      "verdict": "PASS",
+      "evidence": "mechanical: /\\b(delve|delving|honest|honestly|importantly|crucial|crucially|substrate|synergize|paradigm shift)\\b/ over body projection curriculum/evals/body-views/ae101--supplementary--build-a-project-from-zero.body.txt → 0 hits; pattern proven against planted violation.",
+      "fix_hint": "",
+      "blocking": false,
+      "prefilled": true
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 2,
+      "rule_lead": "Ritual / ceremony — hard ban in any curriculum/training surface.",
+      "verdict": "PASS",
+      "evidence": "mechanical: /\\b(ritual|rituals|ceremony|ceremonies)\\b/ over body projection curriculum/evals/body-views/ae101--supplementary--build-a-project-from-zero.body.txt → 0 hits; pattern proven against planted violation.",
+      "fix_hint": "",
+      "blocking": false,
+      "prefilled": true
     }
   ],
   "platform_claims_checked": [
@@ -757,7 +770,7 @@
       "claim": "Set the model to Sonnet first with `/model sonnet`.",
       "line": 9,
       "verdict": "PASS",
-      "source": "compendium (backing-block stamp) + live re-verification via WebFetch of code.claude.com/docs/en/commands, which documents `/model [model]` exactly as claimed"
+      "source": "compendium (backing-block stamp, now pointing at code.claude.com/docs/en/commands) + live re-verification via WebFetch, which documents `/model [model]` exactly as claimed"
     }
   ],
   "citations_checked": [
@@ -767,23 +780,23 @@
       "label_present": true,
       "url_present": true,
       "url_alive": true,
-      "evidence_level_honest": false
+      "evidence_level_honest": true
     }
   ],
   "skills_referenced": [],
   "urls_sampled": [
     {
-      "url": "https://code.claude.com/docs/en/cli-reference",
+      "url": "https://code.claude.com/docs/en/commands",
       "alive": true,
       "status_code": 200
     },
     {
-      "url": "https://code.claude.com/docs/en/commands",
+      "url": "https://code.claude.com/docs/en/cli-reference",
       "alive": true,
       "status_code": 200
     }
   ],
-  "blocking_findings_count": 1,
+  "blocking_findings_count": 0,
   "todos_count": 1,
   "todos": [
     {

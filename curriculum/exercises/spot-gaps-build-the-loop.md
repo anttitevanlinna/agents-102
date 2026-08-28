@@ -102,8 +102,8 @@ Expect the list to look familiar: test-writing, browser-testing, PR-building, li
 
 **Fast-operator batch path (accepted):** *"Fast operator?"* labels the opt-in path for someone who wants both scan prompts in one conversation; it does not set the room's pace or the exercise's completion bar. The separate scan callout is the working-memory stop gate. Preserve both callouts and the label.
 
-**Quality:** compendium-audited 2026-08-26 (writing@0e4f7c9e story@0e4f7c9e technical@1abb84c6 behavior@ba5ccf5 pedagogy@0e4f7c9e strategy@1c765f2 slides@0e4f7c9e)
-- judges @0e4f7c9e: writing PASS, story PASS, technical PASS (drift-recheck), behavior PASS, pedagogy PASS, strategy PASS (verify-refuted), slides PASS
+**Quality:** compendium-audited 2026-08-28 (writing@0e4f7c9e story@0e4f7c9e technical@0cea7581 behavior@ba5ccf5 pedagogy@0e4f7c9e strategy@1c765f2 slides@0e4f7c9e)
+- judges @0cea7581: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS (verify-refuted), slides PASS
 - re-audit @796293b 2026-05-31: writing PASS, pedagogy PASS — steer-callout gained a premature-completion recovery line (§48/§62) + a render-as-HTML affordance callout after the shapes prompt (§50/§53/§62 hold)
 
 **Word count:** ~740 words body.

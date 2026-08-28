@@ -39,7 +39,7 @@ Prompting this over and over is not the way. The real move is putting the defini
 
 Somewhere during the un-packaged send-off a worry surfaced: did it touch the migration, did the tests really cover the edge. There was no way to check mid-session, and it nagged.
 
-Test that worry against the return. Where the return bears it out, the worry names your first check. Where it doesn't, the artefact wins: it is first-hand data from the real run, and the worry is not.
+Test that worry against the return. Where the return bears it out, the worry names your first check. Where it doesn't, the artefact wins: it is first-hand data from the session itself, and the worry is not.
 
 Acting without full control is the job from here on. Build the check, send again. The checks pay twice: a session they steer is a session you don't babysit, and a session you don't babysit can run beside another.
 

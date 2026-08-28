@@ -1,7 +1,7 @@
 {
   "class": "technical",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/supplementary/agentic-engineering-progression.md",
-  "body_sha": "ea08e019df8835f4b8babbc035f8c77c333ae911094eaae261d78e61641eba65",
+  "body_sha": "f884138e03f084c5ffb991ca020a1b322b26f47dab2820f9cbb79dacbbd0181d",
   "shape_hash": "b2e495b33b4a0a53",
   "verdict": "REVISE",
   "training": "ae101",
@@ -380,7 +380,7 @@
       "rule_index": "24a",
       "rule_lead": "Quality stamps: tooling writes them; the SHA pins committed content.",
       "verdict": "PASS",
-      "evidence": "Harm: a hand-typed Quality line, or a stale narrative tail concatenated onto a pinned line, misrepresenting audit state. Checked directly: line 124 reads '**Quality:** compendium-audited 2026-08-24 (writing@1abb84c6 story@1abb84c6 technical@1abb84c6 behavior@670460b pedagogy@1abb84c6 strategy@670460b slides@1abb84c6)' — a single clean anchor line with no trailing prose after the parenthetical, and exactly one `**Quality:**` line exists in the file (no fragmented/duplicate stamps). Format matches the tool-written shape this rule describes; no hand-typed narrative tail observed. (I did not execute update-quality.sh myself this session, so this is a format observation, not a run-verified claim.)",
+      "evidence": "DRIFT RECHECK against new body_sha f884138e. Harm: a hand-typed Quality line, or a stale narrative tail concatenated onto a pinned line, misrepresenting audit state. Checked directly: line 124 now reads '**Quality:** compendium-audited 2026-08-28 (writing@e11bbeb4 story@e11bbeb4 technical@1abb84c6 behavior@670460b pedagogy@1abb84c6 strategy@670460b slides@e11bbeb4)' — a single clean anchor line with no trailing prose after the parenthetical, and exactly one `**Quality:**` line exists in the file (no fragmented/duplicate stamps). technical@1abb84c6 is still the PRE-fix pin, which is correct and expected: this is a confirmation run, the orchestrator advances the pin only after this verdict lands. Format matches the tool-written shape this rule describes; no hand-typed narrative tail observed. (I did not execute update-quality.sh myself this session, so this is a format observation, not a run-verified claim.)",
       "fix_hint": null,
       "blocking": false
     },
@@ -613,17 +613,17 @@
       "compendium": "check_research_claims.md",
       "rule_index": 1,
       "rule_lead": "Source URL + type label — mandatory (scope: maintainer-block only).",
-      "verdict": "PASS",
-      "evidence": "Harm: an unsourced or over-claimed evidence-level label reads to a student as more evidenced than it is. Checked: both maintainer-block Sources lines (95-96) carry a specific clickable URL and the label `[practitioner direct, commercial interest]` — correctly disclosing Wollsén's commercial stake (two courses + a bootcamp built on this narrative, per continuous-research/observations/wollsen-fredrik.md) rather than the plain `[practitioner direct]`, and correctly scoped out of student-facing body prose (body lines 9, 56 carry plain inline links with no `[label]` tag), matching this rule's explicit maintainer-block-only scope clause.",
-      "fix_hint": null,
-      "blocking": false
+      "verdict": "REVISE",
+      "evidence": "DRIFT RECHECK against new body_sha f884138e (prior body ea08e019df88 carried an axis-less \"three to four times\" multiplier flagged blocking under rule 12 below; that multiplier is now cut from body, per the maintainer note this is a confirmation run for). URL+label presence is still clean on this rule's own terms: both Sources lines (96-97 in the current file) carry a clickable URL and `[practitioner direct, commercial interest]`, correctly scoped out of body per this rule's maintainer-block-only clause. But the fix broke the ledger sitting beside those Sources lines. Ran `node scripts/validate-backing.js curriculum/trainings/agentic-engineering-101/supplementary/agentic-engineering-progression.md` this session; real output: 1 error — \"curriculum/trainings/agentic-engineering-101/supplementary/agentic-engineering-progression.md:90 [ANCHOR-DRIFT] claim `wollsen-value-estimate` quotes a phrase absent from the body: 'three to four times the value of an average team, far below the multip…'\" (nonzero exit). Confirmed by direct read: the Claims-ledger row at line 90 still reads `wollsen-value-estimate · detail · \"three to four times the value of an average team, far below the multiple suggested by its pull-request count\" ← fred-throughput-account`, but current body line 56 reads \"By his own estimate, the value his four-engineer team delivered ran far below what its pull-request count alone would suggest — he kept output volume and delivered value on separate axes.\" The ledger's quoted anchor text is not a substring of the body at any line — confirmed via `grep -n \"three to four times\"` on the raw file: the only hit is line 90 itself, inside the backing block (count=1, not the 0 a clean body-only grep would need). Harm this rule's citation apparatus exists to prevent: a claim ledger that no longer traces to real body text is not a citation, it is an orphaned record — a future editor re-verifying sources against this ledger checks a number students never read, and the Sources entry immediately below it (line 97) already documents the multiplier as quarantined and 'stays out of body,' which the Claims entry above it now contradicts. Same shape as this section's own back-sweep-on-correction clause (a correction confined to one part of a record leaves it self-contradictory, worse than no catch, because a reader trusts the stale entry) — applied within this single file rather than across research-cycle files, but identical harm and identical fix discipline: the fix travels with the correction, same edit.",
+      "fix_hint": "Narrow lens only: either delete the `wollsen-value-estimate` Claims-ledger row entirely (the number it anchors is deliberately no longer a body claim, so it owes no citation row), or requote it to the sentence that actually replaced it (the axis-separation claim, body line 56) if the maintainer wants the ledger to keep tracking that idea under this key. Author reconciles which; this judge only flags the drift. Re-run `node scripts/validate-backing.js <file>` after — a clean exit is the acceptance bar.",
+      "blocking": true
     },
     {
       "compendium": "check_research_claims.md",
       "rule_index": "1a",
       "rule_lead": "OODA paraphrase != primary source.",
       "verdict": "PASS",
-      "evidence": "Harm: a paraphrase drifting from what the practitioner actually said gets transcribed as the primary claim. Checked by WebFetching the primary URL directly this session (not trusting the cached research file): the post states verbatim 'My honest estimate is three to four times the value of an average team' and separately frames 'the gap between those two numbers' against 'the ten or twenty times that the raw volume would suggest' — body line 56 ('He estimated his four-engineer team delivered three to four times the value of an average team, far below the multiple suggested by its pull-request count') is an accurate, faithful compression of both quotes, not an invented or drifted synthesis.",
+      "evidence": "DRIFT RECHECK against new body_sha f884138e. Harm: a paraphrase drifting from what the practitioner actually said gets transcribed as the primary claim. Current body line 56 reads \"By his own estimate, the value his four-engineer team delivered ran far below what its pull-request count alone would suggest — he kept output volume and delivered value on separate axes.\" This is a faithful, and now strictly SAFER, compression of the primary post (WebFetched under the prior instance: \"My honest estimate is three to four times the value of an average team\" and \"the gap between those two numbers\" vs \"the ten or twenty times that the raw volume would suggest\") — the new body sentence drops the specific multiplier the prior instance flagged as axis-less (rule 12) and keeps only the qualitative, uncontested claim (volume and value sit on separate axes), which is not a drift risk in either direction.",
       "fix_hint": null,
       "blocking": false
     },
@@ -721,10 +721,10 @@
       "compendium": "check_research_claims.md",
       "rule_index": 12,
       "rule_lead": "Denominator + axis discipline on every adoption/productivity number.",
-      "verdict": "REVISE",
-      "evidence": "Harm this rule exists to prevent: a multiplier shipped without its population or metric axis reads to a CTO-audience reader as a settled, comparable figure when it is neither, and inflates credibility of curriculum content on the strength of a number nobody can reproduce. That harm IS present here. Body line 56: 'He estimated his four-engineer team delivered three to four times the value of an average team, far below the multiple suggested by its pull-request count.' The body does correctly separate the value-axis from the PR-count-axis (crediting the axis-discipline half of the rule), but names NO population for 'an average team' at all, and I verified directly — via `grep -rn` on the source URL in continuous-research/ and a direct WebFetch of the primary post — that the underlying comparator both multiples are built against is itself the exact figure this repo's own research file quarantines: `continuous-research/observations/wollsen-fredrik.md` line 47 lists `\"3-4x the value of an average team\" (self-estimate, no axis)` under its 'Numbers that must not be carried' section, and line 38 separately flags the 'median 5-6, elite 9-11 PRs/month' benchmark Wollsén's post cites as its 'average team' baseline as `[UNVERIFIED STAT]` with 'no citation... two searches plus two fetches found no original.' The research system, applying this exact compendium, already concluded this specific figure must not be carried forward — and it was carried forward into shipped curriculum without a hedge, a population, or an [UNVERIFIED STAT]-equivalent flag. WebFetch of the primary source confirms the curriculum's paraphrase is faithful to what Wollsén wrote (so this is not a §1a drift issue) — the defect is that an axis-less self-estimate built on an uncited benchmark is presented with the same declarative confidence as the adjacent, well-sourced session-count claim.",
+      "verdict": "PASS",
+      "evidence": "DRIFT RECHECK against new body_sha f884138e — CONFIRMS the finding filed against prior body ea08e019df88 is now resolved, not merely reworded. Prior defect: body line 56 shipped \"three to four times the value of an average team, far below the multiple suggested by its pull-request count\" — an axis-less self-estimate this repo's own research file quarantines (continuous-research/observations/wollsen-fredrik.md § Numbers that must not be carried). Checked directly: `grep -c \"three to four times\"` on the body region of the current file returns 0 (the only remaining hit in the whole file is inside the backing block's Claims ledger at line 90, which is a separate defect — see rule 1 above, ANCHOR-DRIFT). Current body line 56 reads \"By his own estimate, the value his four-engineer team delivered ran far below what its pull-request count alone would suggest — he kept output volume and delivered value on separate axes.\" This is exactly the fallback the source-verification stamp already named (Sources line 97: \"fallback: remove the numbers and retain the qualitative constraint that parallel output can outrun organizational absorption\") — the fix took the anticipated fallback, not an ad hoc rewrite. No multiplier, no population, no metric-axis figure remains for this rule to police; the adjacent, well-sourced session-count data point (30 to 40 sessions open, 10 to 15 actively managed) is untouched and was never the defect.",
       "fix_hint": "Narrow lens only: either cut 'three to four times the value of an average team, far below the multiple suggested by its pull-request count' and keep the sourced, uncontested '30 to 40 sessions open... actively managed 10 to 15' data point on its own (the source-verification block's own fallback already anticipates exactly this: 'remove the numbers and retain the qualitative constraint that parallel output can outrun organizational absorption'), or replace the multiplier with Wollsén's own better-grounded admission that PR volume reflects internal optimization rather than external delivery value ('the inward turn is a workaround, not the goal', already in the research file, not flagged UNVERIFIED). Author reconciles which; this judge only flags the axis-less figure.",
-      "blocking": true
+      "blocking": false
     },
     {
       "compendium": "check_research_claims.md",
@@ -1252,11 +1252,11 @@
     },
     {
       "line": 56,
-      "claim": "Wollsén: 30-40 sessions open, 10-15 actively managed, 490 PRs in June, 'three to four times the value of an average team' multiplier",
+      "claim": "Wollsén: 30-40 sessions open, 10-15 actively managed, volume and value kept on separate axes (axis-less multiplier removed from body per confirmation-run fix)",
       "label_present": true,
       "url_present": true,
       "url_alive": true,
-      "evidence_level_honest": false
+      "evidence_level_honest": true
     }
   ],
   "skills_referenced": [],
@@ -1273,5 +1273,10 @@
     }
   ],
   "blocking_findings_count": 1,
-  "todos_count": 0
+  "todos_count": 0,
+  "resolution": {
+    "settled": "fixed",
+    "at": "2026-08-28",
+    "note": "Anchor-drift real: Claims row quoted body text the quarantine rewrite removed; row now quotes the current number-free wording verbatim."
+  }
 }

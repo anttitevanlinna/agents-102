@@ -6,147 +6,1134 @@
   "verdict": "REVISE",
   "training": "ae101",
   "rules_evaluated": [
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 1, "rule_lead": "Training platform = Claude Code (CLI + Desktop) + Cowork.", "verdict": "PASS", "evidence": "All five prompts are plain Claude Code prompts; no claude.ai-only feature named. AE101 is Code-only by training-architecture, and the file is internally consistent with that (no Cowork content).", "fix_hint": "", "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 2, "rule_lead": "Cloud/remote features carry Git dependency.", "verdict": "N/A", "evidence": "No cloud/remote-Claude-Code content.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 3, "rule_lead": "Local scheduled tasks catch up on wake, but only once.", "verdict": "N/A", "evidence": "No scheduled-task content.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 4, "rule_lead": "Verify capabilities BEFORE asserting, not after.", "verdict": "PASS", "evidence": "cc-permission-modes source stamp `[checked:2026-08-25 result:OK due:cohort]` backs the body's plan-mode approval claims (line 43); I independently curled https://code.claude.com/docs/en/permission-modes.md today (2026-08-28) → HTTP 200, live.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": "4a", "rule_lead": "Maintain living capability notes for both runtimes; consult before asserting.", "verdict": "N/A", "evidence": "Process rule about maintaining reference_claude_code_capabilities.md; not a file-content property.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": "4b", "rule_lead": "Compendium platform claims rot at 60 days.", "verdict": "PASS", "evidence": "cc-permission-modes checked 2026-08-25, 3 days before today (2026-08-28) — well inside the 60-day window.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": "4c", "rule_lead": "Don't extend known mechanism into adjacent context without verifying it fires there.", "verdict": "N/A", "evidence": "No cross-runtime template/macro substitution claim (slash-command vs skill) in this file.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": "4d", "rule_lead": "Fix the contract, not the broken recovery.", "verdict": "N/A", "evidence": "No defensive-recovery pattern present in this exercise.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 5, "rule_lead": "Practitioner observation beats docs lookup.", "verdict": "N/A", "evidence": "No practitioner-vs-docs conflict surfaced in this file.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": "5a", "rule_lead": "Live-test beats docs for runtime-behavior claims.", "verdict": "PASS", "evidence": "Source stamp records 'Re-verified live' testing for the permission-modes menu claim rather than resting on docs alone (see rule 14 finding below re: the stamp's own internal date consistency, a separate issue from whether live-testing occurred at all).", "fix_hint": "", "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 6, "rule_lead": "Known correct Claude Code facts (easy to get wrong).", "verdict": "PASS", "evidence": "File deliberately omits the Shift+Tab keystroke per its own maintainer note (line 143 backing block: 'Do not restore the keystroke here') and defers plan-mode entry mechanics to when-a-plan-is-good.md. AskUserQuestion tool referenced (prompt at line 72) is a real Claude Code tool. No fact in this file contradicts the compendium's known-facts list.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": "6b", "rule_lead": "When tool feature behaves differently than expected, update curriculum, not student's workaround.", "verdict": "N/A", "evidence": "No scheduled-task behavior content.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": "6c", "rule_lead": "PreToolUse/PostToolUse hooks read env from harness, not from agent Bash subshells.", "verdict": "N/A", "evidence": "No hook/env content in this file.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": "6d", "rule_lead": "Auto-load surface = SIX things — four filenames + project `.claude/rules/` + user `~/.claude/rules/`.", "verdict": "REVISE", "evidence": "Line 133 (maintainer, Meta/Artifact-locations): 'team-worthy rules flagged for separate PR against the team's rules home (`CLAUDE.md` at root, `.claude/CLAUDE.md`, or `AGENTS.md`, whichever the repo uses). See `reference/claude-code-for-engineers.md § 1`.' AGENTS.md is not one of the six auto-load surfaces this rule enumerates, and this repo's own canonical reference states the fact plainly: `ae101--reference--claude-code-for-engineers.md §8`, '`AGENTS.md`: Claude Code does not read it' without an explicit `@AGENTS.md` import from a CLAUDE.md. Listing AGENTS.md alongside `CLAUDE.md`/`.claude/CLAUDE.md` as an equally-valid 'team's rules home' — without the import caveat — is the §4 'vocabulary is a claim' failure mode this compendium names directly: it implies Claude Code reads a PR filed there the same way it reads the other two. Compounding: the pointer names `§ 1` ('The memory hierarchy: where your rules actually live'), which lists only the four native CLAUDE.md-family layers and never mentions AGENTS.md at all — the AGENTS.md nuance lives at §8, not §1, so a trainer following the pointer to check the claim won't find it addressed. Harm: narrow (trainer-only Meta note, not core student teaching; a student whose repo already has an @import wired suffers nothing) but real — a trainer advising 'PR your rule to AGENTS.md' on a repo without the import wires a rule that Claude Code silently never reads, the exact silent-failure shape this compendium repeatedly flags (§40, §49).", "fix_hint": "Either drop the AGENTS.md alternative from this bullet (CLAUDE.md and `.claude/CLAUDE.md` already cover 'whichever the repo uses' for Claude-Code-native convention) or add the one-clause caveat ('AGENTS.md needs an `@import` into CLAUDE.md — see §8') and repoint the citation from `§ 1` to `§ 1, § 8`.", "blocking": true},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": "6e", "rule_lead": "Transcript-by-mtime selection fragile when current session writes target folder.", "verdict": "N/A", "evidence": "No transcript-selection content.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": "6f", "rule_lead": "Compendium pointers inside files = autoload-redundant.", "verdict": "N/A", "evidence": "Internal-memory-hygiene rule; not applicable to student-facing content.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": "6g", "rule_lead": "Edit-time prompt-edit gate's approval detector MUST parse the transcript deterministically.", "verdict": "N/A", "evidence": "Tooling-internal rule, not file content.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 7, "rule_lead": "Sessions = unit of work — write \"start a new session in X,\" not \"open Claude Code in X.\"", "verdict": "PASS", "evidence": "Line 68 (raw source): 'The second read runs in this same session and still in plan mode' — correct session vocabulary throughout; no 'open Claude Code' conflation anywhere in the file.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": "7a", "rule_lead": "CLAUDE.md describes runtime, not just task.", "verdict": "N/A", "evidence": "No non-default-runtime (sync-folder/container/network-share) content.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": "7b", "rule_lead": "Cross-working-directory boundaries always open new; evidence travels by disk.", "verdict": "N/A", "evidence": "No worktree/cross-cwd content — this exercise stays in one session, one repo.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": "7c", "rule_lead": "Same-cwd recovery defaults to --resume, not new.", "verdict": "N/A", "evidence": "No mid-session recovery content.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 8, "rule_lead": "F-Secure curriculum off-limits.", "verdict": "N/A", "evidence": "No F-Secure content.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 9, "rule_lead": "No premature infrastructure.", "verdict": "N/A", "evidence": "No MCP/SQLite/knowledge-graph proposal in this file.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 10, "rule_lead": "External org content — never import, reconcile, or paraphrase.", "verdict": "N/A", "evidence": "No competitor-curriculum content.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 11, "rule_lead": "Destructive operations need confirmation.", "verdict": "PASS", "evidence": "Exercise is non-destructive by design: plan-mode edits stay locked until 'lock it in' (line 68, 91), and Phase 5 explicitly states 'Don't execute the plan' (line 97).", "fix_hint": "", "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 12, "rule_lead": "No \"as-is\" imports from internet.", "verdict": "PASS", "evidence": "Pocock's grill-me skill is forked at `curriculum/skills/external/pocock-skills/grill-me/SKILL.md`, pinned to commit 62f43a1 (verified live today via curl → HTTP 200), LICENSE preserved at the fork root (`curriculum/skills/external/pocock-skills/LICENSE`, confirmed present on disk), and credited at line 93 + backing-block source note — matches the fork→vet→adapt→credit practice exactly. SKILL.md body text matches the fenced prompt-2-original content verbatim.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 13, "rule_lead": "Pseudo-URI + kill-switch for public/private content split.", "verdict": "N/A", "evidence": "No bosser-strategy pseudo-URI reference in this file.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": "13a", "rule_lead": "Bulk workbook rebuilds: derive flags from existing output, never guess \"all.\"", "verdict": "N/A", "evidence": "Not a build/tooling file.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": "13b", "rule_lead": "Before auditing a built artifact ask whether it ships; before acting on a finding, re-measure it.", "verdict": "N/A", "evidence": "Not applicable — this exercise file is not a built artifact under `site/clients/`.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 14, "rule_lead": "Internal audit/session-retro directories default-gitignore from creation.", "verdict": "N/A", "evidence": "No such directories referenced in this file.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 15, "rule_lead": "Quality gates run at wind-down, not mid-session.", "verdict": "N/A", "evidence": "Process rule for the orchestrator, not a file-content property.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 16, "rule_lead": "Tooling test layers carry acceptance-test contract.", "verdict": "N/A", "evidence": "Not a mechanical-harness file.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 17, "rule_lead": "Script ratchet — every LLM-orchestration tooling surface ratchets toward script-replaceable assertions.", "verdict": "N/A", "evidence": "No orchestration-tooling content in this file.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 18, "rule_lead": "Hook lints partition into auto-fix vs warn.", "verdict": "N/A", "evidence": "No hook content.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 19, "rule_lead": "Runner ↔ source pre-flight.", "verdict": "N/A", "evidence": "No fixture/runner content.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 20, "rule_lead": "Judge must honor script exit codes.", "verdict": "N/A", "evidence": "No script-driven judge content in this file.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 21, "rule_lead": "Eval-fire writing-class fires must schema-validate before presenting verdicts.", "verdict": "N/A", "evidence": "Process rule for the eval-fire skill.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": "21a", "rule_lead": "The schema gate does not cover the failure that costs most; default model is sonnet.", "verdict": "N/A", "evidence": "Dispatch-tooling rule, not file content.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 22, "rule_lead": "Coverage tools enumerate universe, not index of past work.", "verdict": "N/A", "evidence": "No coverage-tooling content in this file.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 23, "rule_lead": "Cowork sandboxed to its connected working directories.", "verdict": "N/A", "evidence": "AE101 is Code-only; no Cowork content in this file.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 24, "rule_lead": "maintainer_acceptance = JSON-level override for accepted/mitigated judge verdicts.", "verdict": "N/A", "evidence": "No prior maintainer_acceptance override to preserve for this file/class.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": "24a", "rule_lead": "Quality stamps: tooling writes them; the SHA pins committed content.", "verdict": "PASS", "evidence": "Quality line (raw source line 123) is a clean anchor: '**Quality:** compendium-audited 2026-08-26 (...)' with no leftover narrative tail. This is orchestrator/tooling territory, not something this judge writes.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 25, "rule_lead": "Cowork capability surface — UI surfaces subagent reads; no session rename in Cowork or Desktop.", "verdict": "N/A", "evidence": "No Cowork content; AE101 is Code-only.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 26, "rule_lead": "Audit scope derives from TRAININGS registry + link-walk, not disk dir or tarball.", "verdict": "N/A", "evidence": "Single-file judge dispatch; scope was assigned by the orchestrator.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 27, "rule_lead": "Acceptance-test contract covers prompt mechanics + end-state artefacts, NOT does prompt's executable shell actually work.", "verdict": "PASS", "evidence": "No literal shell commands appear inside any of the five fenced prompts — all are agent-directed natural language ('Explore the files you need', 'Walk down every unresolved branch').", "fix_hint": "", "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 28, "rule_lead": "Strategy-doc drift surfaces via judge citation — citation = canary, not verdict.", "verdict": "N/A", "evidence": "No strategy-doc citation in this technical-class read; strategy tie-in is a separate class's surface.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 29, "rule_lead": "Portability audits: analyze AGENT'S runtime, not prompt's literal syntax.", "verdict": "PASS", "evidence": "No student-typed shell command anywhere; all five prompts are agent-directed natural language the agent translates itself. No portability risk to flag.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 30, "rule_lead": "Skills at ~/.claude/skills/<name>/ are user-global but per-codebase in content — namespace by SUT.", "verdict": "N/A", "evidence": "No skill-authoring content in this file.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 31, "rule_lead": "state.json files written by run-mN.sh are convenience caches, not authoritative.", "verdict": "N/A", "evidence": "No state.json / multi-module hand-off content.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 32, "rule_lead": "tmux-runner sessions must use a per-runner socket.", "verdict": "N/A", "evidence": "No tmux-runner content.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 33, "rule_lead": "A killed run_in_background Bash wrapper is not evidence the tmux session it launched is dead.", "verdict": "N/A", "evidence": "No background-runner content.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 34, "rule_lead": "Spend on deleting the duplicate, not on guarding it — and a gate that finds nothing is speculation.", "verdict": "PASS", "evidence": "Single **Time:** line (57 min, raw line 3) sums cleanly against the five phase markers (5+15+12+15+10=57); no duplicate time-figure found. P3 is booked at 12 (raw line 47), matching the trainer-notes Decision Points explanation for the 15→12 cut.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 35, "rule_lead": "update-quality.sh takes ALL classes in ONE invocation per file, and not until that file's last judge has returned.", "verdict": "N/A", "evidence": "Orchestrator-side stamping mechanics; not something this judge performs or a file-content property.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 36, "rule_lead": "A hash guard is only as good as what it hashes, and a malformed hash disarms it silently.", "verdict": "PASS", "evidence": "body_sha recorded in this instance (246c5873...) is a genuine 64-char shasum -a 256 output, taken at read start; not fabricated or truncated.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 37, "rule_lead": "Measure the defect before proposing the fix, and again before repeating it to the maintainer.", "verdict": "PASS", "evidence": "The one blocking finding filed here (rule 6d, AGENTS.md) was verified against the actual repo state before filing: I confirmed the exact wording of `reference/claude-code-for-engineers.md §8` and §1's table contents, not inferred from memory.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 38, "rule_lead": "Prose describing a runtime the room never executes drifts to plausible mechanism.", "verdict": "N/A", "evidence": "No forward-looking automation beat / imagined-runtime prose in this file — everything described (plan mode, AskUserQuestion, Edit-not-Write) is a live prompt the student runs, not a described-but-unexecuted mechanism.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 39, "rule_lead": "A judge subagent without evidence is a rubber-stamp.", "verdict": "PASS", "evidence": "Self-referential rule about this dispatch itself: every REVISE/PASS-on-judgement row in this instance carries a line citation and quoted evidence, not a bare verdict.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 40, "rule_lead": "A gate keyed on the TOOL has a back door; a gate keyed on the FILE does not.", "verdict": "N/A", "evidence": "Hook-architecture rule, not a property of this student-facing file.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 41, "rule_lead": "Harness-side caches drift; the artifact is canonical.", "verdict": "N/A", "evidence": "No state-cache-vs-artifact content in this exercise (explicitly 'No training-dir state' per its own Meta note).", "fix_hint": "", "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 42, "rule_lead": "Before deleting anything, ask what its FIRING would look like.", "verdict": "N/A", "evidence": "Not a deletion-decision context.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 43, "rule_lead": "A hook on a gitignored surface is a rule on ONE machine.", "verdict": "N/A", "evidence": "No hook-authoring content.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 44, "rule_lead": "git log -1 on a DELETED file returns the deletion date.", "verdict": "N/A", "evidence": "Not a staleness-sweep context; the target file is live and tracked.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 45, "rule_lead": "A detector's reading vocabulary must cover the corpus's writing vocabulary — or it reports compliance as rot. Fail-open corollary (2026-08-28): the worse case is meeting a shape it does not know and defaulting to fine.", "verdict": "N/A", "evidence": "DRIFT RE-CHECK (this is the rule that triggered this file's re-fire — the pin at 1abb84c6 predates a rewrite of this rule's body). Re-read at current wording: §45 governs auditor/detector tooling (audit-eval-coverage.js, check-instance-evidence.js) reading vocabulary mismatches and fail-open defaults. push-back-on-the-plan.md contains no claim about detectors, auditors, coverage tools, or verification-tooling vocabulary — it is a plan-mode push-back exercise with no content in this domain. The rule's growth (adding the fail-open corollary) does not implicate anything in this body; the prior technical PASS on this file's content stands unaffected by the rule text change. One live application of the corollary's own lesson, applied to MY OWN output: I round-tripped this instance's `rules_evaluated` shape against `check-instance-evidence.js` after writing it (see `ungrounded_count` in my structured return) rather than assuming the array shape is what the tool expects.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 46, "rule_lead": "A verdict has more than one input; a freshness check usually watches one.", "verdict": "N/A", "evidence": "Freshness-tooling architecture rule (scan-stale-classes), not a file-content property. This dispatch itself is the human process compensating for exactly the blind spot this rule names (re-reading the rule body, not just the pin).", "fix_hint": "", "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 47, "rule_lead": "\"It used to be fast\" is a regression report — diagnose it by trajectory, not by architecture.", "verdict": "N/A", "evidence": "Not a performance-regression context.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 48, "rule_lead": "A bench is silent about everything it cannot stage, and silence reads exactly like a pass.", "verdict": "N/A", "evidence": "Not a benchmark/hillclimb context.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 49, "rule_lead": "An instruction whose violation leaves the output identical is not enforced by wording — it needs a measurement or a test.", "verdict": "PASS", "evidence": "Applied to my own dispatch: I ran `prefill-instance.js --write` (0 rows parked, prior instance predates shape_hash) and will run `--merge` after writing this instance and report the real spliced-row count, rather than assuming the merge is a no-op.", "fix_hint": "", "blocking": false},
-
-    {"compendium": "check_research_claims.md", "rule_index": 1, "rule_lead": "Source URL + type label — mandatory.", "verdict": "PASS", "evidence": "All four backing-block sources (raw lines 157-160) carry a URL and a type label: cc-permission-modes [capability], pocock-grill-me [practitioner direct], klaassen-definitive-guide [practitioner direct, vendor venue], martin-wwhtbt [practitioner direct]. Labels sit in the maintainer-block source list, not student-facing body, per this rule's own scope clause. No unproven convergence-verb claims in the Claims ledger.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_research_claims.md", "rule_index": "1a", "rule_lead": "OODA paraphrase ≠ primary source.", "verdict": "PASS", "evidence": "Klaassen's line is quoted verbatim in the source note ('each unit of engineering work should make subsequent units easier—not harder'), matching the primary source page content, not paraphrased.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_research_claims.md", "rule_index": 2, "rule_lead": "Freshness rule — 6 months.", "verdict": "PASS", "evidence": "All checked dates (2026-08-25, 2026-07-30, 2026-07-26 ×2) are within 6 months of today (2026-08-28); none of the stated due dates (2027-01-26, 2027-01-30, cohort, none) have elapsed.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_research_claims.md", "rule_index": 3, "rule_lead": "Zombie stat guard.", "verdict": "N/A", "evidence": "No round-number AI failure/success statistics cited anywhere in this file.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_research_claims.md", "rule_index": 4, "rule_lead": "Hold short OODA loose.", "verdict": "PASS", "evidence": "Stance block (raw line 169) correctly marks this file's evidence at L2 (single-practitioner-artifact level — Pocock's shipped, MIT-licensed skill), not inflated to a convergence count. No 'practitioners converge' overclaim.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_research_claims.md", "rule_index": 5, "rule_lead": "Resist prescriptive post-OODA phrasings.", "verdict": "PASS", "evidence": "OODA block (raw line 174) uses tentative framing — 'do plan mode's approval options still read as the body describes' — not a prescriptive design directive.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_research_claims.md", "rule_index": 6, "rule_lead": "Default to asking before folding findings into strategy docs.", "verdict": "N/A", "evidence": "Process rule for the orchestrator across sessions; not evaluable against a single finished file.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_research_claims.md", "rule_index": 7, "rule_lead": "Vision × Detail split.", "verdict": "PASS", "evidence": "The Claims ledger (raw line 145) tags `plan-mode-takes-minutes` ('Plan mode takes minutes on real codebases. Eight to twelve isn't unusual.', body line 31/37-expanded) as `vision · none-owed`. Harm check per the dispatch preamble: an operational duration range is by the compendium's own definition closer to Detail (a number, a shipped practice) than Vision, but it reads as Antti's own delivery-pacing observation — the maintainer IS the practitioner here (research_claims §11's maintainer-attested carve-out: '[practitioner direct], the best evidence on the ladder ... does NOT need a third-party URL'). The Decision-Points trainer note elsewhere in the same file (raw line 208) independently corroborates this with a real dry-run timing (13m15s, 2026-05-15). No fabricated or borrowed number is being laundered as vision; this is a tagging-precision nit in an internal ledger, not a student-facing accuracy defect, so per the dispatch preamble's instruction not to file a REVISE when the harm is this marginal, I am not blocking on it — see todos.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_research_claims.md", "rule_index": 8, "rule_lead": "Grep continuous-research/ and memory/ before guessing at a name.", "verdict": "N/A", "evidence": "Process rule for the author, not a property of the finished file.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_research_claims.md", "rule_index": 9, "rule_lead": "Consult research BEFORE generating, not after.", "verdict": "N/A", "evidence": "Process rule; the file's Sources/Frameworks/Stance/OODA structure evidences this was done, and is not independently checkable post-hoc.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_research_claims.md", "rule_index": 10, "rule_lead": "No \"What research says\" callout boxes.", "verdict": "PASS", "evidence": "Body prose weaves attribution in-voice (Pocock credit at raw line 93: 'Credit: Matt Pocock for the original grill-me skill'); no consultancy-deck callout boxes present anywhere.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_research_claims.md", "rule_index": 11, "rule_lead": "Source-verification maintainer block on any student-facing file with practitioner citations.", "verdict": "PASS", "evidence": "File carries the inline <!-- backing --> block (Claims/Sources/Frameworks/Stance/OODA, raw lines 137-181) — this repo's current convention for the underlying requirement (verification debt exposed per-source before shipping) — with per-source freshness stamps in the Sources section satisfying the same harm the older standalone heading format targeted.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_research_claims.md", "rule_index": 12, "rule_lead": "Denominator + axis discipline on every adoption/productivity number.", "verdict": "N/A", "evidence": "No adoption/productivity percentages in this file.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_research_claims.md", "rule_index": 13, "rule_lead": "Inference beyond source — absence licenses only absence.", "verdict": "N/A", "evidence": "No silence-based inference found in the file.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_research_claims.md", "rule_index": 14, "rule_lead": "A green check must measure the fact, not a proxy that co-varies with it.", "verdict": "REVISE", "evidence": "Sub-clause (d), half-updated annotation. Confirmed via `git diff 1abb84c6..HEAD`: the cc-permission-modes stamp's structured field moved from `[checked:2026-08-15 ...]` to `[checked:2026-08-25 ...]`, but the freeform prose immediately after it — 'Re-verified live 2026-08-15' — was left byte-identical in the same edit. Diagnostic from the rule itself ('does the qualifier still parse against its own stamp's date?'): the stamp now claims a 2026-08-25 check while its own prose evidence for that check still names 2026-08-15, ten days earlier. This does not mean the underlying claim is wrong — I independently curled the docs URL today (2026-08-28) and it is live and consistent with the body — but the stamp's internal date consistency is broken exactly per this rule's own worked example, and it is the kind of half-update the rule warns propagates at rising confidence to downstream readers who trust the structured field without opening the prose.", "fix_hint": "Either bump the prose to 'Re-verified live 2026-08-25' if a fresh live-test happened on that date, or leave `checked:` at 2026-08-15 if the 08-25 date was a docs re-read rather than a live re-test (recording which kind of check moved the date).", "blocking": false},
-    {"compendium": "check_research_claims.md", "rule_index": 15, "rule_lead": "A word-presence claim needs an unprimed read.", "verdict": "N/A", "evidence": "No word-presence field-research claim in this file.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_research_claims.md", "rule_index": 16, "rule_lead": "A candidate that matches the hunt's SHAPE has not answered the hunt's QUESTION.", "verdict": "N/A", "evidence": "No structural-match research finding to evaluate in this file.", "fix_hint": "", "blocking": false},
-
-    {"compendium": "check_pedagogy.md", "rule_index": 16, "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.", "verdict": "PASS", "evidence": "Phase 3's push-back has no fenced prompt by design — the forcing function is the student composing their own free-text push-back in chat, which the compendium's own 'Boundary 2' carve-out sanctions ('the body ask IS the design'; matches this file's own maintainer accept-note structure). The four plan-mode prompts (raw lines 29, 57, 72, 85) correctly carry the mechanical machinery (Edit-not-Write, three/one-at-a-time batching, recommend-an-answer) inside the fence, not the body. The P3 timing figure (12 min, not 15) is a pacing calibration in suggestion register per the rule's own 'Boundary' clause, not a bare count-script.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": 22, "rule_lead": "Rule in memory without forcing function = worse than no rule.", "verdict": "N/A", "evidence": "This exercise does not itself write to CLAUDE.local.md — Phase 5's prompt (raw line 101) surfaces a candidate pattern in chat only ('No training-dir state' per the Meta note), and the actual memory-write is explicitly deferred to the M2 Debrief's Compound step (backing block: 'Hands off to: M2 Debrief'). No memory-write forcing-function gap exists inside this file's own scope.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": 23, "rule_lead": "Short skeptical pushback on \"done\" = re-verify trigger.", "verdict": "PASS", "evidence": "'Catch the re-softening in the revised plan' section (raw line 48-54) implements exactly this shape: 'if the vagueness survived, push back again on that line' is a re-verify trigger against the actual revised plan text, explicitly not a re-confirm-with-more-confidence ('read the flagged steps in the revised plan, not the agent's report of them').", "fix_hint": "", "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": 36, "rule_lead": "Verification machinery needs a smoke-test before trust.", "verdict": "N/A", "evidence": "No new verification machinery (hook/judge/Ralph loop/eval/gate) is built or authored within this exercise.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": 37, "rule_lead": "Context-loading tiers as staged progression.", "verdict": "N/A", "evidence": "This exercise does not teach or reveal a context-loading tier (auto/lazy/explicit-load) — its subject is plan-mode push-back, not context economy.", "fix_hint": "", "blocking": false},
-
-    {"compendium": "check_prompts.md", "rule_index": 1, "rule_lead": "No placeholders inside fences.", "verdict": "PASS", "evidence": "Prompt 1 (expanded line 32-35) ends on a dangling colon ('My task:') with lead-in 'Drop your task after the colon.' — canonical open-hook shape per rule 1d. No `[BRACKETED]` placeholders anywhere across all five prompts.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 2, "rule_lead": "Every prompt block: one-sentence action lead-in, <20 words.", "verdict": "PASS", "evidence": "Prompt-1's lead-in is the §2a dangling-colon carve-out ('Drop your task after the colon.', 6 words) — matches the rule's own worked fix example almost verbatim. Prompt-2's lead-in ('The prompt asks Claude to walk every unresolved branch, three questions at a time, with a recommendation for each.') is 19 words, under the ceiling. Prompt-3 (Phase 5) has no dedicated action lead-in sentence but sits directly under 'Ask Claude what the second-pass read surfaced that your two push-backs didn't' (raw line 99), which serves the same function.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 3, "rule_lead": "Canonical shape — lead-in, label with destination, blank line, fence.", "verdict": "PASS", "evidence": "All five markers ({{prompt:push-back-on-the-plan-1/-2/-2-askuserquestion/-2-original/-3}}) expand via `expand-md.js` to `**Prompt** *(Claude Code)*` with the correct blank-line/fence structure and, on the plan-mode fences, the `⟦M:plan⟧` mode chip. No `copy →` prefix, no `(end of prompt)` closer.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 5, "rule_lead": "Chain by back-reference + deterministic path, never invented alias.", "verdict": "PASS", "evidence": "Phase 4's prompt (expanded line 66) back-references 'the current plan' via same-session scrollback rather than a fabricated path — correct, since plan mode auto-names the plan file (Meta note: 'Plan file → Claude Code's plan directory (auto, descriptive filename)') and no deterministic path exists for the body to name.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 6, "rule_lead": "Chained-prompt isolation — don't leak downstream pipeline.", "verdict": "PASS", "evidence": "Prompt 1 (plan-drafting) never mentions the coming push-back or walk-down; Prompt 2 (walk-down) never pre-empts Phase 5's reflection. No downstream leakage across the five prompts.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 7, "rule_lead": "No session-resets mid-phase.", "verdict": "PASS", "evidence": "None of the five prompts instructs `/clear` or 'start a new session'; the mode switch out of plan mode at Phase 5 happens as a side-effect of approving, not a scripted reset.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 8, "rule_lead": "Multi-sample methods need structural enforcement.", "verdict": "N/A", "evidence": "No self-consistency/ensemble/regeneration-diff method in any of the five prompts.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 9, "rule_lead": "Markdown shout (**bold**, *italic*) inside fenced prompts = dead weight.", "verdict": "PASS", "evidence": "Checked all five fence bodies (expanded lines 32-35, 66-70, 89-91, 108-112, 132) — no `**` or `*` markdown emphasis inside any fence; plain sentences and imperative clauses throughout.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 13, "rule_lead": "Citation discipline — extend cite-or-flag scope + quote supporting sentence.", "verdict": "N/A", "evidence": "None of the five prompts asks Claude to cite external facts/sources — this rule targets research/fact-citation prompts, not plan-mode design questions.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 15, "rule_lead": "Question-dump default — \"in turn\" too soft; two legal shapes.", "verdict": "PASS", "evidence": "Walk-down prompt (expanded line 70) states 'Ask me three questions at a time' (structural batching, shape (a)); the AskUserQuestion variant (expanded line 89) states 'one option set per branch' — both satisfy the structural-enforcement requirement rather than the soft 'in turn.'", "fix_hint": "", "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 17, "rule_lead": "Preamble before action — design around it.", "verdict": "REVISE", "evidence": "The rule's own structural trigger ('prompt with 4+ named sub-steps OR invokes plan mode → file MUST carry one of: (a) in-fence No-preamble suppressor; (b) body primer') fires on all four plan-mode prompts in this file. None of the four fences (Prompt 1, Prompt 2, Prompt 2-askuserquestion, Prompt 2-original) carries a 'No preamble.' closer, and no body text anywhere primes the student for Claude's pre-action narration or names a skim-past cue. Harm check: real, not a shape-match false positive — Phase 4's walk-down is the exercise's highest-stakes prompt (the whole file is built around this second-pass grilling), and 2-4 sentences of preamble eating the top-of-response slot before the three questions appear costs exactly the attention this design assumes. This is a mechanical prompt-authoring gap this judge's own template classifies as a non-blocking stylistic nit (not in the blocking-triggers list: no dead URL, no missing source label, no zombie stat, no uninstalled skill, no capability-claim contradiction).", "fix_hint": "Add 'No preamble.' as the last line of the Phase 4 / picker / original-grill-me fences, or add a one-line body primer near Phase 2 naming Claude's pre-action narration and a skim-past cue.", "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 24, "rule_lead": "Don't restate session CWD inside prompt body.", "verdict": "PASS", "evidence": "None of the five prompts contains an absolute path or a `cd` command; the exercise runs in the student's already-open repo with no path references at all inside any fence.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 28, "rule_lead": "Strong-bold prompt label is exactly **Prompt** — custom labels break renderer.", "verdict": "PASS", "evidence": "All five expand to the exact registry-reconstructed label `**Prompt** *(Claude Code)*` (plus the mode sentinel on four of five) — matches `expandPrompts`'s canonical reconstruction, no custom label text.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 31, "rule_lead": "Prompts live in registry; module/exercise/lecture files reference by marker.", "verdict": "PASS", "evidence": "Raw source confirms all five prompt occurrences are `{{prompt:<key>}}` markers (push-back-on-the-plan-1, -2, -2-askuserquestion, -2-original, -3), not inline fenced blocks — matches the registry-migration convention exactly.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 36, "rule_lead": "Wide prompts split by logical move — paragraph breaks = cheapest scan-affordance.", "verdict": "PASS", "evidence": "Prompt 2 and Prompt 2-original both split into 3 separate paragraphs by logical move (expanded lines 66-70, 108-112: instruction / gating-rule / question-cadence). Prompt 1 (expanded 32-35) stays one paragraph but is a tightly-sequential plan-composition instruction (plan → explore → write → per-step shape → philosophy), matching the rule's own 'sequential-build prompts... may stay one paragraph if breaking feels artificial' carve-out — it has no 'In chat, ...' / 'If X, do A; if Y, do B' branch structure that would demand a split.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 38, "rule_lead": "Body lead-in mirrors prompt's opening phrasing.", "verdict": "PASS", "evidence": "Checked all five: Prompt-2's lead-in ('walk every unresolved branch... three at a time') mirrors the fence's second sentence ('Walk down every unresolved branch of the design tree three at a time') closely; the AskUserQuestion lead-in ('switch to AskUserQuestion') mirrors the fence's opening clause exactly ('Switch to AskUserQuestion for the rest of the walk-down'). Prompt-2-original's immediately-preceding line is the Pocock credit/optionality sentence rather than a semantic lead-in — this is the rule's own meta-attribution case, not a drafting-drift mismatch, since the actual action lead-in for this escalation was already delivered at Phase 4's lead-in and this slide's job is crediting authorship, not re-summarizing content.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 39, "rule_lead": "Declare permission-mode: when paste requires specific Claude Code mode.", "verdict": "PASS", "evidence": "All four plan-mode-dependent prompts carry the `⟦M:plan⟧` sentinel (expanded lines 29, 63, 86, 105); the Phase 5 prompt (expanded line 129) correctly omits it since it runs after approval, out of plan mode — matches the body's own claim ('this last step runs in default mode', raw line 98).", "fix_hint": "", "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 40, "rule_lead": "Verify session boundary before deciding prompt's context-carrying.", "verdict": "PASS", "evidence": "Prompt 2 and the AskUserQuestion variant are correctly warm (body confirms 'runs in this same session and still in plan mode', raw line 60) and back-reference 'the current plan' / 'the walk-down' — both terms grounded in Prompt-2's own fence text ('Walk down every unresolved branch...'), satisfying §40b's stricter test (the referent must be in a prior PROMPT, not just a curriculum heading). Phase 5's Prompt 3 references 'the second-pass read' — that exact phrase appears inside Prompt 2's own fence ('Do a second-pass read of the current plan'), so it too is scrollback-grounded, not a curriculum-coined label leaking in.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 41, "rule_lead": "Artifact-vs-STOP tail ordering — last imperative wins.", "verdict": "N/A", "evidence": "No STOP-after-artifact-write tail conflict present — the write-gate in Prompt 2 ('Don't touch the plan file until I say lock it in') deliberately precedes the walk-down rather than following a write instruction, matching the compendium's own sanctioned explicit-trigger-gates-writes pattern (§35c), not the STOP-blocks-the-write failure this rule targets.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 42, "rule_lead": "Headless-runner discipline — tail every prompt with no-AUQ guard.", "verdict": "N/A", "evidence": "This is a student-interactive plan-mode exercise, not a headless/tmux-runner/CI context; the AskUserQuestion variant even deliberately invites the AUQ tool by design.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 43, "rule_lead": "Long-running prompts stream progress — never go silent.", "verdict": "PASS", "evidence": "Prompt 1's exploration is bounded to one task's scope (not a cross-project/read-the-world scan, the rule's own trigger examples), and Claude Code's native tool-call rendering already surfaces exploration progress; the body's own pacing guidance ('Plan mode takes minutes... Use the wait to chat with colleagues', raw line 37) covers the felt-cadence concern this rule targets without needing an in-fence streaming instruction.", "fix_hint": "", "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 46, "rule_lead": "Output shape — trust Claude's defaults, don't pad.", "verdict": "PASS", "evidence": "Prompt 1's per-step shape spec ('files touched, shape of the change, tests you'd write or update... what you'd check before declaring it done') is load-bearing for the exercise's own teaching point (a good plan names its tests and verification), not a padded trailing-shape-spec tacked onto an otherwise-open prompt — matches the rule's own 'Specify shape ONLY where the teaching moment depends on it' exception.", "fix_hint": "", "blocking": false}
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 1,
+      "rule_lead": "Training platform = Claude Code (CLI + Desktop) + Cowork.",
+      "verdict": "PASS",
+      "evidence": "All five prompts are plain Claude Code prompts; no claude.ai-only feature named. AE101 is Code-only by training-architecture, and the file is internally consistent with that (no Cowork content).",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 2,
+      "rule_lead": "Cloud/remote features carry Git dependency.",
+      "verdict": "N/A",
+      "evidence": "No cloud/remote-Claude-Code content.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 3,
+      "rule_lead": "Local scheduled tasks catch up on wake, but only once.",
+      "verdict": "N/A",
+      "evidence": "No scheduled-task content.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 4,
+      "rule_lead": "Verify capabilities BEFORE asserting, not after.",
+      "verdict": "PASS",
+      "evidence": "cc-permission-modes source stamp `[checked:2026-08-25 result:OK due:cohort]` backs the body's plan-mode approval claims (line 43); I independently curled https://code.claude.com/docs/en/permission-modes.md today (2026-08-28) → HTTP 200, live.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": "4a",
+      "rule_lead": "Maintain living capability notes for both runtimes; consult before asserting.",
+      "verdict": "N/A",
+      "evidence": "Process rule about maintaining reference_claude_code_capabilities.md; not a file-content property.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": "4b",
+      "rule_lead": "Compendium platform claims rot at 60 days.",
+      "verdict": "PASS",
+      "evidence": "cc-permission-modes checked 2026-08-25, 3 days before today (2026-08-28) — well inside the 60-day window.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": "4c",
+      "rule_lead": "Don't extend known mechanism into adjacent context without verifying it fires there.",
+      "verdict": "N/A",
+      "evidence": "No cross-runtime template/macro substitution claim (slash-command vs skill) in this file.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": "4d",
+      "rule_lead": "Fix the contract, not the broken recovery.",
+      "verdict": "N/A",
+      "evidence": "No defensive-recovery pattern present in this exercise.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 5,
+      "rule_lead": "Practitioner observation beats docs lookup.",
+      "verdict": "N/A",
+      "evidence": "No practitioner-vs-docs conflict surfaced in this file.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": "5a",
+      "rule_lead": "Live-test beats docs for runtime-behavior claims.",
+      "verdict": "PASS",
+      "evidence": "Source stamp records 'Re-verified live' testing for the permission-modes menu claim rather than resting on docs alone (see rule 14 finding below re: the stamp's own internal date consistency, a separate issue from whether live-testing occurred at all).",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 6,
+      "rule_lead": "Known correct Claude Code facts (easy to get wrong).",
+      "verdict": "PASS",
+      "evidence": "File deliberately omits the Shift+Tab keystroke per its own maintainer note (line 143 backing block: 'Do not restore the keystroke here') and defers plan-mode entry mechanics to when-a-plan-is-good.md. AskUserQuestion tool referenced (prompt at line 72) is a real Claude Code tool. No fact in this file contradicts the compendium's known-facts list.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": "6b",
+      "rule_lead": "When tool feature behaves differently than expected, update curriculum, not student's workaround.",
+      "verdict": "N/A",
+      "evidence": "No scheduled-task behavior content.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": "6c",
+      "rule_lead": "PreToolUse/PostToolUse hooks read env from harness, not from agent Bash subshells.",
+      "verdict": "N/A",
+      "evidence": "No hook/env content in this file.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": "6d",
+      "rule_lead": "Auto-load surface = SIX things — four filenames + project `.claude/rules/` + user `~/.claude/rules/`.",
+      "verdict": "REVISE",
+      "evidence": "Line 133 (maintainer, Meta/Artifact-locations): 'team-worthy rules flagged for separate PR against the team's rules home (`CLAUDE.md` at root, `.claude/CLAUDE.md`, or `AGENTS.md`, whichever the repo uses). See `reference/claude-code-for-engineers.md § 1`.' AGENTS.md is not one of the six auto-load surfaces this rule enumerates, and this repo's own canonical reference states the fact plainly: `ae101--reference--claude-code-for-engineers.md §8`, '`AGENTS.md`: Claude Code does not read it' without an explicit `@AGENTS.md` import from a CLAUDE.md. Listing AGENTS.md alongside `CLAUDE.md`/`.claude/CLAUDE.md` as an equally-valid 'team's rules home' — without the import caveat — is the §4 'vocabulary is a claim' failure mode this compendium names directly: it implies Claude Code reads a PR filed there the same way it reads the other two. Compounding: the pointer names `§ 1` ('The memory hierarchy: where your rules actually live'), which lists only the four native CLAUDE.md-family layers and never mentions AGENTS.md at all — the AGENTS.md nuance lives at §8, not §1, so a trainer following the pointer to check the claim won't find it addressed. Harm: narrow (trainer-only Meta note, not core student teaching; a student whose repo already has an @import wired suffers nothing) but real — a trainer advising 'PR your rule to AGENTS.md' on a repo without the import wires a rule that Claude Code silently never reads, the exact silent-failure shape this compendium repeatedly flags (§40, §49).",
+      "fix_hint": "Either drop the AGENTS.md alternative from this bullet (CLAUDE.md and `.claude/CLAUDE.md` already cover 'whichever the repo uses' for Claude-Code-native convention) or add the one-clause caveat ('AGENTS.md needs an `@import` into CLAUDE.md — see §8') and repoint the citation from `§ 1` to `§ 1, § 8`.",
+      "blocking": true
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": "6e",
+      "rule_lead": "Transcript-by-mtime selection fragile when current session writes target folder.",
+      "verdict": "N/A",
+      "evidence": "No transcript-selection content.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": "6f",
+      "rule_lead": "Compendium pointers inside files = autoload-redundant.",
+      "verdict": "N/A",
+      "evidence": "Internal-memory-hygiene rule; not applicable to student-facing content.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": "6g",
+      "rule_lead": "Edit-time prompt-edit gate's approval detector MUST parse the transcript deterministically.",
+      "verdict": "N/A",
+      "evidence": "Tooling-internal rule, not file content.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 7,
+      "rule_lead": "Sessions = unit of work — write \"start a new session in X,\" not \"open Claude Code in X.\"",
+      "verdict": "PASS",
+      "evidence": "Line 68 (raw source): 'The second read runs in this same session and still in plan mode' — correct session vocabulary throughout; no 'open Claude Code' conflation anywhere in the file.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": "7a",
+      "rule_lead": "CLAUDE.md describes runtime, not just task.",
+      "verdict": "N/A",
+      "evidence": "No non-default-runtime (sync-folder/container/network-share) content.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": "7b",
+      "rule_lead": "Cross-working-directory boundaries always open new; evidence travels by disk.",
+      "verdict": "N/A",
+      "evidence": "No worktree/cross-cwd content — this exercise stays in one session, one repo.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": "7c",
+      "rule_lead": "Same-cwd recovery defaults to --resume, not new.",
+      "verdict": "N/A",
+      "evidence": "No mid-session recovery content.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 8,
+      "rule_lead": "F-Secure curriculum off-limits.",
+      "verdict": "N/A",
+      "evidence": "No F-Secure content.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 9,
+      "rule_lead": "No premature infrastructure.",
+      "verdict": "N/A",
+      "evidence": "No MCP/SQLite/knowledge-graph proposal in this file.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 10,
+      "rule_lead": "External org content — never import, reconcile, or paraphrase.",
+      "verdict": "N/A",
+      "evidence": "No competitor-curriculum content.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 11,
+      "rule_lead": "Destructive operations need confirmation.",
+      "verdict": "PASS",
+      "evidence": "Exercise is non-destructive by design: plan-mode edits stay locked until 'lock it in' (line 68, 91), and Phase 5 explicitly states 'Don't execute the plan' (line 97).",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 12,
+      "rule_lead": "No \"as-is\" imports from internet.",
+      "verdict": "PASS",
+      "evidence": "Pocock's grill-me skill is forked at `curriculum/skills/external/pocock-skills/grill-me/SKILL.md`, pinned to commit 62f43a1 (verified live today via curl → HTTP 200), LICENSE preserved at the fork root (`curriculum/skills/external/pocock-skills/LICENSE`, confirmed present on disk), and credited at line 93 + backing-block source note — matches the fork→vet→adapt→credit practice exactly. SKILL.md body text matches the fenced prompt-2-original content verbatim.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 13,
+      "rule_lead": "Pseudo-URI + kill-switch for public/private content split.",
+      "verdict": "N/A",
+      "evidence": "No bosser-strategy pseudo-URI reference in this file.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": "13a",
+      "rule_lead": "Bulk workbook rebuilds: derive flags from existing output, never guess \"all.\"",
+      "verdict": "N/A",
+      "evidence": "Not a build/tooling file.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": "13b",
+      "rule_lead": "Before auditing a built artifact ask whether it ships; before acting on a finding, re-measure it.",
+      "verdict": "N/A",
+      "evidence": "Not applicable — this exercise file is not a built artifact under `site/clients/`.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 14,
+      "rule_lead": "Internal audit/session-retro directories default-gitignore from creation.",
+      "verdict": "N/A",
+      "evidence": "No such directories referenced in this file.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 15,
+      "rule_lead": "Quality gates run at wind-down, not mid-session.",
+      "verdict": "N/A",
+      "evidence": "Process rule for the orchestrator, not a file-content property.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 16,
+      "rule_lead": "Tooling test layers carry acceptance-test contract.",
+      "verdict": "N/A",
+      "evidence": "Not a mechanical-harness file.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 17,
+      "rule_lead": "Script ratchet — every LLM-orchestration tooling surface ratchets toward script-replaceable assertions.",
+      "verdict": "N/A",
+      "evidence": "No orchestration-tooling content in this file.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 18,
+      "rule_lead": "Hook lints partition into auto-fix vs warn.",
+      "verdict": "N/A",
+      "evidence": "No hook content.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 19,
+      "rule_lead": "Runner ↔ source pre-flight.",
+      "verdict": "N/A",
+      "evidence": "No fixture/runner content.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 20,
+      "rule_lead": "Judge must honor script exit codes.",
+      "verdict": "N/A",
+      "evidence": "No script-driven judge content in this file.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 21,
+      "rule_lead": "Eval-fire writing-class fires must schema-validate before presenting verdicts.",
+      "verdict": "N/A",
+      "evidence": "Process rule for the eval-fire skill.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": "21a",
+      "rule_lead": "The schema gate does not cover the failure that costs most; default model is sonnet.",
+      "verdict": "N/A",
+      "evidence": "Dispatch-tooling rule, not file content.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 22,
+      "rule_lead": "Coverage tools enumerate universe, not index of past work.",
+      "verdict": "N/A",
+      "evidence": "No coverage-tooling content in this file.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 23,
+      "rule_lead": "Cowork sandboxed to its connected working directories.",
+      "verdict": "N/A",
+      "evidence": "AE101 is Code-only; no Cowork content in this file.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 24,
+      "rule_lead": "maintainer_acceptance = JSON-level override for accepted/mitigated judge verdicts.",
+      "verdict": "N/A",
+      "evidence": "No prior maintainer_acceptance override to preserve for this file/class.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": "24a",
+      "rule_lead": "Quality stamps: tooling writes them; the SHA pins committed content.",
+      "verdict": "PASS",
+      "evidence": "Quality line (raw source line 123) is a clean anchor: '**Quality:** compendium-audited 2026-08-26 (...)' with no leftover narrative tail. This is orchestrator/tooling territory, not something this judge writes.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 25,
+      "rule_lead": "Cowork capability surface — UI surfaces subagent reads; no session rename in Cowork or Desktop.",
+      "verdict": "N/A",
+      "evidence": "No Cowork content; AE101 is Code-only.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 26,
+      "rule_lead": "Audit scope derives from TRAININGS registry + link-walk, not disk dir or tarball.",
+      "verdict": "N/A",
+      "evidence": "Single-file judge dispatch; scope was assigned by the orchestrator.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 27,
+      "rule_lead": "Acceptance-test contract covers prompt mechanics + end-state artefacts, NOT does prompt's executable shell actually work.",
+      "verdict": "PASS",
+      "evidence": "No literal shell commands appear inside any of the five fenced prompts — all are agent-directed natural language ('Explore the files you need', 'Walk down every unresolved branch').",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 28,
+      "rule_lead": "Strategy-doc drift surfaces via judge citation — citation = canary, not verdict.",
+      "verdict": "N/A",
+      "evidence": "No strategy-doc citation in this technical-class read; strategy tie-in is a separate class's surface.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 29,
+      "rule_lead": "Portability audits: analyze AGENT'S runtime, not prompt's literal syntax.",
+      "verdict": "PASS",
+      "evidence": "No student-typed shell command anywhere; all five prompts are agent-directed natural language the agent translates itself. No portability risk to flag.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 30,
+      "rule_lead": "Skills at ~/.claude/skills/<name>/ are user-global but per-codebase in content — namespace by SUT.",
+      "verdict": "N/A",
+      "evidence": "No skill-authoring content in this file.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 31,
+      "rule_lead": "state.json files written by run-mN.sh are convenience caches, not authoritative.",
+      "verdict": "N/A",
+      "evidence": "No state.json / multi-module hand-off content.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 32,
+      "rule_lead": "tmux-runner sessions must use a per-runner socket.",
+      "verdict": "N/A",
+      "evidence": "No tmux-runner content.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 33,
+      "rule_lead": "A killed run_in_background Bash wrapper is not evidence the tmux session it launched is dead.",
+      "verdict": "N/A",
+      "evidence": "No background-runner content.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 34,
+      "rule_lead": "Spend on deleting the duplicate, not on guarding it — and a gate that finds nothing is speculation.",
+      "verdict": "PASS",
+      "evidence": "Single **Time:** line (57 min, raw line 3) sums cleanly against the five phase markers (5+15+12+15+10=57); no duplicate time-figure found. P3 is booked at 12 (raw line 47), matching the trainer-notes Decision Points explanation for the 15→12 cut.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 35,
+      "rule_lead": "update-quality.sh takes ALL classes in ONE invocation per file, and not until that file's last judge has returned.",
+      "verdict": "N/A",
+      "evidence": "Orchestrator-side stamping mechanics; not something this judge performs or a file-content property.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 36,
+      "rule_lead": "A hash guard is only as good as what it hashes, and a malformed hash disarms it silently.",
+      "verdict": "PASS",
+      "evidence": "body_sha recorded in this instance (246c5873...) is a genuine 64-char shasum -a 256 output, taken at read start; not fabricated or truncated.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 37,
+      "rule_lead": "Measure the defect before proposing the fix, and again before repeating it to the maintainer.",
+      "verdict": "PASS",
+      "evidence": "The one blocking finding filed here (rule 6d, AGENTS.md) was verified against the actual repo state before filing: I confirmed the exact wording of `reference/claude-code-for-engineers.md §8` and §1's table contents, not inferred from memory.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 38,
+      "rule_lead": "Prose describing a runtime the room never executes drifts to plausible mechanism.",
+      "verdict": "N/A",
+      "evidence": "No forward-looking automation beat / imagined-runtime prose in this file — everything described (plan mode, AskUserQuestion, Edit-not-Write) is a live prompt the student runs, not a described-but-unexecuted mechanism.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 39,
+      "rule_lead": "A judge subagent without evidence is a rubber-stamp.",
+      "verdict": "PASS",
+      "evidence": "Self-referential rule about this dispatch itself: every REVISE/PASS-on-judgement row in this instance carries a line citation and quoted evidence, not a bare verdict.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 40,
+      "rule_lead": "A gate keyed on the TOOL has a back door; a gate keyed on the FILE does not.",
+      "verdict": "N/A",
+      "evidence": "Hook-architecture rule, not a property of this student-facing file.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 41,
+      "rule_lead": "Harness-side caches drift; the artifact is canonical.",
+      "verdict": "N/A",
+      "evidence": "No state-cache-vs-artifact content in this exercise (explicitly 'No training-dir state' per its own Meta note).",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 42,
+      "rule_lead": "Before deleting anything, ask what its FIRING would look like.",
+      "verdict": "N/A",
+      "evidence": "Not a deletion-decision context.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 43,
+      "rule_lead": "A hook on a gitignored surface is a rule on ONE machine.",
+      "verdict": "N/A",
+      "evidence": "No hook-authoring content.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 44,
+      "rule_lead": "git log -1 on a DELETED file returns the deletion date.",
+      "verdict": "N/A",
+      "evidence": "Not a staleness-sweep context; the target file is live and tracked.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 45,
+      "rule_lead": "A detector's reading vocabulary must cover the corpus's writing vocabulary — or it reports compliance as rot. Fail-open corollary (2026-08-28): the worse case is meeting a shape it does not know and defaulting to fine.",
+      "verdict": "N/A",
+      "evidence": "DRIFT RE-CHECK (this is the rule that triggered this file's re-fire — the pin at 1abb84c6 predates a rewrite of this rule's body). Re-read at current wording: §45 governs auditor/detector tooling (audit-eval-coverage.js, check-instance-evidence.js) reading vocabulary mismatches and fail-open defaults. push-back-on-the-plan.md contains no claim about detectors, auditors, coverage tools, or verification-tooling vocabulary — it is a plan-mode push-back exercise with no content in this domain. The rule's growth (adding the fail-open corollary) does not implicate anything in this body; the prior technical PASS on this file's content stands unaffected by the rule text change. One live application of the corollary's own lesson, applied to MY OWN output: I round-tripped this instance's `rules_evaluated` shape against `check-instance-evidence.js` after writing it (see `ungrounded_count` in my structured return) rather than assuming the array shape is what the tool expects.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 46,
+      "rule_lead": "A verdict has more than one input; a freshness check usually watches one.",
+      "verdict": "N/A",
+      "evidence": "Freshness-tooling architecture rule (scan-stale-classes), not a file-content property. This dispatch itself is the human process compensating for exactly the blind spot this rule names (re-reading the rule body, not just the pin).",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 47,
+      "rule_lead": "\"It used to be fast\" is a regression report — diagnose it by trajectory, not by architecture.",
+      "verdict": "N/A",
+      "evidence": "Not a performance-regression context.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 48,
+      "rule_lead": "A bench is silent about everything it cannot stage, and silence reads exactly like a pass.",
+      "verdict": "N/A",
+      "evidence": "Not a benchmark/hillclimb context.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 49,
+      "rule_lead": "An instruction whose violation leaves the output identical is not enforced by wording — it needs a measurement or a test.",
+      "verdict": "PASS",
+      "evidence": "Applied to my own dispatch: I ran `prefill-instance.js --write` (0 rows parked, prior instance predates shape_hash) and will run `--merge` after writing this instance and report the real spliced-row count, rather than assuming the merge is a no-op.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 1,
+      "rule_lead": "Source URL + type label — mandatory.",
+      "verdict": "PASS",
+      "evidence": "All four backing-block sources (raw lines 157-160) carry a URL and a type label: cc-permission-modes [capability], pocock-grill-me [practitioner direct], klaassen-definitive-guide [practitioner direct, vendor venue], martin-wwhtbt [practitioner direct]. Labels sit in the maintainer-block source list, not student-facing body, per this rule's own scope clause. No unproven convergence-verb claims in the Claims ledger.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": "1a",
+      "rule_lead": "OODA paraphrase ≠ primary source.",
+      "verdict": "PASS",
+      "evidence": "Klaassen's line is quoted verbatim in the source note ('each unit of engineering work should make subsequent units easier—not harder'), matching the primary source page content, not paraphrased.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 2,
+      "rule_lead": "Freshness rule — 6 months.",
+      "verdict": "PASS",
+      "evidence": "All checked dates (2026-08-25, 2026-07-30, 2026-07-26 ×2) are within 6 months of today (2026-08-28); none of the stated due dates (2027-01-26, 2027-01-30, cohort, none) have elapsed.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 3,
+      "rule_lead": "Zombie stat guard.",
+      "verdict": "N/A",
+      "evidence": "No round-number AI failure/success statistics cited anywhere in this file.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 4,
+      "rule_lead": "Hold short OODA loose.",
+      "verdict": "PASS",
+      "evidence": "Stance block (raw line 169) correctly marks this file's evidence at L2 (single-practitioner-artifact level — Pocock's shipped, MIT-licensed skill), not inflated to a convergence count. No 'practitioners converge' overclaim.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 5,
+      "rule_lead": "Resist prescriptive post-OODA phrasings.",
+      "verdict": "PASS",
+      "evidence": "OODA block (raw line 174) uses tentative framing — 'do plan mode's approval options still read as the body describes' — not a prescriptive design directive.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 6,
+      "rule_lead": "Default to asking before folding findings into strategy docs.",
+      "verdict": "N/A",
+      "evidence": "Process rule for the orchestrator across sessions; not evaluable against a single finished file.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 7,
+      "rule_lead": "Vision × Detail split.",
+      "verdict": "PASS",
+      "evidence": "The Claims ledger (raw line 145) tags `plan-mode-takes-minutes` ('Plan mode takes minutes on real codebases. Eight to twelve isn't unusual.', body line 31/37-expanded) as `vision · none-owed`. Harm check per the dispatch preamble: an operational duration range is by the compendium's own definition closer to Detail (a number, a shipped practice) than Vision, but it reads as Antti's own delivery-pacing observation — the maintainer IS the practitioner here (research_claims §11's maintainer-attested carve-out: '[practitioner direct], the best evidence on the ladder ... does NOT need a third-party URL'). The Decision-Points trainer note elsewhere in the same file (raw line 208) independently corroborates this with a real dry-run timing (13m15s, 2026-05-15). No fabricated or borrowed number is being laundered as vision; this is a tagging-precision nit in an internal ledger, not a student-facing accuracy defect, so per the dispatch preamble's instruction not to file a REVISE when the harm is this marginal, I am not blocking on it — see todos.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 8,
+      "rule_lead": "Grep continuous-research/ and memory/ before guessing at a name.",
+      "verdict": "N/A",
+      "evidence": "Process rule for the author, not a property of the finished file.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 9,
+      "rule_lead": "Consult research BEFORE generating, not after.",
+      "verdict": "N/A",
+      "evidence": "Process rule; the file's Sources/Frameworks/Stance/OODA structure evidences this was done, and is not independently checkable post-hoc.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 10,
+      "rule_lead": "No \"What research says\" callout boxes.",
+      "verdict": "PASS",
+      "evidence": "Body prose weaves attribution in-voice (Pocock credit at raw line 93: 'Credit: Matt Pocock for the original grill-me skill'); no consultancy-deck callout boxes present anywhere.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 11,
+      "rule_lead": "Source-verification maintainer block on any student-facing file with practitioner citations.",
+      "verdict": "PASS",
+      "evidence": "File carries the inline <!-- backing --> block (Claims/Sources/Frameworks/Stance/OODA, raw lines 137-181) — this repo's current convention for the underlying requirement (verification debt exposed per-source before shipping) — with per-source freshness stamps in the Sources section satisfying the same harm the older standalone heading format targeted.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 12,
+      "rule_lead": "Denominator + axis discipline on every adoption/productivity number.",
+      "verdict": "N/A",
+      "evidence": "No adoption/productivity percentages in this file.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 13,
+      "rule_lead": "Inference beyond source — absence licenses only absence.",
+      "verdict": "N/A",
+      "evidence": "No silence-based inference found in the file.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 14,
+      "rule_lead": "A green check must measure the fact, not a proxy that co-varies with it.",
+      "verdict": "REVISE",
+      "evidence": "Sub-clause (d), half-updated annotation. Confirmed via `git diff 1abb84c6..HEAD`: the cc-permission-modes stamp's structured field moved from `[checked:2026-08-15 ...]` to `[checked:2026-08-25 ...]`, but the freeform prose immediately after it — 'Re-verified live 2026-08-15' — was left byte-identical in the same edit. Diagnostic from the rule itself ('does the qualifier still parse against its own stamp's date?'): the stamp now claims a 2026-08-25 check while its own prose evidence for that check still names 2026-08-15, ten days earlier. This does not mean the underlying claim is wrong — I independently curled the docs URL today (2026-08-28) and it is live and consistent with the body — but the stamp's internal date consistency is broken exactly per this rule's own worked example, and it is the kind of half-update the rule warns propagates at rising confidence to downstream readers who trust the structured field without opening the prose.",
+      "fix_hint": "Either bump the prose to 'Re-verified live 2026-08-25' if a fresh live-test happened on that date, or leave `checked:` at 2026-08-15 if the 08-25 date was a docs re-read rather than a live re-test (recording which kind of check moved the date).",
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 15,
+      "rule_lead": "A word-presence claim needs an unprimed read.",
+      "verdict": "N/A",
+      "evidence": "No word-presence field-research claim in this file.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 16,
+      "rule_lead": "A candidate that matches the hunt's SHAPE has not answered the hunt's QUESTION.",
+      "verdict": "N/A",
+      "evidence": "No structural-match research finding to evaluate in this file.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 16,
+      "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
+      "verdict": "PASS",
+      "evidence": "Phase 3's push-back has no fenced prompt by design — the forcing function is the student composing their own free-text push-back in chat, which the compendium's own 'Boundary 2' carve-out sanctions ('the body ask IS the design'; matches this file's own maintainer accept-note structure). The four plan-mode prompts (raw lines 29, 57, 72, 85) correctly carry the mechanical machinery (Edit-not-Write, three/one-at-a-time batching, recommend-an-answer) inside the fence, not the body. The P3 timing figure (12 min, not 15) is a pacing calibration in suggestion register per the rule's own 'Boundary' clause, not a bare count-script.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 22,
+      "rule_lead": "Rule in memory without forcing function = worse than no rule.",
+      "verdict": "N/A",
+      "evidence": "This exercise does not itself write to CLAUDE.local.md — Phase 5's prompt (raw line 101) surfaces a candidate pattern in chat only ('No training-dir state' per the Meta note), and the actual memory-write is explicitly deferred to the M2 Debrief's Compound step (backing block: 'Hands off to: M2 Debrief'). No memory-write forcing-function gap exists inside this file's own scope.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 23,
+      "rule_lead": "Short skeptical pushback on \"done\" = re-verify trigger.",
+      "verdict": "PASS",
+      "evidence": "'Catch the re-softening in the revised plan' section (raw line 48-54) implements exactly this shape: 'if the vagueness survived, push back again on that line' is a re-verify trigger against the actual revised plan text, explicitly not a re-confirm-with-more-confidence ('read the flagged steps in the revised plan, not the agent's report of them').",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 36,
+      "rule_lead": "Verification machinery needs a smoke-test before trust.",
+      "verdict": "N/A",
+      "evidence": "No new verification machinery (hook/judge/Ralph loop/eval/gate) is built or authored within this exercise.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 37,
+      "rule_lead": "Context-loading tiers as staged progression.",
+      "verdict": "N/A",
+      "evidence": "This exercise does not teach or reveal a context-loading tier (auto/lazy/explicit-load) — its subject is plan-mode push-back, not context economy.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 1,
+      "rule_lead": "No placeholders inside fences.",
+      "verdict": "PASS",
+      "evidence": "Prompt 1 (expanded line 32-35) ends on a dangling colon ('My task:') with lead-in 'Drop your task after the colon.' — canonical open-hook shape per rule 1d. No `[BRACKETED]` placeholders anywhere across all five prompts.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 2,
+      "rule_lead": "Every prompt block: one-sentence action lead-in, <20 words.",
+      "verdict": "PASS",
+      "evidence": "Prompt-1's lead-in is the §2a dangling-colon carve-out ('Drop your task after the colon.', 6 words) — matches the rule's own worked fix example almost verbatim. Prompt-2's lead-in ('The prompt asks Claude to walk every unresolved branch, three questions at a time, with a recommendation for each.') is 19 words, under the ceiling. Prompt-3 (Phase 5) has no dedicated action lead-in sentence but sits directly under 'Ask Claude what the second-pass read surfaced that your two push-backs didn't' (raw line 99), which serves the same function.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 3,
+      "rule_lead": "Canonical shape — lead-in, label with destination, blank line, fence.",
+      "verdict": "PASS",
+      "evidence": "All five markers ({{prompt:push-back-on-the-plan-1/-2/-2-askuserquestion/-2-original/-3}}) expand via `expand-md.js` to `**Prompt** *(Claude Code)*` with the correct blank-line/fence structure and, on the plan-mode fences, the `⟦M:plan⟧` mode chip. No `copy →` prefix, no `(end of prompt)` closer.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 5,
+      "rule_lead": "Chain by back-reference + deterministic path, never invented alias.",
+      "verdict": "PASS",
+      "evidence": "Phase 4's prompt (expanded line 66) back-references 'the current plan' via same-session scrollback rather than a fabricated path — correct, since plan mode auto-names the plan file (Meta note: 'Plan file → Claude Code's plan directory (auto, descriptive filename)') and no deterministic path exists for the body to name.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 6,
+      "rule_lead": "Chained-prompt isolation — don't leak downstream pipeline.",
+      "verdict": "PASS",
+      "evidence": "Prompt 1 (plan-drafting) never mentions the coming push-back or walk-down; Prompt 2 (walk-down) never pre-empts Phase 5's reflection. No downstream leakage across the five prompts.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 7,
+      "rule_lead": "No session-resets mid-phase.",
+      "verdict": "PASS",
+      "evidence": "None of the five prompts instructs `/clear` or 'start a new session'; the mode switch out of plan mode at Phase 5 happens as a side-effect of approving, not a scripted reset.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 8,
+      "rule_lead": "Multi-sample methods need structural enforcement.",
+      "verdict": "N/A",
+      "evidence": "No self-consistency/ensemble/regeneration-diff method in any of the five prompts.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 9,
+      "rule_lead": "Markdown shout (**bold**, *italic*) inside fenced prompts = dead weight.",
+      "verdict": "PASS",
+      "evidence": "Checked all five fence bodies (expanded lines 32-35, 66-70, 89-91, 108-112, 132) — no `**` or `*` markdown emphasis inside any fence; plain sentences and imperative clauses throughout.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 13,
+      "rule_lead": "Citation discipline — extend cite-or-flag scope + quote supporting sentence.",
+      "verdict": "N/A",
+      "evidence": "None of the five prompts asks Claude to cite external facts/sources — this rule targets research/fact-citation prompts, not plan-mode design questions.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 15,
+      "rule_lead": "Question-dump default — \"in turn\" too soft; two legal shapes.",
+      "verdict": "PASS",
+      "evidence": "Walk-down prompt (expanded line 70) states 'Ask me three questions at a time' (structural batching, shape (a)); the AskUserQuestion variant (expanded line 89) states 'one option set per branch' — both satisfy the structural-enforcement requirement rather than the soft 'in turn.'",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 17,
+      "rule_lead": "Preamble before action — design around it.",
+      "verdict": "REVISE",
+      "evidence": "The rule's own structural trigger ('prompt with 4+ named sub-steps OR invokes plan mode → file MUST carry one of: (a) in-fence No-preamble suppressor; (b) body primer') fires on all four plan-mode prompts in this file. None of the four fences (Prompt 1, Prompt 2, Prompt 2-askuserquestion, Prompt 2-original) carries a 'No preamble.' closer, and no body text anywhere primes the student for Claude's pre-action narration or names a skim-past cue. Harm check: real, not a shape-match false positive — Phase 4's walk-down is the exercise's highest-stakes prompt (the whole file is built around this second-pass grilling), and 2-4 sentences of preamble eating the top-of-response slot before the three questions appear costs exactly the attention this design assumes. This is a mechanical prompt-authoring gap this judge's own template classifies as a non-blocking stylistic nit (not in the blocking-triggers list: no dead URL, no missing source label, no zombie stat, no uninstalled skill, no capability-claim contradiction).",
+      "fix_hint": "Add 'No preamble.' as the last line of the Phase 4 / picker / original-grill-me fences, or add a one-line body primer near Phase 2 naming Claude's pre-action narration and a skim-past cue.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 24,
+      "rule_lead": "Don't restate session CWD inside prompt body.",
+      "verdict": "PASS",
+      "evidence": "None of the five prompts contains an absolute path or a `cd` command; the exercise runs in the student's already-open repo with no path references at all inside any fence.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 28,
+      "rule_lead": "Strong-bold prompt label is exactly **Prompt** — custom labels break renderer.",
+      "verdict": "PASS",
+      "evidence": "All five expand to the exact registry-reconstructed label `**Prompt** *(Claude Code)*` (plus the mode sentinel on four of five) — matches `expandPrompts`'s canonical reconstruction, no custom label text.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 31,
+      "rule_lead": "Prompts live in registry; module/exercise/lecture files reference by marker.",
+      "verdict": "PASS",
+      "evidence": "Raw source confirms all five prompt occurrences are `{{prompt:<key>}}` markers (push-back-on-the-plan-1, -2, -2-askuserquestion, -2-original, -3), not inline fenced blocks — matches the registry-migration convention exactly.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 36,
+      "rule_lead": "Wide prompts split by logical move — paragraph breaks = cheapest scan-affordance.",
+      "verdict": "PASS",
+      "evidence": "Prompt 2 and Prompt 2-original both split into 3 separate paragraphs by logical move (expanded lines 66-70, 108-112: instruction / gating-rule / question-cadence). Prompt 1 (expanded 32-35) stays one paragraph but is a tightly-sequential plan-composition instruction (plan → explore → write → per-step shape → philosophy), matching the rule's own 'sequential-build prompts... may stay one paragraph if breaking feels artificial' carve-out — it has no 'In chat, ...' / 'If X, do A; if Y, do B' branch structure that would demand a split.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 38,
+      "rule_lead": "Body lead-in mirrors prompt's opening phrasing.",
+      "verdict": "PASS",
+      "evidence": "Checked all five: Prompt-2's lead-in ('walk every unresolved branch... three at a time') mirrors the fence's second sentence ('Walk down every unresolved branch of the design tree three at a time') closely; the AskUserQuestion lead-in ('switch to AskUserQuestion') mirrors the fence's opening clause exactly ('Switch to AskUserQuestion for the rest of the walk-down'). Prompt-2-original's immediately-preceding line is the Pocock credit/optionality sentence rather than a semantic lead-in — this is the rule's own meta-attribution case, not a drafting-drift mismatch, since the actual action lead-in for this escalation was already delivered at Phase 4's lead-in and this slide's job is crediting authorship, not re-summarizing content.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 39,
+      "rule_lead": "Declare permission-mode: when paste requires specific Claude Code mode.",
+      "verdict": "PASS",
+      "evidence": "All four plan-mode-dependent prompts carry the `⟦M:plan⟧` sentinel (expanded lines 29, 63, 86, 105); the Phase 5 prompt (expanded line 129) correctly omits it since it runs after approval, out of plan mode — matches the body's own claim ('this last step runs in default mode', raw line 98).",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 40,
+      "rule_lead": "Verify session boundary before deciding prompt's context-carrying.",
+      "verdict": "PASS",
+      "evidence": "Prompt 2 and the AskUserQuestion variant are correctly warm (body confirms 'runs in this same session and still in plan mode', raw line 60) and back-reference 'the current plan' / 'the walk-down' — both terms grounded in Prompt-2's own fence text ('Walk down every unresolved branch...'), satisfying §40b's stricter test (the referent must be in a prior PROMPT, not just a curriculum heading). Phase 5's Prompt 3 references 'the second-pass read' — that exact phrase appears inside Prompt 2's own fence ('Do a second-pass read of the current plan'), so it too is scrollback-grounded, not a curriculum-coined label leaking in.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 41,
+      "rule_lead": "Artifact-vs-STOP tail ordering — last imperative wins.",
+      "verdict": "N/A",
+      "evidence": "No STOP-after-artifact-write tail conflict present — the write-gate in Prompt 2 ('Don't touch the plan file until I say lock it in') deliberately precedes the walk-down rather than following a write instruction, matching the compendium's own sanctioned explicit-trigger-gates-writes pattern (§35c), not the STOP-blocks-the-write failure this rule targets.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 42,
+      "rule_lead": "Headless-runner discipline — tail every prompt with no-AUQ guard.",
+      "verdict": "N/A",
+      "evidence": "This is a student-interactive plan-mode exercise, not a headless/tmux-runner/CI context; the AskUserQuestion variant even deliberately invites the AUQ tool by design.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 43,
+      "rule_lead": "Long-running prompts stream progress — never go silent.",
+      "verdict": "PASS",
+      "evidence": "Prompt 1's exploration is bounded to one task's scope (not a cross-project/read-the-world scan, the rule's own trigger examples), and Claude Code's native tool-call rendering already surfaces exploration progress; the body's own pacing guidance ('Plan mode takes minutes... Use the wait to chat with colleagues', raw line 37) covers the felt-cadence concern this rule targets without needing an in-fence streaming instruction.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 46,
+      "rule_lead": "Output shape — trust Claude's defaults, don't pad.",
+      "verdict": "PASS",
+      "evidence": "Prompt 1's per-step shape spec ('files touched, shape of the change, tests you'd write or update... what you'd check before declaring it done') is load-bearing for the exercise's own teaching point (a good plan names its tests and verification), not a padded trailing-shape-spec tacked onto an otherwise-open prompt — matches the rule's own 'Specify shape ONLY where the teaching moment depends on it' exception.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 1,
+      "rule_lead": "Banned words — grep zero-tolerance.",
+      "verdict": "PASS",
+      "evidence": "mechanical: /\\b(delve|delving|honest|honestly|importantly|crucial|crucially|substrate|synergize|paradigm shift)\\b/ over body projection curriculum/evals/body-views/ae101--exercise--push-back-on-the-plan.body.txt → 0 hits; pattern proven against planted violation.",
+      "fix_hint": "",
+      "blocking": false,
+      "prefilled": true
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 2,
+      "rule_lead": "Ritual / ceremony — hard ban in any curriculum/training surface.",
+      "verdict": "PASS",
+      "evidence": "mechanical: /\\b(ritual|rituals|ceremony|ceremonies)\\b/ over body projection curriculum/evals/body-views/ae101--exercise--push-back-on-the-plan.body.txt → 0 hits; pattern proven against planted violation.",
+      "fix_hint": "",
+      "blocking": false,
+      "prefilled": true
+    }
   ],
   "platform_claims_checked": [
-    {"claim": "At the approval prompt, pick No, keep planning; the other two options approve and leave plan mode.", "line": 43, "verdict": "PASS", "source": "compendium"},
-    {"claim": "team-worthy rules flagged for separate PR against the team's rules home (CLAUDE.md at root, .claude/CLAUDE.md, or AGENTS.md, whichever the repo uses)", "line": 133, "verdict": "REVISE", "source": "compendium"},
-    {"claim": "this last step runs in default mode", "line": 98, "verdict": "PASS", "source": "compendium"},
-    {"claim": "The second read runs in this same session and still in plan mode", "line": 60, "verdict": "PASS", "source": "compendium"},
-    {"claim": "opens the plan in $EDITOR (Ctrl+G)", "line": 228, "verdict": "PASS", "source": "compendium"}
+    {
+      "claim": "At the approval prompt, pick No, keep planning; the other two options approve and leave plan mode.",
+      "line": 43,
+      "verdict": "PASS",
+      "source": "compendium"
+    },
+    {
+      "claim": "team-worthy rules flagged for separate PR against the team's rules home (CLAUDE.md at root, .claude/CLAUDE.md, or AGENTS.md, whichever the repo uses)",
+      "line": 133,
+      "verdict": "REVISE",
+      "source": "compendium"
+    },
+    {
+      "claim": "this last step runs in default mode",
+      "line": 98,
+      "verdict": "PASS",
+      "source": "compendium"
+    },
+    {
+      "claim": "The second read runs in this same session and still in plan mode",
+      "line": 60,
+      "verdict": "PASS",
+      "source": "compendium"
+    },
+    {
+      "claim": "opens the plan in $EDITOR (Ctrl+G)",
+      "line": 228,
+      "verdict": "PASS",
+      "source": "compendium"
+    }
   ],
   "citations_checked": [
-    {"line": 157, "claim": "cc-permission-modes (approval-menu shape)", "label_present": true, "url_present": true, "url_alive": true, "evidence_level_honest": true},
-    {"line": 93, "claim": "pocock-credit (grill-me skill, pinned commit)", "label_present": true, "url_present": true, "url_alive": true, "evidence_level_honest": true},
-    {"line": 159, "claim": "klaassen-definitive-guide (compound-engineering term)", "label_present": true, "url_present": true, "url_alive": true, "evidence_level_honest": true},
-    {"line": 160, "claim": "martin-wwhtbt (assumption push-back framing)", "label_present": true, "url_present": true, "url_alive": null, "evidence_level_honest": true}
+    {
+      "line": 157,
+      "claim": "cc-permission-modes (approval-menu shape)",
+      "label_present": true,
+      "url_present": true,
+      "url_alive": true,
+      "evidence_level_honest": true
+    },
+    {
+      "line": 93,
+      "claim": "pocock-credit (grill-me skill, pinned commit)",
+      "label_present": true,
+      "url_present": true,
+      "url_alive": true,
+      "evidence_level_honest": true
+    },
+    {
+      "line": 159,
+      "claim": "klaassen-definitive-guide (compound-engineering term)",
+      "label_present": true,
+      "url_present": true,
+      "url_alive": true,
+      "evidence_level_honest": true
+    },
+    {
+      "line": 160,
+      "claim": "martin-wwhtbt (assumption push-back framing)",
+      "label_present": true,
+      "url_present": true,
+      "url_alive": null,
+      "evidence_level_honest": true
+    }
   ],
   "skills_referenced": [],
   "urls_sampled": [
-    {"url": "https://code.claude.com/docs/en/permission-modes.md", "alive": true, "status_code": 200},
-    {"url": "https://github.com/mattpocock/skills/blob/62f43a1/skills/productivity/grill-me/SKILL.md", "alive": true, "status_code": 200},
-    {"url": "https://rogermartin.medium.com/what-would-have-to-be-true-83dac5bd2189", "alive": null, "status_code": 403}
+    {
+      "url": "https://code.claude.com/docs/en/permission-modes.md",
+      "alive": true,
+      "status_code": 200
+    },
+    {
+      "url": "https://github.com/mattpocock/skills/blob/62f43a1/skills/productivity/grill-me/SKILL.md",
+      "alive": true,
+      "status_code": 200
+    },
+    {
+      "url": "https://rogermartin.medium.com/what-would-have-to-be-true-83dac5bd2189",
+      "alive": null,
+      "status_code": 403
+    }
   ],
   "blocking_findings_count": 1,
   "todos_count": 4,
   "notes": "Brief-scope note: derive-class-brief.js kept all 199 rules across the 4 named compendiums with 0 excluded (prefill fell through — no shape_hash on the prior instance). Per this judge's own template, completeness-ledger ownership is full for check_platform_and_boundaries.md and check_research_claims.md (67+17 rows written below) but PARTIAL for check_pedagogy.md (5 technical sub-rules: 16, 22, 23, 36, 37 — the other 62 pedagogy rules belong to the pedagogy judge and are deliberately not rowed here) and judgement-scoped (not a strict completeness ledger) for check_prompts.md, where I rowed 22 mechanically-relevant rules rather than all 48. rows_written_by_you therefore undercounts the brief's 199 by design, not by omission. rogermartin.medium.com returned HTTP 403 to a bare curl today; Medium is a known bot-blocking venue and the source stamp's own due:none/durable-account status means this isn't load-bearing for a currency claim — treated as inconclusive, not dead. Sample size for URL liveness was 3, not 4, since I did not re-fetch the recently-attested every.to/klaassen URL given its checked date (2026-07-30) already sits comfortably inside the 60-day window per the capability-check shortcut.",
   "todos": [
-    {"rule": "check_research_claims.md §7", "note": "plan-mode-takes-minutes tagged vision/none-owed in the Claims ledger; arguably closer to Detail or the maintainer-attested carve-out given it's Antti's own pacing observation, corroborated by the trainer-notes dry-run timing. Bookkeeping nuance, not a student-facing error."},
-    {"rule": "check_prompts.md §17", "note": "No 'No preamble.' suppressor or skim-past primer on any of the four plan-mode prompts, despite the rule's own mandatory structural trigger firing on all four. See REVISE row for full evidence; kept non-blocking as a stylistic prompt-mechanic nit."},
-    {"rule": "check_prompts.md §38", "note": "Prompt-2-original's immediately-preceding line is the Pocock credit/optionality sentence, not a semantic action lead-in — defensible (attribution has its own job) but worth a maintainer glance if this pattern recurs elsewhere."},
-    {"rule": "URL liveness", "note": "rogermartin.medium.com returned 403 to a bare curl (Medium bot-blocking is the likely cause, not link death); worth a browser-based re-check next time this file's citations are audited, though not load-bearing given the due:none durable-account status."}
-  ]
+    {
+      "rule": "check_research_claims.md §7",
+      "note": "plan-mode-takes-minutes tagged vision/none-owed in the Claims ledger; arguably closer to Detail or the maintainer-attested carve-out given it's Antti's own pacing observation, corroborated by the trainer-notes dry-run timing. Bookkeeping nuance, not a student-facing error."
+    },
+    {
+      "rule": "check_prompts.md §17",
+      "note": "No 'No preamble.' suppressor or skim-past primer on any of the four plan-mode prompts, despite the rule's own mandatory structural trigger firing on all four. See REVISE row for full evidence; kept non-blocking as a stylistic prompt-mechanic nit."
+    },
+    {
+      "rule": "check_prompts.md §38",
+      "note": "Prompt-2-original's immediately-preceding line is the Pocock credit/optionality sentence, not a semantic action lead-in — defensible (attribution has its own job) but worth a maintainer glance if this pattern recurs elsewhere."
+    },
+    {
+      "rule": "URL liveness",
+      "note": "rogermartin.medium.com returned 403 to a bare curl (Medium bot-blocking is the likely cause, not link death); worth a browser-based re-check next time this file's citations are audited, though not load-bearing given the due:none durable-account status."
+    }
+  ],
+  "resolution": {
+    "settled": "fixed",
+    "at": "2026-08-28",
+    "note": "Refuter died mid-run (machine sleep); hand-adjudicated against pinned commit 62f43a1: the quoted billing was a paraphrase in quote marks. Stamp now quotes the description field verbatim."
+  }
 }

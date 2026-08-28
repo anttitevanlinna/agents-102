@@ -53,7 +53,7 @@ The measure is not maximum delegation. It is knowing what to delegate, how far t
 - High reach splits on calibration. Measured gates produce calibrated agency. Unmeasured green produces reckless autonomy.
 - The frontier moves outward only as fast as the gates behind it. Push reach past calibration and you are checking less, not delegating more.
 
-At the high-reach edge, scale makes the distinction visible. In August 2026, Wollsén wrote in [This is getting ridiculous: I shipped 490 pull requests in June](https://positivelyfred.substack.com/p/this-is-getting-ridiculous-i-shipped) that he kept 30 to 40 sessions open and actively managed 10 to 15 through a working day. By his own estimate, the value his four-engineer team delivered ran far below what its pull-request count alone would suggest — he kept output volume and delivered value on separate axes.
+At the high-reach edge, scale makes the distinction visible. In August 2026, Wollsén wrote in [This is getting ridiculous: I shipped 490 pull requests in June](https://positivelyfred.substack.com/p/this-is-getting-ridiculous-i-shipped) that he kept 30 to 40 sessions open and actively managed 10 to 15 through a working day. By his own estimate, the value his four-engineer team delivered ran far below what its pull-request count alone would suggest: he kept output volume and delivered value on separate axes.
 
 Leverage is not reach alone. It is reach that trust can keep up with.
 
@@ -87,7 +87,7 @@ Claims
 - `high-reach-splits` · vision · "Measured gates produce calibrated agency. Unmeasured green produces reckless autonomy." ← none-owed
 - `frontier-follows-gates` · vision · "The frontier moves outward only as fast as the gates behind it" ← none-owed
 - `wollsen-parallel-session-account` · detail · "he kept 30 to 40 sessions open and actively managed 10 to 15 through a working day" ← fred-throughput-account
-- `wollsen-value-estimate` · detail · "three to four times the value of an average team, far below the multiple suggested by its pull-request count" ← fred-throughput-account
+- `wollsen-value-estimate` · detail · "the value his four-engineer team delivered ran far below what its pull-request count alone would suggest" ← fred-throughput-account
 - `leverage-reach-and-trust` · vision · "Leverage is not reach alone. It is reach that trust can keep up with." ← none-owed
 - `one-model-not-two` · vision · "Every **Moves you up:** is a check getting cheap enough to license more reach, so the levels are calibration states, not ranks." ← none-owed
 - `doors-are-trust-at-scope` · vision · "the same trust every time, at a larger scope, held by a check that needs less of you" ← none-owed

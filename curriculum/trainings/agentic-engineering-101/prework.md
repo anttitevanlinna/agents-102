@@ -91,7 +91,7 @@ The opening question at Module 1: *what's your favourite Claude Code trick that 
 
 **Source verification — freshness stamps (`source-freshness.sh`; format `curriculum/source-freshness-format.md`).**
 
-- `[checked:2026-07-30 result:OK due:2027-01-30]` https://simonwillison.net/2025/Oct/7/vibe-engineering/ — [practitioner direct] (Willison, 2025-10-07). Outside the 6-month window by decision: named framing piece, dated in body, same treatment as the Cherny video exception in `getting-going.md`. fallback: drop the pre-read; Module 1 stands alone.
+- `[checked:2026-07-30 result:OK due:none]` https://simonwillison.net/2025/Oct/7/vibe-engineering/ — [practitioner direct] (Willison, 2025-10-07). Outside the 6-month window by decision: named framing piece, dated in body, same treatment as the Cherny video exception in `getting-going.md` — `due:none` on the same variant those parallel stamps use. fallback: drop the pre-read; Module 1 stands alone.
 
 **Quality:** compendium-audited 2026-08-28 (writing@e11bbeb4 story@e11bbeb4 technical@8cc00874 behavior@7fb973dd pedagogy@1abb84c6 strategy@1c765f2 slides@e11bbeb4)
 - judges @8cc00874: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS

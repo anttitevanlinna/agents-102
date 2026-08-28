@@ -37,7 +37,16 @@ const fs = require('fs');
 const path = require('path');
 
 const ROOT = path.resolve(__dirname, '..');
-const TRAININGS_DIR = path.join(ROOT, 'curriculum/trainings');
+// Overridable so the tests can build their scratch training somewhere no other
+// checker is looking. `node --test scripts/*.test.js` runs test FILES in
+// parallel, and this suite's fixture used to be created inside
+// curriculum/trainings/ — the tree every other checker globs. A sibling test
+// spawning check-cross-doc-anchors.js would glob the fixture, the fixture would
+// be torn down, and the read would ENOENT. A test that mutates the corpus other
+// tests read is a flaky suite by construction, whichever one happens to fail.
+const TRAININGS_DIR = process.env.TRAININGS_DIR
+  ? path.resolve(process.env.TRAININGS_DIR)
+  : path.join(ROOT, 'curriculum/trainings');
 
 const argv = process.argv.slice(2);
 const REPORT = argv.includes('--report');

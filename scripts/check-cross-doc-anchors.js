@@ -82,8 +82,16 @@ function resolveTarget(src, relPath) {
 }
 
 const broken = [];
+const vanished = [];
 for (const src of sources) {
-    const md = fs.readFileSync(src, 'utf8');
+    // Glob, then read, in a tree the project tells you to assume a neighbour is
+    // inside. A file can be deleted between the two, and a twelve-frame ENOENT
+    // out of a gate reads as "the gate is broken" rather than "the corpus moved
+    // under it". Name it and carry on: the run is still a valid statement about
+    // every file that was there when it was read.
+    let md;
+    try { md = fs.readFileSync(src, 'utf8'); }
+    catch (e) { vanished.push(`${path.relative(ROOT, src)} (${e.code || e.message})`); continue; }
     let m;
     LINK_RE.lastIndex = 0;
     while ((m = LINK_RE.exec(md)) !== null) {
@@ -101,8 +109,14 @@ for (const src of sources) {
     }
 }
 
+if (vanished.length) {
+    console.error(`NOTE: ${vanished.length} file(s) disappeared between the glob and the read — not scanned:`);
+    for (const v of vanished) console.error(`  ${v}`);
+    console.error('');
+}
+
 if (broken.length === 0) {
-    console.log(`OK: all cross-doc .md#anchor links resolve (${sources.length} files scanned).`);
+    console.log(`OK: all cross-doc .md#anchor links resolve (${sources.length - vanished.length} of ${sources.length} files scanned).`);
     process.exit(0);
 }
 

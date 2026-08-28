@@ -15,15 +15,23 @@ const assert = require('node:assert/strict');
 const { execFileSync } = require('node:child_process');
 const fs = require('node:fs');
 const path = require('node:path');
+const os = require('node:os');
 
 const SCRIPT = path.join(__dirname, 'check-include-anchors.js');
-const TRAININGS = path.join(__dirname, '..', 'curriculum/trainings');
+// The scratch training lives in a temp dir, NOT in curriculum/trainings/.
+// `node --test scripts/*.test.js` runs test files in parallel, so a fixture
+// inside the real corpus is visible to every sibling checker mid-run: this
+// suite's fixture and check-cross-doc-anchors.js raced, the fixture was torn
+// down between that checker's glob and its read, and the suite failed in the
+// OTHER test with a twelve-frame ENOENT. A test that mutates the tree other
+// tests read is a flaky suite by construction.
+const TRAININGS = fs.mkdtempSync(path.join(os.tmpdir(), 'include-anchors-'));
 const FIXTURE = 'zz-include-anchor-fixture';
 const DIR = path.join(TRAININGS, FIXTURE);
 
 function run(args) {
   try {
-    return { code: 0, out: execFileSync('node', [SCRIPT, ...args], { encoding: 'utf8' }) };
+    return { code: 0, out: execFileSync('node', [SCRIPT, ...args], { encoding: 'utf8', env: { ...process.env, TRAININGS_DIR: TRAININGS } }) };
   } catch (e) {
     return { code: e.status, out: (e.stdout || '') + (e.stderr || '') };
   }

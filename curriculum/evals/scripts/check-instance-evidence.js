@@ -27,6 +27,26 @@
 // compounded/2026-08-08 being that a check the checked party runs on itself is
 // not a check.
 //
+// Two corrections, 2026-08-28, both of them check_platform_and_boundaries §45 —
+// the reader was narrower than the corpus, and reported compliance as rot:
+//
+//   MISFILED, not ungrounded. Of 3,748 rows this flagged across the corpus,
+//   2,183 carried the judge's actual reasoning in `fix_hint` ("No cloud/remote
+//   feature discussed", "File uses only Claude Code, no Cowork feature
+//   claimed"). Semantically the wrong home — a fix hint on an N/A row is
+//   nonsense — but the verdict IS grounded, and calling it ungrounded conflates
+//   a field-naming slip with the 2026-08-15 skim. Different defects, different
+//   remedies: one is a migration, the other is a re-judge. Reported separately,
+//   and only the empty ones exit 1.
+//
+//   The `behavior` class does not have a rule ledger. Its instances key
+//   `rules_evaluated` by prompt (`{prompt_1: [{pattern_id, status, evidence}]}`)
+//   because it judges prompt behaviour patterns, not compendium rules. The old
+//   `Array.isArray(...) ? ... : []` read that as zero rows and printed "clean" —
+//   eleven instances passing the guard while carrying a ledger it could not
+//   read. A guard that fails OPEN on a shape it does not know is worse than no
+//   guard, because it reports the silence as a pass.
+//
 // Usage:
 //   node curriculum/evals/scripts/check-instance-evidence.js <instance.json>...
 //   node curriculum/evals/scripts/check-instance-evidence.js --all [--quiet]
@@ -42,29 +62,65 @@ const has = v => typeof v === 'string' && v.trim().length > 0
 function auditInstance(p) {
   let d
   try { d = JSON.parse(fs.readFileSync(p, 'utf8')) } catch (e) { return { file: p, unparseable: e.message } }
-  const rows = Array.isArray(d.rules_evaluated) ? d.rules_evaluated.filter(r => r && typeof r === 'object') : []
 
   const ungrounded = []
-  for (const r of rows) {
-    const at = `${r.compendium || '?'} §${r.rule_index ?? '?'}`
-    if (r.verdict === 'REVISE' && !has(r.evidence)) ungrounded.push({ at, why: 'REVISE with no evidence' })
-    else if (r.verdict === 'PASS' && !has(r.evidence)) ungrounded.push({ at, why: 'PASS with no evidence' })
-    else if (r.verdict === 'N/A' && !has(r.evidence) && !has(r.na_reason)) ungrounded.push({ at, why: 'N/A with no reason' })
+  const misfiled = []
+  const re = d.rules_evaluated
+  let rows = 0
+  let naNullEvidence = 0
+  let shape = 'rule-ledger'
+
+  if (Array.isArray(re)) {
+    const objs = re.filter(r => r && typeof r === 'object')
+    rows = objs.length
+    // A row returned as a string carries no field the coverage model can read.
+    // It is not a verdict; say so rather than skipping it.
+    const strays = re.length - objs.length
+    if (strays) ungrounded.push({ at: 'rules_evaluated', why: `${strays} row(s) are not objects — they credit no rule and cannot be read` })
+    for (const r of objs) {
+      const at = `${r.compendium || '?'} §${r.rule_index ?? '?'}`
+      if (r.verdict === 'N/A' && !has(r.evidence)) naNullEvidence++
+      if (r.verdict === 'REVISE' && !has(r.evidence)) push(r, at, 'REVISE with no evidence')
+      else if (r.verdict === 'PASS' && !has(r.evidence)) push(r, at, 'PASS with no evidence')
+      else if (r.verdict === 'N/A' && !has(r.evidence) && !has(r.na_reason)) push(r, at, 'N/A with no reason')
+    }
+  } else if (re && typeof re === 'object') {
+    // The behavior class: keyed by prompt, each value a list of pattern rows.
+    shape = 'prompt-pattern ledger (behavior class)'
+    for (const [key, list] of Object.entries(re)) {
+      if (!Array.isArray(list)) { ungrounded.push({ at: key, why: `expected a list of pattern rows, got ${typeof list}` }); continue }
+      for (const r of list) {
+        if (!r || typeof r !== 'object') { ungrounded.push({ at: key, why: 'pattern row is not an object' }); continue }
+        rows++
+        const at = `${key} · ${r.pattern_id || '?'}`
+        // `reason` is this shape's own word for the same thing; both count.
+        if (!has(r.evidence) && !has(r.reason)) push(r, at, `${r.status || 'row'} with no evidence`)
+      }
+    }
+  } else if (re !== undefined) {
+    ungrounded.push({ at: 'rules_evaluated', why: `unreadable ledger: expected an array or a prompt-keyed object, got ${typeof re}` })
   }
+
+  function push(r, at, why) {
+    // The reasoning exists, in a field that was never meant to hold it. Report
+    // it as a naming defect, not as a judge that did not look.
+    if (has(r.fix_hint)) misfiled.push({ at, why, found_in: 'fix_hint' })
+    else ungrounded.push({ at, why })
+  }
+
   for (const f of (d.findings || [])) {
     if (!has(f.harm) || !has(f.quote)) ungrounded.push({ at: `finding ${f.rule || '?'}`, why: 'finding missing quote or harm' })
   }
 
-  // Reported for context, never gated: this is the healthy population the old
-  // grep was conflating with the sick one.
-  const naNullEvidence = rows.filter(r => r.verdict === 'N/A' && !has(r.evidence)).length
-
   return {
     file: path.relative(REPO, p),
-    rows: rows.length,
+    shape,
+    rows,
     na_rows_null_evidence: naNullEvidence,
     ungrounded_count: ungrounded.length,
+    misfiled_count: misfiled.length,
     ungrounded,
+    misfiled,
   }
 }
 
@@ -82,22 +138,25 @@ if (require.main === module) {
     process.exit(1)
   }
 
-  let bad = 0, unparseable = 0
+  let bad = 0, unparseable = 0, misfiledFiles = 0
   for (const f of files) {
     const a = auditInstance(path.isAbsolute(f) ? f : path.join(REPO, f))
     if (a.unparseable) { unparseable++; console.error(`UNPARSEABLE ${a.file}: ${a.unparseable}`); continue }
+    if (a.misfiled_count) misfiledFiles++
     if (a.ungrounded_count) {
       bad++
       console.error(`${a.file}: ${a.ungrounded_count} ungrounded of ${a.rows} rows`)
       for (const u of a.ungrounded.slice(0, 6)) console.error(`    ${u.at} — ${u.why}`)
       if (a.ungrounded.length > 6) console.error(`    … and ${a.ungrounded.length - 6} more`)
     } else if (!quiet) {
-      console.log(`${a.file}: clean (${a.rows} rows, ${a.na_rows_null_evidence} terse N/A — healthy)`)
+      const mis = a.misfiled_count ? `, ${a.misfiled_count} grounded in fix_hint instead of evidence` : ''
+      console.log(`${a.file}: clean (${a.rows} rows, ${a.na_rows_null_evidence} terse N/A — healthy${mis})`)
     }
   }
   if (bad || unparseable) {
     console.error(`\n${bad} instance(s) carry an ungrounded verdict; ${unparseable} unparseable`)
+    if (misfiledFiles) console.error(`${misfiledFiles} instance(s) also carry rows grounded in fix_hint — a naming defect, not a skim; not gated`)
     process.exit(1)
   }
-  if (!quiet) console.log(`\n${files.length} instance(s) checked, none ungrounded`)
+  if (!quiet) console.log(`\n${files.length} instance(s) checked, none ungrounded${misfiledFiles ? ` (${misfiledFiles} carry rows grounded in fix_hint — a naming defect, not a skim)` : ''}`)
 }

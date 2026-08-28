@@ -1,8 +1,9 @@
 {
   "class": "technical",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/when-a-plan-is-good.md",
-  "body_sha": "59af77cf604e92b9a4c2ed9797b0ffeaa08d5c1714d25876206c948895b6f94c",
-  "verdict": "PASS",
+  "body_sha": "4326979c63bf37a45dc32f4aeb3c6bfeed73b0137ce156c347fe592f28b737ed",
+  "shape_hash": "8039777dfcdd8e3e",
+  "verdict": "REVISE",
   "training": "ae101",
   "rules_evaluated": [
     {
@@ -10,7 +11,7 @@
       "rule_index": 1,
       "rule_lead": "Training platform = Claude Code (CLI + Desktop) + Cowork.",
       "verdict": "PASS",
-      "evidence": "Body names only Claude Code (Session widget, `/rename` CLI slash command, Shift+Tab, plan mode) — no claude.ai or Cowork-only feature named; AE101 training-architecture.md is Code-only, no Cowork fork, matching check_prompts.md §10's 'AE101 Code-only, ignores pattern.'",
+      "evidence": "Body names only Claude Code (Session widget line 3, `/rename` CLI slash command line 6, Shift+Tab / status bar line 11) — no claude.ai or Cowork-only feature named; AE101 training-architecture.md is Code-only, no Cowork fork.",
       "fix_hint": null,
       "blocking": false
     },
@@ -37,7 +38,7 @@
       "rule_index": 4,
       "rule_lead": "Verify capabilities BEFORE asserting, not after.",
       "verdict": "PASS",
-      "evidence": "Every platform claim in body (plan-mode tool-swap, Shift+Tab entry, read-only enforcement, plan-file naming) traces to a backing-block source (cc-permission-modes, cc-plan-file) checked 2026-07-31 against docs AND the installed binary v2.1.220 — verification precedes the shipped claim, not after.",
+      "evidence": "The three platform claims remaining in body (Shift+Tab entry, status-bar label, read-only guarantee) all trace to cc-permission-modes, checked 2026-07-31 against docs AND the installed binary v2.1.220 — verification precedes the shipped claim.",
       "fix_hint": null,
       "blocking": false
     },
@@ -47,7 +48,7 @@
       "rule_lead": "Maintain living capability notes for both runtimes.",
       "verdict": "N/A",
       "evidence": null,
-      "fix_hint": "process rule for maintainer capability-notes files, not a claim inside this artefact; also AE101 has one runtime (Code), so the two-runtime-notes requirement doesn't bind this file",
+      "fix_hint": "AE101 has one runtime (Code); process rule for maintainer capability-notes files, not a claim inside this artefact",
       "blocking": false
     },
     {
@@ -56,7 +57,7 @@
       "rule_lead": "Compendium platform claims rot at 60 days.",
       "verdict": "N/A",
       "evidence": null,
-      "fix_hint": "governs the compendium's OWN entries and reference files (reference_claude_code_capabilities.md etc.), not lecture bodies — lecture freshness runs on check_research_claims.md §11a instead, evaluated there",
+      "fix_hint": "governs the compendium's own entries, not lecture bodies",
       "blocking": false
     },
     {
@@ -65,7 +66,7 @@
       "rule_lead": "Don't extend known mechanism into adjacent context without verifying.",
       "verdict": "N/A",
       "evidence": null,
-      "fix_hint": "no template/macro-substitution claim (slash-command vs skill body) in this file",
+      "fix_hint": "no template/macro-substitution claim in this file",
       "blocking": false
     },
     {
@@ -82,7 +83,7 @@
       "rule_index": 5,
       "rule_lead": "Practitioner observation beats docs lookup.",
       "verdict": "PASS",
-      "evidence": "cc-plan-file source entry is built from Antti's own live-tested observation (real files in `~/.claude/plans/`, binary's `getPlanFilePath`) rather than trusting the docs page alone, which the entry notes 'says only writes a plan' — docs silence, observation fills the gap, matching this rule's ordering.",
+      "evidence": "cc-permission-modes source entry catches the status bar reading '⏸ plan mode on', not the bare word 'plan' that a docs-only read would assume, via live binary probe (status-line table literal `{label:\"plan mode on\",...}`) rather than trusting the docs page's prose alone.",
       "fix_hint": null,
       "blocking": false
     },
@@ -91,7 +92,7 @@
       "rule_index": "5a",
       "rule_lead": "Live-test beats docs for runtime-behavior claims.",
       "verdict": "PASS",
-      "evidence": "cc-plan-file entry: 'checked... local live-test, installed Claude Code v2.1.220' — disk inspection + binary code-path read (`getPlanFilePath`), not doc-derived alone. cc-permission-modes entry cross-checks the docs claim against the shipped binary's status-line table literally ({label:\"plan mode on\"...}) rather than trusting the doc's prose.",
+      "evidence": "cc-permission-modes entry: 'Confirmed twice: the docs state the label set, and the shipped binary's status-line table stores it literally' — doc claim cross-checked against the installed binary (v2.1.220, build 2026-07-24), not doc-derived alone.",
       "fix_hint": null,
       "blocking": false
     },
@@ -100,16 +101,16 @@
       "rule_index": 6,
       "rule_lead": "Known correct Claude Code facts (easy to get wrong).",
       "verdict": "PASS",
-      "evidence": "Line 11: 'You press Shift+Tab until the status bar shows plan mode on' — matches current §6 exactly (Shift+Tab cycle, NOT the nonexistent Shift+P). Backing block's own re-verification confirms the binary's status-line table literally stores the label 'plan mode on' (not the bare word 'plan', which the rule's own §6 doesn't warn about but the file caught anyway via live probe).",
+      "evidence": "Line 11: 'You press Shift+Tab until the status bar shows plan mode on' — matches §6 exactly (Shift+Tab cycle, not the nonexistent Shift+P); phrase deliberately un-code-spanned per the backing-block correction, matching §6's own canonical docs URL.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": "6b",
-      "rule_lead": "When tool feature behaves differently than expected, update curriculum not workaround.",
+      "rule_lead": "When tool feature behaves differently than expected, update curriculum — not student's workaround.",
       "verdict": "PASS",
-      "evidence": "Backing block: 'Body corrected 2026-07-31: it used to promise... execute until you approve; the execute half is what stopped being universally true, so the line now promises only that it won't edit your source' — curriculum was updated to state ACTUAL current behavior (auto-mode exception) rather than caveating around it, matching this rule's instruction to 'write actual behavior; student doesn't need to know what we used to think was true.'",
+      "evidence": "Line 15 states current actual behavior ('Nothing edits your source until you approve') rather than the pre-2026-07-31 'can't edit or execute' phrasing the backing block records as superseded by the auto-mode shell-execution exception — curriculum states the real current shape.",
       "fix_hint": null,
       "blocking": false
     },
@@ -125,7 +126,7 @@
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": "6d",
-      "rule_lead": "Auto-load surface = six things.",
+      "rule_lead": "Auto-load surface = four/six things.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": "no CLAUDE.md/auto-load-surface claim in this lecture",
@@ -161,9 +162,9 @@
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": 7,
-      "rule_lead": "Sessions = unit of work.",
+      "rule_lead": "Sessions = unit of work — write \"start a new session in X,\" not \"open Claude Code in X.\"",
       "verdict": "PASS",
-      "evidence": "Line 18: 'Enter plan mode in your own session right now'; Session widget (line 3) uses verb 'new'. No 'open Claude Code in X' phrasing anywhere in body.",
+      "evidence": "Line 11: 'put the question to your own session'; Session widget (line 3) uses verb 'new'. No 'open Claude Code in X' phrasing anywhere in the current body.",
       "fix_hint": null,
       "blocking": false
     },
@@ -233,9 +234,9 @@
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": 12,
-      "rule_lead": "No as-is imports from internet.",
+      "rule_lead": "No \"as-is\" imports from internet.",
       "verdict": "PASS",
-      "evidence": "Referenced practitioner methods (Horthy's create_plan template, Pocock's grilling skill) are credited by name with URL, not pasted in as skills/prompts/code — the lecture's own prompt ('How did your behaviour change...') is original, not lifted from either source.",
+      "evidence": "Referenced practitioner methods (Horthy's create_plan template, Pocock's grilling skill) are credited by name with URL in the backing block, not pasted in as skills/prompts/code; the lecture's own prompt is original.",
       "fix_hint": null,
       "blocking": false
     },
@@ -263,7 +264,7 @@
       "rule_lead": "Before auditing a built artifact ask whether it ships.",
       "verdict": "N/A",
       "evidence": null,
-      "fix_hint": "this is a lecture source file under review, not a built artifact audit",
+      "fix_hint": "this is a lecture source file, not a built artifact audit",
       "blocking": false
     },
     {
@@ -334,7 +335,7 @@
       "rule_index": 20,
       "rule_lead": "Judge must honor script exit codes.",
       "verdict": "PASS",
-      "evidence": "This dispatch's own URL-liveness sample (Bash tool) read the real HTTP status codes returned by curl (5/5 -> 200), not an inferred or assumed result — see urls_sampled.",
+      "evidence": "This dispatch's own URL-liveness sample used real curl exit/status codes read this session (5/5 -> HTTP 200), not an inferred result — see urls_sampled.",
       "fix_hint": null,
       "blocking": false
     },
@@ -343,8 +344,8 @@
       "rule_index": 21,
       "rule_lead": "Eval-fire writing-class fires must schema-validate.",
       "verdict": "N/A",
-      "evidence": "N/A rule — no dispatch-policy content in this file.",
-      "fix_hint": "governs writing-class Haiku/Sonnet dispatch policy (including its (21a) sub-clause on judgement failures) — not this file's content",
+      "evidence": null,
+      "fix_hint": "governs writing-class dispatch policy, not this file's content",
       "blocking": false
     },
     {
@@ -353,7 +354,7 @@
       "rule_lead": "Coverage tools enumerate universe, not index of past work.",
       "verdict": "N/A",
       "evidence": null,
-      "fix_hint": "no coverage-tool design in this file; this instance itself enumerates the full 64+17+5 rule universe per the completeness contract, not an index of prior findings",
+      "fix_hint": "no coverage-tool design in this file; this instance itself enumerates the full 67+21+5 rule set per the completeness contract",
       "blocking": false
     },
     {
@@ -371,7 +372,7 @@
       "rule_lead": "maintainer_acceptance = JSON-level override for accepted/mitigated verdicts.",
       "verdict": "N/A",
       "evidence": null,
-      "fix_hint": "no prior maintainer_acceptance field on this instance's predecessor to preserve, and no accepted-antipattern verdict is being produced this pass",
+      "fix_hint": "no prior maintainer_acceptance field on this instance's predecessor to preserve, and no accepted-antipattern verdict produced this pass",
       "blocking": false
     },
     {
@@ -379,7 +380,7 @@
       "rule_index": "24a",
       "rule_lead": "Quality stamps: tooling writes them; the SHA pins committed content.",
       "verdict": "PASS",
-      "evidence": "`git cat-file -t` resolves writing@5df71aa6, technical@9c75ce2, behavior@1c765f2, strategy@1c765f2 all as real commits. The prior (pre-diff) Quality block's stray `- maintainer-reviewed 2026-04-28 (Antti, full AE101 pass)` row (an axis removed 2026-08-15 per curriculum/CLAUDE.md) is ABSENT from the current block — confirms the stamp was regenerated by current tooling, not hand-typed leftover, and the anchor line carries nothing after the date.",
+      "evidence": "`git cat-file -t` resolves d065f8bc, 394a896b, 1c765f2 (the SHAs on the current Quality block) all as real commits. Quality block is a clean two-line anchor (compendium-audited line + judges line), nothing trailing after the date — no stray hand-typed row.",
       "fix_hint": null,
       "blocking": false
     },
@@ -424,7 +425,7 @@
       "rule_index": 29,
       "rule_lead": "Portability audits: analyze AGENT'S runtime, not prompt's literal syntax.",
       "verdict": "PASS",
-      "evidence": "The file's only fenced command, `/rename m2-plan-mode`, is a Claude Code slash command parsed by the CLI itself (agent-adjacent, not a student-typed OS-shell command) — no Windows/Linux/shell-dialect portability surface to flag.",
+      "evidence": "The file's only fenced command, `/rename m2-plan-mode`, is a Claude Code slash command parsed by the CLI itself, not a student-typed OS-shell command — no Windows/Linux/shell-dialect portability surface to flag.",
       "fix_hint": null,
       "blocking": false
     },
@@ -467,9 +468,9 @@
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": 34,
-      "rule_lead": "Spend on deleting the duplicate, not on guarding it.",
+      "rule_lead": "Spend on deleting the duplicate, not on guarding it — and a gate that finds nothing is speculation.",
       "verdict": "PASS",
-      "evidence": "The diff under this pin converted the file's last raw inline `<figure><svg>...` copy to the shared `{{figure:delegation-frontier}}` marker (verified: `curriculum/figures/delegation-frontier.md` byte-diffs identical to the pre-diff inline SVG, `diff` exit 0). No un-shared duplicate remains in THIS file. `grep -rl '{{figure:delegation-frontier}}' curriculum/` shows the marker used by exactly two lecture bodies (this file + `the-gate-is-a-claim.md`) plus one supplementary (`agentic-engineering-progression.md`) — genuinely single-sourced, matching curriculum/CLAUDE.md's Figures convention ('One drawing, many slides; never paste an SVG inline'). Note: the maintainer-block prose describing this relationship as 'a copy... change it there and re-derive here' is now stale prose given the single-sourcing just landed — filed to notes as a check_writing §3 item, out of this class's lane.",
+      "evidence": "The diff under this pin converted the file's delegation-frontier figure to the shared `{{figure:delegation-frontier}}` marker AND fixed the maintainer prose that used to describe it as a manual copy ('The canvas is a copy of the one in `the-gate-is-a-claim.md`... change it there and re-derive here') to correctly describe single-sourcing ('single-sourced from `curriculum/figures/delegation-frontier.md`... edit the registry file and both lectures move together'). `grep -rl '{{figure:delegation-frontier}}' curriculum/` shows exactly two lecture bodies + one supplementary sharing the one registry file — no un-shared duplicate remains, and the prose no longer misdescribes the mechanism (a prior pass's TODO on this exact staleness is now resolved).",
       "fix_hint": null,
       "blocking": false
     },
@@ -479,24 +480,24 @@
       "rule_lead": "update-quality.sh takes ALL classes in ONE invocation, not until the last judge returns.",
       "verdict": "N/A",
       "evidence": null,
-      "fix_hint": "tooling-invocation-timing rule for the orchestrator, not a claim in this file; I am read-only on this file per curriculum/CLAUDE.md's judges-are-read-only rule",
+      "fix_hint": "tooling-invocation-timing rule for the orchestrator, not a claim in this file; this judge is read-only on the target per curriculum/CLAUDE.md's judges-are-read-only rule",
       "blocking": false
     },
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": 36,
-      "rule_lead": "A hash guard is only as good as what it hashes.",
+      "rule_lead": "A hash guard is only as good as what it hashes, and a malformed hash disarms it silently.",
       "verdict": "PASS",
-      "evidence": "Quality-block SHAs (5df71aa6, 9c75ce2, 1c765f2) are well-formed 7-8 char hex, all resolve to real commits via `git cat-file -t` (checked live this pass) — not fabricated, not truncated, not malformed.",
+      "evidence": "Quality-block SHAs (d065f8bc, 394a896b, 1c765f2) are well-formed 7-8 char hex, all resolve to real commits via `git cat-file -t` (checked live this pass) — not fabricated, not truncated.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": 37,
-      "rule_lead": "Measure the defect before proposing the fix.",
+      "rule_lead": "Measure the defect before proposing the fix, and again before repeating it to the maintainer.",
       "verdict": "PASS",
-      "evidence": "The §11a finding below (research_claims) is backed by a live re-fetch (WebFetch of the vjk-four-reviewers dev.to page, 'posted on May 12') and an in-file quoted date (Osmani '15 Jun 2026') rather than an assumed drift — measured before reported, per this rule.",
+      "evidence": "This pass's own findings are backed by commands actually run this session: `git cat-file -t` on all three cited SHAs, live `curl` on all 5 sampled URLs, `node scripts/validate-backing.js` (0 error/0 warn), and a manual cross-read of the backing block's Claims/Sources/Stance sections against the diff — not carried forward from a prior pass on trust.",
       "fix_hint": null,
       "blocking": false
     },
@@ -505,17 +506,17 @@
       "rule_index": 38,
       "rule_lead": "Prose describing a runtime the room never executes drifts to plausible mechanism.",
       "verdict": "PASS",
-      "evidence": "Body's one forward-facing line (14), 'Feel free to muse on what the heck the agent is reading, and why. Aka context engineering,' is an invitation, not a mechanism claim about an unexecuted automation. Every mechanism clause in the body (tool-swap, read-only enforcement, plan-file naming, Shift+Tab) is present-tense and live-verified per the backing block — no speculative 'X against Y' retrieval-mechanism language, no unsourced cadence claim.",
+      "evidence": "Every mechanism clause remaining in body (Shift+Tab entry line 11, read-only guarantee line 15) is present-tense and backed by a live-verified source. The prior version's one forward-facing/speculative line ('Feel free to muse on what the heck the agent is reading, and why. Aka context engineering') was CUT by this diff — fewer speculative-mechanism surfaces than before, not more.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": 39,
-      "rule_lead": "A judge subagent without evidence is a rubber-stamp.",
+      "rule_lead": "A judge subagent without evidence is a rubber-stamp, and the summary table cannot tell you which you got.",
       "verdict": "N/A",
       "evidence": null,
-      "fix_hint": "self-governing rule for this dispatch's own conduct (followed throughout — see evidence fields and urls_sampled), not a rule scored against the artefact itself",
+      "fix_hint": "self-governing rule for this dispatch's own conduct (followed throughout — real commands run for every mechanical claim, see evidence fields and urls_sampled), not a rule scored against the artefact itself",
       "blocking": false
     },
     {
@@ -566,9 +567,9 @@
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": 45,
-      "rule_lead": "A detector's reading vocabulary must cover the corpus's writing vocabulary.",
+      "rule_lead": "A detector's reading vocabulary must cover the corpus's writing vocabulary — or it reports compliance as rot.",
       "verdict": "N/A",
-      "evidence": null,
+      "evidence": "DRIFT-RECHECK: re-read at current wording (fetched live this session via `rule.js platform_and_boundaries 45`). Still N/A for this artefact — the lecture body makes no detector/parser/audit-tool claim, and I am not auditing `validate-backing.js`'s own parser here (a genuine gap in that parser's vocabulary was used only as background reasoning to locate the check_research_claims §1 finding below — the finding itself is filed against the file's content, not against the tool).",
       "fix_hint": "not auditing a detector's parser",
       "blocking": false
     },
@@ -577,25 +578,52 @@
       "rule_index": 46,
       "rule_lead": "A verdict has more than one input; a freshness check usually watches one.",
       "verdict": "N/A",
-      "evidence": "This is literally the mechanism that produced this drift-recheck dispatch (technical@9c75ce2 pinned because a RULE, not the file, moved) — no further action needed on the file itself, the axis is doing its job.",
+      "evidence": "This is literally the mechanism that produced this drift-recheck dispatch (technical@394a896b pinned because a RULE, not the file, moved) — the axis is doing its job; no further action needed on the file itself.",
       "fix_hint": "not designing a freshness-check instrument; noted as the generating mechanism for this dispatch",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 47,
+      "rule_lead": "\"It used to be fast\" is a regression report — diagnose it by trajectory, not by architecture.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "meta-rule about diagnosing eval-judge cost regressions, not a claim checkable against this lecture's content",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 48,
+      "rule_lead": "A bench is silent about everything it cannot stage, and silence reads exactly like a pass.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "meta-rule about judge-hillclimb fixture design, not lecture content",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 49,
+      "rule_lead": "An instruction whose violation leaves the output identical is not enforced by wording — it needs a measurement or a test.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "meta-rule about protocol-clause enforcement (e.g. the prefill --merge step), not lecture content; this dispatch's own --merge run is reported in the structured output per this rule's spirit",
       "blocking": false
     },
     {
       "compendium": "check_research_claims.md",
       "rule_index": 1,
       "rule_lead": "Source URL + type label — mandatory.",
-      "verdict": "PASS",
-      "evidence": "Body carries zero [label] tags (correct per §1's own scope: labels live in maintainer block only). Backing-block Sources section labels all 12 entries: [capability]x2, [practitioner direct, vendor venue]x2, [academic/research]x4, [practitioner direct]x3, plus boehm/bossavit correctly marked result:BLOCKED (a defined RESULT value) with no live URL rather than silently passed off as verified — and the body cites no number from either.",
-      "fix_hint": null,
-      "blocking": false
+      "verdict": "REVISE",
+      "evidence": "Stance block's 'holds' bullet (line 122) carries a verbatim quoted claim attributed to a named practitioner with NO Source entry backing it: 'Osmani puts review as \"the most leveraged skill in software right now\"'. That exact phrase used to be sourced via the `osmani-agentic-code-review` entry (quoting Osmani's post opener: '...which makes review the most leveraged skill in software right now'), but this diff (394a896b→HEAD) DELETED that Source entry when the 'Find is easier than judge' slide it backed (`find-is-easier-than-judge` claim) was cut — while leaving the Stance-section quote of the same text in place. The Sources list now has 7 entries (cc-permission-modes, horthy-wsff, horthy-create-plan, cockburn-walking-skeleton, pocock-grill-me, boehm-defect-cost, bossavit-leprechauns); none is Osmani. `validate-backing.js` returns 0 error/0 warn because its SOURCE-UNDEFINED/SOURCE-ORPHAN checks only walk the Claims and Frameworks fields, not free Stance prose — it cannot see this. Harm this rule exists to prevent: an unverifiable, unfreshness-tracked verbatim quote sitting in the maintainer trail, exactly what §1/§1a/§11a's URL+label+stamp machinery is for — and the harm is present: nobody re-checking this file can currently open a URL to confirm, date, or re-verify that quote.",
+      "fix_hint": "Either restore a trimmed Source line for the Osmani quote (URL, [practitioner direct] label, fresh `[checked:... due:...]` stamp) scoped to what Stance still uses it for, or drop the quotation marks and practitioner attribution and fold the point into the surrounding vision-layer sentence in the author's own voice.",
+      "blocking": true
     },
     {
       "compendium": "check_research_claims.md",
       "rule_index": "1a",
-      "rule_lead": "OODA paraphrase != primary source.",
+      "rule_lead": "OODA paraphrase ≠ primary source.",
       "verdict": "PASS",
-      "evidence": "Backing block quotes sources verbatim in quotation marks throughout (e.g. Sharma: 'Even in cases when AI assistants provide accurate answers...'; Osmani: 'the hard part of engineering moved from writing code to deciding whether to trust it...'; docs: 'Claude reads files, runs shell commands to explore, and writes a plan, but does not edit your source.') — not paraphrase presented as primary text.",
+      "evidence": "Every remaining Source entry quotes verbatim in quotation marks (e.g. docs: 'Claude reads files, runs shell commands to explore, and writes a plan, but does not edit your source.'; Horthy's wsff.md: 'I run a company... so what I'm gonna say below may be a tad biased'; Cockburn: 'A Walking Skeleton is a tiny implementation...'; Pocock: 'Interview me relentlessly...') — not paraphrase presented as primary text. (The one exception, the orphaned Osmani quote, is filed above under §1/§11a as a missing-source defect, not a paraphrase-as-primary defect — the quote itself IS verbatim, it just has nothing behind it anymore.)",
       "fix_hint": null,
       "blocking": false
     },
@@ -604,7 +632,7 @@
       "rule_index": 2,
       "rule_lead": "Freshness rule — 6 months.",
       "verdict": "PASS",
-      "evidence": "All checked-2026-07-31/29 sources sit within 6 months of publication as of their check date (osmani published 2026-06-15, checked 2026-07-31, ~6 weeks later; vjk published 2026-05-12, checked 2026-07-31, ~11 weeks later; both well inside the 6-month evidence window at check time) — the underlying citations are fresh. The defect found this pass is downstream of freshness, in how the forward-looking DUE date is computed (checked-date+6mo instead of publication-date+6mo) — that is rule 11's sub-clause (11a), not this rule; filed there to avoid double-counting one defect under two keys.",
+      "evidence": "All 5 dated stamps sit within their stated due windows as of 2026-08-28: cc-permission-modes due:cohort, horthy-wsff due:2027-01-31, horthy-create-plan due:cohort, pocock-grill-me due:2027-01-29, all checked 2026-07-29/31; cockburn-walking-skeleton and boehm/bossavit are due:none foundational citations. Nothing overdue.",
       "fix_hint": null,
       "blocking": false
     },
@@ -614,15 +642,15 @@
       "rule_lead": "The clock is on the CLAIM, not the source's age — durable-account carve-out.",
       "verdict": "N/A",
       "evidence": null,
-      "fix_hint": "no first-hand account of a specific completed event (a named practitioner's one-time run/port/experience) is cited in this file under a due:none durable-account framing; the file's due:none stamps (sharma-sycophancy, perez-model-written-evals, boehm-defect-cost, bossavit-leprechauns, cockburn-walking-skeleton) are all foundational/definitional research citations, a different carve-out, not this one",
+      "fix_hint": "no first-hand account of a specific completed event cited under a due:none durable-account framing; this file's due:none stamps (cockburn, boehm, bossavit) are foundational/definitional citations, a different carve-out",
       "blocking": false
     },
     {
       "compendium": "check_research_claims.md",
       "rule_index": "2b",
-      "rule_lead": "due:none scopes the CITATION, not the SOURCE — one URL doing two jobs needs two stamp lines.",
+      "rule_lead": "due:none scopes the CITATION, not the SOURCE.",
       "verdict": "PASS",
-      "evidence": "sharma-sycophancy is the one due:none source whose claim (`agent-agrees-easily`: 'The agent agrees easily...') could tempt a live-behavior reading, and the stamp itself firewalls exactly the split this rule requires: 'Cite for the mechanism, never for the magnitude. Its headline number is measured on Claude 1.3 and is three model generations stale; Anthropic's own Sonnet 5 notes claim \"lower rates of hallucination and sycophancy than Sonnet 4.6.\"' (line 141) — mechanism (due:none) is separated in the same stamp from magnitude (not asserted as current). boehm-defect-cost/bossavit-leprechauns explicitly note 'the body carries no number and must never acquire one' (line 145), so no currency claim rides on either due:none stamp.",
+      "evidence": "The two remaining due:none sources (boehm-defect-cost, bossavit-leprechauns) explicitly firewall against a live-position reading: 'the body carries no number and must never acquire one' / 'Do not add a multiplier, do not draw the curve' (lines 110-111) — no currency claim rides on either due:none stamp. (The prior pass's example for this rule, sharma-sycophancy, was removed from the file entirely in this diff along with the slide it backed — no longer applicable, but the remaining due:none sources still comply.)",
       "fix_hint": null,
       "blocking": false
     },
@@ -631,7 +659,7 @@
       "rule_index": 3,
       "rule_lead": "Zombie stat guard.",
       "verdict": "PASS",
-      "evidence": "The one hard number in the trail (vjk-four-reviewers' 93.4%) is not a round-number AI-failure-rate; it carries disclosed methodology (146 PRs, 3 weeks, 4 tools, 617 distinct coordinates) and the body NEVER cites the number — it stays confined to the maintainer-block source stamp, with an explicit axis-mismatch caveat (tool-vs-tool, not human-vs-agent) invoking §12a by name. The opposite of a zombie stat: sourced, capped, and kept off the page.",
+      "evidence": "No number appears anywhere in body or backing block. The one hard number that used to be in this file (vjk-four-reviewers' 93.4%) was removed in this diff along with the 'Find is easier than judge' slide it backed — zero numeric claims to check, cleaner than the prior pass.",
       "fix_hint": null,
       "blocking": false
     },
@@ -640,7 +668,7 @@
       "rule_index": 4,
       "rule_lead": "Hold short OODA loose.",
       "verdict": "PASS",
-      "evidence": "Stance block: 'Two voices saying plan quality matters is L1-L2, not convergence — do not let this file drift into \"the field agrees\".' OODA roster names 7 practitioners with a dated last-run (2026-07-31); Stance explicitly separates L2 specifics from L3 direction rather than inflating either.",
+      "evidence": "Stance block, untouched by this diff: 'Two voices saying plan quality matters is L1–L2, not convergence — do not let this file drift into \"the field agrees\".' OODA roster names 7 practitioners with a dated last-run (2026-07-31), and Stance separates L2 specifics from L3 direction rather than inflating either.",
       "fix_hint": null,
       "blocking": false
     },
@@ -649,7 +677,7 @@
       "rule_index": 5,
       "rule_lead": "Resist prescriptive post-OODA phrasings.",
       "verdict": "PASS",
-      "evidence": "Stance's 'would-move-it' section uses tentative framing throughout ('What remains, and what the next run should aim at...', 'Second falsifier, still live and untouched') rather than closing design options with a should-statement.",
+      "evidence": "Stance's 'would-move-it' section, untouched by this diff, uses tentative framing throughout ('What remains, and what the next run should aim at...', 'Second falsifier, still live and untouched') rather than closing design options with a should-statement.",
       "fix_hint": null,
       "blocking": false
     },
@@ -665,9 +693,9 @@
     {
       "compendium": "check_research_claims.md",
       "rule_index": 7,
-      "rule_lead": "Vision x Detail split.",
+      "rule_lead": "Vision × Detail split.",
       "verdict": "PASS",
-      "evidence": "Every one of the 21 entries in the backing block's Claims list is tagged `detail`, `vision`, or `borrowed` and each tag matches whether the claim needs KB backing (e.g. `specific-file-list · vision · ... <- none-owed` for house framing; `plan-mode-shift-tab · detail · ... <- cc-permission-modes` for a platform fact; `early-runnable-slice · borrowed · ... <- horthy-wsff, cockburn-walking-skeleton` for a named technique) — full, consistent compliance.",
+      "evidence": "All 13 entries in the current Claims list are tagged `detail`, `vision`, or `borrowed`, and each tag matches whether it needs KB backing (e.g. `plan-mode-shift-tab · detail · ... <- cc-permission-modes`; `structure-is-persuasive · vision · ... <- none-owed`; `early-runnable-slice · borrowed · ... <- horthy-wsff, cockburn-walking-skeleton`). Count dropped from 21 to 13 in this diff (8 claims removed alongside the two cut slides), all consistently tagged.",
       "fix_hint": null,
       "blocking": false
     },
@@ -692,9 +720,9 @@
     {
       "compendium": "check_research_claims.md",
       "rule_index": 10,
-      "rule_lead": "No 'What research says' callout boxes.",
+      "rule_lead": "No \"What research says\" callout boxes.",
       "verdict": "PASS",
-      "evidence": "No such callout box present anywhere in body; all citation apparatus lives below `<!-- maintainer -->`, matching this rule's default-to-inline-builder-voice instruction.",
+      "evidence": "No such callout box present anywhere in body; all citation apparatus lives below `<!-- maintainer -->`.",
       "fix_hint": null,
       "blocking": false
     },
@@ -703,7 +731,7 @@
       "rule_index": 11,
       "rule_lead": "Source-verification maintainer block on any student-facing file with practitioner citations.",
       "verdict": "PASS",
-      "evidence": "File carries a full `<!-- backing -->` block (lines 107-169) below `<!-- maintainer -->` with Claims/Sources/Frameworks/Stance/OODA sections per the canonical `curriculum/backing-format.md` (named in `curriculum/CLAUDE.md`'s Canon list as the current mechanism, superseding the literal 'Source verification — MUST DO before first cohort' heading this rule was written against). Every practitioner citation carries a URL under Sources. `node scripts/validate-backing.js curriculum/lectures/when-a-plan-is-good.md` run this session: '0 error, 0 warn' (10 unrelated INFO rows are theory-plan.md law-unreached notices, not scoped to this file).",
+      "evidence": "File carries a full `<!-- backing -->` block below `<!-- maintainer -->` with Claims/Sources/Frameworks/Stance/OODA sections per the canonical `curriculum/backing-format.md`. `node scripts/validate-backing.js curriculum/lectures/when-a-plan-is-good.md` run this session: '0 error, 0 warn' (11 unrelated INFO rows are theory-plan.md law-unreached notices, not scoped to this file). The one gap this rule's own machinery cannot see — the orphaned Osmani quote in Stance — is filed separately under §1 above, since it is a missing-citation defect, not a missing-section defect (the section exists and is well-formed).",
       "fix_hint": null,
       "blocking": false
     },
@@ -712,8 +740,8 @@
       "rule_index": "11a",
       "rule_lead": "Each listed source carries a freshness STAMP, not just a to-do; DUE = publication+6mo, never checked+6mo.",
       "verdict": "PASS",
-      "evidence": "CONFIRMED FIXED this pass. `grep -c \"due:2026-12-15\"` -> 1, `grep -c \"due:2026-11-12\"` -> 1 (both run fresh this session). osmani-agentic-code-review now reads `due:2026-12-15`, independently re-verified against the live page this session (curl -> 'June 15, 2026' in page body; datePublished not applicable, matched by text) = pub 15 Jun 2026 + 6mo = 2026-12-15, exact. vjk-four-reviewers now reads `due:2026-11-12`, independently re-verified live (curl -> JSON-LD `datePublished:\"2026-05-12T17:15:49Z\"`, author `v.j.k.` matching the byline in the stamp) = pub 12 May 2026 + 6mo = 2026-11-12, exact; the 93.4%/617-distinct figures the stamp quotes were also confirmed present verbatim on the live page this session. Both stamps now name §11a in-line so the arithmetic is checkable, and `checked:2026-07-31`/`result:` fields were left untouched, only `due:` moved, matching the confirmation brief exactly. horthy-wsff (`due:2027-01-31`, still checked+6mo on its face) and pocock-grill-me (`due:2027-01-29`, same pattern) were deliberately left untouched; both were already assessed by the filing pass as not worth blocking on (horthy-wsff ~9 days off its actual publication date; pocock-grill-me cites a living repo with no single publication date and its stamp is explicitly synced to `skills-from-the-frontier.md`'s: 'Stamp carried from that file; keep the two in step', line 140) — carried forward as TODOs, not re-litigated as blocking here.",
-      "fix_hint": null,
+      "evidence": "6 of 7 remaining Sources carry correctly-computed or non-applicable due dates (cc-permission-modes/horthy-create-plan: due:cohort by design; cockburn/boehm/bossavit: due:none foundational). Two — horthy-wsff (due:2027-01-31) and pocock-grill-me (due:2027-01-29) — still compute DUE as checked+6mo rather than publication+6mo, the exact anti-pattern this rule bans ('Never checked+6mo'). Neither entry states wsff.md's/the skills repo's own publication date, so the arithmetic cannot be independently re-derived from what's on the stamp. Carried forward as a TODO (not new to this diff, and pocock-grill-me's stamp explicitly notes it is synced to `skills-from-the-frontier.md`'s own stamp — fixing one without the other would desync a pair the maintainer deliberately keeps in step).",
+      "fix_hint": "Find each source's actual publication date (wsff.md's repo history; the skills repo's commit adding grilling.md) and recompute DUE as pub+6mo, or leave as an explicit known-gap note rather than a silent checked+6mo pattern.",
       "blocking": false
     },
     {
@@ -722,16 +750,16 @@
       "rule_lead": "Denominator + axis discipline on every adoption/productivity number.",
       "verdict": "N/A",
       "evidence": null,
-      "fix_hint": "no adoption/productivity percentage in this file. Sub-clause §12a (the axis re-fires at every nesting level) is squarely on point though: vjk-four-reviewers' 93.4% reviewer-catch-rate is explicitly downgraded to `vision` layer in the backing block, citing §12a by number, because the study's axis (tool-vs-tool) doesn't match the body's claim (human-vs-agent) — textbook compliance, filed as evidence on this row rather than a separate key since §12a is not itself a line-initial numbered rule.",
+      "fix_hint": "no adoption/productivity percentage anywhere in this file — the one number that used to require this discipline (vjk-four-reviewers' 93.4%) was removed by this diff along with the slide it backed",
       "blocking": false
     },
     {
       "compendium": "check_research_claims.md",
       "rule_index": "12a",
-      "rule_lead": "The check RE-FIRES at every nesting level — naming your own claim's population does not discharge it.",
-      "verdict": "PASS",
-      "evidence": "vjk-four-reviewers backs `two-reads-catch-different-misses` (human read vs agent walk-down) with a study whose own axis is tool-vs-tool, not human-vs-agent. The stamp names this explicitly at the inner nesting level the study itself sits at: 'The axis does not reach our claim, and this is the whole reason `two-reads-catch-different-misses` is layered `vision` and not `detail`... The study measures tool vs tool. Our sentence is about human vs agent... Cite it as adjacent support with the axis named, or not at all' (line 144). This is §12a applied correctly one level down from the outer claim's own population statement.",
-      "fix_hint": null,
+      "rule_lead": "The check RE-FIRES at every nesting level.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "the nested-study percentage claim this rule used to govern (vjk-four-reviewers backing `two-reads-catch-different-misses`) no longer exists in this file — both the claim and its source were removed together in this diff",
       "blocking": false
     },
     {
@@ -739,7 +767,7 @@
       "rule_index": 13,
       "rule_lead": "Inference beyond source — absence licenses only absence.",
       "verdict": "PASS",
-      "evidence": "boehm-defect-cost / bossavit-leprechauns handling is exemplary: both marked BLOCKED (no verbatim quote obtainable) and the body explicitly refuses any numeric inference from them — 'the body carries no number and must never acquire one... The guard is against a future edit \"strengthening\" it with one.' Stance's 'contested' claim ('the content of a good plan is very nearly unpublished') is grounded in a named search ('Across six practitioners searched on 2026-07-31, exactly one — Horthy — publishes a rubric'), not an unsourced inference from silence.",
+      "evidence": "boehm-defect-cost / bossavit-leprechauns handling, untouched by this diff, remains exemplary: both marked BLOCKED and the body explicitly refuses any numeric inference from them ('the body carries no number and must never acquire one'). Stance's 'contested' claim is grounded in a named search ('Across six practitioners searched on 2026-07-31, exactly one — Horthy — publishes a rubric'), not an unsourced inference from silence.",
       "fix_hint": null,
       "blocking": false
     },
@@ -749,7 +777,7 @@
       "rule_lead": "A green check must measure the fact, not a proxy.",
       "verdict": "N/A",
       "evidence": null,
-      "fix_hint": "meta-rule about verification instruments (grep/linter/judge design), not a claim inside this file",
+      "fix_hint": "meta-rule about verification instruments, not a claim inside this file (though the §1 finding above is itself an instance of this rule's concern applied to `validate-backing.js`, filed under §1 to avoid double-counting)",
       "blocking": false
     },
     {
@@ -758,7 +786,7 @@
       "rule_lead": "A word-presence claim needs an unprimed read.",
       "verdict": "N/A",
       "evidence": null,
-      "fix_hint": "no word-presence/vocabulary-census claim in this file ('the field converges/says X' language is explicitly disclaimed, not asserted, per the Stance block)",
+      "fix_hint": "no word-presence/vocabulary-census claim in this file",
       "blocking": false
     },
     {
@@ -766,16 +794,16 @@
       "rule_index": 16,
       "rule_lead": "A candidate that matches the hunt's SHAPE has not answered the hunt's QUESTION.",
       "verdict": "PASS",
-      "evidence": "OODA 'would-move-it' section shows the practitioner hunt was scored against a FUNCTIONAL question ('does any practitioner name a criterion our four cannot hold?'), not just topic-shape matching, and it produced a real addition when the answer came back yes (the non-goals bullet, credited to Horthy) — the falsifier fired and was taken, per the section's own words.",
+      "evidence": "OODA 'would-move-it' section, untouched by this diff, shows the practitioner hunt was scored against a functional question ('does any practitioner name a criterion our four cannot hold?'), not topic-shape matching, and it produced a real addition when the answer came back yes (the non-goals bullet, credited to Horthy).",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_pedagogy.md",
       "rule_index": 16,
-      "rule_lead": "Forcing functions stay, scripted reactions go — technical owns the prompt-encodes-the-mechanism angle.",
+      "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
       "verdict": "PASS",
-      "evidence": "The file's single prompt ('How did your behaviour change now that we are in plan mode?...') is explicitly optional and skippable ('Skip if you trust the framing') — nothing downstream depends on its output, so there is no load-bearing mechanism that needed prompt-encoding and none is missing.",
+      "evidence": "This diff made the file's single prompt (`when-a-plan-is-good-1`) load-bearing rather than optional: the old skippable hedge ('Skip if you trust the framing') was cut, and the maintainer note now states plainly 'The `when-a-plan-is-good-1` prompt is load-bearing, not a cut candidate... That is why it leads the lecture rather than trailing it as an optional aside.' The student now reads the read-only permission state back from the agent's own report (a forcing-function move), which body prose can only assert — a stronger instance of this rule's intent than the pre-diff optional version.",
       "fix_hint": null,
       "blocking": false
     },
@@ -791,7 +819,7 @@
     {
       "compendium": "check_pedagogy.md",
       "rule_index": 23,
-      "rule_lead": "Short skeptical pushback on 'done' = re-verify trigger.",
+      "rule_lead": "Short skeptical pushback on \"done\" = re-verify trigger.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": "process rule for how a maintainer/agent re-opens a 'done' claim, not lecture content",
@@ -818,26 +846,14 @@
   ],
   "platform_claims_checked": [
     {
-      "claim": "Plan mode removes the edit tools and swaps the instructions to explore and propose.",
-      "line": 11,
-      "verdict": "PASS",
-      "source": "compendium"
-    },
-    {
       "claim": "You press Shift+Tab until the status bar shows plan mode on.",
       "line": 11,
       "verdict": "PASS",
       "source": "compendium"
     },
     {
-      "claim": "The agent reads files, runs shell commands to explore, and writes a plan file, but it won't edit your source until you approve.",
-      "line": 11,
-      "verdict": "PASS",
-      "source": "compendium"
-    },
-    {
-      "claim": "The plan is saved on disk under a descriptive filename such as `migrate-auth-hash-calm-otter.md`.",
-      "line": 13,
+      "claim": "Plan mode writes a thing you can read, edit, and push back on before your source changes. Nothing edits your source until you approve.",
+      "line": 15,
       "verdict": "PASS",
       "source": "compendium"
     },
@@ -850,27 +866,11 @@
   ],
   "citations_checked": [
     {
-      "line": 33,
-      "claim": "A list of non-goals (Dex Horthy)",
-      "label_present": true,
-      "url_present": true,
-      "url_alive": true,
-      "evidence_level_honest": true
-    },
-    {
       "line": null,
       "claim": "cc-permission-modes (backing block)",
       "label_present": true,
       "url_present": true,
       "url_alive": true,
-      "evidence_level_honest": true
-    },
-    {
-      "line": null,
-      "claim": "cc-plan-file (backing block, local live-test, no URL)",
-      "label_present": true,
-      "url_present": false,
-      "url_alive": null,
       "evidence_level_honest": true
     },
     {
@@ -886,7 +886,7 @@
       "claim": "horthy-create-plan (backing block)",
       "label_present": true,
       "url_present": true,
-      "url_alive": null,
+      "url_alive": true,
       "evidence_level_honest": true
     },
     {
@@ -894,7 +894,7 @@
       "claim": "cockburn-walking-skeleton (backing block)",
       "label_present": true,
       "url_present": true,
-      "url_alive": null,
+      "url_alive": true,
       "evidence_level_honest": true
     },
     {
@@ -904,38 +904,6 @@
       "url_present": true,
       "url_alive": true,
       "evidence_level_honest": true
-    },
-    {
-      "line": null,
-      "claim": "sharma-sycophancy (backing block)",
-      "label_present": true,
-      "url_present": true,
-      "url_alive": true,
-      "evidence_level_honest": true
-    },
-    {
-      "line": null,
-      "claim": "perez-model-written-evals (backing block)",
-      "label_present": true,
-      "url_present": true,
-      "url_alive": null,
-      "evidence_level_honest": true
-    },
-    {
-      "line": null,
-      "claim": "osmani-agentic-code-review (backing block)",
-      "label_present": true,
-      "url_present": true,
-      "url_alive": true,
-      "evidence_level_honest": false
-    },
-    {
-      "line": null,
-      "claim": "vjk-four-reviewers (backing block)",
-      "label_present": true,
-      "url_present": true,
-      "url_alive": true,
-      "evidence_level_honest": false
     },
     {
       "line": null,
@@ -952,6 +920,14 @@
       "url_present": false,
       "url_alive": null,
       "evidence_level_honest": true
+    },
+    {
+      "line": 122,
+      "claim": "Osmani quote in Stance ('the most leveraged skill in software right now') — NO Source entry, see rules_evaluated check_research_claims §1",
+      "label_present": false,
+      "url_present": false,
+      "url_alive": null,
+      "evidence_level_honest": false
     }
   ],
   "skills_referenced": [],
@@ -967,33 +943,35 @@
       "status_code": 200
     },
     {
-      "url": "https://arxiv.org/abs/2310.13548",
+      "url": "https://github.com/humanlayer/humanlayer/blob/main/.claude/commands/create_plan.md",
       "alive": true,
       "status_code": 200
     },
     {
-      "url": "https://addyosmani.com/blog/agentic-code-review/",
+      "url": "https://web.archive.org/web/20171103155809/http://alistair.cockburn.us/Walking+skeleton",
       "alive": true,
       "status_code": 200
     },
     {
-      "url": "https://dev.to/_vjk/best-ai-code-reviewer-in-2026-we-ran-4-in-parallel-for-3-weeks-146-prs-679-findings-1c0f",
+      "url": "https://github.com/mattpocock/skills",
       "alive": true,
       "status_code": 200
     }
   ],
-  "blocking_findings_count": 0,
-  "todos_count": 1,
+  "blocking_findings_count": 1,
+  "todos_count": 2,
   "drift_recheck": {
-    "pin": "9c75ce2 (superseded this pass)",
-    "staleness_reason": "confirmation-run: prior blocking finding fixed, full class re-read fresh rather than inherited",
+    "pin": "394a896b",
+    "staleness_reason": "rule-drift: check_platform_and_boundaries.md §45 (and the compendium generally) grew since the technical@394a896b stamp",
     "rules_reread": [
-      "check_research_claims.md §11a — REVISE -> PASS, both due-dates independently re-verified against live primary sources this session (osmani, vjk), not just the grep count.",
-      "check_research_claims.md §2a/§2b/§12a — newly split out as their own rows (previously absent or folded into a parent rule's evidence text); all PASS or N/A with reasons, see rules_evaluated.",
-      "check_platform_and_boundaries.md §6 — re-confirmed PASS, body's Shift+Tab / 'shows plan mode on' phrasing still matches §6 exactly.",
-      "check_prompts.md technical subset (§1-§3, §39) — re-confirmed PASS via fresh expand-md.js run: no placeholders, canonical lead-in+label+fence shape, permission-mode:plan chip renders as ⟦M:plan⟧.",
-      "URL liveness — re-sampled the same 5 URLs fresh this session (not trusted from cache): 5/5 status 200."
+      "check_platform_and_boundaries.md §45 — re-read at current wording (fetched live via rule.js this session). Verdict unchanged: N/A, this lecture makes no detector/parser/audit-tool claim. The rule's own subject matter (a detector's reading vocabulary vs a corpus's writing vocabulary) is not about this lecture's content — it was however the reasoning path that led to independently checking whether `validate-backing.js` (a detector) could see the Stance-section Osmani quote (a piece of the corpus's writing vocabulary it turns out not to parse), which surfaced the real check_research_claims §1 finding filed above. §45 itself stays N/A; the finding is filed against the correct rule (§1), not against §45.",
+      "check_platform_and_boundaries.md §46-49 — also fetched fresh (rule count grew from 46 to 49 owed since the prior instance's shape_hash-less baseline). All four are meta-rules about eval-judge/tooling cost, bench design, and protocol-enforcement — none reaches lecture content. All N/A."
     ]
   },
-  "notes": "CONFIRMATION PASS (this session). The one blocking finding from the prior pass (research_claims §11a, osmani-agentic-code-review + vjk-four-reviewers due-dates computed as checked+6mo instead of publication+6mo) is now fixed and independently re-verified against both live primary sources (not just the grep count) — see rule 11a evidence above. Rest of the class re-read fresh, not inherited on trust: body re-read in full, expand-md.js re-run to confirm the prompt/figure markers resolve cleanly, 5/5 sampled backing-block URLs re-fetched live (200 each), validate-backing.js re-run clean (0 error/0 warn), and the coverage gaps in the prior instance (missing §2a/§2b/§12a rows, §11/§11a collapsed into one row) were split out into their own rows this pass so the auditor can key each sub-rule. OUT OF LANE (check_writing, not filed as a technical finding): the maintainer block's delegation-frontier note still reads 'The canvas is a copy of the one in `the-gate-is-a-claim.md`, which is the parent: change it there and re-derive here' (line 77) — this predates the figure's conversion to the shared `{{figure:delegation-frontier}}` registry marker and now reads as a manual copy-and-rederive relationship that no longer exists (both lectures read one single-sourced file through the registry). Flagged in the prior pass's notes too; still unaddressed; not this class's rule to fire on."
+  "notes": "FULL RE-READ this session (prior instance predated shape_hash, so nothing was parked — fail-closed path, every row is mine per the dispatch preamble). This diff (394a896b→HEAD) is substantial, not cosmetic: two whole slides removed ('Two reads, paired', 'Find is easier than judge'), the opening slide restructured to lead with the prompt, and five backing-block Sources removed alongside their claims (cc-plan-file, sharma-sycophancy, perez-model-written-evals, osmani-agentic-code-review, vjk-four-reviewers). The removal was clean for the formal Claims/Sources ledger (`validate-backing.js` returns 0 error/0 warn) but left one orphan the validator's parser cannot see: the Stance section's verbatim Osmani quote lost its backing Source when osmani-agentic-code-review was deleted. Filed as the one blocking finding, check_research_claims §1. TWO TODOs, non-blocking: (1) §11a checked+6mo pattern on horthy-wsff/pocock-grill-me, carried forward from before this diff, not newly introduced. (2) OUT OF LANE for this class, flagged for check_writing/check_pedagogy: the backing block's Frameworks section still lists 'Decision-tree walk-down · ... <- pocock-grill-me' even though the body concept it names (walking branches / decision-tree walk-down) was entirely removed with the two cut slides — `validate-backing.js` treats a Framework-row citation as sufficient (by design, framework provenance rows 'often back no single sentence'), so this is not a citation-format violation, but the row now describes a framework this lecture no longer teaches. A milder echo of the same shape as the Osmani finding but not filed as REVISE here since it violates no numbered research_claims rule (Frameworks rows are explicitly allowed to outlive a single body sentence) — it is a content-accuracy question about the ledger's relevance, check_writing §3's lane ('a block states what is true now'). One PRIOR pass's TODO is now RESOLVED by this diff: the delegation-frontier maintainer note that used to misdescribe the figure as a manual copy now correctly describes single-sourcing — see check_platform_and_boundaries §34 evidence.",
+  "resolution": {
+    "settled": "refuted",
+    "at": "2026-08-28",
+    "note": "Audit-trail debt, not blocking: the quote sits in maintainer Stance prose after the backed claim was cut; fix is fold-into-author-voice, maintainer-side."
+  }
 }

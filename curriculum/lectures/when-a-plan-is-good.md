@@ -70,8 +70,8 @@ The canvas is `{{figure:delegation-frontier}}`, single-sourced from `curriculum/
 
 **Deferral bullet on the gate slide (2026-08-08, Antti-directed frame, near-verbatim).** *What the plan doesn't decide, the agent decides mid-run* is the inverse of the slide's lead bullet: the correction-redirects-everything claim gets its shadow, the deferred wrong decision that also redirects everything. *Propagates across files*, *wrongness tangles* and *you will not notice* are the maintainer's own words — do not soften *tangles*, and do not revert *you will not notice* to a nobody-is-reading claim: whether anyone watches mid-generation varies by engineer, but a wrong design call reads as progress while it is being made, so the noticing claim is the true one (maintainer correction, this pass). This slide is the mechanism's only M2 home (Antti 2026-08-25: the exercise's altitude recall bullet is cut; its soft-items menu entry remains the one point-of-use recall of vague steps). KC recall lands in `plan-mode-done-right.md` § Key Concepts.
 
-**Quality:** compendium-audited 2026-08-26 (writing@d065f8bc story@d065f8bc technical@394a896b behavior@1c765f2 pedagogy@d065f8bc strategy@1c765f2 slides@d065f8bc)
-- judges @d065f8bc: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-28 (writing@d065f8bc story@d065f8bc technical@8cc00874 behavior@1c765f2 pedagogy@d065f8bc strategy@1c765f2 slides@d065f8bc)
+- judges @8cc00874: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 **Meta:**
 - **Time:** 9 min. The opening slide's student-run prompt is inside the number. If tight, the three-pressures slide compresses to 60 seconds; the exercise teaches them. `node scripts/calculate-time.js plan-mode-done-right` for where this beat sits in the slot.
 - **Pedagogy:** primer-before-exercise. Names the three moves (merges / soft items / assumptions) that Phase 3 forces.

@@ -124,8 +124,8 @@ Optional, when your sessions start running heavy: [The context ceiling and token
 
 **Session-close convergence prompt (`ae101-m3-ready-to-clear`) kept, not cut.** Flagged `low-yield`. It's the converge-before-clear beat (`check_pedagogy.md §58`): the student signals wrap-up, the agent surfaces anything still loose before the `/clear`. A light one-line ask carrying a lead-in and its own "good enough" callout, not concurrent-heavy load. Its `{{cut:}}` marker was reversed to a live `{{prompt:}}` — body touched, so the per-class Quality SHAs below predate it; re-audit before ship. Not a cut candidate.
 
-**Quality:** compendium-audited 2026-08-26 (writing@0e4f7c9e story@0e4f7c9e technical@7fb973dd behavior@1c765f2 pedagogy@7fb973dd strategy@7992fd0 slides@0e4f7c9e)
-- judges @0e4f7c9e: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-28 (writing@0e4f7c9e story@0e4f7c9e technical@8cc00874 behavior@1c765f2 pedagogy@7fb973dd strategy@7992fd0 slides@0e4f7c9e)
+- judges @8cc00874: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - cross_module @c277a9f4: PASS — set=[earn-the-trust,run-the-first-experiment]
 
 **Meta (trainer):**

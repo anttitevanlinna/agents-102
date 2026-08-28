@@ -101,8 +101,8 @@ The next module opens with what came back, or what you caught before it went fur
 
 **The nudge-count accept-note lives with the line, in `exercises/set-the-markers-send-it-off.md`.** *"Past ten or so, you've become the agent"* moved into that exercise when the send-off mechanics were extracted (2026-08-12); the §16 boundary argument defending it travelled with it and is stated there once. This block used to carry a byte-identical copy plus a second paraphrase of the same call — three copies of one decision, two of them defending a sentence this file no longer contains. Both are cut (2026-08-13, `check_pedagogy.md` §64: maintainer blocks point, they do not restate). Do not re-add: a judge auditing this file never reads the exercise body, so it cannot flag the line from here.
 
-**Quality:** compendium-audited 2026-08-25 (writing@441b361f story@441b361f technical@10a10d2b behavior@93bb807 pedagogy@10a10d2b strategy@a7f3966 slides@441b361f)
-- judges @441b361f: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-28 (writing@441b361f story@441b361f technical@8cc00874 behavior@93bb807 pedagogy@10a10d2b strategy@a7f3966 slides@441b361f)
+- judges @8cc00874: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - cross_module @c277a9f4: PASS — set=[earn-the-trust,run-the-first-experiment]
 
 **Meta (trainer):**

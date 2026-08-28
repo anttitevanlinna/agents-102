@@ -1,7 +1,8 @@
 {
   "class": "technical",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/spot-gaps-build-the-loop.md",
-  "body_sha": "908ff3ddce0f5efc9e9881d767cc34bf53ba2372751c9c64a74ec368caa3d93b",
+  "body_sha": "2ddf319249d2fbb640d9e770144b0e7be5420f5eb88e488911242f4c477ed964",
+  "shape_hash": "3bf287f827d6a7ae",
   "verdict": "PASS",
   "training": "ae101",
   "rules_evaluated": [
@@ -37,7 +38,7 @@
       "rule_index": "4",
       "rule_lead": "Verify capabilities BEFORE asserting, not after.",
       "verdict": "PASS",
-      "evidence": "Two live platform claims verified this session against canonical in-repo doc rather than memory: (a) L23 raw “the branches share `.git`” — correct, git worktrees share one `.git`; (b) L23 raw “each run recorded its transcript path” — matched against `reference/claude-code-for-engineers.md` §26 (“The modules do this, recording the path into `task.md` on the un-packaged session and `plan.md` on the packaged re-send”). Both hold.",
+      "evidence": "Two live platform claims re-verified this session against canonical in-repo doc rather than memory: (a) L23 raw “the branches share `.git`” — correct, git worktrees share one `.git`; (b) L23 raw “each session recorded its transcript path” (current wording, changed from “each run recorded” since the last pin — confirmed via `git diff b55cd28b..HEAD`) — matched against `reference/claude-code-for-engineers.md` §25 (“The modules do this, recording the path into `task.md` on the un-packaged session and `plan.md` on the packaged re-send”). Both hold; the wording swap is vocabulary polish, not a capability change.",
       "fix_hint": null,
       "blocking": false
     },
@@ -73,7 +74,7 @@
       "rule_index": "4d",
       "rule_lead": "Fix the contract, not the broken recovery.",
       "verdict": "N/A",
-      "evidence": "File makes no defensive-recovery prompt pattern (file carries zero fenced prompts); nothing to check.",
+      "evidence": "File carries zero fenced prompts (confirmed: `expand-md.js` output byte-identical to raw source), so no defensive-recovery prompt pattern exists to check.",
       "fix_hint": null,
       "blocking": false
     },
@@ -91,7 +92,7 @@
       "rule_index": "5a",
       "rule_lead": "Live-test beats docs for runtime-behavior claims.",
       "verdict": "N/A",
-      "evidence": "Covered under id 6/6e below (mtime-fragility guidance mechanically re-verified against the compendium's own prescribed fix); no separate live-test-vs-docs conflict here.",
+      "evidence": "Covered under id 6e below (mtime-fragility guidance mechanically re-verified against the compendium's own prescribed fix); no separate live-test-vs-docs conflict here.",
       "fix_hint": null,
       "blocking": false
     },
@@ -118,7 +119,7 @@
       "rule_index": "6d",
       "rule_lead": "Auto-load surface = SIX things — four filenames + project `.claude/rules/` + user `~/.claude/rules/`.",
       "verdict": "PASS",
-      "evidence": "File names `./CLAUDE.local.md` (L15, L109–110, L118 maintainer) as a rules location the student cuts a rule from — accurate: CLAUDE.local.md is one of the six auto-load surfaces (§6d), filename-based, walked up from cwd. File makes no auto-load-surface-count or -mechanics claim that could be wrong.",
+      "evidence": "File names `./CLAUDE.local.md` (L15, L111, maintainer L109–111) as a rules location the student cuts a rule from — accurate: CLAUDE.local.md is one of the six auto-load surfaces (§6d), filename-based, walked up from cwd. File makes no auto-load-surface-count or -mechanics claim that could be wrong.",
       "fix_hint": null,
       "blocking": false
     },
@@ -136,7 +137,7 @@
       "rule_index": "6e",
       "rule_lead": "Transcript-by-mtime selection fragile when current session writes target folder.",
       "verdict": "PASS",
-      "evidence": "Push-back move (L136 raw) reproduces this rule's exact prescribed fix almost verbatim: “if M4 and M5 share a cwd, recency alone can grab the wrong attempt; filter by a phrase unique to that send-off's opening prompt instead” vs compendium's “Use marker-based selection: filter transcripts by content containing distinctive moment … Mtime-only valid only when current cwd differs …” Correct application, not a violation.",
+      "evidence": "Push-back move (L138 raw, “Connections blocker”) reproduces this rule's exact prescribed fix almost verbatim: “if M4 and M5 share a cwd, recency alone can grab the wrong attempt; filter by a phrase unique to that send-off's opening prompt instead” vs compendium's “Use marker-based selection: filter transcripts by content containing distinctive moment … Mtime-only valid only when current cwd differs …” Correct application, not a violation. Line unchanged since last pin.",
       "fix_hint": null,
       "blocking": false
     },
@@ -152,7 +153,7 @@
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": "6g",
-      "rule_lead": "Edit-time prompt-edit gate's approval detector MUST parse the transcript deterministically (partial-line-tolerant) — never jq/grep under `pipefail`.",
+      "rule_lead": "Edit-time prompt-edit gate's approval detector MUST parse the transcript deterministically.",
       "verdict": "N/A",
       "evidence": "File makes no prompt-edit-gate/transcript-parsing claim; nothing to check.",
       "fix_hint": null,
@@ -163,7 +164,7 @@
       "rule_index": "7",
       "rule_lead": "Sessions = unit of work — write \"start a new session in X,\" not \"open Claude Code in X.\"",
       "verdict": "PASS",
-      "evidence": "L23 raw: “Open a fresh session in the Module 5 worktree” — correct “session” vocabulary, not “open Claude Code in X.”",
+      "evidence": "L23 raw: “Open a fresh session in the Module 5 worktree” — correct “session” vocabulary, never “open Claude Code in X.”",
       "fix_hint": null,
       "blocking": false
     },
@@ -226,7 +227,7 @@
       "rule_index": "11",
       "rule_lead": "Destructive operations need confirmation.",
       "verdict": "N/A",
-      "evidence": "No destructive repo operation performed or prescribed by this file's content (the 2026-07-05 maintainer note documents a past git-rm, already landed, not a live instruction here).",
+      "evidence": "No destructive repo operation performed or prescribed by this file's content. (The former 2026-07-05 cut-pass maintainer note documenting a past git-rm has since been removed from this file in the lean pass; no live destructive instruction remains either way.)",
       "fix_hint": null,
       "blocking": false
     },
@@ -244,7 +245,7 @@
       "rule_index": "13",
       "rule_lead": "Pseudo-URI + kill-switch for public/private content split.",
       "verdict": "PASS",
-      "evidence": "Maintainer block cites `bosser-strategy:content-strategy-agentic-engineering-101.md` via the established pseudo-URI convention (not a filesystem path), consistent with §13; the private-skill kill-switch is the skill's own concern, not re-litigated per citation.",
+      "evidence": "Maintainer block cites `bosser-strategy:content-strategy-agentic-engineering-101.md` via the established pseudo-URI convention (L184, not a filesystem path), consistent with §13; the private-skill kill-switch is the skill's own concern, not re-litigated per citation.",
       "fix_hint": null,
       "blocking": false
     },
@@ -334,7 +335,7 @@
       "rule_index": "20",
       "rule_lead": "Judge must honor script exit codes.",
       "verdict": "N/A",
-      "evidence": "Meta-rule for judge conduct, not file content. Self-note: every script this judge ran (`check-cross-doc-anchors.js`, `source-freshness.sh`) was honored by its real exit code, not inferred.",
+      "evidence": "Meta-rule for judge conduct, not file content. Self-note: every script this judge ran this pass (`check-cross-doc-anchors.js`, `source-freshness.sh`, `expand-md.js`) was honored by its real exit code (0/0/0), not inferred.",
       "fix_hint": null,
       "blocking": false
     },
@@ -370,7 +371,7 @@
       "rule_index": "24",
       "rule_lead": "`maintainer_acceptance` = JSON-level override for accepted/mitigated judge verdicts.",
       "verdict": "N/A",
-      "evidence": "No technical-class finding here is being maintainer-accepted-with-override; the one REVISE filed (research-claims §11a) is reported straightforwardly, non-blocking, no override JSON needed.",
+      "evidence": "No technical-class finding here is being maintainer-accepted-with-override; the one non-blocking REVISE filed (research-claims §11a, overdue freshness stamps) is reported straightforwardly, no override JSON needed.",
       "fix_hint": null,
       "blocking": false
     },
@@ -379,7 +380,7 @@
       "rule_index": "24a",
       "rule_lead": "Quality stamps: tooling writes them; the SHA pins committed content.",
       "verdict": "PASS",
-      "evidence": "Quality block's `technical@9c75ce2` matches the assigned diff pin; `<class>@<sha>` format is tooling-written shape, no hand-typed anomaly (no trailing prose after the date, per §24a's stated failure mode).",
+      "evidence": "Quality block's `technical@b55cd28b` (L105) is the tooling-written `<class>@<sha>` shape — clean anchor, no trailing prose after the date, per §24a's stated failure mode. (This judge's own re-audit will produce a fresh pin once the orchestrator re-stamps after this instance lands.)",
       "fix_hint": null,
       "blocking": false
     },
@@ -404,7 +405,7 @@
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": "27",
-      "rule_lead": "Acceptance-test contract covers (i) prompt mechanics + (ii) end-state artefacts, NOT (iii) does prompt's executable shell actually work.",
+      "rule_lead": "Acceptance-test contract covers (i) prompt mechanics + (ii) end-state artefacts, NOT (iii) shell actually works.",
       "verdict": "N/A",
       "evidence": "File carries zero fenced prompts / shell content (module-index file only, confirmed via `expand-md.js` identical to raw); no mechanical-test-layer claim to evaluate.",
       "fix_hint": null,
@@ -415,7 +416,7 @@
       "rule_index": "28",
       "rule_lead": "Strategy-doc drift surfaces via judge citation — citation = canary, not verdict.",
       "verdict": "PASS",
-      "evidence": "Maintainer's “Opener order” note (L182 raw) is a textbook correct handling of exactly this pattern: strategy doc was stale relative to the module file, doc corrected to match, reasoning logged in place, judges told not to re-flag against the old doc copy.",
+      "evidence": "Maintainer's “Opener order” note (L184 raw) is a textbook correct handling of exactly this pattern: strategy doc was stale relative to the module file, doc corrected to match, reasoning logged in place, judges told not to re-flag against the old doc copy. Unchanged since last pin.",
       "fix_hint": null,
       "blocking": false
     },
@@ -440,16 +441,16 @@
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": "31",
-      "rule_lead": "state.json files written by `run-mN.sh` are convenience caches, not authoritative — read hand-off from in-SUT artefacts.",
+      "rule_lead": "state.json files written by `run-mN.sh` are convenience caches, not authoritative.",
       "verdict": "N/A",
-      "evidence": "File doesn't reference `state.json`; the hand-off it describes (“each run recorded its transcript path”) is already SUT-side (`task.md`/`plan.md`) per the reference doc verified under id 4 — consistent with this rule's preference, not a violation to flag.",
+      "evidence": "File doesn't reference `state.json`; the hand-off it describes (“each session recorded its transcript path”) is already SUT-side (`task.md`/`plan.md`) per the reference doc verified under id 4 — consistent with this rule's preference, not a violation to flag.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": "32",
-      "rule_lead": "tmux-runner sessions must use a per-runner socket (`tmux -L runner-$run_id ...`), not the user-wide default.",
+      "rule_lead": "tmux-runner sessions must use a per-runner socket.",
       "verdict": "N/A",
       "evidence": "Rule governs repo tooling / infra / harness / process surfaces (eval runners, hooks, gates, quality-stamp tooling, audit scripts, judge/orchestrator conduct), not this student-facing module-index file's content. Nothing in the file asserts or depends on that surface.",
       "fix_hint": null,
@@ -469,7 +470,7 @@
       "rule_index": "34",
       "rule_lead": "Spend on deleting the duplicate, not on guarding it — and a gate that finds nothing is speculation.",
       "verdict": "N/A",
-      "evidence": "Not a duplicate-guard question; the 2026-07-05 cut-pass note documents an actual deletion of spent content, a different concern from this rule's duplicate-vs-guard tradeoff.",
+      "evidence": "Not a duplicate-guard question; the file's own “Lean pass” maintainer note (L86) documents deliberate prose cuts, a different concern from this rule's duplicate-vs-guard tradeoff.",
       "fix_hint": null,
       "blocking": false
     },
@@ -487,7 +488,7 @@
       "rule_index": "36",
       "rule_lead": "A hash guard is only as good as what it hashes, and a malformed hash disarms it silently.",
       "verdict": "N/A",
-      "evidence": "This judge's own `body_sha` is a real `shasum -a 256` output (64 lowercase hex), not fabricated — self-check, not a finding about the file.",
+      "evidence": "This judge's own `body_sha` (`shasum -a 256` real output, 64 lowercase hex, taken at start of this read) is not fabricated — self-check, not a finding about the file.",
       "fix_hint": null,
       "blocking": false
     },
@@ -496,16 +497,16 @@
       "rule_index": "37",
       "rule_lead": "Measure the defect before proposing the fix, and again before repeating it to the maintainer.",
       "verdict": "N/A",
-      "evidence": "This judge applied the rule's discipline (ran `source-freshness.sh` and `check-cross-doc-anchors.js` rather than asserting from memory) instead of finding a violation of it in the file.",
+      "evidence": "This judge applied the rule's discipline this pass (ran `source-freshness.sh --target 2026-08-28` and `check-cross-doc-anchors.js` rather than asserting from memory or trusting the prior instance's cached findings) instead of finding a violation of it in the file.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": "38",
-      "rule_lead": "Prose describing a runtime the room never executes drifts to plausible mechanism — no judge catches it, because no artefact contradicts it.",
+      "rule_lead": "Prose describing a runtime the room never executes drifts to plausible mechanism.",
       "verdict": "PASS",
-      "evidence": "Reviewed “## Optional challenges” (universal skill loader, eval-as-PR-check, ship-a-skill, fired/never-fired telemetry system) — all four are phrased as things the STUDENT would build, not claims that Claude Code already ships them; no invented “reads X against Y” retrieval mechanism, no lifecycle noun borrowed from a stage the beat doesn't touch, no unsourced cadence.",
+      "evidence": "Reviewed “## Optional challenges” (universal skill loader, eval-as-PR-check, ship-a-skill, fired/never-fired telemetry system) — all four are phrased as things the STUDENT would build, not claims that Claude Code already ships them; no invented “reads X against Y” retrieval mechanism, no lifecycle noun borrowed from a stage the beat doesn't touch, no unsourced cadence. Unchanged since last pin.",
       "fix_hint": null,
       "blocking": false
     },
@@ -514,7 +515,7 @@
       "rule_index": "39",
       "rule_lead": "A judge subagent without evidence is a rubber-stamp, and the summary table cannot tell you which you got.",
       "verdict": "N/A",
-      "evidence": "Meta-rule about judge conduct; this instance supplies evidence per row rather than a rubber-stamp, per the dispatch preamble.",
+      "evidence": "Meta-rule about judge conduct; this instance supplies re-run evidence per row (fresh script executions this session) rather than a rubber-stamp, per the dispatch preamble.",
       "fix_hint": null,
       "blocking": false
     },
@@ -539,7 +540,7 @@
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": "42",
-      "rule_lead": "Before deleting anything, ask what its FIRING would look like — reference-grep can't tell live from abandoned.",
+      "rule_lead": "Before deleting anything, ask what its FIRING would look like.",
       "verdict": "N/A",
       "evidence": "Rule governs repo tooling / infra / harness / process surfaces (eval runners, hooks, gates, quality-stamp tooling, audit scripts, judge/orchestrator conduct), not this student-facing module-index file's content. Nothing in the file asserts or depends on that surface.",
       "fix_hint": null,
@@ -559,7 +560,7 @@
       "rule_index": "44",
       "rule_lead": "`git log -1 --date=short -- <path>` on a DELETED file returns the deletion date.",
       "verdict": "N/A",
-      "evidence": "The two git-rm'd files named in the 2026-07-05 cut-pass note (`steering-the-wiring`, `arc-retrospective`) are correctly described as removed, past tense; the note makes no staleness/date claim about them that this rule would catch.",
+      "evidence": "File makes no file-age/staleness claim about a deleted path that this rule would catch.",
       "fix_hint": null,
       "blocking": false
     },
@@ -568,7 +569,7 @@
       "rule_index": "45",
       "rule_lead": "A detector's reading vocabulary must cover the corpus's writing vocabulary — or it reports compliance as rot.",
       "verdict": "N/A",
-      "evidence": "Rule governs repo tooling / infra / harness / process surfaces (eval runners, hooks, gates, quality-stamp tooling, audit scripts, judge/orchestrator conduct), not this student-facing module-index file's content. Nothing in the file asserts or depends on that surface.",
+      "evidence": "**Drift re-check (rule grew a “Fail-open corollary (2026-08-28)” clause since the b55cd28b pin — re-read in full at current wording via `rule.js platform_and_boundaries 45`).** HARM this rule (both halves) prevents: an internal audit script (`audit-eval-coverage.js`, `check-instance-evidence.js`, `update-quality.sh`) either mis-reading a valid record shape as rot, or silently passing an input shape it doesn't know how to read. Both halves are exclusively about this repo's own eval/audit tooling internals — no analogue exists in a student-facing module-index file, which contains no detector, parser, or ledger of any kind. Applicability verdict is unchanged by the growth: still N/A.",
       "fix_hint": null,
       "blocking": false
     },
@@ -582,11 +583,38 @@
       "blocking": false
     },
     {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": "47",
+      "rule_lead": "\"It used to be fast\" is a regression report — diagnose it by trajectory, not by architecture.",
+      "verdict": "N/A",
+      "evidence": "Rule governs repo tooling / infra / harness / process surfaces (eval runners, hooks, gates, quality-stamp tooling, audit scripts, judge/orchestrator conduct), not this student-facing module-index file's content. Nothing in the file asserts or depends on that surface.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": "48",
+      "rule_lead": "A bench is silent about everything it cannot stage, and silence reads exactly like a pass.",
+      "verdict": "N/A",
+      "evidence": "Rule governs repo tooling / infra / harness / process surfaces (eval runners, hooks, gates, quality-stamp tooling, audit scripts, judge/orchestrator conduct), not this student-facing module-index file's content. Nothing in the file asserts or depends on that surface.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": "49",
+      "rule_lead": "An instruction whose violation leaves the output identical is not enforced by wording.",
+      "verdict": "N/A",
+      "evidence": "Rule governs repo tooling / infra / harness / process surfaces (eval runners, hooks, gates, quality-stamp tooling, audit scripts, judge/orchestrator conduct), not this student-facing module-index file's content. Nothing in the file asserts or depends on that surface.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
       "compendium": "check_research_claims.md",
       "rule_index": "1",
       "rule_lead": "Source URL + type label — mandatory.",
       "verdict": "PASS",
-      "evidence": "7 source-verification stamps + 4 Frameworks-riffed-on bullets all carry a [label] + URL; body carries zero raw [label] tags (correctly scoped to maintainer block per §1's scope clause — grep for `[practitioner` in body-only region → 0). “This convergence” (L160, Cherny bullet) is attributed to the digest curator (“Kim on Cherny”) per the fan-digest sub-rule, matching its own stamp's fallback (“present as a practitioner-convergent menu, no single attribution”) — not an uncounted census claim.",
+      "evidence": "All 7 source-verification stamps (L169–175) + 4 Frameworks-riffed-on bullets (L161–165) carry a [label] + URL; body (L1–83) carries zero raw [label] tags (correctly scoped to maintainer block per §1's scope clause — `grep -n '\\[practitioner' <file>` on the body region → 0). The Cherny bullet (L162) is attributed to the digest curator (“Kim on Cherny”) per the fan-digest sub-rule, matching its own stamp's fallback (“present as a practitioner-convergent menu, no single attribution”) — not an uncounted census claim.",
       "fix_hint": null,
       "blocking": false
     },
@@ -595,7 +623,7 @@
       "rule_index": "1a",
       "rule_lead": "OODA paraphrase ≠ primary source.",
       "verdict": "N/A",
-      "evidence": "No primary-source paraphrase is freshly transcribed into this file's body; the maintainer-block stamps carry the verification trail already, and this diff didn't add a new one.",
+      "evidence": "No primary-source paraphrase is freshly transcribed into this file's body by the current diff; the maintainer-block stamps carry the verification trail already and were not newly authored this pass.",
       "fix_hint": null,
       "blocking": false
     },
@@ -604,7 +632,7 @@
       "rule_index": "2",
       "rule_lead": "Freshness rule — 6 months.",
       "verdict": "N/A",
-      "evidence": "Superseded by id 11/11a's per-stamp DUE mechanism for this file's citation set; no citation younger than 6 months is being freshly introduced by this diff.",
+      "evidence": "Superseded by id 11/11a's per-stamp DUE mechanism for this file's citation set; no citation younger than 6 months is being freshly introduced by the current diff.",
       "fix_hint": null,
       "blocking": false
     },
@@ -613,7 +641,7 @@
       "rule_index": "3",
       "rule_lead": "Zombie stat guard.",
       "verdict": "PASS",
-      "evidence": "`grep -inE '95%|85%|80% (fail|never)'` on this file → 0 hits. Intercom/Ramp numbers (19.2%, 86%, 99.5%, 84%) are specific non-round vendor telemetry, already flagged “Metrics vendor-self-reported” / “Confirmed via observations/ramp.md” per their own stamps — not the zombie-stat shape.",
+      "evidence": "`grep -inE '95%|85% (fail|never)|80% fail' <file>` → 0 hits (re-run this session). Intercom/Ramp numbers (19.2%, 86%, 99.5%, 84%) are specific non-round vendor telemetry, already flagged “Metrics vendor-self-reported” / “Confirmed via observations/ramp.md” per their own stamps — not the zombie-stat shape.",
       "fix_hint": null,
       "blocking": false
     },
@@ -685,7 +713,7 @@
       "rule_index": "11",
       "rule_lead": "Source-verification maintainer block on any student-facing file with practitioner citations.",
       "verdict": "REVISE",
-      "evidence": "§11a REVISE, non-blocking — filed and detailed below (see fix_hint). Baseline requirement (block present, citations named) is met.",
+      "evidence": "§11a REVISE, non-blocking — filed below. Baseline requirement (block present at L167 header, all citations named with URL/number/fallback) is met.",
       "fix_hint": null,
       "blocking": false
     },
@@ -694,8 +722,8 @@
       "rule_index": "11a",
       "rule_lead": "Each listed source carries a freshness STAMP, not just a to-do.",
       "verdict": "REVISE",
-      "evidence": "HARM §11a prevents: a source silently going stale in front of a cohort. Ran `bash curriculum/evals/scripts/source-freshness.sh --target 2026-08-23 <file>` (today's date) — real output: “WARN (2) — re-verify + re-stamp before delivery: L169 [OK due:2026-08-21] getpushtoprod.substack.com/… — due 2026-08-21 < cohort 2026-08-23 — expires before delivery; L172 [CAVEAT due:2026-08-09] every.to/…compound-engineering-the-definitive-guide — CAVEAT past its own due:2026-08-09 — re-verify or re-stamp.” Both are pre-existing (unchanged by the diff since pin 9c75ce2) and freshly overdue since the pin. Separately, L167 (Klaassen prework citation) carried `checked:2026-05-25 result:OK due:2026-11-25` — a `checked`+6mo computation §11a explicitly bans (“Never `checked`+6mo”) — and was out of sync with its named sibling `learn-from-the-test.md` L244, which already correctly carries `result:CAVEAT due:none` (dated-origin variant) for the identical URL. **Fixed this pass**: L167 now reads `result:CAVEAT due:none`, matching the sibling; body_sha re-taken. L172/L173 (the `compound-engineering-*` URLs) show the same checked+6mo pattern repeated with divergent resolutions across 6+ corpus files (`the-map-filled-in.md`, `skills-from-the-frontier.md` [due:cohort], `compound-and-close.md`, `where-the-rule-could-live.md` [due:cohort], `exercises/spot-gaps-build-the-loop.md`, `run-the-first-experiment.md` [same due:2026-08-09, also now overdue]) — not a single-file typo, and this file's own text says to keep its Definitive-Guide stamp “in sync” with `run-the-first-experiment.md`'s matching (also-overdue) copy, so fixing only this file's copy would create a fresh desync rather than resolve one. Left unfixed and flagged rather than unilaterally resolved.",
-      "fix_hint": "Re-verify + re-stamp L169 (Kim-on-Cherny three-verifier-shapes) and L172 (Definitive Guide) now that both have passed `due`. Separately, raise the checked+6mo-vs-due:none/due:cohort split on the `compound-engineering-how-every-codes-with-agents` URL (L173 and its corpus siblings) as a maintainer question before touching any one copy — a local fix here would desync it from `run-the-first-experiment.md`.",
+      "evidence": "HARM §11a prevents: a source silently going stale in front of a cohort. Re-ran `bash curriculum/evals/scripts/source-freshness.sh --target 2026-08-28 curriculum/trainings/agentic-engineering-101/spot-gaps-build-the-loop.md` this session (2026-08-28 is today, per system clock) — real output: “WARN (2): L171 [OK due:2026-08-21] getpushtoprod.substack.com/… — due 2026-08-21 < cohort 2026-08-28 — expires before delivery; L174 [CAVEAT due:2026-08-09] every.to/…compound-engineering-the-definitive-guide — CAVEAT past its own due:2026-08-09 — re-verify or re-stamp.” exit 0 (0 BLOCK, 2 WARN, 3 INFO/accepted-caveat, 2 OK). Both overdue stamps are pre-existing (untouched by the diff since the b55cd28b pin) and have gone overdue purely because the calendar advanced past their `due` dates — not a new defect this diff introduced. Separately confirmed the Klaassen prework citation (L169) already carries the correct `result:CAVEAT due:none` dated-origin form (matching its sibling stamp in `learn-from-the-test.md`), so the checked+6mo defect a prior audit flagged there is already fixed and stays fixed. Non-blocking: this is routine calendar drift on a delivery-timing axis, not a factual error or a missing label; the file's own re-verify machinery (this script) already surfaces it for the pre-cohort pass.",
+      "fix_hint": "Re-verify + re-stamp L171 (Kim-on-Cherny three-verifier-shapes) and L174 (Klaassen Definitive Guide) now that both have passed `due`. When re-stamping L174, check the sibling copy in `run-the-first-experiment.md` (also due 2026-08-09, also now overdue) so the two don't desync.",
       "blocking": false
     },
     {
@@ -748,7 +776,7 @@
       "rule_index": "16",
       "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
       "verdict": "N/A",
-      "evidence": "This module-index file carries zero fenced prompts — confirmed via `node scripts/expand-md.js` (output byte-identical to raw, no ``` fence, no `{{prompt:}}` marker). The forcing-function/prompt-mechanic surface lives in the linked exercise file (`curriculum/exercises/spot-gaps-build-the-loop.md`), which is not the named target of this judge run.",
+      "evidence": "This module-index file carries zero fenced prompts — confirmed via `node scripts/expand-md.js` (output byte-identical to raw, no ``` fence, no `{{prompt:}}` marker, re-verified this session). The forcing-function/prompt-mechanic surface lives in the linked exercise file (`curriculum/exercises/spot-gaps-build-the-loop.md`), which is not the named target of this judge run.",
       "fix_hint": null,
       "blocking": false
     },
@@ -789,12 +817,444 @@
       "blocking": false
     },
     {
+      "compendium": "check_prompts.md",
+      "rule_index": "1",
+      "rule_lead": "No placeholders inside fences.",
+      "verdict": "N/A",
+      "evidence": "File carries zero fenced prompt blocks and zero `{{prompt:<key>}}` markers (body_view signals.has_prompt_blocks=false, fence_ranges empty, confirmed by `expand-md.js` producing byte-identical output to raw source). This module-index file only links to lectures/exercises; it carries no prompt content of its own for this rule to apply to.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "2",
+      "rule_lead": "Every prompt block: one-sentence action lead-in.",
+      "verdict": "N/A",
+      "evidence": "File carries zero fenced prompt blocks and zero `{{prompt:<key>}}` markers (body_view signals.has_prompt_blocks=false, fence_ranges empty, confirmed by `expand-md.js` producing byte-identical output to raw source). This module-index file only links to lectures/exercises; it carries no prompt content of its own for this rule to apply to.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "3",
+      "rule_lead": "Canonical shape — lead-in, label with destination, blank line, fence.",
+      "verdict": "N/A",
+      "evidence": "File carries zero fenced prompt blocks and zero `{{prompt:<key>}}` markers (body_view signals.has_prompt_blocks=false, fence_ranges empty, confirmed by `expand-md.js` producing byte-identical output to raw source). This module-index file only links to lectures/exercises; it carries no prompt content of its own for this rule to apply to.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "4",
+      "rule_lead": "Installed Skills invoke by name, never path.",
+      "verdict": "N/A",
+      "evidence": "File carries zero fenced prompt blocks and zero `{{prompt:<key>}}` markers (body_view signals.has_prompt_blocks=false, fence_ranges empty, confirmed by `expand-md.js` producing byte-identical output to raw source). This module-index file only links to lectures/exercises; it carries no prompt content of its own for this rule to apply to.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "5",
+      "rule_lead": "Chain by back-reference + deterministic path, never invented alias.",
+      "verdict": "N/A",
+      "evidence": "File carries zero fenced prompt blocks and zero `{{prompt:<key>}}` markers (body_view signals.has_prompt_blocks=false, fence_ranges empty, confirmed by `expand-md.js` producing byte-identical output to raw source). This module-index file only links to lectures/exercises; it carries no prompt content of its own for this rule to apply to.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "6",
+      "rule_lead": "Chained-prompt isolation — don't leak downstream pipeline.",
+      "verdict": "N/A",
+      "evidence": "File carries zero fenced prompt blocks and zero `{{prompt:<key>}}` markers (body_view signals.has_prompt_blocks=false, fence_ranges empty, confirmed by `expand-md.js` producing byte-identical output to raw source). This module-index file only links to lectures/exercises; it carries no prompt content of its own for this rule to apply to.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "7",
+      "rule_lead": "No session-resets mid-phase.",
+      "verdict": "N/A",
+      "evidence": "File carries zero fenced prompt blocks and zero `{{prompt:<key>}}` markers (body_view signals.has_prompt_blocks=false, fence_ranges empty, confirmed by `expand-md.js` producing byte-identical output to raw source). This module-index file only links to lectures/exercises; it carries no prompt content of its own for this rule to apply to.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "8",
+      "rule_lead": "Multi-sample methods need structural enforcement.",
+      "verdict": "N/A",
+      "evidence": "File carries zero fenced prompt blocks and zero `{{prompt:<key>}}` markers (body_view signals.has_prompt_blocks=false, fence_ranges empty, confirmed by `expand-md.js` producing byte-identical output to raw source). This module-index file only links to lectures/exercises; it carries no prompt content of its own for this rule to apply to.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "9",
+      "rule_lead": "Markdown shout inside fenced prompts = dead weight in Claude Code.",
+      "verdict": "N/A",
+      "evidence": "File carries zero fenced prompt blocks and zero `{{prompt:<key>}}` markers (body_view signals.has_prompt_blocks=false, fence_ranges empty, confirmed by `expand-md.js` producing byte-identical output to raw source). This module-index file only links to lectures/exercises; it carries no prompt content of its own for this rule to apply to.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "10",
+      "rule_lead": "Runtime-fork prompts: paired divs, shared chip.",
+      "verdict": "N/A",
+      "evidence": "File carries zero fenced prompt blocks and zero `{{prompt:<key>}}` markers (body_view signals.has_prompt_blocks=false, fence_ranges empty, confirmed by `expand-md.js` producing byte-identical output to raw source). This module-index file only links to lectures/exercises; it carries no prompt content of its own for this rule to apply to.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "11",
+      "rule_lead": "Runtime-mechanical scaffolding asymmetry — MORE in less-fluent fork, not less.",
+      "verdict": "N/A",
+      "evidence": "File carries zero fenced prompt blocks and zero `{{prompt:<key>}}` markers (body_view signals.has_prompt_blocks=false, fence_ranges empty, confirmed by `expand-md.js` producing byte-identical output to raw source). This module-index file only links to lectures/exercises; it carries no prompt content of its own for this rule to apply to.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "12",
+      "rule_lead": "Append-vs-integrate — name integration mode on regeneration with new context source.",
+      "verdict": "N/A",
+      "evidence": "File carries zero fenced prompt blocks and zero `{{prompt:<key>}}` markers (body_view signals.has_prompt_blocks=false, fence_ranges empty, confirmed by `expand-md.js` producing byte-identical output to raw source). This module-index file only links to lectures/exercises; it carries no prompt content of its own for this rule to apply to.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "13",
+      "rule_lead": "Citation discipline — extend cite-or-flag scope + quote supporting sentence.",
+      "verdict": "N/A",
+      "evidence": "File carries zero fenced prompt blocks and zero `{{prompt:<key>}}` markers (body_view signals.has_prompt_blocks=false, fence_ranges empty, confirmed by `expand-md.js` producing byte-identical output to raw source). This module-index file only links to lectures/exercises; it carries no prompt content of its own for this rule to apply to.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "14",
+      "rule_lead": "Niceness tax — name the edge or pin the line on regeneration.",
+      "verdict": "N/A",
+      "evidence": "File carries zero fenced prompt blocks and zero `{{prompt:<key>}}` markers (body_view signals.has_prompt_blocks=false, fence_ranges empty, confirmed by `expand-md.js` producing byte-identical output to raw source). This module-index file only links to lectures/exercises; it carries no prompt content of its own for this rule to apply to.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "15",
+      "rule_lead": "Question-dump default — `in turn` too soft; two legal shapes.",
+      "verdict": "N/A",
+      "evidence": "File carries zero fenced prompt blocks and zero `{{prompt:<key>}}` markers (body_view signals.has_prompt_blocks=false, fence_ranges empty, confirmed by `expand-md.js` producing byte-identical output to raw source). This module-index file only links to lectures/exercises; it carries no prompt content of its own for this rule to apply to.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "16",
+      "rule_lead": "Overwrite anxiety — name overwrite default on regeneration.",
+      "verdict": "N/A",
+      "evidence": "File carries zero fenced prompt blocks and zero `{{prompt:<key>}}` markers (body_view signals.has_prompt_blocks=false, fence_ranges empty, confirmed by `expand-md.js` producing byte-identical output to raw source). This module-index file only links to lectures/exercises; it carries no prompt content of its own for this rule to apply to.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "17",
+      "rule_lead": "Preamble before action — design around it.",
+      "verdict": "N/A",
+      "evidence": "File carries zero fenced prompt blocks and zero `{{prompt:<key>}}` markers (body_view signals.has_prompt_blocks=false, fence_ranges empty, confirmed by `expand-md.js` producing byte-identical output to raw source). This module-index file only links to lectures/exercises; it carries no prompt content of its own for this rule to apply to.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "18",
+      "rule_lead": "Self-critique register, not defense, when Claude interrogates own work.",
+      "verdict": "N/A",
+      "evidence": "File carries zero fenced prompt blocks and zero `{{prompt:<key>}}` markers (body_view signals.has_prompt_blocks=false, fence_ranges empty, confirmed by `expand-md.js` producing byte-identical output to raw source). This module-index file only links to lectures/exercises; it carries no prompt content of its own for this rule to apply to.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "19",
+      "rule_lead": "Minimal hand-off + Claude self-augments for send-off prompts.",
+      "verdict": "N/A",
+      "evidence": "File carries zero fenced prompt blocks and zero `{{prompt:<key>}}` markers (body_view signals.has_prompt_blocks=false, fence_ranges empty, confirmed by `expand-md.js` producing byte-identical output to raw source). This module-index file only links to lectures/exercises; it carries no prompt content of its own for this rule to apply to.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "20",
+      "rule_lead": "Grill before save — collaborative quality at artefact assembly.",
+      "verdict": "N/A",
+      "evidence": "File carries zero fenced prompt blocks and zero `{{prompt:<key>}}` markers (body_view signals.has_prompt_blocks=false, fence_ranges empty, confirmed by `expand-md.js` producing byte-identical output to raw source). This module-index file only links to lectures/exercises; it carries no prompt content of its own for this rule to apply to.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "21",
+      "rule_lead": "Tell me what you wrote, not show me what you'll write.",
+      "verdict": "N/A",
+      "evidence": "File carries zero fenced prompt blocks and zero `{{prompt:<key>}}` markers (body_view signals.has_prompt_blocks=false, fence_ranges empty, confirmed by `expand-md.js` producing byte-identical output to raw source). This module-index file only links to lectures/exercises; it carries no prompt content of its own for this rule to apply to.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "22",
+      "rule_lead": "Prompt-body edits require maintainer approval — registry files AND inline blocks.",
+      "verdict": "N/A",
+      "evidence": "File carries zero fenced prompt blocks and zero `{{prompt:<key>}}` markers (body_view signals.has_prompt_blocks=false, fence_ranges empty, confirmed by `expand-md.js` producing byte-identical output to raw source). This module-index file only links to lectures/exercises; it carries no prompt content of its own for this rule to apply to.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "23",
+      "rule_lead": "Artifact destinations are explicit subpaths, never naked filenames (Agents 101-specific).",
+      "verdict": "N/A",
+      "evidence": "File carries zero fenced prompt blocks and zero `{{prompt:<key>}}` markers (body_view signals.has_prompt_blocks=false, fence_ranges empty, confirmed by `expand-md.js` producing byte-identical output to raw source). This module-index file only links to lectures/exercises; it carries no prompt content of its own for this rule to apply to.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "24",
+      "rule_lead": "Don't restate session CWD inside prompt body.",
+      "verdict": "N/A",
+      "evidence": "File carries zero fenced prompt blocks and zero `{{prompt:<key>}}` markers (body_view signals.has_prompt_blocks=false, fence_ranges empty, confirmed by `expand-md.js` producing byte-identical output to raw source). This module-index file only links to lectures/exercises; it carries no prompt content of its own for this rule to apply to.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "25",
+      "rule_lead": "`subagent` allowed in prompt blocks; explain why after prompt.",
+      "verdict": "N/A",
+      "evidence": "File carries zero fenced prompt blocks and zero `{{prompt:<key>}}` markers (body_view signals.has_prompt_blocks=false, fence_ranges empty, confirmed by `expand-md.js` producing byte-identical output to raw source). This module-index file only links to lectures/exercises; it carries no prompt content of its own for this rule to apply to.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "26",
+      "rule_lead": "Maintainer-approval edits — ONE-AT-A-TIME, PRIORITY-ORDERED, FOUR-FIELD cards.",
+      "verdict": "N/A",
+      "evidence": "File carries zero fenced prompt blocks and zero `{{prompt:<key>}}` markers (body_view signals.has_prompt_blocks=false, fence_ranges empty, confirmed by `expand-md.js` producing byte-identical output to raw source). This module-index file only links to lectures/exercises; it carries no prompt content of its own for this rule to apply to.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "27",
+      "rule_lead": "Name consumer at write time — `Save it as <path>` requires downstream reader.",
+      "verdict": "N/A",
+      "evidence": "File carries zero fenced prompt blocks and zero `{{prompt:<key>}}` markers (body_view signals.has_prompt_blocks=false, fence_ranges empty, confirmed by `expand-md.js` producing byte-identical output to raw source). This module-index file only links to lectures/exercises; it carries no prompt content of its own for this rule to apply to.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "28",
+      "rule_lead": "Strong-bold prompt label is exactly `**Prompt**` — custom labels break renderer.",
+      "verdict": "N/A",
+      "evidence": "File carries zero fenced prompt blocks and zero `{{prompt:<key>}}` markers (body_view signals.has_prompt_blocks=false, fence_ranges empty, confirmed by `expand-md.js` producing byte-identical output to raw source). This module-index file only links to lectures/exercises; it carries no prompt content of its own for this rule to apply to.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "29",
+      "rule_lead": "Normal work request before orchestration.",
+      "verdict": "N/A",
+      "evidence": "File carries zero fenced prompt blocks and zero `{{prompt:<key>}}` markers (body_view signals.has_prompt_blocks=false, fence_ranges empty, confirmed by `expand-md.js` producing byte-identical output to raw source). This module-index file only links to lectures/exercises; it carries no prompt content of its own for this rule to apply to.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "30",
+      "rule_lead": "Live-test corrections preserve operator workflow.",
+      "verdict": "N/A",
+      "evidence": "File carries zero fenced prompt blocks and zero `{{prompt:<key>}}` markers (body_view signals.has_prompt_blocks=false, fence_ranges empty, confirmed by `expand-md.js` producing byte-identical output to raw source). This module-index file only links to lectures/exercises; it carries no prompt content of its own for this rule to apply to.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "31",
+      "rule_lead": "Prompts live in registry; module/exercise/lecture files reference by marker.",
+      "verdict": "N/A",
+      "evidence": "File carries zero fenced prompt blocks and zero `{{prompt:<key>}}` markers (body_view signals.has_prompt_blocks=false, fence_ranges empty, confirmed by `expand-md.js` producing byte-identical output to raw source). This module-index file only links to lectures/exercises; it carries no prompt content of its own for this rule to apply to.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "32",
+      "rule_lead": "Module names in prompt prose are fine — they ground the session.",
+      "verdict": "N/A",
+      "evidence": "File carries zero fenced prompt blocks and zero `{{prompt:<key>}}` markers (body_view signals.has_prompt_blocks=false, fence_ranges empty, confirmed by `expand-md.js` producing byte-identical output to raw source). This module-index file only links to lectures/exercises; it carries no prompt content of its own for this rule to apply to.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "33",
+      "rule_lead": "Git-output greps asserting exact-N need multi-result fallback.",
+      "verdict": "N/A",
+      "evidence": "File carries zero fenced prompt blocks and zero `{{prompt:<key>}}` markers (body_view signals.has_prompt_blocks=false, fence_ranges empty, confirmed by `expand-md.js` producing byte-identical output to raw source). This module-index file only links to lectures/exercises; it carries no prompt content of its own for this rule to apply to.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "34",
+      "rule_lead": "Disambiguation, anchors, and decision logic that bind Claude live INSIDE prompt fence.",
+      "verdict": "N/A",
+      "evidence": "File carries zero fenced prompt blocks and zero `{{prompt:<key>}}` markers (body_view signals.has_prompt_blocks=false, fence_ranges empty, confirmed by `expand-md.js` producing byte-identical output to raw source). This module-index file only links to lectures/exercises; it carries no prompt content of its own for this rule to apply to.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "35",
+      "rule_lead": "Repeated Q&A → premature re-edits. Separate iteration from persistence.",
+      "verdict": "N/A",
+      "evidence": "File carries zero fenced prompt blocks and zero `{{prompt:<key>}}` markers (body_view signals.has_prompt_blocks=false, fence_ranges empty, confirmed by `expand-md.js` producing byte-identical output to raw source). This module-index file only links to lectures/exercises; it carries no prompt content of its own for this rule to apply to.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "36",
+      "rule_lead": "Wide prompts split by logical move — paragraph breaks = cheapest scan-affordance.",
+      "verdict": "N/A",
+      "evidence": "File carries zero fenced prompt blocks and zero `{{prompt:<key>}}` markers (body_view signals.has_prompt_blocks=false, fence_ranges empty, confirmed by `expand-md.js` producing byte-identical output to raw source). This module-index file only links to lectures/exercises; it carries no prompt content of its own for this rule to apply to.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "37",
+      "rule_lead": "Orient saved rule by where it FIRES, not surface activity producing it.",
+      "verdict": "N/A",
+      "evidence": "File carries zero fenced prompt blocks and zero `{{prompt:<key>}}` markers (body_view signals.has_prompt_blocks=false, fence_ranges empty, confirmed by `expand-md.js` producing byte-identical output to raw source). This module-index file only links to lectures/exercises; it carries no prompt content of its own for this rule to apply to.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "38",
+      "rule_lead": "Body lead-in mirrors prompt's opening phrasing.",
+      "verdict": "N/A",
+      "evidence": "File carries zero fenced prompt blocks and zero `{{prompt:<key>}}` markers (body_view signals.has_prompt_blocks=false, fence_ranges empty, confirmed by `expand-md.js` producing byte-identical output to raw source). This module-index file only links to lectures/exercises; it carries no prompt content of its own for this rule to apply to.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "39",
+      "rule_lead": "Declare `permission-mode:` when paste requires specific Claude Code mode.",
+      "verdict": "N/A",
+      "evidence": "File carries zero fenced prompt blocks and zero `{{prompt:<key>}}` markers (body_view signals.has_prompt_blocks=false, fence_ranges empty, confirmed by `expand-md.js` producing byte-identical output to raw source). This module-index file only links to lectures/exercises; it carries no prompt content of its own for this rule to apply to.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "40",
+      "rule_lead": "Verify session boundary before deciding prompt's context-carrying.",
+      "verdict": "N/A",
+      "evidence": "File carries zero fenced prompt blocks and zero `{{prompt:<key>}}` markers (body_view signals.has_prompt_blocks=false, fence_ranges empty, confirmed by `expand-md.js` producing byte-identical output to raw source). This module-index file only links to lectures/exercises; it carries no prompt content of its own for this rule to apply to.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "41",
+      "rule_lead": "Artifact-vs-STOP tail ordering — last imperative wins.",
+      "verdict": "N/A",
+      "evidence": "File carries zero fenced prompt blocks and zero `{{prompt:<key>}}` markers (body_view signals.has_prompt_blocks=false, fence_ranges empty, confirmed by `expand-md.js` producing byte-identical output to raw source). This module-index file only links to lectures/exercises; it carries no prompt content of its own for this rule to apply to.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "42",
+      "rule_lead": "Headless-runner discipline — tail every prompt with no-AUQ guard.",
+      "verdict": "N/A",
+      "evidence": "File carries zero fenced prompt blocks and zero `{{prompt:<key>}}` markers (body_view signals.has_prompt_blocks=false, fence_ranges empty, confirmed by `expand-md.js` producing byte-identical output to raw source). This module-index file only links to lectures/exercises; it carries no prompt content of its own for this rule to apply to.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "43",
+      "rule_lead": "Long-running prompts stream progress — never go silent.",
+      "verdict": "N/A",
+      "evidence": "File carries zero fenced prompt blocks and zero `{{prompt:<key>}}` markers (body_view signals.has_prompt_blocks=false, fence_ranges empty, confirmed by `expand-md.js` producing byte-identical output to raw source). This module-index file only links to lectures/exercises; it carries no prompt content of its own for this rule to apply to.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "44",
+      "rule_lead": "A leading-looking line can be a forcing function; prefer the simpler prompt.",
+      "verdict": "N/A",
+      "evidence": "File carries zero fenced prompt blocks and zero `{{prompt:<key>}}` markers (body_view signals.has_prompt_blocks=false, fence_ranges empty, confirmed by `expand-md.js` producing byte-identical output to raw source). This module-index file only links to lectures/exercises; it carries no prompt content of its own for this rule to apply to.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "45",
+      "rule_lead": "Prompt paths match Builder scope.",
+      "verdict": "N/A",
+      "evidence": "File carries zero fenced prompt blocks and zero `{{prompt:<key>}}` markers (body_view signals.has_prompt_blocks=false, fence_ranges empty, confirmed by `expand-md.js` producing byte-identical output to raw source). This module-index file only links to lectures/exercises; it carries no prompt content of its own for this rule to apply to.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "46",
+      "rule_lead": "Output shape — trust Claude's defaults, don't pad.",
+      "verdict": "N/A",
+      "evidence": "File carries zero fenced prompt blocks and zero `{{prompt:<key>}}` markers (body_view signals.has_prompt_blocks=false, fence_ranges empty, confirmed by `expand-md.js` producing byte-identical output to raw source). This module-index file only links to lectures/exercises; it carries no prompt content of its own for this rule to apply to.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "47",
+      "rule_lead": "\"Add X and regenerate\" is a trap.",
+      "verdict": "N/A",
+      "evidence": "File carries zero fenced prompt blocks and zero `{{prompt:<key>}}` markers (body_view signals.has_prompt_blocks=false, fence_ranges empty, confirmed by `expand-md.js` producing byte-identical output to raw source). This module-index file only links to lectures/exercises; it carries no prompt content of its own for this rule to apply to.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "48",
+      "rule_lead": "Vary closings deliberately.",
+      "verdict": "N/A",
+      "evidence": "File carries zero fenced prompt blocks and zero `{{prompt:<key>}}` markers (body_view signals.has_prompt_blocks=false, fence_ranges empty, confirmed by `expand-md.js` producing byte-identical output to raw source). This module-index file only links to lectures/exercises; it carries no prompt content of its own for this rule to apply to.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
       "compendium": "judges/technical.md",
       "rule_index": null,
       "judge_owned": true,
       "rule_lead": "URL liveness — sample 3–5 external URLs.",
       "verdict": "PASS",
-      "evidence": "Sampled 5/5 distinct external citation URLs via `curl -s -o /dev/null -w '%{http_code}' -A 'Mozilla/5.0' -L <url>`: every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it → 200; lucumr.pocoo.org/2026/1/14/minijinja-go-port/ → 200; getpushtoprod.substack.com/p/how-the-creator-of-claude-code-actually → 200; ideas.fin.ai/p/2x-nine-months-later → 200; every.to/source-code/compound-engineering-the-definitive-guide → 200. 5/5 sampled alive.",
+      "evidence": "Sampled 5/5 distinct external citation URLs via `curl -s -o /dev/null -w '%{http_code}' -A 'Mozilla/5.0' -L --max-time 15 <url>` this session: every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it → 200; lucumr.pocoo.org/2026/1/14/minijinja-go-port/ → 200; getpushtoprod.substack.com/p/how-the-creator-of-claude-code-actually → 200; ideas.fin.ai/p/2x-nine-months-later → 200; every.to/source-code/compound-engineering-the-definitive-guide → 200. 5/5 sampled alive.",
       "fix_hint": null,
       "blocking": false
     },
@@ -804,7 +1264,7 @@
       "judge_owned": true,
       "rule_lead": "Skill availability — every `[Skill: <name>]` reference must point to a real installed skill.",
       "verdict": "PASS",
-      "evidence": "`grep -n '\\[Skill:' <file>` → 0 matches. No skill-invocation-by-name reference in this file to check.",
+      "evidence": "`grep -n '\\[Skill:' <file>` → 0 matches (re-run this session). No skill-invocation-by-name reference in this file to check.",
       "fix_hint": null,
       "blocking": false
     },
@@ -814,33 +1274,33 @@
       "judge_owned": true,
       "rule_lead": "Internal cross-doc link + anchor validity.",
       "verdict": "PASS",
-      "evidence": "Ran `node scripts/check-cross-doc-anchors.js` (repo-wide, includes this file) — real output: “OK: all cross-doc .md#anchor links resolve (144 files scanned).” This covers the two changed reference-doc anchors (`#25-session-transcripts-default-location`, `#17-long-running-shapes-loop`), both confirmed present as `## 25.`/`## 17.` headings in `reference/claude-code-for-engineers.md`. Manually confirmed (file existence, `test -e`) all 8 bare lecture/exercise links in `## Start here` and `## Human close` resolve under `curriculum/lectures/` and `curriculum/exercises/` (shared-library path, per module composability convention) — all 8 present.",
+      "evidence": "Ran `node scripts/check-cross-doc-anchors.js` (repo-wide, includes this file) this session — real output: “OK: all cross-doc .md#anchor links resolve (145 of 145 files scanned).” This covers the two reference-doc anchors used at L10 (`#25-session-transcripts-default-location`, `#17-long-running-shapes-loop`), both confirmed present as headings in `reference/claude-code-for-engineers.md`. Separately manually verified (`test -e` + H1 match) all 8 bare lecture/exercise links in `## Start here` (L31,33,35,37) and `## Human close` (L47,49,51,53) resolve under `curriculum/lectures/` / `curriculum/exercises/`, and — new this pass, since three link TEXTS changed in the diff since b55cd28b — that each changed link text now matches the target file's real H1 exactly: `[The 2 frontiers of learning]` → `# The 2 frontiers of learning`; `[Map the gaps, read your stack]` → `# Map the gaps, read your stack`; `[The check you built is an eval]` → `# The check you built is an eval`. All 8/8 links resolve and all 3 changed texts are exact H1 matches.",
       "fix_hint": null,
       "blocking": false
     }
   ],
   "platform_claims_checked": [
     {
-      "claim": "Open a fresh session in the Module 5 worktree, `../<repo>-m5`. Both sessions are readable: the branches share `.git`, and each run recorded its transcript path.",
+      "claim": "Open a fresh session in the Module 5 worktree, `../<repo>-m5`. Both sessions are readable: the branches share `.git`, and each session recorded its transcript path.",
       "line": 23,
       "verdict": "PASS",
       "source": "compendium"
     },
     {
       "claim": "M6 opens a fresh session in the M5 worktree at `../<repo>-m5` where both runs already live",
-      "line": 132,
+      "line": 134,
       "verdict": "PASS",
       "source": "compendium"
     },
     {
       "claim": "scrollback at `~/.claude/projects/<project>/` if the sessions closed — if M4 and M5 share a cwd, recency alone can grab the wrong attempt; filter by a phrase unique to that send-off's opening prompt instead",
-      "line": 136,
+      "line": 138,
       "verdict": "PASS",
       "source": "compendium"
     },
     {
       "claim": "Runtime is computed — `node scripts/calculate-time.js spot-gaps-build-the-loop`",
-      "line": 128,
+      "line": 130,
       "verdict": "PASS",
       "source": "inferred"
     },
@@ -853,7 +1313,7 @@
   ],
   "citations_checked": [
     {
-      "line": 167,
+      "line": 169,
       "claim": "Klaassen, My AI Had Already Fixed the Code Before I Saw It — prework pre-read",
       "label_present": true,
       "url_present": true,
@@ -861,7 +1321,7 @@
       "evidence_level_honest": true
     },
     {
-      "line": 168,
+      "line": 170,
       "claim": "Ronacher MiniJinja port, 10h/2.2M tokens (durable account)",
       "label_present": true,
       "url_present": true,
@@ -869,7 +1329,7 @@
       "evidence_level_honest": true
     },
     {
-      "line": 169,
+      "line": 171,
       "claim": "Kim on Cherny — three verifier shapes (digest, not Cherny's own taxonomy)",
       "label_present": true,
       "url_present": true,
@@ -877,7 +1337,7 @@
       "evidence_level_honest": true
     },
     {
-      "line": 170,
+      "line": 172,
       "claim": "Ramp Dojo — 350+ skills, 99.5% AI-active, 84% weekly",
       "label_present": true,
       "url_present": true,
@@ -885,7 +1345,7 @@
       "evidence_level_honest": true
     },
     {
-      "line": 171,
+      "line": 173,
       "claim": "Intercom Curran — 19.2%/14.6min/86%/~473-of-1305 (vendor-self-reported, flagged)",
       "label_present": true,
       "url_present": true,
@@ -893,7 +1353,7 @@
       "evidence_level_honest": true
     },
     {
-      "line": 172,
+      "line": 174,
       "claim": "Klaassen Definitive Guide — four-step compound loop",
       "label_present": true,
       "url_present": true,
@@ -901,7 +1361,7 @@
       "evidence_level_honest": true
     },
     {
-      "line": 173,
+      "line": 175,
       "claim": "Shipper & Klaassen — 80/20 ratio, historical-anchor framing",
       "label_present": true,
       "url_present": true,

@@ -137,8 +137,8 @@ Ask Claude whether it met any of these.
 
 **Prompt register — `push-back-on-the-plan-4` deliberately short.** The closing question (`are these rules auto-loaded to each session context?`) is intentionally end-of-session-tired-engineer register: lowercase, no end punctuation, single short question. It models the casual ask a real engineer types after a long session, contrasting with the longer earlier prompts. **The question is also deliberately answerable — a small introspection beat plus mild repetition (Antti 2026-08-13).** The load map on this file's *Where rules can live* slide states the answer; the value here is the agent introspecting its own loading, and the repeat is the retention dose (`check_pedagogy.md` §9b). Do not flag the table, or any earlier auto-load statement, as spoiling this question — the table states what loads, the prompt makes the agent report what it actually loaded, and hearing the same fact twice from two sources a few screens apart is the dose working (Antti 2026-08-14: "repetition is fine"). Do not re-raise this at any distance; audit-class judges flagging it as a stylistic outlier should treat as accepted-by-design. The note belongs to whichever file fences the prompt — since 2026-08-25 that is this file's Phase 4.
 
-**Quality:** compendium-audited 2026-08-26 (writing@d065f8bc story@d065f8bc technical@d065f8bc behavior@d065f8bc pedagogy@31b62371 strategy@1c765f2 slides@d065f8bc)
-- judges @31b62371: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-28 (writing@d065f8bc story@d065f8bc technical@8cc00874 behavior@d065f8bc pedagogy@31b62371 strategy@1c765f2 slides@d065f8bc)
+- judges @8cc00874: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - cohorts: none yet
 
 **Meta (trainer):**

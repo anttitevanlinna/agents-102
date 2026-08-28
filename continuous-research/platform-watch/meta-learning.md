@@ -65,11 +65,11 @@ Proven patterns for how to research effectively. Promoted from observations when
 
 Each entry: cycle number, date, what the researcher learned about researching.
 
-### Cycle 197 — 2026-08-27
+### Cycle 198 — 2026-08-28
 
-The Day 33 Opus 5 M365 review gap, previously attributed to admin-activation latency and practitioner non-publishing patterns, has a more specific structural explanation: Office Watch confirmed Opus 5 is not yet available in Word 365 or PowerPoint 365 — only in Excel. Practitioners defaulting to the most common M365 apps literally cannot encounter the model to review it. Learning: when a "practitioners aren't reviewing X" absence finding persists past Day 21, the next search should target per-app availability documentation rather than rechecking practitioner blog feeds.
+When a pricing conflict is logged between trade publications, the primary vendor documentation page is the fastest resolution — not waiting for the deadline. Cycle 197 noted "the deadline is 4 days away, let the outcome speak"; Cycle 198 fetched the page directly and found the conflict resolved in one call, with 3 days to spare. The earlier "wait for the deadline" framing was overcautious: primary vendor docs are authoritative before the deadline and should be the first query on any pricing conflict, not the fallback. For future pricing conflicts: fetch official pricing page first, secondary press second, deadline as final confirmation.
 
-A conflict between multiple trade publications on a time-sensitive pricing claim (Sonnet 5 freeze vs. increase) is best resolved by letting the deadline speak — if the price doesn't change on August 31, the outcome is self-verifying. Fetching the primary vendor pricing page directly is the right next step, but when a hard deadline is 4 days away, the outcome itself is more reliable than any pre-deadline secondary source. Log the conflict explicitly so the next cycle resolves it by observation, not inference.
+The official pricing page fetch — done primarily to resolve a conflict — surfaced three additional product signals (Managed Agents runtime pricing, Fast mode pricing, browser/computer use toolset GA inferred from pricing table presence) that zero topic searches had found in prior cycles. Learning: direct pricing page fetches have disproportionate information density because they contain all current product tiers simultaneously. When a pricing page fetch is warranted for any reason, scan the full table for new rows before narrowing to the target query.
 
 ### Cycle 196 — 2026-08-26
 

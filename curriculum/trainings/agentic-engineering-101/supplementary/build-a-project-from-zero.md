@@ -16,7 +16,7 @@ You'll build a small Lemmings game in the browser (the 1991 classic: little crea
 
 - Ask Claude to add a small test suite so the game has real tests to break and guard.
 - Ask Claude to commit at each working step, so the repo grows real history instead of one big drop.
-- Before you close the session, ask Claude to add one feature that touches data or other players: a shareable level via a URL, a score you submit, or saved progress. <!--flag:module:earn-the-trust-->A toy game with no data has nothing to threat-model.<!--/flag:module:earn-the-trust--><!--flag:no-module:earn-the-trust-->A game that only draws to a canvas has one kind of surface; one that stores or shares something has several, and the later task sizes want somewhere real to land.<!--/flag:no-module:earn-the-trust-->
+- Before you close the session, ask Claude to add one feature that touches data or other players: a shareable level via a URL, a score you submit, or saved progress. <!--flag:module:earn-the-trust-->A toy game with no data has nothing to threat-model.<!--/flag:module:earn-the-trust--><!--flag:no-module:earn-the-trust-->A game that only draws to a canvas has one kind of surface; one that stores or shares something has several, and that is material you'll want when the later tasks need it.<!--/flag:no-module:earn-the-trust-->
 
 ## Where the four task sizes come from
 
@@ -25,7 +25,7 @@ Same sizes as the [prework](../prework.md), now sourced from the game's own back
 - **Trivial bug:** a rendering glitch, a lemming clipping through a wall, an off-by-one in the survivor count.
 - **Small multi-file task:** a new ability like a digger or a blocker that touches input, the game loop, and rendering.
 - **Small feature:** a user-facing surface like a level-select screen or a win/lose panel, or harden the data feature you seeded at the end of the first session.
-- **A real send-off:** multiple levels, a level editor, or a physics refactor you'd rather hand off than nudge bit by bit.
+- **A bigger piece:** multiple levels, a level editor, or a physics refactor you'd rather hand off than steer one small step at a time.
 
 ## Bring to Module 1
 

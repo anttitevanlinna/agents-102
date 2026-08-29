@@ -1,10 +1,10 @@
 {
   "class": "writing",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/supplementary/workflow-composition-lineages.md",
-  "body_sha": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
+  "body_sha": "b7fa214ad6deb11f06e3b894f545474ee37bdc1ed96e349bb0f3c61cb455159f",
   "verdict": "PASS",
   "training": "ae101",
-  "scope_note": "MAINTAINER_CUT = line 147 (<!-- maintainer -->). FENCE_RANGES = none (0 ``` fences, confirmed by view.json fence_ranges: []). Body region = lines 1-146. Dispatched pin e11bbeb4, staleness reason diff-region. `git diff e11bbeb4..HEAD -- <file>` shows exactly two hunks: (1) body edit line 137 'Three filters that work better than ranking:' -> 'Filters that work better than ranking:' (a Wave-5 fix, commit 038fffa4 'counts cite shape not number', which resolves the primary check_writing.md #20 instance the prior writing instance had flagged); (2) the maintainer Quality-line stamp itself. e11bbeb4 is a compendium-pins.json repin commit that does not touch this file directly; the body edit landed in a later Wave-5 commit between e11bbeb4 and HEAD. Full normal read performed, not diff-scoped: re-read entire body plus maintainer/backing blocks. Mechanical greps re-verified directly against curriculum/evals/body-views/ae101--supplementary--workflow-composition-lineages.body.txt this session (agent-count 34, Claude-count 16, vendor-in-body 0 hits, 'Three diagrams' still present at line 133, 'Filters that work' confirmed fixed at line 137) rather than trusted from the prior instance. One correction against the prior instance's rule-6 evidence: it cited 'the label is the curriculum's, not Pocock's' as body prose at line 34 — that exact phrase is actually in the <!-- backing --> Frameworks block (line 200), not body; re-grounded rule 6 on the actually-in-body Pocock/Cognition disclaimers instead (lines 34 and 48) so no finding traces to a quote the body doesn't contain.",
+  "scope_note": "MAINTAINER_CUT = line 147 (<!-- maintainer -->). FENCE_RANGES = none (0 ``` fences, confirmed by view.json fence_ranges: []). Body region = lines 1-146. Dispatched pin 0cea7581, staleness reason diff-region. `git diff 0cea7581..HEAD -- <file>` shows exactly two hunks, both single-line-for-single-line so total line count is unchanged (146 body lines both before and after): (1) body edit at line 13, the check_student_facing.md #26 NVA sentence flagged by the prior writing instance ('The cost: less aphoristic body prose. The benefit: a student or trainer who looks up a quote will actually find it where the supplementary says it lives.') is CUT, replaced by 'A student or trainer who looks up a quote will find it where the supplementary says it lives.' — exactly the prior instance's own fix_hint, landed; (2) the maintainer Quality-line stamp (writing/story/slides pins e11bbeb4 -> 0cea7581). Full normal read performed, not diff-scoped: re-read the entire raw file (body + maintainer + backing blocks) this session via the Read tool, independent of any cached trace. Mechanical greps re-verified directly against the current view.json (source_sha matches this file's body_sha): banned_words body_hits 1 (the Ronacher 'crucially' quote, line 95), ritual_ceremony 0, em_dash 0, the_student 0, author_we 0, session_biography 0, dated_line 5, url 13 — all match the prior instance's counts, confirming nothing shifted outside the two hunks named above. check_writing.md rule 27 ('Say it once, at its most concrete...') is new to the compendium since the prior instance was written (dated 2026-08-29 in its own compounded pointer) and has no prior row; judged fresh below. Line 133's 'Three diagrams ship alongside the doc...: phase swimlane, /ship anatomy, workflow archetypes' (check_writing.md #20) remains unfixed — outside both hunks, carried forward as REVISE/non-blocking.",
   "rules_evaluated": [
     {
       "compendium": "check_writing.md",
@@ -137,7 +137,7 @@
       "rule_index": 20,
       "rule_lead": "Don't state a count the adjacent list already holds.",
       "verdict": "REVISE",
-      "evidence": "Primary instance from the prior audit is FIXED: line 137 now reads 'Filters that work better than ranking:' (confirmed directly against the current body; the leading 'Three ' has been removed, landed in a Wave-5 commit between the e11bbeb4 pin and HEAD). One instance remains, unchanged since the prior audit and not touched by the diff: line 133, 'Three diagrams ship alongside the doc in `supplementary/skill-stacking/`: phase swimlane, `/ship` anatomy, workflow archetypes.' — the identical banned shape (a numeral immediately followed by its own enumerated list of exactly that many items). Not the memory-handle carve-out: 'three diagrams' is never reused away from this list anywhere else in the file. Harm: the count goes stale the moment the diagram list changes (add/cut/reorder a diagram) without a matching edit to this numeral, invisible to an author editing the list because the numeral sits one clause before it, out of the edit's field of view — same harm just resolved for the sibling instance at line 137.",
+      "evidence": "Line 137 stays fixed ('Filters that work better than ranking:', no leading numeral — landed before the 0cea7581 pin, confirmed unchanged by this session's diff). One instance remains, outside both hunks of the 0cea7581..HEAD diff and confirmed present at the current body_sha: line 133, 'Three diagrams ship alongside the doc in `supplementary/skill-stacking/`: phase swimlane, `/ship` anatomy, workflow archetypes.' — the identical banned shape (a numeral immediately followed by its own enumerated list of exactly that many items). Not the memory-handle carve-out: 'three diagrams' is never reused away from this list anywhere else in the file. Harm: the count goes stale the moment the diagram list changes (add/cut/reorder a diagram) without a matching edit to this numeral, invisible to an author editing the list because the numeral sits one clause before it, out of the edit's field of view — same harm already resolved for the sibling instance at line 137.",
       "fix_hint": "Cut 'Three' from line 133 ('Diagrams ship alongside the doc in `supplementary/skill-stacking/`: phase swimlane, `/ship` anatomy, workflow archetypes.').",
       "blocking": false
     },
@@ -147,6 +147,15 @@
       "rule_lead": "A slogan that is false as stated is not punchy framing — run the truth test before reaching for §12.",
       "verdict": "PASS",
       "evidence": "All only/never/always instances in body checked (lines 9, 17, 117, 119): each is scoped to a specific artifact the walk documents (Klaassen's plugin: 'the one named, published framework in this set'; Dino's own system: '/ship is the only skill that composes others' — this second example is the rule's own verbatim worked example of a legitimate scoped claim). No unbounded claim about how the world works found.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 27,
+      "rule_lead": "Say it once, at its most concrete, then at most one sentence that generalises it. Style, not a gate.",
+      "verdict": "PASS",
+      "evidence": "Closest call, line 128: 'Same routing primitive, two scales: predicate -> handler within a repo, predicate -> repo across repos.' immediately followed by 'The within-repo dispatcher organises one kit; the cross-repo dispatcher organises a company's repos.' Read cold this reads like class (a), the abstract twin, restating the same 'two scales' claim a second time. It stays PASS on inspection: the first sentence names the MECHANISM (predicate-driven dispatch, two structural roles: handler, repo); the second names the OBJECT each scale actually organises (one kit vs. a company's repos), which the first sentence never states. Neither sentence is the abstract version of the other, so there is no concrete/abstract pair to collapse to one. Checked the other candidate site, the opening/closing bookend on 'the walk is partial' (line 3, then elaborated as reading-rule #2 at line 11, then closed at line 145): this is the intro-thesis / reading-rule / closer structure the file's own three-point 'What this walk covers' section is built to be, not two adjacent sentences restating one idea at different altitudes (class a) or the same claim announced twice across files (class d, whose worked example is two DIFFERENT files) — no adjacent-sentence or cross-file duplication found. Widening-qualifier (class c) grep ('or rule', 'or context-dependent', 'where the LLM weighs it') and adjacent-artifact-restatement (class b, no prompts/figures in this file to restate) both return no hits.",
       "fix_hint": null,
       "blocking": false
     },
@@ -253,9 +262,9 @@
       "compendium": "check_student_facing.md",
       "rule_index": 26,
       "rule_lead": "Cut NVA: true but not moving student forward.",
-      "verdict": "REVISE",
-      "evidence": "Unchanged since the prior audit (diff since pin did not touch this line). Line 13 (intro, point 3, 'Quote with care'): after the operationally useful sentence ('Synthetic framings... have been removed where the original practitioner did not publish them'), the passage adds 'The cost: less aphoristic body prose. The benefit: a student or trainer who looks up a quote will actually find it where the supplementary says it lives.' This cost/benefit framing is editorial tradeoff-justification, the shape the rule names verbatim as common NVA ('maintainer reasoning leaking into body'). Low-confidence call: the sentence does carry some genuine reader value (sets a verification expectation, on-theme for a citation-heavy training), so a maintainer may reasonably keep it. Deletion test: removing just the cost/benefit sentence leaves the operational fact intact and reads cleanly.",
-      "fix_hint": "Cut 'The cost: less aphoristic body prose. The benefit: a student or trainer who looks up a quote will actually find it where the supplementary says it lives.' Keep the preceding operational sentence about removed synthetic framings.",
+      "verdict": "PASS",
+      "evidence": "Fixed since the prior audit: this is the one body hunk in the 0cea7581..HEAD diff. Line 13 (intro, point 3, 'Quote with care') previously read '...have been removed where the original practitioner did not publish them. The cost: less aphoristic body prose. The benefit: a student or trainer who looks up a quote will actually find it where the supplementary says it lives.' — the cost/benefit editorial-tradeoff sentence the prior instance flagged as maintainer-reasoning-shaped NVA. Current body line 13 (confirmed by direct Read this session): '...have been removed where the original practitioner did not publish them. A student or trainer who looks up a quote will find it where the supplementary says it lives.' The cost/benefit clause is gone; what remains is the single operational fact plus its direct reader consequence, exactly the prior instance's own fix_hint landed verbatim.",
+      "fix_hint": null,
       "blocking": false
     },
     {
@@ -302,7 +311,7 @@
       "evidence": "No fenced prompt blocks in this file — signals.has_prompt_blocks: false, signals.has_code_fences: false, fence_ranges: [] (0 ``` markers, confirmed by direct grep). check_prompts.md's entire firing surface (student-copied fenced prompt content) is absent from this supplementary reading walk.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -313,7 +322,7 @@
       "evidence": "No fenced prompt blocks in this file — signals.has_prompt_blocks: false, signals.has_code_fences: false, fence_ranges: [] (0 ``` markers, confirmed by direct grep). check_prompts.md's entire firing surface (student-copied fenced prompt content) is absent from this supplementary reading walk.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -324,7 +333,7 @@
       "evidence": "No fenced prompt blocks in this file — signals.has_prompt_blocks: false, signals.has_code_fences: false, fence_ranges: [] (0 ``` markers, confirmed by direct grep). check_prompts.md's entire firing surface (student-copied fenced prompt content) is absent from this supplementary reading walk.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -335,7 +344,7 @@
       "evidence": "No fenced prompt blocks in this file — signals.has_prompt_blocks: false, signals.has_code_fences: false, fence_ranges: [] (0 ``` markers, confirmed by direct grep). check_prompts.md's entire firing surface (student-copied fenced prompt content) is absent from this supplementary reading walk.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -346,7 +355,7 @@
       "evidence": "No fenced prompt blocks in this file — signals.has_prompt_blocks: false, signals.has_code_fences: false, fence_ranges: [] (0 ``` markers, confirmed by direct grep). check_prompts.md's entire firing surface (student-copied fenced prompt content) is absent from this supplementary reading walk.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -357,7 +366,7 @@
       "evidence": "No fenced prompt blocks in this file — signals.has_prompt_blocks: false, signals.has_code_fences: false, fence_ranges: [] (0 ``` markers, confirmed by direct grep). check_prompts.md's entire firing surface (student-copied fenced prompt content) is absent from this supplementary reading walk.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -368,7 +377,7 @@
       "evidence": "No fenced prompt blocks in this file — signals.has_prompt_blocks: false, signals.has_code_fences: false, fence_ranges: [] (0 ``` markers, confirmed by direct grep). check_prompts.md's entire firing surface (student-copied fenced prompt content) is absent from this supplementary reading walk.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -379,7 +388,7 @@
       "evidence": "No fenced prompt blocks in this file — signals.has_prompt_blocks: false, signals.has_code_fences: false, fence_ranges: [] (0 ``` markers, confirmed by direct grep). check_prompts.md's entire firing surface (student-copied fenced prompt content) is absent from this supplementary reading walk.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -390,7 +399,7 @@
       "evidence": "No fenced prompt blocks in this file — signals.has_prompt_blocks: false, signals.has_code_fences: false, fence_ranges: [] (0 ``` markers, confirmed by direct grep). check_prompts.md's entire firing surface (student-copied fenced prompt content) is absent from this supplementary reading walk.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -401,7 +410,7 @@
       "evidence": "No fenced prompt blocks in this file — signals.has_prompt_blocks: false, signals.has_code_fences: false, fence_ranges: [] (0 ``` markers, confirmed by direct grep). check_prompts.md's entire firing surface (student-copied fenced prompt content) is absent from this supplementary reading walk.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -412,7 +421,7 @@
       "evidence": "No fenced prompt blocks in this file — signals.has_prompt_blocks: false, signals.has_code_fences: false, fence_ranges: [] (0 ``` markers, confirmed by direct grep). check_prompts.md's entire firing surface (student-copied fenced prompt content) is absent from this supplementary reading walk.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -423,7 +432,7 @@
       "evidence": "No fenced prompt blocks in this file — signals.has_prompt_blocks: false, signals.has_code_fences: false, fence_ranges: [] (0 ``` markers, confirmed by direct grep). check_prompts.md's entire firing surface (student-copied fenced prompt content) is absent from this supplementary reading walk.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -434,7 +443,7 @@
       "evidence": "No fenced prompt blocks in this file — signals.has_prompt_blocks: false, signals.has_code_fences: false, fence_ranges: [] (0 ``` markers, confirmed by direct grep). check_prompts.md's entire firing surface (student-copied fenced prompt content) is absent from this supplementary reading walk.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -445,7 +454,7 @@
       "evidence": "No fenced prompt blocks in this file — signals.has_prompt_blocks: false, signals.has_code_fences: false, fence_ranges: [] (0 ``` markers, confirmed by direct grep). check_prompts.md's entire firing surface (student-copied fenced prompt content) is absent from this supplementary reading walk.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -456,7 +465,7 @@
       "evidence": "No fenced prompt blocks in this file — signals.has_prompt_blocks: false, signals.has_code_fences: false, fence_ranges: [] (0 ``` markers, confirmed by direct grep). check_prompts.md's entire firing surface (student-copied fenced prompt content) is absent from this supplementary reading walk.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -467,7 +476,7 @@
       "evidence": "No fenced prompt blocks in this file — signals.has_prompt_blocks: false, signals.has_code_fences: false, fence_ranges: [] (0 ``` markers, confirmed by direct grep). check_prompts.md's entire firing surface (student-copied fenced prompt content) is absent from this supplementary reading walk.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -478,7 +487,7 @@
       "evidence": "No fenced prompt blocks in this file — signals.has_prompt_blocks: false, signals.has_code_fences: false, fence_ranges: [] (0 ``` markers, confirmed by direct grep). check_prompts.md's entire firing surface (student-copied fenced prompt content) is absent from this supplementary reading walk.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -489,7 +498,7 @@
       "evidence": "No fenced prompt blocks in this file — signals.has_prompt_blocks: false, signals.has_code_fences: false, fence_ranges: [] (0 ``` markers, confirmed by direct grep). check_prompts.md's entire firing surface (student-copied fenced prompt content) is absent from this supplementary reading walk.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -500,7 +509,7 @@
       "evidence": "No fenced prompt blocks in this file — signals.has_prompt_blocks: false, signals.has_code_fences: false, fence_ranges: [] (0 ``` markers, confirmed by direct grep). check_prompts.md's entire firing surface (student-copied fenced prompt content) is absent from this supplementary reading walk.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -511,7 +520,7 @@
       "evidence": "No fenced prompt blocks in this file — signals.has_prompt_blocks: false, signals.has_code_fences: false, fence_ranges: [] (0 ``` markers, confirmed by direct grep). check_prompts.md's entire firing surface (student-copied fenced prompt content) is absent from this supplementary reading walk.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -522,7 +531,7 @@
       "evidence": "No fenced prompt blocks in this file — signals.has_prompt_blocks: false, signals.has_code_fences: false, fence_ranges: [] (0 ``` markers, confirmed by direct grep). check_prompts.md's entire firing surface (student-copied fenced prompt content) is absent from this supplementary reading walk.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -533,7 +542,7 @@
       "evidence": "No fenced prompt blocks in this file — signals.has_prompt_blocks: false, signals.has_code_fences: false, fence_ranges: [] (0 ``` markers, confirmed by direct grep). check_prompts.md's entire firing surface (student-copied fenced prompt content) is absent from this supplementary reading walk.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -544,7 +553,7 @@
       "evidence": "No fenced prompt blocks in this file — signals.has_prompt_blocks: false, signals.has_code_fences: false, fence_ranges: [] (0 ``` markers, confirmed by direct grep). check_prompts.md's entire firing surface (student-copied fenced prompt content) is absent from this supplementary reading walk.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -555,7 +564,7 @@
       "evidence": "No fenced prompt blocks in this file — signals.has_prompt_blocks: false, signals.has_code_fences: false, fence_ranges: [] (0 ``` markers, confirmed by direct grep). check_prompts.md's entire firing surface (student-copied fenced prompt content) is absent from this supplementary reading walk.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -566,7 +575,7 @@
       "evidence": "No fenced prompt blocks in this file — signals.has_prompt_blocks: false, signals.has_code_fences: false, fence_ranges: [] (0 ``` markers, confirmed by direct grep). check_prompts.md's entire firing surface (student-copied fenced prompt content) is absent from this supplementary reading walk.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -577,7 +586,7 @@
       "evidence": "No fenced prompt blocks in this file — signals.has_prompt_blocks: false, signals.has_code_fences: false, fence_ranges: [] (0 ``` markers, confirmed by direct grep). check_prompts.md's entire firing surface (student-copied fenced prompt content) is absent from this supplementary reading walk.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -588,7 +597,7 @@
       "evidence": "No fenced prompt blocks in this file — signals.has_prompt_blocks: false, signals.has_code_fences: false, fence_ranges: [] (0 ``` markers, confirmed by direct grep). check_prompts.md's entire firing surface (student-copied fenced prompt content) is absent from this supplementary reading walk.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -599,7 +608,7 @@
       "evidence": "No fenced prompt blocks in this file — signals.has_prompt_blocks: false, signals.has_code_fences: false, fence_ranges: [] (0 ``` markers, confirmed by direct grep). check_prompts.md's entire firing surface (student-copied fenced prompt content) is absent from this supplementary reading walk.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -610,7 +619,7 @@
       "evidence": "No fenced prompt blocks in this file — signals.has_prompt_blocks: false, signals.has_code_fences: false, fence_ranges: [] (0 ``` markers, confirmed by direct grep). check_prompts.md's entire firing surface (student-copied fenced prompt content) is absent from this supplementary reading walk.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -621,7 +630,7 @@
       "evidence": "No fenced prompt blocks in this file — signals.has_prompt_blocks: false, signals.has_code_fences: false, fence_ranges: [] (0 ``` markers, confirmed by direct grep). check_prompts.md's entire firing surface (student-copied fenced prompt content) is absent from this supplementary reading walk.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -632,7 +641,7 @@
       "evidence": "No fenced prompt blocks in this file — signals.has_prompt_blocks: false, signals.has_code_fences: false, fence_ranges: [] (0 ``` markers, confirmed by direct grep). check_prompts.md's entire firing surface (student-copied fenced prompt content) is absent from this supplementary reading walk.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -643,7 +652,7 @@
       "evidence": "No fenced prompt blocks in this file — signals.has_prompt_blocks: false, signals.has_code_fences: false, fence_ranges: [] (0 ``` markers, confirmed by direct grep). check_prompts.md's entire firing surface (student-copied fenced prompt content) is absent from this supplementary reading walk.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -654,7 +663,7 @@
       "evidence": "No fenced prompt blocks in this file — signals.has_prompt_blocks: false, signals.has_code_fences: false, fence_ranges: [] (0 ``` markers, confirmed by direct grep). check_prompts.md's entire firing surface (student-copied fenced prompt content) is absent from this supplementary reading walk.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -665,7 +674,7 @@
       "evidence": "No fenced prompt blocks in this file — signals.has_prompt_blocks: false, signals.has_code_fences: false, fence_ranges: [] (0 ``` markers, confirmed by direct grep). check_prompts.md's entire firing surface (student-copied fenced prompt content) is absent from this supplementary reading walk.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -676,7 +685,7 @@
       "evidence": "No fenced prompt blocks in this file — signals.has_prompt_blocks: false, signals.has_code_fences: false, fence_ranges: [] (0 ``` markers, confirmed by direct grep). check_prompts.md's entire firing surface (student-copied fenced prompt content) is absent from this supplementary reading walk.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -687,7 +696,7 @@
       "evidence": "No fenced prompt blocks in this file — signals.has_prompt_blocks: false, signals.has_code_fences: false, fence_ranges: [] (0 ``` markers, confirmed by direct grep). check_prompts.md's entire firing surface (student-copied fenced prompt content) is absent from this supplementary reading walk.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -698,7 +707,7 @@
       "evidence": "No fenced prompt blocks in this file — signals.has_prompt_blocks: false, signals.has_code_fences: false, fence_ranges: [] (0 ``` markers, confirmed by direct grep). check_prompts.md's entire firing surface (student-copied fenced prompt content) is absent from this supplementary reading walk.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -709,7 +718,7 @@
       "evidence": "No fenced prompt blocks in this file — signals.has_prompt_blocks: false, signals.has_code_fences: false, fence_ranges: [] (0 ``` markers, confirmed by direct grep). check_prompts.md's entire firing surface (student-copied fenced prompt content) is absent from this supplementary reading walk.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -720,7 +729,7 @@
       "evidence": "No fenced prompt blocks in this file — signals.has_prompt_blocks: false, signals.has_code_fences: false, fence_ranges: [] (0 ``` markers, confirmed by direct grep). check_prompts.md's entire firing surface (student-copied fenced prompt content) is absent from this supplementary reading walk.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -731,7 +740,7 @@
       "evidence": "No fenced prompt blocks in this file — signals.has_prompt_blocks: false, signals.has_code_fences: false, fence_ranges: [] (0 ``` markers, confirmed by direct grep). check_prompts.md's entire firing surface (student-copied fenced prompt content) is absent from this supplementary reading walk.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -742,7 +751,7 @@
       "evidence": "No fenced prompt blocks in this file — signals.has_prompt_blocks: false, signals.has_code_fences: false, fence_ranges: [] (0 ``` markers, confirmed by direct grep). check_prompts.md's entire firing surface (student-copied fenced prompt content) is absent from this supplementary reading walk.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -753,7 +762,7 @@
       "evidence": "No fenced prompt blocks in this file — signals.has_prompt_blocks: false, signals.has_code_fences: false, fence_ranges: [] (0 ``` markers, confirmed by direct grep). check_prompts.md's entire firing surface (student-copied fenced prompt content) is absent from this supplementary reading walk.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -764,7 +773,7 @@
       "evidence": "No fenced prompt blocks in this file — signals.has_prompt_blocks: false, signals.has_code_fences: false, fence_ranges: [] (0 ``` markers, confirmed by direct grep). check_prompts.md's entire firing surface (student-copied fenced prompt content) is absent from this supplementary reading walk.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -775,7 +784,7 @@
       "evidence": "No fenced prompt blocks in this file — signals.has_prompt_blocks: false, signals.has_code_fences: false, fence_ranges: [] (0 ``` markers, confirmed by direct grep). check_prompts.md's entire firing surface (student-copied fenced prompt content) is absent from this supplementary reading walk.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -786,7 +795,7 @@
       "evidence": "No fenced prompt blocks in this file — signals.has_prompt_blocks: false, signals.has_code_fences: false, fence_ranges: [] (0 ``` markers, confirmed by direct grep). check_prompts.md's entire firing surface (student-copied fenced prompt content) is absent from this supplementary reading walk.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -797,7 +806,7 @@
       "evidence": "No fenced prompt blocks in this file — signals.has_prompt_blocks: false, signals.has_code_fences: false, fence_ranges: [] (0 ``` markers, confirmed by direct grep). check_prompts.md's entire firing surface (student-copied fenced prompt content) is absent from this supplementary reading walk.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -808,7 +817,7 @@
       "evidence": "No fenced prompt blocks in this file — signals.has_prompt_blocks: false, signals.has_code_fences: false, fence_ranges: [] (0 ``` markers, confirmed by direct grep). check_prompts.md's entire firing surface (student-copied fenced prompt content) is absent from this supplementary reading walk.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -819,7 +828,7 @@
       "evidence": "No fenced prompt blocks in this file — signals.has_prompt_blocks: false, signals.has_code_fences: false, fence_ranges: [] (0 ``` markers, confirmed by direct grep). check_prompts.md's entire firing surface (student-copied fenced prompt content) is absent from this supplementary reading walk.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -830,7 +839,7 @@
       "evidence": "File is AE101 student-facing curriculum (a training supplementary), not buyer-facing copy (site, newsletter, sponsor decks, pricing) — check_sales_copy.md's declared firing surface is not met.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -841,7 +850,7 @@
       "evidence": "File is AE101 student-facing curriculum (a training supplementary), not buyer-facing copy (site, newsletter, sponsor decks, pricing) — check_sales_copy.md's declared firing surface is not met.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -852,7 +861,7 @@
       "evidence": "File is AE101 student-facing curriculum (a training supplementary), not buyer-facing copy (site, newsletter, sponsor decks, pricing) — check_sales_copy.md's declared firing surface is not met.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -863,7 +872,7 @@
       "evidence": "File is AE101 student-facing curriculum (a training supplementary), not buyer-facing copy (site, newsletter, sponsor decks, pricing) — check_sales_copy.md's declared firing surface is not met.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -874,7 +883,7 @@
       "evidence": "File is AE101 student-facing curriculum (a training supplementary), not buyer-facing copy (site, newsletter, sponsor decks, pricing) — check_sales_copy.md's declared firing surface is not met.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -885,7 +894,7 @@
       "evidence": "File is AE101 student-facing curriculum (a training supplementary), not buyer-facing copy (site, newsletter, sponsor decks, pricing) — check_sales_copy.md's declared firing surface is not met.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -896,7 +905,7 @@
       "evidence": "File is AE101 student-facing curriculum (a training supplementary), not buyer-facing copy (site, newsletter, sponsor decks, pricing) — check_sales_copy.md's declared firing surface is not met.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -907,7 +916,7 @@
       "evidence": "File is AE101 student-facing curriculum (a training supplementary), not buyer-facing copy (site, newsletter, sponsor decks, pricing) — check_sales_copy.md's declared firing surface is not met.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -918,7 +927,7 @@
       "evidence": "File is AE101 student-facing curriculum (a training supplementary), not buyer-facing copy (site, newsletter, sponsor decks, pricing) — check_sales_copy.md's declared firing surface is not met.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -929,7 +938,7 @@
       "evidence": "File is AE101 student-facing curriculum (a training supplementary), not buyer-facing copy (site, newsletter, sponsor decks, pricing) — check_sales_copy.md's declared firing surface is not met.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -940,7 +949,7 @@
       "evidence": "File is AE101 student-facing curriculum (a training supplementary), not buyer-facing copy (site, newsletter, sponsor decks, pricing) — check_sales_copy.md's declared firing surface is not met.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -951,7 +960,7 @@
       "evidence": "File is AE101 student-facing curriculum (a training supplementary), not buyer-facing copy (site, newsletter, sponsor decks, pricing) — check_sales_copy.md's declared firing surface is not met.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -962,7 +971,7 @@
       "evidence": "File is AE101 student-facing curriculum (a training supplementary), not buyer-facing copy (site, newsletter, sponsor decks, pricing) — check_sales_copy.md's declared firing surface is not met.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -973,7 +982,7 @@
       "evidence": "File has no `## Big Idea`, `## Key Concepts`, `## What You'll Learn`, or per-module `Mood (deliberate)` entry — it is a supplementary reading walk, not a module file, so check_strategy_tie_in.md's module-file-shape firing surface is not met.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -984,7 +993,7 @@
       "evidence": "File has no `## Big Idea`, `## Key Concepts`, `## What You'll Learn`, or per-module `Mood (deliberate)` entry — it is a supplementary reading walk, not a module file, so check_strategy_tie_in.md's module-file-shape firing surface is not met.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -995,7 +1004,7 @@
       "evidence": "File has no `## Big Idea`, `## Key Concepts`, `## What You'll Learn`, or per-module `Mood (deliberate)` entry — it is a supplementary reading walk, not a module file, so check_strategy_tie_in.md's module-file-shape firing surface is not met.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -1006,7 +1015,7 @@
       "evidence": "File has no `## Big Idea`, `## Key Concepts`, `## What You'll Learn`, or per-module `Mood (deliberate)` entry — it is a supplementary reading walk, not a module file, so check_strategy_tie_in.md's module-file-shape firing surface is not met.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -1017,7 +1026,7 @@
       "evidence": "File has no `## Big Idea`, `## Key Concepts`, `## What You'll Learn`, or per-module `Mood (deliberate)` entry — it is a supplementary reading walk, not a module file, so check_strategy_tie_in.md's module-file-shape firing surface is not met.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -1028,7 +1037,7 @@
       "evidence": "File has no `## Big Idea`, `## Key Concepts`, `## What You'll Learn`, or per-module `Mood (deliberate)` entry — it is a supplementary reading walk, not a module file, so check_strategy_tie_in.md's module-file-shape firing surface is not met.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -1039,7 +1048,7 @@
       "evidence": "File has no `## Big Idea`, `## Key Concepts`, `## What You'll Learn`, or per-module `Mood (deliberate)` entry — it is a supplementary reading walk, not a module file, so check_strategy_tie_in.md's module-file-shape firing surface is not met.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -1050,7 +1059,7 @@
       "evidence": "File is a finished, shipped supplementary, not an article rough-cut draft.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -1061,7 +1070,7 @@
       "evidence": "File carries its own dated maintainer accept-note (line ~219, unaffected by this pass's edits): 'This supplementary IS a practitioner-by-practitioner walk; each named practitioner gets one section... Future judges should not re-flag.' Each practitioner also reappears once, doing different comparative work, in the closing 'How to pick what to study' filters — a second mention with a different job (decision-aid vs. point-of-use credit), which is the rule's own carve-out shape, not bookkeeping.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -1072,7 +1081,7 @@
       "evidence": "No overreaching slogan/banner-question needing a downstream carve-out paragraph in this pass's edits or the surrounding prose.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -1083,7 +1092,7 @@
       "evidence": "File is a supplementary reading walk, not an exercise; no recap block exists or is expected.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -1094,7 +1103,7 @@
       "evidence": "No human-to-agent interaction verbs in this file (it describes third-party practitioners' relationships to their own tooling, not a student directing Claude).",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -1105,7 +1114,7 @@
       "evidence": "No body claim-line quoted in the backing block's Claims ledger was edited this pass (the two internal fixes touched only a Source stamp's own dated provenance and a closed-TODO bullet, neither of which is a `←`-linked claim quote). grep -rl for this file's own claim source-ids (e.g. 'cognition-dont-build') across curriculum/ → only this file references it, so no cross-file propagation is owed even if it had been a claim edit.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -1116,7 +1125,7 @@
       "evidence": "Process/session-hygiene rule for multi-file sweeps; this is a single-file, single-target fire.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -1127,7 +1136,7 @@
       "evidence": "Not a trainer/exec/sponsor scarce-attention artifact.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -1138,7 +1147,7 @@
       "evidence": "File is student-facing supplementary reading, not a built trainer page (trainer-guide/trainer-modules).",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -1149,7 +1158,7 @@
       "evidence": "grep -inE \"tells you whether|you.ll know it worked\" over body → 0 hits.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -1160,7 +1169,7 @@
       "evidence": "File never addresses the reader's own past/present actions or state; it describes third-party practitioners throughout. The one future-tense 'you will see the composition conversation keep moving' (this diff's own rewrite, closing paragraph) is future-tense informing about the field, the carved-out shape, not present-state ascription to the student.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -1171,7 +1180,7 @@
       "evidence": "No troubleshooting/recovery branches; this is a reading walk, not a procedural exercise with a golden path to protect.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -1182,7 +1191,7 @@
       "evidence": "No prompts in file (behavior class already scored N/A: 'no prompt blocks on this page').",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -1193,7 +1202,7 @@
       "evidence": "No Debrief section in this supplementary.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -1204,7 +1213,7 @@
       "evidence": "Not a module file; no cross-module voice-borrowing risk applies to a standalone supplementary.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -1215,7 +1224,7 @@
       "evidence": "No instruction lines directing student action anywhere in the file; zero imperatives aimed at the reader's own work.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -1226,7 +1235,7 @@
       "evidence": "Not a self-study simulation context.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -1237,7 +1246,7 @@
       "evidence": "No student moves prescribed in this file at all.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -1248,7 +1257,7 @@
       "evidence": "No student-authored artifact in this file to trigger a collision.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -1259,7 +1268,7 @@
       "evidence": "No reflective-moment headers or contemplative-pause sentence prefixes in body.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -1270,7 +1279,7 @@
       "evidence": "No prompts, so no meta-ask pattern is possible.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -1281,7 +1290,7 @@
       "evidence": "No student-artifact-saving instructions in this file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -1292,7 +1301,7 @@
       "evidence": "No chat-print moments in this file (no prompts, no agent output shown).",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -1303,7 +1312,7 @@
       "evidence": "No per-module operational settings (thinking-effort, model, mode, worktree convention) referenced in this file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -1314,7 +1323,7 @@
       "evidence": "grep -inE 'typing |type in|say to Claude|tell it to' over body → 0 hits; no act-narration of sending a message to Claude anywhere in this file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -1325,7 +1334,7 @@
       "evidence": "No setup/installation instructions in this file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -1336,7 +1345,7 @@
       "evidence": "AE101 file, not Agents 101 M7.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -1347,7 +1356,7 @@
       "evidence": "AE101 file, not Agents 101; no Debrief section present.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -1358,12 +1367,12 @@
       "evidence": "No scaffold-vs-prompt design choice in this reading-walk file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     }
   ],
-  "notes": "check_prompts.md (48 rules), check_sales_copy.md (13 rules) and check_strategy_tie_in.md (7 rules) are excluded from this brief (0 rules kept per the brief header) and are parked in the shape-hash prefill sidecar as individual per-rule N/A rows; spliced in by --merge after this file is written, not authored here. The prefill sidecar also parked check_writing.md #2 as a mechanical PASS (ritual_ceremony grep CLEAN) even though the brief still carried its full text; judged it myself anyway since the brief included it, so my row (identical verdict) wins over the parked one at merge time per 'a row you wrote yourself always wins'.",
+  "notes": "check_prompts.md (48 rules), check_sales_copy.md (13 rules) and check_strategy_tie_in.md (7 rules) are excluded from this brief (0 rules kept per the brief header) and are parked in the shape-hash prefill sidecar as individual per-rule N/A rows; spliced in by --merge after this file is written, not authored here. The prefill sidecar also parked check_writing.md #2 as a mechanical PASS (ritual_ceremony grep CLEAN) even though the brief still carried its full text; judged it myself anyway since the brief included it, so my row (identical verdict) wins over the parked one at merge time per 'a row you wrote yourself always wins'. check_writing.md #27 is a new rule (added to the compendium 2026-08-29) with no prior row in any instance; judged fresh this pass. check_student_facing.md #26 flips REVISE -> PASS this pass: the maintainer landed the exact fix the prior instance's fix_hint proposed. check_writing.md #20 stays REVISE (non-blocking): the line-133 'Three diagrams' instance was not touched by this diff.",
   "blocking_findings_count": 0,
-  "todos_count": 2,
+  "todos_count": 1,
   "shape_hash": "1a75c7b77bffff49"
 }

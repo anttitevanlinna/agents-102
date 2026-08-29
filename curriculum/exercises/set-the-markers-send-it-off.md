@@ -88,5 +88,5 @@ If Claude stalls, ask it to keep going. The nudge reads as encouragement and lan
 
 **Lean-intro trim (2026-08-25, Antti-approved):** Phase 1's stance bullet (*"Your rules files, memory, ADRs and skills are what they are… shows up when you read what comes back."*) cut — `test-and-learn` installed that stance a lecture earlier; this slide's job is the two markers. Do not restore.
 
-**Quality:** compendium-audited 2026-08-28 (writing@02dcad0b story@02dcad0b technical@8cc00874 behavior@61e7fc9 pedagogy@1abb84c6 strategy@19249df slides@02dcad0b)
-- judges @8cc00874: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-29 (writing@43e6cae1 story@43e6cae1 technical@8cc00874 behavior@61e7fc9 pedagogy@1abb84c6 strategy@19249df slides@43e6cae1)
+- judges @43e6cae1: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS

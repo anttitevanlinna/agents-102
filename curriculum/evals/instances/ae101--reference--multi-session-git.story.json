@@ -1,81 +1,27 @@
 {
  "class": "storytelling",
  "file": "curriculum/trainings/agentic-engineering-101/reference/multi-session-git.md",
- "body_sha": "3afc484000afbb259f9d84d2ee44a78336a00c34ceae1db9955597e2c74eafc3",
+ "body_sha": "a5c9e952f4030d1cc3e7d065d87ff9d2adcd1a2c1e4479c0320373e47036d1c9",
  "verdict": "PASS",
  "training": "ae101",
- "module_mood_contract": "Permission beat, homework between M1 and M2: 'you will want multiple sessions eventually — find your way to it over time, no rush' (bosser-strategy:content-strategy-agentic-engineering-101.md line 301). Doubles as the on-ramp for the parallel-worktrees gap; does not re-teach Git fundamentals. Not part of the numbered arc's mood table (joy/unease/rescue/...) — a standalone reference page bridging M1 and M2.",
- "trace_status": "generated_first_time",
+ "module_mood_contract": "Permission beat, homework between M1 and M2: 'you will want multiple sessions eventually — find your way to it over time, no rush' (bosser-strategy:content-strategy-agentic-engineering-101.md line 301, re-confirmed this session). Doubles as the on-ramp for the parallel-worktrees gap; does not re-teach Git fundamentals. Not part of the numbered arc's mood table (joy/unease/rescue/...) — a standalone reference page bridging M1 and M2.",
+ "trace_status": "regenerated",
  "rules_evaluated": [
-  {
-   "compendium": "check_lectures.md",
-   "rule_index": 1,
-   "rule_lead": "Meta-frame lectures = closers, not openers.",
-   "verdict": "N/A",
-   "evidence": "Rule's own trigger is 'Fire when writing or placing a lecture.' This is a reference/homework page (curriculum/trainings/agentic-engineering-101/reference/), not a lecture with opener/closer exercise-sequencing — no exercise this page precedes or follows to place against.",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_lectures.md",
-   "rule_index": 2,
-   "rule_lead": "Minimal lecturing before contrast-mood exercises.",
-   "verdict": "N/A",
-   "evidence": "Not a lecture; this page is optional homework sitting between M1 and M2 (strategy doc line 303), not a pre-exercise lecture with a dosage cap to police.",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_lectures.md",
-   "rule_index": 3,
-   "rule_lead": "No cross-module sequencing in lecture bodies.",
-   "verdict": "N/A",
-   "evidence": "Rule text binds LECTURE bodies specifically ('lectures teach, module files sequence; lectures stay re-placeable shared library'). This is a training-specific reference page (curriculum/CLAUDE.md: reference/ = 'training-specific lookup', not shared library like lectures/exercises) — re-placeability across trainings isn't the design goal. Line 3's 'Optional homework between M1 and M2' is the only M-number reference in the body (grep confirmed: `M1`/`M2` both hit only at line 3), and it matches the strategy doc's own explicit placement design verbatim ('These three pieces sit between M1 and M2 alongside Horthy's practitioner-arc read', line 303) — deliberate, not a leaked sequencing bridge.",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_lectures.md",
-   "rule_index": 4,
-   "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
-   "verdict": "N/A",
-   "evidence": "Rule's own frame ('handbook scanned cold', arc-lecture/closer carve-outs) is lecture-specific. Header-shape for this non-lecture slide-rendered file is governed by check_slides.md's sibling rule — a different class's lane, already stamped PASS on this file's Quality line ('slides PASS (drift-recheck)') — not re-litigated here.",
-   "fix_hint": null,
-   "blocking": false
-  },
   {
    "compendium": "check_lectures.md",
    "rule_index": 5,
    "rule_lead": "A slide's BODY is size-bounded, not just its header (§4's sibling).",
    "verdict": "PASS",
-   "evidence": "This is the drift-flagged rule (current wording explicitly widens scope: 'Exercise slides count too', confirming the underlying check-slide-size.js mechanism runs corpus-wide, not lecture-only). Ran in this session: `node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/reference/multi-session-git.md` -> 'files: 1  slides: 7  limits: 210 words / 6 bullets  oversized: 0' / '✓ every slide is within limits'. Clean at current wording; verdict unchanged by the rule-drift that staled this class.",
+   "evidence": "Ran this session: `node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/reference/multi-session-git.md` -> 'files: 1  slides: 7  limits: 210 words / 6 bullets  oversized: 0' / '✓ every slide is within limits'. The e11bbeb4..HEAD diff (retitled header, three trimmed sentences) shortened prose slightly; still clean.",
    "fix_hint": null,
    "blocking": true
-  },
-  {
-   "compendium": "check_lectures.md",
-   "rule_index": 6,
-   "rule_lead": "A prompt inside a lecture is a trainer show-and-tell, never a room follow-along.",
-   "verdict": "N/A",
-   "evidence": "Rule scopes explicitly to `curriculum/lectures/**` and names its own carve-out: 'Not covered: exercise prompts, prework prompts, and prompts on reference/supplementary pages, all of which the student runs themselves.' Doubly moot here: this file also has zero prompt blocks at all (view.json signals.has_prompt_blocks: false; grepped body for `{{prompt:` and `**Prompt**` — zero hits). The three fences (lines 25-27, 50-52, 60-64) are plain git CLI examples the reader types themselves.",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_pedagogy.md",
-   "rule_index": 16,
-   "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
-   "verdict": "N/A",
-   "evidence": "No `{{prompt:}}`/`**Prompt**` blocks exist anywhere in this file (confirmed by grep, zero hits). The rule's subject — forcing-function-vs-scripted-reaction inside an AI-facing prompt fence — has no target: the three code fences here are plain git CLI syntax the reader runs directly, not instructions Claude reads.",
-   "fix_hint": null,
-   "blocking": false
   },
   {
    "compendium": "check_pedagogy.md",
    "rule_index": 27,
    "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
    "verdict": "PASS",
-   "evidence": "Full body scanned (lines 1-91): zero authored-conversation/pause/comparison cues. Grepped for group/room/peer/pair/cohort/discuss/trainer/neighbor/'share with' — zero hits. Closest candidate to a room-cue is line 76, 'Put the two together yourself' — this is the individual reader reconciling their OWN merge conflict ('you know what each change was for'), not a cohort-management instruction; it stays inside because the referent is the solo reader's own diff, never a peer or the room. Whole file is about the artifact (worktrees, branches, conflict resolution), never about pacing or comparing with anyone.",
+   "evidence": "Full current body re-scanned (raw lines 1-91, post e11bbeb4..HEAD diff). Grepped for group/room/peer/pair/cohort/discuss/trainer/neighbor/'share with'/'talk to' -> only hit is line 100, inside the maintainer block ('Source verification — MUST DO before first cohort'), not student-facing body. Closest body candidate stays line 76, 'Put the two together yourself' — the individual reader reconciling their OWN merge conflict ('you know what each change was for'), not a cohort-management instruction. The diff's four edits (line 11 tightened to 'Nothing committed is silently overwritten', header 54 retitled to 'Stashing, switching, and small recoveries between sessions', line 80 trimmed to 'Situations where one session beats three', line 86 trimmed to 'New to the loop') are all prose-precision edits inside the WORK register (what Git does, what the reader does) and introduce no conversation/pause/comparison cue.",
    "fix_hint": null,
    "blocking": true
   },
@@ -84,7 +30,7 @@
    "rule_index": 1,
    "rule_lead": "Mood contract named.",
    "verdict": "PASS",
-   "evidence": "Regenerated sim trace this session (curriculum/evals/sim-cache/ae101--reference--multi-session-git.persona.json; file has no `## Phase N` headers, so per protocol the whole body is a single phase). Phase-1 mood_score 9, close mood_score 9, any_below_8 false. Body's opening line ('You do not have to start here. Find your way to this over time. There is no rush.', line 5) mirrors the strategy doc's stated permission-beat quote almost verbatim (bosser-strategy:content-strategy-agentic-engineering-101.md line 301: 'You will want to run multiple sessions. Find your way to do it over time — there's no rush.'). All six content sections read as TEACHING beats (worktree mechanics, session-opening, stash handoff, conflict recovery, restraint discipline) and none scores below 8; the Close section is short but not merely mechanical setup (it's the emotional payoff of the permission contract), scored 9.",
+   "evidence": "Regenerated sim trace this session (curriculum/evals/sim-cache/ae101--reference--multi-session-git.persona.json; content_sha now matches current body_sha b936871973eab76d3015c94c55b5eeb28b9735a4b19402067edd4648ae5c5b7e; file has no `## Phase N` headers, so per protocol the whole body is a single phase). Phase-1 mood_score 9, close mood_score 9, any_below_8 false. Body's opening line ('You do not have to start here. Find your way to this over time. There is no rush.', line 5) still mirrors the strategy doc's permission-beat quote (content-strategy-agentic-engineering-101.md line 301, re-read this session: 'You will want to run multiple sessions. Find your way to do it over time — there's no rush.'). All content sections still read as TEACHING beats and none of the four diff edits (lines 11, 54, 80, 86 — prose tightening only) drops a beat below 8; re-verified each against the live file post-diff.",
    "fix_hint": null,
    "blocking": true
   },
@@ -93,7 +39,7 @@
    "rule_index": 2,
    "rule_lead": "Epistemic mood ≠ punitive mood.",
    "verdict": "PASS",
-   "evidence": "Failure-mode content (the agent-level clobber trap, merge conflicts, wrong-branch commits) stays mechanism-framed throughout, never shame-framed: 'Don't tie your brain in knots... A thirty-second fix' (line 68); 'The reason: agents are confident and do not always read carefully enough at a merge boundary' (line 76) explains a mechanism, assigns no fault to the reader.",
+   "evidence": "Failure-mode content (the agent-level clobber trap, merge conflicts, wrong-branch commits) still stays mechanism-framed, never shame-framed, post-diff: 'Don't tie your brain in knots... A thirty-second fix' (line 68, unchanged by the diff); 'The reason: agents are confident and do not always read carefully enough at a merge boundary' (line 76, unchanged) explains a mechanism, assigns no fault to the reader. None of the four diff edits touches these lines.",
    "fix_hint": null,
    "blocking": false
   },
@@ -102,7 +48,7 @@
    "rule_index": 3,
    "rule_lead": "Lead with discipline, not failure mode.",
    "verdict": "PASS",
-   "evidence": "All six section headers name a discipline or comparison, none names a failure ('Why multi-session, why Git'; 'Worktrees vs. branches vs. clones'; 'Opening N Claude Code sessions on the same codebase'; 'Stashing and switching between sessions'; 'Conflict recovery when two sessions edited the same file'; 'When NOT to run multi-session'). Failure content (the clobber trap, conflicts) lives inside sections as the negative case a discipline addresses, never as the section's own framing.",
+   "evidence": "All six section headers still name a discipline or comparison, none a failure; the one header the diff touched ('Stashing, switching, and small recoveries between sessions', line 54, was 'Stashing and switching between sessions') stays discipline-named and if anything more precise about what the section covers (stash handoff + small recoveries, both disciplines, not failures). Failure content (the clobber trap, conflicts) still lives inside sections as the negative case a discipline addresses, never as a section's own framing.",
    "fix_hint": null,
    "blocking": false
   },
@@ -111,36 +57,9 @@
    "rule_index": 4,
    "rule_lead": "Strategy-fidelity check.",
    "verdict": "PASS",
-   "evidence": "Read bosser-strategy:content-strategy-agentic-engineering-101.md this session (lines 301, 303, 892, 901, 493). Doc's own description of this exact page: 'worktrees vs. branches vs. clones; how to open N Claude Code sessions on the same repo without wrecking each other's state; and how to recover when sessions collide... Builds on prework's Git assumption; does not re-teach Git fundamentals' — matches this file's actual scope precisely (confirmed body assumes git literacy throughout, no fundamentals re-taught). No front-run: M2's plan-mode teaching moment is untouched (no plan-mode content here); the 'single biggest productivity unlock' framing the doc reserves for the Cherny video + M6 recognition beat (line 493, 'Recognition, not novelty — students met it in the M1→M2 video') stays confined to this file's maintainer block/citation and never surfaces in student-facing body text, so M6's callout isn't pre-empted. Close hands off with permission-tone consistent with the 'no rush' contract, not resolving M2's unease early.",
+   "evidence": "Re-read bosser-strategy:content-strategy-agentic-engineering-101.md this session (grep confirmed lines 301, 303, 493, 892, 903 still carry the same claims as the prior pass — no drift in this file's strategic placement). Doc's description of this exact page (line 301) still matches this file's actual scope; no front-run (M2's plan-mode teaching moment untouched, no plan-mode content here); the 'single biggest productivity unlock' framing stays reserved for the Cherny video + M6 closer callout (line 493) and never surfaces in this file's student-facing body, confirmed by re-grep of the current body for that phrase (zero hits outside the maintainer block's attribution note). Close still hands off with permission-tone consistent with the 'no rush' contract; none of the diff's four prose edits touches sequencing or front-runs anything.",
    "fix_hint": null,
    "blocking": true
-  },
-  {
-   "compendium": "check_strategy_tie_in.md",
-   "rule_index": 5,
-   "rule_lead": "Strategic themes recur in Key Concepts.",
-   "verdict": "N/A",
-   "evidence": "Governs a module file's `## Key Concepts` section. This is a reference page; no such section exists.",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_strategy_tie_in.md",
-   "rule_index": 6,
-   "rule_lead": "Key Concepts shape — theme breadcrumbs, not standalone section.",
-   "verdict": "N/A",
-   "evidence": "Same module-only-section scope as §5; no Key Concepts section on a reference page.",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_strategy_tie_in.md",
-   "rule_index": 7,
-   "rule_lead": "What You'll Learn shape — capability register, not syllabus.",
-   "verdict": "N/A",
-   "evidence": "Governs a module file's `## What You'll Learn` section. No such section on a reference page.",
-   "fix_hint": null,
-   "blocking": false
   },
   {
    "compendium": "check_prompts.md",
@@ -148,7 +67,7 @@
    "judge_owned": true,
    "rule_lead": "Scope call — is this file prompt-shaped at all?",
    "verdict": "N/A",
-   "evidence": "No `{{prompt:}}` or `**Prompt**` blocks anywhere in this file (view.json signals.has_prompt_blocks: false; grepped body-view projection for both markers this session, zero hits). check_prompts.md's own trigger is 'Fire when writing ANY prompt block a student copies'; none exists here, so none of its 48 rules has a target. The three fences are plain git CLI syntax examples, not AI-directed prompts.",
+   "evidence": "No `{{prompt:}}` or `**Prompt**` blocks anywhere in the current body (view.json signals.has_prompt_blocks: false; grepped the body-view projection for both markers this session, zero hits, unchanged by the e11bbeb4..HEAD diff). check_prompts.md's own trigger is 'Fire when writing ANY prompt block a student copies'; none exists here. The three fences (lines 25-27, 50-52, 60-64) are plain git CLI syntax examples the reader types themselves, not AI-directed prompts.",
    "fix_hint": null,
    "blocking": false
   },
@@ -158,18 +77,139 @@
    "judge_owned": true,
    "rule_lead": "Trigger check — is this file workshop-shaped?",
    "verdict": "N/A",
-   "evidence": "No beat in this file has an output that belongs to a group — it is solo technical reference material (worktree/session hygiene) the reader applies alone; nothing is adjudicated, attributed, or merged by a room. Per the compendium's own trigger ('NOT individual exercises'), none of its 16 rules has a target. view.json's group_beat_markers signal reads true, but that's confirmed a false positive: grepped the exact hit — line 76, 'Put the two together yourself' (reconciling one's own merge conflict, not a group activity). Full body grep for group/room/peer/pair/cohort/discuss/trainer/neighbor/'share with' returned zero hits.",
+   "evidence": "No beat in this file has an output that belongs to a group — it is solo technical reference material (worktree/session hygiene) the reader applies alone; nothing is adjudicated, attributed, or merged by a room. view.json's group_beat_markers signal still reads true; re-confirmed this is a false positive by grepping the current body for group/room/peer/pair/cohort/discuss/trainer/neighbor/'share with' — zero hits (the one 'cohort' hit is in the maintainer block, line 100, not the body). Per the compendium's own trigger ('NOT individual exercises'), none of its 16 rules has a target.",
    "fix_hint": null,
    "blocking": false
+  },
+  {
+   "compendium": "check_lectures.md",
+   "rule_index": 1,
+   "rule_lead": "Meta-frame lectures = closers, not openers.",
+   "verdict": "N/A",
+   "evidence": "Rule's own trigger is 'Fire when writing or placing a lecture.' This is a reference/homework page (curriculum/trainings/agentic-engineering-101/reference/), not a lecture with opener/closer exercise-sequencing — no exercise this page precedes or follows to place against.",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "3afc484000afbb259f9d84d2ee44a78336a00c34ceae1db9955597e2c74eafc3",
+   "carried_shape": "8820c127e8f3ecfe"
+  },
+  {
+   "compendium": "check_lectures.md",
+   "rule_index": 2,
+   "rule_lead": "Minimal lecturing before contrast-mood exercises.",
+   "verdict": "N/A",
+   "evidence": "Not a lecture; this page is optional homework sitting between M1 and M2 (strategy doc line 303), not a pre-exercise lecture with a dosage cap to police.",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "3afc484000afbb259f9d84d2ee44a78336a00c34ceae1db9955597e2c74eafc3",
+   "carried_shape": "8820c127e8f3ecfe"
+  },
+  {
+   "compendium": "check_lectures.md",
+   "rule_index": 3,
+   "rule_lead": "No cross-module sequencing in lecture bodies.",
+   "verdict": "N/A",
+   "evidence": "Rule text binds LECTURE bodies specifically ('lectures teach, module files sequence; lectures stay re-placeable shared library'). This is a training-specific reference page (curriculum/CLAUDE.md: reference/ = 'training-specific lookup', not shared library like lectures/exercises) — re-placeability across trainings isn't the design goal. Line 3's 'Optional homework between M1 and M2' is the only M-number reference in the body (grep confirmed: `M1`/`M2` both hit only at line 3), and it matches the strategy doc's own explicit placement design verbatim ('These three pieces sit between M1 and M2 alongside Horthy's practitioner-arc read', line 303) — deliberate, not a leaked sequencing bridge.",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "3afc484000afbb259f9d84d2ee44a78336a00c34ceae1db9955597e2c74eafc3",
+   "carried_shape": "8820c127e8f3ecfe"
+  },
+  {
+   "compendium": "check_lectures.md",
+   "rule_index": 4,
+   "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
+   "verdict": "N/A",
+   "evidence": "Rule's own frame ('handbook scanned cold', arc-lecture/closer carve-outs) is lecture-specific. Header-shape for this non-lecture slide-rendered file is governed by check_slides.md's sibling rule — a different class's lane, already stamped PASS on this file's Quality line ('slides PASS (drift-recheck)') — not re-litigated here.",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "3afc484000afbb259f9d84d2ee44a78336a00c34ceae1db9955597e2c74eafc3",
+   "carried_shape": "8820c127e8f3ecfe"
+  },
+  {
+   "compendium": "check_lectures.md",
+   "rule_index": 6,
+   "rule_lead": "A prompt inside a lecture is a trainer show-and-tell, never a room follow-along.",
+   "verdict": "N/A",
+   "evidence": "Rule scopes explicitly to `curriculum/lectures/**` and names its own carve-out: 'Not covered: exercise prompts, prework prompts, and prompts on reference/supplementary pages, all of which the student runs themselves.' Doubly moot here: this file also has zero prompt blocks at all (view.json signals.has_prompt_blocks: false; grepped body for `{{prompt:` and `**Prompt**` — zero hits). The three fences (lines 25-27, 50-52, 60-64) are plain git CLI examples the reader types themselves.",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "3afc484000afbb259f9d84d2ee44a78336a00c34ceae1db9955597e2c74eafc3",
+   "carried_shape": "8820c127e8f3ecfe"
+  },
+  {
+   "compendium": "check_pedagogy.md",
+   "rule_index": 16,
+   "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
+   "verdict": "N/A",
+   "evidence": "No `{{prompt:}}`/`**Prompt**` blocks exist anywhere in this file (confirmed by grep, zero hits). The rule's subject — forcing-function-vs-scripted-reaction inside an AI-facing prompt fence — has no target: the three code fences here are plain git CLI syntax the reader runs directly, not instructions Claude reads.",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "3afc484000afbb259f9d84d2ee44a78336a00c34ceae1db9955597e2c74eafc3",
+   "carried_shape": "8820c127e8f3ecfe"
+  },
+  {
+   "compendium": "check_strategy_tie_in.md",
+   "rule_index": 5,
+   "rule_lead": "Strategic themes recur in Key Concepts.",
+   "verdict": "N/A",
+   "evidence": "Governs a module file's `## Key Concepts` section. This is a reference page; no such section exists.",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "3afc484000afbb259f9d84d2ee44a78336a00c34ceae1db9955597e2c74eafc3",
+   "carried_shape": "8820c127e8f3ecfe"
+  },
+  {
+   "compendium": "check_strategy_tie_in.md",
+   "rule_index": 6,
+   "rule_lead": "Key Concepts shape — theme breadcrumbs, not standalone section.",
+   "verdict": "N/A",
+   "evidence": "Same module-only-section scope as §5; no Key Concepts section on a reference page.",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "3afc484000afbb259f9d84d2ee44a78336a00c34ceae1db9955597e2c74eafc3",
+   "carried_shape": "8820c127e8f3ecfe"
+  },
+  {
+   "compendium": "check_strategy_tie_in.md",
+   "rule_index": 7,
+   "rule_lead": "What You'll Learn shape — capability register, not syllabus.",
+   "verdict": "N/A",
+   "evidence": "Governs a module file's `## What You'll Learn` section. No such section on a reference page.",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "3afc484000afbb259f9d84d2ee44a78336a00c34ceae1db9955597e2c74eafc3",
+   "carried_shape": "8820c127e8f3ecfe"
+  },
+  {
+   "compendium": "check_writing.md",
+   "rule_index": 1,
+   "rule_lead": "Banned words — grep zero-tolerance.",
+   "verdict": "PASS",
+   "evidence": "mechanical: /\\b(delve|delving|honest|honestly|importantly|crucial|crucially|substrate|synergize|paradigm shift)\\b/ over body projection curriculum/evals/body-views/ae101--reference--multi-session-git.body.txt → 0 hits; pattern proven against planted violation.",
+   "fix_hint": "",
+   "blocking": false,
+   "prefilled": true
+  },
+  {
+   "compendium": "check_writing.md",
+   "rule_index": 2,
+   "rule_lead": "Ritual / ceremony — hard ban in any curriculum/training surface.",
+   "verdict": "PASS",
+   "evidence": "mechanical: /\\b(ritual|rituals|ceremony|ceremonies)\\b/ over body projection curriculum/evals/body-views/ae101--reference--multi-session-git.body.txt → 0 hits; pattern proven against planted violation.",
+   "fix_hint": "",
+   "blocking": false,
+   "prefilled": true
   }
  ],
  "mood_summary": {
-  "phase_scores": [9],
+  "phase_scores": [
+   9
+  ],
   "close_score": 9,
   "any_below_8": false,
   "stealing_the_mood": []
  },
- "teaching_moment_note": "No single named 'teaching moment' the way an exercise has one — this is a reference page whose reliability test is comprehension, not a forcing-function firing under skill variance. The strongest beat (per the regenerated trace) is 'When NOT to run multi-session' (lines 78-86): it validates a mistake the persona already plausibly made (over-parallelizing a small task) without naming them wrong for it, which is the epistemic-not-punitive register the mood contract calls for. That beat doesn't depend on session state or prior module completion, so it lands regardless of where in M1-M2 the reader encounters it.",
+ "teaching_moment_note": "No single named 'teaching moment' the way an exercise has one — this is a reference page whose reliability test is comprehension, not a forcing-function firing under skill variance. The strongest beat (per the regenerated trace) is still 'When NOT to run multi-session' (lines 78-86): it validates a mistake the persona already plausibly made (over-parallelizing a small task) without naming them wrong for it, epistemic-not-punitive per the mood contract. The diff's trim of that section's lead sentence (line 80) and point 3 (line 86) sharpens the beat, doesn't dilute it.",
  "blocking_findings_count": 0,
  "todos_count": 0,
  "shape_hash": "8820c127e8f3ecfe"

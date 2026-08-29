@@ -1,16 +1,16 @@
 {
   "class": "slides",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/plan-mode-done-right.md",
-  "body_sha": "600b391a5ea6bc9dba21d2afb0a557d4151feac548d62c3bdfe76214bd6107f8",
+  "body_sha": "a01ceac8f98a417212f62ab39d4c670b69548425c6400167557cfbd1d563a134",
   "shape_hash": "3bf287f827d6a7ae",
   "verdict": "PASS",
   "training": "ae101",
-  "pin": "d065f8bc",
-  "diff_summary": "git diff d065f8bc..HEAD on this file: exactly one student-facing body change — a new two-sentence paragraph inserted under `## Start here` after the reflection question ('Two reads on one plan catch different misses. Yours goes first, because your codebase experience is what spots the soft item and the step that does not fit this repo. The agent's read goes wide where yours goes deep, and you stop when another answer would no longer sharpen the plan.', now lines 27-28), maintainer-block-attested 2026-08-28 as carrying the key message of a previously-cut 'Two reads, paired' slide and explicitly cleared of both the arc-positioning ban and the orphan-slide concern in the same note. Every other diff hunk sits below the `<!-- maintainer -->` cut (out of slides-class scope): the Quality stamp line bump, a Decision-points wording refinement (naming the calculate-time.js overrun figure), one Artefact-contracts-adjacent wording tweak, and removal of the Compound push-back-moves bullet plus its Watch-for row now that the soft-compound/Boy-Scout beats moved to exercises/extract-the-task-shaping-rule.md Phases 4-5 (already reflected in the current maintainer note at line 99). No other body line changed; the file still ends at '## Next' (line 81) exactly as before.",
+  "pin": "17446703",
+  "diff_summary": "git diff 17446703..HEAD on this file: 1 file changed, 3 insertions(+), 3 deletions(-), two hunks. (1) Body hunk, IN slides-class scope (above the maintainer cut, inside chunk 7's no-module:earn-the-trust '## Pre-reads before Module 4' branch, current line 71): the da Costa 'Backpressure Is All You Need' description lost its trailing sentence 'Module 4 sends off a session that runs without you watching, which is where you meet that limit yourself.' The remaining text reads 'Da Costa carries a word out of flow systems and into agent work: when generation outruns judgment, the human becomes the stage everything else waits on.' (2) Quality-stamp hunk, OUT of slides-class scope (below the maintainer cut, current lines 119-120): compendium-audited date bumped 2026-08-28->2026-08-29, writing@ and behavior@ shas bumped to 17446703, slides@ bumped d065f8bc->17446703, judges-line pin bumped 8cc00874->17446703 -- bookkeeping, not body prose. No other line in the file differs from the pinned commit. The cut sentence was structurally identical to the maintainer-documented 2026-08-23 Willison predicate-leak fix at line 89 (subject = a module name, predicate = promises that later module's own beat) -- rule 16(b)'s slides-class face of check_student_facing.md §33's predicate-leak clause. Removing it left nothing to flag: the remaining sentence is self-contained and introduces no dangling referent, no orphan risk, and no cadence tic. No accept-note is owed for a cut that removes the only thing a rule would have caught.",
   "mechanical_evidence": [
     {
       "command": "node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/plan-mode-done-right.md --report",
-      "output": "files: 1   slides: 8   limits: 210 words / 6 bullets   oversized: 0 / every slide within limits. Largest: Key Concepts 167w/6b, Prework 139w/0b, Start here 114w/0b (post-diff, still well under cap), Optional challenges 105w/4b, Pre-reads before Module 3 94w/0b, What You'll Learn 85w/5b, Next 46w/0b, Big Idea 19w/0b.",
+      "output": "8 slides, limits 210 words/6 bullets, oversized: 0. Largest: Key Concepts 167w/6b, Prework 139w/0b, Start here 114w/0b, Optional challenges 105w/4b, Pre-reads before Module 3 94w/0b, What You'll Learn 85w/5b, Next 46w/0b, Big Idea 19w/0b.",
       "exit": 0
     },
     {
@@ -24,28 +24,48 @@
       "exit": 0
     },
     {
-      "command": "node scripts/check-slide-deixis.js --links | grep -A3 -B1 plan-mode-done-right",
-      "output": "L14 \"The agentic engineering progression\" -> trainings/agentic-engineering-101/supplementary/agentic-engineering-progression.md ; L14 \"Multi-session and Git: survival guide\" -> ../../trainings/agentic-engineering-101/reference/multi-session-git.md (the file's only two narrative in-body links; the six Lecture:/Exercise: include-links at lines 30-40 are structural, out of §13 scope by the compendium's own text)",
-      "exit": 0
-    },
-    {
       "command": "grep -inE '\\b(below|above|further down|a few paragraphs|at the top of this|see below|the following section|this page)\\b' curriculum/evals/body-views/ae101--module--plan-mode-done-right.body.txt",
       "output": "(no matches)",
       "exit": 1
     },
     {
-      "command": "python3 word-count sanity check on both runtime-fork branches the size-checker's default run does not both measure",
-      "output": "no-module:earn-the-trust '## Next' branch (lines 77-81): 118 words. no-module:earn-the-trust '## Pre-reads before Module 4' branch (lines 59-71 alt): 73 words. Both well under the 210-word cap; the checker's own single-branch run already confirmed the module:earn-the-trust branch (46w Next / 94w Pre-reads M3).",
+      "command": "node scripts/check-slide-deixis.js --links 2>&1 | grep -A5 -B1 plan-mode-done-right",
+      "output": "3 narrative in-body links: L14 'The agentic engineering progression' -> supplementary/agentic-engineering-progression.md; L14 'Multi-session and Git: survival guide' -> reference/multi-session-git.md; L14 'plan mode at depth in the reference' -> reference/claude-code-for-engineers.md#9-plan-mode-at-depth. (Corrects the prior instance, which counted only two — the third named-section reference link was live in-scope and undercounted before.)",
       "exit": 0
     },
     {
-      "command": "grep -n -i 'software factories\\|wsff\\|horthy' curriculum/trainings/agentic-engineering-101/getting-going.md",
-      "output": "L77: **Read:** Dex Horthy, [Why Software Factories Fail](...) ... 'which is where Module 2 goes next.' — confirms the M1 backward-reference at plan-mode-done-right.md line 14 ('still on your list from Module 1') resolves to a real M1 beat.",
+      "command": "python3 manual word count on the no-module:earn-the-trust runtime-fork branches the size-checker's single default run does not measure",
+      "output": "'Pre-reads before Module 4' branch (post-diff): 54 words, 0 bullets (down from the prior instance's 73w, reflecting the sentence cut). 'Next' no-module branch: 118 words, 0 bullets. Both well under the 210-word cap; the checker's own run already confirmed the module:earn-the-trust branch (94w Pre-reads-M3 / 46w Next).",
       "exit": 0
     },
     {
-      "command": "grep -n -i 'plan file\\|external or user-facing' curriculum/trainings/agentic-engineering-101/earn-the-trust.md",
-      "output": "L12: 'Bring the feature you planned at M2... If your M2 task doesn't have an external or user-facing surface, swap to something from your backlog that does...' — confirms the M2->M3 forward references at plan-mode-done-right.md lines 73/75 land on a real M3 beat.",
+      "command": "grep -inE '\\b(compendium|forcing function|firing|beat|mood|Connections)\\b' curriculum/evals/body-views/ae101--module--plan-mode-done-right.body.txt",
+      "output": "(no matches)",
+      "exit": 1
+    },
+    {
+      "command": "grep -inE '\\bsurface(s)?\\b' curriculum/evals/body-views/ae101--module--plan-mode-done-right.body.txt",
+      "output": "4 hits, all ordinary/technical usage, none the repo-internal noun-dialect: L10 'Surface one multi-file backlog task' (imperative verb, exempt); L47 'only the surface is new' (generic idiom); L63 'compromise surface' (security term); L67 'the rest of the surface' (security term, same sentence's checklist); L75 'user-facing surface' (security term).",
+      "exit": 1
+    },
+    {
+      "command": "grep -inE 'Not [A-Z][a-z]+\\. Not [A-Z][a-z]+\\.' curriculum/evals/body-views/ae101--module--plan-mode-done-right.body.txt",
+      "output": "(no matches)",
+      "exit": 1
+    },
+    {
+      "command": "grep -inE 'one of the (most|best)|most useful|most important' curriculum/evals/body-views/ae101--module--plan-mode-done-right.body.txt",
+      "output": "(no matches)",
+      "exit": 1
+    },
+    {
+      "command": "grep -n -i 'software factories|wsff|horthy' curriculum/trainings/agentic-engineering-101/getting-going.md",
+      "output": "L77: Dex Horthy, Why Software Factories Fail — confirms chunk 2 line 14's M1 backward reference ('still on your list from Module 1') resolves to a real M1 beat.",
+      "exit": 0
+    },
+    {
+      "command": "grep -n -i 'plan file|external or user-facing' curriculum/trainings/agentic-engineering-101/earn-the-trust.md",
+      "output": "L12: 'The plan file Claude Code wrote during plan mode is what M3 reads... If your M2 task doesn't have an external or user-facing surface...' — confirms chunk 8's M3 forward references (lines 73, 75) land on a real M3 beat.",
       "exit": 0
     }
   ],
@@ -103,7 +123,7 @@
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm: a reader loses the thread when a pronoun/noun points at something never named. Walked every pronoun/demonstrative in all nine chunks; all resolve in-chunk or against earlier same-file chunks (e.g. chunk 5 line 43 'it' = the plan/structure just named; chunk 5 line 46 'The deferred ones' = decisions deferred by omitting a file list, same bullet; chunk 5 line 48 'the rule that shaped it' = 'it'->the plan, same bullet). Closest call, the NEW line-28 paragraph: 'you stop when another answer would no longer sharpen the plan' — 'another answer' has no verbatim earlier label but resolves against chunk 3's own LO bullet two slides earlier, line 20: 'Walk down unresolved branches, with a recommended answer per branch' — a term introduced on an earlier slide of the same file and reused, explicitly not a violation. Second-closest, chunk 8 module-branch line 73 'the same move' resolves against the whole deck's throughline (Big Idea + five What-You'll-Learn verbs + Key Concepts bullet 2) under the module-arc-beats-in-closers carve-out and rule 2's 'closer summing the whole deck' allowance. Both stay inside.",
+      "evidence": "Harm: a reader loses the thread when a pronoun/noun points at something never named. Walked every pronoun/demonstrative in all nine chunks. The diff-touched line (chunk 7, line 71) now reads 'Da Costa carries a word out of flow systems and into agent work: when generation outruns judgment, the human becomes the stage everything else waits on.' — self-contained, no dangling referent (the cut sentence's 'that limit' backward-pointer is gone along with it, so there is nothing left to fail to resolve). Closest calls elsewhere unchanged from prior review: chunk 4 line 28 'another answer' resolves against chunk 3's own LO bullet, line 20 ('a recommended answer per branch') — a term introduced on an earlier slide and reused, not a violation. Chunk 8's module-branch line 73 'the same move' resolves against the whole deck's throughline under the closer/module-arc-beat carve-outs (rules 1 and 2).",
       "fix_hint": null,
       "blocking": true
     },
@@ -113,7 +133,7 @@
       "rule_lead": "Cross-file and positional callbacks.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Cleanest case, chunk 2 line 14: 'if Dex Horthy's Why Software Factories Fail is still on your list from Module 1, this is the module it pays off in: the cure he lands on is human review made affordable by upfront planning' — names essay, author and module by number and unpacks the thesis in the same sentence, matching the compendium's own passing worked example. Same line's reference link is named by its claim ('a lookup page nearby... has the approval paths in one table'), not located by page position. Chunk 8's M3 references (lines 73, 75) name the module by number, never by page position — this is how the corpus points forward to a named future beat, not a positional callback.",
+      "evidence": "Cleanest case, chunk 2 line 14: 'if Dex Horthy's Why Software Factories Fail is still on your list from Module 1, this is the module it pays off in: the cure he lands on is human review made affordable by upfront planning' — names essay, author, module by number, thesis unpacked in the same sentence. Same line's third link, 'a lookup page nearby, [plan mode at depth in the reference]...' — names the target content ('plan mode at depth') and the document it lives in ('the reference'), not a page position; 'nearby' reads as 'handy/available' (a document property), not a spatial locator on this page — matches the accepted shape, not the rejected 'at the top of this workbook' example. Chunk 8's M3 references (lines 73, 75) name the module by number, never by page position.",
       "fix_hint": null,
       "blocking": true
     },
@@ -123,7 +143,7 @@
       "rule_lead": "Every backward reference points at a beat that exists.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm: a reference to a beat the current module set doesn't contain strands the reader mid-sentence. Verified live, not just from the maintainer note: `grep -n -i 'software factories|wsff|horthy' getting-going.md` -> L77 carries the exact Horthy essay with 'which is where Module 2 goes next', confirming chunk 2 line 14's M1 callback resolves. `grep -n -i 'plan file|external or user-facing' earn-the-trust.md` -> L12 carries 'If your M2 task doesn't have an external or user-facing surface, swap to something...', confirming chunk 8's M3 forward references (lines 73, 75) land on a real M3 beat. Chunk 2 line 10 'the repo you used for Module 1' also confirmed via this file's own cross_module PASS stamp (set includes getting-going) and the maintainer Plug-points row.",
+      "evidence": "Harm: a reference to a beat the current module set doesn't contain strands the reader mid-sentence. Verified live this session: `grep -n -i 'software factories|wsff|horthy' getting-going.md` -> L77 carries the exact Horthy essay, confirming chunk 2 line 14's M1 callback resolves. `grep -n -i 'plan file|external or user-facing' earn-the-trust.md` -> L12 carries the plan-file / external-surface language, confirming chunk 8's M3 forward references (lines 73, 75) land on a real M3 beat. Diff-region sentence removal (chunk 7) deleted a forward reference to M4, not a backward one — no beat-existence question raised by the cut itself, and M4 (earn-the-trust.md) exists regardless.",
       "fix_hint": null,
       "blocking": true
     },
@@ -133,7 +153,7 @@
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Every chunk carries a self-carrying claim or substantive list. Chunk 4 'Start here' (lines 24-41), the one chunk the diff touched, now carries a reflection question PLUS a two-sentence substantive paragraph before its six lecture/exercise links — the diff made this slide MORE self-carrying, not less. The maintainer block's 2026-08-28 addendum at line 93 addresses exactly this: confirms the paragraph 'cannot orphan, because buildDeckModel buffers module children and flushes on the next .phase--*, so prose sitting under the ## Start here heading before the first include chunks into that slide' — this is not a lone paragraph BETWEEN two includes (the actual orphan shape), it sits before the first one. Stays inside.",
+      "evidence": "Every chunk carries a self-carrying claim or substantive list. The diff shrank chunk 7's no-module branch (manually counted 54 words post-cut, down from 73) but it still opens with its own framing sentence ('Optional. The thinking Module 4 asks you to do before you step away from a session.') plus a full labeled Read entry with author, title, date and a description sentence — not a lone context-dependent bullet or wait-state, the actual orphan shape this rule targets. Chunk 4 'Start here' carries a reflection question, a two-sentence framing paragraph, then six lecture/exercise links.",
       "fix_hint": null,
       "blocking": false
     },
@@ -143,7 +163,7 @@
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "All nine headers are literal section labels matched by content: '## Start here' (chunk 4) now opens with a direct question plus the two-reads framing — still literally where the student's engagement with the module content begins. '## Next' (chunk 8) contains exactly what comes next in either branch. No header states a claim its own chunk contradicts.",
+      "evidence": "All nine headers are literal section labels matched by content. '## Pre-reads before Module 4' (chunk 7, no-module branch) still delivers exactly what its header promises after the cut — one optional pre-M4 read, correctly attributed. '## Next' (chunk 8) contains exactly what comes next in either branch. No header states a claim its own chunk contradicts.",
       "fix_hint": null,
       "blocking": false
     },
@@ -153,7 +173,7 @@
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Checked every sub-tic across all nine chunks including the new line-28 paragraph. No 'Not X. Not Y. Z.' construction. No anaphora/epistrophe triple ('goes wide where yours goes deep' is a two-part parallel, not a triple). No self-grading superlative. Number+retraction: chunk 5 line 43 'Assume about 10% of it is wrong' carries no retraction clause in-body; the maintainer block (line 103) attests this bullet applies M1's own loosely-held prior in instruction register, and that this sub-item does not fire here. No abstraction-noun stack ('goes wide'/'goes deep', 'approval inflation' are concrete, immediately unpacked terms, not vague filler). No empty-leg verb triplet (the five What-You'll-Learn bolded verbs are the mandated one-verb-per-bullet LO template, not a same-sentence triplet).",
+      "evidence": "Checked every sub-tic fresh this session against all nine chunks. `grep -inE 'Not [A-Z][a-z]+\\. Not [A-Z][a-z]+\\.'` -> 0 hits. `grep -inE 'one of the (most|best)|most useful|most important'` -> 0 hits (no self-grading superlative). No anaphora/epistrophe triple anywhere ('goes wide where yours goes deep' at chunk 4 is a two-part parallel, not a triple). Number+retraction: chunk 5 line 43 'Assume about 10% of it is wrong' carries no retraction clause in-body; maintainer block line 103 attests this bullet applies M1's own loosely-held prior in instruction register — this sub-item does not fire. No abstraction-noun stack; the diff-shortened chunk-7 sentence ('the human becomes the stage everything else waits on') is a single original metaphor, not a stack, and not repeated. No empty-leg verb triplet.",
       "fix_hint": null,
       "blocking": true
     },
@@ -163,7 +183,7 @@
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm: repo-internal authoring vocabulary projected on a wall nobody outside the authoring team can parse. Chunk 2 line 10 'Surface one multi-file backlog task' uses the exempted ordinary engineering imperative verb, not the banned noun form. Chunk 7a line 63 'compromise surface' is a genuine security-engineering term, not repo dialect. The new line-28 paragraph introduces no dialect term. No 'compendium', 'beat', 'mood', 'forcing function', or 'firing' anywhere in body.",
+      "evidence": "Harm: repo-internal authoring vocabulary projected on a wall nobody outside the authoring team can parse. `grep -inE '\\b(compendium|forcing function|firing|beat|mood|Connections)\\b'` over the body projection -> 0 hits. `grep -inE '\\bsurface(s)?\\b'` -> 4 hits, all checked individually: L10 'Surface one multi-file backlog task' is the exempted ordinary imperative verb; L47 'only the surface is new' is a generic idiom; L63/L67/L75 'compromise surface' / 'the rest of the surface' / 'user-facing surface' are genuine security-engineering terms from the cited Willison/OWASP material, not repo-internal noun-dialect. None is 'surface' used as the maintainer's own writing-surface noun.",
       "fix_hint": null,
       "blocking": true
     },
@@ -173,7 +193,7 @@
       "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Diff added zero bold to the file. Chunk 2's whole-sentence bold ('A task that spans a few files. Not an epic.') and chunk 8's no-module-branch whole-sentence bold ('Pick one scoped task...') are mandated §34 task-sizing anti-pattern callouts, accepted-by-design per the maintainer block (line 95) naming both locations. Chunk 3's five bolded LO verbs are the mandated `- **[verb]** [thing]` module-shape template, N/A. Chunk 4's single '**The question, to you:**' is one <=5-word handle, within budget, and the new unbolded two-reads paragraph adds nothing to the count. Chunk 7's '**Read:**' / '**Optional deeper scan:**' are mode-word bolding on a documented reading-list/menu-slide waiver.",
+      "evidence": "This diff added and removed zero bold spans (the cut sentence carried none). Chunk 2's whole-sentence bold ('A task that spans a few files. Not an epic.') and chunk 8's no-module-branch whole-sentence bold ('Pick one scoped task...') are mandated §34 task-sizing anti-pattern callouts, accepted-by-design per maintainer block line 95. Chunk 3's five bolded LO verbs are the mandated module-shape LO template, N/A. Chunk 4's single '**The question, to you:**' is one <=5-word handle. Chunk 7's '**Read:**' / '**Optional deeper scan:**' are mode-word bolding on the documented reading-list/menu-slide waiver.",
       "fix_hint": null,
       "blocking": false
     },
@@ -183,7 +203,7 @@
       "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "This file is a top-level module file (the `section.module` wrapper itself), so every `##` section reaches the composed deck by construction — no `.phase--lecture/.phase--exercise` nesting that could be dropped. Mechanical, run today: `node scripts/check-slide-size.js --file ... --report` counted 8 `##`-chunks with 0 oversized, confirming the deck composes; the new line-28 paragraph appears inside the measured 'Start here' slide (114 words), not dropped.",
+      "evidence": "This file is a top-level module file (the `section.module` wrapper itself), so every `##` section reaches the composed deck by construction — no `.phase--lecture/.phase--exercise` nesting that could be dropped. Mechanical, run today: `node scripts/check-slide-size.js --file ... --report` counted 8 `##`-chunks with 0 oversized, confirming the deck composes; chunk 7's diff-shortened content still appears inside the measured 'Pre-reads before Module 3' slide count.",
       "fix_hint": null,
       "blocking": true
     },
@@ -193,7 +213,7 @@
       "rule_lead": "Page geometry dies at the cut; reading order survives.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Mechanical, proven zero, run today: `grep -inE '\\b(below|above|further down|a few paragraphs|at the top of this|see below|the following section|this page)\\b' curriculum/evals/body-views/ae101--module--plan-mode-done-right.body.txt` -> 0 hits (exit 1). Corroborated by corpus-wide `node scripts/check-slide-deixis.js` -> 'OK — 60 files, no page-geometry pointers'. The new line-28 paragraph introduces no positional language. Closest natural-language candidate, chunk 2 line 14 'a lookup page nearby' -- idiomatic for 'a handy reference doc', not a within-document spatial locator.",
+      "evidence": "Mechanical, run fresh this session: `grep -inE '\\b(below|above|further down|a few paragraphs|at the top of this|see below|the following section|this page)\\b' curriculum/evals/body-views/ae101--module--plan-mode-done-right.body.txt` -> 0 hits (exit 1). Corroborated by corpus-wide `node scripts/check-slide-deixis.js` -> 'OK — 60 files, no page-geometry pointers'. The cut sentence introduced no positional language and removing it changes nothing here. Closest natural-language candidate, chunk 2 line 14 'a lookup page nearby' — idiomatic for 'a handy reference doc', not a within-document spatial locator (see rule 2).",
       "fix_hint": null,
       "blocking": false
     },
@@ -203,7 +223,7 @@
       "rule_lead": "In-deck links work now; whether they EARN their place is open.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Settled-mechanism half unaffected by this file (no internal .md#anchor fragment links in body, only external https URLs and structural include-links, unchanged by the diff). Naming half, mechanically inventoried today: `node scripts/check-slide-deixis.js --links` -> the file's only two non-structural narrative links, both self-naming in the sentence ('The agentic engineering progression', 'Multi-session and Git: survival guide'). The six Lecture:/Exercise: links (chunk 4) are structural include-links, explicitly out of §13's scope. Open half of this rule carries no gate per the compendium's own text.",
+      "evidence": "Settled-mechanism half unaffected by this file (no internal .md#anchor fragment links in body, only external https URLs and structural include-links, unchanged by the diff). Naming half, inventoried fresh this session: `node scripts/check-slide-deixis.js --links` -> 3 narrative links in chunk 2, line 14 ('The agentic engineering progression', 'Multi-session and Git: survival guide', 'plan mode at depth in the reference') — all self-naming in the sentence, none located by page position. (This corrects the prior instance's count of two; the third named-section reference link was live and undercounted before — no rule violation either way, since §13's naming test is met by all three.) The six Lecture:/Exercise: links (chunk 4) are structural include-links, explicitly out of §13's scope. Open half of this rule carries no gate per the compendium's own text.",
       "fix_hint": null,
       "blocking": false
     },
@@ -213,7 +233,7 @@
       "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Mechanical, run today: `node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/plan-mode-done-right.md --report` -> 8 slides, 0 oversized; the diff-touched 'Start here' slide sits at 114 words / 0 bullets, well under cap even after the new paragraph. The size-checker resolves one runtime-fork branch per run (module:earn-the-trust); manually word-counted the other branch's 'Next' (118 words) and 'Pre-reads before Module 4' (73 words) to confirm both alternates are also within the 210-word ceiling — neither runtime fork is oversized.",
+      "evidence": "Mechanical, run today: `node scripts/check-slide-size.js --file ... --report` -> 8 slides, 0 oversized; the diff-touched 'Pre-reads before Module 3' slide (which the checker's default fork-resolution measures) sits at 94 words / 0 bullets. Manually word-counted the no-module runtime-fork branches the checker's single run does not cover: 'Pre-reads before Module 4' now 54 words (down from 73 pre-diff, the sentence removal only shrinks it further from cap), 'Next' no-module branch 118 words. Neither runtime fork is oversized.",
       "fix_hint": null,
       "blocking": false
     },
@@ -223,7 +243,7 @@
       "rule_lead": "A bullet earns its slot or dies — three classes that read as rigour and carry nothing.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Checked all six Key Concepts bullets (unchanged by diff, lines 43-48) plus Optional-challenges and Next-branch bullets against all three classes (doctrine restatement, self-referential design commentary, aphorism kicker). Each Key Concepts bullet is a distinct, concrete, first-occurrence claim. Closest call, line 47's coda 'The skill is old; only the surface is new.' is a substantive first-occurrence reframing, not a restatement of the header or a 'The point:' line -- stays inside. The new line-28 material is prose, not a bullet, so this per-bullet rule does not literally reach it; checked anyway for the (b) self-referential-design-commentary class in spirit -- it teaches the actual reading move (why two reads catch different misses), not meta-commentary that the student is inside a pedagogy, so it would pass even if scoped in. No violation anywhere in body.",
+      "evidence": "This rule is exactly why the diff-region cut is correct, not merely harmless: the removed sentence ('Module 4 sends off a session that runs without you watching, which is where you meet that limit yourself.') had subject = a module name and predicate = a promise about that later module's own beat — class (b), self-referential/predicate-leak, the slides-class face of check_student_facing.md §33, structurally identical to the maintainer-documented 2026-08-23 Willison cut at line 89 (same clause, same M3/M4 pre-read pattern). Post-cut, the remaining sentence carries only Da Costa's own claim and adds a concrete idea the slide didn't already hold — no residual violation. Checked all six Key Concepts bullets (unchanged by diff) plus Optional-challenges and Next-branch bullets against all three classes (doctrine restatement, self-referential commentary, aphorism kicker): each is a distinct, concrete, first-occurrence claim. Line 47's coda 'The skill is old; only the surface is new.' is a substantive reframing, not a restatement of the header or a 'The point:' line — stays inside.",
       "fix_hint": null,
       "blocking": false
     },
@@ -235,7 +255,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "3365d672b0fa4af79105fa3512df36cc969cb4e623a0a8409f09f781a81f7c30",
+      "carried_from": "600b391a5ea6bc9dba21d2afb0a557d4151feac548d62c3bdfe76214bd6107f8",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -246,7 +266,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "3365d672b0fa4af79105fa3512df36cc969cb4e623a0a8409f09f781a81f7c30",
+      "carried_from": "600b391a5ea6bc9dba21d2afb0a557d4151feac548d62c3bdfe76214bd6107f8",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -257,7 +277,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "3365d672b0fa4af79105fa3512df36cc969cb4e623a0a8409f09f781a81f7c30",
+      "carried_from": "600b391a5ea6bc9dba21d2afb0a557d4151feac548d62c3bdfe76214bd6107f8",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -283,5 +303,5 @@
   ],
   "blocking_findings_count": 0,
   "todos_count": 0,
-  "notes": "Rules 4, 11, 15 are excluded from this instance by design: the class brief resolved them N/A by shape_hash (3bf287f827d6a7ae, unchanged from the prior instance) and parked them in the prefill sidecar. They are intentionally NOT rows here — writing them myself would be the exact re-derivation the prefill mechanism exists to prevent. `prefill-instance.js ... --merge`, run immediately after this file was saved, splices those 3 rows back in (plus 2 check_writing.md mechanical PASS rows the shared sidecar also carries, out of this class's own compendium scope but supplied by the tooling itself, not by judge discretion). accept_notes_found lists every dated maintainer-block note the body-view extractor found; not all bear on slides-class rules, but line 93's 2026-08-28 addendum, line 95's §9/§34 carve-out, and line 103's §7 number-retraction carve-out were load-bearing for this verdict."
+  "notes": "Rules 4, 11, 15 are excluded from this instance by design: the class brief resolved them N/A by shape_hash (3bf287f827d6a7ae, unchanged since the prior instance) and parked them in the prefill sidecar. Writing them here would be the exact re-derivation the prefill mechanism exists to prevent; `prefill-instance.js ... slides --merge`, run immediately after this file was saved, splices those 3 rows back in, plus 2 check_writing.md mechanical PASS rows the shared sidecar also carries (out of this class's own compendium scope — check_writing.md is not in this brief — but supplied by the prefill tooling itself, not by judge discretion; left untouched per the dispatch instruction to emit rows only for rules the brief contains). accept_notes_found lists every dated maintainer-block note the body-view extractor found; the load-bearing ones for this verdict were line 89 (the sibling 2026-08-23 Willison predicate-leak cut, which the diff-region da Costa cut parallels but does not itself carry a note — none is owed for a cut that removes the only thing a rule would have caught), line 93 (2026-08-28 two-reads paragraph clearance, unaffected by this diff), line 95 (§9/§34 task-sizing bold carve-out), and line 103 (§7 number-retraction carve-out). No blocking findings; no TODOs — the only in-scope diff hunk left the file cleaner against rule 16 than before, and no other body line differs from the pinned commit."
 }

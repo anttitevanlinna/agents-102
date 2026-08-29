@@ -1,21 +1,61 @@
 {
   "class": "slides",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/threat-model-with-stride.md",
-  "body_sha": "5514740991136695b2738eb72c74d71bf8b05ab06b9f57d12e7366a3e3aa91cd",
+  "body_sha": "3acfbc4df9cb93bbcb87a62380b3bffcbe6bbbce7f44cf2ebc52ebe72a9c236f",
   "shape_hash": "04c8bbd89721df08",
   "verdict": "PASS",
   "training": "ae101",
   "chunk_map": [
-    {"index": 0, "heading": "Pick one threat, record the decision (H1/lede)", "lines": "1-13"},
-    {"index": 1, "heading": "Phase 1: Run the threat scan across your mapped surface", "lines": "15-25"},
-    {"index": 2, "heading": "Read the threat list, expect more than you'll use", "lines": "27-30"},
-    {"index": 3, "heading": "Phase 2: Pick the one threat worth hardening against", "lines": "32-42"},
-    {"index": 4, "heading": "Push back on the incident story, land the mitigation", "lines": "44-47"},
-    {"index": 5, "heading": "Phase 3: Write the decision as an ADR", "lines": "49-59"},
-    {"index": 6, "heading": "Read the ADR, check the voice and the lens", "lines": "61-64"},
-    {"index": 7, "heading": "Check where the ADR landed", "lines": "66-70"},
-    {"index": 8, "heading": "Ask whether the ADR loads into future sessions", "lines": "72-79"},
-    {"index": 9, "heading": "Save the map and the STRIDE walk before you clear", "lines": "81-89"}
+    {
+      "index": 0,
+      "heading": "Pick one threat, record the decision (H1/lede)",
+      "lines": "1-13"
+    },
+    {
+      "index": 1,
+      "heading": "Phase 1: Run the threat scan across your mapped surface",
+      "lines": "15-25"
+    },
+    {
+      "index": 2,
+      "heading": "Read the threat list, expect more than you'll use",
+      "lines": "27-30"
+    },
+    {
+      "index": 3,
+      "heading": "Phase 2: Pick the one threat worth hardening against",
+      "lines": "32-42"
+    },
+    {
+      "index": 4,
+      "heading": "Push back on the incident story, land the mitigation",
+      "lines": "44-47"
+    },
+    {
+      "index": 5,
+      "heading": "Phase 3: Write the decision as an ADR",
+      "lines": "49-59"
+    },
+    {
+      "index": 6,
+      "heading": "Read the ADR, check the voice and the lens",
+      "lines": "61-64"
+    },
+    {
+      "index": 7,
+      "heading": "Check where the ADR landed",
+      "lines": "66-70"
+    },
+    {
+      "index": 8,
+      "heading": "Ask whether the ADR loads into future sessions",
+      "lines": "72-79"
+    },
+    {
+      "index": 9,
+      "heading": "Save the map and the STRIDE walk before you clear",
+      "lines": "81-89"
+    }
   ],
   "rules_evaluated": [
     {
@@ -24,7 +64,7 @@
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm: a slide leaning on a referent never named strands the reader mid-deck. Traced every candidate: chunk 0 line 5 'the main quest window (*m3-security*)' and line 7 'the map you built' are pre-established by this module's earlier includes (verified in earn-the-trust.md Start here order: open-the-side-quest.md line 17 names Session (new,\"m3-security\") and line 5 'Security is the main quest'; map-the-access-surface.md lines 5/26/52/58 reinforce m3-security repeatedly — both files precede this one in the module's include order). Chunk 1 line 22 'the access-surface map from Exercise 1' resolves via the unpacked claim itself ('access-surface map' is unambiguous, session-artifact carve-out). Chunk 6 lines 63-64 'The Decision section'/'the Alternatives considered section' resolve against chunk 5's fenced prompt (raw line 58 lists 'Context / Decision / Consequences / Alternatives considered'), which renders visibly on the slide even though fenced content is exempt from being scored for violations itself. Chunk 7 line 68 'the M3 worktree'/'the side-quest' resolves both within its own chunk (line 69 unpacks it) and against this module's own signposting (earn-the-trust.md line 22 'Fork a sibling git worktree'; open-the-side-quest.md lines 5/13/37 establish 'side-quest lane' fully, preceding this file). No never-named or vague-with-full-history referent found in any chunk.",
+      "evidence": "Harm: a slide leaning on a referent never named strands the reader mid-deck. Walked every candidate in reading order. Chunk 1 line 20 'The subagent does the walk' uses a definite noun two lines before line 22 first uses the word 'subagent' explicitly ('invoke the STRIDE skill as a subagent') -- but both sit in the SAME chunk, and the per-chunk test (\"point at its antecedent INSIDE the chunk\") does not impose within-chunk line ordering the way it does across chunks; a slide is read as one visual unit. Chunk 1 line 22 'the access-surface map from Exercise 1' is explicit and self-naming (session-artifact carve-out; also verified as a real prior beat under rule 3). Chunk 6 lines 63-64 'The Decision section' / 'the Alternatives considered section' resolve against chunk 5's fenced prompt (line 79, 'Context / Decision / Consequences / Alternatives considered'), which precedes chunk 6 in reading order. Chunk 7 line 69 'the M3 worktree' / 'the side-quest' is unpacked in its own sentence ('The fork prompt called the worktree \"the side-quest\", and the scrollback has framed everything since as M3 work') so a reader needs no other file to follow it, on top of being genuinely earned in this same module's opening exercise. No never-named or vague-with-full-history referent found in any chunk.",
       "fix_hint": null,
       "blocking": true
     },
@@ -34,7 +74,7 @@
       "rule_lead": "Cross-file and positional callbacks.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm: pointing at another file by position only works if the deck starts where the writer assumed. Chunk 1 line 22 names the source by claim ('the access-surface map') in the same breath it says 'from Exercise 1' — the claim alone is sufficient to resolve the referent (only one access-surface map exists in the training), so this passes the rule's own worked example shape ('unpacked in the same sentence'). No sentence points at a prior file solely by position ('the opening lecture said...') without also naming its claim.",
+      "evidence": "Harm: pointing at another file by position only works if the deck starts where the writer assumed. Chunk 1 line 22 names the source by claim ('the access-surface map ... from Exercise 1') in one breath -- the claim itself carries the resolution, matching the rule's own worked PASS shape. Chunk 7 lines 68-69 name 'the fork prompt' and unpack its content in the same sentence ('called the worktree \"the side-quest\"') rather than locating it by position. No sentence points at a prior file solely by position (\"the opening lecture said...\") without also naming its claim.",
       "fix_hint": null,
       "blocking": true
     },
@@ -44,7 +84,7 @@
       "rule_lead": "Every backward reference points at a beat that exists.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm: a stranded callback sends the student hunting for a beat that was cut. Verified against earn-the-trust.md's current Start here list (read directly, not from cache): '[Exercise: Open the side quest]' (line 33) and '[Exercise: Map the access surface]' (line 37) both exist and precede this file (line 39) in the current include order. Both backward references in this file ('the map you built' / 'the access-surface map from Exercise 1' -> Map the access surface; 'the side-quest' / 'the M3 worktree' -> Open the side quest) resolve to beats confirmed present in the live module file.",
+      "evidence": "Harm: a stranded callback sends the student hunting for a beat that was cut. Read earn-the-trust.md's current 'Start here' include list directly (not cached): '[Exercise: Open the side quest]' (line 33), '[Exercise: Map the access surface]' (line 37), this file (line 39), '[Exercise: Author your test-strategy skill]' (line 41). The push-back-moves table in that same module file labels these Ex1/Ex2/Ex3 respectively, confirming 'Exercise 1' at this file's line 22 means Map the access surface. Both backward references here ('the map you built' / 'the access-surface map from Exercise 1' -> Map the access surface; 'the M3 worktree' / 'the side-quest' -> Open the side quest, which forks a worktree per that module's own What You'll Learn line 22) resolve to beats confirmed present in the live module file. The forward reference in the closer ('The next exercise authors a test-strategy skill') is not a rule-3 backward case, but also checks out against 'Author your test-strategy skill' at line 41.",
       "fix_hint": null,
       "blocking": true
     },
@@ -54,7 +94,7 @@
       "rule_lead": "Live-demo beats survive a text read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm: a guess/predict beat whose answer is narrated above it teaches nothing. Only ask-then-reveal shape in the file is chunk 8: the ask (line 74, 'Ask Claude whether this ADR rides into future sessions automatically') precedes the reveal (line 78, \"Claude's answer: no...\") in reading order, both same chunk and correctly sequenced. No other guess/predict beat exists in the file.",
+      "evidence": "Harm: a guess/predict beat whose answer is narrated above it teaches nothing. The only ask-then-reveal shape in the file is chunk 8: the ask (line 74, 'Ask Claude whether this ADR rides into future sessions automatically', plus the prompt fence at line 76) precedes the reveal (line 78, \"Claude's answer: no...\") in reading order, same chunk, correctly sequenced. No other guess/predict beat exists in the file.",
       "fix_hint": null,
       "blocking": true
     },
@@ -64,7 +104,7 @@
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm: a slide that says nothing standalone. Checked the shortest chunks specifically: chunk 2 (2 bullets, no fence) carries its own claim about why the scan over-produces and how to gauge scan depth; chunk 4 (2 bullets, no fence) carries the push-back rationale plus the land-the-mitigation instruction; chunk 6 (2 bullets) carries the voice-check plus the STRIDE-as-tool-not-lens worked example. None is a bare wait-state or single context-dependent fragment.",
+      "evidence": "Harm: a slide that says nothing standalone. Checked the thinnest chunks specifically: chunk 2 (lines 29-30, 2 bullets) carries its own claim about why the scan over-produces and how to gauge scan depth; chunk 4 (lines 46-47, 2 bullets) carries the push-back rationale plus the land-the-mitigation instruction; chunk 6 (lines 63-64, 2 bullets) carries the voice-check plus the STRIDE-as-tool-not-lens worked example. None is a bare wait-state or single context-dependent fragment.",
       "fix_hint": null,
       "blocking": false
     },
@@ -74,7 +114,7 @@
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm: a header the chunk's own content contradicts misleads a skimming reader. Checked all 9 '##' headers against their bodies line by line: each states exactly what its chunk does (e.g. 'Check where the ADR landed' -> body checks main-repo-vs-worktree path; 'Ask whether the ADR loads into future sessions' -> body asks then answers that exact question). No contradiction found in any chunk.",
+      "evidence": "Harm: a header the chunk's own content contradicts misleads a skimming reader. Checked all 9 '##' headers against their bodies: e.g. 'Check where the ADR landed' (line 66) -> body checks main-repo-vs-worktree path (lines 68-70); 'Ask whether the ADR loads into future sessions' (line 72) -> body asks then answers exactly that (lines 74-79). Chunk 9's header ('Save the map and the STRIDE walk before you clear') covers the save instruction directly (lines 83-85); the trailing 'What happened:'/'What this sets up:' lines (87-89) are the standard architecture-mandated exercise-closer chrome, not a second competing claim the header would need to also cover. No contradiction found.",
       "fix_hint": null,
       "blocking": false
     },
@@ -84,7 +124,7 @@
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm: cadence tics read as machine-authored on a slide. Checked all five sub-items across the full body independently: (a) 'Not X. Not Y. Z.' triple -- none ('One threat, not five' at line 36 is a single two-part contrast, not the banned three-part shape). (b) anaphora/epistrophe triples -- none. (c) self-grading superlatives -- none (grepped for 'most useful'/'one of the' style phrasing, zero hits in body). (d) number+own-retraction -- none (the four time budgets at lines 3, 17, 34, 51 are plain durations, no hedge attached). (e) abstraction-noun stacks -- none; vocabulary stays concrete throughout (access surface, incident story, ADR, worktree). (f) verb triplets with an empty leg -- none. Aggregated into this one rule-7 entry per the completeness contract.",
+      "evidence": "Harm: cadence tics read as machine-authored on a slide. Checked all sub-items across the full body: (a) 'Not X. Not Y. Z.' triple -- none ('One threat, not five' at line 36 is a single two-part contrast, not the banned three-part shape). (b) anaphora/epistrophe triples -- none. (c) self-grading superlatives -- none; grepped for 'most useful'/'one of the'-style phrasing, zero hits. (d) number+own-retraction -- none; the four time budgets (lines 3, 17, 34, 51) are plain durations with no hedge. (e) abstraction-noun stacks -- none; vocabulary stays concrete (access surface, incident story, ADR, worktree, diff). (f) verb triplets with an empty leg -- none. Aggregated into this one rule-7 entry per the completeness contract.",
       "fix_hint": null,
       "blocking": true
     },
@@ -94,7 +134,7 @@
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm: repo/authorial vocabulary a room can't parse. Grepped body for 'compendium', 'firing', 'forcing function', 'beat', 'mood', 'Connections' (as proper noun) -- zero hits in body (all appear only in the maintainer/backing blocks, which are cut). 'Access surface' / 'the mapped surface' (chunk 0, chunk 1 header) is domain-standard security vocabulary (cf. 'attack surface'), covered by the rule's own carve-out distinguishing this from authorial 'surface'-as-writing-jargon. 'main quest'/'side quest'/'worktree' are the training's own established teaching vocabulary (earned in the prior exercise, not leaked internal dialect).",
+      "evidence": "Harm: repo/authorial vocabulary a room can't parse. Grepped body for 'compendium', 'firing', 'forcing function', 'beat', 'mood', 'Connections' (proper noun) -- zero hits in body (all such terms appear only in the maintainer/backing blocks, which sit below the cut). 'Access surface'/'your mapped surface' (chunk 0 line 7, chunk 1 header) is domain-standard security vocabulary (cf. 'attack surface'), matching the rule's own carve-out distinguishing this from authorial 'surface'-as-writing-jargon. 'Main quest'/'side quest'/'worktree' are this module's own established teaching vocabulary, earned in the module's opening exercise, not leaked internal dialect.",
       "fix_hint": null,
       "blocking": true
     },
@@ -104,7 +144,7 @@
       "rule_lead": "Emphasis budget -- bold is for handles, and go very lightly.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm: over-bolding trains readers to ignore bold as a signal. Every bold span in the body is widget/label chrome the file's own maintainer note (raw line 97) already accept-notes: chunk 0's **Time:**/**Window:**/**What you do:**/**What you build:**/**The point:**, chunk 9's **Worth keeping?**/**What happened:**/**What this sets up:**. Scanned every bullet lead across all 9 chunks for a bolded whole-sentence lead (the pre-2026-07-09 monoculture shape) -- none found.",
+      "evidence": "Harm: over-bolding trains readers to ignore bold as a signal. Every bold span in the body is short (<=3 words) label chrome: chunk 0's **Time:**/**Window:**/**What you do:**/**What you build:**/**The point:**, chunk 9's **Worth keeping?**/**What happened:**/**What this sets up:**. The 2026-07-09 emphasis-pass maintainer note (raw line 97) names five of these seven explicitly as untouched chrome; 'Worth keeping?' and the pair 'What happened:'/'What this sets up:' function identically (question/label lead-ins on their own line, not narrative sentences) and were left alone by that same pass, consistent with treating them the same way. Scanned every bullet lead across all 9 chunks for a bolded whole-sentence lead (the pre-2026-07-09 monoculture shape) -- none found; no chunk carries more than one narrative-bold element (the chrome labels are structural, not narrative).",
       "fix_hint": null,
       "blocking": false
     },
@@ -114,7 +154,7 @@
       "rule_lead": "Presence precedes content -- verify against the composed deck, not long-read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm: content invisible in the deck gets rules 1-9 applied to a slide that never renders. This file is included in earn-the-trust.md via the standard '[Exercise: Threat-model with STRIDE](exercises/threat-model-with-stride.md)' link (verified live at line 39), the same include shape every AE101 exercise uses to reach the composed deck via .phase--exercise / section.module wrapping. No phase-less bare prose section exists in this file. Ran the mechanical checks below (rules 11/12/14) directly against this file path and all three executed and reported per-file results, corroborating the file is a recognized slide-bearing unit.",
+      "evidence": "Harm: content invisible in the deck gets rules 1-9 applied to a slide that never renders. This file is included in earn-the-trust.md (verified live, line 39: '[Exercise: Threat-model with STRIDE](exercises/threat-model-with-stride.md)'), the same include shape every AE101 exercise uses to reach the composed deck via .phase--exercise wrapping. No phase-less bare prose section exists in this file -- the whole body sits under the exercise wrapper by construction. The mechanical checks for rules 11/12/14 (below) ran directly against this file path and all reported per-file results, corroborating it is a recognized slide-bearing unit.",
       "fix_hint": null,
       "blocking": true
     },
@@ -124,7 +164,7 @@
       "rule_lead": "Numbering -- position is computed, content ordinals are linted.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Ran `node scripts/check-slide-numbering.js curriculum/exercises/threat-model-with-stride.md` -> exit 0, output 'OK — 60 files, Phase/Step numbering consistent.' Body's Phase 1 / Phase 2 / Phase 3 headers are consecutive from 1 with no gaps and no hand-numbered slide-position headers.",
+      "evidence": "Ran `node scripts/check-slide-numbering.js --file curriculum/exercises/threat-model-with-stride.md` -> exit 0, output 'OK — 1 files, Phase/Step numbering consistent.' Body's Phase 1 / Phase 2 / Phase 3 headers are consecutive from 1 with no gaps and no hand-numbered slide-position headers; no in-body cross-reference to a 'Phase K' number.",
       "fix_hint": null,
       "blocking": false
     },
@@ -134,20 +174,9 @@
       "rule_lead": "Page geometry dies at the cut; reading order survives.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Ran `node scripts/check-slide-deixis.js curriculum/exercises/threat-model-with-stride.md` -> exit 0, output 'OK — 60 files, no page-geometry pointers across the slide cut.' Manually re-checked body for 'below/above/further down/at the top of this page' phrasing -- none in body; the only 'earlier in this scrollback' phrase sits inside the fenced prompt in chunk 1, exempt as fenced content.",
+      "evidence": "Ran `node scripts/check-slide-deixis.js --file curriculum/exercises/threat-model-with-stride.md` -> exit 0, output 'OK — 1 files, no page-geometry pointers across the slide cut.' Corroborated with `grep -noE \"\\\\b(below|above|further down|top of this page|see below|earlier on this page|further up)\\\\b\" <body view>` -> zero hits. The only positional-feeling phrase in the file, 'the path is earlier in this scrollback' / 'Find the access-surface map's path in this scrollback', sits inside the fenced prompt block (chunk 1) and points at the STUDENT'S OWN terminal scrollback, not at another page of this document -- outside this rule's scope (fences are exempt from scoring, and scrollback is not page position).",
       "fix_hint": null,
       "blocking": true
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 13,
-      "rule_lead": "In-deck links work now; whether they EARN their place is open.",
-      "verdict": "N/A",
-      "chunks_flagged": [],
-      "evidence": null,
-      "na_reason": "no in-body markdown links in this file's body (only the structural include-link in the module file points at it, out of this file's own scope); rule is an explicit review surface, never a gate.",
-      "fix_hint": null,
-      "blocking": false
     },
     {
       "compendium": "check_slides.md",
@@ -155,7 +184,7 @@
       "rule_lead": "Slide size -- 210 words / 6 bullets, and the cap is machine-checked.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/exercises/threat-model-with-stride.md` -> output 'files: 1  slides: 9  limits: 210 words / 6 bullets ... oversized: 0 ... every slide is within limits.' No maintainer accept-note present or needed.",
+      "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/exercises/threat-model-with-stride.md` -> 'files: 1  slides: 9  limits: 210 words / 6 bullets ... oversized: 0 ... every slide is within limits.' No maintainer accept-note present or needed.",
       "fix_hint": null,
       "blocking": false
     },
@@ -165,7 +194,7 @@
       "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm: a declarative heading inside an exercise where none is earned muddies the imperative/phase-label mood exercises need. Checked all 9 '##' headings verbatim: 3 are 'Phase N: <label>' phase labels, 6 are imperative verb phrases ('Read the threat list...', 'Push back on...', 'Read the ADR...', 'Check where...', 'Ask whether...', 'Save the map...'). None is a bare declarative claim; consistent exercise mood throughout.",
+      "evidence": "Harm: a declarative heading inside an exercise where none is earned muddies the imperative/phase-label mood exercises need. Checked all 9 '##' headings verbatim: 3 are 'Phase N: <label>' phase labels, 6 are imperative verb phrases ('Read the threat list, expect more than you'll use'; 'Push back on the incident story, land the mitigation'; 'Read the ADR, check the voice and the lens'; 'Check where the ADR landed'; 'Ask whether the ADR loads into future sessions'; 'Save the map and the STRIDE walk before you clear'). None is a bare declarative claim; this exercise has no law/consolidation moment that would earn one. Consistent exercise mood throughout.",
       "fix_hint": null,
       "blocking": false
     },
@@ -175,9 +204,21 @@
       "rule_lead": "A bullet earns its slot or dies -- three classes that read as rigour and carry nothing.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm: a doctrine restatement / self-referential design note / aphorism kicker adds no move, object, tell, or priority the slide doesn't already carry. Checked each of the three classes against the CURRENT body (this rule and this file's 2026-08-25 lean pass share a date; the diff against 1abb84c6 shows the maintainer already cut six near-miss instances -- 'It will have more entries than you want to deal with.', 'You are picking a single threat worth hardening against.', 'You save it as the ADR next.', the Phase-3 compliance-checkbox duplicate, half the worktree-inference bullet, 'Not everything survived to disk.', and the closer's CISO line). Closest surviving candidates, each checked and kept: chunk 2 line 29 'The output over-produces on purpose... that rejection is the point' restates the lede's 'STRIDE's value is rejection, not enumeration' but instantiates it at the exact moment the student feels the long list, which is new work (explains WHY, not a re-announcement); chunk 8 line 79 'that explicit list is the lesson' foreshadows M4's payoff rather than narrating this file's own pedagogy; chunk 6 line 64 'You decide.' is a permission-grant, not a koan restating the header. No surviving instance of doctrine restatement, self-referential design commentary, or aphorism kicker found.",
+      "evidence": "Harm: a doctrine restatement / self-referential design note / aphorism kicker adds no move, object, tell, or priority the slide doesn't already carry. This file's own 2026-08-25 lean-pass maintainer note (raw line 93) already cut six near-miss instances of exactly this shape ('It will have more entries than you want to deal with.', 'You are picking a single threat worth hardening against.', 'You save it as the ADR next.', the Phase-3 compliance-checkbox duplicate, half the worktree-inference bullet, 'Not everything survived to disk.', the closer's CISO line). Closest surviving candidate, examined and kept: chunk 3 lines 37-38 'The agent proposes the incident story; you judge whether it fits. You are not inventing the worst case from scratch. Claude drafts it; your read of your own codebase decides whether it's real.' -- the third sentence echoes the first in different words, but it adds a fact the first sentence doesn't carry (the judgment is grounded specifically in codebase familiarity, not judgment-in-the-abstract), which is the mechanism behind the middle sentence's reassurance ('not inventing from scratch'). It stays inside the rule, narrowly -- flagged separately as a TODO for the maintainer's eye, not filed as a rule violation. Also checked chunk 2 line 29 ('that rejection is the point, not a failure of the scan') against the lede's 'STRIDE's value is rejection, not enumeration' (chunk 0 line 11): the chunk-2 line applies the doctrine at the exact moment the student feels the long list and adds a new instruction ('you reject most of its entries in the next phase') the lede doesn't carry -- kept. No surviving instance of self-referential design commentary or aphorism kicker found.",
       "fix_hint": null,
       "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 13,
+      "rule_lead": "In-deck links work now; whether they EARN their place is open.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no in-body markdown links in this file's body (only the structural include-link in the module file points at it, out of this file's own scope); rule is an explicit review surface, never a gate.",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "5514740991136695b2738eb72c74d71bf8b05ab06b9f57d12e7366a3e3aa91cd",
+      "carried_shape": "04c8bbd89721df08"
     }
   ],
   "blocking_findings_count": 0,

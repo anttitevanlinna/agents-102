@@ -3,18 +3,54 @@
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/walk-and-send-off.md",
   "verdict": "PASS",
   "training": "ae101",
-  "body_sha": "b878e7cfad2b090dfb9d43d090dc730359c13228ae8e2b9a372e76263ad35d2d",
+  "body_sha": "ae1b4cf5dbbeb5e4aeea66f6c17b9b27d02e4b3850d90a6d3c81c5fe8a7ed18e",
   "shape_hash": "2831c9dd6f527ac5",
   "chunk_map": [
-    {"index": 0, "heading": "# Prep the run, *fill the gaps* (H1 + lede)", "lines": "1-19"},
-    {"index": 1, "heading": "Phase 1: Pick the task you'll send off", "lines": "21-29"},
-    {"index": 2, "heading": "Push back until the task is one end-to-end slice", "lines": "31-34"},
-    {"index": 3, "heading": "Phase 2: Walk your system against the task", "lines": "36-46"},
-    {"index": 4, "heading": "Correct the list and reprioritise it", "lines": "48-50"},
-    {"index": 5, "heading": "Fill the worst two or three gaps", "lines": "52-60"},
-    {"index": 6, "heading": "Match each fill to its shape and home", "lines": "62-69"},
-    {"index": 7, "heading": "Push back when Claude drifts from the codebase", "lines": "71-73"},
-    {"index": 8, "heading": "Compare notes, then tidy the folder", "lines": "75-80"}
+    {
+      "index": 0,
+      "heading": "# Prep the session, *fill the gaps* (H1 + lede)",
+      "lines": "1-19"
+    },
+    {
+      "index": 1,
+      "heading": "Phase 1: Pick the task you'll send off",
+      "lines": "21-29"
+    },
+    {
+      "index": 2,
+      "heading": "Push back until the task is one end-to-end slice",
+      "lines": "31-34"
+    },
+    {
+      "index": 3,
+      "heading": "Phase 2: Walk your system against the task",
+      "lines": "36-46"
+    },
+    {
+      "index": 4,
+      "heading": "Correct the list and reprioritise it",
+      "lines": "48-50"
+    },
+    {
+      "index": 5,
+      "heading": "Fill the worst two or three gaps",
+      "lines": "52-60"
+    },
+    {
+      "index": 6,
+      "heading": "Match each fill to its shape and home",
+      "lines": "62-69"
+    },
+    {
+      "index": 7,
+      "heading": "Push back when Claude drifts from the codebase",
+      "lines": "71-73"
+    },
+    {
+      "index": 8,
+      "heading": "Compare notes, then tidy the folder",
+      "lines": "75-80"
+    }
   ],
   "rules_evaluated": [
     {
@@ -23,7 +59,7 @@
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Walked every pronoun/demonstrative under the sequential read. Chunk 2 L34 'You'll use this task again next module' — 'this task' resolves to the scoped candidate from chunk 1 (same/prior chunk). Chunk 3 L41 'the worst few gaps' resolves to 'thin spots'/'gaps' both named already in chunk 0's lede (L15 'the worst gaps', L17 'the thin spots') — same-file arc-earned reuse, not a violation. Chunk 5 L54 'not all five' resolves to chunk 3's 'ranked top-five' (L44), one chunk back. Chunk 6 L64 'the audit tags each gap with one' resolves to the Phase 2 audit named across chunk 3 (L40, L44) — prior chunk, present and unchanged. Chunk 6 L68 'not mid-send-off' — 'the send-off' is never named inside THIS file's body before this point, but the enclosing module (`run-the-first-experiment.md`) names it in its own Prework (L14 'read it before the send-off') and What You'll Learn (L23 '**Send off** the task un-packaged') ahead of this file's include (L39) — module include-order counts as prior context per the compendium's own module-arc-vocabulary clause, so this resolves. No referent in the body is left unnamed, vague-with-full-history, or stranded by the re-chunk.",
+      "evidence": "Since the last slides pin (d5aa7e3d) the only body change is the H1 rename, chunk 0 L1 'Prep the run' -> 'Prep the session, fill the gaps'; re-walked the whole sequential read against it. Chunk 0 L5's Session widget and L11 'Before the new session, check your working tree and branch' both resolve in-chunk ('the new session' = the widget two lines above) and now echo the new title rather than fighting it. Chunk 2 L34 'You'll use this task again next module' resolves to the scoped candidate from chunk 1. Chunk 3 L41 'the worst few gaps' resolves to chunk 0's L15 'the worst gaps' / L17 'the thin spots'. Chunk 5 L54 'not all five' resolves to chunk 3's 'ranked top-five' (L44). Chunk 6 L64 'the audit tags each gap with one' resolves to the Phase 2 audit named across chunk 3 (L40, L44). Chunk 6 L68 'not mid-send-off' - 'the send-off' is not named earlier in THIS file's body, but the enclosing module (`run-the-first-experiment.md`) names it in Prework (L14) and What You'll Learn (L23 '**Send off** the task un-packaged') ahead of this file's include (L39, itself now retitled 'Exercise: Prep the session, fill the gaps' in lockstep) - module include-order counts as prior context per the compendium's own clause, so this resolves. No referent left unnamed, vague-with-full-history, or stranded by the re-chunk.",
       "fix_hint": null,
       "blocking": true
     },
@@ -33,29 +69,7 @@
       "rule_lead": "Cross-file and positional callbacks.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "No 'the opening lecture said' / 'as we saw earlier in [file]' shaped pointer anywhere in the body. The two candidates that touch other files: chunk 2 L34 and chunk 5 L54, both 'next module' — forward-pointing by relation (naming what happens later), not a positional callback INTO another file's slide content, and nothing the reader must resolve now. Chunk 6 L68's 'not mid-send-off' names the send-off by term (via the module's own signposting, see rule 1), not by page position — satisfies the 'name it, don't locate it' carve-out even though it isn't a link.",
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 3,
-      "rule_lead": "Every backward reference points at a beat that exists.",
-      "verdict": "N/A",
-      "chunks_flagged": [],
-      "evidence": null,
-      "na_reason": "no 'the X you did/saw/caught' backward beat-reference pattern in body (grep -n -iE \"you (did|saw|caught|built|wrote|ran|found|hit|used|picked|scoped|named)\\\\b\" → 0 hits)",
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 4,
-      "rule_lead": "Live-demo beats survive a text read.",
-      "verdict": "N/A",
-      "chunks_flagged": [],
-      "evidence": null,
-      "na_reason": "no guess-before-reveal / predict-then-watch beat in this file",
+      "evidence": "No 'the opening lecture said' / 'as we saw earlier in [file]' shaped pointer anywhere in the body (unaffected by the title-only diff). Candidates touching other files: chunk 2 L34 and chunk 5 L54, both 'next module' - forward-pointing by relation, not a positional callback into another file's slide content. Chunk 6 L68's 'not mid-send-off' names the send-off by term (via the module's own signposting, rule 1), not by page position - satisfies the 'name it, don't locate it' carve-out.",
       "fix_hint": null,
       "blocking": true
     },
@@ -65,7 +79,7 @@
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Closest candidates are the two single-bullet chunks. Chunk 4 (L48-50): 'The ranking is Claude's read of your system. Tell it what's wrong, what's missing, and what you'd move up.' — a complete, actionable directive, not a wait-state fragment. Chunk 7 (L71-73): 'If Claude says something about your codebase you didn't tell it, ask where it read that.' — likewise a self-carrying diagnostic-plus-action. Neither is a context-dependent bullet with nothing of its own to say.",
+      "evidence": "Closest candidates are the two single-bullet chunks. Chunk 4 (L48-50): 'The ranking is Claude's read of your system. Tell it what's wrong, what's missing, and what you'd move up.' - a complete, actionable directive. Chunk 7 (L71-73): 'If Claude says something about your codebase you didn't tell it, ask where it read that.' - a self-carrying diagnostic-plus-action. Neither is a context-dependent wait-state fragment.",
       "fix_hint": null,
       "blocking": false
     },
@@ -75,7 +89,7 @@
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Closest candidate: chunk 2 'Push back until the task is one end-to-end slice' (L31) — its own bullets (L33 'Push back when the screening goes off-topic, or misses something you know about the codebase'; L34 'You'll use this task again next module') describe the push-back mechanism but don't restate 'end-to-end slice' verbatim; the chunk is not contradicted, it's just one step removed from its header's exact wording. Strongest positive: chunk 3 'Phase 2: Walk your system against the task' (L36) is answered almost verbatim by its own first bullet (L40) 'walk the system you have against the system the task needs.' Chunk 6 'Match each fill to its shape and home' (L62) is answered point-for-point by the four shape-to-destination bullets (L66-69). No header is contradicted by its chunk's content.",
+      "evidence": "Chunk 0's new header 'Prep the session, *fill the gaps*' is answered by its own lede: L11 'Before the new session, check your working tree and branch' carries 'session', and L13-15's 'What you do'/'What you build' bullets carry 'fill the worst gaps' - no contradiction from the rename. Chunk 3 'Phase 2: Walk your system against the task' (L36) is answered almost verbatim by L40 'walk the system you have against the system the task needs.' Chunk 6 'Match each fill to its shape and home' (L62) is answered point-for-point by the four shape-to-destination bullets (L66-69). No header is contradicted by its chunk's content.",
       "fix_hint": null,
       "blocking": false
     },
@@ -85,7 +99,7 @@
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Ran `grep -nE \"Not [A-Za-z].*\\\\. Not [A-Za-z]\"` on body lines 1-81 → 0 hits (no 'Not X. Not Y. Z.'). Ran `grep -niE \"one of the (most|best)|the most (useful|important|valuable)\"` on body lines 1-81 → 0 hits (no self-grading superlative; value-prop-leak sub-item clean). Manual scan of all 8 chunks for anaphora/epistrophe triples: none — every bullet is topically distinct, no repeated sentence-frame across three lines. Numbers used ('one or two' L25, 'top-five'/'five' L40/L44, 'two or three, not all five' L54) are plain counts, none stated then walked back. No abstraction-noun stacks — language stays concrete throughout ('observations/', 'CLAUDE.local.md', 'a connector', 'the Notion page'). No verb-triplet sentence with an empty leg anywhere in the body.",
+      "evidence": "Ran `grep -nE \"Not [A-Za-z].*\\. Not [A-Za-z]\"` on the body projection -> 0 hits. Ran `grep -niE \"one of the (most|best)|the most (useful|important|valuable)\"` on the body projection -> 0 hits (self-grading-superlative / value-prop-leak sub-item clean). Manual scan of all 9 chunks for anaphora/epistrophe triples: none. Numbers used ('one or two' L25, 'top-five'/'five' L40/L44, 'two or three, not all five' L54) are plain counts, none stated then walked back. No abstraction-noun stacks - language stays concrete ('observations/', 'CLAUDE.local.md', 'a connector', 'the Notion page'). No verb-triplet sentence with an empty leg.",
       "fix_hint": null,
       "blocking": true
     },
@@ -95,37 +109,37 @@
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Ran `grep -n -iE \"\\\\bsurface(s)?\\\\b|\\\\bcompendium\\\\b|forcing function|\\\\bbeat(s)?\\\\b|\\\\bmood\\\\b|\\\\bconnections\\\\b\" curriculum/exercises/walk-and-send-off.md` — every hit lands at line 88 or later, inside the maintainer/backing block (maintainer cut at line 82); 0 hits in body lines 1-81. 'Session' (chunk 0, L5) is the canonical exercise widget label defined in `curriculum/widgets.md`, not smuggled repo dialect.",
+      "evidence": "Ran `grep -n -iE \"\\bsurface(s)?\\b|\\bcompendium\\b|forcing function|\\bbeat(s)?\\b|\\bmood\\b|\\bconnections\\b\" curriculum/exercises/walk-and-send-off.md` -> every hit lands at line 88 or later, inside the maintainer/backing block (maintainer cut at line 82); 0 hits in body lines 1-81. 'Session' (chunk 0, L5, and the new H1) is the canonical exercise widget label / ordinary Claude Code term defined in `curriculum/widgets.md`, not smuggled repo dialect.",
       "fix_hint": null,
       "blocking": true
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 9,
-      "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
+      "rule_lead": "Emphasis budget - bold is for handles, and go very lightly.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Chunk 1 L25 bold 'Bigger than a typo-fix, smaller than a big epic.' is the §34 task-sizing exception (whole-sentence bold mandated by §34, outranks §9) — confirmed against the file's own maintainer accept-note at L84 ('Phase 1 carries the §34 ceiling in one bullet'). Chunk 6 L66-69's four bolds ('Observation or rule:' / 'Sharpen an existing rule:' / 'Wire a connector:' / 'Bring the material in:') are a fill-shape menu — maintainer accept-note at L90 explicitly names them 'the four fill-shape menu handles,' each ≤4 words, matching the reading-list/menu waiver (scanned by handle, not read as narrative). Chunk 3's single 'Gap analysis' bold (L40) is one handle, inside the default ≤1-per-slide budget. No other chunk carries any bold.",
+      "evidence": "Chunk 1 L25 bold 'Bigger than a typo-fix, smaller than a big epic.' is the §34 task-sizing exception (whole-sentence bold mandated by §34, outranks §9) - confirmed against the maintainer accept-note at L84. Chunk 6 L66-69's four bolds ('Observation or rule:' / 'Sharpen an existing rule:' / 'Wire a connector:' / 'Bring the material in:') are a fill-shape menu, each <=4 words, matching the reading-list/menu waiver - confirmed by the maintainer accept-note at L90, which since d5aa7e3d was reworded to also name chunk 3's single 'Gap analysis' bold (L40) as sanctioned; the body's bold placement is unchanged, only the maintainer's description of it caught up. Chunk 3's 'Gap analysis' bold is one handle, inside the default <=1-per-slide budget. No other chunk carries any bold.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 10,
-      "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
+      "rule_lead": "Presence precedes content - verify against the composed deck, not long-read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "This file is included via the standard `[Exercise: Prep the run, fill the gaps](exercises/walk-and-send-off.md)` link (`run-the-first-experiment.md` L39), the same include shape every AE101 exercise uses to land inside `.phase--exercise` in `buildDeckModel`. Body carries no `<!--flag:module:X-->` / `<!--flag:no-module:X-->` runtime fork and no prework/supplementary/reference section that the phase-wrapper requirement could drop. Ran `node scripts/check-slide-size.js --file curriculum/exercises/walk-and-send-off.md` → 'files: 1  slides: 8 ... oversized: 0', confirming the same composed-deck resolution this rule requires finds and measures all 8 `##` sections.",
+      "evidence": "File is included via `[Exercise: Prep the session, fill the gaps](exercises/walk-and-send-off.md)` (`run-the-first-experiment.md` L39, itself renamed in lockstep with this file's H1), the standard include shape that lands inside `.phase--exercise` in `buildDeckModel`. No `<!--flag:module:X-->` / `<!--flag:no-module:X-->` runtime fork in the body. Ran `node scripts/check-slide-size.js --file curriculum/exercises/walk-and-send-off.md` -> 'files: 1  slides: 8 ... oversized: 0', confirming the composed-deck resolution finds and measures all 8 `##` sections.",
       "fix_hint": null,
       "blocking": true
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 11,
-      "rule_lead": "Numbering — position is computed, content ordinals are linted.",
+      "rule_lead": "Numbering - position is computed, content ordinals are linted.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Ran `node scripts/check-slide-numbering.js` → 'OK — 60 files, Phase/Step numbering consistent.' (repo-wide, this file included, no flag emitted for it). Manual check on body lines 1-81 confirms the only 'Phase' occurrences are the two headers themselves (L21 'Phase 1', L36 'Phase 2'), consecutive from 1, with zero in-body prose cross-reference to a 'Phase N' ordinal.",
+      "evidence": "Ran `node scripts/check-slide-numbering.js` -> 'OK - 60 files, Phase/Step numbering consistent.' (repo-wide, this file included, no flag for it). Manual check on the body confirms the only 'Phase' occurrences are the two headers themselves (L21 'Phase 1', L36 'Phase 2'), consecutive from 1, zero in-body prose cross-reference to a 'Phase N' ordinal.",
       "fix_hint": null,
       "blocking": false
     },
@@ -135,28 +149,17 @@
       "rule_lead": "Page geometry dies at the cut; reading order survives.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Ran `node scripts/check-slide-deixis.js curriculum/exercises/walk-and-send-off.md` → 'OK — 60 files, no page-geometry pointers across the slide cut.' (this file carries no flagged or accepted pointer, i.e. zero found in it). Closest candidate by eye: chunk 1 L27 'add them after the colon' points at the prompt block immediately following in the SAME chunk (L29) — same-chunk paste-pointer, spatially true where it renders, not a cross-slide geometry claim.",
+      "evidence": "Ran `node scripts/check-slide-deixis.js curriculum/exercises/walk-and-send-off.md` -> 'OK - 60 files, no page-geometry pointers across the slide cut.' Closest candidate by eye: chunk 1 L27 'add them after the colon' points at the prompt block immediately following in the SAME chunk (L29) - same-chunk paste-pointer, spatially true where it renders.",
       "fix_hint": null,
       "blocking": true
     },
     {
       "compendium": "check_slides.md",
-      "rule_index": 13,
-      "rule_lead": "In-deck links work now; whether they EARN their place is open.",
-      "verdict": "N/A",
-      "chunks_flagged": [],
-      "evidence": null,
-      "na_reason": "no in-body markdown links (grep '\\[.*\\](' on body lines 1-81 → 0 hits; absent from check-slide-deixis.js --links)",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_slides.md",
       "rule_index": 14,
-      "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
+      "rule_lead": "Slide size - 210 words / 6 bullets, and the cap is machine-checked.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/exercises/walk-and-send-off.md` → 'files: 1  slides: 8  limits: 210 words / 6 bullets  oversized: 0' and '✓ every slide is within limits'. No accept-note needed or present.",
+      "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/exercises/walk-and-send-off.md` -> 'files: 1  slides: 8  limits: 210 words / 6 bullets  oversized: 0' and 'every slide is within limits'. No accept-note needed or present.",
       "fix_hint": null,
       "blocking": false
     },
@@ -166,19 +169,55 @@
       "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "All 8 `##` headings are imperative or phase-label form: 'Phase 1: Pick the task you'll send off', 'Push back until the task is one end-to-end slice', 'Phase 2: Walk your system against the task', 'Correct the list and reprioritise it', 'Fill the worst two or three gaps', 'Match each fill to its shape and home', 'Push back when Claude drifts from the codebase', 'Compare notes, then tidy the folder'. None is a declarative law-statement; correct register for an exercise file, and this file is not one of the two declaratives the compendium's 2026-08-15 corpus measurement names (close-the-ticket.md, fix-tests-first.md).",
+      "evidence": "All 8 `##` headings are imperative or phase-label form ('Phase 1: Pick the task you'll send off', 'Push back until the task is one end-to-end slice', 'Phase 2: Walk your system against the task', 'Correct the list and reprioritise it', 'Fill the worst two or three gaps', 'Match each fill to its shape and home', 'Push back when Claude drifts from the codebase', 'Compare notes, then tidy the folder'). None is a declarative law-statement; correct register for an exercise file, and this file is not one of the two declaratives the compendium's 2026-08-15 corpus measurement names.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 16,
-      "rule_lead": "A bullet earns its slot or dies — three classes that read as rigour and carry nothing.",
+      "rule_lead": "A bullet earns its slot or dies - three classes that read as rigour and carry nothing.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Checked every bullet against the three classes (doctrine restatement, self-referential design commentary, aphorism kicker). None found: every bullet in this file adds a move, a destination, or a concrete criterion the slide doesn't already hold (e.g. L66-69 each name a distinct destination; L73 names a concrete diagnostic question). Closest candidate: L41 'Filling the worst few gaps is worth more than closing them all' and L54 'probably two or three, not all five' cover related ground, but the first states the general prioritisation principle at the point Phase 2 introduces the audit, and the second operationalises it into a concrete count at the point the student actually picks gaps to fill — sequence into a specific instruction, not a restatement carrying nothing new. No self-referential design commentary (no 'by design' / pedagogy-naming language) or aphorism kicker (no koan restating a header or the lede's 'The point:' line) anywhere in the body.",
+      "evidence": "Checked every bullet against the three classes (doctrine restatement, self-referential design commentary, aphorism kicker). None found: L66-69 each name a distinct destination; L73 names a concrete diagnostic question. Closest candidates: L41 'Filling the worst few gaps is worth more than closing them all' and L54 'probably two or three, not all five' cover related ground, but the first states the prioritisation principle at the point Phase 2 introduces the audit and the second operationalises it into a concrete count at the point the student actually picks - a sequenced instruction, not a restatement. No self-referential design commentary or aphorism kicker anywhere in the body.",
       "fix_hint": null,
       "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 3,
+      "rule_lead": "Every backward reference points at a beat that exists.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no 'the X you did/saw/caught' backward beat-reference pattern in body (grep -n -iE \"you (did|saw|caught|built|wrote|ran|found|hit|used|picked|scoped|named)\\\\b\" → 0 hits)",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "b878e7cfad2b090dfb9d43d090dc730359c13228ae8e2b9a372e76263ad35d2d",
+      "carried_shape": "2831c9dd6f527ac5"
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 4,
+      "rule_lead": "Live-demo beats survive a text read.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no guess-before-reveal / predict-then-watch beat in this file",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "b878e7cfad2b090dfb9d43d090dc730359c13228ae8e2b9a372e76263ad35d2d",
+      "carried_shape": "2831c9dd6f527ac5"
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 13,
+      "rule_lead": "In-deck links work now; whether they EARN their place is open.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no in-body markdown links (grep '\\[.*\\](' on body lines 1-81 → 0 hits; absent from check-slide-deixis.js --links)",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "b878e7cfad2b090dfb9d43d090dc730359c13228ae8e2b9a372e76263ad35d2d",
+      "carried_shape": "2831c9dd6f527ac5"
     }
   ],
   "blocking_findings_count": 0,

@@ -1,7 +1,7 @@
 {
   "class": "storytelling",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/getting-going.md",
-  "body_sha": "548ab432c860bfdd3bc39338acceb9d78160a71659764ac2baa842cc3e12da93",
+  "body_sha": "b0931d9f3ab811b984691c8e09d6df7def7e700b580859d5656b7d582fcc028d",
   "shape_hash": "188fc017d1e174ac",
   "verdict": "PASS",
   "training": "ae101",
@@ -13,7 +13,7 @@
       "rule_index": 1,
       "rule_lead": "Meta-frame lectures = closers, not openers.",
       "verdict": "PASS",
-      "evidence": "Lines 40-52 (Start here): opener links painting-the-picture-with-the-llm.md (L40) + the-wizard-move.md (L42) precede the four exercises (L44-50); the sole meta-frame closer the-machine-you-just-met.md (L52) follows Ex4. getting-going.md previously also linked a second closer, how-this-training-was-built.md, which the diff since pin 12148d77 removed — that lecture was dissolved (git commit c32f5f22, 2026-08-25), its two loop-recognition slides ('You just ran the same loop', 'What compounds') absorbed into the-machine-you-just-met.md, whose own maintainer block (line 75) documents the absorption in full and still places the closer correctly 'after compound-and-close (Ex3)'. The remaining single closer link is still the last item in Start here's list, still after all four exercises. Rule 1's placement requirement is met exactly as before; the file now names one closer where it named two, and the content did not disappear.",
+      "evidence": "Lines 40-52 (Start here): opener links painting-the-picture-with-the-llm.md (L40) + the-wizard-move.md (L42) precede the four exercises (L44-50); the sole meta-frame closer the-machine-you-just-met.md (L52) follows Ex4. Pin d065f8bc..HEAD changed nothing in this placement — the three commits since the story stamp (31b62371, aa64ce15, 5711a601) touched exercise link labels, a maintainer session-count fix, two new maintainer accept-notes, and a trimmed forward-pointer sentence, none of which move a lecture link. Placement unchanged and still correct.",
       "fix_hint": null,
       "blocking": false
     },
@@ -22,7 +22,7 @@
       "rule_index": 2,
       "rule_lead": "Minimal lecturing before contrast-mood exercises.",
       "verdict": "N/A",
-      "evidence": "content-strategy-agentic-engineering-101.md line 243 names M1's mood as 'Joyful creation — it works, on my repo', not the M5-style contrast-mood (learn-through-doing, name-after) this rule scopes to. Rule does not bind M1.",
+      "evidence": "content-strategy-agentic-engineering-101.md (M1 row of the arc table, re-read this pass) names M1's mood as 'Joyful creation — it works, on my repo', not the contrast-mood shape this rule scopes to (M5's learn-through-contrast is the corpus's contrast-mood module). Rule does not bind M1.",
       "fix_hint": null,
       "blocking": false
     },
@@ -31,7 +31,7 @@
       "rule_index": 3,
       "rule_lead": "No cross-module sequencing in lecture bodies.",
       "verdict": "N/A",
-      "evidence": "Rule restricts LECTURE bodies ('lectures teach, module files sequence'); getting-going.md is the module file, the correct home for the M1->M2 bridge (lines 83-84, ## Next: 'Module 2 is where plan mode earns its keep...'). Not applicable to this file's own body; the linked lecture files' own compliance is each lecture's separate story-class instance, out of scope here.",
+      "evidence": "Rule restricts LECTURE bodies ('lectures teach, module files sequence'); getting-going.md is the module file, the correct home for the M1->M2 bridge. That bridge now reads more cleanly than at the last stamp: commit 5711a601 dropped a redundant forward-pointer from the Dex Horthy pre-read line (', which is where Module 2 goes next') that duplicated the canonical bridge already carried at '## Next' (L83-84: 'Module 2 is where plan mode earns its keep...'). One bridge, in its designed home, not two.",
       "fix_hint": null,
       "blocking": false
     },
@@ -40,7 +40,7 @@
       "rule_index": 4,
       "rule_lead": "Slide/lecture headers pass the squint test and truth clause.",
       "verdict": "N/A",
-      "evidence": "getting-going.md is a module, not a lecture (check_lectures frontmatter: 'Fire when writing or placing a lecture'). Header-squint for module ## headings is check_slides.md's territory, not this judge's assigned compendium.",
+      "evidence": "getting-going.md is a module, not a lecture (check_lectures frontmatter scopes to lecture files). Header-squint for module ## headings is check_slides.md's territory.",
       "fix_hint": null,
       "blocking": false
     },
@@ -49,7 +49,7 @@
       "rule_index": 5,
       "rule_lead": "A slide's body is size-bounded, not just its header.",
       "verdict": "PASS",
-      "evidence": "Maintainer block line 94 ('Slide size accepted: Pre-reads before Module 2 — a reading list, not a taught slide. Four readings at 268 words against the 210 cap, and the length is the annotations...') is a standing, dated-in-substance accept-note explaining the excess by annotation density. That section (## Pre-reads before Module 2, lines 71-81) is untouched by the diff since pin 12148d77 — the only body change was two exercise-list lines earlier (Start here) plus the Quality-line stamps. Honored per accept-note, not re-flagged.",
+      "evidence": "Maintainer block line 98 ('Slide size accepted: Pre-reads before Module 2 — a reading list, not a taught slide. Four readings at 268 words against the 210 cap...') is a standing, dated-in-substance accept-note explaining the excess by annotation density. '## Pre-reads before Module 2' (L71-81) is untouched by the diff since pin d065f8bc — none of the three intervening commits (31b62371, aa64ce15, 5711a601) touched that section. Honored per accept-note, not re-flagged.",
       "fix_hint": null,
       "blocking": false
     },
@@ -58,7 +58,7 @@
       "rule_index": 6,
       "rule_lead": "A prompt inside a lecture is a trainer show-and-tell, never a room follow-along.",
       "verdict": "N/A",
-      "evidence": "derive-body-view.js signals on the current raw file (sha 548ab432c8...) report has_prompt_blocks: false and fence_ranges: [] — no {{prompt:}} shortcode and no inline **Prompt** fence anywhere in getting-going.md. The file only links to lecture files by title; the rule binds curriculum/lectures/** prompt blocks, none of which live in this file's body.",
+      "evidence": "derive-body-view.js signals on the current raw file (sha b0931d9f...) report has_prompt_blocks: false and fence_ranges: [] — no {{prompt:}} shortcode and no inline **Prompt** fence anywhere in getting-going.md. The file only links to lecture files by title; the rule binds curriculum/lectures/** prompt blocks, none of which live in this file's body.",
       "fix_hint": null,
       "blocking": false
     },
@@ -67,7 +67,7 @@
       "rule_index": 16,
       "rule_lead": "Forcing functions stay, scripted reactions go; forcing functions live in prompts, not body prose.",
       "verdict": "N/A",
-      "evidence": "getting-going.md carries no exercise-phase prompt of its own (fence_ranges: [] per derive-body-view.js; the file links out to the four exercise files where forcing functions live and are fenced). Nothing in the diff since pin 12148d77 (a lecture-link removal + Quality-stamp update) added a forcing-function description to this file's body prose.",
+      "evidence": "getting-going.md carries no exercise-phase prompt of its own (fence_ranges: [] per derive-body-view.js; the file links out to the four exercise files where forcing functions live and are fenced). None of the three commits since pin d065f8bc added a forcing-function description to this file's body prose — they touched link labels, a blockquote's abbreviation, and a trimmed forward-pointer sentence, all outside forcing-function territory.",
       "fix_hint": null,
       "blocking": false
     },
@@ -76,7 +76,7 @@
       "rule_index": 27,
       "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
       "verdict": "PASS",
-      "evidence": "Line 26: '**Everybody should be answering.** The trainer keeps the room moving; they are not the debugger or necessarily the deepest Claude Code expert here. Ask Claude what is wrong, or ask out loud.' This is a room-culture/help-seeking norm, not an authored pause-cue or paired-discussion directive ('compare with your neighbor'-shaped). It is the file's only room-acknowledging line (grep for room|team|together|neighbor across the body returns this line plus 'How we work in this room' as a heading and 'the team's ticket tracker' in the plug-points list, neither of which is a cohort-management cue), inside the rule's third carve-out (room may be named, sparingly) and its one-line-per-file ceiling. Unchanged by the diff since pin 12148d77.",
+      "evidence": "Line 26: '**Everybody should be answering.** The trainer keeps the room moving; they are not the debugger or necessarily the deepest Claude Code expert here. Ask Claude what is wrong, or ask out loud.' This is a room-culture/help-seeking norm, not an authored pause-cue or paired-discussion directive. It is the file's only room-acknowledging line under the third carve-out and its one-line-per-file ceiling, and it is unchanged by the diff since pin d065f8bc (grep for room|team|together|neighbor across the current body returns this line plus 'How we work in this room' as a heading and 'the team's ticket tracker' in the plug-points list, neither a cohort-management cue). None of the three intervening commits touched this section.",
       "fix_hint": null,
       "blocking": false
     },
@@ -85,7 +85,7 @@
       "rule_index": 1,
       "rule_lead": "Mood contract named; mood-floor applies to teaching beats only.",
       "verdict": "PASS",
-      "evidence": "Meta block line 120 names mood target 'joyful creation — it works, on my repo', matching content-strategy-agentic-engineering-101.md line 243 verbatim in substance. Regenerated the persona trace (curriculum/evals/sim-cache/ae101--module--getting-going.persona.json; cached content_sha 332bf587... did not match the current body-region sha 5b9fcd7e124923eb5601fe02ac684fc14eda07e8693a7d740da3fc67f89c0546 computed over raw lines 1-85, so it was regenerated rather than reused per the dispatch-preamble's stale-cache clause). Single-phase file (no ## Phase headers), three personas: mid-layer-competent phase 9 / close 8, opinionated-senior phase 8 / close 8, fast-operator phase 7 / close 7. Lowest beat is 7, the template's explicit facilitator-premium-signature floor (not <7, so not REVISE) — the module's own Meta block (line 120) already names this exact skim-risk and hands the trainer a recovery line. All three regenerated persona reads explicitly confirm the diff-region change (dropped how-this-training-was-built.md link at old Start-here) is invisible to their pass — none of them counted the module's link list, and the closer content the dropped link pointed at survived, merged into the-machine-you-just-met.md.",
+      "evidence": "Meta block line 124 names mood target 'joyful creation — it works, on my repo', matching content-strategy-agentic-engineering-101.md's M1 arc-table row verbatim in substance (re-read this pass at the strategy doc's GDrive path). Body content_sha moved since the last persona capture (5b9fcd7e... -> 269b52f1...) because three body-region edits landed since pin d065f8bc: 'Run M1' spelled out to 'Run Module 1', the two exercise link labels swapped for the exercises' own real H1 titles (verified against curriculum/exercises/orient-and-introspect.md L1 and curriculum/exercises/fix-tests-first.md L1 — both match exactly), and the Dex Horthy sentence dropping a redundant forward-pointer clause. Regenerated the persona trace (curriculum/evals/sim-cache/ae101--module--getting-going.persona.json) against the current body; all three personas hold their prior scores (mid-layer 9/close 8, opinionated-senior 8/close 8, fast-operator 7/close 7) — none of the three edits touches a teaching moment, the loop sequence, or the mood target. Lowest beat is 7, the template's explicit facilitator-premium-signature floor (not <7, so not REVISE); the module's own Meta block (line 124) already names this exact skim-risk (fast-operator profile) and hands the trainer a recovery line.",
       "fix_hint": null,
       "blocking": true
     },
@@ -94,7 +94,7 @@
       "rule_index": 2,
       "rule_lead": "Epistemic mood is not punitive mood.",
       "verdict": "PASS",
-      "evidence": "Key Concepts line 59: 'It is the simplest personal store, and a starter. Everyone sees how it will bloat almost immediately.' Frames bloat as a universal, expected property of the tool ('everyone sees'), not a personal failing of the reader. Line 57 ('The agent's self-report is a hypothesis, not ground truth... Read it as the agent's account... not the things themselves') is also epistemic (not-knowing) rather than punitive (having-done-wrong). Unchanged by the diff.",
+      "evidence": "Key Concepts line 59 (unchanged by the diff since pin d065f8bc): 'It is the simplest personal store, and a starter. Everyone sees how it will bloat almost immediately.' Frames bloat as a universal, expected property of the tool ('everyone sees'), not a personal failing of the reader — and is now backed by a maintainer accept-note (line 90, added commit aa64ce15) confirming this framing is a deliberate keep, not an oversight. Line 57 ('The agent's self-report is a hypothesis, not ground truth...') is also epistemic (not-knowing) rather than punitive.",
       "fix_hint": null,
       "blocking": false
     },
@@ -112,7 +112,7 @@
       "rule_index": 4,
       "rule_lead": "Strategy-fidelity check (consolidates front-run, module-to-module arc, Big Idea fidelity, mood-doesn't-resolve-early).",
       "verdict": "PASS",
-      "evidence": "content-strategy-agentic-engineering-101.md lines 268-305 (M1 in detail) confirm the current M1 sequence orient(Ex1)->fix(Ex2)->close(Ex3)->compound(Ex4), 'No plan mode in M1' (line 285, M2 owns it), 'No Skill use at M1' (line 293, M3 owns it). getting-going.md's Start-here order (lines 44-50) and Next bridge (lines 83-84: 'Module 2 is where plan mode earns its keep: multi-file work, and a second pass that pressure-tests the plan before you approve it') match exactly, and the bridge teases M2's teaching moment (plan-mode-at-depth) without executing or naming it — mood does not resolve early. The one substantive body change since pin 12148d77 (removing the how-this-training-was-built.md link) is verified strategy-neutral: the strategy doc's M1-in-detail section never names that lecture, so its retirement drops zero content the strategy doc requires this module to carry, and the lecture's actual teaching content (the loop-recognition slides) was reabsorbed into the-machine-you-just-met.md rather than cut — confirmed by git log (commit c32f5f22, 'The loop slides move into the-machine-you-just-met; how-this-training-was-built dissolves') and by that file's own maintainer block (line 75) and fresh Quality line (compendium-audited 2026-08-24, all seven classes PASS as drift-rechecks against the post-absorption body).",
+      "evidence": "Re-read content-strategy-agentic-engineering-101.md's 'M1 in detail' section this pass (GDrive path via bosser-strategy skill) and confirmed the current M1 sequence orient(Ex1)->fix(Ex2)->close(Ex3)->compound(Ex4) still matches exactly, 'No plan mode in M1' still holds (M2 owns it per the strategy doc's M2-in-detail section), 'No Skill use at M1' still holds (M3 owns it). Three diff-region changes checked against the strategy doc and against sibling files, all clean: (a) the two exercise link-label swaps match the exercises' own current H1 titles exactly — not new framing, just accurate cross-references; (b) the Dex Horthy sentence's dropped forward-pointer removes a duplicate of the canonical M1->M2 bridge already at '## Next', tightening rather than weakening strategy-fidelity; (c) the Meta block's 'Opening-bid install mechanic' line correcting 'three fresh Claude Code sessions' to 'two fresh Claude Code sessions each in its own empty directory' now matches curriculum/lectures/the-wizard-move.md's own standing instruction verbatim (L43: 'two fresh Claude Code sessions, each in its own new empty directory outside any repo') — this was a stale trainer-note number, now corrected, and the fix is maintainer-block-only so it never reached students. The Frameworks note's added attribution clause ('and in lectures/the-machine-you-just-met.md's closing beat') is independently verified true (that lecture's line 49 names Klaassen at its closing definitional slide) and consistent with the M1 Klaassen name-cap: getting-going.md's own student-facing body (L1-85) names Klaassen zero times, so the two-mention budget the strategy doc sets for M1 is carried entirely by Ex4's live agent summary and the-machine-you-just-met.md's lecture body, neither of which is this file's body.",
       "fix_hint": null,
       "blocking": true
     },
@@ -139,7 +139,7 @@
       "rule_index": 7,
       "rule_lead": "What You'll Learn shape — capability register, not syllabus.",
       "verdict": "N/A",
-      "evidence": "Strategy-judge-owned, not a storytelling judgment. What You'll Learn (lines 14-20) unchanged by the diff regardless.",
+      "evidence": "Strategy-judge-owned, not a storytelling judgment. What You'll Learn (lines 14-20) unchanged by the diff since pin d065f8bc.",
       "fix_hint": null,
       "blocking": false
     },
@@ -149,7 +149,7 @@
       "judge_owned": true,
       "rule_lead": "Whole-compendium scope call.",
       "verdict": "N/A",
-      "evidence": "No beat in getting-going.md has an output that belongs to the group rather than a participant. The 'Start here' trick-share (line 38: 'The question (to you): what's your favourite Claude Code trick...') is individual room-harvest, explicitly covered by check_pedagogy.md §27's Connections-opener carve-out per the file's own maintainer accept-note (line 108: 'Start-here trick-share accept-note'). No shared record, no attribution/promotion decision, no adjudication. derive-body-view.js's group_beat_markers signal is true on this file (broad regex on group|team|room|together|shared record|adjudicat), but that is a lexical hit on 'room'/'team' words in section headers and the tracker plug-point, not evidence of a group-scale beat — each hit was individually read and none names a beat whose output belongs to the group. check_workshop does not fire.",
+      "evidence": "No beat in getting-going.md has an output that belongs to the group rather than a participant. The 'Start here' trick-share (line 38) is individual room-harvest, covered by check_pedagogy.md §27's Connections-opener carve-out per the file's own maintainer accept-note (line 112). No shared record, no attribution/promotion decision, no adjudication. Unchanged by the diff since pin d065f8bc.",
       "fix_hint": null,
       "blocking": false
     },
@@ -165,14 +165,18 @@
     }
   ],
   "mood_summary": {
-    "phase_scores": [9, 8, 7],
+    "phase_scores": [
+      9,
+      8,
+      7
+    ],
     "close_score": 7,
     "any_below_8": true,
     "stealing_the_mood": [
-      "fast-operator single-phase read scores 7/10 (facilitator-premium signature, not REVISE): skims past the Freedom-to-choose permission line and the opening block's priming signal, producing more unrejected Ex3 guesses and a more likely rubber-stamped Ex4 rule. Would take an explicit visual cue on the one permission sentence ('No need to read the agent's output word for word') to lift to 8. Pre-existing risk, unrelated to the diff under review (dropped closer-lecture link) — already named by the module's own Meta block ('Watch for: mood drift...') and covered by the Ex3/Ex4 push-back-moves table."
+      "fast-operator single-phase read scores 7/10 (facilitator-premium signature, not REVISE): skims past the Freedom-to-choose permission line and the opening block's priming signal, producing more unrejected Ex3 guesses and a more likely rubber-stamped Ex4 rule. Would take an explicit visual cue on the one permission sentence ('No need to read the agent's output word for word') to lift to 8. Pre-existing risk, unaffected by the diff under review (link-label accuracy fixes, an abbreviation spelled out, a redundant forward-pointer trimmed) — already named by the module's own Meta block and covered by the Ex3/Ex4 push-back-moves table."
     ]
   },
-  "notes": "Teaching-moment-lands check (no check_strategy_tie_in rule_index per this template): getting-going.md is itself a module TOC/overview page, not an exercise — its own body carries no forcing function to test for fragility; the four linked exercise files each carry that check in their own story-class instance. Module-to-module arc and Big Idea fidelity are folded into the check_strategy_tie_in §4 row above per the Completeness contract's consolidation instruction. Diff scope (pin 12148d77..HEAD): one link removed from Start here ([How this training was built](lectures/how-this-training-was-built.md)) plus Quality-line stamp updates; verified the removal against git history and the absorbing lecture's own maintainer block and Quality line rather than taking the diff at face value. Read was not scoped to the diff — every rule above was checked against the current full body, not only the changed lines.",
+  "notes": "Diff scope: pin d065f8bc..HEAD spans three commits (31b62371 'Wave-2 punch list', aa64ce15 'Eight cards adjudicated', 5711a601 'The direct-apply pile lands'). All three body-region edits (abbreviation spelled out, two exercise link labels corrected to match the exercises' real titles, one redundant forward-pointer trimmed) verified against their referents and found accurate; the two maintainer-only edits (two new dated accept-notes, one Meta-block session-count correction) were also verified against their referents (curriculum/lectures/the-wizard-move.md confirms 'two sessions' is now the correct figure) and found accurate. Regenerated the persona trace because the body-only sha moved; all three personas held their scores. Read was not scoped to the diff — the full current body was re-checked against every rule in the brief, not only the changed lines. Teaching-moment-lands check (no check_strategy_tie_in rule_index per this template): getting-going.md is a module TOC/overview page, not an exercise — no forcing function of its own to test for fragility; the four linked exercise files each carry that check in their own story-class instance. Module-to-module arc and Big Idea fidelity are folded into the check_strategy_tie_in §4 row per the Completeness contract's consolidation instruction. One out-of-scope observation for the orchestrator to route elsewhere, not filed as a finding here: curriculum/exercises/compound-and-close.md's own Frameworks entry (its line 88, 'attributed inside Claude's retro summary, not in a lecture') appears to predate the 2026-08-25 lecture-merge commit (c32f5f22) that gave the-machine-you-just-met.md its own Klaassen-naming closing beat — that claim now reads stale, but it lives in a different file with its own story-class instance and is outside this file's read-only scope. Process note: the sidecar's --write pass also parked two check_writing.md rows (banned-words, ritual/ceremony grep PASSes) even though this class's brief lists only check_lectures/check_pedagogy/check_prompts/check_strategy_tie_in/check_workshop as assembled compendiums; --merge spliced both in mechanically. Removed both after merge (check_writing is the writing class's lane per this template's own scope note, and crediting it here would be an unowned claim, not extra coverage) — final row count is 17, not the 19 the merge produced.",
   "blocking_findings_count": 0,
   "todos_count": 0
 }

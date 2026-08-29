@@ -186,9 +186,10 @@ cap; only a cut helps there.
 **The tell, and it repeats.** The last slide before an exercise is where authors put the bridge —
 *here is why this matters, here is what you are about to do*. It is nearly always cuttable, because
 the exercise IS the bridge: the agenda already lives in `## What You'll Learn`, and the meaning
-already lives in the module's closer. Diagnostic on any pre-exercise slide: **does it state a
-conclusion or hand over a tool?** A conclusion delivered before the student can test it is an
-assertion that costs minutes and buys nothing, and it spends the closer's payoff in advance.
+already lives in the module's closer. Diagnostic on any pre-exercise slide:
+**does it state a conclusion or hand over a tool?** A conclusion delivered before the student can
+test it is an assertion that costs minutes and buys nothing, and it spends the closer's payoff in
+advance.
 
 **Landed so far.** Three cuts, all the same shape, none of them tagged as theory:
 `the-wizard-move` § *The loop is what you repeat* (58e8a506) — previewed the loop-over-the-fix beat

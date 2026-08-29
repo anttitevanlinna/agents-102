@@ -118,7 +118,7 @@ This module points at four sources in body and owned a stamp for none of them; t
 
 **Quality:** compendium-audited 2026-08-29 (writing@43e6cae1 story@d065f8bc technical@43e6cae1 behavior@17446703 pedagogy@d065f8bc strategy@ba5ccf5 slides@43e6cae1)
 - judges @43e6cae1: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
-- cross_module @37aa983b: PASS — set=[prework,getting-going,plan-mode-done-right,earn-the-trust]; 3 pairs, 0 blocking; see instances/ae101--module-set--prework-m3.cross_module.json
+- cross_module @d47fb5af: PASS — set=[prework,getting-going,plan-mode-done-right,earn-the-trust]; 3 pairs, 0 blocking; see instances/ae101--module-set--prework-m3.cross_module.json
 
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply + Analyze + Evaluate (the compare-the-two-reads beat is the Evaluate beat)

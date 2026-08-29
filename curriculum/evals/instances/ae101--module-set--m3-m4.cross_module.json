@@ -6,15 +6,17 @@
   ],
   "training": "ae101",
   "body_sha": {
-    "curriculum/trainings/agentic-engineering-101/earn-the-trust.md": "3b3b8a15c730ab25197ba2fc99139edb2f8e7c307ecad6187d3bb7717da38400",
-    "curriculum/trainings/agentic-engineering-101/run-the-first-experiment.md": "92092cecbf51b6e25a0d5b4d2d6638f7b88d0e2829a2953d0dcde2f814b23272"
+    "curriculum/trainings/agentic-engineering-101/earn-the-trust.md": "97a00953376442cde7c0db6d70cf5a98ec4e38a9320cbe6047121e81293f514e",
+    "curriculum/trainings/agentic-engineering-101/run-the-first-experiment.md": "fc71ca3379611414acab339b7bf0a1918b550fa137b9ee9a79e96563cf2991f7"
   },
   "verdict": "PASS",
-  "re_fire_context": "Re-fire against current pinned bodies (earn-the-trust 3b3b8a15.., run-the-first-experiment 92092cec..), superseding the 5df71aa6 pass. `git log -p` on the diff-region since that pass shows only one prose-lint cut in earn-the-trust.md's '## Read the sharpen with a skeptical eye' section (the parenthetical gloss '(bar higher)' dropped from the grill-metaphor sentence, 2026-08-25 lean pass) plus a maintainer-block note recording it; run-the-first-experiment.md shows no body change in the diff region at all. Neither touches any cross-module seam (Prework/Bring/Pre-read/artefact-contract/session-boundary text), so this is a re-stamp of the same design, walked fresh end-to-end rather than carried forward.",
+  "re_fire_context": "Re-fire against current pinned bodies, superseding the c277a9f4 pass (which itself pinned earn-the-trust@3b3b8a15 / run-the-first-experiment@92092cec). `git diff` from those two shas to HEAD shows: earn-the-trust.md changed ONLY inside the maintainer block (Quality-line stamp bump + one trifecta-note wording tweak) — zero body-region bytes moved. run-the-first-experiment.md changed in two body lines, both pure terminology swaps ('run'->'session' in the Ex1 link title and a Key Concepts bullet) with no change to Prework, Bring, Pre-reads, artefact-contract prose, or session-boundary text. Neither touches a cross-module seam. Walked fresh end-to-end below rather than carried forward.",
   "module_pairs_evaluated": [
     {
       "from": "curriculum/trainings/agentic-engineering-101/earn-the-trust.md",
       "to": "curriculum/trainings/agentic-engineering-101/run-the-first-experiment.md",
+      "walked_forward_M3_close_to_M4_open": true,
+      "walked_backward_M4_open_echoes_M3_close": true,
       "rules_evaluated": [
         {
           "compendium": "check_cross_module.md",
@@ -22,7 +24,7 @@
           "rule_lead": "Peek at the next module before adding a second exercise.",
           "verdict": "N/A",
           "evidence": null,
-          "na_reason": "No exercise added or removed in this diff region; M3's four exercises (earn-the-trust.md L33-41) and M4's two exercises (run-the-first-experiment.md L39,41) are unchanged in count from the last-passed body.",
+          "na_reason": "No exercise added/removed since last pass: M3 still runs 4 exercises (earn-the-trust.md L33,37,39,41), M4 still runs 2 (run-the-first-experiment.md L39,41).",
           "fix_hint": null,
           "blocking": false
         },
@@ -31,7 +33,7 @@
           "rule_index": 2,
           "rule_lead": "Between-module reading appears in two places.",
           "verdict": "PASS",
-          "evidence": "Walked M3-close -> M4-open: earn-the-trust.md L90-94 '## Bring to Module 4' — 'One scoped task you'd send off rather than nudge bit by bit: a real slice. Bigger than a typo-fix, smaller than an epic... Come to Module 4 without having picked the task...'; L96-100 '## Pre-read before Module 4' names da Costa's Backpressure Is All You Need with framing 'Module 4 sends off a session that runs without you watching, which is where you meet that limit yourself.' run-the-first-experiment.md L6-14 '## Prework' echoes both: L8-10 'The scoped task you picked as homework... A real slice you'd send off rather than nudge bit by bit. Bigger than a typo-fix, smaller than a big epic.'; L14 'If Lucas F. da Costa's Backpressure Is All You Need is still on your list, read it before the send-off: today's session produces changes faster than you can read them, which is the condition the essay is about.' Same URL, one-line framing present at both ends, symmetric duplication intact. Walked M4-close -> M5-open in the reverse direction was not possible: M5 (learn-from-the-test.md) is not a member of this set, so the '## Bring to Module 5' / '## Pre-reads before Module 5' echo at M4's own close cannot be verified from this pair and is noted, not scored, below.",
+          "evidence": "FORWARD (M3 close -> M4 open): earn-the-trust.md L90-94 '## Bring to Module 4' — '**One scoped task you'd send off rather than nudge bit by bit: a real slice. Bigger than a typo-fix, smaller than an epic.** ... Come to Module 4 without having picked the task...'; L96-100 '## Pre-read before Module 4' names da Costa's Backpressure Is All You Need, framing 'Module 4 sends off a session that runs without you watching, which is where you meet that limit yourself.' run-the-first-experiment.md L6-14 '## Prework' echoes both: L8 'The scoped task you picked as homework.'; L10 '**A real slice you'd send off rather than nudge bit by bit. Bigger than a typo-fix, smaller than a big epic.**' (byte-near-identical bolded line, deliberate symmetric duplication); L14 'If Lucas F. da Costa's Backpressure Is All You Need is still on your list, read it before the send-off: today's session produces changes faster than you can read them, which is the condition the essay is about.' — same URL, one-line framing present at both ends. BACKWARD (does M4's Prework cite anything NOT set up at M3's close?): checked L6-16 in full — task pick and da Costa are the only M3-sourced references; the Horthy/context-ceiling/progression links in the same Prework are M1-gap and forward-look material, not owed by M3. No orphan reference either direction. Header naming is 'Bring to Module N' / 'Pre-read(s) before Module N+1' rather than the rule's literal example text ('## Homework after M{N}') — same convention used training-wide (confirmed at the M4->M5 seam in the same file, L62-80); flagged as a documentation-accuracy TODO, not a violation, since the structural requirement (two places, same content, symmetric) is met.",
           "fix_hint": null,
           "blocking": false
         },
@@ -40,7 +42,7 @@
           "rule_index": 3,
           "rule_lead": "Cross-module artefact contracts must be explicit at both ends.",
           "verdict": "PASS",
-          "evidence": "Producing side (earn-the-trust.md L174-180 artefact-contract table): ADR at 'the repo's ADR convention; default docs/adr/NNNN-slug.md' produced Ex2; test-strategy skill at '~/.claude/skills/test-strategy/SKILL.md' produced Ex3; './CLAUDE.local.md' rule updates produced at the 'Sharpen the skill from evidence' close prompt. Consuming side (run-the-first-experiment.md L21): 'Walk what you've built (CLAUDE.md + CLAUDE.local.md + memory + ADRs + any skills you've authored + connectors) against the task as a subagent audit.' All three M3-producing-side artefacts are explicitly named on the M4-consuming side by stable identifier or unambiguous class ('any skills you've authored' for the one authored skill on disk at that point in the arc).",
+          "evidence": "Producing side (earn-the-trust.md L174-180 artefact-contract table): ADR at 'the repo's ADR convention; default docs/adr/NNNN-slug.md' (Ex2); test-strategy skill at '~/.claude/skills/test-strategy/SKILL.md' (Ex3); './CLAUDE.local.md' rule updates (close prompt). Consuming side (run-the-first-experiment.md L21): 'Walk what you've built (CLAUDE.md + CLAUDE.local.md + memory + ADRs + any skills you've authored + connectors) against the task as a subagent audit, then push back on the audit.' All three M3-producing artefacts are named on the M4-consuming side by stable identifier or unambiguous class. BACKWARD check: M4's consuming line also names CLAUDE.md, memory, connectors — none of these are claimed as M3-produced artefacts anywhere in M3's contract table, so no unbacked consuming-side claim is being made against this pair.",
           "fix_hint": null,
           "blocking": false
         },
@@ -49,7 +51,7 @@
           "rule_index": 4,
           "rule_lead": "Session boundaries and working directories are designed, not implicit.",
           "verdict": "PASS",
-          "evidence": "Close: earn-the-trust.md L61-71 '## Clear the session' names the explicit close mechanic — a converge-before-clear prompt, then a literal `/clear` prompt with an accepted-leaky-ask maintainer note (L112). Open: no working-directory CHANGE occurs at the M3->M4 boundary (no worktree fork named for this gap, unlike the M4->M5 branch/SHA handoff scored under rule 3), and training-architecture.md L40-42 states the corpus-wide default once, canonically, rather than per module: 'AE101 assumes a fresh agent session at the start of each module... The cross-module continuity lives on disk (rules files + memory + the repo itself), not in chat history.' Rule 4(c) requires body rationale specifically for a working-directory CHANGE; since M4 continues in the same repo with no fork, the canonical default (delegated once, per `curriculum/CLAUDE.md`'s canon principle) discharges rule 4(b) without per-file restatement. run-the-first-experiment.md's own maintainer Meta (L118) is consistent: 'the send-off happens IN the same session the student used for walk + fill + frame + retro — no new session, no scheduled agent, no cloud runner' (an M4-internal boundary, not the M3->M4 seam, but confirms no contested working directory anywhere in this module).",
+          "evidence": "Close: earn-the-trust.md L61-71 '## Clear the session' names the explicit close mechanic (converge-before-clear prompt, then a literal /clear prompt; L112 maintainer note accepts the fence shape). Open: no working-directory CHANGE occurs at the M3->M4 boundary (M4 does not fork a worktree the way M4->M5 does under rule 3's SHA/branch handoff); training-architecture.md L36 'Every module starts a fresh agent session in that repo' and L49 'AE101 assumes a fresh agent session at the start of each module... The cross-module continuity lives on disk (rules files + memory + the repo itself), not in chat history' states the corpus-wide default once, canonically (verified live at those line numbers, not carried from a stale cite). Rule 4(c) requires body rationale only for a working-directory CHANGE; since none occurs, the canonical delegated default discharges 4(b) without per-file restatement. run-the-first-experiment.md's own Meta (L118, unaffected by the diff) is consistent: 'the send-off happens IN the same session the student used for walk + fill + frame + retro — no new session, no scheduled agent, no cloud runner.'",
           "fix_hint": null,
           "blocking": false
         },
@@ -58,7 +60,7 @@
           "rule_index": 5,
           "rule_lead": "Cross-module artefact contracts — every produced file is a contract row in the maintainer block.",
           "verdict": "PASS",
-          "evidence": "earn-the-trust.md maintainer-block table L174-180 carries three rows (Architecture Decision Record, Test-strategy skill, Personal rules update), each naming (a) a stable identifier, (b) the producing prompt/exercise, (c) the consuming module(s) — all three name M4 explicitly ('M4 Phase 2 walk-and-fill (audit subagent reads ADRs as part of \"system you have\")' etc.). No ambiguous identifier: the ADR default path and the skill's absolute user-scope path are both concrete.",
+          "evidence": "earn-the-trust.md maintainer-block table L174-180 (unchanged by the diff) carries three rows (Architecture Decision Record, Test-strategy skill, Personal rules update), each naming (a) a stable identifier, (b) the producing prompt/exercise, (c) the consuming module(s) — all three name M4 explicitly in the 'Consumed by' column. Identifiers are concrete (default ADR path, absolute user-scope skill path, repo-relative CLAUDE.local.md), none ambiguous.",
           "fix_hint": null,
           "blocking": false
         },
@@ -68,17 +70,17 @@
           "rule_lead": "Cross-module structural-failure rescue — body-prose callouts at module open when the prior module's send-off can fail.",
           "verdict": "N/A",
           "evidence": null,
-          "na_reason": "M3's artefacts (ADR, test-strategy skill, CLAUDE.local.md updates) are produced synchronously in a trainer-supervised classroom session, not an autonomous/un-watched run that can plausibly land thin or missing — the trigger condition (prior module's send-off / autonomous run) does not obtain for this pair; M4 is the training's first send-off module. No rescue callout present in run-the-first-experiment.md '## Start here' (L25-45), and none is owed.",
+          "na_reason": "Trigger condition absent: M3's artefacts (ADR, test-strategy skill, CLAUDE.local.md updates) come out of trainer-supervised in-room exercises, not an autonomous/un-watched send-off that could land thin or missing. M4 is the training's first send-off module, so there is no prior-module autonomous run for M4 to be at risk of. No rescue callout appears in run-the-first-experiment.md '## Start here' (L25-45) and none is owed.",
           "fix_hint": null,
           "blocking": false
         },
         {
           "compendium": "check_cross_module.md",
           "rule_index": 7,
-          "rule_lead": "Audit-discipline — walk M(N-1) close before flagging M(N).",
+          "rule_lead": "Audit-discipline — walk M(N-1) close before flagging M(N) architecture claims as spec drift.",
           "verdict": "N/A",
           "evidence": null,
-          "na_reason": "judge_owned meta-rule governing this judge's own conduct, not scored against file content (per the cross-module.md template §7 note: judges don't fire this directly). Self-attested: full three-surface walk performed for this pair (M3 close Bring/Pre-read/artefact-contract table; M4 open Prework/What-You'll-Learn) before filing verdicts above.",
+          "na_reason": "judge_owned meta-rule about this judge's own conduct, not a fact scored against file content (template §7: judges don't fire this directly). Self-attested: full three-surface walk performed for this pair before filing verdicts (M3 close Bring/Pre-read/artefact table -> M4 open Prework/What-You'll-Learn -> M4 body), in both directions per the dispatch instruction.",
           "judge_owned": true,
           "fix_hint": null,
           "blocking": false
@@ -88,7 +90,7 @@
           "rule_index": 8,
           "rule_lead": "Bring-or-scramble plain-stakes-line shape at module homework boundaries.",
           "verdict": "PASS",
-          "evidence": "earn-the-trust.md L94: 'Come to Module 4 without having picked the task and you'll be scrambling for one while the exercise is already running. Your call.' run-the-first-experiment.md L66: 'Come to Module 5 without a session that got some way into the task and you'll be scrambling for material while the read is already underway. Your call.' Both hit the canonical form exactly (Come to Module N without X / scrambling for Y / while the exercise is already Z / Your call), cost sourced from the exercise's own clock in both, no peer-comparison ('the room') language in either.",
+          "evidence": "earn-the-trust.md L94 (the only stakes line owed by THIS pair's seam — M3's Bring-to-M4 line; run-the-first-experiment.md L66's 'Bring to Module 5' line is the M4->M5 seam and out of this pair's scope): 'Come to Module 4 without having picked the task and you'll be scrambling for one while the exercise is already running. Your call.' Matches the canonical form exactly (Come to Module N without X / scrambling for Y / while the exercise is already Z / Your call); cost is sourced from the exercise's own clock, no peer-comparison ('the room') language.",
           "fix_hint": null,
           "blocking": false
         },
@@ -98,7 +100,7 @@
           "rule_lead": "Audit-discipline — read every sibling exercise in a multi-exercise module before opining on one.",
           "verdict": "N/A",
           "evidence": null,
-          "na_reason": "judge_owned meta-rule about the auditor's own conduct within a single module's sibling exercises, not a fact about the cross-module pair. No single-exercise opinion is being filed here (all four M3 exercises and both M4 exercises were read as part of the body view, not opined on individually).",
+          "na_reason": "judge_owned meta-rule about the auditor's own conduct within a single module's sibling exercises, not a cross-module pair fact. No single-exercise opinion is being filed here; all four M3 exercises and both M4 exercises were read in full as part of this pair's walk.",
           "judge_owned": true,
           "fix_hint": null,
           "blocking": false
@@ -107,16 +109,21 @@
     }
   ],
   "blocking_findings_count": 0,
-  "todos_count": 0,
-  "notes": "1 ordered pair evaluated (2-module set). Two items sit adjacent to this pair's seam but are out of scope for it, noted not scored: (a) earn-the-trust.md L16 lists Willison's 'Designing agentic loops' among optional pre-reads BEFORE M3 — that echo is owned and dated by plan-mode-done-right.md (M2), which is not in this set; (b) run-the-first-experiment.md's '## Bring to Module 5' / '## Pre-reads before Module 5' is the M4->M5 seam — learn-from-the-test.md (M5) is not in this pair's module set so the Prework-side echo could not be verified here. Both should be picked up by whichever cross_module run covers the module-set containing the missing sibling.",
+  "todos_count": 1,
+  "todos": [
+    {
+      "rule": "check_cross_module.md §2",
+      "note": "Compendium's illustrative headers ('## Homework after M{N}', '## Pre-reads before M{N+1}') don't match the corpus-wide convention actually in force ('## Bring to Module N', '## Pre-read(s) before Module N+1', seen at both the M3->M4 and M4->M5 seams). Not a defect — the structural requirement (two places, symmetric duplication) is met — but the rule text would be more accurate naming the real header strings."
+    }
+  ],
+  "notes": "Set has exactly one adjacent pair (M3, M4); walked both directions per dispatch instruction (see per-pair 'walked_forward'/'walked_backward' flags and the bidirectional evidence under rules 2 and 3). Two items sit adjacent to this pair's seam but belong to a seam outside this module-set and are noted, not scored: (a) earn-the-trust.md L16 lists Willison's 'Designing agentic loops' among optional pre-reads BEFORE M3 — owned and dated by plan-mode-done-right.md (M2), not a member of this set; (b) run-the-first-experiment.md's '## Bring to Module 5' / '## Pre-reads before Module 5' (L62-82) is the M4->M5 seam — learn-from-the-test.md (M5) is not in this pair's module set, so that echo cannot be verified from here and is left for whichever cross_module run covers the set containing M5. Diff-region check confirmed no cross-module-relevant body text moved in either file since the last recorded cross_module pass (c277a9f4): earn-the-trust.md's only changes since ac6acf6f are inside the maintainer block; run-the-first-experiment.md's only body changes since 0f88a2c5 are two 'run'->'session'/'production work' terminology swaps, neither touching Prework/Bring/Pre-reads/artefact-contract/session-boundary prose.",
   "accept_notes_found": [
     "earn-the-trust.md maintainer: 'Lean pass (2026-08-25): \"(bar higher)\" gloss cut from the skeptical-read section — grill metaphor stands on its own. Do not restore.' — in-module prose lint, no cross-module surface touched.",
-    "earn-the-trust.md maintainer: '## Pre-read before Module 4 carries da Costa's Backpressure Is All You Need (2026-08-21, Antti-directed)' — covers the pre-read swap scored PASS under rule 2.",
-    "earn-the-trust.md maintainer: 'The two {{prompt:}} fences in ## Clear the session are accepted, not an unextracted exercise... Accepted-by-design 2026-08-13 (Antti-directed)' — relevant to rule 4's close mechanic.",
-    "earn-the-trust.md maintainer: 'Session-close convergence prompt (ae101-m3-ready-to-clear) kept, not cut.' — same section.",
-    "earn-the-trust.md maintainer: 'Trifecta pre-leash beat: added to ## Next 2026-07-02, removed 2026-08-12 (Antti)... a threat class taught once in the module that teaches it does not owe a reminder in the module that uses it.' — cross-module duplication call, consistent with rule 2's symmetric-not-redundant design; not a violation.",
-    "run-the-first-experiment.md maintainer: 'The Big Idea leads on prep by design; the mood is carried by its second sentence... Accepted for the first cohort and tracked as a watch in pre-cohort-todos.md' — a strategy-class concern, out of this judge's lane per the dispatch preamble; not re-scored here.",
-    "run-the-first-experiment.md maintainer: 'Prework's pre-read callback names da Costa unconditionally, no flag... Do not reintroduce a Willison branch here.' — confirms rule 2's da Costa echo is the intended single thread.",
-    "run-the-first-experiment.md maintainer: 'Mollick leads Pre-reads before Module 5... (2026-08-21, Antti-directed)' — M4->M5 seam, out of this pair's scope per notes above."
+    "earn-the-trust.md maintainer: '## Pre-read before Module 4 carries da Costa's Backpressure Is All You Need (2026-08-21, Antti-directed)... This is the module that owns the check.' — covers the pre-read scored under rule 2; also delegates the freshness stamp, consistent with run-the-first-experiment.md's own delegated stamp for the same URL.",
+    "earn-the-trust.md maintainer: 'The two {{prompt:}} fences in ## Clear the session are accepted, not an unextracted exercise... Accepted-by-design 2026-08-13 (Antti-directed).' — relevant to rule 4's close mechanic; no cross-module concern.",
+    "earn-the-trust.md maintainer: 'Trifecta pre-leash beat: added to ## Next 2026-07-02, removed 2026-08-12 (Antti)... a threat class taught once in the module that teaches it does not owe a reminder in the module that uses it.' — cross-module duplication call, consistent with rule 2's symmetric-not-redundant design; not a violation. Wording tweaked this cycle (supplementary now 'reachable from the training index's supplementary row' vs 'which the pre-read already points at') — maintainer-block-only, no body effect.",
+    "run-the-first-experiment.md maintainer: 'Prework's pre-read callback names da Costa unconditionally, no flag... Do not reintroduce a Willison branch here.' — confirms rule 2's da Costa echo is the intended single thread, unchanged this cycle.",
+    "run-the-first-experiment.md maintainer: 'The Big Idea leads on prep by design; the mood is carried by its second sentence... Accepted for the first cohort and tracked as a watch in pre-cohort-todos.md' — strategy-class concern, out of this judge's lane; not re-scored here.",
+    "run-the-first-experiment.md maintainer: 'Mollick leads Pre-reads before Module 5... (2026-08-21, Antti-directed)' and 'Slide size accepted: Pre-reads before Module 5...' — both are the M4->M5 seam, out of this pair's scope per the notes field above."
   ]
 }

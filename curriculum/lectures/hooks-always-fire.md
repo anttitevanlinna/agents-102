@@ -8,15 +8,17 @@
 ## Hooks for must-happen, prompts for taste
 
 - **Must happen goes in a hook**; recommended stays in a prompt or rule. Anything that breaks the work if it skips belongs in a hook: a verifier, a pre-commit guard, a session-start context loader. Anything taste-shaped or context-dependent stays in a prompt where the LLM weighs it.
-- Your repo has demands that don't show up in someone else's article. A verifier against one failure is one hook; the same primitive maps to more. This one runs on the screen. Watch the list come back rather than typing along.
+- A verifier against one failure is one hook. The same primitive covers everything else that must happen every time.
 
 {{prompt:what-packaging-is-1}}
 
-The ones worth keeping are tied to a specific file, convention, or failure mode in this repo, not a generic team-could-want-this.
+A menu, not a checklist. You build one.
 
 <!-- maintainer -->
 
 **Extracted from `what-packaging-is.md` and pulled forward (2026-08-25, Antti-directed).** The two hook slides + the demo prompt + the keeper line moved whole into their own lecture, wired into `learn-from-the-test.md` after `reading-the-return` and before the exercises. His why, verbatim intent: doable for laymen, and it helps complete the exercise — the student meets the hook primitive before Phase 3 asks them to pick a verifier shape and wire one. Two verifier back-references reworded as a forced consequence of the placement (the slides used to run after the build): *"the verifier you just wrote"* → *"a verifier"*, *"The verifier you built was one hook against one failure"* → *"A verifier against one failure is one hook"*. Untiered: this is core material now, not a skippable tail.
+
+**Compaction pass (2026-08-29, Antti-directed).** Slide 2 stripped to primitive + prompt + one line. Cut: the repo-specificity opener (*"Your repo has demands that don't show up in someone else's article"*) and the closing keeper line (*"tied to a specific file, convention, or failure mode in this repo"*) — the prompt's own third paragraph already tells Claude to cross-reference against this repo and say when one does not apply, so the slide was restating the prompt to the room. Also cut the stage direction (*"This one runs on the screen. Watch the list come back rather than typing along"*): the teacher runs it and the room can see. The tail now carries the one thing neither slide nor prompt says, that five plausible hooks is a menu and the exercise wants one. Do not restore either repo-specificity line while that paragraph stands in the prompt.
 
 **Placement:** M5, after the reading-the-return opener, before `fork-the-worktree`. Teaching lecture, mechanism only; the verifier-shape menu stays in `diagnose-and-resend.md` Phase 3 and the re-feed mechanism stays in `what-packaging-is.md`.
 

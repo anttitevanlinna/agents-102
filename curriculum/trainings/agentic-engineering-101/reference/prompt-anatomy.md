@@ -386,5 +386,5 @@ A well-shaped prompt has three moves doing the heavy lifting and a handful of ot
 - AE101 prompts surveyed: all M1–M6 module-body + AE101-referenced exercises (`ae101-m*`, plus `push-back-on-the-plan`, `compound-and-close`, `walk-and-send-off`, `diagnose-and-resend`, `orient-and-introspect`, `spot-gaps-build-the-loop`, `author-test-strategy-skill`, `map-the-access-surface`, `threat-model-with-stride`, `open-the-side-quest`, `fix-tests-first`, `extract-the-task-shaping-rule`).
 - Agents 101 prompts surveyed: signal-rich sample (`three-minds-one-synthesis`, `three-retrievers-one-curator`, `self-consistency-after-scoreboard`, `hallucination-bakeoff`, `eval-loop`, `compounding`, `audit-your-agent`, `extend-your-system`, `debugging-stuck-agents`, `author-security-skill`, `build-your-challenge-memory`).
 
-**Quality:** compendium-audited 2026-08-28 (writing@e11bbeb4 story@e11bbeb4 technical@8cc00874 behavior@28a4abc5 pedagogy@1abb84c6 strategy@28a4abc5 slides@e11bbeb4)
-- judges @8cc00874: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-29 (writing@4a722813 story@e11bbeb4 technical@8cc00874 behavior@28a4abc5 pedagogy@1abb84c6 strategy@28a4abc5 slides@e11bbeb4)
+- judges @4a722813: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS

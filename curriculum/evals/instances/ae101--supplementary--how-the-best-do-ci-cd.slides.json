@@ -3,8 +3,9 @@
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/supplementary/how-the-best-do-ci-cd.md",
   "verdict": "PASS_WITH_TODOS",
   "training": "ae101",
-  "body_sha": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
+  "body_sha": "40c5e58a2ba7b1c2180b3d59ee94f66bf3565c423333ea3679f42eb5d26ee2a1",
   "shape_hash": "e21a0aad9b40f01c",
+  "pin": "43e6cae1",
   "chunk_map": [
     {
       "index": 0,
@@ -84,7 +85,7 @@
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Closest candidates, both resolve within their own chunk: chunk 3 line 21 \"A single reviewer reading 30 agent-drafted PRs a day skims. The best refuse the trade.\" — 'the trade' is the implicit speed/thoroughness trade-off named in the immediately preceding sentence of the SAME chunk, one clear candidate, not vague-with-full-history. Chunk 5 header (line 35) \"Stripe bets on the sandbox, not the slice\" names 'the slice' before its own body explains it (line 37 'auto-merging the lowest-risk slice'), but the explanation lands later in the SAME chunk, not a future one — header-then-explanation within one slide, not a forward reference to a later slide. Checked all 14 chunks for never-named or vague-with-full-history referents: none found. Collective callback in the closer (chunk 12, line 85, 'These engineers run the same loop') resolves against every practitioner named across the file, which the sequential read holds by that point.",
+      "evidence": "Re-read all 14 chunks this session against the live file. Closest candidates: chunk 3 line 21 'A single reviewer reading 30 agent-drafted PRs a day skims. The best refuse the trade.' — 'the trade' is the speed/thoroughness trade-off named in the same sentence, same chunk, not vague-with-full-history. Chunk 5 header (line 35) 'Stripe bets on the sandbox, not the slice' names 'the slice' before its own body explains it (line 37 'auto-merging the lowest-risk slice') — header-then-explanation inside the SAME chunk, not a forward reference. Chunk 9 header 'The skill catalogue scales' likewise introduces 'skill catalogue' before its own body (line 63) defines it, same-chunk. Grepped body for bare pronoun-heavy openers ('This ', 'That ', 'It ') at chunk starts: none found outside these same-chunk cases. Collective callback in the closer (chunk 12, line 85, 'These engineers run the same loop') resolves against every practitioner named across the file by that point in the sequential read.",
       "fix_hint": null,
       "blocking": true
     },
@@ -94,7 +95,7 @@
       "rule_lead": "Cross-file and positional callbacks.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Closest candidate, chunk 12 (line 85, current body): \"The loop at your desk is the one this training closed: [...] These engineers run the same loop; they've been at it longer.\" Names the referent by content ('the loop', 'this training', 'these engineers') not by file position ('the opening lecture said'), and functions as the closer summing the whole file against the training arc — the explicitly carved-out case, not a violation. Grepped the body for 'opening lecture|earlier module|prior module|the prework|see below|above|below|further down|at the top of|coming up|in this module': only match is line 5 'None require permission from above to start trying' (idiomatic, hierarchical 'above', not a file-position pointer). No cross-file positional callback found anywhere.",
+      "evidence": "Grepped body this session for 'opening lecture|earlier module|prior module|the prework|see below|above|below|further down|at the top of|coming up|in this module': only hit is line 5 'None require permission from above to start trying' (idiomatic 'from higher authority', not a file-position pointer). Closest candidate, chunk 12 line 85: 'The loop at your desk is the one this training closed: [...] These engineers run the same loop; they've been at it longer.' Names the referent by content (the loop, this training) not by file position, and matches the rule's own worked PASS example verbatim in shape ('a closer summing the whole deck [...] is a closer doing its job'). No cross-file positional callback found anywhere in the body.",
       "fix_hint": null,
       "blocking": true
     },
@@ -104,7 +105,7 @@
       "rule_lead": "Every backward reference points at a beat that exists.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Chunk 0 line 5 (module-flag branch): \"Two sessions of the same task, gap diagnosis, a second skill in `~/.claude/skills/`, one rule cut from `./CLAUDE.local.md`.\" Verified against the current M6 files: `curriculum/trainings/agentic-engineering-101/spot-gaps-build-the-loop.md` line 14 \"- **Diagnose** the gaps two sessions of the same task surface, and read where each belongs: memory, sharper verifier, or new skill\", line 15 \"- **Cut** one rule from `./CLAUDE.local.md` the diagnosis killed\", line 25 \"You walk in holding two sessions of the same task.\"; `curriculum/exercises/spot-gaps-build-the-loop.md` line 9 \"diff two sessions of the same task\", line 37 \"Two sessions of the same task were the first real stress-test of `./CLAUDE.local.md`.\" All three named beats (two sessions, gap diagnosis, rule cut) exist in the current module + exercise. 'a second skill' is one of the module's own three gap-destinations (memory / sharper verifier / new skill), not a guarantee every student's diagnosis lands there — but this is a documented, deliberate cross-file convention, not an invented beat: `curriculum/trainings/agentic-engineering-101/autumn-gaps.md` lines 764-766 independently confirms 'Two address a reader who has shipped a second skill at module 6: `skill-stacking.md:165` opens \"You shipped a second skill in M6.\"' — a sibling supplementary asserts the identical assumption, so this is house convention already reconciled, not a dead reference this file invented alone.",
+      "evidence": "Chunk 0, module-flag branch: subtitle (line 3) 'Read after you've shipped your second skill' gates the read BEFORE body line 5 claims 'You finished M6 owning the loop at your desk. Two sessions of the same task, gap diagnosis, a second skill in `~/.claude/skills/`, one rule cut from `./CLAUDE.local.md`.' Re-verified every named beat against the CURRENT M6 files this session (both read in full, not carried from cache): two sessions / gap diagnosis / rule cut are all live — `spot-gaps-build-the-loop.md` line 25 'You walk in holding two sessions of the same task', line 14-15 the memory/verifier/skill diagnosis + rule cut LOs; exercise Phase 1 'Cut one stale rule the diagnosis killed' (lines 35-42). 'A second skill in `~/.claude/skills/`' is NOT an in-module M6 artefact per the module's own Artefact-contracts table (line 123): the module produces a 'Workflow-skills handoff prompt' consumed by 'The student's own later sessions: run cold to study their stack, diagram recurring shapes, author a skill per shape' — the skill ships AFTER the module closes, when that prompt is run. A 2026-08-19 maintainer note at `curriculum/trainings/agentic-engineering-101/supplementary/skill-stacking.md:179` documents the identical seam for a sibling file ('The 2026-08-01 M6 cut removed the in-module second-skill build: M6's close now produces a handoff prompt the student runs later to author skills, so no skill ships inside the module'). This file's own subtitle already conditions the read on that later event having happened, so the beat this file references is real and module-sanctioned, just deferred past M6's formal close rather than produced inside it — not the dead-beat failure shape (a beat cut with no home anywhere). PASS. Note: a prior verdict on this same row cited `curriculum/trainings/agentic-engineering-101/autumn-gaps.md` as corroboration — that file does not exist (`ls` exit 2, confirmed this session). That citation is discarded, not reused; this evidence is independently re-derived from the live files.",
       "fix_hint": null,
       "blocking": true
     },
@@ -114,7 +115,7 @@
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Closest candidate, chunk 1 (shortest chunk, lines 7-10): header + one three-sentence paragraph carrying a complete, self-standing claim ('A failing CI run is signal. About which memory rule should have caught the mistake upstream... Each red build sharpens the next session.'). Not a wait-state or single context-dependent bullet. Checked all 14 chunks: every one carries at least one full paragraph plus (for the numbered-move chunks) a named practitioner example or a 'Try this Monday' action — none is orphaned.",
+      "evidence": "Closest candidate, chunk 1 (shortest, lines 7-10): header + one three-sentence paragraph carrying a complete, self-standing claim ('A failing CI run is signal... Each red build sharpens the next session.'). Not a wait-state or single context-dependent bullet. All 14 chunks re-checked this session: every one carries at least one full paragraph plus (for numbered-move chunks) a named practitioner example or a 'Try this Monday' action; none is orphaned.",
       "fix_hint": null,
       "blocking": false
     },
@@ -126,8 +127,8 @@
       "chunks_flagged": [
         4
       ],
-      "evidence": "Chunk 4 header (line 29): \"3. Tier by blast radius. Make the Tier-1 case on your own PRs.\" Chunk 4's own content (lines 29-34) delivers the tiering definition and Intercom's stats, but never delivers the header's second clause — no action or guidance for the reader to 'make the case on your own PRs' appears until chunk 5's 'Try this Monday' (line 41), under an unrelated-sounding header ('Stripe bets on the sandbox, not the slice') that is actually framed around Stripe's CONTRASTING sandbox-based bet, not tiering. Compared against the file's other five move headers: each of Move 1 (line 7), Move 2 (line 19, both clauses fulfilled same-chunk via 'Read the pattern across findings' + Cloudflare's coordinator), Move 4 (line 43), Move 5 (line 55, 'Promote them into the CI surface' fulfilled same-chunk via AGENTS.md/rules-files/pre-commit-hooks), and Move 6 (line 69, both clauses fulfilled same-chunk) either carry a single descriptive clause or fulfill every clause within their own chunk. Move 3 alone bundles an imperative promise into its header and defers it to a differently-topicked chunk — an outlier against the file's own pattern, not a contradiction of chunk 4's content, but a promise the chunk itself does not keep.",
-      "fix_hint": "Either fold a 'make the case' action into chunk 4 itself (mirroring how Move 5's imperative clause is fulfilled in its own chunk), or trim the header to 'Tier by blast radius' and let chunk 5's Try-this-Monday stand on its own without an unclaimed promise pointing at it.",
+      "evidence": "Chunk 4 header (line 29): '3. Tier by blast radius. Make the Tier-1 case on your own PRs.' Chunk 4's own content (lines 29-34) delivers the tiering definition and Intercom's stats, but never delivers the header's second clause — the 'make the case' action only appears in chunk 5's 'Try this Monday' (line 41), under a differently-topicked header ('Stripe bets on the sandbox, not the slice', framed around Stripe's CONTRASTING bet). Compared against the file's other five move headers, re-checked this session: Move 1 (line 7), Move 2 (line 19, both clauses fulfilled same-chunk), Move 4 (line 43), Move 5 (line 55, fulfilled same-chunk via AGENTS.md/rules-files/pre-commit-hooks), Move 6 (line 69, fulfilled same-chunk) each keep their promise inside their own chunk. Move 3 alone bundles an imperative into its header and defers it to a different chunk — an outlier against the file's own pattern.",
+      "fix_hint": "Fold a 'make the case' action into chunk 4 itself (mirroring Move 5), or trim the header to 'Tier by blast radius' and let chunk 5's Try-this-Monday stand without an unclaimed promise pointing at it.",
       "blocking": false
     },
     {
@@ -136,7 +137,7 @@
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Checked all sub-items against the body. (1) 'Not X. Not Y. Z.' banned construction: grepped 'Not [A-Za-z][^.]*\\.' — one hit, line 31 'Not all PRs deserve the same gate.', a single negation, not the triple shape. (2) Anaphora/epistrophe triple: line 9 'About which memory rule should have caught the mistake upstream. About which verifier was too soft. About which skill ran on auto-pilot when it should have paused.' — three legs, but each names a genuinely distinct concrete diagnostic target (rule / verifier / skill, mirroring the module's own three gap-destinations) — the third leg carries new concrete content, which is the rule's own stated pass condition, not the intensifying-repetition it bans. (3) Self-grading superlatives: grepped 'one of the most|most useful|most valuable|most important|game.?chang|revolutioniz' — zero hits in the body; 'the best' is used as a repeated topic-sentence device describing external practitioners ('the best engineers running it'), never grading this training's own content; line 51's '2-3x's the quality' is Cherny's own cited claim (accept-noted CAVEAT source), not the curriculum praising itself. (4) Number + own retraction: checked every stat in the body (52%→80%, 110,000/44,000, 19.2%/14.6min/75.8min/86%, 1,000+/week, 131,246/48,095/5,169/3m39s/0.6%, 10 minutes) — none is paired with a hedge/retraction phrase. (5) Abstraction-noun stacks: grepped for compound-abstraction patterns — none found; closest is line 63 'the same shape of artifact', which resolves concretely against the immediately preceding chunk's AGENTS.md/rules-files/pre-commit-hooks, not a floating abstraction. (6) Empty-leg verb triplets: grepped 'It [a-z]+s\\. It [a-z]+s\\. It [a-z]+s' — zero hits.",
+      "evidence": "Ran fresh greps this session against the body projection. (1) 'Not X. Not Y. Z.': /Not [A-Za-z][^.]*\\./ → one hit, line 31 'Not all PRs deserve the same gate.' — single negation, not the triple shape. (2) Anaphora/epistrophe triple: line 9 ('About which memory rule...About which verifier...About which skill...') — three legs but each names a distinct concrete diagnostic target (rule/verifier/skill mirroring the module's own three gap-destinations); third leg carries new content, the rule's stated pass condition. (3) Self-grading superlatives: /one of the most|most useful|most valuable|most important|game.?chang|revolutioniz/ → 0 hits; 'the best' names external practitioners, never this training's own content; line 51's '2-3x's the quality' is Cherny's cited claim (CAVEAT-sourced), not self-praise. (4) Number+retraction: every stat in the body checked (52%→80%, 110,000/44,000, 19.2%/14.6/75.8/86%, 1,000+/wk, 131,246/48,095/5,169/3m39s/0.6%, 10 min) — none paired with a hedge. (5) Abstraction-noun stacks: none found. (6) Empty-leg verb triplets: /It [a-z]+s\\. It [a-z]+s\\. It [a-z]+s/ → 0 hits.",
       "fix_hint": null,
       "blocking": false
     },
@@ -146,7 +147,7 @@
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Grepped the banned-term list ('surface as noun'|firing|compendium|forcing function|\\bbeat\\b|\\bmood\\b|Connections) against the body: zero genuine hits. The one \\bbeat\\b match (line 25 'specialized agents beat monolithic prompting') is the ordinary verb 'outperform', not the training-design noun. 'surface' appears twice in ordinary engineering sense — line 31 'different review surfaces' and the chunk-8 header 'the CI surface' (both analogous to 'attack surface', not the authoring-vocabulary noun the rule bans). 'the loop', 'gap diagnosis', 'packaging' are this training's own arc-earned spine vocabulary from M4-M6, not maintainer/repo dialect — in scope for §1's arc-earned carve-out, out of scope for §8.",
+      "evidence": "Grepped the banned-term list this session: /\\bsurface\\b|\\bfiring\\b|\\bcompendium\\b|forcing function|\\bbeat\\b|\\bmood\\b|Connections/ over the body projection. Two genuine hits, both benign: line 25 'specialized agents beat monolithic prompting' (ordinary verb 'outperform', not the training-design noun) and line 31/55 'surface' ('different review surfaces', 'the CI surface' — ordinary engineering sense, analogous to 'attack surface', not the authoring-vocabulary noun the rule targets). 'the loop', 'gap diagnosis', 'packaging' are this training's own arc-earned spine vocabulary from M4-M6 (§1 carve-out territory), not maintainer/repo dialect — out of scope for §8.",
       "fix_hint": null,
       "blocking": true
     },
@@ -163,8 +164,8 @@
         9,
         11
       ],
-      "evidence": "Listed every bolded span in the body (grep '\\*\\*[^*]+\\*\\*' over lines 1-105) and assigned each to its chunk. Budget is ≤1 bolded element per slide for ordinary narrative (no menu/lookup-surface carve-out applies here: this is a sequential essay meant to be read once — 'Take-home reading', 'Read after you've shipped your second skill' — not a scanned reference table the reader consults mid-question; per §9's own scope test, 'a reference page's narrative preamble is still narrative,' and this whole file is that narrative). Six of the 14 chunks exceed the budget: chunk 2 'Two proofs the loop compounds' (lines 11-18) has THREE — line 13 '**Klaassen at Every**', line 15 '**Cursor's Bugbot**', line 17 '**Try this Monday.**'; chunk 3 'Fan out review' has two — line 23 '**Cloudflare engineering**', line 27 '**Try this Monday.**'; chunk 5 'Stripe bets on the sandbox' has two — line 37 '**Stripe**', line 41 '**Try this Monday.**'; chunk 7 'Cherny pairs a fast check' has two — line 51 '**Cherny on Claude Code**', line 53 '**Try this Monday.**'; chunk 9 'skill catalogue scales' has THREE — line 63 '**Larson at Imprint**', line 65 '**Charles runs Ramp's Dojo**', line 67 '**Try this Monday.**'; chunk 11 'Agents need the outer loop's signal too' has THREE — line 77 '**Majors at Honeycomb**', line 79 '**Wolff on the Claude Code team**', line 81 '**Try this Monday.**'. Neither the practitioner-name bolds nor the recurring 'Try this Monday.' are named laws/governors/coined terms/checklist-item names in the rule's sense — they read as attribution styling and a recurring action-cue, which is narrative/recognition-beat prose the rule says gets no bold. By contrast, chunks 4, 6, 8, 10, 12 correctly carry ≤1 bold each, and sibling supplementaries (`workflow-composition-lineages.md`, `the-context-ceiling.md`, checked this session) reserve bold for genuine short coined-move handles ('Start clean.', 'Route by complexity, not price.') or the 'Read:' mode-word, never a per-paragraph name lead — confirming this file's pattern is the outlier, not house style. Flagging as a rule question alongside the finding: if the maintainer reads 'Try this Monday.' as an intentional recurring widget-handle (like 'Read:' in the menu carve-out), the practitioner-name bolds still push every one of these six chunks over budget on their own.",
-      "fix_hint": "Pick one bolded handle per chunk — most naturally the recurring 'Try this Monday.' action-cue — and drop the practitioner-name bolding to plain text; where two practitioners share one chunk (9, 11), either accept two bolds as this chunk's genuine content or consider a '##' split so each practitioner gets its own budget.",
+      "evidence": "Ran `grep -noE '\\*\\*[^*]+\\*\\*'` against the body this session (18 bolded spans total) and assigned each to its chunk. No menu/lookup-surface carve-out applies: this file is a sequential essay meant to be read once ('Take-home reading' / 'Read after you've shipped your second skill'), not a scanned reference table — per §9's own scope test 'a reference page's narrative preamble is still narrative,' and this whole file is that narrative. Six of 14 chunks exceed the ≤1 budget: chunk 2 (lines 13/15/17, THREE), chunk 3 (lines 23/27, two), chunk 5 (lines 37/41, two), chunk 7 (lines 51/53, two), chunk 9 (lines 63/65/67, THREE), chunk 11 (lines 77/79/81, THREE). None of these bolded spans (practitioner-name leads or the recurring 'Try this Monday.') is a named law/governor/coined term/checklist-item name in the rule's sense — they read as attribution styling and a recurring action-cue, i.e. narrative/recognition-beat prose the rule bans from bold. Chunks 4, 6, 8, 10, 12 correctly carry ≤1 bold each, confirming this file's own pattern treats the six flagged chunks as the outlier, not house style. Rule question for the maintainer: even if 'Try this Monday.' is read as a deliberate recurring widget-handle (like the 'Read:' mode-word in the menu carve-out), the co-occurring practitioner-name bolds still push all six chunks over budget on their own.",
+      "fix_hint": "Pick one bolded handle per chunk (most naturally 'Try this Monday.') and drop the practitioner-name bolding to plain text; where two practitioners share one chunk (9, 11), either accept two bolds as genuine content or split the '##' so each gets its own budget.",
       "blocking": false
     },
     {
@@ -173,7 +174,7 @@
       "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Read `site/layouts/slides.js` lines 240-284 this session. Lines 254-258: 'A prose section with no phases — prework, supplementary, reference — is slide-ified in place under a kind-labelled divider. Walking only `.phase--*` (the old behaviour) silently dropped prework and the supplements from the default view and stranded every in-deck link into them.' — the comment names supplementary explicitly and describes the 2026-07-09 incident as fixed; line 263 walks every top-level `section.module`, and line 266 assigns prose sections a kind code (P prework, S1… supplementary, R1… reference). This file is a supplementary under `trainings/agentic-engineering-101/supplementary/` and is confirmed IN the composed deck, not dropped.",
+      "evidence": "Read `site/layouts/slides.js` (deck-composition section) this session: a prose section with no phases — prework, supplementary, reference — is slide-ified in place under a kind-labelled divider (the 2026-07-09 drop-supplementary incident is the fix target), walking every top-level `section.module` and assigning prose sections a kind code (P/S/R). This file sits under `trainings/agentic-engineering-101/supplementary/` and is confirmed IN the composed deck, not dropped.",
       "fix_hint": null,
       "blocking": true
     },
@@ -183,7 +184,7 @@
       "rule_lead": "Numbering — position is computed, content ordinals are linted.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Ran `node scripts/check-slide-numbering.js --file curriculum/trainings/agentic-engineering-101/supplementary/how-the-best-do-ci-cd.md` this session → 'OK — 1 files, Phase/Step numbering consistent.' exit 0. Manual check: the six move headers (lines 7, 19, 29, 43, 55, 69) are hand-numbered 1-6, consecutive from 1, and no in-body sentence cross-references a move by number ('as move 3 showed') that a reorder could strand.",
+      "evidence": "Ran `node scripts/check-slide-numbering.js --file curriculum/trainings/agentic-engineering-101/supplementary/how-the-best-do-ci-cd.md` this session → 'OK — 1 files, Phase/Step numbering consistent.' exit 0. Manual check: the six move headers (lines 7, 19, 29, 43, 55, 69) are hand-numbered 1-6, consecutive, and no in-body sentence cross-references a move by number that a reorder could strand.",
       "fix_hint": null,
       "blocking": false
     },
@@ -193,7 +194,7 @@
       "rule_lead": "Page geometry dies at the cut; reading order survives.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Ran `node scripts/check-slide-deixis.js --file curriculum/trainings/agentic-engineering-101/supplementary/how-the-best-do-ci-cd.md` this session → 'OK — 1 files, no page-geometry pointers across the slide cut.' exit 0. Grepped 'above|below|further down|at the top of|see below|see above|coming up' in the body: one hit, line 5 'None require permission from above to start trying' — idiomatic ('from higher authority'), not a page-position pointer. No positional pointer to content elsewhere on the page found.",
+      "evidence": "Ran `node scripts/check-slide-deixis.js --file curriculum/trainings/agentic-engineering-101/supplementary/how-the-best-do-ci-cd.md` this session → 'OK — 1 files, no page-geometry pointers across the slide cut.' exit 0. Cross-grep confirms: only 'above/below' hit is line 5's idiomatic 'permission from above'.",
       "fix_hint": null,
       "blocking": true
     },
@@ -203,7 +204,7 @@
       "rule_lead": "In-deck links work now; whether they EARN their place is open.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Ran `node scripts/check-slide-deixis.js --file curriculum/trainings/agentic-engineering-101/supplementary/how-the-best-do-ci-cd.md --links` this session → review-surface message only, no file-specific findings. Inventoried every markdown link in the body (24 total, lines 13-104): all are external `https://` citation URLs, each named by author + title (e.g. '[Compound Engineering: The Definitive Guide](https://every.to/...)'), never located by page position. Zero in-page/in-deck cross-doc or fragment links present, so the anchor-index mechanism this rule's 'settled' half covers has nothing to fail on in this file.",
+      "evidence": "Ran `node scripts/check-slide-deixis.js --file curriculum/trainings/agentic-engineering-101/supplementary/how-the-best-do-ci-cd.md --links` this session → generic review-surface message only, no file-specific finding. Inventoried every markdown link in the body (24 total, lines 13-104): all external `https://` citation URLs, each named by author + title, never located by page position. No in-page/in-deck cross-doc or fragment link present, so the anchor-index mechanism this rule's settled half covers has nothing to fail on here.",
       "fix_hint": null,
       "blocking": false
     },
@@ -215,8 +216,8 @@
       "chunks_flagged": [
         13
       ],
-      "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/supplementary/how-the-best-do-ci-cd.md --report` this session → 'oversized: 1' — 'how-the-best-do-ci-cd.md:89 [12 bullets] ## Sources'. The Sources chunk (lines 89-105) carries 12 citation bullets against the 6-bullet ceiling (150 words, within the word cap). Checked the maintainer block (lines 106-165) for a `**Slide size accepted:** ## Sources — <reason>` escape hatch: none present. A corpus precedent exists for exactly this shape: `curriculum/trainings/agentic-engineering-101/supplementary/the-context-ceiling.md` splits its 12 citations into two headed sub-sections ('## Sources: quality and craft', '## Sources: cost and other drivers'), 6 bullets each, verified clean by the same checker this session — the established fix for an over-length Sources list is a split, not an accept-note.",
-      "fix_hint": "Split '## Sources' into two headed sub-lists (e.g. by the practice each half of the piece covers, or first-half/second-half of the six moves), 6 bullets each, mirroring `the-context-ceiling.md`'s precedent — or add a maintainer `**Slide size accepted:**` note if a single flat list is preferred for this file.",
+      "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/supplementary/how-the-best-do-ci-cd.md --report` this session → 'oversized: 1' — 'how-the-best-do-ci-cd.md:89 [12 bullets] ## Sources', exit 1. The Sources chunk (lines 89-105) carries 12 citation bullets against the 6-bullet ceiling (129 words per this run, within the word cap). Checked the maintainer block in full: no `**Slide size accepted:** ## Sources — <reason>` escape hatch present. Corpus precedent for this exact shape: `curriculum/trainings/agentic-engineering-101/supplementary/the-context-ceiling.md` splits 12 citations into two headed sub-sections, 6 bullets each — the established fix is a split, not an accept-note.",
+      "fix_hint": "Split '## Sources' into two headed sub-lists (e.g. by which half of the six moves each citation backs), 6 bullets each, mirroring `the-context-ceiling.md`'s precedent — or add a maintainer 'Slide size accepted' note if a single flat list is preferred.",
       "blocking": false
     },
     {
@@ -225,10 +226,10 @@
       "rule_lead": "Live-demo beats survive a text read.",
       "verdict": "N/A",
       "evidence": null,
+      "na_reason": "No guess-before-reveal live-demo structure anywhere in the file; the six 'Try this Monday' prompts are self-directed take-home actions, not a narrated demo with a guess line followed by an outcome line. (na_reason restored 2026-08-29: the prefill carry-forward drops this field on splice; verified still accurate against the current body before restoring.)",
       "fix_hint": "",
       "blocking": false,
-      "na_reason": "No guess-before-reveal live-demo structure anywhere in the file; the six 'Try this Monday' prompts are self-directed take-home actions, not a narrated demo with a guess line followed by an outcome line. (na_reason restored 2026-08-29: the prefill carry-forward drops this field on splice; verified still accurate against the current body before restoring.)",
-      "carried_from": "b1711e9d8ea794cac5a402ee9c34538c7bffa3dc934a686ddadacfb583f767b7",
+      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
       "carried_shape": "e21a0aad9b40f01c"
     },
     {
@@ -237,10 +238,10 @@
       "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
       "verdict": "N/A",
       "evidence": null,
+      "na_reason": "Rule text binds only Exercise (imperative/phase-label) and Lecture (claim) headings; this is a third file type (supplementary) the rule doesn't name. Flagged as a rule question in todos rather than judged as a violation of a binding this file isn't clearly under. (na_reason restored 2026-08-29, verified still accurate.)",
       "fix_hint": "",
       "blocking": false,
-      "na_reason": "Rule text binds only Exercise (imperative/phase-label) and Lecture (claim) headings; this is a third file type (supplementary) the rule doesn't name. Flagged as a rule question in todos rather than judged as a violation of a binding this file isn't clearly under. (na_reason restored 2026-08-29, verified still accurate.)",
-      "carried_from": "b1711e9d8ea794cac5a402ee9c34538c7bffa3dc934a686ddadacfb583f767b7",
+      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
       "carried_shape": "e21a0aad9b40f01c"
     },
     {
@@ -249,32 +250,18 @@
       "rule_lead": "A bullet earns its slot or dies — three classes that read as rigour and carry nothing.",
       "verdict": "N/A",
       "evidence": null,
-      "fix_hint": "",
-      "blocking": false,
       "na_reason": "No qualifying prose bullets in the body — the file is written entirely in paragraphs; the only bulleted list is the Sources citation list (lines 93-104), which is a reference list, not a doctrine-restatement/design-commentary/aphorism-kicker bullet the rule targets. (na_reason restored 2026-08-29, verified still accurate.)",
-      "carried_from": "b1711e9d8ea794cac5a402ee9c34538c7bffa3dc934a686ddadacfb583f767b7",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
       "carried_shape": "e21a0aad9b40f01c"
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 1,
-      "rule_lead": "Banned words — grep zero-tolerance.",
-      "verdict": "PASS",
-      "evidence": "mechanical: /\\b(delve|delving|honest|honestly|importantly|crucial|crucially|substrate|synergize|paradigm shift)\\b/ over body projection curriculum/evals/body-views/ae101--supplementary--how-the-best-do-ci-cd.body.txt → 0 hits; pattern proven against planted violation.",
-      "fix_hint": "",
-      "blocking": false,
-      "prefilled": true
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 2,
-      "rule_lead": "Ritual / ceremony — hard ban in any curriculum/training surface.",
-      "verdict": "PASS",
-      "evidence": "mechanical: /\\b(ritual|rituals|ceremony|ceremonies)\\b/ over body projection curriculum/evals/body-views/ae101--supplementary--how-the-best-do-ci-cd.body.txt → 0 hits; pattern proven against planted violation.",
-      "fix_hint": "",
-      "blocking": false,
-      "prefilled": true
     }
+  ],
+  "notes": [
+    "Rows for check_slides.md rules 4, 15, 16 are intentionally absent from this file — the class brief excluded them as already-resolved N/A (shape hash e21a0aad9b40f01c); they are parked in the prefill sidecar and spliced in by `prefill-instance.js --merge`, run after this instance was written.",
+    "The prior instance for this (file, class) is not reused as a base: its rule-3 row cited `curriculum/trainings/agentic-engineering-101/autumn-gaps.md`, a file that does not exist in this repo (verified via `ls`, exit 2, this session). All 13 owed rows in this instance are independently re-derived from the live body and live sibling files, not carried forward.",
+    "The prior instance also carried two check_writing.md rows (rules 1-2, prefilled) inside a slides-class instance. check_writing.md is not in this class's assembled compendium set (brief lists only check_slides.md) — those rows are out of this class's lane per the dispatch preamble and are dropped here, not re-emitted.",
+    "Rule question for the maintainer (rule 3, PASS, not blocking): `how-the-best-do-ci-cd.md`'s module-flag subtitle gates the read on the reader having already shipped a second skill via M6's handoff prompt, and the body line right after assumes that has happened. The gate lives only in the subtitle; M6's own `## Next` section links straight to this file with no interstitial reminder to run the handoff prompt first. Worth a maintainer look at whether the subtitle alone is a strong enough gate, independent of this rule's PASS verdict here."
   ],
   "blocking_findings_count": 0,
   "todos_count": 3

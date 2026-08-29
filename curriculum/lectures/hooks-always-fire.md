@@ -24,7 +24,7 @@ A menu, not a checklist.
 
 **Time:** ~4 min projected, demo prompt included.
 
-**Delivery:** the prompt is a trainer show-and-tell (`check_lectures §6`), and the cue is load-bearing (Antti 2026-08-20, carried from the source lecture): a 2026-08-20 persona run scored the slide 5/10 when nothing told the room whether to run it. Body reads *"This one runs on the screen. Watch the list come back rather than typing along"* — trainer runs `{{prompt:what-packaging-is-1}}` on the projected repo and reads the returned list against the closing line's test. Do not restore an imperative that asks the room to run it.
+**Delivery:** the prompt is a trainer show-and-tell (`check_lectures §6`): the trainer runs `{{prompt:what-packaging-is-1}}` on the projected repo and reads the returned list against the tail's menu line; the room watches. The body carries no run-this cue (compaction 2026-08-29, Antti: the teacher runs it and the room can see), so the trainer's spoken cue is load-bearing — a 2026-08-20 persona run scored the slide 5/10 when the cue was missing entirely. Do not restore an imperative that asks the room to run it.
 
 <!-- backing -->
 
@@ -45,5 +45,5 @@ Format → `curriculum/backing-format.md`. Rows moved verbatim from `what-packag
 
 <!-- /backing -->
 
-**Quality:** compendium-audited 2026-08-28 (writing@d5aa7e3d story@d5aa7e3d technical@0cea7581 behavior@d5aa7e3d pedagogy@d5aa7e3d strategy@d5aa7e3d slides@d5aa7e3d)
-- judges @0cea7581: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-29 (writing@4a722813 story@4a722813 technical@0cea7581 behavior@d5aa7e3d pedagogy@d5aa7e3d strategy@d5aa7e3d slides@4a722813)
+- judges @4a722813: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

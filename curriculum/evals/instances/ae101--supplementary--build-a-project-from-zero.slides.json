@@ -1,9 +1,9 @@
 {
   "class": "slides",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/supplementary/build-a-project-from-zero.md",
-  "body_sha": "c1c3752e8d5a607f948f7d9fce9f3481967375ea6393c0134ca9db6e401a7a31",
+  "body_sha": "4ff6a3d361c366b57742601c07ddfb13639142bb32c3d1e99213b79db1e40e4e",
   "shape_hash": "1870b031fbe8c765",
-  "verdict": "PASS_WITH_TODOS",
+  "verdict": "PASS",
   "training": "ae101",
   "chunk_map": [
     {
@@ -39,7 +39,7 @@
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Traced every pronoun/demonstrative/bare-noun-phrase under sequential read against the CURRENT (post-5711a601) body. Chunk 0 line 5 'it runs...it has...it has' -> 'a small Lemmings game' same sentence's opening clause; 'That's a project' -> the whole preceding checklist (running+tested+real history), in-chunk. Chunk 1 line 10 'in it' -> 'a new folder' same bullet; line 11 'that folder' -> line 10, in-chunk; line 12 'the `.html`' -> 'a single browser page' same bullet. Chunk 1 line 13 'Open the page' -> line 12; 'your Module 1 bug' -> 'Module 1' already named line 9, in-chunk. Chunk 2 line 17 'the game' and line 18 'the repo' reuse chunk-0/1 nouns (Lemmings game line 5, git repo line 10) across slides -- explicitly protected under the rule's own carve-out ('a term introduced on an earlier slide... reused... FINE'). Chunk 2 line 19 flag:module branch: 'A toy game with no data has nothing to threat-model.' is fully self-contained -- no unresolved referent (the branch's prior sentence naming Module 3's later use of this surface was cut by commit 5711a601, see rule 16 below). Chunk 2 line 19 flag:no-module branch: 'the later task sizes' is a forward-pointing bare noun phrase, structurally close to the rule's own violation example ('before the three things get named' pointing at a later slide). Judged PASS on balance, not REVISE: (a) it resolves on the immediately NEXT chunk's own header ('Where the four task sizes come from', chunk 3 line 21) and full definition (lines 25-28) -- one slide-turn away, not an indeterminate distance; (b) the compound noun 'task sizes' is semantically transparent to an engineer reader even pre-definition; (c) 'later' is a transparent same-document forecast, not a concealed dependency. This is a genuine tension between the rule's literal 'forward references included' text and its harm rationale (reader confusion) which is minimal at one-chunk adjacency -- filed as a rule-question TODO rather than a REVISE per the dispatch preamble's harm test. Chunk 3 line 23 'Same sizes as the prework' -> 'the prework' is a real cross-file reference (rule 2's lane, not rule 1's); 'the game's own backlog' -> chunk-0/1 noun. Chunk 4 line 32 'The running game' -> chunk 0/1; 'the test suite' -> chunk 2 line 17; 'the commit history' -> chunk 2 line 18 / chunk 0 line 5; 'the one bug you spotted while playing' -> chunk 1 line 13. No never-named or stranded referent found.",
+      "evidence": "Traced every pronoun/demonstrative/bare-noun-phrase under sequential read against the CURRENT body (post-221bef5a, body_sha aa2dbb75). Chunk 0 line 5 'it runs...it has...it has' -> 'a small Lemmings game' same sentence's opening clause; 'That's a project' -> the whole preceding checklist, in-chunk. Chunk 1 line 10 'in it' -> 'a new folder' same bullet; line 11 'that folder' -> line 10; line 12 'the `.html`' -> 'a single browser page' same bullet; line 13 'Open the page' -> line 12, 'your Module 1 bug' -> 'Module 1' already named line 9 -- all in-chunk. Chunk 2 line 17 'the game' and line 18 'the repo' reuse chunk-0/1 nouns across slides -- protected under the rule's own reuse carve-out. Chunk 2 line 19 flag:module branch 'A toy game with no data has nothing to threat-model.' is fully self-contained. flag:no-module branch NOW reads 'A game that only draws to a canvas has one kind of surface; one that stores or shares something has several, and that is material you'll want when the later tasks need it.' -- edited by commit 221bef5a (2026-08-29) FROM the prior wording 'and the later task sizes want somewhere real to land.'; confirmed via `git diff 5711a601 221bef5a -- <file>` that this is exactly the substitution. 'that is material' resolves to 'something' (the data feature) named earlier in the same sentence, in-chunk. 'the later tasks' is now a plain generic forward-looking phrase (ordinary future coursework) rather than a pointer at the specific undefined compound term 'task sizes' the prior wording used -- the forward-reference concern the immediately-prior instance (body_sha c1c3752e) filed as a TODO against this exact phrase no longer applies to the current text. Chunk 3 line 23 'the prework' is a cross-file reference (rule 2's lane, not rule 1's); 'the game's own backlog' -> chunk-0/1 noun. Chunk 3 line 27 'the data feature you seeded at the end of the first session' -> chunk 2 line 19, cross-slide reuse, fine. Chunk 4 line 32 'The running game' -> chunk 0/1; 'the test suite' -> chunk 2 line 17; 'the commit history' -> chunk 2 line 18 / chunk 0 line 5; 'the one bug you spotted while playing' -> chunk 1 line 13. No never-named, vague, or stranded referent found anywhere in the current body -- the one open item the prior instance carried as a TODO is resolved by the edit, not merely reworded around.",
       "fix_hint": null,
       "blocking": true
     },
@@ -49,7 +49,7 @@
       "rule_lead": "Cross-file and positional callbacks.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Exactly two cross-document references in the current body. Chunk 3 line 23: '[prework](../prework.md)' -- named by link text, no page-position language. Chunk 2 line 19 flag:module branch: 'Module 3' -- named by its stable module number, the same convention this file itself uses for its own module ('your Module 1 material' line 9, 'your Module 1 bug' line 13, '## Bring to Module 1' line 30), not a positional locator. Note: commit 5711a601 removed the flag:module branch's trailing sentence describing WHAT Module 3 does with this surface ('reads...maps access control...runs STRIDE') -- that removal resolves a rule-16 predicate-leak finding (see below), not a rule-2 concern; the bare module-number naming that remains is unchanged and stays in-lane. Neither surviving reference points at a sibling file by page position.",
+      "evidence": "Exactly one cross-document reference in the current body: chunk 3 line 23 '[prework](../prework.md)' -- named by link text, no page-position language. `grep -n Module` over the body projection returns only 'Module 1' self-references (lines 9, 13, 30) -- this file's own module, not a cross-file callback. Correction to the record: the immediately-prior instance's rule-2 evidence asserted a second cross-file reference ('Module 3', 'named by its stable module number... unchanged and stays in-lane' in chunk 2 line 19's flag:module branch); re-checked that branch's actual text at the same pinned commit (`git show 5711a601:<file>`) and no 'Module 3' text is present there at all -- the whole Module-3-naming sentence was already fully removed by commit 5711a601, before that instance was written, not partially retained as the prior evidence claimed. This does not change the verdict (PASS either way) but the prior instance's evidence was inaccurate about what text it was reading; flagged here per the dispatch preamble's cached-trace discipline rather than carried forward silently. No cross-file positional callback of any kind is present in the current body.",
       "fix_hint": null,
       "blocking": true
     },
@@ -59,7 +59,7 @@
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Every chunk carries a self-standing claim: chunk 1 = the build steps to a running game; chunk 2 = leave the session with tests, commit history, and a data-touching feature; chunk 3 = the four task sizes, fully enumerated in-chunk; chunk 4 = the four things to bring, one complete sentence. No chunk is a bare wait-state or single context-dependent fragment.",
+      "evidence": "Every chunk carries a self-standing claim: chunk 1 = the build steps to a running game; chunk 2 = leave the session with tests, commit history, and a data-touching feature (both flag branches are complete standalone sentences); chunk 3 = the four task sizes, fully enumerated in-chunk; chunk 4 = the four things to bring, one complete sentence. No chunk is a bare wait-state or single context-dependent fragment.",
       "fix_hint": null,
       "blocking": false
     },
@@ -69,7 +69,7 @@
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Chunk 1 'Get to a running game' -> content is exactly the steps to a first playable build, ending 'Open the page and play' (line 13). Chunk 2 'Leave it with tests and a data surface' -> content delivers tests (line 17) and a data surface (line 19, both flag branches keep the header noun); commit history (line 18) is a bonus bullet the header doesn't name but doesn't contradict either. Chunk 3 'Where the four task sizes come from' -> content is exactly the four task-size definitions. Chunk 4 'Bring to Module 1' -> content is exactly the bring-list. No header promises content the chunk doesn't deliver.",
+      "evidence": "Chunk 1 'Get to a running game' -> content is exactly the steps to a first playable build, ending 'Open the page and play' (line 13). Chunk 2 'Leave it with tests and a data surface' -> delivers tests (line 17) and a data surface (line 19, both flag branches keep the header's 'surface' noun); commit history (line 18) is a bonus bullet the header doesn't name but doesn't contradict either. Chunk 3 'Where the four task sizes come from' -> content is exactly the four task-size definitions (lines 25-28: 'Trivial bug', 'Small multi-file task', 'Small feature', 'A bigger piece'). Chunk 4 'Bring to Module 1' -> content is exactly the bring-list. No header promises content the chunk doesn't deliver.",
       "fix_hint": null,
       "blocking": false
     },
@@ -79,7 +79,7 @@
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Re-ran mechanically this session: `grep -inE 'Not [A-Z][a-z]+\\. Not [A-Z][a-z]+\\.' curriculum/evals/body-views/ae101--supplementary--build-a-project-from-zero.body.txt` -> 0 hits (no Not-X-Not-Y). `grep -inE 'one of the most|best|incredibly|truly|really' -> 0 hits (no self-grading superlative). Manual check for anaphora/epistrophe triples, number+retraction, abstraction-noun stacks, and empty-leg verb triplets -- none present anywhere in the body, including the shortened line 19 (the cut sentence removed by commit 5711a601 carried no cadence tic of its own; the remaining text is shorter and equally clean). The two numeric mentions ('two levels', 'three lemming actions', line 12) are plain unretracted specs, not the number+retraction pattern.",
+      "evidence": "Ran this session: `grep -inE 'Not [A-Z][a-z]+\\. Not [A-Z][a-z]+\\.' curriculum/evals/body-views/ae101--supplementary--build-a-project-from-zero.body.txt` -> 0 hits. `grep -inE 'one of the most|\\bbest\\b|incredibly|truly|really' <same file>` -> 0 hits. Manual check for anaphora/epistrophe triples, number+retraction, abstraction-noun stacks, and empty-leg verb triplets across all four chunks including the two lines edited since the last full read (chunk 2 line 19 no-module branch, chunk 3 line 28 label+body 'A bigger piece: ...steer one small step at a time') -- none present. The two numeric mentions ('two levels', 'three lemming actions', line 12) are plain unretracted specs, not the number+retraction pattern. 'steer one small step at a time' (line 28, replacing 'nudge bit by bit') is a single descriptive clause, not a triplet.",
       "fix_hint": null,
       "blocking": true
     },
@@ -89,7 +89,7 @@
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "`grep -inE 'surface|beat|mood|compendium|forcing function|\\bfiring\\b' curriculum/evals/body-views/ae101--supplementary--build-a-project-from-zero.body.txt` (run this session) -> 4 hits, all 'surface': line 12 'surface area' (ordinary engineering usage); header line 15 'data surface'; line 19 both flag branches ('That surface', 'one kind of surface'); line 27 'a user-facing surface'. All four uses are the security/attack-surface engineering sense, tied explicitly to the game's data feature and to Module 3's access-control/STRIDE work -- domain jargon an AE101 engineer half-knows already, not the repo's editorial writing-surface metaphor. No 'beat', 'mood', 'compendium', 'forcing function', or bare 'firing' anywhere in the body.",
+      "evidence": "`grep -inE 'surface|\\bbeat\\b|\\bmood\\b|compendium|forcing function|\\bfiring\\b' curriculum/evals/body-views/ae101--supplementary--build-a-project-from-zero.body.txt` (run this session) -> 4 lines, one 'surface' occurrence each: line 12 'surface area' (ordinary engineering usage); header line 15 'a data surface'; line 19 'one kind of surface' (no-module branch); line 27 'a user-facing surface'. All four are the security/attack-surface engineering sense tied to the game's data feature and the later STRIDE-adjacent coursework -- domain jargon an AE101 engineer already half-knows, not the repo's editorial writing-surface metaphor. No 'beat', 'mood', 'compendium', 'forcing function', or bare 'firing' anywhere in the body. (Note: the earlier 'That surface is what Module 3 reads...' sentence carrying a second 'surface' use was already cut before the currently-pinned state; irrelevant to this verdict either way.)",
       "fix_hint": null,
       "blocking": true
     },
@@ -99,7 +99,7 @@
       "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Only bold in the body is chunk 3's four list leads (lines 25-28: 'Trivial bug:', 'Small multi-file task:', 'Small feature:', 'A real send-off:'), each <=3 words, within the handle cap. `grep -n 'Trivial bug\\|multi-file task' curriculum/trainings/agentic-engineering-101/prework.md` (run this session) -> lines 15-18, same bolded-label-per-tier pattern in prework.md itself ('Trivial bug', 'A small multi-file task', 'A small feature', 'A bigger piece') -- a cross-file template convention, and functionally the check_pedagogy.md §34 floor-and-ceiling task-sizing shape the rule's own exception names as outranking the <=1-bold-per-slide budget. No other bold anywhere in the body.",
+      "evidence": "Only bold in the body is chunk 3's four list leads (lines 25-28: 'Trivial bug:', 'Small multi-file task:', 'Small feature:', 'A bigger piece:'), each <=3 words, within the handle cap. `grep -n 'Trivial bug\\|multi-file task\\|bigger piece' curriculum/trainings/agentic-engineering-101/prework.md` (run this session) -> lines 15, 16, 18: prework.md uses the identical 'Trivial bug' / 'A small multi-file task' / 'A bigger piece' labels -- this file's chunk-3 labels now match the cross-file template even more closely than at the last full read (the fourth label was renamed 'A real send-off' -> 'A bigger piece' in the same commit that touched this file, aligning it with prework.md's own wording). Confirms the check_pedagogy.md §34 floor-and-ceiling task-sizing shape the rule's own exception names as outranking the <=1-bold-per-slide budget. No other bold anywhere in the body.",
       "fix_hint": null,
       "blocking": false
     },
@@ -139,7 +139,7 @@
       "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "`node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/supplementary/build-a-project-from-zero.md --report` (run this session): 'Get to a running game' 147w/5 bullets, 'Where the four task sizes come from' 101w/4 bullets, 'Leave it with tests and a data surface' 80w/3 bullets, 'Bring to Module 1' 17w/0 bullets. Summary: 'files: 1  slides: 4  limits: 210 words / 6 bullets  oversized: 0'. The 'Leave it with tests' slide dropped from 97w (prior instance, pre-fix body) to 80w after commit 5711a601 cut the predicate-leak sentence -- confirms this evidence is freshly re-run against the current body, not carried from cache. Every slide within limits on both axes.",
+      "evidence": "`node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/supplementary/build-a-project-from-zero.md --report` (run this session): 'Get to a running game' 147w/5 bullets, 'Where the four task sizes come from' 104w/4 bullets (up from 101w at the last full read -- the 'A bigger piece' relabel plus 'steer one small step at a time' vs 'nudge bit by bit' accounts for the +3 words), 'Leave it with tests and a data surface' 80w/3 bullets, 'Bring to Module 1' 17w/0 bullets. Summary: 'files: 1  slides: 4  limits: 210 words / 6 bullets  oversized: 0'. Every slide within limits on both axes, freshly re-run against the current body (not carried from cache).",
       "fix_hint": null,
       "blocking": false
     },
@@ -149,7 +149,7 @@
       "rule_lead": "A bullet earns its slot or dies — three classes that read as rigour and carry nothing.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Prior instance (body_sha 2cd1e5604e8885a05e62b2086a78a25ceaff909dbd5138f8ea61080bf1eb3482, now stale) filed a REVISE here on chunk 2 line 19's flag:module branch, which then read '...That surface is what Module 3 reads when you map access control and run STRIDE against it. A toy game with no data has nothing to threat-model.' -- a class-(b) predicate leak (promising what a LATER module does with the artifact). Commit 5711a601 ('The direct-apply pile lands: forward promises cut where their beats live...', dated 2026-08-29, confirmed via `git show 5711a601 -- <file>` this session) cut exactly that leading sentence. Current line 19 flag:module branch reads only 'A toy game with no data has nothing to threat-model.' -- a same-slide rationale for the bullet immediately preceding it, no cross-module promise, no doctrine restatement, no aphorism kicker. Scanned the rest of the body for the other two sub-classes: line 5 'That's a project.' is a concrete closing definition of the checklist just given (running+tested+real history), not a kicker restating the H1; line 32's bring-list is a plain enumeration, not doctrine restatement. No bullet in the current body reads as rigour-with-nothing-inside.",
+      "evidence": "Re-scanned all four chunks for the three low-value bullet classes. Chunk 2 line 19 flag:module branch: 'A toy game with no data has nothing to threat-model.' -- a same-slide rationale for the immediately-preceding bullet, no cross-module promise (the earlier 'Module 3 reads...runs STRIDE' predicate-leak sentence stays cut, confirmed absent from the current body), no doctrine restatement, no aphorism kicker. flag:no-module branch is a plain concrete comparison, not a restatement. Chunk 3's four bullets are a plain enumeration of distinct task-size definitions. Line 5 'That's a project.' is a concrete closing definition of the checklist just given, not a kicker restating the H1. Line 32's bring-list is a plain enumeration, not doctrine restatement. No bullet in the current body reads as rigour-with-nothing-inside.",
       "fix_hint": null,
       "blocking": false
     },
@@ -158,84 +158,59 @@
       "rule_index": 3,
       "rule_lead": "Every backward reference points at a beat that exists.",
       "verdict": "N/A",
-      "evidence": "No 'the X you did/saw' backward-reference-to-a-beat construction appears anywhere in the body. Chunk 2 line 19's 'Module 3 reads' is a forward reference to a real module, not a backward beat claim.",
-      "fix_hint": "",
-      "blocking": false,
-      "carried_from": "2cd1e5604e8885a05e62b2086a78a25ceaff909dbd5138f8ea61080bf1eb3482",
-      "carried_shape": "1870b031fbe8c765"
+      "chunks_flagged": [],
+      "evidence": null,
+      "na_reason": "No 'the X you did/saw/caught' backward-reference-to-a-beat construction anywhere in the current body -- checked all four chunks; the only module-arc references are this file's own module ('Module 1', lines 9/13/30, forward-looking not backward) and prework's task-size sizes (cross-file, rule 2's lane).",
+      "fix_hint": null,
+      "blocking": false
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 4,
       "rule_lead": "Live-demo beats survive a text read.",
       "verdict": "N/A",
-      "evidence": "No guess-before-reveal or live-demo construction anywhere in the body.",
-      "fix_hint": "",
-      "blocking": false,
-      "carried_from": "2cd1e5604e8885a05e62b2086a78a25ceaff909dbd5138f8ea61080bf1eb3482",
-      "carried_shape": "1870b031fbe8c765"
+      "chunks_flagged": [],
+      "evidence": null,
+      "na_reason": "No guess-before-reveal or live-demo construction anywhere in the body -- this is a hands-on build-your-own-repo page, not a demo narration.",
+      "fix_hint": null,
+      "blocking": false
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 13,
       "rule_lead": "In-deck links work now; whether they EARN their place is open.",
       "verdict": "N/A",
-      "evidence": "Single in-body link, chunk 3 line 23 '[prework](../prework.md)' — link text names the document, no page-position language. Review surface only per the rule, not a gate.",
-      "fix_hint": "",
-      "blocking": false,
-      "carried_from": "2cd1e5604e8885a05e62b2086a78a25ceaff909dbd5138f8ea61080bf1eb3482",
-      "carried_shape": "1870b031fbe8c765"
+      "chunks_flagged": [],
+      "evidence": null,
+      "na_reason": "Rule states 'There is no rule here' on whether links earn their place (review surface only, never a gate). Single in-body link, chunk 3 line 23 '[prework](../prework.md)', names the document in the link text per the one surviving guidance and carries no page-geometry language (that would be rules 2/12, both already PASS above).",
+      "fix_hint": null,
+      "blocking": false
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 15,
       "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
       "verdict": "N/A",
-      "evidence": "Rule text scopes the imperative/claim split to 'Exercise' vs 'Lecture' `##` headings specifically; this file is a supplementary bootstrapping page, neither. All four headings are imperative/procedural labels ('Get to a running game', 'Leave it with tests and a data surface', 'Bring to Module 1') or a topical label ('Where the four task sizes come from') consistent with the exercise-style convention this page follows — no declarative law-naming heading is present either way, so no conflict arises under either reading.",
-      "fix_hint": "",
-      "blocking": false,
-      "carried_from": "2cd1e5604e8885a05e62b2086a78a25ceaff909dbd5138f8ea61080bf1eb3482",
-      "carried_shape": "1870b031fbe8c765"
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 1,
-      "rule_lead": "Banned words — grep zero-tolerance.",
-      "verdict": "PASS",
-      "evidence": "mechanical: /\\b(delve|delving|honest|honestly|importantly|crucial|crucially|substrate|synergize|paradigm shift)\\b/ over body projection curriculum/evals/body-views/ae101--supplementary--build-a-project-from-zero.body.txt → 0 hits; pattern proven against planted violation.",
-      "fix_hint": "",
-      "blocking": false,
-      "prefilled": true
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 2,
-      "rule_lead": "Ritual / ceremony — hard ban in any curriculum/training surface.",
-      "verdict": "PASS",
-      "evidence": "mechanical: /\\b(ritual|rituals|ceremony|ceremonies)\\b/ over body projection curriculum/evals/body-views/ae101--supplementary--build-a-project-from-zero.body.txt → 0 hits; pattern proven against planted violation.",
-      "fix_hint": "",
-      "blocking": false,
-      "prefilled": true
+      "chunks_flagged": [],
+      "evidence": null,
+      "na_reason": "Rule's claim-vs-imperative split is scoped to Exercise/Lecture `##` headings specifically; this is a supplementary page, neither type -- no conflict arises under either reading.",
+      "fix_hint": null,
+      "blocking": false
     }
   ],
   "blocking_findings_count": 0,
-  "todos_count": 1,
+  "todos_count": 0,
   "drift_rules_reread": [
-    "slides §16 (added 2026-08-25, per compendium's own changelog note) reread at current wording and reapplied fresh against the current body: the violation it caught in the prior instance is confirmed fixed by commit 5711a601 (see rule 16 evidence above), not merely assumed fixed from the diff.",
-    "slides §1 reread in full including its 'NOT violations' carve-out list to check whether 'immediate continuation of the previous slide's subject' or any other listed carve-out covers chunk 2's 'the later task sizes' forward pointer -- it does not explicitly, which is why that instance is filed as a todo rather than silently passed."
+    "slides §1 reread in full including its carve-out list against the current chunk-2 no-module wording ('that is material you'll want when the later tasks need it') to confirm the forward-pointing-compound-term shape the prior instance filed as a TODO ('the later task sizes') is no longer present -- it is not: the phrase is now a plain generic forward reference, not a pointer at an undefined term.",
+    "slides §2 reread in full while checking the flag:module branch for the 'Module 3' text the prior instance's evidence described -- the text does not exist in either the current body or the body at the prior instance's own pinned sha; corrected in this instance's rule-2 evidence rather than carried forward.",
+    "slides §16 reread against the current chunk-2 flag:module branch to reconfirm the predicate-leak fix (cut before the currently-pinned state) still holds and no new instance of the three low-value-bullet classes was introduced by the wave-8 label/wording edits."
   ],
-  "notes": "This file's slides certification was pinned stale at e11bbeb4 per the maintainer Quality line ('slides@e11bbeb4'), predating commit 5711a601 which touched this file's diff region (cut a forward-promise sentence from chunk 2). Re-read the CURRENT body independently rather than trusting the prior cached instance, per the dispatch preamble's cached-trace warning -- confirmed via body_sha mismatch against the prior instance (prior: 2cd1e5604e8885a05e62b2086a78a25ceaff909dbd5138f8ea61080bf1eb3482; current: c1c3752e8d5a607f948f7d9fce9f3481967375ea6393c0134ca9db6e401a7a31) and via `git show 5711a601` confirming the exact sentence the prior instance's rule-16 REVISE quoted no longer exists in this file. All 12 brief-owed rules independently re-verified against the current file: the prior instance's one REVISE (rule 16) is now a clean PASS given the fix; all other rows reconfirm PASS with freshly re-run mechanical checks (check-slide-size.js, check-slide-numbering.js, check-slide-deixis.js all re-executed this session) and fresh referent/dialect/cadence tracing. One new non-blocking todo filed on rule 1: a forward-pointing bare noun phrase ('the later task sizes', chunk 2) that the rule's literal text would flag as a forward reference but whose harm is minimal given one-chunk adjacency to its resolution -- a genuine rule-question, not a defect, per the dispatch preamble's harm test.",
+  "notes": "The file moved twice since the e11bbeb4 pin this dispatch names: commit 5711a601 (predicate-leak cut, already reflected in the immediately-prior instance, body_sha c1c3752e) and commit 221bef5a (Wave 8, 2026-08-29) which made two further body edits -- (1) chunk 2's no-module branch changed 'and the later task sizes want somewhere real to land' to 'and that is material you'll want when the later tasks need it', resolving the forward-reference TODO the prior instance filed against rule 1; (2) chunk 3's fourth task-size label changed 'A real send-off' to 'A bigger piece' with matching prose, aligning it with prework.md's own labels -- plus maintainer-block bookkeeping (Quality line dates/SHAs, one source-stamp URL/date refresh) below the cut, out of slide-chunk scope. body_sha confirmed via `shasum -a 256` against the live working-tree file, which matches `git show HEAD:<file>` exactly (no uncommitted changes). The class brief and the sidecar both cached against the PRE-Wave-8 body_sha (c1c3752e) -- a live neighbour committed 221bef5a between this dispatch's brief-derivation step and this judge's read. Re-ran `prefill-instance.js --write` fresh mid-session against the current body: it parked 0 rows and reported all 16 check_slides.md rules owed, so every row in this instance (including the 4 previously-N/A-by-shape rows 3/4/13/15) is freshly judged against the CURRENT body, not carried from any cache -- the fail-closed path, not an error. All 16 check_slides.md rules independently verified with freshly re-run mechanical checks (check-slide-size.js, check-slide-numbering.js, check-slide-deixis.js all re-executed this session against the current file) and fresh referent/dialect/cadence/bullet-value tracing. check_writing.md rules 1-2 that appeared as bonus 'prefilled' rows in the prior instance are dropped here: check_writing.md's own frontmatter scopes `eval_classes` to `[writing]` only, not `slides`, and the fresh --write run's 'owed_to_judge: 16' confirms they are not part of this class's ledger -- they belong to, and are already covered by, the writing-class judge's own instance for this file. Net result versus the immediately-prior instance: the one open TODO (rule 1, forward-pointing 'the later task sizes') is resolved by the Wave-8 edit; no new issue was introduced by the wave-8 wording changes; one inaccuracy in that instance's rule-2 evidence (an assertion that 'Module 3' text survives in chunk 2, which it does not, at either sha) is corrected in this instance's own rule-2 row rather than propagated. Verdict moves from PASS_WITH_TODOS to a clean PASS.",
   "accept_notes_found": [
     "L36: **Quality:** compendium-audited 2026-08-28 (writing@e11bbeb4 story@e11bbeb4 technical@0cea7581 behavior@148adf6 pedagogy@1abb84c6 strategy@148adf6 slides@e11bbeb4)",
     "L67: cc-model-command source stamp [checked:2026-08-28 result:OK due:cohort]",
     "L72: Stance [stance:2026-08-01 level:L0]",
     "L80: last-run: 2026-08-01"
   ],
-  "todos": [
-    {
-      "rule": "check_slides.md §1",
-      "note": "Chunk 2 line 19 (flag:no-module branch) 'the later task sizes' is a forward-pointing bare noun phrase not yet named in-file, close in shape to the rule's own violation example ('before the three things get named'). Passed on harm grounds (resolves at the immediately-next chunk's own header, one slide away) but the rule's carve-out list doesn't explicitly cover 'resolves on the next chunk' -- worth a maintainer call on whether to add that carve-out or confirm this shape should be rewritten to name-then-point instead.",
-      "line": 19
-    }
-  ]
+  "todos": []
 }

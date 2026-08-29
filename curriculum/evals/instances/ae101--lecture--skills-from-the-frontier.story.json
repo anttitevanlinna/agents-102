@@ -3,27 +3,20 @@
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/skills-from-the-frontier.md",
   "verdict": "PASS",
   "training": "ae101",
-  "body_sha": "d55f73126345d037f50cacc5f38300b0a955d1589baec3eb0b83bd87d57a3a8a",
+  "body_sha": "d92008afcda17e24f2d3736658d466c8fb459b6fcf6c287f4f67250fcdef3ca0",
   "shape_hash": "334690d1473a541c",
+  "pin": "0e4f7c9e",
+  "staleness_reason": "diff-region",
   "module_mood_contract": "earned trust, before the earning — student leaves the lecture with the stance 'these frameworks are real, the authoring move is real, the team kit is real', not 'we're about to do security homework'",
   "trace_status": "regenerated",
-  "trace_regeneration_reason": "Cached trace (2026-08-01, content_sha f5fb7d12...) predated the 2026-08-25 lean pass — cached sha mismatched current file sha (2ff9bdd1...). Regenerated the single phase + close against the current (post-lean-pass) body: the pass cut a design-commentary clause, a kicker line, a restated can't-be-curated lead, a padding lead, and one full-duplicate bullet, per the dated maintainer accept-note at L42. None of the cut lines carried unique trust/mood work the surrounding sentences didn't already carry; the close now lands on an active pushback line instead of an admin-housekeeping bullet, immediately before 'Go.' Mood verdicts unchanged from the prior instance (8/8).",
+  "trace_regeneration_reason": "Cached trace (2026-08-26, content_sha 2ff9bdd1...) predated two further direct-authored commits on top of the pin (175ec6e0 'M3's skills lecture announced its own reveal, then narrated its own title' + 5ef70266 backing-block-only Ramp resolution) — cached sha mismatched current file sha (f61d8a02...). Regenerated the single phase + close against the current body: 175ec6e0 cut four lines — a packaging pre-announcement on slide 1 ('Today the packaging arrives: you invoke two curated skills and author one of your own.'), a module-title gloss on slide 5 ('The module's title, *Earn the trust*, isn't rhetorical.'), a redundant second compliance negation on slide 5 ('Not \"we followed a checklist\" but'), and a header-echo lead bullet on slide 6 ('The access-control skill flags surfaces; deciding is your job.'). None removed unique trust/mood content the surrounding sentences didn't already carry, and the packaging-spoiler removal plausibly helps the mid-lecture reveal land harder rather than reads as a rerun of slide 1. Mood verdicts unchanged from the last audited pass (8/8).",
   "rules_evaluated": [
     {
       "compendium": "check_lectures.md",
       "rule_index": 1,
-      "rule_lead": "Meta-frame lectures = closers, not openers; vocab-introduction lectures land mid-module.",
+      "rule_lead": "Meta-frame lectures = closers, not openers.",
       "verdict": "PASS",
-      "evidence": "Lecture sits mid-module (maintainer 'Lecture meta' line: primes Ex1–3 of M3), before the graded exercises. Dominant content is vocabulary priming (what a skill is; STRIDE/access-control/least-privilege lineage; personal-first skill homes; the 2-curated-1-authored proportion) — exactly where rule 1 places conceptual vocabulary. The one recognition beat (grill-me callback, slide 1) is a single clause inside an otherwise arming-shaped lecture, unchanged by the lean pass, and doesn't tip this into closer-shaped meta-framing.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_lectures.md",
-      "rule_index": 2,
-      "rule_lead": "Minimal lecturing before contrast-mood exercises.",
-      "verdict": "N/A",
-      "evidence": "M3's mood is 'earned trust' (discipline-installed-before-you-need-it), not a contrast-mood module. Rule scoped to contrast-mood openers; does not fire here.",
+      "evidence": "Lecture sits mid-module (maintainer 'Lecture meta' line: primes Ex1-3 of M3), before the graded exercises. Dominant content is vocabulary priming (skill definition; STRIDE/access-control/least-privilege lineage; personal-first skill homes; the 2-curated-1-authored proportion) — exactly where rule 1 places conceptual vocabulary lectures. The one recognition-shaped clause (grill-me callback, slide 1, line 6) is a single clause inside a definition bullet, not the shape of the whole lecture; this pass's cut removed that same bullet's forward-spoiler tail ('Today the packaging arrives...'), which if anything reduces any drift toward closer-shaped meta-framing rather than increasing it. Unaffected in substance.",
       "fix_hint": null,
       "blocking": false
     },
@@ -32,7 +25,7 @@
       "rule_index": 3,
       "rule_lead": "No cross-module sequencing in lecture bodies — pre-ship grep on body above the maintainer fence for M[0-9] / module-name refs.",
       "verdict": "PASS",
-      "evidence": "Re-verified after the lean pass: `grep -n -E \"Module [0-9]|M[0-9]\\\\b\" curriculum/lectures/skills-from-the-frontier.md` → 4 hits, all below the `<!-- maintainer -->` fence at line 40 (L42 the new lean-pass note itself naming 'M3/M6 shorten'; L46 the 2026-07-02 slides-pass changelog; L50 the maintainer 'Lecture meta' line naming Module 3; L83 a source stamp). Body (lines 1–39) returns zero matches. Carved out by rule 3 (maintainer notes and meta lines aren't lecture body).",
+      "evidence": "`sed -n '1,39p' curriculum/lectures/skills-from-the-frontier.md | grep -n -E 'Module [0-9]|M[0-9]\\b'` → 0 matches (exit 1) on the body region (body_regions [[1,39]] per body-view). The file's 4 raw hits for M[0-9]/Module all sit below the maintainer fence at line 40 (the lean-pass note naming 'M3/M6 shorten', the slides-pass changelog, the maintainer 'Lecture meta' line naming Module 3, and the recorded pin). None of this pass's four cuts touched or added any M[0-9]/module reference. Carved out by rule 3.",
       "fix_hint": null,
       "blocking": false
     },
@@ -41,7 +34,7 @@
       "rule_index": 4,
       "rule_lead": "Slide/lecture headers pass the squint test and the truth clause.",
       "verdict": "PASS",
-      "evidence": "All 6 ## headers unchanged by the lean pass (only bullet bodies were trimmed, no header touched): 'What a skill is' (names the definition), 'Borrowed judgement, or your own' (names the curated-vs-authored split), 'Your authored skill starts personal, then compounds' (names the trajectory), 'Two curated, one authored' (names the proportion — body confirms exactly 2 curated + 1 authored), 'Three trust artifacts the next engineer checks' (names the count — body lists exactly 3), 'The tool flags; you make the call' (names the judgement-delegation pattern). No empty containers, no orphan mood, no unsupported universals, no category errors.",
+      "evidence": "All 6 headers unchanged by this pass (only bullet bodies were trimmed, no header touched). Re-verified each header still passes truth+squint given the trimmed bullets: 'Three trust artifacts the next engineer checks' still names exactly three items at line 28 (access surface, ADR, test-strategy skill) even after the module-title gloss above it was cut. 'The tool flags; you make the call' is still directly supported by 'STRIDE does the breadth; you make one call' (line 35) even after its echoing lead bullet ('The access-control skill flags surfaces; deciding is your job.') was cut — the header itself was never restated as a bullet elsewhere, so nothing is now unsupported. No empty containers, no orphan mood, no category errors, no two slides share a header.",
       "fix_hint": null,
       "blocking": false
     },
@@ -50,34 +43,16 @@
       "rule_index": 5,
       "rule_lead": "A slide's body is size-bounded (~210 words / ≤6 bullets per ##).",
       "verdict": "PASS",
-      "evidence": "`node scripts/check-slide-size.js --file curriculum/lectures/skills-from-the-frontier.md` → 'files: 1  slides: 6  limits: 210 words / 6 bullets … oversized: 0 … every slide is within limits.' The lean pass only removes words, so every slide is further under the ceiling than at the last audited pass.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_lectures.md",
-      "rule_index": 6,
-      "rule_lead": "A prompt inside a lecture is a trainer show-and-tell, never a room follow-along.",
-      "verdict": "N/A",
-      "evidence": "`grep -n -E '\\{\\{prompt:|^\\*\\*Prompt\\*\\*' curriculum/lectures/skills-from-the-frontier.md` → 0 matches (exit 1). File carries zero fenced prompt blocks and zero `{{prompt:}}` markers — this rule governs prompt framing and has nothing to fire against.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_pedagogy.md",
-      "rule_index": 16,
-      "rule_lead": "Forcing functions live in prompts, not body prose.",
-      "verdict": "N/A",
-      "evidence": "Same grep as check_lectures §6 — zero prompt content anywhere in the file. M3's forcing functions live in the exercise files (map-the-access-surface, threat-model-with-stride, author-test-strategy-skill), not this priming lecture.",
+      "evidence": "`node scripts/check-slide-size.js --file curriculum/lectures/skills-from-the-frontier.md` → 'files: 1  slides: 6  limits: 210 words / 6 bullets … oversized: 0 … every slide is within limits.' This pass only removed words (four cut clauses, zero additions), so every slide sits further under the ceiling than at the last audited pass.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_pedagogy.md",
       "rule_index": 27,
-      "rule_lead": "Body teaches the work; trainer manages the room outside text.",
+      "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
       "verdict": "PASS",
-      "evidence": "No authored conversation cues anywhere in the body ('discuss with...', 'share with your neighbor', 'take 90 seconds', pause-cue sentences) — confirmed by re-reading all 39 body lines after the lean pass; the cuts removed a design-commentary clause and a kicker, neither conversation-shaped. Every remaining bullet is about the work: what a skill is, what judgement is borrowed vs. authored, what artifacts trust requires, who flags vs. who decides.",
+      "evidence": "`sed -n '1,39p' curriculum/lectures/skills-from-the-frontier.md | grep -n -iE 'the room|discuss|share with|pair up|neighbor|neighbour|take [0-9]+ (second|minute)'` → 0 matches (exit 1). No authored conversation cues, no pause-cues, no group/pair/room-share sentences anywhere in the body. The body-view's `group_beat_markers: true` signal is a scope false-positive: the only room-vocabulary hits in the raw file are the maintainer Watch-fors note ('if the room wants book recs...', line 57) and backing-block roster prose, both below the maintainer fence at line 40 and outside body_regions [[1,39]] — confirmed by re-checking each hit's line number. This pass's four cuts didn't touch conversation-cue territory (a design-commentary clause, a module-title gloss, a redundant negation, a header-echo lead — none conversation-shaped).",
       "fix_hint": null,
       "blocking": false
     },
@@ -86,7 +61,7 @@
       "rule_index": 1,
       "rule_lead": "Mood contract named; mood-floor 8+/10 on teaching beats (7 = facilitator-premium signature, flag the fix; <7 = REVISE).",
       "verdict": "PASS",
-      "evidence": "Regenerated trace (content_sha now matches current body): phase 1 mood_score 8 (trace.phases[0] — lineage paragraph, personal-first continuity, axis-spelled-out Intercom number, and the one bolded maxim all still do the trust work; none of the five lean-pass cuts removed unique trust content, per the maintainer's own stated reasons for each cut). close.mood_score 8 (trace.close) — 'Go.' still lands as the last line before the maintainer fence, now immediately after an active test-pyramid pushback line rather than an install-path caution bullet, which reads at least as clean a send-off as the prior audited version.",
+      "evidence": "Regenerated trace (content_sha f61d8a02... matches current body): phase 1 mood_score 8 (trace.phases[0]) — the packaging-spoiler removal on slide 1 is judged to help rather than hurt (the 'Two curated, one authored' reveal a few slides later now lands as a reveal, not a rerun); the module-title gloss and the two header/lead echoes read as tighter prose, with every fact they restated still present one sentence away. close.mood_score 8 (trace.close) — 'Go.' still lands as the last line before the maintainer fence, immediately after the test-pyramid pushback line, unchanged in position by this pass.",
       "fix_hint": null,
       "blocking": true
     },
@@ -95,7 +70,7 @@
       "rule_index": 2,
       "rule_lead": "Epistemic mood, not punitive mood.",
       "verdict": "PASS",
-      "evidence": "No shame or have-done-wrong framing anywhere. 'Resist the urge to harden against everything,' 'push back until the skill reflects how your tests actually work,' 'don't invent new homes' [now cut, but the remaining 'push back...' line carries the same forward-guidance register] are all forward guidance, not punitive. Mood is uncertainty-toward-mastery ('borrowed judgement, or your own'), never 'you did this wrong.'",
+      "evidence": "Closest-to-violating lines checked: 'Resist the urge to harden against everything' (line 35) reads as forward instruction, not shame; 'push back until the skill reflects how your tests actually work' (line 36) is guidance toward mastery, not a have-done-wrong statement. The cut clause ('Not \"we followed a checklist\" but') was itself forward/epistemic phrasing before removal, so its absence introduces no punitive drift. No shame framing anywhere in the body.",
       "fix_hint": null,
       "blocking": false
     },
@@ -104,7 +79,7 @@
       "rule_index": 3,
       "rule_lead": "Lead with discipline, not failure mode.",
       "verdict": "PASS",
-      "evidence": "Title 'Skills from the frontier, skills of your own' and the module Big Idea 'Earn the trust' both lead with positive disciplines (curating, authoring, earning), unchanged by the lean pass. No failure-word framing used as a title or organizing concept anywhere in the body.",
+      "evidence": "Title 'Skills from the frontier, skills of your own' and module Big Idea 'Earn the trust' both lead with positive disciplines, unchanged by this pass (title and section headers untouched — only bullet bodies trimmed). No failure-word framing used as a title or organizing concept anywhere.",
       "fix_hint": null,
       "blocking": false
     },
@@ -113,9 +88,42 @@
       "rule_index": 4,
       "rule_lead": "Strategy-fidelity — consolidates front-run check, module-to-module arc, Big Idea fidelity, and mood-doesn't-resolve-early into one verdict.",
       "verdict": "PASS",
-      "evidence": "Front-run check: no M4/M5 vocabulary or teaching moments appear anywhere in the body; the lean pass only removed sentences, it introduced no new claims, so this is unchanged from the last audited pass. Module-to-module arc: N/A here (in-module lecture-to-exercise handoff, not a module boundary). Big Idea fidelity: 'Three trust artifacts the next engineer checks' still restates the strategy doc's M3 mood (staff engineer + CISO would read; none are compliance artifacts) verbatim in spirit. Mood-doesn't-resolve-early: lecture stays in ARMING register throughout ('by the module's end, three things exist' — future tense); 'Go.' is a send-off cue, not a resolution of the trust-earning itself, which still happens in Ex1–3.",
+      "evidence": "Front-run check: grep confirms 0 M[0-9]/module hits in body (see check_lectures §3 evidence) — this pass introduced no new claims, only cuts. Module-to-module arc: N/A here (in-module lecture-to-exercise handoff, not a module boundary). Big Idea fidelity: even with the explicit 'The module's title, *Earn the trust*, isn't rhetorical' line cut, the section 'Three trust artifacts the next engineer checks' plus 'None of them are compliance artifacts' plus 'the test for trust is the next engineer' still fully enacts the Big Idea without needing to name it inline — check_lectures §4's squint test asks whether the content supports the header, not whether the module title is restated in prose, and it still does. Mood-doesn't-resolve-early: lecture stays in future-tense arming register throughout ('by the module's end, three things exist' — unchanged tense); 'Go.' remains a send-off, not a resolution of the trust-earning, which still happens in Ex1-3.",
       "fix_hint": null,
       "blocking": true
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 2,
+      "rule_lead": "Minimal lecturing before contrast-mood exercises.",
+      "verdict": "N/A",
+      "evidence": "M3's mood is 'earned trust' (discipline-installed-before-you-need-it), not a contrast-mood module. Rule scoped to contrast-mood openers; does not fire here.",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "d55f73126345d037f50cacc5f38300b0a955d1589baec3eb0b83bd87d57a3a8a",
+      "carried_shape": "334690d1473a541c"
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 6,
+      "rule_lead": "A prompt inside a lecture is a trainer show-and-tell, never a room follow-along.",
+      "verdict": "N/A",
+      "evidence": "`grep -n -E '\\{\\{prompt:|^\\*\\*Prompt\\*\\*' curriculum/lectures/skills-from-the-frontier.md` → 0 matches (exit 1). File carries zero fenced prompt blocks and zero `{{prompt:}}` markers — this rule governs prompt framing and has nothing to fire against.",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "d55f73126345d037f50cacc5f38300b0a955d1589baec3eb0b83bd87d57a3a8a",
+      "carried_shape": "334690d1473a541c"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 16,
+      "rule_lead": "Forcing functions live in prompts, not body prose.",
+      "verdict": "N/A",
+      "evidence": "Same grep as check_lectures §6 — zero prompt content anywhere in the file. M3's forcing functions live in the exercise files (map-the-access-surface, threat-model-with-stride, author-test-strategy-skill), not this priming lecture.",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "d55f73126345d037f50cacc5f38300b0a955d1589baec3eb0b83bd87d57a3a8a",
+      "carried_shape": "334690d1473a541c"
     },
     {
       "compendium": "check_strategy_tie_in.md",
@@ -123,8 +131,10 @@
       "rule_lead": "Strategic themes recur in Key Concepts.",
       "verdict": "N/A",
       "evidence": "Module-only section — this is a shared-library lecture file, not the module file. Key Concepts lives in earn-the-trust.md, owned by the strategy judge at module scope.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "d55f73126345d037f50cacc5f38300b0a955d1589baec3eb0b83bd87d57a3a8a",
+      "carried_shape": "334690d1473a541c"
     },
     {
       "compendium": "check_strategy_tie_in.md",
@@ -132,8 +142,10 @@
       "rule_lead": "Key Concepts shape — theme breadcrumbs, not standalone section.",
       "verdict": "N/A",
       "evidence": "Same as §5 — no Key Concepts section in a lecture file.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "d55f73126345d037f50cacc5f38300b0a955d1589baec3eb0b83bd87d57a3a8a",
+      "carried_shape": "334690d1473a541c"
     },
     {
       "compendium": "check_strategy_tie_in.md",
@@ -141,27 +153,34 @@
       "rule_lead": "What You'll Learn shape — capability register, not syllabus.",
       "verdict": "N/A",
       "evidence": "Same as §5/§6 — no What You'll Learn section in a lecture file; owned by earn-the-trust.md.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "d55f73126345d037f50cacc5f38300b0a955d1589baec3eb0b83bd87d57a3a8a",
+      "carried_shape": "334690d1473a541c"
     }
   ],
   "unowned_compendium_notes": [
     {
       "compendium": "check_prompts.md",
-      "status": "N/A — no fenced **Prompt** blocks and no {{prompt:}} markers anywhere in this file (grep-confirmed, exit 1). Not enumerated per-rule: the story template's completeness contract names check_lectures (full coverage), check_pedagogy (§16, §27 only), and check_strategy_tie_in (§1–§7) as storytelling's owned/scoped compendiums. check_prompts.md carries storytelling in its eval_classes frontmatter but has no bullet under the template's 'Specific judgments storytelling owns' section, and the file has zero prompt content to evaluate against it regardless."
+      "status": "N/A — no fenced **Prompt** blocks and no {{prompt:}} markers anywhere in this file (grep-confirmed, exit 1). Not enumerated per-rule: story's completeness contract owns check_lectures (full), check_pedagogy (§16, §27 only) and check_strategy_tie_in (§1-7); check_prompts has no bullet under 'Specific judgments storytelling owns' and the file has zero prompt content regardless."
     },
     {
       "compendium": "check_workshop.md",
-      "status": "N/A — no group-beat content in the body region (lines 1–39). Body-view's `group_beat_markers: true` signal is a false-positive on scope: the only hit for room/group vocabulary in the whole file is the maintainer block's Watch-fors note ('If the room wants book recs, capture as a reading list...', line 57), which sits below the maintainer fence (line 40) and is trainer guidance, not student body — re-confirmed by grepping room/discuss/pair/group vocabulary against the file and reading each hit's line number against body_regions [[1,39]]. This is a trainer-projected single-voice lecture with no room-scale artefact, adjudication, or attributed-contribution beat; check_workshop is not enumerated per-rule for the same completeness-contract reason as check_prompts.md above."
+      "status": "N/A — no group-beat content in the body region (lines 1-39). The body-view's group_beat_markers:true signal is a scope false-positive: the only room/group vocabulary hits are the maintainer Watch-fors note (line 57) and backing-block roster prose, both below the maintainer fence (line 40). Re-confirmed after this pass's edits — none of the four cuts touched room/group vocabulary. Trainer-projected single-voice lecture, no room-scale artefact or attributed-contribution beat; not enumerated per-rule for the same completeness-contract reason as check_prompts.md above."
     }
   ],
-  "teaching_moment_lands": "PASS (recorded here, not as a rules_evaluated row — no check_strategy_tie_in index owns this judgment). Named teaching moment: 'two curated, one authored is a deliberate proportion — you build what you know best, which is your own system.' Anchored at two points, both untouched by the 2026-08-25 lean pass: the 'Two curated, one authored' section body and the bolded maxim 'Don't make general what you don't practice yourself.' The lean pass's five cuts (a §16b design-commentary clause, a kicker, a restated can't-be-curated lead, a padding lead, and one full-duplicate bullet) all sit outside this beat's two anchors.",
+  "teaching_moment_lands": "PASS (recorded here, not as a rules_evaluated row — no check_strategy_tie_in index owns this judgment). Named teaching moment: 'two curated, one authored is a deliberate proportion — you build what you know best, which is your own system.' Anchored at the 'Two curated, one authored' section body and the bolded maxim 'Don't make general what you don't practice yourself' (line 24) — both untouched by this pass's four cuts, which landed on slides 1, 5 and 6.",
   "mood_summary": {
-    "phase_scores": [8],
+    "phase_scores": [
+      8
+    ],
     "close_score": 8,
     "any_below_8": false,
     "stealing_the_mood": []
   },
+  "notes": [
+    "Out-of-lane observation, not a story finding: this pass's two commits (175ec6e0, 5ef70266) are direct Antti-authored edits (git log Author: Antti Tevanlinna) but, unlike the 2026-08-25 'Lean pass' and 2026-07-09 'Emphasis pass' notes already in the maintainer block, this cut carries no dated maintainer accept-note of its own describing what was cut and why (the commit message carries that instead). Whether a maintainer note is owed here is a check_writing.md §3 question (prose blocks state what's true now / record the diff just made), not a storytelling-class rule — flagging for the writing judge's attention, not filing as a story finding."
+  ],
   "blocking_findings_count": 0,
   "todos_count": 0
 }

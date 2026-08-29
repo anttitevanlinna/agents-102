@@ -26,8 +26,8 @@ The move is loading the right context before the question, not a clever prompt o
 
 **Open:** the plan-mode drift removal wants a maintainer eyeball against the module's Big Idea + LO.
 
-**Quality:** compendium-audited 2026-08-29 (writing@17446703 story@17446703 technical@8cc00874 behavior@1480362 pedagogy@17446703 strategy@1480362 slides@17446703)
-- judges @17446703: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-29 (writing@4a722813 story@17446703 technical@8cc00874 behavior@1480362 pedagogy@17446703 strategy@1480362 slides@17446703)
+- judges @4a722813: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - compendium-audited 2026-04-26 (check_writing voice-quartet Seth-Rory-Risto, check_student_facing #14, check_lectures opener, check_strategy_tie_in)
 **Meta:**
 - **Placement:** M1 opener, after Connections, before the exercise.

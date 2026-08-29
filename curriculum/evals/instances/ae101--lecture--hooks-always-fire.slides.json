@@ -1,8 +1,8 @@
 {
  "class": "slides",
  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/hooks-always-fire.md",
- "body_sha": "864d058934265c60b3b49e82fa46f31acae5386f061e9b9e2d9f7cd1beb76b41",
- "shape_hash": "0f7defa9943cfa44",
+ "body_sha": "3af3a8198c6fcddc47fcbe3f213da03332591686e4bb8ca1e07fa154c3927a87",
+ "shape_hash": "1903646330181a65",
  "verdict": "PASS",
  "training": "ae101",
  "chunk_map": [
@@ -29,7 +29,7 @@
    "rule_lead": "Referent resolution under a sequential deck read.",
    "verdict": "PASS",
    "chunks_flagged": [],
-   "evidence": "Checked every pronoun/demonstrative against the sequential-read bar. Chunk 1 line 5: \"the agent has no say in whether it runs\" -- \"it\" resolves to \"hook\", same sentence. Chunk 2 line 10: \"Anything...stays in a prompt where the LLM weighs it\" -- \"it\" resolves to \"Anything\", same sentence. Closest call: chunk 2 line 11, \"This one runs on the screen. Watch the list come back rather than typing along.\" -- \"This one\" and \"the list\" point at the fenced Prompt block that sits immediately below, still inside the SAME chunk (raw lines 13-21 of the expanded view are the chunk-2 prompt), not a later slide. A projected slide renders as one simultaneous unit, so a same-chunk forward point is the rule-12 same-chunk carve-out's referent-resolution twin, not the banned late-named-referent shape (\"before the three things get named\" pointing at a LATER slide). Line 15's \"The ones worth keeping\" then resolves backward against that same prompt's output. No never-named or vague-with-full-history referent found anywhere in the file.",
+   "evidence": "Checked every pronoun/demonstrative under the sequential-read bar against the current (2026-08-29 compaction) body. Chunk 1 line 5: \"the agent has no say in whether it runs\" -> \"it\" = \"hook\", same sentence; \"whether or not the model remembers it exists\" -> \"it\" = \"the script\", same sentence. Chunk 2 line 10: \"Anything that breaks the work if it skips belongs in a hook\" -> \"it\" = \"Anything\", same clause. Chunk 2 line 11: \"The same primitive covers everything else\" -> \"primitive\" resolves to \"hook\" named one sentence earlier in the same bullet. Closest call: line 15's closer \"A menu, not a checklist.\" has no explicit antecedent noun, but its referent (the list of hooks the prompt at line 13 asks Claude to produce) is named one line above inside the SAME chunk (\"Name the top five hooks...\"), so it resolves as an immediate same-chunk continuation, not a never-named or forward-pointing referent. grep -inE 'you (did|saw|wrote|built|ran|caught|made)' over the body -> 0 hits, so no dangling backward-reference either.",
    "fix_hint": null,
    "blocking": true
   },
@@ -39,7 +39,7 @@
    "rule_lead": "Cross-file and positional callbacks.",
    "verdict": "PASS",
    "chunks_flagged": [],
-   "evidence": "grep -inE 'the opening lecture|earlier|previously|prior lecture|the last (lecture|module|slide)|that (lecture|module)' over body lines 1-16 -> 0 hits. \"someone else's article\" (line 5) is a generic hypothetical, not a pointer to a specific file in this training. Nothing in the extraction (maintainer note: text pulled from what-packaging-is.md) left a residual cross-file callback -- checked directly, none survived.",
+   "evidence": "grep -inE 'the opening lecture|earlier|previously|prior lecture|the last (lecture|module|slide)|that (lecture|module)' over body lines 1-16 -> 0 hits. Body contains no reference to another file, lecture, or module by position; the only file-level relationships (extraction from what-packaging-is.md, placement in learn-from-the-test.md) live below the maintainer cut (line 17+), out of the rendered slide body.",
    "fix_hint": null,
    "blocking": true
   },
@@ -49,7 +49,7 @@
    "rule_lead": "Every backward reference points at a beat that exists.",
    "verdict": "N/A",
    "chunks_flagged": [],
-   "evidence": "grep -inE 'you (did|saw|wrote|built|ran|caught|made)' over body lines 1-16 -> 0 hits. No \"the X you did/saw\" construction naming a completed exercise beat anywhere in body -- nothing for this rule to strand.",
+   "evidence": "grep -inE 'you (did|saw|wrote|built|ran|caught|made)' over body lines 1-16 -> 0 hits. No \"the X you did/saw\" construction naming a completed exercise beat anywhere in the current body -- nothing for this rule to strand.",
    "fix_hint": null,
    "blocking": true
   },
@@ -59,7 +59,7 @@
    "rule_lead": "Live-demo beats survive a text read.",
    "verdict": "N/A",
    "chunks_flagged": [],
-   "evidence": "grep -inE 'guess|predict|before you (watch|see|run)' over body lines 1-16 -> 0 hits. The prompt is delivered as a live watch-it-run demo (\"Watch the list come back rather than typing along\"), not a guess-then-reveal beat -- no predicted answer is stated anywhere for a later reveal to land after.",
+   "evidence": "grep -inE 'guess|predict|before you (watch|see|run)' over body lines 1-16 -> 0 hits. The 2026-08-29 compaction removed the last stage direction (\"This one runs on the screen. Watch the list come back rather than typing along\"); the remaining prompt is a plain trainer-run demo with no guess-then-reveal structure for a reveal to land ahead of.",
    "fix_hint": null,
    "blocking": true
   },
@@ -69,7 +69,7 @@
    "rule_lead": "No orphan slides.",
    "verdict": "PASS",
    "chunks_flagged": [],
-   "evidence": "Chunk 0 is title-only (H1, no lede) -- the deck's standard title-slide shape, not a wait-state fragment. Chunk 1 carries two multi-clause bullets defining the hook primitive and its motivation. Chunk 2 carries two bullets, a live-run prompt widget, and a closing test line -- clearly self-carrying, not context-dependent filler.",
+   "evidence": "Chunk 0 (lines 1-2) is the file's title-only slide (H1, no lede before the first ##) -- the standard title-slide shape across the corpus, not a wait-state fragment. Chunk 1 (lines 3-7) carries two full bullets (definition+mechanism at line 5, forgetfulness rationale at line 6). Chunk 2 (lines 8-16), even after the compaction pass cut it from four bullets to two, still carries two bullets, a live prompt, and a closing test line -- none of the three chunks reduces to a single wait-state fragment.",
    "fix_hint": null,
    "blocking": false
   },
@@ -79,7 +79,7 @@
    "rule_lead": "Header self-carries at projection distance.",
    "verdict": "PASS",
    "chunks_flagged": [],
-   "evidence": "Chunk 1 header \"Hooks always fire\" (line 3) is a true summary of its own content: line 5 states the hook fires unconditionally, line 6 restates via \"Hooks don't forget.\" Chunk 2 header \"Hooks for must-happen, prompts for taste\" (line 8) covers its bullets' must-happen/hook vs taste/prompt split (lines 10-11). Closest call: the closing line (15) and the prompt widget extend into \"which specific hooks are worth keeping,\" a corollary of the header's split rather than a contradiction of it -- the header still holds as the chunk's frame.",
+   "evidence": "Chunk 1 header \"Hooks always fire\" (line 3) is proven by its own content: line 5's \"whether or not the model remembers it exists\" and line 6's \"Hooks don't forget.\" Chunk 2 header \"Hooks for must-happen, prompts for taste\" (line 8) is proven by lines 10-11's must-happen->hook / taste-shaped->prompt split. Closest call: closing line 15, \"A menu, not a checklist\" -- extends into which specific hooks are worth adopting, a corollary of the header's taste/prompt half, not a contradiction of it.",
    "fix_hint": null,
    "blocking": false
   },
@@ -89,7 +89,7 @@
    "rule_lead": "LLM-cadence caps.",
    "verdict": "PASS",
    "chunks_flagged": [],
-   "evidence": "Checked every sub-item across both content chunks. 'Not X. Not Y. Z.' construction: grep -inE '^\\s*(-\\s*)?Not [A-Za-z]' over lines 1-16 -> 0 hits. Anaphora/epistrophe triples: none (no repeated sentence-opener run of three). Self-grading superlatives: grep -inE 'one of the most|most useful|most powerful' -> 0 hits; closest is \"the LLM weighs it\" / \"a verifier against one failure is one hook\" -- plain mechanism statements, no self-praise. Number + own retraction: only cardinal in body is \"top five hooks\" inside the prompt instruction to the model, not a claimed measurement the body itself hedges. Abstraction-noun stacks: none -- vocabulary stays concrete (verifier, pre-commit guard, session-start context loader, repo). Empty-leg verb triplets: none present.",
+   "evidence": "Checked every sub-item against the current body. 'Not X. Not Y. Z.': grep -inE '^\\s*(-\\s*)?Not [A-Za-z]' -> 0 hits. Anaphora/epistrophe triples: none (no three-part repeated sentence-opener). Self-grading superlatives: grep -inE 'one of the most|most useful|most powerful|most important' -> 0 hits; \"A menu, not a checklist\" does not grade the material's value. Number + own retraction: the only cardinal, \"top five hooks\" inside the prompt instruction, is a target count for the exercise's output, not a measurement the body hedges or retracts. Abstraction-noun stacks: none -- vocabulary stays concrete (verifier, pre-commit guard, session-start context loader). Empty-leg verb triplets: none present.",
    "fix_hint": null,
    "blocking": true
   },
@@ -99,37 +99,37 @@
    "rule_lead": "Internal dialect never lands on a slide.",
    "verdict": "PASS",
    "chunks_flagged": [],
-   "evidence": "grep -inE 'compendium|forcing function|\\bbeat\\b|\\bmood\\b|Connections|\\bsurface\\b' over body lines 1-16 -> 0 hits. \"fires\" (lines 5, 6) is the platform's own official hooks vocabulary (confirmed by the backing block's cc-hooks-docs source: \"hook events...fire on every named event\"), not authorial repo dialect -- an engineer reading Claude Code's own docs meets the same word. \"verifier\", \"pre-commit guard\", \"session-start context loader\" are ordinary engineering terms.",
+   "evidence": "grep -inE 'compendium|forcing function|\\bbeat\\b|\\bmood\\b|Connections|\\bsurface\\b' over body lines 1-16 -> 0 hits. \"fires\" (lines 5, 6) is the platform's own vocabulary for hook execution, confirmed by this file's own backing block whose cc-hooks-docs source [checked:2026-08-28] quotes hook events that \"fire on every named event\" -- not authorial repo dialect; an engineer reading Anthropic's hooks docs meets the identical word. \"primitive\", \"verifier\", \"pre-commit guard\", \"session-start context loader\" are ordinary engineering terms.",
    "fix_hint": null,
    "blocking": true
   },
   {
    "compendium": "check_slides.md",
    "rule_index": 9,
-   "rule_lead": "Emphasis budget -- bold is for handles, and go very lightly.",
+   "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
    "verdict": "PASS",
    "chunks_flagged": [],
-   "evidence": "grep -n '\\*\\*' over body lines 1-16 -> 2 hits: line 5 \"A **hook**\" (one word, defining the file's title term -- textbook handle) and line 10 \"**Must happen goes in a hook**\" (closest call: 6 words, a named-law/maxim restating the chunk-2 header's must-happen/taste split -- functions as the coined heuristic the rule wants surfaced, and it is the ONLY bold in its chunk, i.e. not the banned every-bullet-bolded monoculture -- bullet 2 in the same chunk carries no bold at all). Each chunk stays within the <=1-bolded-element budget; the \"**Prompt** *(Claude Code)*\" line is the fixed widget-frame label used identically on every Prompt widget across the corpus, not chunk-2 body prose competing for its emphasis budget.",
+   "evidence": "grep -n '\\*\\*' over body -> 2 hits: line 5 \"A **hook**\" (1-word handle, first-mention coinage) and line 10 \"**Must happen goes in a hook**\" (closest call: 6 words, a paired-law maxim mirroring chunk 2's own header). Checked both budget clauses separately: (a) count -- this is the ONLY bold in chunk 2 (bullet 2 and the closer carry none, and the fixed \"**Prompt** *(Claude Code)*\" widget-frame label is not chunk body prose), so the <=1-per-slide budget holds; (b) content -- rule 9 explicitly permits \"a law/consolidation slide may carry one handle per law,\" and chunk 2's entire job, per its own header, is stating exactly one law (must-happen->hook / recommended->prompt) -- the bolded clause is that law's handle, not a decorative whole-sentence lead competing with other emphasis. No dilution harm (the harm this rule exists to prevent) is present anywhere on this slide.",
    "fix_hint": null,
    "blocking": false
   },
   {
    "compendium": "check_slides.md",
    "rule_index": 10,
-   "rule_lead": "Presence precedes content -- verify against the composed deck, not long-read.",
+   "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
    "verdict": "PASS",
    "chunks_flagged": [],
-   "evidence": "grep -n 'hooks-always-fire' curriculum/trainings/agentic-engineering-101/*.md -> `learn-from-the-test.md:46:[Lecture: Hooks always fire](lectures/hooks-always-fire.md)`, sitting between the `reading-the-return` include (line 36, under `## Your mid-run worries hint at missing checks`) and the `fork-the-worktree` exercise include (line 48) -- exactly the maintainer block's claimed placement (\"M5, after the reading-the-return opener, before fork-the-worktree\"), confirmed live in the module body, not just asserted. It uses the same bracketed `[Lecture: Title](lectures/slug.md)` include syntax as every other lecture in this module, the standard module-shape.md convention that reaches the composed deck via the renderer's own include-wrapping -- nothing here is phase-less prose of the kind rule 10's canonical failure describes.",
+   "evidence": "grep -n 'hooks-always-fire' curriculum/trainings/agentic-engineering-101/*.md -> learn-from-the-test.md:46, immediately after reading-the-return's include (line 36) and immediately before fork-the-worktree's include (line 48) -- confirmed live against the current module body, matching the maintainer block's claimed placement (\"M5, after the reading-the-return opener, before fork-the-worktree\") exactly. Uses the standard bracketed \"[Lecture: Title](lectures/slug.md)\" include syntax that reaches the composed deck via the renderer's normal include-wrapping.",
    "fix_hint": null,
    "blocking": false
   },
   {
    "compendium": "check_slides.md",
    "rule_index": 11,
-   "rule_lead": "Numbering -- position is computed, content ordinals are linted.",
+   "rule_lead": "Numbering — position is computed, content ordinals are linted.",
    "verdict": "N/A",
    "chunks_flagged": [],
-   "evidence": "grep -inE '^## (Phase [0-9]|[0-9]+\\.)' over lines 1-16 -> 0 hits; no `## Phase N:` or `## N.` step headers in this file. Ran `node scripts/check-slide-numbering.js --file curriculum/lectures/hooks-always-fire.md` -> \"OK — 1 files, Phase/Step numbering consistent.\", exit 0.",
+   "evidence": "grep -inE '^## *(Phase [0-9]|[0-9]+\\.)' over body -> 0 hits; no `## Phase N:` or `## N.` step headers in this file. Ran `node scripts/check-slide-numbering.js --file curriculum/lectures/hooks-always-fire.md` this session -> \"OK — 1 files, Phase/Step numbering consistent.\", exit 0.",
    "fix_hint": null,
    "blocking": false
   },
@@ -139,7 +139,7 @@
    "rule_lead": "Page geometry dies at the cut; reading order survives.",
    "verdict": "PASS",
    "chunks_flagged": [],
-   "evidence": "Ran `node scripts/check-slide-deixis.js --file curriculum/lectures/hooks-always-fire.md` -> \"OK — 1 files, no page-geometry pointers across the slide cut.\", exit 0. Corroborating manual grep -niE 'below|above|further down|top of this|see below' over body lines 1-16 -> 0 hits.",
+   "evidence": "Ran `node scripts/check-slide-deixis.js --file curriculum/lectures/hooks-always-fire.md` this session -> \"OK — 1 files, no page-geometry pointers across the slide cut.\", exit 0. Corroborating grep -inE 'below|above|further down|top of this|see below' over body -> 0 hits.",
    "fix_hint": null,
    "blocking": true
   },
@@ -149,17 +149,17 @@
    "rule_lead": "In-deck links work now; whether they EARN their place is open.",
    "verdict": "N/A",
    "chunks_flagged": [],
-   "evidence": "grep -n '\\[.*\\](' over body lines 1-16 -> 0 hits. No markdown links of any kind in body.",
+   "evidence": "grep -n '\\[.*\\](' over body -> 0 hits. No markdown links of any kind in the current body.",
    "fix_hint": null,
    "blocking": false
   },
   {
    "compendium": "check_slides.md",
    "rule_index": 14,
-   "rule_lead": "Slide size -- 210 words / 6 bullets, and the cap is machine-checked.",
+   "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
    "verdict": "PASS",
    "chunks_flagged": [],
-   "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/lectures/hooks-always-fire.md` -> \"files: 1  slides: 2  limits: 210 words / 6 bullets ... oversized: 0 ... ✓ every slide is within limits\", exit 0.",
+   "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/lectures/hooks-always-fire.md --report` this session -> chunk 1 \"Hooks always fire\": 84 words / 2 bullets; chunk 2 \"Hooks for must-happen, prompts for taste\": 65 words / 2 bullets (down from 4 bullets pre-compaction); both well under the 210-word/6-bullet cap; \"oversized: 0\", exit 0.",
    "fix_hint": null,
    "blocking": false
   },
@@ -169,17 +169,17 @@
    "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
    "verdict": "PASS",
    "chunks_flagged": [],
-   "evidence": "Pure lecture file. Chunk 1 header \"Hooks always fire\" (line 3) and chunk 2 header \"Hooks for must-happen, prompts for taste\" (line 8) are both full declarative claims -- assertions about how the platform behaves and how the two mechanisms divide labor -- not topic labels or imperatives. Matches the lecture-heading claim requirement exactly; neither reads as a bare noun-phrase catalogue entry.",
+   "evidence": "Pure lecture file, no runtime forks. Chunk 1 header \"Hooks always fire\" (line 3) and chunk 2 header \"Hooks for must-happen, prompts for taste\" (line 8) are both full declarative claims about platform behavior, not topic labels or imperatives -- matches the lecture heading-grammar requirement.",
    "fix_hint": null,
    "blocking": false
   },
   {
    "compendium": "check_slides.md",
    "rule_index": 16,
-   "rule_lead": "A bullet earns its slot or dies -- three classes that read as rigour and carry nothing.",
+   "rule_lead": "A bullet earns its slot or dies — three classes that read as rigour and carry nothing.",
    "verdict": "PASS",
    "chunks_flagged": [],
-   "evidence": "Chunk 1's two bullets: definition (line 5) then motivation/why (line 6) -- second bullet adds a new idea (forgetfulness as the reason hooks exist), not a restatement of the first. Chunk 2's two bullets: the must-happen/taste split with concrete examples (line 10) then the repo-specificity setup for the live demo (line 11) -- distinct content, not doctrine repeated. Closest call: the closing line (15), \"The ones worth keeping are tied to a specific file, convention, or failure mode in this repo, not a generic team-could-want-this\" -- echoes bullet 2's \"Your repo has demands that don't show up in someone else's article\" in substance. Not cut as doctrine restatement (class a) because the maintainer block names this exact line as the load-bearing grading rubric applied to the live model output that just ran between bullet 2 and this line (\"the trainer...reads the returned list against the closing line's test\") -- it does real work interpreting fresh content, not re-announcing a point already closed. No self-referential pedagogy commentary (class b) and no koan restating the header (class c) found.",
+   "evidence": "Chunk 1's two bullets: definition+mechanism (line 5) then the forgetfulness rationale (line 6) -- distinct content, no restatement. Chunk 2's two bullets, re-read fresh against the 2026-08-29 compaction: bullet 1 (line 10) states the must-happen/hook vs taste/prompt split with concrete hook examples; bullet 2 (line 11) narrows to the verifier example and generalizes it into \"the same primitive covers everything else\" -- the bridge into the demo prompt's five-hooks task, not a doctrine re-announcement, since bullet 1 never itself generalizes the verifier case. No self-referential design commentary (class b) anywhere. Closer (line 15) \"A menu, not a checklist\" is not a koan restating the header or a `**The point:**` line (class c) -- the maintainer block names it as the load-bearing new content that tells the room how to read the prompt's just-returned list, introducing information (menu vs. checklist) that neither the header nor bullet 1 stated.",
    "fix_hint": null,
    "blocking": false
   }

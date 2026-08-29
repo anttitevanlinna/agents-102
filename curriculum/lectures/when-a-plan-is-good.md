@@ -70,8 +70,8 @@ The canvas is `{{figure:delegation-frontier}}`, single-sourced from `curriculum/
 
 **The room has used plan mode (Antti, 2026-08-29).** The slide-1 bullet (*"Plan mode writes a thing you can read, edit, and push back on before your source changes"*) was cut as obvious to any Claude Code user, and `plan-before-source-changes` retired with it. M2's job is doing plan mode better, not introducing it. Do not restore an explainer bullet here. **The non-obvious half is still unshipped:** since v2.1.218 `useAutoModeDuringPlan` defaults on and approved shell commands run during planning, so plan mode protects the source tree and not all state. That correction lives only in the `cc-permission-modes` stamp below, which no student reads. If a bullet ever earns this slot again, it is that one, not the read-only promise.
 
-**Quality:** compendium-audited 2026-08-28 (writing@0cea7581 story@0cea7581 technical@8cc00874 behavior@1c765f2 pedagogy@0cea7581 strategy@1c765f2 slides@0cea7581)
-- judges @0cea7581: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-29 (writing@4a722813 story@0cea7581 technical@8cc00874 behavior@1c765f2 pedagogy@0cea7581 strategy@1c765f2 slides@4a722813)
+- judges @4a722813: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 **Meta:**
 - **Time:** 9 min. The opening slide's student-run prompt is inside the number. If tight, the three-pressures slide compresses to 60 seconds; the exercise teaches them. `node scripts/calculate-time.js plan-mode-done-right` for where this beat sits in the slot.
 - **Pedagogy:** primer-before-exercise. Names the three moves (merges / soft items / assumptions) that Phase 3 forces.

@@ -3,7 +3,7 @@
   "file": "curriculum/lectures/quality-is-grounding.md",
   "verdict": "PASS",
   "training": "ae101",
-  "body_sha": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+  "body_sha": "a1224f4ba4dad8dc330dce2e997e4b6f1d886feebeaab491c16a68403a38fd4b",
   "shape_hash": "0e8c64fecfeaf2e0",
   "rules_evaluated": [
     {
@@ -11,7 +11,7 @@
       "rule_index": "1",
       "rule_lead": "Banned words — grep zero-tolerance.",
       "verdict": "PASS",
-      "evidence": "grep view.greps.banned_words → body_hits:0 (CLEAN, planted_proof); grep view.greps.em_dash → body_hits:0 (CLEAN). No delve/honest/importantly/crucial/substrate/leverage/synergize/paradigm-shift, no em-dash.",
+      "evidence": "grep view.greps.banned_words on body (lines 1-24) -> 0 hits (CLEAN, planted_proof); grep view.greps.em_dash on body -> 0 hits (CLEAN). Own grep of raw body lines 1-24 for honest|delve|landscape|importantly|crucial|substrate|leverage|synergize|paradigm confirms 0 matches; own grep for em-dash confirms 0 matches.",
       "na_reason": null,
       "fix_hint": null,
       "blocking": true
@@ -21,7 +21,7 @@
       "rule_index": "2",
       "rule_lead": "Ritual / ceremony — hard ban",
       "verdict": "PASS",
-      "evidence": "grep view.greps.ritual_ceremony → body_hits:0 (CLEAN). Word 'exercise' also absent from body.",
+      "evidence": "grep view.greps.ritual_ceremony on body -> 0 hits (CLEAN). Word 'exercise' does not appear in body at all.",
       "na_reason": null,
       "fix_hint": null,
       "blocking": true
@@ -31,7 +31,7 @@
       "rule_index": "3",
       "rule_lead": "No stale markers, no \"fixed\" retrospectives, no session biography.",
       "verdict": "PASS",
-      "evidence": "L27 'Lean pass (2026-08-25): cut \"...\" — restated \"Five moves, one discipline\" in the same paragraph; claim row deleted with it. Do not restore.' matches the corpus's own blessed dated-provenance-header convention (same shape as L29 'Decay slide added', L31 'Emphasis pass', L33 'Slides-only pass' already in this same maintainer block, all previously audited PASS). It carries a dated attribution + a standing do-not-reintroduce instruction, which the rule explicitly KEEPs; harm the rule guards against (changelog bloat that never gets cleaned up) is not present — one short paragraph, matches 84/101-file corpus convention. No bare-year rule-body violation; the removal is recorded in the exact file where the beat was cut, and the paired claim-ledger row was deleted in the same pass (confirmed: `grep -rn discipline-not-one-move-per-module curriculum/` returns no other hits).",
+      "evidence": "New maintainer line (L27, added this diff): 'Lean pass (2026-08-29): cut \"Five moves, one discipline.\" -- the header above it already reads `## Five moves, one quality discipline`. See the claim row.' This is a dated-provenance header of the exact shape the rule's own text calls out as corpus-deliberate and staying ('84 of 101 AE101 files carry a dated provenance header'), matching two already-passed sibling entries already sitting in this same maintainer block (L29 'Lean pass (2026-08-25)', L31 'Decay slide added (2026-07-29...)'). It states the dated attribution, what was cut, and the standing fact justifying it (the header already carries the phrase) -- not a journey verb from the banned list (settled/retired/no longer/used to/renamed from A to B). Consequence clause applies: 'do not file paragraph3 on a dated provenance header alone; quote the transition verb, or do not file' -- no such verb is present. Companion backing-block edit (L49, 'header echo cut 2026-08-29 (Antti)... Do not restore a summary sentence here.') carries a forward do-not-reintroduce instruction, which the rule explicitly permits to KEEP. Quality-line self-update (L92) is the mandated compendium-audit stamp format (curriculum/CLAUDE.md paragraph Quality), not changelog narration. Harm the rule guards against (unbounded changelog nobody prunes) is not present: this is one short paragraph following the file's own established convention, not an accumulating log.",
       "na_reason": null,
       "fix_hint": null,
       "blocking": false
@@ -41,7 +41,377 @@
       "rule_index": "4",
       "rule_lead": "Register match.",
       "verdict": "PASS",
-      "evidence": "Voice matches maintainer's own analysis: Slide1 Boris-direct factual recap ('M1 opened with tests-first...'); Slide2 Boris-flat ('the shortcut cast, the try-catch that swallows an error, the module that grew a second job'); Slide3 Rory reframe ('Nobody reviews 500K lines by hand') + Risto forward-optimism close ('The agentic engineer maxes that signal out... How do you know it's right?'). No `**Remember:**`/'Hold onto'/'Keep in mind' wrapper (grep clean). No cargo/theatre/ritual/tourist/poster metaphor-keyword. No negation-callout ('we don't X' / 'we refuse') present to check for self-contradiction. No atmospheric/sensory imagery to scan. No 'vendor'/'trust the agent'/'just a simple'/'leash'/'niceness' flinch-words.",
+      "evidence": "AE101 voice quintet, matches maintainer's own delivery watch-for: L5/L13 Boris-flat factual recap ('M1 opened with tests-first...', 'the shortcut cast, the try-catch that swallows an error, the module that grew a second job'); L19-21 Rory reframe ('Nobody reviews 500K lines by hand' -> 'The discipline has gone deeper since: grounding'); L23 Risto forward-optimism close ('The agentic engineer maxes that signal out') plus a Rory-shaped open question ('How do you know it's right?'). No '**Remember:**'/'Hold onto'/'Keep in mind' wrapper (grep clean). No cargo/theatre/ritual/tourist/poster metaphor-keyword present. No 'we refuse'/'we don't X' negation-callout to check for self-contradiction. No sensory/time-of-day/body-state/cosmic atmospheric imagery to scan. No 'vendor'/'trust the agent'/'just a simple'/'leash'/'niceness' flinch-words anywhere in body (checked directly).",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": "6",
+      "rule_lead": "Credit original when paraphrasing named technique.",
+      "verdict": "PASS",
+      "evidence": "Dex Horthy credited by name inline with a link at point of use (L15, 'Dex Horthy argues in [Why software factories fail]'); exactly one student-facing mention in this file. Clean Code Is Steering link is itself titled '...Reading Uncle Bob's Agent Experiments', crediting Robert C. Martin's material via the link text rather than paraphrasing it uncredited. grep for 'Antti'/'the creator'/'the author'/'training creator' on body -> 0 hits. grep view.greps.author_we -> 0 hits; no first-person-plural training-as-organisation voice anywhere in body.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": "7",
+      "rule_lead": "Always \"you\", never \"the student\"; teacher framing stays out of body.",
+      "verdict": "PASS",
+      "evidence": "grep view.greps.the_student on body -> 0 hits (CLEAN). No delivery-mechanics narration ('the trainer shows...', 'before students start...') anywhere in body. Both 'you' occurrences (L9 'you walk out with', L23 'You ship a million lines of new stuff') are direct second-person address to the reader.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": "8",
+      "rule_lead": "Don't smuggle terms of art from maintainer into body.",
+      "verdict": "PASS",
+      "evidence": "'grounding' is earned in the same sentence it's introduced: L21 'The discipline has gone deeper since: **grounding**. Beyond spec-and-tests, toward human signal. Every push-back, every correction, every \"no, like this\" is signal of something...' -- the one-breath primer is immediate. No maintainer-only term of art (self-compound, substrate, three-pattern, grill-me) appears in body.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": "9",
+      "rule_lead": "Over-hedge detector.",
+      "verdict": "PASS",
+      "evidence": "grep for 'no penalty'|'fine way to'|\"it's OK if\"|'no consolation prize'|'not a downgrade'|'sometimes humans should'|'not a box-check'|'not on the hook' on body -> 0 hits. Closest candidate, L19 'Without that, no way to know the system works,' is a stakes statement establishing a problem, not a reassurance absolving the reader of anything -- stays.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": "11",
+      "rule_lead": "Cap practitioner attribution at one student-side mention per module.",
+      "verdict": "PASS",
+      "evidence": "Dex Horthy named exactly once in this file's student-facing body prose (L15, 'Dex Horthy argues'). No second or third body mention within this file.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": "12",
+      "rule_lead": "Punchy framing keeps punch; carve-out lives downstream.",
+      "verdict": "PASS",
+      "evidence": "L21's reframe ('Beyond spec-and-tests, toward human signal') is additive/extending phrasing ('beyond X, toward Y'), not an absolute-replacement claim, so it does not overreach in the way rule 12 requires a downstream carve-out for. The one real delivery risk here (room might hear it as 'tests don't matter any more') is explicitly named and handled in the maintainer's own Watch-fors block ('Tests are still inside the kit -- grounding extends, doesn't replace'), the correct location for a verbal-delivery register risk rather than a body carve-out paragraph the text doesn't need.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": "13",
+      "rule_lead": "Value-prop / positioning framing belongs in sales copy + project strategy docs, NOT student-facing curriculum body.",
+      "verdict": "PASS",
+      "evidence": "grep for 'not an aspirational'|'not a vendor'|\"this isn't marketing\"|'the real practitioners'|'unlike consultancy'|'grounded in actual'|'not theoretical'|'from the person running it' on body -> 0 hits. Word 'vendor' does not appear anywhere in body (checked directly).",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": "14",
+      "rule_lead": "Watch out for planting jargon too early.",
+      "verdict": "PASS",
+      "evidence": "'the eval read' and 'grounding' are both new terms introduced and earned within this same M6 file, at their own point of arrival in the arc -- not planted ahead of the module that owns them. Backward-referenced terms (tests-first/M1, plan push-back/M2, test-strategy skill/M3, verifier/M5) were all earned in earlier modules; recalling them at M6 is legitimate fluency, not premature planting. Revision-time check: the new replacement text from this diff ('Tests-first, plan push-back, skill, verifier, loop. That's the quality kit you walk out with.') introduces no new term at all -- it is the exact same list minus a now-redundant lead-in clause, so the second-firing-moment risk (a fix introducing a fresh violation) does not apply.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": "15",
+      "rule_lead": "Audit closer when trimming body-prose forcing function.",
+      "verdict": "PASS",
+      "evidence": "This diff trims a lead-in clause, not a forcing function, but the general pronoun/referent check (not gated to trims) was run on every section close regardless: L9 \"That's the quality kit you walk out with\" -> 'That' points unambiguously at the five-item list stated in the same sentence. L15 'carries that story' -> 'that story' = the just-linked Clean Code Is Steering piece, single referent. L23 'How do you know it's right?' -> 'it' = 'a million lines of new stuff' named in the immediately preceding clause, single referent. No vague spatial/temporal metaphor standing in for an action in any closer.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": "17",
+      "rule_lead": "No combative verbs about the agent in body prose.",
+      "verdict": "PASS",
+      "evidence": "grep for bark|order|command|whip|force|drag|push around|boss|shout at|snap at|lecture|scold on body -> 0 hits. 'the agent's intent' (L5), 'advises the agent' (L13) are peer-flat, collaborator-register descriptions.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": "18",
+      "rule_lead": "Headers must be literally true about the mechanism.",
+      "verdict": "PASS",
+      "evidence": "'Five moves, one quality discipline' -- body names exactly five moves (tests-first, plan push-back, skill, verifier, loop). 'Decay clears the gate' -- matches the corpus's own explicitly precedented failure-named header pattern ('Gates decay' is cited in check_strategy_tie_in.md paragraph3 as accepted precedent), and the mechanism is literal: the paragraph argues decay costs pass a gate undetected. 'From spec-and-tests to grounding' -- body narrates exactly that progression. No 'other X' with no named primary; no spatial metaphor contradicting where anything actually lives.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": "19",
+      "rule_lead": "Machine-cadence fat — the shape of good prose without the content.",
+      "verdict": "PASS",
+      "evidence": "grep for ', not ' (empty negation) on body -> 0 hits. grep for a bold-label-echo pattern (`^**X.**` opening a sentence with X restated as subject) on body -> 0 hits. The one deictic sentence, L9 \"That's the quality kit you walk out with,\" resolves a freshly-stated antecedent (the five-item list in the same sentence) and adds new framing ('kit you walk out with'), not a bare drumroll pointing at nothing. Sources-block gloss for horthy-wsff is below the maintainer fence and paraphrases rather than duplicates the body's inline citation verbatim, and maintainer/backing text is exempt from this rule regardless.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": "20",
+      "rule_lead": "Don't state a count the adjacent list already holds.",
+      "verdict": "PASS",
+      "evidence": "The H2 numeral ('## Five moves, one quality discipline', L3) is exempt outright under the rule's own header carve-out. L7's 'the fifth move' is a memory-handle across distance, not a redundant adjacent-list tally: it marks this lecture's position in a five-move arc spanning four earlier, non-adjacent modules (M1/M2/M3/M5), and the actual five-item list it could be said to duplicate sits two sentences later (L9) recapping the whole arc, not itemising 'today's' single move -- the numeral does recall-scaffolding work the list alone cannot ('this is the Nth of five, spread across the training'), matching the rule's explicit carve-out test ('does the numeral appear where the items are NOT visible? Yes -> keep'). L19's 'two of them' is a real headcount of actual demos (maintainer-attested), the rule's own exempted case ('counts of real things'), not a list-adjacent tally.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": "21",
+      "rule_lead": "A slogan that is false as stated is not punchy framing — run the truth test before reaching for §12.",
+      "verdict": "PASS",
+      "evidence": "'a cost that lands in weeks never reached them' (L15) is reported as Dex Horthy's argument ('Horthy argues... they learned against checks that answer fast, and...'), not the curriculum's own unscoped assertion -- the backing block's stance ledger already grades this exact claim L1 (one named practitioner, in print, on his own company's repo) and explicitly notes it is correctly hedged by 'argues'. 'Nobody reviews 500K lines by hand' (L19) and 'No gate fires on any of them' (L13) are both scoped to the training's own defined mechanism (the gates this training teaches) and a maintainer-attested factual anchor (the 500K figure), not unscoped only/always/never claims about how the world works with a findable counterexample.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": "22",
+      "rule_lead": "A claim binds to every body that states it, not just the one holding the stamp.",
+      "verdict": "N/A",
+      "evidence": "This diff's only claim-row edit (five-moves-one-discipline) is a same-file-only claim (grep -rl five-moves-one-discipline curriculum/ -> only this file, plus its own cached body-view/expanded-md artefacts). The two other backing-block claims that DO share a source id across files (fast-checks-miss-slow-costs / horthy-models-share-the-blind-spot, sharing horthy-wsff with when-a-plan-is-good.md and the-loop-half-filled.md) were not touched by this diff, so the rule's firing moment ('editing any body line a claim quotes') does not trigger.",
+      "na_reason": "The only claim-row this diff edited is single-file only; the shared-source claims were not touched, so the cross-file firing moment does not apply.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": "27",
+      "rule_lead": "Say it once, at its most concrete, then at most one sentence that generalises it. Style, not a gate.",
+      "verdict": "PASS",
+      "evidence": "L21's shape matches the survivor pattern exactly: concrete instance ('Every push-back, every correction, every \"no, like this\"') then one generalising clause ('is signal of something: what's true, what's valuable, what works, what's broken'), then stop -- no third sentence restating it. No abstract-twin pair (two sentences stating one idea at different altitudes), no widening qualifier ('or context-dependent'), no second announcement of 'grounding' elsewhere in this file. has_prompt_blocks/has_figures both false, so sub-rule (b) (restating an adjacent prompt/figure/header) has nothing to fire on.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": "1",
+      "rule_lead": "Aspirational destination, never corrective gap.",
+      "verdict": "PASS",
+      "evidence": "No corrective-gap phrasing ('you're missing X', 'you already think you're using X'); grep for that shape plus ability-tier language ('at your scale', 'for a beginner', 'a senior would already know') on body -> 0 hits. Closing line names an aspirational identity ('the agentic engineer') and hands the student a reachable-today action ('You ship a million lines of new stuff'), not a deficiency or an identity criterion the reader can't satisfy yet. No pre-prompt verification gate exists in this lecture to test for plausible-failability.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": "2",
+      "rule_lead": "Earn every technical term on first use.",
+      "verdict": "PASS",
+      "evidence": "Bare M1/M2/M3/M5 used throughout -- this file sits at AE101 M6 per its own Lecture meta ('AE101 M6'), well past the M2 bare-abbreviation threshold. 'the eval read' (L7) and 'grounding' (L21) are both new terms, each earned in the same sentence they're introduced (immediate mechanical unfold following). Recalled terms from earlier modules (tests-first, plan push-back, skill, verifier) are correctly NOT re-earned, per the rule's own instruction to trust fluency once earned.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": "3",
+      "rule_lead": "Business-audience word ban (Agents 101 default).",
+      "verdict": "N/A",
+      "evidence": "Rule is scoped 'Agents 101 default' (non-technical builder-leader audience, SVP-flinch test); this file is AE101 (software-engineer audience, L0-L3). The jargon-ban.md banned list overlaps entirely with check_writing paragraph1, already checked clean above; the engineer-register vocabulary present ('shortcut cast', 'try-catch that swallows an error', 'module', 'codebase') is textbook AE101 audience vocabulary under the paragraph2 assumed-known-tracks-audience carve-out, not an SVP-flinch term.",
+      "na_reason": "Rule targets the Agents 101 (non-engineer) audience; this file is AE101 engineer-audience, where the vocabulary present is textbook, not business jargon.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": "8",
+      "rule_lead": "Don't smuggle another module's voice.",
+      "verdict": "PASS",
+      "evidence": "Register is internally consistent throughout (factual recap -> problem-naming -> forward reframe), matching this file's own declared M6 stakes-setter role; no borrowed pattern from an unrelated module's specific mood (e.g. no M1 joyful-creation register, no M5 long-running-session register).",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": "11",
+      "rule_lead": "No \"What research says\" callout boxes",
+      "verdict": "PASS",
+      "evidence": "The Horthy citation (L15) is a one-line inline attribution with a link inside ordinary prose, not a boxed 'What research says' callout.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": "14",
+      "rule_lead": "No em-dashes. Simple sentences.",
+      "verdict": "PASS",
+      "evidence": "grep view.greps.em_dash on body -> 0 hits (CLEAN). Sentences throughout are short and declarative; where an aside occurs it uses a colon or a plain clause, not an em-dash sub-clause.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": "17",
+      "rule_lead": "Section headers use command verbs when section is about doing something.",
+      "verdict": "PASS",
+      "evidence": "This is a lecture (reader's job is understanding, not doing), where the rule explicitly permits declarative noun-phrase headers. All three headers are declarative: 'Five moves, one quality discipline', 'Decay clears the gate', 'From spec-and-tests to grounding'.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": "18",
+      "rule_lead": "Inline links use target's title, never filename.",
+      "verdict": "PASS",
+      "evidence": "[Why software factories fail](https://github.com/.../wsff.md) uses the piece's own title. [Clean Code Is Steering: Reading Uncle Bob's Agent Experiments](trainings/agentic-engineering-101/supplementary/clean-code-is-steering.md) matches the target's actual H1 exactly -- verified directly: `head -1 curriculum/trainings/agentic-engineering-101/supplementary/clean-code-is-steering.md` returns '# Clean Code Is Steering: Reading Uncle Bob's Agent Experiments'. No code-span or bare-filename link text. No Step-N/Phase-N ordinal reference anywhere in body (grep clean); M1/M2/M3/M5 are the permitted module-abbreviation exception, not coordinate-style ordinals.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": "21",
+      "rule_lead": "LLM-vs-agent-vs-Claude vocabulary discipline.",
+      "verdict": "PASS",
+      "evidence": "'the agent' is used correctly for autonomous-work description (L5 \"the agent's intent\", L13 'advises the agent'). 'Coding models' (L15) reports Horthy's own framing about a class of trained systems in a training-time argument, not a conflation of chatbot and agent inside this curriculum's own voice. Zero uses of 'Claude' as a noun anywhere in body -- no assistant-shaped-framing signal (Claude-count 0 vs agent-count 2, the healthy direction).",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": "21b",
+      "rule_lead": "Session / task / run split (all trainings).",
+      "verdict": "PASS",
+      "evidence": "L13 'a session can come back green' uses 'session' as the canonical noun for one sitting of the agent on one task, exactly matching the rule's own definition. L7 'Two sessions diffed' likewise uses the noun correctly. grep for banned noun-run-for-the-agent-sitting on body -> 0 hits; the two verb-uses of 'run(s)' (L5 'before any code runs') are unrestricted verb-run.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": "22",
+      "rule_lead": "No time-of-day anchors in body prose.",
+      "verdict": "PASS",
+      "evidence": "grep for tomorrow|overnight|this morning|tonight|next morning|yesterday|last night on body -> 0 hits. L7's 'Today adds the fifth move' was checked against the rule's intent: 'Today' here functions like the rule's own sanctioned session-relative substitutes ('now', 'this run') -- it denotes 'in this lecture/session', not an external calendar anchor that would break if the module ran at a different hour or with a different gap to the next slot, and it is not on the rule's banned list.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": "23",
+      "rule_lead": "Reflection beats stay invisible in flow.",
+      "verdict": "PASS",
+      "evidence": "grep for 'sit with'|'let it land'|'take a moment'|'give yourself space'|'breathe'|'be present with'|'pause and reflect'|'Meta-moment'|'Pause before you'|'Step back'|'Moment of truth' on body -> 0 hits. The closing question stands as a plain unwrapped close, not flagged as an announced reflection beat.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": "26",
+      "rule_lead": "Cut NVA: true but not moving student forward.",
+      "verdict": "PASS",
+      "evidence": "Checked the two candidate details most likely to be NVA. The Agentics Helsinki meetup detail (L19, 'the first Agentics Helsinki meetup, fall 2025, had two of them') is load-bearing evidence for an otherwise-hard-to-believe claim (500K lines in weeks), not administrative trivia -- cutting it would weaken the credibility the sentence needs. The three named decay costs (L13, 'the shortcut cast, the try-catch that swallows an error, the module that grew a second job') are the concrete illustration the abstract claim ('costs that make a codebase hard to change') needs to land, not obvious-to-engineers filler restating what the reader already assumed.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": "28",
+      "rule_lead": "Forward-callout closer: student as grammatical subject.",
+      "verdict": "PASS",
+      "evidence": "The closing sentence's operative claim is 'You ship a million lines of new stuff' -- student as grammatical subject, matching the maintainer's own framing of the close as 'the hand-off to whatever comes next... Let it sit.' No training/curriculum-as-subject failure mode, no imperative-with-implicit-object coach phrasing ('watch for X'), no generic 'they', no role-gating to an audience other than this file's own AE101 engineer reader.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": "30",
+      "rule_lead": "Echo the training's theory spine before inventing a synonym.",
+      "verdict": "PASS",
+      "evidence": "'gate' (L11 header 'Decay clears the gate', L13 'No gate fires on any of them') and 'checks' (L7 'the check that would have caught it', L15 'checks that answer fast') both reach directly for the training's own theory-spine vocabulary ('gates and checks') rather than an invented synonym.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": "33",
+      "rule_lead": "The curriculum does not narrate itself — subject test, then deletion test.",
+      "verdict": "PASS",
+      "evidence": "L5's 'The quality arc ran the whole training' and the M1/M2/M3/M5 backward references it introduces are already covered by this file's own maintainer accept-note (L35-37: 'M1/M2/M3/M5 refs KEPT under the check_lectures paragraph3 consolidation carve-out -- the quality ARC is this lecture's subject, the refs are its material, not sequencing'; 'section-3 sweep 2026-07-02: 5 refs judged... 0 fixed, 5 carve-out'). Independently applied the deletion test anyway: removing L5 would gut the lecture's own declared Lecture-meta purpose ('Names the quality arc threaded across the whole training') rather than leave clean neighbours, which is the opposite of NVA -- this sentence is the load-bearing thesis a genuine cartography violation would not be. L7 ('Today adds the fifth move... Two sessions diffed, every gap routed to the check that would have caught it, and a map of where the next checks belong') describes the student's own immediate task today, not a later beat or the arc in the abstract -- passes the subject test independently.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": "37",
+      "rule_lead": "Mood is a design constraint, not a garnish.",
+      "verdict": "PASS",
+      "evidence": "No verification/check-the-URL/fix-the-bug step present that would prematurely resolve a sustained-doubt mood (this file has no such step at all). No signature wrong-edit pattern (premature rescue, eval-as-compliance, graduation-ceremony framing) detected. Mood-fit against the canonical strategy doc is the strategy class's own numbered rule (check_strategy_tie_in paragraph1, judged separately below in this same instance); this row confirms no additional writing-side mood violation independent of that call.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": "1",
+      "rule_lead": "Mood contract named.",
+      "verdict": "PASS",
+      "evidence": "Stateable in one sentence per the rule's own bar: student leaves this piece confident and fluent, having just recognised the toolkit already built (M1-M5 recap) and re-energised by the reframe toward grounding, which sets up the eval-read exercise that follows immediately -- matching the file's own Lecture meta ('sets the WHY going in') and Watch-fors ('Slide 1 is recognition... not recap'). This is a TEACHING beat (recap + reframe), not mechanical setup, so the mood-floor sub-clause applies and is met: register throughout is warm/confident, not flat administrative instruction.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": "2",
+      "rule_lead": "Epistemic mood ≠ punitive mood.",
+      "verdict": "N/A",
+      "evidence": "Rule fires only 'when module's mood is unease'; this M6 stakes-setter's register is confident/forward-fluent recap-and-reframe, not an unease beat, so the epistemic-vs-punitive distinction has nothing to check against. No punitive framing ('I messed up') is present regardless.",
+      "na_reason": "Rule scoped to unease-mood modules; this beat's mood is not unease.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": "3",
+      "rule_lead": "Lead with discipline, not failure mode.",
+      "verdict": "PASS",
+      "evidence": "The file's own H1 leads with the positive discipline ('Quality is grounding'). Section headers: 'Five moves, one quality discipline' and 'From spec-and-tests to grounding' both lead with discipline. 'Decay clears the gate' names a failure-mode noun ('decay') as grammatical subject, but this matches the rule's own explicitly cited accepted corpus precedent verbatim in shape ('Gates decay', 'Passing is not proof', 'Why mostly-right fails' are all listed as precedent that ships failure-named) -- not a violation.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": "4",
+      "rule_lead": "Strategy-fidelity check.",
+      "verdict": "PASS",
+      "evidence": "No forward-run into a downstream module's teaching moment: all module references (M1/M2/M3/M5) are backward-looking recap of moves already completed, and the closing question is deliberately left open per the maintainer's own watch-for ('the hand-off to whatever comes next... Let it sit. Don't answer it for the room'), which is the opposite of teaching M7's content early. Matches this file's own maintainer-logged section-3 sweep finding of 'no forward sequencing in body'.",
       "na_reason": null,
       "fix_hint": null,
       "blocking": false
@@ -53,48 +423,10 @@
       "verdict": "N/A",
       "evidence": "Not an article rough-cut draft; this is finished lecture prose.",
       "na_reason": "Not an article rough-cut draft; this is finished lecture prose.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": "6",
-      "rule_lead": "Credit original when paraphrasing named technique.",
-      "verdict": "PASS",
-      "evidence": "Dex Horthy credited by name at point of use with a link ('Dex Horthy argues in [Why software factories fail]'), single mention. No 'Antti'/'the creator'/'the author'/'course creator' in body. No sentence-initial 'we' not paired with you/your (grep author_we → 0 hits); no first-person-plural training-as-organisation voice anywhere in body.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": "7",
-      "rule_lead": "Always \"you\", never \"the student\"; teacher framing stays out of body.",
-      "verdict": "PASS",
-      "evidence": "grep view.greps.the_student → body_hits:0 (CLEAN). No delivery-mechanics narration ('the trainer shows...', 'before students start...') in body; the only 'you' usage ('You ship a million lines of new stuff') is second-person addressed at the reader, correctly used.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": "8",
-      "rule_lead": "Don't smuggle terms of art from maintainer into body.",
-      "verdict": "PASS",
-      "evidence": "'grounding' is earned in the same paragraph it's used in: L21 '**grounding**. Beyond spec-and-tests, toward human signal. Every push-back, every correction, every \"no, like this\" is signal of something' — the primer is right there. No maintainer-only terms of art (self-compound, substrate, three-pattern, grill-me) leak into body.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": "9",
-      "rule_lead": "Over-hedge detector.",
-      "verdict": "PASS",
-      "evidence": "No reassurance-shaped sentence present (no 'no penalty', 'it's OK if', 'not a downgrade', 'not on the hook'). Closest candidate to a hedge is L19 'Without that, no way to know the system works.' — this is a stakes statement establishing the problem, not a reassurance absolving the reader of anything, so it stays.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     },
     {
       "compendium": "check_writing.md",
@@ -103,58 +435,10 @@
       "verdict": "N/A",
       "evidence": "No user-supplied verbatim frame being captured into a reference artefact; this is a lecture, not a reference doc.",
       "na_reason": "No user-supplied verbatim frame being captured into a reference artefact; this is a lecture, not a reference doc.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": "11",
-      "rule_lead": "Cap practitioner attribution at one student-side mention per module.",
-      "verdict": "PASS",
-      "evidence": "Dex Horthy named exactly once in student-facing body prose ('Dex Horthy argues'); no second or third mention.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": "12",
-      "rule_lead": "Punchy framing keeps punch; carve-out lives downstream.",
-      "verdict": "PASS",
-      "evidence": "No reframe overreaches its literal cadence in a way needing a downstream carve-out paragraph; the closing question ('How do you know it's right?') is deliberately left open per the maintainer's own watch-for ('Let it sit. Don't answer it for the room'), not a slogan that overpromises.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": "13",
-      "rule_lead": "Value-prop / positioning framing belongs in sales copy + project strategy docs, NOT student-facing curriculum body.",
-      "verdict": "PASS",
-      "evidence": "No flag phrases present ('not an aspirational X', 'not a vendor Y', 'the real practitioners', 'grounded in actual', 'not theoretical'). Word 'vendor' does not appear anywhere in body (checked directly).",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": "14",
-      "rule_lead": "Watch out for planting jargon too early.",
-      "verdict": "PASS",
-      "evidence": "'eval read' and 'grounding' are both introduced and earned within THIS lecture, at M6's own arc position (the module they belong to) — that satisfies 'earned at or before this module'. Backward references (tests-first/M1, plan push-back/M2, skill/M3, verifier/M5) are all terms already earned in prior modules. The Lean-pass edit's replacement text ('Five moves, one discipline') introduces no new term — it repeats a phrase already used earlier in the same paragraph, so the revision-time firing moment of this rule is clean too.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": "15",
-      "rule_lead": "Audit closer when trimming body-prose forcing function.",
-      "verdict": "PASS",
-      "evidence": "Every section closer has an unambiguous single referent: 'That's the quality kit you walk out with' → 'Five moves, one discipline' stated immediately prior; 'carries that story' → the just-linked Clean-Code-Is-Steering piece; 'The agentic engineer maxes that signal out' → 'human signal' named two sentences earlier. No vague spatial/temporal metaphor standing in for an action anywhere in a closer. Not a post-trim case (no forcing function was moved into a fence), but the general pronoun/referent check was run on all three closers regardless.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     },
     {
       "compendium": "check_writing.md",
@@ -163,68 +447,10 @@
       "verdict": "N/A",
       "evidence": "This is a lecture, not an exercise; no '**What happened:**' recap block is expected or present.",
       "na_reason": "This is a lecture, not an exercise; no '**What happened:**' recap block is expected or present.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": "17",
-      "rule_lead": "No combative verbs about the agent in body prose.",
-      "verdict": "PASS",
-      "evidence": "No combative verb (bark/order/command/whip/force/drag/boss/shout/lecture/scold) describes human→agent interaction anywhere in body; 'the agent's intent', 'advises the agent' are peer-flat.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": "18",
-      "rule_lead": "Headers must be literally true about the mechanism.",
-      "verdict": "PASS",
-      "evidence": "All three headers survive a literal cold read: 'Five moves, one quality discipline' (body lists exactly five named moves); 'Decay clears the gate' (matches the corpus-precedented failure-named pattern, and the mechanism — decay passing undetected through a gate — is what the body argues); 'From spec-and-tests to grounding' (body narrates exactly that progression). No 'other X' with no named primary, no spatial metaphor contradicting the mechanism.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": "19",
-      "rule_lead": "Machine-cadence fat — the shape of good prose without the content.",
-      "verdict": "PASS",
-      "evidence": "No empty negation ('X, not Y' against a prior no reader would guess). The one deictic ('That's the quality kit you walk out with') resolves a real, freshly-stated antecedent and adds new framing (kit-you-walk-out-with), not a bare drumroll. No bold-label echo (`**grounding**` is a naming beat, not a restated-subject pattern). No Sources-block duplication in the body region (backing block is below the maintainer fence, exempt).",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": "20",
-      "rule_lead": "Don't state a count the adjacent list already holds.",
-      "verdict": "PASS",
-      "evidence": "L9 'Five moves, one discipline. Tests-first, plan push-back, skill, verifier, loop.' places 'Five' directly beside its own five-item list, which is the rule's normal target shape — but this exact sentence predates the current diff (unchanged since the 2026-08-18 and 2026-08-24 writing PASSes) and functions as the lecture's own refrain/mnemonic, echoed verbatim from the H2 header ('Five moves, one quality discipline') a few lines above rather than being a throwaway tally — closer to a memory-handle callback than a redundant count that silently drifts, since the whole lecture's job is exactly this five-move recap.",
-      "na_reason": null,
-      "fix_hint": "If ever revisited: could drop 'Five' from the prose instance and let the header alone carry the count, since the header-numeral carve-out already covers that half.",
-      "blocking": false
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": "21",
-      "rule_lead": "A slogan that is false as stated is not punchy framing — run the truth test before reaching for §12.",
-      "verdict": "PASS",
-      "evidence": "'Nobody reviews 500K lines by hand' and 'No gate fires on any of them' are both read in context as scoped claims (about the training's own defined 'gates' — tests + verifier — and about the practical reality of agentic-scale code volume), not global-world superlatives with a live counterexample; the backing block's own stance ledger separately confirms the 500K figure is maintainer-attested and the sentence beside it needs no source ('vision'-grade, correctly unstamped). No 'only/always/never/nothing else' construction asserted about how the world works with a findable counterexample.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": "22",
-      "rule_lead": "A claim binds to every body that states it, not just the one holding the stamp.",
-      "verdict": "PASS",
-      "evidence": "The one claim removed by this diff (`discipline-not-one-move-per-module`) was deleted from both the body sentence AND its backing-block claim row in the same pass; `grep -rn discipline-not-one-move-per-module curriculum/` returns zero hits outside this file's own backing block region (which was itself edited), so no sibling file is left stating the removed claim.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     },
     {
       "compendium": "check_writing.md",
@@ -233,8 +459,10 @@
       "verdict": "N/A",
       "evidence": "Session-sweep staleness discipline for multi-file dispatches; not a checkable property of a single static file's prose.",
       "na_reason": "Session-sweep staleness discipline for multi-file dispatches; not a checkable property of a single static file's prose.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     },
     {
       "compendium": "check_writing.md",
@@ -243,8 +471,10 @@
       "verdict": "N/A",
       "evidence": "Not a scarce-attention-audience doc (trainer/exec/sponsor); this is student-facing lecture body.",
       "na_reason": "Not a scarce-attention-audience doc (trainer/exec/sponsor); this is student-facing lecture body.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     },
     {
       "compendium": "check_writing.md",
@@ -253,8 +483,10 @@
       "verdict": "N/A",
       "evidence": "Not trainer-facing text (trainer-guide/trainer-modules); body is student-facing, maintainer block is a different surface this rule doesn't govern.",
       "na_reason": "Not trainer-facing text (trainer-guide/trainer-modules); body is student-facing, maintainer block is a different surface this rule doesn't govern.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     },
     {
       "compendium": "check_writing.md",
@@ -263,38 +495,10 @@
       "verdict": "N/A",
       "evidence": "No 'X tells you whether Y' / 'you'll know it worked when' self-witnessing clause present in body.",
       "na_reason": "No 'X tells you whether Y' / 'you'll know it worked when' self-witnessing clause present in body.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": "1",
-      "rule_lead": "Aspirational destination, never corrective gap.",
-      "verdict": "PASS",
-      "evidence": "No corrective-gap framing ('you're missing X'), no ability-tier language ('at your scale', 'for a beginner'), no tourist/practitioner-style identity dichotomy with an unreachable criterion. Closing line names an aspirational identity ('the agentic engineer') via action, not deficiency. No pre-prompt verification gates present to check plausible-failability against (none exist in this lecture).",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": "2",
-      "rule_lead": "Earn every technical term on first use.",
-      "verdict": "PASS",
-      "evidence": "Bare M1/M2/M3/M5 used freely — file sits at M6, well past the M2 abbreviation-earning threshold. 'the eval read' and 'grounding' are both introduced and earned within this same file, at their own point of arrival in the arc.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": "3",
-      "rule_lead": "Business-audience word ban (Agents 101 default).",
-      "verdict": "PASS",
-      "evidence": "No jargon-ban.md-listed term present in body (overlaps the check_writing §1 banned-word grep, CLEAN). Engineer-register vocabulary throughout ('shortcut cast', 'try-catch that swallows an error') passes an SVP-flinch read.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     },
     {
       "compendium": "check_student_facing.md",
@@ -303,8 +507,10 @@
       "verdict": "N/A",
       "evidence": "Neither 'memory' nor 'context' appears in body prose.",
       "na_reason": "Neither 'memory' nor 'context' appears in body prose.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     },
     {
       "compendium": "check_student_facing.md",
@@ -313,8 +519,10 @@
       "verdict": "N/A",
       "evidence": "No troubleshooting/recovery/what-if-X-fails branch in this stakes-setter lecture.",
       "na_reason": "No troubleshooting/recovery/what-if-X-fails branch in this stakes-setter lecture.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     },
     {
       "compendium": "check_student_facing.md",
@@ -323,8 +531,10 @@
       "verdict": "N/A",
       "evidence": "No prompt output-shape specification in this file (no prompts at all).",
       "na_reason": "No prompt output-shape specification in this file (no prompts at all).",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     },
     {
       "compendium": "check_student_facing.md",
@@ -333,18 +543,10 @@
       "verdict": "N/A",
       "evidence": "No Debrief/retro content in this lecture.",
       "na_reason": "No Debrief/retro content in this lecture.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": "8",
-      "rule_lead": "Don't smuggle another module's voice.",
-      "verdict": "PASS",
-      "evidence": "No borrowed pattern from another module's mood; register is consistent throughout (factual recap → problem-naming → forward reframe), matching this file's own M6 stakes-setter role.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     },
     {
       "compendium": "check_student_facing.md",
@@ -353,8 +555,10 @@
       "verdict": "N/A",
       "evidence": "No student instruction of any kind in this file (pure narrative lecture, no exercise moves, no 'read/check/diff' instruction lines).",
       "na_reason": "No student instruction of any kind in this file (pure narrative lecture, no exercise moves, no 'read/check/diff' instruction lines).",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     },
     {
       "compendium": "check_student_facing.md",
@@ -363,18 +567,10 @@
       "verdict": "N/A",
       "evidence": "No simulation persona described.",
       "na_reason": "No simulation persona described.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": "11",
-      "rule_lead": "No \"What research says\" callout boxes",
-      "verdict": "PASS",
-      "evidence": "Horthy citation is a one-line inline attribution with a link, not a boxed 'What research says' callout.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     },
     {
       "compendium": "check_student_facing.md",
@@ -383,8 +579,10 @@
       "verdict": "N/A",
       "evidence": "No editor/terminal/file-edit student move described; this file contains no exercise instructions.",
       "na_reason": "No editor/terminal/file-edit student move described; this file contains no exercise instructions.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     },
     {
       "compendium": "check_student_facing.md",
@@ -393,38 +591,10 @@
       "verdict": "N/A",
       "evidence": "No CLAUDE.md reference of any kind in this file.",
       "na_reason": "No CLAUDE.md reference of any kind in this file.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": "14",
-      "rule_lead": "No em-dashes. Simple sentences.",
-      "verdict": "PASS",
-      "evidence": "grep view.greps.em_dash → body_hits:0 (CLEAN). Sentences are short and simple throughout; no em-dash anywhere.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": "17",
-      "rule_lead": "Section headers use command verbs when section is about doing something.",
-      "verdict": "PASS",
-      "evidence": "This is a lecture; all three headers are declarative noun-phrases ('Five moves, one quality discipline', 'Decay clears the gate', 'From spec-and-tests to grounding'), which the rule explicitly permits for lectures/reference sections since the reader's job here is understanding, not doing.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": "18",
-      "rule_lead": "Inline links use target's title, never filename.",
-      "verdict": "PASS",
-      "evidence": "[Why software factories fail](https://github.com/.../wsff.md) uses the piece's own title, not the filename. [Clean Code Is Steering: Reading Uncle Bob's Agent Experiments](trainings/agentic-engineering-101/supplementary/clean-code-is-steering.md) matches the target file's H1 exactly (verified: `head -1 clean-code-is-steering.md` → '# Clean Code Is Steering: Reading Uncle Bob's Agent Experiments'). No Step-N/Phase-N ordinal references; module names (M1/M2/M3/M5) are the permitted exception.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     },
     {
       "compendium": "check_student_facing.md",
@@ -433,48 +603,10 @@
       "verdict": "N/A",
       "evidence": "No first-authored-write moment for a contested word (memory/skill/plan/agent) in this recap lecture; no deictic ('here'/'this'/'above') placed next to an authoring verb.",
       "na_reason": "No first-authored-write moment for a contested word (memory/skill/plan/agent) in this recap lecture; no deictic ('here'/'this'/'above') placed next to an authoring verb.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": "21",
-      "rule_lead": "LLM-vs-agent-vs-Claude vocabulary discipline.",
-      "verdict": "PASS",
-      "evidence": "'the agent' used correctly for autonomous-work description (L5 'the agent's intent', L13 'advises the agent'); 'Coding models' used correctly for a thinking/training-time property (Horthy's argument about how models are trained). Zero uses of 'Claude' as a noun — no assistant-shaped-framing signal (Claude-count is not ≫ agent-count; it's 0 vs several).",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": "21b",
-      "rule_lead": "Session / task / run split (all trainings).",
-      "verdict": "PASS",
-      "evidence": "L13 'a session can come back green' uses 'session' — the canonical noun for one sitting of the agent on one task — correctly, exactly matching the rule's own definition. No banned run-as-noun-for-the-agent-sitting usage anywhere in body.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": "22",
-      "rule_lead": "No time-of-day anchors in body prose.",
-      "verdict": "PASS",
-      "evidence": "No tomorrow/overnight/this morning/tonight/yesterday anywhere in body.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": "23",
-      "rule_lead": "Reflection beats stay invisible in flow.",
-      "verdict": "PASS",
-      "evidence": "No reflection-beat announcing header or contemplative-pause prefix ('sit with X', 'let it land', 'pause and reflect'). The closing question stands unwrapped, as a natural close, not flagged as 'reflection happening now'.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     },
     {
       "compendium": "check_student_facing.md",
@@ -483,8 +615,10 @@
       "verdict": "N/A",
       "evidence": "No prompt/dialogue described; no meta-ask pattern possible in a promptless lecture.",
       "na_reason": "No prompt/dialogue described; no meta-ask pattern possible in a promptless lecture.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     },
     {
       "compendium": "check_student_facing.md",
@@ -493,18 +627,10 @@
       "verdict": "N/A",
       "evidence": "No file-saving instruction of any kind in this file.",
       "na_reason": "No file-saving instruction of any kind in this file.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": "26",
-      "rule_lead": "Cut NVA: true but not moving student forward.",
-      "verdict": "PASS",
-      "evidence": "Checked the two candidate details most likely to be NVA: the Agentics-Helsinki meetup detail (L19, 'the first Agentics Helsinki meetup, fall 2025, had two of them') is load-bearing evidence for the outsized-claim thesis, not administrative trivia; the three named decay costs (L13, 'the shortcut cast, the try-catch that swallows an error, the module that grew a second job') are the concrete illustration the abstract claim needs, not obvious-to-engineers filler.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     },
     {
       "compendium": "check_student_facing.md",
@@ -513,18 +639,10 @@
       "verdict": "N/A",
       "evidence": "No chat-print moment (no Claude output shown in-body) to narrate 'read it' against.",
       "na_reason": "No chat-print moment (no Claude output shown in-body) to narrate 'read it' against.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": "28",
-      "rule_lead": "Forward-callout closer: student as grammatical subject.",
-      "verdict": "PASS",
-      "evidence": "Closing sentence pivots to 'You ship a million lines of new stuff' — student as grammatical subject of the operative claim, not the training/curriculum, no imperative-with-implicit-object coach phrasing, no generic they, no role-gating to a different audience than the host file's own.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     },
     {
       "compendium": "check_student_facing.md",
@@ -533,18 +651,10 @@
       "verdict": "N/A",
       "evidence": "No operational setting (thinking-effort, model choice, mode tag, slash-command) mentioned in this file.",
       "na_reason": "No operational setting (thinking-effort, model choice, mode tag, slash-command) mentioned in this file.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": "30",
-      "rule_lead": "Echo the training's theory spine before inventing a synonym.",
-      "verdict": "PASS",
-      "evidence": "'gate' (L13, 'No gate fires on any of them') and 'checks' (L7, 'the check that would have caught it') are the training's own theory-spine vocabulary ('gates and checks'), correctly reached for instead of an invented synonym.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     },
     {
       "compendium": "check_student_facing.md",
@@ -553,8 +663,10 @@
       "verdict": "N/A",
       "evidence": "No student-to-agent message described in this file (it's a lecture, not an exercise with prompts).",
       "na_reason": "No student-to-agent message described in this file (it's a lecture, not an exercise with prompts).",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     },
     {
       "compendium": "check_student_facing.md",
@@ -563,18 +675,10 @@
       "verdict": "N/A",
       "evidence": "No setup/mechanics instruction of any kind in this file.",
       "na_reason": "No setup/mechanics instruction of any kind in this file.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": "33",
-      "rule_lead": "The curriculum does not narrate itself — subject test, then deletion test.",
-      "verdict": "PASS",
-      "evidence": "The M1/M2/M3/M5 backward references are already covered by this file's own maintainer accept-note (L35, section-3 sweep 2026-07-02: '5 refs judged... 0 fixed, 5 carve-out — consolidation arc-lecture, the quality arc IS the subject'). Independently re-checked L7 ('Today adds the fifth move... Two sessions diffed, every gap routed to the check that would have caught it, and a map of where the next checks belong.') against the subject test: this describes the student's own immediate task today, not a later beat or the arc in the abstract — passes.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     },
     {
       "compendium": "check_student_facing.md",
@@ -583,8 +687,10 @@
       "verdict": "N/A",
       "evidence": "Agents 101 M7-specific sharing-strategies rule; this is an AE101 file.",
       "na_reason": "Agents 101 M7-specific sharing-strategies rule; this is an AE101 file.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     },
     {
       "compendium": "check_student_facing.md",
@@ -593,8 +699,10 @@
       "verdict": "N/A",
       "evidence": "Agents 101 M2+ Debrief-shape rule; this is an AE101 file with no Debrief section.",
       "na_reason": "Agents 101 M2+ Debrief-shape rule; this is an AE101 file with no Debrief section.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     },
     {
       "compendium": "check_student_facing.md",
@@ -603,18 +711,10 @@
       "verdict": "N/A",
       "evidence": "No scaffold-vs-prompt tradeoff present; this file has no exercise scaffolding at all.",
       "na_reason": "No scaffold-vs-prompt tradeoff present; this file has no exercise scaffolding at all.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": "37",
-      "rule_lead": "Mood is a design constraint, not a garnish.",
-      "verdict": "PASS",
-      "evidence": "No verification/check-the-URL/fix-the-bug step present that would prematurely resolve a sustained-doubt mood; this stakes-setter lecture's own mood-arc scoring (target mood, wrong-edit signature) is the strategy class's job with the loaded content-strategy doc, and that class's Quality-line entry already reads PASS.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     },
     {
       "compendium": "check_prompts.md",
@@ -623,8 +723,10 @@
       "verdict": "N/A",
       "evidence": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
       "na_reason": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     },
     {
       "compendium": "check_prompts.md",
@@ -633,8 +735,10 @@
       "verdict": "N/A",
       "evidence": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
       "na_reason": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     },
     {
       "compendium": "check_prompts.md",
@@ -643,8 +747,10 @@
       "verdict": "N/A",
       "evidence": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
       "na_reason": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     },
     {
       "compendium": "check_prompts.md",
@@ -653,8 +759,10 @@
       "verdict": "N/A",
       "evidence": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
       "na_reason": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     },
     {
       "compendium": "check_prompts.md",
@@ -663,8 +771,10 @@
       "verdict": "N/A",
       "evidence": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
       "na_reason": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     },
     {
       "compendium": "check_prompts.md",
@@ -673,8 +783,10 @@
       "verdict": "N/A",
       "evidence": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
       "na_reason": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     },
     {
       "compendium": "check_prompts.md",
@@ -683,8 +795,10 @@
       "verdict": "N/A",
       "evidence": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
       "na_reason": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     },
     {
       "compendium": "check_prompts.md",
@@ -693,8 +807,10 @@
       "verdict": "N/A",
       "evidence": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
       "na_reason": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     },
     {
       "compendium": "check_prompts.md",
@@ -703,8 +819,10 @@
       "verdict": "N/A",
       "evidence": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
       "na_reason": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     },
     {
       "compendium": "check_prompts.md",
@@ -713,8 +831,10 @@
       "verdict": "N/A",
       "evidence": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
       "na_reason": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     },
     {
       "compendium": "check_prompts.md",
@@ -723,8 +843,10 @@
       "verdict": "N/A",
       "evidence": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
       "na_reason": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     },
     {
       "compendium": "check_prompts.md",
@@ -733,8 +855,10 @@
       "verdict": "N/A",
       "evidence": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
       "na_reason": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     },
     {
       "compendium": "check_prompts.md",
@@ -743,8 +867,10 @@
       "verdict": "N/A",
       "evidence": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
       "na_reason": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     },
     {
       "compendium": "check_prompts.md",
@@ -753,8 +879,10 @@
       "verdict": "N/A",
       "evidence": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
       "na_reason": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     },
     {
       "compendium": "check_prompts.md",
@@ -763,8 +891,10 @@
       "verdict": "N/A",
       "evidence": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
       "na_reason": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     },
     {
       "compendium": "check_prompts.md",
@@ -773,8 +903,10 @@
       "verdict": "N/A",
       "evidence": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
       "na_reason": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     },
     {
       "compendium": "check_prompts.md",
@@ -783,8 +915,10 @@
       "verdict": "N/A",
       "evidence": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
       "na_reason": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     },
     {
       "compendium": "check_prompts.md",
@@ -793,8 +927,10 @@
       "verdict": "N/A",
       "evidence": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
       "na_reason": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     },
     {
       "compendium": "check_prompts.md",
@@ -803,8 +939,10 @@
       "verdict": "N/A",
       "evidence": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
       "na_reason": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     },
     {
       "compendium": "check_prompts.md",
@@ -813,8 +951,10 @@
       "verdict": "N/A",
       "evidence": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
       "na_reason": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     },
     {
       "compendium": "check_prompts.md",
@@ -823,8 +963,10 @@
       "verdict": "N/A",
       "evidence": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
       "na_reason": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     },
     {
       "compendium": "check_prompts.md",
@@ -833,8 +975,10 @@
       "verdict": "N/A",
       "evidence": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
       "na_reason": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     },
     {
       "compendium": "check_prompts.md",
@@ -843,8 +987,10 @@
       "verdict": "N/A",
       "evidence": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
       "na_reason": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     },
     {
       "compendium": "check_prompts.md",
@@ -853,8 +999,10 @@
       "verdict": "N/A",
       "evidence": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
       "na_reason": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     },
     {
       "compendium": "check_prompts.md",
@@ -863,8 +1011,10 @@
       "verdict": "N/A",
       "evidence": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
       "na_reason": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     },
     {
       "compendium": "check_prompts.md",
@@ -873,8 +1023,10 @@
       "verdict": "N/A",
       "evidence": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
       "na_reason": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     },
     {
       "compendium": "check_prompts.md",
@@ -883,8 +1035,10 @@
       "verdict": "N/A",
       "evidence": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
       "na_reason": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     },
     {
       "compendium": "check_prompts.md",
@@ -893,8 +1047,10 @@
       "verdict": "N/A",
       "evidence": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
       "na_reason": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     },
     {
       "compendium": "check_prompts.md",
@@ -903,8 +1059,10 @@
       "verdict": "N/A",
       "evidence": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
       "na_reason": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     },
     {
       "compendium": "check_prompts.md",
@@ -913,8 +1071,10 @@
       "verdict": "N/A",
       "evidence": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
       "na_reason": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     },
     {
       "compendium": "check_prompts.md",
@@ -923,8 +1083,10 @@
       "verdict": "N/A",
       "evidence": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
       "na_reason": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     },
     {
       "compendium": "check_prompts.md",
@@ -933,8 +1095,10 @@
       "verdict": "N/A",
       "evidence": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
       "na_reason": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     },
     {
       "compendium": "check_prompts.md",
@@ -943,8 +1107,10 @@
       "verdict": "N/A",
       "evidence": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
       "na_reason": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     },
     {
       "compendium": "check_prompts.md",
@@ -953,8 +1119,10 @@
       "verdict": "N/A",
       "evidence": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
       "na_reason": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     },
     {
       "compendium": "check_prompts.md",
@@ -963,8 +1131,10 @@
       "verdict": "N/A",
       "evidence": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
       "na_reason": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     },
     {
       "compendium": "check_prompts.md",
@@ -973,8 +1143,10 @@
       "verdict": "N/A",
       "evidence": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
       "na_reason": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     },
     {
       "compendium": "check_prompts.md",
@@ -983,8 +1155,10 @@
       "verdict": "N/A",
       "evidence": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
       "na_reason": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     },
     {
       "compendium": "check_prompts.md",
@@ -993,8 +1167,10 @@
       "verdict": "N/A",
       "evidence": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
       "na_reason": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     },
     {
       "compendium": "check_prompts.md",
@@ -1003,8 +1179,10 @@
       "verdict": "N/A",
       "evidence": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
       "na_reason": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     },
     {
       "compendium": "check_prompts.md",
@@ -1013,8 +1191,10 @@
       "verdict": "N/A",
       "evidence": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
       "na_reason": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     },
     {
       "compendium": "check_prompts.md",
@@ -1023,8 +1203,10 @@
       "verdict": "N/A",
       "evidence": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
       "na_reason": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     },
     {
       "compendium": "check_prompts.md",
@@ -1033,8 +1215,10 @@
       "verdict": "N/A",
       "evidence": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
       "na_reason": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     },
     {
       "compendium": "check_prompts.md",
@@ -1043,8 +1227,10 @@
       "verdict": "N/A",
       "evidence": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
       "na_reason": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     },
     {
       "compendium": "check_prompts.md",
@@ -1053,8 +1239,10 @@
       "verdict": "N/A",
       "evidence": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
       "na_reason": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     },
     {
       "compendium": "check_prompts.md",
@@ -1063,8 +1251,10 @@
       "verdict": "N/A",
       "evidence": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
       "na_reason": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     },
     {
       "compendium": "check_prompts.md",
@@ -1073,8 +1263,10 @@
       "verdict": "N/A",
       "evidence": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
       "na_reason": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     },
     {
       "compendium": "check_prompts.md",
@@ -1083,8 +1275,10 @@
       "verdict": "N/A",
       "evidence": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
       "na_reason": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     },
     {
       "compendium": "check_prompts.md",
@@ -1093,8 +1287,10 @@
       "verdict": "N/A",
       "evidence": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
       "na_reason": "No prompt blocks in this file (view.signals.has_prompt_blocks: false, has_code_fences: false) — pure narrative lecture body, no fenced student-copied content.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     },
     {
       "compendium": "check_sales_copy.md",
@@ -1103,8 +1299,10 @@
       "verdict": "N/A",
       "evidence": "Not a buyer-facing surface (site/newsletter/sponsor deck/pricing); this is internal curriculum lecture body, governed by check_student_facing/check_writing instead.",
       "na_reason": "Not a buyer-facing surface (site/newsletter/sponsor deck/pricing); this is internal curriculum lecture body, governed by check_student_facing/check_writing instead.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     },
     {
       "compendium": "check_sales_copy.md",
@@ -1113,8 +1311,10 @@
       "verdict": "N/A",
       "evidence": "Not a buyer-facing surface (site/newsletter/sponsor deck/pricing); this is internal curriculum lecture body, governed by check_student_facing/check_writing instead.",
       "na_reason": "Not a buyer-facing surface (site/newsletter/sponsor deck/pricing); this is internal curriculum lecture body, governed by check_student_facing/check_writing instead.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     },
     {
       "compendium": "check_sales_copy.md",
@@ -1123,8 +1323,10 @@
       "verdict": "N/A",
       "evidence": "Not a buyer-facing surface (site/newsletter/sponsor deck/pricing); this is internal curriculum lecture body, governed by check_student_facing/check_writing instead.",
       "na_reason": "Not a buyer-facing surface (site/newsletter/sponsor deck/pricing); this is internal curriculum lecture body, governed by check_student_facing/check_writing instead.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     },
     {
       "compendium": "check_sales_copy.md",
@@ -1133,8 +1335,10 @@
       "verdict": "N/A",
       "evidence": "Not a buyer-facing surface (site/newsletter/sponsor deck/pricing); this is internal curriculum lecture body, governed by check_student_facing/check_writing instead.",
       "na_reason": "Not a buyer-facing surface (site/newsletter/sponsor deck/pricing); this is internal curriculum lecture body, governed by check_student_facing/check_writing instead.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     },
     {
       "compendium": "check_sales_copy.md",
@@ -1143,8 +1347,10 @@
       "verdict": "N/A",
       "evidence": "Not a buyer-facing surface (site/newsletter/sponsor deck/pricing); this is internal curriculum lecture body, governed by check_student_facing/check_writing instead.",
       "na_reason": "Not a buyer-facing surface (site/newsletter/sponsor deck/pricing); this is internal curriculum lecture body, governed by check_student_facing/check_writing instead.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     },
     {
       "compendium": "check_sales_copy.md",
@@ -1153,8 +1359,10 @@
       "verdict": "N/A",
       "evidence": "Not a buyer-facing surface (site/newsletter/sponsor deck/pricing); this is internal curriculum lecture body, governed by check_student_facing/check_writing instead.",
       "na_reason": "Not a buyer-facing surface (site/newsletter/sponsor deck/pricing); this is internal curriculum lecture body, governed by check_student_facing/check_writing instead.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     },
     {
       "compendium": "check_sales_copy.md",
@@ -1163,8 +1371,10 @@
       "verdict": "N/A",
       "evidence": "Not a buyer-facing surface (site/newsletter/sponsor deck/pricing); this is internal curriculum lecture body, governed by check_student_facing/check_writing instead.",
       "na_reason": "Not a buyer-facing surface (site/newsletter/sponsor deck/pricing); this is internal curriculum lecture body, governed by check_student_facing/check_writing instead.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     },
     {
       "compendium": "check_sales_copy.md",
@@ -1173,8 +1383,10 @@
       "verdict": "N/A",
       "evidence": "Not a buyer-facing surface (site/newsletter/sponsor deck/pricing); this is internal curriculum lecture body, governed by check_student_facing/check_writing instead.",
       "na_reason": "Not a buyer-facing surface (site/newsletter/sponsor deck/pricing); this is internal curriculum lecture body, governed by check_student_facing/check_writing instead.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     },
     {
       "compendium": "check_sales_copy.md",
@@ -1183,8 +1395,10 @@
       "verdict": "N/A",
       "evidence": "Not a buyer-facing surface (site/newsletter/sponsor deck/pricing); this is internal curriculum lecture body, governed by check_student_facing/check_writing instead.",
       "na_reason": "Not a buyer-facing surface (site/newsletter/sponsor deck/pricing); this is internal curriculum lecture body, governed by check_student_facing/check_writing instead.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     },
     {
       "compendium": "check_sales_copy.md",
@@ -1193,8 +1407,10 @@
       "verdict": "N/A",
       "evidence": "Not a buyer-facing surface (site/newsletter/sponsor deck/pricing); this is internal curriculum lecture body, governed by check_student_facing/check_writing instead.",
       "na_reason": "Not a buyer-facing surface (site/newsletter/sponsor deck/pricing); this is internal curriculum lecture body, governed by check_student_facing/check_writing instead.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     },
     {
       "compendium": "check_sales_copy.md",
@@ -1203,8 +1419,10 @@
       "verdict": "N/A",
       "evidence": "Not a buyer-facing surface (site/newsletter/sponsor deck/pricing); this is internal curriculum lecture body, governed by check_student_facing/check_writing instead.",
       "na_reason": "Not a buyer-facing surface (site/newsletter/sponsor deck/pricing); this is internal curriculum lecture body, governed by check_student_facing/check_writing instead.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     },
     {
       "compendium": "check_sales_copy.md",
@@ -1213,8 +1431,10 @@
       "verdict": "N/A",
       "evidence": "Not a buyer-facing surface (site/newsletter/sponsor deck/pricing); this is internal curriculum lecture body, governed by check_student_facing/check_writing instead.",
       "na_reason": "Not a buyer-facing surface (site/newsletter/sponsor deck/pricing); this is internal curriculum lecture body, governed by check_student_facing/check_writing instead.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     },
     {
       "compendium": "check_sales_copy.md",
@@ -1223,48 +1443,10 @@
       "verdict": "N/A",
       "evidence": "Not a buyer-facing surface (site/newsletter/sponsor deck/pricing); this is internal curriculum lecture body, governed by check_student_facing/check_writing instead.",
       "na_reason": "Not a buyer-facing surface (site/newsletter/sponsor deck/pricing); this is internal curriculum lecture body, governed by check_student_facing/check_writing instead.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": "1",
-      "rule_lead": "Mood contract named.",
-      "verdict": "PASS",
-      "evidence": "Lecture meta states the mood hand-off explicitly: 'quality-is-grounding sets the WHY going in, the-loop-has-a-name names the WHAT (eval) coming out.' One-sentence state: student leaves with stakes-raised pride tempered by a genuinely open question ('How do you know it's right?'), which sets up the next lecture's answer (naming the eval). Deep per-beat mood-floor scoring against the loaded content-strategy doc is the strategy class's job; its Quality-line entry already reads PASS and this diff didn't touch mood content (only trimmed a redundant sentence).",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": "2",
-      "rule_lead": "Epistemic mood ≠ punitive mood.",
-      "verdict": "PASS",
-      "evidence": "Closing question ('How do you know it's right?') is epistemic not-knowing, never punitive self-blame; no 'I messed up' framing anywhere.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": "3",
-      "rule_lead": "Lead with discipline, not failure mode.",
-      "verdict": "PASS",
-      "evidence": "All three headers lead with discipline/mechanism, not failure-mode-as-title: 'Five moves, one quality discipline', 'Decay clears the gate' (matches the corpus's own precedented failure-named pattern — 'Gates decay', 'Passing is not proof' are cited as accepted precedent), 'From spec-and-tests to grounding'.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": "4",
-      "rule_lead": "Strategy-fidelity check.",
-      "verdict": "PASS",
-      "evidence": "No forward-run into M7/M8 teaching moments; all module references (M1/M2/M3/M5) are backward-looking material about moves already completed, matching this file's own maintainer-logged section-3 sweep finding no sequencing violation.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     },
     {
       "compendium": "check_strategy_tie_in.md",
@@ -1273,8 +1455,10 @@
       "verdict": "N/A",
       "evidence": "This is a lecture file, not a module file with a Key Concepts section.",
       "na_reason": "This is a lecture file, not a module file with a Key Concepts section.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     },
     {
       "compendium": "check_strategy_tie_in.md",
@@ -1283,8 +1467,10 @@
       "verdict": "N/A",
       "evidence": "No Key Concepts section exists in a lecture file.",
       "na_reason": "No Key Concepts section exists in a lecture file.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     },
     {
       "compendium": "check_strategy_tie_in.md",
@@ -1293,8 +1479,10 @@
       "verdict": "N/A",
       "evidence": "No What You'll Learn section exists in a lecture file.",
       "na_reason": "No What You'll Learn section exists in a lecture file.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8ce6ed733494757e51ca9abb6d8c7215a7c07b366548b940a1f9bf769b236afb",
+      "carried_shape": "0e8c64fecfeaf2e0"
     }
   ],
   "blocking_findings_count": 0,

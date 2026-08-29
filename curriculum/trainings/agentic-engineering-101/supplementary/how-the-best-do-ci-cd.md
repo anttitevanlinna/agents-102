@@ -169,5 +169,5 @@ OODA
 
 **Pre-audit closed 2026-08-07.** Source-URL verification ran (stamps in the `Source verification` block above); writing / story / technical / strategy / pedagogy / behavior / slides judges all re-ran clean after the same-day fix pass (em-dash sweep, Stripe self-report qualifier, 8→14 slide split for `check_lectures.md` §5, strategy-doc reconciliation). This file now carries a Quality line.
 
-**Quality:** compendium-audited 2026-08-29 (writing@43e6cae1 story@e11bbeb4 technical@8cc00874 behavior@da65157 pedagogy@1abb84c6 strategy@da65157 slides@43e6cae1)
-- judges @43e6cae1: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-29 (writing@4a722813 story@4a722813 technical@4a722813 behavior@da65157 pedagogy@1abb84c6 strategy@da65157 slides@4a722813)
+- judges @4a722813: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS

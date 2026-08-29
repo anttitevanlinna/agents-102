@@ -1,9 +1,9 @@
 {
   "class": "writing",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/supplementary/agentic-engineering-progression.md",
-  "body_sha": "2ae16d3e35918fc797890c32a5d2750aaeb24d5cfef1874ba8e04b92dd652abd",
+  "body_sha": "bc614bedcbdfd27c4f084ad8b484787e7046b0dae84d0eb98c53676d0bb1373b",
   "shape_hash": "b2e495b33b4a0a53",
-  "verdict": "PASS",
+  "verdict": "PASS_WITH_TODOS",
   "training": "ae101",
   "maintainer_cut_line": 64,
   "fence_ranges": [],
@@ -15,7 +15,7 @@
     "verified_by": "grep -c 'would suggest: he kept' -> 1; awk NR<=63 | grep em-dash -> 0 hits; git show 0cea758 diff inspected directly this pass, independently, on top of the confirmation carried from the prior instance",
     "note": "The same fix commit (0cea758) also re-anchored the check_writing.md §3 <!-- backing --> Claims-ledger entry for wollsen-value-estimate (L90), which was a second blocking finding in the prior instance not named in this dispatch. Both are resolved and independently re-verified this pass: git show 0cea758 shows the L90 Claims quote changed from the quarantined 'three to four times the value...' self-estimate to the exact body substring now at L56."
   },
-  "coverage_note": "The instance this run inherited (verified above to be internally correct on every row it carried) covered only 19/26 check_writing.md rules and 15/35 check_student_facing.md rules -- a silent completeness gap the completeness contract bans ('Fewer = a silent skip'). This run judged the missing 7 check_writing + 20 check_student_facing rows fresh against the current body (all listed below with prefilled:false or no prefilled key) and left every previously-judged row untouched. One new finding surfaced: check_student_facing.md §4 (memory-vs-context register blur), non-blocking.",
+  "coverage_note": "Dispatch pinned at 17446703, staleness reason rule-drift on writing §26. git diff 17446703..HEAD on this file touches only the below-the-fence Quality line (date + judge-run stamps) -- no body edit, confirmed via grep -vE '^(\\+\\+\\+|---)' | grep -E '^[-+]' (bullet-safe filter per dispatch instructions). body_sha matches the instance this run inherited exactly, so every previously-judged row was reread against the SAME body and reconfirmed, not re-derived from a stale trace. writing §26 was reread at its current wording via rule.js (unchanged) and reconfirmed PASS -- see its evidence field for the fresh reasoning. One genuinely new row was added: check_writing.md §27 ('Say it once, at its most concrete...'), a rule that landed 2026-08-29 and postdates the inherited instance; judged PASS with a noted close call in evidence. The class-brief (rules kept=37, dropped=93, shape_hash b2e495b33b4a0a53) confirms this file's rule set now numbers 37 in-scope rules, one more than the 36 the inherited instance covered pre-this-pass. Maintainer/backing accept-notes reviewed in full before filing anything: the Part-1-one-slide-per-level directive (2026-08-14), the three-beat Moves-you-up seam spec (2026-08-19), the deliberate M5-reveal give-away note, and the diagram-duplicate-of-the-gate-is-a-claim.md note all authorise passages a naive read would otherwise flag (early jargon, repeated diagram, the closing reveal) -- none contradicted, no false positive filed against any of them. One standing non-blocking finding carried forward unchanged: check_student_facing.md §4 (memory-vs-context register blur at L25/L43), independently re-verified this pass by re-reading L25 and L27 side by side in the current body.",
   "rules_evaluated": [
     {
       "compendium": "check_writing.md",
@@ -253,7 +253,16 @@
       "rule_index": 26,
       "rule_lead": "A sentence saying how you'd know points at the outcome, not the nearest artifact.",
       "verdict": "PASS",
-      "evidence": "grep -inE 'tells you whether|you.ll know|you know it worked|you.ll know when' over body -> 0 hits, exit 1. The rewritten L56 clause reports a practitioner's own self-assessment, not a self-witnessing how-you would-know claim about the page's own mechanism.",
+      "evidence": "DRIFT RE-READ this pass (rule wording pulled fresh via rule.js writing 26, unchanged in substance since prior instance). grep -inE 'tells you whether|you.ll know|you know it worked|you.ll know when' over body -> 0 hits, exit 1. Read every 'held by <holder>' clause (L15,21,27,33,39) against the diagnostic ('what would have to be observed for this to be false?'): each names an external, falsifiable holder (a test run, done-evidence, durable files an agent can read cold, a check you wrote, calibration/checking-the-checks) rather than the artifact witnessing itself. L52's own definition of Calibration ('whether trust in the result was earned by a gate you have verified') is this rule's own diagnostic restated as body content -- the page's central thesis is an extended instance of the rule, not a violation of it. The rewritten L56 clause reports a practitioner's own self-assessment, not a self-witnessing how-you-would-know claim about the page's own mechanism.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 27,
+      "rule_lead": "Say it once, at its most concrete, then at most one sentence that generalises it. Style, not a gate.",
+      "verdict": "PASS",
+      "evidence": "New rule (landed 2026-08-29, not present in the inherited instance -- this file predates it and was not part of the M1-M5 compaction pass the rule's changelog names). Closest candidate: L43 'You improve the context, memory, skills, and verification that make every subsequent session stronger. Every fix that becomes a rule and every check that becomes a gate raises the floor of all future work.' Checked against the abstract-twin shape (concrete instance, then an abstract restatement at a different altitude, cut the abstract): the order here runs the other way -- sentence 1 names generic capability nouns (context, memory, skills, verification) and sentence 2 supplies the training's own concrete artifact vocabulary (rule, gate), which is new information (§30's theory-spine echo) rather than a re-statement of sentence 1 at higher abstraction. L56's 'he kept output volume and delivered value on separate axes' likewise reads as a connective clause tying the anecdote back to the reach/calibration axis established at L53, not a redundant restatement. No (b) restating-an-adjacent-element, (c) widening-qualifier, or (d) second-announcement instances found elsewhere in body.",
       "fix_hint": null,
       "blocking": false
     },

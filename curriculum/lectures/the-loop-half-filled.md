@@ -64,7 +64,7 @@
 
 **Artifact contract (Family B):** per named law → {NAME · MAP-POSITION · MECHANISM · GOVERNOR}. Each law bullet now carries name + map position + mechanism recoverable from the slide alone; the governor slide carries the one near-half governor. Judge against `theory-evals.md` B★ (durability-without-voice) and B2 (dose — flag the kept-5 verdict to the judge).
 
-**Attribution discipline:** names stay maintainer-side throughout. M3's student-side attribution budget is spent in `skills-from-the-frontier.md` (`check_writing.md` #11), so no practitioner is credited in this body. Full provenance, stamps and the limits on each borrow live in the backing block below — read it before re-crediting any law here; the stamps carry each borrow's limits, including two `result:CORRECTED` entries.
+**Attribution discipline:** names stay maintainer-side throughout. M3's student-side attribution budget is spent in `skills-from-the-frontier.md` (`check_writing.md` #11), so no practitioner is credited in this body. Full provenance, stamps and the limits on each borrow live in the backing block below — read it before re-crediting any law here; the stamps carry each borrow's limits, and two of them (`argyris-schon`, `google-beyondprod`) fold earlier misattribution fixes into their re-verified entries.
 
 **Delivery mode:** In-room close, projected. The map with the near half filled in IS the slide.
 
@@ -76,8 +76,8 @@
 
 - Family B judged 2026-07-03: B-star durability PASS — every law recovers NAMED·PLACED·MECHANISM from the slide alone and the governor is executable/generative; spine holds (Intent filled by the governor, no empty phase) and the kept-5 dose reads as recognition, not a pile.
 
-**Quality:** compendium-audited 2026-08-28 (writing@0e4f7c9e story@0e4f7c9e technical@8cc00874 behavior@1c765f2 pedagogy@77991802 strategy@1c765f2 slides@0e4f7c9e)
-- judges @8cc00874: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-29 (writing@4a722813 story@0e4f7c9e technical@8cc00874 behavior@1c765f2 pedagogy@77991802 strategy@1c765f2 slides@0e4f7c9e)
+- judges @4a722813: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 <!-- backing -->
 

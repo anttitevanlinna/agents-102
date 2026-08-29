@@ -120,8 +120,8 @@ Then just hit stop.
 
 **What-you-build states the activity only; the second read's value claim lands at the P5 compare beat (maintainer call 2026-08-02).** Line 7 names what the walk-down IS — *three questions at a time* — not what it catches. The claim *catches the branches you can't see* is near-verbatim P5's own expected finding (*"branches you didn't notice"*), so stating it in the opener turns the compare beat into confirmation instead of discovery. It is not cut from the file, it is placed: it lives post-action in *Compare what each read caught*, which is where §53 wants it. Both halves of the compare now stay unstated in the opener. **This reverses an earlier §53 partial-accept** that kept the clause at line 7 as the hook selling the walk-down — do not restore it there.
 
-**Quality:** compendium-audited 2026-08-29 (writing@d065f8bc story@d065f8bc technical@17446703 behavior@394a896b pedagogy@d065f8bc strategy@1c765f2 slides@d065f8bc)
-- judges @17446703: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-29 (writing@4a722813 story@d065f8bc technical@17446703 behavior@394a896b pedagogy@d065f8bc strategy@1c765f2 slides@4a722813)
+- judges @4a722813: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply + Analyze + Evaluate (the compare-the-two-reads beat at P5 is the Evaluate beat)
 - **No agent-wait charge.** P4 blocks on the student, and P2's plan-mode wait carries no other budgeted beat — nothing shares those minutes.

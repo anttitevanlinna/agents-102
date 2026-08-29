@@ -204,7 +204,7 @@ Approving exits plan mode and switches the session into whichever permission mod
 
 **Read the plan somewhere you can actually read it.** `Ctrl+G` opens the proposed plan in your default text editor, and edits you make there carry into what Claude executes.
 
-**Exit without executing:** Shift+Tab again, or mode dropdown.
+**Exit without executing:** keep cycling with Shift+Tab (the same toggle that entered plan mode: the next press lands on `default`, or on your first enabled optional mode), or pick a mode from the dropdown.
 
 **AE101 cross-refs:** M2 exercise `push-back-on-the-plan.md` teaches the two-read pattern (human push-back → Pocock `grill-me` second-pass → approve). M1 deliberately runs without plan mode (trivial bug doesn't earn it).
 
@@ -391,6 +391,8 @@ Your current session knows its own transcript. The `CLAUDE_CODE_SESSION_ID` envi
 If you arrive at a session with no recorded path, you can still find its transcript by recency. Ask Claude to locate and read it; expect a narration before the findings, skim past the opening to the numbered list.
 
 ## 27. Session transcripts: prompt to locate and read a transcript
+
+Have the agent find the last session's transcript, read it, and check its story against git:
 
 **Prompt** *(Claude Code)*
 
@@ -645,7 +647,7 @@ Docs: [memory.md § Troubleshoot memory issues](https://code.claude.com/docs/en/
 - **M2 Plan mode, done right:** §§ 9–10, plus Pocock `grill-me` skill as second-pass read
 <!--flag:module:earn-the-trust-->- **M3 Earn the trust:** §§ 11–12 (subagents), 13–15 (skills); first skill use + first authoring
 <!--/flag:module:earn-the-trust-->- **M4 Run the first experiment:** §§ 2 (personal compound target), 12 (subagent audit), 24 (session-left-running for un-packaged send-off), 25–29 (transcript as trace)
-- **M5 Learn from the test, re-send packaged:** §§ 10 (plan.md authoring), 13–15 (verifier as eval), 24 (send-off), 28 (read transcript plus git)
+- **M5 Learn from the test, re-send packaged:** §§ 10 (plan.md authoring), 13–15 (verifier as eval), 24 (send-off), 28 (read transcript plus git), 34–37 (hooks: the always-fire partition and the shell-hook verifier shape)
 <!--flag:module:spot-gaps-build-the-loop-->- **M6 Spot gaps, build the loop:** §§ 15 (second skill authoring), 17, 20 (long-running shapes callout in closer + Ralph→`/goal` story), 29 (compare two session transcripts)
 <!--/flag:module:spot-gaps-build-the-loop-->
 

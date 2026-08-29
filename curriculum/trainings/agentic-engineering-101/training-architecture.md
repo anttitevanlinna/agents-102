@@ -156,6 +156,93 @@ The default 2-day shape is M1–M3 / M4–M6 (the trainer handbook's Start here 
 
 ---
 
+## Compaction programme + barebones edition
+
+**Status: active, module by module.** Opened 2026-08-28. Two goals, and they turn out to be one
+rule. Notes are here rather than in `pre-cohort-todos.md` because this is structural work on the
+arc, not a pre-cohort punch list.
+
+**Why.** Theory should be skippable, and skipping is easiest after the exercise. So the target is
+the stretch before a module's first exercise: get the student's hands moving sooner, and let what
+survives be the thing the exercise actually needs.
+
+### Goal 1 — every module reaches its first exercise in under 15 minutes
+
+M3 does it in 10 with zero pre-exercise lecture slides, which is the proof it is reachable. Run
+`node scripts/calculate-time.js` for current numbers; do not retype them from here.
+
+| Module | to first exercise | module total (cap 120) |
+|---|---|---|
+| getting-going | 21m | 113 |
+| plan-mode-done-right | 24m | 123 — OVER by 3 |
+| earn-the-trust | **10m** | 112 |
+| run-the-first-experiment | 30m | 103 |
+| learn-from-the-test | 17m | 127 — OVER by 7 |
+| spot-gaps-build-the-loop | 26m | 113 |
+
+M5's overrun is at the back (35m of closers), not the front. A move is time-neutral against the
+cap; only a cut helps there.
+
+**The tell, and it repeats.** The last slide before an exercise is where authors put the bridge —
+*here is why this matters, here is what you are about to do*. It is nearly always cuttable, because
+the exercise IS the bridge: the agenda already lives in `## What You'll Learn`, and the meaning
+already lives in the module's closer. Diagnostic on any pre-exercise slide: **does it state a
+conclusion or hand over a tool?** A conclusion delivered before the student can test it is an
+assertion that costs minutes and buys nothing, and it spends the closer's payoff in advance.
+
+**Landed so far.** Three cuts, all the same shape, none of them tagged as theory:
+`the-wizard-move` § *The loop is what you repeat* (58e8a506) — previewed the loop-over-the-fix beat
+that `the-machine-you-just-met` lands after four exercises. `when-a-plan-is-good` § *Two reads,
+paired* (8cc00874) — key message kept, three sentences under `plan-mode-done-right` § Start here.
+`the-whole-map` § *You are here* (3f219e43) — arc-positioning that `the-loop-half-filled` (M3
+close) already lands as lived ground; beat survives as trainer narration in that file's maintainer
+block.
+
+**Open, carded, awaiting a call:** the two `T2` slides closing `when-a-plan-is-good` (3.7m, M2), and
+`the-agent-loop` § *The agent, the harness, the loop* (M4). All three are the goal-2 violations below.
+
+### Goal 2 — a barebones edition without T2/T3 slides
+
+**The machinery exists; the tagging does not.** `site/layouts/slides.js` already defines the
+vocabulary and renders a badge plus a nav-rail class per tier:
+
+- **T1** — *Core; the work ahead depends on this slide*
+- **T2** — *Recognition; names what the room already did, skippable under time pressure*
+- **T3** — *Story / extra theory, skip freely*
+
+Coverage across the AE101 shared library as of 2026-08-29: **322 untagged, 30 T2, 8 T3**, and ten
+files carry every tag. M3 has none. Hiding T2/T3 today removes a tenth of the deck, not the theory.
+The proof: all three slides cut above were untagged and would have survived a barebones cut intact.
+The tags currently mark which files got a tier pass, not which slides are skippable.
+
+**T2's definition is goal 1 in different words.** A slide that *"names what the room already did"*
+cannot sit before the exercise — the room has not done it yet. So a `T2` before a module's first
+exercise is a category error, and it is greppable. Exactly three exist (the open cards above).
+
+**Three steps, in order:**
+
+1. **Audit, do not bulk-tag.** Untagged already means core in practice, so the work is finding the
+   mis-filed slides and tagging those, not labelling 322. Make the renderer treat absent as `T1`
+   explicitly instead of `null`, so untagged stops being a silent third state. Tag while cutting —
+   the T1/T2/T3 judgement is the same judgement the cut requires, and splitting it into a separate
+   sweep means making it twice.
+2. **Runtime toggle, not a build variant.** `buildToggle` already exists for the long-read/slides
+   switch. A tier filter keeps one artifact serving both audiences and lets a trainer drop theory
+   mid-session, which is what `## Freedom to choose` already promises the room.
+3. **Lint it.** *No T2/T3 slide before a module's first exercise* makes goal 1 self-enforcing
+   instead of re-derived per module.
+
+**Naming hazard.** "Tier" already means three unrelated things in this repo: slide tiers here, file
+priority in `curriculum/evals/slide-sweep.md`, and rule-index tiers T0–T3 in
+`.claude/rules/content-rules.md`. Do not mint a fourth sense for the barebones edition.
+
+**Tooling note.** `scan-stale-classes.js` was fail-open on exactly this work until 2026-08-28
+(58e8a506): a body cut ending at the maintainer fence anchored onto the fence and staled nothing, so
+deleting a whole `##` slide reported clean. Fixed and regression-tested. Cuts made before that date
+may carry unjudged classes.
+
+---
+
 ## Future TODO, Gemini CLI as alternate runtime
 
 **Status: planned, not shipped.** Today AE101 body, prompts, paths, and the content tarball assume Claude Code. Adding Gemini CLI is a coordinated diff that lands as a unit, not piecemeal. This section is the plan.

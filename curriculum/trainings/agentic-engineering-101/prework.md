@@ -50,16 +50,16 @@ You can also download manually from [the cohort URL](<CONTENT_URL>) to `~/Downlo
 
 ## 4. Extract the bundle and install the curated skills
 
-Mechanical setup. Claude needs to write outside the repo (`~/Documents/ae101-content/` and `~/.claude/skills/`); approve the permission prompts when they fire.
+Mechanical setup. The agent needs to write outside the repo (`~/Documents/ae101-content/` and `~/.claude/skills/`); approve the permission prompts when they fire.
 
 {{prompt:ae101-prework-extract-and-install}}
 
 <!--/flag:payload-->
 ## 5. Pick a trivial bug and confirm Module 1 readiness
 
-Now the interactive step. Claude walks three trivial bug candidates from your repo's backlog, helps you pick one, then confirms the repo can test, branch, commit, and open a PR.
+Now the interactive step. The agent walks three trivial bug candidates from your repo's backlog, helps you pick one, then confirms the repo can test, branch, commit, and open a PR.
 
-When Claude gets to the bug screen, push back if it dumps all four criteria at once. One bug at a time, then the next. Trivial means a few lines here and there, not a multi-file refactor.
+When the agent gets to the bug screen, push back if it dumps all four criteria at once. One bug at a time, then the next. Trivial means a few lines here and there, not a multi-file refactor.
 
 {{prompt:ae101-prework-screen-and-ready}}
 

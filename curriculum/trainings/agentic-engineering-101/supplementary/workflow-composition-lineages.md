@@ -10,7 +10,7 @@ Reading rules for this supplementary:
 
 2. **The map is partial.** There are almost certainly other named frameworks this walk never reached. It is a starting map drawn from a small sample of practitioners the AE101 research surfaced in May 2026. New frameworks ship monthly. Treat the walk as a way to read the field, not as an exhaustive index of what exists.
 
-3. **Quote with care.** Synthetic framings ("phase pipeline", "rails not chains") that circulated on third-party write-ups have been removed where the original practitioner did not publish them. The cost: less aphoristic body prose. The benefit: a student or trainer who looks up a quote will actually find it where the supplementary says it lives.
+3. **Quote with care.** Synthetic framings ("phase pipeline", "rails not chains") that circulated on third-party write-ups have been removed where the original practitioner did not publish them. A student or trainer who looks up a quote will find it where the supplementary says it lives.
 
 ## Compound Engineering, Kieran Klaassen
 

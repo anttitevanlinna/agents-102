@@ -74,7 +74,7 @@ Optional. Do them and Module 2's moves land as things you've already seen.
 
 **Read:** [The agentic engineering progression](trainings/agentic-engineering-101/supplementary/agentic-engineering-progression.md). The progression from using AI for assistance to improving the system behind every session, followed by a model of reach and calibrated trust.
 
-**Read:** Dex Horthy, [Why Software Factories Fail](https://github.com/humanlayer/advanced-context-engineering-for-coding-agents/blob/main/wsff.md) (HumanLayer). Tests tell you in seconds whether the code passes; bad architecture bills you over months, and no benchmark scores a model on keeping a codebase maintainable. The cure he lands on is human review made affordable by upfront planning, which is where Module 2 goes next.
+**Read:** Dex Horthy, [Why Software Factories Fail](https://github.com/humanlayer/advanced-context-engineering-for-coding-agents/blob/main/wsff.md) (HumanLayer). Tests tell you in seconds whether the code passes; bad architecture bills you over months, and no benchmark scores a model on keeping a codebase maintainable. The cure he lands on is human review made affordable by upfront planning.
 
 **Watch:** Boris Cherny, [Mastering Claude Code in 30 minutes](https://www.youtube.com/watch?v=6eBSHbLKuN0). Cherny walks through how he and the team actually use the tool: plan mode, verification loops, parallel worktrees, `CLAUDE.md` compounding, slash commands, subagent map-reduce, the finish-the-migration rule. The moves of Agentic Engineering 101 (AE101 from here on) show up here first as one person's working rhythm.
 

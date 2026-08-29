@@ -46,7 +46,7 @@ Treat these as your defaults. The first two are about what you let in.
 
 The rest are about what you do with the work once it's in front of you.
 
-**Subagent as a firewall.** A noisy investigation (read twenty files, run a few commands, trace a config) doesn't have to land in your own window at all. There is a way to hand it off and get back only the answer, at a price worth knowing before you reach for it. You'll meet it properly, mechanism and trade-off both, in Module 3.
+**Subagent as a firewall.** A noisy investigation (read twenty files, run a few commands, trace a config) doesn't have to land in your own window at all. There is a way to hand it off and get back only the answer, at a price worth knowing before you reach for it.
 
 **Route by complexity, not price.** A mechanical sub-task (rename across files, pull a list, format some output) does not need your strongest model. Send it to a smaller, faster one and keep the heavy model for the reasoning. A cheap model on a hard task is the expensive mistake.
 

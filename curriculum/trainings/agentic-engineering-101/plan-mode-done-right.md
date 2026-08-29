@@ -68,7 +68,7 @@ Optional. The security frame Module 3 works in.
 
 Optional. The thinking Module 4 asks you to do before you step away from a session.
 
-**Read:** Lucas F. da Costa, [Backpressure Is All You Need](https://www.lucasfcosta.com/blog/backpressure-is-all-you-need) (May 2026). Da Costa carries a word out of flow systems and into agent work: when generation outruns judgment, the human becomes the stage everything else waits on. Module 4 sends off a session that runs without you watching, which is where you meet that limit yourself.<!--/flag:no-module:earn-the-trust-->
+**Read:** Lucas F. da Costa, [Backpressure Is All You Need](https://www.lucasfcosta.com/blog/backpressure-is-all-you-need) (May 2026). Da Costa carries a word out of flow systems and into agent work: when generation outruns judgment, the human becomes the stage everything else waits on.<!--/flag:no-module:earn-the-trust-->
 
 ## Next
 

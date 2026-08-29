@@ -51,7 +51,7 @@ Close a session, delete the worktree when the branch is merged:
 git worktree remove ../repo-bug-fix
 ```
 
-## Stashing and switching between sessions
+## Stashing, switching, and small recoveries between sessions
 
 Sometimes one session's in-flight work needs to show up in another. A helper function you wrote in the bug-fix session is exactly what the feature session needs.
 

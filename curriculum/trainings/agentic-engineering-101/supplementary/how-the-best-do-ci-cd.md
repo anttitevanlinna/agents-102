@@ -82,7 +82,7 @@ The arrow most orgs get backwards: feel the speed, panic, invest in more pre-mer
 
 ## Where this fits in your AE101 arc
 
-The loop at your desk is the one this training closed:<!--flag:module:spot-gaps-build-the-loop--> spot the gap, build the eval, close the loop on your own code.<!--/flag:module:spot-gaps-build-the-loop--><!--flag:no-module:spot-gaps-build-the-loop--> send the work off, read what comes back, build the packaging that catches what went wrong.<!--/flag:no-module:spot-gaps-build-the-loop--> This piece is the same loop, run by engineers who've been at it longer. The shift is not conceptual. The reader is still you. The shift is what each move makes possible once you stop treating CI, review, deploy, and customer signal as separate stages and start treating them as one loop with six tunable surfaces.
+The loop at your desk is the one this training closed:<!--flag:module:spot-gaps-build-the-loop--> spot the gap, build the eval, close the loop on your own code.<!--/flag:module:spot-gaps-build-the-loop--><!--flag:no-module:spot-gaps-build-the-loop--> send the work off, read what comes back, build the packaging that catches what went wrong.<!--/flag:no-module:spot-gaps-build-the-loop--> These engineers run the same loop; they've been at it longer. The shift is not conceptual. The reader is still you. The shift is what each move makes possible once you stop treating CI, review, deploy, and customer signal as separate stages and start treating them as one loop with six tunable surfaces.
 
 Pick one move. Run it this week.
 

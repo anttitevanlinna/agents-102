@@ -51,6 +51,15 @@ function gitTime(repo, rel) {
   } catch { return 0; }
 }
 
+// A stray a judge just wrote is usually untracked, and `git rm`/`git mv` refuse
+// untracked paths — the fix pass must fall back to fs so it never dies halfway.
+function tracked(repo, rel) {
+  try {
+    execFileSync('git', ['ls-files', '--error-unmatch', '--', rel], { cwd: repo, stdio: 'ignore' });
+    return true;
+  } catch { return false; }
+}
+
 // One instance → {ok} | {want} | {skip: reason}. Never throws on a bad file:
 // an unreadable instance is a finding, not a crash.
 function expectedName(repo, base, find) {
@@ -117,11 +126,13 @@ function applyFix(repo, drift) {
     });
     const [winner, ...losers] = srcs;
     for (const l of losers) {
-      execFileSync('git', ['rm', '-q', '--', `${REL_DIR}/${l.base}`], { cwd: repo });
+      if (tracked(repo, `${REL_DIR}/${l.base}`)) execFileSync('git', ['rm', '-q', '--', `${REL_DIR}/${l.base}`], { cwd: repo });
+      else fs.unlinkSync(path.join(dir, l.base));
       dropped.push({ base: l.base, want, lostTo: winner.base });
     }
     if (!winner.incumbent) {
-      execFileSync('git', ['mv', '--', `${REL_DIR}/${winner.base}`, `${REL_DIR}/${want}`], { cwd: repo });
+      if (tracked(repo, `${REL_DIR}/${winner.base}`)) execFileSync('git', ['mv', '--', `${REL_DIR}/${winner.base}`, `${REL_DIR}/${want}`], { cwd: repo });
+      else fs.renameSync(path.join(dir, winner.base), path.join(dir, want));
       renamed.push({ from: winner.base, to: want });
     }
   }
@@ -156,5 +167,5 @@ function main(argv) {
   return 0;
 }
 
-module.exports = { expectedName, scan };
+module.exports = { expectedName, scan, applyFix };
 if (require.main === module) process.exit(main(process.argv.slice(2)));

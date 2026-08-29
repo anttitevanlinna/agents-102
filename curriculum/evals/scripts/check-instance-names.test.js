@@ -5,7 +5,8 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const os = require('node:os');
 const path = require('node:path');
-const { expectedName } = require('./check-instance-names.js');
+const { execFileSync } = require('node:child_process');
+const { expectedName, applyFix } = require('./check-instance-names.js');
 const { linkFinder } = require('./scan-stale-classes.js');
 
 // A throwaway repo with one AE101 reference page, one Agents 101 module, and a
@@ -77,6 +78,61 @@ test('cross_module keeps set scope: module-set is inserted, never a surface type
   );
   write(repo, 'ae101--module-set--m3-m4.cross_module.json', {});
   assert.equal(expectedName(repo, 'ae101--module-set--m3-m4.cross_module.json', linkFinder(repo)).ok, true);
+});
+
+function gitify(repo) {
+  const g = (...args) => execFileSync('git', args, { cwd: repo, stdio: 'ignore' });
+  g('init', '-q');
+  g('config', 'user.email', 'test@test');
+  g('config', 'user.name', 'test');
+  g('config', 'commit.gpgsign', 'false');
+  return g;
+}
+
+// A judge that misfiles its verdict writes an UNTRACKED stray; `git rm`/`git mv`
+// refuse untracked paths, and a fix pass that dies halfway fixes nothing.
+test('--fix renames an untracked stray instead of crashing', () => {
+  const repo = fixture();
+  gitify(repo);
+  write(repo, 'eval-loop.writing.json', { file: path.join(repo, 'curriculum/exercises/eval-loop.md') });
+  const { renamed, dropped } = applyFix(repo, [
+    { base: 'eval-loop.writing.json', want: 'agents-101--exercise--eval-loop.writing.json' },
+  ]);
+  assert.equal(renamed.length, 1);
+  assert.equal(dropped.length, 0);
+  assert.ok(fs.existsSync(path.join(repo, 'curriculum/evals/instances/agents-101--exercise--eval-loop.writing.json')));
+  assert.ok(!fs.existsSync(path.join(repo, 'curriculum/evals/instances/eval-loop.writing.json')));
+});
+
+test('--fix still routes tracked files through git so history follows the rename', () => {
+  const repo = fixture();
+  const g = gitify(repo);
+  write(repo, 'eval-loop.writing.json', { file: path.join(repo, 'curriculum/exercises/eval-loop.md') });
+  g('add', '-A');
+  g('commit', '-qm', 'seed');
+  const { renamed } = applyFix(repo, [
+    { base: 'eval-loop.writing.json', want: 'agents-101--exercise--eval-loop.writing.json' },
+  ]);
+  assert.equal(renamed.length, 1);
+  const ls = execFileSync('git', ['ls-files', '--', 'curriculum/evals/instances'], { cwd: repo, encoding: 'utf8' });
+  assert.match(ls, /agents-101--exercise--eval-loop\.writing\.json/);
+  assert.doesNotMatch(ls, /instances\/eval-loop\.writing\.json/);
+});
+
+test('--fix drops an untracked loser to a tracked incumbent without git rm crashing', () => {
+  const repo = fixture();
+  const g = gitify(repo);
+  write(repo, 'agents-101--exercise--eval-loop.writing.json', { file: path.join(repo, 'curriculum/exercises/eval-loop.md') });
+  g('add', '-A');
+  g('commit', '-qm', 'seed');
+  write(repo, 'eval-loop.writing.json', { file: path.join(repo, 'curriculum/exercises/eval-loop.md') });
+  const { renamed, dropped } = applyFix(repo, [
+    { base: 'eval-loop.writing.json', want: 'agents-101--exercise--eval-loop.writing.json' },
+  ]);
+  assert.equal(renamed.length, 0);
+  assert.equal(dropped.length, 1);
+  assert.ok(!fs.existsSync(path.join(repo, 'curriculum/evals/instances/eval-loop.writing.json')));
+  assert.ok(fs.existsSync(path.join(repo, 'curriculum/evals/instances/agents-101--exercise--eval-loop.writing.json')));
 });
 
 // A gate that crashes on one bad file audits nothing. Every underivable case

@@ -41,13 +41,15 @@ Every module after this leans on the memory you just built. Multi-agent systems 
 
 Back in Phase 1 you asked Claude to flag pages a competitor could write about themselves. Phase 3 sharpened them. That's the discipline: if the answer to *"could a competitor claim this?"* is ever yes, the memory is growing but not compounding.
 
-Ask Claude to spot the still-generic pages in the memory you built and propose what would sharpen each.
+Spot what's still generic and sharpen it.
 
 {{prompt:compounding-1}}
 
 Claude comes back with three pointed requests. Answer one. Let it update the page. The memory just got a fourth round of compounding. You steer; the system maintains; the loop runs.
 
 <!-- maintainer -->
+
+**Pre-prompt lead-in trimmed to the action (2026-08-29, Antti-directed).** *"Ask Claude to spot the still-generic pages in the memory you built and propose what would sharpen each"* previewed `compounding-1` clause for clause (*pick the three topic pages that are still the most generic* / *what specific source would sharpen it most*). Now `Spot what's still generic and sharpen it.` **The test a lead-in has to pass: does it tell you to run the prompt, or tell you what the prompt says?** The first is a speech act aimed at the human and the prompt cannot perform it; the second is the prompt's own text, addressed to the only reader who acts on it. Keep the verb, drop the preview. Do not restore the detail — the prompt carries it, and the paragraph below carries what to do with the answer.
 
 **§6 carve-out, the answer must be theirs (checked 2026-08-20).** Logged in `pre-cohort-todos.md` as a lecture prompt owing the trainer-demo sweep. It is not: the prompt reads *"Look at the memory I just built"* and *"pull the missing insight out of my head"* — the student's own memory pages and the student's own head. A trainer demo returns the wrong machine's answer. The body now names the student's own memory beside the prompt, which is §6's tell. Leave it student-run.
 

@@ -2,7 +2,7 @@
 
 ## Every task maps onto the same six phases
 
-Every piece of agentic work maps onto the same cycle. Six phases. The loops drawn across them all run the same shape, each wearing different work:
+Every piece of agentic work maps onto the same cycle. The loops drawn across them all run the same shape, each wearing different work:
 
 {{figure:map-engine}}
 
@@ -58,7 +58,7 @@ The phases are places, not a pipeline. A real task sits in several at once.
 Format → `curriculum/backing-format.md`.
 
 **Claims**
-- `six-phase-cycle` · borrowed · "Every piece of agentic work maps onto the same cycle. Six phases." ← groundwork-value-cycle, willison-subagents, cursor-scaling-agents, karpathy-sequoia, klaassen-expanded-loop
+- `six-phase-cycle` · borrowed · "Every piece of agentic work maps onto the same cycle." ← groundwork-value-cycle, willison-subagents, cursor-scaling-agents, karpathy-sequoia, klaassen-expanded-loop
 - `loops-run-one-shape` · borrowed · "The loops drawn across them all run the same shape, each wearing different work" ← cultural-vocab, osmani-software-factories, willison-what-is-agentic-engineering
 - `intent-names-done-first` · vision · "Which task, and what done means, before a single step runs." ← none-owed
 - `context-system-or-guess` · vision · "The files, rules, and memory that decide whether it acts on your system or on a guess about your system." ← none-owed

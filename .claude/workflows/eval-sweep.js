@@ -49,6 +49,21 @@ const SETS = input.sets || []         // [{training, name, members:[rel...]}]
 // Defaults preserve historical behavior: judges on sonnet, refuters inherit the session model.
 const MODELS = Object.assign({ judge: 'sonnet', refute: null }, input.models || {})
 
+// The slug reaches the dispatched prompt verbatim as the instance path the
+// judge overwrites, so a bare or missing slug becomes a stray file beside the
+// canonical one — two files, one truth (wave 7, push-back-on-the-plan wrote
+// `push-back-on-the-plan.technical.json` from a hand-built confirm item).
+// Canonical is always `<training>--<surface-type>--<name>`; refuse anything
+// else BEFORE spending a judge on it. Queue items may omit instanceSlug (the
+// no-slug path has its own handling); a supplied one must still be canonical.
+const CANON = /^[a-z0-9-]+--[a-z0-9_-]+--[a-z0-9-]+$/
+for (const c of CONFIRM) {
+  if (!c.slug || !CANON.test(c.slug)) throw new Error(`confirm item for ${c.file}: ${JSON.stringify(c.slug)} is not a canonical instance slug (<training>--<type>--<name>)`)
+}
+for (const it of ITEMS) {
+  if (it.instanceSlug && !CANON.test(it.instanceSlug)) throw new Error(`item ${it.file}: ${JSON.stringify(it.instanceSlug)} is not a canonical instance slug (<training>--<type>--<name>)`)
+}
+
 // Evidence mode. `lean` (the default) is not a relaxation of the completeness
 // contract — the ledger still carries one row per rule. It moves who WRITES the
 // rows nothing turns on. Measured off the instances: average rows per instance

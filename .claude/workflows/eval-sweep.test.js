@@ -70,6 +70,29 @@ test('nothing is missing when every unit returns — sets included', async () =>
   assert.deepEqual(out.missing, []);
 });
 
+// Wave 7, push-back-on-the-plan: a hand-built confirm item carried the bare
+// slug, the dispatched judge obediently wrote `push-back-on-the-plan.technical
+// .json` beside the canonical `ae101--exercise--…` — two files, one truth. The
+// slug reaches the prompt verbatim, so the only safe place to stop it is
+// before dispatch.
+test('a confirm item with a bare slug is refused before any judge is dispatched', async () => {
+  const calls = [];
+  const spy = async (p, o) => { calls.push(o.label); return cleanJudge(p, o); };
+  const bad = { confirm: [{ file: 'curriculum/exercises/push-back-on-the-plan.md', slug: 'push-back-on-the-plan', cls: 'technical', finding: 'f', applied: 'a', checks: [] }] };
+  await assert.rejects(run(bad, spy), /not a canonical instance slug/);
+  assert.equal(calls.length, 0);
+});
+
+test('a confirm item with no slug is refused, not written to instances/undefined', async () => {
+  const bad = { confirm: [{ file: 'curriculum/lectures/l.md', cls: 'technical', finding: 'f', applied: 'a', checks: [] }] };
+  await assert.rejects(run(bad, cleanJudge), /not a canonical instance slug/);
+});
+
+test('a queue item with a non-canonical instanceSlug is refused the same way', async () => {
+  const bad = { items: [{ file: 'curriculum/exercises/e.md', instanceSlug: 'e', classes: ['writing'], detail: {}, pins: {}, driftRules: {} }] };
+  await assert.rejects(run(bad, cleanJudge), /not a canonical instance slug/);
+});
+
 test('a unit that dies is named, and only that unit', async () => {
   const oneDies = async (prompt, opts) => ((opts.label || '') === 'cross_module:m4-m5-m6' ? null : cleanJudge(prompt, opts));
   const out = await run(ARGS, oneDies);

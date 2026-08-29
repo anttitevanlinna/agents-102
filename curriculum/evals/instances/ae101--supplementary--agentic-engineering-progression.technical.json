@@ -1,9 +1,9 @@
 {
   "class": "technical",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/supplementary/agentic-engineering-progression.md",
-  "body_sha": "f884138e03f084c5ffb991ca020a1b322b26f47dab2820f9cbb79dacbbd0181d",
+  "body_sha": "2ae16d3e35918fc797890c32a5d2750aaeb24d5cfef1874ba8e04b92dd652abd",
   "shape_hash": "b2e495b33b4a0a53",
-  "verdict": "REVISE",
+  "verdict": "PASS",
   "training": "ae101",
   "rules_evaluated": [
     {
@@ -613,17 +613,17 @@
       "compendium": "check_research_claims.md",
       "rule_index": 1,
       "rule_lead": "Source URL + type label — mandatory (scope: maintainer-block only).",
-      "verdict": "REVISE",
-      "evidence": "DRIFT RECHECK against new body_sha f884138e (prior body ea08e019df88 carried an axis-less \"three to four times\" multiplier flagged blocking under rule 12 below; that multiplier is now cut from body, per the maintainer note this is a confirmation run for). URL+label presence is still clean on this rule's own terms: both Sources lines (96-97 in the current file) carry a clickable URL and `[practitioner direct, commercial interest]`, correctly scoped out of body per this rule's maintainer-block-only clause. But the fix broke the ledger sitting beside those Sources lines. Ran `node scripts/validate-backing.js curriculum/trainings/agentic-engineering-101/supplementary/agentic-engineering-progression.md` this session; real output: 1 error — \"curriculum/trainings/agentic-engineering-101/supplementary/agentic-engineering-progression.md:90 [ANCHOR-DRIFT] claim `wollsen-value-estimate` quotes a phrase absent from the body: 'three to four times the value of an average team, far below the multip…'\" (nonzero exit). Confirmed by direct read: the Claims-ledger row at line 90 still reads `wollsen-value-estimate · detail · \"three to four times the value of an average team, far below the multiple suggested by its pull-request count\" ← fred-throughput-account`, but current body line 56 reads \"By his own estimate, the value his four-engineer team delivered ran far below what its pull-request count alone would suggest — he kept output volume and delivered value on separate axes.\" The ledger's quoted anchor text is not a substring of the body at any line — confirmed via `grep -n \"three to four times\"` on the raw file: the only hit is line 90 itself, inside the backing block (count=1, not the 0 a clean body-only grep would need). Harm this rule's citation apparatus exists to prevent: a claim ledger that no longer traces to real body text is not a citation, it is an orphaned record — a future editor re-verifying sources against this ledger checks a number students never read, and the Sources entry immediately below it (line 97) already documents the multiplier as quarantined and 'stays out of body,' which the Claims entry above it now contradicts. Same shape as this section's own back-sweep-on-correction clause (a correction confined to one part of a record leaves it self-contradictory, worse than no catch, because a reader trusts the stale entry) — applied within this single file rather than across research-cycle files, but identical harm and identical fix discipline: the fix travels with the correction, same edit.",
-      "fix_hint": "Narrow lens only: either delete the `wollsen-value-estimate` Claims-ledger row entirely (the number it anchors is deliberately no longer a body claim, so it owes no citation row), or requote it to the sentence that actually replaced it (the axis-separation claim, body line 56) if the maintainer wants the ledger to keep tracking that idea under this key. Author reconciles which; this judge only flags the drift. Re-run `node scripts/validate-backing.js <file>` after — a clean exit is the acceptance bar.",
-      "blocking": true
+      "verdict": "PASS",
+      "evidence": "CONFIRMATION RECHECK at current body_sha 00ec1132 (commit 0cea7581, 'Wave-6 residue: ... the Claims row re-anchors ...'). This is the second-round check on the SAME defect a prior instance filed here as blocking (ANCHOR-DRIFT: the Claims-ledger row for `wollsen-value-estimate` still quoted the pre-fix body text — 'three to four times the value of an average team, far below the multiple suggested by its pull-request count' — after that multiplier had already been cut from the body under rule 12). Ran `node scripts/validate-backing.js curriculum/trainings/agentic-engineering-101/supplementary/agentic-engineering-progression.md` this session; real output: 'summary: 0 error · 0 warn · 11 info', exit 0 — the 11 info lines are all `[LAW-UNREACHED]` notices about theory-plan.md and name no claim in this file. Confirmed by direct read of the committed file: body line 56 reads '...the value his four-engineer team delivered ran far below what its pull-request count alone would suggest: he kept output volume and delivered value on separate axes.' and Claims-ledger line 90 reads '`wollsen-value-estimate` · detail · \"the value his four-engineer team delivered ran far below what its pull-request count alone would suggest\" ← fred-throughput-account' — the ledger's quoted text is now a verbatim substring of the body sentence. `git show 0cea7581 -- <file>` confirms the fix is exactly this: the ledger row's quoted anchor was swapped from the stale pre-cut phrase to the current body wording, nothing else in the row changed. `grep -c \"ran far below what its pull-request count alone would suggest\"` on the raw file returns 2 (line 56 body + line 90 ledger, matching each other) and `grep -c \"three to four times\"` returns 0. The Sources entry at line 97 already documents the multiplier as quarantined ('fallback: remove the numbers...'); the Claims row above it no longer contradicts that. Both Sources lines (96-97) still carry a clickable URL and `[practitioner direct, commercial interest]`, correctly scoped out of body per this rule's maintainer-block-only clause — unaffected by this fix, still clean.",
+      "fix_hint": null,
+      "blocking": false
     },
     {
       "compendium": "check_research_claims.md",
       "rule_index": "1a",
       "rule_lead": "OODA paraphrase != primary source.",
       "verdict": "PASS",
-      "evidence": "DRIFT RECHECK against new body_sha f884138e. Harm: a paraphrase drifting from what the practitioner actually said gets transcribed as the primary claim. Current body line 56 reads \"By his own estimate, the value his four-engineer team delivered ran far below what its pull-request count alone would suggest — he kept output volume and delivered value on separate axes.\" This is a faithful, and now strictly SAFER, compression of the primary post (WebFetched under the prior instance: \"My honest estimate is three to four times the value of an average team\" and \"the gap between those two numbers\" vs \"the ten or twenty times that the raw volume would suggest\") — the new body sentence drops the specific multiplier the prior instance flagged as axis-less (rule 12) and keeps only the qualitative, uncontested claim (volume and value sit on separate axes), which is not a drift risk in either direction.",
+      "evidence": "CONFIRMATION RECHECK at current body_sha 00ec1132 (commit 0cea7581). Harm: a paraphrase drifting from what the practitioner actually said gets transcribed as the primary claim. Current body line 56 reads \"By his own estimate, the value his four-engineer team delivered ran far below what its pull-request count alone would suggest: he kept output volume and delivered value on separate axes.\" (verbatim, colon not em-dash — corrected this pass). This is a faithful, and strictly SAFER, compression of the primary post (WebFetched: \"My honest estimate is three to four times the value of an average team\" and \"the gap between those two numbers\" vs \"the ten or twenty times that the raw volume would suggest\") — the body sentence drops the specific multiplier flagged as axis-less under rule 12 and keeps only the qualitative, uncontested claim (volume and value sit on separate axes), which is not a drift risk in either direction.",
       "fix_hint": null,
       "blocking": false
     },
@@ -1238,6 +1238,26 @@
       "evidence": "No fenced prompt blocks in this file at all (signals.has_prompt_blocks=false, fence_ranges=[]) — this rule governs mechanical correctness of fenced student-copied prompts, and there is no fence to check.",
       "fix_hint": null,
       "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 1,
+      "rule_lead": "Banned words — grep zero-tolerance.",
+      "verdict": "PASS",
+      "evidence": "mechanical: /\\b(delve|delving|honest|honestly|importantly|crucial|crucially|substrate|synergize|paradigm shift)\\b/ over body projection curriculum/evals/body-views/ae101--supplementary--agentic-engineering-progression.body.txt → 0 hits; pattern proven against planted violation.",
+      "fix_hint": "",
+      "blocking": false,
+      "prefilled": true
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 2,
+      "rule_lead": "Ritual / ceremony — hard ban in any curriculum/training surface.",
+      "verdict": "PASS",
+      "evidence": "mechanical: /\\b(ritual|rituals|ceremony|ceremonies)\\b/ over body projection curriculum/evals/body-views/ae101--supplementary--agentic-engineering-progression.body.txt → 0 hits; pattern proven against planted violation.",
+      "fix_hint": "",
+      "blocking": false,
+      "prefilled": true
     }
   ],
   "platform_claims_checked": [],
@@ -1272,7 +1292,7 @@
       "status_code": 200
     }
   ],
-  "blocking_findings_count": 1,
+  "blocking_findings_count": 0,
   "todos_count": 0,
   "resolution": {
     "settled": "fixed",

@@ -1,30 +1,20 @@
 {
   "class": "storytelling",
   "file": "curriculum/lectures/the-wizard-move.md",
-  "body_sha": "2afd1c048bea72fa90a7bf08742db9971e56ee81a79f384acb1fc05c30eb33bd",
+  "body_sha": "5e3fb497c0a8af9f27cc36f85dcc397614793070c060ddb6feaa246ee7eee992",
   "shape_hash": "1870b031fbe8c765",
   "verdict": "PASS_WITH_TODOS",
   "training": "ae101",
-  "module_mood_contract": "joyful creation — 'it works, on my repo' (getting-going.md Meta block; content-strategy-agentic-engineering-101.md M1 row)",
+  "module_mood_contract": "joyful creation — 'it works, on my repo' (getting-going.md Meta block L120; content-strategy-agentic-engineering-101.md M1 row)",
   "trace_status": "regenerated",
-  "trace_regeneration_reason": "Cached trace at curriculum/evals/sim-cache/ae101--lecture--the-wizard-move.persona.json had content_sha 97653529e78bab5a43107e03ced3159887739208ca8ff46322a40bfb6ac9d341, which does not match the current body sha (6fa62df7...). The stale trace narrated the 'Who this is for' section and the cardiologist third-session example, both cut in commit b1911175. Regenerated in this session against the current two-section, three-header body and rewritten to the same cache path.",
+  "trace_regeneration_reason": "Cached trace at curriculum/evals/sim-cache/ae101--lecture--the-wizard-move.persona.json had content_sha 6fa62df7025a6418fe05051e14b631a77e37e0b9458850ffb1dd3b917412f8c6, which grep proved stale: it narrated a third slide ('## The loop is what you repeat', closing on the loop-not-the-fix line and a forward-look naming the four exercises) that the pinned diff (d065f8bc..HEAD) removed outright. `grep -n \"loop is what you repeat\" curriculum/lectures/the-wizard-move.md` → 0 hits, run in this session. Regenerated against the current two-section, 16-line body (sha a5f693e569cac426bfdba2da3ba5e6b9805e55fd6625fed7844177121b63835e) and rewritten to the same cache path.",
   "rules_evaluated": [
     {
       "compendium": "check_lectures.md",
       "rule_index": "1",
       "rule_lead": "Meta-frame lectures = closers, not openers.",
       "verdict": "PASS",
-      "evidence": "Harm the rule prevents: telling a recognition beat before the student has lived the pattern flattens it into an abstract claim. Not present here — this file is a DEMO lecture showing a capability ceiling (context conditions the next answer), not a narrative naming a pattern the student already lived. Meta block L39: 'Placement: M1 opener, after Connections, before the exercise.' Body L1-9 opens directly on the two-session demo with no retrospective framing ('you just saw X; that was Y'). Rule's own diagnostic: 'Demo lectures showing a ceiling go at beginning' — this is exactly that shape, and the strategy doc (content-strategy-agentic-engineering-101.md L925) independently confirms 'Opener slot stays with the-wizard-move.md' against `how-this-training-was-built.md` as M1's actual closer.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_lectures.md",
-      "rule_index": "2",
-      "rule_lead": "Minimal lecturing before contrast-mood exercises.",
-      "verdict": "N/A",
-      "evidence": null,
-      "na_reason": "M1 is joyful-creation (content-strategy-agentic-engineering-101.md row 243), not a contrast-mood module; rule scoped to M5-style 'learn through doing, name it after' modules only.",
+      "evidence": "Harm the rule prevents: telling a recognition beat before the student has lived the pattern flattens it into an abstract claim. Not present here — this file is a DEMO lecture showing a capability ceiling (context conditions the next answer), not a narrative naming a pattern the student already lived. Meta block L33: 'Placement: M1 opener, after Connections, before the exercise.' Body L1-9 opens directly on the two-session demo with no retrospective framing ('you just saw X; that was Y'). Rule's own diagnostic: 'Demo lectures showing a ceiling go at beginning' — this is exactly that shape. getting-going.md L42/L52 independently confirms the current ordering: the-wizard-move.md listed as M1's opener lecture, the-machine-you-just-met.md as its closer (the loop-over-the-fix recognition beat now lives there, confirmed present at L44/L63 of that file — 'You just ran the same loop' / 'The loop is the shape. The bug today was the excuse.'). how-this-training-was-built.md, which the prior instance cited as the closer, no longer exists (dissolved, absorbed into the-machine-you-just-met.md per that file's own L75 maintainer note) — verified via `find curriculum -iname how-this-training-was-built.md` returning nothing.",
       "fix_hint": null,
       "blocking": false
     },
@@ -33,7 +23,7 @@
       "rule_index": "3",
       "rule_lead": "No cross-module sequencing in lecture bodies.",
       "verdict": "PASS",
-      "evidence": "Mechanical: `grep -nE 'M[0-9]' curriculum/evals/body-views/ae101--lecture--the-wizard-move.body.txt` (the 22-line body region, fences/maintainer already stripped) → exit 1, 0 hits, run in this session. No module numbering or forward-reference to a named module anywhere in body lines 1-22. Maintainer-block mentions of 'M2' (L28, L30) sit below the maintainer fence and are exempt by the rule's own scope (body-only).",
+      "evidence": "Mechanical: `grep -nE 'M[0-9]' curriculum/evals/body-views/ae101--lecture--the-wizard-move.body.txt` (the 16-line body region, maintainer already stripped) → exit 1, 0 hits, run in this session against the current body. No module numbering or forward-reference to a named module anywhere in body lines 1-15. The now-removed third section previously forward-referenced the exercises' own content in generic terms ('fix one trivial bug... log one decision... seed a rules file') without module numbers; that risk is moot now that the section is gone — the cut reduces front-run exposure rather than adding any. Maintainer-block mentions of 'M2' (L22, L24 in current file) sit below the maintainer fence and are exempt by the rule's own scope (body-only).",
       "fix_hint": null,
       "blocking": false
     },
@@ -42,7 +32,7 @@
       "rule_index": "4",
       "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
       "verdict": "PASS",
-      "evidence": "Three headers, none shared, none an empty container or orphan-mystery: L3 'Context is King' names the concept the whole demo argues; L11 'You steer the answer by loading context' is a claim (agency: you control the output); L17 'The loop is what you repeat' is a claim (the loop, not the fix, is the unit). Truth clause: each is licensed by its own section — L5-9 demonstrates the King claim live, L13-15 explains the mechanism the steering claim asserts, L19-21 explains the loop/fix distinction directly. Closest-to-violating line: 'The loop is what you repeat' (L17) could misread as an unsupported universal ('always true of any fix'), but the body never claims universality, only names what recurs; it stays inside the truth clause. No em-dashes, no pedagogy/contemplative register, no command-verb headers.",
+      "evidence": "Two headers now (the diff removed the third, 'The loop is what you repeat', along with its section): L3 'Context is King' names the concept the whole demo argues; L11 'You steer the answer by loading context' is a claim (agency: you control the output). Neither is an empty container, orphan-mystery, or orientation beat; no two slides share a header. Truth clause: each licensed by its own section — L5-9 demonstrates the King claim live, L13-15 explains the mechanism the steering claim asserts. Closest-to-violating line: L15 'The move is loading the right context before the question...' could misread as an unsupported universal, but it stays a discipline-name claim the body's own two paragraphs (L13-15) directly support, not an unqualified universal about all prompts. No em-dashes (view.json grep: 0 hits, planted_proof true), no pedagogy/contemplative register, no command-verb headers.",
       "fix_hint": null,
       "blocking": false
     },
@@ -51,27 +41,7 @@
       "rule_index": "5",
       "rule_lead": "A slide's BODY is size-bounded, not just its header (§4's sibling).",
       "verdict": "PASS",
-      "evidence": "Per-`##` word counts, computed in this session by splitting the raw body at `## ` headers and counting words excluding the header line: 'Context is King' = 104 words / 0 bullets; 'You steer the answer by loading context' = 58 words / 0 bullets; 'The loop is what you repeat' = 61 words / 0 bullets. All three well under the 210-word / 6-bullet ceiling; no fences or figures to exclude.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_lectures.md",
-      "rule_index": "6",
-      "rule_lead": "A prompt inside a lecture is a trainer show-and-tell, never a room follow-along.",
-      "verdict": "N/A",
-      "evidence": null,
-      "na_reason": "signal has_prompt_blocks: false, has_code_fences: false — file carries no {{prompt:}} marker and no fenced block of any kind.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_pedagogy.md",
-      "rule_index": "16",
-      "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
-      "verdict": "N/A",
-      "evidence": null,
-      "na_reason": "Lecture has no phases and no fenced prompts to check a forcing function against (has_prompt_blocks: false). The loop's actual forcing functions (tests-first, ticket-read, compound sweep) live in the exercise files (fix-tests-first.md, close-the-ticket.md, compound-and-close.md), which own this rule for their own bodies. L19-21 here previews what those exercises will ask, in the register of foreshadowing a lecture, not of enacting a forcing function itself.",
+      "evidence": "Per-`##` word counts, recomputed in this session against the current 2-section body by splitting the raw source at `## ` headers and counting words excluding the header line: 'Context is King' = 104 words / 0 bullets; 'You steer the answer by loading context' = 58 words / 0 bullets. Both well under the 210-word / 6-bullet ceiling; no fences or figures to exclude (signals has_prompt_blocks/has_figures both false).",
       "fix_hint": null,
       "blocking": false
     },
@@ -80,7 +50,7 @@
       "rule_index": "27",
       "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
       "verdict": "PASS",
-      "evidence": "Harm the rule prevents: authored conversation/pause cues turn a lecture into a scripted performance and steal the trainer's room-reading judgement. Not present — body has zero 'discuss with', 'share with your neighbor', or group-comparison sentences. Closest candidate: L7 'Take a guess before it runs. What does Claude suggest now?' — this is a rhetorical engagement device about the WORK (predicting the demo's outcome), not cohort management (pacing/comparing/sharing), and it is a documented maintainer accept-note ('Guess before reveal', L27) rather than a stray cue. Stays inside the rule.",
+      "evidence": "Harm the rule prevents: authored conversation/pause cues turn a lecture into a scripted performance and steal the trainer's room-reading judgement. Not present — body has zero 'discuss with', 'share with your neighbor', or group-comparison sentences, unchanged by this diff (the cut section was about the loop/fix distinction, not room management). Closest candidate: L7 'Take a guess before it runs. What does Claude suggest now?' — a rhetorical engagement device about the WORK (predicting the demo's outcome), not cohort management, and it is a documented maintainer accept-note ('Guess before reveal', L21) rather than a stray cue. Stays inside the rule.",
       "fix_hint": null,
       "blocking": false
     },
@@ -89,7 +59,7 @@
       "rule_index": "1",
       "rule_lead": "Mood contract named.",
       "verdict": "PASS",
-      "evidence": "M1's deliberate mood is joyful creation — 'it works, on my repo' (content-strategy-agentic-engineering-101.md row 243; getting-going.md Meta block L120). This file is the opener, so its job is to ARM that mood rather than fully deliver it (per check_lectures §2's opener/closer distinction, applied by analogy even though M1 isn't contrast-mood): the demo primes curiosity and a working mental model without pre-empting the felt payoff the exercises deliver. Trace phase 1 + close both score mood_score 9 against the joyful-creation contract (curriculum/evals/sim-cache/ae101--lecture--the-wizard-move.persona.json, regenerated this session) — nothing here flattens or resolves the mood early.",
+      "evidence": "M1's deliberate mood is joyful creation — 'it works, on my repo' (getting-going.md L120 Meta block; content-strategy-agentic-engineering-101.md M1 row). As opener, this file's job is to ARM that mood rather than fully deliver it: the demo primes curiosity and a working mental model without pre-empting the felt payoff the exercises deliver. Regenerated trace (this session, content_sha a5f693e5..., matches current body) scores mood_score 9 at phase 1 and at close against the joyful-creation contract — nothing in the shorter, two-section body flattens or resolves the mood early; the trace explicitly notes the tighter close doesn't cost anything felt.",
       "fix_hint": null,
       "blocking": false
     },
@@ -98,7 +68,7 @@
       "rule_index": "2",
       "rule_lead": "Epistemic mood ≠ punitive mood.",
       "verdict": "PASS",
-      "evidence": "The file's own hedge ('But not as reliably,' L9) reads as not-knowing/curiosity ('this doesn't always work the way you'd predict') rather than having-done-wrong. No line frames the reader's own prior sessions as a mistake; the tone throughout (L11-15, L19-21) is capability-framing ('you steer the answer'), never a correction of something the student did badly.",
+      "evidence": "The file's own hedge ('But not as reliably,' L9) reads as not-knowing/curiosity rather than having-done-wrong; unaffected by the diff, which touched only the removed third section. No line frames the reader's own prior sessions as a mistake; the tone throughout (L11-15) is capability-framing ('you steer the answer'), never a correction of something the student did badly.",
       "fix_hint": null,
       "blocking": false
     },
@@ -107,7 +77,7 @@
       "rule_index": "3",
       "rule_lead": "Lead with discipline, not failure mode.",
       "verdict": "PASS",
-      "evidence": "Title 'The wizard move' and all three body headers (L3, L11, L17) are discipline-named, not failure-named ('The wizard move' / 'Context is King' / 'You steer the answer by loading context' / 'The loop is what you repeat'). No slide is titled after a failure mode (e.g. no 'Context drift' or 'Forgetting to load context').",
+      "evidence": "Title 'The wizard move' and both remaining body headers (L3, L11) are discipline-named, not failure-named ('Context is King' / 'You steer the answer by loading context'). No slide is titled after a failure mode. The removed third header ('The loop is what you repeat') was also discipline-named, so the cut doesn't change this rule's verdict either way.",
       "fix_hint": null,
       "blocking": false
     },
@@ -116,37 +86,7 @@
       "rule_index": "4",
       "rule_lead": "Strategy-fidelity check.",
       "verdict": "PASS",
-      "evidence": "Consolidated facets checked: (a) front-run — body names no map (maintainer L30 'Zero map references' honored; body has zero mentions of a map), no plan mode (maintainer L28 honored; body never mentions plan mode), and grep for M[0-9] returned 0 hits (see check_lectures §3 row) — M2's plan-mode teaching moment and the M2 map-reveal both stay unspent. (b) Big Idea fidelity — M1's Big Idea (getting-going.md L6: 'Your first session should leave something behind that the next one can use') is honored by L19 'Seed a rules file your next session reads first,' the same idea in the lecture's own voice, without restating it verbatim. (c) module-to-module arc — N/A facet for this specific file: the-wizard-move.md is M1's OPENER, not its close (how-this-training-was-built.md is M1's closer per content-strategy row 925), so there is no close-to-next-module handoff for this file to carry; the facet is satisfied by the fact that nothing here reaches forward into a later module's beat. (d) mood-doesn't-resolve-early — joyful-creation mood is meant to fire early at M1's open, so there is no premature-resolution risk of the kind the rule guards against for later-arc unease modules.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": "5",
-      "rule_lead": "Strategic themes recur in Key Concepts.",
-      "verdict": "N/A",
-      "evidence": null,
-      "na_reason": "Lecture file, no `## Key Concepts` section (module-only heading; owned by getting-going.md's Key Concepts, which does carry the compounding/context themes).",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": "6",
-      "rule_lead": "Key Concepts shape — theme breadcrumbs, not standalone section.",
-      "verdict": "N/A",
-      "evidence": null,
-      "na_reason": "Lecture file, no `## Key Concepts` section.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": "7",
-      "rule_lead": "What You'll Learn shape — capability register, not syllabus.",
-      "verdict": "N/A",
-      "evidence": null,
-      "na_reason": "Lecture file, no `## What You'll Learn` section (module-only heading).",
+      "evidence": "Consolidated facets checked against the current body: (a) front-run — body names no map (maintainer L24 'Zero map references' honored; body has zero mentions), no plan mode (maintainer L22 honored; body never mentions plan mode), M[0-9] grep 0 hits (see check_lectures §3 row). The cut removed the section that most closely approached front-running (its 'fix one trivial bug... log one decision... seed a rules file' line generically previewed the exercises), so front-run exposure is now lower than before, not higher. (b) Big Idea fidelity — M1's Big Idea (getting-going.md L6: 'Your first session should leave something behind that the next one can use', verified this session) is honored by L15 'The move is loading the right context before the question' — the lecture's own voice on the same idea, without restating it verbatim; the previous instance's citation to L19 ('Seed a rules file...') no longer exists in the body, but L15 alone still carries the fidelity. (c) module-to-module arc — N/A facet for this file: the-wizard-move.md is M1's opener, confirmed by getting-going.md L42, not its close (the-machine-you-just-met.md, L52), so there is no close-to-next-module handoff for this file to carry. (d) mood-doesn't-resolve-early — joyful-creation mood is meant to fire early at M1's open; no premature-resolution risk of the kind the rule guards against for later-arc unease modules.",
       "fix_hint": null,
       "blocking": false
     },
@@ -171,19 +111,110 @@
       "na_reason": "signal group_beat_markers: false; a trainer-run lecture demo the whole room watches, not a group-adjudication or attributed-contribution beat — not workshop-shaped per check_workshop.md's own trigger test.",
       "fix_hint": null,
       "blocking": false
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": "2",
+      "rule_lead": "Minimal lecturing before contrast-mood exercises.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "2afd1c048bea72fa90a7bf08742db9971e56ee81a79f384acb1fc05c30eb33bd",
+      "carried_shape": "1870b031fbe8c765"
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": "6",
+      "rule_lead": "A prompt inside a lecture is a trainer show-and-tell, never a room follow-along.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "2afd1c048bea72fa90a7bf08742db9971e56ee81a79f384acb1fc05c30eb33bd",
+      "carried_shape": "1870b031fbe8c765"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "16",
+      "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "2afd1c048bea72fa90a7bf08742db9971e56ee81a79f384acb1fc05c30eb33bd",
+      "carried_shape": "1870b031fbe8c765"
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": "5",
+      "rule_lead": "Strategic themes recur in Key Concepts.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "2afd1c048bea72fa90a7bf08742db9971e56ee81a79f384acb1fc05c30eb33bd",
+      "carried_shape": "1870b031fbe8c765"
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": "6",
+      "rule_lead": "Key Concepts shape — theme breadcrumbs, not standalone section.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "2afd1c048bea72fa90a7bf08742db9971e56ee81a79f384acb1fc05c30eb33bd",
+      "carried_shape": "1870b031fbe8c765"
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": "7",
+      "rule_lead": "What You'll Learn shape — capability register, not syllabus.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "2afd1c048bea72fa90a7bf08742db9971e56ee81a79f384acb1fc05c30eb33bd",
+      "carried_shape": "1870b031fbe8c765"
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 1,
+      "rule_lead": "Banned words — grep zero-tolerance.",
+      "verdict": "PASS",
+      "evidence": "mechanical: /\\b(delve|delving|honest|honestly|importantly|crucial|crucially|substrate|synergize|paradigm shift)\\b/ over body projection curriculum/evals/body-views/ae101--lecture--the-wizard-move.body.txt → 0 hits; pattern proven against planted violation.",
+      "fix_hint": "",
+      "blocking": false,
+      "prefilled": true
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 2,
+      "rule_lead": "Ritual / ceremony — hard ban in any curriculum/training surface.",
+      "verdict": "PASS",
+      "evidence": "mechanical: /\\b(ritual|rituals|ceremony|ceremonies)\\b/ over body projection curriculum/evals/body-views/ae101--lecture--the-wizard-move.body.txt → 0 hits; pattern proven against planted violation.",
+      "fix_hint": "",
+      "blocking": false,
+      "prefilled": true
     }
   ],
-  "teaching_moment_lands": "PASS — the named teaching moment (context conditioning: an unrelated earlier exchange colors a later, different answer) is demonstrated live via a two-session fact/fact contrast (capital-of-Italy→dinner vs largest-lake-of-Finland→dinner). It does not depend on the student's own skill or prior knowledge to land — the contrast is externally visible regardless of the persona's Claude Code fluency, and the maintainer's own attested-delivery history (backing block, antti-dinner-demo-deliveries) backs its reliability across repeated cohort deliveries. Cutting the third (cardiologist) example per the pinned diff does not fragilize the moment; per the maintainer's own accept-note (L45) the fact/fact contrast alone carries the mechanism, and a third example only restated it.",
+  "teaching_moment_lands": "PASS — the named teaching moment (context conditioning: an unrelated earlier exchange colors a later, different answer) is demonstrated live via a two-session fact/fact contrast (capital-of-Italy→dinner vs largest-lake-of-Finland→dinner), unaffected by the diff (which removed only the trailing loop/fix section, not the demo). It does not depend on the student's own skill or prior knowledge to land — the contrast is externally visible regardless of the persona's Claude Code fluency, and the maintainer's own attested-delivery history (backing block, antti-dinner-demo-deliveries) backs its reliability across repeated cohort deliveries.",
   "mood_summary": {
-    "phase_scores": [9],
+    "phase_scores": [
+      9
+    ],
     "close_score": 9,
     "any_below_8": false,
     "stealing_the_mood": []
   },
   "notes": [
-    "OUT OF LANE, not filed as a rules_evaluated row: curriculum/trainings/agentic-engineering-101/getting-going.md L121 (maintainer Meta block, 'Opening-bid install mechanic') still reads 'three fresh Claude Code sessions in an empty directory' describing this lecture's demo. Verified via `git log -p -- curriculum/trainings/agentic-engineering-101/getting-going.md` and a direct read of the current file (L121): the line was NOT touched by commit b1911175, which trimmed the-wizard-move.md's own demo to two sessions and added an explicit accept-note banning reintroduction of the third (cardiologist) example. getting-going.md is a different file and a different judge's primary territory (pedagogy/cross_module), so this is reported here as a todo rather than a finding against the-wizard-move.md, which is internally consistent throughout.",
-    "Body L13 lists four context types ('A fact. A role. A preference. A constraint.') but the body now demonstrates only one (fact, via the two-session dinner contrast) since the cardiologist role example was cut. This claim is classified `context-is-whatever-you-tell-it` · vision · none-owed in the backing block (not `detail`, no citation obligation), so it is not a research-claims defect; flagged here only as a minor storytelling texture note, not a violation of any rule this class owns — a demonstrated particular followed by a stated general class is a legitimate lecture move, and the persona trace (regenerated this session) did not flag it as a comprehension gap."
+    "OUT OF LANE, not filed as a rules_evaluated row (check_writing.md territory): verified the maintainer block's factual claim that the loop-over-the-fix beat now lives at the-machine-you-just-met.md — confirmed present at that file's L44 ('## You just ran the same loop') and L63 (kicker 'The loop is the shape. The bug today was the excuse.'). The maintainer block states this accurately.",
+    "Prior instance flagged getting-going.md L121 as stale ('three fresh Claude Code sessions', describing an already-cut third example). Re-checked this session: getting-going.md L121 now reads 'two fresh Claude Code sessions each in its own empty directory' — the prior todo is resolved and does not need to persist.",
+    "curriculum/vocabulary.md carries no earning-point entry for 'loop is what you repeat' / 'loop over the fix' tied to the-wizard-move.md (grepped this session, 0 hits) — check_pedagogy §9b's obligation to correct a stale earning-point pointer on relocation doesn't have anything to correct here; not filed as a row because §9b isn't in storytelling's owned pedagogy subset, noted for the pedagogy judge's awareness only.",
+    "Body L13 lists four context types ('A fact. A role. A preference. A constraint.') but the body demonstrates only one (fact, via the two-session dinner contrast) since the cardiologist role example was cut in an earlier pass. This claim is classified `context-is-whatever-you-tell-it` · vision · none-owed in the backing block (not `detail`, no citation obligation), so it is not a research-claims defect; flagged only as a minor storytelling texture note — a demonstrated particular followed by a stated general class is a legitimate lecture move, and the regenerated persona trace did not flag it as a comprehension gap.",
+    "The maintainer block's own 'Open:' line (L27: 'the plan-mode drift removal wants a maintainer eyeball against the module's Big Idea + LO') is a pre-existing self-flagged item unrelated to this diff; left as-is since it's already surfaced to the maintainer in the file and isn't a rule this class owns."
   ],
   "blocking_findings_count": 0,
-  "todos_count": 2
+  "todos_count": 1
 }

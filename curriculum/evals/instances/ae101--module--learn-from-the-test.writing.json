@@ -1,18 +1,18 @@
 {
   "class": "writing",
   "file": "curriculum/trainings/agentic-engineering-101/learn-from-the-test.md",
-  "verdict": "REVISE",
+  "verdict": "PASS",
   "training": "ae101",
   "shape_hash": "94301cda9e6a5a78",
-  "body_sha": "168fe93fb8600d4cbe7aae572b783f1a86b5943e69c65c18e041ab1fa370bb16",
-  "notes": "Pin e11bbeb4..HEAD diff: (1) WYL L16 dropped the redundant 'using one of three shapes' adjacent-count phrase, leaving 'shaped against your dominant failure (LLM judge, shell-hook, or Ralph re-feed)' - this is exactly the fix the check_writing§20 TODO on the prior writing instance (pinned 441b361f) asked for, now PASS. (2) L79 added the missing ./ prefixes to both CLAUDE.local.md and CLAUDE.md mentions ('A rule in your own ./CLAUDE.local.md ... The same rule in a repo's ./CLAUDE.md') - exactly the fix the check_student_facing§13 TODO on the prior instance asked for, now PASS. (3) Maintainer 'Block is four lines, not five' note was rewritten to drop the dated/hashed landed-then-cut narration ('A fifth line landed 2026-08-23 (db2a68a4) ... and is now cut') in favour of a present-tense do-not-reintroduce clause - exactly the fix the check_writing§3 TODO on the prior instance asked for, now PASS. All three prior non-blocking TODOs are resolved by this diff; nothing in the diff introduces a new violation. (4) Remaining maintainer-block edits (dated notes, Quality-line stamp) are mechanical ledger / legitimate dated-provenance updates, exempt or already-sanctioned under check_writing§3's boundary clause. On a full re-read (not diff-scoped, per the preamble's instruction to also catch pre-existing lines), found ONE new, pre-existing (not part of this diff) violation the prior instance's §21b row missed: L42 'it is first-hand data from the real run, and the worry is not' uses banned noun-form 'run' for the agent's sitting (matches none of the session/task/run split's exceptions - not a test/CI/eval execution, not a verbatim quote, not an artifact/path/branch name, not the 'long-running' adjective). This is the only blocking finding. check_prompts§2/§38 (done-done prompt's lead-in doesn't use a command-verb 'Ask Claude to...' summary and doesn't mirror the prompt's opening phrasing) remain open non-blocking TODOs, unchanged by this diff. check_sales_copy.md contributes 0 rows (0 numbered rules in the compendium's current text; nothing to evaluate or park).",
+  "body_sha": "cf304461d19b351cce63d610202d15ae3b0d7a73e7258e7c126f5496194192d5",
+  "notes": "CONFIRMATION pass. `git show 0cea7581 -- curriculum/trainings/agentic-engineering-101/learn-from-the-test.md` is the only commit touching this file since the prior writing pin (body_sha 168fe93f, taken at commit 038fffa4) and it is a single one-line hunk at L42: 'it is first-hand data from the real run, and the worry is not.' -> 'it is first-hand data from the session itself, and the worry is not.' No other line, section, or maintainer note changed (verified via `git show 0cea7581` full diff, 19 lines total, one hunk). grep -c \"the real run\" -> 0; grep -c \"first-hand data from the session itself\" -> 1, both confirmed on the live file before judging. The §21b finding (noun-run for the agent's sitting, banned) is resolved cleanly: 'session' is the correct controlled noun, the sentence's meaning and cadence are otherwise untouched, and no new violation was introduced by the substitution (checked adjacent rules: §19 empty-negation reading still holds since the negation is against a real prior claim, not manufactured; §15 pronoun-referent unaffected; §4 register unaffected). Full re-read performed, not diff-scoped: re-checked every other §21b candidate in the body ('every run' at L28, 'mid-run' at L38 header, seven verb-run instances at L30/L83/L91/L92/L93/L107) - none are new violations; see the §21b row below for the reasoning on the two closest calls. Independently re-ran the mechanical grep set (banned words, leverage-verb, em-dash, 'the student', 'Antti'/'the creator'/'the author', author-we, Remember/Hold-onto wrappers, deictic drumroll, time-of-day anchors, reflection-theatre prefixes, typing/say-to-Claude/tell-it-to) directly against the raw body: all zero, matching the view's CLEAN grep statuses. The two pre-existing non-blocking TODOs (check_prompts §2 and §38, the done-done prompt's lead-in) are untouched by this diff and remain open. check_sales_copy.md contributes 0 rows (0 numbered rules apply to a training module). Prior instance's `resolution` record (settled: fixed, 2026-08-28) stands as the audit trail for the finding this pass confirms closed.",
   "rules_evaluated": [
     {
       "compendium": "check_writing.md",
       "rule_index": 1,
       "rule_lead": "Banned words — grep zero-tolerance.",
       "verdict": "PASS",
-      "evidence": "mechanical: view.json banned_words grep /\\b(delve|delving|honest|honestly|importantly|crucial|crucially|substrate|synergize|paradigm shift)\\b/ over body -> 0 hits, status CLEAN, planted_proof true. leverage_verb grep also CLEAN, 0 hits. em_dash grep also CLEAN, 0 hits over body.",
+      "evidence": "mechanical: re-ran grep -niE '\\b(honest(ly)?|delve|delving|landscape|importantly|crucial(ly)?|substrate|synergize|paradigm shift)\\b' and leverage(verb) and em-dash directly against the raw body (lines 1-114) this pass -> 0 hits each, matching view.json's CLEAN status.",
       "fix_hint": null,
       "blocking": false
     },
@@ -21,7 +21,7 @@
       "rule_index": 2,
       "rule_lead": "Ritual / ceremony — hard ban in any curriculum/training surface.",
       "verdict": "PASS",
-      "evidence": "mechanical: view.json ritual_ceremony grep -> 0 hits, CLEAN. practice(n) appears once, L62 Key Concepts: '...and what becomes durable practice' - this is the AE101-sanctioned sparing use, and is literally the rule's own named calibration example ('M5's durable practice... are the calibration'). Well within the handful-of-uses cap; no ambient overuse.",
+      "evidence": "mechanical: ritual_ceremony grep -> 0 hits, CLEAN. practice(n) appears once, L62 Key Concepts: '...and what becomes durable practice' - the AE101-sanctioned sparing use, and literally the rule's own named calibration example. Unchanged by the pinned diff.",
       "fix_hint": null,
       "blocking": false
     },
@@ -30,7 +30,7 @@
       "rule_index": 3,
       "rule_lead": "No stale markers, no \"fixed\" retrospectives, no session biography.",
       "verdict": "PASS",
-      "evidence": "Diff e11bbeb4..HEAD shows the 'Block is four lines, not five' maintainer note was rewritten: OLD 'A fifth line landed 2026-08-23 (db2a68a4) ... The verifier, the reference artefact and the plan are compounding... — and is now cut: the four lines above were deliberately only the first bullets, and the fifth mapped to no beat the deck teaches.' NEW 'The four lines are deliberately only the first bullets; do not re-add a fifth (\"The verifier, the reference artefact and the plan are compounding in a different shape from a rule: nothing loaded, everything checked.\") — it maps to no beat the deck teaches.' The journey verbs ('landed', 'is now cut') and the commit-hash/date-of-removal are gone; what remains is the standing constraint + do-not-reintroduce reason, matching the rule's own keep-category exactly. Rest of maintainer block scanned for banned verbs (settled/retired/no longer/historically/used to/the old X/X was changed to Y) - none found as bare journey-narration outside a legitimate dated-provenance header (84/101-file corpus convention the rule itself sanctions). L121 'moved into exercises/fork-the-worktree.md ... was trimmed in the fold' states the current destination (a standing pointer future maintainers need so they don't re-add a worktree-setup section here), which is the do-not-reintroduce keep-category, not journey biography.",
+      "evidence": "Maintainer block re-scanned in full this pass for banned journey-verbs (settled/retired/no longer/historically/used to/the old X/X was changed to Y) outside legitimate dated-provenance headers - none found. The pinned diff (0cea7581) touches only body L42, no maintainer text; the maintainer edits from the prior diff (038fffa4, already scored PASS: the 'Block is four lines, not five' rewrite dropping commit-hash/landed-then-cut narration) are untouched and still hold.",
       "fix_hint": null,
       "blocking": false
     },
@@ -39,7 +39,7 @@
       "rule_index": 4,
       "rule_lead": "Register match.",
       "verdict": "PASS",
-      "evidence": "Closest line, L79: '**The wall** is the line between what works for you and what works for someone else. A rule in your own ./CLAUDE.local.md sits on your side of it. The same rule in a repo's ./CLAUDE.md, loading into a teammate's session whether they asked for it or not, has crossed.' - Rory reframe (the wall metaphor) + Boris-direct precision (exact CLAUDE.md path mechanics). No flinch-greps found (just a simple / trust the agent / leash / niceness). No 'Remember:'/'Hold onto'/'Keep in mind'/'Never forget' wrapper anywhere. Risto correctly absent from this doubt-reopening module per the rule's own Risto-ban clause for M5.",
+      "evidence": "Closest line, L79: '**The wall** is the line between what works for you and what works for someone else. A rule in your own ./CLAUDE.local.md sits on your side of it. The same rule in a repo's ./CLAUDE.md, loading into a teammate's session whether they asked for it or not, has crossed.' - Rory reframe + Boris-direct precision. No flinch-greps. No poster wrappers. Risto correctly absent from this doubt-reopening module. L42's new wording ('the session itself') reads in the same Boris-direct register as the line it replaced.",
       "fix_hint": null,
       "blocking": false
     },
@@ -48,7 +48,7 @@
       "rule_index": 6,
       "rule_lead": "Credit original when paraphrasing named technique.",
       "verdict": "PASS",
-      "evidence": "author_we grep: 0 hits over body. No 'Antti'/'the creator'/'the author' found in body (only in maintainer, exempt). Practitioners credited inline where named: Kieran Klaassen (L10, L107), Geoffrey Huntley (L91, link-labelled). Ronacher, Cherny withheld from body entirely per maintainer design (names earned at the closing lecture / M6, not here). No Belief-# references present. No body '**Time:**' line - correct, this is a module file not an exercise, timing correctly lives only in the maintainer Meta block.",
+      "evidence": "author_we grep: 0 hits over body. No 'Antti'/'the creator'/'the author' in body. Practitioners credited inline where named: Kieran Klaassen (L10, L107), Geoffrey Huntley (L91, link-labelled). Ronacher, Cherny correctly withheld from body per maintainer design. Unaffected by the pinned diff.",
       "fix_hint": null,
       "blocking": false
     },
@@ -57,7 +57,7 @@
       "rule_index": 7,
       "rule_lead": "Always \"you\", never \"the student\"; teacher framing stays out of body.",
       "verdict": "PASS",
-      "evidence": "mechanical: view.json the_student grep /\\bthe student\\b/ over body -> 0 hits, CLEAN, planted_proof true.",
+      "evidence": "mechanical: 'the student' grep over body -> 0 hits, CLEAN.",
       "fix_hint": null,
       "blocking": false
     },
@@ -66,7 +66,7 @@
       "rule_index": 8,
       "rule_lead": "Don't smuggle terms of art from maintainer into body.",
       "verdict": "PASS",
-      "evidence": "'LLM judge' (L16) is the only maintainer-discussed handle landing in body; it sits inside the What You'll Learn signposting section and lands operationally in the linked exercise per the maintainer's own note (diagnose-and-resend-3 hands the student 'an LLM judge'). 'three-pattern' and 'Cherny' correctly withheld from body (maintainer explicitly reserves these for the closing lecture / M6). No other maintainer-only term (self-compound, grill-me) found in body.",
+      "evidence": "'LLM judge' (L16) is the only maintainer-discussed handle landing in body; sits inside the What You'll Learn signposting section and lands operationally in the linked exercise per the maintainer's own note. 'three-pattern' and 'Cherny' correctly withheld from body. Unaffected by the pinned diff.",
       "fix_hint": null,
       "blocking": false
     },
@@ -75,7 +75,7 @@
       "rule_index": 9,
       "rule_lead": "Over-hedge detector.",
       "verdict": "PASS",
-      "evidence": "Grep for reassurance shapes (no penalty, fine way to, it's OK if, not a downgrade, not a box-check, you are not on the hook for X) -> none found in body. L34/L101's 'Your call' lines are agency-framing, not reassurance for an unasked question.",
+      "evidence": "Grep for reassurance shapes (no penalty, fine way to, it's OK if, not a downgrade, not a box-check, you are not on the hook for X) -> none found in body. L34/L101's 'Your call' lines are agency-framing, not reassurance.",
       "fix_hint": null,
       "blocking": false
     },
@@ -84,7 +84,7 @@
       "rule_index": 11,
       "rule_lead": "Cap practitioner attribution at one student-side mention per module.",
       "verdict": "PASS",
-      "evidence": "Klaassen appears at L10 (Prework reading-list item) and L107 (Pre-reads before Module 6 item) - both prework/pre-reads placements, exempt under the 2026-08-15 'prereads and links don't count' carve-out. Huntley appears once at L91 as a link-labelled attribution ('Geoffrey Huntley's [original Ralph]'), also exempt. No practitioner named as teaching-prose actor/authority more than once outside those exempt slots.",
+      "evidence": "Klaassen appears at L10 (Prework reading-list item) and L107 (Pre-reads before Module 6 item) - both prework/pre-reads placements, exempt under the prereads-and-links carve-out. Huntley appears once at L91, link-labelled, also exempt. No practitioner named as teaching-prose actor/authority more than once outside exempt slots.",
       "fix_hint": null,
       "blocking": false
     },
@@ -93,7 +93,7 @@
       "rule_index": 12,
       "rule_lead": "Punchy framing keeps punch; carve-out lives downstream.",
       "verdict": "PASS",
-      "evidence": "L70: 'The verifier's green is a claim, not proof.' followed immediately, same bullet: 'Ask the agent to show what the gate checked and what sat outside its view before you credit the kit.' - punch retained, boundary lands directly downstream in Boris-direct voice, matching the rule's required shape exactly.",
+      "evidence": "L70: 'The verifier's green is a claim, not proof.' followed immediately by 'Ask the agent to show what the gate checked and what sat outside its view before you credit the kit.' - punch retained, boundary lands directly downstream in Boris-direct voice.",
       "fix_hint": null,
       "blocking": false
     },
@@ -111,7 +111,7 @@
       "rule_index": 14,
       "rule_lead": "Watch out for planting jargon too early.",
       "verdict": "PASS",
-      "evidence": "Terms previewed in WYL (goal drift, context rot, plausible-but-wrong, reference artefact, plan.md, external verifier, LLM judge, Ralph re-feed) sit in the exempt signposting section and each lands operationally later in this module (lecture 'Reading the return'; Optional-challenges paragraph unpacks Ralph explicitly at L91; the exercises named at L48/L50). No module-N+ term used ahead of its earning module. Revision firing-moment check on the diff's own edit (L16): the trimmed replacement text ('shaped against your dominant failure (LLM judge, shell-hook, or Ralph re-feed)') introduces no new unearned term - same three names as before, just without the redundant count phrase.",
+      "evidence": "Terms previewed in WYL (goal drift, context rot, plausible-but-wrong, reference artefact, plan.md, external verifier, LLM judge, Ralph re-feed) sit in the exempt signposting section and each lands operationally later in this module. No module-N+ term used ahead of its earning module. The pinned diff's replaced clause ('the session itself') introduces no new term at all, earned or otherwise.",
       "fix_hint": null,
       "blocking": false
     },
@@ -120,7 +120,7 @@
       "rule_index": 15,
       "rule_lead": "Audit closer when trimming body-prose forcing function.",
       "verdict": "PASS",
-      "evidence": "Checked every section-close for dangling pronoun/demonstrative per the any-closer sub-rule. L83 'the checks guiding it are yours' - 'it' resolves to 'a long session' (same sentence, nearest concrete noun). L71 'Build it, send again' - 'it' resolves to 'your next check' (immediately preceding). L34 'that is a PR-sized change' - 'that' resolves to 'putting the definition in ./CLAUDE.md' (immediately preceding clause). No vague spatial/temporal metaphor standing in for an action anywhere in body.",
+      "evidence": "Every section-close re-checked this pass for dangling pronoun/demonstrative. L83 'the checks guiding it are yours' - 'it' resolves to 'a long session' (same sentence). L71 'Build it, send again' - 'it' resolves to 'your next check' (immediately preceding). L81 'That is the right order' - 'That' resolves to the preceding list (rules file/observations/verifier/reference/plan), a real antecedent, not an empty drumroll. L42's edit does not touch a closer and introduces no new pronoun.",
       "fix_hint": null,
       "blocking": false
     },
@@ -129,7 +129,7 @@
       "rule_index": 17,
       "rule_lead": "No combative verbs about the agent in body prose.",
       "verdict": "PASS",
-      "evidence": "Grep for bark/order/command/whip/force/drag/push around/boss/shout at/snap at/lecture/scold -> none found. Verbs used toward the agent throughout: 'ask' (L70), 'give' (L69), 'tell' (L24).",
+      "evidence": "Grep for bark/order/command/whip/force/drag/push around/boss/shout at/snap at/lecture/scold -> none found. Verbs toward the agent: 'ask' (L70), 'give' (L69), 'tell' (L24).",
       "fix_hint": null,
       "blocking": false
     },
@@ -138,7 +138,7 @@
       "rule_index": 18,
       "rule_lead": "Headers must be literally true about the mechanism.",
       "verdict": "PASS",
-      "evidence": "No spatial-metaphor-contradicts-mechanism header found; 'Back to the map, one last time' (L73) literally does return to the map figure (L75). No 'other X'/'the rest of the X' header with no named primary anywhere in body.",
+      "evidence": "No spatial-metaphor-contradicts-mechanism header found; 'Back to the map, one last time' (L73) literally returns to the map figure (L75). No 'other X'/'the rest of the X' header with no named primary.",
       "fix_hint": null,
       "blocking": false
     },
@@ -147,7 +147,7 @@
       "rule_index": 19,
       "rule_lead": "Machine-cadence fat — the shape of good prose without the content.",
       "verdict": "PASS",
-      "evidence": "Checked for empty negation, deictic drumroll, bold-label echo, citation duplication. L42 'the artefact wins: it is first-hand data from the real run, and the worry is not' negates a real plausible misread (crediting a felt worry as equivalent evidence to the artefact), not empty. L79 '**The wall** is the line between...' opens on the claim using the bold term as grammatical subject, not a restated-label echo. No deictic drumroll ('That is the X.') found.",
+      "evidence": "Re-checked empty negation, deictic drumroll, bold-label echo, citation duplication against the CURRENT text. L42 (post-fix) 'the artefact wins: it is first-hand data from the session itself, and the worry is not' still negates a real, plausible misread (crediting the felt mid-run worry as equivalent evidence to the artefact) - not empty, and the fix changed only the noun ('run'->'session itself'), not the negation's target or its legitimacy. L81 'That is the right order' resolves a real antecedent (see §15). No deictic drumroll, no bold-label echo, no citation duplication found elsewhere.",
       "fix_hint": null,
       "blocking": false
     },
@@ -156,7 +156,7 @@
       "rule_index": 20,
       "rule_lead": "Don't state a count the adjacent list already holds.",
       "verdict": "PASS",
-      "evidence": "Diff e11bbeb4..HEAD removed the adjacent-count phrase at L16: OLD 'shaped against your dominant failure using one of three shapes (LLM judge, shell-hook, or Ralph re-feed)' -> NEW 'shaped against your dominant failure (LLM judge, shell-hook, or Ralph re-feed)'. The numeral sitting directly beside its own three-item enumeration is gone. L14's 'three named lenses, goal drift, context rot, plausible-but-wrong' is the memory-handle case, not the adjacent-count violation: the count is reused later at L69 ('Give it the read the first return got: the three lenses...') where the list is NOT visible, which is exactly the carve-out's test ('does the numeral appear where the items are NOT visible? Yes -> keep it'). No other count-adjacent-to-list found in body.",
+      "evidence": "L16 'shaped against your dominant failure (LLM judge, shell-hook, or Ralph re-feed)' has no adjacent-count numeral (already fixed at the prior pin). L14's 'three named lenses' is the memory-handle case, reused at L69 where the list is NOT visible - the carve-out's own test. No other count-adjacent-to-list found. Unaffected by the L42 fix.",
       "fix_hint": null,
       "blocking": false
     },
@@ -165,7 +165,7 @@
       "rule_index": 21,
       "rule_lead": "A slogan that is false as stated is not punchy framing — run the truth test before reaching for §12.",
       "verdict": "PASS",
-      "evidence": "Grep for only/always/never/nothing else/the one thing that -> none found in body. L34 'every session reads it and no session has to be told' is a true, scoped mechanical fact about how CLAUDE.md auto-loads, not an overreaching world-claim.",
+      "evidence": "Grep for only/always/never/nothing else/the one thing that -> none found in body. L34 'every session reads it and no session has to be told' is a true, scoped mechanical fact about CLAUDE.md auto-loading, not an overreaching world-claim.",
       "fix_hint": null,
       "blocking": false
     },
@@ -174,7 +174,7 @@
       "rule_index": 26,
       "rule_lead": "A sentence saying how you'd know points at the outcome, not the nearest artifact.",
       "verdict": "PASS",
-      "evidence": "L70: 'The verifier's green is a claim, not proof. Ask the agent to show what the gate checked and what sat outside its view before you credit the kit.' is the rule's own recommended shape (distrust the self-witnessing gate; point at what the agent must show), not a violation. No 'X tells you whether Y' clause anywhere in body relies on a self-witnessing instrument.",
+      "evidence": "L70: 'The verifier's green is a claim, not proof. Ask the agent to show what the gate checked and what sat outside its view before you credit the kit.' is the rule's own recommended shape (distrust the self-witnessing gate). No 'X tells you whether Y' clause relies on a self-witnessing instrument anywhere in body.",
       "fix_hint": null,
       "blocking": false
     },
@@ -183,7 +183,7 @@
       "rule_index": 1,
       "rule_lead": "Aspirational destination, never corrective gap.",
       "verdict": "PASS",
-      "evidence": "No corrective-gap phrasing ('you already think you're using X', 'you're missing Y') found. No ability-tier assumption ('at your scale', 'for a beginner', 'a senior would already know') found. No tourist/practitioner-style identity-split criterion introduced in this module. No pre-flight verification gate present to test for plausible-failability.",
+      "evidence": "No corrective-gap phrasing found. No ability-tier assumption found. No tourist/practitioner-style identity-split criterion. No pre-flight verification gate present.",
       "fix_hint": null,
       "blocking": false
     },
@@ -192,7 +192,7 @@
       "rule_index": 2,
       "rule_lead": "Earn every technical term on first use.",
       "verdict": "PASS",
-      "evidence": "'LLM judge', 'context rot'/'goal drift'/'plausible-but-wrong', 'reference artefact'/'plan.md'/'external verifier' sit in the What You'll Learn signposting section (exempt carve-out) and each lands operationally later in this same module (lecture 'Reading the return'; exercise phases per the maintainer's artefact-contracts table). Module is well past M2 in the arc, so bare 'M1' at L24 is legal per the abbreviation convention.",
+      "evidence": "'LLM judge', 'context rot'/'goal drift'/'plausible-but-wrong', 'reference artefact'/'plan.md'/'external verifier' sit in the exempt What You'll Learn signposting section and each lands operationally later in this module. Module is well past M2, so bare 'M1' at L24 is legal.",
       "fix_hint": null,
       "blocking": false
     },
@@ -201,7 +201,7 @@
       "rule_index": 4,
       "rule_lead": "Memory vs context — use deliberately.",
       "verdict": "PASS",
-      "evidence": "L28 'A done-done definition is a small context trick' correctly uses 'context' for the runtime effect (the definition arriving in the model's context each session), while L34 correctly frames CLAUDE.md as durable memory ('putting the definition in ./CLAUDE.md once, where every session reads it'). No 'your context compounds' blur found.",
+      "evidence": "L28 'A done-done definition is a small context trick' correctly uses 'context' for the runtime effect, while L34 correctly frames CLAUDE.md as durable memory ('putting the definition in ./CLAUDE.md once, where every session reads it'). No 'your context compounds' blur.",
       "fix_hint": null,
       "blocking": false
     },
@@ -210,7 +210,7 @@
       "rule_index": 5,
       "rule_lead": "Golden path only in body — THIS RULE HAS AN EXCEPTION; read to the boundary before cutting anything.",
       "verdict": "PASS",
-      "evidence": "L101 'Come to Module 6 without the packaged session and you'll have one session to read where the exercise needs two. Your call.' correctly places a real, plausible contingency (no packaged session by M6) in body rather than routing it below the fence. No other troubleshooting/'what if X fails' branch present that should be in body but isn't.",
+      "evidence": "L101 'Come to Module 6 without the packaged session and you'll have one session to read where the exercise needs two. Your call.' correctly places a real, plausible contingency in body rather than routing it below the fence. No other troubleshooting branch needed.",
       "fix_hint": null,
       "blocking": false
     },
@@ -219,7 +219,7 @@
       "rule_index": 6,
       "rule_lead": "Trust Claude's defaults for structure.",
       "verdict": "PASS",
-      "evidence": "The done-done prompt closes 'Answer per point, with evidence from this session' - shape specified because the teaching moment depends on a per-point audit (maintainer L117: 'so the per-point audit lands in the transcript diagnose-and-resend reads'), the rule's own stated exception.",
+      "evidence": "The done-done prompt closes 'Answer per point, with evidence from this session' - shape specified because the teaching moment depends on a per-point audit (maintainer L117), the rule's own stated exception.",
       "fix_hint": null,
       "blocking": false
     },
@@ -228,7 +228,7 @@
       "rule_index": 8,
       "rule_lead": "Don't smuggle another module's voice.",
       "verdict": "PASS",
-      "evidence": "The M1 callback at L24 ('The M1 countermove rides along') is an explicit, maintainer-documented reminder-arc device (L123: 'the M5 reminder leg of the selective-reading arc'), not an accidental mood-borrow. Overall tone matches the maintainer's stated target mood (learning through contrast), not another module's mood.",
+      "evidence": "The M1 callback at L24 is an explicit, maintainer-documented reminder-arc device (selective-reading arc: M1 teach -> M2 exception -> M3 take-into-use -> M5 remind), not an accidental mood-borrow. Overall tone matches the maintainer's stated target mood (learning through contrast).",
       "fix_hint": null,
       "blocking": false
     },
@@ -237,7 +237,7 @@
       "rule_index": 9,
       "rule_lead": "Don't ask student to manually diff or spot-check Claude's output as error-catching.",
       "verdict": "PASS",
-      "evidence": "L70: 'Ask the agent to show what the gate checked and what sat outside its view before you credit the kit.' names actor (the agent) + mechanism (ask it to show) + object (the return/gate's own account, not a raw diff) + tell (sat outside its view = insufficient). L99 'check the agent didn't just stall in the first minute' names a concrete tell. No manual-diff instruction, no unaddressed speech verb, no attitude-standing-for-action adverb (carefully/closely/thoroughly/well), no unknowable criterion, no fictional gate ('must'/'needs' nothing enforces) found anywhere in body.",
+      "evidence": "L70: 'Ask the agent to show what the gate checked and what sat outside its view before you credit the kit.' names actor (the agent), mechanism (ask it to show), object (the return/gate's own account), and tell (sat outside its view). L99 'check the agent didn't just stall in the first minute' names a concrete tell. No manual-diff instruction, no unaddressed speech verb, no attitude-standing-for-action adverb, no unknowable criterion, no fictional gate anywhere in body.",
       "fix_hint": null,
       "blocking": false
     },
@@ -246,7 +246,7 @@
       "rule_index": 11,
       "rule_lead": "No \"What research says\" callout boxes (same rule as sales copy — practitioner voice, not consultancy deck).",
       "verdict": "PASS",
-      "evidence": "No such callout box in body; practitioner citations are all inline (Mollick L10, Entis/Klaassen L10, Huntley L91, Klaassen L107).",
+      "evidence": "No such callout box; practitioner citations are all inline (Mollick L10, Entis/Klaassen L10, Huntley L91, Klaassen L107).",
       "fix_hint": null,
       "blocking": false
     },
@@ -255,7 +255,7 @@
       "rule_index": 12,
       "rule_lead": "Student moves stay in conversation with agent.",
       "verdict": "PASS",
-      "evidence": "L34 describes the outcome (definition lands in ./CLAUDE.md) without prescribing a manual editor/terminal primitive as the forcing function; nothing in body routes the student out of the conversation into a mechanic role.",
+      "evidence": "L34 describes the outcome (definition lands in ./CLAUDE.md) without prescribing a manual editor/terminal primitive as the forcing function; nothing routes the student out of conversation into a mechanic role.",
       "fix_hint": null,
       "blocking": false
     },
@@ -264,7 +264,7 @@
       "rule_index": 13,
       "rule_lead": "Specify which CLAUDE.md layer — every time.",
       "verdict": "PASS",
-      "evidence": "Diff e11bbeb4..HEAD fixed the one gap this rule previously flagged: L79 OLD 'A rule in your own CLAUDE.local.md sits on your side of it. The same rule in a repo's CLAUDE.md...' -> NEW 'A rule in your own ./CLAUDE.local.md sits on your side of it. The same rule in a repo's ./CLAUDE.md...'. Grepped every CLAUDE.md/CLAUDE.local.md mention in body: L34 (./CLAUDE.md, ./CLAUDE.local.md) and L79 (./CLAUDE.local.md, ./CLAUDE.md) - all four occurrences now correctly layer-qualified.",
+      "evidence": "All four CLAUDE.md/CLAUDE.local.md mentions in body (L34 x2, L79 x2) are layer-qualified with './' prefixes, fixed at the prior pin and untouched by the current one-line diff.",
       "fix_hint": null,
       "blocking": false
     },
@@ -273,7 +273,7 @@
       "rule_index": 14,
       "rule_lead": "No em-dashes. Simple sentences.",
       "verdict": "PASS",
-      "evidence": "mechanical: view.json em_dash grep over body -> 0 hits, CLEAN, planted_proof true.",
+      "evidence": "mechanical: em_dash grep over body -> 0 hits, CLEAN, re-verified directly against the raw body this pass.",
       "fix_hint": null,
       "blocking": false
     },
@@ -282,7 +282,7 @@
       "rule_index": 17,
       "rule_lead": "Section headers use command verbs when section is about doing something.",
       "verdict": "PASS",
-      "evidence": "'Say what done-done means' and 'Inspect your results' lead with command verbs. 'Your mid-run worries hint at missing checks' (L38) is a thesis/insight header whose section does close on two doing-lines ('Build the check, send again'), but its primary job is the diagnostic reframe (worry -> candidate check) that the doing-lines merely forecast toward the linked lecture/exercises (L46/L48/L50); this shape is unchanged by the current diff. 'Back to the map, one last time' and 'Optional challenges' are similarly reflective/agenda-setting rather than single-task-doing headers.",
+      "evidence": "'Say what done-done means' and 'Inspect your results' lead with command verbs. 'Your mid-run worries hint at missing checks' is a thesis/insight header whose section closes on doing-lines ('Build the check, send again'). 'Back to the map, one last time' and 'Optional challenges' are reflective/agenda-setting headers, matching lecture/reference register allowance. Shape unchanged by the L42 diff.",
       "fix_hint": null,
       "blocking": false
     },
@@ -291,7 +291,7 @@
       "rule_index": 18,
       "rule_lead": "Inline links use target's title, never filename.",
       "verdict": "PASS",
-      "evidence": "All links use title-case article/lecture/exercise titles ('[Lecture: Reading the return]', '[The Bitter Lesson versus The Garbage Can]', '[Verification asymmetry]', etc.) or natural descriptive attribution phrases ('[original Ralph]', '[`ultracode`]', '[agent team]'); no raw filename or code-span path used as link text anywhere in body. No 'Step N'-style ordinal cross-reference found.",
+      "evidence": "All links use title-case article/lecture/exercise titles or natural descriptive attribution phrases; no raw filename or code-span path used as link text. No 'Step N'-style ordinal cross-reference found.",
       "fix_hint": null,
       "blocking": false
     },
@@ -300,7 +300,7 @@
       "rule_index": 20,
       "rule_lead": "Disambiguate shared-word collisions with Claude Code primitives on first student-authored use.",
       "verdict": "PASS",
-      "evidence": "'plan.md' (L17) sits in the exempt What You'll Learn signposting section as a forward-preview, not a first-authored-write in this file; the actual authoring/disambiguation moment belongs to the exercise that assembles it. No first-authored contested word (memory/skill/rule/agent/subagent) introduced fresh in this module's body. No ambiguous 'here' adjacent to write/save/note/put/drop found.",
+      "evidence": "'plan.md' (L17) sits in the exempt What You'll Learn signposting section as a forward-preview, not a first-authored-write in this file. No first-authored contested word introduced fresh in this module's body. No ambiguous 'here' adjacent to write/save/note/put/drop.",
       "fix_hint": null,
       "blocking": false
     },
@@ -309,7 +309,7 @@
       "rule_index": 21,
       "rule_lead": "LLM-vs-agent-vs-Claude vocabulary discipline.",
       "verdict": "PASS",
-      "evidence": "'the agent' used consistently for delegated/autonomous action (L24 'tell the agent', L70 'Ask the agent to show...', L62 'The agent makes evidence cheap'); 'Claude' names the product once, correctly, at L92 ('Claude Code's `ultracode` workflow'). Body-wide Claude-count is 0 for prose addressee use and agent-count is high - the opposite of the rule's named failure signal (assistant-shaped Claude-count >> agent-count), so this reads as the safe, agency-reinforcing direction the rule's own stated concern favours, not a violation of the addressee sub-case.",
+      "evidence": "'the agent' used consistently for delegated/autonomous action (L24, L70, L62); 'Claude' names the product once, correctly, at L92 ('Claude Code's `ultracode` workflow'). No assistant-shaped Claude-count-over-agent-count pattern.",
       "fix_hint": null,
       "blocking": false
     },
@@ -317,10 +317,10 @@
       "compendium": "check_student_facing.md",
       "rule_index": "21b",
       "rule_lead": "Session / task / run split (all trainings).",
-      "verdict": "REVISE",
-      "evidence": "L42: 'Where it doesn't, the artefact wins: it is first-hand data from the real run, and the worry is not.' 'the real run' is a noun-form use of 'run' referring to the agent's actual sitting (contrasted against the worry, a subjective feeling) - not a test/CI/eval execution, not a verbatim quote, not an artifact/path/branch name, and not the 'long-running' adjective, so none of the rule's exceptions apply. 'session' is used correctly elsewhere in the same paragraph and file (L8, L22, L30, L44). Harm check: the controlled split exists precisely so students don't conflate a non-deterministic agent sitting with a deterministic test/CI 'run'; this sentence sits two sentences before L44's 'checks'/'gate' language, making the conflation risk concrete rather than theoretical. Pre-existing line, not touched by the e11bbeb4..HEAD diff, missed by the prior writing pass's §21b row (which only checked the verb-run and 'sitting' instances).",
-      "fix_hint": "'Where it doesn't, the artefact wins: it is first-hand data from the real session, and the worry is not.'",
-      "blocking": true
+      "verdict": "PASS",
+      "evidence": "L42 (fixed by commit 0cea7581): 'Where it doesn't, the artefact wins: it is first-hand data from the session itself, and the worry is not.' - 'session' is the correct controlled noun for the agent's sitting; the prior noun-run violation ('the real run', matching none of the rule's exceptions) is gone. Re-checked every other run/session candidate in the body: (a) L28 'buys repeated fast verification: every run, and every check you build, measures against the same line' - 'run' here sits in a sentence whose entire frame is repeated verification cadence ('fast verification', 'measures against the same line'), the closest sanctioned sense to 'test/CI/eval executions'; it does not stand in for 'the agent's sitting' the way the fixed L42 line did, and no adjacent word forces the agent-session reading. Kept PASS as the better-supported reading, flagged as a maintainer TODO below given the genuine ambiguity. (b) L38 header 'Your mid-run worries hint at missing checks' - 'mid-run' is a bound compound-adjective (mid- + run), the same grammatical class as the rule's own sanctioned 'long-running' adjective, not the bare countable noun ('a run', 'the run') the rule bans; corroborated by corpus precedent - the identical compound is already load-bearing student-facing prose in `plan-mode-done-right.md` L26/L46, `when-a-plan-is-good.md` L35/L71/L102, and `diagnose-and-resend.md` L51, none flagged. No conflation-with-CI-run harm is present in any of these; the harm the rule exists to prevent (treating a non-deterministic agent sitting as if it were a deterministic test/CI execution) is absent from the compound-adjective use. (c) All seven remaining run-instances in body (L30, L83 x2, L91, L92, L93, L107) are verb-run, unrestricted by the rule.",
+      "fix_hint": null,
+      "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
@@ -336,7 +336,7 @@
       "rule_index": 23,
       "rule_lead": "Reflection beats stay invisible in flow.",
       "verdict": "PASS",
-      "evidence": "Grep for Pause before you promote / Meta-moment / The reflection beat / Step back / Moment of truth / sit with X / let it land / take a moment to / give yourself space to / breathe / be present with / pause and reflect -> none found. Section headers are content-descriptive, not self-aware-pedagogy-framed.",
+      "evidence": "Grep for Pause before you promote / Meta-moment / The reflection beat / Step back / Moment of truth / sit with X / let it land / take a moment to / give yourself space to / breathe / be present with / pause and reflect -> none found. Section headers are content-descriptive.",
       "fix_hint": null,
       "blocking": false
     },
@@ -345,7 +345,7 @@
       "rule_index": 24,
       "rule_lead": "No meta-ask when student has already decided.",
       "verdict": "PASS",
-      "evidence": "The done-done prompt asks Claude to assess against Antti's four fixed criteria, not to restate a decision the student already made. 'Inspect your results' (fenceless by explicit maintainer accept-note, L119) is new post-return reading guidance, not a restatement of an agent-already-proposed choice.",
+      "evidence": "The done-done prompt asks Claude to assess against Antti's four fixed criteria, not to restate a decision the student already made. 'Inspect your results' (fenceless by explicit maintainer accept-note) is new post-return reading guidance, not a restatement of an agent-already-proposed choice.",
       "fix_hint": null,
       "blocking": false
     },
@@ -354,7 +354,7 @@
       "rule_index": 26,
       "rule_lead": "Cut NVA: true but not moving student forward.",
       "verdict": "PASS",
-      "evidence": "Checked each standalone clause against the 'obvious to a working engineer' and 'changes what student does next' screens. L30 'This one runs in the session you sent off. Its answer lands in the transcript you are about to read.' is load-bearing (explains why the prompt must run in the original, not a fresh, session) rather than filler.",
+      "evidence": "Checked each standalone clause against the 'obvious to a working engineer' and 'changes what student does next' screens. L30 'This one runs in the session you sent off. Its answer lands in the transcript you are about to read.' is load-bearing (explains why the prompt must run in the original session), not filler.",
       "fix_hint": null,
       "blocking": false
     },
@@ -363,7 +363,7 @@
       "rule_index": 28,
       "rule_lead": "Forward-callout closer: student as grammatical subject.",
       "verdict": "PASS",
-      "evidence": "L101 closer: 'you'll have one session to read where the exercise needs two. Your call.' - 'you' preserved throughout, no role-gating. L111's '## Next' closer ('Module 6 reads the packaged session...') names the training as subject, but '## Next' is a canonical, architecture-mandated forward-positioning section (module-shape.md), the same exemption check_writing§33 grants explicitly - its whole job is this kind of forecast.",
+      "evidence": "L101 closer: 'you'll have one session to read where the exercise needs two. Your call.' - 'you' preserved throughout, no role-gating. L111's '## Next' closer is a canonical, architecture-mandated forward-positioning section, exempt.",
       "fix_hint": null,
       "blocking": false
     },
@@ -372,7 +372,7 @@
       "rule_index": 29,
       "rule_lead": "Operational reminders live at moment of use, not only where introduced.",
       "verdict": "PASS",
-      "evidence": "L24 blockquote 'Long sessions, short reads. The M1 countermove rides along...' is precisely the rule's sanctioned pattern, and the maintainer block (L123) documents it explicitly as the M5 leg of the selective-reading reminder arc (M1 teach -> M2 exception -> M3 take-into-use -> M5 remind).",
+      "evidence": "L24 blockquote 'Long sessions, short reads. The M1 countermove rides along...' is the rule's sanctioned pattern, documented in the maintainer block as the M5 leg of the selective-reading reminder arc.",
       "fix_hint": null,
       "blocking": false
     },
@@ -381,7 +381,7 @@
       "rule_index": 30,
       "rule_lead": "Echo the training's theory spine before inventing a synonym.",
       "verdict": "PASS",
-      "evidence": "Body draws on established house vocabulary throughout: 'the map' (L73/77/83), 'the loop' (L83), 'steering'/'send-off' (Big Idea L4), 'drift' (L14, 'goal drift'), 'the return' (L30/42/67). No neutral synonym substituted where a house frame already fits.",
+      "evidence": "Body draws on established house vocabulary throughout: 'the map' (L73/77/83), 'the loop' (L83), 'steering'/'send-off' (Big Idea L4), 'drift' (L14), 'the return' (L30/42/67). No neutral synonym substituted where a house frame already fits.",
       "fix_hint": null,
       "blocking": false
     },
@@ -390,7 +390,7 @@
       "rule_index": 31,
       "rule_lead": "Name the artifact, not the act.",
       "verdict": "PASS",
-      "evidence": "Grep for 'typing ', 'type in', 'say to Claude', 'tell it to' around quoted message content -> none found; the prompt is referenced as an artefact via the {{prompt:...}} marker, never narrated as a physical typing act.",
+      "evidence": "Grep for 'typing ', 'type in', 'say to Claude', 'tell it to' around quoted message content -> none found; the prompt is referenced as an artefact via the {{prompt:...}} marker.",
       "fix_hint": null,
       "blocking": false
     },
@@ -399,7 +399,7 @@
       "rule_index": 33,
       "rule_lead": "The curriculum does not narrate itself — subject test, then deletion test.",
       "verdict": "PASS",
-      "evidence": "Big Idea (L4) subject-tests clean: 'your long session', 'the session you already ran' - student's own artefact, not module/training positioning. 'Start here' L22 'the lecture ahead hands you the lenses' points at the immediately-next beat inside this same module (proximate wayfinding), not a later-module predicate-leak. The map closer (L73-83) is describing a concrete returning figure directly (paying off a motif the student has seen before), not narrating the training's own shape; deletion breaks the arc, so it isn't NVA cartography.",
+      "evidence": "Big Idea (L4) subject-tests clean: 'your long session', 'the session you already ran'. 'Start here' L22 points at the immediately-next beat inside this same module (proximate wayfinding), not a later-module predicate-leak. The map closer (L73-83) directly pays off a motif the student has already seen; deletion breaks the arc, so it isn't NVA cartography.",
       "fix_hint": null,
       "blocking": false
     },
@@ -408,7 +408,7 @@
       "rule_index": 37,
       "rule_lead": "Mood is a design constraint, not a garnish.",
       "verdict": "PASS",
-      "evidence": "Maintainer Meta block states the target directly: 'Mood target: learning through contrast...' with diagnostic + fix already recorded. Body reads consistent with contrast (three-lenses diagnosis against real evidence, verifier-as-claim-not-proof, map-closer payoff), no drift toward correction-feeling ('my run was bad') or compliance-feeling ('adopt the three-pattern') - the three-pattern name is correctly withheld from body per the closing-lecture reservation.",
+      "evidence": "Maintainer Meta block states the mood target directly: 'learning through contrast', with diagnostic + fix recorded. Body reads consistent with contrast (three-lenses diagnosis against real evidence, verifier-as-claim-not-proof, map-closer payoff); the three-pattern name is correctly withheld from body per the closing-lecture reservation.",
       "fix_hint": null,
       "blocking": false
     },
@@ -426,7 +426,7 @@
       "rule_index": 2,
       "rule_lead": "Every prompt block: one-sentence action lead-in.",
       "verdict": "REVISE",
-      "evidence": "L30, the sentence immediately before the {{prompt:ae101-m5-done-done}} marker, reads: 'This one runs in the session you sent off. Its answer lands in the transcript you are about to read.' - two sentences of session-mechanics/routing commentary, neither a command-verb sentence summarising what the prompt asks Claude to do (e.g. 'Ask Claude to answer the four done-done points against this session'). Unchanged by the current diff; same gap the prior writing instance flagged.",
+      "evidence": "L30, the sentence immediately before the {{prompt:ae101-m5-done-done}} marker, reads: 'This one runs in the session you sent off. Its answer lands in the transcript you are about to read.' - two sentences of session-mechanics/routing commentary, neither a command-verb sentence summarising what the prompt asks Claude to do. Unchanged by the pinned diff; pre-existing, non-blocking TODO.",
       "fix_hint": "Add a command-verb clause immediately before the marker, e.g. 'Ask Claude to answer the four done-done points against this session, with evidence.'",
       "blocking": false
     },
@@ -435,7 +435,7 @@
       "rule_index": 3,
       "rule_lead": "Canonical shape — lead-in, label with destination, blank line, fence.",
       "verdict": "PASS",
-      "evidence": "Registry-marker expansion produces the canonical shape mechanically: expanded view shows '**Prompt** *(Claude Code)*' / blank line / fenced content, guaranteed by the templating system. Shape is correct independent of the lead-in wording concern filed under rule 2.",
+      "evidence": "Registry-marker expansion produces the canonical shape mechanically: expanded view shows '**Prompt** *(Claude Code)*' / blank line / fenced content.",
       "fix_hint": null,
       "blocking": false
     },
@@ -444,26 +444,16 @@
       "rule_index": 9,
       "rule_lead": "Markdown shout (**bold**, *italic*) inside fenced prompts = dead weight in Claude Code.",
       "verdict": "PASS",
-      "evidence": "Fence content contains no ** or bare * markdown emphasis; numbering is plain inline '1) 2) 3) 4)', not asterisk-based.",
+      "evidence": "Fence content contains no ** or bare * markdown emphasis; numbering is plain inline '1) 2) 3) 4)'.",
       "fix_hint": null,
       "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 18,
-      "rule_lead": "Self-critique register, not defense, when Claude interrogates own work.",
-      "verdict": "N/A",
-      "evidence": null,
-      "fix_hint": null,
-      "blocking": false,
-      "na_reason": "prompt is a status/evidence audit against fixed criteria, not Claude interrogating its own prior analysis/diff/SKILL.md"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 22,
       "rule_lead": "Prompt-body edits require maintainer approval — registry files AND inline blocks.",
       "verdict": "PASS",
-      "evidence": "Registry file curriculum/prompts/ae101-m5-done-done.md frontmatter note states 'Approved prompt-ok 2026-08-23.' Body text in the registry matches the expanded content in learn-from-the-test.md verbatim (checked both directly) - no unapproved body drift.",
+      "evidence": "Registry file curriculum/prompts/ae101-m5-done-done.md frontmatter records 'Approved prompt-ok 2026-08-23.' Body text in the registry matches the expanded content in learn-from-the-test.md verbatim. Unaffected by the pinned diff (that diff touched body prose outside the fence, not the prompt).",
       "fix_hint": null,
       "blocking": false
     },
@@ -481,7 +471,7 @@
       "rule_index": 29,
       "rule_lead": "Normal work request before orchestration.",
       "verdict": "PASS",
-      "evidence": "'Are we done-done?...' reads as a direct, natural request a student would really send, not orchestration bloat ('Ask me which criteria to check').",
+      "evidence": "'Are we done-done?...' reads as a direct, natural request a student would really send, not orchestration bloat.",
       "fix_hint": null,
       "blocking": false
     },
@@ -499,7 +489,7 @@
       "rule_index": 34,
       "rule_lead": "Disambiguation, anchors, and decision logic that bind Claude live INSIDE prompt fence.",
       "verdict": "PASS",
-      "evidence": "Read the fence in isolation: 'Are we done-done? By done-done I mean: 1)...4)... Answer per point, with evidence from this session.' - self-contained; relies only on 'this session'/'this repo', consistent with its confirmed-warm-session design (maintainer L117: it runs inside the still-live M4 send-off session).",
+      "evidence": "Read the fence in isolation: self-contained; relies only on 'this session'/'this repo', consistent with its confirmed-warm-session design (maintainer L117: it runs inside the still-live M4 send-off session).",
       "fix_hint": null,
       "blocking": false
     },
@@ -508,7 +498,7 @@
       "rule_index": 36,
       "rule_lead": "Wide prompts split by logical move — paragraph breaks = cheapest scan-affordance.",
       "verdict": "PASS",
-      "evidence": "Prompt is one paragraph (~60 words) with 4 parallel evaluation criteria already visually bracketed by inline '1) 2) 3) 4)' numbering. Read aloud, the enumeration flows as one breath-group (a single definition list feeding one 'answer per point' instruction), not the sequential/conditional multi-move shape rule 36 targets; splitting into 4 paragraphs would fragment one cohesive audit question artificially.",
+      "evidence": "Prompt is one paragraph (~60 words) with 4 parallel evaluation criteria already visually bracketed by inline '1) 2) 3) 4)' numbering; reads aloud as one breath-group feeding one 'answer per point' instruction, not the sequential/conditional multi-move shape this rule targets.",
       "fix_hint": null,
       "blocking": false
     },
@@ -526,7 +516,7 @@
       "rule_index": 38,
       "rule_lead": "Body lead-in mirrors prompt's opening phrasing.",
       "verdict": "REVISE",
-      "evidence": "Body lead-in's last sentence (L30) 'Its answer lands in the transcript you are about to read.' beside the prompt's first sentence 'Are we done-done?' - no shared verb or noun-phrase; the lead-in is about session/transcript mechanics while the prompt opens on the done-done question itself. Same underlying gap as check_prompts rule 2; unchanged by the current diff.",
+      "evidence": "Body lead-in's last sentence (L30) 'Its answer lands in the transcript you are about to read.' beside the prompt's first sentence 'Are we done-done?' - no shared verb or noun-phrase. Same underlying gap as check_prompts rule 2; unchanged by the pinned diff; pre-existing, non-blocking TODO.",
       "fix_hint": "Rework the lead-in's final clause to echo the prompt's opening move, e.g. end on '...you are about to ask whether the session is done-done.'",
       "blocking": false
     },
@@ -535,7 +525,7 @@
       "rule_index": 39,
       "rule_lead": "Declare permission-mode: when paste requires specific Claude Code mode.",
       "verdict": "PASS",
-      "evidence": "Registry frontmatter (curriculum/prompts/ae101-m5-done-done.md) has no permission-mode: field, correctly omitted since the prompt's behavior doesn't depend on plan vs default mode.",
+      "evidence": "Registry frontmatter has no permission-mode: field, correctly omitted since the prompt's behavior doesn't depend on plan vs default mode.",
       "fix_hint": null,
       "blocking": false
     },
@@ -544,7 +534,7 @@
       "rule_index": 40,
       "rule_lead": "Verify session boundary before deciding prompt's context-carrying.",
       "verdict": "PASS",
-      "evidence": "Confirmed WARM via maintainer L117 (runs inside the still-live M4 send-off session) and via the registry note ('student-run in the M4 send-off session'). Sub-clause 40b: the prompt self-defines the curriculum-coined term inside the fence ('By done-done I mean: 1)...4)...') rather than assuming the agent already holds it from scrollback - the sanctioned fix pattern.",
+      "evidence": "Confirmed WARM via maintainer L117 (runs inside the still-live M4 send-off session). Sub-clause 40b: the prompt self-defines the curriculum-coined term inside the fence rather than assuming the agent already holds it from scrollback.",
       "fix_hint": null,
       "blocking": false
     },
@@ -562,7 +552,7 @@
       "rule_index": 1,
       "rule_lead": "Mood contract named.",
       "verdict": "PASS",
-      "evidence": "Maintainer Meta block states the mood target directly: 'Mood target: learning through contrast...' with diagnostic + fix recorded, satisfying the rule's 'state in one sentence' requirement: student leaves M5 having tested a felt worry against real evidence and built one check that proved itself, priming M6's wider systemic question ('do all our tasks pass, who reviewed what'). No mechanical/setup beat mistakenly held to the mood-floor (worktree setup was moved out to the exercise file).",
+      "evidence": "Maintainer Meta block states the mood target directly: 'learning through contrast', with diagnostic + fix recorded. No mechanical/setup beat mistakenly held to the mood-floor.",
       "fix_hint": null,
       "blocking": false
     },
@@ -571,7 +561,7 @@
       "rule_index": 3,
       "rule_lead": "Lead with discipline, not failure mode.",
       "verdict": "PASS",
-      "evidence": "Big Idea (L4) leads with 'Steer your long session', a discipline, not a failure word. Section headers lead with disciplines/insights ('Say what done-done means', 'Inspect your results'), not failure-mode nouns.",
+      "evidence": "Big Idea (L4) leads with 'Steer your long session', a discipline, not a failure word. Section headers lead with disciplines/insights.",
       "fix_hint": null,
       "blocking": false
     },
@@ -580,7 +570,7 @@
       "rule_index": 4,
       "rule_lead": "Strategy-fidelity check.",
       "verdict": "PASS",
-      "evidence": "No sequencing front-run observed: three-pattern name deliberately withheld until the closing lecture per maintainer notes; 'eval' correctly embargoed to M6 (body uses 'LLM judge', never 'eval'); Cherny withheld from body. Cross-module sequencing fidelity is the strategy class's primary check, already scored separately (Quality line: strategy@a50978f7 PASS).",
+      "evidence": "No sequencing front-run observed: three-pattern name deliberately withheld until the closing lecture; 'eval' correctly embargoed to M6 (body uses 'LLM judge', never 'eval'); Cherny withheld from body.",
       "fix_hint": null,
       "blocking": false
     },
@@ -589,7 +579,7 @@
       "rule_index": 5,
       "rule_lead": "Strategic themes recur in Key Concepts.",
       "verdict": "PASS",
-      "evidence": "KC bullets (L59-62) instance multiple AE101 themes in the module's own language: 'The model already knows the public field' (90%-correct); 'The missing evidence is the interaction of this task, model, repository, and setup' (capture-your-world/specificity); 'The agent makes evidence cheap; the engineer decides what it means and what becomes durable practice' (compounding + self-awareness). Maintainer L127 confirms these four lines are deliberately theme-mapped to the what-packaging-is.md theory slides.",
+      "evidence": "KC bullets (L59-62) instance multiple AE101 themes in the module's own language: 90%-correct, capture-your-world/specificity, compounding + self-awareness. Maintainer L127 confirms these four lines are deliberately theme-mapped.",
       "fix_hint": null,
       "blocking": false
     },
@@ -598,7 +588,7 @@
       "rule_index": 6,
       "rule_lead": "Key Concepts shape — theme breadcrumbs, not standalone section.",
       "verdict": "PASS",
-      "evidence": "No 'Remember:' label, no bold wrapper on any KC bullet (L59-62). Maintainer L127 explicitly locks these four lines verbatim ('Do not re-expand with mechanics bullets'), consistent with the rule's breadcrumb-decorates-survivors intent already settled by design.",
+      "evidence": "No 'Remember:' label, no bold wrapper on any KC bullet. Maintainer L127 explicitly locks these four lines verbatim.",
       "fix_hint": null,
       "blocking": false
     },
@@ -607,9 +597,20 @@
       "rule_index": 7,
       "rule_lead": "What You'll Learn shape — capability register, not syllabus.",
       "verdict": "PASS",
-      "evidence": "All 5 WYL bullets (L14-18) lead with concrete construction/action verbs (Diagnose, Pair, Build, Assemble, Re-send) fitting their objects, no performative/academic verbs, no Bloom-tag parentheticals, no pedagogical-mechanism tails, no author-defence asides, no didactic taxonomy stamps. L16's diff-edit removed the closest thing to a taxonomy-stamp phrase ('using one of three shapes'), tightening this further. Reads as an engineer describing a new capability to a peer.",
+      "evidence": "All 5 WYL bullets (L14-18) lead with concrete construction/action verbs (Diagnose, Pair, Build, Assemble, Re-send) fitting their objects, no performative/academic verbs, no Bloom-tag parentheticals, no pedagogical-mechanism tails, no author-defence asides, no didactic taxonomy stamps.",
       "fix_hint": null,
       "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 18,
+      "rule_lead": "Self-critique register, not defense, when Claude interrogates own work.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "168fe93fb8600d4cbe7aae572b783f1a86b5943e69c65c18e041ab1fa370bb16",
+      "carried_shape": "94301cda9e6a5a78"
     },
     {
       "compendium": "check_writing.md",
@@ -619,7 +620,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1ea20076e7e6931e417de719ddf62e4ab1eea11f4bf348d5e60f91c03438a2b1",
+      "carried_from": "168fe93fb8600d4cbe7aae572b783f1a86b5943e69c65c18e041ab1fa370bb16",
       "carried_shape": "94301cda9e6a5a78"
     },
     {
@@ -630,7 +631,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1ea20076e7e6931e417de719ddf62e4ab1eea11f4bf348d5e60f91c03438a2b1",
+      "carried_from": "168fe93fb8600d4cbe7aae572b783f1a86b5943e69c65c18e041ab1fa370bb16",
       "carried_shape": "94301cda9e6a5a78"
     },
     {
@@ -641,7 +642,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1ea20076e7e6931e417de719ddf62e4ab1eea11f4bf348d5e60f91c03438a2b1",
+      "carried_from": "168fe93fb8600d4cbe7aae572b783f1a86b5943e69c65c18e041ab1fa370bb16",
       "carried_shape": "94301cda9e6a5a78"
     },
     {
@@ -652,7 +653,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1ea20076e7e6931e417de719ddf62e4ab1eea11f4bf348d5e60f91c03438a2b1",
+      "carried_from": "168fe93fb8600d4cbe7aae572b783f1a86b5943e69c65c18e041ab1fa370bb16",
       "carried_shape": "94301cda9e6a5a78"
     },
     {
@@ -663,7 +664,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1ea20076e7e6931e417de719ddf62e4ab1eea11f4bf348d5e60f91c03438a2b1",
+      "carried_from": "168fe93fb8600d4cbe7aae572b783f1a86b5943e69c65c18e041ab1fa370bb16",
       "carried_shape": "94301cda9e6a5a78"
     },
     {
@@ -674,7 +675,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1ea20076e7e6931e417de719ddf62e4ab1eea11f4bf348d5e60f91c03438a2b1",
+      "carried_from": "168fe93fb8600d4cbe7aae572b783f1a86b5943e69c65c18e041ab1fa370bb16",
       "carried_shape": "94301cda9e6a5a78"
     },
     {
@@ -685,7 +686,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1ea20076e7e6931e417de719ddf62e4ab1eea11f4bf348d5e60f91c03438a2b1",
+      "carried_from": "168fe93fb8600d4cbe7aae572b783f1a86b5943e69c65c18e041ab1fa370bb16",
       "carried_shape": "94301cda9e6a5a78"
     },
     {
@@ -696,7 +697,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1ea20076e7e6931e417de719ddf62e4ab1eea11f4bf348d5e60f91c03438a2b1",
+      "carried_from": "168fe93fb8600d4cbe7aae572b783f1a86b5943e69c65c18e041ab1fa370bb16",
       "carried_shape": "94301cda9e6a5a78"
     },
     {
@@ -707,7 +708,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1ea20076e7e6931e417de719ddf62e4ab1eea11f4bf348d5e60f91c03438a2b1",
+      "carried_from": "168fe93fb8600d4cbe7aae572b783f1a86b5943e69c65c18e041ab1fa370bb16",
       "carried_shape": "94301cda9e6a5a78"
     },
     {
@@ -718,7 +719,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1ea20076e7e6931e417de719ddf62e4ab1eea11f4bf348d5e60f91c03438a2b1",
+      "carried_from": "168fe93fb8600d4cbe7aae572b783f1a86b5943e69c65c18e041ab1fa370bb16",
       "carried_shape": "94301cda9e6a5a78"
     },
     {
@@ -729,7 +730,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1ea20076e7e6931e417de719ddf62e4ab1eea11f4bf348d5e60f91c03438a2b1",
+      "carried_from": "168fe93fb8600d4cbe7aae572b783f1a86b5943e69c65c18e041ab1fa370bb16",
       "carried_shape": "94301cda9e6a5a78"
     },
     {
@@ -740,7 +741,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1ea20076e7e6931e417de719ddf62e4ab1eea11f4bf348d5e60f91c03438a2b1",
+      "carried_from": "168fe93fb8600d4cbe7aae572b783f1a86b5943e69c65c18e041ab1fa370bb16",
       "carried_shape": "94301cda9e6a5a78"
     },
     {
@@ -751,7 +752,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1ea20076e7e6931e417de719ddf62e4ab1eea11f4bf348d5e60f91c03438a2b1",
+      "carried_from": "168fe93fb8600d4cbe7aae572b783f1a86b5943e69c65c18e041ab1fa370bb16",
       "carried_shape": "94301cda9e6a5a78"
     },
     {
@@ -762,7 +763,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1ea20076e7e6931e417de719ddf62e4ab1eea11f4bf348d5e60f91c03438a2b1",
+      "carried_from": "168fe93fb8600d4cbe7aae572b783f1a86b5943e69c65c18e041ab1fa370bb16",
       "carried_shape": "94301cda9e6a5a78"
     },
     {
@@ -773,7 +774,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1ea20076e7e6931e417de719ddf62e4ab1eea11f4bf348d5e60f91c03438a2b1",
+      "carried_from": "168fe93fb8600d4cbe7aae572b783f1a86b5943e69c65c18e041ab1fa370bb16",
       "carried_shape": "94301cda9e6a5a78"
     },
     {
@@ -784,7 +785,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1ea20076e7e6931e417de719ddf62e4ab1eea11f4bf348d5e60f91c03438a2b1",
+      "carried_from": "168fe93fb8600d4cbe7aae572b783f1a86b5943e69c65c18e041ab1fa370bb16",
       "carried_shape": "94301cda9e6a5a78"
     },
     {
@@ -795,7 +796,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1ea20076e7e6931e417de719ddf62e4ab1eea11f4bf348d5e60f91c03438a2b1",
+      "carried_from": "168fe93fb8600d4cbe7aae572b783f1a86b5943e69c65c18e041ab1fa370bb16",
       "carried_shape": "94301cda9e6a5a78"
     },
     {
@@ -806,7 +807,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1ea20076e7e6931e417de719ddf62e4ab1eea11f4bf348d5e60f91c03438a2b1",
+      "carried_from": "168fe93fb8600d4cbe7aae572b783f1a86b5943e69c65c18e041ab1fa370bb16",
       "carried_shape": "94301cda9e6a5a78"
     },
     {
@@ -817,7 +818,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1ea20076e7e6931e417de719ddf62e4ab1eea11f4bf348d5e60f91c03438a2b1",
+      "carried_from": "168fe93fb8600d4cbe7aae572b783f1a86b5943e69c65c18e041ab1fa370bb16",
       "carried_shape": "94301cda9e6a5a78"
     },
     {
@@ -828,7 +829,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1ea20076e7e6931e417de719ddf62e4ab1eea11f4bf348d5e60f91c03438a2b1",
+      "carried_from": "168fe93fb8600d4cbe7aae572b783f1a86b5943e69c65c18e041ab1fa370bb16",
       "carried_shape": "94301cda9e6a5a78"
     },
     {
@@ -839,7 +840,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1ea20076e7e6931e417de719ddf62e4ab1eea11f4bf348d5e60f91c03438a2b1",
+      "carried_from": "168fe93fb8600d4cbe7aae572b783f1a86b5943e69c65c18e041ab1fa370bb16",
       "carried_shape": "94301cda9e6a5a78"
     },
     {
@@ -850,7 +851,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1ea20076e7e6931e417de719ddf62e4ab1eea11f4bf348d5e60f91c03438a2b1",
+      "carried_from": "168fe93fb8600d4cbe7aae572b783f1a86b5943e69c65c18e041ab1fa370bb16",
       "carried_shape": "94301cda9e6a5a78"
     },
     {
@@ -861,7 +862,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1ea20076e7e6931e417de719ddf62e4ab1eea11f4bf348d5e60f91c03438a2b1",
+      "carried_from": "168fe93fb8600d4cbe7aae572b783f1a86b5943e69c65c18e041ab1fa370bb16",
       "carried_shape": "94301cda9e6a5a78"
     },
     {
@@ -872,7 +873,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1ea20076e7e6931e417de719ddf62e4ab1eea11f4bf348d5e60f91c03438a2b1",
+      "carried_from": "168fe93fb8600d4cbe7aae572b783f1a86b5943e69c65c18e041ab1fa370bb16",
       "carried_shape": "94301cda9e6a5a78"
     },
     {
@@ -883,7 +884,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1ea20076e7e6931e417de719ddf62e4ab1eea11f4bf348d5e60f91c03438a2b1",
+      "carried_from": "168fe93fb8600d4cbe7aae572b783f1a86b5943e69c65c18e041ab1fa370bb16",
       "carried_shape": "94301cda9e6a5a78"
     },
     {
@@ -894,7 +895,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1ea20076e7e6931e417de719ddf62e4ab1eea11f4bf348d5e60f91c03438a2b1",
+      "carried_from": "168fe93fb8600d4cbe7aae572b783f1a86b5943e69c65c18e041ab1fa370bb16",
       "carried_shape": "94301cda9e6a5a78"
     },
     {
@@ -905,7 +906,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1ea20076e7e6931e417de719ddf62e4ab1eea11f4bf348d5e60f91c03438a2b1",
+      "carried_from": "168fe93fb8600d4cbe7aae572b783f1a86b5943e69c65c18e041ab1fa370bb16",
       "carried_shape": "94301cda9e6a5a78"
     },
     {
@@ -916,7 +917,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1ea20076e7e6931e417de719ddf62e4ab1eea11f4bf348d5e60f91c03438a2b1",
+      "carried_from": "168fe93fb8600d4cbe7aae572b783f1a86b5943e69c65c18e041ab1fa370bb16",
       "carried_shape": "94301cda9e6a5a78"
     },
     {
@@ -927,7 +928,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1ea20076e7e6931e417de719ddf62e4ab1eea11f4bf348d5e60f91c03438a2b1",
+      "carried_from": "168fe93fb8600d4cbe7aae572b783f1a86b5943e69c65c18e041ab1fa370bb16",
       "carried_shape": "94301cda9e6a5a78"
     },
     {
@@ -938,7 +939,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1ea20076e7e6931e417de719ddf62e4ab1eea11f4bf348d5e60f91c03438a2b1",
+      "carried_from": "168fe93fb8600d4cbe7aae572b783f1a86b5943e69c65c18e041ab1fa370bb16",
       "carried_shape": "94301cda9e6a5a78"
     },
     {
@@ -949,7 +950,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1ea20076e7e6931e417de719ddf62e4ab1eea11f4bf348d5e60f91c03438a2b1",
+      "carried_from": "168fe93fb8600d4cbe7aae572b783f1a86b5943e69c65c18e041ab1fa370bb16",
       "carried_shape": "94301cda9e6a5a78"
     },
     {
@@ -960,7 +961,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1ea20076e7e6931e417de719ddf62e4ab1eea11f4bf348d5e60f91c03438a2b1",
+      "carried_from": "168fe93fb8600d4cbe7aae572b783f1a86b5943e69c65c18e041ab1fa370bb16",
       "carried_shape": "94301cda9e6a5a78"
     },
     {
@@ -971,7 +972,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1ea20076e7e6931e417de719ddf62e4ab1eea11f4bf348d5e60f91c03438a2b1",
+      "carried_from": "168fe93fb8600d4cbe7aae572b783f1a86b5943e69c65c18e041ab1fa370bb16",
       "carried_shape": "94301cda9e6a5a78"
     },
     {
@@ -982,7 +983,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1ea20076e7e6931e417de719ddf62e4ab1eea11f4bf348d5e60f91c03438a2b1",
+      "carried_from": "168fe93fb8600d4cbe7aae572b783f1a86b5943e69c65c18e041ab1fa370bb16",
       "carried_shape": "94301cda9e6a5a78"
     },
     {
@@ -993,7 +994,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1ea20076e7e6931e417de719ddf62e4ab1eea11f4bf348d5e60f91c03438a2b1",
+      "carried_from": "168fe93fb8600d4cbe7aae572b783f1a86b5943e69c65c18e041ab1fa370bb16",
       "carried_shape": "94301cda9e6a5a78"
     },
     {
@@ -1004,7 +1005,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1ea20076e7e6931e417de719ddf62e4ab1eea11f4bf348d5e60f91c03438a2b1",
+      "carried_from": "168fe93fb8600d4cbe7aae572b783f1a86b5943e69c65c18e041ab1fa370bb16",
       "carried_shape": "94301cda9e6a5a78"
     },
     {
@@ -1015,7 +1016,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1ea20076e7e6931e417de719ddf62e4ab1eea11f4bf348d5e60f91c03438a2b1",
+      "carried_from": "168fe93fb8600d4cbe7aae572b783f1a86b5943e69c65c18e041ab1fa370bb16",
       "carried_shape": "94301cda9e6a5a78"
     },
     {
@@ -1026,7 +1027,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1ea20076e7e6931e417de719ddf62e4ab1eea11f4bf348d5e60f91c03438a2b1",
+      "carried_from": "168fe93fb8600d4cbe7aae572b783f1a86b5943e69c65c18e041ab1fa370bb16",
       "carried_shape": "94301cda9e6a5a78"
     },
     {
@@ -1037,7 +1038,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1ea20076e7e6931e417de719ddf62e4ab1eea11f4bf348d5e60f91c03438a2b1",
+      "carried_from": "168fe93fb8600d4cbe7aae572b783f1a86b5943e69c65c18e041ab1fa370bb16",
       "carried_shape": "94301cda9e6a5a78"
     },
     {
@@ -1048,7 +1049,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1ea20076e7e6931e417de719ddf62e4ab1eea11f4bf348d5e60f91c03438a2b1",
+      "carried_from": "168fe93fb8600d4cbe7aae572b783f1a86b5943e69c65c18e041ab1fa370bb16",
       "carried_shape": "94301cda9e6a5a78"
     },
     {
@@ -1059,7 +1060,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1ea20076e7e6931e417de719ddf62e4ab1eea11f4bf348d5e60f91c03438a2b1",
+      "carried_from": "168fe93fb8600d4cbe7aae572b783f1a86b5943e69c65c18e041ab1fa370bb16",
       "carried_shape": "94301cda9e6a5a78"
     },
     {
@@ -1070,7 +1071,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1ea20076e7e6931e417de719ddf62e4ab1eea11f4bf348d5e60f91c03438a2b1",
+      "carried_from": "168fe93fb8600d4cbe7aae572b783f1a86b5943e69c65c18e041ab1fa370bb16",
       "carried_shape": "94301cda9e6a5a78"
     },
     {
@@ -1081,7 +1082,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1ea20076e7e6931e417de719ddf62e4ab1eea11f4bf348d5e60f91c03438a2b1",
+      "carried_from": "168fe93fb8600d4cbe7aae572b783f1a86b5943e69c65c18e041ab1fa370bb16",
       "carried_shape": "94301cda9e6a5a78"
     },
     {
@@ -1092,7 +1093,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1ea20076e7e6931e417de719ddf62e4ab1eea11f4bf348d5e60f91c03438a2b1",
+      "carried_from": "168fe93fb8600d4cbe7aae572b783f1a86b5943e69c65c18e041ab1fa370bb16",
       "carried_shape": "94301cda9e6a5a78"
     },
     {
@@ -1103,7 +1104,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1ea20076e7e6931e417de719ddf62e4ab1eea11f4bf348d5e60f91c03438a2b1",
+      "carried_from": "168fe93fb8600d4cbe7aae572b783f1a86b5943e69c65c18e041ab1fa370bb16",
       "carried_shape": "94301cda9e6a5a78"
     },
     {
@@ -1114,7 +1115,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1ea20076e7e6931e417de719ddf62e4ab1eea11f4bf348d5e60f91c03438a2b1",
+      "carried_from": "168fe93fb8600d4cbe7aae572b783f1a86b5943e69c65c18e041ab1fa370bb16",
       "carried_shape": "94301cda9e6a5a78"
     },
     {
@@ -1125,7 +1126,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1ea20076e7e6931e417de719ddf62e4ab1eea11f4bf348d5e60f91c03438a2b1",
+      "carried_from": "168fe93fb8600d4cbe7aae572b783f1a86b5943e69c65c18e041ab1fa370bb16",
       "carried_shape": "94301cda9e6a5a78"
     },
     {
@@ -1136,7 +1137,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1ea20076e7e6931e417de719ddf62e4ab1eea11f4bf348d5e60f91c03438a2b1",
+      "carried_from": "168fe93fb8600d4cbe7aae572b783f1a86b5943e69c65c18e041ab1fa370bb16",
       "carried_shape": "94301cda9e6a5a78"
     },
     {
@@ -1147,7 +1148,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1ea20076e7e6931e417de719ddf62e4ab1eea11f4bf348d5e60f91c03438a2b1",
+      "carried_from": "168fe93fb8600d4cbe7aae572b783f1a86b5943e69c65c18e041ab1fa370bb16",
       "carried_shape": "94301cda9e6a5a78"
     },
     {
@@ -1158,7 +1159,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1ea20076e7e6931e417de719ddf62e4ab1eea11f4bf348d5e60f91c03438a2b1",
+      "carried_from": "168fe93fb8600d4cbe7aae572b783f1a86b5943e69c65c18e041ab1fa370bb16",
       "carried_shape": "94301cda9e6a5a78"
     },
     {
@@ -1169,7 +1170,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1ea20076e7e6931e417de719ddf62e4ab1eea11f4bf348d5e60f91c03438a2b1",
+      "carried_from": "168fe93fb8600d4cbe7aae572b783f1a86b5943e69c65c18e041ab1fa370bb16",
       "carried_shape": "94301cda9e6a5a78"
     },
     {
@@ -1180,7 +1181,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1ea20076e7e6931e417de719ddf62e4ab1eea11f4bf348d5e60f91c03438a2b1",
+      "carried_from": "168fe93fb8600d4cbe7aae572b783f1a86b5943e69c65c18e041ab1fa370bb16",
       "carried_shape": "94301cda9e6a5a78"
     },
     {
@@ -1191,7 +1192,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1ea20076e7e6931e417de719ddf62e4ab1eea11f4bf348d5e60f91c03438a2b1",
+      "carried_from": "168fe93fb8600d4cbe7aae572b783f1a86b5943e69c65c18e041ab1fa370bb16",
       "carried_shape": "94301cda9e6a5a78"
     },
     {
@@ -1202,7 +1203,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1ea20076e7e6931e417de719ddf62e4ab1eea11f4bf348d5e60f91c03438a2b1",
+      "carried_from": "168fe93fb8600d4cbe7aae572b783f1a86b5943e69c65c18e041ab1fa370bb16",
       "carried_shape": "94301cda9e6a5a78"
     },
     {
@@ -1213,7 +1214,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1ea20076e7e6931e417de719ddf62e4ab1eea11f4bf348d5e60f91c03438a2b1",
+      "carried_from": "168fe93fb8600d4cbe7aae572b783f1a86b5943e69c65c18e041ab1fa370bb16",
       "carried_shape": "94301cda9e6a5a78"
     },
     {
@@ -1224,7 +1225,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1ea20076e7e6931e417de719ddf62e4ab1eea11f4bf348d5e60f91c03438a2b1",
+      "carried_from": "168fe93fb8600d4cbe7aae572b783f1a86b5943e69c65c18e041ab1fa370bb16",
       "carried_shape": "94301cda9e6a5a78"
     },
     {
@@ -1235,7 +1236,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1ea20076e7e6931e417de719ddf62e4ab1eea11f4bf348d5e60f91c03438a2b1",
+      "carried_from": "168fe93fb8600d4cbe7aae572b783f1a86b5943e69c65c18e041ab1fa370bb16",
       "carried_shape": "94301cda9e6a5a78"
     },
     {
@@ -1246,7 +1247,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1ea20076e7e6931e417de719ddf62e4ab1eea11f4bf348d5e60f91c03438a2b1",
+      "carried_from": "168fe93fb8600d4cbe7aae572b783f1a86b5943e69c65c18e041ab1fa370bb16",
       "carried_shape": "94301cda9e6a5a78"
     },
     {
@@ -1257,7 +1258,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1ea20076e7e6931e417de719ddf62e4ab1eea11f4bf348d5e60f91c03438a2b1",
+      "carried_from": "168fe93fb8600d4cbe7aae572b783f1a86b5943e69c65c18e041ab1fa370bb16",
       "carried_shape": "94301cda9e6a5a78"
     },
     {
@@ -1268,7 +1269,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1ea20076e7e6931e417de719ddf62e4ab1eea11f4bf348d5e60f91c03438a2b1",
+      "carried_from": "168fe93fb8600d4cbe7aae572b783f1a86b5943e69c65c18e041ab1fa370bb16",
       "carried_shape": "94301cda9e6a5a78"
     },
     {
@@ -1279,7 +1280,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1ea20076e7e6931e417de719ddf62e4ab1eea11f4bf348d5e60f91c03438a2b1",
+      "carried_from": "168fe93fb8600d4cbe7aae572b783f1a86b5943e69c65c18e041ab1fa370bb16",
       "carried_shape": "94301cda9e6a5a78"
     },
     {
@@ -1290,15 +1291,15 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1ea20076e7e6931e417de719ddf62e4ab1eea11f4bf348d5e60f91c03438a2b1",
+      "carried_from": "168fe93fb8600d4cbe7aae572b783f1a86b5943e69c65c18e041ab1fa370bb16",
       "carried_shape": "94301cda9e6a5a78"
     }
   ],
-  "blocking_findings_count": 1,
+  "blocking_findings_count": 0,
   "todos_count": 2,
   "resolution": {
     "settled": "fixed",
     "at": "2026-08-28",
-    "note": "Refuters killed the harm but the §21b violation was real; body L42 now reads first-hand data from the session itself — noun-run gone."
+    "note": "Refuters killed the harm but the §21b violation was real; body L42 now reads first-hand data from the session itself — noun-run gone. Confirmed clean on re-judgement 2026-08-29: single-line diff, no new violation introduced, rest of class independently re-checked."
   }
 }

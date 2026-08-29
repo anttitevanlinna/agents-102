@@ -6,17 +6,17 @@ You are testing, and you are learning. Every send-off from here on is an experim
 
 You don't need to get it right first time. Read the result and decide what to change next.
 
-You're new to this country: the stretch where the agent runs alone and you don't watch each step. Don't travel it like a tourist. A tourist runs an agent and hopes; a practitioner runs a test and reads the data.
+You're new to this country. A tourist runs an agent and hopes; a practitioner runs a test and reads the data.
 
 ## The two-session arc
 
-- Same task, two sessions. Session one goes now, un-packaged: no plan.md, no verifier, no reference artifact. Just *"here's my system, go do X."* The agent works with exactly what you've given it.
+- Same task, two sessions. Session one goes now, un-packaged: no plan.md, no verifier, no reference artifact. Just *"here's my system, go do X."*
 - Session two goes packaged, after you've read the return. You find what went wrong, watch each packaging piece close a specific gap you just saw, and send the same task again.
 
 ## Cancel is legitimate; traces are data
 
-- Cancel is legitimate; traces are data. If twenty minutes in you can see Claude hallucinating file paths, contradicting its own earlier steps, or missing a requirement that wasn't in the prompt, stop it. You have the data you came for.
-- A result you can read is enough; you do not need a completed artifact. A short session with useful observations beats hours of trace you can't read.
+- If twenty minutes in you can see Claude hallucinating file paths, contradicting its own earlier steps, or missing a requirement that wasn't in the prompt, stop it. You have the data you came for.
+- A short session with useful observations beats hours of trace you can't read.
 - For this first session, fifteen to thirty minutes is enough. Session length follows the task and how well your checks guide it.
 
 <!-- maintainer -->
@@ -34,7 +34,9 @@ You're new to this country: the stretch where the agent runs alone and you don't
 **Lecture meta:** *~10 min lecture, deck-shaped (3 slides + kicker). Sets up M4's walk-and-send-off exercise. Names the spirit of the two-session arc; the gap-analysis naming rides with the exercise.*
 **Word count:** ~280 words body.
 
-**Time:** 10 min at presentation pace. Don't rush; don't pad. The "spirit" slide is load-bearing — it's where the experimental stance lands.
+**Time:** 9 min at presentation pace. Don't rush; don't pad. The "spirit" slide is load-bearing — it's where the experimental stance lands.
+
+**Density pass (2026-08-29, Antti-directed):** five restatements cut across the three slides — the tourist setup line before the aphorism, the gloss after "new to this country", "The agent works with exactly what you've given it", the header echo opening the cancel bullet, and "A result you can read is enough" (the aphorism beside it carries the claim). Each was a sentence restating its neighbour. `cancel-is-legitimate` and `any-trace-counts` re-anchored onto the surviving text; no claim retired. Antti kept "You are testing, and you are learning" and "You don't need to get it right first time" — do not re-propose either.
 
 **Philosophy callouts:** none this lecture. The spirit itself is the beat; a further philosophy tag would dilute.
 
@@ -52,8 +54,8 @@ Format → `curriculum/backing-format.md`. Absorbed 2026-08-01 from the legacy `
 - `read-the-result-not-get-it-right` · vision · "You don't need to get it right first time. Read the result and decide what to change next." ← none-owed
 - `tourist-vs-practitioner` · vision · "a tourist runs an agent and hopes; a practitioner runs a test and reads the data" ← none-owed
 - `un-packaged-first-by-design` · vision · "Session one goes now, un-packaged: no plan.md, no verifier, no reference artifact." ← none-owed
-- `cancel-is-legitimate` · vision · "Cancel is legitimate; traces are data." ← none-owed — the house's own operating rule for the exercise. **Was `detail` until 2026-08-01**, on the strength of the delivery note framing it as *what real operators do*; that framing was not evidenced and has been removed. See Flagged.
-- `any-trace-counts` · vision · "A result you can read is enough; you do not need a completed artifact." ← none-owed
+- `cancel-is-legitimate` · vision · "stop it. You have the data you came for." ← none-owed — the house's own operating rule for the exercise. **Was `detail` until 2026-08-01**, on the strength of the delivery note framing it as *what real operators do*; that framing was not evidenced and has been removed. See Flagged.
+- `any-trace-counts` · vision · "A short session with useful observations beats hours of trace you can't read." ← none-owed
 - `fifteen-to-thirty-minutes` · vision · "For this first session, fifteen to thirty minutes is enough." ← none-owed — the classroom timebox, the maintainer's own design call, set against a cohort whose real M4 long task ran 12 minutes.
 - `engineers-run-for-hours` · detail · "Session length follows the task and how well your checks guide it." ← klaassen-overnight-prs, horthy-ralph-history, litt-code-like-a-surgeon, ronacher-long-runs-worse — the sources establish that named engineers do run these for hours when the task warrants it. The last one is listed deliberately as backing: it is the standing dissent this claim has to survive, and a re-verifier who reads the three supporting accounts without it will re-grade the claim too generously.
 

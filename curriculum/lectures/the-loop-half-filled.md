@@ -35,7 +35,7 @@
 
 - The side quest ran on its own branch all module and never merged. That is the shape, not an accident.
 - On a branch, acting without full control is safe: the blast radius is the branch. Let the agent run, read what your judgment flags, and leave the rest on disk.
-- Control is exercised at the merge. The ranked findings, the delta against what you know, the weak spot named: the interrogation happens there, and the merge waits until the work survives it.
+- Control is exercised at the merge. The interrogation happens there, and the merge waits until the work survives it.
 - An un-merged branch is not unfinished work. Holding the merge until control is earned is the control working.
 
 ## The far half goes quiet

@@ -13,13 +13,13 @@
 
 - An LLM judge is another untested component. Until you compare its verdicts with your own review, you do not know its false-pass rate, how often it approves work you would reject.
 - The move: compare a handful of your own judgements with the judge's verdicts, and teach the judge until you converge. You are looking for disagreement patterns, not a significance test. Re-check when the model or the task shifts. Hamel Husain reports better than 90% agreement after three iterations of exactly this loop.
-- A good gate starts from real traces, not imagined failures. Read sessions that actually happened, sort the real failures into buckets, and write the first check for the biggest bucket. A gate built from the armchair catches the failures you pictured and misses the ones you have.
+- A good gate starts from real traces, not imagined failures. Read sessions that actually happened, sort the real failures into buckets, and write the first check for the biggest bucket.
 
 ## Gates decay
 <!--tier:2-->
 
 - **Goodhart's law:** when a measure becomes a target, it ceases to be a good measure. The agent is an optimizer aimed straight at your gate: it may special-case tests, keyword-stuff work for the judge, or edit assertions until they pass. No malice needed: optimization pressure finds the cheapest path to green.
-- Passing while missing the intent is a signature, not bad luck. When work clears the gate and still is not what you meant, the gate has decayed into a target. That is a reason to refresh the gate, not to shrug.
+- When work clears the gate and still is not what you meant, the gate has decayed into a target. That is a reason to refresh the gate, not to shrug.
 - The countermoves are a hold-out and an integrity check. Keep a check the agent never sees, so nothing can optimize against it. After a suspicious pass, inspect the gate itself (the test file, the judge prompt, the asserts), not only its verdict.
 
 ## One session is a sample

@@ -3,7 +3,7 @@
 ## What a skill is
 
 - A **skill** is a named, scoped capability the agent can invoke. A markdown file with a frontmatter header and a set of instructions, living in `.claude/skills/<name>/SKILL.md` or an equivalent team-kit home. Claude Code discovers it by name and pulls the body in when the work calls for it.
-- One frontier skill already reached you as a plain prompt. The second-pass walk-down against your plan file, where Claude asked you one question at a time about unresolved branches, was patterned on Matt Pocock's `grill-me` skill (MIT-licensed on GitHub, and billed there as "a relentless interview to sharpen a plan or design"). Today the packaging arrives: you invoke two curated skills and author one of your own.
+- One frontier skill already reached you as a plain prompt. The second-pass walk-down against your plan file, where Claude asked you one question at a time about unresolved branches, was patterned on Matt Pocock's `grill-me` skill (MIT-licensed on GitHub, and billed there as "a relentless interview to sharpen a plan or design").
 - Skills are how agentic knowledge compounds across teammates. A Slack thread about "how to threat-model our webhook paths" dies in 48 hours. A STRIDE skill tuned to your stack lives as long as the repo.
 
 ## Borrowed judgement, or your own
@@ -25,13 +25,13 @@
 
 ## Three trust artifacts the next engineer checks
 
-- The module's title, *Earn the trust*, isn't rhetorical. By the module's end, three things exist that your staff engineer and your CISO would actually read: a mapped access surface for the feature you're shipping, an ADR naming one hardening decision under STRIDE pressure, and a test-strategy skill codifying how testing actually works on your system.
+- By the module's end, three things exist that your staff engineer and your CISO would actually read: a mapped access surface for the feature you're shipping, an ADR naming one hardening decision under STRIDE pressure, and a test-strategy skill codifying how testing actually works on your system.
 - None of them are compliance artifacts. Each is the thinking, written down: what was considered, what was decided, and under which constraint.
-- The test for trust is the next engineer. Not "we followed a checklist" but: whoever touches this feature next can see the reasoning and check it against the code.
+- The test for trust is the next engineer: whoever touches this feature next can see the reasoning and check it against the code.
 
 ## The tool flags; you make the call
 
-- The access-control skill flags surfaces; deciding is your job. What it got right, what it underweighted, what it missed that you know matters. Agreement is not the job; the delta is.
+- What the access-control skill got right, what it underweighted, what it missed that you know matters. Agreement is not the job; the delta is.
 - STRIDE does the breadth; you make one call. Resist the urge to harden against everything. Pick one threat worth the work and write the decision down as an ADR.
 - The authoring conversation will offer a generic test-pyramid default. Your codebase is not a pyramid. Push back until the skill reflects how your tests actually work.
 

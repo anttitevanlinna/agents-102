@@ -12,8 +12,6 @@ You press Shift+Tab until the status bar shows plan mode on. Then put the questi
 
 {{prompt:when-a-plan-is-good-1}}
 
-- Plan mode writes a thing you can read, edit, and push back on before your source changes.
-
 ## Five things a good plan has
 
 - **A specific file list.** Not "update the config." *Which* config, *which* keys. A plan that names three files has made three decisions. A plan that says "the relevant files" has made zero.
@@ -70,6 +68,8 @@ The canvas is `{{figure:delegation-frontier}}`, single-sourced from `curriculum/
 
 **Deferral bullet on the gate slide (2026-08-08, Antti-directed frame, near-verbatim).** *What the plan doesn't decide, the agent decides mid-run* is the inverse of the slide's lead bullet: the correction-redirects-everything claim gets its shadow, the deferred wrong decision that also redirects everything. *Propagates across files*, *wrongness tangles* and *you will not notice* are the maintainer's own words — do not soften *tangles*, and do not revert *you will not notice* to a nobody-is-reading claim: whether anyone watches mid-generation varies by engineer, but a wrong design call reads as progress while it is being made, so the noticing claim is the true one (maintainer correction, this pass). This slide is the mechanism's only M2 home (Antti 2026-08-25: the exercise's altitude recall bullet is cut; its soft-items menu entry remains the one point-of-use recall of vague steps). KC recall lands in `plan-mode-done-right.md` § Key Concepts.
 
+**The room has used plan mode (Antti, 2026-08-29).** The slide-1 bullet (*"Plan mode writes a thing you can read, edit, and push back on before your source changes"*) was cut as obvious to any Claude Code user, and `plan-before-source-changes` retired with it. M2's job is doing plan mode better, not introducing it. Do not restore an explainer bullet here. **The non-obvious half is still unshipped:** since v2.1.218 `useAutoModeDuringPlan` defaults on and approved shell commands run during planning, so plan mode protects the source tree and not all state. That correction lives only in the `cc-permission-modes` stamp below, which no student reads. If a bullet ever earns this slot again, it is that one, not the read-only promise.
+
 **Quality:** compendium-audited 2026-08-28 (writing@0cea7581 story@0cea7581 technical@8cc00874 behavior@1c765f2 pedagogy@0cea7581 strategy@1c765f2 slides@0cea7581)
 - judges @0cea7581: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 **Meta:**
@@ -88,7 +88,6 @@ Format → `curriculum/backing-format.md`.
 
 **Claims**
 - `plan-mode-shift-tab` · detail · "You press Shift+Tab until the status bar shows plan mode on" ← cc-permission-modes
-- `plan-before-source-changes` · detail · "Plan mode writes a thing you can read, edit, and push back on before your source changes." ← cc-permission-modes — "your source" is the load-bearing scope: since v2.1.218 approved shell commands run during planning, so plan mode protects the source tree, not all state.
 - `specific-file-list` · vision · "A plan that names three files has made three decisions. A plan that says \"the relevant files\" has made zero." ← none-owed
 - `early-runnable-slice` · borrowed · "Find the first step after which something runs end-to-end" ← horthy-wsff, cockburn-walking-skeleton
 - `verification-step-could-fail` · vision · "*\"Run the tests\"* is cosmetic; *\"run `pytest tests/auth/ -k hash` and expect 14 passing, 0 failing\"* is a gate" ← none-owed

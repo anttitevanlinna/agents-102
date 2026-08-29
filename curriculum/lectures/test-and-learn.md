@@ -12,7 +12,6 @@ You're new to this country: the stretch where the agent runs alone and you don't
 
 - Same task, two sessions. Session one goes now, un-packaged: no plan.md, no verifier, no reference artifact. Just *"here's my system, go do X."* The agent works with exactly what you've given it.
 - Session two goes packaged, after you've read the return. You find what went wrong, watch each packaging piece close a specific gap you just saw, and send the same task again.
-- The contrast is the lesson. Un-packaged first is by design.
 
 ## Cancel is legitimate; traces are data
 
@@ -53,7 +52,6 @@ Format → `curriculum/backing-format.md`. Absorbed 2026-08-01 from the legacy `
 - `read-the-result-not-get-it-right` · vision · "You don't need to get it right first time. Read the result and decide what to change next." ← none-owed
 - `tourist-vs-practitioner` · vision · "a tourist runs an agent and hopes; a practitioner runs a test and reads the data" ← none-owed
 - `un-packaged-first-by-design` · vision · "Session one goes now, un-packaged: no plan.md, no verifier, no reference artifact." ← none-owed
-- `contrast-is-the-lesson` · vision · "The contrast is the lesson. Un-packaged first is by design." ← none-owed
 - `cancel-is-legitimate` · vision · "Cancel is legitimate; traces are data." ← none-owed — the house's own operating rule for the exercise. **Was `detail` until 2026-08-01**, on the strength of the delivery note framing it as *what real operators do*; that framing was not evidenced and has been removed. See Flagged.
 - `any-trace-counts` · vision · "A result you can read is enough; you do not need a completed artifact." ← none-owed
 - `fifteen-to-thirty-minutes` · vision · "For this first session, fifteen to thirty minutes is enough." ← none-owed — the classroom timebox, the maintainer's own design call, set against a cohort whose real M4 long task ran 12 minutes.

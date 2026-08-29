@@ -12,19 +12,15 @@
 - **Verification** tells you whether the result is any good. Tests, checks, reads, judges: everything that pushes back on the work before you accept it. On a long session, this stops being a glance and becomes a job.
 - **Absorption** determines how much of the output you can actually take up. Generating is fast; reading, judging, and merging are not. On a long session the gap between the two decides your real throughput.
 - **Outcome** determines what survives the session. The fix you keep, the rule it taught you, and whether any of it crosses the wall from you to the team.
-
-## Your first un-packaged long session
-
-- One long session goes off un-packaged, on purpose. You watch what the agent does with the system you built, exactly as it stands. Nothing added for the occasion.
-- One question to carry into the session. When the agent takes a hundred steps alone, what makes you trust the result at the end?
+- One question to carry into the session: when the agent takes a hundred steps alone, what makes you trust the result at the end?
 
 <!-- maintainer -->
 
 **Map figure woven in (2026-07-10, Antti-directed "complete the text→pictures replacement", unreviewed):** the ASCII banner (near half done ▶ VERIFICATION ─▶ ABSORPTION ─▶ OUTCOME) replaced by the engine-map SVG, derived from `the-whole-map.md`'s canvas per the `the-map-filled-in.md` recipe. Edits vs the parent: ids re-prefixed `wm-` → `fh-` (theory handbook renders multiple copies on one page; duplicate ids break defs); a cream veil rect (opacity 0.55) hazes the NEAR half (x≤600, below the phase-header row — all six phase names stay legible); the three seam-straddling Work labels (build loop, agent's own loop, prototyping ghost — tags + subs) re-emitted above the veil with a cream erase-stroke at `fill-opacity="0.45"` so each reads uniformly dimmed instead of half-cut by the veil edge (caught on Chrome render 2026-07-10); two caption strips added at y=522: `NEAR HALF · DONE: INTENT · CONTEXT · WORK` (veiled side) and `THE FAR HALF · AHEAD` (lit side) — carrying the deleted ASCII's two text payloads. The checking loop stays a dashed ghost with its `by hand for now` sub. The soil strip (parent's bottom-center italic line, y=534) paints last, above the veil: the soil stays lit in both halves, and a re-derive must keep it last in element order. Figure block is blank-line-free ON PURPOSE (marked terminates raw-HTML on an interior blank line). If the M2 parent canvas changes, re-derive this copy. Re-audit before ship.
 
-**Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** container lecture, bullets kept on all three slides; bold reduced to the three phase-name sub-spans where each govern-bullet opens — **Verification** · **Absorption** · **Outcome**. Everything else de-bolded (both map-reveal bullets, the long-running lead, the whole un-packaged-run slide). ASCII fence untouched. Per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Wording near-verbatim; no claims added or cut.
+**Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** container lecture, bullets kept on both slides; bold reduced to the three phase-name sub-spans where each govern-bullet opens — **Verification** · **Absorption** · **Outcome**. Everything else de-bolded (both map-reveal bullets, the long-running lead). ASCII fence untouched. Per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Wording near-verbatim; no claims added or cut.
 
-**STATUS:** slide-format, proper-length bullets per `theory-plan.md` § Slide format. Three slides (one `##` = one slide); the map figure IS the first slide. Wired into `run-the-first-experiment.md § Start here` as the M4 opener, after the opening question. Audited — see the Quality line below; Family B judged PASS 2026-07-03.
+**STATUS:** slide-format, proper-length bullets per `theory-plan.md` § Slide format. Two slides (one `##` = one slide); the map figure IS the first slide. Wired into `run-the-first-experiment.md § Start here` as the M4 opener, after the opening question. Audited — see the Quality line below; Family B judged PASS 2026-07-03.
 
 **Container discipline:** phases are described by what they govern, and the felt problem is named (quick feedback goes quiet; you meet the result all at once). No packaging law is named — no 0.85ⁿ, no convergence triad, no principal–agent, no hybrid-vs-autonomous, no "backpressure." The post-launch M4 closer names backpressure after the session starts; M5 builds and calibrates the checks; M6 composes them. "On a long session this stops being a glance and becomes a job" is the felt shape of the human-as-default-gate story, deliberately unnamed in this opener. Module ranges in body = arc-lecture carve-out (`check_lectures §3`; the subject is the arc).
 
@@ -32,7 +28,9 @@
 
 **Delivery mode:** In-room opener, projected. The map with the far half lit IS the slide.
 
-**Time:** 5 min target (container, not a teaching lecture). Past 5 in rehearsal = teaching laws it should leave for M5/M6.
+**Time:** 4 min target (container, not a teaching lecture). Past 4 in rehearsal = teaching laws it should leave for M5/M6.
+
+**Third slide cut (2026-08-29, Antti-approved):** `## Your first un-packaged long session` — its un-packaged-on-purpose bullet restated `test-and-learn.md § The two-session arc`, which says the same thing concretely (*"no plan.md, no verifier, no reference artifact"*) two lectures later. The trust question moved to the tail of the three-concerns slide, beside the Verification bullet it interrogates. The `un-packaged-run-on-purpose` claim went with it. Do not restore a third slide announcing the un-packaged run; the arc slide is where that beat lands.
 
 **Artifact contract (Family B):** the far-half map slot only. Per-law {NAME · MAP-POSITION · MECHANISM · GOVERNOR} for Verification/Absorption/Outcome laws is downstream closer work, not this opener's. Landed shape (2026-07-03): all three far-half phases consolidate at M6 (`the-map-filled-in`); M5 (`what-packaging-is`) map-places the three-pattern only.
 
@@ -55,8 +53,7 @@ Format → `curriculum/backing-format.md`. Figure provenance: derived from `the-
 - `absorption-sets-take-up` · detail · "**Absorption** determines how much of the output you can actually take up. Generating is fast; reading, judging, and merging are not." ← osmani-outer-loop, osmani-software-factories
 - `absorption-gap-decides-throughput` · vision · "On a long session the gap between the two decides your real throughput." ← none-owed
 - `outcome-sets-what-survives` · vision · "**Outcome** determines what survives the session." ← none-owed
-- `un-packaged-run-on-purpose` · vision · "One long session goes off un-packaged, on purpose." ← none-owed
-- `trust-work-you-didnt-watch` · vision · "When the agent takes a hundred steps alone, what makes you trust the result at the end?" ← none-owed
+- `trust-work-you-didnt-watch` · vision · "One question to carry into the session: when the agent takes a hundred steps alone, what makes you trust the result at the end?" ← none-owed
 
 **Sources**
 - osmani-outer-loop `[checked:2026-07-31 result:OK due:2027-01-31]` https://addyosmani.com/blog/own-the-outer-loop/ — [practitioner direct] Osmani, 15 Jul 2026. **This entry exists to record a correction in our favour.** A previous cycle logged Osmani as *fusing* checking-it-is-correct with deciding-to-take-it-up, which would have made this lecture's Verification/Absorption split a house invention. **A second read disproves that.** His model is explicitly sequential: *"The first, Quality, refers to all the checks we install before we let the system loose. Those checks produce evidence, and from that evidence we derive a Verdict."* And: *"The second, Verdict, refers to the final decision we make before work enters our dependent system."* Evidence is produced, then feeds a separate decision — Verification → Absorption, the same two places this slide names. He holds the line in `agentic-code-review` (15 Jun 2026) too: *"Treat every AI review as a sensor, not a verdict: data, not a decision"*, with *"a human owning the merge."* **So the split is corroborated, not contested.** The correction was back-swept to `the-whole-map.md` and `findings/by-pattern/absorption-bottleneck.md` on 2026-07-31. **What he does challenge is in Flagged, and it is real:** the human need not be in the inner loop, and belongs instead in *"the constraints loop… the sampling loop (how much output should we sample and review?), the audit loop."*

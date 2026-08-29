@@ -16,7 +16,7 @@
 ## Diagnose first, fix later
 
 - When an agent gets something wrong, the reflex is to fix it immediately: edit the prompt, add a constraint, reach for the next tool. This module holds that reflex off. The failures earn the validation that catches them.
-- The arc is *test → learn → encode*. The un-packaged send-off was the test. This is the learn. The encode turns what the read finds into durable checks.
+- The arc is *test → learn → encode*. The un-packaged send-off was the test. The encode turns what the read finds into durable checks.
 
 <!-- maintainer -->
 

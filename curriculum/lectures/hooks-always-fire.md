@@ -7,7 +7,7 @@
 
 ## Hooks for must-happen, prompts for taste
 
-- **Must happen goes in a hook**; recommended stays in a prompt or rule. Anything that breaks the work if it skips belongs in a hook: a verifier, a pre-commit guard, a session-start context loader. Anything taste-shaped or context-dependent stays in a prompt where the LLM weighs it. Hooks are the runtime's "I will not forget," bought at the cost of flexibility.
+- **Must happen goes in a hook**; recommended stays in a prompt or rule. Anything that breaks the work if it skips belongs in a hook: a verifier, a pre-commit guard, a session-start context loader. Anything taste-shaped or context-dependent stays in a prompt where the LLM weighs it.
 - Your repo has demands that don't show up in someone else's article. A verifier against one failure is one hook; the same primitive maps to more. This one runs on the screen. Watch the list come back rather than typing along.
 
 {{prompt:what-packaging-is-1}}

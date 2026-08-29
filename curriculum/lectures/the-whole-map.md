@@ -15,30 +15,26 @@ Every piece of agentic work maps onto the same cycle. Six phases. The loops draw
 
 The phases are places, not a pipeline. A real task sits in several at once.
 
-## You are here
-
-- M1 was the first step into this territory, taken without the map on purpose. You feel a country before you see it drawn. The first fix, the first rule, the first read of the context window: all of it already sits somewhere on this map.
-- The near half is Intent, Context, Work. How to aim the work, what the agent needs to know, and how a single loop runs and compounds. Every move so far has lived here.
-- The far half is Verification, Absorption, Outcome. What happens when sessions get long and the quick feedback goes quiet. Different ground, different rules. The rest of the training goes there. Not yet.
-
 <!-- maintainer -->
 
-**STATUS:** two slides (one `##` = one slide), proper-length bullets per `theory-plan.md` § Slide format, wired into `plan-mode-done-right.md § Start here`. Container discipline held: phases described by what they govern, no law named.
+**STATUS:** one slide (one `##` = one slide), proper-length bullets per `theory-plan.md` § Slide format, wired into `plan-mode-done-right.md § Start here`. Container discipline held: phases described by what they govern, no law named.
 
-**Placement:** M2 open, first map reveal of the training (Day-1 loop-half in the internal fold; student body uses module ranges + near/far half, not day labels, per `check_student_facing §22`). Map-first, derive-within doctrine: container is legal here (`check_lectures §3` carve-out + `check_pedagogy §14`, `theory-evals.md` B3); the law NAME / MECHANISM / GOVERNOR stays name-after (the near-half close at M3 names the loop half).
+**Placement:** M2 open, first map reveal of the training (Day-1 loop-half in the internal fold; student body uses module ranges, never day labels, per `check_student_facing §22` — near/far half is trainer narration here and reaches student body first at the M3 close). Map-first, derive-within doctrine: container is legal here (`check_lectures §3` carve-out + `check_pedagogy §14`, `theory-evals.md` B3); the law NAME / MECHANISM / GOVERNOR stays name-after (the near-half close at M3 names the loop half).
 
 **Delivery mode:** In-room opener, projected. Projection legibility = design constraint (`curriculum/CLAUDE.md`, no-slides doctrine). The map figure IS the slide.
 
-**Time:** 6 min target (container, not a teaching lecture). If it runs past 6 in rehearsal it is teaching laws it should leave for later. Cut back to territory plus "you are here."
+**Time:** 5 min target (container, not a teaching lecture). If it runs past 5 in rehearsal it is teaching laws it should leave for later. Cut back to the territory: name the six phases and stop.
 
 **Artifact contract (Family B):** the map slot only. Per-law {NAME · MAP-POSITION · MECHANISM · GOVERNOR} is the M3-close job, not this opener's.
+
+**The *You are here* slide was cut 2026-08-29 (Antti-directed): say it over the map, do not give it a slide.** The beat is orientation the trainer speaks while the figure is up — M1 was the first step into this territory, taken without the map on purpose, and you feel a country before you see it drawn; the near half is Intent, Context, Work, where every move so far has lived; the far half is Verification, Absorption, Outcome, where the rest of the training goes, not yet. Two reasons it is not body. It was arc-positioning under `check_student_facing.md` §33 in all three bullets, subject and predicate both — a module, the training, a later beat. And it front-ran its own recognition: `the-loop-half-filled.md` (M3 close) lands the identical beat as lived ground (*"Three modules in, the near half is lived ground. M1 stepped into the territory without the map, on purpose. The map arrived at M2…"*), which is the same sentence made true by three modules of work. Near/far vocabulary is introduced there and carried on by `the-far-half.md` (M4) and `the-map-filled-in.md` (M6), so the cut costs the arc nothing. Do not restore the slide, and do not fold its bullets into the map slide.
 
 **Standing constraints:**
 - **The SVG carries the territory alone.** No ASCII fence under it, no print fallback. The one payload the picture does not carry on its own — the soil line (*act under uncertainty · competence sets the ceiling · cross personal → team*) — rides the SVG as its bottom-center italic strip.
 - **No three-altitudes framing here.** "One loop, three sizes", and any *the loop climbs: personal → team → company* wording, is the M3 close's beat (`the-loop-half-filled`). The wall/team zone carries personal→team visually, and the soil strip's third clause reads *cross personal → team* (Antti-worded 2026-08-15) — the two plain words are in dose; the full climb wording stays with the M3 close.
 - **The agent's own loop is drawn solid inside the build loop** (tag `THE AGENT'S OWN LOOP`, sub `act · read the result · correct`). The nesting is shown; the law is not named.
 - **The checking loop stays a ghost** — dashed across Verification/Absorption (tag `◌ THE CHECKING LOOP`, sub `read · judge · gate what ships · by hand for now`). No `?` glyph: `?` means frontier-unknown, and this ghost means not-yet-built. No backpressure / you-are-the-feedback-signal phrasing (M5's beat).
-- **Bold budget:** the six phase-definition bullets keep theirs (**Intent.** through **Outcome.** — the map's handles). *You are here* carries none. → `theory-plan.md § Slide format — emphasis budget`, `check_slides.md §9`.
+- **Bold budget:** the six phase-definition bullets keep theirs (**Intent.** through **Outcome.** — the map's handles), and nothing else on the slide takes any. → `theory-plan.md § Slide format — emphasis budget`, `check_slides.md §9`.
 - **Component outcome caps** are EB Garamond italic on one shared baseline, one per phase column, matching `Trusted shipped change`: *A task worth running · A grounded picture · A candidate change · A verdict you trust · A win taken up*.
 
 **Figure — provenance and build constraints.** The inline SVG is the groundwork Field Guide engine canvas (`groundwork/site/sw-engine.html`; six phase columns from `groundwork/protos/map-usability/sw-loops.html`) re-expressed as static light-mode SVG. It carries the six phase columns under this lecture's phase vocabulary, the seven named loop strands at their source altitudes (context · plan-core · security · prototyping-ghost · build · compounding · crossing-the-wall), the dashed compounding return arc, the team zone, the fuzzy-idea-to-shared-value drift line, and the "Trusted shipped change" cap. Out of scope by design: the pattern-card node layer (Field Guide hyperlinks, foreign corpus), glow filters, noise texture, pulse animations, Google fonts, canvas chrome (masthead/footer). Palette maps onto `curriculum.css` tokens: teal `#3fe0c8` → `--note` `#2f6b6b`; amber `#ffb347` → `#a05a2c` (darkened `--warm` for contrast on cream); soil blacks → `--bg` `#efe6d2` panel with `--line-2` frame; spore/ink text → `--fg`/`--fg-2`; col-num teal → `--accent` oxblood. The figure rides the `.diagram` breakout (64rem) so tag text stays legible when projected. No JS, no external requests, self-contained in the workbook build. The block carries no interior blank lines on purpose — `marked` terminates a raw-HTML block on the first one and spills markup into the page.
@@ -55,7 +51,7 @@ The phases are places, not a pipeline. A real task sits in several at once.
 
 **`six phases` in the slide-3 header is the §20 memory-handle carve-out, not drift.** The numeral is carried away from this list and reused where the phases are not visible: `the-map-filled-in.md` (M6) closes on *Same six phases* and *Six modules, six phases, one loop*, and both map figures name it in their alt text. Keep it, and keep it accurate. Do not re-flag.
 
-**Family B (durability without voice) — PASS, judged 2026-07-03.** The map is re-readable with the trainer's voice gone: six phases named and placed, near/far legible. The spine holds — the map *is* the spine. The worldview container holds at phase level, and the nine loop labels ride as furniture, with no governor or principle stated, so no derivation is spent. That is the density / unearned-names / ghost-dose question in the queue above, not a block.
+**Family B (durability without voice) — PASS, judged 2026-07-03; re-read after the *You are here* cut, 2026-08-29.** The map is re-readable with the trainer's voice gone: six phases named, placed and defined, and the figure carries the territory on its own. The near/far seam is now trainer narration rather than body, so a reader meeting this page without a room gets the phases here and the seam at the M3 close, which is where it becomes true rather than announced. The spine holds — the map *is* the spine. The worldview container holds at phase level, and the nine loop labels ride as furniture, with no governor or principle stated, so no derivation is spent. That is the density / unearned-names / ghost-dose question in the queue above, not a block.
 
 <!-- backing -->
 
@@ -71,8 +67,6 @@ Format → `curriculum/backing-format.md`.
 - `absorption-is-the-taking-up` · detail · "How much of the result you can actually take up. What gets read, judged, and merged, not just what gets produced." ← osmani-software-factories, osmani-outer-loop, ronacher-final-bottleneck, user-signal-absorption
 - `outcome-is-what-survives` · vision · "What survives the session and compounds into the next one." ← none-owed
 - `phases-are-places-not-stages` · vision · "The phases are places, not a pipeline. A real task sits in several at once." ← none-owed
-- `near-half-far-half` · vision · "The far half is Verification, Absorption, Outcome. What happens when sessions get long and the quick feedback goes quiet." ← none-owed
-- `territory-before-map` · vision · "You feel a country before you see it drawn." ← none-owed
 - `soil-line` · vision · "act under uncertainty · competence sets the ceiling · cross personal → team" ← none-owed
 - `checking-loop-is-manual` · vision · "read · judge · gate what ships · by hand for now" ← none-owed
 

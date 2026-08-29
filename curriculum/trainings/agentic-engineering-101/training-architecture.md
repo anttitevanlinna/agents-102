@@ -24,6 +24,13 @@ Two artefacts per student:
 
 No persistent training-directory state. No `module-N/` folders. If a student asks where the module folder is, they have imported an Agents 101 habit; redirect to the repo.
 
+## Content flags
+
+Two flag kinds let one shared source serve every cut without forking — forked copies are how the five deleted autumn files drifted. Guarded by `scripts/content-flags.test.js`; stock AE101's prework build verified byte-identical when the mechanism landed (2026-07-28).
+
+- **Declared flags.** `flags: { payload: false }` on the registry entry strips passages wrapped in `<!--flag:payload-->` from the shared source. Registry-side rather than a CLI switch on purpose: the publishing side builds a cut from its own clone with one command, and a variant whose correctness depends on remembering an extra argument ships wrong the first time someone forgets it. The build renumbers the surviving `## N.` steps consecutively and rewrites every surviving "Step N" reference to match; a reference left outside the flag that points at a removed step fails the build rather than shipping.
+- **Module flags.** `<!--flag:module:earn-the-trust-->` (and the inverse `flag:no-module:`) resolve against the cut's own `modules` list rather than a boolean someone maintains: a passage preparing the student for a module survives exactly when that module is in the cut, and a cut that later restores the module gets its passages back for free. Prefer this over a declared boolean whenever the dependency really is a module — a boolean is a second copy of a fact the registry already holds. A caller that supplies no module list keeps every module-flagged passage: absence of information is not evidence a module was dropped.
+
 ## Working directory model
 
 The student's real repo is the working directory. Every module starts a fresh agent session in that repo. Rules and memory accumulate inside the repo across modules.
@@ -133,9 +140,20 @@ stands in for both.
 the tarball and the curated skills in §Material distribution and §Skills, the single worktree fork
 in §Rule files, the four-beat reading arc in §Reading contract, the sitting shape in
 §Delivery-shape variants. Read those sections as written; each names what a cut without M3 or M6
-does instead. The content-level seams a customer-authored workshop has to be written against are
-catalogued in `curriculum/trainings/agentic-engineering-101/autumn-gaps.md`, which this section
-does not duplicate either.
+does instead. The gap-and-seam inventory that steered this cut (`autumn-gaps.md`) is retired —
+the plan it tracked completed, and git history holds the full inventory (removed 2026-08-29).
+Its facts that stay load-bearing:
+
+- **Thirteen deleted files have no recoverable history, deliberately.** Five autumn module files,
+  an autumn prework page, four forked exercises, one forked lecture and two workshop exercises:
+  the commits that added them and the commit that removed them were squashed into one before
+  anything was pushed, because the workshop material is the customer's IPR under the ownership
+  split. Anything worth keeping was re-authored in surviving files; nothing points back at them.
+- **The two workshops were read for their contracts, not their pedagogy** — what the customer
+  loses by re-authoring them from scratch was never priced.
+- **The eight supplementaries were checked for dropped-module references only** (not for whether
+  their sequencing assumptions survive a four-sitting arc), and as of the 2026-08 inventory no
+  live delivery had run against this cut — every cost in it was derived from the text.
 
 **Mechanically validated, not just read off source.**
 `curriculum/evals/mechanical/tmux-runner/chain-lemmings-northwind.sh` drives M1→M2→M4→M5 on the
@@ -143,7 +161,7 @@ lemmings SUT with M3/M6 absent from the topology (M4 positions from M2's ending 
 M3's now-nonexistent ADR commit). Full PASS, 2026-07-28: M4's audit turn carries no hard dependency
 on M3's ADR or the `test-strategy-lemmings` skill; M5's `verify-by-hand-judge` correctly stands down
 ("nothing to judge") when that skill is absent from disk, rather than erroring. This confirms at
-runtime what `autumn-gaps.md`'s source-level read had only predicted. Full account:
+runtime what the retired autumn-gaps inventory's source-level read had only predicted. Full account:
 `curriculum/evals/mechanical/tmux-runner/lemmings-chain-runbook.md` § *Northwind variant*.
 
 ## Delivery-shape variants (six-module, 2-day)

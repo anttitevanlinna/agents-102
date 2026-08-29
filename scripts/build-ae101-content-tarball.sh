@@ -34,18 +34,15 @@ TRAINING_DIR="curriculum/trainings/$TRAINING"
 SKILLS=(access-control-analysis stride security-tools)
 
 # Trainer-only files in the training dir — excluded from reachability walk.
-# autumn-gaps.md is a maintainer inventory of a variant cut. It names deleted
-# lectures and exercises by path on purpose, so seeding the walk from it harvests
-# files that are supposed to be gone and reports each as a missing reference.
-# The noise is the whole cost — module files are never copied into the tarball,
-# only read as link seeds — but a builder that cries wolf on every run is a
-# builder whose warnings stop being read.
+# Module files are never copied into the tarball, only read as link seeds, so
+# the cost of seeding the walk from a maintainer file is pure warning noise —
+# and a builder that cries wolf on every run is a builder whose warnings stop
+# being read.
 TRAINER_ONLY=(
   pre-cohort-todos.md
   trainer-modules.md
   training-architecture.md
   cohort-onboarding-email.md
-  autumn-gaps.md
 )
 
 # Tarball filename owned by curriculum/trainings/agentic-engineering-101/training-architecture.md

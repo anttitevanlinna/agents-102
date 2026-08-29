@@ -7,11 +7,10 @@
 # runs the SAME four module files (getting-going, plan-mode-done-right,
 # run-the-first-experiment, learn-from-the-test = stock M1/M2/M4/M5)
 # unmodified, and simply omits M3 (`earn-the-trust`, a customer-authored
-# workshop replaces it) and M6 (`spot-gaps-build-the-loop`, ditto). See
-# `curriculum/trainings/agentic-engineering-101/autumn-gaps.md` for the full
-# content-level audit; this script is the mechanical companion it names as
-# owed ("the tmux runner ... could never cover the two room-scale workshops.
-# With those gone, every sitting in the Bosser half is drivable.").
+# workshop replaces it) and M6 (`spot-gaps-build-the-loop`, ditto). The
+# content-level audit that named this script as owed (autumn-gaps.md) is
+# retired; the cut's facts live in training-architecture.md § Variant:
+# Northwind Team Track.
 #
 # Differs from the stock chains in exactly one place: M3 never runs, so M4
 # cannot inherit "current HEAD" (which in the stock chain is M3's ADR commit).

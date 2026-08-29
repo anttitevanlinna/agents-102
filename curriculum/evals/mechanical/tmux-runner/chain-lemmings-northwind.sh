@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # chain-lemmings-northwind.sh — the Northwind cut on the lemmings SUT.
 #
-# Kept as the name the runbook and autumn-gaps.md cite. The body moved to
+# Kept as the name the runbook (and the retired autumn-gaps inventory) cites. The body moved to
 # chain-northwind.sh (2026-08-13), which takes --sut-kit so the same cut can
 # run on picoshare and codesearch. This is the lemmings preset, nothing more:
 # every flag passes straight through.

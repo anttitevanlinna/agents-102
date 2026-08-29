@@ -144,9 +144,10 @@ The `agentic-engineering-101-northwind` registry entry (`site/layouts/curriculum
 is a `contentKey`-aliased cut running the same four module files as stock AE101
 (getting-going, plan-mode-done-right, run-the-first-experiment, learn-from-the-test
 — stock M1/M2/M4/M5) and dropping M3 (`earn-the-trust`) and M6
-(`spot-gaps-build-the-loop`). `curriculum/trainings/agentic-engineering-101/autumn-gaps.md`
-names the tmux battery as newly drivable now that the room-scale workshops are
-gone from this cut — this script is that.
+(`spot-gaps-build-the-loop`). With the room-scale workshops gone from this cut,
+the tmux battery can drive every sitting — this script is that. (First recorded
+in the retired autumn-gaps inventory; cut-level facts now live in
+`training-architecture.md` § *Variant: Northwind Team Track*.)
 
 Same `run-mN.sh` scripts, same `scenarios/mN.txt`, same prompts as the stock
 chain (content is byte-identical). The one change: M3 never runs, so M4 can't
@@ -168,7 +169,7 @@ the SUT's actual git state either way.
 takes `--sut-kit lemmings | picoshare | codesearch`, which fixes the repo path,
 the slugs, the M5 worktree, the scenario suffix, and whether an arrange helper
 exists. `chain-lemmings-northwind.sh` survives as the lemmings preset (a
-one-line `exec`), so the name autumn-gaps.md cites still works. codesearch has
+one-line `exec`), so the historically cited name still works. codesearch has
 no arrange script, so `--from m1|m2` is refused there rather than half-run.
 State lookup is SUT-scoped (matches `mN_cwd` in the state file) — `out/` holds
 runs from every kit, and taking "newest of any SUT" would position one kit's
@@ -186,8 +187,8 @@ project's own `npm test`, clean worktree.
 
 M5's `verify-by-hand-judge` finds no `test-strategy-lemmings` skill on disk (M3
 never runs to author it) and stands down with "nothing to judge" rather than
-erroring — the graceful degradation on a dropped M3 that `autumn-gaps.md`
-predicted from the prompt body, confirmed at runtime.
+erroring — the graceful degradation on a dropped M3 that the retired
+autumn-gaps inventory predicted from the prompt body, confirmed at runtime.
 
 ### Standing constraints
 

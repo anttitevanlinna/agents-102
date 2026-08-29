@@ -53,7 +53,7 @@ if (require.main === module) {
   const root = path.join(__dirname, '..');
   const argFile = process.argv.indexOf('--file');
   // Internal surfaces: a punch list and a gap log, never projected to a student.
-  const SKIP = new Set(['pre-cohort-todos.md', 'autumn-gaps.md']);
+  const SKIP = new Set(['pre-cohort-todos.md']);
   const files = argFile !== -1
     ? [path.resolve(process.argv[argFile + 1])]
     : ['curriculum/trainings', 'curriculum/lectures', 'curriculum/exercises']

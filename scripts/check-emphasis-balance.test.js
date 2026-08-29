@@ -62,7 +62,7 @@ test('the real corpus is clean', () => {
     'curriculum/lectures',
     'curriculum/exercises',
   ];
-  const skip = new Set(['pre-cohort-todos.md', 'autumn-gaps.md']); // internal, not student-facing
+  const skip = new Set(['pre-cohort-todos.md']); // internal, not student-facing
   const bad = [];
   for (const d of dirs) {
     const abs = path.join(root, d);

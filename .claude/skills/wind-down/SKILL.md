@@ -1,6 +1,6 @@
 ---
 name: wind-down
-description: Run the end-of-session protocol — enumerate deferred checks, run them, capture corrections via /compound, then clear sentinels and push. Invoke when Antti signals the session is wrapping ("let's wind down", "we're wrapping up", "ship it", or `/wind-down`). Do NOT invoke mid-session — this is the wrap ritual, not a mid-stream gate.
+description: Run the end-of-session protocol — enumerate deferred checks, run them, capture corrections via /compound, append taste calls to curriculum/taste-notes.md, then clear sentinels and push. Invoke when Antti signals the session is wrapping ("let's wind down", "we're wrapping up", "ship it", or `/wind-down`). Do NOT invoke mid-session — this is the wrap ritual, not a mid-stream gate.
 argument-hint: [scope] (default: full | quick — skip sim+eval if no substantive curriculum edits)
 ---
 
@@ -8,7 +8,7 @@ argument-hint: [scope] (default: full | quick — skip sim+eval if no substantiv
 
 Sessions accumulate deferred work: sim+eval gates skipped while iterating, corrections worth compounding, signal files uncommitted, sentinels left on disk. The fix is a deliberate wrap ritual you run when *you* decide the session is over.
 
-**Order matters: check → test → compound → clear → hand off.** Don't compound before testing (a failing sim+eval may surface a correction worth capturing). Don't clear before compounding (sentinels are the evidence of what happened).
+**Order matters: check → test → compound → bank taste → clear → hand off.** Don't compound before testing (a failing sim+eval may surface a correction worth capturing). Don't clear before compounding (sentinels are the evidence of what happened).
 
 ## When to invoke
 
@@ -57,6 +57,16 @@ Report eval evidence at its exact scope: `audit-eval-coverage` proves mandatory 
 
 Ask: "Any corrections worth compounding? Top 1–3 only." For each, invoke `/compound`. Skip if none surfaced — most sessions yield 0–1.
 
+### Step 3b — Append taste notes
+
+Separate from Step 3 and runs even when `/compound` yields nothing. Ask: **"Any taste calls worth banking?"** Append to `curriculum/taste-notes.md`, newest entry at the top, under a `## <date> — <scope>` heading.
+
+Bank the four shapes the file names: a call Antti made on a specific sentence (quote the sentence); a **counterweight** — a defensible cut he refused, and why the redundancy earned its keep; a survivor worth imitating, quoted whole; a rewrite that failed and what was wrong with it.
+
+The counterweights are the point. A rule ships without its exceptions and the next agent applies it to a room it has never met. Do not bank anything already firing as a numbered rule — cite the rule number instead. Do not bank a cut nobody argued about.
+
+Zero entries is a normal session. A session where Antti only accepted proposals produced no taste, just compliance; the entry is worth writing when he **rejected, reframed, or corrected** something.
+
 ### Step 4 — Clear, commit, push
 
 ```bash
@@ -91,6 +101,7 @@ Produce ONE of:
 - **Clearing before committing.** Sentinels are evidence; don't delete before commits land.
 - **Running every turn.** This is the wrap ritual. The Stop hook fires above 20 edits as a "you forgot" net, not the protocol itself.
 - **Padding /compound.** 0–1 entries per session. If you're drafting 5, at least 4 are session context, not durable rules.
+- **Padding taste-notes with agreement.** An entry recording that Antti approved what was proposed teaches nothing. The bankable moments are the refusals, the reframes, and the corrections — write those or write nothing.
 - **Reading source files in main thread to enumerate.** `git status` + `git log` are enough. Subagents do file-level work.
 - **Stale handoff files.** Don't write `~/.claude/plans/<topic>-session-handoff.md` reflexively. The file persists across sessions and goes stale; an inline starting prompt is fresher. File-on-disk is for genuinely cross-session topics.
 - **Hook double-fire on compendium amendment.** When `/compound` writes the entry first then amends the compendium (correct order per Step 3), the compendium-edit hook may suggest `/compound` as if it hadn't run. Ignore — the entry exists.

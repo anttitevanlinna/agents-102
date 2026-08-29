@@ -8,6 +8,7 @@ Docs with authority over generation. Anything not listed is session material: re
 
 - **Generation** (three-pass, PDCA, prompt + exercise design): the `memory/check_*.md` compendiums, autoloaded per `.claude/rules/content-rules.md`.
 - **Pedagogy** (Bloom, 4 Cs, audience, throughlines): `curriculum/lecture-guardrails.md`.
+- **Taste** (editorial calls on real text, counterweights, failed rewrites): `curriculum/taste-notes.md`. Append-only, newest first; written at wind-down Step 3b. Upstream of the compendiums, not a substitute — read it before a cut pass, cite `check_*.md` for anything that fires.
 - **Vocabulary** (controlled terms: session/task/run, kit terms, register splits): `curriculum/vocabulary.md`. Term change = amend the registry first, then one sweep pass, never a local synonym.
 - **Module file shape**: `curriculum/module-shape.md`. **Widgets**: `curriculum/widgets.md`. **Quality line**: `curriculum/quality-format.md`.
 - **Backing blocks**: `curriculum/backing-format.md`. **Source stamps**: `curriculum/source-freshness-format.md`.

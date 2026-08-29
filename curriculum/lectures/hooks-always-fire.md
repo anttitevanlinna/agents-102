@@ -7,12 +7,12 @@
 
 ## Hooks for must-happen, prompts for taste
 
-- **Must happen goes in a hook**; recommended stays in a prompt or rule. Anything that breaks the work if it skips belongs in a hook: a verifier, a pre-commit guard, a session-start context loader. Anything taste-shaped or context-dependent stays in a prompt where the LLM weighs it.
+- **Must happen goes in a hook**; recommended stays in a prompt. Anything that breaks the work if it skips belongs in a hook: a verifier, a pre-commit guard, a session-start context loader. Anything taste-shaped stays in a prompt.
 - A verifier against one failure is one hook. The same primitive covers everything else that must happen every time.
 
 {{prompt:what-packaging-is-1}}
 
-A menu, not a checklist. You build one.
+A menu, not a checklist.
 
 <!-- maintainer -->
 
@@ -34,7 +34,7 @@ Format → `curriculum/backing-format.md`. Rows moved verbatim from `what-packag
 - `hook-fires-on-named-events` · detail · "Session start, prompt submit, before each tool call, after each tool call, on stop, plus a few more." ← cc-hooks-docs
 - `agent-has-no-say-whether-hook-runs` · detail · "the agent has no say in whether it runs" ← cc-hooks-docs
 - `hooks-exist-because-llm-forgetful` · vision · "Hooks exist because the LLM is forgetful." ← none-owed
-- `must-happen-goes-in-a-hook` · vision · "**Must happen goes in a hook**; recommended stays in a prompt or rule." ← none-owed
+- `must-happen-goes-in-a-hook` · vision · "**Must happen goes in a hook**; recommended stays in a prompt." ← none-owed
 - `keeper-hooks-are-repo-specific` · vision · "tied to a specific file, convention, or failure mode in this repo" ← none-owed
 
 **Sources**

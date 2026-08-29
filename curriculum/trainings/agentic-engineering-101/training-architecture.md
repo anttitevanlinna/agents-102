@@ -229,11 +229,12 @@ vocabulary and renders a badge plus a nav-rail class per tier:
 - **T2** — *Recognition; names what the room already did, skippable under time pressure*
 - **T3** — *Story / extra theory, skip freely*
 
-Coverage, re-measured 2026-08-29 after the cut pass: **38 tagged slides — 30 T2, 8 T3 — across ten
-files**, against ~450 `##` sections in the shared library. M3 has none. Hiding T2/T3 today removes
+Coverage, re-measured 2026-08-29 after the cut pass: **38 tagged slides — 30 T2, 8 T3 — across ten files**,
+against ~450 `##` sections in the shared library. M3 has none. Hiding T2/T3 today removes
 under a tenth of the deck, not the theory. The proof: every slide cut on 2026-08-29 was untagged and
-would have survived a barebones cut intact. **The tags currently mark which files got a tier pass,
-not which slides are skippable** — that is the whole gap, and it is why step 1 is an audit.
+would have survived a barebones cut intact.
+**The tags currently mark which files got a tier pass, not which slides are skippable** — that is
+the whole gap, and it is why step 1 is an audit.
 
 Re-measure, do not trust these numbers after any tagging work:
 ```

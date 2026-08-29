@@ -156,6 +156,44 @@ test('the shape hash is stamped even when nothing was parked — otherwise a col
   assert.equal(JSON.parse(fs.readFileSync(inst, 'utf8')).shape_hash, 'abc123')
 })
 
+// The two 2026-08-28 splice incidents: check_writing rows surfacing in a story
+// sidecar and a slides sidecar. The carry loop took every N/A in the prior
+// instance regardless of whose lane it was in, and the mechanical loop parked
+// writing greps into every class. Out-of-lane rows outrank nothing and
+// contradict the instance that owns them.
+test('carried N/A rows keep na_reason and stay in class lanes', () => {
+  const { dirs } = sandbox()
+  const shape = writeSidecar(FILE, CLS, dirs).shape_hash // discover the current shape
+  fs.writeFileSync(path.join(dirs.instancesDir, `${slug}.${CLS}.json`), JSON.stringify({
+    file: FILE, class: CLS, body_sha: 'x', shape_hash: shape,
+    rules_evaluated: [
+      { compendium: 'check_prompts.md', rule_index: 4, verdict: 'N/A', evidence: null, na_reason: 'no prompt blocks' },
+      { compendium: 'check_slides.md', rule_index: 2, verdict: 'N/A', evidence: null, na_reason: 'out of lane here' },
+    ],
+  }, null, 2))
+  const doc = writeSidecar(FILE, CLS, dirs)
+  const carried = doc.rows.filter(r => r.verdict === 'N/A')
+  assert.equal(carried.length, 1)
+  assert.equal(carried[0].compendium, 'check_prompts.md')
+  // A deliberate N/A stripped of its reason reads later as an unjudged hole —
+  // the exact 45-hole misreport the backfill hold documents.
+  assert.equal(carried[0].na_reason, 'no prompt blocks')
+})
+
+test('mechanical writing greps do not park into a class that does not judge check_writing', () => {
+  const { dirs } = sandbox()
+  // A valid prior is what lets prefill reach the mechanical loop at all —
+  // without one it returns early and this test would pass on any code.
+  const shape = writeSidecar(FILE, 'slides', dirs).shape_hash
+  fs.writeFileSync(path.join(dirs.instancesDir, `${slug}.slides.json`), JSON.stringify({
+    file: FILE, class: 'slides', body_sha: 'x', shape_hash: shape,
+    rules_evaluated: [{ compendium: 'check_slides.md', rule_index: 1, verdict: 'N/A', evidence: null, na_reason: 'n' }],
+  }, null, 2))
+  const doc = writeSidecar(FILE, 'slides', dirs)
+  assert.ok(doc.rows.length >= 1)
+  assert.equal(doc.rows.filter(r => r.compendium === 'check_writing.md').length, 0)
+})
+
 test('a shape hash that already matches is not rewritten', () => {
   const { dirs } = sandbox()
   parkRows(dirs, [])

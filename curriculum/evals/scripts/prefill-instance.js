@@ -105,10 +105,10 @@ const MECHANICAL = {
   },
 }
 
-function prefill(fileArg, cls) {
+function prefill(fileArg, cls, { instancesDir = INSTANCES } = {}) {
   const view = derive(fileArg, { write: true })
   const shape = shapeHash(view.signals)
-  const instPath = path.join(INSTANCES, `${view.slug}.${cls}.json`)
+  const instPath = path.join(instancesDir, `${view.slug}.${cls}.json`)
 
   const out = {
     file: view.file, slug: view.slug, class: cls,
@@ -135,18 +135,26 @@ function prefill(fileArg, cls) {
     return { view, out }
   }
 
+  // Lane guard for both loops below. A prior instance can carry out-of-lane
+  // rows (a judge once wrote them, or an earlier splice let them in), and the
+  // mechanical greps are all check_writing — carried into a story or slides
+  // sidecar they splice rows the class's own judge is forbidden to touch.
+  const inScope = new Set((COMPENDIA[cls] || []).map(c => `${c}.md`))
+
   for (const row of prior.rules_evaluated) {
     if (!row || typeof row !== 'object') continue
     if (row.verdict !== 'N/A') continue          // PASS is a claim about prose; only N/A is about shape
     if (row.rule_index === null || row.rule_index === undefined) continue
+    if (!inScope.has(row.compendium)) continue
     out.carried.push({
       compendium: row.compendium, rule_index: row.rule_index, rule_lead: row.rule_lead,
-      verdict: 'N/A', evidence: row.evidence, fix_hint: '', blocking: false,
+      verdict: 'N/A', evidence: row.evidence, na_reason: row.na_reason, fix_hint: '', blocking: false,
       carried_from: prior.body_sha || null, carried_shape: shape,
     })
   }
 
   for (const [comp, rules] of Object.entries(MECHANICAL)) {
+    if (!inScope.has(comp)) continue
     for (const [idx, spec] of Object.entries(rules)) {
       const g = view.greps[spec.grep]
       if (!g || g.status !== 'CLEAN') continue   // UNPROVEN or HITS → the judge decides
@@ -165,7 +173,6 @@ function prefill(fileArg, cls) {
   // because a verdict outside the class outranks nothing and can contradict
   // something.
   const seen = new Set([...out.carried, ...out.mechanical].map(r => `${r.compendium}|${r.rule_index}`))
-  const inScope = (COMPENDIA[cls] || []).map(c => `${c}.md`)
   let owed = 0
   for (const comp of inScope) {
     const meta = view.rule_inventory[comp]
@@ -228,8 +235,8 @@ function sidecarPath(slug, cls, viewsDir = VIEWS) { return path.join(viewsDir, `
 
 const rowKey = r => `${r.compendium}|${r.rule_index}`
 
-function writeSidecar(fileArg, cls, { viewsDir = VIEWS } = {}) {
-  const { out } = prefill(fileArg, cls)
+function writeSidecar(fileArg, cls, { viewsDir = VIEWS, instancesDir = INSTANCES } = {}) {
+  const { out } = prefill(fileArg, cls, { instancesDir })
   const rows = [...out.carried, ...out.mechanical]
   const doc = {
     file: out.file, slug: out.slug, class: cls,

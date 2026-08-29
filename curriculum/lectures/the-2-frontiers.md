@@ -2,7 +2,7 @@
 
 ## Two frontiers still open: speed and direction
 
-- We have come a long way. The agent is building the agentic loop now. Agents building agents.
+- The agent is building the agentic loop now. Agents building agents.
 - Frontier one: speed of learning. How can a system like this learn faster than a human practitioner can write things down?
 - Frontier two: direction of learning. Once it can learn fast, how does it learn the right things, and not just any things?
 

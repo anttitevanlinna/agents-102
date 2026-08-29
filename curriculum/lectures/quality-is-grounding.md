@@ -6,7 +6,7 @@ The quality arc ran the whole training. M1 opened with tests-first. M2 added pla
 
 Today adds the fifth move: the eval read. Two sessions diffed, every gap routed to the check that would have caught it, and a map of where the next checks belong.
 
-Five moves, one discipline. Tests-first, plan push-back, skill, verifier, loop. That's the quality kit you walk out with.
+Tests-first, plan push-back, skill, verifier, loop. That's the quality kit you walk out with.
 
 ## Decay clears the gate
 
@@ -23,6 +23,8 @@ The discipline has gone deeper since: **grounding**. Beyond spec-and-tests, towa
 The agentic engineer maxes that signal out. You ship a million lines of new stuff. How do you know it's right?
 
 <!-- maintainer -->
+
+**Lean pass (2026-08-29):** cut "Five moves, one discipline." — the header above it already reads `## Five moves, one quality discipline`. See the claim row.
 
 **Lean pass (2026-08-25):** cut "Not one move learned in one module; the discipline, threaded through the whole training." — restated "Five moves, one discipline" in the same paragraph; claim row `discipline-not-one-move-per-module` deleted with it. Do not restore.
 
@@ -44,7 +46,7 @@ The agentic engineer maxes that signal out. You ship a million lines of new stuf
 
 Claims
 - `quality-arc-ran-the-whole-training` · vision · "The quality arc ran the whole training." ← none-owed
-- `five-moves-one-discipline` · vision · "Five moves, one discipline. Tests-first, plan push-back, skill, verifier, loop." ← none-owed
+- `five-moves-one-discipline` · vision · "Tests-first, plan push-back, skill, verifier, loop. That's the quality kit you walk out with." ← none-owed — **header echo cut 2026-08-29 (Antti).** *"Five moves, one discipline"* opened the paragraph under a header reading `## Five moves, one quality discipline`. Second growth of the same shape: the 2026-08-25 lean pass cut *"Not one move learned in one module; the discipline, threaded through the whole training"* from this paragraph for the same reason. The header carries the summary; the paragraph carries the list. Do not restore a summary sentence here.
 - `fast-checks-miss-slow-costs` · vision · "Tests answer in seconds; the verifier advises the agent." ← none-owed
 - `decay-clears-the-gate` · vision · "a session can come back green and still leave the code worse than it found it" ← none-owed
 - `horthy-models-share-the-blind-spot` · detail · "they learned against checks that answer fast, and a cost that lands in weeks never reached them" ← horthy-wsff

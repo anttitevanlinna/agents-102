@@ -1,35 +1,68 @@
 {
   "class": "slides",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/the-loop-half-filled.md",
-  "body_sha": "b01b146d603e6f8233fd25c12ec50b7dcb29d7fa1ae58588a0fa0db58b55bf6c",
+  "body_sha": "5397c3e24bf9a24c66c263fb80e41a8b13d065e1a94d8b0ab246b21aed15e184",
   "shape_hash": "1a45f572c31f174d",
   "verdict": "PASS",
   "training": "ae101",
   "staleness_reason": "diff-region",
-  "pin": "77991802",
+  "pin": "0e4f7c9e",
   "drift_rules_reread": [
-    "Prefill fell through entirely ('prior instance predates shape_hash — cannot verify N/A validity'); the class brief carried all 16 check_slides.md rules with 0 excluded, so every row below is a fresh judgement, none carried forward from the prior instance recorded at pin 4f9d6341.",
-    "check_slides.md §16 ('A bullet earns its slot or dies') is new since the last full slides verdict on this file (compendium note dates it to a 2026-08-25 sweep) and was never scored against this body before — judged fresh below, not a drift-reread of an existing row.",
-    "git diff 77991802..HEAD on this file shows: (a) chunk 1's opening bullet lost its trailing clause 'This close puts names on the ground covered.' (2026-08-25 Lean pass, documented in the maintainer block, pure deletion — the bullet's remaining text and the chunk's line range 3-9 are unchanged), (b) a maintainer-block cross-reference fixed from a since-renamed file to 'the-machine-you-just-met.md' (maintainer prose, not body, not slides-class), (c) the Quality line's per-class pins bumped from 4f9d6341 to 77991802 (bookkeeping). Re-ran all 16 rules against the current body rather than assuming the deletion was safe by inspection."
+    "git diff 0e4f7c9e..HEAD on this file (grep -E '^[-+]' | grep -vE '^(\\+\\+\\+|---)', not the bullet-dropping ^[^-+] filter) shows two kinds of change: (a) ONE body-region edit — chunk 6 (lines 34-39, 'The branch is the permission'), line 38's bullet lost the clause 'The ranked findings, the delta against what you know, the weak spot named:' so it now reads 'Control is exercised at the merge. The interrogation happens there, and the merge waits until the work survives it.' — re-verified against the live body at line 38 today; (b) everything else in the diff sits at or below the maintainer cut (line 47): the Quality line's per-class pins (2026-08-24 -> 2026-08-29) and five source-freshness stamp re-verifications (argyris-schon, anthropic-reward-hacking, google-beyondprod, ng-three-loops, ronacher-coming-loop). Body region (lines 1-46) is otherwise byte-identical since 0e4f7c9e; body_sha differs from the prior instance's b01b146d603e6f8233fd25c12ec50b7dcb29d7fa1ae58588a0fa0db58b55bf6c purely because that's a whole-file hash and the backing-block edits under (b) moved it.",
+    "Re-ran rule 16 ('A bullet earns its slot or dies') fresh against the trimmed line 38, since it is the one body-region change in scope for this class. The trim shortens the bullet but does not change which claim it carries (merge-as-control-point); the chunk's existing accept-note ('Merge bullet accepted as written', 2026-08-19) names lines 36/38/39 as a unit that 'resolves as a unit... do not add a reconciling clause' and still covers the post-trim text — re-confirmed by reading the note against the current three-bullet text, not carried from the prior instance.",
+    "Re-ran all four mechanical scripts fresh rather than trusting the prior instance's numbers, since the file's line count and byte content shifted: `check-slide-size.js`, `check-slide-deixis.js`, `check-slide-numbering.js` (all --file scoped to this file) and a fresh grep pass for the cadence/dialect patterns rule 7/8 depend on. All four returned clean against the CURRENT body (see rule evidence below), none reused from the prior run's output.",
+    "Re-verified rule 1's arc-earned terms live rather than citing the prior instance's claims: `grep -rn \"plan mode\"` across curriculum/trainings + curriculum/exercises + curriculum/lectures confirms 'plan mode' is named repeatedly from M2 onward (module-2-prework.md, when-a-plan-is-good.md, push-back-on-the-plan.md) before this M3-close lecture; `grep -n \"second read\"`-equivalent confirms push-back-on-the-plan.md:54 established 'the second read' at M2; `sed -n` on earn-the-trust.md confirmed 'the test-strategy skill' sits in this module's own What You'll Learn (module-include-order carve-out). Rule 3's four backward references re-grepped live against the actual exercise files today (map-the-access-surface.md:136 delta note, threat-model-with-stride.md:81 STRIDE walk, author-test-strategy-skill.md:48 weakest part, open-the-side-quest.md's worktree/branch content) and the module's `##`/link order in earn-the-trust.md confirms all four precede this lecture's include point (line 59)."
   ],
   "accept_notes_found": [
-    "Emphasis pass (2026-07-09, Antti-directed \"go very lightly on the bold\") — names check_slides.md §9 explicitly and documents the governor slide's two whole-lead bolds ('A governor is a pre-action question' + 'Name the uncertainty before you move') as a deliberate kept exception, plus 'Map-position tags and ASCII fence untouched per the file's locked-by-design contract.' Shields the governor slide's bold count under §9.",
-    "check_slides.md §8 itself names this file by filename ('the-loop-half-filled.md's map-position tags, per its own maintainer contract') as the canonical accept-with-note example for the '(Work)'/'(Context)'/'(Intent)'/'(spans the loop)' inline tags — the carve-out is stated in the compendium itself, corroborated by the maintainer's emphasis-pass note.",
-    "Merge bullet accepted as written (2026-08-19, Antti-directed) — 'Control is exercised at the merge' (chunk 6, line 38) is bounded by the bullet above it (line 36, the side quest never merged) and the bullet below it (line 39, holding the merge is the control working); 'the beat resolves as a unit... do not add a reconciling clause.' Originally answered a story-class isolated-bullet-read concern; also weighed below against §16's new bullet-value test on line 39, since that bullet closes the same accepted three-bullet unit.",
-    "Lean pass (2026-08-25) — cut 'This close puts names on the ground covered.' from chunk 1's opening bullet; 'Nothing else touched — dose verdict, control pair, and merge-bullet contracts all stand. Do not restore.' Confirms the deletion is deliberate and the surrounding contracts (including the merge-bullet accept-note above) remain in force unchanged.",
+    "Emphasis pass (2026-07-09, Antti-directed \"go very lightly on the bold\") — names check_slides.md §9 explicitly and documents the governor slide's two whole-lead bolds ('A governor is a pre-action question' + 'Name the uncertainty before you move') as a deliberate kept exception; also states 'Map-position tags and ASCII fence untouched per the file's locked-by-design contract.' Shields both the governor slide's bold count under §9 and the inline (Work)/(Context)/(Intent)/(spans the loop) tags under §8.",
+    "check_slides.md §8 itself names this file by filename ('the-loop-half-filled.md's map-position tags, per its own maintainer contract') as the canonical accept-with-note example for the inline map-position tags — the carve-out is stated in the compendium itself, corroborated by the maintainer's emphasis-pass note above.",
+    "Merge bullet accepted as written (2026-08-19, Antti-directed) — 'Control is exercised at the merge' (chunk 6, line 38) is bounded by the bullet above it (line 36, the side quest never merged) and the bullet below it (line 39, holding the merge is the control working); 'the beat resolves as a unit... do not add a reconciling clause.' Directly governs rule 16's closest candidate this run, since line 38's text changed (trimmed) since the note was written but the three-bullet unit and the claim it carries did not.",
+    "Lean pass (2026-08-25) — cut 'This close puts names on the ground covered.' from chunk 1's opening bullet; 'Nothing else touched — dose verdict, control pair, and merge-bullet contracts all stand. Do not restore.' Confirms the surrounding contracts (including the merge-bullet note above) remain in force; this note is not itself the source of the line-38 diff-region trim (that trim postdates this note and touches a different sentence), but it establishes the file's general do-not-restore posture.",
     "Control pair added (2026-07-10, Antti-directed cognitive-load arc, unreviewed) — design rationale for chunks 5-6; explicitly marked 'unreviewed... Re-audit before ship' so it is a rationale note, not a settled shield against every future rule. No slides-class finding needed it beyond the merge-bullet note above.",
     "Map figure woven in (2026-07-10, unreviewed) — construction rationale for the chunk-1 figure; marked 'Re-audit before ship'. No slides-class finding needed it — the figure renders as one self-contained visual, no orphan/referent issue found.",
-    "Placement note (2026-07-28) — 'The far half is named by position rather than by module range... a range is a hostage to every re-cut' — explains why chunk 7 says 'the far half' rather than an M4-M6 range. A robustness choice, not a rule exception; no finding needed it."
+    "Placement note (2026-07-28) — 'The far half is named by position rather than by module range... a range is a hostage to every re-cut' — explains why chunk 7 says 'the far half' rather than an M4-M6 range, and separately states the M1/M2/M4 module refs in body are the file's own §3 arc carve-out. Backs rules 2 and 12's PASS on chunk 7."
   ],
   "chunk_map": [
-    {"index": 0, "heading": "The loop half, filled in (H1)", "lines": "1-1"},
-    {"index": 1, "heading": "Back to the map: near half filled", "lines": "3-9"},
-    {"index": 2, "heading": "The loop and the model it runs on", "lines": "11-15"},
-    {"index": 3, "heading": "How the loop compounds", "lines": "17-20"},
-    {"index": 4, "heading": "The governor you carry forward", "lines": "22-26"},
-    {"index": 5, "heading": "Reading was never the control", "lines": "28-32"},
-    {"index": 6, "heading": "The branch is the permission", "lines": "34-39"},
-    {"index": 7, "heading": "The far half goes quiet", "lines": "41-45"}
+    {
+      "index": 0,
+      "heading": "The loop half, filled in (H1)",
+      "lines": "1-1"
+    },
+    {
+      "index": 1,
+      "heading": "Back to the map: near half filled",
+      "lines": "3-9"
+    },
+    {
+      "index": 2,
+      "heading": "The loop and the model it runs on",
+      "lines": "11-15"
+    },
+    {
+      "index": 3,
+      "heading": "How the loop compounds",
+      "lines": "17-20"
+    },
+    {
+      "index": 4,
+      "heading": "The governor you carry forward",
+      "lines": "22-26"
+    },
+    {
+      "index": 5,
+      "heading": "Reading was never the control",
+      "lines": "28-32"
+    },
+    {
+      "index": 6,
+      "heading": "The branch is the permission",
+      "lines": "34-39"
+    },
+    {
+      "index": 7,
+      "heading": "The far half goes quiet",
+      "lines": "41-45"
+    }
   ],
   "rules_evaluated": [
     {
@@ -38,7 +71,7 @@
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm: a referent the reader cannot resolve mid-deck breaks comprehension. Fresh sequential-deck-read pass over the current body (chunk 1's trailing clause deletion does not touch any referent — the deleted text was pure forward-narration, no noun this file points at was named only there). 'plan mode' (chunk 2, line 13) resolves via module-include-order against earn-the-trust.md's own Prework framing. 'the second read' (chunk 2, line 14) is arc-earned spine vocabulary from M2. 'the test-strategy skill' (chunk 3, line 19) is named in earn-the-trust.md's own What You'll Learn bullets — module-include-order carve-out, re-verified today: `grep -n 'author-test-strategy-skill'` on earn-the-trust.md confirms the exercise is in the module's current include list (line 41). 'The delta note' / 'the STRIDE walk' / 'The skill critique' / 'The side quest' (chunks 5-6, lines 31, 36) resolve against this module's current exercise set, re-verified live today: `grep -n` on map-the-access-surface.md hits 'delta note' at line 136, threat-model-with-stride.md hits 'STRIDE walk' at line 81, author-test-strategy-skill.md hits 'name its own weakest part' at line 48, open-the-side-quest.md exists — session-artifact / module-arc-beat carve-out, this lecture sitting directly after that exercise run per the include order. 'the near half'/'the map' (chunk 1) self-establish and recur (chunks 4, 7) as normal within-file callback. 'the loop', 'the model in the files', 'the ladder', 'the governor' (chunk 7, line 45) all name terms established earlier in the SAME file (chunks 2-4). No never-named, no vague-with-full-history, no stranded-by-re-chunk instance found.",
+      "evidence": "Harm: a referent the reader cannot resolve mid-deck breaks comprehension. Fresh sequential-deck-read pass over the current body. 'plan mode' (chunk 2, line 13, 'Everything you did in plan mode was feeding that signal early') — `grep -rn \"plan mode\"` across curriculum/trainings + exercises + lectures today confirms it is arc-earned from M2 (module-2-prework.md §Learn plan mode, when-a-plan-is-good.md, push-back-on-the-plan.md), well before this M3-close lecture. 'the second read' (chunk 2, line 14) — push-back-on-the-plan.md:54 ('The second read runs in this same session and still in plan mode') establishes it at M2. 'the test-strategy skill' (chunk 3, line 19) — named directly in earn-the-trust.md's own What You'll Learn ('Author a test-strategy skill through conversation with Claude'), module-include-order carve-out. 'The delta note' / 'the STRIDE walk' / 'The skill critique' / 'The side quest' (chunks 5-6, lines 31, 36) resolve against this module's current exercise set, re-verified live today: map-the-access-surface.md:136 hits 'delta note', threat-model-with-stride.md:81 hits 'STRIDE walk', author-test-strategy-skill.md:48 hits 'name its own weakest part', open-the-side-quest.md exists and is the branch/worktree exercise — session-artifact / module-arc-beat carve-out, this lecture sitting directly after that exercise run per earn-the-trust.md's include order (line 59). 'the near half'/'the map' (chunk 1) self-establish and recur (chunks 4, 7) as normal within-file callback. 'the loop', 'the model in the files', 'the ladder', 'the governor' (chunk 7, line 45) all name terms established earlier in the SAME file (chunks 2-4). No never-named, no vague-with-full-history, no stranded-by-re-chunk instance found.",
       "fix_hint": null,
       "blocking": true
     },
@@ -48,7 +81,7 @@
       "rule_lead": "Cross-file and positional callbacks.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm: pointing at another file by shelf-position breaks once the deck is entered from elsewhere or re-cut. No 'the opening lecture said' / 'as we said before' shaped pointer anywhere in the current body. M1/M2/M4 references name modules by name and content ('M1's orient, fix, compound, close' line 6; 'M4 opens it' line 44), never by shelf position — the file's own §3 arc carve-out, since the lecture's whole job is naming the M1-M3 arc.",
+      "evidence": "Harm: pointing at another file by shelf-position breaks once the deck is entered from elsewhere or re-cut. No 'the opening lecture said' / 'as we said before' shaped pointer anywhere in the current body. M1/M2/M4 references name modules by name and content ('M1's orient, fix, compound, close' line 6; 'M4 opens it' line 44), never by shelf position — the maintainer's own Placement note calls these out as the file's §3 arc carve-out, since the lecture's whole job is naming the M1-M3 arc. Chunk 7's 'the far half' names the upcoming territory by its own name rather than by an M4-M6 range, per the same note (2026-07-28, 'a range is a hostage to every re-cut').",
       "fix_hint": null,
       "blocking": true
     },
@@ -58,17 +91,7 @@
       "rule_lead": "Every backward reference points at a beat that exists.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm: a dead reference to a non-existent exercise strands the student mid-recognition. Re-grepped all four M3 backward references against the live exercise files today (fresh, not carried from the prior instance): 'delta note' → map-the-access-surface.md:136 ('Writes a delta note that names one surface...'); 'STRIDE walk' → threat-model-with-stride.md:81/83 ('Save the map and the STRIDE walk before you clear' / '...the complete STRIDE walk here'); 'ask the skill itself to name its own weakest part' → author-test-strategy-skill.md:48; 'the side quest' → open-the-side-quest.md exists and is in the module's current include list. Also confirmed module include order directly (`grep` on earn-the-trust.md lines 33-59): Open the side quest → Map the access surface → Threat-model with STRIDE → Author your test-strategy skill → this lecture, in that order — every backward reference points at a beat that both exists and precedes this lecture.",
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 4,
-      "rule_lead": "Live-demo beats survive a text read.",
-      "verdict": "N/A",
-      "chunks_flagged": [],
-      "evidence": "No guess-before-reveal structure anywhere in this file; it is a pure consolidation/recognition closer with no live-demo instruction.",
+      "evidence": "Harm: a dead reference to a non-existent exercise strands the student mid-recognition. Re-grepped all four M3 backward references against the live exercise files today: 'delta note' -> map-the-access-surface.md:136 ('Writes a delta note that names one surface...'); 'STRIDE walk' -> threat-model-with-stride.md:81/85 ('Save the map and the STRIDE walk before you clear' / '...the STRIDE walk to your repo's docs/'); 'ask the skill itself to name its own weakest part' -> author-test-strategy-skill.md:48; 'the side quest' -> open-the-side-quest.md exists (the branch/worktree exercise, confirmed via its own body discussing the sibling-branch setup). Also re-confirmed module include order directly against earn-the-trust.md's `##`/link list today: Open the side quest (line 33) -> Map the access surface (37) -> Threat-model with STRIDE (39) -> Author your test-strategy skill (41) -> Sharpen the skill from evidence (43) -> Read the sharpen with a skeptical eye (53) -> this lecture (59) -> Clear the session (61) — every backward reference points at a beat that both exists and precedes this lecture.",
       "fix_hint": null,
       "blocking": true
     },
@@ -78,7 +101,7 @@
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm: a slide with no self-carrying claim projects as empty air. Every chunk (1-7) carries at least one complete claim with mechanism. Closest case: chunk 1's opening bullet (line 5), now shorter after the 2026-08-25 trim — it still states a complete claim (three modules in, near half is lived ground, map arrived at M2, near half = Intent/Context/Work/compounding) before 'One loop, three sizes' (line 6) lands the chunk's main claim; the figure anchors it further. Not an orphan.",
+      "evidence": "Harm: a slide with no self-carrying claim projects as empty air. Every chunk (1-7) carries at least one complete claim with mechanism plus, for chunk 1, the woven figure. Closest case: chunk 1's opening bullet (line 5), shortened by the 2026-08-25 Lean pass — it still states a complete claim (three modules in, near half is lived ground, map arrived at M2, near half = Intent/Context/Work/compounding) before 'One loop, three sizes' (line 6) lands the chunk's main claim. Not an orphan.",
       "fix_hint": null,
       "blocking": false
     },
@@ -88,7 +111,7 @@
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm: a header the chunk's own content contradicts misleads a skim-reader. Checked all 7 headers against current content: 'Back to the map: near half filled' → chunk fills in near-half names + figure (trim didn't touch this); 'The loop and the model it runs on' → agent loop + context-files-as-model; 'How the loop compounds' → compound ladder + double-loop learning; 'The governor you carry forward' → governor definition + generative claim; 'Reading was never the control' → control-is-interrogation argument; 'The branch is the permission' → branch-scoped-autonomy argument; 'The far half goes quiet' → far half loses fast feedback. All true summaries, none contradicted.",
+      "evidence": "Harm: a header the chunk's own content contradicts misleads a skim-reader. Checked all 7 headers against current content: 'Back to the map: near half filled' -> chunk fills in near-half names + the woven map figure; 'The loop and the model it runs on' -> agent loop as closed-loop controller + context-files-as-model; 'How the loop compounds' -> compound ladder + double-loop learning; 'The governor you carry forward' -> governor definition + the near half's one governor; 'Reading was never the control' -> control-is-interrogation argument built from three named artifacts; 'The branch is the permission' -> branch-scoped-autonomy argument, unaffected in claim by the line-38 trim; 'The far half goes quiet' -> far half loses fast feedback, names the three far-half phases. All true summaries, none contradicted.",
       "fix_hint": null,
       "blocking": false
     },
@@ -98,7 +121,7 @@
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm: cadence tics read as filler on a projected slide; one tic can be the whole slide. Ran `grep -n 'Not [A-Z][a-z]*\\. Not '` on the current file today → exit 1, 0 matches. No anaphora/epistrophe triple with an empty third leg (chunk 4 line 26: 'It prices a plan read, picks the feature worth agent time, and tells you when a skill is worth authoring' — three distinct concrete legs). No self-grading superlative — closest case, chunk 5 line 30 'The outputs in this module were the biggest yet', grades the student's own module output size, not the training's usefulness, so it stays outside the value-prop-leak shape. No number-with-retraction pair anywhere in body. No abstraction-noun stack (named laws like 'The compound ladder' / 'Double-loop learning' are coined handles, the rule's own stated non-violation). No empty-leg verb triplet (chunk 5 line 32: 'Ranked list first, probe where you know most, make the output name its weak spot' — three concrete, distinct actions).",
+      "evidence": "Harm: cadence tics read as filler on a projected slide; one tic can be the whole slide. Ran `grep -n 'Not [A-Z][a-z]*\\. Not '` on the current body text today -> 0 matches. No anaphora/epistrophe triple with an empty third leg (chunk 4 line 26: 'It prices a plan read, picks the feature worth agent time, and tells you when a skill is worth authoring' -- three distinct concrete legs, none empty). No self-grading superlative -- closest case, chunk 5 line 30 'The outputs in this module were the biggest yet', grades the student's own module output size, not the training's usefulness, so it stays outside the value-prop-leak shape. No number-with-retraction pair anywhere in body. No abstraction-noun stack (the named laws -- 'The compound ladder', 'Double-loop learning' -- are coined handles, the rule's own stated non-violation). No empty-leg verb triplet (chunk 5 line 32: 'Ranked list first, probe where you know most, make the output name its weak spot' -- three concrete, distinct actions). The line-38 trim removed prose, not a cadence construction, so this rule's verdict is unaffected by the diff.",
       "fix_hint": null,
       "blocking": true
     },
@@ -108,7 +131,7 @@
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm: repo-internal vocabulary lands unexplained on a projected wall. Ran `grep -niE '\\bsurface\\b|\\bfiring\\b|\\bcompendium\\b|forcing function|\\bbeat\\b|\\bmood\\b|\\bconnections\\b'` on the current body text today → exit 1, 0 matches. The inline parenthetical tags '(Work)' (lines 13, 14), '(Context)' (line 15), '(spans the loop)' (lines 19, 20), '(Intent)' (line 25) are this exact file's file-attested authoring scheme, named by filename in check_slides.md §8 itself and corroborated by the maintainer block's emphasis-pass note ('Map-position tags and ASCII fence untouched per the file's locked-by-design contract'). Accept-with-note per that named carve-out, no edit.",
+      "evidence": "Harm: repo-internal vocabulary lands unexplained on a projected wall. Ran `grep -niE '\\bsurface\\b|\\bfiring\\b|\\bcompendium\\b|forcing function|\\bbeat\\b|\\bmood\\b|\\bconnections\\b'` on the current body region today -> 0 matches. The inline parenthetical tags '(Work)' (lines 13, 14), '(Context)' (line 15), '(spans the loop)' (lines 19, 20), '(Intent)' (line 25) are this exact file's file-attested authoring scheme, named by filename in check_slides.md §8 itself ('the-loop-half-filled.md's map-position tags, per its own maintainer contract') and corroborated by the maintainer block's emphasis-pass note. Accept-with-note per that named carve-out, no edit.",
       "fix_hint": null,
       "blocking": true
     },
@@ -118,7 +141,7 @@
       "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm: over-bolding trains the reader to stop trusting bold as a signal. Ran `grep -n '\\*\\*'` on the body region (lines 1-45) today, fresh: 9 bold spans total, at lines 6, 13, 14, 15, 19, 20, 24, 25, 32 — unchanged by the 2026-08-25 trim (the deleted clause carried no bold). Per chunk: chunk1=1 ('One loop, three sizes', line 6), chunk2=3, one handle per law ('closed-loop controller' sub-span line 13; 'Local success, global drift' whole-short-lead line 14; 'context engineering' sub-span line 15 — its lead sentence is de-bolded per the maintainer's emphasis-pass note, only the coined term keeps the bold), chunk3=2 (one per law: 'The compound ladder' sub-span line 19, 'Double-loop learning' line 20), chunk4=2 (both whole-lead bolds, both explicitly named as a kept exception in the 2026-07-09 emphasis-pass maintainer note, which cites check_slides.md §9 by name), chunk5=1 ('Control is interrogation', line 32, 3-word sub-span), chunk6=0, chunk7=0. This is a law-consolidation closer where the rule allows one handle per law; outside the accepted governor-slide exception, every bold is a ≤5-word handle naming a coined law/term, never a whole narrative sentence.",
+      "evidence": "Harm: over-bolding trains the reader to stop trusting bold as a signal. Ran `grep -n '\\*\\*'` on the body region today, fresh: 9 bold spans total, at lines 6, 13, 14, 15, 19, 20, 24, 25, 32 -- unchanged by the diff-region trim (the deleted clause on line 38 carried no bold). Per chunk: chunk1=1 ('One loop, three sizes', line 6); chunk2=3, one handle per law ('closed-loop controller' sub-span line 13; 'Local success, global drift' whole-short-lead line 14; 'context engineering' sub-span line 15); chunk3=2 (one per law: 'The compound ladder' sub-span line 19, 'Double-loop learning' line 20); chunk4=2 (both whole-lead bolds, both explicitly named as a kept exception in the 2026-07-09 emphasis-pass maintainer note, which cites check_slides.md §9 by name); chunk5=1 ('Control is interrogation', line 32, 3-word sub-span); chunk6=0; chunk7=0. This is a law-consolidation closer where the rule allows one handle per law; outside the accepted governor-slide exception, every bold is a <=5-word handle naming a coined law/term, never a whole narrative sentence.",
       "fix_hint": null,
       "blocking": false
     },
@@ -128,19 +151,9 @@
       "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm: a phase-less section can be present in long-read and silently absent from the Slides deck. Re-confirmed today via `grep -n 'loop-half-filled' curriculum/trainings/agentic-engineering-101/earn-the-trust.md` → line 59: '[Lecture: The loop half, filled in](lectures/the-loop-half-filled.md)', the standard include convention every other lecture in this training uses to reach the composed deck's `.phase--lecture` wrapper. No phase-less orphan prose section exists in this file — every `##` sits at top level per the chunk map above.",
+      "evidence": "Harm: a phase-less section can be present in long-read and silently absent from the Slides deck. Re-confirmed today via `grep -n 'loop-half-filled' curriculum/trainings/agentic-engineering-101/earn-the-trust.md` -> line 59: '[Lecture: The loop half, filled in](lectures/the-loop-half-filled.md)', the standard include convention every other lecture in this training uses to reach the composed deck's `.phase--lecture` wrapper. No phase-less orphan prose section exists in this file -- every `##` sits at top level per the chunk map above.",
       "fix_hint": null,
       "blocking": true
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 11,
-      "rule_lead": "Numbering — position is computed, content ordinals are linted.",
-      "verdict": "N/A",
-      "chunks_flagged": [],
-      "evidence": "Ran `node scripts/check-slide-numbering.js --file curriculum/lectures/the-loop-half-filled.md` today → 'OK — 1 files, Phase/Step numbering consistent.' No hand-numbered headers and no Phase/Step content ordinals appear anywhere in this file's headings or body — the rule's subject matter is absent.",
-      "fix_hint": null,
-      "blocking": false
     },
     {
       "compendium": "check_slides.md",
@@ -148,17 +161,7 @@
       "rule_lead": "Page geometry dies at the cut; reading order survives.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Ran `node scripts/check-slide-deixis.js --file curriculum/lectures/the-loop-half-filled.md` today → 'OK — 1 files, no page-geometry pointers across the slide cut.' Manual scan for 'below/above/further down/at the top of this page/see below' found only chunk 1 line 7's 'Every law coming up' — a reading-order pointer ('coming up'), the rule's own stated survivable form, not a page-position pointer. The 2026-08-25 deletion removed a forward-narration clause, not a geometry pointer.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 13,
-      "rule_lead": "In-deck links work now; whether they EARN their place is open.",
-      "verdict": "N/A",
-      "chunks_flagged": [],
-      "evidence": "No markdown links in the body region (lines 1-45): zero `[text](url)` constructs, re-checked against the current file. Nothing to inventory; review surface, never a gate, per the rule's own text.",
+      "evidence": "Ran `node scripts/check-slide-deixis.js --file curriculum/lectures/the-loop-half-filled.md` today -> 'OK — 1 files, no page-geometry pointers across the slide cut.' Manual scan for 'below/above/further down/at the top of this page/see below' found only chunk 1 line 7's 'Every law coming up' -- a reading-order pointer ('coming up'), the rule's own stated survivable form, not a page-position pointer. The line-38 diff-region trim removed prose, not a geometry pointer, and the surrounding bullets (36, 39) still resolve as plain reading-order continuations.",
       "fix_hint": null,
       "blocking": false
     },
@@ -168,7 +171,7 @@
       "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/lectures/the-loop-half-filled.md` today → 'files: 1  slides: 7  limits: 210 words / 6 bullets  oversized: 0 — every slide is within limits.' The 2026-08-25 trim only shrinks the word count on chunk 1; no slide is newly at risk.",
+      "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/lectures/the-loop-half-filled.md` today -> 'files: 1  slides: 7  limits: 210 words / 6 bullets  oversized: 0 — every slide is within limits.' The line-38 diff-region trim only shrinks chunk 6's word count further; no slide is newly at risk.",
       "fix_hint": null,
       "blocking": false
     },
@@ -178,7 +181,7 @@
       "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "This is a lecture file, so headings must be claims (or fall under the orientation/catalogue exemptions). 'Reading was never the control' (line 28), 'The branch is the permission' (line 34), and 'The far half goes quiet' (line 41) are unambiguous claim-shaped headers. 'Back to the map: near half filled' (line 3) reads as an orientation header, parallel to the rule's own exempted 'You are here'/'The far half opens' examples. 'The loop and the model it runs on' (line 11), 'How the loop compounds' (line 17), and 'The governor you carry forward' (line 22) are catalogue-style subject-naming headers, parallel to the rule's exempted 'Ralph'/'The numbers' examples, each carrying a mild implicit claim without needing to be graded as a hard violation given §15's own documented over-firing history. No header is contradicted by its content (see rule 6). Non-blocking rule; no REVISE filed.",
+      "evidence": "This is a lecture file, so headings must be claims (or fall under the orientation/catalogue exemptions). 'Reading was never the control' (line 28), 'The branch is the permission' (line 34), and 'The far half goes quiet' (line 41) are unambiguous claim-shaped headers. 'Back to the map: near half filled' (line 3) reads as an orientation header, parallel to the rule's own exempted 'You are here'/'The far half opens' examples. 'The loop and the model it runs on' (line 11), 'How the loop compounds' (line 17), and 'The governor you carry forward' (line 22) are catalogue-style subject-naming headers, parallel to the rule's exempted 'Ralph'/'The numbers' examples. No header is contradicted by its content (see rule 6). Non-blocking rule, explicitly generalised 2026-08-19 to not fire on this shape; no REVISE filed.",
       "fix_hint": null,
       "blocking": false
     },
@@ -188,9 +191,42 @@
       "rule_lead": "A bullet earns its slot or dies — three classes that read as rigour and carry nothing.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm: a bullet that restates doctrine, comments on the training's own design, or closes with a content-free koan reads as rigour while adding nothing — wasted slide real estate and a tell the student learns to skim past. First-ever pass of this rule against this body (rule added to the compendium 2026-08-25, one day before this run). Checked all 20 body bullets against the three classes. Closest case for (a) doctrine restatement / (c) aphorism kicker: chunk 6's closing bullet (line 39) 'An un-merged branch is not unfinished work. Holding the merge until control is earned is the control working.' — its two clauses closely echo the chunk's own line 36 ('never merged... that is the shape, not an accident') and line 38 ('Control is exercised at the merge... merge waits until the work survives it'). Stays inside the rule rather than being filed: (i) this exact three-bullet unit (lines 36, 38, 39) has a dated, maintainer-authored accept-note ('Merge bullet accepted as written', 2026-08-19) that names lines 36 and 39 verbatim as the bullets that bound line 38 and states 'the beat resolves as a unit... do not add a reconciling clause' — a §16 finding here would be asking to alter a passage the maintainer has already reviewed and fixed in shape; (ii) on content, line 39's first clause pre-empts a specific, plausible misreading (that leaving work unmerged all module means it is incomplete), which is a 'tell' the rule's own earning test credits, not pure restatement; its second clause gives the withholding-action a name ('the control working') that the file uses as this chunk's takeaway, mirroring chunk 5's parallel move of naming 'Control is interrogation' as its consolidating handle. Second-closest case, chunk 1 line 7 ('A name is a handle, not a lesson... Naming it makes the move findable on Tuesday, transferable to a teammate, and checkable when it stops working.') — considered against class (b) self-referential design commentary, but it asserts a general engineering claim about the value of naming (findable, transferable, checkable), not 'you are inside a pedagogy' framing like the rule's own examples ('un-packaged first is by design'); it motivates the naming that follows without narrating the curriculum's own design choices. Chunk 7's closing bullet (line 45, 'Nothing from the near half retires...') recaps four named laws but functions as the file's designed forward-closer (per the maintainer's Slide-growth-pass note on this exact slide) and ends on a new open question ('how do you trust work you didn't watch?'), not a content-free restatement. No bullet in chunks 2, 3, 4, or 5 fits any of the three classes — each adds a distinct move, mechanism clause, or concrete example not already stated elsewhere in its chunk.",
+      "evidence": "Harm: a bullet that restates doctrine, comments on the training's own design, or closes with a content-free koan reads as rigour while adding nothing. Checked all 20 body bullets against the three classes, with particular attention to chunk 6 (lines 36-39) since line 38 is this run's one body-region diff. Closest case: chunk 6's closing bullet (line 39) 'An un-merged branch is not unfinished work. Holding the merge until control is earned is the control working.' echoes line 36 ('never merged... that is the shape, not an accident') and the (now-shortened) line 38 ('Control is exercised at the merge... merge waits until the work survives it'). Stays inside the rule rather than being filed: (i) this exact three-bullet unit has a dated, maintainer-authored accept-note ('Merge bullet accepted as written', 2026-08-19) naming lines 36 and 39 verbatim as the bullets that bound line 38 and stating 'the beat resolves as a unit... do not add a reconciling clause' -- the diff-region trim shortened line 38's wording but did not change the claim the note is about, so the note still covers the unit; (ii) on content, line 39's first clause pre-empts a specific misreading (that an un-merged branch means incomplete work), which is a 'tell' the rule's own earning test credits, and its second clause names the withholding-action ('the control working') as this chunk's takeaway, mirroring chunk 5's parallel 'Control is interrogation' handle. Second-closest case, chunk 1 line 7 ('A name is a handle, not a lesson... findable on Tuesday, transferable to a teammate, and checkable when it stops working') -- considered against class (b) self-referential design commentary, but it asserts a general engineering claim about the value of naming, not 'you are inside a pedagogy' framing; it motivates what follows rather than narrating the curriculum's own design choices. Chunk 7's closing bullet (line 45) recaps four named laws but is the file's designed forward-closer on a lecture whose entire stated job is consolidation/recognition (Placement note: 'naming a pattern the student lived through = closer'), and it ends on a new open question ('how do you trust work you didn't watch?'), not a content-free restatement. No bullet in chunks 2, 3, 4, or 5 fits any of the three classes -- each adds a distinct move, mechanism clause, or concrete example not already stated elsewhere in its chunk.",
       "fix_hint": null,
       "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 4,
+      "rule_lead": "Live-demo beats survive a text read.",
+      "verdict": "N/A",
+      "evidence": "No guess-before-reveal structure anywhere in this file; it is a pure consolidation/recognition closer with no live-demo instruction.",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "b01b146d603e6f8233fd25c12ec50b7dcb29d7fa1ae58588a0fa0db58b55bf6c",
+      "carried_shape": "1a45f572c31f174d"
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 11,
+      "rule_lead": "Numbering — position is computed, content ordinals are linted.",
+      "verdict": "N/A",
+      "evidence": "Ran `node scripts/check-slide-numbering.js --file curriculum/lectures/the-loop-half-filled.md` today → 'OK — 1 files, Phase/Step numbering consistent.' No hand-numbered headers and no Phase/Step content ordinals appear anywhere in this file's headings or body — the rule's subject matter is absent.",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "b01b146d603e6f8233fd25c12ec50b7dcb29d7fa1ae58588a0fa0db58b55bf6c",
+      "carried_shape": "1a45f572c31f174d"
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 13,
+      "rule_lead": "In-deck links work now; whether they EARN their place is open.",
+      "verdict": "N/A",
+      "evidence": "No markdown links in the body region (lines 1-45): zero `[text](url)` constructs, re-checked against the current file. Nothing to inventory; review surface, never a gate, per the rule's own text.",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "b01b146d603e6f8233fd25c12ec50b7dcb29d7fa1ae58588a0fa0db58b55bf6c",
+      "carried_shape": "1a45f572c31f174d"
     }
   ],
   "blocking_findings_count": 0,

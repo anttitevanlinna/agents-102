@@ -22,7 +22,7 @@
 *15 min*
 
 - In plan mode, name the task, why it matters, and the one constraint you care about most.
-- Plan mode explores the codebase and drafts the steps; your job starts when it pauses for approval.
+- Plan mode explores the codebase and writes a plan; your job starts when it pauses for approval.
 
 Drop your task after the colon.
 
@@ -40,7 +40,7 @@ Plan mode takes minutes on real codebases. Eight to twelve isn't unusual. Use th
 
 *12 min*
 
-- At the approval prompt, pick **No, keep planning**; the other two options approve and leave plan mode. Send two push-backs on two different axes: one soft item, and one of (assumption · alternative). Your own words, your own concerns.
+- At the approval prompt, pick **No, keep planning**. Send two push-backs on two different axes: one soft item, and one of (assumption · alternative). Your own words, your own concerns.
 - **Soft items:** the step that reads clean but skips over something. *"Update the config"* without which keys. The vagueness isn't a drafting slip; it's where the agent hasn't decided yet. Stuck picking one? Ask Claude which step it's least confident about. **The agent finds; you judge.**
 - **Assumptions:** something the plan is carrying silently that it shouldn't. A library version, a schema shape, a teammate's recent change the agent hasn't seen.
 - **Alternatives:** not just a flag; the change you'd make. Merge two steps that belong together. Reorder two steps whose sequence matters.
@@ -141,7 +141,7 @@ Claims
 - `plan-attention-is-not-equal-attention` · vision · "A plan deserves more attention than ordinary agent output; not every line is equally important." ← none-owed
 - `read-the-file-not-the-summary` · vision · "the chat summary is secondary" ← none-owed
 - `plan-mode-mechanics` · detail · "In plan mode, name the task" ← cc-permission-modes — the Shift+Tab keystroke was cut here 2026-08-12 (Antti: *"M2 instructs now twice how to enable plan mode"*). `when-a-plan-is-good.md`'s `plan-mode-shift-tab` is the single copy and the one the freshness stamp watches; M1 runs without plan mode, so that lecture is the student's first encounter and its own optional beat exercises it before this file opens. Do not restore the keystroke here — the label churns (`⏸ plan mode on`, plus `/plan` as a second entry point) and two copies means two edits.
-- `keep-planning-with-feedback` · detail · "At the approval prompt, pick **No, keep planning**; the other two options approve and leave plan mode." ← cc-permission-modes
+- `keep-planning-with-feedback` · detail · "At the approval prompt, pick **No, keep planning**." ← cc-permission-modes — **the sibling-options clause was cut 2026-08-29 (Antti).** *"The other two options approve and leave plan mode"* is an option count in prose, which is the exact shape the stamp below warns about: the menu went from four rows to three in thirteen days, and the first row's label still varies by account. Naming only the row the student picks is durable against the next copy change. Do not restore a description of the rows beside it.
 - `plan-mode-takes-minutes` · vision · "Plan mode takes minutes on real codebases. Eight to twelve isn't unusual." ← none-owed
 - `assumption-push-back-is-wwhtbt` · borrowed · "something the plan is carrying silently that it shouldn't" ← martin-wwhtbt
 - `re-softening-on-regeneration` · vision · "read the flagged steps in the revised plan, not the agent's report of them" ← none-owed — the niceness mechanism compressed into the Phase-3 note box; the report-back grain-of-salt is M1's self-report-is-a-hypothesis recalled at point of use.

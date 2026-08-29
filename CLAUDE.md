@@ -61,7 +61,7 @@ Card ONLY **student-facing body text + prompt bodies students copy** (`check_pro
 
 - mechanical swap leaving claim/voice/ask untouched — page geometry → reading order, dead anchor, stale locator;
 - any edit whose wording Antti just supplied or whose direction he just called — carding it asks him to approve his own sentence;
-- any body edit to a supplementary — optional progressive reading, never reaches the Slides deck, never projected in a room. **Reference pages NOT covered; ask before widening.**
+- any body edit to a supplementary OR reference page (Antti widened 2026-08-29, mid-card on `reference/multi-session-git.md`) — the training index's quieter rows, optional reading, never projected in a room. Modules, exercises, lectures stay gated.
 
 → apply, report as landed work; genuine open question = note beside it, not a gate. Test: *could you write BEFORE/AFTER and be certain of the call yourself?* → not a card.
 

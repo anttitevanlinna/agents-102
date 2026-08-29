@@ -36,7 +36,7 @@ The map has a far side. Before the first long session, see the country you are e
 
 [Lecture: Test and learn](lectures/test-and-learn.md)
 
-[Exercise: Prep the run, fill the gaps](exercises/walk-and-send-off.md)
+[Exercise: Prep the session, fill the gaps](exercises/walk-and-send-off.md)
 
 [Exercise: Set the markers, send it off](exercises/set-the-markers-send-it-off.md)
 
@@ -48,7 +48,7 @@ The map has a far side. Before the first long session, see the country you are e
 - The audit ranked the thin spots in your setup against one real task. You corrected the ranking, then filled the worst two or three.
 - The task went out un-packaged: no plan file, no verifier, no reference artefact. Nothing but what you already had.
 - Traces are data. Stopping a session that has gone off the rails is reading, not failing.
-- The run started from a pinned commit on a throwaway branch. This was an experiment, not a production run.
+- The session started from a pinned commit on a throwaway branch. This was an experiment, not production work.
 
 ## Optional challenges
 

@@ -24,7 +24,7 @@ Drop your bug after the colon.
 ## Read the diff and push back on a line
 
 - The agent runs the loop; you read the result. Read the diff. If a line isn't what you'd have written, push back. Quote the line and say why. The agent yields if you push hard enough, so its agreement settles nothing. Whether your argument was actually better is your call.
-- Your own wording matters. No pre-made prompt for the pushback. The compound step reads this session's scrollback, so your push-back is what becomes a rule.
+- Your own wording matters. No pre-made prompt: the compound step reads this scrollback, so your push-back is what becomes a rule.
 
 ## Interrogate the fix for a deeper layer
 
@@ -49,6 +49,8 @@ Drop your bug after the colon.
 - How far you let Claude drive Git is your choice. Ask Claude to commit, push a branch, and open the PR.
 
 <!-- maintainer -->
+
+**Carded and kept, then trimmed (Antti 2026-08-29): the compound-step mention in the push-back bullet stays.** The forward mechanism ("the compound step reads this scrollback, so your push-back is what becomes a rule") is the wanted motivation for authentic wording, not a leak — do not cut it as a pre-announcement; the shortening to its current form is the settled dose.
 
 **View summary:** You bring a real bug through a tests-first repair: prove it with a failing test, fix the root cause, interrogate the diff, and ship the PR. The artifact is working code whose evidence you have read and challenged.
 

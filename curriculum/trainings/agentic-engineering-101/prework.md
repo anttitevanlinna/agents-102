@@ -8,7 +8,7 @@ Come to Module 1 with the repo picked,<!--flag:payload--> the curated skills ins
 
 ## Bring real work
 
-The training runs on YOUR real work. You'll work at different task sizes across the training, bring something at each size from your backlog. You don't need them all picked now; you need to know they're there.
+YOUR real work is the material. You'll work at different task sizes across the training, bring something at each size from your backlog. You don't need them all picked now; you need to know they're there.
 
 Roughly in the order you'll reach for them:
 

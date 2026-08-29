@@ -76,7 +76,7 @@ Ask Claude whether this ADR rides into future sessions automatically.
 {{prompt:threat-model-with-stride-4}}
 
 - Claude's answer: no. ADRs don't auto-load like `CLAUDE.md` and `CLAUDE.local.md` do. They're on-disk and discoverable, but a future session loads them only when explicitly read. You can wire individual ADRs into team `CLAUDE.md` (one `@docs/adr/<file>.md` line per file; Claude Code's `@`-include is single-file, no glob), but most teams don't: ADRs accumulate, the window is finite, and rejected alternatives shouldn't sit in live context.
-- Selective load is the practitioner default. Module 4 will tell Claude exactly which artifacts to read at the start of the long-running session, and that explicit list is the lesson.
+- Selective load is the practitioner default: naming exactly what to read at the start of a long-running session, rather than trusting broad auto-load.
 
 ## Save the map and the STRIDE walk before you clear
 

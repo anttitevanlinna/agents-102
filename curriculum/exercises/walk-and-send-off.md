@@ -1,4 +1,4 @@
-# Prep the run, *fill the gaps*
+# Prep the session, *fill the gaps*
 
 **Time:** 55 minutes.
 

@@ -85,6 +85,10 @@ Module 2 is where plan mode earns its keep: multi-file work, and a second pass t
 
 <!-- maintainer -->
 
+**Carded and kept (Antti 2026-08-29): the "All modules are designed to cope with missing details from prior modules" bullet stays.** It is the rescue guarantee — a trainer improvising cuts mid-session, or a student who missed a beat, needs the stated design promise, not only the cutting permission the list grants above it. `check_student_facing.md` §33 does not take it; do not re-card.
+
+**Carded and kept (Antti 2026-08-29): the `CLAUDE.local.md` KC bullet keeps both trailing sentences** ("It is the simplest personal store, and a starter. Everyone sees how it will bloat almost immediately."). The bloat warning is essential: without it students assume every rule earns its keep, and M4's subtraction work lands on an expectation this bullet is there to break. Do not trim as NVA; do not re-card.
+
 **The confidence before-measurement fires at this module's open, ahead of any teaching, and lives OUTSIDE the workbook.** The measurement system is deliberately not in student-facing body; the trainer administers it. Canonical wording in `theory-plan.md` § Baseline instrument — verbatim-identical to the M6 after-measurement or the delta measures the wording. Do not add a rating beat to this file's body.
 
 **`## Prework` carries no instruction to do the prework and no locator.** A student reading this module either did it or did not; the section states what the prework left them holding. The page-geometry phrase that once trailed it (*"at the top of this workbook"*) is banned: the deck has no top once the renderer cuts at `##` (`check_slides.md` §12), and `check_slides.md` §2's navigational-pointer carve-out named that exact phrase as exempt before the blessing was withdrawn in the compendium. Do not reintroduce a locator, or the compliance line.

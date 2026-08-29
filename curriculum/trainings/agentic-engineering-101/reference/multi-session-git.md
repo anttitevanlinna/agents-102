@@ -8,7 +8,7 @@ You do not have to start here. Find your way to this over time. There is no rush
 
 Once you trust Claude Code on one thing, you will want to run it on more things at once. A bug in one corner of the repo, a refactor in another, a small feature in a third. Three sessions, three tasks, one hour that used to be one task.
 
-Git is what makes this safe. Every session works against a commit graph that remembers who changed what. If two sessions collide, Git tells you at merge time. Nothing silently overwrites.
+Git is what makes this safe. Every session works against a commit graph that remembers who changed what. If two sessions collide, Git tells you at merge time. Nothing committed is silently overwritten.
 
 Worktrees are the Git feature that makes multi-session fast. Instead of one working directory per repo, you get one per branch, each in its own folder, all sharing the same underlying Git history. Open N folders, open N sessions, run N tasks.
 

@@ -23,6 +23,22 @@ Append-only stream of editorial calls made on real curriculum text. **Newest at 
 
 ---
 
+## 2026-08-29 — orchestrated cut sweep, shared lecture library
+
+19 lectures swept by five read-only subagents carrying this file's counterweights. Report: `curriculum/evals/cut-sweep.ae101.md`.
+
+**The lead-in test.** A sentence before a `{{prompt:}}` block can do two different jobs, and only one of them is cuttable. **Does it tell you to run the prompt, or tell you what the prompt says?** The first is a speech act aimed at the human, which the prompt cannot perform because the prompt addresses the machine. The second is the prompt's own text, repeated to the only reader who acts on it. Keep the verb, drop the preview.
+
+`compounding.md` did both at once: *"Ask Claude to spot the still-generic pages in the memory you built and propose what would sharpen each"* — *"Ask Claude to"* is the speech act, everything after *"to"* is the preview. Antti's instruction was *"cut it to the core of the action"*; it became **"Spot what's still generic and sharpen it."** Twenty-one words to seven, and it reads better aloud, which is what matters for a line a trainer says at the paste moment.
+
+This is the instrument that was missing on the hooks slide earlier the same day. *"Does it restate the adjacent artifact"* (§27b) flags both halves and cannot tell them apart, which is how a proposed cut would have left that prompt unmotivated. The verb-versus-preview split separates them.
+
+**The counterweights did work in the machine.** Agents declined roughly twenty defensible cuts, citing this file and the maintainer blocks — the `why-mostly-right-fails` opener under the opener-repetition counterweight, the eval naming beat under no-understudy. A sweep run the day before would have returned the four cuts Antti had already refused. **Corollary: a rule shipped to subagents without its exceptions returns the maintainer's own rejected work.**
+
+**Scope before dispatch.** Two swept files turned out to belong to agents-101, not AE101, because the file list came from a grep rather than a verified ownership check. §27 still applied, but the tool-explainer class rests on *"this audience uses Claude Code daily"*, which is false for builder leaders. **An audience-dependent rule needs the audience verified before the sweep, not after.**
+
+---
+
 ## 2026-08-29 — AE101 compaction pass, M1 through M6
 
 Roughly thirty sentences cut, two slides, across all six modules. Landed as `check_writing.md` §27 (say it once, at its most concrete, plus at most one generalising sentence) and `compounded/2026-08-29-writing-say-it-once-at-its-most-concrete.md`.

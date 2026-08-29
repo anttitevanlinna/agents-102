@@ -229,14 +229,33 @@ vocabulary and renders a badge plus a nav-rail class per tier:
 - **T2** — *Recognition; names what the room already did, skippable under time pressure*
 - **T3** — *Story / extra theory, skip freely*
 
-Coverage across the AE101 shared library as of 2026-08-29: **322 untagged, 30 T2, 8 T3**, and ten
-files carry every tag. M3 has none. Hiding T2/T3 today removes a tenth of the deck, not the theory.
-The proof: all three slides cut above were untagged and would have survived a barebones cut intact.
-The tags currently mark which files got a tier pass, not which slides are skippable.
+Coverage, re-measured 2026-08-29 after the cut pass: **38 tagged slides — 30 T2, 8 T3 — across ten
+files**, against ~450 `##` sections in the shared library. M3 has none. Hiding T2/T3 today removes
+under a tenth of the deck, not the theory. The proof: every slide cut on 2026-08-29 was untagged and
+would have survived a barebones cut intact. **The tags currently mark which files got a tier pass,
+not which slides are skippable** — that is the whole gap, and it is why step 1 is an audit.
+
+Re-measure, do not trust these numbers after any tagging work:
+```
+grep -rho "^<!--tier:2-->" curriculum/lectures curriculum/exercises curriculum/trainings | wc -l
+grep -rho "^<!--tier:3-->" curriculum/lectures curriculum/exercises curriculum/trainings | wc -l
+```
+A bare `grep -r "<!--tier:"` over `curriculum/` returns ~126 and is wrong: eval-instance JSON and
+maintainer blocks quote the marker as text. Anchor the pattern to line start.
 
 **T2's definition is goal 1 in different words.** A slide that *"names what the room already did"*
 cannot sit before the exercise — the room has not done it yet. So a `T2` before a module's first
-exercise is a category error, and it is greppable. Exactly three exist (the open cards above).
+exercise is a category error, and it is greppable. **Two files, three slides, verified 2026-08-29:**
+`when-a-plan-is-good.md` (2 × T2, M2) and `the-agent-loop.md` (1 × T2, M4). Both are the open cards
+above. The check, per module, on refs before the first `exercises/` link:
+```
+awk '/\]\(exercises\//{exit} /\]\(lectures\//{print}' <module>.md \
+  | grep -o "lectures/[a-z0-9-]*\.md" | sed 's#lectures/##' \
+  | while read l; do echo "$l $(grep -c '^<!--tier:[23]-->' curriculum/lectures/$l)"; done
+```
+Do not filter module refs on a literal `[Exercise` prefix — M1's refs do not use it, and that
+false-positives its closer (`the-machine-you-just-met.md`, 7 tags, correctly placed after all four
+exercises). Match the `exercises/` path, not the link text.
 
 **Three steps, in order:**
 

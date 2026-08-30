@@ -1,7 +1,7 @@
 export const meta = {
   name: 'eval-sweep',
   description: 'Fire one class judge per owing (file, class) pair, adversarially verify every blocking finding, return what survived',
-  whenToUse: 'Clearing the eval queue. Pass args from `eval-queue.js --training <t> --json`, or {training, limit} to let the sweep read the board itself. Judges are read-only; the orchestrator applies findings and stamps afterwards.',
+  whenToUse: 'Clearing the eval queue. Pass {items} from `eval-queue.js --training <t> --json` — items must be supplied, the script cannot read the board itself. Optional: {confirm} = ARRAY of post-fix re-verification items, {sets} = ARRAY of module sets for cross_module; neither is a boolean flag, omit to skip that phase. Judges are read-only; the orchestrator applies findings and stamps afterwards.',
   phases: [
     { title: 'Judge', detail: 'one agent per (file, class) pair, each running its own pinned diff' },
     { title: 'Verify', detail: 'two adversarial refuters per BLOCKING finding — lenses scope / harm' },
@@ -45,6 +45,20 @@ const input = Array.isArray(args) ? { items: args } : (args || {})
 const ITEMS = input.items || []
 const CONFIRM = input.confirm || []   // [{file, slug, cls, pin, finding, applied, checks:[[cmd, expected]]}]
 const SETS = input.sets || []         // [{training, name, members:[rel...]}]
+
+// `confirm` and `sets` are lists, not switches. A caller who reads the
+// whenToUse as offering a go-ahead flag passes `confirm: true`, and the bare
+// `for (const c of CONFIRM)` below then throws `true is not iterable` from the
+// slug validator — a stack trace about canonical slugs for an argument that
+// never was one. Name the shape at the door instead.
+for (const [name, val] of [['confirm', input.confirm], ['sets', input.sets]]) {
+  if (val != null && !Array.isArray(val)) {
+    throw new Error(`${name} must be an array, got ${typeof val} (${JSON.stringify(val)}). ` +
+      `\`confirm\` is a list of post-fix re-verification items ` +
+      `([{file, slug, cls, pin, finding, applied, checks}]); \`sets\` is a list of module sets ` +
+      `([{training, name, members}]). Neither is a boolean go-ahead — omit it to skip that phase.`)
+  }
+}
 // Optional per-role model override: {models: {judge: 'sonnet', refute: 'haiku'}}.
 // Defaults preserve historical behavior: judges on sonnet, refuters inherit the session model.
 const MODELS = Object.assign({ judge: 'sonnet', refute: null }, input.models || {})

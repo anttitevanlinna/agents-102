@@ -309,3 +309,30 @@ test('the confirmation and cross-module doors carry the contract too', async () 
   assert.match(set, /check_cross_module\.md/);
   assert.match(set, /body_sha` MAP/);
 });
+
+// `confirm` is a list of post-fix re-verification items, not a "yes, go ahead"
+// flag. A caller reading the whenToUse — which documented `items` and `training`
+// and never mentioned `confirm` — reaches for `confirm: true`, and the old
+// failure was `TypeError: true is not iterable` thrown from the CANON loop:
+// a stack trace pointing at slug validation for an argument that was never a
+// slug. Fail on the shape, name the shape.
+test('a scalar confirm is rejected by name, not as an iteration crash', async () => {
+  await assert.rejects(
+    () => run({ items: ARGS.items, confirm: true }, cleanJudge),
+    /confirm.*array/i
+  );
+});
+
+test('a scalar sets is rejected the same way', async () => {
+  await assert.rejects(
+    () => run({ items: ARGS.items, sets: true }, cleanJudge),
+    /sets.*array/i
+  );
+});
+
+// The complement: the documented shapes must still be accepted, so the guard
+// cannot be satisfied by rejecting everything.
+test('the documented confirm and sets shapes still run', async () => {
+  const out = await run(ARGS, cleanJudge);
+  assert.ok(out, 'documented arg shape should produce a result');
+});

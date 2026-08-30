@@ -66,14 +66,15 @@ Antti
 
 **Slide deixis accepted:** "paragraphs above" (check_slides.md §12) — *"the framing I said, a few paragraphs above, we would cut"* points inside its own `## Things that went sideways` chunk, two paragraphs up on the same slide, at § *The end-state that was not*. Story lecture, read not projected; the geometry is true where it stands.
 
-**Quality:** compendium-audited 2026-08-29 (writing@4a722813 story@0e4f7c9e technical@0cea7581 behavior@b3143a4 pedagogy@1abb84c6 strategy@b3143a4 slides@0e4f7c9e)
-- judges @4a722813: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-30 (writing@9a6d906e story@9a6d906e technical@9a6d906e strategy@9a6d906e slides@9a6d906e behavior@b3143a4 pedagogy@1abb84c6)
+- judges @9a6d906e: writing REVISE, story PASS, technical PASS, strategy PASS, slides PASS. The writing REVISE rests on one blocking finding that both refuters killed independently — `resolution` in the instance carries the reasoning; body unchanged.
+- judges @4a722813: behavior PASS, pedagogy PASS (drift-recheck)
 - source-verified 2026-05-25: Geoff Charles quote confirmed verbatim against ramp.md (practitioner direct, 2026-04-09); public X primary paywalled — attribution disposition open for maintainer (see source-verification block below)
 **Time:** 8 min at read-aloud pace. 1238 words body. **Voice timing:** L3 framing line is read by the trainer aloud as setup; the body is then read as the memo, signed at close.
 
 Section stays open-ended (no count locked) because the thesis is that surprises keep happening.
 
-**Catalogue discipline:** § *Things that went sideways* carries one paragraph per distinct failure mechanism, never a second worked instance of one already told. Six stand: the chat-shaped opening, the banned word across four instances, the flattering end-state, the unrun sims, the self-contradicting closer, the paraphrase shipped as attribution. *"The rule was loaded. The check never ran."* is the catalogue's one repeated formula and lands once, in the last entry, where the three sentences Claude dropped are the three § *The generalisation* then delivers. A seventh entry that restates a mechanism is length, not evidence — the open-ended section above is an invitation to add new mechanisms, not new examples.
+**Catalogue discipline:** § *Things that went sideways* carries one paragraph per distinct failure mechanism, never a second worked instance of one already told. Seven stand: the chat-shaped opening, the banned word across four instances, the flattering end-state, the unrun sims, the self-contradicting closer, the paraphrase shipped as attribution, the uncited frame. *"The rule was loaded. The check never ran."* is the catalogue's one repeated formula and lands once, in the uncited-frame entry, where the three sentences Claude dropped are the three § *The generalisation* then delivers. A seventh entry that restates a mechanism is length, not evidence — the open-ended section above is an invitation to add new mechanisms, not new examples.
 
 **Delivery:** In-room opener for M6. Lands before the exercise; permission-giving, not credibility-performance.
 

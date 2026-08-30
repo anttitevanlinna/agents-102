@@ -1,39 +1,39 @@
 {
   "class": "slides",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/story-of-module-6.md",
-  "body_sha": "22229db586dbb06fe4b314a5d59ec2a08f62b0ec2a2e373022abea798780c4e6",
+  "body_sha": "31a430bdf91c48423e0618e7abb132bce82e83fbdee67510db0d8d02442f6d01",
   "verdict": "PASS",
   "training": "ae101",
   "chunk_map": [
     {
       "index": 0,
       "heading": "# Story of Module 6 (lede + intro)",
-      "lines": "1-7"
+      "lines": "1-8"
     },
     {
       "index": 1,
       "heading": "The numbers",
-      "lines": "9-13"
+      "lines": "9-14"
     },
     {
       "index": 2,
       "heading": "Things that went sideways",
-      "lines": "15-31"
+      "lines": "15-30"
     },
     {
       "index": 3,
       "heading": "The generalisation",
-      "lines": "33-43"
+      "lines": "31-42"
     },
     {
       "index": 4,
       "heading": "Then I compounded the session",
-      "lines": "45-51"
+      "lines": "43-50"
     },
     {
       "index": 5,
       "heading": "What the loop is for",
-      "lines": "53-65"
+      "lines": "51-64"
     }
   ],
   "rules_evaluated": [
@@ -43,7 +43,7 @@
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm = reader stalls on an unresolved pronoun/referent. Walked every chunk: chunk2 L17 'M5' and 'the training teaches this pattern across three modules' — M5 named directly (module number), arc-earned per rule 1's spine-vocabulary carve-out. L21 'the lecture you are reading right now' self-resolves to chunk0's H1. L23/L31 'the reference artefact' is never re-defined in this file but is paired with 'plan.md'/'verifier' as the M5-taught packaged-session trio (M5 is explicitly the module this memo says teaches diagnose/package/re-send) — treated as arc-earned spine vocabulary, not a bare unnamed referent. L25 'the closer' is standard opener/closer module vocabulary, arc-earned. L41 'the loop' is first named at L11 ('A verifier loop ran after') and reused correctly, matching rule 1's explicit non-violation ('a term introduced on an earlier slide and reused'). L61 'A senior-persona sim' resolves to L25's 'A senior-engineer persona sim'. No never-named, vague-with-full-history, or re-chunk-stranded referent found.",
+      "evidence": "Harm = reader stalls on a referent that never resolves. Walked all 6 chunks: chunk0 L3 'the M5/M6 loop' names both modules by number (arc-earned module-name vocabulary, no violation). chunk2 L17 'M5 teaches you to notice'/'the M5 move' and L23/L27/L29 'the reference artefact' (paired each time with plan.md/verifier context that supplies its sense) resolve within the training's own module-number vocabulary. L25 'The closing lecture' and 'the two files' resolve via the quoted benediction that immediately follows in the same sentence. L41 'the loop' is first introduced at L11 ('A verifier loop ran after') and reused correctly per rule 1's explicit non-violation for same-file reuse. chunk4 L45 'the M6 exercise'/'the M6 generation' both name the module by number. chunk5 L53 'the M5 packaged session' and L57 'last module' are module-arc closer vocabulary (carve-out: module-arc beats in openers/closers) — this file sits as M6's opener per its own module inclusion. No never-named, vague-with-full-history, or re-chunk-stranded referent found.",
       "fix_hint": null,
       "blocking": true
     },
@@ -53,7 +53,7 @@
       "rule_lead": "Cross-file and positional callbacks.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm = a callback whose target the reader can't identify without knowing file position. Cross-file mentions are 'M5' (L17, L55) and 'last module' (L57) — named by module number, not by position ('the opening lecture said'). 'The closer's Ramp paragraph' (L27) names its target by content (Ramp paragraph), not position. No 'as file X said above/earlier' construction anywhere in body.",
+      "evidence": "Harm = a callback the reader can't locate without knowing file position. Two candidates: L25 'The closing lecture ended with a three-phrase benediction: \"You know how to test...\"' and L27 'The closer's Ramp paragraph attributed a framing... \"the harness was the bottleneck, not the model.\"' — both name the source by its content, unpacked in the same sentence, matching the rule's own passing example ('the opening lecture's infinite chameleon: the LLM that flatters you'). Neither uses a bare positional pointer ('the opening lecture said above'). No other cross-file mention in body.",
       "fix_hint": null,
       "blocking": true
     },
@@ -63,7 +63,7 @@
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm = a slide with no self-carrying claim. All 6 chunks carry a developed multi-paragraph unit; chunk1 (L9-13, the tallies) is the closest thing to a data-only slide but closes with its own frame ('Those numbers are the story', L13), so it stands alone. No wait-state or single context-dependent bullet found.",
+      "evidence": "Harm = a slide with no self-carrying claim. All 6 chunks carry a multi-paragraph developed unit and close on their own frame: chunk1 (L9-13, the tally) closes with 'Those numbers are the story' (L13); chunk3 (the generalisation) closes with 'A rule in context is not a rule in the output' (L41); none is a bare wait-state or single context-dependent bullet.",
       "fix_hint": null,
       "blocking": false
     },
@@ -73,7 +73,7 @@
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm = a header contradicted by its own chunk's content. Checked all 5 `##` headers: 'The numbers'(L9)→tallies; 'Things that went sideways'(L15)→the failure list; 'The generalisation'(L33)→the drawn thesis; 'Then I compounded the session'(L45)→the second-loop fix; 'What the loop is for'(L53)→states the loop's purpose. All true summaries, none contradicted by their body.",
+      "evidence": "Harm = a header the chunk's own content contradicts. Checked all 5 `##` headers against their bodies: 'The numbers'(L9)->the tallies; 'Things that went sideways'(L15)->the six-item failure catalogue; 'The generalisation'(L31)->the drawn thesis; 'Then I compounded the session'(L43)->the second-loop fix; 'What the loop is for'(L51)->states the loop's purpose. All true summaries of their chunk; none contradicted.",
       "fix_hint": null,
       "blocking": false
     },
@@ -83,9 +83,9 @@
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm = a padded rhetorical tic substituting for content. 'Not X. Not Y. Z.' — zero instances. Self-grading superlatives — zero. Number+retraction — tallies (L11) stated once, plainly, never hedged then walked back; 'not 100% deterministic' (L51) is a flat claim, not a number-then-retraction. Abstraction-noun stacks — none; 'post-training preferring warmth over directness' (L21) is a stated, owned inference per the backing block, not a jargon-stack tic. Closest anaphora candidates, examined line by line: L41 'The loop caught what the subagents missed. I caught what the loop missed. You will catch what I missed.' and L61 'I fixed what I caught. The loop caught what I missed. A senior-persona sim caught what the loop missed.' — each leg names a DIFFERENT agent and adds new content rather than padding a fixed frame; neither trips the triple ban or leaves an empty verb leg.",
+      "evidence": "Per sub-item: 'Not X. Not Y. Z.' - only one 'Not' construction in body, L5 'Not the pedagogy of it. The actual session.' - single Not, not the banned two-Not triple. Anaphora/epistrophe triples - two chains found: L39 'The loop caught what the subagents missed. I caught what the loop missed. You will catch what I missed.' and L59 'I fixed what I caught. The loop caught what I missed. A senior-persona sim caught what the loop missed.' - both have a third leg introducing a new concrete agent (the reader in the first, the senior-persona sim in the second), satisfying the rule's own exception ('third leg carries NEW concrete content'). Self-grading superlatives - grep for best/greatest/most/useful move -> 0 hits in body. Number+retraction - 'Twenty-odd', 'Four banned-word leaks', 'Ten fixes' are stated flatly, no retraction language, no maintainer attestation needed. Abstraction-noun stacks - none found (L21 'post-training preferring warmth over directness' is a labeled owned inference per the backing block, not an abstraction-stack). Verb triplets with an empty leg - none found.",
       "fix_hint": null,
-      "blocking": false
+      "blocking": true
     },
     {
       "compendium": "check_slides.md",
@@ -93,27 +93,27 @@
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm = maintainer-only vocabulary opaque to a room engineer reading a projected slide. Grepped body for compendium/surface-as-noun/forcing function/beat-as-noun/mood/Connections-as-proper-noun: zero hits. 'reference artefact'(L23,31), 'plan.md'(L17), 'verifier'(L17,23), 'sim'(L23,25,61), 'subagents'(L19,41), 'capability check'(L23,29) are M5-taught packaged-session vocabulary the audience holds by M6 (arc-earned), not repo-internal maintainer dialect.",
+      "evidence": "Harm = repo/maintainer vocabulary landing on a projected slide. Grepped body (lines 1-64) for surface/firing/compendium/forcing function/beat/mood/Connections -> 0 hits; all matches for those terms fall in the maintainer/backing blocks (lines 69+), outside the body region. 'reference artefact' and 'verifier loop' are project/engineering vocabulary explained in place, not repo-internal dialect terms named by the rule.",
       "fix_hint": null,
       "blocking": true
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 9,
-      "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
+      "rule_lead": "Emphasis budget - bold is for handles, and go very lightly.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm = bold overused as decoration, burying true handles. Grepped body lines 1-66 for `**`: zero hits. Italics appear only on the epigraph (L3) and quoted phrases. Budget of ≤1 bold/slide trivially met at 0.",
+      "evidence": "grep '\\*\\*' restricted to lines 1-64 -> 0 hits. No bold spans anywhere in the body; nothing to budget or over-spend.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 10,
-      "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
+      "rule_lead": "Presence precedes content - verify against the composed deck, not long-read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm = a section absent from the composed deck reading as covered. `grep -rn story-of-module-6 curriculum/trainings/agentic-engineering-101/*.md` → `spot-gaps-build-the-loop.md:33: [Story of Module 6](lectures/story-of-module-6.md)`, the standard module-include-link pattern every AE101 lecture uses to reach `.phase--lecture`. Re-checked fresh this pass, not carried from cache.",
+      "evidence": "Harm = a section present in long-read but absent from the composed slide deck. This file is included from `curriculum/trainings/agentic-engineering-101/spot-gaps-build-the-loop.md` L34 via the standard `[Story of Module 6](lectures/story-of-module-6.md)` markdown-link convention, identical in shape to the module's other two lecture links (L32, L36) and its exercise link (L38). `scripts/build-workbook.js` resolves this link pattern through the same phase-wrapping path documented at L772-853 that produces byte-equivalent `phase phase--lecture` section wrappers for lecture includes, which `site/layouts/slides.js` L246 (`buildDeckModel`) selects on (`.phase--lecture, .phase--exercise`). No phase-less prose section exists in this file's body (all content sits under the single H1+lede plus five `##` headers, matching the file's own `slide_count: 5` signal) so nothing here is the kind of structural orphan the 2026-07-09 prework/supplementary incident describes.",
       "fix_hint": null,
       "blocking": true
     },
@@ -123,7 +123,7 @@
       "rule_lead": "Page geometry dies at the cut; reading order survives.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm = a positional pointer ('above/below/top of page') aiming at a wall once the file is cut into slides. One candidate: L25 'a few paragraphs above' inside `## Things that went sideways`. Ran `node scripts/check-slide-deixis.js --file curriculum/lectures/story-of-module-6.md --report`; real output: `ok curriculum/lectures/story-of-module-6.md:25 [paragraphs above] — maintainer-attested`. Same-chunk use, maintainer-accepted at L69, mechanically confirmed clean. No other above/below/top-of-page phrase present in body.",
+      "evidence": "grep for below/above/further down/at the top of this/see below etc. restricted to lines 1-64 -> one hit: L25 'a few paragraphs above'. This exact phrase carries a dated maintainer accept-note at L67: 'Slide deixis accepted: \"paragraphs above\" (check_slides.md §12) ... points inside its own `## Things that went sideways` chunk, two paragraphs up on the same slide, at § The end-state that was not.' Verified: L25 and the referent (L21, 'The end-state that was not... I cut the credibility framing and said...') both sit inside chunk2 (lines 15-30), same-chunk use, matching the accept-note's own claim. Accept-with-note, no edit.",
       "fix_hint": null,
       "blocking": true
     },
@@ -133,7 +133,7 @@
       "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "DRIFT ROW — rule generalised 2026-08-19 since the prior audit, and re-read at current wording resolves what was previously a non-blocking note. Current text explicitly lists 'catalogue entries naming their subject (Ralph, The numbers, Verification, named)' as NOT violations — 'The numbers' is THIS FILE's own header (L9), a verbatim match to the rule's own worked example. The other headers fit the same carve-outs: 'Things that went sideways'(L15) and 'What the loop is for'(L53) are catalogue-entries-naming-subject, same pattern as 'Verification, named'. 'Then I compounded the session'(L45) is a phase/walk label narrating the memo's next chronological beat — this file is a first-person session-narrative memo, structurally a walk, and independently confirmed genre-exempt from slide-size limits (`node scripts/check-slide-size.js --file curriculum/lectures/story-of-module-6.md` → 'files: 0 slides: 0 ... oversized: 0', the STORY_EXEMPT skip firing). Closest call: 'The generalisation'(L33) — rule 15 binds 'law and consolidation slides where the header IS the teaching'. Here the header only labels the section; the actual teaching lands in the body's isolated one-line paragraphs (L35/37/39: 'Everyone struggles.' / 'Surprises happen.' / 'The LLM is not a deterministic machine.') and the closer at L43, so nothing is wasted by the label — it matches the catalogue-entry pattern, not the exercise-declarative pattern the rule's own worked examples (close-the-ticket.md, fix-tests-first.md) describe. Prior instance filed a corpus-wide non-blocking note here; at current wording that note is resolved for this file, not merely deferred.",
+      "evidence": "Closest call: L31 '## The generalisation' is a label, not itself a claim, on what is functionally a consolidation slide (rule 15 binds the claim requirement to law/consolidation slides). It stays inside because the section opens immediately with three one-line declarative claims (L33/35/37: 'Everyone struggles.' / 'Surprises happen.' / 'The LLM is not a deterministic machine.') that ARE the teaching, landing within the same glance as the header — the label doesn't waste the beat the way a bare topic label would on a slide whose claim is buried in prose. 'The numbers' (L9) and 'Things that went sideways' (L15) match the rule's own worked non-violation examples (catalogue entries naming their subject). 'Then I compounded the session' (L43) and 'What the loop is for' (L51) read as narrative-continuation/orientation labels, not law slides. Consistent with the prior instance's PASS on this rule for this file (shape_hash 088c670417fb5bc6 unchanged; body content in this region is unchanged from the prior judged version).",
       "fix_hint": null,
       "blocking": false
     },
@@ -142,11 +142,12 @@
       "rule_index": 16,
       "rule_lead": "A bullet earns its slot or dies — three classes that read as rigour and carry nothing.",
       "verdict": "N/A",
-      "chunks_flagged": [],
       "evidence": null,
       "na_reason": "no bullet list items in body — `grep -nE '^\\s*[-*] '` returns zero hits before the maintainer cut (L67); file is prose paragraphs throughout",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "22229db586dbb06fe4b314a5d59ec2a08f62b0ec2a2e373022abea798780c4e6",
+      "carried_shape": "088c670417fb5bc6"
     },
     {
       "compendium": "check_slides.md",
@@ -156,7 +157,7 @@
       "evidence": "No 'the X you did/saw/caught' construction referencing a student-run module beat appears anywhere in body. Chunk 5 line 55 'the M5 packaged session' points forward to the exercise about to run, not backward to a completed beat. Rule has no applicable instance in this file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b34eb9803955244c375388a1d52bbd2bd24b88530b7dabdcfaf5304c016e5c29",
+      "carried_from": "22229db586dbb06fe4b314a5d59ec2a08f62b0ec2a2e373022abea798780c4e6",
       "carried_shape": "088c670417fb5bc6"
     },
     {
@@ -167,7 +168,7 @@
       "evidence": "No guess-before-reveal instruction pattern anywhere in the file; this is a first-person narrative memo, not a live-demo walkthrough. Rule has no applicable instance.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b34eb9803955244c375388a1d52bbd2bd24b88530b7dabdcfaf5304c016e5c29",
+      "carried_from": "22229db586dbb06fe4b314a5d59ec2a08f62b0ec2a2e373022abea798780c4e6",
       "carried_shape": "088c670417fb5bc6"
     },
     {
@@ -178,7 +179,7 @@
       "evidence": "No hand-numbered headers or `## Phase N:` / `## N.` step headers in this file; headings are claim/label prose, not ordinal content. Rule has no applicable instance.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b34eb9803955244c375388a1d52bbd2bd24b88530b7dabdcfaf5304c016e5c29",
+      "carried_from": "22229db586dbb06fe4b314a5d59ec2a08f62b0ec2a2e373022abea798780c4e6",
       "carried_shape": "088c670417fb5bc6"
     },
     {
@@ -189,7 +190,7 @@
       "evidence": "No in-body markdown links `[text](url)` present anywhere in the body; nothing for this review-only, non-gating rule to inventory.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b34eb9803955244c375388a1d52bbd2bd24b88530b7dabdcfaf5304c016e5c29",
+      "carried_from": "22229db586dbb06fe4b314a5d59ec2a08f62b0ec2a2e373022abea798780c4e6",
       "carried_shape": "088c670417fb5bc6"
     },
     {
@@ -200,32 +201,12 @@
       "evidence": "File is on the STORY_EXEMPT list in `scripts/check-slide-size.js` (line 69: `story-of-module-6`) — a narrative read at home, not squinted off a slide, per dispatch instruction. Ran `node scripts/check-slide-size.js --file curriculum/lectures/story-of-module-6.md`; real output: 'files: 0  slides: 0  limits: 210 words / 6 bullets / oversized: 0 / ✓ every slide is within limits' — the script skips the file entirely (`if (story && !INCLUDE_STORIES) continue;`), confirming the exemption is mechanically in effect, not merely asserted.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b34eb9803955244c375388a1d52bbd2bd24b88530b7dabdcfaf5304c016e5c29",
+      "carried_from": "22229db586dbb06fe4b314a5d59ec2a08f62b0ec2a2e373022abea798780c4e6",
       "carried_shape": "088c670417fb5bc6"
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 1,
-      "rule_lead": "Banned words — grep zero-tolerance.",
-      "verdict": "PASS",
-      "evidence": "mechanical: /\\b(delve|delving|honest|honestly|importantly|crucial|crucially|substrate|synergize|paradigm shift)\\b/ over body projection curriculum/evals/body-views/ae101--lecture--story-of-module-6.body.txt → 0 hits; pattern proven against planted violation.",
-      "fix_hint": "",
-      "blocking": false,
-      "prefilled": true
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 2,
-      "rule_lead": "Ritual / ceremony — hard ban in any curriculum/training surface.",
-      "verdict": "PASS",
-      "evidence": "mechanical: /\\b(ritual|rituals|ceremony|ceremonies)\\b/ over body projection curriculum/evals/body-views/ae101--lecture--story-of-module-6.body.txt → 0 hits; pattern proven against planted violation.",
-      "fix_hint": "",
-      "blocking": false,
-      "prefilled": true
     }
   ],
   "blocking_findings_count": 0,
   "todos_count": 0,
-  "notes": "Rule 15 was the flagged drift rule (moved 2026-08-19); re-read at current wording resolves the prior instance's non-blocking note for this file rather than carrying it forward — the rule's own worked-example list now names this file's 'The numbers' header directly. All other rules PASS or N/A on fresh re-read; body unchanged since 1abb84c6 (diff scoped entirely to the maintainer-block Quality stamp, outside the body region). Mechanical claims (rule 10 inclusion grep, rule 12 deixis script, rule 14 size-exemption script, rule 16 bullet grep) were all re-run this pass, not carried from cache.",
+  "notes": "Rules 3, 4, 11, 13, 14, 16 resolved N/A by shape hash 088c670417fb5bc6 in the prefill sidecar (parked, not re-derived here) and merged in via --merge after this instance was written. File changed since the prior judged version (body_sha differs) — a paragraph ('The platform fact I got wrong') was cut from chunk2 and the maintainer block's Catalogue-discipline/Time/Slide-deixis notes were updated to match; the six-item catalogue count in the maintainer block now correctly matches the body. No prompt blocks or figures in this file (signals.has_prompt_blocks=false, has_figures=false) so expand-md.js was not run; line numbers cited are against the raw source.",
   "shape_hash": "088c670417fb5bc6"
 }

@@ -1,6 +1,6 @@
 # Story of Module 6
 
-*The engineer who built this module ran the M5/M6 loop on its own creation. What follows is the memo from that session: a record of one engineer's struggle with the same loop you're about to run.*
+*The engineer who built this module ran the M5/M6 loop on its own creation. What follows is the memo from that session: a record of one engineer's struggle with the same loop you just ran.*
 
 I am going to tell you how this module got made. Not the pedagogy of it. The actual session. What I tried, what drifted, what the rules caught, what the rules missed.
 
@@ -50,7 +50,7 @@ The model is good. It is still not 100% deterministic.
 
 ## What the loop is for
 
-The next hour you will diagnose gaps in the M5 packaged session, map the work you repeat across your stack, and leave holding the prompt that builds your kit.
+You have just diagnosed gaps in the M5 packaged session and mapped the work you repeat across your stack.
 
 A rule you wrote last module will not apply this session. That is the thing. The loop exists because LLMs drift. The loop exists because rules leak. The loop exists because every session surprises you, even when the task looked the same.
 
@@ -76,7 +76,7 @@ Section stays open-ended (no count locked) because the thesis is that surprises 
 
 **Catalogue discipline:** § *Things that went sideways* carries one paragraph per distinct failure mechanism, never a second worked instance of one already told. Seven stand: the chat-shaped opening, the banned word across four instances, the flattering end-state, the unrun sims, the self-contradicting closer, the paraphrase shipped as attribution, the uncited frame. *"The rule was loaded. The check never ran."* is the catalogue's one repeated formula and lands once, in the uncited-frame entry, where the three sentences Claude dropped are the three § *The generalisation* then delivers. A seventh entry that restates a mechanism is length, not evidence — the open-ended section above is an invitation to add new mechanisms, not new examples.
 
-**Delivery:** In-room opener for M6. Lands before the exercise; permission-giving, not credibility-performance.
+**Delivery:** In-room for M6, after the exercise and before the Human close (placement: Antti 2026-08-30); permission-giving, not credibility-performance.
 
 **Voice:** First-person singular past tense, Antti's memo. Risto epistemic directness, not Rory wit. Antti reshapes in final voice; rough-cut blunt lines per `check_writing §5`. Do NOT polish past *read-aloud-in-5-7-min direct memo* — polish moves it toward credibility-performance which Antti cut in turn 7 of the generation session.
 
@@ -90,7 +90,7 @@ Section stays open-ended (no count locked) because the thesis is that surprises 
 
 When M6 runs for a new cohort, regenerate the opener from that session's own tally — don't reuse these numbers. A dated memo ages cleanly on the date. A reused dated memo ages as a trip report.
 
-**Design constraint (session turn 8):** the Story names the CONDITION (non-determinism, universal struggle) without spoiling the SPECIFIC failure modes a reader is about to experience in Phase 1. Meta-failure (curriculum generation drifting, banned-word leak, rules loaded late) is not student-run failure (packaged run drifts at hour 2, memory thin on the critical file). Same condition, different domain. Preserved in drafting.
+**Design constraint (session turn 8):** the Story names the CONDITION (non-determinism, universal struggle) without restating the SPECIFIC failure modes the student meets in Phase 1. Meta-failure (curriculum generation drifting, banned-word leak, rules loaded late) is not student-run failure (packaged run drifts at hour 2, memory thin on the critical file). Same condition, different domain. Preserved in drafting.
 
 **Known TODOs:**
 - Antti's rewrite pass in final voice (~15 min).

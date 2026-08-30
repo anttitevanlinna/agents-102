@@ -31,11 +31,11 @@ You walk in holding two sessions of the same task. The un-packaged Module 4 send
 
 [The 2 frontiers of learning](lectures/the-2-frontiers.md)
 
-[Story of Module 6](lectures/story-of-module-6.md)
-
 [Quality is grounding](lectures/quality-is-grounding.md)
 
 [Map the gaps, read your stack](exercises/spot-gaps-build-the-loop.md)
+
+[Story of Module 6](lectures/story-of-module-6.md)
 
 ## Human close
 <!--tier:2-->
@@ -139,7 +139,7 @@ Antti
 - **Prep / bridge timing:** optional Klaassen verifier article 10 min; human close / team-kit accretion slot 10–15 min.
 - **Mood target:** practitioner fluency — *"I know how to test, I know how to learn, I know how to encode."* Not confidence-as-performance; competence-as-posture. Failure shapes that steal the mood: compliance-feel (*"build the eval, pass the gate"*), paperwork-feel, credibility-performance (*"we live what we teach"*), trainer-monologue retrospective. If any beat reads like one of those, revise.
 - **Delivery architecture:** canonical in training-architecture.md §Working directory model / §Session boundaries / §Material distribution (no training-dir state, no `module-N/` folders). Not restated here. Module-specific: M6 opens a fresh session in the M5 worktree at `../<repo>-m5` where both runs already live, then reads, routes, and maps in-place. The handoff prompt from the close is the take-home; skill candidates it surfaces later ship personal-first, team-PR via human conversation — not auto-promoted.
-- **Pre-read placement:** none. M6 opens with `The 2 frontiers` in-room, then `Story of Module 6` (opener order fixed 2026-08-12, see the accept-note below).
+- **Pre-read placement:** none. M6 opens with `The 2 frontiers` in-room, then `Quality is grounding`; `Story of Module 6` lands after the exercise (Antti 2026-08-30, see the placement note below).
 
 **Push-back moves** (trainer delivers):
 - **Connections blocker** — student walks in without one of the two artefacts accessible (laptop closed between M5 and M6, scrollback gone, repo state unclear on the packaged run). Trainer push: *"both artefacts are whatever's there. Commits between M4 and M5 send-offs, files modified during each run, scrollback at `~/.claude/projects/<project>/` if the sessions closed — if M4 and M5 share a cwd, recency alone can grab the wrong attempt; filter by a phrase unique to that send-off's opening prompt instead. Open a fresh Claude Code session in the repo and ask it to surface what each run touched."*
@@ -188,6 +188,6 @@ Antti
 
 Pre-cohort open items for M6: see `pre-cohort-todos.md`.
 
-**Opener order is `The 2 frontiers` first, then `Story of Module 6` (2026-08-12, maintainer-confirmed: *what is in module file is correct*).** The frontier framing opens; the permission beat follows it. `bosser-strategy:content-strategy-agentic-engineering-101.md` § *M6 in detail → Opener* previously had `Story of Module 6` opening, and stated the reason as a principle (*permission works before the work, not after*) rather than a preference, so it read as still binding; the doc is now corrected to match this file and records that the earlier reason is superseded. A `strategy` judge will re-flag this on any run against a stale copy of the doc — the module file is the decision. Do not reorder to match a doc.
+**`Story of Module 6` lands after the exercise, not in the opener (Antti 2026-08-30).** The front runs `The 2 frontiers`, then `Quality is grounding`, then the exercise; the memo reads once the work is done, so the module's front carries no nine-minute block — it was the largest pre-exercise block left in the training. The memo stays in-module and before `## Key Concepts`, which keeps KC bullet 4's teaching beat (the producer's-window failure) in deck order. `bosser-strategy:content-strategy-agentic-engineering-101.md` § *M6 in detail → Opener* is aligned; the principle an earlier version of that doc stated (*permission works before the work*) is superseded, not merely reordered. A `strategy` judge running against a stale copy of the doc will re-flag the order — the module file is the decision. Do not reorder to match a doc.
 
 **2026-07-05 (cut pass) — Antti.** Two M6 beats cut fully. (1) The *Steering the wiring* lecture: worktree-evidence wiring is plumbing, not a load-bearing concept, and its graduation beat ("you pick, no canonical answer") is already carried by *composing-the-workflow*'s close. (2) The *Arc-named retrospective* exercise (`arc-retrospective`): did not advance the learning; the arc-recognition it aimed at is carried by the Human close and *the-map-filled-in*. Removed everywhere: both `## Start here` links; the arc-retrospective leap-test outcome, artefact-contract row, per-phase failure mode, push-back move, watch-for, decision point, and first-cohort question (above); the `steering-the-wiring` theory-manifest entry (`build-workbook.js`); the `arc-retrospective-1` prompt plus its four `consumed-by` graph refs; the two audit-script hardcodes (`audit-eval-coverage.js`, `audit-ae101-artifact-contracts.js`). Frees ~20 min against the overbooked close. Both files git-rm'd (reversible via history). Companion cross-file cleanups: M5 (`learn-from-the-test.md`) forward-pointer, the sibling exercise's trailing beat line, and the trainer pages.

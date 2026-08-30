@@ -10,6 +10,10 @@ a101 slice on synthetic persona: `run-a101.sh`, `arrange-/chain-agents-101.sh`, 
 - M3 (multi-agent-systems) harness BUILT, not yet run live: `scenarios/a101-m3.txt`, answers `m3-*`, planted seam `fixtures/.../sources-m3/` (Halvorsen postmortem → graduated-cap-vs-segment contradiction), assertions m3:1–9. Remaining wiring: `arrange` staging of `new-m3/` + chain module list, then live run + audit.
 - 🟡 **H2 — operator-global `~/.claude` bleed.** Generated student `CLAUDE.md` can absorb the operator's private globals as if session-grounded. Detect-only WARN at m2:12 + m3:8. Real fix = run the battery under an isolated `$HOME/.claude` (scratch profile / CI). Content half → `pre-cohort-todos.md §13 H2-content`.
 
+## Caught 2026-08-30 watch-verification sweep
+
+- 🔴 **`bin/prompt-source-audit.sh` fail-opens on an empty parse dir.** With `/tmp/prompts/<slug>/` empty or absent it prints "All P-checks clean / READY" instead of erroring — a skipped `parse-prompts.sh` step reads as a clean audit. Fix: require ≥1 parsed fence or exit non-zero (`memory/compounded/2026-08-08-platform-verification-tooling-must-fail-closed.md`).
+
 ## Caught 2026-06-02 codesearch M1→M6 FULL RE-RUN (post-auto-resend-codification)
 
 End-to-end PASS all 6 modules, single-shot, unattended. Goal: retest the auto-resend codification + recent-window-stall fix landed 2026-06-01 in `6e4280a`, plus re-verify the M4/M5 commit-shape pre-auth + the M6 mermaid-tightening + the M6 `claude_local_md_mtime_advanced` latent.

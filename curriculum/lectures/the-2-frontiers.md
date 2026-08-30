@@ -15,7 +15,7 @@
 **Quality:** compendium-audited 2026-08-29 (writing@4a722813 story@4a722813 technical@8cc00874 behavior@1c765f2 pedagogy@1abb84c6 strategy@1c765f2 slides@4a722813)
 - judges @4a722813: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS
 
-**Lecture meta:** *~2 min opener for Module 6, before "Story of Module 6." Echoes Module 1's "Painting the picture" opener — same two frontiers, recurring at the capstone open. The recurrence is the point. One slide IS the lecture.*
+**Lecture meta:** *~2 min opener for Module 6, before "Quality is grounding." Echoes Module 1's "Painting the picture" opener — same two frontiers, recurring at the capstone open. The recurrence is the point. One slide IS the lecture.*
 
 **Meta:**
 - **Time:** ~2 minutes.

@@ -408,6 +408,8 @@ Read it enough to tell me:
 Then compare that read against `git log`, `git diff`, and branch state. Tell me where the transcript and git agree, and where one sees something the other misses.
 
 Report literal counts and quoted text: actual restart numbers, exact correction messages. No softened summary.
+
+No preamble. Open with the transcript path you picked, then the numbered answers.
 ```
 
 ## 28. Session transcripts: why both layers, subagents, and reading safely

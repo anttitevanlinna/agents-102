@@ -42,7 +42,7 @@ Open a new Claude Code session at the repo you just picked. CLI or desktop both 
 <!--flag:payload-->
 ## 3. Get the content folder onto your laptop
 
-Ask Claude to fetch `ae101-content.tar.gz` to `~/Downloads/`.
+Ask Claude to download `ae101-content.tar.gz` to `~/Downloads/`.
 
 {{prompt:ae101-prework-download-tarball}}
 
@@ -63,7 +63,7 @@ When the agent gets to the bug screen, push back if it dumps all four criteria a
 
 {{prompt:ae101-prework-screen-and-ready}}
 
-If Claude's screening feels like everything-at-once, ask Claude to use the AskUserQuestion tool, or to give you the candidate-bug screen one bug at a time. Whichever reads better.
+If the agent's screening feels like everything-at-once, ask Claude to use the AskUserQuestion tool, or to give you the candidate-bug screen one bug at a time. Whichever reads better.
 
 {{prompt:ae101-prework-one-at-a-time}}
 
@@ -73,7 +73,7 @@ If Claude's screening feels like everything-at-once, ask Claude to use the AskUs
 
 Optional. One read, any time before the first session.
 
-**Read:** Simon Willison, [Vibe engineering](https://simonwillison.net/2025/Oct/7/vibe-engineering/) (October 2025). Willison draws the line between vibe coding and working with coding agents as an accountable engineer. You start Module 1's first bug fix on the accountable side of that line.
+**Read:** Simon Willison, [Vibe engineering](https://simonwillison.net/2025/Oct/7/vibe-engineering/) (October 2025). Willison draws the line between vibe coding and working with coding agents as an accountable engineer.
 
 ## Bring to Module 1
 

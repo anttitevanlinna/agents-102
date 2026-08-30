@@ -20,7 +20,7 @@ Build the flywheel to run exactly that far. Let the agent run as far as it can o
 
 ## The handoff prompt that builds your kit
 
-This one closes the module. The shapes you drew are still in the session. Ask the agent to turn them into a prompt that builds the kit.
+The shapes you drew are still in the session. Ask the agent to turn them into a prompt that builds the kit.
 
 {{prompt:agents-that-build-agents-handoff}}
 
@@ -33,7 +33,7 @@ What comes back is a prompt, not a plan. Save it where you will find it. The kit
 - **Competence sets the ceiling.** Your brain needs the reps to think different. The pathways you build show you the next level.
 - **Cross personal → team.** Personal mastery is nice. But it will never be enough. Share and learn together.
 
-All three have been on the map the whole time: the small print along the bottom, there since M2.
+These have been on the map the whole time: the small print along the bottom, there since M2.
 
 ## Ralph
 <!--tier:3-->
@@ -94,7 +94,7 @@ Claims
 - `possibly-to-i-have-something` · vision · "Acting is the move from *possibly* to *I have something*." ← none-owed
 - `pathways-show-the-next-level` · vision · "The pathways you build show you the next level." ← none-owed
 - `share-and-learn-together` · vision · "Share and learn together." ← none-owed
-- `soil-on-the-map-the-whole-time` · vision · "All three have been on the map the whole time: the small print along the bottom, there since M2." ← none-owed
+- `soil-on-the-map-the-whole-time` · vision · "These have been on the map the whole time: the small print along the bottom, there since M2." ← none-owed
 - `every-packaged-move-cheapens-the-next-run` · vision · "Every packaged move makes the next session cheaper." ← none-owed
 - `hand-the-agent-the-move-itself` · vision · "The flywheel turns once more when you hand the agent the move itself." ← none-owed
 - `what-comes-back-is-a-candidate` · vision · "What comes back is a candidate." ← none-owed

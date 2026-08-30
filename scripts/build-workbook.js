@@ -110,7 +110,7 @@ const KNOWN_RUNTIMES = new Set(['any', 'cli', 'desktop', 'cowork']);
 })();
 
 // Files in curriculum/trainings/<key>/ that don't ship in workbook output.
-const TRAINER_ONLY = new Set(['cohort-onboarding-email.md', 'pre-cohort-todos.md']);
+const TRAINER_ONLY = new Set(['pre-cohort-todos.md']);
 
 // ── Theory handbook manifest ────────────────────────────────────────────────
 // `node scripts/build-workbook.js <customer> <training> --theory` assembles

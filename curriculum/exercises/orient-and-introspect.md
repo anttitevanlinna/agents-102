@@ -22,7 +22,7 @@ Start a new Claude Code session at your repo root. Renaming is optional, but hel
 
 - You steer what Claude loads: the repo's shape, its structure, what's load-bearing, what's gone stale. A cold agent reads whatever it stumbles into; you point it.
 
-> **Big repo? The read can fan out.** If Claude starts reading dozens of files, interrupt with `Esc`, narrow to one feature or directory, and say `continue`. It can also stop short, and that one is harder to catch because a confident answer arrives either way. If the read names only the files you'd have guessed at, a `"there's more here"`-prompt buys another pass.
+> **Big repo? The read can fan out.** If Claude starts reading dozens of files, interrupt with `Esc`, narrow to one feature or directory, and send a `continue`-prompt. It can also stop short, and that one is harder to catch because a confident answer arrives either way. If the read names only the files you'd have guessed at, a `"there's more here"`-prompt buys another pass.
 
 Ask Claude to read your repo deliberately and report what it finds.
 

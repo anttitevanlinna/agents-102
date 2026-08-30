@@ -26,7 +26,7 @@
 
 ## Three trust artifacts the next engineer checks
 
-- By the module's end, three things exist that your staff engineer and your CISO would actually read: a mapped access surface for the feature you're shipping, an ADR naming one hardening decision under STRIDE pressure, and a test-strategy skill codifying how testing actually works on your system.
+- By the module's end, things exist that your staff engineer and your CISO would actually read: a mapped access surface for the feature you're shipping, an ADR naming one hardening decision under STRIDE pressure, and a test-strategy skill codifying how testing actually works on your system.
 - None of them are compliance artifacts. Each is the thinking, written down: what was considered, what was decided, and under which constraint.
 - The test for trust is the next engineer: whoever touches this feature next can see the reasoning and check it against the code.
 
@@ -39,6 +39,8 @@
 Go.
 
 <!-- maintainer -->
+
+**STRIDE at L7 is assumed-known (Antti 2026-08-30):** the cold first use one slide before its Kohnfelder/Shostack earning stands under the 2026-08-18 assumed-known carve-out for this audience. `check_student_facing.md` §2 judges should not re-flag it.
 
 **Lean pass (2026-08-25, Antti-directed M3/M6 shorten, free hands):** cut "It arrived unpackaged because skills hadn't yet been introduced as a primitive." (§16b design commentary); "The judgement these skills carry doesn't have to be in your head to be in your hands." (kicker; the borrow slide carries the point); "Nobody outside your team can write that skill well. Curating it would be theatre." (restated the can't-be-curated lead); "Your skills folder, starting today." (padding lead); arming-slide bullet 4 (skills-live-in-specific-places — full dup of the personal-path bullet on the compounds slide + the exercise's canonical install statement). Do not restore.
 
@@ -76,7 +78,7 @@ Format → `curriculum/backing-format.md`.
 - `two-curated-one-authored` · vision · "The proportion is a claim about what you can produce well on a Tuesday afternoon" ← none-owed
 - `dont-generalise-unpracticed` · vision · "Don't make general what you don't practice yourself" ← none-owed
 - `personal-skills-path` · detail · "ships to your personal `~/.claude/skills/test-strategy/`, auto-discovered in every session you run" ← cc-skills-docs
-- `three-trust-artifacts` · vision · "three things exist that your staff engineer and your CISO would actually read" ← none-owed
+- `three-trust-artifacts` · vision · "things exist that your staff engineer and your CISO would actually read" ← none-owed — the header above carries the count (writing §20).
 
 **Sources**
 - curran-2x-nine-months `[checked:2026-07-26 result:CAVEAT due:cohort]` https://ideas.fin.ai/p/2x-nine-months-later — [practitioner direct, vendor venue] Darragh Curran, "2x – nine months later: We did it. You can too.", Apr 16 2026. 153 contributors / 267 skills / 31% of R&D headcount confirmed live in source. **CAVEAT added 2026-08-02: the company renamed.** Intercom became **Fin** on 2026-05-12 (`intercom.com/blog/today-intercom-becomes-fin` — [vendor announcement]); the *Intercom* name survives as the label for the customer-service product, not the corporate entity, and Salesforce has since signed to acquire Fin. Curran's memo predates the rename and says "Intercom" throughout, so the body's attribution is accurate *for April 2026* and reads as a stale company name to anyone who checks in November. Do not silently swap the name — the numbers were published under it. kb:observations/intercom.md fallback: drop the numbers, say "a large practitioner-built plugin repo, grown skill by skill by its own engineers."

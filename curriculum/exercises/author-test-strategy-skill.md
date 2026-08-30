@@ -47,7 +47,7 @@ Ask Claude to invoke the skill on this codebase and grade what it produced in th
 
 - Before you ship, ask the skill itself to name its own weakest part: the assumption most likely wrong for this codebase, or what a teammate would push back on first. Push back on what it names; don't settle for reassurance.
 - The grade is biased by design. Claude invoked the skill it just helped author, then graded the result in the same context window: same-window self-charity.
-- Want a harsher read of the output too? Run it as two prompts. Invoke first, read the output, then a second prompt: *"Read that output as if you'd never seen the SKILL.md. Does it fit this codebase, or does it read generic?"* Either approach is fine.
+- Want a harsher read of the output too? Run it as two prompts. Invoke first, read the output, then a second prompt: *"Read that output as if you'd never seen the SKILL.md. Does it fit this codebase, or does it read generic?"*
 - If the strategy reads generic, sharpen the skill, not the output. A weak output is usually a weak skill.
 - Then decide: re-invoke if the sharpen was substantive, or ship with a one-line TODO at the top naming what's unresolved. A skill that names its own gap is more useful to a teammate than one that pretends it's finished.
 
@@ -64,11 +64,9 @@ Ask Claude to invoke the skill on this codebase and grade what it produced in th
 - Agents don't unilaterally change shared team infrastructure. You do.
 - Personal stays a fine final home. The test: would teammates use it as-written, and does the skill carry enough codebase truth to survive their review.
 
-**What happened:** One SKILL.md tuned to your codebase's actual testing conventions (framework, mocking policy, integration boundary, flakiness patterns, regression scope), living in your personal skills folder. Shipped. The module's close sharpens it from what the invocation showed.
+**What happened:** One SKILL.md tuned to your codebase's actual testing conventions (framework, mocking policy, integration boundary, flakiness patterns, regression scope), living in your personal skills folder. Shipped.
 
 ## What this sets up
-
-- Module 4 reads this skill as part of the system you have: it walks a real task against everything you've built, and the test-strategy skill is the quality-criterion anchor in that walk.
 
 **Note** The side-quest worktree may still hold changes the agent made here: code, tests, scratch files. Its copy of `CLAUDE.local.md` came over at the fork and may have drifted from the one in your main repo. The skill crossed back on its own (it lives at user scope); everything else stays in the worktree. Those changes are yours to handle later: keep them, carry the useful parts to your main repo, or delete the worktree.
 

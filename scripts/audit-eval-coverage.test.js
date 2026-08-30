@@ -401,9 +401,9 @@ test('naRuleSet: lectures strategy_tie_in §§5/6/7 N/A, §4 stays a hole', () =
   assert.ok(!s.has('4')); // §4 (front-run) applies to lectures — not declared N/A
 });
 
-test('naRuleSet: cohort-onboarding-email pedagogy is wholesale N/A', () => {
-  const s = naRuleSet('modules', 'cohort-onboarding-email', 'check_pedagogy');
-  assert.ok(s.has('all'));
+test('naRuleSet: no per-file N/A declarations remain', () => {
+  const s = naRuleSet('modules', 'learn-from-the-test', 'check_pedagogy');
+  assert.equal(s.size, 0);
 });
 
 test('naRuleSet: a normal exercise carries no N/A declarations', () => {

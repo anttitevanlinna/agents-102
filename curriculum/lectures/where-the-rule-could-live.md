@@ -12,7 +12,7 @@ You can extract any rules into their own `.md` file. Eventually your Claude file
 ## The file is steady; the agent moves
 <!--tier:2-->
 
-- The file is the steady part; the agent is the moving part. Across all three agents, better rules produce better tickets.
+- Across all three agents, better rules produce better tickets.
 - The file travels. Trigger and runtime are wiring choices; the file rides along unchanged.
 - **Agents build agents.** An agent can help author the file. A later agent reads those rules to split the backlog. The first agent's output becomes the second agent's context.
 
@@ -51,7 +51,7 @@ Format → `curriculum/backing-format.md`.
 - `issue-webhook-shape` · detail · "A teammate opens, edits, or labels a GitHub issue; a GitHub Actions workflow or GitHub App picks it up." ← gh-issues-events, cc-github-action
 - `agent-triages-the-issue` · detail · "The agent runs with the file in context: it proposes labels, asks for missing info, or splits the issue into smaller tickets." ← cc-action-triage-recipe
 - `scheduled-read-shape` · detail · "Once a day, a scheduled agent runs with the file in context, reads the backlog top-to-bottom, and proposes a re-shape" ← cc-scheduled-tasks, cc-routines, gh-actions-cron
-- `file-is-steady-agent-moves` · vision · "The file is the steady part; the agent is the moving part." ← none-owed
+- `file-is-steady-agent-moves` · vision · "The file is steady; the agent moves" ← none-owed — quote anchors to the `##` header.
 - `better-rules-better-tickets` · vision · "Across all three agents, better rules produce better tickets." ← none-owed
 - `file-travels-across-wiring` · vision · "Trigger and runtime are wiring choices; the file rides along unchanged." ← none-owed
 - `deployment-not-rewrite` · vision · "Trigger and runtime are wiring choices; the file rides along unchanged." ← none-owed

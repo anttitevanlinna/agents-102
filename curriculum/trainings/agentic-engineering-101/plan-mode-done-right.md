@@ -140,6 +140,7 @@ This module points at four sources in body and owned a stamp for none of them; t
 - **P3 softening on regeneration** — Claude acknowledges the push-back but re-softens the flagged step in the revised plan. Trainer: *"did Claude actually sharpen it, or did it acknowledge and re-soften? push back again."*
 - **P4 value-skip** — student stops after 2–3 questions without judging what remains. Trainer: *"what would the next question still change in execution? If nothing material, lock it in. If one branch still matters, take that one."*
 - **P4 auto-accept** — student accepts every recommended answer without correcting any. Trainer: *"reject at least one recommended answer if it's wrong for your codebase — the second read's recommendations are defaults, not prescriptions."*
+- **P5 execution-creep** — student executes the plan anyway. Trainer: *"making the plan good IS the work; recognising a good plan is the skill this module installs."*
 - **P5 deflection** — student reports *"the second read did all the work, my push-back was pointless."* Trainer: *"quote one thing your push-back caught that the second read would have missed. You're reading differently; different isn't worse."*
 - **P5 naming** — if Claude frames the pattern as *"use plan mode carefully,"* trainer pushes for structural naming: *"the pattern is human read → push-back → agent walk-down → approve. Name the pairing, not the moral."*
 - **Debrief** — self-compounding. If Claude writes a generic rubric, trainer: *"name a pattern specific to THIS codebase, from THIS session's evidence — what branch did grill surface that a first read would miss on this repo?"*
@@ -174,18 +175,18 @@ This module points at four sources in body and owned a stamp for none of them; t
 | Personal rules update (optional, opportunistic) | `./CLAUDE.local.md` (repo-personal, gitignored) | "Save the rule if it earned itself" prompt — Phase 4 of `exercises/extract-the-task-shaping-rule.md`; Claude integrates one branch from the second-pass read, only if one earned itself | Every future session in this repo (auto-loads at session-cold start); M3 sharpens further with security/skill-authoring rules |
 | Plan file (from plan mode) | `~/.claude/plans/<slug>-<adjective>-<noun>.md` — fixed directory, generated filename. User-keyed and laptop-local, so it never rides the branch. Plan mode displays the path inline when it writes; the student notes it at module close for M3. The curriculum prescribes no location, which is the student-pick part — the directory itself is Claude Code's, not a choice anyone makes. | Exercise Phase 3 (`push-back-on-the-plan`) — plan mode writes the file when the student approves the plan after the push-back loop. | M3 prework / Ex1 input (earn-the-trust.md L12: "The plan file Claude Code wrote during plan mode is what M3 reads — you noted the path at M2 close."). |
 
-**Per-phase failure mode + escape hatch** (per `check_pedagogy.md` rule 47 — every phase shipping a forcing function names its dominant failure and one recovery move):
+**Per-phase failure mode + escape hatch** (per `check_pedagogy.md` rule 47 — every phase shipping a forcing function names its dominant failure and one recovery move): each failure mode below is named exactly as its Push-back move above, which holds the escape hatch — one home, no second copy (`check_pedagogy.md` §64).
 
-| Phase forcing function | Dominant failure mode | Escape hatch |
-|---|---|---|
-| P1 — *"surface a multi-file task that fits the criteria"* | P1 blocker — student can't find a fitting task | Trainer runs three-candidate conversation. Criteria: multi-file, 30–60 min agent work, touching wrong file matters. |
-| P3 — *"push back twice via No, keep planning"* | P3 rubber-stamp — student approves under 60s with no push-back | Trainer push: *"pick No, keep planning — send one soft item before approving."* |
-| P3 — *"the push-back names a step number AND a specific word"* | P3 generic push-back — messages lack specifics | Trainer push: *"which step, which words? say the thing you'd want a senior reviewer to catch."* |
-| P3 — *"verify the push-back actually sharpened the plan, not re-softened"* | P3 softening on regeneration — Claude acknowledges and re-softens | Trainer push: *"did Claude actually sharpen it, or did it acknowledge and re-soften? push back again."* |
-| P4 — *"judge what another branch would still change"* | P4 value-skip — student stops without judging what remains | Trainer push: *"what would the next question still change in execution? If nothing material, lock it in. If one branch still matters, take that one."* |
-| P4 — *"reject at least one recommended answer"* | P4 auto-accept — student accepts every recommended answer | Trainer push: *"reject at least one recommended answer if it's wrong for your codebase — the second read's recommendations are defaults, not prescriptions."* |
-| P5 — *"approve, stop, do not execute"* | P5 execution-creep — student executes the plan anyway | Trainer push: *"making the plan good IS the work; recognising a good plan is the skill this module installs."* |
-| P5 — *"name the pattern: human read → push-back → agent walk-down → approve"* | P5 deflection — student reports *"the second read did all the work"* | Trainer push: *"quote one thing your push-back caught that the second read would have missed."* |
+| Phase forcing function | Dominant failure mode |
+|---|---|
+| P1 — *"surface a multi-file task that fits the criteria"* | P1 blocker |
+| P3 — *"push back twice via No, keep planning"* | P3 rubber-stamp |
+| P3 — *"the push-back names a step number AND a specific word"* | P3 generic push-back |
+| P3 — *"verify the push-back actually sharpened the plan, not re-softened"* | P3 softening on regeneration |
+| P4 — *"judge what another branch would still change"* | P4 value-skip |
+| P4 — *"reject at least one recommended answer"* | P4 auto-accept |
+| P5 — *"approve, stop, do not execute"* | P5 execution-creep |
+| P5 — *"name the pattern: human read → push-back → agent walk-down → approve"* | P5 deflection |
 
 The save-the-rule and Boy Scout beats live in `exercises/extract-the-task-shaping-rule.md` (Phases 4–5), and their failure modes live in that file's Push-back moves / Watch-fors.
 

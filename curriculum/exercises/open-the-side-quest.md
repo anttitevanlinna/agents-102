@@ -2,7 +2,7 @@
 
 **Time:** ~5 minutes.
 
-Module 3 runs in two windows. Security is the main quest in your chosen repo. Quality is a side-quest in a sibling worktree.
+Security is the main quest in your chosen repo. Quality is a side-quest in a sibling worktree.
 
 **What you do:** start a security session in your repo, fork a sibling worktree, and open a second session there.
 
@@ -49,12 +49,14 @@ Ask Claude to fork a sibling worktree and copy your personal rules across. The p
 
 ## Set the two windows side by side
 
-- Two windows, side by side. Arrange them so neither disappears behind the other.
+- Arrange them so neither disappears behind the other.
 - The move this module installs: when one window kicks off a long-running prompt, the other is where you work. You run security in the main window from here; the quality side waits until you author the test-strategy skill there.
 
 <!-- maintainer -->
 
 **Lean pass (2026-08-25, Antti-directed M3/M6 shorten, free hands):** cut "This is your main lane for Module 3." (dup of main-quest lead); worktree bullet condensed — dropped "It opens next to your repo…" and the second same-history/own-working-state restatement; two-windows bullet dropped "both visible at once" + "Each holds its own scrollback." Do not restore. Carded and kept (Antti 2026-08-25): the *Read back the worktree path* slide — the explicit read-back beat stays; do not re-card.
+
+**"The move this module installs:" lead-in stays (Antti 2026-08-30, family ruling with `map-the-access-surface.md` L51):** theory-spine recall at the moment of use, not self-narration — `check_student_facing.md` §33 judges should not re-flag either twin.
 
 **View summary:** You open two agent sessions on one Git history: a security lane in the repository and a quality lane in a sibling worktree. The setup lets independent work continue safely while preserving a clear place for human control at merge.
 

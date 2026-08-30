@@ -27,7 +27,7 @@ This file is a starter. Everyone sees how this will bloat almost immediately.
 
 ## Push back where the summary misreads
 
-- Read Claude's summary. Push back where it misreads. Quote the specific session moment back at Claude.
+- Read Claude's summary. Quote the specific session moment back at Claude.
 - The rules file is yours now. Born from the session, evolved over time.
 
 ## Keep or revert the `.gitignore` edit
@@ -125,5 +125,5 @@ OODA
 
 **Accept-with-mitigation** (per `check_pedagogy.md` §50 and §51 — judge findings carried as design-intent, not blockers):
 
-- **§32 forced-engagement on compound-and-close-1 prompt:** the prompt offers structured output (rules file rewrite) for student acceptance, and §32 wants the engagement step inside the fence. Mitigation: body prose immediately below the prompt (*"Read Claude's summary. Push back where it misreads. Quote the moment from your session back at Claude."*) IS the engagement step. Convenience-bias callout (§50) covers the self-charity risk — keeping the engagement in body keeps the prompt copy-paste-clean.
+- **§32 forced-engagement on compound-and-close-1 prompt:** the prompt offers structured output (rules file rewrite) for student acceptance, and §32 wants the engagement step inside the fence. Mitigation: body prose immediately below the prompt (*"Read Claude's summary. Quote the specific session moment back at Claude."*) IS the engagement step — quoting the moment is the push-back move; the `##` header above carries the push-back verb. Convenience-bias callout (§50) covers the self-charity risk — keeping the engagement in body keeps the prompt copy-paste-clean.
 - **§50 convenience-bias callout on self-review:** the compound prompt asks Claude to review its own session and propose rules. Self-charity bias is real. Mitigation: same body callout names the push-back move with the *"quote the moment"* harsher alternative. Fence stays convenient; body carries the design accept.

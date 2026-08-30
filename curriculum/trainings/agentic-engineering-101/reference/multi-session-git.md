@@ -85,6 +85,8 @@ Situations where one session beats three.
 
 3. **New to the loop.** If you are still learning what "good" looks like in one session, adding a second session adds variables, not learning. Land the single-session loop first. Multi-session will still be waiting.
 
+4. **Coupled writes, shared decisions.** Reads, investigations and reviews parallelise cleanly. Writes that share a design decision do not: each session makes implicit calls, naming, style, edge-case handling, and the calls collide at merge even when the lines do not. Keep those writes in one session, and let the other sessions read, review and report into it.
+
 ## Close
 
 Two sessions is a milestone. Five is a habit. Ten is something you grow into.
@@ -97,6 +99,8 @@ Two sessions is a milestone. Five is a habit. Ten is something you grow into.
 
 **Attribution:** Cherny frames parallel worktrees as "the single biggest productivity unlock" in his [Jan 2026 X thread](https://x.com/bcherny/status/2017742743125299476) [practitioner direct]. Separately, [Gergely Orosz on Boris Cherny, *Building Claude Code with Boris Cherny*](https://newsletter.pragmaticengineer.com/p/building-claude-code-with-boris-cherny) [practitioner analysis] — Cherny there describes running five parallel Claude Code instances across separate checkouts, corroborating parallel-session workflows generally, not the "productivity unlock" framing or the "worktrees" word.
 
+**Attribution, item 4 of § When NOT:** the reads-parallelise / single-writer shape is Cognition's (Walden Yan, *Multi-Agents: What's Actually Working*); quotes, lineage and the dated stamp live in `supplementary/workflow-composition-lineages.md` § *Single writer with advisor agents*. The body carries the shape without the name: this page teaches the student's own session topology, not multi-agent architecture.
+
 **Source verification — MUST DO before first cohort:**
 - Open both URLs against original. Re-confirm the X-thread quote verbatim (X posts can be edited or deleted) and re-confirm the Pragmatic Engineer piece still doesn't use "worktree"/"worktrees" before letting it stand as corroboration of anything beyond parallel-checkout workflows.
 - The phrase "single biggest productivity unlock" and the word "worktrees" ride on the X thread only. Do not let the interview citation imply it independently corroborates either.
@@ -104,6 +108,7 @@ Two sessions is a milestone. Five is a habit. Ten is something you grow into.
 - Fallback if the interview no longer supports even the parallel-checkouts framing: drop the second citation and let the X thread stand alone.
 - `[checked:2026-08-01 result:OK due:2026-08-21]` https://x.com/bcherny/status/2017742743125299476 — [practitioner direct] Cherny "single biggest productivity unlock" quote; verbatim text + byline re-confirmed 2026-08-01 via search-index title of the canonical URL (oEmbed now 402s and TwStalker mirrors 403 — see `memory/reference_x_content_fetch_workaround.md`), post dated 2026-01-31. fallback: if unconfirmable at next check, reframe as unattributed "some practitioners" framing.
 - `[checked:2026-07-12 result:OK due:2027-01-12]` https://newsletter.pragmaticengineer.com/p/building-claude-code-with-boris-cherny — [practitioner analysis: Gergely Orosz on Boris Cherny] describes 5 parallel Claude Code instances via separate checkouts; full-text search for "worktree"/"worktrees"/"productivity unlock" returns zero hits. Cited only for parallel-session workflows, never for the word "worktrees." fallback: drop this citation if it no longer supports even the checkouts framing.
+- `[checked:2026-08-30 result:OK due:none]` `supplementary/workflow-composition-lineages.md:cognition-multi-agents-working` — [delegated stamp] Item 4's single-writer shape; the dated live check (currently 2026-05-25, due 2026-11-25) is owned by the supplementary. `due:none`, a delegation does not expire. fallback: keep the item, it stands as ordinary merge-hygiene advice without the lineage.
 
 **Quality:** compendium-audited 2026-08-29 (writing@43e6cae1 story@43e6cae1 technical@8cc00874 behavior@b3143a4 pedagogy@43e6cae1 strategy@b3143a4 slides@43e6cae1)
 - judges @43e6cae1: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

@@ -2,7 +2,7 @@
 
 **Time:** 20 minutes.
 
-**What you do:** read one real ticket, have the agent work out how your team uses its tracker, then close the bug's ticket in that voice.
+**What you do:** have the agent close your bug's ticket in your team's own voice.
 
 **What you build:** bug rules read off your own tracker, and a close-out note on the bug you shipped.
 
@@ -109,7 +109,7 @@ Claims
 - `one-ticket-gives-rules-not-policy` · vision · "One ticket gives a sample of your team's rules, not the policy." ← none-owed
 - `rejected-rules-sharpen-the-read` · vision · "The ones you reject sharpen the read as much as the ones you keep." ← none-owed
 - `anything-can-be-reverse-engineered` · vision · "Anything can be inspected and reverse-engineered with an LLM" ← maintainer-frame
-- `study-extract-carry-forward` · vision · "Ask the agent to study the pipeline, the config, the undocumented code. Extract a `.md` file. Use that file as context in the next agent." ← maintainer-frame
+- `study-extract-carry-forward` · vision · "Ask Claude to study the pipeline, the config, the undocumented code. Extract a `.md` file. Use that file as context in the next agent." ← maintainer-frame
 
 Sources
 - maintainer-frame `[checked:2026-08-03 result:ATTESTED due:none]` — [maintainer-attested] Antti's own working frame, given verbatim in session and carried near-verbatim into the closing slide: *"Anything can be inspected and reverse engineered with LLM. The move is: ask LLM to study it. Extract .md file. Use .md file as context in the next agent."* Per `check_research_claims.md §1` a maintainer-attested claim is the author's own word and owes no URL. One reshape on the record: *LLM* → *the agent* on the three action steps, per the acting-versus-thinking vocabulary split; the capability sentence keeps *LLM*. fallback: cut the generalisation and the exercise stands as a tracker read, losing the Monday-morning transfer.

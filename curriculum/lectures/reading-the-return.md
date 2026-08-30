@@ -15,7 +15,7 @@
 - Your rules file is in that window too. Dex Horthy, on the failure: *"The longer your file gets, the more Claude seems to treat individual sections as optional."*
 ## Diagnose first, fix later
 
-- When an agent gets something wrong, the reflex is to fix it immediately: edit the prompt, add a constraint, reach for the next tool. This module holds that reflex off. The failures earn the validation that catches them.
+- When an agent gets something wrong, the reflex is to fix it immediately: edit the prompt, add a constraint, reach for the next tool. The failures earn the validation that catches them.
 - The arc is *test → learn → encode*. The un-packaged send-off was the test. The encode turns what the read finds into durable checks.
 
 <!-- maintainer -->

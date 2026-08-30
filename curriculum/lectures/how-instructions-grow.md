@@ -8,7 +8,7 @@ When a rule expands into a repeatable way of doing a job, extract it into a **sk
 
 {{figure:instructions-route}}
 
-This is one common route, not a promotion ladder. A useful skill can also emerge directly from repeated work.
+This is one common route, not a promotion ladder.
 
 ## The second loop
 <!--tier:3-->
@@ -17,7 +17,7 @@ This is one common route, not a promotion ladder. A useful skill can also emerge
 
 {{figure:double-loop}}
 
-`./CLAUDE.local.md` and `./CLAUDE.md` shape every session in their scope. A skill joins context when the work calls for it. The right instructions grow from evidence, then shape future context.
+`./CLAUDE.local.md` and `./CLAUDE.md` shape every session in their scope. A skill joins context when the work calls for it.
 
 ## Rules have a ceiling
 <!--tier:2-->
@@ -39,7 +39,7 @@ The positive form is also shorter. Saying what you want, with the reason, usuall
 
 Variations of the rule and context management prompts you have run work on every type of context engineering file: CLAUDE files, skills, rule files, and whatever you have rolled yourself. Moving material between them is also something you ask Claude to do.
 
-This one runs on the screen; run it on your own files whenever you like.
+This one runs on the screen; you can run this too on your files.
 
 {{prompt:ae101-m2-name-what-moves}}
 

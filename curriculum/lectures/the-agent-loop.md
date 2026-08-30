@@ -2,7 +2,7 @@
 
 ## See the loop in your live session
 
-Three prompts. Dig into whatever catches you.
+Dig into whatever catches you.
 
 Ask for the loop as a diagram.
 
@@ -12,7 +12,7 @@ Ask what tools this session is carrying.
 
 {{prompt:ae101-agent-loop-tools-list}}
 
-Ask where that list comes from.
+Ask how the agent knows what tools it can call.
 
 {{prompt:ae101-agent-loop-tool-injection}}
 
@@ -73,7 +73,7 @@ Format → `curriculum/backing-format.md`. Highest-decay file in the M4 block: e
 - `loop-runs-until-the-agent-stops` · detail · "Prompt → reason → tool calls → results → reason again, until the agent decides to stop." ← cc-glossary-harness, cc-hooks, parallel-tool-calls
 - `long-run-is-the-same-loop` · detail · "A long-running session is this same loop, iterated. The loop keeps choosing the next step from context and tool results, hour after hour." ← cc-costs-compaction, cc-subagents, cc-goal, cc-scheduled-tasks, cc-hooks, ronacher-coming-loop — **scoped by deletion, 2026-08-29.** The sentence used to carry "Out of the box, nothing new takes over when the session gets long", and that universal was the reason the opt-in sources (scheduled tasks, hooks, `/goal`) sat here as CAVEAT stamps. Cutting it leaves a description of the default loop rather than a claim about what cannot take over, so the caveat is discharged by the body, not by a qualifier. Do not restore the universal without restoring the scope word with it.
 - `tool-list-is-introspectable` · detail · "Ask what tools this session is carrying." ← cc-tools-reference, cc-mcp-tool-search — the session reports its own tool set on request; the fenced prompt does the asking.
-- `mcp-tools-join-the-same-set` · detail · "Ask where that list comes from." ← cc-permissions-mcp, cc-mcp-tool-search — connector tools join the same set, not a second mechanism.
+- `mcp-tools-join-the-same-set` · detail · "Ask how the agent knows what tools it can call." ← cc-permissions-mcp, cc-mcp-tool-search — connector tools join the same set, not a second mechanism.
 
 **Sources**
 - parallel-tool-calls `[checked:2026-08-01 result:ATTESTED due:none]` attested:Antti 2026-08-01 daily-practice — [practitioner direct] a single round can carry more than one tool call, and independent calls go out together. Keeps the slide plural: a serial *"calls a tool → result"* framing would be contradicted on screen inside the same module. `[maintainer-attested]` per `check_research_claims.md §1` — the maintainer runs these hourly and the observation needs no third-party URL. fallback: none; if a stamp is ever wanted, Anthropic's tool-use docs cover parallel calls, but do not swap an eyewitness for a page nobody has opened.

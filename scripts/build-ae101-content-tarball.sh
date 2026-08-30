@@ -19,7 +19,7 @@
 # Module files (curriculum/trainings/agentic-engineering-101/*.md at the dir root)
 # are NOT included — those render via the customer workbook URL in browser.
 # Trainer-only files (pre-cohort-todos.md, trainer-modules.md,
-# training-architecture.md, cohort-onboarding-email.md) are never in scope.
+# training-architecture.md) are never in scope.
 
 set -euo pipefail
 
@@ -42,7 +42,6 @@ TRAINER_ONLY=(
   pre-cohort-todos.md
   trainer-modules.md
   training-architecture.md
-  cohort-onboarding-email.md
 )
 
 # Tarball filename owned by curriculum/trainings/agentic-engineering-101/training-architecture.md

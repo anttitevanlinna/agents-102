@@ -119,20 +119,15 @@ const MANDATORY_CLASSES = {
 // MISSING judgment-call verdict must remain a visible hole. Declared explicitly
 // here so a real gap is never silently masked.
 //   • check_strategy_tie_in §§5/6/7 govern module-file sections — Key Concepts
-//     (§5/§6) and What You'll Learn (§7). Lectures and the onboarding email have
-//     no such sections, so those three rules cannot apply there.
-//   • cohort-onboarding-email is an email (SURFACES marks it mandatory:['writing']),
-//     not a module/exercise, so the module/exercise-architecture compendium
-//     check_pedagogy is wholesale N/A.
+//     (§5/§6) and What You'll Learn (§7). Lectures have no such sections, so
+//     those three rules cannot apply there.
 // §4 (strategy-fidelity / front-run) DELIBERATELY stays applicable to lectures:
 // a lecture can front-run a downstream teaching moment, so a missing §4 verdict
 // is a real (soft) hole the story judge owes — NOT an N/A.
 const NA_BY_SURFACE = {
   lectures: { check_strategy_tie_in: ['5', '6', '7'] },
 };
-const NA_BY_FILE = {
-  'cohort-onboarding-email': { check_pedagogy: 'all', check_strategy_tie_in: ['5', '6', '7'] },
-};
+const NA_BY_FILE = {};
 
 // Resolve the N/A rule-set for a (surface, file, compendium). Returns a Set of
 // rule ids; may contain the sentinel 'all' (whole compendium N/A for this file).
@@ -265,8 +260,6 @@ const SURFACES = {
     { slug: 'run-the-first-experiment', file: 'curriculum/trainings/agentic-engineering-101/run-the-first-experiment.md', instanceSlug: 'ae101--module--run-the-first-experiment' },
     { slug: 'learn-from-the-test', file: 'curriculum/trainings/agentic-engineering-101/learn-from-the-test.md', instanceSlug: 'ae101--module--learn-from-the-test' },
     { slug: 'spot-gaps-build-the-loop', file: 'curriculum/trainings/agentic-engineering-101/spot-gaps-build-the-loop.md', instanceSlug: 'ae101--module--spot-gaps-build-the-loop' },
-    // An email, not a module: no exercises (pedagogy N/A) and no Big-Idea/Key-Concepts (strategy N/A). Only prose-lint (writing) is mandatory.
-    { slug: 'cohort-onboarding-email', file: 'curriculum/trainings/agentic-engineering-101/cohort-onboarding-email.md', instanceSlug: 'ae101--module--cohort-onboarding-email', mandatory: ['writing'] },
   ],
 };
 

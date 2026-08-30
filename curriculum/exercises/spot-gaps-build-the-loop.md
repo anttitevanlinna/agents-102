@@ -10,7 +10,7 @@ Open a new Claude Code session in the existing M5 worktree (`../<repo>-m5`), no 
 
 **What you build:** a ranked gap map, one stale rule cut, and a diagram of the work that recurs across your stack.
 
-**The point:** two runs are enough to place every lesson.
+**The point:** two sessions are enough to place every lesson.
 
 ---
 
@@ -126,7 +126,7 @@ Claims
 - `sessions-are-on-disk-and-unread` · vision · "Your Claude Code sessions from every project are sitting on disk, and few engineers ever read them back." ← none-owed
 - `recurring-work-has-a-shape` · vision · "Steps in order, a branch, a loop back. Drawn, the shape is easier to recognise than described." ← none-owed
 - `primitives-will-look-familiar` · vision · "The primitives Claude names are the ones your codebase already runs." ← none-owed
-- `review-and-compound-across-two-runs` · borrowed · "two runs are enough to place every lesson" ← klaassen-how-every-codes
+- `review-and-compound-across-two-runs` · borrowed · "two sessions are enough to place every lesson" ← klaassen-how-every-codes — borrowed cadence with the house noun; deliberately not verbatim Klaassen (`student_facing` §21b).
 
 Sources
 - klaassen-how-every-codes `[checked:2026-07-30 result:CAVEAT due:none]` https://every.to/source-code/compound-engineering-how-every-codes-with-agents — [practitioner direct, vendor venue] Shipper & Klaassen (Dec 2025). The Review and Compound step definitions live on **this** page, not on the Definitive Guide, and in the source Plan and Work belong to the agents while Review and Compound belong to the engineer — which is exactly the split this exercise runs. Dec 2025, outside the 6-month window: framework origin, not fresh evidence — `due:none` on the dated-origin variant, since a step definition's publication does not expire and the body never claims it as current practice. fallback: teach the two-run review without the name; the move stands on the student's own artefacts.

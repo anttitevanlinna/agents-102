@@ -3,7 +3,7 @@
 ## Monitoring and takeover run on the same reps
 <!--tier:2-->
 
-- This is a 1983 argument, not an AI take. Lisanne Bainbridge, studying industrial automation: automate the reliable middle of a task, and the human keeps exactly two jobs. Monitor for the rare failure. Take over when it happens.
+- This is a 1983 argument, not an AI take. Lisanne Bainbridge, studying industrial automation: automate the reliable middle of a task, and the human keeps two jobs. Monitor for the rare failure. Take over when it happens.
 - Both jobs demand hands-on fluency. Monitoring only works if you can tell wrong from right at a glance. Takeover only works if the manual skill is still there. Both ride on the reps of doing the task yourself.
 - The irony: daily automation quietly removes those reps. Skills deteriorate when they are not used. The better the automation, the less you do the task by hand, and the worse you are at the moment you are needed most. Bainbridge's phrasing: a formerly experienced operator who has been monitoring an automated process "may now be an inexperienced one."
 
@@ -53,7 +53,7 @@ Format → `curriculum/backing-format.md`. This is the file's only source and fr
 
 **Claims**
 - `is-a-1983-argument` · detail · "This is a 1983 argument, not an AI take." ← bainbridge-ironies. The word *argument* is load-bearing and checked: Bainbridge 1983 is a synthesis essay, not an experiment.
-- `two-jobs` · borrowed · "automate the reliable middle of a task, and the human keeps exactly two jobs. Monitor for the rare failure. Take over when it happens." ← bainbridge-ironies
+- `two-jobs` · borrowed · "automate the reliable middle of a task, and the human keeps two jobs. Monitor for the rare failure. Take over when it happens." ← bainbridge-ironies
 - `both-jobs-ride-on-reps` · detail · "Both jobs demand hands-on fluency... Both ride on the reps of doing the task yourself." ← bainbridge-ironies
 - `skills-deteriorate` · detail · "Skills deteriorate when they are not used." ← bainbridge-ironies — the body pairs it with Bainbridge's own *"may now be an inexperienced one"*, both verified verbatim on the author's own site; the strongest-backed line in the file.
 - `overreliance-named` · borrowed · "The automation-studies literature named this **overreliance**: trusting the machine past the point where you still catch its errors (Parasuraman and Riley's use, misuse, disuse)." ← parasuraman-riley

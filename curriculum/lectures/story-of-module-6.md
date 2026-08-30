@@ -42,7 +42,7 @@ A rule in context is not a rule in the output. Taste closes the gap. Nothing els
 
 ## Then I compounded the session
 
-I ran the M6 exercise on the M6 generation, comparing the two sessions side by side. That comparison found rules that lived in memory but were never enforced. I moved them into skills that block "done" until the check runs. A rule in memory that does not force is worse than no rule.
+I ran the M6 prompts on the M6 generation, comparing the two sessions side by side. That comparison found rules that lived in memory but were never enforced. I moved them into skills that block "done" until the check runs. A rule in memory that does not force is worse than no rule.
 
 Then I made countless fixes later on. As one example: the prework was missing pre-reads. I caught that only on a later glance through the module.
 

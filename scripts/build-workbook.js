@@ -474,14 +474,34 @@ const WORKBOOK_INIT_JS = `
     var main = document.querySelector('main');
     if (!main) return;
     var KEY = 'curriculumLayout';
+    // Barebones edition: the same deck capped at tier 1 (no T2 recognition, no
+    // T3 story). Remembered per reader alongside the layout choice.
+    var TKEY = 'curriculumMaxTier';
     var mode = (function () { try { return localStorage.getItem(KEY) === 'slides' ? 'slides' : 'read'; } catch (e) { return 'read'; } })();
+    var maxTier = (function () { try { return localStorage.getItem(TKEY) === '1' ? 1 : 3; } catch (e) { return 3; } })();
     var ctl = null, toggle = null;
-    function apply() {
+    function apply(startSrc) {
       if (mode === 'slides') {
-        if (!ctl) ctl = CurriculumSlides.open(main, { title: (document.title || '').replace(/\\s+—\\s+.*$/, ''), onExit: function () { set('read'); } });
+        if (!ctl) ctl = CurriculumSlides.open(main, {
+          title: (document.title || '').replace(/\\s+—\\s+.*$/, ''),
+          maxTier: maxTier,
+          startSrc: startSrc,
+          onExit: function () { set('read'); },
+          onMaxTier: setTier
+        });
       } else if (ctl) { ctl.close(); ctl = null; }
     }
     function set(m) { mode = m; try { localStorage.setItem(KEY, m); } catch (e) {} if (toggle && toggle._paint) toggle._paint(m); apply(); }
+    // Rebuild rather than hide: the filter renumbers slides and remaps in-deck
+    // anchors, so it has to run through the model. Carry the reader's place
+    // across on the source index.
+    function setTier(t) {
+      maxTier = t;
+      try { localStorage.setItem(TKEY, String(t)); } catch (e) {}
+      var at = ctl ? ctl.srcIndex() : 0;
+      if (ctl) { ctl.close(); ctl = null; }
+      apply(at);
+    }
     var host = document.querySelector('.workbook-topnav') || document.body;
     toggle = CurriculumSlides.buildToggle(mode, set);
     toggle.classList.add('workbook-layout-toggle');

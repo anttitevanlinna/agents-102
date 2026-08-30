@@ -222,7 +222,7 @@ block.
 
 ### Goal 2 — a barebones edition without T2/T3 slides
 
-**The machinery exists; the tagging does not.** `site/layouts/slides.js` already defines the
+**The switch is built (2026-08-30); the tagging is not.** `site/layouts/slides.js` already defines the
 vocabulary and renders a badge plus a nav-rail class per tier:
 
 - **T1** — *Core; the work ahead depends on this slide*
@@ -261,15 +261,44 @@ exercises). Match the `exercises/` path, not the link text.
 **Three steps, in order:**
 
 1. **Audit, do not bulk-tag.** Untagged already means core in practice, so the work is finding the
-   mis-filed slides and tagging those, not labelling 322. Make the renderer treat absent as `T1`
-   explicitly instead of `null`, so untagged stops being a silent third state. Tag while cutting —
-   the T1/T2/T3 judgement is the same judgement the cut requires, and splitting it into a separate
-   sweep means making it twice.
-2. **Runtime toggle, not a build variant.** `buildToggle` already exists for the long-read/slides
-   switch. A tier filter keeps one artifact serving both audiences and lets a trainer drop theory
-   mid-session, which is what `## Freedom to choose` already promises the room.
+   mis-filed slides and tagging those, not labelling 322. Tag while cutting — the T1/T2/T3
+   judgement is the same judgement the cut requires, and splitting it into a separate sweep means
+   making it twice. **Still open, and now the only thing between the switch and a usable
+   barebones edition.**
+2. **Runtime toggle, not a build variant. — LANDED 2026-08-30.** Details below.
 3. **Lint it.** *No T2/T3 slide before a module's first exercise* makes goal 1 self-enforcing
-   instead of re-derived per module.
+   instead of re-derived per module. **Open.** Cheap to write now that `maxTier` exists, but it
+   gates on step 1: a lint over 38 tags reports on the tier pass, not on the deck.
+
+#### The switch (step 2, shipped)
+
+`CurriculumSlides.open(el, { maxTier })` — `3` (default) is the full deck, `1` is barebones. A
+**Barebones / Full deck** button sits in the deck bar next to the long-read exit, `B` on the
+keyboard, remembered per reader in `localStorage` under `curriculumMaxTier`. Wired in both hosts
+(`scripts/build-workbook.js` inline script, `site/layouts/curriculum-spa.js`); nine tests in
+`scripts/slides.test.js`.
+
+Four decisions worth not re-litigating:
+
+- **Absent tier is now `'1'`, not `null`.** Step 1's renderer change landed with step 2, because the
+  filter needs a total function. The badge still renders only for an author's own marker
+  (`tierTagged`), or 450 core slides would each wear a "T1".
+- **Filter over the model, not CSS.** Hiding slides in place would leave `go()`, the counter, the
+  progress bar and the rail counting slides nobody can reach. One filter pass in `buildDeckModel`
+  drops the slides, renumbers `secNum` within each section, and remaps the anchor map.
+- **Structure is not content.** Dividers and doc covers always survive, or a filtered module loses
+  its own title. *Untested edge:* a doc whose every content slide is T2/T3 would leave a bare cover.
+  Cannot happen at 38 tags; revisit after the step-1 audit.
+- **A cut anchor resolves forward.** An in-deck link into a dropped slide lands on the next survivor
+  rather than dying silently. This forced heading anchors to be claimed *before* the filter — claim
+  them after and a link into a dropped slide is simply absent from the map, and the click falls
+  through to a browser with nothing to scroll.
+
+Toggling rebuilds the deck and carries the reader's place across on `srcIndex` (position in the
+unfiltered deck — the only handle stable across a rebuild).
+
+**What it does today:** removes 38 slides of ~450. It is the mechanism, honestly labelled, waiting
+on the tagging. Do not ship it to a cohort as "the barebones edition" until step 1 runs.
 
 **Naming hazard.** "Tier" already means three unrelated things in this repo: slide tiers here, file
 priority in `curriculum/evals/slide-sweep.md`, and rule-index tiers T0–T3 in

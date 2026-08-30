@@ -187,9 +187,15 @@
       sec.appendChild(body);
       if (body.querySelector('.diagram, svg, img')) sec.classList.add('slide--diagram');
       if (body.querySelector('.diagram, svg, table, pre')) sec.classList.add('slide--wide');
-      var tier = null, tm = body.querySelector('.slide-tier[data-tier]');
+      // Absent marker means core, so the model says so out loud: tier is always
+      // '1'|'2'|'3', never null. An untagged slide used to be a silent third
+      // state, which is exactly what a filter and a lint cannot reason about.
+      // `tierTagged` keeps the chrome honest — only an author's own marker
+      // earns a badge, or 450 core slides would each wear a "T1".
+      var tier = '1', tagged = false, tm = body.querySelector('.slide-tier[data-tier]');
       if (tm && !g.isCover) {
         tier = tm.getAttribute('data-tier');
+        tagged = true;
         sec.setAttribute('data-tier', tier);
         var badge = el('span', 'slide__tier slide__tier--' + tier, { title: TIER_INFO[tier] || '' });
         badge.textContent = 'T' + tier;
@@ -198,7 +204,7 @@
       var title;
       if (g.isCover) title = docTitle || o.title || 'Cover';
       else { var hh = body.querySelector('h2'); title = hh ? textOf(hh) : 'Slide'; }
-      out.push({ el: sec, title: title, navLabel: title, isCover: g.isCover, isDivider: false, tier: tier });
+      out.push({ el: sec, title: title, navLabel: title, isCover: g.isCover, isDivider: false, tier: tier, tierTagged: tagged });
     });
     return { slides: out, title: docTitle };
   }
@@ -336,6 +342,55 @@
       title = title || 'Handbook';
     }
 
+    // ── the barebones filter ─────────────────────────────────────────────────
+    // `opts.maxTier` caps how much theory the deck carries: 3 (default) is the
+    // full deck, 1 is barebones — every Recognition (T2) and Story (T3) slide
+    // dropped, leaving the spine the work depends on. Structure is not content:
+    // dividers and doc covers always survive, or a filtered module would lose
+    // its own title.
+    //
+    // Runs here, after both build branches and before indices are stamped, so
+    // one pass fixes everything downstream. `srcIndex` is the slide's position
+    // in the unfiltered deck — the only stable handle across a rebuild, which
+    // is how the toggle keeps the trainer's place mid-session.
+    var total = slides.length;
+    // Claim heading anchors BEFORE the filter, not after: a link into a slide
+    // the filter is about to drop still needs an entry in the map, or it falls
+    // through to the browser, which has nothing to scroll and does nothing.
+    // Claimed here it gets remapped to the nearest survivor like any other.
+    slides.forEach(function (s, k) {
+      s.srcIndex = k;
+      Array.prototype.forEach.call(s.el.querySelectorAll('[id]'), function (n) { claimAnchor(anchors, n.id, k); });
+    });
+    var maxTier = opts.maxTier == null ? 3 : +opts.maxTier;
+    if (maxTier < 3) {
+      var keep = [], remap = new Array(slides.length);
+      slides.forEach(function (s, k) {
+        var drop = !s.isDivider && !s.isCover && +(s.tier || 1) > maxTier;
+        remap[k] = drop ? -1 : keep.length;
+        if (!drop) keep.push(s);
+      });
+      // An anchor pointing at a dropped slide resolves FORWARD to the next
+      // survivor (backwards to the last one at the tail), so no in-deck link
+      // goes dead in barebones — it lands on the nearest thing still there.
+      for (var r = remap.length - 1; r >= 0; r--) {
+        if (remap[r] === -1) remap[r] = (r + 1 < remap.length ? remap[r + 1] : keep.length - 1);
+      }
+      Object.keys(anchors).forEach(function (id) {
+        var n = remap[anchors[id]];
+        anchors[id] = Math.max(0, Math.min(keep.length - 1, n == null ? 0 : n));
+      });
+      slides = keep;
+      // secNum is position within a section, so it renumbers against what
+      // survived — a barebones module counts 1,2,3, not 1,4,7.
+      var secTally = {};
+      slides.forEach(function (s) {
+        if (s.isDivider || s.isCover || !s.secCode) return;
+        secTally[s.secCode] = (secTally[s.secCode] || 0) + 1;
+        s.secNum = secTally[s.secCode];
+      });
+    }
+
     // Single-doc decks have no sections: number content slides within the doc.
     if (!slides.some(function (s) { return s.secCode; })) {
       var soloNum = 0;
@@ -351,7 +406,7 @@
         claimAnchor(anchors, n.id, k);
       });
     });
-    return { slides: slides, title: title, anchors: anchors };
+    return { slides: slides, title: title, anchors: anchors, maxTier: maxTier, total: total };
   }
 
   // Re-attach copy handlers on the cloned deck (listeners don't survive cloneNode).
@@ -414,7 +469,10 @@
     var handle = el('div', 'deck__rail-handle'); handle.innerHTML = listIcon() + '<span>Contents</span>';
     var railHead = el('div', 'deck__rail-head');
     var railTitle = el('div', 'deck__rail-title'); railTitle.textContent = model.title || 'Contents';
-    var railMeta = el('div', 'deck__rail-meta'); railMeta.textContent = slides.length + ' slides';
+    var railMeta = el('div', 'deck__rail-meta');
+    railMeta.textContent = model.maxTier < 3
+      ? slides.length + ' of ' + model.total + ' slides'
+      : slides.length + ' slides';
     railHead.append(railTitle, railMeta);
     var railList = el('ul', 'deck__rail-list');
     var railItems = slides.map(function (s, k) {
@@ -423,7 +481,7 @@
         + (s.isDivider ? ' deck__rail-item--divider' : '')
         + (s.el.classList.contains('slide--module') ? ' deck__rail-item--module' : '')
         + (s.isCover ? ' deck__rail-item--cover' : '')
-        + (s.tier ? ' deck__rail-item--tier' + s.tier : '');
+        + (s.tierTagged ? ' deck__rail-item--tier' + s.tier : '');
       var btn = el('button', cls, { 'data-index': k });
       var num = el('span', 'deck__rail-num');
       num.textContent = s.isCover ? '•'
@@ -468,7 +526,24 @@
     // Same short string as the long-read badge and full footer — one source
     // (CurriculumRuntime.COPYRIGHT_MARK, curriculum.js), rendered three ways.
     mark.innerHTML = (global.CurriculumRuntime && global.CurriculumRuntime.COPYRIGHT_MARK) || '&copy; Bosser 2026';
-    bar.append(title, spacer, exit, nav, mark);
+    // Barebones control. Mounted only when the host passes onMaxTier — a
+    // standalone deck with nowhere to persist the choice shows no dead switch.
+    var modeBtn = null;
+    if (opts.onMaxTier) {
+      var bare = model.maxTier < 3;
+      modeBtn = el('button', 'deck__mode' + (bare ? ' is-on' : ''), {
+        type: 'button',
+        title: bare
+          ? 'Barebones: core slides only. Click for the full deck. (B)'
+          : 'Full deck. Click for barebones \u2014 core only, no recognition or story slides. (B)'
+      });
+      modeBtn.textContent = bare ? 'Barebones' : 'Full deck';
+      modeBtn.addEventListener('click', function () { opts.onMaxTier(bare ? 3 : 1); });
+    }
+
+    bar.append(title, spacer);
+    if (modeBtn) bar.appendChild(modeBtn);
+    bar.append(exit, nav, mark);
 
     deck.append(progress, rail, viewport, bar);
     document.body.appendChild(deck);
@@ -522,13 +597,25 @@
         case 'Home': e.preventDefault(); go(0); break;
         case 'End': e.preventDefault(); go(slides.length - 1); break;
         case 'o': case 'O': e.preventDefault(); togglePin(); break;
+        case 'b': case 'B': if (opts.onMaxTier) { e.preventDefault(); opts.onMaxTier(model.maxTier < 3 ? 3 : 1); } break;
         case 'Escape': if (deck.classList.contains('is-railpinned') || deck.classList.contains('is-railopen')) { pinned = false; deck.classList.remove('is-railpinned', 'is-railopen'); } else if (opts.onExit) opts.onExit(); break;
         case 'f': case 'F': if (!document.fullscreenElement) { (document.documentElement.requestFullscreen || function () {}).call(document.documentElement); } else document.exitFullscreen(); break;
         default: if (/^[0-9]$/.test(e.key)) { var t = e.key === '0' ? 9 : (+e.key - 1); if (t < slides.length) go(t); }
       }
     };
     document.addEventListener('keydown', keyHandler);
-    go(typeof opts.start === 'number' ? opts.start : 0);
+    // `startSrc` is an index into the UNFILTERED deck: after a barebones
+    // rebuild the slide you were on may be gone, so land on the first survivor
+    // at or after it rather than snapping back to the cover.
+    var startAt = 0;
+    if (typeof opts.start === 'number') startAt = opts.start;
+    else if (typeof opts.startSrc === 'number') {
+      for (var si = 0; si < slides.length; si++) {
+        if (slides[si].srcIndex >= opts.startSrc) { startAt = si; break; }
+        startAt = si;
+      }
+    }
+    go(startAt);
 
     function edge(dir) {
       var b = el('button', 'deck__edge deck__edge--' + dir, { 'aria-label': dir === 'prev' ? 'Previous' : 'Next' });
@@ -545,7 +632,8 @@
         document.body.classList.remove('slides-active');
         sourceEl.style.display = '';
       },
-      go: go
+      go: go,
+      srcIndex: function () { return slides[i] ? slides[i].srcIndex : 0; }
     };
   }
 

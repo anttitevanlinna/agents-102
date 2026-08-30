@@ -60,6 +60,8 @@ const FIXTURE = `
       <div class="phase-kicker">Lecture</div>
       <h1>Painting the picture</h1>
       <h2>Slide A</h2><div class="slide-tier" data-tier="3" hidden></div><p>body</p>
+      <h2>Slide B</h2><div class="slide-tier" data-tier="2" hidden></div><p>body</p>
+      <h2>Slide C</h2><p>body</p>
     </section>
     <section class="phase phase--exercise" id="exercises-orient-and-introspect">
       <div class="phase-kicker">Exercise</div>
@@ -217,10 +219,14 @@ test('a tier-tagged slide carries data-tier, a corner token, and the model tier'
   assert.ok(badge.getAttribute('title'), 'token explains itself on hover');
 });
 
-test('untagged slides carry no tier stamp and no token', () => {
+// Absent used to mean `tier: null` — a silent third state neither the filter
+// nor a lint could reason about. The model now says core out loud; only an
+// author's own marker earns the badge, so the deck looks unchanged.
+test('untagged slides are core (tier 1) but carry no stamp and no token', () => {
   const { model } = buildDeck();
   const plain = model.slides.find(s => (s.navLabel || s.title) === 'Step one');
-  assert.equal(plain.tier, null);
+  assert.equal(plain.tier, '1', 'absent marker means core, stated explicitly');
+  assert.equal(plain.tierTagged, false, 'not author-tagged');
   assert.equal(plain.el.getAttribute('data-tier'), null);
   assert.equal(plain.el.querySelector('.slide__tier'), null);
 });
@@ -395,4 +401,95 @@ test('an unresolvable fragment and an external link are left to the browser', ()
   assert.equal(clickLink(dom, 'dead one').defaultPrevented, false, 'unknown fragment not swallowed');
   assert.equal(clickLink(dom, 'something outside').defaultPrevented, false, 'external link untouched');
   assert.equal(activeIndex(dom), before, 'neither moved the deck');
+});
+
+// ── the barebones edition ────────────────────────────────────────────────────
+// `maxTier: 1` caps the deck at core: every Recognition (T2) and Story (T3)
+// slide drops out, so a room that wants less theory reaches the exercise
+// sooner. Same artifact, same source — a filter over the model, not a build
+// variant. Structure survives the cut, numbering renumbers, anchors re-point.
+
+function bareDeck(opts) {
+  const dom = new JSDOM(FIXTURE, { runScripts: 'outside-only' });
+  dom.window.eval(SLIDES_SRC);
+  const main = dom.window.document.querySelector('main');
+  const model = dom.window.CurriculumSlides.buildDeckModel(
+    main.cloneNode(true), Object.assign({ maxTier: 1 }, opts || {}));
+  return { model, labels: model.slides.map(s => s.navLabel || s.title).join('\n'), dom };
+}
+
+test('barebones drops T2 and T3 slides and keeps the core ones', () => {
+  const { labels } = bareDeck();
+  assert.doesNotMatch(labels, /Slide A/, 'T3 slide dropped');
+  assert.doesNotMatch(labels, /Slide B/, 'T2 slide dropped');
+  assert.match(labels, /Slide C/, 'untagged slide kept');
+  assert.match(labels, /Step one/, 'exercise slides kept');
+});
+
+test('the full deck is the default — no maxTier means nothing is dropped', () => {
+  const { labels } = buildDeck();
+  assert.match(labels, /Slide A/);
+  assert.match(labels, /Slide B/);
+  assert.equal(buildDeck().model.maxTier, 3);
+});
+
+// A filtered module that lost its title is a module the room cannot name.
+test('barebones keeps structure: dividers and doc covers always survive', () => {
+  const full = buildDeck().model, bare = bareDeck().model;
+  // joined, not deepEqual: the two models come from different JSDOM realms and
+  // their Arrays fail a strict prototype check while reading identical
+  const codes = m => m.slides.filter(s => s.isDivider && s.el.classList.contains('slide--module')).map(s => s.secCode).join(',');
+  assert.equal(codes(bare), codes(full), 'every section opener survives');
+  assert.match(bare.slides.map(s => s.navLabel || s.title).join('\n'), /Painting the picture/,
+    'the lecture cover survives even though one of its slides did not');
+});
+
+test('barebones renumbers within the section — 1..n, no gaps', () => {
+  const { model } = bareDeck();
+  const content = model.slides.filter(s => s.secCode === 'M1' && !s.isDivider && !s.isCover);
+  assert.deepEqual(Array.from(content, s => s.secNum), Array.from(content, (_, i) => i + 1));
+  assert.equal(content[0].el.getAttribute('data-ref'), 'm1.1');
+});
+
+// An in-deck link is a scroll instruction the deck has to resolve itself. If
+// the filter left the anchor map pointing at pre-filter indices, every link in
+// barebones would land on the wrong slide — silently, since nothing throws.
+test('barebones remaps anchors so in-deck links still land', () => {
+  const { model } = bareDeck();
+  const target = model.anchors['supplementary-verification-asymmetry'];
+  assert.equal(typeof target, 'number');
+  assert.ok(target < model.slides.length, 'index is inside the filtered deck');
+  assert.match(model.slides[target].navLabel || model.slides[target].title, /Verification asymmetry/);
+  const named = model.anchors['the-named-moves'];
+  assert.match(model.slides[named].navLabel || model.slides[named].title, /The named moves/);
+});
+
+// An anchor whose own slide was cut must resolve forward to the next survivor
+// rather than to slide 0 or off the end.
+test('an anchor on a dropped slide resolves to the nearest survivor', () => {
+  const dom = new JSDOM(FIXTURE.replace('<h2>Slide A</h2>', '<h2 id="slide-a">Slide A</h2>'),
+    { runScripts: 'outside-only' });
+  dom.window.eval(SLIDES_SRC);
+  const main = dom.window.document.querySelector('main');
+  const bare = dom.window.CurriculumSlides.buildDeckModel(main.cloneNode(true), { maxTier: 1 });
+  const full = dom.window.CurriculumSlides.buildDeckModel(main.cloneNode(true), {});
+  assert.match(full.slides[full.anchors['slide-a']].title, /Slide A/, 'full deck lands on it');
+  const n = bare.anchors['slide-a'];
+  assert.ok(n != null && n >= 0 && n < bare.slides.length, 'still a valid slide in barebones');
+  assert.match(bare.slides[n].navLabel || bare.slides[n].title, /Slide C/, 'forward to the next survivor');
+});
+
+// srcIndex is the position in the UNFILTERED deck: the only handle stable
+// across a rebuild, which is how the toggle keeps the trainer's place.
+test('every slide carries its unfiltered position as srcIndex', () => {
+  const full = buildDeck().model, bare = bareDeck().model;
+  assert.deepEqual(full.slides.map(s => s.srcIndex), full.slides.map((_, i) => i));
+  const byTitle = t => full.slides.findIndex(s => (s.navLabel || s.title) === t);
+  const c = bare.slides.find(s => (s.navLabel || s.title) === 'Slide C');
+  assert.equal(c.srcIndex, byTitle('Slide C'), 'survivors keep their full-deck index');
+  assert.equal(bare.total, full.slides.length, 'model reports the unfiltered total');
+});
+
+test('slides.css styles the barebones switch', () => {
+  assert.match(SLIDES_CSS, /\.deck__mode\s*\{/, 'slides.css must carry the .deck__mode rule');
 });

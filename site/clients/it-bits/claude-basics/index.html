@@ -2376,8 +2376,39 @@ body.workbook { padding-top: 3rem; }
 .deck .slide.theme-dark .session-block { background: var(--bg-2); }
 .deck .slide.theme-dark .session-block__body { color: var(--fg-2); }
 .deck .slide.theme-dark pre code { color: var(--fg); }
+/* HOX/Note panels carry a light-mode background from curriculum.css
+   (`.module .hox-block`). On a dark slide the body text flips to --fg, so the
+   panel has to flip with it or it is cream-on-cream. The long read gets this
+   from `.phase--exercise`; the deck needs its own. */
+.deck .slide.theme-dark .hox-block { background: rgba(232, 89, 12, 0.16); }
+.deck .slide.theme-dark .note-block { background: rgba(47, 107, 107, 0.18); }
 .deck .slide.theme-dark .hox-block__body,
 .deck .slide.theme-dark .note-block__body { color: var(--fg); }
+
+/* ── slide tier token ───────────────────────────────────────────────────────
+   Trainer-facing skip guidance from `<!--tier:N-->` markers (deck-only chrome;
+   long-read renders nothing). T2 = recognition, skippable under time pressure;
+   T3 = story/extra theory, skip freely. Untagged slides are core and carry no
+   token. Deliberately quiet: legible to the trainer at the lectern, wallpaper
+   to the room. Colors are literal (not var()) so the token reads the same on
+   light and `.theme-dark` slides. */
+.deck .slide__tier {
+  position: absolute; top: .9rem; right: 1.1rem; z-index: 8;
+  font-family: var(--font-display, inherit); font-size: .68rem;
+  letter-spacing: .14em; font-variant-numeric: tabular-nums;
+  padding: .18rem .5rem; border-radius: 99px; border: 1px solid transparent;
+  opacity: .75; pointer-events: auto; cursor: help;
+}
+.deck .slide__tier--2 { color: #7c6f5a; border-color: rgba(124, 111, 90, .45); }
+.deck .slide__tier--3 { color: #a99a80; border-color: rgba(169, 154, 128, .4); border-style: dashed; }
+.deck .slide.theme-dark .slide__tier--2 { color: #a99a80; border-color: rgba(169, 154, 128, .5); }
+.deck .slide.theme-dark .slide__tier--3 { color: #7c6f5a; border-color: rgba(124, 111, 90, .55); }
+/* explicit T1 tag, if an author writes one: same quiet treatment as T2 */
+.deck .slide__tier--1 { color: #7c6f5a; border-color: rgba(124, 111, 90, .45); }
+.deck .slide.theme-dark .slide__tier--1 { color: #a99a80; border-color: rgba(169, 154, 128, .5); }
+
+/* rail: tier-3 rows dim so the skippable tail is scannable at a glance */
+.deck__rail-item--tier3 .deck__rail-label { opacity: .6; }
 
 /* ── deck shell ─────────────────────────────────────────────────────────── */
 body.slides-active { overflow: hidden; }
@@ -2401,7 +2432,14 @@ body.slides-active { overflow: hidden; }
 .deck .slide.is-active { opacity: 1; visibility: visible; transform: none; }
 .deck .slide.is-past { transform: translateY(-10px); }
 
-.deck .slide__body { width: 100%; max-width: 52rem; }
+/* Above the edge click-zones (z-index 5). The zones are 12% of the viewport
+   wide, and on a laptop-sized window that band reaches PAST the content column's
+   left edge — at 1280 it covers the first ~22px of the body, at 1024 ~31px. So
+   the leftmost characters on every slide (the DO / BUILD / WHY labels, a bullet's
+   first letter, a COPY button on the right) sat under an invisible button: hover
+   showed a hand, and a click paged the deck instead of doing nothing. Text must
+   win the hit-test; the zones keep the real margins, which is all they were for. */
+.deck .slide__body { width: 100%; max-width: 52rem; position: relative; z-index: 6; }
 .deck .slide--wide .slide__body, .deck .slide--cover .slide__body { max-width: 66rem; }
 .deck .slide--diagram .slide__body { max-width: 72rem; }
 .deck .slide pre { max-width: 100%; overflow-x: auto; }
@@ -2525,6 +2563,16 @@ body.slides-active { overflow: hidden; }
 .deck__exit:hover { border-color: var(--accent-2); color: var(--ink-text); }
 .deck__exit svg { width: .95rem; height: .95rem; }
 
+/* ── barebones switch ───────────────────────────────────────────────────────
+   Caps the deck at tier 1: recognition and story slides drop out and the room
+   goes to the exercise sooner. Same weight as the long-read exit beside it —
+   this is a delivery choice a trainer makes at the lectern, not a warning. */
+.deck__mode { flex: 0 0 auto; background: transparent; border: 1px solid var(--ink-line);
+  color: var(--ink-text-2); border-radius: 6px; padding: .3rem .7rem; margin-right: .35rem;
+  cursor: pointer; font: inherit; font-size: .78rem; letter-spacing: .02em; }
+.deck__mode:hover { border-color: var(--accent-2); color: var(--ink-text); }
+.deck__mode.is-on { color: var(--accent-2); border-color: var(--accent-2); }
+
 /* Bottom-right of the bar — same license mark as the long-read badge and
    full footer, one source string (curriculum.js COPYRIGHT_MARK). */
 .deck__copyright { flex: 0 0 auto; margin-left: .25rem; font-size: .7rem;
@@ -2544,9 +2592,26 @@ body.slides-active { overflow: hidden; }
 .ex-contract__row { display: grid; grid-template-columns: 5rem 1fr; gap: 1.1rem; align-items: start;
   padding: .95rem 1.2rem; border-top: 1px solid var(--line); }
 .ex-contract__row:first-child { border-top: 0; }
+/* Structural chrome, not emphasis. These labels (DO / BUILD / WHY, lifted from
+   the file's "What you do" / "What you build" / "The point" leads) were accent
+   coloured, which in this palette is what a link looks like — an isolated,
+   uppercase, accent-coloured word in its own column reads as clickable and
+   isn't. Muted: the row's meaning lives in the value, the label just names it. */
 .ex-contract__label { font-family: var(--font-body); font-weight: 700; text-transform: uppercase;
-  letter-spacing: .11em; font-size: .7rem; color: var(--accent); padding-top: .25rem; }
+  letter-spacing: .11em; font-size: .7rem; color: var(--fg-2); padding-top: .25rem; }
 .ex-contract__val { font-size: 1rem; line-height: 1.55; color: var(--fg); }
+/* A link on a slide has to look like one, now that clicking it navigates the
+   deck. curriculum.css gives a link the same rust as every bold lead-in plus an
+   underline at 8% alpha: legible on a laptop, invisible on a wall, so a link
+   and a plain label were the same object at projection distance. Colour can't
+   carry the affordance here (too much else is warm) — the underline does.
+   Heading links and the diagram zoom keep their own deliberate treatment. */
+.deck .slide__body a { border-bottom: 1px solid currentColor; }
+@supports (color: color-mix(in srgb, currentColor 50%, transparent)) {
+  .deck .slide__body a { border-bottom-color: color-mix(in srgb, currentColor 55%, transparent); }
+}
+.deck .slide__body a.diagram__zoom,
+.deck .slide__body h1 a, .deck .slide__body h2 a, .deck .slide__body h3 a { border-bottom: 0; }
 .ex-contract__val strong:first-child { color: var(--fg); }
 .slide__body p.ex-time { display: inline-flex; align-items: center; gap: .45rem; font-style: normal;
   font-size: .8rem; letter-spacing: .03em; color: var(--fg-2); background: var(--bg-3);
@@ -2943,7 +3008,7 @@ Then tell me what changed in the file.
 
 What I want the next version to do better:
 </code></pre>
-<p>Open <code>response.html</code> to see what actually shifted, Cowork&#39;s chat summary about what changed can drift from the file. The point is not a perfect page; the point is one more rule in your folder for the next run.</p>
+<p>Open <code>response.html</code> to see what actually shifted, Cowork&#39;s chat summary about what changed can drift from the file. The point is not a perfect page; the point is one more rule in your folder for the next session.</p>
 <p>When the page is visibly closer and the folder carries the rule forward, stop. The system is small, but it now has something reusable.</p>
 <h2 id="style-is-just-one-aspect">Style Is Just One Aspect</h2>
 <p>This exercise used style because visual differences are easy to see. The same pattern works for any output quality you need to steer.</p>
@@ -2964,8 +3029,8 @@ What I want the next version to do better:
 <p>Same folder is OK. If your build-your-system folder already has <code>CLAUDE.md</code>, keep using it. This exercise adds a source-checking habit to the same small system.</p>
 <p>Create a <code>sources/</code> subfolder and add 1 or 2 source files you know well there. Use small files: a policy excerpt, FAQ, product note, onboarding note, meeting summary, or website copy. The point is that you can tell when Claude stretches beyond the sources.</p>
 <p>You choose the briefing topic. The first prompt should feel like a normal work request.</p>
-<p><strong>Session</strong> <em>(new, &quot;Find wrong claims - first run&quot;)</em></p>
-<p>Open Cowork on this folder for the first run.</p>
+<p><strong>Session</strong> <em>(new, &quot;Find wrong claims - first session&quot;)</em></p>
+<p>Open Cowork on this folder for the first session.</p>
 <h2 id="phase-1-generate-from-sources-6-minutes">Phase 1. Generate from sources (6 minutes)</h2>
 <p>Ask Cowork to draft from the source files.</p>
 <p><strong>Prompt</strong> <em>(Cowork)</em></p>
@@ -3017,8 +3082,8 @@ Keep the rule short and practical.
 After saving `CLAUDE.md`, tell me the rule you added.
 </code></pre>
 <p>The rule does not make Claude perfect. It gives the folder a better default move.</p>
-<p><strong>Session</strong> <em>(new, &quot;Find wrong claims - second run&quot;)</em></p>
-<p>Close this Cowork session. Open a new Cowork session on the same local folder. This tests whether <code>CLAUDE.md</code> changes the next run.</p>
+<p><strong>Session</strong> <em>(new, &quot;Find wrong claims - second session&quot;)</em></p>
+<p>Close this Cowork session. Open a new Cowork session on the same local folder. This tests whether <code>CLAUDE.md</code> changes the next session.</p>
 <h2 id="phase-4-generate-again-5-minutes">Phase 4. Generate again (5 minutes)</h2>
 <p>Use the saved generation prompt. Do not improve it yet.</p>
 <p><strong>Prompt</strong> <em>(Cowork)</em></p>
@@ -3152,7 +3217,7 @@ Keep it to five bullets.
 <p><strong>Session</strong> <em>(new Cowork task, &quot;Paint by agent with guardrails&quot;)</em></p>
 <p>Start a new Cowork task with your personal homework folder as the working folder. The one you used for the build-and-verify homework is fine, or open a fresh one.</p>
 <p><strong>What you do:</strong></p>
-<p>The site is the canvas. The real move is iterate and learn: change the context, watch the agent&#39;s output shift, then package what you learned so the next run starts smarter. By the end, you have a personal site you actually like AND a small rules file the agent can re-read on any future personal-shaped task.</p>
+<p>The site is the canvas. The real move is iterate and learn: change the context, watch the agent&#39;s output shift, then package what you learned so the next session starts smarter. By the end, you have a personal site you actually like AND a small rules file the agent can re-read on any future personal-shaped task.</p>
 <p><strong>Phase 1. The boring baseline.</strong></p>
 <p>The baseline is boring on purpose. You need it boring so you can feel how much the later phases change.</p>
 <p>Three small steps:</p>
@@ -3258,12 +3323,12 @@ When you&#39;re done, tell me in 4–6 lines what&#39;s in the file: the structu
 <p>Think back an hour. <em>Context</em> was a word someone might put on a slide. You had a vague sense it mattered. Now it&#39;s something you can point at, the bit you added that turned a generic About page into a site your neighbour recognised as yours. You felt it move.</p>
 <p>That&#39;s a small thing. It&#39;s also the whole thing.</p>
 <p>The rest of running Claude well is more instances of the same move. Iterate, learn, encode. Change something, notice what shifted, adjust, build again. You just did a round of it; you&#39;ll do a lot more.</p>
-<p>The site was the visible surface. The durable thing is the behavior you can now package: what context the agent needs, what generic looks like, what a stronger pass does differently, and which rule should survive into the next run.</p>
+<p>The site was the visible surface. The durable thing is the behavior you can now package: what context the agent needs, what generic looks like, what a stronger pass does differently, and which rule should survive into the next session.</p>
 <p>And the artifact is yours. Not the generic one from Phase 1 (the one a competent LLM produces from any LinkedIn) but the site that came out of Phase 6. The StoryBrand tune that&#39;s about <em>your</em> colleagues. The strengths that are yours. The anti-branding edge nobody else would have written. That&#39;s a different object. So is the rules file sitting next to it. Both will still be on your disk next week. Both are reusable on the next personal-shaped task someone asks you to do. They&#39;re yours.</p>
 <p>Two beats worth naming, because the mechanism you just used is older than AI.</p>
 <p><strong>You act on the future to know what&#39;s real.</strong> Nobody knows where agents are going. Not Anthropic, not your board, not the people running this training. What&#39;s known: the people who&#39;ll figure it out first are the ones running the experiment. Reading a McKinsey report on the agentic enterprise is not the same category of activity as what you just did. One produces opinions about a future. The other produces muscle memory for it. Guess which one transfers.</p>
 <p><strong>Mental models only come from doing.</strong> Before today, you had a vocabulary. Now you have a little piece of felt experience. Those are different goods. A vocabulary is cheap; a felt model is the thing a custodian uses to make a judgement call at 4pm on a Tuesday when the rollout question lands in their inbox. Nobody can give you a felt model. You can only catch one by reaching for it.</p>
-<p>Whatever comes next, the rest of the rollout, Agents 101 for the builder leaders, your own daily work, is more of this. More reaching, more watching, more adjusting, more rules that make the next run start smarter. Don&#39;t expect a lecture to replace the doing. There isn&#39;t one.</p>
+<p>Whatever comes next, the rest of the rollout, Agents 101 for the builder leaders, your own daily work, is more of this. More reaching, more watching, more adjusting, more rules that make the next session start smarter. Don&#39;t expect a lecture to replace the doing. There isn&#39;t one.</p>
 <p>Now: five minutes with Claude. The debrief.</p>
 </section>
 
@@ -3591,8 +3656,8 @@ Let&#39;s focus on:
 
 </section>
 </main>
-<footer class="curriculum-footer"><p><strong>&copy; 2026 Bosser Oy.</strong> All rights reserved. Agents 102 is proprietary training material. As an enrolled student you have a personal usage license &mdash; you may learn from this, run the exercises, own what you build, and apply it at your own workplace. You may not redistribute the curriculum files, teach the material as your own, or use it to build a competing training. See the <a href="https://github.com/anttitevanlinna/agents-102/blob/main/COPYRIGHT.md">full license terms</a> &middot; <a href="https://bosser.consulting">bosser.consulting</a></p></footer>
-<div class="copyright-badge"><a href="https://github.com/anttitevanlinna/agents-102/blob/main/COPYRIGHT.md" title="Agents 102 is proprietary training material — full license terms">&copy; Bosser 2026</a></div>
+<footer class="curriculum-footer"><p><strong>&copy; 2026 Bosser Oy.</strong> All rights reserved. Agents 102 is proprietary training material. As an enrolled student you have a personal usage license &mdash; you may learn from this, run the exercises, own what you build, and apply it at your own workplace. You may not redistribute the curriculum files, teach the material as your own, or use it to build a competing training. See the <a href="https://github.com/anttitevanlinna/agents-102/blob/main/COPYRIGHT.md" target="_blank" rel="noopener">full license terms</a> &middot; <a href="https://bosser.consulting" target="_blank" rel="noopener">bosser.consulting</a></p></footer>
+<div class="copyright-badge"><a href="https://github.com/anttitevanlinna/agents-102/blob/main/COPYRIGHT.md" title="Agents 102 is proprietary training material — full license terms" target="_blank" rel="noopener">&copy; Bosser 2026</a></div>
 
 <script>// Shared curriculum runtime — single source of truth for both the SPA
 // (curriculum.html) and the single-page workbook (scripts/build-workbook.js).
@@ -3623,13 +3688,14 @@ Let&#39;s focus on:
                 { slug: 'building-agent-systems', title: 'Building Agent Systems' },
                 { slug: 'multi-agent-systems',    title: 'Multi-Agent Systems' },
                 { slug: 'security',               title: 'Security' },
-                { slug: 'output-quality',         title: 'Output Quality and Hallucination Control' },
+                { slug: 'output-quality',         title: 'Grounded Output' },
                 { slug: 'evaluations',            title: 'Evaluations' },
                 { slug: 'personal-to-team',       title: 'From Personal to Team' },
                 { slug: 'agents-building-agents', title: 'Agents Building Agents (The Flywheel)' }
             ],
             supplementaries: [
                 { slug: 'what-is-an-agent',                      title: 'What is an Agent' },
+                { slug: 'agent-trigger-list',                    title: 'Agent Trigger List' },
                 { slug: 'building-guardrails',                   title: 'Building Guardrails (and Skills)' },
                 { slug: 'learning-and-compounding-systems',      title: 'Learning and Compounding Systems' },
                 { slug: 'cookbook-for-agent-system-design',      title: 'Cookbook for Agent System Design' }
@@ -3655,12 +3721,11 @@ Let&#39;s focus on:
             // long-read index and the composed Slides deck follow this array order.
             supplementaries: [
                 { slug: 'build-a-project-from-zero',  title: 'No repo to bring? Build one' },        // Prework
+                { slug: 'agentic-engineering-progression', title: 'The agentic engineering progression' }, // M1
                 { slug: 'the-lethal-trifecta',        title: 'The lethal trifecta' },                // M3
-                { slug: 'what-is-agentic-engineering', title: 'What is agentic engineering' },       // M3
-                { slug: 'token-efficiency',           title: 'Token efficiency: the craft and the folklore' }, // M3
-                { slug: 'clean-code-is-steering',     title: 'Clean Code Is Steering: Insights from Uncle Bob' }, // M4→M5
+                { slug: 'the-context-ceiling',        title: 'The context ceiling and token efficiency: the craft and the folklore' }, // M2→M3
+                { slug: 'clean-code-is-steering',     title: 'Clean Code Is Steering: Reading Uncle Bob\'s Agent Experiments' }, // M4→M5
                 { slug: 'verification-asymmetry',     title: 'Verification asymmetry' },             // M4→M5
-                { slug: 'backpressure',               title: 'Backpressure' },                       // M5→M6
                 { slug: 'workflow-composition-lineages', title: 'Workflow composition lineages' },   // M6
                 { slug: 'skill-stacking',             title: "Dino's skill stacking system" },       // M6
                 { slug: 'how-the-best-do-ci-cd',      title: 'How the best do CI/CD at agent scale' } // M6
@@ -3709,6 +3774,13 @@ Let&#39;s focus on:
         //
         // Build student-facing:
         // node scripts/build-workbook.js northwind agentic-engineering-101-northwind --no-trainer-docs
+        //
+        // Drop the flag to also build the trainer handbook. It trims itself to the
+        // module list below — M3 and M6 tabs gone, and the six-module two-day
+        // schedule replaced by the one-module-per-sitting line — so the cut's
+        // trainers read only delivery that happens in their rooms. The M3 security
+        // spoiler that keeps the flag on for other cuts cannot leak here: this cut
+        // drops M3, so the tab carrying it is not built.
         'agentic-engineering-101-northwind': {
             contentKey: 'agentic-engineering-101',
             // No content tarball. Its only hard consumers were the two M3
@@ -3759,8 +3831,8 @@ Let&#39;s focus on:
         'Agents 102 is proprietary training material. As an enrolled student you have a personal usage license &mdash; ' +
         'you may learn from this, run the exercises, own what you build, and apply it at your own workplace. ' +
         'You may not redistribute the curriculum files, teach the material as your own, or use it to build a competing training. ' +
-        'See the <a href="https://github.com/anttitevanlinna/agents-102/blob/main/COPYRIGHT.md">full license terms</a> ' +
-        '&middot; <a href="https://bosser.consulting">bosser.consulting</a>' +
+        'See the <a href="https://github.com/anttitevanlinna/agents-102/blob/main/COPYRIGHT.md" target="_blank" rel="noopener">full license terms</a> ' +
+        '&middot; <a href="https://bosser.consulting" target="_blank" rel="noopener">bosser.consulting</a>' +
         '</p>';
 
     function renderFooter() {
@@ -3774,7 +3846,7 @@ Let&#39;s focus on:
 
     function renderCopyrightBadge() {
         return '<div class="copyright-badge">' +
-            '<a href="https://github.com/anttitevanlinna/agents-102/blob/main/COPYRIGHT.md" title="Agents 102 is proprietary training material — full license terms">' +
+            '<a href="https://github.com/anttitevanlinna/agents-102/blob/main/COPYRIGHT.md" title="Agents 102 is proprietary training material — full license terms" target="_blank" rel="noopener">' +
             COPYRIGHT_MARK + '</a></div>';
     }
 
@@ -3850,6 +3922,36 @@ Let&#39;s focus on:
     // order-independent. Every tool that scans `{{prompt:` as a reference treats
     // `{{cut:}}` as an equivalent reference (a cut candidate is still "used").
     var PROMPT_CUT_RE = /^\{\{cut:([a-z0-9-]+)(?:\|([a-z0-9-]+))?\}\}[ \t]*$/gm;
+
+    // Figure-include marker: `{{figure:<key>}}` on its own line, expanded by
+    // expandFigures() at the start of the markdown pipeline (before marked).
+    // Source of truth lives in curriculum/figures/<key>.md — a blank-line-free
+    // `<figure class="diagram">…</figure>` raw-HTML block; the SPA reads the
+    // compiled site/figures.json registry, the build script reads source files
+    // directly (scripts/compile-figures.js). One drawing, many slides: a
+    // figure two lectures re-show (the map, the frontier 2x2) is authored
+    // once and referenced from each. Marker MUST be alone on a line so the
+    // expansion lands as a block-level raw-HTML run.
+    var FIGURE_INCLUDE_RE = /^\{\{figure:([a-z0-9-]+)\}\}[ \t]*$/gm;
+
+    // Runtime-map marker: `{{runtime-map:<module-slug>}}` on its own line,
+    // expanded by expandTimings(). Sibling of `{{prompt:}}` — same alone-on-a-line
+    // rule, same strict-mode throw on an unresolved key — but the block it emits
+    // is COMPUTED, not looked up in a registry of authored text.
+    //
+    // Every duration in the emitted table comes from the leaf that owns it (an
+    // exercise or lecture file's `**Time:**` line) plus the module's own
+    // `**Transitions:**` line; the elapsed and clock columns are running sums.
+    // Nothing is stored, so nothing can drift — the failure this replaces was a
+    // hand-maintained table whose three columns had to be re-added by hand on
+    // every edit, and which collapsed one range two different ways in one row.
+    //
+    // Trainer-only by design: trainer-modules.md is on the content tarball's
+    // exclusion list, so this marker never reaches a student. A module file that
+    // ships WOULD carry the marker raw (the tarball copies .md bytes and there is
+    // no timings registry shipping alongside the way curriculum/prompts/ does),
+    // so keep runtime-map markers out of shipped files until that path exists.
+    var RUNTIME_MAP_RE = /^\{\{runtime-map:([a-z0-9-]+)\}\}[ \t]*$/gm;
 
     // Covered-region markers: `{{covered:<slug>#<anchor>}}` … `{{/covered}}`,
     // each alone on its own line with blank lines around them. Sibling of
@@ -4001,6 +4103,14 @@ Let&#39;s focus on:
                 heading: function (text, level) {
                     var id = slugifyHeading(text);
                     return '<h' + level + ' id="' + id + '">' + text + '</h' + level + '>\n';
+                },
+                link: function (href, title, text) {
+                    var titleAttr = title ? ' title="' + esc(title) + '"' : '';
+                    var newTab = /^https?:\/\//i.test(href) ||
+                        /^#(?:supplementary|reference)-/.test(href) ||
+                        /^curriculum\.html\?file=trainings\/[a-z0-9-]+\/(?:supplementary|reference)\//.test(href);
+                    var targetAttr = newTab ? ' target="_blank" rel="noopener"' : '';
+                    return '<a href="' + esc(href) + '"' + titleAttr + targetAttr + '>' + text + '</a>';
                 }
             }
         });
@@ -4179,6 +4289,36 @@ Let&#39;s focus on:
         return label + '\n\n' + fence;
     }
 
+    // Replace every `{{runtime-map:<module-slug>}}` line with that module's
+    // computed runtime map.
+    //
+    // `maps` is an object: module-slug -> already-rendered markdown. This module
+    // is fs-free (it is shared with the browser SPA), so the CALLER computes and
+    // passes the maps in — the same contract expandPrompts uses for its registry.
+    // scripts/calculate-time.js owns the arithmetic; there is exactly one
+    // implementation and the CLI and the build both call it.
+    //
+    // Strict mode throws on an unknown slug so a typo fails the build rather than
+    // shipping a trainer handbook with a literal `{{runtime-map:foo}}` in it.
+    function expandTimings(md, maps, opts) {
+        if (!md || !maps) return md;
+        var unresolved = [];
+        var out = md.replace(RUNTIME_MAP_RE, function (match, slug) {
+            if (!Object.prototype.hasOwnProperty.call(maps, slug)) {
+                unresolved.push(slug);
+                return match;
+            }
+            return maps[slug];
+        });
+        if (opts && opts.strict && unresolved.length) {
+            throw new Error(
+                'expandTimings: unresolved {{runtime-map:<slug>}} marker(s): ' +
+                unresolved.map(function (k) { return '{{runtime-map:' + k + '}}'; }).join(', ')
+            );
+        }
+        return out;
+    }
+
     // Replace every `{{prompt:<key>}}` line in `md` with the canonical block
     // shape, looking each key up in `registry` (object: key -> entry).
     //
@@ -4240,6 +4380,49 @@ Let&#39;s focus on:
             );
         }
         return out;
+    }
+
+    // Replace every `{{figure:<key>}}` line in `md` with the registry's
+    // figure block. Same contract as expandPrompts: permissive by default
+    // (unknown keys pass through as visible literal text), strict mode throws
+    // with every unresolved key so the build fails instead of shipping a
+    // missing drawing.
+    function expandFigures(md, registry, opts) {
+        if (!md || !registry) return md;
+        var unresolved = [];
+        var out = md.replace(FIGURE_INCLUDE_RE, function (match, key) {
+            var block = registry[key];
+            if (!block) {
+                unresolved.push(key);
+                return match;
+            }
+            return block;
+        });
+        if (opts && opts.strict && unresolved.length) {
+            throw new Error(
+                'expandFigures: unresolved {{figure:<key>}} marker(s): ' +
+                unresolved.map(function (k) { return '{{figure:' + k + '}}'; }).join(', ')
+            );
+        }
+        return out;
+    }
+
+    // Slide-tier marker: `<!--tier:N-->` (N = 1|2|3) on its own line, directly
+    // under the `##` heading it grades. Trainer-facing skip guidance:
+    //   1 = core (an exercise depends on it; the default when untagged)
+    //   2 = recognition (names what the room just did; skip costs naming)
+    //   3 = story / extra theory (skip freely)
+    // Expanded here into an inert hidden block so it survives marked() and
+    // cloneNode(); the Slides layout reads it and renders a small corner token.
+    // Long-read renders nothing (hidden block element). Untagged slides carry
+    // no token — absence means core.
+    var TIER_MARKER_RE = /^<!--tier:([123])-->[ \t]*$/gm;
+
+    function expandTiers(md) {
+        if (!md || md.indexOf('<!--tier:') === -1) return md;
+        return md.replace(TIER_MARKER_RE, function (m, n) {
+            return '<div class="slide-tier" data-tier="' + n + '" hidden></div>';
+        });
     }
 
     function extractParent(md) {
@@ -4777,7 +4960,7 @@ Let&#39;s focus on:
     // Supplementary / reference rows on the training index. Different shape
     // from cardHtml — flat row with kind label + title.
     function simpleRowHtml(kind, title, href) {
-        return '<li><a href="' + href + '">' +
+        return '<li><a href="' + href + '" target="_blank" rel="noopener">' +
                '<span class="supp-kind">' + esc(kind) + '</span>' +
                '<span class="supp-title">' + esc(title) + '</span>' +
                '<span class="module-arrow">→</span>' +
@@ -4880,8 +5063,8 @@ Let&#39;s focus on:
             html += '</ol>';
         }
 
-        // Trainer guide is built and reachable by direct URL (SPA route
-        // ?file=trainer-guide; workbook sibling trainer-guide.html). Not
+        // The trainer handbook is built and reachable by direct URL (SPA route
+        // ?file=trainer-modules; workbook sibling trainer-modules.html). Not
         // surfaced from the student-facing index — trainers know the URL.
 
         return html;
@@ -4926,7 +5109,12 @@ Let&#39;s focus on:
         applyContentFlags: applyContentFlags,
         renderPromptBlock: renderPromptBlock,
         expandPrompts: expandPrompts,
+        expandFigures: expandFigures,
+        expandTiers: expandTiers,
         PROMPT_INCLUDE_RE: PROMPT_INCLUDE_RE,
+        FIGURE_INCLUDE_RE: FIGURE_INCLUDE_RE,
+        RUNTIME_MAP_RE: RUNTIME_MAP_RE,
+        expandTimings: expandTimings,
         extractParent: extractParent,
         extractBigIdea: extractBigIdea,
         escapeTildes: escapeTildes,
@@ -5048,6 +5236,16 @@ Let&#39;s focus on:
     });
   }
 
+  // ── slide tiers ───────────────────────────────────────────────────────────
+  // `<!--tier:N-->` markers in the markdown arrive as hidden `.slide-tier`
+  // blocks (curriculum.js expandTiers). Deck-only chrome: a small corner token
+  // telling the trainer how skippable the slide is. Untagged slides = core.
+  var TIER_INFO = {
+    '1': 'Core — the work ahead depends on this slide',
+    '2': 'Recognition — names what the room already did; skippable under time pressure',
+    '3': 'Story / extra theory — skip freely'
+  };
+
   // ── slide construction ────────────────────────────────────────────────────
   function slideSection(cls, dark) {
     var sec = el('section', 'slide' + (cls ? ' ' + cls : '') + (dark ? ' theme-dark' : ''));
@@ -5136,10 +5334,24 @@ Let&#39;s focus on:
       sec.appendChild(body);
       if (body.querySelector('.diagram, svg, img')) sec.classList.add('slide--diagram');
       if (body.querySelector('.diagram, svg, table, pre')) sec.classList.add('slide--wide');
+      // Absent marker means core, so the model says so out loud: tier is always
+      // '1'|'2'|'3', never null. An untagged slide used to be a silent third
+      // state, which is exactly what a filter and a lint cannot reason about.
+      // `tierTagged` keeps the chrome honest — only an author's own marker
+      // earns a badge, or 450 core slides would each wear a "T1".
+      var tier = '1', tagged = false, tm = body.querySelector('.slide-tier[data-tier]');
+      if (tm && !g.isCover) {
+        tier = tm.getAttribute('data-tier');
+        tagged = true;
+        sec.setAttribute('data-tier', tier);
+        var badge = el('span', 'slide__tier slide__tier--' + tier, { title: TIER_INFO[tier] || '' });
+        badge.textContent = 'T' + tier;
+        sec.appendChild(badge);
+      }
       var title;
       if (g.isCover) title = docTitle || o.title || 'Cover';
       else { var hh = body.querySelector('h2'); title = hh ? textOf(hh) : 'Slide'; }
-      out.push({ el: sec, title: title, navLabel: title, isCover: g.isCover, isDivider: false });
+      out.push({ el: sec, title: title, navLabel: title, isCover: g.isCover, isDivider: false, tier: tier, tierTagged: tagged });
     });
     return { slides: out, title: docTitle };
   }
@@ -5167,11 +5379,23 @@ Let&#39;s focus on:
     return (k && textOf(k)) || 'Section';
   }
 
+  // An in-deck link (`#supplementary-the-context-ceiling`, `#5-plan-mode-at-depth`)
+  // has to resolve to a SLIDE, because the deck is not a scroll: the browser's
+  // own fragment navigation moves nothing here. First claim wins — a section
+  // divider beats a heading of the same name deeper in.
+  function claimAnchor(map, id, index) {
+    if (id && !(id in map)) map[id] = index;
+  }
+
   // Decide the deck model from whatever container we're handed.
   function buildDeckModel(root, opts) {
     opts = opts || {};
     var phases = root.querySelectorAll('.phase--lecture, .phase--exercise');
-    var slides, title = opts.title || '';
+    // Null-prototype, not `{}`: an anchor map that inherits from Object.prototype
+    // answers `#constructor` and `#__proto__` with a function and an object, and
+    // both survive the `n == null` guard at the click handler. It also refuses to
+    // claim a real heading of that name, since `id in map` is already true.
+    var slides, title = opts.title || '', anchors = Object.create(null);
 
     if (!phases.length) {
       // single doc
@@ -5201,6 +5425,11 @@ Let&#39;s focus on:
       Array.prototype.forEach.call(sections, function (moduleEl) {
         var innerPhases = moduleEl.querySelectorAll('.phase--lecture, .phase--exercise');
         var start = slides.length, code;
+        // The section's own id is the target of every cross-doc link into it
+        // (`#prework`, `#supplementary-the-context-ceiling`, `#getting-going`).
+        // It lives on the wrapper, which does NOT survive into the deck — only
+        // its children do — so claim it for the divider slide about to open.
+        claimAnchor(anchors, moduleEl.id, slides.length);
         if (innerPhases.length) {
           var heroNum = moduleEl.querySelector('.module-hero-num');
           var mNo = heroNum ? parseInt(heroNum.textContent, 10) : NaN;
@@ -5226,6 +5455,9 @@ Let&#39;s focus on:
             if (child.classList && (child.classList.contains('phase--lecture') || child.classList.contains('phase--exercise'))) {
               flushProse();
               var isEx = child.classList.contains('phase--exercise');
+              // same wrapper problem as the section: `#lectures-reading-the-return`
+              // is the include target, and the wrapper is dropped on the way in
+              claimAnchor(anchors, child.id, slides.length);
               // the first (cover) slide of each doc reads as a section title in the rail
               buildSingleDoc(child, { dark: isEx }).slides.forEach(function (s) { slides.push(s); });
             } else if (child.classList && child.classList.contains('module-hero')) {
@@ -5257,6 +5489,55 @@ Let&#39;s focus on:
       title = title || 'Handbook';
     }
 
+    // ── the barebones filter ─────────────────────────────────────────────────
+    // `opts.maxTier` caps how much theory the deck carries: 3 (default) is the
+    // full deck, 1 is barebones — every Recognition (T2) and Story (T3) slide
+    // dropped, leaving the spine the work depends on. Structure is not content:
+    // dividers and doc covers always survive, or a filtered module would lose
+    // its own title.
+    //
+    // Runs here, after both build branches and before indices are stamped, so
+    // one pass fixes everything downstream. `srcIndex` is the slide's position
+    // in the unfiltered deck — the only stable handle across a rebuild, which
+    // is how the toggle keeps the trainer's place mid-session.
+    var total = slides.length;
+    // Claim heading anchors BEFORE the filter, not after: a link into a slide
+    // the filter is about to drop still needs an entry in the map, or it falls
+    // through to the browser, which has nothing to scroll and does nothing.
+    // Claimed here it gets remapped to the nearest survivor like any other.
+    slides.forEach(function (s, k) {
+      s.srcIndex = k;
+      Array.prototype.forEach.call(s.el.querySelectorAll('[id]'), function (n) { claimAnchor(anchors, n.id, k); });
+    });
+    var maxTier = opts.maxTier == null ? 3 : +opts.maxTier;
+    if (maxTier < 3) {
+      var keep = [], remap = new Array(slides.length);
+      slides.forEach(function (s, k) {
+        var drop = !s.isDivider && !s.isCover && +(s.tier || 1) > maxTier;
+        remap[k] = drop ? -1 : keep.length;
+        if (!drop) keep.push(s);
+      });
+      // An anchor pointing at a dropped slide resolves FORWARD to the next
+      // survivor (backwards to the last one at the tail), so no in-deck link
+      // goes dead in barebones — it lands on the nearest thing still there.
+      for (var r = remap.length - 1; r >= 0; r--) {
+        if (remap[r] === -1) remap[r] = (r + 1 < remap.length ? remap[r + 1] : keep.length - 1);
+      }
+      Object.keys(anchors).forEach(function (id) {
+        var n = remap[anchors[id]];
+        anchors[id] = Math.max(0, Math.min(keep.length - 1, n == null ? 0 : n));
+      });
+      slides = keep;
+      // secNum is position within a section, so it renumbers against what
+      // survived — a barebones module counts 1,2,3, not 1,4,7.
+      var secTally = {};
+      slides.forEach(function (s) {
+        if (s.isDivider || s.isCover || !s.secCode) return;
+        secTally[s.secCode] = (secTally[s.secCode] || 0) + 1;
+        s.secNum = secTally[s.secCode];
+      });
+    }
+
     // Single-doc decks have no sections: number content slides within the doc.
     if (!slides.some(function (s) { return s.secCode; })) {
       var soloNum = 0;
@@ -5266,8 +5547,13 @@ Let&#39;s focus on:
     slides.forEach(function (s, k) {
       s.index = k; s.el.setAttribute('data-index', String(k));
       if (s.secCode) s.el.setAttribute('data-ref', (s.secCode + (s.secNum ? '.' + s.secNum : '')).toLowerCase());
+      // Heading ids DO survive into the deck (nodes are moved, not re-created),
+      // so deep links into one section of a reference land on its slide.
+      Array.prototype.forEach.call(s.el.querySelectorAll('[id]'), function (n) {
+        claimAnchor(anchors, n.id, k);
+      });
     });
-    return { slides: slides, title: title };
+    return { slides: slides, title: title, anchors: anchors, maxTier: maxTier, total: total };
   }
 
   // Re-attach copy handlers on the cloned deck (listeners don't survive cloneNode).
@@ -5314,13 +5600,26 @@ Let&#39;s focus on:
     var edgePrev = edge('prev'), edgeNext = edge('next');
     viewport.append(edgePrev, edgeNext);
     rewireCopy(viewport);
+    // Same cloning problem as the copy buttons: a workbook diagram is a data:
+    // URI, so its "Open in new tab" link carries href="#" and relies on a click
+    // handler to open a blob. cloneNode drops the handler but KEEPS the
+    // data-zoom-wired marker the long-read pass left, so a plain re-decorate
+    // no-ops and the link stays dead. Clear the marker first, then re-wire.
+    if (global.CurriculumRuntime && global.CurriculumRuntime.decorateDiagramZoom) {
+      Array.prototype.forEach.call(viewport.querySelectorAll('a.diagram__zoom[data-zoom-wired]'),
+        function (a) { a.removeAttribute('data-zoom-wired'); });
+      global.CurriculumRuntime.decorateDiagramZoom(viewport);
+    }
 
     // left hover-rail
     var rail = el('nav', 'deck__rail');
     var handle = el('div', 'deck__rail-handle'); handle.innerHTML = listIcon() + '<span>Contents</span>';
     var railHead = el('div', 'deck__rail-head');
     var railTitle = el('div', 'deck__rail-title'); railTitle.textContent = model.title || 'Contents';
-    var railMeta = el('div', 'deck__rail-meta'); railMeta.textContent = slides.length + ' slides';
+    var railMeta = el('div', 'deck__rail-meta');
+    railMeta.textContent = model.maxTier < 3
+      ? slides.length + ' of ' + model.total + ' slides'
+      : slides.length + ' slides';
     railHead.append(railTitle, railMeta);
     var railList = el('ul', 'deck__rail-list');
     var railItems = slides.map(function (s, k) {
@@ -5328,7 +5627,8 @@ Let&#39;s focus on:
       var cls = 'deck__rail-item'
         + (s.isDivider ? ' deck__rail-item--divider' : '')
         + (s.el.classList.contains('slide--module') ? ' deck__rail-item--module' : '')
-        + (s.isCover ? ' deck__rail-item--cover' : '');
+        + (s.isCover ? ' deck__rail-item--cover' : '')
+        + (s.tierTagged ? ' deck__rail-item--tier' + s.tier : '');
       var btn = el('button', cls, { 'data-index': k });
       var num = el('span', 'deck__rail-num');
       num.textContent = s.isCover ? '•'
@@ -5373,7 +5673,24 @@ Let&#39;s focus on:
     // Same short string as the long-read badge and full footer — one source
     // (CurriculumRuntime.COPYRIGHT_MARK, curriculum.js), rendered three ways.
     mark.innerHTML = (global.CurriculumRuntime && global.CurriculumRuntime.COPYRIGHT_MARK) || '&copy; Bosser 2026';
-    bar.append(title, spacer, exit, nav, mark);
+    // Barebones control. Mounted only when the host passes onMaxTier — a
+    // standalone deck with nowhere to persist the choice shows no dead switch.
+    var modeBtn = null;
+    if (opts.onMaxTier) {
+      var bare = model.maxTier < 3;
+      modeBtn = el('button', 'deck__mode' + (bare ? ' is-on' : ''), {
+        type: 'button',
+        title: bare
+          ? 'Barebones: core slides only. Click for the full deck. (B)'
+          : 'Full deck. Click for barebones \u2014 core only, no recognition or story slides. (B)'
+      });
+      modeBtn.textContent = bare ? 'Barebones' : 'Full deck';
+      modeBtn.addEventListener('click', function () { opts.onMaxTier(bare ? 3 : 1); });
+    }
+
+    bar.append(title, spacer);
+    if (modeBtn) bar.appendChild(modeBtn);
+    bar.append(exit, nav, mark);
 
     deck.append(progress, rail, viewport, bar);
     document.body.appendChild(deck);
@@ -5401,6 +5718,24 @@ Let&#39;s focus on:
       edgePrev.disabled = n === 0; edgeNext.disabled = n === slides.length - 1;
     }
 
+    // In-deck navigation. A `#fragment` link is a scroll instruction, and the
+    // deck has no scroll: the long-read anchors it points at are inside the
+    // hidden source, so the browser moves nothing and `target="_blank"` re-opens
+    // the whole deck at slide 1. Resolve the fragment to a slide and go there.
+    // Unknown fragment: leave the event alone rather than swallow it.
+    viewport.addEventListener('click', function (e) {
+      var a = e.target && e.target.closest ? e.target.closest('a[href]') : null;
+      if (!a || !viewport.contains(a)) return;
+      var href = a.getAttribute('href') || '';
+      if (href.charAt(0) !== '#') return;
+      var id = href.slice(1);
+      try { id = decodeURIComponent(id); } catch (err) { /* keep raw */ }
+      var n = model.anchors[id];
+      if (n == null) return;
+      e.preventDefault();
+      go(n);
+    });
+
     keyHandler = function (e) {
       if (e.metaKey || e.ctrlKey || e.altKey) return;
       switch (e.key) {
@@ -5409,13 +5744,25 @@ Let&#39;s focus on:
         case 'Home': e.preventDefault(); go(0); break;
         case 'End': e.preventDefault(); go(slides.length - 1); break;
         case 'o': case 'O': e.preventDefault(); togglePin(); break;
+        case 'b': case 'B': if (opts.onMaxTier) { e.preventDefault(); opts.onMaxTier(model.maxTier < 3 ? 3 : 1); } break;
         case 'Escape': if (deck.classList.contains('is-railpinned') || deck.classList.contains('is-railopen')) { pinned = false; deck.classList.remove('is-railpinned', 'is-railopen'); } else if (opts.onExit) opts.onExit(); break;
         case 'f': case 'F': if (!document.fullscreenElement) { (document.documentElement.requestFullscreen || function () {}).call(document.documentElement); } else document.exitFullscreen(); break;
         default: if (/^[0-9]$/.test(e.key)) { var t = e.key === '0' ? 9 : (+e.key - 1); if (t < slides.length) go(t); }
       }
     };
     document.addEventListener('keydown', keyHandler);
-    go(typeof opts.start === 'number' ? opts.start : 0);
+    // `startSrc` is an index into the UNFILTERED deck: after a barebones
+    // rebuild the slide you were on may be gone, so land on the first survivor
+    // at or after it rather than snapping back to the cover.
+    var startAt = 0;
+    if (typeof opts.start === 'number') startAt = opts.start;
+    else if (typeof opts.startSrc === 'number') {
+      for (var si = 0; si < slides.length; si++) {
+        if (slides[si].srcIndex >= opts.startSrc) { startAt = si; break; }
+        startAt = si;
+      }
+    }
+    go(startAt);
 
     function edge(dir) {
       var b = el('button', 'deck__edge deck__edge--' + dir, { 'aria-label': dir === 'prev' ? 'Previous' : 'Next' });
@@ -5432,7 +5779,8 @@ Let&#39;s focus on:
         document.body.classList.remove('slides-active');
         sourceEl.style.display = '';
       },
-      go: go
+      go: go,
+      srcIndex: function () { return slides[i] ? slides[i].srcIndex : 0; }
     };
   }
 
@@ -5479,14 +5827,34 @@ Let&#39;s focus on:
     var main = document.querySelector('main');
     if (!main) return;
     var KEY = 'curriculumLayout';
+    // Barebones edition: the same deck capped at tier 1 (no T2 recognition, no
+    // T3 story). Remembered per reader alongside the layout choice.
+    var TKEY = 'curriculumMaxTier';
     var mode = (function () { try { return localStorage.getItem(KEY) === 'slides' ? 'slides' : 'read'; } catch (e) { return 'read'; } })();
+    var maxTier = (function () { try { return localStorage.getItem(TKEY) === '1' ? 1 : 3; } catch (e) { return 3; } })();
     var ctl = null, toggle = null;
-    function apply() {
+    function apply(startSrc) {
       if (mode === 'slides') {
-        if (!ctl) ctl = CurriculumSlides.open(main, { title: (document.title || '').replace(/\s+—\s+.*$/, ''), onExit: function () { set('read'); } });
+        if (!ctl) ctl = CurriculumSlides.open(main, {
+          title: (document.title || '').replace(/\s+—\s+.*$/, ''),
+          maxTier: maxTier,
+          startSrc: startSrc,
+          onExit: function () { set('read'); },
+          onMaxTier: setTier
+        });
       } else if (ctl) { ctl.close(); ctl = null; }
     }
     function set(m) { mode = m; try { localStorage.setItem(KEY, m); } catch (e) {} if (toggle && toggle._paint) toggle._paint(m); apply(); }
+    // Rebuild rather than hide: the filter renumbers slides and remaps in-deck
+    // anchors, so it has to run through the model. Carry the reader's place
+    // across on the source index.
+    function setTier(t) {
+      maxTier = t;
+      try { localStorage.setItem(TKEY, String(t)); } catch (e) {}
+      var at = ctl ? ctl.srcIndex() : 0;
+      if (ctl) { ctl.close(); ctl = null; }
+      apply(at);
+    }
     var host = document.querySelector('.workbook-topnav') || document.body;
     toggle = CurriculumSlides.buildToggle(mode, set);
     toggle.classList.add('workbook-layout-toggle');

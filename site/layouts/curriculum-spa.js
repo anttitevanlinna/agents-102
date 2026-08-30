@@ -123,7 +123,12 @@
     // seeded from the stored preference — no router bookkeeping.
     // ============================================================
     var LAYOUT_KEY = 'curriculumLayout';
+    // Barebones edition: the same deck capped at tier 1 (no T2 recognition, no
+    // T3 story). Same storage shape as the layout choice, same key as the
+    // built workbook uses, so the preference travels between the two.
+    var TIER_KEY = 'curriculumMaxTier';
     var layoutMode = localStorage.getItem(LAYOUT_KEY) === 'slides' ? 'slides' : 'read';
+    var maxTier = localStorage.getItem(TIER_KEY) === '1' ? 1 : 3;
     var deckCtl = null;
     var layoutToggle = null;
     var canSlide = !!(moduleSlug || directFile); // doc/module pages only, never the index
@@ -134,19 +139,32 @@
         if (layoutToggle && layoutToggle._paint) layoutToggle._paint(mode);
         applyLayout();
     }
-    function applyLayout() {
+    function applyLayout(startSrc) {
         if (!window.CurriculumSlides || !canSlide) return;
         if (layoutMode === 'slides') {
             if (!deckCtl) {
                 deckCtl = CurriculumSlides.open(container, {
                     title: (document.title || '').replace(/\s+—\s+Agents 102$/, ''),
-                    onExit: function () { setLayout('read'); }
+                    maxTier: maxTier,
+                    startSrc: startSrc,
+                    onExit: function () { setLayout('read'); },
+                    onMaxTier: setMaxTier
                 });
             }
         } else if (deckCtl) {
             deckCtl.close();
             deckCtl = null;
         }
+    }
+    // Rebuild rather than hide: the filter renumbers slides and remaps in-deck
+    // anchors, so it has to run through the model. The reader's place carries
+    // across on the source index.
+    function setMaxTier(t) {
+        maxTier = t;
+        try { localStorage.setItem(TIER_KEY, String(t)); } catch (e) {}
+        var at = deckCtl ? deckCtl.srcIndex() : 0;
+        if (deckCtl) { deckCtl.close(); deckCtl = null; }
+        applyLayout(at);
     }
     (function mountLayoutToggle() {
         if (!canSlide || !window.CurriculumSlides) return;

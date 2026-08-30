@@ -65,6 +65,12 @@ Proven patterns for how to research effectively. Promoted from observations when
 
 Each entry: cycle number, date, what the researcher learned about researching.
 
+### Cycle 200 — 2026-08-30
+
+Tutorial proliferation is a concept-maturation signal, not a deployer-direct convergence signal — they measure different things and must not be conflated. Loop engineering in August 2026 is a textbook case: 10+ tutorial sites publishing "what is loop engineering" guides is evidence the CONCEPT is mainstream (valuable context), while the deployer-direct count remains at 4-5 practitioners from June 2026 (far below L3). For any rapidly diffusing concept, run a separate "deployer-direct" search alongside the "tutorial count" search, because the tutorial layer will always swamp the practitioner layer in search results by 10:1. The absence of new deployer-direct voices despite tutorial proliferation is itself a finding: the practice has named and framed the discipline faster than production deployments have accumulated.
+
+End-of-month final checkpoints are more definitive than mid-month checks because they resolve "promised by [month]" watch items with finality. Polaris's August-default promise was trackable from June 2, but cycles 194-199 each left room for the promise to be kept in a late-August changelog. Cycle 200's August 30 final check produces the definitive verdict — the July 31 deprecation announcement (which named September 1 replacements without naming Polaris) is more authoritative than any changelog scan alone: if Polaris were the planned replacement for deprecated models, the deprecation announcement would have named it. Using the deprecation-announcement framing ("what does the vendor say is the replacement for deprecated model X?") is a more reliable resolution method than "scan changelog for Polaris mention."
+
 ### Cycle 198 — 2026-08-28
 
 When a pricing conflict is logged between trade publications, the primary vendor documentation page is the fastest resolution — not waiting for the deadline. Cycle 197 noted "the deadline is 4 days away, let the outcome speak"; Cycle 198 fetched the page directly and found the conflict resolved in one call, with 3 days to spare. The earlier "wait for the deadline" framing was overcautious: primary vendor docs are authoritative before the deadline and should be the first query on any pricing conflict, not the fallback. For future pricing conflicts: fetch official pricing page first, secondary press second, deadline as final confirmation.

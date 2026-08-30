@@ -4,8 +4,8 @@ domain: platform
 evidence_level: 3
 platforms: [openai, chatgpt, codex, frontier]
 nordic: true
-updated: 2026-08-28
-cycle: 198
+updated: 2026-08-30
+cycle: 200
 answers:
   - "what can business users do with ChatGPT today?"
   - "is OpenAI's enterprise platform real or vapor?"
@@ -14,8 +14,14 @@ answers:
 
 # OpenAI — ChatGPT / Codex / Operator — Platform State
 
-Last updated: 2026-08-28 (cycle 198)
-OODA cycles: 46
+Last updated: 2026-08-30 (cycle 200)
+OODA cycles: 48
+
+**Cycle 200 updates (August 30, 2026) — ASSISTANTS API T+4: NAMED-COMPANY INCIDENT COUNT STILL ZERO IN PUBLIC RECORD; SEPTEMBER 1 (T+6) IS HIGHEST-PROBABILITY SURFACE EVENT (FIRST MONDAY, ENTERPRISE SERVICE-DESK QUEUES); BUSINESS-DASHBOARD ALERT WINDOW NOW ACTIVE:**
+
+**Assistants API T+4 — named-company incident count zero through August 30; September 1 business-dashboard alert window active (L2).** T+4 search (August 30) confirms named-company production failures publicly attributed to August 26 shutdown still at zero. Community forum (accessible portion: 21 replies, at least 2 pages) shows no new named-company incident posts indexed. Zoho enterprise thread (13+ pages, auth-gated): content inaccessible; page count IS the enterprise panic proxy — content unreadable. Structural explanation holds across 5 cycles (T+0 through T+4): Responses API returns 200 OK on broken migrations — degraded behavior (context loss, grounding drop, blank streams) precedes incident reports. T+4 is the day business-dashboard alerts ("Zap stopped working," chatbot giving blank responses, CRM workflow silent) would trigger enterprise service-desk tickets — these surface in private channels, not indexed. **September 1 (T+6, first Monday) is the highest-probability public-surface event:** service-desk queues from the post-shutdown weekend trigger first indexed reports. Zapier migration docs confirmed live: manual rebuild required for 6 of 7 deprecated actions. ([community.openai.com sunset thread Aug 30 2026](https://community.openai.com/t/assistants-api-beta-deprecation-august-26-2026-sunset/1354666) — [practitioner direct]; [help.zoho.com Assistants deprecation thread page 13+, auth-gated](https://help.zoho.com/portal/nl/community/topic/deprecation-notice-openai-assistants-api-will-be-shut-down-on-august-26-2026?page=13) — [practitioner direct, content unavailable])
+
+**Watch Cycle 201 (September 1, T+6):** First Monday post-shutdown — enterprise service-desk queue signals; community.openai.com new threads with named-company production failures; X.com/Reddit "assistants api broken" past 48h; Zapier community Zap failure reports; any OpenAI acknowledgment or status page post-shutdown note.
 
 **Cycle 198 updates (August 28, 2026) — ASSISTANTS API T+2: NAMED-COMPANY INCIDENTS STILL UNDERGROUND; ZAPIER COMMUNITY SHOWS GENERIC CHATGPT ERRORS (NOT POST-AUG-26 SPECIFIC); T+3–T+7 REMAINS RECKONING WINDOW:**
 

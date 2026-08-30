@@ -67,8 +67,8 @@ Three to five lines, plain language, the things you would not want a generic pol
 
 **Source verification:**
 - `[checked:2026-08-23 result:OK due:cohort]` https://code.claude.com/docs/en/skills — [vendor docs, capability] personal skill path, supporting-file shape, automatic discovery, and direct invocation. fallback: use the documentation index at https://code.claude.com/docs/llms.txt to locate the current Skills page.
-- `[checked:2026-08-23 result:OK due:2027-02-23]` https://genai.owasp.org/llmrisk/llm01-prompt-injection/ — [technical standard] direct and indirect prompt injection definitions plus scope/filter/gate/review mitigation families. fallback: use the current OWASP GenAI prompt-injection entry.
-- `[checked:2026-08-23 result:OK due:2027-02-23]` https://genai.owasp.org/2025/12/09/owasp-top-10-for-agentic-applications-the-benchmark-for-agentic-security-in-the-age-of-autonomous-ai/ — [technical standard] agent-specific risk layering, including goal hijack, tool misuse, identity/privilege abuse, and supply-chain vulnerabilities. fallback: use OWASP's current Agentic Applications Top 10 index.
+- `[checked:2026-08-23 result:OK due:2024-10-10]` https://genai.owasp.org/llmrisk/llm01-prompt-injection/ — [technical standard] direct and indirect prompt injection definitions plus scope/filter/gate/review mitigation families. fallback: use the current OWASP GenAI prompt-injection entry.
+- `[checked:2026-08-23 result:OK due:2026-06-10]` https://genai.owasp.org/2025/12/09/owasp-top-10-for-agentic-applications-the-benchmark-for-agentic-security-in-the-age-of-autonomous-ai/ — [technical standard] agent-specific risk layering, including goal hijack, tool misuse, identity/privilege abuse, and supply-chain vulnerabilities. fallback: use OWASP's current Agentic Applications Top 10 index.
 
 **Runtime rehearsal:** per-runtime authoring/install and loaded-skill cues remain a pre-delivery dry-run owned by the Agents 101 punchlist and M4 run sheet. Do not infer a Cowork click-path from the Claude Code docs.
 

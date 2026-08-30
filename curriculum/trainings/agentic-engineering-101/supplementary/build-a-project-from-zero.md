@@ -20,7 +20,7 @@ You'll build a small Lemmings game in the browser (the 1991 classic: little crea
 
 ## Where the four task sizes come from
 
-Same sizes as the [prework](../prework.md), now sourced from the game's own backlog:
+Same sizes as the prework, now sourced from the game's own backlog:
 
 - **Trivial bug:** a rendering glitch, a lemming clipping through a wall, an off-by-one in the survivor count.
 - **Small multi-file task:** a new ability like a digger or a blocker that touches input, the game loop, and rendering.

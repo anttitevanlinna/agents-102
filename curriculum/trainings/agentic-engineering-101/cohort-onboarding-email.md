@@ -20,9 +20,9 @@ Looking forward to it.
 
 <!-- maintainer -->
 
-**2026-08-12 (collapsed to a link):** this email used to restate the setup work inline as four sections (license, Claude Code install, repo, network), duplicating what prework covers. It is now a welcome and a link. Restating any prework content here re-opens the drift.
+**Body scope (2026-08-12):** a welcome and a link, nothing else. Restating any prework content here re-opens the drift.
 
-**Not carried anywhere yet:** the license-activation and network/proxy checks lived only in this email's old body and now live nowhere. Decide whether prework should carry them before the next cohort, or whether the sponsor conversation covers licensing and the network check is redundant once the student opens a session.
+**License and network checks are owed nowhere:** licensing is settled in the sponsor conversation, and a blocked network fails loudly the moment the student opens a session. The call is recorded in prework.md's maintainer block (Antti 2026-08-13). Do not re-add either check here.
 
 **Quality:** compendium-audited 2026-08-29 (writing@4a722813 behavior@1c765f2) — body rewritten 2026-08-12, re-audit owed before ship.
 - judges @4a722813: writing PASS, story grandfathered, technical grandfathered, behavior PASS, pedagogy grandfathered, strategy grandfathered, slides N/A (not slide-rendered — email template)

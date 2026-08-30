@@ -28,7 +28,7 @@
 - Don't gloss "agents building agents." The phrase lands by being short.
 - Pairs with M1's opener: same two questions, second time. The recurrence carries.
 
-**Carve-out — first-person-plural "we":** room-collective at capstone module open. Sibling of Agents 101 M8 `joint-double-diamond.md` precedent (`check_writing.md` rule 6 carve-out). *We* here means the room (trainer + cohort) at the arc-close — not the training authors. Future writing-judges should not re-flag.
+**No we-voiced arrival line in body (2026-08-29, Antti-directed):** bullet 1 opens on "The agent is building the agentic loop now" — the recap is shown, not asserted. Do not re-add "We have come a long way" or any room-collective progress line; the mood target below is a trainer note, not a line to read out.
 
 <!-- backing -->
 

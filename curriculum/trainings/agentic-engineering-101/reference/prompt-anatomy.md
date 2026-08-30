@@ -366,7 +366,7 @@ Example: `three-minds-one-synthesis-1`, `three-retrievers-one-curator-1`, `self-
 
 ---
 
-A well-shaped prompt has three moves doing the heavy lifting and a handful of others quietly. Each pattern named on the preceding slides is one of those load-bearing trios. The decoration around them changes per prompt, but the trio is what makes the prompt work. Recognise the trio and the rest reads itself.
+A well-shaped prompt has three moves doing the heavy lifting and a handful of others quietly. Each pattern named in the preceding sections is one of those load-bearing trios. The decoration around them changes per prompt, but the trio is what makes the prompt work. Recognise the trio and the rest reads itself.
 
 <!-- maintainer -->
 

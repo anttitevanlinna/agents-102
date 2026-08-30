@@ -8,7 +8,7 @@
 
 ## An LLM can't reliably tell instructions from data
 
-- An LLM cannot reliably tell instructions from data. Everything in the context window is one stream of tokens; no privileged channel marks which part came from you. Whatever the agent reads can shape what the agent does next.
+- Everything in the context window is one stream of tokens; no privileged channel marks which part came from you. Whatever the agent reads can shape what the agent does next.
 - So every source the agent reads is a potential instruction channel. A web page, an issue comment, a README inside a dependency, a pasted log. Reading it and obeying it are not cleanly separable operations.
 - The attacker needs no account and no CVE. They need a sentence, placed where the agent will read it. That sentence is the whole exploit chain. The field calls this move **prompt injection**: instructions that arrive through content the agent reads, not from the person steering it.
 

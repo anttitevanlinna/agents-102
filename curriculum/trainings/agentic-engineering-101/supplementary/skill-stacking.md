@@ -8,7 +8,7 @@ How Dino's Claude Code skills compose. Personal skills live in `~/.claude/skills
 
 ## TL;DR
 
-Skills are single-purpose named procedures. Composition mechanisms stitch them into workflows: **explicit load**, **orchestrator sequencing** (`/ship`), **routing dispatch** (CLAUDE.md predicates), and **hand-off pipelines**. The system has a clear shape: read-only analysis clusters at the front of the lifecycle, mutating skills cluster in the middle, ops loops back to build. `/ship` is the spine: it absorbs the closing commands of every workflow (`/cp`, `/release-notes`, `/multi-agent-review`, `/ci`) into one user-typed verb.
+Skills are single-purpose named procedures. Composition mechanisms stitch them into workflows: **explicit load**, **orchestrator sequencing** (`/ship`), **routing dispatch** (the project's CLAUDE.md predicates), and **hand-off pipelines**. The system has a clear shape: read-only analysis clusters at the front of the lifecycle, mutating skills cluster in the middle, ops loops back to build. `/ship` is the spine: it absorbs the closing commands of every workflow (`/cp`, `/release-notes`, `/multi-agent-review`, `/ci`) into one user-typed verb.
 
 ---
 
@@ -107,7 +107,7 @@ The workflow archetypes: all but one funnel into `/ship`.
 | **B · Dashboard edit** | open file → `/ui` (routed) → `/ship` | `/ui` injects positionally when the file opens. |
 | **C · Multi-tenant integration** | `/new-branch` → `/multi-tenant-security` (routed) → `/access-control-analysis` → `/stride` → `/ship` | Three injection mechanisms in one flow. |
 | **D · Browser QA standalone** | `/docker-dev start` → `/qa` (→ chains `/chrome-fast`) → report | Doesn't ship. |
-| **E · Front-loaded design** | `/plan-mega-review` → `/walk-plan` → `/grill-me` → drops into A | Three postures on the same artifact. |
+| **E · Front-loaded design** | `/plan-mega-review` → `/walk-plan` → `/grill-me` → drops into A | Different postures on the same artifact. |
 | **F · Ops triage** | `/bug-triage` → prompt user → tickets → eventually trigger A | The loop-back from OPS to BUILD. |
 
 ---

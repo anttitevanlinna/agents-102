@@ -26,7 +26,7 @@ The pattern named in their own write-up: specialized agents beat monolithic prom
 
 **Try this Monday.** On your next non-trivial PR, ask Claude to review it four times under four hats: *"as the security reviewer, what would you flag? as the perf reviewer? architecture? style?"* Read the four outputs side by side. Notice which hat caught what. That's a panel.
 
-## 3. Tier by blast radius. Make the Tier-1 case on your own PRs
+## 3. Tier by blast radius
 
 Not all PRs deserve the same gate. A CSS tweak and an auth change want different review surfaces. Tiered gating sorts PRs by what could go wrong, not by who wrote them. Once the lowest-risk tier is clean enough that agent-drafted, verifier-green changes ride through with no human reading, the median cycle time falls for the whole team.
 
@@ -86,17 +86,21 @@ The loop at your desk is the one this training closed:<!--flag:module:spot-gaps-
 
 Pick one move. Run it this week.
 
-## Sources
-
-In order of appearance:
+## Sources: moves 1 and 2
 
 - Kieran Klaassen, [*Compound Engineering: The Definitive Guide*](https://every.to/source-code/compound-engineering-the-definitive-guide)
 - Cursor, [*Bugbot now self-improves with learned rules*](https://cursor.com/blog/bugbot-learning)
 - Cloudflare engineering, [*Code review with our internal AI engineering stack*](https://blog.cloudflare.com/ai-code-review/)
+
+## Sources: moves 3 and 4
+
 - Darragh Curran, [*2x: nine months later*](https://ideas.fin.ai/p/2x-nine-months-later)
 - Alistair Gray, [*Minions: Stripe's one-shot, end-to-end coding agents*](https://stripe.dev/blog/minions-stripes-one-shot-end-to-end-coding-agents)
 - Hamel Husain, [*Evals FAQ: Guardrails vs Evaluators*](https://hamel.dev/blog/posts/evals-faq/whats-the-difference-between-guardrails-evaluators.html)
 - Anup Jadhav on Boris Cherny, [*35 Claude Code Tips From the Guy Who Built It*](https://www.anup.io/35-claude-code-tips-from-the-guy-who-built-it/)
+
+## Sources: moves 5 and 6
+
 - Ofer Shapira, [*The Self-Learning Code Review*](https://medium.com/elementor-engineers/the-self-learning-code-review-teaching-ai-cursor-to-learn-from-human-feedback-454df64c98cc)
 - Will Larson, [*Learning from Every's Compound Engineering*](https://lethain.com/everyinc-compound-engineering/)
 - Simon Taylor, [*Ramp Cracked Enterprise AI. Here's The Playbook*](https://www.fintechbrainfood.com/p/ramp-cracked-ai)
@@ -127,7 +131,7 @@ Claims
 - `cherny-quality-multiple` · detail · "the one that 2-3x's the quality of the final result" ← cherny-via-jadhav
 - `shapira-self-learning-review` · detail · "grabs human review comments, hands them to a Cursor CLI agent, extracts patterns, and commits the rules file back to master" ← shapira-elementor
 - `larson-on-compound-engineering` · detail · "by future iterations of the plan pattern" ← larson-compound
-- `tier-by-blast-radius` · vision · "Tier by blast radius. Make the Tier-1 case on your own PRs" ← none-owed
+- `tier-by-blast-radius` · vision · "Tier by blast radius" ← none-owed
 - `get-out-fast-learn-safely` · vision · "Time how long it takes to revert a bad merge in your repo, end to end." ← none-owed
 
 Sources
@@ -165,9 +169,7 @@ OODA
 <!-- /backing -->
 **Org-diversity check:** 12 cites across 11 organisations. Anthropic appears twice (Cherny M4 secondary, Wolff M6 secondary) — accepted because the two practitioners are distinct individuals making distinct claims about different layers of the loop. Attribution cap per `check_writing.md` rule 11 is per-practitioner; both Cherny and Wolff are one-mention each.
 
-**Vendor-venue cites flagged in body as "<org>'s own numbers":** Cursor (M1), Cloudflare (M2), Intercom (M3), Stripe (M3), Ramp (M5). Per `memory/compounded/2026-05-14-research_claims-vendor-venue-practitioner-byline.md`, operational facts are evidence and self-reported metrics are flagged. **Edge case — Cursor Bugbot:** critical-review pass flagged this as borderline `[vendor press release]` (Level 0) under strict reading. Kept as `[practitioner direct, vendor venue]` because Michael Zhao (Cursor employee) is the named byline and the operational mechanism (learned-rules promote/demote across 110K repos) is what we cite. The 52% → 80% resolution-rate number is Cursor's self-reported and called out inline as such; not load-bearing on the move's argument.
-
-**Pre-audit closed 2026-08-07.** Source-URL verification ran (stamps in the `Source verification` block above); writing / story / technical / strategy / pedagogy / behavior / slides judges all re-ran clean after the same-day fix pass (em-dash sweep, Stripe self-report qualifier, 8→14 slide split for `check_lectures.md` §5, strategy-doc reconciliation). This file now carries a Quality line.
+**Vendor-venue cites flagged in body as "<org>'s own numbers":** Cursor (M1), Cloudflare (M2), Intercom (M3), Stripe (M3). Per `memory/compounded/2026-05-14-research_claims-vendor-venue-practitioner-byline.md`, operational facts are evidence and self-reported metrics are flagged. **Edge case — Cursor Bugbot:** stamped `[vendor blog — Level 0]`, deliberately conservative although Michael Zhao (Cursor employee) is the named byline. The body cites the operational mechanism (learned-rules promote/demote across 110K repos); the stamp is authoritative over this note. The 52% → 80% resolution-rate number is Cursor's self-reported and called out inline as such; not load-bearing on the move's argument.
 
 **Quality:** compendium-audited 2026-08-29 (writing@4a722813 story@4a722813 technical@4a722813 behavior@da65157 pedagogy@1abb84c6 strategy@da65157 slides@4a722813)
 - judges @4a722813: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS

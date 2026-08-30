@@ -54,7 +54,7 @@ Format → `curriculum/backing-format.md`.
 - `file-is-steady-agent-moves` · vision · "The file is the steady part; the agent is the moving part." ← none-owed
 - `better-rules-better-tickets` · vision · "Across all three agents, better rules produce better tickets." ← none-owed
 - `file-travels-across-wiring` · vision · "Trigger and runtime are wiring choices; the file rides along unchanged." ← none-owed
-- `deployment-not-rewrite` · vision · "Trigger and runtime are wiring choices; the file rides along unchanged." ← none-owed — re-anchored 2026-08-25 when the file-travels bullet was trimmed to two sentences
+- `deployment-not-rewrite` · vision · "Trigger and runtime are wiring choices; the file rides along unchanged." ← none-owed
 - `agents-build-agents` · vision · "An agent can help author the file. A later agent reads those rules to split the backlog. The first agent's output becomes the second agent's context." ← none-owed
 
 **Sources**

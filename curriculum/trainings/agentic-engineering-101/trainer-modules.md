@@ -80,7 +80,7 @@ Don't split M4 across the days. The M1-M2-M4 / M5-M3-M6 reorder exists; it's a c
 
 - **Bug fix runs long** → move on when two-thirds of the room are through. Nothing downstream needs a green PR.
 - **No repo or no bug from prework** → they do the prework now and join at Fix tests-first. Don't hold the room.
-- **Your wizard demo** → three fresh Claude Code sessions, a new empty folder each, outside any repo. That does not clear `~/.claude/CLAUDE.md` or `~/.claude/rules/`; those load everywhere, so read your own user rules first and check nothing there steers food or tone. Dry-run it once. If session 2 still answers Finnish: *"it remembered — that's the point, one step early."*
+- **Your wizard demo** → two fresh Claude Code sessions, a new empty folder each, outside any repo. That does not clear `~/.claude/CLAUDE.md` or `~/.claude/rules/`; those load everywhere, so read your own user rules first and check nothing there steers food or tone. Dry-run it once. If session 2 still answers Finnish: *"it remembered — that's the point, one step early."*
 
 </section>
 <!--/flag:module:getting-going-->
@@ -156,6 +156,8 @@ Don't split M4 across the days. The M1-M2-M4 / M5-M3-M6 reorder exists; it's a c
 {{runtime-map:learn-from-the-test}}
 
 **Prep.** You need your own M4 run on disk: the `m4/<slug>` branch, `task.md` with its coordinates, the transcript. Regenerate by re-running M4's send-off for 15–30 min; that's enough.
+
+**The hooks demo is yours.** In *Hooks always fire*, run the hook-menu prompt on the projected repo; the room watches, nobody types along. Read the returned list against the closing line: a menu, not a checklist. The exercise then picks one verifier shape from three, and a shell-hook is one of the three. The body carries no run-this cue, so your spoken cue is the only one.
 
 - **No M4 artefact at all** → they run M4's send-off now on their own repo and let it cook, then watch along with the room. The exercise itself is theirs to do on their own time. Never hand them a stand-in run.
 - **Exercise session opened in the original repo, not the worktree** → everything lands on the M4 branch and the contrast is dead. `pwd` before Phase 1, every student.

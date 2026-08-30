@@ -108,6 +108,8 @@ The more powerful the coding agent, the more important the steering system.
 
 **The CRAP gloss sits where `check_writing.md` §19 and `check_slides.md` §1 pull opposite ways.** §19 reads a sentence opening with the bold label's own noun as a label echo. §1 requires the chunk to name its referent, and with two nouns in the label a bare *"One"* or *"It"* is ambiguous cold. Naming CRAP is the resolution: the sentence defines the metric rather than restating the label, which is the thing §19 exists to prevent. Judges should score §19 PASS here on that reading rather than proposing a pronoun, and a pronoun proposal should be read as the ping-pong it is.
 
+**The nine `##` sections bookend their own headers by design.** Each section's opening or closing sentence returns to its header's claim after the middle sentences supply the mechanism: header previews, paragraph proves, close returns. `check_writing.md` §27 reads a header echo as restatement only where nothing new lands in between; here the echo is the essay's structural scaffolding, applied consistently across all nine sections. Score §27 PASS on that reading, and do not flatten the echoes section by section.
+
 **Source-access note:** original X pages may require login or be intermittently inaccessible; the X messages are linked in context in the body. Research pass also used public mirrors, a Security Now transcript, Uncle Bob's `arch-view` repository, and adjacent practitioner writing from Simon Willison and Armin Ronacher.
 
 **Quality:** compendium-audited 2026-08-29 (writing@4a722813 story@e11bbeb4 technical@8cc00874 behavior@b3143a4 pedagogy@b55cd28b strategy@9697944 slides@e11bbeb4)

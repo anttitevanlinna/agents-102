@@ -12,7 +12,7 @@ Source of truth is Anthropic's docs. Links and verbatim quotes throughout point 
 
 ## 1. The memory hierarchy: where your rules actually live
 
-Four layers. More specific overrides broader. All loaded files **concatenate**. They don't replace each other.
+More specific overrides broader. All loaded files **concatenate**. They don't replace each other.
 
 | Scope | Path | Governance | Audience |
 |---|---|---|---|
@@ -186,7 +186,7 @@ Plan mode: Claude researches and proposes a plan instead of writing files. You a
 
 **Toggle on:**
 - Prefix a single prompt with `/plan`, optionally naming the task: `/plan fix the auth bug`
-- Shift+Tab cycles permission modes. From `auto`, the first press switches to `default`; the cycle then runs default → acceptEdits → plan. Enabled optional modes slot in after `plan`, `bypassPermissions` first and `auto` last
+- Shift+Tab cycles permission modes. From `auto`, the first press switches to `default`; the cycle then runs default → acceptEdits → plan. Enabled optional modes slot in after `plan`, `bypassPermissions` first and `auto` last; the cycle wraps back to `default`
 - Start there: `claude --permission-mode plan`, or `"defaultMode": "plan"` under `permissions` in `.claude/settings.json`
 - Desktop mode dropdown: pick *Plan*
 
@@ -204,7 +204,7 @@ Approving exits plan mode and switches the session into whichever permission mod
 
 **Read the plan somewhere you can actually read it.** `Ctrl+G` opens the proposed plan in your default text editor, and edits you make there carry into what Claude executes.
 
-**Exit without executing:** keep cycling with Shift+Tab (the same toggle that entered plan mode: the next press lands on `default`, or on your first enabled optional mode), or pick a mode from the dropdown.
+**Exit without executing:** keep cycling with Shift+Tab (the same toggle that entered plan mode: the next press lands on `default` or your first enabled optional mode), or pick from the mode dropdown.
 
 **AE101 cross-refs:** M2 exercise `push-back-on-the-plan.md` teaches the two-read pattern (human push-back → Pocock `grill-me` second-pass → approve). M1 deliberately runs without plan mode (trivial bug doesn't earn it).
 

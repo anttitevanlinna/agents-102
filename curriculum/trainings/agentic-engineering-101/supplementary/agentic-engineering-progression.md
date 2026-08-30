@@ -22,7 +22,7 @@ One conversation, one task. The agent reads the code, proposes a change, and act
 
 ## Delegating bounded outcomes
 
-You hand over an outcome, not a step: the agent reads the repository, makes the change, runs the checks, and returns a diff. You have not left engineering. You have widened what you engineer: the task, the conditions around it, and the evidence that says it is done. Durable context lets a handoff stretch longer, and verification lets it stretch farther without losing control.
+You hand over an outcome, not a step: the agent reads the repository, makes the change, runs the checks, and returns a diff. You have not left engineering. You have widened what you engineer: the task, the conditions around it, and the evidence that says it is done. Durable files let a handoff stretch longer, and verification lets it stretch farther without losing control.
 
 **Moves you up:** a delegated task leaves you waiting, and waiting is capacity. The door is trust that survives your absence, held by durable files an agent can read cold and checks that run without you. The way up is shaping a second task and starting it beside the first.
 
@@ -40,7 +40,7 @@ Recurring work becomes a loop with its own checks: the task shape is written dow
 
 ## Improving the system
 
-You improve the context, memory, skills, and verification that make every subsequent session stronger. Every fix that becomes a rule and every check that becomes a gate raises the floor of all future work. The limit keeps moving outward too: eventually it is what you can review, and what your team can absorb.
+You improve the files, memory, skills, and verification that make every subsequent session stronger. Every fix that becomes a rule and every check that becomes a gate raises the floor of all future work. The limit keeps moving outward too: eventually it is what you can review, and what your team can absorb.
 
 The measure is not maximum delegation. It is knowing what to delegate, how far to let it run, and what evidence to demand.
 
@@ -78,7 +78,7 @@ The progression and the leverage model describe the same thing. Every **Moves yo
 Claims
 - `engineer-expands-reach` · vision · "progressively extending an engineer's reach with AI" ← none-owed
 - `engineer-remains-active` · vision · "The engineer remains the active party" ← none-owed
-- `engineer-active-progression` · vision · "AI helps with work already on your desk. … You direct several sessions rather than one conversation. … You improve the context, memory, skills, and verification that make every subsequent session stronger." ← none-owed
+- `engineer-active-progression` · vision · "AI helps with work already on your desk. … You direct several sessions rather than one conversation. … You improve the files, memory, skills, and verification that make every subsequent session stronger." ← none-owed
 - `constraint-chain` · vision · "Each level holds until it exposes the constraint the next one removes" ← none-owed
 - `measure-not-maximum-delegation` · vision · "The measure is not maximum delegation. It is knowing what to delegate, how far to let it run, and what evidence to demand." ← none-owed
 - `playbook-team-progression` · detail · "a similar team-scale movement ... from using the agent inside one task to engineering the conditions behind many tasks" ← fred-ai-native-playbook

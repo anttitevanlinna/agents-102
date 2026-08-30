@@ -38,7 +38,7 @@ The LLM is not a deterministic machine.
 
 The rules were loaded every time: the rules file, the tone brief, the session-timing plan, all sitting in context before the first turn. Claude typed the banned word anyway. It recommended the flattering end-state anyway, and its first proposal came out chat-shaped despite every one of those rules being right there. The subagents leaked the same banned word again. The loop caught what the subagents missed. I caught what the loop missed. You will catch what I missed.
 
-A rule in context is not a rule in the output. Taste closes the gap. Nothing else does.
+A rule in context is not a rule in the output. Taste closes the gap.
 
 ## Then I compounded the session
 
@@ -110,7 +110,7 @@ Claims
 - `everyone-struggles` · vision · "Everyone struggles." ← none-owed
 - `llm-is-not-deterministic` · vision · "The LLM is not a deterministic machine." ← none-owed
 - `post-training-warmth-read` · vision · "Our read: much is caused by post-training preferring warmth over directness." ← none-owed — an owned inference, labeled as one in body. The literature edge (Sharma et al. on sycophancy) lives in painting-the-picture-with-the-llm's ledger, where the "driven in part by" hedge is marked load-bearing; do not strengthen here either.
-- `rule-in-context-is-not-rule-in-output` · vision · "A rule in context is not a rule in the output. Taste closes the gap. Nothing else does." ← none-owed
+- `rule-in-context-is-not-rule-in-output` · vision · "A rule in context is not a rule in the output. Taste closes the gap." ← none-owed — **the closing superlative ("Nothing else does.") was cut 2026-08-30 under `check_writing §21`.** It is a world-claim this memo refutes four times over: the grep pass caught each banned-word leak, the verifier loop caught two more, a persona sim caught what the loop missed, and § *Then I compounded the session* moves the rules into skills that block "done" — forcing functions, not taste. Do not restore, and do not hedge it back in; §21 rules the hedge worse than the superlative. If the intended reading is that taste is upstream of all four catchers, that is a different sentence and needs writing, not a restored absolute.
 - `rule-in-memory-that-does-not-force` · vision · "A rule in memory that does not force is worse than no rule." ← none-owed
 - `loop-exists-because-llms-drift` · vision · "The loop exists because LLMs drift. The loop exists because rules leak." ← none-owed
 - `catch-it-and-encode-it` · vision · "Your job is not to stop the drift. Your job is to catch it and encode what you learned." ← none-owed

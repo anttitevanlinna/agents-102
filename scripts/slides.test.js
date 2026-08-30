@@ -493,3 +493,32 @@ test('every slide carries its unfiltered position as srcIndex', () => {
 test('slides.css styles the barebones switch', () => {
   assert.match(SLIDES_CSS, /\.deck__mode\s*\{/, 'slides.css must carry the .deck__mode rule');
 });
+
+// A doc whose every content slide is T2/T3 leaves its cover behind — a title
+// slide announcing a lecture that is no longer there. Flagged as an untested
+// edge when the filter landed; the M5 tier audit made it live, since barebones
+// drops what-packaging-is (4xT2, 3xT3) and the-gate-is-a-claim (4xT2, 2xT3)
+// in full. A section divider is different: a module always keeps something.
+test('barebones drops a doc cover whose every content slide was filtered', () => {
+  // strip the one untagged slide, so the lecture is all-T2/T3
+  const stripped = FIXTURE.replace('<h2>Slide C</h2><p>body</p>', '');
+  const dom = new JSDOM(stripped, { runScripts: 'outside-only' });
+  dom.window.eval(SLIDES_SRC);
+  const main = dom.window.document.querySelector('main');
+  const full = dom.window.CurriculumSlides.buildDeckModel(main.cloneNode(true), {});
+  const bare = dom.window.CurriculumSlides.buildDeckModel(main.cloneNode(true), { maxTier: 1 });
+  assert.match(full.slides.map(s => s.navLabel || s.title).join('\n'), /Painting the picture/,
+    'the lecture cover is there in the full deck');
+  assert.doesNotMatch(bare.slides.map(s => s.navLabel || s.title).join('\n'), /Painting the picture/,
+    'and gone in barebones, because nothing of that lecture survived');
+});
+
+test('the training cover survives even if a filter emptied everything after it', () => {
+  const stripped = FIXTURE.replace('<h2>Slide C</h2><p>body</p>', '');
+  const dom = new JSDOM(stripped, { runScripts: 'outside-only' });
+  dom.window.eval(SLIDES_SRC);
+  const main = dom.window.document.querySelector('main');
+  const bare = dom.window.CurriculumSlides.buildDeckModel(main.cloneNode(true), { maxTier: 1 });
+  assert.match(bare.slides[0].title, /Agentic Engineering 101/, 'deck still opens on its own cover');
+  assert.ok(bare.slides.filter(s => s.isDivider).length >= 4, 'section dividers all survive');
+});

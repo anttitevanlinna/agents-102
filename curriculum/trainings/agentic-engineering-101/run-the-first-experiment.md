@@ -46,6 +46,7 @@ The map has a far side. Before the first long session, see the country you are e
 
 ## Key Concepts
 <!--tier:2-->
+
 - The audit ranked the thin spots in your setup against one real task. You corrected the ranking, then filled the worst two or three.
 - The task went out un-packaged: no plan file, no verifier, no reference artefact. Nothing but what you already had.
 - Traces are data. Stopping a session that has gone off the rails is reading, not failing.

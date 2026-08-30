@@ -56,6 +56,7 @@ No compound prompt here. The exercise's gap map and stack-map are the Module 6 c
 
 ## Key Concepts
 <!--tier:2-->
+
 - The three-pattern catches what it was shaped to catch. The gaps that surface after two sessions are data the pattern didn't anticipate, not proof the pattern failed
 - Claude over-credits its own packaging by default. A fair push-back names one thing the verifier missed, concretely. The evidence is in the sessions, not in the summary of them
 - Gaps sort into three homes: memory (rules that would have prevented the mistake upstream), sharper verifier (a check that would have fired mid-session), or new skill (a move packaged for future tasks)

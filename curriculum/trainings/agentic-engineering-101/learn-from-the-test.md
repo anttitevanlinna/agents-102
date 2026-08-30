@@ -58,6 +58,7 @@ Acting without full control is the job from here on. Build the check, send again
 
 ## Key Concepts
 <!--tier:2-->
+
 - The model already knows the public field.
 - The missing evidence is the interaction of this task, model, repository, and setup.
 - The experiment promotes a candidate to tested-here; the local optimum stays ahead.

@@ -53,6 +53,7 @@ After this module, you will be able to:
 
 ## Key Concepts
 <!--tier:2-->
+
 - The loop is orient → fix → close → compound
 - `/context` shows what landed in the window. What didn't land is real, and you choose what fills the next round. (`/context` is oldskool; ccstatusline, or ask Claude to set up the built-in status line.) Context is what you put in it.
 - The agent's self-report is a hypothesis, not ground truth. Read it as the agent's account of the repo and the session, not the things themselves. The scrollback is the machine's reflection; current state lives on disk.
@@ -85,6 +86,7 @@ Optional. Do them and Module 2's moves land as things you've already seen.
 
 ## Next
 <!--tier:3-->
+
 Module 2 is where plan mode earns its keep: multi-file work, and a second pass that pressure-tests the plan before you approve it. Your rules file gets read at the top of that session.
 
 <!-- maintainer -->

@@ -106,6 +106,25 @@ function tagsIn(ref) {
   return tagsInBody(CR.stripMaintainerTail(fs.readFileSync(p, 'utf8'))).map(t => Object.assign({ ref }, t));
 }
 
+// A marker must be followed by a blank line. Without one, expandTiers turns it
+// into `<div class="slide-tier" ...>` and marked reads everything up to the next
+// blank line as part of that HTML block — so a `## Key Concepts` whose list
+// starts on the very next line loses its bullets in LONG-READ, silently, while
+// the deck looks fine. Caused and caught 2026-08-30 while applying the tier
+// audit: 33 blocks across six module files stopped being list items.
+function markerLayoutProblems(body) {
+  const lines = body.split('\n');
+  const out = [];
+  let heading = '(before the first heading)';
+  for (let i = 0; i < lines.length; i++) {
+    if (lines[i].startsWith('## ')) heading = lines[i].slice(3).trim();
+    if (!/^<!--tier:[123]-->\s*$/.test(lines[i])) continue;
+    const next = lines[i + 1];
+    if (next !== undefined && next.trim() !== '') out.push({ heading, next: next.slice(0, 60) });
+  }
+  return out;
+}
+
 // Maintainer-attested pre-exercise T2s, by exact slide header.
 function acceptedHeadings(ref) {
   const p = path.join(ROOT, 'curriculum', ref + '.md');
@@ -144,6 +163,7 @@ function run() {
   const violations = [];
   const notes = [];
   const coverage = [];
+  const layout = [];
 
   for (const mod of t.modules) {
     const plan = modulePlan(contentKey, mod.slug);
@@ -159,6 +179,12 @@ function run() {
     let tagged = tagsInBody(CR.stripMaintainerTail(fs.readFileSync(modPath, 'utf8'))).length;
     let slides = countSlidesAt(modPath);
     for (const ref of plan.refs) { slides += countSlides(ref); }
+    for (const f of [modPath].concat(plan.refs.map(r => path.join(ROOT, 'curriculum', r + '.md')))) {
+      if (!fs.existsSync(f)) continue;
+      for (const p of markerLayoutProblems(CR.stripMaintainerTail(fs.readFileSync(f, 'utf8')))) {
+        layout.push({ file: path.relative(ROOT, f), ...p });
+      }
+    }
     for (const ref of plan.before) {
       const accepted = acceptedHeadings(ref);
       for (const tag of tagsIn(ref)) {
@@ -195,6 +221,16 @@ function run() {
     if (!notes.length) console.log('  (none)');
   }
 
+  if (layout.length) {
+    console.error(`\ncheck-slide-tiers: ${layout.length} tier marker(s) not followed by a blank line\n`);
+    console.error('expandTiers turns the marker into a <div>, and marked reads everything up to the');
+    console.error('next blank line as part of that HTML block. A list starting on the very next line');
+    console.error('stops being a list IN LONG-READ, while the deck still looks right.\n');
+    for (const l of layout) console.error(`  ${l.file} § ${l.heading}\n    next line: ${l.next}`);
+    console.error('');
+    return 1;
+  }
+
   if (!violations.length) {
     if (!COVERAGE && !REPORT) console.log(`check-slide-tiers: OK — no T2 before a first exercise (${TRAINING}).`);
     return 0;
@@ -217,4 +253,4 @@ function run() {
 }
 
 if (require.main === module) process.exit(run());
-else module.exports = { tagsInBody, splitAtFirstExercise };
+else module.exports = { tagsInBody, splitAtFirstExercise, markerLayoutProblems };

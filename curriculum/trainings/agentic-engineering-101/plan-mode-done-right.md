@@ -41,6 +41,7 @@ Two reads on one plan catch different misses. Yours goes first, because your cod
 
 ## Key Concepts
 <!--tier:2-->
+
 - Structure is persuasive. A 7-item plan with headers looks like a decision even when it's a draft. Assume about 10% of it is wrong and go find which part.
 - A human read and an agent's walk-down catch different misses. The gap between them is where the plan-reading skill lives.
 - Assumption-silent isn't assumption-free: every plan assumes something, the good ones say what. A verification step that could fail is a gate; one that always passes is decoration.

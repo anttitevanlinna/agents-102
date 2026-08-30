@@ -72,6 +72,7 @@ If the agent names something missed, decide whether to compound it now or accept
 
 ## Key Concepts
 <!--tier:2-->
+
 - A curated skill is upstream work packaged for you to invoke. The labor is delegated; the judgment isn't. Invoke, don't re-derive.
 - The access surface is what STRIDE chews on. STRIDE before access-mapping is threat-modeling pub-quiz
 - A test-strategy skill authored on your codebase is worth more than a perfect generic one. Your codebase teaches the skill, not the manual.

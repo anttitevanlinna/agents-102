@@ -92,3 +92,30 @@ test('a module with no exercise puts every ref in the front half', () => {
   assert.deepEqual(s.after, []);
   assert.equal(s.reachesAnExercise, false);
 });
+
+// ── marker layout ────────────────────────────────────────────────────────────
+// The regression this gate exists for, caused 2026-08-30 while applying the tier
+// audit: expandTiers turns the marker into a <div>, and marked reads up to the
+// next blank line as part of that HTML block. A `## Key Concepts` whose bullets
+// start on the very next line loses them in LONG-READ while the deck looks fine
+// — 33 blocks across six module files, and no gate saw it.
+
+const { markerLayoutProblems } = require('./check-slide-tiers.js');
+
+test('a marker followed by a blank line is fine', () => {
+  assert.deepEqual(markerLayoutProblems('## A\n<!--tier:2-->\n\n- one\n- two\n'), []);
+});
+
+test('a marker with a list on the very next line is the bug', () => {
+  const p = markerLayoutProblems('## Key Concepts\n<!--tier:2-->\n- The loop is orient then fix\n');
+  assert.equal(p.length, 1);
+  assert.equal(p[0].heading, 'Key Concepts');
+});
+
+test('prose on the very next line is caught too — same HTML-block swallow', () => {
+  assert.equal(markerLayoutProblems('## A\n<!--tier:3-->\nSome prose.\n').length, 1);
+});
+
+test('a marker at end of file has nothing to swallow', () => {
+  assert.deepEqual(markerLayoutProblems('## A\n<!--tier:2-->'), []);
+});

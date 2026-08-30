@@ -77,6 +77,7 @@ block=()
 warn=()
 info=()
 suspect=()
+div_lines=()
 ok_count=0
 
 while IFS= read -r m; do
@@ -91,6 +92,12 @@ while IFS= read -r m; do
   due="$(printf '%s\n' "$payload" | sed -nE 's/.*due:([^ ]+).*/\1/p')"
   # source preview: everything after the closing ]` token
   anchor="$(printf '%s\n' "$content" | sed -nE 's/.*\]`[[:space:]]*(.*)$/\1/p' | cut -c1-72)"
+  # URL for the one-source-one-judgement check (§11a): same URL, different
+  # result/due across the corpus = at least one citing file asserting a
+  # judgement the others contradict. Stamps without a URL (attested,
+  # arithmetic, delegate:) have nothing to collide on and are skipped.
+  url="$(printf '%s\n' "$content" | sed -nE 's/.*\]`[[:space:]]*(https?:[^[:space:]]+).*/\1/p')"
+  [[ -n "$url" ]] && div_lines+=("$url"$'\t'"[$result due:$due]"$'\t'"$loc:$lno")
 
   tag="$loc:$lno"
   reason=""
@@ -191,6 +198,25 @@ if [[ ${#suspect[@]} -gt 0 ]]; then
   echo
 fi
 
-echo "summary: ${#block[@]} block · ${#warn[@]} warn · ${#info[@]} info · $ok_count ok · ${#suspect[@]} suspect"
+# One source, one judgement (check_research_claims §11a): group stamps by URL,
+# flag URLs carrying more than one distinct [result due:…]. Report-only, never
+# gates — §11a licenses a deliberately tighter date with reason on the line, so
+# the resolution is per-source reconciliation, not a sweep.
+divergent=""
+div_count=0
+if [[ ${#div_lines[@]} -gt 0 ]]; then
+  divergent="$(printf '%s\n' "${div_lines[@]}" | awk -F'\t' '
+    { if (!(($1 SUBSEP $2) in seen)) { seen[$1 SUBSEP $2]=1; d[$1]++ }
+      rows[$1] = rows[$1] "    " $3 "  " $2 "\n" }
+    END { for (u in d) if (d[u] > 1) printf "  %s\n%s", u, rows[u] }')"
+  [[ -n "$divergent" ]] && div_count="$(printf '%s\n' "$divergent" | grep -c '^  [^ ]')"
+fi
+if [[ -n "$divergent" ]]; then
+  echo "DIVERGENT ($div_count) — same URL, different judgement; reconcile per §11a (one source, one judgement):"
+  printf '%s\n' "$divergent"
+  echo
+fi
+
+echo "summary: ${#block[@]} block · ${#warn[@]} warn · ${#info[@]} info · $ok_count ok · ${#suspect[@]} suspect · $div_count divergent"
 [[ ${#block[@]} -gt 0 ]] && exit 1
 exit 0

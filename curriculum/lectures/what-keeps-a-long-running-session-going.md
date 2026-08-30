@@ -78,6 +78,11 @@ When your agent stops for missing information, check whether there was a way for
 - contested: whether backpressure has become shared agent-engineering vocabulary beyond this source. The lecture defines the term and does not claim convergence.
 - would-move-it: a second independent practitioner naming the same human-as-downstream mechanism in long-running agent work.
 
+**OODA**
+- question: has a second independent practitioner named the human-as-downstream-backpressure mechanism in long-running agent work, and do the two capability claims (compaction re-injection, subagent context isolation) still read as the docs describe?
+- roster: Lucas F. da Costa, Dex Horthy, Geoff Huntley, plus the Claude Code context-window and sub-agents docs
+- last-run: 2026-08-01
+
 <!-- /backing -->
 
 **Quality:** compendium-audited 2026-08-29 (writing@4a722813 story@d5aa7e3d technical@8cc00874 behavior@93bb807 pedagogy@02dcad0b strategy@93bb807 slides@d5aa7e3d)

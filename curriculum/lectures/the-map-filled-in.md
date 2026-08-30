@@ -85,9 +85,9 @@ The map is back, one last time.
 
 **Delivery mode:** In-room close, projected. The re-shown map with the solid checking loop IS the slide.
 
-**Completeness-review minors closed (2026-07-03):**
-- **Minor 9** — the wall-crossing bullet (**Cross personal → team**) now carries a worded, no-math dip-before-climb mechanism (your own sessions speed up before the team's numbers move; the team's reviewing/sharing has to be rebuilt around the new speed, and the handed-over checks and skills are that rebuild). This is the J-curve / complementary-investment borrow the theory audit assigns to the-wall: [borrow:economics] Paul David, "The Dynamo and the Computer" (1990, AEA P&P); Brynjolfsson, Rock and Syverson, "The Productivity J-Curve" (AEJ: Macroeconomics, 2021). Both verified live 2026-07-03 — stamps below. Body stays unnamed and number-free by design (no laws coined, no math on slides).
-- **Minor 10** — the test-learn-encode bullet now carries the unnamed variation-selection-retention clause (sessions generate variants, the eval selects, the memory retains); "eval" is earned earlier in this lecture on the Verification slide. Attribution stays maintainer-side: Donald Campbell's blind-variation-and-selective-retention (BVSR) is the shape; body names zero new laws, per the dose verdict above.
+**Wall-crossing + test-learn-encode mechanisms (2026-07-03):**
+- The wall-crossing bullet (**Cross personal → team**) carries a worded, no-math dip-before-climb mechanism (your own sessions speed up before the team's numbers move; the team's reviewing/sharing has to be rebuilt around the new speed, and the handed-over checks and skills are that rebuild). This is the J-curve / complementary-investment borrow the theory audit assigns to the-wall: [borrow:economics] Paul David, "The Dynamo and the Computer" (1990, AEA P&P); Brynjolfsson, Rock and Syverson, "The Productivity J-Curve" (AEJ: Macroeconomics, 2021). Both verified live 2026-07-03 — stamps below. Body stays unnamed and number-free by design (no laws coined, no math on slides).
+- The test-learn-encode bullet carries the unnamed variation-selection-retention clause (sessions generate variants, the eval selects, the memory retains); "eval" is earned earlier in this lecture on the Verification slide. Attribution stays maintainer-side: Donald Campbell's blind-variation-and-selective-retention (BVSR) is the shape; body names zero new laws, per the dose verdict above.
 
 <!-- backing -->
 
@@ -129,6 +129,7 @@ Frameworks
 - Variation, selection, retention · [borrow:evolutionary theory] · law:variation-selection-retention · ← cultural-vocab — Campbell's blind-variation-and-selective-retention; attribution stays maintainer-side, body names zero new laws
 - Calibrated delegation frontier · [borrow:none] · law:calibrated-delegation-frontier · ← none — paid off from the M5 close as one closing bullet
 - Double-loop learning · [borrow:Argyris & Schön] · law:double-loop-learning · ← cultural-vocab — encode-what-fires rather than one more sentence in a rules file
+- Accumulated, not enabled · [borrow:none] · law:accumulated-not-enabled · ← none — the harness enables continuation, the accumulated surround decides unattended capacity; delivered as the fourth bullet on the control-loop slide (design-side name stays off slides, see the Accumulation-bullet note)
 
 Stance `[stance:2026-08-01 level:L2]`
 - holds: the laws, not new findings. This is a consolidation lecture that coins nothing — every law was named in-room before it, and its job is placement rather than assertion. **That is why almost every claim here is `vision` and why that is correct rather than lazy:** a consolidation file restating the training's own framing owes recognition, not citation. The two academic sources back the one mechanism the body borrows from outside.

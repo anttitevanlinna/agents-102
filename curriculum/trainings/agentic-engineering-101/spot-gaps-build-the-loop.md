@@ -8,7 +8,7 @@ Every gap you found belongs somewhere durable, or you will find it again next we
 
 Optional pre-read before this module: Kieran Klaassen, [My AI Had Already Fixed the Code Before I Saw It](https://every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it) (Aug 2025). He measures a verifier before trusting it and runs several in parallel. This module meets the design question that follows: which checks belong at the seams, so the work does not queue on your read?
 
-Optional lookup pages: [session transcripts in the reference](../../trainings/agentic-engineering-101/reference/claude-code-for-engineers.md#25-session-transcripts-default-location) for the two-session compare, and [long-running shapes](../../trainings/agentic-engineering-101/reference/claude-code-for-engineers.md#17-long-running-shapes-loop) for when you turn a one-off into a pattern you run on a schedule, in a loop, or until a condition holds.
+Optional lookup pages: [session transcripts in the reference](trainings/agentic-engineering-101/reference/claude-code-for-engineers.md#25-session-transcripts-default-location) for the two-session compare, and [long-running shapes](trainings/agentic-engineering-101/reference/claude-code-for-engineers.md#17-long-running-shapes-loop) for when you turn a one-off into a pattern you run on a schedule, in a loop, or until a condition holds.
 
 ## What You'll Learn
 After this module, you will be able to:

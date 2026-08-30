@@ -95,6 +95,23 @@ assert_not_contains "$TMP/out-accepted-section.txt" "e.md" "T6 pocock-grill-me i
 assert_not_contains "$TMP/out-accepted-section.txt" "f.md" "T6 the wayfinder stamp is accepted, not suspect"
 assert_contains "$TMP/out-accepted-section.txt" "c.md" "T6 acceptance is per-stamp, not a global off-switch"
 
+# ── T7 — same URL stamped with different judgements is flagged DIVERGENT ─────
+# One source, one judgement (check_research_claims §11a): the same URL carrying
+# different result/due across files means at least one citing file is asserting
+# a freshness judgement the others contradict. Report-only, never gates —
+# §11a licenses a deliberately tighter date with reason on the line.
+printf -- '- `[checked:2026-05-01 result:OK due:2026-10-16]` https://example.com/g — [practitioner direct] first judgement. fallback: none.\n' > "$TMP/curriculum/g1.md"
+printf -- '- `[checked:2026-06-01 result:CAVEAT due:2026-11-25]` https://example.com/g — [practitioner direct] second judgement. fallback: none.\n' > "$TMP/curriculum/g2.md"
+printf -- '- `[checked:2026-05-01 result:OK due:2026-10-16]` https://example.com/h — [practitioner direct] same judgement. fallback: none.\n' > "$TMP/curriculum/h1.md"
+printf -- '- `[checked:2026-06-01 result:OK due:2026-10-16]` https://example.com/h — [practitioner direct] same judgement again. fallback: none.\n' > "$TMP/curriculum/h2.md"
+( cd "$TMP" && bash "$SCRIPT" --target 2026-09-15 ) > "$TMP/out-divergent.txt" 2>&1
+rc=$?
+if [[ $rc -eq 0 ]]; then pass=$((pass+1)); else fail=$((fail+1)); echo "FAIL: T7 divergent rows do not gate (rc=$rc)"; fi
+assert_contains "$TMP/out-divergent.txt" "DIVERGENT" "T7 same-URL different-judgement lands in a DIVERGENT section"
+assert_contains "$TMP/out-divergent.txt" "https://example.com/g" "T7 the divergent URL is named"
+grep -A6 'DIVERGENT' "$TMP/out-divergent.txt" > "$TMP/out-divergent-section.txt" 2>/dev/null || true
+assert_not_contains "$TMP/out-divergent-section.txt" "https://example.com/h" "T7 identical judgements on one URL are not divergent"
+
 echo
 echo "source-freshness.test.sh: $pass passed, $fail failed"
 [[ $fail -gt 0 ]] && exit 1

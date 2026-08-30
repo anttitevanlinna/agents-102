@@ -380,7 +380,7 @@ A well-shaped prompt has three moves doing the heavy lifting and a handful of ot
 
 **Em-dash discipline (per `check_student_facing.md` §14):** body prose carries zero em-dashes. Splits to two sentences, parenthetical (rare), or comma-clause are the legal restructures. One em-dash inside the *multi-result fallback* example is verbatim from a real prompt and stays.
 
-**Count audit:** 33 entries across 7 families (input 4 / target 4 / output 8 / execution 6 / interaction 4 / boundary 5 / continuity 2) plus 6 three-move patterns. Earlier drafts said "twenty-six" and "twenty-eight." Both wrong. Corrected 2026-05-18 on the Agents 101 sweep.
+**Count audit:** 33 entries across 7 families (input 4 / target 4 / output 8 / execution 6 / interaction 4 / boundary 5 / continuity 2) plus 6 three-move patterns.
 
 **Sweep coverage:**
 - AE101 prompts surveyed: all M1–M6 module-body + AE101-referenced exercises (`ae101-m*`, plus `push-back-on-the-plan`, `compound-and-close`, `walk-and-send-off`, `diagnose-and-resend`, `orient-and-introspect`, `spot-gaps-build-the-loop`, `author-test-strategy-skill`, `map-the-access-surface`, `threat-model-with-stride`, `open-the-side-quest`, `fix-tests-first`, `extract-the-task-shaping-rule`).

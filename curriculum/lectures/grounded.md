@@ -92,8 +92,8 @@ Claims
 - `single-pass-compound-decay` · detail · "Ten unverified steps in a row at 85% each would land near 20% end-to-end" ← compound-reliability-math
 - `first-pass-prior` · detail · "A first pass often lands close to that; treat it as a working prior, not a measurement." ← antti-first-pass-prior
 - `loop-collapses-the-error-rate` · detail · "Round 1: 10% fabricated → 1% after fix." ← compound-reliability-math, antti-first-pass-prior
-- `mata-detector-first-pass` · detail · "today's four detection techniques ran against the Mata v. Avianca pre-read before class" ← mata-detector-passes
-- `mata-detector-rerun` · detail · "the story got fixed, and the four detectors ran again … A re-run months later caught one more smoothing the earlier passes had walked past" ← mata-detector-passes
+- `mata-detector-first-pass` · detail · "Against the Mata v. Avianca pre-read, source triangulation caught an unsourced 'small firm' descriptor and an unsupported 'ten minutes' estimate" ← mata-detector-passes, mata-court-order, mata-press-account
+- `mata-detector-rerun` · detail · "A later rerun caught one more smoothing the earlier passes had walked past." ← mata-detector-passes, mata-court-order, mata-press-account
 - `short-chain-example` · vision · "A short customer-service loop shows the difference: look up the order, check the policy, draft the reply" ← none-owed
 - `the-word-is-grounded` · vision · "The word is grounded." ← none-owed
 - `dont-pick-a-method-run-the-candidates` · vision · "Don't pick a method. Run the candidates." ← none-owed

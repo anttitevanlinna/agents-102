@@ -52,7 +52,7 @@
 
 **Mood:** gate-skepticism after the build. The verifier just landed the packaged re-send; this names why a green gate can still lie. Register is Boris-precise plus a Rory reframe (green is a claim, not proof), NOT reassurance and NOT resolved optimism. The closer opens doubt about the gate; it does not close it.
 
-**Promoted** from `supplementary/the-gate-is-a-claim.md` to a proper M5-close lecture in slide format. Audited — see the Quality line below.
+**Promoted** from a supplementary draft (untracked) to a proper M5-close lecture in slide format. Audited — see the Quality line below.
 
 **Placement:** M5 close, final lecture, immediately after `what-packaging-is.md`. Recognition-after-building (`check_lectures §1`): the student built a verifier and re-sent the packaged run before this page names the gate's own fallibility. No cross-module sequencing in the body (`check_lectures §3`); any onward pointer lives in the module file's `## Next`.
 
@@ -75,7 +75,7 @@
 <!-- backing -->
 
 Claims
-- `gate-is-a-claim-too` · vision · "The check you built is itself a claim that wants verifying." ← none-owed — re-anchored 2026-08-25 when the pre-slide preamble was cut; the H1's thesis now rests on this slide-1 bullet
+- `gate-is-a-claim-too` · vision · "The check you built is itself a claim that wants verifying." ← none-owed — the H1's thesis rests on this slide-1 bullet
 - `green-is-a-claim-not-proof` · vision · "Green is a claim about the check, not a fact about the work." ← none-owed
 - `three-reasons-a-pass-looks-identical` · vision · "the judge is miscalibrated, the gate got gamed, or the session was a lucky sample" ← none-owed
 - `three-failures-have-different-countermoves` · vision · "compare the judge with your own judgements, keep a separate check the agent never sees, or repeat the task across several sessions" ← none-owed
@@ -126,7 +126,7 @@ OODA
 
 <!-- /backing -->
 
-**"Labels" swapped out of body (2026-08-25, Antti-directed):** eval jargon the deck never earns; header now reads *against your own judgement*, both bullet uses read *judgements*. The word survives only in the ledger, where it is Husain's own. In the same pass, *One session is a sample* lost its two trailing mechanism sentences (*"The second collapses far faster"*, *"cannot separate the change from ordinary variance"*) — the recurrence slide next door owns variance.
+**"Labels" stays out of body (2026-08-25, Antti-directed):** eval jargon the deck never earns; the header reads *against your own judgement*, both bullet uses read *judgements*. The word survives only in the ledger, where it is Husain's own. *One session is a sample* carries no trailing variance-mechanism sentences (*"The second collapses far faster"*, *"cannot separate the change from ordinary variance"* stay out) — the recurrence slide next door owns variance; do not re-add them.
 
 **Closing aphorism cut (2026-08-25, Antti-approved):** *"A gate is one more claim in the system. Build it, then hold it to the same bar it holds the work to."* — hanging line restating the H1 (`check_slides.md` §16 class c). The deck now runs straight from the tampering slide into the delegation frontier. Do not restore.
 

@@ -232,7 +232,7 @@ OODA
 - **Intercom and Ramp lineages NOT named.** Cycle 1 surfaced them; they're enterprise-org-shaped and live more naturally in a future Engineering Management variant.
 
 **Vision vs. detail:**
-- Vision layer: the field is mid-evolution; one published framework + several shapes + one counter-position; honest scope.
+- Vision layer: the field is mid-evolution; one published framework + several shapes + one counter-position; candid scope.
 - Detail layer: every URL, every named file path, every quote (each verified against the practitioner's own publication 2026-05-21).
 
 **Quality:** compendium-audited 2026-08-29 (writing@4a722813 story@0cea7581 technical@4a722813 pedagogy@b55cd28b strategy@1071b36b slides@4a722813)

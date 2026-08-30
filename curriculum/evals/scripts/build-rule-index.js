@@ -78,10 +78,12 @@ function ruleBody(md, id) {
   // number — so a fetch that only knows line-start numbering answers "no such
   // rule" on a rule the rules file tells you to read.
   if (k < 0 && sub) {
-    const re = new RegExp(`^\\s+\\*\\*${num}${sub}\\.`)
+    // Covers both in-body shapes: an indented bold run (`   **11a. ...**`) and
+    // a list-item bold run (`   - **40b. ...**`).
+    const re = new RegExp(`^\\s+(?:-\\s+)?\\*\\*${num}${sub}\\.`)
     const at = lines.findIndex(t => re.test(t))
     if (at < 0) return ''
-    const nextRule = /^(?:\d+[a-z]?\.\s+\*\*|\s+\*\*\d+[a-z]\.)/
+    const nextRule = /^(?:\d+[a-z]?\.\s+\*\*|\s+(?:-\s+)?\*\*\d+[a-z]\.)/
     let stop = lines.length
     for (let j = at + 1; j < lines.length; j++) if (nextRule.test(lines[j])) { stop = j; break }
     return lines.slice(at, stop).join('\n')

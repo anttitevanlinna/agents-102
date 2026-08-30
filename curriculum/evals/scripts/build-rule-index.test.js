@@ -60,6 +60,19 @@ test('a sub-rule is fetchable by its own number', () => {
   assert.match(ruleBody(md, '1'), /gamma/)
 })
 
+test('a sub-rule authored as a list item is fetchable too', () => {
+  // Third authoring shape: a list-item bold run (`   - **40b. ...**`).
+  // check_prompts §40b uses it, and pre-cohort-todos.md cites §40b by number —
+  // a fetch that answers "no §40b" on a rule sitting in the file sends the
+  // reader away convinced the rule does not exist.
+  const md = '40. **Parent.** body\n\n   - **40b. Warm.** the referent rule\n\n   - **40c. Cold.** other\n\n41. **After.** later\n'
+  assert.match(ruleBody(md, '40b'), /the referent rule/)
+  assert.doesNotMatch(ruleBody(md, '40b'), /other/, 'stops at the next list-item sub-rule')
+  assert.doesNotMatch(ruleBody(md, '40b'), /later/)
+  assert.match(ruleBody(md, '40c'), /other/)
+  assert.doesNotMatch(ruleBody(md, '40c'), /later/)
+})
+
 test('a sub-rule authored as an indented bold run is fetchable too', () => {
   // Two authoring shapes exist. Most sub-rules start the line (`11a. **...`),
   // but five in check_research_claims/check_prompts are indented bold runs

@@ -15,7 +15,7 @@ One line per source, inside the file's `Source verification` maintainer block. G
 Worked example:
 
 ```
-- `[checked:2026-05-21 result:OK due:2026-10-16]` https://ideas.fin.ai/p/2x-nine-months-later — [practitioner direct, vendor venue] Curran (pub 2026-04-16) 19.2% auto-approve / 14.6 vs 75.8 min / 86% ≤20 lines / 500-person R&D. fallback: drop the %, say "double-digit auto-approve at a 500-person org".
+- `[checked:2026-05-21 result:CAVEAT due:2026-10-16]` https://ideas.fin.ai/p/2x-nine-months-later — [practitioner direct, vendor venue] Curran (pub 2026-04-16) 19.2% auto-approve / 14.6 vs 75.8 min / 86% ≤20 lines / 500-person R&D. CAVEAT: vendor-self-reported. fallback: drop the %, say "double-digit auto-approve at a 500-person org".
 ```
 
 Fields:

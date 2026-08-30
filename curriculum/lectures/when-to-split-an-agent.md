@@ -75,7 +75,7 @@ Frameworks
 - Requisite variety · [borrow:cybernetics] · law:requisite-variety · ← cultural-vocab — the three split criteria are three kinds of variety one agent cannot hold
 
 Stance `[stance:2026-08-01 level:L0]`
-- holds: nothing that anyone else has published. **This lecture is a house position stated as a house position, and that is the honest reading** — its three split criteria and its start-with-don't default are ours, argued from design rather than from evidence. `L0` records that plainly rather than dressing a stance as a finding.
+- holds: nothing that anyone else has published. **This lecture is a house position stated as a house position, and that is the straight reading** — its three split criteria and its start-with-don't default are ours, argued from design rather than from evidence. `L0` records that plainly rather than dressing a stance as a finding.
 - contested: agent-count guidance generally, which is one of the noisier corners of the field and full of vendor architecture diagrams. The lecture's value is having a default at all; most published advice does not commit to one.
 - would-move-it: practitioners publishing agent-count patterns that contradict start-with-don't — particularly evidence that multi-agent decomposition inside one workflow pays more often than it costs. That would invert the default rather than adjust it.
 

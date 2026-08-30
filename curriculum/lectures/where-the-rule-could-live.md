@@ -34,7 +34,7 @@ You can extract any rules into their own `.md` file. Eventually your Claude file
 
 **Attribution discipline:** the three shapes ship un-attributed in body. Reasoning: at M2 the cohort is two modules in and hasn't met the practitioners yet; name-dropping reads as authority-borrowing rather than crediting. The deeper attributions land where they're earned: Klaassen + Every's compound-engineering anchor across M5–M6; the durable-artifact discipline at M5's verifier build. Per `check_writing.md` #11. Closer beat *"agents build agents"* is Antti's verbatim frame — kept per `check_writing.md` #10.
 
-**Earned-landing map (attribution deferred from body):** compound engineering lands by name at M5–M6; the durable-artifact discipline lands at M5's verifier build. Provenance, stamps and the two attributions this file used to carry wrongly now live in the backing block below — read that before re-crediting either shape to a practitioner.
+**Earned-landing map (attribution deferred from body):** compound engineering lands by name at M5–M6; the durable-artifact discipline lands at M5's verifier build. Provenance and stamps live in the backing block below — read it before crediting either shape to a practitioner.
 
 **Standing constraint — do not imply Claude Code runs inside Slack.** Re-verified 2026-07-31 and it still holds: every current path executes off-Slack on Anthropic-hosted compute, with Slack as trigger and status surface only. Detail and stamps in the backing block.
 

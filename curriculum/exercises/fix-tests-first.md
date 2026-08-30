@@ -74,7 +74,7 @@ Claims
 - `tests-first-root-cause-driven-is-one-discipline` · vision · "**Tests-first, root-cause-driven.** Write the test first, watch it fail, then fix the cause, not the symptom." ← none-owed
 - `no-plan-mode-on-a-trivial-bug` · vision · "On a trivial bug, plan mode is overhead." ← none-owed
 - `agent-runs-the-loop-you-read-the-result` · vision · "The agent runs the loop; you read the result." ← none-owed
-- `your-own-wording-matters` · vision · "No pre-made prompt for the pushback." ← none-owed
+- `your-own-wording-matters` · vision · "No pre-made prompt: the compound step reads this scrollback" ← none-owed
 - `ask-whether-its-the-root-cause` · vision · "When the agent says done, ask whether the change is the root cause or a layer above it." ← none-owed
 - `first-cut-fixes-what-makes-the-test-pass` · vision · "The first cut usually fixes what makes the test pass; the deeper cut asks whether the test was pointing at the right thing." ← none-owed
 - `always-a-next-plausible-answer` · vision · "There will be a next plausible answer, because the LLM will always try to find what you asked for." ← none-owed — machine-nature observation, maintainer frame near-verbatim; observation-grade by design, no training-cause claim.

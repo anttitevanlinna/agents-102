@@ -140,7 +140,13 @@ while IFS= read -r m; do
   # fresh window. Not a defect on its own (a source published the day it was
   # checked coincides legitimately), so it flags in its own bucket and never
   # gates. Cleared per-source by verifying the publication date, never by sweep.
-  if [[ "$sev" != "block" && "$checked" == 20[0-9][0-9]-* && "$due" == 20[0-9][0-9]-* ]]; then
+  # Maintainer-accepted family (Antti 2026-08-30), never listed: living-repo
+  # stamps whose check date IS the right anchor — the verified thing is the
+  # repo's current state, not a publication. Matched by claim-id / URL so the
+  # acceptance travels with a synced stamp.
+  ACCEPTED_PLUS6='pocock-grill-me|skills/engineering/wayfinder'
+  if [[ "$sev" != "block" && "$checked" == 20[0-9][0-9]-* && "$due" == 20[0-9][0-9]-* ]] \
+     && ! grep -qE "$ACCEPTED_PLUS6" <<<"$content"; then
     plus6="$(date -j -f %Y-%m-%d -v+6m "$checked" +%Y-%m-%d 2>/dev/null \
           || date -d "$checked +6 months" +%Y-%m-%d 2>/dev/null || true)"
     if [[ -n "$plus6" && "$due" == "$plus6" ]]; then

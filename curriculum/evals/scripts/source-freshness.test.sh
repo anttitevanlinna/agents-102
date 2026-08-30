@@ -83,6 +83,18 @@ assert_contains "$TMP/out-suspect.txt" "c.md" "T5 the re-derived stamp is the on
 grep -A3 'SUSPECT' "$TMP/out-suspect.txt" > "$TMP/out-suspect-section.txt" 2>/dev/null || true
 assert_not_contains "$TMP/out-suspect-section.txt" "d.md" "T5 a non-coinciding due is not flagged"
 
+# ── T6 — the maintainer-accepted checked+6mo family stays out of SUSPECT ─────
+# Living-repo stamps where the check date IS the right anchor: the verified
+# thing is the repo's current state, not a publication. Matched by claim-id /
+# URL, so the acceptance travels with the stamp wherever it is synced.
+printf -- '- pocock-grill-me `[checked:2026-08-01 result:OK due:2027-02-01]` https://github.com/mattpocock/skills — [practitioner direct] living repo. fallback: none.\n' > "$TMP/curriculum/e.md"
+printf -- '- `[checked:2026-08-01 result:OK due:2027-02-01]` https://github.com/mattpocock/skills/blob/main/skills/engineering/wayfinder/SKILL.md — [practitioner direct] living repo. fallback: none.\n' > "$TMP/curriculum/f.md"
+( cd "$TMP" && bash "$SCRIPT" --target 2026-09-15 ) > "$TMP/out-accepted.txt" 2>&1 || true
+grep -A8 'SUSPECT' "$TMP/out-accepted.txt" > "$TMP/out-accepted-section.txt" 2>/dev/null || true
+assert_not_contains "$TMP/out-accepted-section.txt" "e.md" "T6 pocock-grill-me is accepted, not suspect"
+assert_not_contains "$TMP/out-accepted-section.txt" "f.md" "T6 the wayfinder stamp is accepted, not suspect"
+assert_contains "$TMP/out-accepted-section.txt" "c.md" "T6 acceptance is per-stamp, not a global off-switch"
+
 echo
 echo "source-freshness.test.sh: $pass passed, $fail failed"
 [[ $fail -gt 0 ]] && exit 1

@@ -29,6 +29,7 @@ source "$HERE/lib/resolve-prompt.sh"
 source "$HERE/lib/tmux.sh"
 source "$HERE/lib/sync.sh"
 source "$HERE/lib/assertions.sh"
+source "$HERE/lib/turn-budget.sh"
 
 sut_cwd=""
 task_slug=""
@@ -112,6 +113,7 @@ echo "[m4] turns=$total"
 # run-m1.sh history). Last turn (send-off) gets the multi-hour budget.
 standard_timeout="${CLAUDE_RUNNER_TIMEOUT:-3600}"
 sendoff_timeout="${CLAUDE_RUNNER_M4_SENDOFF_TIMEOUT:-7200}"
+SENDOFF_KEY="ae101-m4-take-task-end-to-end"
 
 seq=0
 for line in "${lines[@]}"; do
@@ -135,12 +137,14 @@ for line in "${lines[@]}"; do
   pane_send_text "$session" "$body"
   printf '%s' "$body" > "$run_dir/turn-$seq.prompt.txt"
 
-  # Last turn is the send-off; everything else uses the standard timeout.
-  if [[ "$seq" -eq "$total" ]]; then
-    turn_timeout="$sendoff_timeout"
+  # The send-off budget follows the KEY, not the position (2026-08-30).
+  # ae101-m5-done-done runs in this same session and lands AFTER the send-off,
+  # so "last turn" would starve the send-off and over-fund a single question.
+  turn_key=""
+  [[ "$line" != \** ]] && turn_key="${line%%[[:space:]]*}"
+  turn_timeout="$(turn_budget "$turn_key" "$SENDOFF_KEY" "$standard_timeout" "$sendoff_timeout")"
+  if [[ "$turn_timeout" == "$sendoff_timeout" ]]; then
     echo "[m4] turn=$seq is send-off; timeout=${turn_timeout}s"
-  else
-    turn_timeout="$standard_timeout"
   fi
 
   # TODO: if a scenario adds a pure slash command, wire `is_slash_only` +
@@ -154,6 +158,33 @@ for line in "${lines[@]}"; do
 done
 
 pane_capture "$session" "$run_dir/transcript.txt"
+
+# Done-done assertion (ae101-m5-done-done, added to this scenario 2026-08-30).
+# The prompt enumerates four points and asks for an answer per point with
+# evidence. This turn runs in the send-off session on purpose: its answer
+# lands in the transcript M5's diagnose-and-resend reads, so a silent
+# non-answer here quietly thins M5's input two legs downstream. Each point is
+# checked separately — one combined regex would pass on a reply that covered
+# tests and ignored security.
+dd_turn_transcript=""
+for f in "$run_dir"/turn-*.transcript.txt; do
+  [[ -f "$f" ]] || continue
+  grep -q -i "done.done" "$f" && dd_turn_transcript="$f"
+done
+if [[ -n "$dd_turn_transcript" ]]; then
+  dd_fail=0
+  for probe in "tests:test" "acceptance-criteria:acceptance|criteri" "documentation:document|docs\\b|readme" "security:security|threat|auth|secret"; do
+    dd_label="${probe%%:*}"; dd_pat="${probe#*:}"
+    assert_scrollback_grep "M4 done-done ($dd_label)" "$dd_turn_transcript" "$dd_pat" || dd_fail=1
+  done
+  if [[ "$dd_fail" -ne 0 ]]; then
+    echo "[assert] FAIL M4 done-done: the four-point audit did not answer every point; M5's diagnose-and-resend reads this transcript" >&2
+    exit 1
+  fi
+else
+  echo "[assert] FAIL M4 done-done: no turn transcript mentions done-done — the opener did not run in the send-off session" >&2
+  exit 1
+fi
 
 # In-repo-memory assertion (walk-and-send-off-3 fix). Did the memory write
 # land in the in-repo ./observations/ (PASS) or leak to the user-level

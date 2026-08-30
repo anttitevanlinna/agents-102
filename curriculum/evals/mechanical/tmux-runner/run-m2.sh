@@ -247,6 +247,17 @@ assert_turn() {
         fi
         assert_scrollback_grep "integrate-branch nothing-earned fallback" "$transcript" "nothing earned|didn't earn|no branch|did not earn|stop"
         ;;
+    ae101-m2-tidier)  # Phase 5 Boy Scout close (moved into this exercise
+        # 2026-08-25). The prompt asks two things: name what tripped the plan,
+        # AND where the fix belongs. "Or none" is an explicit, legitimate
+        # answer, so pass on a clean none; otherwise a named gap owes a
+        # destination. Matching the gap word alone would pass on a naming with
+        # nowhere to put it, which is the half-answer this beat exists to stop.
+        if assert_scrollback_grep "tidier explicit-none" "$transcript" "\\bnone\\b|nothing (did|tripped|came up)|no (gaps|conflicts)" 2>/dev/null; then
+          return 0
+        fi
+        assert_scrollback_grep "tidier gap-named-with-destination" "$transcript" "readme|adr|claude\\.md|claude\\.local|documentation|usage line|comment|test|module.s own doc"
+        ;;
     *)
         echo "[m2] no assertion configured for prompt key '$key'" >&2
         return 1

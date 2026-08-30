@@ -49,8 +49,9 @@ The loop feeds itself. That is the flywheel, and it starts with what you encoded
 
 **Slides-only pass (2026-07-02, unaudited):** ~950-word prose body CONVERTED to lede + four slides. Intro recognition paragraph → slide 1 bullet 1 ("Look at what you just shipped" KEPT as one-line setup lede — the earning moment's cue). *Eval* section → slide 1, six bullets; "the word carries more weight in the vendor literature than it deserves" CUT (`check_writing §13` vendor-in-body + value-prop defense in a teaching beat; the flat definition carries the deflation without the posture). *The shape it grows into* → slide 2, numbers verbatim. *The primitive that runs on cadence* → slide 3 (reference link and capability wording preserved verbatim; platform claims unchanged, no re-verification owed by this pass). *Why the loop survives the model* → slide 4. *Where this goes next* section FOLDED into the closing kicker (load-bearing foreshadow to the next lecture in this module's closer chain; module file carries the sequencing).
 
-**Quality:** compendium-audited 2026-08-29 (writing@4a722813 story@0e4f7c9e technical@8cc00874 behavior@1c765f2 pedagogy@1abb84c6 strategy@1c765f2 slides@e11bbeb4)
-- judges @4a722813: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-08-30 (writing@4197d503 story@4197d503 technical@4197d503 strategy@4197d503 slides@4197d503 behavior@1c765f2 pedagogy@1abb84c6)
+- judges @4197d503: writing PASS, story PASS, technical PASS, strategy PASS, slides PASS — re-judged after the cc-scheduling-primitives restamp. The prior §11a finding (borrowed `ATTESTED` on a documentation read) no longer fires; the stamp now records its own check.
+- judges @4a722813: behavior PASS, pedagogy PASS (drift-recheck)
 **Lecture meta:** *12–15 min closing lecture for AE101 M6 (deck-only trimmed from the 15–18 prose draft). Names evals with full weight from the M5 verifier and the check-menu the module just ranked. Forward-looking register — closes core AE101, bridges to Monday-morning or to M7 depending on the room. M5/M6 refs in body KEPT under the `check_lectures §3` consolidation carve-out: the closer's SUBJECT is naming what M5–M6 built (recognition), not sequencing.*
 
 **Time:** 15 min at presentation pace.
@@ -118,8 +119,6 @@ Flagged
 - Risto voice on "the specific Claude will be replaced." Flat epistemic candour, no sales varnish. This is the beat that carries the lecture past the current model's expiry date.
 
 **Philosophy callouts:** at most one. The *compounding* theme surfaces naturally in the kit-grows-by-accretion beat; no need to name-tag it. Do not bolt the 19 beliefs onto this lecture.
-
-**Edits (2026-07-02):** slide 1 places eval on the map (one clause: the checking loop the M2 drawing left dashed, now drawn solid) and slide 4's triad attribution is re-hedged from "pieces Ronacher named" to the convergence form ("pieces practitioners converge on"), matching the M5 closer and the source stamp (triad cleanly inferable from Ronacher, not his verbatim naming) — theory-completeness-review finding #1 + the provenance item.
 
 **Self-report scoping, and one orphaned stamp.** Slide 2 scopes the Curran numbers as Intercom's own, woven into the Curran sentence — the Intercom stamp's flag-self-report fallback carried in body, per the zombie-stat guard. The geoffintech stamp above is orphaned: the body carries no Ramp claim. It is kept for provenance.
 

@@ -66,9 +66,10 @@ Antti
 
 **Slide deixis accepted:** "paragraphs above" (check_slides.md §12) — *"the framing I said, a few paragraphs above, we would cut"* points inside its own `## Things that went sideways` chunk, two paragraphs up on the same slide, at § *The end-state that was not*. Story lecture, read not projected; the geometry is true where it stands.
 
-**Quality:** compendium-audited 2026-08-30 (writing@02b33a02 story@02b33a02 technical@9a6d906e strategy@9a6d906e slides@9a6d906e behavior@b3143a4 pedagogy@1abb84c6)
+**Quality:** compendium-audited 2026-08-30 (writing@02b33a02 story@02b33a02 slides@4197d503 technical@9a6d906e strategy@9a6d906e behavior@b3143a4 pedagogy@1abb84c6)
 - judges @02b33a02: writing PASS_WITH_TODOS, story PASS — re-judged after the superlative cut and the *prompts* swap. One open todo: `check_student_facing.md` §21, the Claude:agent:LLM ratio at 16:1:8; the memoir genre is the live counter-argument and the call is unmade.
-- judges @9a6d906e: technical PASS, strategy PASS, slides PASS. The writing REVISE at this pin rested on one blocking finding that both refuters killed independently — `resolution` in that instance carries the reasoning.
+- judges @4197d503: slides PASS — re-judged after the superlative cut; §12 deixis accept re-verified against the mechanical checker.
+- judges @9a6d906e: technical PASS, strategy PASS. The writing REVISE at this pin rested on one blocking finding that both refuters killed independently — `resolution` in that instance carries the reasoning.
 - judges @4a722813: behavior PASS, pedagogy PASS (drift-recheck)
 - source-verified 2026-05-25: Geoff Charles quote confirmed verbatim against ramp.md (practitioner direct, 2026-04-09); public X primary paywalled — attribution disposition open for maintainer (see source-verification block below)
 **Time:** 8 min at read-aloud pace. 1238 words body. **Voice timing:** L3 framing line is read by the trainer aloud as setup; the body is then read as the memo, signed at close.

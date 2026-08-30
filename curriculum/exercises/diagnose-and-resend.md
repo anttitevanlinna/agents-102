@@ -1,6 +1,6 @@
 # Diagnose and *package*
 
-**Time:** 60 minutes.
+**Time:** 53 minutes.
 
 **Session** *(new, "Module 5 worktree session")*
 
@@ -88,13 +88,15 @@ Read what Claude proposes. Push back if the verifier covers the wrong shape (a g
 
 ## Phase 4: Write the reference and plan.md
 
-*17 min*
+*10 min*
 
 Ask Claude to assemble both, scoped to the same task, in conversation.
 
 {{prompt:diagnose-and-resend-6}}
 
 > **Cut the grill when the package is good enough to re-send.** The prompt keeps looking because that is its job. Your threshold is practical: scope, success criteria, constraints, tests, and done are clear enough for the second session. Then say *lock it in.* Until then, neither file should change; push back if the agent rewrites between turns.
+
+> **Timebox check.** Two or three rounds fit the slot. If the grill is still finding questions when your time is up, take the recommended answers for the rest, say *lock it in*, and move to Phase 5.
 
 ## Approve
 
@@ -148,7 +150,7 @@ Your `CLAUDE.local.md` and `observations/` have been building in the worktree si
 
 **The M4 return is never framed as a failed run (Antti 2026-08-27, training run).** M4 has no failed run: the un-packaged send-off is designed to underdeliver, and students arrive with a return that partly worked. The Phase 1 header and the `What you do` line say "the un-packaged run", matching the bullet under the header and the module's own vocabulary. "Failure" names the failure *modes* inside the run, not the run.
 
-**Emphasis:** Bold is limited to title-page labels, widget chrome, the Phase 3 verifier-shape menu handles (**LLM judge** / **Deterministic shell-hook** / **Ralph re-feed**), the Phase 4 stop-gate handle, and the two definitional handles on *The reference and plan.md* (**Reference** / **plan.md**). All other body prose stays unbolded.
+**Emphasis:** Bold is limited to title-page labels, widget chrome, the Phase 3 verifier-shape menu handles (**LLM judge** / **Deterministic shell-hook** / **Ralph re-feed**), the two Phase 4 callout handles (stop-gate + timebox), and the two definitional handles on *The reference and plan.md* (**Reference** / **plan.md**). All other body prose stays unbolded.
 
 **Quality:** compendium-audited 2026-08-29 (writing@4a722813 story@e11bbeb4 technical@8cc00874 behavior@a50978f7 pedagogy@e11bbeb4 strategy@1c765f2 slides@a50978f7)
 - judges @4a722813: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
@@ -159,6 +161,8 @@ Your `CLAUDE.local.md` and `observations/` have been building in the worktree si
 - builds a verifier scoped to one diagnosed failure mode before trusting a delegated run's output, instead of re-reading the whole return
 - writes a task-scoped reference + plan.md before any multi-hour delegated run, pointing at the codebase rules rather than restating them
 - fires the verifier once as a smoke test before relying on it, so the check is checked before it gates anything
+
+**Phase 4 runs 10 (Antti 2026-08-30):** the grill is capped in the range of M2's plan push-back closer (also 10) — two to three rounds fit, and the grill-note's good-enough threshold does the cutting. This is what holds M5 at its 120 cap; do not re-inflate without recomputing the module.
 
 **Placement:** the re-send is Phase 5 of this exercise, not a module-level beat; the module file must not carry a second one. The closing lecture follows this exercise. This file owns only its own `**Time:**` line; the module total is computed — `node scripts/calculate-time.js learn-from-the-test`.
 
@@ -223,7 +227,7 @@ OODA
 - **Phase 1 >20 min** — over-diagnosis; force ranking and a single dominant.
 - **Phase 1 finishes without quoted moments** — under-engagement; the gate is quote-presence, not the clock. If summary-only, redo with quote-enforcement.
 - **Phase 3 verifier doesn't fire** — re-scope. The verifier is the load-bearing artefact for the re-send; spend extra time here over Phase 4 if needed.
-- **Phase 4 >25 min** — reference becoming a manifesto. Cap at half-page reference + half-page plan.md.
+- **Phase 4 >15 min** — reference becoming a manifesto, or the grill overrunning its two-to-three rounds. Cap at half-page reference + half-page plan.md; the grill-note's good-enough threshold is the cut.
 - **Whole-room mood below 7** — learning through contrast isn't landing. Check Phase 1 specificity. If diagnoses stayed generic, the contrast in Phase 2 has nothing to bite into.
 
 **Watch-fors (cross-phase):**

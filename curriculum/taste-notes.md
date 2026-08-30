@@ -23,6 +23,16 @@ Append-only stream of editorial calls made on real curriculum text. **Newest at 
 
 ---
 
+## 2026-08-30 — eval run of 15, and one correction about how a call gets put
+
+**"show me as edit card... or this is about rules?"** Antti, on being handed three paragraphs of analysis about `check_strategy_tie_in.md §7`. He did not need the reasoning; he needed to know which of two things he was being asked for — a curriculum edit (his call, card-shaped) or a rules edit (mine, applies directly). I had buried that distinction under the argument for it.
+
+This is the 2026-08-29 *"when asked to show, show"* entry recurring with the polarity flipped. There it was analysis appended to a request to look at something. Here it was analysis offered *instead of* the artefact, on a question where the repo already has a format that makes the decision legible. **Lead with the shape of the decision, then the reasoning. BEFORE/AFTER first even when the surface is not card-gated** — the format is a courtesy to the reader, not only a gate on the author.
+
+**Counterweight, and it is the one worth keeping: a numeral in a header can be load-bearing.** `## Five things a good plan has` — the maintainer note beside it had drifted into arguing the count should go, three expansions having each cost a header edit. Antti: *"Five is right in this case as that helps memorize the list."* The count is a retention device, and a student carries it away from the slide. Already sanctioned by `check_writing.md §20`'s header carve-out, which names this exact header — so the failure was mine, not the rule's: I cited §20 against the header without opening §20. **Verify the rule you are citing, not only the text you are citing it against.**
+
+---
+
 ## 2026-08-29 — orchestrated cut sweep, shared lecture library
 
 19 lectures swept by five read-only subagents carrying this file's counterweights. Report: `curriculum/evals/cut-sweep.ae101.md`.

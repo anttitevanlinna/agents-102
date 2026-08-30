@@ -8,7 +8,7 @@ Then I am going to ask you to hold something uncomfortable about LLMs, based on 
 
 ## The numbers
 
-One session. 2026-04-24. One model: `claude-opus-4-7`. Twenty-odd planning turns. Five taste reversals from me on Claude's confident recommendations. Three subagents in parallel. Four banned-word leaks across those three subagents. A verifier loop ran after. It caught two more leaks the LLM self-checks had missed. It also found three of our own rules contradict each other. Then a three-persona sim ran. Then a re-sim after I applied the fixes. Ten fixes applied in all. And I pushed back several times on Claude saying it was "done" before it actually was. Twice that pushback mattered for this lecture: once when Claude had skipped sims and evals entirely, once when the draft of this very lecture had drifted from what I'd actually told it to write.
+One session. 2026-04-24. One model: `claude-opus-4-7`. Twenty-odd planning turns. Five taste reversals from me on Claude's confident recommendations. Three subagents in parallel. Four banned-word leaks across those three subagents. A verifier loop ran after. It caught two more leaks the LLM self-checks had missed. It also found three of our own rules contradict each other. Then a three-persona sim ran. Then a re-sim after I applied the fixes. Ten fixes applied in all. And I pushed back several times on Claude saying it was "done" before it actually was. Once it mattered for this lecture: the draft had drifted from what I'd actually told it to write.
 
 Those numbers are the story. Everything that follows is commentary.
 
@@ -25,8 +25,6 @@ The sims and evals I did not run. When the verifier loop stopped clean, Claude w
 The three-phrase closer I didn't catch. The closing lecture ended with a three-phrase benediction: *"You know how to test. You know how to learn. You know how to encode."* Exactly the framing I said, a few paragraphs above, we would cut. Four LLM instances wrote and verified that closer. None caught the contradiction with what they had also read. A senior-engineer persona sim read the two files and named it in one pass: *"direct violation of what this opener promised to avoid. Either cut or pull the fang from it."* We cut. The contradiction was plain to a fresh human reader. It was invisible across four LLMs that had just produced it.
 
 The paraphrase I shipped as a quote. The closer's Ramp paragraph attributed a framing to Ramp's own engineers: *"the harness was the bottleneck, not the model."* That was not what Geoff Charles said. Source verification against our research observations found Charles's actual line: *"The models were good enough. The harness wasn't."* Close enough in meaning that Claude did not notice the drift at write time. Specific enough in wording that a source-verify pass caught it in one read. Claude had written a paraphrase and presented it as attribution.
-
-The platform fact I got wrong. The reference page described `/schedule` as a local scheduled task. A capability check read the current Claude Code documentation: `/schedule` is Routines, remote, cloud-based. Desktop local tasks are a separate primitive. Claude had conflated them and written the conflation into a reference page the cohort would read on Monday. The rules file says *"verify capabilities before asserting, not after."* Claude drafted from training-data memory. The rule was in context. The check never ran.
 
 The frame I did not cite. Turn seven of planning, verbatim: *"everyone struggles. Surprises happen. The LLM is not a deterministic machine."* Three blunt sentences from me. The draft that came back wrapped that frame in 150 words of philosophising and dropped *Surprises happen* entirely. I asked: *"Remember the exact frame with my words that I gave for the lecture? Cite them and compare with text style. It is too abstract."* The frame was in the session notes. It was not in the reference artefact as a verbatim check. Claude had it, but not in a shape that would force the comparison at ship time. The rule was loaded. The check never ran.
 
@@ -66,14 +64,16 @@ Antti
 
 <!-- maintainer -->
 
-**Slide deixis accepted:** "paragraphs above" (check_slides.md §12) — *"the framing I said, a few paragraphs above, we would cut"* points inside its own `## Things that went sideways` chunk, four paragraphs up on the same slide. Story lecture, read not projected; the geometry is true where it stands.
+**Slide deixis accepted:** "paragraphs above" (check_slides.md §12) — *"the framing I said, a few paragraphs above, we would cut"* points inside its own `## Things that went sideways` chunk, two paragraphs up on the same slide, at § *The end-state that was not*. Story lecture, read not projected; the geometry is true where it stands.
 
 **Quality:** compendium-audited 2026-08-29 (writing@4a722813 story@0e4f7c9e technical@0cea7581 behavior@b3143a4 pedagogy@1abb84c6 strategy@b3143a4 slides@0e4f7c9e)
 - judges @4a722813: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS
 - source-verified 2026-05-25: Geoff Charles quote confirmed verbatim against ramp.md (practitioner direct, 2026-04-09); public X primary paywalled — attribution disposition open for maintainer (see source-verification block below)
-**Time:** 9 min at presentation pace. ~1050 words body. **Voice timing:** L3 framing line is read by the trainer aloud as setup; the body is then read as the memo, signed at close.
+**Time:** 8 min at read-aloud pace. 1238 words body. **Voice timing:** L3 framing line is read by the trainer aloud as setup; the body is then read as the memo, signed at close.
 
 Section stays open-ended (no count locked) because the thesis is that surprises keep happening.
+
+**Catalogue discipline:** § *Things that went sideways* carries one paragraph per distinct failure mechanism, never a second worked instance of one already told. Six stand: the chat-shaped opening, the banned word across four instances, the flattering end-state, the unrun sims, the self-contradicting closer, the paraphrase shipped as attribution. *"The rule was loaded. The check never ran."* is the catalogue's one repeated formula and lands once, in the last entry, where the three sentences Claude dropped are the three § *The generalisation* then delivers. A seventh entry that restates a mechanism is length, not evidence — the open-ended section above is an invitation to add new mechanisms, not new examples.
 
 **Delivery:** In-room opener for M6. Lands before the exercise; permission-giving, not credibility-performance.
 
@@ -86,7 +86,6 @@ Section stays open-ended (no count locked) because the thesis is that surprises 
 - The session opened chat-shaped: no reference artefact, no `plan.md`, no verifier.
 - Sims and evals were not run; the reference artefact had flagged them as pre-first-cohort work.
 - One paraphrase shipped as an attributed quote (the Charles line).
-- Capability check made in-session: `/schedule` is Routines, remote and cloud-backed; Desktop local tasks are a separate primitive.
 
 When M6 runs for a new cohort, regenerate the opener from that session's own tally — don't reuse these numbers. A dated memo ages cleanly on the date. A reused dated memo ages as a trip report.
 
@@ -107,7 +106,6 @@ Claims
 - `sims-and-evals-not-run` · detail · "Claude had not run them. The reference artefact had flagged them as pre-first-cohort work." ← m6-generation-session
 - `charles-actual-line` · detail · "The models were good enough. The harness wasn't." ← geoffintech-charles
 - `paraphrase-shipped-as-quote` · detail · "Claude had written a paraphrase and presented it as attribution." ← m6-generation-session, geoffintech-charles
-- `schedule-is-routines-remote` · detail · "`/schedule` is Routines, remote, cloud-based. Desktop local tasks are a separate primitive." ← m6-generation-session, cc-schedule-capability
 - `everyone-struggles` · vision · "Everyone struggles." ← none-owed
 - `llm-is-not-deterministic` · vision · "The LLM is not a deterministic machine." ← none-owed
 - `post-training-warmth-read` · vision · "Our read: much is caused by post-training preferring warmth over directness." ← none-owed — an owned inference, labeled as one in body. The literature edge (Sharma et al. on sycophancy) lives in painting-the-picture-with-the-llm's ledger, where the "driven in part by" hedge is marked load-bearing; do not strengthen here either.
@@ -119,7 +117,6 @@ Claims
 Sources
 - m6-generation-session `[checked:2026-04-24 result:ATTESTED due:none]` attested:Antti 2026-04-24 M6-generation-session — [maintainer-attested] the session tally recorded in this file's maintainer block, § *Source (the session tally)*. Every number in the memo pulls from it. The maintainer ran the session: first-hand primary, no URL owed (`check_research_claims.md §1`). The tally lives beside the memo on purpose: an attestation that delegates to a separate journal is only as durable as that journal. **`due:none` is right here, and the reason matters** — this is a dated memo about one session that happened, not a claim about how sessions go. It cannot go stale, only be superseded. fallback: none. **Regeneration, not re-verification, is the maintenance move:** when M6 runs for a new cohort, regenerate the opener from that cohort's notes. A dated memo ages cleanly on its date; a reused dated memo ages as a trip report.
 - geoffintech-charles `[checked:2026-05-25 result:OK due:2026-10-09]` https://x.com/geoffintech/status/2042002590758572377 — [practitioner direct] Geoff Charles (Ramp), 2026-04-09: *"The models were good enough. The harness wasn't."* Verified via `observations/ramp.md` plus the X oEmbed workaround; the x.com page 402s, the quote is confirmed. kb:observations/ramp.md **Load-bearing in an unusual way: the memo's whole point is that our paraphrase drifted from this line, so the verbatim IS the claim.** The documented reframe other files fall back to — "Ramp's engineers' framing converges on: the harness was the bottleneck, not the model" — is precisely the paraphrase this passage is about, and firing it here would delete the anecdote. fallback: if the quote ever fails verification, cut the paragraph rather than soften it.
-- cc-schedule-capability `[checked:2026-04-24 result:OK due:cohort]` https://code.claude.com/docs/en/ — [capability] The capability check the memo describes: `/schedule` is Routines, remote and cloud-backed; Desktop local tasks are a separate primitive. Stamped here because the memo asserts it as a fact about the product, not only as something that happened in a session. **Corroborates `the-loop-has-a-name`'s three-scheduling-primitives bullet, which carries no stamp of its own** — the same underlying check, recorded in the wrong file. fallback: re-test before a cohort; if the split has changed, this passage becomes dated-historical and needs an inline date.
 
 Frameworks
 - Non-determinism as the condition · [borrow:none] · law:none · ← none — Antti's working position, reshaped from an earlier "we live what we teach" credibility framing after the Claude-generated recommendation was cut at turn 7

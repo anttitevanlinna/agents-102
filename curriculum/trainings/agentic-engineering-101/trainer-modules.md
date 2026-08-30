@@ -96,7 +96,7 @@ Don't split M4 across the days. The M1-M2-M4 / M5-M3-M6 reorder exists; it's a c
 
 {{runtime-map:plan-mode-done-right}}
 
-**Prep.** Your demo `CLAUDE.local.md` must hold one rule that obviously belongs in a skill (a multi-step procedure only some sessions need), or the closing `name-what-moves` demo returns "none" and the room sees nothing move.
+**Prep.** Your demo `CLAUDE.local.md` must hold one rule that obviously belongs in a skill (a multi-step procedure only some sessions need), or the closing `name-what-moves` demo returns "none" and the room sees nothing move. If the file has nothing that qualifies, write one from a procedure the demo repo really has — the shape is: a trigger clause (*"only when X"*) plus 3–4 ordered steps naming real files or commands in that repo. Invented paths defeat the demo: the room checks the screen.
 
 - **Plan mode hasn't returned when Phase 3 should start** → the task is too big. Stop it, *"plan only the first slice"*, restart. 8–12 min is normal; past 20 nobody waits.
 - **The integrate prompt wiped `CLAUDE.local.md`** (gitignored, no git undo) → the old rules are still in this session's scrollback; restore from there before the session closes. Check the diff after every student's integrate: add, not replace.

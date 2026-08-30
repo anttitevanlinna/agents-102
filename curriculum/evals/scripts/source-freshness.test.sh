@@ -68,6 +68,21 @@ assert_contains "$TMP/out-fixture.txt" "2 ok" "pruning the machinery leaves the 
 ( cd "$TMP" && bash "$SCRIPT" curriculum/parser.fixture.md ) > "$TMP/out-fixture-explicit.txt" 2>&1 || true
 assert_contains "$TMP/out-fixture-explicit.txt" "parser.fixture.md" "an explicitly named fixture is still scanned"
 
+# ── T5 — due exactly checked+6mo is flagged SUSPECT (pub-anchor rule) ────────
+# The format doc anchors due to PUBLICATION+6mo. A due that equals checked+6mo
+# is the tell of a re-derived window (100 stamps corpus-wide at last count) —
+# not a defect on its own, since pub-day-checked sources coincide, so it flags
+# without gating: exit code and the ok/warn buckets are untouched.
+printf -- '- `[checked:2026-08-01 result:OK due:2027-02-01]` https://example.com/c — [practitioner direct] re-derived due. fallback: none.\n' > "$TMP/curriculum/c.md"
+printf -- '- `[checked:2026-08-01 result:OK due:2027-01-15]` https://example.com/d — [practitioner direct] pub-anchored due. fallback: none.\n' > "$TMP/curriculum/d.md"
+( cd "$TMP" && bash "$SCRIPT" --target 2026-09-15 ) > "$TMP/out-suspect.txt" 2>&1
+rc=$?
+if [[ $rc -eq 0 ]]; then pass=$((pass+1)); else fail=$((fail+1)); echo "FAIL: T5 suspect rows do not gate (rc=$rc)"; fi
+assert_contains "$TMP/out-suspect.txt" "SUSPECT" "T5 a checked+6mo due lands in a SUSPECT section"
+assert_contains "$TMP/out-suspect.txt" "c.md" "T5 the re-derived stamp is the one flagged"
+grep -A3 'SUSPECT' "$TMP/out-suspect.txt" > "$TMP/out-suspect-section.txt" 2>/dev/null || true
+assert_not_contains "$TMP/out-suspect-section.txt" "d.md" "T5 a non-coinciding due is not flagged"
+
 echo
 echo "source-freshness.test.sh: $pass passed, $fail failed"
 [[ $fail -gt 0 ]] && exit 1

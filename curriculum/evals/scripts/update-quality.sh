@@ -224,7 +224,7 @@ while IFS= read -r line; do
   if [[ $in_block -eq 1 ]]; then
     case "$line" in
       "- judges:"*|"- judges "*)                     keep_judges="$line"; keep_judges_all+="${keep_judges_all:+$'\n'}$line" ;;
-      "- cross_module:"*|"- cross_module "*)         keep_cross_module="$line" ;;
+      "- cross_module:"*|"- cross_module "*)         keep_cross_module+="${keep_cross_module:+$'\n'}$line" ;;
       "- voice_panel:"*|"- voice_panel "*)           keep_voice_panel="$line" ;;
       "- maintainer-reviewed:"*|"- maintainer-reviewed "*) : ;; # axis removed 2026-08-15 — stray rows dropped on re-stamp
       "- cohorts:"*|"- cohorts "*) keep_cohorts="$line" ;;
@@ -412,7 +412,28 @@ render_axis_row() {
   esac
 }
 
-cross_module_row=$(render_axis_row cross_module "$state_cross_module" "$keep_cross_module")
+# cross_module holds ONE ROW PER SET — a module in two sets carries two rows.
+# `keep` re-emits every prior row; a new stamp replaces only the row whose
+# set=[...] matches (order-insensitive) and appends when no prior row matches.
+# A stamp whose note names no set (legacy shape) replaces all rows, as before.
+xm_set_key() { # canonical order-insensitive key for a row's set=[...] payload
+  printf '%s\n' "$1" | sed -nE 's/.*set=\[([^]]*)\].*/\1/p' | tr -d ' ' | tr ',' '\n' | sort | paste -sd, -
+}
+if [[ "$state_cross_module" == "keep" ]]; then
+  cross_module_row="$keep_cross_module"
+else
+  cross_module_row=$(render_axis_row cross_module "$state_cross_module" "")
+  xm_new_key=$(xm_set_key "$cross_module_row")
+  if [[ -n "$keep_cross_module" && -n "$xm_new_key" ]]; then
+    xm_kept=""
+    while IFS= read -r xm_row; do
+      [[ -z "$xm_row" ]] && continue
+      [[ "$(xm_set_key "$xm_row")" == "$xm_new_key" ]] && continue
+      xm_kept+="${xm_kept:+$'\n'}$xm_row"
+    done <<< "$keep_cross_module"
+    [[ -n "$xm_kept" ]] && cross_module_row="$xm_kept"$'\n'"$cross_module_row"
+  fi
+fi
 voice_panel_row=$(render_axis_row voice_panel "$state_voice_panel" "$keep_voice_panel")
 maintainer_row="" # maintainer-reviewed axis removed 2026-08-15
 cohorts_row=$(render_axis_row cohorts "$state_cohorts" "$keep_cohorts")
@@ -503,18 +524,22 @@ fi
 NEW_TOP="**Quality:** $stage $top_date${sha_pins:+ ($sha_pins)}${narrative_tail}"
 
 # ---- Splice into file --------------------------------------------------------
+# judges and cross_module can legitimately hold several rows. BSD awk rejects a
+# literal newline inside a -v value, so multi-row values travel with rows joined
+# on \037 (unit separator) and are split back inside awk.
 TMP="$(mktemp)"
 awk -v top="$NEW_TOP" \
-    -v rj="$judges_row" \
-    -v rxm="$cross_module_row" \
+    -v rj="${judges_row//$'\n'/$'\037'}" \
+    -v rxm="${cross_module_row//$'\n'/$'\037'}" \
     -v rvp="$voice_panel_row" \
     -v rmr="$maintainer_row" \
     -v rc="$cohorts_row" '
+  function printrows(s,  n, i, arr) { n = split(s, arr, "\037"); for (i = 1; i <= n; i++) print arr[i] }
   BEGIN { in_block = 0; written = 0 }
   /^\*\*Quality:\*\*/ {
     print top
-    if (rj  != "") print rj
-    if (rxm != "") print rxm
+    if (rj  != "") printrows(rj)
+    if (rxm != "") printrows(rxm)
     if (rvp != "") print rvp
     if (rmr != "") print rmr
     if (rc  != "") print rc
@@ -547,8 +572,8 @@ awk -v top="$NEW_TOP" \
     if (written == 0) {
       print ""
       print top
-      if (rj  != "") print rj
-      if (rxm != "") print rxm
+      if (rj  != "") printrows(rj)
+      if (rxm != "") printrows(rxm)
       if (rmr != "") print rmr
       if (rc  != "") print rc
     }

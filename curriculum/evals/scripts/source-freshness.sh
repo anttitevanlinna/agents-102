@@ -76,6 +76,7 @@ fi
 block=()
 warn=()
 info=()
+suspect=()
 ok_count=0
 
 while IFS= read -r m; do
@@ -134,6 +135,19 @@ while IFS= read -r m; do
     esac
   fi
 
+  # due exactly checked+6mo is the tell of a re-derived window — the format doc
+  # anchors due to PUBLICATION+6mo, and re-opening a source must not hand it a
+  # fresh window. Not a defect on its own (a source published the day it was
+  # checked coincides legitimately), so it flags in its own bucket and never
+  # gates. Cleared per-source by verifying the publication date, never by sweep.
+  if [[ "$sev" != "block" && "$checked" == 20[0-9][0-9]-* && "$due" == 20[0-9][0-9]-* ]]; then
+    plus6="$(date -j -f %Y-%m-%d -v+6m "$checked" +%Y-%m-%d 2>/dev/null \
+          || date -d "$checked +6 months" +%Y-%m-%d 2>/dev/null || true)"
+    if [[ -n "$plus6" && "$due" == "$plus6" ]]; then
+      suspect+=("  $tag  [checked:$checked due:$due]  $anchor")
+    fi
+  fi
+
   line="  $tag  [$result due:$due]  $anchor"
   [[ -n "$reason" ]] && line="$line
        └─ $reason"
@@ -165,6 +179,12 @@ if [[ ${#info[@]} -gt 0 ]]; then
   echo
 fi
 
-echo "summary: ${#block[@]} block · ${#warn[@]} warn · ${#info[@]} info · $ok_count ok"
+if [[ ${#suspect[@]} -gt 0 ]]; then
+  echo "SUSPECT (${#suspect[@]}) — due = checked+6mo; verify the due is publication-anchored, per source, never by sweep:"
+  printf '%s\n' "${suspect[@]}"
+  echo
+fi
+
+echo "summary: ${#block[@]} block · ${#warn[@]} warn · ${#info[@]} info · $ok_count ok · ${#suspect[@]} suspect"
 [[ ${#block[@]} -gt 0 ]] && exit 1
 exit 0

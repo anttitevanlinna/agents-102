@@ -404,6 +404,52 @@ assert_grep    "$TMP/t22.md" 'technical PASS (drift-recheck)' 'T22 and keeps its
 assert_grep    "$TMP/t22.md" 'writing PASS'                  'T22 the freshly stamped class is recorded'
 assert_grep    "$TMP/t22.md" 'slides PASS'                   'T22 both freshly stamped classes are recorded'
 
+# ── T23 — cross_module holds ONE ROW PER SET; a stamp replaces only its own set ─
+# A module can belong to two module-sets. The block used to hold a single
+# `- cross_module:` row, so the last-stamped set overwrote the other and the file
+# could not say both verdicts. One row per set; a new stamp replaces the row whose
+# set=[...] matches (order-insensitive) and appends otherwise; `keep` re-emits all.
+mkfix t23.md '# Module
+<!-- maintainer -->
+**Quality:** compendium-audited 2026-08-27 (writing@aaa1111)
+- judges @aaa1111: writing PASS
+- cross_module @aaa1111: PASS — set=[alpha,beta]; 1 pair, 0 blocking
+- cross_module @aaa1111: PASS — set=[beta,gamma]; 2 pairs, 0 blocking
+
+body text'
+# keep: an unrelated stamp re-emits BOTH rows
+run "$TMP/t23.md" --writing PASS --sha bbb2222 --date 2026-08-30 >/dev/null
+assert_grep "$TMP/t23.md" 'set=[alpha,beta]; 1 pair'  'T23 keep re-emits the first set row'
+assert_grep "$TMP/t23.md" 'set=[beta,gamma]; 2 pairs' 'T23 keep re-emits the second set row'
+# replace-by-set: stamping [beta,alpha] (reordered) updates the [alpha,beta] row only
+run "$TMP/t23.md" --cross-module 'PASS:set=[beta,alpha]; 1 pair, 0 blocking, re-earned' --sha ccc3333 --date 2026-08-30 >/dev/null
+assert_grep    "$TMP/t23.md" 'set=[beta,alpha]; 1 pair, 0 blocking, re-earned' 'T23 matching set row is replaced (order-insensitive)'
+assert_no_grep "$TMP/t23.md" 'set=[alpha,beta]; 1 pair, 0 blocking'            'T23 the old row for that set is gone'
+assert_grep    "$TMP/t23.md" 'set=[beta,gamma]; 2 pairs'                       'T23 the OTHER set row survives the stamp'
+# append: stamping a third set adds a row without touching the other two
+run "$TMP/t23.md" --cross-module 'PASS:set=[gamma,delta]; 3 pairs, 0 blocking' --sha ddd4444 --date 2026-08-30 >/dev/null
+assert_grep "$TMP/t23.md" 'set=[beta,alpha]'  'T23 append leaves row one'
+assert_grep "$TMP/t23.md" 'set=[beta,gamma]'  'T23 append leaves row two'
+assert_grep "$TMP/t23.md" 'set=[gamma,delta]' 'T23 the new set row is appended'
+
+# ── T24 — an axis-only stamp on a MULTI-ROW judges block must not die in awk ──
+# BSD awk rejects a literal newline in a -v value. The all-keep path hands the
+# awk splice keep_judges_all verbatim, which is multi-line whenever the block
+# carries two judges rows — so an axis-only stamp on such a file exited 2 and
+# wrote nothing. Rows now travel \037-joined and are split back inside awk.
+mkfix t24.md '# Lecture
+<!-- maintainer -->
+**Quality:** compendium-audited 2026-08-27 (writing@aaa1111 story@bbb2222)
+- judges @bbb2222: story PASS
+- judges @aaa1111: writing PASS
+
+body text'
+rc=$(run "$TMP/t24.md" --cohorts 'PASS:2026-09-15 pilot' --sha ccc3333 --date 2026-08-30)
+assert_rc   "$rc" 0                                  'T24 axis-only stamp on a two-judges-row block exits 0'
+assert_grep "$TMP/t24.md" 'story PASS'               'T24 first judges row survives'
+assert_grep "$TMP/t24.md" 'writing PASS'             'T24 second judges row survives'
+assert_grep "$TMP/t24.md" '2026-09-15 pilot'         'T24 the axis row landed'
+
 echo "──────────────────────────────"
 echo "update-quality.test.sh: $pass passed, $fail failed"
 [[ $fail -eq 0 ]]

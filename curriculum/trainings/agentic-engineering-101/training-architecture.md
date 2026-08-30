@@ -263,8 +263,7 @@ exercises). Match the `exercises/` path, not the link text.
 1. **Audit, do not bulk-tag.** Untagged already means core in practice, so the work is finding the
    mis-filed slides and tagging those, not labelling 322. Tag while cutting — the T1/T2/T3
    judgement is the same judgement the cut requires, and splitting it into a separate sweep means
-   making it twice. **Still open, and now the only thing between the switch and a usable
-   barebones edition.**
+   making it twice. **Still open — the only thing between the switch and a real edition.**
 2. **Runtime toggle, not a build variant. — LANDED 2026-08-30.** Details below.
 3. **Lint it.** *No T2/T3 slide before a module's first exercise* makes goal 1 self-enforcing
    instead of re-derived per module. **Open.** Cheap to write now that `maxTier` exists, but it

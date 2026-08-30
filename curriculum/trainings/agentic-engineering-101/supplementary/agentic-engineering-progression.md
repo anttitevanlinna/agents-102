@@ -49,7 +49,7 @@ The measure is not maximum delegation. It is knowing what to delegate, how far t
 {{figure:delegation-frontier}}
 
 - **Reach** is how much you delegate: the size of the task and the distance between checks.
-- **Calibration** is whether trust in the result was earned by a gate you have verified.
+- **Calibration** is whether trust in the result was earned by a check you have verified.
 - High reach splits on calibration. Measured gates produce calibrated agency. Unmeasured green produces reckless autonomy.
 - The frontier moves outward only as fast as the gates behind it. Push reach past calibration and you are checking less, not delegating more.
 
@@ -83,7 +83,7 @@ Claims
 - `measure-not-maximum-delegation` · vision · "The measure is not maximum delegation. It is knowing what to delegate, how far to let it run, and what evidence to demand." ← none-owed
 - `playbook-team-progression` · detail · "a similar team-scale movement ... from using the agent inside one task to engineering the conditions behind many tasks" ← fred-ai-native-playbook
 - `reach-definition` · vision · "**Reach** is how much you delegate: the size of the task and the distance between checks." ← none-owed
-- `calibration-definition` · vision · "**Calibration** is whether trust in the result was earned by a gate you have verified." ← none-owed
+- `calibration-definition` · vision · "**Calibration** is whether trust in the result was earned by a check you have verified." ← none-owed
 - `high-reach-splits` · vision · "Measured gates produce calibrated agency. Unmeasured green produces reckless autonomy." ← none-owed
 - `frontier-follows-gates` · vision · "The frontier moves outward only as fast as the gates behind it" ← none-owed
 - `wollsen-parallel-session-account` · detail · "he kept 30 to 40 sessions open and actively managed 10 to 15 through a working day" ← fred-throughput-account

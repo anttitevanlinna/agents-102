@@ -1,8 +1,9 @@
 {
   "class": "pedagogy",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/earn-the-trust.md",
-  "body_sha": "bf800b9aec15b8e98cea66805176f7b940e3c36411220834005851d729ec5540",
-  "verdict": "PASS",
+  "body_sha": "cff8661837573772231b218eee279857187bdcdbb7ad96aa1b35496ad5380834",
+  "shape_hash": "ad713f75cd98040d",
+  "verdict": "PASS_WITH_TODOS",
   "training": "ae101",
   "rules_evaluated": [
     {
@@ -10,7 +11,7 @@
       "rule_index": 1,
       "rule_lead": "Walk-away test (M2+).",
       "verdict": "PASS",
-      "evidence": "L22: 'Fork a sibling git worktree and run two Claude Code sessions on the same history side by side, one window per lane, working the idle window while the other runs a long prompt.' The side-quest fork ramps trust distance beyond M2 (student works one window while the other agent runs unattended); harm (still-prompting-not-agentic) absent.",
+      "evidence": "L22 LO: '**Fork** a sibling git worktree and run two Claude Code sessions on the same history side by side, one window per lane, working the idle window while the other runs a long prompt' — the closest line to 'still prompting, not agentic', and it stays inside: the student is explicitly away from one session while it runs. Trust distance ramps past M2's plan-and-watch.",
       "fix_hint": null,
       "blocking": true
     },
@@ -19,7 +20,8 @@
       "rule_index": 2,
       "rule_lead": "50% magic rule (M3–M8).",
       "verdict": "N/A",
-      "evidence": "Aggregate ratio (≥3 of 6 post-M2 modules produce 'holy shit' moments) is a corpus-level count, not evaluable from one file. L134 Mood target 'earned trust' frames M3 as a supporting/functional module, consistent with being one of the non-magic three, but the ratio itself needs the other five files to check.",
+      "evidence": null,
+      "na_reason": "ratio spans the M3–M8 set; §60 unit is the six-module set, not one file",
       "fix_hint": null,
       "blocking": false
     },
@@ -28,7 +30,7 @@
       "rule_index": 3,
       "rule_lead": "Trust the agentic design — no human backstops.",
       "verdict": "PASS",
-      "evidence": "No 'Antti observes manually' or exhaustive if-then ruleset in student body. L23: student 'pick[s] one threat worth hardening against' — decision stays with the student, not scripted. No confirmation gate imposed on a reversible/non-user-visible action.",
+      "evidence": "Closest line, L69: 'If the agent names something missed, decide whether to compound it now or accept the loss.' That is student judgement on a reversible authoring act, not a human backstop bolted onto an agent flow; no 'trainer observes manually' and no if-then ruleset governs agent behaviour anywhere in L1–L112.",
       "fix_hint": null,
       "blocking": true
     },
@@ -36,8 +38,9 @@
       "compendium": "check_pedagogy.md",
       "rule_index": 4,
       "rule_lead": "Quality ladder.",
-      "verdict": "PASS",
-      "evidence": "Artifacts meet the 8 (ship) bar: re-runnable artifact (ADR path, SKILL.md), traveling vocabulary (STRIDE, ADR, compound), editorial voice intact. Mood target names 'earned trust' not an arc-peak 9, consistent with M3 being a supporting module (rule 4's ~50%-are-8s default), not an over-claim.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "7/8/9 rating is assigned at design review; no rating is readable from the body",
       "fix_hint": null,
       "blocking": false
     },
@@ -46,7 +49,7 @@
       "rule_index": 6,
       "rule_lead": "One exercise = one bounded activity.",
       "verdict": "PASS",
-      "evidence": "Four linked exercises (L33,37,39,41) are each single files, not sub-numbered within this module index. The two non-exercise sections with fences ('Sharpen the skill', 'Clear the session', L43-71) are closing rituals, not internal do→observe→adjust arcs.",
+      "evidence": "grep 'Exercise [0-9][a-z]\\|Phase [0-9]' over L1–L112 → 0 (pattern validated: '## Phase 2' → 1). The four include-links L33/L37/L39/L41 are four separate files, no sub-numbering.",
       "fix_hint": null,
       "blocking": true
     },
@@ -54,8 +57,8 @@
       "compendium": "check_pedagogy.md",
       "rule_index": 7,
       "rule_lead": "Modules composable across variants.",
-      "verdict": "N/A",
-      "evidence": "No VARIANT markers or audience-fork content in this module-index file; AE101 is a single-audience (engineer-tier) training and this file shows no duplicated/forked framing to check.",
+      "verdict": "PASS",
+      "evidence": "Closest line, L12: 'Bring the feature you planned at M2, that's the default' — a cross-module dependency that could have forked the file. It does not: the cut-variant branch lives as a `no-module:earn-the-trust` marker inside `plan-mode-done-right.md` (recorded L125), which is the VARIANT-marker-inside-library-file shape the rule asks for.",
       "fix_hint": null,
       "blocking": false
     },
@@ -64,16 +67,16 @@
       "rule_index": 8,
       "rule_lead": "Three-level completeness.",
       "verdict": "PASS",
-      "evidence": "Strategy frame: L6 Big Idea 'Trust isn't watching harder.' Runtime artifact trainer reads at blocker: L176 Artefact-contracts row — ADR 'Consumed by M4 Phase 2 walk-and-fill.' Sendable customer asset: L104 '## Next' — 'Your staff engineer sees a test-strategy skill... your CISO sees a STRIDE decision with an ADR.' All three levels present and chain cleanly.",
+      "evidence": "Strategy frame L6 Big Idea; runtime artifact = maintainer block's Push-back moves / Decision points / Watch-fors (L150–L178) a trainer reads at a blocker; sendable asset = L20–L27 What You'll Learn, readable by a stranger and chaining back to the Big Idea.",
       "fix_hint": null,
-      "blocking": true
+      "blocking": false
     },
     {
       "compendium": "check_pedagogy.md",
       "rule_index": 9,
       "rule_lead": "Pattern-recognition LOs need n≥2 instances with contrast.",
-      "verdict": "N/A",
-      "evidence": "L22-27 What You'll Learn verbs are Fork/Invoke/Split/Author/Test/Ship — none is read/spot/judge/notice/recognize, so the n≥2-with-contrast requirement doesn't attach to any LO here.",
+      "verdict": "PASS",
+      "evidence": "Closest LO, L23: '**Invoke** … name what your first read missed' — carries a recognition verb inside an Apply-led LO. n≥2 holds anyway: access-mapping (L37) then STRIDE (L39) are two scrutiny passes over the SAME feature with different lenses, which is the paired-scrutiny condition.",
       "fix_hint": null,
       "blocking": false
     },
@@ -82,7 +85,7 @@
       "rule_index": "9b",
       "rule_lead": "Progression-with-variations is the spine.",
       "verdict": "PASS",
-      "evidence": "L47 Compound step ('skill sharpen mandatory, rules-file opportunistic') is stated to reuse M1's rule-write pattern (L213 Frameworks: 'matches M1's CLAUDE.local.md pattern') while adding a new face (the skill-sharpen artifact, absent at M1) — same move, new face, not verbatim repeat. The newly added ADR sentence (L47, diff) layers a third, passively-compounding artifact distinct from the two-artifact active step, not a spent repeat.",
+      "evidence": "The compound move recurs from M1 with a new face, and the file names the variation itself at L47: 'Module 3's compound runs against two artifacts: the skill … and your `./CLAUDE.local.md`'. Maintainer L200 pins the delta — 'M3's Compound step is *ship to team kit*'. Not verbatim repetition of M1's rules-file compound.",
       "fix_hint": null,
       "blocking": false
     },
@@ -91,7 +94,7 @@
       "rule_index": 10,
       "rule_lead": "Student agency — adults decide.",
       "verdict": "PASS",
-      "evidence": "L16 'Optional pre-reads', L98 'Optional. One read.', L81-83 'Optional challenges' — all marked opportunity not compulsion; no forced-pacing language ('sit N min, don't scan') anywhere in body.",
+      "evidence": "Closest line to compulsion, L97: 'Come to Module 4 without having picked the task and you'll be scrambling for one while the exercise is already running. Your call.' Consequence named, decision left with the student; L86 'Pick one when you want to…' and L101 'Optional.' carry the same register. No pacing prescriptions.",
       "fix_hint": null,
       "blocking": true
     },
@@ -100,7 +103,7 @@
       "rule_index": 11,
       "rule_lead": "Delegation — student brings, Claude screens.",
       "verdict": "PASS",
-      "evidence": "L12 'swap to something from your backlog... code already in the repo, a Jira or Linear ticket, or a design doc' — student BRINGS the source; Claude is never asked to fetch from Jira/Linear itself. L164 (post-diff) 'The codebase's test framework... student answers from the codebase, not generic' keeps the judgment with the student.",
+      "evidence": "L51 prompt asks Claude to read `~/.claude/skills/test-strategy/SKILL.md` and its own scrollback — both accessible by construction. The judgement calls stay with the student: L31 picks the feature, L69 decides whether to compound. Closest to violating: L49 'integrate a rule into `./CLAUDE.local.md` if one earned itself' — a fit-screen against session evidence, which is the agent's half of the split.",
       "fix_hint": null,
       "blocking": true
     },
@@ -109,7 +112,7 @@
       "rule_index": 12,
       "rule_lead": "Split mega-exercise when phases = distinct skills + distinct artifacts.",
       "verdict": "PASS",
-      "evidence": "Access-map → STRIDE-decision-and-ADR → test-strategy-skill are already three separate linked exercise files (L37,39,41), chained by artifact (STRIDE's threat feeds the ADR; the ADR/access-map feed the skill's authoring conversation) rather than folded into one mega-file.",
+      "evidence": "Four exercises L33–L41, each with its own artifact (worktree, access map, ADR, SKILL.md), chained Ex→Ex. Closest to over-splitting: L37/L39 (access map → STRIDE) which could read as one activity; they stay separate because the ADR is a distinct artifact from the surface map and the maintainer's Decision points budget them apart (L173).",
       "fix_hint": null,
       "blocking": false
     },
@@ -118,25 +121,26 @@
       "rule_index": 13,
       "rule_lead": "Artifact-realism check.",
       "verdict": "PASS",
-      "evidence": "Named tools/skills/paths (curated access-control-analysis/STRIDE/security-tools skills, `~/.claude/skills/test-strategy/SKILL.md`, `./CLAUDE.local.md`, `claude -p`, GitHub Actions) all match the training's shipped content-folder inventory per L135's Meta note ('content folder holds three curated skills'). The two diff-touched external links (Willison agentic-loops, da Costa backpressure) are optional reading URLs, not installed artifacts, and both carry current source-freshness stamps (L118-119).",
+      "evidence": "Every named path resolves: `~/.claude/skills/test-strategy/SKILL.md` (L45) is produced by Ex3 at L41 in this same module; `./CLAUDE.local.md` (L47) ships at M1; the three curated skills arrive in the prework tarball (maintainer L146). No prompt names a Jira/Linear connector.",
       "fix_hint": null,
-      "blocking": false
+      "blocking": true
     },
     {
       "compendium": "check_pedagogy.md",
       "rule_index": 14,
       "rule_lead": "Teach principle + technique — default.",
       "verdict": "PASS",
-      "evidence": "No unexplained load-bearing noun the student must invoke without WHY/HOW. 'Backpressure' (L100, diff) is named only in an optional pre-read description, orienting toward a later lecture's term, not something the student is asked to USE now — falls under the rule's own orientation exception.",
+      "evidence": "Closest line, L45's invocation of the curated skills as black boxes — but the WHY is on the page at L76: 'A curated skill is upstream work packaged for you to invoke. The labor is delegated; the judgment isn't.' and the HOW is the subagent split at L24. Nothing load-bearing is invoked unexplained.",
       "fix_hint": null,
-      "blocking": true
+      "blocking": false
     },
     {
       "compendium": "check_pedagogy.md",
       "rule_index": 15,
       "rule_lead": "Auto-fire sim+eval after significant rewrite.",
       "verdict": "N/A",
-      "evidence": "Diff's substantive changes (pre-read source swap, sponsor-language cleanup, one added sentence) touch none of the trigger conditions (phase structure / LOs / mood contract / new practitioner artifact-or-skill / forcing-function mechanic). The file's own maintainer notes (L112, L123) correctly mark the per-class Quality SHAs as predating the touch and call for re-audit — exactly the self-check this dispatch is fulfilling — but the trigger for a full sim+eval fire is not met by this diff.",
+      "evidence": null,
+      "na_reason": "authoring-process rule; nothing in this read rewrites the file",
       "fix_hint": null,
       "blocking": false
     },
@@ -145,7 +149,7 @@
       "rule_index": 16,
       "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
       "verdict": "PASS",
-      "evidence": "L67 '> Might be slightly leaky. Here, the simple ask is good enough.' is a suggestion-register calibration ('good enough'), not a bare imperative count — stays inside the pacing-calibration boundary. No count-script ('two rounds max') found in student body; the three teaching prompts (L51,65,71) carry the load-bearing asks.",
+      "evidence": "Prompt-only read holds: the L51 fence carries the whole sharpen move ('find the one section … Rewrite that section in place. Do not append a critique addendum'), so mood and artifact land without the body. Closest body imperative, L49: 'Ask Claude to sharpen the skill's weakest section from invocation evidence' — an activity lead-in for the fence below it, not a second forcing function. No count-scripts: no 'two rounds max' shape anywhere in L1–L112.",
       "fix_hint": null,
       "blocking": true
     },
@@ -154,43 +158,45 @@
       "rule_index": 17,
       "rule_lead": "Corporate infra = nice-to-have, never forcing function.",
       "verdict": "PASS",
-      "evidence": "Diff removes the sponsor-pre-engagement framing: L178 (was 'Sponsor-stated ADR home... sponsor's actual convention overrides') now reads 'ADR home (Ex2) — the repo's own convention if it has one; docs/adr/NNNN-slug.md otherwise'; L163 'Sponsor-stated team-kit home' → 'Team-kit home'; L150 'Sponsor non-answer is fine' reassurance-prose cut to plain 'fine'. This removes exactly the sponsor-tracker/ADR-template dependency the rule bans and replaces it with a personal/repo-native default carrying the same teaching moment — matches memory feedback_no_sponsor_prework_contract.md.",
+      "evidence": "Closest line, L27: '**Ship** one authored skill personal-first, and know when it's a team PR.' Team-kit home is named as a later judgement, never a step; the skill installs to the personal `~/.claude/skills/` path (L45) and the full teaching moment runs there. Maintainer L157 makes it explicit: 'Team-kit home unresolved — fine.'",
       "fix_hint": null,
-      "blocking": true
+      "blocking": false
     },
     {
       "compendium": "check_pedagogy.md",
       "rule_index": 18,
       "rule_lead": "Personal-first, team promotion via human conversation.",
       "verdict": "PASS",
-      "evidence": "L58 prompt: skill integrates into `./CLAUDE.local.md` (personal), team-worthy flag 'so I can open a separate PR against ./CLAUDE.md later' (human conversation, not auto-PR). L27 LO: 'Ship one authored skill personal-first, and know when it's a team PR.'",
+      "evidence": "L51 prompt: 'If the rule is team-worthy, flag it in your summary so I can open a separate PR against ./CLAUDE.md later.' Agent flags, human opens the PR — exactly the rule's split. Personal target is `./CLAUDE.local.md` ('personal file, not team ./CLAUDE.md', same fence).",
       "fix_hint": null,
-      "blocking": true
+      "blocking": false
     },
     {
       "compendium": "check_pedagogy.md",
       "rule_index": 19,
       "rule_lead": "Measure silent failure, not just friction.",
-      "verdict": "N/A",
-      "evidence": "Cohort pass-rate evaluation methodology; no pass-rate estimate is stated in this file to check against the two-question standard.",
+      "verdict": "PASS",
+      "evidence": "Maintainer L174: '**Ex3 finishes under 20 min:** student accepted defaults' — the frictionless path named as a defect with a rescue, which is the second question the rule demands. The mood-below-7 diagnostic (L176) tests real-vs-theatrical rather than smooth-vs-rough.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_pedagogy.md",
       "rule_index": 20,
-      "rule_lead": "Don't pre-set categories before experiment runs.",
+      "rule_lead": "Don’t pre-set categories before experiment runs.",
       "verdict": "N/A",
-      "evidence": "Eval-methodology rule about category pre-specification; this student-facing module file makes no experiment-category claim.",
+      "evidence": null,
+      "na_reason": "experiment-design rule; this file runs no data collection",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_pedagogy.md",
       "rule_index": 21,
-      "rule_lead": "Verification layers sample DIFFERENT error distributions — not belt-and-braces.",
-      "verdict": "PASS",
-      "evidence": "L55 'Read the sharpen with a skeptical eye' names multiple distinct layers (in-session self-audit, over-flag prompting, fresh-session subagent) rather than declaring done on one pass; no single-layer-suffices language present.",
+      "rule_lead": "Verification layers sample DIFFERENT error distributions.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "verification-machinery rule; the body authors no eval ladder (M5 surface)",
       "fix_hint": null,
       "blocking": false
     },
@@ -199,7 +205,8 @@
       "rule_index": "21b",
       "rule_lead": "Cheap-before-expensive verification ordering.",
       "verdict": "N/A",
-      "evidence": "No technical verification ladder is taught to the student in this file (that lives in later modules per Frameworks L198's hooks/skills partition); Ex1→Ex2→Ex3 is a fixed pedagogical sequence, not a cheap-to-expensive check ladder.",
+      "evidence": null,
+      "na_reason": "no verification tier ordering authored in this body",
       "fix_hint": null,
       "blocking": false
     },
@@ -208,16 +215,17 @@
       "rule_index": 22,
       "rule_lead": "Rule in memory without forcing function = worse than no rule.",
       "verdict": "N/A",
-      "evidence": "Memory/compendium-authoring rule; not applicable to student-facing module content.",
+      "evidence": null,
+      "na_reason": "governs compendium/memory authoring, not a student-facing module body",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_pedagogy.md",
       "rule_index": 23,
-      "rule_lead": "Short skeptical pushback on \"done\" = re-verify trigger.",
-      "verdict": "N/A",
-      "evidence": "Judge/generator process rule about re-opening a spec on pushback; not a property of the artifact itself.",
+      "rule_lead": "Short skeptical pushback on “done” = re-verify trigger.",
+      "verdict": "PASS",
+      "evidence": "L55: 'You can make the grill hotter: ask Claude to over-flag (*\"be harsher than necessary, find at least two sections that underdelivered, assume it's worse than it looks\"*)' — a re-open-and-walk move, not a re-confirm. This is the rule's own shape applied to a self-audit.",
       "fix_hint": null,
       "blocking": false
     },
@@ -226,16 +234,16 @@
       "rule_index": 24,
       "rule_lead": "Cohort execution is trainer-paced + concurrent, not sequential.",
       "verdict": "PASS",
-      "evidence": "L131 Pacing line: 'Trainer demos slowly, room copy-pastes concurrently. Self-study follow-along runs comparably.' Matches the rule verbatim.",
+      "evidence": "Maintainer L133: 'Trainer demos slowly, room copy-pastes concurrently. Self-study follow-along runs comparably.' Runtime is computed by `calculate-time.js` rather than summed narratively.",
       "fix_hint": null,
-      "blocking": true
+      "blocking": false
     },
     {
       "compendium": "check_pedagogy.md",
       "rule_index": 25,
       "rule_lead": "Host-skill optional; maintainer blocks trainer-only.",
       "verdict": "PASS",
-      "evidence": "L137 header is exactly 'Push-back moves:' (trainer-delivers format), bullets name Trainer as actor throughout (L138-145); no 'Trainer / Nerd push:' or host-skill parenthetical anywhere.",
+      "evidence": "grep -ci 'nerd' over L1–L112 → 0 and the maintainer header at L150 is '**Push-back moves:**' with the trainer as sole actor in every bullet ('Trainer push:', 'Trainer runs the self-critique move'). No 'Trainer / Nerd' pairing, no self-study parenthetical.",
       "fix_hint": null,
       "blocking": false
     },
@@ -244,16 +252,16 @@
       "rule_index": 26,
       "rule_lead": "Reflection beats: in-chat over file-write.",
       "verdict": "PASS",
-      "evidence": "The two file writes taught (SKILL.md sharpen, CLAUDE.local.md rule) both have named downstream readers per the Artefact-contracts table (L177-178: M4/M5/M6 read the skill; every future session auto-loads CLAUDE.local.md) — not proof-of-reflection blankets.",
+      "evidence": "Closest line, L49: 'integrate a rule into `./CLAUDE.local.md`' — a file write on a reflective beat. It clears the downstream-reader test explicitly: the artefact-contracts table (L186) names the consumer as 'Every future session in this repo (auto-loads at session-cold start)'. The convergence beat at L63–L69 stays in chat with no file at all.",
       "fix_hint": null,
-      "blocking": true
+      "blocking": false
     },
     {
       "compendium": "check_pedagogy.md",
       "rule_index": 27,
       "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
       "verdict": "PASS",
-      "evidence": "No authored room-share/pause-cue/'discuss with' sentence in body. L31 'The room's features will differ wildly; that's the point' names WORK-outcome diversity (why the prompt has no single right answer), not a cohort-management instruction — stays on the WORK side of the rule's diagnostic.",
+      "evidence": "grep -ci 'discuss with|pair up|share with the room|group' over L1–L112 → 0 (pattern validated against a planted line → 1). One room mention, L31: 'The room's features will differ wildly; that's the point.' — inside the third carve-out (2026-08-12, room may be named sparingly), one line in the file, no authored conversation and no trainer cue.",
       "fix_hint": null,
       "blocking": true
     },
@@ -262,7 +270,8 @@
       "rule_index": 29,
       "rule_lead": "Eval = fixed yardstick; thing measured learns.",
       "verdict": "N/A",
-      "evidence": "Eval-methodology rule about scorer stability across rounds; no eval loop is described in this student-facing file.",
+      "evidence": null,
+      "na_reason": "eval-loop rule; no scorer is authored or moved in this body",
       "fix_hint": null,
       "blocking": false
     },
@@ -271,16 +280,16 @@
       "rule_index": 30,
       "rule_lead": "Reading burden for verification = banned. Claude audits Claude.",
       "verdict": "PASS",
-      "evidence": "L55 'Read the sharpen with a skeptical eye' bounds the read to 'two or three lines each' (per the prompt's own instruction, L56) and offers Claude-on-Claude escalation (over-flag prompt, fresh-session subagent) as the 'opt up' path, with in-session student read as the light default — this is bounded emotional/confirmation reading, not the open-ended correctness-audit burden the rule targets, and it foreshadows (names the self-audit-charity failure + offers the M5/M6-style fresh-session tool) rather than pre-empting M5/M6's full teaching of the technique.",
-      "fix_hint": "Consider tightening 'the read' framing to make explicit this is a confirmation glance, not a correctness audit, if a future pass wants to close the ambiguity outright.",
-      "blocking": false
+      "evidence": "Closest line, L51 prompt: 'Show me before and after, two or three lines each.' Two or three lines is a decision read, not a correctness audit, and the correctness escalation is handed back to Claude at L55 ('fresh-session it (dispatch a subagent with the SKILL.md pasted cold, no scrollback)'). No step asks the student to diff Claude's output for errors.",
+      "fix_hint": null,
+      "blocking": true
     },
     {
       "compendium": "check_pedagogy.md",
       "rule_index": 31,
       "rule_lead": "Self-report + self-audit charity — verify at artifact, over-flag or fresh-session for critique.",
       "verdict": "PASS",
-      "evidence": "L55 names same-window self-audit under-flagging explicitly, offers over-flag prompt text and fresh-session subagent dispatch verbatim — textbook implementation of both (a) verify-at-artifact (student sees the actual before/after diff, not a summary) and (b) self-audit-charity fixes.",
+      "evidence": "L55 names the charity and both fixes in the rule's own order: 'charitable (same-context-window self-audit under-flags) … ask Claude to over-flag … or fresh-session it'. The verify-at-artifact half is the L51 in-place rewrite plus before/after, not a summary.",
       "fix_hint": null,
       "blocking": false
     },
@@ -289,7 +298,7 @@
       "rule_index": 32,
       "rule_lead": "Offered structures need forced-engagement mechanic.",
       "verdict": "PASS",
-      "evidence": "L149 Watch-fors: 'Curated-skill reverence — student treats the STRIDE skill as oracle. Remind: the skill is good; the decision is yours.' Plus L23 LO requires the student to 'pick one threat worth hardening against' — active decision required, not verbatim acceptance of the curated skill's output.",
+      "evidence": "Closest line, L51: 'if one rule … earned itself this session, integrate it' — an offered structure the student could take verbatim. The forced-engagement lives at L69: 'decide whether to compound it now or accept the loss', plus the fence's own 'If nothing earned itself, say so and skip the rules-file write', which removes the copy-a-default path.",
       "fix_hint": null,
       "blocking": false
     },
@@ -298,7 +307,8 @@
       "rule_index": 33,
       "rule_lead": "Source-type blindness on ingestion.",
       "verdict": "N/A",
-      "evidence": "No heterogeneous source-folder ingestion task in this module; rule targets Claude reading mixed PPTX/PDF source decks during content creation.",
+      "evidence": null,
+      "na_reason": "no heterogeneous source-folder ingestion in this module",
       "fix_hint": null,
       "blocking": false
     },
@@ -307,16 +317,16 @@
       "rule_index": 34,
       "rule_lead": "Task selection drives outcome → name floor AND ceiling.",
       "verdict": "PASS",
-      "evidence": "L12 names the ceiling failure ('Too small... crunches it in thirty seconds... Too large and you don't get through it') and L14 bolds the anti-pattern callout '**A feature you could ship in a few hours. Not a quarter-long epic.**' — floor and ceiling both stated, no minimizer language.",
+      "evidence": "Ceiling and floor both bolded and both placed: L14 '**A feature you could ship in a few hours. Not a quarter-long epic.**' at prework, and L95 '**One scoped task … Bigger than a typo-fix, smaller than an epic.**' at the M4 hand-off. Maintainer watch-for 'Feature sprawl' (L165) has its matching body callout, so the move-it clause does not fire. No minimizers.",
       "fix_hint": null,
       "blocking": true
     },
     {
       "compendium": "check_pedagogy.md",
       "rule_index": "34b",
-      "rule_lead": "Maintainer-block hedge naming section's own failure mode = cut-signal, not warning.",
-      "verdict": "N/A",
-      "evidence": "No maintainer-block Watch-for/Risk line hedges its own section's premise (speculation-as-authority) in this file; the Watch-fors entries are ordinary prescriptions, not disclaimers propping up a dubious claim.",
+      "rule_lead": "Maintainer-block hedge naming section’s own failure mode = cut-signal, not warning.",
+      "verdict": "PASS",
+      "evidence": "Closest hedge, L67: '> Might be slightly leaky. Here, the simple ask is good enough.' Premise-test: remove it and the converge-before-clear beat still stands on L63 + the fence. Recoverable-by-callout, so rule 34's branch, not the cut branch — and the maintainer records the same call at L143.",
       "fix_hint": null,
       "blocking": false
     },
@@ -325,7 +335,7 @@
       "rule_index": 35,
       "rule_lead": "Audience tier determines authoring substrate.",
       "verdict": "PASS",
-      "evidence": "Engineer-tier substrate used throughout: authored Claude Code skill (`~/.claude/skills/test-strategy/SKILL.md`) + multi-layer CLAUDE.md (`./CLAUDE.local.md`) — matches AE101's prescribed substrate exactly, no chat-only or plugin-install mismatch.",
+      "evidence": "AE101 = engineer tier, and the substrate matches: user-scope skill at `~/.claude/skills/test-strategy/SKILL.md` (L45) plus the layered `./CLAUDE.local.md` vs `./CLAUDE.md` split named in the L51 fence. Day-1 installability is settled at prework, so nothing steals the teaching moment here.",
       "fix_hint": null,
       "blocking": false
     },
@@ -333,8 +343,8 @@
       "compendium": "check_pedagogy.md",
       "rule_index": 36,
       "rule_lead": "Verification machinery needs smoke-test before trust.",
-      "verdict": "N/A",
-      "evidence": "No new verification machinery (hook/judge/loop/gating skill) is built by the student in this module; the security-tools rick-roll skill is pre-built/pre-tested content, not student-authored machinery.",
+      "verdict": "PASS",
+      "evidence": "L26 LO: '**Test** the authored skill: … then invoke it on the security-tested feature and ask Claude whether the test strategy is any good.' Authoring the skill is separated from invoking it, on a real feature, with evidence read back — the build/smoke-test split the rule requires. Maintainer L155 carries the rescue for skipping it.",
       "fix_hint": null,
       "blocking": false
     },
@@ -343,7 +353,7 @@
       "rule_index": 37,
       "rule_lead": "Context-loading tiers as staged progression.",
       "verdict": "PASS",
-      "evidence": "M3 deepens Skills (lazy-load tier) via authoring + `./CLAUDE.local.md` (auto-load tier, already established) — no evidence of a tier being introduced out of order or lectured about abstractly without a surface to prove it (skill authored and invoked live).",
+      "evidence": "Lazy-load is the tier this module earns, and it earns it by running the surface: skills invoked as subagents (L23), the reference pointer at L18 marked 'Optional'. No lecture-on-context-economy without a surface — the auto-load tier stays where M1 taught it (`./CLAUDE.local.md`, L47).",
       "fix_hint": null,
       "blocking": false
     },
@@ -351,8 +361,9 @@
       "compendium": "check_pedagogy.md",
       "rule_index": 39,
       "rule_lead": "Removals are strategic — ask before cutting.",
-      "verdict": "PASS",
-      "evidence": "Diff contains no removal of a section/exercise/LO/named pattern/bolded callout — only a citation swap (Willison→da Costa moved, not deleted — both links still live in the corpus) and wording simplification (sponsor-language trim). No strategic entity was cut.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "generation-step rule; a read proposes no removal",
       "fix_hint": null,
       "blocking": false
     },
@@ -361,7 +372,8 @@
       "rule_index": 41,
       "rule_lead": "Symmetric visible-mechanics > runtime fork when dual-runtime constraints break agentic move.",
       "verdict": "N/A",
-      "evidence": "No dual-runtime (CLI vs Desktop) constraint-break or fork decision appears in this file; the worktree fork (L22) is a git-mechanic, not a runtime fork.",
+      "evidence": null,
+      "na_reason": "AE101 is single-runtime (CLI/Desktop, no Cowork) per training-architecture; no dual-runtime fork exists",
       "fix_hint": null,
       "blocking": false
     },
@@ -370,16 +382,17 @@
       "rule_index": 42,
       "rule_lead": "Load-bearing platform feature = no fallback. Gate or redesign.",
       "verdict": "PASS",
-      "evidence": "L22's concurrent-sessions mechanic (two Claude Code windows on one worktree history) is load-bearing for the module's trust-distance LO and carries no 'if you can't run two windows, just do X sequentially instead' dilution fallback anywhere in the file.",
+      "evidence": "grep -ci 'if your environment|instead, just|treat as if' over L1–L112 → 0 (pattern validated → 1). The worktree/two-session mechanic (L22) is load-bearing and ungated by any politeness fallback; the entry gate sits at prework instead.",
       "fix_hint": null,
-      "blocking": false
+      "blocking": true
     },
     {
       "compendium": "check_pedagogy.md",
       "rule_index": 43,
       "rule_lead": "Eval architecture — partition by evidence source, not criterion count.",
       "verdict": "N/A",
-      "evidence": "Internal eval-machinery-design rule about how WE build judges; not a property this student-facing module file exhibits.",
+      "evidence": null,
+      "na_reason": "eval-machinery rule; no judge or sim is authored here",
       "fix_hint": null,
       "blocking": false
     },
@@ -388,7 +401,7 @@
       "rule_index": 44,
       "rule_lead": "Plug points + UX.",
       "verdict": "PASS",
-      "evidence": "(a) L177-181 Plug points name the KIND of org context (ADR home, team-kit home, codebase's test framework) each wired to a specific downstream prompt (Ex2 ADR write, Ex3 authoring conversation) — not vague slots. (b) Every named path (`~/.claude/skills/test-strategy/SKILL.md`, `./CLAUDE.local.md`) is consistent and discoverable across the file; no megaprompt exceeding one copy-paste.",
+      "evidence": "(a) L182 plug points name KINDS with downstream bite — 'ADR home (Ex2) — the repo's own convention if it has one' lands inside Ex2's write and changes what the agent produces. (b) UX: the fast-operator walk L51 → L65 → L71 needs no invented setup; L45 names the window and the file paths before the first paste.",
       "fix_hint": null,
       "blocking": false
     },
@@ -397,25 +410,26 @@
       "rule_index": 45,
       "rule_lead": "Per-exercise leap test — 3 observable Monday outcomes.",
       "verdict": "PASS",
-      "evidence": "L168-170 Leap test's three items are all concrete and falsifiable (PR comment quoting skill output; new ADR file with four named sections at the repo's ADR path; scrollback showing unprompted skill invocation) — none is an abstract competency claim.",
+      "evidence": "Three, each falsifiable, L191–L195: 'Invokes a curated security skill … as a subagent on a real PR before review' with 'the PR review shows a comment quoting the skill's structured output' as the falsifier. No competency-claim phrasing.",
       "fix_hint": null,
-      "blocking": true
+      "blocking": false
     },
     {
       "compendium": "check_pedagogy.md",
       "rule_index": 47,
       "rule_lead": "Per-phase failure mode + escape hatch.",
       "verdict": "PASS",
-      "evidence": "L182-189 table covers all six forcing functions in the extracted exercises (Ex1/Ex2/Ex3×3/Debrief) with failure mode + escape hatch each. The two closing-ritual prompts (Sharpen, Clear) aren't in the formal table, but their equivalent failure mode (plan-before-diff, self-audit charity) and recovery (over-flag/fresh-session) are named in body prose at L55, consistent with how this corpus treats accepted wrap-rituals (§52a) rather than full taught phases.",
-      "fix_hint": "If the maintainer wants strict table parity, a one-line row for the Sharpen-step's self-audit-charity failure could be added, but the harm (untracked failure mode) is already covered in body prose.",
-      "blocking": true
+      "evidence": "L198–L206 table carries six rows, one per forcing function, each with a dominant failure and one recovery move — e.g. Ex3 'invoke on the feature you just security-tested' / 'Ex3 invocation skip' / trainer push. Closest to a gap: the debrief row's escape hatch IS the forcing function, which the row itself flags rather than hides.",
+      "fix_hint": null,
+      "blocking": false
     },
     {
       "compendium": "check_pedagogy.md",
       "rule_index": 48,
       "rule_lead": "Heavy fan-out prompts get body recovery callout.",
       "verdict": "N/A",
-      "evidence": "No prompt in this file fans out heavily (N>2 parallel subagents, polling loop, full-memory/cross-project scan, multi-file rewrite). The sharpen prompt reads one skill file + one session's scrollback — bounded, not a heavy fan-out.",
+      "evidence": null,
+      "na_reason": "no fan-out signal: the L51 prompt reads one SKILL.md plus scrollback; no parallel subagents, polling loop or multi-file rewrite",
       "fix_hint": null,
       "blocking": false
     },
@@ -424,7 +438,7 @@
       "rule_index": 49,
       "rule_lead": "Save belongs with authoring, not loading.",
       "verdict": "PASS",
-      "evidence": "L177 Artefact-contracts: test-strategy skill is 'Produced by Exercise 3... user-level personal install, auto-discovered every session' — save/install happens at the CREATE exercise's close, not deferred to a later USE module.",
+      "evidence": "The skill is already installed at its production path when this file picks it up — L45: 'The test-strategy skill lives at user scope (`~/.claude/skills/test-strategy/SKILL.md`), readable from any session, so it crosses back with you.' The use beat opens with verification of location, not an install step.",
       "fix_hint": null,
       "blocking": false
     },
@@ -433,16 +447,16 @@
       "rule_index": 50,
       "rule_lead": "Convenience-driven prompts with known shape-bias → body acknowledgment callout.",
       "verdict": "PASS",
-      "evidence": "L67 blockquote on the ready-to-clear prompt names the bias ('Might be slightly leaky') and the convenience choice ('the simple ask is good enough'); L69 'decide whether to compound it now or accept the loss' gives the student an explicit opt-up/opt-out choice, functioning as the harsher-alternative agency the rule wants, for what the maintainer note (L123) independently confirms is a deliberately low-stakes, kept-not-cut convergence prompt.",
-      "fix_hint": "A literal harsher-prompt alternative (over-flag phrasing) could be spelled out if the maintainer wants beat (c) stated more explicitly, but stakes here are low (wrap-up check, not a graded artifact).",
+      "evidence": "L55 runs the three beats in order: names the bias ('charitable (same-context-window self-audit under-flags)'), acknowledges the convenience ('The default keeps it in-session for evidence access'), and offers the harsher opt-in ('opt up if the read matters'). Textbook instance.",
+      "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_pedagogy.md",
       "rule_index": 51,
       "rule_lead": "Deliberate-antipattern prompts = class-judge exempt, flagged-by-design.",
-      "verdict": "N/A",
-      "evidence": "The one deliberate-antipattern move in M3 (the `security-tools` rick-roll skill, L194 Frameworks) is invoked from the exercise file, not from a fenced prompt inside this module-index file, so there's nothing here to exempt directly; named only in the attribution list.",
+      "verdict": "PASS",
+      "evidence": "The `security-tools` rick-roll is logged as accepted-by-design in the maintainer block (L146: 'it prints a rick-roll and the trusted-the-chain-without-reading lesson'), with the stunt mechanics owned by trainer-modules.md. The flagged risk IS what the beat demonstrates.",
       "fix_hint": null,
       "blocking": false
     },
@@ -450,17 +464,17 @@
       "compendium": "check_pedagogy.md",
       "rule_index": 52,
       "rule_lead": "Session widget — `**Session** *(verb, \"name\")*` shape; place by learning flow.",
-      "verdict": "N/A",
-      "evidence": "No `**Session**` widget appears anywhere in earn-the-trust.md — M3 continues the M1/M2 session (L10) and any widget for opening it would live in the first extracted exercise file, out of this file's scope.",
+      "verdict": "PASS",
+      "evidence": "grep '^\\*\\*Session\\*\\*' over L1–L112 → 0; the session forks in the `open-the-side-quest` exercise (L33), which is placement pattern (b) module-opener-prose-only. L29–L31 carries framing, the exercise carries the widget.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_pedagogy.md",
       "rule_index": "52b",
-      "rule_lead": "Widgets carry semantics, not just emphasis — match the widget to MEANING, never to how loud it renders.",
-      "verdict": "N/A",
-      "evidence": "No widgets (Session/HOX/Note-as-loud-signal) are misused for emphasis in this file; the one `**Note**` (L45) correctly flags a must-not-miss window-switch instruction, matching the Note widget's semantics.",
+      "rule_lead": "Widgets carry semantics, not just emphasis.",
+      "verdict": "PASS",
+      "evidence": "The single widget, L45, is `**Note**` on a window switch — and this is exactly the failure the rule guards: a focus-switch is loud but is NOT a session start, so `**Session**` would have mis-cued 'spin up another session'. The author took the quieter widget that means what happens.",
       "fix_hint": null,
       "blocking": false
     },
@@ -469,34 +483,35 @@
       "rule_index": "52a",
       "rule_lead": "Module prose carrying a `**Session**` widget or a `{{prompt:}}` fence is an exercise that has not been extracted.",
       "verdict": "PASS",
-      "evidence": "L110 maintainer accept-note (2026-08-13, Antti-directed) explicitly accepts the two fences in '## Clear the session' as a wrap ritual, not an unextracted exercise — matching the identical pattern in plan-mode-done-right.md and prework.md. The third fence at L51 ('## Sharpen the skill from evidence') is a single prompt with no Session widget — one beat, one slide, nothing crammed — matching the same unflagged single-fence pattern found at learn-from-the-test.md L32 ('## Say what done-done means'), which carries no accept-note either. The rule's own stated harm (a `##`-cut layout giving an unbroken multi-move section one giant slide with nothing to land on) doesn't reach a one-beat section; only multi-fence sections trigger the tell across this corpus, and each of those carries a dated note.",
+      "evidence": "Three fences in module prose: L51, L65, L71. L65/L71 are covered by the dated accept-note at L117 ('Accepted-by-design 2026-08-13 (Antti-directed): do not extract, do not re-raise'). L51 is a one-prompt module-close compound beat — harm absent: the §52a harm is a `##`-cut deck handing an unbroken multi-move section one giant slide, and `## Sharpen the skill from evidence` is four body lines plus one prompt, which slides cleanly. Not filed as a finding; the note's coverage gap is a todo below.",
       "fix_hint": null,
-      "blocking": true
+      "blocking": false
     },
     {
       "compendium": "check_pedagogy.md",
       "rule_index": "52c",
-      "rule_lead": "Exercise lead-in trio — three slots, three tenses. A slot filled past its label is this corpus's most common defect.",
-      "verdict": "N/A",
-      "evidence": "The trio (`**What you do:**` / `**What you build:**` / `**The point:**`) lives in extracted exercise files (`curriculum/exercises/*.md`), not in this module-index file — nothing in earn-the-trust.md itself carries the trio to check.",
+      "rule_lead": "Exercise lead-in trio — three slots, three tenses.",
+      "verdict": "PASS",
+      "evidence": "Trio is an exercise-file slot; this is a module index file and carries none. Closest analogue, L47's framing paragraph, is module framing above the includes, which §52a explicitly wants ('leave ONLY the framing above the include').",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_pedagogy.md",
       "rule_index": "52d",
-      "rule_lead": "Finding the point — four moves, learned writing M1's set 2026-08-12.",
+      "rule_lead": "Finding the point — four moves.",
       "verdict": "N/A",
-      "evidence": "Same scope note as §52c — the 'point' slot lives in the exercise files this module links to, not in earn-the-trust.md's own body.",
+      "evidence": null,
+      "na_reason": "exercise `**The point:**` slot rule; a module index file has no point slot",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_pedagogy.md",
       "rule_index": 53,
-      "rule_lead": "Body prose must not supply an answer its prompt asks for — position is not the test (widened 2026-08-12).",
+      "rule_lead": "Body prose must not supply an answer its prompt asks for.",
       "verdict": "PASS",
-      "evidence": "The diff-added ADR sentence (L47) states a fact about a DIFFERENT already-completed artifact (the ADR compounds passively) rather than previewing what the adjacent prompt (L51, about skill-sharpen + CLAUDE.local.md) will reveal. The '## Pre-read before Module 4' text (L100, diff) and '## Next' (L104) both stay on the artifact-contract/activity side of the 3-axis diagnostic (name what M4 consumes, not what M4's exercises will specifically show) — no non-obvious M4 outcome is pre-announced.",
+      "evidence": "Closest line, L55, which sits after the L51 fence and names what to distrust in the answer. Both legal shapes: it teaches how to READ the answer coming ('charitable (same-context-window self-audit under-flags)') and what a bad one looks like ('sycophancy can dress up a cosmetic edit as a meaningful one'). L49 names activity, L45 names constraint (window, file paths) — 3-axis (b) and (c), never (d): no line says what the sharpen will find.",
       "fix_hint": null,
       "blocking": true
     },
@@ -505,7 +520,7 @@
       "rule_index": 56,
       "rule_lead": "Engineer-audience audit fixes default to body callout, not forcing function.",
       "verdict": "PASS",
-      "evidence": "All recovery moves in this file are body/maintainer callouts (Push-back moves, Watch-fors), not new forcing-function prompts; no silent-slow-miss (rules-file bloat, context creep) is present here requiring the 2026-08-23 instrument carve-out.",
+      "evidence": "L55 is a body callout rather than a second fenced prompt — correct branch, because an engineer notices a charitable self-audit and escalates in under a minute, and L55 hands them the escalation wording. No slow-silent-accumulation miss here that would take the instrument branch.",
       "fix_hint": null,
       "blocking": false
     },
@@ -514,7 +529,7 @@
       "rule_index": 57,
       "rule_lead": "Multi-session (any new mechanic mid-arc) ships as packaging, not new primitive.",
       "verdict": "PASS",
-      "evidence": "L22 LO plus L33 'Open the side quest' exercise match the packaging pattern exactly: a small setup exercise creates the two-worktree container, and existing beats carry one-line lane callouts (L45 'Switch back from the side quest to the main quest window (m3-security) now') rather than teaching the mechanic as a standalone new primitive.",
+      "evidence": "The container is a setup exercise (L33 'Open the side quest') and every downstream beat carries a one-line lane callout — L45: 'Switch back from the side quest to the main quest window (*m3-security*) now', L63: 'Still in the main quest window (*m3-security*)'. Remove the container and the sharpen, STRIDE and authoring beats each stay teachable → packaging, shipped light. Primitive budget (first skill use, first subagent, first authoring) is untouched.",
       "fix_hint": null,
       "blocking": true
     },
@@ -523,25 +538,26 @@
       "rule_index": 58,
       "rule_lead": "`/clear` = tool, not ceremony.",
       "verdict": "PASS",
-      "evidence": "L61-71 '## Clear the session' fires the convergence prompt before `/clear` ('Ready to clear? All learnings in?'), lets the agent surface anything loose, THEN clears — matching the two-question diagnostic exactly. Maintainer note (L123) independently cites §58 to justify keeping the prompt.",
+      "evidence": "Two-question diagnostic answered in the body: convergence fires because something may not be on disk (L63 'The agent converges what's still loose'), and `/clear` follows because the session continues into M4 with fresh context. Maintainer L143 records the same reasoning against a low-yield flag.",
       "fix_hint": null,
-      "blocking": true
+      "blocking": false
     },
     {
       "compendium": "check_pedagogy.md",
       "rule_index": 59,
       "rule_lead": "Inbound links preserve pedagogical beat across reference restructuring.",
-      "verdict": "N/A",
-      "evidence": "No `reference/` page was merged/split/renamed/deleted in this diff; the Willison-link move is a citation-placement change within body/prework text, and the source-verification block (L119) documents it as a deliberate delegated-echo, not a restructuring that could strand an inbound beat.",
+      "verdict": "PASS",
+      "evidence": "L208 documents a removal by beat, not by grep: the trifecta pre-leash beat was cut from `## Next` with the beat traced to its surviving homes ('the trifecta belongs to M3's own body and to `supplementary/the-lethal-trifecta.md`'). L16 links Willison's original, which is the pre-read's beat, not the supplementary's.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_pedagogy.md",
       "rule_index": 60,
-      "rule_lead": "Scan at the unit the rule names, not convenient larger one.",
+      "rule_lead": "Scan at the unit the rule names.",
       "verdict": "N/A",
-      "evidence": "Meta-instruction to the generator/judge about scan granularity; not a property the artifact itself exhibits.",
+      "evidence": null,
+      "na_reason": "method rule for a rule-applier; carries no body surface",
       "fix_hint": null,
       "blocking": false
     },
@@ -550,25 +566,27 @@
       "rule_index": 61,
       "rule_lead": "Verify mechanism before proposing surgery.",
       "verdict": "N/A",
-      "evidence": "Generation-process rule about verifying a mechanism before proposing a SKILL.md/framework change; not applicable to judging finished student-facing content.",
+      "evidence": null,
+      "na_reason": "applies to proposed SKILL/tool changes; this read proposes no mechanism change",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_pedagogy.md",
       "rule_index": "61a",
-      "rule_lead": "Acting on a flagged item (punchlist entry / audit finding / eval BLOCK) — verify before fixing; its prescribed fix is a hypothesis, not an instruction.",
+      "rule_lead": "Acting on a flagged item — verify before fixing.",
       "verdict": "N/A",
-      "evidence": "Process rule for whoever acts on a flagged item; applied to my own judging process rather than checkable in the artifact's text.",
+      "evidence": null,
+      "na_reason": "judge/maintainer method rule; no flagged item is being acted on in this body",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_pedagogy.md",
       "rule_index": 62,
-      "rule_lead": "Callouts next to prompts: steer, don't pre-empt.",
+      "rule_lead": "Callouts next to prompts: steer, don’t pre-empt.",
       "verdict": "PASS",
-      "evidence": "L67 ready-to-clear callout is a generic acknowledgment ('slightly leaky... good enough'), not a pre-emption tied to one specific current prompt behavior, so it can't rot as the prompt evolves. L55's two named tells (plan-before-diff, sycophantic cosmetic edit) are followed by a generalizable steering triad (over-flag / skip-preamble / fresh-session) rather than stopping at the named tells alone.",
+      "evidence": "Closest line, L55: 'Claude may open with a plan before showing the diff, and sycophancy can dress up a cosmetic edit as a meaningful one' — two named failure modes, the pre-emption shape. It stays inside because the callout's payload is a generalising escalation ladder (over-flag → constrain the output → fresh-session), which survives any change to the prompt's mechanics; and the L51 fence does not already prevent either behaviour, so there is no ghost to rot into.",
       "fix_hint": null,
       "blocking": false
     },
@@ -577,26 +595,27 @@
       "rule_index": 63,
       "rule_lead": "Persistent TODO surfaces stale by default — audit before acting.",
       "verdict": "N/A",
-      "evidence": "This file is not a persistent punchlist/TODO surface (that's pre-cohort-todos.md); rule doesn't attach here.",
+      "evidence": null,
+      "na_reason": "punchlist-handling rule; no TODO surface is being consumed here",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_pedagogy.md",
       "rule_index": 64,
-      "rule_lead": "Maintainer blocks point, don't restate. Link architecture doc where they touch delivery.",
+      "rule_lead": "Maintainer blocks point, don’t restate.",
       "verdict": "PASS",
-      "evidence": "L135 Delivery-architecture line explicitly pointers to `training-architecture.md §Material distribution / §Working directory model / §Rule files / §Skills` with 'Not restated here.' The §52a accept-note (L110) and the §58 session-close note (L123) both cite the rule number rather than re-explaining the mechanic — pointer pattern honored throughout.",
+      "evidence": "L148: 'canonical in `training-architecture.md` §Material distribution / §Working directory model / §Rule files / §Skills. Not restated here.' Same discipline on the stunt (points at trainer-modules.md) and the whitelist (points at the build script). Closest to restating: the M3-specific sentence that follows, which is unique-to-this-file content, not a paraphrase of the canonical home.",
       "fix_hint": null,
-      "blocking": true
+      "blocking": false
     },
     {
       "compendium": "check_pedagogy.md",
       "rule_index": 65,
       "rule_lead": "Cross-module prerequisite rescue: run it late, never fabricate.",
       "verdict": "PASS",
-      "evidence": "L12 'If your M2 task doesn't have an external or user-facing surface, swap to something from your backlog... code already in the repo, a Jira or Linear ticket, or a design doc all work' gives a real-material rescue (not a synthetic stand-in) for an unsuitable/absent M2 plan artifact, since M3's exercises key off 'a feature you're shipping' (L23) rather than the M2 plan file specifically.",
-      "fix_hint": "Doesn't use rule 65(b)'s literal 'run the missing module compressed, trailing the room' framing for a student who skipped M2 entirely — functionally covered since M3 doesn't hard-require the M2 artifact, but a maintainer could make the language explicit if a fully-absent-M2 case is a real cohort risk.",
+      "evidence": "L12: 'If your M2 task doesn't have an external or user-facing surface, swap to something from your backlog that does, code already in the repo, a Jira or Linear ticket, or a design doc all work.' The rescue routes to the student's OWN material — no synthetic stand-in artefact, no loaner repo, so compounding-on-own-material survives.",
+      "fix_hint": null,
       "blocking": false
     },
     {
@@ -604,21 +623,192 @@
       "rule_index": 66,
       "rule_lead": "Three-pass build — finish each pass across ALL modules before starting the next.",
       "verdict": "N/A",
-      "evidence": "Build-process rule about sequencing generation passes across the whole training; not a property of one already-built file.",
+      "evidence": null,
+      "na_reason": "build-sequencing rule for generation; not evaluable against a shipped body",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": 1,
+      "rule_lead": "Group beat ≠ parallel solo work.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no group-scale beat: every artefact (skill, ADR, rules file) belongs to one student",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": 2,
+      "rule_lead": "The room's output is named as an artefact.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no group-scale beat: every artefact (skill, ADR, rules file) belongs to one student",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": 3,
+      "rule_lead": "React, don’t author.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no group-scale beat: every artefact (skill, ADR, rules file) belongs to one student",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": 4,
+      "rule_lead": "Pre-built material is a hard prerequisite, stated in the module.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no group-scale beat: every artefact (skill, ADR, rules file) belongs to one student",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": 5,
+      "rule_lead": "Attribution is stated by a human, recorded verbatim.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no group-scale beat: every artefact (skill, ADR, rules file) belongs to one student",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": 6,
+      "rule_lead": "Nothing is written over.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no group-scale beat: every artefact (skill, ADR, rules file) belongs to one student",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": 7,
+      "rule_lead": "Filing is invisible.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no group-scale beat: every artefact (skill, ADR, rules file) belongs to one student",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": 8,
+      "rule_lead": "Scope-of-sharing is declared before contribution, not after.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no group-scale beat: every artefact (skill, ADR, rules file) belongs to one student",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": 10,
+      "rule_lead": "A decision beat needs a real constraint.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no group-scale beat: every artefact (skill, ADR, rules file) belongs to one student",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": 11,
+      "rule_lead": "Group decisions are human, and named as such.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no group-scale beat: every artefact (skill, ADR, rules file) belongs to one student",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": 12,
+      "rule_lead": "Retrospective = group round, no prompts, trainer silent.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no group-scale beat: every artefact (skill, ADR, rules file) belongs to one student",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": 13,
+      "rule_lead": "Second-facilitator test.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no group-scale beat: every artefact (skill, ADR, rules file) belongs to one student",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": 14,
+      "rule_lead": "Name the too-big and too-small room.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no group-scale beat: every artefact (skill, ADR, rules file) belongs to one student",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": 15,
+      "rule_lead": "Mixed-experience is the default room.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no group-scale beat: every artefact (skill, ADR, rules file) belongs to one student",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": 16,
+      "rule_lead": "Room beats overrun; name the protected beat.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no group-scale beat: every artefact (skill, ADR, rules file) belongs to one student",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": 17,
+      "rule_lead": "No mechanical coverage — the trainer guide carries the load.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no group-scale beat: every artefact (skill, ADR, rules file) belongs to one student",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_workshop.md",
       "rule_index": null,
-      "rule_lead": "check_workshop.md does not apply to this file",
+      "judge_owned": true,
+      "rule_lead": "Scope call — check_workshop.md does not apply to this file.",
       "verdict": "N/A",
-      "evidence": "No beat in earn-the-trust.md has an output belonging to the group rather than a participant — 'Sharpen the skill from evidence' and 'Clear the session' are individual continuations of the student's own repo/session; the four linked exercises are individual bounded activities. No group adjudication, attributed shared record, or room-decision beat is present, so check_workshop.md's trigger ('the output belongs to the group, not to a participant') is not met anywhere in this file.",
+      "evidence": "The view's `group_beat_markers: true` signal resolves to a single word — L31 'The room's features will differ wildly; that's the point' — which is a §27 third-carve-out aside, not a beat whose output belongs to the group. Nothing merges, nothing is attributed, nothing is adjudicated by the room.",
+      "na_reason": "no beat produces a group-owned artefact",
       "fix_hint": null,
-      "blocking": false,
-      "judge_owned": true
+      "blocking": false
     }
   ],
   "blocking_findings_count": 0,
-  "todos_count": 0
+  "todos_count": 1,
+  "todos": [
+    {
+      "rule": "check_pedagogy.md §52a (with §64 maintainer-block accuracy)",
+      "observation": "The L117 accept-note is factually wrong on two counts and under-covers this file's own body. (a) It says the same call 'covers `plan-mode-done-right.md` and `prework.md`, which carry the corpus's only other instances' — `plan-mode-done-right.md` carries NO prompt fence at all: `grep -c '{{prompt:' curriculum/trainings/agentic-engineering-101/plan-mode-done-right.md` → 0, and `grep -n '^\\*\\*Prompt\\*\\*\\|^```' plan-mode-done-right.md` → no output. (b) 'only other instances' is false: `learn-from-the-test.md:33` ({{prompt:ae101-m5-done-done}} inside `## Say what done-done means`) and `prework.md:47,55` (sections 3 and 4, outside the section the prework note names) are further module-prose fences. (c) This file's own `## Sharpen the skill from evidence` fence at L51 is not named by the note, so a future §52a sweep will re-raise it — which is exactly what the note exists to prevent.",
+      "suggested_fix": "Maintainer edit (orchestrator applies, not the judge): widen the L117 note to name L51 alongside `## Clear the session`, and drop or correct the 'plan-mode-done-right.md … only other instances' clause.",
+      "blocking": false
+    }
+  ],
+  "notes": "Prefill fell through ('prior instance predates shape_hash'), so every row here is judged fresh; `--write` parked 0 rows and the prefill reports no shape_hash to record (recorded as null). Brief assembled check_pedagogy.md (67 rules) + check_workshop.md (16 rules) = 83 rows, matching `rule_inventory` (moved stubs 5/28/38/40/46/54/55 excluded). Prompt bodies read via `node scripts/expand-md.js` (signals.has_prompt_blocks = true); all cited line numbers are raw-source lines verified against `sed -n '1,112p'`. Out-of-lane observation, NOT scored: `check_student_facing.md §9` look-lines — the maintainer's per-phase failure table (L198–L206) keeps 'Ex2 menu-shopping' and 'Ex3 default-acceptance' below the fence, but their student-catchable tells are in fact already on the page for the beats this file owns (L55 names the cosmetic-edit tell for the sharpen read); the exercise-owned rows belong to those files' judges."
 }

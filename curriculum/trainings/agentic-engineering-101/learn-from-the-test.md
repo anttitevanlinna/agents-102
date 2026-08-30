@@ -159,8 +159,8 @@ describes the artifact and hands the attention decision to the student — do no
 scheduling ("come back later", "read them after"). Trainer sibling in `trainer-modules.md` M5 says land the
 header and handle per slide, never read bullets aloud. Two registers, one instruction; keep them in step.
 
-**Quality:** sim-passed 2026-08-29 (writing@4a722813 story@441b361f technical@8cc00874 behavior@b55cd28b pedagogy@441b361f strategy@17446703 slides@17446703)
-- judges @4a722813: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** sim-passed 2026-08-30 (writing@4a722813 story@85515fa0 technical@8cc00874 behavior@b55cd28b pedagogy@85515fa0 strategy@17446703 slides@17446703)
+- judges @85515fa0: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - cross_module @d47fb5af: PASS — set=[run-the-first-experiment,learn-from-the-test,spot-gaps-build-the-loop]; 2 pairs, 0 blocking; see instances/ae101--module-set--m4-m5-m6.cross_module.json
 **Meta (trainer):**
 - **Primary Bloom's level:** Analyze + Evaluate + Create
@@ -174,14 +174,14 @@ header and handle per slide, never read bullets aloud. Two registers, one instru
 - **`lectures/reading-the-return.md` is an M5 in-room opener, not a pre-read.** Do not re-file it as prework without also charging M5's clock and cutting the body line that assumes it was read.
 - **Backpressure vocabulary:** the source essay is the M3→M4 gap read (`earn-the-trust.md § Pre-read before Module 4`) and the term is named in the room by M4's closing lecture. Module 5 assigns no reading on it and needs none: the student arrives holding both the word and a session that produced changes faster than they could read them. Do not re-assign da Costa here.
 
-**Push-back moves** (trainer delivers):
+**Push-back moves** (trainer delivers). *Paired with the §47 per-phase table below — same eight pushes, one spoken list and one audit grid. Edit both or neither; they drifted once (2026-08-30) and a judge caught it.*
 - **Connections blocker** — student walks in without the M4 artefact accessible (closed laptop, ran out of credit, repo state unclear). Trainer push: *"the artefact is whatever's there. Repo commits since M4. Files modified. Scrollback at `~/.claude/projects/<project>/` if you closed the session. Open a fresh Claude Code session in the repo and ask it to read what the M4 run touched."* See [Claude Code for engineers — session transcripts](../../trainings/agentic-engineering-101/reference/claude-code-for-engineers.md#25-session-transcripts-default-location).
 - **Phase 1 diagnosis-as-blame** — student frames failures as their fault (*"I should have written a better prompt"*). Trainer push: *"the un-packaged run was supposed to underdeliver. The diagnosis is data, not blame. Quote me one moment of goal drift."*
 - **Phase 1 over-diagnosis** — student lists 8 failures across all three modes. Trainer push: *"pick the dominant. The verifier you build at Phase 3 fits one shape. Which failure cost the most?"*
 - **Phase 2 prescription-skip** — student goes straight from named failure to building the fix without the align-then-run question. Trainer push: *"the question matters more than the answer. What validation would have caught this in minutes, not hours?"*
 - **Phase 3 verifier-shape mismatch** — student picks shell-hook for a qualitative failure (or LLM-judge for a deterministic one). Trainer surfaces the menu again: *"qualitative failure wants a judge. Deterministic wants a hook. Drift wants a re-feed. Which is yours?"*
 - **Phase 4 reference-as-rewrite** — student rewrites `CLAUDE.local.md` instead of authoring a task-scoped reference. Trainer push: *"the reference is task-local. Lives next to the plan.md. Your rules file is for the codebase; the reference is for this task."*
-- **Debrief re-send anxiety** — student hesitates at the second send-off. Trainer push: *"same task, packaged. Same close-the-laptop move. The point is to read the contrast at M6, not to nail it this run."*
+- **Debrief re-send anxiety** — student hesitates at the second send-off. Trainer push: *"same task, packaged. Same step-away move. The point is to read the contrast at M6, not to nail it this run."*
 - **Closing lecture pre-empt** — trainer accidentally names "Ronacher's three-pattern" before the closing lecture. Don't. The closing lecture earns the name from felt evidence. If the term comes up in Phases 1–4, the closing has nothing to add.
 
 **Watch-fors (cross-phase):**
@@ -231,7 +231,7 @@ header and handle per slide, never read bullets aloud. Two registers, one instru
 | Phase 3 — *"verifier shape matches the failure shape"* | Phase 3 verifier-shape mismatch — student picks shell-hook for a qualitative failure (or LLM-judge for a deterministic one) | Trainer surfaces the menu again: *"qualitative failure wants a judge. Deterministic wants a hook. Drift wants a re-feed. Which is yours?"* |
 | Phase 4 — *"reference is task-local, not a rules-file rewrite"* | Phase 4 reference-as-rewrite — student rewrites `CLAUDE.local.md` instead of authoring a task-scoped reference | Trainer push: *"the reference is task-local. Lives next to the plan.md. Your rules file is for the codebase; the reference is for this task."* |
 | Debrief — *"send the packaged version, step away"* | Debrief re-send anxiety — student hesitates at the second send-off | Trainer push: *"same task, packaged. Same step-away move. The point is to read the contrast at M6, not to nail it this run."* |
-| Closing lecture — *"name Ronacher's three-pattern only AFTER the felt evidence lands"* | Closing lecture pre-empt — trainer accidentally names the three-pattern before the closing lecture | Trainer: don't. The closing lecture earns the name from felt evidence. If the term gets used in Phases 1–4, the closing has nothing to add. |
+| Closing lecture — *"name Ronacher's three-pattern only AFTER the felt evidence lands"* | Closing lecture pre-empt — trainer accidentally names the three-pattern before the closing lecture | Trainer: don't. The closing lecture earns the name from felt evidence. If the term comes up in Phases 1–4, the closing has nothing to add. |
 
 **Source verification — freshness stamps (`source-freshness.sh`; format `curriculum/source-freshness-format.md`).**
 

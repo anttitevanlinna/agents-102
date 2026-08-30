@@ -79,7 +79,7 @@ Don't split M4 across the days. The M1-M2-M4 / M5-M3-M6 reorder exists; it's a c
 **Generally:** a stuck student asks their own Claude first. You step in only for the three below.
 
 - **Bug fix runs long** → move on when two-thirds of the room are through. Nothing downstream needs a green PR.
-- **No repo or no bug from prework** → they do the prework now and join at Fix tests-first. Don't hold the room.
+- **No repo or no bug from prework** → they do the prework now and join at Prove the bug, then ship the fix. Don't hold the room.
 - **Your wizard demo** → two fresh Claude Code sessions, a new empty folder each, outside any repo. That does not clear `~/.claude/CLAUDE.md` or `~/.claude/rules/`; those load everywhere, so read your own user rules first and check nothing there steers food or tone. Dry-run it once. If session 2 still answers Finnish: *"it remembered — that's the point, one step early."*
 
 </section>

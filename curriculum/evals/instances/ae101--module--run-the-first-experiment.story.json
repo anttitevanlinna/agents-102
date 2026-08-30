@@ -1,139 +1,1442 @@
 {
   "class": "storytelling",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/run-the-first-experiment.md",
-  "body_sha": "25b7a412bfcccc41ca10b5dd37c41d8547742fae4a7f40f8b567d2f377350077",
   "verdict": "PASS",
   "training": "ae101",
+  "body_sha": "0408314bf061789eafcf172c4b7787ee0e61a9fff4217e1b767c8e9cadaa6107",
+  "shape_hash": "3bf287f827d6a7ae",
   "module_mood_contract": "curious readiness — 'I've built enough to try; let's see what the agent does'",
   "trace_status": "regenerated",
   "rules_evaluated": [
     {
       "compendium": "check_lectures.md",
-      "rule_index": 1,
+      "rule_index": "1",
       "rule_lead": "Meta-frame lectures = closers, not openers.",
       "verdict": "PASS",
-      "evidence": "Sequence under '## Start here' (lines 33-45, unchanged by this diff region): the-far-half (opener — shows the country), the-agent-loop (mid — vocabulary; its prompts run on the student's own live session), test-and-learn (mid — spirit), walk-and-send-off (exercise), ironies-of-automation (line 41, a named canonical result placed immediately before the send-off it frames, not at module start), set-the-markers-send-it-off (exercise), what-keeps-a-long-running-session-going (line 45, the observational meta-frame closer, AFTER the send-off it reflects on — Meta block confirms 'four-slide observational beat after the send-off'). Only candidate for a rule-1 read: the Mollick pre-read (line 72), which lands BEFORE M5 rather than after. It plants an open question ('Mollick does not call the winner. Neither does this training') and names none of M5's teaching content — verified live this session against `bosser-strategy:content-strategy-agentic-engineering-101.md` M5-in-detail, whose own Pre-reads-before-M5 paragraph confirms 'this spec matches that shipped set' and that the operational half lands in M5's own closer (`the-gate-is-a-claim.md` frontier slide, grepped this session: 'Sutton's bitter lesson: built-in human knowledge wins today and loses to the next model... Retire what the next model outgrows, add what it needs.'). Plant-in-the-gap / name-in-the-closer is the shape §1 asks for.",
+      "evidence": "Placement read across `## Start here` (25-45). Openers show a ceiling: `the-far-half.md` (33) after line 31 'The map has a far side. Before the first long session, see the country you are entering.' Mid-module vocabulary: `the-agent-loop.md` (35) and `test-and-learn.md` (37) sit before the exercises where the vocab is about to be used. The meta-frame beats are last: `what-keeps-a-long-running-session-going.md` (43) and `ironies-of-automation.md` (45) both land AFTER `walk-and-send-off` (39) and `set-the-markers-send-it-off` (41). Closest to violating: line 43, a four-slide observational lecture that names durable state / feedback / boundaries — a pattern-naming beat, which §1 assigns to the closer slot, and it is in the closer slot. Maintainer line 123 records the 2026-08-25 Antti-directed move of `ironies-of-automation` from between the exercises to after it, i.e. the file was corrected TOWARD this rule.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_lectures.md",
-      "rule_index": 2,
+      "rule_index": "2",
       "rule_lead": "Minimal lecturing before contrast-mood exercises.",
       "verdict": "PASS",
-      "evidence": "M5, not M4, is the arc's contrast-mood module (strategy doc M5-in-detail: 'Mood: learning through contrast'). The three pre-Exercise-1 lectures under '## Start here' (far-half, agent-loop, test-and-learn) teach territory, mechanism-vocabulary, and spirit — none names packaging, plan.md, a reference artefact, or a verifier, all of which stay withheld until M5. The Mollick entry (line 72, unchanged in this diff) names two BETS and explicitly refuses to adjudicate them, naming none of M5's teaching content (no Ronacher, no Cherny, no three-pattern). Dosage: one optional framing piece in a between-module reading list, not an in-room opener.",
+      "evidence": "§2's trigger is contrast-mood modules ('M5-style: learn through doing the thing, name it after'). M4's mood is curious readiness (maintainer 121; strategy doc § Mood arc: 'curious readiness -> learning through contrast', where learning-through-contrast is M5's), so the strict trigger is M5's, not this file's. Judged anyway on dosage: three lectures precede the exercises (33, 35, 37). Closest to violating is line 35, `the-agent-loop.md`, the densest pre-exercise beat — it stays inside because it ARMS rather than teaches: maintainer 122 records 'its three introspection prompts run on the live session that will carry the send-off', i.e. one operational primitive run on the student's own session, which is §2's sanctioned opener dosage. The naming beats are held to the closers (43, 45) and no practitioner term is spent before the exercises — Ronacher's three-pattern is M5's per the strategy doc, and the body names its three pieces only by absence (51, 23).",
       "fix_hint": null,
       "blocking": false
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": "4",
+      "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
+      "verdict": "PASS",
+      "evidence": "RAN: `grep '^## ' <file> | sort | uniq -d | wc -l` -> 0, so no two slides share a header across the nine. RAN: view grep `em_dash` -> body_hits 0, status CLEAN (planted_proof true), so the no-em-dash inherit holds. Squint: seven of nine headers name their content outright ('Big Idea', 'Prework', 'What You'll Learn', 'Key Concepts', 'Optional challenges', 'Bring to Module 5', 'Pre-reads before Module 5'). Closest to violating: line 25 `## Start here` and line 88 `## Next` — both read as empty containers in isolation. They stay inside because they are `curriculum/module-shape.md`'s fixed module-index section names, not authored slide headers: §4 governs the header an author writes for a slide that argues, and a module index's spine slots carry position, which §4 rations to one orientation beat per lecture and which module-shape assigns to every module file identically. Truth clause: no dropped qualifiers or unsupported universals — line 67's 'A stopped session counts' is stated at exactly the strength the maintainer's Deliberate-incompleteness note (120) licenses.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": "5",
+      "rule_lead": "A slide's BODY is size-bounded, not just its header (§4's sibling).",
+      "verdict": "PASS",
+      "evidence": "RAN: `node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/run-the-first-experiment.md --report` -> 'files: 1  slides: 9  limits: 210 words / 6 bullets  oversized: 0', exit 0, and the tail line reads 'every slide is within limits'. Largest slide is 'Pre-reads before Module 5' at ~285 words, reported with the `~` exemption prefix and counted as not-oversized by the script because maintainer line 103 carries the dated accept ('Slide size accepted: Pre-reads before Module 5 ... Do not cut an entry to reach the word cap'). Next largest is Prework at 118. Bullet ceiling: max 4 (What You'll Learn, Optional challenges, Key Concepts), against a limit of 6.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": "1",
+      "rule_lead": "Mood contract named.",
+      "verdict": "PASS",
+      "evidence": "Mood contract named at maintainer 121: 'Mood target: curious readiness — \"I've built enough to try; let's see what the agent does.\"' with both drift directions named (compliance-feeling, performance-anxiety), a diagnostic ('student at Phase 2 keeps asking \"is this enough?\"') and a trainer reframe. It matches the strategy doc verbatim (§ M4 in detail: 'Mood: curious readiness — \"I've built enough to try something; let's see what the agent does with it.\"'). Regenerated trace: single phase mood 8, close mood 8, is_me 8 — no beat below 8, so the 8+ floor holds without needing the setup-beat carve-out. Line closest to violating: 69, 'Come to Module 5 without a session that got some way into the task and you'll be scrambling for material while the read is already underway. Your call.' It states a cost, which is the shape that tips curious readiness into performance-anxiety — it stays inside because the sentence that follows returns the decision to the student and refuses to enforce it.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": "2",
+      "rule_lead": "Epistemic mood ≠ punitive mood.",
+      "verdict": "PASS",
+      "evidence": "M4's mood is not unease, so §2's punitive-drift hazard is at its weakest here; judged on the two lines that carry any cost. Closest to violating: 16, 'this module's un-watched session may look like exactly what that essay warns against' — deliberately unanswered per maintainer 105 ('gives too much away' ... 'if a judge reads the pre-read as leaving the student uneasy, that is the intended state'). It is epistemic, not punitive: the student is left not-knowing whether their run is the failure the essay describes, never told they did wrong. Nothing in the body attributes fault to the student; line 67's 'A stopped session counts' and line 52's 'Stopping a session that has gone off the rails is reading, not failing' both explicitly de-fault the outcome.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": "3",
+      "rule_lead": "Lead with discipline, not failure mode.",
+      "verdict": "PASS",
+      "evidence": "Big Idea (4): 'Prep your first long session. The session is how you find out what's missing.' Both clauses are positive disciplines — prep, and finding out — with no failure word ('fabrication', 'violation', 'hallucination', 'fail'). Closest to violating: line 45's include, `[Lecture: The ironies of automation](lectures/ironies-of-automation.md)`, a failure-named title. It stays inside on §3's own carve-out: Bainbridge's *Ironies of Automation* is named in the rule as the canonical example of a searchable handle that keeps its name, and renaming it would trade searchability for tone. What You'll Learn (20-23) leads all four bullets on discipline verbs — Scope, Walk, Fill, Send off.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": "4",
+      "rule_lead": "Strategy-fidelity check.",
+      "verdict": "PASS",
+      "evidence": "Consolidated verdict; four facets checked against `bosser-strategy:content-strategy-agentic-engineering-101.md` §§ Mood arc, M4 in detail, M5 in detail. (a) BIG IDEA FIDELITY — the strategy doc's M4 spirit is 'M4 doesn't prepare, it tests', while line 4 leads 'Prep your first long session.' That register gap is real and is the closest this file comes to a §4 finding; it is NOT filed, because maintainer 97 carries a dated accept-note that anticipates this exact judge ('A `strategy` judge scoring `check_strategy_tie_in.md` §1 reads the first clause as prep-register ... Do not rewrite the Big Idea to resolve the judge'), names the experiment framing as living in the second sentence, names the trainer reframe that catches the drift in the room (121), and names the firing condition tracked in `pre-cohort-todos.md`. Per the dispatch preamble, an existing accept-note on the passage means it is not flagged at all. (b) NO FRONT-RUN — M5 owns the naming of Ronacher's three-pattern from felt evidence. This file names its three pieces only by ABSENCE and without attribution: 23, 'no plan.md, no verifier, no reference artifact', and 51, 'The task went out un-packaged: no plan file, no verifier, no reference artefact.' That is the strategy doc's own baseline wording ('Send off, un-packaged ... do not add a new long-run recipe before the baseline runs'); the reveal M5 owns is each piece EARNING its name against a specific failure, and nothing here teaches what any of the three does or why. Maintainer 105 further records that the reassurance which DID pre-announce M5's job was cut for exactly this reason. (c) MOOD DOESN'T RESOLVE EARLY — the Horthy provocation at 16 is left unanswered by design (105), Key Concepts (50-53) recap the run without resolving it, and `## Bring to Module 5` (67) hands a trace forward rather than a conclusion. (d) MODULE-TO-MODULE ARC — line 91, 'The next module opens with what came back', against the strategy doc's 'M5 opens with the return.' Exact match, and the artefact contract table (162-164) names the three identifiers M5 consumes.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": "5",
+      "rule_lead": "Strategic themes recur in Key Concepts.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "module-only Key Concepts section; strategy judge is primary owner per the story template's §5/§6/§7 clause"
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": "6",
+      "rule_lead": "Key Concepts shape — theme breadcrumbs, not standalone section.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "module-only Key Concepts section; strategy judge is primary owner per the story template's §5/§6/§7 clause"
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": "7",
+      "rule_lead": "What You'll Learn shape — capability register, not syllabus.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "module-only What You'll Learn section; strategy judge is primary owner per the story template's §5/§6/§7 clause"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "16",
+      "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
+      "verdict": "PASS",
+      "evidence": "RAN: `grep -c '{{prompt:'` -> 0 and `grep -c '\\*\\*Prompt\\*\\*'` -> 0 on the raw file; the view's `has_prompt_blocks` signal is false. This module index ships no fence of its own — every forcing function it relies on lives in the two linked exercises (39, 41), which is §16's Location clause satisfied by construction. Judged on the body asks that remain. Closest to violating: 67, 'Read the agent's scrollback or commits from the send-off; check the agent didn't just stall in the first minute.' It stays inside on Boundary 2 (2026-08-02, Antti): this is the between-module homework contract in conversational-fold register, where 'the body ask IS the design' and manufacturing a registry prompt for it would be over-prescription. It is also a calibration, not a count-script — 'some way into the task' (69) and 'the first minute' pace the student without a bare imperative count. Zero count-scripts in the body; the trainer-side counts ('Three is the budget', 129) sit in the maintainer block, where §16 does not reach.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "27",
+      "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
+      "verdict": "PASS",
+      "evidence": "RAN: `grep -n -iE 'discuss|neighbou?r|pair up|share with|compare with|tell the room|90 seconds'` over the raw file -> 3 hits, all outside the body: line 99 (maintainer accept-note quoting a CUT passage), line 118 (maintainer Charge line), and line 29. Zero authored conversations, zero pause cues, zero 'discuss with...' sentences in body. Closest to violating: 29, 'The room's answers will differ: migration, gnarly refactor, test-coverage expansion, performance chase, API cutover. That's the point.' It stays inside on the third carve-out (2026-08-12, Antti-directed): the body may name that other people are there, one line per file, and no accept-note is owed inside that ceiling. It names the room's existence and mandates nothing — no utterance, no schedule, no report-back — and the Connections room-read is itself the work, which is the first carve-out's shape. The rest of the body is about the WORK throughout: artefact (67), branch and SHA (91), reading (52).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "45",
+      "rule_lead": "Per-exercise leap test — 3 observable Monday outcomes.",
+      "verdict": "PASS",
+      "evidence": "Leap test present at 153-156, three items, each with a named verb and a 'Falsifiable:' clause naming the evidence a working engineer could point at by Monday: (1) 'git log shows a `<prefix>/<slug>` branch with a \"starting point\" commit message before the agent's first task-execution commit'; (2) 'scrollback of a long-running task shows a manual stop with a one-line note about what wobbled'; (3) 'pre-task observations diff shows two-or-three new observations or rules tied to the task at hand, not a comprehensive sweep'. Read in isolation, each is decidable — the engineer opens git log, opens the scrollback, opens the diff. Closest to a competency claim: item 2's 'names the failure mode in writing', which stays inside because the falsifier pins it to a written artefact with a stated ceiling (<=20 minutes) rather than to a quality of the naming. Item 3 also encodes the sponge-not-rock cap (worst three, not all five) that the arc depends on.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "47",
+      "rule_lead": "Per-phase failure mode + escape hatch.",
+      "verdict": "PASS",
+      "evidence": "Per-phase failure mode + escape hatch table at 166-176: seven rows, each naming a forcing function, a dominant failure mode, and one recovery move. Coverage matches the module's forcing functions — Connections pick, Phase 2 pick-three, Phase 2 architectural-deferral, Phase 2 optional tidy-up, send-off SHA pin, send-off un-packaged, send-off stop-when-seen-enough. Both columns are filled in every row; no row carries a failure mode with a blank hatch. Closest to violating: the Phase 2 tidy-up row (173), whose hatch is scoped 'only for a student who chose to run it' and closes 'do not turn it into a gate' — it stays inside because a named recovery that is deliberately non-binding is still a recovery move, and §10 requires the optional beat stay optional. §47's extraction clause is also satisfied: the send-off rows survived the 2026-08-12 move of the mechanics into `set-the-markers-send-it-off.md` and are still stated here alongside the module-level close the file owns.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "1",
+      "rule_lead": "Walk-away test (M2+).",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "out of story's lane — the story template scopes this class to check_pedagogy §16/§27/§45/§47; the pedagogy judge is primary owner and carries this verdict"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "2",
+      "rule_lead": "50% magic rule (M3–M8).",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "out of story's lane — the story template scopes this class to check_pedagogy §16/§27/§45/§47; the pedagogy judge is primary owner and carries this verdict"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "3",
+      "rule_lead": "Trust the agentic design — no human backstops.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "out of story's lane — the story template scopes this class to check_pedagogy §16/§27/§45/§47; the pedagogy judge is primary owner and carries this verdict"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "4",
+      "rule_lead": "Quality ladder.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "out of story's lane — the story template scopes this class to check_pedagogy §16/§27/§45/§47; the pedagogy judge is primary owner and carries this verdict"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "6",
+      "rule_lead": "One exercise = one bounded activity.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "out of story's lane — the story template scopes this class to check_pedagogy §16/§27/§45/§47; the pedagogy judge is primary owner and carries this verdict"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "7",
+      "rule_lead": "Modules composable across variants.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "out of story's lane — the story template scopes this class to check_pedagogy §16/§27/§45/§47; the pedagogy judge is primary owner and carries this verdict"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "8",
+      "rule_lead": "Three-level completeness.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "out of story's lane — the story template scopes this class to check_pedagogy §16/§27/§45/§47; the pedagogy judge is primary owner and carries this verdict"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "9",
+      "rule_lead": "Pattern-recognition LOs need n≥2 instances with contrast.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "out of story's lane — the story template scopes this class to check_pedagogy §16/§27/§45/§47; the pedagogy judge is primary owner and carries this verdict"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "9b",
+      "rule_lead": "Progression-with-variations is the spine.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "out of story's lane — the story template scopes this class to check_pedagogy §16/§27/§45/§47; the pedagogy judge is primary owner and carries this verdict"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "10",
+      "rule_lead": "Student agency — adults decide.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "out of story's lane — the story template scopes this class to check_pedagogy §16/§27/§45/§47; the pedagogy judge is primary owner and carries this verdict"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "11",
+      "rule_lead": "Delegation — student brings, Claude screens.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "out of story's lane — the story template scopes this class to check_pedagogy §16/§27/§45/§47; the pedagogy judge is primary owner and carries this verdict"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "12",
+      "rule_lead": "Split mega-exercise when phases = distinct skills + distinct artifacts.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "out of story's lane — the story template scopes this class to check_pedagogy §16/§27/§45/§47; the pedagogy judge is primary owner and carries this verdict"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "13",
+      "rule_lead": "Artifact-realism check.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "out of story's lane — the story template scopes this class to check_pedagogy §16/§27/§45/§47; the pedagogy judge is primary owner and carries this verdict"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "14",
+      "rule_lead": "Teach principle + technique — default.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "out of story's lane — the story template scopes this class to check_pedagogy §16/§27/§45/§47; the pedagogy judge is primary owner and carries this verdict"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "15",
+      "rule_lead": "Auto-fire sim+eval after significant rewrite.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "out of story's lane — the story template scopes this class to check_pedagogy §16/§27/§45/§47; the pedagogy judge is primary owner and carries this verdict"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "17",
+      "rule_lead": "Corporate infra = nice-to-have, never forcing function.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "out of story's lane — the story template scopes this class to check_pedagogy §16/§27/§45/§47; the pedagogy judge is primary owner and carries this verdict"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "18",
+      "rule_lead": "Personal-first, team promotion via human conversation.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "out of story's lane — the story template scopes this class to check_pedagogy §16/§27/§45/§47; the pedagogy judge is primary owner and carries this verdict"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "19",
+      "rule_lead": "Measure silent failure, not just friction.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "out of story's lane — the story template scopes this class to check_pedagogy §16/§27/§45/§47; the pedagogy judge is primary owner and carries this verdict"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "20",
+      "rule_lead": "Don't pre-set categories before experiment runs.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "out of story's lane — the story template scopes this class to check_pedagogy §16/§27/§45/§47; the pedagogy judge is primary owner and carries this verdict"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "21",
+      "rule_lead": "Verification layers sample DIFFERENT error distributions — not belt-and-braces.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "out of story's lane — the story template scopes this class to check_pedagogy §16/§27/§45/§47; the pedagogy judge is primary owner and carries this verdict"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "21b",
+      "rule_lead": "Cheap-before-expensive verification ordering.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "out of story's lane — the story template scopes this class to check_pedagogy §16/§27/§45/§47; the pedagogy judge is primary owner and carries this verdict"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "22",
+      "rule_lead": "Rule in memory without forcing function = worse than no rule.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "out of story's lane — the story template scopes this class to check_pedagogy §16/§27/§45/§47; the pedagogy judge is primary owner and carries this verdict"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "23",
+      "rule_lead": "Short skeptical pushback on \"done\" = re-verify trigger.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "out of story's lane — the story template scopes this class to check_pedagogy §16/§27/§45/§47; the pedagogy judge is primary owner and carries this verdict"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "24",
+      "rule_lead": "Cohort execution is trainer-paced + concurrent, not sequential.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "out of story's lane — the story template scopes this class to check_pedagogy §16/§27/§45/§47; the pedagogy judge is primary owner and carries this verdict"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "25",
+      "rule_lead": "Host-skill optional; maintainer blocks trainer-only.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "out of story's lane — the story template scopes this class to check_pedagogy §16/§27/§45/§47; the pedagogy judge is primary owner and carries this verdict"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "26",
+      "rule_lead": "Reflection beats: in-chat over file-write.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "out of story's lane — the story template scopes this class to check_pedagogy §16/§27/§45/§47; the pedagogy judge is primary owner and carries this verdict"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "29",
+      "rule_lead": "Eval = fixed yardstick; thing measured learns.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "out of story's lane — the story template scopes this class to check_pedagogy §16/§27/§45/§47; the pedagogy judge is primary owner and carries this verdict"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "30",
+      "rule_lead": "Reading burden for verification = banned. Claude audits Claude.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "out of story's lane — the story template scopes this class to check_pedagogy §16/§27/§45/§47; the pedagogy judge is primary owner and carries this verdict"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "31",
+      "rule_lead": "Self-report + self-audit charity — verify at artifact, over-flag or fresh-session for critique.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "out of story's lane — the story template scopes this class to check_pedagogy §16/§27/§45/§47; the pedagogy judge is primary owner and carries this verdict"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "32",
+      "rule_lead": "Offered structures need forced-engagement mechanic.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "out of story's lane — the story template scopes this class to check_pedagogy §16/§27/§45/§47; the pedagogy judge is primary owner and carries this verdict"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "33",
+      "rule_lead": "Source-type blindness on ingestion.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "out of story's lane — the story template scopes this class to check_pedagogy §16/§27/§45/§47; the pedagogy judge is primary owner and carries this verdict"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "34",
+      "rule_lead": "Task selection drives outcome → name floor AND ceiling.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "out of story's lane — the story template scopes this class to check_pedagogy §16/§27/§45/§47; the pedagogy judge is primary owner and carries this verdict"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "34b",
+      "rule_lead": "Maintainer-block hedge naming section's own failure mode = cut-signal, not warning.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "out of story's lane — the story template scopes this class to check_pedagogy §16/§27/§45/§47; the pedagogy judge is primary owner and carries this verdict"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "35",
+      "rule_lead": "Audience tier determines authoring substrate.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "out of story's lane — the story template scopes this class to check_pedagogy §16/§27/§45/§47; the pedagogy judge is primary owner and carries this verdict"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "36",
+      "rule_lead": "Verification machinery needs smoke-test before trust.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "out of story's lane — the story template scopes this class to check_pedagogy §16/§27/§45/§47; the pedagogy judge is primary owner and carries this verdict"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "37",
+      "rule_lead": "Context-loading tiers as staged progression.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "out of story's lane — the story template scopes this class to check_pedagogy §16/§27/§45/§47; the pedagogy judge is primary owner and carries this verdict"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "39",
+      "rule_lead": "Removals are strategic — ask before cutting.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "out of story's lane — the story template scopes this class to check_pedagogy §16/§27/§45/§47; the pedagogy judge is primary owner and carries this verdict"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "41",
+      "rule_lead": "Symmetric visible-mechanics > runtime fork when dual-runtime constraints break agentic move.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "out of story's lane — the story template scopes this class to check_pedagogy §16/§27/§45/§47; the pedagogy judge is primary owner and carries this verdict"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "42",
+      "rule_lead": "Load-bearing platform feature = no fallback. Gate or redesign.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "out of story's lane — the story template scopes this class to check_pedagogy §16/§27/§45/§47; the pedagogy judge is primary owner and carries this verdict"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "43",
+      "rule_lead": "Eval architecture — partition by evidence source, not criterion count.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "out of story's lane — the story template scopes this class to check_pedagogy §16/§27/§45/§47; the pedagogy judge is primary owner and carries this verdict"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "44",
+      "rule_lead": "Plug points + UX.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "out of story's lane — the story template scopes this class to check_pedagogy §16/§27/§45/§47; the pedagogy judge is primary owner and carries this verdict"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "48",
+      "rule_lead": "Heavy fan-out prompts get body recovery callout.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "out of story's lane — the story template scopes this class to check_pedagogy §16/§27/§45/§47; the pedagogy judge is primary owner and carries this verdict"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "49",
+      "rule_lead": "Save belongs with authoring, not loading.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "out of story's lane — the story template scopes this class to check_pedagogy §16/§27/§45/§47; the pedagogy judge is primary owner and carries this verdict"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "50",
+      "rule_lead": "Convenience-driven prompts with known shape-bias → body acknowledgment callout.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "out of story's lane — the story template scopes this class to check_pedagogy §16/§27/§45/§47; the pedagogy judge is primary owner and carries this verdict"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "51",
+      "rule_lead": "Deliberate-antipattern prompts = class-judge exempt, flagged-by-design.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "out of story's lane — the story template scopes this class to check_pedagogy §16/§27/§45/§47; the pedagogy judge is primary owner and carries this verdict"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "52",
+      "rule_lead": "Session widget — `",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "out of story's lane — the story template scopes this class to check_pedagogy §16/§27/§45/§47; the pedagogy judge is primary owner and carries this verdict"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "52b",
+      "rule_lead": "Widgets carry semantics, not just emphasis — match the widget to MEANING, never to how loud it renders.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "out of story's lane — the story template scopes this class to check_pedagogy §16/§27/§45/§47; the pedagogy judge is primary owner and carries this verdict"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "52a",
+      "rule_lead": "Module prose carrying a `",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "out of story's lane — the story template scopes this class to check_pedagogy §16/§27/§45/§47; the pedagogy judge is primary owner and carries this verdict"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "52c",
+      "rule_lead": "Exercise lead-in trio — three slots, three tenses. A slot filled past its label is this corpus's most common defect.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "out of story's lane — the story template scopes this class to check_pedagogy §16/§27/§45/§47; the pedagogy judge is primary owner and carries this verdict"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "52d",
+      "rule_lead": "Finding the point — four moves, learned writing M1's set 2026-08-12.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "out of story's lane — the story template scopes this class to check_pedagogy §16/§27/§45/§47; the pedagogy judge is primary owner and carries this verdict"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "53",
+      "rule_lead": "Body prose must not supply an answer its prompt asks for — position is not the test (widened 2026-08-12).",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "out of story's lane — the story template scopes this class to check_pedagogy §16/§27/§45/§47; the pedagogy judge is primary owner and carries this verdict"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "56",
+      "rule_lead": "Engineer-audience audit fixes default to body callout, not forcing function.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "out of story's lane — the story template scopes this class to check_pedagogy §16/§27/§45/§47; the pedagogy judge is primary owner and carries this verdict"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "57",
+      "rule_lead": "Multi-session (any new mechanic mid-arc) ships as packaging, not new primitive.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "out of story's lane — the story template scopes this class to check_pedagogy §16/§27/§45/§47; the pedagogy judge is primary owner and carries this verdict"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "58",
+      "rule_lead": "`/clear` = tool, not ceremony.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "out of story's lane — the story template scopes this class to check_pedagogy §16/§27/§45/§47; the pedagogy judge is primary owner and carries this verdict"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "59",
+      "rule_lead": "Inbound links preserve pedagogical beat across reference restructuring.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "out of story's lane — the story template scopes this class to check_pedagogy §16/§27/§45/§47; the pedagogy judge is primary owner and carries this verdict"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "60",
+      "rule_lead": "Scan at the unit the rule names, not convenient larger one.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "out of story's lane — the story template scopes this class to check_pedagogy §16/§27/§45/§47; the pedagogy judge is primary owner and carries this verdict"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "61",
+      "rule_lead": "Verify mechanism before proposing surgery.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "out of story's lane — the story template scopes this class to check_pedagogy §16/§27/§45/§47; the pedagogy judge is primary owner and carries this verdict"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "61a",
+      "rule_lead": "Acting on a flagged item (punchlist entry / audit finding / eval BLOCK) — verify before fixing; its prescribed fix is a hypothesis, not an instruction.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "out of story's lane — the story template scopes this class to check_pedagogy §16/§27/§45/§47; the pedagogy judge is primary owner and carries this verdict"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "62",
+      "rule_lead": "Callouts next to prompts: steer, don't pre-empt.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "out of story's lane — the story template scopes this class to check_pedagogy §16/§27/§45/§47; the pedagogy judge is primary owner and carries this verdict"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "63",
+      "rule_lead": "Persistent TODO surfaces stale by default — audit before acting.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "out of story's lane — the story template scopes this class to check_pedagogy §16/§27/§45/§47; the pedagogy judge is primary owner and carries this verdict"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "64",
+      "rule_lead": "Maintainer blocks point, don't restate. Link architecture doc where they touch delivery.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "out of story's lane — the story template scopes this class to check_pedagogy §16/§27/§45/§47; the pedagogy judge is primary owner and carries this verdict"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "65",
+      "rule_lead": "Cross-module prerequisite rescue: run it late, never fabricate.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "out of story's lane — the story template scopes this class to check_pedagogy §16/§27/§45/§47; the pedagogy judge is primary owner and carries this verdict"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "66",
+      "rule_lead": "Three-pass build — finish each pass across ALL modules before starting the next.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "out of story's lane — the story template scopes this class to check_pedagogy §16/§27/§45/§47; the pedagogy judge is primary owner and carries this verdict"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "1",
+      "rule_lead": "No placeholders inside fences.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "no prompt blocks (grep '{{prompt:' -> 0, grep '**Prompt**' -> 0; view signal has_prompt_blocks false)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "2",
+      "rule_lead": "Every prompt block: one-sentence action lead-in.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "no prompt blocks (grep '{{prompt:' -> 0, grep '**Prompt**' -> 0; view signal has_prompt_blocks false)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "3",
+      "rule_lead": "Canonical shape — lead-in, label with destination, blank line, fence.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "no prompt blocks (grep '{{prompt:' -> 0, grep '**Prompt**' -> 0; view signal has_prompt_blocks false)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "4",
+      "rule_lead": "Installed Skills invoke by name, never path.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "no prompt blocks (grep '{{prompt:' -> 0, grep '**Prompt**' -> 0; view signal has_prompt_blocks false)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "5",
+      "rule_lead": "Chain by back-reference + deterministic path, never invented alias.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "no prompt blocks (grep '{{prompt:' -> 0, grep '**Prompt**' -> 0; view signal has_prompt_blocks false)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "6",
+      "rule_lead": "Chained-prompt isolation — don't leak downstream pipeline.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "no prompt blocks (grep '{{prompt:' -> 0, grep '**Prompt**' -> 0; view signal has_prompt_blocks false)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "7",
+      "rule_lead": "No session-resets mid-phase.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "no prompt blocks (grep '{{prompt:' -> 0, grep '**Prompt**' -> 0; view signal has_prompt_blocks false)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "8",
+      "rule_lead": "Multi-sample methods need structural enforcement.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "no prompt blocks (grep '{{prompt:' -> 0, grep '**Prompt**' -> 0; view signal has_prompt_blocks false)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "9",
+      "rule_lead": "Markdown shout (`",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "no prompt blocks (grep '{{prompt:' -> 0, grep '**Prompt**' -> 0; view signal has_prompt_blocks false)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "10",
+      "rule_lead": "Runtime-fork prompts: paired divs, shared chip.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "no prompt blocks (grep '{{prompt:' -> 0, grep '**Prompt**' -> 0; view signal has_prompt_blocks false)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "11",
+      "rule_lead": "Runtime-mechanical scaffolding asymmetry — MORE in less-fluent fork, not less.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "no prompt blocks (grep '{{prompt:' -> 0, grep '**Prompt**' -> 0; view signal has_prompt_blocks false)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "12",
+      "rule_lead": "Append-vs-integrate — name integration mode on regeneration with new context source.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "no prompt blocks (grep '{{prompt:' -> 0, grep '**Prompt**' -> 0; view signal has_prompt_blocks false)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "13",
+      "rule_lead": "Citation discipline — extend cite-or-flag scope + quote supporting sentence.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "no prompt blocks (grep '{{prompt:' -> 0, grep '**Prompt**' -> 0; view signal has_prompt_blocks false)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "14",
+      "rule_lead": "Niceness tax — name the edge or pin the line on regeneration.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "no prompt blocks (grep '{{prompt:' -> 0, grep '**Prompt**' -> 0; view signal has_prompt_blocks false)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "15",
+      "rule_lead": "Question-dump default — `in turn` too soft; two legal shapes.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "no prompt blocks (grep '{{prompt:' -> 0, grep '**Prompt**' -> 0; view signal has_prompt_blocks false)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "16",
+      "rule_lead": "Overwrite anxiety — name overwrite default on regeneration.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "no prompt blocks (grep '{{prompt:' -> 0, grep '**Prompt**' -> 0; view signal has_prompt_blocks false)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "17",
+      "rule_lead": "Preamble before action — design around it.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "no prompt blocks (grep '{{prompt:' -> 0, grep '**Prompt**' -> 0; view signal has_prompt_blocks false)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "18",
+      "rule_lead": "Self-critique register, not defense, when Claude interrogates own work.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "no prompt blocks (grep '{{prompt:' -> 0, grep '**Prompt**' -> 0; view signal has_prompt_blocks false)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "19",
+      "rule_lead": "Minimal hand-off + Claude self-augments for send-off prompts.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "no prompt blocks (grep '{{prompt:' -> 0, grep '**Prompt**' -> 0; view signal has_prompt_blocks false)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "20",
+      "rule_lead": "Grill before save — collaborative quality at artefact assembly.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "no prompt blocks (grep '{{prompt:' -> 0, grep '**Prompt**' -> 0; view signal has_prompt_blocks false)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "21",
+      "rule_lead": "Tell me what you wrote, not show me what you'll write.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "no prompt blocks (grep '{{prompt:' -> 0, grep '**Prompt**' -> 0; view signal has_prompt_blocks false)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "22",
+      "rule_lead": "Prompt-body edits require maintainer approval — registry files AND inline blocks.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "no prompt blocks (grep '{{prompt:' -> 0, grep '**Prompt**' -> 0; view signal has_prompt_blocks false)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "23",
+      "rule_lead": "Artifact destinations are explicit subpaths, never naked filenames (Agents 101-specific).",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "no prompt blocks (grep '{{prompt:' -> 0, grep '**Prompt**' -> 0; view signal has_prompt_blocks false)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "24",
+      "rule_lead": "Don't restate session CWD inside prompt body.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "no prompt blocks (grep '{{prompt:' -> 0, grep '**Prompt**' -> 0; view signal has_prompt_blocks false)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "25",
+      "rule_lead": "`subagent` allowed in prompt blocks; explain why after prompt.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "no prompt blocks (grep '{{prompt:' -> 0, grep '**Prompt**' -> 0; view signal has_prompt_blocks false)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "26",
+      "rule_lead": "Maintainer-approval edits — ONE-AT-A-TIME, PRIORITY-ORDERED, FOUR-FIELD cards.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "no prompt blocks (grep '{{prompt:' -> 0, grep '**Prompt**' -> 0; view signal has_prompt_blocks false)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "27",
+      "rule_lead": "Name consumer at write time — `Save it as <path>` requires downstream reader.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "no prompt blocks (grep '{{prompt:' -> 0, grep '**Prompt**' -> 0; view signal has_prompt_blocks false)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "28",
+      "rule_lead": "Strong-bold prompt label is exactly `",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "no prompt blocks (grep '{{prompt:' -> 0, grep '**Prompt**' -> 0; view signal has_prompt_blocks false)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "29",
+      "rule_lead": "Normal work request before orchestration.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "no prompt blocks (grep '{{prompt:' -> 0, grep '**Prompt**' -> 0; view signal has_prompt_blocks false)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "30",
+      "rule_lead": "Live-test corrections preserve operator workflow.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "no prompt blocks (grep '{{prompt:' -> 0, grep '**Prompt**' -> 0; view signal has_prompt_blocks false)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "31",
+      "rule_lead": "Prompts live in registry; module/exercise/lecture files reference by marker.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "no prompt blocks (grep '{{prompt:' -> 0, grep '**Prompt**' -> 0; view signal has_prompt_blocks false)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "32",
+      "rule_lead": "Module names in prompt prose are fine — they ground the session.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "no prompt blocks (grep '{{prompt:' -> 0, grep '**Prompt**' -> 0; view signal has_prompt_blocks false)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "33",
+      "rule_lead": "Git-output greps asserting exact-N need multi-result fallback.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "no prompt blocks (grep '{{prompt:' -> 0, grep '**Prompt**' -> 0; view signal has_prompt_blocks false)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "34",
+      "rule_lead": "Disambiguation, anchors, and decision logic that bind Claude live INSIDE prompt fence.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "no prompt blocks (grep '{{prompt:' -> 0, grep '**Prompt**' -> 0; view signal has_prompt_blocks false)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "35",
+      "rule_lead": "Repeated Q&A → premature re-edits. Separate iteration from persistence.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "no prompt blocks (grep '{{prompt:' -> 0, grep '**Prompt**' -> 0; view signal has_prompt_blocks false)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "36",
+      "rule_lead": "Wide prompts split by logical move — paragraph breaks = cheapest scan-affordance.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "no prompt blocks (grep '{{prompt:' -> 0, grep '**Prompt**' -> 0; view signal has_prompt_blocks false)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "37",
+      "rule_lead": "Orient saved rule by where it FIRES, not surface activity producing it.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "no prompt blocks (grep '{{prompt:' -> 0, grep '**Prompt**' -> 0; view signal has_prompt_blocks false)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "38",
+      "rule_lead": "Body lead-in mirrors prompt's opening phrasing.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "no prompt blocks (grep '{{prompt:' -> 0, grep '**Prompt**' -> 0; view signal has_prompt_blocks false)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "39",
+      "rule_lead": "Declare `permission-mode:` when paste requires specific Claude Code mode.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "no prompt blocks (grep '{{prompt:' -> 0, grep '**Prompt**' -> 0; view signal has_prompt_blocks false)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "40",
+      "rule_lead": "Verify session boundary before deciding prompt's context-carrying.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "no prompt blocks (grep '{{prompt:' -> 0, grep '**Prompt**' -> 0; view signal has_prompt_blocks false)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "41",
+      "rule_lead": "Artifact-vs-STOP tail ordering — last imperative wins.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "no prompt blocks (grep '{{prompt:' -> 0, grep '**Prompt**' -> 0; view signal has_prompt_blocks false)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "42",
+      "rule_lead": "Headless-runner discipline — tail every prompt with no-AUQ guard.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "no prompt blocks (grep '{{prompt:' -> 0, grep '**Prompt**' -> 0; view signal has_prompt_blocks false)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "43",
+      "rule_lead": "Long-running prompts stream progress — never go silent.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "no prompt blocks (grep '{{prompt:' -> 0, grep '**Prompt**' -> 0; view signal has_prompt_blocks false)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "44",
+      "rule_lead": "A leading-looking line can be a forcing function; prefer the simpler prompt.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "no prompt blocks (grep '{{prompt:' -> 0, grep '**Prompt**' -> 0; view signal has_prompt_blocks false)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "45",
+      "rule_lead": "Prompt paths match Builder scope.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "no prompt blocks (grep '{{prompt:' -> 0, grep '**Prompt**' -> 0; view signal has_prompt_blocks false)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "46",
+      "rule_lead": "Output shape — trust Claude's defaults, don't pad.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "no prompt blocks (grep '{{prompt:' -> 0, grep '**Prompt**' -> 0; view signal has_prompt_blocks false)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "47",
+      "rule_lead": "\"Add X and regenerate\" is a trap.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "no prompt blocks (grep '{{prompt:' -> 0, grep '**Prompt**' -> 0; view signal has_prompt_blocks false)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "48",
+      "rule_lead": "Vary closings deliberately.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "no prompt blocks (grep '{{prompt:' -> 0, grep '**Prompt**' -> 0; view signal has_prompt_blocks false)"
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": "1",
+      "rule_lead": "Group beat ≠ parallel solo work.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "no group-owned artefact — every artefact this module produces belongs to one participant (branch+SHA, observations/, transcript per the 160-164 contract table)"
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": "2",
+      "rule_lead": "The room's output is named as an artefact.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "no group-owned artefact — every artefact this module produces belongs to one participant (branch+SHA, observations/, transcript per the 160-164 contract table)"
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": "3",
+      "rule_lead": "React, don't author.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "no group-owned artefact — every artefact this module produces belongs to one participant (branch+SHA, observations/, transcript per the 160-164 contract table)"
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": "4",
+      "rule_lead": "Pre-built material is a hard prerequisite, stated in the module.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "no group-owned artefact — every artefact this module produces belongs to one participant (branch+SHA, observations/, transcript per the 160-164 contract table)"
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": "5",
+      "rule_lead": "Attribution is stated by a human, recorded verbatim.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "no group-owned artefact — every artefact this module produces belongs to one participant (branch+SHA, observations/, transcript per the 160-164 contract table)"
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": "6",
+      "rule_lead": "Nothing is written over.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "no group-owned artefact — every artefact this module produces belongs to one participant (branch+SHA, observations/, transcript per the 160-164 contract table)"
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": "7",
+      "rule_lead": "Filing is invisible.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "no group-owned artefact — every artefact this module produces belongs to one participant (branch+SHA, observations/, transcript per the 160-164 contract table)"
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": "8",
+      "rule_lead": "Scope-of-sharing is declared before contribution, not after.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "no group-owned artefact — every artefact this module produces belongs to one participant (branch+SHA, observations/, transcript per the 160-164 contract table)"
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": "10",
+      "rule_lead": "A decision beat needs a real constraint.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "no group-owned artefact — every artefact this module produces belongs to one participant (branch+SHA, observations/, transcript per the 160-164 contract table)"
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": "11",
+      "rule_lead": "Group decisions are human, and named as such.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "no group-owned artefact — every artefact this module produces belongs to one participant (branch+SHA, observations/, transcript per the 160-164 contract table)"
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": "12",
+      "rule_lead": "Retrospective = group round, no prompts, trainer silent.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "no group-owned artefact — every artefact this module produces belongs to one participant (branch+SHA, observations/, transcript per the 160-164 contract table)"
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": "13",
+      "rule_lead": "Second-facilitator test.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "no group-owned artefact — every artefact this module produces belongs to one participant (branch+SHA, observations/, transcript per the 160-164 contract table)"
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": "14",
+      "rule_lead": "Name the too-big and too-small room.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "no group-owned artefact — every artefact this module produces belongs to one participant (branch+SHA, observations/, transcript per the 160-164 contract table)"
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": "15",
+      "rule_lead": "Mixed-experience is the default room.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "no group-owned artefact — every artefact this module produces belongs to one participant (branch+SHA, observations/, transcript per the 160-164 contract table)"
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": "16",
+      "rule_lead": "Room beats overrun; name the protected beat.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "no group-owned artefact — every artefact this module produces belongs to one participant (branch+SHA, observations/, transcript per the 160-164 contract table)"
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": "17",
+      "rule_lead": "No mechanical coverage — the trainer guide carries the load.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "no group-owned artefact — every artefact this module produces belongs to one participant (branch+SHA, observations/, transcript per the 160-164 contract table)"
     },
     {
       "compendium": "check_lectures.md",
       "rule_index": 3,
       "rule_lead": "No cross-module sequencing in lecture bodies.",
       "verdict": "N/A",
-      "evidence": "Target is a module file; the rule assigns sequencing TO module files ('lectures teach, module files sequence'), so this rule cannot fire here in any direction. This diff region actually REMOVES a cross-module reference from the Prework echo (line 14 dropped 'from Module 3' and the two-branch flag construction, per commit 43bb766e) — less sequencing text, not more, and still correctly homed in a module file regardless. '## Bring to Module 5' (62) and '## Pre-reads before Module 5' (68), including the Mollick entry's forward reference, remain correctly homed here too. Would only trip §3 inside `lectures/**`, out of this instance's file scope.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_lectures.md",
-      "rule_index": 4,
-      "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
-      "verdict": "PASS",
-      "evidence": "No `##` header changed in this diff region — the swap is body text inside '## Prework', not the header itself. 'Pre-reads before Module 5' (68) still squints clean and the truth clause still holds (asserts only WHEN the reads happen, not that they agree — the block's own lede correctly reads 'The rest point…', not a false universal). No em-dash, no pedagogy register. Remaining headers (Big Idea, Prework, What You'll Learn, Start here, Key Concepts, Optional challenges, Bring to Module 5, Next) are standing module-template labels, unauthored-per-file.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_lectures.md",
-      "rule_index": 5,
-      "rule_lead": "A slide's BODY is size-bounded, not just its header (§4's sibling).",
-      "verdict": "PASS",
-      "evidence": "RAN this session: `node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/run-the-first-experiment.md --report` → 'oversized: 0', '✓ every slide is within limits', exit clean. Report lists 'Pre-reads before Module 5' at ~285w (marked `~` accepted, next largest Prework at 118w — down slightly from prior reads since the Prework swap shortened rather than lengthened that slide). RAN: `grep -n \"Slide size accepted\"` → line 98, exact format `**Slide size accepted:** Pre-reads before Module 5 — same argument as...`, matching the script's `acceptedSlides()` regex. Script-verified accepted exception, not self-reported.",
-      "fix_hint": null,
-      "blocking": false
+      "evidence": "Rule assigns cross-module sequencing TO module files ('lectures teach, module files sequence') — this instance's target IS a module file, so the rule cannot fire against it in either direction. '## Bring to Module 5' (62), '## Pre-reads before Module 5' (68, including the Mollick entry's forward reference), and '## Next' (84) are all correctly homed cross-module sequencing per §3's own text. Would only trip inside `lectures/**`, out of this instance's file scope.",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "05ee2c8e6dbbb2b5318137e88af22e43953d07782b4ab5499300c1dac73a40c7",
+      "carried_shape": "3bf287f827d6a7ae"
     },
     {
       "compendium": "check_lectures.md",
       "rule_index": 6,
       "rule_lead": "A prompt inside a lecture is a trainer show-and-tell, never a room follow-along.",
       "verdict": "N/A",
-      "evidence": "RAN: `node scripts/expand-md.js curriculum/trainings/agentic-engineering-101/run-the-first-experiment.md | shasum -a 256` → b8d1a8eecb37f2b99de3b639398258e8d77f635d1815548f841c6d306483cd9a, byte-identical to the raw file's own sha (confirmed separately: `shasum -a 256` on the raw file gives the same digest) — zero `{{prompt:<key>}}` markers resolved. RAN: `grep -c '{{prompt:' <file>` → 0; `grep -c '\\*\\*Prompt\\*\\*' <file>` → 0. Rule's scope is `curriculum/lectures/**` in any case; this is a module file with no fenced prompt of its own. Prompts for this module live in the two linked exercise files, out of this instance's scope.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_pedagogy.md",
-      "rule_index": 16,
-      "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
-      "verdict": "PASS",
-      "evidence": "RAN: `grep -nE \"push back once|two rounds max|instinct is to\" curriculum/trainings/agentic-engineering-101/run-the-first-experiment.md` → zero hits (exit 1). The revised Prework sentence authors no forcing function and prescribes no reaction; it is strictly an optional-reading pointer, simpler than the flag-branched version it replaced. 'Optional. Start with the first.' (70) is an ordering hint, not a scripted feeling or count. Body prose stays descriptive; the real forcing functions (screen the candidates, rank the gaps, pick the worst three, pin the SHA) live in the fenced prompts of the two exercise files, out of scope here.",
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_pedagogy.md",
-      "rule_index": 27,
-      "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
-      "verdict": "PASS",
-      "evidence": "RAN: `grep -nE \"discuss|compare with|tell the room|share with|person next to you|neighbou?r|turn to\" curriculum/trainings/agentic-engineering-101/run-the-first-experiment.md` → zero hits (exit 1). Validated the pattern against a planted control string ('discuss with your neighbour' piped through the same grep) which matched, confirming the zero on the real file is a true negative. All body prose, including the revised Prework sentence, is about the WORK (what to read and why, what to scope, what to fill, what to send). Closest standing candidate, unchanged: line 29, names expected variance in the room's task picks without asking for a share-out.",
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": 1,
-      "rule_lead": "Mood contract named.",
-      "verdict": "PASS",
-      "evidence": "State the student leaves in: curious readiness with a live experiment running and two open questions carried into M5 — what the run will do, and how many checks are worth building at all. Neither is answered here. Whole file is one teaching-shaped phase (no `## Phase` headers, confirmed `grep -c '^## Phase'` → 0); scored 8/10 phase and 8/10 close in the regenerated persona trace (sim-cache/ae101--module--run-the-first-experiment.persona.json, content_sha refreshed to b8d1a8ee… this session after the cached 0a4402d1… was found to describe post-swap text under a pre-swap sha — discarded rather than reused, re-derived from a direct read instead). Meta block's Mood target line (unchanged by this diff region) reads 'curious readiness — \"I've built enough to try; let's see what the agent does.\"' — matches. The Big Idea's prep-register tension flagged in this file's own maintainer block (line 92) is a documented, dated accept-note tracked as a watch in `pre-cohort-todos.md`, not re-litigated here.",
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": 2,
-      "rule_lead": "Epistemic mood ≠ punitive mood.",
-      "verdict": "PASS",
-      "evidence": "Line 50 (Key Concepts, unchanged): 'Stopping a session that has gone off the rails is reading, not failing.' The Mollick entry reinforces the epistemic register: 'Mollick does not call the winner. Neither does this training' (72) frames the whole M4→M5 gap as an open question, never 'I messed up'. No blame-shaped sentence anywhere in the body, including the revised Prework line.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": 3,
-      "rule_lead": "Lead with discipline, not failure mode.",
-      "verdict": "PASS",
-      "evidence": "Big Idea (line 4), unchanged: 'Prep your first long session. The session is how you find out what's missing.' Two failure-flavoured handles survive verbatim — 'The Bitter Lesson versus The Garbage Can' (72) and 'The ironies of automation' (41) — both fall under §3's own named-canonical-results carve-out (Sutton's bitter lesson / Cohen-March-Olsen's garbage-can model; Bainbridge's ironies of automation): searchable handles of named results, not authored failure-titling.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": 4,
-      "rule_lead": "Strategy-fidelity check.",
-      "verdict": "PASS",
-      "evidence": "Four facets, re-checked live this session against `bosser-strategy:content-strategy-agentic-engineering-101.md`. **Front-run check:** M5's teaching moment (three-pattern earned from felt M4 evidence) is untouched by the Prework edit; the Mollick entry still names none of M5's three pieces. **Module-to-module arc:** '## Next' (86, unchanged) hands off to 'what came back, or what you caught before it went further' — matches M5-in-detail's own open. **Big Idea fidelity / mood:** M4-in-detail's mood line ('curious readiness — \"I've built enough to try something; let's see what the agent does with it.\"') matches the Meta block verbatim in substance. **Mood doesn't resolve early:** nothing in this diff resolves M4's unease; Mollick adds an unresolved question rather than closing one. **New drift found, not a finding against this file:** the strategy doc's earlier 'four-read practitioner arc is canon (wired 2026-07-30)' paragraph (grepped this session, ~line 305, inside M1-in-detail) still reads 'Willison *Designing agentic loops* before M4, da Costa's backpressure essay before M6 (flag-gated to sequences that run M6)' — the OLD placement. The shipped curriculum now has Willison relocated to M3 (`earn-the-trust.md`, quoting Antti 2026-08-21: 'it was more about security than long-running') and da Costa unconditional as the M3→M4 gap read (this file + `plan-mode-done-right.md`, cross-module-verified clean in commit 43bb766e: 'Both judges checked each end of every relocation and confirmed the duplication stayed symmetric and no contract broke'). This file's OWN sequencing is internally coherent with its siblings and correctly implements the dated, sourced maintainer decision — the harm §4 exists to catch (a module front-running or contradicting downstream teaching) is not present in what a student reads here. The stale canon-doc paragraph is a documentation-debt risk for FUTURE generation sessions that might read it cold and reintroduce the old placement, not a defect in this file. Flagged in `notes` per `check_pedagogy.md §61a(g)` (maintainer-held premise, repo-answerable here since both sides are dated and sourced, but the FIX — editing the private strategy doc — is outside this file and outside a read-only judge's scope) rather than filed as REVISE against this instance.",
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": null,
-      "judge_owned": true,
-      "rule_lead": "Whole-compendium scope call: prompt-block design mechanics.",
-      "verdict": "N/A",
-      "evidence": "This is a module index file with no fenced `**Prompt**` block and no `{{prompt:<key>}}` marker of its own (confirmed under check_lectures §6 — raw and expanded shas match, zero grep hits for both marker forms). The file only links to the two exercises that carry the module's prompts; check_prompts.md's rule surface applies to those files, not to this one. Whole compendium N/A; no numbered rule borrowed.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_workshop.md",
-      "rule_index": null,
-      "judge_owned": true,
-      "rule_lead": "Whole-compendium scope call: room-scale beats.",
-      "verdict": "N/A",
-      "evidence": "No beat in this file produces an artefact that belongs to the group. Connections task-pick, the Phase 1/2 audit-and-fill, the send-off, and the reading list are all individual work on the student's own repo — co-located solo work in a classroom, which the trigger explicitly excludes from workshop scope. Whole compendium N/A; no numbered rule borrowed.",
-      "fix_hint": null,
-      "blocking": false
+      "evidence": "RAN: `node scripts/expand-md.js <file>` piped to `shasum -a 256` → 4bead8950c397b6eae1cbada235441c76e19ceec3da17710bbb3b554c6b6f766, byte-identical to `shasum -a 256` on the raw file, and `diff -q` between raw and expanded output reports no differences — zero `{{prompt:<key>}}` markers to resolve. RAN: `grep -c '{{prompt:'` → 0; `grep -c '\\*\\*Prompt\\*\\*'` → 0. Rule's scope is `curriculum/lectures/**` prompt fences in any case; this is a module index file with no fenced prompt of its own. The module's prompts live in the two linked exercise files, out of this instance's scope.",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "05ee2c8e6dbbb2b5318137e88af22e43953d07782b4ab5499300c1dac73a40c7",
+      "carried_shape": "3bf287f827d6a7ae"
     }
   ],
   "mood_summary": {
@@ -144,12 +1447,11 @@
     "any_below_8": false,
     "stealing_the_mood": []
   },
-  "blocking_findings_count": 0,
-  "todos_count": 0,
   "notes": [
-    "Teaching moment lands (no check_strategy_tie_in rule_index, per template): M4's teaching moment is the un-packaged send-off itself, untouched by this diff region. The regenerated trace records the persona walking the full lecture/exercise sequence with no confusion flag on the send-off mechanics. The Mollick entry sits after '## Bring to Module 5', downstream of the beat, so it cannot make the moment skippable.",
-    "SIM-CACHE INTEGRITY FINDING (out of lane for rules_evaluated, load-bearing for trust in this instance): the persona trace this instance inherited (sim-cache/ae101--module--run-the-first-experiment.persona.json) carried content_sha 0a4402d1… — the file's state AT PIN b55cd28b, i.e. the pre-swap version with the flag-gated da Costa/Willison branch — but its own persona_action text already narrated reading the POST-swap unconditional sentence ('the swapped gap-read sentence at line 14... in the six-module cut this now renders da Costa's Backpressure'). A trace cannot truthfully describe content its own stamped sha does not contain; this is the 'cached trace describing a body that no longer exists (or, here, a body that existed only transiently between two writes)' failure the dispatch preamble names. Discarded, not reused. Regenerated fresh this session directly from the current file (content_sha b8d1a8ee…, verified to equal `shasum -a 256` on the live file) and overwrote the cache. Every score and quote in this instance traces to my own direct read, not to the inherited cache.",
-    "STRATEGY-DOC DRIFT (see check_strategy_tie_in §4 evidence for full detail — repeated here per this dispatch's note-worthy-finding convention): `bosser-strategy:content-strategy-agentic-engineering-101.md`'s 'four-read practitioner arc is canon (wired 2026-07-30)' paragraph (~line 305) still assigns Willison's *Designing agentic loops* to M4 and da Costa's *Backpressure* to M6. The shipped curriculum (this file, `earn-the-trust.md`, `plan-mode-done-right.md`) has since relocated both — Willison to M3, da Costa to the unconditional M3→M4 gap read — per a dated, quoted Antti decision (2026-08-21) and a cross_module-judge-verified commit (43bb766e). The M5-in-detail section of the SAME strategy doc was separately kept current (its own Pre-reads-before-M5 paragraph explicitly says 'this spec matches that shipped set'), so this is a localized miss, not a systemic doc failure. Not filed as a REVISE against this file because the harm the rule guards against (a module's own content front-running or contradicting the arc) is not present in what a student reads — the risk is a future generation session reading the stale paragraph cold and reintroducing the superseded placement. This is a maintainer-held-premise item per `check_pedagogy.md §61a(g)`: both sides are dated and sourced (repo-answerable), but the fix is an edit to a private strategy doc outside this file and outside a read-only judge's remit. Flagging for the maintainer, not applying.",
-    "Accept-notes read before filing anything (per dispatch instructions), all still current, none conflict with a finding filed in this instance: Big Idea prep-register watch (line 92, tracked in pre-cohort-todos.md); tracker-hunt aside cut (line 94, 2026-08-14, Antti); Mollick-leads-five-entries + Slide size accepted (lines 96/98, 2026-08-21, mechanically re-verified this pass); factory pre-read ends unanswered by design (line 100, 2026-08-14, 'gives too much away' — do not restore reassurance); nudge-count accept-note deliberately not duplicated here (line 102, moved to the exercise file, 2026-08-13); new da Costa-unconditional-no-flag note (line 90, undated but sourced to the same 2026-08-21 Antti decision documented in `earn-the-trust.md` and `plan-mode-done-right.md` — read as design-decision documentation, not a rule-override accept-note, but checked against for conflict with §3/§4 findings above and found none); practice-as-a-noun ruling (line 189 area, Antti 2026-08-15)."
-  ]
+    "TRACE REGENERATED. The cached trace's content_sha was 4bead8950c397b6eae1cbada235441c76e19ceec3da17710bbb3b554c6b6f766; the live file is d0359f68ebf5793a6927235b4a8bd94a1fe1e87295a9f720e660cb24bc9a9103. RAN `git diff 50658158 HEAD -- <file>`: the delta is four `<!--tier:N-->` HTML-comment insertions (Key Concepts 48, Optional challenges 56, Pre-reads before Module 5 72, Next 89) plus a maintainer-block cross_module row split into two rows. Comments do not render in either layout, so the persona reading is unchanged in substance — but the walk was re-run against the live body and every quote in this instance was grepped against the current file rather than carried from the cache.",
+    "TEACHING MOMENT LANDS (no check_strategy_tie_in rule_index; recorded here per the template). The named teaching moment is the un-packaged send-off producing a readable-but-underdelivering result that M5 diagnoses. It cannot be skipped by persona-skill variation, because it is not a comprehension beat: the student dispatches a real task on their own repo and the result is whatever it is. The two failure directions are both caught by the body rather than by trainer luck — a student who wants to package first meets 'no plan.md, no verifier, no reference artifact' in the LO (23) and again in Key Concepts (51), and a student whose run stalls meets 'A stopped session counts; the trace is the artefact' (67) and 'Traces are data' (52). A stronger engineer landing a cleaner run still carries a trace to read, which is the only thing M5 requires.",
+    "OBSERVATION, not a finding, no fix owed: line 4's Big Idea leads on prep register while the strategy doc's M4 spirit is 'M4 doesn't prepare, it tests'. Maintainer 97 accepts this for the first cohort by name, anticipates this exact judge, names the trainer reframe, and names the firing condition tracked in pre-cohort-todos.md. Filed here only so a future story run does not re-open it as fresh."
+  ],
+  "blocking_findings_count": 0,
+  "todos_count": 0
 }

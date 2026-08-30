@@ -1,11 +1,11 @@
 {
   "class": "storytelling",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/spot-gaps-build-the-loop.md",
-  "body_sha": "e2ff96de0d8b83c0bb65425be3de59b8db519624a4965ecc4c5b4b4eb1fb7ecd",
+  "body_sha": "77422a0df8c2d5c1f29d869a7525e43014e596b9ba7c25ec5fd44cd4e5e36d36",
   "shape_hash": "3bf287f827d6a7ae",
-  "verdict": "PASS",
+  "verdict": "PASS_WITH_TODOS",
   "training": "ae101",
-  "module_mood_contract": "practitioner fluency — \"I know how to test, I know how to learn, I know how to encode.\" Not confidence-as-performance; competence-as-posture. (L133 maintainer block, Mood target.)",
+  "module_mood_contract": "practitioner fluency — 'I know how to test, I know how to learn, I know how to encode.' Not confidence-as-performance; competence-as-posture. Mood bar 8+/10 per teaching beat.",
   "trace_status": "regenerated",
   "rules_evaluated": [
     {
@@ -13,7 +13,7 @@
       "rule_index": 1,
       "rule_lead": "Meta-frame lectures = closers, not openers.",
       "verdict": "PASS",
-      "evidence": "Opener chain (L31,33): 'The 2 frontiers' then 'Story of Module 6', both before the exercise link (L37). Closer chain (L47-53): 'Composing the workflow', 'The loop has a name', 'The map, filled in', 'Agents that build agents', all after Human close. Named-practitioner terms (Ronacher, Cherny, Klaassen, Curran, Charles) are reserved for the closing lecture per the Frameworks section (L160-165, e.g. L161 'Re-named in the closing lecture as a scaffold the student is now ready to sharpen') — the naming-after-the-fact pattern this rule requires. Opener order itself is a maintainer-confirmed decision (L184, 2026-08-12) about sequencing between the two openers, not a closer-material-as-opener violation.",
+      "evidence": "Openers (L32/L34/L36) are `the-2-frontiers` (shows the ceiling still open at the end of the arc — opener shape per the rule's 'showing a ceiling' diagnostic), `story-of-module-6` (first-person permission beat, not a naming-the-pattern-you-just-lived lecture; strategy doc L465 places it second-after-frontiers and the maintainer block records Antti's 2026-08-12 confirmation that the module file is the decision), and `quality-is-grounding` (arming frame). The four naming/recognition lectures are all AFTER the exercise link at L38: L51 `[The check you built is an eval](lectures/the-loop-has-a-name.md)` is the archetypal closer — it names a pattern the student has just lived through, and its title says so. L53 `the-map-filled-in` is the retrospective recap, also post-exercise. No naming lecture sits before L38.",
       "fix_hint": null,
       "blocking": false
     },
@@ -22,7 +22,100 @@
       "rule_index": 2,
       "rule_lead": "Minimal lecturing before contrast-mood exercises.",
       "verdict": "PASS",
-      "evidence": "Two openers precede the exercise (L31,33), but the rule's actual test — named practitioner terms and framework mapping stay in the closer — holds: all five attributed frameworks (Ronacher's three-pattern, Cherny's shapes, Ramp Dojo, Intercom tiers, Klaassen's compound loop) are stamped 'Frameworks riffed on (attributed in closer)' at L160-165, none named pre-exercise. Body itself doesn't map frameworks or explain tradeoffs-with-reasons before the exercise link at L37.",
+      "evidence": "Closest to violating: three opener lectures sit between the framing beat and the exercise (L32, L34, L36) — the fattest opener stack in the M4–M6 arc. It stays inside the rule because the test is dosage of TEACHING, not count: measured body length is 8 / 66 / 26 lines respectively (`awk '/<!-- maintainer -->/{exit} {n++}'` on each file), and `grep -nE 'Ronacher|Cherny|Klaassen|Huryn|three-pattern'` across all three opener bodies returns ZERO hits — no practitioner term, no framework map, no why-X-beats-Y is spent before the exercise. The one term-bearing opener line, `quality-is-grounding.md:8` ('Today adds the fifth move: the eval read'), is an arming sentence, not a taxonomy. The module body itself names 'the three-pattern' only at L60, i.e. in Key Concepts AFTER the exercise, and unattributed. Closer's felt-evidence is intact.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 5,
+      "rule_lead": "A slide's BODY is size-bounded, not just its header (§4's sibling).",
+      "verdict": "PASS",
+      "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/spot-gaps-build-the-loop.md --report` in this session: 8 slides, oversized: 0, exit=0. Largest is `Start here` at 206w/0b (4 under the 210 bar) and `Key Concepts` at 188w/6b (at the bullet cap, matching the maintainer block's own '188w/6b, at the bullet cap — extend-don't-append stands' note). Both inside.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 16,
+      "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
+      "verdict": "PASS",
+      "evidence": "The view's `has_prompt_blocks: false` — this module file carries no fence and no `{{prompt:}}` at all, by design; every forcing function ships in `exercises/spot-gaps-build-the-loop.md` and in the `agents-that-build-agents` close. Closest to violating: L43 'No compound prompt here. The exercise's gap map and stack-map are the Module 6 compound; the encode-move lands inside the last lecture.' That is body prose ABOUT where the forcing function lives, which is exactly the direction the rule guards — but it explains no mechanism and enacts nothing; it is a routing sentence that points at the two artefacts, and the strategy doc (M6 Debrief spec) makes 'no canonical compound prompt' the deliberate design. No count-script anywhere in the body: `grep -nE '\\b(two rounds|once|max)\\b'` over the body returns only L28's 'nudge it once', which is a pacing calibration inside a rescue blockquote, in the boundary's suggestion register.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 27,
+      "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
+      "verdict": "PASS",
+      "evidence": "Two body lines name the room and both are covered carve-outs with the accept-note the rule demands. (a) L43 'This slot is a human round: talk, compare, no prompts.' — one clause defining the slot's mode, the round's FORM left to the trainer; maintainer block carries the matching note verbatim ('Human close's \"talk, compare, no prompts\" stays in body — check_pedagogy.md §27 mode-defining-cue carve-out (maintainer call)'). (b) L28 'If the room starts the lecture while you are still getting a session going, stay with the rescue and read it afterwards.' — third carve-out (room named sparingly), scoped to the rescue moment, with its own dated accept-note (2026-08-15, Antti). Closest to violating and NOT flagged: L47 'Close the laptop. If you can put the move in one sentence, that's the marker' — a self-study instruction about the student's own articulation, i.e. about the WORK, with no pacing/comparing/sharing ask. `grep -nE 'discuss with|share what|tell the room|person next to you|take [0-9]+ (seconds|minutes)'` over the body: 0 hits.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 1,
+      "rule_lead": "Mood contract named.",
+      "verdict": "PASS",
+      "evidence": "Contract (strategy doc L475): practitioner fluency, competence-as-posture, not confidence-as-performance. Regenerated trace (content_sha 77422a0d, matches this body) scores 8 teaching beats at 9/8/8/9/9/8/8/9 and close 9 — nothing below 8, so the floor is not even approached from the exempt side. Closest to violating: phase 6 Key Concepts at 8/10, the recap beat, where the module is nearest to paperwork-feel (one of the four named mood thieves) — it stays inside because bullet 6's subtraction clause ('the durable shape is add, sharpen, delete. A rules file that only grows compounds noise alongside the learning.') is a Monday-morning instruction rather than a summary, so the beat still hands the student a move. The identity line at L45 ('Two sessions of the same task, read to the bone. The loop, yours.') is the contract's own shipped wording per strategy doc L492. Student leaves holding a move they can name; the next thing is their own next task (L79), not another module.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 2,
+      "rule_lead": "Epistemic mood ≠ punitive mood.",
+      "verdict": "PASS",
+      "evidence": "Closest to violating: L30 'You lose a bit of value but you can still do this module's exercises. Despair not.' — a loss stated to a student whose session died. It stays epistemic because the loss is attributed to the run, never to the student, and the sentence resolves on permission rather than on blame. Same flavour at L26: 'One session gave you a failure mode to name' — the failure is data the session produced, phrased as a gain. Nothing in the body says the student did wrong; the whole module's frame (L60) is explicitly 'data the pattern didn't anticipate, not proof the pattern failed'.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 3,
+      "rule_lead": "Lead with discipline, not failure mode.",
+      "verdict": "PASS",
+      "evidence": "Closest to violating: the module title itself, 'Spot gaps, build the loop' (L1) — 'gaps' is a deficiency word in lead position. It stays inside because the title is a two-verb compound whose second half IS the discipline (build the loop), and the Big Idea directly under it leads positive: L4 'Every gap you found belongs somewhere durable, or you will find it again next week' — belonging, not blame. `## What You'll Learn` verbs are all disciplines (Diagnose / Cut / Surface / Map / Encode / Generalize, L15–L20); none is a failure noun.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 4,
+      "rule_lead": "Strategy-fidelity check.",
+      "verdict": "PASS",
+      "evidence": "Four facets, all checked against `bosser-strategy:content-strategy-agentic-engineering-101.md` read in this session. (i) OPENER ORDER: body ships `the-2-frontiers` (L32) then `story-of-module-6` (L34); strategy L465 now reads 'Opener — The 2 frontiers, then Story of Module 6' with the superseded reason recorded at L469 — doc and file agree, no stale-doc re-flag owed. (ii) FRONT-RUN: strategy L477 reserves the full weight of the word *eval* for the M6 CLOSER (`the-loop-has-a-name`); the body names 'evals' only at L18 in `## What You'll Learn` (signposting, sanctioned by the maintainer accept-note) and KC bullet 4 (L63) carries the independence axis alone — 'A check proves something only where it could say no. A judge in the producer's window cannot say no exactly where the producer went wrong.' — with mechanism and CI placement absent, per the 2026-08-09 Antti-directed note. The body's only other occurrences of the string 'eval' are L51's link title to that very closer ('The check you built is an eval') and L73, an Optional-challenges bullet sitting after Key Concepts — neither pre-plants the taxonomy (`grep -n 'eval'` over the body: 3 hits, L18/L51/L73). Nothing of M7's deliberation appears. (iii) BIG IDEA FIDELITY: L4's 'belongs somewhere durable' is the strategy's move 3 ('the dominant gap gets a named home — memory, sharper verifier, or a skill worth building', L460) stated as the module's one-line frame; KC bullet 3 (L62) enumerates exactly those three homes. (iv) MOOD DOESN'T RESOLVE EARLY: M6 is the terminal core module (strategy L483, 'For a core-only cohort, M6 lands on practitioner fluency'), so resolution here is the arc's design, not a theft — and `## Next` (L79–L81) hands off to the student's own next task rather than to a Module 7 open hook, which is the correct terminal shape. The 2026-08-01 and 2026-07-05 cuts (in-module second-skill build; arc-named retrospective) are honoured — `grep -n 'second skill\\|arc-retrospective\\|Steering the wiring'` over the body: 0 hits.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 5,
+      "rule_lead": "Strategic themes recur in Key Concepts.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Module-only Key Concepts rule; per the story template's completeness contract the strategy judge is primary owner of §§5–7 on a module.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 6,
+      "rule_lead": "Key Concepts shape — theme breadcrumbs, not standalone section.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Module-only Key Concepts rule; strategy judge is primary owner on a module per the story template.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 7,
+      "rule_lead": "What You'll Learn shape — capability register, not syllabus.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Module-only What You'll Learn rule; strategy judge is primary owner on a module per the story template.",
       "fix_hint": null,
       "blocking": false
     },
@@ -33,8 +126,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "Rule's grep target is lecture-file bodies (curriculum/lectures/**); this is the module file itself, the designated home for cross-module sequencing (body legitimately names 'Module 5 worktree' at L23) — judged per-lecture in each linked lecture's own instance, not here.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "e2ff96de0d8b83c0bb65425be3de59b8db519624a4965ecc4c5b4b4eb1fb7ecd",
+      "carried_shape": "3bf287f827d6a7ae"
     },
     {
       "compendium": "check_lectures.md",
@@ -43,17 +138,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "This file's 8 '##' headers (Big Idea, Prework, What You'll Learn, Start here, Human close, Key Concepts, Optional challenges, Next) are fixed module-template section names per module-shape.md (confirmed: grep shows the same 6 of these 8 headers listed verbatim as the canonical module template) — bespoke narrative titles the squint/truth test targets belong to lecture and exercise files' own '##' headers, judged in their own instances.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_lectures.md",
-      "rule_index": 5,
-      "rule_lead": "A slide's BODY is size-bounded, not just its header (§4's sibling).",
-      "verdict": "PASS",
-      "evidence": "Rule re-read at current wording (this is the class's flagged rule-drift item; body was re-checked, not assumed clean from a stale pin). `node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/spot-gaps-build-the-loop.md --report` → 'oversized: 0'; largest slide 'Start here' 203w/0b, 'Key Concepts' 188w/6b (at the bullet cap, under the word cap), both under the 210w/6b limits. The pinned diff's Lean pass (2026-08-25) cut ~19 words total from these two slides (Start-here dropped 'The contrast is the material.', ~6w; KC bullet 2 dropped 'You know the countermove by now.', ~6w; KC bullet 6 dropped 'The loop closes when the lesson ships.', ~7w) — moving both further under the cap, not closer to it. No regression.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "e2ff96de0d8b83c0bb65425be3de59b8db519624a4965ecc4c5b4b4eb1fb7ecd",
+      "carried_shape": "3bf287f827d6a7ae"
     },
     {
       "compendium": "check_lectures.md",
@@ -62,80 +150,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "has_prompt_blocks: false — no {{prompt:}} or inline **Prompt** fences in this module file at all; the rule's scope is lecture-file prompt blocks, judged in each linked lecture's own instance.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_pedagogy.md",
-      "rule_index": 16,
-      "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
-      "verdict": "PASS",
-      "evidence": "This module file carries no phase prompts itself (has_prompt_blocks: false; the phase fences live in the linked exercise file, judged separately). Scanned the module's own body for count-scripts/scripted reactions ('push back once', 'two rounds max' style) — none found. The maintainer-block Failure-modes table (L123-126, below the fence) correctly keeps its escape hatches as trainer/maintainer material, not body prose.",
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_pedagogy.md",
-      "rule_index": 27,
-      "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
-      "verdict": "PASS",
-      "evidence": "Full-body grep for discuss/share/pair/neighbor/room/talk/compare turns up exactly one in-scope hit: L41 'This slot is a human round: talk, compare, no prompts.' This is the mode-defining-cue carve-out (≤one clause, defines the slot's mode against an otherwise-prompts training) and carries its own dated maintainer accept-note at L99 naming the carve-out explicitly ('check_pedagogy.md §27 mode-defining-cue carve-out (maintainer call)'). No other room-management or pair/share imperative found in body region (L1-83); L27's 'the room starts the lecture' is a scoped factual rescue-triage reference already covered by the L90 accept-note, not a new authored cue.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_pedagogy.md",
-      "rule_index": 45,
-      "rule_lead": "Per-exercise leap test — 3 observable Monday outcomes.",
-      "verdict": "PASS",
-      "evidence": "Leap-test section (L109-112, below fence but the applicable maintainer block) names three artefacts, per the rule's arc-mood carve-out (task brief: 'M6 is an arc-mood exercise so the test names artefact + use, not activity'): (1) 'a set of mermaid diagrams of the work they repeat'; (2) './CLAUDE.local.md shows at least one rule deleted..., the deletion commit visible in git history'; (3) 'a standalone handoff prompt... that studies their whole stack and authors a skill per recurring shape when run later.' All three are falsifiable artifact-holds, not competency claims — a working engineer could check each on Monday (open the file, check git log, run the prompt).",
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_pedagogy.md",
-      "rule_index": 47,
-      "rule_lead": "Per-phase failure mode + escape hatch.",
-      "verdict": "PASS",
-      "evidence": "Failure-modes table (L123-126) names one dominant failure + one escape hatch for each of the module's three forcing functions: Phase 1 diff ('both-runs collapse' / 'trainer asks for quoted moments from each run separately'); Phase 1 compound-move ('addition-only compounding' / 'forcing prompt names a specific rule the two-run diagnosis killed'); Phase 2 stack-scan ('scan-sprawl' / 'the body steer... plus trainer push to the ranked head'). Both parts present for all three rows.",
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": 1,
-      "rule_lead": "Mood contract named.",
-      "verdict": "PASS",
-      "evidence": "Mood contract explicitly stated (L133): 'practitioner fluency — \"I know how to test, I know how to learn, I know how to encode.\"' Regenerated persona trace (content_sha 670995...f, matches current body_sha exactly — the cached trace's prior sha 8105dcb7... was stale against this session's HEAD and was re-walked, not reused blind) gives per-TEACHING-beat mood: mid-layer 8/close 7, opinionated-senior 7/close 5, fast-operator 8/close 7. No phase score is below 7 (the mood-floor line for REVISE); one close score (senior, 5) is below floor, but it is the SAME finding the dated 2026-08-19 maintainer accept-note rules on as deliberate ('Human close is a pre-close beat, not the module's ending' — quoted at L101, which names 'a story judge scoring close mood' explicitly and instructs 'Future judges should not re-flag'). The senior persona's phase score itself rose 6→7 this cycle because the 2026-08-25 Lean pass cut the exact line ('You know the countermove by now.') the persona's confusion_flags had named as presumed-rapport friction.",
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": 2,
-      "rule_lead": "Epistemic mood ≠ punitive mood.",
-      "verdict": "PASS",
-      "evidence": "Body frames student setbacks as recoverable, not shameful: 'You lose a bit of value but you can still do this module's exercises. Despair not.' (L29). Failure-mode language throughout (both-runs collapse, addition-only compounding, scan-sprawl) describes patterns for the TRAINER to watch for, not accusations aimed at the student in body prose; the sole in-body Claude-critique ('Claude over-credits its own packaging by default', L57) targets the model's behavior, not the student's.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": 3,
-      "rule_lead": "Lead with discipline, not failure mode.",
-      "verdict": "PASS",
-      "evidence": "Big Idea (L4): 'Every gap you found belongs somewhere durable, or you will find it again next week.' — leads with durability/discipline, not a failure word. Module title 'Spot gaps, build the loop' names the diagnostic move and the positive construction move, not a failure label.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": 4,
-      "rule_lead": "Strategy-fidelity check (consolidates front-run check, module-to-module arc, Big Idea fidelity, mood-doesn't-resolve-early).",
-      "verdict": "PASS",
-      "evidence": "Front-run: the Independence-axis KC bullet deliberately withholds mechanism/placement vocabulary reserved for the-loop-has-a-name.md's naming slide (maintainer note L103 documents the guard against 'handing the closer's payload over two slides early'); Backpressure vocabulary is not restated here either (L95). Arc: M6 is the training's terminal module (maintainer L186: 'agents-that-build-agents the training's closing beat'); '## Next' hands off to the student's own future work ('It's yours now.', L74) rather than a missing M7 pointer — correct terminal-module shape. Big Idea fidelity: Key Concepts bullet 3 ('Gaps sort into three homes: memory..., sharper verifier..., or new skill', L58) directly instantiates the Big Idea's 'belongs somewhere durable' claim. Mood doesn't resolve early: named frameworks and the closer's payload stay deferred to the lecture chain per rule 1's evidence above, so the module's own body doesn't pre-empt the closer's teaching moment.",
-      "fix_hint": null,
-      "blocking": true
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "e2ff96de0d8b83c0bb65425be3de59b8db519624a4965ecc4c5b4b4eb1fb7ecd",
+      "carried_shape": "3bf287f827d6a7ae"
     },
     {
       "compendium": "check_prompts.md",
@@ -144,8 +162,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "has_prompt_blocks: false — no fences in this module file for this or the compendium's remaining 47 rules to apply to; check_prompts.md rules are judged against the linked exercise file's own fences in its own instance.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "e2ff96de0d8b83c0bb65425be3de59b8db519624a4965ecc4c5b4b4eb1fb7ecd",
+      "carried_shape": "3bf287f827d6a7ae"
     },
     {
       "compendium": "check_workshop.md",
@@ -154,48 +174,64 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "This file's only group-shaped beat (Human close, 'talk, compare, no prompts') produces no shared artefact at all — self-study variant is solo ('Close the laptop') — so check_workshop's own scope test (does the beat belong to the group, not a participant?) doesn't reach it; the compendium's remaining 15 rules likewise don't apply.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "e2ff96de0d8b83c0bb65425be3de59b8db519624a4965ecc4c5b4b4eb1fb7ecd",
+      "carried_shape": "3bf287f827d6a7ae"
     }
   ],
   "mood_summary": {
     "phase_scores": [
+      9,
       8,
-      7,
-      8
+      8,
+      9,
+      9,
+      8,
+      8,
+      9
     ],
-    "close_score": 5,
-    "any_below_8": true,
-    "stealing_the_mood": [
-      "opinionated-senior phase (7/10, facilitator-premium, not below floor) — remaining friction is an unspecified WYL-list-length complaint and the sequencing-stack objection scored at close; no single line-level fix identified this cycle.",
-      "opinionated-senior close (5/10, below floor) — accepted-by-design per the 2026-08-19 maintainer note on Human close as a pre-close beat; not treated as a violation.",
-      "mid-layer and fast-operator close (7/10 each, facilitator-premium) — same trailing-sections structure as the senior persona's close, felt as a stretched-but-tolerable arc rather than a broken promise; not below floor."
-    ]
+    "close_score": 9,
+    "any_below_8": false,
+    "stealing_the_mood": []
   },
+  "teaching_moment": "The named teaching moment is the two-run diff — the student holds an un-packaged M4 run and a packaged M5 run and reads the second against the first, then routes each gap to memory / sharper verifier / new skill. It triggers reliably across persona-skill variation because the material is the student's own scrollback rather than a supplied artefact, and because the body carries two graded rescues (L28 nudge-or-re-send-fresh, L30 accept-the-loss floor) so a dead M5 session degrades the beat instead of skipping it. The one fragility is structural, not textual: a student who arrives with NEITHER run accessible has no diff to make — that case is handled outside the body, by the Connections-blocker push-back move in the maintainer block.",
   "blocking_findings_count": 0,
-  "todos_count": 1,
+  "todos_count": 2,
   "todos": [
     {
-      "rule": "check_strategy_tie_in.md §1 (mood lands)",
-      "note": "Opinionated-senior persona sits at 7/10 (facilitator-premium) rather than 8 at the whole-module phase; trace names an unspecified 'WYL list length' friction as the residual drag. Not blocking. A future pass could re-skim What You'll Learn's 6-bullet list for this persona specifically."
+      "rule": "maintainer block — internal inconsistency (report only, orchestrator applies)",
+      "note": "The `Meta (trainer):` block's last line reads '**Pre-read placement:** none. M6 opens with the Story lecture in-room.' That contradicts the dedicated, dated accept-note further down: '**Opener order is `The 2 frontiers` first, then `Story of Module 6`** (2026-08-12, maintainer-confirmed)'. The body (L32 then L34) and the strategy doc (L465) both agree with the accept-note, so the Meta line is the stale one. A trainer reading only the Meta block would open on the wrong lecture. Suggested shape: '**Pre-read placement:** none. M6's opener lectures run in-room.' Not student-facing; no card owed."
+    },
+    {
+      "rule": "check_lectures.md §2 (dosage observation, non-blocking)",
+      "note": "Three opener lectures before the exercise (L32/L34/L36) is the heaviest pre-exercise stack in the M4–M6 arc, and the maintainer's own pacing line concedes 'the lecture-dense close is not where to find [the slack]'. It passes on content (no practitioner terms, no framework mapping spent early), so this is a runtime-budget watch-for for the first cohort, not a content defect. Worth confirming against `node scripts/calculate-time.js spot-gaps-build-the-loop` at pre-cohort rather than editing anything now."
     }
   ],
   "accept_notes_found": [
-    "L86 (2026-08-25, Antti-directed M3/M6 shorten): three lines cut from Start-here and Key Concepts (lean pass) — consumed as the trigger for this cycle's trace regeneration, not itself a rule question.",
-    "L90 (2026-08-15, Antti): rescue callout's lecture line reworded from a general lecture-vs-practice ranking to a scoped triage sentence — pre-existing, not re-litigated.",
-    "L93 (2026-05-03 exception basis): capstone-close sign-off — deliberate exception to check_writing.md rule 6 (creator-name ban); outside story's compendium scope, noted for completeness.",
-    "L99: Human close's 'talk, compare, no prompts' — check_pedagogy.md §27 mode-defining-cue carve-out (maintainer call). Applied directly in the §27 row above.",
-    "L101 (2026-08-19, Antti-directed): '## Human close' is a pre-close beat, not the module's ending — explicitly names 'a story judge scoring close mood' and instructs future judges not to re-flag. Applied directly in the check_strategy_tie_in §1 row above (senior persona's close mood 5/10).",
-    "L103 (2026-08-09, Antti-directed): Independence-axis KC bullet keeps mechanism/placement vocabulary out, reserved for the-loop-has-a-name.md's naming slide — applied in the strategy §4 front-run evidence above.",
-    "L184 (2026-08-12, maintainer-confirmed): opener order 'The 2 frontiers' then 'Story of Module 6' — applied in the check_lectures §1 row above; a strategy-doc copy stating the opposite order is explicitly superseded by this file.",
-    "L186/L188: re-sequence and cut-pass notes (Human close re-sequenced agents-last; two beats removed 2026-07-05) — historical record, no live rule question."
+    "Lean pass (2026-08-25) — three cuts, do not restore",
+    "KC bullet 6's subtraction clause is the generalisation's one reminder-slot home (2026-08-20)",
+    "Confidence after-measurement lives OUTSIDE the workbook — do not add a rating beat",
+    "Rescue callout's lecture line is triage, not a lectures-are-skippable doctrine (2026-08-15)",
+    "Capstone-close sign-off — deliberate exception to check_writing.md rule 6",
+    "Backpressure vocabulary — M6 assigns no reading and does not restate the word",
+    "M6 opener rescue + accept-loss callouts — deliberate exception to check_student_facing.md rule 5",
+    "Human close's 'talk, compare, no prompts' — check_pedagogy.md §27 mode-defining-cue carve-out",
+    "## Human close is a pre-close beat, not the module's ending (2026-08-19) — do not file §1 against the trailing sections",
+    "Independence axis on the eval-taxonomy Key Concept (2026-08-09)",
+    "Opener order is The 2 frontiers first, then Story of Module 6 (2026-08-12) — do not reorder to match a doc"
   ],
   "drift_rules_reread": [
-    "check_lectures.md §5 — re-fetched at current wording via `node curriculum/evals/scripts/rule.js lectures 5` (unchanged 210w/6b threshold, `diagnose-and-resend` as the anchor exemplar). Body re-checked mechanically via `check-slide-size.js`: 0 oversized, largest slide 203w/0b. Verdict PASS — the pinned diff's Lean-pass cuts moved both affected slides (Start-here, Key Concepts) further under the cap, not toward it, so there is no regression to catch either from rule-drift or from body-drift."
+    "check_pedagogy.md §27 — read in full including all three carve-outs before scoring L43 and L28",
+    "check_strategy_tie_in.md §1 — mood-floor applies to teaching beats only; beat classification recorded in the trace's beat_class field",
+    "check_lectures.md §1 — placement diagnostic (naming / showing a ceiling / teaching vocabulary) applied per opener"
   ],
   "notes": [
-    "Class brief (derive-class-brief.js) assembled 144 rules across 5 compendiums (check_lectures, check_pedagogy, check_prompts, check_strategy_tie_in, check_workshop) via whole-file eval_classes:storytelling matching. Following the story.md template's explicit Completeness Contract (primary owner of check_lectures in full; storytelling-owned subset only of check_pedagogy [16,27,45,47 — the last two because their own rule text names 'Story judge blocks ship' explicitly] and check_strategy_tie_in [1-4]) plus this repo's own precedent on this exact (file, class) pair (prior instance: 16 rows, same shape), check_prompts.md and check_workshop.md are each covered by a single scope-gate row (rule 1) rather than 48/16 individual rows — both compendiums' remaining rules are structurally inapplicable once the gate (no prompt fences; no group-produced artefact) fails, and are the primary responsibility of the behavior and pedagogy class judges respectively for this file. Flagging this brief/template scope mismatch for the maintainer rather than silently picking one interpretation: derive-class-brief.js's file-level eval_classes match may be over-including relative to what story.md's rule-level Completeness Contract actually asks for.",
-    "prefill-instance.js --write reported 'prior instance predates shape_hash — cannot verify N/A validity' — nothing was parked, every row above is freshly judged against the current body, not carried from the sidecar.",
-    "Cached persona trace's content_sha (8105dcb7...) did not match this session's body_sha (670995872c7...) at read time — the 2026-08-25 Lean pass (three cuts) landed after the last trace regeneration. Regenerated the trace in place (curriculum/evals/sim-cache/ae101--module--spot-gaps-build-the-loop.persona.json) rather than judging against a stale cache; trace_status is 'regenerated', not 'cached'."
+    "TRACE REGENERATED, NOT CACHED. The cached persona trace claimed content_sha 670995872c7eb526... against a live body of 77422a0df8c2d5c1... — a mismatch spanning the 2026-08-25 lean pass and the 2026-08-30 tier-marker insertions. Nothing was carried forward from it; all eight phases were re-walked and every quote in the new trace was re-grepped against the live file (12/12 exact matches via `grep -cF`). The prior instance's only todo (an opinionated-senior 7/10 on What You'll Learn list length) traced to that stale walk and is not reproduced — the three-persona triangle was not requested on this dispatch, so the single-persona walk is the record.",
+    "The maintainer block's 2026-08-19 accept-note pre-empts the obvious §1 finding here (four sections still follow `## Human close`, so a close-mood read can file 'an ending that will not end'). Honoured: the trace's phase-5 mood note records that the persona does not read the Human close as the module's ending, because the four closer-lecture links are visible under it and the slot is named as a round.",
+    "OUT-OF-LANE OBSERVATION, for the relevant lecture's own instance and NOT scored here: `curriculum/lectures/quality-is-grounding.md:8` reads 'Today adds the fifth move: the eval read.' That opener uses the word *eval* before `the-loop-has-a-name.md` (the M6 closer) gives it its full weight per strategy doc L477 and `vocabulary.md`'s don't-pre-plant line. The module file's own use is sanctioned by its accept-note; whether the OPENER lecture's use is, belongs to that file's story judge.",
+    "check_prompts.md and check_workshop.md carry whole-compendium N/A rows in the prefill sidecar (has_prompt_blocks: false; no beat's output belongs to the group — the Human close's self-study form is explicitly solo, L47). No rows emitted for their remaining rules; the sidecar's scope reasons stand.",
+    "Per the story template's completeness contract, this class is primary owner of check_lectures.md only (6 numbered rules: 1, 2, 5 judged here; 3, 4, 6 parked N/A in the sidecar and restored by --merge = 6/6). check_pedagogy and check_strategy_tie_in rows are limited to the storytelling-owned judgments the template enumerates.",
+    "All eight `##` sections carry tier markers or none as of 2026-08-30 (`<!--tier:3-->` on Prework and Optional challenges, `<!--tier:2-->` on Human close and Key Concepts). They shift no line the trace cites; line numbers in this instance are verified against the raw source."
   ]
 }

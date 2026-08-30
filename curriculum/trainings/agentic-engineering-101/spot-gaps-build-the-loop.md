@@ -4,6 +4,7 @@
 Every gap you found belongs somewhere durable, or you will find it again next week.
 
 ## Prework
+<!--tier:3-->
 
 Optional pre-read before this module: Kieran Klaassen, [My AI Had Already Fixed the Code Before I Saw It](https://every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it) (Aug 2025). He measures a verifier before trusting it and runs several in parallel. This module meets the design question that follows: which checks belong at the seams, so the work does not queue on your read?
 
@@ -37,6 +38,7 @@ You walk in holding two sessions of the same task. The un-packaged Module 4 send
 [Map the gaps, read your stack](exercises/spot-gaps-build-the-loop.md)
 
 ## Human close
+<!--tier:2-->
 
 No compound prompt here. The exercise's gap map and stack-map are the Module 6 compound; the encode-move lands inside the last lecture. This slot is a human round: talk, compare, no prompts.
 
@@ -53,6 +55,7 @@ No compound prompt here. The exercise's gap map and stack-map are the Module 6 c
 [Agents that build agents](lectures/agents-that-build-agents.md)
 
 ## Key Concepts
+<!--tier:2-->
 - The three-pattern catches what it was shaped to catch. The gaps that surface after two sessions are data the pattern didn't anticipate, not proof the pattern failed
 - Claude over-credits its own packaging by default. A fair push-back names one thing the verifier missed, concretely. The evidence is in the sessions, not in the summary of them
 - Gaps sort into three homes: memory (rules that would have prevented the mistake upstream), sharper verifier (a check that would have fired mid-session), or new skill (a move packaged for future tasks)
@@ -61,6 +64,7 @@ No compound prompt here. The exercise's gap map and stack-map are the Module 6 c
 - Encoding is the third phase of test → learn → encode. Two sessions tested; the diagnosis learned; the handoff encodes. Encoding subtracts as well as adds: the durable shape is add, sharpen, delete. A rules file that only grows compounds noise alongside the learning.
 
 ## Optional challenges
+<!--tier:3-->
 
 Pick one when you want to turn your kit back on itself.
 

@@ -19,6 +19,19 @@
 // way in, and the training uses several. It is reported under --report as
 // information, never as a failure. Decision procedure: curriculum/evals/tier-rubric.md
 //
+// One escape hatch, because the constraint is module-local and recognition is
+// not. A closer that names what the room did in EARLIER modules is legitimate
+// recognition sitting in this module's front half — M6's "Five moves, one
+// quality discipline" recognises M1-M5. Nothing mechanical can tell that from a
+// slide recognising an exercise that has not run, so the file declares it, in
+// its own maintainer block, one slide at a time:
+//
+//   **Pre-exercise T2 accepted:** "<exact slide header>" — <what earlier work it names>
+//
+// Same shape as check-slide-deixis.js's accepted-phrase hatch, and scoped the
+// same way: to the one heading that was ruled on, so the check keeps biting on
+// every other slide in the file. A file-level exemption would hide the rest.
+//
 // Untagged means core (the renderer defaults `tier` to '1'), so silence here is
 // only as strong as the tagging. `--coverage` prints how much of each module is
 // tagged at all, because a clean run over an untagged corpus proves nothing.
@@ -93,6 +106,20 @@ function tagsIn(ref) {
   return tagsInBody(CR.stripMaintainerTail(fs.readFileSync(p, 'utf8'))).map(t => Object.assign({ ref }, t));
 }
 
+// Maintainer-attested pre-exercise T2s, by exact slide header.
+function acceptedHeadings(ref) {
+  const p = path.join(ROOT, 'curriculum', ref + '.md');
+  if (!fs.existsSync(p)) return new Set();
+  const raw = fs.readFileSync(p, 'utf8');
+  const cut = raw.indexOf('<!-- maintainer -->');
+  if (cut === -1) return new Set();
+  const out = new Set();
+  const re = /^\*\*Pre-exercise T2 accepted:\*\*\s*["\u201c]([^"\u201d]+)["\u201d]/gm;
+  let m;
+  while ((m = re.exec(raw.slice(cut))) !== null) out.add(m[1].trim());
+  return out;
+}
+
 function countSlidesAt(p) {
   if (!fs.existsSync(p)) return 0;
   const body = CR.stripMaintainerTail(fs.readFileSync(p, 'utf8'));
@@ -123,14 +150,21 @@ function run() {
     if (!plan) continue;
     // The module file's own `##` sections (What You'll Learn, Key Concepts,
     // Next) are slides in the composed deck too, so they count toward coverage.
-    let tagged = 0;
-    let slides = countSlidesAt(path.join(ROOT, 'curriculum/trainings', contentKey, mod.slug + '.md'));
+    // The module file's own `##` sections are slides in the composed deck, so
+    // they count on BOTH sides of the coverage ratio. They are not gated: a
+    // module body straddles its own first exercise (Key Concepts sits after the
+    // ref list, Big Idea before it), so "before the first exercise" is not a
+    // property the file has.
+    const modPath = path.join(ROOT, 'curriculum/trainings', contentKey, mod.slug + '.md');
+    let tagged = tagsInBody(CR.stripMaintainerTail(fs.readFileSync(modPath, 'utf8'))).length;
+    let slides = countSlidesAt(modPath);
     for (const ref of plan.refs) { slides += countSlides(ref); }
     for (const ref of plan.before) {
+      const accepted = acceptedHeadings(ref);
       for (const tag of tagsIn(ref)) {
         tagged++;
-        if (tag.tier === '2') violations.push({ mod: mod.slug, ...tag });
-        else notes.push({ mod: mod.slug, where: 'before', ...tag });
+        if (tag.tier === '2' && !accepted.has(tag.heading)) violations.push({ mod: mod.slug, ...tag });
+        else notes.push({ mod: mod.slug, where: 'before', accepted: accepted.has(tag.heading), ...tag });
       }
     }
     for (const ref of plan.after) {
@@ -155,7 +189,8 @@ function run() {
   if (REPORT) {
     console.log(`\nEvery tag — ${TRAINING}\n`);
     for (const n of notes) {
-      console.log(`  T${n.tier}  ${n.where.padEnd(6)}  ${n.mod} · ${n.ref} § ${n.heading}`);
+      console.log(`  T${n.tier}  ${n.where.padEnd(6)}  ${n.mod} · ${n.ref} § ${n.heading}`
+        + (n.accepted ? '   [pre-exercise T2, maintainer-attested]' : ''));
     }
     if (!notes.length) console.log('  (none)');
   }
@@ -175,6 +210,8 @@ function run() {
   console.error('\nTwo honest fixes, and picking between them is a maintainer call:');
   console.error('  · move the slide after the exercise (the tag was right, the position was not); or');
   console.error('  · re-tag it T1 or T3 (the position was right, the tag was not).');
+  console.error('A third, only when the slide names work from an EARLIER module — declare it in');
+  console.error('the file\'s maintainer block:  **Pre-exercise T2 accepted:** "<header>" — <reason>');
   console.error('Decision procedure: curriculum/evals/tier-rubric.md\n');
   return 1;
 }

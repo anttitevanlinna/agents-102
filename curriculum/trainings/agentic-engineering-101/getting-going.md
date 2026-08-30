@@ -52,6 +52,7 @@ After this module, you will be able to:
 [The machine you just met](lectures/the-machine-you-just-met.md)
 
 ## Key Concepts
+<!--tier:2-->
 - The loop is orient → fix → close → compound
 - `/context` shows what landed in the window. What didn't land is real, and you choose what fills the next round. (`/context` is oldskool; ccstatusline, or ask Claude to set up the built-in status line.) Context is what you put in it.
 - The agent's self-report is a hypothesis, not ground truth. Read it as the agent's account of the repo and the session, not the things themselves. The scrollback is the machine's reflection; current state lives on disk.
@@ -60,6 +61,7 @@ After this module, you will be able to:
 - The loop ends outside the code. The close-out lands in the tracker your team reads, and that tracker encodes conventions living in the tickets. One ticket is enough to start reading them back
 
 ## Optional challenges
+<!--tier:3-->
 
 Pick one when you want a side quest before Module 2.
 
@@ -69,6 +71,7 @@ Pick one when you want a side quest before Module 2.
 - Automate rule compounding. After each session, capture one evidenced lesson, route it to the right rules file, and check whether it helps next time.
 
 ## Pre-reads before Module 2
+<!--tier:3-->
 
 Optional. Do them and Module 2's moves land as things you've already seen.
 
@@ -81,6 +84,7 @@ Optional. Do them and Module 2's moves land as things you've already seen.
 **Read:** [Multi-session and Git: survival guide](trainings/agentic-engineering-101/reference/multi-session-git.md). Short local reference page on worktrees versus branches versus clones, and how to open several Claude Code sessions on the same repo without wrecking each other's state. Cherny calls parallel worktrees his single biggest productivity unlock: one repo, several Claude Code sessions running at once, each on its own branch, no stashing and no clobbering. Reach for them when one session is waiting on a long run and another piece of work is ready to move, when you want to try two approaches to the same problem side by side, or when a review task can run alongside the build. The instinct earns itself in use.
 
 ## Next
+<!--tier:3-->
 Module 2 is where plan mode earns its keep: multi-file work, and a second pass that pressure-tests the plan before you approve it. Your rules file gets read at the top of that session.
 
 <!-- maintainer -->

@@ -71,6 +71,7 @@ If the agent names something missed, decide whether to compound it now or accept
 {{prompt:ae101-m3-clear-session}}
 
 ## Key Concepts
+<!--tier:2-->
 - A curated skill is upstream work packaged for you to invoke. The labor is delegated; the judgment isn't. Invoke, don't re-derive.
 - The access surface is what STRIDE chews on. STRIDE before access-mapping is threat-modeling pub-quiz
 - A test-strategy skill authored on your codebase is worth more than a perfect generic one. Your codebase teaches the skill, not the manual.
@@ -79,6 +80,7 @@ If the agent names something missed, decide whether to compound it now or accept
 - Skills carry the codebase's conventions; your rules file carries how you work. Sharpening the skill is the mandatory move; the rule only goes in if it earned itself
 
 ## Optional challenges
+<!--tier:3-->
 
 Pick one when you want to test the boundary, not just describe it.
 
@@ -94,12 +96,14 @@ Pick one when you want to test the boundary, not just describe it.
 Come to Module 4 without having picked the task and you'll be scrambling for one while the exercise is already running. Your call.
 
 ## Pre-read before Module 4
+<!--tier:3-->
 
 Optional. One read.
 
 **Read:** Lucas F. da Costa, [Backpressure Is All You Need](https://www.lucasfcosta.com/blog/backpressure-is-all-you-need) (May 2026). Da Costa carries a word out of flow systems and into agent work: when generation outruns judgment, the human becomes the stage everything else waits on. Module 4 sends off a session that runs without you watching, which is where you meet that limit yourself.
 
 ## Next
+<!--tier:2-->
 
 Two signatures, earned. Your staff engineer sees a test-strategy skill tuned to this codebase, your CISO sees a STRIDE decision with an ADR. Module 4 turns the discipline inward: a real task walked against everything you have built so far, the test-strategy conventions and the access-surface facts and the hardening decision included.
 
@@ -126,7 +130,8 @@ Optional, when your sessions start running heavy: [The context ceiling and token
 
 **Quality:** compendium-audited 2026-08-29 (writing@4a722813 story@0e4f7c9e technical@8cc00874 behavior@1c765f2 pedagogy@7fb973dd strategy@7992fd0 slides@0e4f7c9e)
 - judges @4a722813: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
-- cross_module @d47fb5af: PASS — set=[earn-the-trust,run-the-first-experiment]; 1 pair, 0 blocking; see instances/ae101--module-set--m3-m4.cross_module.json (also a member of set prework-m3, whose verdict lives in instances/ae101--module-set--prework-m3.cross_module.json)
+- cross_module @d47fb5af: PASS — set=[prework,getting-going,plan-mode-done-right,earn-the-trust]; 3 pairs, 0 blocking; see instances/ae101--module-set--prework-m3.cross_module.json
+- cross_module @d47fb5af: PASS — set=[earn-the-trust,run-the-first-experiment]; 1 pair, 0 blocking; see instances/ae101--module-set--m3-m4.cross_module.json
 
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply + Evaluate + Create

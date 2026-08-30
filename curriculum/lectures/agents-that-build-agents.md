@@ -27,6 +27,7 @@ This one closes the module. The shapes you drew are still in the session. Ask th
 What comes back is a prompt, not a plan. Save it where you will find it. The kit you grow on your own is the one that counts.
 
 ## You make agentic happen
+<!--tier:2-->
 
 - **Act under uncertainty.** The right way moves every day; there is no time to test everything. Acting is the move from *possibly* to *I have something*.
 - **Competence sets the ceiling.** Your brain needs the reps to think different. The pathways you build show you the next level.
@@ -35,6 +36,7 @@ What comes back is a prompt, not a plan. Save it where you will find it. The kit
 All three have been on the map the whole time: the small print along the bottom, there since M2.
 
 ## Ralph
+<!--tier:3-->
 
 ```bash
 while :; do cat PROMPT.md | claude-code; done

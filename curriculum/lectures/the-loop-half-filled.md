@@ -1,6 +1,7 @@
 # The loop half, filled in
 
 ## Back to the map: near half filled
+<!--tier:2-->
 
 - Three modules in, the near half is lived ground. M1 stepped into the territory without the map, on purpose. The map arrived at M2, and everything since has landed on its near half: Intent, Context, Work, and how a loop compounds.
 - **One loop, three sizes.** The agent's act-observe-correct inside a session; your orient, act, verify, compound around each session (M1's orient, fix, compound, close cut at different joints); and the slow loop that carries a win from you to the team. Same shape at three altitudes; the strands the map draws (context, plan, build, checking) are the same shape again, each wearing different work.
@@ -9,29 +10,34 @@
 {{figure:map-engine-m3-close}}
 
 ## The loop and the model it runs on
+<!--tier:2-->
 
 - The agent loop is a **closed-loop controller**. (Work) It acts, observes the result, and corrects. Cut the feedback signal (a test, a check, a read) and it drifts. Signal quality is part of the law: a flaky test is a closed loop that still drifts. Everything you did in plan mode was feeding that signal early.
 - **Local success, global drift.** (Work) The agent can win the function and lose the system. The drift lives in what nothing is watching: the dimensions your tests and reads don't cover. That is why the second read exists; one kind of scrutiny catches one kind of miss.
 - Your context files are the agent's model of the system. (Context) `CLAUDE.md` and `CLAUDE.local.md` steer because the agent conditions every move on what they hold. What the files don't carry, the agent must rediscover or guess each session. Thin model, thin steering; the craft of shaping what the agent sees is called **context engineering**.
 
 ## How the loop compounds
+<!--tier:2-->
 
 - **The compound ladder**: fix → memory → skill → system. (spans the loop) One cycle is a fix. A rule is memory. A skill is reuse. Enough of them is a system that learns faster than the field moves. Your kit is already two rungs up: rules on the memory rung, the test-strategy skill on the reuse rung.
 - **Double-loop learning.** (spans the loop) Single-loop fixes the failing test. Double-loop changes the rule that let the bug recur. Every time a rule gets sharpened from session evidence rather than rewritten from taste, that is the double loop running.
 
 ## The governor you carry forward
+<!--tier:2-->
 
 - **A governor is a pre-action question.** The smallest usable form of theory: it fires before the session, costs one sentence, and steers everything after. Laws explain what happened; a governor decides what happens next.
 - **Name the uncertainty before you move.** (Intent) Aim the work at the unknown that will teach you the most. It is the question that opens every good plan, and it is the near half's one governor.
 - It travels. It prices a plan read, picks the feature worth agent time, and tells you when a skill is worth authoring. A task that can't answer "what does this settle?" isn't aimed yet.
 
 ## Reading was never the control
+<!--tier:2-->
 
 - The outputs in this module were the biggest yet, and control never came from reading them whole. It came from three moves you already made.
 - The delta note held the access map against what you already knew of the codebase, in both directions. A probe, not a read. The one-threat pick rejected most of the STRIDE walk with a named reason. The skill critique made the artifact name its own weakest part before it earned trust.
 - **Control is interrogation.** Ranked list first, probe where you know most, make the output name its weak spot. The full record stays on disk. You can always read more; you can never read all.
 
 ## The branch is the permission
+<!--tier:2-->
 
 - The side quest ran on its own branch all module and never merged. That is the shape, not an accident.
 - On a branch, acting without full control is safe: the blast radius is the branch. Let the agent run, read what your judgment flags, and leave the rest on disk.
@@ -39,6 +45,7 @@
 - An un-merged branch is not unfinished work. Holding the merge until control is earned is the control working.
 
 ## The far half goes quiet
+<!--tier:2-->
 
 - The near half ran on quick feedback. Every move so far returned a result you could read within minutes: a diff, a plan, a test run. You were the feedback signal, and you were never far from the loop.
 - The far half is what happens when that goes quiet. Verification, Absorption, Outcome: the phases that govern work that runs long and alone. Different country, different rules. M4 opens it.

@@ -12,6 +12,7 @@
 - You, right now. The test-strategy skill you author has no curated version, and can't: a good test strategy depends on which framework you use, where the flaky tests actually fail, what "unit test" means in a system that talks to five external services. So you author it in conversation: Claude asks what it needs to encode, and you push back where your codebase doesn't fit the default.
 
 ## Your authored skill starts personal, then compounds
+<!--tier:3-->
 
 - The skill you author ships to your personal `~/.claude/skills/test-strategy/`, auto-discovered in every session you run. Personal-first is the pattern your kit already follows: your `./CLAUDE.local.md` rules file is personal and gitignored, and the first authored skill lands the same way. Promotion to a team home is a human conversation and then a PR, later.
 - A team kit is built from engineers' own skills. The 267-skill plugin repo at Fin (Intercom) grew exactly that way, skill by skill, engineer by engineer: 153 contributors, 31% of R&D headcount active, by the company's own count, as of April 2026. Not a central team writing for everyone else.

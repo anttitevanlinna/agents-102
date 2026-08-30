@@ -27,14 +27,12 @@ Enter plan mode, then put the question to your own session:
 - **You already agree with it.** The plan matches what you'd have written, which feels like alignment. But it was written from a partial read of the codebase, and your instinct is not a check on it. Read it assuming something in there is wrong; there usually is.
 
 ## Plan review is a high-leverage gate
-<!--tier:2-->
 
 - A plan is a check before implementation. One correction can redirect every step that follows before the agent turns the plan into code.
 - What the plan doesn't decide, the agent decides mid-run, inside work in flight, and you will not notice. A wrong call propagates across files, and the wrongness tangles with everything built after it: what would have been a line edit in the plan becomes an untangling job in the code.
 - Aim the read at the unknown that teaches you the most. The branches worth walking are the ones that change what done means. The rest you'd settle in verification anyway.
 
 ## What you can test and check sets your complexity ceiling
-<!--tier:2-->
 
 {{figure:delegation-frontier}}
 

@@ -40,6 +40,7 @@ Two reads on one plan catch different misses. Yours goes first, because your cod
 [Lecture: How instructions grow](lectures/how-instructions-grow.md)
 
 ## Key Concepts
+<!--tier:2-->
 - Structure is persuasive. A 7-item plan with headers looks like a decision even when it's a draft. Assume about 10% of it is wrong and go find which part.
 - A human read and an agent's walk-down catch different misses. The gap between them is where the plan-reading skill lives.
 - Assumption-silent isn't assumption-free: every plan assumes something, the good ones say what. A verification step that could fail is a gate; one that always passes is decoration.
@@ -48,6 +49,7 @@ Two reads on one plan catch different misses. Yours goes first, because your cod
 - A rule that doesn't load doesn't exist, and where you put it decides when it fires. Fixing the plan is the first loop; changing the rule that shaped it is the second, which Argyris called double-loop learning.
 
 ## Optional challenges
+<!--tier:3-->
 
 Pick one when plan mode feels too comfortable.
 

@@ -3,6 +3,7 @@
 You have a kit now: a test-strategy skill, a verifier, and a freshly drawn map of the moves worth packaging next. A workflow is those moves in the right order around one passage. Before you read how the field argues about composition, look at what composition actually is, on the passage you already sailed.
 
 ## A skill's footprint is where its job lands
+<!--tier:2-->
 
 {{figure:skill-sea-passage}}
 
@@ -11,6 +12,7 @@ You have a kit now: a test-strategy skill, a verifier, and a freshly drawn map o
 - Nothing here is new except the placing. A move now stands at each point you used to steer by hand. Where no move stands, you sail that stretch yourself.
 
 ## From skills to a workflow
+<!--tier:2-->
 
 - A session passes through phases: context, plan, build, verify, ship. A skill sits where its job sits. Its footprint is set by the job, not by the phase line.
 - The field wires kits more ways than one; no way has won. Pocock ships a public kit with no orchestrator: you call each skill by hand. Klaassen chains steps through files on disk, a gate at every seam. Some workflows have a pilot; many do not.
@@ -20,6 +22,7 @@ You have a kit now: a test-strategy skill, a verifier, and a freshly drawn map o
 - Your job moves from reading every intermediate output to designing the checks, routes, and exceptions that deserve your judgment.
 
 ## Composition is a live argument, so you read
+<!--tier:3-->
 
 How the field composes kits like this is a live argument with no settled answer, so there is no prompt to drill here. The move is to read: one engineer's whole worked stack, then the wider field.
 

@@ -4,6 +4,7 @@
 Steer your long session. You can't stand over it hour by hour, so the steering goes in before the send-off, and the session you already ran is the evidence for what the next one needs.
 
 ## Prework
+<!--tier:3-->
 
 Walk in with your un-packaged session. Stopped, finished, ran out of credit, doesn't matter.
 
@@ -56,6 +57,7 @@ Acting without full control is the job from here on. Build the check, send again
 [Lecture: The gate is a claim too](lectures/the-gate-is-a-claim.md)
 
 ## Key Concepts
+<!--tier:2-->
 - The model already knows the public field.
 - The missing evidence is the interaction of this task, model, repository, and setup.
 - The experiment promotes a candidate to tested-here; the local optimum stays ahead.
@@ -71,6 +73,7 @@ The packaged session returns after this sitting ends. The experiment produces it
 - What recurs names your next check. Build it, send again: the loop you just ran is yours to keep running.
 
 ## Back to the map, one last time
+<!--tier:3-->
 
 {{figure:map-engine-m4-open}}
 
@@ -85,6 +88,7 @@ The map's near half is where a single loop runs and compounds. The far half is w
 <!--/flag:no-module:spot-gaps-build-the-loop-->
 
 ## Optional challenges
+<!--tier:3-->
 
 Pick one when you want the test to bite harder.
 
@@ -101,12 +105,14 @@ A packaged session with substance. Read the scrollback or commits from the re-se
 Come to Module 6 without the packaged session and you'll have one session to read where the exercise needs two. Your call.
 
 ## Pre-reads before Module 6
+<!--tier:3-->
 
 Optional.
 
 **Read,** Kieran Klaassen, [My AI Had Already Fixed the Code Before I Saw It](https://every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it). He runs the verifier 10 consecutive times before trusting it, and uses per-feedback specialised agents in parallel to triage review. Reliability is a number you measure, not a vibe you sense, and one verifier can become a panel. You'll recognise both in your own artefacts.
 
 ## Next
+<!--tier:3-->
 
 Module 6 reads the packaged session: subtler misses, subtler drift. The question widens from *did my task pass?* to *do all our tasks pass, and who reviewed what?*
 

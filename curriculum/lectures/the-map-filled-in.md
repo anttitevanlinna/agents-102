@@ -3,6 +3,7 @@
 The map is back, one last time.
 
 ## The checking loop, drawn solid
+<!--tier:2-->
 
 {{figure:map-engine-filled}}
 
@@ -11,6 +12,7 @@ The map is back, one last time.
 - Nothing else moved. Same six phases, same loops, same wall at the team's edge. The far half kept its shape and gained its names, the way the near half did at the M3 close.
 
 ## You drew a control loop
+<!--tier:2-->
 
 {{figure:student-closed-loop}}
 
@@ -20,30 +22,35 @@ The map is back, one last time.
 - The harness makes continuing possible. What a session gets right without you is set by what has accumulated around it: rules, durable state, checks, encoded corrections. The M4 send-off and the M5 re-send: same model, same harness, two different agents.
 
 ## Verification, named
+<!--tier:2-->
 
 - **Find is easier than judge.** (Verification) The agent finds; you judge. The split was named at M2 over a plan, and out here it becomes a whole phase: on a long-running session the finding happened without you, so the judging is the cost that is left.
 - **The three-pattern** stands in for you at Verification. (Verification) Reference against goal drift, plan.md against context rot, verifier against plausible-but-wrong. The first two hold the session on course while it moves; the verifier is the piece that does your checking when the result comes back.
 - **Verifier, judge, gate: every one an eval.** (Verification) A deterministic check, an LLM reading the work, the same check placed in CI. One automated thing that says this meets the bar your work requires, and it is what the checking loop now runs on.
 
 ## Absorption, named
+<!--tier:2-->
 
 - **Generation is fast; reading, judging, and merging are not.** (Absorption) The gap between those two speeds decides real throughput. The M5 re-send ran with the laptop closed; what was left when it came back was all reading.
 - **Review bandwidth is the constraint** composition cannot relax. (Absorption) Chain workflows end to end and every output still lands on the same reading budget. Each eval that stands without you buys a piece of that budget back.
 - **The ratio runs near 80/20.** (Absorption) Roughly 80 percent planning and review, 20 percent execution: compound engineering's posture. The session is the cheap part; the reading and shaping around it are where the hours live.
 
 ## Outcome, named
+<!--tier:2-->
 
 - **A rule in context is not a rule in the output.** (Outcome) Rules leak, and the loop exists because they leak. That is why the lesson gets encoded into something that fires (a verifier, a hook, a skill) instead of stopping as one more sentence in `./CLAUDE.local.md`.
 - **Test → learn → encode.** (Outcome) M4 tested, M5 learned, M6 encoded: diff the sessions, name the gaps, package the learning. The loop closes when the lesson ships, the oldest search shape there is: the sessions generate variants, the eval selects, the memory retains.
 - **Cross personal → team.** (Outcome) What survives the session is the fix, the rule it taught, and the skill it became; what compounds is the part a team takes up. Review infrastructure grows by accretion, one trusted check at a time, and it starts at the size of the one just shipped. Your own sessions speed up before the team's numbers move, because the team's way of reviewing and sharing has to be rebuilt around the new speed first; the checks and skills you hand over are that rebuild.
 
 ## The question you carry forward
+<!--tier:2-->
 
 - The far half has one question, and it arrived at the M4 send-off. *When the agent takes a hundred steps alone, what makes you trust the result at the end?* It fires before the session, costs one sentence, and decides what gets packaged.
 - Its answer turned into a build list. At M4 the answer was nothing yet, watch. By M6 the answer names checks: which verifier, which hook, which judge stands at the end of this session. A session the question has no answer for is a session not ready to send.
 - It travels. It prices the next send-off and picks which check to author first, and it pairs with the near half's question: name the uncertainty before you move, then name what earns your trust at the end. Two questions, one sentence each, before any work moves.
 
 ## The map, filled in
+<!--tier:2-->
 
 - Six modules, six phases, one loop. The first fix landed in Work, the plan push-back in Intent and Context, the send-off and the packaged re-send across Verification and Absorption, the encoded skill in Outcome. Every move in this training has a place on this map, and a move with a place is a move you can find again.
 - The moves came first; the names came after. Each law got its name at the moment the move was already yours, and a name is a handle.

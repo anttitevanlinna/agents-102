@@ -5511,11 +5511,26 @@ Let&#39;s focus on:
     });
     var maxTier = opts.maxTier == null ? 3 : +opts.maxTier;
     if (maxTier < 3) {
+      var cut = slides.map(function (s) {
+        return !s.isDivider && !s.isCover && +(s.tier || 1) > maxTier;
+      });
+      // A doc whose every content slide went takes its own cover with it, or the
+      // deck announces a lecture that is no longer there. Real case: M5's two
+      // closers are 4xT2/3xT3 and 4xT2/2xT3, so barebones empties both. A
+      // SECTION divider is different — a module always keeps something — and the
+      // training cover (no secCode) is the deck's own front door, never dropped.
+      slides.forEach(function (s, k) {
+        if (!s.isCover || !s.secCode) return;
+        for (var j = k + 1; j < slides.length; j++) {
+          if (slides[j].isCover || slides[j].isDivider) break;
+          if (!cut[j]) return;
+        }
+        cut[k] = true;
+      });
       var keep = [], remap = new Array(slides.length);
       slides.forEach(function (s, k) {
-        var drop = !s.isDivider && !s.isCover && +(s.tier || 1) > maxTier;
-        remap[k] = drop ? -1 : keep.length;
-        if (!drop) keep.push(s);
+        remap[k] = cut[k] ? -1 : keep.length;
+        if (!cut[k]) keep.push(s);
       });
       // An anchor pointing at a dropped slide resolves FORWARD to the next
       // survivor (backwards to the last one at the tail), so no in-deck link

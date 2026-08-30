@@ -45,12 +45,14 @@ The map has a far side. Before the first long session, see the country you are e
 [Lecture: The ironies of automation](lectures/ironies-of-automation.md)
 
 ## Key Concepts
+<!--tier:2-->
 - The audit ranked the thin spots in your setup against one real task. You corrected the ranking, then filled the worst two or three.
 - The task went out un-packaged: no plan file, no verifier, no reference artefact. Nothing but what you already had.
 - Traces are data. Stopping a session that has gone off the rails is reading, not failing.
 - The session started from a pinned commit on a throwaway branch. This was an experiment, not production work.
 
 ## Optional challenges
+<!--tier:3-->
 
 Pick one when a normal send-off no longer feels strange enough.
 
@@ -66,6 +68,7 @@ A session that produced something. Read the agent's scrollback or commits from t
 Come to Module 5 without a session that got some way into the task and you'll be scrambling for material while the read is already underway. Your call.
 
 ## Pre-reads before Module 5
+<!--tier:3-->
 
 Optional. Start with the first.
 
@@ -82,6 +85,7 @@ The rest point at the same surprise: the effort in agent work sits in the framin
 **Read (longer),** Kieran Klaassen, [Compound Engineering: The Definitive Guide](https://every.to/source-code/compound-engineering-the-definitive-guide). The term and the philosophy, and the 80/20 that follows from it: the weight sits on planning and review, and that is where the next hour goes.
 
 ## Next
+<!--tier:2-->
 
 The next module opens with what came back, or what you caught before it went further. You pinned the starting point and recorded where this session lives, so a fresh session reads it straight from `task.md`.
 
@@ -103,7 +107,8 @@ The next module opens with what came back, or what you caught before it went fur
 
 **Quality:** compendium-audited 2026-08-29 (writing@43e6cae1 story@441b361f technical@8cc00874 behavior@17446703 pedagogy@10a10d2b strategy@43e6cae1 slides@43e6cae1)
 - judges @43e6cae1: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
-- cross_module @d47fb5af: PASS — set=[earn-the-trust,run-the-first-experiment]; 1 pair, 0 blocking; see instances/ae101--module-set--m3-m4.cross_module.json (also a member of set m4-m5-m6, whose verdict lives in instances/ae101--module-set--m4-m5-m6.cross_module.json)
+- cross_module @d47fb5af: PASS — set=[run-the-first-experiment,learn-from-the-test,spot-gaps-build-the-loop]; 2 pairs, 0 blocking; see instances/ae101--module-set--m4-m5-m6.cross_module.json
+- cross_module @d47fb5af: PASS — set=[earn-the-trust,run-the-first-experiment]; 1 pair, 0 blocking; see instances/ae101--module-set--m3-m4.cross_module.json
 
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply + Analyze + Create

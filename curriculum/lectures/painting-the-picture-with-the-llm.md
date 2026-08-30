@@ -11,6 +11,7 @@ The tool is not the thing; the taste behind the tool is the thing. Seth Godin ha
 It was trained to match you. Your stance is the ceiling.
 
 ## You prime, the LLM scales
+<!--tier:3-->
 
 Stance and approach matter more now, not less. The session bends to what sits in the context window. You prime it. The LLM scales it.
 

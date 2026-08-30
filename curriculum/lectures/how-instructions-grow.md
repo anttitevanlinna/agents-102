@@ -1,7 +1,6 @@
 # How instructions grow
 
 ## Some rules grow into skills
-<!--tier:2-->
 
 Start with real work. Capture the smallest useful lesson in `./CLAUDE.local.md`, then sharpen it from evidence. Share a short standing rule through `./CLAUDE.md` when the team should inherit it.
 
@@ -37,7 +36,6 @@ A rules file that grows only from corrections turns into a list of don'ts. Prohi
 The positive form is also shorter. Saying what you want, with the reason, usually takes fewer words than the cage of no-statements built around everything you don't. And it generalizes: a taste statement steers in situations no prohibition anticipated. So when a session gets something exactly right, that is worth a rule too. Capture the good example beside the corrections.
 
 ## Keep your context where it loads optimally
-<!--tier:2-->
 
 Variations of the rule and context management prompts you have run work on every type of context engineering file: CLAUDE files, skills, rule files, and whatever you have rolled yourself. Moving material between them is also something you ask Claude to do.
 

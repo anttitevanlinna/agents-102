@@ -260,14 +260,30 @@ exercises). Match the `exercises/` path, not the link text.
 
 **Three steps, in order:**
 
-1. **Audit, do not bulk-tag.** Untagged already means core in practice, so the work is finding the
-   mis-filed slides and tagging those, not labelling 322. Tag while cutting — the T1/T2/T3
-   judgement is the same judgement the cut requires, and splitting it into a separate sweep means
-   making it twice. **Still open — the only thing between the switch and a real edition.**
+1. **Audit, do not bulk-tag. — LANDED 2026-08-30.** Six read-only subagents, one per module, against
+   a rubric written before dispatch (`curriculum/evals/tier-rubric.md`). 158 slides ruled; 84 now
+   tagged, up from 38; coverage 14% → 32%. Report: `curriculum/evals/tier-audit.ae101.md`.
 2. **Runtime toggle, not a build variant. — LANDED 2026-08-30.** Details below.
-3. **Lint it.** *No T2/T3 slide before a module's first exercise* makes goal 1 self-enforcing
-   instead of re-derived per module. **Open.** Cheap to write now that `maxTier` exists, but it
-   gates on step 1: a lint over 38 tags reports on the tier pass, not on the deck.
+3. **Lint it. — LANDED 2026-08-30.** `scripts/check-slide-tiers.js`, green, running in `test:gates`.
+   `--coverage` prints tagged-vs-total, because a clean gate over an untagged corpus proves nothing.
+
+**What the audit changed, and it was not what the programme predicted.** All three known "T2 before
+the first exercise" violations were **mis-tags, not mis-placements** — two were teaching new mechanism
+(→ T1) and one the maintainer's own note already called skippable (→ T3).
+The mechanism: **T2 was being used as a synonym for "droppable"** — T3 is the droppable tier, and T2 is
+a claim about position. Do
+not reach for T2 to make a slide skippable; that is what T3 is for.
+
+**The rubric's one real gap, now closed.** A slide can recognise work from an EARLIER module while
+sitting before this module's first exercise — M6's *Five moves, one quality discipline* recognises
+M1–M5. Nothing mechanical separates that from recognising an exercise that has not run, so the file
+declares it in its own maintainer block, one heading at a time:
+`**Pre-exercise T2 accepted:** "<header>" — <reason>`. Same shape and scope as the deixis check's hatch.
+
+**Where the time is.** M5's two closers are 4×T2/3×T3 and 4×T2/2×T3 — no T1 between them, so barebones
+drops both wholesale: 13 slides, **20 of the 35 minutes of closers**, against a module at 127/120. M4's
+30-minute front half has no such lever: five of its six pre-exercise slides are genuinely T1.
+**M4 is a dosage problem, not a padding problem** — a scope call, not a tier call.
 
 #### The switch (step 2, shipped)
 
@@ -285,9 +301,9 @@ Four decisions worth not re-litigating:
 - **Filter over the model, not CSS.** Hiding slides in place would leave `go()`, the counter, the
   progress bar and the rail counting slides nobody can reach. One filter pass in `buildDeckModel`
   drops the slides, renumbers `secNum` within each section, and remaps the anchor map.
-- **Structure is not content.** Dividers and doc covers always survive, or a filtered module loses
-  its own title. *Untested edge:* a doc whose every content slide is T2/T3 would leave a bare cover.
-  Cannot happen at 38 tags; revisit after the step-1 audit.
+- **Structure is not content.** Section dividers always survive, or a filtered module loses its own
+  title. A DOC cover goes when nothing survives beneath it — flagged as an untested edge when the
+  filter landed, made live by the audit (M5's two closers empty completely), fixed and tested.
 - **A cut anchor resolves forward.** An in-deck link into a dropped slide lands on the next survivor
   rather than dying silently. This forced heading anchors to be claimed *before* the filter — claim
   them after and a link into a dropped slide is simply absent from the map, and the click falls
@@ -296,8 +312,10 @@ Four decisions worth not re-litigating:
 Toggling rebuilds the deck and carries the reader's place across on `srcIndex` (position in the
 unfiltered deck — the only handle stable across a rebuild).
 
-**What it does today:** removes 38 slides of ~450. It is the mechanism, honestly labelled, waiting
-on the tagging. Do not ship it to a cohort as "the barebones edition" until step 1 runs.
+**What it does today** (re-measured after the 2026-08-30 audit): the composed AE101 deck goes
+**531 → 433 slides**, 98 fewer, including 15 covers of lectures that emptied out entirely. The corpus
+is 264 slides across six modules — the earlier "~450" counted the whole shared library, agents-101
+included. Re-measure with `node scripts/check-slide-tiers.js --coverage`.
 
 **Naming hazard.** "Tier" already means three unrelated things in this repo: slide tiers here, file
 priority in `curriculum/evals/slide-sweep.md`, and rule-index tiers T0–T3 in

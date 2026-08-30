@@ -1,6 +1,7 @@
 # Quality is grounding
 
 ## Five moves, one quality discipline
+<!--tier:2-->
 
 The quality arc ran the whole training. M1 opened with tests-first. M2 added plan push-back: quality applied to the agent's intent before any code runs. M3 authored the test-strategy skill from this codebase's conventions. M5 built the verifier, shaped against the failures the un-packaged session actually showed.
 
@@ -9,6 +10,7 @@ Today adds the fifth move: the eval read. Two sessions diffed, every gap routed 
 Tests-first, plan push-back, skill, verifier, loop. That's the quality kit you walk out with.
 
 ## Decay clears the gate
+<!--tier:3-->
 
 Tests answer in seconds; the verifier advises the agent. The costs that make a codebase hard to change land weeks later: the shortcut cast, the try-catch that swallows an error, the module that grew a second job. No gate fires on any of them, so a session can come back green and still leave the code worse than it found it.
 
@@ -23,6 +25,8 @@ The discipline has gone deeper since: **grounding**. Beyond spec-and-tests, towa
 The agentic engineer maxes that signal out. You ship a million lines of new stuff. How do you know it's right?
 
 <!-- maintainer -->
+
+**Pre-exercise T2 accepted:** "Five moves, one quality discipline" — the slide recognises the quality kit built across M1-M5 (tests-first, plan push-back, the skill, the verifier), all of it done by the time a student reaches M6. `check-slide-tiers.js` bars a T2 before a module's first exercise because recognition needs something to recognise; that constraint is module-local and this recognition is not. Tagged in the 2026-08-30 tier audit, which flagged the distinction rather than tagging around it. Do not remove the tag to quiet the gate — the attestation IS the answer.
 
 **Lean pass (2026-08-29):** cut "Five moves, one discipline." — the header above it already reads `## Five moves, one quality discipline`. See the claim row.
 

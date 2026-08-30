@@ -17,7 +17,7 @@ Ask where that list comes from.
 {{prompt:ae101-agent-loop-tool-injection}}
 
 ## The agent, the harness, the loop
-<!--tier:2-->
+<!--tier:3-->
 
 - An **agent** is an LLM calling tools in a loop. Four parts: the context it reads, the tools it can call, the goal it works toward, and the autonomy to pick its own next step. Each iteration the LLM receives context (system prompt, conversation, tool results) and either responds to you or uses tools.
 - The **agent harness** is the surrounding code that runs the loop. It exposes tool definitions to the LLM, executes the tool calls, and feeds results back in. Claude Code is one harness; Cursor, Cline, Gemini CLI are others.

@@ -111,6 +111,10 @@ The worked failure. Amp's handoff launch was stamped `[checked:2026-05-25 result
 
 **Why this is a tightening as much as a loosening.** Under the old rule a stale-but-durable account got quietly swapped or dropped at cohort time, and the swap was where accuracy went — a fresher post with a weaker fit replaced a perfect example for no reason but its date. It also generated busywork the maintainer correctly resented, which is how a rule stops being obeyed at all. The trade is: keep the good example forever, and pay for it by dating it in body every time.
 
+## Theory-construct variant (`due:none` for a widely-accepted named construct — Antti, 2026-08-31)
+
+A named theory construct the field cites by name — Goodhart's law, Bainbridge's ironies, Wei's verifier's rule, Husain's error-analysis-first — takes `due:none`: the construct's currency IS its continued citation, and re-opening the origin post on a calendar confirms only that it still says what it said. Three conditions, all required: (a) cited by NAME as a framework or discipline, never for a rate, count, or capability the post carries; (b) **widely-accepted is demonstrable, not asserted** — the term is used by name, by other people, in public, and the corpus can point at that usage (the trifecta test); (c) the origin is attributed on the line. The two-jobs edge holds here too: *the construct exists and is named X* is durable; *this construct is what practitioners currently do* is a currency claim owing its own dated backing. A single-practitioner coinage nobody else uses fails (b) and keeps its clock.
+
 ## Auto-degrade
 
 Touch-based, like Quality. Editing a body claim a stamp backs degrades that stamp's `result` to `never`/re-check (the source pin may no longer match the prose). Editing prose elsewhere in the file does not. The honest move on a claim edit: re-open the source and re-stamp.

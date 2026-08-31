@@ -14,6 +14,7 @@ Sources that UNDERSTAND agents (use these):
 - [practitioner analysis] — one builder analyzing another's work, technical teardown. STRONG.
 - [domain trade publication] — specialist journalist interviewing practitioner about their work. ACCEPTABLE if substantive.
 - [academic/research] — university research, benchmarks, peer-reviewed. STRONG for patterns.
+- [vendor documentation] — official product docs cited for CAPABILITY (what ships, how it behaves), quote fetched from the live page with the check dated. Authoritative for capability; Level 0 for evidence — never a leg under any trend or significance claim.
 
 Sources that DO NOT understand agents (bare facts only):
 - [general press] — CNBC, Bloomberg, TechCrunch etc. Journalists don't understand agents. Useful ONLY for "this happened" facts (funding, partnerships). NOT useful for "how it works" or "is it real."

@@ -591,6 +591,19 @@ main::before {
     border-color: var(--fg);
 }
 
+/* Prompt bodies wrap; code and shell blocks do not. A prompt block is prose
+   that happens to live in <pre> — read before it is run — and at `white-space:
+   pre` a 654-character line meant a horizontal scrollbar inside a 678px column
+   (51 of 79 blocks overflowed, worst 8.75x the column width). A shell or code
+   block keeps its scrollbar: a wrapped command line can read as two commands.
+   overflow-wrap because an unbroken 654-character run has no break opportunity
+   for pre-wrap to take. Deliberately unscoped — Slides reuses these blocks and
+   this stylesheet, and the same lines overflow there. */
+.prompt-block__pre {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
 .module .prompt-block .prompt-block__pre {
     margin: 0;
     border: 0;

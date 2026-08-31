@@ -803,7 +803,15 @@
             // textContent (not innerText) — innerText respects CSS rendering
             // and can collapse newlines inside <pre><code>; textContent is the
             // DOM text and preserves whitespace deterministically.
-            var text = code.textContent;
+            // Trailing whitespace trimmed: markdown leaves one newline before
+            // </code>, so an untrimmed copy hands a shell block to the terminal
+            // already-entered (it runs on paste instead of waiting to be read)
+            // and puts the reader's cursor past a prompt that ends on "Shape:".
+            // End only — interior blank lines and leading indentation are the
+            // prompt's own shape and must survive verbatim. The text/html
+            // flavour below is built from this same string, so both flavours
+            // trim together and the two pastes stay identical.
+            var text = code.textContent.replace(/\s+$/, '');
             var done = function () {
                 btn.textContent = 'Copied';
                 btn.classList.add('copy-btn--copied');

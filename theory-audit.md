@@ -64,12 +64,14 @@ Status legend: **named** = law + mechanism in student body (recoverable from pag
 | competence-first-sequence | enacted | **not AE101 body** — org-sequencing law | Agents-101/groundwork mat; AE101 students are already past the gate |
 | pattern-layer-ontology | absent | **not AE101** — groundwork's ontology | lives in mapping-rules layer routing; AE101 doesn't need it |
 
+**Coverage state (verified against the shipped corpus, 2026-08-31):** convergence-triad COVERED (`what-packaging-is.md` three-pattern close + `supplementary/verification-asymmetry.md`) · comparative-advantage COVERED with the mechanism fixed to verification cost (`verification-asymmetry.md`; supplementary-tier — no in-room M4 Intent lecture names it) · dont-tamper COVERED (`the-gate-is-a-claim.md`, among the deck's five laws) · l0-l3-ladder PARTIAL — the climb is taught (`what-packaging-is.md` candidate → tested-here → durable sections) but no body names the ladder, and the proposed map-lecture homes carry none of it · individual-not-institutional COVERED implicitly as the row proposed (`the-map-filled-in.md` Cross personal → team bullet) · access-trust-gap / competence-first-sequence / pattern-layer-ontology OPEN by the table's own not-AE101 call. Residual decisions: whether l0-l3 earns its name in body, and whether the three not-AE101 rows are settled as such.
+
 ## The 4 mentioned-only (label without why) — the cheapest upgrades
 
-- **reliability-floor-085n** — students get "at least 10% wrong" (per-step rate) 3×, never the COMPOUNDING mechanism. The mechanism lecture EXISTS (`lectures/why-mostly-right-fails.md`) and is wired nowhere. But fix the law per Family A first (see critiques): durable form = *unverified chain length is the enemy; verification gates reset the chain* — no 0.85 constant in the name.
+- **reliability-floor-085n** — *landed in the durable form:* `the-machine-you-just-met.md` § A check resets the chain teaches the compounding mechanism illustration-labeled and constant-free ("If each step were right nine times in ten… seven-step chain… below a coin flip. The numbers are an illustration"), with gates-reset-the-chain in the same breath; `grounded.md:87` (Agents 101) records the notation drop on its side. `why-mostly-right-fails.md` stays the Claude Basics sibling (reuse audit, `theory-plan.md`).
 - **variation-selection-retention** — M1 mentions side-by-side approaches; selection/retention never named. Candidate: fold into compound-ladder mechanism (eval selects → memory retains) rather than a separate law.
-- **amplification** — one glancing M1 metaphor ("the smart ones stay smart"). Family A: 2 lenses flag the claim itself as contested (Brynjolfsson et al. found least-experienced gained most at task level). Demote to hypothesis or split legs before teaching.
-- **the-wall** — named in the map lectures now, but as phenomenon without mechanism. Econ lens: add J-curve / complementary-investment (David 1990) and it becomes actionable instead of fatalistic.
+- **amplification** — *demote-and-split executed:* the weak-fail-faster leg ships nowhere; the positive koan in `painting-the-picture-with-the-llm.md` is register-demoted (its :40 note, Antti 2026-08-14) with the legs pinned separately in backing and the organisational-level-only CAVEAT on the line.
+- **the-wall** — *mechanism landed:* `the-map-filled-in.md` dip-before-climb wall-crossing bullet carries the J-curve/complementary-investment mechanism, David 1990 + Brynjolfsson stamps in its backing block.
 
 
 ## Canon adoption shortlist (convergence-ranked; proposals)
@@ -103,6 +105,8 @@ Status legend: **named** = law + mechanism in student body (recoverable from pag
 **Tier 3 — noted, not proposed for AE101 body:** MTTR-over-MTBF (SRE reframe of recovery-path investment), practical-drift (Rasmussen), diverse-redundancy (Knight–Leveson — grounds same-context-self-audit-under-flags which M3 already teaches), SECI externalization (grounds cross-the-wall), dynamo/J-curve (grounds the-wall), time-horizon-doubling (METR — grounds craft-has-a-date; medium half-life), context-continuity (Cognition), ACI/tool-ergonomics, progressive-disclosure, jagged-frontier, plan-as-cheapest-gate (Boehm — grounds M2's existing plan-gate economics), Rogers five levers, Baumol judgment premium, residual-rights-of-the-prompt, Wright's law of cycles.
 
 ## Family A verdicts — bank pieces to fix BEFORE anchoring in lectures
+
+**All fixes verified applied or not-anchored (2026-08-31 corpus sweep):** 0.85ⁿ constant-free in the shipped chain slides · good-regulator in conditioning form (`the-loop-half-filled.md`) · hybrid merged into the delegation frontier, zero body teaching · meta-platform and principal-agent ledger-only with explicit keep-outs · access-trust-gap number-free everywhere · amplification's weak leg unshipped, legs pinned · requisite-variety's boundary embodied (readers parallel, curator serializes, `three-retrievers-one-curator.md`) · calibrate-the-judge landed (`the-gate-is-a-claim.md`) · trust-observed-competence carries the complacency half (`ironies-of-automation.md`) · the-wall carries the J-curve. The verdicts below stay as the record of what was owed and why.
 
 **Convergent (≥2 lenses) — must fix:**
 

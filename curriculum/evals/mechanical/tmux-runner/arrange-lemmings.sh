@@ -85,6 +85,21 @@ for sk in test-strategy-lemmings session-shaper-lemmings plan-gap-finder-lemming
   fi
 done
 
+# 2b. per-SUT auto-memory absent so a run cannot inherit prior-run state ----
+#     ~/.claude/projects/<encoded-cwd>/memory/ is user-scope, keyed on the
+#     working directory — the git reset below never touches it. Worktree cwds
+#     (M3 quality lane, M5) get their own encoded dirs, so clear those too.
+for md in "$SUT" "${HOME}/Projects/lemmings-m3-quality" "${HOME}/Projects/lemmings-m5"; do
+  enc="$(printf '%s' "$md" | tr '/.' '--')"
+  memdir="${HOME}/.claude/projects/${enc}/memory"
+  if [[ -d "$memdir" ]]; then
+    mkdir -p "$backup/auto-memory"
+    cp -Rp "$memdir" "$backup/auto-memory/${enc}"
+    rm -rf "$memdir"
+    echo "[arrange] auto-memory for $md -> backup (removed)"
+  fi
+done
+
 # 3. prune the worktrees that block the M3 fork + M5 worktree-setup ---------
 #    (lemmings-m5-prior is left alone — M5 creates lemmings-m5, not -prior.)
 git -C "$SUT" worktree prune

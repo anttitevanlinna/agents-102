@@ -107,9 +107,8 @@ Declared once so far, in `quality-is-grounding.md`. The gate is green and now ru
 7. `composing-the-workflow` § From skills to a workflow — genuine three-way call; introduces vocabulary
    (orchestrator, leaf, routing) that nothing downstream cites by name.
 
-**Deferred, mechanical:** `plan-mode-done-right`'s two `## Pre-reads before Module N` sections are
-variant-flag-wrapped (`<!--flag:module:earn-the-trust-->##`), one of them mid-line, so a marker cannot be
-inserted on its own line. Both would be T3. Every other module's pre-reads section is tagged.
+`plan-mode-done-right`'s two `## Pre-reads before Module N` sections carry `<!--tier:3-->` (flags on
+their own lines since 2026-08-31; `check-slide-tiers.js` green). Every module's pre-reads section is tagged.
 
 **Not swept:** exercises (106 slides, T1 by rule — the two existing T3 asides in `push-back-on-the-plan`
 were left alone), prework, supplementaries, references, and the agents-101 library.

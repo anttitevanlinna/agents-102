@@ -59,7 +59,9 @@ Pick one when plan mode feels too comfortable.
 - Start a [Claude Code cloud session](https://code.claude.com/docs/en/claude-code-on-the-web), steer it for a few turns from the mobile app, then inspect the branch and transcript back at your desk.
 - Try to bully plan mode into a bad architecture. Keep insisting on one tempting shortcut, then record where Claude pushes back and where it caves.
 
-<!--flag:module:earn-the-trust-->## Pre-reads before Module 3
+<!--flag:module:earn-the-trust-->
+## Pre-reads before Module 3
+<!--tier:3-->
 
 Optional. The security frame Module 3 works in.
 
@@ -67,7 +69,11 @@ Optional. The security frame Module 3 works in.
 
 **Read:** Simon Willison, [Designing agentic loops](https://simonwillison.net/2025/Sep/30/designing-agentic-loops/) (September 2025). What to decide before an agent runs with less supervision: what it can reach, what it must not touch, and where the blast radius ends.
 
-**Optional deeper scan:** [OWASP Top 10 for LLM Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/). Broader checklist covering prompt injection, insecure output handling, data leakage, and the rest of the surface.<!--/flag:module:earn-the-trust--><!--flag:no-module:earn-the-trust-->## Pre-reads before Module 4
+**Optional deeper scan:** [OWASP Top 10 for LLM Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/). Broader checklist covering prompt injection, insecure output handling, data leakage, and the rest of the surface.
+<!--/flag:module:earn-the-trust-->
+<!--flag:no-module:earn-the-trust-->
+## Pre-reads before Module 4
+<!--tier:3-->
 
 Optional. The thinking Module 4 asks you to do before you step away from a session.
 

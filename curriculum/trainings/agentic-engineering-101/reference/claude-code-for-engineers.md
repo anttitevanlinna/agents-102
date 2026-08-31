@@ -502,7 +502,7 @@ A hook is a small script the runtime invokes on a named event. The script fires 
 | `PreCompact` | Before auto-compaction summarises history | Capture mid-context state to disk before it folds into the summary |
 | `InstructionsLoaded` | When a `CLAUDE.md` or `.claude/rules/*.md` file loads into context, at session start and on lazy load | Log exactly which instruction files loaded and when, the tool for debugging a path-scoped rule that isn't firing |
 
-AE101's own curriculum repository wires five of these in its `.claude/settings.json` (SessionStart, UserPromptSubmit, PreToolUse, PostToolUse, Stop). Useful working configs to grep when authoring your first hook.
+AE101's own curriculum repository wires five of these in its `.claude/settings.json` (SessionStart, UserPromptSubmit, PreToolUse, PostToolUse, Stop) — the events table above is read off a working config, not a spec.
 
 ## 36. Hooks: config shape and two examples
 

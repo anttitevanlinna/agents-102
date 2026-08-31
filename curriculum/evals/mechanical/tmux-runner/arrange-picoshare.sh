@@ -83,6 +83,21 @@ for sk in test-strategy-picoshare session-shaper-picoshare; do
   fi
 done
 
+# 2b. per-SUT auto-memory absent so a run cannot inherit prior-run state ----
+#     ~/.claude/projects/<encoded-cwd>/memory/ is user-scope, keyed on the
+#     working directory — the git reset above never touches it. Worktree cwds
+#     (M3 quality lane, M5) get their own encoded dirs, so clear those too.
+for md in "$SUT" "${HOME}/Projects/picoshare-m3-quality" "${HOME}/Projects/picoshare-m5"; do
+  enc="$(printf '%s' "$md" | tr '/.' '--')"
+  memdir="${HOME}/.claude/projects/${enc}/memory"
+  if [[ -d "$memdir" ]]; then
+    mkdir -p "$backup/auto-memory"
+    cp -Rp "$memdir" "$backup/auto-memory/${enc}"
+    rm -rf "$memdir"
+    echo "[arrange] auto-memory for $md -> backup (removed)"
+  fi
+done
+
 # 3. prune the worktrees that block the M3 fork + M5 worktree-setup ---------
 git -C "$SUT" worktree prune
 for wt in picoshare-m3-quality picoshare-m5; do
@@ -136,6 +151,7 @@ cat <<EOF
 [arrange] reverse this run:
 [arrange]   cp "$backup/CLAUDE.local.md" "$SUT/"            # if it was removed
 [arrange]   cp -R "$backup"/skills/* ~/.claude/skills/       # if skills were removed
+[arrange]   (auto-memory backups: $backup/auto-memory/<enc> -> copy back as ~/.claude/projects/<enc>/memory)
 [arrange]   git -C "$SUT" apply "$backup/sut-dirty.patch"    # if a dirty tree was reset
 [arrange]   (prior branch tips: $backup/branches-before.txt)
 EOF

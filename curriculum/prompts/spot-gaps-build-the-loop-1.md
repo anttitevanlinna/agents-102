@@ -24,6 +24,7 @@ requires:
     source: prompt:diagnose-and-resend-4
   - id: run-notes
     source: prompt:ae101-m5-rerun-packaged
+    conditional: agent-got-stuck
 produces:
   - id: two-run-gap-map
     location: scrollback (ranked gap list with quoted moments + dominant gap)

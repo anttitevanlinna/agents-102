@@ -39,8 +39,10 @@ produces:
     note: M6 readers get the m5 branch + transcript path from plan.md instead of branch-grep + mtime transcript search
   - id: run-notes
     location: RUN-NOTES.md (at worktree root)
+    conditional: agent-got-stuck
     consumed-by:
       - prompt:spot-gaps-build-the-loop-1
+    note: the body writes this only on getting stuck ("if you get stuck, write into RUN-NOTES.md and try a different angle"), so a smooth run legitimately produces none. Declared unconditional until 2026-08-31, when a run that never got stuck listed it under "did NOT ship" and the M5 chain's PC gate failed on a correct reading of the body.
 ---
 Before you start, write a protected block at the top of `plan.md` headed `Run coordinates (do not rewrite or remove)`, holding this session's `m5/` branch exactly as `git branch --show-current` reports it (read it back from git — don't retype it from memory) and this session's transcript path (under `~/.claude/projects/`, keyed by the `CLAUDE_CODE_SESSION_ID` environment variable). You'll mutate the rest of plan.md as you run; leave that block alone. Confirm the `.jsonl` exists before writing it; if you can't determine the path, stop and tell me rather than guessing.
 

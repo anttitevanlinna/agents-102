@@ -24,34 +24,47 @@ assert_file_exists() {
 }
 
 assert_run_notes_present() {
-  # $1=label, $2=worktree root.
-  # ae101-m5-rerun-packaged names RUN-NOTES.md at the worktree root twice,
-  # and six judge skills (verify-by-hand-judge, scope-creep-judge,
-  # context-rot-judge-lemmings, disclosure-lock-judge, session-shaper-*)
-  # grep that filename BY NAME. A run that files its notes elsewhere leaves
-  # every one of them reading nothing and passing free, so this fails closed:
-  # absent, empty, or whitespace-only are all FAIL. Caught 2026-08-17, when
-  # the northwind run filed observations/<date>-<slug>-run.md instead and the
-  # chain went green anyway.
-  local label="$1" wt="$2" path="$2/RUN-NOTES.md"
-  if [[ -f "$path" ]] && grep -qE '[^[:space:]]' "$path" 2>/dev/null; then
-    echo "[assert] PASS $label: RUN-NOTES.md present and non-empty ($path)"
-    return 0
-  fi
+  # $1=label, $2=worktree root, $3=the run's return transcript.
+  #
+  # RUN-NOTES.md is a CONDITIONAL artefact (Antti, 2026-08-31): the body of
+  # ae101-m5-rerun-packaged writes it only on getting stuck, and the registry
+  # marks it `conditional: agent-got-stuck` on both sides of the graph. A
+  # smooth run legitimately produces none. But six judge skills
+  # (verify-by-hand-judge, scope-creep-judge, context-rot-judge-lemmings,
+  # disclosure-lock-judge, both session-shaper-*) grep this file BY NAME, so a
+  # silent absence still leaves them reading nothing and passing free.
+  #
+  # The line between the two is the return: a run that skipped the file on
+  # purpose says so in its "did NOT ship" list. Accounted-for absence passes;
+  # silent absence, an empty file, or notes filed under another name fail.
+  local label="$1" wt="$2" transcript="${3:-}" path="$2/RUN-NOTES.md"
+
   if [[ -f "$path" ]]; then
+    if grep -qE '[^[:space:]]' "$path" 2>/dev/null; then
+      echo "[assert] PASS $label: RUN-NOTES.md present and non-empty ($path)"
+      return 0
+    fi
     echo "[assert] FAIL $label: RUN-NOTES.md is empty ($path) — judges grep this file by name and would pass on an empty read" >&2
     return 1
   fi
-  # Name the near-miss: run notes filed under another name are the common
-  # shape, and quoting the candidate makes the fix one move.
+
+  # Absent. Notes under another name are a misfiling, not a conditional skip.
   local candidate
   candidate="$(find "$wt" -maxdepth 2 -type f -name '*.md' 2>/dev/null \
     | grep -E -i 'run-?notes|-run\.md|observations/' | head -1 || true)"
   if [[ -n "$candidate" ]]; then
     echo "[assert] FAIL $label: no RUN-NOTES.md at worktree root ($path); run notes appear to have landed at ${candidate#$wt/} instead — the prompt names the root file, and judges grep it by name" >&2
-  else
-    echo "[assert] FAIL $label: no RUN-NOTES.md at worktree root ($path); the packaged re-send prompt requires it and judges grep it by name" >&2
+    return 1
   fi
+
+  # Absent with nothing misfiled: the return must account for it.
+  if [[ -f "$transcript" ]] \
+     && grep -qE -i 'run-?notes' "$transcript" \
+     && grep -qE -i "did ?not ship|didn't ship|never got stuck|not needed|no different angle|n/a" "$transcript"; then
+    echo "[assert] PASS $label: RUN-NOTES.md absent and accounted for in the return (conditional artefact, agent-got-stuck)"
+    return 0
+  fi
+  echo "[assert] FAIL $label: no RUN-NOTES.md at worktree root ($path) and the return does not account for it — a conditional artefact still owes an explicit 'did NOT ship' line, since judges grep this file by name" >&2
   return 1
 }
 

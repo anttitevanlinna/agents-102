@@ -629,7 +629,7 @@ echo "[assert] PASS PC post: plan.md has Run coordinates block"
 # RUN-NOTES.md at the worktree root (added 2026-08-17). The prompt names it
 # twice; the judge skills grep it by name. Ungated, a run that files its notes
 # elsewhere hands every downstream judge an empty read and a free pass.
-if ! assert_run_notes_present "PC post" "$worktree_cwd"; then
+if ! assert_run_notes_present "PC post" "$worktree_cwd" "$pc_dir/transcript.txt"; then
   exit 1
 fi
 

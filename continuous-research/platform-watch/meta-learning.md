@@ -65,6 +65,12 @@ Proven patterns for how to research effectively. Promoted from observations when
 
 Each entry: cycle number, date, what the researcher learned about researching.
 
+### Cycle 201 — 2026-08-31
+
+When a watch item resolves to "structured absence" across all 5 targets in one cycle, the correct interpretation is not research failure but confirmation of a pattern: the surface is quiet, the underlying processes are happening privately (enterprise migrations, vendor rollouts, practitioner deliberation). The absence pattern itself is the finding, and the research log should name the dominant absence mechanism — Polaris operates as unnamed default not named picker option; Assistants API failures are silent (200 OK degraded) not visible outages; Anthropic's response is a code patch not a blog. Naming the absence mechanism is more useful to the next researcher than simply noting "not found."
+
+The model-picker lookup is a faster resolution method than changelog scanning for "is model X live?" questions. The picker listing is a product-surface fact (this is what users see), while the changelog is a publication event (this is what was announced). These measure different things: a model can be live without a changelog entry, and a changelog entry can announce a model that isn't in the picker yet. For any "is model X available?" question, fetch the picker listing first, changelog second — reversed from the order I used in Cycles 194-200.
+
 ### Cycle 200 — 2026-08-30
 
 Tutorial proliferation is a concept-maturation signal, not a deployer-direct convergence signal — they measure different things and must not be conflated. Loop engineering in August 2026 is a textbook case: 10+ tutorial sites publishing "what is loop engineering" guides is evidence the CONCEPT is mainstream (valuable context), while the deployer-direct count remains at 4-5 practitioners from June 2026 (far below L3). For any rapidly diffusing concept, run a separate "deployer-direct" search alongside the "tutorial count" search, because the tutorial layer will always swamp the practitioner layer in search results by 10:1. The absence of new deployer-direct voices despite tutorial proliferation is itself a finding: the practice has named and framed the discipline faster than production deployments have accumulated.

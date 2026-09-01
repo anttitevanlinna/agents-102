@@ -25,7 +25,7 @@ HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 SUT="${HOME}/Projects/lemmings"
 EFFORT="medium"
 FROM="m1"; TO="m6"
-DO_ARRANGE="auto"                       # auto = arrange iff FROM==m1
+DO_ARRANGE="auto"                       # auto = arrange iff FROM==prework|m1
 M1_SLUG="fix-hud-tally"
 M2_SLUG="add-levels-2-3"
 M3_SLUG="threat-model-share"
@@ -51,7 +51,12 @@ done
 export CLAUDE_CMD="claude --effort $EFFORT --permission-mode auto"
 export CLAUDE_RUNNER_TIMEOUT="${CLAUDE_RUNNER_TIMEOUT:-1800}"
 
-mod_num() { echo "${1#m}"; }
+mod_num() {                             # prework sorts before m1 (2026-09-01)
+  case "$1" in
+    prework) echo 0 ;;
+    *)       echo "${1#m}" ;;
+  esac
+}
 in_range() { local n; n="$(mod_num "$1")"; [[ "$(mod_num "$FROM")" -le "$n" && "$n" -le "$(mod_num "$TO")" ]]; }
 
 latest_state() { ls -t "$HERE"/out/*/"$1-state.json" 2>/dev/null | head -1; }
@@ -123,8 +128,17 @@ wipe_run_artifacts() {                  # $1=path under $SUT
 echo "[chain] range $FROM..$TO  effort=$EFFORT  sut=$SUT  timeout=${CLAUDE_RUNNER_TIMEOUT}s"
 
 # ---- arrange (M1 baseline) ----------------------------------------------
-if { [[ "$DO_ARRANGE" == "auto" && "$FROM" == "m1" ]] || [[ "$DO_ARRANGE" == "yes" ]]; }; then
+if { [[ "$DO_ARRANGE" == "auto" && ( "$FROM" == "m1" || "$FROM" == "prework" ) ]] || [[ "$DO_ARRANGE" == "yes" ]]; }; then
   run_module arrange "$HERE/arrange-lemmings.sh" --sut "$SUT" --slug "$M1_SLUG"
+fi
+
+# ---- prework: tarball -> install -> screen. Runs AFTER arrange, because
+#      arrange removes the installed -lemmings skills that prework's T2
+#      re-installs; the reverse order would leave the walk skill-less. The
+#      leg writes nothing to the repo and resets its own durable writes, so
+#      it is safe to replay.
+if in_range prework; then
+  run_module prework "$HERE/run-prework.sh" --cwd "$SUT"
 fi
 
 # ---- M1: getting going + context. SUT already on m1/<slug> @ bdd0919. ----

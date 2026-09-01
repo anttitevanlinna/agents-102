@@ -10,6 +10,14 @@
 #     matching .done file with a timeout.
 set -euo pipefail
 
+# wait_for_turn's deadline needs both clocks; turn-budget.sh owns the rule.
+# Sourced here rather than left to each runner: sync.sh is what actually calls
+# wait_expired, and a runner that forgot the source would fail at the deadline
+# check — hours into a leg, on the one path nobody exercises until it matters.
+_sync_here="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# shellcheck source=turn-budget.sh
+source "$_sync_here/turn-budget.sh"
+
 should_auto_resend() {
   # Pure predicate — no I/O, no tmux. Decides whether wait_for_turn should
   # auto-fire a paste-buffer recovery of the same prompt against the pane.
@@ -115,13 +123,14 @@ wait_for_turn() {
   local dir="$1" seq="$2" timeout="${3:-300}" session="${4:-}" prompt_file="${5:-}"
   local marker="$dir/turn-$seq.done"
   local waited=0 last_pane_check=0 last_stall_check=0 last_stall_warn=0
+  local started_at; started_at="$(date +%s)"   # wall clock: the poll counter stops when the machine sleeps
   local pane_check_interval=5
   local stall_check_interval=30          # capture-pane every 30s
   local stall_warn_interval=300          # WARN every 5 min after match
   local stall_match_count=0
   local stall_match_threshold=2          # 2 consecutive matches = persistent
   local stall_recent_window=20           # match must be within last N lines
-  local stall_pattern='API Error|socket closed unexpectedly|Connection.*refused|rate.?limit'
+  local stall_pattern='API Error|socket closed unexpectedly|Connection.*refused|rate.?limit|went to sleep'
   local auto_resends=0
   local last_resend_at=-1000000          # sentinel: cooldown trivially satisfied on first match
   local max_auto_resends=3
@@ -164,10 +173,17 @@ wait_for_turn() {
         stall_match_count=0
       fi
     fi
-    if [[ "$waited" -ge "$timeout" ]]; then
-      echo "wait_for_turn: timeout after ${timeout}s waiting for $marker" >&2
-      return 1
-    fi
+    local elapsed_wall=$(( $(date +%s) - started_at ))
+    case "$(wait_expired "$waited" "$elapsed_wall" "$timeout")" in
+      poll)
+        echo "wait_for_turn: timeout after ${timeout}s waiting for $marker" >&2
+        return 1
+        ;;
+      wall)
+        echo "wait_for_turn: WALL-CLOCK timeout waiting for $marker — ${elapsed_wall}s of real time elapsed against a ${timeout}s budget, but the poll loop only counted ${waited}s. The gap is the machine suspending mid-turn (the pane usually says 'Your computer went to sleep mid-response'); caffeinate -is does not defend a closed lid. The turn is abandoned rather than waited on forever." >&2
+        return 1
+        ;;
+    esac
   done
 }
 

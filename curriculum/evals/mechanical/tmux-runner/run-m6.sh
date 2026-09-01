@@ -141,20 +141,23 @@ locate_new_skill() {
   return 1
 }
 
-# Assertion dispatch — one case per prompt-key turn. Dispatched on key_seq.
+# Assertion dispatch — one case per prompt key. Dispatched on the KEY, not
+# the ordinal (2026-09-01): ordinal dispatch silently re-points every arm
+# when a turn is added or removed, which is how the 2026-08-01 curriculum
+# cut could sit here for a month. Same dispatch shape as run-m2.sh.
 # Literal turns (lines starting with `*`) are skipped — sentinel-wait +
 # transcript capture only, no assertion. Same dispatch shape as run-m2.sh.
 assert_turn() {
-  local seq="$1" transcript="$2"
-  case "$seq" in
-    1)  # spot-gaps-build-the-loop-1 — diff two runs across four dimensions.
+  local key="$1" transcript="$2"
+  case "$key" in
+    spot-gaps-build-the-loop-1)  # — diff two runs across four dimensions.
         # Scrollback must surface the four-dim frame OR the ranked gap.
         # The body asks for "what packaging caught / missed / introduced /
         # where the fix belongs" + a final ranked gap. Match any of the
         # frame words plus a ranking signal.
         assert_scrollback_grep "T1 four-dim diff" "$transcript" "caught|missed|introduced|gap|dominant|rank|ranked"
         ;;
-    2)  # spot-gaps-build-the-loop-2 — cut one stale rule from
+    spot-gaps-build-the-loop-2)  # — cut one stale rule from
         # ./CLAUDE.local.md OR say all rules hold and stop. Pass if file
         # mtime advanced OR scrollback says rules held / stopped.
         if assert_file_mtime_advanced "T2 CLAUDE.local.md mtime" "$claude_local_md" "$claude_local_mtime_baseline" 2>/dev/null; then
@@ -162,58 +165,28 @@ assert_turn() {
         fi
         assert_scrollback_grep "T2 rules-held fallback" "$transcript" "all rules|still holds?|every rule|no rule|nothing to cut|hold under|stop"
         ;;
-    3)  # spot-gaps-build-the-loop-study — wider look across the whole
+    spot-gaps-build-the-loop-study)  # — wider look across the whole
         # stack: scans ~/.claude/projects/ and groups the kinds of work
         # that recur (SUT-independent — the student's own session history,
         # not the SUT codebase). Soft check: scrollback shows a grouped +
         # ranked recurring-work inventory. Vocabulary is wide.
         assert_scrollback_grep "T3 repeated-work inventory" "$transcript" "group|recur|repeat|pattern|kind of work|across|stack|rank|ranked|top|instance"
         ;;
-    4)  # spot-gaps-build-the-loop-shapes — draw the top recurring
+    spot-gaps-build-the-loop-shapes)  # — draw the top recurring
         # work-shapes as mermaid diagrams. Require mermaid-syntax tokens,
         # not English words — "flow"/"branch"/"loop"/"step" passed even
         # without any diagram drawn (2026-06-01 audit; happened to fire
         # for the right reason this run, hole closed for next).
         assert_scrollback_grep "T4 recurring-shape diagrams" "$transcript" "mermaid|flowchart|graph TD|graph LR|-->"
         ;;
-    5)  # spot-gaps-build-the-loop-primitives — 5-10 atomic primitives
+    spot-gaps-build-the-loop-primitives)  # — 5-10 atomic primitives
         # named with fire-timing, then 2-3 ranked for the dominant gap.
         # Primitives vocabulary is wide; match any 3+ to confirm a list
         # was produced (loose grep with several alternations).
         assert_scrollback_grep "T5 primitives menu" "$transcript" "test|lint|format|typecheck|compile|build|browser|smoke|review|diff|judge|verifier|gate|schema|contract|eval"
         ;;
-    6)  # spot-gaps-build-the-loop-3 — author skill through interview.
-        # The prompt says "Show me before saving" — under the ask-and-wait
-        # pattern the actual file write may land in the next literal
-        # turn's response (codesearch variant) OR in this turn (lemmings
-        # suppression variant). Defer the hard file-existence check to
-        # case 7; here, assert scrollback contains the interview shape
-        # (questions, draft, or save-gate language).
-        assert_scrollback_grep "T6 interview/draft" "$transcript" "question|interview|skill|name|description|frontmatter|fires|shape|save"
-        ;;
-    7)  # spot-gaps-build-the-loop-4 — critique before shipping. By this
-        # turn the SKILL.md must exist somewhere under ~/.claude/skills/
-        # (both ask-and-wait and suppression variants have had the
-        # save-gate fire by now). Two checks: (a) a new skill dir with
-        # SKILL.md exists since baseline; (b) scrollback contains
-        # critique-shaped language (weakest, generic, missing).
-        if ! locate_new_skill; then
-          echo "[assert] FAIL T7 new-skill: no new ~/.claude/skills/<name>/SKILL.md since baseline" >&2
-          return 1
-        fi
-        echo "[assert] PASS T7 new-skill: $new_skill_global"
-        assert_scrollback_grep "T7 critique-shape" "$transcript" "weak|weakest|generic|missing|assumption|push.back|wrong"
-        ;;
-    8)  # spot-gaps-build-the-loop-5 — invoke skill on M5 packaged run,
-        # produce output, judge it in the same turn. Match invocation +
-        # judgement vocabulary. The skill's name SHOULD appear in
-        # scrollback (the prompt says "by its name"); we don't hard-grep
-        # for the exact name because the agent may abbreviate or quote
-        # differently — fall back to the menu vocab + judgement words.
-        assert_scrollback_grep "T8 invoke+judge" "$transcript" "invoke|invoked|catch|caught|miss|missed|finding|pass|fail|fired|output|good|useful|sharper"
-        ;;
     *)
-        echo "[m6] no assertion configured for prompt-key turn $seq" >&2
+        echo "[m6] no assertion configured for prompt key '$key'" >&2
         return 1
         ;;
   esac
@@ -266,7 +239,7 @@ for line in "${lines[@]}"; do
     continue
   fi
 
-  if ! assert_turn "$key_seq" "$run_dir/turn-$seq.transcript.txt"; then
+  if ! assert_turn "$key" "$run_dir/turn-$seq.transcript.txt"; then
     pane_capture_safe "$session" "$run_dir/transcript.txt" 10
     echo "[m6] FAIL turn=$seq key_seq=$key_seq assertion miss — see $run_dir/turn-$seq.transcript.txt" >&2
     exit 1
@@ -323,6 +296,26 @@ cat > "$state_file" <<EOF
   "task_slug": "$task_slug"
 }
 EOF
+
+# Handoff precondition at the close (owed since 2026-08-01, landed 2026-09-01).
+# agents-that-build-agents-handoff is NOT driven here — it is a lecture
+# followup validated by persona sim, and one of the chain's declared
+# intentional gaps. What the chain CAN prove is that the gap stays
+# satisfiable: the handoff requires `recurring-shape-diagrams` from
+# spot-gaps-build-the-loop-shapes, in the same session, at the close. If the
+# shapes turn produced no diagram, the handoff has nothing to carry forward
+# and the gap has quietly become a hole.
+shapes_transcript=""
+for f in "$run_dir"/turn-*.transcript.txt; do
+  [[ -f "$f" ]] || continue
+  grep -qE -i 'mermaid|flowchart|graph TD|graph LR|-->' "$f" && shapes_transcript="$f"
+done
+if [[ -n "$shapes_transcript" ]]; then
+  echo "[assert] PASS M6 close: shapes diagrams present ($(basename "$shapes_transcript")) — agents-that-build-agents-handoff has its input"
+else
+  echo "[assert] FAIL M6 close: no mermaid-syntax diagram in any turn transcript; agents-that-build-agents-handoff requires recurring-shape-diagrams from spot-gaps-build-the-loop-shapes and would run on nothing" >&2
+  exit 1
+fi
 
 echo "[m6] PASS turns=$seq — out: $run_dir"
 echo "[m6] state.json: $state_file"

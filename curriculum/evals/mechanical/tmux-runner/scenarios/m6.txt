@@ -43,24 +43,3 @@ spot-gaps-build-the-loop-shapes Don't call AskUserQuestion — draw the top few 
 
 # T5: atomic primitives menu + ranked picks against dominant gap.
 spot-gaps-build-the-loop-primitives Don't call AskUserQuestion — produce the list inline. The 5-10 primitives + 2-3 ranked picks all land in one chat reply.
-
-# T6: author the skill. Highest structural AUQ risk — body says
-# "Interview me one question at a time." Lemmings variant suppresses
-# AUQ and dumps answers preemptively (lazy student); body's "Show me
-# before saving" save-gate is satisfied by the literal `* save it`
-# after this turn. The shape choice + answers below assume the
-# dominant gap from T1 was packaging-mood-drift (the M5 verifier
-# checked output but not whether the agent stayed on the task it was
-# sent to do). Adjust if T1 surfaces a different dominant gap — the
-# answers carry shape (gap-finder), invocation timing (pre-run), and
-# output (ranked findings) regardless.
-spot-gaps-build-the-loop-3 I'm doing a headless dry-run, please don't call AskUserQuestion — use what you can read from the artefacts plus my answers below; for anything else, use your best judgment and note the gap inline. Answers preemptively: (1) Shape — gap-finder. The packaged M5 run drifted from the task it was sent to do (mid-run scope creep into adjacent code paths); a sharpened verifier wouldn't have caught that because the output technically passed. A gap-finder fires before the run starts, reads the proposed plan against the reference, and flags scope ambiguity. (2) Fires on — a proposed task plan + reference artefact, pre-run. Not on output. (3) Quality bar — would a teammate reading the plan understand what's IN and what's OUT of scope without asking? If no, the plan is too loose for a long-running send-off. (4) Flag vs let through — flag: scope words that admit multiple referents ("clean up the related X"), missing OUT-of-scope list, plan-reference mismatch on which files are touched. Let through: plan that names files + behaviors specifically + has a one-line OUT-of-scope clause. (5) Output — ranked findings, severity-ordered, each with a quoted plan line and a one-sentence fix. (6) Failure shape when the skill is wrong — false-positive flagging on plans that ARE precise enough (over-eager); diagnostic is the skill's own description mentioning "scope" without a teammate-test rubric. (7) Skill name — `session-shaper-lemmings` (suffix by SUT so it doesn't collide at user scope with other codebases' session-shaper skill); write it to `~/.claude/skills/session-shaper-lemmings/SKILL.md`. The test-strategy skill you authored in M3 — the authoring-pattern template the prompt points you at — is at `~/.claude/skills/test-strategy-lemmings/SKILL.md`. Anything else, use your judgment; I'm not micromanaging the SKILL.md phrasing.
-
-* save it
-
-# T7: critique before shipping. Same session — charitable by design,
-# the body acknowledges that and accepts it for pacing.
-spot-gaps-build-the-loop-4 Don't call AskUserQuestion. Name three weak parts in chat — be harsher than necessary, assume worse than it looks.
-
-# T8: invoke skill by name on M5 packaged run + same-turn judgement.
-spot-gaps-build-the-loop-5 Don't call AskUserQuestion. Invoke the skill we just authored by name, produce its output on the M5 re-run, and answer the three judgement questions in the same response.

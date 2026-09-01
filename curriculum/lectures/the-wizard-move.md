@@ -19,12 +19,10 @@ The move is loading the right context before the question, not a clever prompt o
 **Standing constraints:**
 - **Zero bold on the narrative and demo slides** (Antti: *"go very lightly on the bold"*). Prose paragraphs, not bolded-claim bullets. `theory-plan.md § Slide format — emphasis budget` + `check_slides §9`.
 - **Guess before reveal.** The guess paragraph precedes the Finnish-dinner answer. Both sessions get narrated before the live run. `check_slides §4`.
-- **No plan mode on this surface.** M1's fix runs tests-first; plan mode earns its keep at M2. Any phrasing like *"with plan mode used deliberately"* is drift.
+- **No plan mode on this surface.** M1's fix runs tests-first; plan mode earns its keep at M2. Any phrasing like *"with plan mode used deliberately"* is drift. Confirmed against the module's Big Idea + LO (Antti, 2026-09-01).
 - **The loop-over-the-fix beat belongs to the M1 closer, not here.** `the-machine-you-just-met.md` lands it after the four exercises as recognition (`## You just ran the same loop`, kicker *"The loop is the shape. The bug today was the excuse."*). This opener carries the context mechanism and stops. Do not restore a third slide that previews the loop, and do not steal the kicker.
 - **Zero map references.** M1 is protected; the map arrives at M2.
 - Openers carry no setup lede.
-
-**Open:** the plan-mode drift removal wants a maintainer eyeball against the module's Big Idea + LO.
 
 **Quality:** compendium-audited 2026-08-29 (writing@4a722813 story@17446703 technical@8cc00874 behavior@1480362 pedagogy@17446703 strategy@1480362 slides@17446703)
 - judges @4a722813: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

@@ -67,6 +67,28 @@
 /* rail: tier-3 rows dim so the skippable tail is scannable at a glance */
 .deck__rail-item--tier3 .deck__rail-label { opacity: .6; }
 
+/* ── "Not included" watermark ───────────────────────────────────────────────
+   The barebones EDITION keeps the slides its tier cap excludes and stamps them
+   instead of dropping them, so a reader of a shortened deck can see the shape
+   of what the full one carries without being able to mistake it for material
+   they were taught. Loud enough that a photograph of the slide carries the
+   caveat too; not so loud the slide stops being readable, because being
+   readable is the whole point of leaving it in. */
+.deck .slide--excluded { position: relative; }
+.deck .slide--excluded .slide__body { opacity: .5; }
+.deck .slide__excluded {
+  position: absolute; inset: 0; z-index: 7; pointer-events: none;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display, inherit); font-size: clamp(2rem, 7vw, 5.5rem);
+  letter-spacing: .12em; text-transform: uppercase; white-space: nowrap;
+  color: rgba(124, 111, 90, .36); text-shadow: 0 1px 0 rgba(255, 255, 255, .3);
+  transform: rotate(-14deg);
+}
+.deck .slide.theme-dark .slide__excluded { color: rgba(232, 224, 208, .22); text-shadow: none; }
+/* rail: an excluded row reads as excluded in the contents too, or the trainer
+   scanning the list plans a slide the deck has already disowned */
+.deck__rail-item--excluded .deck__rail-label { opacity: .45; text-decoration: line-through; }
+
 /* ── deck shell ─────────────────────────────────────────────────────────── */
 body.slides-active { overflow: hidden; }
 .deck { position: fixed; inset: 0; z-index: 1000; display: flex; flex-direction: column;

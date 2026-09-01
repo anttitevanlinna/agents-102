@@ -36,7 +36,7 @@
 - Watch the regression-to-the-mean trap. After a bad session, the next session is usually better with no change at all. A tweak made right after a failure looks effective even when it did nothing.
 
 ## The delegation frontier
-<!--tier:2-->
+<!--tier:1-->
 
 {{figure:delegation-frontier}}
 

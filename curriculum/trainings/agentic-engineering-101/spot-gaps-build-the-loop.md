@@ -65,7 +65,7 @@ No compound prompt here. The exercise's gap map and stack-map are the Module 6 c
 - Encoding is the third phase of test → learn → encode. Two sessions tested; the diagnosis learned; the handoff encodes. Encoding subtracts as well as adds: the durable shape is add, sharpen, delete. A rules file that only grows compounds noise alongside the learning.
 
 ## Optional challenges
-<!--tier:3-->
+<!--tier:1-->
 
 Pick one when you want to turn your kit back on itself.
 
@@ -75,6 +75,7 @@ Pick one when you want to turn your kit back on itself.
 - Build a system that shows which skills, hooks, and rules in your kit fired across recent sessions, and which never fired at all.
 
 ## Next
+<!--tier:3-->
 
 The next task you start, package it and send it off, then read what comes back through the lens you built. The reading is the loop, not the sending. It's yours now.
 

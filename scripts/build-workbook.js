@@ -476,15 +476,27 @@ const WORKBOOK_INIT_JS = `
     var KEY = 'curriculumLayout';
     // Barebones edition: the same deck capped at tier 1 (no T2 recognition, no
     // T3 story). Remembered per reader alongside the layout choice.
-    var TKEY = 'curriculumMaxTier';
+    //
+    // A barebones EDITION (\`data-deck="barebones"\`, set from the registry) flips
+    // both defaults: the deck opens capped at tier 1, and the capped-out slides
+    // stay in it wearing a "Not included" watermark rather than vanishing — the
+    // reader of a shortened edition can see what the full one covers. Its
+    // remembered choice gets its own storage key, or a full-deck workbook read
+    // earlier on the same origin would quietly un-barebones the edition.
+    var edition = document.body.getAttribute('data-deck') === 'barebones';
+    var TKEY = 'curriculumMaxTier' + (edition ? ':barebones' : '');
     var mode = (function () { try { return localStorage.getItem(KEY) === 'slides' ? 'slides' : 'read'; } catch (e) { return 'read'; } })();
-    var maxTier = (function () { try { return localStorage.getItem(TKEY) === '1' ? 1 : 3; } catch (e) { return 3; } })();
+    var maxTier = (function () {
+      var v; try { v = localStorage.getItem(TKEY); } catch (e) { v = null; }
+      return edition ? (v === '3' ? 3 : 1) : (v === '1' ? 1 : 3);
+    })();
     var ctl = null, toggle = null;
     function apply(startSrc) {
       if (mode === 'slides') {
         if (!ctl) ctl = CurriculumSlides.open(main, {
           title: (document.title || '').replace(/\\s+—\\s+.*$/, ''),
           maxTier: maxTier,
+          markExcluded: edition,
           startSrc: startSrc,
           onExit: function () { set('read'); },
           onMaxTier: setTier
@@ -1038,6 +1050,10 @@ function buildExercisesWorkbook(customer, trainingKey) {
 function template(title, content, trainingKey) {
   const training = CR.TRAININGS[trainingKey] || {};
   const runtime = training.runtime || 'cli';
+  // `deck: 'barebones'` on the registry entry is an EDITION, not a build flag:
+  // the workbook is otherwise identical, so the choice belongs beside the
+  // variant's module list, where the next person reading the registry sees it.
+  const deck = training.deck ? ` data-deck="${CR.esc(training.deck)}"` : '';
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1047,7 +1063,7 @@ function template(title, content, trainingKey) {
 <style>${SPA_CSS}</style>
 <style>${SLIDES_CSS}</style>
 </head>
-<body class="runtime-${CR.esc(runtime)} workbook" data-training="${trainingKey}">
+<body class="runtime-${CR.esc(runtime)} workbook" data-training="${trainingKey}"${deck}>
 ${content}
 <script>${SPA_JS}</script>
 <script>${SLIDES_JS}</script>

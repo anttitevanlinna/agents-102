@@ -62,7 +62,7 @@ After this module, you will be able to:
 - The loop ends outside the code. The close-out lands in the tracker your team reads, and that tracker encodes conventions living in the tickets. One ticket is enough to start reading them back
 
 ## Optional challenges
-<!--tier:3-->
+<!--tier:1-->
 
 Pick one when you want a side quest before Module 2.
 
@@ -72,7 +72,7 @@ Pick one when you want a side quest before Module 2.
 - Automate rule compounding. After each session, capture one evidenced lesson, route it to the right rules file, and check whether it helps next time.
 
 ## Pre-reads before Module 2
-<!--tier:3-->
+<!--tier:1-->
 
 Optional. Do them and Module 2's moves land as things you've already seen.
 

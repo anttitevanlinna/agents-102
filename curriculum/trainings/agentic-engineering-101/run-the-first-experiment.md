@@ -53,7 +53,7 @@ The map has a far side. Before the first long session, see the country you are e
 - The session started from a pinned commit on a throwaway branch. This was an experiment, not production work.
 
 ## Optional challenges
-<!--tier:3-->
+<!--tier:1-->
 
 Pick one when a normal send-off no longer feels strange enough.
 
@@ -69,7 +69,7 @@ A session that produced something. Read the agent's scrollback or commits from t
 Come to Module 5 without a session that got some way into the task and you'll be scrambling for material while the read is already underway. Your call.
 
 ## Pre-reads before Module 5
-<!--tier:3-->
+<!--tier:1-->
 
 Optional. Start with the first.
 
@@ -86,7 +86,7 @@ The rest point at the same surprise: the effort in agent work sits in the framin
 **Read (longer),** Kieran Klaassen, [Compound Engineering: The Definitive Guide](https://every.to/source-code/compound-engineering-the-definitive-guide). The term and the philosophy, and the 80/20 that follows from it: the weight sits on planning and review, and that is where the next hour goes.
 
 ## Next
-<!--tier:2-->
+<!--tier:3-->
 
 The next module opens with what came back, or what you caught before it went further. You pinned the starting point and recorded where this session lives, so a fresh session reads it straight from `task.md`.
 

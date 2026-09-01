@@ -65,7 +65,7 @@ Plan mode takes minutes on real codebases. Eight to twelve isn't unusual. Use th
 > **Too many low-level questions? Steer up.** If Claude keeps asking about implementation detail (which helper, a variable name, error-message wording), tell it: ask me about requirements, not low-level design. The branches worth the time change what 'done' means; the rest you'd settle in verification.
 
 ## Switch to a picker if you prefer one
-<!--tier:3-->
+<!--tier:1-->
 
 - If you would rather answer from a structured picker, ask Claude to switch to AskUserQuestion once the walk-down is rolling, and add any steering of your own.
 

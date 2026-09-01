@@ -37,6 +37,7 @@ Prompting this over and over is not the way. The real move is putting the defini
 [Lecture: Reading the return](lectures/reading-the-return.md)
 
 ## Your mid-run worries hint at missing checks
+<!--tier:3-->
 
 Somewhere during the un-packaged send-off a worry surfaced: did it touch the migration, did the tests really cover the edge. There was no way to check mid-session, and it nagged.
 
@@ -51,6 +52,7 @@ Acting without full control is the job from here on. Build the check, send again
 [Exercise: Diagnose and re-send](exercises/diagnose-and-resend.md)
 
 > **Dense slides.** In the two closing lectures, the headings carry the claims; the bullets back them up. Follow the headings; pick the detail that interests you most.
+<!--tier:3-->
 
 [Lecture: What packaging is](lectures/what-packaging-is.md)
 
@@ -89,7 +91,7 @@ The map's near half is where a single loop runs and compounds. The far half is w
 <!--/flag:no-module:spot-gaps-build-the-loop-->
 
 ## Optional challenges
-<!--tier:3-->
+<!--tier:1-->
 
 Pick one when you want the test to bite harder.
 
@@ -106,7 +108,7 @@ A packaged session with substance. Read the scrollback or commits from the re-se
 Come to Module 6 without the packaged session and you'll have one session to read where the exercise needs two. Your call.
 
 ## Pre-reads before Module 6
-<!--tier:3-->
+<!--tier:1-->
 
 Optional.
 

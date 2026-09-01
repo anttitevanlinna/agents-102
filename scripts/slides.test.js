@@ -490,6 +490,126 @@ test('every slide carries its unfiltered position as srcIndex', () => {
   assert.equal(bare.total, full.slides.length, 'model reports the unfiltered total');
 });
 
+// ── the barebones edition: marked, not cut ───────────────────────────────────
+// `markExcluded` keeps every slide the tier cap excludes and watermarks it, so
+// a shortened edition shows the shape of what it does not cover. Nothing is
+// filtered, so nothing renumbers or remaps — the failure mode to guard is a
+// deck that silently starts dropping slides again.
+
+function markedDeck(src) {
+  const dom = new JSDOM(src || FIXTURE, { runScripts: 'outside-only' });
+  dom.window.eval(SLIDES_SRC);
+  const main = dom.window.document.querySelector('main');
+  const model = dom.window.CurriculumSlides.buildDeckModel(
+    main.cloneNode(true), { maxTier: 1, markExcluded: true });
+  return { model, labels: model.slides.map(s => s.navLabel || s.title).join('\n'), dom };
+}
+
+test('the marked edition keeps the T2 and T3 slides the cut drops', () => {
+  const { model, labels } = markedDeck();
+  assert.match(labels, /Slide A/, 'T3 slide still in the deck');
+  assert.match(labels, /Slide B/, 'T2 slide still in the deck');
+  assert.equal(model.slides.length, model.total, 'nothing filtered');
+  assert.equal(bareDeck().model.slides.length < model.total, true, 'the cut deck is the shorter one');
+});
+
+test('excluded slides carry the watermark; core slides carry nothing', () => {
+  const { model } = markedDeck();
+  const byTitle = t => model.slides.find(s => (s.navLabel || s.title) === t);
+  const a = byTitle('Slide A'), c = byTitle('Slide C');
+  assert.equal(a.excluded, true);
+  assert.equal(a.el.getAttribute('data-excluded'), '1');
+  assert.ok(a.el.classList.contains('slide--excluded'));
+  assert.equal(a.el.querySelector('.slide__excluded').textContent, 'Not included');
+  assert.ok(!c.excluded, 'the untagged core slide is untouched');
+  assert.equal(c.el.querySelector('.slide__excluded'), null);
+  assert.equal(model.excluded, model.slides.filter(s => s.excluded).length);
+  assert.ok(model.excluded > 0);
+});
+
+// The cut deck renumbers because slides left. The marked deck must not: its
+// numbering IS the full deck's, and a reader comparing the two editions in the
+// same room would otherwise see two different numbers for one slide.
+test('the marked edition keeps full-deck numbering and anchors', () => {
+  const full = buildDeck().model, marked = markedDeck().model;
+  const refs = m => m.slides.map(s => s.el.getAttribute('data-ref')).join(',');
+  assert.equal(refs(marked), refs(full));
+  // joined, not deepEqual: the two models come from different JSDOM realms
+  assert.equal(marked.slides.map(s => s.srcIndex).join(','), full.slides.map(s => s.srcIndex).join(','));
+  assert.equal(marked.anchors['supplementary-verification-asymmetry'],
+    full.anchors['supplementary-verification-asymmetry'], 'anchors need no remap');
+});
+
+// A doc whose every content slide is excluded is an excluded doc, and its title
+// slide is the one thing the marked edition hides rather than stamps: a section
+// opener that announces a lecture and then delivers nothing but watermarks is
+// worse than no opener at all (Antti 2026-09-01).
+test('a doc cover whose every content slide is excluded is dropped, not marked', () => {
+  const stripped = FIXTURE.replace('<h2>Slide C</h2><p>body</p>', '');
+  const { model } = markedDeck(stripped);
+  const labels = model.slides.map(s => s.navLabel || s.title);
+  assert.ok(!labels.includes('Painting the picture'), 'the cover is gone from the marked deck');
+  assert.ok(labels.includes('Slide A') && labels.includes('Slide B'),
+    'its slides are still there, watermarked');
+  assert.equal(model.slides[0].excluded, undefined, 'the training cover is never marked');
+  const anchor = model.anchors['supplementary-verification-asymmetry'];
+  assert.match(model.slides[anchor].navLabel || model.slides[anchor].title, /Verification asymmetry/,
+    'anchors are remapped past the dropped cover');
+});
+
+// Bug 2026-09-01: an exercise whose first H2 is "Phase 1: …" emits a phase
+// DIVIDER immediately after its cover, so the cover's "is everything under me
+// filtered?" scan broke out of the loop having seen no content slide at all —
+// and fell through to marking the cover. Every exercise in AE101 opens that
+// way, so every exercise title slide was cut (or stamped "Not included") while
+// the steps underneath it stayed. A cover is only as excluded as the content it
+// actually owns; owning none is not the same as owning nothing kept.
+const PHASED_FIXTURE = FIXTURE.replace('<h2>Step one</h2>', '<h2>Phase 1: Step one</h2>');
+
+test('a doc cover followed straight by a phase divider is never dropped', () => {
+  const dom = new JSDOM(PHASED_FIXTURE, { runScripts: 'outside-only' });
+  dom.window.eval(SLIDES_SRC);
+  const main = dom.window.document.querySelector('main');
+  const S = dom.window.CurriculumSlides;
+  const cut = S.buildDeckModel(main.cloneNode(true), { maxTier: 1 });
+  const marked = S.buildDeckModel(main.cloneNode(true), { maxTier: 1, markExcluded: true });
+  assert.match(cut.slides.map(s => s.navLabel || s.title).join('\n'), /Orient and introspect/,
+    'the exercise title survives barebones');
+  const cover = marked.slides.find(s => (s.navLabel || s.title) === 'Orient and introspect');
+  assert.ok(cover, 'and is in the marked deck');
+  assert.ok(!cover.excluded, 'unmarked — its steps are all core');
+});
+
+// Bug 2026-09-01: "is everything under me filtered?" walked forward until the
+// next cover or divider — but a lecture inlined mid-module is followed by the
+// MODULE's own trailing prose (Key Concepts, Optional challenges, Next) with no
+// divider between them. So the scan left the lecture, hit a core module slide,
+// and kept a cover whose own slides were all excluded. Real case: M4's
+// `ironies-of-automation`, two T2 slides, cover still announcing it.
+// Ownership is the source doc, not the distance to the next divider.
+const TAIL_FIXTURE = FIXTURE
+  .replace(/<section class="phase phase--exercise"[\s\S]*?<\/section>/, '')
+  .replace('<h2>Slide C</h2><p>body</p>', '');
+
+test('a cover is judged on its own doc, not on the module prose after it', () => {
+  const dom = new JSDOM(TAIL_FIXTURE, { runScripts: 'outside-only' });
+  dom.window.eval(SLIDES_SRC);
+  const main = dom.window.document.querySelector('main');
+  const S = dom.window.CurriculumSlides;
+  const marked = S.buildDeckModel(main.cloneNode(true), { maxTier: 1, markExcluded: true });
+  const cut = S.buildDeckModel(main.cloneNode(true), { maxTier: 1 });
+  const labels = m => m.slides.map(s => s.navLabel || s.title).join('\n');
+  assert.match(labels(marked), /Key Concepts/, 'the module tail is core and stays');
+  assert.doesNotMatch(labels(marked), /Painting the picture/,
+    'the all-excluded lecture cover is hidden even though core module prose follows it');
+  assert.doesNotMatch(labels(cut), /Painting the picture/, 'and dropped in the cut deck');
+});
+
+test('slides.css styles the watermark and the excluded rail row', () => {
+  assert.match(SLIDES_CSS, /\.deck \.slide__excluded\s*\{/, 'the watermark rule');
+  assert.match(SLIDES_CSS, /\.deck__rail-item--excluded/, 'the rail row rule');
+});
+
 test('slides.css styles the barebones switch', () => {
   assert.match(SLIDES_CSS, /\.deck__mode\s*\{/, 'slides.css must carry the .deck__mode rule');
 });

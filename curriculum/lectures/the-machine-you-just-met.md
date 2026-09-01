@@ -42,14 +42,14 @@ The machine you just met can be steered. What you bring, what you build, and wha
 That is the machine. The rest is steering.
 
 ## You just ran the same loop
-<!--tier:2-->
+<!--tier:1-->
 
-The way this training was built is the shape you just ran on your own repo. Claude's first read was partly wrong. You found the useful wrongness, corrected it, and wrote what the session taught you into `./CLAUDE.local.md` for the next session.
+Orient, fix, close, compound. You just ran that loop. Claude's first read was partly wrong. You found the useful wrongness and corrected it. The correction did not stay in the scrollback. It went to disk, and the next session can use the learning.
 
 Kieran Klaassen calls this **compound engineering**: work produces evidence; evidence improves the system that does the next work.
 
 ## What compounds
-<!--tier:2-->
+<!--tier:1-->
 
 Klaassen's definition: each unit of engineering work should make subsequent units easier, not harder. What that looks like, in his words:
 
@@ -75,6 +75,7 @@ The loop is the shape. The bug today was the excuse.
 **Placement:** M1's final lecture, after `compound-and-close` (Ex3). Zoom order runs exercise-level recognition first (the machine tendencies felt in Ex1-Ex3) then arc-level recognition (the two loop slides, absorbed 2026-08-25 from the dissolved `how-this-training-was-built` — Antti-called; that file's build-story slides were cut and its two survivors moved here rather than staying a 2-min standalone). The loop kicker ("The loop is the shape. The bug today was the excuse.") stays the lecture's last line and the designed hand-off into `## Next`: M1's mood target is joyful creation and the loop carries that as the last word. **Do not restore a separate training-built lecture or its build-story slides** (the bulletpoint origin, rule-count snapshot, testing-stack tour and Antti narrator lede were the cut; git carries them).
 
 **Loop-slide constraints (carried over with the slides):**
+- **`## You just ran the same loop` names no artifact and no build story (Antti-directed 2026-09-01).** The slide opens on M1's own loop (orient, fix, close, compound) and closes on the learning being available to the next session. Two things it must not regain: the *"the way this training was built"* opener, which made the repo's own method look like writing a local rules file; and `./CLAUDE.local.md` by name, which in the definitional slot taught that compound engineering IS rules-file maintenance — the equation the next slide then has to dismantle. The file is owned by `compound-and-close` (which writes it) and by M1's Key Concepts (which qualifies it).
 - **`## What compounds` is the definitional slide (Antti-directed 2026-08-23).** Opens Klaassen's four bullets after the attribution line and before the closer; the slide says the file is an instance, not the class. The one bulleted-definition slide in the pair, accepted: a quoted definition is a list. Keep the closer line last.
 - **Klaassen is named twice on the student surface across M1, and both are on this page.** The same-loop slide connects the student's work to the name; the definitional slide attributes the quoted definition. `compound-and-close` prints the loop but names the practice rather than the person. Two is the cap; a third M1 mention breaches it.
 - **Loop slides stay prose paragraphs**; the only bold handle on them is **compound engineering** at its naming.

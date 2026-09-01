@@ -81,7 +81,7 @@ If the agent names something missed, decide whether to compound it now or accept
 - Skills carry the codebase's conventions; your rules file carries how you work. Sharpening the skill is the mandatory move; the rule only goes in if it earned itself
 
 ## Optional challenges
-<!--tier:3-->
+<!--tier:1-->
 
 Pick one when you want to test the boundary, not just describe it.
 
@@ -97,14 +97,14 @@ Pick one when you want to test the boundary, not just describe it.
 Come to Module 4 without having picked the task and you'll be scrambling for one while the exercise is already running. Your call.
 
 ## Pre-read before Module 4
-<!--tier:3-->
+<!--tier:1-->
 
 Optional. One read.
 
 **Read:** Lucas F. da Costa, [Backpressure Is All You Need](https://www.lucasfcosta.com/blog/backpressure-is-all-you-need) (May 2026). Da Costa carries a word out of flow systems and into agent work: when generation outruns judgment, the human becomes the stage everything else waits on. Module 4 sends off a session that runs without you watching, which is where you meet that limit yourself.
 
 ## Next
-<!--tier:2-->
+<!--tier:3-->
 
 Two signatures, earned. Your staff engineer sees a test-strategy skill tuned to this codebase, your CISO sees a STRIDE decision with an ADR. Module 4 turns the discipline inward: a real task walked against everything you have built so far, the test-strategy conventions and the access-surface facts and the hardening decision included.
 

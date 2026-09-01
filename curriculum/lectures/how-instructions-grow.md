@@ -11,7 +11,7 @@ When a rule expands into a repeatable way of doing a job, extract it into a **sk
 This is one common route, not a promotion ladder.
 
 ## The second loop
-<!--tier:3-->
+<!--tier:1-->
 
 [Chris Argyris called the deeper move double-loop learning](https://hbr.org/1977/09/double-loop-learning-in-organizations). The first loop corrects the action. The second questions the governing rule or assumption that shaped the action.
 

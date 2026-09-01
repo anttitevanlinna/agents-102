@@ -3,7 +3,7 @@
 The packaged re-send is running and the laptop is closed again. What you assembled to get there has names.
 
 ## One session, plotted
-<!--tier:2-->
+<!--tier:1-->
 
 One long session, drawn as a sea passage.
 
@@ -15,14 +15,14 @@ One long session, drawn as a sea passage.
 - An unchecked session arrives confident, and wrong. Same start, no fixes, one wedge widening the whole way. The success report comes from the wrong harbor.
 
 ## Reference and plan
-<!--tier:2-->
+<!--tier:1-->
 
 - On the map, the kit is what stands in for you at Verification.
 - **Reference artefact**, against goal drift. A spec the agent reads and re-reads: success criteria, pointers at the relevant memory, named constraints. The spec on disk stays readable mid-session when the buried instructions in the conversation no longer are. In Armin Ronacher's January 2026 MiniJinja port, the original Rust snapshot tests played this role; in your re-send, the reference you assembled plays it.
 - **plan.md** the agent owns and mutates, against context rot. A working document that holds durable state across the task: the agent reads it at every session boot, updates it as decisions land, re-reads it when the working window fills. What got ruled out an hour ago is written down, not remembered. Geoffrey Huntley's Ralph practice leans on exactly this primitive to bootstrap entire greenfield projects.
 
 ## The verifier completes the three-pattern
-<!--tier:2-->
+<!--tier:1-->
 
 - **External verifier**, against plausible-but-wrong. An automated check that decides whether a piece of agent-produced work meets a quality bar. Your job is to spot when quality is passable and nudge the agent along to done-done.
 - The menu is a synthesis across practitioners (Cherny, Huntley, Ronacher); no single write-up carries it. You built one against your dominant failure. The other two sit alongside the three-pattern for next time.

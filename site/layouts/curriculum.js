@@ -92,6 +92,32 @@
                 { slug: 'earn-the-trust',            title: 'Earn the trust' }
             ]
         },
+        // Barebones edition of Agentic Engineering 101: the whole training, same
+        // six modules, same files — the difference is the deck. `deck:
+        // 'barebones'` opens Slides capped at tier 1 (core only) and keeps every
+        // Recognition (T2) and Story (T3) slide in place under a "Not included"
+        // watermark instead of dropping it. A plain barebones toggle answers
+        // "what do we cover?"; this edition also answers "what are we not
+        // covering?", which is the question a room handed a shortened day asks
+        // first. The long-read is untouched: nothing is cut, so nothing is lost.
+        // `B` at the lectern still swaps to the unmarked full deck.
+        //
+        // Build student-facing:
+        // node scripts/build-workbook.js acme agentic-engineering-101-barebones --no-trainer-docs
+        'agentic-engineering-101-barebones': {
+            contentKey: 'agentic-engineering-101',
+            deck: 'barebones',
+            label: 'Agentic Engineering 101 — Barebones',
+            lede: 'Six modules for software engineers. The core spine of the training; the theory around it is marked, not taught.',
+            modules: [
+                { slug: 'getting-going',             title: 'Getting going + context' },
+                { slug: 'plan-mode-done-right',      title: 'Plan mode, done right' },
+                { slug: 'earn-the-trust',            title: 'Earn the trust' },
+                { slug: 'run-the-first-experiment',  title: 'Run the first experiment' },
+                { slug: 'learn-from-the-test',       title: 'Learn from the test, re-send packaged' },
+                { slug: 'spot-gaps-build-the-loop',  title: 'Spot gaps, build the loop' }
+            ]
+        },
         // Team-track variant of Agentic Engineering 101: four sittings, running
         // AE101 modules 1, 2, 4 and 5 unmodified. AE101 M3 (`earn-the-trust`) is
         // dropped and M6 (`spot-gaps-build-the-loop`) becomes a customer-authored

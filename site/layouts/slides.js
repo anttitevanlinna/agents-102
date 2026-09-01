@@ -93,6 +93,9 @@
   // `<!--tier:N-->` markers in the markdown arrive as hidden `.slide-tier`
   // blocks (curriculum.js expandTiers). Deck-only chrome: a small corner token
   // telling the trainer how skippable the slide is. Untagged slides = core.
+  // The watermark a barebones edition puts on the slides it does not cover.
+  // One string, used by the slide itself and by the rail row beside it.
+  var EXCLUDED_LABEL = 'Not included';
   var TIER_INFO = {
     '1': 'Core — the work ahead depends on this slide',
     '2': 'Recognition — names what the room already did; skippable under time pressure',
@@ -137,8 +140,16 @@
 
   // Split one doc container (a whole doc, or one `.phase` section) into slides.
   // Runs decoratePatterns first. Returns an array of slide descriptors.
+  // Every call is one source doc — a lecture, an exercise, a run of module
+  // prose. `docId` stamps that provenance onto the slides so a later pass can
+  // ask "which slides does this cover own?" and get the doc's answer rather
+  // than a guess from deck position. Position lies: an inlined lecture is
+  // followed by the MODULE's Key Concepts with no divider in between.
+  var DOC_SEQ = 0;
+
   function buildSingleDoc(container, o) {
     o = o || {};
+    var docId = ++DOC_SEQ;
     decoratePatterns(container);
     var kids = Array.prototype.slice.call(container.childNodes).filter(function (n) {
       return !(n.nodeType === 1 && n.classList && n.classList.contains('phase-kicker'));
@@ -179,6 +190,7 @@
         if (m) {
           var pd = makeDivider('Phase ' + m[1], m[2].trim(), null, o.dark);
           pd.phaseNum = +m[1];
+          pd.docId = docId;
           out.push(pd);
           h2.textContent = m[2].trim();
         }
@@ -204,7 +216,7 @@
       var title;
       if (g.isCover) title = docTitle || o.title || 'Cover';
       else { var hh = body.querySelector('h2'); title = hh ? textOf(hh) : 'Slide'; }
-      out.push({ el: sec, title: title, navLabel: title, isCover: g.isCover, isDivider: false, tier: tier, tierTagged: tagged });
+      out.push({ el: sec, title: title, navLabel: title, isCover: g.isCover, isDivider: false, tier: tier, tierTagged: tagged, docId: docId });
     });
     return { slides: out, title: docTitle };
   }
@@ -363,27 +375,66 @@
       Array.prototype.forEach.call(s.el.querySelectorAll('[id]'), function (n) { claimAnchor(anchors, n.id, k); });
     });
     var maxTier = opts.maxTier == null ? 3 : +opts.maxTier;
+    // `markExcluded` is the barebones edition's other half: the same tier cap,
+    // but the over-tier slides STAY in the deck wearing a "Not included"
+    // watermark. A cut deck answers "what do we cover?"; a marked deck answers
+    // "what are we not covering?" — the question a reader of a shortened
+    // edition actually has. Nothing is filtered here, so numbering, anchors
+    // and srcIndex are the full deck's and need no remap.
+    var markExcluded = !!opts.markExcluded, excluded = 0;
+    var cut = slides.map(function (s) {
+      return !s.isDivider && !s.isCover && +(s.tier || 1) > maxTier;
+    });
+    // A doc whose every content slide is out of scope goes with them, cover and
+    // all. Real case: M5's two closers are 4xT2/3xT3 and 4xT2/2xT3, so barebones
+    // empties both. A SECTION divider is different — a module always keeps
+    // something — and the training cover (no secCode) is the deck's own front
+    // door, never dropped. `coverCut` remembers which covers the sweep took, so
+    // the marked edition can DROP them while it marks everything else: a title
+    // slide for a lecture the edition does not give is the one thing worth
+    // hiding outright, since it announces a section and then delivers a stack of
+    // watermarks (Antti 2026-09-01, on `ironies-of-automation`).
+    var coverCut = [];
     if (maxTier < 3) {
-      var cut = slides.map(function (s) {
-        return !s.isDivider && !s.isCover && +(s.tier || 1) > maxTier;
-      });
-      // A doc whose every content slide went takes its own cover with it, or the
-      // deck announces a lecture that is no longer there. Real case: M5's two
-      // closers are 4xT2/3xT3 and 4xT2/2xT3, so barebones empties both. A
-      // SECTION divider is different — a module always keeps something — and the
-      // training cover (no secCode) is the deck's own front door, never dropped.
       slides.forEach(function (s, k) {
         if (!s.isCover || !s.secCode) return;
-        for (var j = k + 1; j < slides.length; j++) {
-          if (slides[j].isCover || slides[j].isDivider) break;
+        // Scoped by `docId`, so the question is "is every slide of THIS doc
+        // filtered?" — the module's own Key Concepts and Next, which follow an
+        // inlined lecture with no divider between, are somebody else's slides
+        // and cannot vouch for it. In-doc phase dividers are skipped, not
+        // stopped on: an exercise opening "Phase 1: …" owns the steps under
+        // that divider, and treating the divider as the end of the doc is what
+        // once cut every exercise title in AE101 while its steps stayed.
+        var owned = 0;
+        for (var j = k + 1; j < slides.length && slides[j].docId === s.docId; j++) {
+          if (slides[j].isCover || slides[j].isDivider) continue;
+          owned++;
           if (!cut[j]) return;
         }
-        cut[k] = true;
+        if (owned) { cut[k] = true; coverCut[k] = true; }
       });
+    }
+    if (maxTier < 3 && markExcluded) {
+      slides.forEach(function (s, k) {
+        if (!cut[k] || coverCut[k]) return;
+        s.excluded = true;
+        excluded++;
+        s.el.classList.add('slide--excluded');
+        s.el.setAttribute('data-excluded', '1');
+        var wm = el('div', 'slide__excluded');
+        wm.textContent = EXCLUDED_LABEL;
+        s.el.appendChild(wm);
+      });
+    }
+    // What actually leaves the deck: everything filtered (cut edition), or only
+    // the covers of docs the edition does not give (marked edition). One filter
+    // for both, so the anchor remap and the renumber cannot drift apart.
+    var drop = maxTier < 3 ? (markExcluded ? coverCut : cut) : null;
+    if (drop) {
       var keep = [], remap = new Array(slides.length);
       slides.forEach(function (s, k) {
-        remap[k] = cut[k] ? -1 : keep.length;
-        if (!cut[k]) keep.push(s);
+        remap[k] = drop[k] ? -1 : keep.length;
+        if (!drop[k]) keep.push(s);
       });
       // An anchor pointing at a dropped slide resolves FORWARD to the next
       // survivor (backwards to the last one at the tail), so no in-deck link
@@ -421,7 +472,8 @@
         claimAnchor(anchors, n.id, k);
       });
     });
-    return { slides: slides, title: title, anchors: anchors, maxTier: maxTier, total: total };
+    return { slides: slides, title: title, anchors: anchors, maxTier: maxTier, total: total,
+             markExcluded: markExcluded, excluded: excluded };
   }
 
   // Re-attach copy handlers on the cloned deck (listeners don't survive cloneNode).
@@ -485,9 +537,11 @@
     var railHead = el('div', 'deck__rail-head');
     var railTitle = el('div', 'deck__rail-title'); railTitle.textContent = model.title || 'Contents';
     var railMeta = el('div', 'deck__rail-meta');
-    railMeta.textContent = model.maxTier < 3
-      ? slides.length + ' of ' + model.total + ' slides'
-      : slides.length + ' slides';
+    railMeta.textContent = model.markExcluded && model.excluded
+      ? (model.total - model.excluded) + ' of ' + model.total + ' slides included'
+      : model.maxTier < 3
+        ? slides.length + ' of ' + model.total + ' slides'
+        : slides.length + ' slides';
     railHead.append(railTitle, railMeta);
     var railList = el('ul', 'deck__rail-list');
     var railItems = slides.map(function (s, k) {
@@ -496,7 +550,8 @@
         + (s.isDivider ? ' deck__rail-item--divider' : '')
         + (s.el.classList.contains('slide--module') ? ' deck__rail-item--module' : '')
         + (s.isCover ? ' deck__rail-item--cover' : '')
-        + (s.tierTagged ? ' deck__rail-item--tier' + s.tier : '');
+        + (s.tierTagged ? ' deck__rail-item--tier' + s.tier : '')
+        + (s.excluded ? ' deck__rail-item--excluded' : '');
       var btn = el('button', cls, { 'data-index': k });
       var num = el('span', 'deck__rail-num');
       num.textContent = s.isCover ? '•'
@@ -546,10 +601,13 @@
     var modeBtn = null;
     if (opts.onMaxTier) {
       var bare = model.maxTier < 3;
+      var markMode = !!opts.markExcluded;
       modeBtn = el('button', 'deck__mode' + (bare ? ' is-on' : ''), {
         type: 'button',
         title: bare
-          ? 'Barebones: core slides only. Click for the full deck. (B)'
+          ? (markMode
+              ? 'Barebones: recognition and story slides marked "' + EXCLUDED_LABEL + '". Click for the full deck. (B)'
+              : 'Barebones: core slides only. Click for the full deck. (B)')
           : 'Full deck. Click for barebones \u2014 core only, no recognition or story slides. (B)'
       });
       modeBtn.textContent = bare ? 'Barebones' : 'Full deck';

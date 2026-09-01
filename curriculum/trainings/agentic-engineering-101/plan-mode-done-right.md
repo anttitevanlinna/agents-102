@@ -50,7 +50,7 @@ Two reads on one plan catch different misses. Yours goes first, because your cod
 - A rule that doesn't load doesn't exist, and where you put it decides when it fires. Fixing the plan is the first loop; changing the rule that shaped it is the second, which Argyris called double-loop learning.
 
 ## Optional challenges
-<!--tier:3-->
+<!--tier:1-->
 
 Pick one when plan mode feels too comfortable.
 
@@ -61,7 +61,7 @@ Pick one when plan mode feels too comfortable.
 
 <!--flag:module:earn-the-trust-->
 ## Pre-reads before Module 3
-<!--tier:3-->
+<!--tier:1-->
 
 Optional. The security frame Module 3 works in.
 
@@ -73,13 +73,14 @@ Optional. The security frame Module 3 works in.
 <!--/flag:module:earn-the-trust-->
 <!--flag:no-module:earn-the-trust-->
 ## Pre-reads before Module 4
-<!--tier:3-->
+<!--tier:1-->
 
 Optional. The thinking Module 4 asks you to do before you step away from a session.
 
 **Read:** Lucas F. da Costa, [Backpressure Is All You Need](https://www.lucasfcosta.com/blog/backpressure-is-all-you-need) (May 2026). Da Costa carries a word out of flow systems and into agent work: when generation outruns judgment, the human becomes the stage everything else waits on.<!--/flag:no-module:earn-the-trust-->
 
 ## Next
+<!--tier:3-->
 
 <!--flag:module:earn-the-trust-->At M3 you point the same move at a feature you're shipping, and the call it surfaces gets written down where a teammate finds it. Note the plan file path on your way out: M3 reads it, against a task with an external or user-facing surface.<!--/flag:module:earn-the-trust--><!--flag:no-module:earn-the-trust-->
 
@@ -121,7 +122,7 @@ This module points at four sources in body and owned a stamp for none of them; t
 - `[checked:2026-05-25 result:CAVEAT due:none]` https://www.youtube.com/watch?v=6eBSHbLKuN0 — [delegated stamp] Cherny, *Mastering Claude Code in 30 minutes*, the line 16 optional pre-read. Dated check owned by `exercises/open-the-side-quest.md`; outside the 6-month window by maintainer decision, recorded in `getting-going.md`. `due:none` — a delegation does not expire, the delegate's stamp does. fallback: optional reading; drop it.
 - `[checked:2026-07-31 result:OK due:none]` https://github.com/humanlayer/advanced-context-engineering-for-coding-agents/blob/main/wsff.md — [delegated stamp] Horthy, *Why Software Factories Fail*, the line 16 callback. Freshest dated check is `lectures/when-a-plan-is-good.md`; `getting-going.md` also carries one. This module makes no numeric claim on it, only the pointer plus its thesis (the cure is human review made affordable by upfront planning), so delegation is the right shape rather than a fourth copy. fallback: drop the callback; the module stands without it.
 - `[checked:2026-07-02 result:OK due:none]` https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/ — [delegated stamp] Willison, assigned in the `module:earn-the-trust` `## Pre-reads before Module 3` block. Dated check owned by `supplementary/the-lethal-trifecta.md`, itself `due:none` as a durable named-framing piece. fallback: the supplementary carries the threat class in full.
-- `[checked:2026-07-30 result:OK due:2026-03-30]` https://simonwillison.net/2025/Sep/30/designing-agentic-loops/ — [practitioner direct] (Willison, 2025-09-30). Outside the 6-month window by decision: named framing piece, dated in body, same treatment as the Cherny video exception in `getting-going.md`. Not a §2a durable-account carve-out: that shape needs a specific completed event, and this piece describes a general technique. No compendium rule waives the clock here; this is a maintainer decision, same shape as the Cherny exception, which is likewise uncited. **This file owns the check and assigns the essay in the six-module arc only**, as the second `## Pre-reads before Module 3` entry (Antti, 2026-08-21: *"it was more about security than long-running"* — the essay's subject is what the agent may reach and what it must not touch, which is M3's access-surface question). Not assigned at M4 in any cut. fallback: drop the entry; the trifecta read carries the threat class on its own.
+- `[checked:2026-07-30 result:OK due:2026-03-30]` https://simonwillison.net/2025/Sep/30/designing-agentic-loops/ — [practitioner direct] (Willison, 2025-09-30). Outside the 6-month window by maintainer grant, and by grant alone: the Theory-construct variant does not absorb it (ruled 2026-09-01 — technique advice on a moving permission surface, an essay-title coinage that fails the acceptance test), no §2a durable-account shape, no other compendium rule waives the clock. Ceiling ruled the same day (Antti): at best an M3 optional pre-read, nothing more — no promotion in any cut. **This file owns the check and assigns the essay in the six-module arc only**, as the second `## Pre-reads before Module 3` entry (Antti, 2026-08-21: *"it was more about security than long-running"* — the essay's subject is what the agent may reach and what it must not touch, which is M3's access-surface question). Not assigned at M4 in any cut. fallback: drop the entry; the trifecta read carries the threat class on its own.
 - `[checked:2026-07-30 result:OK due:none]` https://www.lucasfcosta.com/blog/backpressure-is-all-you-need — [delegated stamp] da Costa, the `no-module:earn-the-trust` `## Pre-reads before Module 4` entry. Dated check owned by `earn-the-trust.md`, which assigns the essay in the six-module arc; `run-the-first-experiment.md` carries an unconditional echo of the same URL in its `## Prework`. `due:none` — a delegation does not expire, the delegate's stamp does. fallback: drop the entry; the M4 callback in `run-the-first-experiment.md` still assigns the piece.
 - `[checked:2026-08-02 result:OK due:cohort]` https://owasp.org/www-project-top-10-for-large-language-model-applications/ — [academic/research] The line 92 optional deeper scan, and the one source here no other file stamps. Page live and actively maintained at check. **Scope caveat that will matter at re-check:** the effort has become the OWASP GenAI Security Project and the current list lives at genai.owasp.org/llm-top-10/ (2025 edition), with the v1.1 categories the body echoes — prompt injection, insecure output handling, data leakage — now archived and partly renamed. The landing URL still resolves and still fronts the project. `due:cohort` because that migration is mid-flight. fallback: link the GenAI project root and describe it as the wider LLM-risk checklist without naming categories.
 

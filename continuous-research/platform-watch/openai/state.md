@@ -4,8 +4,8 @@ domain: platform
 evidence_level: 3
 platforms: [openai, chatgpt, codex, frontier]
 nordic: true
-updated: 2026-08-30
-cycle: 200
+updated: 2026-09-01
+cycle: 202
 answers:
   - "what can business users do with ChatGPT today?"
   - "is OpenAI's enterprise platform real or vapor?"
@@ -16,6 +16,12 @@ answers:
 
 Last updated: 2026-08-30 (cycle 200)
 OODA cycles: 48
+
+**Cycle 202 updates (September 1, 2026) — ASSISTANTS API T+6: FIRST MONDAY POST-SHUTDOWN; NAMED-COMPANY INCIDENT COUNT STILL ZERO; SILENT FAILURE PATTERN DOMINANT; T+7–T+14 WINDOW NOW PRIMARY WATCH:**
+
+**Assistants API T+6 — First Monday zero named-company incidents; silent failure pattern confirmed dominant (L2).** T+6 (September 1 — first Monday post-shutdown): zero named-company production failures publicly attributed to August 26 shutdown found in open web. OpenAI community forum behind auth; 2026 thread content not indexable. Zapier community threads show pre-existing generic ChatGPT step errors — nothing specifically attributing September 1 failures to August 26 cutoff. No Reddit/X/HN posts naming a production system broken by the shutdown in open search. The first-Monday hypothesis (service-desk queues triggering indexed reports) has not materialized in the indexed record. Structural explanation unchanged: dominant failure mode is silent (200 OK with degraded state — context loss, grounding drop, blank streams) rather than hard 4xx errors. Silent failures surface as behavioral degradation before they escalate to incident reports. **Watch T+7–T+14 (September 2–9):** delayed postmortem posts, named-company migration accounts, any OpenAI acknowledgment of post-shutdown production impact. ([community.openai.com sunset thread — auth-gated, 2026 content not indexed](https://community.openai.com/t/assistants-api-beta-deprecation-august-26-2026-sunset/1354666) — [practitioner direct, content unavailable]; [community.zapier.com troubleshooting threads Sep 2026](https://community.zapier.com/troubleshooting-99/troubleshooting-zap-errors-with-chatgpt-integration-51426) — [practitioner direct])
+
+**Watch Cycle 203 (T+7–T+14, September 2–9):** Named-company postmortem posts; migration learnings published; any OpenAI acknowledgment; Reddit/HN delayed incident threads.
 
 **Cycle 200 updates (August 30, 2026) — ASSISTANTS API T+4: NAMED-COMPANY INCIDENT COUNT STILL ZERO IN PUBLIC RECORD; SEPTEMBER 1 (T+6) IS HIGHEST-PROBABILITY SURFACE EVENT (FIRST MONDAY, ENTERPRISE SERVICE-DESK QUEUES); BUSINESS-DASHBOARD ALERT WINDOW NOW ACTIVE:**
 

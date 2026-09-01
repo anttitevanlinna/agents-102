@@ -1,13 +1,21 @@
 # Coding Agent Platforms — Platform State
 
-Last updated: 2026-08-31 (cycle 201)
-OODA cycles: 54
+Last updated: 2026-09-01 (cycle 202)
+OODA cycles: 55
 
 ## Focus
 
 Coding agents as the **meta-platform** for the agentic transformation. This is NOT a developer tools category — it's the factory that builds the factories. Coding agents build the MCP servers, the business agents, the evals, the integrations. Every other platform watch category depends on this one. Copilot Studio can't build another Copilot Studio agent. Agentforce can't extend Agentforce. Coding agents compound — each cycle makes the next cycle faster.
 
 ## Key Verdict (as of 2026-08-31)
+
+**CYCLE 202 UPDATE — POLARIS T+91+1DAY: SEPTEMBER 1 DEPRECATIONS CONFIRMED EXECUTED; POLARIS STILL NOT NAMED IN CHANGELOG OR AUTO-MODEL-SELECTION DOCS; "AUTO" ROUTING IS THE ANSWER (POLARIS IS NOT A NAMED PICKER OPTION, LIKELY FOREVER); ASSISTANTS API T+6 (FIRST MONDAY) ZERO NAMED INCIDENTS; SILENT FAILURE DOMINANT; T+7–T+14 IS FINAL WATCH WINDOW; CLAUDE CODE AUTO MODE DAY+4 POST-REHBERGER: NO ANTHROPIC SECURITY BLOG; WILLISON CLAUDE TAG SILENT SINCE AUG 27.**
+
+**Polaris — September 1 deprecations executed; Polaris never named in picker (Cycle 202 — T+92 post-Build-2026).** GitHub changelog through August 31 contains zero Polaris entries. September 1 deprecations confirmed executed (Claude Sonnet 4.5/4.6, Opus 4.5/4.6, Gemini 3.1 Pro, Raptor Mini retired per July 31 announcement). Auto-model-selection documentation (fetched September 1) says auto mode routes to "optimal model" matching each task to "the model that can solve it most efficiently" — Polaris not mentioned anywhere in the documentation. Named models cited are GPT-5.3-Codex, GPT-5.4, Claude Opus variants, Claude Sonnet variants. **Hypothesis confirmed:** Polaris is not exposed as a named user-selectable option — if it routes through "Auto," it is an infrastructure layer, not a branded model choice. The Build 2026 "August default" promise translates to "Polaris is what Auto picks when optimal" — not a forced named replacement for GPT-4 Turbo. **Tracking status change:** Polaris watch moves from "confirm named default" to "monitor practitioner behavioral reports of Copilot performance change post-September-1." ([github.blog/changelog/ fetched Sep 1 2026](https://github.blog/changelog/) — [vendor documentation]; [docs.github.com/en/copilot/concepts/auto-model-selection fetched Sep 1 2026](https://docs.github.com/en/copilot/concepts/auto-model-selection) — [vendor documentation])
+
+**Claude Code auto mode — Day+4 post-Rehberger: no Anthropic security blog; code patch only response (Cycle 202).** Anthropic research page (fetched September 1) shows one new publication August 28–September 1: "Automated researchers can reliably mitigate alignment failures" (alignment research, not prompt injection). Zero security blog posts addressing Rehberger's attack vector. Willison claude tag (fetched September 1): most recent post remains August 27 ("Breaking Claude Code Opus 5 Auto Mode") — nothing new. Code patch (claude-code-action v1.0.94 / @anthropic-ai/claude-code v1.0.93, confirmed cycle 201 via secondary source) remains sole confirmed Anthropic response to the Rehberger disclosure. **Watch Cycle 203:** Any Anthropic security advisory or architectural blog post about auto mode containment; does Willison publish a follow-up to his August 27 breaking post? ([anthropic.com/research fetched Sep 1 2026](https://www.anthropic.com/research) — [vendor documentation]; [simonwillison.net/tags/claude/ fetched Sep 1 2026](https://simonwillison.net/tags/claude/) — [practitioner direct])
+
+**Watch Cycle 203:** Polaris — do practitioners notice behavioral differences in Copilot post-September-1 deprecations? Any practitioner naming Copilot as "faster" or "different" after September 1; Assistants API T+7–T+14 — postmortem posts, named-company migration accounts; Claude Code auto mode — Anthropic security blog; Willison/Ronacher Opus 5 Day 40+ behavioral review.
 
 **CYCLE 201 UPDATE — POLARIS T+91 NO PRIMARY-SOURCE CONFIRMATION: NOT A NAMED PICKER OPTION; MODEL PICKER LISTS "AUTO" AS SELECTOR (LIKELY WHAT POLARIS ROUTES THROUGH); VISUAL STUDIO AUG UPDATE NAMES GPT-5 NOT POLARIS; ASSISTANTS API T+5 ZERO NAMED ENTERPRISE PRODUCTION FAILURES; DOMINANT FAILURE MODE IS SILENT (200 OK, DEGRADED STATE) NOT VISIBLE OUTAGE; AZURE NOT IMPACTED; CLAUDE CODE AUTO MODE ANTHROPIC RESPONSE LIMITED TO CODE PATCH (v1.0.93/94) — NO SECURITY BLOG OR ARCHITECTURAL POST FOUND POST-REHBERGER AS OF AUG 31; LOOP ENGINEERING 5TH DEPLOYER-DIRECT VOICE ABSENT; WILLISON/RONACHER OPUS 5 DAY 38 BEHAVIORAL SILENCE CONFIRMED.**
 

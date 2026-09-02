@@ -21,7 +21,7 @@ After this module, you will be able to:
 
 Open a fresh session in the Module 5 worktree, `../<repo-name>-m5`. Both sessions are readable: the branches share `.git`, and each session recorded its transcript path.
 
-You walk in holding two sessions of the same task. The un-packaged Module 4 send-off. The packaged Module 5 re-send. One session gave you a failure mode to name. Two sessions give you gaps the three-pattern didn't anticipate, and a shape for what to do about each one.
+You walk in holding two sessions of the same task. The un-packaged Module 4 send-off. The packaged Module 5 re-send.
 
 > **Packaged session thin or missing?** You can still rescue it. If the M5 session is alive but stalled, nudge it once; a *"continue"*-prompt is usually enough. If it crashed or never started, paste the packaged re-send against your worktree fresh; let it catch up while you read on. M6 starts by reading; before it writes, decide whether to wait, stop M5, or accept the partial session as the artefact. If the room starts the lecture while you are still getting a session going, stay with the rescue and read it afterwards.
 

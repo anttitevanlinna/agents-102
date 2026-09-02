@@ -8,7 +8,7 @@ const assert = require('node:assert')
 const fs = require('node:fs')
 const os = require('node:os')
 const path = require('node:path')
-const { readResults, adaptSweepRow, stateFor, makeSlugOf, flagName } = require('./stamp-from-reeval.js')
+const { readResults, adaptSweepRow, stateFor, makeSlugOf, flagName, groupByFile } = require('./stamp-from-reeval.js')
 
 let n = 0
 function test(name, fn) { fn(); n++; console.log(`ok ${n} - ${name}`) }
@@ -144,6 +144,42 @@ test('cross_module with no member list stamps nothing rather than guessing one',
     },
   }, () => null)
   assert.deepStrictEqual(rows[0].targets, [], 'a set whose members are unknown is not a set — fail closed, do not stamp the one file named')
+})
+
+// The bug this guards: judges write `file` absolute (760 of 803 instances do —
+// it is the corpus convention, not a slip), and the grouping key went straight
+// into `path.join(repo, file)`, which for an absolute second argument appends
+// rather than replaces: /repo/Users/…/repo/curriculum/… ENOENT. The whole run
+// died on row one, so a returning fleet of 28 clean verdicts stamped nothing.
+// Normalise at the grouping step — one dialect downstream, for git and fs alike.
+test('groupByFile keys on the repo-relative path whichever dialect the judge wrote', () => {
+  const repo = '/Users/x/Projects/agents-102'
+  const rel = 'curriculum/exercises/a.md'
+  const { byFile, noTarget } = groupByFile([
+    { file: `${repo}/${rel}`, cls: 'writing', verdict: 'PASS' },
+    { file: rel, cls: 'slides', verdict: 'PASS' },
+  ], repo)
+  assert.deepStrictEqual([...byFile.keys()], [rel], 'both dialects name one file, so they group as one')
+  assert.strictEqual(byFile.get(rel).length, 2)
+  assert.deepStrictEqual(noTarget, [])
+
+  // A set row's members get the same treatment, and every member is a key.
+  const { byFile: sets } = groupByFile([{
+    file: `${repo}/curriculum/m1.md`, cls: 'cross_module', verdict: 'PASS',
+    targets: [`${repo}/curriculum/m1.md`, 'curriculum/m2.md'],
+  }], repo)
+  assert.deepStrictEqual([...sets.keys()], ['curriculum/m1.md', 'curriculum/m2.md'])
+
+  // Outside the repo it stays verbatim: git fails loudly on a stray path, which
+  // beats silently rewriting it into a file that happens to exist here.
+  const { byFile: away } = groupByFile([{ file: '/etc/passwd', cls: 'writing', verdict: 'PASS' }], repo)
+  assert.deepStrictEqual([...away.keys()], ['/etc/passwd'])
+
+  const { byFile: none, noTarget: skipped } = groupByFile(
+    [{ file: `${repo}/${rel}`, cls: 'cross_module', verdict: 'PASS', targets: [] }], repo)
+  assert.strictEqual(none.size, 0)
+  assert.deepStrictEqual(skipped, [{ cls: 'cross_module', file: `${repo}/${rel}` }],
+    'a set with no members is reported, not guessed at')
 })
 
 test('makeSlugOf resolves the slug from the instance the judge just wrote', () => {

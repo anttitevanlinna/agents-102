@@ -153,6 +153,33 @@ function stateFor(r, meta = null) {
   return `REVISE:${nb}/${r.todos}${pointer(r)}`
 }
 
+// Judges write `file` absolute — 760 of 803 instances do, and the instance
+// checker converts on read rather than fighting it. Everything downstream here
+// (git pathspecs, fs reads, update-quality.sh) wants one dialect, so convert
+// once, at the door. A path outside the repo passes through untouched: git
+// refusing it loudly beats rewriting it into some other file that exists.
+const toRel = (repo, p) => {
+  if (!path.isAbsolute(p)) return p
+  const r = path.relative(repo, p)
+  return r && !r.startsWith('..') ? r : p
+}
+
+function groupByFile(results, repo) {
+  const byFile = new Map()
+  const noTarget = []
+  for (const r of results) {
+    // Older fleet rows carry no `targets`; they are single-file by construction.
+    const targets = r.targets || [r.file]
+    if (!targets.length) { noTarget.push({ cls: r.cls, file: r.file }); continue }
+    for (const t of targets) {
+      const key = toRel(repo, t)
+      if (!byFile.has(key)) byFile.set(key, [])
+      byFile.get(key).push(r)
+    }
+  }
+  return { byFile, noTarget }
+}
+
 function main() {
   const argv = process.argv.slice(2)
   const outPath = argv[0]
@@ -171,18 +198,9 @@ function main() {
     process.exit(1)
   }
 
-  const byFile = new Map()
-  for (const r of results) {
-    // Older fleet rows carry no `targets`; they are single-file by construction.
-    const targets = r.targets || [r.file]
-    if (!targets.length) {
-      process.stderr.write(`NO-TARGET ${r.cls} on ${r.file} — a set row with no member list stamps nothing\n`)
-      continue
-    }
-    for (const t of targets) {
-      if (!byFile.has(t)) byFile.set(t, [])
-      byFile.get(t).push(r)
-    }
+  const { byFile, noTarget } = groupByFile(results, repo)
+  for (const n of noTarget) {
+    process.stderr.write(`NO-TARGET ${n.cls} on ${n.file} — a set row with no member list stamps nothing\n`)
   }
   const setMeta = r => {
     if (r.cls !== 'cross_module' || !r.instanceSlug) return null
@@ -227,4 +245,4 @@ function main() {
 
 if (require.main === module) main()
 
-module.exports = { readResults, adaptSweepRow, stateFor, makeSlugOf, flagName }
+module.exports = { readResults, adaptSweepRow, stateFor, makeSlugOf, flagName, groupByFile }

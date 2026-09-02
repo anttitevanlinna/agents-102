@@ -246,7 +246,7 @@ function collect(repo, want) {
     const current = contentView(repo, rel, cls)
     const { verdict, note } = classify(repo, rel, trace, current)
     const row = { name, cls, file: rel, training, generated_at: (trace.generated_at || '').slice(0, 10) || null, verdict, note }
-    if (cls === 'persona') row.mood = { contract: trace.module_mood_contract || null, beats: moodBeats(trace) }
+    if (cls === 'persona') row.mood = { contract: trace.module_mood_contract || null, beats: moodBeats(trace), exempt: moodExemptions(trace) }
     rows.push(row)
   }
   return rows
@@ -254,18 +254,53 @@ function collect(repo, want) {
 
 // Persona traces only: a behavior trace reasons about Claude's response
 // distribution and scores no mood.
-function moodBeats(trace) {
-  if (Array.isArray(trace.personas)) return trace.personas.flatMap(moodBeats)
+// `personas` ships in two shapes and the difference is not cosmetic: an array
+// of persona objects, and a map keyed by persona name. Reading only the array
+// meant the map fell through to `trace.phases`, found none, and returned no
+// beats at all — scores present in the file, absent from every tally that
+// decides whether the corpus ships. Fan out on either, and carry the map's key
+// into the label so three readers of one file stay tellable apart.
+function fanOut(trace, fn) {
+  if (Array.isArray(trace.personas)) return trace.personas.flatMap(p => fn(p, ''))
+  if (trace.personas && typeof trace.personas === 'object') {
+    return Object.entries(trace.personas).flatMap(([name, p]) => fn(p, name))
+  }
+  return null
+}
+const at = (label, tail) => (label ? `${label} · ${tail}` : tail)
+
+function moodBeats(trace, label = '') {
+  const fanned = fanOut(trace, moodBeats)
+  if (fanned) return fanned
   const beats = []
   for (const p of trace.phases || []) {
     if (typeof p.mood_score === 'number') {
-      beats.push({ at: `phase ${p.phase_index}: ${p.phase_name || ''}`.trim(), score: p.mood_score, note: p.mood_note || '' })
+      beats.push({ at: at(label, `phase ${p.phase_index}: ${p.phase_name || ''}`.trim()), score: p.mood_score, note: p.mood_note || '' })
     }
   }
   if (trace.close && typeof trace.close.mood_score === 'number') {
-    beats.push({ at: 'close', score: trace.close.mood_score, note: trace.close.mood_note || '' })
+    beats.push({ at: at(label, 'close'), score: trace.close.mood_score, note: trace.close.mood_note || '' })
   }
   return beats
+}
+
+// The other half of a null score. A persona run that reaches a SETUP beat has
+// nothing to score — the mood contract binds teaching, not scaffolding — and it
+// says so in `mood_note` instead of inventing a number. That is a result, and
+// reporting it as an unrun instrument sends the maintainer to re-run a run that
+// already happened and already reasoned. The discriminator is whether anything
+// was written beside the null: a note is an abstention, bare silence is a hole.
+function moodExemptions(trace, label = '') {
+  const fanned = fanOut(trace, moodExemptions)
+  if (fanned) return fanned
+  const out = []
+  for (const p of trace.phases || []) {
+    if (typeof p.mood_score === 'number') continue
+    if (p.mood_note) out.push({ at: at(label, `phase ${p.phase_index}: ${p.phase_name || ''}`.trim()), note: p.mood_note })
+  }
+  const c = trace.close
+  if (c && typeof c.mood_score !== 'number' && c.mood_note) out.push({ at: at(label, 'close'), note: c.mood_note })
+  return out
 }
 
 // Freshness verdicts, worst first, so a low beat that cannot be trusted is read
@@ -290,16 +325,24 @@ function renderMood(rows, want, bar) {
 
   const hist = {}
   for (const b of all) hist[b.score] = (hist[b.score] || 0) + 1
-  const silent = scored.filter(r => !r.mood.beats.length)
+  const unscored = scored.filter(r => !r.mood.beats.length)
+  const exempt = unscored.filter(r => (r.mood.exempt || []).length)
+  const silent = unscored.filter(r => !(r.mood.exempt || []).length)
   out.push(`${scored.length} persona traces · ${all.length} scored beats · ${low.length} below the ${bar}/10 bar`)
   out.push(`  distribution: ${Object.keys(hist).sort((a, b) => a - b).map(k => `${k}→${hist[k]}`).join('  ')}`)
+  if (exempt.length) {
+    // A run that reached only SETUP beats scored nothing on purpose and wrote
+    // down why. Listed so the tally still adds up, never as work owed.
+    out.push(`  ${exempt.length} persona trace(s) scored nothing because every beat is mood-exempt — the instrument ran and abstained:`)
+    for (const r of exempt) out.push(`      ${r.name.replace('.persona.json', '')} — ${r.mood.exempt[0].note.replace(/\s+/g, ' ').slice(0, 120)}`)
+  }
   if (silent.length) {
-    // A trace that scored nothing is not a pass. It is an unrun instrument, and
-    // it reads as clean in every tally that only looks at the numbers present.
-    // Whether that is a hole depends on the surface: simulation.md §When makes
-    // the persona run required for an exercise, optional for a lecture or
-    // prework. So this is a list to triage, not a list of failures.
-    out.push(`  ${silent.length} persona trace(s) carry NO mood score — the instrument did not run.`)
+    // A trace that scored nothing AND said nothing is not a pass. It is an
+    // unrun instrument, and it reads as clean in every tally that only looks at
+    // the numbers present. Whether that is a hole depends on the surface:
+    // simulation.md §When makes the persona run required for an exercise,
+    // optional for a lecture or prework. A list to triage, not one of failures.
+    out.push(`  ${silent.length} persona trace(s) carry NO mood score and no exemption — the instrument did not run.`)
     out.push('    Required for exercises, optional for lectures/prework (simulation.md §When):')
     for (const r of silent) out.push(`      ${r.name.replace('.persona.json', '')}`)
   }
@@ -354,6 +397,6 @@ function main(argv) {
   if (argv.includes('--gate') && rows.some(r => r.verdict === 'body-moved' || r.verdict === 'unanchored')) process.exit(1)
 }
 
-module.exports = { collect, classify, slugIndex, resolveSlug, historyShas, moodBeats, contentView }
+module.exports = { collect, classify, slugIndex, resolveSlug, historyShas, moodBeats, moodExemptions, contentView }
 
 if (require.main === module) main(process.argv.slice(2))

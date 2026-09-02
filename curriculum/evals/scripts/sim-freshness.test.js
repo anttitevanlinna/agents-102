@@ -308,6 +308,79 @@ test('moodBeats reads the current persona-array trace shape', () => {
   assert.deepStrictEqual(beats.map(b => b.at), ['phase 1: Start', 'close'])
 })
 
+// The bug this guards, and it is the expensive one: `personas` ships in TWO
+// shapes — an array of persona objects, and a map keyed by persona name — and
+// the reader only knew the array. `Array.isArray` was false for the map, so it
+// fell through to `trace.phases`, found none, and returned zero beats. Two
+// AE101 traces carried twelve real scores that appeared in no distribution, no
+// below-bar list, and no --gate decision: the gate could not fail on a number
+// it never read. A reader that silently returns [] for a shape it does not know
+// reports a clean board and an unrun instrument from the same silence.
+test('moodBeats reads the persona-MAP shape and keeps whose beat it is', () => {
+  const { moodBeats } = require('./sim-freshness.js')
+  const beats = moodBeats({
+    personas: {
+      'mid-layer-competent': {
+        phases: [{ phase_index: 1, phase_name: 'Whole module', mood_score: 8, mood_note: 'lands' }],
+        close: { mood_score: 9, mood_note: 'ready' },
+      },
+      'fast-operator': {
+        phases: [{ phase_index: 1, phase_name: 'Whole module', mood_score: 6, mood_note: 'impatient' }],
+      },
+    },
+  })
+  assert.deepStrictEqual(beats.map(b => b.score), [8, 9, 6])
+  assert.deepStrictEqual(beats.map(b => b.at), [
+    'mid-layer-competent · phase 1: Whole module',
+    'mid-layer-competent · close',
+    'fast-operator · phase 1: Whole module',
+  ], 'three personas reading one file produce three beats that must be tellable apart')
+})
+
+test('moodExemptions reads the persona-MAP shape too', () => {
+  const { moodExemptions } = require('./sim-freshness.js')
+  const exempt = moodExemptions({
+    personas: { 'fast-operator': { phases: [{ phase_index: 1, phase_name: 'Setup', mood_note: 'mood-floor exempt' }] } },
+  })
+  assert.deepStrictEqual(exempt.map(e => e.at), ['fast-operator · phase 1: Setup'])
+})
+
+// The bug this guards: the mood report counted any trace with no NUMERIC beat
+// as "the instrument did not run", and printed it under a heading saying the
+// persona run is required for exercises. Three AE101 traces sat on that list
+// while their single beat carried an explicit written exemption — a SETUP beat
+// the mood floor does not reach (check_strategy_tie_in §1). The instrument had
+// run and abstained for a stated reason. A reasoned null is a result; only a
+// null with nothing beside it is a hole, and telling them apart is the whole
+// value of the row.
+test('moodExemptions: a beat that abstains WITH a reason is exempt, not unrun', () => {
+  const { moodExemptions } = require('./sim-freshness.js')
+  const exempt = moodExemptions({
+    phases: [{ phase_index: 1, phase_name: 'Setup', mood_score: null, mood_note: 'Mood-exempt SETUP beat per check_strategy_tie_in §1' }],
+  })
+  assert.deepStrictEqual(exempt.map(e => e.at), ['phase 1: Setup'])
+  assert.match(exempt[0].note, /check_strategy_tie_in/)
+
+  assert.deepStrictEqual(
+    moodExemptions({ phases: [{ phase_index: 1, phase_name: 'Setup' }] }), [],
+    'silence with no reason beside it is not an exemption — that is the real hole')
+  assert.deepStrictEqual(moodExemptions({ phases: [] }), [], 'no phases is no exemption either')
+  assert.deepStrictEqual(
+    moodExemptions({ phases: [{ phase_index: 1, phase_name: 'One', mood_score: 8, mood_note: 'fine' }] }), [],
+    'a scored beat is scored, never also exempt')
+})
+
+test('moodExemptions reads the persona-array shape too', () => {
+  const { moodExemptions } = require('./sim-freshness.js')
+  const exempt = moodExemptions({
+    personas: [{
+      persona: 'IC engineer',
+      phases: [{ phase_index: 1, phase_name: 'Fork', mood_note: 'Setup beat — mood-floor exempt' }],
+    }],
+  })
+  assert.deepStrictEqual(exempt.map(e => e.at), ['phase 1: Fork'])
+})
+
 test('behavior freshness reads the expanded prompt-registry view', () => {
   const { contentView } = require('./sim-freshness.js')
   const repo = path.resolve(__dirname, '../../..')

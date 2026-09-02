@@ -97,11 +97,18 @@ const plural = n => `${n} todo${n === 1 ? '' : 's'}`
 // null = do not stamp this class.
 function stateFor(r) {
   if (r.verdict === 'AGENT-LOST') return null
-  if (r.verdict === 'PASS') return 'PASS'
   // A non-blocking todo is not a gate. Before the rung existed a judge holding
   // one had to report REVISE, and the orchestrator read that as red — which is
   // how a clean file with a note on it stopped a ship.
-  if (r.verdict === 'PASS_WITH_TODOS') return r.todos ? `PASS:${plural(r.todos)}${pointer(r)}` : 'PASS'
+  //
+  // PASS and PASS_WITH_TODOS share this branch on purpose. Judges use both while
+  // filing todos, and the verdict word is theirs to choose — but a row reading a
+  // bare `PASS` over an instance holding four notes points nobody at them, and a
+  // note nobody can find is a note nobody wrote. The verdict is not rewritten;
+  // only the pointer is added.
+  if (r.verdict === 'PASS' || r.verdict === 'PASS_WITH_TODOS') {
+    return r.todos ? `PASS:${plural(r.todos)}${pointer(r)}` : 'PASS'
+  }
   const v = r.verify
   if (v && v.verdict === 'REFUTED') {
     return r.todos ? `PASS:verify-refuted, ${plural(r.todos)}${pointer(r)}` : 'PASS:verify-refuted'

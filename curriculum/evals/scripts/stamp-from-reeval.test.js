@@ -80,6 +80,20 @@ test('stateFor: PASS_WITH_TODOS pins as a PASS that still carries its count', ()
     'PASS:1 todo see instances/x.slides.json', 'one todo is not "1 todos"')
 })
 
+// The bug this guards: judges file todos under BOTH pass verdicts, and a bare
+// `PASS` dropped every one of them off the row. In one M1-M5 sweep that hid four
+// notes across three classes behind rows reading clean, with no pointer to the
+// instance holding them. The verdict word stays the judge's; the pointer is the
+// difference between a filed note and a lost one.
+test('stateFor: a plain PASS still carries the todos filed under it', () => {
+  assert.strictEqual(
+    stateFor({ cls: 'technical', verdict: 'PASS', todos: 2, blocking: 0, instanceSlug: 'ae101--module--x' }),
+    'PASS:2 todos see instances/ae101--module--x.technical.json')
+  assert.strictEqual(
+    stateFor({ cls: 'technical', verdict: 'PASS', todos: 0, blocking: 0, instanceSlug: 'ae101--module--x' }), 'PASS',
+    'a clean PASS stays a bare PASS — no note invented to look thorough')
+})
+
 test('stateFor: a refuted finding passes, and does not swallow the todos beside it', () => {
   assert.strictEqual(
     stateFor({ cls: 'slides', verdict: 'REVISE', todos: 0, blocking: 0, instanceSlug: 'x', verify: { verdict: 'REFUTED', confirmed: 0 } }),

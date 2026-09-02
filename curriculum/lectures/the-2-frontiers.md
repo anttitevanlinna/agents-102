@@ -1,4 +1,4 @@
-# The 2 frontiers of learning
+# The two frontiers
 
 ## Two frontiers
 

@@ -1,7 +1,5 @@
 # There is no last turn
 
-*Agents that build agents.* The flywheel: the loop feeding itself, each session leaving the next one sharper.
-
 ## The agent stops where your judgement begins
 <!--tier:2-->
 

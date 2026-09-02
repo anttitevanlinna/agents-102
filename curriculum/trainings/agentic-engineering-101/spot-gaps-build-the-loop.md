@@ -25,7 +25,7 @@ You walk in holding two sessions of the same task. The un-packaged Module 4 send
 
 > **Just can't get the M5 session working?** You lose a bit of value but you can still do this module's exercises. Despair not.
 
-[The 2 frontiers of learning](lectures/the-2-frontiers.md)
+[The two frontiers](lectures/the-2-frontiers.md)
 
 [Map the gaps, cut the rule](exercises/spot-gaps-build-the-loop.md)
 

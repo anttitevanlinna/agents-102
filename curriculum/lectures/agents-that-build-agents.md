@@ -19,20 +19,6 @@ The loop feeds itself. That is the flywheel, and it starts with what you encoded
 
 These have been on the map the whole time: the small print along the bottom, there since M2.
 
-## Ralph
-<!--tier:3-->
-
-```bash
-while :; do cat PROMPT.md | claude-code; done
-```
-
-- Geoffrey Huntley saw a lever. An agent runs, drifts, needs nudging. The fix already existed in shell: one line, no scaffolding.
-- He called it Ralph, after the Simpsons. Hacky, simple, powerful. The name stuck, and Ralph re-feed is one of the three verifier shapes on your menu, for when a multi-hour task wants a stop-and-check.
-- Months later, Claude Code shipped `/goal`. The runtime version of the same move: a condition, a check each turn. The shell hack is now a slash command.
-- Practitioners see levers first.
-
-That's the M6 leap. The next Ralph is yours.
-
 ## There is no last turn
 
 - There is no last turn. Each session surfaces the next gap. Each gap proposes the next move. Each move makes the next session cheaper.
@@ -57,9 +43,9 @@ The training closes. The flywheel does not.
 
 **Lecture meta:** *Closer-shaped, the module's last teaching beat. Voice: Risto-leading, Boris-grounding, Martin-spare. Pedagogical bet: the flywheel survives the model; naming it as collaboration, not autonomy, is what keeps it survivable.*
 
-**Time:** 6 minutes.
+**Time:** 4 minutes.
 
-**Soil slide — *You make agentic happen* (2026-08-15, Antti-directed; buried-gold item, relocated from `the-map-filled-in.md`):** full slide between the handoff prompt and *Ralph*, the soil line's one spoken home. Antti's calls, all three: title verbatim; bullets first, provenance line after as a small aside; strip wording *act under uncertainty · competence sets the ceiling · cross personal → team* (*gate* is banned student-side, *a move counts* is scorekeeper register; design-side names + student-form pointer in `theory-plan.md` §0). Register: Godin-leading inside the Risto closer; bullet bodies are Antti's kernels, lightly shaped (2026-08-15) — *possibly* → *I have something* as the acting phase-change · reps and pathways (*think different* keeps its broken grammar, the same game the title plays) · *Share and learn together.* as the open-handed landing. Guards: (a) one bold handle per order = the law-slide pattern; (b) the slide never names Ralph — the next slide is the unspoken worked example (Huntley acted under uncertainty; the check is Ralph's stopping condition; he gave it away and the name stuck), trainer says the connection, body does not; (c) title is the engineer-side voice of *Accumulated, not enabled* (`theory-plan.md` §3) — you, not the product, make agentic happen; the system-side twin sits on `the-map-filled-in.md`'s control-loop slide; (d) the strip rides all four map figures visually — this slide is its only spoken home, do not add siblings.
+**Soil slide — *You make agentic happen* (2026-08-15, Antti-directed; buried-gold item, relocated from `the-map-filled-in.md`):** full slide between the handoff prompt and *Ralph*, the soil line's one spoken home. Antti's calls, all three: title verbatim; bullets first, provenance line after as a small aside; strip wording *act under uncertainty · competence sets the ceiling · cross personal → team* (*gate* is banned student-side, *a move counts* is scorekeeper register; design-side names + student-form pointer in `theory-plan.md` §0). Register: Godin-leading inside the Risto closer; bullet bodies are Antti's kernels, lightly shaped (2026-08-15) — *possibly* → *I have something* as the acting phase-change · reps and pathways (*think different* keeps its broken grammar, the same game the title plays) · *Share and learn together.* as the open-handed landing. Guards: (a) one bold handle per order = the law-slide pattern; (b) the slide names no worked example (Ralph, its former neighbour, was cut 2026-09-02); (c) title is the engineer-side voice of *Accumulated, not enabled* (`theory-plan.md` §3) — you, not the product, make agentic happen; the system-side twin sits on `the-map-filled-in.md`'s control-loop slide; (d) the strip rides all four map figures visually — this slide is its only spoken home, do not add siblings.
 
 **Kicker pairing:** the survives-the-model kicker *"The loop feeds itself…"* and the closing *"The training closes. The flywheel does not."* now sit in one file; keep them in step.
 
@@ -68,6 +54,8 @@ The training closes. The flywheel does not.
 **Mood target:** practitioner fluency continued, with a forward-tilt. The mood arc names *unleashed leverage* for the meta-frame end of Module 6; this lecture lands the leverage as a runnable move, not a slogan. Watch for: drift toward autonomous-agent fantasy ("the agent writes its own next skill") — the *what this is not* slide is the load-bearing carve-out. If the mood reads triumphal or vendor-pitch-shaped, the carve-out got cut.
 
 **Cross-file stamp pointer:** the survives-the-model slide's triad claim leans on the source stamps in `curriculum/lectures/what-packaging-is.md` § Source verification. Those stamps were re-verified 2026-08-01 and **the convergence framing this slide inherited does not survive them.** Counted strictly — all three pieces present together as artefacts in one practice — the independents number **one** (Huntley's Ralph), against an L3 bar of 10–20. Ronacher is 2-of-3 in practice and 0-of-3 in vocabulary; Klaassen's plan artefact is a pre-work spec, not a document mutated across a run, so it is a different piece wearing the same word. The triad is our synthesis of scattered practice, which is candid work to do and misleading to call convergence. The slide reads *"The three pieces (reference, plan, verifier) are not model features"* — a convergence assertion does no work in a sentence whose argument is that the pieces are a stance rather than a model feature. M5's `what-packaging-is` introduces the triad as our combination, so this file must not assert convergence downstream of it. **Do not restore the phrase.**
+
+**`## Ralph` cut whole (Antti 2026-09-02).** Huntley's loop, the coinage, `/goal`, *practitioners see levers first*, and the *next Ralph is yours* kicker: in git at `7d13d15e`. The Ralph re-feed shape stays taught where M5's verifier menu names it. Do not restore here.
 
 <!-- backing -->
 
@@ -81,35 +69,22 @@ Claims
 - `pathways-show-the-next-level` · vision · "The pathways you build show you the next level." ← none-owed
 - `share-and-learn-together` · vision · "Share and learn together." ← none-owed
 - `soil-on-the-map-the-whole-time` · vision · "These have been on the map the whole time: the small print along the bottom, there since M2." ← none-owed
-- `huntley-saw-a-lever` · detail · "Geoffrey Huntley saw a lever." ← huntley-ralph
-- `ralph-one-line-shell-loop` · detail · "The fix already existed in shell: one line, no scaffolding." ← huntley-ralph
-- `named-after-the-simpsons` · detail · "He called it Ralph, after the Simpsons." ← huntley-ralph
-- `ralph-name-stuck` · detail · "The name stuck" ← ralph-usage-beyond-huntley
-- `ralph-refeed-is-on-your-menu` · vision · "Ralph re-feed is one of the three verifier shapes on your menu" ← none-owed
-- `goal-shipped-later` · detail · "Months later, Claude Code shipped `/goal`. The runtime version of the same move: a condition, a check each turn." ← cc-goal-capability
-- `practitioners-see-levers-first` · vision · "Practitioners see levers first." ← none-owed
 - `there-is-no-last-turn` · vision · "There is no last turn. Each session surfaces the next gap." ← none-owed
 - `kit-compounds-model-rotates` · vision · "The kit compounds; the model rotates." ← none-owed
 
 Sources
-- huntley-ralph `[checked:2026-05-25 result:OK due:none]` https://ghuntley.com/ralph/ — [practitioner direct] Huntley 2025-07-14: the bash loop and the Simpsons origin, both verbatim. **Durable account, `due:none`** (`source-freshness-format.md` § Durable-account variant) — an origin story published once does not expire, and the body already flags it as origin rather than current practice. The previous `due:2026-11-25` treated a historical origin claim as a currency claim; per `check_research_claims.md §2b` the date belongs on claims about the field's present, not on what a person wrote in 2025. fallback: none needed — origin/historical is exactly what the body claims.
-- ralph-usage-beyond-huntley `[checked:2026-04-21 result:OK due:2026-10-21]` kb:continuous-research/platform-watch/coding-agents/runs/2026-04-21-practitioner-long-running.md — [KB staging; primaries recorded there] three uses of the name beyond the coiner: Anthropic's official `ralph-wiggum` plugin (github.com/anthropics/claude-code, `plugins/ralph-wiggum/README.md`) [practitioner direct], paddo.dev/blog/ralph-wiggum-autonomous-loops/ [practitioner direct], and Cherny's "(c) Ralph re-feeds the prompt" via kim-on-cherny [practitioner analysis]. Backs persistence ("the name stuck"), not a census — three recorded users, nobody counted the field. fallback: cut "The name stuck," keep the coinage and the menu ownership.
-- cc-goal-capability `[checked:2026-08-01 result:OK due:cohort]` https://code.claude.com/docs/en/ — [capability] `/goal [condition|clear]`, reproduced in a scratch sweep against Claude Code 2.1.142, maintainer-accepted 2026-08-01. A URL-carrying capability check records `OK` — `ATTESTED` is the no-URL `attested:` variant for first-hand observation, and a reproduced behaviour is what `OK` means on a capability stamp. fallback: drop the command name and keep the shape (the runtime caught up with the shell hack), which is the sentence's actual argument.
 
 Frameworks
-- Ralph loop · [borrow:none] · law:none · ← huntley-ralph — practitioner-coined, credited in body by name
 - The compound ladder · [borrow:none] · law:the-compound-ladder · ← none — fix → memory → skill → system is the flywheel this lecture runs one turn further
 
 Stance `[stance:2026-08-01 level:L1]`
-- holds: that the Ralph loop is Huntley's and that it was a shell one-liner before it was a product feature. Both are first-hand and settled. The lecture's larger argument — that the flywheel stops where the agent's evidence stops — is our framing, and the body carries it as a position rather than a finding.
-- contested: how far "Ralph re-feed" travels as a name. "The name stuck" is detail-layer, carried by three recorded uses beyond the coiner (ralph-usage-beyond-huntley); how far the name travels beyond those stays in OODA because it is worth knowing, not because a sentence is waiting on it.
-- decided: **Ralph's name stuck; the field did not adopt a taxonomy, 2026-08-01.** The bullet claimed Ralph re-feed *"entered the practitioner vocabulary as one of the named verifier shapes"* — field-wide adoption nobody counted, plus a settled taxonomy that is actually Kim's synthesis of Cherny's habits. Now: the name stuck, which is persistence rather than a census, and it is one of three shapes on the menu **this training** gave them at M5. Huntley's coinage is verified and unaffected. Do not restore the adoption verb.
-- decided: **`/goal` is stamped `ATTESTED due:cohort`, 2026-08-01.** It had been an unstamped platform claim living only in a maintainer to-do. The maintainer accepted the existing scratch-sweep verification without a re-test. The point of the migration was never the re-test; it was that the debt had been invisible to every tool that audits this corpus.
-- would-move-it: evidence that the re-feed shape is called something else in general use, or that nobody outside this curriculum calls it anything. Either turns a recognition beat into a coinage, which is fine to do and not fine to do silently.
+- holds: that the flywheel stops where the agent's evidence stops, and that the kit outlives the model. Our framing, carried as a position; the lecture now makes no claim about the field.
+- contested: nothing external.
+- would-move-it: nothing about the field.
 
 OODA
-- question: does the name travel further than the three recorded uses (Anthropic plugin, paddo.dev, Cherny via Kim), and is `/goal` still the runtime primitive it is described as?
-- roster: Geoffrey Huntley, Simon Willison, Armin Ronacher, the Claude Code changelog and docs, Amp Chronicle
+- question: none standing.
+- roster: none.
 - last-run: 2026-08-01
 
 <!-- /backing -->

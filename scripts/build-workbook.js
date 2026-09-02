@@ -177,7 +177,6 @@ const THEORY_HANDBOOK_MANIFEST = {
       'exercises/read-your-stack',
       'lectures/the-handoff-prompt',
       'lectures/story-of-module-6',
-      'lectures/quality-is-grounding',
       'lectures/agents-that-build-agents',
       'supplementary/clean-code-is-steering',
       'supplementary/skill-stacking',

@@ -493,7 +493,6 @@ test('theory handbook build', async (t) => {
       'id="lectures-composing-the-workflow"',
       'id="exercise-summary-read-your-stack"',
       'id="lectures-the-handoff-prompt"',
-      'id="lectures-quality-is-grounding"',
     ];
 
     let cursor = -1;

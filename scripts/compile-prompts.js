@@ -61,6 +61,12 @@ const KNOWN_CAPABILITIES = new Set(
     (key) => A101Runtimes.PROFILES[key].capabilities
   )
 );
+const VALIDATION_TARGETS = Object.freeze([
+  Object.freeze({ training: 'agentic-engineering-101', profile: '' }),
+  ...A101Runtimes.PROFILE_ORDER.map((profile) =>
+    Object.freeze({ training: 'agents-101', profile })
+  ),
+]);
 
 function loadSourceRegistry(promptsDir) {
   const dir = promptsDir || PROMPTS_DIR;
@@ -274,12 +280,16 @@ if (require.main === module) {
   const { TRAININGS } = require('../site/layouts/curriculum.js');
   let failed = false;
   for (const { key, blocking } of graphTrainings(TRAININGS)) {
+    const profiles = key === 'agents-101' ? A101Runtimes.PROFILE_ORDER : [''];
     try {
-      execFileSync(
-        process.execPath,
-        [path.join(__dirname, 'validate-prompt-graph.js'), '--training', key],
-        { stdio: 'inherit' }
-      );
+      for (const profile of profiles) {
+        const args = [
+          path.join(__dirname, 'validate-prompt-graph.js'),
+          '--training', key,
+        ];
+        if (profile) args.push('--runtime', profile);
+        execFileSync(process.execPath, args, { stdio: 'inherit' });
+      }
     } catch (e) {
       if (blocking) failed = true;
       else console.error(`(${key} is a draft: reported, not blocking)`);
@@ -316,4 +326,5 @@ module.exports = {
   graphTrainings,
   PROMPTS_DIR,
   OUT_FILE,
+  VALIDATION_TARGETS,
 };

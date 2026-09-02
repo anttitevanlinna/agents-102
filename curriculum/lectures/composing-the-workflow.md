@@ -43,7 +43,11 @@
 
 ## Dino's skill stack
 
+{{figure:dino-skill-stack}}
+
 ## Pocock's skill system
+
+{{figure:pocock-skill-system}}
 
 ## The checking loop, drawn solid
 <!--tier:2-->
@@ -51,6 +55,8 @@
 {{figure:map-engine-filled}}
 
 <!-- maintainer -->
+
+**Two example figures (2026-09-02, Antti: "just pic, no bullets").** `figures/dino-skill-stack.md` redraws the supplementary's `skill-stacking/01-meta-model.svg` (mermaid) in the house palette: five lifecycle columns, the three routed gates in rust, `/ship` as the one orchestrator with its sequenced chain, OPS looping back to BUILD. Source of truth for the skill list is `supplementary/skill-stacking.md`; regenerate the figure when that catalog changes. `figures/pocock-skill-system.md` is drawn from `mattpocock/skills` @ `6654f6b` (2026-08-24), reading `skills/engineering/ask-matt/SKILL.md` for the flow: one main flow (grill-with-docs → to-spec → to-tickets → implement, which drives tdd and code-review inside it), a prototype detour bridged by handoff, on-ramps (improve-codebase-architecture, wayfinder, triage, diagnosing-bugs), two vocabulary skills underneath, ask-matt as router. Skill count deliberately not stated. `ask-matt` routes; nothing in the repo runs the flow, so the *pocock-by-hand* claim on the T3 slide still holds. Both figures render at 1200×560 with all labels ≥ 9px; checked by headless-Chrome screenshot.
 
 **Lean pass (2026-08-25):** cut "Same passage, same drift, same fixes and guardrails." from slide-1 bullet 3 — the figure shows it. Do not restore.
 
@@ -122,6 +128,7 @@ Claims
 Sources
 - cc-scheduling-primitives `[checked:2026-04-24 result:OK due:cohort]` https://code.claude.com/docs/en/ — [capability] The body names three scheduling primitives and distinguishes local Routines from `/schedule`'s cloud-backed remote Routines. The check ran 2026-04-24 against the current documentation and is recorded here: `/schedule` is Routines, remote and cloud-backed; Desktop local tasks are a separate primitive. **A capability stamp records its own check.** Pointing at a paragraph in another file makes the stamp only as durable as that file's next edit, which is how this one nearly lost its evidence. fallback: teach the pattern (a kit skill is what the scheduled agent invokes) and name only the primitives a re-test confirms.
 - skill-stacking-supp `[checked:2026-07-05 result:OK due:none]` kb:none — [delegated stamp] `curriculum/trainings/agentic-engineering-101/supplementary/skill-stacking.md` carries the primary stamps for the four composition mechanisms and the `/ship`-as-pilot worked example (Dino's in-repo stack). A worked example of a shipped kit does not expire. **`/ship` is Dino's own skill, NOT a Claude Code built-in** — the chart keeps the orchestrator generic ("the pilot") and the named example stays in the supplementary, which is the whole reason this body carries no product name. fallback: re-verify in that doc if its own stamps age out.
+- pocock-skills-repo `[checked:2026-09-02 result:OK due:cohort]` https://github.com/mattpocock/skills — [practitioner direct, primary repo] @ `6654f6b` (2026-08-24). Backs the Pocock figure's flow and skill names; `ask-matt/SKILL.md` is the page that describes the main flow and on-ramps. Re-check before each cohort: the kit churns monthly. fallback: redraw from the README's Reference section.
 - lineages-supp `[checked:2026-08-01 result:CAVEAT due:none]` kb:none — [delegated stamp] `curriculum/trainings/agentic-engineering-101/supplementary/workflow-composition-lineages.md` carries the field-survey lineages and their per-source stamps. **`due:none` is the delegated variant** (`backing-format.md` § Delegated): the delegation does not expire, the delegate's own stamps do, and `source-freshness.sh` already walks that file. `checked:` still means what it says here: the date this pointer was last confirmed to aim at the right file. fallback: this lecture asserts no dated specific of its own; if the supplementary's lineages change, only the "live argument" claim here is affected, and that claim gets *stronger* when the field moves.
 
 Frameworks

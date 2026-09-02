@@ -44,10 +44,19 @@ function adaptSweepRow(s, slugOf = () => null) {
   const refuted = (s.refuted || []).length
   const unadjudicated = (s.unadjudicated || []).length
   const blocking = confirmed + unadjudicated
+  // A set verdict speaks for every member. Stamping only the file the summary
+  // happened to name leaves the rest still owing a row they already earned —
+  // and a set whose members did not survive the summary is not a set, so it
+  // stamps nothing rather than silently claiming the one file it can see.
+  const isSet = s.class === 'cross_module'
+  const targets = isSet ? (s.module_set || []) : [s.file]
   return {
     file: s.file,
+    targets,
     cls: s.class,
-    instanceSlug: s.instanceSlug || slugOf(s.file, s.class),
+    setName: s.set_name || null,
+    moduleSet: s.module_set || null,
+    instanceSlug: s.instanceSlug || slugOf(s.file, s.class, s.module_set),
     verdict: s.verdict,
     blocking,
     todos: (s.todos || []).length,
@@ -75,16 +84,23 @@ function readResults(out, slugOf) {
 // verdicts that need it.
 const sameFile = (a, b) => a === b || (!!a && !!b && (a.endsWith(`/${b}`) || b.endsWith(`/${a}`)))
 
+// A set instance names no single `file` — it names a `module_set`, and one
+// member can belong to two sets (earn-the-trust sits in both prework-m3 and
+// m3-m4). Matching on "contains this file" would pick whichever sorted first,
+// so a set is identified by its whole membership or not at all.
+const sameSet = (a, b) => Array.isArray(a) && Array.isArray(b) && a.length === b.length
+  && a.every((x, i) => sameFile(x, b[i]))
+
 function makeSlugOf(repo) {
-  return (file, cls) => {
+  return (file, cls, moduleSet) => {
     let entries
     try { entries = fs.readdirSync(path.join(repo, INSTANCES)) } catch { return null }
     for (const e of entries) {
       if (!e.endsWith(`.${cls}.json`)) continue
       try {
-        if (sameFile(JSON.parse(fs.readFileSync(path.join(repo, INSTANCES, e), 'utf8')).file, file)) {
-          return e.slice(0, -`.${cls}.json`.length)
-        }
+        const j = JSON.parse(fs.readFileSync(path.join(repo, INSTANCES, e), 'utf8'))
+        const hit = cls === 'cross_module' ? sameSet(j.module_set, moduleSet) : sameFile(j.file, file)
+        if (hit) return e.slice(0, -`.${cls}.json`.length)
       } catch { /* an unreadable instance is not this file's slug */ }
     }
     return null
@@ -94,9 +110,29 @@ function makeSlugOf(repo) {
 const pointer = r => (r.instanceSlug ? ` see instances/${r.instanceSlug}.${r.cls}.json` : '')
 const plural = n => `${n} todo${n === 1 ? '' : 's'}`
 
+// The class is snake, update-quality.sh's flag is kebab. One character, and the
+// whole run dies on an unrecognised argument.
+const flagName = cls => `--${String(cls).replace(/_/g, '-')}`
+
 // null = do not stamp this class.
-function stateFor(r) {
+// `meta` supplies the two numbers a cross_module row carries that no other class
+// has — pairs walked and blocking count — read from the instance, which is the
+// record. They are not invented when the instance cannot supply them.
+function stateFor(r, meta = null) {
   if (r.verdict === 'AGENT-LOST') return null
+  // The queue matches a set row to its set on the `set=[…]` substring. Without
+  // it the row is invisible: the set reads as never-stamped and re-fires next
+  // sweep, which is a PASS paid for twice and trusted neither time.
+  if (r.cls === 'cross_module') {
+    const names = (r.moduleSet || []).map(m => path.basename(m, '.md')).join(',')
+    const counts = meta ? `; ${meta.pairs} pair${meta.pairs === 1 ? '' : 's'}, ${meta.blocking} blocking` : ''
+    const word = r.blocking ? 'REVISE' : 'PASS'
+    // Semicolon before the pointer, matching the rows already on the corpus —
+    // a set row is read beside its siblings, and one row punctuated differently
+    // is one row a reader stops on.
+    const ptr = pointer(r) ? `;${pointer(r)}` : ''
+    return `${word}:set=[${names}]${counts}${ptr}`
+  }
   // A non-blocking todo is not a gate. Before the rung existed a judge holding
   // one had to report REVISE, and the orchestrator read that as red — which is
   // how a clean file with a note on it stopped a ship.
@@ -137,8 +173,29 @@ function main() {
 
   const byFile = new Map()
   for (const r of results) {
-    if (!byFile.has(r.file)) byFile.set(r.file, [])
-    byFile.get(r.file).push(r)
+    // Older fleet rows carry no `targets`; they are single-file by construction.
+    const targets = r.targets || [r.file]
+    if (!targets.length) {
+      process.stderr.write(`NO-TARGET ${r.cls} on ${r.file} — a set row with no member list stamps nothing\n`)
+      continue
+    }
+    for (const t of targets) {
+      if (!byFile.has(t)) byFile.set(t, [])
+      byFile.get(t).push(r)
+    }
+  }
+  const setMeta = r => {
+    if (r.cls !== 'cross_module' || !r.instanceSlug) return null
+    try {
+      const j = JSON.parse(fs.readFileSync(path.join(repo, INSTANCES, `${r.instanceSlug}.cross_module.json`), 'utf8'))
+      // `module_pairs_evaluated` is the LIST of adjacent pairs walked, one entry
+      // per seam, not a count — reading it as a number silently dropped the
+      // "N pairs, M blocking" half of every set row.
+      const p = j.module_pairs_evaluated
+      const pairs = Array.isArray(p) ? p.length : (typeof p === 'number' ? p : null)
+      if (pairs === null) return null
+      return { pairs, blocking: j.blocking_findings_count || 0 }
+    } catch { return null }
   }
 
   const gitDiff = f => execFileSync('git', ['diff', base, '--', f], { cwd: repo, encoding: 'utf8', maxBuffer: 33554432 })
@@ -155,9 +212,9 @@ function main() {
     for (const r of pairs) {
       if (r.verdict === 'AGENT-LOST') { skippedLost++; continue }
       if (drift.has(r.cls)) { skipped.push(r.cls); skippedDrift++; continue }
-      const state = stateFor(r)
+      const state = stateFor(r, setMeta(r))
       if (state === null) { skippedLost++; continue }
-      flags.push(`--${r.cls}`, state)
+      flags.push(flagName(r.cls), state)
       stamped++
     }
     if (skipped.length) process.stderr.write(`DRIFT-SKIP ${file}: ${skipped.join(' ')}\n`)
@@ -170,4 +227,4 @@ function main() {
 
 if (require.main === module) main()
 
-module.exports = { readResults, adaptSweepRow, stateFor, makeSlugOf }
+module.exports = { readResults, adaptSweepRow, stateFor, makeSlugOf, flagName }

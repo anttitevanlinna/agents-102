@@ -481,7 +481,11 @@ const [fromQueue, fromConfirm, fromSets] = await parallel([
   () => pipeline(
     SETS,
     s => agent(setPrompt(s), { label: `cross_module:${s.name}`, phase: 'Judge', schema: VERDICT_SCHEMA, model: MODELS.judge }),
-    (v, s) => (v ? verify(v, 'Verify').then(r => tag(r, s)) : v),
+    // The set's identity is dispatch input the judge never has to restate, and
+    // dropping it from the summary made the verdict unstampable: the row belongs
+    // on EVERY member, under a `set=[…]` note the queue matches on, and neither
+    // the member list nor the set name survived anywhere in the returned shape.
+    (v, s) => (v ? verify(v, 'Verify').then(r => tag(Object.assign(r, { set_name: s.name, module_set: s.members }), s)) : v),
   ),
 ])
 
@@ -498,6 +502,7 @@ return {
   missing: UNITS.filter(u => !done.some(v => v._key === u._key)).map(u => u._key),
   summary: done.map(v => ({
     file: v.file, class: v.class, verdict: v.verdict, body_sha: v.body_sha,
+    set_name: v.set_name || null, module_set: v.module_set || null,
     ungrounded_count: v.ungrounded_count,
     rows: { judged: v.rows_written_by_you, spliced: v.rows_spliced_by_merge },
     diff_summary: v.diff_summary,

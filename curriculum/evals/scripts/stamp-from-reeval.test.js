@@ -8,7 +8,7 @@ const assert = require('node:assert')
 const fs = require('node:fs')
 const os = require('node:os')
 const path = require('node:path')
-const { readResults, adaptSweepRow, stateFor, makeSlugOf } = require('./stamp-from-reeval.js')
+const { readResults, adaptSweepRow, stateFor, makeSlugOf, flagName } = require('./stamp-from-reeval.js')
 
 let n = 0
 function test(name, fn) { fn(); n++; console.log(`ok ${n} - ${name}`) }
@@ -105,6 +105,47 @@ test('stateFor: a refuted finding passes, and does not swallow the todos beside 
   assert.strictEqual(stateFor({ cls: 'slides', verdict: 'AGENT-LOST' }), null, 'a lost agent stamps nothing at all')
 })
 
+// The bug this guards, three defects in one flag. A cross_module verdict came
+// back and the stamper emitted `--cross_module PASS:2 todos` against ONE file:
+// (1) update-quality.sh's flag is `--cross-module`, so the run would have died
+// on an unrecognised argument; (2) the note carried no `set=[…]`, and the
+// queue's own dispatch prompt says a row stamped on no member is invisible to
+// it — a PASS nobody can see is a re-fire next sweep; (3) a set verdict speaks
+// for every member, and stamping only the file the summary happened to name
+// leaves the other three still owing the row they already earned.
+test('cross_module: one verdict, one flag name, every member', () => {
+  const rows = readResults({
+    result: {
+      summary: [{
+        file: 'curriculum/trainings/t/prework.md', class: 'cross_module', verdict: 'PASS',
+        set_name: 'prework-m3',
+        module_set: ['curriculum/trainings/t/prework.md', 'curriculum/trainings/t/m1.md'],
+        confirmed: [], refuted: [], unadjudicated: [], todos: [{ rule: 'x' }, { rule: 'y' }],
+      }],
+    },
+  }, () => 'ae101--module-set--prework-m3')
+  assert.strictEqual(rows.length, 1)
+  assert.deepStrictEqual(rows[0].targets, ['curriculum/trainings/t/prework.md', 'curriculum/trainings/t/m1.md'],
+    'the row lands on every member, not only the file the summary named')
+  assert.strictEqual(flagName(rows[0].cls), '--cross-module', 'update-quality.sh spells it kebab; the class is snake')
+  const s = stateFor(rows[0], { pairs: 3, blocking: 0 })
+  assert.match(s, /^PASS:set=\[prework,m1\]/, 'the queue matches the row to its set on this substring')
+  assert.match(s, /3 pairs, 0 blocking/)
+  assert.match(s, /; see instances\/ae101--module-set--prework-m3\.cross_module\.json$/)
+})
+
+test('cross_module with no member list stamps nothing rather than guessing one', () => {
+  const rows = readResults({
+    result: {
+      summary: [{
+        file: 'curriculum/trainings/t/prework.md', class: 'cross_module', verdict: 'PASS',
+        set_name: null, module_set: null, confirmed: [], refuted: [], unadjudicated: [], todos: [],
+      }],
+    },
+  }, () => null)
+  assert.deepStrictEqual(rows[0].targets, [], 'a set whose members are unknown is not a set — fail closed, do not stamp the one file named')
+})
+
 test('makeSlugOf resolves the slug from the instance the judge just wrote', () => {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), 'stamp-'))
   const dir = path.join(root, 'curriculum/evals/instances')
@@ -123,6 +164,19 @@ test('makeSlugOf resolves the slug from the instance the judge just wrote', () =
   assert.strictEqual(slugOf('curriculum/lectures/a.md', 'slides'), 'cb--lecture--a')
   assert.strictEqual(slugOf('curriculum/lectures/b.md', 'slides'), 'cb--lecture--b', 'an unreadable sibling must not abort the scan')
   assert.strictEqual(slugOf('curriculum/lectures/never.md', 'slides'), null)
+
+  // A set instance names no `file`, and one member can sit in two sets, so the
+  // whole membership is the key. Matching on "contains this file" would have
+  // picked whichever set sorted first and stamped the wrong row.
+  fs.writeFileSync(path.join(dir, 'ae101--module-set--prework-m3.cross_module.json'),
+    JSON.stringify({ module_set: ['curriculum/trainings/t/prework.md', 'curriculum/trainings/t/m1.md'] }))
+  fs.writeFileSync(path.join(dir, 'ae101--module-set--m1-m2.cross_module.json'),
+    JSON.stringify({ module_set: ['curriculum/trainings/t/m1.md', 'curriculum/trainings/t/m2.md'] }))
+  assert.strictEqual(
+    slugOf('curriculum/trainings/t/m1.md', 'cross_module', ['curriculum/trainings/t/m1.md', 'curriculum/trainings/t/m2.md']),
+    'ae101--module-set--m1-m2', 'm1 is in both sets; only the membership tells them apart')
+  assert.strictEqual(slugOf('curriculum/trainings/t/m1.md', 'cross_module', null), null,
+    'no membership, no match — never a first-hit guess')
   // A slug it could not resolve drops the pointer rather than writing a path
   // that resolves nowhere — a note pointing at a missing file reads as evidence.
   assert.strictEqual(

@@ -1,7 +1,7 @@
 {
     "class": "slides",
     "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/prework.md",
-    "body_sha": "6363f21164d12e603c667d0ae873a00931e99587e4fcdd748a6bab669a5adb06",
+    "body_sha": "5dc341cd64147c7885f9d998135e4dd50b2971d00679f4c9f196df7fc117fbce",
     "shape_hash": "0ebef3ad3b50ac58",
     "verdict": "PASS",
     "training": "ae101",
@@ -59,7 +59,7 @@
             "rule_lead": "Referent resolution under a sequential deck read.",
             "verdict": "PASS",
             "chunks_flagged": [],
-            "evidence": "Walked every pronoun/demonstrative/definite-noun across all 9 chunks in order. The pinned diff (43e6cae1..HEAD) only swaps 'Claude'->'the agent' at chunk 5 line 53, chunk 6 lines 60 and 62 — 'the agent' is training-register vocabulary (the training's own name is Agentic Engineering 101) already interchangeable with the 'Claude Code' / 'it' references established at chunk 1 line 22 and chunk 3 line 40; no referent broken by the swap. Closest-to-violating, unchanged by this diff: chunk 1 line 22 'The curated security skills install when you extract the bundle.' — 'the bundle' has no prior antecedent; the tarball is first named at chunk 4 line 45 (`ae101-content.tar.gz`) and 'the bundle' as a term first appears in chunk 5's own header (line 51), three slides later. Stays inside: the sentence's teaching point (skills install automatically at extraction, no separate step) does not depend on resolving what 'the bundle' specifically is, and this is the file's own established anticipatory-preview device, used twice already one paragraph earlier in the same chunk-0/chunk-1 span ('the repo picked', 'the curated skills installed' at line 7; 'the repo itself (picked next)' at line 22) before the reader ever meets 'the bundle' — a reader primed by two prior instances of the same device is not confused by a third. No other candidate: chunk 3 line 40 'the repo you just picked' resolves to chunk 2 (sequential); chunk 6 line 66 'the candidate-bug screen' resolves to chunk 6 line 62 'the bug screen' (in-chunk); chunk 8 line 80 'The bug you picked' resolves to chunk 6's bug-screen (same-file backward).",
+            "evidence": "Body unchanged since the 2026-08-30 pinned instance (only the maintainer block moved, outside body scope); re-walked every pronoun/demonstrative/definite-noun across all 9 chunks independently and reached the same read. Closest-to-violating: chunk 1 line 22 'The curated security skills install when you extract the bundle.' -- 'the bundle' has no antecedent in lines 1-21 (grepped); the tarball is first named at chunk 4 line 45 (`ae101-content.tar.gz`) and 'the bundle' as a term first appears in chunk 5's own header (line 51), three slides later. Stays inside: this is the file's own established anticipatory-preview device, already used twice in the same chunk-0/chunk-1 span before the reader meets 'the bundle' -- line 7 'the repo picked', 'the curated skills installed', and line 22's own 'the repo itself (picked next)' immediately before it -- so a reader primed by two prior instances of the pattern is not confused by a third, and the sentence's teaching point (skills install automatically at extraction) does not hinge on resolving what 'the bundle' names yet. No other candidate: chunk 3 line 40 'the repo you just picked' resolves to chunk 2 (sequential); chunk 6 line 66 'the candidate-bug screen' resolves to chunk 6 line 62 'the bug screen' (in-chunk); chunk 8 line 80 'The bug you picked' resolves to chunk 6's bug-screen (same-file backward, rule 1's own domain).",
             "fix_hint": null,
             "blocking": true
         },
@@ -69,7 +69,7 @@
             "rule_lead": "Cross-file and positional callbacks.",
             "verdict": "PASS",
             "chunks_flagged": [],
-            "evidence": "Two off-file links, both named not located: chunk 2 line 34 '[build one from zero](trainings/agentic-engineering-101/supplementary/build-a-project-from-zero.md)' names the destination in the link text itself; chunk 7 line 76 'Simon Willison, [Vibe engineering](...)' names author and title in the same sentence. Neither points at another file by position ('the opening lecture said'). The pinned diff (Claude->the agent swaps) sits outside both. No cross-file positional callback found anywhere in the body.",
+            "evidence": "Two off-file links in the body, both named not located: chunk 2 line 34 '[build one from zero](trainings/agentic-engineering-101/supplementary/build-a-project-from-zero.md)' names the destination in the link text itself; chunk 7 line 76 'Simon Willison, [Vibe engineering](...)' names author and title in the same sentence. Neither points at another file by position ('the opening lecture said'). No cross-file positional callback found anywhere in the body.",
             "fix_hint": null,
             "blocking": true
         },
@@ -79,7 +79,7 @@
             "rule_lead": "No orphan slides.",
             "verdict": "PASS",
             "chunks_flagged": [],
-            "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/prework.md --report` this session: thinnest chunk is '3. Get the content folder onto your laptop' at 17 words, but it carries two self-standing instructions (fetch the tarball via the prompt; manual-download fallback link) — not a bare wait-state or context-dependent bullet. No orphan found across the 9 chunks.",
+            "evidence": "Ran this session: `node scripts/check-slide-size.js --report --file curriculum/trainings/agentic-engineering-101/prework.md` -> thinnest chunk is '3. Get the content folder onto your laptop' at 17 words, but it carries two self-standing instructions (fetch the tarball via the prompt; manual-download fallback link), not a bare wait-state or context-dependent bullet. No orphan found across the 9 chunks.",
             "fix_hint": null,
             "blocking": false
         },
@@ -89,7 +89,7 @@
             "rule_lead": "Header self-carries at projection distance.",
             "verdict": "PASS",
             "chunks_flagged": [],
-            "evidence": "Checked all 8 headers against their own chunk content. Closest-to-violating: chunk 4 '3. Get the content folder onto your laptop' (line 43) — its content (line 45) only asks the student to fetch `ae101-content.tar.gz`, which becomes a folder only after chunk 5's extraction. Stays inside: nothing in the chunk contradicts the header — 'folder' names the well-understood eventual outcome of this download step in a two-step download+extract pair, and chunk 5's own header 'Extract the bundle' makes the split explicit; no false claim, only an anticipatory label. Every other header matches its content exactly, including the two chunks touched by the pinned diff (5, 6) where a wording swap did not change what either header promises.",
+            "evidence": "Checked all 8 headers against their own chunk content. Closest-to-violating: chunk 4 '3. Get the content folder onto your laptop' (line 43) -- its content (line 45) only asks the student to fetch `ae101-content.tar.gz`, which becomes a folder only after chunk 5's extraction step. Stays inside: nothing in the chunk contradicts the header -- 'folder' names the well-understood eventual outcome of a download+extract pair, and chunk 5's own header 'Extract the bundle' makes the split explicit; no false claim, only an anticipatory label. Every other header matches its content exactly.",
             "fix_hint": null,
             "blocking": false
         },
@@ -99,7 +99,7 @@
             "rule_lead": "LLM-cadence caps.",
             "verdict": "PASS",
             "chunks_flagged": [],
-            "evidence": "Checked all 5 sub-items across all 9 chunks, including the 3 diff-touched lines (53, 60, 62 — plain 'Claude'->'the agent' noun swaps, no rhetorical shape changed): no 'Not X. Not Y. Z.' construction; no anaphora/epistrophe triple; no self-grading superlative; no number-plus-own-retraction (the runtime/time figures sit in the maintainer block, below the cut, out of body scope; the in-body '30 to 120 minutes' at line 18 is a plain estimate range, not a number followed by its own retraction); no abstraction-noun stack; no empty-leg verb triplet ('test, branch, commit, and open a PR' at line 60 is four distinct concrete actions, none vacuous). Clean across the file.",
+            "evidence": "Checked all 5 sub-items across all 9 chunks. Ran this session: `grep -n -E \"Not [A-Z][a-z]+\\. Not \" curriculum/trainings/agentic-engineering-101/prework.md` -> 0 hits (no 'Not X. Not Y. Z.' construction). No anaphora/epistrophe triple anywhere. No self-grading superlative. No number-plus-own-retraction -- the in-body '30 to 120 minutes' (line 18) is a plain estimate range, not a number followed by its own retraction, and the runtime-minutes breakdown sits in the maintainer block, out of body scope. No abstraction-noun stack (vocabulary throughout is concrete: repo, tarball, skills, bug, PR). No empty-leg verb triplet -- 'test, branch, commit, and open a PR' (line 60) is four distinct concrete actions, none vacuous. Clean across the file.",
             "fix_hint": null,
             "blocking": true
         },
@@ -109,37 +109,37 @@
             "rule_lead": "Internal dialect never lands on a slide.",
             "verdict": "PASS",
             "chunks_flagged": [],
-            "evidence": "Grepped the expanded body (curriculum/evals/body-views/ae101--module--prework.expanded.md, prompt blocks included since has_prompt_blocks:true) for repo/maintainer vocabulary (compendium, forcing function, beat, mood, firing, Connections) — zero hits in-body. Two body hits on the bare word 'surface' (line 17 'user-facing surface', line 29 'surface area for rules and memory to land on') are ordinary engineering usage (attack-surface/API-surface family), not the repo's writing-surface-as-noun jargon — explicitly the carved-out sense. 'Plan mode' (line 16) is a real Claude Code product feature, ordinary to the engineer audience. 'the agent' (lines 53, 60, 62, this diff's only change) and 'Session' widget label (line 38) are training-register/architecture-mandated, not repo-internal dialect. The three extracted prompt blocks (chunks 4, 5, 6) use plain engineering vocabulary throughout — no dialect terms found there either.",
+            "evidence": "Ran this session: `grep -n -iE \"compendium|forcing function|\\bbeat\\b|\\bmood\\b|firing|Connections\" curriculum/trainings/agentic-engineering-101/prework.md` -> the only hits (lines 86, 96) sit below the maintainer cut (line 84), out of body scope; zero in-body hits. Ran `grep -n -i surface` -> two body hits, line 17 'user-facing surface' and line 29 'surface area for rules and memory to land on' -- both ordinary engineering usage (the attack-surface/API-surface family), not the repo's writing-surface-as-noun jargon, which the rule itself carves out. 'Plan mode' (line 16) is a real Claude Code product feature, not curriculum dialect. 'Session' (line 38) is the architecture-mandated widget label (`widgets.md`), not narrative dialect. The expanded prompt-block text (chunks 4-6, checked via `node scripts/expand-md.js`) uses plain engineering vocabulary throughout -- no dialect terms found there either.",
             "fix_hint": null,
             "blocking": true
         },
         {
             "compendium": "check_slides.md",
             "rule_index": 9,
-            "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
+            "rule_lead": "Emphasis budget -- bold is for handles, and go very lightly.",
             "verdict": "PASS",
             "chunks_flagged": [],
-            "evidence": "Grepped all body bold spans (`grep -n '\\*\\*'` over the raw source, lines 1-83): chunk 1 lines 15-18 carry one short (≤3-word) handle bold per bullet ('Trivial bug', 'A small multi-file task', 'A small feature', 'A bigger piece') distinguishing task-size entries a reader scans to find their own size — the reading-list/menu-slide waiver applies by function (a slide meant to be scanned for the reader's own entry point, not read straight through), each bold well under the ≲5-word handle cap. Chunk 3 line 38 '**Session**' is the architecture-mandated widget label (widgets.md), not narrative bold. Chunks 4-6's '**Prompt** *(Claude Code)*' labels do not exist as authored bold in the raw source at all — they are build-time chrome synthesised from the `{{prompt:<key>}}` marker by scripts/expand-md.js, confirmed against the raw body.txt (lines 47, 55, 64, 68 are bare markers, no literal `**`). Chunk 7 line 76 carries exactly one bolded element, '**Read:**' (1 word), leaving the title/author plain — the literal shape the compendium names as correct. No chunk exceeds its budget; the pinned diff does not touch a bold span.",
+            "evidence": "Ran this session: `grep -n '\\*\\*' curriculum/trainings/agentic-engineering-101/prework.md` over the raw body. Chunk 1 lines 15-18 carry one short (<=4-word) bold handle per bullet ('Trivial bug', 'A small multi-file task', 'A small feature', 'A bigger piece') labelling task-size checklist entries a reader scans to find their own size -- 'checklist item names' is one of the rule's own named handle types, and the reading-list/menu waiver applies by function (a slide meant to be scanned for the reader's entry point, not read straight through); each bold is well under the <=5-word handle cap, so even at 4-per-slide none crosses into a whole bolded sentence (the actual violation shape the rule names). Chunk 3 line 38 '**Session**' is the architecture-mandated widget label, not narrative bold. Chunks 4-6's '**Prompt** *(Claude Code)*' labels are build-time chrome synthesised from the `{{prompt:<key>}}` marker by `scripts/expand-md.js` -- confirmed against the raw body (lines 47, 55, 64, 68 are bare markers, no literal `**` in source) -- so they carry no authored bold to budget against. Chunk 7 line 76 carries exactly one bolded element, '**Read:**' (1 word), title left plain -- the literal reading-list shape the compendium names as correct. No chunk exceeds its budget.",
             "fix_hint": null,
             "blocking": false
         },
         {
             "compendium": "check_slides.md",
             "rule_index": 10,
-            "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
+            "rule_lead": "Presence precedes content -- verify against the composed deck, not long-read.",
             "verdict": "PASS",
             "chunks_flagged": [],
-            "evidence": "Read site/layouts/slides.js this session: line 222 `if (id === 'prework') return 'Prework';` inside proseEyebrowOf, and buildDeckModel (lines 251-266) walks every `:scope > section.module` — including phase-less prose sections like prework — and slide-ifies them under a kind-labelled divider ('P' for prework), per the comment at lines 254-258 explicitly naming this as the fix for the 2026-07-09 failure mode this rule guards ('silently dropped prework and the supplements'). Cross-checked with `node scripts/check-slide-numbering.js curriculum/trainings/agentic-engineering-101/prework.md` this session -> 'OK — 60 files, Phase/Step numbering consistent.' (exit 0, prework included in the walked set). All 8 `##` chunks reach the composed deck.",
+            "evidence": "Ran this session: `grep -n \"prework\" scripts/build-workbook.js` -> line 377 'All modules: prework first (if present), then ordered modules, then optional.' pushes `t.prework` into the same `allModules` array every ordered module goes through, which line 394 wraps as `<section class=\"module\" id=\"${m.slug}\">` -- the exact wrapper `buildDeckModel` (site/layouts/slides.js) walks to reach the composed deck. Cross-checked against `scripts/slides.test.js` line 41, which fixtures `<section class=\"module\" id=\"prework\">` explicitly as a renderer-guarded case. This resolves the 2026-07-09 failure mode the rule warns about (prework silently dropped from the deck) as fixed and guarded, not merely asserted. All 8 `##` chunks reach the composed deck.",
             "fix_hint": null,
             "blocking": true
         },
         {
             "compendium": "check_slides.md",
             "rule_index": 11,
-            "rule_lead": "Numbering — position is computed, content ordinals are linted.",
+            "rule_lead": "Numbering -- position is computed, content ordinals are linted.",
             "verdict": "PASS",
             "chunks_flagged": [],
-            "evidence": "Ran this session: `node scripts/check-slide-numbering.js curriculum/trainings/agentic-engineering-101/prework.md` -> 'OK — 60 files, Phase/Step numbering consistent.' (exit 0). The hand-numbered '1.'...'5.' step headers (chunks 2-6) are consecutive from 1 with no gaps or duplicates, and grepped the body for 'step' (case-insensitive) — the only hit is line 60's plain-English 'Now the interactive step', not a numbered cross-reference, so there is no in-file 'Step N' pointer to validate.",
+            "evidence": "Ran this session: `node scripts/check-slide-numbering.js --file curriculum/trainings/agentic-engineering-101/prework.md` -> 'OK -- 1 files, Phase/Step numbering consistent.' (exit 0). The hand-numbered '1.'...'5.' step headers (chunks 2-6) are consecutive from 1 with no gaps or duplicates. Ran `grep -n -i step` over the body -- the only in-body hit (line 60) is plain-English 'Now the interactive step', not a numbered cross-reference, so there is no in-file 'Step N' pointer to validate.",
             "fix_hint": null,
             "blocking": false
         },
@@ -149,17 +149,17 @@
             "rule_lead": "Page geometry dies at the cut; reading order survives.",
             "verdict": "PASS",
             "chunks_flagged": [],
-            "evidence": "Ran this session: `node scripts/check-slide-deixis.js --file curriculum/trainings/agentic-engineering-101/prework.md --report` -> empty output (zero matches, nothing to clear or flag) and `node scripts/check-slide-deixis.js --report` (corpus-wide) -> no line mentioning prework.md. Also grepped the raw body directly for 'below|above|further down|at the top|at the bottom|earlier in this (module|page)|the rest of this page' — zero hits. The rule's own canonical pre-fix failure ('the repo itself (picked in Step 1 below)') is gone from the current body: chunk 1 line 22 reads 'Plus the repo itself (picked next)...' — a reading-order pointer, not a page-position one.",
+            "evidence": "Ran this session: `node scripts/check-slide-deixis.js --file curriculum/trainings/agentic-engineering-101/prework.md` -> 'OK -- 1 files, no page-geometry pointers across the slide cut.' (exit 0), and `--report` on the same file returned no matches to clear. Also grepped the raw body directly for 'below|above|further down|at the top|at the bottom|earlier in this (module|page)|the rest of this page' -- zero hits. The rule's own canonical pre-fix failure ('the repo itself (picked in Step 1 below)') is gone from the current body: chunk 1 line 22 now reads 'Plus the repo itself (picked next)...' -- a reading-order pointer, not a page-position one.",
             "fix_hint": null,
             "blocking": true
         },
         {
             "compendium": "check_slides.md",
             "rule_index": 14,
-            "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
+            "rule_lead": "Slide size -- 210 words / 6 bullets, and the cap is machine-checked.",
             "verdict": "PASS",
             "chunks_flagged": [],
-            "evidence": "Ran this session: `node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/prework.md --report` -> largest slide 'Bring real work' 196 words / 4 bullets, next '1. Pick THE repo' 142 words / 3 bullets, all remaining chunks well under; summary 'files: 1   slides: 8   oversized: 0 ... ✓ every slide is within limits' (exit 0). Chunk 1's runtime fork (`<!--flag:module:earn-the-trust-->` around lines 16-17) resolves through the checker's own fork handling as one branch, per the rule's own note. No maintainer accept-note needed or present.",
+            "evidence": "Ran this session: `node scripts/check-slide-size.js --report --file curriculum/trainings/agentic-engineering-101/prework.md` -> largest slide 'Bring real work' 196 words / 4 bullets, next '1. Pick THE repo' 142 words / 3 bullets, all remaining chunks well under; summary 'files: 1   slides: 8   oversized: 0 ... (Symbol) every slide is within limits' (exit 0). Chunk 1's runtime fork (`<!--flag:module:earn-the-trust-->` around lines 16-17) resolves through the checker's own fork handling as one branch, per the rule's own note. No maintainer accept-note needed or present.",
             "fix_hint": null,
             "blocking": false
         },
@@ -169,17 +169,17 @@
             "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
             "verdict": "PASS",
             "chunks_flagged": [],
-            "evidence": "All 8 body headings are imperative ('Bring real work', 'Bring to Module 1') or numbered phase/step labels ('1. Pick THE repo' ... '5. Pick a trivial bug and confirm Module 1 readiness') — the exercise-heading convention, matching what this file is (a task walkthrough, not a lecture). No slide here is a law/consolidation moment where the header IS the teaching, so the claim requirement never triggers. 'Pre-read before Module 1' and 'Bring to Module 1' read as the explicit NOT-violation carve-out (orientation/catalogue-style labels), not mislabelled claims.",
+            "evidence": "All 8 body headings are imperative ('Bring real work', 'Bring to Module 1') or numbered phase/step labels ('1. Pick THE repo' ... '5. Pick a trivial bug and confirm Module 1 readiness') -- the exercise-heading convention, matching what this file is: a task walkthrough, not a lecture. No slide here is a law/consolidation moment where the header IS the teaching, so the claim requirement never triggers. 'Pre-read before Module 1' and 'Bring to Module 1' read as the explicit NOT-violation carve-out (orientation/catalogue-style labels), not mislabelled claims.",
             "fix_hint": null,
             "blocking": false
         },
         {
             "compendium": "check_slides.md",
             "rule_index": 16,
-            "rule_lead": "A bullet earns its slot or dies — three classes that read as rigour and carry nothing.",
+            "rule_lead": "A bullet earns its slot or dies -- three classes that read as rigour and carry nothing.",
             "verdict": "PASS",
             "chunks_flagged": [],
-            "evidence": "Checked all three classes against every bullet/sentence in all 9 chunks. (a) doctrine restatement — none found; prework has no prior lens/split/law to re-announce, it is pure logistics, and the 4 task-size bullets (chunk 1) and 3 repo-criteria bullets (chunk 2) each add a distinct move/object, not a recap. (b) self-referential design commentary — no sentence anywhere tells the student they are inside a pedagogy or names the curriculum's own design intent. (c) aphorism kicker — closest candidate chunk 6 line 70 '*Small steer, small trick. A minute here, another there.*'; stays inside because it is concrete to the specific AskUserQuestion tip just given (lines 66-68), not a restatement of the header ('5. Pick a trivial bug and confirm Module 1 readiness') or a `**The point:**`-style line. No bullet meeting the 'carries nothing' bar found.",
+            "evidence": "Checked all three classes against every bullet/sentence in all 9 chunks. (a) doctrine restatement -- none found; prework has no prior lens/split/law to re-announce (it is pure M0 logistics), and the 4 task-size bullets (chunk 1) and 3 repo-criteria bullets (chunk 2) each add a distinct move/object, not a recap. (b) self-referential design commentary -- no sentence anywhere tells the student they are inside a pedagogy or names the curriculum's own design intent. (c) aphorism kicker -- closest candidate chunk 6 line 70 'Small steer, small trick. A minute here, another there.' (italic closer); stays inside because it is concrete to the specific AskUserQuestion tip just given (lines 66-68) and ties together both the push-back move and the fallback trick just described, not a restatement of the header ('5. Pick a trivial bug and confirm Module 1 readiness') or a `**The point:**`-style line -- and `grep -rn \"small steer\\|small trick\" curriculum/` confirms this phrasing is not a coined term restated from elsewhere in the corpus (only self-hits). No bullet meeting the 'carries nothing' bar found.",
             "fix_hint": null,
             "blocking": false
         },
@@ -191,7 +191,7 @@
             "evidence": "Prework is M0 — no prior module's exercise/lecture beat exists for this file to reference, and none is referenced. The only backward-pointing 'the X you did' phrasing is chunk 8 line 80 'The bug you picked', which resolves to this same file's own chunk 6 (same-file sequential, rule 1's domain), not a cross-beat module reference.",
             "fix_hint": "",
             "blocking": false,
-            "carried_from": "f94ad9127e306af060d1b65ea1e912b933e8e3e31e3bf1cde7372998bef50c2f",
+            "carried_from": "6363f21164d12e603c667d0ae873a00931e99587e4fcdd748a6bab669a5adb06",
             "carried_shape": "0ebef3ad3b50ac58"
         },
         {
@@ -202,7 +202,7 @@
             "evidence": "No guess-before-reveal construction anywhere in the body (grepped for 'guess'/'predict'/'take a guess' — zero hits); prework has no live-demo beat to break.",
             "fix_hint": "",
             "blocking": false,
-            "carried_from": "f94ad9127e306af060d1b65ea1e912b933e8e3e31e3bf1cde7372998bef50c2f",
+            "carried_from": "6363f21164d12e603c667d0ae873a00931e99587e4fcdd748a6bab669a5adb06",
             "carried_shape": "0ebef3ad3b50ac58"
         },
         {
@@ -213,7 +213,7 @@
             "evidence": "Review-only surface, never a gate, per the rule's own text. Inventoried the file's two off-file links: chunk 2's structural include-link to the fallback-repo supplementary (named 'build one from zero' in the link text, not located by page position) and chunk 7's external Willison link (named by title/author in the same sentence). Both already satisfy the surviving 'name it, don't locate it' requirement; no in-page fragment links into this file's own deck to check against the settled anchor-routing mechanism.",
             "fix_hint": "",
             "blocking": false,
-            "carried_from": "f94ad9127e306af060d1b65ea1e912b933e8e3e31e3bf1cde7372998bef50c2f",
+            "carried_from": "6363f21164d12e603c667d0ae873a00931e99587e4fcdd748a6bab669a5adb06",
             "carried_shape": "0ebef3ad3b50ac58"
         }
     ],

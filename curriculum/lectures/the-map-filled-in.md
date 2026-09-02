@@ -7,7 +7,6 @@ The map is back, one last time.
 
 {{figure:map-engine-filled}}
 
-- This is the M2 map, one loop changed. The checking loop ran dashed across Verification and Absorption for four modules: read, judge, gate what ships, by hand for now. Dashed meant not built yet.
 - What fills it is what got built. The verifier from the M5 packaging and the test-strategy skill authored at M3 are checks that stand without you. A loop made of checks that stand without you gets drawn solid; the stack-map you drew names where the next ones land.
 - Nothing else moved. Same six phases, same loops, same wall at the team's edge. The far half kept its shape and gained its names, the way the near half did at the M3 close.
 

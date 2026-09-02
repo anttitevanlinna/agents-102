@@ -24,8 +24,7 @@ You have a kit now: a test-strategy skill, a verifier, and a freshly drawn map o
 {{figure:skill-sea-passage}}
 
 - A **skill** is a named move you reach for. Single purpose, reusable, invoked by name. Your test-strategy and your verifier are moves you already own; your stack-map names the ones worth building next. You reach for one where the passage needs it, not rebuild it each session.
-- Its **footprint** is wherever the job lands. One move takes a single fix at a turning point. Another carries a whole leg. A third runs at the pier, before the first leg. You never size a skill in advance. The job sizes it.
-- Nothing here is new except the placing. A move now stands at each point you used to steer by hand. Where no move stands, you sail that stretch yourself.
+- One move takes a single fix at a turning point. Another carries a whole leg. A third runs at the pier, before the first leg. You never size a skill in advance. The job sizes it.
 
 ## From skills to a workflow
 <!--tier:3-->
@@ -52,7 +51,7 @@ Pick the shape that resembles your day.
 
 **Lean pass (2026-08-25):** cut "Same passage, same drift, same fixes and guardrails." from slide-1 bullet 3 — the figure shows it. Do not restore.
 
-**Emphasis budget (Antti-directed "go very lightly on the bold"):** bold = handles only — slide 1: **skill** + **footprint** sub-spans (third bullet plain); slide 2: the four wiring mechanisms (**an explicit load** / **an orchestrator** / **routing** / **a hand-off**) plus **leaf** at its definition; *pilot* stays plain as the chart-to-field bridge; all other bullets plain (the chart caption already carries "the value is the order, not the count") — per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Lede, SVG, and the two supplementary links carry no bold.
+**Emphasis budget (Antti-directed "go very lightly on the bold"):** bold = handles only — slide 1: **skill** sub-span (the **footprint** span left with its sentence, 2026-09-02); slide 2: the four wiring mechanisms (**an explicit load** / **an orchestrator** / **routing** / **a hand-off**) plus **leaf** at its definition; *pilot* stays plain as the chart-to-field bridge; all other bullets plain (the chart caption already carries "the value is the order, not the count") — per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Lede, SVG, and the two supplementary links carry no bold.
 
 **Quality:** compendium-audited 2026-08-29 (writing@4a722813 story@0e4f7c9e technical@8cc00874 behavior@1c765f2 pedagogy@1abb84c6 strategy@1c765f2 slides@0e4f7c9e)
 - judges @4a722813: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS
@@ -88,9 +87,7 @@ Claims
 - `skill-defines-check-runtime-supplies-cadence` · vision · "The skill defines the check. The runtime supplies the cadence or stopping condition." ← none-owed
 - `a-workflow-is-moves-in-order` · vision · "A workflow is those moves in the right order around one passage." ← none-owed
 - `skill-is-a-named-move` · vision · "A **skill** is a named move you reach for. Single purpose, reusable, invoked by name." ← none-owed
-- `footprint-follows-the-job` · vision · "Its **footprint** is wherever the job lands." ← none-owed
 - `never-size-a-skill-in-advance` · vision · "You never size a skill in advance. The job sizes it." ← none-owed
-- `nothing-new-except-the-placing` · vision · "Nothing here is new except the placing." ← none-owed
 - `moves-are-not-phase-bound` · vision · "Its footprint is set by the job, not by the phase line." ← none-owed
 - `four-wiring-mechanisms` · detail · "One documented kit wires skills. … **an explicit load** … **an orchestrator** … **routing** … **a hand-off**" ← skill-stacking-supp
 - `field-wires-more-ways-than-one` · detail · "The field wires kits more ways than one; no way has won." ← lineages-supp

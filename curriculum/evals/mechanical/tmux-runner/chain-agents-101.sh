@@ -28,7 +28,7 @@ HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 sut_cwd="$HOME/Documents/agents-101-runner"
 material_dir="$HOME/Documents/agents-101-runner-material"
-from="prework"; to="m2"; do_arrange=""
+from="prework"; to="m2"; do_arrange=""; runtime="cli"
 chain_dir_arg=""
 while [[ $# -gt 0 ]]; do
   case "$1" in
@@ -39,9 +39,14 @@ while [[ $# -gt 0 ]]; do
     --arrange) do_arrange=1; shift ;;
     --cwd) sut_cwd="$2"; shift 2 ;;
     --material) material_dir="$2"; shift 2 ;;
+    --runtime) runtime="$2"; shift 2 ;;
     *) echo "unknown arg: $1" >&2; exit 2 ;;
   esac
 done
+case "$runtime" in
+  cli|codex-cli) ;;
+  *) echo "unknown Agents 101 runner runtime: $runtime (expected cli or codex-cli)" >&2; exit 2 ;;
+esac
 
 modules=(prework m1 m2 m3 m4a m4b m5 m6)
 in_range=0
@@ -73,8 +78,10 @@ if [[ -n "$prior" ]]; then               # declared prior state, or stop
   st="$(chain_require_prior "a101-$prior" "$from" "$sut_cwd" "$HERE/out")" || exit 1
   echo "[chain] resuming on $prior state: $st"
 fi
-source "$HERE/lib/tmux.sh"
-claude_cli_preflight "${CLAUDE_CMD:-claude --permission-mode auto}" || exit 2   # before arrange moves anything
+if [[ "$runtime" == cli ]]; then
+  source "$HERE/lib/tmux.sh"
+  claude_cli_preflight "${CLAUDE_CMD:-claude --permission-mode auto}" || exit 2
+fi
 
 chain_guard_skills          # ~/.claude/skills restored to this snapshot on any exit (lib/chain.sh)
 
@@ -85,7 +92,7 @@ fi
 
 for m in "${selected[@]}"; do
   echo "==================== [chain] module $m ===================="
-  if ! "$HERE/run-a101.sh" --module "$m" --cwd "$sut_cwd" --material "$material_dir"; then
+  if ! "$HERE/run-a101.sh" --module "$m" --runtime "$runtime" --cwd "$sut_cwd" --material "$material_dir"; then
     echo "[chain] STOP: module $m failed. Training dir left as-is for inspection: $sut_cwd" >&2
     exit 1
   fi

@@ -1,6 +1,6 @@
 # Composing the workflow
 
-You have a kit now: a test-strategy skill, a verifier, and a freshly drawn map of the moves worth packaging next. A workflow is those moves in the right order around one passage. Before you read how the field argues about composition, look at what composition actually is, on the passage you already sailed.
+You have a kit now: a test-strategy skill, a verifier, and a freshly drawn map of the moves worth packaging next. A workflow is those moves in the right order around one passage.
 
 ## You drew a control loop
 

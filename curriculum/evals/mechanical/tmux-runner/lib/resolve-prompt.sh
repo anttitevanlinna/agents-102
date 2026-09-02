@@ -1,27 +1,18 @@
 #!/usr/bin/env bash
-# Resolve a prompt key to its body text from the agents-102 registry.
-# Single source of truth: scenarios reference keys, never copy bodies.
+# Resolve a prompt key to the compiler's exact runtime projection.
+# Single source of truth: scenarios reference keys, never copy bodies or parse
+# frontmatter independently from the site/workbook build.
 set -euo pipefail
 
-REGISTRY="${PROMPT_REGISTRY:-$HOME/Projects/agents-102/curriculum/prompts}"
+RESOLVE_PROMPT_LIB_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+RESOLVE_PROMPT_ROOT="$(cd "$RESOLVE_PROMPT_LIB_DIR/../../../../.." && pwd)"
 
 resolve_prompt() {
   local key="$1"
-  local file="$REGISTRY/$key.md"
-  if [[ ! -f "$file" ]]; then
-    echo "resolve_prompt: key not found: $key (looked in $REGISTRY)" >&2
-    return 1
-  fi
-  # Strip the leading YAML frontmatter (between first and second `---` line),
-  # then trim a leading blank line if present. Body is everything after.
-  awk '
-    BEGIN { in_fm = 0; past_fm = 0 }
-    !past_fm && /^---[[:space:]]*$/ {
-      if (in_fm == 0) { in_fm = 1; next }
-      else            { in_fm = 0; past_fm = 1; next }
-    }
-    past_fm { print }
-  ' "$file"
+  local profile="${2:-${A101_RUNTIME_PROFILE:-cli}}"
+  shift "$(( $# >= 2 ? 2 : $# ))"
+  node "$RESOLVE_PROMPT_ROOT/scripts/resolve-prompt.js" \
+    --key "$key" --runtime "$profile" "$@"
 }
 
 if [[ "${BASH_SOURCE[0]:-$0}" == "${0}" ]]; then

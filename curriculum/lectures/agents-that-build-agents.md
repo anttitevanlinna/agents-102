@@ -5,6 +5,10 @@
 ## The agent stops where your judgement begins
 <!--tier:2-->
 
+- The agent cannot read your mind. It runs on what you have expressed: the spec, the rules, the checks, the plan. What is written down, it can act on. What is still in your head, it cannot.
+- That is the frontier, and you set it. Not the model. What you can express is how far the agent runs. It stops exactly where the writing stops and your judgement takes over.
+- Judgement becomes expression one piece at a time. A push-back becomes a rule. A "not like that" becomes a check. Each one moves the line, and the agent runs one step further on its own. The line never goes away. You keep finding the next thing you know and have not yet said.
+
 ## Quality is grounding
 
 Nobody reviews 500K lines by hand. Some of the early agentic engineering demos were single devs shipping 500K lines of code in weeks; the first Agentics Helsinki meetup, fall 2025, had two of them. The recurring theme: every generated line had to correspond to a spec, every feature had to be tested. Without that, no way to know the system works.
@@ -71,6 +75,8 @@ The training closes. The flywheel does not.
 <!-- backing -->
 
 Claims
+- `agent-cannot-read-your-mind` · vision · "The agent cannot read your mind." ← none-owed
+- `expression-sets-the-frontier` · vision · "What you can express is how far the agent runs." ← none-owed
 - `nobody-reviews-500k-by-hand` · vision · "Nobody reviews 500K lines by hand." ← none-owed
 - `500k-lines-in-weeks` · detail · "Some of the early agentic engineering demos were single devs shipping 500K lines of code in weeks" ← antti-agentics-helsinki, luma-agentics-helsinki
 - `spec-and-tests-was-the-theme` · detail · "every generated line had to correspond to a spec, every feature had to be tested" ← antti-agentics-helsinki

@@ -26,22 +26,38 @@ set -euo pipefail
 
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "$HERE/lib/resolve-prompt.sh"
-source "$HERE/lib/tmux.sh"
-source "$HERE/lib/sync.sh"
+source "$HERE/lib/transport.sh"
 source "$HERE/lib/assertions.sh"
 
 KIT="$HERE/fixtures/agents-101-synthetic"
 module=""
 sut_cwd="$HOME/Documents/agents-101-runner"
 material_dir="$HOME/Documents/agents-101-runner-material"
+runtime="cli"
+print_runtime=0
 while [[ $# -gt 0 ]]; do
   case "$1" in
     --module)   module="$2"; shift 2 ;;
     --cwd)      sut_cwd="$2"; shift 2 ;;
     --material) material_dir="$2"; shift 2 ;;
+    --runtime)  runtime="$2"; shift 2 ;;
+    --print-runtime) print_runtime=1; shift ;;
     *) echo "unknown arg: $1" >&2; exit 2 ;;
   esac
 done
+
+case "$runtime" in
+  cli|codex-cli) ;;
+  *) echo "unknown Agents 101 runner runtime: $runtime (expected cli or codex-cli)" >&2; exit 2 ;;
+esac
+if [[ $print_runtime -eq 1 ]]; then
+  printf '%s\n' "$runtime"
+  exit 0
+fi
+A101_RUNTIME_PROFILE="$runtime"
+export A101_RUNTIME_PROFILE
+ROOT_INSTRUCTIONS_REL="$(artifact_path root-instructions)"
+PROJECT_SKILLS_REL="$(artifact_path project-skills)"
 
 case "$module" in
   prework|m1|m2|m3|m4a|m4b|m5|m6) ;;
@@ -53,19 +69,11 @@ esac
 scenario="$HERE/scenarios/a101-$module.txt"
 [[ -f "$scenario" ]] || { echo "missing scenario: $scenario" >&2; exit 2; }
 
-# A101 turns are all tool-heavy (file writes, fetch, subagents) with no human
-# to approve. Force a permissive mode. bypassPermissions is banned (startup
-# dialog hangs the runner — README § Env knobs).
-CLAUDE_CMD="${CLAUDE_CMD:-claude --permission-mode auto}"
-
 run_id="$(date +%Y%m%d-%H%M%S)-$$"
-export RUNNER_TMUX_SOCKET="runner-$run_id"
 run_dir="$HERE/out/a101-$module-$run_id"
 sentinel_dir="$run_dir/sentinels"
 mkdir -p "$sentinel_dir"
 
-session="runner-$run_id"
-warmup="${CLAUDE_RUNNER_WARMUP:-10}"
 standard_timeout="${CLAUDE_RUNNER_TIMEOUT:-1800}"
 
 # ---- Build substitution tokens from the persona kit ----------------------
@@ -123,15 +131,11 @@ subst() {
   printf '%s' "$body"
 }
 
-echo "[a101] module=$module cwd=$sut_cwd run=$run_id"
-echo "[a101] launching: env CLAUDE_RUNNER_SENTINEL_DIR=$sentinel_dir $CLAUDE_CMD"
-launch_cmd="env CLAUDE_RUNNER_SENTINEL_DIR=$sentinel_dir $CLAUDE_CMD"
-pane_start "$session" "$sut_cwd" "$launch_cmd"
-sleep "$warmup"
+echo "[a101] module=$module runtime=$runtime cwd=$sut_cwd run=$run_id"
+transport_open "$runtime" "$sut_cwd" "$run_dir"
 
 cleanup() {
-  pane_capture_safe "$session" "$run_dir/transcript.txt" 10 || true
-  pane_kill "$session"
+  transport_close || true
 }
 trap cleanup EXIT
 
@@ -231,15 +235,15 @@ assert_turn() {
     m2:10) assert_or_warn assert_scrollback_grep "m2 T10" "$t" 'HIGH|MED|LOW|contradiction|stale|severity' ;;
     m2:11) assert_or_warn assert_scrollback_grep "m2 T11" "$t" '\[sources/|\[memory/|memory/.*\.md' ;;
     m2:12)
-      assert_file_exists "m2 T12 root CLAUDE.md" "$sut_cwd/CLAUDE.md" || return 1
-      assert_scrollback_grep "m2 T12 CLAUDE.md content" "$sut_cwd/CLAUDE.md" 'memory|sources|agent|citation|claim' || return 1
+      assert_file_exists "m2 T12 root instructions" "$sut_cwd/$ROOT_INSTRUCTIONS_REL" || return 1
+      assert_scrollback_grep "m2 T12 root instructions content" "$sut_cwd/$ROOT_INSTRUCTIONS_REL" 'memory|sources|agent|citation|claim' || return 1
       # H2 detector (non-gating): flag operator-global ~/.claude bleed into the
       # student artifact. The debrief claims every rule is session-traceable;
       # these sentinels would prove a global instruction leaked in instead.
-      if grep -riqE 'pseudonym|Rory|Sutherland|Bosser|prospect' "$sut_cwd/CLAUDE.md" 2>/dev/null; then
-        echo "[assert] WARN m2 T12: generated CLAUDE.md may carry operator-global bleed (run under an isolated \$HOME/.claude — see findings H2)" >&2
+      if grep -riqE 'pseudonym|Rory|Sutherland|Bosser|prospect' "$sut_cwd/$ROOT_INSTRUCTIONS_REL" 2>/dev/null; then
+        echo "[assert] WARN m2 T12: generated root instructions may carry operator-global bleed (see findings H2)" >&2
       fi
-      echo "[assert] PASS m2 T12: root CLAUDE.md written" ;;
+      echo "[assert] PASS m2 T12: root $ROOT_INSTRUCTIONS_REL written" ;;
 
     # ----- m3 (multi-agent-systems) -----
     m3:1)
@@ -296,17 +300,17 @@ assert_turn() {
       assert_or_warn assert_scrollback_grep "m3 T7 disagreement named" "$t" 'disagree|sided|conflict|tension|reframe'
       echo "[assert] PASS m3 T7: $ns stances, ## Answer appended with Rumelt legs" ;;
     m3:8)
-      assert_file_mtime_advanced "m3 T8 CLAUDE.md rewritten" "$sut_cwd/CLAUDE.md" "$base" || return 1
+      assert_file_mtime_advanced "m3 T8 root instructions rewritten" "$sut_cwd/$ROOT_INSTRUCTIONS_REL" "$base" || return 1
       # The teaching point: name >=2 handoff seams with file + pass + what was
       # lost. Diplomatic no-op is the failure mode. Require the debrief to cite a
       # retrieval/synthesis filename AND a loss word.
       assert_scrollback_grep "m3 T8 seam citation" "$t" 'wiki-retrieval|docs-retrieval|internet-retrieval|_synthesis-m3|stances' || return 1
       assert_scrollback_grep "m3 T8 loss named" "$t" 'lost|dropped|leaked|collapsed|averaged|normalis|beige|smoothed' || return 1
       # H2 detector (non-gating): operator-global ~/.claude bleed into the artifact.
-      if grep -riqE 'pseudonym|Rory Sutherland|Bosser|prospect' "$sut_cwd/CLAUDE.md" 2>/dev/null; then
-        echo "[assert] WARN m3 T8: rewritten CLAUDE.md may carry operator-global bleed (run under isolated \$HOME/.claude — findings H2)" >&2
+      if grep -riqE 'pseudonym|Rory Sutherland|Bosser|prospect' "$sut_cwd/$ROOT_INSTRUCTIONS_REL" 2>/dev/null; then
+        echo "[assert] WARN m3 T8: rewritten root instructions may carry operator-global bleed (findings H2)" >&2
       fi
-      echo "[assert] PASS m3 T8: CLAUDE.md rewritten, >=1 seam cited with a loss" ;;
+      echo "[assert] PASS m3 T8: $ROOT_INSTRUCTIONS_REL rewritten, >=1 seam cited with a loss" ;;
     m3:9)
       # Memory-health homework: "name at least one drop candidate; an all-green
       # check means you didn't look hard enough." Green-but-broken = theater
@@ -350,9 +354,8 @@ assert_turn() {
       # scratch HOME isn't logged in), so the chain removes this skill post-run
       # via a pre-existence-guarded trap (H2). Standalone m4a runs leak it until
       # the next chain run — clean up by hand if you ran m4a alone.
-      assert_file_exists "m4a T4 installed skill" "$HOME/.claude/skills/security-audit/SKILL.md" || return 1
-      echo "[assert] WARN m4a T4: wrote to operator \$HOME/.claude/skills/security-audit — chain auto-removes post-run; standalone runs must clean up by hand (findings H2)" >&2
-      echo "[assert] PASS m4a T4: skill installed at ~/.claude/skills/security-audit/SKILL.md" ;;
+      assert_file_exists "m4a T4 installed skill" "$sut_cwd/$PROJECT_SKILLS_REL/security-audit/SKILL.md" || return 1
+      echo "[assert] PASS m4a T4: skill installed at $PROJECT_SKILLS_REL/security-audit/SKILL.md" ;;
 
     # ----- m4b (load the skill, audit, mitigate, debrief) -----
     m4b:1)
@@ -398,11 +401,11 @@ assert_turn() {
     m4b:4)
       # Debrief → durable Security operating rules in CLAUDE.md. Green-but-broken
       # = vague "be secure" rules. Require a concrete trigger/file/row/residual.
-      assert_file_mtime_advanced "m4b T4 CLAUDE.md updated" "$sut_cwd/CLAUDE.md" "$base" || return 1
-      assert_scrollback_grep "m4b T4 security section" "$sut_cwd/CLAUDE.md" 'Security operating rules|security' || return 1
-      assert_scrollback_grep "m4b T4 rules are concrete" "$sut_cwd/CLAUDE.md" \
+      assert_file_mtime_advanced "m4b T4 root instructions updated" "$sut_cwd/$ROOT_INSTRUCTIONS_REL" "$base" || return 1
+      assert_scrollback_grep "m4b T4 security section" "$sut_cwd/$ROOT_INSTRUCTIONS_REL" 'Security operating rules|security' || return 1
+      assert_scrollback_grep "m4b T4 rules are concrete" "$sut_cwd/$ROOT_INSTRUCTIONS_REL" \
         'GDPR-|CLASS-|inject|pilot|security-audit|outputs/|residual|minimis|least[ -]privilege' || return 1
-      echo "[assert] PASS m4b T4: CLAUDE.md carries concrete security operating rules" ;;
+      echo "[assert] PASS m4b T4: $ROOT_INSTRUCTIONS_REL carries concrete security operating rules" ;;
 
     # ----- m5 (groundedness bakeoff) -----
     m5:1)
@@ -450,11 +453,11 @@ assert_turn() {
       assert_scrollback_grep "m5 T5 judge states a known limit" "$judge" 'Known limit|known limit|limit:' || return 1
       echo "[assert] PASS m5 T5: portable groundedness-judge written with a known-limit" ;;
     m5:6)
-      assert_file_mtime_advanced "m5 T6 CLAUDE.md updated" "$sut_cwd/CLAUDE.md" "$base" || return 1
-      assert_scrollback_grep "m5 T6 groundedness section" "$sut_cwd/CLAUDE.md" 'Groundedness checks|groundedness' || return 1
-      assert_scrollback_grep "m5 T6 rules are concrete" "$sut_cwd/CLAUDE.md" \
+      assert_file_mtime_advanced "m5 T6 root instructions updated" "$sut_cwd/$ROOT_INSTRUCTIONS_REL" "$base" || return 1
+      assert_scrollback_grep "m5 T6 groundedness section" "$sut_cwd/$ROOT_INSTRUCTIONS_REL" 'Groundedness checks|groundedness' || return 1
+      assert_scrollback_grep "m5 T6 rules are concrete" "$sut_cwd/$ROOT_INSTRUCTIONS_REL" \
         'groundedness-judge|claim|evidence|UNGROUNDED|scoreboard|not enough evidence|roster' || return 1
-      echo "[assert] PASS m5 T6: CLAUDE.md carries concrete groundedness rules" ;;
+      echo "[assert] PASS m5 T6: $ROOT_INSTRUCTIONS_REL carries concrete groundedness rules" ;;
 
     # ----- m6 (eval loop) -----
     m6:1)
@@ -555,7 +558,9 @@ for line in "${lines[@]}"; do
       tail="${line#*[[:space:]]}"
       tail="${tail#"${tail%%[![:space:]]*}"}"
     fi
-    body="$(resolve_prompt "$key")"
+    resolved_body="$(resolve_prompt "$key" "$runtime")"
+    printf '%s' "$resolved_body" > "$run_dir/turn-$seq.resolved-prompt.txt"
+    body="$resolved_body"
     [[ -n "$tail" ]] && body="${body}"$'\n'"${tail}"
   fi
   body="$(subst "$body")"
@@ -563,24 +568,18 @@ for line in "${lines[@]}"; do
   echo "[a101] turn=$seq: ${body:0:70}..."
   # mtime baseline for "advanced" assertions: 2s back guards same-second writes.
   base=$(( $(date +%s) - 2 ))
-  pane_send_text "$session" "$body"
   printf '%s' "$body" > "$run_dir/turn-$seq.prompt.txt"
 
-  if ! wait_for_turn "$sentinel_dir" "$seq" "$standard_timeout" "$session"; then
-    pane_capture_safe "$session" "$run_dir/transcript.txt" 10
-    echo "[a101] FAIL turn=$seq (sentinel timeout/pane-death after ${standard_timeout}s) — see $run_dir" >&2
+  if ! transport_turn "$run_dir/turn-$seq.prompt.txt" "$seq" "$standard_timeout"; then
+    echo "[a101] FAIL turn=$seq (transport failure after ${standard_timeout}s) — see $run_dir" >&2
     exit 1
   fi
-  pane_capture "$session" "$run_dir/turn-$seq.transcript.txt"
 
   if ! assert_turn "$module" "$seq" "$run_dir/turn-$seq.transcript.txt" "$base"; then
-    pane_capture "$session" "$run_dir/transcript.txt"
     echo "[a101] FAIL turn=$seq assertion — see $run_dir/turn-$seq.transcript.txt" >&2
     exit 1
   fi
 done
-
-pane_capture "$session" "$run_dir/transcript.txt"
 
 # ---- Light state hand-off (artifacts, not SHAs) --------------------------
 state="$run_dir/$module-state.json"
@@ -593,7 +592,7 @@ state="$run_dir/$module-state.json"
   printf '  "artifacts_present": [\n'
   first=1
   for a in prework/snake.html prework/meetings.md module-1/site.html \
-           module-1/personal-brand-generation.md challenge.md memory/index.md CLAUDE.md; do
+           module-1/personal-brand-generation.md challenge.md memory/index.md "$ROOT_INSTRUCTIONS_REL"; do
     if [[ -e "$sut_cwd/$a" ]]; then
       [[ $first -eq 0 ]] && printf ',\n'; first=0
       printf '    "%s"' "$a"

@@ -23,7 +23,7 @@ HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 sut_cwd="$HOME/Documents/agents-101-runner"
 material_dir="$HOME/Documents/agents-101-runner-material"
-from="prework"; to="m2"; do_arrange=1
+from="prework"; to="m2"; do_arrange=1; runtime="cli"
 while [[ $# -gt 0 ]]; do
   case "$1" in
     --from) from="$2"; shift 2 ;;
@@ -31,9 +31,14 @@ while [[ $# -gt 0 ]]; do
     --no-arrange) do_arrange=0; shift ;;
     --cwd) sut_cwd="$2"; shift 2 ;;
     --material) material_dir="$2"; shift 2 ;;
+    --runtime) runtime="$2"; shift 2 ;;
     *) echo "unknown arg: $1" >&2; exit 2 ;;
   esac
 done
+case "$runtime" in
+  cli|codex-cli) ;;
+  *) echo "unknown Agents 101 runner runtime: $runtime (expected cli or codex-cli)" >&2; exit 2 ;;
+esac
 
 modules=(prework m1 m2 m3 m4a m4b m5 m6)
 in_range=0
@@ -76,7 +81,7 @@ fi
 
 for m in "${selected[@]}"; do
   echo "==================== [chain] module $m ===================="
-  if ! "$HERE/run-a101.sh" --module "$m" --cwd "$sut_cwd" --material "$material_dir"; then
+  if ! "$HERE/run-a101.sh" --module "$m" --runtime "$runtime" --cwd "$sut_cwd" --material "$material_dir"; then
     echo "[chain] STOP: module $m failed. Training dir left as-is for inspection: $sut_cwd" >&2
     exit 1
   fi

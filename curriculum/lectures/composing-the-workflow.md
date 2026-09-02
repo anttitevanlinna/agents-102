@@ -119,7 +119,7 @@ Claims
 - `skill-is-a-named-move` · vision · "A **skill** is a named move you reach for. Single purpose, reusable, invoked by name." ← none-owed
 - `never-size-a-skill-in-advance` · vision · "You never size a skill in advance. The job sizes it." ← none-owed
 - `field-wires-more-ways-than-one` · detail · "The field wires kits more ways than one; no way has won." ← lineages-supp
-- `pocock-by-hand` · detail · "Pocock ships a public kit with no orchestrator: you call each skill by hand." ← lineages-supp
+- `pocock-by-hand` · detail · "Pocock ships a public kit with no orchestrator: you call each skill by hand." ← lineages-supp, pocock-skills-repo
 - `klaassen-one-command-per-stage` · detail · "Klaassen ships one slash command per stage, and the last one writes the lesson to disk for the next agent." ← lineages-supp
 - `many-kits-keep-zero-pilots` · detail · "Some workflows have a pilot; many do not." ← skill-stacking-supp, lineages-supp
 - `seam-check-decides-whether-next-step-begins` · vision · "At a seam, a check or stop condition decides whether the next step may begin." ← none-owed

@@ -10,7 +10,7 @@ Look at what you have shipped.
 - On the map they are the checking loop the M2 drawing left dashed, now drawn solid.
 
 ## One primitive, placed wherever there's a bar
-<!--tier:2-->
+<!--tier:3-->
 
 - The shape fires on any workflow with a quality bar, not only agent sessions. A code-review checklist, a deployment gate, an internal-doc rubric. Anywhere you can describe *meets the bar*, you can write the check.
 - Naming it is what lets you reuse it. Once you see the verifier, the judge, and the gate as the same primitive, you can place that primitive in more places. On a pull request. On a nightly run. On the next agent that does the same class of work. On the team's shared kit.
@@ -29,14 +29,6 @@ Look at what you have shipped.
 - Three places this fits naturally. A standing verifier run: a judge reads the most recent long-running send-off and has a summary waiting when you open the laptop. A scheduled codebase sweep: a gap-finder reads the repo for the drift shape you saw at M5 and opens an issue when it finds one. Rule-drift monitoring: a judge reads the root rules file against the recent commit log and names where the rules and the code disagree.
 - You do not have to wire it today; you do need to know the eval can run on cadence. The skill defines the check. The runtime supplies the cadence or stopping condition.
 
-## Why the loop survives the model
-
-- The specific Claude you used today will be replaced, probably within months. Each replacement will be better at the work than the current one. None of that changes the move.
-- The three pieces (reference, plan, verifier) are not model features. Neither is the encode loop you ran at M6 (diff, name the gaps, map where the lesson lands). They are a stance toward a thing that does not behave deterministically. Reference because the goal drifts. Plan because the window fills. Verifier because plausible-but-wrong is the default failure mode of a statistical machine. Encode because a lesson learned once and not written down gets learned again next week.
-- Practitioner fluency lives in the stance, not in the tooling. When the next model ships, you will open the same kit, point it at the same three pieces, and run the same loop. The work gets faster. The method does not.
-
-The loop feeds itself. That is the flywheel, and it starts with what you encoded today.
-
 <!-- maintainer -->
 
 **Lean pass (2026-08-25, Antti-directed M3/M6 shorten, free hands):** cut "Opus 4.7 will be Opus 4.8, then something with a different name." (dates the deck; replacement claim survives as "Each replacement will be better…"); cadence bullet 3 condensed — the "the second you stop thinking of the eval as a one-shot check… your options change" clause folded into "you do need to know the eval can run on cadence" (watch-for already caps this slide at 90 s). Do not restore.
@@ -52,9 +44,9 @@ The loop feeds itself. That is the flywheel, and it starts with what you encoded
 **Quality:** compendium-audited 2026-08-30 (writing@4197d503 story@4197d503 technical@4197d503 strategy@4197d503 slides@4197d503 behavior@1c765f2 pedagogy@1abb84c6)
 - judges @4197d503: writing PASS, story PASS, technical PASS, strategy PASS, slides PASS — re-judged after the cc-scheduling-primitives restamp. The prior §11a finding (borrowed `ATTESTED` on a documentation read) no longer fires; the stamp now records its own check.
 - judges @4a722813: behavior PASS, pedagogy PASS (drift-recheck)
-**Lecture meta:** *12–15 min closing lecture for AE101 M6 (deck-only trimmed from the 15–18 prose draft). Names evals with full weight from the M5 verifier and the check-menu the module just ranked. Forward-looking register — closes core AE101, bridges to Monday-morning or to M7 depending on the room. M5/M6 refs in body KEPT under the `check_lectures §3` consolidation carve-out: the closer's SUBJECT is naming what M5–M6 built (recognition), not sequencing.*
+**Lecture meta:** *Names evals with full weight from the M5 verifier and the check-menu the module just ranked, directly after the exercise debrief. Three tail slides are T3. M5/M6 refs in body KEPT under the `check_lectures §3` consolidation carve-out: the SUBJECT is naming what M5–M6 built (recognition), not sequencing.*
 
-**Time:** 15 min at presentation pace.
+**Time:** 12 min at presentation pace.
 
 **Delivery mode:** In-room close after Debrief.
 
@@ -124,6 +116,6 @@ Flagged
 
 **Cross-file stamp pointer:** slide 4's triad claim leans on the source stamps in `curriculum/lectures/what-packaging-is.md` § Source verification. Those stamps were re-verified 2026-08-01 and **the convergence framing this slide inherited does not survive them.** Counted strictly — all three pieces present together as artefacts in one practice — the independents number **one** (Huntley's Ralph), against an L3 bar of 10–20. Ronacher is 2-of-3 in practice and 0-of-3 in vocabulary; Klaassen's plan artefact is a pre-work spec, not a document mutated across a run, so it is a different piece wearing the same word. The triad is our synthesis of scattered practice, which is candid work to do and misleading to call convergence. Slide 4 reads *"The three pieces (reference, plan, verifier) are not model features"* — a convergence assertion does no work in a sentence whose argument is that the pieces are a stance rather than a model feature. M5's `what-packaging-is` introduces the triad as our combination, so this file must not assert convergence downstream of it. **Do not restore the phrase.**
 
-**Vocabulary split with `composing-the-workflow.md`.** That lecture is the concrete composition teacher (the passage chart + "a workflow is skills in the right order") and owns compose/workflow; it also sits before this one in the closer chain. This lecture owns reuse and placement — put the primitive on a PR, a nightly run, the next agent, the team kit — so slide 1's bullet lead reads "Naming it is what lets you reuse it", never "…compose", and the spine ties to that lecture's "a named move you reach for". *eval* is this lecture's owned term; "workflow" appears once in body in the generic "any workflow with a quality bar" sense, not the composed-skills sense.
+**Vocabulary split with `composing-the-workflow.md`.** That lecture is the concrete composition teacher (the passage chart + "a workflow is skills in the right order") and owns compose/workflow; it follows this one in deck order. This lecture owns reuse and placement — put the primitive on a PR, a nightly run, the next agent, the team kit — so slide 1's bullet lead reads "Naming it is what lets you reuse it", never "…compose". *eval* is this lecture's owned term; "workflow" appears once in body in the generic "any workflow with a quality bar" sense.
 
-**The closing kicker names no next lecture.** M6's closer chain runs loop-has-a-name → the-map-filled-in → agents-that-build-agents, so a kicker opening on the literal `agents-that-build-agents` title asserts a false adjacency. It reads "The loop feeds itself." — this lecture's own loop-survives-the-model theme, with the flywheel and encode-today close kept verbatim. Do not re-point it at a named next beat; the forward-lean in the note above is thematic, not a tee.
+**Placement:** M6 deck order (2026-09-02, three-beat re-cut, slides moved and re-tiered, body text untouched pending cards): the-2-frontiers → exercise → the-loop-has-a-name → `## The loop you drew` → composing-the-workflow (opens on the control-loop slide) → the-handoff-prompt → story-of-module-6 → the-map-filled-in → quality-is-grounding → Human close → agents-that-build-agents (last). The survives-the-model slide and its flywheel kicker moved to `agents-that-build-agents.md`; this file now ends on the cadence slide.

@@ -2,8 +2,17 @@
 
 You have a kit now: a test-strategy skill, a verifier, and a freshly drawn map of the moves worth packaging next. A workflow is those moves in the right order around one passage. Before you read how the field argues about composition, look at what composition actually is, on the passage you already sailed.
 
+## You drew a control loop
+
+{{figure:student-closed-loop}}
+
+- You drew a control loop. Shape the session before it moves, watch what comes back, correct, encode. That is **feedback control** around a non-deterministic agent, and it is the shape the whole map has had from the start.
+- The near half shapes; the far half corrects. Intent, context, and the plan set the target before the session starts; the far half reads what came back, takes up what passed, and encodes what the session taught, changing the system so the next session starts better.
+- Verification is the sensor. A loop with no way to read its own result runs open: send the work off and hope. The checks you built are how this loop reads what came back. They are the part that lets the system catch its own error before it ships.
+- The harness makes continuing possible. What a session gets right without you is set by what has accumulated around it: rules, durable state, checks, encoded corrections. The M4 send-off and the M5 re-send: same model, same harness, two different agents.
+
 ## A skill's footprint is where its job lands
-<!--tier:2-->
+<!--tier:3-->
 
 {{figure:skill-sea-passage}}
 
@@ -12,7 +21,7 @@ You have a kit now: a test-strategy skill, a verifier, and a freshly drawn map o
 - Nothing here is new except the placing. A move now stands at each point you used to steer by hand. Where no move stands, you sail that stretch yourself.
 
 ## From skills to a workflow
-<!--tier:2-->
+<!--tier:3-->
 
 - A session passes through phases: context, plan, build, verify, ship. A skill sits where its job sits. Its footprint is set by the job, not by the phase line.
 - The field wires kits more ways than one; no way has won. Pocock ships a public kit with no orchestrator: you call each skill by hand. Klaassen chains steps through files on disk, a gate at every seam. Some workflows have a pilot; many do not.
@@ -53,11 +62,11 @@ Pick the shape that resembles your day.
 
 **Headers (squint + truth, `check_lectures §4`).** *A skill's footprint is where its job lands* (slide 1, thesis-claim, matches the chart's own bottom caption); *From skills to a workflow* (slide 2, names the composition concept the slide teaches in its variety). No orphan-mystery, no empty container.
 
-**Lecture meta:** *3-4 min M6 mini-lecture at the closer area. Teaches what a workflow-of-skills IS, concretely, on the M5 passage the student already met, then hands off to the worked example and the field survey. The register-shift line ("no prompt to drill; the move is to read") is kept so the student knows they are in practitioner mode.*
+**Lecture meta:** *Opens the loop beat with the control-loop slide (from `the-map-filled-in.md`, T1), then three T3 slides teaching what a workflow-of-skills IS on the M5 passage, handing off to the worked example and the field survey. The register-shift line ("no prompt to drill; the move is to read") stays. Title awaits a card now that the file opens on the loop.*
 
-**Time:** 4 min at presentation pace, or a 4-min student read.
+**Time:** 6 min at presentation pace.
 
-**Delivery mode:** Read aloud in-room at the closer area with the chart projected, or skipped if the cohort is tight (the two reads are the load-bearing deepening; the lecture is the concrete entry).
+**Delivery mode:** In-room, chart projected. Barebones drops the three T3 slides and keeps the control loop.
 
 <!-- backing -->
 

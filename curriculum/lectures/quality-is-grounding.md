@@ -40,11 +40,11 @@ The agentic engineer maxes that signal out. You ship a million lines of new stuf
 
 - section-3 sweep 2026-07-02: 5 refs judged (M1/M2/M3/M5 in slide 1 + "whole training" arc line), 0 fixed, 5 carve-out — consolidation arc-lecture, the quality arc IS the subject; all refs backward-looking material, no forward sequencing in body (M7 mention is below the fence).
 
-**Lecture meta:** *3–5 min stakes-setter for AE101 M6 (deck-only trimmed from the 4–6 min prose draft), placed early between `the-2-frontiers.md` and the main exercise. Names the quality arc threaded across the whole training (M1 tests-first → M2 plan push-back → M3 skill → M5 verifier → M6 eval read) and the reframe under it (spec-and-tests → grounding). Pairs with [The loop has a name](the-loop-has-a-name.md) as M6's closer — quality-is-grounding sets the WHY going in, the-loop-has-a-name names the WHAT (eval) coming out.*
+**Lecture meta:** *Recognition slide (T2) plus two T3 slides, placed after `the-map-filled-in.md` and before the Human close since 2026-09-02. Names the quality arc threaded across the whole training.*
 
 **Time:** 5 min at presentation pace.
 
-**Delivery mode:** Read in-room early in M6, between The 2 frontiers and the main exercise. Sets the quality-arc stakes before the build move.
+**Delivery mode:** Read in-room late in M6, after the map; barebones drops the two T3 slides.
 
 <!-- backing -->
 

@@ -31,11 +31,21 @@ You walk in holding two sessions of the same task. The un-packaged Module 4 send
 
 [The 2 frontiers of learning](lectures/the-2-frontiers.md)
 
-[Quality is grounding](lectures/quality-is-grounding.md)
-
 [Map the gaps, read your stack](exercises/spot-gaps-build-the-loop.md)
 
+[The check you built is an eval](lectures/the-loop-has-a-name.md)
+
+## The loop you drew
+
+[Composing the workflow](lectures/composing-the-workflow.md)
+
+[The handoff prompt that builds your kit](lectures/the-handoff-prompt.md)
+
 [Story of Module 6](lectures/story-of-module-6.md)
+
+[The map, filled in](lectures/the-map-filled-in.md)
+
+[Quality is grounding](lectures/quality-is-grounding.md)
 
 ## Human close
 <!--tier:2-->
@@ -45,12 +55,6 @@ No compound prompt here. The exercise's gap map and stack-map are the Module 6 c
 *Two sessions of the same task, read to the bone. The loop, yours.*
 
 **Self-study variant.** Close the laptop. If you can put the move in one sentence, that's the marker; no further articulation required.
-
-[Composing the workflow](lectures/composing-the-workflow.md)
-
-[The check you built is an eval](lectures/the-loop-has-a-name.md)
-
-[The map, filled in](lectures/the-map-filled-in.md)
 
 [Agents that build agents](lectures/agents-that-build-agents.md)
 
@@ -106,7 +110,7 @@ Antti
 
 **Human close's "talk, compare, no prompts" stays in body — `check_pedagogy.md` §27 mode-defining-cue carve-out (maintainer call).** The cue defines the slot's mode against a training that is otherwise prompts; the round's form (pairs, whole-room, write-then-share) stays the trainer's per the strategy doc's M6 Debrief spec. Future judges should not re-flag.
 
-**`## Human close` is a pre-close beat, not the module's ending (2026-08-19, Antti-directed: *"human close can be a beat before actual full closing. It is deliberately there to have the time for closing conversations."*).** The slot buys room time for the closing conversation while the closer lecture chain, `## Key Concepts`, `## Optional challenges` and `## Next` still follow. A story judge scoring close mood reads those four trailing sections as an ending that will not end and files `check_strategy_tie_in.md` §1 against the beat's own framing (*"no compound prompt here... talk, compare, no prompts"*, the identity line, the self-study *"Close the laptop"*). The trailing count is the design and it is not high: M6 carries fewer sections after its last teaching beat than M4 or M5, neither `## Bring to Module N` nor `## Pre-reads` applying to the terminal module. Do not move the beat later, do not fold it into `## Next`, and do not soften its framing to acknowledge what follows — the conversation needs a named slot, and the name is what makes a trainer stop for it. The self-study variant's *"Close the laptop"* is the solo form of the same break. Future judges should not re-flag.
+**`## Human close` is a pre-close beat, not the module's ending (2026-08-19, Antti-directed: *"human close can be a beat before actual full closing. It is deliberately there to have the time for closing conversations."*).** The slot buys room time for the closing conversation while the closing lecture, `## Key Concepts`, `## Optional challenges` and `## Next` still follow. A story judge scoring close mood reads those four trailing sections as an ending that will not end and files `check_strategy_tie_in.md` §1 against the beat's own framing (*"no compound prompt here... talk, compare, no prompts"*, the identity line, the self-study *"Close the laptop"*). The trailing count is the design and it is not high: M6 carries fewer sections after its last teaching beat than M4 or M5, neither `## Bring to Module N` nor `## Pre-reads` applying to the terminal module. Do not move the beat later, do not fold it into `## Next`, and do not soften its framing to acknowledge what follows — the conversation needs a named slot, and the name is what makes a trainer stop for it. The self-study variant's *"Close the laptop"* is the solo form of the same break. Future judges should not re-flag.
 
 **Independence axis on the eval-taxonomy Key Concept (2026-08-09, Antti-directed; buried-gold item):** bullet 4 closes with the kernel (*a check proves something only where it could say no*) and the failure named engineer-plain (*a judge in the producer's window cannot say no exactly where the producer went wrong*). Independence — who judges, relative to who produced — is the only axis this bullet carries. Mechanism (deterministic/LLM) and placement (CI) belong to `the-loop-has-a-name.md`'s naming slide, which this section precedes in deck order; stating them here hands the closer's payload over two slides early, against `vocabulary.md`'s don't-pre-plant line on *eval*. The word itself still lands in `## What You'll Learn`, where signposting is allowed to name what the module earns. `check_pedagogy §9b` variation of the M5 closer's independence law (`the-gate-is-a-claim.md` slide 1, the second-call law): M5 states the law; this bullet makes it the build-time question. Guards: (a) do not escalate to a prescription ("always use a fresh session") — the M5 accept-note keeps the countermove ladder ranked, not mandated; (b) KC bullet 2's over-credit line is the worked instance two bullets up — the rhyme is deliberate, do not dedupe either side; (c) KC slide at 188w/6b, at the bullet cap — extend-don't-append stands.
 
@@ -140,7 +144,7 @@ Antti
 - **Prep / bridge timing:** optional Klaassen verifier article 10 min; human close / team-kit accretion slot 10–15 min.
 - **Mood target:** practitioner fluency — *"I know how to test, I know how to learn, I know how to encode."* Not confidence-as-performance; competence-as-posture. Failure shapes that steal the mood: compliance-feel (*"build the eval, pass the gate"*), paperwork-feel, credibility-performance (*"we live what we teach"*), trainer-monologue retrospective. If any beat reads like one of those, revise.
 - **Delivery architecture:** canonical in training-architecture.md §Working directory model / §Session boundaries / §Material distribution (no training-dir state, no `module-N/` folders). Not restated here. Module-specific: M6 opens a fresh session in the M5 worktree at `../<repo-name>-m5` where both runs already live, then reads, routes, and maps in-place. The handoff prompt from the close is the take-home; skill candidates it surfaces later ship personal-first, team-PR via human conversation — not auto-promoted.
-- **Pre-read placement:** none. M6 opens with `The 2 frontiers` in-room, then `Quality is grounding`; `Story of Module 6` lands after the exercise (Antti 2026-08-30, see the placement note below).
+- **Pre-read placement:** none. M6 deck order (2026-09-02, three-beat re-cut, slides moved and re-tiered, body text untouched pending cards): the-2-frontiers → exercise → the-loop-has-a-name → `## The loop you drew` → composing-the-workflow (opens on the control-loop slide) → the-handoff-prompt → story-of-module-6 → the-map-filled-in → quality-is-grounding → Human close → agents-that-build-agents (last).
 
 **Push-back moves** (trainer delivers):
 - **Connections blocker** — student walks in without one of the two artefacts accessible (laptop closed between M5 and M6, scrollback gone, repo state unclear on the packaged run). Trainer push: *"both artefacts are whatever's there. Commits between M4 and M5 send-offs, files modified during each run, scrollback at `~/.claude/projects/<project>/` if the sessions closed — if M4 and M5 share a cwd, recency alone can grab the wrong attempt; filter by a phrase unique to that send-off's opening prompt instead. Open a fresh Claude Code session in the repo and ask it to surface what each run touched."*
@@ -189,6 +193,6 @@ Antti
 
 Pre-cohort open items for M6: see `pre-cohort-todos.md`.
 
-**`Story of Module 6` lands after the exercise, not in the opener (Antti 2026-08-30).** The front runs `The 2 frontiers`, then `Quality is grounding`, then the exercise; the memo reads once the work is done, so the module's front carries no nine-minute block — it was the largest pre-exercise block left in the training. The memo stays in-module and before `## Key Concepts`, which keeps KC bullet 4's teaching beat (the producer's-window failure) in deck order. `bosser-strategy:content-strategy-agentic-engineering-101.md` § *M6 in detail → Opener* is aligned; the principle an earlier version of that doc stated (*permission works before the work*) is superseded, not merely reordered. A `strategy` judge running against a stale copy of the doc will re-flag the order — the module file is the decision. Do not reorder to match a doc.
+**`Story of Module 6` lands after the exercise, not in the opener (Antti 2026-08-30), and now after the handoff lecture (2026-09-02).** The memo reads once the work is done; the module's front carries no nine-minute block. It stays before `## Key Concepts`, which keeps KC bullet 4's teaching beat (the producer's-window failure) in deck order. `bosser-strategy:content-strategy-agentic-engineering-101.md` § *M6 in detail* carries the same order — the module file is the decision; a `strategy` judge reading a stale copy of the doc will re-flag the order. Do not reorder to match a doc.
 
 **2026-07-05 (cut pass) — Antti.** Two M6 beats cut fully. (1) The *Steering the wiring* lecture: worktree-evidence wiring is plumbing, not a load-bearing concept, and its graduation beat ("you pick, no canonical answer") is already carried by *composing-the-workflow*'s close. (2) The *Arc-named retrospective* exercise (`arc-retrospective`): did not advance the learning; the arc-recognition it aimed at is carried by the Human close and *the-map-filled-in*. Removed everywhere: both `## Start here` links; the arc-retrospective leap-test outcome, artefact-contract row, per-phase failure mode, push-back move, watch-for, decision point, and first-cohort question (above); the `steering-the-wiring` theory-manifest entry (`build-workbook.js`); the `arc-retrospective-1` prompt plus its four `consumed-by` graph refs; the two audit-script hardcodes (`audit-eval-coverage.js`, `audit-ae101-artifact-contracts.js`). Frees ~20 min against the overbooked close. Both files git-rm'd (reversible via history). Companion cross-file cleanups: M5 (`learn-from-the-test.md`) forward-pointer, the sibling exercise's trailing beat line, and the trainer pages.

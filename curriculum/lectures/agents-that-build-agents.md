@@ -2,29 +2,13 @@
 
 The map you just drew ended on a dashed loop, yours to draw solid. This is the move that draws it. *Agents that build agents.* The flywheel: the loop feeding itself, each session leaving the next one sharper. This lecture unfolds it.
 
-## The move widens to everything you do
+## Why the loop survives the model
 
-One skill and one map, same move behind both. The skill, at M3, packaged a piece of judgement you had carried for years (how to write a good test). The map, at M6, named the judgement you spend over and over without packaging it. Every packaged move makes the next session cheaper.
+- The specific Claude you used today will be replaced, probably within months. Each replacement will be better at the work than the current one. None of that changes the move.
+- The three pieces (reference, plan, verifier) are not model features. Neither is the encode loop you ran at M6 (diff, name the gaps, map where the lesson lands). They are a stance toward a thing that does not behave deterministically. Reference because the goal drifts. Plan because the window fills. Verifier because plausible-but-wrong is the default failure mode of a statistical machine. Encode because a lesson learned once and not written down gets learned again next week.
+- Practitioner fluency lives in the stance, not in the tooling. When the next model ships, you will open the same kit, point it at the same three pieces, and run the same loop. The work gets faster. The method does not.
 
-The flywheel turns once more when you hand the agent the move itself. Ask it for a handoff prompt: one you paste into a fresh session later, that studies your work across your repos for the shapes you repeat, draws the ones worth packaging, and authors a skill for each. The same move you practiced at M3, widened to everything you do.
-
-What comes back is a candidate. You read it the way you read any prompt the agent drafts: judgement, push-back, taste. Some of it will be obvious. Some of it will be off. One or two lines will be moves you would not have written on your own.
-
-## The agent stops where your judgement begins
-
-Not the agent writing its own skills without you in the room. You might have hoped that was the destination at the start of this training; at the close of M6, you know it is not. Agents that build agents is a collaboration in the same shape as everything else here. Claude proposes, you steer.
-
-The agent's evidence stops at the disk. It can read the artefacts the loop produced. It cannot read the codebase knowledge in your head, the political situation around the team kit, the next quarter's roadmap, the bug your tech lead lost three days to last sprint. The plan it generates is grounded in the evidence on disk; the decision about which proposals to act on is grounded in evidence the agent does not have.
-
-Build the flywheel to run exactly that far. Let the agent run as far as it can on its own evidence, and stop at the moment your judgement is the input that matters. Anything further pretends the agent has access it does not have.
-
-## The handoff prompt that builds your kit
-
-The shapes you drew are still in the session. Ask the agent to turn them into a prompt that builds the kit.
-
-{{prompt:agents-that-build-agents-handoff}}
-
-What comes back is a prompt, not a plan. Save it where you will find it. The kit you grow on your own is the one that counts.
+The loop feeds itself. That is the flywheel, and it starts with what you encoded today.
 
 ## You make agentic happen
 <!--tier:2-->
@@ -60,28 +44,24 @@ The training closes. The flywheel does not.
 
 **Lean pass (2026-08-25, Antti-directed M3/M6 shorten, free hands):** what-this-is-not slide — hoped-destination pair merged to one sentence, "in the same shape every other part of this training has been a collaboration" tightened; cut "That is the practitioner shape." (§16a); Ralph moral bullet trimmed to "Practitioners see levers first." — its trailing three sentences restated bullets 1 and 3. Soil slide, handoff section, and the two-bullet closer untouched per their contracts. Do not restore.
 
-**Handoff-prompt forcing function, failure mode + escape hatch (`check_pedagogy.md` §47, added 2026-08-20).** Dominant failure is **plan-instead-of-prompt**: asked to turn the session's shapes into something that builds the kit, the agent returns an implementation plan, and the student saves it believing they have the artefact. The body says *"What comes back is a prompt, not a plan"* precisely because this is the common return, but that line diagnoses without recovering. Escape hatch, trainer or self: ask for the prompt itself, in the words you would paste into a fresh session, and check the return opens with an instruction rather than a numbered plan. Second failure is **thin shapes**, where M6 Phase 2's diagrams never got drawn and the handoff has nothing to package; recover by pointing at the ranked recurring work from the study prompt and building from the top two. Terminal beat, so nothing downstream breaks, but the student leaves without the one artefact the module exists to produce.
-
-**§6 carve-out, the answer must be theirs (checked 2026-08-20).** Logged in `pre-cohort-todos.md` as the weakest of six lecture prompts owing the trainer-demo sweep. It is not a violation at all: *"The shapes you drew are still in the session"* and *"The kit you grow on your own is the one that counts"* both name the student's own session and kit, which is §6's tell, so the tell was already present and no body edit is owed. A trainer demo would hand the room the trainer's kit. Leave it student-run; do not re-flag.
-
 
 **Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** narrative closer — slides 1–2 recast from bolded-claim bullets to prose paragraphs; Ralph and closing slides keep bullets, de-bolded fully; zero bold survives in the body (the practitioner story carries itself) — per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Lede, kickers, bash block, and `{{prompt:agents-that-build-agents-handoff}}` section untouched. Wording near-verbatim; no claims added or cut.
 
 **Slides-only pass (2026-07-02, unaudited):** prose body CONVERTED to lede + four slides + one prompt section. Opening two paragraphs → lede (one line, near-verbatim) + slide 1 bullet 1 (two-skills recognition; "Module 3/Module 6" compressed to M3/M6, legal at M6 per `check_student_facing §2` (clause b)); the one-line flywheel paragraph SUBSUMED by slide 1 bullet 2. *The move* + *What this is not* CONVERTED to slides, near-verbatim. *A prompt to try* KEPT prose-shaped — prompt chrome the flow needs; `{{prompt:agents-that-build-agents-handoff}}` untouched; "Read it the way you read any prompt the agent drafts" de-duplicated (now lives only in slide 1 bullet 3). *Ralph* CONVERTED to a slide with the bash one-liner as the slide's diagram element, kicker kept verbatim. *Where the loop ends* CONVERTED to a two-bullet closing slide + kicker; below the 3-bullet floor by design (the arc-final beat is two claims; padding would be restatement). M-refs KEPT under the `check_lectures §3` consolidation carve-out (arc-closer; two-skills recognition + graduation beat, not sequencing).
 
-**Lede anchor (2026-07-03):** the lede picks up the map lecture's *"the next dashed loop is yours to draw solid"* hand-off; this lecture is DEAD-LAST (training's final beat), with *The map filled in* between *The loop has a name* and it. Flywheel stays theme only (*"named a few beats back"*, not an adjacency claim) — do not anchor the lede to *The loop has a name* as the immediately-preceding lecture.
+**Placement:** M6 deck order (2026-09-02, three-beat re-cut, slides moved and re-tiered, body text untouched pending cards): the-2-frontiers → exercise → the-loop-has-a-name → `## The loop you drew` → composing-the-workflow (opens on the control-loop slide) → the-handoff-prompt → story-of-module-6 → the-map-filled-in → quality-is-grounding → Human close → agents-that-build-agents (last). The lede still tees the handoff, which now lives in `the-handoff-prompt.md`; that paragraph awaits a card. The file carries *Why the loop survives the model* (from `the-loop-has-a-name.md`) as its first slide.
 
 **Quality:** compendium-audited 2026-08-29 (writing@4a722813 story@0e4f7c9e technical@8cc00874 behavior@059846ef pedagogy@1abb84c6 strategy@1c765f2 slides@0e4f7c9e)
 - judges @4a722813: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS
 - sim-passed 2026-05-31 (three-persona sim + handoff-generator live-test @182969a): generated handoff is cold-safe — named shapes carried, on-disk `session-shaper` referenced as the worked example, repos re-studied, no placeholders. Sim-grade (constructed M6 context); a real-cohort live-test on an actual M6 close is still owed — no cohort has run it yet. Per-class instances at `curriculum/evals/instances/ae101--lecture--agents-that-build-agents.<class>.json`. Predates the slide rework.
 
-**Lecture meta:** *6–8 min reading, closer-shaped. Lands as the very last teaching beat in Module 6, immediately after* The map filled in *(the penultimate consolidation beat). It picks up that lecture's "next dashed loop is yours to draw solid" hand-off and draws the loop solid; the flywheel was named two beats earlier in* The loop has a name *before it. Voice: Risto-leading (the optimistic-action-on-the-future register Module 6's mood arc warrants), Boris-grounding (the prompt is concrete and runnable), Martin-spare (the move + its alternative — collaboration, not autonomous-agent fantasy). Sutherland surfaces in the *what this is not* slide. Pedagogical bet: the flywheel survives the model; naming it as collaboration, not autonomy, is what keeps it survivable.*
+**Lecture meta:** *Closer-shaped, the module's last teaching beat. Voice: Risto-leading, Boris-grounding, Martin-spare. Pedagogical bet: the flywheel survives the model; naming it as collaboration, not autonomy, is what keeps it survivable.*
 
-**Time:** 8 minutes.
+**Time:** 6 minutes.
 
 **Soil slide — *You make agentic happen* (2026-08-15, Antti-directed; buried-gold item, relocated from `the-map-filled-in.md`):** full slide between the handoff prompt and *Ralph*, the soil line's one spoken home. Antti's calls, all three: title verbatim; bullets first, provenance line after as a small aside; strip wording *act under uncertainty · competence sets the ceiling · cross personal → team* (*gate* is banned student-side, *a move counts* is scorekeeper register; design-side names + student-form pointer in `theory-plan.md` §0). Register: Godin-leading inside the Risto closer; bullet bodies are Antti's kernels, lightly shaped (2026-08-15) — *possibly* → *I have something* as the acting phase-change · reps and pathways (*think different* keeps its broken grammar, the same game the title plays) · *Share and learn together.* as the open-handed landing. Guards: (a) one bold handle per order = the law-slide pattern; (b) the slide never names Ralph — the next slide is the unspoken worked example (Huntley acted under uncertainty; the check is Ralph's stopping condition; he gave it away and the name stuck), trainer says the connection, body does not; (c) title is the engineer-side voice of *Accumulated, not enabled* (`theory-plan.md` §3) — you, not the product, make agentic happen; the system-side twin sits on `the-map-filled-in.md`'s control-loop slide; (d) the strip rides all four map figures visually — this slide is its only spoken home, do not add siblings.
 
-**Placement:** Module 6 closer chain (2026-07-03, Antti) — Human close → The loop has a name → The map filled in → Agents that build agents (dead-last) → Next. This lecture picks up The map filled in's kicker *"the next dashed loop is yours to draw solid."* The loop has a name's kicker reads *"The loop feeds itself. That is the flywheel, and it starts with what you encoded today."* — keep the two in step.
+**Kicker pairing:** the survives-the-model kicker *"The loop feeds itself…"* and the closing *"The training closes. The flywheel does not."* now sit in one file; keep them in step.
 
 **Why a separate lecture, not an extension of *The loop has a name*:** the closing lecture earns the word *eval* from the M5 verifier and the ranked check-menu. That earning beat needs to land cleanly. Adding a flywheel-extension slide dilutes the earning. The flywheel is its own move, named separately.
 
@@ -95,12 +75,6 @@ Claims
 - `pathways-show-the-next-level` · vision · "The pathways you build show you the next level." ← none-owed
 - `share-and-learn-together` · vision · "Share and learn together." ← none-owed
 - `soil-on-the-map-the-whole-time` · vision · "These have been on the map the whole time: the small print along the bottom, there since M2." ← none-owed
-- `every-packaged-move-cheapens-the-next-run` · vision · "Every packaged move makes the next session cheaper." ← none-owed
-- `hand-the-agent-the-move-itself` · vision · "The flywheel turns once more when you hand the agent the move itself." ← none-owed
-- `what-comes-back-is-a-candidate` · vision · "What comes back is a candidate." ← none-owed
-- `not-agent-writing-its-own-skills` · vision · "Not the agent writing its own skills without you in the room." ← none-owed
-- `agents-evidence-stops-at-the-disk` · vision · "The agent's evidence stops at the disk." ← none-owed
-- `stop-where-your-judgement-is-the-input` · vision · "stop at the moment your judgement is the input that matters" ← none-owed
 - `huntley-saw-a-lever` · detail · "Geoffrey Huntley saw a lever." ← huntley-ralph
 - `ralph-one-line-shell-loop` · detail · "The fix already existed in shell: one line, no scaffolding." ← huntley-ralph
 - `named-after-the-simpsons` · detail · "He called it Ralph, after the Simpsons." ← huntley-ralph
@@ -119,7 +93,6 @@ Sources
 Frameworks
 - Ralph loop · [borrow:none] · law:none · ← huntley-ralph — practitioner-coined, credited in body by name
 - The compound ladder · [borrow:none] · law:the-compound-ladder · ← none — fix → memory → skill → system is the flywheel this lecture runs one turn further
-- Principal–agent · [borrow:economics] · law:principal-agent · ← cultural-vocab — "the agent stops where your judgement begins" is the delegation boundary drawn at the limit of the agent's evidence
 
 Stance `[stance:2026-08-01 level:L1]`
 - holds: that the Ralph loop is Huntley's and that it was a shell one-liner before it was a product feature. Both are first-hand and settled. The lecture's larger argument — that the flywheel stops where the agent's evidence stops — is our framing, and the body carries it as a position rather than a finding.
@@ -134,8 +107,3 @@ OODA
 - last-run: 2026-08-01
 
 <!-- /backing -->
-
-**Prompt block:** `agents-that-build-agents-handoff` — the agent reads the recurring-work shapes and the ranked primitives menu from the session and writes the student a standalone, cold-runnable prompt that builds workflow skills across their whole stack (study then diagram then author). Anchoring (authoring-sequence cut, 2026-08-01): requires only `recurring-shape-diagrams` (the `-shapes` output), not a shipped skill — the registry entry is the authority on prerequisites.
-
-**Open for next pass:**
-- Real-cohort gold standard: the handoff-generator live-test that cleared pedagogy was sim-grade — constructed M6 context (six named shapes, a stand-in skill), and it predates the 2026-08-01 re-anchor (shapes + primitives, no shipped skill). A live-test on an actual student's M6 close (their real shapes, their ranked menu) is the real-cohort bar; owed until a cohort runs.

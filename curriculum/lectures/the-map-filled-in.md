@@ -11,29 +11,12 @@ The map is back, one last time.
 - What fills it is what got built. The verifier from the M5 packaging and the test-strategy skill authored at M3 are checks that stand without you. A loop made of checks that stand without you gets drawn solid; the stack-map you drew names where the next ones land.
 - Nothing else moved. Same six phases, same loops, same wall at the team's edge. The far half kept its shape and gained its names, the way the near half did at the M3 close.
 
-## You drew a control loop
-<!--tier:2-->
-
-{{figure:student-closed-loop}}
-
-- You drew a control loop. Shape the session before it moves, watch what comes back, correct, encode. That is **feedback control** around a non-deterministic agent, and it is the shape the whole map has had from the start.
-- The near half shapes; the far half corrects. Intent, context, and the plan set the target before the session starts; the far half reads what came back, takes up what passed, and encodes what the session taught, changing the system so the next session starts better.
-- Verification is the sensor. A loop with no way to read its own result runs open: send the work off and hope. The checks you built are how this loop reads what came back. They are the part that lets the system catch its own error before it ships.
-- The harness makes continuing possible. What a session gets right without you is set by what has accumulated around it: rules, durable state, checks, encoded corrections. The M4 send-off and the M5 re-send: same model, same harness, two different agents.
-
 ## Verification, named
 <!--tier:2-->
 
 - **Find is easier than judge.** (Verification) The agent finds; you judge. The split was named at M2 over a plan, and out here it becomes a whole phase: on a long-running session the finding happened without you, so the judging is the cost that is left.
 - **The three-pattern** stands in for you at Verification. (Verification) Reference against goal drift, plan.md against context rot, verifier against plausible-but-wrong. The first two hold the session on course while it moves; the verifier is the piece that does your checking when the result comes back.
 - **Verifier, judge, gate: every one an eval.** (Verification) A deterministic check, an LLM reading the work, the same check placed in CI. One automated thing that says this meets the bar your work requires, and it is what the checking loop now runs on.
-
-## Absorption, named
-<!--tier:2-->
-
-- **Generation is fast; reading, judging, and merging are not.** (Absorption) The gap between those two speeds decides real throughput. The M5 re-send ran with the laptop closed; what was left when it came back was all reading.
-- **Review bandwidth is the constraint** composition cannot relax. (Absorption) Chain workflows end to end and every output still lands on the same reading budget. Each eval that stands without you buys a piece of that budget back.
-- **The ratio runs near 80/20.** (Absorption) Roughly 80 percent planning and review, 20 percent execution: compound engineering's posture. The session is the cheap part; the reading and shaping around it are where the hours live.
 
 ## Outcome, named
 <!--tier:2-->
@@ -48,6 +31,13 @@ The map is back, one last time.
 - The far half has one question, and it arrived at the M4 send-off. *When the agent takes a hundred steps alone, what makes you trust the result at the end?* It fires before the session, costs one sentence, and decides what gets packaged.
 - Its answer turned into a build list. At M4 the answer was nothing yet, watch. By M6 the answer names checks: which verifier, which hook, which judge stands at the end of this session. A session the question has no answer for is a session not ready to send.
 - It travels. It prices the next send-off and picks which check to author first, and it pairs with the near half's question: name the uncertainty before you move, then name what earns your trust at the end. Two questions, one sentence each, before any work moves.
+
+## Absorption, named
+<!--tier:3-->
+
+- **Generation is fast; reading, judging, and merging are not.** (Absorption) The gap between those two speeds decides real throughput. The M5 re-send ran with the laptop closed; what was left when it came back was all reading.
+- **Review bandwidth is the constraint** composition cannot relax. (Absorption) Chain workflows end to end and every output still lands on the same reading budget. Each eval that stands without you buys a piece of that budget back.
+- **The ratio runs near 80/20.** (Absorption) Roughly 80 percent planning and review, 20 percent execution: compound engineering's posture. The session is the cheap part; the reading and shaping around it are where the hours live.
 
 ## The map, filled in
 <!--tier:2-->
@@ -74,7 +64,7 @@ The map is back, one last time.
 
 **Commissioned:** 2026-07-02 — theory-completeness-review finding #1 (far half never closes) + Antti ("let's complete the theory addition", 2026-07-02). Far-half twin of `the-loop-half-filled` (M3's near-half consolidation closer).
 
-**Placement / wiring (amended 2026-07-03):** M6 close — the PENULTIMATE beat, between `the-loop-has-a-name` and `[Agents that build agents]` in `spot-gaps-build-the-loop.md`. This lecture closes the THEORY (the far-half consolidation) as penultimate; `agents-that-build-agents` closes the TRAINING as its final forward-launch beat. The kicker "The next dashed loop is yours to draw solid" now hands into `agents-that-build-agents` — that consolidation→launch handoff is load-bearing. (Antti re-sequence 2026-07-03; supersedes the prior "must be last include, after `agents-that-build-agents`; do NOT wedge between `the-loop-has-a-name` and `agents-that-build-agents`" note, which assumed the two beats were adjacent.) The module file carries the bridge sentence into the final beat ("One move is left, and it runs past the edge of this room."). Also listed in `THEORY_HANDBOOK_MANIFEST` M6 group (`scripts/build-workbook.js`). Consolidation and recognition, NOT new teaching (`check_lectures §1`). Module refs in body (M1–M6 ranges) are the §3 arc carve-out — the lecture's subject IS the arc.
+**Placement / wiring:** M6 deck order (2026-09-02, three-beat re-cut, slides moved and re-tiered, body text untouched pending cards): the-2-frontiers → exercise → the-loop-has-a-name → `## The loop you drew` → composing-the-workflow (opens on the control-loop slide) → the-handoff-prompt → story-of-module-6 → the-map-filled-in → quality-is-grounding → Human close → agents-that-build-agents (last). This lecture closes the THEORY (the far-half laws named); the control-loop slide moved to `composing-the-workflow.md` where it opens the loop beat, and *Absorption, named* sits last before the closing slide at T3.
 
 **Artifact contract (Family B):** per named law → {NAME · MAP-POSITION · MECHANISM · GOVERNOR}; the governor gets its own slide (one for the whole half), same shape as the twin. Judge against `theory-evals.md` B★ (durability-without-voice) and B2 (dose — flag the verdict below).
 
@@ -84,7 +74,7 @@ The map is back, one last time.
 
 **SVG:** derived from `the-whole-map.md`'s engine canvas — same drawing, four edits: checking-loop ellipse solidified (dasharray dropped, stroke 1.8→2.6, opacity 0.45→0.9), tag un-ghosted (`◌` dropped, grey→teal), sub reworded `by hand for now` → `by your evals now` (fill now inherits the body ink), aria-label updated. ALL ids re-prefixed `wm-` → `mf-` (the theory handbook renders both copies on one page; duplicate ids break defs and markers). The figure block is blank-line-free ON PURPOSE — a blank line inside terminates the raw-HTML block in marked and spills markup (verified failure mode in this repo). The parent M2 SVG is itself an unreviewed draft with open eyeball questions (incl. whether the checking ghost survives at all); if the M2 map changes, re-derive this copy.
 
-**Time:** 10 min target at recognition pace (the twin's budget). M6's closer slot is budgeted 15 min and already carries three lectures — see eyeball Q1.
+**Time:** 8 min target at recognition pace (the twin's budget). M6's closer slot is budgeted 15 min and already carries three lectures — see eyeball Q1.
 
 **Delivery mode:** In-room close, projected. The re-shown map with the solid checking loop IS the slide.
 

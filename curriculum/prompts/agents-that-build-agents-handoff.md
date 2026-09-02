@@ -3,7 +3,7 @@ key: agents-that-build-agents-handoff
 dest: Claude Code
 context: same session, at the close after the stack scan
 runtime: any
-origin: lectures/agents-that-build-agents
+origin: lectures/the-handoff-prompt
 requires:
   - id: recurring-shape-diagrams
     source: prompt:spot-gaps-build-the-loop-shapes

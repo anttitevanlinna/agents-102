@@ -8,7 +8,7 @@
 - The three pieces (reference, plan, verifier) are not model features. Neither is the encode loop you ran at M6 (diff, name the gaps, map where the lesson lands). They are a stance toward a thing that does not behave deterministically.
 - Practitioner fluency lives in the stance, not in the tooling. When the next model ships, you will open the same kit, point it at the same three pieces, and run the same loop. The work gets faster. The method does not.
 
-The loop feeds itself. That is the flywheel, and it starts with what you encoded today.
+The loop feeds itself. That is the flywheel.
 
 ## You make agentic happen
 <!--tier:2-->
@@ -45,7 +45,7 @@ The training closes. The flywheel does not.
 
 **Soil slide — *You make agentic happen* (2026-08-15, Antti-directed; buried-gold item, relocated from `the-map-filled-in.md`):** full slide between the handoff prompt and *Ralph*, the soil line's one spoken home. Antti's calls, all three: title verbatim; bullets only (the provenance line *the small print along the bottom, there since M2* was cut 2026-09-02, Antti); strip wording *act under uncertainty · competence sets the ceiling · cross personal → team* (*gate* is banned student-side, *a move counts* is scorekeeper register; design-side names + student-form pointer in `theory-plan.md` §0). Register: Godin-leading inside the Risto closer; bullet bodies are Antti's kernels, lightly shaped (2026-08-15) — *possibly* → *I have something* as the acting phase-change · reps and pathways (*think different* keeps its broken grammar, the same game the title plays) · *Share and learn together.* as the open-handed landing. Guards: (a) one bold handle per order = the law-slide pattern; (b) the slide names no worked example (Ralph, its former neighbour, was cut 2026-09-02); (c) title is the engineer-side voice of *Accumulated, not enabled* (`theory-plan.md` §3) — you, not the product, make agentic happen; the system-side twin sits on `the-map-filled-in.md`'s control-loop slide; (d) the strip rides all four map figures visually — this slide is its only spoken home, do not add siblings.
 
-**Kicker pairing:** the survives-the-model kicker *"The loop feeds itself…"* and the closing *"The training closes. The flywheel does not."* now sit in one file; keep them in step.
+**Kicker pairing:** the survives-the-model kicker *"The loop feeds itself. That is the flywheel."* and the closing *"The training closes. The flywheel does not."* now sit in one file; keep them in step.
 
 **Why a separate lecture, not an extension of *The loop has a name*:** the closing lecture earns the word *eval* from the M5 verifier and the ranked check-menu. That earning beat needs to land cleanly. Adding a flywheel-extension slide dilutes the earning. The flywheel is its own move, named separately.
 

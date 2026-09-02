@@ -8,6 +8,12 @@ Moved out of `pre-cohort-todos.md` on 2026-08-15, unchanged in substance: they w
 
 ## Open
 
+- **`grandfathered` on a never-judged file reads as pinned.** Stamping two classes on `read-your-stack.md` (no prior Quality line) wrote the other five as `grandfathered`; `scan-stale-classes` then lists only `slides(never)` and drops writing / technical / behavior / strategy, which no judge has ever cleared (2026-09-02). A class with no prior row should stamp as `never`, not inherit a rung it never had.
+
+- **`stamp-from-reeval.js` aborts the whole run on the first `update-quality.sh` refusal.** `execFileSync` throws on one file's sha gate and every later file goes unstamped; the run has to be finished by hand per file (2026-09-02, M6: one UNKNOWN class on the stack exercise cost the other five files their stamps until re-run manually). Catch per file, record REFUSED with the gate's reason, continue.
+
+- **A resumed sweep re-prefills instances mid-edit and records an uncommitted body sha.** `prefill-instance.js --merge` writes `body_sha` from the working tree at splice time; when the maintainer edits the file during the run, the recorded hash anchors to no commit and `stamp-safe` reports UNKNOWN for a verdict that was fine (read-your-stack technical/behavior/strategy, 2026-09-02). Either merge without touching `body_sha` (the judge's own hash is the record) or refuse to splice onto a dirty file.
+
 - **`na_reason: null` on carried_from parked rows propagates across the instance chain.** `prefill-instance.js` writes the null and the gap rides every subsequent `--merge` splice. Closing it needs a design call on where `na_reason` originates (the shape-hash parker at sidecar-write vs the `--merge` splice), a `prefill-instance.js` change plus its `.test.js`, and a backfill across sidecars and instance JSONs — schedule the backfill around live peer sessions holding instance dirt.
 
 - **`check_prompts.md` frontmatter claims `storytelling` in `eval_classes`, but the story judge template never loads it.** The template's owned-judgments section and completeness contract don't name check_prompts, precedent instances emit zero rows, and `check_pedagogy §43(c)` hands prompt-fence mechanics to the Class B judge. Two one-line fixes point opposite ways: drop `storytelling` from check_prompts.md's `eval_classes` (aligns frontmatter with template and precedent), or add check_prompts to the story template's contract. Corpus-wide judge-input change — maintainer's call, and it affects every future story dispatch.

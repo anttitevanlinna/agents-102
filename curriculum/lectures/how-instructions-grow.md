@@ -93,5 +93,5 @@ OODA
 
 <!-- /backing -->
 
-**Quality:** compendium-audited 2026-08-29 (writing@4a722813 story@d065f8bc technical@8cc00874 behavior@a1ddfae2 pedagogy@a1ddfae2 strategy@8a0ecc18 slides@d065f8bc)
-- judges @4a722813: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-09-02 (writing@c0c37913 story@c0c37913 technical@8cc00874 behavior@a1ddfae2 pedagogy@a1ddfae2 strategy@8a0ecc18 slides@c0c37913)
+- judges @c0c37913: writing PASS, story PASS (2 todos see instances/ae101--lecture--how-instructions-grow.story.json), technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS (1 todo see instances/ae101--lecture--how-instructions-grow.slides.json)

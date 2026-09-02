@@ -1,7 +1,7 @@
 {
   "class": "slides",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/when-a-plan-is-good.md",
-  "body_sha": "40b305740ab7bb582fd560cf2266144b7a1b51c018598171b6573bd490779ff8",
+  "body_sha": "71d5a86c24ed1de29abd6d7d0a738d552d4ac871a7d6b89e0761791e9a1051ca",
   "shape_hash": "8039777dfcdd8e3e",
   "verdict": "PASS",
   "training": "ae101",
@@ -29,12 +29,12 @@
     {
       "index": 4,
       "heading": "Plan review is a high-leverage gate",
-      "lines": "29-35"
+      "lines": "29-34"
     },
     {
       "index": 5,
       "heading": "What you can test and check sets your complexity ceiling",
-      "lines": "36-46"
+      "lines": "35-44"
     }
   ],
   "rules_evaluated": [
@@ -44,7 +44,7 @@
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Checked all 6 chunks (0-5) for referent resolution against the CURRENT body (post 2026-08-29 opening-slide cut). Closest candidate: chunk 5 line 42 'The plan read is a calibration move.' 'The plan read' is not used verbatim earlier, but composes two terms the deck already carries: 'the read' (chunk 4 line 34, 'Aim the read at the unknown that teaches you the most', under the header 'Plan review is a high-leverage gate') and 'the plan' (used throughout chunks 2-4). A sequential reader holds both halves from the immediately preceding slide, so the compound resolves rather than strands. Also checked: 'the three pressures' (chunk 5 line 43, 'Reach without calibration is what the three pressures produce') points back to chunk 3's own header (line 23) — one slide back, ordinary deck narration, the carve-out's own worked example ('a term introduced on an earlier slide of the same file and reused'). 'the question' (chunk 1 line 11, 'put the question to your own session') resolves to the prompt block immediately following in the SAME chunk (line 13), not a forward reference. Chunk 0's 'your own session' (via chunk 1 line 11) resolves to the Session widget in chunk 0 (line 3), which counts as prior context per the template. No never-named or vague-with-full-history referent found anywhere in the body. Harm the rule guards against (a reader stranded with no candidate antecedent) is absent.",
+      "evidence": "All 6 chunks checked under a sequential read. Closest candidate: chunk 5 line 40 'The plan read is a calibration move.' — 'the plan read' isn't used verbatim earlier, but composes two terms the deck already carries by that point: 'the read' (chunk 4 line 33, 'Aim the read at the unknown that teaches you the most', under header 'Plan review is a high-leverage gate') and 'the plan' (used throughout chunks 2-4). A reader holding the immediately preceding slide resolves the compound; not a stranded referent. Second candidate: chunk 5 line 41 'Reach without calibration is what the three pressures produce' — 'the three pressures' points at chunk 3's own header (line 23), two slides back, the carve-out's own worked example ('a term introduced on an earlier slide of the same file and reused'). Chunk 1 line 11 'put the question to your own session' resolves to the prompt in the SAME chunk (line 13), immediate continuation, not forward-pointing. Chunk 1's 'your own session' resolves to the Session widget in chunk 0 (line 3), prior context per the template. No never-named or vague-with-full-history referent anywhere in the body. The harm the rule guards against — a reader stranded with no candidate antecedent — is absent throughout.",
       "fix_hint": null,
       "blocking": true
     },
@@ -54,7 +54,7 @@
       "rule_lead": "Cross-file and positional callbacks.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "grep -inE 'below|above|further down|at the top|see below|earlier (module|lecture)|opening lecture|previous (module|lecture)|the last (lecture|module|exercise)' over curriculum/evals/body-views/ae101--lecture--when-a-plan-is-good.body.txt → 0 hits (run this session). grep -inE '\\[[^]]+\\]\\(' (markdown link syntax) over the same file → 0 hits — no navigational pointers to check either. No chunk names or locates another file by position; the only named practitioner (Dex Horthy, chunk 2 line 21, '(Dex Horthy)') is a bare person-credit, not a file callback. The five slides are self-contained across the whole read; nothing points at 'the opening lecture' or any sibling module file.",
+      "evidence": "grep -inE 'below|above|further down|at the top|see below|earlier (module|lecture)|opening lecture|previous (module|lecture)|the last (lecture|module|exercise)' over curriculum/evals/body-views/ae101--lecture--when-a-plan-is-good.body.txt → 0 hits (run this session). grep -inE '\\[[^]]+\\]\\(' (markdown link syntax) over the same file → 0 hits — no navigational pointers to check either. No chunk names or locates another file by position; the only named practitioner (Dex Horthy, chunk 2 line 21, '(Dex Horthy)') is a bare person-credit, not a positional file callback. All five slides are self-contained; nothing points at 'the opening lecture' or a sibling module file by where it sits.",
       "fix_hint": null,
       "blocking": true
     },
@@ -64,7 +64,7 @@
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Closest candidate, and the one that changed this pass: chunk 1 ('Ask plan mode what changed', lines 9-14). The 2026-08-29 edit cut the slide's only interpretive bullet, leaving header + one frame clause (line 11: 'Enter plan mode, then put the question to your own session:') + a live Prompt widget (line 13, expanded text: 'How did your behaviour change now that we are in plan mode? Did your base prompt change, or what?'). This is NOT the rule's violation shape (a wait-state or one context-dependent bullet that says nothing standalone) — the slide is a complete, actionable instruction a student can execute with no forward or backward dependency, and the prompt's own text is real content, not filler. Maintainer block (line 61, 2026-08-25/2026-08-29) documents this as the deliberate 'one prompt-led slide' shape, and line 65 attests the prompt is 'load-bearing, not a cut candidate... That is why it leads the lecture rather than trailing it as an optional aside.' Every other chunk (2-5) carries 3-5 substantive bullets of its own.",
+      "evidence": "Closest candidate: chunk 1 ('Ask plan mode what changed', lines 9-14) — header + one frame clause (line 11: 'Enter plan mode, then put the question to your own session:') + a Prompt widget (line 13, expanded text: 'How did your behaviour change now that we are in plan mode? Did your base prompt change, or what?'). Not the rule's violation shape (a wait-state or one context-dependent bullet saying nothing standalone): the slide is a complete, executable instruction with real content in the prompt itself, no forward or backward dependency. Maintainer block (line 59) documents this as the deliberate 'one prompt-led slide' shape and (line 63) attests the prompt is 'load-bearing, not a cut candidate... That is why it leads the lecture rather than trailing it as an optional aside.' Every other chunk (2-5) carries 3-5 substantive bullets of its own.",
       "fix_hint": null,
       "blocking": false
     },
@@ -74,7 +74,7 @@
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Checked all 5 `##` headers against their own (current) chunk content. Chunk 1 'Ask plan mode what changed' (line 9): the chunk's frame clause plus prompt literally do that — ask plan mode a question about what changed in its own behaviour (prompt text: 'How did your behaviour change now that we are in plan mode?'). Post-cut this is a TIGHTER match than before (no side bullet the header doesn't cover). Chunk 2 'Five things a good plan has' (line 15): exactly five bolded-handle bullets follow (lines 17-21). Chunk 3 'Three pressures that make bad plans look good' (line 23): exactly three follow (lines 25-27). Chunk 4 'Plan review is a high-leverage gate' (line 29): bullets state the check-before-implementation claim (line 32) and the propagation cost of a missed correction (line 33) — header holds. Chunk 5 'What you can test and check sets your complexity ceiling' (line 36): bullets define reach/calibration (line 41) and state the ceiling moves (line 45) — matches; maintainer block (line 49-53) confirms this is the deliberate model-naming design.",
+      "evidence": "Checked all 5 `##` headers against their own chunk content. Chunk 1 'Ask plan mode what changed' (line 9): frame clause + prompt literally do that (prompt text: 'How did your behaviour change now that we are in plan mode?'). Chunk 2 'Five things a good plan has' (line 15): exactly five bolded-handle bullets follow (lines 17-21). Chunk 3 'Three pressures that make bad plans look good' (line 23): exactly three follow (lines 25-27). Chunk 4 'Plan review is a high-leverage gate' (line 29): bullets state the check-before-implementation claim (line 31) and the propagation cost of a missed correction (line 32) — header holds. Chunk 5 'What you can test and check sets your complexity ceiling' (line 35): bullets define reach/calibration (line 39) and state the ceiling moves (line 43) — matches; maintainer block (lines 47-53) confirms this is the deliberate model-naming design. No header the chunk's own content contradicts.",
       "fix_hint": null,
       "blocking": false
     },
@@ -84,7 +84,7 @@
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Scanned all 6 chunks for the five sub-items against the current body. 'Not X. Not Y. Z.' construction: grep -nE '\\bNot [A-Z][a-z]+\\.\\s+Not [A-Z][a-z]+\\.' over the body projection → 0 hits (chunk 2 line 17's 'Not \"update the config.\"' is a single negation followed by descriptive sentences, not the banned triple). Anaphora/epistrophe triples: none — chunk 5's two 'Every ___' sentences sit in separate, non-adjacent bullets (lines 41 and 45), not a consecutive triple. Self-grading superlatives: 0 — closest is 'high-leverage gate' (line 29), a mechanism claim about the plan-review move itself, not self-praise about the training or exercise; view's own value-prop-adjacent greps (the_student, author_we) return 0 hits. Number + own retraction: the only numbers are the worked verification example ('expect 14 passing, 0 failing', line 19) and 'A 7-item plan' (line 25), both concrete and neither hedged nor retracted; 'five things' (line 15) and 'three pressures' (line 23) are firm catalogue counts, not hedged approximations. Abstraction-noun stacks: 0. Empty-leg verb triplets: none present (no triple-verb construction anywhere in body).",
+      "evidence": "Scanned all 6 chunks for the five sub-items. 'Not X. Not Y. Z.' construction: grep -nE '\\bNot [A-Z][a-z]+\\.\\s+Not [A-Z][a-z]+\\.' over the body projection → 0 hits (run this session; chunk 2 line 17's 'Not \"update the config.\"' is a single negation inside a sentence, not the banned triple). Anaphora/epistrophe triples: none — chunk 5's two 'Every ___' openers sit in separate, non-adjacent bullets (lines 39 and 43), not a consecutive triple. Self-grading superlatives: 0 — closest is 'high-leverage gate' (line 29), a domain claim about the plan-review move itself, not self-praise about this training or exercise; the view's own value-prop-adjacent greps (the_student, author_we) return 0 hits, and the exercise (not this lecture) is what would have to prove the claim. Number + own retraction: the only numbers are the worked verification example ('expect 14 passing, 0 failing', line 19) and 'A 7-item plan' (line 25), both concrete and unhedged; 'five things' (line 15) and 'three pressures' (line 23) are firm catalogue counts, not retracted approximations. Abstraction-noun stacks: 0 — 'reach', 'calibration', 'the ceiling' are each defined concretely in the bullet that introduces them (lines 39-40). Empty-leg verb triplets: none present anywhere in body.",
       "fix_hint": null,
       "blocking": true
     },
@@ -94,7 +94,7 @@
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "grep -inE '\\b(surface|firing|compendium|forcing function|beat|beats|mood|Connections)\\b' over lines 1-46 of the current body (raw source) → 0 hits (run this session, Python re.findall over the file text). Only maintainer-dialect-adjacent term in body is 'leverage' (line 29, 'high-leverage gate'); the view's mechanical grep confirms 1 hit for the pattern \\bleverag(e|es|ing)\\b, but that pattern is check_writing.md's banned-word/verb-form check, not check_slides §8's repo-dialect list — here 'high-leverage' is an adjectival compound describing the mechanism, not maintainer shop-talk (surface-as-noun, firing, compendium, beat, mood). The `<!--tier:2-->` markers (lines 30, 37) are non-rendering HTML comments consumed by the renderer into a hidden `.slide-tier` block (site/layouts/curriculum.js expandTiers) — they never render as visible slide text, so they cannot 'land on a slide' under this rule regardless of vocabulary.",
+      "evidence": "grep -inE '\\bsurface\\b|\\bfiring\\b|\\bcompendium\\b|\\bforcing function\\b|\\bbeat\\b|\\bmood\\b|\\bConnections\\b' over curriculum/evals/body-views/ae101--lecture--when-a-plan-is-good.body.txt → 0 hits (run this session). No `<!--tier:-->` or other maintainer markup appears in the current body (checked: grep -n 'tier:' over the raw source → 0 hits in the body region; an older committed version of this file carried tier markers that were removed well before the current HEAD). Only maintainer-dialect-adjacent term anywhere in the body is 'leverage' (line 29, 'high-leverage gate'); that's check_writing.md's banned-verb-form lane (view's leverage_verb grep: 1 hit), not check_slides §8's repo-dialect list — 'high-leverage' here is an adjectival compound describing the mechanism, not maintainer shop-talk (surface-as-noun, firing, compendium, beat, mood). Out of lane for this class; recorded in `notes`, not filed as a rule 8 finding.",
       "fix_hint": null,
       "blocking": true
     },
@@ -104,7 +104,7 @@
       "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Bold audit per chunk, current body. Chunk 1: 0 bold in body prose (the 'Prompt' widget label is UI chrome, not counted, consistent with the maintainer note's 'Session widget + both kickers untouched'). Chunk 2 'Five things a good plan has': 5 bolded handles (lines 17-21: 'A specific file list' 4w, 'An early runnable slice' 4w, 'A verification step' 3w — trimmed to sub-span, 'Named assumptions' 2w, 'A list of non-goals' 5w). Chunk 3 'Three pressures...': 3 bolded leads (lines 25-27: 'Structure is persuasive' 3w, 'Reasonableness passes for rightness' 4w, 'You already agree with it' 5w) — full clauses rather than noun phrases, the closest call in the file to the banned 'whole lead sentence' pattern, but each stays within the ≲5-word handle cap. Chunks 2 and 3 both exceed the default ≤1-per-slide budget, but the maintainer block's dated accept-note (line 59, 2026-07-09, Antti-directed 'go very lightly on the bold') explicitly authorizes exactly this shape on 'the two checklist slides' by name, citing `check_slides.md §9` itself. Chunks 4 and 5: 0 bold (maintainer line 55 confirms chunk 5 is deliberately 'Zero bold, header carries the handle'). No slide exceeds the handle-length cap; no slide shows the pre-2026-07-09 every-bullet-bolded monoculture.",
+      "evidence": "Bold audit per chunk (grep -n '\\*\\*' over the raw source, cross-checked against the current file). Chunk 0/1: 0 bold in body prose (the Session/Prompt widget labels are UI chrome, not counted). Chunk 2 'Five things a good plan has': 5 bolded handles (lines 17-21: 'A specific file list' 4w, 'An early runnable slice' 4w, 'A verification step' 3w — trimmed to sub-span per the maintainer note, 'Named assumptions' 2w, 'A list of non-goals' 5w). Chunk 3 'Three pressures...': 3 bolded leads (lines 25-27: 'Structure is persuasive' 3w, 'Reasonableness passes for rightness' 4w, 'You already agree with it' 5w) — full clauses, the closest call in the file to the banned whole-lead-sentence pattern, but each stays within the ≲5-word handle cap. Chunks 2 and 3 both exceed the default ≤1-per-slide budget, but the maintainer block's dated accept-note (line 57, 2026-07-09, Antti-directed 'go very lightly on the bold') explicitly authorizes exactly this shape on 'the two checklist slides' by name, citing `check_slides.md §9` itself. Chunks 4 and 5: 0 bold (maintainer line 53 confirms chunk 5 is deliberately 'Zero bold, header carries the handle'). No slide exceeds the handle-length cap; no slide shows the pre-2026-07-09 every-bullet-bolded monoculture.",
       "fix_hint": null,
       "blocking": false
     },
@@ -114,7 +114,7 @@
       "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "This is a shared `curriculum/lectures/` file (not a supplementary or reference page, the two surface types the 2026-07-09 incident found dropped from the deck). Confirmed included by its host module: `grep -n when-a-plan-is-good curriculum/trainings/agentic-engineering-101/plan-mode-done-right.md` → line 32, `[Lecture: When a plan is good](lectures/when-a-plan-is-good.md)` (run this session), a standard lecture include rendering under the `.phase--lecture` wrapper per `buildDeckModel`. The file has no phase-less prose section of its own ('## Prework'/'## Supplementary'/'## Reference') that could be buffered and dropped — it is H1 + Session widget + five `##` chunks + maintainer/backing cut, uniformly wrapped as one shared lecture. `node scripts/check-slide-size.js --file curriculum/lectures/when-a-plan-is-good.md` → 'files: 1  slides: 5' (run this session) confirms the renderer's own deck model counts the same 5 slides the body_regions imply — no slide silently dropped by the composed-deck path.",
+      "evidence": "This is a shared `curriculum/lectures/` file with no phase-less prose section of its own ('## Prework'/'## Supplementary'/'## Reference') — it is H1 + Session widget + five `##` chunks + maintainer/backing cut, uniformly composed under whatever host module includes it, matching the two dropped-surface types (supplementary, reference) the 2026-07-09 incident named as the at-risk shape. No `<!--flag:module:X-->`/`<!--flag:no-module:X-->` runtime forks present (grep -n '<!--flag:' → 0 hits, run this session), so no branch-resolution risk either. `node scripts/check-slide-size.js --file curriculum/lectures/when-a-plan-is-good.md` → 'files: 1  slides: 5' (run this session) — the renderer's own deck-sizing pass counts the same 5 `##` slides body_regions implies; no slide silently absorbed or dropped.",
       "fix_hint": null,
       "blocking": true
     },
@@ -124,7 +124,7 @@
       "rule_lead": "Page geometry dies at the cut; reading order survives.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Mechanical, run this session: `node scripts/check-slide-deixis.js --file curriculum/lectures/when-a-plan-is-good.md` → 'OK — 1 files, no page-geometry pointers across the slide cut.' (exit clean). Closest manual candidate: chunk 1 line 11 'Enter plan mode, then put the question to your own session:' immediately followed by the prompt block at line 13 — a same-chunk paste pointer (the carve-out's own worked-example shape, 'the prompt below' with the paste block on that slide), not a cross-chunk positional pointer, and in fact no locating word ('below') is even used. No 'below/above/further down/at the top of this page/see below' language anywhere in body.",
+      "evidence": "Mechanical, run this session: `node scripts/check-slide-deixis.js --file curriculum/lectures/when-a-plan-is-good.md` → 'OK — 1 files, no page-geometry pointers across the slide cut.' (exit clean). Closest manual candidate: chunk 1 line 11 'Enter plan mode, then put the question to your own session:' immediately followed by the prompt block at line 13 — a same-chunk paste pointer, not a cross-chunk positional pointer, and no locating word ('below'/'above') is even used. No 'below/above/further down/at the top of this page/see below' language anywhere in the body.",
       "fix_hint": null,
       "blocking": true
     },
@@ -134,7 +134,7 @@
       "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Mechanical, run this session: `node scripts/check-slide-size.js --file curriculum/lectures/when-a-plan-is-good.md` → 'files: 1  slides: 5  limits: 210 words / 6 bullets ... oversized: 0 ... ✓ every slide is within limits' (exit clean). The 2026-08-29 cut (bullet + keystroke sentence removed from chunk 1) only shrinks chunk 1 further below the bar. No per-slide `Slide size accepted:` escape hatch needed or present in the maintainer block.",
+      "evidence": "Mechanical, run this session: `node scripts/check-slide-size.js --file curriculum/lectures/when-a-plan-is-good.md` → 'files: 1  slides: 5  limits: 210 words / 6 bullets ... oversized: 0 ... ✓ every slide is within limits' (exit clean). No per-slide `Slide size accepted:` escape hatch needed or present in the maintainer block. Maintainer line 53 independently attests chunk 5 at '~135 words against the 210 bar, four bullets against six', and line 55 attests chunk 2 'sits within a hair of the size bar' — both consistent with the script's clean pass.",
       "fix_hint": null,
       "blocking": false
     },
@@ -144,7 +144,7 @@
       "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Checked all 5 headers. 4 of 5 are claim-shaped: 'Plan review is a high-leverage gate' (line 29) and 'What you can test and check sets your complexity ceiling' (line 36) are load-bearing declaratives naming the mechanism, matching the rule's binding clause for law/consolidation slides; 'Five things a good plan has' (line 15) and 'Three pressures that make bad plans look good' (line 23) are catalogue entries naming their subject, the rule's own NOT-violation category. Closest call: chunk 1 'Ask plan mode what changed' (line 9) is grammatically imperative/interrogative-framed, not a claim — the shape rule 15 exists to keep exercise-only. The maintainer block (line 61, dated 2026-08-25 and re-touched 2026-08-29) documents this as deliberate: 'Header is a do-move imperative (`check_lectures §4` live-do carve-out); the prompt stays student-run (`check_lectures §6` answer-must-be-theirs carve-out...)'. check_slides §15 has no carve-out of its own naming this exact shape (only orientation/catalogue/phase-label), so this is an accept-note-backed judgment call rather than a clean rule match — same call the prior instance made, and the 2026-08-29 edit (cutting the interpretive bullet) only sharpens the imperative framing further, it does not newly introduce it. The harm §15 exists to prevent — diluting the lecture-vs-exercise mood switch so a genuine declarative-inside-an-exercise beat stops standing out — is absent here: this is a lecture with ONE imperative header for a single, explicitly-justified live-do beat, and every other header in the file is claim-shaped. Not filed as REVISE; the accept-note pre-empts it. Non-blocking: a mismatched header grammar on one slide costs polish, not comprehension — the slide is still followable — same family as rule 6.",
+      "evidence": "Checked all 5 headers. 4 of 5 are claim-shaped: 'Plan review is a high-leverage gate' (line 29) and 'What you can test and check sets your complexity ceiling' (line 35) are load-bearing declaratives naming the mechanism, matching the rule's binding clause for law/consolidation slides; 'Five things a good plan has' (line 15) and 'Three pressures that make bad plans look good' (line 23) are catalogue entries naming their subject, the rule's own NOT-violation category. Closest call: chunk 1 'Ask plan mode what changed' (line 9) is grammatically imperative, not a claim — the shape rule 15 keeps to exercises by default. The maintainer block (line 59) documents this as deliberate: 'Header is a do-move imperative (`check_lectures §4` live-do carve-out); the prompt stays student-run (`check_lectures §6` answer-must-be-theirs carve-out...)'. check_slides §15 names no carve-out of its own for this exact shape (only orientation/catalogue/phase-label), so this is an accept-note-backed judgment call rather than a clean rule match. The harm §15 exists to prevent — diluting the lecture-vs-exercise mood switch so a genuine declarative-inside-an-exercise beat stops standing out — is absent: this is a lecture with ONE imperative header for a single, explicitly-justified live-do beat, and every other header is claim-shaped. Not filed as REVISE. Non-blocking: a mismatched header grammar on one slide costs polish, not comprehension — the slide is still followable, same family as rule 6.",
       "fix_hint": null,
       "blocking": false
     },
@@ -154,7 +154,7 @@
       "rule_lead": "A bullet earns its slot or dies — three classes that read as rigour and carry nothing.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Checked all 16 body bullets across chunks 2-5 against the three low-value classes (chunk 1 now has zero bullets, post-cut — the interpretive bullet the 2026-08-29 note removed was arguably closest to this rule's spirit, 'obvious to any Claude Code user' per maintainer line 71, and it is already gone). No doctrine restatement (each remaining bullet adds a new move or example rather than re-announcing an already-landed lens — e.g. chunk 5 line 43 'Reach without calibration is what the three pressures produce' draws a NEW causal link between two previously separate ideas rather than repeating either). No self-referential design commentary (no line tells the student it is inside a pedagogy). No aphorism kicker (no bullet closes a slide by restating its own header). Closest candidate: chunk 5 line 45, 'The ceiling is not fixed. Every check you make cheap and repeatable raises it, so building a better check buys you more than approving a bigger plan.' — reads kicker-shaped (closes the deck) but the maintainer block confirms it is deliberately load-bearing new content ('The last bullet carries the raise', line 53), not a restatement of the header. Second-closest: chunk 5 line 44, 'Push reach past what you can check and you have not delegated more. You are checking less.' — introduces a genuine new distinction (delegating vs. checking) not stated earlier, so it earns its slot too. Non-blocking: a low-value bullet wastes attention but doesn't block comprehension, same family as rule 7's non-superlative sub-items.",
+      "evidence": "Checked all 16 body bullets across chunks 2-5 (chunk 1 has zero bullets, prompt-only) against the three low-value classes. No doctrine restatement — each bullet adds a new move, example, or causal link rather than re-announcing an already-landed lens (e.g. chunk 5 line 41 'Reach without calibration is what the three pressures produce' draws a NEW causal link between two previously separate ideas rather than repeating either). No self-referential design commentary — no line tells the student it is inside a pedagogy. No aphorism kicker — no bullet closes a slide by restating its own header. Closest candidate: chunk 5 line 43, 'The ceiling is not fixed. Every check you make cheap and repeatable raises it, so building a better check buys you more than approving a bigger plan.' — reads kicker-shaped (closes the deck) but the maintainer block confirms it is deliberately load-bearing new content ('The last bullet carries the raise', line 51), not a restatement of the header. Second-closest: chunk 5 line 42, 'Push reach past what you can check and you have not delegated more. You are checking less.' — introduces a genuine new distinction (delegating vs. checking), not stated earlier. Non-blocking: a low-value bullet wastes attention but doesn't block comprehension, same family as rule 7's non-superlative sub-items.",
       "fix_hint": null,
       "blocking": false
     },
@@ -167,7 +167,7 @@
       "na_reason": "No backward-pointer candidate in body: grep -inE \"you (did|saw|caught|just)|the (run|pr|ticket|diff|bug) you\" over the current body projection → 0 hits (re-checked this pass; the one incidental hit an earlier pass cited sat in the now-removed 'Two reads, paired' slide).",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "7c5b65e050e925d3bffef8d9741fd625f65dd378b4fb71b9dc627b3e6679fe36",
+      "carried_from": "40b305740ab7bb582fd560cf2266144b7a1b51c018598171b6573bd490779ff8",
       "carried_shape": "8039777dfcdd8e3e"
     },
     {
@@ -179,7 +179,7 @@
       "na_reason": "grep -inE \"guess|predict|before you (watch|see|run)\" over the current body projection → one hit (chunk 2 line 20, 'every wrong guess stays hidden until then', a metaphor about horizontal plans, not a guess-then-reveal instructional beat). No guess/predict-before-reveal construction present.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "7c5b65e050e925d3bffef8d9741fd625f65dd378b4fb71b9dc627b3e6679fe36",
+      "carried_from": "40b305740ab7bb582fd560cf2266144b7a1b51c018598171b6573bd490779ff8",
       "carried_shape": "8039777dfcdd8e3e"
     },
     {
@@ -191,7 +191,7 @@
       "na_reason": "No '## Phase N:'/'## N.' step headers in body (grep -inE '^## Phase|^## [0-9]+\\.' → 0 hits); `node scripts/check-slide-numbering.js --file curriculum/lectures/when-a-plan-is-good.md` → 'OK — 1 files, Phase/Step numbering consistent.' (run this pass).",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "7c5b65e050e925d3bffef8d9741fd625f65dd378b4fb71b9dc627b3e6679fe36",
+      "carried_from": "40b305740ab7bb582fd560cf2266144b7a1b51c018598171b6573bd490779ff8",
       "carried_shape": "8039777dfcdd8e3e"
     },
     {
@@ -203,21 +203,21 @@
       "na_reason": "signals.has_urls: false; grep -inE '\\[[^]]+\\]\\(' over the current body projection → 0 hits — no in-body links to inventory or review.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "7c5b65e050e925d3bffef8d9741fd625f65dd378b4fb71b9dc627b3e6679fe36",
+      "carried_from": "40b305740ab7bb582fd560cf2266144b7a1b51c018598171b6573bd490779ff8",
       "carried_shape": "8039777dfcdd8e3e"
     }
   ],
   "blocking_findings_count": 0,
   "todos_count": 0,
   "accept_notes_found": [
-    "L57: Criteria slide, two expansions from the same practitioner (2026-07-29 and 2026-07-31, both Antti-directed, both from Dex Horthy) — documents the five-bullet checklist's growth from three to five and the un-bolded/bolded credit split.",
-    "L59: Emphasis pass (2026-07-09, Antti-directed \"go very lightly on the bold\") — authorizes per-item bold handles on the two checklist slides (chunks 2 and 3) by name; relied on to clear rule 9.",
-    "L61: Opening slide (2026-08-25, Antti-directed; re-touched 2026-08-29) — defends chunk 1's imperative header and prompt-led restructure, including the do-move/live-do carve-out; relied on to clear rules 5, 6, and 15.",
-    "L63: Slides-only pass (2026-07-02, unaudited) — records prior CUT decisions as already-settled deletions, including the 2026-08-28 removal of the 'Two reads, paired' slide.",
-    "L67: Deck notes — records that 'plan-mode approval inflation' and the find-vs-judge split are deliberately not taught in this file (2026-08-25, Antti-called cut).",
-    "L69: Deferral bullet on the gate slide (2026-08-08, Antti-directed frame, near-verbatim) — attests the deferred-decision mechanism's wording and its status as the mechanism's only M2 home.",
-    "L71: The room has used plan mode (Antti, 2026-08-29) — the slide-1 explainer bullet was cut as obvious to any Claude Code user; directly explains why chunk 1 is now header + frame clause + prompt only, relied on for rules 5 and 16.",
-    "L73: Quality line — compendium-audited 2026-08-28 stamp (predates this pass's re-audit of the 2026-08-29 diff)."
+    "L47: The delegation-frontier slide maintainer note — defends the chunk-5 header naming the relationship rather than the model, per check_lectures.md §4 (unearned-container avoidance) and check_pedagogy.md §9b (self-sufficiency); relied on to clear rules 6 and 15.",
+    "L55: Criteria slide, two expansions from the same practitioner (2026-07-29 and 2026-07-31, both Antti-directed, both from Dex Horthy) — documents the five-bullet checklist's growth from four to five, the header-numeral carve-out from check_writing.md §20, and the un-bolded/bolded credit split.",
+    "L57: Emphasis pass (2026-07-09, Antti-directed \"go very lightly on the bold\") — authorizes per-item bold handles on the two checklist slides (chunks 2 and 3) by name, citing check_slides.md §9 directly; relied on to clear rule 9.",
+    "L59: Opening slide (2026-08-25, Antti-directed; re-touched 2026-08-29) — defends chunk 1's imperative header and prompt-led restructure, including the check_lectures §4/§6 do-move/answer-must-be-theirs carve-outs; relied on to clear rules 5, 6, and 15.",
+    "L61: Slides-only pass (2026-07-02, unaudited) — records prior CUT decisions as already-settled deletions, including the 2026-08-28 removal of the 'Two reads, paired' slide (relevant to rules 3 and 4's N/A history).",
+    "L65: Deck notes — records that 'plan-mode approval inflation' and the find-vs-judge split are deliberately not taught in this file (2026-08-25, Antti-called cut).",
+    "L67: Deferral bullet on the gate slide (2026-08-08, Antti-directed frame, near-verbatim) — attests the deferred-decision mechanism's wording and its status as the mechanism's only M2 home.",
+    "L69: The room has used plan mode (Antti, 2026-08-29) — the slide-1 explainer bullet was cut as obvious to any Claude Code user; explains why chunk 1 is header + frame clause + prompt only, relied on for rules 5 and 16."
   ],
-  "notes": "Out-of-lane observation, not filed as a slides finding: the view's mechanical grep flagged one 'leverage' hit in the body (leverage_verb, body_hits: 1) on chunk 4's header 'Plan review is a high-leverage gate' (line 29). This is an adjectival compound ('high-leverage'), not the banned verb form (leverage/leverages/leveraging) the pattern targets — check_writing.md's lane, not check_slides §8's dialect list; recorded here, not re-flagged. Diff review (git diff 0cea7581..HEAD, pin per dispatch) confirms the substantive change since the last stamped run is entirely in chunk 1 (keystroke + interpretive bullet cut, 2026-08-29) plus maintainer/backing prose updates (new dated note, refreshed cc-permission-modes source stamp, claim renamed plan-mode-precondition); chunks 2-5 are byte-identical to the prior pass. The Quality line's slides@0cea7581 stamp is now stale against this body (current sha ce322309...) — that is a stamping/orchestrator concern (re-stamp after this verdict lands), not a body defect, so not filed as a finding."
+  "notes": "Out-of-lane observation, not filed as a slides finding: the view's mechanical grep flagged one 'leverage' hit in the body (leverage_verb, body_hits: 1) on chunk 4's header 'Plan review is a high-leverage gate' (line 29). This is an adjectival compound ('high-leverage'), not the banned verb form (leverage/leverages/leveraging) the pattern targets — check_writing.md's lane, not check_slides §8's dialect list; recorded here, not re-flagged. A prior instance recorded for this (file, class) carried body_sha 40b305740ab... and cited '<!--tier:2--> markers (lines 30, 37)' in its rule-8 evidence; the current committed body (git HEAD 043b341a, working tree clean, `git diff` empty) has NO tier markers anywhere (grep -n 'tier:' → 0 hits) and does not resolve to that prior body_sha via any reachable commit (checked via `git rev-list --all` blob-hash scan) — that prior instance describes a state this run could not verify against the file history and was NOT relied on for any verdict here; every row above was independently re-derived from the current body. Diff since the last commit touching this file (043b341a, 2026-09-02) is entirely below the maintainer cut: a parenthetical noting `quality-is-grounding.md` was removed, added to two existing sentences (lines 55 and 145 of the raw source) — zero body-region impact, confirmed via `git show 043b341a -- curriculum/lectures/when-a-plan-is-good.md`."
 }

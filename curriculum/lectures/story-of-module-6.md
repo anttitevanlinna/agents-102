@@ -67,7 +67,7 @@ Antti
 **Slide deixis accepted:** "paragraphs above" (check_slides.md §12) — *"the framing I said, a few paragraphs above, we would cut"* points inside its own `## Things that went sideways` chunk, two paragraphs up on the same slide, at § *The end-state that was not*. Story lecture, read not projected; the geometry is true where it stands.
 
 **Quality:** compendium-audited 2026-08-30 (writing@02b33a02 story@02b33a02 slides@4197d503 technical@9a6d906e strategy@9a6d906e behavior@b3143a4 pedagogy@1abb84c6)
-- judges @02b33a02: writing PASS_WITH_TODOS, story PASS — re-judged after the superlative cut and the *prompts* swap. One open todo: `check_student_facing.md` §21, the Claude:agent:LLM ratio at 16:1:8; the memoir genre is the live counter-argument and the call is unmade.
+- judges @02b33a02: writing PASS_WITH_TODOS, story PASS — re-judged after the superlative cut and the *prompts* swap. The §21 ratio todo settled 2026-09-02: memoir carve-out (accept-note above the session tally; resolution in the instance).
 - judges @4197d503: slides PASS — re-judged after the superlative cut; §12 deixis accept re-verified against the mechanical checker.
 - judges @9a6d906e: technical PASS, strategy PASS. The writing REVISE at this pin rested on one blocking finding that both refuters killed independently — `resolution` in that instance carries the reasoning.
 - judges @4a722813: behavior PASS, pedagogy PASS (drift-recheck)
@@ -81,6 +81,8 @@ Section stays open-ended (no count locked) because the thesis is that surprises 
 **Delivery:** In-room for M6, after the exercise and before the Human close (placement: Antti 2026-08-30); permission-giving, not credibility-performance.
 
 **Voice:** First-person singular past tense, Antti's memo. Risto epistemic directness, not Rory wit. Antti reshapes in final voice; rough-cut blunt lines per `check_writing §5`. Do NOT polish past *read-aloud-in-5-7-min direct memo* — polish moves it toward credibility-performance which Antti cut in turn 7 of the generation session.
+
+**§21 ratio accept-note (Antti, 2026-09-02):** memoir carve-out — a first-person session narrative reports its named actor, so *"Claude opened the session"* is the accurate account and *"the agent"* would be less true to the memo form. The Claude:agent:LLM ratio (16:1:8) stands as written; `check_student_facing` §21 judges do not re-raise on this file.
 
 **Source (the session tally):** the 2026-04-24 M6 generation session, run by Antti. The running notes are not retained; this block is the record every number in the memo pulls from.
 

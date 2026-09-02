@@ -246,8 +246,7 @@ CUT via its own escape hatch — *"un-packaged first is by design"* (trainer pus
 
 **Corpus audit headlines (2026-08-13; instrument + retraction lessons in git via the dissolved frame doc):**
 69% of lectures / 75% of words already vocabulary-stance rather than general transfer; substitutable
-passages ≈ 21% of the deck. Skew is at the FRONT: M1 = 61.6% general-transfer word share (the module that
-must prove the training beats a chat window is the most chat-reproducible) vs M6 = 0%. The corpus already
+passages ≈ 21% of the deck. The corpus already
 places locality claims ~2x earlier than unsettledness claims (median depth 49% vs 90%) — placement law
 observed, not decided. APPARATUS = 0 primary across 26 lectures (exercises generate, lectures name — make
 it a stated choice). Candidate fifth class: LOCAL_TESTIMONY (`how-this-training-was-built`,
@@ -262,8 +261,7 @@ DISCOVERED, encoding is how it accelerates; **interactive for novel discovery, e
 exists**, and the ratchet between them is the delegation frontier moving as fast as the gates behind it.
 
 **Open (frame):** maintenance-machinery visibility (the training that says *the field moves* while
-running dated stamps against a cohort date makes the argument twice) · M1 general-transfer skew (own
-initiative; mood-demo caveat applies — the substitution test may be the wrong test for live demos).
+running dated stamps against a cohort date makes the argument twice).
 
 ## The social layer — why 1000 agents cannot be told "fix everything" (2026-08-15, Antti musing + session synthesis; candidate — house-thesis, validate adversarially)
 
@@ -406,7 +404,7 @@ Canonical-home decision closed: groundwork IS the canonical map; the AE101 Field
 
 12-subagent sweep (6 module coverage readers × 37 banked laws · 4 canon lenses · adversarial gap verification). Headlines — full detail, matrix, and per-lens critiques in `theory-audit.md`:
 
-- **25/37 laws already NAMED with mechanism in student body.** "Most theory exists already" — confirmed. 8 confirmed delivery gaps; several are org/CTO-layer laws likely not AE101's to teach (triage table in audit).
+- **25/37 laws already NAMED with mechanism in student body.** "Most theory exists already" — confirmed. 8 confirmed delivery gaps; several are org/CTO-layer laws likely not AE101's to teach (triage table in audit). **Maybes, not todos (Antti, 2026-09-02):** access-trust-gap · competence-first-sequence · pattern-layer-ontology — out of AE101 body; possible later material, homes today groundwork / Agents 101.
 - **64 home-grown theory pieces the bank never recorded** — the bank lags the course. Several ARE classics under local names (you-can't-steer-what-you-can't-see = observability-precedes-control; find-is-easier-than-judge = verification asymmetry) → cheap groundedness by naming lineage.
 - **`lectures/why-mostly-right-fails.md` is fully orphaned** — the 0.85ⁿ lecture written, wired nowhere. The exact failure shape the cohort named: theory existed, unshipped.
 - **Family A convergent verdicts (fix BEFORE anchoring):** 0.85ⁿ (all 4 lenses — retire the constant, teach *unverified chain length; gates reset the chain*) · good-regulator (3 — analogy-theatre; downgrade to intuition pump; ⚠ currently strong-form in `the-loop-half-filled.md`) · hybrid-beats-autonomous (3 — snapshot, not law; durable form = *hybrid wins where verification is expensive*) · meta-platform (3 — house thesis, label it) · requisite-variety (2 — fan-out ≠ variety; parallelize reads, serialize writes) · eval-primitive (2 — add calibrate-the-judge validity condition).

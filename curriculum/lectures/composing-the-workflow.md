@@ -33,7 +33,6 @@ You have a kit now: a test-strategy skill, a verifier, and a freshly drawn map o
 - The field wires kits more ways than one; no way has won. Pocock ships a public kit with no orchestrator: you call each skill by hand. Klaassen chains steps through files on disk, a gate at every seam. Some workflows have a pilot; many do not.
 - One documented kit wires skills. One skill names another as a precondition: **an explicit load**. One sequences and gates a chain: **an orchestrator**, the pilot. A rule in `./CLAUDE.md` matches a file or phrase: **routing**. One hands its output to the next: **a hand-off**. A skill that does one job and calls nothing is a **leaf**.
 - A workflow is not only steps in order. At a seam, a check or stop condition decides whether the next step may begin.
-- Chaining generation without checks only moves work into the review queue faster.
 - Your job moves from reading every intermediate output to designing the checks, routes, and exceptions that deserve your judgment.
 
 ## Composition is a live argument, so you read
@@ -95,7 +94,6 @@ Claims
 - `many-kits-keep-zero-pilots` · detail · "Some workflows have a pilot; many do not." ← skill-stacking-supp, lineages-supp
 - `pilot-and-leaf-defined` · detail · "**an orchestrator**, the pilot … A skill that does one job and calls nothing is a **leaf**." ← skill-stacking-supp
 - `seam-check-decides-whether-next-step-begins` · vision · "At a seam, a check or stop condition decides whether the next step may begin." ← none-owed
-- `unchecked-generation-fills-the-review-queue` · vision · "Chaining generation without checks only moves work into the review queue faster." ← none-owed
 - `workflow-designer-owns-checks-routes-exceptions` · vision · "Your job moves from reading every intermediate output to designing the checks, routes, and exceptions that deserve your judgment." ← none-owed
 - `composition-is-a-live-argument` · detail · "How the field composes kits like this is a live argument with no settled answer" ← lineages-supp
 

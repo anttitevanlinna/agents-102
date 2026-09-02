@@ -167,6 +167,23 @@ test('the default dispatch carries every mechanic the hillclimb validated', asyn
   assert.doesNotMatch(p, /grep -c '"evidence": \*null'/, 'the raw grep counts healthy N/A rows and means nothing now');
 });
 
+// The bug this guards is the one that produced every other instance bug. The
+// dispatch used to say "in the shape already there" — imitate the nearest
+// example — which is replication with mutation and no selection: 810 instances,
+// 60+ top-level keys, three spellings of the drift note, and 134 AE101 todos
+// counted onto Quality rows and written down nowhere. A schema the judge cannot
+// read is not a schema, so it has to travel in the prompt.
+test('the judge is given the instance schema, not an example to imitate', async () => {
+  const p = await promptFor({});
+  assert.doesNotMatch(p, /shape already there/, 'imitating the neighbour is what bred the dialects');
+  assert.match(p, /rules_evaluated {2}one row per rule/, 'the ledger is named field by field');
+  assert.match(p, /PASS \| PASS_WITH_TODOS \| REVISE \| N\/A/, 'the verdict enum is stated, not assumed');
+  assert.match(p, /derived from `rules_evaluated`, never authored/, 'a count beside a list drifts from it');
+  assert.match(p, /did not write down is a todo that does not exist/, 'the failure is named, not implied');
+  assert.match(p, /Do not write a `todos` array/, 'one ledger — the second one contradicted it 61 times in 79');
+  assert.match(p, /check-instance-schema\.js --training \S+ --quiet/, 'and the judge must run the gate on itself');
+});
+
 test('brief:false falls back to reading the compendiums in full', async () => {
   const p = await promptFor({ brief: false });
   assert.doesNotMatch(p, /derive-class-brief\.js/);

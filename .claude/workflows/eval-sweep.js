@@ -141,6 +141,11 @@ for (const it of ITEMS) {
     JOBS.push({
       file: it.file,
       slug: it.instanceSlug || null,
+      // The judge writes `training` into its instance and runs the schema gate
+      // scoped to it, so it has to arrive rather than be guessed at write time.
+      // The slug already carries it as its first segment, which is the same
+      // derivation check-instance-names.js makes from the judged path.
+      training: it.training || (it.instanceSlug ? String(it.instanceSlug).split('--')[0] : null),
       cls,
       pin: (it.pins && it.pins[cls]) || it.pin || null,
       reason: (it.detail && it.detail[cls]) || 'unknown',
@@ -356,11 +361,31 @@ ${READ_ONLY}
 
 ## Write the instance
 ${j.slug ? `
-Overwrite \`curriculum/evals/instances/${j.slug}.${j.cls}.json\` in the shape already there, with \`body_sha\` and \`shape_hash\` at top level. Then run and report the real integer:
+Overwrite \`curriculum/evals/instances/${j.slug}.${j.cls}.json\`. Do NOT copy the shape of whatever is there now — the instances were written to no schema for a long time and carry 60+ different top-level keys between them, so imitating the nearest example is how the next one drifts further. Write these, and add a field only when you have something to put in it:
+
+\`\`\`
+class            "${j.cls}"                     exactly this — it is what every tool globs on
+training         "${j.training || ''}"
+file             absolute path of the file you judged
+verdict          PASS | PASS_WITH_TODOS | REVISE | N/A     — no other word
+body_sha         sha256 of the FULL file
+shape_hash       as supplied in your brief
+rules_evaluated  one row per rule you touched: {compendium, rule_index, rule_lead,
+                 verdict, evidence, fix_hint, blocking}
+todos_count      how many rules_evaluated rows are verdict REVISE + blocking false
+blocking_findings_count   how many are verdict REVISE + blocking true
+\`\`\`
+
+**A todo you counted but did not write down is a todo that does not exist.** The Quality row copies \`todos_count\` and appends "see instances/${j.slug}.${j.cls}.json", so a count with no row behind it makes the row cite evidence that is not in the file. 134 AE101 todos were lost exactly this way. Both counts are derived from \`rules_evaluated\`, never authored beside it — write the rows first and count them second.
+
+Do not write a \`todos\` array. It is a second ledger for the same thing, and where both existed they disagreed in 61 of 79 instances.
+
+Then run BOTH and report the real integers:
 \`\`\`
 node curriculum/evals/scripts/check-instance-evidence.js curriculum/evals/instances/${j.slug}.${j.cls}.json
+node curriculum/evals/scripts/check-instance-schema.js --training ${j.training || 'ae101'} --quiet
 \`\`\`
-It counts ungrounded verdicts only — a terse N/A is healthy and is not one. Report its count as \`ungrounded_count\`. Its top-level \`verdict\` must match what you return here — a gate compares the two and fires when they disagree.
+The first counts ungrounded verdicts only — a terse N/A is healthy and is not one. Report its count as \`ungrounded_count\`. Its top-level \`verdict\` must match what you return here — a gate compares the two and fires when they disagree. The second must not name your instance under CONTRADICTIONS; if it does, fix your file and run it again.
 ` : ''}${fires}${EVIDENCE}
 
 Return the structured verdict.`

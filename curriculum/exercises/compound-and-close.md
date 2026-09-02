@@ -55,8 +55,8 @@ You can check the recurring cost by asking Claude how many tokens your rules fil
 
 **Scope is the rules file only.** The ticket beat is its own exercise (`close-the-ticket`) and runs immediately before this one, so its tracker read is already in scrollback when the sweep fires — do not add a connector or close-out step back into this file. **Emphasis budget (`check_slides.md §9`):** widget chrome (`**Time:**`, `**What you do:**`, `**What you build:**`, `**The point:**`) stays bold; body bullet leads de-bolded; no named-term handles remain in this file.
 
-**Quality:** compendium-audited 2026-08-29 (writing@4a722813 story@d065f8bc technical@8cc00874 behavior@1480362 pedagogy@7fb973dd strategy@1480362 slides@d065f8bc)
-- judges @4a722813: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-09-02 (writing@9edae2ef story@d065f8bc technical@8cc00874 behavior@9edae2ef pedagogy@7fb973dd strategy@1480362 slides@9edae2ef)
+- judges @9edae2ef: writing PASS, story PASS, technical PASS, behavior PASS (4 todos see instances/ae101--exercise--compound-and-close.behavior.json), pedagogy PASS, strategy PASS, slides PASS (2 todos see instances/ae101--exercise--compound-and-close.slides.json)
 **Meta (trainer):**
 - **Primary Bloom's level:** Analyze (read the retro summary against session moments) + Apply (integrate the rules file from evidence).
 - **Atomic — no phase markers.** One retro pass into one rules file; the push-back and the second sweep are moves inside it, not beats beside it. Line 3 is authored, not generated.

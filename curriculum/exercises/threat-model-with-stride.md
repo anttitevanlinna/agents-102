@@ -106,8 +106,8 @@ Ask Claude whether this ADR rides into future sessions automatically.
 
 **Save-then-diff (2026-08-26):** the ADR beat reports after the write — `threat-model-with-stride-3` saves to the path, then shows the diff (`check_prompts.md §21` post-action reporting). The body bullet and lead-in describe that order; do not add a pre-save gate to the prompt.
 
-**Quality:** compendium-audited 2026-08-29 (writing@43e6cae1 story@0e4f7c9e technical@43e6cae1 behavior@80d7b9f0 pedagogy@43e6cae1 strategy@1c765f2 slides@43e6cae1)
-- judges @80d7b9f0: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-09-02 (writing@9edae2ef story@9edae2ef technical@43e6cae1 behavior@80d7b9f0 pedagogy@43e6cae1 strategy@1c765f2 slides@9edae2ef)
+- judges @9edae2ef: writing PASS (4 todos see instances/ae101--exercise--threat-model-with-stride.writing.json), story PASS (1 todo see instances/ae101--exercise--threat-model-with-stride.story.json), technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply + Evaluate

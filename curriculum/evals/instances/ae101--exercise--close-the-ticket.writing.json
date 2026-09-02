@@ -4,14 +4,14 @@
   "verdict": "PASS_WITH_TODOS",
   "training": "ae101",
   "shape_hash": "04c8bbd89721df08",
-  "body_sha": "bebd170885ddd61abfb12e1c35ccf9c22e85e0dffe53d7305328e0336893865b",
+  "body_sha": "69d149da480f1221d49c5ac62368b65281e33d12bd813b331ead97f1a6950104",
   "rules_evaluated": [
     {
       "compendium": "check_writing.md",
       "rule_index": 1,
       "rule_lead": "Banned words — grep zero-tolerance.",
       "verdict": "PASS",
-      "evidence": "view.json greps: em_dash 0/CLEAN, banned_words (\\b(delve|delving|honest|honestly|importantly|crucial|crucially|substrate|synergize|paradigm shift)\\b) 0/CLEAN, leverage_verb 0/CLEAN — all planted-proven, all over body lines 1-55. Re-verified: the only body edit since the last pass (L48 'the agent'→'Claude') introduces no banned word.",
+      "evidence": "view.json greps: em_dash 0/CLEAN, banned_words (\\b(delve|delving|honest|honestly|importantly|crucial|crucially|substrate|synergize|paradigm shift)\\b) 0/CLEAN, leverage_verb 0/CLEAN, all planted-proven, over body lines 1-55. Re-verified against current body_sha b0dd7b94 via git diff 221bef5a 50f5d9eb -- curriculum/exercises/close-the-ticket.md: the only body-region change since the last judged version is L5 (the What-you-do line, tightened), which introduces no banned word or em-dash.",
       "fix_hint": null,
       "blocking": false
     },
@@ -28,9 +28,9 @@
       "compendium": "check_writing.md",
       "rule_index": 3,
       "rule_lead": "No stale markers, no \"fixed\" retrospectives, no session biography.",
-      "verdict": "REVISE",
-      "evidence": "Sources note (L116) is now clean — the prior journey language ('left this file 2026-08-12 when the beat was scoped to bugs, and was NOT re-homed... retired') is gone; current text 'Refinement is not used in AE101 body prose... If a later pass wants the term, it earns itself at M2, not here' is present-tense state + forward rule (verified via git diff d065f8bc..HEAD, and grep 'retired\\|left this file\\|was NOT re-homed' → 0 matches in the file). But the backing block's Stance note (L124) still fails the 'keep-notes bind to their passage' sub-clause, and this task's own dispatch note puts backing-block prose in scope for §3 ('a block states what is TRUE NOW, not the diff it just recorded'): it says 'the boundary is carried in the third bullet... read the third bullet before flagging. That bullet is the whole caveat: extraction quality tracks the quality of the tracker data sampled.' The section it points at ('## Anything can be reverse-engineered', L45-48) has only TWO bullets, confirmed by direct extraction of that section; there is no third bullet and no bullet stating that caveat anywhere in the file (grep 'extraction quality tracks' → only the Stance note's own line, L124). Git history (`git show 8f0ef28b`) confirms a matching third bullet existed on 2026-08-09 and was cut in a later pass; the Stance note was never updated to match. This is a stale locator, not a journey narrative, but it is the same failure mode the rule targets: a passage changed, the note bound to it didn't.",
-      "fix_hint": "Either restore a short caveat bullet after L48 (the scope-limiting caveat the deleted third bullet carried: extraction quality tracks the quality of the tracker data sampled), or rewrite the Stance note at L124 to stop naming a specific bullet and state the boundary in its own words. Maintainer call, not a judge call — the underlying claim still has a defensible true reading either way (see §21 below).",
+      "verdict": "PASS",
+      "evidence": "Re-verified against current body_sha b0dd7b94 (commit 50f5d9eb, title: The third bullet stays cut on the record, and the anchor pair resolves to Intercom alone). The prior open finding was the backing block Stance note (L124) pointing at a nonexistent third bullet of section Anything can be reverse-engineered (L45-48, which holds only two bullets) as the home of a boundary caveat for L47's claim, a keep-note-bind-to-passage violation. That note has been rewritten. L124 now reads: The slide states it bare with no caveat bullet, deliberate (Antti 2026-08-30: a boundary bullet is not valuable enough to ship). The boundary is real and lives here, not on the slide: extraction quality tracks the quality of the tracker data sampled. The second idea is also deliberately uncarried. A judge reading the slogan alone will over-read it; do not file the missing bullet as a defect, and do not add one. Confirmed via git diff 221bef5a 50f5d9eb -- curriculum/exercises/close-the-ticket.md that this rewrite plus a vision-to-detail reclassification of two backing-block Claims and a body L5 tightening are the only changes since the prior pass. The dated parenthetical (Antti 2026-08-30) states a standing decision and licenses not re-adding a bullet, present-tense state plus a do-not-reintroduce clause, not journey narration, so it falls inside this rule's own dated-provenance carve-out rather than tripping it. No other stale marker, fixed retrospective, or session-biography phrase present in body or maintainer/backing blocks.",
+      "fix_hint": null,
       "blocking": false
     },
     {
@@ -82,9 +82,9 @@
       "compendium": "check_writing.md",
       "rule_index": 12,
       "rule_lead": "Punchy framing keeps punch; carve-out lives downstream.",
-      "verdict": "REVISE",
-      "evidence": "L47: 'The ticket is one instance. Anything can be inspected and reverse-engineered with an LLM: a codebase nobody documented, a CI pipeline, a config, an API you did not write, the system your team runs on and cannot explain.' This punchy universal claim ships with no separate downstream carve-out paragraph. The colon-list inside the same sentence gives illustrative scope but not the boundary rule 12 asks for (which subset doesn't fit, why, ending on a directional cue) — L48's next bullet is an action step, not a caveat. The file's own backing block (Stance, L124) asserts a caveat bullet exists that carries exactly this boundary; per the §3 finding above, that bullet does not currently exist in body. So the maintainer's own stated design intent (bare punchy line + live downstream caveat) is currently unmet in the shipped body.",
-      "fix_hint": "Same fix as the §3 finding: restoring a short scope-limiting bullet after L48, or accepting the colon-list as sufficient and updating the Stance note to say so, resolves both findings together. Maintainer call.",
+      "verdict": "PASS",
+      "evidence": "L47 (The ticket is one instance. Anything can be inspected and reverse-engineered with an LLM: a codebase nobody documented, a CI pipeline, a config, an API you did not write, the system your team runs on and cannot explain.) is the same bare punchy claim the prior pass flagged for missing a downstream carve-out paragraph. Re-judged given the Stance note rewrite at L124 (dated Antti 2026-08-30, see check_writing SS3 above): the maintainer has explicitly ruled that no carve-out paragraph ships for this line ('a boundary bullet is not valuable enough to ship ... do not file the missing bullet as a defect, and do not add one'), and states why the harm this rule guards against is judged not to apply here: the scope is implicitly carried by the sentence's own illustrative list (all software or tech artefacts: a codebase, a CI pipeline, a config, an API, a system), and L48 moves straight to action rather than needing a caveat. Treated as a documented accept-note per this dispatch's maintainer-block-accept-note instruction: the harm (an over-claiming punchline reading broader than intended) has been weighed, in writing, dated, and by name, and judged adequately contained without the downstream paragraph SS12 defaults to. Not filing a REVISE against a call the maintainer has already made and explicitly instructed judges not to re-open.",
+      "fix_hint": null,
       "blocking": false
     },
     {
@@ -439,6 +439,15 @@
       "blocking": false
     },
     {
+      "compendium": "check_student_facing.md",
+      "rule_index": 38,
+      "rule_lead": "Exercise headers pass the build-squint test.",
+      "verdict": "PASS",
+      "evidence": "Cold-squint test on the full header set (H1 'Close the ticket your team's way'; Read the ticket for your bug; Read the conventions off the ticket; Write the close-out and send it; Double-check the voice; Anything can be reverse-engineered; What happened) against what the exercise builds (L7: 'bug rules read off your own tracker, and a close-out note on the bug you shipped'). 'Read the conventions off the ticket' telegraphs the rules artifact; 'Write the close-out and send it' telegraphs the close-out artifact, so the header set reconstructs both builds without reading body prose. H1 itself is a directive verb phrase (Close the ticket) rather than an artifact noun-phrase, matching the corpus's own file-naming convention for this exercise family (sibling slugs fix-tests-first, push-back-on-the-plan, extract-the-task-shaping-rule are all verb-phrase-named). This exercise is not one of the rule's three named drill carve-outs since it does produce a real external artifact (the close-out lands in the team's tracker), but the sub-headers carry the deliverable-naming work H1 doesn't, so the set as a whole passes. No 'other X' or contradicting spatial metaphor present. This rule_index had no row in the prior instance (coverage gap); filed fresh this pass.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
       "compendium": "check_prompts.md",
       "rule_index": 1,
       "rule_lead": "No placeholders inside fences.",
@@ -521,15 +530,6 @@
     },
     {
       "compendium": "check_prompts.md",
-      "rule_index": 27,
-      "rule_lead": "Name consumer at write time — Save it as <path> requires downstream reader.",
-      "verdict": "N/A",
-      "evidence": "None of the three prompts contains a 'Save it as <path>' instruction — P1/P2 leave output in scrollback, P3 updates the external tracker. The rule's trigger condition does not fire on this file; registry frontmatter's consumed-by fields are informative but not what this rule tests.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
       "rule_index": 28,
       "rule_lead": "Strong-bold prompt label is exactly **Prompt** — custom labels break renderer.",
       "verdict": "PASS",
@@ -578,7 +578,7 @@
       "rule_index": 38,
       "rule_lead": "Body lead-in mirrors prompt's opening phrasing.",
       "verdict": "REVISE",
-      "evidence": "P3's body lead-in (L37) 'Ask Claude to write the close-out, update the ticket, and report what it wrote.' opens on the verb 'write', while the fence's own opening clause (registry close-the-ticket-3) opens 'Update the ticket: short close-out note...' — opening verb 'Update'. The lead-in's first move (write) and the fence's first move (update) don't share the opening verb+noun-phrase. P1 (dangling-colon sub-case, exempt per §2a) and P2 (shares verb 'reverse-engineer' + noun-phrase 'how your/this team handles bugs') both rhyme correctly. Unaffected by the recent diff (d065f8bc..HEAD did not touch L37 or the P3 registry body) — a pre-existing, still-live mismatch.",
+      "evidence": "P3's body lead-in (L37) 'Ask Claude to write the close-out, update the ticket, and report what it wrote.' opens on the verb 'write', while the fence's own opening clause (registry curriculum/prompts/close-the-ticket-3.md) opens 'Update the ticket: short close-out note...', opening verb 'Update'. The lead-in's first move (write) and the fence's first move (update) don't share the opening verb plus noun-phrase. P1 (dangling-colon sub-case, exempt per SS2a) and P2 (shares verb reverse-engineer plus noun-phrase how your/this team handles bugs) both rhyme correctly. Unaffected by the diff since the last judged body: git diff 221bef5a 50f5d9eb -- curriculum/exercises/close-the-ticket.md touches only L5, the backing-block Claims section, and the Stance note; L37 and the close-the-ticket-3 registry body (confirmed unchanged via direct read) are untouched. Pre-existing, still-live mismatch.",
       "fix_hint": "Reorder the P3 lead-in to open on the same verb as the fence, e.g. 'Ask Claude to update the ticket with a close-out note and report what it wrote.'",
       "blocking": false
     },
@@ -601,6 +601,17 @@
       "blocking": false
     },
     {
+      "compendium": "check_prompts.md",
+      "rule_index": 27,
+      "rule_lead": "Name consumer at write time — Save it as <path> requires downstream reader.",
+      "verdict": "N/A",
+      "evidence": "None of the three prompts contains a 'Save it as <path>' instruction — P1/P2 leave output in scrollback, P3 updates the external tracker. The rule's trigger condition does not fire on this file; registry frontmatter's consumed-by fields are informative but not what this rule tests.",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "bebd170885ddd61abfb12e1c35ccf9c22e85e0dffe53d7305328e0336893865b",
+      "carried_shape": "04c8bbd89721df08"
+    },
+    {
       "compendium": "check_writing.md",
       "rule_index": 5,
       "rule_lead": "Rough-cut drafts for articles.",
@@ -608,7 +619,7 @@
       "evidence": "Finished curriculum exercise body, not an article rough-cut draft.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "48cadba979970e9dde7351b0980004e6d4b94feb4d2a7cae5e2571d3c0504811",
+      "carried_from": "bebd170885ddd61abfb12e1c35ccf9c22e85e0dffe53d7305328e0336893865b",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -619,7 +630,7 @@
       "evidence": "No user-supplied verbatim frame being captured into a reference artefact in this file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "48cadba979970e9dde7351b0980004e6d4b94feb4d2a7cae5e2571d3c0504811",
+      "carried_from": "bebd170885ddd61abfb12e1c35ccf9c22e85e0dffe53d7305328e0336893865b",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -630,7 +641,7 @@
       "evidence": "Body names no practitioner at all (the OODA roster naming Klaassen/Huntley/Horthy sits only in the exempt backing block).",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "48cadba979970e9dde7351b0980004e6d4b94feb4d2a7cae5e2571d3c0504811",
+      "carried_from": "bebd170885ddd61abfb12e1c35ccf9c22e85e0dffe53d7305328e0336893865b",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -641,7 +652,7 @@
       "evidence": "Process rule for authors running multi-file sweeps; not a body-prose lint on a single file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "48cadba979970e9dde7351b0980004e6d4b94feb4d2a7cae5e2571d3c0504811",
+      "carried_from": "bebd170885ddd61abfb12e1c35ccf9c22e85e0dffe53d7305328e0336893865b",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -652,7 +663,7 @@
       "evidence": "Governs single-consolidated-doc design for trainer/exec/sponsor readers; does not apply to an exercise file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "48cadba979970e9dde7351b0980004e6d4b94feb4d2a7cae5e2571d3c0504811",
+      "carried_from": "bebd170885ddd61abfb12e1c35ccf9c22e85e0dffe53d7305328e0336893865b",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -663,7 +674,7 @@
       "evidence": "Governs built trainer-guide/trainer-modules pages; this file's own maintainer block is a source document, not a delivered trainer page.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "48cadba979970e9dde7351b0980004e6d4b94feb4d2a7cae5e2571d3c0504811",
+      "carried_from": "bebd170885ddd61abfb12e1c35ccf9c22e85e0dffe53d7305328e0336893865b",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -674,7 +685,7 @@
       "evidence": "Body never uses \"memory\" or \"context\" as terms; no discrimination to check.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "48cadba979970e9dde7351b0980004e6d4b94feb4d2a7cae5e2571d3c0504811",
+      "carried_from": "bebd170885ddd61abfb12e1c35ccf9c22e85e0dffe53d7305328e0336893865b",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -685,7 +696,7 @@
       "evidence": "No self-study simulation persona referenced in this file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "48cadba979970e9dde7351b0980004e6d4b94feb4d2a7cae5e2571d3c0504811",
+      "carried_from": "bebd170885ddd61abfb12e1c35ccf9c22e85e0dffe53d7305328e0336893865b",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -696,7 +707,7 @@
       "evidence": "No CLAUDE.md reference in body (the maintainer note's `./CLAUDE.local.md` reference sits below the cut, exempt).",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "48cadba979970e9dde7351b0980004e6d4b94feb4d2a7cae5e2571d3c0504811",
+      "carried_from": "bebd170885ddd61abfb12e1c35ccf9c22e85e0dffe53d7305328e0336893865b",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -707,7 +718,7 @@
       "evidence": "No first-time student-authored use of a collision word (memory/skill/rule/plan/agent-as-artifact) occurs in this file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "48cadba979970e9dde7351b0980004e6d4b94feb4d2a7cae5e2571d3c0504811",
+      "carried_from": "bebd170885ddd61abfb12e1c35ccf9c22e85e0dffe53d7305328e0336893865b",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -718,7 +729,7 @@
       "evidence": "No student file-save action occurs in this exercise (all outputs stay in scrollback or the external tracker).",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "48cadba979970e9dde7351b0980004e6d4b94feb4d2a7cae5e2571d3c0504811",
+      "carried_from": "bebd170885ddd61abfb12e1c35ccf9c22e85e0dffe53d7305328e0336893865b",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -729,7 +740,7 @@
       "evidence": "No thinking-effort/model/mode/worktree setting is load-bearing for this exercise.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "48cadba979970e9dde7351b0980004e6d4b94feb4d2a7cae5e2571d3c0504811",
+      "carried_from": "bebd170885ddd61abfb12e1c35ccf9c22e85e0dffe53d7305328e0336893865b",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -740,7 +751,7 @@
       "evidence": "Wrong training and module (Agents 101 M7 canonical list); this file is AE101 M1.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "48cadba979970e9dde7351b0980004e6d4b94feb4d2a7cae5e2571d3c0504811",
+      "carried_from": "bebd170885ddd61abfb12e1c35ccf9c22e85e0dffe53d7305328e0336893865b",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -751,7 +762,7 @@
       "evidence": "Wrong training (Agents 101-specific); this file is also not a module Debrief section.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "48cadba979970e9dde7351b0980004e6d4b94feb4d2a7cae5e2571d3c0504811",
+      "carried_from": "bebd170885ddd61abfb12e1c35ccf9c22e85e0dffe53d7305328e0336893865b",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -762,7 +773,7 @@
       "evidence": "No skill invocation in any of the three prompts.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "48cadba979970e9dde7351b0980004e6d4b94feb4d2a7cae5e2571d3c0504811",
+      "carried_from": "bebd170885ddd61abfb12e1c35ccf9c22e85e0dffe53d7305328e0336893865b",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -773,7 +784,7 @@
       "evidence": "No self-consistency/ensemble/regeneration-diff method used by any of the three prompts.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "48cadba979970e9dde7351b0980004e6d4b94feb4d2a7cae5e2571d3c0504811",
+      "carried_from": "bebd170885ddd61abfb12e1c35ccf9c22e85e0dffe53d7305328e0336893865b",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -784,7 +795,7 @@
       "evidence": "AE101 is Code-only; rule explicitly states AE101 ignores this Agents-101/Cowork-fork pattern.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "48cadba979970e9dde7351b0980004e6d4b94feb4d2a7cae5e2571d3c0504811",
+      "carried_from": "bebd170885ddd61abfb12e1c35ccf9c22e85e0dffe53d7305328e0336893865b",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -795,7 +806,7 @@
       "evidence": "Agents-101/Cowork-specific rule; AE101 has no Cowork fork.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "48cadba979970e9dde7351b0980004e6d4b94feb4d2a7cae5e2571d3c0504811",
+      "carried_from": "bebd170885ddd61abfb12e1c35ccf9c22e85e0dffe53d7305328e0336893865b",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -806,7 +817,7 @@
       "evidence": "No regeneration-with-new-context-source pattern in any of the three prompts.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "48cadba979970e9dde7351b0980004e6d4b94feb4d2a7cae5e2571d3c0504811",
+      "carried_from": "bebd170885ddd61abfb12e1c35ccf9c22e85e0dffe53d7305328e0336893865b",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -817,7 +828,7 @@
       "evidence": "No cite-or-flag instruction in any of the three prompts.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "48cadba979970e9dde7351b0980004e6d4b94feb4d2a7cae5e2571d3c0504811",
+      "carried_from": "bebd170885ddd61abfb12e1c35ccf9c22e85e0dffe53d7305328e0336893865b",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -828,7 +839,7 @@
       "evidence": "No anti-positioning/edge-paragraph regeneration in these prompts.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "48cadba979970e9dde7351b0980004e6d4b94feb4d2a7cae5e2571d3c0504811",
+      "carried_from": "bebd170885ddd61abfb12e1c35ccf9c22e85e0dffe53d7305328e0336893865b",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -839,7 +850,7 @@
       "evidence": "No multi-question walkthrough sequence in any of the three prompts.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "48cadba979970e9dde7351b0980004e6d4b94feb4d2a7cae5e2571d3c0504811",
+      "carried_from": "bebd170885ddd61abfb12e1c35ccf9c22e85e0dffe53d7305328e0336893865b",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -850,7 +861,7 @@
       "evidence": "None of the three prompts has 4+ named sub-steps or invokes plan mode; the structural trigger does not fire.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "48cadba979970e9dde7351b0980004e6d4b94feb4d2a7cae5e2571d3c0504811",
+      "carried_from": "bebd170885ddd61abfb12e1c35ccf9c22e85e0dffe53d7305328e0336893865b",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -861,7 +872,7 @@
       "evidence": "None of the three prompts asks Claude to interrogate its own prior work.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "48cadba979970e9dde7351b0980004e6d4b94feb4d2a7cae5e2571d3c0504811",
+      "carried_from": "bebd170885ddd61abfb12e1c35ccf9c22e85e0dffe53d7305328e0336893865b",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -872,7 +883,7 @@
       "evidence": "None of the three prompts is a long-running walk-away send-off.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "48cadba979970e9dde7351b0980004e6d4b94feb4d2a7cae5e2571d3c0504811",
+      "carried_from": "bebd170885ddd61abfb12e1c35ccf9c22e85e0dffe53d7305328e0336893865b",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -883,7 +894,7 @@
       "evidence": "No build/assemble-then-save artefact pattern; the close-out ships via post-action report (rule 21) instead.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "48cadba979970e9dde7351b0980004e6d4b94feb4d2a7cae5e2571d3c0504811",
+      "carried_from": "bebd170885ddd61abfb12e1c35ccf9c22e85e0dffe53d7305328e0336893865b",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -894,7 +905,7 @@
       "evidence": "Read-only judging pass; no prompt-body edit was made or proposed by this judge.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "48cadba979970e9dde7351b0980004e6d4b94feb4d2a7cae5e2571d3c0504811",
+      "carried_from": "bebd170885ddd61abfb12e1c35ccf9c22e85e0dffe53d7305328e0336893865b",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -905,7 +916,7 @@
       "evidence": "Agents-101-scoped rule; this is an AE101 file, and none of the three prompts saves a file at all.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "48cadba979970e9dde7351b0980004e6d4b94feb4d2a7cae5e2571d3c0504811",
+      "carried_from": "bebd170885ddd61abfb12e1c35ccf9c22e85e0dffe53d7305328e0336893865b",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -916,7 +927,7 @@
       "evidence": "No CWD-restating or `cd` pattern in any of the three prompts.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "48cadba979970e9dde7351b0980004e6d4b94feb4d2a7cae5e2571d3c0504811",
+      "carried_from": "bebd170885ddd61abfb12e1c35ccf9c22e85e0dffe53d7305328e0336893865b",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -927,7 +938,7 @@
       "evidence": "No `subagent` invocation in any of the three prompts.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "48cadba979970e9dde7351b0980004e6d4b94feb4d2a7cae5e2571d3c0504811",
+      "carried_from": "bebd170885ddd61abfb12e1c35ccf9c22e85e0dffe53d7305328e0336893865b",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -938,7 +949,7 @@
       "evidence": "Process rule governing how an editor surfaces prompt-body edits to the maintainer; not a content lint, and no edit was proposed this pass.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "48cadba979970e9dde7351b0980004e6d4b94feb4d2a7cae5e2571d3c0504811",
+      "carried_from": "bebd170885ddd61abfb12e1c35ccf9c22e85e0dffe53d7305328e0336893865b",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -949,7 +960,7 @@
       "evidence": "No live-test-session correction context applies to this pass.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "48cadba979970e9dde7351b0980004e6d4b94feb4d2a7cae5e2571d3c0504811",
+      "carried_from": "bebd170885ddd61abfb12e1c35ccf9c22e85e0dffe53d7305328e0336893865b",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -960,7 +971,7 @@
       "evidence": "No module number appears inside any of the three prompt bodies.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "48cadba979970e9dde7351b0980004e6d4b94feb4d2a7cae5e2571d3c0504811",
+      "carried_from": "bebd170885ddd61abfb12e1c35ccf9c22e85e0dffe53d7305328e0336893865b",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -971,7 +982,7 @@
       "evidence": "None of the three prompts greps git output for a branch/log count.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "48cadba979970e9dde7351b0980004e6d4b94feb4d2a7cae5e2571d3c0504811",
+      "carried_from": "bebd170885ddd61abfb12e1c35ccf9c22e85e0dffe53d7305328e0336893865b",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -982,7 +993,7 @@
       "evidence": "None of the three prompts sets up a multi-turn dialog against a persisted artifact.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "48cadba979970e9dde7351b0980004e6d4b94feb4d2a7cae5e2571d3c0504811",
+      "carried_from": "bebd170885ddd61abfb12e1c35ccf9c22e85e0dffe53d7305328e0336893865b",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -993,7 +1004,7 @@
       "evidence": "No save-a-rule-to-CLAUDE.md pattern in any of the three prompts.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "48cadba979970e9dde7351b0980004e6d4b94feb4d2a7cae5e2571d3c0504811",
+      "carried_from": "bebd170885ddd61abfb12e1c35ccf9c22e85e0dffe53d7305328e0336893865b",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -1004,7 +1015,7 @@
       "evidence": "None of the three prompts' correct behavior depends on a non-default permission mode; registry frontmatter declares none, correctly.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "48cadba979970e9dde7351b0980004e6d4b94feb4d2a7cae5e2571d3c0504811",
+      "carried_from": "bebd170885ddd61abfb12e1c35ccf9c22e85e0dffe53d7305328e0336893865b",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -1015,7 +1026,7 @@
       "evidence": "No STOP-tail construct grafted onto a write-artifact prompt in this file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "48cadba979970e9dde7351b0980004e6d4b94feb4d2a7cae5e2571d3c0504811",
+      "carried_from": "bebd170885ddd61abfb12e1c35ccf9c22e85e0dffe53d7305328e0336893865b",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -1026,7 +1037,7 @@
       "evidence": "These are standard classroom-delivered exercise prompts, not headless-runner/tmux-runner prompts.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "48cadba979970e9dde7351b0980004e6d4b94feb4d2a7cae5e2571d3c0504811",
+      "carried_from": "bebd170885ddd61abfb12e1c35ccf9c22e85e0dffe53d7305328e0336893865b",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -1037,7 +1048,7 @@
       "evidence": "None of the three prompts is long-running (each is a single, quick, focused action).",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "48cadba979970e9dde7351b0980004e6d4b94feb4d2a7cae5e2571d3c0504811",
+      "carried_from": "bebd170885ddd61abfb12e1c35ccf9c22e85e0dffe53d7305328e0336893865b",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -1048,7 +1059,7 @@
       "evidence": "Advisory to editors performing a fix pass; no fix pass performed this session.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "48cadba979970e9dde7351b0980004e6d4b94feb4d2a7cae5e2571d3c0504811",
+      "carried_from": "bebd170885ddd61abfb12e1c35ccf9c22e85e0dffe53d7305328e0336893865b",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -1059,7 +1070,7 @@
       "evidence": "No file path appears inside any of the three prompt fences (the tracker is external, not a local path).",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "48cadba979970e9dde7351b0980004e6d4b94feb4d2a7cae5e2571d3c0504811",
+      "carried_from": "bebd170885ddd61abfb12e1c35ccf9c22e85e0dffe53d7305328e0336893865b",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -1070,7 +1081,7 @@
       "evidence": "No add-X-and-regenerate pattern in any of the three prompts.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "48cadba979970e9dde7351b0980004e6d4b94feb4d2a7cae5e2571d3c0504811",
+      "carried_from": "bebd170885ddd61abfb12e1c35ccf9c22e85e0dffe53d7305328e0336893865b",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -1081,7 +1092,7 @@
       "evidence": "Cross-file variety rule; this file's own closing mechanic (\"## Double-check the voice\", a solo self-check) is consistent with the corpus's variety principle but not verifiable in isolation from sibling M1 exercises.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "48cadba979970e9dde7351b0980004e6d4b94feb4d2a7cae5e2571d3c0504811",
+      "carried_from": "bebd170885ddd61abfb12e1c35ccf9c22e85e0dffe53d7305328e0336893865b",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -1092,7 +1103,7 @@
       "evidence": "Surface is a student-facing curriculum exercise (curriculum/exercises/close-the-ticket.md), not buyer-facing copy (site/newsletter/sponsor deck/pricing) — the compendium's whole scope does not fire here.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "48cadba979970e9dde7351b0980004e6d4b94feb4d2a7cae5e2571d3c0504811",
+      "carried_from": "bebd170885ddd61abfb12e1c35ccf9c22e85e0dffe53d7305328e0336893865b",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -1103,7 +1114,7 @@
       "evidence": "Surface is a student-facing curriculum exercise (curriculum/exercises/close-the-ticket.md), not buyer-facing copy (site/newsletter/sponsor deck/pricing) — the compendium's whole scope does not fire here.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "48cadba979970e9dde7351b0980004e6d4b94feb4d2a7cae5e2571d3c0504811",
+      "carried_from": "bebd170885ddd61abfb12e1c35ccf9c22e85e0dffe53d7305328e0336893865b",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -1114,7 +1125,7 @@
       "evidence": "Surface is a student-facing curriculum exercise (curriculum/exercises/close-the-ticket.md), not buyer-facing copy (site/newsletter/sponsor deck/pricing) — the compendium's whole scope does not fire here.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "48cadba979970e9dde7351b0980004e6d4b94feb4d2a7cae5e2571d3c0504811",
+      "carried_from": "bebd170885ddd61abfb12e1c35ccf9c22e85e0dffe53d7305328e0336893865b",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -1125,7 +1136,7 @@
       "evidence": "Surface is a student-facing curriculum exercise (curriculum/exercises/close-the-ticket.md), not buyer-facing copy (site/newsletter/sponsor deck/pricing) — the compendium's whole scope does not fire here.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "48cadba979970e9dde7351b0980004e6d4b94feb4d2a7cae5e2571d3c0504811",
+      "carried_from": "bebd170885ddd61abfb12e1c35ccf9c22e85e0dffe53d7305328e0336893865b",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -1136,7 +1147,7 @@
       "evidence": "Surface is a student-facing curriculum exercise (curriculum/exercises/close-the-ticket.md), not buyer-facing copy (site/newsletter/sponsor deck/pricing) — the compendium's whole scope does not fire here.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "48cadba979970e9dde7351b0980004e6d4b94feb4d2a7cae5e2571d3c0504811",
+      "carried_from": "bebd170885ddd61abfb12e1c35ccf9c22e85e0dffe53d7305328e0336893865b",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -1147,7 +1158,7 @@
       "evidence": "Surface is a student-facing curriculum exercise (curriculum/exercises/close-the-ticket.md), not buyer-facing copy (site/newsletter/sponsor deck/pricing) — the compendium's whole scope does not fire here.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "48cadba979970e9dde7351b0980004e6d4b94feb4d2a7cae5e2571d3c0504811",
+      "carried_from": "bebd170885ddd61abfb12e1c35ccf9c22e85e0dffe53d7305328e0336893865b",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -1158,7 +1169,7 @@
       "evidence": "Surface is a student-facing curriculum exercise (curriculum/exercises/close-the-ticket.md), not buyer-facing copy (site/newsletter/sponsor deck/pricing) — the compendium's whole scope does not fire here.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "48cadba979970e9dde7351b0980004e6d4b94feb4d2a7cae5e2571d3c0504811",
+      "carried_from": "bebd170885ddd61abfb12e1c35ccf9c22e85e0dffe53d7305328e0336893865b",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -1169,7 +1180,7 @@
       "evidence": "Surface is a student-facing curriculum exercise (curriculum/exercises/close-the-ticket.md), not buyer-facing copy (site/newsletter/sponsor deck/pricing) — the compendium's whole scope does not fire here.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "48cadba979970e9dde7351b0980004e6d4b94feb4d2a7cae5e2571d3c0504811",
+      "carried_from": "bebd170885ddd61abfb12e1c35ccf9c22e85e0dffe53d7305328e0336893865b",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -1180,7 +1191,7 @@
       "evidence": "Surface is a student-facing curriculum exercise (curriculum/exercises/close-the-ticket.md), not buyer-facing copy (site/newsletter/sponsor deck/pricing) — the compendium's whole scope does not fire here.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "48cadba979970e9dde7351b0980004e6d4b94feb4d2a7cae5e2571d3c0504811",
+      "carried_from": "bebd170885ddd61abfb12e1c35ccf9c22e85e0dffe53d7305328e0336893865b",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -1191,7 +1202,7 @@
       "evidence": "Surface is a student-facing curriculum exercise (curriculum/exercises/close-the-ticket.md), not buyer-facing copy (site/newsletter/sponsor deck/pricing) — the compendium's whole scope does not fire here.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "48cadba979970e9dde7351b0980004e6d4b94feb4d2a7cae5e2571d3c0504811",
+      "carried_from": "bebd170885ddd61abfb12e1c35ccf9c22e85e0dffe53d7305328e0336893865b",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -1202,7 +1213,7 @@
       "evidence": "Surface is a student-facing curriculum exercise (curriculum/exercises/close-the-ticket.md), not buyer-facing copy (site/newsletter/sponsor deck/pricing) — the compendium's whole scope does not fire here.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "48cadba979970e9dde7351b0980004e6d4b94feb4d2a7cae5e2571d3c0504811",
+      "carried_from": "bebd170885ddd61abfb12e1c35ccf9c22e85e0dffe53d7305328e0336893865b",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -1213,7 +1224,7 @@
       "evidence": "Surface is a student-facing curriculum exercise (curriculum/exercises/close-the-ticket.md), not buyer-facing copy (site/newsletter/sponsor deck/pricing) — the compendium's whole scope does not fire here.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "48cadba979970e9dde7351b0980004e6d4b94feb4d2a7cae5e2571d3c0504811",
+      "carried_from": "bebd170885ddd61abfb12e1c35ccf9c22e85e0dffe53d7305328e0336893865b",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -1224,7 +1235,7 @@
       "evidence": "Surface is a student-facing curriculum exercise (curriculum/exercises/close-the-ticket.md), not buyer-facing copy (site/newsletter/sponsor deck/pricing) — the compendium's whole scope does not fire here.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "48cadba979970e9dde7351b0980004e6d4b94feb4d2a7cae5e2571d3c0504811",
+      "carried_from": "bebd170885ddd61abfb12e1c35ccf9c22e85e0dffe53d7305328e0336893865b",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -1235,7 +1246,7 @@
       "evidence": "Fires on Big Idea / Mood (deliberate) / Key Concepts sections; this exercise file carries none of those sections (that's the parent module file's job).",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "48cadba979970e9dde7351b0980004e6d4b94feb4d2a7cae5e2571d3c0504811",
+      "carried_from": "bebd170885ddd61abfb12e1c35ccf9c22e85e0dffe53d7305328e0336893865b",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -1246,7 +1257,7 @@
       "evidence": "Fires on Big Idea / Mood (deliberate) / Key Concepts sections; this exercise file carries none of those sections (that's the parent module file's job).",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "48cadba979970e9dde7351b0980004e6d4b94feb4d2a7cae5e2571d3c0504811",
+      "carried_from": "bebd170885ddd61abfb12e1c35ccf9c22e85e0dffe53d7305328e0336893865b",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -1257,7 +1268,7 @@
       "evidence": "Fires on Big Idea / Mood (deliberate) / Key Concepts sections; this exercise file carries none of those sections (that's the parent module file's job).",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "48cadba979970e9dde7351b0980004e6d4b94feb4d2a7cae5e2571d3c0504811",
+      "carried_from": "bebd170885ddd61abfb12e1c35ccf9c22e85e0dffe53d7305328e0336893865b",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -1268,7 +1279,7 @@
       "evidence": "Fires on Big Idea / Mood (deliberate) / Key Concepts sections; this exercise file carries none of those sections (that's the parent module file's job).",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "48cadba979970e9dde7351b0980004e6d4b94feb4d2a7cae5e2571d3c0504811",
+      "carried_from": "bebd170885ddd61abfb12e1c35ccf9c22e85e0dffe53d7305328e0336893865b",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -1279,7 +1290,7 @@
       "evidence": "Fires on Big Idea / Mood (deliberate) / Key Concepts sections; this exercise file carries none of those sections (that's the parent module file's job).",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "48cadba979970e9dde7351b0980004e6d4b94feb4d2a7cae5e2571d3c0504811",
+      "carried_from": "bebd170885ddd61abfb12e1c35ccf9c22e85e0dffe53d7305328e0336893865b",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -1290,7 +1301,7 @@
       "evidence": "Fires on Big Idea / Mood (deliberate) / Key Concepts sections; this exercise file carries none of those sections (that's the parent module file's job).",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "48cadba979970e9dde7351b0980004e6d4b94feb4d2a7cae5e2571d3c0504811",
+      "carried_from": "bebd170885ddd61abfb12e1c35ccf9c22e85e0dffe53d7305328e0336893865b",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -1301,18 +1312,18 @@
       "evidence": "Fires on Big Idea / Mood (deliberate) / Key Concepts sections; this exercise file carries none of those sections (that's the parent module file's job).",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "48cadba979970e9dde7351b0980004e6d4b94feb4d2a7cae5e2571d3c0504811",
+      "carried_from": "bebd170885ddd61abfb12e1c35ccf9c22e85e0dffe53d7305328e0336893865b",
       "carried_shape": "04c8bbd89721df08"
     }
   ],
   "blocking_findings_count": 0,
-  "todos_count": 3,
+  "todos_count": 1,
   "notes": [
-    "Prefill: shape_hash 04c8bbd89721df08 unchanged from the prior instance, so 66 rows (N/A + mechanical-PASS) were parked by prefill-instance.js --write and are NOT re-derived here; only the 66 rules the class brief actually listed (check_writing 21, check_student_facing 27, check_prompts 18; check_sales_copy and check_strategy_tie_in both dropped to 0 owed rules) got a fresh row from this pass. Ran --merge after writing this instance.",
-    "This file's own body_sha changed since the prior (stale) instance because the pin (d065f8bc) sits BEFORE two real fixes landed on the way to HEAD: (1) check_student_facing §21 — L48 'Ask the agent to study...' corrected to 'Ask Claude to study...'; (2) check_writing §3 — the Sources note (L116) had its journey narrative ('left this file 2026-08-12... was NOT re-homed... retired') rewritten to present-tense state. Both re-verified fresh against the current file and now PASS; the prior instance's REVISE findings on them are stale.",
-    "One §3/§12 finding is NOT resolved by that diff and is pre-existing: the backing block's Stance note (L124) still points at 'the third bullet' of the '## Anything can be reverse-engineered' section for the boundary caveat on L47's claim, but that section has held only two bullets since a 2026-08-12-era cut (confirmed via `git show 8f0ef28b` showing the matching third bullet present on 2026-08-09, and direct extraction of the current section showing two bullets, zero matches for the quoted caveat text anywhere else in the file). Filed as check_writing §3 (stale keep-note) and §12 (the promised downstream carve-out doesn't currently exist in body) — both non-blocking, both needing the same maintainer call on which bullet content to restore or which note to rewrite.",
-    "check_prompts §27 corrected from the prior instance's PASS to N/A: the rule only fires on a 'Save it as <path>' prompt, and none of the three prompts in this file writes a local file.",
-    "check_prompts §38: P3's lead-in ('write the close-out') vs its fence's opening verb ('Update the ticket') still don't rhyme — unaffected by the recent diff, carried forward as a live non-blocking finding.",
-    "check_sales_copy.md (13 rules) and check_strategy_tie_in.md (7 rules) are both fully parked N/A by the prefill sidecar (surface mismatch: student-facing exercise, no Big Idea/Mood/Key Concepts section, not buyer-facing copy) — not re-derived, will arrive via --merge."
+    "Brief-scoped pass: 66 rules from derive-class-brief.js (check_writing 21, check_student_facing 28, check_prompts 17) judged fresh against body_sha b0dd7b9427b7d94116da2d275f90c6dd58a1b6ebe3336a6031276622644c1d0e (commit 50f5d9eb). The other 65 rules (check_writing 6, check_student_facing 8, check_prompts 31, check_sales_copy 13, check_strategy_tie_in 7) are shape-resolved N/A or mechanical-PASS and were left to prefill-instance.js --merge, per this dispatch's scoping rule; not re-derived here.",
+    "This file's prior instance was pinned to body_sha bebd170885... (commit 221bef5a). git diff 221bef5a 50f5d9eb -- curriculum/exercises/close-the-ticket.md shows exactly three changes since: (1) body L5 What-you-do line tightened; (2) backing-block Claims section: two claim types reclassified vision to detail plus a quote-text correction to match the body's existing Claude wording; (3) backing-block Stance note (L124) fully rewritten to drop a false the-third-bullet locator. Change (3) is the direct fix for the prior instance's two open non-blocking findings.",
+    "check_writing SS3 and SS12 flipped REVISE to PASS this pass: the Stance-note rewrite at L124 removes the stale locator (SS3) and is a dated, explicit maintainer ruling that the SS12 downstream carve-out is deliberately not being added (Antti 2026-08-30, do not file the missing bullet as a defect). Honored as a documented accept-note per this dispatch's instruction to check for maintainer rulings before flagging.",
+    "check_student_facing SS38 (Exercise headers pass the build-squint test) had no row at all in the prior instance despite being in-brief, a genuine coverage hole rather than a rule that resolved N/A. Filed fresh this pass: PASS.",
+    "check_prompts SS38 (body lead-in mirrors prompt opening phrasing) remains REVISE, non-blocking: P3's lead-in opens on write while its fence opens on Update the ticket. Untouched by the diff since the prior pass; carried forward as the sole live TODO.",
+    "accept-notes honored: L62 (connector assumed-known, Antti 2026-08-18, overrules check_writing SS8 / check_student_facing SS2 on connector); L124 (Stance note, Antti 2026-08-30, overrules check_writing SS3/SS12 on the missing caveat bullet, see above)."
   ]
 }

@@ -1,19 +1,51 @@
 {
   "class": "slides",
-  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/author-test-strategy-skill.md",
-  "body_sha": "23461ff5c1dc8289db8083053665f0cf7083fb273add190f0fddaf244f47d737",
+  "file": "curriculum/exercises/author-test-strategy-skill.md",
+  "body_sha": "63affc1473db6559a51f2586dd67ca98bc57b352a709e7ab52c6f8ee8d2e539c",
   "shape_hash": "04c8bbd89721df08",
   "verdict": "PASS",
   "training": "ae101",
   "chunk_map": [
-    { "index": 0, "heading": "H1 + lede (title slide)", "lines": "1-16" },
-    { "index": 1, "heading": "Phase 1: Author the skill through conversation", "lines": "17-28" },
-    { "index": 2, "heading": "Answer from how your codebase really tests", "lines": "29-33" },
-    { "index": 3, "heading": "Phase 2: Invoke the skill on this codebase", "lines": "34-45" },
-    { "index": 4, "heading": "Sharpen the skill from what came back", "lines": "46-53" },
-    { "index": 5, "heading": "Phase 3: Ship the skill personal-first", "lines": "54-59" },
-    { "index": 6, "heading": "Decide if it graduates to the team", "lines": "60-68" },
-    { "index": 7, "heading": "What this sets up", "lines": "69-74" }
+    {
+      "index": 0,
+      "heading": "H1 + lede (title slide)",
+      "lines": "1-16"
+    },
+    {
+      "index": 1,
+      "heading": "Phase 1: Author the skill through conversation",
+      "lines": "17-28"
+    },
+    {
+      "index": 2,
+      "heading": "Answer from how your codebase really tests",
+      "lines": "29-33"
+    },
+    {
+      "index": 3,
+      "heading": "Phase 2: Invoke the skill on this codebase",
+      "lines": "34-45"
+    },
+    {
+      "index": 4,
+      "heading": "Sharpen the skill from what came back",
+      "lines": "46-53"
+    },
+    {
+      "index": 5,
+      "heading": "Phase 3: Ship the skill personal-first",
+      "lines": "54-59"
+    },
+    {
+      "index": 6,
+      "heading": "Decide if it graduates to the team",
+      "lines": "60-68"
+    },
+    {
+      "index": 7,
+      "heading": "What this sets up",
+      "lines": "69-72"
+    }
   ],
   "rules_evaluated": [
     {
@@ -22,7 +54,7 @@
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Re-checked all 8 chunks against the post-lean-pass body (source_sha 90e6701c…). The lean-pass cuts (maintainer L77) removed sentences, not headers or the referents those sentences pointed at, so no dangling antecedents were created: chunk 1 L23's cut clause ('The reasons for personal-first land in Phase 3…') was itself a forward pointer that already named its destination heading, so removing it removes a pointer, not a referent; chunk 4 L51-52's merge (5→2 sentences) left 'the sharpen' in L52 resolving to the sharpening action just described in the same bullet/chunk; chunk 5 L58's cut ('That's the ship.') and chunk 6 L63's cut (coffee/channel color + 'sharpen it sharper') removed trailing color, not antecedents anything downstream needed. Closest candidate: chunk 7 L71 'Module 4 reads this skill... it walks a real task against everything you've built' — 'it' = Module 4 (same clause), 'this skill' = the test-strategy skill named in the H1 and reused throughout (arc-earned, chunk 0). Chunk 7 L73 'came over at the fork' and 'here' resolve via the session-artifacts carve-out (same sentence names 'the side-quest worktree'). No never-named, vague, or re-chunk-stranded referent found.",
+      "evidence": "Walked all 8 chunks in order. Reused-but-earlier-named terms resolve fine under full deck history: 'the skill' (title/H1, reused every chunk), 'personal first'/'personal' (chunk1 L23 → chunk6 L65, same coined framing reused not re-derived), 'Phase 1'/'Phase 2's invoke-and-critique' (chunk5 L58, sequential same-file callback to named earlier headers, governed by rule 2 not rule 1). Closest candidates: chunk3 L39 'right here'/'this worktree' — resolves same-sentence ('this worktree holds the full codebase') plus chunk0 L5 'the side quest window (*m3-quality*)', session-artifact carve-out; chunk7 L71 'came over at the fork' — no prior use of 'the fork' in this file, but the same sentence supplies the contrast that resolves it ('...and may have drifted from the one in your main repo'), i.e. self-resolving within the sentence, not a dangling forward/never-named pointer. No never-named, vague-with-full-history, or re-chunk-stranded referent found.",
       "fix_hint": null,
       "blocking": true
     },
@@ -32,27 +64,7 @@
       "rule_lead": "Cross-file and positional callbacks.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "No 'the opening lecture said…' style callback into another file's content anywhere in the body. Closest candidate unchanged by the lean pass: chunk 7 L71 'Module 4 reads this skill' names the destination module by number as a forward-pointing closer (permitted per §2's own text on closers), not a positional reference into module 4's content.",
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 3,
-      "rule_lead": "Every backward reference points at a beat that exists.",
-      "verdict": "N/A",
-      "chunks_flagged": [],
-      "evidence": "No 'the X you did/saw' callback to a sibling module's exercise/lecture beat anywhere in body. The file's only backward references (chunk 5 L58 'Phase 1', 'Phase 2's invoke-and-critique') point at this same file's own earlier `##` chunks, governed by rule 1 and verified live above — rule 3's failure shape (a dead cross-beat reference) does not apply.",
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 4,
-      "rule_lead": "Live-demo beats survive a text read.",
-      "verdict": "N/A",
-      "chunks_flagged": [],
-      "evidence": "File contains no guess-before-reveal / predict-then-watch instruction anywhere in the body; the exercise's shape is author-then-invoke-then-critique, unaffected by the lean pass's line-level trims.",
+      "evidence": "No callback into another file's content by position anywhere in body. The only backward references — chunk5 L58 'Phase 1' and 'Phase 2's invoke-and-critique' — point at this same file's own earlier `##` headers by name, which §2 explicitly permits ('within one file, sequential callbacks are fine'). No navigational-pointer phrasing present to check against the §12-overlap carve-out either.",
       "fix_hint": null,
       "blocking": true
     },
@@ -62,7 +74,7 @@
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Closest candidate: chunk 5 (Phase 3, lines 54-59) now carries only ONE body bullet after the lean pass cut its trailing 'That's the ship.' sentence — but the surviving bullet (L58: 'The skill is already shipped… There is no separate install step.') is a standalone claim (nothing left to do, install already happened), not a wait-state or context-dependent fragment. Every one of the 7 body chunks still carries a standalone instructive or evaluative claim.",
+      "evidence": "Closest candidate: chunk5 (Phase 3, lines 54-59) carries only ONE body bullet (L58). It is not a wait-state or context-dependent fragment — it states a standalone claim (install already happened, nothing left to do) that a reader lands on and understands without needing another slide. Every other chunk carries 2+ bullets or a paragraph with its own claim.",
       "fix_hint": null,
       "blocking": false
     },
@@ -72,7 +84,7 @@
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Re-checked all 7 non-title headers against their post-trim chunk content; none of the lean-pass cuts removed the sentence that makes a header true. Closest edge case unchanged: chunk 5 header 'Phase 3: Ship the skill personal-first' (L54) vs. content 'The skill is already shipped… no separate install step' (L58) — header names the act, content confirms it, not contradicted.",
+      "evidence": "Checked all 7 body headers against their chunk content: each names what the chunk delivers ('Phase 1: Author the skill through conversation' → conversational-authoring bullets; 'Phase 3: Ship the skill personal-first' (L54) → content confirms shipping already happened, L58). Closest edge case: chunk7 'What this sets up' (L69) vs. content that is really a housekeeping note about leftover worktree state (L71) — read as a fair summary since the content IS what remains/what-happens-next as a consequence of the exercise's two-window shape (keep/carry/delete decision), not contradicted by it.",
       "fix_hint": null,
       "blocking": false
     },
@@ -82,7 +94,7 @@
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "`grep -inE 'Not [A-Z][a-z]+\\.' curriculum/exercises/author-test-strategy-skill.md` this session, restricted to body lines 1-74 → 0 hits (the only hit, L77, is inside the maintainer block, out of body scope). `grep -inE 'most (useful|important|valuable)|one of the (best|most)|best (way|move|skill)|greatest|longest beat' curriculum/exercises/author-test-strategy-skill.md` this session → 0 hits, no self-grading superlative. No anaphora/epistrophe triple in the current body (chunk 0 L13's 'one author pass, one self-critique, one invocation, ship' remains, each leg a distinct concrete step, matching the file's own backing-block claim `hardened-by-critique-and-invocation`). No number-with-retraction pattern. No verb-triplet with an empty leg. Chunk 4 L49 'same-window self-charity' is a coined handle explained in the same sentence, not an abstraction-noun stack. 'Codebase truth' (chunk1 L23, chunk2 L32, chunk6 L62/65) recurs but is grounded each time by an adjacent concrete example or list (Postgres-in-Docker at L32; framework/mocking-policy/integration-boundary/flakiness-patterns at L62) rather than standing in for nothing concrete.",
+      "evidence": "`sed -n '1,72p' curriculum/exercises/author-test-strategy-skill.md | grep -inE '\\bNot [A-Z][a-z]+\\.'` this session → 0 hits (no 'Not X. Not Y. Z.' construction). `grep -inE 'most (useful|important|valuable)|one of the (best|most)|best (way|move|skill)|greatest|game.?chang'` same range → 0 hits (no self-grading superlative). No anaphora/epistrophe triple present (chunk0 L13 'one author pass, one self-critique, one invocation, ship' is a 4-item parallel list of distinct concrete steps, not a rhetorical triple with an empty third leg). No number-with-its-own-retraction pattern (the *N min* labels are plain time budgets, never hedged). No verb-triplet with an empty leg. Chunk4 L49 'same-window self-charity' is a coined handle explained in the very same sentence ('...graded the result in the same context window: same-window self-charity'), not an abstraction standing in for an unstated concrete referent.",
       "fix_hint": null,
       "blocking": true
     },
@@ -92,7 +104,7 @@
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "`sed -n '1,74p' curriculum/exercises/author-test-strategy-skill.md | grep -inE '\\bsurface\\b|\\bfiring\\b|\\bcompendium\\b|\\bforcing function\\b|\\bbeat\\b|\\bmood\\b|\\bConnections\\b'` this session → 0 hits in body. The 'beat'/superlative fix from the prior audit (commit ac93ec5c, dropping 'the longest beat in Module 3') remains dropped, and the lean pass introduced no new dialect term — its cuts (checked against the diff) removed narration/redundancy, not vocabulary swaps.",
+      "evidence": "`sed -n '1,72p' curriculum/exercises/author-test-strategy-skill.md | grep -inE '\\bsurface\\b|\\bfiring\\b|\\bcompendium\\b|\\bforcing function\\b|\\bbeat\\b|\\bmood\\b|\\bConnections\\b'` this session → 0 hits in body. No repo/maintainer vocabulary reaches the student-facing text.",
       "fix_hint": null,
       "blocking": true
     },
@@ -102,7 +114,7 @@
       "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "`sed -n '1,74p' curriculum/exercises/author-test-strategy-skill.md | grep -n '\\*\\*'` this session → hits only at L3,5,7,9,11,13,67,73, all widget/label chrome (Time:/Window:/What you do:/What you build:/The point:/Quick timebox note./What happened:/Note), matching the file's own dated accept-note (L83, 'Emphasis pass 2026-07-09', citing `check_slides.md §9` by name). Zero bold spans inside narrative bullet prose in any chunk; the lean pass's line trims did not add or remove any bold span (confirmed by the grep line set matching the earlier audit's set).",
+      "evidence": "`sed -n '1,72p' curriculum/exercises/author-test-strategy-skill.md | grep -n '\\*\\*'` this session → hits only at L3, L5, L7, L9, L11, L13, L67, L71: every one is widget/label chrome (**Time:**, **Window:**, **What you do:**, **What you build:**, **The point:**, **Quick timebox note.**, **What happened:**, **Note**). Zero bullet-lead bold anywhere in the 7 content chunks — matches the maintainer's dated Emphasis-pass accept-note (L81: '...bullet leads de-bolded to plain across all slides; kept bold: none... widget/label chrome... untouched, per check_slides.md §9'). No §34 task-sizing callout or LO-bullet-verb shape present to check against this rule's own carve-outs; none needed.",
       "fix_hint": null,
       "blocking": false
     },
@@ -112,7 +124,7 @@
       "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "`grep -n 'author-test-strategy-skill' curriculum/trainings/agentic-engineering-101/earn-the-trust.md` this session → line 41: '[Exercise: Author your test-strategy skill](exercises/author-test-strategy-skill.md)', a standard module-3 exercise include. `grep -n '<!--flag:' curriculum/exercises/author-test-strategy-skill.md` this session → 0 hits, so none of the file's chunks can be resolved-away by `applyContentFlags`; it composes as a plain `.phase--exercise` include, one of the two selectors `buildDeckModel` walks.",
+      "evidence": "This file is included from `curriculum/trainings/agentic-engineering-101/earn-the-trust.md:41` via a standard `[Exercise: ...]` link, which the module template wraps in `.phase--exercise` — the wrapper `buildDeckModel` (`site/layouts/slides.js`) requires to reach the composed deck. `grep -n 'flag:module\\|flag:no-module' curriculum/exercises/author-test-strategy-skill.md` → 0 hits, so there is no runtime-fork branch to resolve. No phase-less top-level prose section exists outside the `##`-chunked body (the whole body is one exercise's phases/decision bullets/closer). No presence risk pattern found.",
       "fix_hint": null,
       "blocking": true
     },
@@ -122,7 +134,7 @@
       "rule_lead": "Numbering — position is computed, content ordinals are linted.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Ran `node scripts/check-slide-numbering.js` this session → 'OK — 60 files, Phase/Step numbering consistent.' (exit 0). Phase 1/Phase 2/Phase 3 headers run consecutively from 1, and every in-file 'Phase N' text reference (chunk 5 L58) resolves to a real header in this file; the lean pass touched no header text or phase-reference wording.",
+      "evidence": "Ran `node scripts/check-slide-numbering.js --file curriculum/exercises/author-test-strategy-skill.md` this session → 'OK — 1 files, Phase/Step numbering consistent.' (exit 0). Body 'Phase N:' headers run 1, 2, 3 consecutively (L17, L34, L54); the only in-body phase reference, chunk5 L58 'Phase 1' / 'Phase 2's invoke-and-critique', resolves in-file, confirmed by the checker.",
       "fix_hint": null,
       "blocking": false
     },
@@ -132,19 +144,9 @@
       "rule_lead": "Page geometry dies at the cut; reading order survives.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Ran `node scripts/check-slide-deixis.js --file curriculum/exercises/author-test-strategy-skill.md` this session → 'OK — 1 files, no page-geometry pointers across the slide cut.' (exit 0). No 'below/above/at the top of this page' phrasing anywhere in the body.",
+      "evidence": "Ran `node scripts/check-slide-deixis.js --file curriculum/exercises/author-test-strategy-skill.md` this session → 'OK — 1 files, no page-geometry pointers across the slide cut.' (exit 0). Manual scan for 'below/above/further down/at the top of this page/see below' style pointers → none in body. Chunk3 L39 'right here' names the student's live environment (the worktree), not a document position, and the mechanical scan agrees.",
       "fix_hint": null,
       "blocking": true
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 13,
-      "rule_lead": "In-deck links work now; whether they EARN their place is open.",
-      "verdict": "N/A",
-      "chunks_flagged": [],
-      "evidence": "`sed -n '1,74p' curriculum/exercises/author-test-strategy-skill.md | grep -n '\\[.*\\]('` this session → 0 hits. No in-body cross-doc links exist in this file to review; §13 is a non-gating review surface and there is nothing on it here.",
-      "fix_hint": null,
-      "blocking": false
     },
     {
       "compendium": "check_slides.md",
@@ -152,7 +154,7 @@
       "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/exercises/author-test-strategy-skill.md` this session → 'files: 1  slides: 7  limits: 210 words / 6 bullets  oversized: 0 — every slide is within limits.' (exit 0). The lean pass only shrank slides further; no accept-note needed and none present.",
+      "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/exercises/author-test-strategy-skill.md` this session → 'files: 1  slides: 7  limits: 210 words / 6 bullets  oversized: 0 — every slide is within limits.' (exit 0). Densest chunk (chunk4, 5 bullets) is still under the 6-bullet ceiling; no accept-note present or needed.",
       "fix_hint": null,
       "blocking": false
     },
@@ -162,7 +164,7 @@
       "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Headers are unchanged by the lean pass (only bullet bodies were trimmed): 6 of 7 body `##` headers are imperative or Phase-labels ('Answer from how your codebase really tests', 'Sharpen the skill from what came back', 'Decide if it graduates to the team', 'Phase 1/2/3: …'). Closest edge case, unchanged from the prior audit: chunk 7 'What this sets up' (L69) matches §15's explicit non-violation category, 'orientation headers' — it orients the reader to forward-looking context rather than posing as a law-claim.",
+      "evidence": "All 7 body `##` headers are imperative or Phase-labels ('Phase 1/2/3: …', 'Answer from how your codebase really tests', 'Sharpen the skill from what came back', 'Decide if it graduates to the team') except chunk7's 'What this sets up' (L69), which matches the rule's explicit non-violation category 'orientation headers' — it frames a forward-looking wrap-up rather than posing as a law-claim, so it does not owe declarative-claim grammar. Classified non-blocking here (polish/genre-consistency, not comprehension-breaking) — this rule postdates the template's 1/2/3/4/8/10/12-vs-5/6/9/11/13/14 partition and isn't named in either list; applying the template's own stated principle ('I cannot follow this' vs 'this could be tighter'), a mood mismatch on a heading is the latter.",
       "fix_hint": null,
       "blocking": false
     },
@@ -172,9 +174,42 @@
       "rule_lead": "A bullet earns its slot or dies — three classes that read as rigour and carry nothing.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "This rule's own text cites a '2026-08-25 sweep' with a ~100% maintainer cut rate, and this file's own maintainer block (L77) is dated 2026-08-25 and lists the exact cuts of this shape: doctrine restatement ('The skill proves itself only when it runs on real code.' — restated the theatre line, cut), self-referential design commentary ('The authoring muscle is what Module 3 installs.' — cut, tagged '§16b' by the maintainer note itself), and aphorism kickers ('That's the ship.'; 'Not every skill graduates to a shared kit.') — all removed. Re-reading what SURVIVED for the same three classes: closest candidates are chunk 4 L52 second sentence ('A skill that names its own gap is more useful to a teammate than one that pretends it's finished.') and chunk 6 L65 ('Personal stays a fine final home. The test: would teammates use it as-written, and does the skill carry enough codebase truth to survive their review.') — both earn their slot under the rule's own bar ('what does it add — a move, an object, a tell, a priority'): the first is a TELL for choosing honest-TODO over false-completeness (not a re-announcement of a law already stated), the second supplies an actual decision TEST ('The test: …') for the graduate-or-not branch the chunk exists to resolve, not decoration restating 'ships personal first'. No surviving bullet matches class (a)/(b)/(c) as the compendium defines them.",
+      "evidence": "Checked every surviving bullet against the three classes. The file's own maintainer block (L75, dated 2026-08-25, 'Lean pass... free hands') already names and removes this exact shape: doctrine restatement ('The skill proves itself only when it runs on real code.' — restated the theatre line), self-referential design commentary ('The authoring muscle is what Module 3 installs.' — tagged '§16b' by the note itself), and aphorism kickers ('That's the ship.'; 'Not every skill graduates to a shared kit.'). Closest surviving candidates: chunk1 L21 ('Skills aren't hand-crafted; they're authored through conversation...') restates chunk0 L7's 'What you do' widget line but adds new procedural detail (who does what: student describes, agent drafts) — earns its slot, not pure recitation; chunk4 L52's second sentence ('A skill that names its own gap is more useful to a teammate than one that pretends it's finished.') justifies the decide-or-ship-with-TODO choice just given rather than restating the header or 'The point' line. Neither matches class (a)/(b)/(c) as this rule defines them. Classified non-blocking here for the same reason as rule 15 (postdates the template's explicit partition; a low-value bullet is a tightness/polish concern, not a comprehension failure).",
       "fix_hint": null,
       "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 3,
+      "rule_lead": "Every backward reference points at a beat that exists.",
+      "verdict": "N/A",
+      "evidence": "No 'the X you did/saw' callback to a sibling module's exercise/lecture beat anywhere in body. The file's only backward references (chunk 5 L58 'Phase 1', 'Phase 2's invoke-and-critique') point at this same file's own earlier `##` chunks, governed by rule 1 and verified live above — rule 3's failure shape (a dead cross-beat reference) does not apply.",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "23461ff5c1dc8289db8083053665f0cf7083fb273add190f0fddaf244f47d737",
+      "carried_shape": "04c8bbd89721df08"
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 4,
+      "rule_lead": "Live-demo beats survive a text read.",
+      "verdict": "N/A",
+      "evidence": "File contains no guess-before-reveal / predict-then-watch instruction anywhere in the body; the exercise's shape is author-then-invoke-then-critique, unaffected by the lean pass's line-level trims.",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "23461ff5c1dc8289db8083053665f0cf7083fb273add190f0fddaf244f47d737",
+      "carried_shape": "04c8bbd89721df08"
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 13,
+      "rule_lead": "In-deck links work now; whether they EARN their place is open.",
+      "verdict": "N/A",
+      "evidence": "`sed -n '1,74p' curriculum/exercises/author-test-strategy-skill.md | grep -n '\\[.*\\]('` this session → 0 hits. No in-body cross-doc links exist in this file to review; §13 is a non-gating review surface and there is nothing on it here.",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "23461ff5c1dc8289db8083053665f0cf7083fb273add190f0fddaf244f47d737",
+      "carried_shape": "04c8bbd89721df08"
     }
   ],
   "blocking_findings_count": 0,

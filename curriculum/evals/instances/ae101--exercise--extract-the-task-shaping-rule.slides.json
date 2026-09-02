@@ -3,8 +3,8 @@
  "file": "curriculum/exercises/extract-the-task-shaping-rule.md",
  "verdict": "PASS",
  "training": "ae101",
- "body_sha": "be40f1e5d1c7e27f9b52aad093ec1cfecf20e9c6515cd89369ce61b11b2d562b",
- "shape_hash": "ae101--exercise--extract-the-task-shaping-rule",
+ "body_sha": "81328003a5b6cd72ee4a694f7d8c7f6932de6997a126abf91aca1937318b754f",
+ "shape_hash": "04c8bbd89721df08",
  "chunk_map": [
   {"index": 0, "heading": "(title) Codify the rules, place the file", "lines": "1-12"},
   {"index": 1, "heading": "Phase 1: Codify the rules from this session", "lines": "13-24"},
@@ -24,7 +24,7 @@
    "rule_lead": "Referent resolution under a sequential deck read.",
    "verdict": "PASS",
    "chunks_flagged": [],
-   "evidence": "Sequential read across all 10 chunks (0-9) confirms every pronoun/demonstrative/definite-noun resolves. Closest candidates: (a) chunk 5 line 63 'If the picked path only loads when named, ask for the `@import` line before you move on' -- 'the picked path' is an immediate continuation of chunk 4's subject ('Decide the location with Claude', line 46), a same-topic hand-off across adjacent chunks, not a stray referent; (b) chunk 7 line 77 'a place for your file in the loop' -- 'the loop' is arc-earned spine vocabulary (`curriculum/vocabulary.md:52`: 'the loop / compounding: taught in full once at the first module'), earned at M1, so it does not need to re-earn here at M2; (c) chunk 8 line 88 'a branch from the second-pass read' -- 'the second-pass read' names an artifact the student's own live session just produced in the immediately-preceding exercise `push-back-on-the-plan.md` (verified: 'The second read runs in this same session and still in plan mode', push-back-on-the-plan.md:54), so it resolves under the session-artifacts-in-exercises carve-out rather than needing in-file naming; also independently attested by the enclosing module file's own maintainer block (plan-mode-done-right.md:171: 'Claude integrates one branch from the second-pass read').",
+   "evidence": "Sequential read across all 10 chunks. Closest candidates, all resolve: (a) chunk 3 line 31 'The same move you ran at M1 on a bug ticket, pointed at a story' -- 'M1' is arc-earned module vocabulary (the deck's own nav rail derives 'M1...' section codes per rule 11) and the move is unpacked in the same clause ('a bug ticket'); verified `close-the-ticket.md` (M1) headers '## Read the ticket for your bug' (L11) and '## Read the conventions off the ticket' (L20) plus body L31 'A second bug ticket' -- the referenced M1 beat is real. (b) chunk 8 line 88 'a branch from the second-pass read' -- resolves under the module-include-order carve-out: `push-back-on-the-plan.md` is the immediately-preceding exercise (`plan-mode-done-right.md` L34-36 include order) and establishes 'second-pass read'/'second read' repeatedly (L5, L54, L99, L105, L221) as the artifact of the student's own live session; also a session artifact of the current module, exempt independently. (c) chunk 5 line 63 'the picked path' continues chunk 4's subject ('Decide the location with Claude', L46), ordinary same-topic hand-off across adjacent slides.",
    "fix_hint": null,
    "blocking": true
   },
@@ -34,7 +34,7 @@
    "rule_lead": "Cross-file and positional callbacks.",
    "verdict": "PASS",
    "chunks_flagged": [],
-   "evidence": "No positional cross-file callback found. Chunk 3 line 31 names the source by module code and claim ('The same move you ran at M1 on a bug ticket'), not by position ('the previous module'). Chunk 5 line 64's link is named by title ('Claude Code for engineers'), not located on a page. Chunk 8 line 88's 'the second-pass read' names the activity by its own descriptor rather than positioning it ('the exercise before this one'), satisfying the naming requirement.",
+   "evidence": "No positional callback found. Chunk 3 L31 names M1 by module code plus unpacked content ('a bug ticket'), not by position ('the previous module'/'the earlier exercise'). Chunk 5 L64's link is named by title -- '[Claude Code for engineers](...)' -- not located on a page, satisfying the navigational-pointer carve-out. Chunk 8 L88 names 'the second-pass read' by its own descriptor, not by position relative to this file.",
    "fix_hint": null,
    "blocking": true
   },
@@ -44,7 +44,7 @@
    "rule_lead": "Every backward reference points at a beat that exists.",
    "verdict": "PASS",
    "chunks_flagged": [],
-   "evidence": "Verified both backward references resolve against beats that currently exist. Ran `grep -n \"^## \" curriculum/exercises/close-the-ticket.md` -> confirms '## Read the ticket for your bug' (line 11) and '## Read the conventions off the ticket' (line 20), matching chunk 3 lines 31-32's 'the same move you ran at M1 on a bug ticket' / 'the bug fields'. Ran `grep -n \"second-pass\\|second read\" curriculum/exercises/push-back-on-the-plan.md` -> confirms 'run a second-pass grilling' (line 5), 'The second read runs in this same session' (line 54), 'runs a second-pass walk-down' (line 221), matching chunk 8 line 88's 'the second-pass read'. Both referenced beats exist in the current files.",
+   "evidence": "Ran `grep -n \"^## \" curriculum/exercises/close-the-ticket.md` -> '## Read the ticket for your bug' (L11), '## Read the conventions off the ticket' (L20); ran `grep -niE \"bug ticket\" curriculum/exercises/close-the-ticket.md` -> L31 'A second bug ticket from a different part of the system' -- the M1 bug-ticket beat chunk 3 L31 points at exists. Ran `grep -niE \"second.pass|second read\" curriculum/exercises/push-back-on-the-plan.md` -> L5, L54 'The second read runs in this same session and still in plan mode', L99, L105, L221 -- the second-pass-read beat chunk 8 L88 points at exists in the immediately-preceding exercise.",
    "fix_hint": null,
    "blocking": true
   },
@@ -55,7 +55,7 @@
    "verdict": "N/A",
    "chunks_flagged": [],
    "evidence": null,
-   "na_reason": "no guess-before-reveal construction anywhere in body (`grep -niE \"guess|predict|reveal\"` on the body view returns zero hits)",
+   "na_reason": "no guess-before-reveal construction; `grep -niE \"guess|predict|reveal\"` on the body returns one hit (L104 'a convention it guessed', past-tense, unrelated to a guess/reveal demo beat)",
    "fix_hint": null,
    "blocking": true
   },
@@ -65,7 +65,7 @@
    "rule_lead": "No orphan slides.",
    "verdict": "PASS",
    "chunks_flagged": [],
-   "evidence": "Shortest chunk checked: chunk 2 (lines 25-28), one bullet -- 'The rule that arrives generic, like \"pick tasks that span multiple files,\" is the one to rewrite in your words, or reject.' is a complete, self-carrying directive with a concrete example, not a wait-state fragment. All other chunks carry >=2 bullets, a table, or framing prose plus a prompt block; none is a bare context-dependent remainder.",
+   "evidence": "Shortest chunk: chunk 2 (L25-28), one bullet -- 'The rule that arrives generic, like \"pick tasks that span multiple files,\" is the one to rewrite in your words, or reject.' -- a complete, self-carrying directive with a concrete example, not a wait-state fragment. Every other chunk carries >=2 bullets, a table, or framing prose plus a prompt fence.",
    "fix_hint": null,
    "blocking": false
   },
@@ -75,7 +75,7 @@
    "rule_lead": "Header self-carries at projection distance.",
    "verdict": "PASS",
    "chunks_flagged": [],
-   "evidence": "Checked all 9 `##` headers against their chunk content; each states a literally true summary. Closest candidate: chunk 9 header 'Phase 5: Leave the repo tidier than you found it' (line 98) against content that only asks Claude to NAME planning gaps/conflicting info/other context rather than enforcing a fix (maintainer line 136: 'Fixing is the student's call ... do not add a fix-it prompt') -- but this is the standard Phase-label pattern shared by every other Phase header in this file ('Phase 3: Push back twice' is the rule's own cited example), not a contradiction: the header names the Boy Scout frame, the body explains applying it (bullet 1, line 104: 'Write it down where the next planner will read it'), which is what a Phase label promises.",
+   "evidence": "Checked all 9 `##` headers against chunk content; each is a literally true summary (e.g. chunk 5 'Where rules can live, and when they load' against the table at L53-59; chunk 9 'Phase 5: Leave the repo tidier than you found it' against the Boy Scout bullets at L104-106). Closest candidate: chunk 9's header promises tidying but content only asks Claude to NAME gaps (maintainer L136: 'Fixing is the student's call... do not add a fix-it prompt') -- not a contradiction, this is the standard Phase-label pattern (names the frame; body explains applying it, L104 'Write it down where the next planner will read it').",
    "fix_hint": null,
    "blocking": false
   },
@@ -85,7 +85,7 @@
    "rule_lead": "LLM-cadence caps.",
    "verdict": "PASS",
    "chunks_flagged": [],
-   "evidence": "Scanned all sub-items across the body: no 'Not X. Not Y. Z.' construction (`grep -n \"\\bNot\\b\"` clean); no anaphora/epistrophe triple (`grep -nE \"^\\s*-?\\s*(Every|Each|It) \"` clean); no self-grading superlative (`grep -niE \"most useful|one of the|best way|game.chang|essential|crucial\"` clean -- the only value-prop-adjacent line, chunk 6 line 70 'Ask Claude what this file could drive later', is plain, not a grading claim); the only numerals in body are the widget-chrome time budgets (lines 3, 15, 41, 68, 82, 100 -- '20 minutes', '8 min' etc, `grep -nE \"[0-9]+%|\\b[0-9]+ (min|minutes)\\b\"`), which carry no retraction/hedge, so no number+retraction pattern; no abstraction-noun stack; no empty-leg verb triplet. All sub-items clean.",
+   "evidence": "Ran targeted greps on the body (L1-111): `grep -nE \"\\bNot [A-Z]\"` -> 0 hits (no 'Not X. Not Y. Z.'); `grep -niE \"most useful|one of the|best way|game.chang|essential|crucial\"` -> 0 hits (no self-grading superlative); numerals present are only widget-chrome time budgets (L3 '20 minutes', L15 '8 min', L41 '4 min', L68 '3 min', L82 '3 min', L100 '2 min') with no retraction/hedge attached, so no number+retraction pattern; no anaphora/epistrophe triple or empty-leg verb triplet found on a manual read of every bullet.",
    "fix_hint": null,
    "blocking": true
   },
@@ -95,7 +95,7 @@
    "rule_lead": "Internal dialect never lands on a slide.",
    "verdict": "PASS",
    "chunks_flagged": [],
-   "evidence": "Ran `grep -niE \"\\bsurface\\b|\\bfiring\\b|\\bcompendium\\b|forcing function|\\bbeat\\b|\\bmood\\b|\\bConnections\\b\"` on the body view -> one hit, chunk 0 line 5: 'surface task-shaping rules from the session you just ran' -- 'surface' used as the ordinary engineering VERB the compendium explicitly exempts ('surface the issue'), not the noun 'writing surface'. No other dialect terms present anywhere in body.",
+   "evidence": "Ran `grep -niE \"\\bsurface\\b|\\bfiring\\b|\\bcompendium\\b|forcing function|\\bbeat\\b|\\bmood\\b|\\bConnections\\b\"` on the body (L1-111) -> one hit, L5 'surface task-shaping rules from the session you just ran' -- the compendium's own exempted ordinary engineering VERB use, not the noun 'writing surface'. No other dialect terms present.",
    "fix_hint": null,
    "blocking": true
   },
@@ -105,8 +105,8 @@
    "rule_lead": "Emphasis budget -- bold is for handles, and go very lightly.",
    "verdict": "REVISE",
    "chunks_flagged": [9],
-   "evidence": "Body-wide bold scan (`grep -nE \"\\*\\*[A-Za-z][^*]{0,60}\\*\\*\"` on body.txt) returns bold only at: chunk-0 widget chrome (lines 3, 5, 7, 9 -- exempt) and chunk 9 lines 104-106 -- '**Planning gaps.**', '**Conflicting information.**', '**Other context.**', three bolded checklist-item-name handles (each <=3 words, within the ~5-word span cap) on ONE slide. This is 3 handles against the default <=1-per-slide budget, and none of the rule's four named exemptions covers it: not a §34 task-sizing floor/ceiling callout, not a `## What You'll Learn` LO-template bullet, not a reading-list/menu slide (this is a taxonomy of failure categories with worked examples, not a scannable menu of options), not a reference/supplementary lookup surface (this is an ordinary exercise Phase). The maintainer block's own accept-note at line 130 ('no bolded handles in the body; all bullet leads plain') is now stale for this reading: it carries no date of its own and its parenthetical references the 2026-08-12 pass, sitting logically before the Phase-5 move recorded two entries later at line 136 ('Phase 5 Boy Scout slide ... moved here 2026-08-25') -- it describes the file as it stood before this slide existed, not the current body, so it does not function as a current, deliberate accept-note for these three bolds. Harm: minor -- each handle is short and the slide is not noisy, but the count is outside the stated budget with no matching exemption, which is exactly the ambiguity the maintainer would want to resolve rather than have re-litigated by every future judge.",
-   "fix_hint": "Either drop to one bolded handle (the strongest of the three) and leave the other two plain, or flatten all three to plain text -- a 3-item taxonomy reads fine unbolded; alternatively, if the triple-bold was deliberate, add a dated accept-note naming this as a checklist-enumeration exception.",
+   "evidence": "Ran `grep -nE '\\*\\*[A-Za-z][^*]{0,60}\\*\\*'` on the body (L1-111) -> bold appears only at widget chrome (L3,5,7,9, exempt) and chunk 9 L104-106: '**Planning gaps.**', '**Conflicting information.**', '**Other context.**' -- three bolded checklist-item-name handles (each within the <=5-word span cap) on ONE slide, against the default <=1-per-slide budget. None of the rule's named exemptions covers it on inspection: not a §34 task-sizing floor/ceiling callout, not a `## What You'll Learn` LO-template bullet, not a scanned menu/reading-list slide (this is a worked taxonomy read top-to-bottom, not an entry-point menu), not a reference/supplementary lookup page (this is an ordinary exercise Phase). The 'law/consolidation slide may carry one handle per law' clause is the nearest fit, but these three categories are introduced fresh here rather than consolidating previously-earned named laws, so it is a genuine boundary case rather than a clean exemption. The maintainer's OWN accept-note at L130 states the opposite design intent for this file: '**Emphasis budget (`check_slides.md §9`):** no bolded handles in the body; all bullet leads plain.' -- undated, sitting before the L136 note ('Phase 5 Boy Scout slide (Antti-directed 2026-08-23; moved here 2026-08-25)') that records when these three bullets entered this file, so the accept-note plausibly predates and no longer describes the current body. Harm: the rule exists so bold stays a reliable navigation signal; three short, non-noisy checklist labels are a mild instance of the harm, but the file's own maintainer note explicitly disclaims exactly this pattern for this file, which is the ambiguity a maintainer call should resolve rather than have re-litigated by every future judge.",
+   "fix_hint": "Either drop to one bolded handle (or none) across the three Boy Scout bullets to match the file's own stated 'all bullet leads plain' intent, or add a dated accept-note authorizing the checklist-enumeration bold and refresh L130 so it no longer claims the opposite.",
    "blocking": false
   },
   {
@@ -115,7 +115,7 @@
    "rule_lead": "Presence precedes content -- verify against the composed deck, not long-read.",
    "verdict": "PASS",
    "chunks_flagged": [],
-   "evidence": "Ran `grep -n \"extract-the-task-shaping-rule\" curriculum/trainings/agentic-engineering-101/plan-mode-done-right.md` -> line 34: '[Exercise: Extract the task-shaping rule](exercises/extract-the-task-shaping-rule.md)', a standard exercise-include reaching the composed deck through the module's `.phase--exercise` wrapper. Not a phase-less orphan section.",
+   "evidence": "Ran `grep -n \"extract-the-task-shaping-rule\" curriculum/trainings/agentic-engineering-101/plan-mode-done-right.md` -> L36 '[Exercise: Extract the task-shaping rule](exercises/extract-the-task-shaping-rule.md)', a standard exercise-include reaching the composed deck through the module's `.phase--exercise` wrapper (`buildDeckModel`). Not a phase-less prework/supplementary/reference section, so not at risk of the drop this rule guards against.",
    "fix_hint": null,
    "blocking": true
   },
@@ -125,7 +125,7 @@
    "rule_lead": "Numbering -- position is computed, content ordinals are linted.",
    "verdict": "PASS",
    "chunks_flagged": [],
-   "evidence": "Ran `node scripts/check-slide-numbering.js curriculum/exercises/extract-the-task-shaping-rule.md` -> 'OK -- 60 files, Phase/Step numbering consistent.' Phase headers run consecutive 1-5 (lines 13, 39, 66, 80, 98). No in-file 'Phase K' prose cross-references needing separate verification.",
+   "evidence": "Ran `node scripts/check-slide-numbering.js curriculum/exercises/extract-the-task-shaping-rule.md` -> 'OK -- 1 files, Phase/Step numbering consistent.' Phase headers run consecutive 1-5 (L13, 39, 66, 80, 98); no in-file 'Phase K'/'Step K' prose cross-reference found needing separate resolution.",
    "fix_hint": null,
    "blocking": false
   },
@@ -135,7 +135,7 @@
    "rule_lead": "Page geometry dies at the cut; reading order survives.",
    "verdict": "PASS",
    "chunks_flagged": [],
-   "evidence": "Ran `node scripts/check-slide-deixis.js curriculum/exercises/extract-the-task-shaping-rule.md` -> 'OK -- 60 files, no page-geometry pointers across the slide cut.' Closest candidate: chunk 3 line 35 'Drop a story ticket link after the colon' -- the colon lives in the expanded prompt-4 fence's closing line ('Story ticket:'), which sits inside the SAME chunk (lines 29-38), matching the rule's own same-chunk-paste-pointer pass case, not a violation.",
+   "evidence": "Ran `node scripts/check-slide-deixis.js --file curriculum/exercises/extract-the-task-shaping-rule.md` -> 'OK -- 1 files, no page-geometry pointers across the slide cut.' (exit 0). Closest candidate: chunk 3 L35 'Drop a story ticket link after the colon' -- the colon is the closing line of the {{prompt:extract-the-task-shaping-rule-4}} fence at L37, inside the SAME chunk (L29-38), matching the rule's own same-chunk-paste-pointer pass case.",
    "fix_hint": null,
    "blocking": true
   },
@@ -145,7 +145,7 @@
    "rule_lead": "In-deck links work now; whether they EARN their place is open.",
    "verdict": "PASS",
    "chunks_flagged": [],
-   "evidence": "Ran `node scripts/check-slide-deixis.js --file curriculum/exercises/extract-the-task-shaping-rule.md --links` -> one in-body link, chunk 5 line 64: '[Claude Code for engineers](../trainings/agentic-engineering-101/reference/claude-code-for-engineers.md) is the long form: precedence, walk-up, the managed layer.' Named by title in the link text (the sentence still works with the link stripped), not located by page geometry -- satisfies the surviving requirement; the earn-their-place half is explicitly 'no rule' per the compendium and the click mechanism is settled/tested globally.",
+   "evidence": "Ran `node scripts/check-slide-deixis.js --links --file curriculum/exercises/extract-the-task-shaping-rule.md` -> one in-body link, chunk 5 L64: '[Claude Code for engineers](../trainings/agentic-engineering-101/reference/claude-code-for-engineers.md) is the long form: precedence, walk-up, the managed layer.' Named by title in the link text (sentence survives with the link stripped), not located by page geometry. The click mechanism is settled/tested corpus-wide per §13 and the earn-their-place question is explicitly 'no rule' -- review surface only, never a gate.",
    "fix_hint": null,
    "blocking": false
   },
@@ -165,7 +165,7 @@
    "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
    "verdict": "PASS",
    "chunks_flagged": [],
-   "evidence": "All 9 headers checked: 5 Phase-labels (Phase 1-5, imperative clause after the colon, matching the rule's own 'Phase 3: Push back twice' example) and 4 imperative/catalogue headers ('Reject or rewrite the generic rule', 'Read more rules off one story ticket', 'Where rules can live, and when they load', 'Read the shapes'). Closest candidate: chunk 5's 'Where rules can live, and when they load' (line 51) is neither imperative nor a Phase label, but matches the explicit non-violation carve-out 'catalogue entries naming their subject' (cf. the rule's own 'The numbers' / 'Verification, named' examples) -- a topic label for a reference table, not a law-claim needing declarative phrasing.",
+   "evidence": "All 9 headers checked against the exercise grammar (imperative or phase label). 5 Phase-labels (L13,39,66,80,98) and 4 imperative/catalogue headers (L25 'Reject or rewrite the generic rule', L29 'Read more rules off one story ticket', L75 'Read the shapes'). Closest candidate: L51 'Where rules can live, and when they load' is neither strictly imperative nor a Phase label, but matches the explicit non-violation carve-out 'catalogue entries naming their subject' -- a topic label fronting a reference table, not a law-claim.",
    "fix_hint": null,
    "blocking": false
   },
@@ -175,7 +175,7 @@
    "rule_lead": "A bullet earns its slot or dies -- three classes that read as rigour and carry nothing.",
    "verdict": "PASS",
    "chunks_flagged": [],
-   "evidence": "Read every bullet against the three low-value classes. Closest candidate: chunk 8 line 92's blockquote aside 'Precise prompting is harder than it looks' -- reads as a generic truism in isolation, but sits inside a genuinely actionable warning (confirm the file wasn't overwritten; recover from scrollback if it was) and does not close the slide (two more sentences of real instruction follow it, and it restates neither the header nor a `**The point:**` line), so it does not trip class (c) aphorism kicker. Chunk 9 line 102's 'A rule in your file is one way to compound a session' revisits the M1-earned compounding concept but varies it into a new angle (repo-level context gaps, not personal rules) rather than re-announcing a lens that already did its work, matching `check_pedagogy.md §9b`'s same-move-different-face pattern rather than tripping class (a) doctrine restatement. No self-referential design commentary (no 'you are inside a pedagogy' framing) and no hollow aphorism kicker found anywhere else in body.",
+   "evidence": "Read every bullet against the three low-value classes. Closest candidates: (a) chunk 8 L92 blockquote 'Precise prompting is harder than it looks' sits inside a genuinely actionable recovery warning and is followed by two more sentences of real instruction, not a slide-closing kicker -- does not trip class (c). (b) chunk 9 L102 'A rule in your file is one way to compound a session' revisits M1-earned compounding but pivots it to repo-level context gaps rather than re-announcing an already-landed lens -- `check_pedagogy.md §9b` same-move-different-face, not class (a) doctrine restatement. No self-referential design commentary found anywhere in body.",
    "fix_hint": null,
    "blocking": false
   }

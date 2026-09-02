@@ -1,11 +1,12 @@
 {
   "class": "behavior",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/diagnose-and-resend.md",
-  "body_sha": "2b9fc8ff42efa4d4b0bfe5289f837e89813c260a4fb9f65369be1daa0e5cbc01",
+  "body_sha": "0653b629895d904bebd0c26f95d13b3d98d211f0938d4fcc521556a9e6ff9d24",
+  "shape_hash": "0d572e3ebce46a4c",
   "verdict": "PASS",
   "training": "ae101",
-  "trace_status": "partial_regen",
-  "regen_note": "Re-fired 2026-08-27 against commit b1ba9165 ('M5 run fixes: KC back to four, no failed run, the shape is a judge'). Diffed the body against the last-judged version: two label renames outside any prompt fence ('the failed run' -> 'the un-packaged run' in the Phase 1 header/What-you-do line; 'Background-agent verifier' -> 'LLM judge' in the Phase 3 menu bullet and its emphasis/backing-claim echoes) plus one new maintainer note ('Failed run is not the frame'), none of which touch prompt content or risk shape. `git log --since=2026-08-13 -- curriculum/prompts/*.md` confirms exactly one prompt-registry file changed since the trace's last full regen: diagnose-and-resend-4.md ('If background-agent: ...' -> 'If judge: ...', same commit). Verified against the current expanded file (scripts/expand-md.js) that prompts 1,2,3,5,6,7,8 are byte-identical at the fence to what the prior instance judged; only prompt 4 is re-evaluated below, and its risk profile is unchanged because 'judge' occupies the same structural slot 'background-agent' held.",
+  "trace_status": "cached",
+  "regen_note": "Re-verified 2026-09-02 against current HEAD (commit range since the last judged body_sha runs through 6c637ba3). Ran scripts/expand-md.js fresh and extracted all 10 fenced blocks (8 **Prompt** blocks + 2 Session-widget /rename fences, which the template excludes). All 8 prompt fences hash byte-identical to the cached sim-cache entries at curriculum/evals/sim-cache/ae101--exercise--diagnose-and-resend.behavior.json once trailing-newline is normalized the way the registry-body extraction already does (confirmed prompt 4's apparent mismatch — raw fence sha 54ae36e6... vs cached 8430e03c... — is exactly a trailing-newline artefact of my own extraction regex, not a content change: stripping trailing whitespace reproduces the cached sha exactly). So no prompt content changed since the last full pass; every risks_fired row below is carried forward unmodified except prompt 6's default-acceptance row. `git diff` of the file since the last-judged commit shows only body/maintainer-block churn outside any fence: Time 60->53min, Phase 4 timing 17->10min, a placeholder-name cosmetic edit (`<repo>-m5` -> `<repo-name>-m5`), a lead-in trim on prompt 4 ('Ask Claude to build the verifier shape...' folded into the dangling-colon cut, prompts-class territory not behavior), a new 'Timebox check' body callout added to Phase 4, and several maintainer-block edits including one dated 2026-08-25 that CUTS the '## Check both files are for the agent, not you' body callout the prior instance's prompt-6 default-acceptance evidence was quoting. That callout no longer exists in the body (grep-confirmed against the live raw source, lines 82-105) — the prior instance's evidence was already stale when written on 2026-08-27, since the cut predates it. Corrected prompt 6's default-acceptance row below to cite what is actually present (the fence's own task-specificity language plus the maintainer's 2026-08-25 accept-note, which explicitly reasons the cut callout was redundant with the grill-note's own judgement). The correction does not change prompt 6's per-prompt verdict (still TODO, driven by the med-confidence load-bearing preamble-before-action risk plus two low-confidence risks) or the file's top-level verdict.",
   "prompts_evaluated": 8,
   "prompts_findings": [
     {
@@ -37,7 +38,7 @@
         {
           "pattern_id": "self-audit-charity",
           "confidence": "low",
-          "evidence": "The audit is grounded in the transcript, branch state, and specific quotes; the nearby body tells Claude to locate two or three quoted moments in the transcript and tells the student to push back on generalisation. The evidence-backed Debrief carve-out neutralises blocking harm.",
+          "evidence": "The audit is grounded in the transcript, branch state, and specific quotes; the nearby body (line 43-44: 'Push back where Claude generalises... Ask Claude to show you where two or three of its quotes appear in the transcript') still tells Claude to locate two or three quoted moments and tells the student to push back on generalisation. The evidence-backed Debrief carve-out neutralises blocking harm.",
           "fix_hint": "No edit; the prompt and body already turn charity into an evidence-checkable claim."
         }
       ]
@@ -51,7 +52,7 @@
         {
           "pattern_id": "default-acceptance",
           "confidence": "low",
-          "evidence": "The three-category menu can invite formulaic matching, but the prompt still requires task-specific content and firing time ('Be specific: not \"a re-readable spec\" generically, but what THAT spec would have said to catch THIS particular goal-drift moment'), and the adjacent body narrows the human decision to the dominant failure and explicitly permits summary depth on the rest. Harm (rote category-name filling with no pushback route) is not present.",
+          "evidence": "The three-category menu can invite formulaic matching, but the prompt still requires task-specific content and firing time ('Be specific: not \"a re-readable spec\" generically, but what THAT spec would have said to catch THIS particular goal-drift moment'), and the adjacent body (line 58: 'Your decision is narrower: which failure cost most... leave the rest at summary depth') narrows the human decision to the dominant failure and explicitly permits summary depth on the rest. Harm (rote category-name filling with no pushback route) is not present.",
           "fix_hint": "No edit; specificity in the fence plus summary-depth permission in the body is sufficient."
         },
         {
@@ -61,7 +62,7 @@
           "fix_hint": "No edit."
         }
       ],
-      "regression_check": "Re-fired 2026-08-13 (second pass): opening line now reads 'Validation for multi-hour agent runs groups into three categories. Use these as the answer shape:' — the earlier 'Practitioners... converge on... often mention' framing is fully gone (grep confirms 0 hits). Answer: the fence still forces a clear answer shape without it. The framing was rhetorical color on the taxonomy, not the forcing mechanism — 'Use these as the answer shape:' plus three concretely-defined, scoped bullets does that job on its own, definitionally or attributively. If anything the bare-definition form removes a latent internal tension the old wording had with the fence's own closing line ('Don't name frameworks or practitioners by label') — priming Claude with the word 'practitioners' in the same fence that then forbids naming them was the shape citation-cargo-cult rides in on. No vagueness or provenance-hedging opened up: nothing in the new opening invites speculation about where the categories come from. Not a regression."
+      "regression_check": "Re-verified 2026-09-02: fence content byte-identical to the last-judged version (sha match). The 'Practitioners... converge on... often mention' framing remains fully absent, replaced by the bare 'Validation for multi-hour agent runs groups into three categories. Use these as the answer shape:' opener. Standing answer holds: the forcing mechanism is the three concretely-defined, scoped bullets, not the practitioner-population framing; no regression."
     },
     {
       "prompt_index": 4,
@@ -72,13 +73,13 @@
         {
           "pattern_id": "overwrite-anxiety",
           "confidence": "low",
-          "evidence": "Claude may pause around persistence, but the prompt deliberately says to show the verifier before saving and the student supplies the shape ('judge' / 'shell-hook' / 'Ralph re-feed', post-rename). This is the required collaboration gate, not harmful overwrite ambiguity.",
+          "evidence": "Claude may pause around persistence, but the prompt deliberately says to show the verifier before saving and the student supplies the shape ('judge' / 'shell-hook' / 'Ralph re-feed'). This is the required collaboration gate, not harmful overwrite ambiguity.",
           "fix_hint": "No edit; preserve the show-before-save gate."
         },
         {
           "pattern_id": "preamble-before-action",
           "confidence": "low",
-          "evidence": "The open-hook shape selection and concrete build request make a long plan opener unlikely; any brief narration does not add a decision for the student. The 'background-agent' -> 'judge' rename in this fence (commit b1ba9165) is a label swap in the same structural slot and does not change this reasoning.",
+          "evidence": "The open-hook shape selection and concrete build request make a long plan opener unlikely; any brief narration does not add a decision for the student. Fence content unchanged since the last pass (sha match); the body lead-in above the fence was independently trimmed to just 'Drop the shape name after the colon...' (check_prompts.md §2's dangling-colon sub-case, prompts-class territory) but that does not touch this risk assessment.",
           "fix_hint": "No edit."
         }
       ]
@@ -106,7 +107,7 @@
         {
           "pattern_id": "preamble-before-action",
           "confidence": "med",
-          "evidence": "The two artefact schemas (5 + 6 named sub-items) plus lock-in grill often elicit a polished plan-summary opener. The rule protects working memory from low-value narration; the real risk here is bounded because the adjacent stop gate tells the student exactly what 'good enough' means and when to end the grill.",
+          "evidence": "The two artefact schemas (5 + 6 named sub-items) plus lock-in grill often elicit a polished plan-summary opener. The rule protects working memory from low-value narration; the real risk here is bounded because the adjacent stop gate (line 97: 'Cut the grill when the package is good enough to re-send... Then say lock it in') and the newly-added timebox callout (line 99: 'Two or three rounds fit the slot... take the recommended answers for the rest, say lock it in') tell the student exactly what 'good enough' means and when to end the grill.",
           "fix_hint": "No prompt edit warranted after body mitigation; skim the opener and use the explicit good-enough threshold."
         },
         {
@@ -118,8 +119,8 @@
         {
           "pattern_id": "default-acceptance",
           "confidence": "low",
-          "evidence": "The detailed schemas can produce competent-looking generic drafts, but the adjacent body names both generic-reference and project-plan failure modes, tells the student to push back, and permits ending once the package criteria are clear. The carve-out removes blocking harm.",
-          "fix_hint": "No edit; the current callouts supply both quality recovery and a stopping rule."
+          "evidence": "CORRECTED 2026-09-02: the prior instance's evidence here quoted a '## Check both files are for the agent, not you' body callout ('Push back if the reference reads like generic long-running advice...') that no longer exists — the maintainer block records it cut 2026-08-25, before the prior instance was even generated. What actually mitigates the risk now: (a) the fence's own task-specificity demands ('Pointers to the memory pages... most relevant to THIS task'; 'the constraints the verifier we just built will enforce'; tests 'scoped to this task's core paths') push against generic template-filling; (b) the maintainer's 2026-08-25 accept-note explicitly reasons the cut callout's push-back tells 'duplicate judgement the grill-note above already exercises' and states the design intent that a genericness tell belongs 'in the Phase-4 prompt, not a body slide' if it recurs — i.e. this is an accepted-by-design reduction, not an unnoticed gap. Confidence held at low; the maintainer's own reasoning is the mitigation, not a body callout that has since been removed.",
+          "fix_hint": "No edit; the 2026-08-25 accept-note already settles this — genericness-catching is deliberately concentrated in the fence + grill, not a separate body slide."
         }
       ]
     },
@@ -139,13 +140,13 @@
         {
           "pattern_id": "preamble-before-action",
           "confidence": "low",
-          "evidence": "STANDING RULE QUESTION, RE-CHECKED — check_prompts.md §17's 4+ sub-step structural trigger fires (protected-block write, confirm-before-write, self-augment invitation, run-task, three-list report), and no in-fence suppressor or post-fence body primer directly names preamble/skim-past. No walk-away/send-off carve-out has been added to check_prompts.md since the last run (grepped compounded/ and check_prompts.md for 'walk-away'/'send-off' — no §17-adjacent carve-out exists). Position holds: the harm the rule guards against (narration eating the student's highest-attention top-of-response reading) is largely absent here because the fence itself says 'I'm walking away' — this is a send-and-leave prompt the student is not sitting and reading closely for a plan.",
+          "evidence": "STANDING RULE QUESTION, RE-CHECKED 2026-09-02 — check_prompts.md §17's 4+ sub-step structural trigger fires (protected-block write, confirm-before-write, self-augment invitation, run-task, three-list report), and no in-fence suppressor or post-fence body primer directly names preamble/skim-past. No walk-away/send-off carve-out has landed in check_prompts.md since the last run (grepped compounded/ and check_prompts.md for 'walk-away'/'send-off' — none §17-adjacent). Position holds: the harm the rule guards against (narration eating the student's highest-attention top-of-response reading) is largely absent here because the fence itself says 'I'm walking away' — this is a send-and-leave prompt the student is not sitting and reading closely for a plan.",
           "fix_hint": "Still a rule question for the maintainer, not a defect on this file: should §17 carry an explicit walk-away/send-off carve-out (paired with §19's minimal-hand-off shape) the way default-acceptance and overwrite-anxiety already have named carve-outs, so future judges don't have to re-derive this same low-confidence downgrade file by file?"
         },
         {
           "pattern_id": "self-report-inflation",
           "confidence": "low",
-          "evidence": "'Report back as three lists, no narrative, no hedging... If any list is empty, say \"none.\"' is the artifact-level, anti-inflation structure the pattern calls for; the adjacent post-fence body para also names the RLHF-agreeableness risk directly and gives the student a verbatim-verifier-output push-back move.",
+          "evidence": "'Report back as three lists, no narrative, no hedging... If any list is empty, say \"none.\"' is the artifact-level, anti-inflation structure the pattern calls for; the adjacent post-fence body para (line 133-135, unchanged) also names the RLHF-agreeableness risk directly ('RLHF is a big part of why: agreeable answers won the preference round') and gives the student a verbatim-verifier-output push-back move.",
           "fix_hint": "No edit; the report-back format and the adjacent body callout already do the work."
         }
       ]

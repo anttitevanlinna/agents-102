@@ -1,7 +1,7 @@
 {
   "class": "storytelling",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/author-test-strategy-skill.md",
-  "body_sha": "23461ff5c1dc8289db8083053665f0cf7083fb273add190f0fddaf244f47d737",
+  "body_sha": "63affc1473db6559a51f2586dd67ca98bc57b352a709e7ab52c6f8ee8d2e539c",
   "shape_hash": "04c8bbd89721df08",
   "verdict": "PASS",
   "training": "ae101",
@@ -10,37 +10,10 @@
   "rules_evaluated": [
     {
       "compendium": "check_lectures.md",
-      "rule_index": 1,
-      "rule_lead": "Meta-frame lectures = closers, not openers.",
-      "verdict": "N/A",
-      "evidence": "File lives at curriculum/exercises/author-test-strategy-skill.md, not curriculum/lectures/ — this rule fires on lecture placement and there is no lecture here to place.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_lectures.md",
-      "rule_index": 2,
-      "rule_lead": "Minimal lecturing before contrast-mood exercises.",
-      "verdict": "N/A",
-      "evidence": "Rule governs a lecture's dosage before a contrast-mood exercise (M5-style). This file IS the exercise, not a pre-exercise lecture, and M3 (earn the trust — Quality + Security) is not a contrast-mood module.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_lectures.md",
-      "rule_index": 3,
-      "rule_lead": "No cross-module sequencing in lecture bodies.",
-      "verdict": "N/A",
-      "evidence": "Rule text is scoped to lecture bodies ('lectures teach, module files sequence'). This is an exercise file; its 'What this sets up' section naming Module 4 is the sanctioned module-to-module arc handoff evaluated under check_strategy_tie_in §4, not a lecture-body violation.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_lectures.md",
       "rule_index": 4,
       "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
       "verdict": "PASS",
-      "evidence": "Re-read at current HEAD (body_sha 90e6701c...) via `grep -n '^## ' curriculum/exercises/author-test-strategy-skill.md`: 'Phase 1: Author the skill through conversation', 'Answer from how your codebase really tests', 'Phase 2: Invoke the skill on this codebase', 'Sharpen the skill from what came back', 'Phase 3: Ship the skill personal-first', 'Decide if it graduates to the team', 'What this sets up' — byte-identical set to pin 12148d77 (confirmed via `git diff 12148d77..HEAD`: every hunk is inside bullet bodies, none touches a `## ` line). Each header still names the concept/move its body supports; none is an empty container or orphan-mood header.",
+      "evidence": "Fresh `grep -n '^## ' curriculum/exercises/author-test-strategy-skill.md` at current HEAD (body_sha 85fc5f4f...): 'Phase 1: Author the skill through conversation', 'Answer from how your codebase really tests', 'Phase 2: Invoke the skill on this codebase', 'Sharpen the skill from what came back', 'Phase 3: Ship the skill personal-first', 'Decide if it graduates to the team', 'What this sets up' — identical set and order to the prior pin (23461ff5). `git show 9a6d906e -- curriculum/exercises/author-test-strategy-skill.md`, the only body-changing commit since that pin, confirms every hunk lands inside bullet/paragraph bodies; no `## ` line is touched. Each header still names the concept/move its body supports (including 'What this sets up', whose body is now narrower but still answers exactly what the header asks — what state the student is left in); none is an empty container or orphan-mood header.",
       "fix_hint": null,
       "blocking": false
     },
@@ -49,16 +22,7 @@
       "rule_index": 5,
       "rule_lead": "A slide's BODY is size-bounded, not just its header (§4's sibling).",
       "verdict": "PASS",
-      "evidence": "Ran fresh: `node scripts/check-slide-size.js --file curriculum/exercises/author-test-strategy-skill.md` at current HEAD → 'files: 1  slides: 7  limits: 210 words / 6 bullets' / 'oversized: 0' / '✓ every slide is within limits'. The 12148d77..HEAD diff (95c3ad09, the 2026-08-25 lean pass) only removes words from existing bullets — it cannot have pushed any slide over the ceiling it was already under.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_lectures.md",
-      "rule_index": 6,
-      "rule_lead": "A prompt inside a lecture is a trainer show-and-tell, never a room follow-along.",
-      "verdict": "N/A",
-      "evidence": "Rule text scopes itself explicitly: 'This holds for every {{prompt:<key>}} / inline **Prompt** block in curriculum/lectures/**' and lists 'exercise prompts... all of which the student runs themselves' under 'Not covered'. This file is curriculum/exercises/author-test-strategy-skill.md; both {{prompt:author-test-strategy-skill-1}} and {{prompt:author-test-strategy-skill-2}} are exercise prompts the student pastes and runs themselves, matching the carve-out by name. Neither prompt was touched by the 12148d77..HEAD diff.",
+      "evidence": "Ran fresh: `node scripts/check-slide-size.js --file curriculum/exercises/author-test-strategy-skill.md` at current HEAD → 'files: 1  slides: 7  limits: 210 words / 6 bullets' / 'oversized: 0' / '✓ every slide is within limits'. Commit 9a6d906e only removes words from three existing slides (the Sharpen slide lost a reassurance clause, the Decide slide's recap lost a forward-pointer clause, the closing slide lost one bullet) — strictly shrinks slides already under the ceiling.",
       "fix_hint": null,
       "blocking": false
     },
@@ -67,8 +31,8 @@
       "rule_index": 16,
       "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
       "verdict": "PASS",
-      "evidence": "The two fenced forcing functions ({{prompt:author-test-strategy-skill-1}}, {{prompt:author-test-strategy-skill-2}}) are untouched by `git diff 12148d77..HEAD`. The optional 'ask the skill itself to name its own weakest part' self-critique ask under '## Sharpen the skill from what came back' (line 48) survives the lean pass verbatim — the diff there cut only 'One paste, one wait, one read, convenient over rigorous.' (line 49 tail), 'Sharpen the SKILL.md, then re-invoke.' (a restatement folded into rule 51's own bullet), and merged the decide-bullet's five sentences to two, dropping only 'The authoring muscle is what Module 3 installs.' (a meta-claim, not part of the decision itself). Rule 16's Boundary 2 permits this body-only ask for light/conversational-fold register PROVIDED the file carries a maintainer accept-note — confirmed present and, per §61a's discriminator (a) test, this exact diff is what the note authorises: the maintainer block's 'Lean pass (2026-08-25, Antti-directed M3/M6 shorten, free hands)' entry names each cut phrase verbatim, matching `git diff 12148d77..HEAD` hunk-for-hunk, and closes 'Do not restore.' Separately, the file's own 'Accept-with-mitigation (check_pedagogy.md §56)' note (unaffected by the diff) still covers the absence of a dedicated push-back move for a skipped self-critique — re-read §56 in full: the skipped-ask failure here is a single-beat, immediately-observable miss recoverable in well under a minute (not the slow/silent-accumulation shape the 2026-08-23 amendment pulls into the forcing-function branch), and it is also caught minutes later by the module's real mandatory fenced prompt (earn-the-trust.md § 'Sharpen the skill from evidence' → {{prompt:ae101-m3-sharpen-skill}}). Both accept-notes hold against the current diff.",
-      "fix_hint": "Non-blocking, unchanged from prior pin: the informal in-exercise ask and the module's mandatory fenced prompt cover near-identical ground minutes apart — could read as repetitive to a careful student. Author's call.",
+      "evidence": "The two fenced forcing functions ({{prompt:author-test-strategy-skill-1}}, {{prompt:author-test-strategy-skill-2}}, lines 27/44) are untouched by `git show 9a6d906e`. That commit's three cuts — 'Either approach is fine.' off the Sharpen slide's two-prompt offer, the 'What happened' recap's forward-pointer clause, and one bullet under 'What this sets up' — are all reassurance/restatement/forward-reference, matching rule 16's own removal test ('cutting only removes count-script = cut') rather than removing anything a student DOES. The optional self-critique ask under '## Sharpen the skill from what came back' (line 48, 'ask the skill itself to name its own weakest part') survives verbatim. Boundary 2's light-register carve-out still applies, backed by the same maintainer accept-notes as before (Lean-pass note L75, Accept-with-mitigation §56 note L103) — neither note was touched by this commit, though neither was extended to name this newest cut either (see fix_hint).",
+      "fix_hint": "Non-blocking: commit 9a6d906e's three cuts aren't named in the file's own dated Lean-pass accept-note (which still only lists the 2026-08-25 set). None of the three removes a forcing function or scripted reaction, so nothing here is wrong on the merits — but an accept-note that stops naming what it authorises loses its own point over successive passes. Author's call whether to extend it or fold this pass into a fresh dated note.",
       "blocking": false
     },
     {
@@ -76,7 +40,7 @@
       "rule_index": 27,
       "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
       "verdict": "PASS",
-      "evidence": "Ran fresh at current HEAD: `grep -niE \"discuss with|share what|tell the room|compare with|neighbor|neighbour|pair up|take .* min and (compare|share|discuss)\" curriculum/exercises/author-test-strategy-skill.md` → exit 1, zero matches. No authored conversation cues anywhere in the file. The 12148d77..HEAD diff removed color from the team-PR bullet ('Show it to your staff engineer over coffee. Send it to the channel.') rather than adding any; the surviving sentence ('Ask two teammates who'd use it whether it matches how they actually write tests on this codebase') still describes the team-PR follow-up conversation, not a live in-room cue, and stays inside the third carve-out (naming that other people exist and are worth talking to, outside the session itself).",
+      "evidence": "Ran fresh at current HEAD: `grep -niE \"discuss with|share what|tell the room|compare with|neighbor|neighbour|pair up|take .* min and (compare|share|discuss)\" curriculum/exercises/author-test-strategy-skill.md` → exit 1, zero matches. Commit 9a6d906e only removes content (no new sentence added anywhere), so no new conversation cue could have entered. The surviving team-PR line ('Ask two teammates who'd use it whether it matches how they actually write tests on this codebase', line 63, untouched by this commit) still describes a later, outside-the-room human conversation, not a live in-session cue — stays inside the third carve-out (naming that other people exist and are worth talking to).",
       "fix_hint": null,
       "blocking": false
     },
@@ -85,7 +49,7 @@
       "rule_index": 1,
       "rule_lead": "Mood contract named.",
       "verdict": "PASS",
-      "evidence": "Cached trace's stored content_sha (97eb4b6b...) matched neither the pin-12148d77 body nor current HEAD — regenerated per the dispatch preamble rather than trusted. Recomputed every phase_sha directly against the live file with `sed -n '<range>p' | shasum -a 256`: phase1(1-33)=50804d06..., phase2(34-45)=171a0df3..., phase3-sharpen(46-53)=5d8966ac..., phase4(54-68)=80e9ee84..., close(69-74)=634a8ea7... — written to curriculum/evals/sim-cache/ae101--exercise--author-test-strategy-skill.persona.json. Re-walked the 12148d77..HEAD diff against each region: it trims restatement/color sentences in every phase (frontmatter timebox note, Phase-1 'not typing markdown'/'reasons for personal-first' duplicates, Phase-2 theatre restatement, the Sharpen section's convenience-line and re-invoke restatement, Phase-3/Decide's 'That's the ship' and coffee/channel color, and the close section's personal-first/coffee-duplicate bullet) — none removes a teaching move, a forcing function, or the M4 hand-off. Every cut is named verbatim in the maintainer's dated 'Lean pass (2026-08-25... free hands)' accept-note. Re-scored mood on the trimmed text: phase scores 8, 8, 7, 8; close 8 — unchanged from the pre-lean-pass pin, because the edited sentences carried no teaching content. Mood-floor sub-clause: all 4 simulated beats are teaching beats (author, invoke-and-grade, sharpen, ship-and-decide-team-boundary); none falls below the 7 REVISE line. Phase 3 ('Sharpen the skill from what came back') sits at facilitator-premium 7 for the reason recorded on check_pedagogy §16 above.",
+      "evidence": "Cached trace's stored content_sha and three of its five phase_shas were stale against current HEAD (commit 9a6d906e landed after the trace's 2026-08-26 generation) — regenerated per the dispatch preamble rather than trusted on the affected regions. Recomputed every phase_sha directly against the live file with `sed -n '<range>p' | shasum -a 256`: phase1(1-33)=50804d06... (matched cache, untouched), phase2(34-45)=171a0df3... (matched cache, untouched), phase3-sharpen(46-53)=aacd5c13... (MISMATCH, regenerated), phase4(54-68)=889ab1c7... (MISMATCH, regenerated), close(69-72)=a0d12255... (MISMATCH, regenerated) — merged trace written to curriculum/evals/sim-cache/ae101--exercise--author-test-strategy-skill.persona.json. `git show 9a6d906e` confirms the three mismatches are exactly its three hunks: 'Either approach is fine.' cut from the Sharpen slide, the 'What happened' recap's forward-pointer clause cut, and the 'What this sets up' section's one M4-naming bullet cut entirely. Re-scored mood on the current text: phase scores 8, 8, 7, 8 (unchanged — none of the three cuts removed teaching content); close reassessed at 8 on the strength of Phase 4's unaffected earned-trust payoff (shipped-artifact recap + 'agents don't unilaterally change shared infra; you do'), not on the closing section's own content, which is now purely the operational worktree-state note and reads as a SETUP beat by the mood-floor's own parenthetical-compression diagnostic. All 4 simulated phases are teaching beats; none falls below the 7 REVISE line. Phase 3 sits at facilitator-premium 7 for the reason recorded on check_pedagogy §16 above.",
       "fix_hint": null,
       "blocking": false
     },
@@ -94,7 +58,7 @@
       "rule_index": 2,
       "rule_lead": "Epistemic mood ≠ punitive mood.",
       "verdict": "PASS",
-      "evidence": "The surviving pre-Phase-1 timebox sentence ('Authoring conversations spiral here. Keep it tight: one author pass, one self-critique, one invocation, ship.', line 13, untouched in substance by the diff — only a trailing comparative clause was cut) names a process risk and a discipline in the same not-knowing/practical register as the rest of the file — no shame framing. Every other cut line in the 12148d77..HEAD diff was color or restatement (coffee/channel example, 'That's the ship.', 'convenient over rigorous.'), none of it punitive framing either added or removed. Remaining body language ('The grade is biased by design', 'Push back, and you got the real review for free') still reads as competence/agency, never confession-of-fault.",
+      "evidence": "None of commit 9a6d906e's three cuts touch framing language — a reassurance clause, a forward-pointer clause, and a whole bullet naming M4 as a downstream reader, none of it shame- or fault-framed either before or after. The surviving pre-Phase-1 timebox sentence (line 13, untouched) and the rest of the body ('The grade is biased by design', 'Push back, and you got the real review for free') still read as competence/agency, not confession-of-fault.",
       "fix_hint": null,
       "blocking": false
     },
@@ -103,7 +67,7 @@
       "rule_index": 3,
       "rule_lead": "Lead with discipline, not failure mode.",
       "verdict": "PASS",
-      "evidence": "Top-line point (unchanged by the diff, line 11): 'test strategy authored generically is a pyramid diagram' — names the failure shape only as the negative case the discipline addresses. All 7 section headers lead with positive moves ('Author the skill through conversation', 'Sharpen the skill from what came back', 'Ship the skill personal-first', 'Decide if it graduates to the team'), none failure-named. The 12148d77..HEAD diff touches no header and no discipline/failure framing choice — every hunk is inside a bullet body.",
+      "evidence": "Top-line point (unchanged, line 11): 'test strategy authored generically is a pyramid diagram' — names the failure shape only as the negative case the discipline addresses. All 7 section headers (unchanged by commit 9a6d906e, verified under check_lectures §4 above) lead with positive moves; none failure-named.",
       "fix_hint": null,
       "blocking": false
     },
@@ -112,9 +76,53 @@
       "rule_index": 4,
       "rule_lead": "Strategy-fidelity check.",
       "verdict": "PASS",
-      "evidence": "Re-read bosser-strategy:content-strategy-agentic-engineering-101.md § 'M3 in detail — earn the trust' fresh this run: Exercise 3 is described as 'Author through conversation, not a markdown editor... Force-push-back move: ask the skill to disclose its own weakest part before shipping... Invocation closes the loop... Ship personally first. Team PR is the natural follow-up, mediated by human conversation... The move is: show it to teammates, get their read, PR if they agree.' The current file's surviving prose matches this framing point-for-point after the lean pass (conversation-not-markdown via the 'What you do:' widget line, disclose-weakest-part ask at line 48, invoke-and-grade at Phase 2, personal-first ship at Phase 3, two-teammate conversation at Decide). Ran `git diff 12148d77..HEAD -- curriculum/exercises/author-test-strategy-skill.md`: every hunk removes a restatement or color phrase (see check_pedagogy §16/§27 and strategy §1 evidence for the full list); none touches the plug points, either fenced prompt, or the 'What this sets up' → M4 hand-off bullet. No front-running of M4's own teaching moment (M4's spirit — 'walk what you've built against a task you care about... send off unpackaged' — is undisclosed here; this file only names M4 as the next reader of the artifact, which is the sanctioned arc pointer, not a preview of M4's content).",
-      "fix_hint": null,
+      "evidence": "Re-read bosser-strategy:content-strategy-agentic-engineering-101.md § 'M3 in detail' fresh this run: Exercise 3 is described as conversation-authored (not markdown-editor), force-push-back via disclose-own-weakest-part, invocation-closes-the-loop, ship-personal-first, team-PR-as-human-conversation follow-up. Every one of these is still present in the current body (Phase 1 'What you do' widget, line 48 self-critique ask, Phase 2 invoke-and-grade, Phase 3 personal-first ship, Decide section's two-teammate conversation) — commit 9a6d906e touches none of them. The one substantive change relevant to this rule is the cut of the 'What this sets up' bullet naming Module 4 ('Module 4 reads this skill as part of the system you have...'). Checked the strategy doc's own '## M4 in detail' section: M4's exercise (not M3's) is the one that 'audits (as a subagent) the root CLAUDE.md + memory files + ADRs + the M3 test-strategy skill + wired connectors against the task' — i.e. M4 owns consuming M3's artefact, M3 doesn't own announcing it. Cross-checked against curriculum/trainings/agentic-engineering-101/earn-the-trust.md (the module file, read in full this run): its own '## Bring to Module 4' and '## Pre-read before Module 4' sections and maintainer-block artefact-contract table carry the M3→M4 handoff independently of this exercise file, and that seam was already verified PASS by the dedicated M3-M4 cross_module audit (curriculum/evals/instances/ae101--module-set--m3-m4.cross_module.json, rules 2/3/5 — 'Cross-module artefact contracts must be explicit at both ends', evidence names the exact same table). No front-running of M4's own content either: nothing in the current body previews M4's gap-analysis, un-packaged send-off, or 'curious readiness' mood. The cut removes a restatement of a handoff owned elsewhere, not the handoff itself.",
+      "fix_hint": "Non-blocking: worth a maintainer glance that the cut was deliberate rather than incidental (the file's Lean-pass note wasn't extended to name it — same observation as check_pedagogy §16's fix_hint). The substance is verified sound either way; this is a bookkeeping note, not a request to restore the bullet.",
       "blocking": false
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 1,
+      "rule_lead": "Meta-frame lectures = closers, not openers.",
+      "verdict": "N/A",
+      "evidence": "File lives at curriculum/exercises/author-test-strategy-skill.md, not curriculum/lectures/ — this rule fires on lecture placement and there is no lecture here to place.",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "23461ff5c1dc8289db8083053665f0cf7083fb273add190f0fddaf244f47d737",
+      "carried_shape": "04c8bbd89721df08"
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 2,
+      "rule_lead": "Minimal lecturing before contrast-mood exercises.",
+      "verdict": "N/A",
+      "evidence": "Rule governs a lecture's dosage before a contrast-mood exercise (M5-style). This file IS the exercise, not a pre-exercise lecture, and M3 (earn the trust — Quality + Security) is not a contrast-mood module.",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "23461ff5c1dc8289db8083053665f0cf7083fb273add190f0fddaf244f47d737",
+      "carried_shape": "04c8bbd89721df08"
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 3,
+      "rule_lead": "No cross-module sequencing in lecture bodies.",
+      "verdict": "N/A",
+      "evidence": "Rule text is scoped to lecture bodies ('lectures teach, module files sequence'). This is an exercise file; its 'What this sets up' section naming Module 4 is the sanctioned module-to-module arc handoff evaluated under check_strategy_tie_in §4, not a lecture-body violation.",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "23461ff5c1dc8289db8083053665f0cf7083fb273add190f0fddaf244f47d737",
+      "carried_shape": "04c8bbd89721df08"
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 6,
+      "rule_lead": "A prompt inside a lecture is a trainer show-and-tell, never a room follow-along.",
+      "verdict": "N/A",
+      "evidence": "Rule text scopes itself explicitly: 'This holds for every {{prompt:<key>}} / inline **Prompt** block in curriculum/lectures/**' and lists 'exercise prompts... all of which the student runs themselves' under 'Not covered'. This file is curriculum/exercises/author-test-strategy-skill.md; both {{prompt:author-test-strategy-skill-1}} and {{prompt:author-test-strategy-skill-2}} are exercise prompts the student pastes and runs themselves, matching the carve-out by name. Neither prompt was touched by the 12148d77..HEAD diff.",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "23461ff5c1dc8289db8083053665f0cf7083fb273add190f0fddaf244f47d737",
+      "carried_shape": "04c8bbd89721df08"
     },
     {
       "compendium": "check_strategy_tie_in.md",
@@ -122,8 +130,10 @@
       "rule_lead": "Strategic themes recur in Key Concepts.",
       "verdict": "N/A",
       "evidence": "This is an exercise file (curriculum/exercises/), not the module file. `## Key Concepts` is a module-file-level section per curriculum/CLAUDE.md's four student-facing types; it lives in earn-the-trust.md, owned there by the strategy judge.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "23461ff5c1dc8289db8083053665f0cf7083fb273add190f0fddaf244f47d737",
+      "carried_shape": "04c8bbd89721df08"
     },
     {
       "compendium": "check_strategy_tie_in.md",
@@ -131,8 +141,10 @@
       "rule_lead": "Key Concepts shape — theme breadcrumbs, not standalone section.",
       "verdict": "N/A",
       "evidence": "Same as §5 — no `## Key Concepts` section exists in this exercise file; owned by the module file.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "23461ff5c1dc8289db8083053665f0cf7083fb273add190f0fddaf244f47d737",
+      "carried_shape": "04c8bbd89721df08"
     },
     {
       "compendium": "check_strategy_tie_in.md",
@@ -140,18 +152,25 @@
       "rule_lead": "What You'll Learn shape — capability register, not syllabus.",
       "verdict": "N/A",
       "evidence": "No `## What You'll Learn` section exists in this exercise file; that section lives in earn-the-trust.md, the module file, owned there by the strategy judge.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "23461ff5c1dc8289db8083053665f0cf7083fb273add190f0fddaf244f47d737",
+      "carried_shape": "04c8bbd89721df08"
     }
   ],
   "mood_summary": {
-    "phase_scores": [8, 8, 7, 8],
+    "phase_scores": [
+      8,
+      8,
+      7,
+      8
+    ],
     "close_score": 8,
     "any_below_8": true,
     "stealing_the_mood": [
-      "Phase 'Sharpen the skill from what came back' (mood 7) — facilitator-premium: correctly placed, self-critique ask lands right where self-charity risk peaks, but stays optional body prose with no dedicated in-file push-back move; maintainer has explicitly accepted this (check_pedagogy.md §56 accept-note) since the module's mandatory fenced prompt covers the real forcing function one beat later. The 2026-08-25 lean pass trimmed this phase further (cut convenience-framing color, a re-invoke restatement, and a meta-claim) but removed no teaching content, so the score is unchanged from the prior pin."
+      "Phase 'Sharpen the skill from what came back' (mood 7) — facilitator-premium: correctly placed, self-critique ask lands right where self-charity risk peaks, but stays optional body prose with no dedicated in-file push-back move; maintainer has explicitly accepted this (check_pedagogy.md §56 accept-note) since the module's mandatory fenced prompt covers the real forcing function one beat later. Commit 9a6d906e trimmed this phase further (cut a reassurance clause off the two-prompt offer) but removed no teaching content, so the score is unchanged from the prior pin."
     ]
   },
   "blocking_findings_count": 0,
-  "todos_count": 2
+  "todos_count": 3
 }

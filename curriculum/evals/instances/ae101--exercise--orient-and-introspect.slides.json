@@ -1,17 +1,41 @@
 {
   "class": "slides",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/orient-and-introspect.md",
-  "body_sha": "acc322a3311cddc2fe9c8de28072f0f7d68664e596f583111eb16a01cdadc856",
+  "body_sha": "1c4375a8979fb8433f787742e05c1871e351526cf4cc77869c973ff76064c7ec",
   "verdict": "PASS",
   "training": "ae101",
   "shape_hash": "ebeea4baf69653d7",
   "chunk_map": [
-    { "index": 0, "heading": "H1/lede", "lines": "1-20" },
-    { "index": 1, "heading": "Read your repo deliberately", "lines": "21-30" },
-    { "index": 2, "heading": "Ask what Claude skipped, and why", "lines": "31-39" },
-    { "index": 3, "heading": "Read the self-report, then spot-check it", "lines": "40-44" },
-    { "index": 4, "heading": "Check how full the window is", "lines": "45-54" },
-    { "index": 5, "heading": "The slice Claude didn't load", "lines": "55-59" }
+    {
+      "index": 0,
+      "heading": "H1/lede",
+      "lines": "1-20"
+    },
+    {
+      "index": 1,
+      "heading": "Read your repo deliberately",
+      "lines": "21-30"
+    },
+    {
+      "index": 2,
+      "heading": "Ask what Claude skipped, and why",
+      "lines": "31-39"
+    },
+    {
+      "index": 3,
+      "heading": "Read the self-report, then spot-check it",
+      "lines": "40-44"
+    },
+    {
+      "index": 4,
+      "heading": "Check how full the window is",
+      "lines": "45-54"
+    },
+    {
+      "index": 5,
+      "heading": "The slice Claude didn't load",
+      "lines": "55-59"
+    }
   ],
   "rules_evaluated": [
     {
@@ -20,7 +44,7 @@
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Sequential deck read, raw lines 1-58. Chunk 4 raw line47 'the context window' / raw line49 'the window' resolve via chunk 0's own lede (raw line17 'The point: the context window is not your codebase' and raw line1 title 'map the window') — same earlier-slide-noun-reuse pattern the compendium's own 'the map' / the-whole-map.md example describes. Chunk 3 raw line42 'The account' and raw line43 'it' resolve to chunk 3's own header noun (raw line40 'the self-report'). Chunk 4 raw line53 'the same thing' resolves to the immediately preceding sentence in the same chunk (raw line47-49, what /context shows). Chunk 5 raw lines57-58 'it' / 'the window' resolve via chunk-0-established 'the context window' plus chunk 4's own heading noun 'window' (raw line45). 'Your repo' / 'it' throughout (raw lines23,27) resolve via the session-artifact carve-out (student's own repo, chosen in prework; maintainer 'Plug points', raw line89). No never-named, vague-with-history, or re-chunk-stranded referent found across chunks 1-5.",
+      "evidence": "Sequential deck read, raw lines 1-59. Chunk 0 (1-20) establishes 'the context window' (17) and title noun 'the window' (1). Chunk 1 (21-30) line25 blockquote 'It can also stop short, and that one is harder to catch' — 'It'/'that one' resolve to the immediately preceding clause 'Claude starts reading dozens of files', in-chunk. Chunk 3 (40-44) line42 'The account is a reconstruction' and line43 'spot-check it' resolve via the chunk's own header (line40 'the self-report'). Chunk 4 (45-54) line47 'how full it is' and line49 'the window'/'fills it' resolve via chunk-0's established 'the context window' plus this chunk's own line47 'The context window has a ceiling'; line53 'the same thing' resolves to the immediately preceding sentence in the same chunk (line47-49, what /context shows). Chunk 5 (55-59) line58 'The window holds only so much... you choose what fills it' resolves via chunk-0 + chunk-4 established 'context window'/'window' and the chunk's own header noun. 'Your repo'/'it' throughout (23, 27) resolve via the session-artifact carve-out (student's own repo, chosen in prework; maintainer 'Plug points'). No never-named, vague-with-history, or re-chunk-stranded referent found across chunks 1-5.",
       "fix_hint": null,
       "blocking": true
     },
@@ -30,29 +54,9 @@
       "rule_lead": "Cross-file and positional callbacks.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "No body chunk names another file or slide by page position. External resources (raw line53: 'ccstatusline', '/statusline') are named directly by title, not located by position; arc callbacks ('Connections', 'the-wizard-move lecture', raw line92) live only in the maintainer block (below the cut, raw line60), never in a student-facing chunk.",
+      "evidence": "No body chunk points at another file or slide by position. External resources named directly by title in running prose ('ccstatusline', '/statusline', line53), not located by position. Arc callbacks ('Connections', 'the-wizard-move lecture') live only in the maintainer block (below the cut, line60+), never in a student-facing chunk.",
       "fix_hint": null,
       "blocking": true
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 3,
-      "rule_lead": "Every backward reference points at a beat that exists.",
-      "verdict": "N/A",
-      "chunks_flagged": [],
-      "evidence": "No fixed 'the X you did/saw' module-beat reference appears in the body; the arc callbacks ('Connections', 'the-wizard-move') live only in the maintainer block, not in student-facing chunks.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 4,
-      "rule_lead": "Live-demo beats survive a text read.",
-      "verdict": "N/A",
-      "chunks_flagged": [],
-      "evidence": "No guess-before-reveal demo construction is present in the body.",
-      "fix_hint": null,
-      "blocking": false
     },
     {
       "compendium": "check_slides.md",
@@ -60,7 +64,7 @@
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "All six chunks (raw lines1-59) carry a self-carrying claim or instruction. Chunk 3 (raw lines40-44) is the thinnest — no prompt block, by design — but states the confabulation heuristic and the spot-check instruction independently of any other slide. No chunk reduces to a bare wait-state or a single context-dependent fragment.",
+      "evidence": "All six chunks (lines1-59) carry a self-carrying claim or instruction. Chunk 3 (40-44) is the thinnest — no prompt block, by design — but states the confabulation heuristic and the spot-check instruction independently of any other slide. No chunk reduces to a bare wait-state or a single context-dependent fragment.",
       "fix_hint": null,
       "blocking": false
     },
@@ -70,7 +74,7 @@
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Each heading (raw lines21, 31, 40, 45, 55) accurately previews its own chunk's content under a sequential read: raw line40 'Read the self-report, then spot-check it' previews exactly the chunk's two bullets (self-report skepticism at raw line42, spot-check instruction at raw line43); raw line45 'Check how full the window is' previews the /context bullet and prompt that follow. No header is contradicted by its own chunk.",
+      "evidence": "Each heading (lines21, 31, 40, 45, 55) accurately previews its own chunk under the sequential read: line40 'Read the self-report, then spot-check it' previews exactly the chunk's two bullets (unreliability at 42, spot-check instruction at 43); line45 'Check how full the window is' previews the /context bullet and prompt that follow; line55 'The slice Claude didn't load' previews the two bullets naming the unloaded slice and its consequence. No header is contradicted by its own chunk.",
       "fix_hint": null,
       "blocking": false
     },
@@ -79,8 +83,10 @@
       "rule_index": 7,
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
-      "chunks_flagged": [3],
-      "evidence": "Checked all six sub-items against raw lines1-58: no 'Not X. Not Y. Z.' construction; no anaphora/epistrophe triple; no self-grading superlative; no abstraction-noun stack; no verb triplet with an empty leg. The one number-plus-retraction instance ('Assume about 10% of what it says or does is made up. Could be more or less than this heuristic suggests.', raw line42, chunk3) is this rule's own named example file and is explicitly cleared by a maintainer accept-note at raw line82 ('Deliberate phrasing (maintainer-attested, do not edit)... check_slides.md rule 7's number-plus-retraction sub-item does NOT fire here') — accept-with-note, no edit.",
+      "chunks_flagged": [
+        3
+      ],
+      "evidence": "Checked all six sub-items against lines1-58: no 'Not X. Not Y. Z.' construction; no anaphora/epistrophe triple; no self-grading superlative; no abstraction-noun stack; no verb triplet with an empty leg. The one number-plus-retraction instance ('Assume about 10% of what it says or does is made up. Could be more or less than this heuristic suggests.', line42, chunk3) is explicitly cleared by a maintainer accept-note at line82 ('Deliberate phrasing (maintainer-attested, do not edit)... check_slides.md rule 7's number-plus-retraction sub-item does NOT fire here') — accept-with-note, no edit.",
       "fix_hint": null,
       "blocking": true
     },
@@ -90,7 +96,7 @@
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "`grep -inE '\\b(surface|firing|compendium|forcing function|beat|mood|connections)\\b' curriculum/evals/body-views/ae101--exercise--orient-and-introspect.body.txt` → exit 1, 0 hits over the body projection (raw lines1-58). Vocabulary used ('context window', 'the self-report', 'status line', 'the slice') is ordinary engineering register, not repo dialect.",
+      "evidence": "`grep -inE '\\b(surface|firing|compendium|forcing function|beat|mood|connections)\\b' curriculum/evals/body-views/ae101--exercise--orient-and-introspect.body.txt` → exit 1, 0 hits over the body projection (lines1-58, run this session). Vocabulary used ('context window', 'the self-report', 'status line', 'the slice') is ordinary engineering register, not repo dialect.",
       "fix_hint": null,
       "blocking": true
     },
@@ -99,8 +105,10 @@
       "rule_index": 9,
       "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
       "verdict": "PASS",
-      "chunks_flagged": [1],
-      "evidence": "Bold in the body proper: widget chrome ('**Time:**', '**Session**', '**What you do:**', '**What you build:**', '**The point:**', raw lines3-17, plus the '**Prompt** *(Claude Code)*' widget label) is template-mandated per curriculum/widgets.md, not counted against the per-slide budget — same exemption class as the LO-bullet and §34-callout carve-outs. The one remaining bold span, the blockquote lead '**Big repo? The read can fan out.**' (raw line25, chunk1), exceeds the ≲5-word handle cap on its face but is explicitly cleared by a dated, rule-numbered maintainer accept-note at raw line66 ('Emphasis pass (2026-07-09, Antti-directed \"go very lightly on the bold\")... the blockquote callout untouched, per theory-plan.md § Slide format — emphasis budget + check_slides.md §9') — accept-with-note, no edit; chunk1 flagged for the record only.",
+      "chunks_flagged": [
+        1
+      ],
+      "evidence": "Bold in the body proper: widget chrome ('**Time:**', '**Session**', '**What you do:**', '**What you build:**', '**The point:**', '**Prompt** *(Claude Code)*', lines3-17 and expanded prompt labels) is template-mandated per curriculum/widgets.md, not counted against the per-slide budget. The one remaining bold span, the blockquote lead '**Big repo? The read can fan out.**' (line25, chunk1), exceeds the ≲5-word handle cap on its face but is explicitly cleared by a dated, rule-numbered maintainer accept-note at line66 ('Emphasis pass (2026-07-09, Antti-directed \"go very lightly on the bold\")... the blockquote callout untouched, per theory-plan.md § Slide format — emphasis budget + check_slides.md §9') — accept-with-note, no edit; chunk1 flagged for the record only.",
       "fix_hint": null,
       "blocking": false
     },
@@ -110,19 +118,9 @@
       "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "`grep -n \"orient-and-introspect\" curriculum/trainings/agentic-engineering-101/getting-going.md` → line44: '[Orient and introspect](exercises/orient-and-introspect.md)', the standard AE101 exercise include-link. `grep -n \"phase--exercise\" scripts/slides.test.js` → line64: `<section class=\"phase phase--exercise\" id=\"exercises-orient-and-introspect\">`, the exact wrapper `buildDeckModel` (site/layouts/slides.js) requires to reach the composed deck. File is present in the deck, not dropped.",
+      "evidence": "`grep -n \"orient-and-introspect\" curriculum/trainings/agentic-engineering-101/getting-going.md` → line44: '[Orient and map the window](exercises/orient-and-introspect.md)' (link text updated from a prior sweep; target path unchanged), the standard AE101 exercise include-link. `grep -n \"phase--exercise\" scripts/slides.test.js` → line66: `<section class=\"phase phase--exercise\" id=\"exercises-orient-and-introspect\">`, the exact wrapper `buildDeckModel` (site/layouts/slides.js) requires to reach the composed deck. Both run this session. File is present in the deck, not dropped.",
       "fix_hint": null,
       "blocking": true
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 11,
-      "rule_lead": "Numbering — position is computed, content ordinals are linted.",
-      "verdict": "N/A",
-      "chunks_flagged": [],
-      "evidence": "`node scripts/check-slide-numbering.js --file curriculum/exercises/orient-and-introspect.md` → 'OK — 1 files, Phase/Step numbering consistent.' No hand-numbered Phase/Step headers in this file.",
-      "fix_hint": null,
-      "blocking": false
     },
     {
       "compendium": "check_slides.md",
@@ -130,7 +128,7 @@
       "rule_lead": "Page geometry dies at the cut; reading order survives.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "`node scripts/check-slide-deixis.js --file curriculum/exercises/orient-and-introspect.md` → 'OK — 1 files, no page-geometry pointers across the slide cut.' (run this session).",
+      "evidence": "`node scripts/check-slide-deixis.js --file curriculum/exercises/orient-and-introspect.md` → 'OK — 1 files, no page-geometry pointers across the slide cut.' (run this session). Manual scan of lines1-59 confirms no 'below/above/further down/at the top of this page' phrasing.",
       "fix_hint": null,
       "blocking": true
     },
@@ -140,7 +138,7 @@
       "rule_lead": "In-deck links work now; whether they EARN their place is open.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Body's only link is the external `[ccstatusline](https://github.com/sirmalloc/ccstatusline)` (raw line53), named directly by title in running prose, not located by page position. No in-deck cross-doc link present in the body; the §13 'open' half is explicitly non-gating for any file per the compendium's own text.",
+      "evidence": "`grep -n 'http' curriculum/evals/body-views/ae101--exercise--orient-and-introspect.body.txt` (run this session) → one hit, line53: the external `[ccstatusline](https://github.com/sirmalloc/ccstatusline)`, named directly by title in running prose, not located by page position. No in-deck cross-doc link present in the body; the §13 'open' half is explicitly non-gating per the compendium's own text.",
       "fix_hint": null,
       "blocking": false
     },
@@ -160,7 +158,7 @@
       "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "DRIFT RE-CHECK against current §15 wording (fetched via `node curriculum/evals/scripts/rule.js slides 15`, generalised 2026-08-19). Four headings (raw lines21, 31, 40, 45) are plain imperatives/phase-style. The closer 'The slice Claude didn't load' (raw line55) is grammatically a noun phrase with a gapped relative clause ('the slice [that] Claude didn't load'), not an independent subject+predicate assertion like the compendium's two counted exercise declaratives ('Anything can be reverse-engineered', 'There is always a next plausible answer') — it reads under the catalogue-entry-naming-subject carve-out. The rule's binding test is whether 'the header IS the teaching' with 'a label [that] would waste the beat'; here it does not, because the exercise's generalizing claim is carried in the chunk's own bullets (raw lines57-58: 'What you want is the least context that holds exactly what the task needs' / 'The slice Claude didn't load stays real... you choose what fills it'), not left for the header alone to state. Consistent with the compendium's own house-norm measurement (2/108 exercise headings are true declaratives).",
+      "evidence": "Four headings (lines21, 31, 40, 45) are plain imperatives/phase-style, correct for an exercise. The closer 'The slice Claude didn't load' (line55) is a noun phrase naming its subject (gapped relative clause), not a subject+predicate assertion like the compendium's two counted exercise declaratives ('Anything can be reverse-engineered', 'There is always a next plausible answer') — it reads under the catalogue-entry-naming-subject carve-out ('The numbers', 'Verification, named'). The rule's binding test — 'the header IS the teaching' with 'a label [that] would waste the beat' — does not fire here because the generalizing claim is carried in the chunk's own bullets (lines57-58: 'the least context that holds exactly what the task needs' / 'stays real... you choose what fills it'), not left for the header alone to state.",
       "fix_hint": null,
       "blocking": false
     },
@@ -169,10 +167,45 @@
       "rule_index": 16,
       "rule_lead": "A bullet earns its slot or dies — three classes that read as rigour and carry nothing.",
       "verdict": "PASS",
-      "chunks_flagged": [5],
-      "evidence": "Checked every body bullet (raw lines23, 33-34, 42-43, 47, 57-58) against the three classes. None restates a doctrine/law already announced earlier in this body — each states its content for the first time. None is self-referential design commentary about the curriculum's own pedagogy — every bullet describes the student's practice on their own repo, not the training's design choices. The bullet closest to an aphorism kicker is raw line58 ('The slice Claude didn't load stays real. The window holds only so much; going forward, you choose what fills it.'), whose opening clause echoes the chunk's own header (raw line55) — but the bullet earns its slot rather than merely restating it: it adds the claim that the unread content remains consequential ('stays real') plus a forward-looking agency instruction ('you choose what fills it'), neither of which the bare header states. Stays inside the rule.",
+      "chunks_flagged": [
+        5
+      ],
+      "evidence": "Checked every body bullet (lines23, 33-34, 42-43, 47, 57-58) against the three classes. None restates a doctrine/law already announced earlier in this body — each states its content for the first time (the '10%' heuristic and 'context window is not your codebase' each appear exactly once). None is self-referential design commentary about the curriculum's own pedagogy — every bullet describes the student's practice on their own repo. The bullet closest to an aphorism kicker is line58 ('The slice Claude didn't load stays real. The window holds only so much; going forward, you choose what fills it.'), whose opening clause echoes the chunk's own header (line55) — but it earns its slot: it adds that the unread content remains consequential ('stays real') plus a forward agency instruction ('you choose what fills it'), neither of which the bare header states. Stays inside the rule.",
       "fix_hint": null,
       "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 3,
+      "rule_lead": "Every backward reference points at a beat that exists.",
+      "verdict": "N/A",
+      "evidence": "No fixed 'the X you did/saw' module-beat reference appears in the body; the arc callbacks ('Connections', 'the-wizard-move') live only in the maintainer block, not in student-facing chunks.",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "acc322a3311cddc2fe9c8de28072f0f7d68664e596f583111eb16a01cdadc856",
+      "carried_shape": "ebeea4baf69653d7"
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 4,
+      "rule_lead": "Live-demo beats survive a text read.",
+      "verdict": "N/A",
+      "evidence": "No guess-before-reveal demo construction is present in the body.",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "acc322a3311cddc2fe9c8de28072f0f7d68664e596f583111eb16a01cdadc856",
+      "carried_shape": "ebeea4baf69653d7"
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 11,
+      "rule_lead": "Numbering — position is computed, content ordinals are linted.",
+      "verdict": "N/A",
+      "evidence": "`node scripts/check-slide-numbering.js --file curriculum/exercises/orient-and-introspect.md` → 'OK — 1 files, Phase/Step numbering consistent.' No hand-numbered Phase/Step headers in this file.",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "acc322a3311cddc2fe9c8de28072f0f7d68664e596f583111eb16a01cdadc856",
+      "carried_shape": "ebeea4baf69653d7"
     }
   ],
   "blocking_findings_count": 0,

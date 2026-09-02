@@ -19,7 +19,7 @@ After this module, you will be able to:
 
 ## Start here
 
-Open a fresh session in the Module 5 worktree, `../<repo-name>-m5`. Both sessions are readable: the branches share `.git`, and each session recorded its transcript path.
+Open a fresh session in the Module 5 worktree, `../<repo-name>-m5`.
 
 You walk in holding two sessions of the same task. The un-packaged Module 4 send-off. The packaged Module 5 re-send.
 

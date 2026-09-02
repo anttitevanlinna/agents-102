@@ -106,12 +106,31 @@
     //  - no plan mode in Cowork (use prompt-level discipline instead)
     //  - terminology: subagent (Code), agent (Cowork)
     // ============================================================
-    // Runtime switcher logic lives in layouts/curriculum.js (shared).
-    // SPA wires once at boot below.
-    function getRuntime() { return CurriculumRuntime.getRuntime(trainingKey); }
-    function applyRuntime(runtime) { CurriculumRuntime.applyRuntime(trainingKey, runtime); }
-    function setRuntime(runtime) { CurriculumRuntime.setRuntime(trainingKey, runtime); }
-    CurriculumRuntime.wireRuntimeSwitcher(trainingKey);
+    // Agents 101 extends the legacy three-profile switcher to five profiles.
+    // Other trainings keep the shared runtime byte-for-byte at render time.
+    var useA101Runtimes = trainingKey === 'agents-101' && window.A101Runtimes;
+    var runtimeSwitcher = document.getElementById('runtime-switcher');
+    function getRuntime() {
+        return useA101Runtimes
+            ? A101Runtimes.getRuntime()
+            : CurriculumRuntime.getRuntime(trainingKey);
+    }
+    function applyRuntime(runtime) {
+        return useA101Runtimes
+            ? A101Runtimes.applyRuntime(runtime)
+            : CurriculumRuntime.applyRuntime(trainingKey, runtime);
+    }
+    function setRuntime(runtime) {
+        return useA101Runtimes
+            ? A101Runtimes.setRuntime(runtime)
+            : CurriculumRuntime.setRuntime(trainingKey, runtime);
+    }
+    if (useA101Runtimes) {
+        A101Runtimes.mountSwitcher(runtimeSwitcher);
+        A101Runtimes.wireRuntimeSwitcher(runtimeSwitcher);
+    } else {
+        CurriculumRuntime.wireRuntimeSwitcher(trainingKey);
+    }
 
     applyRuntime(getRuntime());
 
@@ -230,7 +249,14 @@
             .then(extractParent)
             .then(stripMaintainerTail)
             .then(expandIncludes)
-            .then(function (md) { return CurriculumRuntime.expandPrompts(md, PROMPT_REGISTRY); })
+            .then(function (md) {
+                if (trainingKey === 'agents-101' && window.A101Runtimes) {
+                    return A101Runtimes.expandPrompts(md, PROMPT_REGISTRY, {
+                        renderPromptBlock: CurriculumRuntime.renderPromptBlock
+                    });
+                }
+                return CurriculumRuntime.expandPrompts(md, PROMPT_REGISTRY);
+            })
             .then(function (md) { return CurriculumRuntime.expandFigures(md, FIGURE_REGISTRY); })
             .then(CurriculumRuntime.expandTiers)
             .then(rewriteCrossDocLinks)

@@ -11,45 +11,6 @@ The map is back, one last time.
 - What fills it is what got built. The verifier from the M5 packaging and the test-strategy skill authored at M3 are checks that stand without you. A loop made of checks that stand without you gets drawn solid; the stack-map you drew names where the next ones land.
 - Nothing else moved. Same six phases, same loops, same wall at the team's edge. The far half kept its shape and gained its names, the way the near half did at the M3 close.
 
-## Verification, named
-<!--tier:2-->
-
-- **Find is easier than judge.** (Verification) The agent finds; you judge. The split was named at M2 over a plan, and out here it becomes a whole phase: on a long-running session the finding happened without you, so the judging is the cost that is left.
-- **The three-pattern** stands in for you at Verification. (Verification) Reference against goal drift, plan.md against context rot, verifier against plausible-but-wrong. The first two hold the session on course while it moves; the verifier is the piece that does your checking when the result comes back.
-- **Verifier, judge, gate: every one an eval.** (Verification) A deterministic check, an LLM reading the work, the same check placed in CI. One automated thing that says this meets the bar your work requires, and it is what the checking loop now runs on.
-
-## Outcome, named
-<!--tier:2-->
-
-- **A rule in context is not a rule in the output.** (Outcome) Rules leak, and the loop exists because they leak. That is why the lesson gets encoded into something that fires (a verifier, a hook, a skill) instead of stopping as one more sentence in `./CLAUDE.local.md`.
-- **Test → learn → encode.** (Outcome) M4 tested, M5 learned, M6 encoded: diff the sessions, name the gaps, package the learning. The loop closes when the lesson ships, the oldest search shape there is: the sessions generate variants, the eval selects, the memory retains.
-- **Cross personal → team.** (Outcome) What survives the session is the fix, the rule it taught, and the skill it became; what compounds is the part a team takes up. Review infrastructure grows by accretion, one trusted check at a time, and it starts at the size of the one just shipped. Your own sessions speed up before the team's numbers move, because the team's way of reviewing and sharing has to be rebuilt around the new speed first; the checks and skills you hand over are that rebuild.
-
-## The question you carry forward
-<!--tier:2-->
-
-- The far half has one question, and it arrived at the M4 send-off. *When the agent takes a hundred steps alone, what makes you trust the result at the end?* It fires before the session, costs one sentence, and decides what gets packaged.
-- Its answer turned into a build list. At M4 the answer was nothing yet, watch. By M6 the answer names checks: which verifier, which hook, which judge stands at the end of this session. A session the question has no answer for is a session not ready to send.
-- It travels. It prices the next send-off and picks which check to author first, and it pairs with the near half's question: name the uncertainty before you move, then name what earns your trust at the end. Two questions, one sentence each, before any work moves.
-
-## Absorption, named
-<!--tier:3-->
-
-- **Generation is fast; reading, judging, and merging are not.** (Absorption) The gap between those two speeds decides real throughput. The M5 re-send ran with the laptop closed; what was left when it came back was all reading.
-- **Review bandwidth is the constraint** composition cannot relax. (Absorption) Chain workflows end to end and every output still lands on the same reading budget. Each eval that stands without you buys a piece of that budget back.
-- **The ratio runs near 80/20.** (Absorption) Roughly 80 percent planning and review, 20 percent execution: compound engineering's posture. The session is the cheap part; the reading and shaping around it are where the hours live.
-
-## The map, filled in
-<!--tier:2-->
-
-- Six modules, six phases, one loop. The first fix landed in Work, the plan push-back in Intent and Context, the send-off and the packaged re-send across Verification and Absorption, the encoded skill in Outcome. Every move in this training has a place on this map, and a move with a place is a move you can find again.
-- The moves came first; the names came after. Each law got its name at the moment the move was already yours, and a name is a handle.
-- Dashed is a state, not a place. The checking loop spent four modules marked by hand for now. Whatever runs by hand for now in your own work is the same kind of line: a loop waiting for a check that stands without you.
-- The M5 close left the delegation frontier as a warning: reach grows only as fast as the gates behind it. Every check that stands without you moves the frontier outward.
-- The frontier keeps moving; your advantage is the rate at which you test, judge, and encode what works here. Recipes churn. The physics underneath does not: context fills, sessions end, what is written down survives.
-
-*The next dashed loop is yours to draw solid.*
-
 <!-- maintainer -->
 
 **Lean pass (2026-08-25, Antti-directed M3/M6 shorten, free hands):** control-loop bullet 2 merged 4→2 sentences — the "That is why the map has two halves…" restatement folded into the shapes/corrects pair; the 2026-07-03 adversarial-verify fix's phase distribution (verification=read · absorption=take-up · outcome=encode + "changes the system") is intact in the merged wording. Bullet 3 cut "That is why they were never paperwork." Closing slide bullet 2 cut "Nothing on this map arrived as theory to apply later." + the handle triple ("findable on Tuesday, transferable…") — `the-loop-half-filled` owns that recitation at the M3 close; here "a name is a handle" suffices. Do not restore.
@@ -74,7 +35,7 @@ The map is back, one last time.
 
 **SVG:** derived from `the-whole-map.md`'s engine canvas — same drawing, four edits: checking-loop ellipse solidified (dasharray dropped, stroke 1.8→2.6, opacity 0.45→0.9), tag un-ghosted (`◌` dropped, grey→teal), sub reworded `by hand for now` → `by your evals now` (fill now inherits the body ink), aria-label updated. ALL ids re-prefixed `wm-` → `mf-` (the theory handbook renders both copies on one page; duplicate ids break defs and markers). The figure block is blank-line-free ON PURPOSE — a blank line inside terminates the raw-HTML block in marked and spills markup (verified failure mode in this repo). The parent M2 SVG is itself an unreviewed draft with open eyeball questions (incl. whether the checking ghost survives at all); if the M2 map changes, re-derive this copy.
 
-**Time:** 8 min target at recognition pace (the twin's budget). M6's closer slot is budgeted 15 min and already carries three lectures — see eyeball Q1.
+**Time:** 3 min.
 
 **Delivery mode:** In-room close, projected. The re-shown map with the solid checking loop IS the slide.
 
@@ -82,34 +43,14 @@ The map is back, one last time.
 - The wall-crossing bullet (**Cross personal → team**) carries a worded, no-math dip-before-climb mechanism (your own sessions speed up before the team's numbers move; the team's reviewing/sharing has to be rebuilt around the new speed, and the handed-over checks and skills are that rebuild). This is the J-curve / complementary-investment borrow the theory audit assigns to the-wall: [borrow:economics] Paul David, "The Dynamo and the Computer" (1990, AEA P&P); Brynjolfsson, Rock and Syverson, "The Productivity J-Curve" (AEJ: Macroeconomics, 2021). Both verified live 2026-07-03 — stamps below. Body stays unnamed and number-free by design (no laws coined, no math on slides).
 - The test-learn-encode bullet carries the unnamed variation-selection-retention clause (sessions generate variants, the eval selects, the memory retains); "eval" is earned earlier in this lecture on the Verification slide. Attribution stays maintainer-side: Donald Campbell's blind-variation-and-selective-retention (BVSR) is the shape; body names zero new laws, per the dose verdict above.
 
+**Five slides cut whole (Antti 2026-09-02: *"I see nothing new there. Just repeat of previous stuff."*):** *Verification, named* · *Absorption, named* · *Outcome, named* · *The question you carry forward* · *The map, filled in* (closing slide, incl. the 2026-09-02 rate bullet and the kicker). In git at `dfbdc71e`. The lecture is now the one re-shown map with the solid checking loop. Do not restore; anything re-homed from them goes to its beat, carded.
+
 <!-- backing -->
 
 Claims
 - `soil-line` · vision · "act under uncertainty · competence sets the ceiling · cross personal → team" ← none-owed
 - `checking-loop-drawn-solid` · vision · "A loop made of checks that stand without you gets drawn solid" ← none-owed
 - `nothing-else-moved` · vision · "Nothing else moved. Same six phases, same loops, same wall at the team's edge." ← none-owed
-- `you-drew-a-control-loop` · borrowed · "That is **feedback control** around a non-deterministic agent" ← cultural-vocab
-- `near-half-shapes-far-half-corrects` · vision · "The near half shapes; the far half corrects." ← none-owed
-- `verification-is-the-sensor` · vision · "A loop with no way to read its own result runs open: send the work off and hope." ← none-owed
-- `find-is-easier-than-judge` · vision · "**Find is easier than judge.**" ← none-owed
-- `three-pattern-stands-in-at-verification` · vision · "**The three-pattern** stands in for you at Verification." ← none-owed
-- `verifier-judge-gate-every-one-an-eval` · vision · "**Verifier, judge, gate: every one an eval.**" ← none-owed
-- `generation-fast-absorption-slow` · vision · "**Generation is fast; reading, judging, and merging are not.**" ← none-owed
-- `review-bandwidth-is-the-constraint` · vision · "**Review bandwidth is the constraint** composition cannot relax." ← none-owed
-- `ratio-runs-near-80-20` · detail · "Roughly 80 percent planning and review, 20 percent execution: compound engineering's posture" ← every-compound-80-20 — body attributes the ratio to the posture's one named shop, which is what the CAVEAT stamp licenses; not a field rate.
-- `rule-in-context-is-not-rule-in-output` · vision · "**A rule in context is not a rule in the output.**" ← none-owed
-- `test-learn-encode-is-variation-selection-retention` · borrowed · "the sessions generate variants, the eval selects, the memory retains" ← cultural-vocab
-- `cross-personal-to-team` · vision · "**Cross personal → team.**" ← none-owed
-- `dip-before-climb` · detail · "Your own sessions speed up before the team's numbers move, because the team's way of reviewing and sharing has to be rebuilt around the new speed first" ← david-dynamo-1990, brynjolfsson-j-curve
-- `harness-enables-surround-decides` · vision · "What a session gets right without you is set by what has accumulated around it" ← none-owed
-- `same-model-same-harness-two-agents` · vision · "The M4 send-off and the M5 re-send: same model, same harness, two different agents." ← none-owed
-- `far-half-question` · vision · "*When the agent takes a hundred steps alone, what makes you trust the result at the end?*" ← none-owed
-- `question-answer-became-a-build-list` · vision · "A session the question has no answer for is a session not ready to send." ← none-owed
-- `moves-first-names-after` · vision · "The moves came first; the names came after." ← none-owed
-- `dashed-is-a-state-not-a-place` · vision · "Dashed is a state, not a place." ← none-owed
-- `every-check-moves-the-frontier` · vision · "Every check that stands without you moves the frontier outward." ← none-owed
-- `frontier-moves-rate-is-the-advantage` · vision · "your advantage is the rate at which you test, judge, and encode what works here" ← none-owed
-- `recipes-churn-physics-does-not` · vision · "Recipes churn. The physics underneath does not" ← none-owed
 
 Sources
 - david-dynamo-1990 `[checked:2026-07-03 result:OK due:none]` https://ideas.repec.org/a/aea/aecrev/v80y1990i2p355-61.html — [academic/research] Paul A. David, *The Dynamo and the Computer: An Historical Perspective on the Modern Productivity Paradox*, AER Papers & Proceedings 80(2), 1990, 355–361. Backs the crossing-the-wall bullet's dip-before-climb clause — the complementary-investment mechanism, a historical borrow rather than current evidence, and the body carries no date or number from it. **Foundational-literature variant, `due:none`** (`backing-format.md` § Foundational): a 1990 paper's claim is fixed by publication, and the previous `due:2027-01-03` would have flagged it STALE as an artifact of the rule rather than a defect in the material. The JSTOR stable page (jstor.org/stable/2006600) 403s automated fetches; the RePEc landing page is the live record. fallback: cut the "Your own sessions speed up before the team's numbers move…" sentence; the bullet stands without it.

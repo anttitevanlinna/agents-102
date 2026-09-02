@@ -64,6 +64,8 @@ Expect the list to look familiar: test-writing, browser-testing, PR-building, li
 
 **View summary:** You read your own session history across every project, group the kinds of work that recur, draw the top few as diagrams, and optionally check your menu of checks against the field's. The stack-map feeds the closing handoff move.
 
+**"The field already runs" stays (Antti 2026-09-02).** The sidestep header and lead-in claim field practice, not convergent vocabulary: the menu Claude returns reflects what is common in the field, and a primitive nobody runs would not surface in it. The Stance's no-convergence-verb row is about naming. Judges should not re-flag the header or the lead-in under `check_research_claims.md` §1.
+
 **Fast-operator batch path (accepted):** *"Fast operator?"* labels the opt-in path for someone who wants both scan prompts in one conversation; it does not set the room's pace or the exercise's completion bar. The separate scan callout is the working-memory stop gate. Preserve both callouts and the label.
 
 **Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** bullet leads de-bolded to plain; widget/label chrome and blockquote callouts untouched, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`.
@@ -82,6 +84,7 @@ Claims
 - `sessions-are-on-disk-and-unread` · vision · "Your Claude Code sessions from every project are sitting on disk, and few engineers ever read them back." ← none-owed
 - `recurring-work-has-a-shape` · vision · "Steps in order, a branch, a loop back. Drawn, the shape is easier to recognise than described." ← none-owed
 - `primitives-will-look-familiar` · vision · "The primitives Claude names are the ones your codebase already runs." ← none-owed
+- `field-already-runs-these-checks` · vision · "the checking primitives the field already runs" ← none-owed — Antti 2026-09-02: the returned menu reflects field prevalence; the header carries the same claim
 
 Sources
 - curran-2x `[checked:2026-05-25 result:CAVEAT due:2026-10-16]` https://ideas.fin.ai/p/2x-nine-months-later — [practitioner direct, vendor venue] Curran (2026-04-16), Intercom's tiered review with auto-approval at the lowest tier. CAVEAT ×2: metrics vendor-self-reported, and the company renamed to Fin on 2026-05-12 — the memo predates the rename; do not silently swap the name (record: kb:observations/intercom.md). Backs the checking-primitives menu as something orgs actually run, not a list we invented. fallback: keep the menu, drop the org names.

@@ -7,8 +7,6 @@ The map is back, one last time.
 
 {{figure:map-engine-filled}}
 
-- What fills it is what got built. The verifier from the M5 packaging and the test-strategy skill authored at M3 are checks that stand without you. A loop made of checks that stand without you gets drawn solid; the stack-map you drew names where the next ones land.
-- Nothing else moved. Same six phases, same loops, same wall at the team's edge. The far half kept its shape and gained its names, the way the near half did at the M3 close.
 
 <!-- maintainer -->
 
@@ -48,8 +46,6 @@ The map is back, one last time.
 
 Claims
 - `soil-line` · vision · "act under uncertainty · competence sets the ceiling · cross personal → team" ← none-owed
-- `checking-loop-drawn-solid` · vision · "A loop made of checks that stand without you gets drawn solid" ← none-owed
-- `nothing-else-moved` · vision · "Nothing else moved. Same six phases, same loops, same wall at the team's edge." ← none-owed
 
 Sources
 - david-dynamo-1990 `[checked:2026-07-03 result:OK due:none]` https://ideas.repec.org/a/aea/aecrev/v80y1990i2p355-61.html — [academic/research] Paul A. David, *The Dynamo and the Computer: An Historical Perspective on the Modern Productivity Paradox*, AER Papers & Proceedings 80(2), 1990, 355–361. Backs the crossing-the-wall bullet's dip-before-climb clause — the complementary-investment mechanism, a historical borrow rather than current evidence, and the body carries no date or number from it. **Foundational-literature variant, `due:none`** (`backing-format.md` § Foundational): a 1990 paper's claim is fixed by publication, and the previous `due:2027-01-03` would have flagged it STALE as an artifact of the rule rather than a defect in the material. The JSTOR stable page (jstor.org/stable/2006600) 403s automated fetches; the RePEc landing page is the live record. fallback: cut the "Your own sessions speed up before the team's numbers move…" sentence; the bullet stands without it.

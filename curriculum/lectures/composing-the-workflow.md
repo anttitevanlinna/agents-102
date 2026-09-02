@@ -4,11 +4,6 @@
 
 {{figure:student-closed-loop}}
 
-- You drew a control loop. Shape the session before it moves, watch what comes back, correct, encode. That is **feedback control** around a non-deterministic agent.
-- The near half shapes; the far half corrects. Intent, context, and the plan set the target before the session starts; the far half reads what came back, takes up what passed, and encodes what the session taught, changing the system so the next session starts better.
-- Verification is the sensor. A loop with no way to read its own result runs open: send the work off and hope. The checks you built are how this loop reads what came back. They are the part that lets the system catch its own error before it ships.
-- The harness makes continuing possible. What a session gets right without you is set by what has accumulated around it: rules, durable state, checks, encoded corrections. The M4 send-off and the M5 re-send: same model, two different agents.
-
 ## Eval
 
 - An **eval** is a measurement. You hold agent-produced work against a fixed yardstick, across enough runs to get a number: a pass rate, a score, how often one drift shape shows up. One run tells you what happened. The measurement tells you what the system does.
@@ -56,6 +51,8 @@
 
 <!-- maintainer -->
 
+**Control-loop slide is header + figure only (Antti 2026-09-02, "not sure if bullets really needed if the pic is good").** The four bullets went; the drawing carries every term they had (spec, gap, you·Claude·rules, session, change, drift, tests·diff·eval, the two brackets, the autopilot caption), and the measurement block's sub-label gained *the sensor:* so the one idea only the bullets held is on the figure. The old bullet 4 (accumulated surround; same model, two different agents) is the second-loop slide's content and belongs there, without module numbers. Do not restore the bullets.
+
 **Two example figures (2026-09-02, Antti: "just pic, no bullets").** `figures/dino-skill-stack.md` redraws the supplementary's `skill-stacking/01-meta-model.svg` (mermaid) in the house palette: five lifecycle columns, the three routed gates in rust, `/ship` as the one orchestrator with its sequenced chain, OPS looping back to BUILD. Source of truth for the skill list is `supplementary/skill-stacking.md`; regenerate the figure when that catalog changes. `figures/pocock-skill-system.md` is drawn from `mattpocock/skills` @ `6654f6b` (2026-08-24), reading `skills/engineering/ask-matt/SKILL.md` for the flow: one main flow (grill-with-docs → to-spec → to-tickets → implement, which drives tdd and code-review inside it), a prototype detour bridged by handoff, on-ramps (improve-codebase-architecture, wayfinder, triage, diagnosing-bugs), two vocabulary skills underneath, ask-matt as router. Skill count deliberately not stated. `ask-matt` routes; nothing in the repo runs the flow, so the *pocock-by-hand* claim on the T3 slide still holds. Both figures render at 1200×560 with all labels ≥ 9px; checked by headless-Chrome screenshot.
 
 **Lean pass (2026-08-25):** cut "Same passage, same drift, same fixes and guardrails." from slide-1 bullet 3 — the figure shows it. Do not restore.
@@ -99,7 +96,7 @@
 
 **Accumulation bullet (2026-08-09, Antti-directed; buried-gold item):** fourth bullet on *You drew a control loop* states the join the gold list named as un-homed: the harness enables continuation; what a session gets right unattended is set by the accumulated surround; M4/M5 is the lived proof (same model, same harness, only the surround differed — by the M4 four-part definition, the context differed, so "two different agents" is literal). Guards: (a) NOT a new law — no coined name, no bold; the dose verdict's "zero new laws" stands. (b) Claim altitude only — the four artifact classes stay bare; their mechanisms live on the Verification and Outcome slides. Do not expand the list. (c) Bearer split is the design: this is the system-side twin of the closing slide's frontier bullet (engineer-side, reach-and-gates). The twins lean on each other by deck order; neither restates the other. (d) Deliberate silences, all load-bearing: `the-agent-loop.md` untouched (its "Out of the box, nothing new takes over" scope is this bullet's setup — the payoff lands here, not there); `story-of-module-6.md` taste line untouched (no conflict: taste governs in-session quality, accumulation governs unattended capacity across sessions — encoding is how taste attends sessions the author is not in); `agents-that-build-agents.md` untouched (its "not model features" slide, moved there from the removed `the-loop-has-a-name.md` argues the engineer-side stance, wrong bearer for this claim); the progression supplement untouched (engineer-subject by design); M6 module Key Concepts untouched (they enact the inventory; a second in-module statement would be repetition, not dosage). Design-side name: *Accumulated, not enabled* (`theory-plan.md` §3); the name stays off slides. Trainer line: *asking the product for more autonomy adds nothing the surround has not already earned.*
 
-**Cadence slide (from `the-loop-has-a-name.md`, Antti 2026-09-02, header his):** *Loop instead of you starting* sits right after the control-loop slide: a check on cadence is the loop closing with nobody pressing start. Body verbatim from its old home; T3.
+**Cadence slide (from `the-loop-has-a-name.md`, Antti 2026-09-02, header his):** *Loop instead of you starting* opens the T3 tail after the filled map (moved 2026-09-02 evening; low value sits at the end): a check on cadence is the loop closing with nobody pressing start. Body verbatim from its old home; T3.
 
 **Watch-for (delivery):**
 - Scheduled-agents stays one slide, not a mini-lecture. Three places it fits, one reference-page pointer, move on. If the slide grows past 90 seconds in rehearsal, cut.

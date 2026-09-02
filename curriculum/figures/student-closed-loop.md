@@ -15,7 +15,7 @@
  <text x="300" y="343" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="10.5" letter-spacing="2" fill="#2f6b6b" paint-order="stroke" stroke="#efe6d2" stroke-width="3" stroke-linejoin="round">THE GAP, FED BACK</text>
  <rect x="430" y="320" width="220" height="70" rx="7" fill="#efe6d2" stroke="#2f6b6b" stroke-width="2.2"/>
  <text x="540" y="351" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="11" letter-spacing="2" fill="#1f1a13">TESTS · DIFF · EVAL</text>
- <text x="540" y="369" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="11" fill="#4a4234">reads what came back</text>
+ <text x="540" y="369" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="11" fill="#4a4234">the sensor: reads what came back</text>
  <g stroke="#2f6b6b" stroke-width="2" stroke-linecap="round">
  <line x1="86" y1="190" x2="155" y2="190"/>
  <line x1="197" y1="190" x2="239" y2="190"/>

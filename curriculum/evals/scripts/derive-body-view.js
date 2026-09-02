@@ -180,8 +180,11 @@ function greps(bodyText) {
 function signals(raw, g, bodyText) {
   const body = bodyText
   return {
-    has_prompt_blocks: /\*\*Prompt\*\*/.test(raw) || /\{\{prompt:/.test(raw),
-    has_figures: /\{\{figure:/.test(raw),
+    // Body, not raw: a maintainer note quoting a marker is commentary, and a
+    // signal read off the whole file summons the behavior judge onto a body
+    // with no prompt in it.
+    has_prompt_blocks: /\*\*Prompt\*\*/.test(body) || /\{\{prompt:/.test(body),
+    has_figures: /\{\{figure:/.test(body),
     has_backing_block: g.backing !== null,
     has_maintainer_block: g.maintainerCut !== null,
     has_urls: /https?:\/\//.test(body),

@@ -6,17 +6,11 @@
 - The name for all of it is **eval**: the automated check that says *this agent-produced thing meets our bar*.
 - Three names, one thing. *Judge* when the check is itself an LLM reading the work. *Verifier* when the check is deterministic: tests, lint, compile, a shell hook that returns true or false. *Gate* when the same check is placed in CI and a pull request can't merge without it. M5 used *verifier* for the whole family and *judge* for one shape inside it; from here each name is precise, and *eval* is the family name.
 
-## One primitive, placed wherever there's a bar
-<!--tier:3-->
-
-- The shape fires on any workflow with a quality bar, not only agent sessions. A code-review checklist, a deployment gate, an internal-doc rubric. Anywhere you can describe *meets the bar*, you can write the check.
-- Naming it is what lets you reuse it. Once you see the verifier, the judge, and the gate as the same primitive, you can place that primitive in more places. On a pull request. On a nightly run. On the next agent that does the same class of work. On the team's shared kit.
-
 <!-- maintainer -->
 
 **Lean pass (2026-08-25, Antti-directed M3/M6 shorten, free hands):** cut "Opus 4.7 will be Opus 4.8, then something with a different name." (dates the deck; replacement claim survives as "Each replacement will be better…"); cadence bullet 3 condensed — the "the second you stop thinking of the eval as a one-shot check… your options change" clause folded into "you do need to know the eval can run on cadence" (watch-for already caps this slide at 90 s). Do not restore.
 
-**The latency axis stays off the naming slide (2026-08-23, Antti, `0a56ebd9`):** a bullet placing checks by latency (seconds inline, minutes in the background, expensive judgement at a named gate) was tried on `## One primitive, placed wherever there's a bar` and reverted — students realise the latency axis through their own practice, and a closing lecture is recognition, not instruction. Do not re-add without a new call; the deep treatment stays in `supplementary/how-the-best-do-ci-cd.md` § *Eval latency is part of the loop*.
+**The latency axis stays off the naming slide (2026-08-23, Antti, `0a56ebd9`):** a bullet placing checks by latency (seconds inline, minutes in the background, expensive judgement at a named gate) was tried on the placement slide (itself cut 2026-09-02) and reverted — students realise the latency axis through their own practice, and a closing lecture is recognition, not instruction. Do not re-add without a new call; the deep treatment stays in `supplementary/how-the-best-do-ci-cd.md` § *Eval latency is part of the loop*.
 
 **Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** all slides keep bullets; bold reduced to one handle — **eval** at the naming beat on slide 1 (existing *judge*/*verifier*/*gate* italics kept); every other bolded lead across all slides de-bolded (the other slides carry zero bold) — per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Lede + kicker untouched. Wording near-verbatim; no claims added or cut.
 
@@ -29,7 +23,7 @@
 - judges @4a722813: behavior PASS, pedagogy PASS (drift-recheck)
 **Lecture meta:** *Names evals with full weight from the M5 verifier and the check-menu the module just ranked, directly after the exercise debrief. Three tail slides are T3. M5/M6 refs in body KEPT under the `check_lectures §3` consolidation carve-out: the SUBJECT is naming what M5–M6 built (recognition), not sequencing.*
 
-**Time:** 8 min at presentation pace.
+**Time:** 4 min at presentation pace.
 
 **Delivery mode:** In-room close after Debrief.
 
@@ -40,8 +34,6 @@ Claims
 - `the-name-is-eval` · vision · "The name for all of it is **eval**" ← none-owed
 - `judge-verifier-gate-three-names` · vision · "Three names, one thing. *Judge* when the check is itself an LLM reading the work." ← none-owed
 - `eval-definition` · vision · "the automated check that says *this agent-produced thing meets our bar*" ← none-owed
-- `fires-on-any-quality-bar` · vision · "The shape fires on any workflow with a quality bar, not only agent sessions." ← none-owed
-- `naming-enables-reuse` · vision · "Naming it is what lets you reuse it." ← none-owed
 
 Sources
 
@@ -73,6 +65,6 @@ Flagged
 
 **Philosophy callouts:** at most one. The *compounding* theme surfaces naturally in the kit-grows-by-accretion beat; no need to name-tag it. Do not bolt the 19 beliefs onto this lecture.
 
-**Vocabulary split with `composing-the-workflow.md`.** That lecture is the concrete composition teacher (the passage chart + "a workflow is skills in the right order") and owns compose/workflow; it follows this one in deck order. This lecture owns reuse and placement — put the primitive on a PR, a nightly run, the next agent, the team kit — so slide 1's bullet lead reads "Naming it is what lets you reuse it", never "…compose". *eval* is this lecture's owned term; "workflow" appears once in body in the generic "any workflow with a quality bar" sense.
+**Vocabulary split with `composing-the-workflow.md`.** That lecture is the concrete composition teacher (the passage chart + "a workflow is skills in the right order") and owns compose/workflow; it follows this one in deck order. This lecture owns the name only. *eval* is this lecture's owned term; "workflow" appears once in body in the generic "any workflow with a quality bar" sense.
 
-**Placement:** M6 deck order (2026-09-02, three-beat re-cut, slides moved and re-tiered, body text untouched pending cards): the-2-frontiers → exercise `spot-gaps-build-the-loop` (diff + rule cut) → the-loop-has-a-name → `## The loop you drew` → composing-the-workflow (opens on the control-loop slide) → exercise `read-your-stack` → the-handoff-prompt (titled *Agents that build agents*) → story-of-module-6 → the-map-filled-in → quality-is-grounding → Human close → agents-that-build-agents (titled *There is no last turn*, last). The survives-the-model slide and its flywheel kicker moved to `agents-that-build-agents.md`; the cadence slide moved to `composing-the-workflow.md` as *Loop instead of you starting* (Antti 2026-09-02); this file now ends on the placement slide.
+**Placement:** M6 deck order (2026-09-02, three-beat re-cut, slides moved and re-tiered, body text untouched pending cards): the-2-frontiers → exercise `spot-gaps-build-the-loop` (diff + rule cut) → the-loop-has-a-name → `## The loop you drew` → composing-the-workflow (opens on the control-loop slide) → exercise `read-your-stack` → the-handoff-prompt (titled *Agents that build agents*) → story-of-module-6 → the-map-filled-in → quality-is-grounding → Human close → agents-that-build-agents (titled *There is no last turn*, last). The survives-the-model slide and its flywheel kicker moved to `agents-that-build-agents.md`; the cadence slide moved to `composing-the-workflow.md` as *Loop instead of you starting* (Antti 2026-09-02); the placement slide was cut 2026-09-02 (Antti); the lecture is the one naming slide.

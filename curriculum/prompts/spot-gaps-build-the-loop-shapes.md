@@ -2,7 +2,7 @@
 key: spot-gaps-build-the-loop-shapes
 dest: Claude Code
 runtime: any
-origin: exercises/spot-gaps-build-the-loop
+origin: exercises/read-your-stack
 requires:
   - id: repeated-work-inventory
     source: prompt:spot-gaps-build-the-loop-study

@@ -441,11 +441,11 @@ test('theory handbook build', async (t) => {
     assert.equal((handbook.match(/id="lectures-the-loop-has-a-name"/g) || []).length, 1);
   });
 
-  await t.test('renders twelve slim exercise summaries, not exercise bodies', () => {
+  await t.test('renders thirteen slim exercise summaries, not exercise bodies', () => {
     const cards = [...handbook.matchAll(
       /<section class="exercise-summary" id="exercise-summary-([a-z0-9-]+)">([\s\S]*?)<\/section>/g
     )];
-    assert.equal(cards.length, 12, 'expected one compact card for each in-class exercise');
+    assert.equal(cards.length, 13, 'expected one compact card for each in-class exercise');
 
     for (const [, slug, card] of cards) {
       assert.equal((card.match(/<h2>/g) || []).length, 1, `${slug}: expected one h2`);
@@ -493,6 +493,7 @@ test('theory handbook build', async (t) => {
       'id="exercise-summary-spot-gaps-build-the-loop"',
       'id="lectures-the-loop-has-a-name"',
       'id="lectures-composing-the-workflow"',
+      'id="exercise-summary-read-your-stack"',
       'id="lectures-the-handoff-prompt"',
       'id="lectures-quality-is-grounding"',
     ];

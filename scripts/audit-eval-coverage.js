@@ -248,7 +248,7 @@ const SURFACES = {
     'push-back-on-the-plan', 'extract-the-task-shaping-rule',
     'open-the-side-quest', 'map-the-access-surface', 'threat-model-with-stride',
     'author-test-strategy-skill', 'walk-and-send-off', 'diagnose-and-resend',
-    'spot-gaps-build-the-loop',
+    'spot-gaps-build-the-loop', 'read-your-stack',
   ].map(slug => ({ slug, file: `curriculum/exercises/${slug}.md`, instanceSlug: `ae101--exercise--${slug}` })),
   lectures: theoryManifestLectures()
     .map(slug => ({ slug, file: `curriculum/lectures/${slug}.md`, instanceSlug: `ae101--lecture--${slug}` })),

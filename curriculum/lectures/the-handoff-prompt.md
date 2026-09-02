@@ -1,4 +1,4 @@
-# The handoff prompt that builds your kit
+# Agents that build agents
 
 ## The handoff prompt that builds your kit
 

@@ -2,7 +2,7 @@
 key: spot-gaps-build-the-loop-study
 dest: Claude Code
 runtime: any
-origin: exercises/spot-gaps-build-the-loop
+origin: exercises/read-your-stack
 requires:
   - id: two-run-gap-map
     source: prompt:spot-gaps-build-the-loop-1

@@ -1,6 +1,6 @@
 # There is no last turn
 
-*Agents that build agents.* The flywheel: the loop feeding itself, each session leaving the next one sharper. This lecture unfolds it.
+*Agents that build agents.* The flywheel: the loop feeding itself, each session leaving the next one sharper.
 
 ## Why the loop survives the model
 

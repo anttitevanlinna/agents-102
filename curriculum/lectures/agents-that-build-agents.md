@@ -27,7 +27,7 @@ Nobody can hand you the right information about your customers, your direction, 
 - There is no last turn. Each session surfaces the next gap. Each gap proposes the next move. Each move makes the next session cheaper.
 - The kit compounds; the model rotates.
 
-The training closes. The flywheel does not.
+The training closes.
 
 <!-- maintainer -->
 

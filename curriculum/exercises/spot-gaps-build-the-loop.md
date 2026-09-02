@@ -55,8 +55,8 @@ Ask Claude to cut one rule the two-session diagnosis killed, or to say so and st
 
 **Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** bullet leads plain; bold only on widget / label chrome, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`.
 
-**Quality:** compendium-audited 2026-08-29 (writing@4a722813 story@0e4f7c9e technical@0cea7581 behavior@ba5ccf5 pedagogy@0e4f7c9e strategy@1c765f2 slides@0e4f7c9e)
-- judges @4a722813: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS (verify-refuted), slides PASS
+**Quality:** compendium-audited 2026-09-02 (writing@4e0370bc technical@4e0370bc behavior@4e0370bc strategy@4e0370bc slides@4e0370bc)
+- judges @4e0370bc: writing PASS (3 todos see instances/ae101--exercise--spot-gaps-build-the-loop.writing.json), story REVISE (1/1 see instances/ae101--exercise--spot-gaps-build-the-loop.story.json), technical PASS (2 todos see instances/ae101--exercise--spot-gaps-build-the-loop.technical.json), behavior PASS, pedagogy REVISE (2/2 see instances/ae101--exercise--spot-gaps-build-the-loop.pedagogy.json), strategy PASS, slides PASS (1 todo see instances/ae101--exercise--spot-gaps-build-the-loop.slides.json)
 - re-audit @796293b 2026-05-31: writing PASS, pedagogy PASS — steer-callout gained a premature-completion recovery line (§48/§62) + a render-as-HTML affordance callout after the shapes prompt (§50/§53/§62 hold)
 
 **Word count:** ~420 words body.

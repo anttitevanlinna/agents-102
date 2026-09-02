@@ -1,0 +1,160 @@
+{
+  "class": "slides",
+  "training": "ae101",
+  "file": "curriculum/exercises/read-your-stack.md",
+  "verdict": "PASS_WITH_TODOS",
+  "body_sha": "1db0e3aefdba4f0dcc46ce6e88a4cfe7ccb0120ee206a5d6cbc603eb0737e569",
+  "shape_hash": "04c8bbd89721df08",
+  "rules_evaluated": [
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 1,
+      "rule_lead": "Referent resolution under a sequential deck read.",
+      "verdict": "PASS",
+      "evidence": "Closest call: chunk 1 \"Find the work you repeat across your stack\" L19 \"Look wider than the two sessions\" -- \"the two sessions\" is not named anywhere earlier IN this file, but resolves via two carve-outs together: (a) session-artifact carve-out -- the same continuing Claude Code session (Session widget L5 says \"continue\") just spent Beat 1 diffing exactly two sessions; (b) module-arc prior-context -- the directly-preceding exercise in module include order, spot-gaps-build-the-loop.md, states in its own body \"You hold two sessions of the same task\" (its L19) and titles a section \"Diff the two sessions, rank the gaps\" (its L17), separated from this file only by the composing-the-workflow lecture (spot-gaps-build-the-loop.md:106 deck order). Same pattern covers chunk 0 L7 \"the gap map\" / \"the rule you cut\" (both produced by that same directly-preceding exercise: its \"What you build: a ranked gap map and one stale rule cut\"), L47 \"the kit\" (arc-earned at M5, what-packaging-is.md:20 \"the kit is what stands in for you at Verification\"), L55 \"the handoff prompt\" (named in THIS module's own What You'll Learn, spot-gaps-build-the-loop.md:16 \"a handoff prompt that builds the kit\" -- the exact shape the rule's own worked example describes), and L59 \"the fork\" (arc-earned at M5's fork-the-worktree.md). No referent in the body fails to resolve under these carve-outs; mechanical dialect/deixis greps (below) returned clean. Re-checked after a live edit added a clause mid-run (L26: \"If it comes back thin instead, or everything traces to one repo, a *there is more than this, keep going* prompt sends it back out.\") -- \"it\" resolves to \"the scan\"/\"the prompt\" named earlier in the SAME blockquote, in-chunk, fine.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 2,
+      "rule_lead": "Cross-file and positional callbacks.",
+      "verdict": "PASS",
+      "evidence": "No \"the opening lecture said\" / \"earlier module\" style positional pointer anywhere in body_numbered. Every backward reference names the artifact or claim directly (\"the gap map\", \"the rule you cut\", \"the handoff prompt\", \"the fork\", \"the kit\") rather than locating another file by its position in the deck. `grep -inE 'prework|the workbook' curriculum/evals/body-views/ae101--exercise--read-your-stack.body.txt` -> 0 hits, so the navigational-pointer carve-out is not even needed.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 3,
+      "rule_lead": "Every backward reference points at a beat that exists.",
+      "verdict": "PASS",
+      "evidence": "\"the gap map\" / \"the rule you cut\" (L7) trace to spot-gaps-build-the-loop.md's own \"What you build: a ranked gap map and one stale rule cut\" -- exact vocabulary match, beat exists. \"the fork\" (L59) traces to curriculum/exercises/fork-the-worktree.md, an existing M5 exercise. \"the handoff prompt\" (L55) traces to curriculum/lectures/the-handoff-prompt.md, the next file in this module's own deck order (spot-gaps-build-the-loop.md:106) -- exists, and is also named by the module's own What You'll Learn (line 16).",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 4,
+      "rule_lead": "Live-demo beats survive a text read.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no guess-before-reveal instruction anywhere in the body -- every 'Ask Claude to...' beat (L28, L37, L49) hands the agent an open task with no predicted outcome staged for a later reveal",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 5,
+      "rule_lead": "No orphan slides.",
+      "verdict": "PASS",
+      "evidence": "Closest case: chunk 1 (\"## Find the work you repeat across your stack\", L17-21) is the thinnest chunk at two bullets, but each bullet carries its own independent claim (look wider than the two sessions vs. read your own history first) rather than a single wait-state or context-dependent line. Every other chunk carries a callout, a prompt hand-off, or a closing recap -- none is content-free.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 6,
+      "rule_lead": "Header self-carries at projection distance.",
+      "verdict": "PASS",
+      "evidence": "Closest case: \"## Sidestep: check your menu against the field's\" (L43) -- chunk content opens \"Optional. Your shapes are drawn and the gaps are ranked. This one widens the menu you pick checks from.\" (L45), a direct match to the header's claim (an optional widening move on the checking menu); nothing in the chunk contradicts it. Checked all 5 headers against their own chunk content; each self-carries.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 7,
+      "rule_lead": "LLM-cadence caps.",
+      "verdict": "PASS",
+      "evidence": "Checked all five sub-items against body_numbered: no \"Not X. Not Y. Z.\" construction; no anaphora/epistrophe triple (closest look-alike, L19's three consecutive \"The\"-led sentences, are differently-structured expository sentences, not a repeated rhetorical frame); no self-grading superlative (grep for delve/honestly/crucial/substrate class already CLEAN per view greps, and no \"one of the most useful\" phrasing found by eye); no number-plus-retraction pattern (\"Time: 15 minutes\" is a plain fact, not hedged); no abstraction-noun stack; no verb triplet with an empty leg. Re-checked the L26 clause added by a live edit mid-run (\"If it comes back thin instead, or everything traces to one repo, a *there is more than this, keep going* prompt sends it back out.\") against all five sub-items -- clean, no tic.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 8,
+      "rule_lead": "Internal dialect never lands on a slide.",
+      "verdict": "PASS",
+      "evidence": "Mechanical: `grep -n -iE '\\bsurface\\b|\\bfiring\\b|\\bcompendium\\b|\\bforcing function\\b|\\bbeat\\b|\\bmood\\b|\\bconnections\\b' curriculum/evals/body-views/ae101--exercise--read-your-stack.body.txt` -> 0 hits. \"Session\" and \"Note\" are the architecture-mandated widget labels (curriculum/widgets.md), not maintainer dialect.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 9,
+      "rule_lead": "Emphasis budget -- bold is for handles, and go very lightly.",
+      "verdict": "PASS",
+      "evidence": "Every bold span in the body falls into one of two categories the maintainer's dated accept-note clears explicitly: widget/label chrome (**Time:**, **Session**, **What you do:**, **What you build:**, **The point:**, **Note**, **What happened:**) and blockquote-callout leads (**Fast operator?** L24, **Cut the scan when the top patterns are clear enough to use.** L26, **Want to see the shapes, not read them?** L41). L69: \"Emphasis pass (2026-07-09, Antti-directed 'go very lightly on the bold'): bullet leads de-bolded to plain; widget/label chrome and blockquote callouts untouched, per theory-plan.md Slide format -- emphasis budget + check_slides.md #9.\" No bullet-lead bold remains anywhere (the pass's actual target), so the accept-note's condition is met, not just claimed.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 10,
+      "rule_lead": "Presence precedes content -- verify against the composed deck, not long-read.",
+      "verdict": "PASS",
+      "evidence": "File is registered in the standard exercise deck-include path: scripts/build-workbook.js:177 lists 'exercises/read-your-stack' in the same array shape as every other exercise, and the module file includes it as a normal exercise link (spot-gaps-build-the-loop.md:34 '[Read your stack](exercises/read-your-stack.md)' under its own ## Start here). This is the phase--exercise wrapper path, not a phase-less prose section (prework/supplementary/reference), which is the only failure mode the rule documents. Did not run a full render-diff (main.querySelectorAll text-hash compare) since nothing in this edit touches tier markers, dividers, or chunking.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 11,
+      "rule_lead": "Numbering -- position is computed, content ordinals are linted.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no `## Phase N:` / `## N.` step headers in this file (all five ## headers are plain imperative titles, per its own \"Atomic -- no phase markers\" maintainer note); ran `node scripts/check-slide-numbering.js curriculum/exercises/read-your-stack.md` -> 'OK -- 59 files, Phase/Step numbering consistent'",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 12,
+      "rule_lead": "Page geometry dies at the cut; reading order survives.",
+      "verdict": "PASS",
+      "evidence": "Mechanical: `node scripts/check-slide-deixis.js --report` lists 0 matches for curriculum/exercises/read-your-stack.md (only other files appear in the cleared-match table). Manual `grep -n -iE '\\bbelow\\b|\\babove\\b|further down|\\bthis page\\b|see below' curriculum/evals/body-views/ae101--exercise--read-your-stack.body.txt` -> 0 hits. The one forward-looking phrase, L24 \"Lump the next two prompts into one go\", uses the rule's own allowed reading-order word (\"next\"), not a positional pointer.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 13,
+      "rule_lead": "In-deck links work now; whether they EARN their place is open.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "grep -n '\\[.*\\](' over the body -> 0 hits; no in-body markdown links in this file",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 14,
+      "rule_lead": "Slide size -- 210 words / 6 bullets, and the cap is machine-checked.",
+      "verdict": "PASS",
+      "evidence": "Mechanical: `node scripts/check-slide-size.js --file curriculum/exercises/read-your-stack.md` -> \"files: 1  slides: 5  limits: 210 words / 6 bullets, oversized: 0 -- every slide is within limits\".",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 15,
+      "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
+      "verdict": "PASS",
+      "evidence": "All five body ## headers are imperative or phase-label (Find the work..., Scan your history..., Draw your top work-shapes..., Sidestep: check your menu..., Decide what crosses back...), matching the exercise-class convention. None is posed as a declarative law, so the claim requirement (which binds only a law/consolidation-moment header) has no object in this file.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 16,
+      "rule_lead": "A bullet earns its slot or dies -- three classes that read as rigour and carry nothing.",
+      "verdict": "REVISE",
+      "evidence": "L35 \"A recurring kind of work has a shape. Steps in order, a branch, a loop back. Drawn, the shape is easier to recognise than described.\" opens and closes by echoing chunk 0's \"The point\" (L13: \"recurring work has a shape, and drawn, the shape is easier to recognise than described.\") almost verbatim -- class (a) doctrine restatement layered onto genuinely new content (the middle \"steps/branch/loop\" enumeration). Because the bullet's middle clause does add something the slide doesn't already hold, it clears the rule's own \"adds nothing -> cut\" bar and is not a blocking violation -- filed as a tightening opportunity, not a rule breach.",
+      "fix_hint": "Drop the repeated 'the shape is easier to recognise than described' close; keep only the new steps/branch/loop line, e.g. 'A recurring kind of work has a shape: steps in order, a branch, a loop back.'",
+      "blocking": false
+    }
+  ],
+  "todos_count": 1,
+  "blocking_findings_count": 0,
+  "notes": "This is a live multi-session repo (CLAUDE.md Multi-user hygiene) and the target file moved TWICE while this run was in flight. (1) Commit 6ece955e (maintainer/backing-block-only, body untouched -- confirmed via `git show 6ece955e -- curriculum/exercises/read-your-stack.md`, diff entirely below the maintainer cut) shifted body_sha ec4a4918... -> 969f23ff... and, because I had already overwritten this instance with my own 13 judged rows before re-running `prefill-instance.js --write`, the sidecar's carried N/A rows for rules 4/11/13 (shape_hash 04c8bbd89721df08, from a prior instance) had nothing left to splice from -- I re-added those three rows myself, independently re-running their mechanical checks (check-slide-numbering.js, the link grep) rather than re-judging from scratch, since the underlying body was unchanged. (2) Commit f80e8cf6 then added one real sentence inside the body (L26, chunk 2's stop-gate blockquote: \"If it comes back thin instead, or everything traces to one repo, a *there is more than this, keep going* prompt sends it back out.\"), moving body_sha to the value recorded above. Re-ran the deixis checker, the slide-size checker, and the dialect/positional greps against the current file (all still clean) and re-checked the new clause specifically against rules 1 and 7 (both PASS, noted inline). Rows written by me: 16; rows spliced by merge: 0, for the reason in (1), not because resolved prefill work was redone. Rules 15 and 16 postdate the template's explicit blocking/non-blocking list (1,2,3,4,8,10,12 blocking; 5,6,9,11,13,14 non-blocking); classified both as non-blocking per the template's own stated principle ('cannot follow this' = blocking, 'could be tighter' = TODO) since neither concerns comprehension of the slide as shown."
+}

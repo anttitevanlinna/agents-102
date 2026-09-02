@@ -10,8 +10,8 @@
 
 **Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** no bold, no coined handle, no kicker (the watch-for: the frontiers stay unanswered), per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`.
 
-**Quality:** compendium-audited 2026-08-29 (writing@4a722813 story@4a722813 technical@8cc00874 behavior@1c765f2 pedagogy@1abb84c6 strategy@1c765f2 slides@4a722813)
-- judges @4a722813: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-09-02 (writing@4e0370bc technical@4e0370bc behavior@1c765f2 pedagogy@4e0370bc strategy@4e0370bc slides@4e0370bc)
+- judges @4e0370bc: writing PASS (1 todo see instances/ae101--lecture--the-2-frontiers.writing.json), story REVISE (4/0 see instances/ae101--lecture--the-2-frontiers.story.json), technical PASS (2 todos see instances/ae101--lecture--the-2-frontiers.technical.json), behavior PASS, pedagogy PASS (1 todo see instances/ae101--lecture--the-2-frontiers.pedagogy.json), strategy PASS (1 todo see instances/ae101--lecture--the-2-frontiers.strategy.json), slides PASS
 
 **Lecture meta:** *~2 min opener for Module 6, directly before the exercise *Map the gaps, cut the rule*. Echoes Module 1's "Painting the picture" opener: same two frontiers, recurring at the capstone open. The recurrence is the point. One slide IS the lecture.*
 

@@ -1,11 +1,11 @@
 {
   "class": "storytelling",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/composing-the-workflow.md",
-  "body_sha": "2497f4c517baf376fd52d59ba0cf2ecdcd7e5ba4ad985ee7bc80948053c3ea6e",
-  "shape_hash": "06b03968b9651b64",
-  "verdict": "PASS",
+  "body_sha": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+  "shape_hash": "326c29788cefc702",
+  "verdict": "REVISE",
   "training": "ae101",
-  "module_mood_contract": "practitioner fluency — 'I know how to test, I know how to learn, I know how to encode'",
+  "module_mood_contract": "practitioner fluency — 'I know how to test, I know how to learn, I know how to encode.'",
   "trace_status": "regenerated",
   "rules_evaluated": [
     {
@@ -13,7 +13,7 @@
       "rule_index": 1,
       "rule_lead": "Meta-frame lectures = closers, not openers.",
       "verdict": "PASS",
-      "evidence": "File is placed after `## Human close` in spot-gaps-build-the-loop.md:39/47 (`[Composing the workflow](lectures/composing-the-workflow.md)`), inside the closer lecture chain that follows the module's Human close round, before `## Key Concepts` (line 55). Placement diagnostic: trace phase 1 reads it as recognition, not first exposure — 'I look at the chart and recognize it immediately by SIGHT... the body text no longer spells that recognition out in bullet 3... but the chart itself is doing that work' (regenerated persona_action). The four wiring-mechanism terms (explicit load / orchestrator / routing / hand-off) are introduced as names for moves the student already performed informally across M1–M6, not as first-exposure taxonomy. Strategy doc (content-strategy-agentic-engineering-101.md:451, re-read live this session) independently directs this exact placement: '`composing-the-workflow.md` places checks and stop conditions at workflow seams' as the M6 closing move, inside '## M6 in detail — spot gaps, build the loop'.",
+      "evidence": "File is neither a pure opener nor the module's final closer — deck order per `spot-gaps-build-the-loop.md:106` (re-grepped live this session): 'the-2-frontiers → exercise spot-gaps-build-the-loop (diff + rule cut) → composing-the-workflow (control loop, Eval, cadence, skills, the Dino / Pocock examples, the filled-in map figure) → exercise read-your-stack → the-handoff-prompt... → story-of-module-6 → Human close → agents-that-build-agents... last.' It sits mid-module, between two exercises. The rule's own placement diagnostic offers three valid landings, not just closer-vs-opener: 'naming a pattern (closer), showing a ceiling (opener), or teaching vocabulary (mid-module)?' This file does both recognition (control loop, second loop, checking-loop-drawn-solid are all figure-only recaps of artifacts the student already built at M1-M5) and new vocabulary (Eval's judge/verifier/gate split, skill footprint, composition wiring, scheduling primitives) placed right after the diff exercise that gives the vocabulary its concrete instance — squarely the 'teaching vocabulary lands mid-module where vocab earns itself' category the rule sanctions.",
       "fix_hint": null,
       "blocking": false
     },
@@ -22,7 +22,7 @@
       "rule_index": 2,
       "rule_lead": "Minimal lecturing before contrast-mood exercises.",
       "verdict": "N/A",
-      "evidence": "File sits after the module's Human close and after the module's main exercise (spot-gaps-build-the-loop.md), not before any exercise. Section after this lecture chain is `## Key Concepts` / `## Optional challenges` / `## Next`, not an exercise. Rule scoped to pre-exercise openers; this beat is a closer.",
+      "evidence": "M6's mood is 'practitioner fluency' (content-strategy-agentic-engineering-101.md:479, read live this session), not an M5-style before/after contrast-mood module. The exercise immediately downstream of this file ('Read your stack', a stack-scan/packaging exercise) is not a contrast-mood exercise the rule's dosage cap is written to protect. The exercise this file follows (the M4/M5 diff) is upstream, not downstream, so this is not a pre-exercise opener for any contrast beat.",
       "fix_hint": null,
       "blocking": false
     },
@@ -30,17 +30,17 @@
       "compendium": "check_lectures.md",
       "rule_index": 3,
       "rule_lead": "No cross-module sequencing in lecture bodies.",
-      "verdict": "PASS",
-      "evidence": "`sed -n '1,31p' curriculum/lectures/composing-the-workflow.md | grep -nE 'M[0-9]'` → no matches, exit 1 (whole body region per current body_view, lines 1-31). The chart callback at line 3 ('the passage you already sailed') is map-position spine-anchoring on the shared M5 image per the file's own §3 disposition note (maintainer line 49), not a numbered cross-module reference — carve-out applies. Unchanged by the 2026-08-25 lean-pass diff, which touched only slide-1 bullet 3 and the Quality line.",
-      "fix_hint": null,
-      "blocking": false
+      "verdict": "REVISE",
+      "evidence": "`sed -n '1,51p' curriculum/lectures/composing-the-workflow.md | grep -noE 'M[0-9]+'` → one hit: `34:M5`. Line 34 (## Loop instead of you starting, bullet 2): 'A scheduled codebase sweep: a gap-finder reads the repo for the drift shape you saw at M5 and opens an issue when it finds one.' This is a specific module-numbered backward reference inside lecture body prose — exactly the banned shape ('gets its full name at M5' is the rule's own example). The map-position carve-out ('the far half of the map') doesn't cover it: this names a curricular event by module number, not a spatial position on a diagram. The maintainer block (checked in full, L52-157) carries no accept-note addressing this specific line. Harm: this shared-library lecture is meant to stay re-placeable (rule rationale: 'lectures stay re-placeable shared library'); a reader without live M5 memory (a different cohort's sequencing, a self-study path, or a future reorder) hits a dangling module reference body text gives no way to resolve.",
+      "fix_hint": "Cut 'at M5' and anchor to the artifact instead of the module number — e.g. 'the drift shape a prior send-off surfaced' or 'the drift shape your diagnosis-driven run turned up' — same teaching point, no module coupling.",
+      "blocking": true
     },
     {
       "compendium": "check_lectures.md",
       "rule_index": 4,
       "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
       "verdict": "PASS",
-      "evidence": "Three `##` headers (lines 5, 13, 22): 'A skill's footprint is where its job lands' (thesis-claim matching the chart's own visual payoff), 'From skills to a workflow' (names the composition concept the slide teaches), 'Composition is a live argument, so you read' (claim-shaped, body opens 'How the field composes kits like this is a live argument with no settled answer' at line 24 — header states exactly what the body supports). None is an empty container or orphan-mystery. No two headers repeat. Maintainer block line 53 carries the file's own squint+truth accept-note for slides 1-2. Headers unchanged by the pinned diff.",
+      "evidence": "All 9 `##` headers checked (lines 3,7,13,17,21,25,30,37,45). Spot check: 'Eval' (L7) is a named-thing header matching a 3-bullet definitional body — truth holds. 'A skill's footprint is where its job lands' (L37) is a thesis-claim header the file's own maintainer block (L75) already self-audits against this exact rule number: '*A skill's footprint is where its job lands* (slide 1, thesis-claim, matches the chart's own bottom caption)'. 'From skills to a workflow' (L45) names the composition-variety concept the slide teaches (no orchestrator has won) — matches body. The five figure-only headers (control loop L3, second loop L13, Dino's skill stack L17, Pocock's skill system L21, checking loop drawn solid L25) are concept-naming, not bare wayfinding ('you are here'-shaped) — each names a distinct object the figure shows, so the §4 'orientation rationed to ONE beat' clause doesn't even engage (that clause targets position-markers, and none of these five are position-markers). No two headers repeat; no empty-container header ('The move', 'The spirit') present.",
       "fix_hint": null,
       "blocking": false
     },
@@ -49,7 +49,7 @@
       "rule_index": 5,
       "rule_lead": "A slide's BODY is size-bounded, not just its header (§4's sibling).",
       "verdict": "PASS",
-      "evidence": "Re-read at current wording (rule.js lectures 5, unchanged text, ~210-word/≤6-bullet ceiling) per this run's rule-drift check. `node scripts/check-slide-size.js --file curriculum/lectures/composing-the-workflow.md` run this session → 'files: 1  slides: 3  limits: 210 words / 6 bullets... oversized: 0... ✓ every slide is within limits'. The pinned diff only shortened slide-1 bullet 3 (cut 'Same passage, same drift, same fixes and guardrails.'), moving every slide further under the ceiling, not toward it — no regression possible from this edit.",
+      "evidence": "`find curriculum/evals/scripts -iname '*slide-size*'` → no file found; the canonical checker (`scripts/check-slide-size.js`) does not exist at the path the rule names, so verified by hand-count instead of the mechanical checker (flagged as a TODO for the eval-infra owner, not a story-class finding). Per-slide word counts (body text only, excluding header line and figure-include lines): Eval ≈130 words/3 bullets; Loop instead of you starting ≈145 words/3 bullets; A skill's footprint is where its job lands ≈50 words/2 bullets + 1 figure; From skills to a workflow ≈95 words/3 bullets. All four bulleted slides are well under the 210-word/6-bullet ceiling. The remaining 5 slides are figure-only (0 words).",
       "fix_hint": null,
       "blocking": false
     },
@@ -58,7 +58,7 @@
       "rule_index": 6,
       "rule_lead": "A prompt inside a lecture is a trainer show-and-tell, never a room follow-along.",
       "verdict": "N/A",
-      "evidence": "`grep -n '\\*\\*Prompt\\*\\*\\|{{prompt:' curriculum/lectures/composing-the-workflow.md` → no matches, exit 1. File explicitly states 'there is no prompt to drill here' (line 24) — no fenced prompt block exists for this rule to bind to. Rule postdates the prior story instance (Antti 2026-08-20); added here for the first time.",
+      "evidence": "`grep -n '\\*\\*Prompt\\*\\*\\|{{prompt:' curriculum/lectures/composing-the-workflow.md` → no matches, exit 1. body_view signal `has_prompt_blocks: false`, `fence_ranges: []` confirm. No fenced prompt block exists for this rule to bind to.",
       "fix_hint": null,
       "blocking": false
     },
@@ -67,7 +67,7 @@
       "rule_index": 16,
       "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
       "verdict": "N/A",
-      "evidence": "File carries no prompt block and no exercise phase — it is a read/pointer closer lecture ('there is no prompt to drill here, the move is to read', line 24), so there is no forcing function to locate in a prompt vs. body prose. `grep -n '{{prompt:\\|\\*\\*Prompt\\*\\*' curriculum/lectures/composing-the-workflow.md` → no matches, exit 1, confirming no fence exists to mis-place the mechanic into.",
+      "evidence": "File carries no prompt block and no exercise phase — it is a pure read/recognition lecture between two exercises, not a hands-on beat with a forcing function to place. `grep -n '{{prompt:\\|\\*\\*Prompt\\*\\*' curriculum/lectures/composing-the-workflow.md` → no matches, exit 1, confirming no fence exists to mis-place the mechanic into.",
       "fix_hint": null,
       "blocking": false
     },
@@ -76,7 +76,7 @@
       "rule_index": 27,
       "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
       "verdict": "PASS",
-      "evidence": "`grep -inE \"discuss with|share what|take [0-9]+ (minutes|seconds)|tell the room|talk to your neighbor|neighbour|pair up|turn to\" curriculum/lectures/composing-the-workflow.md` (whole body) → no matches, exit 1. Body sentences are all about the work (skill/footprint definitions, wiring mechanisms, the two reads) — no authored pause cue, no cohort-management sentence. Closest candidate is line 30 'Pick the shape that resembles your day' — addresses the reader directly but names no room action (no pairing, no sharing, no timed pause), so it stays inside the rule.",
+      "evidence": "`sed -n '1,51p' curriculum/lectures/composing-the-workflow.md | grep -inE \"discuss with|share what|take [0-9]+ (minutes|seconds)|tell the room|talk to your neighbor|neighbour|pair up|turn to|compare with the person|the room harvests|share and discuss\"` → zero hits. No authored conversation cue, pause-cue, or cohort-management sentence anywhere in the body. Every sentence names either the work (skill/footprint/eval definitions, wiring mechanisms) or the two supplementary reads. No live-typed megaprompt exists (no prompt blocks at all).",
       "fix_hint": null,
       "blocking": false
     },
@@ -85,7 +85,7 @@
       "rule_index": 1,
       "rule_lead": "Mood contract named.",
       "verdict": "PASS",
-      "evidence": "Regenerated trace mood_summary: phase 1 = 8, close = 8, both at/above the 8-floor for a teaching beat (this is a teaching beat per rule-1 diagnostic above, not exempt setup/launch). module_mood_contract in trace = 'practitioner fluency' matching strategy doc content-strategy-agentic-engineering-101.md:475 (re-read live this session): 'Mood: practitioner fluency — \"I know how to test, I know how to learn, I know how to encode.\"' Regenerated trace mood_note confirms the 2026-08-25 cut (bullet-3 clause) does not drop the score: the recognition beat was always carried by the figure, not the trimmed sentence, verified this session by comparing the SVG's own provenance note (maintainer line 45: 'same drift cones, fixes, guardrails' as the M5 original) against the cut text.",
+      "evidence": "Regenerated trace (this session, content_sha 118b0577… — prior cached trace at 28b524b5… described a since-restructured single-slide version and could not be reused): phase 1 mood_score 8, close mood_score 8, both at the 8-floor. This is a teaching beat throughout (no mechanical setup/launch beat present to exempt), so the floor applies file-wide. module_mood_contract in the fresh trace = 'practitioner fluency', matching content-strategy-agentic-engineering-101.md:479 read live this session: 'Mood: practitioner fluency — \"I know how to test, I know how to learn, I know how to encode.\"'",
       "fix_hint": null,
       "blocking": false
     },
@@ -94,7 +94,7 @@
       "rule_index": 2,
       "rule_lead": "Epistemic mood ≠ punitive mood.",
       "verdict": "PASS",
-      "evidence": "No failure-mode or shame framing in body — the file reframes what the student already did (calling a skill by hand, chaining files) as named wiring mechanisms, not as things done wrong. Regenerated trace close.mood_note: 'a plain, unadorned imperative that still reads as agency, not assignment' — confirms recognition/agency flavour, not having-done-wrong. Unaffected by the pinned diff.",
+      "evidence": "No failure-mode or shame framing anywhere in body. Line 43: 'You never size a skill in advance. The job sizes it.' reframes prior improvisation as correctly-sized practice, not error. Line 34-35's scheduling bullets and the Eval slide (L9-11) present checks as instruments the student built, never as things the student got wrong. Regenerated trace close.mood_note independently confirms: 'a plain, unadorned imperative that still reads as agency, not assignment.'",
       "fix_hint": null,
       "blocking": false
     },
@@ -103,7 +103,7 @@
       "rule_index": 3,
       "rule_lead": "Lead with discipline, not failure mode.",
       "verdict": "PASS",
-      "evidence": "Slide-1 header 'A skill's footprint is where its job lands' and slide-2 header 'From skills to a workflow' both name positive disciplines (sizing a skill by its job, composing skills into a workflow), not a failure mode. No failure-word title anywhere in the file. Headers untouched by the pinned diff.",
+      "evidence": "All 9 headers name a discipline, a concept, or a named practitioner example (control loop, Eval, the second loop, Dino's skill stack, Pocock's skill system, the checking loop drawn solid, cadence, footprint, workflow composition) — none is failure-worded. No canonical-result-handle carve-out needed (no title is a searchable failure-named result like 'the lethal trifecta').",
       "fix_hint": null,
       "blocking": false
     },
@@ -112,7 +112,34 @@
       "rule_index": 4,
       "rule_lead": "Strategy-fidelity check.",
       "verdict": "PASS",
-      "evidence": "Re-verified live this session against content-strategy-agentic-engineering-101.md (not carried forward from a prior read). (a) Big-Idea fidelity — body lines 19-20 ('Chaining generation without checks only moves work into the review queue faster' / 'designing the checks, routes, and exceptions that deserve your judgment') closely paraphrase the strategy doc's M6 section verbatim: '`composing-the-workflow.md` places checks and stop conditions at workflow seams. Chaining generation without those checks only makes the review queue grow faster.' (b) module-to-module arc — file hands off to two supplementary reads (lines 26, 28), matching the strategy doc's own M6 sequencing (no next-module handoff expected; M6 is the arc's terminal core module per spot-gaps-build-the-loop.md's capstone-close maintainer note). (c) mood-doesn't-resolve-early — `grep -ic eval curriculum/lectures/composing-the-workflow.md` → 0 in body (checked lines 1-31); the strategy doc's M6 detail section places 'Evals, named and explained' AFTER Debrief/Mood, i.e. after this lecture chain in the module's own sequencing — confirmed by direct read of the strategy doc section this session, not assumed. (d) front-run check — no forward-looking claim about M7/M8 content.",
+      "evidence": "Re-read content-strategy-agentic-engineering-101.md live this session (lines 449-608, GDrive strategy doc). (a) Deck-order fidelity — the strategy doc's 'State at 2026-09-02 end of day' paragraph names composing-the-workflow's exact internal content: 'control loop · Eval, measurement-first · The second loop, figure only · Dino's skill stack, figure only · Pocock's skill system, figure only · the filled-in map T2 · then the T3 tail: cadence · footprint · skills-to-workflow' — this is a slide-for-slide match against the current 9-slide body. (b) The 'no trainer talk track owed' design for the 5 figure-only slides is independently attested in the strategy doc, not just the file's own maintainer block: 'no trainer talk track is owed for them (Antti 2026-09-02: the pictures should be good enough...)'. (c) Mood-doesn't-resolve-early — the strategy doc's 'Evals, named and explained' section is itself describing THIS file's Eval slide (its quoted framing — 'your verifier is an eval; your judge is an eval; your gate is an eval' — is the source text this slide paraphrases), so naming Eval here is the designated slot, not a premature reveal of a later beat. (d) No front-run of M7/M8 content anywhere in body. Note for the record (not a story-class finding, flagged for the strategy-doc owner): the doc's earlier 'three-beat structure' paragraph places Eval at the end of beat 1 (before the control-loop opens beat 2), while the later same-day 'state at end of day' paragraph places Eval inside composing-the-workflow itself, matching the actual file — the later paragraph is what the shipped file honours.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 5,
+      "rule_lead": "Strategic themes recur in Key Concepts.",
+      "verdict": "N/A",
+      "evidence": "Lecture file, no `## Key Concepts` section (confirmed via full header list: 9 headers, none named Key Concepts). This rule governs module-file sections; the strategy judge owns it there.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 6,
+      "rule_lead": "Key Concepts shape — theme breadcrumbs, not standalone section.",
+      "verdict": "N/A",
+      "evidence": "No `## Key Concepts` section in this lecture file (same header list check as §5).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 7,
+      "rule_lead": "What You'll Learn shape — capability register, not syllabus.",
+      "verdict": "N/A",
+      "evidence": "No `## What You'll Learn` section in this lecture file (same header list check as §5/§6). That section lives in the module file (spot-gaps-build-the-loop.md), not in this shared-library lecture.",
       "fix_hint": null,
       "blocking": false
     },
@@ -122,7 +149,7 @@
       "judge_owned": true,
       "rule_lead": "Group beat ≠ parallel solo work (whole-compendium trigger).",
       "verdict": "N/A",
-      "evidence": "File has zero beats where the output belongs to a group rather than a participant — it is a read/pointer lecture with no exercise, no shared artefact, no adjudication. body_view signal `group_beat_markers: false` confirms. check_workshop.md does not apply to any beat in this file.",
+      "evidence": "File has zero beats where the output belongs to a group rather than a participant — read/pointer lecture, no exercise, no shared artefact, no adjudication. body_view signal `group_beat_markers: false` confirms. check_workshop.md's 16 rules do not apply to any beat in this file.",
       "fix_hint": null,
       "blocking": false
     },
@@ -132,7 +159,7 @@
       "judge_owned": true,
       "rule_lead": "Fires when writing/editing ANY prompt block a student copies (whole-compendium trigger).",
       "verdict": "N/A",
-      "evidence": "`grep -n '\\*\\*Prompt\\*\\*\\|{{prompt:' curriculum/lectures/composing-the-workflow.md` → no matches, exit 1. body_view signal `has_prompt_blocks: false` confirms. File explicitly states 'there is no prompt to drill here' (line 24) — no fenced prompt block exists for check_prompts.md to bind to.",
+      "evidence": "`grep -n '\\*\\*Prompt\\*\\*\\|{{prompt:' curriculum/lectures/composing-the-workflow.md` → no matches, exit 1. body_view signal `has_prompt_blocks: false`, `fence_ranges: []` confirm. check_prompts.md's 48 rules do not apply — no fenced prompt block exists anywhere in the file.",
       "fix_hint": null,
       "blocking": false
     }
@@ -143,22 +170,41 @@
     "any_below_8": false,
     "stealing_the_mood": []
   },
-  "teaching_moment_notes": "Teaching moment ('a skill's footprint is where its job lands') lands reliably per regenerated trace: is_me_rating 8/10, persona explicitly recognizes its own authored artifacts (test-strategy skill, verifier) placed on the already-known M5 passage chart rather than encountering a new abstraction cold. The 2026-08-25 lean-pass cut (removing 'Same passage, same drift, same fixes and guardrails.' from slide-1 bullet 3 per maintainer accept-note) was checked directly against the figure's own provenance note and confirmed non-damaging: the recognition claim was always carried by the SVG's visual reuse of the M5 chart geometry, not by the now-cut restating sentence. Two confusion_flags persist (mechanism density on slide-2 bullet 2; chart cold-read cost, marginally higher post-cut since one fewer sentence of text scaffolds the visual read) but both read as facilitator-premium (7→8 gap material), not fragility — the persona still lands the concept at 8/10.",
+  "teaching_moment_notes": "Two teaching moments checked against the regenerated trace: (1) Eval's judge/verifier/gate split lands because it arrives immediately after the M4/M5 diff exercise gives it a concrete instance — is_me_rating 8/10, persona reports 'this lands right after the diff exercise, so I already have the concrete instance the definition is naming'. (2) 'A skill's footprint is where its job lands' lands on the reused M5 passage chart the persona already knows how to read, sized against their own authored skills. Neither teaching moment is fragile to reasonable persona-skill variation — both are anchored to the student's own artifacts, not to instructor narration alone, though the five figure-only slides (control loop, second loop, Dino, Pocock, checking-loop-solid) depend on in-room trainer narration to carry meaning for a self-study reader; see todos.",
   "drift_rules_reread": [
-    "check_lectures §5 (slide body size-bounded) — fetched current wording via rule.js: text unchanged from what any prior instance would have judged against (~210-word / ≤6-bullet ceiling, enforced by check-slide-size.js). Re-ran the checker live this session: 3 slides, 0 oversized. The pinned diff shortened slide-1 bullet 3 (cut one clause), which can only move the file further under the ceiling, never toward it. Verdict: PASS, unchanged by the rule text and unchanged by the body edit."
+    "check_lectures §5 — fetched current wording via the class brief this session; text is the ~210-word/≤6-bullet ceiling, 'enforced by scripts/check-slide-size.js'. That script does not exist at the named path in this repo checkout (find returned nothing) — verified by hand-count instead and flagged as a todo, not treated as a rule-text change.",
+    "check_lectures §6 (trainer show-and-tell) — postdates the file's last story pass (rule dated Antti 2026-08-20); confirmed N/A here since the file carries no prompt block for the rule to bind to."
+  ],
+  "todos": [
+    {
+      "rule": "n/a — infra",
+      "note": "scripts/check-slide-size.js (named by check_lectures §5 as the enforcement mechanism) does not exist in curriculum/evals/scripts/ — the rule cites a checker that isn't there. Not a body defect; flag for the eval-infra owner.",
+      "line": null
+    },
+    {
+      "rule": "check_writing.md §3 (not my lane, noted for the writing judge)",
+      "note": "Maintainer block L77 ('Lecture meta') says 'Title awaits a card now that the file opens on the loop and ends on the map' — this is stale: the strategy doc's same-day 'state at 2026-09-02 end of day' paragraph records the title decision as settled ('The lecture keeps its title, Composing the workflow... a Building the system rename was offered and declined'). The maintainer block states a diff-in-progress as still-true.",
+      "line": 77
+    },
+    {
+      "rule": "check_pedagogy §14 / self-study delivery (non-blocking, in-room accept-notes cover the primary case)",
+      "note": "Five slides (control loop, second loop, Dino's skill stack, Pocock's skill system, the checking loop drawn solid) are figure-only with zero caption text, and both the file's own maintainer block and the strategy doc explicitly accept this for in-room delivery ('a good agentic engineer can explain them'). The accept-notes don't address the self-study/barebones-without-trainer case; a self-study reader hitting Dino's and Pocock's uncaptioned charts gets two unlabeled pictures and no text to anchor them. Worth a one-line caption or a self-study-mode note if this lecture ever ships as prework rather than in-room.",
+      "line": null
+    }
   ],
   "accept_notes_found": [
-    "L34: Lean pass (2026-08-25) — cut 'Same passage, same drift, same fixes and guardrails.' from slide-1 bullet 3, 'the figure shows it. Do not restore.' Checked directly against the figure and the maintainer's own figure-provenance note (L45); holds up as a genuine redundancy cut, not a story-relevant loss — see rules check_lectures §5 and check_strategy_tie_in §1 above.",
-    "L36: Emphasis budget (Antti-directed 'go very lightly on the bold') — bold-span inventory for slides 1-2; consistent with what's on the page, no story-class implication.",
-    "L38-39: Quality line — compendium-audited 2026-08-24, judges @1abb84c6 incl. story PASS (drift-recheck). This run supersedes that stamp with a fresh read against the current body_sha.",
-    "L41: Redesign (2026-07-04) — historical restructuring note (survey-pointer → concrete-teacher-plus-pointer); informs but does not gate this read.",
-    "L43: Framing provenance (5-framing / 3-judge panel, 2026-07-04) — 'footprint follows the job' framing chosen over phases-as-legs; explains the chart's design, not a live accept-note requiring re-check.",
-    "L49: §3 disposition (no cross-module sequencing in body) — directly informs check_lectures §3 verdict above (chart callback is spine-anchoring, not sequencing).",
-    "L51: Length discipline — ceiling is lede + figure slide + one mechanics slide + two reads; matches the current 3-slide structure.",
-    "L53: Headers (squint + truth) accept-note for slides 1-2 — directly informs check_lectures §4 verdict above.",
-    "L82-83: Delegated source stamps (skill-stacking-supp, lineages-supp) — check_research_claims scope, not story; noted for completeness, not re-verified here.",
-    "L86, L90, L93, L99: Frameworks/Stance/OODA provenance in the backing block — informs strategy-fidelity context (check_strategy_tie_in §4) but carries no story-class obligation beyond what's already cited."
+    "L54: Control-loop slide is header + figure only (Antti 2026-09-02) — the four bullets went; drawing carries every term they had; old bullet 4 (accumulated surround) reassigned to the second-loop slide 'without module numbers'.",
+    "L56: Two example figures (2026-09-02, Antti: 'just pic, no bullets') — Dino's skill stack and Pocock's skill system figures, sources and render-check details.",
+    "L58: Lean pass (2026-08-25) — cut a now-superseded bullet-3 clause; predates this file's current 9-slide shape (that bullet no longer exists in any form in the current control-loop slide, which is figure-only).",
+    "L60: Emphasis budget (Antti-directed 'go very lightly on the bold') — bold-span inventory, consistent with the current body.",
+    "L65: Framing provenance (5-framing/3-judge panel, 2026-07-04) — 'footprint follows the job' chosen over phases-as-legs; informs check_strategy_tie_in §3/§4 reasoning above.",
+    "L71: §3 disposition (no cross-module sequencing in body) — states the intended discipline ('No M[0-9] tags in body') that the line-34 finding above shows was not honoured on this edit.",
+    "L73: Length discipline — ceiling is lede + figure slide + one mechanics slide + two reads; the current 9-slide, 5-figure-only structure matches this design intent.",
+    "L75: Headers (squint + truth, check_lectures §4) — file's own self-audit note for slides 8 and 9, directly corroborating the check_lectures §4 PASS above.",
+    "L77: Lecture meta — stale 'title awaits a card' note; logged as a todo above, not a story-class finding.",
+    "L91: Soil line — confirms no spoken bullet is owed on this figure; informs the figure-only-slide design intent.",
+    "L97: Accumulation bullet — the 'system-side twin' claim (same model, different accumulated surround) that used to be a bullet on the control-loop slide; per L54 it now lives only in the second-loop figure's visual, with no body prose carrying it — informs the self-study todo above."
   ],
-  "blocking_findings_count": 0,
-  "todos_count": 0
+  "blocking_findings_count": 1,
+  "todos_count": 3
 }

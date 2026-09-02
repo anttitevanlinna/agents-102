@@ -1,52 +1,542 @@
 {
   "class": "behavior",
-  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/agents-that-build-agents.md",
-  "body_sha": "293e2f6ca38ba2216b60d6034f10af6b54ab378e6616d0b3e1c177887280a82b",
-  "verdict": "PASS",
   "training": "ae101",
-  "trace_status": "full_regen",
-  "prompts_evaluated": 1,
-  "prompts_findings": [
+  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/agents-that-build-agents.md",
+  "verdict": "PASS",
+  "body_sha": "c059d03a837537911ed08147fb5998b1f23ccd9c94508b4a129e24f65b17c067",
+  "shape_hash": "0f7defa9943cfa44",
+  "trace_status": "no_prompts",
+  "prompts_evaluated": 0,
+  "prompts_findings": [],
+  "rules_evaluated": [
     {
-      "prompt_index": 1,
-      "prompt_lead": "This session we drew the recurring shapes in my work. The shapes are in your con",
-      "verdict": "TODO",
-      "load_bearing": true,
-      "risks_fired": [
-        {
-          "pattern_id": "preamble-before-action",
-          "confidence": "low",
-          "evidence": "No 'No preamble' suppressor in-fence; but this is a single-artifact 'write me a handoff prompt' ask (not a 4+ named-substep directive Claude walks THIS turn, not a plan-mode invocation), so check_prompts.md #17's structural trigger doesn't obligate a suppressor here -- the five-step list ('study the work, pick the check that fits, author through conversation, push back, invoke to verify') describes what the OUTPUT prompt should instruct a future cold session to do, not sub-steps Claude executes in sequence this turn.",
-          "fix_hint": "Optional: append 'No preamble -- open directly with the prompt.' as the fence's last line if a terse hand-off becomes load-bearing later; not warranted at current confidence."
-        },
-        {
-          "pattern_id": "default-acceptance",
-          "confidence": "low",
-          "evidence": "Earlier in the same lecture ('The move widens to everything you do' section, several paragraphs before the fence): 'What comes back is a candidate. You read it the way you read any prompt the agent drafts: judgement, push-back, taste. Some of it will be obvious. Some of it will be off. One or two lines will be moves you would not have written on your own.' -- names the failure mode (uncritical acceptance) and gives the recovery move (judgement/push-back), satisfying the body-callout mitigation carve-out even though the callout sits before rather than immediately after the fence.",
-          "fix_hint": "None needed -- carve-out satisfied by existing body prose. Preserve that paragraph on future edits to this lecture; it is doing the mitigation work for this prompt."
-        }
-      ]
+      "compendium": "check_prompts.md",
+      "rule_index": "1",
+      "rule_lead": "No placeholders inside fences.",
+      "verdict": "N/A",
+      "evidence": "N/A — file carries zero **Prompt** fenced blocks and zero {{prompt:}} markers (signals.has_prompt_blocks=false, fence_ranges=[]; grep for {{prompt:, **Prompt**, and ``` all zero hits on raw source); nothing exists for this prompt-mechanics rule to fire against.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "2",
+      "rule_lead": "Every prompt block: one-sentence action lead-in.",
+      "verdict": "N/A",
+      "evidence": "N/A — file carries zero **Prompt** fenced blocks and zero {{prompt:}} markers (signals.has_prompt_blocks=false, fence_ranges=[]; grep for {{prompt:, **Prompt**, and ``` all zero hits on raw source); nothing exists for this prompt-mechanics rule to fire against.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "3",
+      "rule_lead": "Canonical shape — lead-in, label with destination, blank line, fence.",
+      "verdict": "N/A",
+      "evidence": "N/A — file carries zero **Prompt** fenced blocks and zero {{prompt:}} markers (signals.has_prompt_blocks=false, fence_ranges=[]; grep for {{prompt:, **Prompt**, and ``` all zero hits on raw source); nothing exists for this prompt-mechanics rule to fire against.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "4",
+      "rule_lead": "Installed Skills invoke by name, never path.",
+      "verdict": "N/A",
+      "evidence": "N/A — file carries zero **Prompt** fenced blocks and zero {{prompt:}} markers (signals.has_prompt_blocks=false, fence_ranges=[]; grep for {{prompt:, **Prompt**, and ``` all zero hits on raw source); nothing exists for this prompt-mechanics rule to fire against.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "5",
+      "rule_lead": "Chain by back-reference + deterministic path, never invented alias.",
+      "verdict": "N/A",
+      "evidence": "N/A — file carries zero **Prompt** fenced blocks and zero {{prompt:}} markers (signals.has_prompt_blocks=false, fence_ranges=[]; grep for {{prompt:, **Prompt**, and ``` all zero hits on raw source); nothing exists for this prompt-mechanics rule to fire against.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "6",
+      "rule_lead": "Chained-prompt isolation — don't leak downstream pipeline.",
+      "verdict": "N/A",
+      "evidence": "N/A — file carries zero **Prompt** fenced blocks and zero {{prompt:}} markers (signals.has_prompt_blocks=false, fence_ranges=[]; grep for {{prompt:, **Prompt**, and ``` all zero hits on raw source); nothing exists for this prompt-mechanics rule to fire against.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "7",
+      "rule_lead": "No session-resets mid-phase.",
+      "verdict": "N/A",
+      "evidence": "N/A — file carries zero **Prompt** fenced blocks and zero {{prompt:}} markers (signals.has_prompt_blocks=false, fence_ranges=[]; grep for {{prompt:, **Prompt**, and ``` all zero hits on raw source); nothing exists for this prompt-mechanics rule to fire against.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "8",
+      "rule_lead": "Multi-sample methods need structural enforcement.",
+      "verdict": "N/A",
+      "evidence": "N/A — file carries zero **Prompt** fenced blocks and zero {{prompt:}} markers (signals.has_prompt_blocks=false, fence_ranges=[]; grep for {{prompt:, **Prompt**, and ``` all zero hits on raw source); nothing exists for this prompt-mechanics rule to fire against.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "9",
+      "rule_lead": "Markdown shout (`**bold**`, `*italic*`) inside fenced prompts = dead weight in Claude Code.",
+      "verdict": "N/A",
+      "evidence": "N/A — file carries zero **Prompt** fenced blocks and zero {{prompt:}} markers (signals.has_prompt_blocks=false, fence_ranges=[]; grep for {{prompt:, **Prompt**, and ``` all zero hits on raw source); nothing exists for this prompt-mechanics rule to fire against.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "10",
+      "rule_lead": "Runtime-fork prompts: paired divs, shared chip.",
+      "verdict": "N/A",
+      "evidence": "N/A — file carries zero **Prompt** fenced blocks and zero {{prompt:}} markers (signals.has_prompt_blocks=false, fence_ranges=[]; grep for {{prompt:, **Prompt**, and ``` all zero hits on raw source); nothing exists for this prompt-mechanics rule to fire against.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "11",
+      "rule_lead": "Runtime-mechanical scaffolding asymmetry — MORE in less-fluent fork, not less.",
+      "verdict": "N/A",
+      "evidence": "N/A — file carries zero **Prompt** fenced blocks and zero {{prompt:}} markers (signals.has_prompt_blocks=false, fence_ranges=[]; grep for {{prompt:, **Prompt**, and ``` all zero hits on raw source); nothing exists for this prompt-mechanics rule to fire against.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "12",
+      "rule_lead": "Append-vs-integrate — name integration mode on regeneration with new context source.",
+      "verdict": "N/A",
+      "evidence": "N/A — file carries zero **Prompt** fenced blocks and zero {{prompt:}} markers (signals.has_prompt_blocks=false, fence_ranges=[]; grep for {{prompt:, **Prompt**, and ``` all zero hits on raw source); nothing exists for this prompt-mechanics rule to fire against.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "13",
+      "rule_lead": "Citation discipline — extend cite-or-flag scope + quote supporting sentence.",
+      "verdict": "N/A",
+      "evidence": "N/A — file carries zero **Prompt** fenced blocks and zero {{prompt:}} markers (signals.has_prompt_blocks=false, fence_ranges=[]; grep for {{prompt:, **Prompt**, and ``` all zero hits on raw source); nothing exists for this prompt-mechanics rule to fire against.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "14",
+      "rule_lead": "Niceness tax — name the edge or pin the line on regeneration.",
+      "verdict": "N/A",
+      "evidence": "N/A — file carries zero **Prompt** fenced blocks and zero {{prompt:}} markers (signals.has_prompt_blocks=false, fence_ranges=[]; grep for {{prompt:, **Prompt**, and ``` all zero hits on raw source); nothing exists for this prompt-mechanics rule to fire against.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "15",
+      "rule_lead": "Question-dump default — `in turn` too soft; two legal shapes.",
+      "verdict": "N/A",
+      "evidence": "N/A — file carries zero **Prompt** fenced blocks and zero {{prompt:}} markers (signals.has_prompt_blocks=false, fence_ranges=[]; grep for {{prompt:, **Prompt**, and ``` all zero hits on raw source); nothing exists for this prompt-mechanics rule to fire against.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "16",
+      "rule_lead": "Overwrite anxiety — name overwrite default on regeneration.",
+      "verdict": "N/A",
+      "evidence": "N/A — file carries zero **Prompt** fenced blocks and zero {{prompt:}} markers (signals.has_prompt_blocks=false, fence_ranges=[]; grep for {{prompt:, **Prompt**, and ``` all zero hits on raw source); nothing exists for this prompt-mechanics rule to fire against.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "17",
+      "rule_lead": "Preamble before action — design around it.",
+      "verdict": "N/A",
+      "evidence": "N/A — file carries zero **Prompt** fenced blocks and zero {{prompt:}} markers (signals.has_prompt_blocks=false, fence_ranges=[]; grep for {{prompt:, **Prompt**, and ``` all zero hits on raw source); nothing exists for this prompt-mechanics rule to fire against.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "18",
+      "rule_lead": "Self-critique register, not defense, when Claude interrogates own work.",
+      "verdict": "N/A",
+      "evidence": "N/A — file carries zero **Prompt** fenced blocks and zero {{prompt:}} markers (signals.has_prompt_blocks=false, fence_ranges=[]; grep for {{prompt:, **Prompt**, and ``` all zero hits on raw source); nothing exists for this prompt-mechanics rule to fire against.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "19",
+      "rule_lead": "Minimal hand-off + Claude self-augments for send-off prompts.",
+      "verdict": "N/A",
+      "evidence": "N/A — file carries zero **Prompt** fenced blocks and zero {{prompt:}} markers (signals.has_prompt_blocks=false, fence_ranges=[]; grep for {{prompt:, **Prompt**, and ``` all zero hits on raw source); nothing exists for this prompt-mechanics rule to fire against.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "20",
+      "rule_lead": "Grill before save — collaborative quality at artefact assembly.",
+      "verdict": "N/A",
+      "evidence": "N/A — file carries zero **Prompt** fenced blocks and zero {{prompt:}} markers (signals.has_prompt_blocks=false, fence_ranges=[]; grep for {{prompt:, **Prompt**, and ``` all zero hits on raw source); nothing exists for this prompt-mechanics rule to fire against.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "21",
+      "rule_lead": "Tell me what you wrote, not show me what you'll write.",
+      "verdict": "N/A",
+      "evidence": "N/A — file carries zero **Prompt** fenced blocks and zero {{prompt:}} markers (signals.has_prompt_blocks=false, fence_ranges=[]; grep for {{prompt:, **Prompt**, and ``` all zero hits on raw source); nothing exists for this prompt-mechanics rule to fire against.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "22",
+      "rule_lead": "Prompt-body edits require maintainer approval — registry files AND inline blocks.",
+      "verdict": "N/A",
+      "evidence": "N/A — file carries zero **Prompt** fenced blocks and zero {{prompt:}} markers (signals.has_prompt_blocks=false, fence_ranges=[]; grep for {{prompt:, **Prompt**, and ``` all zero hits on raw source); nothing exists for this prompt-mechanics rule to fire against.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "23",
+      "rule_lead": "Artifact destinations are explicit subpaths, never naked filenames (Agents 101-specific).",
+      "verdict": "N/A",
+      "evidence": "N/A — file carries zero **Prompt** fenced blocks and zero {{prompt:}} markers (signals.has_prompt_blocks=false, fence_ranges=[]; grep for {{prompt:, **Prompt**, and ``` all zero hits on raw source); nothing exists for this prompt-mechanics rule to fire against.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "24",
+      "rule_lead": "Don't restate session CWD inside prompt body.",
+      "verdict": "N/A",
+      "evidence": "N/A — file carries zero **Prompt** fenced blocks and zero {{prompt:}} markers (signals.has_prompt_blocks=false, fence_ranges=[]; grep for {{prompt:, **Prompt**, and ``` all zero hits on raw source); nothing exists for this prompt-mechanics rule to fire against.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "25",
+      "rule_lead": "`subagent` allowed in prompt blocks; explain why after prompt.",
+      "verdict": "N/A",
+      "evidence": "N/A — file carries zero **Prompt** fenced blocks and zero {{prompt:}} markers (signals.has_prompt_blocks=false, fence_ranges=[]; grep for {{prompt:, **Prompt**, and ``` all zero hits on raw source); nothing exists for this prompt-mechanics rule to fire against.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "26",
+      "rule_lead": "Maintainer-approval edits — ONE-AT-A-TIME, PRIORITY-ORDERED, FOUR-FIELD cards.",
+      "verdict": "N/A",
+      "evidence": "N/A — file carries zero **Prompt** fenced blocks and zero {{prompt:}} markers (signals.has_prompt_blocks=false, fence_ranges=[]; grep for {{prompt:, **Prompt**, and ``` all zero hits on raw source); nothing exists for this prompt-mechanics rule to fire against.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "27",
+      "rule_lead": "Name consumer at write time — `Save it as <path>` requires downstream reader.",
+      "verdict": "N/A",
+      "evidence": "N/A — file carries zero **Prompt** fenced blocks and zero {{prompt:}} markers (signals.has_prompt_blocks=false, fence_ranges=[]; grep for {{prompt:, **Prompt**, and ``` all zero hits on raw source); nothing exists for this prompt-mechanics rule to fire against.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "28",
+      "rule_lead": "Strong-bold prompt label is exactly `**Prompt**` — custom labels break renderer.",
+      "verdict": "N/A",
+      "evidence": "N/A — file carries zero **Prompt** fenced blocks and zero {{prompt:}} markers (signals.has_prompt_blocks=false, fence_ranges=[]; grep for {{prompt:, **Prompt**, and ``` all zero hits on raw source); nothing exists for this prompt-mechanics rule to fire against.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "29",
+      "rule_lead": "Normal work request before orchestration.",
+      "verdict": "N/A",
+      "evidence": "N/A — file carries zero **Prompt** fenced blocks and zero {{prompt:}} markers (signals.has_prompt_blocks=false, fence_ranges=[]; grep for {{prompt:, **Prompt**, and ``` all zero hits on raw source); nothing exists for this prompt-mechanics rule to fire against.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "30",
+      "rule_lead": "Live-test corrections preserve operator workflow.",
+      "verdict": "N/A",
+      "evidence": "N/A — file carries zero **Prompt** fenced blocks and zero {{prompt:}} markers (signals.has_prompt_blocks=false, fence_ranges=[]; grep for {{prompt:, **Prompt**, and ``` all zero hits on raw source); nothing exists for this prompt-mechanics rule to fire against.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "31",
+      "rule_lead": "Prompts live in registry; module/exercise/lecture files reference by marker.",
+      "verdict": "N/A",
+      "evidence": "N/A — file carries zero **Prompt** fenced blocks and zero {{prompt:}} markers (signals.has_prompt_blocks=false, fence_ranges=[]; grep for {{prompt:, **Prompt**, and ``` all zero hits on raw source); nothing exists for this prompt-mechanics rule to fire against.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "32",
+      "rule_lead": "Module names in prompt prose are fine — they ground the session.",
+      "verdict": "N/A",
+      "evidence": "N/A — file carries zero **Prompt** fenced blocks and zero {{prompt:}} markers (signals.has_prompt_blocks=false, fence_ranges=[]; grep for {{prompt:, **Prompt**, and ``` all zero hits on raw source); nothing exists for this prompt-mechanics rule to fire against.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "33",
+      "rule_lead": "Git-output greps asserting exact-N need multi-result fallback.",
+      "verdict": "N/A",
+      "evidence": "N/A — file carries zero **Prompt** fenced blocks and zero {{prompt:}} markers (signals.has_prompt_blocks=false, fence_ranges=[]; grep for {{prompt:, **Prompt**, and ``` all zero hits on raw source); nothing exists for this prompt-mechanics rule to fire against.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "34",
+      "rule_lead": "Disambiguation, anchors, and decision logic that bind Claude live INSIDE prompt fence.",
+      "verdict": "N/A",
+      "evidence": "N/A — file carries zero **Prompt** fenced blocks and zero {{prompt:}} markers (signals.has_prompt_blocks=false, fence_ranges=[]; grep for {{prompt:, **Prompt**, and ``` all zero hits on raw source); nothing exists for this prompt-mechanics rule to fire against.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "35",
+      "rule_lead": "Repeated Q&A → premature re-edits. Separate iteration from persistence.",
+      "verdict": "N/A",
+      "evidence": "N/A — file carries zero **Prompt** fenced blocks and zero {{prompt:}} markers (signals.has_prompt_blocks=false, fence_ranges=[]; grep for {{prompt:, **Prompt**, and ``` all zero hits on raw source); nothing exists for this prompt-mechanics rule to fire against.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "36",
+      "rule_lead": "Wide prompts split by logical move — paragraph breaks = cheapest scan-affordance.",
+      "verdict": "N/A",
+      "evidence": "N/A — file carries zero **Prompt** fenced blocks and zero {{prompt:}} markers (signals.has_prompt_blocks=false, fence_ranges=[]; grep for {{prompt:, **Prompt**, and ``` all zero hits on raw source); nothing exists for this prompt-mechanics rule to fire against.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "37",
+      "rule_lead": "Orient saved rule by where it FIRES, not surface activity producing it.",
+      "verdict": "N/A",
+      "evidence": "N/A — file carries zero **Prompt** fenced blocks and zero {{prompt:}} markers (signals.has_prompt_blocks=false, fence_ranges=[]; grep for {{prompt:, **Prompt**, and ``` all zero hits on raw source); nothing exists for this prompt-mechanics rule to fire against.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "38",
+      "rule_lead": "Body lead-in mirrors prompt's opening phrasing.",
+      "verdict": "N/A",
+      "evidence": "N/A — file carries zero **Prompt** fenced blocks and zero {{prompt:}} markers (signals.has_prompt_blocks=false, fence_ranges=[]; grep for {{prompt:, **Prompt**, and ``` all zero hits on raw source); nothing exists for this prompt-mechanics rule to fire against.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "39",
+      "rule_lead": "Declare `permission-mode:` when paste requires specific Claude Code mode.",
+      "verdict": "N/A",
+      "evidence": "N/A — file carries zero **Prompt** fenced blocks and zero {{prompt:}} markers (signals.has_prompt_blocks=false, fence_ranges=[]; grep for {{prompt:, **Prompt**, and ``` all zero hits on raw source); nothing exists for this prompt-mechanics rule to fire against.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "40",
+      "rule_lead": "Verify session boundary before deciding prompt's context-carrying.",
+      "verdict": "N/A",
+      "evidence": "N/A — file carries zero **Prompt** fenced blocks and zero {{prompt:}} markers (signals.has_prompt_blocks=false, fence_ranges=[]; grep for {{prompt:, **Prompt**, and ``` all zero hits on raw source); nothing exists for this prompt-mechanics rule to fire against.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "41",
+      "rule_lead": "Artifact-vs-STOP tail ordering — last imperative wins.",
+      "verdict": "N/A",
+      "evidence": "N/A — file carries zero **Prompt** fenced blocks and zero {{prompt:}} markers (signals.has_prompt_blocks=false, fence_ranges=[]; grep for {{prompt:, **Prompt**, and ``` all zero hits on raw source); nothing exists for this prompt-mechanics rule to fire against.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "42",
+      "rule_lead": "Headless-runner discipline — tail every prompt with no-AUQ guard.",
+      "verdict": "N/A",
+      "evidence": "N/A — file carries zero **Prompt** fenced blocks and zero {{prompt:}} markers (signals.has_prompt_blocks=false, fence_ranges=[]; grep for {{prompt:, **Prompt**, and ``` all zero hits on raw source); nothing exists for this prompt-mechanics rule to fire against.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "43",
+      "rule_lead": "Long-running prompts stream progress — never go silent.",
+      "verdict": "N/A",
+      "evidence": "N/A — file carries zero **Prompt** fenced blocks and zero {{prompt:}} markers (signals.has_prompt_blocks=false, fence_ranges=[]; grep for {{prompt:, **Prompt**, and ``` all zero hits on raw source); nothing exists for this prompt-mechanics rule to fire against.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "44",
+      "rule_lead": "A leading-looking line can be a forcing function; prefer the simpler prompt.",
+      "verdict": "N/A",
+      "evidence": "N/A — file carries zero **Prompt** fenced blocks and zero {{prompt:}} markers (signals.has_prompt_blocks=false, fence_ranges=[]; grep for {{prompt:, **Prompt**, and ``` all zero hits on raw source); nothing exists for this prompt-mechanics rule to fire against.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "45",
+      "rule_lead": "Prompt paths match Builder scope.",
+      "verdict": "N/A",
+      "evidence": "N/A — file carries zero **Prompt** fenced blocks and zero {{prompt:}} markers (signals.has_prompt_blocks=false, fence_ranges=[]; grep for {{prompt:, **Prompt**, and ``` all zero hits on raw source); nothing exists for this prompt-mechanics rule to fire against.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "46",
+      "rule_lead": "Output shape — trust Claude's defaults, don't pad.",
+      "verdict": "N/A",
+      "evidence": "N/A — file carries zero **Prompt** fenced blocks and zero {{prompt:}} markers (signals.has_prompt_blocks=false, fence_ranges=[]; grep for {{prompt:, **Prompt**, and ``` all zero hits on raw source); nothing exists for this prompt-mechanics rule to fire against.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "47",
+      "rule_lead": "\"Add X and regenerate\" is a trap.",
+      "verdict": "N/A",
+      "evidence": "N/A — file carries zero **Prompt** fenced blocks and zero {{prompt:}} markers (signals.has_prompt_blocks=false, fence_ranges=[]; grep for {{prompt:, **Prompt**, and ``` all zero hits on raw source); nothing exists for this prompt-mechanics rule to fire against.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "48",
+      "rule_lead": "Vary closings deliberately.",
+      "verdict": "N/A",
+      "evidence": "N/A — file carries zero **Prompt** fenced blocks and zero {{prompt:}} markers (signals.has_prompt_blocks=false, fence_ranges=[]; grep for {{prompt:, **Prompt**, and ``` all zero hits on raw source); nothing exists for this prompt-mechanics rule to fire against.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "30",
+      "rule_lead": "Reading burden for verification = banned. Claude audits Claude.",
+      "verdict": "N/A",
+      "evidence": "N/A — file carries zero **Prompt** fenced blocks and zero {{prompt:}} markers (signals.has_prompt_blocks=false, fence_ranges=[]; grep for {{prompt:, **Prompt**, and ``` all zero hits on raw source); nothing exists for this prompt-mechanics rule to fire against.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "31",
+      "rule_lead": "Self-report + self-audit charity — verify at artifact, over-flag or fresh-session for critique.",
+      "verdict": "N/A",
+      "evidence": "N/A — file carries zero **Prompt** fenced blocks and zero {{prompt:}} markers (signals.has_prompt_blocks=false, fence_ranges=[]; grep for {{prompt:, **Prompt**, and ``` all zero hits on raw source); nothing exists for this prompt-mechanics rule to fire against.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "32",
+      "rule_lead": "Offered structures need forced-engagement mechanic.",
+      "verdict": "N/A",
+      "evidence": "N/A — file carries zero **Prompt** fenced blocks and zero {{prompt:}} markers (signals.has_prompt_blocks=false, fence_ranges=[]; grep for {{prompt:, **Prompt**, and ``` all zero hits on raw source); nothing exists for this prompt-mechanics rule to fire against.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "33",
+      "rule_lead": "Source-type blindness on ingestion.",
+      "verdict": "N/A",
+      "evidence": "N/A — file carries zero **Prompt** fenced blocks and zero {{prompt:}} markers (signals.has_prompt_blocks=false, fence_ranges=[]; grep for {{prompt:, **Prompt**, and ``` all zero hits on raw source); nothing exists for this prompt-mechanics rule to fire against.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "48",
+      "rule_lead": "Heavy fan-out prompts get body recovery callout.",
+      "verdict": "N/A",
+      "evidence": "N/A — file carries zero **Prompt** fenced blocks and zero {{prompt:}} markers (signals.has_prompt_blocks=false, fence_ranges=[]; grep for {{prompt:, **Prompt**, and ``` all zero hits on raw source); nothing exists for this prompt-mechanics rule to fire against.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "50",
+      "rule_lead": "Convenience-driven prompts with known shape-bias → body acknowledgment callout.",
+      "verdict": "N/A",
+      "evidence": "N/A — file carries zero **Prompt** fenced blocks and zero {{prompt:}} markers (signals.has_prompt_blocks=false, fence_ranges=[]; grep for {{prompt:, **Prompt**, and ``` all zero hits on raw source); nothing exists for this prompt-mechanics rule to fire against.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "51",
+      "rule_lead": "Deliberate-antipattern prompts = class-judge exempt, flagged-by-design.",
+      "verdict": "N/A",
+      "evidence": "N/A — file carries zero **Prompt** fenced blocks and zero {{prompt:}} markers (signals.has_prompt_blocks=false, fence_ranges=[]; grep for {{prompt:, **Prompt**, and ``` all zero hits on raw source); nothing exists for this prompt-mechanics rule to fire against.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "56",
+      "rule_lead": "Engineer-audience audit fixes default to body callout, not forcing function.",
+      "verdict": "N/A",
+      "evidence": "N/A — file carries zero **Prompt** fenced blocks and zero {{prompt:}} markers (signals.has_prompt_blocks=false, fence_ranges=[]; grep for {{prompt:, **Prompt**, and ``` all zero hits on raw source); nothing exists for this prompt-mechanics rule to fire against.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "62",
+      "rule_lead": "Callouts next to prompts: steer, don't pre-empt.",
+      "verdict": "N/A",
+      "evidence": "N/A — file carries zero **Prompt** fenced blocks and zero {{prompt:}} markers (signals.has_prompt_blocks=false, fence_ranges=[]; grep for {{prompt:, **Prompt**, and ``` all zero hits on raw source); nothing exists for this prompt-mechanics rule to fire against.",
+      "fix_hint": null,
+      "blocking": false
     }
   ],
+  "todos_count": 0,
   "blocking_findings_count": 0,
-  "todos_count": 1,
-  "catalog_coverage": [
-    {"pattern_id": "file-preservation-gap", "status": "not_fired", "why": "No existing file is being updated/merged; the ask is to author a new prompt delivered as chat/code-block output, saved by the student afterward."},
-    {"pattern_id": "reading-burden", "status": "not_fired", "why": "The post-generation review ('judgement, push-back, taste') is editorial/judgment review of a draft prompt, the module's designed pedagogical bet (human judgment as final gate) -- not manual proofreading of Claude's output for mechanical correctness."},
-    {"pattern_id": "niceness-tax", "status": "not_fired", "why": "No line in the prompt invites RLHF-softened output; no evidence to quote."},
-    {"pattern_id": "question-dump", "status": "not_fired", "why": "Prompt does not ask Claude to interview the student with a question sequence."},
-    {"pattern_id": "overwrite-anxiety", "status": "not_fired", "why": "No file-write destination is named in this prompt; output is chat/code-block, saved by the student in a separate step (body text after the fence: 'Save it where you will find it')."},
-    {"pattern_id": "preamble-before-action", "status": "fired", "confidence": "low"},
-    {"pattern_id": "append-vs-integrate", "status": "not_fired", "why": "No existing section/file is being added to."},
-    {"pattern_id": "plan-mode-preamble-bloat", "status": "not_fired", "why": "Plan mode is not invoked (no permission-mode: plan in frontmatter, no plan-mode language in the prompt)."},
-    {"pattern_id": "citation-gap-asymmetry", "status": "not_fired", "why": "No citation/sourcing request in the prompt."},
-    {"pattern_id": "self-report-inflation", "status": "not_fired", "why": "Claude is not asked to grade or summarize its own prior work; it is asked to author a forward-looking artifact."},
-    {"pattern_id": "default-acceptance", "status": "fired", "confidence": "low"},
-    {"pattern_id": "plan-mode-approval-inflation", "status": "not_fired", "why": "No plan-mode plan is produced by this prompt."},
-    {"pattern_id": "source-type-blindness", "status": "not_fired", "why": "No source ingestion/classification task in this prompt."},
-    {"pattern_id": "citation-cargo-cult", "status": "not_fired", "why": "No citations requested."},
-    {"pattern_id": "self-audit-charity", "status": "not_fired", "why": "Claude is not asked to critique its own work; it is asked to synthesize a new artifact from session context."}
+  "accept_notes_found": [
+    "L34 Emphasis pass (2026-07-09) — bold budget on 'You make agentic happen' only; not behavior-relevant.",
+    "L38 Quality stamp (2026-08-29) — prior per-class SHAs, all superseded by this run's fresh body_sha.",
+    "L40 sim-passed 2026-05-31 note — references a handoff prompt this file no longer carries (moved out); stale pointer, not an active accept-note for content in THIS file.",
+    "L46 Soil slide note (2026-08-15) — 'You make agentic happen' bullet-only, no prompt; not behavior-relevant.",
+    "L52 '## Ralph' cut whole (2026-09-02) — removed a section; confirms no prompt content remains from it.",
+    "L54 judgement-begins rewrite (2026-09-02) — prose rewrite, no prompt.",
+    "L56 right-information slide note (2026-09-02) — prose bridge, no prompt.",
+    "L76-77 source stamps (antti-agentics-helsinki, luma-agentics-helsinki) — research-claims territory, not behavior.",
+    "L84 Stance block — not behavior-relevant.",
+    "L92 OODA last-run — not behavior-relevant."
   ],
-  "note": "Full regen 2026-08-19: prior instance/trace both carried a stale prompt_lead/sha from an earlier wording of the registry prompt (curriculum/prompts/agents-that-build-agents-handoff.md). Verified current expanded body against the registry file verbatim -- they match. body_sha taken via shasum -a 256 on the raw source at read time. Re-walked the single **Prompt** block (registry key agents-that-build-agents-handoff) fresh; verdict and both low-confidence findings are substantively unchanged from the prior pass, only the recorded hashes/lead were stale. Scope note: this class grades the 15-pattern behavioral-risk catalog only (simulation-behavior.md) -- placeholder-freedom, cold-session self-containment, capability-claim accuracy, and artifact-vs-STOP tail ordering are technical-class and check_prompts.md-mechanics territory, not re-litigated here.",
-  "summary": "PASS -- the single prompt block (agents-that-build-agents-handoff) fires no high or med-confidence risk against the 15-pattern catalog. Two low-confidence risks noted for the record: preamble-before-action (no in-fence suppressor, but the structural trigger for one doesn't fire on a single-artifact authoring ask) and default-acceptance (already mitigated by an explicit push-back callout earlier in the same lecture). Per-prompt verdict is TODO (any low-confidence risk routes to TODO under the verdict rules); top-level verdict is PASS. No blocking findings."
+  "note": "This lecture carries ZERO **Prompt** fenced blocks and ZERO {{prompt:<key>}} markers in its raw source (verified: grep -n '{{prompt:' / grep -n '\\*\\*Prompt\\*\\*' / grep -n '```' all return no matches; derive-body-view.js signals.has_prompt_blocks=false, fence_ranges=[]). The prompt-behavior class's entire scope is 'for each **Prompt** fenced block in the body, reason about risk' — with zero blocks to iterate over, prompts_evaluated=0 and there is nothing to score against the 15-pattern catalog (curriculum/evals/simulation-behavior.md), so catalog_coverage/risks_fired are empty by construction rather than an all-15-not_fired listing. \n\nRule-scope note: check_prompts.md's 48 rules are entirely prompt-block mechanics (placeholders, lead-ins, fence shape, chaining, runtime forks, permission-mode, etc.) and are N/A wholesale for the same structural reason. check_pedagogy.md is bound to this template per its maintenance notes specifically for the named prompt-adjacent behavior patterns -- self-report inflation / self-audit charity (rule 31), offered-defaults / plan-mode-approval-inflation (rule 32), source-type blindness (rule 33), reading-burden (rule 30) -- plus the five body-callout carve-out rules the template's own 'Body-callout carve-out' section names by number (48 heavy-fan-out, 50 convenience-shape-bias, 51 deliberate-antipattern exemption, 56 engineer-audience-audit-fix, 62 steer-not-preempt). All nine fire only on an actual prompt or a callout beside one; this file has neither, so all nine are N/A. check_pedagogy.md's remaining 58 rules (module/exercise architecture, quality ladder, session widgets, timing, maintainer-block hygiene, cross-module rescue, etc.) are the pedagogy class's own lane, not behavior's -- per the dispatch preamble ('reaching into a sibling class's rules ... is an unowned claim'; 'if you notice a problem belonging to another class, put it in notes, never in rules_evaluated'). Not re-litigated here; the pedagogy judge on this same file owns full coverage of those 58. This matches the prior (now-superseded) instance's identical scoping call, made independently against the file's current shape rather than carried forward -- the prior instance's body_sha (28c79902...) does not match this run's (4f98c76d...), so nothing was reused verbatim; prefill-instance.js reported 'prior instance has no rules_evaluated array' and parked zero rows, confirming every row here was freshly judged, not carried.",
+  "summary": "PASS -- this lecture (the M6 closer, four bullet-driven slides) carries no prompt content at all: zero **Prompt** fences, zero {{prompt:}} markers. Nothing exists for the 15-pattern behavioral catalog to score. All 57 rules in this judge's actual lane (48 check_prompts.md + 9 named check_pedagogy.md prompt-adjacent rules) are N/A on that single structural ground. No blocking findings, no TODOs."
 }

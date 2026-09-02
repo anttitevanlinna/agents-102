@@ -1,0 +1,207 @@
+{
+  "class": "story",
+  "training": "ae101",
+  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/read-your-stack.md",
+  "verdict": "PASS_WITH_TODOS",
+  "body_sha": "7b48a11f7bae5b938ad9ada6b16c90d17e54cafb6a1c9c46e8a2022f9287a5d2",
+  "shape_hash": "04c8bbd89721df08",
+  "trace_status": "cached",
+  "trace_path": "curriculum/evals/sim-cache/ae101--exercise--read-your-stack.persona.json",
+  "module_mood_contract": "M6 overall: practitioner fluency — \"I know how to test, I know how to learn, I know how to encode.\" This exercise's own maintainer note narrows to the two legs it exercises: \"I know how to test, I know how to learn, I know what my stack repeats.\" (L77)",
+  "mood_summary": {
+    "phase_scores": [
+      8
+    ],
+    "close_score": 8,
+    "any_below_8": false,
+    "stealing_the_mood": []
+  },
+  "teaching_moment_lands": "PASS. The teaching moment (recognising the shape of your own recurring work, then seeing it as a diagram) is grounded in the student's real session history, not a constructed scenario — the study prompt instructs Claude to 'show me what actually recurs, including the dull stuff' rather than curate for impressiveness. Nothing about triggering it depends on persona skill level; it fires for a 2-week novice and a veteran alike because both have real disk history to read. Trace is_me_rating 8/10 confirms genuine self-recognition, not a scripted payoff.",
+  "rules_evaluated": [
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 4,
+      "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
+      "verdict": "PASS",
+      "evidence": "All 5 `##` headers (raw L17, L22, L32, L43, L57: 'Find the work you repeat across your stack' / 'Scan your history for the work that recurs' / 'Draw your top work-shapes as diagrams' / 'Sidestep: check your menu against the field's' / 'Decide what crosses back to your main repo') each name one concrete concept, none are empty containers or orphan mystery, and each is true of what its body/prompt actually does (verified against expanded body). No two headers share text.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 5,
+      "rule_lead": "A slide's BODY is size-bounded, not just its header (§4's sibling).",
+      "verdict": "PASS",
+      "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/exercises/read-your-stack.md --report`: 5 slides, largest 135 words / 1 bullet ('Sidestep...'), smallest 50 words / 0 bullets, all well under the 210-word / 6-bullet ceiling. Output: 'oversized: 0 ... every slide is within limits.'",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 16,
+      "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
+      "verdict": "PASS",
+      "evidence": "Read each fence prompt-only, ignoring body (per rule's own diagnostic). All three forcing functions are self-contained in their fences: prompt 1 (spot-gaps-build-the-loop-study) names the read target (`~/.claude/projects/`) and grouping/ranking instruction inline; prompt 2 (spot-gaps-build-the-loop-shapes) is a self-sufficient back-reference ('the recurring groups you just named') to the immediately-preceding turn; prompt 3 (primitives) is self-contained. Body prose (L17-20, L34-36) only orients ('look wider', 'a recurring kind of work has a shape') without narrating or duplicating what the prompt does — a speed-runner skipping straight to fences loses no pedagogy. The one bare-imperative-looking count in body ('two or three recurring kinds of work are clear enough', L26) is suggestion register per the rule's pacing-calibration boundary, not a scripted count ('two rounds max' would be the violating shape).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 27,
+      "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
+      "verdict": "PASS",
+      "evidence": "Grepped raw body for authored-conversation shapes (discuss/share/compare/pair/neighbor/tell the room/take N seconds) — zero hits. Every sentence is about the WORK (read history, scan, draw, decide what crosses back), not cohort management. No trainer-cue beats, no pause-cue sentences. Absence of authored pause beats = PASS per the rule's own diagnostic; none of the three carve-outs (Connections-opener, human-round mode-cue, room-may-be-named) are invoked, and none needed to be.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 45,
+      "rule_lead": "Per-exercise leap test — 3 observable Monday outcomes.",
+      "verdict": "PASS",
+      "evidence": "L106-107: 'holds a diagrammed map of the work they repeat across their stack, and reads a new task against it before sending the task off.' Read in isolation (rule's diagnostic): a working engineer can tell whether they did this — either the diagrammed map exists and they consulted it against a new task, or they didn't. Matches the M5/M6 arc-mood carve-out shape exactly: names the ARTIFACT (diagrammed map) plus its USE (reads a new task against it), not the bare activity ('practices mapping').",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 47,
+      "rule_lead": "Per-phase failure mode + escape hatch.",
+      "verdict": "PASS",
+      "evidence": "File is explicitly one phase ('Atomic — no phase markers,' L63; sibling-exercise numbering still calls this beat 'Phase 2' in the maintainer's own cross-file bookkeeping, e.g. spot-gaps-build-the-loop.md's failure-mode entries echo 'Phase 1'). L110: names the dominant failure mode ('Phase 2 wider-look sprawl — the study scan reads the whole stack and can throw back a wall'); same line names the escape hatch ('If a student drowns in the scan, point at the ranked head and move on'). The optional sidestep prompt is exempt by design (L59/L75: 'nothing downstream depends on it') — an optional beat with no dead-end needs no rescue path, consistent with rule 10 (student agency).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 1,
+      "rule_lead": "Mood contract named.",
+      "verdict": "PASS",
+      "evidence": "L77 states the mood target explicitly: 'practitioner fluency — \"I know how to test, I know how to learn, I know what my stack repeats.\"' Classified this beat as TEACHING (student's job is recognition, not mechanical setup/launch) so the 8+/10 floor applies; trace scores phase=8, close=8 (both meet the floor, and clear the 8 ship bar, not merely the 7 facilitator-premium signature).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 2,
+      "rule_lead": "Epistemic mood ≠ punitive mood.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "rule's antecedent is 'when module's mood is unease'; this beat's deliberate mood is practitioner fluency, not unease — condition doesn't fire (and no shame-framed language is present regardless: watch-fors name compliance-feel/credibility-performance, a different axis)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 3,
+      "rule_lead": "Lead with discipline, not failure mode.",
+      "verdict": "PASS",
+      "evidence": "Title (L1, '# Read your stack') and all five section headers (Find/Scan/Draw/Sidestep/Decide) name positive disciplines and actions, never a failure word (no 'drift', 'gap-blindness', 'missed rule' as a title or header). No canonical-named-result carve-out needed — nothing here is a searchable failure-named handle.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 4,
+      "rule_lead": "Strategy-fidelity check.",
+      "verdict": "REVISE",
+      "evidence": "Pulled M6-in-detail + mood-arc from bosser-strategy:content-strategy-agentic-engineering-101.md. Big-Idea fidelity: PASS — body never touches the closer's reserved frame ('expression sets the frontier'), consistent with the doc's own note that the frame is withheld from the module head to protect the closer's reveal. Module-to-module / placement: PASS — the file's own Placement line (L75: 'after the control-loop lecture and before the handoff lecture') matches the strategy doc's shipped 2026-09-02 deck order exactly (Composing the workflow → Read your stack → Agents that build agents), and M6 is confirmed the training's real terminal module (no forward-tee needed, none present). Front-run check: one real miss — L119's Watch-for ('Verifier-as-eval terminology leaking — the closing lecture names evals with full weight (verifier = judge = gate = eval)... save the explicit naming for the closer') is stale. Verified against curriculum/lectures/composing-the-workflow.md's '## Eval' slide ('Verifier when deterministic... Judge when an LLM reads the work. Gate when the same check sits in CI') — the full verifier=judge=gate=eval naming is already shipped in the lecture immediately BEFORE this exercise in the current three-beat order, not reserved for a later closer. Harm check: body prose itself is unaffected (L53 uses 'eval suites' plainly, doesn't unify terminology, so no actual front-run happened) — this is a stale internal cross-reference, not a body-text violation, hence non-blocking.",
+      "fix_hint": "Correct the Watch-fors note: the verifier=judge=gate=eval naming already landed in composing-the-workflow.md's '## Eval' slide, which precedes this exercise — not 'the closer.' Maintainer-block-only edit; no card owed (§26 — internal note, not a decision a student reads).",
+      "blocking": false
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 1,
+      "rule_lead": "Meta-frame lectures = closers, not openers.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "target is an exercise file, not a lecture — no lecture-placement decision exists here",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "7b48a11f7bae5b938ad9ada6b16c90d17e54cafb6a1c9c46e8a2022f9287a5d2",
+      "carried_shape": "04c8bbd89721df08"
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 2,
+      "rule_lead": "Minimal lecturing before contrast-mood exercises.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "rule governs pre-exercise LECTURE dosage; this file is the exercise itself, carries no lecture content",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "7b48a11f7bae5b938ad9ada6b16c90d17e54cafb6a1c9c46e8a2022f9287a5d2",
+      "carried_shape": "04c8bbd89721df08"
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 3,
+      "rule_lead": "No cross-module sequencing in lecture bodies.",
+      "verdict": "N/A",
+      "evidence": "Rule text is scoped to LECTURE bodies (\"lectures teach, module files sequence\"); this is an exercise. Checked whether the concern reaches here anyway: raw line 59 names the M5 worktree (`./CLAUDE.local.md`, `observations/`) as the source of what crosses back to the main repo. That is a session-artifact coordinate inside a fixed-sequence training where the worktree device is itself the mechanism (per `project_ae101_delivery_architecture` memory) — grounding, not an abstract forward-reference of the kind this rule targets. No finding.",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "7b48a11f7bae5b938ad9ada6b16c90d17e54cafb6a1c9c46e8a2022f9287a5d2",
+      "carried_shape": "04c8bbd89721df08"
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 6,
+      "rule_lead": "A prompt inside a lecture is a trainer show-and-tell, never a room follow-along.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "rule scopes explicitly to `curriculum/lectures/**`; this file is at `curriculum/exercises/`, and the rule's own text names exercise prompts as \"not covered\" (student-run by design)",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "7b48a11f7bae5b938ad9ada6b16c90d17e54cafb6a1c9c46e8a2022f9287a5d2",
+      "carried_shape": "04c8bbd89721df08"
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 5,
+      "rule_lead": "Strategic themes recur in Key Concepts.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "module-only section rule (governs a module file's Key Concepts heading); this is an exercise file with no such section",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "7b48a11f7bae5b938ad9ada6b16c90d17e54cafb6a1c9c46e8a2022f9287a5d2",
+      "carried_shape": "04c8bbd89721df08"
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 6,
+      "rule_lead": "Key Concepts shape — theme breadcrumbs, not standalone section.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "module-only section rule; no Key Concepts section exists in this exercise file",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "7b48a11f7bae5b938ad9ada6b16c90d17e54cafb6a1c9c46e8a2022f9287a5d2",
+      "carried_shape": "04c8bbd89721df08"
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 7,
+      "rule_lead": "What You'll Learn shape — capability register, not syllabus.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "module-only section rule; no What You'll Learn section exists in this exercise file",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "7b48a11f7bae5b938ad9ada6b16c90d17e54cafb6a1c9c46e8a2022f9287a5d2",
+      "carried_shape": "04c8bbd89721df08"
+    }
+  ],
+  "todos_count": 1,
+  "blocking_findings_count": 0,
+  "notes": "check_prompts.md and check_workshop.md are in the derive-class-brief output (the COMPENDIA map in derive-body-view.js pulls whole files per class for reading context) but story.md's own Completeness Contract does not list either as story-owned, and check_workshop is N/A on its face (this is solo work — the body view's group_beat_markers:true signal is a false-positive keyword hit on 'group the kinds of work that recur' as a verb, not a room/peer beat). No rows written for either; leaving them for their primary owners (writing/technical/behavior for check_prompts, pedagogy for check_workshop) per the dispatch preamble's 'notes, never rules_evaluated' instruction. Two check_pedagogy rules (45, 47) are NOT in story.md's prose 'Specific judgments' list but their own rule text explicitly says 'Story judge blocks ship on X' — trusted the verbatim T3 rule over the template's summary list per dispatch-preamble precedence, and evaluated both (both PASS). Cross-class finding surfaced separately in top-level `findings` (not scored here): the sidestep prompt (curriculum/prompts/spot-gaps-build-the-loop-primitives.md:19) says 'the dominant gap I named in Phase 1' — verified via grep that neither this file nor its session-mate spot-gaps-build-the-loop.md ever says 'Phase' anywhere in body/prompt text (both are explicitly 'Atomic — no phase markers'; 'Phase' only exists in maintainer-block-only author bookkeeping). This is a check_prompts.md §40b referent leak, owned by writing/technical/behavior, not story — but it also showed up as a genuine (sub-floor-safe) confusion_flag in this run's Class A trace, so flagging it here for visibility even though it isn't a rules_evaluated row of mine.",
+  "accept_notes_found": [
+    "L69: Emphasis pass (2026-07-09, Antti-directed) — bullet leads de-bolded, widget/label chrome and blockquote callouts untouched",
+    "L75: Placement — Beat 2 of the three-beat M6 (2026-09-02 split)",
+    "L87: curran-2x source stamp [checked:2026-05-25 result:CAVEAT due:2026-10-16]",
+    "L88: geoffintech-charles source stamp [checked:2026-05-25 result:OK due:2026-10-08]",
+    "L93: Stance [stance:2026-08-01 level:L2]",
+    "L102: OODA last-run: 2026-08-01"
+  ]
+}

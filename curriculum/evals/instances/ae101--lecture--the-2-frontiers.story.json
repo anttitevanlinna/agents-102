@@ -1,19 +1,20 @@
 {
-  "class": "story",
+  "class": "storytelling",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/the-2-frontiers.md",
-  "verdict": "PASS",
-  "body_sha": "acdfe4a5a26c3fc8ab97ccc893549c1fbff8647e359abbad4a67a016612ef832",
+  "verdict": "REVISE",
+  "body_sha": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
   "shape_hash": "605546789744a58d",
   "training": "ae101",
-  "module_mood_contract": "practitioner fluency open — 'I've come a long way; the frontier is still open.' (M6 arc mood, strategy doc: 'I know how to test, I know how to learn, I know how to encode.')",
+  "module_mood_contract": "practitioner fluency open — 'I've come a long way; the frontier is still open.' (M6 arc mood, strategy doc mood-arc: joyful creation → grounded competence → earned trust → curious readiness → learning through contrast → practitioner fluency)",
   "trace_status": "regenerated",
+  "regeneration_reason": "Cached trace (content_sha 019c3d9b...) quoted body text ('The agent is building the agentic loop now. Agents building agents.' / 'Frontier one: speed of learning... Frontier two: direction of learning...') that no longer exists in the live file — two same-day commits (6cb6c6e3, 9edae2ef) rewrote the H1, H2 and all three bullets as part of an M6 three-beat re-cut. Per the dispatch preamble's stale-cache clause, regenerated fresh against the live body (grep-verified zero hits for 'agentic loop', 'Frontier one', 'Frontier two' before writing) and cross-checked against curriculum/trainings/agentic-engineering-101/spot-gaps-build-the-loop.md:106 and the private strategy doc's 2026-09-02 state-of-play paragraph, both of which independently describe the same rewritten text. New trace written to curriculum/evals/sim-cache/ae101--lecture--the-2-frontiers.persona.json, content_sha now matching `shasum -a 256` on the live file.",
   "rules_evaluated": [
     {
       "compendium": "check_lectures.md",
       "rule_index": 1,
       "rule_lead": "Meta-frame lectures = closers, not openers.",
       "verdict": "PASS",
-      "evidence": "File's own Meta (line 22) states 'Role: opener. Recap + horizon. Does not teach a new term.' Boundary check against the rule's own diagnostic: 'agents building agents' does read as naming something the student just lived (M5's build), but it names no labeled method or practice the way a closer does. Re-verified against the M1 lecture it echoes (`grep -n \"Role:\" curriculum/lectures/painting-the-picture-with-the-llm.md` → line 50: 'Role: opener. First lecture of M1; lands stance + two-frontiers framing before the wizard-move demo and the exercises') — same arc position (opener) at the opposite end of the training, confirming the recurrence is opener-echoing-opener, not opener-echoing-closer. Diagnostic: showing a ceiling (recap-of-progress + still-open horizon) = opener; this is horizon, correctly placed.",
+      "evidence": "File's own Meta (line 22) states 'Role: opener. Recap + horizon. Does not teach a new term.' Placement diagnostic: this beat doesn't name a pattern the student just lived through (that would be a closer); it recaps two arc-spanning open questions in a reframed shape (model's frontier vs yours) and teaches no new vocabulary — showing-a-ceiling/recap shape, i.e. opener. Confirmed against ACTUAL current placement, not just the file's self-description: `curriculum/trainings/agentic-engineering-101/spot-gaps-build-the-loop.md:28` — '[The two frontiers](lectures/the-2-frontiers.md)' is the first content link under '## Start here', immediately followed on line 30 by the exercise link '[Map the gaps, cut the rule](exercises/spot-gaps-build-the-loop.md)'. Strategy doc (2026-09-02 state-of-play) confirms independently: 'Opener — The 2 frontiers... Then straight into the exercise — the front carries no lecture block.' Opener-echoing-opener against M1's own 'Role: opener' (painting-the-picture-with-the-llm.md:50), not opener-echoing-closer.",
       "fix_hint": null,
       "blocking": false
     },
@@ -22,7 +23,7 @@
       "rule_index": 3,
       "rule_lead": "No cross-module sequencing in lecture bodies.",
       "verdict": "PASS",
-      "evidence": "`grep -nE 'M[0-9]' curriculum/evals/body-views/ae101--lecture--the-2-frontiers.body.txt` → exit 1, zero hits in the region above the maintainer fence. The module-numbered mentions ('Module 6', 'Module 1') live in the maintainer block (lines 18, 28-29), which the rule's own grep scope excludes ('Pre-ship grep on body above the maintainer fence').",
+      "evidence": "`grep -nE 'M[0-9]' curriculum/evals/body-views/ae101--lecture--the-2-frontiers.body.txt` → exit 1, zero hits in the region above the maintainer fence (re-run this session against the current body view, not carried from a prior instance). Module-numbered mentions ('Module 6', 'Module 1') live only in the maintainer Meta block (lines 18, 22, 29), which the rule's own grep scope excludes ('Pre-ship grep on body above the maintainer fence').",
       "fix_hint": null,
       "blocking": false
     },
@@ -31,7 +32,7 @@
       "rule_index": 4,
       "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
       "verdict": "PASS",
-      "evidence": "Header (line 3) 'Two frontiers still open: speed and direction'. Squint: covering the three bullets, the header still names what the student walks away holding — two named, unresolved axes — not an empty container, not orphan mystery, not a bare orientation beat. Truth clause: body explicitly leaves both open (maintainer watch-for line 27: 'Don't answer the two frontiers'), so 'still open' is licensed at exactly the strength the body supports. `grep -n '—' curriculum/evals/body-views/ae101--lecture--the-2-frontiers.body.txt` → exit 1, zero em-dashes in body. Declarative noun-phrase, not a command verb.",
+      "evidence": "Header (line 3, current text, changed since last audit) reads bare '## Two frontiers' — no qualifier, no kicker. Squint test taken at face value is thin (a bare topic-count, not a claim or named thing) — but the maintainer block carries a dated, on-point accept-note this rule instructs me to check first (preamble: 'Check the file's maintainer block for an existing accept-note on the passage before flagging it'): line 11, 'Emphasis pass (2026-07-09, Antti-directed)... the header carries the summary and no handle is coined... No kicker added (deliberate, per the watch-for).' That note's quoted header wording has since drifted (flagged separately, see top-level findings), but the underlying DECISION — this header stays bare, no kicker, deliberately — is still live and exactly on point for what §4 would otherwise flag. Given the file's stated design is pure verbatim recurrence ('The recurrence is the point. One slide IS the lecture', line 18) and the body is 3 short, self-explanatory bullets (no jargon, no ambiguity a header would need to resolve), I read the harm §4 exists to prevent — a reader stuck guessing what a slide argues — as not present here. Truth clause: 'Two frontiers' overclaims nothing (there ARE exactly two, named in the bullets); `grep -n '—'` on the body region → exit 1, zero em-dashes. Declarative noun-phrase, not a command verb.",
       "fix_hint": null,
       "blocking": false
     },
@@ -40,7 +41,7 @@
       "rule_index": 5,
       "rule_lead": "A slide's BODY is size-bounded, not just its header (§4's sibling).",
       "verdict": "PASS",
-      "evidence": "Body (lines 5-7, the one `##` slide) is 3 bullets totaling ~50 readable words — the body just got SHORTER than the last audit (one clause cut from bullet 1, see rule_index 4 evidence and the strategy-tie-in §4 note below), well under the ~210-word / 6-bullet ceiling. No fences, figures or `{{prompt/cut/demo}}` includes to exclude from the count.",
+      "evidence": "Body (lines 5-7, the one `##` slide) is 3 bullets, `sed -n '1,7p' curriculum/lectures/the-2-frontiers.md | wc -w` → 55 words (title + header + bullets), well under the ~210-word / 6-bullet ceiling. No fences, figures or `{{prompt/cut/demo}}` includes to exclude.",
       "fix_hint": null,
       "blocking": false
     },
@@ -49,7 +50,7 @@
       "rule_index": 27,
       "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room outside text.",
       "verdict": "PASS",
-      "evidence": "Body (lines 1-8) carries zero authored conversation cues — no 'discuss with', 'share with your neighbor', 'take N seconds', no room-acknowledgment sentence at all. Three plain content sentences; all cohort-management lives in the maintainer Meta block, outside student-facing text.",
+      "evidence": "Body (lines 1-8) carries zero authored conversation cues — no 'discuss with', 'share with your neighbor', 'take N seconds', no room-acknowledgment sentence at all. Three plain content sentences; all cohort-management (pacing, what precedes/follows) lives in the maintainer Meta block, outside student-facing text.",
       "fix_hint": null,
       "blocking": false
     },
@@ -58,7 +59,7 @@
       "rule_index": 1,
       "rule_lead": "Mood contract named.",
       "verdict": "PASS",
-      "evidence": "Beat classified TEACHING, not setup: file's own Meta names 'Mood target: practitioner fluency open' and the recurrence-echo IS the pedagogical move. Trace regenerated fresh against the CURRENT body (sim-cache/ae101--lecture--the-2-frontiers.persona.json, content_sha 019c3d9b... matching `shasum -a 256` on the live file) after the cached trace was caught quoting a line ('We have come a long way...') the live body no longer carries — see rule_index 4 below. Regenerated read: phase 1 = 9/10, close = 9/10. mood_note: dropping the throat-clearing line sharpens the beat — the recap is SHOWN ('the agent is building the agentic loop now' IS the evidence of distance travelled) rather than asserted, matching the file's own 'Boris-flat recap' voice note. Floor met with margin.",
+      "evidence": "Beat classified TEACHING (engagement IS the pedagogical move — the reframe from M1's 'speed vs direction' framing to 'the model's frontier vs yours' is the beat's content, not plumbing; diagnostic 'could it be compressed to a parenthetical without breaking the arc?' → no, the reframe is load-bearing for the whole module's motivation). File's own Meta names 'Mood target: practitioner fluency open'; strategy doc's mood-arc table confirms M6 = 'practitioner fluency' (6th of 6 named stages). Trace regenerated fresh against the CURRENT body (sim-cache/ae101--lecture--the-2-frontiers.persona.json, content_sha add17d3a... matching `shasum -a 256` on the live file — the prior cache was caught quoting deleted text, see regeneration_reason above). Regenerated read: phase 1 = 9/10, close = 9/10. mood_note: the model-vs-you split converts an abstract 'can a system learn' question into a concrete one pointed at the student's own written record — sharper than M1's framing, no answer given, matches file's Boris-flat voice note. Floor (8+ for teaching beats) met with margin.",
       "fix_hint": null,
       "blocking": true
     },
@@ -67,7 +68,7 @@
       "rule_index": 2,
       "rule_lead": "Epistemic mood ≠ punitive mood.",
       "verdict": "PASS",
-      "evidence": "Frontiers are framed as not-knowing ('two frontiers still open', 'how can... how does it...') never as having-done-wrong. No failure, shame, or blame vocabulary anywhere in the three sentences.",
+      "evidence": "Frontiers are framed as not-knowing/not-yet-written ('Two questions sit on your frontier', 'It moves when you write, and only then') — never as having-done-wrong. No failure, shame or blame vocabulary anywhere in the three current bullets.",
       "fix_hint": null,
       "blocking": false
     },
@@ -76,7 +77,7 @@
       "rule_index": 3,
       "rule_lead": "Lead with discipline, not failure mode.",
       "verdict": "PASS",
-      "evidence": "Header and body name positive framings only — 'speed of learning', 'direction of learning' — no failure-mode vocabulary anywhere in the body region.",
+      "evidence": "Header and body name only positive framings — 'frontier', 'learn fast', 'the right things', 'what you have expressed' — no failure-mode vocabulary anywhere in the body region.",
       "fix_hint": null,
       "blocking": false
     },
@@ -85,7 +86,7 @@
       "rule_index": 4,
       "rule_lead": "Strategy-fidelity check.",
       "verdict": "PASS",
-      "evidence": "Prior audit (2026-08-26 instance) flagged maintainer-block lines 18/28 mislabeling M1's opener as a 'closer'. `git diff 0e4f7c9e..HEAD` shows both now read 'opener' (commit 297eb2f9, 'an opener stops being called a closer') — re-verified live: line 18 and line 29 both say 'opener'. Cross-checked against `painting-the-picture-with-the-llm.md` line 50 ('Role: opener') — label now accurate. Separately, commit 4d995765 ('An arc congratulation and a header echo that had already been cut once', Antti, 2026-08-29) removed 'We have come a long way' from bullet 1 with a stated rationale in the commit message: 'told the room how to feel about its own progress; the mood target in the maintainer block is a note to the trainer, not a line to read out' — a direct maintainer edit with its own reasoning, not a silent/unexplained cut, and it doesn't touch the arc-sequencing claim itself (module file `spot-gaps-build-the-loop.md:186` still confirms 'Opener order is The 2 frontiers first, then Story of Module 6'). Front-run: still doesn't answer either frontier. Big Idea fidelity: still horizon-level, matching 'Role: opener... Does not teach a new term'. Mood-doesn't-resolve-early: both frontiers stay open through the capstone's own open.",
+      "evidence": "Front-run: body still answers neither frontier question ('Can your system learn fast, and can it learn the right things?' stays a question). Module-to-module arc / closer payoff, re-verified live: this opener's bullet 2 ('Your frontier is what you have expressed. It moves when you write, and only then.') is answered almost word-for-word by the M6 CLOSER, `curriculum/lectures/agents-that-build-agents.md` ('There is no last turn'), lines 5-6: 'The agent cannot read your mind. It runs on what you have expressed: the spec, the rules, the checks, the plan... That is the frontier, and you set it. Not the model.' Confirmed by the private strategy doc's 2026-09-02 state-of-play paragraph, which states this design explicitly: 'Frame (found 2026-09-02, writing the closer's first slide): the agent runs on what you have expressed, and expression sets the frontier... so the closer answers the opener.' Big Idea fidelity: module Big Idea ('Every gap you found belongs somewhere durable...') isn't taught here (opener's own Role: 'Does not teach a new term') — correctly deferred, the opener sets up WHY the module's work matters, the module body carries the WHAT. Mood-doesn't-resolve-early: confirmed, both frontiers stay open through the capstone's own open. Caveat for the record: the strategy doc carries a SEPARATE, older paragraph ('Opener — The 2 frontiers... speed of learning... direction of learning... agent now building the agentic loop') that itself describes the pre-rewrite body and has not been reconciled with the doc's own newer state-of-play paragraph — an inconsistency inside a private doc outside this repo, not something this instance can fix or file a finding against; noted here only so a future reader knows the newer paragraph, not the older one, was treated as authoritative.",
       "fix_hint": null,
       "blocking": true
     },
@@ -97,7 +98,7 @@
       "evidence": "Rule scopes to 'contrast-mood modules (M5-style)' preceding an exercise. This file's own mood target is 'practitioner fluency open' (M6 capstone), not M5-style contrast, and it precedes another lecture ('Story of Module 6'), not an exercise. Wrong module-mood class and wrong successor-type for this rule to bind.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "43f266cd922e5982abe47ef14574ec47687c40bddaecdcd3bf11c501d2433874",
+      "carried_from": "acdfe4a5a26c3fc8ab97ccc893549c1fbff8647e359abbad4a67a016612ef832",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -108,7 +109,7 @@
       "evidence": "Signal has_prompt_blocks: false (confirmed by direct read — no `{{prompt:<key>}}` marker and no inline `**Prompt**` block anywhere in the file). Rule fires only on a lecture carrying a prompt block; this file carries none.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "43f266cd922e5982abe47ef14574ec47687c40bddaecdcd3bf11c501d2433874",
+      "carried_from": "acdfe4a5a26c3fc8ab97ccc893549c1fbff8647e359abbad4a67a016612ef832",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -119,7 +120,7 @@
       "evidence": "File carries no exercise, no fenced prompt, no forcing function and no scripted-reaction language of any kind — a pure recap-and-hold beat with nothing for the student to do with their hands (trace artifact_state: 'None — no file or prompt, nothing changes on disk'). Nothing to misplace between body and fence because there is no fence.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "43f266cd922e5982abe47ef14574ec47687c40bddaecdcd3bf11c501d2433874",
+      "carried_from": "acdfe4a5a26c3fc8ab97ccc893549c1fbff8647e359abbad4a67a016612ef832",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -130,7 +131,7 @@
       "evidence": "Lecture file — no `## Key Concepts` section exists anywhere in the body (single `##` heading total, the content slide). Key Concepts is a module-only section; strategy judge owns it on modules.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "43f266cd922e5982abe47ef14574ec47687c40bddaecdcd3bf11c501d2433874",
+      "carried_from": "acdfe4a5a26c3fc8ab97ccc893549c1fbff8647e359abbad4a67a016612ef832",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -141,7 +142,7 @@
       "evidence": "Lecture file — no `## Key Concepts` section exists. Not applicable to this surface.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "43f266cd922e5982abe47ef14574ec47687c40bddaecdcd3bf11c501d2433874",
+      "carried_from": "acdfe4a5a26c3fc8ab97ccc893549c1fbff8647e359abbad4a67a016612ef832",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -152,7 +153,7 @@
       "evidence": "Lecture file — no `## What You'll Learn` section exists. Not applicable to this surface.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "43f266cd922e5982abe47ef14574ec47687c40bddaecdcd3bf11c501d2433874",
+      "carried_from": "acdfe4a5a26c3fc8ab97ccc893549c1fbff8647e359abbad4a67a016612ef832",
       "carried_shape": "605546789744a58d"
     }
   ],
@@ -164,21 +165,23 @@
     "any_below_8": false,
     "stealing_the_mood": []
   },
-  "teaching_moment_lands": "Judge-owned, no rule_index (per template: recorded here, never as a rules_evaluated row). The named teaching moment is the M1-to-M6 echo itself — hearing the same two open questions a second time, now with five modules of practice behind them. Robust across persona-skill variation: the file does the work for the student (near-verbatim restatement, no interpretation required to notice the recurrence). The trace's one confusion flag ('agents building agents' reading as compressed) resolves within the beat and is explicitly covered by the file's own watch-for ('the phrase lands by being short'). Cutting 'We have come a long way' (commit 4d995765, Antti, 2026-08-29) does not weaken this — the recognition beat lives entirely in bullets 2 and 3 (the frontier questions, byte-identical to before), and bullet 1's shorter form still supplies the 'distance travelled' framing by showing (agent now building the loop) rather than asserting it.",
-  "scope_note": "check_prompts.md and check_workshop.md were read in full (assembled by derive-class-brief.js for context) but carry zero rows here: this template's Completeness contract names storytelling's owned rules explicitly (all of check_lectures; check_pedagogy §16/§27; check_strategy_tie_in §1-7) and does not list any check_prompts or check_workshop rule among them — their primary owners (behavior/pedagogy classes) carry those verdicts. check_workshop is additionally N/A by file shape regardless (signals.group_beat_markers: false, no group beat in this file); check_prompts is additionally N/A by file shape (signals.has_prompt_blocks: false).",
+  "teaching_moment_lands": "Judge-owned, no rule_index. The named teaching moment is the M1-to-M6 recurrence-with-reframe: the same two open questions ('can it learn fast', 'can it learn the right things'), heard a second time, now re-anchored onto 'your frontier' specifically instead of an abstract 'a system like this'. Robust across persona-skill variation — the file does the work for the student (near-verbatim restatement of M1's questions in bullet 3, no interpretation required to notice the recurrence), and the model-vs-you split in bullets 1-2 is stated plainly enough that a fast operator skimming the slide still gets it. No confusion flags in the regenerated trace (unlike the prior cached trace's one flag on 'agents building agents', which is moot now — that phrase is gone from this body).",
+  "scope_note": "check_prompts.md and check_workshop.md were read in full (assembled by derive-class-brief.js for context) but carry zero rows here: this template's Completeness contract names storytelling's owned rules explicitly (all of check_lectures; check_pedagogy §16/§27; check_strategy_tie_in §1-4) and does not list any check_prompts or check_workshop rule among them — their primary owners (behavior/pedagogy classes) carry those verdicts. check_workshop is additionally N/A by file shape (signals.group_beat_markers: false, confirmed in this session's view.json read); check_prompts is additionally N/A by file shape (signals.has_prompt_blocks: false, confirmed).",
   "notes": [
-    "Out of story's compendium scope (check_writing.md owns this, not in my brief): the maintainer-block carve-out at line 31 ('Carve-out — first-person-plural \"we\": room-collective at capstone module open... Future writing-judges should not re-flag') documented a decision about the phrase 'We have come a long way' in bullet 1. That phrase is now cut (commit 4d995765, 2026-08-29) — `grep -ni '\\bwe\\b'` against the body region returns zero hits, so the carve-out describes text that no longer exists. Not a story-class finding; flagging for whichever check_writing pass next reads this maintainer block, since a dead accept-note pointing at deleted text is exactly the check_writing §3 'states what is true now' concern."
+    "Three findings filed at the top level (not as rules_evaluated rows — none maps to a storytelling-owned rule_index; the actual rule they trip is check_writing.md §3, outside this class's compendium scope per the dispatch preamble's 'notes, never rules_evaluated' instruction) all trace to the SAME root cause: the M6 three-beat re-cut landed today (commits 6cb6c6e3, 9edae2ef, both 'Wed Sep 2 2026') rewrote this file's H1, H2 and all three body bullets, but the maintainer block was not updated in the same edit. Three specific consequences: (1) the Quality stamp (lines 15-16) and 'Lecture meta' placement line (line 18, 'before Quality is grounding') both describe a pre-rewrite state — 'Quality is grounding' does not exist as a file anywhere in curriculum/lectures/ (confirmed by `ls`), and the current M6 deck order (module file line 106 + strategy doc, both dated 2026-09-02) places this lecture directly before the EXERCISE 'Map the gaps, cut the rule', not before any lecture; (2) the watch-for at line 28 ('Don't gloss \"agents building agents\"') protects a phrase that no longer appears anywhere in this body — it was removed in the same rewrite, and now lives only as the title of a DIFFERENT lecture (`the-handoff-prompt.md`, 'Agents that build agents'), later in the M6 deck, which risks actively misdirecting a trainer; (3) the dated note at line 31 quotes bullet 1 as opening 'The agent is building the agentic loop now' — current bullet 1 reads 'The model's frontier moves without you. Every release, it can do more.' This is the SECOND time in a row this exact line has gone stale this way: the PRIOR story-judge instance (this file, 2026-08-29 run) already flagged the note that existed at that time for describing deleted text ('Carve-out — first-person-plural we...'), and the note that replaced it has now gone stale for the identical reason on the very next body rewrite. Filed as blocking findings, not todos, because a false Quality stamp is exactly the failure mode the dispatch preamble's stale-cache clause exists to catch — this session found it live, at the maintainer-block layer rather than the trace-cache layer, only because the trace's own staleness forced a full re-read of the file rather than trusting the stamp.",
+    "For the writing class specifically, since check_writing.md §3 is the rule these three findings actually trip: all three quotes above are load-bearing evidence for that judge's own pass, should it re-fire on this file."
   ],
   "accept_notes_found": [
-    "L11: Emphasis pass (2026-07-09, Antti-directed) — single slide de-bolded, no claims added/cut.",
-    "L13: Slides-only pass (2026-07-02, unaudited) — four prose paragraphs converted to one slide, near-verbatim, deliberately no kicker.",
-    "L15-16: Quality compendium-audited stamp (2026-08-28).",
-    "L26-29: Watch-fors (delivery) — don't answer the frontiers, don't gloss 'agents building agents', pairs with M1 (now correctly labeled 'opener', re-verified this run).",
-    "L31: Carve-out — first-person-plural 'we' as room-collective at capstone open, sibling of Agents 101 M8 precedent, check_writing.md rule 6 carve-out. Out of story's rule scope; now describes deleted text (see `notes` above) — surfaced for the writing class, not re-litigated here.",
-    "L47: Stance stamp `[stance:2026-08-01 level:L0]`.",
-    "L55: last-run: 2026-08-01 (OODA block)."
+    "L11: Emphasis pass (2026-07-09, Antti-directed) — header carries the summary, no kicker/handle added, deliberate. Wording has drifted since (header no longer says 'still open: speed and direction'), but the underlying no-kicker decision is still live and honored — see check_lectures §4 evidence above.",
+    "L13: Slides-only pass (2026-07-02, unaudited) — four prose paragraphs converted to one slide, near-verbatim at the time, deliberately no kicker.",
+    "L15-16: Quality compendium-audited stamp (2026-08-29) — now stale against the 2026-09-02 rewrite; see top-level finding #1.",
+    "L26-27, L29: Watch-fors — don't answer the two frontiers (still honored), pairs with M1's opener (still true, now via bullet 3's near-verbatim restatement rather than a 1:1 header echo).",
+    "L28: Watch-for — don't gloss 'agents building agents' — now stale, the phrase is gone from this body; see top-level finding #2.",
+    "L31: 'No we-voiced arrival line' dated note (2026-08-29) — now stale, quotes a bullet 1 this body no longer has; see top-level finding #3.",
+    "L47-50: Backing-block Stance stamp `[stance:2026-08-01 level:L0]` — 'holds: nothing, by design... would-move-it: nothing short of the arc changing.' Read this as still accurate for the CLAIMS the stance stamp covers (the file still asserts nothing sourced about the world), even though the specific wording of those claims changed today — the backing block's own Claims list (lines 36-38) was updated in the same 2026-09-02 commits and matches the current body verbatim, so this stamp is NOT one of the three stale items above.",
+    "L54-55: OODA block — 'question: none standing... last-run: 2026-08-01.' Not evaluated for currency by this class; out of story's rule scope."
   ],
-  "blocking_findings_count": 0,
+  "blocking_findings_count": 4,
   "todos_count": 0,
   "todos": []
 }

@@ -43,3 +43,6 @@ OODA
 - last-run: 2026-09-02
 
 <!-- /backing -->
+
+**Quality:** compendium-audited 2026-09-02 (story@4e0370bc technical@4e0370bc behavior@4e0370bc strategy@4e0370bc)
+- judges @4e0370bc: writing grandfathered, story PASS (1 todo see instances/ae101--lecture--the-handoff-prompt.story.json), technical PASS (1 todo see instances/ae101--lecture--the-handoff-prompt.technical.json), behavior PASS (1 todo see instances/ae101--lecture--the-handoff-prompt.behavior.json), pedagogy grandfathered, strategy PASS

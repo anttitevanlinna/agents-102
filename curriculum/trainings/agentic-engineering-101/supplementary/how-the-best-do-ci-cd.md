@@ -1,8 +1,8 @@
 # How the best do CI/CD: six moves that sharpen the loop
 
-<!--flag:module:spot-gaps-build-the-loop-->*Supplementary for AE101 Module 6. Read after you've shipped your second skill.*<!--/flag:module:spot-gaps-build-the-loop--><!--flag:no-module:spot-gaps-build-the-loop-->*Take-home reading. Read once the loop at your own desk feels routine.*<!--/flag:no-module:spot-gaps-build-the-loop-->
+<!--flag:module:spot-gaps-build-the-loop-->*Supplementary for AE101 Module 6. Read once the loop at your own desk feels routine.*<!--/flag:module:spot-gaps-build-the-loop--><!--flag:no-module:spot-gaps-build-the-loop-->*Take-home reading. Read once the loop at your own desk feels routine.*<!--/flag:no-module:spot-gaps-build-the-loop-->
 
-<!--flag:module:spot-gaps-build-the-loop-->You finished M6 owning the loop at your desk. Two sessions of the same task, gap diagnosis, the handoff prompt that authors your second skill, one rule cut from `./CLAUDE.local.md`. The same loop, run at more people, more PRs, more customers, looks slightly different.<!--/flag:module:spot-gaps-build-the-loop--><!--flag:no-module:spot-gaps-build-the-loop-->You own the loop at your desk: a task run twice, the difference read, the rules sharpened from what you saw. The same loop, run at more people, more PRs, more customers, looks slightly different.<!--/flag:no-module:spot-gaps-build-the-loop--> Six moves recur in the engineers running it best. Each one sharpens the loop you already own. None require permission from above to start trying.
+<!--flag:module:spot-gaps-build-the-loop-->You finished M6 owning the loop at your desk. Two sessions of the same task, a gap map, one rule cut from `./CLAUDE.local.md`, the handoff prompt that builds your kit. The same loop, run at more people, more PRs, more customers, looks slightly different.<!--/flag:module:spot-gaps-build-the-loop--><!--flag:no-module:spot-gaps-build-the-loop-->You own the loop at your desk: a task run twice, the difference read, the rules sharpened from what you saw. The same loop, run at more people, more PRs, more customers, looks slightly different.<!--/flag:no-module:spot-gaps-build-the-loop--> Six moves recur in the engineers running it best. Each one sharpens the loop you already own. None require permission from above to start trying.
 
 ## 1. Treat CI as feedback into the loop, not a gate to pass
 
@@ -111,7 +111,7 @@ Pick one move. Run it this week.
 
 **Move 5 is skills-as-CI-check, not skills-as-generic-kit-accretion.** A skill earns its place here by becoming a check, a verifier or a rule the loop runs — not by accreting into a general-purpose kit. Maintainer redirect, and the distinction the move is built on; do not broaden it back.
 
-**Audience pin:** AE101 IC who has lived M1–M6. NOT a CTO. NOT a platform/staff engineer reading over the CTO's shoulder. The supplementary is the IC's next-altitude reading after shipping their second skill: the same loop, slightly wider lens.
+**Audience pin:** AE101 IC who has lived M1–M6. NOT a CTO. NOT a platform/staff engineer reading over the CTO's shoulder. The supplementary is the IC's next-altitude reading after M6: the same loop, slightly wider lens.
 
 <!-- backing -->
 

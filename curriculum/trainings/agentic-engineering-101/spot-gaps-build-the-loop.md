@@ -58,7 +58,7 @@ This slot is a human round: talk, compare, no prompts.
 
 **`## Key Concepts` cut whole (Antti 2026-09-02: *"nobody wants to come back to that at end of full training"*).** Terminal-module exception to `module-shape.md` § Key Concepts and `check_strategy_tie_in.md` §§5–6; judges should not re-flag. The six bullets are in git at `fedd3bdc`. The subtraction doctrine (*add, sharpen, delete*) is carried by the rule cut and the second-loop figure's *add a rule · cut a rule*; the independence kernel (*a check proves something only where it could say no*) has no M6 home by decision (no loop-diagnosis exercise; Antti 2026-09-02). Do not re-home either.
 
-**Lean pass (2026-08-25, Antti-directed M3/M6 shorten, free hands):** Start-here cut "The contrast is the material." (the one-session/two-sessions pair carries it); Do not restore.
+**Lean pass (2026-08-25, Antti-directed M3/M6 shorten, free hands):** Start-here cut *"The contrast is the material."* Do not restore.
 
 **The confidence after-measurement fires at this module's Human close but lives OUTSIDE the workbook.** The measurement system is deliberately not in student-facing body; the trainer administers it. Canonical wording in `theory-plan.md` § Baseline instrument — verbatim-identical to the before-measurement or the delta measures the wording. Target delta +3. Do not add a rating beat to this file's body.
 
@@ -71,7 +71,7 @@ This slot is a human round: talk, compare, no prompts.
 
 **Human close's "talk, compare, no prompts" stays in body — `check_pedagogy.md` §27 mode-defining-cue carve-out (maintainer call).** The cue defines the slot's mode against a training that is otherwise prompts; the round's form (pairs, whole-room, write-then-share) stays the trainer's per the strategy doc's M6 Debrief spec. Future judges should not re-flag.
 
-**`## Human close` is a pre-close beat, not the module's ending (2026-08-19, Antti-directed: *"human close can be a beat before actual full closing. It is deliberately there to have the time for closing conversations."*).** The slot buys room time for the closing conversation while the closing lecture and `## Optional challenges` still follow. A story judge scoring close mood reads those four trailing sections as an ending that will not end and files `check_strategy_tie_in.md` §1 against the beat's own framing (*"no compound prompt here... talk, compare, no prompts"*, the identity line, the self-study *"Close the laptop"*). The trailing count is the design and it is not high: M6 carries fewer sections after its last teaching beat than M4 or M5, neither `## Bring to Module N` nor `## Pre-reads` applying to the terminal module. Do not move the beat later, do not fold it into `## Next`, and do not soften its framing to acknowledge what follows — the conversation needs a named slot, and the name is what makes a trainer stop for it. Future judges should not re-flag.
+**`## Human close` is a pre-close beat, not the module's ending (2026-08-19, Antti-directed: *"human close can be a beat before actual full closing. It is deliberately there to have the time for closing conversations."*).** The slot buys room time for the closing conversation while the closing lecture and `## Optional challenges` still follow. A story judge scoring close mood may read that trailing material as an ending that will not end and file `check_strategy_tie_in.md` §1 against the beat's own framing (*"talk, compare, no prompts"*). Do not move the beat later, and do not soften its framing to acknowledge what follows — the conversation needs a named slot, and the name is what makes a trainer stop for it. Future judges should not re-flag.
 
 **Quality:** compendium-audited 2026-08-30 (writing@4a722813 story@85515fa0 technical@8cc00874 behavior@1c765f2 pedagogy@85515fa0 strategy@85515fa0 slides@297eb2f9)
 - judges @85515fa0: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
@@ -100,9 +100,9 @@ This slot is a human round: talk, compare, no prompts.
 - **Primary Bloom's level:** Analyze + Evaluate + Create
 - **Pacing:** Runtime is computed — `node scripts/calculate-time.js spot-gaps-build-the-loop`. The slack is the Debrief and the exercise's scan-depth steer; the lecture-dense close is not where to find it. Trainer demos slowly, room copy-pastes concurrently.
 - **Transitions:** re-entry 10 @start · debrief 12 @after:spot-gaps-build-the-loop · debrief 6 @after:read-your-stack · bridge 3 @end
-- **Prep / bridge timing:** optional Klaassen verifier article 10 min; human close / team-kit accretion slot 10–15 min.
+- **Prep / bridge timing:** optional Klaassen verifier article 10 min; human close 10–15 min.
 - **Mood target:** practitioner fluency — *"I know how to test, I know how to learn, I know how to encode."* Not confidence-as-performance; competence-as-posture. Failure shapes that steal the mood: compliance-feel (*"build the eval, pass the gate"*), paperwork-feel, credibility-performance (*"we live what we teach"*), trainer-monologue retrospective. If any beat reads like one of those, revise.
-- **Delivery architecture:** canonical in training-architecture.md §Working directory model / §Session boundaries / §Material distribution (no training-dir state, no `module-N/` folders). Not restated here. Module-specific: M6 opens a fresh session in the M5 worktree at `../<repo-name>-m5` where both runs already live, then reads, routes, and maps in-place. The handoff prompt from the close is the take-home; skill candidates it surfaces later ship personal-first, team-PR via human conversation — not auto-promoted.
+- **Delivery architecture:** canonical in training-architecture.md §Working directory model / §Session boundaries / §Material distribution (no training-dir state, no `module-N/` folders). Not restated here. Module-specific: M6 opens a fresh session in the M5 worktree at `../<repo-name>-m5` where both runs already live, then reads, routes, and maps in-place. The handoff prompt from `the-handoff-prompt.md` is the take-home; skill candidates it surfaces later ship personal-first, team-PR via human conversation — not auto-promoted.
 - **Pre-read placement:** none. M6 deck order (2026-09-02): the-2-frontiers → exercise `spot-gaps-build-the-loop` (diff + rule cut) → composing-the-workflow (control loop, Eval, cadence, skills, the Dino / Pocock examples, the filled-in map figure) → exercise `read-your-stack` → the-handoff-prompt (titled *Agents that build agents*) → story-of-module-6 → Human close → agents-that-build-agents (titled *There is no last turn*, last).
 
 **Push-back moves** (trainer delivers):
@@ -111,7 +111,6 @@ This slot is a human round: talk, compare, no prompts.
 - **Scan-drown in the stack scan** — the study throws back a wall and the student starts cataloguing. Trainer push: *"read the ranked head. The few you actually repeat are the map; the rest is inventory."*
 
 **Watch-fors (cross-phase):**
-- Both-runs collapse — student treats the packaged run as the only material worth diagnosing (the un-packaged baseline fades). The diff recovers by asking for quoted moments from each run, separately.
 - Gap-home confusion — the diff prompt calls everything a skill candidate because skills feel like "the answer." Push back on the output: some gaps belong in memory, some in a sharper existing verifier, some in a new skill.
 - Closing-lecture-as-pre-read — if the closing names something the student already heard, the opener or exercise leaked. Three-persona sim catches this; ship-pass eval also.
 
@@ -124,9 +123,9 @@ This slot is a human round: talk, compare, no prompts.
 
 **Plug points (trainer):**
 - The student's two run artefacts (the diff's input material)
-- Team-kit home, if the team has one (second-skill ship destination for team-PR candidates)
+- Team-kit home, if the team has one (destination for skills authored from the handoff prompt after the module)
 - Memory home (where gaps-belong-in-memory land)
-- The team's rule-review cadence (named so the team-PR flag at ship doesn't become the compound-loop bottleneck)
+- The team's rule-review cadence (named so team promotion of a skill does not become the compound-loop bottleneck)
 
 **Source verification — freshness stamps (`source-freshness.sh`; format `curriculum/source-freshness-format.md`).**
 

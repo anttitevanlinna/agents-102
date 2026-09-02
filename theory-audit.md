@@ -60,7 +60,7 @@ Status legend: **named** = law + mechanism in student body (recoverable from pag
 | dont-tamper | enacted | **AE101 M6 (Absorption)** | pairs with evaluate-the-distribution / n=1-is-a-sample; the recurrence-vs-noise governor for rule-writing (M6 already routes gaps) |
 | l0-l3-ladder | enacted | **settled: design-side only** (Antti, 2026-09-02) | not student-facing wording — students never learn the levels; naming card declined, confidence instrument de-jargoned to match |
 | access-trust-gap | absent | **not AE101 body** — CTO/org layer | groundwork FOUNDATION already carries it (F1); zombie-stat risk on ">35pts" (2 lenses). Trainer-voice / groundwork card territory |
-| individual-not-institutional | enacted | **borderline** — M6 crossing beat carries it implicitly | groundwork F3; the wall's mechanism. If named in AE101, one line in the M6 closer, not a lecture |
+| individual-not-institutional | enacted | **gap** — no M6 beat carries it (the wall-crossing bullet has no slide) | groundwork F3; the wall's mechanism. If named in AE101, one line in the M6 closer, not a lecture |
 | competence-first-sequence | enacted | **not AE101 body** — org-sequencing law | Agents-101/groundwork mat; AE101 students are already past the gate |
 | pattern-layer-ontology | absent | **not AE101** — groundwork's ontology | lives in mapping-rules layer routing; AE101 doesn't need it |
 
@@ -71,7 +71,7 @@ Status legend: **named** = law + mechanism in student body (recoverable from pag
 - **reliability-floor-085n** — *landed in the durable form:* `the-machine-you-just-met.md` § A check resets the chain teaches the compounding mechanism illustration-labeled and constant-free ("If each step were right nine times in ten… seven-step chain… below a coin flip. The numbers are an illustration"), with gates-reset-the-chain in the same breath; `grounded.md:87` (Agents 101) records the notation drop on its side. `why-mostly-right-fails.md` stays the Claude Basics sibling (reuse audit, `theory-plan.md`).
 - **variation-selection-retention** — M1 mentions side-by-side approaches; selection/retention never named. Candidate: fold into compound-ladder mechanism (eval selects → memory retains) rather than a separate law.
 - **amplification** — *demote-and-split executed:* the weak-fail-faster leg ships nowhere; the positive koan in `painting-the-picture-with-the-llm.md` is register-demoted (its :40 note, Antti 2026-08-14) with the legs pinned separately in backing and the organisational-level-only CAVEAT on the line.
-- **the-wall** — *mechanism landed:* `the-map-filled-in.md` dip-before-climb wall-crossing bullet carries the J-curve/complementary-investment mechanism, David 1990 + Brynjolfsson stamps in its backing block.
+- **the-wall** — *no student home:* no M6 body carries the J-curve / complementary-investment mechanism, and the David 1990 + Brynjolfsson stamps have no curriculum file. Design-side only.
 
 
 ## Canon adoption shortlist (convergence-ranked; proposals)
@@ -195,12 +195,11 @@ The course's own laws — named generalizations in student body that are NOT in 
 - **Rules-files have a half-life (compound by subtraction)** — Encoded memory decays; deleting stale rules is as much a compounding move as adding new ones.
 - **Same-context self-audit under-flags (LLM self-critique charity)** — An LLM reviewing its own in-context output is systematically lenient; fresh-context dispatch or forced over-flagging sharpens the read.
 - **Invocation-as-test** — An authored artifact is unverified until invoked on real work — verification of the encoder, not just the code.
-- **Quality-as-grounding reframe** — At agentic volume, quality discipline extends from spec-and-tests to maximizing human grounding signal — 'you ship a million lines, how do you know it's right?'
+- **The right information grounds and makes quality** — spec and tests were written down first; the goal is giving the system the right information about customers, direction and domain, found one run at a time (`agents-that-build-agents.md`)
 - **Guardrails vs evaluators (fast lane / slow lane)** — Husain's taxonomy: split checks by latency budget — inline deterministic blockers vs async judges; never a slow judge as a synchronous gate.
 - **Single writer with advisor agents** — Yan/Cognition: parallel writers collide on implicit choices; parallelize advice, serialize writes.
 - **Normalization of deviance (composition erodes review)** — Ronacher/Willison: fluency in a move silently degrades the discipline that justified it — teach composition without the counter and you teach its decay.
 - **CLAUDE.md as dispatcher, skills as handlers** — Dino's architecture model: predicate-routing composes a skill kit, and the same primitive scales from within-repo to cross-repo.
-- **Practitioners see levers first** — Innovation appears in practitioner hacks before it ships as platform features — watch practice, not roadmaps (Ralph → /goal).
 - **Transcript vs git two-layer evidence** — Post-run reading needs both the outcome layer (diffs) and the process layer (transcript); each sees what the other misses.
 - **Workflow-composition lineage map** — A curated field-map (Klaassen / Pocock / Cognition / Amp / Cherny + Ronacher counter) with three selection filters: shape of your work, orchestration load you'll maintain, review bandwidth you actually have.
 

@@ -125,7 +125,7 @@ const TRAINER_ONLY = new Set(['pre-cohort-todos.md']);
 //   'exercises/<slug>'     → H1 + `View summary` metadata from curriculum/exercises/<slug>.md
 // Dual-wired lectures appear once, at their owning module. Duplicates and
 // missing files fail the build.
-// story-of-module-6 stays in the M6 module as the opener memo but is not
+// story-of-module-6 stays in the M6 module (sixth beat, after the handoff lecture) but is not
 // theory — deliberately excluded from this manifest.
 const THEORY_HANDBOOK_MANIFEST = {
   'agentic-engineering-101': [

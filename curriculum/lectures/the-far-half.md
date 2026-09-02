@@ -32,7 +32,7 @@
 
 **Third slide cut (2026-08-29, Antti-approved):** `## Your first un-packaged long session` — its un-packaged-on-purpose bullet restated `test-and-learn.md § The two-session arc`, which says the same thing concretely (*"no plan.md, no verifier, no reference artifact"*) two lectures later. The trust question moved to the tail of the three-concerns slide, beside the Verification bullet it interrogates. The `un-packaged-run-on-purpose` claim went with it. Do not restore a third slide announcing the un-packaged run; the arc slide is where that beat lands.
 
-**Artifact contract (Family B):** the far-half map slot only. Per-law {NAME · MAP-POSITION · MECHANISM · GOVERNOR} for Verification/Absorption/Outcome laws is downstream closer work, not this opener's. Landed shape (2026-07-03): all three far-half phases consolidate at M6 (`the-map-filled-in`); M5 (`what-packaging-is`) map-places the three-pattern only.
+**Artifact contract (Family B):** the far-half map slot only. Per-law {NAME · MAP-POSITION · MECHANISM · GOVERNOR} for Verification/Absorption/Outcome laws is downstream closer work, not this opener's. Landed shape (2026-07-03): all three far-half phases consolidate at M6's map slide (`composing-the-workflow.md` § *The checking loop, drawn solid*, figure only); M5 (`what-packaging-is`) map-places the three-pattern only.
 
 - Family B judged 2026-07-03: B-star durability PASS — container reads whole voice-absent; spine-anchoring exemplary (every far-half phase names its map slot + governor-verb) and worldview-fit textbook recognition-before-naming ("you feel where it bites first"; backpressure is named in the post-launch M4 closer, then built and calibrated in M5 and composed in M6).
 

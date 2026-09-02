@@ -182,7 +182,7 @@ Optional, when your sessions start running heavy: [The context ceiling and token
 | Artefact | Stable identifier | Produced by | Consumed by |
 |---|---|---|---|
 | Architecture Decision Record | the repo's ADR convention; default `docs/adr/NNNN-slug.md` | Exercise 2 (STRIDE → hardening decision → ADR write) | M4 Phase 2 walk-and-fill (audit subagent reads ADRs as part of *"system you have"*) |
-| Test-strategy skill | `~/.claude/skills/test-strategy/SKILL.md` | Exercise 3 (one-question-at-a-time authoring conversation; user-level personal install, auto-discovered every session) | M4 Phase 2 walk-and-fill (audit subagent reads as part of system); M5 verifier-build (test-strategy informs the eval shape); M6 close (the *Composing the workflow* kit counts it among the moves you already own) |
+| Test-strategy skill | `~/.claude/skills/test-strategy/SKILL.md` | Exercise 3 (one-question-at-a-time authoring conversation; user-level personal install, auto-discovered every session) | M4 Phase 2 walk-and-fill (audit subagent reads as part of system); M5 verifier-build (test-strategy informs the eval shape); M6 (no body line names it; the handoff prompt authors further skills after the module) |
 | Personal rules update | `./CLAUDE.local.md` (repo-personal, gitignored) | "Sharpen the skill from evidence" prompt at module close (Claude rewrites from session evidence; user pushes back) | Every future session in this repo (auto-loads at session-cold start); specifically M4 onward sees M3's rule additions as part of personal context |
 
 **Per-phase failure mode + escape hatch** (per `check_pedagogy.md` rule 47 — every phase shipping a forcing function names its dominant failure and one recovery move):

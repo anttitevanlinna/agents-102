@@ -182,7 +182,7 @@ Don't split M4 across the days. The M1-M2-M4 / M5-M3-M6 reorder exists; it's a c
 
 - **An M5 re-send still running at open** → if it's been an hour, stop it; the trace is the artefact. M6 reads both sessions from disk and a half-finished run reads fine.
 - **No packaged session at all** → they fire the re-send now, let it cook, and run Phase 1 against whatever has landed by the time the room gets there. One session to read where the exercise needs two is thin but not empty.
-- **Low energy in the closing lectures** → keep the composition lecture to the chart and its four mechanisms, point at the supplementary, move to the closer pair. Two beats of silence after a question is fine.
+- **Low energy in the closing lectures** → let the drawings in the composition lecture do the talking and move on; the closing beats are short by design (a one-prompt handoff, an eight-minute memo, a four-slide closer). Two beats of silence after a question is fine.
 
 </section>
 <!--/flag:module:spot-gaps-build-the-loop-->

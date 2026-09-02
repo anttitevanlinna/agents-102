@@ -190,10 +190,10 @@ Claims
 - `four-composition-mechanisms-are-the-transferable-part` · vision · "The four composition mechanisms this page names are the move." ← none-owed
 
 Sources
-- dino-stack `[checked:2026-07-05 result:ATTESTED due:none]` attested:maintainer 2026-07-05 read the in-repo skill files and the `/ship` orchestrator directly — [maintainer-attested] One engineer's in-repo skill stack, read directly: the skill files, their cross-references, and the `/ship` orchestrator. **`/ship` is Dino's own skill, NOT a Claude Code built-in** — the lecture that points here keeps its orchestrator generic for exactly this reason, and any edit that reads `/ship` as a product feature is wrong. First-hand reading of a real kit, so no URL is owed and no date will stale it. **The page's own framing is its best guard:** it tells the reader this is one stack on one codebase, which is the correct evidence claim for a sample of one. fallback: none; the worked example is the evidence and its scope is stated in the first line.
+- dino-stack `[checked:2026-07-05 result:ATTESTED due:none]` attested:maintainer 2026-07-05 read the in-repo skill files and the `/ship` orchestrator directly — [maintainer-attested] One engineer's in-repo skill stack, read directly: the skill files, their cross-references, and the `/ship` orchestrator. **`/ship` is Dino's own skill, NOT a Claude Code built-in** — the lecture's Dino figure draws `/ship` as this kit's orchestrator; the footprint chart keeps *the pilot* generic, and any edit that reads `/ship` as a product feature is wrong. First-hand reading of a real kit, so no URL is owed and no date will stale it. **The page's own framing is its best guard:** it tells the reader this is one stack on one codebase, which is the correct evidence claim for a sample of one. fallback: none; the worked example is the evidence and its scope is stated in the first line.
 
 Frameworks
-- Composition mechanisms — explicit load, orchestrator, routing, hand-off · [borrow:none] · law:none · ← dino-stack — the four names the lecture teaches; this page is where they are grounded in a real kit
+- Composition mechanisms — explicit load, orchestrator, routing, hand-off · [borrow:none] · law:none · ← dino-stack — the four names; the lecture draws the kit and this page names the mechanisms
 - Orchestrator / leaf · [borrow:distributed systems] · law:none · ← dino-stack
 - The compound ladder · [borrow:none] · law:the-compound-ladder · ← none — a stack is what the ladder's top rung looks like once it exists
 

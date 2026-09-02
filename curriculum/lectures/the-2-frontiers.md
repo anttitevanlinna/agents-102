@@ -23,7 +23,6 @@
 
 **Watch-fors (delivery):**
 - Don't answer the two frontiers. They are the arc's open questions.
-- Pairs with M1's opener: same two questions, second time. The recurrence carries.
 
 **No we-voiced arrival line in body (2026-08-29, Antti-directed):** the recap is shown, not asserted. Do not add "We have come a long way" or any room-collective progress line; the mood target above is a trainer note, not a line to read out.
 
@@ -42,12 +41,12 @@ Frameworks
 - Variation, selection, retention · [borrow:evolutionary theory] · law:variation-selection-retention · ← cultural-vocab — frontier two asks what does the selecting
 
 Stance `[stance:2026-08-01 level:L0]`
-- holds: nothing, by design. This is the shortest lecture in the training and it makes no factual claim at all — two open questions and one recognition line. `level:L0` is not a weakness here, it is the correct reading of a file with no assertions in it.
+- holds: nothing sourced, by design. This is the shortest lecture in the training: two house positions and one open question. `level:L0` is the correct reading of a file with no sourced assertion in it.
 - contested: not applicable. Any answer arriving from the field belongs in whichever lecture teaches it, not here — the maintainer watch-for is explicit that the frontiers must stay unanswered, and a stance that started holding something would break the beat.
 - would-move-it: nothing short of the arc changing. **The failure mode this stance guards is the opposite of the usual one:** not an unbacked claim, but a future editor helpfully answering one of the two questions and turning an opener into a topic.
 
 OODA
-- question: none standing. If this file ever acquires a claim, it has stopped being what it is.
+- question: none standing. If this file ever acquires a sourced claim, it has stopped being what it is.
 - roster: none.
 - last-run: 2026-08-01
 

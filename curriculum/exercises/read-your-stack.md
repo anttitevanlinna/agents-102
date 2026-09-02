@@ -68,7 +68,7 @@ Expect the list to look familiar: test-writing, browser-testing, PR-building, li
 
 **Fast-operator batch path (accepted):** *"Fast operator?"* labels the opt-in path for someone who wants both scan prompts in one conversation; it does not set the room's pace or the exercise's completion bar. The separate scan callout is the working-memory stop gate. Preserve both callouts and the label.
 
-**Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** bullet leads de-bolded to plain; widget/label chrome and blockquote callouts untouched, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`.
+**Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** bullet leads plain; bold only on widget / label chrome and blockquote callout leads, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`.
 
 **Word count:** ~520 words body.
 
@@ -112,7 +112,7 @@ OODA
 - re-runs the stack scan a week later and compares the top shapes against the map, instead of assuming the map still holds
 
 **Failure modes + diagnostics:**
-- **Wider-look sprawl** — the study scan reads the whole stack and can throw back a wall. The body stop gate is two or three recurring kinds of work clear enough to draw and compare. Depth is the student's, not a mandate to catalogue. If a student drowns in the scan, point at the ranked head and move on.
+- **Wider-look sprawl** — the study scan reads the whole stack and can throw back a wall. If a student drowns in the scan, point at the ranked head and move on.
 
 **Plug points:**
 - The team's code-review conventions: where a recurring shape includes review, the conventions are the check that shape calls, and they ride into the handoff prompt that follows. The exercise is study plus shapes plus the optional sidestep; nothing in it builds a judge.

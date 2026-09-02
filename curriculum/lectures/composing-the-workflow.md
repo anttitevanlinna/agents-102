@@ -11,6 +11,13 @@ You have a kit now: a test-strategy skill, a verifier, and a freshly drawn map o
 - Verification is the sensor. A loop with no way to read its own result runs open: send the work off and hope. The checks you built are how this loop reads what came back. They are the part that lets the system catch its own error before it ships.
 - The harness makes continuing possible. What a session gets right without you is set by what has accumulated around it: rules, durable state, checks, encoded corrections. The M4 send-off and the M5 re-send: same model, same harness, two different agents.
 
+## Loop instead of you starting
+<!--tier:3-->
+
+- One thing a kit skill can do that you did not try today: run on a schedule. Claude Code ships three scheduling primitives: local routines (from the Routines sidebar) for standing work on your laptop, `/loop` for in-session repetition, `/schedule` for cloud-backed remote Routines. The pattern is the same across all three: a skill from your kit is the thing the scheduled agent invokes.
+- Three places this fits naturally. A standing verifier run: a judge reads the most recent long-running send-off and has a summary waiting when you open the laptop. A scheduled codebase sweep: a gap-finder reads the repo for the drift shape you saw at M5 and opens an issue when it finds one. Rule-drift monitoring: a judge reads the root rules file against the recent commit log and names where the rules and the code disagree.
+- You do not have to wire it today; you do need to know the eval can run on cadence. The skill defines the check. The runtime supplies the cadence or stopping condition.
+
 ## A skill's footprint is where its job lands
 <!--tier:3-->
 
@@ -64,13 +71,21 @@ Pick the shape that resembles your day.
 
 **Lecture meta:** *Opens the loop beat with the control-loop slide (from `the-map-filled-in.md`, T1), then three T3 slides teaching what a workflow-of-skills IS on the M5 passage, handing off to the worked example and the field survey. The register-shift line ("no prompt to drill; the move is to read") stays. Title awaits a card now that the file opens on the loop.*
 
-**Time:** 6 min at presentation pace.
+**Time:** 8 min at presentation pace.
 
 **Delivery mode:** In-room, chart projected. Barebones drops the three T3 slides and keeps the control loop.
+
+**Cadence slide (from `the-loop-has-a-name.md`, Antti 2026-09-02, header his):** *Loop instead of you starting* sits right after the control-loop slide: a check on cadence is the loop closing with nobody pressing start. Body verbatim from its old home; T3.
+
+**Watch-for (delivery):**
+- Scheduled-agents stays one slide, not a mini-lecture. Three places it fits, one reference-page pointer, move on. If the slide grows past 90 seconds in rehearsal, cut.
 
 <!-- backing -->
 
 Claims
+- `three-scheduling-primitives` · detail · "Claude Code ships three scheduling primitives: local routines (from the Routines sidebar) for standing work on your laptop, `/loop` for in-session repetition, `/schedule` for cloud-backed remote Routines." ← cc-scheduling-primitives
+- `three-places-cadence-fits` · vision · "A standing verifier run … A scheduled codebase sweep … Rule-drift monitoring" ← none-owed
+- `skill-defines-check-runtime-supplies-cadence` · vision · "The skill defines the check. The runtime supplies the cadence or stopping condition." ← none-owed
 - `a-workflow-is-moves-in-order` · vision · "A workflow is those moves in the right order around one passage." ← none-owed
 - `skill-is-a-named-move` · vision · "A **skill** is a named move you reach for. Single purpose, reusable, invoked by name." ← none-owed
 - `footprint-follows-the-job` · vision · "Its **footprint** is wherever the job lands." ← none-owed
@@ -89,6 +104,7 @@ Claims
 - `composition-is-a-live-argument` · detail · "How the field composes kits like this is a live argument with no settled answer" ← lineages-supp
 
 Sources
+- cc-scheduling-primitives `[checked:2026-04-24 result:OK due:cohort]` https://code.claude.com/docs/en/ — [capability] The body names three scheduling primitives and distinguishes local Routines from `/schedule`'s cloud-backed remote Routines. The check ran 2026-04-24 against the current documentation and is recorded here: `/schedule` is Routines, remote and cloud-backed; Desktop local tasks are a separate primitive. **A capability stamp records its own check.** Pointing at a paragraph in another file makes the stamp only as durable as that file's next edit, which is how this one nearly lost its evidence. fallback: teach the pattern (a kit skill is what the scheduled agent invokes) and name only the primitives a re-test confirms.
 - skill-stacking-supp `[checked:2026-07-05 result:OK due:none]` kb:none — [delegated stamp] `curriculum/trainings/agentic-engineering-101/supplementary/skill-stacking.md` carries the primary stamps for the four composition mechanisms and the `/ship`-as-pilot worked example (Dino's in-repo stack). A worked example of a shipped kit does not expire. **`/ship` is Dino's own skill, NOT a Claude Code built-in** — the chart keeps the orchestrator generic ("the pilot") and the named example stays in the supplementary, which is the whole reason this body carries no product name. fallback: re-verify in that doc if its own stamps age out.
 - lineages-supp `[checked:2026-08-01 result:CAVEAT due:none]` kb:none — [delegated stamp] `curriculum/trainings/agentic-engineering-101/supplementary/workflow-composition-lineages.md` carries the field-survey lineages and their per-source stamps. **`due:none` is the delegated variant** (`backing-format.md` § Delegated): the delegation does not expire, the delegate's own stamps do, and `source-freshness.sh` already walks that file. `checked:` still means what it says here: the date this pointer was last confirmed to aim at the right file. fallback: this lecture asserts no dated specific of its own; if the supplementary's lineages change, only the "live argument" claim here is affected, and that claim gets *stronger* when the field moves.
 
@@ -101,6 +117,7 @@ Stance `[stance:2026-08-01 level:L1]`
 - holds: that composition comes in recorded variety — called by hand (Pocock), chained through files (Klaassen), authored wiring in the one fully documented kit — and that the four wirings are scoped in-body to that kit, not taught as a field taxonomy. Every named specific delegates to the two supplementaries; the one field-level assertion is that no way has won, which the lineages' own stance supports at L2.
 - contested: whether the four wirings are the complete set. Nobody has enumerated composition mechanisms across kits (the delegate's stance says so in as many words), which is exactly why the body scopes the count to one kit and teaches the variety first.
 - decided: **delegated stamps take `due:none`, 2026-08-02.** This file's `due:2026-11-25` pointed at a delegate checked 2026-05-25 that had since been corrected and re-stamped, so the pointer aged against a fact it did not own. The pointer is legitimate; a computed date on it is a second copy of the delegate's freshness that nothing in the toolchain compares. Rule now in `backing-format.md` § Delegated.
+- decided: **the scheduling bullet carries its own check, not a pointer at one.** The capability check backing it was recorded in `story-of-module-6.md`, one module over, and this file's stamp merely cited it — invisible from the file that depended on it, and dependent on prose the other lecture was free to cut. The check lives here now, stamped `result:OK` from its own 2026-04-24 date. `ATTESTED` was never the right label: that vocabulary is for a maintainer's first-hand witness, not a documentation read.
 - would-move-it: a second fully documented kit (takes the wirings claim from L1 toward L2), a mechanism renamed at field level, or a fifth wiring gaining currency — each edits slide 2. Convergence on one composition shape would break the "live argument" framing and turn the variety bullet into a recommendation.
 
 OODA

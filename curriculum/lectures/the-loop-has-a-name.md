@@ -15,13 +15,6 @@ Look at what you have shipped.
 - The shape fires on any workflow with a quality bar, not only agent sessions. A code-review checklist, a deployment gate, an internal-doc rubric. Anywhere you can describe *meets the bar*, you can write the check.
 - Naming it is what lets you reuse it. Once you see the verifier, the judge, and the gate as the same primitive, you can place that primitive in more places. On a pull request. On a nightly run. On the next agent that does the same class of work. On the team's shared kit.
 
-## The primitive that runs on cadence
-<!--tier:3-->
-
-- One thing a kit skill can do that you did not try today: run on a schedule. Claude Code ships three scheduling primitives: local routines (from the Routines sidebar) for standing work on your laptop, `/loop` for in-session repetition, `/schedule` for cloud-backed remote Routines. The pattern is the same across all three: a skill from your kit is the thing the scheduled agent invokes.
-- Three places this fits naturally. A standing verifier run: a judge reads the most recent long-running send-off and has a summary waiting when you open the laptop. A scheduled codebase sweep: a gap-finder reads the repo for the drift shape you saw at M5 and opens an issue when it finds one. Rule-drift monitoring: a judge reads the root rules file against the recent commit log and names where the rules and the code disagree.
-- You do not have to wire it today; you do need to know the eval can run on cadence. The skill defines the check. The runtime supplies the cadence or stopping condition.
-
 <!-- maintainer -->
 
 **Lean pass (2026-08-25, Antti-directed M3/M6 shorten, free hands):** cut "Opus 4.7 will be Opus 4.8, then something with a different name." (dates the deck; replacement claim survives as "Each replacement will be better…"); cadence bullet 3 condensed — the "the second you stop thinking of the eval as a one-shot check… your options change" clause folded into "you do need to know the eval can run on cadence" (watch-for already caps this slide at 90 s). Do not restore.
@@ -39,7 +32,7 @@ Look at what you have shipped.
 - judges @4a722813: behavior PASS, pedagogy PASS (drift-recheck)
 **Lecture meta:** *Names evals with full weight from the M5 verifier and the check-menu the module just ranked, directly after the exercise debrief. Three tail slides are T3. M5/M6 refs in body KEPT under the `check_lectures §3` consolidation carve-out: the SUBJECT is naming what M5–M6 built (recognition), not sequencing.*
 
-**Time:** 10 min at presentation pace.
+**Time:** 8 min at presentation pace.
 
 **Delivery mode:** In-room close after Debrief.
 
@@ -53,12 +46,8 @@ Claims
 - `map-placement-checking-loop` · vision · "the checking loop the M2 drawing left dashed, now drawn solid" ← none-owed
 - `fires-on-any-quality-bar` · vision · "The shape fires on any workflow with a quality bar, not only agent sessions." ← none-owed
 - `naming-enables-reuse` · vision · "Naming it is what lets you reuse it." ← none-owed
-- `three-scheduling-primitives` · detail · "Claude Code ships three scheduling primitives: local routines (from the Routines sidebar) for standing work on your laptop, `/loop` for in-session repetition, `/schedule` for cloud-backed remote Routines." ← cc-scheduling-primitives
-- `three-places-cadence-fits` · vision · "A standing verifier run … A scheduled codebase sweep … Rule-drift monitoring" ← none-owed
-- `skill-defines-check-runtime-supplies-cadence` · vision · "The skill defines the check. The runtime supplies the cadence or stopping condition." ← none-owed
 
 Sources
-- cc-scheduling-primitives `[checked:2026-04-24 result:OK due:cohort]` https://code.claude.com/docs/en/ — [capability] The body names three scheduling primitives and distinguishes local Routines from `/schedule`'s cloud-backed remote Routines. The check ran 2026-04-24 against the current documentation and is recorded here: `/schedule` is Routines, remote and cloud-backed; Desktop local tasks are a separate primitive. **A capability stamp records its own check.** Pointing at a paragraph in another file makes the stamp only as durable as that file's next edit, which is how this one nearly lost its evidence. fallback: teach the pattern (a kit skill is what the scheduled agent invokes) and name only the primitives a re-test confirms.
 
 Frameworks
 - eval = judge / verifier / gate · [borrow:none] · law:eval-judge-verifier-gate · ← none — the three-way split is banked as a law and taught as a definition; the words are in real use, the taxonomy is ours
@@ -68,7 +57,6 @@ Stance `[stance:2026-08-01 level:L1]`
 - holds: that the checks in hand share one family name and that the loop is a stance, not a model feature. House framing carried as a position; the lecture now carries no field number at all (the Intercom scaling slide was cut 2026-09-02, Antti: little added value).
 - contested: the vocabulary — checked 2026-08-02 (see Flagged), and the answer splits: *judge* is genuinely shared across the LLM-eval lineage (Husain, Shankar, Yan, Willison, Braintrust, LangSmith); *verifier* and *gate* are ours — the field says `code-based eval` / `assertion` / `grader` / `scorer` for the one and ships the behaviour without a shared word for the other. The body's define-rather-than-survey framing is therefore right, and the live question is only whether slide 1 earns one bridging clause naming the field's words (Flagged, first row).
 - decided: **judge / verifier / gate is stated as a definition, not a survey, 2026-08-01.** The bullet read *"Practitioners say judge…"*, attributing a three-way taxonomy to a field nobody had counted. The names are in real use; the split by check-type is ours. Do not restore the survey verb — the standing usage question lives in the OODA below and is worth answering, but the body no longer depends on the answer.
-- decided: **the scheduling bullet carries its own check, not a pointer at one.** The capability check backing it was recorded in `story-of-module-6.md`, one module over, and this file's stamp merely cited it — invisible from the file that depended on it, and dependent on prose the other lecture was free to cut. The check lives here now, stamped `result:OK` from its own 2026-04-24 date. `ATTESTED` was never the right label: that vocabulary is for a maintainer's first-hand witness, not a documentation read.
 - would-move-it: a usage sweep showing practitioners do not split the three words this way, which would turn slide 1 from recognition into invention and require the same "these are our names" candour M5's closer carries.
 
 OODA
@@ -85,7 +73,6 @@ Flagged
 
 **Watch-fors (delivery):**
 - Slide 1 names *eval* across the three shapes already in hand. The beat is three-names-one-thing; the word lands because the thing is in hand.
-- Scheduled-agents stays one slide, not a mini-lecture. Three places it fits, one reference-page pointer, move on. If the slide grows past 90 seconds in rehearsal, cut.
 - Monday-morning vs. M7 bridge — both are shipped in the lecture. The trainer or the room picks which lands.
 - Risto voice on "the specific Claude will be replaced." Flat epistemic candour, no sales varnish. This is the beat that carries the lecture past the current model's expiry date.
 
@@ -93,4 +80,4 @@ Flagged
 
 **Vocabulary split with `composing-the-workflow.md`.** That lecture is the concrete composition teacher (the passage chart + "a workflow is skills in the right order") and owns compose/workflow; it follows this one in deck order. This lecture owns reuse and placement — put the primitive on a PR, a nightly run, the next agent, the team kit — so slide 1's bullet lead reads "Naming it is what lets you reuse it", never "…compose". *eval* is this lecture's owned term; "workflow" appears once in body in the generic "any workflow with a quality bar" sense.
 
-**Placement:** M6 deck order (2026-09-02, three-beat re-cut, slides moved and re-tiered, body text untouched pending cards): the-2-frontiers → exercise `spot-gaps-build-the-loop` (diff + rule cut) → the-loop-has-a-name → `## The loop you drew` → composing-the-workflow (opens on the control-loop slide) → exercise `read-your-stack` → the-handoff-prompt (titled *Agents that build agents*) → story-of-module-6 → the-map-filled-in → quality-is-grounding → Human close → agents-that-build-agents (titled *There is no last turn*, last). The survives-the-model slide and its flywheel kicker moved to `agents-that-build-agents.md`; this file now ends on the cadence slide.
+**Placement:** M6 deck order (2026-09-02, three-beat re-cut, slides moved and re-tiered, body text untouched pending cards): the-2-frontiers → exercise `spot-gaps-build-the-loop` (diff + rule cut) → the-loop-has-a-name → `## The loop you drew` → composing-the-workflow (opens on the control-loop slide) → exercise `read-your-stack` → the-handoff-prompt (titled *Agents that build agents*) → story-of-module-6 → the-map-filled-in → quality-is-grounding → Human close → agents-that-build-agents (titled *There is no last turn*, last). The survives-the-model slide and its flywheel kicker moved to `agents-that-build-agents.md`; the cadence slide moved to `composing-the-workflow.md` as *Loop instead of you starting* (Antti 2026-09-02); this file now ends on the placement slide.

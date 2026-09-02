@@ -12,8 +12,8 @@ Optional pre-read before this module: Kieran Klaassen, [My AI Had Already Fixed 
 After this module, you will be able to:
 - **Diagnose** the gaps two sessions of the same task surface, and read where each belongs: memory, sharper verifier, or new skill
 - **Cut** one rule from `./CLAUDE.local.md` the diagnosis killed
-- **Map** evals across verifier, judge, and gate
-- **Encode** the lesson so the next loop inherits it
+- **Read** the checks you built as evals: a pass rate, not a pass
+- **Turn** the work you repeat across sessions into a handoff prompt that builds the kit
 
 ## Start here
 

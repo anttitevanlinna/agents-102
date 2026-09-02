@@ -11,12 +11,6 @@ What comes back is a prompt, not a plan. Save it where you will find it. The kit
 ## The agent stops where your judgement begins
 <!--tier:2-->
 
-Not the agent writing its own skills without you in the room. You might have hoped that was the destination at the start of this training; at the close of M6, you know it is not. Agents that build agents is a collaboration in the same shape as everything else here. Claude proposes, you steer.
-
-The agent's evidence stops at the disk. It can read the artefacts the loop produced. It cannot read the codebase knowledge in your head, the political situation around the team kit, the next quarter's roadmap, the bug your tech lead lost three days to last sprint. The plan it generates is grounded in the evidence on disk; the decision about which proposals to act on is grounded in evidence the agent does not have.
-
-Build the flywheel to run exactly that far. Let the agent run as far as it can on its own evidence, and stop at the moment your judgement is the input that matters. Anything further pretends the agent has access it does not have.
-
 ## The move widens to everything you do
 <!--tier:3-->
 
@@ -39,25 +33,24 @@ What comes back is a candidate. You read it the way you read any prompt the agen
 **Open for next pass:**
 - Real-cohort gold standard: the handoff-generator live-test that cleared pedagogy was sim-grade — constructed M6 context (six named shapes, a stand-in skill), and it predates the 2026-08-01 re-anchor (shapes + primitives, no shipped skill). A live-test on an actual student's M6 close (their real shapes, their ranked menu) is the real-cohort bar; owed until a cohort runs.
 
+**`## The agent stops where your judgement begins` — body cut whole, header kept (Antti 2026-09-02: *"This concept is right. But just wrongly written now."*).** The delegation-boundary beat is owed a rewrite; the old three paragraphs (not-the-agent-writing-its-own-skills / evidence-stops-at-the-disk / build-the-flywheel-to-run-exactly-that-far) are in git at `109ca335`. Do not restore them; write the beat fresh, carded.
+
 <!-- backing -->
 
 Claims
 - `every-packaged-move-cheapens-the-next-run` · vision · "Every packaged move makes the next session cheaper." ← none-owed
 - `hand-the-agent-the-move-itself` · vision · "The flywheel turns once more when you hand the agent the move itself." ← none-owed
 - `what-comes-back-is-a-candidate` · vision · "What comes back is a candidate." ← none-owed
-- `not-agent-writing-its-own-skills` · vision · "Not the agent writing its own skills without you in the room." ← none-owed
-- `agents-evidence-stops-at-the-disk` · vision · "The agent's evidence stops at the disk." ← none-owed
-- `stop-where-your-judgement-is-the-input` · vision · "stop at the moment your judgement is the input that matters" ← none-owed
 
 Sources
 (none. Every claim is a position about the student's own kit and the delegation boundary; the prompt block carries its own registry entry.)
 
 Frameworks
-- Principal–agent · [borrow:economics] · law:principal-agent · ← cultural-vocab — "the agent stops where your judgement begins" is the delegation boundary drawn at the limit of the agent's evidence
+- Principal–agent · [borrow:economics] · law:principal-agent · ← cultural-vocab — the slide header *The agent stops where your judgement begins* names the delegation boundary; body owed
 - The compound ladder · [borrow:none] · law:the-compound-ladder · ← none — the handoff runs the ladder one rung further: the move that packages moves
 
 Stance `[stance:2026-09-02 level:L1]`
-- holds: that a handoff prompt authored from the student's own session evidence is a candidate, not a plan, and that the agent's evidence stops at the disk. Both are house positions carried as positions.
+- holds: that a handoff prompt authored from the student's own session evidence is a candidate, not a plan. House position carried as a position.
 - contested: nothing external. The only open question is empirical and local: whether a real cohort's handoff comes back cold-runnable (see Open for next pass).
 - would-move-it: a real-cohort live-test on an actual student's close.
 

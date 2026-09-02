@@ -7,13 +7,6 @@ The quality arc ran the whole training. M1 opened with tests-first. M2 added pla
 
 Tests-first, plan push-back, skill, verifier, loop. That's the quality kit you walk out with.
 
-## Decay clears the gate
-<!--tier:3-->
-
-Tests answer in seconds; the verifier advises the agent. The costs that make a codebase hard to change land weeks later: the shortcut cast, the try-catch that swallows an error, the module that grew a second job. No gate fires on any of them, so a session can come back green and still leave the code worse than it found it.
-
-Coding models share the blind spot, Dex Horthy argues in [Why software factories fail](https://github.com/humanlayer/advanced-context-engineering-for-coding-agents/blob/main/wsff.md): they learned against checks that answer fast, and a cost that lands in weeks never reached them. The countermoves are the old discipline with a new job. [Clean Code Is Steering: Reading Uncle Bob's Agent Experiments](trainings/agentic-engineering-101/supplementary/clean-code-is-steering.md) carries that story: modularity, architecture visibility, metrics that make decay readable.
-
 ## From spec-and-tests to grounding
 
 Nobody reviews 500K lines by hand. Some of the early agentic engineering demos were single devs shipping 500K lines of code in weeks; the first Agentics Helsinki meetup, fall 2025, had two of them. The recurring theme: every generated line had to correspond to a spec, every feature had to be tested. Without that, no way to know the system works.
@@ -40,19 +33,17 @@ The agentic engineer maxes that signal out. You ship a million lines of new stuf
 
 **Lecture meta:** *Recognition slide (T2) plus two T3 slides, placed after `the-map-filled-in.md` and before the Human close since 2026-09-02. Names the quality arc threaded across the whole training.*
 
-**Time:** 5 min at presentation pace.
+**Time:** 4 min.
 
 **Delivery mode:** Read in-room late in M6, after the map; barebones drops the two T3 slides.
+
+**`## Decay clears the gate` cut whole (Antti 2026-09-02).** Horthy's software-factories argument and the pointer to *Clean Code Is Steering* went with it; the supplementary still carries the story and is linked from the theory handbook manifest. In git at `3552e8c2`. Do not restore.
 
 <!-- backing -->
 
 Claims
 - `quality-arc-ran-the-whole-training` · vision · "The quality arc ran the whole training." ← none-owed
 - `five-moves-one-discipline` · vision · "Tests-first, plan push-back, skill, verifier, loop. That's the quality kit you walk out with." ← none-owed — **header echo cut 2026-08-29 (Antti).** *"Five moves, one discipline"* opened the paragraph under a header reading `## Five moves, one quality discipline`. Second growth of the same shape: the 2026-08-25 lean pass cut *"Not one move learned in one module; the discipline, threaded through the whole training"* from this paragraph for the same reason. The header carries the summary; the paragraph carries the list. Do not restore a summary sentence here.
-- `fast-checks-miss-slow-costs` · vision · "Tests answer in seconds; the verifier advises the agent." ← none-owed
-- `decay-clears-the-gate` · vision · "a session can come back green and still leave the code worse than it found it" ← none-owed
-- `horthy-models-share-the-blind-spot` · detail · "they learned against checks that answer fast, and a cost that lands in weeks never reached them" ← horthy-wsff
-- `countermoves-are-old-discipline-new-job` · vision · "The countermoves are the old discipline with a new job." ← none-owed
 - `nobody-reviews-500k-by-hand` · vision · "Nobody reviews 500K lines by hand." ← none-owed
 - `500k-lines-in-weeks` · detail · "Some of the early agentic engineering demos were single devs shipping 500K lines of code in weeks" ← antti-agentics-helsinki, luma-agentics-helsinki
 - `spec-and-tests-was-the-theme` · detail · "every generated line had to correspond to a spec, every feature had to be tested" ← antti-agentics-helsinki

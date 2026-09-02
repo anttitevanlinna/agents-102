@@ -277,8 +277,8 @@ a claim about position. Do
 not reach for T2 to make a slide skippable; that is what T3 is for.
 
 **The rubric's one real gap, now closed.** A slide can recognise work from an EARLIER module while
-sitting before this module's first exercise — M6's *Five moves, one quality discipline* recognises
-M1–M5. Nothing mechanical separates that from recognising an exercise that has not run, so the file
+sitting before this module's first exercise — M6's *Five moves, one quality discipline* recognised
+M1–M5 (the slide was cut 2026-09-02; the rubric point stands). Nothing mechanical separates that from recognising an exercise that has not run, so the file
 declares it in its own maintainer block, one heading at a time:
 `**Pre-exercise T2 accepted:** "<header>" — <reason>`. Same shape and scope as the deixis check's hatch.
 

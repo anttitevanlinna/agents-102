@@ -18,7 +18,6 @@ Open a new Claude Code session in the existing M5 worktree (`../<repo-name>-m5`)
 
 - You hold two sessions of the same task. The un-packaged session sits on the `m4/<slug>` branch recorded in `task.md`; the packaged re-send sits on the `m5/<slug>` branch recorded in `plan.md`.
 - Read from the recorded coordinates, not a branch or transcript search. Both sessions recorded their transcript paths: M4 in `task.md`, M5 in the protected `Run coordinates` block at the top of `plan.md`.
-- You hold the contrast; the agent reads both sessions off disk. Point it at the coordinates and let it pull both sessions side by side.
 
 Ask Claude to read both sessions side by side and name where packaging caught, where it missed, and what new shapes of drift it introduced.
 
@@ -28,7 +27,7 @@ Ask Claude to read both sessions side by side and name where packaging caught, w
 
 - Skim past the opening plan. Claude will likely open with a four-dimension plan summary (*"I'll start with repo state across the m4/ branch, then..."*) before any quoted evidence lands. The contrast moments are what you're reading for.
 - Push back where Claude generalises. If Claude writes *"the agent drifted on goal"* without naming which commit, which file, which scrollback line, re-run the prompt with the quote rule re-asserted.
-- Expect over-credit on the packaging. A fair push-back is *"name one thing the verifier missed, concretely."* Close with a ranked gap list of three to five items and a dominant gap that shapes the rest of this phase.
+- Expect over-credit on the packaging. A fair push-back is *"name one thing the verifier missed, concretely."* Close with a ranked gap list of three to five items and a dominant gap.
 
 ## Cut one stale rule the diagnosis killed
 
@@ -93,7 +92,6 @@ Ask Claude to cut one rule the two-session diagnosis killed, or to say so and st
 Claims
 - `diff-two-runs-of-one-task` · vision · "diff two sessions of the same task." ← none-owed
 - `read-from-recorded-coordinates` · vision · "Read from the recorded coordinates, not a branch or transcript search." ← none-owed
-- `you-hold-the-contrast` · vision · "You hold the contrast; the agent reads both sessions off disk." ← none-owed
 - `push-back-where-claude-generalises` · vision · "If Claude writes *\"the agent drifted on goal\"* without naming which commit, which file, which scrollback line, re-run the prompt with the quote rule re-asserted." ← none-owed
 - `expect-over-credit-on-packaging` · vision · "A fair push-back is *\"name one thing the verifier missed, concretely.\"*" ← none-owed
 - `rules-files-have-a-half-life` · vision · "Adding rules is only half of it; subtracting the dead ones is the other half." ← none-owed

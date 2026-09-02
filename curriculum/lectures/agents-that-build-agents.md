@@ -5,10 +5,8 @@
 ## Why the loop survives the model
 
 - The specific Claude you used today will be replaced, probably within months. Each replacement will be better at the work than the current one. None of that changes the move.
-- The three pieces (reference, plan, verifier) are not model features. Neither is the encode loop you ran at M6 (diff, name the gaps, map where the lesson lands). They are a stance toward a thing that does not behave deterministically.
+- The three pieces (reference, plan, verifier) are not model features. They are a stance toward a thing that does not behave deterministically.
 - Practitioner fluency lives in the stance, not in the tooling. When the next model ships, you will open the same kit, point it at the same three pieces, and run the same loop. The work gets faster. The method does not.
-
-The loop feeds itself. That is the flywheel.
 
 ## You make agentic happen
 <!--tier:2-->
@@ -20,7 +18,7 @@ The loop feeds itself. That is the flywheel.
 ## There is no last turn
 
 - There is no last turn. Each session surfaces the next gap. Each gap proposes the next move. Each move makes the next session cheaper.
-- The kit compounds; the model rotates. The kit grows, the rules sharpen, the skills accumulate, and the model underneath gets replaced every few months without changing the move.
+- The kit compounds; the model rotates.
 
 The training closes. The flywheel does not.
 

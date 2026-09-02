@@ -1,7 +1,5 @@
 # Story of Module 6
 
-*The engineer who built this module ran the M5/M6 loop on its own creation. What follows is the memo from that session: a record of one engineer's struggle with the same loop you just ran.*
-
 I am going to tell you how this module got made. Not the pedagogy of it. The actual session. What I tried, what drifted, what the rules caught, what the rules missed.
 
 Then I am going to ask you to hold something uncomfortable about LLMs, based on the evidence of that session.
@@ -43,8 +41,6 @@ A rule in context is not a rule in the output. Taste closes the gap.
 ## Then I compounded the session
 
 I ran the M6 prompts on the M6 generation, comparing the two sessions side by side. That comparison found rules that lived in memory but were never enforced. I moved them into skills that block "done" until the check runs. A rule in memory that does not force is worse than no rule.
-
-Then I made countless fixes later on. As one example: the prework was missing pre-reads. I caught that only on a later glance through the module.
 
 The model is good. It is still not 100% deterministic.
 

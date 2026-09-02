@@ -1,12 +1,5 @@
 # Quality is grounding
 
-## Five moves, one quality discipline
-<!--tier:2-->
-
-The quality arc ran the whole training. M1 opened with tests-first. M2 added plan push-back: quality applied to the agent's intent before any code runs. M3 authored the test-strategy skill from this codebase's conventions. M5 built the verifier, shaped against the failures the un-packaged session actually showed.
-
-Tests-first, plan push-back, skill, verifier, loop. That's the quality kit you walk out with.
-
 ## From spec-and-tests to grounding
 
 Nobody reviews 500K lines by hand. Some of the early agentic engineering demos were single devs shipping 500K lines of code in weeks; the first Agentics Helsinki meetup, fall 2025, had two of them. The recurring theme: every generated line had to correspond to a spec, every feature had to be tested. Without that, no way to know the system works.
@@ -31,9 +24,9 @@ The agentic engineer maxes that signal out. You ship a million lines of new stuf
 
 - section-3 sweep 2026-07-02: 5 refs judged (M1/M2/M3/M5 in slide 1 + "whole training" arc line), 0 fixed, 5 carve-out — consolidation arc-lecture, the quality arc IS the subject; all refs backward-looking material, no forward sequencing in body (M7 mention is below the fence).
 
-**Lecture meta:** *Recognition slide (T2) plus two T3 slides, placed after `the-map-filled-in.md` and before the Human close since 2026-09-02. Names the quality arc threaded across the whole training.*
+**Lecture meta:** *One slide, the grounding thesis, placed after `the-map-filled-in.md` and before the Human close since 2026-09-02. The five-moves recognition slide and the decay slide were cut the same day (Antti); in git at `b8cb4190`.*
 
-**Time:** 4 min.
+**Time:** 3 min.
 
 **Delivery mode:** Read in-room late in M6, after the map; barebones drops the two T3 slides.
 
@@ -42,8 +35,6 @@ The agentic engineer maxes that signal out. You ship a million lines of new stuf
 <!-- backing -->
 
 Claims
-- `quality-arc-ran-the-whole-training` · vision · "The quality arc ran the whole training." ← none-owed
-- `five-moves-one-discipline` · vision · "Tests-first, plan push-back, skill, verifier, loop. That's the quality kit you walk out with." ← none-owed — **header echo cut 2026-08-29 (Antti).** *"Five moves, one discipline"* opened the paragraph under a header reading `## Five moves, one quality discipline`. Second growth of the same shape: the 2026-08-25 lean pass cut *"Not one move learned in one module; the discipline, threaded through the whole training"* from this paragraph for the same reason. The header carries the summary; the paragraph carries the list. Do not restore a summary sentence here.
 - `nobody-reviews-500k-by-hand` · vision · "Nobody reviews 500K lines by hand." ← none-owed
 - `500k-lines-in-weeks` · detail · "Some of the early agentic engineering demos were single devs shipping 500K lines of code in weeks" ← antti-agentics-helsinki, luma-agentics-helsinki
 - `spec-and-tests-was-the-theme` · detail · "every generated line had to correspond to a spec, every feature had to be tested" ← antti-agentics-helsinki

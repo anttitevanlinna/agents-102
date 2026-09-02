@@ -1,12 +1,10 @@
 # Composing the workflow
 
-You have a kit now: a test-strategy skill, a verifier, and a freshly drawn map of the moves worth packaging next. A workflow is those moves in the right order around one passage.
-
 ## You drew a control loop
 
 {{figure:student-closed-loop}}
 
-- You drew a control loop. Shape the session before it moves, watch what comes back, correct, encode. That is **feedback control** around a non-deterministic agent, and it is the shape the whole map has had from the start.
+- You drew a control loop. Shape the session before it moves, watch what comes back, correct, encode. That is **feedback control** around a non-deterministic agent.
 - The near half shapes; the far half corrects. Intent, context, and the plan set the target before the session starts; the far half reads what came back, takes up what passed, and encodes what the session taught, changing the system so the next session starts better.
 - Verification is the sensor. A loop with no way to read its own result runs open: send the work off and hope. The checks you built are how this loop reads what came back. They are the part that lets the system catch its own error before it ships.
 - The harness makes continuing possible. What a session gets right without you is set by what has accumulated around it: rules, durable state, checks, encoded corrections. The M4 send-off and the M5 re-send: same model, same harness, two different agents.
@@ -14,24 +12,22 @@ You have a kit now: a test-strategy skill, a verifier, and a freshly drawn map o
 ## Loop instead of you starting
 <!--tier:3-->
 
-- One thing a kit skill can do that you did not try today: run on a schedule. Claude Code ships three scheduling primitives: local routines (from the Routines sidebar) for standing work on your laptop, `/loop` for in-session repetition, `/schedule` for cloud-backed remote Routines. The pattern is the same across all three: a skill from your kit is the thing the scheduled agent invokes.
+- A kit skill can run on a schedule. Claude Code ships three scheduling primitives: local routines (from the Routines sidebar) for standing work on your laptop, `/loop` for in-session repetition, `/schedule` for cloud-backed remote Routines. The pattern is the same across all three: a skill from your kit is the thing the scheduled agent invokes.
 - Three places this fits naturally. A standing verifier run: a judge reads the most recent long-running send-off and has a summary waiting when you open the laptop. A scheduled codebase sweep: a gap-finder reads the repo for the drift shape you saw at M5 and opens an issue when it finds one. Rule-drift monitoring: a judge reads the root rules file against the recent commit log and names where the rules and the code disagree.
-- You do not have to wire it today; you do need to know the eval can run on cadence. The skill defines the check. The runtime supplies the cadence or stopping condition.
+- The skill defines the check. The runtime supplies the cadence or stopping condition.
 
 ## A skill's footprint is where its job lands
 <!--tier:3-->
 
 {{figure:skill-sea-passage}}
 
-- A **skill** is a named move you reach for. Single purpose, reusable, invoked by name. Your test-strategy and your verifier are moves you already own; your stack-map names the ones worth building next. You reach for one where the passage needs it, not rebuild it each session.
+- A **skill** is a named move you reach for. Single purpose, reusable, invoked by name.
 - One move takes a single fix at a turning point. Another carries a whole leg. A third runs at the pier, before the first leg. You never size a skill in advance. The job sizes it.
 
 ## From skills to a workflow
 <!--tier:3-->
 
-- A session passes through phases: context, plan, build, verify, ship.
 - The field wires kits more ways than one; no way has won. Pocock ships a public kit with no orchestrator: you call each skill by hand. Klaassen chains steps through files on disk, a gate at every seam. Some workflows have a pilot; many do not.
-- One documented kit wires skills. One skill names another as a precondition: **an explicit load**. One sequences and gates a chain: **an orchestrator**, the pilot. A rule in `./CLAUDE.md` matches a file or phrase: **routing**. One hands its output to the next: **a hand-off**. A skill that does one job and calls nothing is a **leaf**.
 - A workflow is not only steps in order. At a seam, a check or stop condition decides whether the next step may begin.
 - Your job moves from reading every intermediate output to designing the checks, routes, and exceptions that deserve your judgment.
 
@@ -43,7 +39,7 @@ You have a kit now: a test-strategy skill, a verifier, and a freshly drawn map o
 
 **Lean pass (2026-08-25):** cut "Same passage, same drift, same fixes and guardrails." from slide-1 bullet 3 — the figure shows it. Do not restore.
 
-**Emphasis budget (Antti-directed "go very lightly on the bold"):** bold = handles only — slide 1: **skill** sub-span (the **footprint** span left with its sentence, 2026-09-02); slide 2: the four wiring mechanisms (**an explicit load** / **an orchestrator** / **routing** / **a hand-off**) plus **leaf** at its definition; *pilot* stays plain as the chart-to-field bridge; all other bullets plain (the chart caption already carries "the value is the order, not the count") — per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Lede, SVG, and the two supplementary links carry no bold.
+**Emphasis budget (Antti-directed "go very lightly on the bold"):** bold = handles only — slide 1: **skill** sub-span (the **footprint** span left with its sentence, 2026-09-02); slide 2: no bold left (the wiring-taxonomy bullet was cut 2026-09-02, Antti — the Dino / Pocock example slides will carry those mechanisms by name); *pilot* stays plain as the chart-to-field bridge; all other bullets plain (the chart caption already carries "the value is the order, not the count") — per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Lede, SVG, and the two supplementary links carry no bold.
 
 **Quality:** compendium-audited 2026-08-29 (writing@4a722813 story@0e4f7c9e technical@8cc00874 behavior@1c765f2 pedagogy@1abb84c6 strategy@1c765f2 slides@0e4f7c9e)
 - judges @4a722813: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS
@@ -62,7 +58,7 @@ You have a kit now: a test-strategy skill, a verifier, and a freshly drawn map o
 
 **Lecture meta:** *Opens the loop beat with the control-loop slide (from `the-map-filled-in.md`, T1), then three T3 slides teaching what a workflow-of-skills IS on the M5 passage, handing off to the worked example and the field survey. The register-shift line ("no prompt to drill; the move is to read") stays. Title awaits a card now that the file opens on the loop.*
 
-**Time:** 8 min at presentation pace.
+**Time:** 6 min at presentation pace.
 
 **Delivery mode:** In-room, chart projected. Barebones drops the three T3 slides and keeps the control loop.
 
@@ -79,15 +75,12 @@ Claims
 - `three-scheduling-primitives` · detail · "Claude Code ships three scheduling primitives: local routines (from the Routines sidebar) for standing work on your laptop, `/loop` for in-session repetition, `/schedule` for cloud-backed remote Routines." ← cc-scheduling-primitives
 - `three-places-cadence-fits` · vision · "A standing verifier run … A scheduled codebase sweep … Rule-drift monitoring" ← none-owed
 - `skill-defines-check-runtime-supplies-cadence` · vision · "The skill defines the check. The runtime supplies the cadence or stopping condition." ← none-owed
-- `a-workflow-is-moves-in-order` · vision · "A workflow is those moves in the right order around one passage." ← none-owed
 - `skill-is-a-named-move` · vision · "A **skill** is a named move you reach for. Single purpose, reusable, invoked by name." ← none-owed
 - `never-size-a-skill-in-advance` · vision · "You never size a skill in advance. The job sizes it." ← none-owed
-- `four-wiring-mechanisms` · detail · "One documented kit wires skills. … **an explicit load** … **an orchestrator** … **routing** … **a hand-off**" ← skill-stacking-supp
 - `field-wires-more-ways-than-one` · detail · "The field wires kits more ways than one; no way has won." ← lineages-supp
 - `pocock-by-hand` · detail · "Pocock ships a public kit with no orchestrator: you call each skill by hand." ← lineages-supp
 - `klaassen-file-chained` · detail · "Klaassen chains steps through files on disk, a gate at every seam." ← lineages-supp
 - `many-kits-keep-zero-pilots` · detail · "Some workflows have a pilot; many do not." ← skill-stacking-supp, lineages-supp
-- `pilot-and-leaf-defined` · detail · "**an orchestrator**, the pilot … A skill that does one job and calls nothing is a **leaf**." ← skill-stacking-supp
 - `seam-check-decides-whether-next-step-begins` · vision · "At a seam, a check or stop condition decides whether the next step may begin." ← none-owed
 - `workflow-designer-owns-checks-routes-exceptions` · vision · "Your job moves from reading every intermediate output to designing the checks, routes, and exceptions that deserve your judgment." ← none-owed
 

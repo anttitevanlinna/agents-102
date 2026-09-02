@@ -12,10 +12,8 @@ Optional pre-read before this module: Kieran Klaassen, [My AI Had Already Fixed 
 After this module, you will be able to:
 - **Diagnose** the gaps two sessions of the same task surface, and read where each belongs: memory, sharper verifier, or new skill
 - **Cut** one rule from `./CLAUDE.local.md` the diagnosis killed
-- **Surface** the kinds of work you repeat across your stack, and draw their recurring shapes
 - **Map** evals across verifier, judge, and gate
 - **Encode** the lesson so the next loop inherits it
-- **Generalize** the shapes you mapped into a handoff prompt that builds your workflow skills across your stack
 
 ## Start here
 
@@ -48,18 +46,12 @@ You walk in holding two sessions of the same task. The un-packaged Module 4 send
 ## Human close
 <!--tier:2-->
 
-No compound prompt here. The exercise's gap map and stack-map are the Module 6 compound; the encode-move lands inside the last lecture. This slot is a human round: talk, compare, no prompts.
-
-*Two sessions of the same task, read to the bone. The loop, yours.*
-
-**Self-study variant.** Close the laptop. If you can put the move in one sentence, that's the marker; no further articulation required.
+This slot is a human round: talk, compare, no prompts.
 
 [There is no last turn](lectures/agents-that-build-agents.md)
 
 ## Optional challenges
 <!--tier:1-->
-
-Pick one when you want to turn your kit back on itself.
 
 - Build a universal skill loader that works from any directory, finds every skill available to the current project, and loads the one the task needs.
 - Write an eval for system-design quality and architectural compliance. Make it a required PR check that blocks changes which violate your architecture.
@@ -85,7 +77,7 @@ Pick one when you want to turn your kit back on itself.
 
 **Human close's "talk, compare, no prompts" stays in body — `check_pedagogy.md` §27 mode-defining-cue carve-out (maintainer call).** The cue defines the slot's mode against a training that is otherwise prompts; the round's form (pairs, whole-room, write-then-share) stays the trainer's per the strategy doc's M6 Debrief spec. Future judges should not re-flag.
 
-**`## Human close` is a pre-close beat, not the module's ending (2026-08-19, Antti-directed: *"human close can be a beat before actual full closing. It is deliberately there to have the time for closing conversations."*).** The slot buys room time for the closing conversation while the closing lecture and `## Optional challenges` still follow. A story judge scoring close mood reads those four trailing sections as an ending that will not end and files `check_strategy_tie_in.md` §1 against the beat's own framing (*"no compound prompt here... talk, compare, no prompts"*, the identity line, the self-study *"Close the laptop"*). The trailing count is the design and it is not high: M6 carries fewer sections after its last teaching beat than M4 or M5, neither `## Bring to Module N` nor `## Pre-reads` applying to the terminal module. Do not move the beat later, do not fold it into `## Next`, and do not soften its framing to acknowledge what follows — the conversation needs a named slot, and the name is what makes a trainer stop for it. The self-study variant's *"Close the laptop"* is the solo form of the same break. Future judges should not re-flag.
+**`## Human close` is a pre-close beat, not the module's ending (2026-08-19, Antti-directed: *"human close can be a beat before actual full closing. It is deliberately there to have the time for closing conversations."*).** The slot buys room time for the closing conversation while the closing lecture and `## Optional challenges` still follow. A story judge scoring close mood reads those four trailing sections as an ending that will not end and files `check_strategy_tie_in.md` §1 against the beat's own framing (*"no compound prompt here... talk, compare, no prompts"*, the identity line, the self-study *"Close the laptop"*). The trailing count is the design and it is not high: M6 carries fewer sections after its last teaching beat than M4 or M5, neither `## Bring to Module N` nor `## Pre-reads` applying to the terminal module. Do not move the beat later, do not fold it into `## Next`, and do not soften its framing to acknowledge what follows — the conversation needs a named slot, and the name is what makes a trainer stop for it. Future judges should not re-flag.
 
 **Quality:** compendium-audited 2026-08-30 (writing@4a722813 story@85515fa0 technical@8cc00874 behavior@1c765f2 pedagogy@85515fa0 strategy@85515fa0 slides@297eb2f9)
 - judges @85515fa0: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

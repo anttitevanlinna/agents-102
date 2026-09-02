@@ -1,10 +1,10 @@
 # The 2 frontiers of learning
 
-## Two frontiers still open: speed and direction
+## Two frontiers
 
-- The agent is building the agentic loop now. Agents building agents.
-- Frontier one: speed of learning. How can a system like this learn faster than a human practitioner can write things down?
-- Frontier two: direction of learning. Once it can learn fast, how does it learn the right things, and not just any things?
+- The model's frontier moves without you. Every release, it can do more.
+- Your frontier is what you have expressed. It moves when you write, and only then.
+- Two questions sit on your frontier. Can your system learn fast, and can it learn the right things?
 
 <!-- maintainer -->
 
@@ -33,12 +33,12 @@
 <!-- backing -->
 
 Claims
-- `agent-builds-the-loop-now` · vision · "The agent is building the agentic loop now. Agents building agents." ← none-owed
-- `frontier-one-speed` · vision · "How can a system like this learn faster than a human practitioner can write things down?" ← none-owed
-- `frontier-two-direction` · vision · "Once it can learn fast, how does it learn the right things, and not just any things?" ← none-owed
+- `model-frontier-moves-without-you` · vision · "The model's frontier moves without you." ← none-owed
+- `your-frontier-is-what-you-expressed` · vision · "Your frontier is what you have expressed. It moves when you write, and only then." ← none-owed
+- `two-questions-on-your-frontier` · vision · "Can your system learn fast, and can it learn the right things?" ← none-owed
 
 Sources
-(none. Every line is a question the arc leaves open; the lecture asserts nothing about the world.)
+(none. House positions and one open question; the lecture asserts nothing sourced about the world.)
 
 Frameworks
 - Learning rate is the ceiling · [borrow:none] · law:learning-rate-is-the-ceiling · ← none — frontier one is this law posed as a question

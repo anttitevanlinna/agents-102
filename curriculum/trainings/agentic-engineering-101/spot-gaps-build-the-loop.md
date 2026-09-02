@@ -66,20 +66,9 @@ Pick one when you want to turn your kit back on itself.
 - Ship one skill for your team and get it adopted. Two teammates must use it on real work and send back one improvement each.
 - Build a system that shows which skills, hooks, and rules in your kit fired across recent sessions, and which never fired at all.
 
-## Next
-<!--tier:3-->
-
-The next task you start, package it and send it off, then read what comes back through the lens you built. The reading is the loop, not the sending. It's yours now.
-
-The training opened on a trick. The loop is how the next one gets found on purpose.
-
-**Going deeper:** [How the best do CI/CD at agent scale](trainings/agentic-engineering-101/supplementary/how-the-best-do-ci-cd.md), for when this loop has to scale past you.
-
-Keep on learning and sharing.
-
-Antti
-
 <!-- maintainer -->
+
+**`## Next` cut whole (Antti 2026-09-02).** The send-off paragraph, the *going deeper* link to `supplementary/how-the-best-do-ci-cd.md`, the *Keep on learning and sharing* line and the author sign-off: in git at `fe8fde13`. Terminal-module exception to `module-shape.md`; the CI/CD supplementary now has no in-module link. Do not restore.
 
 **`## Key Concepts` cut whole (Antti 2026-09-02: *"nobody wants to come back to that at end of full training"*).** Terminal-module exception to `module-shape.md` § Key Concepts and `check_strategy_tie_in.md` §§5–6; judges should not re-flag. The six bullets are in git at `fedd3bdc`. Two of them had no other student-facing home and are owed a beat, carded: the independence kernel (*a check proves something only where it could say no; a judge in the producer's window cannot say no exactly where the producer went wrong*) → the loop-diagnosis exercise; the subtraction doctrine (*encoding subtracts as well as adds: add, sharpen, delete*) → beat 1, beside the rule cut. `theory-plan.md` § Rule-load ceiling named KC bullet 6 as that clause's reminder-slot home; the home is now owed, not held.
 
@@ -90,15 +79,13 @@ Antti
 **The rescue callout's lecture line is triage, not a ranking of lectures against exercises (2026-08-15, Antti).** The line is scoped to the moment: *"If the room starts the lecture while you are still getting a session going, stay with the rescue and read it afterwards."* The room-parallelism is the point — others sit the lecture while this student fixes a session — so keep the line, and keep it conditional. Do not widen it into a lectures-are-skippable doctrine, and do not cut the beat: a stranded student needs permission to spend room time on the rescue.
 
 
-**Capstone-close sign-off — deliberate exception to `check_writing.md` rule 6** (creator-name ban). The `## Next` section closes with a personal sign-off from the curriculum author (the bare-name line after *"Keep on learning and sharing."*). M6 is the AE101 core arc's final module; the close earns the human voice that the practitioner-fluency mood warrants. Per the rule's second exception (added 2026-05-03), the signature is in-scope-by-design for capstone-module closes. Future judges should not re-flag.
-
 **Backpressure vocabulary:** da Costa's essay is the M3→M4 gap read and M4's closing lecture names the term in the room, two modules back by the time the student arrives here. M6 assigns no reading on it and does not restate the word: the `## Prework` echo carries Klaassen, and the M6 close stays concrete about checks at workflow seams. `the-map-filled-in.md` remains the sole M6 recap of generation speed, review bandwidth, and evals buying capacity back.
 
 **M6 opener rescue + accept-loss callouts — deliberate exception to `check_student_facing.md` rule 5 (golden path only in body).** Two consecutive blockquotes in `## Start here` carry the rescue paths (nudge / re-send fresh / skip the opener) and the accept-the-loss floor ("you can still do the module's exercises"). Rule 5 normally bans recovery branches in body; here the structural risk (M5 run crashed during lunch in 2-day delivery) is named with scoped rescue, then a softer floor for the case where rescue fails entirely. The blockquote shape isolates both from the golden-path narrative for prepared students. The two blockquote leads (**Packaged session thin or missing?** / **Just can't get the M5 session working?**) are accepted menu-style handles under `check_slides.md` §9's reading-list carve-out. Future judges should not re-flag.
 
 **Human close's "talk, compare, no prompts" stays in body — `check_pedagogy.md` §27 mode-defining-cue carve-out (maintainer call).** The cue defines the slot's mode against a training that is otherwise prompts; the round's form (pairs, whole-room, write-then-share) stays the trainer's per the strategy doc's M6 Debrief spec. Future judges should not re-flag.
 
-**`## Human close` is a pre-close beat, not the module's ending (2026-08-19, Antti-directed: *"human close can be a beat before actual full closing. It is deliberately there to have the time for closing conversations."*).** The slot buys room time for the closing conversation while the closing lecture, `## Optional challenges` and `## Next` still follow. A story judge scoring close mood reads those four trailing sections as an ending that will not end and files `check_strategy_tie_in.md` §1 against the beat's own framing (*"no compound prompt here... talk, compare, no prompts"*, the identity line, the self-study *"Close the laptop"*). The trailing count is the design and it is not high: M6 carries fewer sections after its last teaching beat than M4 or M5, neither `## Bring to Module N` nor `## Pre-reads` applying to the terminal module. Do not move the beat later, do not fold it into `## Next`, and do not soften its framing to acknowledge what follows — the conversation needs a named slot, and the name is what makes a trainer stop for it. The self-study variant's *"Close the laptop"* is the solo form of the same break. Future judges should not re-flag.
+**`## Human close` is a pre-close beat, not the module's ending (2026-08-19, Antti-directed: *"human close can be a beat before actual full closing. It is deliberately there to have the time for closing conversations."*).** The slot buys room time for the closing conversation while the closing lecture and `## Optional challenges` still follow. A story judge scoring close mood reads those four trailing sections as an ending that will not end and files `check_strategy_tie_in.md` §1 against the beat's own framing (*"no compound prompt here... talk, compare, no prompts"*, the identity line, the self-study *"Close the laptop"*). The trailing count is the design and it is not high: M6 carries fewer sections after its last teaching beat than M4 or M5, neither `## Bring to Module N` nor `## Pre-reads` applying to the terminal module. Do not move the beat later, do not fold it into `## Next`, and do not soften its framing to acknowledge what follows — the conversation needs a named slot, and the name is what makes a trainer stop for it. The self-study variant's *"Close the laptop"* is the solo form of the same break. Future judges should not re-flag.
 
 **Quality:** compendium-audited 2026-08-30 (writing@4a722813 story@85515fa0 technical@8cc00874 behavior@1c765f2 pedagogy@85515fa0 strategy@85515fa0 slides@297eb2f9)
 - judges @85515fa0: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

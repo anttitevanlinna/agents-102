@@ -1,211 +1,219 @@
 {
- "class": "slides",
- "file": "curriculum/exercises/build-your-system.md",
- "verdict": "PASS_WITH_TODOS",
- "training": "claude-basics",
- "body_sha": "7503c6c46c7762a91b2220af16f68eaa4ed444dcb186635f66e16f98dd45c9d3",
- "shape_hash": "9c29c4cb7bb3834b",
- "chunk_map": [
-  {
-   "index": 0,
-   "heading": "(title) Exercise: Build your system",
-   "lines": "1-12"
-  },
-  {
-   "index": 1,
-   "heading": "Phase 0. Add base material (3 minutes)",
-   "lines": "13-23"
-  },
-  {
-   "index": 2,
-   "heading": "Phase 1. The boring baseline (5 minutes)",
-   "lines": "24-54"
-  },
-  {
-   "index": 3,
-   "heading": "Phase 2. Create the style system (7 minutes)",
-   "lines": "55-90"
-  },
-  {
-   "index": 4,
-   "heading": "Phase 3. Style it from the saved system (4 minutes)",
-   "lines": "91-112"
-  },
-  {
-   "index": 5,
-   "heading": "Phase 4. Save what you noticed (7 minutes)",
-   "lines": "113-138"
-  },
-  {
-   "index": 6,
-   "heading": "Style Is Just One Aspect",
-   "lines": "139-146"
-  }
- ],
- "rules_evaluated": [
-  {
-   "compendium": "check_slides.md",
-   "rule_index": 1,
-   "rule_lead": "Referent resolution under a sequential deck read.",
-   "verdict": "PASS",
-   "chunks_flagged": [],
-   "evidence": "Walked all 7 chunks. Closest candidate: chunk 4 'Phase 3' line 111, 'One thing should look more like the source.' Two prior candidates exist by full history -- chunk 1's `sources/` subfolder of base material (lines 15,17,21) and chunk 3's 'style source' (lines 68,82, 'The style source is:') -- but they stay distinguishable: the subfolder is always code-formatted `sources/`, plural, while chunk 4's topic is explicitly restyling-from-the-saved-system, so prose-singular 'the source' reads as 'the style source' by adjacency and register. Stays inside. Elsewhere: 'the task' (chunk 0 line 7, reused literally chunks 2/5 lines 28,132) is arc-earned within-file; 'the styles it used'/'the style audit' (chunk 2 line 44, chunk 3 line 66) resolve to the immediately preceding same-session prompt (session-artifact carve-out); 'the folder setup you just created' (chunk 4 line 95) is immediate continuation of chunk 3's subject. No never-named or vague-with-full-history referent found.",
-   "fix_hint": null,
-   "blocking": true
-  },
-  {
-   "compendium": "check_slides.md",
-   "rule_index": 2,
-   "rule_lead": "Cross-file and positional callbacks.",
-   "verdict": "PASS",
-   "chunks_flagged": [],
-   "evidence": "Zero in-body links: `grep -n '\\[.*\\](' curriculum/exercises/build-your-system.md` -> no match (exit 1). No prose phrase locating another file by position anywhere in the body. Chunk 6's closer ('This exercise used style because visual differences are easy to see. The same pattern works for any output quality you need to steer.') sums this file's own arc -- the allowed closer pattern, not a cross-file pointer.",
-   "fix_hint": null,
-   "blocking": true
-  },
-  {
-   "compendium": "check_slides.md",
-   "rule_index": 3,
-   "rule_lead": "Every backward reference points at a beat that exists.",
-   "verdict": "PASS",
-   "chunks_flagged": [],
-   "evidence": "Only backward beat reference in the body: chunk 5 line 115, 'Use what you noticed in Phase 3.' Resolves against chunk 4's own header, '## Phase 3. Style it from the saved system (4 minutes)' (lines 91-112) -- a beat that exists in this exact file, named by title not position.",
-   "fix_hint": null,
-   "blocking": true
-  },
-  {
-   "compendium": "check_slides.md",
-   "rule_index": 4,
-   "rule_lead": "Live-demo beats survive a text read.",
-   "verdict": "N/A",
-   "chunks_flagged": [],
-   "evidence": null,
-   "na_reason": "no guess/predict/reveal construction anywhere in the file -- no live-demo beat present",
-   "fix_hint": null,
-   "blocking": true
-  },
-  {
-   "compendium": "check_slides.md",
-   "rule_index": 5,
-   "rule_lead": "No orphan slides.",
-   "verdict": "PASS",
-   "chunks_flagged": [],
-   "evidence": "Shortest chunk is 1 ('Phase 0', lines 13-23): still carries a full self-contained instruction (create `sources/`, add one or two base materials, two example bullet types). No chunk in the 7-chunk deck is a bare wait-state or single context-dependent bullet.",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_slides.md",
-   "rule_index": 6,
-   "rule_lead": "Header self-carries at projection distance.",
-   "verdict": "PASS",
-   "chunks_flagged": [],
-   "evidence": "Checked all 6 body headers against their chunk content: 'Phase 0. Add base material' -> creates `sources/` + adds materials (13-23); 'Phase 1. The boring baseline' -> plain-prompt draft + self-audit, deliberately generic (24-54); 'Phase 2. Create the style system' -> builds `styling-rules.md` + `CLAUDE.md` (55-90); 'Phase 3. Style it from the saved system' -> restyles `response.html` from the saved files (91-112); 'Phase 4. Save what you noticed' -> turns an observation into a new rule (113-138); 'Style Is Just One Aspect' -> generalises past style to any steerable output quality (139-146). No header contradicted by its own chunk.",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_slides.md",
-   "rule_index": 7,
-   "rule_lead": "LLM-cadence caps.",
-   "verdict": "PASS",
-   "chunks_flagged": [],
-   "evidence": "Scanned all 7 chunks against all 6 sub-patterns. 'Not X. Not Y. Z.': none (no such construction anywhere). Anaphora/epistrophe triples: none. Self-grading superlative (blocking sub-item): none -- no 'one of the most useful' style claim anywhere; the file lets the visible before/after (Phase 1 vs Phase 3 output) carry the value claim instead of naming it. Number+retraction: none -- the only numbers are the hard, non-hedged phase-time budgets (3/5/7/4/7 minutes). Abstraction-noun stacks: none -- vocabulary stays concrete (folder, file, prompt, rule, source). Empty-leg verb triplets: none.",
-   "fix_hint": null,
-   "blocking": true
-  },
-  {
-   "compendium": "check_slides.md",
-   "rule_index": 8,
-   "rule_lead": "Internal dialect never lands on a slide.",
-   "verdict": "PASS",
-   "chunks_flagged": [],
-   "evidence": "`grep -nE '\\b(surface|firing|compendium|forcing function|beat|mood|Connections)\\b' curriculum/exercises/build-your-system.md` -> 0 hits (verified by re-reading the raw body for the same terms). No repo/maintainer dialect lands on any slide; register throughout is plain engineer-facing (folder, task, rule, prompt).",
-   "fix_hint": null,
-   "blocking": true
-  },
-  {
-   "compendium": "check_slides.md",
-   "rule_index": 9,
-   "rule_lead": "Emphasis budget -- bold is for handles, and go very lightly.",
-   "verdict": "PASS",
-   "chunks_flagged": [],
-   "evidence": "All `**...**` spans in the body are either the `**Time:**` corpus-wide template label (confirmed via `grep -rln '^\\*\\*Time:\\*\\*' curriculum/exercises/ | wc -l` -> 40 files use it identically -- a mandated field, not a discretionary handle) or `**Session**`/`**Prompt**` widget-type markers, which `widgets.md` documents the renderer as stripping ('badge + body, drop the label strong') so they never render as bold prose at all. Excluding both, exactly ONE prose-bold handle remains in the whole file: chunk 0 line 7, '**The task**' -- a coined handle for the exercise's central deliverable, used unbolded at every later mention (chunks 2, 5). Zero non-templated, non-widget bold in chunks 1-6. Comfortably within the <=1-per-slide budget everywhere.",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_slides.md",
-   "rule_index": 10,
-   "rule_lead": "Presence precedes content -- verify against the composed deck, not long-read.",
-   "verdict": "PASS",
-   "chunks_flagged": [],
-   "evidence": "File is included via the standard standalone-paragraph link `[Exercise: Build your system](exercises/build-your-system.md)` (curriculum/trainings/claude-basics/homework-build-and-verify.md:28) -- the structural-include pattern rule 13 itself names as 'how the file gets inlined' into `.phase--exercise`. Confirmed reachable by the slide tooling: `node scripts/check-slide-size.js --file curriculum/exercises/build-your-system.md` -> 'files: 1 slides: 6 ... every slide is within limits', i.e. the renderer's own chunker successfully slices this file into 6 slides.",
-   "fix_hint": null,
-   "blocking": true
-  },
-  {
-   "compendium": "check_slides.md",
-   "rule_index": 11,
-   "rule_lead": "Numbering -- position is computed, content ordinals are linted.",
-   "verdict": "REVISE",
-   "chunks_flagged": [1, 2, 3, 4, 5],
-   "evidence": "`node scripts/check-slide-numbering.js --training claude-basics` (also reproduced with `--file curriculum/exercises/build-your-system.md`) -> exit 1, 5 problems: 'Phase sequence broken -- expected Phase 1, found \"## Phase 0. Add base material (3 minutes)\"' (line 13), and successively 'expected Phase 2/3/4/5' against the file's actual 'Phase 1/2/3/4' headers (lines 24, 55, 91, 113). This is the ONLY file in the whole corpus using '## Phase 0.' -- `grep -rln '^## Phase 0\\.' curriculum/exercises/ curriculum/trainings/` returns only this file, and the AE101 default gate (`node scripts/check-slide-numbering.js`, no flags) still reports 'OK -- 62 files' because that scan is scoped to the AE101 registry and never reaches this claude-basics file. Harm is real, not just shape-matched: the compendium's own guard script is wired into `npm test` and is currently RED for the claude-basics training because of this file, and a room reading a deck promised 'Five phases' (line 3) that then projects 'Phase 0' first is an unexplained, corpus-unprecedented off-by-one.",
-   "fix_hint": "Renumber Phase 0->1, 1->2, 2->3, 3->4, 4->5 (five phases, matching line 3's 'Five phases'), and bump chunk 5 line 115's in-file reference 'Use what you noticed in Phase 3' to 'Phase 4' to match the renumbered header -- rule 11 requires both the headers and every in-file reference move together.",
-   "blocking": false
-  },
-  {
-   "compendium": "check_slides.md",
-   "rule_index": 12,
-   "rule_lead": "Page geometry dies at the cut; reading order survives.",
-   "verdict": "PASS",
-   "chunks_flagged": [],
-   "evidence": "`node scripts/check-slide-deixis.js --file curriculum/exercises/build-your-system.md` -> 'OK -- 1 files, no page-geometry pointers across the slide cut.' Closest candidate: chunk 3 line 68, 'Use the website or style source I give you below,' paired with line 82's 'The style source is:' -- both sit inside the SAME chunk (lines 55-90), the explicit same-`##`-chunk carve-out. No 'above/below/further down' language anywhere else in the body.",
-   "fix_hint": null,
-   "blocking": true
-  },
-  {
-   "compendium": "check_slides.md",
-   "rule_index": 13,
-   "rule_lead": "In-deck links work now; whether they EARN their place is open.",
-   "verdict": "N/A",
-   "chunks_flagged": [],
-   "evidence": null,
-   "na_reason": "no in-body links present (grep for markdown link syntax returns zero matches)",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_slides.md",
-   "rule_index": 14,
-   "rule_lead": "Slide size -- 210 words / 6 bullets, and the cap is machine-checked.",
-   "verdict": "PASS",
-   "chunks_flagged": [],
-   "evidence": "`node scripts/check-slide-size.js --file curriculum/exercises/build-your-system.md` -> 'files: 1 slides: 6 limits: 210 words / 6 bullets oversized: 0 ... every slide is within limits.' No accept-note needed.",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_slides.md",
-   "rule_index": 15,
-   "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
-   "verdict": "PASS",
-   "chunks_flagged": [],
-   "evidence": "All 5 Phase headers are imperative/phase-label form ('Add base material', 'The boring baseline', 'Create the style system', 'Style it from the saved system', 'Save what you noticed') -- correct exercise register throughout. The closer 'Style Is Just One Aspect' is declarative, exactly matching rule 15's requirement that the consolidation beat (where the file generalises past its own task, per chunk 6's content) land as a claim, not a label.",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_slides.md",
-   "rule_index": 16,
-   "rule_lead": "A bullet earns its slot or dies -- three classes that read as rigour and carry nothing.",
-   "verdict": "REVISE",
-   "chunks_flagged": [2],
-   "evidence": "Chunk 2 ('Phase 1. The boring baseline', lines 24-54) states the same design-commentary framing twice within one chunk: line 26, 'That gap is the point of Phase 1,' and line 44, 'The gap between generic and yours is the point of Phase 1; let Claude name it.' The second instance is doctrine restatement (class a) -- the same lens re-announced 18 lines later after it already did its work, adding nothing beyond the label the first sentence already established. Checked elsewhere for the other two classes: no self-referential design commentary telling the student they are inside a pedagogy, and chunk 6's closer 'Steer what you need to steer' (line 145) stays inside class (c) -- it does not restate the header ('Style Is Just One Aspect') or any '**The point:**' line (none exists in this file); it is a genuine call-to-action payoff, not a hollow kicker.",
-   "fix_hint": "Cut the restated half of line 44 ('The gap between generic and yours is the point of Phase 1;') and keep only the instruction that follows it ('let Claude name it.') as the lead-in to the audit prompt.",
-   "blocking": false
-  }
- ],
- "blocking_findings_count": 0,
- "todos_count": 2
+  "class": "slides",
+  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/build-your-system.md",
+  "verdict": "PASS_WITH_TODOS",
+  "training": "claude-basics",
+  "body_sha": "7503c6c46c7762a91b2220af16f68eaa4ed444dcb186635f66e16f98dd45c9d3",
+  "shape_hash": "9c29c4cb7bb3834b",
+  "chunk_map": [
+    {
+      "index": 0,
+      "heading": "(title) Exercise: Build your system",
+      "lines": "1-12"
+    },
+    {
+      "index": 1,
+      "heading": "Phase 0. Add base material (3 minutes)",
+      "lines": "13-23"
+    },
+    {
+      "index": 2,
+      "heading": "Phase 1. The boring baseline (5 minutes)",
+      "lines": "24-54"
+    },
+    {
+      "index": 3,
+      "heading": "Phase 2. Create the style system (7 minutes)",
+      "lines": "55-90"
+    },
+    {
+      "index": 4,
+      "heading": "Phase 3. Style it from the saved system (4 minutes)",
+      "lines": "91-112"
+    },
+    {
+      "index": 5,
+      "heading": "Phase 4. Save what you noticed (7 minutes)",
+      "lines": "113-138"
+    },
+    {
+      "index": 6,
+      "heading": "Style Is Just One Aspect",
+      "lines": "139-146"
+    }
+  ],
+  "rules_evaluated": [
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 1,
+      "rule_lead": "Referent resolution under a sequential deck read.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Walked all 7 chunks. Closest candidate: chunk 4 'Phase 3' line 111, 'One thing should look more like the source.' Two prior candidates exist by full history -- chunk 1's `sources/` subfolder of base material (lines 15,17,21) and chunk 3's 'style source' (lines 68,82, 'The style source is:') -- but they stay distinguishable: the subfolder is always code-formatted `sources/`, plural, while chunk 4's topic is explicitly restyling-from-the-saved-system, so prose-singular 'the source' reads as 'the style source' by adjacency and register. Stays inside. Elsewhere: 'the task' (chunk 0 line 7, reused literally chunks 2/5 lines 28,132) is arc-earned within-file; 'the styles it used'/'the style audit' (chunk 2 line 44, chunk 3 line 66) resolve to the immediately preceding same-session prompt (session-artifact carve-out); 'the folder setup you just created' (chunk 4 line 95) is immediate continuation of chunk 3's subject. No never-named or vague-with-full-history referent found.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 2,
+      "rule_lead": "Cross-file and positional callbacks.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Zero in-body links: `grep -n '\\[.*\\](' curriculum/exercises/build-your-system.md` -> no match (exit 1). No prose phrase locating another file by position anywhere in the body. Chunk 6's closer ('This exercise used style because visual differences are easy to see. The same pattern works for any output quality you need to steer.') sums this file's own arc -- the allowed closer pattern, not a cross-file pointer.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 3,
+      "rule_lead": "Every backward reference points at a beat that exists.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Only backward beat reference in the body: chunk 5 line 115, 'Use what you noticed in Phase 3.' Resolves against chunk 4's own header, '## Phase 3. Style it from the saved system (4 minutes)' (lines 91-112) -- a beat that exists in this exact file, named by title not position.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 4,
+      "rule_lead": "Live-demo beats survive a text read.",
+      "verdict": "N/A",
+      "chunks_flagged": [],
+      "evidence": null,
+      "na_reason": "no guess/predict/reveal construction anywhere in the file -- no live-demo beat present",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 5,
+      "rule_lead": "No orphan slides.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Shortest chunk is 1 ('Phase 0', lines 13-23): still carries a full self-contained instruction (create `sources/`, add one or two base materials, two example bullet types). No chunk in the 7-chunk deck is a bare wait-state or single context-dependent bullet.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 6,
+      "rule_lead": "Header self-carries at projection distance.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Checked all 6 body headers against their chunk content: 'Phase 0. Add base material' -> creates `sources/` + adds materials (13-23); 'Phase 1. The boring baseline' -> plain-prompt draft + self-audit, deliberately generic (24-54); 'Phase 2. Create the style system' -> builds `styling-rules.md` + `CLAUDE.md` (55-90); 'Phase 3. Style it from the saved system' -> restyles `response.html` from the saved files (91-112); 'Phase 4. Save what you noticed' -> turns an observation into a new rule (113-138); 'Style Is Just One Aspect' -> generalises past style to any steerable output quality (139-146). No header contradicted by its own chunk.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 7,
+      "rule_lead": "LLM-cadence caps.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Scanned all 7 chunks against all 6 sub-patterns. 'Not X. Not Y. Z.': none (no such construction anywhere). Anaphora/epistrophe triples: none. Self-grading superlative (blocking sub-item): none -- no 'one of the most useful' style claim anywhere; the file lets the visible before/after (Phase 1 vs Phase 3 output) carry the value claim instead of naming it. Number+retraction: none -- the only numbers are the hard, non-hedged phase-time budgets (3/5/7/4/7 minutes). Abstraction-noun stacks: none -- vocabulary stays concrete (folder, file, prompt, rule, source). Empty-leg verb triplets: none.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 8,
+      "rule_lead": "Internal dialect never lands on a slide.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "`grep -nE '\\b(surface|firing|compendium|forcing function|beat|mood|Connections)\\b' curriculum/exercises/build-your-system.md` -> 0 hits (verified by re-reading the raw body for the same terms). No repo/maintainer dialect lands on any slide; register throughout is plain engineer-facing (folder, task, rule, prompt).",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 9,
+      "rule_lead": "Emphasis budget -- bold is for handles, and go very lightly.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "All `**...**` spans in the body are either the `**Time:**` corpus-wide template label (confirmed via `grep -rln '^\\*\\*Time:\\*\\*' curriculum/exercises/ | wc -l` -> 40 files use it identically -- a mandated field, not a discretionary handle) or `**Session**`/`**Prompt**` widget-type markers, which `widgets.md` documents the renderer as stripping ('badge + body, drop the label strong') so they never render as bold prose at all. Excluding both, exactly ONE prose-bold handle remains in the whole file: chunk 0 line 7, '**The task**' -- a coined handle for the exercise's central deliverable, used unbolded at every later mention (chunks 2, 5). Zero non-templated, non-widget bold in chunks 1-6. Comfortably within the <=1-per-slide budget everywhere.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 10,
+      "rule_lead": "Presence precedes content -- verify against the composed deck, not long-read.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "File is included via the standard standalone-paragraph link `[Exercise: Build your system](exercises/build-your-system.md)` (curriculum/trainings/claude-basics/homework-build-and-verify.md:28) -- the structural-include pattern rule 13 itself names as 'how the file gets inlined' into `.phase--exercise`. Confirmed reachable by the slide tooling: `node scripts/check-slide-size.js --file curriculum/exercises/build-your-system.md` -> 'files: 1 slides: 6 ... every slide is within limits', i.e. the renderer's own chunker successfully slices this file into 6 slides.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 11,
+      "rule_lead": "Numbering -- position is computed, content ordinals are linted.",
+      "verdict": "REVISE",
+      "chunks_flagged": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "evidence": "`node scripts/check-slide-numbering.js --training claude-basics` (also reproduced with `--file curriculum/exercises/build-your-system.md`) -> exit 1, 5 problems: 'Phase sequence broken -- expected Phase 1, found \"## Phase 0. Add base material (3 minutes)\"' (line 13), and successively 'expected Phase 2/3/4/5' against the file's actual 'Phase 1/2/3/4' headers (lines 24, 55, 91, 113). This is the ONLY file in the whole corpus using '## Phase 0.' -- `grep -rln '^## Phase 0\\.' curriculum/exercises/ curriculum/trainings/` returns only this file, and the AE101 default gate (`node scripts/check-slide-numbering.js`, no flags) still reports 'OK -- 62 files' because that scan is scoped to the AE101 registry and never reaches this claude-basics file. Harm is real, not just shape-matched: the compendium's own guard script is wired into `npm test` and is currently RED for the claude-basics training because of this file, and a room reading a deck promised 'Five phases' (line 3) that then projects 'Phase 0' first is an unexplained, corpus-unprecedented off-by-one.",
+      "fix_hint": "Renumber Phase 0->1, 1->2, 2->3, 3->4, 4->5 (five phases, matching line 3's 'Five phases'), and bump chunk 5 line 115's in-file reference 'Use what you noticed in Phase 3' to 'Phase 4' to match the renumbered header -- rule 11 requires both the headers and every in-file reference move together.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 12,
+      "rule_lead": "Page geometry dies at the cut; reading order survives.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "`node scripts/check-slide-deixis.js --file curriculum/exercises/build-your-system.md` -> 'OK -- 1 files, no page-geometry pointers across the slide cut.' Closest candidate: chunk 3 line 68, 'Use the website or style source I give you below,' paired with line 82's 'The style source is:' -- both sit inside the SAME chunk (lines 55-90), the explicit same-`##`-chunk carve-out. No 'above/below/further down' language anywhere else in the body.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 13,
+      "rule_lead": "In-deck links work now; whether they EARN their place is open.",
+      "verdict": "N/A",
+      "chunks_flagged": [],
+      "evidence": null,
+      "na_reason": "no in-body links present (grep for markdown link syntax returns zero matches)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 14,
+      "rule_lead": "Slide size -- 210 words / 6 bullets, and the cap is machine-checked.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "`node scripts/check-slide-size.js --file curriculum/exercises/build-your-system.md` -> 'files: 1 slides: 6 limits: 210 words / 6 bullets oversized: 0 ... every slide is within limits.' No accept-note needed.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 15,
+      "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "All 5 Phase headers are imperative/phase-label form ('Add base material', 'The boring baseline', 'Create the style system', 'Style it from the saved system', 'Save what you noticed') -- correct exercise register throughout. The closer 'Style Is Just One Aspect' is declarative, exactly matching rule 15's requirement that the consolidation beat (where the file generalises past its own task, per chunk 6's content) land as a claim, not a label.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 16,
+      "rule_lead": "A bullet earns its slot or dies -- three classes that read as rigour and carry nothing.",
+      "verdict": "REVISE",
+      "chunks_flagged": [
+        2
+      ],
+      "evidence": "Chunk 2 ('Phase 1. The boring baseline', lines 24-54) states the same design-commentary framing twice within one chunk: line 26, 'That gap is the point of Phase 1,' and line 44, 'The gap between generic and yours is the point of Phase 1; let Claude name it.' The second instance is doctrine restatement (class a) -- the same lens re-announced 18 lines later after it already did its work, adding nothing beyond the label the first sentence already established. Checked elsewhere for the other two classes: no self-referential design commentary telling the student they are inside a pedagogy, and chunk 6's closer 'Steer what you need to steer' (line 145) stays inside class (c) -- it does not restate the header ('Style Is Just One Aspect') or any '**The point:**' line (none exists in this file); it is a genuine call-to-action payoff, not a hollow kicker.",
+      "fix_hint": "Cut the restated half of line 44 ('The gap between generic and yours is the point of Phase 1;') and keep only the instruction that follows it ('let Claude name it.') as the lead-in to the audit prompt.",
+      "blocking": false
+    }
+  ],
+  "blocking_findings_count": 0,
+  "todos_count": 2
 }

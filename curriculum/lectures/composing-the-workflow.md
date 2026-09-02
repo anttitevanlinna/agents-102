@@ -7,12 +7,12 @@
 - You drew a control loop. Shape the session before it moves, watch what comes back, correct, encode. That is **feedback control** around a non-deterministic agent.
 - The near half shapes; the far half corrects. Intent, context, and the plan set the target before the session starts; the far half reads what came back, takes up what passed, and encodes what the session taught, changing the system so the next session starts better.
 - Verification is the sensor. A loop with no way to read its own result runs open: send the work off and hope. The checks you built are how this loop reads what came back. They are the part that lets the system catch its own error before it ships.
-- The harness makes continuing possible. What a session gets right without you is set by what has accumulated around it: rules, durable state, checks, encoded corrections. The M4 send-off and the M5 re-send: same model, same harness, two different agents.
+- The harness makes continuing possible. What a session gets right without you is set by what has accumulated around it: rules, durable state, checks, encoded corrections. The M4 send-off and the M5 re-send: same model, two different agents.
 
 ## Loop instead of you starting
 <!--tier:3-->
 
-- A kit skill can run on a schedule. Claude Code ships three scheduling primitives: local routines (from the Routines sidebar) for standing work on your laptop, `/loop` for in-session repetition, `/schedule` for cloud-backed remote Routines. The pattern is the same across all three: a skill from your kit is the thing the scheduled agent invokes.
+- A kit skill can run on a schedule. Claude Code ships three ways to do it: local routines (from the Routines sidebar) for standing work on your laptop, `/loop` for in-session repetition, `/schedule` for cloud-backed remote Routines. The pattern is the same across all three: a skill from your kit is the thing the scheduled agent invokes.
 - Three places this fits naturally. A standing verifier run: a judge reads the most recent long-running send-off and has a summary waiting when you open the laptop. A scheduled codebase sweep: a gap-finder reads the repo for the drift shape you saw at M5 and opens an issue when it finds one. Rule-drift monitoring: a judge reads the root rules file against the recent commit log and names where the rules and the code disagree.
 - The skill defines the check. The runtime supplies the cadence or stopping condition.
 
@@ -27,7 +27,7 @@
 ## From skills to a workflow
 <!--tier:3-->
 
-- The field wires kits more ways than one; no way has won. Pocock ships a public kit with no orchestrator: you call each skill by hand. Klaassen chains steps through files on disk, a gate at every seam. Some workflows have a pilot; many do not.
+- The field wires kits more ways than one; no way has won. Pocock ships a public kit with no orchestrator: you call each skill by hand. Klaassen ships one slash command per stage, and the last one writes the lesson to disk for the next agent. Some workflows have a pilot; many do not.
 - A workflow is not only steps in order. At a seam, a check or stop condition decides whether the next step may begin.
 - Your job moves from reading every intermediate output to designing the checks, routes, and exceptions that deserve your judgment.
 
@@ -72,14 +72,14 @@
 <!-- backing -->
 
 Claims
-- `three-scheduling-primitives` · detail · "Claude Code ships three scheduling primitives: local routines (from the Routines sidebar) for standing work on your laptop, `/loop` for in-session repetition, `/schedule` for cloud-backed remote Routines." ← cc-scheduling-primitives
+- `three-scheduling-primitives` · detail · "Claude Code ships three ways to do it: local routines (from the Routines sidebar) for standing work on your laptop, `/loop` for in-session repetition, `/schedule` for cloud-backed remote Routines." ← cc-scheduling-primitives
 - `three-places-cadence-fits` · vision · "A standing verifier run … A scheduled codebase sweep … Rule-drift monitoring" ← none-owed
 - `skill-defines-check-runtime-supplies-cadence` · vision · "The skill defines the check. The runtime supplies the cadence or stopping condition." ← none-owed
 - `skill-is-a-named-move` · vision · "A **skill** is a named move you reach for. Single purpose, reusable, invoked by name." ← none-owed
 - `never-size-a-skill-in-advance` · vision · "You never size a skill in advance. The job sizes it." ← none-owed
 - `field-wires-more-ways-than-one` · detail · "The field wires kits more ways than one; no way has won." ← lineages-supp
 - `pocock-by-hand` · detail · "Pocock ships a public kit with no orchestrator: you call each skill by hand." ← lineages-supp
-- `klaassen-file-chained` · detail · "Klaassen chains steps through files on disk, a gate at every seam." ← lineages-supp
+- `klaassen-one-command-per-stage` · detail · "Klaassen ships one slash command per stage, and the last one writes the lesson to disk for the next agent." ← lineages-supp
 - `many-kits-keep-zero-pilots` · detail · "Some workflows have a pilot; many do not." ← skill-stacking-supp, lineages-supp
 - `seam-check-decides-whether-next-step-begins` · vision · "At a seam, a check or stop condition decides whether the next step may begin." ← none-owed
 - `workflow-designer-owns-checks-routes-exceptions` · vision · "Your job moves from reading every intermediate output to designing the checks, routes, and exceptions that deserve your judgment." ← none-owed

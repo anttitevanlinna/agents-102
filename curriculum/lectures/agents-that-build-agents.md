@@ -2,6 +2,9 @@
 
 *Agents that build agents.* The flywheel: the loop feeding itself, each session leaving the next one sharper.
 
+## The agent stops where your judgement begins
+<!--tier:2-->
+
 ## Why the loop survives the model
 
 - The specific Claude you used today will be replaced, probably within months. Each replacement will be better at the work than the current one. None of that changes the move.
@@ -53,6 +56,8 @@ The training closes. The flywheel does not.
 
 **`## Ralph` cut whole (Antti 2026-09-02).** Huntley's loop, the coinage, `/goal`, *practitioners see levers first*, and the *next Ralph is yours* kicker: in git at `7d13d15e`. The Ralph re-feed shape stays taught where M5's verifier menu names it. Do not restore here.
 
+**`## The agent stops where your judgement begins` — body cut whole, header kept; moved here from the handoff lecture as the first slide (Antti 2026-09-02) (Antti 2026-09-02: *"This concept is right. But just wrongly written now."*).** The delegation-boundary beat is owed a rewrite; the old three paragraphs (not-the-agent-writing-its-own-skills / evidence-stops-at-the-disk / build-the-flywheel-to-run-exactly-that-far) are in git at `109ca335`. Do not restore them; write the beat fresh, carded.
+
 <!-- backing -->
 
 Claims
@@ -70,6 +75,7 @@ Claims
 Sources
 
 Frameworks
+- Principal–agent · [borrow:economics] · law:principal-agent · ← cultural-vocab — the slide header *The agent stops where your judgement begins* names the delegation boundary; body owed
 - The compound ladder · [borrow:none] · law:the-compound-ladder · ← none — fix → memory → skill → system is the flywheel this lecture runs one turn further
 
 Stance `[stance:2026-08-01 level:L1]`

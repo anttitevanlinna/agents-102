@@ -8,12 +8,9 @@ The shapes you drew are still in the session. Ask the agent to turn them into a 
 
 What comes back is a prompt, not a plan. Save it where you will find it.
 
-## The agent stops where your judgement begins
-<!--tier:2-->
-
 <!-- maintainer -->
 
-**Time:** 4 minutes.
+**Time:** 3 minutes.
 
 **Handoff-prompt forcing function, failure mode + escape hatch (`check_pedagogy.md` §47, added 2026-08-20).** Dominant failure is **plan-instead-of-prompt**: asked to turn the session's shapes into something that builds the kit, the agent returns an implementation plan, and the student saves it believing they have the artefact. The body says *"What comes back is a prompt, not a plan"* precisely because this is the common return, but that line diagnoses without recovering. Escape hatch, trainer or self: ask for the prompt itself, in the words you would paste into a fresh session, and check the return opens with an instruction rather than a numbered plan. Second failure is **thin shapes**, where M6 Phase 2's diagrams never got drawn and the handoff has nothing to package; recover by pointing at the ranked recurring work from the study prompt and building from the top two. Terminal beat, so nothing downstream breaks, but the student leaves without the one artefact the module exists to produce.
 
@@ -23,8 +20,6 @@ What comes back is a prompt, not a plan. Save it where you will find it.
 
 **Open for next pass:**
 - Real-cohort gold standard: the handoff-generator live-test that cleared pedagogy was sim-grade — constructed M6 context (six named shapes, a stand-in skill), and it predates the 2026-08-01 re-anchor (shapes + primitives, no shipped skill). A live-test on an actual student's M6 close (their real shapes, their ranked menu) is the real-cohort bar; owed until a cohort runs.
-
-**`## The agent stops where your judgement begins` — body cut whole, header kept (Antti 2026-09-02: *"This concept is right. But just wrongly written now."*).** The delegation-boundary beat is owed a rewrite; the old three paragraphs (not-the-agent-writing-its-own-skills / evidence-stops-at-the-disk / build-the-flywheel-to-run-exactly-that-far) are in git at `109ca335`. Do not restore them; write the beat fresh, carded.
 
 **`## The move widens to everything you do` — cut whole (Antti 2026-09-02: nothing valuable enough; making room for the right content).** In git at `a4ccebe9`. Do not restore.
 
@@ -36,7 +31,6 @@ Sources
 (none. Every claim is a position about the student's own kit and the delegation boundary; the prompt block carries its own registry entry.)
 
 Frameworks
-- Principal–agent · [borrow:economics] · law:principal-agent · ← cultural-vocab — the slide header *The agent stops where your judgement begins* names the delegation boundary; body owed
 
 Stance `[stance:2026-09-02 level:L1]`
 - holds: that a handoff prompt authored from the student's own session evidence is a candidate, not a plan. House position carried as a position.

@@ -89,7 +89,7 @@ OODA
 - Voice lead is Rory on the reframe (*"How do you know it's right?"*), Boris-flat on the factual lines (*"Nobody reviews 500K lines by hand"*), Risto on the forward-optimism (*"the agentic engineer maxes that signal out"*). Read aloud before first cohort; if any line lands as L&D-coach or vendor-pitch, swap.
 - Slide 1 is recognition (the student just shipped these artefacts). Don't let it land as recap. The beat is *"all five are the same discipline"*, not *"here's what you did."*
 - Slide 2's pivot from spec-and-tests to grounding is the load-bearing reframe. If the room hears it as *"tests don't matter any more"*, the framing has slipped. Tests are still inside the kit — grounding extends, doesn't replace.
-- The closing question (*"How do you know it's right?"*) is the hand-off to whatever comes next (M7 deliberation, Monday morning, scheduled agents). Let it sit. Don't answer it for the room.
+- The closing question (*"How do you know it's right?"*) is the hand-off to Monday morning; M6 is the last module (Antti 2026-09-02). Let it sit. Don't answer it for the room.
 
 **Philosophy callouts:** at most one. *Capture* (theme #5 — the agent is trying to capture your world) is the implicit anchor under "grounding"; don't name-tag it. Do not bolt the 19 beliefs onto this lecture.
 

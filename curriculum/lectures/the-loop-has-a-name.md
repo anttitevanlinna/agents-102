@@ -73,7 +73,7 @@ Flagged
 
 **Watch-fors (delivery):**
 - Slide 1 names *eval* across the three shapes already in hand. The beat is three-names-one-thing; the word lands because the thing is in hand.
-- Monday-morning vs. M7 bridge — both are shipped in the lecture. The trainer or the room picks which lands.
+- The lecture lands on Monday morning. M6 is the training's last module (Antti 2026-09-02: M7 and M8 have never been taken up); there is no bridge to prepare.
 - Risto voice on "the specific Claude will be replaced." Flat epistemic candour, no sales varnish. This is the beat that carries the lecture past the current model's expiry date.
 
 **Philosophy callouts:** at most one. The *compounding* theme surfaces naturally in the kit-grows-by-accretion beat; no need to name-tag it. Do not bolt the 19 beliefs onto this lecture.

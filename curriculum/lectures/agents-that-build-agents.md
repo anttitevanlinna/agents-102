@@ -1,6 +1,6 @@
 # There is no last turn
 
-The map you just drew ended on a dashed loop, yours to draw solid. This is the move that draws it. *Agents that build agents.* The flywheel: the loop feeding itself, each session leaving the next one sharper. This lecture unfolds it.
+*Agents that build agents.* The flywheel: the loop feeding itself, each session leaving the next one sharper. This lecture unfolds it.
 
 ## Why the loop survives the model
 

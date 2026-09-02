@@ -199,3 +199,14 @@ Write the result.
     /runtime expressions are not allowed in logical id/
   );
 });
+
+test('compiler gates Agents 101 once per profile and AE101 once on its legacy path', () => {
+  assert.deepEqual(compile.VALIDATION_TARGETS, [
+    { training: 'agentic-engineering-101', profile: '' },
+    { training: 'agents-101', profile: 'cowork' },
+    { training: 'agents-101', profile: 'desktop' },
+    { training: 'agents-101', profile: 'cli' },
+    { training: 'agents-101', profile: 'codex-desktop' },
+    { training: 'agents-101', profile: 'codex-cli' },
+  ]);
+});

@@ -27,6 +27,7 @@ set -euo pipefail
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "$HERE/lib/resolve-prompt.sh"
 source "$HERE/lib/transport.sh"
+source "$HERE/lib/a101-controls.sh"
 source "$HERE/lib/assertions.sh"
 
 KIT="$HERE/fixtures/agents-101-synthetic"
@@ -128,6 +129,7 @@ subst() {
   body="${body//<MEETINGS_FILE>/$MEETINGS_FILE}"
   body="${body//<NEW_SOURCE>/$NEW_SOURCE}"
   body="${body//<NEW_SOURCE_M3>/$NEW_SOURCE_M3}"
+  body="${body//<ROOT_INSTRUCTIONS>/$ROOT_INSTRUCTIONS_REL}"
   printf '%s' "$body"
 }
 
@@ -564,6 +566,7 @@ for line in "${lines[@]}"; do
     [[ -n "$tail" ]] && body="${body}"$'\n'"${tail}"
   fi
   body="$(subst "$body")"
+  body="$(render_controls "$runtime" "$body")"
 
   echo "[a101] turn=$seq: ${body:0:70}..."
   # mtime baseline for "advanced" assertions: 2s back guards same-second writes.

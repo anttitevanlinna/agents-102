@@ -23,6 +23,10 @@ Append-only stream of editorial calls made on real curriculum text. **Newest at 
 
 ---
 
+## 2026-09-02 — two header "fixes" refused: the originals were better
+
+Both jargon-header cards declined. `## Check how full the window is` stays over the proposed `## Check how full the **context** window is` ("original is better") — the slide's first bullet supplies the full term one beat later, and the short header reads at projection distance. And `## Read the shapes` stays over `## Read the shapes **Claude proposes**` with an explicit veto on the wording: "let's not say 'Claude proposes'". A header names the student's move; making Claude the subject of a header hands the beat to the tool. Counterweight to §2 earn-every-term zeal: a header may run ahead of its own slide's first bullet — that is the header-names, body-earns pattern, not a leak.
+
 ## 2026-08-30 — the 42-card deck, and what the verdicts drew
 
 **Every rule-valid addition died; every cut and swap landed.** Six additions reached cards, each one a sentence a compendium rule genuinely demanded (lead-ins per `check_prompts` §2/§2a, a done-done ask). Verdicts: *"nope. again valid but longer"*, *"nothing to be added to student facing"*, *"Nope. Maybe needs rule change. this prompt is for the trainer. No action verb needed before."* The pattern is not that the rules were wrong about the gap — it is that when a rule demands a sentence the body doesn't want, the fix is a carve-out that removes the obligation, not the sentence. Two rules were born that way in one sitting (`check_prompts` 2b: trainer-screen fences owe no lead-in; 2c: a command-verb `##` header IS the lead-in). Rule-shaped half lives in `feedback_curriculum_default_move_is_cut.md`; what belongs here is the asymmetry itself: on this corpus, a validity argument for an addition carries almost no weight, and an addition card should arrive already wearing its alternative carve-out.

@@ -475,7 +475,7 @@ bank ✅ → spine drafted ✅ → evals spec'd ✅ → cut-mechanism shipped �
 
 ### Re-assembly spec (fan-out ready — compact-proof)
 
-**Status:** step-1 prototype DONE. `curriculum/exercises/diagnose-and-resend.md` is the gold exemplar — chunked to slides, headers re-cut to build-squint, renamed *Diagnose and package*, construction thread added. Build + 45/45 + 30/30 green. The 12 other AE101 exercises await the redo sweep. Eyeball surface: `exercises-workbook.html`.
+**Status:** steps 1+2 DONE — `curriculum/exercises/diagnose-and-resend.md` is the gold exemplar (chunked, build-squint headers, renamed *Diagnose and package*, construction thread) and the 12-exercise sweep applied 2026-07-04 (gates clean, avg blind-squint 3.9 vs exemplar 4.0). Polish pass closed 2026-09-02: headers and titles ruled as-shipped, drill carve-out lives in `check_student_facing.md` §38. Steps 3–4 undecided. Eyeball surface: `exercises-workbook.html`.
 
 **The exercise-slide format (the target shape).**
 - **Title-page** (rides the `#` H1): H1 names the *construction*, not the action (`Diagnose and package`, not `re-send`) · Time · Session/HOX widgets · `**What you do:**` (the arc in a sentence) · `**What you build:**` the construction thread — the pieces AND what they add up to (*"three pieces that make a failed run come back trustworthy: a verifier, a reference, and a plan.md"*) · `**The point:**` the name-after pedagogy note.
@@ -509,10 +509,4 @@ bank ✅ → spine drafted ✅ → evals spec'd ✅ → cut-mechanism shipped �
 
 **Promoted (2026-08-31):** the build-squint header rule lives at `check_student_facing.md` §38 — drill carve-out included, format spec pointed back at this section, index rebuilt + repinned. → `compounded/2026-08-31-student_facing-build-squint-exercise-headers.md`
 
-**Step-2b polish list (sweep DONE 2026-07-04; 12 applied, gates clean, avg blind-squint 3.9 vs exemplar 4.0 — strong first pass, not finished).** Findings, banked for the polish pass:
-- **Header-rule refinement: build-squint = "what am I building OR practicing."** Several exercises are DRILLS, not artifact-builds (`orient-and-introspect` = practice introspection; `fix-tests-first` = practice a TDD loop; `push-back-on-the-plan` = practice interrogating a plan). For a drill, the MOVE is the deliverable; headers naming the move plainly are CORRECT. The blind-squint verifier over-flagged these as "no artifact" — a lens mismatch. The real failure in them is jargon/opacity, not process-shape. *(Carve-out carried in `check_student_facing.md` §38.)*
-- **Recurring meta-closer `## What this sets up`** (`map-the-access-surface`, `author-test-strategy-skill`) names nothing about the build. Decide its fate: drop below the fence, or reframe as a real after-beat naming what the exercise leaves the student holding.
-- **Header jargon to plain-ify or earn:** *the window* (context window), *the shape* (the agent's report / repo structure), *the unread slice*, *lanes* (parallel worktrees), *the delta*, *automation shapes* (hooks/scripts), *the incident story*, *re-softening*. Each reads opaque cold.
-- **H1 titles still process-named** — the construction-rename (re-send → package) was NOT applied consistently by the sweep: `Compound and *close the loop*`, `Orient and *map the window*`, `Walk and *send off*` still name the process. A title pass: name the construction/deliverable, same move as the exemplar.
-- **Priority (weakest):** `orient-and-introspect` (3/5, four opaque headers + "the window" jargon) and `walk-and-send-off` (3/5, muddy `## What closes the module` header that names a module-owned section, not a student beat).
 - Mechanism used: `apply-reassembly.js` (splice rewritten body over maintainer block, re-assert marker/em-dash/leak gates). Sweep script: `exercise-reassembly-sweep-wf_15be31e4-5d3.js`.

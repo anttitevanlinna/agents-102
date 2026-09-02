@@ -39,6 +39,10 @@ function fixture() {
   w('curriculum/trainings/t-two/shared.md', `# Shared in two\n${clean}\n[Shared](exercises/shared-thing.md)\n`)
   w('curriculum/trainings/t-one/timings.md', '# timings\n')
   w('curriculum/trainings/t-one/pre-cohort-todos.md', '# todos\n')
+  // A maintainer index that never says "maintainer": prose from line 1, no
+  // fence to trip the content guard, no Quality line to pin. Named-exclusion
+  // is the only thing that can catch it.
+  w('curriculum/trainings/t-one/case-library.md', '# Case library\n\nCase-to-module mappings. **Proprietary.**\n')
   w('curriculum/trainings/t-one/autumn-gaps.md', '# gaps\n\n<!-- maintainer -->\n\nNot student material.\n')
   w('curriculum/trainings/t-one/supplementary/deep-dive.md', `# Deep dive\n${clean}\n`)
   w('curriculum/trainings/t-one/reference/lookup.md', `# Lookup\n${clean}\n`)
@@ -81,6 +85,19 @@ test('isSurface: named non-surfaces excluded', () => {
   const root = fixture()
   assert.strictEqual(isSurface(root, 'curriculum/trainings/t-one/timings.md'), false)
   assert.strictEqual(isSurface(root, 'curriculum/trainings/t-one/pre-cohort-todos.md'), false)
+})
+
+// The bug this guards: the content guard only fires on a `<!-- maintainer -->`
+// fence, so a maintainer index written as ordinary prose — case-to-module
+// mappings, a proprietary teaching read — enters the universe as a module and
+// reports seven never-judged classes. That is a phantom coverage hole: the
+// board bills judges for a file no student opens, and a real hole two rows
+// down reads the same as this one. Audience is declared, never inferred from
+// how the file happens to open.
+test('isSurface: an unfenced maintainer index is excluded by name', () => {
+  const root = fixture()
+  assert.strictEqual(isSurface(root, 'curriculum/trainings/t-one/case-library.md'), false)
+  assert.ok(!buildUniverse(root).includes('curriculum/trainings/t-one/case-library.md'))
 })
 
 test('isSurface: <!-- maintainer --> marker excludes whatever the name is', () => {

@@ -46,6 +46,7 @@ const makeIo = gitIo
 const NON_SURFACE = new Set([
   'pre-cohort-todos.md', 'trainer-guide.md', 'trainer-modules.md',
   'training-architecture.md', 'timings.md', 'README.md', 'CLAUDE.md',
+  'case-library.md',
 ])
 
 // Second, content-derived guard: a file that declares itself maintainer-facing

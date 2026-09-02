@@ -60,6 +60,12 @@ const KNOWN_CAPABILITIES = new Set(
     (key) => A101Runtimes.PROFILES[key].capabilities
   )
 );
+const VALIDATION_TARGETS = Object.freeze([
+  Object.freeze({ training: 'agentic-engineering-101', profile: '' }),
+  ...A101Runtimes.PROFILE_ORDER.map((profile) =>
+    Object.freeze({ training: 'agents-101', profile })
+  ),
+]);
 
 function loadSourceRegistry(promptsDir) {
   const dir = promptsDir || PROMPTS_DIR;
@@ -266,12 +272,16 @@ if (require.main === module) {
   // that is only checked on demand goes stale, which is how Agents 101 came to
   // carry fifteen errors nobody saw.
   const { execFileSync } = require('child_process');
-  const VALIDATED_TRAININGS = ['agentic-engineering-101', 'agents-101'];
   try {
-    for (const training of VALIDATED_TRAININGS) {
+    for (const target of VALIDATION_TARGETS) {
+      const args = [
+        path.join(__dirname, 'validate-prompt-graph.js'),
+        '--training', target.training,
+      ];
+      if (target.profile) args.push('--runtime', target.profile);
       execFileSync(
         process.execPath,
-        [path.join(__dirname, 'validate-prompt-graph.js'), '--training', training],
+        args,
         { stdio: 'inherit' }
       );
     }
@@ -305,4 +315,5 @@ module.exports = {
   writeRegistry,
   PROMPTS_DIR,
   OUT_FILE,
+  VALIDATION_TARGETS,
 };

@@ -16,6 +16,9 @@
 
 const { test } = require('node:test');
 const assert = require('node:assert/strict');
+const fs = require('fs');
+const os = require('os');
+const path = require('path');
 
 const {
   findStalePrimitives,
@@ -23,6 +26,7 @@ const {
   validate,
 } = require('./validate-prompt-graph.js');
 const { loadRegistry } = require('./compile-prompts.js');
+const A101Runtimes = require('../site/layouts/a101-runtimes.js');
 
 test('findStalePrimitives: id present in the graph → not stale', () => {
   const known = new Set(['memory-folder', 'claude-local-md']);
@@ -95,4 +99,64 @@ test('live Agents 101 graph declares the load-bearing prompt handoffs', () => {
       `${key} must require ${id} from ${source}`
     );
   }
+});
+
+for (const profileKey of A101Runtimes.PROFILE_ORDER) {
+  test(`live Agents 101 graph resolves for ${profileKey}`, () => {
+    const result = validate('agents-101', { profileKey });
+    assert.equal(result.profile, profileKey);
+    assert.equal(result.orderCount, 93);
+    assert.equal(result.activeCount, 91);
+    assert.deepEqual(
+      result.findings.filter((finding) => finding.severity === 'error'),
+      []
+    );
+  });
+}
+
+test('a required producer hidden on the selected surface is INACTIVE-PRODUCER', (t) => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'a101-graph-runtime-'));
+  t.after(() => fs.rmSync(dir, { recursive: true, force: true }));
+  fs.writeFileSync(path.join(dir, 'desktop-producer.md'), `---
+key: desktop-producer
+runtime: desktop
+produces:
+  - id: shared-result
+    location: ./result.md
+---
+Write the result.
+`);
+  fs.writeFileSync(path.join(dir, 'consumer.md'), `---
+key: consumer
+runtime: any
+requires:
+  - id: shared-result
+    source: prompt:desktop-producer
+---
+Read the result.
+`);
+
+  const registry = loadRegistry(dir);
+  const ordered = [
+    { key: 'desktop-producer', file: 'fixture.md' },
+    { key: 'consumer', file: 'fixture.md' },
+  ];
+  const cli = validate('fixture', {
+    profileKey: 'codex-cli',
+    registry,
+    ordered,
+    primitives: [],
+  });
+  assert.deepEqual(
+    cli.findings.map((finding) => finding.code),
+    ['INACTIVE-PRODUCER']
+  );
+
+  const desktop = validate('fixture', {
+    profileKey: 'codex-desktop',
+    registry,
+    ordered,
+    primitives: [],
+  });
+  assert.deepEqual(desktop.findings, []);
 });

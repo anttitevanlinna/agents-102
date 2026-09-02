@@ -48,7 +48,8 @@
 const fs = require('fs');
 const path = require('path');
 const { TRAININGS } = require('../site/layouts/curriculum.js');
-const { loadRegistry } = require('./compile-prompts.js');
+const { loadRegistry, registryForProfile } = require('./compile-prompts.js');
+const A101Runtimes = require('../site/layouts/a101-runtimes.js');
 
 const ROOT = path.resolve(__dirname, '..');
 const DEFAULT_TRAINING = 'agentic-engineering-101';
@@ -179,16 +180,47 @@ function findStalePrimitives(primitives, knownIds) {
   return primitives.filter((p) => !knownIds.has(p.id));
 }
 
-function validate(trainingKey) {
-  const registry = loadRegistry();
-  const ordered = orderedKeys(trainingKey);
-  const activePrimitives = BODY_PRIMITIVES.filter(
+function validate(trainingKey, options) {
+  const opts = options || {};
+  const profileKey = opts.profileKey || '';
+  if (profileKey) A101Runtimes.getProfile(profileKey);
+  const compiledRegistry = opts.registry || loadRegistry();
+  const ordered = opts.ordered || orderedKeys(trainingKey);
+  const activePrimitives = (opts.primitives || BODY_PRIMITIVES).filter(
     (p) => !p.trainings || p.trainings.includes(trainingKey)
   );
 
+  const findings = [];
+  const add = (severity, code, key, message) =>
+    findings.push({ severity, code, key, message });
+
+  let registry = compiledRegistry;
+  const activeOrdered = [];
+  if (profileKey) {
+    registry = registryForProfile(compiledRegistry, profileKey);
+    for (const entry of ordered) {
+      const compiled = compiledRegistry[entry.key];
+      if (!compiled) {
+        activeOrdered.push(entry);
+        continue;
+      }
+      const compatible = A101Runtimes
+        .compatibleProfiles(compiled.runtime || 'any')
+        .includes(profileKey);
+      if (!compatible) continue;
+      activeOrdered.push(entry);
+      if (!compiled.runtimeVariants || !compiled.runtimeVariants[profileKey]) {
+        add('error', 'MISSING-RUNTIME-VARIANT', entry.key,
+          `prompt is active for '${profileKey}' but has no compiled runtime variant`);
+      }
+    }
+  } else {
+    activeOrdered.push(...ordered);
+  }
+
   // First position of each key in the linear walk.
   const posByKey = new Map();
-  ordered.forEach((entry, i) => {
+  activeOrdered.forEach((entry, i) => {
     if (!posByKey.has(entry.key)) posByKey.set(entry.key, i);
   });
 
@@ -196,8 +228,19 @@ function validate(trainingKey) {
   // Also collect every frontmatter id (produces / requires / opportunistic-copy)
   // so the validator can self-check its hardcoded BODY_PRIMITIVES config below.
   const producersById = new Map();
+  const allProducersById = new Map();
   const knownIds = new Set();
   for (const { key } of ordered) {
+    const prompt = compiledRegistry[key];
+    if (!prompt) continue;
+    const pos = ordered.findIndex((entry) => entry.key === key);
+    for (const p of asArray(prompt.produces)) {
+      if (!p || !p.id) continue;
+      if (!allProducersById.has(p.id)) allProducersById.set(p.id, []);
+      allProducersById.get(p.id).push({ key, pos });
+    }
+  }
+  for (const { key } of activeOrdered) {
     const prompt = registry[key];
     if (!prompt) continue;
     const pos = posByKey.get(key);
@@ -217,9 +260,10 @@ function validate(trainingKey) {
     return list && list.length ? list[0] : null;
   }
 
-  const findings = [];
-  const add = (severity, code, key, message) =>
-    findings.push({ severity, code, key, message });
+  function earliestAnyProducer(id) {
+    const list = allProducersById.get(id);
+    return list && list.length ? list[0] : null;
+  }
 
   // Validator config self-check (see findStalePrimitives): a hardcoded
   // body-primitive id that matches no frontmatter id means the config drifted
@@ -230,7 +274,7 @@ function validate(trainingKey) {
   }
 
   const seenKeys = new Set();
-  for (const { key } of ordered) {
+  for (const { key } of activeOrdered) {
     if (seenKeys.has(key)) continue;
     seenKeys.add(key);
     const prompt = registry[key];
@@ -258,8 +302,14 @@ function validate(trainingKey) {
 
       const producer = earliestProducer(req.id);
       if (!producer) {
-        add('error', 'DANGLING', key,
-          `requires '${req.id}' (source: ${source || '—'}) but no prompt produces it anywhere in ${trainingKey}`);
+        const inactive = profileKey ? earliestAnyProducer(req.id) : null;
+        if (inactive) {
+          add('error', 'INACTIVE-PRODUCER', key,
+            `requires '${req.id}' for '${profileKey}', but producer '${inactive.key}' is inactive on that profile`);
+        } else {
+          add('error', 'DANGLING', key,
+            `requires '${req.id}' (source: ${source || '—'}) but no prompt produces it anywhere in ${trainingKey}`);
+        }
         continue;
       }
       if (producer.pos > pos) {
@@ -318,23 +368,35 @@ function validate(trainingKey) {
     }
   }
 
-  return { training: trainingKey, orderCount: ordered.length, findings, producersById };
+  return {
+    training: trainingKey,
+    profile: profileKey,
+    orderCount: ordered.length,
+    activeCount: activeOrdered.length,
+    findings,
+    producersById,
+  };
 }
 
 function main() {
   const trainingKey = argValue('--training', DEFAULT_TRAINING);
-  const result = validate(trainingKey);
+  const profileKey = argValue('--runtime', '');
+  const result = validate(trainingKey, { profileKey });
 
   if (hasArg('--json')) {
     process.stdout.write(JSON.stringify({
       training: result.training,
+      profile: result.profile,
       orderCount: result.orderCount,
+      activeCount: result.activeCount,
       findings: result.findings,
     }, null, 2) + '\n');
   } else {
     const errors = result.findings.filter((f) => f.severity === 'error');
     const warns = result.findings.filter((f) => f.severity === 'warn');
-    console.log(`Prompt graph validation — ${trainingKey} (${result.orderCount} prompts in linear order)`);
+    const profile = result.profile ? ` / ${result.profile}` : '';
+    const active = result.profile ? `, ${result.activeCount} active` : '';
+    console.log(`Prompt graph validation — ${trainingKey}${profile} (${result.orderCount} prompts in linear order${active})`);
     if (result.findings.length === 0) {
       console.log('  ✓ no violations');
     } else {

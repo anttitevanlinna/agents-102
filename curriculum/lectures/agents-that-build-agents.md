@@ -17,8 +17,6 @@ The loop feeds itself. That is the flywheel, and it starts with what you encoded
 - **Competence sets the ceiling.** Your brain needs the reps to think different. The pathways you build show you the next level.
 - **Cross personal → team.** Personal mastery is nice. But it will never be enough. Share and learn together.
 
-These have been on the map the whole time: the small print along the bottom, there since M2.
-
 ## There is no last turn
 
 - There is no last turn. Each session surfaces the next gap. Each gap proposes the next move. Each move makes the next session cheaper.
@@ -45,7 +43,7 @@ The training closes. The flywheel does not.
 
 **Time:** 4 minutes.
 
-**Soil slide — *You make agentic happen* (2026-08-15, Antti-directed; buried-gold item, relocated from `the-map-filled-in.md`):** full slide between the handoff prompt and *Ralph*, the soil line's one spoken home. Antti's calls, all three: title verbatim; bullets first, provenance line after as a small aside; strip wording *act under uncertainty · competence sets the ceiling · cross personal → team* (*gate* is banned student-side, *a move counts* is scorekeeper register; design-side names + student-form pointer in `theory-plan.md` §0). Register: Godin-leading inside the Risto closer; bullet bodies are Antti's kernels, lightly shaped (2026-08-15) — *possibly* → *I have something* as the acting phase-change · reps and pathways (*think different* keeps its broken grammar, the same game the title plays) · *Share and learn together.* as the open-handed landing. Guards: (a) one bold handle per order = the law-slide pattern; (b) the slide names no worked example (Ralph, its former neighbour, was cut 2026-09-02); (c) title is the engineer-side voice of *Accumulated, not enabled* (`theory-plan.md` §3) — you, not the product, make agentic happen; the system-side twin sits on `the-map-filled-in.md`'s control-loop slide; (d) the strip rides all four map figures visually — this slide is its only spoken home, do not add siblings.
+**Soil slide — *You make agentic happen* (2026-08-15, Antti-directed; buried-gold item, relocated from `the-map-filled-in.md`):** full slide between the handoff prompt and *Ralph*, the soil line's one spoken home. Antti's calls, all three: title verbatim; bullets only (the provenance line *the small print along the bottom, there since M2* was cut 2026-09-02, Antti); strip wording *act under uncertainty · competence sets the ceiling · cross personal → team* (*gate* is banned student-side, *a move counts* is scorekeeper register; design-side names + student-form pointer in `theory-plan.md` §0). Register: Godin-leading inside the Risto closer; bullet bodies are Antti's kernels, lightly shaped (2026-08-15) — *possibly* → *I have something* as the acting phase-change · reps and pathways (*think different* keeps its broken grammar, the same game the title plays) · *Share and learn together.* as the open-handed landing. Guards: (a) one bold handle per order = the law-slide pattern; (b) the slide names no worked example (Ralph, its former neighbour, was cut 2026-09-02); (c) title is the engineer-side voice of *Accumulated, not enabled* (`theory-plan.md` §3) — you, not the product, make agentic happen; the system-side twin sits on `the-map-filled-in.md`'s control-loop slide; (d) the strip rides all four map figures visually — this slide is its only spoken home, do not add siblings.
 
 **Kicker pairing:** the survives-the-model kicker *"The loop feeds itself…"* and the closing *"The training closes. The flywheel does not."* now sit in one file; keep them in step.
 
@@ -68,7 +66,6 @@ Claims
 - `possibly-to-i-have-something` · vision · "Acting is the move from *possibly* to *I have something*." ← none-owed
 - `pathways-show-the-next-level` · vision · "The pathways you build show you the next level." ← none-owed
 - `share-and-learn-together` · vision · "Share and learn together." ← none-owed
-- `soil-on-the-map-the-whole-time` · vision · "These have been on the map the whole time: the small print along the bottom, there since M2." ← none-owed
 - `there-is-no-last-turn` · vision · "There is no last turn. Each session surfaces the next gap." ← none-owed
 - `kit-compounds-model-rotates` · vision · "The kit compounds; the model rotates." ← none-owed
 

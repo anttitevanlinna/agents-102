@@ -35,16 +35,9 @@ You have a kit now: a test-strategy skill, a verifier, and a freshly drawn map o
 - A workflow is not only steps in order. At a seam, a check or stop condition decides whether the next step may begin.
 - Your job moves from reading every intermediate output to designing the checks, routes, and exceptions that deserve your judgment.
 
-## Composition is a live argument, so you read
-<!--tier:3-->
+## Dino's skill stack
 
-How the field composes kits like this is a live argument with no settled answer, so there is no prompt to drill here. The move is to read: one engineer's whole worked stack, then the wider field.
-
-[Dino's skill stacking system](trainings/agentic-engineering-101/supplementary/skill-stacking.md)
-
-[Workflow composition lineages](trainings/agentic-engineering-101/supplementary/workflow-composition-lineages.md)
-
-Pick the shape that resembles your day.
+## Pocock's skill system
 
 <!-- maintainer -->
 
@@ -78,6 +71,8 @@ Pick the shape that resembles your day.
 **Watch-for (delivery):**
 - Scheduled-agents stays one slide, not a mini-lecture. Three places it fits, one reference-page pointer, move on. If the slide grows past 90 seconds in rehearsal, cut.
 
+**`## Composition is a live argument, so you read` → two empty slides, *Dino's skill stack* and *Pocock's skill system* (Antti 2026-09-02: *"I will give concrete examples rather than try bulletpoint this into clarity"*).** Bodies owed by Antti. The two reading links the old slide carried — [Dino's skill stacking system](trainings/agentic-engineering-101/supplementary/skill-stacking.md) and [Workflow composition lineages](trainings/agentic-engineering-101/supplementary/workflow-composition-lineages.md) — have no student-facing home until those bodies land; `workflow-composition-lineages.md`'s delivery note still says it is linked from this lecture.
+
 <!-- backing -->
 
 Claims
@@ -95,7 +90,6 @@ Claims
 - `pilot-and-leaf-defined` · detail · "**an orchestrator**, the pilot … A skill that does one job and calls nothing is a **leaf**." ← skill-stacking-supp
 - `seam-check-decides-whether-next-step-begins` · vision · "At a seam, a check or stop condition decides whether the next step may begin." ← none-owed
 - `workflow-designer-owns-checks-routes-exceptions` · vision · "Your job moves from reading every intermediate output to designing the checks, routes, and exceptions that deserve your judgment." ← none-owed
-- `composition-is-a-live-argument` · detail · "How the field composes kits like this is a live argument with no settled answer" ← lineages-supp
 
 Sources
 - cc-scheduling-primitives `[checked:2026-04-24 result:OK due:cohort]` https://code.claude.com/docs/en/ — [capability] The body names three scheduling primitives and distinguishes local Routines from `/schedule`'s cloud-backed remote Routines. The check ran 2026-04-24 against the current documentation and is recorded here: `/schedule` is Routines, remote and cloud-backed; Desktop local tasks are a separate primitive. **A capability stamp records its own check.** Pointing at a paragraph in another file makes the stamp only as durable as that file's next edit, which is how this one nearly lost its evidence. fallback: teach the pattern (a kit skill is what the scheduled agent invokes) and name only the primitives a re-test confirms.

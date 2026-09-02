@@ -146,7 +146,7 @@ restating them is a duplicate, not a recap.
 
 **Block is four lines, not five (Antti 2026-08-27, training run).** The four lines are deliberately only the first bullets; do not re-add a fifth ("The verifier, the reference artefact and the plan are compounding in a different shape from a rule: nothing loaded, everything checked.") — it maps to no beat the deck teaches. The note above stands as written; four is the count.
 
-**The verifier-shape handle is *LLM judge* (Antti 2026-08-27, training run).** Not *background-agent verifier*: in the field that phrase means detached async execution, which this shape is not — `diagnose-and-resend-4` offers slash-command, sub-task dispatch, or scheduled run. *Judge* is the discriminating word, and M5 is where it must be earned: `the-gate-is-a-claim` runs a whole slide on calibrating *the judge*, and `diagnose-and-resend-3` hands the student "an LLM judge", so the exercise menu bullet earns it lightly (judgement vs. the shell-hook's true-false). **`eval` stays embargoed to M6**; `the-loop-has-a-name` places judge inside the family rather than renaming M5's artefact. Registry: `vocabulary.md` verifier-shapes row.
+**The verifier-shape handle is *LLM judge* (Antti 2026-08-27, training run).** Not *background-agent verifier*: in the field that phrase means detached async execution, which this shape is not — `diagnose-and-resend-4` offers slash-command, sub-task dispatch, or scheduled run. *Judge* is the discriminating word, and M5 is where it must be earned: `the-gate-is-a-claim` runs a whole slide on calibrating *the judge*, and `diagnose-and-resend-3` hands the student "an LLM judge", so the exercise menu bullet earns it lightly (judgement vs. the shell-hook's true-false). **`eval` stays embargoed to M6**; `composing-the-workflow` § *Eval* places judge inside the family rather than renaming M5's artefact. Registry: `vocabulary.md` verifier-shapes row.
 
 **Multisession permission carrier (Antti 2026-08-15): M5 alone, one line** at the close of *Your mid-run
 worries hint at missing checks* — control → no babysitting → a second session beside this one. M4 declined (its
@@ -255,7 +255,7 @@ header and handle per slide, never read bullets aloud. Two registers, one instru
 
 **Frameworks riffed on (attributed in lecture):**
 - **Ronacher's three-pattern** — Armin Ronacher. Earns its name in the closing lecture, not before.
-- **Cherny's three stop-hook shapes** — Boris Cherny. Phase 3 names the menu; attribution lives in M6's module-file Frameworks section (`the-loop-has-a-name.md` body never names Cherny). Hook system reference (event names, config shape, when-to-reach-for-hooks): `claude-code-for-engineers.md` § 34.
+- **Cherny's three stop-hook shapes** — Boris Cherny. Phase 3 names the menu; attribution lives in M6's module-file Frameworks section (the M6 *Eval* slide in `composing-the-workflow.md` never names Cherny). Hook system reference (event names, config shape, when-to-reach-for-hooks): `claude-code-for-engineers.md` § 34.
 - **Compound engineering** — Kieran Klaassen. Debrief self-compound, fifth rep for the student.
 - **Hook-vs-prompt partition (must vs should)** — this training's framing, worked from the mechanism: a hook fires whether or not the model cooperates, a prompt asks. Named in the closing lecture's *"Hooks always fire"* section. Not a practitioner convergence and not attributed to one — the other three rows here name a person because they can.
 

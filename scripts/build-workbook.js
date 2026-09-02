@@ -173,12 +173,10 @@ const THEORY_HANDBOOK_MANIFEST = {
     ['M6', [
       'lectures/the-2-frontiers',
       'exercises/spot-gaps-build-the-loop',
-      'lectures/the-loop-has-a-name',
       'lectures/composing-the-workflow',
       'exercises/read-your-stack',
       'lectures/the-handoff-prompt',
       'lectures/story-of-module-6',
-      'lectures/the-map-filled-in',
       'lectures/quality-is-grounding',
       'lectures/agents-that-build-agents',
       'supplementary/clean-code-is-steering',

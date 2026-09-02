@@ -24,7 +24,7 @@ The agentic engineer maxes that signal out. You ship a million lines of new stuf
 
 - section-3 sweep 2026-07-02: 5 refs judged (M1/M2/M3/M5 in slide 1 + "whole training" arc line), 0 fixed, 5 carve-out — consolidation arc-lecture, the quality arc IS the subject; all refs backward-looking material, no forward sequencing in body (M7 mention is below the fence).
 
-**Lecture meta:** *One slide, the grounding thesis, placed after `the-map-filled-in.md` and before the Human close since 2026-09-02. The five-moves recognition slide and the decay slide were cut the same day (Antti); in git at `b8cb4190`.*
+**Lecture meta:** *One slide, the grounding thesis, placed after `story-of-module-6.md` and before the Human close since 2026-09-02. The five-moves recognition slide and the decay slide were cut the same day (Antti); in git at `b8cb4190`.*
 
 **Time:** 3 min.
 

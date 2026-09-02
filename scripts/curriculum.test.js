@@ -264,7 +264,7 @@ test('eval-coverage lecture surface includes every THEORY_HANDBOOK_MANIFEST lect
   )];
   // Parse sanity: newest lecture present + plausible count, so an empty match
   // can never green-light the assertion below.
-  assert.ok(manifestLectures.includes('the-map-filled-in'), 'manifest parse sanity failed: the-map-filled-in not extracted');
+  assert.ok(manifestLectures.includes('composing-the-workflow'), 'manifest parse sanity failed: composing-the-workflow not extracted');
   assert.ok(
     manifestLectures.includes('what-keeps-a-long-running-session-going'),
     'manifest parse sanity failed: M4 long-session closer not extracted'
@@ -438,7 +438,6 @@ test('theory handbook build', async (t) => {
     }
     // Dual-wired across modules in the workbook — exactly once here.
     assert.equal((handbook.match(/id="lectures-reading-the-return"/g) || []).length, 1);
-    assert.equal((handbook.match(/id="lectures-the-loop-has-a-name"/g) || []).length, 1);
   });
 
   await t.test('renders thirteen slim exercise summaries, not exercise bodies', () => {
@@ -491,7 +490,6 @@ test('theory handbook build', async (t) => {
       'id="exercise-summary-diagnose-and-resend"',
       'id="lectures-what-packaging-is"',
       'id="exercise-summary-spot-gaps-build-the-loop"',
-      'id="lectures-the-loop-has-a-name"',
       'id="lectures-composing-the-workflow"',
       'id="exercise-summary-read-your-stack"',
       'id="lectures-the-handoff-prompt"',

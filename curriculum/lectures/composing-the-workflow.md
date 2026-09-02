@@ -9,6 +9,12 @@
 - Verification is the sensor. A loop with no way to read its own result runs open: send the work off and hope. The checks you built are how this loop reads what came back. They are the part that lets the system catch its own error before it ships.
 - The harness makes continuing possible. What a session gets right without you is set by what has accumulated around it: rules, durable state, checks, encoded corrections. The M4 send-off and the M5 re-send: same model, two different agents.
 
+## Eval
+
+- The thing you built at M5 reads an agent's work and decides whether it meets a bar. The checks you just ranked against your dominant gap are the same family: some deterministic, some an LLM reading the work, some firing before the session even starts.
+- The name for all of it is **eval**: the automated check that says *this agent-produced thing meets our bar*.
+- Three names, one thing. *Judge* when the check is itself an LLM reading the work. *Verifier* when the check is deterministic: tests, lint, compile, a shell hook that returns true or false. *Gate* when the same check is placed in CI and a pull request can't merge without it. M5 used *verifier* for the whole family and *judge* for one shape inside it; from here each name is precise, and *eval* is the family name.
+
 ## Loop instead of you starting
 <!--tier:3-->
 
@@ -35,6 +41,11 @@
 
 ## Pocock's skill system
 
+## The checking loop, drawn solid
+<!--tier:2-->
+
+{{figure:map-engine-filled}}
+
 <!-- maintainer -->
 
 **Lean pass (2026-08-25):** cut "Same passage, same drift, same fixes and guardrails." from slide-1 bullet 3 — the figure shows it. Do not restore.
@@ -56,11 +67,27 @@
 
 **Headers (squint + truth, `check_lectures §4`).** *A skill's footprint is where its job lands* (slide 1, thesis-claim, matches the chart's own bottom caption); *From skills to a workflow* (slide 2, names the composition concept the slide teaches in its variety). No orphan-mystery, no empty container.
 
-**Lecture meta:** *Opens the loop beat with the control-loop slide (from `the-map-filled-in.md`, T1), then three T3 slides teaching what a workflow-of-skills IS on the M5 passage, handing off to the worked example and the field survey. The register-shift line ("no prompt to drill; the move is to read") stays. Title awaits a card now that the file opens on the loop.*
+**Lecture meta:** *The M6 loop lecture (2026-09-02 shape): control loop (T1) → Eval (T1) → cadence (T3) → footprint (T3) → skills-to-workflow (T3) → Dino's skill stack and Pocock's skill system (bodies owed by Antti) → the filled-in map figure (T2). Title awaits a card now that the file opens on the loop and ends on the map.*
 
-**Time:** 6 min at presentation pace.
+**Time:** 11 min at presentation pace.
 
 **Delivery mode:** In-room, chart projected. Barebones drops the three T3 slides and keeps the control loop.
+
+**`## Eval` moved in from `the-loop-has-a-name.md` (Antti 2026-09-02), that file removed.** Sits right after the control-loop slide; the naming beat lands inside the loop lecture. Body verbatim; its claims, the eval law line, the vocabulary stance rows and the 2026-08-02 usage sweep (Flagged) travelled here. The beat is three-names-one-thing: the word lands because the thing is in hand. Keep the *eval* bold as the slide's one handle. The definition itself is owed a measurement-shaped rewrite (`pre-cohort-todos.md`).
+
+**The latency axis stays off the naming slide (2026-08-23, Antti, `0a56ebd9`):** a bullet placing checks by latency (seconds inline, minutes in the background, expensive judgement at a named gate) was tried on the placement slide (itself cut 2026-09-02) and reverted — students realise the latency axis through their own practice, and a closing lecture is recognition, not instruction. Do not re-add without a new call; the deep treatment stays in `supplementary/how-the-best-do-ci-cd.md` § *Eval latency is part of the loop*.
+
+**`## The checking loop, drawn solid` moved in from `the-map-filled-in.md` (Antti 2026-09-02), that file removed.** The re-shown engine map with the solid checking loop, figure only, T2, after the Dino / Pocock example slides. The control-loop slide's provenance notes came along with it below.
+
+**SVG:** derived from `the-whole-map.md`'s engine canvas — same drawing, four edits: checking-loop ellipse solidified (dasharray dropped, stroke 1.8→2.6, opacity 0.45→0.9), tag un-ghosted (`◌` dropped, grey→teal), sub reworded `by hand for now` → `by your evals now` (fill now inherits the body ink), aria-label updated. ALL ids re-prefixed `wm-` → `mf-` (the theory handbook renders both copies on one page; duplicate ids break defs and markers). The figure block is blank-line-free ON PURPOSE — a blank line inside terminates the raw-HTML block in marked and spills markup (verified failure mode in this repo). The parent M2 SVG is itself an unreviewed draft with open eyeball questions (incl. whether the checking ghost survives at all); if the M2 map changes, re-derive this copy.
+
+**Soil line (2026-08-15):** the strip rides this figure visually (bottom-center italic, paints last); its one spoken home is `agents-that-build-agents.md` § *You make agentic happen* (Antti-directed — the orders belong at the launch beat, not the consolidation). Do not add a spoken bullet here: the first slide stays three bullets, and *Nothing else moved* is literally true of the strip, which is on all four `map-engine*` figures.
+
+**Control-loop naming beat (2026-07-03, Antti + external read):** new slide *The shape you drew* inserted between *The ghost, drawn solid* and *Verification, named*. Names the whole map as a feedback control loop (near half feedforward · far half feedback · verification as the sensor layer) — recognition-after-living, jargon-free BY DESIGN. NO setpoint/plant/gain; "feedback control" + "control loop" are the accessible names, earned in-breath by the mechanism sentence that precedes each. Zero new laws coined: the single-loop closed-loop-controller law (`theory-plan.md` §1, `[borrow:control theory]`) already lived in-room via `the-agent-loop` at M4 — this widens that law to the whole map at consolidation, and re-explains why the map has a near/far seam (feedforward/feedback). Antti's dosage call (Option B): ONE clean naming reaches students; the full canonical mapping (reference/controller/plant/output/measurement/error/disturbance/integral-memory → AE101) stays design-side in `theory-plan.md` § The Field Map. Slide count now 7 (was 6) — interacts with EYEBALL Q2 (slide budget); added knowingly. Source: canonical closed-loop negative-feedback diagram (Wikimedia Commons *Simple feedback control loop*; *Closed-loop controller*, Wikipedia) — textbook/foundational, cited design-side as origin not current evidence; the student line ("robotics and autopilots have run on for decades") is common knowledge, no freshness stamp owed.
+
+**Diagram woven in (2026-07-04):** Antti chose proto A (`protos/control-loop-01-closed-loop.html` — the canonical closed-loop block diagram, relabeled in student words) from a 3-proto set (A=canonical form · B=open-vs-closed contrast · C=map-as-loop; B+C stay in `protos/` as alternates, PNG renders in session scratchpad). Inlined as this slide's `<figure class="diagram">`, SVG byte-identical to the proto minus blank/comment lines (marked's raw-HTML block terminates on any interior blank line — same rule as the engine SVG above). Bullet 1 de-duplicated: dropped "the shape robotics and autopilots have run on for decades" (now carried once, in the diagram caption). No SVG ids, so no collision with the engine map's mf- ids on the theory-handbook page. Slide is figure + 4 bullets (the fourth is the accumulation claim — see the accept-note below).
+
+**Accumulation bullet (2026-08-09, Antti-directed; buried-gold item):** fourth bullet on *You drew a control loop* states the join the gold list named as un-homed: the harness enables continuation; what a session gets right unattended is set by the accumulated surround; M4/M5 is the lived proof (same model, same harness, only the surround differed — by the M4 four-part definition, the context differed, so "two different agents" is literal). Guards: (a) NOT a new law — no coined name, no bold; the dose verdict's "zero new laws" stands. (b) Claim altitude only — the four artifact classes stay bare; their mechanisms live on the Verification and Outcome slides. Do not expand the list. (c) Bearer split is the design: this is the system-side twin of the closing slide's frontier bullet (engineer-side, reach-and-gates). The twins lean on each other by deck order; neither restates the other. (d) Deliberate silences, all load-bearing: `the-agent-loop.md` untouched (its "Out of the box, nothing new takes over" scope is this bullet's setup — the payoff lands here, not there); `story-of-module-6.md` taste line untouched (no conflict: taste governs in-session quality, accumulation governs unattended capacity across sessions — encoding is how taste attends sessions the author is not in); `agents-that-build-agents.md` untouched (its "not model features" slide, moved there from the removed `the-loop-has-a-name.md` argues the engineer-side stance, wrong bearer for this claim); the progression supplement untouched (engineer-subject by design); M6 module Key Concepts untouched (they enact the inventory; a second in-module statement would be repetition, not dosage). Design-side name: *Accumulated, not enabled* (`theory-plan.md` §3); the name stays off slides. Trainer line: *asking the product for more autonomy adds nothing the surround has not already earned.*
 
 **Cadence slide (from `the-loop-has-a-name.md`, Antti 2026-09-02, header his):** *Loop instead of you starting* sits right after the control-loop slide: a check on cadence is the loop closing with nobody pressing start. Body verbatim from its old home; T3.
 
@@ -72,6 +99,10 @@
 <!-- backing -->
 
 Claims
+- `checks-are-one-family` · vision · "The checks you just ranked against your dominant gap are the same family" ← none-owed
+- `the-name-is-eval` · vision · "The name for all of it is **eval**" ← none-owed
+- `judge-verifier-gate-three-names` · vision · "Three names, one thing. *Judge* when the check is itself an LLM reading the work." ← none-owed
+- `eval-definition` · vision · "the automated check that says *this agent-produced thing meets our bar*" ← none-owed
 - `three-scheduling-primitives` · detail · "Claude Code ships three ways to do it: local routines (from the Routines sidebar) for standing work on your laptop, `/loop` for in-session repetition, `/schedule` for cloud-backed remote Routines." ← cc-scheduling-primitives
 - `three-places-cadence-fits` · vision · "A standing verifier run … A scheduled codebase sweep … Rule-drift monitoring" ← none-owed
 - `skill-defines-check-runtime-supplies-cadence` · vision · "The skill defines the check. The runtime supplies the cadence or stopping condition." ← none-owed
@@ -90,6 +121,7 @@ Sources
 - lineages-supp `[checked:2026-08-01 result:CAVEAT due:none]` kb:none — [delegated stamp] `curriculum/trainings/agentic-engineering-101/supplementary/workflow-composition-lineages.md` carries the field-survey lineages and their per-source stamps. **`due:none` is the delegated variant** (`backing-format.md` § Delegated): the delegation does not expire, the delegate's own stamps do, and `source-freshness.sh` already walks that file. `checked:` still means what it says here: the date this pointer was last confirmed to aim at the right file. fallback: this lecture asserts no dated specific of its own; if the supplementary's lineages change, only the "live argument" claim here is affected, and that claim gets *stronger* when the field moves.
 
 Frameworks
+- eval = judge / verifier / gate · [borrow:none] · law:eval-judge-verifier-gate · ← none — the three-way split is banked as a law and taught as a definition; the words are in real use, the taxonomy is ours
 - Footprint follows the job · [borrow:none] · law:none · ← none — house framing, chosen over phases-as-legs in a 5-framing / 3-judge panel (2026-07-04); the rejected alternative re-committed the fixed-mapping error one level up
 - Orchestrator / leaf · [borrow:distributed systems] · law:none · ← skill-stacking-supp — Dino's vocabulary, bridged once to the chart's nautical *pilot*
 - The value cycle · [borrow:none] · law:the-value-cycle · ← none — the phase chain (context, plan, build, verify, ship) is the cycle in run-local form
@@ -99,11 +131,19 @@ Stance `[stance:2026-08-01 level:L1]`
 - contested: whether the four wirings are the complete set. Nobody has enumerated composition mechanisms across kits (the delegate's stance says so in as many words), which is exactly why the body scopes the count to one kit and teaches the variety first.
 - decided: **delegated stamps take `due:none`, 2026-08-02.** This file's `due:2026-11-25` pointed at a delegate checked 2026-05-25 that had since been corrected and re-stamped, so the pointer aged against a fact it did not own. The pointer is legitimate; a computed date on it is a second copy of the delegate's freshness that nothing in the toolchain compares. Rule now in `backing-format.md` § Delegated.
 - decided: **the scheduling bullet carries its own check, not a pointer at one.** The capability check backing it was recorded in `story-of-module-6.md`, one module over, and this file's stamp merely cited it — invisible from the file that depended on it, and dependent on prose the other lecture was free to cut. The check lives here now, stamped `result:OK` from its own 2026-04-24 date. `ATTESTED` was never the right label: that vocabulary is for a maintainer's first-hand witness, not a documentation read.
+- contested (eval naming): the vocabulary — checked 2026-08-02 (see Flagged), and the answer splits: *judge* is genuinely shared across the LLM-eval lineage (Husain, Shankar, Yan, Willison, Braintrust, LangSmith); *verifier* and *gate* are ours — the field says `code-based eval` / `assertion` / `grader` / `scorer` for the one and ships the behaviour without a shared word for the other. The body's define-rather-than-survey framing is therefore right, and the live question is only whether slide 1 earns one bridging clause naming the field's words (Flagged, first row).
+- decided: **judge / verifier / gate is stated as a definition, not a survey, 2026-08-01.** The bullet read *"Practitioners say judge…"*, attributing a three-way taxonomy to a field nobody had counted. The names are in real use; the split by check-type is ours. Do not restore the survey verb — the standing usage question lives in the OODA below and is worth answering, but the body no longer depends on the answer.
+- would-move-it (eval naming): a usage sweep showing practitioners do not split the three words this way, which would turn slide 1 from recognition into invention and require the same "these are our names" candour M5's closer carries.
 - would-move-it: a second fully documented kit (takes the wirings claim from L1 toward L2), a mechanism renamed at field level, or a fifth wiring gaining currency — each edits slide 2. Convergence on one composition shape would break the "live argument" framing and turn the variety bullet into a recommendation.
 
 OODA
-- question: have the four wiring mechanisms held their names, and has a fifth appeared?
-- roster: Dino (skill-stacking), Kieran Klaassen, Simon Willison, Geoffrey Huntley, the Amp Chronicle, Anthropic's skills documentation
+- question: have the four wiring mechanisms held their names, and has a fifth appeared? And do practitioners actually use *judge*, *verifier* and *gate* with the Eval slide's three distinctions?
+- roster: Dino (skill-stacking), Kieran Klaassen, Simon Willison, Geoffrey Huntley, Hamel Husain, Shreya Shankar, Eugene Yan, the Anthropic eval cookbook, Braintrust and LangSmith docs for vendor usage, the Amp Chronicle, Anthropic's skills documentation
 - last-run: 2026-08-01
+
+Flagged
+- `[found:2026-08-02]` The usage question is answered, and it answers in three different registers rather than one. *Judge* is genuinely shared: Husain, Shankar, Yan, Willison, Braintrust and LangSmith all use it for an LLM reading the work, unchanged across 2024–2026. *Verifier* is attested nowhere in that sense — the field's words for the deterministic half are `code-based eval` (Husain and Shankar's joint course), `assertion` (Shankar's EvalGen paper), `grader` (Yan 2026-06, and the Anthropic cookbook throughout), `scorer` (Braintrust) and `code evaluator` (LangSmith). *Gate* is weakest: Braintrust alone uses the word for the CI-blocks-merge behaviour, LangSmith ships the identical behaviour as "promote to production if all pass", and Yan's *guardrail* names a runtime production filter rather than a merge blocker, so it is a near-miss on the word and not a match on the concept. **This now joins the M5 finding from the other direction.** `what-packaging-is.md`'s `ronacher-minijinja` stamp records a 14-post sweep of Ronacher's full archive returning zero uses of *verifier*; this cycle sweeps a different population — the LLM-eval lineage rather than the agentic-coding one — and returns the same zero. Two independent sweeps, two disjoint rosters, one answer, which is a firmer footing for the body's framing than either sweep alone. → the body already says so — it defines rather than surveys — but a student who reads Husain next meets `code-based eval` and has no way to know it is our `verifier`. Does slide 1 earn one bridging clause naming the field's words, or does that clutter the beat the naming move depends on?
+- `[found:2026-08-02]` No source anywhere assembles the three into a taxonomy. Where three-way splits do exist — Anthropic's code-based / model-based / human graders, LangSmith's human / code rules / LLM-as-judge / pairwise — the axis is *who performs the check*, never *where the check sits*. The CI-placement axis is structurally absent from every taxonomy found. → no body change owed; this is the evidence the 2026-08-01 decision was right, and it retires the risk M5's naming audit raised. Worth recording that the audit ran and came back clean.
+- `[found:2026-08-02 resolved]` `Stance.contested` matches the sweep: *judge* holds, *verifier* / *gate* are ours, and the row carries the field's own vocabulary for the deterministic half.
 
 <!-- /backing -->

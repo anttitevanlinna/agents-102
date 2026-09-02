@@ -29,8 +29,6 @@ You walk in holding two sessions of the same task. The un-packaged Module 4 send
 
 [Map the gaps, cut the rule](exercises/spot-gaps-build-the-loop.md)
 
-[The check you built is an eval](lectures/the-loop-has-a-name.md)
-
 [Composing the workflow](lectures/composing-the-workflow.md)
 
 [Read your stack](exercises/read-your-stack.md)
@@ -38,8 +36,6 @@ You walk in holding two sessions of the same task. The un-packaged Module 4 send
 [Agents that build agents](lectures/the-handoff-prompt.md)
 
 [Story of Module 6](lectures/story-of-module-6.md)
-
-[The map, filled in](lectures/the-map-filled-in.md)
 
 [Quality is grounding](lectures/quality-is-grounding.md)
 
@@ -109,7 +105,7 @@ This slot is a human round: talk, compare, no prompts.
 - **Prep / bridge timing:** optional Klaassen verifier article 10 min; human close / team-kit accretion slot 10–15 min.
 - **Mood target:** practitioner fluency — *"I know how to test, I know how to learn, I know how to encode."* Not confidence-as-performance; competence-as-posture. Failure shapes that steal the mood: compliance-feel (*"build the eval, pass the gate"*), paperwork-feel, credibility-performance (*"we live what we teach"*), trainer-monologue retrospective. If any beat reads like one of those, revise.
 - **Delivery architecture:** canonical in training-architecture.md §Working directory model / §Session boundaries / §Material distribution (no training-dir state, no `module-N/` folders). Not restated here. Module-specific: M6 opens a fresh session in the M5 worktree at `../<repo-name>-m5` where both runs already live, then reads, routes, and maps in-place. The handoff prompt from the close is the take-home; skill candidates it surfaces later ship personal-first, team-PR via human conversation — not auto-promoted.
-- **Pre-read placement:** none. M6 deck order (2026-09-02, three-beat re-cut, slides moved and re-tiered, body text untouched pending cards): the-2-frontiers → exercise `spot-gaps-build-the-loop` (diff + rule cut) → the-loop-has-a-name → composing-the-workflow (opens on the control-loop slide) → exercise `read-your-stack` → the-handoff-prompt (titled *Agents that build agents*) → story-of-module-6 → the-map-filled-in → quality-is-grounding → Human close → agents-that-build-agents (titled *There is no last turn*, last).
+- **Pre-read placement:** none. M6 deck order (2026-09-02, three-beat re-cut, slides moved and re-tiered, body text untouched pending cards): the-2-frontiers → exercise `spot-gaps-build-the-loop` (diff + rule cut) → composing-the-workflow (control loop, Eval, cadence, skills, the Dino / Pocock examples, the filled-in map figure) → exercise `read-your-stack` → the-handoff-prompt (titled *Agents that build agents*) → story-of-module-6 → quality-is-grounding → Human close → agents-that-build-agents (titled *There is no last turn*, last).
 
 **Push-back moves** (trainer delivers):
 - **Connections blocker** — student walks in without one of the two artefacts accessible (laptop closed between M5 and M6, scrollback gone, repo state unclear on the packaged run). Trainer push: *"both artefacts are whatever's there. Commits between M4 and M5 send-offs, files modified during each run, scrollback at `~/.claude/projects/<project>/` if the sessions closed — if M4 and M5 share a cwd, recency alone can grab the wrong attempt; filter by a phrase unique to that send-off's opening prompt instead. Open a fresh Claude Code session in the repo and ask it to surface what each run touched."*

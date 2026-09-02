@@ -11,7 +11,7 @@
 #
 # arc-retrospective-1 (formerly T9) was cut from the exercise 2026-07-05
 # (commit 9c954ca, "cut two M6 beats" — arc-recognition carried by the
-# Human close + the-map-filled-in instead). Removed from the scenarios
+# Human close + the map figure now in composing-the-workflow instead). Removed from the scenarios
 # and this runner 2026-07-10.
 #
 # Per-turn artifact assertions (check_platform_and_boundaries.md § 16a):

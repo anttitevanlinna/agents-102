@@ -9,15 +9,15 @@
 - Verification is the sensor. A loop with no way to read its own result runs open: send the work off and hope. The checks you built are how this loop reads what came back. They are the part that lets the system catch its own error before it ships.
 - The harness makes continuing possible. What a session gets right without you is set by what has accumulated around it: rules, durable state, checks, encoded corrections. The M4 send-off and the M5 re-send: same model, two different agents.
 
+## Eval
+
+- An **eval** is a measurement. You hold agent-produced work against a fixed yardstick, across enough runs to get a number: a pass rate, a score, how often one drift shape shows up. One run tells you what happened. The measurement tells you what the system does.
+- The yardstick stays put and the system learns against it. Add a rule, cut a rule, sharpen a check, and the number moves or it does not. That is how you know a change to the system was a change for the better.
+- The checks you built are the instruments inside it. *Verifier* when deterministic: tests, lint, a hook that returns true or false. *Judge* when an LLM reads the work. *Gate* when the same check sits in CI and blocks the merge.
+
 ## The second loop
 
 {{figure:double-loop-m6}}
-
-## Eval
-
-- The thing you built at M5 reads an agent's work and decides whether it meets a bar. The checks you just ranked against your dominant gap are the same family: some deterministic, some an LLM reading the work, some firing before the session even starts.
-- The name for all of it is **eval**: the automated check that says *this agent-produced thing meets our bar*.
-- Three names, one thing. *Judge* when the check is itself an LLM reading the work. *Verifier* when the check is deterministic: tests, lint, compile, a shell hook that returns true or false. *Gate* when the same check is placed in CI and a pull request can't merge without it. M5 used *verifier* for the whole family and *judge* for one shape inside it; from here each name is precise, and *eval* is the family name.
 
 ## Loop instead of you starting
 <!--tier:3-->
@@ -103,10 +103,10 @@
 <!-- backing -->
 
 Claims
-- `checks-are-one-family` · vision · "The checks you just ranked against your dominant gap are the same family" ← none-owed
-- `the-name-is-eval` · vision · "The name for all of it is **eval**" ← none-owed
-- `judge-verifier-gate-three-names` · vision · "Three names, one thing. *Judge* when the check is itself an LLM reading the work." ← none-owed
-- `eval-definition` · vision · "the automated check that says *this agent-produced thing meets our bar*" ← none-owed
+- `eval-is-a-measurement` · vision · "An **eval** is a measurement." ← none-owed
+- `yardstick-fixed-system-learns` · vision · "The yardstick stays put and the system learns against it." ← none-owed
+- `checks-are-instruments-inside-the-eval` · vision · "The checks you built are the instruments inside it." ← none-owed
+- `judge-verifier-gate-three-names` · vision · "*Verifier* when deterministic: tests, lint, a hook that returns true or false. *Judge* when an LLM reads the work." ← none-owed
 - `three-scheduling-primitives` · detail · "Claude Code ships three ways to do it: local routines (from the Routines sidebar) for standing work on your laptop, `/loop` for in-session repetition, `/schedule` for cloud-backed remote Routines." ← cc-scheduling-primitives
 - `three-places-cadence-fits` · vision · "A standing verifier run … A scheduled codebase sweep … Rule-drift monitoring" ← none-owed
 - `skill-defines-check-runtime-supplies-cadence` · vision · "The skill defines the check. The runtime supplies the cadence or stopping condition." ← none-owed

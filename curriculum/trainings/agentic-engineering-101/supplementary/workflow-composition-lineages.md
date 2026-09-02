@@ -160,7 +160,7 @@ Track two or three practitioners and you stay current. Watch what they ship in t
 
 **Time:** 15–25 min student read; not in-room.
 
-**Delivery mode:** Linked from M6's `composing-the-workflow.md` lecture. Optional reading after M6 closes, or pre-read between M6 and post-cohort follow-up.
+**Delivery mode:** In the training index, not linked from the M6 deck. Optional reading after M6 closes, or between M6 and the post-cohort follow-up.
 
 <!-- backing -->
 

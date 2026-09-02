@@ -49,43 +49,41 @@ Ask Claude to cut one rule the two-session diagnosis killed, or to say so and st
 
 **Atomic — no phase markers.** One read of two sessions, then one cut; the second move is a consequence of the first, not a phase.
 
-**Lean pass (2026-08-25, Antti-directed M3/M6 shorten, free hands):** session widget condensed 4→2 sentences (wait/stop/accept-partial decision kept; the module file's rescue callout carries the fuller triage); cut "Both are visible via git refs, since the worktree shares `.git`…" (module Start-here states it); "You are not tracing git refs by hand."; "Two sessions means two bodies of evidence, and the teaching is in the contrast." (§16a); "Cleaning is the compound move that keeps the loop fast."; "This is your stack."; "How far you take this is yours." (dup of Phase-2 lead's is-yours); "The recognition is the point." (claim-anchored final sentence carries it). Do not restore.
+**Lean pass (2026-08-25, Antti-directed M3/M6 shorten, free hands):** the session widget is two sentences (open in the M5 worktree; the wait / stop / accept-partial decision), and the module's rescue callout carries the fuller triage. Cut, do not restore: *"Both are visible via git refs, since the worktree shares `.git`…"*; *"You are not tracing git refs by hand."*; *"Two sessions means two bodies of evidence, and the teaching is in the contrast."*; *"Cleaning is the compound move that keeps the loop fast."*; *"This is your stack."*; *"How far you take this is yours."*; *"The recognition is the point."*
 
 **View summary:** You compare the un-packaged and packaged runs side by side, quote where the packaging caught and where it missed, rank what the second attempt still left open, and cut one stale rule from your rules-file that the two-session diagnosis killed.
 
-**Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** bullet leads de-bolded to plain; widget/label chrome and blockquote callouts untouched, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. (The three bolded shape handles that survived that pass left with the 2026-08-01 authoring-sequence cut.)
+**Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** bullet leads plain; bold only on widget / label chrome, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`.
 
 **Quality:** compendium-audited 2026-08-29 (writing@4a722813 story@0e4f7c9e technical@0cea7581 behavior@ba5ccf5 pedagogy@0e4f7c9e strategy@1c765f2 slides@0e4f7c9e)
 - judges @4a722813: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS (verify-refuted), slides PASS
 - re-audit @796293b 2026-05-31: writing PASS, pedagogy PASS — steer-callout gained a premature-completion recovery line (§48/§62) + a render-as-HTML affordance callout after the shapes prompt (§50/§53/§62 hold)
 
-**Word count:** ~430 words body.
+**Word count:** ~420 words body.
 
 **Primary Bloom's level:** Analyze (the two-session diff) + Evaluate (the rule cut).
 
-**Placement:** Beat 1 of the three-beat M6 (2026-09-02 split): the two-session diff and the rule cut, directly after the opener. The stack scan is its own exercise, `read-your-stack.md`, in beat 2.
+**Placement:** Beat 1 of the three-beat M6 (2026-09-02): the two-session diff and the rule cut, directly after the opener. The stack scan is its own exercise, `read-your-stack.md`, in beat 2.
 
 **Mood target:** practitioner fluency — *"I know how to test, I know how to learn."* Watch-for: compliance-feel (student treats the diff as paperwork) or credibility-performance. Both steal the mood.
 
 **Leap test (Monday):** three observable verbs the engineer exhibits on their own codebase next working day:
 - cuts a stale rule from their own `CLAUDE.local.md` once a run's evidence shows it never fired or fired wrong, instead of letting the rules-file rot
 - reads a run's gaps as a ranked list with the dominant one named, instead of treating every miss as equally worth fixing
+- reads a packaged run against the un-packaged one before crediting the packaging, and names what the verifier missed in quotes, not summaries
 
 **Failure modes + diagnostics:**
-- **Phase 1 generalised diff** — student says *"M5 was better"* without quoted moments. Diagnostic: prompt requires quoted moments from BOTH runs. If Claude returns only summaries, re-run with explicit quote enforcement. Echoes M5's Phase 1 diagnostic.
-- **Phase 1 packaging-over-credit** — student treats the packaged run as fully solved and skips the *"what packaging missed"* beat. Diagnostic: the M5 run did drift somewhere; if Phase 1 outputs zero misses, Claude is over-crediting. Trainer push: *"name one thing the verifier missed, concretely. Quote the scrollback."*
-- **Rule-cut dodge** — student accepts *"every rule still holds"* without testing it against the diagnosis. Diagnostic: did any gap in the ranked list trace to a rule that fired wrong or never fired? If yes, the cut was available and got skipped.
+- **Generalised diff** — student says *"M5 was better"* without quoted moments. Diagnostic: prompt requires quoted moments from BOTH runs. If Claude returns only summaries, re-run with explicit quote enforcement. Echoes M5's Phase 1 diagnostic.
+- **Packaging over-credit** — student treats the packaged run as fully solved and skips the *"what packaging missed"* beat. Diagnostic: the M5 run did drift somewhere; if the diff outputs zero misses, Claude is over-crediting. Trainer push: *"name one thing the verifier missed, concretely. Quote the scrollback."*
+- **Rule-cut dodge** — student accepts *"every rule still holds"* without testing it against the diagnosis. Diagnostic: did any gap in the ranked list trace to a rule that fired wrong or never fired? If yes, the cut was available and got skipped. Trainer push: *"take the top gap on your list: which rule should have caught it, and did it fire?"*
 
 **Plug points:**
-- Student's M4 un-packaged artefact + M5 packaged re-run artefact (Phase 1 source material; both already in the repo + session transcripts).
-- Repo's skill home convention if any (install paths + team-kit route → `training-architecture.md` § Skills).
+- Student's M4 un-packaged artefact + M5 packaged re-run artefact (the diff's source material; both already in the repo + session transcripts).
 
 **Decision points (pacing):**
-- **Phase 1 >20 min** — over-diffing. The diff is data for the rule cut, not an essay. Force a rank and move on.
-- **Phase 1 <10 min** — under-engagement. Check if Claude returned only summaries; re-run the prompt with quote enforcement if so.
-- **Whole-room mood below 7** — practitioner fluency isn't landing. Check Phase 1 specificity: did the diagnosis name gaps with quoted moments from BOTH runs? If it stayed generic, the read didn't close.
-
-**Pre-cohort open items:** `curriculum/trainings/agentic-engineering-101/pre-cohort-todos.md`.
+- **Diff >20 min** — over-diffing. The diff is data for the rule cut, not an essay. Force a rank and move on.
+- **Diff <10 min** — under-engagement; same diagnostic as the generalised diff.
+- **Whole-room mood below 7** — practitioner fluency isn't landing. Check the diff's specificity: did the diagnosis name gaps with quoted moments from BOTH runs? If it stayed generic, the read didn't close.
 
 <!-- backing -->
 

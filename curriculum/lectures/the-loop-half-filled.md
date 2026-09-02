@@ -4,7 +4,7 @@
 <!--tier:2-->
 
 - Three modules in, the near half is lived ground. M1 stepped into the territory without the map, on purpose. The map arrived at M2, and everything since has landed on its near half: Intent, Context, Work, and how a loop compounds.
-- **One loop, three sizes.** The agent's act-observe-correct inside a session; your orient, act, verify, compound around each session (M1's orient, fix, compound, close cut at different joints); and the slow loop that carries a win from you to the team. Same shape at three altitudes; the strands the map draws (context, plan, build, checking) are the same shape again, each wearing different work.
+- **One loop, three sizes.** The agent's act-observe-correct inside a session; your orient, act, verify, compound around each session (M1's orient, fix, close, compound cut at different joints); and the slow loop that carries a win from you to the team. Same shape at three altitudes; the strands the map draws (context, plan, build, checking) are the same shape again, each wearing different work.
 - A name is a handle, not a lesson. Every law coming up is a move already made. Naming it makes the move findable on Tuesday, transferable to a teammate, and checkable when it stops working.
 
 {{figure:map-engine-m3-close}}
@@ -79,7 +79,7 @@
 
 **The context-files law stays steering-scoped.** Its third sentence reads "must rediscover or guess each session", never "can't act on" — the agent can grep the codebase, so the universal is false. Matches `the-whole-map.md`'s Context form.
 
-**Dose constraints on the law bullets.** The context-law bullet carries *context engineering* as a searchability handle, a semicolon clause on "Thin model, thin steering"; the 3-mechanism-sentence cap binds. "One loop, three sizes" revisits the M2 map's strand vocabulary as recognition tags (context / plan / build / checking, echoing the map's each-wearing-different-work lede) — one clause, no new laws. The middle loop's orient/act/verify/compound is equated with M1's orient, fix, compound, close via the cut-at-different-joints clause, same pattern as `the-machine-you-just-met.md`; that bullet runs bolded claim + 2 mechanism sentences.
+**Dose constraints on the law bullets.** The context-law bullet carries *context engineering* as a searchability handle, a semicolon clause on "Thin model, thin steering"; the 3-mechanism-sentence cap binds. "One loop, three sizes" revisits the M2 map's strand vocabulary as recognition tags (context / plan / build / checking, echoing the map's each-wearing-different-work lede) — one clause, no new laws. The middle loop's orient/act/verify/compound is equated with M1's orient, fix, close, compound via the cut-at-different-joints clause, same pattern as `the-machine-you-just-met.md`; that bullet runs bolded claim + 2 mechanism sentences.
 
 - Family B judged 2026-07-03: B-star durability PASS — every law recovers NAMED·PLACED·MECHANISM from the slide alone and the governor is executable/generative; spine holds (Intent filled by the governor, no empty phase) and the kept-5 dose reads as recognition, not a pile.
 

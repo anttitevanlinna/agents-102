@@ -4,7 +4,7 @@
 
 **Session** *(new, "Module 6 worktree session")*
 
-Open a new Claude Code session in the existing M5 worktree (`../<repo>-m5`), no fork. M5's session may still be running the re-send; before this module edits files or cuts rules, decide whether it is done enough, should be stopped, or counts as the partial artefact.
+Open a new Claude Code session in the existing M5 worktree (`../<repo-name>-m5`), no fork. M5's session may still be running the re-send; before this module edits files or cuts rules, decide whether it is done enough, should be stopped, or counts as the partial artefact.
 
 **What you do:** diff two sessions of the same task, then read your history for the work you repeat.
 

@@ -688,6 +688,15 @@
         startAt = si;
       }
     }
+    // `startAnchor` is an arrival fragment: a second tab opened on an exercise
+    // link lands on the cover otherwise, because the deck has no scroll and the
+    // browser's own fragment jump moves nothing. Resolve it through the same
+    // index the in-deck click handler uses; an unknown fragment changes nothing.
+    if (typeof opts.startAnchor === 'string' && opts.startAnchor) {
+      var arrival = opts.startAnchor;
+      try { arrival = decodeURIComponent(arrival); } catch (err) { /* keep raw */ }
+      if (Object.prototype.hasOwnProperty.call(model.anchors, arrival)) startAt = model.anchors[arrival];
+    }
     go(startAt);
 
     function edge(dir) {

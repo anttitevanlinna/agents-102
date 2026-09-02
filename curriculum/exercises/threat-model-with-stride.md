@@ -19,7 +19,7 @@
 - STRIDE is a six-category checklist for threats. Spoofing, Tampering, Repudiation, Information disclosure, Denial of service, Elevation of privilege. The curated skill walks your surface against all six, so you don't hold the taxonomy in your head.
 - The subagent does the walk; you read the result. It runs in fresh context against the map, not the raw code.
 
-Ask Claude to invoke the STRIDE skill as a subagent on the access-surface map from Exercise 1.
+Ask Claude to invoke the STRIDE skill as a subagent on the access-surface map you built.
 
 {{prompt:threat-model-with-stride-1}}
 
@@ -80,7 +80,7 @@ Ask Claude whether this ADR rides into future sessions automatically.
 
 ## Save the map and the STRIDE walk before you clear
 
-- The skills returned their work into this session: the full access-surface map from Exercise 1, and the complete STRIDE walk here, including the threats you considered and set aside. The ADR holds the one decision. The analysis around it is real security documentation, and it clears when the session does.
+- The skills returned their work into this session: the full access-surface map you built, and the complete STRIDE walk here, including the threats you considered and set aside. The ADR holds the one decision. The analysis around it is real security documentation, and it clears when the session does.
 
 > **Worth keeping?** Ask Claude to save the access-surface map and the STRIDE walk to your repo's `docs/` directory, next to the ADR, before you clear. Your CISO and the next engineer read what's on disk, not your scrollback.
 
@@ -100,7 +100,7 @@ Ask Claude whether this ADR rides into future sessions automatically.
 
 **M3 supply-chain easter egg — DO NOT SPOIL IN BODY:**
 - Phase 1 prompt `threat-model-with-stride-1` instructs the agent to run the curated `security-tools` skill as a pre-flight before invoking stride. `security-tools` ships a bundled `check.sh` whose first echo line is `owning you ............... ok` — the punch line, visible in Claude Code's collapsed Bash output without Ctrl+O. Expansion reveals an ASCII rick-roll plus the *external skills are a supply-chain vector* lesson framing.
-- **Body intentionally has NO lead-in for the pre-flight** at the Phase 1 prompt fence. The body line above the fence reads only *"Ask Claude to invoke the STRIDE skill as a subagent on the access-surface map from Exercise 1."* — this deliberately violates the usual body-lead-in-mirrors-prompt rule (`check_prompts.md`). The surprise IS the pedagogy. Do not "fix" this drift in audit.
+- **Body intentionally has NO lead-in for the pre-flight** at the Phase 1 prompt fence. The body line above the fence reads only *"Ask Claude to invoke the STRIDE skill as a subagent on the access-surface map you built."* — this deliberately violates the usual body-lead-in-mirrors-prompt rule (`check_prompts.md`). The surprise IS the pedagogy. Do not "fix" this drift in audit.
 - **Trainer move when it fires:** pause the room, ask who saw line 2 of the pre-flight output, name the lesson — every link in the trust chain (tarball → SKILL.md → Bash authorization) was authorized without reading. Resume; the stride subagent invocation does the real threat-model work.
 - **Source:** `pre-cohort-todos.md` *Surprise-skill live demo* entry; design refined 2026-05-21. Skill files at `content/skills/security-tools/`.
 

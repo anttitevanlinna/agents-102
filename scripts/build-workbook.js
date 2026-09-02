@@ -491,6 +491,11 @@ const WORKBOOK_INIT_JS = `
       return edition ? (v === '3' ? 3 : 1) : (v === '1' ? 1 : 3);
     })();
     var ctl = null, toggle = null;
+    // The arrival fragment, consumed by the first mount only. A second tab
+    // opened on an exercise link (#exercises-<slug>) lands on the cover
+    // otherwise. A later toggle from long-read must not carry it, or the reader
+    // is thrown back to where they came in.
+    var arrival = (location.hash || '').slice(1);
     function apply(startSrc) {
       if (mode === 'slides') {
         if (!ctl) ctl = CurriculumSlides.open(main, {
@@ -498,6 +503,7 @@ const WORKBOOK_INIT_JS = `
           maxTier: maxTier,
           markExcluded: edition,
           startSrc: startSrc,
+          startAnchor: arrival,
           onExit: function () { set('read'); },
           onMaxTier: setTier
         });
@@ -519,6 +525,7 @@ const WORKBOOK_INIT_JS = `
     toggle.classList.add('workbook-layout-toggle');
     host.appendChild(toggle);
     apply();
+    arrival = '';
   })();
 
   var chips = document.querySelectorAll('.workbook-topnav__modules a[data-target]');

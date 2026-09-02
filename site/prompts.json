@@ -354,33 +354,33 @@
     "dest": "Claude Code",
     "context": "",
     "runtime": "any",
-    "origin": "agentic-engineering-101/supplementary/the-agent-loop",
+    "origin": "lectures/the-agent-loop",
     "text": "Draw the agent loop as an ASCII diagram. Name the harness, the LLM, the tool-call step, and how tool results feed back to the LLM.",
     "requires": [],
     "produces": [],
-    "note": "supplementary exploration prompt (standalone agent-loop introspection); no curriculum artifact flow"
+    "note": "exploration prompt (standalone agent-loop introspection); no curriculum artifact flow"
   },
   "ae101-agent-loop-tool-injection": {
     "key": "ae101-agent-loop-tool-injection",
     "dest": "Claude Code",
     "context": "",
     "runtime": "any",
-    "origin": "agentic-engineering-101/supplementary/the-agent-loop",
+    "origin": "lectures/the-agent-loop",
     "text": "Explain how you know what tools you can call in this session.\n\nThen explain how MCP-connector tools get injected into the same set.\n\nLast, tell me whether any of them are deferred until you need them, and what that means for the list you gave me earlier.",
     "requires": [],
     "produces": [],
-    "note": "supplementary exploration prompt; no curriculum artifact flow"
+    "note": "exploration prompt; no curriculum artifact flow"
   },
   "ae101-agent-loop-tools-list": {
     "key": "ae101-agent-loop-tools-list",
     "dest": "Claude Code",
     "context": "",
     "runtime": "any",
-    "origin": "agentic-engineering-101/supplementary/the-agent-loop",
+    "origin": "lectures/the-agent-loop",
     "text": "List the tools you have available in this session. One line each.",
     "requires": [],
     "produces": [],
-    "note": "supplementary exploration prompt; no curriculum artifact flow"
+    "note": "exploration prompt; no curriculum artifact flow"
   },
   "ae101-m2-integrate-branch": {
     "key": "ae101-m2-integrate-branch",
@@ -790,9 +790,11 @@
       {
         "id": "run-notes",
         "location": "RUN-NOTES.md (at worktree root)",
+        "conditional": "agent-got-stuck",
         "consumed-by": [
           "prompt:spot-gaps-build-the-loop-1"
-        ]
+        ],
+        "note": "the body writes this only on getting stuck (\"if you get stuck, write into RUN-NOTES.md and try a different angle\"), so a smooth run legitimately produces none. Declared unconditional until 2026-08-31, when a run that never got stuck listed it under \"did NOT ship\" and the M5 chain's PC gate failed on a correct reading of the body."
       }
     ]
   },
@@ -1528,7 +1530,7 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/compound-and-close",
-    "text": "Review this session end-to-end: the orientation and introspection, the /context read, the TDD bug fix, the diff push-back if I made one, the bug rules read off the ticket. Write ./CLAUDE.local.md at the root of this repo (create it if it doesn't exist; add it to .gitignore if it's not already; if the file already exists, integrate, don't append). This is my personal gitignored rules file, not the team ./CLAUDE.md. Add rules that came from how we actually worked, not rules that sound good. Name the shape of the loop we ran.\n\nIn your summary to me, name 2–3 practitioners whose published work runs a similar loop, one short clause each. Keep these names in your reply, not in the file. Worth surfacing if they fit: Cherny, Klaassen, Ronacher, Pocock, Karpathy, Willison. If you can name fewer than two without guessing, name only what you're sure of.\n\nIf any rule is team-worthy (one every engineer on this codebase should know) flag it in the summary below, don't PR it. I'll decide whether to open a separate PR against team ./CLAUDE.md.\n\nTell me in 3–5 lines: what you wrote and why, grounded in specific session moments. I shouldn't need to open the file to know.",
+    "text": "Review this session end-to-end: the orientation and introspection, the /context read, the TDD bug fix, the diff push-back if I made one, the bug rules read off the ticket. Write ./CLAUDE.local.md at the root of this repo (create it if it doesn't exist; add it to .gitignore if it's not already; if the file already exists, integrate, don't append). This is my personal gitignored rules file, not the team ./CLAUDE.md. Add rules that came from how we actually worked, not rules that sound good. Name the shape of the loop we ran.\n\nIn your summary to me, name 2–3 practitioners whose published work runs a similar loop, one short clause each. Keep these names in your reply, not in the file. Worth surfacing if they fit: Cherny, Klaassen, Ronacher, Pocock, Karpathy, Willison. If you can name fewer than two without guessing, name only what you're sure of.\n\nIf any rule is team-worthy (one every engineer on this codebase should know) flag it in your summary, don't PR it. I'll decide whether to open a separate PR against team ./CLAUDE.md.\n\nTell me in 3–5 lines: what you wrote and why, grounded in specific session moments. I shouldn't need to open the file to know.",
     "requires": [
       {
         "id": "read-self-report",
@@ -3316,7 +3318,8 @@
       },
       {
         "id": "run-notes",
-        "source": "prompt:ae101-m5-rerun-packaged"
+        "source": "prompt:ae101-m5-rerun-packaged",
+        "conditional": "agent-got-stuck"
       }
     ],
     "produces": [
@@ -3335,7 +3338,7 @@
     "context": "only if a rule earned cutting",
     "runtime": "any",
     "origin": "exercises/spot-gaps-build-the-loop",
-    "text": "Read ./CLAUDE.local.md and this session's scrollback: the gap list I just ranked, the un-packaged-vs-packaged contrast moments, the dominant gap.\n\nFind the one rule the two-session diagnosis showed is wrong, stale, or never fires when it should. Cut it from ./CLAUDE.local.md in place.\n\nShow me the line you cut, in two sentences why diagnosis killed it. If every rule still holds under diagnosis, say so and stop.",
+    "text": "Read ./CLAUDE.local.md and this session's scrollback: the gap list I just ranked, the un-packaged-vs-packaged contrast moments, the dominant gap.\n\nFind the one rule the two-session diagnosis showed is wrong, stale, or never fires when it should. Cut it from ./CLAUDE.local.md in place.\n\nShow me the line you cut and, in two sentences, why the diagnosis killed it. If every rule still holds under diagnosis, say so and stop.",
     "requires": [
       {
         "id": "two-run-gap-map",

@@ -21,7 +21,7 @@ After this module, you will be able to:
 
 ## Start here
 
-Open a fresh session in the Module 5 worktree, `../<repo>-m5`. Both sessions are readable: the branches share `.git`, and each session recorded its transcript path.
+Open a fresh session in the Module 5 worktree, `../<repo-name>-m5`. Both sessions are readable: the branches share `.git`, and each session recorded its transcript path.
 
 You walk in holding two sessions of the same task. The un-packaged Module 4 send-off. The packaged Module 5 re-send. One session gave you a failure mode to name. Two sessions give you gaps the three-pattern didn't anticipate, and a shape for what to do about each one.
 
@@ -139,7 +139,7 @@ Antti
 - **Transitions:** re-entry 10 @start · debrief 12 @after:spot-gaps-build-the-loop · bridge 3 @end
 - **Prep / bridge timing:** optional Klaassen verifier article 10 min; human close / team-kit accretion slot 10–15 min.
 - **Mood target:** practitioner fluency — *"I know how to test, I know how to learn, I know how to encode."* Not confidence-as-performance; competence-as-posture. Failure shapes that steal the mood: compliance-feel (*"build the eval, pass the gate"*), paperwork-feel, credibility-performance (*"we live what we teach"*), trainer-monologue retrospective. If any beat reads like one of those, revise.
-- **Delivery architecture:** canonical in training-architecture.md §Working directory model / §Session boundaries / §Material distribution (no training-dir state, no `module-N/` folders). Not restated here. Module-specific: M6 opens a fresh session in the M5 worktree at `../<repo>-m5` where both runs already live, then reads, routes, and maps in-place. The handoff prompt from the close is the take-home; skill candidates it surfaces later ship personal-first, team-PR via human conversation — not auto-promoted.
+- **Delivery architecture:** canonical in training-architecture.md §Working directory model / §Session boundaries / §Material distribution (no training-dir state, no `module-N/` folders). Not restated here. Module-specific: M6 opens a fresh session in the M5 worktree at `../<repo-name>-m5` where both runs already live, then reads, routes, and maps in-place. The handoff prompt from the close is the take-home; skill candidates it surfaces later ship personal-first, team-PR via human conversation — not auto-promoted.
 - **Pre-read placement:** none. M6 opens with `The 2 frontiers` in-room, then `Quality is grounding`; `Story of Module 6` lands after the exercise (Antti 2026-08-30, see the placement note below).
 
 **Push-back moves** (trainer delivers):

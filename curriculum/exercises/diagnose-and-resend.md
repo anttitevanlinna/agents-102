@@ -4,7 +4,7 @@
 
 **Session** *(new, "Module 5 worktree session")*
 
-In the worktree at `../<repo>-m5` (set up at module open).
+In the worktree at `../<repo-name>-m5` (set up at module open).
 
 ```
 /rename m5-diagnose-resend
@@ -110,7 +110,7 @@ Now the re-send. Same task, packaged this time, and notice the prompt: it shrank
 
 **Session** *(new, "M5 long-run")*
 
-In the worktree at `../<repo>-m5`. The packaging files live on disk; the worktree's auto-loaded rules (`CLAUDE.md`, `CLAUDE.local.md`) load fresh into the new session. The exercise session can stay open if you want to glance back at the assembly conversation.
+In the worktree at `../<repo-name>-m5`. The packaging files live on disk; the worktree's auto-loaded rules (`CLAUDE.md`, `CLAUDE.local.md`) load fresh into the new session. The exercise session can stay open if you want to glance back at the assembly conversation.
 
 ```
 /rename m5-long-run

@@ -93,7 +93,7 @@ Run `/context` to see how much of the window is used and what fills it.
 - Hands off to: `fix-tests-first` — the bug gets fixed in the window you just mapped.
 
 **Leap test** (per `check_pedagogy.md` rule 45 — three observable Monday-morning outcomes the engineer exhibits on their own codebase by the next working day):
-1. **Runs `/context` on a working session and reads the used percentage** without being prompted. Falsifiable: scrollback of a normal session shows `/context` as a deliberate move within the first ten minutes, not a feature tour.
+1. **Runs `/context` on a working session and reads what fills the window** without being prompted. Falsifiable: scrollback of a normal session shows `/context` as a deliberate move within the first ten minutes, not a feature tour.
 2. **Asks Claude what it skipped and why after a repo-read**, before taking any code action. Falsifiable: a follow-up introspection prompt appears in scrollback after the initial orient prompt.
 3. **Spot-checks Claude's self-report by quoting a specific file or function back** when the report feels off. Falsifiable: scrollback shows a quote-back move under a "you said you read X, what's actually in it?" shape.
 

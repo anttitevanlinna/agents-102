@@ -93,7 +93,7 @@ If a branch from the second-pass read sharpened how plans get made in this codeb
 
 > Claude may reframe the session into a smart-sounding general rule. If the saved rule could apply to any codebase, ask for one specific to this session.
 
-Feel free to jump direct at the diff in `./CLAUDE.local.md`; Claude's preamble is optional reading.
+Feel free to jump straight to the diff in `./CLAUDE.local.md`; Claude's preamble is optional reading.
 
 ## Phase 5: Leave the repo tidier than you found it
 

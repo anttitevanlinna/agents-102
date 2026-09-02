@@ -642,3 +642,36 @@ test('the training cover survives even if a filter emptied everything after it',
   assert.match(bare.slides[0].title, /Agentic Engineering 101/, 'deck still opens on its own cover');
   assert.ok(bare.slides.filter(s => s.isDivider).length >= 4, 'section dividers all survive');
 });
+
+// ── arrival fragment (second tab, 2026-09-02) ────────────────────────────────
+// A student opens an exercise link in a second tab to keep the instructions
+// beside their Claude session. The deck has no scroll, so the browser's own
+// fragment jump moves nothing and the tab opens on the cover. `startAnchor`
+// resolves the arrival hash through the same index the click handler uses.
+
+function openDeckAt(anchor) {
+  const dom = new JSDOM(`<!doctype html><body>${FIXTURE}</body>`, { runScripts: 'outside-only' });
+  dom.window.Element.prototype.scrollIntoView = function () {};
+  dom.window.eval(SLIDES_SRC);
+  const main = dom.window.document.querySelector('main');
+  const ctl = dom.window.CurriculumSlides.open(main, { title: 'Fixture', startAnchor: anchor });
+  return { dom, ctl };
+}
+
+test('startAnchor: an exercise include id opens the deck on that exercise', () => {
+  const { dom } = openDeckAt('exercises-orient-and-introspect');
+  const slide = dom.window.document.querySelectorAll('.deck .slide')[activeIndex(dom)];
+  assert.match(slide.textContent, /Orient and introspect/, 'the deck opens on the exercise, not the cover');
+});
+
+test('startAnchor: a percent-encoded fragment resolves like the click handler', () => {
+  const { dom } = openDeckAt(encodeURIComponent('the-named-moves'));
+  const slide = dom.window.document.querySelectorAll('.deck .slide')[activeIndex(dom)];
+  assert.ok(carriesId(slide, 'the-named-moves'), 'lands on the slide carrying the heading');
+});
+
+test('startAnchor: an unknown or empty fragment leaves the deck on the cover', () => {
+  assert.equal(activeIndex(openDeckAt('nothing-here').dom), 0, 'a dead anchor is a no-op');
+  assert.equal(activeIndex(openDeckAt('').dom), 0, 'no fragment, no jump');
+  assert.equal(activeIndex(openDeckAt('constructor').dom), 0, 'inherited names do not resolve');
+});

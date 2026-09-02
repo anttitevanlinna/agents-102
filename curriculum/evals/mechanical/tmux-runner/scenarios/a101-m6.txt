@@ -15,13 +15,13 @@
 # m6:2/m6:4) and the loop's own byte-identical report.
 
 # T1 — calibrate: write generation-tactic.md, run it once, run the judge in chat.
-eval-loop-1 Headless dry-run: do NOT enter plan mode and do NOT call AskUserQuestion — write the files and show the per-claim judge readout directly.
+eval-loop-1 <CONTROL:NO_QUESTIONS> <CONTROL:DIRECT_EXECUTION> Write the files and show the per-claim judge readout directly.
 
 # T2 — the loop: >=3 rounds, fixed judge, rewrite the tactic each round.
-eval-loop-2 Headless dry-run: do NOT enter plan mode and do NOT call AskUserQuestion. Run the rounds and write the files directly; do not stop for confirmation between rounds. Bound it: cap at 4 rounds even if you would otherwise continue, and record that the cap (not convergence) stopped it if so.
+eval-loop-2 <CONTROL:NO_QUESTIONS> <CONTROL:DIRECT_EXECUTION> Run the rounds and write the files directly without stopping for confirmation between rounds. Bound it: cap at 4 rounds even if you would otherwise continue, and record that the cap (not convergence) stopped it if so.
 
 # T3 (prompt -5) — readout (chat, 5 bullets).
-eval-loop-5 Headless dry-run: do NOT call AskUserQuestion — show the five bullets directly.
+eval-loop-5 <CONTROL:NO_QUESTIONS> Show the five bullets directly.
 
 # T4 — debrief: sharpen the tactic (overwrites ./generation-tactic.md).
 a101-m6-debrief-tactic-sharpen

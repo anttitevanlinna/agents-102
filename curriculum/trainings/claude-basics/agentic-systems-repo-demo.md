@@ -44,8 +44,8 @@ Now that you have seen the shape of a system, run one together: individual signa
 - **Length:** 45 minutes. Opening question + 35-minute agentic system demo + handoff
 - **Demo spine:** deployed workbook → rules → source module → exercise/prompt → build script → client output → checks → compounding
 
-**Quality:** compendium-audited 2026-05-15 (writing@eb1168f technical@eb1168f behavior@eb1168f pedagogy@eb1168f)
-- judges @eb1168f: writing PASS, story REVISE (see-instances/claude-basics--agentic-systems-repo-demo.story.json), technical PASS, behavior PASS, pedagogy PASS, strategy REVISE (see-instances/claude-basics--agentic-systems-repo-demo.strategy.json)
+**Quality:** compendium-audited 2026-09-02 (writing@eb1168f technical@eb1168f behavior@eb1168f pedagogy@eb1168f slides@3552e8c2)
+- judges @3552e8c2: writing PASS, story REVISE (see-instances/claude-basics--agentic-systems-repo-demo.story.json), technical PASS, behavior PASS, pedagogy PASS, strategy REVISE (see-instances/claude-basics--agentic-systems-repo-demo.strategy.json), slides PASS
 - cross_module @eb1168f: PASS — set=[M1,M2,M3,M4]
 
 **Strategy reference:** `bosser-strategy:content-strategy-claude-basics.md` § *Agentic systems, shown in the repo*

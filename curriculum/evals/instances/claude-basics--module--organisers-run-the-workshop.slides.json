@@ -1,0 +1,235 @@
+{
+  "class": "slides",
+  "file": "curriculum/trainings/claude-basics/organisers-run-the-workshop.md",
+  "body_sha": "1a9e3588d483ef8b5c8779892e2304759434397f22b07e1df3d475b099991b79",
+  "verdict": "REVISE",
+  "training": "claude-basics",
+  "chunk_map": [
+    {
+      "index": 0,
+      "heading": "# Organisers: run the workshop (title)",
+      "lines": "1-2"
+    },
+    {
+      "index": 1,
+      "heading": "## Big Idea",
+      "lines": "3-6"
+    },
+    {
+      "index": 2,
+      "heading": "## What This Section Builds",
+      "lines": "7-15"
+    },
+    {
+      "index": 3,
+      "heading": "## Start Here",
+      "lines": "16-21"
+    },
+    {
+      "index": 4,
+      "heading": "## Prepare the Workshop",
+      "lines": "22-25"
+    },
+    {
+      "index": 5,
+      "heading": "## Synthesize the Rollout",
+      "lines": "26-29"
+    },
+    {
+      "index": 6,
+      "heading": "## Close",
+      "lines": "30-33"
+    },
+    {
+      "index": 7,
+      "heading": "## Changes since last build",
+      "lines": "34-43"
+    }
+  ],
+  "rules_evaluated": [
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 1,
+      "rule_lead": "Referent resolution under a sequential deck read.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Sequential read of all 8 chunks. Closest calls, both resolve: (a) chunk 1 line 5 'The same workbook' and chunk 2 line 12 '**Test** the group-driver path' are arc-earned spine vocabulary, not never-named \u2014 RAN `grep -n 'workbook you' curriculum/trainings/claude-basics/agentic-systems-repo-demo.md` -> line 3 'the workbook you're sitting in' (M1, earned before M5 per the training's module list in CLAUDE.md); RAN `grep -n 'group driver' curriculum/exercises/find-the-crux.md` -> line 8 'One group driver opens Cowork...' (M2's exercise, also prior). (b) chunk 6 line 32 'the workspace' and 'the organiser readout path' resolve via module-include-order deck adjacency: chunk 5 (line 28) links exercises/organisers-synthesize-rollout.md, which per the compendium's 'module include-order = deck order' clause is inlined immediately before chunk 6 in the composed deck \u2014 RAN `grep -n 'readout' curriculum/exercises/organisers-synthesize-rollout.md` -> 9 hits including its own title framing ('creates one organisers' readout'), so 'readout' is established by the time the reader reaches Close. No referent left unresolved.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 2,
+      "rule_lead": "Cross-file and positional callbacks.",
+      "verdict": "REVISE",
+      "chunks_flagged": [
+        7
+      ],
+      "evidence": "chunk 7 \"Changes since last build\": every one of its 5 bullets points at another file's phase by position. Line 38: 'M2 *Find the rollout challenge*, Phase 1: prompt now asks Claude to stop and check...' \u2014 Phase 1 of exercises/find-the-crux.md, a different file. Line 39: '...Phase 2: new optional group-driver prompt...'. Line 40: '...Phase 3: cross-pollination cycle now re-reads...'. Line 41: 'M3 homework *Find the wrong claims*: ... Phase 1 generates ... Phase 2 checks...' \u2014 exercises/find-the-wrong-claims.md. Line 42: 'M3 homework *Build your system*: Phase 0 ... Phase 1, Phase 3, and Phase 4...' \u2014 exercises/build-your-system.md. RAN `grep -n '^## Phase' curriculum/exercises/find-the-crux.md curriculum/exercises/find-the-wrong-claims.md curriculum/exercises/build-your-system.md` confirming Phase 1-3, Phase 1-6, and Phase 0-4 respectively currently exist in those files \u2014 so this is not a dead-beat problem (rule 3 passes), it is a positional pointer: naming the exercise by title is present, but the added Phase-N marker is exactly the position dependency rule 2 bans ('which opener depends on where the deck starts' \u2014 here, which Phase 1 depends on which file the reader is not currently looking at). Projected as a standalone slide in front of a room, 'Phase 1' resolves to nothing.",
+      "fix_hint": "Move this changelog into the maintainer block (dated notes, per rule 11) \u2014 if a body summary is kept, describe each change by what it does, not by the other file's Phase number.",
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 3,
+      "rule_lead": "Every backward reference points at a beat that exists.",
+      "verdict": "N/A",
+      "chunks_flagged": [],
+      "evidence": null,
+      "na_reason": "No 'the X you did/saw' student-recap construction in body; chunk 7's phase references describe authoring-team prompt edits to other files, not a beat the reader lived through (that shape is rule 2's, filed there).",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 4,
+      "rule_lead": "Live-demo beats survive a text read.",
+      "verdict": "N/A",
+      "chunks_flagged": [],
+      "evidence": null,
+      "na_reason": "No guess-before-reveal instruction anywhere in the body.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 5,
+      "rule_lead": "No orphan slides.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Closest calls: chunk 4 ('## Prepare the Workshop', line 24) and chunk 5 ('## Synthesize the Rollout', line 28) each hold only a single exercise link. Neither is a wait-state or context-dependent bullet \u2014 each is a complete, self-carrying navigational instruction ('go run this exercise now'), the same structural-include pattern every module in the corpus uses to hand off to its exercises (e.g. where-is-this-all-going.md's `## Live Work` chunk). Every other chunk carries a standalone claim or list.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 6,
+      "rule_lead": "Header self-carries at projection distance.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Checked all 7 headers against their chunk content. Closest: chunk 6 '## Close' / line 32 'the workbook is ready for delivery' \u2014 header promises a wrap-up, content delivers one; chunk 7 '## Changes since last build' / lines 36-42 is exactly a changelog of build-to-build changes \u2014 header is literally true of its content even though the content itself has a separate rule-2 problem. No header contradicted by its chunk.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 7,
+      "rule_lead": "LLM-cadence caps.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "RAN `grep -inE \"one of the (most|best)|most useful|most important|self-grading\" curriculum/evals/body-views/claude-basics--module--organisers-run-the-workshop.body.txt` -> no match, exit 1. RAN `grep -inE \"^\\s*-?\\s*Not [A-Z][a-z]+\\. Not \" ...body.txt` -> no match, exit 1. Manual scan of all 8 chunks for anaphora/epistrophe triples, number-then-retraction, abstraction-noun stacks, empty-leg verb triplets: none found anywhere in the body, including the denser chunk 2 and chunk 7 prose.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 8,
+      "rule_lead": "Internal dialect never lands on a slide.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "RAN `grep -inE '\\bsurface\\b|compendium|forcing function|\\bbeat\\b|\\bmood\\b|\\bConnections\\b|firing' curriculum/evals/body-views/claude-basics--module--organisers-run-the-workshop.body.txt` -> no match, exit 1. 'Cross-pollination', 'crux', 'synthesis' are the training's own defined student-facing vocabulary (arc-earned in M2), not repo/maintainer dialect.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 9,
+      "rule_lead": "Emphasis budget \u2014 bold is for handles, and go very lightly.",
+      "verdict": "REVISE",
+      "chunks_flagged": [
+        7
+      ],
+      "evidence": "RAN `grep -n '\\*\\*' curriculum/evals/body-views/claude-basics--module--organisers-run-the-workshop.body.txt`: chunk 2 bolds one verb per LO bullet (Prepare/Test/Run/Keep) under the training's 'What This Section Builds' LO-bullet template (module-shape's `- **[verb]** [thing]` shape) \u2014 N/A by the rule's own module-template exception, no accept-note owed. chunk 7 bolds only the leading date on each of its 5 bullets (lines 38-42: **2026-05-15** x4, **2026-05-21** x1) \u2014 a date is not a named law, governor, coined term, or checklist-item-name, so it does not qualify as a 'handle' under the rule's own definition, and 5 bolded elements on one chunk exceeds the \u22641-per-slide budget. This is a module file changelog, not a reading-list/menu (no mode-label function like **Read:**/**Watch:**) and not a reference/supplementary lookup page, so neither waiver applies \u2014 the compendium's own guard states 'a module file does not become a lookup surface by growing a list'. This is the banned 'every bullet on a slide opens with a bolded [token]' monoculture shape.",
+      "fix_hint": "Drop the bold from the dates in chunk 7 (or the question moves to the maintainer block along with the rule-11/rule-2 fix).",
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 10,
+      "rule_lead": "Presence precedes content \u2014 verify against the composed deck, not long-read.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Module file \u2014 top-level `section.module`, reaches the composed deck by construction; no `.phase--*` exclusion applies. RAN `node scripts/check-slide-size.js --file curriculum/trainings/claude-basics/organisers-run-the-workshop.md` -> 'files: 1  slides: 7' \u2014 all 7 `##` sections present in the deck model the checker walks, none dropped.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 11,
+      "rule_lead": "Numbering \u2014 position is computed, content ordinals are linted.",
+      "verdict": "REVISE",
+      "chunks_flagged": [
+        7
+      ],
+      "evidence": "RAN `node scripts/check-slide-numbering.js curriculum/trainings/claude-basics/organisers-run-the-workshop.md` -> 'OK \u2014 62 files, Phase/Step numbering consistent' (this file's own numbering, and every in-file Phase reference in the corpus, resolves fine; this file has no `## Phase N:` headers of its own). Separate from that mechanical pass, the rule's explicit clause 'Cross-file phase refs \u2192 maintainer block only, file-qualified (body cross-file positional callbacks already banned per \u00a72)' is violated by the same chunk-7 text filed under rule 2: lines 38-42 place cross-file Phase-N references in the BODY, not the maintainer block.",
+      "fix_hint": "Same fix as rule 2 \u2014 the changelog's cross-file phase refs belong in the maintainer block, not body.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 12,
+      "rule_lead": "Page geometry dies at the cut; reading order survives.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "RAN `node scripts/check-slide-deixis.js curriculum/trainings/claude-basics/organisers-run-the-workshop.md` -> 'OK \u2014 62 files, no page-geometry pointers across the slide cut.' No 'below/above/further down/at the top of this page' anywhere in body.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 13,
+      "rule_lead": "In-deck links work now; whether they EARN their place is open.",
+      "verdict": "N/A",
+      "chunks_flagged": [],
+      "evidence": null,
+      "na_reason": "Only two links in body (line 24, line 28), both standalone-paragraph structural include-links to exercises \u2014 'never in scope; they are how the file gets inlined' per the rule's own text. RAN `node scripts/check-slide-deixis.js --links curriculum/trainings/claude-basics/organisers-run-the-workshop.md` -> this file is not listed among the review-surface hits, confirming no non-structural in-body link is present.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 14,
+      "rule_lead": "Slide size \u2014 210 words / 6 bullets, and the cap is machine-checked.",
+      "verdict": "REVISE",
+      "chunks_flagged": [
+        7
+      ],
+      "evidence": "RAN `node scripts/check-slide-size.js --file curriculum/trainings/claude-basics/organisers-run-the-workshop.md` -> exit 1, 'oversized: 1', '\u26a0 trainings/claude-basics/organisers-run-the-workshop.md:34  [244w]  ## Changes since last build'. 244 words > 210-word ceiling on the single axis (bullet count is 5, within the 6-bullet cap). RAN `grep -n 'Slide size accepted' curriculum/trainings/claude-basics/organisers-run-the-workshop.md` -> no match, exit 1: no per-slide accept-note in the maintainer block covers this chunk.",
+      "fix_hint": "Trim chunk 7 under 210 words, or add a maintainer-block '**Slide size accepted:** ## Changes since last build \u2014 <reason>' note if the length is deliberate.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 15,
+      "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
+      "verdict": "N/A",
+      "chunks_flagged": [],
+      "evidence": null,
+      "na_reason": "Module file, not exercise/lecture \u2014 the rule's imperative-vs-claim split is stated for those two file types; this file's headers are fixed module-shape signposts (Big Idea, What This Section Builds, Start Here, Close) plus content-signpost labels (Prepare the Workshop, Synthesize the Rollout) that point to exercises rather than teach directly.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 16,
+      "rule_lead": "A bullet earns its slot or dies \u2014 three classes that read as rigour and carry nothing.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Checked every bullet against the three classes (doctrine restatement, self-referential design commentary, aphorism kicker). Chunk 2's 4 LO bullets are the module-shape LO template, each a distinct capability, not restatement. Chunk 7's 5 bullets each state a concrete, distinct prompt/folder-structure change with a stated reason \u2014 none restates a prior claim, none is curriculum-design commentary about the student, none is a koan closing another slide's header. No bullet found that adds nothing (separate from its rule-2/9/11/14 issues, which are about placement/format, not redundancy).",
+      "fix_hint": null,
+      "blocking": false
+    }
+  ],
+  "blocking_findings_count": 1,
+  "todos_count": 3,
+  "shape_hash": "57aca5efccc044e5",
+  "accept_notes_found": [
+    "L52: **Quality:** compendium-audited 2026-05-15 (writing@eb1168f story@eb1168f technical@eb1168f behavior@eb1168f pedagogy@eb1168f strategy@eb1168f) \u2014 no slides row; this is this file's first slides judgment, and no accept-note anywhere in the maintainer block addresses the '## Changes since last build' section's placement, phase-position callbacks, or size."
+  ],
+  "notes": "Prior verdict discipline: prefill-instance.js --write reported 'no prior instance' \u2014 every one of the 16 check_slides.md rules above is freshly judged this run, none carried from a sidecar. The blocking finding (rule 2) and its two non-blocking siblings (rules 9, 11, 14) all trace to the same chunk-7 'Changes since last build' section, which reads as delivery/build-changelog material (cross-file Phase-N pointers, addressed to whoever received an earlier workbook build) that landed in student body rather than the maintainer block. Whether this section belongs in student-facing body AT ALL is a check_writing.md / check_student_facing.md question outside this class's lane \u2014 flagging here only the slides-specific consequences (positional callback, emphasis budget, maintainer-only clause, size cap) of it being chunked into a real projected slide.",
+  "resolution": {
+    "settled": "refuted",
+    "at": "2026-09-02",
+    "note": "check_slides rule 2 finding died on the harm lens in first-ever slides judgement of this file. A `## Phase N:` header is a CONTENT ordinal, machine-guaranteed consecutive-from-1 by check-slide-numbering.js, not a positional pointer whose target moves with deck assembly \u2014 rule 11 draws exactly that line. Each of the five bullets already executes rule 2's own remedy (source named by italicised title matching the include-link text, change unpacked in the same sentence). Audience is organisers diffing a workbook against the 2026-05-06 build, never a projected room. Three non-blocking todos remain on the row (emphasis budget, cross-file phase refs, the 244-word chunk)."
+  }
+}

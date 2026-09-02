@@ -107,8 +107,8 @@ While they run, narrate: *"six audits, six angles, running at the same time. Non
 - Two Claude Code sessions ready (main + walk-away). If demoing in Cowork, two browser tabs.
 - A real gap in mind for beat 4. Pre-verify it's still unfixed. Canonical example: a lecture missing per-section timing in its maintainer block. Alternatives: an exercise with stale phrasing the rules should have flagged, a module whose Big Idea drifted from the strategy doc.
 
-**Quality:** compendium-audited 2026-05-15 (story@eb1168f technical@eb1168f behavior@eb1168f pedagogy@eb1168f strategy@eb1168f)
-- judges @eb1168f: writing REVISE (see-instances/claude-basics--agentic-systems-demo-script.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS
+**Quality:** compendium-audited 2026-09-02 (story@eb1168f technical@eb1168f behavior@eb1168f pedagogy@eb1168f strategy@eb1168f slides@3552e8c2)
+- judges @3552e8c2: writing REVISE (see-instances/claude-basics--agentic-systems-demo-script.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS (2 todos see instances/claude-basics--lecture--agentic-systems-demo-script.slides.json)
 
 **Strategy reference:** `bosser-strategy:content-strategy-claude-basics.md` § *Agentic systems, shown in the repo*
 

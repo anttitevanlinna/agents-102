@@ -1,0 +1,213 @@
+{
+ "class": "slides",
+ "file": "curriculum/trainings/claude-basics/where-is-this-all-going.md",
+ "verdict": "PASS",
+ "training": "claude-basics",
+ "body_sha": "0b7d538bb80930c8041a241c732bf3e95b6f0134b57e0a9f4abc71852afb63f4",
+ "shape_hash": "57aca5efccc044e5",
+ "chunk_map": [
+  {
+   "index": 0,
+   "heading": "(title) Where is this all going?",
+   "lines": "1-2"
+  },
+  {
+   "index": 1,
+   "heading": "Big Idea",
+   "lines": "3-6"
+  },
+  {
+   "index": 2,
+   "heading": "What This Workshop Builds",
+   "lines": "7-15"
+  },
+  {
+   "index": 3,
+   "heading": "Opening",
+   "lines": "16-23"
+  },
+  {
+   "index": 4,
+   "heading": "Live Work",
+   "lines": "24-27"
+  },
+  {
+   "index": 5,
+   "heading": "What to Notice",
+   "lines": "28-34"
+  },
+  {
+   "index": 6,
+   "heading": "Close",
+   "lines": "35-40"
+  }
+ ],
+ "rules_evaluated": [
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 1,
+   "rule_lead": "Referent resolution under a sequential deck read.",
+   "verdict": "PASS",
+   "chunks_flagged": [],
+   "evidence": "Closest candidate: chunk 3 'Opening' line 18, 'You just saw what an agentic system looks like when it has rules, prompts, checks, source files, and build output.' Nothing in this file names that demo earlier, but (a) the sentence self-unpacks the referent inline (lists the components it means) rather than pointing bare, and (b) the module-arc-beats-in-openers/closers carve-out applies: verified via site/layouts/curriculum.js lines 175-183 that 'agentic-systems-repo-demo' is the immediately-preceding module in claude-basics' registered order, and that module's own body (agentic-systems-repo-demo.md lines 7,25-27,32) demos exactly 'rules, prompts, memory, checks, build scripts, customer versions, commits' -- the referent is the student's just-lived room beat, not a missing slide. Line 37's 'The homework' is a generic training noun (every cohort has homework), not a specific-artifact referent requiring in-file naming; no confusion results. Line 39's 'that live pattern' is immediate continuation of the sentence before it (line 37) within the same chunk. All other reused terms (challenge, synthesis, cross-pollination, crux) are introduced or re-earned within this file's own sequence before their later uses. No never-named or vague-with-full-history referent found.",
+   "fix_hint": null,
+   "blocking": true
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 2,
+   "rule_lead": "Cross-file and positional callbacks.",
+   "verdict": "PASS",
+   "chunks_flagged": [],
+   "evidence": "Only cross-file pointer in body: chunk 4 line 26, '[Exercise: Find the rollout challenge](exercises/find-the-crux.md)' -- a structural include-link (rule 13's carve-out: 'how the file gets inlined'), out of scope for this rule. Chunk 3 line 18's backward callback to the module-1 demo is unpacked in the same sentence ('when it has rules, prompts, checks, source files, and build output'), not located by position ('the opening lecture said...'). No positional cross-file callback found.",
+   "fix_hint": null,
+   "blocking": true
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 3,
+   "rule_lead": "Every backward reference points at a beat that exists.",
+   "verdict": "PASS",
+   "chunks_flagged": [],
+   "evidence": "Chunk 3 line 18's 'you just saw' resolves against agentic-systems-repo-demo.md, confirmed present as claude-basics module 1 (curriculum/trainings/claude-basics/agentic-systems-repo-demo.md exists; site/layouts/curriculum.js line 179 lists it first, line 180 lists this file second). The referenced beat exists and its content (rules/prompts/checks/build output demo) matches what line 18 claims was seen. No dead beat references found.",
+   "fix_hint": null,
+   "blocking": true
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 4,
+   "rule_lead": "Live-demo beats survive a text read.",
+   "verdict": "N/A",
+   "chunks_flagged": [],
+   "evidence": null,
+   "na_reason": "no guess/reveal construction anywhere in the file",
+   "fix_hint": null,
+   "blocking": true
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 5,
+   "rule_lead": "No orphan slides.",
+   "verdict": "PASS",
+   "chunks_flagged": [],
+   "evidence": "Shortest content chunk is 4 ('Live Work', lines 24-27): its sole line is the structural exercise-include link, which is a purposeful content section (points the room at the exercise it is about to run), not a wait-state bullet -- matches the standard shape used across module files for their Live Work/exercise sections. Every other chunk (1 Big Idea, 2 LOs, 3 Opening, 5 What to Notice, 6 Close) carries an explicit self-sufficient claim. No orphan chunk found.",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 6,
+   "rule_lead": "Header self-carries at projection distance.",
+   "verdict": "PASS",
+   "chunks_flagged": [],
+   "evidence": "Checked all six body headers against their chunk content: 'Big Idea' -> the crux-finding claim (5); 'What This Workshop Builds' -> four Bloom's LO bullets (11-14); 'Opening' -> room-framing + challenge question (18-22); 'Live Work' -> the exercise link (26); 'What to Notice' -> four debrief bullets (30-33); 'Close' -> wrap + forward bridge (37,39). No header is contradicted by its own chunk's content.",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 7,
+   "rule_lead": "LLM-cadence caps.",
+   "verdict": "PASS",
+   "chunks_flagged": [],
+   "evidence": "Scanned body for all six sub-patterns. Closest candidate to the banned 'Not X. Not Y. Z.' construction: chunk 3 line 22, 'Not the long list of worries. The single thing that, if you got it right, would make the rest follow.' -- only ONE 'Not' clause, not the banned two-negation-plus-affirmation triple; stays inside. Anaphora/epistrophe triples: none (line 14's 'individual divergence, group convergence, then cross-pollination' is a three-item list, not a repeated sentence-opener construction). Self-grading superlatives: none found (grep for 'most useful/important/one of the' -> 0 hits). Number+retraction: line 5's '60 minutes' is a plain unhedged fact, not paired with a retraction. Abstraction-noun stacks: vocabulary stays concrete throughout (rules, prompts, checks, source files, build output, folder structure) rather than reaching for stacked abstractions. Empty-leg verb triplets: none. No cadence-tic violation found.",
+   "fix_hint": null,
+   "blocking": true
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 8,
+   "rule_lead": "Internal dialect never lands on a slide.",
+   "verdict": "PASS",
+   "chunks_flagged": [],
+   "evidence": "`grep -niE '\\b(surface|firing|compendium|forcing function|beat|mood|Connections)\\b' <body lines 1-40>` -> 0 hits (checked by eye against the raw source; none of these terms appear in body text, only in the maintainer block below the cut). 'Synthesis', 'crux', 'divergence/convergence', 'cross-pollination' are the training's own participant-facing pedagogical vocabulary (crux explicitly attributed to Richard Rumelt, line 30), not repo-internal authoring dialect. No dialect term lands on any slide.",
+   "fix_hint": null,
+   "blocking": true
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 9,
+   "rule_lead": "Emphasis budget -- bold is for handles, and go very lightly.",
+   "verdict": "PASS",
+   "chunks_flagged": [],
+   "evidence": "Bold inventory: chunk 2 lines 11-14, four verb-first LO bullets ('**Articulate**', '**Synthesize**', '**Evaluate**', '**Recognise**') -- matches curriculum/module-shape.md's mandated `- **[verb]** [thing]` LO template (line 18 of that file) for the 'What You'll Learn'-equivalent section; N/A under the rule's own named exception for template-mandated LO bold, no accept-note owed. Chunk 3 line 20, one bolded word ('**challenge**') -- single ≲5-word handle, one bolded element on that slide, within the ≤1-per-slide budget. No other bold anywhere in body (Big Idea, Live Work, What to Notice, Close are all unbolded prose/bullets). No budget violation found.",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 10,
+   "rule_lead": "Presence precedes content -- verify against the composed deck, not long-read.",
+   "verdict": "PASS",
+   "chunks_flagged": [],
+   "evidence": "This file IS a module file (renders under the top-level `section.module` wrapper, per curriculum/CLAUDE.md's directory contract), so all its content reaches the deck by construction. All six body sections are the module's own canonical top-level sections (Big Idea, What This Workshop Builds, Opening, Live Work, What to Notice, Close) -- none is a phase-less prework/supplementary/reference-style section, the specific risk category this rule names. slide_count (derive-body-view.js) = 6, matching the raw `## ` count exactly, consistent with no dropped section.",
+   "fix_hint": null,
+   "blocking": true
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 11,
+   "rule_lead": "Numbering -- position is computed, content ordinals are linted.",
+   "verdict": "N/A",
+   "chunks_flagged": [],
+   "evidence": null,
+   "na_reason": "no `## Phase N:`/`## N.` step headers or in-body Step/Phase refs; confirmed via `node scripts/check-slide-numbering.js` -> 'OK -- 62 files, Phase/Step numbering consistent' (this file has none of the flagged headers, and the module list here uses plain prose headers only)",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 12,
+   "rule_lead": "Page geometry dies at the cut; reading order survives.",
+   "verdict": "PASS",
+   "chunks_flagged": [],
+   "evidence": "`node scripts/check-slide-deixis.js --file curriculum/trainings/claude-basics/where-is-this-all-going.md` -> 'OK -- 1 files, no page-geometry pointers across the slide cut.' Closest candidate: chunk 6 line 39, 'The next section turns that live pattern into a small system you run on your own' -- reading-order language ('next section'), explicitly the sanctioned form per this rule, not a geometry pointer. No above/below/further-down/at-the-top-of-this-page language anywhere in body.",
+   "fix_hint": null,
+   "blocking": true
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 13,
+   "rule_lead": "In-deck links work now; whether they EARN their place is open.",
+   "verdict": "N/A",
+   "chunks_flagged": [],
+   "evidence": null,
+   "na_reason": "the file's only link (chunk 4 line 26) is a structural include-link, explicitly out of this rule's scope",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 14,
+   "rule_lead": "Slide size -- 210 words / 6 bullets, and the cap is machine-checked.",
+   "verdict": "PASS",
+   "chunks_flagged": [],
+   "evidence": "`node scripts/check-slide-size.js --file curriculum/trainings/claude-basics/where-is-this-all-going.md` -> 'files: 1  slides: 6  limits: 210 words / 6 bullets  oversized: 0 ... every slide is within limits.' No accept-note needed.",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 15,
+   "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
+   "verdict": "N/A",
+   "chunks_flagged": [],
+   "evidence": null,
+   "na_reason": "this is a module file, not an exercise or lecture file -- its six headers (Big Idea, What This Workshop Builds, Opening, Live Work, What to Notice, Close) are architecture-mandated module-template section names (curriculum/module-shape.md), not exercise/lecture content headings subject to the imperative-vs-claim split this rule addresses",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 16,
+   "rule_lead": "A bullet earns its slot or dies -- three classes that read as rigour and carry nothing.",
+   "verdict": "PASS",
+   "chunks_flagged": [],
+   "evidence": "Checked every bullet against the three classes. Closest candidates: chunk 5 line 30, 'Richard Rumelt calls this the crux... Most rollout strategies fail because they treat all difficulties as equal weight' -- restates the Big Idea/Opening claim but adds a named external attribution (the file's one permitted practitioner reference per curriculum/trainings/claude-basics/CLAUDE.md's 'Module 2 may name one practitioner max') plus a new general failure-mode claim; not bare doctrine restatement. Chunk 5 line 33, 'The room just used the same system shape: people add judgment; the folder structure keeps that judgment moving' -- sets up in chunk 3 ('Now run a smaller system in the room') as a predict-then-debrief pair, and adds a concrete mechanism claim ('people add judgment; folder structure keeps it moving') not stated earlier in this file; stays inside as debrief content, not self-referential pedagogy commentary (it is a claim about agentic-system structure, the module's actual subject matter, not the curriculum narrating its own design). No doctrine-restatement, self-referential design commentary, or hollow aphorism-kicker found.",
+   "fix_hint": null,
+   "blocking": false
+  }
+ ],
+ "blocking_findings_count": 0,
+ "todos_count": 0
+}

@@ -48,8 +48,8 @@ The next section turns that live pattern into a small system you run on your own
 - **Homework bridge.** The next module is a short launch into self-study, not another live exercise
 - **Organiser material moved:** organiser setup and readout remain in the same workbook, but live in the final organiser module so the participant flow stays clean
 
-**Quality:** compendium-audited 2026-05-15 (writing@eb1168f story@eb1168f technical@eb1168f behavior@eb1168f pedagogy@eb1168f)
-- judges @eb1168f: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy REVISE (see-instances/claude-basics--where-is-this-all-going.strategy.json)
+**Quality:** compendium-audited 2026-09-02 (writing@eb1168f story@eb1168f technical@eb1168f behavior@eb1168f pedagogy@eb1168f slides@3552e8c2)
+- judges @3552e8c2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy REVISE (see-instances/claude-basics--where-is-this-all-going.strategy.json), slides PASS (1 todo see instances/claude-basics--module--where-is-this-all-going.slides.json)
 - cross_module @eb1168f: PASS — set=[M1,M2,M3,M4]
 
 **Strategy reference:** `bosser-strategy:content-strategy-claude-basics.md` § *Where is this all going?*

@@ -1,0 +1,188 @@
+{
+  "class": "slides",
+  "file": "curriculum/lectures/context-is-king-cb.md",
+  "verdict": "REVISE",
+  "training": "claude-basics",
+  "body_sha": "69b3fd2ac7eb442c74bb0d89bd253a3ab8c1442d6d882a9389e7aaf2cbaa4885",
+  "shape_hash": "59588978c854674b",
+  "chunk_map": [
+    { "index": 0, "heading": "(title) Context is King", "lines": "1-4" },
+    { "index": 1, "heading": "The demo you're about to see", "lines": "5-16" },
+    { "index": 2, "heading": "What just happened", "lines": "17-22" },
+    { "index": 3, "heading": "Context isn't only about countries", "lines": "23-32" },
+    { "index": 4, "heading": "The move you're about to make", "lines": "33-40" }
+  ],
+  "rules_evaluated": [
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 1,
+      "rule_lead": "Referent resolution under a sequential deck read.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Closest candidates: chunk 4 line 37 'What if the context was a file the agent reads at the start of every conversation?' — 'the agent' is the first use of that exact noun, but chunks 0-3 established the actor as 'Claude' throughout (lines 9, 11, 19), and 'the agent' resolves via ordinary near-synonym equivalence, not a new unnamed referent. Chunk 2 line 21 'every useful thing in the rest of this exercise' — 'this' is self-referential (points at the current document itself), unambiguous as a referent even though the noun 'exercise' mislabels a lecture — a naming-precision issue for check_writing/check_student_facing, not a slides antecedent failure (noted in `notes`). Chunk 1 line 13 'Same words.' resolves cleanly within-chunk to the identical second-prompt phrasing at lines 9 and 11. No referent anywhere in the file is never-named, vague-with-full-history, or stranded by the re-chunk.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 2,
+      "rule_lead": "Cross-file and positional callbacks.",
+      "verdict": "N/A",
+      "chunks_flagged": [],
+      "evidence": null,
+      "na_reason": "no external-file or positional-callback language anywhere in body — `grep -n '\\](' ` on the body view → 0 hits; has_urls: false per body-view signals.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 3,
+      "rule_lead": "Every backward reference points at a beat that exists.",
+      "verdict": "N/A",
+      "chunks_flagged": [],
+      "evidence": null,
+      "na_reason": "no 'the X you did/saw/caught' backward-beat language in body — `grep -niE 'you (did|saw|caught)'` → 0 hits; file is this module's own opening lecture with nothing preceding it in the module to reference.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 4,
+      "rule_lead": "Live-demo beats survive a text read.",
+      "verdict": "REVISE",
+      "chunks_flagged": [1],
+      "evidence": "Chunk 1 'The demo you're about to see', line 11: 'In the other window, ... Claude answers *Saimaa.* Then the same second prompt as before. Claude suggests something Finnish: salmon, rye bread, meatballs.' — narrates the second window's full outcome. Four lines later, same chunk, line 15: 'Before you watch the second session run, take a guess. What will it suggest?' asks the reader to predict an answer the text already gave. This matches the compendium's own canonical failure almost verbatim ('Take a guess before you watch the second session run' — outcome narrated above the guess-line, same slide). Harm check: the guess is the chunk's one active-learning beat ('Your guess reveals what you already know about how this works, and what you're about to learn') and it is dead on arrival for a reader who read straight down — the predictive moment either does nothing or reads as patronising since the answer was already stated. Harm is actually present, not just rule-shape matched. Context for the orchestrator, not corrected here (out of this file's scope): the identical sentence at the identical line number exists in the sibling lecture curriculum/lectures/context-is-king.md (this file's own maintainer block names that file as Source), and that sibling's current slides instance (agents-101--lecture--context-is-king.slides.json) records rule 4 as N/A with the evidence 'no guess/predict-before-reveal instruction appears in the expanded body of curriculum/lectures/context-is-king.md' — which is not true of either file.",
+      "fix_hint": "Reorder: place the guess prompt right after line 9 (window one's result) and before window two's setup/reveal at line 11, holding window two's answer for the live run or trainer delivery (maintainer note) — per the rule's own stated fix.",
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 5,
+      "rule_lead": "No orphan slides.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Every chunk (0-4) carries at least two independent sentences beyond any wait-state framing. Closest candidate: chunk 2 is the shortest (2 sentences, lines 19 and 21) but both carry a self-contained claim — the mechanism explanation and the 'That's context' naming beat. No chunk's only content is a single context-dependent bullet.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 6,
+      "rule_lead": "Header self-carries at projection distance.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Chunk 1 'The demo you're about to see' — content is exactly a demo setup + guess prompt, holds. Chunk 2 'What just happened' — content recaps the just-shown mechanism, holds. Chunk 3 'Context isn't only about countries' — content broadens context beyond the country-fact demo to a role/identity example, holds (and is itself a claim). Chunk 4 'The move you're about to make' — content pivots to the file-based guardrail move, holds. Closest candidate for contradiction: chunk 1's header promises a demo 'about to see' while the same chunk's prose already narrates both outcomes in full — that is the rule-4 defect above, not a header-truth failure; the header still accurately names the topic.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 7,
+      "rule_lead": "LLM-cadence caps.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Checked all six sub-patterns across all 5 chunks via `grep -niE '\\bnot\\b' curriculum/evals/body-views/shared--lecture--context-is-king-cb.body.txt` → 1 hit (line 29, 'Not because Claude knows medicine better than Italian cooking.') — a single negation, not a 'Not X. Not Y. Z.' triple. Anaphora/epistrophe triples: none (the three-item food lists at lines 9, 11, 29 are plain enumerations of different nouns, not repeated sentence-opening/closing structure). Self-grading superlative (blocking sub-item): none found anywhere in body. Number + own retraction: no numeric hedge anywhere (no numbers used at all in the body). Abstraction-noun stacks: vocabulary stays concrete throughout (the demo, the prompt, the file, the guardrail). Empty-leg verb triplets: none — line 19's 'reads ... and generates' is a pair, both legs concrete.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 8,
+      "rule_lead": "Internal dialect never lands on a slide.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "`grep -nE '\\b(surface|firing|compendium|forcing function|beat|mood|Connections)\\b' curriculum/evals/body-views/shared--lecture--context-is-king-cb.body.txt` → 0 hits. No repo/maintainer vocabulary lands on any slide; register throughout is plain ('the demo', 'the file', 'the agent').",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 9,
+      "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "`grep -n '\\*\\*' curriculum/evals/body-views/shared--lecture--context-is-king-cb.body.txt` → 0 hits. Zero bold anywhere in the body (the italics in the prompt quotes use single asterisks). Well within the ≤1-per-slide handle budget — the actual count is zero.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 10,
+      "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "File is included via the standard standalone-paragraph link `[Opening: Context is King](lectures/context-is-king-cb.md)` (curriculum/trainings/claude-basics/personal-site-with-guardrails.md line 28), inside the module's ordered phase-link list alongside its siblings `[Exercise: ...]` and `[Closing: ...]` — the same structural-include pattern that reaches `.phase--lecture` and the composed deck. Not a phase-less prose section (not prework/supplementary).",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 11,
+      "rule_lead": "Numbering — position is computed, content ordinals are linted.",
+      "verdict": "N/A",
+      "chunks_flagged": [],
+      "evidence": null,
+      "na_reason": "no `## Phase N:`/`## N.` step headers; confirmed via `node scripts/check-slide-numbering.js --file curriculum/lectures/context-is-king-cb.md` → 'OK — 1 files, Phase/Step numbering consistent.'",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 12,
+      "rule_lead": "Page geometry dies at the cut; reading order survives.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "`node scripts/check-slide-deixis.js --file curriculum/lectures/context-is-king-cb.md` → 'OK — 1 files, no page-geometry pointers across the slide cut.' No above/below/further-down/at-the-top-of-this-page language anywhere in body.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 13,
+      "rule_lead": "In-deck links work now; whether they EARN their place is open.",
+      "verdict": "N/A",
+      "chunks_flagged": [],
+      "evidence": null,
+      "na_reason": "zero in-body links (`grep -n '\\](' ` on the body view → 0 hits); nothing to evaluate for link-earns-its-place.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 14,
+      "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "`node scripts/check-slide-size.js --file curriculum/lectures/context-is-king-cb.md` → 'files: 1  slides: 4  limits: 210 words / 6 bullets  oversized: 0 ... every slide is within limits.' No accept-note needed.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 15,
+      "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Lecture headings should read as claims. Three of four here are orientation-style labels rather than claims — 'The demo you're about to see' (chunk 1), 'What just happened' (chunk 2), 'The move you're about to make' (chunk 4) — each falls under the rule's own orientation-header carve-out (parallel to its named examples 'You are here'/'The far half opens': each announces a phase of the lecture rather than instructing a task). The fourth, 'Context isn't only about countries' (chunk 3), is a genuine declarative claim. No heading reads as exercise-style task-instruction anywhere, so the lecture mood stays consistent. Classified non-blocking per the template's stated principle: this is a mood/craft polish concern, not a comprehension failure — a reader follows the deck regardless of which headings are strict claims.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 16,
+      "rule_lead": "A bullet earns its slot or dies — three classes that read as rigour and carry nothing.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Checked every sentence against the three classes. Closest candidate, class (c) aphorism kicker: chunk 4 line 39 'That's a guardrail. That's your turn.' — the first clause coins the term at its legitimate point of introduction (matching the file's own established naming pattern, 'That's context.' at chunk 2 line 21, doing the identical move); the second clause does not restate chunk 4's header ('The move you're about to make') but functions as a hand-off cue into the module's next file (the exercise), not a closed-loop restatement of a fact already given. Closest candidate, class (a) doctrine restatement: chunk 2 line 21 'every useful thing in the rest of this exercise is built on this one idea' is the FIRST statement of the idea's stakes, not a re-announcement of something already said, so it doesn't fit the class. No self-referential design commentary found anywhere (file never tells the reader they are inside a pedagogy). Classified non-blocking per the template's stated principle: bullet-economy is polish on an already-comprehensible slide, not a comprehension failure. Both candidates stay inside.",
+      "fix_hint": null,
+      "blocking": false
+    }
+  ],
+  "blocking_findings_count": 1,
+  "todos_count": 0,
+  "todos": [],
+  "accept_notes_found": [
+    "L43: **Quality:** compendium-audited 2026-05-21 (writing@304f061 pedagogy@304f061 strategy@304f061) — the only dated line the body view extracted from the maintainer block; it is the routine Quality stamp, not a substantive accept-note authorising any specific rule exception (no 'Slide size accepted:'/'Slide deixis accepted:'/dialect-display accept-note present)."
+  ],
+  "notes": "Two observations outside this class's lane, left here rather than in rules_evaluated: (1) chunk 2 line 21 calls the file 'this exercise' when it is a lecture (module include line 28 names it '[Opening: Context is King]', a check_writing/check_student_facing precision concern, not a slides referent-resolution failure — see rule 1's evidence). (2) The rule-4 finding's identical text also exists verbatim at the same line number in the sibling file curriculum/lectures/context-is-king.md, whose current slides instance (agents-101--lecture--context-is-king.slides.json) records rule 4 as N/A on false evidence ('no guess/predict-before-reveal instruction appears') — flagged for the orchestrator's awareness, not something this run corrects since it is a different file. Rules 15 and 16 are not explicitly classified by the slides judge template's blocking/non-blocking list (written before those rules existed); both were scored non-blocking here by applying the template's own stated principle ('cannot follow this' vs 'could be tighter') since neither finding here concerned comprehension. No prior instance existed for this (file, class) pair — prefill-instance.js reported 'no prior instance' on --write, so all 16 rows above were derived fresh; --merge after writing spliced in 0 rows (nothing was parked)."
+}

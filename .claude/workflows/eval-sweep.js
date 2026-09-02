@@ -157,7 +157,12 @@ const VERDICT_SCHEMA = {
     // The TARGET file, not the instance you wrote. A story judge returned its
     // own instance path here and the summary then named the wrong file as the
     // thing judged — harmless in a one-item run, unreadable in a sweep of 70.
-    file: { type: 'string', description: 'the curriculum file you judged, exactly as the header names it — NOT the instance JSON you wrote' },
+    // Repo-relative is not cosmetic: every reader that joins an instance back to
+    // its file matches this string, and nine of fourteen judges in one sweep
+    // wrote `/Users/…/agents-102/curriculum/…`. Each of those instances was
+    // unfindable from its own file path, so a REVISE stamped without the pointer
+    // to the evidence behind it.
+    file: { type: 'string', description: 'the curriculum file you judged, REPO-RELATIVE (`curriculum/…`, never an absolute /Users path), exactly as the header names it — NOT the instance JSON you wrote' },
     class: { type: 'string' },
     // PASS_WITH_TODOS is the rung a binary schema kept collapsing into REVISE.
     // A judge with a non-blocking observation must be able to say so without

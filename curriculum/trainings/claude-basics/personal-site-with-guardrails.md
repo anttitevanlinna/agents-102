@@ -92,8 +92,8 @@ You just made great output AND packaged what you learned into a file the agent c
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-05-21 (writing@304f061 pedagogy@304f061 strategy@304f061)
-- judges @304f061: writing PASS, story grandfathered, technical grandfathered, behavior grandfathered, pedagogy PASS, strategy PASS
+**Quality:** compendium-audited 2026-09-02 (writing@304f061 pedagogy@304f061 strategy@304f061 slides@3552e8c2)
+- judges @3552e8c2: writing PASS, story grandfathered, technical grandfathered, behavior grandfathered, pedagogy PASS, strategy PASS, slides PASS (3 todos see instances/claude-basics--module--personal-site-with-guardrails.slides.json)
 
 **Source:** `curriculum/trainings/agents-101/getting-going.md` (Agents 101 M1 canonical module).
 

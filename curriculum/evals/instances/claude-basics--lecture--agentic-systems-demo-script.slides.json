@@ -1,0 +1,183 @@
+{
+  "class": "slides",
+  "file": "curriculum/lectures/agentic-systems-demo-script.md",
+  "body_sha": "c32ee284109652c3ced30a3b07a8d5937c9f187e8b223ad68b10fea2389625a3",
+  "verdict": "PASS_WITH_TODOS",
+  "training": "claude-basics",
+  "shape_hash": "7f1358379140eeb9",
+  "chunk_map": [
+    {
+      "index": 0,
+      "heading": "An agentic system, end to end (H1 + lede \u2014 no ## headings in body)",
+      "lines": "1-29"
+    }
+  ],
+  "rules_evaluated": [
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 1,
+      "rule_lead": "Referent resolution under a sequential deck read.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Harm: a reader loses the thread when a referent is never named, stays vague with full history, or is stranded by a re-chunk. This file has zero '##' headings, so the entire body IS chunk 0 (confirmed against the built page: no h2 between this lecture's own h1 and the next phase's h1 at site/clients/it-bits/claude-basics/index.html:2690-2723) \u2014 no cross-slide stranding is even possible. Closest calls read top to bottom: 'the room' (line 17, reused line 29) is an ordinary collective noun for the live audience, introduced and reused within the same chunk, not an ambiguous pronoun; 'the fix from a moment ago' (line 21, in the 'Source to customer page' paragraph) resolves to the 'small fix' named in the bolded lead at line 13, earlier in the same chunk's reading order. No forward reference to unnamed later content found.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 2,
+      "rule_lead": "Cross-file and positional callbacks.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "No chunk points at another file by position ('the opening lecture said...'). The only self-referential mention is line 7's 'the workbook you've been reading' \u2014 the artifact the reader already holds, named by what it is, not located by page position in a separate document.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 3,
+      "rule_lead": "Every backward reference points at a beat that exists.",
+      "verdict": "N/A",
+      "chunks_flagged": [],
+      "evidence": "No 'the X you did/saw' backward-beat language anywhere in body; the narration is entirely forward-looking ('You'll see five things', 'gets spotted', 'comes back'), describing what the demo will show rather than recapping a completed student beat.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 4,
+      "rule_lead": "Live-demo beats survive a text read.",
+      "verdict": "N/A",
+      "chunks_flagged": [],
+      "evidence": "No guess-before-reveal construction in the body. Guess/predict language exists only in the maintainer's trainer prompt spine (e.g. line 45: 'Pick one rule you think the room would never have guessed'), which sits below the maintainer cut, outside body/slide-projection scope.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 5,
+      "rule_lead": "No orphan slides.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Chunk 0 carries ten distinct self-carrying claims (five core + five optional moves, each with its own bolded lead and 1-3 sentences of mechanism) plus a scene-setting open and a closing payoff (line 29) \u2014 the opposite of an orphan. Nothing here is a bare wait-state or a single context-dependent bullet.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 6,
+      "rule_lead": "Header self-carries at projection distance.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "H1 'An agentic system, end to end' fairly summarises a chunk that walks the system end to end (folders, rules, background work, a compounding fix, the named pattern, plus five optional moves) and closes on 'it has a map'. Nothing in the chunk contradicts the header's claim.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 7,
+      "rule_lead": "LLM-cadence caps.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Checked each sub-tic against the full chunk. 'Not X. Not Y. Z.' construction \u2014 0 hits (closest: line 3 'The point isn't to show off a tool. The point is to make an agentic system inspectable.' is a single isn't/is contrast, not the banned double-negation triple). Anaphora/epistrophe triple \u2014 none found. Self-grading superlative (the blocking sub-item) \u2014 0 hits; closest is line 11 'This is the move rollout custodians use most', a claim about an external audience's habit, not the demo praising its own value. Number + own-retraction \u2014 0 hits (the numbers at lines 11/13/19/21 are stated plainly, none retracted). Abstraction-noun stack \u2014 none. Empty-leg verb triplet \u2014 line 13's 'plans the change, edits the file, and proposes the rule update' and line 15's six-verb pattern name are each concretely distinct; no leg is empty.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 8,
+      "rule_lead": "Internal dialect never lands on a slide.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Grepped chunk 0 for repo/maintainer dialect (compendium, beat, mood, firing, forcing function, surface-as-noun, Connections) \u2014 zero hits (`grep -niE \"compendium|\\bbeat\\b|\\bmood\\b|firing|forcing function|\\bsurface\\b|Connections\"` on the body view returns nothing). The one candidate term, 'compounding' (line 13) / 'compounded' (line 25), is explicitly defined in-line for the reader ('The word for what just happened is *compounding*') rather than assumed prior knowledge \u2014 taught vocabulary, not smuggled dialect.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 9,
+      "rule_lead": "Emphasis budget \u2014 bold is for handles, and go very lightly.",
+      "verdict": "REVISE",
+      "chunks_flagged": [
+        0
+      ],
+      "evidence": "Harm: a slide where every line opens with a bolded sentence trains the eye to skim bold and read nothing, defeating the handle. `grep -noE '^\\*\\*[^*]+\\*\\*' curriculum/lectures/agentic-systems-demo-script.md` returns exactly 10 hits inside the body (lines 7,9,11,13,15,19,21,23,25,27), several 6-10 words long ('One agent works in the background while the demo continues.'), against a budget of <=1 bolded element per slide and a <=5-word handle cap. This is the rule's own named violation shape verbatim: 'every bullet on a slide opens with a bolded sentence (the pre-2026-07-09 monoculture)'. None of the stated exceptions apply \u2014 no check_pedagogy.md \u00a734 task-sizing callout, no 'What You'll Learn' LO list, not a menu/reading-list or a lookup/reference page.",
+      "fix_hint": "Flatten nine of the ten bolded leads to plain prose (or an un-bolded topic phrase), keeping at most one true handle on the slide \u2014 or, if the beats get their own '##' breaks (see rule 14), each resulting slide keeps only its own single bolded lead by construction.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 10,
+      "rule_lead": "Presence precedes content \u2014 verify against the composed deck, not long-read.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Confirmed presence in the composed deck two ways: (a) the module `curriculum/trainings/claude-basics/agentic-systems-repo-demo.md` includes this file under its own heading via '[Lecture: Agentic systems demo script](lectures/agentic-systems-demo-script.md)', which the include mechanism (site/layouts/curriculum-spa.js:426) wraps as `<section class=\"phase phase--lecture\">`; (b) the built `site/clients/it-bits/claude-basics/index.html` line 2687 shows exactly that wrapper (`id=\"lectures-agentic-systems-demo-script\"`) with this file's H1 inside it. The section is not phase-less prose and is not silently dropped from the deck.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 11,
+      "rule_lead": "Numbering \u2014 position is computed, content ordinals are linted.",
+      "verdict": "N/A",
+      "chunks_flagged": [],
+      "evidence": "No hand-numbered '## Phase N:' / '## N.' step headers in body (body has no '##' at all). `node scripts/check-slide-numbering.js` reports 'OK \u2014 1 files, Phase/Step numbering consistent' with this file included.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 12,
+      "rule_lead": "Page geometry dies at the cut; reading order survives.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Grepped chunk 0 for page-geometry pointers (above/below/further down/at the top/see below) \u2014 zero hits. `node scripts/check-slide-deixis.js --file curriculum/lectures/agentic-systems-demo-script.md --report` produced no output (nothing to report \u2014 no matches).",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 13,
+      "rule_lead": "In-deck links work now; whether they EARN their place is open.",
+      "verdict": "N/A",
+      "chunks_flagged": [],
+      "evidence": "Zero in-body links in the body (signals.has_urls=false; no `[text](...)` syntax anywhere in lines 1-29) \u2014 nothing to inventory or judge for either half of this rule.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 14,
+      "rule_lead": "Slide size \u2014 210 words / 6 bullets, and the cap is machine-checked.",
+      "verdict": "REVISE",
+      "chunks_flagged": [
+        0
+      ],
+      "evidence": "Harm: a slide too dense to read at a glance defeats projection. Because the file has zero '##' headings, the renderer's own chunking (site/layouts/slides.js buildSingleDoc; confirmed against the built page \u2014 no h2 between this lecture's h1 at site/clients/it-bits/claude-basics/index.html:2690 and the next phase's h1 at :2723) collapses the WHOLE body into one 'cover' slide. Measured with the script's own word-counting method (strip inline markup, count tokens): 627 words on that single slide, 3x the 210-word cap. The mechanical gate itself is blind to this exact shape: `node scripts/check-slide-size.js --file curriculum/lectures/agentic-systems-demo-script.md --report` (also re-run with `--training claude-basics`) both report 'files: 0 slides: 0 oversized: 0', because its per-slide loop only opens a slide on a literal '## ' line and never scores the title/preamble group when no '##' exists at all anywhere in the file \u2014 a real gap in the gate, not evidence of compliance. No `**Slide size accepted:**` note in the maintainer block covers this. The bullets axis stays at 0 (all ten leads are plain paragraphs, not list syntax), so only the word axis is blown, but by a wide margin.",
+      "fix_hint": "The prose already self-segments into 5 core + 5 optional named moves, each with its own bolded lead \u2014 splitting at those seams into real '##' slides would put each beat's ~40-90 words well inside the cap (and let rule 9's bolded-lead-per-paragraph problem resolve for free, one handle per slide). If a single overview slide is the deliberate design instead, add a maintainer accept-note naming the heading and the reason.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 15,
+      "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
+      "verdict": "N/A",
+      "chunks_flagged": [],
+      "evidence": "No '##' interior headings to grade for claim-vs-label grammar. The only heading is the H1 title 'An agentic system, end to end', which reads as a catalogue entry naming its subject (the rule's own exempted shape, alongside 'Ralph', 'The numbers') rather than a propositional claim \u2014 exempt either way.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 16,
+      "rule_lead": "A bullet earns its slot or dies \u2014 three classes that read as rigour and carry nothing.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Read chunk 0 for the three low-value classes. No split/lens/law is re-announced after doing its work \u2014 each of the ten bolded-lead paragraphs introduces a distinct move, none restates an earlier one. No self-referential pedagogy commentary \u2014 the body narrates what the demo shows, never that the audience is 'inside a design'. Closest call to an aphorism-kicker is the closing line 29 ('the room doesn't have a new piece of software. It has a map.'), but it lands a genuine new payoff image rather than restating the H1 or an earlier line \u2014 stays inside.",
+      "fix_hint": null,
+      "blocking": false
+    }
+  ],
+  "blocking_findings_count": 0,
+  "todos_count": 2
+}

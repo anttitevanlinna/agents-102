@@ -149,7 +149,7 @@ Steer what you need to steer.
 **Meta:**
 - **Length:** 26 minutes. 3 + 5 + 7 + 4 + 7 = 26 phase budget
 
-**Quality:** compendium-audited 2026-05-15 (writing@eb1168f pedagogy@eb1168f strategy@eb1168f)
-- judges @eb1168f: writing PASS, story REVISE (see-instances/claude-basics--build-your-system.story.json), technical REVISE (see-instances/claude-basics--build-your-system.technical.json), behavior REVISE (see-instances/claude-basics--build-your-system.behavior.json), pedagogy PASS, strategy PASS
+**Quality:** compendium-audited 2026-09-02 (writing@eb1168f pedagogy@eb1168f strategy@eb1168f slides@3552e8c2)
+- judges @3552e8c2: writing PASS, story REVISE (see-instances/claude-basics--build-your-system.story.json), technical REVISE (see-instances/claude-basics--build-your-system.technical.json), behavior REVISE (see-instances/claude-basics--build-your-system.behavior.json), pedagogy PASS, strategy PASS, slides PASS (2 todos see instances/claude-basics--exercise--build-your-system.slides.json)
 
 **Strategy reference:** `bosser-strategy:content-strategy-claude-basics.md` § *Homework: build and verify*

@@ -40,8 +40,8 @@ That's a guardrail. That's your turn.
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-05-21 (writing@304f061 pedagogy@304f061 strategy@304f061)
-- judges @304f061: writing PASS, story grandfathered, technical grandfathered, behavior grandfathered, pedagogy PASS, strategy PASS
+**Quality:** compendium-audited 2026-09-02 (writing@304f061 pedagogy@304f061 strategy@304f061)
+- judges @3552e8c2: writing PASS, story grandfathered, technical grandfathered, behavior grandfathered, pedagogy PASS, strategy PASS, slides REVISE (1/0 see instances/claude-basics--lecture--context-is-king-cb.slides.json)
 
 **Source:** `curriculum/lectures/context-is-king.md` (Agents 101 M1 opening lecture)
 

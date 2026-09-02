@@ -1,0 +1,198 @@
+{
+  "class": "slides",
+  "file": "curriculum/exercises/organisers-synthesize-rollout.md",
+  "body_sha": "1225796973270311b21d06f1ac29f535b665931d2d99479a00cc57346bac2708",
+  "verdict": "PASS",
+  "training": "claude-basics",
+  "chunk_map": [
+    {
+      "index": 0,
+      "heading": "# Exercise: Organisers synthesize rollout (title)",
+      "lines": "1-8"
+    },
+    {
+      "index": 1,
+      "heading": "## Phase 1. Read across the group syntheses",
+      "lines": "9-40"
+    },
+    {
+      "index": 2,
+      "heading": "## Phase 2. Decide what to share back",
+      "lines": "41-75"
+    }
+  ],
+  "rules_evaluated": [
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 1,
+      "rule_lead": "Referent resolution under a sequential deck read.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Sequential read of all 3 chunks. Chunk 0 line 5 names 'group rollout synthesis files' and 'shared/' as the exercise's precondition; chunk 1 line 11 'the group files' and line 39 'the group syntheses' resolve against that same-chunk-0 naming (chunk 0 is prior context for every later chunk by the template's own rule). Independently, both terms are ALSO established via module-include-order deck adjacency: this exercise's host module curriculum/trainings/claude-basics/organisers-run-the-workshop.md line 13 signposts '**Run** the organiser synthesis once group files start landing' before this exercise is even reached, and the immediately-preceding exercise in that module's include order, curriculum/exercises/organisers-prepare-claude-basics.md line 160, reads 'Next, run [Exercise: Organisers synthesize rollout](exercises/organisers-synthesize-rollout.md) on the rollout synthesis files in `shared/`' -- lecture/exercise-then-exercise deck adjacency per the rule's own carve-out. Chunk 1's 'the readout'/'the current readout' (lines 22, 37) trace to chunk 0 line 5's 'organisers' readout' and are reinforced within-chunk at line 22 (inside the fence, still visible on the same rendered slide). Chunk 2 line 45 'these prompts' is a same-chunk forward pointer to the two Prompt fences that follow later in the SAME chunk (lines 51-60, 66-74) -- the reader is still on this slide when the referent arrives, so it never crosses a `##` cut. Chunk 2 line 62 'the first answer' refers to the immediately-prior same-chunk prompt's output. 'the room' (lines 43, 45) is ordinary exercise-audience vocabulary, not a tracked antecedent. No never-named, vague, or re-chunk-stranded referent found anywhere in the body.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 2,
+      "rule_lead": "Cross-file and positional callbacks.",
+      "verdict": "N/A",
+      "chunks_flagged": [],
+      "evidence": null,
+      "na_reason": "No reference to any other document -- by title, by claim, or by position -- appears anywhere in the body. Nothing to check.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 3,
+      "rule_lead": "Every backward reference points at a beat that exists.",
+      "verdict": "N/A",
+      "chunks_flagged": [],
+      "evidence": null,
+      "na_reason": "No 'the X you did/saw/caught' student-recap construction anywhere in body; the file only names shared/ synthesis files as live inputs, not a prior beat the reader completed.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 4,
+      "rule_lead": "Live-demo beats survive a text read.",
+      "verdict": "N/A",
+      "chunks_flagged": [],
+      "evidence": null,
+      "na_reason": "No guess-before-reveal or predict-then-show construction anywhere in the body.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 5,
+      "rule_lead": "No orphan slides.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Chunk 0 (title/Time/lede/Session) states the exercise's whole premise, self-carrying. Chunk 1 carries a full prompt plus two follow-up sentences plus a grounding instruction -- far more than a single wait-state bullet. Chunk 2 carries three prompts plus connective narration deciding what to share back. No chunk's only content is a wait-state or one context-dependent bullet.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 6,
+      "rule_lead": "Header self-carries at projection distance.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Chunk 1 header 'Phase 1. Read across the group syntheses' literally matches its content (line 11: 'Ask Claude to watch the group files and synthesize the latest read'). Chunk 2 header 'Phase 2. Decide what to share back' matches its content (deciding a share-back point, generating angles, drafting the words). Neither header is contradicted by its chunk.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 7,
+      "rule_lead": "LLM-cadence caps.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "RAN `grep -inE \"one of the (most|best)|most useful|most important|self-grading\" curriculum/evals/body-views/claude-basics--exercise--organisers-synthesize-rollout.body.txt` -> no match, exit 1 (self-grading-superlative sub-item, blocking). RAN `grep -inE \"^\\s*-?\\s*Not [A-Z][a-z]+\\. Not \" <same file>` -> no match, exit 1 ('Not X. Not Y. Z.' sub-item). Manual scan of all 3 chunks for anaphora/epistrophe triples, number-then-own-retraction, abstraction-noun stacks, and empty-leg verb triplets: none found. Closest constructions are plain contrastive pairs ('named as the problem they solve, not the virtue they embody', line 25; 'the crux or disagreement', line 43) -- single declaratives, not banned tic shapes.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 8,
+      "rule_lead": "Internal dialect never lands on a slide.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "RAN `grep -inE \"\\bsurface\\b|compendium|forcing function|\\bbeat\\b|\\bmood\\b|\\bConnections\\b|firing\" curriculum/evals/body-views/claude-basics--exercise--organisers-synthesize-rollout.body.txt` -> no match, exit 1. 'Session' and 'Prompt' are the renderer's fixed widget marker words (curriculum/widgets.md L11, L14), not authorial jargon; 'Cowork' is the actual Claude product surface this training runs on, not repo-internal dialect.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 9,
+      "rule_lead": "Emphasis budget \u2014 bold is for handles, and go very lightly.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "RAN `grep -n '\\*\\*' curriculum/evals/body-views/claude-basics--exercise--organisers-synthesize-rollout.body.txt` -> 5 hits, all widget chrome: chunk 0 line 3 '**Time:**' and line 7 '**Session**'; chunk 1 line 13 '**Prompt**'; chunk 2 lines 49 and 64 '**Prompt**' (twice, one per fenced prompt on that slide). Zero narrative/bullet-lead bold anywhere. '**Session**' and '**Prompt**' are the renderer's literal marker words -- widgets.md L29 documents the decorator dropping the bold label entirely at render time ('badge + body, drop the label strong'), so they do not even project as bold text. '**Time:**' is the corpus-wide field label used identically in `grep -rln '^\\*\\*Time:\\*\\*' curriculum/exercises/*.md | wc -l` -> 40 files, structural chrome by house convention (matching the same exemption class recorded across sibling instances, e.g. ae101--exercise--close-the-ticket.slides.json rule 9, claude-basics--exercise--build-your-system.slides.json rule 9). No slide carries a bolded narrative lead, so the \u22641-per-slide budget on narrative bold is not in tension here at all.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 10,
+      "rule_lead": "Presence precedes content \u2014 verify against the composed deck, not long-read.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Standard shared-library exercise file (curriculum/exercises/<slug>.md) -- Time/Session/Phase-N body under the .phase--exercise wrapper by construction, no phase-less prose section. RAN `node scripts/check-slide-size.js --file curriculum/exercises/organisers-synthesize-rollout.md` -> 'slides: 2', confirming the renderer's own deck model found both `##` chunks; nothing dropped.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 11,
+      "rule_lead": "Numbering \u2014 position is computed, content ordinals are linted.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "RAN `node scripts/check-slide-numbering.js curriculum/exercises/organisers-synthesize-rollout.md` -> 'OK \u2014 62 files, Phase/Step numbering consistent.' Phase 1/Phase 2 consecutive from 1; no in-file or cross-file 'Phase N' prose reference anywhere in the body to go stale.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 12,
+      "rule_lead": "Page geometry dies at the cut; reading order survives.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "RAN `node scripts/check-slide-deixis.js curriculum/exercises/organisers-synthesize-rollout.md` (ran over the full 62-file corpus, this file included) -> 'OK \u2014 62 files, no page-geometry pointers across the slide cut.' Own grep `grep -inE '\\bbelow\\b|\\babove\\b|further down|at the top|see below' curriculum/exercises/organisers-synthesize-rollout.md` -> one hit, line 67: 'Draft a short organiser share-back for the point below.' -- inside the third fenced prompt block (lines 66-74) of chunk 2, pointing at that SAME fence's own closing line 73 'Let's focus on:'. Same-`##`-chunk use passes per the rule's explicit carve-out; the pointer never crosses a slide cut.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 13,
+      "rule_lead": "In-deck links work now; whether they EARN their place is open.",
+      "verdict": "N/A",
+      "chunks_flagged": [],
+      "evidence": null,
+      "na_reason": "No markdown links anywhere in the body -- this file is absent from `node scripts/check-slide-deixis.js --links`'s review-surface listing entirely.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 14,
+      "rule_lead": "Slide size \u2014 210 words / 6 bullets, and the cap is machine-checked.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "RAN `node scripts/check-slide-size.js --file curriculum/exercises/organisers-synthesize-rollout.md` -> 'slides: 2  limits: 210 words / 6 bullets', 'oversized: 0', '\u2713 every slide is within limits'.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 15,
+      "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Exercise file: both body headings are phase labels with an imperative verb -- 'Phase 1. Read across the group syntheses', 'Phase 2. Decide what to share back' -- matching the exercise-register requirement exactly, no claim-grammar heading present that would need law/consolidation status.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 16,
+      "rule_lead": "A bullet earns its slot or dies \u2014 three classes that read as rigour and carry nothing.",
+      "verdict": "N/A",
+      "chunks_flagged": [],
+      "evidence": null,
+      "na_reason": "The only bulleted lists in the file sit inside fenced Prompt blocks (lines 23-28, 55-57) -- literal instruction text to Claude, judged under check_prompts.md, not authored slide bullets this rule scopes. No non-fenced bullet exists in the body.",
+      "fix_hint": null,
+      "blocking": false
+    }
+  ],
+  "blocking_findings_count": 0,
+  "todos_count": 0,
+  "shape_hash": "d1ac5f91a38b7f54",
+  "accept_notes_found": [
+    "L85: **Quality:** compendium-audited 2026-05-15 (writing@eb1168f story@eb1168f technical@eb1168f behavior@eb1168f pedagogy@eb1168f strategy@eb1168f) \u2014 no slides row; this is this file's first slides judgment, no accept-note in the maintainer block addresses size, deixis, or dialect for this file (none needed -- no violation of those rules was found)."
+  ],
+  "notes": "Prior verdict discipline: prefill-instance.js --write reported 'no prior instance' (shape_hash d1ac5f91a38b7f54) -- every one of the 16 check_slides.md rules above is freshly judged this run; none carried from a sidecar, so --merge after writing is expected to splice in 0 rows. Out-of-lane observation, not filed as a slides finding or todo: curriculum/trainings/claude-basics/pre-cohort-todos.md line 19 lists an open behavior-class TODO against this exact file ('useful disagreement' -> 'the sharpest disagreement, even if uncomfortable' + priorities-as-problems framing) whose suggested replacement text already appears verbatim in the current body (lines 24-25). The tracking row may be stale (fix already landed, todo not cleared) or the re-fire it calls for simply has not happened yet -- either way this is a behavior-class / tracking-hygiene question, not a check_slides.md matter, so it is recorded here only and not acted on."
+}

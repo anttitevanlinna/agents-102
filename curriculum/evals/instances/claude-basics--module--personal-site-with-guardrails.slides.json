@@ -1,0 +1,186 @@
+{
+ "class": "slides",
+ "file": "curriculum/trainings/claude-basics/personal-site-with-guardrails.md",
+ "verdict": "PASS_WITH_TODOS",
+ "training": "claude-basics",
+ "body_sha": "93a76cc003cb1853271af26f226f403ad9b9109ed2cdbfea441e1e87d12c3e42",
+ "shape_hash": "4d5fb543d2d09f55",
+ "chunk_map": [
+  {"index": 0, "heading": "(title) Paint by agent with guardrails", "lines": "1-2"},
+  {"index": 1, "heading": "Big Idea", "lines": "3-6"},
+  {"index": 2, "heading": "Prework", "lines": "7-10"},
+  {"index": 3, "heading": "What You'll Learn", "lines": "11-19"},
+  {"index": 4, "heading": "Start here", "lines": "20-33"},
+  {"index": 5, "heading": "Key Concepts", "lines": "34-40"},
+  {"index": 6, "heading": "Debrief", "lines": "41-88"},
+  {"index": 7, "heading": "Bridge", "lines": "89-92"}
+ ],
+ "rules_evaluated": [
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 1,
+   "rule_lead": "Referent resolution under a sequential deck read.",
+   "verdict": "PASS",
+   "chunks_flagged": [],
+   "evidence": "Closest candidate: chunk 7 'Bridge' line 91: 'When the rollout asks you for the next level (building agents, writing evals, multi-step systems), you take that step in Agents 101.' 'The rollout' has no antecedent inside THIS file, but it is arc-earned spine vocabulary: `curriculum/trainings/claude-basics/where-is-this-all-going.md` (M2, precedes this M4 file in the module include order) names 'the rollout' as the training's own subject repeatedly (verified via grep: line 5 'what would make the Claude rollout work', line 64 'The rollout is the work.'). Carve-out applies, stays inside. Also checked: chunk 4 line 22 'The build-and-verify homework gave you a small system on a work task' names the M3 module by its own descriptive content, not by position (resolves under rule 2's naming discipline, not a rule-1 violation); chunk 2 line 9 'it' resolves in the same sentence to 'Cowork'; chunk 4 line 26 'You paint by choosing the brush' reuses the chunk-0 title noun, an explicit NOT-violation example. No never-named or vague-with-full-history referent found anywhere in the deck.",
+   "fix_hint": null,
+   "blocking": true
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 2,
+   "rule_lead": "Cross-file and positional callbacks.",
+   "verdict": "PASS",
+   "chunks_flagged": [],
+   "evidence": "No 'the opening lecture said' style positional callback anywhere in body. Closest candidate: chunk 4 line 22, 'The build-and-verify homework gave you a small system on a work task' -- names the source by its own descriptive content/title (matches homework-build-and-verify.md's own Big Idea), not by position ('the module before this'). The three body links (lines 28, 30, 32) are standalone-paragraph structural include-links [Title](exercises|lectures/<slug>.md), exempt per rule 13 ('how the file gets inlined').",
+   "fix_hint": null,
+   "blocking": true
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 3,
+   "rule_lead": "Every backward reference points at a beat that exists.",
+   "verdict": "PASS",
+   "chunks_flagged": [],
+   "evidence": "Verified every named beat against the live file set with `ls`: chunk 4 line 22's 'the build-and-verify homework' -> curriculum/trainings/claude-basics/homework-build-and-verify.md (exists); chunk 4 line 30's link and chunk 6 line 43/73's 'the exercise' -> curriculum/exercises/personal-site-with-guardrails-cb.md (exists); chunk 4 line 28's link -> curriculum/lectures/context-is-king-cb.md (exists); chunk 4 line 32's link -> curriculum/lectures/what-just-happened-cb.md (exists). No dead beat references.",
+   "fix_hint": null,
+   "blocking": true
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 4,
+   "rule_lead": "Live-demo beats survive a text read.",
+   "verdict": "N/A",
+   "chunks_flagged": [],
+   "evidence": null,
+   "na_reason": "no guess-before-reveal construction anywhere in the file",
+   "fix_hint": null,
+   "blocking": true
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 5,
+   "rule_lead": "No orphan slides.",
+   "verdict": "PASS",
+   "chunks_flagged": [],
+   "evidence": "All 8 chunks carry a self-sufficient claim. Closest candidate: chunk 2 'Prework' (lines 7-10, shortest non-title chunk at 21 words per `node scripts/check-slide-size.js --file ... --report`), but its line names two concrete standalone prerequisites (Cowork set up, LinkedIn tab open) -- a self-carrying checklist, not a bare wait-state or context-dependent fragment.",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 6,
+   "rule_lead": "Header self-carries at projection distance.",
+   "verdict": "PASS",
+   "chunks_flagged": [],
+   "evidence": "Checked all 7 body headers against content: 'Big Idea' -> one Big Idea sentence (5); 'Prework' -> two prerequisites (9); 'What You'll Learn' -> 4 Bloom-verb LOs (15-18); 'Start here' -> orientation + question + links (22-32); 'Key Concepts' -> 4 concept bullets (36-39); 'Debrief' -> retro + cold-critic beats (42-87); 'Bridge' -> transition to Agents 101 (91). Every header matches its chunk's content; none contradicted.",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 7,
+   "rule_lead": "LLM-cadence caps.",
+   "verdict": "PASS",
+   "chunks_flagged": [],
+   "evidence": "`grep -niE \"not [^.]+\\. not [^.]+\\.\" curriculum/trainings/claude-basics/personal-site-with-guardrails.md` -> exit 1, 0 hits (no 'Not X. Not Y. Z.' triple; line 36's 'Not a checklist; a stance...' is a single semicolon contrast, not the banned triple). `grep -niE \"one of the (most|best)\" ...` -> exit 1, 0 hits (no self-grading superlative). Anaphora/epistrophe triples: none (line 39/69's 'do -> capture -> reflect -> sharpen' is a 4-term arrow chain naming a coined workflow shape, not a repeated sentence-initial/final construction). Number+retraction: none (no hedged numeric claim in body). Abstraction-noun stacks: none -- 'statistical-default output' (line 17) is a concrete, consistently-used descriptive coinage, not a vague nominalization. Empty-leg verb triplets: none.",
+   "fix_hint": null,
+   "blocking": true
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 8,
+   "rule_lead": "Internal dialect never lands on a slide.",
+   "verdict": "PASS",
+   "chunks_flagged": [],
+   "evidence": "`grep -niE \"\\b(surface|firing|compendium|forcing function|beat|mood|Connections)\\b\" curriculum/trainings/claude-basics/personal-site-with-guardrails.md` -> 3 hits, but line 52 sits inside the fenced prompt block (lines 49-63, exempt) and reads as ordinary adjectival usage ('still surface' = still superficial) even so; lines 95 and 113 sit past the maintainer cut (line 93), out of body scope entirely. Zero dialect hits in the evaluated body region.",
+   "fix_hint": null,
+   "blocking": true
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 9,
+   "rule_lead": "Emphasis budget -- bold is for handles, and go very lightly.",
+   "verdict": "REVISE",
+   "chunks_flagged": [4, 5, 6],
+   "evidence": "`grep -n '\\*\\*' <file>` (body region only, excluding L15-18's What You'll Learn LO bullets which are N/A under the rule's own module-shape carve-out, and L47/L75's '**Prompt**' chrome labels which match the sibling widget-chrome exemption): chunk 4 'Start here' carries 2 non-chrome bolds on one slide (L24 '**The question, to you:**', 4 words; L26 '**Context is king.**', 3 words) against the <=1-per-slide budget. Chunk 5 'Key Concepts' carries 4 (L36 '**Guardrails as structured context.**' 4w; L37 '**Domain expertise IS the eval.**' 5w; L38 '**Context is the control, not clever prompting.**' 7w; L39 '**Do -> capture -> reflect -> sharpen.**' 4w) -- three of the four bold a whole lead sentence rather than a sub-span handle, L38 clearly exceeding the ~5-word cap, and Key Concepts is not among the rule's two named exceptions (only Section 34 task-sizing callouts and What-You'll-Learn LO bullets are carved out). Chunk 6 'Debrief' carries 3 non-chrome bolds (L43 '**the second pass on your rules file.**' 7w; L69 '**Compound interest on a rules file.**' 6w; L71 '**Then, Claude as cold critic.**' 5w, borderline) -- two exceed the handle-length cap outright. None of these three slides is a law/consolidation, task-sizing, LO, or lookup-surface slide, so no carve-out applies.",
+   "fix_hint": "Flatten each Key Concepts and Debrief lead to a short bolded handle (or drop the bold to plain prose) and keep at most one per slide; 'Context is king.' in Start Here is closest to a legitimate coined-maxim handle and could stay if the question-label bold is dropped.",
+   "blocking": false
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 10,
+   "rule_lead": "Presence precedes content -- verify against the composed deck, not long-read.",
+   "verdict": "PASS",
+   "chunks_flagged": [],
+   "evidence": "Standard top-level module file at curriculum/trainings/claude-basics/<slug>.md -- the corpus's `section.module` case, not an exercise/lecture with phase-less prose asides. File contains no `.phase--*`/`<div>` wrappers at all; every section is plain module-template prose (Big Idea, Prework, What You'll Learn, Start here, Key Concepts, Debrief, Bridge), the shape rule 10's failure mode does not apply to.",
+   "fix_hint": null,
+   "blocking": true
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 11,
+   "rule_lead": "Numbering -- position is computed, content ordinals are linted.",
+   "verdict": "N/A",
+   "chunks_flagged": [],
+   "evidence": null,
+   "na_reason": "no `## Phase N:`/`## N.` step headers or in-body Step/Phase refs anywhere in this file; `node scripts/check-slide-numbering.js curriculum/trainings/claude-basics/personal-site-with-guardrails.md` -> 'OK -- 62 files, Phase/Step numbering consistent'",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 12,
+   "rule_lead": "Page geometry dies at the cut; reading order survives.",
+   "verdict": "PASS",
+   "chunks_flagged": [],
+   "evidence": "`node scripts/check-slide-deixis.js --file curriculum/trainings/claude-basics/personal-site-with-guardrails.md` -> 'OK -- 1 files, no page-geometry pointers across the slide cut.' No 'above/below/further down/top of this page' language anywhere in body.",
+   "fix_hint": null,
+   "blocking": true
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 13,
+   "rule_lead": "In-deck links work now; whether they EARN their place is open.",
+   "verdict": "N/A",
+   "chunks_flagged": [],
+   "evidence": null,
+   "na_reason": "only in-body links are the 3 structural include-links (lines 28,30,32), explicitly out of scope ('how the file gets inlined'); signals confirm has_urls: false and no other in-body link to weigh against the open question",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 14,
+   "rule_lead": "Slide size -- 210 words / 6 bullets, and the cap is machine-checked.",
+   "verdict": "REVISE",
+   "chunks_flagged": [6],
+   "evidence": "`node scripts/check-slide-size.js --file curriculum/trainings/claude-basics/personal-site-with-guardrails.md` -> 'files: 1  slides: 7  limits: 210 words / 6 bullets  oversized: 1' with '⚠ trainings/claude-basics/personal-site-with-guardrails.md:41  [321w]  ## Debrief' (53% over the 210-word cap; 0 bullets, so the bullet axis is fine). Checked the maintainer block for a per-slide escape hatch: no '**Slide size accepted:** ## Debrief -- <reason>' line present (the only maintainer accept-note on file is the Quality stamp, line 95).",
+   "fix_hint": "Split Debrief at its own internal seam (rules-file retro vs. cold-critic read are already two named sub-beats) into two `##` chunks, or accept-note it if the two-pass structure is deliberately one slide.",
+   "blocking": false
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 15,
+   "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
+   "verdict": "N/A",
+   "chunks_flagged": [],
+   "evidence": null,
+   "na_reason": "this is a module file, not an exercise/lecture; all 7 body headings are canonical module-shape.md section names (Big Idea, Prework, What You'll Learn, Start here, Key Concepts, Debrief, Bridge), which the exercise-imperative-vs-lecture-claim split does not govern",
+   "fix_hint": null,
+   "blocking": false
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 16,
+   "rule_lead": "A bullet earns its slot or dies -- three classes that read as rigour and carry nothing.",
+   "verdict": "REVISE",
+   "chunks_flagged": [5, 6],
+   "evidence": "Doctrine restatement (class a): chunk 5 line 39 'Do -> capture -> reflect -> sharpen. Compound interest on an agent file.' already names and closes the compounding-loop concept as a Key Concept. Chunk 6 line 69 restates the identical coined phrase, 'Push back on anything that doesn't match your sense of the work. That's the pattern: every time you do work like this and reflect, the rules file gets sharper. Compound interest on a rules file.' -- the same law re-announced, in reading order, after it already did its work in chunk 5; the bolded handle changes only 'an agent file' to 'a rules file'. Checked classes (b) self-referential design commentary and (c) aphorism kicker against every remaining bullet/paragraph: chunk 4 line 22's 'This bonus module is self-study' is logistics (format/optionality), not pedagogy-design commentary about why the training is shaped this way, so it does not trip (b); no chunk closes on a koan restating its own header or a 'The point:' line, so (c) is clean.",
+   "fix_hint": "Cut the chunk-6 restatement (line 69's 'Compound interest on a rules file.' plus its lead-in clause) and let the Key Concepts bullet (line 39) carry the coined phrase once; the surrounding push-back instruction stands fine without it.",
+   "blocking": false
+  }
+ ],
+ "blocking_findings_count": 0,
+ "todos_count": 3
+}

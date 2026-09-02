@@ -22,8 +22,8 @@ Now: five minutes with Claude. The debrief.
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-05-21 (writing@304f061 pedagogy@304f061 strategy@304f061)
-- judges @304f061: writing PASS, story grandfathered, technical grandfathered, behavior grandfathered, pedagogy PASS, strategy PASS
+**Quality:** compendium-audited 2026-09-02 (writing@304f061 pedagogy@304f061 strategy@304f061 slides@3552e8c2)
+- judges @3552e8c2: writing PASS, story grandfathered, technical grandfathered, behavior grandfathered, pedagogy PASS, strategy PASS, slides PASS (3 todos see instances/claude-basics--lecture--what-just-happened-cb.slides.json)
 
 **Source:** `curriculum/lectures/what-just-happened.md` (Agents 101 M1 closing lecture)
 

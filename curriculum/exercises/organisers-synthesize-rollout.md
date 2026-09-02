@@ -82,7 +82,7 @@ Let's focus on:
 - **Output:** `shared/organisers-rollout-readout.md`
 - **Dependency:** optional for participant success. The group synthesis files are the core artifact
 
-**Quality:** compendium-audited 2026-05-15 (writing@eb1168f story@eb1168f technical@eb1168f behavior@eb1168f pedagogy@eb1168f strategy@eb1168f)
-- judges @eb1168f: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS
+**Quality:** compendium-audited 2026-09-02 (writing@eb1168f story@eb1168f technical@eb1168f behavior@eb1168f pedagogy@eb1168f strategy@eb1168f slides@3552e8c2)
+- judges @3552e8c2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **Strategy reference:** `bosser-strategy:content-strategy-claude-basics.md` § *Where is this all going?*

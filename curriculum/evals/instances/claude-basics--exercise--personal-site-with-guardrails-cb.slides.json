@@ -1,0 +1,209 @@
+{
+  "class": "slides",
+  "file": "curriculum/exercises/personal-site-with-guardrails-cb.md",
+  "body_sha": "fb0ca32f502cc60bf8e68eee01479c7ccb8ce7c33b58cd8f21f6df268327cc2b",
+  "shape_hash": "d1ac5f91a38b7f54",
+  "verdict": "PASS_WITH_TODOS",
+  "training": "claude-basics",
+  "chunk_map": [
+    {
+      "index": 0,
+      "heading": "H1/lede -- \"Exercise: Paint by agent with guardrails\" (entire body; the file contains ZERO `##` headings)",
+      "lines": "1-164"
+    }
+  ],
+  "accept_notes_found": [
+    "L167: **Quality:** compendium-audited 2026-05-21 (writing@304f061 pedagogy@304f061 strategy@304f061) -- a Quality stamp, not a rule accept-note; no `**Slide size accepted:**` or `**Slide deixis accepted:**` line exists anywhere in this file's maintainer block."
+  ],
+  "rules_evaluated": [
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 1,
+      "rule_lead": "Referent resolution under a sequential deck read.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "The file has no `##` headings at all (confirmed this session: `grep -n '^#' <file>` -> only line 1, the H1), so under buildSingleDoc's own grouping rule (opens a new group only on H2) the entire body renders as ONE slide (chunk 0). Every referent in the file is therefore trivially 'earlier in this same chunk' by construction. Spot-checked the harder cases anyway: line 20 \"It will look like a wall of text. That's fine.\" -- \"It\"/\"That\" bind to \"the whole page\" one clause earlier; line 43 \"One trap to name first\" is cataphoric but resolved by the very next two sentences in the same paragraph (StoryBrand's customer-as-hero trap), not a genuinely unnamed forward pointer; line 139 \"the file starts compounding\" binds to \"a generation rules file\" named in the immediately preceding sentence; line 7 \"The one you used for the build-and-verify homework\" names a real prior exercise directly rather than using a bare pronoun. No never-named or vague-with-full-history referent found.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 2,
+      "rule_lead": "Cross-file and positional callbacks.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Grepped the body (lines 1-164) for positional cross-file phrasing (above/below/earlier/previous/last session -- see rule 12 for the geometry-specific run) and read every cross-file reference manually: line 7 \"the build-and-verify homework\", line 151 \"CLAUDE.md (the working-agreement file you've seen in the live demo and homework)\" both NAME the source (homework, live demo, CLAUDE.md) rather than locating it by position (\"the previous module\", \"last time\"). No positional cross-file callback found.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 3,
+      "rule_lead": "Every backward reference points at a beat that exists.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Read `curriculum/trainings/claude-basics/CLAUDE.md` \u00a7 Module list this session: module 1 is `agentic-systems-repo-demo.md` (\"the live demo\" at line 151) and module 3 is `homework-build-and-verify.md` (\"the build-and-verify homework\" at line 7), both current modules preceding this bonus module 4 in the training's own list. Neither backward reference is dead.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 4,
+      "rule_lead": "Live-demo beats survive a text read.",
+      "verdict": "N/A",
+      "na_reason": "no guess-before-reveal beat (grepped `\\bguess\\b|\\bpredict` against the body this session, 0 hits)",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 5,
+      "rule_lead": "No orphan slides.",
+      "verdict": "PASS",
+      "chunks_flagged": [
+        0
+      ],
+      "evidence": "The file's single chunk (chunk 0, the only slide this file ever produces) carries roughly 1675 readable words across six worked phases plus a close -- the opposite failure from an orphan. No chunk here is a bare wait-state or a lone context-dependent bullet; every one of the six phases has its own paragraph of framing, a fenced Prompt block, and a closing observation.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 6,
+      "rule_lead": "Header self-carries at projection distance.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "The only header available to check is the H1, \"Exercise: Paint by agent with guardrails\" (line 1). It is broad enough to be a true, non-contradicted title for everything the chunk holds (six phases of building and iterating on a personal site with guardrails) -- nothing in the body content contradicts it. Caveat, not a rule-6 failure: this header cannot function as a per-chunk summary the way a `## Phase N:` header would, because there is only one chunk covering unrelated-scope material spanning six distinct phases; that density problem is rule 9/14's territory (see their entries and the linked todos), not a rule-6 contradiction.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 7,
+      "rule_lead": "LLM-cadence caps.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Ran, this session, against the raw body (lines 1-164, fences included since the one candidate hit sits inside a fence anyway): `grep -noE '\\bNot [A-Z][a-z]+\\.[^.]*\\bNot\\b'` -> 0 hits in-body (the only match, line 52's \"Not buying a service. Not booking a call.\", sits inside the fenced Prompt block at lines 51-61, exempt); `grep -noE '(\\bIt [A-Za-z]+\\. ){2,}'` -> 0 hits (no anaphora/epistrophe triple, no empty-leg verb triplet); `grep -noiE '\\b(one of the most|the most (useful|important|valuable)|game.?chang)\\b'` -> 0 hits; `grep -noiE '\\b[0-9]+%[^.]*\\b(could be|maybe|roughly|about)\\b'` -> 0 hits (no number+retraction). Line 39's quoted \"I'm the greatest colleague ever; let's work more together\" is a fictional example of student-site copy inside quotation marks, not the curriculum grading itself -- different in kind from the banned self-grading superlative. No abstraction-noun stack found; vocabulary throughout is concrete (LinkedIn text, site.html, the prompt, the strengths, the hate list).",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 8,
+      "rule_lead": "Internal dialect never lands on a slide.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Ran, this session, `grep -niE '\\bsurface(s)?\\b|\\bmood\\b|compendium|firing|forcing function|Connections'` against the body (lines 1-164) -- 0 hits. The one candidate, `grep -n beat` -> line 47 only (\"Ask Claude to apply tuned StoryBrand to the help section, one beat at a time\"): this uses \"beat\" in its ordinary screenwriting/narrative-design sense (StoryBrand's five narrative elements -- Character, Problem, Guide, Plan, Success -- being walked one at a time), a term with currency well outside this repo, unlike \"surface\"-as-noun or \"compendium\" which have no life outside our own authoring vocabulary. Weighing audience register per the rule's own instruction: a chat-level rollout-custodian audience being taught a named storytelling framework already parses \"beat\" as \"a unit of the story,\" not as maintainer/authorial shop-talk about this curriculum's own construction. Holds inside as ordinary narrative vocabulary, not repo dialect.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 9,
+      "rule_lead": "Emphasis budget \u2014 bold is for handles, and go very lightly.",
+      "verdict": "REVISE",
+      "chunks_flagged": [
+        0
+      ],
+      "evidence": "Counted every `**...**` span in the body this session (fences excluded): 29 total. Excluding widget-marker bolds that render as chips rather than prose (`**Time:**`, `**Session**`, `**Prompt**` x6 -- 8 exempt occurrences), 21 remain on the single rendered slide, against a <=1-per-slide budget. Several are outright whole-lead-sentence bolds, the rule's own named violation shape (\"never a whole lead sentence\"; \"every bullet on a slide opens with a bolded sentence -- flatten to handles or prose\"): line 19 \"**Open your LinkedIn profile in your browser.**\" (7 words), line 20 \"**Select all and copy.**\" (4 words), line 21 \"**Drop your LinkedIn text into the prompt below, after the colon. Send as one message.**\" (14 words, two sentences), line 43 \"**The site stays a personal site; you stay the protagonist of the page.**\" (13 words), line 41 and line 87 (duplicated) \"**name the framework, tune it, ask Claude to run it.**\" (9 words), line 135 \"**Tip: steal a look and feel by naming the site.**\" (10 words). Plus seven phase-label bolds (\"**Phase 1. The boring baseline.**\" through \"**Close. Package what you learned.**\" at lines 13/35/65/83/111/129/137) that would ordinarily become their own phase-divider slide via the renderer's PHASE_RE match on a `## Phase N:` header -- with the headers demoted to inline bold text (see rule 14/15), they instead accumulate as ordinary body bold on the one giant slide. This is the rule's own pre-2026-07-09-monoculture violation shape, at a scale (21 counted bolds on one slide vs a budget of 1) the rule was written to catch. Root cause is the missing `##` chunking (see rule 14's evidence) -- restoring `## Phase N:` headers would resolve most of this automatically by letting each phase divider carry its own handle instead of stacking all seven into one slide's prose.",
+      "fix_hint": "Restore `## Phase N: <label>` headers (matching the canonical Agents 101 source, `personal-site-with-guardrails.md`) so each phase becomes its own slide with its own single bold handle, rather than fixing the bold count in place on one mega-slide.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 10,
+      "rule_lead": "Presence precedes content \u2014 verify against the composed deck, not long-read.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "This file is included via the ordinary structural include-link `[Exercise: Paint by agent with guardrails](exercises/personal-site-with-guardrails-cb.md)` inside claude-basics module 4's `## Start here` section (read `curriculum/trainings/claude-basics/personal-site-with-guardrails.md` line 30 this session) -- the same `.phase--exercise` wrapper pattern every other inlined exercise in the corpus uses, confirmed against `site/layouts/slides.js` buildDeckModel's `.phase--exercise` walk (line 320). Content reaches the deck; it is not dropped. Its being crammed onto one slide once there is a rule-9/14 density concern, not a rule-10 presence concern.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 11,
+      "rule_lead": "Numbering \u2014 position is computed, content ordinals are linted.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Ran, this session, correctly scoped: `node scripts/check-slide-numbering.js --file curriculum/exercises/personal-site-with-guardrails-cb.md` -> \"OK \u2014 1 files, Phase/Step numbering consistent.\" Caveat the script itself cannot see: this is a VACUOUS pass -- the script's `phaseHeaders` regex only matches `## Phase N:` headers, and this file has zero `##` headings of any kind, so it found 0 phase headers and trivially reported no inconsistency. Manually verified the bold phase labels are in fact consecutive and correct: \"Phase 1\" (line 13) through \"Phase 6\" (line 129), then an unnumbered \"Close\" (line 137) -- matching the maintainer block's own per-phase table (lines 179-187) exactly. Content is correct; the mechanical gate simply never exercised it. (An earlier run in this session without `--file` silently defaulted to `--training agentic-engineering-101` and reported on 62 unrelated files -- re-run and corrected before citing.)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 12,
+      "rule_lead": "Page geometry dies at the cut; reading order survives.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Ran, this session, correctly scoped: `node scripts/check-slide-deixis.js --file curriculum/exercises/personal-site-with-guardrails-cb.md` -> \"OK \u2014 1 files, no page-geometry pointers across the slide cut.\" The one geometry word in-body, line 21 \"the prompt below\", points at the fenced Prompt block at lines 25-29, immediately following in the same (only) chunk -- passes the same-chunk carve-out even before accounting for the fact that the whole file is one chunk. (Same mis-scoped-first-run caveat as rule 11 applies and was corrected.)",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 13,
+      "rule_lead": "In-deck links work now; whether they EARN their place is open.",
+      "verdict": "N/A",
+      "na_reason": "no markdown links in the body (grepped `\\[.*\\](` against the body, 0 hits; `has_urls: false` per the derived body-view's signals)",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 14,
+      "rule_lead": "Slide size \u2014 210 words / 6 bullets, and the cap is machine-checked.",
+      "verdict": "REVISE",
+      "chunks_flagged": [
+        0
+      ],
+      "evidence": "Ran, this session, correctly scoped: `node scripts/check-slide-size.js --file curriculum/exercises/personal-site-with-guardrails-cb.md --report` -> \"files: 0  slides: 0 ... oversized: 0 ... every slide is within limits\" -- a false-clean result, not a real pass: `measureOneRuntime` only ever creates a slide record when it meets a `## ` line, and this file has none, so its entire ~1675-word body is silently never measured at all (not even reported as 'files: 1'). Reproduced the script's own measurement algorithm by hand against the body this session (same stripInline/wordCount regex, same fence/comment/`{{}}` skip rules, cut at the maintainer marker): 1675 words, 3 top-level bullets, on the single chunk this file renders as -- 8x the 210-word cap. This is exactly the corpus's canonical `diagnose-and-resend` exemplar times eight, on one slide. The Agents 101 canonical source (`curriculum/exercises/personal-site-with-guardrails.md`) carries the same content split across 12 `## Phase N:` headings and passes the same script cleanly (`node scripts/check-slide-size.js --file curriculum/exercises/personal-site-with-guardrails.md` -- confirmed clean, no oversized slides). The `-cb` port's maintainer note (line 170) records that it \"adds rule-31 / rule-50 / rule-47 / rule-45 fixes\" but says nothing about the header collapse, which reads as an unintended side effect of the port rather than a deliberate edit, and no `**Slide size accepted:**` note exists anywhere in the maintainer block to cover it.",
+      "fix_hint": "Restore the `## Phase N: <label>` headings from the canonical source file so this port re-enters normal per-phase chunking; that alone would very likely also clear rules 9, 11's mechanical blind spot, and 15's N/A below.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 15,
+      "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
+      "verdict": "N/A",
+      "na_reason": "no `##` headings exist anywhere in this file to grade for grammar (confirmed: `grep -n '^#'` returns only the line-1 H1); the canonical Agents 101 source carries 12 `## Phase N:` phase-label headings that this port flattened to bold text (see rule 14)",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 16,
+      "rule_lead": "A bullet earns its slot or dies \u2014 three classes that read as rigour and carry nothing.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Only three top-level bullets exist in the body outside fences: lines 19-21, the three numbered LinkedIn-copy steps (open profile / select-all-copy / paste into prompt). Each is a distinct, necessary physical action in sequence -- none restates a doctrine already stated, none is self-referential design commentary, none is an aphorism kicker. Closest borderline read: line 41 \"Notice the move you're about to make: name the framework, tune it, ask Claude to run it\" -- this narrates a transferable technique the student is about to reuse (the file's own stated purpose, per line 41's own \"Same trick for Toyota Kata, SWOT... That's the move\"), not the curriculum commenting on its own pedagogical design (contrast the banned shape, \"you encounter the problems before the training names them\") -- it stays inside because it is naming a reusable move for the student to carry forward, which is the exercise's actual content, not commentary about the exercise's construction.",
+      "fix_hint": null,
+      "blocking": false
+    }
+  ],
+  "blocking_findings_count": 0,
+  "todos_count": 3,
+  "todos": [
+    {
+      "rule": "check_slides.md \u00a714",
+      "chunk": 0,
+      "line": 1,
+      "note": "This file has zero `##` headings, so the entire ~1675-word, six-phase exercise renders as ONE slide in the Slides deck -- 8x the 210-word cap -- and `check-slide-size.js --file` cannot catch it (reports 'files: 0, slides: 0' rather than flagging an oversized slide, because its measurement only starts at a `## ` line). The canonical Agents 101 source for this exercise carries the same content across 12 `## Phase N:` headings and passes the size check cleanly; this Claude Basics port lost that structure somewhere in the port (the maintainer note documents four other named rule-fixes for this port but not a header change). Fix: restore `## Phase N:` headings matching the canonical source."
+    },
+    {
+      "rule": "check_slides.md \u00a79",
+      "chunk": 0,
+      "line": 19,
+      "note": "Follows directly from \u00a714: with no `##` dividers, 21 non-widget bold spans (several whole-sentence bolds, e.g. lines 19-21, 43) stack onto the one slide against a <=1-per-slide budget. Restoring the `## Phase N:` headers would let each phase divider absorb its own single bold handle instead."
+    },
+    {
+      "rule": "check_slides.md \u00a711",
+      "chunk": 0,
+      "line": 13,
+      "note": "`check-slide-numbering.js --file` reports 'OK' for this file, but only because its `## Phase N:` regex finds zero headers to check (vacuous pass, not a verified one). The bold phase labels are in fact numbered correctly (1-6, matching the maintainer's own per-phase table) -- but nothing mechanical is actually confirming that for this file until the headers are restored."
+    }
+  ],
+  "notes": "No prior instance existed for this (file, class) pair -- `prefill-instance.js --write` reported '0 rows parked ... [no prior instance]' and the class brief included all 16 check_slides.md rules verbatim (0 excluded as already-resolved), so every row above is freshly derived, none carried; ran `--merge` after writing and it spliced 0 rows (nothing was parked to splice). `node scripts/expand-md.js` on this file produces byte-identical output to the raw source (no `{{prompt:}}`/`{{figure:}}` markers -- this file's Prompt widgets are pre-migration inline fenced blocks per the dispatch preamble's definition), so line numbers cited above are raw-source line numbers directly. IMPORTANT caveat on method, recorded for whoever re-runs this: `check-slide-numbering.js` and `check-slide-deixis.js` silently accept a bare positional file-path argument (no error, unlike `check-slide-size.js` which does validate and reject unexpected args) and fall back to `--training agentic-engineering-101`'s 62-file default set when the path isn't passed via `--file`; an initial pass in this session ran them without `--file` and got a clean-looking 'OK \u2014 62 files' that was actually reporting on AE101, not this file -- caught before citing, and all citations above are from the corrected `--file`-scoped re-runs. The dominant finding this session (missing `##` chunking, filed across rules 9/11/14/15) is a single root cause with four rule-level symptoms; none individually rises to this class's blocking list (5, 6, 9, 11, 13, 14 are all non-blocking by the template's own partition), so verdict is PASS_WITH_TODOS rather than REVISE even though the underlying defect is more severe than a typical TODO -- the template instructs not to override that classification with intuition."
+}

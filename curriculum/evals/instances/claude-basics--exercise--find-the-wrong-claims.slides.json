@@ -1,0 +1,221 @@
+{
+  "class": "slides",
+  "file": "curriculum/exercises/find-the-wrong-claims.md",
+  "body_sha": "3ac2b271961dc337b55fe912b7cde5fa0a785bf0a3ff831b75740886d22c3901",
+  "shape_hash": "4d5fb543d2d09f55",
+  "verdict": "PASS_WITH_TODOS",
+  "training": "claude-basics",
+  "chunk_map": [
+    {
+      "index": 0,
+      "heading": "H1/lede",
+      "lines": "1-16"
+    },
+    {
+      "index": 1,
+      "heading": "Phase 1. Generate from sources (6 minutes)",
+      "lines": "17-34"
+    },
+    {
+      "index": 2,
+      "heading": "Phase 2. Fact-check with a separate checker (8 minutes)",
+      "lines": "35-66"
+    },
+    {
+      "index": 3,
+      "heading": "Phase 3. Persist the checking rule (7 minutes)",
+      "lines": "67-92"
+    },
+    {
+      "index": 4,
+      "heading": "Phase 4. Generate again (5 minutes)",
+      "lines": "93-106"
+    },
+    {
+      "index": 5,
+      "heading": "Phase 5. Fact-check again (6 minutes)",
+      "lines": "107-128"
+    },
+    {
+      "index": 6,
+      "heading": "Phase 6. Fix, then check once more (8 minutes)",
+      "lines": "129-157"
+    }
+  ],
+  "accept_notes_found": [
+    "L164: **Quality:** compendium-audited 2026-05-15 (story@eb1168f pedagogy@eb1168f strategy@eb1168f) -- a Quality stamp, not a rule accept-note; no slides-class accept-note exists in this file's maintainer block."
+  ],
+  "rules_evaluated": [
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 1,
+      "rule_lead": "Referent resolution under a sequential deck read.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Closest call: chunk 6, line 154: \"The loop makes the work better, but human oversight is what keeps the operation truthful.\" -- \"loop\" is never named anywhere earlier in this file (grepped `\\bloop\\b` against the body projection this session: only this one hit). Holds inside under the rule's own test (\"stays ambiguous even holding every prior slide\"): by chunk 6 the reader has just executed the whole named cycle in this same file end to end -- generate (chunk 1), separate fact-check (chunk 2), persist the rule (chunk 3), generate again (chunk 4), fact-check again (chunk 5), fix and fact-check once more (chunk 6 itself) -- so \"the loop\" has exactly one plausible referent, not two, and names nothing the reader hasn't just performed. This is a summarising label for an enacted structure, not an unexplained specific object (contrast the rule's own violation examples: \"a system like this\", \"what you stored\"). Everything else resolves cleanly: \"the source files\"/\"the sources subfolder\" (chunk 1) against chunk 0 line 9; \"the answer\" (chunks 2, 3) against chunk 1's saved `source-answer.md`; \"the checker\"/\"the generator\" (chunk 2) introduced and reused within the same sentence; \"the saved generation prompt\" (chunk 4) and \"the checker findings\"/`fact-check-2.md` (chunk 6) against session artifacts the student's own Phase 1/Phase 5 work just produced -- the session-artifacts carve-out; \"the same local folder you used for the build-your-system homework\" (chunk 0, line 5) is a named prior exercise, not a pronoun or demonstrative, and precedes this file in `homework-build-and-verify.md`'s Exercises list (verified this session) -- module include-order confirms the beat exists.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 2,
+      "rule_lead": "Cross-file and positional callbacks.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Grepped the body projection for positional cross-file phrasing (earlier/previous/last week/last session/last module/preceding, above/below) this session -- zero hits. The one cross-file reference, chunk 0 lines 5 and 7 (\"the build-your-system homework\", \"your build-your-system folder\"), names the source exercise by its title directly, never by position (\"the previous exercise\", \"last time\") -- the rule's own passing shape.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 3,
+      "rule_lead": "Every backward reference points at a beat that exists.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Read `curriculum/trainings/claude-basics/homework-build-and-verify.md` this session: its Exercises section lists `[Exercise: Build your system](exercises/build-your-system.md)` immediately before `[Exercise: Find the wrong claims](exercises/find-the-wrong-claims.md)` -- the build-your-system beat chunk 0 references exists and precedes this file in the module's current include order. Every in-file backward reference (chunk 3's \"the checker\" against chunk 2; chunk 4's \"the saved generation prompt\" against chunk 1's `generation-prompt.md`; chunk 5's \"the checker\"/\"the second answer\" against chunks 2 and 4; chunk 6's \"the answer\"/\"the checker findings\" against chunk 5's `source-answer-2.md`/`fact-check-2.md`) resolves to a beat present in this same file's current body -- no dead reference found.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 4,
+      "rule_lead": "Live-demo beats survive a text read.",
+      "verdict": "N/A",
+      "na_reason": "no guess-before-reveal beat in this file (no guess/predict instruction and no narrated outcome to strand one behind; grepped body projection for guess/predict, zero hits)",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 5,
+      "rule_lead": "No orphan slides.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Shortest chunk is chunk 4 (\"Phase 4. Generate again\", lines 93-106): line 95 sets the constraint (\"Use the saved generation prompt. Do not improve it yet.\"), a fenced Prompt block, and line 105's framing (\"This is the test: did the folder instructions change how Claude writes before anyone nags it?\") -- a complete, self-carrying instruction plus its own rationale, not a bare wait-state bullet. Every other chunk carries at least one full paragraph of setup plus a Prompt block plus a closing observation; none is a single context-dependent bullet.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 6,
+      "rule_lead": "Header self-carries at projection distance.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "All six `##` headers checked against their own chunk's content: \"Phase 1. Generate from sources\" (chunk 1) asks Cowork to draft from `sources/`; \"Phase 2. Fact-check with a separate checker\" (chunk 2) dispatches a separate fact-checking subagent; \"Phase 3. Persist the checking rule\" (chunk 3) adds a rule to `CLAUDE.md`; \"Phase 4. Generate again\" (chunk 4) reruns the saved prompt; \"Phase 5. Fact-check again\" (chunk 5) reruns the checker and compares; \"Phase 6. Fix, then check once more\" (chunk 6) fixes the answer then runs the checker a final time. Each header is a literally true summary of its own chunk; none is contradicted by its content.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 7,
+      "rule_lead": "LLM-cadence caps.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Ran, this session, against `projections.body_numbered`: `\\bNot [A-Z][a-z]+\\.[^.]*\\bNot\\b` -> 0 hits (no \"Not X. Not Y. Z.\" construction); `(\\bIt [A-Za-z]+\\. ){2,}` -> 0 hits (no anaphora/epistrophe triple or empty-leg verb triplet); `\\b(one of the most|the most (useful|important|valuable)|game.?chang)\\b` (case-insensitive) -> 0 hits, no self-grading superlative. Manual read for the number+retraction sub-item: chunk 6 line 156 \"Your source files may not be 100% accurate either\" uses 100% idiomatically (\"not fully\"), not as a measured illustration the sentence then walks back (contrast the rule's own example, \"about 10%... could be more, could be less\") -- no retraction shape present. No abstraction-noun stacks found; the file's vocabulary throughout is concrete (source files, the answer, the checker, the rule).",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 8,
+      "rule_lead": "Internal dialect never lands on a slide.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Ran, this session, `\\b(surface|surfaces|firing|compendium|forcing function|beat|beats|mood|connections)\\b` (case-insensitive) against the body projection -- 0 hits, none of the listed repo-dialect terms appear at all. Chunk 2 line 63's \"**Subagent:** a Cowork primitive, Claude can dispatch a fresh session to run any task in its own context\" names and explains an actual product feature the student is using, not authorial/maintainer vocabulary -- it is the content being taught, and the sentence defines the term for the room rather than assuming it.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 9,
+      "rule_lead": "Emphasis budget \u2014 bold is for handles, and go very lightly.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Bold inventory per chunk, this session: chunk 0 has `**Time:**` (universal exercise metadata label -- confirmed against 29 other `curriculum/exercises/*.md` files opening the identical way) and `**Session**` (author-typed widget marker per `curriculum/widgets.md`, which the renderer's `decorateSessions` consumes into an amber chip, dropping the label `<strong>` the way `decorateHox` does -- not rendered bold prose text at all, so it sits outside this rule's inline-bold accounting). That leaves one true inline bold on chunk 0 (`Time:`), within the <=1 budget. Chunks 1, 4, 5 each carry only the `**Prompt**` widget marker (same widget exemption, 0 counted). Chunk 3 carries `**Prompt**` + `**Session**` (both widgets, 0 counted). Chunk 2 carries `**Prompt**` (widget) + `**Subagent:**` (a one-word coined-term label, well inside the <=5-word handle cap) -- 1 counted bold. Chunk 6 carries `**Prompt**` (widget) + `**Caveat:**` (one-word label handle) -- 1 counted bold. No chunk exceeds the <=1-per-slide budget once widget markers are excluded, and every counted bold is a short handle, never a whole sentence.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 10,
+      "rule_lead": "Presence precedes content \u2014 verify against the composed deck, not long-read.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Not rendered this session (no headless-Chrome diff run against this file). Judged on structure instead: the entire body sits under six ordinary `##` headings with no phase-less prose section of the kind that dropped in the 2026-07-09 incident (no un-wrapped prework/supplementary/reference block, no standalone content outside the exercise's own heading structure). This file is included via the ordinary structural include-link `[Exercise: Find the wrong claims](exercises/find-the-wrong-claims.md)` in `homework-build-and-verify.md`, the same pattern every other inlined exercise in the corpus uses. No risk signal present that would put a section at risk of falling outside `.phase--exercise`.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 11,
+      "rule_lead": "Numbering \u2014 position is computed, content ordinals are linted.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Ran, this session: `node scripts/check-slide-numbering.js --file curriculum/exercises/find-the-wrong-claims.md` -> \"OK \u2014 1 files, Phase/Step numbering consistent.\" Phase 1 through Phase 6 headers run consecutively with no gaps; no in-file prose references a phase by number out of step with this order.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 12,
+      "rule_lead": "Page geometry dies at the cut; reading order survives.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Ran, this session: `node scripts/check-slide-deixis.js --file curriculum/exercises/find-the-wrong-claims.md` -> \"OK \u2014 1 files, no page-geometry pointers across the slide cut.\" Confirmed manually against the body projection: `\\b(above|below|further down|at the top|see below)\\b` (case-insensitive) -> 0 hits.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 13,
+      "rule_lead": "In-deck links work now; whether they EARN their place is open.",
+      "verdict": "N/A",
+      "na_reason": "no markdown links in the body (grepped `\\[.*\\](` against the body projection, 0 hits; the file's only cross-file reference, \"the build-your-system homework\", is prose naming, not a link)",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 14,
+      "rule_lead": "Slide size \u2014 210 words / 6 bullets, and the cap is machine-checked.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Ran, this session: `node scripts/check-slide-size.js --file curriculum/exercises/find-the-wrong-claims.md` -> \"files: 1  slides: 6  limits: 210 words / 6 bullets \u2014 oversized: 0 \u2014 every slide is within limits.\"",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 15,
+      "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "All six body `##` headings checked: each is a \"Phase N. <label> (<time>)\" phase-label format (\"Phase 1. Generate from sources (6 minutes)\" through \"Phase 6. Fix, then check once more (8 minutes)\") -- the required mood for an exercise file, consistent with the corpus's phase-label convention. No declarative claim-headings present or owed; this file is not one of the corpus's two measured declarative exceptions (close-the-ticket.md, fix-tests-first.md), and nothing in its structure calls for a law/consolidation beat that a label would waste.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 16,
+      "rule_lead": "A bullet earns its slot or dies \u2014 three classes that read as rigour and carry nothing.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Audited every body paragraph/line against the three classes. Closest call: chunk 6 lines 154-157, the two closing blockquotes (\"Even after this, the answer might still contain errors... human oversight is what keeps the operation truthful\" / \"Your source files may not be 100% accurate either... Not everything can be fixed by fixing the generation.\") -- reads kicker-adjacent by position (last beat in the file) but holds inside because it introduces new substantive content not stated anywhere earlier (the limits of self-checking loops and the possibility that the ground truth itself is wrong), rather than restating chunk 6's own header or an established `**The point:**` line -- this file has neither a doctrine phrase nor a `**The point:**` line to restate. Line 65 (\"The useful result is often not 'wrong.' It is 'not in the sources' or 'too broad.'\") and line 87 (\"The rule does not make Claude perfect. It gives the folder a better default move.\") are each their chunk's first statement of that specific nuance, not a re-announcement of a prior claim. No doctrine-restatement, self-referential design-commentary, or aphorism-kicker bullet found anywhere in the body.",
+      "fix_hint": null,
+      "blocking": false
+    }
+  ],
+  "blocking_findings_count": 0,
+  "todos_count": 1,
+  "todos": [
+    {
+      "rule": "check_slides.md \u00a71",
+      "chunk": 6,
+      "line": 154,
+      "note": "\"The loop\" (line 154) is never named anywhere earlier in this file -- it resolves cleanly under the sequential-deck-read harm test (only one plausible referent once the reader has performed the whole cycle), but it is a bare inference from an enacted structure, not a term the file itself ever coined. Non-blocking: no reader confusion is plausible given the six-phase walk-through immediately preceding it. Fix, if ever touched: name the cycle explicitly once earlier (e.g. in the opening framing or a phase header) so \"the loop\" at the close is a reused term rather than a first, unintroduced use."
+    }
+  ],
+  "notes": "No prior instance existed for this (file, class) pair -- `prefill-instance.js --write` reported \"0 rows parked ... [no prior instance]\" and the class brief included all 16 check_slides.md rules verbatim (0 excluded as already-resolved), so every row above is freshly derived, none carried. Mechanical checks run this session and passing on this file: check-slide-numbering.js, check-slide-deixis.js, check-slide-size.js (all exit clean). `node scripts/expand-md.js` produces byte-identical output to the raw source (no `{{prompt:}}`/`{{figure:}}` markers to resolve; this file's Prompt widgets are pre-migration inline fenced blocks) -- line numbers cited above are the raw-source line numbers directly."
+}

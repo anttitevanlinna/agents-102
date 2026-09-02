@@ -164,8 +164,8 @@ You just ran a recipe end-to-end: baseline without context, colleague-as-buyer f
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-05-21 (writing@304f061 pedagogy@304f061 strategy@304f061)
-- judges @304f061: writing PASS, story grandfathered, technical grandfathered, behavior grandfathered, pedagogy PASS, strategy PASS
+**Quality:** compendium-audited 2026-09-02 (writing@304f061 pedagogy@304f061 strategy@304f061 slides@3552e8c2)
+- judges @3552e8c2: writing PASS, story grandfathered, technical grandfathered, behavior grandfathered, pedagogy PASS, strategy PASS, slides PASS (3 todos see instances/claude-basics--exercise--personal-site-with-guardrails-cb.slides.json)
 
 **Source:** `curriculum/exercises/personal-site-with-guardrails.md` (Agents 101 M1 canonical exercise). This `-cb` port adds rule-31 / rule-50 / rule-47 / rule-45 fixes for the Claude Basics bonus M4. The Agents 101 source file still carries the unfixed shape, see `pre-cohort-todos.md` for source-side tracking.
 

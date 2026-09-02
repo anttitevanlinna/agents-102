@@ -49,8 +49,8 @@ Entries since the workbook sent on 2026-05-06.
 - **Role:** final workbook section that preserves the one-workbook customer delivery while separating organiser operations from participant flow
 - **Ordering:** setup first, synthesis second. This fixes the previous rendered order where organiser prework appeared after the live participant exercise
 
-**Quality:** compendium-audited 2026-05-15 (writing@eb1168f story@eb1168f technical@eb1168f behavior@eb1168f pedagogy@eb1168f strategy@eb1168f)
-- judges @eb1168f: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS
+**Quality:** compendium-audited 2026-09-02 (writing@eb1168f story@eb1168f technical@eb1168f behavior@eb1168f pedagogy@eb1168f strategy@eb1168f slides@3552e8c2)
+- judges @3552e8c2: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS (verify-refuted, 3 todos see instances/claude-basics--module--organisers-run-the-workshop.slides.json)
 - cross_module @eb1168f: PASS — set=[M1,M2,M3,M4]
 
 **Strategy reference:** `bosser-strategy:content-strategy-claude-basics.md` § *Organisers: run the workshop*

@@ -1,0 +1,31 @@
+/* Agents 101-only five-profile extension. The shared curriculum runtime and
+   stylesheet remain unchanged for every other training. */
+
+.runtime-switcher {
+    flex-wrap: wrap;
+}
+
+.rt-profile {
+    display: none;
+}
+
+body.runtime-cowork .rt-profile-cowork,
+body.runtime-desktop .rt-profile-desktop,
+body.runtime-cli .rt-profile-cli,
+body.runtime-codex-desktop .rt-profile-codex-desktop,
+body.runtime-codex-cli .rt-profile-codex-cli {
+    display: block;
+}
+
+/* Existing authored surface forks stay surface-shaped. Codex CLI sees CLI
+   passages; Codex Desktop sees Desktop passages. The runtime-copy audit catches
+   provider names inside those visible passages before release. */
+body.runtime-codex-cli .rt-desktop,
+body.runtime-codex-cli .rt-cowork {
+    display: none;
+}
+
+body.runtime-codex-desktop .rt-cli,
+body.runtime-codex-desktop .rt-cowork {
+    display: none;
+}

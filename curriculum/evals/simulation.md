@@ -76,6 +76,16 @@ Claude-behaviour risks → Class B's 15-pattern catalog.
 - **Connector admin gate** — M365 / Workspace often need tenant admin consent. Builder leader can't self-serve Sunday. Every connector instruction needs fallback (screenshot-paste, CSV export, manual copy) that works without admin.
 - **Ghost file references** — referencing `foo.md` that doesn't exist yet = hard fail. Ship file (even minimal) or inline.
 
+## Trace record
+
+Cache at `curriculum/evals/sim-cache/<instance-slug>.persona.json`. `personas` ships in two shapes and both are read: an array of persona objects, or a map keyed by persona name.
+
+`content_sha` = **sha256 of the FULL file**, maintainer block included, at the moment the trace was generated — same definition as `simulation-behavior.md`, and what `sim-freshness.js` compares against.
+
+Hashing the body above the `<!-- maintainer -->` fence instead is the tempting error: it is what the persona actually reads, and a whole-file hash cannot tell a body rewrite from a maintainer-block typo. It still reports as **unanchored** — *"sha matches no committed version"* — which reads as *regenerate, do not reuse* and throws away the run that just happened. Fresher evidence, discarded for being labelled in the wrong dialect. Two AE101 traces were relabelled out of that state 2026-09-02 (`the-whole-map`, `the-wizard-move` — both went straight to fresh, no regeneration needed). A third, prework's, was regenerated mid-judge and matches neither convention: it stays unanchored, because a sha nobody can reproduce is not evidence.
+
+A null `mood_score` is a result when `mood_note` says why (a SETUP beat the mood contract does not reach). A null with nothing beside it reads as an instrument that never ran. Write the reason.
+
 ## Multi-persona
 
 High-stakes exercises: 2–3 personas (CTO, marketing lead, HR director) surface persona-specific breakage.

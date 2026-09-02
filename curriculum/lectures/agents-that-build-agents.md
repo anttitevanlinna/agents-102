@@ -17,12 +17,6 @@ The discipline has gone deeper since: **grounding**. Beyond spec-and-tests, towa
 
 The agentic engineer maxes that signal out. You ship a million lines of new stuff. How do you know it's right?
 
-## Why the loop survives the model
-
-- The specific Claude you used today will be replaced, probably within months. Each replacement will be better at the work than the current one. None of that changes the move.
-- The three pieces (reference, plan, verifier) are not model features. They are a stance toward a thing that does not behave deterministically.
-- Practitioner fluency lives in the stance, not in the tooling. When the next model ships, you will open the same kit, point it at the same three pieces, and run the same loop. The work gets faster. The method does not.
-
 ## You make agentic happen
 <!--tier:2-->
 
@@ -83,10 +77,6 @@ Claims
 - `grounding-goes-deeper` · vision · "The discipline has gone deeper since: **grounding**." ← none-owed
 - `human-signal-is-the-grounding` · vision · "Every push-back, every correction, every *\"no, like this\"* is signal of something" ← none-owed
 - `million-line-close` · vision · "You ship a million lines of new stuff. How do you know it's right?" ← none-owed
-- `model-will-be-replaced` · vision · "The specific Claude you used today will be replaced, probably within months." ← none-owed
-- `three-pieces-are-not-model-features` · vision · "The three pieces (reference, plan, verifier) are not model features." ← none-owed
-- `fluency-lives-in-the-stance` · vision · "Practitioner fluency lives in the stance, not in the tooling." ← none-owed
-- `method-does-not-get-faster` · vision · "The work gets faster. The method does not." ← none-owed
 - `you-make-agentic-happen` · vision · "You make agentic happen" ← none-owed
 - `possibly-to-i-have-something` · vision · "Acting is the move from *possibly* to *I have something*." ← none-owed
 - `pathways-show-the-next-level` · vision · "The pathways you build show you the next level." ← none-owed

@@ -23,7 +23,7 @@ Same session as the gap map. The ranked gaps and the rule you cut are in scrollb
 
 > **Fast operator?** Lump the next two prompts into one go. Paste them one after another in the same conversation, study the shapes, and let the answers land together. The two moves don't change.
 
-> **Cut the scan when the top patterns are clear enough to use.** The prompt keeps looking because that is its job. Narrow it whenever you like, or say *tell me what you've found so far*. Once two or three recurring kinds of work are clear enough to draw and compare, move on. You do not need a complete inventory.
+> **Cut the scan when the top patterns are clear enough to use.** The prompt keeps looking because that is its job. Narrow it whenever you like, or say *tell me what you've found so far*. If it comes back thin instead, or everything traces to one repo, a *there is more than this, keep going* prompt sends it back out. Once two or three recurring kinds of work are clear enough to draw and compare, move on. You do not need a complete inventory.
 
 Ask Claude to scan your sessions across every project and group the kinds of work that recur.
 

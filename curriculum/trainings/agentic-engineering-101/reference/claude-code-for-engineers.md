@@ -650,7 +650,7 @@ Docs: [memory.md § Troubleshoot memory issues](https://code.claude.com/docs/en/
 <!--flag:module:earn-the-trust-->- **M3 Earn the trust:** §§ 11–12 (subagents), 13–15 (skills); first skill use + first authoring
 <!--/flag:module:earn-the-trust-->- **M4 Run the first experiment:** §§ 2 (personal compound target), 12 (subagent audit), 24 (session-left-running for un-packaged send-off), 25–29 (transcript as trace)
 - **M5 Learn from the test, re-send packaged:** §§ 10 (plan.md authoring), 13–15 (verifier as eval), 24 (send-off), 28 (read transcript plus git), 34–37 (hooks: the always-fire partition and the shell-hook verifier shape)
-<!--flag:module:spot-gaps-build-the-loop-->- **M6 Spot gaps, build the loop:** §§ 15 (second skill authoring), 17, 20 (long-running shapes callout in closer + Ralph→`/goal` story), 29 (compare two session transcripts)
+<!--flag:module:spot-gaps-build-the-loop-->- **M6 Spot gaps, build the loop:** §§ 17–19 (the *Loop instead of you starting* slide: `/loop`, Desktop local tasks, `/schedule`), 29 (compare two session transcripts)
 <!--/flag:module:spot-gaps-build-the-loop-->
 
 ---

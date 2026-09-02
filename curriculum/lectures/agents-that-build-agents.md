@@ -9,13 +9,13 @@
 - That is the frontier, and you set it. Not the model. What you can express is how far the agent runs. It stops exactly where the writing stops and your judgement takes over.
 - Judgement becomes expression one piece at a time. A push-back becomes a rule. A "not like that" becomes a check. Each one moves the line, and the agent runs one step further on its own. The line never goes away. You keep finding the next thing you know and have not yet said.
 
-## Quality is grounding
+## The right information grounds and makes quality
 
 Nobody reviews 500K lines by hand. Some of the early agentic engineering demos were single devs shipping 500K lines of code in weeks; the first Agentics Helsinki meetup, fall 2025, had two of them. The recurring theme: every generated line had to correspond to a spec, every feature had to be tested. Without that, no way to know the system works.
 
-The discipline has gone deeper since: **grounding**. Beyond spec-and-tests, toward human signal. Every push-back, every correction, every *"no, like this"* is signal of something: what's true, what's valuable, what works, what's broken.
+Spec and tests were the first things those engineers wrote down. Writing things down is not the whole of it. The goal is giving the system the right information, and nobody has that part figured out yet.
 
-The agentic engineer maxes that signal out. You ship a million lines of new stuff. How do you know it's right?
+Nobody can hand you the right information about your customers, your direction, your domain. You find it one run at a time.
 
 ## You make agentic happen
 <!--tier:2-->
@@ -74,9 +74,8 @@ Claims
 - `nobody-reviews-500k-by-hand` · vision · "Nobody reviews 500K lines by hand." ← none-owed
 - `500k-lines-in-weeks` · detail · "Some of the early agentic engineering demos were single devs shipping 500K lines of code in weeks" ← antti-agentics-helsinki, luma-agentics-helsinki
 - `spec-and-tests-was-the-theme` · detail · "every generated line had to correspond to a spec, every feature had to be tested" ← antti-agentics-helsinki
-- `grounding-goes-deeper` · vision · "The discipline has gone deeper since: **grounding**." ← none-owed
-- `human-signal-is-the-grounding` · vision · "Every push-back, every correction, every *\"no, like this\"* is signal of something" ← none-owed
-- `million-line-close` · vision · "You ship a million lines of new stuff. How do you know it's right?" ← none-owed
+- `writing-down-is-not-the-whole-of-it` · vision · "Writing things down is not the whole of it. The goal is giving the system the right information, and nobody has that part figured out yet." ← none-owed
+- `right-information-is-found-one-run-at-a-time` · vision · "Nobody can hand you the right information about your customers, your direction, your domain. You find it one run at a time." ← none-owed
 - `you-make-agentic-happen` · vision · "You make agentic happen" ← none-owed
 - `possibly-to-i-have-something` · vision · "Acting is the move from *possibly* to *I have something*." ← none-owed
 - `pathways-show-the-next-level` · vision · "The pathways you build show you the next level." ← none-owed

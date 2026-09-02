@@ -5,8 +5,6 @@
 
 The quality arc ran the whole training. M1 opened with tests-first. M2 added plan push-back: quality applied to the agent's intent before any code runs. M3 authored the test-strategy skill from this codebase's conventions. M5 built the verifier, shaped against the failures the un-packaged session actually showed.
 
-Today adds the fifth move: the eval read. Two sessions diffed, every gap routed to the check that would have caught it, and a map of where the next checks belong.
-
 Tests-first, plan push-back, skill, verifier, loop. That's the quality kit you walk out with.
 
 ## Decay clears the gate

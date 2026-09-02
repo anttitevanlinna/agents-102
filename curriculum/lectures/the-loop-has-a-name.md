@@ -5,7 +5,6 @@
 - The thing you built at M5 reads an agent's work and decides whether it meets a bar. The checks you just ranked against your dominant gap are the same family: some deterministic, some an LLM reading the work, some firing before the session even starts.
 - The name for all of it is **eval**: the automated check that says *this agent-produced thing meets our bar*.
 - Three names, one thing. *Judge* when the check is itself an LLM reading the work. *Verifier* when the check is deterministic: tests, lint, compile, a shell hook that returns true or false. *Gate* when the same check is placed in CI and a pull request can't merge without it. M5 used *verifier* for the whole family and *judge* for one shape inside it; from here each name is precise, and *eval* is the family name.
-- On the map they are the checking loop the M2 drawing left dashed, now drawn solid.
 
 ## One primitive, placed wherever there's a bar
 <!--tier:3-->
@@ -41,7 +40,6 @@ Claims
 - `the-name-is-eval` · vision · "The name for all of it is **eval**" ← none-owed
 - `judge-verifier-gate-three-names` · vision · "Three names, one thing. *Judge* when the check is itself an LLM reading the work." ← none-owed
 - `eval-definition` · vision · "the automated check that says *this agent-produced thing meets our bar*" ← none-owed
-- `map-placement-checking-loop` · vision · "the checking loop the M2 drawing left dashed, now drawn solid" ← none-owed
 - `fires-on-any-quality-bar` · vision · "The shape fires on any workflow with a quality bar, not only agent sessions." ← none-owed
 - `naming-enables-reuse` · vision · "Naming it is what lets you reuse it." ← none-owed
 
@@ -49,7 +47,6 @@ Sources
 
 Frameworks
 - eval = judge / verifier / gate · [borrow:none] · law:eval-judge-verifier-gate · ← none — the three-way split is banked as a law and taught as a definition; the words are in real use, the taxonomy is ours
-- The value cycle · [borrow:none] · law:the-value-cycle · ← none — the eval's map slot is Verification, the loop M2 left dashed
 
 Stance `[stance:2026-08-01 level:L1]`
 - holds: that the checks in hand share one family name and that the loop is a stance, not a model feature. House framing carried as a position; the lecture now carries no field number at all (the Intercom scaling slide was cut 2026-09-02, Antti: little added value).

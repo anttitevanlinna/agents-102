@@ -19,6 +19,19 @@
 
 {{figure:double-loop-m6}}
 
+## Dino's skill stack
+
+{{figure:dino-skill-stack}}
+
+## Pocock's skill system
+
+{{figure:pocock-skill-system}}
+
+## The checking loop, drawn solid
+<!--tier:2-->
+
+{{figure:map-engine-filled}}
+
 ## Loop instead of you starting
 <!--tier:3-->
 
@@ -40,19 +53,6 @@
 - The field wires kits more ways than one; no way has won. Pocock ships a public kit with no orchestrator: you call each skill by hand. Klaassen ships one slash command per stage, and the last one writes the lesson to disk for the next agent. Some workflows have a pilot; many do not.
 - A workflow is not only steps in order. At a seam, a check or stop condition decides whether the next step may begin.
 - Your job moves from reading every intermediate output to designing the checks, routes, and exceptions that deserve your judgment.
-
-## Dino's skill stack
-
-{{figure:dino-skill-stack}}
-
-## Pocock's skill system
-
-{{figure:pocock-skill-system}}
-
-## The checking loop, drawn solid
-<!--tier:2-->
-
-{{figure:map-engine-filled}}
 
 <!-- maintainer -->
 

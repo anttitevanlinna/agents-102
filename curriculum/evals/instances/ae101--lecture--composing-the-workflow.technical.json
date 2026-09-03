@@ -2,25 +2,16 @@
   "class": "technical",
   "training": "ae101",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/composing-the-workflow.md",
-  "verdict": "PASS_WITH_TODOS",
-  "body_sha": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+  "verdict": "PASS",
+  "body_sha": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
   "shape_hash": "326c29788cefc702",
   "rules_evaluated": [
-    {
-      "compendium": "check_platform_and_boundaries.md",
-      "rule_index": "1",
-      "rule_lead": "Training platform = Claude Code (CLI + Desktop) + Cowork.",
-      "verdict": "N/A",
-      "evidence": "no claude.ai reference anywhere in body (grep clean); not an exercise, no Claude.ai-only feature leaned on",
-      "fix_hint": "",
-      "blocking": false
-    },
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": "2",
       "rule_lead": "Cloud/remote features carry Git dependency — out of scope for our training dir.",
       "verdict": "PASS",
-      "evidence": "L33-35: `/schedule` for cloud-backed remote Routines is named as existing (\"Claude Code ships three ways to do it\") inside a T3 recognition-only slide (maintainer accept-note L99-102: \"Loop instead of you starting... low value sits at the end\"); no prompt/fence asks the student to set it up inside the training dir, no forcing function attached",
+      "evidence": "L33 names `/schedule` for \"cloud-backed remote Routines\" as one of three ways to run a kit skill on a schedule, inside a T3 recognition-only slide (maintainer L98: \"opens the T3 tail... a check on cadence\"; Watch-for L101 confirms it stays one slide, not a mini-lecture). File has zero fenced prompts (view.json signals.has_prompt_blocks=false) so nothing asks the student to set up cloud/remote inside the training dir — stated as existing, not presented as a hands-on upgrade path.",
       "fix_hint": "",
       "blocking": false
     },
@@ -29,7 +20,7 @@
       "rule_index": "4",
       "rule_lead": "Verify capabilities BEFORE asserting, not after.",
       "verdict": "PASS",
-      "evidence": "Live-verified in this session: the current skill roster carries a `loop` skill (\"Run a prompt or slash command on a recurring interval\") and a `schedule` skill (\"Create, update, list, or run scheduled cloud agents (routines)\"), matching L33's claim that Claude Code ships `/loop` and `/schedule`; maintainer stamp `cc-scheduling-primitives [checked:2026-04-24 result:OK due:cohort]` backs the same claim and `source-freshness.sh --target 2026-09-03` places it in WARN (routine re-test), not BLOCK",
+      "evidence": "L33's only platform-capability assertion (\"Claude Code ships three ways to do it: local routines... `/loop`... `/schedule`\") is backed by dated stamp `cc-scheduling-primitives [checked:2026-04-24 result:OK due:cohort]` (L122) and independently corroborated this session: this session's own available-skills roster (surfaced by the harness, not fetched from memory) lists a `loop` skill (\"Run a prompt or slash command on a recurring interval\") and a `schedule` skill (\"Create, update, list, or run scheduled cloud agents (routines)\") — both exist as named.",
       "fix_hint": "",
       "blocking": false
     },
@@ -38,7 +29,7 @@
       "rule_index": "5a",
       "rule_lead": "Live-test beats docs for runtime-behavior claims.",
       "verdict": "PASS",
-      "evidence": "Verification used this session's own live skill roster (not just the doc-derived stamp) to confirm `/loop` and `/schedule` exist as named, satisfying the live-test-over-docs preference",
+      "evidence": "The claim is feature-existence, not runtime-behavior (hook firing, precedence, auto-load path), which the rule itself says doc-derived answers are reliable for; live corroboration (this session's own skill listing, see rule 4 row) was still available and used rather than relying on the stamp alone.",
       "fix_hint": "",
       "blocking": false
     },
@@ -47,16 +38,7 @@
       "rule_index": "6",
       "rule_lead": "Known correct Claude Code facts (easy to get wrong):",
       "verdict": "PASS",
-      "evidence": "L33 \"local routines (from the Routines sidebar) for standing work on your laptop, `/loop` for in-session repetition, `/schedule` for cloud-backed remote Routines\" matches the compendium's own canon (Local Desktop Routines sidebar / `/loop` in-session / remote Routines cloud-backed) with no overclaim (doesn't assert local Routines fire with the app closed, doesn't assert remote Routines need no plan gating)",
-      "fix_hint": "",
-      "blocking": false
-    },
-    {
-      "compendium": "check_platform_and_boundaries.md",
-      "rule_index": "12",
-      "rule_lead": "No \"as-is\" imports from internet.",
-      "verdict": "N/A",
-      "evidence": "no skill/prompt/agent file is forked or installed from Pocock's or Dino's kit into this repo; the figures analytically redraw/cite them with URL + pinned commit hash (`mattpocock/skills @ 6654f6b`) — citation and diagramming, not raw import for our own use",
+      "evidence": "L33 \"local routines (from the Routines sidebar) for standing work on your laptop, `/loop` for in-session repetition, `/schedule` for cloud-backed remote Routines\" matches the compendium's own canon (Local Desktop Routines sidebar / `/loop` in-session / remote Routines cloud-backed) with no overclaim — doesn't assert local Routines fire with the app closed, doesn't assert remote Routines skip plan gating. No other item from the rule's fact list (plan mode, MCP, subagents, turn streaming) is referenced in this file.",
       "fix_hint": "",
       "blocking": false
     },
@@ -65,7 +47,7 @@
       "rule_index": "24a",
       "rule_lead": "Quality stamps: tooling writes them; the SHA pins committed content.",
       "verdict": "PASS",
-      "evidence": "L62 `**Quality:** compendium-audited 2026-09-03 (writing@289b45a3 story@289b45a3 technical@4e0370bc behavior@1c765f2 pedagogy@4e0370bc strategy@4e0370bc slides@289b45a3)` — clean anchor, nothing after the date parenthetical, matches the tooling-written shape",
+      "evidence": "L61 `**Quality:** compendium-audited 2026-09-03 (writing@289b45a3 story@289b45a3 technical@94fcca2d behavior@1c765f2 pedagogy@4e0370bc strategy@4e0370bc slides@289b45a3)` — clean anchor, nothing after the date parenthetical; `technical@94fcca2d` is exactly this dispatch's assigned pin.",
       "fix_hint": "",
       "blocking": false
     },
@@ -74,7 +56,7 @@
       "rule_index": "35",
       "rule_lead": "`update-quality.sh` takes ALL classes in ONE invocation per file, and not until that file's last judge has returned.",
       "verdict": "PASS",
-      "evidence": "`git diff 4e0370bc..HEAD -- curriculum/lectures/composing-the-workflow.md` shows exactly one hunk touching the Quality block, all seven classes (writing/story/technical/behavior/pedagogy/strategy/slides) re-stamped together in the same two lines — one batched invocation, not a per-class loop",
+      "evidence": "`git diff 94fcca2d..HEAD -- curriculum/lectures/composing-the-workflow.md` shows the Quality block changed in one hunk: technical's pin moved 4e0370bc→94fcca2d and its judges-line note gained \"(1 todo see instances/...)\" while the other six classes' SHAs (writing@289b45a3 story@289b45a3 behavior@1c765f2 pedagogy@4e0370bc strategy@4e0370bc slides@289b45a3) and their verdict text carried forward unchanged in the same two-line write — one batched stamp, not a per-class fragment.",
       "fix_hint": "",
       "blocking": false
     },
@@ -82,9 +64,9 @@
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": "38",
       "rule_lead": "Prose describing a runtime the room never executes drifts to plausible mechanism — no judge catches it, because no artefact contradicts it.",
-      "verdict": "REVISE",
-      "evidence": "L34 \"Rule-drift monitoring: a judge reads the root rules file against the recent commit log and names where the rules and the code disagree\" reproduces the rule's own flagged tell-(a) shape (\"reads X against Y\" smuggling a comparison mechanism) almost verbatim against the compendium's own worked bad example (\"reads the issue against your .md file\"). Harm check: the underlying claim (an agent given both files in context can report where they disagree) is ordinary, demonstrated agentic reasoning — not an invented capability — so no capability-misrepresentation is actually present; the other two examples in the same sentence (L34, send-off / codebase-sweep bullets) use plain \"reads X\" and don't trip the tell. Non-blocking: style tightening, not a technical inaccuracy.",
-      "fix_hint": "prefer a state description over the mechanism verb, e.g. \"a judge runs with the root rules file and the recent commit log in context and names where they disagree\" — drops \"against\" without changing the claim",
+      "verdict": "PASS",
+      "evidence": "Pinned diff (94fcca2d..HEAD) removed the prior REVISE-flagged clause entirely: the old L34 bullet (\"Rule-drift monitoring: a judge reads the root rules file against the recent commit log and names where the rules and the code disagree\", tripping the compendium's own worked bad example of the \"X against Y\" tell) is gone, replaced by L34 \"Left running, the loop squashes the recurring things. Add what each run taught to the kit, and the same loop starts cracking harder work.\" Checked the new line against all three tells: no \"X against Y\" mechanism, no lifecycle noun from an untouched stage, no unsourced cadence (no time interval named at all). Backing Claims L111 tags it `vision` with `← none-owed`, consistent with §7's vision/detail split — it reads as Antti's own framing (backing note: \"Antti's framing 2026-09-03; the compounding claim the module's frame already carries\"), not an invented mechanism claim.",
+      "fix_hint": "",
       "blocking": false
     },
     {
@@ -92,7 +74,7 @@
       "rule_index": "1",
       "rule_lead": "Source URL + type label — mandatory.",
       "verdict": "PASS",
-      "evidence": "body carries zero bracket-label citations (grep clean, correctly scoped to maintainer/backing per the rule's own carve-out); the `<!-- backing -->` Sources list carries proper labels: `[capability]`, `[delegated stamp]` ×2, `[practitioner direct, primary repo]`; convergence-verb grep (`converg|practitioners say|entered the vocabulary|independently|the field (calls|names)`) returns zero hits in the body region (L1-51) — the only hits are inside the maintainer Stance notes discussing the vocabulary decision itself, not a body assertion",
+      "evidence": "Body region (L1-49) carries zero bracket-label citations (grep for `[practitioner|[vendor|[academic|[tech press|[general press|[survey|[analyst` → 0 hits, correctly scoped out per the rule's own maintainer-block-only carve-out). Backing Sources list (L121-125) carries proper labels on every entry: `[capability]`, `[delegated stamp]` ×2, `[practitioner direct, primary repo]`. Convergence-verb grep (`converg|practitioners say|entered the vocabulary|independently|the field (calls|names)`) over the body region → 0 hits (ran fresh this session).",
       "fix_hint": "",
       "blocking": false
     },
@@ -101,7 +83,7 @@
       "rule_index": "1a",
       "rule_lead": "OODA paraphrase ≠ primary source.",
       "verdict": "PASS",
-      "evidence": "`pocock-skills-repo [checked:2026-09-02 result:OK due:cohort]` — checked the day before this audit, directly against the primary GitHub repo at a pinned commit, before the Pocock-figure claims were transcribed",
+      "evidence": "`pocock-skills-repo [checked:2026-09-02 result:OK due:cohort]` — checked the day before this Quality stamp, directly against the primary GitHub repo at pinned commit `6654f6b`, before the Pocock-figure claims (L21-23, L47) were transcribed; maintainer note L55 records the specific page read (`ask-matt/SKILL.md`) rather than a digest paraphrase.",
       "fix_hint": "",
       "blocking": false
     },
@@ -110,7 +92,7 @@
       "rule_index": "2",
       "rule_lead": "Freshness rule — 6 months.",
       "verdict": "PASS",
-      "evidence": "all four stamps fall inside 6 months of 2026-09-03: cc-scheduling-primitives checked 2026-04-24 (~4.3mo), pocock-skills-repo checked 2026-09-02 (1 day), skill-stacking-supp checked 2026-07-05 (~2mo, due:none delegated), lineages-supp checked 2026-08-01 (~1mo, due:none delegated)",
+      "evidence": "Ran `bash curriculum/evals/scripts/source-freshness.sh --target 2026-09-03 curriculum/lectures/composing-the-workflow.md` this session → \"summary: 0 block · 2 warn · 1 info · 1 ok\". The two WARNs are routine `due:cohort` re-tests (cc-scheduling-primitives checked 2026-04-24, ~4.3mo old, still inside the 6-month window; pocock-skills-repo checked 2026-09-02, fresh), not stale/expired sources — zero BLOCK.",
       "fix_hint": "",
       "blocking": false
     },
@@ -119,7 +101,7 @@
       "rule_index": "4",
       "rule_lead": "Hold short OODA loose.",
       "verdict": "PASS",
-      "evidence": "L136-137 Stance block: \"holds: ... no way has won\" is immediately paired with \"contested: whether the four wirings are the complete set. Nobody has enumerated composition mechanisms across kits\" — no false L3-convergence claim asserted over a short scan",
+      "evidence": "Stance block (L133) is explicitly stamped `level:L1`, not inflated to L3; the eval-naming contested note (L137-138) explicitly avoids a convergence claim for judge/verifier/gate (\"stated as a definition, not a survey\") rather than asserting a threshold it hasn't met.",
       "fix_hint": "",
       "blocking": false
     },
@@ -128,7 +110,7 @@
       "rule_index": "5",
       "rule_lead": "Resist prescriptive post-OODA phrasings.",
       "verdict": "PASS",
-      "evidence": "Flagged L149 phrases the open question tentatively (\"Does the Eval slide earn one bridging clause... or does that clutter the beat\"), not as a should-statement closing the option",
+      "evidence": "Flagged L147 phrases the open research question tentatively (\"Does the Eval slide earn one bridging clause naming the field's words, or does that clutter the beat...\") rather than as a should-statement closing the option; maintainer decision notes elsewhere (L136, L138) record calls Antti already made, not a research subagent's prescriptive proposal to him.",
       "fix_hint": "",
       "blocking": false
     },
@@ -137,7 +119,7 @@
       "rule_index": "7",
       "rule_lead": "Vision × Detail split.",
       "verdict": "PASS",
-      "evidence": "Claims ledger spot-checked: `three-scheduling-primitives`/`pocock-by-hand`/`klaassen-one-command-per-stage` correctly tagged `detail` with a backing source id; `eval-is-a-measurement`/`skill-is-a-named-move`/`never-size-a-skill-in-advance` correctly tagged `vision` with `none-owed` (Antti's own framing, no KB backing owed)",
+      "evidence": "Every backing Claim (L106-119) is tagged `vision` or `detail`. All `vision`-tagged claims carry `← none-owed`. All `detail`-tagged claims carry a real KB pointer: `three-scheduling-primitives ← cc-scheduling-primitives`, `field-wires-more-ways-than-one`/`pocock-by-hand`/`klaassen-one-command-per-stage`/`many-kits-keep-zero-pilots ← lineages-supp` (+ `pocock-skills-repo`, `skill-stacking-supp` respectively). No detail claim is unbacked.",
       "fix_hint": "",
       "blocking": false
     },
@@ -146,7 +128,7 @@
       "rule_index": "10",
       "rule_lead": "No \"What research says\" callout boxes.",
       "verdict": "PASS",
-      "evidence": "grep for \"research says\" / \"What research says\" over the file returns zero hits",
+      "evidence": "`grep -in 'research says\\|what research' curriculum/lectures/composing-the-workflow.md` → 0 hits (ran fresh this session). Body reads in plain builder voice throughout; all citation apparatus lives below `<!-- maintainer -->`/`<!-- backing -->`.",
       "fix_hint": "",
       "blocking": false
     },
@@ -155,7 +137,7 @@
       "rule_index": "11",
       "rule_lead": "Source-verification maintainer block on any student-facing file with practitioner citations.",
       "verdict": "PASS",
-      "evidence": "`curriculum/backing-format.md` L17: the `<!-- backing -->` block \"Absorbs and replaces `Frameworks riffed on:` / `Frameworks attributed:` / `**Source verification …**` — do not keep a second copy\" — this file carries a full `<!-- backing -->` region (Claims/Sources/Frameworks/Stance/OODA/Flagged) in place of the older heading; ran `node scripts/validate-backing.js curriculum/lectures/composing-the-workflow.md` → \"summary: 0 error · 0 warn · 10 info\" (the 10 INFO rows are corpus-wide theory-plan.md law-unreached notices, none naming this file)",
+      "evidence": "File carries practitioner citations (Pocock, named + pinned-commit URL; Klaassen, named + delegated URL via lineages-supp). No literal \"Source verification — MUST DO\" heading (`grep -n \"Source verification\"` → 0 hits), but `curriculum/backing-format.md` L17 states the `<!-- backing -->` block \"Absorbs and replaces... `**Source verification …**` — do not keep a second copy\"; this file carries a full backing region (Claims/Sources/Frameworks/Stance/OODA/Flagged) in its place. Ran `node scripts/validate-backing.js curriculum/lectures/composing-the-workflow.md` fresh this session → \"summary: 0 error · 0 warn · 10 info\" (the 10 INFO rows are corpus-wide theory-plan.md law-unreached notices naming other files, none naming this one).",
       "fix_hint": "",
       "blocking": false
     },
@@ -164,16 +146,7 @@
       "rule_index": "13",
       "rule_lead": "Inference beyond source — absence licenses only absence.",
       "verdict": "PASS",
-      "evidence": "Flagged L150: \"No source anywhere assembles the three into a taxonomy... → no body change owed; this is the evidence the 2026-08-01 decision was right\" states the absence and draws only the licensed conclusion (a decision stands), not a further claim about why or what would surface it",
-      "fix_hint": "",
-      "blocking": false
-    },
-    {
-      "compendium": "check_research_claims.md",
-      "rule_index": "14",
-      "rule_lead": "A green check must measure the fact, not a proxy that co-varies with it.",
-      "verdict": "N/A",
-      "evidence": "no verification-instrument claim about THIS file's content correctness appears in body or maintainer block; the one checked-annotation present (\"checked by headless-Chrome screenshot\", L67) is figure-rendering QA (label legibility/size), not a content-correctness proxy this rule targets",
+      "evidence": "Flagged L148: \"No source anywhere assembles the three into a taxonomy... → no body change owed; this is the evidence the 2026-08-01 decision was right\" states the absence and draws only the licensed conclusion (a prior decision stands), not a further unsourced claim about cause or remedy.",
       "fix_hint": "",
       "blocking": false
     },
@@ -182,9 +155,52 @@
       "rule_index": "15",
       "rule_lead": "A word-presence claim needs an unprimed read.",
       "verdict": "PASS",
-      "evidence": "Flagged L149's vocabulary sweep returns a genuinely mixed result across six named practitioners/vendors (judge shared; verifier absent, replaced by four different field terms; gate weak, one vendor only) — a primed fetch inflates presence, never absence, and this sweep reports both presence AND absence findings across the roster, consistent with an unprimed read",
+      "evidence": "Flagged L147's vocabulary sweep reports a mixed result across six named practitioners/vendors — *judge* shared, *verifier* absent (replaced by four different field terms), *gate* weak (one vendor only) — both presence and absence findings across the same roster; priming inflates presence only, never absence, so the absence findings (verifier, gate) are trustworthy on the rule's own asymmetry regardless of fetch framing.",
       "fix_hint": "",
       "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "49",
+      "rule_lead": "A take-home prompt asks for one bounded build.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "file has zero fenced prompt blocks (view.json signals.has_prompt_blocks=false, fence_ranges=[]) — no take-home prompt exists to bound",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": "1",
+      "rule_lead": "Training platform = Claude Code (CLI + Desktop) + Cowork.",
+      "verdict": "N/A",
+      "evidence": "no claude.ai reference anywhere in body (grep clean); not an exercise, no Claude.ai-only feature leaned on",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_shape": "326c29788cefc702"
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": "12",
+      "rule_lead": "No \"as-is\" imports from internet.",
+      "verdict": "N/A",
+      "evidence": "no skill/prompt/agent file is forked or installed from Pocock's or Dino's kit into this repo; the figures analytically redraw/cite them with URL + pinned commit hash (`mattpocock/skills @ 6654f6b`) — citation and diagramming, not raw import for our own use",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_shape": "326c29788cefc702"
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": "14",
+      "rule_lead": "A green check must measure the fact, not a proxy that co-varies with it.",
+      "verdict": "N/A",
+      "evidence": "no verification-instrument claim about THIS file's content correctness appears in body or maintainer block; the one checked-annotation present (\"checked by headless-Chrome screenshot\", L67) is figure-rendering QA (label legibility/size), not a content-correctness proxy this rule targets",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_shape": "326c29788cefc702"
     },
     {
       "compendium": "check_prompts.md",
@@ -193,7 +209,9 @@
       "verdict": "N/A",
       "evidence": "re-read at current wording (rule.js prompts 17, narrowed 2026-09-03 to plan-mode fenced prompts only): the whole file carries zero prompt fences (`view.json` signals.has_prompt_blocks=false, fence_ranges=[]) — §17 fires only on an actual fenced prompt (plan-mode or otherwise) and none exists here, so the narrowing changes nothing for this file",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_shape": "326c29788cefc702"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -203,7 +221,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -214,7 +232,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -225,7 +243,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -236,7 +254,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -247,7 +265,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -258,7 +276,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -269,7 +287,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -280,7 +298,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -291,7 +309,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -302,7 +320,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -313,7 +331,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -324,7 +342,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -335,7 +353,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -346,7 +364,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -357,7 +375,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -368,7 +386,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -379,7 +397,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -390,7 +408,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -401,7 +419,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -412,7 +430,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -423,7 +441,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -434,7 +452,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -445,7 +463,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -456,7 +474,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -467,7 +485,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -478,7 +496,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -489,7 +507,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -500,7 +518,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -511,7 +529,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -522,7 +540,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -533,7 +551,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -544,7 +562,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -555,7 +573,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -566,7 +584,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -577,7 +595,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -588,7 +606,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -599,7 +617,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -610,7 +628,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -621,7 +639,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -632,7 +650,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -643,7 +661,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -654,7 +672,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -665,7 +683,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -676,7 +694,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -687,7 +705,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -698,7 +716,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -709,7 +727,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -720,7 +738,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -731,7 +749,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -742,7 +760,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -753,7 +771,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -764,7 +782,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -775,7 +793,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -786,7 +804,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -797,7 +815,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -808,7 +826,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -819,7 +837,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -830,7 +848,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -841,7 +859,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -852,7 +870,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -863,7 +881,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -874,7 +892,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -885,7 +903,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -896,7 +914,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -907,7 +925,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -918,7 +936,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -929,7 +947,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -940,7 +958,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -951,7 +969,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -962,7 +980,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -973,7 +991,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -984,7 +1002,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -995,7 +1013,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1006,7 +1024,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1017,7 +1035,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1028,7 +1046,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1039,7 +1057,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1050,7 +1068,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1061,7 +1079,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1072,7 +1090,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1083,7 +1101,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1094,7 +1112,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1105,7 +1123,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1116,7 +1134,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1127,7 +1145,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1138,7 +1156,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1149,7 +1167,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1160,7 +1178,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1171,7 +1189,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1182,7 +1200,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1193,7 +1211,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1204,7 +1222,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1215,7 +1233,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1226,7 +1244,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1237,7 +1255,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1248,7 +1266,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1259,7 +1277,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1270,7 +1288,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1281,7 +1299,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1292,7 +1310,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1303,7 +1321,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1314,7 +1332,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1325,7 +1343,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1336,7 +1354,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1347,7 +1365,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1358,7 +1376,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1369,7 +1387,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1380,7 +1398,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1391,7 +1409,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1402,7 +1420,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1413,7 +1431,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1424,7 +1442,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1435,7 +1453,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1446,7 +1464,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1457,7 +1475,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1468,7 +1486,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1479,36 +1497,11 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "118b05776b339792d761ddfc99e7325e004d9d885f511df6e0275160cd58208b",
+      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
       "carried_shape": "326c29788cefc702"
     }
   ],
-  "todos_count": 1,
+  "todos_count": 0,
   "blocking_findings_count": 0,
-  "drift_rules_reread": [
-    "prompts §17 — narrowed 2026-09-03 to plan-mode-fenced-prompts-only; re-read at current wording; N/A holds unchanged because this file has zero prompt fences of any kind (has_prompt_blocks=false), so neither the old nor the narrowed trigger can fire"
-  ],
-  "accept_notes_found": [
-    "L54: control-loop slide is header + figure only (Antti 2026-09-02)",
-    "L56: Dino's skill stack / Pocock's skill system are figures only (Antti 2026-09-02)",
-    "L58: lean pass 2026-08-25 — cut a line from the footprint slide, do not restore",
-    "L60: emphasis budget — bold only on eval/skill handles",
-    "L65: framing note, 5-framing/3-judge panel 2026-07-04",
-    "L67: figure derivation note for skill-sea-passage",
-    "L69: vocabulary bridge (move=skill, pilot=orchestrator), earned once",
-    "L71: no cross-module sequencing in body",
-    "L73: length discipline — concrete-teacher-plus-pointer ceiling",
-    "L75: header squint+truth note",
-    "L77: lecture meta / slide sequence",
-    "L79/81: time and delivery-mode notes",
-    "L83: Eval slide placement/rewrite note, 2026-09-02",
-    "L85: latency axis stays off slides, 2026-08-23",
-    "L87: checking-loop-drawn-solid placement note",
-    "L91: soil line — spoken home elsewhere, do not add a bullet here",
-    "L93/95: control-loop naming and diagram provenance",
-    "L97: accumulation claim, figure-carried not bulleted",
-    "L99: cadence slide placement, low-value-at-end",
-    "L101-102: Watch-for — scheduled-agents stays one slide, cut if it grows"
-  ],
-  "notes": "check_pedagogy.md technical sub-rules owned by this class (16, 22, 23, 36, 37 per the technical.md template) were already resolved N/A by shape hash and parked in the prefill sidecar (verified: this file has no prompt fences, no exercise phases, no verification machinery built, so none of the five fire) — left unwritten here per the brief's instruction not to re-derive parked rows; spliced back in by --merge. The other 57 check_pedagogy.md rules present in derive-class-brief's compendium-level output belong to the pedagogy class judge, not technical, per the template's explicit ownership split, and were left alone."
+  "notes": "check_pedagogy.md technical-owned sub-rules (16, 22, 23, 36, 37 per template) are absent from the derived class brief — already resolved and parked in the prefill sidecar (this file has no prompts, so forcing-function/verification-machinery/context-tier items are N/A by shape); no row written for them here per dispatch-preamble mechanics, merged in below."
 }

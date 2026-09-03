@@ -109,7 +109,7 @@ The next module opens with what came back, or what you caught before it went fur
 **Quality:** compendium-audited 2026-09-02 (writing@191ea58f story@191ea58f technical@191ea58f behavior@17446703 pedagogy@191ea58f strategy@191ea58f slides@191ea58f)
 - judges @191ea58f: writing PASS (1 todo see instances/ae101--module--run-the-first-experiment.writing.json), story PASS, technical PASS (1 todo see instances/ae101--module--run-the-first-experiment.technical.json), behavior PASS, pedagogy PASS (1 todo see instances/ae101--module--run-the-first-experiment.pedagogy.json), strategy PASS (1 todo see instances/ae101--module--run-the-first-experiment.strategy.json), slides PASS
 - cross_module @d47fb5af: PASS — set=[earn-the-trust,run-the-first-experiment]; 1 pair, 0 blocking; see instances/ae101--module-set--m3-m4.cross_module.json
-- cross_module @289b45a3: PASS — set=[run-the-first-experiment,learn-from-the-test,spot-gaps-build-the-loop]; 2 pairs, 0 blocking; see instances/ae101--module-set--m4-m5-m6.cross_module.json
+- cross_module @54577f39: PASS — set=[run-the-first-experiment,learn-from-the-test,spot-gaps-build-the-loop]; 2 pairs, 0 blocking; see instances/ae101--module-set--m4-m5-m6.cross_module.json
 
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply + Analyze + Create

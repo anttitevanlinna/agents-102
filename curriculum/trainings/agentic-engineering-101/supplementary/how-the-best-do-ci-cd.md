@@ -169,5 +169,5 @@ OODA
 
 **Vendor-venue cites flagged in body as "<org>'s own numbers":** Cursor (M1), Cloudflare (M2), Intercom (M3), Stripe (M3). Per `memory/compounded/2026-05-14-research_claims-vendor-venue-practitioner-byline.md`, operational facts are evidence and self-reported metrics are flagged. **Edge case — Cursor Bugbot:** stamped `[vendor blog — Level 0]`, deliberately conservative although Michael Zhao (Cursor employee) is the named byline. The body cites the operational mechanism (learned-rules promote/demote across 110K repos); the stamp is authoritative over this note. The 52% → 80% resolution-rate number is Cursor's self-reported and called out inline as such; not load-bearing on the move's argument.
 
-**Quality:** compendium-audited 2026-08-29 (writing@4a722813 story@4a722813 technical@4a722813 behavior@da65157 pedagogy@1abb84c6 strategy@da65157 slides@4a722813)
-- judges @4a722813: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-09-03 (writing@54577f39 story@54577f39 technical@54577f39 behavior@da65157 pedagogy@54577f39 strategy@da65157 slides@54577f39)
+- judges @54577f39: writing PASS (1 todo see instances/ae101--supplementary--how-the-best-do-ci-cd.writing.json), story PASS, technical PASS (3 todos see instances/ae101--supplementary--how-the-best-do-ci-cd.technical.json), behavior PASS, pedagogy PASS, strategy PASS, slides PASS

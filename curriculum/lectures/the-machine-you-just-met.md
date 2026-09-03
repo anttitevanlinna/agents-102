@@ -44,7 +44,7 @@ That is the machine. The rest is steering.
 ## You just ran the same loop
 <!--tier:1-->
 
-Orient, fix, close, compound. You just ran that loop. Claude's first read was partly wrong. You found the useful wrongness and corrected it. The correction did not stay in the scrollback. It went to disk, and the next session can use the learning.
+Orient, fix, close, compound. You just ran that loop. The agent's first read was partly wrong. You found the useful wrongness and corrected it. The correction did not stay in the scrollback. It went to disk, and the next session can use the learning.
 
 Kieran Klaassen calls this **compound engineering**: work produces evidence; evidence improves the system that does the next work.
 
@@ -107,7 +107,7 @@ Format → `curriculum/backing-format.md`.
 - `answer-shape-is-prompt` · vision · "Tell the LLM what output you want … Changing the shape costs virtually nothing." ← none-owed
 - `klaassen-names-it` · borrowed · "Kieran Klaassen calls this **compound engineering**" ← klaassen-definitive-guide
 - `compound-work-improves-next-work` · borrowed · "work produces evidence; evidence improves the system that does the next work" ← klaassen-definitive-guide
-- `claudes-first-read-partly-wrong` · vision · "Claude's first read was partly wrong." ← none-owed — design-stance about the just-run exercise, not a measured claim: the orient read always leaves a skipped slice, and the introspection prior ("about 10% … made up", hedged there) makes findable wrongness the expected case. "Partly" carries the same hedge; do not strengthen to a rate.
+- `claudes-first-read-partly-wrong` · vision · "The agent's first read was partly wrong." ← none-owed — design-stance about the just-run exercise, not a measured claim: the orient read always leaves a skipped slice, and the introspection prior ("about 10% … made up", hedged there) makes findable wrongness the expected case. "Partly" carries the same hedge; do not strengthen to a rate.
 - `klaassen-definition-bullets` · borrowed · "each unit of engineering work should make subsequent units easier, not harder" ← klaassen-definitive-guide — close paraphrase of the source's core-philosophy paragraph and its four bullets, verified live 2026-08-23; wording registered in `vocabulary.md` § compound engineering
 - `rules-file-is-an-instance` · vision · "The file you wrote today is the smallest unit that qualifies" ← none-owed
 - `loop-is-the-shape` · vision · "The loop is the shape. The bug today was the excuse." ← none-owed

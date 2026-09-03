@@ -82,11 +82,11 @@ The packaged session returns after this sitting ends. The experiment produces it
 
 The map at sitting 2 had an edge nobody explained. A dashed line down the right side, `THE TEAM` beyond it, and along the bottom, in italics: *cross personal → team*.
 
-**The wall** is the line between what works for you and what works for someone else. A rule in your own `./CLAUDE.local.md` sits on your side of it. The same rule in a repo's `./CLAUDE.md`, loading into a teammate's session whether they asked for it or not, has crossed.
+**The wall** is your biggest challenge from here. It is the line between what works for you and what works for someone else. A rule in your own `./CLAUDE.local.md` sits on your side of it. The same rule in a repo's `./CLAUDE.md`, loading into a teammate's session whether they asked for it or not, has crossed.
 
-Everything built in these four sittings is on your side. The rules file, the observations, the verifier, the reference, the plan. That is the right order and not a shortfall: prove it on yourself, then promote. A rule promoted before it works on you is a rule your team has to live with, and a habit that never crosses stays yours alone.
+The rules file, the observations, the verifier, the reference, the plan. All of it on your side. That is the right order and not a shortfall: prove it on yourself, then promote. A rule promoted before it works on you is a rule your team has to live with, and a habit that never crosses stays yours alone.
 
-The map's near half is where a single loop runs and compounds. The far half is where sessions get long and you build the checks that let them. You have run the loop and built the checks: a long session you can send, and a return you can read, because the checks guiding it are yours. The right edge is the crossing, and the first move across is one rule, proven on you, promoted through your team's normal PR. Your call when it's ready.
+You have run the loop and built the checks: a long session you can send, and a return you can read. The right edge is the crossing, and the first move across is one rule, proven on you, promoted through your team's normal PR. Your call when it's ready.
 
 <!--/flag:no-module:spot-gaps-build-the-loop-->
 
@@ -251,7 +251,7 @@ header and handle per slide, never read bullets aloud. Two registers, one instru
 - `[checked:2026-05-25 result:OK due:2026-10-22]` https://every.to/context-window/you-re-the-bread-in-the-ai-sandwich — [practitioner analysis] Laura Entis on Klaassen, 2026-04-22; due is publication+6mo. Byline correctly attributed in file. fallback: cite as Entis write-up of the Shipper–Klaassen interview.
 - `[checked:2026-05-25 result:OK due:none]` https://every.to/source-code/compound-engineering-the-definitive-guide — [practitioner direct, vendor venue] Klaassen 2026-02-09 — cited as the framework's canonical writeup (origin, not fresh evidence); `due:none` per the framework-origin variant, an origin citation does not expire with the window. Out-of-window is what the variant absorbs, not a caveat; the source itself holds (thesis verbatim on page). Never a step count from this page. fallback: cite as Klaassen's canonical compound-engineering writeup.
 - `[checked:2026-05-25 result:CAVEAT due:none]` https://every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it — [practitioner direct, vendor venue] Klaassen 2025-08-18, 10-runs + parallel-feedback-agents verbatim. Dated origin, well outside the window; pre-read for recognition, never current practice; `due:none` per the dated-origin variant. fallback: paraphrase the reliability-as-measured idea, drop the date claim.
-- Ronacher and Cherny are cited via `lectures/what-packaging-is.md`; stamps live there and should stay in sync with this module's references. The Intercom tier case is no longer taught (M6 slide cut 2026-09-02); its stamp survives only in `exercises/read-your-stack.md` as a menu anchor.
+- Ronacher and Cherny are cited via `lectures/what-packaging-is.md`; stamps live there and should stay in sync with this module's references. The Intercom tier case is taught nowhere; its stamp survives only in `exercises/read-your-stack.md` as a menu anchor.
 
 **Frameworks riffed on (attributed in lecture):**
 - **Ronacher's three-pattern** — Armin Ronacher. Earns its name in the closing lecture, not before.

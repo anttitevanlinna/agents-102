@@ -13,6 +13,12 @@ produces:
 ---
 This session we drew the recurring shapes in my work. The shapes are in your context right now.
 
-Write me a handoff prompt I can save and run in a fresh session later. It does three things, in order. It scans my work for the kinds of work I repeat, starting from the shapes named here. It picks with me the one skill most worth building, and builds it. It makes sure the work that skill produces has efficient checks on its quality: checks I can run, not reviews I have to do.
+Write me a handoff prompt I can save and run in a fresh session later. It does three things, in order.
+
+It scans my work for the kinds of work I repeat, starting from the shapes named here.
+
+It picks with me the one skill most worth building, and builds it.
+
+It makes sure the work that skill produces has efficient checks on its quality: checks I can run, not reviews I have to do.
 
 The fresh session will not have this context, so name the shapes inside the prompt and tell it what to re-read.

@@ -26,7 +26,7 @@ Ask Claude to read both sessions and walk the diff between them.
 ## Read the contrast, push back where it generalises
 
 - Skim past the opening plan. The agent will likely open with a four-dimension plan summary (*"I'll start with repo state across the m4/ branch, then..."*) before any quoted evidence lands. The contrast moments are what you're reading for.
-- Push back where Claude generalises. If Claude writes *"the agent drifted on goal"* without naming which commit, which file, which scrollback line, re-run the prompt with the quote rule re-asserted.
+- Push back where the agent generalises. If the agent writes *"the agent drifted on goal"* without naming which commit, which file, which scrollback line, re-run the prompt with the quote rule re-asserted.
 - Expect over-credit on the packaging. A fair push-back is *"name one thing the verifier missed, concretely."*
 
 ## Cut one stale rule the diagnosis killed
@@ -46,6 +46,8 @@ Ask Claude to cut the one rule the diagnosis killed.
 <!-- maintainer -->
 
 **Atomic — no phase markers.** One read of two sessions, then one cut; the second move is a consequence of the first, not a phase.
+
+**Session verb is *new* in the same cwd, on purpose (`check_platform_and_boundaries.md` §7c):** the module reads M5's session from outside, so resuming would put the diagnosis inside the self-report it diagnoses. Contamination is the reason, not convention.
 
 **Lean pass (2026-08-25, Antti-directed M3/M6 shorten, free hands):** the session widget is two sentences (open in the M5 worktree; the wait / stop / accept-partial decision), and the module's rescue callout carries the fuller triage. Cut, do not restore: *"Both are visible via git refs, since the worktree shares `.git`…"*; *"You are not tracing git refs by hand."*; *"Two sessions means two bodies of evidence, and the teaching is in the contrast."*; *"Cleaning is the compound move that keeps the loop fast."*; *"This is your stack."*; *"How far you take this is yours."*; *"The recognition is the point."*
 

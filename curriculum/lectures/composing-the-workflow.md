@@ -98,7 +98,7 @@
 **Cadence slide (from `the-loop-has-a-name.md`, Antti 2026-09-02, header his):** *Loop instead of you starting* opens the T3 tail after the filled map (low value sits at the end): a check on cadence is the loop closing with nobody pressing start.
 
 **Watch-for (delivery):**
-- Scheduled-agents stays one slide, not a mini-lecture: the three ways to run a kit skill on a schedule, then the line that the loop squashes the recurring and, fed its own lessons, cracks harder work (Antti 2026-09-03; the three named homes and the skill-defines-check line came out as wordy). If the slide grows past 90 seconds in rehearsal, cut.
+- Scheduled-agents stays one slide, not a mini-lecture: the three ways to run a kit skill on a schedule, then the line that the loop squashes the recurring and, fed its own lessons, cracks harder work (Antti 2026-09-03). If the slide grows past 90 seconds in rehearsal, cut.
 
 <!-- backing -->
 

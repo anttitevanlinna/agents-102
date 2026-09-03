@@ -2,17 +2,33 @@
   "class": "technical",
   "training": "ae101",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/spot-gaps-build-the-loop.md",
-  "verdict": "PASS_WITH_TODOS",
-  "body_sha": "32d3b9c1f66f3265594348805313c8200635b5211700014239363020fdb06621",
+  "verdict": "PASS",
+  "body_sha": "6e0b71d0ba5559d6b25a243cbc5b250a54fbcfa41ab21fea134e8bc3efac3017",
   "shape_hash": "3bf287f827d6a7ae",
-  "notes": "check_pedagogy.md: this class's brief pulled all 62 non-moved rules (COMPENDIA['technical'] assigns the whole compendium at the tool level), but technical.md's own scope note ('For check_pedagogy, evaluate only the technical sub-rules listed above (items 16, 22, 23, 36, 37); the pedagogy judge is primary owner of the rest') and the dispatch preamble's stay-in-lane clause both narrow that. The prior technical instance for this exact file (body_sha-identical, confirmed this session) carried exactly 5 check_pedagogy rows (16, 22, 23, 36, 37), never the other 57 — I hold the same line. Those 5 are shape-resolved N/A in the prefill sidecar (bare module-index file, no prompts/forcing-functions of its own for 16/22/23/36/37 to fire on) and are absent from my brief for that reason; I owe zero fresh check_pedagogy rows and wrote none. check_prompts.md: brief reported 0 kept rules (has_prompt_blocks: false, so all 48 were shape-resolved N/A) — I wrote none there either. --merge splices the 5 pedagogy + 48 prompts + 59 platform + 13 research_claims N/A rows parked in the sidecar back into rules_evaluated.",
+  "notes": "Re-dispatch reason: prompts §17 drifted after pin 4e0370bc (narrowed to plan-mode-only structural trigger, 4+-sub-step half retired). Body is otherwise near-identical in shape to the prior technical-audited version but NOT byte-identical: the prior instance's body_sha (32d3b9c1...) does not match this session's (confirmed via shasum), because the maintainer block's source-verification section shrank from 6 stamped URLs to 1 (the `## Next` / `## Key Concepts` cut-whole passes and Quality-line SHA bump land between the two). Re-verified all owned rules fresh this session rather than trusting the prior body_sha's evidence forward. check_pedagogy.md: this class's brief pulled 62 non-moved rules (COMPENDIA['technical'] assigns the whole compendium at the tool level), but technical.md's own scope note ('For check_pedagogy, evaluate only the technical sub-rules listed above (items 16, 22, 23, 36, 37); the pedagogy judge is primary owner of the rest') and the dispatch preamble's stay-in-lane clause both narrow that. Those exact 5 items are shape-resolved N/A in the prefill sidecar (bare module-index file, no prompts/forcing-functions of its own for 16/22/23/36/37 to fire on) and are the ONLY pedagogy rows technical owes; I wrote zero fresh pedagogy rows and let --merge splice the parked 5. check_prompts.md: brief reported 0 kept rows (has_prompt_blocks: false, all 48 shape-resolved N/A) EXCEPT §17, which I re-derived myself under its current wording per the dispatch instruction rather than accepting the sidecar's pre-drift N/A verbatim — same conclusion (N/A), fresh evidence. --merge splices the remaining 59 platform + 47 prompts (48 minus the §17 I wrote myself) + 13 research_claims + 5 pedagogy N/A rows parked in the sidecar back into rules_evaluated.",
+  "drift_rules_reread": [
+    "prompts §17 — re-read at current wording (structural trigger narrowed to plan-mode only, 2026-09-03). This module has zero fenced prompt blocks (`has_prompt_blocks: false`, confirmed via expand-md.js byte-identical to raw source) and zero plan-mode references (`grep -inE 'plan mode' <file>` → 0 hits). No plan-mode prompt exists in this file for the suppressor/primer requirement to bind to. Verdict: N/A, both before and after the narrowing — the narrowing changes which shape can trigger the rule, and this file has neither shape (no prompt block at all, let alone a plan-mode one)."
+  ],
+  "accept_notes_found": [
+    "L57: `## Next` cut whole (Antti 2026-09-02) — terminal-module exception to module-shape.md, do not restore.",
+    "L59: `## Key Concepts` cut whole (Antti 2026-09-02) — terminal-module exception to module-shape.md § Key Concepts and check_strategy_tie_in.md §§5-6, judges should not re-flag.",
+    "L61: Lean pass (2026-08-25) cut 'The contrast is the material.' from Start-here — do not restore.",
+    "L63: confidence after-measurement fires at Human close but lives outside the workbook (theory-plan.md canonical) — do not add a rating beat to this file's body.",
+    "L65: rescue callout's lecture line is triage, not a lectures-are-skippable doctrine (2026-08-15) — keep the line, keep it conditional.",
+    "L68: backpressure vocabulary intentionally not restated in M6 (echo carries Klaassen only); recap of generation-speed/review-bandwidth/evals-buying-capacity declined (Antti 2026-09-02) — do not re-add.",
+    "L70: M6 opener rescue + accept-loss callouts — deliberate exception to check_student_facing.md rule 5 (golden-path-only body), and the two blockquote leads accepted under check_slides.md §9's reading-list carve-out. Future judges should not re-flag.",
+    "L72: Human close's 'talk, compare, no prompts' stays in body — check_pedagogy.md §27 mode-defining-cue carve-out (maintainer call). Future judges should not re-flag.",
+    "L74: `## Human close` is a pre-close beat, not the module's ending (2026-08-19) — do not move the beat later or soften its framing. Future judges should not re-flag.",
+    "L141: `Story of Module 6` placement after the handoff lecture, before Human close is the module file's decision; do not reorder to match a strategy-doc copy.",
+    "L143: Cut (2026-07-05) — Steering the wiring lecture and Arc-named retrospective exercise. Do not restore either."
+  ],
   "rules_evaluated": [
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": 1,
       "rule_lead": "Training platform = Claude Code (CLI + Desktop) + Cowork.",
       "verdict": "PASS",
-      "evidence": "`grep -n 'claude\\.ai' <file>` this session → 0 matches (exit 1). No claude.ai-only feature named anywhere in body or maintainer block. Closest line: L20 'Open a fresh session in the Module 5 worktree, `../<repo-name>-m5`.' — generic Claude Code session/worktree language, no platform-specific feature claim that contradicts AE101's canonical runtime (training-architecture.md: CLI + Desktop, no Cowork). Harm the rule guards (a claude.ai-only affordance breaking students on CLI/Desktop) is absent.",
+      "evidence": "`grep -n 'claude\\.ai' <file>` this session → 0 matches. No claude.ai-only feature named anywhere in body or maintainer block; the file's only session-boundary language (L20 'Open a fresh session in the Module 5 worktree') is generic Claude Code session/worktree phrasing, consistent with AE101's canonical runtime (training-architecture.md: CLI + Desktop, no Cowork).",
       "fix_hint": "",
       "blocking": false
     },
@@ -21,7 +37,7 @@
       "rule_index": 4,
       "rule_lead": "Verify capabilities BEFORE asserting, not after.",
       "verdict": "PASS",
-      "evidence": "Scanned every capability-shaped sentence in the file. The two with a mechanically-checkable claim were run live this session: `node scripts/calculate-time.js spot-gaps-build-the-loop` (L101's claim 'Runtime is computed') → real output, 96 min total, both `cohort-2day` and `sitting-2h` caps (120) FIT with 24 min float — the claim is accurate, not aspirational. `~/.claude/projects/<project>/` transcript path (L109 push-back move) matches the compendium's own documented path (rule 6e) and the push-back text already applies rule 6e's own prescribed fix (marker-based selection by 'a phrase unique to that send-off's opening prompt', not naive mtime) rather than asserting a naive claim. `./CLAUDE.local.md` (L14, L82, L91) is used consistently with its documented auto-load-surface behavior (rule 6d #2), never claimed to auto-sync across students/teammates. No sentence asserts an unverified 'Claude Code supports X' / 'file Y does Z' claim.",
+      "evidence": "Every mechanically-checkable capability claim was re-run this session: `node scripts/calculate-time.js spot-gaps-build-the-loop` → real output, 96 min total, both `cohort-2day` and `sitting-2h` caps (120) FIT with 24 min float — matches L101's 'Runtime is computed' claim exactly. `~/.claude/projects/<project>/` transcript path (L109) matches the compendium's own documented path (rule 6e) and the push-back text already applies rule 6e's prescribed fix (marker-based selection, not naive mtime). `./CLAUDE.local.md` (L14, L82, L91) used only as the student's gitignored personal rules file, never claimed to auto-sync. No sentence asserts an unverified 'Claude Code supports X' claim.",
       "fix_hint": "",
       "blocking": false
     },
@@ -30,7 +46,7 @@
       "rule_index": "6d",
       "rule_lead": "Auto-load surface = SIX things — four filenames + project `.claude/rules/` + user `~/.claude/rules/`.",
       "verdict": "PASS",
-      "evidence": "File makes no claim about the auto-load surface count or mechanics. Closest passages are the `./CLAUDE.local.md` references (L14, L82, L91) — surface #2 in this rule's own enumeration — used only as 'the student's personal rules file, gitignored', never described as syncing, shared, or auto-promoted; matches rule 18's personal-first discipline and contradicts nothing in the six-surface inventory.",
+      "evidence": "File makes no claim about the auto-load surface count or mechanics. The `./CLAUDE.local.md` references (L14, L82, L91 — surface #2 in this rule's own enumeration) are used only as 'the student's personal rules file, gitignored,' never described as syncing, shared, or auto-promoted across sessions.",
       "fix_hint": "",
       "blocking": false
     },
@@ -39,7 +55,7 @@
       "rule_index": "6e",
       "rule_lead": "Transcript-by-mtime selection fragile when current session writes target folder.",
       "verdict": "PASS",
-      "evidence": "L109 push-back move: '...scrollback at `~/.claude/projects/<project>/` if the sessions closed — if M4 and M5 share a cwd, recency alone can grab the wrong attempt; filter by a phrase unique to that send-off's opening prompt instead.' This is a correct, in-scope application of the rule's own prescribed fix (marker-based selection over naive mtime-pick), not a violation of it — it names the exact failure mode (shared cwd, recency grabs wrong file) and the exact remedy (marker phrase).",
+      "evidence": "L109 push-back move: '...scrollback at `~/.claude/projects/<project>/` if the sessions closed — if M4 and M5 share a cwd, recency alone can grab the wrong attempt; filter by a phrase unique to that send-off's opening prompt instead.' Correctly names the exact failure mode (shared cwd, recency grabs wrong file) and the exact remedy (marker phrase, not mtime).",
       "fix_hint": "",
       "blocking": false
     },
@@ -48,7 +64,7 @@
       "rule_index": 7,
       "rule_lead": "Sessions = unit of work — write \"start a new session in X,\" not \"open Claude Code in X.\"",
       "verdict": "PASS",
-      "evidence": "L20 'Open a fresh session in the Module 5 worktree' and L109 'Open a fresh Claude Code session in the repo' — both use the rule's own sanctioned alternate phrasing ('open a new session' / 'open a fresh session'), not the banned 'open Claude Code in X' UI-launch framing. `grep -c 'open Claude Code'` over the body → 0.",
+      "evidence": "`grep -in 'open Claude Code in' <file>` this session → 0 matches. L20 'Open a fresh session in the Module 5 worktree' and L109 'Open a fresh Claude Code session in the repo' both use the rule's sanctioned phrasing, not the banned UI-launch framing.",
       "fix_hint": "",
       "blocking": false
     },
@@ -57,7 +73,7 @@
       "rule_index": "7b",
       "rule_lead": "Cross-working-directory boundaries always open `new`; evidence travels by disk.",
       "verdict": "PASS",
-      "evidence": "L20 correctly frames the M5-worktree move as a fresh session ('Open a fresh session in the Module 5 worktree, `../<repo-name>-m5`'), never 'return' or 'resume' across the worktree boundary. L109's push-back correctly routes prior-session evidence through disk (transcripts at `~/.claude/projects/`, git refs, scrollback) rather than claiming session resumption crosses the boundary.",
+      "evidence": "`grep -in 'resume\\|return to' <file>` this session → 0 matches. L20 correctly frames the M5-worktree move as a fresh session, never 'return'/'resume' across the worktree boundary. L109's push-back routes prior-session evidence through disk (transcripts, commits, files modified), not through session resumption.",
       "fix_hint": "",
       "blocking": false
     },
@@ -66,7 +82,7 @@
       "rule_index": "24a",
       "rule_lead": "Quality stamps: tooling writes them; the SHA pins committed content.",
       "verdict": "PASS",
-      "evidence": "L76: '**Quality:** compendium-audited 2026-08-30 (writing@4a722813 story@85515fa0 technical@8cc00874 behavior@1c765f2 pedagogy@85515fa0 strategy@85515fa0 slides@297eb2f9)' is a clean anchor — stage + date + per-class SHAs, nothing after. No leftover hand-typed narrative tail on the Quality line itself (rule's specific ban). L77-78 are separate dimension-log rows (judges@sha, cross_module@sha), the documented format per `curriculum/CLAUDE.md` § Quality, not evidence of hand-typing.",
+      "evidence": "L76: '**Quality:** compendium-audited 2026-09-03 (writing@289b45a3 story@4e0370bc technical@4e0370bc behavior@1c765f2 pedagogy@4e0370bc strategy@4e0370bc slides@289b45a3)' is a clean anchor — stage + date + per-class SHAs, nothing hand-typed after it. L77-78 are the documented separate dimension-log rows (judges@sha, cross_module@sha), not evidence of hand-typing on the Quality line itself.",
       "fix_hint": "",
       "blocking": false
     },
@@ -75,7 +91,7 @@
       "rule_index": 28,
       "rule_lead": "Strategy-doc drift surfaces via judge citation — citation = canary, not verdict.",
       "verdict": "PASS",
-      "evidence": "L153: '`bosser-strategy:content-strategy-agentic-engineering-101.md` § *M6 in detail* carries the same order — the module file is the decision; a `strategy` judge reading a stale copy of the doc will re-flag the order. Do not reorder to match a doc.' This is the rule's own resolution (b)/(c) pattern applied correctly and pre-emptively: maintainer has already adjudicated a doc-vs-curriculum divergence and logged the decision rather than defaulting to the doc's authority.",
+      "evidence": "L141: 'The module file is the decision; do not reorder to match a strategy-doc copy.' This is the rule's own resolution (c) applied pre-emptively and logged: maintainer has already adjudicated the doc-vs-curriculum divergence over M6's Story-of-Module-6 placement rather than defaulting to the doc's authority. L72 similarly defers the round's exact form to 'the strategy doc's M6 Debrief spec' without asserting the doc's content as fact needing verification here.",
       "fix_hint": "",
       "blocking": false
     },
@@ -84,7 +100,7 @@
       "rule_index": 38,
       "rule_lead": "Prose describing a runtime the room never executes drifts to plausible mechanism — no judge catches it, because no artefact contradicts it.",
       "verdict": "PASS",
-      "evidence": "Closest passage: L50-53 '## Optional challenges' (universal skill loader, an eval-as-PR-check, ship-a-skill-and-get-it-adopted, a fired/never-fired telemetry system). These are open-ended build targets phrased as goals ('Build a system that shows...'), not prose asserting HOW an existing mechanism works — none states an 'X against Y' retrieval claim, none borrows a lifecycle noun from a stage the beat doesn't touch, none states an unsourced cadence. They stay inside the rule because they never claim the described system already exists or already runs a particular way; they specify what to build, not how something already works.",
+      "evidence": "Closest passage: L50-53 '## Optional challenges' (universal skill loader, an eval-as-PR-check, ship-a-skill-and-get-it-adopted, a fired/never-fired telemetry system). All four are phrased as open-ended build targets ('Build a system that shows...'), not prose asserting HOW an existing mechanism already works — none states an 'X against Y' retrieval claim, none borrows a lifecycle noun from a stage the beat doesn't touch, none states an unsourced cadence. They specify what to build, not how something already runs.",
       "fix_hint": "",
       "blocking": false
     },
@@ -93,7 +109,7 @@
       "rule_index": 1,
       "rule_lead": "Source URL + type label — mandatory.",
       "verdict": "PASS",
-      "evidence": "Every claim in the maintainer block's Frameworks-riffed-on (L131-135) and Source-verification (L139-144) sections carries a `[label]` and a clickable URL, either inline (L134, L135) or via the paired freshness-stamp line for the same source (L132 Ronacher → L140 URL; L133 Cherny/Kim → L141 URL) — the file's established two-list convention (short attribution + separate stamped ledger), matching sibling files per its own cross-reference at L139 ('matching learn-from-the-test.md § Source verification'). Body prose (L9) carries the one student-facing citation inline with a real URL and no `[label]` tag — correct per the rule's own scope carve-out (labels are maintainer-block vocabulary, never body). `grep` over body_numbered for `\\[practitioner|\\[vendor|\\[academic` → 0, confirming no label leaked into body. Convergence-verb language found at L133 ('riffs on this convergence') and self-corrected at L141/L143 ('KIM'S synthesis, NOT Cherny's own taxonomy'; 'NOT verbatim on this page — convergent-across-appearances only') — these are hedges against overclaim, not overclaims themselves; no unaudited convergence count present anywhere in the file.",
+      "evidence": "The one practitioner citation in the file (L9 body, Klaassen) carries a real clickable URL and no `[label]` tag in body prose — correct per the rule's own scope carve-out (labels are maintainer-block vocabulary). The maintainer-block source-verification entry for the same source (L132) carries both `[practitioner direct, vendor venue]` and the URL. `grep -n '\\[practitioner\\|\\[vendor\\|\\[academic' <file>` confined to L132 only, confirming no label leaked into body.",
       "fix_hint": "",
       "blocking": false
     },
@@ -102,7 +118,7 @@
       "rule_index": 3,
       "rule_lead": "Zombie stat guard.",
       "verdict": "PASS",
-      "evidence": "No round-number AI-failure stat (95/85/80-shape) anywhere in body or maintainer. The only percentages present are L142's '99.5% AI-active, 84% coding-agents weekly' (Ramp Dojo adoption figures) — non-round, sourced `[practitioner direct, Geoff Charles CPO]`, cross-verified per-file against `observations/ramp.md`, a different shape than the known zombie triad and not an AI-failure-rate claim.",
+      "evidence": "`grep -nE '\\b(95|85|80)%' <file>` this session → 0 matches. No round-number AI-failure stat anywhere in body or maintainer block.",
       "fix_hint": "",
       "blocking": false
     },
@@ -111,7 +127,7 @@
       "rule_index": 10,
       "rule_lead": "No \"What research says\" callout boxes.",
       "verdict": "PASS",
-      "evidence": "Body's one citation (L9, Klaassen prework) is a plain inline sentence inside the Prework paragraph, not a boxed/bulleted research callout. `grep -i 'what research says\\|research shows' <file>` → 0 matches.",
+      "evidence": "`grep -in 'what research says\\|research shows' <file>` this session → 0 matches. Body's one citation (L9, Klaassen prework) is a plain inline sentence, not a boxed research callout.",
       "fix_hint": "",
       "blocking": false
     },
@@ -119,9 +135,19 @@
       "compendium": "check_research_claims.md",
       "rule_index": 11,
       "rule_lead": "Source-verification maintainer block on any student-facing file with practitioner citations.",
-      "verdict": "REVISE",
-      "evidence": "The required maintainer-block section is present and substantive (L137-144: 6 stamped URLs covering the body's one practitioner citation plus all 5 Frameworks-riffed-on claims, each with checked/result/due + a fallback framing) — the rule's core harm (shipping a practitioner-cited file with zero verification tracking) is absent. But running the actual audit this session — `bash curriculum/evals/scripts/source-freshness.sh --target 2026-09-02 curriculum/trainings/agentic-engineering-101/spot-gaps-build-the-loop.md` — returns real, current WARN output: 'WARN (2) — re-verify + re-stamp before delivery: L143 due:2026-08-09 < cohort 2026-09-02 — expires before delivery; L144 CAVEAT past its own due:2026-06-11 — re-verify or re-stamp' (summary: 0 block · 2 warn · 1 info · 3 ok, exit 0). Two of the six stamped sources are now past their own re-verify date and the module has no `- cohorts:` log entry yet, so this is real, present, mechanically-confirmed drift-risk per §11a's own definition — non-blocking (the script itself doesn't exit nonzero on WARN, only on BLOCK) but real.",
-      "fix_hint": "Re-open https://every.to/source-code/compound-engineering-the-definitive-guide (L143) and https://every.to/source-code/compound-engineering-how-every-codes-with-agents (L144), confirm the cited passages still hold, and re-stamp both lines with a fresh `checked:` date + recomputed `due:` before this module reaches a cohort.",
+      "verdict": "PASS",
+      "evidence": "Required section present at L130-132 ('Source verification — freshness stamps') carrying the one stamped URL for the body's one practitioner citation, with checked/result/due + a named fallback ('drop the Klaassen pre-read; Module 4 and Module 5 still carry the checks mechanism'). Ran the audit live this session: `bash curriculum/evals/scripts/source-freshness.sh --target 2026-09-02 curriculum/trainings/agentic-engineering-101/spot-gaps-build-the-loop.md` → real output: 'summary: 0 block · 0 warn · 1 info · 0 ok · 0 suspect · 0 divergent' — the single stamp reads as an accepted CAVEAT/due:none, clean. This is a materially smaller and cleaner source-verification section than the prior audited version of this file carried (which had 6 stamped URLs and 2 live WARNs) — the `## Next`/`## Key Concepts` cut-whole passes removed the Frameworks-riffed-on citations along with the sections they backed.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 17,
+      "rule_lead": "Preamble before action — design around it.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks in file (has_prompt_blocks: false, expand-md.js output byte-identical to raw source) and no plan-mode reference in body (`grep -inE 'plan mode' <file>` → 0 hits) — neither the retired 4+-sub-step shape nor the current plan-mode-only structural trigger has anything to bind to.",
+      "fix_hint": "",
       "blocking": false
     },
     {
@@ -130,7 +156,7 @@
       "judge_owned": true,
       "rule_lead": "URL liveness — sample 3–5 external URLs.",
       "verdict": "PASS",
-      "evidence": "Sampled 5/5 distinct external citation URLs this session via `curl -s -o /dev/null -w '%{http_code}' -A 'Mozilla/5.0' -L --max-time 15 <url>`: every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it → 200; lucumr.pocoo.org/2026/1/14/minijinja-go-port/ → 200; getpushtoprod.substack.com/p/how-the-creator-of-claude-code-actually → 200; every.to/source-code/compound-engineering-the-definitive-guide → 200; every.to/source-code/compound-engineering-how-every-codes-with-agents → 200. 5/5 sampled alive. 6th citation URL (x.com/geoffintech/status/2042002590758572377) not sampled — the file itself documents it as link-only/paywalled and cross-verified via `observations/ramp.md` + an oEmbed date check, consistent with this repo's known X-fetch workaround.",
+      "evidence": "File carries exactly one distinct external URL (the Klaassen citation, appearing at both L9 and L132). Sampled it this session: `curl -s -o /dev/null -w '%{http_code}' -A 'Mozilla/5.0' -L --max-time 15 https://every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it` → 200. 1/1 sampled alive (full population, below the 3-5 sample floor because the file has only one external URL).",
       "fix_hint": "",
       "blocking": false
     },
@@ -139,8 +165,9 @@
       "rule_index": null,
       "judge_owned": true,
       "rule_lead": "Skill availability — every `[Skill: <name>]` reference must point to a real installed skill.",
-      "verdict": "PASS",
-      "evidence": "`grep -n '\\[Skill:' <file>` this session → 0 matches (exit 1). No skill-invocation-by-name reference in this file to check.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "`grep -n '\\[Skill:' <file>` this session → 0 matches. No skill-invocation-by-name reference in this file.",
       "fix_hint": "",
       "blocking": false
     },
@@ -150,7 +177,7 @@
       "judge_owned": true,
       "rule_lead": "Internal cross-doc link + anchor validity.",
       "verdict": "PASS",
-      "evidence": "Ran `node scripts/check-cross-doc-anchors.js` (repo-wide, includes this file) this session → real output: 'OK: all cross-doc .md#anchor links resolve (142 of 142 files scanned).' This file carries no `.md#anchor` fragment link itself. Manually re-verified all 7 bare relative links this session — L28 `lectures/the-2-frontiers.md`, L30 `exercises/spot-gaps-build-the-loop.md`, L32 `lectures/composing-the-workflow.md`, L34 `exercises/read-your-stack.md`, L36 `lectures/the-handoff-prompt.md`, L38 `lectures/story-of-module-6.md`, L45 `lectures/agents-that-build-agents.md` — all 7 targets exist under `curriculum/lectures/` or `curriculum/exercises/`.",
+      "evidence": "Ran `node scripts/check-cross-doc-anchors.js` this session → real output: 'OK: all cross-doc .md#anchor links resolve (142 of 142 files scanned).' Manually re-verified all 7 bare relative links this session (L28, L30, L32, L34, L36, L38, L45) against the filesystem — all 7 targets exist under `curriculum/lectures/` or `curriculum/exercises/`.",
       "fix_hint": "",
       "blocking": false
     },
@@ -1179,17 +1206,6 @@
     },
     {
       "compendium": "check_prompts.md",
-      "rule_index": "17",
-      "rule_lead": "Preamble before action — design around it.",
-      "verdict": "N/A",
-      "evidence": "File carries zero fenced prompt blocks and zero `{{prompt:<key>}}` markers (body_view signals.has_prompt_blocks=false, fence_ranges empty, confirmed by `expand-md.js` producing byte-identical output to raw source). This module-index file only links to lectures/exercises; it carries no prompt content of its own for this rule to apply to.",
-      "fix_hint": "",
-      "blocking": false,
-      "carried_from": "32d3b9c1f66f3265594348805313c8200635b5211700014239363020fdb06621",
-      "carried_shape": "3bf287f827d6a7ae"
-    },
-    {
-      "compendium": "check_prompts.md",
       "rule_index": "18",
       "rule_lead": "Self-critique register, not defense, when Claude interrogates own work.",
       "verdict": "N/A",
@@ -1530,124 +1546,6 @@
       "carried_shape": "3bf287f827d6a7ae"
     }
   ],
-  "platform_claims_checked": [
-    {
-      "claim": "Open a fresh session in the Module 5 worktree, `../<repo-name>-m5`.",
-      "line": 20,
-      "verdict": "PASS",
-      "source": "compendium"
-    },
-    {
-      "claim": "Packaged session thin or missing? ...nudge it once... paste the packaged re-send against your worktree fresh",
-      "line": 24,
-      "verdict": "PASS",
-      "source": "compendium"
-    },
-    {
-      "claim": "Runtime is computed — `node scripts/calculate-time.js spot-gaps-build-the-loop`",
-      "line": 101,
-      "verdict": "PASS",
-      "source": "verified live this session (96 min total, both caps FIT)"
-    },
-    {
-      "claim": "scrollback at `~/.claude/projects/<project>/` if the sessions closed... filter by a phrase unique to that send-off's opening prompt instead",
-      "line": 109,
-      "verdict": "PASS",
-      "source": "compendium"
-    },
-    {
-      "claim": "\"## Optional challenges\": universal skill loader / eval-as-PR-check / ship-a-skill / fired-vs-never-fired telemetry system — phrased as student build targets, not shipped Claude Code capabilities",
-      "line": 50,
-      "verdict": "PASS",
-      "source": "inferred"
-    }
-  ],
-  "citations_checked": [
-    {
-      "line": 9,
-      "claim": "Klaassen, My AI Had Already Fixed the Code Before I Saw It — prework pre-read",
-      "label_present": false,
-      "url_present": true,
-      "url_alive": true,
-      "evidence_level_honest": true
-    },
-    {
-      "line": 139,
-      "claim": "Klaassen prework — maintainer-block freshness stamp",
-      "label_present": true,
-      "url_present": true,
-      "url_alive": true,
-      "evidence_level_honest": true
-    },
-    {
-      "line": 140,
-      "claim": "Ronacher MiniJinja port, 10h/2.2M tokens (durable account)",
-      "label_present": true,
-      "url_present": true,
-      "url_alive": true,
-      "evidence_level_honest": true
-    },
-    {
-      "line": 141,
-      "claim": "Kim on Cherny — three verifier shapes (digest, not Cherny's own taxonomy)",
-      "label_present": true,
-      "url_present": true,
-      "url_alive": true,
-      "evidence_level_honest": true
-    },
-    {
-      "line": 142,
-      "claim": "Ramp Dojo — 350+ skills, 99.5% AI-active, 84% weekly",
-      "label_present": true,
-      "url_present": true,
-      "url_alive": null,
-      "evidence_level_honest": true
-    },
-    {
-      "line": 143,
-      "claim": "Klaassen Definitive Guide — compound loop as posture",
-      "label_present": true,
-      "url_present": true,
-      "url_alive": true,
-      "evidence_level_honest": true
-    },
-    {
-      "line": 144,
-      "claim": "Shipper & Klaassen — 80/20 ratio, historical-anchor framing",
-      "label_present": true,
-      "url_present": true,
-      "url_alive": true,
-      "evidence_level_honest": true
-    }
-  ],
-  "skills_referenced": [],
-  "urls_sampled": [
-    {
-      "url": "https://every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it",
-      "alive": true,
-      "status_code": 200
-    },
-    {
-      "url": "https://lucumr.pocoo.org/2026/1/14/minijinja-go-port/",
-      "alive": true,
-      "status_code": 200
-    },
-    {
-      "url": "https://getpushtoprod.substack.com/p/how-the-creator-of-claude-code-actually",
-      "alive": true,
-      "status_code": 200
-    },
-    {
-      "url": "https://every.to/source-code/compound-engineering-the-definitive-guide",
-      "alive": true,
-      "status_code": 200
-    },
-    {
-      "url": "https://every.to/source-code/compound-engineering-how-every-codes-with-agents",
-      "alive": true,
-      "status_code": 200
-    }
-  ],
-  "blocking_findings_count": 0,
-  "todos_count": 1
+  "todos_count": 0,
+  "blocking_findings_count": 0
 }

@@ -3,9 +3,503 @@
   "training": "ae101",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/agents-that-build-agents.md",
   "verdict": "PASS",
-  "body_sha": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+  "body_sha": "80da1e7a3e972f0f68ead0c2decc1274cfb8bbd991b19e7c4b2418d890dce1cf",
   "shape_hash": "776191893f0953c7",
+  "notes": "check_pedagogy.md technical-lane sub-rules (16, 22, 23, 36, 37) and the entirety of check_platform_and_boundaries.md (68/68 rules) came back fully parked N/A by the prefill (shape_hash 776191893f0953c7) — matches the file's own signals (has_prompt_blocks:false, has_urls:false, no [Skill: refs, no 'Claude Code does X' claims). Not re-derived here per dispatch-preamble mechanics. The class brief's 62-item check_pedagogy.md dump beyond those 5 sub-rules is out of this class's lane per technical.md's own completeness contract ('For check_pedagogy, evaluate only the technical sub-rules listed above (items 16, 22, 23, 36, 37); the pedagogy judge is primary owner of the rest') — no rows written against them, and none should be: the pedagogy judge owns that ledger.",
   "rules_evaluated": [
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": "1",
+      "rule_lead": "Source URL + type label — mandatory.",
+      "verdict": "PASS",
+      "evidence": "Body (L1-31) carries zero [label] tags or bare-URL citations — correct per the rule's own body-scope carve-out ('Scope: maintainer-block only, not student-facing body'). The two detail-tier claims (L12: '500K lines of code in weeks' / 'every generated line had to correspond to a spec, every feature had to be tested') are sourced in the <!-- backing --> Sources list (L76-77): antti-agentics-helsinki carries `[checked:2026-08-03 result:ATTESTED due:none]` + `attested:Antti 2025-09-02 Agentics-Helsinki-meetup` and the [maintainer-attested] label with no URL — correct under §1's maintainer-attested carve-out (named practitioner Antti, first-hand, best rung on the ladder, URL never owed). luma-agentics-helsinki carries a real URL (https://luma.com/bjg7smsc), `[checked:2026-05-25 result:OK due:none]`, and [practitioner direct]. Checked the 'Vocabulary is a claim' sub-clause against L12's 'The recurring theme' — this describes what the maintainer personally witnessed at two specific demos at one meetup, not a field-wide convergence assertion ('practitioners say' / 'entered the vocabulary' / 'the field names'); grep for those phrases and 'converg' across the body (L1-31) returned zero hits.",
+      "fix_hint": "none",
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": "1a",
+      "rule_lead": "OODA paraphrase ≠ primary source.",
+      "verdict": "PASS",
+      "evidence": "The two sourced claims did not enter the file as an OODA-subagent paraphrase: one is the maintainer's own first-hand attested account (re-attested by him on a later date, per the L76 stamp), the other is a directly-verified event page ('Event verified live' per the maintainer's own annotation at L77). No drift/blend/conflation symptom (framework-vs-instantiation blur, cross-source blend) is present in the L12 sentence, which stays scoped to the one meetup the maintainer attended.",
+      "fix_hint": "none",
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": "2",
+      "rule_lead": "Freshness rule — 6 months.",
+      "verdict": "PASS",
+      "evidence": "L12's claim is dated in body ('the first Agentics Helsinki meetup, fall 2025') — roughly a year old at the 2026-09-03 read date, but explicitly used as dated historical context, which the base rule already permits ('Older = historical context only, explicitly dated'). §2a's durable-account carve-out independently applies and is stronger: first-hand (maintainer-attested), a specific completed event (two named demos at one dated meetup, not an ongoing practice/trend/rate), and dated in body — all three conditions met. The maintainer block itself carries the accept-note at L77: 'Dated-historical: the body frames it as \"the early agentic engineering demos\", allowed under check_research_claims.md §2 — do NOT auto-flag freshness.' Diagnostic per §2a ('would re-checking it next year change the answer?') — no: the claim is that this happened at this meetup, not a claim about current throughput norms, so it doesn't fall into the 'still on the clock' throughput-number exclusion.",
+      "fix_hint": "none",
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": "4",
+      "rule_lead": "Hold short OODA loose.",
+      "verdict": "PASS",
+      "evidence": "L12 phrases the claim as 'Some of the early agentic engineering demos' rather than as an established industry pattern or convergence claim — appropriately hedged for an N=2, maintainer-attested observation. No 'practitioners agree' / 'the field converges' framing anywhere in the body (confirmed by the same grep as rule 1).",
+      "fix_hint": "none",
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": "7",
+      "rule_lead": "Vision × Detail split.",
+      "verdict": "PASS",
+      "evidence": "The <!-- backing --> Claims list (L60-73) tags exactly two claims 'detail' (500k-lines-in-weeks, spec-and-tests-was-the-theme) — both carry real sources per rule 1 above — and every other claim (agent-cannot-read-your-mind, expression-sets-the-frontier, you-make-agentic-happen, etc.) 'vision' with '← none-owed', consistent with Antti's own framing needing no KB backing. The one detail claim passes the chasm-crossing filter ('real shit by real people') — two named single devs, a dated meetup, maintainer-attested.",
+      "fix_hint": "none",
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": "10",
+      "rule_lead": "No \"What research says\" callout boxes.",
+      "verdict": "PASS",
+      "evidence": "Scanned the full raw body (L1-31): plain narrative prose throughout, one inline citation-shaped sentence (L12) in builder voice, no boxed/bulleted 'research says' callout structure anywhere.",
+      "fix_hint": "none",
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": "11",
+      "rule_lead": "Source-verification maintainer block on any student-facing file with practitioner citations.",
+      "verdict": "PASS",
+      "evidence": "File carries a practitioner citation with a load-bearing number (L12's 500K-lines claim, named event, named practitioner). The maintainer-block region (L32-94) does not use the literal legacy heading '**Source verification — MUST DO before first cohort:**', but the same region's <!-- backing --> Sources section (L75-77) discharges the rule's substance via the newer §11a stamp-ledger convention this repo has standardized on for AE101 lectures (curriculum/backing-format.md is canon per curriculum/CLAUDE.md): both sources carry checked-date, RESULT, DUE, label and (for the attested one) an explicit attestation token, plus prose naming why no URL is owed and what would justify correcting the figure. Ran `bash curriculum/evals/scripts/source-freshness.sh --target 2026-09-03 curriculum/lectures/agents-that-build-agents.md` → exit 0, 'summary: 0 block · 0 warn · 0 info · 2 ok · 0 suspect · 0 divergent' — the generated audit this rule exists to feed already validates both stamps clean. Harm the rule guards against (unverified practitioner numbers shipping unflagged) is absent.",
+      "fix_hint": "Non-blocking rule-wording note for the maintainer, not a body defect: §11's literal heading text predates the <!-- backing --> Sources-ledger convention and reads as unmet on a literal grep even when (as here) the newer mechanism fully satisfies it — worth a one-line update recognizing a populated backing-block Sources section as an equivalent to the old heading.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "3",
+      "rule_lead": "Canonical shape — lead-in, label with destination, blank line, fence.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "n/a",
+      "blocking": false,
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, has_code_fences:false) — a pure-prose closer lecture, nothing to check the mechanic against."
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "4",
+      "rule_lead": "Installed Skills invoke by name, never path.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "n/a",
+      "blocking": false,
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, has_code_fences:false) — a pure-prose closer lecture, nothing to check the mechanic against."
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "6",
+      "rule_lead": "Chained-prompt isolation — don't leak downstream pipeline.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "n/a",
+      "blocking": false,
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, has_code_fences:false) — a pure-prose closer lecture, nothing to check the mechanic against."
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "7",
+      "rule_lead": "No session-resets mid-phase.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "n/a",
+      "blocking": false,
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, has_code_fences:false) — a pure-prose closer lecture, nothing to check the mechanic against."
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "9",
+      "rule_lead": "Markdown shout (`**bold**`, `*italic*`) inside fenced prompts = dead weight in Claude Code.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "n/a",
+      "blocking": false,
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, has_code_fences:false) — a pure-prose closer lecture, nothing to check the mechanic against."
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "10",
+      "rule_lead": "Runtime-fork prompts: paired divs, shared chip.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "n/a",
+      "blocking": false,
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, has_code_fences:false) — a pure-prose closer lecture, nothing to check the mechanic against. Also Agents-101/dual-runtime-specific ('Fires only on Agents 101 / future dual-runtime'); this is AE101 (Code-only)."
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "11",
+      "rule_lead": "Runtime-mechanical scaffolding asymmetry — MORE in less-fluent fork, not less.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "n/a",
+      "blocking": false,
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, has_code_fences:false) — a pure-prose closer lecture, nothing to check the mechanic against. Also Cowork/Agents-101-specific scaffolding-asymmetry rule; this is AE101 (Code-only)."
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "12",
+      "rule_lead": "Append-vs-integrate — name integration mode on regeneration with new context source.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "n/a",
+      "blocking": false,
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, has_code_fences:false) — a pure-prose closer lecture, nothing to check the mechanic against."
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "14",
+      "rule_lead": "Niceness tax — name the edge or pin the line on regeneration.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "n/a",
+      "blocking": false,
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, has_code_fences:false) — a pure-prose closer lecture, nothing to check the mechanic against."
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "15",
+      "rule_lead": "Question-dump default — `in turn` too soft; two legal shapes.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "n/a",
+      "blocking": false,
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, has_code_fences:false) — a pure-prose closer lecture, nothing to check the mechanic against."
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "16",
+      "rule_lead": "Overwrite anxiety — name overwrite default on regeneration.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "n/a",
+      "blocking": false,
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, has_code_fences:false) — a pure-prose closer lecture, nothing to check the mechanic against."
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "17",
+      "rule_lead": "Preamble before action — design around it.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "n/a",
+      "blocking": false,
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, has_code_fences:false) — a pure-prose closer lecture, nothing to check the mechanic against."
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "18",
+      "rule_lead": "Self-critique register, not defense, when Claude interrogates own work.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "n/a",
+      "blocking": false,
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, has_code_fences:false) — a pure-prose closer lecture, nothing to check the mechanic against."
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "19",
+      "rule_lead": "Minimal hand-off + Claude self-augments for send-off prompts.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "n/a",
+      "blocking": false,
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, has_code_fences:false) — a pure-prose closer lecture, nothing to check the mechanic against."
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "20",
+      "rule_lead": "Grill before save — collaborative quality at artefact assembly.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "n/a",
+      "blocking": false,
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, has_code_fences:false) — a pure-prose closer lecture, nothing to check the mechanic against."
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "21",
+      "rule_lead": "Tell me what you wrote, not show me what you'll write.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "n/a",
+      "blocking": false,
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, has_code_fences:false) — a pure-prose closer lecture, nothing to check the mechanic against."
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "22",
+      "rule_lead": "Prompt-body edits require maintainer approval — registry files AND inline blocks.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "n/a",
+      "blocking": false,
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, has_code_fences:false) — a pure-prose closer lecture, nothing to check the mechanic against. Process/approval-workflow rule for editing an existing prompt body — no prompt body exists to edit or approve here."
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "23",
+      "rule_lead": "Artifact destinations are explicit subpaths, never naked filenames (Agents 101-specific).",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "n/a",
+      "blocking": false,
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, has_code_fences:false) — a pure-prose closer lecture, nothing to check the mechanic against. Also explicitly Agents-101-scoped ('Agents 101-specific'); this file is AE101."
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "24",
+      "rule_lead": "Don't restate session CWD inside prompt body.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "n/a",
+      "blocking": false,
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, has_code_fences:false) — a pure-prose closer lecture, nothing to check the mechanic against."
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "25",
+      "rule_lead": "`subagent` allowed in prompt blocks; explain why after prompt.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "n/a",
+      "blocking": false,
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, has_code_fences:false) — a pure-prose closer lecture, nothing to check the mechanic against."
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "26",
+      "rule_lead": "Maintainer-approval edits — ONE-AT-A-TIME, PRIORITY-ORDERED, FOUR-FIELD cards.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "n/a",
+      "blocking": false,
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, has_code_fences:false) — a pure-prose closer lecture, nothing to check the mechanic against. Process/reporting rule governing how findings are surfaced to the maintainer (card format) — not a body-content property of this file; no prompt-body or student-facing edit is being proposed against it."
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "27",
+      "rule_lead": "Name consumer at write time — `Save it as <path>` requires downstream reader.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "n/a",
+      "blocking": false,
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, has_code_fences:false) — a pure-prose closer lecture, nothing to check the mechanic against."
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "28",
+      "rule_lead": "Strong-bold prompt label is exactly `**Prompt**` — custom labels break renderer.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "n/a",
+      "blocking": false,
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, has_code_fences:false) — a pure-prose closer lecture, nothing to check the mechanic against."
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "29",
+      "rule_lead": "Normal work request before orchestration.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "n/a",
+      "blocking": false,
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, has_code_fences:false) — a pure-prose closer lecture, nothing to check the mechanic against."
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "30",
+      "rule_lead": "Live-test corrections preserve operator workflow.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "n/a",
+      "blocking": false,
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, has_code_fences:false) — a pure-prose closer lecture, nothing to check the mechanic against."
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "31",
+      "rule_lead": "Prompts live in registry; module/exercise/lecture files reference by marker.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "n/a",
+      "blocking": false,
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, has_code_fences:false) — a pure-prose closer lecture, nothing to check the mechanic against."
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "32",
+      "rule_lead": "Module names in prompt prose are fine — they ground the session.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "n/a",
+      "blocking": false,
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, has_code_fences:false) — a pure-prose closer lecture, nothing to check the mechanic against."
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "33",
+      "rule_lead": "Git-output greps asserting exact-N need multi-result fallback.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "n/a",
+      "blocking": false,
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, has_code_fences:false) — a pure-prose closer lecture, nothing to check the mechanic against."
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "34",
+      "rule_lead": "Disambiguation, anchors, and decision logic that bind Claude live INSIDE prompt fence.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "n/a",
+      "blocking": false,
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, has_code_fences:false) — a pure-prose closer lecture, nothing to check the mechanic against."
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "35",
+      "rule_lead": "Repeated Q&A → premature re-edits. Separate iteration from persistence.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "n/a",
+      "blocking": false,
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, has_code_fences:false) — a pure-prose closer lecture, nothing to check the mechanic against."
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "36",
+      "rule_lead": "Wide prompts split by logical move — paragraph breaks = cheapest scan-affordance.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "n/a",
+      "blocking": false,
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, has_code_fences:false) — a pure-prose closer lecture, nothing to check the mechanic against."
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "37",
+      "rule_lead": "Orient saved rule by where it FIRES, not surface activity producing it.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "n/a",
+      "blocking": false,
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, has_code_fences:false) — a pure-prose closer lecture, nothing to check the mechanic against."
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "38",
+      "rule_lead": "Body lead-in mirrors prompt's opening phrasing.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "n/a",
+      "blocking": false,
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, has_code_fences:false) — a pure-prose closer lecture, nothing to check the mechanic against."
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "39",
+      "rule_lead": "Declare `permission-mode:` when paste requires specific Claude Code mode.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "n/a",
+      "blocking": false,
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, has_code_fences:false) — a pure-prose closer lecture, nothing to check the mechanic against."
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "40",
+      "rule_lead": "Verify session boundary before deciding prompt's context-carrying.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "n/a",
+      "blocking": false,
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, has_code_fences:false) — a pure-prose closer lecture, nothing to check the mechanic against."
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "41",
+      "rule_lead": "Artifact-vs-STOP tail ordering — last imperative wins.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "n/a",
+      "blocking": false,
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, has_code_fences:false) — a pure-prose closer lecture, nothing to check the mechanic against."
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "42",
+      "rule_lead": "Headless-runner discipline — tail every prompt with no-AUQ guard.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "n/a",
+      "blocking": false,
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, has_code_fences:false) — a pure-prose closer lecture, nothing to check the mechanic against."
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "43",
+      "rule_lead": "Long-running prompts stream progress — never go silent.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "n/a",
+      "blocking": false,
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, has_code_fences:false) — a pure-prose closer lecture, nothing to check the mechanic against."
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "44",
+      "rule_lead": "A leading-looking line can be a forcing function; prefer the simpler prompt.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "n/a",
+      "blocking": false,
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, has_code_fences:false) — a pure-prose closer lecture, nothing to check the mechanic against."
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "45",
+      "rule_lead": "Prompt paths match Builder scope.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "n/a",
+      "blocking": false,
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, has_code_fences:false) — a pure-prose closer lecture, nothing to check the mechanic against. Also explicitly Agents-101-scoped ('Agents 101 has two scopes'); this file is AE101."
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "46",
+      "rule_lead": "Output shape — trust Claude's defaults, don't pad.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "n/a",
+      "blocking": false,
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, has_code_fences:false) — a pure-prose closer lecture, nothing to check the mechanic against."
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "47",
+      "rule_lead": "\"Add X and regenerate\" is a trap.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "n/a",
+      "blocking": false,
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, has_code_fences:false) — a pure-prose closer lecture, nothing to check the mechanic against."
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "48",
+      "rule_lead": "Vary closings deliberately.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "n/a",
+      "blocking": false,
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, has_code_fences:false) — a pure-prose closer lecture, nothing to check the mechanic against. Concerns exercise-closing mechanics (Claude-as-cold-critic / pair exchange / group discussion / etc.) — this is a lecture (closer-shaped final teaching beat of M6), not an exercise with a closing-mechanic choice."
+    },
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": "1",
@@ -13,8 +507,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no platform-capability or runtime-behavior claim anywhere in this file — body (lines 1-31), maintainer block, and backing block carry zero mentions of Claude Code, Cowork, Claude Desktop, skills, slash-commands, MCP, hooks, subagents, or scheduling (confirmed via direct grep on the body region this session: 0 hits for 'claude code|claude desktop|cowork|skill|mcp|slash|subagent|hook|routine')",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -23,8 +519,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no platform-capability or runtime-behavior claim anywhere in this file — body (lines 1-31), maintainer block, and backing block carry zero mentions of Claude Code, Cowork, Claude Desktop, skills, slash-commands, MCP, hooks, subagents, or scheduling (confirmed via direct grep on the body region this session: 0 hits for 'claude code|claude desktop|cowork|skill|mcp|slash|subagent|hook|routine')",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -33,8 +531,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no platform-capability or runtime-behavior claim anywhere in this file — body (lines 1-31), maintainer block, and backing block carry zero mentions of Claude Code, Cowork, Claude Desktop, skills, slash-commands, MCP, hooks, subagents, or scheduling (confirmed via direct grep on the body region this session: 0 hits for 'claude code|claude desktop|cowork|skill|mcp|slash|subagent|hook|routine')",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -43,8 +543,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no platform-capability or runtime-behavior claim anywhere in this file — body (lines 1-31), maintainer block, and backing block carry zero mentions of Claude Code, Cowork, Claude Desktop, skills, slash-commands, MCP, hooks, subagents, or scheduling (confirmed via direct grep on the body region this session: 0 hits for 'claude code|claude desktop|cowork|skill|mcp|slash|subagent|hook|routine')",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -53,8 +555,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no platform-capability or runtime-behavior claim anywhere in this file — body (lines 1-31), maintainer block, and backing block carry zero mentions of Claude Code, Cowork, Claude Desktop, skills, slash-commands, MCP, hooks, subagents, or scheduling (confirmed via direct grep on the body region this session: 0 hits for 'claude code|claude desktop|cowork|skill|mcp|slash|subagent|hook|routine')",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -63,8 +567,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no platform-capability or runtime-behavior claim anywhere in this file — body (lines 1-31), maintainer block, and backing block carry zero mentions of Claude Code, Cowork, Claude Desktop, skills, slash-commands, MCP, hooks, subagents, or scheduling (confirmed via direct grep on the body region this session: 0 hits for 'claude code|claude desktop|cowork|skill|mcp|slash|subagent|hook|routine')",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -73,8 +579,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no platform-capability or runtime-behavior claim anywhere in this file — body (lines 1-31), maintainer block, and backing block carry zero mentions of Claude Code, Cowork, Claude Desktop, skills, slash-commands, MCP, hooks, subagents, or scheduling (confirmed via direct grep on the body region this session: 0 hits for 'claude code|claude desktop|cowork|skill|mcp|slash|subagent|hook|routine')",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -83,8 +591,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no platform-capability or runtime-behavior claim anywhere in this file — body (lines 1-31), maintainer block, and backing block carry zero mentions of Claude Code, Cowork, Claude Desktop, skills, slash-commands, MCP, hooks, subagents, or scheduling (confirmed via direct grep on the body region this session: 0 hits for 'claude code|claude desktop|cowork|skill|mcp|slash|subagent|hook|routine')",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -93,8 +603,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no platform-capability or runtime-behavior claim anywhere in this file — body (lines 1-31), maintainer block, and backing block carry zero mentions of Claude Code, Cowork, Claude Desktop, skills, slash-commands, MCP, hooks, subagents, or scheduling (confirmed via direct grep on the body region this session: 0 hits for 'claude code|claude desktop|cowork|skill|mcp|slash|subagent|hook|routine')",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -103,8 +615,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no platform-capability or runtime-behavior claim anywhere in this file — body (lines 1-31), maintainer block, and backing block carry zero mentions of Claude Code, Cowork, Claude Desktop, skills, slash-commands, MCP, hooks, subagents, or scheduling (confirmed via direct grep on the body region this session: 0 hits for 'claude code|claude desktop|cowork|skill|mcp|slash|subagent|hook|routine')",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -113,8 +627,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no platform-capability or runtime-behavior claim anywhere in this file — body (lines 1-31), maintainer block, and backing block carry zero mentions of Claude Code, Cowork, Claude Desktop, skills, slash-commands, MCP, hooks, subagents, or scheduling (confirmed via direct grep on the body region this session: 0 hits for 'claude code|claude desktop|cowork|skill|mcp|slash|subagent|hook|routine')",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -123,8 +639,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no platform-capability or runtime-behavior claim anywhere in this file — body (lines 1-31), maintainer block, and backing block carry zero mentions of Claude Code, Cowork, Claude Desktop, skills, slash-commands, MCP, hooks, subagents, or scheduling (confirmed via direct grep on the body region this session: 0 hits for 'claude code|claude desktop|cowork|skill|mcp|slash|subagent|hook|routine')",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -133,8 +651,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no platform-capability or runtime-behavior claim anywhere in this file — body (lines 1-31), maintainer block, and backing block carry zero mentions of Claude Code, Cowork, Claude Desktop, skills, slash-commands, MCP, hooks, subagents, or scheduling (confirmed via direct grep on the body region this session: 0 hits for 'claude code|claude desktop|cowork|skill|mcp|slash|subagent|hook|routine')",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -143,8 +663,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no platform-capability or runtime-behavior claim anywhere in this file — body (lines 1-31), maintainer block, and backing block carry zero mentions of Claude Code, Cowork, Claude Desktop, skills, slash-commands, MCP, hooks, subagents, or scheduling (confirmed via direct grep on the body region this session: 0 hits for 'claude code|claude desktop|cowork|skill|mcp|slash|subagent|hook|routine')",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -153,8 +675,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no platform-capability or runtime-behavior claim anywhere in this file — body (lines 1-31), maintainer block, and backing block carry zero mentions of Claude Code, Cowork, Claude Desktop, skills, slash-commands, MCP, hooks, subagents, or scheduling (confirmed via direct grep on the body region this session: 0 hits for 'claude code|claude desktop|cowork|skill|mcp|slash|subagent|hook|routine')",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -163,8 +687,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no platform-capability or runtime-behavior claim anywhere in this file — body (lines 1-31), maintainer block, and backing block carry zero mentions of Claude Code, Cowork, Claude Desktop, skills, slash-commands, MCP, hooks, subagents, or scheduling (confirmed via direct grep on the body region this session: 0 hits for 'claude code|claude desktop|cowork|skill|mcp|slash|subagent|hook|routine')",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -173,8 +699,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no platform-capability or runtime-behavior claim anywhere in this file — body (lines 1-31), maintainer block, and backing block carry zero mentions of Claude Code, Cowork, Claude Desktop, skills, slash-commands, MCP, hooks, subagents, or scheduling (confirmed via direct grep on the body region this session: 0 hits for 'claude code|claude desktop|cowork|skill|mcp|slash|subagent|hook|routine')",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -183,8 +711,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no platform-capability or runtime-behavior claim anywhere in this file — body (lines 1-31), maintainer block, and backing block carry zero mentions of Claude Code, Cowork, Claude Desktop, skills, slash-commands, MCP, hooks, subagents, or scheduling (confirmed via direct grep on the body region this session: 0 hits for 'claude code|claude desktop|cowork|skill|mcp|slash|subagent|hook|routine')",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -193,8 +723,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no platform-capability or runtime-behavior claim anywhere in this file — body (lines 1-31), maintainer block, and backing block carry zero mentions of Claude Code, Cowork, Claude Desktop, skills, slash-commands, MCP, hooks, subagents, or scheduling (confirmed via direct grep on the body region this session: 0 hits for 'claude code|claude desktop|cowork|skill|mcp|slash|subagent|hook|routine')",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -203,8 +735,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no platform-capability or runtime-behavior claim anywhere in this file — body (lines 1-31), maintainer block, and backing block carry zero mentions of Claude Code, Cowork, Claude Desktop, skills, slash-commands, MCP, hooks, subagents, or scheduling (confirmed via direct grep on the body region this session: 0 hits for 'claude code|claude desktop|cowork|skill|mcp|slash|subagent|hook|routine')",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -213,8 +747,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no platform-capability or runtime-behavior claim anywhere in this file — body (lines 1-31), maintainer block, and backing block carry zero mentions of Claude Code, Cowork, Claude Desktop, skills, slash-commands, MCP, hooks, subagents, or scheduling (confirmed via direct grep on the body region this session: 0 hits for 'claude code|claude desktop|cowork|skill|mcp|slash|subagent|hook|routine')",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -223,8 +759,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no platform-capability or runtime-behavior claim anywhere in this file — body (lines 1-31), maintainer block, and backing block carry zero mentions of Claude Code, Cowork, Claude Desktop, skills, slash-commands, MCP, hooks, subagents, or scheduling (confirmed via direct grep on the body region this session: 0 hits for 'claude code|claude desktop|cowork|skill|mcp|slash|subagent|hook|routine')",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -233,8 +771,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no platform-capability or runtime-behavior claim anywhere in this file — body (lines 1-31), maintainer block, and backing block carry zero mentions of Claude Code, Cowork, Claude Desktop, skills, slash-commands, MCP, hooks, subagents, or scheduling (confirmed via direct grep on the body region this session: 0 hits for 'claude code|claude desktop|cowork|skill|mcp|slash|subagent|hook|routine')",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -243,8 +783,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no platform-capability or runtime-behavior claim anywhere in this file — body (lines 1-31), maintainer block, and backing block carry zero mentions of Claude Code, Cowork, Claude Desktop, skills, slash-commands, MCP, hooks, subagents, or scheduling (confirmed via direct grep on the body region this session: 0 hits for 'claude code|claude desktop|cowork|skill|mcp|slash|subagent|hook|routine')",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -253,8 +795,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no platform-capability or runtime-behavior claim anywhere in this file — body (lines 1-31), maintainer block, and backing block carry zero mentions of Claude Code, Cowork, Claude Desktop, skills, slash-commands, MCP, hooks, subagents, or scheduling (confirmed via direct grep on the body region this session: 0 hits for 'claude code|claude desktop|cowork|skill|mcp|slash|subagent|hook|routine')",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -263,8 +807,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no platform-capability or runtime-behavior claim anywhere in this file — body (lines 1-31), maintainer block, and backing block carry zero mentions of Claude Code, Cowork, Claude Desktop, skills, slash-commands, MCP, hooks, subagents, or scheduling (confirmed via direct grep on the body region this session: 0 hits for 'claude code|claude desktop|cowork|skill|mcp|slash|subagent|hook|routine')",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -273,8 +819,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no platform-capability or runtime-behavior claim anywhere in this file — body (lines 1-31), maintainer block, and backing block carry zero mentions of Claude Code, Cowork, Claude Desktop, skills, slash-commands, MCP, hooks, subagents, or scheduling (confirmed via direct grep on the body region this session: 0 hits for 'claude code|claude desktop|cowork|skill|mcp|slash|subagent|hook|routine')",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -283,8 +831,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no platform-capability or runtime-behavior claim anywhere in this file — body (lines 1-31), maintainer block, and backing block carry zero mentions of Claude Code, Cowork, Claude Desktop, skills, slash-commands, MCP, hooks, subagents, or scheduling (confirmed via direct grep on the body region this session: 0 hits for 'claude code|claude desktop|cowork|skill|mcp|slash|subagent|hook|routine')",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -293,8 +843,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no platform-capability or runtime-behavior claim anywhere in this file — body (lines 1-31), maintainer block, and backing block carry zero mentions of Claude Code, Cowork, Claude Desktop, skills, slash-commands, MCP, hooks, subagents, or scheduling (confirmed via direct grep on the body region this session: 0 hits for 'claude code|claude desktop|cowork|skill|mcp|slash|subagent|hook|routine')",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -303,8 +855,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no platform-capability or runtime-behavior claim anywhere in this file — body (lines 1-31), maintainer block, and backing block carry zero mentions of Claude Code, Cowork, Claude Desktop, skills, slash-commands, MCP, hooks, subagents, or scheduling (confirmed via direct grep on the body region this session: 0 hits for 'claude code|claude desktop|cowork|skill|mcp|slash|subagent|hook|routine')",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -313,8 +867,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no platform-capability or runtime-behavior claim anywhere in this file — body (lines 1-31), maintainer block, and backing block carry zero mentions of Claude Code, Cowork, Claude Desktop, skills, slash-commands, MCP, hooks, subagents, or scheduling (confirmed via direct grep on the body region this session: 0 hits for 'claude code|claude desktop|cowork|skill|mcp|slash|subagent|hook|routine')",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -323,8 +879,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no platform-capability or runtime-behavior claim anywhere in this file — body (lines 1-31), maintainer block, and backing block carry zero mentions of Claude Code, Cowork, Claude Desktop, skills, slash-commands, MCP, hooks, subagents, or scheduling (confirmed via direct grep on the body region this session: 0 hits for 'claude code|claude desktop|cowork|skill|mcp|slash|subagent|hook|routine')",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -333,8 +891,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no platform-capability or runtime-behavior claim anywhere in this file — body (lines 1-31), maintainer block, and backing block carry zero mentions of Claude Code, Cowork, Claude Desktop, skills, slash-commands, MCP, hooks, subagents, or scheduling (confirmed via direct grep on the body region this session: 0 hits for 'claude code|claude desktop|cowork|skill|mcp|slash|subagent|hook|routine')",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -343,8 +903,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no platform-capability or runtime-behavior claim anywhere in this file — body (lines 1-31), maintainer block, and backing block carry zero mentions of Claude Code, Cowork, Claude Desktop, skills, slash-commands, MCP, hooks, subagents, or scheduling (confirmed via direct grep on the body region this session: 0 hits for 'claude code|claude desktop|cowork|skill|mcp|slash|subagent|hook|routine')",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -353,8 +915,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no platform-capability or runtime-behavior claim anywhere in this file — body (lines 1-31), maintainer block, and backing block carry zero mentions of Claude Code, Cowork, Claude Desktop, skills, slash-commands, MCP, hooks, subagents, or scheduling (confirmed via direct grep on the body region this session: 0 hits for 'claude code|claude desktop|cowork|skill|mcp|slash|subagent|hook|routine')",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -363,8 +927,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no platform-capability or runtime-behavior claim anywhere in this file — body (lines 1-31), maintainer block, and backing block carry zero mentions of Claude Code, Cowork, Claude Desktop, skills, slash-commands, MCP, hooks, subagents, or scheduling (confirmed via direct grep on the body region this session: 0 hits for 'claude code|claude desktop|cowork|skill|mcp|slash|subagent|hook|routine')",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -373,8 +939,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no platform-capability or runtime-behavior claim anywhere in this file — body (lines 1-31), maintainer block, and backing block carry zero mentions of Claude Code, Cowork, Claude Desktop, skills, slash-commands, MCP, hooks, subagents, or scheduling (confirmed via direct grep on the body region this session: 0 hits for 'claude code|claude desktop|cowork|skill|mcp|slash|subagent|hook|routine')",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -383,8 +951,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no platform-capability or runtime-behavior claim anywhere in this file — body (lines 1-31), maintainer block, and backing block carry zero mentions of Claude Code, Cowork, Claude Desktop, skills, slash-commands, MCP, hooks, subagents, or scheduling (confirmed via direct grep on the body region this session: 0 hits for 'claude code|claude desktop|cowork|skill|mcp|slash|subagent|hook|routine')",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -393,8 +963,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no platform-capability or runtime-behavior claim anywhere in this file — body (lines 1-31), maintainer block, and backing block carry zero mentions of Claude Code, Cowork, Claude Desktop, skills, slash-commands, MCP, hooks, subagents, or scheduling (confirmed via direct grep on the body region this session: 0 hits for 'claude code|claude desktop|cowork|skill|mcp|slash|subagent|hook|routine')",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -403,8 +975,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no platform-capability or runtime-behavior claim anywhere in this file — body (lines 1-31), maintainer block, and backing block carry zero mentions of Claude Code, Cowork, Claude Desktop, skills, slash-commands, MCP, hooks, subagents, or scheduling (confirmed via direct grep on the body region this session: 0 hits for 'claude code|claude desktop|cowork|skill|mcp|slash|subagent|hook|routine')",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -413,8 +987,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no platform-capability or runtime-behavior claim anywhere in this file — body (lines 1-31), maintainer block, and backing block carry zero mentions of Claude Code, Cowork, Claude Desktop, skills, slash-commands, MCP, hooks, subagents, or scheduling (confirmed via direct grep on the body region this session: 0 hits for 'claude code|claude desktop|cowork|skill|mcp|slash|subagent|hook|routine')",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -423,8 +999,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no platform-capability or runtime-behavior claim anywhere in this file — body (lines 1-31), maintainer block, and backing block carry zero mentions of Claude Code, Cowork, Claude Desktop, skills, slash-commands, MCP, hooks, subagents, or scheduling (confirmed via direct grep on the body region this session: 0 hits for 'claude code|claude desktop|cowork|skill|mcp|slash|subagent|hook|routine')",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -433,8 +1011,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no platform-capability or runtime-behavior claim anywhere in this file — body (lines 1-31), maintainer block, and backing block carry zero mentions of Claude Code, Cowork, Claude Desktop, skills, slash-commands, MCP, hooks, subagents, or scheduling (confirmed via direct grep on the body region this session: 0 hits for 'claude code|claude desktop|cowork|skill|mcp|slash|subagent|hook|routine')",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -443,8 +1023,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no platform-capability or runtime-behavior claim anywhere in this file — body (lines 1-31), maintainer block, and backing block carry zero mentions of Claude Code, Cowork, Claude Desktop, skills, slash-commands, MCP, hooks, subagents, or scheduling (confirmed via direct grep on the body region this session: 0 hits for 'claude code|claude desktop|cowork|skill|mcp|slash|subagent|hook|routine')",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -453,8 +1035,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no platform-capability or runtime-behavior claim anywhere in this file — body (lines 1-31), maintainer block, and backing block carry zero mentions of Claude Code, Cowork, Claude Desktop, skills, slash-commands, MCP, hooks, subagents, or scheduling (confirmed via direct grep on the body region this session: 0 hits for 'claude code|claude desktop|cowork|skill|mcp|slash|subagent|hook|routine')",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -463,8 +1047,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no platform-capability or runtime-behavior claim anywhere in this file — body (lines 1-31), maintainer block, and backing block carry zero mentions of Claude Code, Cowork, Claude Desktop, skills, slash-commands, MCP, hooks, subagents, or scheduling (confirmed via direct grep on the body region this session: 0 hits for 'claude code|claude desktop|cowork|skill|mcp|slash|subagent|hook|routine')",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -473,8 +1059,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no platform-capability or runtime-behavior claim anywhere in this file — body (lines 1-31), maintainer block, and backing block carry zero mentions of Claude Code, Cowork, Claude Desktop, skills, slash-commands, MCP, hooks, subagents, or scheduling (confirmed via direct grep on the body region this session: 0 hits for 'claude code|claude desktop|cowork|skill|mcp|slash|subagent|hook|routine')",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -483,8 +1071,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no platform-capability or runtime-behavior claim anywhere in this file — body (lines 1-31), maintainer block, and backing block carry zero mentions of Claude Code, Cowork, Claude Desktop, skills, slash-commands, MCP, hooks, subagents, or scheduling (confirmed via direct grep on the body region this session: 0 hits for 'claude code|claude desktop|cowork|skill|mcp|slash|subagent|hook|routine')",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -493,8 +1083,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no platform-capability or runtime-behavior claim anywhere in this file — body (lines 1-31), maintainer block, and backing block carry zero mentions of Claude Code, Cowork, Claude Desktop, skills, slash-commands, MCP, hooks, subagents, or scheduling (confirmed via direct grep on the body region this session: 0 hits for 'claude code|claude desktop|cowork|skill|mcp|slash|subagent|hook|routine')",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -503,8 +1095,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no platform-capability or runtime-behavior claim anywhere in this file — body (lines 1-31), maintainer block, and backing block carry zero mentions of Claude Code, Cowork, Claude Desktop, skills, slash-commands, MCP, hooks, subagents, or scheduling (confirmed via direct grep on the body region this session: 0 hits for 'claude code|claude desktop|cowork|skill|mcp|slash|subagent|hook|routine')",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -513,8 +1107,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no platform-capability or runtime-behavior claim anywhere in this file — body (lines 1-31), maintainer block, and backing block carry zero mentions of Claude Code, Cowork, Claude Desktop, skills, slash-commands, MCP, hooks, subagents, or scheduling (confirmed via direct grep on the body region this session: 0 hits for 'claude code|claude desktop|cowork|skill|mcp|slash|subagent|hook|routine')",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -523,8 +1119,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no platform-capability or runtime-behavior claim anywhere in this file — body (lines 1-31), maintainer block, and backing block carry zero mentions of Claude Code, Cowork, Claude Desktop, skills, slash-commands, MCP, hooks, subagents, or scheduling (confirmed via direct grep on the body region this session: 0 hits for 'claude code|claude desktop|cowork|skill|mcp|slash|subagent|hook|routine')",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -533,8 +1131,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no platform-capability or runtime-behavior claim anywhere in this file — body (lines 1-31), maintainer block, and backing block carry zero mentions of Claude Code, Cowork, Claude Desktop, skills, slash-commands, MCP, hooks, subagents, or scheduling (confirmed via direct grep on the body region this session: 0 hits for 'claude code|claude desktop|cowork|skill|mcp|slash|subagent|hook|routine')",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -543,8 +1143,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no platform-capability or runtime-behavior claim anywhere in this file — body (lines 1-31), maintainer block, and backing block carry zero mentions of Claude Code, Cowork, Claude Desktop, skills, slash-commands, MCP, hooks, subagents, or scheduling (confirmed via direct grep on the body region this session: 0 hits for 'claude code|claude desktop|cowork|skill|mcp|slash|subagent|hook|routine')",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -553,8 +1155,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no platform-capability or runtime-behavior claim anywhere in this file — body (lines 1-31), maintainer block, and backing block carry zero mentions of Claude Code, Cowork, Claude Desktop, skills, slash-commands, MCP, hooks, subagents, or scheduling (confirmed via direct grep on the body region this session: 0 hits for 'claude code|claude desktop|cowork|skill|mcp|slash|subagent|hook|routine')",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -563,8 +1167,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no platform-capability or runtime-behavior claim anywhere in this file — body (lines 1-31), maintainer block, and backing block carry zero mentions of Claude Code, Cowork, Claude Desktop, skills, slash-commands, MCP, hooks, subagents, or scheduling (confirmed via direct grep on the body region this session: 0 hits for 'claude code|claude desktop|cowork|skill|mcp|slash|subagent|hook|routine')",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -573,8 +1179,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no platform-capability or runtime-behavior claim anywhere in this file — body (lines 1-31), maintainer block, and backing block carry zero mentions of Claude Code, Cowork, Claude Desktop, skills, slash-commands, MCP, hooks, subagents, or scheduling (confirmed via direct grep on the body region this session: 0 hits for 'claude code|claude desktop|cowork|skill|mcp|slash|subagent|hook|routine')",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -583,8 +1191,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no platform-capability or runtime-behavior claim anywhere in this file — body (lines 1-31), maintainer block, and backing block carry zero mentions of Claude Code, Cowork, Claude Desktop, skills, slash-commands, MCP, hooks, subagents, or scheduling (confirmed via direct grep on the body region this session: 0 hits for 'claude code|claude desktop|cowork|skill|mcp|slash|subagent|hook|routine')",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -593,8 +1203,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no platform-capability or runtime-behavior claim anywhere in this file — body (lines 1-31), maintainer block, and backing block carry zero mentions of Claude Code, Cowork, Claude Desktop, skills, slash-commands, MCP, hooks, subagents, or scheduling (confirmed via direct grep on the body region this session: 0 hits for 'claude code|claude desktop|cowork|skill|mcp|slash|subagent|hook|routine')",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -603,8 +1215,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no platform-capability or runtime-behavior claim anywhere in this file — body (lines 1-31), maintainer block, and backing block carry zero mentions of Claude Code, Cowork, Claude Desktop, skills, slash-commands, MCP, hooks, subagents, or scheduling (confirmed via direct grep on the body region this session: 0 hits for 'claude code|claude desktop|cowork|skill|mcp|slash|subagent|hook|routine')",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -613,8 +1227,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no platform-capability or runtime-behavior claim anywhere in this file — body (lines 1-31), maintainer block, and backing block carry zero mentions of Claude Code, Cowork, Claude Desktop, skills, slash-commands, MCP, hooks, subagents, or scheduling (confirmed via direct grep on the body region this session: 0 hits for 'claude code|claude desktop|cowork|skill|mcp|slash|subagent|hook|routine')",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -623,8 +1239,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no platform-capability or runtime-behavior claim anywhere in this file — body (lines 1-31), maintainer block, and backing block carry zero mentions of Claude Code, Cowork, Claude Desktop, skills, slash-commands, MCP, hooks, subagents, or scheduling (confirmed via direct grep on the body region this session: 0 hits for 'claude code|claude desktop|cowork|skill|mcp|slash|subagent|hook|routine')",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -633,8 +1251,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no platform-capability or runtime-behavior claim anywhere in this file — body (lines 1-31), maintainer block, and backing block carry zero mentions of Claude Code, Cowork, Claude Desktop, skills, slash-commands, MCP, hooks, subagents, or scheduling (confirmed via direct grep on the body region this session: 0 hits for 'claude code|claude desktop|cowork|skill|mcp|slash|subagent|hook|routine')",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -643,8 +1263,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no platform-capability or runtime-behavior claim anywhere in this file — body (lines 1-31), maintainer block, and backing block carry zero mentions of Claude Code, Cowork, Claude Desktop, skills, slash-commands, MCP, hooks, subagents, or scheduling (confirmed via direct grep on the body region this session: 0 hits for 'claude code|claude desktop|cowork|skill|mcp|slash|subagent|hook|routine')",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -653,8 +1275,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no platform-capability or runtime-behavior claim anywhere in this file — body (lines 1-31), maintainer block, and backing block carry zero mentions of Claude Code, Cowork, Claude Desktop, skills, slash-commands, MCP, hooks, subagents, or scheduling (confirmed via direct grep on the body region this session: 0 hits for 'claude code|claude desktop|cowork|skill|mcp|slash|subagent|hook|routine')",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -663,8 +1287,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no platform-capability or runtime-behavior claim anywhere in this file — body (lines 1-31), maintainer block, and backing block carry zero mentions of Claude Code, Cowork, Claude Desktop, skills, slash-commands, MCP, hooks, subagents, or scheduling (confirmed via direct grep on the body region this session: 0 hits for 'claude code|claude desktop|cowork|skill|mcp|slash|subagent|hook|routine')",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -673,8 +1299,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no platform-capability or runtime-behavior claim anywhere in this file — body (lines 1-31), maintainer block, and backing block carry zero mentions of Claude Code, Cowork, Claude Desktop, skills, slash-commands, MCP, hooks, subagents, or scheduling (confirmed via direct grep on the body region this session: 0 hits for 'claude code|claude desktop|cowork|skill|mcp|slash|subagent|hook|routine')",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -683,38 +1311,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no platform-capability or runtime-behavior claim anywhere in this file — body (lines 1-31), maintainer block, and backing block carry zero mentions of Claude Code, Cowork, Claude Desktop, skills, slash-commands, MCP, hooks, subagents, or scheduling (confirmed via direct grep on the body region this session: 0 hits for 'claude code|claude desktop|cowork|skill|mcp|slash|subagent|hook|routine')",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_research_claims.md",
-      "rule_index": "1",
-      "rule_lead": "Source URL + type label — mandatory.",
-      "verdict": "PASS",
-      "evidence": "Backing block Sources (lines 75-77): `antti-agentics-helsinki` carries `[checked:2026-08-03 result:ATTESTED due:none] attested:Antti 2025-09-02 Agentics-Helsinki-meetup, count re-attested Antti 2026-08-03` with the `[maintainer-attested]` label, backing the '500K lines in weeks' + 'spec-and-tests was the theme' claims on body line 12 — correct use of §1's maintainer-attested carve-out (no URL owed, named witness, dated). `luma-agentics-helsinki` carries a real URL (https://luma.com/bjg7smsc, re-verified live this session via curl: HTTP 200) with the `[practitioner direct]` label. Vocabulary-is-a-claim sub-check: grepped body (lines 1-31) this session for `converg|practitioners say|entered the vocabulary|independently|the field (calls|names)` — 0 hits.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_research_claims.md",
-      "rule_index": "1a",
-      "rule_lead": "OODA paraphrase ≠ primary source.",
-      "verdict": "PASS",
-      "evidence": "The one detail-grade claim this file carries ('the first Agentics Helsinki meetup, fall 2025, had two of them... every generated line had to correspond to a spec, every feature had to be tested', body line 12) is the maintainer's own first-hand account (backing block: `attested:Antti 2025-09-02 Agentics-Helsinki-meetup`), not a paraphrase transcribed from an OODA research subagent's findings — no subagent-derived paraphrase is presented as primary-source fact anywhere in this file.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_research_claims.md",
-      "rule_index": "2",
-      "rule_lead": "Freshness rule — 6 months.",
-      "verdict": "PASS",
-      "evidence": "Both backing-block source stamps (lines 76-77) close `due:none`. The `antti-agentics-helsinki` stamp qualifies via §1's maintainer-attested carve-out stacked with §2a's durable-account carve-out: first-hand, a specific completed/witnessed event (two demos at one meetup), dated in the body ('fall 2025', line 12) and in the stamp ('2025-09-02'). The `luma-agentics-helsinki` stamp's own inline note (line 77) explicitly invokes this rule: 'Dated-historical: the body frames it as \"the early agentic engineering demos\", allowed under check_research_claims.md §2 — do NOT auto-flag freshness.' Body uses past/historical register throughout ('the first Agentics Helsinki meetup, fall 2025, had two of them'), not present-tense/live-position phrasing, so §2b's live-position trap is not triggered.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_research_claims.md",
@@ -723,18 +1323,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no round-number AI failure/adoption percentage stat anywhere in this file (confirmed this session: grep '[0-9]+%' on body → 0 hits)",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_research_claims.md",
-      "rule_index": "4",
-      "rule_lead": "Hold short OODA loose.",
-      "verdict": "PASS",
-      "evidence": "Maintainer block line 50: 'No convergence claim on the triad in this file. ... counted strictly, its stamps find one independent (Huntley's Ralph) against an L3 bar of 10–20. Nothing downstream of it may call the triad convergent. Do not restore the phrase.' No convergence-count claim of any kind appears in the current body (verified by direct read of lines 1-31); the file's one detail claim is a single-witness attested account, correctly not framed as a research-convergence finding.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_research_claims.md",
@@ -743,8 +1335,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "authoring-priority rule (practitioner observation trumps docs lookup) with no docs-vs-observation conflict visible in a finished static file — nothing to arbitrate",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_research_claims.md",
@@ -753,18 +1347,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "process rule about folding OODA findings into strategy docs before shipping — not evaluable against a finished lecture file's content",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_research_claims.md",
-      "rule_index": "7",
-      "rule_lead": "Vision × Detail split.",
-      "verdict": "PASS",
-      "evidence": "Backing block Claims list (lines 60-73) grades every one of the file's 13 claims `vision` or `detail`. The two detail-grade claims (`500k-lines-in-weeks`, `spec-and-tests-was-the-theme`) each resolve to the Sources block's antti-agentics-helsinki stamp; every other claim is tagged `vision` `← none-owed`, matching the split exactly. Body's vision-layer sentences (lines 6-8, 18-23, 25-29 — the judgement-boundary framing, 'You make agentic happen', 'There is no last turn') carry no citation and correctly need none; the one KB-backed detail sentence (line 12) is the only one that is.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_research_claims.md",
@@ -773,8 +1359,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "process rule for the drafting session (grep continuous-research/ + memory/ before naming a concept) — not evaluable against a finished file",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_research_claims.md",
@@ -783,28 +1371,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "process rule for the drafting session (consult research before generating) — not evaluable against a finished file; the downstream evidence this rule protects is scored under §11's Sources-block check",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_research_claims.md",
-      "rule_index": "10",
-      "rule_lead": "No \"What research says\" callout boxes.",
-      "verdict": "PASS",
-      "evidence": "Body (lines 1-30) is plain narrative bullets/prose throughout — grepped this session for 'research says|according to research' → 0 hits; no boxed callout of any kind anywhere in the file.",
-      "na_reason": null,
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_research_claims.md",
-      "rule_index": "11",
-      "rule_lead": "Source-verification maintainer block on any student-facing file with practitioner citations.",
-      "verdict": "PASS",
-      "evidence": "The file's one practitioner-citation-bearing claim (500K-lines figure, body line 12) is backed by a Sources section below `<!-- backing -->` (lines 75-77) carrying per-source freshness stamps — §11a's current stamp-based mechanism, which this repo's canon (`curriculum/backing-format.md`) uses in place of the older hand-narrated heading this rule's own lead names ('Source verification — MUST DO before first cohort'); §11a itself documents the supersession ('this is the generated punch list; stop hand-narrating source debt in pre-cohort-todos.md'). Both stamps carry correct `[checked:... result:... due:...]` shape: `[checked:2026-08-03 result:ATTESTED due:none]` (ATTESTED correctly paired with the maintainer-attested carve-out, no URL owed) and `[checked:2026-05-25 result:OK due:none] https://luma.com/bjg7smsc` (OK paired with a live URL — re-verified this session via curl, HTTP 200).",
-      "na_reason": null,
-      "fix_hint": "rule-currency question for the maintainer, not a file defect: the rule's own lead text still names the pre-backing-block 'MUST DO before first cohort' heading, while actual practice (and the rule's own §11a sub-clause) has moved to the stamped-Sources mechanism this file correctly uses — worth tightening the lead to match §11a rather than the superseded heading",
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_research_claims.md",
@@ -813,8 +1383,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no adoption/productivity percentage or multiple cited anywhere in this file (the '500K lines' figure is a raw count, not a %, so no denominator/axis ambiguity applies)",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_research_claims.md",
@@ -823,8 +1395,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no absence-based inference or conclusion-drawn-from-a-missing-published-finding anywhere in this file; the closest candidate ('Without that, no way to know the system works', line 12) is the lecture's own vision-layer argument (scored under §7), not an unsourced empirical claim about the cited demos",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_research_claims.md",
@@ -833,8 +1407,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "file makes no claim about what a verification instrument measures — no grep/gate/linter/judge described in body",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_research_claims.md",
@@ -843,8 +1419,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no word-presence-in-corpus claim made anywhere in this file",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_research_claims.md",
@@ -853,8 +1431,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no discovery/candidate-search content in this file",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -863,8 +1443,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no fenced prompt blocks in this file at all (fence_ranges: [] per body view, confirmed this session) — the forcing-function-in-prompt-vs-body question does not arise on a file with no prompts",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -873,8 +1455,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "governs rules saved to memory/compendiums with a forcing-function location, not lecture body content — no memory-rule-writing depicted or discussed in this file",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -883,8 +1467,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "governs re-verify triggers on session-completion claims ('done', skeptical pushback), not lecture body content — not applicable to a closer's reflective prose",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -893,8 +1479,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "file builds no verification machinery (hook/judge/loop/gate) — nothing to smoke-test",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -903,8 +1491,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "body is reflective closer prose (judgement/expression, grounding, the flywheel), not a teaching pass through Claude Code's auto-load/lazy-load/explicit-load context tiers",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_prompts.md",
@@ -913,8 +1503,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "this file has zero fenced prompt blocks and zero `{{prompt:}}` markers (fence_ranges: [] and has_prompt_blocks:false per body view, confirmed this session via direct grep) — the mechanical prompt-design surfaces this rule governs do not exist on this file",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_prompts.md",
@@ -923,8 +1515,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "this file has zero fenced prompt blocks and zero `{{prompt:}}` markers (fence_ranges: [] and has_prompt_blocks:false per body view, confirmed this session via direct grep) — the mechanical prompt-design surfaces this rule governs do not exist on this file",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_prompts.md",
@@ -933,8 +1527,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "this file has zero fenced prompt blocks and zero `{{prompt:}}` markers (fence_ranges: [] and has_prompt_blocks:false per body view, confirmed this session via direct grep) — the mechanical prompt-design surfaces this rule governs do not exist on this file",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_prompts.md",
@@ -943,8 +1539,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "this file has zero fenced prompt blocks and zero `{{prompt:}}` markers (fence_ranges: [] and has_prompt_blocks:false per body view, confirmed this session via direct grep) — the mechanical prompt-design surfaces this rule governs do not exist on this file",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_prompts.md",
@@ -953,42 +1551,32 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "this file has zero fenced prompt blocks and zero `{{prompt:}}` markers (fence_ranges: [] and has_prompt_blocks:false per body view, confirmed this session via direct grep) — the mechanical prompt-design surfaces this rule governs do not exist on this file",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+      "carried_shape": "776191893f0953c7"
     }
   ],
   "todos_count": 0,
   "blocking_findings_count": 0,
-  "citations_checked": [
+  "drift_rules_reread": [
     {
-      "line": 12,
-      "claim": "500K lines in weeks / spec-and-tests was the theme (two Agentics Helsinki demos)",
-      "label_present": true,
-      "url_present": false,
-      "url_alive": null,
-      "evidence_level_honest": true,
-      "note": "maintainer-attested carve-out — no URL owed; backed by antti-agentics-helsinki stamp in backing block"
-    }
-  ],
-  "urls_sampled": [
-    {
-      "url": "https://luma.com/bjg7smsc",
-      "alive": true,
-      "status_code": 200
+      "compendium": "check_prompts.md",
+      "rule_index": "17",
+      "verdict": "N/A for this file — re-read at current wording (structural trigger narrowed 2026-09-03 to plan-mode only, 4+-sub-steps half retired). File has zero prompt blocks and no plan-mode content of any kind (has_prompt_blocks:false, has_code_fences:false), so neither the old nor the narrowed trigger has anything to fire against. No change from the pre-drift verdict."
     }
   ],
   "accept_notes_found": [
-    "L34 emphasis pass (2026-07-09, Antti-directed 'go very lightly on the bold')",
-    "L38 Quality: compendium-audited 2026-08-29 (per-class SHAs)",
-    "L40 sim-passed 2026-05-31 note",
-    "L46 Soil slide placement (2026-08-15, Antti-directed)",
-    "L50 No convergence claim on the triad in this file",
-    "L52 ## Ralph cut whole (Antti 2026-09-02)",
-    "L54 ## The agent stops where your judgement begins rewritten (Antti 2026-09-02)",
-    "L56 ## The right information grounds and makes quality added (Antti 2026-09-02)",
-    "L76 antti-agentics-helsinki source stamp",
-    "L77 luma-agentics-helsinki source stamp",
-    "L84 Stance [stance:2026-08-01 level:L1]"
-  ],
-  "notes": "check_prompts.md: technical owns only the mechanical-correctness subset per this dispatch's template (action lead-in §2, no placeholders §1, chain-by-back-reference §5, multi-sample structural enforcement §8, citation discipline §13) — not full-compendium coverage, which the completeness contract reserves for check_platform_and_boundaries + check_research_claims only. All five are N/A: this file has zero prompt content. check_pedagogy: evaluated only the five named technical sub-rules (16, 22, 23, 36, 37); the remaining 62 rules belong to the pedagogy judge. Sample size on URL liveness: only one URL exists in the entire file (body has_urls:false; the sole URL is the luma-agentics-helsinki backing-block stamp) — sampled the one that exists rather than 3-5, since there are not 3-5 to sample. A prior instance for this (file, class) pair flagged a maintainer-block currency defect (stale references to a '## Why the loop survives the model' slide the body no longer carries) as OUT-OF-LANE for the writing judge — re-checked this session (grep for 'loop survives|Why the loop|loop feeds itself' → 0 hits) and confirmed already fixed by commit 6ece955e; not re-flagged."
+    "L34 — emphasis pass (2026-07-09, Antti-directed 'go very lightly on the bold'): bold only on the three order handles of *You make agentic happen*.",
+    "L38-40 — Quality stamp + sim-passed note (2026-05-31 sim; predates the slide rework).",
+    "L46 — Soil slide placement + register calls (2026-08-15, Antti-directed, four guards a-d).",
+    "L50 — 'No convergence claim on the triad in this file' (M5 owns the triad's one-instance-against-L3-bar count; do not restore convergence phrasing here).",
+    "L52 — '## Ralph' cut whole (Antti 2026-09-02); old content in git at 7d13d15e, do not restore.",
+    "L54 — 'The agent stops where your judgement begins' rewrite (Antti 2026-09-02); old three paragraphs in git at 109ca335, do not restore.",
+    "L56 — 'The right information grounds and makes quality' slide (title + bridge sentences Antti's, 2026-09-02).",
+    "L76 — antti-agentics-helsinki source stamp: maintainer-attested carve-out, no URL owed, correction only if the maintainer's own recall was off.",
+    "L77 — luma-agentics-helsinki source stamp: dated-historical framing accepted, do NOT auto-flag freshness.",
+    "L84 — Stance block (L1, 2026-08-01): our own framing, no field claim made.",
+    "L92 — last-run: 2026-08-01 (OODA question/roster both none-standing)."
+  ]
 }

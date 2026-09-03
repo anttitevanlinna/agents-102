@@ -1,17 +1,45 @@
 {
   "class": "technical",
+  "training": "ae101",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/the-2-frontiers.md",
   "verdict": "PASS",
-  "training": "ae101",
-  "body_sha": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
+  "body_sha": "d7c61a8ab4173c17343ec2264e2357b33e1b6d12a7c534177d81917abf782aae",
   "shape_hash": "605546789744a58d",
+  "notes": "Rule-drift re-audit pinned at 4e0370bc. git diff 4e0370bc..HEAD -- curriculum/lectures/the-2-frontiers.md shows exactly one changed span: the maintainer block's **Quality:** line and its judges@ list (stamp advances from concurrent sibling-class judges on this same file, most recently commit 68258204 bumping the strategy@ pin), plus nothing else — the 8-line body and the backing block are byte-identical to the pinned version throughout. body_sha below was re-taken at the current HEAD (post sibling stamp) after confirming via git diff/git log that only maintainer-block bookkeeping moved; none of the evaluated content did. check_pedagogy{16,22,23,36,37} and check_prompts{1,2,5,8,13} (technical's owned sub-rule sets per this class's template) plus all 67 non-drift check_platform_and_boundaries rules and 15 non-drift check_research_claims rules were parked by prefill-instance.js under unchanged shape_hash 605546789744a58d and merged in below unmodified; they were not re-derived. The remaining 43 check_prompts rules and 57 check_pedagogy rules the brief surfaced are outside this class's scope per technical.md ('this class owns mechanical correctness' for prompts; 'pedagogy judge is primary owner of the rest') and were correctly left unwritten.",
   "rules_evaluated": [
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": "38",
       "rule_lead": "Prose describing a runtime the room never executes drifts to plausible mechanism — no judge catches it, because no artefact contradicts it.",
       "verdict": "PASS",
-      "evidence": "Body re-read fresh against the rewritten bullets (commit 6cb6c6e3, 2026-09-02 — text changed since the prior technical pass, which quoted the now-superseded 'The agent is building the agentic loop now' opener). Current L5-7: 'The model's frontier moves without you. Every release, it can do more.' / 'Your frontier is what you have expressed. It moves when you write, and only then.' / 'Two questions sit on your frontier. Can your system learn fast, and can it learn the right things?' Checked against the three tells: (a) no 'X against Y' retrieval-mechanism smuggling — no verb of the shape 'reads/checks/matches against'; (b) no lifecycle noun borrowed from an untouched stage — no shipping/review/deploy/install vocabulary; (c) no unsourced cadence — no 'once a sprint'/'nightly' claim. There is no forward-looking automation beat at all here (no 'the agent will X', no runtime mechanism described) — the three bullets are house-position/vision framing about model releases and the student's own authored expression, matching the backing block's own classification (all three claims tagged 'vision · ← none-owed').",
+      "evidence": "Body re-read fresh (L5-7, unchanged since 4e0370bc): 'The model's frontier moves without you. Every release, it can do more.' / 'Your frontier is what you have expressed. It moves when you write, and only then.' / 'Two questions sit on your frontier. Can your system learn fast, and can it learn the right things?' Checked against all three tells: (a) no 'X against Y' retrieval-mechanism smuggling — no verb of the shape 'reads/checks/matches against' anywhere; (b) no lifecycle noun borrowed from an untouched stage — no shipping/review/deploy/install vocabulary; (c) no unsourced cadence claim (no 'once a sprint'/'nightly'). More basically, there is no forward-looking automation beat here at all — no 'the agent will X', no runtime mechanism described, no what-if-wired-later shape. The three lines are vision-layer metaphor (model release cadence, the student's own authored expression), matching the backing block's own classification (all three claims tagged 'vision · ← none-owed', zero detail-layer or mechanism content).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": "7",
+      "rule_lead": "Vision × Detail split.",
+      "verdict": "PASS",
+      "evidence": "Body (L5-7) is pure vision-layer framing (Antti's frontier-as-metaphor arc device), not a practitioner claim or shipped-practice number — no detail-layer content anywhere. Backing block confirms explicitly: all three Claims rows tagged 'vision · ← none-owed'; Frameworks section tags both entries 'none-owed'/'cultural-vocab'; Sources reads '(none. House positions and one open question; the lecture asserts nothing sourced about the world.)' Stance block states 'holds: nothing sourced, by design... level:L0 is the correct reading of a file with no sourced assertion in it.' Consistent file-wide.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": "10",
+      "rule_lead": "No \"What research says\" callout boxes.",
+      "verdict": "PASS",
+      "evidence": "grep -in 'research says' curriculum/lectures/the-2-frontiers.md → no matches (exit 1). No callout-box structure of any kind in the 8-line body; the file is three plain bullets, no boxed/framed aside.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "17",
+      "rule_lead": "Preamble before action — design around it.",
+      "verdict": "N/A",
+      "evidence": "DRIFT-RECHECK (dispatcher-named: rule narrowed 2026-09-03 to fire on plan-mode prompts only, retiring the old 4+-sub-steps trigger). Re-fetched current wording via `node curriculum/evals/scripts/rule.js prompts 17`. Precondition for either branch of the rule — a fenced `**Prompt**` block for Claude to narrate ahead of, plan-mode or otherwise — is unmet: fence_ranges: [] and has_prompt_blocks: false per body-view; confirmed directly against the raw source, which carries zero fences and zero `{{prompt:}}` markers (it is a one-slide lecture opener, no prompt of any kind). The narrowing changes which prompt SHAPES trigger the rule; it does not create a prompt where none exists, so the verdict is N/A under both the old and the new wording.",
       "fix_hint": null,
       "blocking": false
     },
@@ -21,26 +49,10 @@
       "rule_lead": "Thinking-effort levels are a real, named Claude Code control surface — stamped.",
       "verdict": "N/A",
       "evidence": "grep -in 'effort' curriculum/lectures/the-2-frontiers.md → no matches in the 8-line body or maintainer/backing blocks. File contains zero thinking-effort/--effort/config-level language.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_research_claims.md",
-      "rule_index": "7",
-      "rule_lead": "Vision × Detail split.",
-      "verdict": "PASS",
-      "evidence": "Current body (L5-7) is pure vision-layer framing — Antti's arc device (frontier-as-metaphor), not a practitioner claim or shipped-practice number. Backing block, re-read at current wording, confirms this explicitly under Claims: `model-frontier-moves-without-you` · vision · ← none-owed; `your-frontier-is-what-you-expressed` · vision · ← none-owed; `two-questions-on-your-frontier` · vision · ← none-owed. Frameworks section: 'Learning rate is the ceiling · [borrow:none] · ← none' and 'Variation, selection, retention · [borrow:evolutionary theory] · ← cultural-vocab' — both none-owed/cultural-vocab, no KB backing claimed. Zero detail-layer content (no number, no named practitioner, no shipped-practice claim) anywhere in the file.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_research_claims.md",
-      "rule_index": "10",
-      "rule_lead": "No \"What research says\" callout boxes.",
-      "verdict": "PASS",
-      "evidence": "grep -in 'research says' curriculum/lectures/the-2-frontiers.md → exit 1 (0 matches). No callout-box structure of any kind in the 8-line body.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
+      "carried_shape": "605546789744a58d"
     },
     {
       "compendium": "check_research_claims.md",
@@ -48,8 +60,10 @@
       "rule_lead": "Source-verification maintainer block on any student-facing file with practitioner citations (incl. 11a freshness-stamp grammar).",
       "verdict": "N/A",
       "evidence": "DRIFT-RECHECK (dispatcher-flagged: rule text has grown 11a's freshness-stamp grammar since this class's last pin). Re-fetched current wording via `node curriculum/evals/scripts/rule.js research_claims 11`. Precondition — 'named practitioner + specific URL + load-bearing number' — is unmet: backing block Sources reads '(none. House positions and one open question; the lecture asserts nothing sourced about the world.)' No URL, no named practitioner, no number anywhere in body, maintainer block, or backing block (has_urls: false, has_source_stamps: false per body-view signals). 11a's stamp grammar only fires once the base rule's block is owed, which it isn't here — the precondition, not the added grammar, is what resolves this N/A, so the addendum doesn't change the verdict.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
+      "carried_shape": "605546789744a58d"
     },
     {
       "compendium": "check_prompts.md",
@@ -57,8 +71,10 @@
       "rule_lead": "Every prompt block: one-sentence action lead-in (incl. 2a length-scales-with-prompt-length, 2b trainer-screen-demo carve-out, 2c header-as-lead-in).",
       "verdict": "N/A",
       "evidence": "DRIFT-RECHECK (dispatcher-flagged). Re-fetched current wording via `node curriculum/evals/scripts/rule.js prompts 2` (now carries 2a/2b/2c sub-clauses). Precondition — a `**Prompt**` fenced block existing in the file — is unmet: fence_ranges: [] and has_prompt_blocks: false per body-view; confirmed directly against the raw source, which has zero fences and zero `{{prompt:}}` markers. Rule 2 and all three sub-clauses only ever fire on a prompt block's lead-in; none exists here, so none of the added sub-clauses changes the verdict.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
+      "carried_shape": "605546789744a58d"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -68,7 +84,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -79,7 +95,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -90,7 +106,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -101,7 +117,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -112,7 +128,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -123,7 +139,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -134,7 +150,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -145,7 +161,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -156,7 +172,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -167,7 +183,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -178,7 +194,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -189,7 +205,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -200,7 +216,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -211,7 +227,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -222,7 +238,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -233,7 +249,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -244,7 +260,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -255,7 +271,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -266,7 +282,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -277,7 +293,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -288,7 +304,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -299,7 +315,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -310,7 +326,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -321,7 +337,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -332,7 +348,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -343,7 +359,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -354,7 +370,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -365,7 +381,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -376,7 +392,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -387,7 +403,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -398,7 +414,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -409,7 +425,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -420,7 +436,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -431,7 +447,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -442,7 +458,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -453,7 +469,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -464,7 +480,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -475,7 +491,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -486,7 +502,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -497,7 +513,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -508,7 +524,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -519,7 +535,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -530,7 +546,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -541,7 +557,7 @@
       "evidence": "grep -rl \"the-2-frontiers\" curriculum/trainings/ → curriculum/trainings/agentic-engineering-101/spot-gaps-build-the-loop.md (confirms training=ae101, linked from the AE101 M6 module per the file's own 'Lecture meta' line).",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -552,7 +568,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -563,7 +579,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -574,7 +590,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -585,7 +601,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -596,7 +612,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -607,7 +623,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -618,7 +634,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -629,7 +645,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -640,7 +656,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -651,7 +667,7 @@
       "evidence": "This row's own body_sha (2b07e4c5…3d4ba) was produced by `shasum -a 256` on curriculum/lectures/the-2-frontiers.md, not fabricated, and shape_hash (605546789744a58d) was copied verbatim from prefill-instance.js's own report — both comply with (c) rather than trigger it.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -662,7 +678,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -673,7 +689,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -684,7 +700,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -695,7 +711,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -706,7 +722,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -717,7 +733,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -728,7 +744,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -739,7 +755,7 @@
       "evidence": "DRIFT-RECHECK: re-fetched via `node curriculum/evals/scripts/rule.js platform_and_boundaries 45` at current wording (includes the 2026-08-28 'Fail-open corollary' addendum on check-instance-evidence.js's ledger-shape blindness). Rule governs the design of audit/detector TOOLING (audit-eval-coverage.js, check-instance-evidence.js) — it has no predicate that reaches lecture body prose; the-2-frontiers.md contains no detector, auditor, grep-check, or verification-instrument content for it to apply to.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -750,7 +766,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -761,7 +777,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -772,7 +788,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -783,7 +799,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -794,7 +810,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -805,7 +821,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -816,7 +832,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -827,7 +843,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -838,7 +854,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -849,7 +865,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -860,7 +876,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -871,7 +887,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -882,7 +898,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -893,7 +909,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -904,7 +920,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -915,7 +931,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -926,7 +942,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -937,7 +953,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -948,7 +964,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -959,7 +975,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -970,7 +986,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -981,7 +997,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -992,7 +1008,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -1003,7 +1019,7 @@
       "evidence": "expand-md.js not run (signals.has_prompt_blocks=false, has_figures=false per body-view — nothing to expand); confirmed directly: zero fenced `**Prompt**` blocks, zero `{{prompt:}}` markers in the raw source (fence_ranges: []).",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -1014,7 +1030,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -1025,7 +1041,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -1036,14 +1052,10 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "1aba76b6ba7fa829e18aa88ecc5b2f57e76a62a30c20692a9ed5bf3617d3c79b",
+      "carried_from": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
       "carried_shape": "605546789744a58d"
     }
   ],
-  "platform_claims_checked": [],
-  "citations_checked": [],
-  "skills_referenced": [],
-  "urls_sampled": [],
-  "blocking_findings_count": 0,
-  "todos_count": 1
+  "todos_count": 0,
+  "blocking_findings_count": 0
 }

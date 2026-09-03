@@ -77,7 +77,9 @@ Step 3 mines this session for corrections; this reads what the judges have been 
 
 **A standing population of open todos is healthy, and driving it to zero is not the goal.** Zero would mean the judges had stopped noticing. Never work the todos one by one, and never decline them one by one: a rule firing non-blocking across fifteen files is one mis-calibrated rule, not fifteen flawed files, and closing fifteen notes by hand spends real attention to make a report look tidy while changing nothing about what the next sweep raises.
 
-Read the `·` column — rules that have fired and **never once gated**. On the first run that was 47 of 61. A rule in that state is one of three things, and only the maintainer can say which:
+Two columns, two different jobs. **`open`** is what a rule is still saying about the corpus as it stands. **`moved`** is findings written against text that has since changed — those owe a re-judge, not a fix, and they reach the queue as `stale-finding`. Never tune a rule on its `moved` count: `writing §3` once ranked first in AE101 on 16 todos of which 13 were already fixed, which is how a rule ossifies into permanent first place.
+
+Then read the `·` column — rules that have fired and **never once gated**. A rule in that state is one of three things, and only the maintainer can say which:
 
 - **advisory by nature** → mark it so, and its notes stop reading as work;
 - **too broad** → it wants a carve-out; the notes are true and unhelpful;

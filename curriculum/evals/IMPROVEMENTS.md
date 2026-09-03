@@ -8,6 +8,8 @@ Moved out of `pre-cohort-todos.md` on 2026-08-15, unchanged in substance: they w
 
 ## Open
 
+- **Sim-trace caches hash the exercise file, not the prompts the student pastes.** `story.md` and `prompt-behavior.md` key reuse on `content_sha` (sha256 of the full file) and per-phase `phase_sha`; a `{{prompt:<key>}}` marker hashes as the marker, so an edit to `curriculum/prompts/<key>.md` with no edit to the exercise replays a trace of the old prompt. Seen 2026-09-03 on `read-your-stack` (story): the primitives prompt had changed and the trace regenerated only because the Quality line moved the file sha. Hash the expanded view (`scripts/expand-md.js`) instead of the raw file, in both templates and in whatever writes the cache.
+
 - **`grandfathered` on a never-judged file reads as pinned.** Stamping two classes on `read-your-stack.md` (no prior Quality line) wrote the other five as `grandfathered`; `scan-stale-classes` then lists only `slides(never)` and drops writing / technical / behavior / strategy, which no judge has ever cleared (2026-09-02). A class with no prior row should stamp as `never`, not inherit a rung it never had.
 
 - **`stamp-from-reeval.js` aborts the whole run on the first `update-quality.sh` refusal.** `execFileSync` throws on one file's sha gate and every later file goes unstamped; the run has to be finished by hand per file (2026-09-02, M6: one UNKNOWN class on the stack exercise cost the other five files their stamps until re-run manually). Catch per file, record REFUSED with the gate's reason, continue.

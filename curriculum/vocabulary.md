@@ -38,7 +38,7 @@ Noun-run for the agent sitting is banned in student-facing body, engineers don't
 | **walk-down** | the second-pass branch-walking interview against a plan (Pocock's grill-me, abbreviated, credited) | | `push-back-on-the-plan`; named in `skills-from-the-frontier` |
 | **send-off** | launching a long-running session you walk away from | the first send-off is deliberately un-packaged, packaging is what the re-send adds | `walk-and-send-off` |
 | **the passage** | the sea-chart spine: one long-running session drawn as a passage | chart callbacks say *the passage*, never "the run" | `what-packaging-is` chart; re-annotated in `composing-the-workflow` |
-| **the map** | the six-phase compounding-engine diagram (closed-loop, borrow: control theory), every task's cycle, not only the long-running arc | a distinct image from the passage; don't blend the two spines | `the-whole-map`, `composing-the-workflow` (formerly `the-map-filled-in`) |
+| **the map** | the six-phase compounding-engine diagram (closed-loop, borrow: control theory), every task's cycle, not only the long-running arc | a distinct image from the passage; don't blend the two spines | `the-whole-map`, `composing-the-workflow` |
 
 ## The system, memory · context · agent
 

@@ -13,7 +13,7 @@ After this module, you will be able to:
 - **Diagnose** the gaps two sessions of the same task surface, and read where each belongs: memory, sharper verifier, or new skill
 - **Cut** one rule from `./CLAUDE.local.md` the diagnosis killed
 - **Read** the checks you built as evals: a pass rate, not a pass
-- **Turn** the work you repeat across sessions into a handoff prompt that builds the kit
+- **Turn** the work you repeat across sessions into a handoff prompt that builds one skill and the checks on its work
 
 ## Start here
 

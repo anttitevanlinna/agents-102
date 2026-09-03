@@ -1,8 +1,8 @@
 # Agents that build agents
 
-## The handoff prompt that builds your kit
+## The handoff prompt that grows your kit
 
-The shapes you drew are still in the session. Ask the agent to turn them into a prompt that builds the kit.
+The shapes you drew are still in the session. Ask the agent to write you a handoff prompt to run later: one skill, with its checks.
 
 {{prompt:agents-that-build-agents-handoff}}
 
@@ -12,16 +12,18 @@ What comes back is a prompt, not a plan. Save it where you will find it.
 
 **Time:** 3 minutes.
 
-**Handoff-prompt forcing function, failure mode + escape hatch (`check_pedagogy.md` §47, added 2026-08-20).** Dominant failure is **plan-instead-of-prompt**: asked to turn the session's shapes into something that builds the kit, the agent returns an implementation plan, and the student saves it believing they have the artefact. The body says *"What comes back is a prompt, not a plan"* precisely because this is the common return, but that line diagnoses without recovering. Escape hatch, trainer or self: ask for the prompt itself, in the words you would paste into a fresh session, and check the return opens with an instruction rather than a numbered plan. Second failure is **thin shapes**, where the stack exercise's diagrams never got drawn and the handoff has nothing to package; recover by pointing at the ranked recurring work from the study prompt and building from the top two. Nothing downstream consumes the return, but the student leaves without the one artefact the module exists to produce.
+**Handoff-prompt forcing function, failure mode + escape hatch (`check_pedagogy.md` §47, added 2026-08-20).** Dominant failure is **plan-instead-of-prompt**: asked to turn the session's shapes into a handoff prompt, the agent returns an implementation plan, and the student saves it believing they have the artefact. The body says *"What comes back is a prompt, not a plan"* precisely because this is the common return, but that line diagnoses without recovering. Escape hatch, trainer or self: ask for the prompt itself, in the words you would paste into a fresh session, and check the return opens with an instruction rather than a numbered plan. Second failure is **thin shapes**, where the stack exercise's diagrams never got drawn and the handoff has nothing to package; recover by pointing at the ranked recurring work from the study prompt and building from the top two. Nothing downstream consumes the return, but the student leaves without the one artefact the module exists to produce.
 
 **L9 stays as it is (Antti 2026-09-03).** The plan-instead-of-prompt tell is not added to the body: more text without value at a three-minute beat. The recovery stays trainer-side, in the note above. Judges should not re-file `check_pedagogy.md` §47 or `check_student_facing.md` §5 on L9.
 
 **§6 carve-out, the answer must be theirs (checked 2026-08-20).** Not a `check_lectures.md` §6 violation: *"The shapes you drew are still in the session"* names the student's own session, which is §6's tell. A trainer demo would hand the room the trainer's kit. Leave it student-run; do not re-flag.
 
-**Prompt block:** `agents-that-build-agents-handoff` — the agent reads the recurring-work shapes from the session and writes the student a standalone, cold-runnable prompt that builds workflow skills across their whole stack (study then diagram then author). Anchoring (2026-08-01): requires only `recurring-shape-diagrams` (the `-shapes` output), not a shipped skill — the registry entry is the authority on prerequisites.
+**Prompt block:** `agents-that-build-agents-handoff` — the agent reads the recurring-work shapes from the session and writes the student a standalone, cold-runnable prompt that scans their work, picks one skill with them and builds it, then puts efficient checks on the work that skill produces (Antti 2026-09-03: the kit-wide version asked a cold session for N skills and gave it two starting points; nobody finishes that from a three-minute beat). Anchoring (2026-08-01): requires only `recurring-shape-diagrams` (the `-shapes` output), not a shipped skill — the registry entry is the authority on prerequisites.
 
 **Open for next pass:**
 - Real-cohort gold standard: the only handoff-generator live-test on record is sim-grade (constructed M6 context: six named shapes, a stand-in skill) and predates the shapes-only anchor. A live-test on an actual student's M6 close, their real shapes, is the real-cohort bar; owed until a cohort runs.
+
+**Declined at the 2026-09-03 polish pass:** the `check_prompts.md` §17 preamble row falls under the rule as narrowed to plan mode the same day; the strategy row recorded no action owed. Judges should not re-file either.
 
 **`## The move widens to everything you do` — cut whole (Antti 2026-09-02: nothing valuable enough; making room for the right content).** In git at `a4ccebe9`. Do not restore.
 

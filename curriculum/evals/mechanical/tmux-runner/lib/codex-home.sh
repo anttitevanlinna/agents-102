@@ -29,12 +29,23 @@ codex_prepare_home() {
   export CODEX_HOME
 }
 
+codex_capture_sessions() {
+  [[ -n "${CODEX_ADAPTER_HOME:-}" ]] || return 0
+  [[ -n "${CODEX_RUN_DIR:-}" ]] || return 0
+  local source="$CODEX_ADAPTER_HOME/sessions"
+  local destination="$CODEX_RUN_DIR/codex-sessions"
+  [[ -d "$source" ]] || return 0
+  mkdir -p "$destination"
+  cp -R "$source"/. "$destination"/
+}
+
 codex_cleanup_home() {
   [[ -n "${CODEX_ADAPTER_HOME:-}" ]] || return 0
   if [[ -z "${CODEX_RUN_DIR:-}" || "$CODEX_ADAPTER_HOME" != "$CODEX_RUN_DIR/codex-home" ]]; then
     echo "codex_cleanup_home: refusing unexpected path: $CODEX_ADAPTER_HOME" >&2
     return 2
   fi
+  codex_capture_sessions
   rm -rf -- "$CODEX_ADAPTER_HOME"
   CODEX_ADAPTER_HOME=''
   export CODEX_ADAPTER_HOME

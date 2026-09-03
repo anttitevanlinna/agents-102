@@ -64,6 +64,14 @@ codex_turn "$TMP/second.prompt" 2 3
 [[ "$(cat "$TMP/run-success/turn-2.response.txt")" == 'second response' ]]
 grep -q 'exec --json' "$FAKE_CODEX_LOG"
 grep -q 'exec resume thread-123 --json' "$FAKE_CODEX_LOG"
+grep -Eq 'exec --json .*--enable multi_agent_v2' "$FAKE_CODEX_LOG" || {
+  echo 'FAIL: Codex start omitted the v2 multi-agent feature' >&2
+  exit 1
+}
+grep -Eq 'exec resume thread-123 --json .*--enable multi_agent_v2' "$FAKE_CODEX_LOG" || {
+  echo 'FAIL: Codex resume omitted the v2 multi-agent feature' >&2
+  exit 1
+}
 grep -Eq 'exec resume thread-123 --json .*--skip-git-repo-check' "$FAKE_CODEX_LOG" || {
   echo 'FAIL: Codex resume omitted --skip-git-repo-check' >&2
   exit 1
@@ -110,6 +118,12 @@ codex_turn "$TMP/isolated.prompt" 1 3
 [[ "$(field "$TMP/run-isolated/turn-1.status.json" ok)" == true ]]
 codex_close
 [[ ! -e "$run_home" ]]
+[[ -f "$TMP/run-isolated/codex-sessions/2026/09/03/parent.jsonl" ]] || {
+  echo 'FAIL: codex_close did not preserve native parent/child rollout evidence' >&2
+  exit 1
+}
+[[ ! -e "$TMP/run-isolated/codex-sessions/auth.json" ]]
+[[ ! -e "$TMP/run-isolated/codex-sessions/config.toml" ]]
 [[ "$CODEX_HOME" == "$TMP/operator" ]] || {
   echo "FAIL: codex_close did not restore operator CODEX_HOME: $CODEX_HOME" >&2
   exit 1

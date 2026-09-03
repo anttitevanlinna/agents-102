@@ -166,7 +166,9 @@ assert_turn() {
     # ----- prework -----
     prework:1)
       local fail=0
-      for sub in prework memory sources agents .claude module-4/policies; do
+      local project_skills
+      project_skills="$(artifact_path project-skills)"
+      for sub in prework memory sources agents "$project_skills" module-4/policies; do
         [[ -e "$sut_cwd/$sub" ]] || { echo "[assert] FAIL prework T1: missing $sut_cwd/$sub" >&2; fail=1; }
       done
       [[ $fail -eq 0 ]] && echo "[assert] PASS prework T1: starter tree extracted"

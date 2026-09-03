@@ -6,7 +6,8 @@
 #
 # Contents (the prework-installed working material from
 # curriculum/scaffolds/agents-101-starter/, maintainer blocks stripped, plus
-# the canonical self-study skill from .claude/skills/self-study/SKILL.md):
+# the canonical self-study skill from .claude/skills/self-study/SKILL.md,
+# generated into every runtime's project-skills artifact home):
 #
 #   prework/.keep
 #   module-4/policies/*.md
@@ -14,6 +15,7 @@
 #   sources/.keep
 #   agents/.keep
 #   .claude/skills/self-study/SKILL.md
+#   .agents/skills/self-study/SKILL.md
 #   prompts/<key>.md          # only the Agents 101 marker closure, not the
 #                             # whole registry — see the prompts block below
 #
@@ -36,6 +38,13 @@ cd "$(dirname "$0")/.."
 OUT="agents-101-starter.tar.gz"
 SRC="curriculum/scaffolds/agents-101-starter"
 SELF_STUDY_SKILL=".claude/skills/self-study/SKILL.md"
+PROJECT_SKILLS_DIRS="$(node - <<'NODE'
+const runtimes = require('./site/layouts/a101-runtimes.js');
+const paths = Object.values(runtimes.PROFILES)
+  .map((profile) => profile.artifacts['project-skills']);
+process.stdout.write([...new Set(paths)].sort().join('\n'));
+NODE
+)"
 STAGE="$(mktemp -d)"
 trap 'rm -rf "$STAGE"' EXIT
 
@@ -74,8 +83,11 @@ done
   esac
 done
 
-mkdir -p "$ROOT/.claude/skills/self-study"
-strip_maintainer "$SELF_STUDY_SKILL" "$ROOT/.claude/skills/self-study/SKILL.md"
+while IFS= read -r project_skills_dir; do
+  [[ -n "$project_skills_dir" ]] || continue
+  mkdir -p "$ROOT/$project_skills_dir/self-study"
+  strip_maintainer "$SELF_STUDY_SKILL" "$ROOT/$project_skills_dir/self-study/SKILL.md"
+done <<< "$PROJECT_SKILLS_DIRS"
 
 # Ship the prompts the student resolves locally via `{{prompt:<key>}}` markers.
 # Ship ONLY the Agents 101 closure, not the whole ~166-file registry (finding P1):
@@ -141,7 +153,8 @@ if [ -d "$PROMPTS_SRC" ]; then
 fi
 
 # Build tarball from inside ROOT so the archive has prework/, module-4/policies/,
-# memory/, sources/, agents/, .claude/ at the top level (no wrapper).
+# memory/, sources/, agents/, and runtime instruction homes at the top level
+# (no wrapper).
 rm -f "$OUT"
 (cd "$ROOT" && tar czf "$OLDPWD/$OUT" .)
 
@@ -150,10 +163,18 @@ echo "Built $OUT"
 echo "Top-level entries:"
 tar tzf "$OUT" | awk -F/ 'NF>1 && $2 != "" {print $2}' | sort -u | sed 's|^|  |'
 echo
-for path in prework module-4/policies/gdpr-essentials.md module-4/policies/data-classification.md module-4/policies/ai-use-baseline.md module-4/policies/sector-rules-placeholder.md patterns/personal-to-team-patterns.md memory sources agents .claude/skills/self-study/SKILL.md; do
+for path in prework module-4/policies/gdpr-essentials.md module-4/policies/data-classification.md module-4/policies/ai-use-baseline.md module-4/policies/sector-rules-placeholder.md patterns/personal-to-team-patterns.md memory sources agents; do
   if ! tar tzf "$OUT" | grep -qE "^\./?${path}(/|\$)"; then
     echo "WARNING — expected path missing: $path" >&2
     exit 1
   fi
 done
+while IFS= read -r project_skills_dir; do
+  [[ -n "$project_skills_dir" ]] || continue
+  path="$project_skills_dir/self-study/SKILL.md"
+  if ! tar tzf "$OUT" | grep -qE "^\./?${path}(/|\$)"; then
+    echo "WARNING — expected path missing: $path" >&2
+    exit 1
+  fi
+done <<< "$PROJECT_SKILLS_DIRS"
 echo "Expected paths present."

@@ -30,7 +30,8 @@ TRAINING_DIR="curriculum/trainings/$TRAINING"
 
 # Per-training skill whitelist. Sourced from training-architecture.md §Skills.
 # `security-tools` carries the M3 "external skills are a supply-chain vector"
-# live demo (rick-roll); see pre-cohort-todos.md "Surprise-skill live demo".
+# live demo (rick-roll); design intent in curriculum/exercises/
+# threat-model-with-stride.md, "M3 supply-chain easter egg" block.
 SKILLS=(access-control-analysis stride security-tools)
 
 # Trainer-only files in the training dir — excluded from reachability walk.

@@ -17,7 +17,7 @@ This file is a starter. Everyone sees how this will bloat almost immediately.
 ## Write your rules file from the session
 
 - Claude reviews the whole scrollback in one shot and drafts your rules from how you actually worked.
-- You are not drafting from a blank page. The agent reads the session for you.
+- You are not drafting from a blank page.
 - The tracker conventions count as evidence too. The field rules you read off your own ticket are in this scrollback, and this is where they land on disk.
 
 > **Long session, long read.** If the review stalls or runs past a couple of minutes, interrupt with `Esc`, narrow to the orient and introspect phases first, and say `continue`. It fails the other way too: a summary that arrives fast and reads clean has usually covered the last few turns and skipped the rest. If nothing in it comes from the early part of the session, a `"there's more here"`-prompt buys another pass.
@@ -28,7 +28,7 @@ This file is a starter. Everyone sees how this will bloat almost immediately.
 ## Push back where the summary misreads
 
 - Read Claude's summary. Quote the specific session moment back at Claude.
-- The rules file is yours now. Born from the session, evolved over time.
+- The rules file is yours now.
 
 ## Keep or revert the `.gitignore` edit
 
@@ -72,10 +72,10 @@ Claims
 - `session-is-the-evidence` · vision · "the session is the evidence" ← none-owed
 - `no-three-question-retro` · vision · "No retro questionnaire" ← none-owed
 - `compound-definition-plain` · borrowed · "make the next one easier with what this one taught" ← klaassen-definitive-guide — plain-words paraphrase of the core philosophy. The Compound-step lineage is not anchored here; it sits in Claude's own summary, per the Frameworks note below. Wording per `vocabulary.md` § compound engineering.
-- `not-drafting-from-a-blank-page` · vision · "You are not drafting from a blank page. The agent reads the session for you." ← none-owed
+- `not-drafting-from-a-blank-page` · vision · "You are not drafting from a blank page." ← none-owed
 - `heads-up-before-close-flushes-wip` · detail · "A heads-up that you are about to compact or end the session flushes out work in progress." ← maintainer-attested-flush
 - `quote-the-moment-back` · vision · "Quote the specific session moment back at Claude." ← none-owed
-- `rules-file-is-yours-now` · vision · "Born from the session, evolved over time." ← none-owed
+- `rules-file-is-yours-now` · vision · "The rules file is yours now." ← none-owed
 - `gitignore-edit-is-yours-to-keep` · vision · "Keep or revert the `.gitignore` edit" ← none-owed
 
 Sources

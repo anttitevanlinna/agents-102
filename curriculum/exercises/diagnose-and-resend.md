@@ -118,7 +118,7 @@ In the worktree at `../<repo-name>-m5`. The packaging files live on disk; the wo
 
 Fresh context matters here. The exercise session built heavy scrollback (verifier scaffolding, hooks, plan.md drafts); every re-send turn would otherwise pay cache-read on that prefix. A fresh session avoids repeatedly carrying the heaviest context, and the field has a name for this move (Ralph's fresh-sessions camp, Amp's manual-handoff camp; see [What packaging is](lectures/what-packaging-is.md)).
 
-Prefer to stay in the exercise session? Paste this to drop scrollback in-place:
+Prefer to stay in the exercise session? Drop the scrollback in place instead:
 
 {{prompt:ae101-m5-clear-before-rerun}}
 
@@ -126,7 +126,7 @@ Prefer to stay in the exercise session? Paste this to drop scrollback in-place:
 
 Either way, the re-send prompt below stands alone: Claude finds the packaging in the worktree and reads it cold.
 
-Ask Claude to re-run the same task using the reference, plan.md, and verifier you just built.
+Ask Claude to record this session's run coordinates, then re-run the same task using the reference, plan.md, and verifier you just built.
 
 {{prompt:ae101-m5-rerun-packaged}}
 

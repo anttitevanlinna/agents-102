@@ -29,7 +29,7 @@ Ask Claude where the record of this session lives.
 - Whatever sits in your working tree lands in this commit. Unrelated WIP: scope it out first.
 - The commit writes the branch name and the transcript path into `task.md`, so a later session recovers this experiment from disk instead of hunting for it.
 
-Ask Claude to commit current state on a feature branch and report the short SHA.
+Ask Claude to create a feature branch and commit current state, then report the short SHA.
 
 {{prompt:ae101-m4-commit-starting-point}}
 
@@ -45,7 +45,7 @@ Ask Claude to push the branch to the remote.
 
 *7 min*
 
-Ask Claude to run the scoped task end-to-end in this same session.
+Ask Claude to take the scoped task end-to-end in this same session.
 
 {{prompt:ae101-m4-take-task-end-to-end}}
 
@@ -55,7 +55,7 @@ Ask Claude to run the scoped task end-to-end in this same session.
 - Nudge by hand: answer a question, correct a path, push back on visible drift. Past ten or so interventions, you have become the agent; call it and read the transcript.
 - If the session goes completely off the rails, stop it. The trace is the evidence either way.
 
-If Claude stalls, ask it to keep going. The nudge reads as encouragement and lands as a taunt.
+If the agent stalls, ask it to keep going. The nudge reads as encouragement and lands as a taunt.
 
 {{prompt:ae101-m4-nudge-continue}}
 

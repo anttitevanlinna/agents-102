@@ -28,9 +28,9 @@ Drop your bug after the colon.
 
 ## Interrogate the fix for a deeper layer
 
-- When the agent says done, ask whether the change is the root cause or a layer above it. The first cut usually fixes what makes the test pass; the deeper cut asks whether the test was pointing at the right thing. Name what a deeper edit would touch and see what Claude defends. The exchange is where root-cause discipline shows up, not in the fix itself.
+- When the agent says done, ask whether the change is the root cause or a layer above it. The first cut usually fixes what makes the test pass; the deeper cut asks whether the test was pointing at the right thing. Find what a deeper edit would touch and see what the agent defends. The exchange is where root-cause discipline shows up, not in the fix itself.
 
-**Optional.** Skip if your test already pins the right behaviour and the fix does exactly that, nothing deeper to interrogate. Otherwise, ask Claude to interrogate the fix and name what's still surface.
+**Optional.** Skip if your test already pins the right behaviour and the fix does exactly that, nothing deeper to interrogate. Otherwise, ask the agent to interrogate the fix and name what's still surface.
 
 {{prompt:fix-tests-first-2}}
 

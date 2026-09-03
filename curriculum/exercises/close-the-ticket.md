@@ -34,7 +34,7 @@ Push back on the five. The ones you reject sharpen the read as much as the ones 
 
 - Adding a connector is one command per tracker. [MCP and connectors](../trainings/agentic-engineering-101/reference/mcp-and-connectors.md) has them, and it pays back on every session after this one.
 
-Ask Claude to write the close-out, update the ticket, and report what it wrote.
+Ask Claude to update the ticket with a close-out note and report what it wrote.
 
 {{prompt:close-the-ticket-3}}
 

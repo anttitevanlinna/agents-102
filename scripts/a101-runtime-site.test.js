@@ -29,7 +29,7 @@ test('runtime profiles carry the executable transport only on CLI surfaces', () 
   assert.equal(R.PROFILES.desktop.transport, '');
   assert.equal(R.PROFILES.cli.transport, 'claude-tmux');
   assert.equal(R.PROFILES['codex-desktop'].transport, '');
-  assert.equal(R.PROFILES['codex-cli'].transport, 'codex-exec');
+  assert.equal(R.PROFILES['codex-cli'].transport, 'codex-tmux');
 });
 
 test('surface metadata activates equivalent Claude and Codex profiles', () => {

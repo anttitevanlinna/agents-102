@@ -54,7 +54,7 @@
             ['codex', 'desktop', 'code'], 'AGENTS.md', '.agents/skills'
         ),
         'codex-cli': profile(
-            'codex-cli', 'Codex CLI', 'codex', 'cli', 'codex-exec',
+            'codex-cli', 'Codex CLI', 'codex', 'cli', 'codex-tmux',
             ['codex', 'cli', 'code'], 'AGENTS.md', '.agents/skills'
         )
     });

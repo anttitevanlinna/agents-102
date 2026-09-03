@@ -32,7 +32,7 @@ transport_open() {
       claude_open "$cwd" "$run_dir"
       ;;
     codex-cli)
-      source "${A101_CODEX_TRANSPORT:-$A101_RUNNER_DIR/transports/codex-exec.sh}"
+      source "${A101_CODEX_TRANSPORT:-$A101_RUNNER_DIR/transports/codex-tmux.sh}"
       A101_ACTIVE_TRANSPORT=codex
       codex_open "$cwd" "$run_dir"
       ;;

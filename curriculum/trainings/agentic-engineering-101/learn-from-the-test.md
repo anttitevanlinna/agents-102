@@ -117,7 +117,7 @@ Optional.
 ## Next
 <!--tier:3-->
 
-Module 6 reads the packaged session: subtler misses, subtler drift. The question widens from *did my task pass?* to *do all our tasks pass, and who reviewed what?*
+Module 6 reads the packaged session: subtler misses, subtler drift.
 
 <!--/flag:module:spot-gaps-build-the-loop-->
 

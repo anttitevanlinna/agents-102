@@ -130,7 +130,7 @@ Ask Claude to record this session's run coordinates, then re-run the same task u
 
 {{prompt:ae101-m5-rerun-packaged}}
 
-<!--flag:module:spot-gaps-build-the-loop-->The walk-away report at the close is what Module 6 opens on.<!--/flag:module:spot-gaps-build-the-loop--><!--flag:no-module:spot-gaps-build-the-loop-->The walk-away report at the close is the evidence this session leaves behind.<!--/flag:no-module:spot-gaps-build-the-loop--> Expect partial failures framed as partial successes, *"shipped most of it, hit a snag on X."* RLHF is a big part of why: agreeable answers won the preference round. The contrast with the un-packaged session depends on this report being candid evidence, not encouragement. If the summary reads polished, ask the agent to list the artifacts that didn't ship and quote the verifier output verbatim where it fired. You decide whether to push.
+The session closes with the agent's own report of what it did. Expect partial failures framed as partial successes, *"shipped most of it, hit a snag on X."* RLHF is a big part of why: agreeable answers won the preference round. The contrast with the un-packaged session depends on this report being candid evidence, not encouragement. If the summary reads polished, ask the agent to list the artifacts that didn't ship and quote the verifier output verbatim where it fired. You decide whether to push.
 
 The laptop stays awake and plugged in while it runs (power settings → prevent sleep on power). Same cancel-is-legit rule as the un-packaged session: stopping when the trace is enough is the result. Manual nudges are part of the session; when nudging turns into typing every step, the agent isn't the agent any more, that's a result worth reading.
 

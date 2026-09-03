@@ -6,7 +6,8 @@
 #
 # Contents (the prework-installed working material from
 # curriculum/scaffolds/agents-101-starter/, maintainer blocks stripped, plus
-# the canonical self-study skill from .claude/skills/self-study/SKILL.md):
+# the canonical self-study skill from .claude/skills/self-study/SKILL.md,
+# generated into every runtime's project-skills artifact home):
 #
 #   prework/.keep
 #   module-4/policies/*.md
@@ -14,6 +15,7 @@
 #   sources/.keep
 #   agents/.keep
 #   .claude/skills/self-study/SKILL.md
+#   .agents/skills/self-study/SKILL.md
 #   agents-101-handbook.html  # theory handbook: every lecture + exercise summaries,
 #                             # one self-contained page, opened from disk
 #   prompts/<key>.md          # only the Agents 101 marker closure, not the
@@ -40,6 +42,13 @@ OUT="${1:-agents-101-starter.tar.gz}"
 case "$OUT" in /*) ;; *) OUT="$PWD/$OUT" ;; esac
 SRC="curriculum/scaffolds/agents-101-starter"
 SELF_STUDY_SKILL=".claude/skills/self-study/SKILL.md"
+PROJECT_SKILLS_DIRS="$(node - <<'NODE'
+const runtimes = require('./site/layouts/a101-runtimes.js');
+const paths = Object.values(runtimes.PROFILES)
+  .map((profile) => profile.artifacts['project-skills']);
+process.stdout.write([...new Set(paths)].sort().join('\n'));
+NODE
+)"
 STAGE="$(mktemp -d)"
 trap 'rm -rf "$STAGE"' EXIT
 
@@ -78,8 +87,11 @@ done
   esac
 done
 
-mkdir -p "$ROOT/.claude/skills/self-study"
-strip_maintainer "$SELF_STUDY_SKILL" "$ROOT/.claude/skills/self-study/SKILL.md"
+while IFS= read -r project_skills_dir; do
+  [[ -n "$project_skills_dir" ]] || continue
+  mkdir -p "$ROOT/$project_skills_dir/self-study"
+  strip_maintainer "$SELF_STUDY_SKILL" "$ROOT/$project_skills_dir/self-study/SKILL.md"
+done <<< "$PROJECT_SKILLS_DIRS"
 
 # Ship the prompts the student resolves locally via `{{prompt:<key>}}` markers.
 # Ship ONLY the Agents 101 closure, not the whole ~166-file registry (finding P1):
@@ -159,7 +171,8 @@ env -u AGENTS_BRAND_DIR AGENTS_OUTPUT_DIR="$STAGE/handbook" node scripts/build-w
 cp "$STAGE/handbook/_starter/agents-101/theory-handbook.html" "$ROOT/agents-101-handbook.html"
 
 # Build tarball from inside ROOT so the archive has prework/, module-4/policies/,
-# memory/, sources/, agents/, .claude/ at the top level (no wrapper).
+# memory/, sources/, agents/, and runtime instruction homes at the top level
+# with no wrapper.
 # The stage lives under mktemp, so every copy and generated handbook otherwise
 # gives the archive a new set of mtimes. Normalize those and suppress gzip's own
 # timestamp so unchanged inputs produce byte-identical customer artifacts.
@@ -172,10 +185,18 @@ echo "Built $OUT"
 echo "Top-level entries:"
 tar tzf "$OUT" | awk -F/ 'NF>1 && $2 != "" {print $2}' | sort -u | sed 's|^|  |'
 echo
-for path in prework module-4/policies/gdpr-essentials.md module-4/policies/data-classification.md module-4/policies/ai-use-baseline.md module-4/policies/sector-rules-placeholder.md patterns/personal-to-team-patterns.md memory sources agents .claude/skills/self-study/SKILL.md agents-101-handbook.html; do
+for path in prework module-4/policies/gdpr-essentials.md module-4/policies/data-classification.md module-4/policies/ai-use-baseline.md module-4/policies/sector-rules-placeholder.md patterns/personal-to-team-patterns.md memory sources agents agents-101-handbook.html; do
   if ! tar tzf "$OUT" | grep -qE "^\./?${path}(/|\$)"; then
     echo "WARNING — expected path missing: $path" >&2
     exit 1
   fi
 done
+while IFS= read -r project_skills_dir; do
+  [[ -n "$project_skills_dir" ]] || continue
+  path="$project_skills_dir/self-study/SKILL.md"
+  if ! tar tzf "$OUT" | grep -qE "^\./?${path}(/|\$)"; then
+    echo "WARNING — expected path missing: $path" >&2
+    exit 1
+  fi
+done <<< "$PROJECT_SKILLS_DIRS"
 echo "Expected paths present."

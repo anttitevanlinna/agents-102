@@ -20,7 +20,7 @@ _codex_tui_wait_ready() {
       _tmux send-keys -t "$CODEX_SESSION" Enter
       trusted=1
     fi
-    if grep -q 'OpenAI Codex' <<< "$snap" && grep -q '› Explain this codebase' <<< "$snap"; then
+    if grep -q 'OpenAI Codex' <<< "$snap" && grep -Eq '^› .+' <<< "$snap"; then
       return 0
     fi
     if (( $(date +%s) - started >= timeout )); then

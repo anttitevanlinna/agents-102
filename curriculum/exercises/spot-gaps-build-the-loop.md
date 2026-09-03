@@ -19,31 +19,29 @@ Open a new Claude Code session in the existing M5 worktree (`../<repo-name>-m5`)
 - You hold two sessions of the same task. The un-packaged session sits on the `m4/<slug>` branch recorded in `task.md`; the packaged re-send sits on the `m5/<slug>` branch recorded in `plan.md`.
 - Read from the recorded coordinates, not a branch or transcript search. Both sessions recorded their transcript paths: M4 in `task.md`, M5 in the protected `Run coordinates` block at the top of `plan.md`.
 
-Ask Claude to read both sessions side by side and name where packaging caught, where it missed, and what new shapes of drift it introduced.
+Ask Claude to read both sessions and walk the diff between them.
 
 {{prompt:spot-gaps-build-the-loop-1}}
 
 ## Read the contrast, push back where it generalises
 
-- Skim past the opening plan. Claude will likely open with a four-dimension plan summary (*"I'll start with repo state across the m4/ branch, then..."*) before any quoted evidence lands. The contrast moments are what you're reading for.
+- Skim past the opening plan. The agent will likely open with a four-dimension plan summary (*"I'll start with repo state across the m4/ branch, then..."*) before any quoted evidence lands. The contrast moments are what you're reading for.
 - Push back where Claude generalises. If Claude writes *"the agent drifted on goal"* without naming which commit, which file, which scrollback line, re-run the prompt with the quote rule re-asserted.
-- Expect over-credit on the packaging. A fair push-back is *"name one thing the verifier missed, concretely."* Close with a ranked gap list of three to five items and a dominant gap.
+- Expect over-credit on the packaging. A fair push-back is *"name one thing the verifier missed, concretely."*
 
 ## Cut one stale rule the diagnosis killed
 
 - Two sessions of the same task were the first real stress-test of `./CLAUDE.local.md`. Diagnosis surfaced rules that turned out wrong, never fired when they should have, or fired and made the session worse.
 - Rules-files have a half-life. Adding rules is only half of it; subtracting the dead ones is the other half.
 
-Ask Claude to cut one rule the two-session diagnosis killed, or to say so and stop if all rules held.
+Ask Claude to cut the one rule the diagnosis killed.
 
 {{prompt:spot-gaps-build-the-loop-2}}
 
 ## Say go, unless the cut spreads past the one rule
 
-- Claude may pause before editing `./CLAUDE.local.md`. A named config file looks risky to modify. If it asks, just say go.
-- Push back if the diff touches more than the one rule you flagged. *"In place"* is loose wording, and Claude may rewrite more than the one stale rule. One rule cut, no more.
-
-**What happened:** A one-screen gap map across memory / verifier / skill and one stale rule cut in place.
+- The agent may pause before editing `./CLAUDE.local.md`. A named config file looks risky to modify. If it asks, approve.
+- Push back if the diff touches more than the one rule you flagged. *"In place"* is loose wording, and the agent may rewrite more than the one stale rule. One rule cut, no more.
 
 <!-- maintainer -->
 
@@ -54,6 +52,8 @@ Ask Claude to cut one rule the two-session diagnosis killed, or to say so and st
 **View summary:** You compare the un-packaged and packaged runs side by side, quote where the packaging caught and where it missed, rank what the second attempt still left open, and cut one stale rule from your rules-file that the two-session diagnosis killed.
 
 **Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** bullet leads plain; bold only on widget / label chrome, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`.
+
+**Declined at the 2026-09-03 polish pass (list shown to Antti, no veto):** *The point* line stays as written; it is scoped to the exercise's own two sessions, a corpus we control, so `check_writing.md` §21's world-claim test does not fire. The Plug-points entry follows the training-wide convention of naming the in-training artefacts an exercise consumes; whether that convention should be renamed is a corpus question (`check_pedagogy.md` §44), not this file's. Judges should not re-file either.
 
 **Quality:** compendium-audited 2026-09-03 (writing@544871e5 story@289b45a3 technical@56076c47 behavior@289b45a3 pedagogy@56076c47 strategy@4e0370bc slides@4e0370bc)
 - judges @56076c47: writing PASS (6 todos see instances/ae101--exercise--spot-gaps-build-the-loop.writing.json), story PASS (1 todo see instances/ae101--exercise--spot-gaps-build-the-loop.story.json), technical PASS (1 todo see instances/ae101--exercise--spot-gaps-build-the-loop.technical.json), behavior PASS, pedagogy PASS (1 todo see instances/ae101--exercise--spot-gaps-build-the-loop.pedagogy.json), strategy PASS, slides PASS (1 todo see instances/ae101--exercise--spot-gaps-build-the-loop.slides.json)

@@ -32,7 +32,7 @@ Ask Claude to scan your sessions across every project and group the kinds of wor
 ## Draw your top work-shapes as diagrams
 
 - What comes back is the work you do over and over, grouped and ranked. Read for the few at the top you actually repeat.
-- A recurring kind of work has a shape. Steps in order, a branch, a loop back. Drawn, the shape is easier to recognise than described.
+- A recurring kind of work has a shape: steps in order, a branch, a loop back.
 
 Ask Claude to draw your top few work-shapes as simple diagrams.
 
@@ -119,6 +119,8 @@ OODA
 
 **Decision points (pacing):**
 - **Study + shapes run long (>15 min)** — the wider look is a light pass, not a full inventory. Study reads the ranked head; shapes draws two or three. If it eats the clock the student is cataloguing; use the body stop gate and skip the sidestep.
+
+**Declined at the 2026-09-03 polish pass:** the *say "tell me what you've found so far"* and *say "give me this in HTML"* callouts stay as written (Antti: *say* and *tell* with a quoted utterance are the training's established prompt triggers; `check_student_facing.md` §31 widened the same day). The four *no preamble* rows on the study, shapes and primitives fences fall under `check_prompts.md` §17 as narrowed to plan mode on 2026-09-03; none of these fences is plan mode. Judges should not re-file either.
 
 **Quality:** compendium-audited 2026-09-03 (writing@289b45a3 story@289b45a3 technical@289b45a3 behavior@289b45a3 pedagogy@289b45a3 strategy@289b45a3 slides@289b45a3)
 - judges @289b45a3: writing PASS (2 todos see instances/ae101--exercise--read-your-stack.writing.json), story PASS (1 todo see instances/ae101--exercise--read-your-stack.story.json), technical PASS, behavior PASS (1 todo see instances/ae101--exercise--read-your-stack.behavior.json), pedagogy PASS (1 todo see instances/ae101--exercise--read-your-stack.pedagogy.json), strategy PASS, slides PASS (1 todo see instances/ae101--exercise--read-your-stack.slides.json)

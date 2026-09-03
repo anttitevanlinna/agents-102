@@ -57,7 +57,6 @@ Ask Claude to cut one rule the two-session diagnosis killed, or to say so and st
 
 **Quality:** compendium-audited 2026-09-03 (writing@94fcca2d story@289b45a3 technical@94fcca2d behavior@289b45a3 pedagogy@289b45a3 strategy@4e0370bc slides@4e0370bc)
 - judges @94fcca2d: writing PASS (5 todos see instances/ae101--exercise--spot-gaps-build-the-loop.writing.json), story PASS (1 todo see instances/ae101--exercise--spot-gaps-build-the-loop.story.json), technical PASS (3 todos see instances/ae101--exercise--spot-gaps-build-the-loop.technical.json), behavior PASS, pedagogy PASS (3 todos see instances/ae101--exercise--spot-gaps-build-the-loop.pedagogy.json), strategy PASS, slides PASS (1 todo see instances/ae101--exercise--spot-gaps-build-the-loop.slides.json)
-- re-audit @796293b 2026-05-31: writing PASS, pedagogy PASS — steer-callout gained a premature-completion recovery line (§48/§62) + a render-as-HTML affordance callout after the shapes prompt (§50/§53/§62 hold)
 
 **Word count:** ~420 words body.
 

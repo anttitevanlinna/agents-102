@@ -37,7 +37,7 @@ The training closes.
 
 **Quality:** compendium-audited 2026-09-03 (writing@289b45a3 story@289b45a3 technical@94fcca2d behavior@4e0370bc pedagogy@4e0370bc strategy@4e0370bc slides@289b45a3)
 - judges @94fcca2d: writing PASS (1 todo see instances/ae101--lecture--agents-that-build-agents.writing.json), story PASS (1 todo see instances/ae101--lecture--agents-that-build-agents.story.json), technical PASS (1 todo see instances/ae101--lecture--agents-that-build-agents.technical.json), behavior PASS (1 todo see instances/ae101--lecture--agents-that-build-agents.behavior.json), pedagogy PASS (3 todos see instances/ae101--lecture--agents-that-build-agents.pedagogy.json), strategy PASS (2 todos see instances/ae101--lecture--agents-that-build-agents.strategy.json), slides PASS
-- sim-passed 2026-05-31 (three-persona sim + handoff-generator live-test @182969a): generated handoff is cold-safe — named shapes carried, on-disk `session-shaper` referenced as the worked example, repos re-studied, no placeholders. Sim-grade (constructed M6 context); a real-cohort live-test on an actual M6 close is still owed — no cohort has run it yet. Per-class instances at `curriculum/evals/instances/ae101--lecture--agents-that-build-agents.<class>.json`. Predates the slide rework.
+- sim-passed 2026-05-31 (three-persona sim). Per-class instances at `curriculum/evals/instances/ae101--lecture--agents-that-build-agents.<class>.json`.
 
 **Lecture meta:** *Closer-shaped, the module's last teaching beat. Voice: Risto-leading, Boris-grounding, Martin-spare. Pedagogical bet: the agent runs on what you have expressed, and expression sets the frontier; the model moves its own line, you move yours.*
 

@@ -65,6 +65,12 @@ Proven patterns for how to research effectively. Promoted from observations when
 
 Each entry: cycle number, date, what the researcher learned about researching.
 
+### Cycle 204 — 2026-09-03
+
+Vendor responses to disclosed vulnerabilities can bifurcate into a silent product patch and an unchanged public position simultaneously — and neither is visible from the other. Anthropic shipped v2.1.257 (Sep 1) adding a Containment Escape rule addressing the Rehberger attack surface, while maintaining the "working as designed" public stance with no security blog or CVE. A researcher checking only the public statements would miss the patch; a researcher checking only the changelog would miss that the public position is unchanged. For any security disclosure, track both the public communications surface (blog, CVE, advisory) AND the release changelog separately — they are independent signals that can diverge.
+
+Practitioner discrepancies in claimed session counts (3-4 vs 10-20) are often workflow-context differences, not contradictions. Resolving them requires checking the original context for each claim (interactive session vs. fire-and-rotate background task) rather than treating the numbers as competing measurements of the same variable. When two practitioners quote figures an order of magnitude apart, the first question is "same workflow type?" not "who is wrong?"
+
 ### Cycle 201 — 2026-08-31
 
 When a watch item resolves to "structured absence" across all 5 targets in one cycle, the correct interpretation is not research failure but confirmation of a pattern: the surface is quiet, the underlying processes are happening privately (enterprise migrations, vendor rollouts, practitioner deliberation). The absence pattern itself is the finding, and the research log should name the dominant absence mechanism — Polaris operates as unnamed default not named picker option; Assistants API failures are silent (200 OK degraded) not visible outages; Anthropic's response is a code patch not a blog. Naming the absence mechanism is more useful to the next researcher than simply noting "not found."

@@ -38,7 +38,7 @@ Ask Claude to draw your top few work-shapes as simple diagrams.
 
 {{prompt:spot-gaps-build-the-loop-shapes}}
 
-> **Want to see the shapes, not read them?** Mermaid comes back as text. Say *give me this in HTML* to open them in a browser.
+> **Want to see the shapes**, not read them? Mermaid comes back as text. Say *give me this in HTML* to open them in a browser.
 
 ## Sidestep: check your menu against the field's
 

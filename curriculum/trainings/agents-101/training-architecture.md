@@ -115,7 +115,7 @@ The prework starter must be:
 - Installed once and idempotent. Extracting it twice produces the same tree.
 - Non-clobbering. Do not ship a `CLAUDE.md`, agent file, judge file, report, or other artifact the student is meant to create or compound.
 - Reference material only. Module 4 can ship `module-4/policies/*.md` because those files are source material the student runs raw. Module 4 must not ship a prebuilt security skill.
-- Small. Include `prework/`, `.claude/skills/self-study/`, `agents-101-handbook.html` (the theory handbook: every lecture plus exercise summaries, the read-back surface, opened from disk), and cross-module homes (`memory/`, `sources/`, `agents/`) because the student uses them early. Include module folders only when they contain shipped reference material, such as `module-4/policies/`.
+- Small. Include `prework/`, `agents-101-handbook.html` (the theory handbook: every lecture plus exercise summaries, opened from disk), and cross-module homes (`memory/`, `sources/`, `agents/`) because the student uses them early. Include module folders only when they contain shipped reference material, such as `module-4/policies/`. Optional self-study facilitation is distributed separately; it must not auto-load in the standard Builder experience.
 
 The Agents 101 starter is maintained in Git at `curriculum/scaffolds/agents-101-starter/`. Participants never see Git. Export the starter per cohort and host it on the customer's site or SharePoint.
 

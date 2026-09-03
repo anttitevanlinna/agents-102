@@ -5,17 +5,13 @@
 # Output: agents-101-starter.tar.gz at repo root.
 #
 # Contents (the prework-installed working material from
-# curriculum/scaffolds/agents-101-starter/, maintainer blocks stripped, plus
-# the canonical self-study skill from .claude/skills/self-study/SKILL.md,
-# generated into every runtime's project-skills artifact home):
+# curriculum/scaffolds/agents-101-starter/, with maintainer blocks stripped):
 #
 #   prework/.keep
 #   module-4/policies/*.md
 #   memory/.keep
 #   sources/.keep
 #   agents/.keep
-#   .claude/skills/self-study/SKILL.md
-#   .agents/skills/self-study/SKILL.md
 #   agents-101-handbook.html  # theory handbook: every lecture + exercise summaries,
 #                             # one self-contained page, opened from disk
 #   prompts/<key>.md          # only the Agents 101 marker closure, not the
@@ -41,14 +37,6 @@ cd "$(dirname "$0")/.."
 OUT="${1:-agents-101-starter.tar.gz}"
 case "$OUT" in /*) ;; *) OUT="$PWD/$OUT" ;; esac
 SRC="curriculum/scaffolds/agents-101-starter"
-SELF_STUDY_SKILL=".claude/skills/self-study/SKILL.md"
-PROJECT_SKILLS_DIRS="$(node - <<'NODE'
-const runtimes = require('./site/layouts/a101-runtimes.js');
-const paths = Object.values(runtimes.PROFILES)
-  .map((profile) => profile.artifacts['project-skills']);
-process.stdout.write([...new Set(paths)].sort().join('\n'));
-NODE
-)"
 STAGE="$(mktemp -d)"
 trap 'rm -rf "$STAGE"' EXIT
 
@@ -66,8 +54,8 @@ strip_maintainer() {
 }
 
 # Mirror the scaffold tree into ROOT, stripping maintainer blocks from .md.
-# The self-study skill is injected from the repo-root .claude copy below, so
-# scaffold-local .claude content is intentionally ignored to avoid drift.
+# Optional facilitator material is not part of the standard Builder package,
+# so scaffold-local .claude content is intentionally ignored.
 (cd "$SRC" && find . -type d) | while read -r d; do
   case "$d" in
     ./.claude|./.claude/*) continue ;;
@@ -87,19 +75,13 @@ done
   esac
 done
 
-while IFS= read -r project_skills_dir; do
-  [[ -n "$project_skills_dir" ]] || continue
-  mkdir -p "$ROOT/$project_skills_dir/self-study"
-  strip_maintainer "$SELF_STUDY_SKILL" "$ROOT/$project_skills_dir/self-study/SKILL.md"
-done <<< "$PROJECT_SKILLS_DIRS"
-
 # Ship the prompts the student resolves locally via `{{prompt:<key>}}` markers.
 # Ship ONLY the Agents 101 closure, not the whole ~166-file registry (finding P1):
 # the wholesale copy dragged AE101 / security-IC / eval-loop prompts — the wrong
 # product — into a builder-leader's day-one folder, contradicting prework's "two
 # visible steps, no magic." The set is DERIVED, not hardcoded, so it can't rot:
 # scan the A101 student module files, the exercises/lectures they link, and the
-# files this tarball itself ships (scaffold + self-study skill) for markers, then
+# files this tarball itself ships for markers, then
 # ship exactly that closure. Fail-closed if a referenced prompt is missing or
 # nests a marker deeper than this depth-1 walk follows.
 PROMPTS_SRC="curriculum/prompts"
@@ -117,7 +99,7 @@ if [ -d "$PROMPTS_SRC" ]; then
 
   # 1. Surface to scan = student A101 module files (not trainer/arch/todos) +
   #    their linked exercises/lectures/supplementary + everything this tarball
-  #    ships (scaffold .md + the self-study skill), since any shipped marker must
+  #    ships (scaffold .md), since any shipped marker must
   #    resolve locally.
   scan_list="$(mktemp)"
   { ls "$A101_MODULES_DIR"; if [ -d "${AGENTS_OVERLAY_DIR:-/nonexistent}/trainings/agents-101" ]; then ls "$AGENTS_OVERLAY_DIR/trainings/agents-101"; fi; } \
@@ -137,11 +119,12 @@ if [ -d "$PROMPTS_SRC" ]; then
   cat "$links_tmp" >> "$scan_list"
   rm -f "$links_tmp"
   find "$SRC" -type f -name '*.md' >> "$scan_list"
-  echo "$SELF_STUDY_SKILL" >> "$scan_list"
 
   # 2. Extract the marker closure (depth-1; step 3 verifies no deeper nesting).
+  # {{cut:key|reason}} is a cut-candidate sibling of {{prompt:key}} and still
+  # references the same registry key.
   keys="$(sort -u "$scan_list" | while IFS= read -r f; do [ -f "$f" ] && cat "$f"; done \
-    | grep -oE '\{\{prompt:[a-z0-9-]+\}\}' | sed -E 's/\{\{prompt:([a-z0-9-]+)\}\}/\1/' | sort -u)"
+    | grep -oE '\{\{(prompt|cut):[a-z0-9-]+(\|[a-z0-9-]+)?\}\}' | sed -E 's/\{\{(prompt|cut):([a-z0-9-]+)(\|[a-z0-9-]+)?\}\}/\2/' | sort -u)"
   rm -f "$scan_list"
 
   # 3. Ship exactly those — fail-closed on a missing registry file or a nested
@@ -171,8 +154,7 @@ env -u AGENTS_BRAND_DIR AGENTS_OUTPUT_DIR="$STAGE/handbook" node scripts/build-w
 cp "$STAGE/handbook/_starter/agents-101/theory-handbook.html" "$ROOT/agents-101-handbook.html"
 
 # Build tarball from inside ROOT so the archive has prework/, module-4/policies/,
-# memory/, sources/, agents/, and runtime instruction homes at the top level
-# with no wrapper.
+# memory/, sources/, agents/, and the handbook at the top level with no wrapper.
 # The stage lives under mktemp, so every copy and generated handbook otherwise
 # gives the archive a new set of mtimes. Normalize those and suppress gzip's own
 # timestamp so unchanged inputs produce byte-identical customer artifacts.
@@ -191,12 +173,4 @@ for path in prework module-4/policies/gdpr-essentials.md module-4/policies/data-
     exit 1
   fi
 done
-while IFS= read -r project_skills_dir; do
-  [[ -n "$project_skills_dir" ]] || continue
-  path="$project_skills_dir/self-study/SKILL.md"
-  if ! tar tzf "$OUT" | grep -qE "^\./?${path}(/|\$)"; then
-    echo "WARNING — expected path missing: $path" >&2
-    exit 1
-  fi
-done <<< "$PROJECT_SKILLS_DIRS"
 echo "Expected paths present."

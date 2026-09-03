@@ -3,6 +3,9 @@ set -euo pipefail
 
 case_name="${FAKE_CODEX_CASE:-success-start}"
 printf '%s\n' "$*" >> "${FAKE_CODEX_LOG:?FAKE_CODEX_LOG is required}"
+if [[ -n "${FAKE_CODEX_PWD_LOG:-}" ]]; then
+  pwd >> "$FAKE_CODEX_PWD_LOG"
+fi
 
 started() {
   local thread_id="${1:-thread-123}"

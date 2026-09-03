@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+printf '%s\n' "$*" > "${FAKE_CODEX_TUI_LOG:?}"
+mkdir -p "$CODEX_HOME/sessions/2026/09/03"
+rollout="$CODEX_HOME/sessions/2026/09/03/root.jsonl"
+printf '%s\n' '{"type":"session_meta","payload":{"source":"cli","thread_source":"user"}}' > "$rollout"
+printf '%s\n' 'OpenAI Codex fake ready' '› Explain this codebase'
+
+while IFS= read -r prompt; do
+  [[ -n "$prompt" ]] || continue
+  printf 'response: %s\n' "$prompt"
+  printf '%s\n' '{"type":"event_msg","payload":{"type":"task_complete","last_agent_message":"fake response"}}' >> "$rollout"
+done

@@ -248,7 +248,7 @@ function render(items, scope, unowned, unreadable, want, scanned) {
   out.push(`${scanned} surfaces scanned · ${items.length} owing · ${pairs} (file,class) pairs`)
   out.push(`  by reason: ${tally(byReason)}`)
   out.push(`  by class:  ${tally(byClass)}`)
-  out.push(`  reasons: never = no PASS on the judges row · diff-region = body edit routed to this class since its pin · revise = last verdict REVISE · bad-sha = pin points at no commit`)
+  out.push(`  reasons: never = no PASS on the judges row · diff-region = body edit routed to this class since its pin · revise = last verdict REVISE · bad-sha = pin points at no commit · stale-finding = this class left an open finding and the body it judged has since changed`)
   out.push(`  scope reasons: set-drift = a member of the pinned set moved in its body · no-set = row names no set to diff · unpinned = state carries no sha · finding = a persona withheld its signature`)
   out.push(...renderDrift(items))
   out.push(...renderScope(scope))

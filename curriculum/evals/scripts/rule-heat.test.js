@@ -120,6 +120,91 @@ test('a malformed ledger costs its own instance, not the whole read', () => {
   assert.strictEqual(rules[0].todos.length, 2, 'the two well-formed ledgers are read; the other two are skipped')
 })
 
+// The bug this guards, and the reason the pile never fell: a REVISE row is a
+// claim about the text a judge read. Fix that text and the row does not move --
+// nothing re-reads it -- so the finding keeps counting forever. Eight maintainer
+// blocks were fixed and pushed while their rows still read REVISE, and three
+// more had been fixed by someone else weeks earlier. A rule whose findings
+// cannot retire ranks first on volume it has already lost.
+//
+// So a finding is only LIVE when its instance still hashes to the file on disk.
+test('a finding against a body that has since changed is not a live todo', () => {
+  const repo = fixture({
+    'ae101--exercise--a.writing.json': inst('/r/a.md', 'writing', [row('check_writing.md', 3, false)]),
+    'ae101--exercise--b.writing.json': inst('/r/b.md', 'writing', [row('check_writing.md', 3, false)]),
+  })
+  const dir = path.join(repo, 'curriculum/evals/instances')
+  const src = path.join(repo, 'a.md')
+  fs.writeFileSync(src, 'the body a judge read\n')
+  const sha = require('node:crypto').createHash('sha256').update(fs.readFileSync(src)).digest('hex')
+
+  // a.md: instance matches the file. b.md: it does not.
+  for (const [name, body_sha, file] of [
+    ['ae101--exercise--a.writing.json', sha, src],
+    ['ae101--exercise--b.writing.json', 'a'.repeat(64), src],
+  ]) {
+    const j = JSON.parse(fs.readFileSync(path.join(dir, name), 'utf8'))
+    fs.writeFileSync(path.join(dir, name), JSON.stringify({ ...j, body_sha, file }))
+  }
+
+  const { rules } = heat(repo, 'ae101')
+  const r = rules[0]
+  assert.strictEqual(r.todos.length, 2, 'both findings are still reported')
+  assert.deepStrictEqual(r.todos.map(t => t.state).sort(), ['live', 'unverified'],
+    'the one whose body moved is unverified, not live')
+})
+
+// Failing the other way would be worse. 58 ae101 instances predate body_sha
+// entirely; demoting them all to unverified would hide real findings, and the
+// point of the pile is that todos eventually get handled. Unknown stays visible.
+test('an instance with no body_sha is surfaced, not silently dropped', () => {
+  const repo = fixture({
+    'ae101--exercise--a.writing.json': inst('/r/a.md', 'writing', [row('check_writing.md', 3, false)]),
+  })
+  const { rules } = heat(repo, 'ae101')
+  assert.strictEqual(rules[0].todos.length, 1)
+  assert.strictEqual(rules[0].todos[0].state, 'unknown',
+    'no body_sha means we cannot tell, which is not the same as verified')
+})
+
+// A file deleted out from under its instance must not read as a live finding
+// against text nobody can open.
+test('a finding whose file no longer exists is unverified, and does not throw', () => {
+  const repo = fixture({
+    'ae101--exercise--a.writing.json': inst('/gone/nowhere.md', 'writing', [row('check_writing.md', 3, false)]),
+  })
+  const dir = path.join(repo, 'curriculum/evals/instances')
+  const n = 'ae101--exercise--a.writing.json'
+  const j = JSON.parse(fs.readFileSync(path.join(dir, n), 'utf8'))
+  fs.writeFileSync(path.join(dir, n), JSON.stringify({ ...j, body_sha: 'b'.repeat(64) }))
+  const { rules } = heat(repo, 'ae101')
+  assert.strictEqual(rules[0].todos[0].state, 'unknown')
+})
+
+// Ranking is what sends the maintainer at a rule, so it has to rank on findings
+// that still describe the corpus -- not on a backlog of already-fixed text.
+test('ranking is by live todos, so a cleared rule stops outranking a live one', () => {
+  const repo = fixture({
+    'ae101--exercise--a.writing.json': inst('/r/a.md', 'writing', [
+      row('check_writing.md', 3, false), row('check_writing.md', 3, false), row('check_writing.md', 3, false)]),
+    'ae101--exercise--b.writing.json': inst('/r/b.md', 'writing', [row('check_prompts.md', 9, false)]),
+  })
+  const dir = path.join(repo, 'curriculum/evals/instances')
+  const live = path.join(repo, 'b.md')
+  fs.writeFileSync(live, 'current\n')
+  const sha = require('node:crypto').createHash('sha256').update(fs.readFileSync(live)).digest('hex')
+  const a = JSON.parse(fs.readFileSync(path.join(dir, 'ae101--exercise--a.writing.json'), 'utf8'))
+  fs.writeFileSync(path.join(dir, 'ae101--exercise--a.writing.json'),
+    JSON.stringify({ ...a, body_sha: 'c'.repeat(64), file: live }))
+  const b = JSON.parse(fs.readFileSync(path.join(dir, 'ae101--exercise--b.writing.json'), 'utf8'))
+  fs.writeFileSync(path.join(dir, 'ae101--exercise--b.writing.json'),
+    JSON.stringify({ ...b, body_sha: sha, file: live }))
+
+  const { rules } = heat(repo, 'ae101')
+  assert.strictEqual(rank(rules)[0].key, 'prompts §9',
+    'one live finding outranks three findings against a body that moved')
+})
+
 test('an unreadable instance is skipped without taking the scan down with it', () => {
   const repo = fixture({ 'ae101--exercise--a.writing.json': inst('/r/a.md', 'writing', [row('check_writing.md', 3, false)]) })
   fs.writeFileSync(path.join(repo, 'curriculum/evals/instances/broken.writing.json'), '{ not json')

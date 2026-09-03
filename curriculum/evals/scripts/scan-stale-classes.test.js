@@ -128,7 +128,7 @@ function io(diffByPath, valid = true) {
     readFile: () => DOC,
     gitDiff: (sha, p) => diffByPath[p] || '',
     validSha: () => valid,
-    ruleDrift: () => new Set(),
+    ruleDrift: () => new Set(), staleFinding: () => false,
   }
 }
 const ITEM = { file: 'curriculum/exercises/x.md', type: 'exercise', slug: 'x', instanceSlug: 'ae101--exercise--x', classes: ['writing', 'story', 'technical', 'behavior', 'pedagogy', 'strategy', 'slides'] }
@@ -147,7 +147,7 @@ test('filterItems: registry prompt change keeps behavior', () => {
 })
 test('filterItems: unpinned class always kept', () => {
   const noPinDoc = DOC.replace(/behavior@bbb2222 /, '')
-  const myIo = { readFile: () => noPinDoc, gitDiff: () => '', validSha: () => true, ruleDrift: () => new Set() }
+  const myIo = { readFile: () => noPinDoc, gitDiff: () => '', validSha: () => true, ruleDrift: () => new Set(), staleFinding: () => false }
   const { items } = filterItems([{ ...ITEM, classes: ['behavior'] }], myIo)
   assert.deepStrictEqual(items[0].classes, ['behavior'])
 })
@@ -296,7 +296,7 @@ test('trainingOf: duplicate linkers from one training still resolve', () => {
 // matched only the later ones, so the leading class fell through to 'never'
 // on every unpinned file: a class judged clean, re-queued forever.
 function rowIo(body) {
-  return { readFile: () => body, gitDiff: () => '', validSha: () => true, ruleDrift: () => new Set() }
+  return { readFile: () => body, gitDiff: () => '', validSha: () => true, ruleDrift: () => new Set(), staleFinding: () => false }
 }
 const CLEAN_ROW = '# T\n**Quality:** compendium-audited 2026-01-01 ()\n- judges @abc1234: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS\n'
 
@@ -354,7 +354,7 @@ function setIo(files, diffs) {
     readFile: p => (p in files ? files[p] : null),
     gitDiff: (sha, p) => (diffs[`${sha}:${p}`] || ''),
     validSha: sha => sha !== 'deadbee',
-    ruleDrift: () => new Set(),
+    ruleDrift: () => new Set(), staleFinding: () => false,
   }
 }
 const DIR = 'curriculum/trainings/agentic-engineering-101'
@@ -483,13 +483,63 @@ test('voice_panel: reference pages are out of panel scope', () => {
 // it is optional, so every io stub above still describes a repo with no ledger.
 const DRIFT_DOC = '# T\n**Quality:** compendium-audited 2026-01-01 (writing@abc1234 story@abc1234 technical@abc1234 behavior@abc1234 pedagogy@abc1234 strategy@abc1234 slides@abc1234)\n\nbody\n'
 function driftIo(classes) {
-  return { readFile: () => DRIFT_DOC, gitDiff: () => '', validSha: () => true, ruleDrift: () => new Set(classes) }
+  return { readFile: () => DRIFT_DOC, gitDiff: () => '', validSha: () => true, ruleDrift: () => new Set(classes), staleFinding: () => false }
 }
 
 test('scanFile: a pin whose compendium rule moved is stale even with an untouched file', () => {
   const r = scanFile('curriculum/lectures/x.md', driftIo(['writing']))
   assert.deepStrictEqual(r.classes, ['writing'])
   assert.equal(r.detail.writing, 'rule-drift')
+})
+
+// --- stale-finding: the class is silent but its own finding is unresolved ---
+//
+// The third axis, and the one that let a whole rule ossify. A judge leaves a
+// non-blocking REVISE row inside an otherwise-PASSing instance. Someone fixes
+// the text it points at. Neither existing axis notices: the pin is current, so
+// no rule-drift, and if the edit landed in the maintainer block then tagLine
+// routes it to no class at all, so no diff-region either. The finding is now a
+// claim about text that no longer exists, and nothing will ever re-read it.
+//
+// Measured on ae101 before this axis existed: 98 findings sat against moved
+// bodies, 33 of them on (file,class) pairs no other reason queued. check_writing
+// §3 ranked first in the corpus on 16 todos of which 13 were already fixed.
+const finderIo = (stale) => ({
+  readFile: () => DRIFT_DOC, gitDiff: () => '', validSha: () => true,
+  ruleDrift: () => new Set(), staleFinding: (rel, cls) => stale.includes(cls),
+})
+
+test('scanFile: an unresolved finding against a body that has since moved re-enters the queue', () => {
+  const r = scanFile('curriculum/lectures/x.md', finderIo(['writing']))
+  assert.deepStrictEqual(r.classes, ['writing'])
+  assert.equal(r.detail.writing, 'stale-finding')
+})
+
+// Reported last, so a class that is stale for a reason the maintainer can act on
+// directly still reads as that reason. stale-finding is the weakest claim of the
+// three — it says only "re-read this", not "this rule or this region moved".
+test('scanFile: diff-region and rule-drift both outrank stale-finding', () => {
+  const diffAndFinding = {
+    readFile: () => DRIFT_DOC,
+    gitDiff: () => '@@ -4,1 +4,1 @@\n-body\n+edited body\n',
+    validSha: () => true, ruleDrift: () => new Set(), staleFinding: () => true,
+  }
+  assert.equal(scanFile('curriculum/lectures/x.md', diffAndFinding).detail.writing, 'diff-region')
+
+  const driftAndFinding = {
+    readFile: () => DRIFT_DOC, gitDiff: () => '', validSha: () => true,
+    ruleDrift: () => new Set(['writing']), staleFinding: () => true,
+  }
+  assert.equal(scanFile('curriculum/lectures/x.md', driftAndFinding).detail.writing, 'rule-drift')
+})
+
+// The file refuses silent defaults by design — requireIo makes every io say what
+// it does not do, out loud. A missing staleFinding would silently restore the
+// exact blindness this axis exists to remove.
+test('scanFile: io must declare staleFinding rather than default to blind', () => {
+  // Deliberately omits staleFinding — do not "fix" this stub.
+  const blind = { readFile: () => DRIFT_DOC, gitDiff: () => '', validSha: () => true, ruleDrift: () => new Set() }
+  assert.throws(() => scanFile('curriculum/lectures/x.md', blind), /missing staleFinding/)
 })
 
 test('scanFile: an explicit empty ledger is silent', () => {
@@ -527,7 +577,7 @@ test('scanFile: a file that BOTH moved and drifted still reports diff-region', (
 })
 
 test('filterItems: rule-drift keeps a class the diff would have pruned', () => {
-  const io = { readFile: () => DRIFT_DOC, gitDiff: () => '', validSha: () => true, ruleDrift: () => new Set(['pedagogy']) }
+  const io = { readFile: () => DRIFT_DOC, gitDiff: () => '', validSha: () => true, ruleDrift: () => new Set(['pedagogy']), staleFinding: () => false }
   const { items, report } = filterItems([{ file: 'curriculum/lectures/x.md', classes: ['writing', 'pedagogy'] }], io)
   assert.deepStrictEqual(items[0].classes, ['pedagogy'])
   assert.deepStrictEqual(report[0].kept.map(k => k.reason), ['rule-drift'])
@@ -693,7 +743,7 @@ test('linkFinder: an include link with trailing whitespace still counts', () => 
 // with them it says re-read check_pedagogy §44 and §52 against this body.
 test('scanFile: a drifted class carries the rules that moved', () => {
   const io = { readFile: () => DRIFT_DOC, gitDiff: () => '', validSha: () => true,
-    ruleDrift: () => new Map([['writing', [{ compendium: 'check_writing', rule: '3', changed_at: '2026-08-21' }]]]) }
+    ruleDrift: () => new Map([['writing', [{ compendium: 'check_writing', rule: '3', changed_at: '2026-08-21' }]]]), staleFinding: () => false }
   const r = scanFile('curriculum/lectures/x.md', io)
   assert.equal(r.detail.writing, 'rule-drift')
   assert.deepStrictEqual(r.driftRules.writing.map(x => `${x.compendium} §${x.rule}`), ['check_writing §3'])
@@ -703,7 +753,7 @@ test('scanFile: a drifted class carries the rules that moved', () => {
 // must keep routing correctly — they simply carry no rule detail.
 test('scanFile: a Set-shaped ruleDrift still routes, just without rule detail', () => {
   const io = { readFile: () => DRIFT_DOC, gitDiff: () => '', validSha: () => true,
-    ruleDrift: () => new Set(['writing']) }
+    ruleDrift: () => new Set(['writing']), staleFinding: () => false }
   const r = scanFile('curriculum/lectures/x.md', io)
   assert.equal(r.detail.writing, 'rule-drift')
   assert.deepStrictEqual(r.driftRules, {})
@@ -711,7 +761,7 @@ test('scanFile: a Set-shaped ruleDrift still routes, just without rule detail', 
 
 test('scanFile: a diff-region class reports no drift rules even when the rule also moved', () => {
   const io = { readFile: () => DRIFT_DOC, gitDiff: () => '@@ -4 +4 @@\n+rewritten body line\n', validSha: () => true,
-    ruleDrift: () => new Map([['writing', [{ compendium: 'check_writing', rule: '3', changed_at: '2026-08-21' }]]]) }
+    ruleDrift: () => new Map([['writing', [{ compendium: 'check_writing', rule: '3', changed_at: '2026-08-21' }]]]), staleFinding: () => false }
   const r = scanFile('curriculum/lectures/x.md', io)
   assert.equal(r.detail.writing, 'diff-region')
   assert.ok(!('writing' in r.driftRules))

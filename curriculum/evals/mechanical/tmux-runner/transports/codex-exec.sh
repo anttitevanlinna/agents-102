@@ -95,6 +95,8 @@ codex_turn() {
   else
     command=(
       "$codex_bin" exec resume "$CODEX_THREAD_ID" --json
+      -c 'sandbox_mode="workspace-write"'
+      -c 'approval_policy="never"'
       --skip-git-repo-check --ignore-user-config -
     )
   fi

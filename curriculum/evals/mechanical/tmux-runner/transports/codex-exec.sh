@@ -89,6 +89,7 @@ codex_turn() {
     command=(
       "$codex_bin" exec --json --sandbox workspace-write
       -c 'approval_policy="never"'
+      --enable multi_agent_v2
       --skip-git-repo-check --ignore-user-config
       -C "$CODEX_CWD" -
     )
@@ -97,6 +98,7 @@ codex_turn() {
       "$codex_bin" exec resume "$CODEX_THREAD_ID" --json
       -c 'sandbox_mode="workspace-write"'
       -c 'approval_policy="never"'
+      --enable multi_agent_v2
       --skip-git-repo-check --ignore-user-config -
     )
   fi

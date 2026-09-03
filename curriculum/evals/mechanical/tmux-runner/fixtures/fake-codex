@@ -61,6 +61,8 @@ case "$case_name" in
     [[ "$(find "$CODEX_HOME" -mindepth 1 -maxdepth 1 -print | wc -l | tr -d ' ')" == 1 ]]
     [[ "$(stat -f '%Lp' "$CODEX_HOME")" == 700 ]]
     [[ "$(stat -f '%Lp' "$CODEX_HOME/auth.json")" == 600 ]]
+    mkdir -p "$CODEX_HOME/sessions/2026/09/03"
+    printf '%s\n' '{"type":"response_item","payload":{"type":"function_call","namespace":"collaboration","name":"spawn_agent"}}' > "$CODEX_HOME/sessions/2026/09/03/parent.jsonl"
     started
     completed 'isolated'
     ;;

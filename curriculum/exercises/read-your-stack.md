@@ -120,5 +120,5 @@ OODA
 **Decision points (pacing):**
 - **Study + shapes run long (>15 min)** — the wider look is a light pass, not a full inventory. Study reads the ranked head; shapes draws two or three. If it eats the clock the student is cataloguing; use the body stop gate and skip the sidestep.
 
-**Quality:** compendium-audited 2026-09-02
-- judges @4e0370bc: writing grandfathered, story REVISE (1/1 see instances/ae101--exercise--read-your-stack.story.json), technical grandfathered, behavior grandfathered, pedagogy REVISE (1/2 see instances/ae101--exercise--read-your-stack.pedagogy.json), strategy grandfathered
+**Quality:** compendium-audited 2026-09-03 (writing@289b45a3 story@289b45a3 technical@289b45a3 behavior@289b45a3 pedagogy@289b45a3 strategy@289b45a3 slides@289b45a3)
+- judges @289b45a3: writing PASS (2 todos see instances/ae101--exercise--read-your-stack.writing.json), story PASS (1 todo see instances/ae101--exercise--read-your-stack.story.json), technical PASS, behavior PASS (1 todo see instances/ae101--exercise--read-your-stack.behavior.json), pedagogy PASS (1 todo see instances/ae101--exercise--read-your-stack.pedagogy.json), strategy PASS, slides PASS (1 todo see instances/ae101--exercise--read-your-stack.slides.json)

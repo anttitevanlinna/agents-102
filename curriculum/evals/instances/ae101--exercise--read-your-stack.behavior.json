@@ -2,22 +2,1112 @@
   "class": "behavior",
   "training": "ae101",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/read-your-stack.md",
-  "verdict": "REVISE",
-  "body_sha": "ec4a4918dc108cd1507c10701b59a6d3801a8dedf6f87ba47c344b79f36f3f34",
+  "verdict": "PASS_WITH_TODOS",
+  "body_sha": "866a4986d7a02473bca170b0189e8343b36fc4a33261ef76f22ccb34092dfcfa",
   "shape_hash": "04c8bbd89721df08",
+  "accept_notes_found": [
+    "L67: \"The field already runs\" stays (Antti 2026-09-02) — the sidestep header/lead-in claim field prevalence, not convergent vocabulary; check_research_claims.md §1 should not re-flag it (out of this judge's scope, noted for completeness).",
+    "L71: Emphasis pass (2026-07-09, Antti-directed \"go very lightly on the bold\") — bullet leads plain, bold only on widget/label chrome and callout leads.",
+    "L77: Placement — Beat 2 of the three-beat M6 (2026-09-02), depth is the student's, primitives sidestep closes it and nothing downstream depends on it.",
+    "L87: field-already-runs-these-checks claim — Antti 2026-09-02 note that the returned menu reflects field prevalence, header carries the same claim.",
+    "L96-105 (backing Stance): no-convergence-verb decision — 'the menu is not convergent practitioner vocabulary... no convergence verb attaches to this menu.'"
+  ],
   "rules_evaluated": [
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 1,
+      "rule_lead": "No placeholders inside fences.",
+      "verdict": "PASS",
+      "evidence": "grep for `[A-Za-z` inside each fenced prompt body (registry files spot-gaps-build-the-loop-{study,shapes,primitives}.md, body after frontmatter) -> 0 hits in all three; no [BRACKETS]-style placeholder anywhere.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 2,
+      "rule_lead": "Every prompt block: one-sentence action lead-in.",
+      "verdict": "PASS",
+      "evidence": "Word-counted all three lead-ins (raw L28/L37/L49): 'Ask Claude to scan your sessions across every project and group the kinds of work that recur.' = 17 words; 'Ask Claude to draw your top few work-shapes as simple diagrams.' = 11 words; 'Ask Claude to name the checking primitives the field already runs and rank the ones that fit your gap.' = 19 words. All <20, each a single sentence with a command verb before the label.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 3,
+      "rule_lead": "Canonical shape — lead-in, label with destination, blank line, fence.",
+      "verdict": "PASS",
+      "evidence": "Expanded view (body-views/ae101--exercise--read-your-stack.expanded.md) shows all three prompts as lead-in / blank line / `**Prompt** *(Claude Code)*` / blank line / fence, exactly 3 times (grep -c on the exact label string = 3). No 'copy →' prefix, no '(end of prompt)' closer, no blockquote/backtick wrapping of the label.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 4,
+      "rule_lead": "Installed Skills invoke by name, never path.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "none of the three prompts invoke a Skill at all"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 5,
+      "rule_lead": "Chain by back-reference + deterministic path, never invented alias.",
+      "verdict": "PASS",
+      "evidence": "P2 chains on P1 via scrollback back-reference ('Take the recurring groups you just named', no file path since nothing was written to disk); P3 chains on 'the dominant gap I named' and 'the recurring shapes we drew' the same way. All three prompts' registry frontmatter declares produces.location: scrollback (not a file), so the scrollback-review chaining this rule prefers is the correct and only applicable shape — no invented alias, no missing anchor.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 6,
+      "rule_lead": "Chained-prompt isolation — don't leak downstream pipeline.",
+      "verdict": "PASS",
+      "evidence": "P1 does not mention diagramming or the primitives sidestep; P2 does not mention the primitives sidestep or the M6 handoff; P3 does not mention the handoff prompt that consumes it (per its own registry frontmatter 'produces: primitive-menu' with no consumed-by listed). Each prompt's fence reads as if downstream doesn't exist.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 7,
+      "rule_lead": "No session-resets mid-phase.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "none of the three prompts offer /clear or a fresh-session option; the whole exercise is an explicit same-session continuation (raw L5 Session widget: continue)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 8,
+      "rule_lead": "Multi-sample methods need structural enforcement.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "none of the three prompts is a self-consistency / majority-vote / ensemble detection method"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 9,
+      "rule_lead": "Markdown shout (**bold**, *italic*) inside fenced prompts = dead weight in Claude Code.",
+      "verdict": "PASS",
+      "evidence": "grep -c '\\*' on each of the three registry fence bodies (text after frontmatter) -> 0 in all three. No bold/italic markers inside any fence.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 10,
+      "rule_lead": "Runtime-fork prompts: paired divs, shared chip.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "AE101 is Code-only; rule states it fires only on Agents 101 / future dual-runtime and AE101 ignores the pattern"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 11,
+      "rule_lead": "Runtime-mechanical scaffolding asymmetry — MORE in less-fluent fork, not less.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "Agents-101/Cowork-specific; this is an AE101 file with no runtime fork"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 12,
+      "rule_lead": "Append-vs-integrate — name integration mode on regeneration with new context source.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "none of the three prompts regenerates an artifact with a newly-added context source"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 13,
+      "rule_lead": "Citation discipline — extend cite-or-flag scope + quote supporting sentence.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "none of the three prompts asks Claude to cite external facts/sources; this is an introspective scan of the student's own session history"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 14,
+      "rule_lead": "Niceness tax — name the edge or pin the line on regeneration.",
+      "verdict": "PASS",
+      "evidence": "P1's fence (raw L30 marker; registry spot-gaps-build-the-loop-study.md) directly names the edge and forbids softening it: \"Don't filter to what looks important... Show me what actually recurs, including the dull stuff... the ones I actually repeat, not the ones that look impressive.\" This is exactly the model 'name the edge' shape the rule asks for.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 15,
+      "rule_lead": "Question-dump default — `in turn` too soft; two legal shapes.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "none of the three prompts walks the student through a sequence of questions to answer one at a time; P1's only ask ('ask me where they are') is a single conditional clarifier, not a question battery"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 16,
+      "rule_lead": "Overwrite anxiety — name overwrite default on regeneration.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "no regeneration of an existing file and no file write target in any of the three prompts"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 17,
+      "rule_lead": "Preamble before action — design around it.",
+      "verdict": "REVISE",
+      "evidence": "Structural trigger per this rule ('4+ named sub-steps OR plan mode') is met by all three prompts: P1 names 6 moves (read across projects / ask about missing repos / stream progress / handle interrupts / group+name+quote / rank top six); P2 names ~5 (take groups / pick top few / draw mermaid / show steps-branches-loops-handoffs / cap+split at 30 nodes); P3 names ~6 (list 5-10 primitives / name what each checks / name fire-timing / evaluate fit / recommend 2-3 / stay concrete). None of the three fences carries a 'No preamble' suppressor as its last line, and no body primer immediately after any of the three markers (raw L31, L40, L52 are all blank, followed directly by the next section heading) names preamble + gives a skim-past cue. Harm is real but small: this is not plan-mode (the worst case the rule names — 2-4 sentences eating the top-of-response slot before plan items land), and P1 in particular is already designed for continuous narration (§43, PASS below) so one opening sentence blends into an expected chatty cadence rather than displacing content the student is waiting on. P2 and P3 are short, low-stakes asks where a one-line preamble costs little.",
+      "fix_hint": "Optional belt-and-braces: add 'No preamble — start reading/drawing/listing.' as each fence's last line, or a one-line body primer after each marker. Low priority given the structural mitigation already present on P1 and the short length of P2/P3.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 18,
+      "rule_lead": "Self-critique register, not defense, when Claude interrogates own work.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "none of the three prompts asks Claude to review its own prior work"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 19,
+      "rule_lead": "Minimal hand-off + Claude self-augments for send-off prompts.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "none of the three prompts is a long-running walk-away send-off in the M4/M5 sense — the session stays warm/synchronous with the student able to interrupt, not a background hand-off the student walks away from entirely"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 20,
+      "rule_lead": "Grill before save — collaborative quality at artefact assembly.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "none of the three prompts builds a persisted artefact that later work depends on; all outputs stay in scrollback"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 21,
+      "rule_lead": "Tell me what you wrote, not show me what you'll write.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "none of the three prompts has a side effect (comment/email/commit/ticket/push) to report on"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 22,
+      "rule_lead": "Prompt-body edits require maintainer approval — registry files AND inline blocks.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "procedural gate on the judge/author's own editing behavior; I made no edits to any prompt body"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 23,
+      "rule_lead": "Artifact destinations are explicit subpaths, never naked filenames (Agents 101-specific).",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "rule is explicitly scoped to Agents 101's structured training directory; this is an AE101 file (student's own repo, no training-imposed subfolder convention) and none of the three prompts saves a file at all"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 24,
+      "rule_lead": "Don't restate session CWD inside prompt body.",
+      "verdict": "PASS",
+      "evidence": "P1 names `~/.claude/projects/` explicitly — this is not the session's working directory, it is a fixed system location outside the student's repo, so naming it is required information rather than a restated CWD (analogous to the rule's own directory-change carve-out).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 25,
+      "rule_lead": "`subagent` allowed in prompt blocks; explain why after prompt.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "none of the three prompts mentions 'subagent' explicitly"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 26,
+      "rule_lead": "Maintainer-approval edits — ONE-AT-A-TIME, PRIORITY-ORDERED, FOUR-FIELD cards.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "procedural rule governing how findings are surfaced to the maintainer by whoever applies them; not a property of the shipped file's text"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 27,
+      "rule_lead": "Name consumer at write time — `Save it as <path>` requires downstream reader.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "no 'Save it as <path>' instruction occurs anywhere in the file; every prompt's output stays in scrollback per its own registry frontmatter"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 28,
+      "rule_lead": "Strong-bold prompt label is exactly `**Prompt**` — custom labels break renderer.",
+      "verdict": "PASS",
+      "evidence": "grep -c on the exact string '**Prompt** *(Claude Code)*' in the expanded view = 3, matching all three fences; no custom label variant used.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 29,
+      "rule_lead": "Normal work request before orchestration.",
+      "verdict": "PASS",
+      "evidence": "P1 opens as a natural conversational ask a working engineer would actually type ('Go through my work across everything I do, not just this repo. I want to see the kinds of work I do over and over.') rather than manufactured orchestration scaffolding.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 30,
+      "rule_lead": "Live-test corrections preserve operator workflow.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "this rule governs how to apply a maintainer's live-test correction, not a property of already-shipped static file content"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 31,
+      "rule_lead": "Prompts live in registry; module/exercise/lecture files reference by marker.",
+      "verdict": "PASS",
+      "evidence": "Raw source uses `{{prompt:spot-gaps-build-the-loop-study}}` / `{{prompt:spot-gaps-build-the-loop-shapes}}` / `{{prompt:spot-gaps-build-the-loop-primitives}}` (raw L30/L39/L51, confirmed by grep), each backed by a registry file at curriculum/prompts/<key>.md carrying correct frontmatter (key/dest/runtime/origin/requires/produces). No inline `**Prompt**` block in the raw source.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 32,
+      "rule_lead": "Module names in prompt prose are fine — they ground the session.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "none of the three prompts names a module number"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 33,
+      "rule_lead": "Git-output greps asserting exact-N need multi-result fallback.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "none of the three prompts greps git output for branches/commits"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 34,
+      "rule_lead": "Disambiguation, anchors, and decision logic that bind Claude live INSIDE prompt fence.",
+      "verdict": "PASS",
+      "evidence": "Read each fence in isolation: P1 is self-contained (names the exact directory, carries its own ask-if-unclear branch). P2's back-reference ('the recurring groups you just named') and P3's ('the dominant gap I named', 'the recurring shapes we drew') resolve correctly because the exercise is an explicit same-session continuation (raw L5, L7) — P1 and P2's outputs are genuinely in scrollback when P2/P3 run, and 'the dominant gap I named' is the prior gap-map exercise's output, also explicitly continued into this same session (raw L7: 'Same session as the gap map... are in scrollback').",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 35,
+      "rule_lead": "Repeated Q&A → premature re-edits. Separate iteration from persistence.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "none of the three prompts sets up multi-turn dialogue that writes to a persisted artifact file"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 36,
+      "rule_lead": "Wide prompts split by logical move — paragraph breaks = cheapest scan-affordance.",
+      "verdict": "PASS",
+      "evidence": "P1: 5 paragraphs, one move each (context+goal / where sessions live+ask-if-missing / big-read+streaming instruction / interrupt-handling / grouping+ranking+output-shape). P2: 2 paragraphs (draw request / node-cap+split rule). P3: 4 paragraphs (framing / list-primitives / evaluate-fit / be-concrete). Read-aloud check: no 'and'-joined independent instructions collapsed into one sentence in any of the three.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 37,
+      "rule_lead": "Orient saved rule by where it FIRES, not surface activity producing it.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "none of the three prompts saves a rule to a CLAUDE.md/CLAUDE.local.md file"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 38,
+      "rule_lead": "Body lead-in mirrors prompt's opening phrasing.",
+      "verdict": "PASS",
+      "evidence": "P2: lead-in 'Ask Claude to draw your top few work-shapes as simple diagrams' shares verb ('draw') and noun-phrase ('top few') with the prompt's opening 'Take the recurring groups you just named. For the top few, draw each one as a mermaid diagram...' — strong rhyme. P1: lead-in 'scan your sessions... across every project' rhymes at the phrasal level with the prompt's opening 'Go through my work across everything I do' (survey-verb + 'across every-' phrase shape), even though the literal verbs differ (scan vs. go through) — holds. P3: lead-in 'name the checking primitives... and rank the ones that fit your gap' doesn't mirror the prompt's literal first sentence ('Expand my menu of checks before I read my own map against it', a one-line motivational frame) but does rhyme closely with the prompt's actual first substantive instruction in paragraph 2 ('List 5–10 atomic verification primitives... to check agentic work') and paragraph 3 ('recommend the primitives... fit for the dominant gap'). The mismatch is against a throat-clearing frame sentence, not against the operative ask, so the rhyme test still holds at the level the rule cares about (no drafting-drift feel).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 39,
+      "rule_lead": "Declare `permission-mode:` when paste requires specific Claude Code mode.",
+      "verdict": "PASS",
+      "evidence": "None of the three registry files (spot-gaps-build-the-loop-study/shapes/primitives.md) declares a permission-mode field, and none of the three prompts' correct behavior depends on plan vs. default mode — correctly omitted.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 40,
+      "rule_lead": "Verify session boundary before deciding prompt's context-carrying.",
+      "verdict": "PASS",
+      "evidence": "Module body confirms warm/continuing session throughout (raw L5 Session widget: continue; raw L7 'Same session as the gap map... are in scrollback'), so P2 and P3's back-references to P1's and the gap-map's output are correctly warm, not requiring self-contained context. Sub-case 40a (concurrent-worktree corollary): none of the three prompts targets a sibling worktree — the M5-worktree reference in the closing Note (raw L59) is a post-hoc \"what to copy back\" note, not a live parallel-window mechanic during these three prompts. Sub-case 40b (warm ≠ referent-present): the definite references in P2/P3 ('the recurring groups you just named', 'the recurring shapes we drew', 'the dominant gap I named') all point at things the agent or the continued same session itself produced/heard, not curriculum-coined event labels the agent never typed — passes the diagnostic.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 41,
+      "rule_lead": "Artifact-vs-STOP tail ordering — last imperative wins.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "none of the three prompts pairs a load-bearing artifact-write with a STOP-and-wait tail"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 42,
+      "rule_lead": "Headless-runner discipline — tail every prompt with no-AUQ guard.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "this is an interactive cohort/self-study session with the student present (Session: continue), not a headless tmux-runner/CI instance"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 43,
+      "rule_lead": "Long-running prompts stream progress — never go silent.",
+      "verdict": "PASS",
+      "evidence": "P1 is exactly the flagged case (cross-project `~/.claude/projects/` scan) and its fence explicitly instructs: 'As you go, keep me posted: every thirty seconds or so, drop a quick line on which repos you've covered, the groups starting to show, and anything that surprises you. Don't go quiet and hand me everything at the end.' It also honors a mid-run interrupt: 'If I cut in to point you at one kind of work, or to ask what you've found so far, answer me and then pick up where you left off.' P2 and P3 are short, bounded tasks (not >a couple of minutes / not cross-project reads) so the rule's own trigger list doesn't reach them.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 44,
+      "rule_lead": "A leading-looking line can be a forcing function; prefer the simpler prompt.",
+      "verdict": "PASS",
+      "evidence": "The one load-bearing 'leading' line in this file — P1's \"Don't filter to what looks important... Show me what actually recurs, including the dull stuff\" — is intact and does real work (pushes off the lazy all-impressive-work default per the diagnostic 'would removing this line let the LLM pick the lazy path? Keep it.'). Nothing has been stripped, and no gratuitous decision-logic has been bolted onto an already-working plain ask.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 45,
+      "rule_lead": "Prompt paths match Builder scope.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "none of the three prompts saves a file, so there is no Builder-scope path to check; the one path referenced (`~/.claude/projects/`) is a fixed absolute location outside the repo, correctly named explicitly per §24's carve-out"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 46,
+      "rule_lead": "Output shape — trust Claude's defaults, don't pad.",
+      "verdict": "PASS",
+      "evidence": "P3 specifies a shape (one line per primitive naming what it checks + fire-timing category) but this is load-bearing for the exercise's teaching point — matching primitives to timing feeds directly into the fit-evaluation step and the broader eval/verification-loop theme of the module — not gratuitous padding. No trailing generic shape spec ('clear title, a Rules section...') appears anywhere.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 47,
+      "rule_lead": "\"Add X and regenerate\" is a trap.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "none of the three prompts asks to append X to an existing artifact and regenerate"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 48,
+      "rule_lead": "Vary closings deliberately.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "this exercise's closing beat (raw L57, 'Decide what crosses back to your main repo') is a solo decision note handing off to the next beat, not a debrief-style closing mechanic choosing among cold-critic/pair-exchange/group-discussion/solo-retro/show-your-work"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 1,
+      "rule_lead": "Walk-away test (M2+).",
+      "verdict": "PASS",
+      "evidence": "P1 explicitly frames a long autonomous read ('This is a big read and will run a while') the student can step away from and check back on via the interrupt clause, rather than requiring line-by-line reading and pasting back — walk-away-compatible, appropriate for late-training (M6).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 2,
+      "rule_lead": "50% magic rule (M3–M8).",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "whole-training aggregate metric across post-M2 modules, not gradable against a single exercise file"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 3,
+      "rule_lead": "Trust the agentic design — no human backstops.",
+      "verdict": "PASS",
+      "evidence": "No 'Antti observes manually' or exhaustive if-then ruleset is imposed on the scan/group/draw/evaluate moves; Claude's judgment is trusted for grouping, ranking, and diagramming. No irreversible/user-visible/trust-line action is present that would need a confirmation exception.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 4,
+      "rule_lead": "Quality ladder.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "whole-corpus calibration concept (7/8/9 tiers across the training), not a per-file pass/fail check"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 6,
+      "rule_lead": "One exercise = one bounded activity.",
+      "verdict": "PASS",
+      "evidence": "Maintainer block states explicitly: 'Atomic — no phase markers. One widening scan, drawn, then an optional sidestep.' — matches the rule's own internal-arc-is-one-exercise shape; not sub-numbered.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 7,
+      "rule_lead": "Modules composable across variants.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "no VARIANT markers are needed or present in this shared-library exercise file"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 8,
+      "rule_lead": "Three-level completeness.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "this is not a strategy-to-sendable-customer-asset chain exercise; the stated artifact is an internal continuation map (What happened: 'stays in this session's scrollback'), not a sendable customer deliverable this rule's three levels are checking for"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 9,
+      "rule_lead": "Pattern-recognition LOs need n≥2 instances with contrast.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "primary Bloom's level is Analyze+Create, not one of the specific pattern-recognition verbs (read/spot/judge/notice/recognize) this rule targets; the multi-instance contrast the exercise does ask for happens within a single wide scan, not across two separately-scaffolded reads"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "9b",
+      "rule_lead": "Progression-with-variations is the spine.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "no previously-taught load-bearing model/law/diagram is being re-shown here; the scan-and-diagram content is new for this placement"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 10,
+      "rule_lead": "Student agency — adults decide.",
+      "verdict": "PASS",
+      "evidence": "The Sidestep is explicitly marked 'Optional' (raw L45); pacing choices are left to the student throughout ('How wide you look, and what you choose to map, is yours' raw L19; 'Narrow it whenever you like' raw L26).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 11,
+      "rule_lead": "Delegation — student brings, Claude screens.",
+      "verdict": "PASS",
+      "evidence": "The only external-access ask is reading `~/.claude/projects/`, which is Claude Code's own local, genuinely-accessible session storage — no unavailable connector (Jira/wiki/team chat) assumed. Grouping and ranking recurring work is correctly delegated to Claude (fit-screen/pattern-match work), matching the rule's own example split.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 12,
+      "rule_lead": "Split mega-exercise when phases = distinct skills + distinct artifacts.",
+      "verdict": "PASS",
+      "evidence": "Maintainer block documents the atomic choice directly ('Atomic — no phase markers... One widening scan, drawn, then an optional sidestep') — the phases chain tightly with no natural cognitive break, matching the rule's own counter-case for staying as one exercise.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 13,
+      "rule_lead": "Artifact-realism check.",
+      "verdict": "PASS",
+      "evidence": "`~/.claude/projects/` is confirmed to be the real Claude Code session-storage location (this session's own rule-index path, quoted in this repo's CLAUDE.md, lives at `~/.claude/projects/-Users-.../memory/_index/`), accessible with no install step — the one named path in the three prompts is real and reachable.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 14,
+      "rule_lead": "Teach principle + technique — default.",
+      "verdict": "PASS",
+      "evidence": "The one named technique (mermaid diagram) is not an unexplained black-box invocation — it is markdown text Claude writes that the student directly reads/renders, and the follow-up callout ('Want to see the shapes, not read them? ... Say give me this in HTML') hands the student the viewing mechanic. No tool/skill is invoked here that needs upfront WHY/HOW deconstruction.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 15,
+      "rule_lead": "Auto-fire sim+eval after significant rewrite.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "procedural generation-workflow rule for the author, not a property of the shipped file's content — this very eval dispatch is an instance of it firing"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 16,
+      "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
+      "verdict": "PASS",
+      "evidence": "The one numeric constraint present ('Keep each diagram to 30 nodes at most... If a shape needs more than 30 nodes, it is really two shapes, split it', P2 fence) is load-bearing — removing it would collapse the decomposition teaching point, not just a count-script — and it is correctly placed in-fence, not in body prose. 'top six or so' (P1) uses suggestion register ('or so'), matching the calibration boundary that survives as a suggestion rather than a bare scripted count.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 17,
+      "rule_lead": "Corporate infra = nice-to-have, never forcing function.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "none of the three prompts depends on external tooling (MCP/shared repo/team ADR/SSO); all read purely personal Claude Code session history"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 18,
+      "rule_lead": "Personal-first, team promotion via human conversation.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "no file write of any kind occurs in the three prompts, so there is no personal-vs-team file-location question to check"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 19,
+      "rule_lead": "Measure silent failure, not just friction.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "post-cohort evaluation methodology, not gradable against pre-cohort static file content"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 20,
+      "rule_lead": "Don't pre-set categories before experiment runs.",
+      "verdict": "PASS",
+      "evidence": "The exercise explicitly leaves category-naming to the scan's own findings ('Group what you find by the kind of work it is, the way of working that repeats' — P1 fence) rather than pre-specifying the groups the student should find.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 21,
+      "rule_lead": "Verification layers sample DIFFERENT error distributions — not belt-and-braces.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "whole-system verification-architecture principle, not demonstrable or violable by a single exercise file"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "21b",
+      "rule_lead": "Cheap-before-expensive verification ordering.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "whole-pipeline tiering principle for the eval system, not applicable to grading this exercise's prompt content"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 22,
+      "rule_lead": "Rule in memory without forcing function = worse than no rule.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "no memory-rule-saving activity occurs in this exercise (that is the prior gap-map exercise's job, referenced only in scrollback here)"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 23,
+      "rule_lead": "Short skeptical pushback on \"done\" = re-verify trigger.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "general operating principle for how Claude reacts to skeptical follow-ups; none of the three fixed prompts is itself a done-check"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 24,
+      "rule_lead": "Cohort execution is trainer-paced + concurrent, not sequential.",
+      "verdict": "PASS",
+      "evidence": "P1 is a genuine long agent wait (cross-project scan) that per this rule takes sequential math against the stated 15-minute budget; the maintainer's own Decision-points section anticipates and mitigates exactly this ('Study + shapes run long (>15 min)... use the body stop gate and skip the sidestep', raw L120-121), showing the timing risk was already accounted for rather than assumed away.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 25,
+      "rule_lead": "Host-skill optional; maintainer blocks trainer-only.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "no host-skill (agentic-nerd / Teacher Claude) is referenced anywhere in this file"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 26,
+      "rule_lead": "Reflection beats: in-chat over file-write.",
+      "verdict": "PASS",
+      "evidence": "All three prompts' outputs stay in chat/scrollback per their own registry frontmatter (produces.location: scrollback) — no reflective file-write requested anywhere.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 27,
+      "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
+      "verdict": "PASS",
+      "evidence": "No group/pair/room-share authoring found in body prose — the body callouts present (Fast-operator batching, cut-the-scan guidance) are individual-pacing options, not cohort-management cues, and none of the three named/sparingly-allowed room-acknowledgment tells appear either.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 29,
+      "rule_lead": "Eval = fixed yardstick; thing measured learns.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "no eval/scoring loop is set up by this exercise"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 30,
+      "rule_lead": "Reading burden for verification = banned. Claude audits Claude.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "the student is never asked to manually proofread Claude's output for correctness — reading the groupings/diagrams is the exercise's own recognition pedagogy, not error-catching"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 31,
+      "rule_lead": "Self-report + self-audit charity — verify at artifact, over-flag or fresh-session for critique.",
+      "verdict": "PASS",
+      "evidence": "P1's 'quote an instance or two so I can see it's real' functions as the verify-at-artifact mechanism this rule asks for — the quoted instance IS the artifact (presented inline, since there is no separate file to open), which forces grounding rather than letting a summary stand alone as evidence.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 32,
+      "rule_lead": "Offered structures need forced-engagement mechanic.",
+      "verdict": "PASS",
+      "evidence": "P3 offers a list of 5-10 verification primitives (an 'offered structure' at ~90%-take-verbatim risk per this rule) but immediately requires forced engagement: 'evaluate fit for the dominant gap I named. Which 2–3 primitives would most likely have caught it? Recommend the primitives, and say which of the recurring shapes... each one pairs with.' — the fit-evaluation step is the forced-customization analog to this rule's own fix shape.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 33,
+      "rule_lead": "Source-type blindness on ingestion.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "reading the student's own uniform-format session transcripts is not the heterogeneous external-source (slide-deck/PDF) ingestion case this rule targets"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 34,
+      "rule_lead": "Task selection drives outcome → name floor AND ceiling.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "this exercise is a historical-pattern scan, not a task-selection exercise needing floor/ceiling sizing criteria"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "34b",
+      "rule_lead": "Maintainer-block hedge naming section's own failure mode = cut-signal, not warning.",
+      "verdict": "PASS",
+      "evidence": "Premise-test applied to the maintainer's Mood-target Watch-for line ('compliance-feel... or credibility-performance... Both steal the mood'): removing the hedge leaves the section's design (widen the scan, draw shapes) fully defensible on its own merits — this is a genuine trainer coaching note about mood risk, not an admission that the section's premise is shaky, so it is a keep, not a cut-signal.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 35,
+      "rule_lead": "Audience tier determines authoring substrate.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "no skill/plugin install is required by this exercise (plain prompts only), so there is no above-ceiling substrate assumption to check against the AE101 engineer tier"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 36,
+      "rule_lead": "Verification machinery needs smoke-test before trust.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "no hook/judge/Ralph-loop/eval-gating machinery is built by this exercise"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 37,
+      "rule_lead": "Context-loading tiers as staged progression.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "this exercise doesn't reveal an auto-load/lazy-load/explicit-load tier; it reads old session transcripts, unrelated to that staged-progression arc"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 39,
+      "rule_lead": "Removals are strategic — ask before cutting.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "governs the author's own editing behavior; as a read-only judge I removed nothing"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 41,
+      "rule_lead": "Symmetric visible-mechanics > runtime fork when dual-runtime constraints break agentic move.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "AE101 is single-runtime (Code-only); this rule targets Agents 101's dual-runtime Cowork/Code design"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 42,
+      "rule_lead": "Load-bearing platform feature = no fallback. Gate or redesign.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "no politeness fallback language ('if X doesn't work, just do Y') appears; the exercise assumes only basic Read/Bash tool access, universally available"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 43,
+      "rule_lead": "Eval architecture — partition by evidence source, not criterion count.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "meta-rule about how the eval system itself is organized, not a property of this exercise file's content"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 44,
+      "rule_lead": "Plug points + UX.",
+      "verdict": "PASS",
+      "evidence": "(a) The Plug points entry ('The team's code-review conventions: where a recurring shape includes review, the conventions are the check that shape calls, and they ride into the handoff prompt that follows', maintainer block) names a specific kind of org context, not a vague slot, and states how it flows downstream. (b) Walking the three prompts as a fast operator: each is self-contained and pasteable without invented setup; the closing Note's references to `./CLAUDE.local.md` / `observations/` are correctly framed as prior-exercise (M5) artifacts, not an in-exercise hand-off naming something uncreated.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 45,
+      "rule_lead": "Per-exercise leap test — 3 observable Monday outcomes.",
+      "verdict": "PASS",
+      "evidence": "All three leap-test bullets (raw L110-112) are observable, named-verb outcomes a colleague could check for: 'holds a diagrammed map... and reads a new task against it before sending the task off'; 'names which recurring shape a new task belongs to, or that it belongs to none, before writing the send-off'; 're-runs the stack scan a week later and compares the top shapes against the map'. None reads as an abstract competency claim.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 47,
+      "rule_lead": "Per-phase failure mode + escape hatch.",
+      "verdict": "PASS",
+      "evidence": "Failure-modes section (raw L114-115) names the dominant failure mode ('Wider-look sprawl — the study scan reads the whole stack and can throw back a wall') and a trainer escape hatch ('If a student drowns in the scan, point at the ranked head and move on'). The exercise is explicitly atomic/single-phase (§6 above), so one dominant-forcing-function entry matches its structure; P2's own 30-node cap already carries a self-correcting in-fence recovery ('If a shape needs more than 30 nodes... split it'), which is why it needs no separate maintainer-block hatch of its own.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 48,
+      "rule_lead": "Heavy fan-out prompts get body recovery callout.",
+      "verdict": "PASS",
+      "evidence": "P1 is exactly the named trigger shape (cross-project `~/.claude/projects/` session scan) and the body carries both required recovery directions before the fence: over-reading -> steer narrower ('Narrow it whenever you like, or say tell me what you've found so far', raw L26); premature stop -> explicit nudge-back ('If it comes back thin instead, or everything traces to one repo, a there is more than this, keep going prompt sends it back out', raw L26). This pairs correctly with §43's proactive progress-streaming instruction inside the fence.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 49,
+      "rule_lead": "Save belongs with authoring, not loading.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "no create-then-use pair with asymmetric save timing exists here; nothing is saved or installed at all"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 52,
+      "rule_lead": "Session widget — `**Session** *(verb, \"name\")*` shape; place by learning flow.",
+      "verdict": "PASS",
+      "evidence": "Raw L5: `**Session** *(continue, \"Module 6 worktree session\")*` — correct shape, valid continuation verb, placed at exercise-top matching the exercise-top-default placement pattern for a session that is genuinely continuing from the prior exercise.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "52a",
+      "rule_lead": "Module prose carrying a `**Session**` widget or a `{{prompt:}}` fence is an exercise that has not been extracted.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "this rule flags module files that haven't been extracted; this file already is the extracted exercise (curriculum/exercises/read-your-stack.md), so the concern doesn't apply to grading it"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "52b",
+      "rule_lead": "Widgets carry semantics, not just emphasis — match the widget to MEANING, never to how loud it renders.",
+      "verdict": "PASS",
+      "evidence": "`**Session**` is used for the genuine session-continuation moment (correct meaning match). `**Note**` (raw L59) is used for informational/orientational guidance about stale main-repo copies — not an imminent-mistake guard (which would call for `**HOX**`) — matching Note's intended meaning.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "52c",
+      "rule_lead": "Exercise lead-in trio — three slots, three tenses.",
+      "verdict": "PASS",
+      "evidence": "Word-counted: 'What you do' = 8 words (now/action, raw L9); 'What you build' = 10 words, names the artifact 'a diagram of the work that recurs across your stack' (after/artifact, raw L11); 'The point' = 15 words (still/purpose, raw L13), within the ~15-word budget, no colon-list, survives the delete-the-artifact test (it's a claim about legibility, not a recipe or LO restatement).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "52d",
+      "rule_lead": "Finding the point — four moves.",
+      "verdict": "PASS",
+      "evidence": "(a) The point takes the more contestable half ('drawn, the shape is easier to recognise than described' — a specific claim about diagrams over prose) rather than the settled half ('recurring work has a shape'); a competent engineer could push back on the diagram-over-description claim. (b) No bigger generalization is being pre-empted — this exercise doesn't build to a later reveal the point would spend. (d) Uses an honest, moderate verb ('easier to recognise', not an overclaim). (c) Arc-progression-within-the-module comparison is out of this single file's scope to verify independently and is not treated as a defect on that basis.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 53,
+      "rule_lead": "Body prose must not supply an answer its prompt asks for — position is not the test.",
+      "verdict": "PASS",
+      "evidence": "3-axis diagnostic applied to every body sentence around the three prompts: pre-P2 text ('A recurring kind of work has a shape. Steps in order, a branch, a loop back', raw L35) names generic diagram VOCABULARY, not this student's specific outcome — legal per the 'teaching how to read the answer coming' carve-out. Post-P3 text ('Expect the list to look familiar: test-writing, browser-testing...', raw L53) sits after the fence and functions as post-hoc calibration of an answer the student has already received from Claude in chat, not a pre-announcement collapsing discovery. No sentence anywhere hands the student an answer before the agent produces it.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 56,
+      "rule_lead": "Engineer-audience audit fixes default to body callout, not forcing function.",
+      "verdict": "PASS",
+      "evidence": "The existing recovery/steering guidance for the heavy-fan-out risk (raw L24, L26 blockquotes) is body callout in shape, not a new forcing-function prompt — matching the AE101 engineer-audience default.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 57,
+      "rule_lead": "Multi-session (any new mechanic mid-arc) ships as packaging, not new primitive.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "this exercise continues an existing session/worktree from M5 rather than introducing a brand-new multi-session mechanic"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 58,
+      "rule_lead": "`/clear` = tool, not ceremony.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "none of the three prompts or the surrounding body mentions /clear"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 59,
+      "rule_lead": "Inbound links preserve pedagogical beat across reference restructuring.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "no reference-page links appear in the body region at all"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 60,
+      "rule_lead": "Scan at the unit the rule names, not convenient larger one.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "general audit-methodology guidance for the auditor, already followed procedurally (scanned at prompt/exercise grain, not module-rolled-up)"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 61,
+      "rule_lead": "Verify mechanism before proposing surgery.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "no skill/framework/tool change is being proposed here"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "61a",
+      "rule_lead": "Acting on a flagged item — verify before fixing; its prescribed fix is a hypothesis, not an instruction.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "judge-conduct rule about how to treat prior flagged items; followed procedurally in this review (direct re-read of the live file rather than trusting the stale cached instance) rather than a property of the shipped text"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 62,
+      "rule_lead": "Callouts next to prompts: steer, don't pre-empt.",
+      "verdict": "PASS",
+      "evidence": "The recovery callout at raw L26 ('Cut the scan when the top patterns are clear enough to use... or say tell me what you've found so far. If it comes back thin... keep going sends it back out') teaches a generalizable recognize-then-redirect move, not a single brittle failure symptom that would rot when prompt mechanics change — matches the preferred steering shape.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 63,
+      "rule_lead": "Persistent TODO surfaces stale by default — audit before acting.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "this file is the exercise under review, not a TODO/punchlist tracking surface"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 64,
+      "rule_lead": "Maintainer blocks point, don't restate. Link architecture doc where they touch delivery.",
+      "verdict": "PASS",
+      "evidence": "The maintainer block's Emphasis-pass note (raw L71) correctly uses a pointer ('per theory-plan.md § Slide format — emphasis budget + check_slides.md §9') rather than restating the emphasis-budget rule; the other maintainer entries are file-specific decisions (not cross-cutting delivery mechanics) and are appropriately kept inline.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 65,
+      "rule_lead": "Cross-module prerequisite rescue: run it late, never fabricate.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "this specific exercise file is a same-session continuation of M5's worktree (raw L5, L7, L59), not a cross-module boundary hand-off; the rule's prescribed rescue-callout location for a thin/absent M5 artifact is the M6 module's own Start-here section, out of this exercise file's scope to carry"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 66,
+      "rule_lead": "Three-pass build — finish each pass across ALL modules before starting the next.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "whole-training generation-process discipline, not gradable against one already-shipped exercise file"
+    },
     {
       "compendium": "curriculum/evals/simulation-behavior.md",
       "rule_index": null,
       "judge_owned": true,
       "rule_lead": "catalog pattern: file-preservation-gap",
       "prompt_index": 1,
+      "prompt_lead": "Go through my work across everything I do, not just this repo...",
       "pattern_id": "file-preservation-gap",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "no file write requested — reads session history and reports groupings in chat only"
+      "na_reason": "no file write requested — output stays in chat/scrollback per registry produces.location"
     },
     {
       "compendium": "curriculum/evals/simulation-behavior.md",
@@ -25,12 +1115,13 @@
       "judge_owned": true,
       "rule_lead": "catalog pattern: reading-burden",
       "prompt_index": 1,
+      "prompt_lead": "Go through my work across everything I do, not just this repo...",
       "pattern_id": "reading-burden",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "student reads groupings/quotes as the exercise's own pedagogy (recognise recurring shapes), not assigned to proofread Claude's output for correctness"
+      "na_reason": "student reads groupings/quotes as the exercise's own recognition pedagogy, not assigned to proofread Claude's output for correctness"
     },
     {
       "compendium": "curriculum/evals/simulation-behavior.md",
@@ -38,11 +1129,14 @@
       "judge_owned": true,
       "rule_lead": "catalog pattern: niceness-tax",
       "prompt_index": 1,
+      "prompt_lead": "Go through my work across everything I do, not just this repo...",
       "pattern_id": "niceness-tax",
       "verdict": "PASS",
-      "evidence": "Shape is present (Claude synthesises/reports on the student's own work, where softening could mask dull or unflattering patterns) but the fence directly forecloses it: 'Don't filter to what looks important... Show me what actually recurs, including the dull stuff... Rank the groups... the ones I actually repeat, not the ones that look impressive.' (registry L23). This names the exact failure mode and gives the opposite instruction; residual risk is describing a dull pattern in over-charitable language even while including it, which is small.",
-      "fix_hint": "No edit needed — already the model carve-out shape (name the edge, forbid the default).",
-      "blocking": false
+      "evidence": "Fence directly forecloses softening: 'Don't filter to what looks important... Show me what actually recurs, including the dull stuff... Rank the groups... the ones I actually repeat, not the ones that look impressive.' (registry study prompt). Names the exact failure mode and instructs the opposite.",
+      "fix_hint": "No edit needed.",
+      "blocking": false,
+      "confidence": "low (residual)",
+      "load_bearing": true
     },
     {
       "compendium": "curriculum/evals/simulation-behavior.md",
@@ -50,12 +1144,13 @@
       "judge_owned": true,
       "rule_lead": "catalog pattern: question-dump",
       "prompt_index": 1,
+      "prompt_lead": "Go through my work across everything I do, not just this repo...",
       "pattern_id": "question-dump",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "only one conditional clarifying ask ('ask me where they are' if other repos exist), not a battery of questions to dump"
+      "na_reason": "only one conditional clarifying ask ('ask me where they are'), not a battery of questions"
     },
     {
       "compendium": "curriculum/evals/simulation-behavior.md",
@@ -63,6 +1158,7 @@
       "judge_owned": true,
       "rule_lead": "catalog pattern: overwrite-anxiety",
       "prompt_index": 1,
+      "prompt_lead": "Go through my work across everything I do, not just this repo...",
       "pattern_id": "overwrite-anxiety",
       "verdict": "N/A",
       "evidence": null,
@@ -76,11 +1172,14 @@
       "judge_owned": true,
       "rule_lead": "catalog pattern: preamble-before-action",
       "prompt_index": 1,
+      "prompt_lead": "Go through my work across everything I do, not just this repo...",
       "pattern_id": "preamble-before-action",
       "verdict": "REVISE",
-      "evidence": "check_prompts.md §17's structural trigger ('4+ named sub-steps OR plan mode') is met — this fence asks Claude to (1) read across every project, (2) ask about repos not under ~/.claude/projects/, (3) stream progress every ~30s, (4) honour a mid-run interrupt, (5) group with names+quotes, (6) rank the top six. No in-fence 'No preamble' suppressor (registry L15-23) and no body primer after the marker naming preamble + a skim-past cue (raw L31-32 goes straight to the next section heading). Harm is real but small here: §17's harm is eating the student's highest-attention slot before content lands, worst in plan-mode; this isn't plan mode, and the fence's own progress-streaming instruction (§43, PASS below) means the model is already expected to narrate continuously, so one opening sentence blends into that cadence rather than displacing anything.",
-      "fix_hint": "Optional: add 'No preamble — start reading.' as the fence's first line, or a one-line body primer after the marker. Low priority given the mitigation already in play via §43.",
-      "blocking": false
+      "evidence": "check_prompts.md §17's structural trigger (4+ named sub-steps) is met — read/ask-if-missing/stream-progress/handle-interrupt/group+quote/rank — with no in-fence 'No preamble' suppressor and no body primer after the marker (raw L31 is blank, L32 goes straight to the next heading). Harm is real but small: not plan-mode, and the fence's own §43-compliant progress-streaming instruction means continuous narration is already expected, so one opening sentence blends into that cadence.",
+      "fix_hint": "Optional: 'No preamble — start reading.' as the fence's first line. Low priority.",
+      "blocking": false,
+      "confidence": "med",
+      "load_bearing": true
     },
     {
       "compendium": "curriculum/evals/simulation-behavior.md",
@@ -88,6 +1187,7 @@
       "judge_owned": true,
       "rule_lead": "catalog pattern: append-vs-integrate",
       "prompt_index": 1,
+      "prompt_lead": "Go through my work across everything I do, not just this repo...",
       "pattern_id": "append-vs-integrate",
       "verdict": "N/A",
       "evidence": null,
@@ -101,12 +1201,13 @@
       "judge_owned": true,
       "rule_lead": "catalog pattern: plan-mode-preamble-bloat",
       "prompt_index": 1,
+      "prompt_lead": "Go through my work across everything I do, not just this repo...",
       "pattern_id": "plan-mode-preamble-bloat",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "no plan mode invited"
+      "na_reason": "no permission-mode: plan declared and no plan-mode-shaped ask"
     },
     {
       "compendium": "curriculum/evals/simulation-behavior.md",
@@ -114,12 +1215,13 @@
       "judge_owned": true,
       "rule_lead": "catalog pattern: citation-gap-asymmetry",
       "prompt_index": 1,
+      "prompt_lead": "Go through my work across everything I do, not just this repo...",
       "pattern_id": "citation-gap-asymmetry",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "no external sources or citations requested"
+      "na_reason": "introspective self-analysis of the student's own history, not a factual-claim citation register"
     },
     {
       "compendium": "curriculum/evals/simulation-behavior.md",
@@ -127,12 +1229,14 @@
       "judge_owned": true,
       "rule_lead": "catalog pattern: self-report-inflation",
       "prompt_index": 1,
+      "prompt_lead": "Go through my work across everything I do, not just this repo...",
       "pattern_id": "self-report-inflation",
-      "verdict": "N/A",
-      "evidence": null,
+      "verdict": "PASS",
+      "evidence": "'For each group, give it a short name and quote an instance or two so I can see it's real' forces per-group evidence; a claimed-but-unsubstantiated recurring pattern can't hide behind a bare summary the way self-report inflation usually does.",
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "Claude reports what it found in the student's own sessions; it is not grading its own performance"
+      "confidence": "low (residual)",
+      "load_bearing": true
     },
     {
       "compendium": "curriculum/evals/simulation-behavior.md",
@@ -140,12 +1244,13 @@
       "judge_owned": true,
       "rule_lead": "catalog pattern: default-acceptance",
       "prompt_index": 1,
+      "prompt_lead": "Go through my work across everything I do, not just this repo...",
       "pattern_id": "default-acceptance",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "no default structure is offered for the student to accept unedited — this is an open report, not a rules/checklist artefact"
+      "na_reason": "no offered defaults for the student to accept unedited"
     },
     {
       "compendium": "curriculum/evals/simulation-behavior.md",
@@ -153,12 +1258,13 @@
       "judge_owned": true,
       "rule_lead": "catalog pattern: plan-mode-approval-inflation",
       "prompt_index": 1,
+      "prompt_lead": "Go through my work across everything I do, not just this repo...",
       "pattern_id": "plan-mode-approval-inflation",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "no plan mode"
+      "na_reason": "not plan mode"
     },
     {
       "compendium": "curriculum/evals/simulation-behavior.md",
@@ -166,12 +1272,13 @@
       "judge_owned": true,
       "rule_lead": "catalog pattern: source-type-blindness",
       "prompt_index": 1,
+      "prompt_lead": "Go through my work across everything I do, not just this repo...",
       "pattern_id": "source-type-blindness",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "the object of inspection is the student's own session transcripts, not external source material needing L0-L3 classification"
+      "na_reason": "reading the student's own uniform-format session transcripts, not a heterogeneous external-source ingestion case"
     },
     {
       "compendium": "curriculum/evals/simulation-behavior.md",
@@ -179,12 +1286,13 @@
       "judge_owned": true,
       "rule_lead": "catalog pattern: citation-cargo-cult",
       "prompt_index": 1,
+      "prompt_lead": "Go through my work across everything I do, not just this repo...",
       "pattern_id": "citation-cargo-cult",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "no citations requested"
+      "na_reason": "the quoted 'instances' are the student's own remembered work, immediately self-checkable by the person who lived them — not an unverifiable external fact/file citation, which is the harm this pattern targets"
     },
     {
       "compendium": "curriculum/evals/simulation-behavior.md",
@@ -192,12 +1300,13 @@
       "judge_owned": true,
       "rule_lead": "catalog pattern: self-audit-charity",
       "prompt_index": 1,
+      "prompt_lead": "Go through my work across everything I do, not just this repo...",
       "pattern_id": "self-audit-charity",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "Claude is not critiquing its own prior work"
+      "na_reason": "Claude is classifying the student's historical work, not critiquing its own prior output"
     },
     {
       "compendium": "curriculum/evals/simulation-behavior.md",
@@ -205,12 +1314,13 @@
       "judge_owned": true,
       "rule_lead": "catalog pattern: file-preservation-gap",
       "prompt_index": 2,
+      "prompt_lead": "Take the recurring groups you just named. For the top few, draw...",
       "pattern_id": "file-preservation-gap",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "diagrams render as mermaid text in-session (optionally HTML per the follow-up callout); no file write is named"
+      "na_reason": "no file write requested — diagrams stay in chat per registry produces.location"
     },
     {
       "compendium": "curriculum/evals/simulation-behavior.md",
@@ -218,12 +1328,13 @@
       "judge_owned": true,
       "rule_lead": "catalog pattern: reading-burden",
       "prompt_index": 2,
+      "prompt_lead": "Take the recurring groups you just named. For the top few, draw...",
       "pattern_id": "reading-burden",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "reading/comparing the diagrams IS the exercise's stated pedagogy (recognising shape), not a manual error-catching burden on Claude's output"
+      "na_reason": "not a manual-error-catching task; viewing/recognizing the diagrammed shape is the exercise's own pedagogy"
     },
     {
       "compendium": "curriculum/evals/simulation-behavior.md",
@@ -231,12 +1342,13 @@
       "judge_owned": true,
       "rule_lead": "catalog pattern: niceness-tax",
       "prompt_index": 2,
+      "prompt_lead": "Take the recurring groups you just named. For the top few, draw...",
       "pattern_id": "niceness-tax",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "no critique or quality judgment is requested that softening could mask"
+      "na_reason": "prompt explicitly asks for the messy real shape ('where it branches, where it loops back'), not a sanitized happy path; this pattern targets softened evaluative language, which doesn't map onto diagram fidelity"
     },
     {
       "compendium": "curriculum/evals/simulation-behavior.md",
@@ -244,6 +1356,7 @@
       "judge_owned": true,
       "rule_lead": "catalog pattern: question-dump",
       "prompt_index": 2,
+      "prompt_lead": "Take the recurring groups you just named. For the top few, draw...",
       "pattern_id": "question-dump",
       "verdict": "N/A",
       "evidence": null,
@@ -257,12 +1370,13 @@
       "judge_owned": true,
       "rule_lead": "catalog pattern: overwrite-anxiety",
       "prompt_index": 2,
+      "prompt_lead": "Take the recurring groups you just named. For the top few, draw...",
       "pattern_id": "overwrite-anxiety",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "no file write target"
+      "na_reason": "no file write"
     },
     {
       "compendium": "curriculum/evals/simulation-behavior.md",
@@ -270,11 +1384,14 @@
       "judge_owned": true,
       "rule_lead": "catalog pattern: preamble-before-action",
       "prompt_index": 2,
+      "prompt_lead": "Take the recurring groups you just named. For the top few, draw...",
       "pattern_id": "preamble-before-action",
       "verdict": "REVISE",
-      "evidence": "No in-fence 'No preamble' suppressor and no body primer immediately after the marker (raw L40-41 moves straight to the mermaid-vs-HTML callout, which is about output format, not preamble). §17's structural trigger is borderline here — 'draw each as a diagram' plus the node-cap and split-if-too-big constraints read as closer to one compound move than 4+ distinct sub-steps — so confidence is low; a short lead sentence per diagram is plausible but not structurally forced, and the harm (a sentence before the diagrams start) is minor for a non-plan-mode, non-fan-out prompt.",
-      "fix_hint": "No edit needed at low confidence.",
-      "blocking": false
+      "evidence": "Structural trigger technically met (take groups / pick top few / draw mermaid / show steps-branches-loops-handoffs / cap-and-split at 30 nodes ≥ 4 named moves); no suppressor or primer present (raw L40 blank, L41 blockquote is a viewing-format tip, not a skim-past cue). Harm is minimal: a short narration sentence before diagram code fences doesn't degrade the student's ability to read the diagrams once produced, and there is no plan being approved.",
+      "fix_hint": "Low priority; same optional fix as P1 if addressed at all.",
+      "blocking": false,
+      "confidence": "low",
+      "load_bearing": true
     },
     {
       "compendium": "curriculum/evals/simulation-behavior.md",
@@ -282,12 +1399,13 @@
       "judge_owned": true,
       "rule_lead": "catalog pattern: append-vs-integrate",
       "prompt_index": 2,
+      "prompt_lead": "Take the recurring groups you just named. For the top few, draw...",
       "pattern_id": "append-vs-integrate",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "no document section is extended; diagrams are new artefacts, not additions to an existing file"
+      "na_reason": "not adding a section to a document"
     },
     {
       "compendium": "curriculum/evals/simulation-behavior.md",
@@ -295,12 +1413,13 @@
       "judge_owned": true,
       "rule_lead": "catalog pattern: plan-mode-preamble-bloat",
       "prompt_index": 2,
+      "prompt_lead": "Take the recurring groups you just named. For the top few, draw...",
       "pattern_id": "plan-mode-preamble-bloat",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "no plan mode"
+      "na_reason": "not plan mode"
     },
     {
       "compendium": "curriculum/evals/simulation-behavior.md",
@@ -308,12 +1427,13 @@
       "judge_owned": true,
       "rule_lead": "catalog pattern: citation-gap-asymmetry",
       "prompt_index": 2,
+      "prompt_lead": "Take the recurring groups you just named. For the top few, draw...",
       "pattern_id": "citation-gap-asymmetry",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "no citations"
+      "na_reason": "no external facts"
     },
     {
       "compendium": "curriculum/evals/simulation-behavior.md",
@@ -321,12 +1441,13 @@
       "judge_owned": true,
       "rule_lead": "catalog pattern: self-report-inflation",
       "prompt_index": 2,
+      "prompt_lead": "Take the recurring groups you just named. For the top few, draw...",
       "pattern_id": "self-report-inflation",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "no self-grading requested"
+      "na_reason": "the diagrams are the artifact itself, directly viewable and self-evidently checkable (node count, shape), not a claimed summary of unseen work"
     },
     {
       "compendium": "curriculum/evals/simulation-behavior.md",
@@ -334,12 +1455,13 @@
       "judge_owned": true,
       "rule_lead": "catalog pattern: default-acceptance",
       "prompt_index": 2,
+      "prompt_lead": "Take the recurring groups you just named. For the top few, draw...",
       "pattern_id": "default-acceptance",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "no default structure is offered for the student to accept unedited; diagrams are drawn directly from the student's own named groups, not a rules/checklist artefact"
+      "na_reason": "no offered defaults"
     },
     {
       "compendium": "curriculum/evals/simulation-behavior.md",
@@ -347,12 +1469,13 @@
       "judge_owned": true,
       "rule_lead": "catalog pattern: plan-mode-approval-inflation",
       "prompt_index": 2,
+      "prompt_lead": "Take the recurring groups you just named. For the top few, draw...",
       "pattern_id": "plan-mode-approval-inflation",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "no plan mode"
+      "na_reason": "not plan mode"
     },
     {
       "compendium": "curriculum/evals/simulation-behavior.md",
@@ -360,12 +1483,13 @@
       "judge_owned": true,
       "rule_lead": "catalog pattern: source-type-blindness",
       "prompt_index": 2,
+      "prompt_lead": "Take the recurring groups you just named. For the top few, draw...",
       "pattern_id": "source-type-blindness",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "no external source ingestion"
+      "na_reason": "not a source-ingestion prompt"
     },
     {
       "compendium": "curriculum/evals/simulation-behavior.md",
@@ -373,12 +1497,13 @@
       "judge_owned": true,
       "rule_lead": "catalog pattern: citation-cargo-cult",
       "prompt_index": 2,
+      "prompt_lead": "Take the recurring groups you just named. For the top few, draw...",
       "pattern_id": "citation-cargo-cult",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "no citations"
+      "na_reason": "no citations requested"
     },
     {
       "compendium": "curriculum/evals/simulation-behavior.md",
@@ -386,6 +1511,7 @@
       "judge_owned": true,
       "rule_lead": "catalog pattern: self-audit-charity",
       "prompt_index": 2,
+      "prompt_lead": "Take the recurring groups you just named. For the top few, draw...",
       "pattern_id": "self-audit-charity",
       "verdict": "N/A",
       "evidence": null,
@@ -399,12 +1525,13 @@
       "judge_owned": true,
       "rule_lead": "catalog pattern: file-preservation-gap",
       "prompt_index": 3,
+      "prompt_lead": "Expand my menu of checks before I read my own map against it...",
       "pattern_id": "file-preservation-gap",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "no file write"
+      "na_reason": "no file write requested — output stays in scrollback per registry produces.location"
     },
     {
       "compendium": "curriculum/evals/simulation-behavior.md",
@@ -412,12 +1539,13 @@
       "judge_owned": true,
       "rule_lead": "catalog pattern: reading-burden",
       "prompt_index": 3,
+      "prompt_lead": "Expand my menu of checks before I read my own map against it...",
       "pattern_id": "reading-burden",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "no manual proofreading assigned to the student"
+      "na_reason": "not a manual-error-catching task"
     },
     {
       "compendium": "curriculum/evals/simulation-behavior.md",
@@ -425,11 +1553,14 @@
       "judge_owned": true,
       "rule_lead": "catalog pattern: niceness-tax",
       "prompt_index": 3,
+      "prompt_lead": "Expand my menu of checks before I read my own map against it...",
       "pattern_id": "niceness-tax",
-      "verdict": "REVISE",
-      "evidence": "'Which 2-3 primitives would most likely have caught it? Recommend the primitives...' (registry L19) invites some hindsight-charitable framing of fit between a primitive and the named gap. The closing constraint 'Be concrete... Generic \"tests\" doesn't make the cut' (registry L21) narrows specificity but doesn't guard against an over-optimistic fit claim — unlike prompt 1, there's no equivalent explicit anti-charity instruction here. Confidence stays low: this is an optional sidestep (per the exercise's own maintainer block, 'nothing downstream depends on it') feeding no gated artefact.",
-      "fix_hint": "One clause would close it, e.g. 'then say honestly whether it would really have caught the gap, or just plausibly could have.'",
-      "blocking": false
+      "verdict": "PASS",
+      "evidence": "'Be concrete. Generic \"tests\" doesn't make the cut; \"unit test against the changed function\" does.' directly forecloses the vague/plausible-sounding-but-empty generic-virtue answer shape this pattern targets.",
+      "fix_hint": null,
+      "blocking": false,
+      "confidence": "low (residual)",
+      "load_bearing": false
     },
     {
       "compendium": "curriculum/evals/simulation-behavior.md",
@@ -437,12 +1568,13 @@
       "judge_owned": true,
       "rule_lead": "catalog pattern: question-dump",
       "prompt_index": 3,
+      "prompt_lead": "Expand my menu of checks before I read my own map against it...",
       "pattern_id": "question-dump",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "no questions posed to the student; Claude's own rhetorical framing ('Which 2-3 primitives...') is not a battery of questions dumped on the student"
+      "na_reason": "no questions posed to the student"
     },
     {
       "compendium": "curriculum/evals/simulation-behavior.md",
@@ -450,6 +1582,7 @@
       "judge_owned": true,
       "rule_lead": "catalog pattern: overwrite-anxiety",
       "prompt_index": 3,
+      "prompt_lead": "Expand my menu of checks before I read my own map against it...",
       "pattern_id": "overwrite-anxiety",
       "verdict": "N/A",
       "evidence": null,
@@ -463,11 +1596,14 @@
       "judge_owned": true,
       "rule_lead": "catalog pattern: preamble-before-action",
       "prompt_index": 3,
+      "prompt_lead": "Expand my menu of checks before I read my own map against it...",
       "pattern_id": "preamble-before-action",
       "verdict": "REVISE",
-      "evidence": "List-and-recommend prompt with no in-fence 'No preamble' suppressor. Sub-asks: list 5-10 primitives with what/where fields, evaluate fit against the named gap, pick 2-3, pair each with a drawn shape, stay concrete — borderline meets §17's '4+ named sub-steps' trigger. A short framing sentence before the primitive list is plausible but not forced; low stakes given this is an optional, non-gated sidestep.",
-      "fix_hint": "No edit needed at low confidence.",
-      "blocking": false
+      "evidence": "Structural trigger technically met (list primitives / name what each checks / name fire-timing / evaluate fit / recommend 2-3 / stay concrete ≥ 4 named moves); no suppressor or primer present (raw L52 blank, L53 continues straight into post-fence prose). This is the lowest-stakes of the three: the beat is explicitly optional and nothing downstream depends on it (maintainer Placement line), so even a full-strength version of this risk would only roll up to a TODO, never a block.",
+      "fix_hint": "Low priority; same optional fix as P1/P2 if addressed at all.",
+      "blocking": false,
+      "confidence": "low",
+      "load_bearing": false
     },
     {
       "compendium": "curriculum/evals/simulation-behavior.md",
@@ -475,12 +1611,13 @@
       "judge_owned": true,
       "rule_lead": "catalog pattern: append-vs-integrate",
       "prompt_index": 3,
+      "prompt_lead": "Expand my menu of checks before I read my own map against it...",
       "pattern_id": "append-vs-integrate",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "no document integration"
+      "na_reason": "no document section being extended"
     },
     {
       "compendium": "curriculum/evals/simulation-behavior.md",
@@ -488,12 +1625,13 @@
       "judge_owned": true,
       "rule_lead": "catalog pattern: plan-mode-preamble-bloat",
       "prompt_index": 3,
+      "prompt_lead": "Expand my menu of checks before I read my own map against it...",
       "pattern_id": "plan-mode-preamble-bloat",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "no plan mode"
+      "na_reason": "not plan mode"
     },
     {
       "compendium": "curriculum/evals/simulation-behavior.md",
@@ -501,12 +1639,13 @@
       "judge_owned": true,
       "rule_lead": "catalog pattern: citation-gap-asymmetry",
       "prompt_index": 3,
+      "prompt_lead": "Expand my menu of checks before I read my own map against it...",
       "pattern_id": "citation-gap-asymmetry",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "the primitives are generic domain knowledge (test-writing, lint, ...), not sourced external claims mixed with unsourced ones"
+      "na_reason": "the primitives list draws on general professional knowledge, not specific external facts needing cite-or-flag; maintainer's backing block separately (and correctly) forecloses a convergent-vocabulary framing under check_research_claims.md, a different compendium"
     },
     {
       "compendium": "curriculum/evals/simulation-behavior.md",
@@ -514,12 +1653,13 @@
       "judge_owned": true,
       "rule_lead": "catalog pattern: self-report-inflation",
       "prompt_index": 3,
+      "prompt_lead": "Expand my menu of checks before I read my own map against it...",
       "pattern_id": "self-report-inflation",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "Claude is not grading its own prior output; it evaluates a generic menu against a student-named gap"
+      "na_reason": "fresh analytical recommendation work, not Claude reporting on its own prior completed edits"
     },
     {
       "compendium": "curriculum/evals/simulation-behavior.md",
@@ -527,11 +1667,14 @@
       "judge_owned": true,
       "rule_lead": "catalog pattern: default-acceptance",
       "prompt_index": 3,
+      "prompt_lead": "Expand my menu of checks before I read my own map against it...",
       "pattern_id": "default-acceptance",
-      "verdict": "REVISE",
-      "evidence": "check_pedagogy.md §32a is the adjacent rule: 'Recommend the primitives, and say which of the recurring shapes... each one pairs with' (registry L19) hands the student a ready-made 2-3-item recommendation with no forced-customisation or pushback instruction attached — §32a wants a 'pick at least one to change' / 'read each aloud' shaped mechanic. The body line after the fence (raw L53, 'Your list won't be exact... the ones your codebase already runs') sets an expectation of imperfection but gives no ACTION, so it only partially substitutes for §32a's forced-engagement requirement. Med confidence, load-bearing:true per the template's own definition (still a teaching move even though the beat is skippable) — but per check_pedagogy.md §56 (engineer-audience default: body callout unless the miss gates downstream correctness and is non-recoverable in under a minute), this doesn't rise to a blocking finding: the beat is explicitly optional, 'nothing downstream depends on it' (maintainer block), and an engineer can notice and reject a bad pairing in well under a minute.",
-      "fix_hint": "One clause in the fence would close it, e.g. 'then tell me which recommendation you'd actually reject for your own codebase.'",
-      "blocking": false
+      "verdict": "PASS",
+      "evidence": "The list of 5-10 primitives is an 'offered structure' at risk of blanket acceptance, but the prompt forces engagement past it: 'Then evaluate fit for the dominant gap I named. Which 2–3 primitives would most likely have caught it? Recommend the primitives, and say which of the recurring shapes we drew each one pairs with.' This fit-evaluation step is the forced-customization analog to the compendium's own fix shape (check_pedagogy.md §32).",
+      "fix_hint": null,
+      "blocking": false,
+      "confidence": "med (residual: the initial 5-10 list itself could still be skimmed passively before the fit-filter narrows it)",
+      "load_bearing": false
     },
     {
       "compendium": "curriculum/evals/simulation-behavior.md",
@@ -539,12 +1682,13 @@
       "judge_owned": true,
       "rule_lead": "catalog pattern: plan-mode-approval-inflation",
       "prompt_index": 3,
+      "prompt_lead": "Expand my menu of checks before I read my own map against it...",
       "pattern_id": "plan-mode-approval-inflation",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "no plan mode"
+      "na_reason": "not plan mode"
     },
     {
       "compendium": "curriculum/evals/simulation-behavior.md",
@@ -552,12 +1696,13 @@
       "judge_owned": true,
       "rule_lead": "catalog pattern: source-type-blindness",
       "prompt_index": 3,
+      "prompt_lead": "Expand my menu of checks before I read my own map against it...",
       "pattern_id": "source-type-blindness",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "generic engineering primitives, not classified external sources"
+      "na_reason": "not a source-ingestion prompt"
     },
     {
       "compendium": "curriculum/evals/simulation-behavior.md",
@@ -565,6 +1710,7 @@
       "judge_owned": true,
       "rule_lead": "catalog pattern: citation-cargo-cult",
       "prompt_index": 3,
+      "prompt_lead": "Expand my menu of checks before I read my own map against it...",
       "pattern_id": "citation-cargo-cult",
       "verdict": "N/A",
       "evidence": null,
@@ -578,105 +1724,40 @@
       "judge_owned": true,
       "rule_lead": "catalog pattern: self-audit-charity",
       "prompt_index": 3,
+      "prompt_lead": "Expand my menu of checks before I read my own map against it...",
       "pattern_id": "self-audit-charity",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "not a self-critique of Claude's own prior work; it evaluates a generic menu against a student-named gap"
-    },
-    {
-      "compendium": "check_pedagogy.md",
-      "rule_index": "48",
-      "rule_lead": "Heavy fan-out prompts get body recovery callout.",
-      "prompt_index": 1,
-      "verdict": "REVISE",
-      "evidence": "Prompt 1 (study) is the rule's own named trigger example verbatim: 'cross-project ~/.claude/projects/ session scans.' Body callout coverage before the prompt (raw L22-28): L26 ('Cut the scan when the top patterns are clear enough to use... Narrow it whenever you like, or say tell me what you've found so far... you do not need a complete inventory') covers ONLY the over-reading/cut-it-short direction the rule names as (a). Nothing in the body — checked L17-28 in full — tells the student what to do if the scan comes back thin, stalls on one or two repos, or Claude declares a shallow pass done, which is failure direction (b) the rule requires naming explicitly ('nudge it to keep going, there's more here'). Harm: this prompt's own instruction is to look 'across everything I do' (L15) and the exercise body says 'Look wider than the two sessions... run across everything you do' (raw L19) — a premature stop directly undercuts the exercise's stated ask, and there's no recovery move on record for the student to use. Confirmed not a deliberate omission: the maintainer's own Failure-modes note (raw L109-110) names only the sprawl direction. Checked for an accept-note covering this gap — none found among the 6 dated notes in the maintainer/backing blocks (view.json accept_notes). The proactive counterpart, check_prompts.md §43 (progress-streaming), is satisfied (see below) and reduces but doesn't eliminate this: watching thin coverage stream by doesn't tell the student the specific recovery move is to say 'keep going' rather than accept the list.",
-      "fix_hint": "Add one clause to the existing raw-L26 callout (or immediately after it) naming the premature-stop direction with a paste-ready nudge in the same register, e.g. 'If the groups look thin, or keep coming from just one or two repos, tell it there's more here and let it keep going before you rank.'",
-      "blocking": true
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": "43",
-      "rule_lead": "Long-running prompts stream progress — never go silent.",
-      "prompt_index": 1,
-      "verdict": "PASS",
-      "evidence": "Mechanical check against the fence text (curriculum/prompts/spot-gaps-build-the-loop-study.md L19): 'This is a big read and will run a while. As you go, keep me posted: every thirty seconds or so, drop a quick line on which repos you've covered, the groups starting to show, and anything that surprises you. Don't go quiet and hand me everything at the end.' This satisfies the rule's own shape almost verbatim (felt-cadence phrasing 'as you go' / 'every ~30s or so', not a wall-clock timer) and pairs with the mid-run steer clause at L21 ('If I cut in to point you at one kind of work, or to ask what you've found so far, answer me and then pick up where you left off').",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": "34",
-      "rule_lead": "Disambiguation, anchors, and decision logic that bind Claude live INSIDE prompt fence.",
-      "prompt_index": 1,
-      "verdict": "PASS",
-      "evidence": "Read the fence in isolation, no body context, against a realistic student machine state per the rule's own diagnostic. The one genuinely ambiguous case — repos not living under ~/.claude/projects/ — is handled INSIDE the fence itself: 'If there are other repos you should look at that aren't in there, ask me where they are' (registry L17). No other disambiguation is needed since the read target (~/.claude/projects/, one folder per repo) is named explicitly and the grouping/ranking instructions are self-contained.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": "40",
-      "rule_lead": "Verify session boundary before deciding prompt's context-carrying.",
-      "prompt_index": 2,
-      "verdict": "PASS",
-      "evidence": "Warm session, confirmed by reading the module body (per the rule's own method, not the frontmatter context: line): the exercise's session widget at raw L5 is '(continue, \"Module 6 worktree session\")' — same session, no /clear between producer and this prompt. §40b corollary (warm != referent-present): the definite-article reference 'the recurring groups you just named' (registry spot-gaps-build-the-loop-shapes.md L15) points at prompt 1 (study)'s own output, which ran as the immediately preceding turn in this same continued session — the referent is genuinely in scrollback, not a curriculum-coined label absent from the agent's context.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": "40b",
-      "rule_lead": "Warm ≠ referent-present.",
-      "prompt_index": 3,
-      "verdict": "REVISE",
-      "evidence": "'Then evaluate fit for the dominant gap I named in Phase 1' (registry spot-gaps-build-the-loop-primitives.md L19) leans on a curriculum-coined label. Checked the sibling exercise curriculum/exercises/spot-gaps-build-the-loop.md: 'Phase 1' appears only in maintainer-block prose (Failure-modes/Decision-points/Plug-points, lines 75/76/80/84/85/86) and 'a dominant gap' appears only in student-facing body prose (line 30) — neither string is typed into any prompt fence a student pastes (checked curriculum/prompts/spot-gaps-build-the-loop-1.md and -2.md in full: the ranking ask is 'which gap matters most? Rank by damage-to-a-future-session', never 'dominant gap' or 'Phase 1'). Per §40b's own tell ('definite article in front of a curriculum-coined noun phrase'), this is the pattern the rule names. Practical risk stays low, not high: this same continued session (per the exercise's own framing, 'Same session as the gap map... in scrollback') contains exactly one ranked-gap output to resolve against, so an LLM's pragmatic reference resolution is very likely to land correctly even without the literal string match — there's no second candidate for 'the gap' to be confused with.",
-      "fix_hint": "Rephrase to the in-scrollback action rather than the curriculum label, e.g. 'the gap you ranked highest a few prompts back' instead of 'the dominant gap I named in Phase 1'.",
-      "blocking": false
-    },
-    {
-      "compendium": "check_pedagogy.md",
-      "rule_index": "62",
-      "rule_lead": "Callouts next to prompts: steer, don't pre-empt.",
-      "prompt_index": null,
-      "verdict": "PASS",
-      "evidence": "The two blockquote callouts before prompt 1 (raw L24, L26) are steering-shaped, not pre-emption-shaped: L24 offers an opt-in pacing choice ('Lump the next two prompts into one go... The two moves don't change'); L26 is a generalised stop-when-ready move ('Narrow it whenever you like, or say tell me what you've found so far... you do not need a complete inventory') rather than naming one brittle failure mode tied to current prompt wording that would rot if the fence changed.",
-      "fix_hint": null,
-      "blocking": false
+      "na_reason": "no self-critique requested"
     },
     {
       "compendium": "check_pedagogy.md",
       "rule_index": "50",
       "rule_lead": "Convenience-driven prompts with known shape-bias → body acknowledgment callout.",
-      "prompt_index": null,
       "verdict": "N/A",
-      "na_reason": "no prompt here trades a known runtime-risk shape (self-grading in one turn, soft-instruction niceness-tax, overwrite ambiguity) for convenience that the maintainer knowingly kept — the residual low-confidence risks logged above are inherent, not a deliberate convenience tradeoff needing acknowledgment",
       "evidence": null,
-      "fix_hint": null,
-      "blocking": false
+      "na_reason": "no prompt here trades a known runtime-risk shape (self-grading in one turn, soft-instruction niceness-tax, overwrite ambiguity) for convenience that the maintainer knowingly kept — the residual low-confidence risks logged above are inherent, not a deliberate convenience tradeoff needing acknowledgment",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "ec4a4918dc108cd1507c10701b59a6d3801a8dedf6f87ba47c344b79f36f3f34",
+      "carried_shape": "04c8bbd89721df08"
     },
     {
       "compendium": "check_pedagogy.md",
       "rule_index": "51",
       "rule_lead": "Deliberate-antipattern prompts = class-judge exempt, flagged-by-design.",
-      "prompt_index": null,
       "verdict": "N/A",
-      "na_reason": "no signal in the maintainer or backing block that this file is a deliberate cross-module before/after antipattern demo (unlike the M4-unpackaged/M5-packaged contrast this same module's spot-gaps-build-the-loop exercise runs)",
       "evidence": null,
-      "fix_hint": null,
-      "blocking": false
+      "na_reason": "no signal in the maintainer or backing block that this file is a deliberate cross-module before/after antipattern demo (unlike the M4-unpackaged/M5-packaged contrast this same module's spot-gaps-build-the-loop exercise runs)",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "ec4a4918dc108cd1507c10701b59a6d3801a8dedf6f87ba47c344b79f36f3f34",
+      "carried_shape": "04c8bbd89721df08"
     }
   ],
-  "todos_count": 6,
-  "blocking_findings_count": 1,
-  "accept_notes_found": [
-    "raw L69: Emphasis pass (2026-07-09, Antti-directed 'go very lightly on the bold') — bullet leads de-bolded to plain; not behavior-class territory.",
-    "raw L75: Placement note (2026-09-02 three-beat M6 split) — not behavior-class territory.",
-    "raw L87: curran-2x source stamp CAVEAT — research-claims lane, not behavior's.",
-    "raw L88: geoffintech-charles source stamp — research-claims lane, not behavior's.",
-    "raw L93: Stance block (2026-08-01, L2) — strategy/story lane, not behavior's.",
-    "raw L102: OODA last-run date — research-claims lane, not behavior's."
-  ],
-  "notes": "prompts_evaluated=3, all load_bearing:true per the template's definition (teaching/hand-off, not housekeeping) even though prompt 3's sidestep is student-optional. Per-prompt catalog verdicts: prompt 1 = TODO (niceness-tax PASS-mitigated, preamble-before-action low), prompt 2 = TODO (preamble-before-action low), prompt 3 = TODO (niceness-tax low, preamble-before-action low, default-acceptance med-but-non-blocking per check_pedagogy.md §56's engineer-audience/optional-beat carve-out). No per-prompt catalog verdict reaches the template's own REVISE threshold (needs high+load-bearing, or 2+ med+load-bearing on one prompt), so the instance-level REVISE verdict rests entirely on the single check_pedagogy.md §48 finding (prompt 1), which is a real, unmitigated, load-bearing gap against the rule's own named trigger example and carries no covering accept-note. shape_hash and body_sha recorded per protocol. MID-RUN FILE EDIT: while this judgment was in progress, a colleague committed-in-working-tree an edit to this exact file (body_sha moved 7b48a11f...->ec4a4918...); git diff confirmed the entire edit sits below `<!-- maintainer -->` (raw L61+) -- word count, placement-note wording, leap-test bullets (1->3), failure-mode label ('Phase 2 wider-look sprawl'->'wider-look sprawl'), plug-points/decision-points rewording, and removal of the Watch-fors + pre-cohort-todos lines. The student-facing body (raw L1-60, all three prompts, both blockquote callouts) is byte-identical -- confirmed via view.json body_regions=[[1,60]] and re-run of derive-body-view.js/derive-class-brief.js against the live file, both reporting the SAME shape_hash (04c8bbd89721df08) and body=60L. The one maintainer-block line this instance's findings cite in evidence (the Failure-modes note used in the check_pedagogy.md §48 finding) kept its substance across the edit -- only the stale 'Phase 2' label was dropped, the claim that it names only the sprawl direction still holds verbatim. body_sha above was updated to the current file hash so update-quality.sh does not refuse to stamp; no row's verdict or evidence needed to change as a result."
+  "todos_count": 4,
+  "blocking_findings_count": 0,
+  "notes": "Class brief built successfully (113 rules owed after 2 parked). Both compendiums (check_prompts.md, check_pedagogy.md) read in full per the T3 requirement, plus the 15-pattern behavioral catalog (simulation-behavior.md) applied per-prompt as judge-owned rows (compendium: curriculum/evals/simulation-behavior.md, rule_index: null, judge_owned: true). No blocking findings. 4 non-blocking TODOs, all the same underlying gap (check_prompts.md §17 preamble-before-action structural trigger met with no suppressor/primer, across the file-level rule and all three per-prompt catalog rows), judged low-severity because none of the three prompts is plan-mode and P1 already satisfies §43's continuous-narration expectation. Prior instance at this path (body_sha ec4a4918...) predates the current body_sha (bbdd3cfc...) so was not reused; every row here is freshly judged against the live file, not carried from cache."
 }

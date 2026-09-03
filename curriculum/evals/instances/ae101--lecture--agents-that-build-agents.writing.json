@@ -1,37 +1,36 @@
 {
   "class": "writing",
-  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/agents-that-build-agents.md",
-  "body_sha": "28c79902fa44d1e9cc12738a887d1969e095697d6aa3c64d73671c1d5cacd9da",
-  "shape_hash": "0f7defa9943cfa44",
-  "verdict": "PASS_WITH_TODOS",
   "training": "ae101",
-  "scope_note": "Fresh judgement, not carried forward: prefill-instance --write reported shape changed (a1b6245c45cbdfbe -> 0f7defa9943cfa44), so the prior instance on disk (body_sha 169bfaca...) described an entirely different, much older version of this file (still had a live prompt block, '## Ralph', a 'Geoffrey Huntley saw a lever' line, maintainer cut at line 57) and none of it was reused. Current file: 104 lines total, MAINTAINER_CUT at line 32 (blank line 31 then `<!-- maintainer -->` at 32), no fences (fence_ranges: []), body_regions = [[1,31]]. Backing block starts line 67. The two {{prompt:...}} substrings in the file (L37, L39) are both inside historical maintainer prose describing a since-superseded pass, not live markers -- grep confirms no {{prompt:}} or **Prompt** fence exists in the current body, so has_prompt_blocks:true in the cached view.json signal reads as a whole-file text match rather than a live in-body marker; expand-md.js was run per instructions and returned the source unchanged, confirming nothing needed expansion. Git-verified structural finding (see check_writing.md §3 row): the '## Why the loop survives the model' section was cut from this file in commit 7365cb8d, and four maintainer-block passages (L41, L53, L57, L59, L65) still describe or lean on that section as if present. Filed as a non-blocking §3 finding since rule 3 is not on the template's blocking list.",
+  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/agents-that-build-agents.md",
+  "verdict": "PASS_WITH_TODOS",
+  "body_sha": "1c08375c5bc008e9e0e35126574c4a9c0c7deeabf48095e8678ca2e5aaa572c9",
+  "shape_hash": "776191893f0953c7",
   "rules_evaluated": [
     {
       "compendium": "check_writing.md",
       "rule_index": 1,
-      "rule_lead": "Banned words — grep zero-tolerance.",
+      "rule_lead": "Banned words \u2014 grep zero-tolerance.",
       "verdict": "PASS",
-      "evidence": "body-view greps re-verified this session against raw source (lines 1-31): em_dash 0 hits, banned_words (delve|honest|importantly|crucial|substrate|synergize|paradigm shift) 0 hits, ritual_ceremony 0 hits, leverage_verb(v) 0 hits; all four marked planted_proof:true/status:CLEAN. Body's only arrow character is '→' (U+2192) in 'Cross personal → team.', not an em-dash.",
+      "evidence": "grep -inE '\\bhonest|\\bdelve|\\blandscape\\b|\\bimportantly|\\bcrucial|\\bsubstrate|\\bleverage|\\bsynergize|\\bparadigm shift' on lines 1-31 -> 0 hits; grep '\u2014' on lines 1-31 -> 0 hits (em-dash absent from body; maintainer-block em-dashes at L34/40/46/76/77 are exempt, rule scopes the ban to body prose above the cut).",
       "fix_hint": null,
       "blocking": true
     },
     {
       "compendium": "check_writing.md",
       "rule_index": 2,
-      "rule_lead": "Ritual / ceremony — hard ban.",
+      "rule_lead": "Ritual / ceremony \u2014 hard ban",
       "verdict": "PASS",
-      "evidence": "grep ritual_ceremony: 0 hits (planted_proof CLEAN). Word 'exercise' does not appear in body (this is a lecture, not an exercise file). 'practice'(n) also absent from body.",
+      "evidence": "grep -inE '\\britual\\b|\\bceremony\\b' on lines 1-31 -> 0 hits; word 'practice'(n) also absent, so the AE101 dosage carve-out isn't even in play.",
       "fix_hint": null,
       "blocking": true
     },
     {
       "compendium": "check_writing.md",
       "rule_index": 3,
-      "rule_lead": "No stale markers, no ‘fixed’ retrospectives, no session biography.",
-      "verdict": "REVISE",
-      "evidence": "Harm this rule guards: a maintainer note that misdescribes the file's current structure, misleading a future editor or judge. Git-verified staleness found. Commit 7365cb8d ('M6 closer: the survives-the-model slide goes; the opener already says the model's frontier moves without you') removed the '## Why the loop survives the model' section from this file's body. Four maintainer-block passages still assert or lean on that section's presence: (1) L41 Placement note -- 'The file carries *Why the loop survives the model* (from `the-loop-has-a-name.md`) as its first slide' -- false; current first slide is 'The agent stops where your judgement begins'. (2) L53 Kicker pairing -- quotes 'the survives-the-model kicker \"The loop feeds itself. That is the flywheel.\"' as sitting in this file; grep of the raw body for 'loop feeds itself' returns zero hits, the kicker text does not exist in the current body. (3) L59 Cross-file stamp pointer -- opens 'the survives-the-model slide's triad claim leans on...', describing a slide that no longer exists to lean on anything. (4) L65 Quality-is-grounding note -- positional claim 'Sits after the judgement-boundary header and before *Why the loop survives the model*' names a referent (a following section titled that) the file does not have; per this rule's own sub-clause, 'A keep-note whose positional claim fails is VOID.' Verified via `git log --oneline 625521c7..HEAD -- curriculum/lectures/agents-that-build-agents.md` (16 commits) and `git show 7365cb8d` showing the section's removal; `grep -n \"loop feeds itself\\|Why the loop\\|survives the model\" curriculum/lectures/agents-that-build-agents.md` returns only the four maintainer-block lines above, none in body.",
-      "fix_hint": "Strike or rewrite the four passages (L41 Placement, L53 Kicker pairing, L59 Cross-file stamp pointer, L65 Quality-is-grounding position clause) to reflect that 'Why the loop survives the model' no longer exists in this file -- either delete the dead references or re-anchor them to whichever current section (most likely 'The agent stops where your judgement begins' or 'The right information grounds and makes quality') now carries the claim.",
+      "rule_lead": "No stale markers, no \"fixed\" retrospectives, no session biography.",
+      "verdict": "PASS",
+      "evidence": "Checked both body (L1-31, no dates/session refs at all) and the edited maintainer/backing blocks (L32-94), since the preamble marks maintainer text in-scope for \u00a73. The two new removal notes ('## Ralph cut whole (Antti 2026-09-02)...in git at 7d13d15e...Do not restore here' L52; '## The agent stops...(Antti 2026-09-02...)...are in git at 109ca335. Do not restore them' L53-54) match the rule's own licensed shape verbatim ('the licensed \"Cut (date) \u2026 Do not restore\" accept-note carries it by design'). The other dated maintainer notes (Emphasis pass L34, Soil slide L46, Placement L36) state current constraints with dated attribution, not journey verbs. OODA block (L89-92) was trimmed to 'none standing'/'none' rather than carrying stale 'decided:' entries. No 'settled/retired/no longer/used to/was changed to' tells found in the edited regions.",
+      "fix_hint": null,
       "blocking": false
     },
     {
@@ -39,7 +38,7 @@
       "rule_index": 4,
       "rule_lead": "Register match.",
       "verdict": "PASS",
-      "evidence": "Body reads Boris-grounding/Martin-spare with a Risto-leading close, matching the lecture-meta's stated contract (L47). No L&D-coach, motivational-poster, or cold-tech-only register slip. No '**Remember:**'/'Hold onto'/'Keep in mind'/'Never forget' retain-wrapper anywhere in body (manual check, zero hits). No atmospheric imagery (isolation/darkness/body-state/cosmic-scale) present. No negation-callout self-contradiction: the one negation-shaped line, L7 'Not the model.', is answered nowhere else in the file with a contradicting 'the model does X' claim. AE101 audience-contract (write-to-the-caution) honoured: no 'trust the agent'/'just a simple' flinch phrases; the boundary section (L6-8) sells a defensible judgement call, not speed.",
+      "evidence": "AE101 voice quintet check: L6-8 factual/logical (Boris/Martin \u2014 'It runs on what you have expressed... What is written down, it can act on'); L12 opens on a Rory-shaped reframe ('Nobody reviews 500K lines by hand') then grounds it with a named event and number; L21-23 Godin/Risto ('Act under uncertainty', 'Share and learn together'); L27-28 Risto-forward close, matching the maintainer's own register call ('Voice: Risto-leading, Boris-grounding, Martin-spare', L42). No L&D-coach, cold-tech-only, or motivational-poster register found. No 'Remember:'/'Hold onto'/'Keep in mind' wrapper (grep 0 hits). No metaphor-valence collision (cargo/theatre/ritual/tourist/poster all absent). No negation-callout self-contradiction (no 'we don't X' claims in body to contradict). No atmospheric/sensory imagery to mis-tone-check.",
       "fix_hint": null,
       "blocking": false
     },
@@ -48,35 +47,36 @@
       "rule_index": 5,
       "rule_lead": "Rough-cut drafts for articles.",
       "verdict": "N/A",
-      "evidence": null,
+      "evidence": "This is a finished lecture body, not an article draft.",
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "file is a finished lecture body, not an article draft"
+      "na_reason": "not an article draft"
     },
     {
       "compendium": "check_writing.md",
       "rule_index": 6,
       "rule_lead": "Credit original when paraphrasing named technique.",
-      "verdict": "PASS",
-      "evidence": "No named practitioner technique is paraphrased in body (nothing Pocock/Klaassen/Martin/StoryBrand/JTBD/Huryn-shaped) so no attribution is owed. Creator-name grep (\\bAntti\\b|\\bthe creator\\b|\\bthe author\\b|\\bcourse creator\\b|\\btraining creator\\b) over body: 0 hits. author_we grep (^\\s*(We|we)\\b(?!.*\\b(you|your)\\b)): 0 hits, planted_proof CLEAN. No 'Belief #N' numeric reference in maintainer block. Timing correctly placed: this is a lecture, so no '**Time:**' line appears in body (correctly absent per the rule's 'lectures... do not show timing in body'); '**Time:** 6 minutes.' sits below the fence at L49 as required.",
+      "verdict": "N/A",
+      "evidence": "No named practitioner or framework move is paraphrased in the body (the Huntley/Ralph material was cut from this file; only 'principal-agent' as cultural vocabulary appears, and only in the maintainer block).",
       "fix_hint": null,
-      "blocking": true
+      "blocking": true,
+      "na_reason": "no named-technique paraphrase in body"
     },
     {
       "compendium": "check_writing.md",
       "rule_index": 7,
-      "rule_lead": "Always “you”, never “the student”; teacher framing stays out of body.",
+      "rule_lead": "Always \"you\", never \"the student\"; teacher framing stays out of body.",
       "verdict": "PASS",
-      "evidence": "Body addresses the reader as 'you' throughout (L6-8, L14-16, L21-23): 'what you have expressed', 'you set it', 'you can express', 'You keep finding', 'you find it', 'Your brain needs'. the_student grep: 0 hits (planted_proof CLEAN). No delivery-mechanics narration ('the trainer shows...') in body.",
+      "evidence": "Body consistently uses second person: L8 'You keep finding the next thing you know', L16 'You find it one run at a time'. No 'the student' occurrences, no delivery-mechanics narration ('the trainer shows...') anywhere in body.",
       "fix_hint": null,
       "blocking": true
     },
     {
       "compendium": "check_writing.md",
       "rule_index": 8,
-      "rule_lead": "Don’t smuggle terms of art from maintainer into body.",
+      "rule_lead": "Don't smuggle terms of art from maintainer into body.",
       "verdict": "PASS",
-      "evidence": "Checked every maintainer-only term (soil slide, law-slide pattern, arc-closer, survives-the-model, Ralph, grill-me) against body: none leak in. 'flywheel' (L30) is NOT maintainer-only -- it is introduced in body itself, earned by the two preceding lines (L27-28: 'Each session surfaces the next gap... makes the next session cheaper. The kit compounds; the model rotates.') describing the mechanic in plain terms before naming it. The `<!--tier:2-->` markers (L4, L19) are renderer markup, not body prose, so they are exempt.",
+      "evidence": "The only body concept needing definition ('the frontier', L7) is defined in the same sentence it's introduced in ('That is the frontier, and you set it... What you can express is how far the agent runs'). No maintainer-only jargon (self-compound, substrate, three-pattern, grill-me) appears in body.",
       "fix_hint": null,
       "blocking": false
     },
@@ -85,7 +85,7 @@
       "rule_index": 9,
       "rule_lead": "Over-hedge detector.",
       "verdict": "PASS",
-      "evidence": "Reassurance-grep terms (no penalty / fine way to / it's OK if / not a downgrade / not a box-check / you are not on the hook) all absent from body on manual read. No delegation-shape sentence is followed by an absolving reassurance clause.",
+      "evidence": "grep for reassurance shapes (no penalty / fine way to / it's OK if / not a downgrade / not a box-check / you are not on the hook) on lines 1-31 -> 0 hits.",
       "fix_hint": null,
       "blocking": false
     },
@@ -94,36 +94,37 @@
       "rule_index": 10,
       "rule_lead": "Verbatim-frame-cite in reference artefact.",
       "verdict": "N/A",
-      "evidence": null,
+      "evidence": "This file is a lecture, not a reference artefact capturing a user-supplied verbal frame.",
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "not a reference artefact capturing a user-supplied verbal frame"
+      "na_reason": "not a reference artefact"
     },
     {
       "compendium": "check_writing.md",
       "rule_index": 11,
       "rule_lead": "Cap practitioner attribution at one student-side mention per module.",
       "verdict": "N/A",
-      "evidence": null,
+      "evidence": "No practitioner is named in the body at all (the Huntley/Ralph section was cut whole per the maintainer note at L52), so there is nothing to cap.",
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "no practitioner named in body (Huntley/Ralph content was cut whole per maintainer L61)"
+      "na_reason": "no practitioner named in body"
     },
     {
       "compendium": "check_writing.md",
       "rule_index": 12,
       "rule_lead": "Punchy framing keeps punch; carve-out lives downstream.",
-      "verdict": "PASS",
-      "evidence": "The one candidate slogan, 'There is no last turn' (H1/H2/L27), is self-scoped to this training's own ongoing practice ('The training closes. The flywheel does not.', L30) rather than an unbounded claim about the world, so it does not need a downstream carve-out paragraph under this rule's test.",
+      "verdict": "N/A",
+      "evidence": "The closer's punch ('There is no last turn', L25/L27) is a rhetorical arc-closer aphorism, not a technical claim that overstates for a named subset the way \u00a712 addresses (compare its own example: a banner question holding for 2 of 3 failure modes). Nothing here asserts a bounded technical claim needing a downstream carve-out paragraph.",
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "na_reason": "closer aphorism, not a scoped technical overreach"
     },
     {
       "compendium": "check_writing.md",
       "rule_index": 13,
       "rule_lead": "Value-prop / positioning framing belongs in sales copy + project strategy docs, NOT student-facing curriculum body.",
       "verdict": "PASS",
-      "evidence": "Flag-phrase grep ('not an aspirational', 'not a vendor', 'this isn't marketing', 'the real practitioners', 'unlike consultancy decks', 'grounded in actual', 'not theoretical', 'from the person running it') over body: 0 hits. Word 'vendor' does not appear in body at all.",
+      "evidence": "grep -inE 'not an aspirational|not a vendor|not marketing|the real practitioners|unlike consultancy|grounded in actual|not theoretical|\\bvendor\\b' on lines 1-31 -> 0 hits.",
       "fix_hint": null,
       "blocking": true
     },
@@ -132,7 +133,7 @@
       "rule_index": 14,
       "rule_lead": "Watch out for planting jargon too early.",
       "verdict": "PASS",
-      "evidence": "This is the arc's final file (M6 close), so nearly all working vocabulary is already earned. No LLM-internal jargon (token/embedding/inference/fine-tuning/orchestration/schema/frontmatter) present. 'flywheel' is earned locally (see rule 8 evidence) rather than planted cold.",
+      "evidence": "This is the training's final lecture (M6 closer, per maintainer Placement note L36), so every term used (spec, tests, the agent, the frontier) is either industry-standard or has been earned many modules earlier ('compounds' at L28 is the M1-earned compounding theme, used long after its earning point). No forward-looking jargon plant found.",
       "fix_hint": null,
       "blocking": false
     },
@@ -140,64 +141,63 @@
       "compendium": "check_writing.md",
       "rule_index": 15,
       "rule_lead": "Audit closer when trimming body-prose forcing function.",
-      "verdict": "N/A",
-      "evidence": null,
+      "verdict": "PASS",
+      "evidence": "Pronoun/metaphor-referent check run on every section close (this sub-clause fires on any closer, not only post-trim): L8 'the next thing you know' \u2014 clear referent (the reader's own unexpressed judgement, set up in the same bullet); L16 'You find it one run at a time' \u2014 'it' resolves singly to 'the right information' in the preceding sentence; L23 'it will never be enough' \u2014 'it' resolves to 'personal mastery' in the same bullet. No dangling pronoun and no bypass-the-agent punchline verb found.",
       "fix_hint": null,
-      "blocking": false,
-      "na_reason": "no fenced prompt in this file; no forcing-function trim to audit"
+      "blocking": false
     },
     {
       "compendium": "check_writing.md",
       "rule_index": 16,
-      "rule_lead": "The `**What happened:**` block is OPTIONAL.",
+      "rule_lead": "The `**What happened:**` block is OPTIONAL \u2014 default is to omit it (Antti-directed 2026-08-12, mandation removed from `curriculum/exercises/README.md`).",
       "verdict": "N/A",
-      "evidence": null,
+      "evidence": "This is a lecture file, not an exercise; the What-happened recap block only applies to exercises.",
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "this is a lecture, not an exercise; recap-block rule is exercise-specific"
+      "na_reason": "lecture, not exercise"
     },
     {
       "compendium": "check_writing.md",
       "rule_index": 17,
       "rule_lead": "No combative verbs about the agent in body prose.",
       "verdict": "PASS",
-      "evidence": "Verbs describing student→agent interaction: 'you have expressed', 'your judgement takes over' -- none combative (no bark/order/command/whip/drag/boss/shout-at/scold present).",
+      "evidence": "grep -inE '\\bbark|\\border|\\bcommand|\\bwhip|\\bforce|\\bdrag|\\bpush around|\\bboss|\\bshout at|\\bsnap at|\\blecture\\b|\\bscold' on lines 1-31 -> 0 hits.",
       "fix_hint": null,
-      "blocking": false
+      "blocking": true
     },
     {
       "compendium": "check_writing.md",
       "rule_index": 18,
       "rule_lead": "Headers must be literally true about the mechanism.",
       "verdict": "PASS",
-      "evidence": "Four headers checked against their sections' actual claims: 'The agent stops where your judgement begins' (matches L6-8's boundary content), 'The right information grounds and makes quality' (matches L12-16's grounding argument), 'You make agentic happen' (matches L21-23's agency framing), 'There is no last turn' (matches L27-30's closing thesis). No spatial-metaphor contradiction, no unlicensed 'other X' presupposing an undesignated primary.",
+      "evidence": "All four headers cold-read true: 'The agent stops where your judgement begins' (L3) matches the boundary the bullets describe; 'The right information grounds and makes quality' (L10) matches the 500K-lines/spec-and-tests content under it; 'You make agentic happen' (L18) and 'There is no last turn' (L25) are the deliberate thesis headers, no spatial-metaphor contradiction ('beyond the window'-style fault) and no unpaired 'other X'.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_writing.md",
       "rule_index": 19,
-      "rule_lead": "Machine-cadence fat.",
+      "rule_lead": "Machine-cadence fat \u2014 the shape of good prose without the content.",
       "verdict": "PASS",
-      "evidence": "Closest candidates checked and cleared: L7 'Not the model.' is a real negation against a plausible misreading (that the model, not the reader, sets the frontier), not an empty one. L7 'That is the frontier, and you set it.' resolves a real antecedent (the boundary just described in L6), passing the deictic carve-out. The three bolded soil-slide labels (L21-23) each pivot to new content rather than restating the label as subject, so none is a bold-label echo. No citation/appendix duplication (no Sources block in body).",
+      "evidence": "Closest candidate is L7 'That is the frontier, and you set it. Not the model.' \u2014 this is the licensed use of the deictic-drumroll shape ('legitimate when it NAMES a concept'): 'that' resolves to the just-described boundary and the sentence introduces the term 'the frontier' for the first time, so it stays inside the rule. No bold-label echo (the three bold handles at L21-23 are each followed by elaboration, not restatement of the label) and no citation/appendix duplication in body.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_writing.md",
       "rule_index": 20,
-      "rule_lead": "Don’t state a count the adjacent list already holds.",
+      "rule_lead": "Don't state a count the adjacent list already holds.",
       "verdict": "PASS",
-      "evidence": "No numeral in body prose adjacent to a list it duplicates (grep for 'these X', 'the N below', numerals near bullets: none found).",
+      "evidence": "The 3-bullet list at L21-23 and the 2-bullet list at L27-28 are never preceded or followed by a numeral naming their count.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_writing.md",
       "rule_index": 21,
-      "rule_lead": "A slogan that is false as stated is not punchy framing.",
+      "rule_lead": "A slogan that is false as stated is not punchy framing \u2014 run the truth test before reaching for \u00a712.",
       "verdict": "PASS",
-      "evidence": "The two superlative-shaped lines -- 'There is no last turn' and 'The line never goes away' (L8) -- are values/practice statements about an ongoing discipline (there is always more tacit judgement to express), not empirical claims with a findable real-world counterexample in the shape §21 targets (e.g. 'the failing test is the only proof'). No superlative asserted as a fact about how the world works that a professional reader could falsify.",
+      "evidence": "'There is no last turn' (L1, L25) is the only never/no-shaped claim in body. Scope test: it is not asserted as a fact about the mechanics of the world the way the rule's own counterexample is ('the failing test is the only proof') \u2014 it is the closer's own thesis about the practitioner's ongoing practice, immediately grounded by 'The training closes' (L30), which explicitly acknowledges the one finite boundary that does exist. No live counterexample the corpus itself contradicts (unlike the rule's cited case where a fallback plan disproved the claim).",
       "fix_hint": null,
       "blocking": false
     },
@@ -206,228 +206,227 @@
       "rule_index": 22,
       "rule_lead": "A claim binds to every body that states it, not just the one holding the stamp.",
       "verdict": "PASS",
-      "evidence": "`grep -rn \"antti-agentics-helsinki|luma-agentics-helsinki\" curriculum/lectures/*.md curriculum/trainings/*/*.md curriculum/exercises/*.md` (excluding this file) returns zero hits -- both source ids are claimed only in this file's own backing block, so no sibling body needs a matching correction.",
+      "evidence": "Ran grep -rl 'antti-agentics-helsinki' and 'luma-agentics-helsinki' curriculum/ \u2014 the only other hits are cached body-view/instance files for a lecture named quality-is-grounding.md, which git log shows was deleted whole in 043b341a ('M6: the grounding thesis becomes Quality is grounding inside the closer; its lecture file and instances go') \u2014 i.e. its thesis was merged INTO this file, and the old file no longer exists to go stale. No live sibling body carries these source ids.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_writing.md",
       "rule_index": 23,
-      "rule_lead": "A rule set reconstructed at session start goes stale inside the session.",
+      "rule_lead": "A rule set reconstructed at session start goes stale inside the session \u2014 re-derive it per target, not per sweep.",
       "verdict": "N/A",
-      "evidence": null,
+      "evidence": "This is a single-file, single-pass judge run, not a multi-file sweep caching a rule set across targets.",
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "single-file judge dispatch, not a multi-file sweep; this rule governs sweep process, not file content"
+      "na_reason": "single-file run, not a multi-file sweep"
     },
     {
       "compendium": "check_writing.md",
       "rule_index": 24,
       "rule_lead": "One doc per scarce-attention audience; delta-only.",
       "verdict": "N/A",
-      "evidence": null,
+      "evidence": "Not a scarce-attention-audience artifact (trainer/exec doc); this is student-facing curriculum body.",
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "not a trainer/exec/sponsor scarce-attention artefact"
+      "na_reason": "not a trainer/exec scarce-attention doc"
     },
     {
       "compendium": "check_writing.md",
       "rule_index": 25,
       "rule_lead": "Trainer-facing text is self-contained.",
       "verdict": "N/A",
-      "evidence": null,
+      "evidence": "Body is student-facing, not trainer-facing.",
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "this is student-facing curriculum, not a built trainer page"
+      "na_reason": "not trainer-facing text"
     },
     {
       "compendium": "check_writing.md",
       "rule_index": 26,
-      "rule_lead": "A sentence saying how you’d know points at the outcome, not the nearest artifact.",
-      "verdict": "N/A",
-      "evidence": null,
+      "rule_lead": "A sentence saying how you'd know points at the outcome, not the nearest artifact.",
+      "verdict": "PASS",
+      "evidence": "No 'X tells you whether Y' / 'you'll know it worked when' construction appears anywhere in body.",
       "fix_hint": null,
-      "blocking": false,
-      "na_reason": "no self-witnessing 'X tells you whether Y' construction present in body"
+      "blocking": false
     },
     {
       "compendium": "check_writing.md",
       "rule_index": 27,
-      "rule_lead": "Say it once, at its most concrete, then at most one sentence that generalises it.",
+      "rule_lead": "Say it once, at its most concrete, then at most one sentence that generalises it. Style, not a gate.",
       "verdict": "PASS",
-      "evidence": "Closest candidate: L7 stacks four sentences on one idea (frontier=you/not-the-model/expression=range/stops-where-judgement-takes-over). Read closely each sentence adds real precision rather than restating the last (thesis -> negation-against-a-real-misreading -> mechanism -> operational boundary), so it stays inside the progressive-tightening pattern the rule allows rather than the abstract-twin/restatement failure it bans. The title/header/bullet triple echo of 'There is no last turn' (H1, L1; H2, L25; opening clause, L27) reads as a deliberate closer bookend (title as promise, closing section as fulfilment) rather than accidental restatement.",
+      "evidence": "The title 'There is no last turn' (L1) recurs verbatim as the closing H2 (L25), but functions as a deliberate bookend, not a restated claim: the title carries no body paragraph of its own (H2 follows two lines later), while the H2 instance is the one place the idea is actually substantiated with bullets (L27-28). Slide-1's three bullets (L6-8) each add distinct content (concept, ownership, mechanism) rather than restating one idea at different altitudes; no widening qualifier found.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
-      "rule_index": "1",
+      "rule_index": 1,
       "rule_lead": "Aspirational destination, never corrective gap.",
       "verdict": "PASS",
-      "evidence": "No deficiency-shaped phrasing ('you already think you're using X', 'you're missing Y'). No ability-tier phrasing ('at your scale', 'for a beginner', 'a senior would already know'). No tourist/practitioner or amateur/professional identity split in body.",
+      "evidence": "No corrective-gap phrasing ('you already think you're using X', 'you're missing Y'), no tier-assumption ('at your scale', 'for a beginner'), and no tourist/practitioner-style identity split anywhere in body.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
-      "rule_index": "2",
+      "rule_index": 2,
       "rule_lead": "Earn every technical term on first use.",
       "verdict": "PASS",
-      "evidence": "'flywheel' (L30) is earned by the immediately preceding plain-language description of the mechanic (L27-29: session/gap/move cycle, 'The kit compounds; the model rotates.') before the metaphor names it -- an anticipatory-unfold pattern, not a cold plant. No bare 'MN' module abbreviations appear in body at all, so the M2+-earned-convention question does not arise. No other unearned curriculum coinage or Claude Code primitive present.",
+      "evidence": "This is M6's final lecture; every term used (spec, tests, 'the frontier' \u2014 self-defined in the same sentence at L7, 'compounds' at L28) is either plain engineering vocabulary or a load-bearing curriculum term earned many modules earlier (compounding, from M1). Nothing is planted ahead of its earning point.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
-      "rule_index": "3",
+      "rule_index": 3,
       "rule_lead": "Business-audience word ban (Agents 101 default).",
       "verdict": "PASS",
-      "evidence": "This file is AE101 (M6), where check_writing §4's AE101 audience-contract sets the operative unearned-term policy; regardless, a manual scan against jargon-ban.md's category (delve/leverage/substrate/synergize-shaped consultancy words) found none in body -- register is plain throughout.",
+      "evidence": "SVP-flinch scan on body: 'agentic', '500K lines', 'Agentics Helsinki meetup' are all either the training's own long-earned coinage or concrete industry detail, not unearned jargon; no term in body would fail the cold-read test.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
-      "rule_index": "4",
-      "rule_lead": "Memory vs context — use deliberately.",
+      "rule_index": 4,
+      "rule_lead": "Memory vs context \u2014 use deliberately.",
       "verdict": "N/A",
-      "evidence": null,
+      "evidence": "Neither 'memory' nor 'context' appears in body at all.",
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "neither 'memory' nor 'context' appears in body"
+      "na_reason": "terms not present"
     },
     {
       "compendium": "check_student_facing.md",
-      "rule_index": "5",
-      "rule_lead": "Golden path only in body.",
+      "rule_index": 5,
+      "rule_lead": "Golden path only in body \u2014 THIS RULE HAS AN EXCEPTION; read to the boundary before cutting anything.",
       "verdict": "N/A",
-      "evidence": null,
+      "evidence": "No troubleshooting/recovery/what-if-X-fails branch content in this reflective closer.",
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "lecture body, no troubleshooting/recovery-shaped content to route"
+      "na_reason": "no recovery-branch content present"
     },
     {
       "compendium": "check_student_facing.md",
-      "rule_index": "6",
-      "rule_lead": "Trust Claude’s defaults for structure.",
+      "rule_index": 6,
+      "rule_lead": "Trust Claude's defaults for structure.",
       "verdict": "N/A",
-      "evidence": null,
+      "evidence": "No prompt content in this file to specify or not specify structure for.",
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "no prompt block in this file"
+      "na_reason": "no prompt content"
     },
     {
       "compendium": "check_student_facing.md",
-      "rule_index": "7",
-      "rule_lead": "Q1/Q2/Q3 retro interview is banned at every module.",
+      "rule_index": 7,
+      "rule_lead": "Q1/Q2/Q3 retro interview is banned at every module. Compound-shape varies per module \u2014 never repeat same Debrief.",
       "verdict": "N/A",
-      "evidence": null,
+      "evidence": "This is a lecture, not a Debrief exercise.",
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "no Debrief/compound-review section in this closing lecture"
+      "na_reason": "lecture, not a Debrief"
     },
     {
       "compendium": "check_student_facing.md",
-      "rule_index": "8",
-      "rule_lead": "Don’t smuggle another module’s voice.",
+      "rule_index": 8,
+      "rule_lead": "Don't smuggle another module's voice.",
       "verdict": "PASS",
-      "evidence": "Body's forward-tilt, boundary-setting register matches the stated M6-close mood (practitioner fluency, forward-tilt) rather than reading as borrowed from an unease- or joy-mood module.",
+      "evidence": "The mood matches its own module's target throughout (practitioner fluency + forward-tilt per the maintainer's Mood target note, L48); nothing reads borrowed from an unrelated module's register.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
-      "rule_index": "9",
-      "rule_lead": "Don’t ask student to manually diff or spot-check Claude’s output as error-catching.",
+      "rule_index": 9,
+      "rule_lead": "Don't ask student to manually diff or spot-check Claude's output as error-catching.",
       "verdict": "N/A",
-      "evidence": null,
+      "evidence": "There are no instruction lines in this file at all (no prompts, no 'read/look/notice' directives) \u2014 it is pure reflective prose with nothing for the actor/mechanism/tell diagnostics to check.",
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "no instruction/do-lines directed at the student in this declarative closer -- rule targets operational instruction sentences, of which this file has none"
+      "na_reason": "no instruction lines in body"
     },
     {
       "compendium": "check_student_facing.md",
-      "rule_index": "10",
+      "rule_index": 10,
       "rule_lead": "Simulation personas never alone.",
       "verdict": "N/A",
-      "evidence": null,
+      "evidence": "No self-study simulation content in this file.",
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "not a self-study simulation surface"
+      "na_reason": "not a simulation surface"
     },
     {
       "compendium": "check_student_facing.md",
-      "rule_index": "11",
-      "rule_lead": "No “What research says” callout boxes.",
+      "rule_index": 11,
+      "rule_lead": "No \"What research says\" callout boxes",
       "verdict": "PASS",
-      "evidence": "No callout boxes of any kind in body.",
+      "evidence": "No callout boxes of any kind in body; the one research-adjacent detail (500K-lines demos, L12) is a single inline sentence, not a boxed callout.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
-      "rule_index": "12",
+      "rule_index": 12,
       "rule_lead": "Student moves stay in conversation with agent.",
       "verdict": "N/A",
-      "evidence": null,
+      "evidence": "No editor/terminal/file-edit primitive is asked of the student in this file.",
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "no student move (editor/terminal/file-edit) described in body"
+      "na_reason": "no student-move instructions present"
     },
     {
       "compendium": "check_student_facing.md",
-      "rule_index": "13",
-      "rule_lead": "Specify which CLAUDE.md layer — every time.",
+      "rule_index": 13,
+      "rule_lead": "Specify which CLAUDE.md layer \u2014 every time.",
       "verdict": "N/A",
-      "evidence": null,
+      "evidence": "No CLAUDE.md reference in body.",
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "no CLAUDE.md reference in body"
+      "na_reason": "term not present"
     },
     {
       "compendium": "check_student_facing.md",
-      "rule_index": "14",
+      "rule_index": 14,
       "rule_lead": "No em-dashes. Simple sentences.",
       "verdict": "PASS",
-      "evidence": "em_dash grep: 0 hits in body (planted_proof CLEAN, same evidence as check_writing §1). Sentences read short-to-medium; the longest (L7-8) stay simple-clause, no em-dash sub-clauses.",
+      "evidence": "grep '\u2014' on lines 1-31 -> 0 hits.",
       "fix_hint": null,
       "blocking": true
     },
     {
       "compendium": "check_student_facing.md",
-      "rule_index": "17",
+      "rule_index": 17,
       "rule_lead": "Section headers use command verbs when section is about doing something.",
       "verdict": "PASS",
-      "evidence": "All four headers are declarative noun/clause phrases ('The agent stops where your judgement begins', 'The right information grounds and makes quality', 'You make agentic happen', 'There is no last turn') -- correct for a lecture, which the rule's own carve-out exempts from command-verb headers since 'reader's job = understanding, not doing.' No section instructs the student to act.",
+      "evidence": "All four headers are declarative noun-phrases ('The agent stops where your judgement begins', 'The right information grounds and makes quality', 'You make agentic happen', 'There is no last turn'), which the rule explicitly permits for lectures/reference sections since the reader's job is understanding, not doing.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
-      "rule_index": "18",
-      "rule_lead": "Inline links use target’s title, never filename.",
+      "rule_index": 18,
+      "rule_lead": "Inline links use target's title, never filename.",
       "verdict": "N/A",
-      "evidence": null,
+      "evidence": "No inline links appear anywhere in body.",
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "no inline links in body"
+      "na_reason": "no links in body"
     },
     {
       "compendium": "check_student_facing.md",
-      "rule_index": "20",
+      "rule_index": 20,
       "rule_lead": "Disambiguate shared-word collisions with Claude Code primitives on first student-authored use.",
       "verdict": "N/A",
-      "evidence": null,
+      "evidence": "None of the collision-prone words (memory, skill, rule, plan, agent/subagent) is used in a student-authoring context in this body, and no deictic ('here'/'this'/'above'/'below') requiring disambiguation appears.",
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "'agent' is used throughout in its already-long-established M6 sense; no first-time student-authored use of memory/skill/rule/plan/subagent occurs in this file"
+      "na_reason": "no collision-prone authoring language present"
     },
     {
       "compendium": "check_student_facing.md",
-      "rule_index": "21",
+      "rule_index": 21,
       "rule_lead": "LLM-vs-agent-vs-Claude vocabulary discipline.",
       "verdict": "PASS",
-      "evidence": "Body uses 'the agent' consistently for the acting/boundary topic (L6-8: what it can/cannot do based on expressed instruction) -- correct per the rule's 'autonomous work -> the agent' default. Neither 'Claude' nor 'LLM' is used, so no addressee/thinking-topic contexts exist to mis-word.",
+      "evidence": "'The agent' is used consistently for acting/autonomous-work references (L6, L7, L8 x2). 'The model' (L7, L28) refers specifically to the swappable underlying checkpoint ('the model rotates') \u2014 a genuinely model-versioning meaning distinct from all three canonical buckets (LLM-thinking / agent-acting / Claude-product), used precisely for that reason. No 'Claude' addressee usage to check the active-stance override against.",
       "fix_hint": null,
       "blocking": false
     },
@@ -435,809 +434,811 @@
       "compendium": "check_student_facing.md",
       "rule_index": "21b",
       "rule_lead": "Session / task / run split (all trainings).",
-      "verdict": "PASS",
-      "evidence": "'session' used correctly at L27 ('Each session surfaces the next gap... the next session cheaper') in the one-sitting sense. No banned noun-run usage for the agent's sitting anywhere in body.",
-      "fix_hint": null,
+      "verdict": "REVISE",
+      "evidence": "L16 'Nobody can hand you the right information about your customers, your direction, your domain. You find it one run at a time.' uses 'run' as a bare noun with no execution-record framing ('a run you weren't watching', explicit CI/test context) to anchor it to the licensed sense; read cold it could land as the banned agent-sitting sense the rule targets, since the rule's own diagnostic ('what lands? the task. What opens fresh? a session.') is exactly the ambiguity here \u2014 is this the student's own iterative practice, or the agent's run?",
+      "fix_hint": "Consider anchoring the sense explicitly, e.g. 'one attempt at a time' or 'reading what each run turns up' if the execution-record meaning is intended.",
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
-      "rule_index": "22",
+      "rule_index": 22,
       "rule_lead": "No time-of-day anchors in body prose.",
       "verdict": "PASS",
-      "evidence": "Grep for tomorrow/overnight/this morning/tonight/next morning/yesterday/last night over body: 0 hits.",
+      "evidence": "grep -inE 'tomorrow|overnight|this morning|tonight|next morning|yesterday|last night' on lines 1-31 -> 0 hits.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
-      "rule_index": "23",
+      "rule_index": 23,
       "rule_lead": "Reflection beats stay invisible in flow.",
       "verdict": "PASS",
-      "evidence": "No self-aware pedagogy header or contemplative-pause prefix ('Pause before you promote', 'Meta-moment', 'sit with X', 'let it land', 'take a moment', 'breathe') anywhere in body.",
+      "evidence": "grep for reflection-announcing phrases (Pause before you promote / Meta-moment / Step back / Moment of truth / sit with X / let it land / take a moment / breathe / be present with) on lines 1-31 -> 0 hits.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
-      "rule_index": "24",
+      "rule_index": 24,
       "rule_lead": "No meta-ask when student has already decided.",
       "verdict": "N/A",
-      "evidence": null,
+      "evidence": "No prompts or meta-ask content in this file.",
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "no prompt and no promptless decision-restating section with an LO/leap-test/failure-row in this file"
+      "na_reason": "no prompt/meta-ask content"
     },
     {
       "compendium": "check_student_facing.md",
-      "rule_index": "25",
-      "rule_lead": "`.md` is default file type for student artifacts.",
+      "rule_index": 25,
+      "rule_lead": "`.md` is default file type for student artifacts across curriculum.",
       "verdict": "N/A",
-      "evidence": null,
+      "evidence": "No file-saving instruction in this file.",
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "no artifact-saving instruction in body"
+      "na_reason": "no save-file instruction present"
     },
     {
       "compendium": "check_student_facing.md",
-      "rule_index": "26",
+      "rule_index": 26,
       "rule_lead": "Cut NVA: true but not moving student forward.",
       "verdict": "PASS",
-      "evidence": "Closest candidate checked: L12's 'the first Agentics Helsinki meetup, fall 2025, had two of them' is evidentiary grounding for the 500K-lines claim (matches the maintainer's attested source), not detached trivia -- it changes what the claim rests on, so it earns its place rather than failing the NVA test. No other clause found that is obvious-to-a-working-engineer filler.",
+      "evidence": "The one candidate \u2014 the named event detail at L12 ('the first Agentics Helsinki meetup, fall 2025') \u2014 passes the fastest screen ('is this obvious to a working engineer? cut') because it isn't administrative filler, it's the concrete grounding that IS this slide's point (a lecture titled 'the right information grounds... quality' naming a specific real event is the technique being taught, not trivia).",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
-      "rule_index": "27",
-      "rule_lead": "Body “read it” / “look at it” / “notice X” after chat-print = dead weight.",
+      "rule_index": 27,
+      "rule_lead": "Body \"read it\" / \"look at it\" / \"notice X\" after chat-print = dead weight.",
       "verdict": "N/A",
-      "evidence": null,
+      "evidence": "No chat-print moment is described anywhere in this body.",
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "no chat-print moment in this file to narrate"
+      "na_reason": "no chat-print moment present"
     },
     {
       "compendium": "check_student_facing.md",
-      "rule_index": "28",
+      "rule_index": 28,
       "rule_lead": "Forward-callout closer: student as grammatical subject.",
-      "verdict": "PASS",
-      "evidence": "Checked the file's true closer, L30 'The training closes. The flywheel does not.' Subject test: the first clause literally has 'the training' as grammatical subject, matching failure-mode (a)'s shape on its face. Harm this rule guards against: salesy, value-prop-shaped promotion of the training's own content. Read against that harm, the line does not promote or describe what the training covers (rule 28's actual example shape, 'the training is full of X') -- it marks the training/practice boundary and pivots to the student's continuing flywheel (established as the student's own ongoing practice by the preceding bullets, L27-29). Judged PASS with the harm test failing to find salesy framing present; flagged as a maintainer rule-question in todos rather than filed as a violation, since the technical subject-test hit is real even though the harm is not.",
+      "verdict": "N/A",
+      "evidence": "'The training closes.' (L30) is a terminal, present-tense statement marking the actual end of the arc, not a forward-looking callout gesturing at later content the student will find/do/notice \u2014 the failure modes the rule targets (value-prop leak, coach-register imperative, audience-shift) all require pointing at something ahead, and there is nothing ahead of the last lecture in the training.",
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "na_reason": "terminal statement, not a forward-pointing callout"
     },
     {
       "compendium": "check_student_facing.md",
-      "rule_index": "29",
+      "rule_index": 29,
       "rule_lead": "Operational reminders live at moment of use, not only where introduced.",
       "verdict": "N/A",
-      "evidence": null,
+      "evidence": "No operational setting (thinking-effort, model choice, mode tag, slash-command, worktree convention) is referenced in this body.",
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "no operational setting (thinking-effort, model choice, mode tag, worktree convention) referenced in body"
+      "na_reason": "no operational settings referenced"
     },
     {
       "compendium": "check_student_facing.md",
-      "rule_index": "30",
-      "rule_lead": "Echo the training’s theory spine before inventing a synonym.",
-      "verdict": "PASS",
-      "evidence": "L6 uses house vocabulary directly ('the spec, the rules, the checks, the plan'). 'Flywheel' is not an invented competitor to 'the loop' -- per the maintainer's own Placement/Kicker notes it is inherited house framing from this arc's earlier flywheel-naming beat (now folded into this file), not a fresh synonym.",
+      "rule_index": 30,
+      "rule_lead": "Echo the training's theory spine before inventing a synonym.",
+      "verdict": "N/A",
+      "evidence": "'The frontier' (L7) is a new authorial concept introduced deliberately in this 2026-09-02 rewrite (maintainer L54: Antti-directed replacement of the old paragraphs), not an invented synonym dodging an existing house term \u2014 there is no pre-existing house word for 'the boundary of what you've expressed' that this is avoiding.",
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "na_reason": "deliberate new authorial term, not synonym-avoidance"
     },
     {
       "compendium": "check_student_facing.md",
-      "rule_index": "31",
+      "rule_index": 31,
       "rule_lead": "Name the artifact, not the act.",
       "verdict": "N/A",
-      "evidence": null,
+      "evidence": "No directing-a-message-to-the-agent language in this body.",
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "no directed-message-to-agent phrasing ('typing continue', 'tell it to') in body"
+      "na_reason": "no such language present"
     },
     {
       "compendium": "check_student_facing.md",
-      "rule_index": "32",
-      "rule_lead": "Name the outcome; don’t walk a professional through trivial mechanics.",
+      "rule_index": 32,
+      "rule_lead": "Name the outcome; don't walk a professional through trivial mechanics.",
       "verdict": "N/A",
-      "evidence": null,
+      "evidence": "No setup/mechanics instructions in this body.",
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "no setup/CLI instruction in body"
+      "na_reason": "no setup instructions present"
     },
     {
       "compendium": "check_student_facing.md",
-      "rule_index": "33",
-      "rule_lead": "The curriculum does not narrate itself — subject test, then deletion test.",
+      "rule_index": 33,
+      "rule_lead": "The curriculum does not narrate itself \u2014 subject test, then deletion test.",
       "verdict": "PASS",
-      "evidence": "No sentence in body is about the module/training/arc itself (no 'a later module...', 'the training picks up from there'-shaped cartography). Every sentence's subject is the reader, the agent, or the practice described.",
+      "evidence": "'The training closes.' (L30) technically names 'the training' as grammatical subject, but it is a terminal marker (the arc's actual last line), not forward-pointing cartography of the kind the rule's own examples target ('A later module commits your working tree...'). It is also unedited pre-existing text (present verbatim in both the pre-diff and post-diff versions) already covered by the prior clean writing pass at 4a722813.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
-      "rule_index": "34",
-      "rule_lead": "Four sharing strategies (Agents 101 M7 canonical) — use verbatim.",
+      "rule_index": 34,
+      "rule_lead": "Four sharing strategies (Agents 101 M7 canonical) \u2014 use verbatim.",
       "verdict": "N/A",
-      "evidence": null,
+      "evidence": "This is AE101 M6, not Agents 101 M7.",
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "AE101 M6 file, not Agents 101 M7"
+      "na_reason": "wrong training/module"
     },
     {
       "compendium": "check_student_facing.md",
-      "rule_index": "35",
-      "rule_lead": "Agents 101 M2+ Debrief — canonical shape.",
+      "rule_index": 35,
+      "rule_lead": "Agents 101 M2+ Debrief \u2014 canonical shape.",
       "verdict": "N/A",
-      "evidence": null,
+      "evidence": "This is AE101, not Agents 101, and not a Debrief.",
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "AE101 file, and not a Debrief section"
+      "na_reason": "wrong training and not a Debrief"
     },
     {
       "compendium": "check_student_facing.md",
-      "rule_index": "36",
+      "rule_index": 36,
       "rule_lead": "Trust the prompt over the scaffold.",
       "verdict": "N/A",
-      "evidence": null,
+      "evidence": "No scaffold-vs-prompt content in this file.",
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "no scaffold-vs-prompt content in body"
+      "na_reason": "not applicable to this surface"
     },
     {
       "compendium": "check_student_facing.md",
-      "rule_index": "37",
+      "rule_index": 37,
       "rule_lead": "Mood is a design constraint, not a garnish.",
       "verdict": "PASS",
-      "evidence": "Target mood (maintainer L57): 'practitioner fluency continued, with a forward-tilt', watching for drift toward autonomous-agent-fantasy triumphalism. Current body reads humble rather than triumphal throughout -- L12-14 opens on 'Nobody reviews... nobody has that part figured out yet'; L6-8 spends the whole first section on the agent's limits; L18-23 places agency explicitly on the student, not the tool; L30's closer is spare, not celebratory. The mood-safety function the maintainer's note attributes to a specific 'what this is not' slide (see check_writing §3 finding: that named slide no longer exists in body) appears to be served instead by the distributed boundary-setting across the whole file, and the current body does not, on this read, land as triumphal or vendor-pitch-shaped.",
+      "evidence": "Maintainer names the mood explicitly (L48: 'practitioner fluency continued, with a forward-tilt... Watch for: drift toward autonomous-agent fantasy'). Slide 1 (L3-8) is the maintainer-designated carve-out delivering that guard (the agent stops at the limit of what's expressed) in place of the old explicit 'not the agent writing its own skills' paragraph that was cut (maintainer L54); the closer (L25-30) pairs 'no last turn' with 'the training closes', avoiding a triumphal/vendor-pitch read.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
-      "rule_index": "38",
+      "rule_index": 38,
       "rule_lead": "Exercise headers pass the build-squint test.",
       "verdict": "N/A",
-      "evidence": null,
+      "evidence": "This is a lecture, not an exercise with headers describing a build.",
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "lecture, not an exercise; header-as-deliverable-reconstruction test is exercise-specific"
+      "na_reason": "lecture, not exercise"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 1,
-      "rule_lead": "(see brief — prompt-fence mechanics rule)",
+      "rule_lead": "No placeholders inside fences.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "no live {{prompt:}} marker or fenced **Prompt** block exists in this file's body; the two {{prompt:}} occurrences in the file (maintainer-block lines describing past passes) are historical prose about a since-relocated prompt, not a live fence -- check_prompts governs prompt-fence content, which this file's body does not carry"
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, fence_ranges:[])"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 2,
-      "rule_lead": "(see brief — prompt-fence mechanics rule)",
+      "rule_lead": "Every prompt block: one-sentence action lead-in.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "no live {{prompt:}} marker or fenced **Prompt** block exists in this file's body; the two {{prompt:}} occurrences in the file (maintainer-block lines describing past passes) are historical prose about a since-relocated prompt, not a live fence -- check_prompts governs prompt-fence content, which this file's body does not carry"
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, fence_ranges:[])"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 3,
-      "rule_lead": "(see brief — prompt-fence mechanics rule)",
+      "rule_lead": "Canonical shape \u2014 lead-in, label with destination, blank line, fence.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "no live {{prompt:}} marker or fenced **Prompt** block exists in this file's body; the two {{prompt:}} occurrences in the file (maintainer-block lines describing past passes) are historical prose about a since-relocated prompt, not a live fence -- check_prompts governs prompt-fence content, which this file's body does not carry"
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, fence_ranges:[])"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 4,
-      "rule_lead": "(see brief — prompt-fence mechanics rule)",
+      "rule_lead": "Installed Skills invoke by name, never path.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "no live {{prompt:}} marker or fenced **Prompt** block exists in this file's body; the two {{prompt:}} occurrences in the file (maintainer-block lines describing past passes) are historical prose about a since-relocated prompt, not a live fence -- check_prompts governs prompt-fence content, which this file's body does not carry"
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, fence_ranges:[])"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 5,
-      "rule_lead": "(see brief — prompt-fence mechanics rule)",
+      "rule_lead": "Chain by back-reference + deterministic path, never invented alias.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "no live {{prompt:}} marker or fenced **Prompt** block exists in this file's body; the two {{prompt:}} occurrences in the file (maintainer-block lines describing past passes) are historical prose about a since-relocated prompt, not a live fence -- check_prompts governs prompt-fence content, which this file's body does not carry"
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, fence_ranges:[])"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 6,
-      "rule_lead": "(see brief — prompt-fence mechanics rule)",
+      "rule_lead": "Chained-prompt isolation \u2014 don't leak downstream pipeline.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "no live {{prompt:}} marker or fenced **Prompt** block exists in this file's body; the two {{prompt:}} occurrences in the file (maintainer-block lines describing past passes) are historical prose about a since-relocated prompt, not a live fence -- check_prompts governs prompt-fence content, which this file's body does not carry"
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, fence_ranges:[])"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 7,
-      "rule_lead": "(see brief — prompt-fence mechanics rule)",
+      "rule_lead": "No session-resets mid-phase.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "no live {{prompt:}} marker or fenced **Prompt** block exists in this file's body; the two {{prompt:}} occurrences in the file (maintainer-block lines describing past passes) are historical prose about a since-relocated prompt, not a live fence -- check_prompts governs prompt-fence content, which this file's body does not carry"
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, fence_ranges:[])"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 8,
-      "rule_lead": "(see brief — prompt-fence mechanics rule)",
+      "rule_lead": "Multi-sample methods need structural enforcement.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "no live {{prompt:}} marker or fenced **Prompt** block exists in this file's body; the two {{prompt:}} occurrences in the file (maintainer-block lines describing past passes) are historical prose about a since-relocated prompt, not a live fence -- check_prompts governs prompt-fence content, which this file's body does not carry"
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, fence_ranges:[])"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 9,
-      "rule_lead": "(see brief — prompt-fence mechanics rule)",
+      "rule_lead": "Markdown shout (`**bold**`, `*italic*`) inside fenced prompts = dead weight in Claude Code.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "no live {{prompt:}} marker or fenced **Prompt** block exists in this file's body; the two {{prompt:}} occurrences in the file (maintainer-block lines describing past passes) are historical prose about a since-relocated prompt, not a live fence -- check_prompts governs prompt-fence content, which this file's body does not carry"
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, fence_ranges:[])"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 10,
-      "rule_lead": "(see brief — prompt-fence mechanics rule)",
+      "rule_lead": "Runtime-fork prompts: paired divs, shared chip.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "no live {{prompt:}} marker or fenced **Prompt** block exists in this file's body; the two {{prompt:}} occurrences in the file (maintainer-block lines describing past passes) are historical prose about a since-relocated prompt, not a live fence -- check_prompts governs prompt-fence content, which this file's body does not carry"
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, fence_ranges:[])"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 11,
-      "rule_lead": "(see brief — prompt-fence mechanics rule)",
+      "rule_lead": "Runtime-mechanical scaffolding asymmetry \u2014 MORE in less-fluent fork, not less.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "no live {{prompt:}} marker or fenced **Prompt** block exists in this file's body; the two {{prompt:}} occurrences in the file (maintainer-block lines describing past passes) are historical prose about a since-relocated prompt, not a live fence -- check_prompts governs prompt-fence content, which this file's body does not carry"
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, fence_ranges:[])"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 12,
-      "rule_lead": "(see brief — prompt-fence mechanics rule)",
+      "rule_lead": "Append-vs-integrate \u2014 name integration mode on regeneration with new context source.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "no live {{prompt:}} marker or fenced **Prompt** block exists in this file's body; the two {{prompt:}} occurrences in the file (maintainer-block lines describing past passes) are historical prose about a since-relocated prompt, not a live fence -- check_prompts governs prompt-fence content, which this file's body does not carry"
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, fence_ranges:[])"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 13,
-      "rule_lead": "(see brief — prompt-fence mechanics rule)",
+      "rule_lead": "Citation discipline \u2014 extend cite-or-flag scope + quote supporting sentence.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "no live {{prompt:}} marker or fenced **Prompt** block exists in this file's body; the two {{prompt:}} occurrences in the file (maintainer-block lines describing past passes) are historical prose about a since-relocated prompt, not a live fence -- check_prompts governs prompt-fence content, which this file's body does not carry"
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, fence_ranges:[])"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 14,
-      "rule_lead": "(see brief — prompt-fence mechanics rule)",
+      "rule_lead": "Niceness tax \u2014 name the edge or pin the line on regeneration.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "no live {{prompt:}} marker or fenced **Prompt** block exists in this file's body; the two {{prompt:}} occurrences in the file (maintainer-block lines describing past passes) are historical prose about a since-relocated prompt, not a live fence -- check_prompts governs prompt-fence content, which this file's body does not carry"
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, fence_ranges:[])"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 15,
-      "rule_lead": "(see brief — prompt-fence mechanics rule)",
+      "rule_lead": "Question-dump default \u2014 `in turn` too soft; two legal shapes.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "no live {{prompt:}} marker or fenced **Prompt** block exists in this file's body; the two {{prompt:}} occurrences in the file (maintainer-block lines describing past passes) are historical prose about a since-relocated prompt, not a live fence -- check_prompts governs prompt-fence content, which this file's body does not carry"
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, fence_ranges:[])"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 16,
-      "rule_lead": "(see brief — prompt-fence mechanics rule)",
+      "rule_lead": "Overwrite anxiety \u2014 name overwrite default on regeneration.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "no live {{prompt:}} marker or fenced **Prompt** block exists in this file's body; the two {{prompt:}} occurrences in the file (maintainer-block lines describing past passes) are historical prose about a since-relocated prompt, not a live fence -- check_prompts governs prompt-fence content, which this file's body does not carry"
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, fence_ranges:[])"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 17,
-      "rule_lead": "(see brief — prompt-fence mechanics rule)",
+      "rule_lead": "Preamble before action \u2014 design around it.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "no live {{prompt:}} marker or fenced **Prompt** block exists in this file's body; the two {{prompt:}} occurrences in the file (maintainer-block lines describing past passes) are historical prose about a since-relocated prompt, not a live fence -- check_prompts governs prompt-fence content, which this file's body does not carry"
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, fence_ranges:[])"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 18,
-      "rule_lead": "(see brief — prompt-fence mechanics rule)",
+      "rule_lead": "Self-critique register, not defense, when Claude interrogates own work.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "no live {{prompt:}} marker or fenced **Prompt** block exists in this file's body; the two {{prompt:}} occurrences in the file (maintainer-block lines describing past passes) are historical prose about a since-relocated prompt, not a live fence -- check_prompts governs prompt-fence content, which this file's body does not carry"
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, fence_ranges:[])"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 19,
-      "rule_lead": "(see brief — prompt-fence mechanics rule)",
+      "rule_lead": "Minimal hand-off + Claude self-augments for send-off prompts.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "no live {{prompt:}} marker or fenced **Prompt** block exists in this file's body; the two {{prompt:}} occurrences in the file (maintainer-block lines describing past passes) are historical prose about a since-relocated prompt, not a live fence -- check_prompts governs prompt-fence content, which this file's body does not carry"
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, fence_ranges:[])"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 20,
-      "rule_lead": "(see brief — prompt-fence mechanics rule)",
+      "rule_lead": "Grill before save \u2014 collaborative quality at artefact assembly.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "no live {{prompt:}} marker or fenced **Prompt** block exists in this file's body; the two {{prompt:}} occurrences in the file (maintainer-block lines describing past passes) are historical prose about a since-relocated prompt, not a live fence -- check_prompts governs prompt-fence content, which this file's body does not carry"
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, fence_ranges:[])"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 21,
-      "rule_lead": "(see brief — prompt-fence mechanics rule)",
+      "rule_lead": "Tell me what you wrote, not show me what you'll write.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "no live {{prompt:}} marker or fenced **Prompt** block exists in this file's body; the two {{prompt:}} occurrences in the file (maintainer-block lines describing past passes) are historical prose about a since-relocated prompt, not a live fence -- check_prompts governs prompt-fence content, which this file's body does not carry"
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, fence_ranges:[])"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 22,
-      "rule_lead": "(see brief — prompt-fence mechanics rule)",
+      "rule_lead": "Prompt-body edits require maintainer approval \u2014 registry files AND inline blocks.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "no live {{prompt:}} marker or fenced **Prompt** block exists in this file's body; the two {{prompt:}} occurrences in the file (maintainer-block lines describing past passes) are historical prose about a since-relocated prompt, not a live fence -- check_prompts governs prompt-fence content, which this file's body does not carry"
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, fence_ranges:[])"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 23,
-      "rule_lead": "(see brief — prompt-fence mechanics rule)",
+      "rule_lead": "Artifact destinations are explicit subpaths, never naked filenames (Agents 101-specific).",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "no live {{prompt:}} marker or fenced **Prompt** block exists in this file's body; the two {{prompt:}} occurrences in the file (maintainer-block lines describing past passes) are historical prose about a since-relocated prompt, not a live fence -- check_prompts governs prompt-fence content, which this file's body does not carry"
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, fence_ranges:[])"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 24,
-      "rule_lead": "(see brief — prompt-fence mechanics rule)",
+      "rule_lead": "Don't restate session CWD inside prompt body.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "no live {{prompt:}} marker or fenced **Prompt** block exists in this file's body; the two {{prompt:}} occurrences in the file (maintainer-block lines describing past passes) are historical prose about a since-relocated prompt, not a live fence -- check_prompts governs prompt-fence content, which this file's body does not carry"
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, fence_ranges:[])"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 25,
-      "rule_lead": "(see brief — prompt-fence mechanics rule)",
+      "rule_lead": "`subagent` allowed in prompt blocks; explain why after prompt.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "no live {{prompt:}} marker or fenced **Prompt** block exists in this file's body; the two {{prompt:}} occurrences in the file (maintainer-block lines describing past passes) are historical prose about a since-relocated prompt, not a live fence -- check_prompts governs prompt-fence content, which this file's body does not carry"
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, fence_ranges:[])"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 26,
-      "rule_lead": "(see brief — prompt-fence mechanics rule)",
+      "rule_lead": "Maintainer-approval edits \u2014 ONE-AT-A-TIME, PRIORITY-ORDERED, FOUR-FIELD cards.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "no live {{prompt:}} marker or fenced **Prompt** block exists in this file's body; the two {{prompt:}} occurrences in the file (maintainer-block lines describing past passes) are historical prose about a since-relocated prompt, not a live fence -- check_prompts governs prompt-fence content, which this file's body does not carry"
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, fence_ranges:[])"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 27,
-      "rule_lead": "(see brief — prompt-fence mechanics rule)",
+      "rule_lead": "Name consumer at write time \u2014 `Save it as <path>` requires downstream reader.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "no live {{prompt:}} marker or fenced **Prompt** block exists in this file's body; the two {{prompt:}} occurrences in the file (maintainer-block lines describing past passes) are historical prose about a since-relocated prompt, not a live fence -- check_prompts governs prompt-fence content, which this file's body does not carry"
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, fence_ranges:[])"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 28,
-      "rule_lead": "(see brief — prompt-fence mechanics rule)",
+      "rule_lead": "Strong-bold prompt label is exactly `**Prompt**` \u2014 custom labels break renderer.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "no live {{prompt:}} marker or fenced **Prompt** block exists in this file's body; the two {{prompt:}} occurrences in the file (maintainer-block lines describing past passes) are historical prose about a since-relocated prompt, not a live fence -- check_prompts governs prompt-fence content, which this file's body does not carry"
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, fence_ranges:[])"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 29,
-      "rule_lead": "(see brief — prompt-fence mechanics rule)",
+      "rule_lead": "Normal work request before orchestration.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "no live {{prompt:}} marker or fenced **Prompt** block exists in this file's body; the two {{prompt:}} occurrences in the file (maintainer-block lines describing past passes) are historical prose about a since-relocated prompt, not a live fence -- check_prompts governs prompt-fence content, which this file's body does not carry"
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, fence_ranges:[])"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 30,
-      "rule_lead": "(see brief — prompt-fence mechanics rule)",
+      "rule_lead": "Live-test corrections preserve operator workflow.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "no live {{prompt:}} marker or fenced **Prompt** block exists in this file's body; the two {{prompt:}} occurrences in the file (maintainer-block lines describing past passes) are historical prose about a since-relocated prompt, not a live fence -- check_prompts governs prompt-fence content, which this file's body does not carry"
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, fence_ranges:[])"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 31,
-      "rule_lead": "(see brief — prompt-fence mechanics rule)",
+      "rule_lead": "Prompts live in registry; module/exercise/lecture files reference by marker.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "no live {{prompt:}} marker or fenced **Prompt** block exists in this file's body; the two {{prompt:}} occurrences in the file (maintainer-block lines describing past passes) are historical prose about a since-relocated prompt, not a live fence -- check_prompts governs prompt-fence content, which this file's body does not carry"
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, fence_ranges:[])"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 32,
-      "rule_lead": "(see brief — prompt-fence mechanics rule)",
+      "rule_lead": "Module names in prompt prose are fine \u2014 they ground the session.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "no live {{prompt:}} marker or fenced **Prompt** block exists in this file's body; the two {{prompt:}} occurrences in the file (maintainer-block lines describing past passes) are historical prose about a since-relocated prompt, not a live fence -- check_prompts governs prompt-fence content, which this file's body does not carry"
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, fence_ranges:[])"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 33,
-      "rule_lead": "(see brief — prompt-fence mechanics rule)",
+      "rule_lead": "Git-output greps asserting exact-N need multi-result fallback.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "no live {{prompt:}} marker or fenced **Prompt** block exists in this file's body; the two {{prompt:}} occurrences in the file (maintainer-block lines describing past passes) are historical prose about a since-relocated prompt, not a live fence -- check_prompts governs prompt-fence content, which this file's body does not carry"
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, fence_ranges:[])"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 34,
-      "rule_lead": "(see brief — prompt-fence mechanics rule)",
+      "rule_lead": "Disambiguation, anchors, and decision logic that bind Claude live INSIDE prompt fence.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "no live {{prompt:}} marker or fenced **Prompt** block exists in this file's body; the two {{prompt:}} occurrences in the file (maintainer-block lines describing past passes) are historical prose about a since-relocated prompt, not a live fence -- check_prompts governs prompt-fence content, which this file's body does not carry"
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, fence_ranges:[])"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 35,
-      "rule_lead": "(see brief — prompt-fence mechanics rule)",
+      "rule_lead": "Repeated Q&A \u2192 premature re-edits. Separate iteration from persistence.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "no live {{prompt:}} marker or fenced **Prompt** block exists in this file's body; the two {{prompt:}} occurrences in the file (maintainer-block lines describing past passes) are historical prose about a since-relocated prompt, not a live fence -- check_prompts governs prompt-fence content, which this file's body does not carry"
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, fence_ranges:[])"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 36,
-      "rule_lead": "(see brief — prompt-fence mechanics rule)",
+      "rule_lead": "Wide prompts split by logical move \u2014 paragraph breaks = cheapest scan-affordance.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "no live {{prompt:}} marker or fenced **Prompt** block exists in this file's body; the two {{prompt:}} occurrences in the file (maintainer-block lines describing past passes) are historical prose about a since-relocated prompt, not a live fence -- check_prompts governs prompt-fence content, which this file's body does not carry"
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, fence_ranges:[])"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 37,
-      "rule_lead": "(see brief — prompt-fence mechanics rule)",
+      "rule_lead": "Orient saved rule by where it FIRES, not surface activity producing it.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "no live {{prompt:}} marker or fenced **Prompt** block exists in this file's body; the two {{prompt:}} occurrences in the file (maintainer-block lines describing past passes) are historical prose about a since-relocated prompt, not a live fence -- check_prompts governs prompt-fence content, which this file's body does not carry"
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, fence_ranges:[])"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 38,
-      "rule_lead": "(see brief — prompt-fence mechanics rule)",
+      "rule_lead": "Body lead-in mirrors prompt's opening phrasing.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "no live {{prompt:}} marker or fenced **Prompt** block exists in this file's body; the two {{prompt:}} occurrences in the file (maintainer-block lines describing past passes) are historical prose about a since-relocated prompt, not a live fence -- check_prompts governs prompt-fence content, which this file's body does not carry"
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, fence_ranges:[])"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 39,
-      "rule_lead": "(see brief — prompt-fence mechanics rule)",
+      "rule_lead": "Declare `permission-mode:` when paste requires specific Claude Code mode.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "no live {{prompt:}} marker or fenced **Prompt** block exists in this file's body; the two {{prompt:}} occurrences in the file (maintainer-block lines describing past passes) are historical prose about a since-relocated prompt, not a live fence -- check_prompts governs prompt-fence content, which this file's body does not carry"
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, fence_ranges:[])"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 40,
-      "rule_lead": "(see brief — prompt-fence mechanics rule)",
+      "rule_lead": "Verify session boundary before deciding prompt's context-carrying.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "no live {{prompt:}} marker or fenced **Prompt** block exists in this file's body; the two {{prompt:}} occurrences in the file (maintainer-block lines describing past passes) are historical prose about a since-relocated prompt, not a live fence -- check_prompts governs prompt-fence content, which this file's body does not carry"
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, fence_ranges:[])"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 41,
-      "rule_lead": "(see brief — prompt-fence mechanics rule)",
+      "rule_lead": "Artifact-vs-STOP tail ordering \u2014 last imperative wins.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "no live {{prompt:}} marker or fenced **Prompt** block exists in this file's body; the two {{prompt:}} occurrences in the file (maintainer-block lines describing past passes) are historical prose about a since-relocated prompt, not a live fence -- check_prompts governs prompt-fence content, which this file's body does not carry"
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, fence_ranges:[])"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 42,
-      "rule_lead": "(see brief — prompt-fence mechanics rule)",
+      "rule_lead": "Headless-runner discipline \u2014 tail every prompt with no-AUQ guard.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "no live {{prompt:}} marker or fenced **Prompt** block exists in this file's body; the two {{prompt:}} occurrences in the file (maintainer-block lines describing past passes) are historical prose about a since-relocated prompt, not a live fence -- check_prompts governs prompt-fence content, which this file's body does not carry"
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, fence_ranges:[])"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 43,
-      "rule_lead": "(see brief — prompt-fence mechanics rule)",
+      "rule_lead": "Long-running prompts stream progress \u2014 never go silent.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "no live {{prompt:}} marker or fenced **Prompt** block exists in this file's body; the two {{prompt:}} occurrences in the file (maintainer-block lines describing past passes) are historical prose about a since-relocated prompt, not a live fence -- check_prompts governs prompt-fence content, which this file's body does not carry"
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, fence_ranges:[])"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 44,
-      "rule_lead": "(see brief — prompt-fence mechanics rule)",
+      "rule_lead": "A leading-looking line can be a forcing function; prefer the simpler prompt.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "no live {{prompt:}} marker or fenced **Prompt** block exists in this file's body; the two {{prompt:}} occurrences in the file (maintainer-block lines describing past passes) are historical prose about a since-relocated prompt, not a live fence -- check_prompts governs prompt-fence content, which this file's body does not carry"
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, fence_ranges:[])"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 45,
-      "rule_lead": "(see brief — prompt-fence mechanics rule)",
+      "rule_lead": "Prompt paths match Builder scope.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "no live {{prompt:}} marker or fenced **Prompt** block exists in this file's body; the two {{prompt:}} occurrences in the file (maintainer-block lines describing past passes) are historical prose about a since-relocated prompt, not a live fence -- check_prompts governs prompt-fence content, which this file's body does not carry"
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, fence_ranges:[])"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 46,
-      "rule_lead": "(see brief — prompt-fence mechanics rule)",
+      "rule_lead": "Output shape \u2014 trust Claude's defaults, don't pad.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "no live {{prompt:}} marker or fenced **Prompt** block exists in this file's body; the two {{prompt:}} occurrences in the file (maintainer-block lines describing past passes) are historical prose about a since-relocated prompt, not a live fence -- check_prompts governs prompt-fence content, which this file's body does not carry"
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, fence_ranges:[])"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 47,
-      "rule_lead": "(see brief — prompt-fence mechanics rule)",
+      "rule_lead": "\"Add X and regenerate\" is a trap.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "no live {{prompt:}} marker or fenced **Prompt** block exists in this file's body; the two {{prompt:}} occurrences in the file (maintainer-block lines describing past passes) are historical prose about a since-relocated prompt, not a live fence -- check_prompts governs prompt-fence content, which this file's body does not carry"
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, fence_ranges:[])"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 48,
-      "rule_lead": "(see brief — prompt-fence mechanics rule)",
+      "rule_lead": "Vary closings deliberately.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "no live {{prompt:}} marker or fenced **Prompt** block exists in this file's body; the two {{prompt:}} occurrences in the file (maintainer-block lines describing past passes) are historical prose about a since-relocated prompt, not a live fence -- check_prompts governs prompt-fence content, which this file's body does not carry"
+      "na_reason": "no prompt blocks in this file (has_prompt_blocks:false, fence_ranges:[])"
     },
     {
       "compendium": "check_sales_copy.md",
       "rule_index": 1,
-      "rule_lead": "(see brief — buyer-facing-copy rule)",
+      "rule_lead": "CTO-repeatable test.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "this file is AE101 student-facing curriculum, not buyer-facing copy (site/newsletter/sponsor deck/pricing) -- check_sales_copy governs a different surface"
+      "na_reason": "curriculum lecture body, not buyer-facing sales/site copy"
     },
     {
       "compendium": "check_sales_copy.md",
       "rule_index": 2,
-      "rule_lead": "(see brief — buyer-facing-copy rule)",
+      "rule_lead": "No stylized phrase-pairs.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "this file is AE101 student-facing curriculum, not buyer-facing copy (site/newsletter/sponsor deck/pricing) -- check_sales_copy governs a different surface"
+      "na_reason": "curriculum lecture body, not buyer-facing sales/site copy"
     },
     {
       "compendium": "check_sales_copy.md",
       "rule_index": 3,
-      "rule_lead": "(see brief — buyer-facing-copy rule)",
+      "rule_lead": "Strip strategy-doc vocabulary.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "this file is AE101 student-facing curriculum, not buyer-facing copy (site/newsletter/sponsor deck/pricing) -- check_sales_copy governs a different surface"
+      "na_reason": "curriculum lecture body, not buyer-facing sales/site copy"
     },
     {
       "compendium": "check_sales_copy.md",
       "rule_index": 4,
-      "rule_lead": "(see brief — buyer-facing-copy rule)",
+      "rule_lead": "Earn every term.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "this file is AE101 student-facing curriculum, not buyer-facing copy (site/newsletter/sponsor deck/pricing) -- check_sales_copy governs a different surface"
+      "na_reason": "curriculum lecture body, not buyer-facing sales/site copy"
     },
     {
       "compendium": "check_sales_copy.md",
       "rule_index": 5,
-      "rule_lead": "(see brief — buyer-facing-copy rule)",
+      "rule_lead": "No M-number cross-references.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "this file is AE101 student-facing curriculum, not buyer-facing copy (site/newsletter/sponsor deck/pricing) -- check_sales_copy governs a different surface"
+      "na_reason": "curriculum lecture body, not buyer-facing sales/site copy"
     },
     {
       "compendium": "check_sales_copy.md",
       "rule_index": 6,
-      "rule_lead": "(see brief — buyer-facing-copy rule)",
+      "rule_lead": "\"What you build\" = 20\u201330 words.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "this file is AE101 student-facing curriculum, not buyer-facing copy (site/newsletter/sponsor deck/pricing) -- check_sales_copy governs a different surface"
+      "na_reason": "curriculum lecture body, not buyer-facing sales/site copy"
     },
     {
       "compendium": "check_sales_copy.md",
       "rule_index": 7,
-      "rule_lead": "(see brief — buyer-facing-copy rule)",
+      "rule_lead": "Describe failure modes, don't name them.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "this file is AE101 student-facing curriculum, not buyer-facing copy (site/newsletter/sponsor deck/pricing) -- check_sales_copy governs a different surface"
+      "na_reason": "curriculum lecture body, not buyer-facing sales/site copy"
     },
     {
       "compendium": "check_sales_copy.md",
       "rule_index": 8,
-      "rule_lead": "(see brief — buyer-facing-copy rule)",
+      "rule_lead": "Agency on right noun.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "this file is AE101 student-facing curriculum, not buyer-facing copy (site/newsletter/sponsor deck/pricing) -- check_sales_copy governs a different surface"
+      "na_reason": "curriculum lecture body, not buyer-facing sales/site copy"
     },
     {
       "compendium": "check_sales_copy.md",
       "rule_index": 9,
-      "rule_lead": "(see brief — buyer-facing-copy rule)",
+      "rule_lead": "No em dashes on site.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "this file is AE101 student-facing curriculum, not buyer-facing copy (site/newsletter/sponsor deck/pricing) -- check_sales_copy governs a different surface"
+      "na_reason": "curriculum lecture body, not buyer-facing sales/site copy"
     },
     {
       "compendium": "check_sales_copy.md",
       "rule_index": 10,
-      "rule_lead": "(see brief — buyer-facing-copy rule)",
+      "rule_lead": "No \"What research says\" callout boxes",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "this file is AE101 student-facing curriculum, not buyer-facing copy (site/newsletter/sponsor deck/pricing) -- check_sales_copy governs a different surface"
+      "na_reason": "curriculum lecture body, not buyer-facing sales/site copy"
     },
     {
       "compendium": "check_sales_copy.md",
       "rule_index": 11,
-      "rule_lead": "(see brief — buyer-facing-copy rule)",
+      "rule_lead": "Don't describe mood arc externally.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "this file is AE101 student-facing curriculum, not buyer-facing copy (site/newsletter/sponsor deck/pricing) -- check_sales_copy governs a different surface"
+      "na_reason": "curriculum lecture body, not buyer-facing sales/site copy"
     },
     {
       "compendium": "check_sales_copy.md",
       "rule_index": 12,
-      "rule_lead": "(see brief — buyer-facing-copy rule)",
+      "rule_lead": "Ownership claims scope to customer-built artifacts.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "this file is AE101 student-facing curriculum, not buyer-facing copy (site/newsletter/sponsor deck/pricing) -- check_sales_copy governs a different surface"
+      "na_reason": "curriculum lecture body, not buyer-facing sales/site copy"
     },
     {
       "compendium": "check_sales_copy.md",
       "rule_index": 13,
-      "rule_lead": "(see brief — buyer-facing-copy rule)",
+      "rule_lead": "Numbers carry their denominator + axis.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "this file is AE101 student-facing curriculum, not buyer-facing copy (site/newsletter/sponsor deck/pricing) -- check_sales_copy governs a different surface"
+      "na_reason": "curriculum lecture body, not buyer-facing sales/site copy"
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 1,
       "rule_lead": "Mood contract named.",
       "verdict": "PASS",
-      "evidence": "Mood stated explicitly in maintainer block L57 ('practitioner fluency continued, with a forward-tilt') and in lecture-meta L47; body's actual tone (humble, boundary-setting, forward-tilting close) matches the stated target on this read.",
+      "evidence": "Maintainer states the mood explicitly and directionally (L48: 'practitioner fluency continued, with a forward-tilt... Watch for: drift toward autonomous-agent fantasy'). As the training's last beat there is no downstream module to set up, but the mood-floor sub-rule (teaching beats only, 8+/10) reads satisfied: the piece stays grounded (L30 'The training closes') rather than triumphal.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 2,
-      "rule_lead": "Epistemic mood ≠ punitive mood.",
+      "rule_lead": "Epistemic mood \u2260 punitive mood.",
       "verdict": "N/A",
-      "evidence": null,
+      "evidence": "This module's mood is not 'unease'; the rule specifically targets unease-mood modules.",
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "this module's target mood is practitioner-fluency/forward-tilt, not unease -- rule targets unease-mood modules specifically"
+      "na_reason": "mood target is not unease"
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 3,
       "rule_lead": "Lead with discipline, not failure mode.",
       "verdict": "PASS",
-      "evidence": "All four headers are discipline-framed (judgement, grounding/quality, agency, ongoing practice), none failure-named.",
+      "evidence": "All four headers lead with positive discipline framing ('your judgement begins', 'grounds and makes quality', 'you make agentic happen', 'no last turn') \u2014 none is failure-word-led (fabrication/violation/hallucination).",
       "fix_hint": null,
       "blocking": false
     },
@@ -1245,43 +1246,42 @@
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 4,
       "rule_lead": "Strategy-fidelity check.",
-      "verdict": "N/A",
-      "evidence": null,
+      "verdict": "PASS",
+      "evidence": "As the arc's final lecture there is no downstream teaching moment to front-run; the maintainer actively guards against duplication/front-running in the other direction ('No convergence claim on the triad in this file', L50; '## Ralph cut whole', L52, deferring that content to M5's verifier menu) \u2014 evidence of deliberate sequencing discipline rather than a violation.",
       "fix_hint": null,
-      "blocking": false,
-      "na_reason": "cross-module sequencing verification needs the content-strategy doc cross-referenced, which is primarily the strategy class's scope; no forward teaching-moment spoiler is evident in this closer's own content"
+      "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 5,
       "rule_lead": "Strategic themes recur in Key Concepts.",
       "verdict": "N/A",
-      "evidence": null,
+      "evidence": "This file has no `## Key Concepts` section (it's a lecture, not a module file).",
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "lecture file, no `## Key Concepts` section (module-file-only structure)"
+      "na_reason": "no Key Concepts section (lecture, not module file)"
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 6,
-      "rule_lead": "Key Concepts shape — theme breadcrumbs, not standalone section.",
+      "rule_lead": "Key Concepts shape \u2014 theme breadcrumbs, not standalone section.",
       "verdict": "N/A",
-      "evidence": null,
+      "evidence": "No Key Concepts section in this file.",
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "no `## Key Concepts` section in this lecture file"
+      "na_reason": "no Key Concepts section (lecture, not module file)"
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 7,
-      "rule_lead": "What You’ll Learn shape — capability register, not syllabus.",
+      "rule_lead": "What You'll Learn shape \u2014 capability register, not syllabus.",
       "verdict": "N/A",
-      "evidence": null,
+      "evidence": "No `## What You'll Learn` section in this file.",
       "fix_hint": null,
       "blocking": false,
-      "na_reason": "no `## What You'll Learn` section in this lecture file"
+      "na_reason": "no What You'll Learn section (lecture, not module file)"
     }
   ],
-  "blocking_findings_count": 0,
-  "todos_count": 1
+  "todos_count": 1,
+  "blocking_findings_count": 0
 }

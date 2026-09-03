@@ -62,11 +62,8 @@ Antti
 
 **Slide deixis accepted:** "paragraphs above" (check_slides.md §12) — *"the framing I said, a few paragraphs above, we would cut"* points inside its own `## Things that went sideways` chunk, two paragraphs up on the same slide, at § *The end-state that was not*. Story lecture, read not projected; the geometry is true where it stands.
 
-**Quality:** compendium-audited 2026-08-30 (writing@02b33a02 story@02b33a02 slides@4197d503 technical@9a6d906e strategy@9a6d906e behavior@b3143a4 pedagogy@1abb84c6)
-- judges @02b33a02: writing PASS_WITH_TODOS, story PASS — re-judged after the superlative cut and the *prompts* swap. The §21 ratio todo settled 2026-09-02: memoir carve-out (accept-note above the session tally; resolution in the instance).
-- judges @4197d503: slides PASS — re-judged after the superlative cut; §12 deixis accept re-verified against the mechanical checker.
-- judges @9a6d906e: technical PASS, strategy PASS. The writing REVISE at this pin rested on one blocking finding that both refuters killed independently — `resolution` in that instance carries the reasoning.
-- judges @4a722813: behavior PASS, pedagogy PASS (drift-recheck)
+**Quality:** compendium-audited 2026-09-03 (writing@289b45a3 story@289b45a3 technical@289b45a3 behavior@b3143a4 pedagogy@1abb84c6 strategy@9a6d906e slides@289b45a3)
+- judges @289b45a3: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS (drift-recheck), strategy grandfathered, slides PASS (1 todo see instances/ae101--lecture--story-of-module-6.slides.json)
 **Time:** 8 min at read-aloud pace. ~1200 words body. **Voice timing:** the opening framing line is read by the trainer aloud as setup; the body is then read as the memo, signed at close.
 
 § *Things that went sideways* stays open-ended (no count locked): the thesis is that surprises keep happening.

@@ -5,7 +5,7 @@ runtime: any
 origin: exercises/test-the-sharing-plan
 requires:
   - id: m7-jtbd
-    source: prompt:share-your-work-1
+    source: artifact:m7-jtbd
   - id: m7-technical-plan
     source: prompt:share-your-work-4
   - id: m7-people-plan

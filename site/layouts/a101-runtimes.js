@@ -68,6 +68,7 @@
 
     function compatibleProfiles(runtime) {
         if (runtime === 'any') return PROFILE_ORDER.slice();
+        if (runtime === 'code') return ['desktop', 'cli', 'codex-desktop', 'codex-cli'];
         if (runtime === 'cowork') return ['cowork'];
         if (runtime === 'desktop') return ['desktop', 'codex-desktop'];
         if (runtime === 'cli') return ['cli', 'codex-cli'];

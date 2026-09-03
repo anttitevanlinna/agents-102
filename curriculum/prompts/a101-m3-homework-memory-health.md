@@ -5,7 +5,7 @@ runtime: any
 origin: agents-101/multi-agent-systems
 requires:
   - id: m3-agent-work
-    source: prompt:three-minds-one-synthesis-1
+    source: artifact:m3-agent-work
   - id: m3-curated-memory
     source: prompt:three-retrievers-one-curator-5
 produces:

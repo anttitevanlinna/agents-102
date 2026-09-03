@@ -1,7 +1,7 @@
 ---
 key: share-your-work-2
 dest: Builder Claude
-runtime: any
+runtime: cowork
 origin: exercises/share-your-work
 requires:
   - id: challenge-sources

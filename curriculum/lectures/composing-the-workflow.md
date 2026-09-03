@@ -14,7 +14,7 @@
 
 {{figure:double-loop-m6}}
 
-## Dino's skill stack
+## Dino Repo's skill stack
 
 {{figure:dino-skill-stack}}
 
@@ -31,8 +31,7 @@
 <!--tier:3-->
 
 - A kit skill can run on a schedule. Claude Code ships three ways to do it: local routines (from the Routines sidebar) for standing work on your laptop, `/loop` for in-session repetition, `/schedule` for cloud-backed remote Routines. The pattern is the same across all three: a skill from your kit is the thing the scheduled agent invokes.
-- Three places this fits naturally. A standing verifier run: a judge reads the most recent long-running send-off and has a summary waiting when you open the laptop. A scheduled codebase sweep: a gap-finder reads the repo for the drift shape you diagnosed in your two sessions and opens an issue when it finds one. Rule-drift monitoring: a judge reads the root rules file against the recent commit log and names where the rules and the code disagree.
-- The skill defines the check. The runtime supplies the cadence or stopping condition.
+- Left running, the loop squashes the recurring things. Add what each run taught to the kit, and the same loop starts cracking harder work.
 
 ## A skill's footprint is where its job lands
 <!--tier:3-->
@@ -53,7 +52,7 @@
 
 **Control-loop slide is header + figure only (Antti 2026-09-02, "not sure if bullets really needed if the pic is good").** The drawing carries every term the slide needs (spec, gap, you·Claude·rules, session, change, drift, tests·diff·eval, the two brackets, the autopilot caption, *the sensor:* on the measurement block). The accumulation idea (same model, two different agents, only the surround differed) belongs to the second-loop slide, without module numbers. Do not add bullets.
 
-**Dino's skill stack / Pocock's skill system are figures only (Antti 2026-09-02: *"I will give concrete examples rather than try bulletpoint this into clarity"*; *"just pic, no bullets"*).** No bodies owed, no trainer talk track owed (a good agentic engineer can explain them). `figures/dino-skill-stack.md` redraws the supplementary's `skill-stacking/01-meta-model.svg` (mermaid) in the house palette: five lifecycle columns, the three routed gates in rust, `/ship` as the one orchestrator with its sequenced chain, OPS looping back to BUILD. Source of truth for the skill list is `supplementary/skill-stacking.md`; regenerate the figure when that catalog changes. `figures/pocock-skill-system.md` is drawn from `mattpocock/skills` @ `6654f6b` (2026-08-24), reading `skills/engineering/ask-matt/SKILL.md` for the flow: one main flow (grill-with-docs → to-spec → to-tickets → implement, which drives tdd and code-review inside it), a prototype detour bridged by handoff, on-ramps (improve-codebase-architecture, wayfinder, triage, diagnosing-bugs), two vocabulary skills underneath, ask-matt as router. Skill count deliberately not stated. `ask-matt` routes; nothing in the repo runs the flow, so the *pocock-by-hand* claim on the T3 slide holds. Both figures render at 1200×560 with all labels ≥ 9px; checked by headless-Chrome screenshot. The two supplementaries behind them, [Dino's skill stacking system](trainings/agentic-engineering-101/supplementary/skill-stacking.md) and [Workflow composition lineages](trainings/agentic-engineering-101/supplementary/workflow-composition-lineages.md), sit in the training index and are not linked from the deck.
+**Dino Repo's skill stack / Pocock's skill system are figures only (Antti 2026-09-02: *"I will give concrete examples rather than try bulletpoint this into clarity"*; *"just pic, no bullets"*).** No bodies owed, no trainer talk track owed (a good agentic engineer can explain them). `figures/dino-skill-stack.md` redraws the supplementary's `skill-stacking/01-meta-model.svg` (mermaid) in the house palette: five lifecycle columns, the three routed gates in rust, `/ship` as the one orchestrator with its sequenced chain, OPS looping back to BUILD. Source of truth for the skill list is `supplementary/skill-stacking.md`; regenerate the figure when that catalog changes. `figures/pocock-skill-system.md` is drawn from `mattpocock/skills` @ `6654f6b` (2026-08-24), reading `skills/engineering/ask-matt/SKILL.md` for the flow: one main flow (grill-with-docs → to-spec → to-tickets → implement, which drives tdd and code-review inside it), a prototype detour bridged by handoff, on-ramps (improve-codebase-architecture, wayfinder, triage, diagnosing-bugs), two vocabulary skills underneath, ask-matt as router. Skill count deliberately not stated. `ask-matt` routes; nothing in the repo runs the flow, so the *pocock-by-hand* claim on the T3 slide holds. Both figures render at 1200×560 with all labels ≥ 9px; checked by headless-Chrome screenshot. The two supplementaries behind them, [Dino's skill stacking system](trainings/agentic-engineering-101/supplementary/skill-stacking.md) and [Workflow composition lineages](trainings/agentic-engineering-101/supplementary/workflow-composition-lineages.md), sit in the training index and are not linked from the deck.
 
 **Lean pass (2026-08-25):** cut *"Same passage, same drift, same fixes and guardrails."* from the footprint slide; the figure shows it. Do not restore.
 
@@ -74,7 +73,7 @@
 
 **Headers (squint + truth, `check_lectures §4`).** *A skill's footprint is where its job lands* (thesis-claim, matches the chart's own bottom caption); *From skills to a workflow* (names the composition concept the slide teaches in its variety). No orphan-mystery, no empty container.
 
-**Lecture meta:** *The M6 loop lecture: control loop (T1, figure) → Eval (T1) → The second loop (T1, figure) → Dino's skill stack and Pocock's skill system (figures) → The checking loop, drawn solid (T2, figure) → the T3 tail: cadence, footprint, skills-to-workflow. The title stays *Composing the workflow* (Antti 2026-09-02: both words earn their place); do not re-propose a rename.*
+**Lecture meta:** *The M6 loop lecture: control loop (T1, figure) → Eval (T1) → The second loop (T1, figure) → Dino Repo's skill stack and Pocock's skill system (figures) → The checking loop, drawn solid (T2, figure) → the T3 tail: cadence, footprint, skills-to-workflow. The title stays *Composing the workflow* (Antti 2026-09-02: both words earn their place); do not re-propose a rename.*
 
 **Time:** 11 min at presentation pace.
 
@@ -99,7 +98,7 @@
 **Cadence slide (from `the-loop-has-a-name.md`, Antti 2026-09-02, header his):** *Loop instead of you starting* opens the T3 tail after the filled map (low value sits at the end): a check on cadence is the loop closing with nobody pressing start.
 
 **Watch-for (delivery):**
-- Scheduled-agents stays one slide, not a mini-lecture. Three places it fits, one reference-page pointer, move on. If the slide grows past 90 seconds in rehearsal, cut.
+- Scheduled-agents stays one slide, not a mini-lecture: the three ways to run a kit skill on a schedule, then the line that the loop squashes the recurring and, fed its own lessons, cracks harder work (Antti 2026-09-03; the three named homes and the skill-defines-check line came out as wordy). If the slide grows past 90 seconds in rehearsal, cut.
 
 <!-- backing -->
 
@@ -109,8 +108,7 @@ Claims
 - `checks-are-instruments-inside-the-eval` · vision · "The checks you built are the instruments inside it." ← none-owed
 - `judge-verifier-gate-three-names` · vision · "*Verifier* when deterministic: tests, lint, a hook that returns true or false. *Judge* when an LLM reads the work." ← none-owed
 - `three-scheduling-primitives` · detail · "Claude Code ships three ways to do it: local routines (from the Routines sidebar) for standing work on your laptop, `/loop` for in-session repetition, `/schedule` for cloud-backed remote Routines." ← cc-scheduling-primitives
-- `three-places-cadence-fits` · vision · "A standing verifier run … A scheduled codebase sweep … Rule-drift monitoring" ← none-owed
-- `skill-defines-check-runtime-supplies-cadence` · vision · "The skill defines the check. The runtime supplies the cadence or stopping condition." ← none-owed
+- `loop-squashes-then-cracks-harder` · vision · "Left running, the loop squashes the recurring things. Add what each run taught to the kit, and the same loop starts cracking harder work." ← none-owed — Antti's framing 2026-09-03; the compounding claim the module's frame already carries
 - `skill-is-a-named-move` · vision · "A **skill** is a named move you reach for. Single purpose, reusable, invoked by name." ← none-owed
 - `never-size-a-skill-in-advance` · vision · "You never size a skill in advance. The job sizes it." ← none-owed
 - `field-wires-more-ways-than-one` · detail · "The field wires kits more ways than one; no way has won." ← lineages-supp

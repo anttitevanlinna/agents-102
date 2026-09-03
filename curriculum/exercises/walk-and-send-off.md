@@ -93,8 +93,8 @@ A fill looks like one of these shapes (the audit tags each gap with one):
 
 **Prompt register — `walk-and-send-off-3` (2026-05-21).** A "deliberately short" speed-up shape (*"You propose solutions and ask questions. Use the ask-questions tool to speed up my work."*) was the cohort's single biggest individual failure mode (M4 12:36Z + 12:37Z: outright-skipped exercise); do not go back to one. The prompt scaffolds the gap-fill structurally: `AskUserQuestion` by name + pick-then-walk loop + per-shape destination mapping (`observations/` for observations and brought-in material; `./CLAUDE.local.md` for rule sharpening; connector setup for connector wiring). It is the default flow, not an opt-in speed-up, and the conversational-example bullets sit after the fence as "what a fill looks like" reference, each naming its destination. The fourth shape is **Bring the material in**, and it asks the student to fetch the document, not to label the gap — do not reintroduce a naming-only tag, in body or registry.
 
-**Quality:** compendium-audited 2026-09-02 (writing@9edae2ef story@43e6cae1 technical@8cc00874 behavior@19249df pedagogy@d5aa7e3d strategy@1c765f2 slides@43e6cae1)
-- judges @9edae2ef: writing PASS (4 todos see instances/ae101--exercise--walk-and-send-off.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-09-03 (writing@9edae2ef story@43e6cae1 technical@8cc00874 behavior@19249df pedagogy@d5aa7e3d strategy@61da15ad slides@43e6cae1)
+- judges @61da15ad: writing PASS (4 todos see instances/ae101--exercise--walk-and-send-off.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **Word count:** ~790 words body.
 

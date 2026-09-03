@@ -28,7 +28,10 @@ _codex_run_with_deadline() {
   local started now pid rc=0
   CODEX_LAST_TIMED_OUT=0
   started="$(date +%s)"
-  "$@" < "$prompt_file" > "$raw_file" 2> "$stderr_file" &
+  (
+    cd "$CODEX_CWD"
+    "$@" < "$prompt_file" > "$raw_file" 2> "$stderr_file"
+  ) &
   pid=$!
   while kill -0 "$pid" 2>/dev/null; do
     now="$(date +%s)"

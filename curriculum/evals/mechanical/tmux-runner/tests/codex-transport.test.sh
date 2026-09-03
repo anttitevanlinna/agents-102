@@ -9,6 +9,7 @@ trap 'rm -rf "$TMP"' EXIT
 
 export CODEX_BIN="$FAKE"
 export FAKE_CODEX_LOG="$TMP/args.log"
+export FAKE_CODEX_PWD_LOG="$TMP/pwd.log"
 mkdir -p "$TMP/operator/.agents/skills" "$TMP/operator/skills"
 printf '%s' '{"token":"synthetic"}' > "$TMP/operator/auth.json"
 printf '%s' 'personal config' > "$TMP/operator/config.toml"
@@ -63,6 +64,14 @@ codex_turn "$TMP/second.prompt" 2 3
 [[ "$(cat "$TMP/run-success/turn-2.response.txt")" == 'second response' ]]
 grep -q 'exec --json' "$FAKE_CODEX_LOG"
 grep -q 'exec resume thread-123 --json' "$FAKE_CODEX_LOG"
+[[ "$(sed -n '1p' "$FAKE_CODEX_PWD_LOG")" == "$TMP/work-success" ]] || {
+  echo 'FAIL: Codex start did not launch from the target cwd' >&2
+  exit 1
+}
+[[ "$(sed -n '2p' "$FAKE_CODEX_PWD_LOG")" == "$TMP/work-success" ]] || {
+  echo 'FAIL: Codex resume did not launch from the target cwd' >&2
+  exit 1
+}
 codex_close
 
 expect_failure turn-failed turn-failed

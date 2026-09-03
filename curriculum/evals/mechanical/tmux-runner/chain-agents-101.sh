@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# chain-agents-101.sh — arrange, then drive Agents 101 prework through M6 in
+# chain-agents-101.sh — arrange, then drive Agents 101 prework through M8 in
 # one growing training dir (fresh claude session per module, same cwd).
 #
 # PURPOSE (read this): the assertions are the floor, not the point. This chain
@@ -10,14 +10,14 @@
 # out/. After a green-or-red run, read the transcripts against the prompt
 # sequence and log findings in a101-runner-findings.md.
 #
-# Scenarios exist through M6. M7 is not yet modeled; M8 is explicitly out
-# because it needs a synthetic peer room. The chain runs
+# Scenarios cover all eight modules, including a synthetic M7 recipient and a
+# held-back M8 peer room. The chain runs
 # LIVE end to end so each module builds on the prior module's real on-disk
 # output — no entry-state seeding, because the cross-module handoff seams are
 # exactly what this runner exists to catch. Default --to stays m2 (the validated
-# floor); pass --to m3, m4a, m4b, m5, or m6 to extend the live run.
+# floor); pass --to m3, m4a, m4b, m5, m6, m7, or m8 to extend the live run.
 #
-# Usage: chain-agents-101.sh [--from prework|m1|m2|m3|m4a|m4b|m5|m6] [--to ...] [--no-arrange]
+# Usage: chain-agents-101.sh [--from prework|m1|m2|m3|m4a|m4b|m5|m6|m7|m8] [--to ...] [--runtime cli|codex-cli] [--no-arrange]
 set -euo pipefail
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
@@ -40,7 +40,7 @@ case "$runtime" in
   *) echo "unknown Agents 101 runner runtime: $runtime (expected cli or codex-cli)" >&2; exit 2 ;;
 esac
 
-modules=(prework m1 m2 m3 m4a m4b m5 m6)
+modules=(prework m1 m2 m3 m4a m4b m5 m6 m7 m8)
 in_range=0
 selected=()
 for m in "${modules[@]}"; do

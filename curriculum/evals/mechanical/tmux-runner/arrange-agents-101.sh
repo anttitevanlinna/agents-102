@@ -76,6 +76,17 @@ strip_comments "$KIT/sources/web/usage-pricing-churn-warning.md"  > "$material_d
 strip_comments "$KIT/sources-m3/usage-pricing-postmortems-2026.md" > "$material_dir/new-m3/usage-pricing-postmortems-2026.md"
 strip_comments "$KIT/meetings-week.md" > "$material_dir/meetings-week.md"
 
+# M8 input and synthetic room. Neighbour folders are visible from the start;
+# the selection board is held outside the room until Ingrid has proposed.
+mkdir -p "$material_dir/module-8" "$material_dir/shared-room" "$material_dir/held"
+cp "$KIT/module-8/extension-brief.md" "$material_dir/module-8/extension-brief.md"
+cp -R "$KIT/shared-room/participants" "$material_dir/shared-room/participants"
+cp "$KIT/shared-room/selection-board.md" "$material_dir/held/selection-board.md"
+[[ ! -e "$material_dir/shared-room/selection-board.md" ]] || {
+  echo '[arrange] FAIL: selection board leaked into the initial shared room' >&2
+  exit 1
+}
+
 echo "[arrange] staged material in $material_dir:"
 find "$material_dir" -type f | sed 's/^/  /'
 

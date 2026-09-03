@@ -64,8 +64,12 @@ codex_turn "$TMP/second.prompt" 2 3
 [[ "$(cat "$TMP/run-success/turn-2.response.txt")" == 'second response' ]]
 grep -q 'exec --json' "$FAKE_CODEX_LOG"
 grep -q 'exec resume thread-123 --json' "$FAKE_CODEX_LOG"
-grep -q 'exec resume thread-123 --json --skip-git-repo-check' "$FAKE_CODEX_LOG" || {
+grep -Eq 'exec resume thread-123 --json .*--skip-git-repo-check' "$FAKE_CODEX_LOG" || {
   echo 'FAIL: Codex resume omitted --skip-git-repo-check' >&2
+  exit 1
+}
+grep -Fq 'exec resume thread-123 --json -c sandbox_mode="workspace-write" -c approval_policy="never"' "$FAKE_CODEX_LOG" || {
+  echo 'FAIL: Codex resume omitted writable non-interactive policy overrides' >&2
   exit 1
 }
 [[ "$(sed -n '1p' "$FAKE_CODEX_PWD_LOG")" == "$TMP/work-success" ]] || {

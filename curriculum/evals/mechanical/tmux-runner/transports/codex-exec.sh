@@ -95,7 +95,7 @@ codex_turn() {
   else
     command=(
       "$codex_bin" exec resume "$CODEX_THREAD_ID" --json
-      --ignore-user-config -
+      --skip-git-repo-check --ignore-user-config -
     )
   fi
 

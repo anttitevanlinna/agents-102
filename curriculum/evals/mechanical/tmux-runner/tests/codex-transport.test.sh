@@ -64,6 +64,10 @@ codex_turn "$TMP/second.prompt" 2 3
 [[ "$(cat "$TMP/run-success/turn-2.response.txt")" == 'second response' ]]
 grep -q 'exec --json' "$FAKE_CODEX_LOG"
 grep -q 'exec resume thread-123 --json' "$FAKE_CODEX_LOG"
+grep -q 'exec resume thread-123 --json --skip-git-repo-check' "$FAKE_CODEX_LOG" || {
+  echo 'FAIL: Codex resume omitted --skip-git-repo-check' >&2
+  exit 1
+}
 [[ "$(sed -n '1p' "$FAKE_CODEX_PWD_LOG")" == "$TMP/work-success" ]] || {
   echo 'FAIL: Codex start did not launch from the target cwd' >&2
   exit 1

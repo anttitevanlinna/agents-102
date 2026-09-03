@@ -8,6 +8,8 @@ Moved out of `pre-cohort-todos.md` on 2026-08-15, unchanged in substance: they w
 
 ## Open
 
+- **The drift ledger is day-granular, so a rule edited later on the day a class was stamped never reads as drift.** `compendium-drift.js driftedRules` compares `r.changed_at > pinDate` with both as `YYYY-MM-DD` (`--date` defaults to `toISOString().slice(0, 10)`, the pin date is `git show -s --format=%cs`). 2026-09-03: M6 classes stamped at 07:44 read check_prompts §20 at its 07:40 wording; §20 was reworded at 07:47 and the scanner shows nothing. Record `changed_at` as a full ISO timestamp and compare against the pin commit's `%cI`; the on-disk `<hash>@<date>` form only needs a longer date.
+
 - **Sim-trace caches hash the exercise file, not the prompts the student pastes.** `story.md` and `prompt-behavior.md` key reuse on `content_sha` (sha256 of the full file) and per-phase `phase_sha`; a `{{prompt:<key>}}` marker hashes as the marker, so an edit to `curriculum/prompts/<key>.md` with no edit to the exercise replays a trace of the old prompt. Seen 2026-09-03 on `read-your-stack` (story): the primitives prompt had changed and the trace regenerated only because the Quality line moved the file sha. Hash the expanded view (`scripts/expand-md.js`) instead of the raw file, in both templates and in whatever writes the cache.
 
 - **`grandfathered` on a never-judged file reads as pinned.** Stamping two classes on `read-your-stack.md` (no prior Quality line) wrote the other five as `grandfathered`; `scan-stale-classes` then lists only `slides(never)` and drops writing / technical / behavior / strategy, which no judge has ever cleared (2026-09-02). A class with no prior row should stamp as `never`, not inherit a rung it never had.

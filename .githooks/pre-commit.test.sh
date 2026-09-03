@@ -53,6 +53,22 @@ r=$(simrepo); printf -- '---\nkey: s\norigin: sim/m1\n---\nPaste this.\n' > "$r/
 printf -- '---\nkey: a\n---\nPaste that.\n' > "$r/curriculum/prompts/a.md"; git -C "$r" add -A
 if commit "$r"; then bad 'a taught edit rode in beside a simulation prompt'; else ok 'a mixed commit is still gated'; fi
 
+# Metadata-only changes stay outside the card gate even when a card-approved
+# body change shares the commit.
+r=$(repo); mkdir -p "$r/.claude/prompt-approvals"
+printf -- '---\nkey: b\nruntime: any\n---\nOriginal body.\n' > "$r/curriculum/prompts/b.md"
+git -C "$r" add -A; SKIP_PROMPT_GATE=1 git -C "$r" commit -qm second-prompt
+sed -i.bak 's/key: a/key: a\nruntime: cli/' "$r/curriculum/prompts/a.md"; rm "$r/curriculum/prompts/a.md.bak"
+sed -i.bak 's/Original body/Updated body/' "$r/curriculum/prompts/b.md"; rm "$r/curriculum/prompts/b.md.bak"
+git -C "$r" add curriculum/prompts
+touch "$r/.claude/prompt-approvals/b.confirmed"
+if (cd "$r" && .githooks/pre-commit </dev/null >/dev/null 2>&1); then
+  ok 'a metadata-only edit needs no card in a mixed prompt commit'
+else
+  bad 'a metadata-only edit was card-gated in a mixed prompt commit'
+fi
+if [[ ! -e "$r/.claude/prompt-approvals/b.confirmed" ]]; then ok 'the body approval marker was consumed'; else bad 'the body approval marker was not consumed'; fi
+
 # A commit that stages a registry source must carry the rebuilt JSON
 # (scripts/check-generated-registries.js --staged).
 genrepo() {

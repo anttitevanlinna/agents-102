@@ -35,8 +35,8 @@ The training closes.
 
 **Placement:** last in the M6 deck, after the Human close. Order is the module file's (`spot-gaps-build-the-loop.md`), not this file's.
 
-**Quality:** compendium-audited 2026-09-03 (writing@289b45a3 story@289b45a3 technical@94fcca2d behavior@4e0370bc pedagogy@4e0370bc strategy@4e0370bc slides@289b45a3)
-- judges @94fcca2d: writing PASS (1 todo see instances/ae101--lecture--agents-that-build-agents.writing.json), story PASS (1 todo see instances/ae101--lecture--agents-that-build-agents.story.json), technical PASS (1 todo see instances/ae101--lecture--agents-that-build-agents.technical.json), behavior PASS (1 todo see instances/ae101--lecture--agents-that-build-agents.behavior.json), pedagogy PASS (3 todos see instances/ae101--lecture--agents-that-build-agents.pedagogy.json), strategy PASS (2 todos see instances/ae101--lecture--agents-that-build-agents.strategy.json), slides PASS
+**Quality:** compendium-audited 2026-09-03 (writing@544871e5 story@289b45a3 technical@94fcca2d behavior@4e0370bc pedagogy@4e0370bc strategy@4e0370bc slides@289b45a3)
+- judges @544871e5: writing PASS (1 todo see instances/ae101--lecture--agents-that-build-agents.writing.json), story PASS (1 todo see instances/ae101--lecture--agents-that-build-agents.story.json), technical PASS (1 todo see instances/ae101--lecture--agents-that-build-agents.technical.json), behavior PASS (1 todo see instances/ae101--lecture--agents-that-build-agents.behavior.json), pedagogy PASS (3 todos see instances/ae101--lecture--agents-that-build-agents.pedagogy.json), strategy PASS (2 todos see instances/ae101--lecture--agents-that-build-agents.strategy.json), slides PASS
 - sim-passed 2026-05-31 (three-persona sim). Per-class instances at `curriculum/evals/instances/ae101--lecture--agents-that-build-agents.<class>.json`.
 
 **Lecture meta:** *Closer-shaped, the module's last teaching beat. Voice: Risto-leading, Boris-grounding, Martin-spare. Pedagogical bet: the agent runs on what you have expressed, and expression sets the frontier; the model moves its own line, you move yours.*

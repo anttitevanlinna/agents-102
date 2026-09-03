@@ -55,8 +55,8 @@ Ask Claude to cut one rule the two-session diagnosis killed, or to say so and st
 
 **Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** bullet leads plain; bold only on widget / label chrome, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`.
 
-**Quality:** compendium-audited 2026-09-03 (writing@94fcca2d story@289b45a3 technical@94fcca2d behavior@289b45a3 pedagogy@289b45a3 strategy@4e0370bc slides@4e0370bc)
-- judges @94fcca2d: writing PASS (5 todos see instances/ae101--exercise--spot-gaps-build-the-loop.writing.json), story PASS (1 todo see instances/ae101--exercise--spot-gaps-build-the-loop.story.json), technical PASS (3 todos see instances/ae101--exercise--spot-gaps-build-the-loop.technical.json), behavior PASS, pedagogy PASS (3 todos see instances/ae101--exercise--spot-gaps-build-the-loop.pedagogy.json), strategy PASS, slides PASS (1 todo see instances/ae101--exercise--spot-gaps-build-the-loop.slides.json)
+**Quality:** compendium-audited 2026-09-03 (writing@544871e5 story@289b45a3 technical@94fcca2d behavior@289b45a3 pedagogy@289b45a3 strategy@4e0370bc slides@4e0370bc)
+- judges @544871e5: writing PASS (6 todos see instances/ae101--exercise--spot-gaps-build-the-loop.writing.json), story PASS (1 todo see instances/ae101--exercise--spot-gaps-build-the-loop.story.json), technical PASS (3 todos see instances/ae101--exercise--spot-gaps-build-the-loop.technical.json), behavior PASS, pedagogy PASS (3 todos see instances/ae101--exercise--spot-gaps-build-the-loop.pedagogy.json), strategy PASS, slides PASS (1 todo see instances/ae101--exercise--spot-gaps-build-the-loop.slides.json)
 
 **Word count:** ~420 words body.
 

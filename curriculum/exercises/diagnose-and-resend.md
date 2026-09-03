@@ -162,7 +162,7 @@ Your `CLAUDE.local.md` and `observations/` have been building in the worktree si
 - writes a task-scoped reference + plan.md before any multi-hour delegated run, pointing at the codebase rules rather than restating them
 - fires the verifier once as a smoke test before relying on it, so the check is checked before it gates anything
 
-**Phase 4 runs 10 (Antti 2026-08-30):** the grill is capped in the range of M2's plan push-back closer (also 10) — two to three rounds fit, and the grill-note's good-enough threshold does the cutting. This is what holds M5 at its 120 cap; do not re-inflate without recomputing the module.
+**Phase 4 runs 10 (Antti 2026-08-30):** the grill is capped in the range of M2's plan push-back closer (also 10) — two to three rounds fit, and the grill-note's good-enough threshold does the cutting. This is what holds M5 at its cap; do not re-inflate without recomputing the module (`node scripts/calculate-time.js learn-from-the-test`).
 
 **Placement:** the re-send is Phase 5 of this exercise, not a module-level beat; the module file must not carry a second one. The closing lecture follows this exercise. This file owns only its own `**Time:**` line; the module total is computed — `node scripts/calculate-time.js learn-from-the-test`.
 

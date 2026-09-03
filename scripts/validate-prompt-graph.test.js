@@ -23,6 +23,7 @@ const path = require('path');
 const {
   findStalePrimitives,
   BODY_PRIMITIVES,
+  orderedKeys,
   validate,
 } = require('./validate-prompt-graph.js');
 const { loadRegistry } = require('./compile-prompts.js');
@@ -64,6 +65,43 @@ test('findStalePrimitives: mixed list reports only the stale ones', () => {
   assert.deepEqual(stale.map((p) => p.id), ['claude-local-md']);
 });
 
+test('logical artifact source follows whichever runtime prompt produces the identity', () => {
+  const registry = {
+    producer: {
+      text: 'Write result.md.',
+      produces: [{ id: 'shared-result', location: 'result.md' }],
+    },
+    consumer: {
+      text: 'Read result.md.',
+      requires: [{ id: 'shared-result', source: 'artifact:shared-result' }],
+    },
+  };
+  const ordered = [{ key: 'producer' }, { key: 'consumer' }];
+
+  const result = validate('agents-101', { registry, ordered, primitives: [] });
+
+  assert.deepEqual(result.findings, []);
+});
+
+test('logical artifact source must name the required identity', () => {
+  const registry = {
+    producer: {
+      text: 'Write result.md.',
+      produces: [{ id: 'shared-result', location: 'result.md' }],
+    },
+    consumer: {
+      text: 'Read result.md.',
+      requires: [{ id: 'shared-result', source: 'artifact:different-result' }],
+    },
+  };
+  const ordered = [{ key: 'producer' }, { key: 'consumer' }];
+
+  const result = validate('agents-101', { registry, ordered, primitives: [] });
+
+  assert.equal(result.findings.length, 1);
+  assert.equal(result.findings[0].code, 'SOURCE-IDENTITY-MISMATCH');
+});
+
 test('live AE101 graph: every real BODY_PRIMITIVES id resolves (no CONFIG-STALE)', () => {
   // Guards against the self-check false-positiving on the shipping graph.
   const result = validate('agentic-engineering-101');
@@ -84,9 +122,9 @@ test('live Agents 101 graph declares the load-bearing prompt handoffs', () => {
     ['author-security-skill-2', 'policy-report-raw', 'prompt:author-security-skill-1'],
     ['audit-your-agent-3', 'security-report', 'prompt:audit-your-agent-2'],
     ['hallucination-bakeoff-2', 'm5-briefing', 'prompt:hallucination-bakeoff-1'],
-    ['hallucination-bakeoff-5', 'm5-detector-outputs', 'prompt:hallucination-bakeoff-3'],
+    ['hallucination-bakeoff-5', 'm5-detector-outputs', 'artifact:m5-detector-outputs'],
     ['eval-loop-2', 'generation-tactic', 'prompt:eval-loop-1'],
-    ['share-your-work-3', 'm7-jtbd', 'prompt:share-your-work-1'],
+    ['share-your-work-3', 'm7-jtbd', 'artifact:m7-jtbd'],
     ['share-your-work-6', 'm7-assumptions', 'prompt:share-your-work-5'],
     ['joint-double-diamond-3', 'm8-sponsor-challenge', 'prompt:joint-double-diamond-1'],
     ['joint-double-diamond-8', 'm8-critiques', 'prompt:joint-double-diamond-7'],
@@ -103,10 +141,15 @@ test('live Agents 101 graph declares the load-bearing prompt handoffs', () => {
 
 for (const profileKey of A101Runtimes.PROFILE_ORDER) {
   test(`live Agents 101 graph resolves for ${profileKey}`, () => {
+    const registry = loadRegistry();
+    const expectedActive = orderedKeys('agents-101').filter(({ key }) =>
+      registry[key]?.runtimeVariants?.[profileKey]
+    ).length;
     const result = validate('agents-101', { profileKey });
     assert.equal(result.profile, profileKey);
     assert.equal(result.orderCount, 93);
-    assert.equal(result.activeCount, 91);
+    assert.equal(result.activeCount, expectedActive);
+    assert.equal(result.activeCount, 86);
     assert.deepEqual(
       result.findings.filter((finding) => finding.severity === 'error'),
       []

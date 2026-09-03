@@ -93,7 +93,7 @@ const KNOWN_DESTS = new Set([
   'central synthesizer',
   'buyer/sponsor agent'
 ]);
-const KNOWN_RUNTIMES = new Set(['any', 'cli', 'desktop', 'cowork']);
+const KNOWN_RUNTIMES = new Set(['any', 'code', 'cli', 'desktop', 'cowork']);
 (function auditRegistryValues() {
   const odd = { dest: [], runtime: [] };
   for (const [key, entry] of Object.entries(PROMPT_REGISTRY)) {
@@ -105,7 +105,7 @@ const KNOWN_RUNTIMES = new Set(['any', 'cli', 'desktop', 'cowork']);
     odd.dest.forEach(s => console.warn('    ' + s));
   }
   if (odd.runtime.length) {
-    console.warn('  [warn] unknown runtime values (expected: any|cli|desktop|cowork):');
+    console.warn('  [warn] unknown runtime values (expected: any|code|cli|desktop|cowork):');
     odd.runtime.forEach(s => console.warn('    ' + s));
   }
 })();

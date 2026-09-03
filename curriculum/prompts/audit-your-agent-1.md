@@ -5,7 +5,7 @@ runtime: any
 origin: exercises/audit-your-agent
 requires:
   - id: installed-security-skill
-    source: prompt:author-security-skill-4
+    source: artifact:installed-security-skill
   - id: policy-report-raw
     source: prompt:author-security-skill-1
 produces:

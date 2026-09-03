@@ -21,6 +21,8 @@
  *      - SOURCE-MODULE   requires sourced `module:*` where a producing PROMPT
  *                        exists — repoint to the prompt.
  *      - SOURCE-MISMATCH source `prompt:K` where K does not produce that id.
+ *      - SOURCE-IDENTITY-MISMATCH source `artifact:X` where X differs from
+ *                        the required logical artifact id.
  *      - BODY-UNBACKED   the body reads a known artefact primitive
  *                        (./observations/, CLAUDE.local.md, …) with no backing
  *                        requires/produces/opportunistic-copy entry.
@@ -320,6 +322,12 @@ function validate(trainingKey, options) {
       if (/^module:/.test(source)) {
         add('error', 'SOURCE-MODULE', key,
           `requires '${req.id}' is sourced '${source}', but a producing prompt exists ('${producer.key}') — repoint to source: prompt:${producer.key}`);
+      } else if (/^artifact:/.test(source)) {
+        const named = source.slice('artifact:'.length).trim();
+        if (named !== req.id) {
+          add('error', 'SOURCE-IDENTITY-MISMATCH', key,
+            `requires '${req.id}' is sourced '${source}', but the logical artifact source must be 'artifact:${req.id}'`);
+        }
       } else if (/^prompt:/.test(source)) {
         const named = source.slice('prompt:'.length).trim();
         const namedProduces = asArray(registry[named] && registry[named].produces).some((p) => p && p.id === req.id);

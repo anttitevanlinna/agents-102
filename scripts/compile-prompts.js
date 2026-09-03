@@ -212,6 +212,7 @@ function resolveEntry(sourceEntry, profileKey) {
 function legacyProfileForRuntime(runtime) {
   if (runtime === 'cowork') return 'cowork';
   if (runtime === 'desktop') return 'desktop';
+  if (runtime === 'code') return 'cli';
   if (runtime === 'cli') return 'cli';
   return A101Runtimes.DEFAULT_PROFILE;
 }

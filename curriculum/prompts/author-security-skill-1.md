@@ -9,7 +9,7 @@ requires:
   - id: root-claude-md
     source: prompt:a101-m2-debrief-claude-md
   - id: m3-agent-work
-    source: prompt:three-minds-one-synthesis-1
+    source: artifact:m3-agent-work
 produces:
   - id: policy-report-raw
     location: outputs/policy-report-raw.md

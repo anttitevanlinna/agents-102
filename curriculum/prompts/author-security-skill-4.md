@@ -1,7 +1,7 @@
 ---
 key: author-security-skill-4
 dest: Claude Code
-runtime: any
+runtime: cli
 origin: exercises/author-security-skill
 requires:
   - id: authored-security-skill

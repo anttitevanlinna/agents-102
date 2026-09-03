@@ -34,6 +34,9 @@ test('runtime profiles carry the executable transport only on CLI surfaces', () 
 
 test('surface metadata activates equivalent Claude and Codex profiles', () => {
   assert.deepEqual(R.compatibleProfiles('any'), R.PROFILE_ORDER);
+  assert.deepEqual(R.compatibleProfiles('code'), [
+    'desktop', 'cli', 'codex-desktop', 'codex-cli'
+  ]);
   assert.deepEqual(R.compatibleProfiles('desktop'), ['desktop', 'codex-desktop']);
   assert.deepEqual(R.compatibleProfiles('cli'), ['cli', 'codex-cli']);
   assert.deepEqual(R.compatibleProfiles('cowork'), ['cowork']);

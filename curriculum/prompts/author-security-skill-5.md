@@ -1,7 +1,7 @@
 ---
 key: author-security-skill-5
 dest: Claude Code
-runtime: any
+runtime: desktop
 origin: exercises/author-security-skill
 requires:
   - id: authored-security-skill

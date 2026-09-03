@@ -40,8 +40,9 @@ fi
 # edits (between leading `---` markers) and maintainer-block edits (below
 # `<!-- maintainer -->`) are NOT gated. Compare the body region of each staged
 # prompt against HEAD; if no body region changed, skip confirmation.
+gated="$staged"
 if command -v python3 >/dev/null 2>&1; then
-    body_changed=$(STAGED_FILES="$staged" python3 - <<'PYEOF'
+    gated=$(STAGED_FILES="$staged" python3 - <<'PYEOF'
 import os, re, subprocess, sys
 
 def body(content):
@@ -76,28 +77,28 @@ for fp in staged:
         new = subprocess.check_output(["git", "show", f":{fp}"], text=True)
     except subprocess.CalledProcessError:
         # Couldn't read staged version (deleted file). Gate to be safe.
-        print(1); sys.exit(0)
+        print(fp)
+        continue
     try:
         old = subprocess.check_output(["git", "show", f"HEAD:{fp}"], text=True, stderr=subprocess.DEVNULL)
     except subprocess.CalledProcessError:
         # New file with no HEAD version. Gate.
-        print(1); sys.exit(0)
+        print(fp)
+        continue
     if normalize(body(old)) != normalize(body(new)):
-        print(1); sys.exit(0)
-
-print(0)
+        print(fp)
 PYEOF
 )
-    if [ "$body_changed" = "0" ]; then
+    if [ -z "$gated" ]; then
         exit 0
     fi
 fi
 
 # Inform the human.
 echo "──────────────────────────────────────────────────────────────────────"
-echo "Prompt registry change detected. Staged files under curriculum/prompts/:"
+echo "Prompt body change detected. Card-gated files:"
 echo
-git diff --cached --stat -- 'curriculum/prompts/**'
+printf '%s\n' "$gated"
 echo
 echo "Diff summary:"
 git diff --cached --shortstat -- 'curriculum/prompts/**'
@@ -138,7 +139,7 @@ while IFS= read -r staged_file; do
     fi
     to_consume="$to_consume $marker"
 done <<EOF
-$staged
+$gated
 EOF
 
 if [ "$all_approved" = "1" ] && [ -n "$to_consume" ]; then

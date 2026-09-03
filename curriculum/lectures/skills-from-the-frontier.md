@@ -1,10 +1,10 @@
 # Skills from the frontier, skills of your own
 
-## What a skill is
+## A skill outlives the thread it came from
 
 - A **skill** is a named, scoped capability the agent can invoke. A markdown file with a frontmatter header and a set of instructions, living in `.claude/skills/<name>/SKILL.md` or an equivalent team-kit home. Claude Code discovers it by name and pulls the body in when the work calls for it.
 - One frontier skill already reached you as a plain prompt. The second-pass walk-down against your plan file, where Claude asked you one question at a time about unresolved branches, was patterned on Matt Pocock's `grill-me` skill (MIT-licensed on GitHub, and billed there as "a relentless interview to sharpen a plan or design").
-- Skills are how agentic knowledge compounds across teammates. A Slack thread about "how to threat-model our webhook paths" dies in 48 hours. A STRIDE skill tuned to your stack lives as long as the repo.
+- Skills are one of the ways agentic knowledge compounds across teammates. A Slack thread about "how to threat-model our webhook paths" dies in 48 hours. A STRIDE skill tuned to your stack lives as long as the repo.
 
 ## Borrowed judgement, or your own
 
@@ -69,7 +69,7 @@ Format → `curriculum/backing-format.md`.
 - `skill-is-a-file` · detail · "A markdown file with a frontmatter header and a set of instructions, living in `.claude/skills/<name>/SKILL.md`" ← cc-skills-docs
 - `auto-discovery-by-name` · detail · "Claude Code discovers it by name and pulls the body in when the work calls for it" ← cc-skills-docs
 - `grill-me-provenance` · detail · "patterned on Matt Pocock's `grill-me` skill (MIT-licensed on GitHub, and billed there as "a relentless interview to sharpen a plan or design")" ← pocock-grill-me
-- `skills-compound-across-teammates` · vision · "Skills are how agentic knowledge compounds across teammates" ← none-owed
+- `skills-compound-across-teammates` · vision · "Skills are one of the ways agentic knowledge compounds across teammates" ← none-owed
 - `stride-provenance` · borrowed · "STRIDE is Loren Kohnfelder and Praerit Garg's 1999 Microsoft memo, sharpened into a discipline by Adam Shostack's *Threat Modeling: Designing for Security* (2014)" ← kohnfelder-garg-1999, shostack-2014
 - `least-privilege-provenance` · borrowed · "Access-control analysis threads back to Saltzer and Schroeder's 1975 least-privilege paper" ← saltzer-schroeder-1975
 - `saltzer-still-cited` · detail · "still cited half a century on" ← saltzer-schroeder-1975, saltzer-citation-count

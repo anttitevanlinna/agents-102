@@ -1,39 +1,19 @@
 {
-  "class": "storytelling",
-  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/the-handoff-prompt.md",
-  "body_sha": "43db6368b4692ceda1ee884a61441129a9eb0fe47f7ac8f90be058047b447c61",
-  "shape_hash": "3046f580905e3676",
-  "verdict": "PASS",
+  "class": "story",
   "training": "ae101",
-  "module_mood_contract": "M6 — practitioner fluency: \"I know how to test, I know how to learn, I know how to encode.\" Not confidence-as-performance; competence-as-posture. (bosser-strategy:content-strategy-agentic-engineering-101.md § Mood: practitioner fluency; this file is beat 3's opening teaching move — the encode-move — per § M6 in detail Move 3 and § Three-beat structure.)",
-  "trace_status": "generated_first_time",
+  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/the-handoff-prompt.md",
+  "verdict": "PASS_WITH_TODOS",
+  "body_sha": "1fff9cf7094c34e206a4359cc047d9532f4e73ac8eafe88120020854ce43d242",
+  "shape_hash": "3046f580905e3676",
+  "module_mood_contract": "M6 — practitioner fluency: \"I know how to test, I know how to learn, I know how to encode.\" Not confidence-as-performance; competence-as-posture. Verified against bosser-strategy:content-strategy-agentic-engineering-101.md line 479 (\"Mood: practitioner fluency\") and line 461 (\"The encode-move ships as the closing lecture's handoff prompt\").",
+  "trace_status": "cached_verified",
   "rules_evaluated": [
-    {
-      "compendium": "check_lectures.md",
-      "rule_index": 1,
-      "rule_lead": "Meta-frame lectures = closers, not openers.",
-      "verdict": "N/A",
-      "evidence": null,
-      "na_reason": "not a meta-frame/narrative-naming lecture — it delivers an operational forcing-function (the handoff prompt) that packages what the student just did in `read-your-stack.md`, not a retrospective naming of a pattern already lived. The closer/opener/mid-module-vocab diagnostic doesn't classify this shape; it's an encode-move beat, distinct from the module's actual meta-frame closer (`agents-that-build-agents.md`, 'There is no last turn', which sits after this file in the deck order per the strategy doc).",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_lectures.md",
-      "rule_index": 2,
-      "rule_lead": "Minimal lecturing before contrast-mood exercises.",
-      "verdict": "N/A",
-      "evidence": null,
-      "na_reason": "M6's mood is practitioner fluency, not contrast-mood (contrast-mood is M5's, per the strategy doc's mood arc); this file also sits mid-module, after `read-your-stack.md`, not as a pre-exercise opener.",
-      "fix_hint": null,
-      "blocking": false
-    },
     {
       "compendium": "check_lectures.md",
       "rule_index": 3,
       "rule_lead": "No cross-module sequencing in lecture bodies.",
       "verdict": "PASS",
-      "evidence": "Grepped `projections.body_numbered` (L1-10) for `M[0-9]` and module-name refs: zero hits. Body names no module number, no forward/backward module reference — only 'the session' and 'the kit'.",
+      "evidence": "Grepped `curriculum/evals/body-views/ae101--lecture--the-handoff-prompt.body.txt` (the body_numbered projection, L1-10) for `M[0-9]`: `grep -n \"M[0-9]\" ...body.txt` → zero hits, exit 1. Body names no module number and no forward/backward module reference — only 'the session' and 'the kit'.",
       "fix_hint": null,
       "blocking": false
     },
@@ -42,7 +22,7 @@
       "rule_index": 4,
       "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
       "verdict": "PASS",
-      "evidence": "One `##` header, 'The handoff prompt that builds your kit' (L3). Squint: cover the two body sentences and the prompt fence — the header alone still names the one artifact the student walks away holding (a handoff prompt that builds the kit). Truth: body (L5, L9) supports exactly that claim, no category error (it doesn't call the prompt 'the kit', it calls it what builds the kit), no dropped qualifier, no unsupported universal. No pedagogy/contemplative framing, no em-dash, declarative noun-phrase not a command verb.",
+      "evidence": "One `##` header, L3 'The handoff prompt that builds your kit'. Squint: covering L5/L9/the fence, the header alone still names the one artifact the student walks away holding — not an empty container ('The move'), not a bare arc label. Truth: L5 and L9 support exactly that claim (the prompt is what builds the kit); no category error, no dropped qualifier, no unsupported universal. Declarative noun-phrase, not a command verb; no em-dash (verified: body-view `greps.em_dash.body_hits`=0, CLEAN/planted-proof); no pedagogy/contemplative framing.",
       "fix_hint": null,
       "blocking": false
     },
@@ -51,7 +31,7 @@
       "rule_index": 5,
       "rule_lead": "A slide's BODY is size-bounded, not just its header.",
       "verdict": "PASS",
-      "evidence": "Manual count against raw body (L1-10) excluding the `{{prompt:agents-that-build-agents-handoff}}` include line: ~40 words ('The shapes you drew are still in the session. Ask the agent to turn them into a prompt that builds the kit.' + 'What comes back is a prompt, not a plan. Save it where you will find it.'), 0 bullets. Well under the 210-word/6-bullet ceiling. Note: `curriculum/evals/scripts/check-slide-size.js` (the script this rule names) was not found in the repo at that path — counted by hand instead; the margin (40 vs 210) is wide enough that the discrepancy between a script count and a hand count would not change the verdict.",
+      "evidence": "Ran the rule's own script at repo root (not under curriculum/evals/scripts/, per the preamble's own correction): `node scripts/check-slide-size.js --file curriculum/lectures/the-handoff-prompt.md` → 'files: 1  slides: 1  limits: 210 words / 6 bullets  oversized: 0 / ✓ every slide is within limits'. Real mechanical pass, not a hand count.",
       "fix_hint": null,
       "blocking": false
     },
@@ -60,7 +40,7 @@
       "rule_index": 6,
       "rule_lead": "A prompt inside a lecture is a trainer show-and-tell, never a room follow-along.",
       "verdict": "PASS",
-      "evidence": "§6 carve-out already documented and dated in the maintainer block (L17, 'checked 2026-08-20'): L5 'The shapes you drew are still in the session' is exactly the rule's stated tell — it names the student's own session as the thing being inspected, so the answer must be theirs and a trainer demo would hand the room the trainer's kit instead. Existing accept-note verified against the current body; the tell is still present at L5. Not re-flagged.",
+      "evidence": "Carve-out accept-note present and current at L19 ('§6 carve-out, the answer must be theirs (checked 2026-08-20)') — verified against the live body: L5 'The shapes you drew are still in the session' is exactly the rule's tell (names the student's own session as the thing being inspected), so a trainer demo would hand the room the trainer's kit, not the student's. Tell still present, accept-note still accurate. Not re-flagged.",
       "fix_hint": null,
       "blocking": false
     },
@@ -69,16 +49,16 @@
       "rule_index": 16,
       "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
       "verdict": "PASS",
-      "evidence": "The load-bearing ask ('Write me a handoff prompt I can save and run in a fresh session later to build the kit... For each shape: study the work, pick the check that fits, author through conversation, push back, invoke to verify... Tell it to re-study my repos for these shapes, and name the shapes inside it') sits entirely inside the `{{prompt:agents-that-build-agents-handoff}}` fence (L7). Body prose (L5, L9) is scene-setting and expectation-setting only ('the shapes are still in the session' / 'what comes back is a prompt, not a plan') — a speed-runner skipping straight to the fence loses no instruction the agent needs to act on. L9 falls under the rule's own carve-out for optional push-backs/refinements living in body.",
+      "evidence": "Load-bearing ask ('Write me a handoff prompt... For each shape: study the work, pick the check that fits, author through conversation, push back, invoke to verify... Tell it to re-study my repos for these shapes, and name the shapes inside it') sits entirely inside `{{prompt:agents-that-build-agents-handoff}}` (L7); verified by reading `curriculum/prompts/agents-that-build-agents-handoff.md` body directly. Body prose (L5, L9) is scene-setting/expectation-setting only — a speed-runner skipping to the fence loses no instruction the agent needs. L9 falls under the rule's own carve-out for optional refinements in body.",
       "fix_hint": null,
-      "blocking": false
+      "blocking": true
     },
     {
       "compendium": "check_pedagogy.md",
       "rule_index": 27,
       "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
       "verdict": "PASS",
-      "evidence": "Body (L1-10) contains zero cohort-management or conversation cues — no 'discuss', 'share', 'pair', 'trainer', no pause-cue phrasing, none of §27's tells. Every sentence is about the work: what the shapes are, what to ask for, what to save. No carve-out needed because no cue was authored.",
+      "evidence": "Body (L1-10) carries zero cohort-management or conversation cues — no 'discuss/share/pair/trainer', no pause-cue phrasing. Every sentence is about the work (the shapes, the ask, the save). No carve-out needed because no cue was authored.",
       "fix_hint": null,
       "blocking": false
     },
@@ -87,7 +67,7 @@
       "rule_index": 47,
       "rule_lead": "Per-phase failure mode + escape hatch.",
       "verdict": "PASS",
-      "evidence": "Maintainer block L15 ('Handoff-prompt forcing function, failure mode + escape hatch (`check_pedagogy.md` §47, added 2026-08-20)') names both required pieces: (a) dominant failure mode — plan-instead-of-prompt ('the agent returns an implementation plan, and the student saves it believing they have the artefact'), secondary — thin shapes if M6 Phase 2's diagrams never got drawn; (b) escape hatch — 'ask for the prompt itself, in the words you would paste into a fresh session, and check the return opens with an instruction rather than a numbered plan', plus a recovery path for thin shapes (point at the ranked recurring work, build from the top two). Both present, dated, and self-cited to this exact rule number.",
+      "evidence": "Maintainer block L15 names both required pieces, self-cited to this rule: (a) dominant failure — plan-instead-of-prompt; secondary — thin shapes; (b) escape hatch — 'ask for the prompt itself... check the return opens with an instruction rather than a numbered plan', plus a thin-shapes recovery. Rule requires this in the MAINTAINER block, not the body, so this is satisfied as written. A new accept-note at L17 ('Antti 2026-09-03') additionally forecloses moving this into the body ('more text without value at a three-minute beat... Judges should not re-file check_pedagogy.md §47... on L9') — read and honoured; not re-filed.",
       "fix_hint": null,
       "blocking": false
     },
@@ -95,9 +75,9 @@
       "compendium": "check_prompts.md",
       "rule_index": null,
       "judge_owned": true,
-      "rule_lead": "Forcing function lives in prompts, not body prose (storytelling-owned facet, sibling of check_pedagogy §16 — check_prompts.md itself is primary-owned by writing/technical/behavior; this is the one facet story reads it for).",
+      "rule_lead": "Forcing function lives in prompts, not body prose (storytelling-owned facet, sibling of check_pedagogy §16; check_prompts.md's other 47 rules are prompt-craft/mechanics primary-owned by writing/technical/behavior and are not in story.md's Completeness contract).",
       "verdict": "PASS",
-      "evidence": "Same finding as check_pedagogy §16 from the prompt-design side: the whole load-bearing ask sits inside the `{{prompt:agents-that-build-agents-handoff}}` fence; nothing Claude-directed and load-bearing depends on body prose a speed-runner would skip. The remaining 47 check_prompts.md rules are mechanical/technical prompt-craft (registry format, permission-mode chips, path robustness, approval-gate process) with no story-class judgment embedded — left to their primary-owner classes, per this template's own scope (check_prompts.md is not named in story.md's Completeness contract). Not re-derived here.",
+      "evidence": "Same finding as check_pedagogy §16 from the prompt-design side: the whole load-bearing ask sits inside the fence, verified against the live registry file `curriculum/prompts/agents-that-build-agents-handoff.md`. Not re-derived for the other 47 rules.",
       "fix_hint": null,
       "blocking": true
     },
@@ -105,17 +85,17 @@
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 1,
       "rule_lead": "Mood contract named.",
-      "verdict": "PASS",
-      "evidence": "One sentence: the student leaves this beat holding a saved handoff prompt and feeling 'I know how to encode' (M6's practitioner-fluency mood), which sets up 'Story of Module 6' (the permission beat immediately next in the deck order) — that beat normalises the messy generation process behind exactly the kind of artefact this one just produced. Mood-floor applies (TEACHING beat: this is the module's encode-move landing, not navigation — compressing it into a parenthetical would break the arc, per the diagnostic). Per-beat mood score is in `mood_summary`: 7/10, non-blocking (rule's own threshold is <7 = REVISE) but flagged — see `stealing_the_mood`.",
-      "fix_hint": "Fold the escape hatch's actual recovery action (not just its diagnostic label) into student-facing text, so a plan-shaped return is self-catchable without a trainer nearby.",
-      "blocking": true
+      "verdict": "REVISE",
+      "evidence": "Mood contract IS correctly named and matches the strategy doc (practitioner fluency / competence-as-posture, verified at content-strategy-agentic-engineering-101.md L479) and the file's own maintainer block. TEACHING beat (this is the module's sole encode-move landing, not navigation; per the diagnostic, compressing it to a parenthetical would drop the module's shippable-thing claim), so the 8+/10 mood-floor applies. Persona trace (curriculum/evals/sim-cache/ae101--lecture--the-handoff-prompt.persona.json, phase 1 + close, verified against the live body via direct quote-match — the trace's quoted prompt text matches `curriculum/prompts/agents-that-build-agents-handoff.md` verbatim) reads 7/10 both places: facilitator-premium signature (rule's own tier — 7 is flagged, not the <7 that triggers REVISE outright), driven by one confusion_flag — L9 ('What comes back is a prompt, not a plan') diagnoses the dominant failure without a self-recovery move in front of the student; a lone reader who hits a plan-shaped return has nothing scripted to do next. This is genuinely a facilitator-premium gap, not a fabricated one. But the natural fix (move the escape hatch into the body) is explicitly declined as of today: L17, 'Antti 2026-09-03' — 'The plan-instead-of-prompt tell is not added to the body: more text without value at a three-minute beat. The recovery stays trainer-side, in the note above.' Recorded as a flagged, non-blocking gap per the rule's own tiering, not as an open authoring item.",
+      "fix_hint": "None to propose — Antti declined moving the escape hatch into the body 2026-09-03 (L17), the exact fix this facilitator-premium gap would otherwise invite. Recording the mood read for the ledger; no action owed.",
+      "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 2,
       "rule_lead": "Epistemic mood ≠ punitive mood.",
       "verdict": "PASS",
-      "evidence": "No shame or wrongdoing framing anywhere in body (L1-10). Register throughout is competence/capability ('turn them into a prompt that builds the kit'), not correction. The one caution ('not a plan') reads as a definitional distinction, not a rebuke.",
+      "evidence": "No shame or wrongdoing framing anywhere in L1-10. Register throughout is capability ('turn them into a prompt that builds the kit'). The one caution (L9, 'not a plan') reads as a definitional distinction, not a rebuke.",
       "fix_hint": null,
       "blocking": false
     },
@@ -124,7 +104,7 @@
       "rule_index": 3,
       "rule_lead": "Lead with discipline, not failure mode.",
       "verdict": "PASS",
-      "evidence": "Title and header both lead with the artifact/practice ('Agents that build agents' / 'The handoff prompt that builds your kit'), not a failure word. The one failure-adjacent word in the body ('not a plan', L9) is a contrastive clarifier inside a sentence that is otherwise naming the positive discipline (what the return should be), not the section's frame.",
+      "evidence": "Title (L1) and header (L3) both lead with the artifact/practice, not a failure word. The one failure-adjacent word (L9, 'not a plan') is a contrastive clarifier inside a sentence otherwise naming the positive discipline, not the section's frame.",
       "fix_hint": null,
       "blocking": false
     },
@@ -133,9 +113,43 @@
       "rule_index": 4,
       "rule_lead": "Strategy-fidelity check.",
       "verdict": "PASS",
-      "evidence": "Cross-checked against bosser-strategy:content-strategy-agentic-engineering-101.md § M6 in detail ('The encode-move ships as the closing lecture's handoff prompt: cold-runnable, built from the shapes and the primitives menu') and § Three-beat structure / 'State at 2026-09-02' deck order: '...composing-the-workflow → exercise Read your stack → Agents that build agents (one slide: the handoff prompt) → Story of Module 6 → Human close → There is no last turn'. This file's own maintainer Placement note (L21) matches that order exactly. It does not front-run 'Story of Module 6' (the permission beat, which narrates how THIS module was generated — a different beat) or the closer's meta-frame ('There is no last turn'). No cross-module reference to police (rule 3 above already confirmed zero M-refs).",
+      "evidence": "Read directly against content-strategy-agentic-engineering-101.md § M6 in detail (not just the module file): L461 'The encode-move ships as the closing lecture's handoff prompt: cold-runnable, built from the shapes and the primitives menu'; L564 skills table, M6 authoring column: 'Ships the handoff prompt — the encode-move packaged as a cold-runnable prompt built from the stack-map's shapes + primitives menu'; L467 deck order at 2026-09-02 close: '...exercise Read your stack (15) → Agents that build agents (one slide: the handoff prompt) → Story of Module 6 → Human close → There is no last turn...'. Cross-checked against `curriculum/trainings/agentic-engineering-101/spot-gaps-build-the-loop.md` L106 (module file's own Pre-read placement line), which states the identical order. This file does not front-run the permission beat (Story of Module 6, which narrates how the module itself was generated — a different beat) or the closer's meta-frame. No cross-module reference to police (rule 3 above already confirmed zero M-refs).",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": null,
+      "judge_owned": true,
+      "rule_lead": "Trigger check — is this file workshop-shaped? (§1: 'Group beat ≠ parallel solo work... remove the room — does the beat still produce the same artefact?')",
+      "verdict": "N/A",
+      "evidence": "The handoff prompt is one student's own artefact (their own stack, their own shapes from `read-your-stack.md`, their own saved prompt) — it would exist identically with the room removed. `signals.group_beat_markers: false` per the derived body view; direct read of L1-10 confirms no beat here belongs to the group. Trigger doesn't fire, so the remaining 15 numbered rules cascade to N/A with it (whole-compendium scope call).",
       "fix_hint": null,
       "blocking": false
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 1,
+      "rule_lead": "Meta-frame lectures = closers, not openers.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "not a meta-frame/narrative-naming lecture — it delivers an operational forcing-function (the handoff prompt) that packages what the student just did in `read-your-stack.md`, not a retrospective naming of a pattern already lived. The closer/opener/mid-module-vocab diagnostic doesn't classify this shape; it's an encode-move beat, distinct from the module's actual meta-frame closer (`agents-that-build-agents.md`, 'There is no last turn', which sits after this file in the deck order per the strategy doc).",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "43db6368b4692ceda1ee884a61441129a9eb0fe47f7ac8f90be058047b447c61",
+      "carried_shape": "3046f580905e3676"
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 2,
+      "rule_lead": "Minimal lecturing before contrast-mood exercises.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "M6's mood is practitioner fluency, not contrast-mood (contrast-mood is M5's, per the strategy doc's mood arc); this file also sits mid-module, after `read-your-stack.md`, not as a pre-exercise opener.",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "43db6368b4692ceda1ee884a61441129a9eb0fe47f7ac8f90be058047b447c61",
+      "carried_shape": "3046f580905e3676"
     },
     {
       "compendium": "check_strategy_tie_in.md",
@@ -144,8 +158,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "Key Concepts is a module-file section; this is a lecture file with no such section.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "43db6368b4692ceda1ee884a61441129a9eb0fe47f7ac8f90be058047b447c61",
+      "carried_shape": "3046f580905e3676"
     },
     {
       "compendium": "check_strategy_tie_in.md",
@@ -154,8 +170,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "Key Concepts is a module-file section; this is a lecture file with no such section.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "43db6368b4692ceda1ee884a61441129a9eb0fe47f7ac8f90be058047b447c61",
+      "carried_shape": "3046f580905e3676"
     },
     {
       "compendium": "check_strategy_tie_in.md",
@@ -164,43 +182,28 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "What You'll Learn is a module-file section; this is a lecture file with no such section.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_workshop.md",
-      "rule_index": null,
-      "judge_owned": true,
-      "rule_lead": "Trigger check — is this file workshop-shaped? (§1: 'Group beat ≠ parallel solo work... remove the room — does the beat still produce the same artefact?')",
-      "verdict": "N/A",
-      "evidence": "The handoff prompt is one student's own artefact (their own stack, their own shapes from `read-your-stack.md`, their own saved prompt) — it would exist identically with the room removed. `signals.group_beat_markers: false` per the derived body view, and a direct read of the body confirms no beat here belongs to the group rather than the individual. check_workshop's trigger condition does not fire, so the remaining 15 rules cascade to N/A with it.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "43db6368b4692ceda1ee884a61441129a9eb0fe47f7ac8f90be058047b447c61",
+      "carried_shape": "3046f580905e3676"
     }
   ],
-  "mood_summary": {
-    "phase_scores": [7],
-    "close_score": 7,
-    "any_below_8": true,
-    "stealing_the_mood": [
-      "Only beat (the handoff-prompt teaching moment): plan-instead-of-prompt is the maintainer's own documented dominant failure (L15), and the only student-facing check (L9, 'What comes back is a prompt, not a plan') diagnoses the problem without handing the student a recovery move — the actual escape hatch (ask again, in the words you'd paste into a fresh session) currently lives only in the maintainer block. 7/10, facilitator-premium: lands at 8 with a trainer circulating who catches a plan-shaped return; sits at 7 for a student who hits it alone."
-    ]
-  },
-  "blocking_findings_count": 0,
   "todos_count": 1,
+  "blocking_findings_count": 0,
   "notes": [
-    "Sim trace generated fresh this session — no prior cache existed at curriculum/evals/sim-cache/ae101--lecture--the-handoff-prompt.persona.json (checked; MISSING). Whole body treated as phase 1 (no `## Phase` headers), per simulation.md's file-level-SHA convention for non-phased files.",
-    "check_prompts.md: 1 judge_owned facet row emitted (forcing-function-in-prompt, mirroring check_pedagogy §16). The remaining 47 rules are prompt-craft/mechanics with no story-class judgment call embedded and are not named in story.md's own Completeness contract — left to their primary-owner classes (writing/technical/behavior), not re-derived here.",
-    "Training/slug note: `derive-body-view.js` computes this file's slug as `shared--lecture--the-handoff-prompt` (directory-derived — the file lives in the shared `curriculum/lectures/` library). The dispatch explicitly named the trace and instance paths with an `ae101--` prefix instead, matching this file's sole current module reference (`spot-gaps-build-the-loop.md`, AE101 M6). Followed the dispatch's explicit naming; flagging the shared-vs-ae101 slug mismatch for the orchestrator in case a sibling class's tooling reads the `shared--` slug and diverges on filename.",
-    "The 'Open for next pass' item already logged in this file's own maintainer block (L22: a real-cohort live-test on an actual student's M6 close is still owed) covers the same underlying risk as this run's mood-7 finding — not restated as a new todo, since it's already tracked and dated."
+    "Trace verified, not blindly trusted: `content_sha`/`phase_sha` in the cached persona trace (43db6368...) does not match the current full-file sha (99522108...) because the file's maintainer block gained two lines after the trace was generated (the L17 accept-note, the Quality stamp) — the body region (L1-10) is byte-identical to when the trace was generated. Confirmed the trace's quoted prompt text against the live `curriculum/prompts/agents-that-build-agents-handoff.md` — verbatim match, sentence for sentence. Treated as current; not regenerated, since regenerating would read an unchanged body and produce the same content.",
+    "drift-rescan (prompts §17, narrowed 2026-09-03, current wording re-read via `node curriculum/evals/scripts/rule.js prompts 17`): the structural trigger is now plan-mode-only; `curriculum/prompts/agents-that-build-agents-handoff.md` frontmatter declares no `permission-mode:` (no plan mode), so §17 does not fire here even under the pre-narrowing reading (the fence's 5-clause 'for each shape' sentence would have been the old 4+-sub-steps trigger, now retired). Not a story-owned rule regardless (check_prompts.md's story ownership is limited to the one judge_owned forcing-function facet) — recorded for the staleness pin, no `rules_evaluated` row added.",
+    "check_lectures.md rules 1-2 and check_strategy_tie_in.md rules 5-7 are parked N/A in the prefill sidecar (shape_hash 3046f580905e3676, unchanged) and are spliced in via `prefill-instance.js --merge` after this file is written, per the dispatch's own mechanics — not re-derived here."
   ],
   "accept_notes_found": [
     "L15: Handoff-prompt forcing function, failure mode + escape hatch (`check_pedagogy.md` §47, added 2026-08-20) — used to PASS check_pedagogy §47.",
-    "L17: §6 carve-out, the answer must be theirs (checked 2026-08-20) — used to PASS check_lectures §6.",
-    "L19: Prompt block registry note (`agents-that-build-agents-handoff`) — context only, not load-bearing for any verdict here.",
-    "L22: Open for next pass — real-cohort live-test still owed (already tracked; see notes, not re-flagged as a new todo).",
-    "L24: `## The move widens to everything you do` cut whole (Antti 2026-09-02) — context only, not load-bearing for any verdict here.",
-    "L35-38: Stance block (`[stance:2026-09-02 level:L1]`) — no external contest logged; not load-bearing for a story verdict.",
-    "L43: OODA last-run 2026-09-02, no standing question — context only."
+    "L17: L9 stays as it is (Antti 2026-09-03) — NEW since the last audit. Declines adding the plan-instead-of-prompt tell to the body and directs judges not to re-file check_pedagogy §47 or check_student_facing §5 on L9. Honoured directly in the check_strategy_tie_in §1 mood row (fix_hint withheld) and the check_pedagogy §47 row.",
+    "L19: §6 carve-out, the answer must be theirs (checked 2026-08-20) — used to PASS check_lectures §6.",
+    "L21: Prompt block registry note (`agents-that-build-agents-handoff`) — context only.",
+    "L23-24: Open for next pass — real-cohort live-test still owed — known, tracked gap; not a story finding.",
+    "L26: `## The move widens to everything you do` cut whole (Antti 2026-09-02) — context only.",
+    "L37-40: Stance block (`[stance:2026-09-02 level:L1]`) — no external contest logged; not load-bearing for a story verdict.",
+    "L42-45: OODA block, last-run 2026-09-02, no standing question — context only.",
+    "L49-50: Quality stamp — pre-existing audit record; this run's own output supersedes its story line."
   ]
 }

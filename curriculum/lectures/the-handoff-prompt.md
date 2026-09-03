@@ -46,5 +46,5 @@ OODA
 
 <!-- /backing -->
 
-**Quality:** compendium-audited 2026-09-03 (writing@abe26752 story@abe26752 technical@abe26752 behavior@4e0370bc pedagogy@abe26752 strategy@4e0370bc slides@289b45a3)
-- judges @abe26752: writing PASS (1 todo see instances/ae101--lecture--the-handoff-prompt.writing.json), story PASS (1 todo see instances/ae101--lecture--the-handoff-prompt.story.json), technical PASS (1 todo see instances/ae101--lecture--the-handoff-prompt.technical.json), behavior PASS (1 todo see instances/ae101--lecture--the-handoff-prompt.behavior.json), pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-09-03 (writing@abe26752 story@abe26752 technical@abe26752 behavior@56076c47 pedagogy@abe26752 strategy@4e0370bc slides@289b45a3)
+- judges @56076c47: writing PASS (1 todo see instances/ae101--lecture--the-handoff-prompt.writing.json), story PASS (1 todo see instances/ae101--lecture--the-handoff-prompt.story.json), technical PASS (1 todo see instances/ae101--lecture--the-handoff-prompt.technical.json), behavior PASS (1 todo see instances/ae101--lecture--the-handoff-prompt.behavior.json), pedagogy PASS, strategy PASS, slides PASS

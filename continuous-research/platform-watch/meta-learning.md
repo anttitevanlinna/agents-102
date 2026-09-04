@@ -65,6 +65,12 @@ Proven patterns for how to research effectively. Promoted from observations when
 
 Each entry: cycle number, date, what the researcher learned about researching.
 
+### Cycle 205 — 2026-09-04
+
+Release notes are a faster and more reliable GA-confirmation method than search results for vendor product launches. ServiceNow IT Specialist GA status resolved in one fetch of servicenow.com/docs/r/release-notes — absence confirmed, no GA entry found — while eight rounds of web search had only returned the May 2026 announcement each time. For any "did product X ship?" question, fetch the vendor's release notes or changelog first, search results second; search will always surface the announcement, never the absence.
+
+Named-customer evidence in vertical SaaS consistently falls into two tiers: CS deployments accumulate vendor-attributed results quickly (Wiley, Engie, Heathrow, Reddit within 12 months of GA); non-CS and multi-agent deployments remain evidence deserts 12+ weeks after GA. The pattern is structural — CS is the first use case vendors send case-study teams to document, and non-CS adoption lags 6-12 months behind CS GA. For any vertical SaaS platform, the "does multi-agent orchestration actually work in production?" question is best answered by checking for named non-CS deployments 6+ months post-GA, not CS deployments at GA.
+
 ### Cycle 204 — 2026-09-03
 
 Vendor responses to disclosed vulnerabilities can bifurcate into a silent product patch and an unchanged public position simultaneously — and neither is visible from the other. Anthropic shipped v2.1.257 (Sep 1) adding a Containment Escape rule addressing the Rehberger attack surface, while maintaining the "working as designed" public stance with no security blog or CVE. A researcher checking only the public statements would miss the patch; a researcher checking only the changelog would miss that the public position is unchanged. For any security disclosure, track both the public communications surface (blog, CVE, advisory) AND the release changelog separately — they are independent signals that can diverge.

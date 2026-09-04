@@ -1,4 +1,4 @@
-# Read your stack
+# Read your stack, *draw what recurs*
 
 **Time:** 15 minutes.
 

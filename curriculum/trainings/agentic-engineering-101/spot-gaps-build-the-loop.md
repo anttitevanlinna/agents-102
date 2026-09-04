@@ -31,7 +31,7 @@ You walk in holding two sessions of the same task. The un-packaged Module 4 send
 
 [Composing the workflow](lectures/composing-the-workflow.md)
 
-[Read your stack](exercises/read-your-stack.md)
+[Read your stack, draw what recurs](exercises/read-your-stack.md)
 
 [Agents that build agents](lectures/the-handoff-prompt.md)
 
@@ -87,14 +87,14 @@ This slot is a human round: talk, compare, no prompts.
 | Artefact | Stable identifier | Produced by | Consumed by |
 |---|---|---|---|
 | Two-run gap map | Ranked gap list in M6 session scrollback; optionally copied to `observations/` if the student wants it durable | Exercise *Map the gaps, cut the rule* (diff un-packaged M4 vs packaged M5, quote both runs, rank dominant gap) | The same exercise's rule cut (reads the ranked list for the rule the diagnosis killed); future post-cohort team-kit conversation |
-| Recurring-work shapes | Repeated-work inventory + mermaid diagrams (≤30 nodes each) in M6 session scrollback | Exercise *Read your stack*: study prompt (scan `~/.claude/projects/` across the stack) + shapes prompt (draw the top recurring patterns) | The handoff lecture (`the-handoff-prompt.md`): the shapes carry into the handoff prompt |
+| Recurring-work shapes | Repeated-work inventory + mermaid diagrams (≤30 nodes each) in M6 session scrollback | Exercise *Read your stack, draw what recurs*: study prompt (scan `~/.claude/projects/` across the stack) + shapes prompt (draw the top recurring patterns) | The handoff lecture (`the-handoff-prompt.md`): the shapes carry into the handoff prompt |
 | Stale-rule deletion | `./CLAUDE.local.md` in the M5 worktree, with one rule cut in place if diagnosis killed it | Exercise *Map the gaps, cut the rule*, the rule-cut prompt | Every future session in the worktree; post-M6 merge-back decision into the original repo's personal rules |
 | Workflow-skills handoff prompt | Standalone prompt in the close scrollback; student saves it where they choose (repo note or `~/.claude/`) | The handoff lecture (`the-handoff-prompt.md`): the agent reads the recurring-work shapes and writes a cold-runnable prompt | The student's own later sessions: run cold to scan their stack, pick one skill with the agent and build it, then put checks on its work |
 
 **Failure modes + escape hatches per phase** (per `check_pedagogy.md` rule 47; one row per forcing function shipping in the exercise):
 - **Map the gaps: the diff.** Failure: both-runs collapse — student treats the packaged run as the only material worth diagnosing, the un-packaged baseline fades. Escape: trainer asks for quoted moments from each run separately before any synthesis.
 - **Map the gaps: the rule cut.** Failure: addition-only compounding — student only adds rules, never subtracts. Escape: forcing prompt names a specific rule the two-run diagnosis killed; if the student can't name one, the diagnosis wasn't sharp enough — back to the diff's quoted-moments check.
-- **Read your stack: the scan.** Failure: scan-sprawl — the study reads the whole stack and throws back a wall the student catalogues instead of ranks. Escape: the body steer (*read for the few at the top you actually repeat*) plus trainer push to the ranked head; depth is the student's call, not a mandate.
+- **Read your stack, draw what recurs: the scan.** Failure: scan-sprawl — the study reads the whole stack and throws back a wall the student catalogues instead of ranks. Escape: the body steer (*read for the few at the top you actually repeat*) plus trainer push to the ranked head; depth is the student's call, not a mandate.
 
 **Meta (trainer):**
 - **Primary Bloom's level:** Analyze + Evaluate + Create

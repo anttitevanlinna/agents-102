@@ -6,7 +6,7 @@ origin: exercises/author-security-skill
 requires:
   - id: working-tree-scaffold
     source: prompt:a101-prework-extract-tarball
-  - id: root-claude-md
+  - id: root-instructions
     source: prompt:a101-m2-debrief-claude-md
   - id: m3-agent-work
     source: artifact:m3-agent-work

@@ -4,13 +4,13 @@ dest: Claude Code
 runtime: any
 origin: agents-101/multi-agent-systems
 requires:
-  - id: root-claude-md
+  - id: root-instructions
     source: prompt:a101-m2-debrief-claude-md
   - id: m3-agent-work
     source: artifact:m3-agent-work
 produces:
-  - id: root-claude-md
-    location: ./CLAUDE.md (integrate in place)
+  - id: root-instructions
+    location: "./{{artifact:root-instructions}} (integrate in place)"
     note: sharpens division-of-work + handoff rules on the M2 file
 ---
 Start by reading the files. No plan or preamble.

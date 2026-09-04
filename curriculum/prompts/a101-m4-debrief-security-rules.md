@@ -4,14 +4,14 @@ dest: Claude Code
 runtime: any
 origin: agents-101/security
 requires:
-  - id: root-claude-md
+  - id: root-instructions
     source: prompt:a101-m2-debrief-claude-md
     conditional: m2-completed
   - id: security-reports
     source: prompt:audit-your-agent-3
 produces:
-  - id: root-claude-md
-    location: ./CLAUDE.md (Security operating rules section)
+  - id: root-instructions
+    location: "./{{artifact:root-instructions}} (Security operating rules section)"
     note: adds/sharpens 1-5 security rules in place
 ---
 Start by reading the files. No plan or preamble.

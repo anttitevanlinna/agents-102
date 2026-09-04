@@ -4,7 +4,7 @@ dest: Claude Code
 runtime: any
 origin: agents-101/output-quality
 requires:
-  - id: root-claude-md
+  - id: root-instructions
     source: prompt:a101-m2-debrief-claude-md
     conditional: m2-completed
   - id: m5-evidence-artifacts
@@ -12,8 +12,8 @@ requires:
   - id: groundedness-judge
     source: prompt:hallucination-bakeoff-8
 produces:
-  - id: root-claude-md
-    location: ./CLAUDE.md (Groundedness checks section)
+  - id: root-instructions
+    location: "./{{artifact:root-instructions}} (Groundedness checks section)"
     note: adds/sharpens 1-4 groundedness rules in place
 ---
 Start by reading the files. No plan or preamble.

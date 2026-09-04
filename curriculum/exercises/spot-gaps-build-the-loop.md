@@ -38,7 +38,7 @@ Ask Claude to cut the one rule the diagnosis killed.
 
 {{prompt:spot-gaps-build-the-loop-2}}
 
-## Say go, unless the cut spreads past the one rule
+## Approve, unless the cut spreads past the one rule
 
 - The agent may pause before editing `./CLAUDE.local.md`. A named config file looks risky to modify. If it asks, approve.
 - Push back if the diff touches more than the one rule you flagged. *"In place"* is loose wording, and the agent may rewrite more than the one stale rule. One rule cut, no more.

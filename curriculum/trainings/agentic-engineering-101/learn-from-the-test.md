@@ -51,7 +51,7 @@ Acting without full control is the job from here on. Build the check, send again
 
 [Exercise: Diagnose and re-send](exercises/diagnose-and-resend.md)
 
-> **Dense slides.** In the two closing lectures, the headings carry the claims; the bullets back them up. Follow the headings; pick the detail that interests you most.
+> **Dense slides.** In the closing lectures, the headings carry the claims; the bullets back them up. Follow the headings; pick the detail that interests you most.
 <!--tier:3-->
 
 [Lecture: What packaging is](lectures/what-packaging-is.md)

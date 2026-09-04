@@ -41,18 +41,15 @@ and points here for the underlying run.
 
 ## curriculum-evals/ — archived 2026-08-19
 
-Two dated AE101 eval reports. `check_writing §3` bans dated report filenames in tracked
-git (one latest report per scope, overwritten on rerun); the maintained standing reports
-are `curriculum/evals/arc-read.ae101.md`, `voice-hunt.ae101.md`, `eval-coverage.ae101.md`.
-
-| Old path | Now |
-|---|---|
-| `curriculum/evals/ae101-full-reeval-2026-07-12.md` | `docs/archive/curriculum-evals/ae101-full-reeval-2026-07-12.md` |
-| `curriculum/evals/ae101-fix-pass-2026-07-26.md` | `docs/archive/curriculum-evals/ae101-fix-pass-2026-07-26.md` |
+`check_writing §3` bans dated report filenames in tracked git — one latest report per
+scope, overwritten on rerun. The maintained standing reports are
+`curriculum/evals/arc-read.ae101.md`, `voice-hunt.ae101.md`, `eval-coverage.ae101.md`.
+The two dated AE101 eval reports that once sat here are gone; git carries them.
 
 Dated records elsewhere (eval instances, compounded entries, maintainer naming
-corrections) still cite the old paths with line numbers. Those are the record of what a
-judge saw, not pointers to follow, so they are left as written; this table is the redirect.
+corrections) cite those reports by path and line number. **Those citations are the record
+of what a judge saw, not pointers to follow** — do not chase them, and do not repair them.
+A verdict's evidence describes the file as it stood; rewriting it falsifies the record.
 
 ## evals-legacy/ — archived 2026-08-19
 

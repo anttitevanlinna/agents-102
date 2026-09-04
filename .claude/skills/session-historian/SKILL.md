@@ -28,7 +28,7 @@ Inspired by Every's `ce-session-historian` — stripped down for our single-harn
 
 Accept `$ARGUMENTS[0]` as a topic/keyword. Expand to 3–5 related search terms. Example:
 - Input: "AE101 delivery"
-- Expanded: AE101, delivery architecture, knowledge home, pre-engagement, cohort, Teacher Claude
+- Expanded: AE101, delivery architecture, knowledge home, cohort, Teacher Claude
 
 ### Step 2 — Search in priority order
 
@@ -55,7 +55,7 @@ For each source, return at most 3 excerpts. Reject:
 
 ### Durable decisions (compounded/project memories)
 - `memory/project_ae101_delivery_architecture.md` — the runtime split (Cowork for participants, Claude Code for synthesisers), pinned <date>
-- `memory/project_ae101_knowledge_home_contract.md` — pre-engagement contract, <date>
+- `memory/project_ae101_theory_layer.md` — spine + body + doctrine placement, <date>
 
 ### Corrections (self-review / compounded)
 - <date> — proposed X, Antti said Y — {one-line why}
@@ -65,7 +65,7 @@ For each source, return at most 3 excerpts. Reject:
 - <date> — comment: "participants don't understand the handoff between rooms"
 
 ### Suggestion
-Given the above, before proposing a new AE101 delivery shape, re-read the two durable decisions. The pre-engagement contract was the most recent decision; check whether your proposal honors it.
+Given the above, before proposing a new AE101 delivery shape, re-read the two durable decisions and check whether your proposal honours the most recent one.
 ```
 
 ### Step 5 — No-results case

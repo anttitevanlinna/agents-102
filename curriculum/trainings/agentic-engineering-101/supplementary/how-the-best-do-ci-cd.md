@@ -171,5 +171,5 @@ OODA
 
 **Declined at the 2026-09-03 polish pass:** headers 4 and 5 stay declarative (`check_student_facing.md` §17: the numbered move is the convention, the verb is not, and both headers carry their claim). Judges should not re-file.
 
-**Quality:** compendium-audited 2026-09-03 (writing@54577f39 story@54577f39 technical@54577f39 behavior@da65157 pedagogy@54577f39 strategy@da65157 slides@54577f39)
-- judges @54577f39: writing PASS (1 todo see instances/ae101--supplementary--how-the-best-do-ci-cd.writing.json), story PASS, technical PASS (3 todos see instances/ae101--supplementary--how-the-best-do-ci-cd.technical.json), behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-09-04 (writing@4589f1d5 story@54577f39 technical@4589f1d5 behavior@da65157 pedagogy@54577f39 strategy@da65157 slides@4589f1d5)
+- judges @4589f1d5: writing PASS (1 todo see instances/ae101--supplementary--how-the-best-do-ci-cd.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

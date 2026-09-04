@@ -168,8 +168,8 @@ header and handle per slide, never read bullets aloud. Two registers, one instru
 
 **Declined at the 2026-09-03 polish pass:** *mid-run* in `## Your mid-run worries hint at missing checks` is the un-packaged send-off read from outside, the `vocabulary.md` § The work carve-out, not the sitting (`check_student_facing.md` §21b); the done-done prompt's four points stay one sentence, Antti's own wording approved 2026-08-23 (`check_prompts.md` §36). Judges should not re-file either.
 
-**Quality:** sim-passed 2026-09-03 (writing@54577f39 story@54577f39 technical@191ea58f behavior@b55cd28b pedagogy@54577f39 strategy@191ea58f slides@54577f39)
-- judges @54577f39: writing PASS (3 todos see instances/ae101--module--learn-from-the-test.writing.json), story PASS (1 todo see instances/ae101--module--learn-from-the-test.story.json), technical PASS (2 todos see instances/ae101--module--learn-from-the-test.technical.json), behavior PASS, pedagogy PASS, strategy PASS (1 todo see instances/ae101--module--learn-from-the-test.strategy.json), slides PASS
+**Quality:** sim-passed 2026-09-04 (writing@4589f1d5 story@54577f39 technical@4589f1d5 behavior@b55cd28b pedagogy@54577f39 strategy@191ea58f slides@4589f1d5)
+- judges @4589f1d5: writing PASS (1 todo see instances/ae101--module--learn-from-the-test.writing.json), story PASS (1 todo see instances/ae101--module--learn-from-the-test.story.json), technical PASS (1 todo see instances/ae101--module--learn-from-the-test.technical.json), behavior PASS, pedagogy PASS, strategy PASS (1 todo see instances/ae101--module--learn-from-the-test.strategy.json), slides PASS
 - cross_module @54577f39: PASS — set=[run-the-first-experiment,learn-from-the-test,spot-gaps-build-the-loop]; 2 pairs, 0 blocking; see instances/ae101--module-set--m4-m5-m6.cross_module.json
 **Meta (trainer):**
 - **Primary Bloom's level:** Analyze + Evaluate + Create

@@ -58,8 +58,8 @@
 
 **Emphasis budget (Antti-directed "go very lightly on the bold"):** bold = handles only: **eval** on the Eval slide, **skill** on the footprint slide; *pilot* stays plain as the chart-to-field bridge; everything else plain, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`.
 
-**Quality:** compendium-audited 2026-09-03 (writing@54577f39 story@54577f39 technical@54577f39 behavior@1c765f2 pedagogy@54577f39 strategy@4e0370bc slides@54577f39)
-- judges @54577f39: writing PASS (1 todo see instances/ae101--lecture--composing-the-workflow.writing.json), story PASS (1 todo see instances/ae101--lecture--composing-the-workflow.story.json), technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-09-04 (writing@4589f1d5 story@4589f1d5 technical@54577f39 behavior@1c765f2 pedagogy@54577f39 strategy@4e0370bc slides@54577f39)
+- judges @4589f1d5: writing PASS (1 todo see instances/ae101--lecture--composing-the-workflow.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **Framing (5-framing / 3-judge panel, 2026-07-04):** *footprint follows the job*: a skill's footprint is wherever its job lands (one turning point, one leg, the whole trip), never sized in advance. One rule instead of a fixed per-feature mapping (the `fix = verifier` trap), and phases stay out of the chart spine (`leg = phase = skill` re-commits the fixed-mapping error one level up, and a linear chain cannot seat the loop). Load-bearing in chart and body: not every workflow has an orchestrator; the oxblood hand-off arrow, the Pocock sentence and the *many do not* clause inoculate against the orchestrator-always error.
 

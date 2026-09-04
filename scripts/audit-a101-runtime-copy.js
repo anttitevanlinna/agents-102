@@ -17,6 +17,7 @@ const RULES = Object.freeze([
   { regex: /\.claude\/skills/g, category: 'skill-path' },
   { regex: /Claude Code/g, category: 'runtime-name' },
   { regex: /Claude Desktop/g, category: 'runtime-name' },
+  { regex: /\b(?:Hey|Hi) Claude\b/g, category: 'runtime-name' },
   { regex: /AskUserQuestion/g, category: 'tool-name' },
   { regex: /\bsubagents?\b/gi, category: 'interaction-mechanic' },
   { regex: /Install Claude Code/g, category: 'interaction-mechanic' },

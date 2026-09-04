@@ -11,6 +11,7 @@ test('Codex copy audit classifies Claude-only paths, names, tools, and mechanics
     'Write CLAUDE.md.',
     'Install the package in .claude/skills/security-audit/.',
     'Open Claude Code and call AskUserQuestion.',
+    'Hey Claude — revise the page.',
     'Spawn a Claude-only subagent.',
   ].join('\n');
 
@@ -23,6 +24,7 @@ test('Codex copy audit classifies Claude-only paths, names, tools, and mechanics
       ['.claude/skills', 'skill-path'],
       ['Claude Code', 'runtime-name'],
       ['AskUserQuestion', 'tool-name'],
+      ['Hey Claude', 'runtime-name'],
       ['subagent', 'interaction-mechanic'],
     ]
   );

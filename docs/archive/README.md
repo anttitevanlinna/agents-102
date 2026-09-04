@@ -65,7 +65,7 @@ Twenty-nine megajudge audit reports from the eval system that predates the per-c
 (writing / story / technical). Superseded by the per-class JSON under
 `curriculum/evals/instances/`; kept to trace what each file had previously cleared.
 
-## curriculum-evals/ (scratch, tmux-runner) + module-design/ — archived 2026-08-19
+## curriculum-evals/ (scratch, tmux-runner) — archived 2026-08-19
 
 - `scratch/source-sweep-2026-05-25/`, `scratch/sim-precohort/` — completed sweep and
   simulation working files.
@@ -73,7 +73,6 @@ Twenty-nine megajudge audit reports from the eval system that predates the per-c
   no open items; the lead-in audit declares itself stale on its AE101 half.
 - `tmux-runner/FIX-PLAN`, `RESUME-a101-runner`, `SPECS-m4-m6`, `a101-runner-findings` —
   compaction handoffs and worklists for the Agents 101 runner build.
-- `module-design/ae101-m6-plan.md` — a live-state file for a run that finished.
 
 `scratch/buried-gold-proposals-2026-08-15.md` was not archived: its twenty-one adjudicated
 verdicts fold into `curriculum/trainings/agentic-engineering-101/pre-cohort-todos.md`

@@ -168,6 +168,8 @@ header and handle per slide, never read bullets aloud. Two registers, one instru
 
 **Declined at the 2026-09-03 polish pass:** *mid-run* in `## Your mid-run worries hint at missing checks` is the un-packaged send-off read from outside, the `vocabulary.md` § The work carve-out, not the sitting (`check_student_facing.md` §21b); the done-done prompt's four points stay one sentence, Antti's own wording approved 2026-08-23 (`check_prompts.md` §36); the same header stays declarative, since it names the worry that arms the beat and the action sits in the section's last line (`check_student_facing.md` §17). Judges should not re-file any of these.
 
+**No settings in body (Antti 2026-09-04, `check_student_facing.md` §32a):** the agent-team optional challenge names the feature and links the docs; the experimental flag is not printed. Judges should not re-file the missing switch.
+
 **Quality:** sim-passed 2026-09-04 (writing@4589f1d5 story@54577f39 technical@4589f1d5 behavior@b55cd28b pedagogy@54577f39 strategy@191ea58f slides@4589f1d5)
 - judges @4589f1d5: writing PASS (1 todo see instances/ae101--module--learn-from-the-test.writing.json), story PASS (1 todo see instances/ae101--module--learn-from-the-test.story.json), technical PASS (1 todo see instances/ae101--module--learn-from-the-test.technical.json), behavior PASS, pedagogy PASS, strategy PASS (1 todo see instances/ae101--module--learn-from-the-test.strategy.json), slides PASS
 - cross_module @54577f39: PASS — set=[run-the-first-experiment,learn-from-the-test,spot-gaps-build-the-loop]; 2 pairs, 0 blocking; see instances/ae101--module-set--m4-m5-m6.cross_module.json

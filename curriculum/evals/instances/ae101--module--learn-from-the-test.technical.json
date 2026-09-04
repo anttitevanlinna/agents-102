@@ -31,7 +31,12 @@
       "verdict": "REVISE",
       "evidence": "WebFetched both live during this review, both accurate: https://claude.com/blog/introducing-dynamic-workflows-in-claude-code confirms `ultracode` is \"accessible through the effort menu ... sets the effort level to xhigh, while letting Claude decide automatically when to use a workflow\" and warns it \"can consume substantially more tokens\" — matches line 100's \"Cap the budget, keep the task scoped.\" https://code.claude.com/docs/en/agent-teams confirms \"a lead\" + teammates that \"work independently\" and \"communicate directly with each other\" + a shared task list, matching lines 101-102, and the body already says \"experimental\" (matching the docs' own \"Agent teams are experimental and disabled by default\" warning) — so the capability claim is accurate and appropriately hedged. Harm check: the one gap is that the docs require setting `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1` before a team will spawn at all, and the body names neither the flag nor that it's off by default; a student who tries this optional challenge as written gets silent no-op, not a team. Real but small (optional-challenge-only, not core path), so not blocking.",
       "fix_hint": "Name the enable step, e.g. \"(set CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1 first — it's off by default)\" next to the agent-team challenge line.",
-      "blocking": false
+      "blocking": false,
+      "resolution": {
+        "settled": "refuted",
+        "at": "2026-09-04",
+        "note": "Antti 2026-09-04: no settings, flags or env vars in student body; the docs link is the pointer. Rule check_student_facing.md §32a."
+      }
     },
     {
       "compendium": "check_platform_and_boundaries.md",

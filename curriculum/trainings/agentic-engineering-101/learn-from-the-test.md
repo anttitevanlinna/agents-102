@@ -43,7 +43,7 @@ Somewhere during the un-packaged send-off a worry surfaced: did it touch the mig
 
 Test that worry against the return. Where the return bears it out, the worry names your first check. Where it doesn't, the artefact wins: it is first-hand data from the session itself, and the worry is not.
 
-Acting without full control is the job from here on. Build the check, send again. The checks pay twice: a session they steer is a session you don't babysit, and a session you don't babysit can run beside another.
+Acting without full control is the job from here on. Where a check would have settled the worry, that is the one worth building before you send again. The checks pay twice: a session they steer is a session you don't babysit, and a session you don't babysit can run beside another.
 
 [Lecture: Hooks always fire](lectures/hooks-always-fire.md)
 
@@ -166,7 +166,7 @@ describes the artifact and hands the attention decision to the student — do no
 scheduling ("come back later", "read them after"). Trainer sibling in `trainer-modules.md` M5 says land the
 header and handle per slide, never read bullets aloud. Two registers, one instruction; keep them in step.
 
-**Declined at the 2026-09-03 polish pass:** *mid-run* in `## Your mid-run worries hint at missing checks` is the un-packaged send-off read from outside, the `vocabulary.md` § The work carve-out, not the sitting (`check_student_facing.md` §21b); the done-done prompt's four points stay one sentence, Antti's own wording approved 2026-08-23 (`check_prompts.md` §36); the same header stays declarative, since it names the worry that arms the beat and the action sits in the section's last line (`check_student_facing.md` §17). Judges should not re-file any of these.
+**Declined at the 2026-09-03 polish pass:** *mid-run* in `## Your mid-run worries hint at missing checks` is the un-packaged send-off read from outside, the `vocabulary.md` § The work carve-out, not the sitting (`check_student_facing.md` §21b); the done-done prompt's four points stay one sentence, Antti's own wording approved 2026-08-23 (`check_prompts.md` §36); the same header stays declarative, since it names the worry that arms the beat and the section's close is suggestive, not a task (Antti 2026-09-04, `check_student_facing.md` §17). Judges should not re-file any of these.
 
 **No settings in body (Antti 2026-09-04, `check_student_facing.md` §32a):** the agent-team optional challenge names the feature and links the docs; the experimental flag is not printed. Judges should not re-file the missing switch.
 

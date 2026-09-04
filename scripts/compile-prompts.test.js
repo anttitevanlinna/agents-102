@@ -50,6 +50,23 @@ Write ./{{artifact:root-instructions}}.
   );
 });
 
+test('Agents 101 Module 2 debrief projects the root-instructions identity by runtime', () => {
+  const registry = compile.loadRegistry();
+  const prompt = registry['a101-m2-debrief-claude-md'];
+
+  assert.equal(prompt.produces[0].id, 'root-instructions');
+  assert.equal(prompt.runtimeVariants.cli.produces[0].location, './CLAUDE.md');
+  assert.equal(prompt.runtimeVariants['codex-cli'].produces[0].location, './AGENTS.md');
+  assert.match(
+    prompt.runtimeVariants.cli.text,
+    /write the first version of CLAUDE\.md at the training-directory root/
+  );
+  assert.match(
+    prompt.runtimeVariants['codex-cli'].text,
+    /write the first version of AGENTS\.md at the training-directory root/
+  );
+});
+
 test('capability blocks keep matching mechanics and remove non-matching mechanics', (t) => {
   const dir = promptDir({
     mechanics: `---

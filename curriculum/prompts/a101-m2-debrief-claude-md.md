@@ -9,15 +9,15 @@ requires:
   - id: working-tree-scaffold
     source: prompt:a101-prework-extract-tarball
 produces:
-  - id: root-claude-md
-    location: ./CLAUDE.md
+  - id: root-instructions
+    location: "./{{artifact:root-instructions}}"
     consumed-by:
       - prompt:a101-m3-debrief-handoff-rules
       - prompt:a101-m4-debrief-security-rules
       - prompt:a101-m5-debrief-groundedness-rules
       - module:agents-building-agents
 ---
-Review this session and write the first version of CLAUDE.md at the training-directory root. The evidence: ./challenge.md, every file in sources/ (scan titles + first lines), every file in memory/, and our conversation.
+Review this session and write the first version of {{artifact:root-instructions}} at the training-directory root. The evidence: ./challenge.md, every file in sources/ (scan titles + first lines), every file in memory/, and our conversation.
 
 The rules file governs how agents behave in this directory from now on — how memory gets compiled, how sources are treated, what claims require citations, what counts as "specific to my challenge" vs. generic. Don't invent — extract. Every rule you write should be traceable to a specific moment in the session where the rule either helped or would have helped.
 

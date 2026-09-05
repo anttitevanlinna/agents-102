@@ -66,11 +66,6 @@ if [[ -n "$prior" && $do_arrange -eq 1 ]]; then
   echo "[chain] --arrange with --from $from would move $prior's work out of $sut_cwd — start at prework to arrange" >&2; exit 2
 fi
 
-# User-scope skills: m4a installs security-audit into the operator's REAL
-# ~/.claude/skills/ (a scratch $HOME comes up "Not logged in" — keychain login
-# isn't inherited; FIX-PLAN H2-harness), so the run can't be isolated. The
-# chain guard snapshots the dir and restores it on any exit: a skill this run
-# created is removed, one that pre-existed is left as it was.
 source "$HERE/lib/chain.sh"
 chain_init "$HERE/out" "$chain_dir_arg" >/dev/null || exit 2
 echo "[chain] chain dir: $CLAUDE_RUNNER_CHAIN_DIR  (resume with --chain-dir this)"
@@ -83,9 +78,6 @@ if [[ "$runtime" == cli ]]; then
   source "$HERE/lib/tmux.sh"
   claude_cli_preflight "${CLAUDE_CMD:-claude --permission-mode auto}" || exit 2
 fi
-
-chain_guard_skills          # ~/.claude/skills restored to this snapshot on any exit (lib/chain.sh)
-
 if [[ $do_arrange -eq 1 ]]; then
   echo "[chain] arranging…"
   "$HERE/arrange-agents-101.sh" --cwd "$sut_cwd" --material "$material_dir"

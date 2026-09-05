@@ -4,7 +4,7 @@
 
 **Session** *(new, "Module 4 - Security skill")*
 
-<span class="rt-code">Start a new Claude Code session at your training-directory root.</span><span class="rt-cowork">Start a new Cowork task with your training-directory root as the working folder.</span>
+<span class="rt-code">Start a new agent session at your training-directory root.</span><span class="rt-cowork">Start a new Cowork task with your training-directory root as the working folder.</span>
 
 ```
 /rename m4-security-skill
@@ -12,7 +12,7 @@
 
 **What you do:**
 
-Run the policy files raw against the system you built in modules 2-3. Then package the useful move into reusable expertise: one personal skill with two lenses. Stop when the skill exists.
+Run the policy files raw against the system you built in modules 2-3. Then package the useful move into reusable expertise: one skill with two lenses. Stop when the skill exists.
 
 Three phases. The raw run proves the policy files are runnable. The package makes the check reusable. The loading and audit come next.
 
@@ -32,53 +32,43 @@ Read the first few rows. The raw run shows which rules can be checked from files
 
 *8 min*
 
-Now add judgment. Do not go study the policy files before this step. The reusable check is supposed to carry what matters in your system, not generic GDPR. The way to make that true is to lead with what is in your head, then let Claude read the files and the raw report.
+Now add judgment. Do not go study the policy files before this step. The reusable check is supposed to carry what matters in your system, not generic GDPR. The way to make that true is to lead with what is in your head, then let the agent read the files and the raw report.
 
-Tell Claude what matters about your company's policies and the agent system you built in modules 2-3. Three to five lines, your own voice.
+Tell the agent what matters about your company's policies and the agent system you built in modules 2-3. Three to five lines, your own voice.
 
 {{prompt:author-security-skill-2}}
 
-Claude asks. Type three to five lines. Specific. The kind of data your agent touches that would be a problem if it leaked. The rule your legal team cares about most. The customer your CEO would not want named in a transcript. The class of input you would not paste into a public model. Plain language; nothing rehearsed.
+The agent asks. Type three to five lines. Specific. The kind of data your agent touches that would be a problem if it leaked. The rule your legal team cares about most. The customer your CEO would not want named in a transcript. The class of input you would not paste into a public model. Plain language; nothing rehearsed.
 
-When you have typed your lines, Claude reads the raw report and `module-4/policies/`, then proposes the package shape. Read the proposal and push back on anything that sounds like a generic GDPR brochure rather than the agent system you actually built.
+When you have typed your lines, the agent reads the raw report and `module-4/policies/`, then proposes the package shape. Read the proposal and push back on anything that sounds like a generic GDPR brochure rather than the agent system you actually built.
 
 ## Phase 3: Author both lenses
 
 *22 min*
 
-The reusable check carries two lenses inside one personal skill. One lens checks company policy. One checks agent risk: what the agent can reach, what it might leak, what it might do because a prompt or source misled it. The authored source lives as a `SKILL.md` plus any reference files it needs.
+The reusable check carries two lenses inside one skill. One lens checks company policy. One checks agent risk: what the agent can reach, what it might leak, what it might do because a prompt or source misled it. The authored source lives as a `SKILL.md` plus any reference files it needs.
 
-Ask Claude to author both lenses, and to name the risk patterns the agent-security lens covers.
+Ask the agent to author both lenses, and to name the risk patterns the agent-security lens covers.
 
-You'll get a lot of questions. The grill is wide on purpose, Claude probes both lenses and won't stop at one round.
+You'll get a lot of questions. The grill is wide on purpose: the agent probes both lenses and won't stop at one round.
 
 {{prompt:author-security-skill-3}}
 
 ## Answer the grill, then sharpen the lenses
 
-Claude grills you first. Skim the questions. Answer what you can in one or two lines. When you've answered everything you have a view on, hand the rest back: *"You choose. Optimise for what I can't steer."* Then it saves the files. Before you leave the exercise, check the package-complete list Claude prints. Open the four named risk patterns: if any one is missing from the agent-security lens, ask for it. Sharpen the rule wording so it sounds like your company's policy, not a generic GDPR template. Push back until the report shape is narrow enough that you will actually read it on Monday. Iterate in place.
+The agent grills you first. Skim the questions. Answer what you can in one or two lines. When you've answered everything you have a view on, hand the rest back: *"You choose. Optimise for what I can't steer."* Then it saves the files. Before you leave the exercise, check the package-complete list the agent prints. Open the four named risk patterns: if any one is missing from the agent-security lens, ask for it. Sharpen the rule wording so it sounds like your company's policy, not a generic GDPR template. Push back until the report shape is narrow enough that you will actually read it on Monday. Iterate in place.
 
-## Save the authored source as a personal skill
+## Save the authored source as a skill
 
 Before you leave this exercise, save the authored source as a personal skill. The save mechanic differs by runtime.
 
-<div class="rt-cli">
+<div class="rt-code">
 
-Ask Claude to install the authored source.
+Ask the agent to install the authored source.
 
 {{prompt:author-security-skill-4}}
 
-Run `ls ~/.claude/skills/security-audit/` to confirm. The skill autoloads in your next session in this training directory.
-
-</div>
-
-<div class="rt-desktop">
-
-Ask Claude to install the authored source.
-
-{{prompt:author-security-skill-5}}
-
-The skill autoloads in your next session in this training directory.
+<span class="rt-claude">Run `ls .claude/skills/security-audit/` to confirm.</span><span class="rt-codex">Run `ls .agents/skills/security-audit/` to confirm.</span> The project skill loads in your next session in this training directory.
 
 </div>
 
@@ -94,13 +84,13 @@ Press Save when skill-creator surfaces it.
 
 </div>
 
-The personal skill autoloads when you start the next session for Exercise 2.
+The installed skill loads when you start the next session for Exercise 2.
 
 ## Take stock of the packaged check
 
 **What happened:**
 
-The reusable check exists now, with two lenses and four named risk patterns covered. You authored it on disk and saved it as a personal skill. Module 4's audit exercise loads it and runs it against the same system.
+The reusable check exists now, with two lenses and four named risk patterns covered. You authored it on disk and installed or saved it in your runtime's skill library. Module 4's audit exercise loads it and runs it against the same system.
 
 **The point:**
 

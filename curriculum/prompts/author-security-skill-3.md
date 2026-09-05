@@ -14,9 +14,11 @@ produces:
 ---
 Author the reusable security check now. Two lenses.
 
-Build one personal skill source under module-4/skills/security-audit/. The main file is SKILL.md. It contains both lenses: POLICY and AGENT-SECURITY. Add supporting reference files only where useful.
+Build one reusable skill source under module-4/skills/security-audit/. The main file is SKILL.md. It contains both lenses: POLICY and AGENT-SECURITY. Add supporting reference files only where useful.
 
-For CLI and Claude Code Desktop, also make the standalone-skill install shape clear: module-4/skills/security-audit/SKILL.md becomes ~/.claude/skills/security-audit/SKILL.md during install. Do not write into ~/.claude yet; keep the authored source under module-4/skills/security-audit/ for now.
+{{#capability:code}}
+Also make the project-skill install shape clear: module-4/skills/security-audit/SKILL.md becomes {{artifact:project-skills}}/security-audit/SKILL.md during install. Do not install it yet; keep the authored source under module-4/skills/security-audit/ for now.
+{{/capability:code}}
 
 Lens 1 - POLICY. Rules drawn from everything in module-4/policies/ plus the lines I just typed. For each rule, the lens produces one row in a report: rule name, one-line description, verdict (compliant / violating / "I can't tell"), one line of evidence from the target system. The verdict column stays plain - "I can't tell" is a real answer.
 

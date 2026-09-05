@@ -76,7 +76,6 @@ run_dir="$HERE/out/a101-$module-$run_id"
 sentinel_dir="$run_dir/sentinels"
 mkdir -p "$sentinel_dir"
 run_register "a101-$module" "$run_dir"           # .module for prune; chain pointer if chained
-runner_guard_skills "$run_dir"          # standalone: ~/.claude/skills restored in cleanup()
 
 standard_timeout="${CLAUDE_RUNNER_TIMEOUT:-1800}"
 
@@ -153,7 +152,6 @@ fi
 
 cleanup() {
   transport_close || true
-  runner_restore_skills
 }
 trap cleanup EXIT
 
@@ -377,8 +375,8 @@ assert_turn() {
       assert_scrollback_grep "m4a T3 pattern: supply-chain"   "$skill" 'supply[ -]chain' || return 1
       echo "[assert] PASS m4a T3: SKILL.md carries both lenses + all four named patterns" ;;
     m4a:4)
-      # Install lands in the selected runtime's project skill directory so the
-      # next session autoloads the packaged lens without changing user scope.
+      # Install lands in the selected runtime's project-skills directory, which
+      # persists in the training folder and loads in the next session.
       assert_file_exists "m4a T4 installed skill" "$sut_cwd/$PROJECT_SKILLS_REL/security-audit/SKILL.md" || return 1
       echo "[assert] PASS m4a T4: skill installed at $PROJECT_SKILLS_REL/security-audit/SKILL.md" ;;
 

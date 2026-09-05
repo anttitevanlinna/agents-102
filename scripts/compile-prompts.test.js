@@ -120,6 +120,28 @@ test('Agents 101 portable judge and reflection prompts do not address one provid
   }
 });
 
+test('Agents 101 security skill installs once at the selected project-skills path', () => {
+  const registry = compile.loadRegistry();
+  const author = registry['author-security-skill-3'];
+  const install = registry['author-security-skill-4'];
+
+  assert.match(author.runtimeVariants.cli.text, /\.claude\/skills\/security-audit\/SKILL\.md/);
+  assert.match(author.runtimeVariants['codex-cli'].text, /\.agents\/skills\/security-audit\/SKILL\.md/);
+  assert.doesNotMatch(author.runtimeVariants['codex-cli'].text, /Claude|~\/\.claude/);
+  assert.deepEqual(Object.keys(install.runtimeVariants), [
+    'desktop', 'cli', 'codex-desktop', 'codex-cli'
+  ]);
+  assert.equal(
+    install.runtimeVariants.cli.produces[0].location,
+    '.claude/skills/security-audit/SKILL.md'
+  );
+  assert.equal(
+    install.runtimeVariants['codex-cli'].produces[0].location,
+    '.agents/skills/security-audit/SKILL.md'
+  );
+  assert.equal(registry['author-security-skill-5'], undefined);
+});
+
 test('capability blocks keep matching mechanics and remove non-matching mechanics', (t) => {
   const dir = promptDir({
     mechanics: `---

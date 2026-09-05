@@ -6,8 +6,13 @@ CODEX_RUNNER_DIR="$(cd "$CODEX_TRANSPORT_DIR/.." && pwd)"
 source "$CODEX_RUNNER_DIR/lib/tmux.sh"
 source "$CODEX_RUNNER_DIR/lib/codex-home.sh"
 
-_codex_tui_completed_turns() {
+_codex_tui_state() {
   node "$CODEX_RUNNER_DIR/lib/codex-tui-events.js" "$CODEX_HOME" \
+    | node -e 'let s=""; process.stdin.on("data",d=>s+=d); process.stdin.on("end",()=>process.stdout.write(JSON.stringify(JSON.parse(s))));'
+}
+
+_codex_tui_completed_turns() {
+  _codex_tui_state \
     | node -e 'let s=""; process.stdin.on("data",d=>s+=d); process.stdin.on("end",()=>process.stdout.write(String(JSON.parse(s).completedTurns)));'
 }
 
@@ -62,13 +67,34 @@ codex_open() {
 
 codex_turn() {
   local prompt_file="$1" seq="$2" timeout="$3"
-  local before now started
+  local before now status error started state completion
+  local resends=0
+  local max_resends="${CODEX_RUNNER_MAX_RESENDS:-3}"
   before="$(_codex_tui_completed_turns)"
   pane_send_text "$CODEX_SESSION" "$(cat "$prompt_file")"
   started="$(date +%s)"
   while pane_alive "$CODEX_SESSION"; do
-    now="$(_codex_tui_completed_turns)"
+    state="$(_codex_tui_state)"
+    completion="$(node -e '
+      const state = JSON.parse(process.argv[1]);
+      const last = state.lastCompletion;
+      const status = last ? (last.ok ? "ok" : "error") : "pending";
+      process.stdout.write(`${state.completedTurns}\t${status}\t${last?.error || ""}`);
+    ' "$state")"
+    IFS=$'\t' read -r now status error <<< "$completion"
     if (( now > before )); then
+      if [[ "$status" == error ]]; then
+        pane_capture_safe "$CODEX_SESSION" "$CODEX_RUN_DIR/turn-$seq-attempt-$((resends + 1)).failed.txt" 10
+        if (( resends >= max_resends )); then
+          echo "codex_turn: failed after $resends resends: $error" >&2
+          return 3
+        fi
+        resends=$((resends + 1))
+        echo "codex_turn: auto-resend #$resends/$max_resends after failed task completion: $error" >&2
+        before="$now"
+        pane_send_text "$CODEX_SESSION" "$(cat "$prompt_file")"
+        continue
+      fi
       pane_capture "$CODEX_SESSION" "$CODEX_RUN_DIR/turn-$seq.transcript.txt"
       codex_capture_sessions
       return 0

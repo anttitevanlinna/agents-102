@@ -20,9 +20,6 @@ What comes back is a prompt, not a plan. Save it where you will find it.
 
 **Prompt block:** `agents-that-build-agents-handoff` — the agent reads the recurring-work shapes from the session and writes the student a standalone, cold-runnable prompt that scans their work, picks one skill with them and builds it, then puts efficient checks on the work that skill produces (one skill, not the kit, Antti 2026-09-03: a cold session asked for N skills from two starting points does not finish inside a three-minute beat; do not re-widen). Anchoring (2026-08-01): requires only `recurring-shape-diagrams` (the `-shapes` output), not a shipped skill — the registry entry is the authority on prerequisites.
 
-**Open for next pass:**
-- Real-cohort gold standard: the only handoff-generator live-test on record is sim-grade (constructed M6 context: six named shapes, a stand-in skill) and predates the shapes-only anchor. A live-test on an actual student's M6 close, their real shapes, is the real-cohort bar; owed until a cohort runs.
-
 **Declined at the 2026-09-03 polish pass:** the `check_prompts.md` §17 preamble row falls under the rule as narrowed to plan mode the same day; the strategy row carries no action; `check_prompts.md` §40b on *the recurring shapes* resolves in scrollback, since the shapes prompt itself says *the recurring groups you just named* and the diagrams sit in the same session. Judges should not re-file any of the three.
 
 **`## The move widens to everything you do` — cut whole (Antti 2026-09-02: nothing valuable enough; making room for the right content).** In git at `a4ccebe9`. Do not restore.
@@ -38,11 +35,11 @@ Frameworks
 
 Stance `[stance:2026-09-02 level:L1]`
 - holds: that a handoff prompt authored from the student's own session evidence is a candidate, not a plan. House position carried as a position.
-- contested: nothing external. The only open question is empirical and local: whether a real cohort's handoff comes back cold-runnable (see Open for next pass).
-- would-move-it: a real-cohort live-test on an actual student's close.
+- contested: nothing external.
+- would-move-it: a handoff written from session evidence that comes back as a plan, or not cold-runnable, in a student's own session.
 
 OODA
-- question: none standing beyond the real-cohort live-test.
+- question: none standing.
 - roster: none.
 - last-run: 2026-09-02
 

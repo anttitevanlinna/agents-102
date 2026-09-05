@@ -77,6 +77,15 @@ test('Agents 101 scheduled-agent styling updates the selected root instructions'
   assert.match(prompt.runtimeVariants['codex-cli'].text, /root AGENTS\.md/);
 });
 
+test('Agents 101 scheduled-agent run reads the selected root instructions', () => {
+  const registry = compile.loadRegistry();
+  const prompt = registry['personal-agent-homework-3'];
+
+  assert.ok(prompt.requires.some(({ id }) => id === 'root-instructions'));
+  assert.match(prompt.runtimeVariants.cli.text, /root CLAUDE\.md/);
+  assert.match(prompt.runtimeVariants['codex-cli'].text, /root AGENTS\.md/);
+});
+
 test('capability blocks keep matching mechanics and remove non-matching mechanics', (t) => {
   const dir = promptDir({
     mechanics: `---

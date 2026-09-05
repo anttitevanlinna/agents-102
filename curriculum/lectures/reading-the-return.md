@@ -46,7 +46,7 @@
 **Delivery mode:** In-room M5 opener, single wiring (`learn-from-the-test.md § Start here`; its Charge line is canonical — M4 has no Debrief, nothing made this prework, do not re-file it as prework). Body stays module-free.
 
 **Watch-fors (delivery):**
-- Don't pre-empt the three-pattern (reference / plan.md / verifier). The pre-read names failure modes, not fixes. Naming the fixes here collapses the M5 contrast.
+- Don't pre-empt the three-pattern (reference / plan.md / verifier). This opener names failure modes, not fixes. Naming the fixes here collapses the M5 contrast.
 - Don't drift to "best practices" register. This is a question to plant, not a checklist to deliver.
 
 **Philosophy callouts:** none. The question is the beat.

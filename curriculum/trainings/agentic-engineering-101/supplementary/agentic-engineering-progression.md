@@ -6,7 +6,7 @@ Agentic engineering is the discipline of progressively extending an engineer's r
 
 Six levels, from assistance to a system you keep improving. Each level holds until it exposes the constraint the next one removes: what moves an engineer up is not ambition, it is a limit met in real work.
 
-Fredrik Wollsén and Jesse McCrosky describe a similar team-scale movement in [The AI-Native Engineering Playbook: Crawl, Walk, Run, Fly](https://positivelyfred.substack.com/p/the-ai-native-engineering-playbook). Their labels differ. The recurring progression is from using the agent inside one task to engineering the conditions behind many tasks.
+In March 2026, Fredrik Wollsén and Jesse McCrosky described a similar team-scale movement in [The AI-Native Engineering Playbook: Crawl, Walk, Run, Fly](https://positivelyfred.substack.com/p/the-ai-native-engineering-playbook). Their labels differ. The recurring progression is from using the agent inside one task to engineering the conditions behind many tasks.
 
 ## Assistance
 

@@ -1,6 +1,6 @@
 # Multi-session and Git: survival guide
 
-Optional homework between M1 and M2. How to run more than one Claude Code session on the same codebase without the sessions wrecking each other's state.
+Optional homework between Module 1 and Module 2. How to run more than one Claude Code session on the same codebase without the sessions wrecking each other's state.
 
 You do not have to start here. Find your way to this over time. There is no rush.
 
@@ -39,7 +39,7 @@ The flow:
 1. `git worktree add -b bug/issue-412 ../repo-bug-fix`
 2. `git worktree add -b refactor/auth-module ../repo-refactor`
 3. `git worktree add -b feature/export-csv ../repo-feature`
-4. Open three Claude Code sessions, one per folder, one task each.
+4. Open a Claude Code session per folder, one task each.
 
 Each session has its own scrollback, its own working directory, its own branch. They do not see each other.
 
@@ -97,7 +97,7 @@ Two sessions is a milestone. Five is a habit. Ten is something you grow into.
 
 **Read time:** ~10 min.
 
-**Attribution:** Cherny frames parallel worktrees as "the single biggest productivity unlock" in his [Jan 2026 X thread](https://x.com/bcherny/status/2017742743125299476) [practitioner direct]. Separately, [Gergely Orosz on Boris Cherny, *Building Claude Code with Boris Cherny*](https://newsletter.pragmaticengineer.com/p/building-claude-code-with-boris-cherny) [practitioner analysis] — Cherny there describes running five parallel Claude Code instances across separate checkouts, corroborating parallel-session workflows generally, not the "productivity unlock" framing or the "worktrees" word.
+**Attribution:** Cherny frames parallel worktrees as "the single biggest productivity unlock" in his [Jan 2026 X thread](https://x.com/bcherny/status/2017742743125299476) [practitioner direct]. Separately, [Gergely Orosz on Boris Cherny, *Building Claude Code with Boris Cherny*](https://newsletter.pragmaticengineer.com/p/building-claude-code-with-boris-cherny), Mar 4 2026 [practitioner analysis] — Cherny there describes running five parallel Claude Code instances across separate checkouts, corroborating parallel-session workflows generally, not the "productivity unlock" framing or the "worktrees" word.
 
 **Attribution, item 4 of § When NOT:** the reads-parallelise / single-writer shape is Cognition's (Walden Yan, *Multi-Agents: What's Actually Working*); quotes, lineage and the dated stamp live in `supplementary/workflow-composition-lineages.md` § *Single writer with advisor agents*. The body carries the shape without the name: this page teaches the student's own session topology, not multi-agent architecture.
 

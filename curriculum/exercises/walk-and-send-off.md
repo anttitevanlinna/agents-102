@@ -37,7 +37,7 @@ Ask Claude to screen your candidates, scope the winner, and add them after the c
 
 *45 min*
 
-- **Gap analysis**: walk the system you have against the system the task needs. Claude reads `CLAUDE.md`, `CLAUDE.local.md`, memory, ADRs, and any skills you've authored, then ranks the five thin spots that will hurt it most on this task.
+- **Gap analysis**: walk the system you have against the system the task needs. The agent reads `CLAUDE.md`, `CLAUDE.local.md`, memory, ADRs, and any skills you've authored, then ranks the five thin spots that will hurt it most on this task.
 - Filling the worst few gaps is worth more than closing them all.
 - Heavy audit expected. Skim past the opening summary; the ranked list is the payoff. If it comes back thin, push Claude to keep digging; long and unranked, send it back for five, ranked.
 

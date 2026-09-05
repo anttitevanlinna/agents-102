@@ -23,6 +23,16 @@ assert_file_exists() {
   return 1
 }
 
+assert_dir_exists() {
+  local label="$1" path="$2"
+  if [[ -d "$path" ]]; then
+    echo "[assert] PASS $label: directory exists ($path)"
+    return 0
+  fi
+  echo "[assert] FAIL $label: directory missing ($path)" >&2
+  return 1
+}
+
 assert_run_notes_present() {
   # $1=label, $2=worktree root, $3=the run's return transcript.
   #

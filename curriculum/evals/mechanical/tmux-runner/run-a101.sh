@@ -554,7 +554,7 @@ assert_turn() {
       fi
       echo "[assert] PASS m6 T4: loop+debrief converge on generation-tactic.md (C11 closed), judge byte-identical end-to-end" ;;
     m6:5)
-      assert_file_exists "m6 T5 reusable loop folder" "$sut_cwd/module-6/reusable-loop" || return 1
+      assert_dir_exists "m6 T5 reusable loop folder" "$sut_cwd/module-6/reusable-loop" || return 1
       local reusable_rounds
       reusable_rounds="$(find "$sut_cwd/module-6/reusable-loop" -type d -name 'round-*' 2>/dev/null | wc -l | tr -d ' ')"
       [[ "$reusable_rounds" -ge 3 ]] || { echo "[assert] FAIL m6 T5: reusable loop has $reusable_rounds rounds (want >=3)" >&2; return 1; } ;;

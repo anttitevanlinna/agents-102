@@ -65,6 +65,12 @@ Proven patterns for how to research effectively. Promoted from observations when
 
 Each entry: cycle number, date, what the researcher learned about researching.
 
+### Cycle 206 — 2026-09-05
+
+When two ceiling numbers (3-4 cognitive vs 10 platform architectural) appear to contradict each other, the correct frame is complementary ceilings not competing claims — the platform ceiling sets the maximum; the cognitive ceiling sets the effective maximum. For any "how many X can one person manage?" question, separate the platform-infrastructure limit from the human-attention limit first, then ask which is binding. In this case: platform says 10, human review capacity says 3-4. The binding constraint is the human one; the 10-session cap will only matter to engineers who solve the review bottleneck via structured tooling or automation.
+
+Multi-release security layering (v2.1.257 behavioral → v2.1.259 formal rule → v2.1.260 symlink restriction) reveals that attributing a security response to a single release date is typically a snapshot error. Releasebot direct fetch across consecutive releases provides the full picture; single-version snapshots from prior cycles will always undercount the scope. For any "how did vendor X respond to disclosure Y?" question, fetch the changelog across the 5-7 days following disclosure, not just the first release day.
+
 ### Cycle 205 — 2026-09-04
 
 Release notes are a faster and more reliable GA-confirmation method than search results for vendor product launches. ServiceNow IT Specialist GA status resolved in one fetch of servicenow.com/docs/r/release-notes — absence confirmed, no GA entry found — while eight rounds of web search had only returned the May 2026 announcement each time. For any "did product X ship?" question, fetch the vendor's release notes or changelog first, search results second; search will always surface the announcement, never the absence.

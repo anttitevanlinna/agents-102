@@ -11,7 +11,7 @@ produces:
     location: module-1/site.html
     note: anti-branding and presentation revision in place
 ---
-Hey Claude — apply anti-branding (Adam Grant's energy audit version) to my personal site. I'll paste a list of things I hate about work right after this. For each:
+Apply anti-branding (Adam Grant's energy audit version) to my personal site. I'll paste a list of things I hate about work right after this. For each:
 1. Take the hate.
 2. Associate it with the offerings / colleague-types it implies (what kind of work, what kind of people produce this).
 3. Be the opposite — but always speak in the positive. Don't lead with "I don't do X"; lead with what I do instead.

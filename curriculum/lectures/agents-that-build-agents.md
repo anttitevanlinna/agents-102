@@ -47,7 +47,7 @@ The training closes.
 
 **Mood target:** practitioner fluency, the last mood the arc names; this lecture is its final beat and lands it as a runnable move, not a slogan. No second mood is named for the close. Watch for: drift toward autonomous-agent fantasy ("the agent writes its own next skill"). The opener slide is the carve-out: the agent runs on what you have expressed, and the line never goes away. If the mood reads triumphal or vendor-pitch-shaped, that slide got softened.
 
-**No convergence claim on the triad in this file.** M5's `what-packaging-is.md` introduces reference / plan / verifier as our combination; counted strictly, its stamps find one independent (Huntley's Ralph) against an L3 bar of 10–20. Nothing downstream of it may call the triad convergent. Do not restore the phrase.
+**No convergence claim on the triad in this file.** M5's `what-packaging-is.md` introduces reference / plan / verifier as our combination; counted strictly, its stamps find one independent (Huntley's Ralph) against an L3 bar of 10–20. Nothing downstream of it may call the triad convergent.
 
 **`## Ralph` cut whole (Antti 2026-09-02).** Huntley's loop, the coinage, `/goal`, *practitioners see levers first*, and the *next Ralph is yours* kicker: in git at `7d13d15e`. The Ralph re-feed shape stays taught where M5's verifier menu names it. Do not restore here.
 

@@ -19,7 +19,7 @@ Extract the starter tarball in the working folder. Use the shell:
 
   tar xzf agents-101-starter.tar.gz
 
-(Leave `agents-101-starter.tar.gz` behind; Cowork's sandbox can't always delete host-dropped files. Harmless.)
+(Leave `agents-101-starter.tar.gz` behind after extraction. It is harmless.)
 
 Then list what's in the working directory and confirm these folders exist:
 prework/, memory/, sources/, agents/, and module-4/policies/.

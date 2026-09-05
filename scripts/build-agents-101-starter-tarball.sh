@@ -40,9 +40,8 @@ ROOT="$STAGE/starter"
 mkdir -p "$ROOT"
 
 # Strip maintainer blocks: everything from `<!-- maintainer -->` to end-of-file.
-# Tarball-shipped .md files keep `{{prompt:<key>}}` markers verbatim — the
-# tarball ships curriculum/prompts/ alongside, and the self-study skill teaches
-# the agent how to resolve markers against that directory.
+# Tarball-shipped .md files keep `{{prompt:<key>}}` markers verbatim; matching
+# entries from curriculum/prompts/ ship alongside them.
 strip_maintainer() {
   local src="$1"
   local dst="$2"

@@ -2,17 +2,19 @@
   "class": "technical",
   "training": "ae101",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/composing-the-workflow.md",
-  "verdict": "PASS",
-  "body_sha": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
+  "verdict": "PASS_WITH_TODOS",
+  "body_sha": "7eeb18213b5189496cbe4d0186c84aa28c5d94a63b640cd9b4b04278f375e0b8",
   "shape_hash": "326c29788cefc702",
+  "pin": "54577f39",
+  "staleness_reason": "diff-region",
   "rules_evaluated": [
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": "2",
       "rule_lead": "Cloud/remote features carry Git dependency — out of scope for our training dir.",
       "verdict": "PASS",
-      "evidence": "L33 names `/schedule` for \"cloud-backed remote Routines\" as one of three ways to run a kit skill on a schedule, inside a T3 recognition-only slide (maintainer L98: \"opens the T3 tail... a check on cadence\"; Watch-for L101 confirms it stays one slide, not a mini-lecture). File has zero fenced prompts (view.json signals.has_prompt_blocks=false) so nothing asks the student to set up cloud/remote inside the training dir — stated as existing, not presented as a hands-on upgrade path.",
-      "fix_hint": "",
+      "evidence": "L33 names `/schedule` for \"cloud-backed remote Routines\" as one of three scheduling primitives, inside a T3 recognition-only slide (Watch-for L102-103: stays one slide, cut if it grows). No fenced prompt asks the student to actually wire a cloud/remote task inside the training dir (view.json signals.has_prompt_blocks=false) — the claim is descriptive recognition, never a hands-on upgrade step. Harm the rule guards (student stalled setting up Git-dependent cloud infra mid-exercise) is absent: nothing here is an exercise action.",
+      "fix_hint": null,
       "blocking": false
     },
     {
@@ -20,8 +22,8 @@
       "rule_index": "4",
       "rule_lead": "Verify capabilities BEFORE asserting, not after.",
       "verdict": "PASS",
-      "evidence": "L33's only platform-capability assertion (\"Claude Code ships three ways to do it: local routines... `/loop`... `/schedule`\") is backed by dated stamp `cc-scheduling-primitives [checked:2026-04-24 result:OK due:cohort]` (L122) and independently corroborated this session: this session's own available-skills roster (surfaced by the harness, not fetched from memory) lists a `loop` skill (\"Run a prompt or slash command on a recurring interval\") and a `schedule` skill (\"Create, update, list, or run scheduled cloud agents (routines)\") — both exist as named.",
-      "fix_hint": "",
+      "evidence": "L33's platform assertion (\"Claude Code ships three ways to do it: local routines [Routines sidebar]... `/loop`... `/schedule`...\") already carries a dated verification stamp `cc-scheduling-primitives [checked:2026-04-24 result:OK due:cohort]` (L126). I re-verified live this turn rather than trusting the stamp's age: WebFetch of https://code.claude.com/docs/en/scheduled-tasks (fetched 2026-09-05) states verbatim \"Claude Code offers three ways to schedule recurring or one-off work\" — Cloud (customizable via `/schedule` in the CLI), Desktop, and `/loop` — and WebFetch of https://code.claude.com/docs/en/desktop-scheduled-tasks confirms \"click Routines in the sidebar... then click New routine and choose Local,\" matching L33's \"local routines (from the Routines sidebar)\" wording exactly.",
+      "fix_hint": null,
       "blocking": false
     },
     {
@@ -29,8 +31,8 @@
       "rule_index": "5a",
       "rule_lead": "Live-test beats docs for runtime-behavior claims.",
       "verdict": "PASS",
-      "evidence": "The claim is feature-existence, not runtime-behavior (hook firing, precedence, auto-load path), which the rule itself says doc-derived answers are reliable for; live corroboration (this session's own skill listing, see rule 4 row) was still available and used rather than relying on the stamp alone.",
-      "fix_hint": "",
+      "evidence": "Claim is load-bearing (the lecture's whole cadence slide) and the check took under 5 minutes, so I ran it rather than trusting the 2026-04-24 stamp: two WebFetch calls this turn against code.claude.com/docs/en/scheduled-tasks and /desktop-scheduled-tasks (see rule 4's row for exact quotes) both confirm the three-primitive split, the `/schedule` and `/loop` command names, and the \"Routines sidebar → New routine → Local\" click-path L33 paraphrases. This is a positive confirmation, not a negative/absence claim, so no falsification risk per the rule's own corollary.",
+      "fix_hint": null,
       "blocking": false
     },
     {
@@ -38,8 +40,8 @@
       "rule_index": "6",
       "rule_lead": "Known correct Claude Code facts (easy to get wrong):",
       "verdict": "PASS",
-      "evidence": "L33 \"local routines (from the Routines sidebar) for standing work on your laptop, `/loop` for in-session repetition, `/schedule` for cloud-backed remote Routines\" matches the compendium's own canon (Local Desktop Routines sidebar / `/loop` in-session / remote Routines cloud-backed) with no overclaim — doesn't assert local Routines fire with the app closed, doesn't assert remote Routines skip plan gating. No other item from the rule's fact list (plan mode, MCP, subagents, turn streaming) is referenced in this file.",
-      "fix_hint": "",
+      "evidence": "Rule 6's canonical scheduling facts list FOUR mechanisms (Routines sidebar/Local, `/loop`, remote Routines, plus GitHub Actions cron — \"the last one is GitHub's primitive, not Anthropic's\"). L33 says \"Claude Code ships three ways\" and correctly omits GitHub Actions, which is exactly right per rule 6's own distinction (GitHub Actions isn't something \"Claude Code ships\"). No contradiction with rule 6's text found anywhere in the body.",
+      "fix_hint": null,
       "blocking": false
     },
     {
@@ -47,17 +49,18 @@
       "rule_index": "24a",
       "rule_lead": "Quality stamps: tooling writes them; the SHA pins committed content.",
       "verdict": "PASS",
-      "evidence": "L61 `**Quality:** compendium-audited 2026-09-03 (writing@289b45a3 story@289b45a3 technical@94fcca2d behavior@1c765f2 pedagogy@4e0370bc strategy@4e0370bc slides@289b45a3)` — clean anchor, nothing after the date parenthetical; `technical@94fcca2d` is exactly this dispatch's assigned pin.",
-      "fix_hint": "",
+      "evidence": "L63 Quality line is a clean anchor — `**Quality:** compendium-audited 2026-09-04 (writing@... technical@54577f39 ...)` — with no leftover narrative tail after the parenthetical, and `technical@54577f39` matches the pin this dispatch handed me, so the prior audit's pin and my diff-region baseline agree.",
+      "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": "35",
       "rule_lead": "`update-quality.sh` takes ALL classes in ONE invocation per file, and not until that file's last judge has returned.",
-      "verdict": "PASS",
-      "evidence": "`git diff 94fcca2d..HEAD -- curriculum/lectures/composing-the-workflow.md` shows the Quality block changed in one hunk: technical's pin moved 4e0370bc→94fcca2d and its judges-line note gained \"(1 todo see instances/...)\" while the other six classes' SHAs (writing@289b45a3 story@289b45a3 behavior@1c765f2 pedagogy@4e0370bc strategy@4e0370bc slides@289b45a3) and their verdict text carried forward unchanged in the same two-line write — one batched stamp, not a per-class fragment.",
-      "fix_hint": "",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "process rule about the orchestrator's stamping invocation order; not evaluable from a static read of this artefact, and no symptom of a strand (mismatched body_sha, orphaned pin) is present.",
+      "fix_hint": null,
       "blocking": false
     },
     {
@@ -65,8 +68,18 @@
       "rule_index": "38",
       "rule_lead": "Prose describing a runtime the room never executes drifts to plausible mechanism — no judge catches it, because no artefact contradicts it.",
       "verdict": "PASS",
-      "evidence": "Pinned diff (94fcca2d..HEAD) removed the prior REVISE-flagged clause entirely: the old L34 bullet (\"Rule-drift monitoring: a judge reads the root rules file against the recent commit log and names where the rules and the code disagree\", tripping the compendium's own worked bad example of the \"X against Y\" tell) is gone, replaced by L34 \"Left running, the loop squashes the recurring things. Add what each run taught to the kit, and the same loop starts cracking harder work.\" Checked the new line against all three tells: no \"X against Y\" mechanism, no lifecycle noun from an untouched stage, no unsourced cadence (no time interval named at all). Backing Claims L111 tags it `vision` with `← none-owed`, consistent with §7's vision/detail split — it reads as Antti's own framing (backing note: \"Antti's framing 2026-09-03; the compounding claim the module's frame already carries\"), not an invented mechanism claim.",
-      "fix_hint": "",
+      "evidence": "L33-34's forward-looking automation bullets (\"a skill from your kit is the thing the scheduled agent invokes\"; \"the same loop starts cracking harder work\") pass the three-tell check: no invented \"X against Y\" retrieval mechanism, no lifecycle noun borrowed from a stage this beat doesn't touch, and no unsourced cadence (no \"nightly\"/\"once a sprint\" number appears — the body deliberately stays generic, and maintainer L86 records that the latency/cadence axis was kept OFF the slides on purpose). L34's compounding claim is tagged `vision, none-owed` in the backing block (L113) per the §7 vision/detail split, not a detail claim needing KB backing.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": "51",
+      "rule_lead": "A two-file contradiction is not a defect until you have read the code that reconciles them.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no cross-file contradiction surfaced during this audit for this diagnostic to apply to.",
+      "fix_hint": null,
       "blocking": false
     },
     {
@@ -74,17 +87,17 @@
       "rule_index": "1",
       "rule_lead": "Source URL + type label — mandatory.",
       "verdict": "PASS",
-      "evidence": "Body region (L1-49) carries zero bracket-label citations (grep for `[practitioner|[vendor|[academic|[tech press|[general press|[survey|[analyst` → 0 hits, correctly scoped out per the rule's own maintainer-block-only carve-out). Backing Sources list (L121-125) carries proper labels on every entry: `[capability]`, `[delegated stamp]` ×2, `[practitioner direct, primary repo]`. Convergence-verb grep (`converg|practitioners say|entered the vocabulary|independently|the field (calls|names)`) over the body region → 0 hits (ran fresh this session).",
-      "fix_hint": "",
+      "evidence": "Body (L1-51) carries zero inline citations, labels or URLs (view.json greps: url body_hits=0) — correct per the rule's own scope carve-out (labels live in the maintainer/backing block, not body). All 4 sources under `Sources` (L126-129) carry a `[label]` + either a real URL or a `kb:none` delegated pointer: cc-scheduling-primitives `[capability]` + URL (live-checked above), skill-stacking-supp `[delegated stamp]`, pocock-skills-repo `[practitioner direct, primary repo]` + URL, lineages-supp `[delegated stamp]`. I sampled both real URLs live this turn (`curl -I`): code.claude.com/docs/en/ → HTTP 200; github.com/mattpocock/skills → HTTP 200. 2/2 sampled alive.",
+      "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_research_claims.md",
       "rule_index": "1a",
       "rule_lead": "OODA paraphrase ≠ primary source.",
-      "verdict": "PASS",
-      "evidence": "`pocock-skills-repo [checked:2026-09-02 result:OK due:cohort]` — checked the day before this Quality stamp, directly against the primary GitHub repo at pinned commit `6654f6b`, before the Pocock-figure claims (L21-23, L47) were transcribed; maintainer note L55 records the specific page read (`ask-matt/SKILL.md`) rather than a digest paraphrase.",
-      "fix_hint": "",
+      "verdict": "REVISE",
+      "evidence": "Verified the pocock-skills-repo citation against its actual primary source live this turn: fetched the exact commit (`git`-equivalent `curl` to the GitHub API confirmed `6654f6b60cd9d5be8b54c6fafe44346dabeb3b76`, dated 2026-08-24T14:19:57Z — matches L57's stated commit and date exactly) and read `skills/engineering/ask-matt/SKILL.md` at that ref directly. The main-flow chain (grill-with-docs → prototype detour via handoff → to-spec → to-tickets → implement, driving tdd/code-review), the two vocabulary skills, and ask-matt-as-router all match the source verbatim. One drift survives: the `pocock-skill-system` figure's aria-label (expanded view, L111 of `figures/pocock-skill-system.md`) states \"triage and diagnosing-bugs feed implement\" — true for triage (source: \"produces agent-ready issues, which /implement later picks up\") but not quite true for diagnosing-bugs, which fixes bugs itself in place and only sometimes hands off to /improve-codebase-architecture; the source never says it feeds /implement. Harm: a student reading the figure's alt text (not the body, which never makes this claim) comes away with a slightly wrong routing for one of four on-ramps. Non-blocking — this is a decorative aria-label on a figure-only slide the maintainer block explicitly says needs \"no trainer talk track\" (L57), not a tested body claim, and the fix (reword one clause) would not degrade anything.",
+      "fix_hint": "In `figures/pocock-skill-system.md`'s aria-label, split the on-ramp clause so diagnosing-bugs reads as resolving in place / occasionally routing to improve-codebase-architecture, rather than \"feeding implement\" the way triage does.",
       "blocking": false
     },
     {
@@ -92,8 +105,8 @@
       "rule_index": "2",
       "rule_lead": "Freshness rule — 6 months.",
       "verdict": "PASS",
-      "evidence": "Ran `bash curriculum/evals/scripts/source-freshness.sh --target 2026-09-03 curriculum/lectures/composing-the-workflow.md` this session → \"summary: 0 block · 2 warn · 1 info · 1 ok\". The two WARNs are routine `due:cohort` re-tests (cc-scheduling-primitives checked 2026-04-24, ~4.3mo old, still inside the 6-month window; pocock-skills-repo checked 2026-09-02, fresh), not stale/expired sources — zero BLOCK.",
-      "fix_hint": "",
+      "evidence": "Four sources in the Sources block: pocock-skills-repo checked 2026-09-02 (3 days old); cc-scheduling-primitives checked 2026-04-24, `due:cohort` (capability-claim unified scope per §11a, not the flat 6-month evidence clock, and I independently re-confirmed it live today per rule 4's row); skill-stacking-supp and lineages-supp are `due:none` delegated stamps (per the Stance block's decided line, L140: delegated stamps take due:none by design, the delegate file owns its own clock). No source exceeds the 6-month evidence window; no stale evidence used as if current.",
+      "fix_hint": null,
       "blocking": false
     },
     {
@@ -101,17 +114,18 @@
       "rule_index": "4",
       "rule_lead": "Hold short OODA loose.",
       "verdict": "PASS",
-      "evidence": "Stance block (L133) is explicitly stamped `level:L1`, not inflated to L3; the eval-naming contested note (L137-138) explicitly avoids a convergence claim for judge/verifier/gate (\"stated as a definition, not a survey\") rather than asserting a threshold it hasn't met.",
-      "fix_hint": "",
+      "evidence": "Body makes no numeric convergence claim at all (\"The field wires kits more ways than one; no way has won\", \"Some workflows have a pilot; many do not\" — L47 — both modest, uncounted). Backing block's Stance (L137) is explicitly pinned at `level:L1`, and the `contested` line (L139) states outright \"Nobody has enumerated composition mechanisms across kits... the body states no count and teaches the variety\" — the file self-limits to exactly what its evidence supports.",
+      "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_research_claims.md",
       "rule_index": "5",
       "rule_lead": "Resist prescriptive post-OODA phrasings.",
-      "verdict": "PASS",
-      "evidence": "Flagged L147 phrases the open research question tentatively (\"Does the Eval slide earn one bridging clause naming the field's words, or does that clutter the beat...\") rather than as a should-statement closing the option; maintainer decision notes elsewhere (L136, L138) record calls Antti already made, not a research subagent's prescriptive proposal to him.",
-      "fix_hint": "",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "governs OODA-to-maintainer conversational phrasing at synthesis time; no post-OODA prescriptive recommendation is embedded in this file's finished student-facing prose.",
+      "fix_hint": null,
       "blocking": false
     },
     {
@@ -119,8 +133,8 @@
       "rule_index": "7",
       "rule_lead": "Vision × Detail split.",
       "verdict": "PASS",
-      "evidence": "Every backing Claim (L106-119) is tagged `vision` or `detail`. All `vision`-tagged claims carry `← none-owed`. All `detail`-tagged claims carry a real KB pointer: `three-scheduling-primitives ← cc-scheduling-primitives`, `field-wires-more-ways-than-one`/`pocock-by-hand`/`klaassen-one-command-per-stage`/`many-kits-keep-zero-pilots ← lineages-supp` (+ `pocock-skills-repo`, `skill-stacking-supp` respectively). No detail claim is unbacked.",
-      "fix_hint": "",
+      "evidence": "Every Detail-tagged claim in the backing block's Claims list carries KB backing: `three-scheduling-primitives`←cc-scheduling-primitives, `field-wires-more-ways-than-one`←lineages-supp, `pocock-by-hand`←lineages-supp+pocock-skills-repo, `klaassen-one-command-per-stage`←lineages-supp, `many-kits-keep-zero-pilots`←skill-stacking-supp+lineages-supp. Every Vision-tagged claim (eval-is-a-measurement, skill-is-a-named-move, the four new workflow-definition claims added this diff, etc.) is marked `none-owed`, consistent with the rule's \"Vision layer = Antti's framing, no KB backing needed.\"",
+      "fix_hint": null,
       "blocking": false
     },
     {
@@ -128,8 +142,8 @@
       "rule_index": "10",
       "rule_lead": "No \"What research says\" callout boxes.",
       "verdict": "PASS",
-      "evidence": "`grep -in 'research says\\|what research' curriculum/lectures/composing-the-workflow.md` → 0 hits (ran fresh this session). Body reads in plain builder voice throughout; all citation apparatus lives below `<!-- maintainer -->`/`<!-- backing -->`.",
-      "fix_hint": "",
+      "evidence": "No boxed research callout anywhere in the body. Practitioner mentions (\"Pocock ships a public kit with no orchestrator... Klaassen ships one slash command per stage...\", L47) are plain inline sentences in builder voice, not a consultancy-deck box.",
+      "fix_hint": null,
       "blocking": false
     },
     {
@@ -137,8 +151,8 @@
       "rule_index": "11",
       "rule_lead": "Source-verification maintainer block on any student-facing file with practitioner citations.",
       "verdict": "PASS",
-      "evidence": "File carries practitioner citations (Pocock, named + pinned-commit URL; Klaassen, named + delegated URL via lineages-supp). No literal \"Source verification — MUST DO\" heading (`grep -n \"Source verification\"` → 0 hits), but `curriculum/backing-format.md` L17 states the `<!-- backing -->` block \"Absorbs and replaces... `**Source verification …**` — do not keep a second copy\"; this file carries a full backing region (Claims/Sources/Frameworks/Stance/OODA/Flagged) in its place. Ran `node scripts/validate-backing.js curriculum/lectures/composing-the-workflow.md` fresh this session → \"summary: 0 error · 0 warn · 10 info\" (the 10 INFO rows are corpus-wide theory-plan.md law-unreached notices naming other files, none naming this one).",
-      "fix_hint": "",
+      "evidence": "Body cites named practitioners (Pocock, Klaassen, L47) with load-bearing specifics. The file doesn't carry the older literal \"**Source verification — MUST DO before first cohort:**\" header, but implements the newer, stricter mechanism that supersedes it: a `Sources` ledger (L125-129) inside `<!-- backing -->` with a per-source `[checked:... result:... due:...]` stamp for every citation (exactly rule 11a's grammar). Both practitioner sources are stamped and current: pocock-skills-repo checked 2026-09-02 result:OK, and Klaassen's claim delegates to `workflow-composition-lineages.md` (checked 2026-08-01, its own per-source stamps). The harm the rule guards against — an unverified practitioner number reaching a cohort — is absent.",
+      "fix_hint": null,
       "blocking": false
     },
     {
@@ -146,8 +160,8 @@
       "rule_index": "13",
       "rule_lead": "Inference beyond source — absence licenses only absence.",
       "verdict": "PASS",
-      "evidence": "Flagged L148: \"No source anywhere assembles the three into a taxonomy... → no body change owed; this is the evidence the 2026-08-01 decision was right\" states the absence and draws only the licensed conclusion (a prior decision stands), not a further unsourced claim about cause or remedy.",
-      "fix_hint": "",
+      "evidence": "Backing block's Flagged entry (L152) states the absence finding exactly at its evidence's ceiling: \"No source anywhere assembles the three into a taxonomy... → no body change owed; this is the evidence the 2026-08-01 decision was right\" — names what's absent, draws no further inference about why or what would surface it. Body itself contains no absence-based claim.",
+      "fix_hint": null,
       "blocking": false
     },
     {
@@ -155,8 +169,29 @@
       "rule_index": "15",
       "rule_lead": "A word-presence claim needs an unprimed read.",
       "verdict": "PASS",
-      "evidence": "Flagged L147's vocabulary sweep reports a mixed result across six named practitioners/vendors — *judge* shared, *verifier* absent (replaced by four different field terms), *gate* weak (one vendor only) — both presence and absence findings across the same roster; priming inflates presence only, never absence, so the absence findings (verifier, gate) are trustworthy on the rule's own asymmetry regardless of fetch framing.",
-      "fix_hint": "",
+      "evidence": "Flagged L151's headline finding is negative (\"*Verifier* is attested nowhere in that sense\"), which the rule's own asymmetry exempts from the priming concern (\"priming inflates presence, never absence... a primed fetch reporting the word does not appear is trustworthy\"). The finding is built from a genuine per-practitioner sweep (Husain, Shankar, Yan, Willison, Braintrust, LangSmith each named with their own vocabulary — code-based eval, assertion, grader, scorer, code evaluator) rather than a single leading yes/no answer, which is the shape an unprimed survey takes.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": null,
+      "judge_owned": true,
+      "rule_lead": "Technical-class surface 3: skill availability — every `[Skill: <name>]` reference must resolve to an installed skill.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no `[Skill: <name>]` bracket reference anywhere in the file; the body uses \"skill\" as a defined concept (L41: \"A skill is a named move you reach for\"), never as a bracketed invocation.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": null,
+      "judge_owned": true,
+      "rule_lead": "Technical-class surface 5: URL liveness — sample 3-5 URLs from the file.",
+      "verdict": "PASS",
+      "evidence": "Body has zero URLs (view.json greps: url body_hits=0). The maintainer/backing block carries exactly 2 real URLs to sample (2 delegated stamps use `kb:none`, not a URL): `curl -I --max-time 15 https://code.claude.com/docs/en/` → HTTP 200; `curl -I --max-time 15 https://github.com/mattpocock/skills` → HTTP 200. 2/2 sampled alive (fewer than 3-5 exist in this file, so all available were sampled).",
+      "fix_hint": null,
       "blocking": false
     },
     {
@@ -167,7 +202,9 @@
       "evidence": null,
       "na_reason": "file has zero fenced prompt blocks (view.json signals.has_prompt_blocks=false, fence_ranges=[]) — no take-home prompt exists to bound",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
+      "carried_shape": "326c29788cefc702"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -177,7 +214,7 @@
       "evidence": "no claude.ai reference anywhere in body (grep clean); not an exercise, no Claude.ai-only feature leaned on",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -188,7 +225,7 @@
       "evidence": "no skill/prompt/agent file is forked or installed from Pocock's or Dino's kit into this repo; the figures analytically redraw/cite them with URL + pinned commit hash (`mattpocock/skills @ 6654f6b`) — citation and diagramming, not raw import for our own use",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -199,7 +236,7 @@
       "evidence": "no verification-instrument claim about THIS file's content correctness appears in body or maintainer block; the one checked-annotation present (\"checked by headless-Chrome screenshot\", L67) is figure-rendering QA (label legibility/size), not a content-correctness proxy this rule targets",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -210,7 +247,7 @@
       "evidence": "re-read at current wording (rule.js prompts 17, narrowed 2026-09-03 to plan-mode fenced prompts only): the whole file carries zero prompt fences (`view.json` signals.has_prompt_blocks=false, fence_ranges=[]) — §17 fires only on an actual fenced prompt (plan-mode or otherwise) and none exists here, so the narrowing changes nothing for this file",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -221,7 +258,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -232,7 +269,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -243,7 +280,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -254,7 +291,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -265,7 +302,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -276,7 +313,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -287,7 +324,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -298,7 +335,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -309,7 +346,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -320,7 +357,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -331,7 +368,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -342,7 +379,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -353,7 +390,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -364,7 +401,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -375,7 +412,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -386,7 +423,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -397,7 +434,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -408,7 +445,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -419,7 +456,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -430,7 +467,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -441,7 +478,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -452,7 +489,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -463,7 +500,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -474,7 +511,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -485,7 +522,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -496,7 +533,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -507,7 +544,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -518,7 +555,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -529,7 +566,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -540,7 +577,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -551,7 +588,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -562,7 +599,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -573,7 +610,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -584,7 +621,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -595,7 +632,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -606,7 +643,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -617,7 +654,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -628,7 +665,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -639,7 +676,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -650,7 +687,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -661,7 +698,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -672,7 +709,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -683,7 +720,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -694,7 +731,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -705,7 +742,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -716,7 +753,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -727,7 +764,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -738,7 +775,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -749,7 +786,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -760,7 +797,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -771,7 +808,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -782,7 +819,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -793,7 +830,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -804,7 +841,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -815,7 +852,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -826,7 +863,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -837,7 +874,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -848,7 +885,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -859,7 +896,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -870,7 +907,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -881,7 +918,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -892,7 +929,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -903,7 +940,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -914,7 +951,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -925,7 +962,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -936,7 +973,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -947,7 +984,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -958,7 +995,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -969,7 +1006,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -980,7 +1017,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -991,7 +1028,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1002,7 +1039,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1013,7 +1050,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1024,7 +1061,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1035,7 +1072,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1046,7 +1083,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1057,7 +1094,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1068,7 +1105,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1079,7 +1116,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1090,7 +1127,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1101,7 +1138,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1112,7 +1149,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1123,7 +1160,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1134,7 +1171,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1145,7 +1182,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1156,7 +1193,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1167,7 +1204,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1178,7 +1215,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1189,7 +1226,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1200,7 +1237,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1211,7 +1248,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1222,7 +1259,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1233,7 +1270,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1244,7 +1281,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1255,7 +1292,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1266,7 +1303,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1277,7 +1314,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1288,7 +1325,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1299,7 +1336,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1310,7 +1347,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1321,7 +1358,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1332,7 +1369,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1343,7 +1380,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1354,7 +1391,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1365,7 +1402,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1376,7 +1413,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1387,7 +1424,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1398,7 +1435,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1409,7 +1446,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1420,7 +1457,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1431,7 +1468,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1442,7 +1479,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1453,7 +1490,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1464,7 +1501,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1475,7 +1512,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1486,7 +1523,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     },
     {
@@ -1497,11 +1534,11 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "291024f446fa8b6a9ef6bb387f7edaa3d12695dc9386a5264d8de15c9abcf1fd",
+      "carried_from": "7994b8ccf53e73fa08c0a916d344e9002f3858c2357b3552b04127866a00cc6a",
       "carried_shape": "326c29788cefc702"
     }
   ],
-  "todos_count": 0,
+  "todos_count": 1,
   "blocking_findings_count": 0,
-  "notes": "check_pedagogy.md technical-owned sub-rules (16, 22, 23, 36, 37 per template) are absent from the derived class brief — already resolved and parked in the prefill sidecar (this file has no prompts, so forcing-function/verification-machinery/context-tier items are N/A by shape); no row written for them here per dispatch-preamble mechanics, merged in below."
+  "notes": "check_pedagogy technical sub-rules owned by this class (16, 22, 23, 36, 37) are all already resolved N/A by shape hash and parked in the prefill sidecar (verified directly: `prefill-instance.js ... --write` sidecar shows all 5 as verdict N/A) — zero rows written here for them per the template's explicit narrower scope (\"evaluate only items 16, 22, 23, 36, 37; the pedagogy judge is primary owner of the rest\"), even though derive-class-brief.js mechanically included the other 57 check_pedagogy.md rules as not-yet-resolved; those 57 are out of this class's lane and were not evaluated. check_prompts.md: 0 rules owed (file has no fenced prompt blocks; all 49 rules resolved N/A by shape hash, parked)."
 }

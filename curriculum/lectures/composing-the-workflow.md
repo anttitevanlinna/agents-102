@@ -45,7 +45,9 @@
 <!--tier:3-->
 
 - The field wires kits more ways than one; no way has won. Pocock ships a public kit with no orchestrator: you call each skill by hand. Klaassen ships one slash command per stage, and the last one writes the lesson to disk for the next agent. Some workflows have a pilot; many do not.
-- A workflow is not only steps in order. At a seam, a check or stop condition decides whether the next step may begin.
+- A **workflow** is skills composed around one task.
+- Each skill carries the best instructions for its one step, and nothing else's.
+- Which skills are in, and in what order, is composed per task and recomposed when the task changes.
 - Your job moves from reading every intermediate output to designing the checks, routes, and exceptions that deserve your judgment.
 
 <!-- maintainer -->
@@ -56,7 +58,7 @@
 
 **Lean pass (2026-08-25):** cut *"Same passage, same drift, same fixes and guardrails."* from the footprint slide; the figure shows it. Do not restore.
 
-**Emphasis budget (Antti-directed "go very lightly on the bold"):** bold = handles only: **eval** on the Eval slide, **skill** on the footprint slide; *pilot* stays plain as the chart-to-field bridge; everything else plain, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`.
+**Emphasis budget (Antti-directed "go very lightly on the bold"):** bold = handles only: **eval** on the Eval slide, **skill** on the footprint slide, **workflow** on the skills-to-workflow slide; *pilot* stays plain as the chart-to-field bridge; everything else plain, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`.
 
 **Quality:** compendium-audited 2026-09-04 (writing@4589f1d5 story@4589f1d5 technical@54577f39 behavior@1c765f2 pedagogy@54577f39 strategy@4e0370bc slides@54577f39)
 - judges @4589f1d5: writing PASS (1 todo see instances/ae101--lecture--composing-the-workflow.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
@@ -115,7 +117,9 @@ Claims
 - `pocock-by-hand` · detail · "Pocock ships a public kit with no orchestrator: you call each skill by hand." ← lineages-supp, pocock-skills-repo
 - `klaassen-one-command-per-stage` · detail · "Klaassen ships one slash command per stage, and the last one writes the lesson to disk for the next agent." ← lineages-supp
 - `many-kits-keep-zero-pilots` · detail · "Some workflows have a pilot; many do not." ← skill-stacking-supp, lineages-supp
-- `seam-check-decides-whether-next-step-begins` · vision · "At a seam, a check or stop condition decides whether the next step may begin." ← none-owed
+- `workflow-is-skills-composed-around-one-task` · vision · "A **workflow** is skills composed around one task." ← none-owed — Antti's definition 2026-09-05: composition and per-step instructions, checks are not part of it
+- `skill-carries-instructions-for-its-one-step` · vision · "Each skill carries the best instructions for its one step, and nothing else's." ← none-owed
+- `composition-per-task-recomposed` · vision · "Which skills are in, and in what order, is composed per task and recomposed when the task changes." ← none-owed
 - `workflow-designer-owns-checks-routes-exceptions` · vision · "Your job moves from reading every intermediate output to designing the checks, routes, and exceptions that deserve your judgment." ← none-owed
 
 Sources

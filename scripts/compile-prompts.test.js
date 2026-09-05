@@ -120,6 +120,19 @@ test('Agents 101 portable judge and reflection prompts do not address one provid
   }
 });
 
+test('Agents 101 reusable eval loop gives every round a durable artifact boundary', () => {
+  const registry = compile.loadRegistry();
+  const prompt = registry['eval-loop-6'];
+
+  for (const profile of ['cli', 'codex-cli']) {
+    const text = prompt.runtimeVariants[profile].text;
+    assert.match(text, /`generation-tactic\.md`/);
+    assert.match(text, /`round-1\/`, `round-2\/`, `round-3\/`/);
+    assert.match(text, /`judgment\.md` inside the current round folder/);
+    assert.match(text, /`notes\.md` in the working folder/);
+  }
+});
+
 test('Agents 101 security skill installs once at the selected project-skills path', () => {
   const registry = compile.loadRegistry();
   const author = registry['author-security-skill-3'];

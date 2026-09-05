@@ -50,30 +50,6 @@ for m in "${modules[@]}"; do
 done
 [[ ${#selected[@]} -gt 0 ]] || { echo "empty module range ($from..$to)" >&2; exit 2; }
 
-# H2-harness: m4a installs a skill into the operator's REAL ~/.claude/skills/.
-# Auth can't be isolated to a scratch $HOME on this setup — a fresh HOME comes up
-# "Not logged in" (keychain login isn't inherited; see FIX-PLAN H2-harness).
-# Maintainer's call: don't isolate, clean up post-run. Snapshot pre-existence now
-# so the trap removes ONLY a skill THIS run created, never an operator skill that
-# happens to share the name. The trap fires on any exit, incl. a failed module.
-H2_SKILL_DIR="$HOME/.claude/skills/security-audit"
-h2_runs_m4a=0
-for m in "${selected[@]}"; do [[ "$m" == "m4a" ]] && h2_runs_m4a=1; done
-h2_skill_preexisted=0
-[[ -e "$H2_SKILL_DIR" ]] && h2_skill_preexisted=1
-h2_cleanup() {
-  [[ $h2_runs_m4a -eq 1 ]] || return 0
-  if [[ $h2_skill_preexisted -eq 1 ]]; then
-    echo "[chain] H2: left $H2_SKILL_DIR in place — it pre-existed this run, not ours to remove." >&2
-    return 0
-  fi
-  if [[ -e "$H2_SKILL_DIR" ]]; then
-    rm -rf "$H2_SKILL_DIR"
-    echo "[chain] H2: removed runner-installed $H2_SKILL_DIR — operator skills dir left clean." >&2
-  fi
-}
-trap h2_cleanup EXIT
-
 if [[ $do_arrange -eq 1 ]]; then
   echo "[chain] arranging…"
   "$HERE/arrange-agents-101.sh" --cwd "$sut_cwd" --material "$material_dir"

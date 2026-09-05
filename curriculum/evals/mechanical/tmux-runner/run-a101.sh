@@ -373,11 +373,8 @@ assert_turn() {
       assert_scrollback_grep "m4a T3 pattern: supply-chain"   "$skill" 'supply[ -]chain' || return 1
       echo "[assert] PASS m4a T3: SKILL.md carries both lenses + all four named patterns" ;;
     m4a:4)
-      # Install lands in the OPERATOR's ~/.claude/skills — required so m4b
-      # autoloads the packaged lens. $HOME can't be isolated on this setup (a
-      # scratch HOME isn't logged in), so the chain removes this skill post-run
-      # via a pre-existence-guarded trap (H2). Standalone m4a runs leak it until
-      # the next chain run — clean up by hand if you ran m4a alone.
+      # Install lands in the selected runtime's project-skills directory, which
+      # persists in the training folder and loads in m4b's fresh session.
       assert_file_exists "m4a T4 installed skill" "$sut_cwd/$PROJECT_SKILLS_REL/security-audit/SKILL.md" || return 1
       echo "[assert] PASS m4a T4: skill installed at $PROJECT_SKILLS_REL/security-audit/SKILL.md" ;;
 

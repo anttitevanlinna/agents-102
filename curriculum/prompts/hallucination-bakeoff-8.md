@@ -21,6 +21,6 @@ Take the winning detector (or the ensemble) from module-5/scoreboard.md. Rewrite
 3. Return a short structured list — claim flagged, category, one-line reasoning.
 4. Not classify claims I didn't ask about. Stay narrow. A judge that tries to do everything does nothing well.
 
-Write the judge as a markdown file to judges/groundedness-judge.md — a short heading, one paragraph describing what it checks and why, then the prompt itself (the thing I'd paste at Claude to run the judge). Keep the judge prompt under 20 lines. Prompts that sprawl get ignored.
+Write the judge as a markdown file to judges/groundedness-judge.md — a short heading, one paragraph describing what it checks and why, then the prompt itself (the thing I'd paste into the agent to run the judge). Keep the judge prompt under 20 lines. Prompts that sprawl get ignored.
 
 At the end of the file, add a one-line "Known limit:" — the failure mode this judge doesn't catch, based on what lost the benchmark.

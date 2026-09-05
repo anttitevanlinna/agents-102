@@ -8,13 +8,15 @@ requires:
     source: artifact:installed-security-skill
   - id: policy-report-raw
     source: prompt:author-security-skill-1
+  - id: root-instructions
+    source: prompt:a101-m2-debrief-claude-md
 produces:
   - id: policy-report
     location: outputs/policy-report.md
 ---
 /security-audit — load the skill
 
-Apply the policy lens to the agent system: the memory in memory/, the sources in sources/, the agent files in agents/, the root CLAUDE.md, and the multi-agent runs in module-3/stances/.
+Apply the policy lens to the agent system: the memory in memory/, the sources in sources/, the agent files in agents/, the root {{artifact:root-instructions}}, and the multi-agent runs in module-3/stances/.
 
 For each rule the policy lens carries, produce one row in a report: rule name, one-line description, verdict (compliant / violating / "I can't tell"), and one line of evidence from my actual files for that verdict. If you can't tell, say what evidence you'd need to decide.
 

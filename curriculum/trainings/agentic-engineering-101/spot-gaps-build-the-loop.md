@@ -73,9 +73,9 @@ This slot is a human round: talk, compare, no prompts.
 
 **`## Human close` is a pre-close beat, not the module's ending (2026-08-19, Antti-directed: *"human close can be a beat before actual full closing. It is deliberately there to have the time for closing conversations."*).** The slot buys room time for the closing conversation while the closing lecture and `## Optional challenges` still follow. A story judge scoring close mood may read that trailing material as an ending that will not end and file `check_strategy_tie_in.md` §1 against the beat's own framing (*"talk, compare, no prompts"*). Do not move the beat later, and do not soften its framing to acknowledge what follows — the conversation needs a named slot, and the name is what makes a trainer stop for it. Future judges should not re-flag.
 
-**Quality:** compendium-audited 2026-09-03 (writing@54577f39 story@94fcca2d technical@94fcca2d behavior@1c765f2 pedagogy@4e0370bc strategy@54577f39 slides@54577f39)
-- judges @54577f39: writing PASS (1 todo see instances/ae101--module--spot-gaps-build-the-loop.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS (1 todo see instances/ae101--module--spot-gaps-build-the-loop.pedagogy.json), strategy PASS, slides PASS
-- cross_module @54577f39: PASS — set=[run-the-first-experiment,learn-from-the-test,spot-gaps-build-the-loop]; 2 pairs, 0 blocking; see instances/ae101--module-set--m4-m5-m6.cross_module.json
+**Quality:** compendium-audited 2026-09-05 (writing@fb797e3b story@94fcca2d technical@94fcca2d behavior@1c765f2 pedagogy@4e0370bc strategy@54577f39 slides@fb797e3b)
+- judges @fb797e3b: writing PASS (1 todo see instances/ae101--module--spot-gaps-build-the-loop.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS (1 todo see instances/ae101--module--spot-gaps-build-the-loop.pedagogy.json), strategy PASS, slides PASS
+- cross_module @fb797e3b: PASS — set=[run-the-first-experiment,learn-from-the-test,spot-gaps-build-the-loop]; 2 pairs, 0 blocking; see instances/ae101--module-set--m4-m5-m6.cross_module.json
 
 **Leap test** (per `check_pedagogy.md` rule 45; M6 is an arc-mood exercise so the test names artefact + use, not activity):
 - The student has read their own Claude Code history back across the stack and holds a set of mermaid diagrams of the work they repeat. The dominant gap now sits inside a recognised work-shape, not floating alone.

@@ -3,11 +3,13 @@
   "training": "ae101",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/read-your-stack.md",
   "verdict": "PASS",
-  "body_sha": "866a4986d7a02473bca170b0189e8343b36fc4a33261ef76f22ccb34092dfcfa",
+  "body_sha": "0232d2e1cb5c66bdf92faac183723ff4372726ea937b2f559bb8e8ff5a3625d6",
   "shape_hash": "04c8bbd89721df08",
   "trace_status": "regenerated",
   "trace_path": "curriculum/evals/sim-cache/ae101--exercise--read-your-stack.persona.json",
-  "module_mood_contract": "M6 overall: practitioner fluency — \"I know how to test, I know how to learn, I know how to encode.\" This exercise's own maintainer note narrows to the two legs it exercises: \"I know how to test, I know how to learn, I know what my stack repeats.\" (L79)",
+  "pin": "289b45a3",
+  "diff_summary": "Against 289b45a3: H1 title '# Read your stack' -> '# Read your stack, *draw what recurs*'; two blockquote callout leads de-bolded from full-sentence to phrase ('Cut the scan' / 'Want to see the shapes'), matching the file's own 2026-07-09 emphasis-pass note; L34 bullet trimmed ('A recurring kind of work has a shape. Steps in order, a branch, a loop back. Drawn, the shape is easier to recognise than described.' -> 'A recurring kind of work has a shape: steps in order, a branch, a loop back.'); maintainer Quality line bumped to compendium-audited 2026-09-04 and a new 'Declined at the 2026-09-03 polish pass' note appended. No fence, forcing-function, or mood-target text touched.",
+  "module_mood_contract": "M6 overall: practitioner fluency — \"I know how to test, I know how to learn, I know how to encode.\" This exercise's own maintainer note narrows to the two legs it exercises: \"I know how to test, I know how to learn, I know what my stack repeats.\" (raw L79)",
   "mood_summary": {
     "phase_scores": [
       8
@@ -16,14 +18,14 @@
     "any_below_8": false,
     "stealing_the_mood": []
   },
-  "teaching_moment_lands": "PASS. The teaching moment (recognising the shape of your own recurring work, then seeing it as a diagram) is grounded in the student's real session history, not a constructed scenario — the study prompt instructs Claude to 'show me what actually recurs, including the dull stuff' rather than curate for impressiveness. Nothing about triggering it depends on persona skill level; it fires for a 2-week novice and a veteran alike because both have real disk history to read. Regenerated trace is_me_rating 8/10 confirms genuine self-recognition, not a scripted payoff, and is unaffected by the confirmed prompt fix (the fix touched only a dangling locator in a downstream sidestep prompt, not the recognition beat itself).",
+  "teaching_moment_lands": "PASS. The teaching moment (recognising the shape of your own recurring work, then seeing it drawn) is grounded in the student's real session history via the study prompt ('Show me what actually recurs, including the dull stuff', expanded L41), not a constructed scenario, so it fires regardless of persona skill level — both a 2-week novice and a veteran have real disk history to read. The new title ('Read your stack, *draw what recurs*') now states the payoff up front and matches the strategy doc's own name for this beat verbatim (bosser-strategy:content-strategy-agentic-engineering-101.md L446: 'the stack scan (*Read your stack, draw what recurs*)'), which sharpens the promise rather than pre-answering it (the HOW — reading disk history, drawing shapes — is still discovered, not given away by the title). Regenerated trace confirms is_me_rating 8/10 and mood 8/8, unaffected by the diff's cosmetic edits.",
   "rules_evaluated": [
     {
       "compendium": "check_lectures.md",
       "rule_index": 4,
       "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
       "verdict": "PASS",
-      "evidence": "All 5 `##` headers (raw L17, L22, L32, L43, L57: 'Find the work you repeat across your stack' / 'Scan your history for the work that recurs' / 'Draw your top work-shapes as diagrams' / 'Sidestep: check your menu against the field's' / 'Decide what crosses back to your main repo') each name one concrete concept, none are empty containers or orphan mystery, and each is true of what its body/prompt actually does (re-verified against the freshly regenerated expanded body, which now carries the fixed primitives prompt). No two headers share text. Line numbers unchanged from the prior pass — the fix landed in a different file (curriculum/prompts/spot-gaps-build-the-loop-primitives.md), and the only change to this file's own text since the last full judgment is the maintainer-block Quality line (verified via `git show 67d4f5b8`).",
+      "evidence": "All 5 `##` headers, unchanged by this diff (raw L17, L22, L32, L43, L57): 'Find the work you repeat across your stack' / 'Scan your history for the work that recurs' / 'Draw your top work-shapes as diagrams' / 'Sidestep: check your menu against the field's' / 'Decide what crosses back to your main repo'. Squint test: each names one concrete concept (the scan target, the recognition act, the drawing act, the optional widen, the handoff decision) — none is an empty container or bare arc label, none is orphan mystery. Truth clause: each is true of what its body/fence actually does; no category error, no dropped qualifier, no unsupported universal. No two headers share text. The diff's only new prose is the H1 title (not a `##` slide header this rule governs) and two callout bold-trims that don't touch these five strings.",
       "fix_hint": null,
       "blocking": false
     },
@@ -32,7 +34,7 @@
       "rule_index": 5,
       "rule_lead": "A slide's BODY is size-bounded, not just its header (§4's sibling).",
       "verdict": "PASS",
-      "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/exercises/read-your-stack.md --report`: 5 slides, largest 135 words / 1 bullet ('Scan your history...' and 'Sidestep...' tied at 135), smallest 50 words / 0 bullets ('Decide what crosses back'), all under the 210-word / 6-bullet ceiling. Output: 'oversized: 0 ... every slide is within limits.'",
+      "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/exercises/read-your-stack.md --report` against the CURRENT body: 5 slides, largest 135 words / 1 bullet (tied: 'Scan your history for the work that recurs' and 'Sidestep: check your menu against the field's'), smallest 50 words / 0 bullets ('Decide what crosses back to your main repo'). Output: 'oversized: 0 ... every slide is within limits.' Re-run fresh (not carried from the prior instance) because the L34 bullet-trim changed word counts slightly; the trim only lowered counts, so headroom widened, not narrowed.",
       "fix_hint": null,
       "blocking": false
     },
@@ -41,7 +43,7 @@
       "rule_index": 16,
       "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
       "verdict": "PASS",
-      "evidence": "Read each fence prompt-only, ignoring body, against the regenerated expanded body (expanded.md L30-79). All three forcing functions are self-contained in their fences: prompt 1 (study) names the read target (`~/.claude/projects/`) and grouping/ranking instruction inline; prompt 2 (shapes) is a self-sufficient back-reference ('the recurring groups you just named') to the immediately-preceding turn; prompt 3 (primitives, post-fix) now reads 'Then evaluate fit for the dominant gap I named' with no dangling 'in Phase 1' locator — the referent ('the dominant gap') is real within the fence's own frame because the Session widget (L5, 'continue, \"Module 6 worktree session\"') and L7 ('Same session as the gap map... in scrollback') establish this is the SAME conversation that named the dominant gap in the prior exercise, so the back-reference resolves without a maintainer-only label. Body prose (L17-20, L34-36) only orients, doesn't narrate or duplicate what the prompt does. Confirms the finding this run exists to check: the fix removed a body-external label the student never saw, without introducing a new scripted-reaction or breaking the forcing function's self-sufficiency.",
+      "evidence": "Read each fence prompt-only against the freshly regenerated expanded body (scratchpad read-your-stack.expanded.md, source_sha f1d9186f...). All three forcing functions are self-contained in their fences: the study prompt (expanded L33-41) names the read target (`~/.claude/projects/`), the grouping/ranking instruction, and the progress-streaming/interrupt handling inline; the shapes prompt (L54-56) back-references 'the recurring groups you just named' into the immediately-preceding turn of the SAME session; the primitives prompt (L72-78) reads 'the dominant gap I named' with no dangling curriculum-only locator, resolving against real prior-exercise scrollback per the Session widget (raw L5, L7: same continuing worktree session as the gap map). Body prose (raw L19-20, L46-47) only orients; the blockquote callout at raw L26 ('Cut the scan') stays in suggestion register ('whenever you like', 'You do not need a complete inventory') per §16's pacing-calibration boundary, not a bare imperative count — its bold was trimmed by this diff but its wording and register are unchanged. None of the three diff edits (title, two callout bold-trims, one bullet trim outside any fence) touch a fence or add a scripted-reaction count.",
       "fix_hint": null,
       "blocking": false
     },
@@ -50,25 +52,7 @@
       "rule_index": 27,
       "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
       "verdict": "PASS",
-      "evidence": "Grepped raw body for authored-conversation shapes (`discuss|share with|neighbor|neighbour|pair up|tell the room|take [0-9]* second|compare with the person`) — `grep -n -i` returned exit code 1 (zero hits). Every sentence is about the WORK (read history, scan, draw, decide what crosses back), not cohort management. No trainer-cue beats, no pause-cue sentences. Absence of authored pause beats = PASS per the rule's own diagnostic; none of the three carve-outs are invoked, and none needed to be. Unaffected by the confirmed fix.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_pedagogy.md",
-      "rule_index": 45,
-      "rule_lead": "Per-exercise leap test — 3 observable Monday outcomes.",
-      "verdict": "PASS",
-      "evidence": "L109-112 (unchanged since the last full judgment): 'holds a diagrammed map of the work they repeat across their stack, and reads a new task against it before sending the task off.' Read in isolation: a working engineer can tell whether they did this — either the diagrammed map exists and they consulted it against a new task, or they didn't. Matches the M5/M6 arc-mood carve-out shape: names the ARTIFACT (diagrammed map) plus its USE, not the bare activity.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_pedagogy.md",
-      "rule_index": 47,
-      "rule_lead": "Per-phase failure mode + escape hatch.",
-      "verdict": "PASS",
-      "evidence": "File is explicitly one phase (L63: 'Atomic — no phase markers'). L114-115 names the dominant student failure mode ('Wider-look sprawl — the study scan reads the whole stack and can throw back a wall') and the same entry names the escape hatch ('If a student drowns in the scan, point at the ranked head and move on'). The optional sidestep prompt (whose fence is where the fixed finding lived) is exempt by design (L59/L77: 'nothing downstream depends on it') — an optional beat with no dead-end needs no rescue path. Text and line positions unchanged from the last full judgment; the fix did not touch this file's own failure-mode/escape-hatch entry.",
+      "evidence": "`grep -inE 'discuss with|share with|neighbor|neighbour|pair up|tell the room|take [0-9]+ second|compare with the person' curriculum/exercises/read-your-stack.md` -> exit code 1, zero hits, on the CURRENT body. Broader sweep `grep -inE 'room|pair|peer|discuss|share|group|neighbor|neighbour|trainer'` returns only non-conversational usages ('group the kinds of work that recur', 'grouped and ranked', 'that pairing is a skill candidate', \"the room's pace\" meaning the cohort's overall timing not a directed exchange, \"a room whose toolchain has moved\" inside the backing OODA question) — none is an authored conversation cue. No trainer-cue beats, no pause-cue sentences. Absence of authored pause beats = PASS per the rule's own diagnostic.",
       "fix_hint": null,
       "blocking": false
     },
@@ -77,7 +61,7 @@
       "rule_index": 1,
       "rule_lead": "Mood contract named.",
       "verdict": "PASS",
-      "evidence": "L79 states the mood target explicitly: 'practitioner fluency — \"I know how to test, I know how to learn, I know what my stack repeats.\"' Classified this beat as TEACHING (student's job is recognition, not mechanical setup/launch) so the 8+/10 floor applies; regenerated trace scores phase=8, close=8 (both meet the floor). The confirmed fix removed the trace's sole confusion_flag without moving either score — see `curriculum/evals/sim-cache/ae101--exercise--read-your-stack.persona.json`'s `regeneration_note`.",
+      "evidence": "Raw L79 (unchanged by this diff): 'practitioner fluency — \"I know how to test, I know how to learn, I know what my stack repeats.\"' Classified this beat as TEACHING (student's job is recognition, not mechanical setup) so the 8+/10 floor applies. Regenerated trace (content_sha f1d9186f..., matching the current file) scores phase=8, close=8 — floor met. Diff touched only cosmetic prose outside the mood-target line and did not move either score.",
       "fix_hint": null,
       "blocking": false
     },
@@ -86,7 +70,7 @@
       "rule_index": 3,
       "rule_lead": "Lead with discipline, not failure mode.",
       "verdict": "PASS",
-      "evidence": "Title (L1, '# Read your stack') and all five section headers (Find/Scan/Draw/Sidestep/Decide) name positive disciplines and actions, never a failure word. No canonical-named-result carve-out needed. Unchanged since the last full judgment.",
+      "evidence": "Title (raw L1, now '# Read your stack, *draw what recurs*') and all five section headers (Find/Scan/Draw/Sidestep/Decide) name positive disciplines and actions, never a failure word. The retitled H1 is, if anything, more discipline-forward than the prior title ('draw what recurs' is an action, not a failure-mode label). No canonical-named-result carve-out needed.",
       "fix_hint": null,
       "blocking": false
     },
@@ -95,7 +79,17 @@
       "rule_index": 4,
       "rule_lead": "Strategy-fidelity check.",
       "verdict": "PASS",
-      "evidence": "Re-pulled M6-in-detail from bosser-strategy:content-strategy-agentic-engineering-101.md (§'M6 in detail — spot gaps, build the loop'). Placement: PASS — strategy doc's shipped 2026-09-02 deck order is 'exercise Map the gaps, cut the rule → Composing the workflow → exercise Read your stack (15, kept as is) → Agents that build agents → Story of Module 6 → Human close → There is no last turn'; this file's own Placement line (L77: 'after the control-loop lecture and before the handoff lecture') matches exactly (control-loop lecture = Composing the workflow; handoff lecture = Agents that build agents). Big-Idea fidelity: PASS — body never touches the closer's reserved frame ('expression sets the frontier'), consistent with the strategy doc's own note that the frame stays out of the module head to protect the closer's reveal. Front-run check: the PRIOR REVISE on this row (stale 'Verifier-as-eval terminology leaking... save the explicit naming for the closer' Watch-for, previously at old-L119) is now RESOLVED, not merely stale — grepped for 'leaking', 'full weight', 'save the explicit', 'closer', 'closing lecture' against the current file: zero hits. `git log --all -p --follow` confirms the sentence existed at commit 109ca335 (M6 re-cut phase 1b) and was removed by a later commit, 6ece955e ('M6 maintainer blocks state what is true now, and two body locators stop pointing at beats the student never saw') — before the current body_sha. The file no longer carries the stale note this row previously flagged. No other front-run issues found. Module-to-module arc: PASS, unchanged from prior judgment.",
+      "evidence": "Re-pulled M6-in-detail from bosser-strategy:content-strategy-agentic-engineering-101.md fresh this run (not carried from a prior instance). L446: 'the stack scan (*Read your stack, draw what recurs*) reads the student's own disk for the shapes that repeat' — the file's NEW title (this diff's own change) now matches the strategy doc's canonical name for this beat verbatim; this is a strategy-fidelity improvement, not drift. Placement: raw L77 ('Beat 2 of the three-beat M6, after the control-loop lecture and before the handoff lecture') matches L446's ordering ('(2) loops, and the second loop — the control-loop slide opens the beat, the stack scan... reads the student's own disk..., the handoff prompt packages the encode-move from those shapes'). Front-run check: grepped the current body for 'eval', 'verifier', 'expression sets the frontier', 'frontier' — the only hits are generic 'eval suites' as one item in the checking-primitives menu (raw L53, L94, L97), which is fine because the strategy doc names 'eval' as introduced in M6's OWN Beat 1 ('...then *eval* named directly after the evidence', L446), before this Beat-2 file runs; no hit for the closer's reserved frame ('expression sets the frontier', L446) anywhere in this file. Big-Idea fidelity and module-to-module arc unaffected by this diff (neither touched).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 8,
+      "rule_lead": "Strategy doc carries strategy, not structure — §§1-7 bind curriculum→doc, this one binds doc→curriculum.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "rule fires on the STRATEGY DOC's own content (doc must not restate curriculum structure it doesn't own); this target is the curriculum exercise being read, not the strategy doc being audited, so there is no doc-side assertion here to judge — the doc→curriculum direction this rule governs doesn't reach a curriculum leaf file",
       "fix_hint": null,
       "blocking": false
     },
@@ -108,7 +102,7 @@
       "na_reason": "rule's antecedent is 'when module's mood is unease'; this beat's deliberate mood is practitioner fluency, not unease — condition doesn't fire (and no shame-framed language is present regardless: watch-fors name compliance-feel/credibility-performance, a different axis)",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "7b48a11f7bae5b938ad9ada6b16c90d17e54cafb6a1c9c46e8a2022f9287a5d2",
+      "carried_from": "866a4986d7a02473bca170b0189e8343b36fc4a33261ef76f22ccb34092dfcfa",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -120,7 +114,7 @@
       "na_reason": "target is an exercise file, not a lecture — no lecture-placement decision exists here",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "7b48a11f7bae5b938ad9ada6b16c90d17e54cafb6a1c9c46e8a2022f9287a5d2",
+      "carried_from": "866a4986d7a02473bca170b0189e8343b36fc4a33261ef76f22ccb34092dfcfa",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -132,7 +126,7 @@
       "na_reason": "rule governs pre-exercise LECTURE dosage; this file is the exercise itself, carries no lecture content",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "7b48a11f7bae5b938ad9ada6b16c90d17e54cafb6a1c9c46e8a2022f9287a5d2",
+      "carried_from": "866a4986d7a02473bca170b0189e8343b36fc4a33261ef76f22ccb34092dfcfa",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -143,7 +137,7 @@
       "evidence": "Rule text is scoped to LECTURE bodies (\"lectures teach, module files sequence\"); this is an exercise. Checked whether the concern reaches here anyway: raw line 59 names the M5 worktree (`./CLAUDE.local.md`, `observations/`) as the source of what crosses back to the main repo. That is a session-artifact coordinate inside a fixed-sequence training where the worktree device is itself the mechanism (per `project_ae101_delivery_architecture` memory) — grounding, not an abstract forward-reference of the kind this rule targets. No finding.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "7b48a11f7bae5b938ad9ada6b16c90d17e54cafb6a1c9c46e8a2022f9287a5d2",
+      "carried_from": "866a4986d7a02473bca170b0189e8343b36fc4a33261ef76f22ccb34092dfcfa",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -155,7 +149,7 @@
       "na_reason": "rule scopes explicitly to `curriculum/lectures/**`; this file is at `curriculum/exercises/`, and the rule's own text names exercise prompts as \"not covered\" (student-run by design)",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "7b48a11f7bae5b938ad9ada6b16c90d17e54cafb6a1c9c46e8a2022f9287a5d2",
+      "carried_from": "866a4986d7a02473bca170b0189e8343b36fc4a33261ef76f22ccb34092dfcfa",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -167,7 +161,7 @@
       "na_reason": "module-only section rule (governs a module file's Key Concepts heading); this is an exercise file with no such section",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "7b48a11f7bae5b938ad9ada6b16c90d17e54cafb6a1c9c46e8a2022f9287a5d2",
+      "carried_from": "866a4986d7a02473bca170b0189e8343b36fc4a33261ef76f22ccb34092dfcfa",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -179,7 +173,7 @@
       "na_reason": "module-only section rule; no Key Concepts section exists in this exercise file",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "7b48a11f7bae5b938ad9ada6b16c90d17e54cafb6a1c9c46e8a2022f9287a5d2",
+      "carried_from": "866a4986d7a02473bca170b0189e8343b36fc4a33261ef76f22ccb34092dfcfa",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -191,21 +185,23 @@
       "na_reason": "module-only section rule; no What You'll Learn section exists in this exercise file",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "7b48a11f7bae5b938ad9ada6b16c90d17e54cafb6a1c9c46e8a2022f9287a5d2",
+      "carried_from": "866a4986d7a02473bca170b0189e8343b36fc4a33261ef76f22ccb34092dfcfa",
       "carried_shape": "04c8bbd89721df08"
     }
   ],
   "todos_count": 0,
   "blocking_findings_count": 0,
-  "notes": "CONFIRMATION RUN for the check_prompts.md §40b-shaped referent-leak finding (curriculum/prompts/spot-gaps-build-the-loop-primitives.md:19, formerly 'the dominant gap I named in Phase 1') filed against this file's story-class trace and now fixed at commit f7523f76 (Antti: prompt-ok). Pre-flight greps both matched the task's required values exactly (`grep -c 'Phase 1' ...primitives.md` → 0; `grep -c 'the dominant gap I named\\.' ...primitives.md` → 1). Verified the fix is real on disk (git show f7523f76, and the file's current text at L19). Regenerated the persona trace (curriculum/evals/sim-cache/ae101--exercise--read-your-stack.persona.json) because the dispatch preamble requires proof against the LIVE body, not a cached quote: grepped the fixed phrase against a freshly-regenerated expand-md.js view of this file (which resolves the {{prompt:}} include to the fix's actual current text) and confirmed zero occurrences of 'Phase 1' anywhere in the student-facing content. The trace's sole confusion_flag and ambiguous_instructions entry (both quoting the now-dead phrase) are removed in the regenerated trace; mood scores (8/8) are unchanged because the finding was already scored as a sub-floor-safe half-beat snag, not a mood-breaker, so removing it does not retroactively inflate the score. A second, independent, non-blocking finding this file's story-class instance carried from the last full pass (check_strategy_tie_in rule 4: a stale internal Watch-for about verifier/judge/gate/eval terminology timing) is ALSO now resolved — confirmed via git history that it was removed by a separate commit (6ece955e) before the current body_sha, unrelated to the primitives-prompt fix this run was dispatched to confirm. Net result: this file now carries zero REVISE rows and zero TODOs in the story class; the class is clean. Full-class re-read performed, not a check of the one line: re-verified all mechanical checks (slide-size script, conversation-cue grep) directly rather than trusting the prior instance's numbers, and re-pulled the relevant bosser-strategy M6 section fresh rather than carrying the prior judgment's strategy-fidelity verdict forward unread. check_prompts.md and check_workshop.md are pulled into the derive-class-brief output for reading context (derive-body-view.js's COMPENDIA map) but story.md's own Completeness Contract does not list either as story-owned; check_workshop is also N/A on its face (solo work; group_beat_markers:true is a false-positive keyword hit on 'group the kinds of work that recur' as a verb). No rows written for either, per the dispatch preamble's 'notes, never rules_evaluated' instruction for out-of-lane observations. Process observation (not a curriculum defect, reported for the maintainer/tooling, not carded): story.md's trace-caching protocol keys `content_sha`/`phase_sha` on 'sha256 of full file' — read literally, that is this exercise file's OWN raw sha, which does not move when only an INCLUDED {{prompt:}} registry file changes. This exercise's raw sha happened to move anyway (an unrelated maintainer Quality-line edit), which accidentally forced a cache-miss and a fresh look; had that coincidence not occurred, a stale trace could have shipped as 'cached' and true even though the actual rendered prompt content had changed. The dispatch preamble's cache-integrity clause (grep any carried quote against the live file before trusting it) is what actually caught this, not the sha match — worth the maintainer's attention as a possible gap in how trace freshness is keyed for exercises whose fences are {{prompt:}} includes rather than inline text.",
   "accept_notes_found": [
-    "L67: \"The field already runs\" stays (Antti 2026-09-02) — sidestep header and lead-in claim field practice, not convergent vocabulary; judges should not re-flag under check_research_claims.md §1",
-    "L69: Fast-operator batch path (accepted) — the opt-in batch label preserved, does not set room pace or completion bar",
-    "L71: Emphasis pass (2026-07-09, Antti-directed) — bullet leads de-bolded, widget/label chrome and blockquote callouts untouched",
-    "L77: Placement — Beat 2 of the three-beat M6 (2026-09-02 split)",
-    "L90: curran-2x source stamp [checked:2026-05-25 result:CAVEAT due:2026-10-16]",
-    "L91: geoffintech-charles source stamp [checked:2026-05-25 result:OK due:2026-10-08]",
-    "L96: Stance [stance:2026-08-01 level:L2]",
-    "L102-105: OODA last-run: 2026-08-01"
-  ]
+    "L67/expanded L95: \"The field already runs\" stays (Antti 2026-09-02) — sidestep header/lead-in claim field practice not convergent vocabulary; judges should not re-flag under check_research_claims.md §1",
+    "L69/expanded L97: Fast-operator batch path (accepted) — opt-in batch label preserved, doesn't set room pace or completion bar",
+    "L71/expanded L99: Emphasis pass (2026-07-09, Antti-directed) — bullet leads de-bolded, widget/label chrome and blockquote callouts untouched (this diff's two callout bold-trims are an application of this standing note, not a new decision)",
+    "L77/expanded L105: Placement — Beat 2 of the three-beat M6 (2026-09-02 split)",
+    "L90/expanded L118: curran-2x source stamp [checked:2026-05-25 result:CAVEAT due:2026-10-16]",
+    "L91/expanded L119: geoffintech-charles source stamp [checked:2026-05-25 result:OK due:2026-10-08]",
+    "L96/expanded L124: Stance [stance:2026-08-01 level:L2]",
+    "L102-105/expanded L130-133: OODA last-run: 2026-08-01",
+    "L123/expanded L151: NEW this diff — 'Declined at the 2026-09-03 polish pass' — records maintainer accept-notes for several already-shipped lines (the two 'say'/'tell' quoted-utterance callouts, the four no-preamble rows, the imperative 'Read your own history first.', the study/shapes/primitives lead-in verbs, the 'Expect the list to look familiar' paragraph); judges instructed not to re-file any of these"
+  ],
+  "notes": "SCOPE: per story.md's own Completeness Contract, this class is primary owner of check_lectures.md (all 6 numbered rules, 2 judged above + 4 N/A rows parked by prefill-instance.js --merge from the shape-hash-matched prior instance) and owns ONLY the specific listed judgments within check_pedagogy.md (rules 16, 27) and check_strategy_tie_in.md (rules 1-4, 8; 5/6/7 are module-only N/A parked by the merge). check_pedagogy.md rules 45 (leap test) and 47 (per-phase failure mode) are thematically adjacent to 'teaching moment lands' but are NOT in the template's 'Specific judgments storytelling owns' list and are pedagogy's primary-owned rows (see instances/ae101--exercise--read-your-stack.pedagogy.json) — not re-derived here, per the dispatch preamble's 'evaluate only in-lane, put sibling-class problems in notes' instruction. check_prompts.md (49 rules) and check_workshop.md (16 rules) are pulled into derive-class-brief.js's output for reading context only (per derive-body-view.js's compendium map for this eval_classes tag) but are not story-owned per the template; check_workshop.md is additionally N/A on its face for this file — re-verified this run via `grep -inE 'room|pair|peer|discuss|share|group|neighbor|neighbour'`, and every hit is a non-workshop usage (grouping/ranking work, 'pairing' meaning a primitive-to-shape match, 'room's pace' meaning cohort timing, not an actual group beat). The body_view signal `group_beat_markers:true` is a keyword false-positive on these non-workshop usages, same finding as the file's prior story instance. No rows written for either compendium.\n\nOUT-OF-LANE FINDING FOR THE WRITING CLASS / ORCHESTRATOR (mechanically verified, not filed here because it isn't a rule story owns): `node scripts/validate-backing.js curriculum/exercises/read-your-stack.md` returns exit 1 with one ERROR: 'ANCHOR-DRIFT claim `recurring-work-has-a-shape` quotes a phrase absent from the body: \"Steps in order, a branch, a loop back. Drawn, the shape is easier to r...\"' (raw L85). This diff's own L34 bullet trim (`A recurring kind of work has a shape. Steps in order, a branch, a loop back. Drawn, the shape is easier to recognise than described.` -> `A recurring kind of work has a shape: steps in order, a branch, a loop back.`) removed the exact text this backing claim quotes verbatim. Falls under check_writing.md §3 (a `<!-- backing -->` block states what is true NOW) per curriculum/CLAUDE.md's content-rules routing; the claim needs re-anchoring in the same pass that trimmed the bullet (the meaning survives at the unchanged raw-L13 '**The point:**' line, which could be the new anchor, or the claim's quoted span could be restored to match the current bullet).\n\nBOOKKEEPING OBSERVATION (not a rule, reported for the maintainer): the file's own maintainer Quality line (raw L126) currently reads 'story PASS (1 todo see instances/ae101--exercise--read-your-stack.story.json)', but the story instance that line points to (the CONFIRMATION RUN preceding this one, body_sha 866a4986...) already carried todos_count: 0 — the '(1 todo)' annotation appears stale relative to the instance it cites, predating that confirmation run's resolution. This run's own instance also carries 0 todos. Not fixed here (read-only on the target file); flagging for whoever applies findings after all classes on this file return.",
+  "carried_from_note": "Ran prefill-instance.js --write before judging and --merge after; 8 rows (check_strategy_tie_in #2/#5/#6/#7, check_lectures #1/#2/#3/#6) were parked by shape-hash 04c8bbd89721df08 match against the prior instance and spliced in by --merge, not re-derived here."
 }

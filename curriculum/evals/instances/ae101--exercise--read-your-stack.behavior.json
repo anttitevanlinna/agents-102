@@ -3,42 +3,28 @@
   "training": "ae101",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/read-your-stack.md",
   "verdict": "PASS_WITH_TODOS",
-  "body_sha": "802f4110fe4e1102388ee95d7a59d9329ebe00cf203f5764c1a4e7decff224d7",
+  "body_sha": "0232d2e1cb5c66bdf92faac183723ff4372726ea937b2f559bb8e8ff5a3625d6",
   "shape_hash": "04c8bbd89721df08",
+  "pin": "54577f39",
+  "diff_since_pin": "Title gained a subtitle (', draw what recurs'); two blockquote callouts got their lead phrase bolded instead of the whole first sentence (no wording change); the maintainer 'Declined' note grew three more declined items (imperative bullet, lead-in verb echo per check_prompts.md §38, and the post-fence examples paragraph per check_pedagogy.md §53); Quality line re-stamped 2026-09-04 with behavior re-pinned at 54577f39. No prompt fence content changed.",
+  "accept_notes_found": [
+    "L67 (Antti 2026-09-02): 'The field already runs' header/lead-in claims field practice, not convergent vocabulary — do not re-flag under check_research_claims.md §1",
+    "L71 (2026-07-09, Antti): emphasis pass — bullet leads plain, bold only on widget/label chrome and blockquote leads",
+    "L77 (2026-09-02): Placement — Beat 2 of M6 three-beat frame, depth is the student's",
+    "L87 (Antti 2026-09-02): field-already-runs-these-checks claim — same field-prevalence framing as L67",
+    "L90/L91: source-freshness stamps for curran-2x and geoffintech-charles (both checked 2026-05-25, one CAVEAT/vendor-renamed, one OK) — not a behavior-class concern, noted for completeness",
+    "L96/L105: Stance block (level:L2, no-convergence-verb decision) and OODA last-run date",
+    "L123 (2026-09-03 polish pass, Antti): declines to change the two quoted-utterance callouts, declines the four 'no preamble' asks (check_prompts.md §17 — none of these fences is plan mode), keeps 'Read your own history first.' as an imperative (check_student_facing.md §9), keeps the study/shapes/primitives lead-ins' own verbs (check_prompts.md §38 — noun-phrases echo), and keeps the post-fence 'Expect the list to look familiar' examples (check_pedagogy.md §53 — sits after the fence, teaches how to read the answer)",
+    "L125: Quality line itself (compendium-audited 2026-09-04, seven per-class SHAs)"
+  ],
+  "drift_rules_reread": [],
   "rules_evaluated": [
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": "1",
-      "rule_lead": "No placeholders inside fences.",
-      "verdict": "PASS",
-      "evidence": "grep '\\[' over the three registry fences (spot-gaps-build-the-loop-study/-shapes/-primitives.md) returns 0 matches outside frontmatter — no [BRACKETS]-style placeholders in any of the three fences.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": "2",
-      "rule_lead": "Every prompt block: one-sentence action lead-in.",
-      "verdict": "PASS",
-      "evidence": "All three lead-ins are one command-verb sentence under the 20-word ceiling: L28 'Ask Claude to scan your sessions across every project and group the kinds of work that recur.' (17w), L37 'Ask Claude to draw your top few work-shapes as simple diagrams.' (11w), L49 'Ask Claude to name the checking primitives the field already runs and rank the ones that fit your gap.' (19w, `wc -w` verified). L49 previews two of prompt 3's several clauses rather than only its opening move (2a concern) but stays under the ceiling and isn't a full clause-by-clause restatement.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": "3",
-      "rule_lead": "Canonical shape — lead-in, label with destination, blank line, fence.",
-      "verdict": "PASS",
-      "evidence": "expanded.md shows all three blocks as lead-in / blank line / `**Prompt** *(Claude Code)*` / blank line / fence, with no `copy →` prefix and no `*(end of prompt)*` closer.",
-      "fix_hint": null,
-      "blocking": false
-    },
     {
       "compendium": "check_prompts.md",
       "rule_index": "5",
       "rule_lead": "Chain by back-reference + deterministic path, never invented alias.",
       "verdict": "PASS",
-      "evidence": "None of the three prompts chains on a file an earlier prompt wrote (registry `produces.location` for all three is `scrollback`, not a file). The primitives fence's 'the dominant gap I named' is a scrollback back-reference, and curriculum/prompts/spot-gaps-build-the-loop-2.md:18 confirms an earlier prompt in the same continued session literally typed 'the dominant gap' — the preferred scrollback-chain shape, not an invented alias.",
+      "evidence": "Prompt 2 opens 'Take the recurring groups you just named' and Prompt 3 opens with 'the dominant gap I named' — both scrollback-review chains (the rule's preferred shape), not file chains, so no filename/path drift risk exists. The registry frontmatter formalises this even more strongly than prose: each prompt's `requires:`/`produces:`/`consumed-by:` fields (spot-gaps-build-the-loop-study → -shapes → primitive-menu) declare the dependency deterministically outside the fence text itself.",
       "fix_hint": null,
       "blocking": false
     },
@@ -47,17 +33,182 @@
       "rule_index": "6",
       "rule_lead": "Chained-prompt isolation — don't leak downstream pipeline.",
       "verdict": "PASS",
-      "evidence": "Study prompt (fence 1) never mentions the shapes or primitives steps; shapes prompt (fence 2) only consumes fence 1's own output, doesn't pre-empt primitives. Primitives is the chain's last prompt in this file, so there is no downstream step it could leak into.",
+      "evidence": "Prompt 1 never mentions diagrams or the primitives sidestep; Prompt 2 never mentions or pre-empts the primitives sidestep; nothing follows Prompt 3 in this exercise. No pre-grilling, no deferred judgement ('the next step will catch it'), no named-skill leak across the three fences.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_prompts.md",
-      "rule_index": "9",
-      "rule_lead": "Markdown shout (`**bold**`, `*italic*`) inside fenced prompts = dead weight in Claude Code.",
+      "rule_index": "34",
+      "rule_lead": "Disambiguation, anchors, and decision logic that bind Claude live INSIDE prompt fence.",
       "verdict": "PASS",
-      "evidence": "grep -nE '\\*\\*|\\*[^*]' over the three fence bodies (frontmatter excluded) returns 0 matches — no bold/italic markdown inside any fence.",
+      "evidence": "Reading each fence alone: Prompt 1 names the literal path `~/.claude/projects/` and tells Claude to ask if other repos exist outside it — self-contained. Prompt 2's 'the recurring groups you just named' resolves to Claude's own immediately-preceding same-session output. Prompt 3's 'the dominant gap I named' resolves to a concrete item from the same continuous session (per the Session widget: 'continue, Module 6 worktree session', and body line 7: 'The ranked gaps... are in scrollback'). None require body-only context the agent never receives.",
       "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "38",
+      "rule_lead": "Body lead-in mirrors prompt's opening phrasing.",
+      "verdict": "PASS",
+      "evidence": "Already resolved by a dated maintainer accept-note (L123): 'the study, shapes and primitives lead-ins keep their own verbs (check_prompts.md §38: the noun-phrases echo)' — an explicit, reasoned maintainer call not to force verb-for-verb mirroring here. Judges should not re-file this.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "40",
+      "rule_lead": "Verify session boundary before deciding prompt's context-carrying.",
+      "verdict": "PASS",
+      "evidence": "Session widget declares 'continue, Module 6 worktree session' — warm throughout (no /clear, no cwd change stated between the three prompts), so back-referencing scrollback ('the groups you just named', 'the dominant gap I named') is the correct shape rather than redundant clutter.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "40a",
+      "rule_lead": "Concurrent-worktree corollary.",
+      "verdict": "PASS",
+      "evidence": "Prompt 1 deliberately widens scope beyond the current worktree to `~/.claude/projects/` — this is the exercise's declared point (body line 19: 'Look wider than the two sessions... How wide you look... is yours'), not an implicit cross-worktree confusion the corollary warns against. It targets the student's own session-log surface, not a sibling worktree's files or another window's scrollback.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "40b",
+      "rule_lead": "Warm ≠ referent-present.",
+      "verdict": "PASS",
+      "evidence": "'The dominant gap I named' (Prompt 3) is a concrete ranked item Claude itself produced earlier in the same warm session (body line 7: 'The ranked gaps... are in scrollback'), not a curriculum-coined phase label like 'the second-pass read' that only exists in the student's reading material.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "43",
+      "rule_lead": "Long-running prompts stream progress — never go silent.",
+      "verdict": "PASS",
+      "evidence": "Prompt 1 fence: 'As you go, keep me posted: every thirty seconds or so, drop a quick line on which repos you've covered, the groups starting to show, and anything that surprises you. Don't go quiet and hand me everything at the end.' — matches the rule's own example phrasing almost verbatim, and closes with the mid-run steer clause the rule also requires: 'If I cut in to point you at one kind of work, or to ask what you've found so far, answer me and then pick up where you left off.'",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "44",
+      "rule_lead": "A leading-looking line can be a forcing function; prefer the simpler prompt.",
+      "verdict": "PASS",
+      "evidence": "Prompt 3 closes with 'Be concrete. Generic \"tests\" doesn't make the cut; \"unit test against the changed function\" does.' Reads as prescriptive but is load-bearing: removing it lets Claude default to the lazy generic-answer path (directly guards the default-acceptance catalog pattern). Recorded here so a future polish pass doesn't cut it as tidying.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "46",
+      "rule_lead": "Output shape — trust Claude's defaults, don't pad.",
+      "verdict": "PASS",
+      "evidence": "None of the three fences impose a rigid output template. Prompt 3's 'one line' / firing-point ask is scoped to the teaching moment (forcing concrete, comparable answers, per rule 44) rather than cosmetic padding; Prompts 1 and 2 end on open asks ('the top six or so', 'draw each one as a mermaid diagram') that trust Claude's default judgment on format.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "1",
+      "rule_lead": "Walk-away test (M2+).",
+      "verdict": "PASS",
+      "evidence": "Prompt 1 is built for the student to step back while Claude works a multi-minute cross-project scan (progress streamed rather than paste-and-watch), matching the walk-away pattern rather than requiring the student to read every line live.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "3",
+      "rule_lead": "Trust the agentic design — no human backstops.",
+      "verdict": "PASS",
+      "evidence": "Grouping/ranking/naming across the scan, and picking 2-3 fitting primitives in Prompt 3, is left entirely to Claude's judgement; no 'have the student verify each group manually' backstop or exhaustive if-then ruleset is imposed anywhere in the three fences.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "11",
+      "rule_lead": "Delegation — student brings, Claude screens.",
+      "verdict": "PASS",
+      "evidence": "All three prompts ask Claude to pattern-match/group/draft over material Claude already has access to (the student's own local session files at `~/.claude/projects/`, and the student's own previously-named dominant gap) — none asks Claude to pick from an inaccessible external surface or make a student-owned judgement call on the student's behalf.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "13",
+      "rule_lead": "Artifact-realism check.",
+      "verdict": "PASS",
+      "evidence": "The one named path across the three fences, `~/.claude/projects/`, is the real, standing location Claude Code writes session transcripts to (this repo's own session-historian skill greps the same path) — no unshipped tool, connector, or skill is invoked.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "16",
+      "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
+      "verdict": "PASS",
+      "evidence": "The exercise's one real forcing function (mid-run interrupt-and-resume) lives inside Prompt 1's fence, not body. The two body blockquote callouts ('Cut the scan when...', 'Want to see the shapes...') are pacing suggestions in suggestion register ('or so', 'whenever you like') — the explicit carve-out for pacing calibrations that may stay in body, not bare-imperative scripted counts.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "47",
+      "rule_lead": "Per-phase failure mode + escape hatch.",
+      "verdict": "PASS",
+      "evidence": "Maintainer block: 'Wider-look sprawl — the study scan reads the whole stack and can throw back a wall. If a student drowns in the scan, point at the ranked head and move on.' Names the dominant failure mode of Prompt 1's heavy fan-out and a concrete trainer escape hatch — both halves the rule requires.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "48",
+      "rule_lead": "Heavy fan-out prompts get body recovery callout.",
+      "verdict": "PASS",
+      "evidence": "Body blockquote before Prompt 1 covers both recovery directions the rule requires: over-reading ('Narrow it whenever you like, or say tell me what you've found so far') and premature/shallow-stop ('If it comes back thin instead, or everything traces to one repo, a there is more than this, keep going prompt sends it back out').",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "53",
+      "rule_lead": "Body prose must not supply an answer its prompt asks for — position is not the test (widened 2026-08-12).",
+      "verdict": "PASS",
+      "evidence": "Already resolved by a dated maintainer accept-note (L123): 'the Expect the list to look familiar paragraph keeps its examples (check_pedagogy.md §53: it sits after the fence and teaches how to read the answer, and the backing block's holds row carries the convergence claim).' Independently verified: that paragraph sits at body line 53, after Prompt 3's fence (line 51) — a post-action recap, not a pre-announcement. The line-34 recap between Prompt 1 and Prompt 2 likewise only recaps Prompt 1's own output and never previews Prompt 2's diagram payoff.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "curriculum/evals/simulation-behavior.md",
+      "rule_index": null,
+      "judge_owned": true,
+      "rule_lead": "15-pattern catalog scan — Prompt 1 (study/scan)",
+      "verdict": "REVISE",
+      "evidence": "No catalog pattern fires at high/med confidence. The prompt actively counters niceness-tax ('show me what actually recurs, including the dull stuff') and satisfies the streaming/interrupt requirements in-fence (see check_prompts.md §43 row). One low-confidence risk: preamble-before-action — nothing in the fence explicitly forbids Claude opening with a short plan before the first tool call. Harm is minor (a few seconds of framing ahead of a multi-minute scan) and doesn't touch the teaching moment, which is why this is a todo, not a block.",
+      "fix_hint": "If a live run shows Claude over-fronting with a plan paragraph, add 'skip the plan, start reading' to the fence.",
+      "blocking": false
+    },
+    {
+      "compendium": "curriculum/evals/simulation-behavior.md",
+      "rule_index": null,
+      "judge_owned": true,
+      "rule_lead": "15-pattern catalog scan — Prompt 2 (draw diagrams)",
+      "verdict": "PASS",
+      "evidence": "Short, fully directive fence (draw diagrams, 30-node cap, split-if-too-big); no ambiguity, no file writes, no citations, no chained context beyond the immediately-prior same-session output. No catalog pattern reaches even low confidence.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "curriculum/evals/simulation-behavior.md",
+      "rule_index": null,
+      "judge_owned": true,
+      "rule_lead": "15-pattern catalog scan — Prompt 3 (checking-primitives sidestep)",
+      "verdict": "REVISE",
+      "evidence": "Explicitly guarded against default-acceptance by its own closing forcing line (see check_prompts.md §44 row). One low-confidence risk: citation-cargo-cult — Claude could dress up an invented or fringe check as an established primitive, though the ask is for well-known engineering practice rather than external sources, and the 'be concrete' contrast example narrows the space. This sidestep is explicitly optional and load-bearing:false per the Placement note ('nothing downstream depends on it'), so drift here doesn't touch the exercise's core artifact — a todo, not a block.",
+      "fix_hint": "If a run shows Claude naming a non-standard or invented primitive, add 'name only primitives you're confident are in real use' to the fence.",
       "blocking": false
     },
     {
@@ -67,8 +218,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no anti-positioning/hate-flip content subject to regeneration drift in this exercise",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "802f4110fe4e1102388ee95d7a59d9329ebe00cf203f5764c1a4e7decff224d7",
+      "carried_shape": "04c8bbd89721df08"
     },
     {
       "compendium": "check_prompts.md",
@@ -77,116 +230,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "structural trigger narrowed to plan mode only (2026-09-03); none of the three fences declares plan-mode, and the maintainer block (L123) already records this exact call — 'The four no preamble rows on the study, shapes and primitives fences fall under check_prompts.md §17 as narrowed to plan mode... none of these fences is plan mode. Judges should not re-file either.'",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": "24",
-      "rule_lead": "Don't restate session CWD inside prompt body.",
-      "verdict": "PASS",
-      "evidence": "The only path named in any fence is `~/.claude/projects/` (study prompt) — not the session's working directory but the fixed, non-CWD location the cross-project scan needs, which is exactly the kind of task-necessary path the rule doesn't ban. No `cd` commands or absolute CWD restatements appear in any of the three fences.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": "28",
-      "rule_lead": "Strong-bold prompt label is exactly `**Prompt**` — custom labels break renderer.",
-      "verdict": "PASS",
-      "evidence": "expanded.md shows the registry expander producing `**Prompt** *(Claude Code)*` verbatim for all three markers (rule 31 registry-sourced case) — no custom label text.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": "29",
-      "rule_lead": "Normal work request before orchestration.",
-      "verdict": "PASS",
-      "evidence": "Fence 1 opens 'Go through my work across everything I do, not just this repo. I want to see the kinds of work I do over and over.' — a first-person work request, not an 'ask me which files' orchestration-interview shape. No prompt in the chain opens with an interview-style ask.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": "31",
-      "rule_lead": "Prompts live in registry; module/exercise/lecture files reference by marker.",
-      "verdict": "PASS",
-      "evidence": "grep '{{prompt:' curriculum/exercises/read-your-stack.md → three hits at L30, L39, L51 (spot-gaps-build-the-loop-study/-shapes/-primitives), all resolving to curriculum/prompts/<key>.md registry files — no inline `**Prompt**` blocks in the source.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": "34",
-      "rule_lead": "Disambiguation, anchors, and decision logic that bind Claude live INSIDE prompt fence.",
-      "verdict": "PASS",
-      "evidence": "Read each fence in isolation: fence 1 is fully self-contained (names the exact directory, tells Claude to ask if other repos exist). Fence 2's 'the recurring groups you just named' resolves against fence 1's immediately-prior in-conversation output. Fence 3's 'the dominant gap I named' and 'the recurring shapes we drew' both resolve against genuine same-session scrollback (verified under rule 40/5), not against body-only prose Claude never sees.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": "36",
-      "rule_lead": "Wide prompts split by logical move — paragraph breaks = cheapest scan-affordance.",
-      "verdict": "PASS",
-      "evidence": "Fence 1 is already split into 5 paragraphs by move (ask / location+fallback / progress-streaming / interrupt-handling / group+rank+output). Fence 2 is 2 paragraphs (draw / node-cap constraint). Fence 3 is 4 paragraphs (frame / list-primitives / evaluate-fit+recommend / specificity constraint). Read-aloud breaths land at paragraph breaks in all three.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": "38",
-      "rule_lead": "Body lead-in mirrors prompt's opening phrasing.",
-      "verdict": "REVISE",
-      "evidence": "Lead-ins 1 and 2 rhyme cleanly with their fence's opening clause ('scan...group the kinds of work that recur' ~ 'Go through my work...kinds of work I do over and over'; 'draw your top few work-shapes' ~ 'Take the recurring groups you just named. For the top few, draw each one as a mermaid diagram'). Lead-in 3 (L49, 'Ask Claude to name the checking primitives the field already runs and rank the ones that fit your gap.') does not mirror fence 3's actual opening clause ('Expand my menu of checks before I read my own map against it.') — it instead paraphrases paragraphs 2-3 of the fence (the list-primitives and evaluate-fit moves), mismatching verb ('name'/'Expand') and noun-phrase. The mismatch is mild — the section header and the preceding bullet already establish 'primitives'/'checking' framing before the student reaches the lead-in, so it doesn't read as confusing, just as two slightly different drafts.",
-      "fix_hint": "Reword L49 to open on the same clause as the fence's own opening line, e.g. 'Ask Claude to expand your menu of checks before reading your map against it.'",
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": "39",
-      "rule_lead": "Declare `permission-mode:` when paste requires specific Claude Code mode.",
-      "verdict": "PASS",
-      "evidence": "None of the three registry files (spot-gaps-build-the-loop-study/-shapes/-primitives.md frontmatter, read directly) declares `permission-mode:`, and none of the three fences depends on a non-default mode — correctly omitted.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": "40",
-      "rule_lead": "Verify session boundary before deciding prompt's context-carrying.",
-      "verdict": "PASS",
-      "evidence": "Session widget (L5) declares 'continue, \"Module 6 worktree session\"' and body (L7) states 'Same session as the gap map' — a warm session, not cold. Walking each definite reference (§40b): fence 2's 'the recurring groups you just named' is the immediately-prior AI turn in this same conversation; fence 3's 'the dominant gap I named' traces to curriculum/prompts/spot-gaps-build-the-loop-2.md:18, an earlier prompt in the SAME continued session that literally typed 'the dominant gap' — a real prior utterance, not a curriculum-only label that never reached the agent.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": "43",
-      "rule_lead": "Long-running prompts stream progress — never go silent.",
-      "verdict": "PASS",
-      "evidence": "Fence 1 (the one genuinely long-running prompt — a full cross-project session-history scan) reads 'As you go, keep me posted: every thirty seconds or so, drop a quick line on which repos you've covered, the groups starting to show, and anything that surprises you. Don't go quiet and hand me everything at the end.' — near-verbatim match to the rule's own 'every ~30s or so' between-chunks-habit phrasing. The tail 'If I cut in to point you at one kind of work, or to ask what you've found so far, answer me and then pick up where you left off.' matches the rule's report-then-continue requirement exactly. Fences 2 and 3 are short, non-long-running tasks and don't need this.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": "44",
-      "rule_lead": "A leading-looking line can be a forcing function; prefer the simpler prompt.",
-      "verdict": "PASS",
-      "evidence": "Fence 3's closing line 'Be concrete. Generic \"tests\" doesn't make the cut; \"unit test against the changed function\" does.' is exactly the load-bearing anti-genericness forcing line this rule protects — it stays as written, correctly. No decorative over-structuring was found elsewhere to flag for removal.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": "46",
-      "rule_lead": "Output shape — trust Claude's defaults, don't pad.",
-      "verdict": "PASS",
-      "evidence": "Fence 3's one-line-per-primitive + fire-timing category ('pre-session / mid-session / post-session / continuous') is minimal structure that serves the teaching moment (an actionable, comparable menu), not a padded trailing shape-spec list. No prompt appends unnecessary output-format demands; none needs a 'show me before saving' close since all three outputs stay in scrollback.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "802f4110fe4e1102388ee95d7a59d9329ebe00cf203f5764c1a4e7decff224d7",
+      "carried_shape": "04c8bbd89721df08"
     },
     {
       "compendium": "check_prompts.md",
@@ -195,107 +242,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "none of the three prompts is a take-home/handoff prompt — all three run live inside the continued Module 6 worktree session",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_pedagogy.md",
-      "rule_index": "1",
-      "rule_lead": "Walk-away test (M2+).",
-      "verdict": "PASS",
-      "evidence": "Fence 1 is explicitly designed for the student to step back rather than read every line — the progress-streaming + interrupt-handling instructions let the student check in periodically instead of watching continuously, an appropriate trust distance for M6.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_pedagogy.md",
-      "rule_index": "3",
-      "rule_lead": "Trust the agentic design — no human backstops.",
-      "verdict": "PASS",
-      "evidence": "No 'Antti observes manually' or exhaustive if-then human-backstop language anywhere in body or maintainer block; the exercise names Claude's judgment authority directly (grouping, ranking, evaluating fit).",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_pedagogy.md",
-      "rule_index": "6",
-      "rule_lead": "One exercise = one bounded activity.",
-      "verdict": "PASS",
-      "evidence": "Maintainer block (L63) states directly: 'Atomic — no phase markers. One widening scan, drawn, then an optional sidestep.' — a single bounded internal arc, not sub-numbered.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_pedagogy.md",
-      "rule_index": "10",
-      "rule_lead": "Student agency — adults decide.",
-      "verdict": "PASS",
-      "evidence": "Explicit agency markers throughout: L19 'How wide you look, and what you choose to map, is yours', L45 'Optional.', L26 'You do not need a complete inventory', L59 'What crosses back is yours: copy the worktree's versions over, take the parts you want, or leave them where they are.'",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_pedagogy.md",
-      "rule_index": "11",
-      "rule_lead": "Delegation — student brings, Claude screens.",
-      "verdict": "PASS",
-      "evidence": "Fence 1 asks Claude to read local disk (`~/.claude/projects/`) — genuinely accessible, no external connector. Grouping/ranking (fence 1) and evaluating-fit/recommending (fence 3) are pattern-matching/fit-screening moves the rule assigns to the agent, not student-owned choices being outsourced.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_pedagogy.md",
-      "rule_index": "12",
-      "rule_lead": "Split mega-exercise when phases = distinct skills + distinct artifacts.",
-      "verdict": "PASS",
-      "evidence": "Study → shapes → optional primitives is one continuous narrative (stack recognition) that chains mechanically inside one 15-minute, one-session beat, matching the rule's stays-one counter-case, not the split case.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_pedagogy.md",
-      "rule_index": "13",
-      "rule_lead": "Artifact-realism check.",
-      "verdict": "PASS",
-      "evidence": "`~/.claude/projects/` is a real, always-present Claude Code session-storage location, no install needed. `./CLAUDE.local.md` and `observations/` (L59, closing Note, not agent-facing) are established earlier by the M5 worktree per the body's own framing ('Same session as the gap map'; 'M5's packaging') — continuity assumption is consistent with the training's M5→M6 architecture.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_pedagogy.md",
-      "rule_index": "14",
-      "rule_lead": "Teach principle + technique — default.",
-      "verdict": "PASS",
-      "evidence": "No unexplained black-box tool invocation. Mermaid is the only named artifact form and the body gives the student the HOW to view it (L41, 'Say give me this in HTML to open them in a browser') without requiring the student to learn mermaid syntax themselves.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_pedagogy.md",
-      "rule_index": "16",
-      "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
-      "verdict": "PASS",
-      "evidence": "The genuine forcing functions (progress-streaming, interrupt-tail, evidence-quoting in fence 1; specificity-forcing in fence 3) all live inside the fences. Body pacing language stays in suggestion register — L26 'two or three recurring kinds of work' — not a bare imperative count; the '>15 min' pacing note lives only in the maintainer-only Decision points section, not the body.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_pedagogy.md",
-      "rule_index": "20",
-      "rule_lead": "Don't pre-set categories before experiment runs.",
-      "verdict": "PASS",
-      "evidence": "Fence 1 explicitly asks Claude to discover groups organically ('Group what you find by the kind of work it is... Don't filter to what looks important. Show me what actually recurs') — no pre-specified taxonomy anywhere in the prompt or body.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_pedagogy.md",
-      "rule_index": "24",
-      "rule_lead": "Cohort execution is trainer-paced + concurrent, not sequential.",
-      "verdict": "PASS",
-      "evidence": "The one genuinely long agent wait (the cross-project scan) carries a student-visible body stop-gate (L26, 'Cut the scan when the top patterns are clear enough to use... Narrow it whenever you like') that matches the maintainer's own Decision points entry ('Study + shapes run long (>15 min)... use the body stop gate and skip the sidestep') — the timing risk this rule warns about is already self-diagnosed and given a visible escape hatch.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "802f4110fe4e1102388ee95d7a59d9329ebe00cf203f5764c1a4e7decff224d7",
+      "carried_shape": "04c8bbd89721df08"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -304,17 +254,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no reflective file-write beat present — all three prompts produce scrollback-only output per the registry's own `produces.location` field",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_pedagogy.md",
-      "rule_index": "27",
-      "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
-      "verdict": "PASS",
-      "evidence": "No group/pair/room-share language, trainer-cue beats, or pause-cues anywhere in the body; every sentence is about the work (artifact, prompt, next action), not cohort management.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "802f4110fe4e1102388ee95d7a59d9329ebe00cf203f5764c1a4e7decff224d7",
+      "carried_shape": "04c8bbd89721df08"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -323,8 +266,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "none of the three prompts asks Claude to grade or critique its own prior work — all three are fresh generative tasks (scan / draw / evaluate-and-recommend), not self-report or self-audit asks",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "802f4110fe4e1102388ee95d7a59d9329ebe00cf203f5764c1a4e7decff224d7",
+      "carried_shape": "04c8bbd89721df08"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -333,98 +278,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no offered-default-to-copy-verbatim structure and no plan-mode approval step appears anywhere in this file",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_pedagogy.md",
-      "rule_index": "34b",
-      "rule_lead": "Maintainer-block hedge naming section's own failure mode = cut-signal, not warning.",
-      "verdict": "PASS",
-      "evidence": "The maintainer block's only Watch-for line (L79, 'Watch-for: compliance-feel (student treats the scan as paperwork) or credibility-performance... Both steal the mood.') is a routine mood-drift risk note. Premise-test: remove it — 'Mood target: practitioner fluency — \"I know how to test, I know how to learn, I know what my stack repeats.\"' still stands on its own; the hedge isn't propping up a shaky section premise.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_pedagogy.md",
-      "rule_index": "44",
-      "rule_lead": "Plug points + UX.",
-      "verdict": "PASS",
-      "evidence": "(a) The Plug Points entry (L118) names a concrete kind of org context ('The team's code-review conventions') and explicitly points to where it lands ('they ride into the handoff prompt that follows') — satisfies the 'point to the sentence where it lands' diagnostic even though the landing is the next exercise, not this file. (b) Walked all three prompts fast-operator style: no missing path, no hand-off naming an uncreated artifact, no setup assuming an uninstalled tool, no megaprompt beyond one copy-paste.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_pedagogy.md",
-      "rule_index": "45",
-      "rule_lead": "Per-exercise leap test — 3 observable Monday outcomes.",
-      "verdict": "PASS",
-      "evidence": "All three leap-test items (L110-112) use observable, falsifiable Monday verbs: 'holds a diagrammed map... and reads a new task against it', 'names which recurring shape a new task belongs to, or that it belongs to none', 're-runs the stack scan a week later and compares'. A working engineer can tell whether they did each on their own codebase.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_pedagogy.md",
-      "rule_index": "47",
-      "rule_lead": "Per-phase failure mode + escape hatch.",
-      "verdict": "PASS",
-      "evidence": "The atomic exercise carries two documented failure-mode+escape-hatch pairs proportionate to its 2-3 forcing functions: 'Wider-look sprawl' → 'point at the ranked head and move on' (L115), and the Decision points entry 'Study + shapes run long (>15 min)' → 'use the body stop gate and skip the sidestep' (L121).",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_pedagogy.md",
-      "rule_index": "48",
-      "rule_lead": "Heavy fan-out prompts get body recovery callout.",
-      "verdict": "PASS",
-      "evidence": "Fence 1 matches the rule's own named signal ('cross-project ~/.claude/projects/ session scans'). The body callout before it (L26) covers both directions in near-verbatim match to the rule's example phrasing: over-reading recovery ('Narrow it whenever you like, or say tell me what you've found so far') and premature-stop recovery ('If it comes back thin instead, or everything traces to one repo, a there is more than this, keep going prompt sends it back out' — matching the rule's own suggested 'there is more here' wording almost exactly).",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_pedagogy.md",
-      "rule_index": "52",
-      "rule_lead": "Session widget — `**Session** *(verb, \"name\")*` shape; place by learning flow.",
-      "verdict": "PASS",
-      "evidence": "L5: `**Session** *(continue, \"Module 6 worktree session\")*` — canonical verb+name shape, exercise-top default placement (pattern a).",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_pedagogy.md",
-      "rule_index": "52b",
-      "rule_lead": "Widgets carry semantics, not just emphasis — match the widget to MEANING, never to how loud it renders.",
-      "verdict": "PASS",
-      "evidence": "The `**Session**` widget (L5) correctly starts/continues a session. The `**Note**` widget (L59) is genuinely a must-not-be-missed informational note about worktree file locations (not an imminent-mistake warning), matching Note rather than HOX — correct widget choice.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_pedagogy.md",
-      "rule_index": "52c",
-      "rule_lead": "Exercise lead-in trio — three slots, three tenses. A slot filled past its label is this corpus's most common defect.",
-      "verdict": "PASS",
-      "evidence": "**What you do:** (L9, 9w, now-tense action) / **What you build:** (L11, 13w, names the artifact 'a diagram of the work that recurs') / **The point:** (L13, 'recurring work has a shape, and drawn, the shape is easier to recognise than described.', 15w exactly per `wc -w`, inside the ~15-word budget). The point survives the delete-the-artifact test: it's a claim about visualization aiding recognition, not a recipe, LO restatement, or arc position.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_pedagogy.md",
-      "rule_index": "52d",
-      "rule_lead": "Finding the point — four moves, learned writing M1's set 2026-08-12.",
-      "verdict": "PASS",
-      "evidence": "(a) The point takes the contestable half ('drawn, the shape is easier to recognise than described' — debatable that visualization beats description) over the settled half ('recurring work has a shape' alone). (d) Honest verb used ('easier to recognise', not an overclaim like 'you'll finally see the truth'). (c) Reading this file's point against its sibling M6 files' points is a cross-file arc question out of scope for a single-file class judge — noted, not scored, here.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_pedagogy.md",
-      "rule_index": "53",
-      "rule_lead": "Body prose must not supply an answer its prompt asks for — position is not the test (widened 2026-08-12).",
-      "verdict": "REVISE",
-      "evidence": "L53, the unlabeled body paragraph directly after the primitives fence, reads 'Expect the list to look familiar: test-writing, browser-testing, PR-building, lint and typecheck gates, compile and build, smoke-test on a real path, code-review, git-diff inspection, schema validation, eval suites for agent outputs.' The rule's own examples name exactly this shape ('a recap BELOW the prompt... broke this'). This enumerates roughly 10 specific items — materially more than the fence's own 4 illustrative examples ('test-writing, browser-testing, PR-building, lint-gates, ...') — so a student reading linearly before pasting sees most of the expected answer in advance. The boundary clause partly shields it (these are trivially-known QA categories to a software engineer, and the genuinely non-obvious value — which 2-3 fit THIS student's dominant gap, made concrete — stays undisclosed), which is why this reads as a real but soft finding rather than a clear-cut violation.",
-      "fix_hint": "Trim to the tracked backing claim alone ('The primitives Claude names are the ones your codebase already runs.') and drop the itemized list, or move the list ahead of the fence as an artifact-contract framing of the ASK rather than a post-fence recap of the ANSWER.",
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "802f4110fe4e1102388ee95d7a59d9329ebe00cf203f5764c1a4e7decff224d7",
+      "carried_shape": "04c8bbd89721df08"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -433,26 +290,10 @@
       "verdict": "N/A",
       "evidence": null,
       "na_reason": "no slow-silent-accumulation failure mode (context creep, rules-file bloat) applies to this single-session analytical/creative exercise",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_pedagogy.md",
-      "rule_index": "62",
-      "rule_lead": "Callouts next to prompts: steer, don't pre-empt.",
-      "verdict": "PASS",
-      "evidence": "The one failure-mode-adjacent callout (L26, 'Cut the scan when the top patterns are clear enough to use...') uses durable, generalizable steering language (narrow / keep-going) rather than naming a fragile mechanic tied to current prompt wording that would rot if the fence's phrasing changes.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_pedagogy.md",
-      "rule_index": "64",
-      "rule_lead": "Maintainer blocks point, don't restate. Link architecture doc where they touch delivery.",
-      "verdict": "PASS",
-      "evidence": "The maintainer block's one cross-cutting-mechanics reference already carries its canonical-home pointer: L71 'per theory-plan.md § Slide format — emphasis budget + check_slides.md §9'. The rest of the maintainer block (Placement, Mood target, sourcing) is file-unique content, not duplicated mechanics.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "802f4110fe4e1102388ee95d7a59d9329ebe00cf203f5764c1a4e7decff224d7",
+      "carried_shape": "04c8bbd89721df08"
     },
     {
       "compendium": "check_prompts.md",
@@ -463,7 +304,7 @@
       "na_reason": "none of the three prompts invoke a Skill at all",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "866a4986d7a02473bca170b0189e8343b36fc4a33261ef76f22ccb34092dfcfa",
+      "carried_from": "802f4110fe4e1102388ee95d7a59d9329ebe00cf203f5764c1a4e7decff224d7",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -475,7 +316,7 @@
       "na_reason": "none of the three prompts offer /clear or a fresh-session option; the whole exercise is an explicit same-session continuation (raw L5 Session widget: continue)",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "866a4986d7a02473bca170b0189e8343b36fc4a33261ef76f22ccb34092dfcfa",
+      "carried_from": "802f4110fe4e1102388ee95d7a59d9329ebe00cf203f5764c1a4e7decff224d7",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -487,7 +328,7 @@
       "na_reason": "none of the three prompts is a self-consistency / majority-vote / ensemble detection method",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "866a4986d7a02473bca170b0189e8343b36fc4a33261ef76f22ccb34092dfcfa",
+      "carried_from": "802f4110fe4e1102388ee95d7a59d9329ebe00cf203f5764c1a4e7decff224d7",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -499,7 +340,7 @@
       "na_reason": "AE101 is Code-only; rule states it fires only on Agents 101 / future dual-runtime and AE101 ignores the pattern",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "866a4986d7a02473bca170b0189e8343b36fc4a33261ef76f22ccb34092dfcfa",
+      "carried_from": "802f4110fe4e1102388ee95d7a59d9329ebe00cf203f5764c1a4e7decff224d7",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -511,7 +352,7 @@
       "na_reason": "Agents-101/Cowork-specific; this is an AE101 file with no runtime fork",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "866a4986d7a02473bca170b0189e8343b36fc4a33261ef76f22ccb34092dfcfa",
+      "carried_from": "802f4110fe4e1102388ee95d7a59d9329ebe00cf203f5764c1a4e7decff224d7",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -523,7 +364,7 @@
       "na_reason": "none of the three prompts regenerates an artifact with a newly-added context source",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "866a4986d7a02473bca170b0189e8343b36fc4a33261ef76f22ccb34092dfcfa",
+      "carried_from": "802f4110fe4e1102388ee95d7a59d9329ebe00cf203f5764c1a4e7decff224d7",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -535,7 +376,7 @@
       "na_reason": "none of the three prompts asks Claude to cite external facts/sources; this is an introspective scan of the student's own session history",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "866a4986d7a02473bca170b0189e8343b36fc4a33261ef76f22ccb34092dfcfa",
+      "carried_from": "802f4110fe4e1102388ee95d7a59d9329ebe00cf203f5764c1a4e7decff224d7",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -547,7 +388,7 @@
       "na_reason": "none of the three prompts walks the student through a sequence of questions to answer one at a time; P1's only ask ('ask me where they are') is a single conditional clarifier, not a question battery",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "866a4986d7a02473bca170b0189e8343b36fc4a33261ef76f22ccb34092dfcfa",
+      "carried_from": "802f4110fe4e1102388ee95d7a59d9329ebe00cf203f5764c1a4e7decff224d7",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -559,7 +400,7 @@
       "na_reason": "no regeneration of an existing file and no file write target in any of the three prompts",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "866a4986d7a02473bca170b0189e8343b36fc4a33261ef76f22ccb34092dfcfa",
+      "carried_from": "802f4110fe4e1102388ee95d7a59d9329ebe00cf203f5764c1a4e7decff224d7",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -571,7 +412,7 @@
       "na_reason": "none of the three prompts asks Claude to review its own prior work",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "866a4986d7a02473bca170b0189e8343b36fc4a33261ef76f22ccb34092dfcfa",
+      "carried_from": "802f4110fe4e1102388ee95d7a59d9329ebe00cf203f5764c1a4e7decff224d7",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -583,7 +424,7 @@
       "na_reason": "none of the three prompts is a long-running walk-away send-off in the M4/M5 sense — the session stays warm/synchronous with the student able to interrupt, not a background hand-off the student walks away from entirely",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "866a4986d7a02473bca170b0189e8343b36fc4a33261ef76f22ccb34092dfcfa",
+      "carried_from": "802f4110fe4e1102388ee95d7a59d9329ebe00cf203f5764c1a4e7decff224d7",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -595,7 +436,7 @@
       "na_reason": "none of the three prompts builds a persisted artefact that later work depends on; all outputs stay in scrollback",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "866a4986d7a02473bca170b0189e8343b36fc4a33261ef76f22ccb34092dfcfa",
+      "carried_from": "802f4110fe4e1102388ee95d7a59d9329ebe00cf203f5764c1a4e7decff224d7",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -607,7 +448,7 @@
       "na_reason": "none of the three prompts has a side effect (comment/email/commit/ticket/push) to report on",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "866a4986d7a02473bca170b0189e8343b36fc4a33261ef76f22ccb34092dfcfa",
+      "carried_from": "802f4110fe4e1102388ee95d7a59d9329ebe00cf203f5764c1a4e7decff224d7",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -619,7 +460,7 @@
       "na_reason": "procedural gate on the judge/author's own editing behavior; I made no edits to any prompt body",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "866a4986d7a02473bca170b0189e8343b36fc4a33261ef76f22ccb34092dfcfa",
+      "carried_from": "802f4110fe4e1102388ee95d7a59d9329ebe00cf203f5764c1a4e7decff224d7",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -631,7 +472,7 @@
       "na_reason": "rule is explicitly scoped to Agents 101's structured training directory; this is an AE101 file (student's own repo, no training-imposed subfolder convention) and none of the three prompts saves a file at all",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "866a4986d7a02473bca170b0189e8343b36fc4a33261ef76f22ccb34092dfcfa",
+      "carried_from": "802f4110fe4e1102388ee95d7a59d9329ebe00cf203f5764c1a4e7decff224d7",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -643,7 +484,7 @@
       "na_reason": "none of the three prompts mentions 'subagent' explicitly",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "866a4986d7a02473bca170b0189e8343b36fc4a33261ef76f22ccb34092dfcfa",
+      "carried_from": "802f4110fe4e1102388ee95d7a59d9329ebe00cf203f5764c1a4e7decff224d7",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -655,7 +496,7 @@
       "na_reason": "procedural rule governing how findings are surfaced to the maintainer by whoever applies them; not a property of the shipped file's text",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "866a4986d7a02473bca170b0189e8343b36fc4a33261ef76f22ccb34092dfcfa",
+      "carried_from": "802f4110fe4e1102388ee95d7a59d9329ebe00cf203f5764c1a4e7decff224d7",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -667,7 +508,7 @@
       "na_reason": "no 'Save it as <path>' instruction occurs anywhere in the file; every prompt's output stays in scrollback per its own registry frontmatter",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "866a4986d7a02473bca170b0189e8343b36fc4a33261ef76f22ccb34092dfcfa",
+      "carried_from": "802f4110fe4e1102388ee95d7a59d9329ebe00cf203f5764c1a4e7decff224d7",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -679,7 +520,7 @@
       "na_reason": "this rule governs how to apply a maintainer's live-test correction, not a property of already-shipped static file content",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "866a4986d7a02473bca170b0189e8343b36fc4a33261ef76f22ccb34092dfcfa",
+      "carried_from": "802f4110fe4e1102388ee95d7a59d9329ebe00cf203f5764c1a4e7decff224d7",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -691,7 +532,7 @@
       "na_reason": "none of the three prompts names a module number",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "866a4986d7a02473bca170b0189e8343b36fc4a33261ef76f22ccb34092dfcfa",
+      "carried_from": "802f4110fe4e1102388ee95d7a59d9329ebe00cf203f5764c1a4e7decff224d7",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -703,7 +544,7 @@
       "na_reason": "none of the three prompts greps git output for branches/commits",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "866a4986d7a02473bca170b0189e8343b36fc4a33261ef76f22ccb34092dfcfa",
+      "carried_from": "802f4110fe4e1102388ee95d7a59d9329ebe00cf203f5764c1a4e7decff224d7",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -715,7 +556,7 @@
       "na_reason": "none of the three prompts sets up multi-turn dialogue that writes to a persisted artifact file",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "866a4986d7a02473bca170b0189e8343b36fc4a33261ef76f22ccb34092dfcfa",
+      "carried_from": "802f4110fe4e1102388ee95d7a59d9329ebe00cf203f5764c1a4e7decff224d7",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -727,7 +568,7 @@
       "na_reason": "none of the three prompts saves a rule to a CLAUDE.md/CLAUDE.local.md file",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "866a4986d7a02473bca170b0189e8343b36fc4a33261ef76f22ccb34092dfcfa",
+      "carried_from": "802f4110fe4e1102388ee95d7a59d9329ebe00cf203f5764c1a4e7decff224d7",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -739,7 +580,7 @@
       "na_reason": "none of the three prompts pairs a load-bearing artifact-write with a STOP-and-wait tail",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "866a4986d7a02473bca170b0189e8343b36fc4a33261ef76f22ccb34092dfcfa",
+      "carried_from": "802f4110fe4e1102388ee95d7a59d9329ebe00cf203f5764c1a4e7decff224d7",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -751,7 +592,7 @@
       "na_reason": "this is an interactive cohort/self-study session with the student present (Session: continue), not a headless tmux-runner/CI instance",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "866a4986d7a02473bca170b0189e8343b36fc4a33261ef76f22ccb34092dfcfa",
+      "carried_from": "802f4110fe4e1102388ee95d7a59d9329ebe00cf203f5764c1a4e7decff224d7",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -763,7 +604,7 @@
       "na_reason": "none of the three prompts saves a file, so there is no Builder-scope path to check; the one path referenced (`~/.claude/projects/`) is a fixed absolute location outside the repo, correctly named explicitly per §24's carve-out",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "866a4986d7a02473bca170b0189e8343b36fc4a33261ef76f22ccb34092dfcfa",
+      "carried_from": "802f4110fe4e1102388ee95d7a59d9329ebe00cf203f5764c1a4e7decff224d7",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -775,7 +616,7 @@
       "na_reason": "none of the three prompts asks to append X to an existing artifact and regenerate",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "866a4986d7a02473bca170b0189e8343b36fc4a33261ef76f22ccb34092dfcfa",
+      "carried_from": "802f4110fe4e1102388ee95d7a59d9329ebe00cf203f5764c1a4e7decff224d7",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -787,7 +628,7 @@
       "na_reason": "this exercise's closing beat (raw L57, 'Decide what crosses back to your main repo') is a solo decision note handing off to the next beat, not a debrief-style closing mechanic choosing among cold-critic/pair-exchange/group-discussion/solo-retro/show-your-work",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "866a4986d7a02473bca170b0189e8343b36fc4a33261ef76f22ccb34092dfcfa",
+      "carried_from": "802f4110fe4e1102388ee95d7a59d9329ebe00cf203f5764c1a4e7decff224d7",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -799,7 +640,7 @@
       "na_reason": "whole-training aggregate metric across post-M2 modules, not gradable against a single exercise file",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "866a4986d7a02473bca170b0189e8343b36fc4a33261ef76f22ccb34092dfcfa",
+      "carried_from": "802f4110fe4e1102388ee95d7a59d9329ebe00cf203f5764c1a4e7decff224d7",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -811,7 +652,7 @@
       "na_reason": "whole-corpus calibration concept (7/8/9 tiers across the training), not a per-file pass/fail check",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "866a4986d7a02473bca170b0189e8343b36fc4a33261ef76f22ccb34092dfcfa",
+      "carried_from": "802f4110fe4e1102388ee95d7a59d9329ebe00cf203f5764c1a4e7decff224d7",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -823,7 +664,7 @@
       "na_reason": "no VARIANT markers are needed or present in this shared-library exercise file",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "866a4986d7a02473bca170b0189e8343b36fc4a33261ef76f22ccb34092dfcfa",
+      "carried_from": "802f4110fe4e1102388ee95d7a59d9329ebe00cf203f5764c1a4e7decff224d7",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -835,7 +676,7 @@
       "na_reason": "this is not a strategy-to-sendable-customer-asset chain exercise; the stated artifact is an internal continuation map (What happened: 'stays in this session's scrollback'), not a sendable customer deliverable this rule's three levels are checking for",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "866a4986d7a02473bca170b0189e8343b36fc4a33261ef76f22ccb34092dfcfa",
+      "carried_from": "802f4110fe4e1102388ee95d7a59d9329ebe00cf203f5764c1a4e7decff224d7",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -847,7 +688,7 @@
       "na_reason": "primary Bloom's level is Analyze+Create, not one of the specific pattern-recognition verbs (read/spot/judge/notice/recognize) this rule targets; the multi-instance contrast the exercise does ask for happens within a single wide scan, not across two separately-scaffolded reads",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "866a4986d7a02473bca170b0189e8343b36fc4a33261ef76f22ccb34092dfcfa",
+      "carried_from": "802f4110fe4e1102388ee95d7a59d9329ebe00cf203f5764c1a4e7decff224d7",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -859,7 +700,7 @@
       "na_reason": "no previously-taught load-bearing model/law/diagram is being re-shown here; the scan-and-diagram content is new for this placement",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "866a4986d7a02473bca170b0189e8343b36fc4a33261ef76f22ccb34092dfcfa",
+      "carried_from": "802f4110fe4e1102388ee95d7a59d9329ebe00cf203f5764c1a4e7decff224d7",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -871,7 +712,7 @@
       "na_reason": "procedural generation-workflow rule for the author, not a property of the shipped file's content — this very eval dispatch is an instance of it firing",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "866a4986d7a02473bca170b0189e8343b36fc4a33261ef76f22ccb34092dfcfa",
+      "carried_from": "802f4110fe4e1102388ee95d7a59d9329ebe00cf203f5764c1a4e7decff224d7",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -883,7 +724,7 @@
       "na_reason": "none of the three prompts depends on external tooling (MCP/shared repo/team ADR/SSO); all read purely personal Claude Code session history",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "866a4986d7a02473bca170b0189e8343b36fc4a33261ef76f22ccb34092dfcfa",
+      "carried_from": "802f4110fe4e1102388ee95d7a59d9329ebe00cf203f5764c1a4e7decff224d7",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -895,7 +736,7 @@
       "na_reason": "no file write of any kind occurs in the three prompts, so there is no personal-vs-team file-location question to check",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "866a4986d7a02473bca170b0189e8343b36fc4a33261ef76f22ccb34092dfcfa",
+      "carried_from": "802f4110fe4e1102388ee95d7a59d9329ebe00cf203f5764c1a4e7decff224d7",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -907,7 +748,7 @@
       "na_reason": "post-cohort evaluation methodology, not gradable against pre-cohort static file content",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "866a4986d7a02473bca170b0189e8343b36fc4a33261ef76f22ccb34092dfcfa",
+      "carried_from": "802f4110fe4e1102388ee95d7a59d9329ebe00cf203f5764c1a4e7decff224d7",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -919,7 +760,7 @@
       "na_reason": "whole-system verification-architecture principle, not demonstrable or violable by a single exercise file",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "866a4986d7a02473bca170b0189e8343b36fc4a33261ef76f22ccb34092dfcfa",
+      "carried_from": "802f4110fe4e1102388ee95d7a59d9329ebe00cf203f5764c1a4e7decff224d7",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -931,7 +772,7 @@
       "na_reason": "whole-pipeline tiering principle for the eval system, not applicable to grading this exercise's prompt content",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "866a4986d7a02473bca170b0189e8343b36fc4a33261ef76f22ccb34092dfcfa",
+      "carried_from": "802f4110fe4e1102388ee95d7a59d9329ebe00cf203f5764c1a4e7decff224d7",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -943,7 +784,7 @@
       "na_reason": "no memory-rule-saving activity occurs in this exercise (that is the prior gap-map exercise's job, referenced only in scrollback here)",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "866a4986d7a02473bca170b0189e8343b36fc4a33261ef76f22ccb34092dfcfa",
+      "carried_from": "802f4110fe4e1102388ee95d7a59d9329ebe00cf203f5764c1a4e7decff224d7",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -955,7 +796,7 @@
       "na_reason": "general operating principle for how Claude reacts to skeptical follow-ups; none of the three fixed prompts is itself a done-check",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "866a4986d7a02473bca170b0189e8343b36fc4a33261ef76f22ccb34092dfcfa",
+      "carried_from": "802f4110fe4e1102388ee95d7a59d9329ebe00cf203f5764c1a4e7decff224d7",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -967,7 +808,7 @@
       "na_reason": "no host-skill (agentic-nerd / Teacher Claude) is referenced anywhere in this file",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "866a4986d7a02473bca170b0189e8343b36fc4a33261ef76f22ccb34092dfcfa",
+      "carried_from": "802f4110fe4e1102388ee95d7a59d9329ebe00cf203f5764c1a4e7decff224d7",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -979,7 +820,7 @@
       "na_reason": "no eval/scoring loop is set up by this exercise",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "866a4986d7a02473bca170b0189e8343b36fc4a33261ef76f22ccb34092dfcfa",
+      "carried_from": "802f4110fe4e1102388ee95d7a59d9329ebe00cf203f5764c1a4e7decff224d7",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -991,7 +832,7 @@
       "na_reason": "the student is never asked to manually proofread Claude's output for correctness — reading the groupings/diagrams is the exercise's own recognition pedagogy, not error-catching",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "866a4986d7a02473bca170b0189e8343b36fc4a33261ef76f22ccb34092dfcfa",
+      "carried_from": "802f4110fe4e1102388ee95d7a59d9329ebe00cf203f5764c1a4e7decff224d7",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -1003,7 +844,7 @@
       "na_reason": "reading the student's own uniform-format session transcripts is not the heterogeneous external-source (slide-deck/PDF) ingestion case this rule targets",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "866a4986d7a02473bca170b0189e8343b36fc4a33261ef76f22ccb34092dfcfa",
+      "carried_from": "802f4110fe4e1102388ee95d7a59d9329ebe00cf203f5764c1a4e7decff224d7",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -1015,7 +856,7 @@
       "na_reason": "this exercise is a historical-pattern scan, not a task-selection exercise needing floor/ceiling sizing criteria",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "866a4986d7a02473bca170b0189e8343b36fc4a33261ef76f22ccb34092dfcfa",
+      "carried_from": "802f4110fe4e1102388ee95d7a59d9329ebe00cf203f5764c1a4e7decff224d7",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -1027,7 +868,7 @@
       "na_reason": "no skill/plugin install is required by this exercise (plain prompts only), so there is no above-ceiling substrate assumption to check against the AE101 engineer tier",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "866a4986d7a02473bca170b0189e8343b36fc4a33261ef76f22ccb34092dfcfa",
+      "carried_from": "802f4110fe4e1102388ee95d7a59d9329ebe00cf203f5764c1a4e7decff224d7",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -1039,7 +880,7 @@
       "na_reason": "no hook/judge/Ralph-loop/eval-gating machinery is built by this exercise",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "866a4986d7a02473bca170b0189e8343b36fc4a33261ef76f22ccb34092dfcfa",
+      "carried_from": "802f4110fe4e1102388ee95d7a59d9329ebe00cf203f5764c1a4e7decff224d7",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -1051,7 +892,7 @@
       "na_reason": "this exercise doesn't reveal an auto-load/lazy-load/explicit-load tier; it reads old session transcripts, unrelated to that staged-progression arc",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "866a4986d7a02473bca170b0189e8343b36fc4a33261ef76f22ccb34092dfcfa",
+      "carried_from": "802f4110fe4e1102388ee95d7a59d9329ebe00cf203f5764c1a4e7decff224d7",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -1063,7 +904,7 @@
       "na_reason": "governs the author's own editing behavior; as a read-only judge I removed nothing",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "866a4986d7a02473bca170b0189e8343b36fc4a33261ef76f22ccb34092dfcfa",
+      "carried_from": "802f4110fe4e1102388ee95d7a59d9329ebe00cf203f5764c1a4e7decff224d7",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -1075,7 +916,7 @@
       "na_reason": "AE101 is single-runtime (Code-only); this rule targets Agents 101's dual-runtime Cowork/Code design",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "866a4986d7a02473bca170b0189e8343b36fc4a33261ef76f22ccb34092dfcfa",
+      "carried_from": "802f4110fe4e1102388ee95d7a59d9329ebe00cf203f5764c1a4e7decff224d7",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -1087,7 +928,7 @@
       "na_reason": "no politeness fallback language ('if X doesn't work, just do Y') appears; the exercise assumes only basic Read/Bash tool access, universally available",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "866a4986d7a02473bca170b0189e8343b36fc4a33261ef76f22ccb34092dfcfa",
+      "carried_from": "802f4110fe4e1102388ee95d7a59d9329ebe00cf203f5764c1a4e7decff224d7",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -1099,7 +940,7 @@
       "na_reason": "meta-rule about how the eval system itself is organized, not a property of this exercise file's content",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "866a4986d7a02473bca170b0189e8343b36fc4a33261ef76f22ccb34092dfcfa",
+      "carried_from": "802f4110fe4e1102388ee95d7a59d9329ebe00cf203f5764c1a4e7decff224d7",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -1111,7 +952,7 @@
       "na_reason": "no create-then-use pair with asymmetric save timing exists here; nothing is saved or installed at all",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "866a4986d7a02473bca170b0189e8343b36fc4a33261ef76f22ccb34092dfcfa",
+      "carried_from": "802f4110fe4e1102388ee95d7a59d9329ebe00cf203f5764c1a4e7decff224d7",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -1123,7 +964,7 @@
       "na_reason": "this rule flags module files that haven't been extracted; this file already is the extracted exercise (curriculum/exercises/read-your-stack.md), so the concern doesn't apply to grading it",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "866a4986d7a02473bca170b0189e8343b36fc4a33261ef76f22ccb34092dfcfa",
+      "carried_from": "802f4110fe4e1102388ee95d7a59d9329ebe00cf203f5764c1a4e7decff224d7",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -1135,7 +976,7 @@
       "na_reason": "this exercise continues an existing session/worktree from M5 rather than introducing a brand-new multi-session mechanic",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "866a4986d7a02473bca170b0189e8343b36fc4a33261ef76f22ccb34092dfcfa",
+      "carried_from": "802f4110fe4e1102388ee95d7a59d9329ebe00cf203f5764c1a4e7decff224d7",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -1147,7 +988,7 @@
       "na_reason": "none of the three prompts or the surrounding body mentions /clear",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "866a4986d7a02473bca170b0189e8343b36fc4a33261ef76f22ccb34092dfcfa",
+      "carried_from": "802f4110fe4e1102388ee95d7a59d9329ebe00cf203f5764c1a4e7decff224d7",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -1159,7 +1000,7 @@
       "na_reason": "no reference-page links appear in the body region at all",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "866a4986d7a02473bca170b0189e8343b36fc4a33261ef76f22ccb34092dfcfa",
+      "carried_from": "802f4110fe4e1102388ee95d7a59d9329ebe00cf203f5764c1a4e7decff224d7",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -1171,7 +1012,7 @@
       "na_reason": "general audit-methodology guidance for the auditor, already followed procedurally (scanned at prompt/exercise grain, not module-rolled-up)",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "866a4986d7a02473bca170b0189e8343b36fc4a33261ef76f22ccb34092dfcfa",
+      "carried_from": "802f4110fe4e1102388ee95d7a59d9329ebe00cf203f5764c1a4e7decff224d7",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -1183,7 +1024,7 @@
       "na_reason": "no skill/framework/tool change is being proposed here",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "866a4986d7a02473bca170b0189e8343b36fc4a33261ef76f22ccb34092dfcfa",
+      "carried_from": "802f4110fe4e1102388ee95d7a59d9329ebe00cf203f5764c1a4e7decff224d7",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -1195,7 +1036,7 @@
       "na_reason": "judge-conduct rule about how to treat prior flagged items; followed procedurally in this review (direct re-read of the live file rather than trusting the stale cached instance) rather than a property of the shipped text",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "866a4986d7a02473bca170b0189e8343b36fc4a33261ef76f22ccb34092dfcfa",
+      "carried_from": "802f4110fe4e1102388ee95d7a59d9329ebe00cf203f5764c1a4e7decff224d7",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -1207,7 +1048,7 @@
       "na_reason": "this file is the exercise under review, not a TODO/punchlist tracking surface",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "866a4986d7a02473bca170b0189e8343b36fc4a33261ef76f22ccb34092dfcfa",
+      "carried_from": "802f4110fe4e1102388ee95d7a59d9329ebe00cf203f5764c1a4e7decff224d7",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -1219,7 +1060,7 @@
       "na_reason": "this specific exercise file is a same-session continuation of M5's worktree (raw L5, L7, L59), not a cross-module boundary hand-off; the rule's prescribed rescue-callout location for a thin/absent M5 artifact is the M6 module's own Start-here section, out of this exercise file's scope to carry",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "866a4986d7a02473bca170b0189e8343b36fc4a33261ef76f22ccb34092dfcfa",
+      "carried_from": "802f4110fe4e1102388ee95d7a59d9329ebe00cf203f5764c1a4e7decff224d7",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -1231,7 +1072,7 @@
       "na_reason": "whole-training generation-process discipline, not gradable against one already-shipped exercise file",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "866a4986d7a02473bca170b0189e8343b36fc4a33261ef76f22ccb34092dfcfa",
+      "carried_from": "802f4110fe4e1102388ee95d7a59d9329ebe00cf203f5764c1a4e7decff224d7",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -1243,7 +1084,7 @@
       "na_reason": "no prompt here trades a known runtime-risk shape (self-grading in one turn, soft-instruction niceness-tax, overwrite ambiguity) for convenience that the maintainer knowingly kept — the residual low-confidence risks logged above are inherent, not a deliberate convenience tradeoff needing acknowledgment",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "866a4986d7a02473bca170b0189e8343b36fc4a33261ef76f22ccb34092dfcfa",
+      "carried_from": "802f4110fe4e1102388ee95d7a59d9329ebe00cf203f5764c1a4e7decff224d7",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -1255,10 +1096,11 @@
       "na_reason": "no signal in the maintainer or backing block that this file is a deliberate cross-module before/after antipattern demo (unlike the M4-unpackaged/M5-packaged contrast this same module's spot-gaps-build-the-loop exercise runs)",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "866a4986d7a02473bca170b0189e8343b36fc4a33261ef76f22ccb34092dfcfa",
+      "carried_from": "802f4110fe4e1102388ee95d7a59d9329ebe00cf203f5764c1a4e7decff224d7",
       "carried_shape": "04c8bbd89721df08"
     }
   ],
   "todos_count": 2,
-  "blocking_findings_count": 0
+  "blocking_findings_count": 0,
+  "notes": "Compendiums check_prompts.md and check_pedagogy.md carried 42 rules not resolved by the shape-hash prefill; the 24 not rowed above (check_prompts.md #1,2,2a,2b,2c,3,9,24,28,29,31,36,39; check_pedagogy.md #6,10,12,14,20,24,27,34b,44,45,52,52b,52c,52d,62,64) are static/mechanical prompt-shape or structural/widget/leap-test rules this template's own Scope note assigns to the technical, writing, story, or pedagogy class ('No static-rule grading... Those = technical judge'), not to behavior's probabilistic-response lens; left to those classes rather than re-derived here."
 }

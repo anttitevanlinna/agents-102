@@ -57,8 +57,8 @@ Ask Claude to read your rules file against the diagnosis and cut the one rule it
 
 **Declined at the 2026-09-03 polish pass (list shown to Antti, no veto):** *The point* line stays as written; it is scoped to the exercise's own two sessions, a corpus we control, so `check_writing.md` §21's world-claim test does not fire. The Plug-points entry follows the training-wide convention of naming the in-training artefacts an exercise consumes; whether that convention should be renamed is a corpus question (`check_pedagogy.md` §44), not this file's. The first lead-in (*Ask Claude to read both sessions…*) was carded and approved the same pass; `check_prompts.md` §38 does not re-file on it. Judges should not re-file any of these.
 
-**Quality:** compendium-audited 2026-09-04 (writing@4589f1d5 story@54577f39 technical@4589f1d5 behavior@289b45a3 pedagogy@54577f39 strategy@4e0370bc slides@4589f1d5)
-- judges @4589f1d5: writing PASS (2 todos see instances/ae101--exercise--spot-gaps-build-the-loop.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-09-05 (writing@fb797e3b story@fb797e3b technical@4589f1d5 behavior@fb797e3b pedagogy@fb797e3b strategy@fb797e3b slides@fb797e3b)
+- judges @fb797e3b: writing PASS, story PASS, technical PASS, behavior PASS (2 todos see instances/ae101--exercise--spot-gaps-build-the-loop.behavior.json), pedagogy PASS, strategy PASS, slides PASS
 
 **Word count:** ~420 words body.
 

@@ -1,16 +1,15 @@
 {
   "class": "slides",
   "training": "ae101",
-  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/spot-gaps-build-the-loop.md",
+  "file": "curriculum/exercises/spot-gaps-build-the-loop.md",
   "verdict": "PASS",
-  "body_sha": "6c32e6de2246879de28b27278d3ebc613c7b4ad7947058edb2146086056ec3b7",
+  "body_sha": "0cd284c8e9bd4f99bf9af3fe3bec3c3c6f5b1872db6508580b476cf981b5ad59",
   "shape_hash": "1903646330181a65",
-  "pin": "54577f39",
   "chunk_map": [
     {
       "index": 0,
-      "heading": "# Map the gaps, cut the rule (title slide)",
-      "lines": "1-16"
+      "heading": "H1 + lede (title slide)",
+      "lines": "1-15"
     },
     {
       "index": 1,
@@ -40,7 +39,7 @@
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Chunk 0 L7 'M5's session may still be running the re-send... decide whether it is done enough, should be stopped, or counts as the partial artefact' reads as first-mention inside the exercise, but the enclosing module's own '## Start here' (curriculum/trainings/agentic-engineering-101/spot-gaps-build-the-loop.md L20-26) already establishes 'M5', 'the packaged Module 5 re-send', 'the un-packaged Module 4 send-off', and 'accept the partial session as the artefact' before this exercise's include position -- module-signposting-as-prior-context carve-out. Closest judgment call: chunk 4 L44 'Push back if the diff touches more than the one rule you flagged' reuses 'diff' (earlier chunks use it for the two-session comparison) for a second sense (the CLAUDE.local.md edit's diff); the immediate context -- the whole chunk is about approving the file edit just made -- disambiguates it as the edit's diff, not the session diff, so it stays inside the rule rather than vague-with-full-history.",
+      "evidence": "chunk 0 line 7: 'Before this module edits files or cuts rules, decide whether it is done enough, should be stopped, or counts as the partial artefact.' -- 'the partial artefact' and 'M5's session' read as never-named on a cold read of this file alone, BUT the enclosing module file (curriculum/trainings/agentic-engineering-101/spot-gaps-build-the-loop.md line 24, '## Start here', which renders BEFORE this exercise in both deck and long-read) already states: 'before it writes, decide whether to wait, stop M5, or accept the partial session as the artefact.' Per rule 1's module-include-order carve-out ('vocabulary the enclosing module file's signposting introduced counts as prior context for the exercises it includes'), this resolves -- prior context, not a dangling referent. Second judgment call: chunk 2 line 29 'the quote rule re-asserted' -- not verbatim-named anywhere, but chunk 1's prompt (line 24 expansion) states 'For every claim, quote a specific moment from the artefacts. Don't generalise,' one slide back and the only candidate a deck reader would map it to -- passes as a natural shorthand for content just read, not a second/ambiguous candidate. Remaining referents (task.md, plan.md, Run coordinates, the packaging, the verifier, ./CLAUDE.local.md, the diff in chunk 4) each resolve to either the immediately preceding chunk or to vocabulary the M4/M5 module files establish before this exercise (verified via grep of curriculum/exercises/fork-the-worktree.md:39 for 'Run coordinates').",
       "fix_hint": null,
       "blocking": true
     },
@@ -50,7 +49,7 @@
       "rule_lead": "Every backward reference points at a beat that exists.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Only backward beat references in body are to Module 4 ('m4/<slug>' branch, task.md) and Module 5 ('m5/<slug>' branch, plan.md, the M5 worktree) -- both modules exist in the training and the module-set cross_module audit already PASSed the M4-M5-M6 arc (module maintainer block L78: 'cross_module @54577f39: PASS -- set=[run-the-first-experiment,learn-from-the-test,spot-gaps-build-the-loop]'). No 'the X you did/saw' phrasing pointing at a beat absent from the current set.",
+      "evidence": "grep -noE 'the [a-zA-Z-]+ you (did|saw|caught|found|wrote|built|made|just [a-z]+)' on the body: no output. The only backward-pointing beats named are M4 and M5 (chunks 0-1: 'the un-packaged Module 4 send-off', 'M5's session', 'the m4/<slug> branch', 'the m5/<slug> branch') -- both confirmed present in the training's current module set via site/layouts/curriculum.js TRAININGS['agentic-engineering-101'].modules (run-the-first-experiment = M4, learn-from-the-test = M5, both listed immediately before this file's own module spot-gaps-build-the-loop = M6). No dead-beat shape found.",
       "fix_hint": null,
       "blocking": true
     },
@@ -60,7 +59,7 @@
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Shortest chunk is 4 ('Approve, unless the cut spreads past the one rule', L41-45): two full bullets, each a self-carrying instruction (approve the pause; push back if the edit over-reaches) -- not a bare wait-state or single context-dependent fragment. Every other chunk carries a bullet set plus a prompt block.",
+      "evidence": "Chunks 1-4 each carry a self-contained instruction plus either a prompt card or an explicit decision rule (chunk 4: 'Push back if the diff touches more than the one rule you flagged... One rule cut, no more.'). None is a bare wait-state or single context-dependent bullet.",
       "fix_hint": null,
       "blocking": false
     },
@@ -70,7 +69,7 @@
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "All four headers echo their own chunk content directly: chunk 1 'Diff the two sessions, rank the gaps' -> bullets diff the sessions + prompt block ends 'Rank by damage-to-a-future-session'; chunk 3 'Cut one stale rule the diagnosis killed' -> body reads verbatim 'Ask Claude to cut the one rule the diagnosis killed'; chunk 4 'Approve, unless the cut spreads past the one rule' -> bullet 1 'If it asks, approve', bullet 2 'One rule cut, no more'. No header contradicted by its own content.",
+      "evidence": "Each header matches its chunk's content under sequential read: 'Diff the two sessions, rank the gaps' (chunk 1) both diffs and asks to rank via the prompt's closing line 'which gap matters most? Rank by damage-to-a-future-session'; 'Read the contrast, push back where it generalises' (chunk 2) matches its three push-back bullets; 'Cut one stale rule the diagnosis killed' (chunk 3) matches the cut-prompt; 'Approve, unless the cut spreads past the one rule' (chunk 4) matches the approve/push-back bullets. No header is contradicted by its own chunk.",
       "fix_hint": null,
       "blocking": false
     },
@@ -80,9 +79,9 @@
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Checked all sub-items per chunk: no 'Not X. Not Y. Z.' construction anywhere; no anaphora/epistrophe triples; no self-grading superlative (L13 'The point: two sessions are enough to place every lesson' states a pedagogical thesis about the exercise's own two artefacts, not a value-prop claim about the exercise's quality -- also see maintainer L58 accept-note declining a §21 world-claim flag on this exact line, a sibling but distinct rule); no number-with-retraction pattern; no vague abstraction-noun stacks (L35 prompt's 'over-fitted verifier, plan.md staleness, reference-as-cage' name concrete failure shapes, not narrator abstraction); no verb triplets with an empty leg.",
+      "evidence": "Checked all five sub-items against every chunk: no 'Not X. Not Y. Z.' construction; no anaphora/epistrophe triples; no self-grading superlative (closest is chunk 0 line 13 'two sessions are enough to place every lesson', a substantive teaching claim about the method, not a claim the exercise is valuable/impressive); no number-with-retraction pattern (no numbers appear in body prose outside the Time: label); no abstraction-noun stack (vocabulary throughout is concrete: branch, worktree, transcript, rules file); no empty-leg verb triplet.",
       "fix_hint": null,
-      "blocking": true
+      "blocking": false
     },
     {
       "compendium": "check_slides.md",
@@ -90,7 +89,7 @@
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "grep -inE '\\b(surface|firing|compendium|forcing function|beat|mood|Connections)\\b' against body (L1-45): no output. All body vocabulary (worktree, un-packaged/packaged, re-send, diagnosis, diff, verifier, plan.md, CLAUDE.local.md) is engineering-native or module-arc terminology already earned via M4/M5, not repo-authorial dialect.",
+      "evidence": "grep -niE '\\b(surface|firing|compendium|forcing function|beat|mood|Connections)\\b' curriculum/evals/body-views/ae101--exercise--spot-gaps-build-the-loop.body.txt (the numbered body projection, maintainer/backing tail excluded by construction) -> no matches. Vocabulary throughout (branch, worktree, transcript, diff, rules file, verifier, plan) is ordinary engineer register.",
       "fix_hint": null,
       "blocking": true
     },
@@ -100,7 +99,7 @@
       "rule_lead": "Emphasis budget -- bold is for handles, and go very lightly.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Chunk 0's bold (**Time:**, **Session**, **What you do:**, **What you build:**, **The point:**) is the standard exercise-opener widget/label chrome exempted by this rule and confirmed by the file's own maintainer accept-note (L56: 'bullet leads plain; bold only on widget / label chrome, per ... check_slides.md §9'). Chunks 1-4 (the narrative bullets) carry zero bold -- grep -c '\\*\\*' on lines 17-45 -> 0. Well inside the <=1-per-slide budget.",
+      "evidence": "Closest-to-violating case: chunk 0 (title slide, lines 3-13) carries five separate bolded labels -- **Time:**, **Session**, **What you do:**, **What you build:**, **The point:** -- naively over a naive '<=1 bolded element per slide' count. Each is a <=2-word label/chrome bullet, not a bolded lead sentence, and this exact five-label shape ('**Time:**' as the opening bold) appears in 40 of the corpus's exercise files (grep -l '^\\*\\*Time:\\*\\*' curriculum/exercises/*.md), so the count is the exercise-file template's doing, structurally identical to the WYL-bullets and task-sizing exceptions this rule already names ('check whether another rule or the module template requires the bold you are about to charge for'). Maintainer accept-note at L56 (Emphasis pass, 2026-07-09) independently confirms the intent for this file: 'bullet leads plain; bold only on widget / label chrome.' Chunks 1-4 carry zero bold markup (grep confirms no '**' outside chunk 0 and the maintainer tail).",
       "fix_hint": null,
       "blocking": false
     },
@@ -110,7 +109,7 @@
       "rule_lead": "Presence precedes content -- verify against the composed deck, not long-read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "File is curriculum/exercises/spot-gaps-build-the-loop.md, rendered inside the module under the '.phase--exercise' wrapper the renderer keys on -- not prework/supplementary/reference (the shapes rule 10 warns get dropped). git diff 54577f39..HEAD on this file touches only sentence-level prose (punctuation, a header word swap, a 'Claude'->'the agent' substitution) -- no phase marker, tier marker, or content-flag change that could desync the two layouts. derive-body-view's signals report slide_count: 4, consistent with the four '##' chunks.",
+      "evidence": "signals.slide_count: 4 matches a manual count of '##' headings in the raw body (4), confirming nothing silently dropped from the composed deck. The whole body sits inside the standard exercise structure (no top-level prose outside a '##' chunk or the pre-first-heading title slide), and this file renders under the module's own '.phase--exercise' wrapper by the same mechanism every AE101 exercise uses -- not something this file's own content could opt out of. The diff since the pin (4589f1d5) touched only bullet/maintainer prose (git diff 4589f1d5..HEAD), no tier marker, phase marker, or heading, so deck presence is unaffected by this revision.",
       "fix_hint": null,
       "blocking": true
     },
@@ -120,7 +119,7 @@
       "rule_lead": "Page geometry dies at the cut; reading order survives.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "node scripts/check-slide-deixis.js --file curriculum/exercises/spot-gaps-build-the-loop.md -> 'OK -- 1 files, no page-geometry pointers across the slide cut.' grep -nE '\\b(below|above|further down|at the top of this page|see below)\\b' against the body: no hits (the one hit on 'below' in the file, L87 'Whole-room mood below 7', sits in the maintainer block, not the body).",
+      "evidence": "node scripts/check-slide-deixis.js --file curriculum/exercises/spot-gaps-build-the-loop.md -> 'OK -- 1 files, no page-geometry pointers across the slide cut.' Independently confirmed: grep -noE '\\b(below|above|further down|a few paragraphs|at the top of this page|see below)\\b' on the body projection returns nothing (exit 1).",
       "fix_hint": null,
       "blocking": true
     },
@@ -130,7 +129,7 @@
       "rule_lead": "Slide size -- 210 words / 6 bullets, and the cap is machine-checked.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "node scripts/check-slide-size.js --file curriculum/exercises/spot-gaps-build-the-loop.md -> 'files: 1  slides: 4  limits: 210 words / 6 bullets  oversized: 0 -- every slide is within limits.'",
+      "evidence": "node scripts/check-slide-size.js --file curriculum/exercises/spot-gaps-build-the-loop.md -> 'files: 1  slides: 4  limits: 210 words / 6 bullets  oversized: 0' / '✓ every slide is within limits'.",
       "fix_hint": null,
       "blocking": false
     },
@@ -140,7 +139,7 @@
       "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "This is an exercise file, so all '##' headings should be imperative or phase labels: 'Diff the two sessions, rank the gaps' / 'Read the contrast, push back where it generalises' / 'Cut one stale rule the diagnosis killed' / 'Approve, unless the cut spreads past the one rule' -- all four open on an imperative verb, none is a declarative law-claim mis-cast as a label.",
+      "evidence": "All four body headings are imperative exercise-shape constructions, none declarative: 'Diff the two sessions, rank the gaps' (line 17), 'Read the contrast, push back where it generalises' (line 26), 'Cut one stale rule the diagnosis killed' (line 32), 'Approve, unless the cut spreads past the one rule' (line 41). This exercise is diagnostic/procedural throughout and never reaches a stated law that would call for a declarative heading, so the claim-heading requirement for law/consolidation slides does not apply here.",
       "fix_hint": null,
       "blocking": false
     },
@@ -150,7 +149,7 @@
       "rule_lead": "A bullet earns its slot or dies -- three classes that read as rigour and carry nothing.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Every bullet supplies a concrete move, file/branch location, or predicted-model-behaviour tell (e.g. L28 predicts the four-dimension plan-summary opener and tells the student what to skim past; L43-44 gives the approve-then-verify-scope moves). Closest judgment calls: chunk 3 L34-35 'Rules-files have a half-life...' motivates the coming cut instruction with a first-use rationale rather than re-announcing doctrine already stated elsewhere in this file; chunk 4 L44 'One rule cut, no more' asserts an explicit scope priority (the boundary the student checks the diff against) rather than a content-free kicker restating the header. Both stay inside the rule.",
+      "evidence": "Closest-to-violating case: chunk 3 line 35 'Rules-files have a half-life. Adding rules is only half of it; subtracting the dead ones is the other half.' -- reads as a general-sounding claim but it is the FIRST and only statement of this framing anywhere in the file (not a doctrine re-announcement, class (a)), it is not self-referential design commentary (class (b): it is about rules-files, not about the training's own pedagogy), and it does not close the chunk (the prompt card follows it) so it is not an aphorism kicker (class (c)). It earns its slot by supplying the rationale ('a priority') for the cut the next line asks for. No instance of any of the three named classes found elsewhere.",
       "fix_hint": null,
       "blocking": false
     },
@@ -163,7 +162,7 @@
       "na_reason": "git diff 4e0370bc..HEAD on this file changes only bullet/prose text, no '##' heading line; maintainer block carries no provenance note of the '(from <old-file>, header ...)' shape. Neither trigger condition for this rule is present.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "546e93863ab355827c87148f305e3302c4f0cdac5feabb00e95c9e43343e8819",
+      "carried_from": "6c32e6de2246879de28b27278d3ebc613c7b4ad7947058edb2146086056ec3b7",
       "carried_shape": "1903646330181a65"
     },
     {
@@ -174,7 +173,7 @@
       "evidence": "grep -noE '\\[.*\\]\\(' on the body: no output (matches signals.has_urls: false). Body carries zero markdown links, so the cross-file-callback-by-position shape this rule targets does not occur. The M4/M5 references (chunk 0-1) name the source directly ('M5 worktree', 'm4/<slug> branch', 'task.md', 'plan.md') rather than locating it by position ('the previous module said'), so even read generously they don't trip this rule; that resolution sits under §1's carve-outs, not §2.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "546e93863ab355827c87148f305e3302c4f0cdac5feabb00e95c9e43343e8819",
+      "carried_from": "6c32e6de2246879de28b27278d3ebc613c7b4ad7947058edb2146086056ec3b7",
       "carried_shape": "1903646330181a65"
     },
     {
@@ -185,7 +184,7 @@
       "evidence": "No guess-before-reveal construction anywhere in the body -- this is a diagnose-and-diff exercise (compare two sessions, cut one rule), not a live-demo beat that narrates an outcome and then asks the student to guess it.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "546e93863ab355827c87148f305e3302c4f0cdac5feabb00e95c9e43343e8819",
+      "carried_from": "6c32e6de2246879de28b27278d3ebc613c7b4ad7947058edb2146086056ec3b7",
       "carried_shape": "1903646330181a65"
     },
     {
@@ -196,7 +195,7 @@
       "evidence": "node scripts/check-slide-numbering.js curriculum/exercises/spot-gaps-build-the-loop.md -> 'OK -- 59 files, Phase/Step numbering consistent' (this file included, zero flagged). The maintainer block states 'Atomic -- no phase markers' and the body confirms it: no '## Phase N:' or '## N.' step headers exist anywhere in the file, so there is no content-ordinal numbering scheme for this rule to check.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "546e93863ab355827c87148f305e3302c4f0cdac5feabb00e95c9e43343e8819",
+      "carried_from": "6c32e6de2246879de28b27278d3ebc613c7b4ad7947058edb2146086056ec3b7",
       "carried_shape": "1903646330181a65"
     },
     {
@@ -207,16 +206,10 @@
       "evidence": "signals.has_urls: false; grep -noE '\\[.*\\]\\(' on the body returns nothing. No in-body links of any kind (in-page anchor, external, or structural include) exist inside this file's own body for this rule to evaluate.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "546e93863ab355827c87148f305e3302c4f0cdac5feabb00e95c9e43343e8819",
+      "carried_from": "6c32e6de2246879de28b27278d3ebc613c7b4ad7947058edb2146086056ec3b7",
       "carried_shape": "1903646330181a65"
     }
   ],
   "todos_count": 0,
-  "blocking_findings_count": 0,
-  "accept_notes_found": [
-    "L52 Lean pass (2026-08-25) -- session widget trimmed to two sentences, listed cuts not to restore",
-    "L56 Emphasis pass (2026-07-09) -- bullet leads plain, bold only on widget/label chrome per check_slides.md §9",
-    "L58 Declined at 2026-09-03 polish pass -- The point line and Plug-points naming convention, both check_writing/check_pedagogy concerns, judges told not to re-file"
-  ],
-  "notes": "Rule 17 ('a retitled slide re-earns its bullets against the new header') was excluded from my brief as prefill-resolved N/A even though this diff does rename chunk 4's header ('Say go' -> 'Approve'); I did not write a row for it per the brief's instruction, but note for the record that the new header is, if anything, better supported by the existing bullets ('If it asks, approve' now echoes 'Approve' directly), so no re-derivation was needed to trust the parked answer. Also outside slides scope: L29's swap of 'Claude' for 'the agent' (twice) while L22/L37 keep 'Claude' is a within-file naming inconsistency worth a writing-class look, though the referent stays unambiguous either way so it does not trip check_slides.md §1."
+  "blocking_findings_count": 0
 }

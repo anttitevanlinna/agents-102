@@ -3,18 +3,38 @@
   "training": "ae101",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/learn-from-the-test.md",
   "verdict": "PASS_WITH_TODOS",
-  "body_sha": "1802109cf389e278e04ccc0ad6a8ed643abb45a705fc9371c3e48c6de48bf61d",
+  "body_sha": "6ab09c5512a990509799838352bef491b42a85af191388085debce8b696d1284",
   "shape_hash": "94301cda9e6a5a78",
-  "module_mood_contract": "learning through contrast — \"I can feel what packaging adds now; I couldn't have read it as a lecture.\"",
+  "pin": "54577f39",
+  "staleness_reason": "stale-finding",
+  "trace_path": "curriculum/evals/sim-cache/ae101--module--learn-from-the-test.persona.json",
   "trace_status": "regenerated",
-  "diff_pin": "85515fa0..HEAD",
+  "module_mood_contract": "learning through contrast — \"I can feel what packaging adds now; I couldn't have read it as a lecture.\"",
+  "mood_summary": {
+    "phase_scores": [
+      8,
+      7,
+      8,
+      null,
+      8,
+      9,
+      8,
+      8
+    ],
+    "close_score": 8,
+    "any_below_7": false,
+    "facilitator_premium_beats": [
+      "phase 2 (Say what done-done means + Reading the return opener, lines 27-37) — held at 7, see check_strategy_tie_in §1 row"
+    ]
+  },
+  "teaching_moment_lands": "Ronacher's three-pattern (goal drift / context rot / plausible-but-wrong -> reference / plan.md / verifier) is deliberately unnamed pre-exercise (grep of lectures/reading-the-return.md and lectures/hooks-always-fire.md for 'ronacher'/'cherny'/'three-pattern'/'three-shape' returns zero hits before the closer, confirming the maintainer's own opener-dosage notes) and named only in the closing lecture after Phase 1's felt-evidence diagnosis. The moment is fragile at exactly one point, already known to the maintainer and under live-cohort watch rather than fixed pre-emptively: the newly added first-cohort observation bullet (L268) names the risk that a room reads the What-You'll-Learn pairing (L16) as the answer to adopt before Phase 1 diagnoses anything, which would collapse the intended discovery arc into compliance. This is the same compliance-feeling risk the Mood target (L183) already tracks; recording it as an open cohort question rather than cutting L16 is the right call under check_pedagogy §20 (don't pre-set categories before the experiment runs) — no action owed from story on this pass.",
   "rules_evaluated": [
     {
       "compendium": "check_lectures.md",
       "rule_index": 1,
       "rule_lead": "Meta-frame lectures = closers, not openers.",
       "verdict": "PASS",
-      "evidence": "Reading order on current source: L37 [Lecture: Reading the return] (opener, plants the three failure-mode lenses), L48 [Lecture: Hooks always fire] (mid-module vocabulary, mechanism only), L50/L52 the two exercise includes, then L57 [Lecture: What packaging is] and L59 [Lecture: The gate is a claim too] (closers). `grep -nE 'Ronacher|Cherny|three-pattern' lectures/reading-the-return.md` returns hits only at L23/L27/L49/L80/L91/L96, all inside that file's own maintainer/backing/source blocks — none inside its three `##` slide bodies (L3/L9/L16). Naming lands in the closer: `what-packaging-is.md` L24 `## The verifier completes the three-pattern`. This diff touched no lecture file and no lecture include line; unaffected.",
+      "evidence": "The two lectures that carry a naming pattern the student has just lived through ('What packaging is', 'The gate is a claim too', L57-59) sit AFTER both exercises (Fork the worktree L50, Diagnose and re-send L52) — the module's own Frameworks section (L261) confirms 'Ronacher's three-pattern... Earns its name in the closing lecture, not before' and the Meta block's push-back list (L196) names 'Closing lecture pre-empt' as a failure mode to guard against, i.e. the placement is load-bearing by design, not incidental. The two pre-exercise lectures ('Reading the return' L37, 'Hooks always fire' L48) teach vocabulary (three failure-mode lenses; hook-vs-prompt mechanism) rather than naming the packaging pattern, which is the mid-module vocabulary case this rule licenses.",
       "fix_hint": null,
       "blocking": false
     },
@@ -23,7 +43,7 @@
       "rule_index": 2,
       "rule_lead": "Minimal lecturing before contrast-mood exercises.",
       "verdict": "PASS",
-      "evidence": "`sed -n '1,52p' learn-from-the-test.md | grep -inE 'Ronacher|Cherny|three-pattern'` → 0 hits (verified this session). Pre-exercise load stays at spirit + diagnostic lenses (reading-the-return) + one operational primitive (hooks-always-fire, mechanism only) — the ceiling, not over it. The section closest to violating, `## Your mid-run worries hint at missing checks` (L39-48), stops at one move (L44 'Test that worry against the return') and the maintainer note at L138 records the trio pre-announcement was deliberately cut for this reason. This diff added only an invisible `<!--tier:3-->` slide-layout marker inside this section (L40); the rendered text is unchanged from the prior pin.",
+      "evidence": "M5 is the contrast-mood module by design (trace module_mood_contract: 'learning through contrast'). `grep -niE \"ronacher|cherny|three.pattern|three.shape\" lectures/reading-the-return.md lectures/hooks-always-fire.md` returns Ronacher hits only in reading-the-return.md's own backing/maintainer notes attributing the *context-rot* term (a citation, not the packaging three-pattern) and zero Cherny hits in either file — the two named practitioner packaging-frameworks this rule protects stay unspoken pre-exercise. reading-the-return.md's own maintainer note (L49 of that file) states outright: 'Don't pre-empt the three-pattern (reference / plan.md / verifier). This opener names failure modes, not fixes.' The module's own body between Start-here and the exercises (L21-52) stays at spirit + one move (test the worry against the return, build one check) with no framework naming or tradeoff explanation.",
       "fix_hint": null,
       "blocking": false
     },
@@ -32,7 +52,7 @@
       "rule_index": 4,
       "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
       "verdict": "PASS",
-      "evidence": "`git diff 85515fa0..HEAD -- <file> | grep -E '^[-+]##'` → empty: no header line changed in this diff, so §4 is unaffected by the pinned edits. Spot-check against the rule's new (2026-09-03) bare-arc-label clause: `## Next` (L117) reads on its own as a slot-name, not a concept, which is the failure mode the new clause names — but `curriculum/module-shape.md` L49-57 mandates this exact heading text as the canonical closing section of every module ('`## Next` is the last section of the body'), and `grep -rn '^## Next$' curriculum/trainings/` finds it verbatim in 13 files across both trainings. This is template structure, not a per-file creative header, so I am not filing it as a finding against this file; flagged as a maintainer question in `notes` instead (the clause's reach into template headers looks unintended, and fixing it here alone would desync the file from its own canon). `## Back to the map, one last time` (L78) uses the orientation carve-out once (position, not concept) inside its own variant, which is the ration the rule allows.",
+      "evidence": "Scoped to this file's narrative headers, not its repeated module-scaffold headers (Big Idea/Prework/What You'll Learn/Key Concepts/Optional challenges/Bring to Module N/Pre-reads/Next/Start here are structural boilerplate per `curriculum/module-shape.md`, not the arc-header surface this rule's failure-mode list targets). 'Say what done-done means' (L27) and 'Your mid-run worries hint at missing checks' (L39) both name a specific concept the body under them delivers exactly (cover the bullets, the header still tells you what you walk away holding). 'Back to the map, one last time' (L78) is the rule's own cited orientation carve-out example verbatim ('Back to the map' — position not concept, rationed to one beat per arc), used exactly once in this file. 'Inspect your results' (L70, no-M6 variant closer) is the weakest of the four — a generic verb+noun rather than a sharp concept-name — but it is not on the banned empty-container list ('The move', 'The names'...) and is not a bare arc label ('Wrap-up', 'Recap'); it names the activity (re-read the packaged return through the same lenses) truthfully enough that a sharper header would be a taste improvement, not a defect. No category error, no dropped qualifier, no unsupported universal in any of the four.",
       "fix_hint": null,
       "blocking": false
     },
@@ -41,52 +61,7 @@
       "rule_index": 5,
       "rule_lead": "A slide's BODY is size-bounded, not just its header (§4's sibling).",
       "verdict": "PASS",
-      "evidence": "`node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/learn-from-the-test.md --report` this session: 11 slides checked, 0 oversized, largest is 159 words (`## Your mid-run worries hint at missing checks`) against the 210-word/6-bullet ceiling. The script does not walk the `<!--flag:no-module:...-->` variant, so `## Back to the map, one last time` (the section this diff trimmed) isn't in its report; manual count on the current body (`sed` range L79-L91, figure/flag/tier lines stripped) = 194 words — under the ceiling, and lower than before the edit (the cut sentences alone were ~43 words, which would have put the pre-edit version at ~237, over the line). The edit reduces this row's risk, not increases it.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": 1,
-      "rule_lead": "Mood contract named.",
-      "verdict": "REVISE",
-      "evidence": "Mood contract is named and honoured (trace `module_mood_contract` matches the strategy doc's M5 'Mood: learning through contrast' line verbatim). All 7 scored beats sit at or above the 8-floor except phase 2 ('Say what done-done means + Reading the return opener', L27-37), scored 7/10 in the regenerated trace — the rule's own text treats 7 as 'facilitator-premium signature; flag what would take it from 7 to 8' rather than a REVISE-worthy failure, so this row is the flag, not a defect claim. What would take it to 8: L31 ('This one runs in the session you sent off') silently assumes the M4 session is live/resumable, while L9 explicitly blesses arriving with a session that 'ran out of credit'; nothing in the module or the L185 Connections-blocker push-back names the recovery (a fresh-session re-audit against repo state still counts, or point at `/resume`). Pre-existing, unaffected by this diff (both L9 and L31 are untouched), and already flagged at the prior pin — carried forward since it is still open.",
-      "fix_hint": "One clause before the L33 prompt naming the escape hatch for a closed M4 terminal. Body-text edit on a shipped module: card it (check_prompts.md §26), do not apply directly.",
-      "blocking": false
-    },
-    {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": 2,
-      "rule_lead": "Epistemic mood ≠ punitive mood.",
-      "verdict": "PASS",
-      "evidence": "Diff's main body change is L85 ('**The wall** is your biggest challenge from here.'). 'Biggest challenge' raises stakes but stays forward/uncertainty-framed (a real thing to do, not a thing done wrong) — no 'you missed', 'you failed', or blame language anywhere in the section. Read against the strategy doc (`content-strategy-agentic-engineering-101.md` L18, M5-in-detail): 'The stance is *prove it on yourself, then promote*' — the doc's own framing is exactly this forward-looking register, not punitive. Whole-file scan for punitive markers (`grep -inE 'you (failed|missed|should have|didn.t)'`) → 0 hits.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": 3,
-      "rule_lead": "Lead with discipline, not failure mode.",
-      "verdict": "PASS",
-      "evidence": "Big Idea (L4, unchanged by this diff): 'Steer your long session' — discipline-led, no failure word in the title or lead. `## Say what done-done means`, `## Your mid-run worries hint at missing checks` — both name a positive move (define, test) with the failure mode as the thing addressed, not the headline.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": 4,
-      "rule_lead": "Strategy-fidelity check.",
-      "verdict": "PASS",
-      "evidence": "Checked both diff-touched beats against `bosser-strategy:content-strategy-agentic-engineering-101.md` (read this session, M5-in-detail + M6-in-detail). (1) The rewritten wall paragraph (L87, 'The rules file, the observations, the verifier, the reference, the plan. All of it on your side. That is the right order and not a shortfall') now tracks the strategy doc's own sentence almost verbatim: 'everything M1–M5 built (rules file, observations, verifier, reference, plan) sits deliberately on the personal side, and that is the right order, not a shortfall' (doc L18) — the edit IMPROVED fidelity over the prior wording, which paraphrased more loosely. (2) The L118/L120 cut ('the question widens from *did my task pass?* to *do all our tasks pass, and who reviewed what?*') removed a forward-reference to a review/reviewer dimension that M6 explicitly does not carry: `spot-gaps-build-the-loop.md` L68 states 'M6 carries no recap of generation speed, review bandwidth and evals buying capacity back either; do not re-add one (Antti 2026-09-02, read against the frame and declined).' The cut brings M5's handoff back in line with what M6 actually delivers post-re-cut ('subtler misses, subtler drift' — retained) instead of front-running a teaching moment M6 no longer owns. No sequencing claim in the doc is violated by either edit; both moved this file closer to the doc, not away from it.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": 8,
-      "rule_lead": "Strategy doc carries strategy, not structure — §§1-7 bind curriculum→doc, this one binds doc→curriculum.",
-      "verdict": "N/A",
-      "evidence": "Rule binds the STRATEGY DOC's own content (doc must not restate this file's structure) — it is a constraint on whoever edits `content-strategy-agentic-engineering-101.md`, not a claim this curriculum file can violate. New rule (dated 2026-09-03), not present in the prior pin's brief; no prior-instance row to park it from. Same class-split logic as §5-7 (module-only/doc-only sections): if it applies anywhere it is the strategy judge's row against the doc, not story's row against the module.",
+      "evidence": "`node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/learn-from-the-test.md` -> 'slides: 11  limits: 210 words / 6 bullets  oversized: 0 / ✓ every slide is within limits'. Mechanical, clean.",
       "fix_hint": null,
       "blocking": false
     },
@@ -95,7 +70,7 @@
       "rule_index": 16,
       "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
       "verdict": "PASS",
-      "evidence": "This diff touched no fenced prompt and no `{{prompt:}}` marker (the only one, `{{prompt:ae101-m5-done-done}}` at L33, is byte-unchanged — confirmed it sits outside every diff hunk). The two edited body passages (the wall paragraph, the Next-section cut) are reflective/closing prose with no forcing-function content to misplace; no scripted-reaction count-script was added either.",
+      "evidence": "The pinned diff's only forcing-function-adjacent body edit moves AWAY from a scripted-reaction shape: L46 changed from the bare imperative 'Build the check, send again.' to the conditional 'Where a check would have settled the worry, that is the one worth building before you send again.' — this ties the build-instruction to the worry-test logic stated two sentences earlier rather than issuing a free-standing count/command, which is the direction this rule pushes in, not away from it. The one body move with no fence ('Test that worry against the return', L44) is a light reflective read-your-own-artefact step, not an artifact-producing forcing function, and falls inside the rule's own Boundary 2 carve-out (conversational-fold register; the body ask IS the design) rather than needing a prompt. No bare count-script ('two rounds max', 'push back once') appears anywhere in the body.",
       "fix_hint": null,
       "blocking": false
     },
@@ -104,7 +79,53 @@
       "rule_index": 27,
       "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
       "verdict": "PASS",
-      "evidence": "`grep -inE 'discuss with|share with|tell the room|compare with the person|take [0-9]+ (min|second)' <file>` → 0 hits, unchanged by this diff. Both edited passages are about the WORK (the wall, the artefact, the next module) not cohort management. No pause-cue or authored-conversation sentence added.",
+      "evidence": "`grep -niE \"\\\\broom\\\\b|\\\\bpair\\\\b|\\\\bgroup\\\\b|\\\\bdiscuss\\\\b|\\\\bshare\\\\b|\\\\bpeer\\\\b\" learn-from-the-test.md` on the raw file: every hit sits in the maintainer block (Pacing/Charge/Watch-for language describing trainer-paced classroom delivery, e.g. 'Trainer demos slowly, room copy-pastes concurrently' L178, 'Whole-room mood below 7' L209) or in the WYL bullet 'Pair each failure mode...' (L16, a verb of the exercise's own content, not a room instruction). Zero body hits authoring a conversation, pause cue, or 'discuss with...' sentence. Body sentences read as WORK ('test that worry against the return', 'build the check') not COHORT MANAGEMENT throughout.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 1,
+      "rule_lead": "Mood contract named.",
+      "verdict": "REVISE",
+      "evidence": "Mood-floor met at every beat (regenerated persona trace, curriculum/evals/sim-cache/ae101--module--learn-from-the-test.persona.json, content_sha f1c6db11 matching current body_sha): phase scores 8,7,8,null(exempt-setup),8,9,8,8, close 8 — nothing below 7, so no blocking mood-floor violation. But phase 2 ('Say what done-done means + Reading the return opener', lines 27-37) sits at exactly 7, the rule's own named facilitator-premium signature that the rule text requires flagging rather than silently passing ('7 = facilitator-premium signature; flag what would take it from 7 to 8'). The trace's held-reason: L31 'This one runs in the session you sent off' presupposes a live or resumable M4 session, while L9 explicitly blesses arriving with a session that 'ran out of credit' — for that entry state no line in the module (nor the Connections-blocker push-back at L189, which prescribes a FRESH session) tells the student how to get back into the specific session the done-done audit needs to land in, and a fresh session would silently defeat the self-auditing-transcript design this beat is built around. Filed non-blocking because the gap is recoverable via the delegation instinct this training already builds (ask Claude to find/resume the prior session) and is exactly the trace's own 'facilitator-premium rather than below-floor' reading, not a cohort-observation-only item since it is a concrete, nameable prompt-design edge rather than a taste call.",
+      "fix_hint": "Name the resume path for a closed-terminal M4 session next to the done-done prompt (e.g. 'if your terminal closed, resume that session first') or soften L31 so it doesn't presuppose a live session — this is check_prompts.md §40's session-boundary concern surfacing as a mood cost, not a rewrite for story to prescribe.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 2,
+      "rule_lead": "Epistemic mood ≠ punitive mood.",
+      "verdict": "PASS",
+      "evidence": "The M4 return is framed throughout as evidence to read, never as a mistake to answer for: L23 'the lecture ahead hands you the lenses to read it with', L44 'the artefact wins: it is first-hand data from the session itself'. Push-back list explicitly guards the punitive misread — L190 'Phase 1 diagnosis-as-blame — student frames failures as their fault' with the trainer counter 'the un-packaged run was supposed to underdeliver. The diagnosis is data, not blame.' Not-knowing register throughout, no shame framing.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 3,
+      "rule_lead": "Lead with discipline, not failure mode.",
+      "verdict": "PASS",
+      "evidence": "Big Idea (L4): 'Steer your long session... the session you already ran is the evidence for what the next one needs.' — leads with the positive discipline (steering) rather than a failure word (drift, rot, plausible-but-wrong all stay inside the body as the negative cases the discipline addresses, never promoted to the title).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 4,
+      "rule_lead": "Strategy-fidelity check.",
+      "verdict": "PASS",
+      "evidence": "Consolidates front-run/arc/Big-Idea/early-resolution per this template's §4 mapping. Front-run: neither pre-exercise lecture nor module body names Ronacher's three-pattern or Cherny's shapes ahead of the closer (checked under check_lectures §§1-2 above). Module-to-module arc: 'Bring to Module 6' (L104) + 'Next' (L120) hand off cleanly to M6 reading the packaged session for 'subtler misses, subtler drift' with no dangling forward-reference (the pinned diff's regeneration note confirms the prior stale review-bandwidth clause was already cut in an earlier pass and stays cut here). Big Idea fidelity: confirmed under §3. Mood doesn't resolve early: regenerated trace's close mood_note states the persona leaves 'holding two unresolved tensions — a gate can lie, and a correct gate expires' with M6 resolving them, matching the strategy doc's mood-arc placement; no beat pre-resolves the closer's Ronacher-naming payoff.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": null,
+      "judge_owned": true,
+      "rule_lead": "Whole-compendium scope call — no per-rule verdict owed by story.",
+      "verdict": "N/A",
+      "evidence": "check_prompts.md's per-prompt mechanics (placeholders, lead-ins, session-boundary binding, etc.) are Class B's territory: check_pedagogy.md §43(c) names the canonical split explicitly — 'persona-reader (Class A... story judge) and prompt-behavior (Class B — per-prompt risk vs 15-pattern catalog, prompt-behavior judge)'. story.md's own Evaluate + Completeness-contract sections list check_prompts among the compendiums assembled for reading but name no rule from it under 'Specific judgments storytelling owns', unlike check_pedagogy/check_strategy_tie_in which are explicitly scoped. One cross-class observation surfaced separately in the top-level report rather than filed here: the done-done prompt's session-boundary assumption (see check_strategy_tie_in §1 above) is squarely check_prompts.md §40 territory for the behavior judge to score directly against the fence.",
       "fix_hint": null,
       "blocking": false
     },
@@ -112,9 +133,9 @@
       "compendium": "check_workshop.md",
       "rule_index": null,
       "judge_owned": true,
-      "rule_lead": "Whole-compendium scope call.",
+      "rule_lead": "Whole-compendium scope call — no beat's output belongs to the group.",
       "verdict": "N/A",
-      "evidence": "No beat in this file is group-scale — every artefact (done-done audit, verifier, reference, plan.md, packaged re-send) is produced and read by the individual student; removing the room leaves each beat producing the same artefact (check_workshop.md §1's own test). Unaffected by this diff.",
+      "evidence": "check_workshop.md §1's own test: 'remove the room — does the beat still produce the same artefact?' Every beat in this file (done-done audit, worry-test, worktree fork, diagnose-and-resend, packaged re-send) produces a personal artefact regardless of delivery mode. `grep -niE \"\\\\broom\\\\b|\\\\bpair\\\\b|\\\\bgroup\\\\b|\\\\bvote\\\\b|\\\\bworkshop\\\\b|\\\\bdiscuss\\\\b|\\\\bshare\\\\b|\\\\bpeer\\\\b\" learn-from-the-test.md` returns hits only for classroom-pacing language ('room copy-pastes concurrently', 'in-room opener', 'whole-room mood') describing check_pedagogy §24's trainer-paced-concurrent delivery model, plus one WYL verb ('Pair each failure mode with the packaging that catches it') that is an individual-exercise instruction, not a room mechanic. Content-rules.md's own trigger for check_workshop ('group adjudication, attributed contribution into a shared record, team deliberation') has no match here.",
       "fix_hint": null,
       "blocking": false
     },
@@ -174,28 +195,10 @@
       "carried_shape": "94301cda9e6a5a78"
     }
   ],
-  "mood_summary": {
-    "phase_scores": [
-      8,
-      7,
-      8,
-      null,
-      8,
-      9,
-      8,
-      8
-    ],
-    "close_score": 8,
-    "any_below_8": true,
-    "stealing_the_mood": [
-      "Phase 2 (Say what done-done means): 7/10, session-continuity gap at L31 vs L9 — facilitator-premium, not below-floor; carried from the prior pin, unaffected by this diff."
-    ]
-  },
-  "teaching_moment": "M5's teaching moment is the contrast itself: the student can only say what packaging adds because they read their own un-packaged failure first, then read it again through the same lenses at close. `diagnose-and-resend` forces quoted moments over summary, so nothing in the exercise path skips the read. This diff touched neither the exercise nor the lenses. The 'wall' beat (no-M6 variant close) is a second, smaller teaching moment — personal-vs-team boundary — and the rewrite strengthens rather than dilutes it (see check_strategy_tie_in §4 evidence).",
-  "notes": [
-    "check_lectures.md §4 gained a new bare-arc-label clause (Antti 2026-09-03) that reads as though it could reach `## Next` — but that exact heading is `curriculum/module-shape.md`'s canonical mandate for every module's closing section (13 files repo-wide use it verbatim). Worth a maintainer call on whether §4's new clause was meant to reach template/structural headers at all, before it starts firing across the corpus; not filed as a finding against this file since the header is not this file's choice.",
-    "Sim trace at curriculum/evals/sim-cache/ae101--module--learn-from-the-test.persona.json was stale (content_sha 86b156ae vs current e97f6cbb) and has been regenerated this session: phases 3/4/7 re-hashed (invisible `<!--tier:>` marker / tier-flip changes only, not re-simulated since no rendered text moved), phase 6 and phase 8 re-simulated (real text changes), phases 1/2/5 verified byte-identical and carried forward. close.final_artifact and phase 8's mood_note previously quoted the now-deleted L118 sentence; corrected."
-  ],
+  "todos_count": 1,
   "blocking_findings_count": 0,
-  "todos_count": 1
+  "accept_notes_used": [
+    "L169 Declined-2026-09-03-polish-pass note (mid-run vocabulary, done-done prompt wording, header register) — confirmed no re-file needed on any of the three named items.",
+    "L171 No-settings-in-body note (agent-team optional challenge, L101) — verified against the raw body: names the feature, links the docs, prints no experimental flag. Confirmed accurate, not re-filed."
+  ]
 }

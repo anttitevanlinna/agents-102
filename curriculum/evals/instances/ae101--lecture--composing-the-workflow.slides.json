@@ -1,31 +1,22 @@
 {
   "class": "slides",
-  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/composing-the-workflow.md",
-  "body_sha": "2497f4c517baf376fd52d59ba0cf2ecdcd7e5ba4ad985ee7bc80948053c3ea6e",
-  "shape_hash": "06b03968b9651b64",
-  "verdict": "PASS",
   "training": "ae101",
+  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/composing-the-workflow.md",
+  "verdict": "PASS",
+  "body_sha": "7eeb18213b5189496cbe4d0186c84aa28c5d94a63b640cd9b4b04278f375e0b8",
+  "shape_hash": "326c29788cefc702",
+  "pin": "54577f39",
   "chunk_map": [
-    {
-      "index": 0,
-      "heading": "Composing the workflow (H1 + lede)",
-      "lines": "1-4"
-    },
-    {
-      "index": 1,
-      "heading": "A skill's footprint is where its job lands",
-      "lines": "5-12"
-    },
-    {
-      "index": 2,
-      "heading": "From skills to a workflow",
-      "lines": "13-21"
-    },
-    {
-      "index": 3,
-      "heading": "Composition is a live argument, so you read",
-      "lines": "22-31"
-    }
+    {"index": 0, "heading": "Composing the workflow (H1)", "lines": "1"},
+    {"index": 1, "heading": "You drew a control loop", "lines": "3-5"},
+    {"index": 2, "heading": "Eval", "lines": "7-11"},
+    {"index": 3, "heading": "The second loop", "lines": "13-15"},
+    {"index": 4, "heading": "Dino Repo's skill stack", "lines": "17-19"},
+    {"index": 5, "heading": "Pocock's skill system", "lines": "21-23"},
+    {"index": 6, "heading": "The checking loop, drawn solid", "lines": "25-28"},
+    {"index": 7, "heading": "Loop instead of you starting", "lines": "30-34"},
+    {"index": 8, "heading": "A skill's footprint is where its job lands", "lines": "36-42"},
+    {"index": 9, "heading": "From skills to a workflow", "lines": "44-51"}
   ],
   "rules_evaluated": [
     {
@@ -34,7 +25,7 @@
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm prevented: a referent that never resolves for a reader holding the deck in order. Chunk0 line3 'You have a kit now: a test-strategy skill, a verifier, and a freshly drawn map of the moves worth packaging next' names all three parts in the same sentence, not a bare pronoun. Verified this is the arc-earned-vocabulary carve-out, not a forward reference: grepped the AE101 module registry (site/layouts/curriculum.js lines 51-56) -> M3=earn-the-trust (holds `author-test-strategy-skill` exercise, grepped), M5=learn-from-the-test (builds 'the verifier', grepped 8+ hits incl. line 63/71/82), M6=spot-gaps-build-the-loop (this file's own host module; its exercise draws the 'stack-map' -- What You'll Learn bullets 3-4, read directly). All three nouns are earned in modules that precede this lecture's own module-include position (spot-gaps-build-the-loop.md line47, after the M6 exercise + Human close, confirmed by direct read of that file). Chunk1 line9 defines **skill** in-chunk before chunk2 line17 reuses the plain noun 'skills' -- ordinary same-file reuse, not a violation. No pronoun/demonstrative in the body stays unresolved.",
+      "evidence": "Walked all 9 chunks in order. Chunk 9 line 47 \"Some workflows have a pilot; many do not\" resolves against chunk 8's figure (line 39, `figures/skill-sea-passage.md` visibly labels \"THE PILOT · ONE MOVE, THE WHOLE TRIP\"), one chunk prior. Chunk 9 lines 48-51 (\"skill(s)\", \"each one\") resolve against chunk 8 line 41's \"A **skill** is a named move you reach for\", two chunks prior. Chunk 3 header \"The second loop\" resolves against chunk 1 \"You drew a control loop\", the first loop, two chunks prior. No never-named, vague-with-history, or re-chunk-stranded referent found anywhere in the body.",
       "fix_hint": null,
       "blocking": true
     },
@@ -44,7 +35,7 @@
       "rule_lead": "Cross-file and positional callbacks.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm prevented: a chunk locating another file by its position in a deck the reader can't see the shape of. Line26 '[Dino's skill stacking system](trainings/agentic-engineering-101/supplementary/skill-stacking.md)' and line28 '[Workflow composition lineages](...)' both name the document by title in the link text itself -- the exempted navigational-pointer shape, not narrative callback. Line3 'the passage you already sailed' doesn't locate a file by position either; it's a named-artifact recognition (rule1's arc-earned carve-out, verified above), and the maintainer block's own 'Figure' note (line45 raw / expanded) independently confirms the referent is `what-packaging-is.md`'s M5 passage chart. No 'the opening lecture said' shape anywhere in body.",
+      "evidence": "Chunk 9 line 47 names Pocock's and Klaassen's practices unpacked inline (\"Pocock ships a public kit with no orchestrator: you call each skill by hand. Klaassen ships one slash command per stage, and the last one writes the lesson to disk for the next agent.\") rather than pointing at a supplementary or another lecture by position. Grepped body for \"the earlier lecture\"/\"the supplementary above\"/similar positional-file phrasing: zero hits.",
       "fix_hint": null,
       "blocking": true
     },
@@ -54,7 +45,7 @@
       "rule_lead": "Every backward reference points at a beat that exists.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm prevented: 'the X you did/saw' pointing at a beat the module's current set no longer carries. Line3's 'the passage you already sailed' + maintainer block's Figure note ('Base geometry is the M5 passage chart from what-packaging-is.md, byte-unchanged') both resolve to `curriculum/lectures/what-packaging-is.md`. Confirmed live and in-module: `learn-from-the-test.md` (M5, verified via the AE101 module registry) is the file that introduces the verifier/test-strategy/map vocabulary this lecture's lede assumes. The kit named in the lede (test-strategy skill / verifier / map) is backward-recognition of artefacts the student built across M3, M5 and M6's own exercise -- all three exist in the current module set; none is a dead beat.",
+      "evidence": "No \"the X you did/saw/caught\" construction anywhere in body (grep clean). Closest candidate is chunk 1's header \"You drew a control loop\", a recognition-after-living reference to the M4 agent-loop beat; the maintainer block (line 94) confirms that beat is `the-agent-loop` at M4, and this is a pre-existing, previously-audited slide unchanged by the 2026-09-05 edit.",
       "fix_hint": null,
       "blocking": true
     },
@@ -64,9 +55,10 @@
       "rule_lead": "Live-demo beats survive a text read.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "No guess-before-reveal instruction anywhere in the body. The file is expository throughout (figure + two mechanics passages + a pointer to two reads) with no demo beat for a reveal to land after. Rule has no object here.",
+      "evidence": null,
+      "na_reason": "no guess-before-reveal or predict-then-watch instruction anywhere in body (grepped guess/predict/watch — 0 hits); this is a consolidation/recognition lecture, figures + expository bullets only, no demo beat for a reveal to land after.",
       "fix_hint": null,
-      "blocking": true
+      "blocking": false
     },
     {
       "compendium": "check_slides.md",
@@ -74,7 +66,7 @@
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm prevented: a chunk whose only content is a wait-state, projecting as a slide that says nothing standalone. Chunk1 = figure + 3 defining bullets; chunk2 = 6 bullets building skill-to-workflow; chunk3 = thesis sentence + 2 named reading pointers + a closing instruction. Every chunk carries a self-carrying claim; none reduces to one context-dependent bullet.",
+      "evidence": "Chunks 1, 3, 4, 5, 6 are figure-only, but each carries a header naming a specific claim or subject (\"You drew a control loop\", \"The second loop\", \"Dino Repo's skill stack\", \"Pocock's skill system\", \"The checking loop, drawn solid\") plus a figure the maintainer block explicitly attests carries the full content (lines 55, 57, 88: \"Control-loop slide is header + figure only\", \"Dino Repo's skill stack / Pocock's skill system are figures only\", \"the engine map re-shown ... figure only\"). None is a bare wait-state or single context-dependent bullet.",
       "fix_hint": null,
       "blocking": false
     },
@@ -84,7 +76,7 @@
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm prevented: a header the chunk's own content contradicts. Header1 (line5) 'A skill's footprint is where its job lands' is restated almost verbatim by bullet2 (line10) 'Its **footprint** is wherever the job lands' -- true under the header. Header3 (line22) 'Composition is a live argument, so you read' is restated by its own next sentence (line24) 'How the field composes kits like this is a live argument with no settled answer' -- true. Header2 (line13) 'From skills to a workflow' is a transition/topic label rather than a full-sentence claim; read against its own chunk, bullets 1-3 cover per-skill wiring mechanisms and bullets 4-6 cover workflow-level checks and judgment -- the header's claim (skills compose into a workflow) does hold across the chunk's own content even unaided, and the maintainer block's Headers note (raw line53) already names this exact heading as adjudicated under `check_lectures §4`.",
+      "evidence": "Chunk 9 \"From skills to a workflow\": body performs exactly that move — variety survey (line 47) -> workflow definition (line 48) -> per-step instruction scoping (line 49) -> per-task recomposition (line 50) -> the reader's own role shift (line 51). Chunk 8 \"A skill's footprint is where its job lands\": the two bullets (41-42) argue exactly that thesis via the chart's turning-point/leg/pier sizes. No header contradicted by its own chunk's content.",
       "fix_hint": null,
       "blocking": false
     },
@@ -94,7 +86,7 @@
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm prevented: a slide-visible tic. Ran `grep -niE '\\bNot [A-Z][a-z]+\\. Not [A-Z][a-z]+\\.'` over the body view -> exit 1, 0 matches ('Not X. Not Y. Z.' construction absent). Ran `grep -niE 'one of the (most|best)|most useful|most powerful|most valuable'` -> exit 1, 0 matches (no self-grading superlative). No number-plus-retraction anywhere (body carries zero numerals as claims). No abstraction-noun stacks (concrete nouns throughout: skill, footprint, pier, leg, fix, orchestrator, routing, hand-off). Closest specimen to the anaphora/triad sub-item: line17 chunk2 bullet3's 'One skill names another as a precondition... One sequences and gates a chain... A rule in `./CLAUDE.md` matches a file or phrase... One hands its output to the next...' -- four short definitions share a 'One ___: label' cadence, but each leg names a genuinely distinct mechanism (explicit load / orchestrator / routing / hand-off) plus a fifth (leaf) breaking the anaphora outright -- this is a definitional enumeration, not a rhetorical repetition with an empty third leg, so it stays inside the rule.",
+      "evidence": "\"Not X. Not Y. Z.\" construction: zero hits (grepped). Anaphora/epistrophe triple: chunk 8 line 42 \"One move takes a single fix at a turning point. Another carries a whole leg. A third runs at the pier, before the first leg.\" is a three-part enumeration, but each leg names a distinct concrete referent tied to the chart (turning point / leg / pier) rather than repeating one idea three times — stays inside. Self-grading superlatives: zero hits. Number-plus-retraction: no bare numbers in body. Abstraction-noun stacks: none found. Verb triplets with an empty leg: none.",
       "fix_hint": null,
       "blocking": false
     },
@@ -104,7 +96,7 @@
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm prevented: repo/maintainer vocabulary (surface-as-noun, firing, compendium, forcing function, beat-as-noun, mood, Connections) projected where the room can't parse it. Ran `grep -niE '\\bsurface\\b|\\bfiring\\b|\\bcompendium\\b|\\bforcing function\\b|\\bbeat\\b|\\bmood\\b|\\bConnections\\b'` over the raw body (lines 1-31) -> exit 1, 0 matches. In-body terms (skill, footprint, orchestrator, routing, hand-off, leaf, pilot) are the lecture's own taught vocabulary, each bridged once per the maintainer block's Vocabulary bridge note -- taught concept vocabulary, not maintainer dialect.",
+      "evidence": "`grep -noE '\\b(surface|firing|compendium|forcing function|beat|mood|Connections)\\b' curriculum/lectures/composing-the-workflow.md` restricted to lines 1-52 -> 0 hits.",
       "fix_hint": null,
       "blocking": true
     },
@@ -114,7 +106,7 @@
       "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm prevented: whole-sentence bolding drowning the handle signal, or a bold count exceeding what the slide's own job requires. Existing maintainer accept-note (raw line36, 'Emphasis budget (Antti-directed \"go very lightly on the bold\")') documents and defends the exact spans present: chunk1 (slide1) carries **skill** + **footprint** as <=2-word sub-span handles on two separate defining bullets (bullet3 plain, matching the note); chunk2 (slide2) carries the four wiring-mechanism handles (**an explicit load** / **an orchestrator** / **routing** / **a hand-off**) plus **leaf** at its own definition -- five short handles on what is functionally a definitional/consolidation slide (naming five distinct mechanisms), matching the rule's own 'a law/consolidation slide may carry one handle per law' exception in spirit; *pilot* is deliberately left unbold per the same note. Chunk0 (lede) and chunk3 carry zero bold, also per the note ('Lede, SVG, and the two supplementary links carry no bold'). Read directly against the body and matches the note exactly -- pre-cleared per the dispatch-preamble instruction to check for an existing accept-note before flagging.",
+      "evidence": "`grep -noE '\\*\\*[^*]+\\*\\*' curriculum/lectures/composing-the-workflow.md` restricted to lines 1-52 -> exactly 3 bold spans: line 9 `**eval**`, line 41 `**skill**`, line 48 `**workflow**`. One handle per relevant slide, each a single word (well under the 5-word cap), matching the maintainer's own emphasis-budget note (line 61) verbatim, including the newly-added `**workflow**` on the skills-to-workflow slide.",
       "fix_hint": null,
       "blocking": false
     },
@@ -124,7 +116,17 @@
       "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm prevented: a phase-less section present in long-read but dropped from the composed Slides deck. This file is a `curriculum/lectures/` shared-library file, the type the training directory convention (curriculum/CLAUDE.md) states is 'Inlined' under a lecture wrapper. Confirmed its module include point directly: `spot-gaps-build-the-loop.md` line47 carries `[Composing the workflow](lectures/composing-the-workflow.md)`, the identical standalone-link include shape used by its three sibling lecture links immediately above and below it in the same file (lines 49, 51, 53) -- no structural difference that would make this file diverge from the mechanism the other three lectures in the same module rely on.",
+      "evidence": "No phase-less prose section anywhere: the H1 (line 1) flows straight into `## You drew a control loop` (line 3) with no lede paragraph, and every other block in the body sits under a `##` heading. This lecture is included by `spot-gaps-build-the-loop.md` as a plain lecture link (`[Composing the workflow](lectures/composing-the-workflow.md)`), which renders whole under `.phase--lecture`; there is no bare-paragraph-before-a-heading shape here for the renderer to drop, the shape that caused the 2026-07-09 incident.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 12,
+      "rule_lead": "Page geometry dies at the cut; reading order survives.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "`grep -noE '(below|above|further down|at the top|see below|a few paragraphs|earlier in this (module|page)|the rest of this page|coming up|that follow)' curriculum/lectures/composing-the-workflow.md` restricted to lines 1-52 -> 0 hits. `node scripts/check-slide-deixis.js --report` run this session lists no row at all for this file (clean; not even a cleared same-slide match).",
       "fix_hint": null,
       "blocking": true
     },
@@ -134,27 +136,19 @@
       "rule_lead": "Numbering — position is computed, content ordinals are linted.",
       "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "No `## Phase N:` / `## N.` step headers in this file -- all three `##` headers are prose claims/labels, not numbered steps, so there is no content ordinal for the rule to bind. Confirmed mechanically: `node scripts/check-slide-numbering.js curriculum/lectures/composing-the-workflow.md` -> 'OK — 1 files, Phase/Step numbering consistent.'",
+      "evidence": null,
+      "na_reason": "no `## Phase N:` / `## N.` step headers anywhere in this body — all 9 `##` headings (listed in chunk_map) are prose/claim-style or catalogue-entry style, none carry a hand-numbered ordinal.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_slides.md",
-      "rule_index": 12,
-      "rule_lead": "Page geometry dies at the cut; reading order survives.",
-      "verdict": "PASS",
-      "chunks_flagged": [],
-      "evidence": "Harm prevented: a pointer aiming at a wall after the `##` cut ('below', 'above', 'at the top of this page'). Ran `grep -niE '\\b(below|above|further down|at the top of this page|see below)\\b'` over the body view -> exit 1, 0 matches. Ran the repo-wide mechanical checker `node scripts/check-slide-deixis.js` -> 'OK — 60 files, no page-geometry pointers across the slide cut.' (whole-corpus scope, includes this file; script does not accept per-file scoping). Both checks clean.",
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_slides.md",
       "rule_index": 13,
       "rule_lead": "In-deck links work now; whether they EARN their place is open.",
-      "verdict": "PASS",
+      "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "Harm prevented (the only gated half): a dead in-deck link. Ran `node scripts/check-slide-deixis.js --links`, which lists this file in the link inventory (review aid, never a gate); both targets (`skill-stacking.md`, `workflow-composition-lineages.md`) are live entries in the AE101 supplementaries registry (site/layouts/curriculum.js lines 68-69, grepped directly). Both links name the document in the link text itself, satisfying the settled half's naming convention. The 'earn their place' half is explicitly open/non-blocking per the rule's own text -- not adjudicated here.",
+      "evidence": null,
+      "na_reason": "zero markdown links in body — `grep -n '\\[.*\\](' curriculum/lectures/composing-the-workflow.md` restricted to lines 1-52 -> 0 hits.",
       "fix_hint": null,
       "blocking": false
     },
@@ -164,7 +158,7 @@
       "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/lectures/composing-the-workflow.md` -> 'files: 1  slides: 3  limits: 210 words / 6 bullets ... oversized: 0 ... every slide is within limits.' Mechanical, exit clean, no accept-note needed.",
+      "evidence": "`node scripts/check-slide-size.js --file curriculum/lectures/composing-the-workflow.md` -> \"files: 1  slides: 9  limits: 210 words / 6 bullets\" / \"oversized: 0\" / \"every slide is within limits\". Chunk 9 sits at 5 bullets post-edit, under the 6-bullet ceiling.",
       "fix_hint": null,
       "blocking": false
     },
@@ -174,7 +168,7 @@
       "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm prevented: a lecture heading that reads as a task label rather than a claim, blurring the exercise/lecture mood split. Header1 (line5) and header3 (line22) are explicit declarative claims. Header2 (line13) 'From skills to a workflow' is the closest specimen to a violation -- it names a subject/transition rather than asserting a full claim -- but it fits the rule's own 'catalogue entries naming their subject' carve-out (parallel to the rule's own cleared examples 'Ralph', 'The numbers'), and the maintainer block's Headers note (raw line53) already reviewed this exact pair under `check_lectures §4` and cleared it as naming 'the composition concept the slide teaches in its variety.' Per the compendium's own principle (blocking = comprehension/trust failure), a label-shaped transition header that the chunk's content bears out is not a slide the reader can't follow -- non-blocking either way.",
+      "evidence": "All 9 headers are either claims (\"You drew a control loop\"; \"A skill's footprint is where its job lands\"; \"Loop instead of you starting\") or catalogue/orientation labels naming their subject (\"Eval\"; \"The second loop\"; \"Dino Repo's skill stack\"; \"Pocock's skill system\"; \"The checking loop, drawn solid\"; \"From skills to a workflow\") — the compendium's own carved-out shape (catalogue entries naming their subject; orientation/transition headers), not the label-instead-of-claim violation shape.",
       "fix_hint": null,
       "blocking": false
     },
@@ -184,12 +178,30 @@
       "rule_lead": "A bullet earns its slot or dies — three classes that read as rigour and carry nothing.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm prevented: a bullet that restates doctrine already done work (a), narrates the curriculum's own pedagogy design (b), or closes a slide with a koan restating its own header (c). Checked every bullet: chunk1 bullet3 (line11, post-diff) 'Nothing here is new except the placing. A move now stands at each point you used to steer by hand. Where no move stands, you sail that stretch yourself' adds two new pieces (autobiographical tie to the student's own prior practice + the uncovered-stretch boundary case), not a restatement of bullet2's footprint definition -- and the maintainer's own 'Lean pass (2026-08-25)' note on this exact bullet already cut the one redundant clause it used to carry ('Same passage, same drift, same fixes and guardrails' -- the figure shows it), i.e. this rule's own scrutiny was already applied here on the date the rule's calibration sweep is dated to. Chunk2 bullet1's closing clause 'Its footprint is set by the job, not by the phase line' is a distinct claim in its own right (backing block's `moves-are-not-phase-bound`), not a rerun of bullet2's chunk1 footprint definition -- it applies the law to a new axis (phases) for the first time. Chunk3's 'so there is no prompt to drill here' reads as register-shift orientation (this is read-mode, not drill-mode) rather than pedagogy-design commentary, and the maintainer block's Lecture-meta note explicitly names and keeps this exact clause for that reason. Closing line 'Pick the shape that resembles your day' advances new content (how to choose between the two reads) rather than restating header3's claim -- not a koan-kicker. No bullet in the file reduces to doctrine restatement, design self-reference, or a header-echoing aphorism.",
+      "evidence": "Closest call: chunk 9 line 50 \"Which skills are in, and in what order, is composed per task and recomposed when the task changes\" echoes line 48's \"composed around one task\" phrasing, but stays inside because it adds two things line 48 does not state — which/order as a live choice, and recomposition when the task changes — rather than re-announcing the definition (§16a doctrine-restatement shape). No self-referential design commentary (§16b) or aphorism kicker (§16c) found anywhere in the body.",
       "fix_hint": null,
       "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 17,
+      "rule_lead": "A retitled slide re-earns its bullets against the new header.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "This is the file the rule's canonical incident names (chunk 7, \"Loop instead of you starting\", retitled by Antti 2026-09-02). The current body (lines 33-34) already carries the corrected two bullets the rule's own fix prescribes (\"the loop squashes the recurring... cracks harder work\"), not the inherited `the-loop-has-a-name.md` bullets the incident describes. The other change in this pass (chunk 9, lines 47-51, dated 2026-09-05 per the backing block) did not rename a header -- \"From skills to a workflow\" is byte-identical before and after per `git diff 54577f39..HEAD` -- so rule 17's failure shape (header changed, body didn't follow) does not apply there; there the body is what changed, to match a header that stayed put.",
+      "fix_hint": null,
+      "blocking": true
     }
   ],
-  "blocking_findings_count": 0,
   "todos_count": 0,
-  "notes": "Rules 15 and 16 postdate the slides-judge template's blocking/non-blocking partition (which only lists rules 1-14 plus rule-7 sub-items) and are not named in it. Applying the compendium's own stated principle ('blocking = the slide cannot be understood or trusted as shown; non-blocking = polish on a slide that already works') classifies both as non-blocking here: a label-shaped transition header (15) and a low-value bullet (16) are density/effectiveness concerns, not comprehension failures. Both rows PASS on their merits regardless, so this classification did not change the verdict. Prior instance at this path (body_sha c3c2624f...) predates rule 16 entirely and predates shape_hash tracking (prefill reported 'prior instance predates shape_hash — cannot verify N/A validity'), so every row here is freshly judged against the current body, not carried forward."
+  "blocking_findings_count": 0,
+  "accept_notes_found": [
+    "L55 Control-loop slide is header + figure only (Antti 2026-09-02) -- no bullets owed",
+    "L57 Dino Repo's skill stack / Pocock's skill system are figures only (Antti 2026-09-02) -- no bodies, no trainer talk track owed",
+    "L59 Lean pass (2026-08-25): cut a footprint-slide sentence the figure already shows -- do not restore",
+    "L61 Emphasis budget (Antti-directed): bold = handles only, eval / skill / workflow -- matches body exactly",
+    "L88 The checking loop, drawn solid: figure only, T2",
+    "L100 Cadence slide header is Antti's own (2026-09-02) -- the rule-17 incident this file is the canonical example for, already fixed"
+  ],
+  "notes": "Pin 54577f39 is the commit the file's own Quality line records as the last slides@ audit. `git diff 54577f39..HEAD` shows exactly one student-facing change since: chunk 9 (\"From skills to a workflow\", lines 44-51) had its last four bullets replaced with a new workflow definition (Antti-directed 2026-09-05, per the backing block), and the maintainer's emphasis-budget note was updated to add the new **workflow** bold. Every other chunk is unchanged since the prior PASS. Judged the full 9-chunk sequential deck read regardless, per dispatch instructions not to scope to the diff region alone; no pre-existing issue found outside the diff either."
 }

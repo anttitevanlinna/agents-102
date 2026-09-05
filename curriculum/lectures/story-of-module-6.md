@@ -62,21 +62,17 @@ Antti
 
 **Slide deixis accepted:** "paragraphs above" (check_slides.md §12) — *"the framing I said, a few paragraphs above, we would cut"* points inside its own `## Things that went sideways` chunk, two paragraphs up on the same slide, at § *The end-state that was not*. Story lecture, read not projected; the geometry is true where it stands.
 
-**Quality:** compendium-audited 2026-08-30 (writing@02b33a02 story@02b33a02 slides@4197d503 technical@9a6d906e strategy@9a6d906e behavior@b3143a4 pedagogy@1abb84c6)
-- judges @02b33a02: writing PASS_WITH_TODOS, story PASS — re-judged after the superlative cut and the *prompts* swap. The §21 ratio todo settled 2026-09-02: memoir carve-out (accept-note above the session tally; resolution in the instance).
-- judges @4197d503: slides PASS — re-judged after the superlative cut; §12 deixis accept re-verified against the mechanical checker.
-- judges @9a6d906e: technical PASS, strategy PASS. The writing REVISE at this pin rested on one blocking finding that both refuters killed independently — `resolution` in that instance carries the reasoning.
-- judges @4a722813: behavior PASS, pedagogy PASS (drift-recheck)
-- source-verified 2026-05-25: Geoff Charles quote confirmed verbatim against ramp.md (practitioner direct, 2026-04-09); public X primary paywalled — attribution disposition open for maintainer (see source-verification block below)
-**Time:** 8 min at read-aloud pace. 1238 words body. **Voice timing:** L3 framing line is read by the trainer aloud as setup; the body is then read as the memo, signed at close.
+**Quality:** compendium-audited 2026-09-03 (writing@289b45a3 story@289b45a3 technical@289b45a3 behavior@b3143a4 pedagogy@1abb84c6 strategy@9a6d906e slides@289b45a3)
+- judges @289b45a3: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS (drift-recheck), strategy grandfathered, slides PASS (1 todo see instances/ae101--lecture--story-of-module-6.slides.json)
+**Time:** 8 min at read-aloud pace. ~1200 words body. **Voice timing:** the opening framing line is read by the trainer aloud as setup; the body is then read as the memo, signed at close.
 
-Section stays open-ended (no count locked) because the thesis is that surprises keep happening.
+§ *Things that went sideways* stays open-ended (no count locked): the thesis is that surprises keep happening.
 
-**Catalogue discipline:** § *Things that went sideways* carries one paragraph per distinct failure mechanism, never a second worked instance of one already told. Seven stand: the chat-shaped opening, the banned word across four instances, the flattering end-state, the unrun sims, the self-contradicting closer, the paraphrase shipped as attribution, the uncited frame. *"The rule was loaded. The check never ran."* is the catalogue's one repeated formula and lands once, in the uncited-frame entry, where the three sentences Claude dropped are the three § *The generalisation* then delivers. A seventh entry that restates a mechanism is length, not evidence — the open-ended section above is an invitation to add new mechanisms, not new examples.
+**Catalogue discipline:** § *Things that went sideways* carries one paragraph per distinct failure mechanism, never a second worked instance of one already told. Seven stand: the chat-shaped opening, the banned word across four instances, the flattering end-state, the unrun sims, the self-contradicting closer, the paraphrase shipped as attribution, the uncited frame. *"The rule was loaded. The check never ran."* is the catalogue's one repeated formula and lands once, in the uncited-frame entry, where the three-sentence frame Claude blurred is the frame § *The generalisation* then delivers. An eighth entry that restates a mechanism is length, not evidence — the open-ended section above is an invitation to add new mechanisms, not new examples.
 
-**Delivery:** In-room for M6, after the exercise and before the Human close (placement: Antti 2026-08-30); permission-giving, not credibility-performance.
+**Delivery:** In-room for M6, after the handoff lecture (*Agents that build agents*) and before the Human close (Antti 2026-08-30 / 2026-09-02; the module file's order is the decision); permission-giving, not credibility-performance.
 
-**Voice:** First-person singular past tense, Antti's memo. Risto epistemic directness, not Rory wit. Antti reshapes in final voice; rough-cut blunt lines per `check_writing §5`. Do NOT polish past *read-aloud-in-5-7-min direct memo* — polish moves it toward credibility-performance which Antti cut in turn 7 of the generation session.
+**Voice:** First-person singular past tense, Antti's memo. Risto epistemic directness, not Rory wit. Rough-cut blunt lines per `check_writing §5` until Antti's final-voice pass. Do NOT polish past a read-aloud direct memo (8 min, see **Time**): polish moves it toward the credibility-performance framing the memo rejects at *The end-state that was not*.
 
 **§21 ratio accept-note (Antti, 2026-09-02):** memoir carve-out — a first-person session narrative reports its named actor, so *"Claude opened the session"* is the accurate account and *"the agent"* would be less true to the memo form. The Claude:agent:LLM ratio (16:1:8) stands as written; `check_student_facing` §21 judges do not re-raise on this file.
 
@@ -85,15 +81,10 @@ Section stays open-ended (no count locked) because the thesis is that surprises 
 - One session, 2026-04-24, one model (`claude-opus-4-7`), twenty-odd planning turns, five taste reversals by Antti on Claude's confident recommendations.
 - Three subagents in parallel produced four banned-word leaks between them. The verifier caught two more the LLM self-checks had missed, and found three of our own rules contradicting each other. Ten fixes applied in all.
 - The session opened chat-shaped: no reference artefact, no `plan.md`, no verifier.
-- Sims and evals were not run; the reference artefact had flagged them as pre-first-cohort work.
+- Sims and evals ran only after Antti named the gap; the reference artefact had flagged them as pre-first-cohort work.
 - One paraphrase shipped as an attributed quote (the Charles line).
 
-When M6 runs for a new cohort, regenerate the opener from that session's own tally — don't reuse these numbers. A dated memo ages cleanly on the date. A reused dated memo ages as a trip report.
-
-**Design constraint (session turn 8):** the Story names the CONDITION (non-determinism, universal struggle) without restating the SPECIFIC failure modes the student meets in Phase 1. Meta-failure (curriculum generation drifting, banned-word leak, rules loaded late) is not student-run failure (packaged run drifts at hour 2, memory thin on the critical file). Same condition, different domain. Preserved in drafting.
-
-**Known TODOs:**
-- Antti's rewrite pass in final voice (~15 min).
+**Design constraint (session turn 8):** the Story names the CONDITION (non-determinism, universal struggle) without restating the SPECIFIC failure modes the student meets in the two-session diff. Meta-failure (curriculum generation drifting, banned-word leak, rules loaded late) is not student-run failure (packaged run drifts at hour 2, memory thin on the critical file). Same condition, different domain.
 
 <!-- backing -->
 
@@ -116,12 +107,12 @@ Claims
 - `catch-it-and-encode-it` · vision · "Your job is not to stop the drift. Your job is to catch it and encode what you learned." ← none-owed
 
 Sources
-- m6-generation-session `[checked:2026-04-24 result:ATTESTED due:none]` attested:Antti 2026-04-24 M6-generation-session — [maintainer-attested] the session tally recorded in this file's maintainer block, § *Source (the session tally)*. Every number in the memo pulls from it. The maintainer ran the session: first-hand primary, no URL owed (`check_research_claims.md §1`). The tally lives beside the memo on purpose: an attestation that delegates to a separate journal is only as durable as that journal. **`due:none` is right here, and the reason matters** — this is a dated memo about one session that happened, not a claim about how sessions go. It cannot go stale, only be superseded. fallback: none. **Regeneration, not re-verification, is the maintenance move:** when M6 runs for a new cohort, regenerate the opener from that cohort's notes. A dated memo ages cleanly on its date; a reused dated memo ages as a trip report.
+- m6-generation-session `[checked:2026-04-24 result:ATTESTED due:none]` attested:Antti 2026-04-24 M6-generation-session — [maintainer-attested] the session tally recorded in this file's maintainer block, § *Source (the session tally)*. The maintainer ran the session: first-hand primary, no URL owed (`check_research_claims.md §1`). The tally lives beside the memo on purpose: an attestation that delegates to a separate journal is only as durable as that journal. **`due:none` is right here, and the reason matters** — this is a dated memo about one session that happened, not a claim about how sessions go. It cannot go stale, only be superseded. fallback: none. **Regeneration, not re-verification, is the maintenance move:** when M6 runs for a new cohort, regenerate the opener from that cohort's notes. A dated memo ages cleanly on its date; a reused dated memo ages as a trip report.
 - geoffintech-charles `[checked:2026-05-25 result:OK due:2026-10-08]` https://x.com/geoffintech/status/2042002590758572377 — [practitioner direct] Geoff Charles (Ramp), 2026-04-08 (22:12 UTC, snowflake-decoded; due = pub+6mo per `observations/ramp.md`): *"The models were good enough. The harness wasn't."* Verified via `observations/ramp.md` plus the X oEmbed workaround; the x.com page 402s, the quote is confirmed. kb:observations/ramp.md **Load-bearing in an unusual way: the memo's whole point is that our paraphrase drifted from this line, so the verbatim IS the claim.** The documented reframe other files fall back to — "Ramp's engineers' framing converges on: the harness was the bottleneck, not the model" — is precisely the paraphrase this passage is about, and firing it here would delete the anecdote. fallback: if the quote ever fails verification, cut the paragraph rather than soften it.
 
 Frameworks
-- Non-determinism as the condition · [borrow:none] · law:none · ← none — Antti's working position, reshaped from an earlier "we live what we teach" credibility framing after the Claude-generated recommendation was cut at turn 7
-- Rules-loaded-but-bypassed · [borrow:none] · law:none · ← m6-generation-session — a loaded rule is not an enforced rule; this observation is what pushed the corpus toward forcing functions
+- Non-determinism as the condition · [borrow:none] · law:none · ← none — Antti's working position; the credibility framing (*we live what we teach*) is the rejected alternative, told in body at *The end-state that was not*
+- Rules-loaded-but-bypassed · [borrow:none] · law:none · ← m6-generation-session — a loaded rule is not an enforced rule; `check_pedagogy.md §22` states the same law for the corpus
 - Double-loop learning · [borrow:Argyris & Schön] · law:double-loop-learning · ← cultural-vocab — "then I compounded the session" is the second loop: not fixing the leak, changing the rule that let it leak
 
 Stance `[stance:2026-08-01 level:L1]`

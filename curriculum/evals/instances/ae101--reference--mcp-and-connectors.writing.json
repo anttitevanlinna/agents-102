@@ -1,19 +1,37 @@
 {
   "class": "writing",
-  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/reference/mcp-and-connectors.md",
-  "body_sha": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
-  "shape_hash": "7b3d7617cecc027b",
-  "verdict": "PASS",
   "training": "ae101",
+  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/reference/mcp-and-connectors.md",
+  "verdict": "PASS_WITH_TODOS",
+  "body_sha": "bf758cc70992bf4533bfe3989d95040f3566b9166680921c64357971db955388",
+  "shape_hash": "7b3d7617cecc027b",
   "pin": "4a722813",
   "staleness_reason": "rule-drift",
   "rules_evaluated": [
     {
       "compendium": "check_writing.md",
+      "rule_index": 1,
+      "rule_lead": "Banned words — grep zero-tolerance.",
+      "verdict": "PASS",
+      "evidence": "grep -inE '\\bhonest|\\bdelve|\\blandscape\\b|\\bimportantly|\\bcrucial|\\bsubstrate|\\bleverage\\b|\\bsynergize|\\bparadigm shift' over body region (lines 1-123) -> 0 matches. grep -n '—' over the same region -> 0 matches (no em-dashes).",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 2,
+      "rule_lead": "Ritual / ceremony — hard ban.",
+      "verdict": "PASS",
+      "evidence": "grep -inE '\\britual|\\bceremony' over body region -> 0 matches. grep -inoE '\\bpractice[sd]?\\b' -> 0 matches, so the AE101 practice(n) dosage question doesn't even arise.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_writing.md",
       "rule_index": 3,
       "rule_lead": "No stale markers, no \"fixed\" retrospectives, no session biography.",
       "verdict": "PASS",
-      "evidence": "grep -inE '\\bsettled\\b|\\bretired\\b|no longer|historically|used to\\b|the old |was changed to' over body region (lines 1-123) -> 0 matches. Body line 6's \"Last verified: 2026-07-26\" and header line 114's \"(as of 2026-08-19)\" are load-bearing freshness-date exceptions, not journey narration. Maintainer block (below line 124, out of writing scope but checked for §3's extended clause) carries only present-tense standing constraints (\"Update cadence: re-verify on each cohort delivery\") and the per-source `[checked:DATE result:X due:cohort]` stamps the rule's own exception list protects.",
+      "evidence": "grep -inE '\\bsettled\\b|\\bretired\\b|no longer works|historically|\\bused to\\b|the old |was changed to|\\brenamed\\b' over the whole file (maintainer block included, per this rule's extension clause) -> the only hit is line 9 of the maintainer's update-cadence list, \"A cohort reports an install command that no longer works\" - a present-tense TRIGGER CONDITION for when to run the update, not a claim that something in this file itself stopped working. Line 137 (\"Note what changed in the commit message. The exercises reading this file don't change.\") is the rule's own prescribed pattern in practice: put the diff in git, not the file. The dated Source verification stamps (lines 140-149) are the rule's own named exception (freshness claims); the one narrating an external URL's history (\"the /content/jira-mcp-server deep link that 404'd on 2026-05-25 now resolves\", line 149) is the kind of empirical finding the rule says to KEEP, not a journey about our own document. The 84%-of-AE101-files dated-provenance carve-out doesn't even need invoking here - there is no dated decision narrative in this maintainer block at all, only standing constraints and source stamps.",
       "fix_hint": null,
       "blocking": false
     },
@@ -22,7 +40,7 @@
       "rule_index": 4,
       "rule_lead": "Register match.",
       "verdict": "PASS",
-      "evidence": "grep -inE '\\*\\*Remember|Hold onto|Keep in mind|Never forget|\\bcargo\\b|\\btheatre\\b|\\britual\\b|\\btourist\\b|\\bposter\\b' over body region -> 0 matches (no retain-wrapper, no metaphor-valence keyword). Register throughout is flat + factual (Boris-direct), appropriate for a flat-lookup reference page whose job is accurate install steps, not a teaching beat needing the full quintet. No \"we refuse\"/\"we don't\" callout anywhere to check for negation self-contradiction. Closest-to-violating line: line 9 \"Three ways an action becomes callable in a Claude Code session:\" - plainly Boris-flat, which is the correct register for this surface, not a slip into cold-tech-only where warmth was owed.",
+      "evidence": "grep -inE '\\*\\*Remember|Hold onto|Keep in mind|Never forget|\\bcargo\\b|\\btheatre\\b|\\btourist\\b|\\bposter\\b' over body region -> 0 matches (no retain-wrapper, no metaphor-valence keyword). No \"we refuse\"/\"we don't\" callout to check for negation self-contradiction. Register is consistently Boris-flat/factual throughout, the correct register for a flat-lookup reference page (install steps, not a teaching beat needing the full quintet). Closest-to-violating line: 9, \"Three ways an action becomes callable in a Claude Code session:\" - plainly direct-technical, not a slip into L&D-coach or motivational-poster register.",
       "fix_hint": null,
       "blocking": false
     },
@@ -31,7 +49,7 @@
       "rule_index": 7,
       "rule_lead": "Always \"you\", never \"the student\"; teacher framing stays out of body.",
       "verdict": "PASS",
-      "evidence": "grep -inE '\\bthe student\\b|\\bstudents\\b' over body region -> 0 matches. Second person appears consistently where a reader is addressed (line 40 \"if your work is read-only\"; line 60 \"you sign in to your Atlassian org\"; line 106 \"Claude Code reuses your existing credentials\"). No delivery-mechanics narration (\"the trainer shows...\") in body.",
+      "evidence": "grep -inE '\\bthe student\\b|\\bstudents\\b' over body region -> 0 matches. Second person appears where a reader is addressed (line 40 \"if your work is read-only\"; line 60 \"you sign in to your Atlassian org\"; line 106 \"Claude Code reuses your existing credentials\"). No delivery-mechanics narration (\"the trainer shows...\") in body.",
       "fix_hint": null,
       "blocking": true
     },
@@ -40,7 +58,7 @@
       "rule_index": 8,
       "rule_lead": "Don't smuggle terms of art from maintainer into body.",
       "verdict": "PASS",
-      "evidence": "grep -niE 'self-compound|substrate|three-pattern|grill-me' over body region -> 0 matches. Maintainer-register vocabulary (Canonical home, Update cadence, compendium-audited, Source verification) stays below the fence at line 124. Technical terms appearing in body (3LO line 60, JSM line 46, marketplace.json line 91) are earned inline at first use, not paraphrased down from the maintainer register.",
+      "evidence": "grep -niE 'self-compound|substrate|three-pattern|grill-me' over body region -> 0 matches. Maintainer-register vocabulary (Canonical home, Update cadence, compendium-audited) stays below the fence at line 124. Terms that DO appear in body (3LO line 60, JSM line 46) are earned inline at first use, not paraphrased down from maintainer register.",
       "fix_hint": null,
       "blocking": true
     },
@@ -49,7 +67,7 @@
       "rule_index": 9,
       "rule_lead": "Over-hedge detector.",
       "verdict": "PASS",
-      "evidence": "grep -inE 'no penalty|fine way to|it.s OK if|no consolation|not a downgrade|sometimes humans should|not a box-check|not on the hook' over body region -> 0 matches. No reassurance-shaped sentence anywhere; the delegation-shape sentences present (e.g. line 30's Ask-Claude-to / Claude-runs pair) state division of labour without an absolving addendum.",
+      "evidence": "grep -inE 'no penalty|fine way to|it.s OK if|no consolation|not a downgrade|sometimes humans should|not a box.check|not on the hook' over body region -> 0 matches. No reassurance-shaped sentence anywhere; the one delegation-shape pair present (line 30, Ask-Claude-to / Claude-runs) states the division of labour without an absolving addendum.",
       "fix_hint": null,
       "blocking": false
     },
@@ -58,7 +76,7 @@
       "rule_index": 13,
       "rule_lead": "Value-prop / positioning framing belongs in sales copy + project strategy docs, NOT student-facing curriculum body.",
       "verdict": "PASS",
-      "evidence": "grep -in 'vendor' over body region -> 0 matches (nothing to audit under the hard sub-rule). grep -inE 'not an aspirational|not a vendor|this isn.t marketing|the real practitioners|unlike consultancy|grounded in actual|not theoretical|from the person running it' over body region -> 0 matches. Not the Agents 101 M7 taxonomy exception (this is an AE101 reference file).",
+      "evidence": "grep -in 'vendor' over body region -> 0 matches, so the hard sub-rule has nothing to audit. grep -inE 'not an aspirational|not a vendor|this isn.t marketing|the real practitioners|unlike consultancy|grounded in actual|not theoretical|from the person running it' over body region -> 0 matches. Not the Agents 101 M7 taxonomy exception (this is an AE101 reference file).",
       "fix_hint": null,
       "blocking": true
     },
@@ -67,7 +85,7 @@
       "rule_index": 15,
       "rule_lead": "Audit closer when trimming body-prose forcing function.",
       "verdict": "PASS",
-      "evidence": "Every section/callout close read cold for a dangling pronoun/demonstrative or vague spatial metaphor per the un-gated second clause of this rule. Line 17 close \"Same end state from the agent's point of view\" anchors to the CLI-vs-MCP contrast stated in the same sentence - one possible referent. Section closes at lines 30 (\"...covers what the MCP server covers for nearly every practical task\"), 93 (\"...the MCP-bundle dimension is the one this page covers\"), 110 (\"...plain Path 1 or Path 2 stays simpler\") and 120 (\"...connector actions\") all end on a concrete named noun, never a bare pronoun standing in for an action.",
+      "evidence": "Every section/callout close read cold for a dangling pronoun/demonstrative or vague spatial metaphor (the un-gated second half of this rule fires on any closer, not only post-trim). Section closes at lines 17 (\"Same end state from the agent's point of view\" - anchors to the CLI-vs-protocol contrast in the same sentence), 30 (\"...covers what the MCP server covers for nearly every practical task\"), 93 (\"...the MCP-bundle dimension is the one this page covers\"), 110 (\"...plain Path 1 or Path 2 stays simpler\") all close on a concrete named noun, never a bare pronoun standing in for an unstated action.",
       "fix_hint": null,
       "blocking": false
     },
@@ -76,7 +94,7 @@
       "rule_index": 17,
       "rule_lead": "No combative verbs about the agent in body prose.",
       "verdict": "PASS",
-      "evidence": "grep -inE '\\bbark|\\border\\b|\\bwhip\\b|\\bforce\\b|\\bdrag\\b|push around|\\bboss\\b|shout at|snap at|\\bscold\\b|\\bcommand\\b' over body region -> 2 raw hits, both at lines 12 (\"command line\") and 110 (\"install command\") - a noun (a CLI interface/instruction), not a verb directed at the agent. No verb describing student->agent interaction reads as bad-manager-to-junior-employee anywhere.",
+      "evidence": "grep -inE '\\bbark|\\border\\b|\\bwhip\\b|\\bforce\\b|\\bdrag\\b|push around|\\bboss\\b|shout at|snap at|\\bscold\\b|\\bcommand\\b' over body region -> 2 raw hits, both the noun \"command\" inside \"command line\" (line 12) and \"install command\" (line 110) - a CLI interface / an install step, not a verb directed at the agent. No verb describing student->agent interaction anywhere reads as bad-manager-to-junior-employee.",
       "fix_hint": null,
       "blocking": false
     },
@@ -85,7 +103,7 @@
       "rule_index": 18,
       "rule_lead": "Headers must be literally true about the mechanism.",
       "verdict": "PASS",
-      "evidence": "Checked all 8 H2 headers against their section content. \"Other trackers (Asana, Shortcut, Azure DevOps, ServiceNow, etc.)\" (line 83) has a named primary set (GitHub, Jira, Linear each got their own preceding H2), so \"other than what?\" resolves cleanly - satisfies rule 18(b)'s own test rather than tripping it. No spatial-metaphor-vs-mechanism contradiction in any header (no \"beyond the window\"-style claim).",
+      "evidence": "Checked all 8 H2 headers against their section content. \"Other trackers (Asana, Shortcut, Azure DevOps, ServiceNow, etc.)\" (line 83) resolves \"other than what?\" cleanly - GitHub, Jira, and Linear each already got their own named H2 immediately above it, so a named-primary set exists (satisfies rather than trips this rule's own diagnostic). No spatial-metaphor-vs-mechanism contradiction in any header.",
       "fix_hint": null,
       "blocking": false
     },
@@ -94,7 +112,7 @@
       "rule_index": 19,
       "rule_lead": "Machine-cadence fat — the shape of good prose without the content.",
       "verdict": "PASS",
-      "evidence": "grep -inE 'This is the|That is the|These are the|, not merely|, not just' over body region -> 0 matches (no deictic drumroll, no empty negation). Bold-label lead-ins (lines 11-13, 17, 32, 48, 70, 93, 106, 108, 110) checked individually - none restate the label as the sentence's own subject verbatim (e.g. line 93 \"**How MCPs ride inside plugins.** A plugin author puts a standard `.mcp.json`...\" moves to a new subject). Each `Sources:` block (lines 19, 42, 64, 81, 87, 112, 122) is bare links, never a re-explained gloss of the inline citation above it.",
+      "evidence": "grep -inE 'This is the|That is the|These are the' over body region -> 0 matches (no deictic drumroll). The two ', not ' hits (line 60 \"...which domains can connect, not whether individuals can install after that\"; line 118 \"...built-in OAuth connectors, not arbitrary MCP servers\") each negate a genuinely plausible misreading, not a strawman no reader would hold - not empty negation. Bold-label lead-ins (lines 11-13, 17, 32, 48/70, 91, 93, 106, 110) checked individually: none restate the label as the following sentence's own subject (e.g. line 93 \"**How MCPs ride inside plugins.** A plugin author puts a standard `.mcp.json`...\" moves the subject to \"a plugin author\"). Every Sources: block (lines 19, 42, 64, 81, 87, 112, 122) is a bare link list, never a re-explained gloss of an inline citation.",
       "fix_hint": null,
       "blocking": false
     },
@@ -102,9 +120,9 @@
       "compendium": "check_writing.md",
       "rule_index": 20,
       "rule_lead": "Don't state a count the adjacent list already holds.",
-      "verdict": "PASS",
-      "evidence": "Line 9 \"Three ways an action becomes callable in a Claude Code session:\" sits directly above a 3-item list (lines 11-13), which looks adjacent-count-shaped on first pass, but \"Path 1\"/\"Path 2\"/\"Path 3\" recur individually far from the list with items not visible together (lines 15, 23, 32 x2, 34, 40, 93, 110 all cite a specific Path by number alone) - satisfying the rule's own carve-out (\"does the numeral appear where the items are NOT visible? Yes -> keep it\"). The numbered list mints a taxonomy the rest of the page depends on, not a decorative tally.",
-      "fix_hint": null,
+      "verdict": "REVISE",
+      "evidence": "Line 9, \"Three ways an action becomes callable in a Claude Code session:\", sits directly above the 3-item numbered list it introduces (lines 11-13) - the rule's own paradigm shape (\"You'll work at four task sizes\" above four bullets). This is a different numeral from the individually-recurring \"Path 1/2/3\" labels used at a distance later (lines 15, 23, 32, 40, 93, 110), which DO satisfy the memory-handle carve-out on their own - but that carve-out protects the NAMED labels, not this count statement sitting immediately adjacent to its own list. If a fourth path were ever added (e.g. a plugin-native install flow), \"Three ways\" would silently go stale exactly as the rule describes, and the fact is already fully visible in the three list items one line below. Harm is real, if minor: this is prose adjacent to its list, not a header (the header-numeral carve-out at line 7, \"## Three paths to a work-app action\", is unaffected and correctly stays).",
+      "fix_hint": "Drop the numeral and let the list carry the count: \"An action becomes callable in a Claude Code session:\" - do not substitute a hedge quantifier (\"several\", \"multiple\"), which this rule also disallows.",
       "blocking": false
     },
     {
@@ -112,7 +130,7 @@
       "rule_index": 21,
       "rule_lead": "A slogan that is false as stated is not punchy framing — run the truth test before reaching for §12.",
       "verdict": "PASS",
-      "evidence": "grep -noiE '\\bonly\\b|\\balways\\b|\\bnever\\b|\\bnothing else\\b|\\bthe one thing that\\b|\\bcleanest\\b|\\bbest\\b' over body region -> hits at lines 11/13 (\"Best path for Jira and Linear\"), 40 (\"read-only\", a compound adjective not the superlative), 46 (\"API-token auth only\"), 48/70/118 (\"only admins can add\" / admin-only scoping), 77 (\"Cleanest UX of the three trackers\"). Every real hit is scoped to this doc's own named 3-tracker comparison or to a dated, source-stamped product fact about a specific system (JSM auth mode; Team/Enterprise admin gating) - none asserts an unscoped how-the-world-works claim a counterexample could falsify.",
+      "evidence": "grep -noiE '\\bonly\\b|\\balways\\b|\\bnever\\b|\\bnothing else\\b|\\bthe one thing that\\b|\\bcleanest\\b' over body region -> hits at lines 46 (\"API-token auth only\"), 48/70/118 (\"only admins can add\"), 77 (\"Cleanest UX of the three trackers\"). Every hit scopes to a specific, source-stamped product fact (JSM's auth mode; Claude.ai Team/Enterprise admin gating; a claim about this doc's own three named trackers) - none asserts an unscoped how-the-world-works claim a counterexample could falsify.",
       "fix_hint": null,
       "blocking": false
     },
@@ -121,7 +139,7 @@
       "rule_index": 27,
       "rule_lead": "Say it once, at its most concrete, then at most one sentence that generalises it. Style, not a gate.",
       "verdict": "PASS",
-      "evidence": "New rule (dated 2026-08-29), read in full and checked against every paragraph close in the body. Line 17's \"A first-party CLI exposes actions through Bash; an MCP server exposes them through the protocol. Same end state from the agent's point of view.\" IS the rule's own canonical survivor shape (concrete instance + one portable generalisation, then stop). Two closest-to-violating candidates checked and cleared: (1) line 60 \"individual engineers don't need per-install admin approval. Admins control product scopes and which domains can connect, not whether individuals can install after that.\" - the second sentence names NEW content (what admins DO retain: scopes/domains) rather than restating the first at a different altitude, so it resolves a real residual question rather than padding. (2) line 91 \"Plugins distributed this way are the most ergonomic path when one MCP server needs to land on many machines. A team marketplace install replaces N copies of `claude mcp add`.\" - general claim followed by its concrete instantiation (accepted order in reverse), not a redundant twin (second sentence adds the concrete N-copies mechanism the first never stated). No restating-adjacent-artifact hits: no body sentence narrates a fenced command block verbatim - line 40's \"Trailing slash is canonical\" flags a subtle, easy-to-miss detail already visible in the line-34 fence rather than re-describing the fence's content, the affordance carve-out this rule shares with §19/§20. No widening qualifier (\"or rule\", \"or context-dependent\") anywhere. No second-announcement: the parallel \"Easiest path: Claude.ai inheritance\" paragraphs at lines 48 and 70 restate the SAME mechanism for two DIFFERENT trackers (Jira, Linear), the expected shape of a per-tracker reference doc, not one claim asserted twice about the same thing. This rule is explicitly non-blocking on its own (\"Style, not a gate\") and is not in the template's blocking list regardless.",
+      "evidence": "Line 17's \"A first-party CLI exposes actions through Bash; an MCP server exposes them through the protocol. Same end state from the agent's point of view.\" IS the rule's own canonical survivor shape (concrete instance + one portable generalisation, then stop). Checked the two closest candidates for the abstract-twin and widening-qualifier shapes: line 60's \"Admins control product scopes and which domains can connect, not whether individuals can install after that\" adds NEW content (what admins retain) rather than restating the prior sentence at a different altitude. No widening qualifier (\"or rule\", \"or context-dependent\") anywhere. The parallel \"Easiest path: Claude.ai inheritance\" paragraphs (lines 48, 70) restate the same mechanism for two DIFFERENT trackers in a flat-lookup doc a reader consults per-tracker, not one claim asserted twice within a single continuous read - the expected shape for this surface, not a second-announcement violation.",
       "fix_hint": null,
       "blocking": false
     },
@@ -130,7 +148,7 @@
       "rule_index": 1,
       "rule_lead": "Aspirational destination, never corrective gap.",
       "verdict": "PASS",
-      "evidence": "grep -inE 'at your scale|for a beginner|once you.re more experienced|a senior would already know|you already think|you.re missing' over body region -> 0 matches. No tourist/practitioner-style identity split with an unreachable criterion anywhere. The one pre-check present, the fenced `gh auth status` / `gh auth login` pair (lines 26-27), tests a genuinely per-machine variable (already signed in or not) - passes the plausibly-failable test.",
+      "evidence": "grep -inE 'at your scale|for a beginner|once you.re more experienced|a senior would already know|you already think|you.re missing' over body region -> 0 matches. No tourist/practitioner identity split with an unreachable criterion anywhere. The one pre-check present (`gh auth status` / `gh auth login`, lines 26-27) tests a genuinely per-machine variable (signed in or not), passing the plausibly-failable test.",
       "fix_hint": null,
       "blocking": false
     },
@@ -139,7 +157,7 @@
       "rule_index": 2,
       "rule_lead": "Earn every technical term on first use.",
       "verdict": "PASS",
-      "evidence": "Line 17's Vocabulary paragraph earns MCP/connector/action/tool in one breath each, and MCP + connector are also explicitly assumed-known for the AE101 engineer audience per the 2026-08-18 carve-out, so any pre-line-17 use (e.g. line 11) owes no earning regardless. Line 46 spells out \"Jira Service Management\" before \"JSM\" is used; line 60 glosses 3LO inline at first use. \"Path 1/2/3\" is named at first use in the defining list itself (lines 11-13). \"GA\", \"stdio\", \"OAuth\" are ordinary engineering vocabulary this audience already owns per the same carve-out.",
+      "evidence": "Line 17's Vocabulary paragraph earns MCP/Connector/Action/Tool in one breath each, and MCP + connector are independently exempt for the AE101 engineer audience under the 2026-08-18 assumed-known carve-out, so any pre-line-17 use (line 11) owes no earning regardless. Line 46 spells out \"Jira Service Management\" immediately before \"JSM\" is used; line 60 glosses \"3LO\" inline at first use (\"3LO is Atlassian's three-legged OAuth: the app, your org, and you each approve\"). \"Path 1/2/3\" is named at first use in the list that defines it (lines 11-13). \"stdio\", \"OAuth\", \"GA\" read as ordinary engineering vocabulary this audience already owns, same tier as the MCP/connector carve-out, not a house coinage.",
       "fix_hint": null,
       "blocking": false
     },
@@ -148,7 +166,7 @@
       "rule_index": 5,
       "rule_lead": "Golden path only in body — THIS RULE HAS AN EXCEPTION; read to the boundary before cutting anything.",
       "verdict": "PASS",
-      "evidence": "This file IS the quick-reference surface this rule routes generic troubleshooting to (curriculum/CLAUDE.md: reference = 'flat lookup. No progression.'). The two 'what if' branches present - the Atlassian endpoint-sunset Note (line 62) and the Linear tenant-blocked Fallbacks paragraph (line 79) - are plausible-failure + non-obvious-rescue cases (an engineer would not otherwise know Composio / Merge Agent Handler / a local stdio MCP with a personal token exist) that correctly stay in body under the rule's own boundary. \"What Claude Code doesn't do yet\" (lines 114-122) is capability-boundary documentation, not a student-error FAQ.",
+      "evidence": "This file IS the quick-reference surface generic troubleshooting routes to (curriculum/CLAUDE.md: reference = \"flat lookup, no progression\"). The two branch-shaped passages present - the Atlassian endpoint-sunset Note (line 62) and the Linear tenant-blocked Fallbacks paragraph (line 79, \"Composio or Merge Agent Handler host third-party bridges; a local stdio MCP with a personal Linear API token works without any external host\") - are plausible-failure + non-obvious-rescue cases an engineer would not otherwise discover, correctly staying in body under this rule's own boundary clause. Lines 114-122 (\"What Claude Code doesn't do yet\") are capability-boundary documentation, not a student-error FAQ.",
       "fix_hint": null,
       "blocking": false
     },
@@ -157,7 +175,7 @@
       "rule_index": 11,
       "rule_lead": "No \"What research says\" callout boxes.",
       "verdict": "PASS",
-      "evidence": "grep -n 'What research says' over full file -> 0 matches; every section instead uses the prescribed one-line inline **Sources:** citation list (7 occurrences: lines 19, 42, 64, 81, 87, 112, 122).",
+      "evidence": "grep -n 'What research says' over full file -> 0 matches; every section uses the prescribed one-line inline Sources: citation list instead (7 occurrences: lines 19, 42, 64, 81, 87, 112, 122).",
       "fix_hint": null,
       "blocking": false
     },
@@ -166,16 +184,16 @@
       "rule_index": 14,
       "rule_lead": "No em-dashes. Simple sentences.",
       "verdict": "PASS",
-      "evidence": "grep -c '—' over body region (lines 1-123) -> 0. Parentheticals throughout (line 40 \"(commonly `repo` for issue/PR access; pick narrower scopes if your work is read-only)\"; line 60 \"(3LO is Atlassian's three-legged OAuth...)\") are true asides (clarification), not disguised em-dash substitutes.",
+      "evidence": "grep -c '—' over body region -> 0. Parentheticals present (line 40, line 60) are true clarifying asides, not disguised em-dash substitutes.",
       "fix_hint": null,
-      "blocking": false
+      "blocking": true
     },
     {
       "compendium": "check_student_facing.md",
       "rule_index": 17,
       "rule_lead": "Section headers use command verbs when section is about doing something.",
       "verdict": "PASS",
-      "evidence": "All 8 H2 headers (Three paths to a work-app action; GitHub Issues; Jira: Atlassian Rovo MCP; Linear: first-party MCP; Other trackers; Plugins and marketplaces; Marketplace governance; What Claude Code doesn't do yet) are declarative noun-phrases naming lookup content - exactly the rule's own carve-out (\"Lectures + reference sections may use declarative noun-phrase headers... since reader's job = understanding, not doing\"). Bold inline lead-ins where the reader IS doing something already lead with a verb (line 95 \"**Add a marketplace**, then install a plugin:\").",
+      "evidence": "All 8 H2 headers (Three paths to a work-app action; GitHub Issues; Jira: Atlassian Rovo MCP; Linear: first-party MCP; Other trackers; Plugins and marketplaces; Marketplace governance; What Claude Code doesn't do yet) are declarative noun-phrases naming lookup content - the rule's own carve-out for lecture/reference sections (\"reader's job = understanding, not doing\"). Bold inline lead-ins where the reader does act already lead with a verb (line 95, \"**Add a marketplace**, then install a plugin:\"). No header names Claude as the actor.",
       "fix_hint": null,
       "blocking": false
     },
@@ -183,8 +201,9 @@
       "compendium": "check_student_facing.md",
       "rule_index": 18,
       "rule_lead": "Inline links use target's title, never filename.",
-      "verdict": "PASS",
-      "evidence": "Every link in body targets an external product/docs URL (cli.github.com, code.claude.com, support.atlassian.com, claude.ai/directory, etc.); none reference another curriculum surface, so the title-vs-filename clause has nothing to fire on. Ordinal sub-clause: \"Path 1/2/3\" recurs bare at distance from its defining list (lines 40, 93, 110) but functions as a stable named identifier for one of three fixed install methods, always paired with its descriptive name at first use (line 32) - matching the rule's own \"MN is a name; Step N is a coordinate\" exception, not a positional coordinate.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Every body link targets an external product/docs URL (cli.github.com, code.claude.com, support.atlassian.com, claude.ai, linear.app, modelcontextprotocol.io, composio.dev); none reference another curriculum surface, so the rule (governing links to a sibling curriculum page) has nothing to fire on. Confirmed via grep for ](trainings/|exercises/|lectures/|reference/|supplementary/ -> 0 matches.",
       "fix_hint": null,
       "blocking": false
     },
@@ -193,7 +212,7 @@
       "rule_index": 21,
       "rule_lead": "LLM-vs-agent-vs-Claude vocabulary discipline.",
       "verdict": "PASS",
-      "evidence": "Bare-word count over body: \"Claude\" ~31 non-URL prose hits (overwhelmingly \"Claude Code\"/\"Claude.ai\"/\"Claude Desktop\" product names, or \"Ask Claude to...\" addressee framing - both sanctioned); \"the agent\" 1 (line 17, general-perspective use); \"LLM\" 0. Closest calls: line 13 \"Claude calls it through Bash\" and line 30 \"Claude runs `gh issue view`... via Bash\" continue the immediately-preceding \"Ask Claude to...\" addressee sentence as one ask-then-does pair in a page whose entire subject is product configuration (wiring tool access), not autonomous multi-step work narration - so there is no competing chatbot-vs-agent conflation for the rule's harm to land on. The install/config genre explains the high Claude:agent ratio; it is not evidence of assistant-shaped framing.",
+      "evidence": "Bare-word scan over body: \"Claude\" ~31 hits, the overwhelming majority \"Claude Code\"/\"Claude.ai\"/\"Claude Desktop\" (sanctioned product/UI-surface reference) or \"Ask Claude to...\" (sanctioned addressee framing); \"the agent\" 1 (line 17, general framing); \"LLM\" 0. Closest calls: line 13 \"Claude calls it through Bash\" and line 30 \"Claude runs `gh issue view`... via Bash\" continue the immediately-preceding addressee sentence (\"Ask Claude to...\") as one ask-then-does pair inside a passage whose subject is grounding a SPECIFIC PRODUCT MECHANISM (how Claude Code's Bash path works), paired one line above (17) with the correctly-\"agent\"-framed GENERAL statement (\"Same end state from the agent's point of view\") once the point turns abstract. The file already demonstrates it knows the distinction; the two Path-3-specific lines read as UI-surface grounding, not autonomous-work narration competing with an assistant-vs-agent lesson this page isn't teaching. Per the dispatch preamble's harm test, the mis-teaching-agency harm this rule polices is not clearly present in an install/config reference whose sole topic is product wiring; a REVISE here would treat a doubtful call as a certain one.",
       "fix_hint": null,
       "blocking": false
     },
@@ -202,7 +221,7 @@
       "rule_index": "21b",
       "rule_lead": "Session / task / run split (all trainings).",
       "verdict": "PASS",
-      "evidence": "\"session\" used correctly throughout (line 9 \"a Claude Code session\"; lines 48/70 \"a Claude Code session logged in to the same account\"; line 32 \"one Claude session\"). \"run\" appears only as a verb (\"Claude runs...\", line 30) or inside the verbatim CLI subcommand name `gh run view` (line 30) - both exempt from the noun-run ban.",
+      "evidence": "\"session\" used correctly throughout (line 9 \"a Claude Code session\"; lines 48/70 \"a Claude Code session logged in to the same account\"; line 32 \"one Claude session\"). \"run\" appears only as a verb (\"Claude runs...\", line 30; \"don't need to run `/plugin marketplace add`\", line 108) or inside the verbatim CLI subcommand name `gh run view` (line 30) - both exempt from the noun-run ban. No noun-run usage found.",
       "fix_hint": null,
       "blocking": false
     },
@@ -220,7 +239,7 @@
       "rule_index": 26,
       "rule_lead": "Cut NVA: true but not moving student forward.",
       "verdict": "PASS",
-      "evidence": "Closest candidates checked against the obvious-to-a-working-engineer screen: line 23 \"GitHub ships `gh`, its official CLI\" sets up WHY `gh` is the AE101 default (decision-relevant); line 40 \"Trailing slash is canonical\" prevents a real install-time error (actionable); line 93's plugin-vs-URL precedence sentence changes what a reader predicts on a scope collision (decision-relevant); line 60's 3LO gloss is load-bearing for the admin-approval sentence it sits inside (Atlassian's own abbreviation, not generic OAuth an engineer already knows). Nothing reads as implementation detail stated before its point of use or maintainer reasoning leaking into body.",
+      "evidence": "Closest candidates checked against the obvious-to-a-working-engineer screen: line 23 \"GitHub ships `gh`, its official CLI\" sets up WHY `gh` is the AE101 default (decision-relevant, not obvious filler); line 40 \"Trailing slash is canonical\" prevents a real install-time error (actionable); line 93's plugin-vs-URL precedence sentence changes what a reader predicts on a scope collision (decision-relevant); line 60's 3LO gloss is load-bearing for the very sentence it sits inside (Atlassian's own abbreviation, not generic OAuth). Nothing reads as implementation detail stated before its point of use or maintainer reasoning leaking into body.",
       "fix_hint": null,
       "blocking": false
     },
@@ -229,7 +248,7 @@
       "rule_index": 31,
       "rule_lead": "Name the artifact, not the act.",
       "verdict": "PASS",
-      "evidence": "grep -inE 'typing |type in|say to claude|tell it to' over body region -> 0 matches. Every direction to Claude is phrased as an artifact/action ask (line 30 \"Ask Claude to *read issue NNN*, *comment on issue NNN with this body*...\"), never a physical-act verb.",
+      "evidence": "grep -inE 'typing |type in|say to claude|tell it to' over body region -> 0 matches. Every direction to Claude is phrased as an artifact/action ask (line 30, \"Ask Claude to *read issue NNN*, *comment on issue NNN with this body*...\"), never a physical-act verb around quoted message content.",
       "fix_hint": null,
       "blocking": false
     },
@@ -238,7 +257,37 @@
       "rule_index": 33,
       "rule_lead": "The curriculum does not narrate itself — subject test, then deletion test.",
       "verdict": "PASS",
-      "evidence": "Subject test applied to every body sentence: nearly all are about the connector/protocol/CLI mechanism itself (the student's tooling), not about a module, the training, an exercise, a later beat, or the arc. One candidate checked closely: line 93's closing clause \"the MCP-bundle dimension is the one this page covers\" names this PAGE's own scope, not the training's arc or a later module's job - it is editorial section-scoping inside a flat-lookup reference (a different genre from the module-arc narration this rule's harm targets), and deleting it leaves the paragraph's actual content (plugins can ship more than MCP) intact and undamaged either way, so it is a borderline stylistic close rather than the cartography this rule polices. The genuinely arc-positioning content - \"Why a reference file and not inline in the exercise\" (line 151, explaining the training's own architecture decision) - correctly sits below the maintainer cut (line 124).",
+      "evidence": "grep -inE '\\b(module|training|the arc)\\b' over body region -> 0 matches. Subject test applied to every remaining sentence: each is about the connector/protocol/CLI mechanism itself (the reader's own tooling), never about a module, the training, an exercise, a later beat, or the arc. The one genuinely arc-positioning sentence in the file - \"Why a reference file and not inline in the exercise\" (lines 151-152, explaining the training's own architecture decision) - correctly sits below the maintainer cut at line 124, out of this rule's scope.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 38,
+      "rule_lead": "Exercise headers pass the build-squint test.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "This file is a reference/flat-lookup page with no exercises; the rule governs exercise-file H1/section headers.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 49,
+      "rule_lead": "A take-home prompt asks for one bounded build.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "has_prompt_blocks: false - no {{prompt:}} or **Prompt** fenced blocks in this file; its six fences are CLI-syntax snippets, not a prompt a student saves and runs against Claude.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 8,
+      "rule_lead": "Strategy doc carries strategy, not structure — §§1-7 bind curriculum→doc, this one binds doc→curriculum.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "This file asserts no strategy-doc-owned content (mood, arc bets, cross-module sequencing, buyer reasoning) for the strategy doc to either restate or correctly point at - it is a technical install reference with no Key Concepts / What You'll Learn / Big Idea / mood-arc surface at all.",
       "fix_hint": null,
       "blocking": false
     },
@@ -250,7 +299,7 @@
       "evidence": "No `**Prompt**` fenced blocks in this reference file (its six fences are CLI-syntax snippets a reader types directly — `gh auth status`, `claude mcp add ...`, `/mcp`, `/plugin marketplace add ...` — never a labelled block with a destination chip a student pastes to Claude); rule governs bracketed placeholder text inside a prompt fence.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -261,7 +310,7 @@
       "evidence": "No `**Prompt**` fenced blocks in this reference file (its six fences are CLI-syntax snippets a reader types directly — `gh auth status`, `claude mcp add ...`, `/mcp`, `/plugin marketplace add ...` — never a labelled block with a destination chip a student pastes to Claude); rule governs the skim-cue sentence above a **Prompt** label.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -272,7 +321,7 @@
       "evidence": "No `**Prompt**` fenced blocks in this reference file (its six fences are CLI-syntax snippets a reader types directly — `gh auth status`, `claude mcp add ...`, `/mcp`, `/plugin marketplace add ...` — never a labelled block with a destination chip a student pastes to Claude); rule governs the lead-in/label/fence shape of a rendered Prompt block.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -283,7 +332,7 @@
       "evidence": "No `**Prompt**` fenced blocks in this reference file (its six fences are CLI-syntax snippets a reader types directly — `gh auth status`, `claude mcp add ...`, `/mcp`, `/plugin marketplace add ...` — never a labelled block with a destination chip a student pastes to Claude); rule governs how a prompt invokes an installed Skill.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -294,7 +343,7 @@
       "evidence": "No `**Prompt**` fenced blocks in this reference file (its six fences are CLI-syntax snippets a reader types directly — `gh auth status`, `claude mcp add ...`, `/mcp`, `/plugin marketplace add ...` — never a labelled block with a destination chip a student pastes to Claude); rule governs how a later prompt references an earlier prompt's output file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -305,7 +354,7 @@
       "evidence": "No `**Prompt**` fenced blocks in this reference file (its six fences are CLI-syntax snippets a reader types directly — `gh auth status`, `claude mcp add ...`, `/mcp`, `/plugin marketplace add ...` — never a labelled block with a destination chip a student pastes to Claude); rule governs leakage of a downstream prompt's role into an earlier prompt in a chain.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -316,7 +365,7 @@
       "evidence": "No `**Prompt**` fenced blocks in this reference file (its six fences are CLI-syntax snippets a reader types directly — `gh auth status`, `claude mcp add ...`, `/mcp`, `/plugin marketplace add ...` — never a labelled block with a destination chip a student pastes to Claude); rule governs offering a session reset inside a phase's prompt chain.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -327,7 +376,7 @@
       "evidence": "No `**Prompt**` fenced blocks in this reference file (its six fences are CLI-syntax snippets a reader types directly — `gh auth status`, `claude mcp add ...`, `/mcp`, `/plugin marketplace add ...` — never a labelled block with a destination chip a student pastes to Claude); rule governs prompts implementing self-consistency/majority-vote/ensemble detection.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -338,7 +387,7 @@
       "evidence": "No `**Prompt**` fenced blocks in this reference file (its six fences are CLI-syntax snippets a reader types directly — `gh auth status`, `claude mcp add ...`, `/mcp`, `/plugin marketplace add ...` — never a labelled block with a destination chip a student pastes to Claude); rule governs markdown emphasis characters inside a fenced prompt body.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -349,7 +398,7 @@
       "evidence": "No `**Prompt**` fenced blocks in this reference file (its six fences are CLI-syntax snippets a reader types directly — `gh auth status`, `claude mcp add ...`, `/mcp`, `/plugin marketplace add ...` — never a labelled block with a destination chip a student pastes to Claude); rule governs Agents 101 dual-runtime (Cowork/Code) prompt forking.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -360,7 +409,7 @@
       "evidence": "No `**Prompt**` fenced blocks in this reference file (its six fences are CLI-syntax snippets a reader types directly — `gh auth status`, `claude mcp add ...`, `/mcp`, `/plugin marketplace add ...` — never a labelled block with a destination chip a student pastes to Claude); rule governs Cowork-vs-Code runtime-fork scaffolding density.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -371,7 +420,7 @@
       "evidence": "No `**Prompt**` fenced blocks in this reference file (its six fences are CLI-syntax snippets a reader types directly — `gh auth status`, `claude mcp add ...`, `/mcp`, `/plugin marketplace add ...` — never a labelled block with a destination chip a student pastes to Claude); rule governs regeneration prompts adding a new voice/context source.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -382,7 +431,7 @@
       "evidence": "No `**Prompt**` fenced blocks in this reference file (its six fences are CLI-syntax snippets a reader types directly — `gh auth status`, `claude mcp add ...`, `/mcp`, `/plugin marketplace add ...` — never a labelled block with a destination chip a student pastes to Claude); rule governs cite-or-flag prompt instructions and citation cargo-culting.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -393,7 +442,7 @@
       "evidence": "No `**Prompt**` fenced blocks in this reference file (its six fences are CLI-syntax snippets a reader types directly — `gh auth status`, `claude mcp add ...`, `/mcp`, `/plugin marketplace add ...` — never a labelled block with a destination chip a student pastes to Claude); rule governs regeneration prompts risking drift toward generic-virtue language.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -404,7 +453,7 @@
       "evidence": "No `**Prompt**` fenced blocks in this reference file (its six fences are CLI-syntax snippets a reader types directly — `gh auth status`, `claude mcp add ...`, `/mcp`, `/plugin marketplace add ...` — never a labelled block with a destination chip a student pastes to Claude); rule governs prompts walking a student through a sequence of questions.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -415,7 +464,7 @@
       "evidence": "No `**Prompt**` fenced blocks in this reference file (its six fences are CLI-syntax snippets a reader types directly — `gh auth status`, `claude mcp add ...`, `/mcp`, `/plugin marketplace add ...` — never a labelled block with a destination chip a student pastes to Claude); rule governs regeneration prompts that don't name overwrite-vs-new-file behavior.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -426,7 +475,7 @@
       "evidence": "No `**Prompt**` fenced blocks in this reference file (its six fences are CLI-syntax snippets a reader types directly — `gh auth status`, `claude mcp add ...`, `/mcp`, `/plugin marketplace add ...` — never a labelled block with a destination chip a student pastes to Claude); rule governs Claude's pre-action narration eating a plan-mode response's top slot.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -437,7 +486,7 @@
       "evidence": "No `**Prompt**` fenced blocks in this reference file (its six fences are CLI-syntax snippets a reader types directly — `gh auth status`, `claude mcp add ...`, `/mcp`, `/plugin marketplace add ...` — never a labelled block with a destination chip a student pastes to Claude); rule governs self-critique vs defense verbs in a prompt asking Claude to review its own work.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -448,7 +497,7 @@
       "evidence": "No `**Prompt**` fenced blocks in this reference file (its six fences are CLI-syntax snippets a reader types directly — `gh auth status`, `claude mcp add ...`, `/mcp`, `/plugin marketplace add ...` — never a labelled block with a destination chip a student pastes to Claude); rule governs long-running walk-away send-off prompt structure.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -459,7 +508,7 @@
       "evidence": "No `**Prompt**` fenced blocks in this reference file (its six fences are CLI-syntax snippets a reader types directly — `gh auth status`, `claude mcp add ...`, `/mcp`, `/plugin marketplace add ...` — never a labelled block with a destination chip a student pastes to Claude); rule governs a closing grill-me-before-you-save instruction on an artefact-building prompt.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -470,7 +519,7 @@
       "evidence": "No `**Prompt**` fenced blocks in this reference file (its six fences are CLI-syntax snippets a reader types directly — `gh auth status`, `claude mcp add ...`, `/mcp`, `/plugin marketplace add ...` — never a labelled block with a destination chip a student pastes to Claude); rule governs post-action-report vs pre-confirm framing on a side-effecting prompt.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -481,7 +530,7 @@
       "evidence": "No `**Prompt**` fenced blocks in this reference file (its six fences are CLI-syntax snippets a reader types directly — `gh auth status`, `claude mcp add ...`, `/mcp`, `/plugin marketplace add ...` — never a labelled block with a destination chip a student pastes to Claude); rule governs editing the body of a student-copied prompt.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -492,7 +541,7 @@
       "evidence": "No `**Prompt**` fenced blocks in this reference file (its six fences are CLI-syntax snippets a reader types directly — `gh auth status`, `claude mcp add ...`, `/mcp`, `/plugin marketplace add ...` — never a labelled block with a destination chip a student pastes to Claude); rule governs Agents 101 prompt save-destination paths; this file is AE101.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -503,7 +552,7 @@
       "evidence": "No `**Prompt**` fenced blocks in this reference file (its six fences are CLI-syntax snippets a reader types directly — `gh auth status`, `claude mcp add ...`, `/mcp`, `/plugin marketplace add ...` — never a labelled block with a destination chip a student pastes to Claude); rule governs restating the working directory inside a prompt fence.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -514,7 +563,7 @@
       "evidence": "No `**Prompt**` fenced blocks in this reference file (its six fences are CLI-syntax snippets a reader types directly — `gh auth status`, `claude mcp add ...`, `/mcp`, `/plugin marketplace add ...` — never a labelled block with a destination chip a student pastes to Claude); rule governs use of the word `subagent` inside a prompt fence.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -525,7 +574,7 @@
       "evidence": "No `**Prompt**` fenced blocks in this reference file (its six fences are CLI-syntax snippets a reader types directly — `gh auth status`, `claude mcp add ...`, `/mcp`, `/plugin marketplace add ...` — never a labelled block with a destination chip a student pastes to Claude); rule governs how a judge surfaces prompt-body findings to the maintainer.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -536,7 +585,7 @@
       "evidence": "No `**Prompt**` fenced blocks in this reference file (its six fences are CLI-syntax snippets a reader types directly — `gh auth status`, `claude mcp add ...`, `/mcp`, `/plugin marketplace add ...` — never a labelled block with a destination chip a student pastes to Claude); rule governs a prompt instructing a save-to-disk with a named downstream reader.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -547,7 +596,7 @@
       "evidence": "No `**Prompt**` fenced blocks in this reference file (its six fences are CLI-syntax snippets a reader types directly — `gh auth status`, `claude mcp add ...`, `/mcp`, `/plugin marketplace add ...` — never a labelled block with a destination chip a student pastes to Claude); rule governs the exact bold label text on a rendered Prompt block.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -558,7 +607,7 @@
       "evidence": "No `**Prompt**` fenced blocks in this reference file (its six fences are CLI-syntax snippets a reader types directly — `gh auth status`, `claude mcp add ...`, `/mcp`, `/plugin marketplace add ...` — never a labelled block with a destination chip a student pastes to Claude); rule governs the phrasing of a first work-request prompt in a student exercise.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -569,7 +618,7 @@
       "evidence": "No `**Prompt**` fenced blocks in this reference file (its six fences are CLI-syntax snippets a reader types directly — `gh auth status`, `claude mcp add ...`, `/mcp`, `/plugin marketplace add ...` — never a labelled block with a destination chip a student pastes to Claude); rule governs editing a prompt from a maintainer's live-test bug report.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -580,7 +629,7 @@
       "evidence": "No `**Prompt**` fenced blocks in this reference file (its six fences are CLI-syntax snippets a reader types directly — `gh auth status`, `claude mcp add ...`, `/mcp`, `/plugin marketplace add ...` — never a labelled block with a destination chip a student pastes to Claude); rule governs the registry-vs-marker prompt source-of-truth pattern.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -591,7 +640,7 @@
       "evidence": "No `**Prompt**` fenced blocks in this reference file (its six fences are CLI-syntax snippets a reader types directly — `gh auth status`, `claude mcp add ...`, `/mcp`, `/plugin marketplace add ...` — never a labelled block with a destination chip a student pastes to Claude); rule governs module numbers appearing inside prompt fence text.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -602,7 +651,7 @@
       "evidence": "No `**Prompt**` fenced blocks in this reference file (its six fences are CLI-syntax snippets a reader types directly — `gh auth status`, `claude mcp add ...`, `/mcp`, `/plugin marketplace add ...` — never a labelled block with a destination chip a student pastes to Claude); rule governs a prompt text-grepping git output and assuming exactly one match.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -613,7 +662,7 @@
       "evidence": "No `**Prompt**` fenced blocks in this reference file (its six fences are CLI-syntax snippets a reader types directly — `gh auth status`, `claude mcp add ...`, `/mcp`, `/plugin marketplace add ...` — never a labelled block with a destination chip a student pastes to Claude); rule governs runtime disambiguation logic that must live inside the prompt fence rather than surrounding body.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -624,7 +673,7 @@
       "evidence": "No `**Prompt**` fenced blocks in this reference file (its six fences are CLI-syntax snippets a reader types directly — `gh auth status`, `claude mcp add ...`, `/mcp`, `/plugin marketplace add ...` — never a labelled block with a destination chip a student pastes to Claude); rule governs multi-turn dialog prompts that can prematurely rewrite an artifact file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -635,7 +684,7 @@
       "evidence": "No `**Prompt**` fenced blocks in this reference file (its six fences are CLI-syntax snippets a reader types directly — `gh auth status`, `claude mcp add ...`, `/mcp`, `/plugin marketplace add ...` — never a labelled block with a destination chip a student pastes to Claude); rule governs paragraph-splitting a wide multi-move prompt.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -646,7 +695,7 @@
       "evidence": "No `**Prompt**` fenced blocks in this reference file (its six fences are CLI-syntax snippets a reader types directly — `gh auth status`, `claude mcp add ...`, `/mcp`, `/plugin marketplace add ...` — never a labelled block with a destination chip a student pastes to Claude); rule governs naming what a saved CLAUDE.md rule will cause on its next firing.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -657,7 +706,7 @@
       "evidence": "No `**Prompt**` fenced blocks in this reference file (its six fences are CLI-syntax snippets a reader types directly — `gh auth status`, `claude mcp add ...`, `/mcp`, `/plugin marketplace add ...` — never a labelled block with a destination chip a student pastes to Claude); rule governs phrasal congruence between a body lead-in and its prompt's opening clause (incl. 38a surprise-pedagogy carve-out).",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -668,7 +717,7 @@
       "evidence": "No `**Prompt**` fenced blocks in this reference file (its six fences are CLI-syntax snippets a reader types directly — `gh auth status`, `claude mcp add ...`, `/mcp`, `/plugin marketplace add ...` — never a labelled block with a destination chip a student pastes to Claude); rule governs frontmatter permission-mode declaration on a mode-dependent prompt.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -679,7 +728,7 @@
       "evidence": "No `**Prompt**` fenced blocks in this reference file (its six fences are CLI-syntax snippets a reader types directly — `gh auth status`, `claude mcp add ...`, `/mcp`, `/plugin marketplace add ...` — never a labelled block with a destination chip a student pastes to Claude); rule governs cold-vs-warm session-boundary verification for a prompt's context needs (incl. 40a/40b corollaries).",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -690,7 +739,7 @@
       "evidence": "No `**Prompt**` fenced blocks in this reference file (its six fences are CLI-syntax snippets a reader types directly — `gh auth status`, `claude mcp add ...`, `/mcp`, `/plugin marketplace add ...` — never a labelled block with a destination chip a student pastes to Claude); rule governs ordering an artifact-write instruction against a trailing ask-and-wait STOP.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -701,7 +750,7 @@
       "evidence": "No `**Prompt**` fenced blocks in this reference file (its six fences are CLI-syntax snippets a reader types directly — `gh auth status`, `claude mcp add ...`, `/mcp`, `/plugin marketplace add ...` — never a labelled block with a destination chip a student pastes to Claude); rule governs non-interactive tmux-runner prompts and AskUserQuestion suppression.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -712,7 +761,7 @@
       "evidence": "No `**Prompt**` fenced blocks in this reference file (its six fences are CLI-syntax snippets a reader types directly — `gh auth status`, `claude mcp add ...`, `/mcp`, `/plugin marketplace add ...` — never a labelled block with a destination chip a student pastes to Claude); rule governs long-running prompts instructing incremental progress reporting.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -723,7 +772,7 @@
       "evidence": "No `**Prompt**` fenced blocks in this reference file (its six fences are CLI-syntax snippets a reader types directly — `gh auth status`, `claude mcp add ...`, `/mcp`, `/plugin marketplace add ...` — never a labelled block with a destination chip a student pastes to Claude); rule governs editing a student prompt's leading/structural lines during a fix pass.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -734,7 +783,7 @@
       "evidence": "No `**Prompt**` fenced blocks in this reference file (its six fences are CLI-syntax snippets a reader types directly — `gh auth status`, `claude mcp add ...`, `/mcp`, `/plugin marketplace add ...` — never a labelled block with a destination chip a student pastes to Claude); rule governs Agents 101 Builder-relative path conventions inside a prompt (`prework/` vs `module-N/`); this file is AE101.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -745,7 +794,7 @@
       "evidence": "No `**Prompt**` fenced blocks in this reference file (its six fences are CLI-syntax snippets a reader types directly — `gh auth status`, `claude mcp add ...`, `/mcp`, `/plugin marketplace add ...` — never a labelled block with a destination chip a student pastes to Claude); rule governs trailing output-shape specs appended to a prompt.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -756,7 +805,7 @@
       "evidence": "No `**Prompt**` fenced blocks in this reference file (its six fences are CLI-syntax snippets a reader types directly — `gh auth status`, `claude mcp add ...`, `/mcp`, `/plugin marketplace add ...` — never a labelled block with a destination chip a student pastes to Claude); rule governs append-vs-integrate ambiguity in an \"add X and regenerate\" prompt.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -767,7 +816,7 @@
       "evidence": "No `**Prompt**` fenced blocks in this reference file (its six fences are CLI-syntax snippets a reader types directly — `gh auth status`, `claude mcp add ...`, `/mcp`, `/plugin marketplace add ...` — never a labelled block with a destination chip a student pastes to Claude); rule governs the mechanic used to close a student exercise (critic/pair/group/solo/show-work).",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -778,7 +827,7 @@
       "evidence": "Not buyer-facing/site copy — this is student-facing curriculum shipped inside the AE101 content folder's reference/ directory, outside check_sales_copy.md's scope (site, newsletter, sponsor decks, pricing); rule governs headline/CTA read-aloud-to-a-CTO test.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -789,7 +838,7 @@
       "evidence": "Not buyer-facing/site copy — this is student-facing curriculum shipped inside the AE101 content folder's reference/ directory, outside check_sales_copy.md's scope (site, newsletter, sponsor decks, pricing); rule governs Rory two-beat \"X. And Y.\" phrase-pairs.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -800,7 +849,7 @@
       "evidence": "Not buyer-facing/site copy — this is student-facing curriculum shipped inside the AE101 content folder's reference/ directory, outside check_sales_copy.md's scope (site, newsletter, sponsor decks, pricing); rule governs AE101 strategy-doc jargon (veto-stakeholder, compounding substrate, etc.) leaking onto a public page.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -811,7 +860,7 @@
       "evidence": "Not buyer-facing/site copy — this is student-facing curriculum shipped inside the AE101 content folder's reference/ directory, outside check_sales_copy.md's scope (site, newsletter, sponsor decks, pricing); rule governs the page-bottom 90-second cold-read test for a public marketing page.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -822,7 +871,7 @@
       "evidence": "Not buyer-facing/site copy — this is student-facing curriculum shipped inside the AE101 content folder's reference/ directory, outside check_sales_copy.md's scope (site, newsletter, sponsor decks, pricing); rule governs bare module-number cross-references on a public page readers don't hold a map for.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -833,7 +882,7 @@
       "evidence": "Not buyer-facing/site copy — this is student-facing curriculum shipped inside the AE101 content folder's reference/ directory, outside check_sales_copy.md's scope (site, newsletter, sponsor decks, pricing); rule governs artifact-description word-count on a sales page.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -844,7 +893,7 @@
       "evidence": "Not buyer-facing/site copy — this is student-facing curriculum shipped inside the AE101 content folder's reference/ directory, outside check_sales_copy.md's scope (site, newsletter, sponsor decks, pricing); rule governs naming vs describing a failure mode on a sales page.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -855,7 +904,7 @@
       "evidence": "Not buyer-facing/site copy — this is student-facing curriculum shipped inside the AE101 content folder's reference/ directory, outside check_sales_copy.md's scope (site, newsletter, sponsor decks, pricing); rule governs verb-agency placement (memory vs agent) on a sales page.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -866,7 +915,7 @@
       "evidence": "Not buyer-facing/site copy — this is student-facing curriculum shipped inside the AE101 content folder's reference/ directory, outside check_sales_copy.md's scope (site, newsletter, sponsor decks, pricing); rule governs the ai-training.com site's em-dash ban.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -877,7 +926,7 @@
       "evidence": "Not buyer-facing/site copy — this is student-facing curriculum shipped inside the AE101 content folder's reference/ directory, outside check_sales_copy.md's scope (site, newsletter, sponsor decks, pricing); rule governs callout-box research citation on the public site.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -888,7 +937,7 @@
       "evidence": "Not buyer-facing/site copy — this is student-facing curriculum shipped inside the AE101 content folder's reference/ directory, outside check_sales_copy.md's scope (site, newsletter, sponsor decks, pricing); rule governs advertising the training's own mood arc on a public page.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -899,7 +948,7 @@
       "evidence": "Not buyer-facing/site copy — this is student-facing curriculum shipped inside the AE101 content folder's reference/ directory, outside check_sales_copy.md's scope (site, newsletter, sponsor decks, pricing); rule governs customer-ownership claims on a sales page.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -910,7 +959,7 @@
       "evidence": "Not buyer-facing/site copy — this is student-facing curriculum shipped inside the AE101 content folder's reference/ directory, outside check_sales_copy.md's scope (site, newsletter, sponsor decks, pricing); rule governs adoption/productivity percentage figures on a sales page or deck.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -921,7 +970,7 @@
       "evidence": "Flat-lookup reference page outside the module-file-shape template — no Big Idea, Key Concepts, What You'll Learn, or per-module Mood (deliberate) target for this rule to bind to; rule governs a module's deliberate mood target.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -932,7 +981,7 @@
       "evidence": "Flat-lookup reference page outside the module-file-shape template — no Big Idea, Key Concepts, What You'll Learn, or per-module Mood (deliberate) target for this rule to bind to; rule governs unease-mood flavour (not-knowing vs having-done-wrong).",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -943,7 +992,7 @@
       "evidence": "Flat-lookup reference page outside the module-file-shape template — no Big Idea, Key Concepts, What You'll Learn, or per-module Mood (deliberate) target for this rule to bind to; rule governs a module's Big Idea title (discipline-led vs failure-named).",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -954,7 +1003,7 @@
       "evidence": "Flat-lookup reference page outside the module-file-shape template — no Big Idea, Key Concepts, What You'll Learn, or per-module Mood (deliberate) target for this rule to bind to; rule governs cross-module sequencing claims against the content-strategy doc.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -965,7 +1014,7 @@
       "evidence": "Flat-lookup reference page outside the module-file-shape template — no Big Idea, Key Concepts, What You'll Learn, or per-module Mood (deliberate) target for this rule to bind to; rule governs a module's Key Concepts section surfacing recurring strategic themes.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -976,7 +1025,7 @@
       "evidence": "Flat-lookup reference page outside the module-file-shape template — no Big Idea, Key Concepts, What You'll Learn, or per-module Mood (deliberate) target for this rule to bind to; rule governs theme-breadcrumb clauses on Key Concepts bullets.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -987,7 +1036,7 @@
       "evidence": "Flat-lookup reference page outside the module-file-shape template — no Big Idea, Key Concepts, What You'll Learn, or per-module Mood (deliberate) target for this rule to bind to; rule governs a module's What You'll Learn bullet register.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -998,7 +1047,7 @@
       "evidence": "This is a shipped reference page, not an article rough-cut.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -1009,7 +1058,7 @@
       "evidence": "Only vendor/product names appear (Atlassian, GitHub, Linear, Anthropic) - no named practitioner technique is paraphrased. Creator-name and author-we sub-rules: grep -niE '\\bAntti\\b|the creator|the author|\\bwe\\b|\\bour\\b' over body region -> 0 matches.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -1020,7 +1069,7 @@
       "evidence": "No user-supplied verbatim frame/thesis is being captured by this file; not that kind of artefact.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -1031,7 +1080,7 @@
       "evidence": "No individual practitioner is named or credited anywhere in the file; only company/product names.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -1042,7 +1091,7 @@
       "evidence": "No punchy slogan or banner claim; prose is flat and literal throughout.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -1053,7 +1102,7 @@
       "evidence": "This rule governs vocabulary earned across a module ARC position. This file is a flat-lookup reference outside the module sequence (curriculum/CLAUDE.md: quick reference = 'no progression'). The two newly-introduced terms this diff touches earn themselves inline: 'Path 1/2/3' is spelled out at first use in the numbered list (lines 11-13), and '3LO' at line 60 now carries its own gloss ('3LO is Atlassian's three-legged OAuth: the app, your org, and you each approve') - landed by the same commit (3928928c) that added the Path-N labels.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -1064,7 +1113,7 @@
       "evidence": "Reference page, not an exercise; the What-happened convention doesn't apply.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -1075,7 +1124,7 @@
       "evidence": "This file carries a 'Source verification' block, not a `<!-- backing -->` claim ledger, and none of its claims are stated verbatim in a sibling file; the cross-file re-verification mechanism this rule targets doesn't apply.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -1086,7 +1135,7 @@
       "evidence": "Procedural rule governing multi-file sweep conduct, not a property of this file's content; this is a single-file fire and the rule set was read fresh for this target.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -1097,7 +1146,7 @@
       "evidence": "Not a trainer/exec/sponsor doc.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -1108,7 +1157,7 @@
       "evidence": "This file is student-facing, not a trainer-guide/trainer-modules page.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -1119,7 +1168,7 @@
       "evidence": "No 'X tells you whether Y' / how-you'd-know clause anywhere in body.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -1130,7 +1179,7 @@
       "evidence": "Flat-lookup reference, not an exercise/lecture narrative; no closer or present-state-ascription sentence of this shape occurs anywhere in body.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -1141,7 +1190,7 @@
       "evidence": "No verify/audit/check/sign-off ask anywhere in this reference page.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -1152,7 +1201,7 @@
       "evidence": "No student-copied Prompt blocks in this file (fenced blocks are CLI-syntax reference, not prompts asking Claude to produce a structured artifact).",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -1163,7 +1212,7 @@
       "evidence": "No Debrief section in this reference page.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -1174,7 +1223,7 @@
       "evidence": "Not a module file; no cross-module voice risk.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -1185,7 +1234,7 @@
       "evidence": "No do/look instruction lines directed at the student anywhere in this file; it is pure lookup content.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -1196,7 +1245,7 @@
       "evidence": "No self-study simulation content here.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -1207,7 +1256,7 @@
       "evidence": "No exercise moves in a reference page; nothing to route through editor/terminal vs chat.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -1218,7 +1267,7 @@
       "evidence": "grep -n 'CLAUDE.md' over body region -> 0 matches; file never references any CLAUDE.md layer.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -1229,7 +1278,7 @@
       "evidence": "No student-authored-artifact collision terms (memory, skill, rule, plan, agent) are in play - this file is about wiring connectors, not about the training's own authored artifacts. 'Skills' at line 91 refers to the Claude Code primitive in a bundling context with no team-kit-skill sense nearby to collide with.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -1240,7 +1289,7 @@
       "evidence": "No reflection beats in a flat-lookup reference page.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -1251,7 +1300,7 @@
       "evidence": "No prompts, no decision beats present.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -1262,7 +1311,7 @@
       "evidence": "No student-saved artifact is instructed anywhere in this file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -1273,7 +1322,7 @@
       "evidence": "No chat-print moments in this file (no prompts producing chat output to react to).",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -1284,7 +1333,7 @@
       "evidence": "No forward-looking aside/callout gesturing at what the student will find across the rest of the training.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -1295,7 +1344,7 @@
       "evidence": "No per-module operational setting (thinking level, model, mode tag) is in scope for this file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -1306,7 +1355,7 @@
       "evidence": "This reference documents install syntax and doesn't touch the training's theory vocabulary (loop, map, gates, steering, drift) - a different register by design.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -1317,7 +1366,7 @@
       "evidence": "The candidate shape (lines 26-27: `gh auth status` / `gh auth login` two-line block) sits inside a fenced code block, which writing-class scope excludes from body-prose lints by definition (MAINTAINER_CUT/FENCE_RANGES procedure in the judge template). This is the reference's job - documenting exact CLI syntax for lookup - not a narrated walkthrough recipe in prose.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -1328,7 +1377,7 @@
       "evidence": "Agents-101-specific rule; this is an AE101 file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -1339,7 +1388,7 @@
       "evidence": "Agents-101-specific rule; this is an AE101 reference page, not a Debrief.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -1350,7 +1399,7 @@
       "evidence": "No scaffold-vs-prompt tradeoff in a reference page.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
     },
     {
@@ -1361,37 +1410,31 @@
       "evidence": "Reference pages carry no per-module Mood (deliberate) target; outside the module mood arc.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "d8938209624406a7d1ea63d019f55fef253e5bcfba9976f119ff8033bb8d942c",
+      "carried_from": "2befe420466e2da99b01a6e03b24d72a475d735b96d35ef9243a15db31d7fcb4",
       "carried_shape": "7b3d7617cecc027b"
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 1,
-      "rule_lead": "Banned words — grep zero-tolerance.",
-      "verdict": "PASS",
-      "evidence": "mechanical: /\\b(delve|delving|honest|honestly|importantly|crucial|crucially|substrate|synergize|paradigm shift)\\b/ over body projection curriculum/evals/body-views/ae101--reference--mcp-and-connectors.body.txt → 0 hits; pattern proven against planted violation.",
-      "fix_hint": "",
-      "blocking": false,
-      "prefilled": true
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 2,
-      "rule_lead": "Ritual / ceremony — hard ban in any curriculum/training surface.",
-      "verdict": "PASS",
-      "evidence": "mechanical: /\\b(ritual|rituals|ceremony|ceremonies)\\b/ over body projection curriculum/evals/body-views/ae101--reference--mcp-and-connectors.body.txt → 0 hits; pattern proven against planted violation.",
-      "fix_hint": "",
-      "blocking": false,
-      "prefilled": true
     }
   ],
   "drift_rules_reread": [
-    "writing §26 (\"A sentence saying how you'd know points at the outcome, not the nearest artifact\") — re-fetched at current wording via rule.js. PASS/N-A: grep -inE 'tells you|you.?ll know|know it worked|know when|whether it (is|was)|confirms whether' plus a broader scan for confirm/verify/check/indicate/appears-in/tells/know over body region -> no self-witnessing 'X tells you whether Y' construction anywhere. The two 'appears in /mcp' sentences (lines 48, 70) state an observable UI fact directly, not a claim about an instrument judging its own output. Rule not in this file's brief (excluded as already-resolved N/A by shape hash); this re-read confirms the parked N/A still holds against the current wording - kept as the existing check_writing.md rule 26 row above, not re-derived from scratch."
+    "prompts §2 (every prompt block owes a one-sentence lead-in) - N/A, unaffected by drift: has_prompt_blocks is false, file carries no **Prompt** fences.",
+    "prompts §17 (preamble-before-action, narrowed 2026-09-03 to plan-mode-only) - N/A, unaffected: no prompt blocks of any kind, plan-mode or otherwise.",
+    "prompts §20 (grill-before-save, narrowed 2026-09-03 as unevidenced) - N/A, unaffected: no artefact-assembling prompt blocks present.",
+    "prompts §40 (verify session boundary before prompt context-carrying) - N/A, unaffected: no prompt blocks to check a session boundary for.",
+    "strategy_tie_in §6 (Key Concepts shape / no Remember-label breadcrumbs) - N/A: file has no ## Key Concepts section at all.",
+    "strategy_tie_in §7 (What You'll Learn capability register) - N/A: file has no ## What You'll Learn section at all.",
+    "student_facing §2 (earn every technical term, incl. 2026-08-18 assumed-known-tracks-audience carve-out) - PASS at current wording: MCP/connector explicitly named in the carve-out as AE101-assumed-known; 3LO and JSM earned inline regardless.",
+    "student_facing §17 (command-verb headers, 2026-09-02 Claude-never-header-actor addition) - PASS at current wording: all headers are declarative noun-phrases (reference-section carve-out) and none names Claude as the header's actor.",
+    "student_facing §21 (LLM/agent/Claude discipline, 2026-08-30 active-stance override) - re-checked against the override specifically; PASS on balance (see rules_evaluated row) - two Path-3-specific lines use \"Claude\" for a tool-call description, defensible as UI-surface grounding rather than the active-stance/autonomous-work narration the override targets, and the file demonstrates the correct \"the agent\" framing one line earlier (line 17) when the point turns general.",
+    "student_facing §31 (name the artifact not the act, widened 2026-09-03 for say/tell-established-trigger phrases) - PASS, unaffected: file has no quoted-message-to-agent construct of either the pre- or post-widening shape.",
+    "student_facing §32 (name the outcome, not mechanics; §32a settings/flags/env-vars ban added 2026-09-04) - checked and found N/A-by-design, not merely unaffected: this file IS the declared reference/-page exception §32a names verbatim (\"reference/ pages and maintainer blocks may list switches\"), and its own maintainer block (line 151) states the reason this reference file exists precisely to carry the install specifics §32 would cut from a module/exercise body. Not in the 31-rule brief (parked N/A by shape hash) but re-verified given it postdates the pin by one day.",
+    "student_facing §37 (mood is a design constraint) - N/A, unaffected: reference file carries no Debrief/Close/Bridge and no mood-arc position to check.",
+    "writing §3 (no stale markers/session biography, incl. dated-provenance-header carve-out) - re-read in full at current wording; PASS (see rules_evaluated row) - the one 'no longer' hit is a present-tense maintenance trigger, not journey narration, and the maintainer block already follows the rule's own prescribed pattern of pointing changes at the commit message.",
+    "writing §27 (say it once, at its most concrete) - this rule is dated 2026-08-29, at or after the pin; re-read in full and checked against every paragraph close; PASS (see rules_evaluated row)."
   ],
   "accept_notes_found": [
-    "check_writing.md §3 dated-provenance carve-out is not implicated here — this file's maintainer block carries no journey-narration verbs, only present-tense standing constraints and per-source freshness stamps, so no accept-note was needed or found on that axis.",
-    "No maintainer-block dated accept-note in this file overrides or pre-authorizes any specific body passage against a writing-class rule; a direct read of the maintainer block (lines 124-155) turned up cadence/process notes (Canonical home, Update cadence, Source verification stamps, Quality line) but no 'Antti authorized X against rule Y' style note."
+    "Lines 140-149: per-source [checked:YYYY-MM-DD result:OK|BLOCKED due:cohort] freshness stamps in the maintainer Source verification block - these are the source-freshness-format's routine dated stamps, not a maintainer decision authorizing an exception to a writing/student_facing rule. None of them functions as an accept-note against a specific body passage.",
+    "Line 154: the Quality line's compendium-audited SHA stamp - mechanical record, not a rule-exception grant.",
+    "No dated maintainer decision note (e.g. 'Antti-directed', 'kept', 'accepted-by-design') was found anywhere in the maintainer block that bears on any writing/student_facing finding in this file."
   ],
-  "blocking_findings_count": 0,
-  "todos_count": 0
+  "todos_count": 1,
+  "blocking_findings_count": 0
 }

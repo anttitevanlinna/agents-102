@@ -54,10 +54,29 @@ test('class field omitted → missing-class-field bug (gating)', () => {
 });
 
 test('class field wrong → class-field-drift bug (gating)', () => {
-  const { bugs } = scanInstanceIntegrity('ae101--x.story.json', 'story', { class: 'story' }, COMP);
-  // .story.json must carry class:"storytelling"
+  const { bugs } = scanInstanceIntegrity('ae101--x.writing.json', 'writing', { class: 'pedagogy' }, COMP);
   assert.equal(bugs.length, 1);
   assert.equal(bugs[0].kind, 'class-field-drift');
+});
+
+// The field matches the filename suffix on every class, story included. Every
+// tool globs `.<class>.json`, so the suffix is what the field has to agree with
+// — `check-instance-schema.js` says so in code (`patch.class = fileClass`) and
+// the sweep's judge prompt says so in prose. This auditor used to expect
+// `storytelling` on the strength of a `story.md:101` citation that no longer
+// says it, which made the two gates contradict: schema `--fix` wrote the value
+// this one then called a structural bug, and the coverage gate could not be
+// passed by any instance at all.
+test('.story.json carrying class:"story" is canonical, not drift', () => {
+  const { bugs } = scanInstanceIntegrity('ae101--x.story.json', 'story', { class: 'story' }, COMP);
+  assert.deepEqual(bugs, []);
+});
+
+test('.story.json carrying the legacy class:"storytelling" is the drift', () => {
+  const { bugs } = scanInstanceIntegrity('ae101--x.story.json', 'story', { class: 'storytelling' }, COMP);
+  assert.equal(bugs.length, 1);
+  assert.equal(bugs[0].kind, 'class-field-drift');
+  assert.equal(bugs[0].expected, 'story');
 });
 
 test('resolvable rule_index → no warning', () => {

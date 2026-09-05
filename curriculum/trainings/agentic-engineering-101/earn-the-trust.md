@@ -114,7 +114,9 @@ Optional, when your sessions start running heavy: [The context ceiling and token
 
 **Lean pass (2026-08-25):** "(bar higher)" gloss cut from the skeptical-read section — grill metaphor stands on its own. Do not restore.
 
-**The two `{{prompt:}}` fences in `## Clear the session` are accepted, not an unextracted exercise.** `check_pedagogy.md` §52a treats a fence in module prose as a greppable tell, and this section matches it. It is not what the rule was built from: §52a's precedent is a four-prompt section with a Session widget, large enough that the deck gives it one unbreakable slide. This is a two-prompt wrap move — signal the wrap, then clear — and extracting it would bill a closing beat as its own file. Accepted-by-design 2026-08-13 (Antti-directed): do not extract, do not re-raise. `prework.md` carries the same call in its own maintainer block for its section 5 fences. (The corpus has further module-prose fences the 2026-08-13 call did not rule on: this file's own `## Sharpen the skill from evidence` at L51, `learn-from-the-test.md` L33, and `prework.md` L47/L55. Each still owes §52a an answer.)
+**The two `{{prompt:}}` fences in `## Clear the session` are accepted, not an unextracted exercise.** `check_pedagogy.md` §52a treats a fence in module prose as a greppable tell, and this section matches it. It is not what the rule was built from: §52a's precedent is a four-prompt section with a Session widget, large enough that the deck gives it one unbreakable slide. This is a two-prompt wrap move — signal the wrap, then clear — and extracting it would bill a closing beat as its own file. Accepted-by-design 2026-08-13 (Antti-directed): do not extract, do not re-raise. `prework.md` carries the same call in its own maintainer block, covering both its section 5 fences and the single fences under its sections 3 and 4.
+
+**`## Sharpen the skill from evidence` is accepted on the same terms (2026-09-05, eval-triage adjudication — not an Antti ruling; reverse it if he disagrees).** One prompt, no `**Session**` widget, the module's own Compound beat: strictly smaller than the two-prompt wrap accepted above and far short of §52a's four-prompt-plus-widget precedent, and the deck gives it one ordinary slide rather than an unbreakable block. Do not extract, do not re-raise. (One corpus fence remains unruled: `learn-from-the-test.md` L33.)
 
 **`## Pre-read before Module 4` carries da Costa's *Backpressure Is All You Need* (2026-08-21, Antti-directed).** The gap read arrives before the word does: M4's closing lecture `what-keeps-a-long-running-session-going.md` names **backpressure** in the room, and this read is what puts a source behind that naming rather than leaving the lecture to coin a term on its own authority. Keep the pre-read ahead of the lecture, not after it.
 
@@ -129,10 +131,10 @@ Optional, when your sessions start running heavy: [The context ceiling and token
 
 **Session-close convergence prompt (`ae101-m3-ready-to-clear`) kept, not cut.** Flagged `low-yield`. It's the converge-before-clear beat (`check_pedagogy.md §58`): the student signals wrap-up, the agent surfaces anything still loose before the `/clear`. A light one-line ask carrying a lead-in and its own "good enough" callout, not concurrent-heavy load. Not a cut candidate.
 
-**Quality:** compendium-audited 2026-09-02 (writing@191ea58f story@191ea58f technical@191ea58f behavior@1c765f2 pedagogy@191ea58f strategy@85515fa0 slides@191ea58f)
-- judges @191ea58f: writing PASS (4 todos see instances/ae101--module--earn-the-trust.writing.json), story PASS (1 todo see instances/ae101--module--earn-the-trust.story.json), technical PASS, behavior PASS, pedagogy PASS (3 todos see instances/ae101--module--earn-the-trust.pedagogy.json), strategy PASS, slides PASS (1 todo see instances/ae101--module--earn-the-trust.slides.json)
-- cross_module @d47fb5af: PASS — set=[earn-the-trust,run-the-first-experiment]; 1 pair, 0 blocking; see instances/ae101--module-set--m3-m4.cross_module.json
+**Quality:** compendium-audited 2026-09-05 (writing@324b81d7 story@324b81d7 technical@324b81d7 behavior@1c765f2 pedagogy@324b81d7 slides@324b81d7)
+- judges @08946dd8: writing PASS (7 todos see instances/ae101--module--earn-the-trust.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS (2 todos see instances/ae101--module--earn-the-trust.pedagogy.json), strategy REVISE (1/1 see instances/ae101--module--earn-the-trust.strategy.json), slides PASS (2 todos see instances/ae101--module--earn-the-trust.slides.json)
 - cross_module @01592193: PASS — set=[prework,getting-going,plan-mode-done-right,earn-the-trust]; 3 pairs, 0 blocking; see instances/ae101--module-set--prework-m3.cross_module.json
+- cross_module @08946dd8: PASS — set=[earn-the-trust,run-the-first-experiment]; 1 pair, 0 blocking; see instances/ae101--module-set--m3-m4.cross_module.json
 
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply + Evaluate + Create
@@ -182,7 +184,7 @@ Optional, when your sessions start running heavy: [The context ceiling and token
 | Artefact | Stable identifier | Produced by | Consumed by |
 |---|---|---|---|
 | Architecture Decision Record | the repo's ADR convention; default `docs/adr/NNNN-slug.md` | Exercise 2 (STRIDE → hardening decision → ADR write) | M4 Phase 2 walk-and-fill (audit subagent reads ADRs as part of *"system you have"*) |
-| Test-strategy skill | `~/.claude/skills/test-strategy/SKILL.md` | Exercise 3 (one-question-at-a-time authoring conversation; user-level personal install, auto-discovered every session) | M4 Phase 2 walk-and-fill (audit subagent reads as part of system); M5 verifier-build (test-strategy informs the eval shape); M6 close (the *Composing the workflow* kit counts it among the moves you already own) |
+| Test-strategy skill | `~/.claude/skills/test-strategy/SKILL.md` | Exercise 3 (one-question-at-a-time authoring conversation; user-level personal install, auto-discovered every session) | M4 Phase 2 walk-and-fill (audit subagent reads as part of system); M5 verifier-build (test-strategy informs the eval shape); M6 (the handoff prompt authors further skills after the module) |
 | Personal rules update | `./CLAUDE.local.md` (repo-personal, gitignored) | "Sharpen the skill from evidence" prompt at module close (Claude rewrites from session evidence; user pushes back) | Every future session in this repo (auto-loads at session-cold start); specifically M4 onward sees M3's rule additions as part of personal context |
 
 **Per-phase failure mode + escape hatch** (per `check_pedagogy.md` rule 47 — every phase shipping a forcing function names its dominant failure and one recovery move):

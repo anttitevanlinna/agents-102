@@ -46,7 +46,7 @@ Ask Claude to invoke the skill on this codebase and grade what it produced in th
 ## Sharpen the skill from what came back
 
 - Before you ship, ask the skill itself to name its own weakest part: the assumption most likely wrong for this codebase, or what a teammate would push back on first. Push back on what it names; don't settle for reassurance.
-- The grade is biased by design. Claude invoked the skill it just helped author, then graded the result in the same context window: same-window self-charity.
+- The grade is biased by design. The agent invoked the skill it just helped author, then graded the result in the same context window: same-window self-charity.
 - Want a harsher read of the output too? Run it as two prompts. Invoke first, read the output, then a second prompt: *"Read that output as if you'd never seen the SKILL.md. Does it fit this codebase, or does it read generic?"*
 - If the strategy reads generic, sharpen the skill, not the output. A weak output is usually a weak skill.
 - Then decide: re-invoke if the sharpen was substantive, or ship with a one-line TODO at the top naming what's unresolved. A skill that names its own gap is more useful to a teammate than one that pretends it's finished.
@@ -80,8 +80,8 @@ Ask Claude to invoke the skill on this codebase and grade what it produced in th
 
 **Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** bullet leads de-bolded to plain across all slides; kept bold: none (no named-move or menu handles in body); widget/label chrome (**Time:**/**Window:**/**What you do:**/**What you build:**/**The point:**/**What happened:**/**Note**) untouched, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Wording near-verbatim; no claims added or cut.
 
-**Quality:** compendium-audited 2026-09-02 (writing@9edae2ef story@9edae2ef technical@8cc00874 behavior@c277a9f4 pedagogy@0e4f7c9e strategy@1c765f2 slides@9edae2ef)
-- judges @9edae2ef: writing PASS (1 todo see instances/ae101--exercise--author-test-strategy-skill.writing.json), story PASS (3 todos see instances/ae101--exercise--author-test-strategy-skill.story.json), technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-09-05 (writing@324b81d7 story@9edae2ef technical@324b81d7 behavior@c277a9f4 pedagogy@0e4f7c9e strategy@324b81d7 slides@9edae2ef)
+- judges @324b81d7: writing PASS (2 todos see instances/ae101--exercise--author-test-strategy-skill.writing.json), story PASS (3 todos see instances/ae101--exercise--author-test-strategy-skill.story.json), technical PASS (2 todos see instances/ae101--exercise--author-test-strategy-skill.technical.json), behavior PASS, pedagogy PASS, strategy PASS (1 todo see instances/ae101--exercise--author-test-strategy-skill.strategy.json), slides PASS
 
 **Meta (trainer):**
 - **Primary Bloom's level:** Create + Evaluate

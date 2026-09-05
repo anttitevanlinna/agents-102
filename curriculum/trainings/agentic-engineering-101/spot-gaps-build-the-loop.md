@@ -13,7 +13,7 @@ After this module, you will be able to:
 - **Diagnose** the gaps two sessions of the same task surface, and read where each belongs: memory, sharper verifier, or new skill
 - **Cut** one rule from `./CLAUDE.local.md` the diagnosis killed
 - **Read** the checks you built as evals: a pass rate, not a pass
-- **Turn** the work you repeat across sessions into a handoff prompt that builds the kit
+- **Turn** the work you repeat across sessions into a handoff prompt that builds one skill and the checks on its work
 
 ## Start here
 
@@ -21,7 +21,7 @@ Open a fresh session in the Module 5 worktree, `../<repo-name>-m5`.
 
 You walk in holding two sessions of the same task. The un-packaged Module 4 send-off. The packaged Module 5 re-send.
 
-> **Packaged session thin or missing?** You can still rescue it. If the M5 session is alive but stalled, nudge it once; a *"continue"*-prompt is usually enough. If it crashed or never started, paste the packaged re-send against your worktree fresh; let it catch up while you read on. M6 starts by reading; before it writes, decide whether to wait, stop M5, or accept the partial session as the artefact. If the room starts the lecture while you are still getting a session going, stay with the rescue and read it afterwards.
+> **Packaged session thin or missing?** You can still rescue it. If the M5 session is alive but stalled, nudge it once; a *"continue"*-prompt is usually enough. If it crashed or never started, paste the packaged re-send against your worktree fresh; let it catch up while you read on. M6 starts by reading; before it writes, decide whether to wait, stop M5, or accept the partial session as the artefact. If the room starts the lecture while you are still getting a session going, stay with the rescue and read the lecture afterwards.
 
 > **Just can't get the M5 session working?** You lose a bit of value but you can still do this module's exercises. Despair not.
 
@@ -31,7 +31,7 @@ You walk in holding two sessions of the same task. The un-packaged Module 4 send
 
 [Composing the workflow](lectures/composing-the-workflow.md)
 
-[Read your stack](exercises/read-your-stack.md)
+[Read your stack, draw what recurs](exercises/read-your-stack.md)
 
 [Agents that build agents](lectures/the-handoff-prompt.md)
 
@@ -54,102 +54,90 @@ This slot is a human round: talk, compare, no prompts.
 
 <!-- maintainer -->
 
-**`## Next` cut whole (Antti 2026-09-02).** The send-off paragraph, the *going deeper* link to `supplementary/how-the-best-do-ci-cd.md`, the *Keep on learning and sharing* line and the author sign-off: in git at `fe8fde13`. Terminal-module exception to `module-shape.md`; the CI/CD supplementary now has no in-module link. Do not restore.
+**`## Next` cut whole (Antti 2026-09-02).** The send-off paragraph, the *going deeper* link to `supplementary/how-the-best-do-ci-cd.md`, the *Keep on learning and sharing* line and the author sign-off: in git at `fe8fde13`. Terminal-module exception to `module-shape.md`; the CI/CD supplementary has no in-module link. Do not restore.
 
-**`## Key Concepts` cut whole (Antti 2026-09-02: *"nobody wants to come back to that at end of full training"*).** Terminal-module exception to `module-shape.md` § Key Concepts and `check_strategy_tie_in.md` §§5–6; judges should not re-flag. The six bullets are in git at `fedd3bdc`. Two of them had no other student-facing home and are owed a beat, carded: the independence kernel (*a check proves something only where it could say no; a judge in the producer's window cannot say no exactly where the producer went wrong*) → the loop-diagnosis exercise; the subtraction doctrine (*encoding subtracts as well as adds: add, sharpen, delete*) → beat 1, beside the rule cut. `theory-plan.md` § Rule-load ceiling named KC bullet 6 as that clause's reminder-slot home; the home is now owed, not held.
+**`## Key Concepts` cut whole (Antti 2026-09-02: *"nobody wants to come back to that at end of full training"*).** Terminal-module exception to `module-shape.md` § Key Concepts and `check_strategy_tie_in.md` §§5–6; judges should not re-flag. The six bullets are in git at `fedd3bdc`. The subtraction doctrine (*add, sharpen, delete*) is carried by the rule cut and the second-loop figure's *add a rule · cut a rule*; the independence kernel (*a check proves something only where it could say no*) has no M6 home by decision (no loop-diagnosis exercise; Antti 2026-09-02). Do not re-home either.
 
-**Lean pass (2026-08-25, Antti-directed M3/M6 shorten, free hands):** Start-here cut "The contrast is the material." (the one-session/two-sessions pair carries it); Do not restore.
+**Lean pass (2026-08-25, Antti-directed M3/M6 shorten, free hands):** Start-here cut *"The contrast is the material."* Do not restore.
 
 **The confidence after-measurement fires at this module's Human close but lives OUTSIDE the workbook.** The measurement system is deliberately not in student-facing body; the trainer administers it. Canonical wording in `theory-plan.md` § Baseline instrument — verbatim-identical to the before-measurement or the delta measures the wording. Target delta +3. Do not add a rating beat to this file's body.
 
-**The rescue callout's lecture line is triage, not a ranking of lectures against exercises (2026-08-15, Antti).** The line is scoped to the moment: *"If the room starts the lecture while you are still getting a session going, stay with the rescue and read it afterwards."* The room-parallelism is the point — others sit the lecture while this student fixes a session — so keep the line, and keep it conditional. Do not widen it into a lectures-are-skippable doctrine, and do not cut the beat: a stranded student needs permission to spend room time on the rescue.
+**The rescue callout's lecture line is triage, not a ranking of lectures against exercises (2026-08-15, Antti).** The line is scoped to the moment: *"If the room starts the lecture while you are still getting a session going, stay with the rescue and read the lecture afterwards."* The room-parallelism is the point — others sit the lecture while this student fixes a session — so keep the line, and keep it conditional. Do not widen it into a lectures-are-skippable doctrine, and do not cut the beat: a stranded student needs permission to spend room time on the rescue.
 
 
-**Backpressure vocabulary:** da Costa's essay is the M3→M4 gap read and M4's closing lecture names the term in the room, two modules back by the time the student arrives here. M6 assigns no reading on it and does not restate the word: the `## Prework` echo carries Klaassen, and the M6 close stays concrete about checks at workflow seams. `the-map-filled-in.md` remains the sole M6 recap of generation speed, review bandwidth, and evals buying capacity back.
+**Backpressure vocabulary:** da Costa's essay is the M3→M4 gap read and M4's closing lecture names the term in the room, two modules back by the time the student arrives here. M6 assigns no reading on it and does not restate the word: the `## Prework` echo carries Klaassen, and the M6 close stays concrete about skills, composition and checks. M6 carries no recap of generation speed, review bandwidth and evals buying capacity back either; do not re-add one (Antti 2026-09-02, read against the frame and declined). The deep treatment is `supplementary/how-the-best-do-ci-cd.md`.
 
 **M6 opener rescue + accept-loss callouts — deliberate exception to `check_student_facing.md` rule 5 (golden path only in body).** Two consecutive blockquotes in `## Start here` carry the rescue paths (nudge / re-send fresh / skip the opener) and the accept-the-loss floor ("you can still do the module's exercises"). Rule 5 normally bans recovery branches in body; here the structural risk (M5 run crashed during lunch in 2-day delivery) is named with scoped rescue, then a softer floor for the case where rescue fails entirely. The blockquote shape isolates both from the golden-path narrative for prepared students. The two blockquote leads (**Packaged session thin or missing?** / **Just can't get the M5 session working?**) are accepted menu-style handles under `check_slides.md` §9's reading-list carve-out. Future judges should not re-flag.
 
 **Human close's "talk, compare, no prompts" stays in body — `check_pedagogy.md` §27 mode-defining-cue carve-out (maintainer call).** The cue defines the slot's mode against a training that is otherwise prompts; the round's form (pairs, whole-room, write-then-share) stays the trainer's per the strategy doc's M6 Debrief spec. Future judges should not re-flag.
 
-**`## Human close` is a pre-close beat, not the module's ending (2026-08-19, Antti-directed: *"human close can be a beat before actual full closing. It is deliberately there to have the time for closing conversations."*).** The slot buys room time for the closing conversation while the closing lecture and `## Optional challenges` still follow. A story judge scoring close mood reads those four trailing sections as an ending that will not end and files `check_strategy_tie_in.md` §1 against the beat's own framing (*"no compound prompt here... talk, compare, no prompts"*, the identity line, the self-study *"Close the laptop"*). The trailing count is the design and it is not high: M6 carries fewer sections after its last teaching beat than M4 or M5, neither `## Bring to Module N` nor `## Pre-reads` applying to the terminal module. Do not move the beat later, do not fold it into `## Next`, and do not soften its framing to acknowledge what follows — the conversation needs a named slot, and the name is what makes a trainer stop for it. Future judges should not re-flag.
+**`## Human close` is a pre-close beat, not the module's ending (2026-08-19, Antti-directed: *"human close can be a beat before actual full closing. It is deliberately there to have the time for closing conversations."*).** The slot buys room time for the closing conversation while the closing lecture and `## Optional challenges` still follow. A story judge scoring close mood may read that trailing material as an ending that will not end and file `check_strategy_tie_in.md` §1 against the beat's own framing (*"talk, compare, no prompts"*). Do not move the beat later, and do not soften its framing to acknowledge what follows — the conversation needs a named slot, and the name is what makes a trainer stop for it. Future judges should not re-flag.
 
-**Quality:** compendium-audited 2026-08-30 (writing@4a722813 story@85515fa0 technical@8cc00874 behavior@1c765f2 pedagogy@85515fa0 strategy@85515fa0 slides@297eb2f9)
-- judges @85515fa0: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
-- cross_module @d47fb5af: PASS — set=[run-the-first-experiment,learn-from-the-test,spot-gaps-build-the-loop]; 2 pairs, 0 blocking; see instances/ae101--module-set--m4-m5-m6.cross_module.json
+**Quality:** compendium-audited 2026-09-03 (writing@54577f39 story@94fcca2d technical@94fcca2d behavior@1c765f2 pedagogy@4e0370bc strategy@54577f39 slides@54577f39)
+- judges @54577f39: writing PASS (1 todo see instances/ae101--module--spot-gaps-build-the-loop.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS (1 todo see instances/ae101--module--spot-gaps-build-the-loop.pedagogy.json), strategy PASS, slides PASS
+- cross_module @54577f39: PASS — set=[run-the-first-experiment,learn-from-the-test,spot-gaps-build-the-loop]; 2 pairs, 0 blocking; see instances/ae101--module-set--m4-m5-m6.cross_module.json
 
 **Leap test** (per `check_pedagogy.md` rule 45; M6 is an arc-mood exercise so the test names artefact + use, not activity):
 - The student has read their own Claude Code history back across the stack and holds a set of mermaid diagrams of the work they repeat. The dominant gap now sits inside a recognised work-shape, not floating alone.
 - The student's `./CLAUDE.local.md` shows at least one rule deleted (compound-by-subtraction), born from the two-run diagnosis. Observable in the file itself and in the student's account of what went — the file is gitignored from M1 on (`prompts/compound-and-close-1.md`), so there is no deletion commit to look for.
-- The student now holds a standalone handoff prompt, written by the agent from the recurring-work shapes mapped in the exercise, that studies their whole stack and authors a skill per recurring shape when run later. The encode-move generalised from one task to all their work.
+- The student now holds a standalone handoff prompt, written by the agent from the recurring-work shapes mapped in the exercise, that scans their whole stack, builds one skill picked with the agent, and puts checks on its work when run later. The encode-move generalised from one task to all their work.
 
 **Artefact contracts** (per `check_cross_module.md` §5 — every produced artefact with a stable identifier gets a contract row):
 
 | Artefact | Stable identifier | Produced by | Consumed by |
 |---|---|---|---|
-| Two-run gap map | Ranked gap list in M6 session scrollback; optionally copied to `observations/` if the student wants it durable | Exercise Phase 1 (diff un-packaged M4 vs packaged M5, quote both runs, rank dominant gap) | Exercise Phase 1's rule cut (reads the ranked list for the rule the diagnosis killed); future post-cohort team-kit conversation |
-| Recurring-work shapes | Repeated-work inventory + mermaid diagrams (≤30 nodes each) in M6 session scrollback | Exercise Phase 2 study prompt (scan `~/.claude/projects/` across the stack) + shapes prompt (draw the top recurring patterns) | The `agents-that-build-agents` close (the shapes carry into the handoff prompt) |
-| Stale-rule deletion | `./CLAUDE.local.md` in the M5 worktree, with one rule cut in place if diagnosis killed it | Exercise Phase 1 compound-by-subtraction prompt | Every future session in the worktree; post-M6 merge-back decision into the original repo's personal rules |
-| Workflow-skills handoff prompt | Standalone prompt in the close scrollback; student saves it where they choose (repo note or `~/.claude/`) | `agents-that-build-agents` close — the agent reads the recurring-work shapes and writes a cold-runnable prompt | The student's own later sessions: run cold to study their stack, diagram recurring shapes, author a skill per shape |
+| Two-run gap map | Ranked gap list in M6 session scrollback; optionally copied to `observations/` if the student wants it durable | Exercise *Map the gaps, cut the rule* (diff un-packaged M4 vs packaged M5, quote both runs, rank dominant gap) | The same exercise's rule cut (reads the ranked list for the rule the diagnosis killed); future post-cohort team-kit conversation |
+| Recurring-work shapes | Repeated-work inventory + mermaid diagrams (≤30 nodes each) in M6 session scrollback | Exercise *Read your stack, draw what recurs*: study prompt (scan `~/.claude/projects/` across the stack) + shapes prompt (draw the top recurring patterns) | The handoff lecture (`the-handoff-prompt.md`): the shapes carry into the handoff prompt |
+| Stale-rule deletion | `./CLAUDE.local.md` in the M5 worktree, with one rule cut in place if diagnosis killed it | Exercise *Map the gaps, cut the rule*, the rule-cut prompt | Every future session in the worktree; post-M6 merge-back decision into the original repo's personal rules |
+| Workflow-skills handoff prompt | Standalone prompt in the close scrollback; student saves it where they choose (repo note or `~/.claude/`) | The handoff lecture (`the-handoff-prompt.md`): the agent reads the recurring-work shapes and writes a cold-runnable prompt | The student's own later sessions: run cold to scan their stack, pick one skill with the agent and build it, then put checks on its work |
 
 **Failure modes + escape hatches per phase** (per `check_pedagogy.md` rule 47; one row per forcing function shipping in the exercise):
-- **Phase 1 — Diff and name the gaps.** Failure: both-runs collapse — student treats the packaged run as the only material worth diagnosing, the un-packaged baseline fades. Escape: trainer asks for quoted moments from each run separately before any synthesis.
-- **Phase 1 — Compound move (cut stale rule).** Failure: addition-only compounding — student only adds rules, never subtracts. Escape: forcing prompt names a specific rule the two-run diagnosis killed; if the student can't name one, the diagnosis wasn't sharp enough — back to Phase 1's quoted-moments check.
-- **Phase 2 — Stack scan (study / shapes).** Failure: scan-sprawl — the study reads the whole stack and throws back a wall the student catalogues instead of ranks. Escape: the body steer (*read for the few at the top you actually repeat*) plus trainer push to the ranked head; depth is the student's call, not a mandate.
+- **Map the gaps: the diff.** Failure: both-runs collapse — student treats the packaged run as the only material worth diagnosing, the un-packaged baseline fades. Escape: trainer asks for quoted moments from each run separately before any synthesis.
+- **Map the gaps: the rule cut.** Failure: addition-only compounding — student only adds rules, never subtracts. Escape: forcing prompt names a specific rule the two-run diagnosis killed; if the student can't name one, the diagnosis wasn't sharp enough — back to the diff's quoted-moments check.
+- **Read your stack, draw what recurs: the scan.** Failure: scan-sprawl — the study reads the whole stack and throws back a wall the student catalogues instead of ranks. Escape: the body steer (*read for the few at the top you actually repeat*) plus trainer push to the ranked head; depth is the student's call, not a mandate.
 
 **Meta (trainer):**
 - **Primary Bloom's level:** Analyze + Evaluate + Create
 - **Pacing:** Runtime is computed — `node scripts/calculate-time.js spot-gaps-build-the-loop`. The slack is the Debrief and the exercise's scan-depth steer; the lecture-dense close is not where to find it. Trainer demos slowly, room copy-pastes concurrently.
 - **Transitions:** re-entry 10 @start · debrief 12 @after:spot-gaps-build-the-loop · debrief 6 @after:read-your-stack · bridge 3 @end
-- **Prep / bridge timing:** optional Klaassen verifier article 10 min; human close / team-kit accretion slot 10–15 min.
+- **Prep / bridge timing:** optional Klaassen verifier article 10 min; human close 10–15 min.
 - **Mood target:** practitioner fluency — *"I know how to test, I know how to learn, I know how to encode."* Not confidence-as-performance; competence-as-posture. Failure shapes that steal the mood: compliance-feel (*"build the eval, pass the gate"*), paperwork-feel, credibility-performance (*"we live what we teach"*), trainer-monologue retrospective. If any beat reads like one of those, revise.
-- **Delivery architecture:** canonical in training-architecture.md §Working directory model / §Session boundaries / §Material distribution (no training-dir state, no `module-N/` folders). Not restated here. Module-specific: M6 opens a fresh session in the M5 worktree at `../<repo-name>-m5` where both runs already live, then reads, routes, and maps in-place. The handoff prompt from the close is the take-home; skill candidates it surfaces later ship personal-first, team-PR via human conversation — not auto-promoted.
-- **Pre-read placement:** none. M6 deck order (2026-09-02, three-beat re-cut, slides moved and re-tiered, body text untouched pending cards): the-2-frontiers → exercise `spot-gaps-build-the-loop` (diff + rule cut) → composing-the-workflow (control loop, Eval, cadence, skills, the Dino / Pocock examples, the filled-in map figure) → exercise `read-your-stack` → the-handoff-prompt (titled *Agents that build agents*) → story-of-module-6 → Human close → agents-that-build-agents (titled *There is no last turn*, last).
+- **Delivery architecture:** canonical in training-architecture.md §Working directory model / §Session boundaries / §Material distribution (no training-dir state, no `module-N/` folders). Not restated here. Module-specific: M6 opens a fresh session in the M5 worktree at `../<repo-name>-m5` where both runs already live, then reads, routes, and maps in-place. The handoff prompt from `the-handoff-prompt.md` is the take-home; skill candidates it surfaces later ship personal-first, team-PR via human conversation — not auto-promoted.
+- **Pre-read placement:** none. M6 deck order (2026-09-02): the-2-frontiers → exercise `spot-gaps-build-the-loop` (diff + rule cut) → composing-the-workflow (control loop, Eval, cadence, skills, the Dino / Pocock examples, the filled-in map figure) → exercise `read-your-stack` → the-handoff-prompt (titled *Agents that build agents*) → story-of-module-6 → Human close → agents-that-build-agents (titled *There is no last turn*, last).
 
 **Push-back moves** (trainer delivers):
 - **Connections blocker** — student walks in without one of the two artefacts accessible (laptop closed between M5 and M6, scrollback gone, repo state unclear on the packaged run). Trainer push: *"both artefacts are whatever's there. Commits between M4 and M5 send-offs, files modified during each run, scrollback at `~/.claude/projects/<project>/` if the sessions closed — if M4 and M5 share a cwd, recency alone can grab the wrong attempt; filter by a phrase unique to that send-off's opening prompt instead. Open a fresh Claude Code session in the repo and ask it to surface what each run touched."*
-- **Phase 1 over-diagnosis** — student lists a long catalogue of gaps across both runs. Trainer push: *"two runs, maybe three gaps each. Pick the three that cost the most, dominant first."*
-- **Phase 2 scan-drown** — the study throws back a wall and the student starts cataloguing. Trainer push: *"read the ranked head. The few you actually repeat are the map; the rest is inventory."*
+- **Over-diagnosis in the diff** — student lists a long catalogue of gaps across both runs. Trainer push: *"two runs, maybe three gaps each. Pick the three that cost the most, dominant first."*
+- **Scan-drown in the stack scan** — the study throws back a wall and the student starts cataloguing. Trainer push: *"read the ranked head. The few you actually repeat are the map; the rest is inventory."*
 
 **Watch-fors (cross-phase):**
-- Both-runs collapse — student treats the packaged run as the only material worth diagnosing (the un-packaged baseline fades). Phase 1 recovers by asking for quoted moments from each run, separately.
 - Gap-home confusion — the diff prompt calls everything a skill candidate because skills feel like "the answer." Push back on the output: some gaps belong in memory, some in a sharper existing verifier, some in a new skill.
 - Closing-lecture-as-pre-read — if the closing names something the student already heard, the opener or exercise leaked. Three-persona sim catches this; ship-pass eval also.
 
 **Decision points (pacing):**
-- **Phase 1 runs short (<10 min):** student didn't engage both runs. Diagnostic: did they quote specific moments from each, or summarise generically? If summary, redo with quote-required prompt.
-- **Phase 1 runs long (>20 min):** student is over-diagnosing. Force ranking — top three gaps, dominant first.
-- **Phase 2 runs short (<10 min):** the scan skimmed. Diagnostic: does the shapes output name work the student recognises as theirs? If it reads generic, re-run study with a narrower pointer.
-- **Phase 2 runs long (>15 min):** cataloguing. Force the ranked head, draw two or three shapes, skip the sidestep.
-- **Whole-room mood below 7:** practitioner fluency isn't landing. Check Phase 1: did the diagnosis name SPECIFIC gaps with quoted moments from BOTH runs? Specificity-across-two-runs is where this mood lives.
+- **Diff runs short (<10 min):** student didn't engage both runs. Diagnostic: did they quote specific moments from each, or summarise generically? If summary, redo with quote-required prompt.
+- **Diff runs long (>20 min):** student is over-diagnosing. Force ranking — top three gaps, dominant first.
+- **Stack scan runs short (<10 min):** the scan skimmed. Diagnostic: does the shapes output name work the student recognises as theirs? If it reads generic, re-run study with a narrower pointer.
+- **Stack scan runs long (>15 min):** cataloguing. Force the ranked head, draw two or three shapes, skip the sidestep.
+- **Whole-room mood below 7:** practitioner fluency isn't landing. Check the diff: did the diagnosis name SPECIFIC gaps with quoted moments from BOTH runs? Specificity-across-two-runs is where this mood lives.
 
 **Plug points (trainer):**
-- The student's two run artefacts (Phase 1 input material)
-- Team-kit home, if the team has one (second-skill ship destination for team-PR candidates)
+- The student's two run artefacts (the diff's input material)
+- Team-kit home, if the team has one (destination for skills authored from the handoff prompt after the module)
 - Memory home (where gaps-belong-in-memory land)
-- The team's rule-review cadence (named so the team-PR flag at ship doesn't become the compound-loop bottleneck)
-
-**Frameworks riffed on (attributed in closer):**
-- **Ronacher's three-pattern** — Armin Ronacher `[practitioner direct]`. Re-named in the closing lecture as a scaffold the student is now ready to sharpen, not a fixed recipe.
-- **Cherny's three verifier shapes** — Kim on Cherny `[practitioner analysis]`. The primitives menu riffs on this convergence.
-- **Ramp Dojo** — 350-skill marketplace `[practitioner direct, Geoff Charles CPO, 2026-04-09]`, as the team kit's destination shape. Confirmed against ramp.md 2026-05-25 (public X primary paywalled). Attribution lands in the exercise's checking-primitives menu (`exercises/spot-gaps-build-the-loop.md`); the closing lecture is Intercom-only (Antti 2026-08-30).
-- **Compound engineering** — Kieran Klaassen, [Compound Engineering: The Definitive Guide](https://every.to/source-code/compound-engineering-the-definitive-guide) `[practitioner direct, vendor venue, 2026-02-09]`. Live + accurate 2026-05-25. The review + compound step made explicit across two runs. Exercise Phase 1 + closing lecture's team-kit-accretion line.
+- The team's rule-review cadence (named so team promotion of a skill does not become the compound-loop bottleneck)
 
 **Source verification — freshness stamps (`source-freshness.sh`; format `curriculum/source-freshness-format.md`).**
 
 - `[checked:2026-05-25 result:CAVEAT due:none]` https://every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it — [practitioner direct, vendor venue] Klaassen 2025-08-18; the `## Prework` gap pre-read. Dated origin, well outside the window; pre-read for recognition, never current practice; `due:none` per the dated-origin variant, matching `learn-from-the-test.md` § Source verification (`check_research_claims.md §11a` bans `checked`+6mo computed dues). fallback: drop the Klaassen pre-read; Module 4 and Module 5 still carry the checks mechanism.
-- `[checked:2026-08-01 result:OK due:none]` https://lucumr.pocoo.org/2026/1/14/minijinja-go-port/ — [practitioner direct] Ronacher MiniJinja, 14 Jan 2026: reference / plan.md-equivalent / verifier, 10 h / 2.2M tokens. **Durable account, `due:none`** (`source-freshness-format.md` § Durable-account variant, added 2026-08-01) — a completed run reported first-hand does not expire; the previous swap-at-Sep-2026 instruction is withdrawn. Figures re-verified verbatim 2026-08-01. Still binding: date it in body (*"in January 2026"*) so it reads as an account rather than as current practice.
-- `[checked:2026-08-29 result:OK due:none]` https://getpushtoprod.substack.com/p/how-the-creator-of-claude-code-actually — [practitioner analysis] Kim on Cherny (2026-02-21): the three verifier shapes (background agent / agent-stop hook / Ralph Wiggin plugin, verbatim) are KIM'S synthesis, NOT Cherny's own taxonomy, and are ABSENT from the Orosz interview. Re-fetched 2026-08-29 (same-day pass as the twin stamps in `diagnose-and-resend.md` and `what-packaging-is.md`): passage unchanged, still Kim's framing. **Durable account, `due:none`** — an authorship/attribution reading of a dated writeup, not a currency claim; the retired pub+6mo due mislabelled it. fallback: present as a practitioner-convergent menu, no single attribution.
-- `[checked:2026-05-25 result:OK due:2026-10-08]` https://x.com/geoffintech/status/2042002590758572377 — [practitioner direct] Charles CPO: 350+ skill Dojo, 99.5% AI-active, 84% coding-agents weekly. Confirmed via observations/ramp.md; that X status is link-only (author + date oEmbed-verified April 8 2026). fallback: "hundreds of skills" if the number is contested.
-- `[checked:2026-07-02 result:OK due:2026-08-09]` https://every.to/source-code/compound-engineering-the-definitive-guide — [practitioner direct, vendor venue] Klaassen (pub 2026-02-09; due = pub+6mo): the compound loop as posture. The explicit plan/work/review/compound naming is NOT verbatim on this page — convergent-across-appearances only; cite for the term and the make-the-next-easier thesis, never a step count (the loop expanded past four on 2026-05-29). Anchor-scope guard, not a source defect — matches the same-source OK stamps in `run-the-first-experiment.md` and `test-and-learn.md`. fallback: cite as Klaassen's canonical compound-engineering writeup.
-- `[checked:2026-07-02 result:CAVEAT due:2026-06-11]` https://every.to/source-code/compound-engineering-how-every-codes-with-agents — [practitioner direct, vendor venue] Shipper & Klaassen (pub 2025-12-11; due = pub+6mo): the 80/20 ratio ("roughly 80 percent ... plan and review ... 20 percent ... work and compound") — NOT in the Definitive Guide. Dec-2025 origin framing, so the ratio reads as the historical anchor it is; the loop expanded on 2026-05-29, so never cite this page for the current step form. fallback: keep the posture hedge.
 
 **First-cohort observation questions:**
-- Two-run reading stamina — does Phase 1's diagnosis-across-two-runs hold, or does the second run fade?
+- Two-run reading stamina — does the two-session diff hold, or does the second run fade?
 - Primitives sidestep — how many rooms take the optional beat, and does the menu pair recognisably with the shapes students draw when they do?
 - Debrief round form — which works best with this mood (pair / whole-room / silent write-then-share)?
 
 Pre-cohort open items for M6: see `pre-cohort-todos.md`.
 
-**`Story of Module 6` lands after the exercise, not in the opener (Antti 2026-08-30), and now after the handoff lecture (2026-09-02).** The memo reads once the work is done; the module's front carries no nine-minute block.  `bosser-strategy:content-strategy-agentic-engineering-101.md` § *M6 in detail* carries the same order — the module file is the decision; a `strategy` judge reading a stale copy of the doc will re-flag the order. Do not reorder to match a doc.
+**`Story of Module 6` lands after the handoff lecture, before the Human close (Antti 2026-08-30 / 2026-09-02).** The memo reads once the work is done; the module's front carries no nine-minute block. The module file is the decision; do not reorder to match a strategy-doc copy.
 
-**2026-07-05 (cut pass) — Antti.** Two M6 beats cut fully. (1) The *Steering the wiring* lecture: worktree-evidence wiring is plumbing, not a load-bearing concept, and its graduation beat ("you pick, no canonical answer") is already carried by *composing-the-workflow*'s close. (2) The *Arc-named retrospective* exercise (`arc-retrospective`): did not advance the learning; the arc-recognition it aimed at is carried by the Human close and *the-map-filled-in*. Removed everywhere: both `## Start here` links; the arc-retrospective leap-test outcome, artefact-contract row, per-phase failure mode, push-back move, watch-for, decision point, and first-cohort question (above); the `steering-the-wiring` theory-manifest entry (`build-workbook.js`); the `arc-retrospective-1` prompt plus its four `consumed-by` graph refs; the two audit-script hardcodes (`audit-eval-coverage.js`, `audit-ae101-artifact-contracts.js`). Frees ~20 min against the overbooked close. Both files git-rm'd (reversible via history). Companion cross-file cleanups: M5 (`learn-from-the-test.md`) forward-pointer, the sibling exercise's trailing beat line, and the trainer pages.
+**Cut (2026-07-05, Antti):** the *Steering the wiring* lecture and the *Arc-named retrospective* exercise (`arc-retrospective`). Do not restore either.

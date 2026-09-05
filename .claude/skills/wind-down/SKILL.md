@@ -67,6 +67,30 @@ The counterweights are the point. A rule ships without its exceptions and the ne
 
 Zero entries is a normal session. A session where Antti only accepted proposals produced no taste, just compliance; the entry is worth writing when he **rejected, reframed, or corrected** something.
 
+### Step 3c — Read the todo pile as rule feedback
+
+```bash
+node curriculum/evals/scripts/rule-heat.js --training ae101 --limit 10
+```
+
+Step 3 mines this session for corrections; this reads what the judges have been saying across the whole corpus and nobody has acted on. It is the more objective of the two — 83 files of standing observation against one session's memory.
+
+**A standing population of open todos is healthy, and driving it to zero is not the goal.** Zero would mean the judges had stopped noticing. Never work the todos one by one, and never decline them one by one: a rule firing non-blocking across fifteen files is one mis-calibrated rule, not fifteen flawed files, and closing fifteen notes by hand spends real attention to make a report look tidy while changing nothing about what the next sweep raises.
+
+Two columns, two different jobs. **`open`** is what a rule is still saying about the corpus as it stands. **`moved`** is findings written against text that has since changed — those owe a re-judge, not a fix, and they reach the queue as `stale-finding`. Never tune a rule on its `moved` count: `writing §3` once ranked first in AE101 on 16 todos of which 13 were already fixed, which is how a rule ossifies into permanent first place.
+
+Then read the `·` column — rules that have fired and **never once gated**. A rule in that state is one of three things, and only the maintainer can say which:
+
+- **advisory by nature** → mark it so, and its notes stop reading as work;
+- **too broad** → it wants a carve-out; the notes are true and unhelpful;
+- **under-weighted** → it matters, and should block.
+
+Pick at most one or two. Read every hit first — `--rule "writing §20"` prints each one with the judge's own evidence, which is what an amendment has to be written against. Then `/compound` it, which lands the amendment, rebuilds the index and repins.
+
+**Prefer a narrowing amendment.** Every pinned verdict older than the repin re-enters the queue as `rule-drift`, but a narrowing — a carve-out, an N/A clause, a new accept path — can only turn REVISE into PASS on a file that already passed, so the drift it creates is cheap to clear. A widening can flip PASS to REVISE and owes a real re-read of every file in reach.
+
+Zero amendments is a normal session. The number worth watching is not the pile but its concentration: a healthy corpus spreads a modest pile thinly across many rules, a sick one has ten rules shouting.
+
 ### Step 4 — Clear, commit, push
 
 ```bash

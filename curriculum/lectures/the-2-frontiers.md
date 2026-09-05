@@ -8,14 +8,12 @@
 
 <!-- maintainer -->
 
-**Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** single slide de-bolded fully, bullets kept; the header carries the summary and no handle is coined per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. No kicker added (deliberate, per the watch-for). Wording near-verbatim; no claims added or cut.
+**Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** no bold, no coined handle, no kicker (the watch-for: the frontiers stay unanswered), per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`.
 
-**Slides-only pass (2026-07-02, unaudited):** four prose paragraphs CONVERTED to one slide, near-verbatim (the two frontier questions ride as bullets two and three; the arc line as bullet one). Nothing cut; no covered regions needed. Deliberately no kicker: the maintainer watch-for says don't answer the frontiers, and any kicker would start to.
+**Quality:** compendium-audited 2026-09-03 (writing@94fcca2d story@289b45a3 technical@94fcca2d behavior@1c765f2 pedagogy@4e0370bc strategy@38fd462f slides@4e0370bc)
+- judges @94fcca2d: writing PASS (2 todos see instances/ae101--lecture--the-2-frontiers.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
-**Quality:** compendium-audited 2026-08-29 (writing@4a722813 story@4a722813 technical@8cc00874 behavior@1c765f2 pedagogy@1abb84c6 strategy@1c765f2 slides@4a722813)
-- judges @4a722813: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS
-
-**Lecture meta:** *~2 min opener for Module 6, before "Quality is grounding." Echoes Module 1's "Painting the picture" opener — same two frontiers, recurring at the capstone open. The recurrence is the point. One slide IS the lecture.*
+**Lecture meta:** *~2 min opener for Module 6, directly before the exercise *Map the gaps, cut the rule*. Echoes Module 1's "Painting the picture" opener: same two frontiers, recurring at the capstone open. The recurrence is the point. One slide IS the lecture.*
 
 **Meta:**
 - **Time:** ~2 minutes.
@@ -25,10 +23,8 @@
 
 **Watch-fors (delivery):**
 - Don't answer the two frontiers. They are the arc's open questions.
-- Don't gloss "agents building agents." The phrase lands by being short.
-- Pairs with M1's opener: same two questions, second time. The recurrence carries.
 
-**No we-voiced arrival line in body (2026-08-29, Antti-directed):** bullet 1 opens on "The agent is building the agentic loop now" — the recap is shown, not asserted. Do not re-add "We have come a long way" or any room-collective progress line; the mood target below is a trainer note, not a line to read out.
+**No we-voiced arrival line in body (2026-08-29, Antti-directed):** the recap is shown, not asserted. Do not add "We have come a long way" or any room-collective progress line; the mood target above is a trainer note, not a line to read out.
 
 <!-- backing -->
 
@@ -45,12 +41,12 @@ Frameworks
 - Variation, selection, retention · [borrow:evolutionary theory] · law:variation-selection-retention · ← cultural-vocab — frontier two asks what does the selecting
 
 Stance `[stance:2026-08-01 level:L0]`
-- holds: nothing, by design. This is the shortest lecture in the training and it makes no factual claim at all — two open questions and one recognition line. `level:L0` is not a weakness here, it is the correct reading of a file with no assertions in it.
+- holds: nothing sourced, by design. This is the shortest lecture in the training: two house positions and one open question. `level:L0` is the correct reading of a file with no sourced assertion in it.
 - contested: not applicable. Any answer arriving from the field belongs in whichever lecture teaches it, not here — the maintainer watch-for is explicit that the frontiers must stay unanswered, and a stance that started holding something would break the beat.
 - would-move-it: nothing short of the arc changing. **The failure mode this stance guards is the opposite of the usual one:** not an unbacked claim, but a future editor helpfully answering one of the two questions and turning an opener into a topic.
 
 OODA
-- question: none standing. If this file ever acquires a claim, it has stopped being what it is.
+- question: none standing. If this file ever acquires a sourced claim, it has stopped being what it is.
 - roster: none.
 - last-run: 2026-08-01
 

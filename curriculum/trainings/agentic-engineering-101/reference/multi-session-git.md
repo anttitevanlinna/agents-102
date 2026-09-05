@@ -1,6 +1,6 @@
 # Multi-session and Git: survival guide
 
-Optional homework between M1 and M2. How to run more than one Claude Code session on the same codebase without the sessions wrecking each other's state.
+Optional homework between Module 1 and Module 2. How to run more than one Claude Code session on the same codebase without the sessions wrecking each other's state.
 
 You do not have to start here. Find your way to this over time. There is no rush.
 
@@ -39,7 +39,7 @@ The flow:
 1. `git worktree add -b bug/issue-412 ../repo-bug-fix`
 2. `git worktree add -b refactor/auth-module ../repo-refactor`
 3. `git worktree add -b feature/export-csv ../repo-feature`
-4. Open three Claude Code sessions, one per folder, one task each.
+4. Open a Claude Code session per folder, one task each.
 
 Each session has its own scrollback, its own working directory, its own branch. They do not see each other.
 
@@ -97,7 +97,7 @@ Two sessions is a milestone. Five is a habit. Ten is something you grow into.
 
 **Read time:** ~10 min.
 
-**Attribution:** Cherny frames parallel worktrees as "the single biggest productivity unlock" in his [Jan 2026 X thread](https://x.com/bcherny/status/2017742743125299476) [practitioner direct]. Separately, [Gergely Orosz on Boris Cherny, *Building Claude Code with Boris Cherny*](https://newsletter.pragmaticengineer.com/p/building-claude-code-with-boris-cherny) [practitioner analysis] — Cherny there describes running five parallel Claude Code instances across separate checkouts, corroborating parallel-session workflows generally, not the "productivity unlock" framing or the "worktrees" word.
+**Attribution:** Cherny frames parallel worktrees as "the single biggest productivity unlock" in his [Jan 2026 X thread](https://x.com/bcherny/status/2017742743125299476) [practitioner direct]. Separately, [Gergely Orosz on Boris Cherny, *Building Claude Code with Boris Cherny*](https://newsletter.pragmaticengineer.com/p/building-claude-code-with-boris-cherny), Mar 4 2026 [practitioner analysis] — Cherny there describes running five parallel Claude Code instances across separate checkouts, corroborating parallel-session workflows generally, not the "productivity unlock" framing or the "worktrees" word.
 
 **Attribution, item 4 of § When NOT:** the reads-parallelise / single-writer shape is Cognition's (Walden Yan, *Multi-Agents: What's Actually Working*); quotes, lineage and the dated stamp live in `supplementary/workflow-composition-lineages.md` § *Single writer with advisor agents*. The body carries the shape without the name: this page teaches the student's own session topology, not multi-agent architecture.
 
@@ -110,5 +110,5 @@ Two sessions is a milestone. Five is a habit. Ten is something you grow into.
 - `[checked:2026-07-12 result:OK due:2026-09-04]` https://newsletter.pragmaticengineer.com/p/building-claude-code-with-boris-cherny — [practitioner analysis: Gergely Orosz on Boris Cherny] describes 5 parallel Claude Code instances via separate checkouts; full-text search for "worktree"/"worktrees"/"productivity unlock" returns zero hits. Cited only for parallel-session workflows, never for the word "worktrees." fallback: drop this citation if it no longer supports even the checkouts framing.
 - `[checked:2026-08-30 result:OK due:none]` `supplementary/workflow-composition-lineages.md:cognition-multi-agents-working` — [delegated stamp] Item 4's single-writer shape; the dated live check (currently 2026-05-25, due 2026-11-25) is owned by the supplementary. `due:none`, a delegation does not expire. fallback: keep the item, it stands as ordinary merge-hygiene advice without the lineage.
 
-**Quality:** compendium-audited 2026-08-29 (writing@43e6cae1 story@43e6cae1 technical@8cc00874 behavior@b3143a4 pedagogy@43e6cae1 strategy@b3143a4 slides@43e6cae1)
-- judges @43e6cae1: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-09-05 (writing@08946dd8 story@08946dd8 technical@08946dd8 behavior@b3143a4 pedagogy@43e6cae1 strategy@08946dd8 slides@08946dd8)
+- judges @08946dd8: writing PASS (2 todos see instances/ae101--reference--multi-session-git.writing.json), story PASS, technical PASS (verify-refuted, 1 todo see instances/ae101--reference--multi-session-git.technical.json), behavior PASS, pedagogy PASS, strategy PASS, slides PASS

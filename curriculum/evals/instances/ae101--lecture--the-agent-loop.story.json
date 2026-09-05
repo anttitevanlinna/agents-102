@@ -1,21 +1,41 @@
 {
-  "class": "storytelling",
-  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/the-agent-loop.md",
-  "verdict": "PASS",
+  "class": "story",
   "training": "ae101",
-  "body_sha": "9281ec1adca0d8a0f69acd3a39c84822f0bf5f9af1656f4cb08c60d8bb6adf78",
+  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/the-agent-loop.md",
+  "verdict": "PASS_WITH_TODOS",
+  "body_sha": "058491c3624bdb62fc918f6e1abbcd14efd811416240d604684821ac766ba162",
   "shape_hash": "1903646330181a65",
-  "pin": "d5aa7e3d",
-  "staleness_reason": "diff-region",
-  "module_mood_contract": "M4 (Run the first experiment) — Mood: curious readiness, verified this session against `content-strategy-agentic-engineering-101.md` line 384: \"'I've built enough to try something; let's see what the agent does with it.' Stakes back in the room; no compliance framing.\" This lecture is the arming vocabulary lecture inside M4's opening sequence (far-half opener -> this -> Test and learn -> the send-off exercise; confirmed live this session at `curriculum/trainings/agentic-engineering-101/run-the-first-experiment.md` — the three lecture links appear in exactly that order under `## Start here`). It must not undercut the readiness mood or front-run M5's contrast mood (strategy doc line 420: \"learning through contrast\") or M5's three-pattern reveal, which the strategy doc (line 400) says explicitly \"stays intact: its pieces earn their names only after the M4 evidence is read.\"",
-  "trace_status": "regenerated",
+  "trace_status": "cached",
+  "module_mood_contract": "M4 (Run the first experiment) — curious readiness: student leaves oriented in their own session's mechanics, primed for the send-off; must not undercut M5's contrast mood.",
+  "mood_summary": {
+    "phase_scores": [
+      8
+    ],
+    "close_score": 8,
+    "any_below_8": false,
+    "stealing_the_mood": []
+  },
+  "drift_rules_reread": [
+    "check_lectures §4 (2026-09-03 bare-arc-label addition) -- PASS, both headers name a concept/named-thing, neither is a bare arc label, and the live-do-move header is the rule's own cited example.",
+    "check_prompts §17 (2026-09-03 narrowed to plan-mode-only) -- N/A, none of the three prompts is plan-mode; no observed preamble-eating-the-read run on record for this file.",
+    "check_prompts §20 (2026-09-03 narrowed, benefit unevidenced) -- N/A under both old and new wording; none of the three prompts builds/saves an artefact.",
+    "check_prompts §40 (current wording, unchanged) -- PASS, warm session confirmed, back-reference in prompt 3 resolves to Claude's own prior turn, not a curriculum-coined term.",
+    "check_strategy_tie_in §7 (What You'll Learn shape) -- N/A, module-only section; this lecture carries no `## What You'll Learn` heading (parked by prefill, confirmed here)."
+  ],
+  "accept_notes_found": [
+    "L29 Emphasis pass (2026-07-09, Antti-directed) -- bold reduced to the three defined terms.",
+    "L31 Slide order flipped (2026-08-25, Antti-directed) -- prompts slide first, anatomy second.",
+    "L33 Promotion (2026-07-02, Antti-directed) -- M1 supplementary to M4 lecture.",
+    "L43-46 Definitional contract -- four-parts vs Agents-101's five-facets fold, autonomy narrowed deliberately, do-not-restore note on the retracted M2/M3 bounding claim.",
+    "L48 Plural round shape (Antti-directed, 2026-08-01) -- do not re-singularise the tool-call bullets."
+  ],
   "rules_evaluated": [
     {
       "compendium": "check_lectures.md",
       "rule_index": 1,
       "rule_lead": "Meta-frame lectures = closers, not openers.",
       "verdict": "PASS",
-      "evidence": "Not a meta-frame lecture — nothing here narrates back a pattern the student already lived. This is a vocabulary-introducing lecture (agent/harness/loop), which the rule's own placement diagnostic routes to mid-module. Confirmed live this session by reading `run-the-first-experiment.md § Start here`: the far-half lecture, then this file, then Test and learn, appear in exactly that order — matching this file's own maintainer Placement rationale (raw source line 35).",
+      "evidence": "Not a meta-frame/pattern-naming closer -- it is the vocabulary-teaching arm of M4's opener sequence. Maintainer: 'Vocabulary lecture at module open per check_lectures §1; it arms (mechanism + one introspection move), it doesn't teach the far-half laws.' Diagnostic match: teaches vocabulary mid-module-open (harness/agent/loop terms via three live prompts) rather than naming a pattern the student just lived through -- the rule's third placement bucket.",
       "fix_hint": null,
       "blocking": false
     },
@@ -24,7 +44,7 @@
       "rule_index": 3,
       "rule_lead": "No cross-module sequencing in lecture bodies.",
       "verdict": "PASS",
-      "evidence": "Ran in this session: `sed -n '1,26p' curriculum/lectures/the-agent-loop.md | grep -nE 'M[0-9]|Module'` → 0 matches, exit 1. Body region is lines 1-26 per the current derived body-view (`slide_count: 2`, `body=26L`). No bridges, module numbering, or forward/backward references above the maintainer fence.",
+      "evidence": "`sed -n '1,26p' curriculum/lectures/the-agent-loop.md | grep -inE 'M[0-9]|module'` run this session -> 0 hits, exit 1. No bridges/forward-refs/module numbering in the body above the maintainer fence; the M1/M4/M5 references live only below `<!-- maintainer -->` (L29+), which the rule's own scope (\"lecture bodies\") sits above.",
       "fix_hint": null,
       "blocking": false
     },
@@ -33,7 +53,7 @@
       "rule_index": 4,
       "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
       "verdict": "PASS",
-      "evidence": "Two headers, no duplicates (`slide_count: 2` per this session's `curriculum/evals/body-views/ae101--lecture--the-agent-loop.view.json`). (1) 'See the loop in your live session' — the rule's own text names this EXACT header verbatim as the legal live-do-move carve-out; truth clause holds, the three prompts genuinely run against the student's own live session (confirmed by expanding the prompts this session via `node scripts/expand-md.js`). (2) 'The agent, the harness, the loop' — names the three terms the four bullets define; every noun in the header is directly defined in the body beneath it, not an empty container.",
+      "evidence": "Two headers. 'See the loop in your live session' is the rule's OWN cited carve-out example for a command-verb header carrying a live do-move payload (\"except where the slide's payload is a live do-move ('See the loop in your live session')\") -- squint-passes by the rule's own citation. 'The agent, the harness, the loop' names the exact three terms the slide's four bullets define, passing the squint test as a named-thing header; truth clause holds -- no category error, no dropped qualifier, no unsupported universal, asserts nothing the four bullets don't support. Neither is a bare arc label ('Recap'/'Wrap-up'); no two slides share a header.",
       "fix_hint": null,
       "blocking": false
     },
@@ -42,7 +62,7 @@
       "rule_index": 5,
       "rule_lead": "A slide's BODY is size-bounded, not just its header (§4's sibling).",
       "verdict": "PASS",
-      "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/lectures/the-agent-loop.md --report` in this session. Output: 'The agent, the harness, the loop' = 143 words / 4 bullets; 'See the loop in your live session' = 27 words / 0 bullets (prompt fence excluded); 'files: 1 slides: 2 limits: 210 words / 6 bullets', 'oversized: 0', exit implied 0 ('✓ every slide is within limits'). Word count on the anatomy slide (143) is now lower than the pre-pin figure (156) because the 2026-08-29 diff trimmed a clause from bullet 4 — well inside the 210-word ceiling either way.",
+      "evidence": "`node scripts/check-slide-size.js --file curriculum/lectures/the-agent-loop.md --report` run this session -> 'See the loop in your live session' 29 words/0 bullets; 'The agent, the harness, the loop' 143 words/4 bullets. Both under the 210-word/6-bullet ceiling; script reports 'oversized: 0' and 'every slide is within limits'.",
       "fix_hint": null,
       "blocking": false
     },
@@ -51,7 +71,610 @@
       "rule_index": 6,
       "rule_lead": "A prompt inside a lecture is a trainer show-and-tell, never a room follow-along.",
       "verdict": "PASS",
-      "evidence": "This file is the rule's own named carve-out, quoted verbatim in `check_lectures.md`: \"the-agent-loop.md's `## See the loop in your live session` runs three prompts against the session that will carry the student's send-off... Those stay student-run and say so in the body.\" Verified this session via `node scripts/expand-md.js curriculum/lectures/the-agent-loop.md`: the third prompt's own text reads \"...whether any of them are deferred until you need them, and what that means for the list you gave me earlier\" — the tell the carve-out names (a reference to the student's own prior answer, not a trainer-projected demo repo). None of the three commits since the pin (`275a0cc9`, `d7be3b65`, and the wave commits before them) touch this slide or the prompt fences — `git diff d5aa7e3d..HEAD -- curriculum/lectures/the-agent-loop.md` (run this session) shows zero lines inside `## See the loop in your live session`.",
+      "evidence": "This file is the rule's own named exception: \"the-agent-loop.md's `## See the loop in your live session` runs three prompts against the session that will carry the student's send-off, so the tool list that comes back has to be theirs... Those stay student-run and say so in the body.\" Confirmed against the current body: no second-person imperative addressed at a trainer, no 'watch the screen' framing -- the three prompts are addressed to the student's own live session, matching the carve-out this exact file is cited for.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 16,
+      "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
+      "verdict": "PASS",
+      "evidence": "The three forcing moves (draw the loop, list the tools, explain tool-provenance) live entirely inside the three `{{prompt:}}` fences (raw source L9, L13, L17); body prose carries only skim-cue lead-ins ('Dig into whatever catches you.', 'Ask for the loop as a diagram.', 'Ask what tools this session is carrying.', 'Ask how the agent knows what tools it can call.') with zero count-scripts (no 'two rounds max' style prescriptions) and zero scripted reactions. Removal test: cutting a lead-in loses a skim-cue, not the pedagogy -- the pedagogy is entirely in the fence.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 27,
+      "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
+      "verdict": "PASS",
+      "evidence": "Body (L1-26) contains no group/pair/room-share language, no trainer-cue beats, no 'discuss with...' sentence, no pause-cue. Every sentence is about the WORK (draw the diagram, list the tools, ask how the agent knows) addressed to the individual student's own session. Line closest to violating: 'Dig into whatever catches you' (L5) -- reads as student-agency framing, not a room-management cue; no neighbour/room reference anywhere in the file.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "1",
+      "rule_lead": "Walk-away test (M2+).",
+      "verdict": "N/A",
+      "evidence": "Out of story's lane on check_pedagogy.md -- judges/story.md's Completeness contract names only §16 and §27 as storytelling-owned pedagogy rules ('evaluate only the storytelling rules listed... the pedagogy and strategy judges are primary owners of the rest and carry their verdicts'). Recorded N/A here to keep the coverage ledger complete without filing an unowned verdict (dispatch preamble: 'a verdict outside your lane... is an unowned claim').",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "2",
+      "rule_lead": "50% magic rule (M3–M8).",
+      "verdict": "N/A",
+      "evidence": "Out of story's lane on check_pedagogy.md -- judges/story.md's Completeness contract names only §16 and §27 as storytelling-owned pedagogy rules ('evaluate only the storytelling rules listed... the pedagogy and strategy judges are primary owners of the rest and carry their verdicts'). Recorded N/A here to keep the coverage ledger complete without filing an unowned verdict (dispatch preamble: 'a verdict outside your lane... is an unowned claim').",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "3",
+      "rule_lead": "Trust the agentic design — no human backstops.",
+      "verdict": "N/A",
+      "evidence": "Out of story's lane on check_pedagogy.md -- judges/story.md's Completeness contract names only §16 and §27 as storytelling-owned pedagogy rules ('evaluate only the storytelling rules listed... the pedagogy and strategy judges are primary owners of the rest and carry their verdicts'). Recorded N/A here to keep the coverage ledger complete without filing an unowned verdict (dispatch preamble: 'a verdict outside your lane... is an unowned claim').",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "4",
+      "rule_lead": "Quality ladder.",
+      "verdict": "N/A",
+      "evidence": "Out of story's lane on check_pedagogy.md -- judges/story.md's Completeness contract names only §16 and §27 as storytelling-owned pedagogy rules ('evaluate only the storytelling rules listed... the pedagogy and strategy judges are primary owners of the rest and carry their verdicts'). Recorded N/A here to keep the coverage ledger complete without filing an unowned verdict (dispatch preamble: 'a verdict outside your lane... is an unowned claim').",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "6",
+      "rule_lead": "One exercise = one bounded activity.",
+      "verdict": "N/A",
+      "evidence": "Out of story's lane on check_pedagogy.md -- judges/story.md's Completeness contract names only §16 and §27 as storytelling-owned pedagogy rules ('evaluate only the storytelling rules listed... the pedagogy and strategy judges are primary owners of the rest and carry their verdicts'). Recorded N/A here to keep the coverage ledger complete without filing an unowned verdict (dispatch preamble: 'a verdict outside your lane... is an unowned claim').",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "7",
+      "rule_lead": "Modules composable across variants.",
+      "verdict": "N/A",
+      "evidence": "Out of story's lane on check_pedagogy.md -- judges/story.md's Completeness contract names only §16 and §27 as storytelling-owned pedagogy rules ('evaluate only the storytelling rules listed... the pedagogy and strategy judges are primary owners of the rest and carry their verdicts'). Recorded N/A here to keep the coverage ledger complete without filing an unowned verdict (dispatch preamble: 'a verdict outside your lane... is an unowned claim').",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "8",
+      "rule_lead": "Three-level completeness.",
+      "verdict": "N/A",
+      "evidence": "Out of story's lane on check_pedagogy.md -- judges/story.md's Completeness contract names only §16 and §27 as storytelling-owned pedagogy rules ('evaluate only the storytelling rules listed... the pedagogy and strategy judges are primary owners of the rest and carry their verdicts'). Recorded N/A here to keep the coverage ledger complete without filing an unowned verdict (dispatch preamble: 'a verdict outside your lane... is an unowned claim').",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "9",
+      "rule_lead": "Pattern-recognition LOs need n≥2 instances with contrast.",
+      "verdict": "N/A",
+      "evidence": "Out of story's lane on check_pedagogy.md -- judges/story.md's Completeness contract names only §16 and §27 as storytelling-owned pedagogy rules ('evaluate only the storytelling rules listed... the pedagogy and strategy judges are primary owners of the rest and carry their verdicts'). Recorded N/A here to keep the coverage ledger complete without filing an unowned verdict (dispatch preamble: 'a verdict outside your lane... is an unowned claim').",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "9b",
+      "rule_lead": "Progression-with-variations is the spine.",
+      "verdict": "N/A",
+      "evidence": "Out of story's lane on check_pedagogy.md -- judges/story.md's Completeness contract names only §16 and §27 as storytelling-owned pedagogy rules ('evaluate only the storytelling rules listed... the pedagogy and strategy judges are primary owners of the rest and carry their verdicts'). Recorded N/A here to keep the coverage ledger complete without filing an unowned verdict (dispatch preamble: 'a verdict outside your lane... is an unowned claim').",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "10",
+      "rule_lead": "Student agency — adults decide.",
+      "verdict": "N/A",
+      "evidence": "Out of story's lane on check_pedagogy.md -- judges/story.md's Completeness contract names only §16 and §27 as storytelling-owned pedagogy rules ('evaluate only the storytelling rules listed... the pedagogy and strategy judges are primary owners of the rest and carry their verdicts'). Recorded N/A here to keep the coverage ledger complete without filing an unowned verdict (dispatch preamble: 'a verdict outside your lane... is an unowned claim').",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "11",
+      "rule_lead": "Delegation — student brings, Claude screens.",
+      "verdict": "N/A",
+      "evidence": "Out of story's lane on check_pedagogy.md -- judges/story.md's Completeness contract names only §16 and §27 as storytelling-owned pedagogy rules ('evaluate only the storytelling rules listed... the pedagogy and strategy judges are primary owners of the rest and carry their verdicts'). Recorded N/A here to keep the coverage ledger complete without filing an unowned verdict (dispatch preamble: 'a verdict outside your lane... is an unowned claim').",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "12",
+      "rule_lead": "Split mega-exercise when phases = distinct skills + distinct artifacts.",
+      "verdict": "N/A",
+      "evidence": "Out of story's lane on check_pedagogy.md -- judges/story.md's Completeness contract names only §16 and §27 as storytelling-owned pedagogy rules ('evaluate only the storytelling rules listed... the pedagogy and strategy judges are primary owners of the rest and carry their verdicts'). Recorded N/A here to keep the coverage ledger complete without filing an unowned verdict (dispatch preamble: 'a verdict outside your lane... is an unowned claim').",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "13",
+      "rule_lead": "Artifact-realism check.",
+      "verdict": "N/A",
+      "evidence": "Out of story's lane on check_pedagogy.md -- judges/story.md's Completeness contract names only §16 and §27 as storytelling-owned pedagogy rules ('evaluate only the storytelling rules listed... the pedagogy and strategy judges are primary owners of the rest and carry their verdicts'). Recorded N/A here to keep the coverage ledger complete without filing an unowned verdict (dispatch preamble: 'a verdict outside your lane... is an unowned claim').",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "14",
+      "rule_lead": "Teach principle + technique — default.",
+      "verdict": "N/A",
+      "evidence": "Out of story's lane on check_pedagogy.md -- judges/story.md's Completeness contract names only §16 and §27 as storytelling-owned pedagogy rules ('evaluate only the storytelling rules listed... the pedagogy and strategy judges are primary owners of the rest and carry their verdicts'). Recorded N/A here to keep the coverage ledger complete without filing an unowned verdict (dispatch preamble: 'a verdict outside your lane... is an unowned claim').",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "15",
+      "rule_lead": "Auto-fire sim+eval after significant rewrite.",
+      "verdict": "N/A",
+      "evidence": "Out of story's lane on check_pedagogy.md -- judges/story.md's Completeness contract names only §16 and §27 as storytelling-owned pedagogy rules ('evaluate only the storytelling rules listed... the pedagogy and strategy judges are primary owners of the rest and carry their verdicts'). Recorded N/A here to keep the coverage ledger complete without filing an unowned verdict (dispatch preamble: 'a verdict outside your lane... is an unowned claim').",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "17",
+      "rule_lead": "Corporate infra = nice-to-have, never forcing function.",
+      "verdict": "N/A",
+      "evidence": "Out of story's lane on check_pedagogy.md -- judges/story.md's Completeness contract names only §16 and §27 as storytelling-owned pedagogy rules ('evaluate only the storytelling rules listed... the pedagogy and strategy judges are primary owners of the rest and carry their verdicts'). Recorded N/A here to keep the coverage ledger complete without filing an unowned verdict (dispatch preamble: 'a verdict outside your lane... is an unowned claim').",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "18",
+      "rule_lead": "Personal-first, team promotion via human conversation.",
+      "verdict": "N/A",
+      "evidence": "Out of story's lane on check_pedagogy.md -- judges/story.md's Completeness contract names only §16 and §27 as storytelling-owned pedagogy rules ('evaluate only the storytelling rules listed... the pedagogy and strategy judges are primary owners of the rest and carry their verdicts'). Recorded N/A here to keep the coverage ledger complete without filing an unowned verdict (dispatch preamble: 'a verdict outside your lane... is an unowned claim').",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "19",
+      "rule_lead": "Measure silent failure, not just friction.",
+      "verdict": "N/A",
+      "evidence": "Out of story's lane on check_pedagogy.md -- judges/story.md's Completeness contract names only §16 and §27 as storytelling-owned pedagogy rules ('evaluate only the storytelling rules listed... the pedagogy and strategy judges are primary owners of the rest and carry their verdicts'). Recorded N/A here to keep the coverage ledger complete without filing an unowned verdict (dispatch preamble: 'a verdict outside your lane... is an unowned claim').",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "20",
+      "rule_lead": "Don't pre-set categories before experiment runs.",
+      "verdict": "N/A",
+      "evidence": "Out of story's lane on check_pedagogy.md -- judges/story.md's Completeness contract names only §16 and §27 as storytelling-owned pedagogy rules ('evaluate only the storytelling rules listed... the pedagogy and strategy judges are primary owners of the rest and carry their verdicts'). Recorded N/A here to keep the coverage ledger complete without filing an unowned verdict (dispatch preamble: 'a verdict outside your lane... is an unowned claim').",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "21",
+      "rule_lead": "Verification layers sample DIFFERENT error distributions — not belt-and-braces.",
+      "verdict": "N/A",
+      "evidence": "Out of story's lane on check_pedagogy.md -- judges/story.md's Completeness contract names only §16 and §27 as storytelling-owned pedagogy rules ('evaluate only the storytelling rules listed... the pedagogy and strategy judges are primary owners of the rest and carry their verdicts'). Recorded N/A here to keep the coverage ledger complete without filing an unowned verdict (dispatch preamble: 'a verdict outside your lane... is an unowned claim').",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "21b",
+      "rule_lead": "Cheap-before-expensive verification ordering.",
+      "verdict": "N/A",
+      "evidence": "Out of story's lane on check_pedagogy.md -- judges/story.md's Completeness contract names only §16 and §27 as storytelling-owned pedagogy rules ('evaluate only the storytelling rules listed... the pedagogy and strategy judges are primary owners of the rest and carry their verdicts'). Recorded N/A here to keep the coverage ledger complete without filing an unowned verdict (dispatch preamble: 'a verdict outside your lane... is an unowned claim').",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "22",
+      "rule_lead": "Rule in memory without forcing function = worse than no rule.",
+      "verdict": "N/A",
+      "evidence": "Out of story's lane on check_pedagogy.md -- judges/story.md's Completeness contract names only §16 and §27 as storytelling-owned pedagogy rules ('evaluate only the storytelling rules listed... the pedagogy and strategy judges are primary owners of the rest and carry their verdicts'). Recorded N/A here to keep the coverage ledger complete without filing an unowned verdict (dispatch preamble: 'a verdict outside your lane... is an unowned claim').",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "23",
+      "rule_lead": "Short skeptical pushback on \"done\" = re-verify trigger.",
+      "verdict": "N/A",
+      "evidence": "Out of story's lane on check_pedagogy.md -- judges/story.md's Completeness contract names only §16 and §27 as storytelling-owned pedagogy rules ('evaluate only the storytelling rules listed... the pedagogy and strategy judges are primary owners of the rest and carry their verdicts'). Recorded N/A here to keep the coverage ledger complete without filing an unowned verdict (dispatch preamble: 'a verdict outside your lane... is an unowned claim').",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "24",
+      "rule_lead": "Cohort execution is trainer-paced + concurrent, not sequential.",
+      "verdict": "N/A",
+      "evidence": "Out of story's lane on check_pedagogy.md -- judges/story.md's Completeness contract names only §16 and §27 as storytelling-owned pedagogy rules ('evaluate only the storytelling rules listed... the pedagogy and strategy judges are primary owners of the rest and carry their verdicts'). Recorded N/A here to keep the coverage ledger complete without filing an unowned verdict (dispatch preamble: 'a verdict outside your lane... is an unowned claim').",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "25",
+      "rule_lead": "Host-skill optional; maintainer blocks trainer-only.",
+      "verdict": "N/A",
+      "evidence": "Out of story's lane on check_pedagogy.md -- judges/story.md's Completeness contract names only §16 and §27 as storytelling-owned pedagogy rules ('evaluate only the storytelling rules listed... the pedagogy and strategy judges are primary owners of the rest and carry their verdicts'). Recorded N/A here to keep the coverage ledger complete without filing an unowned verdict (dispatch preamble: 'a verdict outside your lane... is an unowned claim').",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "26",
+      "rule_lead": "Reflection beats: in-chat over file-write.",
+      "verdict": "N/A",
+      "evidence": "Out of story's lane on check_pedagogy.md -- judges/story.md's Completeness contract names only §16 and §27 as storytelling-owned pedagogy rules ('evaluate only the storytelling rules listed... the pedagogy and strategy judges are primary owners of the rest and carry their verdicts'). Recorded N/A here to keep the coverage ledger complete without filing an unowned verdict (dispatch preamble: 'a verdict outside your lane... is an unowned claim').",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "29",
+      "rule_lead": "Eval = fixed yardstick; thing measured learns.",
+      "verdict": "N/A",
+      "evidence": "Out of story's lane on check_pedagogy.md -- judges/story.md's Completeness contract names only §16 and §27 as storytelling-owned pedagogy rules ('evaluate only the storytelling rules listed... the pedagogy and strategy judges are primary owners of the rest and carry their verdicts'). Recorded N/A here to keep the coverage ledger complete without filing an unowned verdict (dispatch preamble: 'a verdict outside your lane... is an unowned claim').",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "30",
+      "rule_lead": "Reading burden for verification = banned. Claude audits Claude.",
+      "verdict": "N/A",
+      "evidence": "Out of story's lane on check_pedagogy.md -- judges/story.md's Completeness contract names only §16 and §27 as storytelling-owned pedagogy rules ('evaluate only the storytelling rules listed... the pedagogy and strategy judges are primary owners of the rest and carry their verdicts'). Recorded N/A here to keep the coverage ledger complete without filing an unowned verdict (dispatch preamble: 'a verdict outside your lane... is an unowned claim').",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "31",
+      "rule_lead": "Self-report + self-audit charity — verify at artifact, over-flag or fresh-session for critique.",
+      "verdict": "N/A",
+      "evidence": "Out of story's lane on check_pedagogy.md -- judges/story.md's Completeness contract names only §16 and §27 as storytelling-owned pedagogy rules ('evaluate only the storytelling rules listed... the pedagogy and strategy judges are primary owners of the rest and carry their verdicts'). Recorded N/A here to keep the coverage ledger complete without filing an unowned verdict (dispatch preamble: 'a verdict outside your lane... is an unowned claim').",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "32",
+      "rule_lead": "Offered structures need forced-engagement mechanic.",
+      "verdict": "N/A",
+      "evidence": "Out of story's lane on check_pedagogy.md -- judges/story.md's Completeness contract names only §16 and §27 as storytelling-owned pedagogy rules ('evaluate only the storytelling rules listed... the pedagogy and strategy judges are primary owners of the rest and carry their verdicts'). Recorded N/A here to keep the coverage ledger complete without filing an unowned verdict (dispatch preamble: 'a verdict outside your lane... is an unowned claim').",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "33",
+      "rule_lead": "Source-type blindness on ingestion.",
+      "verdict": "N/A",
+      "evidence": "Out of story's lane on check_pedagogy.md -- judges/story.md's Completeness contract names only §16 and §27 as storytelling-owned pedagogy rules ('evaluate only the storytelling rules listed... the pedagogy and strategy judges are primary owners of the rest and carry their verdicts'). Recorded N/A here to keep the coverage ledger complete without filing an unowned verdict (dispatch preamble: 'a verdict outside your lane... is an unowned claim').",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "34",
+      "rule_lead": "Task selection drives outcome → name floor AND ceiling.",
+      "verdict": "N/A",
+      "evidence": "Out of story's lane on check_pedagogy.md -- judges/story.md's Completeness contract names only §16 and §27 as storytelling-owned pedagogy rules ('evaluate only the storytelling rules listed... the pedagogy and strategy judges are primary owners of the rest and carry their verdicts'). Recorded N/A here to keep the coverage ledger complete without filing an unowned verdict (dispatch preamble: 'a verdict outside your lane... is an unowned claim').",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "34b",
+      "rule_lead": "Maintainer-block hedge naming section's own failure mode = cut-signal, not warning.",
+      "verdict": "N/A",
+      "evidence": "Out of story's lane on check_pedagogy.md -- judges/story.md's Completeness contract names only §16 and §27 as storytelling-owned pedagogy rules ('evaluate only the storytelling rules listed... the pedagogy and strategy judges are primary owners of the rest and carry their verdicts'). Recorded N/A here to keep the coverage ledger complete without filing an unowned verdict (dispatch preamble: 'a verdict outside your lane... is an unowned claim').",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "35",
+      "rule_lead": "Audience tier determines authoring substrate.",
+      "verdict": "N/A",
+      "evidence": "Out of story's lane on check_pedagogy.md -- judges/story.md's Completeness contract names only §16 and §27 as storytelling-owned pedagogy rules ('evaluate only the storytelling rules listed... the pedagogy and strategy judges are primary owners of the rest and carry their verdicts'). Recorded N/A here to keep the coverage ledger complete without filing an unowned verdict (dispatch preamble: 'a verdict outside your lane... is an unowned claim').",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "36",
+      "rule_lead": "Verification machinery needs smoke-test before trust.",
+      "verdict": "N/A",
+      "evidence": "Out of story's lane on check_pedagogy.md -- judges/story.md's Completeness contract names only §16 and §27 as storytelling-owned pedagogy rules ('evaluate only the storytelling rules listed... the pedagogy and strategy judges are primary owners of the rest and carry their verdicts'). Recorded N/A here to keep the coverage ledger complete without filing an unowned verdict (dispatch preamble: 'a verdict outside your lane... is an unowned claim').",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "37",
+      "rule_lead": "Context-loading tiers as staged progression.",
+      "verdict": "N/A",
+      "evidence": "Out of story's lane on check_pedagogy.md -- judges/story.md's Completeness contract names only §16 and §27 as storytelling-owned pedagogy rules ('evaluate only the storytelling rules listed... the pedagogy and strategy judges are primary owners of the rest and carry their verdicts'). Recorded N/A here to keep the coverage ledger complete without filing an unowned verdict (dispatch preamble: 'a verdict outside your lane... is an unowned claim').",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "39",
+      "rule_lead": "Removals are strategic — ask before cutting.",
+      "verdict": "N/A",
+      "evidence": "Out of story's lane on check_pedagogy.md -- judges/story.md's Completeness contract names only §16 and §27 as storytelling-owned pedagogy rules ('evaluate only the storytelling rules listed... the pedagogy and strategy judges are primary owners of the rest and carry their verdicts'). Recorded N/A here to keep the coverage ledger complete without filing an unowned verdict (dispatch preamble: 'a verdict outside your lane... is an unowned claim').",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "41",
+      "rule_lead": "Symmetric visible-mechanics > runtime fork when dual-runtime constraints break agentic move.",
+      "verdict": "N/A",
+      "evidence": "Out of story's lane on check_pedagogy.md -- judges/story.md's Completeness contract names only §16 and §27 as storytelling-owned pedagogy rules ('evaluate only the storytelling rules listed... the pedagogy and strategy judges are primary owners of the rest and carry their verdicts'). Recorded N/A here to keep the coverage ledger complete without filing an unowned verdict (dispatch preamble: 'a verdict outside your lane... is an unowned claim').",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "42",
+      "rule_lead": "Load-bearing platform feature = no fallback. Gate or redesign.",
+      "verdict": "N/A",
+      "evidence": "Out of story's lane on check_pedagogy.md -- judges/story.md's Completeness contract names only §16 and §27 as storytelling-owned pedagogy rules ('evaluate only the storytelling rules listed... the pedagogy and strategy judges are primary owners of the rest and carry their verdicts'). Recorded N/A here to keep the coverage ledger complete without filing an unowned verdict (dispatch preamble: 'a verdict outside your lane... is an unowned claim').",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "43",
+      "rule_lead": "Eval architecture — partition by evidence source, not criterion count.",
+      "verdict": "N/A",
+      "evidence": "Out of story's lane on check_pedagogy.md -- judges/story.md's Completeness contract names only §16 and §27 as storytelling-owned pedagogy rules ('evaluate only the storytelling rules listed... the pedagogy and strategy judges are primary owners of the rest and carry their verdicts'). Recorded N/A here to keep the coverage ledger complete without filing an unowned verdict (dispatch preamble: 'a verdict outside your lane... is an unowned claim').",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "44",
+      "rule_lead": "Plug points + UX.",
+      "verdict": "N/A",
+      "evidence": "Out of story's lane on check_pedagogy.md -- judges/story.md's Completeness contract names only §16 and §27 as storytelling-owned pedagogy rules ('evaluate only the storytelling rules listed... the pedagogy and strategy judges are primary owners of the rest and carry their verdicts'). Recorded N/A here to keep the coverage ledger complete without filing an unowned verdict (dispatch preamble: 'a verdict outside your lane... is an unowned claim').",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "45",
+      "rule_lead": "Per-exercise leap test — 3 observable Monday outcomes.",
+      "verdict": "N/A",
+      "evidence": "Out of story's lane on check_pedagogy.md -- judges/story.md's Completeness contract names only §16 and §27 as storytelling-owned pedagogy rules ('evaluate only the storytelling rules listed... the pedagogy and strategy judges are primary owners of the rest and carry their verdicts'). Recorded N/A here to keep the coverage ledger complete without filing an unowned verdict (dispatch preamble: 'a verdict outside your lane... is an unowned claim').",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "47",
+      "rule_lead": "Per-phase failure mode + escape hatch.",
+      "verdict": "N/A",
+      "evidence": "Out of story's lane on check_pedagogy.md -- judges/story.md's Completeness contract names only §16 and §27 as storytelling-owned pedagogy rules ('evaluate only the storytelling rules listed... the pedagogy and strategy judges are primary owners of the rest and carry their verdicts'). Recorded N/A here to keep the coverage ledger complete without filing an unowned verdict (dispatch preamble: 'a verdict outside your lane... is an unowned claim').",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "48",
+      "rule_lead": "Heavy fan-out prompts get body recovery callout.",
+      "verdict": "N/A",
+      "evidence": "Out of story's lane on check_pedagogy.md -- judges/story.md's Completeness contract names only §16 and §27 as storytelling-owned pedagogy rules ('evaluate only the storytelling rules listed... the pedagogy and strategy judges are primary owners of the rest and carry their verdicts'). Recorded N/A here to keep the coverage ledger complete without filing an unowned verdict (dispatch preamble: 'a verdict outside your lane... is an unowned claim').",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "49",
+      "rule_lead": "Save belongs with authoring, not loading.",
+      "verdict": "N/A",
+      "evidence": "Out of story's lane on check_pedagogy.md -- judges/story.md's Completeness contract names only §16 and §27 as storytelling-owned pedagogy rules ('evaluate only the storytelling rules listed... the pedagogy and strategy judges are primary owners of the rest and carry their verdicts'). Recorded N/A here to keep the coverage ledger complete without filing an unowned verdict (dispatch preamble: 'a verdict outside your lane... is an unowned claim').",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "50",
+      "rule_lead": "Convenience-driven prompts with known shape-bias → body acknowledgment callout.",
+      "verdict": "N/A",
+      "evidence": "Out of story's lane on check_pedagogy.md -- judges/story.md's Completeness contract names only §16 and §27 as storytelling-owned pedagogy rules ('evaluate only the storytelling rules listed... the pedagogy and strategy judges are primary owners of the rest and carry their verdicts'). Recorded N/A here to keep the coverage ledger complete without filing an unowned verdict (dispatch preamble: 'a verdict outside your lane... is an unowned claim').",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "51",
+      "rule_lead": "Deliberate-antipattern prompts = class-judge exempt, flagged-by-design.",
+      "verdict": "N/A",
+      "evidence": "Out of story's lane on check_pedagogy.md -- judges/story.md's Completeness contract names only §16 and §27 as storytelling-owned pedagogy rules ('evaluate only the storytelling rules listed... the pedagogy and strategy judges are primary owners of the rest and carry their verdicts'). Recorded N/A here to keep the coverage ledger complete without filing an unowned verdict (dispatch preamble: 'a verdict outside your lane... is an unowned claim').",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "52",
+      "rule_lead": "Session widget — `**Session** *(verb, \"name\")*` shape; place by learning flow.",
+      "verdict": "N/A",
+      "evidence": "Out of story's lane on check_pedagogy.md -- judges/story.md's Completeness contract names only §16 and §27 as storytelling-owned pedagogy rules ('evaluate only the storytelling rules listed... the pedagogy and strategy judges are primary owners of the rest and carry their verdicts'). Recorded N/A here to keep the coverage ledger complete without filing an unowned verdict (dispatch preamble: 'a verdict outside your lane... is an unowned claim').",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "52b",
+      "rule_lead": "Widgets carry semantics, not just emphasis — match the widget to MEANING, never to how loud it renders.",
+      "verdict": "N/A",
+      "evidence": "Out of story's lane on check_pedagogy.md -- judges/story.md's Completeness contract names only §16 and §27 as storytelling-owned pedagogy rules ('evaluate only the storytelling rules listed... the pedagogy and strategy judges are primary owners of the rest and carry their verdicts'). Recorded N/A here to keep the coverage ledger complete without filing an unowned verdict (dispatch preamble: 'a verdict outside your lane... is an unowned claim').",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "52a",
+      "rule_lead": "Module prose carrying a `**Session**` widget or a `{{prompt:}}` fence is an exercise that has not been extracted.",
+      "verdict": "N/A",
+      "evidence": "Out of story's lane on check_pedagogy.md -- judges/story.md's Completeness contract names only §16 and §27 as storytelling-owned pedagogy rules ('evaluate only the storytelling rules listed... the pedagogy and strategy judges are primary owners of the rest and carry their verdicts'). Recorded N/A here to keep the coverage ledger complete without filing an unowned verdict (dispatch preamble: 'a verdict outside your lane... is an unowned claim').",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "52c",
+      "rule_lead": "Exercise lead-in trio — three slots, three tenses. A slot filled past its label is this corpus's most common defect.",
+      "verdict": "N/A",
+      "evidence": "Out of story's lane on check_pedagogy.md -- judges/story.md's Completeness contract names only §16 and §27 as storytelling-owned pedagogy rules ('evaluate only the storytelling rules listed... the pedagogy and strategy judges are primary owners of the rest and carry their verdicts'). Recorded N/A here to keep the coverage ledger complete without filing an unowned verdict (dispatch preamble: 'a verdict outside your lane... is an unowned claim').",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "52d",
+      "rule_lead": "Finding the point — four moves, learned writing M1's set 2026-08-12.",
+      "verdict": "N/A",
+      "evidence": "Out of story's lane on check_pedagogy.md -- judges/story.md's Completeness contract names only §16 and §27 as storytelling-owned pedagogy rules ('evaluate only the storytelling rules listed... the pedagogy and strategy judges are primary owners of the rest and carry their verdicts'). Recorded N/A here to keep the coverage ledger complete without filing an unowned verdict (dispatch preamble: 'a verdict outside your lane... is an unowned claim').",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "53",
+      "rule_lead": "Body prose must not supply an answer its prompt asks for — position is not the test (widened 2026-08-12).",
+      "verdict": "N/A",
+      "evidence": "Out of story's lane on check_pedagogy.md -- judges/story.md's Completeness contract names only §16 and §27 as storytelling-owned pedagogy rules ('evaluate only the storytelling rules listed... the pedagogy and strategy judges are primary owners of the rest and carry their verdicts'). Recorded N/A here to keep the coverage ledger complete without filing an unowned verdict (dispatch preamble: 'a verdict outside your lane... is an unowned claim').",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "56",
+      "rule_lead": "Engineer-audience audit fixes default to body callout, not forcing function.",
+      "verdict": "N/A",
+      "evidence": "Out of story's lane on check_pedagogy.md -- judges/story.md's Completeness contract names only §16 and §27 as storytelling-owned pedagogy rules ('evaluate only the storytelling rules listed... the pedagogy and strategy judges are primary owners of the rest and carry their verdicts'). Recorded N/A here to keep the coverage ledger complete without filing an unowned verdict (dispatch preamble: 'a verdict outside your lane... is an unowned claim').",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "57",
+      "rule_lead": "Multi-session (any new mechanic mid-arc) ships as packaging, not new primitive.",
+      "verdict": "N/A",
+      "evidence": "Out of story's lane on check_pedagogy.md -- judges/story.md's Completeness contract names only §16 and §27 as storytelling-owned pedagogy rules ('evaluate only the storytelling rules listed... the pedagogy and strategy judges are primary owners of the rest and carry their verdicts'). Recorded N/A here to keep the coverage ledger complete without filing an unowned verdict (dispatch preamble: 'a verdict outside your lane... is an unowned claim').",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "58",
+      "rule_lead": "`/clear` = tool, not ceremony.",
+      "verdict": "N/A",
+      "evidence": "Out of story's lane on check_pedagogy.md -- judges/story.md's Completeness contract names only §16 and §27 as storytelling-owned pedagogy rules ('evaluate only the storytelling rules listed... the pedagogy and strategy judges are primary owners of the rest and carry their verdicts'). Recorded N/A here to keep the coverage ledger complete without filing an unowned verdict (dispatch preamble: 'a verdict outside your lane... is an unowned claim').",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "59",
+      "rule_lead": "Inbound links preserve pedagogical beat across reference restructuring.",
+      "verdict": "N/A",
+      "evidence": "Out of story's lane on check_pedagogy.md -- judges/story.md's Completeness contract names only §16 and §27 as storytelling-owned pedagogy rules ('evaluate only the storytelling rules listed... the pedagogy and strategy judges are primary owners of the rest and carry their verdicts'). Recorded N/A here to keep the coverage ledger complete without filing an unowned verdict (dispatch preamble: 'a verdict outside your lane... is an unowned claim').",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "60",
+      "rule_lead": "Scan at the unit the rule names, not convenient larger one.",
+      "verdict": "N/A",
+      "evidence": "Out of story's lane on check_pedagogy.md -- judges/story.md's Completeness contract names only §16 and §27 as storytelling-owned pedagogy rules ('evaluate only the storytelling rules listed... the pedagogy and strategy judges are primary owners of the rest and carry their verdicts'). Recorded N/A here to keep the coverage ledger complete without filing an unowned verdict (dispatch preamble: 'a verdict outside your lane... is an unowned claim').",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "61",
+      "rule_lead": "Verify mechanism before proposing surgery.",
+      "verdict": "N/A",
+      "evidence": "Out of story's lane on check_pedagogy.md -- judges/story.md's Completeness contract names only §16 and §27 as storytelling-owned pedagogy rules ('evaluate only the storytelling rules listed... the pedagogy and strategy judges are primary owners of the rest and carry their verdicts'). Recorded N/A here to keep the coverage ledger complete without filing an unowned verdict (dispatch preamble: 'a verdict outside your lane... is an unowned claim').",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "61a",
+      "rule_lead": "Acting on a flagged item (punchlist entry / audit finding / eval BLOCK) — verify before fixing; its prescribed fix is a hypothesis, not an instruction.",
+      "verdict": "N/A",
+      "evidence": "Out of story's lane on check_pedagogy.md -- judges/story.md's Completeness contract names only §16 and §27 as storytelling-owned pedagogy rules ('evaluate only the storytelling rules listed... the pedagogy and strategy judges are primary owners of the rest and carry their verdicts'). Recorded N/A here to keep the coverage ledger complete without filing an unowned verdict (dispatch preamble: 'a verdict outside your lane... is an unowned claim').",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "62",
+      "rule_lead": "Callouts next to prompts: steer, don't pre-empt.",
+      "verdict": "N/A",
+      "evidence": "Out of story's lane on check_pedagogy.md -- judges/story.md's Completeness contract names only §16 and §27 as storytelling-owned pedagogy rules ('evaluate only the storytelling rules listed... the pedagogy and strategy judges are primary owners of the rest and carry their verdicts'). Recorded N/A here to keep the coverage ledger complete without filing an unowned verdict (dispatch preamble: 'a verdict outside your lane... is an unowned claim').",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "63",
+      "rule_lead": "Persistent TODO surfaces stale by default — audit before acting.",
+      "verdict": "N/A",
+      "evidence": "Out of story's lane on check_pedagogy.md -- judges/story.md's Completeness contract names only §16 and §27 as storytelling-owned pedagogy rules ('evaluate only the storytelling rules listed... the pedagogy and strategy judges are primary owners of the rest and carry their verdicts'). Recorded N/A here to keep the coverage ledger complete without filing an unowned verdict (dispatch preamble: 'a verdict outside your lane... is an unowned claim').",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "64",
+      "rule_lead": "Maintainer blocks point, don't restate. Link architecture doc where they touch delivery.",
+      "verdict": "N/A",
+      "evidence": "Out of story's lane on check_pedagogy.md -- judges/story.md's Completeness contract names only §16 and §27 as storytelling-owned pedagogy rules ('evaluate only the storytelling rules listed... the pedagogy and strategy judges are primary owners of the rest and carry their verdicts'). Recorded N/A here to keep the coverage ledger complete without filing an unowned verdict (dispatch preamble: 'a verdict outside your lane... is an unowned claim').",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "65",
+      "rule_lead": "Cross-module prerequisite rescue: run it late, never fabricate.",
+      "verdict": "N/A",
+      "evidence": "Out of story's lane on check_pedagogy.md -- judges/story.md's Completeness contract names only §16 and §27 as storytelling-owned pedagogy rules ('evaluate only the storytelling rules listed... the pedagogy and strategy judges are primary owners of the rest and carry their verdicts'). Recorded N/A here to keep the coverage ledger complete without filing an unowned verdict (dispatch preamble: 'a verdict outside your lane... is an unowned claim').",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "66",
+      "rule_lead": "Three-pass build — finish each pass across ALL modules before starting the next.",
+      "verdict": "N/A",
+      "evidence": "Out of story's lane on check_pedagogy.md -- judges/story.md's Completeness contract names only §16 and §27 as storytelling-owned pedagogy rules ('evaluate only the storytelling rules listed... the pedagogy and strategy judges are primary owners of the rest and carry their verdicts'). Recorded N/A here to keep the coverage ledger complete without filing an unowned verdict (dispatch preamble: 'a verdict outside your lane... is an unowned claim').",
       "fix_hint": null,
       "blocking": false
     },
@@ -60,16 +683,16 @@
       "rule_index": 1,
       "rule_lead": "Mood contract named.",
       "verdict": "PASS",
-      "evidence": "Ran `node curriculum/evals/scripts/sim-freshness.js --training ae101 --json` in this session: the persona trace for this file showed verdict `body-moved`, note \"2 body line(s) since 5dd2806a\" — the trace was stale against the 2026-08-29 body edit. Regenerated the trace in this session (`curriculum/evals/sim-cache/ae101--lecture--the-agent-loop.persona.json`, new `content_sha` = current `body_sha`) and re-read the body directly: the sentence trim (removing \"Out of the box, nothing new takes over when the session gets long\" from the long-running-session bullet) is a pure accuracy tightening with no mood effect — regenerated mood scores hold at phase 1 = 8, close = 8, both at the 8+/10 teaching-beat floor (this is a TEACHING beat: installs agent/harness/loop vocabulary via a live introspection move, not mechanical setup).",
+      "evidence": "Sim trace module_mood_contract: 'M4 (Run the first experiment) — curious readiness... This lecture sits inside M4's arming sequence... must not undercut it or resolve M5's contrast mood early.' Phase mood_score 8/10, close mood_score 8/10 -- this is a TEACHING beat (student learns harness/agent/loop vocabulary via live introspection, not mere setup/launch), so the 8+ floor applies and is met. One-sentence state: student leaves curious and oriented about their own session's mechanics, primed for M4's send-off two beats later.",
       "fix_hint": null,
-      "blocking": true
+      "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 2,
       "rule_lead": "Epistemic mood ≠ punitive mood.",
       "verdict": "PASS",
-      "evidence": "Re-read lines 1-26 (raw source) in full this session: zero having-done-wrong language anywhere, including in the trimmed bullet. The only not-knowing the trace flags is the half-beat before prompt 1 resolves what 'harness' means — resolved by Claude's own returned diagram, never framed as student error.",
+      "evidence": "Watch-for note: 'A student surprised by their own list IS the lesson; don't rush past it' -- surprise framed as discovery ('I didn't know my session carried that'), never as error ('I did something wrong'). No shame-coded language anywhere in the body.",
       "fix_hint": null,
       "blocking": false
     },
@@ -78,7 +701,7 @@
       "rule_index": 3,
       "rule_lead": "Lead with discipline, not failure mode.",
       "verdict": "PASS",
-      "evidence": "Both headers and the three bolded terms (raw source lines 22-24: **agent**, **agent harness**, **agent loop**) are discipline/vocabulary-named, never failure-mode-led. The 2026-08-29 edit removed a claim, it didn't add a failure-mode framing — unaffected.",
+      "evidence": "Both slide headers name mechanism/discipline ('See the loop in your live session', 'The agent, the harness, the loop'), not a failure mode. No failure-word framing anywhere in the body (no 'hallucination', 'fabrication', 'violation', 'breaks').",
       "fix_hint": null,
       "blocking": false
     },
@@ -87,46 +710,612 @@
       "rule_index": 4,
       "rule_lead": "Strategy-fidelity check.",
       "verdict": "PASS",
-      "evidence": "Consolidated facets, each checked this session against `content-strategy-agentic-engineering-101.md` lines 366-429 (read directly via the bosser-strategy skill in this session). (a) Front-run check: `sed -n '1,26p' curriculum/lectures/the-agent-loop.md | grep -inE '0\\.85|triad|principal.agent|one loop, three sizes|reference artifact|plan\\.md|verifier'` run this session → 0 hits, exit 1 — no M5 packaging vocabulary anywhere, and the doc (line 400) confirms the three-pattern names are meant to stay withheld until M4 evidence exists, which this file honours. (b) Module-to-module arc: hands off into `curriculum/lectures/test-and-learn.md`, whose opening line (\"You are testing, and you are learning. Every send-off from here on is an experiment.\") I read directly this session — independent of the small body trim. (c) Big Idea fidelity: file's own Meta line (\"the anatomy slide is scaffolding for the prompts, not the lesson\") matches the strategy doc's M4 spirit (line 368, \"M4 doesn't prepare, it tests\"). (d) Mood-doesn't-resolve-early: the file's own `<!-- backing -->` Frameworks section states the closed-loop-control naming is withheld for M6, and nothing in the current diff touches that. The one body change since the pin (dropping the 'nothing new takes over' universal, dated accept-note 2026-08-29 in the backing block) is a technical-accuracy scoping fix, not a strategy-sequencing change — it does not surface, contradict, or resolve any M5/M6 material early.",
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_pedagogy.md",
-      "rule_index": 16,
-      "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
-      "verdict": "PASS",
-      "evidence": "The forcing function (three introspection prompts against the student's own live session) lives entirely in the three `{{prompt:ae101-agent-loop-*}}` fences, none of which changed since the pin (confirmed via `git diff d5aa7e3d..HEAD -- curriculum/lectures/the-agent-loop.md`, run this session — the only body hunk touches the anatomy bullet, not the prompts section). Body prose is limited to per-prompt lead-ins plus one latitude-granting sentence ('Dig into whatever catches you', line 5). Ran `sed -n '1,26p' curriculum/lectures/the-agent-loop.md | grep -inE \"push back once|two rounds max|don't scan|instinct is to\"` this session → 0 hits, exit 1.",
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_pedagogy.md",
-      "rule_index": 27,
-      "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
-      "verdict": "PASS",
-      "evidence": "Ran `sed -n '1,26p' curriculum/lectures/the-agent-loop.md | grep -inE \"discuss with|share with|take [0-9]+ (seconds|minutes)|tell the room|compare with the person|neighbor|neighbour\"` this session → 0 hits, exit 1. Every sentence is about the work (the diagram, the tool list, the injection mechanism, the four definitions) — no cohort-management sentence.",
+      "evidence": "Front-run: maintainer note confirms 0.85ⁿ/triad/principal-agent/packaging-law vocabulary explicitly excluded ('No packaging laws... stay out until M5'); the prefill's parked check_lectures §2 row already ran the grep confirming 0 hits for those terms in this body. Arc: sim trace close hands off directly into 'Test and learn' then the send-off exercise within the same M4 sequence -- no premature resolution of M5's contrast. Big-Idea/mood: consistent with M4's curious-readiness contract (§1 above). Mood-doesn't-resolve-early: the 'autonomy' bullet was explicitly narrowed 2026-08-12 to remove a claim that M2/M3 material was taught here, per maintainer note -- active correction against front-running, not an assumed absence.",
       "fix_hint": null,
       "blocking": false
     },
     {
-      "compendium": "check_workshop.md",
-      "rule_index": null,
-      "judge_owned": true,
-      "rule_lead": "Fires when a module/exercise body has ≥1 beat where the output belongs to the group, not to a participant.",
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 8,
+      "rule_lead": "Strategy doc carries strategy, not structure — §§1-7 bind curriculum→doc, this one binds doc→curriculum",
       "verdict": "N/A",
-      "evidence": "Whole-file scope call: no beat here produces a group artefact — this is a solo live-session introspection lecture. `check_workshop.md` does not fire; confirmed this session via the derived body-view's `group_beat_markers: false` signal.",
+      "evidence": "§8 governs `content-strategy-agentic-engineering-101.md`'s own content boundaries (doc-owns vs doc-must-not-restate). This judge is scoped to the lecture file, not the strategy doc, and the lecture makes no claim about what that doc should or shouldn't contain.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_prompts.md",
+      "rule_index": 1,
+      "rule_lead": "No placeholders inside fences.",
+      "verdict": "PASS",
+      "evidence": "`sed -n '1,26p' curriculum/lectures/the-agent-loop.md | grep -n '\\['` run this session -> 0 hits, exit 1. No `[BRACKETS]` in any of the three fences (confirmed against expanded prompt text too).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 2,
+      "rule_lead": "Every prompt block: one-sentence action lead-in.",
+      "verdict": "PASS",
+      "evidence": "All three lead-ins are single command-verb sentences under 20 words: 'Ask for the loop as a diagram.' (6w), 'Ask what tools this session is carrying.' (7w), 'Ask how the agent knows what tools it can call.' (10w). §2a (length scales with prompt length): each prompt itself is 1-3 short sentences, so the short lead-in is the correct register, not under-explained. §2b (trainer-screen demo owes no lead-in) doesn't apply -- these are student-run per §6's carve-out, so a lead-in is owed and present. §2c (header-as-lead-in) doesn't apply -- the section header 'See the loop in your live session' is not itself a per-prompt command-verb lead-in; each of the three prompts correctly carries its own separate sentence.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 3,
+      "rule_lead": "Canonical shape — lead-in, label with destination, blank line, fence.",
+      "verdict": "PASS",
+      "evidence": "Expanded view confirms all three: lead-in sentence, blank line, `**Prompt** *(Claude Code)*`, blank line, fenced block. No `copy →` prefix, no `*(end of prompt)*` closer, no blockquote wrapping.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 4,
+      "rule_lead": "Installed Skills invoke by name, never path.",
+      "verdict": "N/A",
+      "evidence": "No skill invocation in any of the three prompts.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 5,
+      "rule_lead": "Chain by back-reference + deterministic path, never invented alias.",
+      "verdict": "N/A",
+      "evidence": "No file-artifact chaining between these prompts -- prompt 3's 'the list you gave me earlier' is a conversational back-reference to Claude's own prior chat turn, not a file the prompts chain through.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 6,
+      "rule_lead": "Chained-prompt isolation — don't leak downstream pipeline.",
+      "verdict": "N/A",
+      "evidence": "Not an exercise-shaped P2→P3→P4 pipeline with a downstream teaching moment to protect -- three sequential introspection turns on one continuous topic, no planning/grilling stage to leak into.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 7,
+      "rule_lead": "No session-resets mid-phase.",
+      "verdict": "PASS",
+      "evidence": "None of the three prompts offers `/clear` or 'start a new session' -- consistent with the explicit design that all three run in the student's one live session (check_lectures §6 carve-out).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 8,
+      "rule_lead": "Multi-sample methods need structural enforcement.",
+      "verdict": "N/A",
+      "evidence": "No self-consistency / majority-vote / ensemble method here -- single-shot introspective asks.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 9,
+      "rule_lead": "Markdown shout (`**bold**`, `*italic*`) inside fenced prompts = dead weight in Claude Code.",
+      "verdict": "PASS",
+      "evidence": "Expanded fence text for all three prompts (`ae101-agent-loop-ascii`, `ae101-agent-loop-tools-list`, `ae101-agent-loop-tool-injection`) contains no `**` or `*` markdown -- plain sentences only.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 10,
+      "rule_lead": "Runtime-fork prompts: paired divs, shared chip.",
+      "verdict": "N/A",
+      "evidence": "AE101 is Code-only; rule 10's own text says 'AE101 Code-only, ignores pattern.'",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 11,
+      "rule_lead": "Runtime-mechanical scaffolding asymmetry — MORE in less-fluent fork, not less.",
+      "verdict": "N/A",
+      "evidence": "Agents-101/Cowork-specific; AE101 has no dual-runtime fork.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 12,
+      "rule_lead": "Append-vs-integrate — name integration mode on regeneration with new context source.",
+      "verdict": "N/A",
+      "evidence": "No regeneration-with-new-context-source prompt here.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 13,
+      "rule_lead": "Citation discipline — extend cite-or-flag scope + quote supporting sentence.",
+      "verdict": "N/A",
+      "evidence": "No citation-bearing task in any of the three prompts.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 14,
+      "rule_lead": "Niceness tax — name the edge or pin the line on regeneration.",
+      "verdict": "N/A",
+      "evidence": "No anti-positioning/edge-preserving regeneration prompt here.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 15,
+      "rule_lead": "Question-dump default — `in turn` too soft; two legal shapes.",
+      "verdict": "N/A",
+      "evidence": "No multi-question sequential-interview structure -- each prompt is a single focused ask.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 16,
+      "rule_lead": "Overwrite anxiety — name overwrite default on regeneration.",
+      "verdict": "N/A",
+      "evidence": "No regeneration/file-overwrite scenario -- nothing is saved by these prompts.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 17,
+      "rule_lead": "Preamble before action — design around it.",
+      "verdict": "N/A",
+      "evidence": "[Drift rule, re-read at current 2026-09-03 wording.] Structural trigger is now plan-mode ONLY; none of the three prompts declares or implies plan mode (no `permission-mode:` frontmatter, no 'enter plan mode' language). Elsewhere §17 is advisory only, fired by an observed run showing preamble eating the read -- no such run is on record for this file, and the sim trace reports no preamble-related confusion flag.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 18,
+      "rule_lead": "Self-critique register, not defense, when Claude interrogates own work.",
+      "verdict": "N/A",
+      "evidence": "None of the three prompts asks Claude to critique its own prior artifact -- they ask it to introspect its own session state (tools, mechanism), not to defend or audit a prior output.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 19,
+      "rule_lead": "Minimal hand-off + Claude self-augments for send-off prompts.",
+      "verdict": "N/A",
+      "evidence": "Not a long-running walk-away send-off -- three short single-turn queries, not a multi-hour hand-off needing self-augmentation scaffolding.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 20,
+      "rule_lead": "Grill before save — collaborative quality at artefact assembly.",
+      "verdict": "N/A",
+      "evidence": "[Drift rule, re-read at current 2026-09-03 narrowed wording.] No artefact-building/saving prompt here -- all three are read-only introspective queries; nothing is persisted. N/A under both the old and the narrowed wording.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 21,
+      "rule_lead": "Tell me what you wrote, not show me what you'll write.",
+      "verdict": "N/A",
+      "evidence": "No side-effect action (post/send/commit/push) in any of the three prompts -- pure introspective queries with nothing external to report back on.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 22,
+      "rule_lead": "Prompt-body edits require maintainer approval — registry files AND inline blocks.",
+      "verdict": "N/A",
+      "evidence": "Process/approval-workflow rule about EDITING the registry files at `curriculum/prompts/ae101-agent-loop-*.md`; not evaluable from the rendered lecture file, which only carries `{{prompt:<key>}}` markers per rule 31. No visible defect in the resolved prompt bodies that would indicate an unauthorized edit.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 23,
+      "rule_lead": "Artifact destinations are explicit subpaths, never naked filenames (Agents 101-specific).",
+      "verdict": "N/A",
+      "evidence": "Explicitly scoped to Agents 101 in the rule's own text; this is AE101.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 24,
+      "rule_lead": "Don't restate session CWD inside prompt body.",
+      "verdict": "N/A",
+      "evidence": "No path or `cd` reference anywhere in any of the three prompts.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 25,
+      "rule_lead": "`subagent` allowed in prompt blocks; explain why after prompt.",
+      "verdict": "N/A",
+      "evidence": "No `subagent`/`Agent` tool mention in any of the three prompts.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 26,
+      "rule_lead": "Maintainer-approval edits — ONE-AT-A-TIME, PRIORITY-ORDERED, FOUR-FIELD cards.",
+      "verdict": "N/A",
+      "evidence": "Process rule governing how the orchestrator surfaces findings to the maintainer -- not a content property of the file itself.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 27,
+      "rule_lead": "Name consumer at write time — `Save it as <path>` requires downstream reader.",
+      "verdict": "N/A",
+      "evidence": "No `Save it as <path>` instruction in any of the three prompts.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 28,
+      "rule_lead": "Strong-bold prompt label is exactly `**Prompt**` — custom labels break renderer.",
+      "verdict": "PASS",
+      "evidence": "Expanded view shows `**Prompt** *(Claude Code)*` verbatim for all three, no custom label text.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 29,
+      "rule_lead": "Normal work request before orchestration.",
+      "verdict": "PASS",
+      "evidence": "All three prompts read as something an engineer would genuinely ask cold ('Draw the agent loop as an ASCII diagram...', 'List the tools you have available in this session...', 'Explain how you know what tools you can call...') -- no artificial 'Ask me which files...' interview wrapper around a choice the body already made.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 30,
+      "rule_lead": "Live-test corrections preserve operator workflow.",
+      "verdict": "N/A",
+      "evidence": "Process rule for editing during a live maintainer test run; not evaluable as a static-content property of the shipped file.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 31,
+      "rule_lead": "Prompts live in registry; module/exercise/lecture files reference by marker.",
+      "verdict": "PASS",
+      "evidence": "Raw source (L9, L13, L17) uses `{{prompt:ae101-agent-loop-ascii}}`, `{{prompt:ae101-agent-loop-tools-list}}`, `{{prompt:ae101-agent-loop-tool-injection}}` markers; registry files confirmed present at `curriculum/prompts/ae101-agent-loop-{ascii,tools-list,tool-injection}.md` via `ls`. No inline `**Prompt**` block bypassing the registry.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 32,
+      "rule_lead": "Module names in prompt prose are fine — they ground the session.",
+      "verdict": "N/A",
+      "evidence": "No module-number reference (`M1`-`M8`) inside any of the three prompt fences to evaluate -- the permissive rule is simply not triggered.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 33,
+      "rule_lead": "Git-output greps asserting exact-N need multi-result fallback.",
+      "verdict": "N/A",
+      "evidence": "No git-log/branch-grep instruction in any of the three prompts.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 34,
+      "rule_lead": "Disambiguation, anchors, and decision logic that bind Claude live INSIDE prompt fence.",
+      "verdict": "PASS",
+      "evidence": "Reading each fence in isolation: prompt 1 ('Draw the agent loop as an ASCII diagram. Name the harness, the LLM, the tool-call step...') is fully self-contained; prompt 2 ('List the tools you have available in this session. One line each.') is self-contained; prompt 3 depends on 'the list you gave me earlier', which is a warm-session back-reference to prompt 2's own answer -- present in scrollback because all three run in one continuous live session by design. Executes correctly against realistic session state.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 35,
+      "rule_lead": "Repeated Q&A → premature re-edits. Separate iteration from persistence.",
+      "verdict": "N/A",
+      "evidence": "No artifact file being iteratively edited across a multi-turn dialogue -- these are read-only introspective queries with no persistence step.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 36,
+      "rule_lead": "Wide prompts split by logical move — paragraph breaks = cheapest scan-affordance.",
+      "verdict": "PASS",
+      "evidence": "Prompt 3 carries three distinct moves (explain tool-access, then explain MCP injection, then reconcile against the earlier list) and is already split into three paragraph breaks inside the fence (raw source L27-32: 'Explain how you know...' / 'Then explain how MCP-connector tools...' / 'Last, tell me whether...'). Prompts 1 and 2 are each ≤30 words / ≤2 moves and correctly stay single-paragraph.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 37,
+      "rule_lead": "Orient saved rule by where it FIRES, not surface activity producing it.",
+      "verdict": "N/A",
+      "evidence": "No saved-rule-writing prompt (`CLAUDE.local.md` etc.) here.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 38,
+      "rule_lead": "Body lead-in mirrors prompt's opening phrasing.",
+      "verdict": "PASS",
+      "evidence": "Noun-phrase congruence holds across all three pairs: 'Ask for the loop as a diagram' / 'Draw the agent loop as an ASCII diagram' (shared 'loop'+'diagram'); 'Ask what tools this session is carrying' / 'List the tools you have available in this session' (shared 'tools'+'this session'); 'Ask how the agent knows what tools it can call' / 'Explain how you know what tools you can call in this session' -- the sim trace itself notes this third pair was recently tightened to close a small paraphrase gap ('the third lead-in now reads...this now mirrors the fenced prompt's own opening line almost verbatim'). §38a (surprise-pedagogy carve-out) doesn't apply -- no easter-egg note in the maintainer block.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 39,
+      "rule_lead": "Declare `permission-mode:` when paste requires specific Claude Code mode.",
+      "verdict": "PASS",
+      "evidence": "None of the three prompts depends on a non-default mode; no chip is declared and none is needed -- correct per the rule's own default-mode diagnostic.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 40,
+      "rule_lead": "Verify session boundary before deciding prompt's context-carrying.",
+      "verdict": "PASS",
+      "evidence": "[Drift rule, wording current as of 2026-09-03 -- unchanged, no narrowing landed; re-verified against the live body regardless.] Session is warm by design across all three prompts (same live session, no `/clear` between them, explicit per check_lectures §6 carve-out and the H1/section framing 'See the loop in your live session'). §40b: prompt 3's 'the list you gave me earlier' is a plain deictic reference to Claude's own immediately-preceding chat turn -- genuinely in scrollback, not a curriculum-coined Phase-heading label the agent never saw. §40a (concurrent-worktree) N/A: single session, no worktree split.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 41,
+      "rule_lead": "Artifact-vs-STOP tail ordering — last imperative wins.",
+      "verdict": "N/A",
+      "evidence": "No artifact-write-then-STOP tail construction in any of the three prompts.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 42,
+      "rule_lead": "Headless-runner discipline — tail every prompt with no-AUQ guard.",
+      "verdict": "N/A",
+      "evidence": "Governs prompts run inside the tmux-runner headless harness; these three are student-run interactively (check_lectures §6 carve-out), where AskUserQuestion is not a hang risk.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 43,
+      "rule_lead": "Long-running prompts stream progress — never go silent.",
+      "verdict": "N/A",
+      "evidence": "None of the three prompts runs more than a couple of minutes -- no cross-project scan or multi-file read to stream progress on.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 44,
+      "rule_lead": "A leading-looking line can be a forcing function; prefer the simpler prompt.",
+      "verdict": "N/A",
+      "evidence": "No fix-pass edit under review here, and nothing in the diff or history suggests a load-bearing leading line was stripped from any of the three prompts.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 45,
+      "rule_lead": "Prompt paths match Builder scope.",
+      "verdict": "N/A",
+      "evidence": "Agents-101-specific material-distribution rule; no path is referenced in any of the three AE101 prompts.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 46,
+      "rule_lead": "Output shape — trust Claude's defaults, don't pad.",
+      "verdict": "PASS",
+      "evidence": "None of the three prompts appends a trailing output-shape spec; prompt 1 names four things to label in the diagram (harness/LLM/tool-call step/feedback) as content, not format-padding.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 47,
+      "rule_lead": "\"Add X and regenerate\" is a trap.",
+      "verdict": "N/A",
+      "evidence": "No regeneration-with-added-context-source scenario in any of the three prompts.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 48,
+      "rule_lead": "Vary closings deliberately.",
+      "verdict": "N/A",
+      "evidence": "Exercise-closing-mechanic rule (pair exchange / group discussion / etc.); this lecture has no closing beat of that shape.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 49,
+      "rule_lead": "A take-home prompt asks for one bounded build.",
+      "verdict": "N/A",
+      "evidence": "None of the three prompts is a take-home/saved-for-later hand-off -- all three run and resolve live, in the room.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": "1",
+      "rule_lead": "Group beat ≠ parallel solo work.",
+      "verdict": "N/A",
+      "evidence": "No group beat in this file -- `group_beat_markers: false` per the body-view signals; this is a solo trainer-demo / individual-live-session lecture, not a room-scale adjudication beat. check_workshop's group-artefact, attribution, and room-adjudication concerns don't attach anywhere in this file.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": "2",
+      "rule_lead": "The room's output is named as an artefact.",
+      "verdict": "N/A",
+      "evidence": "No group beat in this file -- `group_beat_markers: false` per the body-view signals; this is a solo trainer-demo / individual-live-session lecture, not a room-scale adjudication beat. check_workshop's group-artefact, attribution, and room-adjudication concerns don't attach anywhere in this file.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": "3",
+      "rule_lead": "React, don't author.",
+      "verdict": "N/A",
+      "evidence": "No group beat in this file -- `group_beat_markers: false` per the body-view signals; this is a solo trainer-demo / individual-live-session lecture, not a room-scale adjudication beat. check_workshop's group-artefact, attribution, and room-adjudication concerns don't attach anywhere in this file.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": "4",
+      "rule_lead": "Pre-built material is a hard prerequisite, stated in the module.",
+      "verdict": "N/A",
+      "evidence": "No group beat in this file -- `group_beat_markers: false` per the body-view signals; this is a solo trainer-demo / individual-live-session lecture, not a room-scale adjudication beat. check_workshop's group-artefact, attribution, and room-adjudication concerns don't attach anywhere in this file.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": "5",
+      "rule_lead": "Attribution is stated by a human, recorded verbatim.",
+      "verdict": "N/A",
+      "evidence": "No group beat in this file -- `group_beat_markers: false` per the body-view signals; this is a solo trainer-demo / individual-live-session lecture, not a room-scale adjudication beat. check_workshop's group-artefact, attribution, and room-adjudication concerns don't attach anywhere in this file.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": "6",
+      "rule_lead": "Nothing is written over.",
+      "verdict": "N/A",
+      "evidence": "No group beat in this file -- `group_beat_markers: false` per the body-view signals; this is a solo trainer-demo / individual-live-session lecture, not a room-scale adjudication beat. check_workshop's group-artefact, attribution, and room-adjudication concerns don't attach anywhere in this file.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": "7",
+      "rule_lead": "Filing is invisible.",
+      "verdict": "N/A",
+      "evidence": "No group beat in this file -- `group_beat_markers: false` per the body-view signals; this is a solo trainer-demo / individual-live-session lecture, not a room-scale adjudication beat. check_workshop's group-artefact, attribution, and room-adjudication concerns don't attach anywhere in this file.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": "8",
+      "rule_lead": "Scope-of-sharing is declared before contribution, not after.",
+      "verdict": "N/A",
+      "evidence": "No group beat in this file -- `group_beat_markers: false` per the body-view signals; this is a solo trainer-demo / individual-live-session lecture, not a room-scale adjudication beat. check_workshop's group-artefact, attribution, and room-adjudication concerns don't attach anywhere in this file.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": "10",
+      "rule_lead": "A decision beat needs a real constraint.",
+      "verdict": "N/A",
+      "evidence": "No group beat in this file -- `group_beat_markers: false` per the body-view signals; this is a solo trainer-demo / individual-live-session lecture, not a room-scale adjudication beat. check_workshop's group-artefact, attribution, and room-adjudication concerns don't attach anywhere in this file.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": "11",
+      "rule_lead": "Group decisions are human, and named as such.",
+      "verdict": "N/A",
+      "evidence": "No group beat in this file -- `group_beat_markers: false` per the body-view signals; this is a solo trainer-demo / individual-live-session lecture, not a room-scale adjudication beat. check_workshop's group-artefact, attribution, and room-adjudication concerns don't attach anywhere in this file.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": "12",
+      "rule_lead": "Retrospective = group round, no prompts, trainer silent.",
+      "verdict": "N/A",
+      "evidence": "No group beat in this file -- `group_beat_markers: false` per the body-view signals; this is a solo trainer-demo / individual-live-session lecture, not a room-scale adjudication beat. check_workshop's group-artefact, attribution, and room-adjudication concerns don't attach anywhere in this file.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": "13",
+      "rule_lead": "Second-facilitator test.",
+      "verdict": "N/A",
+      "evidence": "No group beat in this file -- `group_beat_markers: false` per the body-view signals; this is a solo trainer-demo / individual-live-session lecture, not a room-scale adjudication beat. check_workshop's group-artefact, attribution, and room-adjudication concerns don't attach anywhere in this file.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": "14",
+      "rule_lead": "Name the too-big and too-small room.",
+      "verdict": "N/A",
+      "evidence": "No group beat in this file -- `group_beat_markers: false` per the body-view signals; this is a solo trainer-demo / individual-live-session lecture, not a room-scale adjudication beat. check_workshop's group-artefact, attribution, and room-adjudication concerns don't attach anywhere in this file.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": "15",
+      "rule_lead": "Mixed-experience is the default room.",
+      "verdict": "N/A",
+      "evidence": "No group beat in this file -- `group_beat_markers: false` per the body-view signals; this is a solo trainer-demo / individual-live-session lecture, not a room-scale adjudication beat. check_workshop's group-artefact, attribution, and room-adjudication concerns don't attach anywhere in this file.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": "16",
+      "rule_lead": "Room beats overrun; name the protected beat.",
+      "verdict": "N/A",
+      "evidence": "No group beat in this file -- `group_beat_markers: false` per the body-view signals; this is a solo trainer-demo / individual-live-session lecture, not a room-scale adjudication beat. check_workshop's group-artefact, attribution, and room-adjudication concerns don't attach anywhere in this file.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": "17",
+      "rule_lead": "No mechanical coverage — the trainer guide carries the load.",
+      "verdict": "N/A",
+      "evidence": "No group beat in this file -- `group_beat_markers: false` per the body-view signals; this is a solo trainer-demo / individual-live-session lecture, not a room-scale adjudication beat. check_workshop's group-artefact, attribution, and room-adjudication concerns don't attach anywhere in this file.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "judges/story.md",
       "rule_index": null,
       "judge_owned": true,
-      "rule_lead": "Applies to anything inside a fenced code block with copy-this affordance.",
-      "verdict": "N/A",
-      "evidence": "Scope call, not a story-class judgment: this template's 'Specific judgments storytelling owns' list maps the two prompt-related concerns in story's lane to named rows elsewhere — forcing-function placement to `check_pedagogy.md §16` (evaluated above) and the trainer-vs-student-run distinction to `check_lectures.md §6` (evaluated above, PASS). Filing per-rule verdicts against `check_prompts.md`'s own 48-rule numbering would be an unowned claim outside this judge's lane (writing/technical own that ledger).",
-      "fix_hint": null,
+      "rule_lead": "Teaching moment lands (persona-reader criterion, no compendium rule_index)",
+      "verdict": "REVISE",
+      "evidence": "Backing block's own Stance/decided log: bullet 1 headlines 'An agent is an LLM calling tools in a loop' while its own third sentence adds 'and either responds to you or uses tools' -- not every iteration calls a tool, so a tight-grammar reader can clock a half-second seam between the headline claim and its own caveat (sim trace confusion_flags, phase 1, flag 2). Self-resolves by bullet 3 ('until the agent decides to stop') and does not drag mood below floor (trace scores 8/8, phase and close, unaffected). Same seam previously identified and 'logged TODO, not REVISE, by the 2026-08-02 story judge' per the file's own Stance:decided note -- re-confirmed still-present and still non-blocking on this pass.",
+      "fix_hint": "If ever revisited: soften bullet 1's headline verb tense or fold the caveat earlier so the four-bullet recap reads fully self-consistent on first pass. Purely a tight-grammar nit, not urgent -- the trace shows it self-resolving within the same slide for the actual persona.",
       "blocking": false
     },
     {
@@ -137,7 +1326,7 @@
       "evidence": "Rule targets M5-style contrast-mood modules ('learn through doing the thing, name it after'). This file sits in M4, an arming module ahead of an un-packaged send-off — M5's own two-session contrast (`test-and-learn.md § The two-session arc`, confirmed read in this session) is the exercise this rule would bind, not this lecture. Grep confirms no front-run: `sed -n '1,26p' curriculum/lectures/the-agent-loop.md | grep -inE '0\\.85|triad|principal.agent|one loop, three sizes|reference artifact|plan\\.md|verifier'` run in this session → 0 hits, exit 1. No packaging law, no 0.85ⁿ, no triad, no named practitioner vocabulary anywhere in the body.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "c0b4e502d1cf04804f6bdea947f9ee3adf07eab6a81c7bf2e0b95c9796fae3ad",
+      "carried_from": "7bb51eedfe63c30a6d8f0aec053f384242fdad7ac08d43475d76e8a03f5d28cf",
       "carried_shape": "1903646330181a65"
     },
     {
@@ -148,7 +1337,7 @@
       "evidence": "Module-only section (`## Key Concepts`); this is a lecture file with no such heading — confirmed, the only two `##` headers in the raw source are 'See the loop in your live session' and 'The agent, the harness, the loop'.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "c0b4e502d1cf04804f6bdea947f9ee3adf07eab6a81c7bf2e0b95c9796fae3ad",
+      "carried_from": "7bb51eedfe63c30a6d8f0aec053f384242fdad7ac08d43475d76e8a03f5d28cf",
       "carried_shape": "1903646330181a65"
     },
     {
@@ -159,7 +1348,7 @@
       "evidence": "Module-only section; no `## Key Concepts` heading in this lecture file (same grep as §5).",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "c0b4e502d1cf04804f6bdea947f9ee3adf07eab6a81c7bf2e0b95c9796fae3ad",
+      "carried_from": "7bb51eedfe63c30a6d8f0aec053f384242fdad7ac08d43475d76e8a03f5d28cf",
       "carried_shape": "1903646330181a65"
     },
     {
@@ -170,29 +1359,10 @@
       "evidence": "Module-only section; no `## What You'll Learn` heading in this lecture file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "c0b4e502d1cf04804f6bdea947f9ee3adf07eab6a81c7bf2e0b95c9796fae3ad",
+      "carried_from": "7bb51eedfe63c30a6d8f0aec053f384242fdad7ac08d43475d76e8a03f5d28cf",
       "carried_shape": "1903646330181a65"
     }
   ],
-  "mood_summary": {
-    "phase_scores": [
-      8
-    ],
-    "close_score": 8,
-    "any_below_8": false,
-    "stealing_the_mood": []
-  },
-  "teaching_moment_note": "The named teaching moment (install agent/harness/loop vocabulary via the student's own live session, then generalise to the multi-hour send-off) fires reliably per the regenerated trace. `git diff d5aa7e3d..HEAD -- curriculum/lectures/the-agent-loop.md` (run this session) confirms the only body-region change since the pin is the removal of one clause ('Out of the box, nothing new takes over when the session gets long') from the fourth anatomy bullet — the file's own `<!-- backing -->` block carries a dated accept-note for exactly this cut ('scoped by deletion, 2026-08-29': the sentence used to carry a contested universal claim the file's own Stance section flagged; cutting it leaves an accurate description of the default loop rather than a claim the opt-in CAVEAT sources contradict). This is a technical-accuracy fix, not a mood, arc, or forcing-function change — it does not touch the prompts section, the slide order, or the strategy-fidelity facts checked above. No confusion_flags block comprehension; both are pre-existing, low-severity, and self-resolving. No TODO filed on the pre-existing bullet-1 headline/caveat grammar seam (unrelated to this diff, already tracked in the file's own Stance→decided note as a known, accepted, non-blocking seam).",
-  "accept_notes_found": [
-    "Emphasis pass (2026-07-09, Antti-directed \"go very lightly on the bold\") — bold reduced to three defined terms.",
-    "Slide order flipped (2026-08-25, Antti-directed) — prompts slide first, anatomy slide second tagged tier:2.",
-    "Promotion (2026-07-02, Antti-directed) — M1 supplementary to M4 lecture; no packaging laws, no M5 vocabulary, no cross-module sequencing in body.",
-    "Definitional contract — standing rule that the four-part definition must map onto Agents 101's five-facet sibling; 'autonomy' here is deliberately narrower than that file's 'bounded autonomy', with an explicit do-not-restore note against crediting M2/M3 for the bounding.",
-    "Plural round shape (Antti-directed, 2026-08-01) — bullets 1 and 3 kept plural; do not re-singularise.",
-    "Backing block, `long-run-is-the-same-loop` claim: 'scoped by deletion, 2026-08-29' — the exact accept-note covering this diff's only body-region change; explicitly says do not restore the universal without restoring the scope word with it.",
-    "Stance -> decided (2026-08-02 wording card) — 'calling tools in a loop' wording is settled; do not restore the rejected 'an LLM that runs tools in a loop' form.",
-    "OODA -> question, closed 2026-08-02 — MCP two-tier tool loading is closed, do not re-open."
-  ],
-  "blocking_findings_count": 0,
-  "todos_count": 0
+  "todos_count": 1,
+  "blocking_findings_count": 0
 }

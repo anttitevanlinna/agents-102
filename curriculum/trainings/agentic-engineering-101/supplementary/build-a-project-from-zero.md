@@ -1,6 +1,6 @@
 # No repo to bring? Build one.
 
-The training runs on a repo you already ship to. No such repo you can use here? Build one. A repo you grow from zero is a clean instrument. Every decision is yours, every bug is legibly your own, and nothing inherited needs explaining away.
+You bring a repo you already ship to. No such repo you can use here? Build one. A repo you grow from zero is a clean instrument. Every decision is yours, every bug is legibly your own, and nothing inherited needs explaining away.
 
 You'll build a small Lemmings game in the browser (the 1991 classic: little creatures you guide across a level). By the end of the first session it runs, it has a test or two, and it has real commit history. That's a project.
 
@@ -33,8 +33,8 @@ The running game, the test suite, the commit history, and the one bug you spotte
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-08-29 (writing@4a722813 story@e11bbeb4 technical@0cea7581 behavior@148adf6 pedagogy@1abb84c6 strategy@148adf6 slides@4a722813)
-- judges @4a722813: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-09-05 (writing@324b81d7 story@324b81d7 technical@324b81d7 behavior@148adf6 pedagogy@324b81d7 strategy@324b81d7 slides@324b81d7)
+- judges @324b81d7: writing PASS (2 todos see instances/ae101--supplementary--build-a-project-from-zero.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **Meta:** *Opt-in prework alternative for the student who arrives without a usable repo. ~200 words. Golden-path only. Replaces the thin "ask your trainer for a fallback repo" escape hatch in `prework.md` §1 with a self-service build. The Lemmings game is the same SUT the test-harness uses (`arrange-lemmings.sh`, `test-strategy-lemmings`), so a student who builds it lands on a codebase the harness already understands.*
 
@@ -48,10 +48,6 @@ The running game, the test suite, the commit history, and the one bug you spotte
 **Placement:** Linked from `prework.md` §1 (the fallback line). Read once, before Module 1, only by students who need it. Heavier than the standard 30-min prework path; the extra time is the game build.
 
 **Voice:** AE101 quintet. Rory reframe in the open (empty repo as clean instrument, not consolation prize), Boris-flat on the build steps.
-
-**Open decisions for maintainer:**
-- How this interlocks with the existing trainer-handed fallback repo in `prework.md` §1. Build-your-own vs clone-a-canned-one are different flavours; pick one as default or offer both.
-- Whether to wire the `prework.md` §1 fallback line to link here (edits a done-done prework file with cross_module contracts; not done in this draft).
 
 <!-- backing -->
 

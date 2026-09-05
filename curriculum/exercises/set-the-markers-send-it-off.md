@@ -29,7 +29,7 @@ Ask Claude where the record of this session lives.
 - Whatever sits in your working tree lands in this commit. Unrelated WIP: scope it out first.
 - The commit writes the branch name and the transcript path into `task.md`, so a later session recovers this experiment from disk instead of hunting for it.
 
-Ask Claude to commit current state on a feature branch and report the short SHA.
+Ask Claude to create a feature branch and commit current state, then report the short SHA.
 
 {{prompt:ae101-m4-commit-starting-point}}
 
@@ -45,7 +45,7 @@ Ask Claude to push the branch to the remote.
 
 *7 min*
 
-Ask Claude to run the scoped task end-to-end in this same session.
+Ask Claude to take the scoped task end-to-end in this same session.
 
 {{prompt:ae101-m4-take-task-end-to-end}}
 
@@ -55,7 +55,7 @@ Ask Claude to run the scoped task end-to-end in this same session.
 - Nudge by hand: answer a question, correct a path, push back on visible drift. Past ten or so interventions, you have become the agent; call it and read the transcript.
 - If the session goes completely off the rails, stop it. The trace is the evidence either way.
 
-If Claude stalls, ask it to keep going. The nudge reads as encouragement and lands as a taunt.
+If the agent stalls, ask it to keep going. The nudge reads as encouragement and lands as a taunt.
 
 {{prompt:ae101-m4-nudge-continue}}
 
@@ -64,6 +64,10 @@ If Claude stalls, ask it to keep going. The nudge reads as encouragement and lan
 **View summary:** You pin the two markers the next module returns to, the session transcript path and a starting-point commit on a throwaway branch, then paste the send-off prompt and step away while the agent works the task alone.
 
 **Extracted from `run-the-first-experiment.md` § *Send the task off*, 2026-08-12, Antti-directed** (*"this passage actually should be a separate exercise. And split to few slides"*). The section ran as unbroken module prose carrying four prompts, which meant the Slides layout gave the whole send-off one enormous chunk and the beats had no headings to land on. Body wording is near-verbatim and the four `{{prompt:ae101-m4-*}}` refs are byte-intact. The transcript mechanism stays at one bullet — the fuller description belongs to the reference page, not here. No async-permission line in this file, and none belongs here: the send-off runs in the same session the student has been in all module, and `training-architecture.md:13` puts async cloud agents out of scope. **The strategy doc's row #11 is about a different promise** — permission to run two sessions at once, not permission to walk away from one — and M4 declines it, per the strategy doc's own row. Do not add a line on the row's authority.
+
+**`ae101-m4-take-task-end-to-end` takes no added clauses — maintainer call 2026-09-03, on two separate proposals.** `check_prompts.md §19` wants a self-augment invitation before an unsupervised run (`ae101-m5-rerun-packaged` carries exactly that shape) and `§43` wants progress streaming on a walk-away send-off. Both declined: this module has deliberate room for mistakes and sub-par packaging, and the un-packaged run has to underdeliver visibly or M5's contrast has nothing to teach on. An agent that fills its own gaps, or narrates so the student can steer mid-run, closes the gap M5 exists to open — and the beat is *walk away*, so running commentary buys hovering this file already warns against. Logical suggestions, not enough value. Both shapes belong to the M5 re-send. Do not re-raise.
+
+**`ae101-m4-commit-starting-point` stays one paragraph — `check_prompts.md §36`'s sequential-build carve-out.** Its three move-groups (create the branch · append the protected block · stage, commit, report) cannot be reordered or read apart: the block reads the branch name back from git, so the branch must already exist, and the commit needs the block written first. A break after *"...without searching for it:"* would present a chain as a menu. The paragraph is over §36's word bar and stays there; do not split it, and do not re-raise.
 
 **Timing.** The 12 min this file owns is the send-off's whole budget, and the module total is 105 min with it. Do not add a module-level transition for this beat — the leaf owns its duration, and a transition would bill it twice.
 
@@ -88,5 +92,5 @@ If Claude stalls, ask it to keep going. The nudge reads as encouragement and lan
 
 **Lean-intro trim (2026-08-25, Antti-approved):** Phase 1's stance bullet (*"Your rules files, memory, ADRs and skills are what they are… shows up when you read what comes back."*) cut — `test-and-learn` installed that stance a lecture earlier; this slide's job is the two markers. Do not restore.
 
-**Quality:** compendium-audited 2026-08-29 (writing@43e6cae1 story@43e6cae1 technical@8cc00874 behavior@61e7fc9 pedagogy@1abb84c6 strategy@19249df slides@43e6cae1)
-- judges @43e6cae1: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-09-05 (writing@324b81d7 story@324b81d7 technical@324b81d7 behavior@61e7fc9 pedagogy@1abb84c6 strategy@324b81d7 slides@324b81d7)
+- judges @324b81d7: writing PASS (3 todos see instances/ae101--exercise--set-the-markers-send-it-off.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS

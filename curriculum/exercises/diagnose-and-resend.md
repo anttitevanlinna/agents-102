@@ -38,7 +38,7 @@ Confirm the path is right. Then ask Claude to read the repo state on the previou
 {{prompt:diagnose-and-resend-2}}
 
 
-## Make Claude show its work, make it dig
+## Push for quotes, then make your agent dig deeper
 
 - Push back where Claude generalises. If a lens comes back without a quote from the run, send it back for one. The same moment may carry more than one lens.
 - This is an agent's account of an agent's work, on a run you weren't watching. Same prior as the repo read in Module 1: assume about 10% of the account misrepresents the run, and you can't spot which tenth by eye. Ask Claude to show you where two or three of its quotes appear in the transcript. If it can't show you, don't trust that quote.
@@ -118,7 +118,7 @@ In the worktree at `../<repo-name>-m5`. The packaging files live on disk; the wo
 
 Fresh context matters here. The exercise session built heavy scrollback (verifier scaffolding, hooks, plan.md drafts); every re-send turn would otherwise pay cache-read on that prefix. A fresh session avoids repeatedly carrying the heaviest context, and the field has a name for this move (Ralph's fresh-sessions camp, Amp's manual-handoff camp; see [What packaging is](lectures/what-packaging-is.md)).
 
-Prefer to stay in the exercise session? Paste this to drop scrollback in-place:
+Prefer to stay in the exercise session? Drop the scrollback in place instead:
 
 {{prompt:ae101-m5-clear-before-rerun}}
 
@@ -126,11 +126,11 @@ Prefer to stay in the exercise session? Paste this to drop scrollback in-place:
 
 Either way, the re-send prompt below stands alone: Claude finds the packaging in the worktree and reads it cold.
 
-Ask Claude to re-run the same task using the reference, plan.md, and verifier you just built.
+Ask Claude to record this session's run coordinates, then re-run the same task using the reference, plan.md, and verifier you just built.
 
 {{prompt:ae101-m5-rerun-packaged}}
 
-<!--flag:module:spot-gaps-build-the-loop-->The walk-away report at the close is what Module 6 opens on.<!--/flag:module:spot-gaps-build-the-loop--><!--flag:no-module:spot-gaps-build-the-loop-->The walk-away report at the close is the evidence this session leaves behind.<!--/flag:no-module:spot-gaps-build-the-loop--> Expect partial failures framed as partial successes, *"shipped most of it, hit a snag on X."* RLHF is a big part of why: agreeable answers won the preference round. The contrast with the un-packaged session depends on this report being candid evidence, not encouragement. If the summary reads polished, ask the agent to list the artifacts that didn't ship and quote the verifier output verbatim where it fired. You decide whether to push.
+The session closes with the agent's own report of what it did. Expect partial failures framed as partial successes, *"shipped most of it, hit a snag on X."* RLHF is a big part of why: agreeable answers won the preference round. The contrast with the un-packaged session depends on this report being candid evidence, not encouragement. If the summary reads polished, ask the agent to list the artifacts that didn't ship and quote the verifier output verbatim where it fired. You decide whether to push.
 
 The laptop stays awake and plugged in while it runs (power settings → prevent sleep on power). Same cancel-is-legit rule as the un-packaged session: stopping when the trace is enough is the result. Manual nudges are part of the session; when nudging turns into typing every step, the agent isn't the agent any more, that's a result worth reading.
 
@@ -144,7 +144,7 @@ Your `CLAUDE.local.md` and `observations/` have been building in the worktree si
 
 **View summary:** You read the un-packaged run through three failure lenses, build the checks and durable task artifacts that would have caught its misses, then re-send the same work. The contrast makes packaging visible on your own code rather than as advice.
 
-**The 10% recall in `## Make Claude show its work, make it dig` is the prior's third and last statement, by design.** `orient-and-introspect.md` § *Read the self-report, then spot-check it* sets it on the agent's read of a repo (maintainer-attested there), `plan-mode-done-right.md` § Key Concepts applies it to a plan, and this bullet applies it to a run transcript the student did not watch. Three instances, roughly two modules apart, a different artefact each time, each carrying its own action: progression-with-variation, not the refrain `check_pedagogy.md` §9b bans. This is the beat that earns it. In M1 and M2 the student can read the whole artefact by eye, so the prior costs nothing there; here it is the only affordable check, and asking the agent to locate its own quotes is the only one available when the agent holds the codebase and the student holds the lenses. The imperative *assume* and the *about* hedge travel from M1 and are load-bearing: the prior is an instruction to the reader, and a floor form would be a claim about the world. Do not harden it, and do not restate it as a general claim about agents. M1's double-hedge (*"could be more or less"*) stays M1's, so `check_slides.md` §7's number-plus-retraction sub-item does not fire here.
+**The 10% recall in `## Push for quotes, then make your agent dig deeper` is the prior's third and last statement, by design.** `orient-and-introspect.md` § *Read the self-report, then spot-check it* sets it on the agent's read of a repo (maintainer-attested there), `plan-mode-done-right.md` § Key Concepts applies it to a plan, and this bullet applies it to a run transcript the student did not watch. Three instances, roughly two modules apart, a different artefact each time, each carrying its own action: progression-with-variation, not the refrain `check_pedagogy.md` §9b bans. This is the beat that earns it. In M1 and M2 the student can read the whole artefact by eye, so the prior costs nothing there; here it is the only affordable check, and asking the agent to locate its own quotes is the only one available when the agent holds the codebase and the student holds the lenses. The imperative *assume* and the *about* hedge travel from M1 and are load-bearing: the prior is an instruction to the reader, and a floor form would be a claim about the world. Do not harden it, and do not restate it as a general claim about agents. M1's double-hedge (*"could be more or less"*) stays M1's, so `check_slides.md` §7's number-plus-retraction sub-item does not fire here.
 
 **`## Check both files are for the agent, not you` is cut (2026-08-25, Antti: little value add).** The slide told an engineer how to glance at two files — the check-stuff teaching his 2026-08-25 cut pass removes on sight — and its push-back tells (generic-advice reference, project-plan-shaped plan.md) duplicate judgement the grill-note above already exercises. The flow runs prompt → grill-note → Approve. Do not restore; if a cohort ships agent-facing files written for humans, the tell belongs in the Phase-4 prompt, not a body slide.
 
@@ -152,8 +152,8 @@ Your `CLAUDE.local.md` and `observations/` have been building in the worktree si
 
 **Emphasis:** Bold is limited to title-page labels, widget chrome, the Phase 3 verifier-shape menu handles (**LLM judge** / **Deterministic shell-hook** / **Ralph re-feed**), the two Phase 4 callout handles (stop-gate + timebox), and the two definitional handles on *The reference and plan.md* (**Reference** / **plan.md**). All other body prose stays unbolded.
 
-**Quality:** compendium-audited 2026-09-02 (writing@9edae2ef story@9edae2ef technical@8cc00874 behavior@9edae2ef pedagogy@9edae2ef strategy@1c765f2 slides@9edae2ef)
-- judges @9edae2ef: writing PASS (4 todos see instances/ae101--exercise--diagnose-and-resend.writing.json), story PASS (1 todo see instances/ae101--exercise--diagnose-and-resend.story.json), technical PASS, behavior PASS (2 todos see instances/ae101--exercise--diagnose-and-resend.behavior.json), pedagogy PASS (2 todos see instances/ae101--exercise--diagnose-and-resend.pedagogy.json), strategy PASS, slides PASS (1 todo see instances/ae101--exercise--diagnose-and-resend.slides.json)
+**Quality:** compendium-audited 2026-09-05 (writing@874f921c story@54577f39 behavior@9edae2ef pedagogy@874f921c strategy@874f921c slides@54577f39)
+- judges @874f921c: writing PASS (1 todo see instances/ae101--exercise--diagnose-and-resend.writing.json), story PASS, technical REVISE (1/2 see instances/ae101--exercise--diagnose-and-resend.technical.json), behavior PASS (2 todos see instances/ae101--exercise--diagnose-and-resend.behavior.json), pedagogy PASS, strategy PASS, slides PASS
 
 **Word count:** ~760 words body.
 
@@ -162,7 +162,7 @@ Your `CLAUDE.local.md` and `observations/` have been building in the worktree si
 - writes a task-scoped reference + plan.md before any multi-hour delegated run, pointing at the codebase rules rather than restating them
 - fires the verifier once as a smoke test before relying on it, so the check is checked before it gates anything
 
-**Phase 4 runs 10 (Antti 2026-08-30):** the grill is capped in the range of M2's plan push-back closer (also 10) — two to three rounds fit, and the grill-note's good-enough threshold does the cutting. This is what holds M5 at its 120 cap; do not re-inflate without recomputing the module.
+**Phase 4 runs 10 (Antti 2026-08-30):** the grill is capped in the range of M2's plan push-back closer (also 10) — two to three rounds fit, and the grill-note's good-enough threshold does the cutting. This is what holds M5 at its cap; do not re-inflate without recomputing the module (`node scripts/calculate-time.js learn-from-the-test`).
 
 **Placement:** the re-send is Phase 5 of this exercise, not a module-level beat; the module file must not carry a second one. The closing lecture follows this exercise. This file owns only its own `**Time:**` line; the module total is computed — `node scripts/calculate-time.js learn-from-the-test`.
 
@@ -182,7 +182,7 @@ Claims
 - `built-beats-guessed` · vision · "packaging you built against your own failure beats packaging you guessed at" ← none-owed
 
 Sources
-- three-failure-modes `[checked:2026-08-01 result:CAVEAT due:cohort]` (no URL — house vocabulary) — [house canonical] goal drift / context rot / plausible-but-wrong. **Not convergent practitioner vocabulary** (corrected 2026-08-01): only *context rot* is a term the field actually uses, with a study behind it and unprompted use by Ronacher and Osmani. *Goal drift* and *plausible-but-wrong* return zero named practitioners. The phenomena are well attested; the names are largely ours, which is all this exercise needs — it applies the lenses, the pre-read carries the colour. fallback: none needed; the corrected framing is the fallback.
+- three-failure-modes `[checked:2026-08-01 result:CAVEAT due:cohort]` (no URL — house vocabulary) — [house canonical] goal drift / context rot / plausible-but-wrong. **Not convergent practitioner vocabulary.** Only *context rot* is a term the field actually uses, with a study behind it and unprompted use by Ronacher and Osmani. *Goal drift* and *plausible-but-wrong* return zero named practitioners. The phenomena are well attested; the names are largely ours, which is all this exercise needs — it applies the lenses, the pre-read carries the colour. fallback: none needed; the framing above is the fallback.
 - kim-on-cherny `[checked:2026-08-29 result:OK due:none]` https://getpushtoprod.substack.com/p/how-the-creator-of-claude-code-actually — [practitioner analysis] Kim on Cherny (2026-02-21): Cherny reaching for background-agent / agent-stop hook / Ralph re-feed. **The three-shape taxonomy is Kim's synthesis, not Cherny's own**, and is absent from the Orosz interview. The exercise offers them as a menu the student picks from, which is the form the evidence supports. Re-fetched 2026-08-29: passage unchanged — *"Boris either prompts Claude to verify its work with a background agent when it's done, uses an agent-stop hook for deterministic verification, or uses the Ralph Wiggin plugin for autonomous looping"* — still Kim's framing, not a claim from Cherny. **Durable account, `due:none`** (`source-freshness-format.md` § Durable-account variant): this backs an authorship/attribution reading of a dated writeup, not a claim about the field's present. fallback: keep the menu, drop the attribution — the shapes stand as options without a name behind them.
 - cc-hooks-docs `[checked:2026-08-28 result:OK due:cohort]` https://code.claude.com/docs/en/hooks — [capability] Stop hooks fire on the named event with no model discretion; live-tested against this repo's `.claude/settings.json` on Claude Code 2.1.142. fallback: describe the shape without naming the hook event.
 - ronacher-align-then-run `[checked:2026-08-01 result:OK due:none]` https://lucumr.pocoo.org/2026/1/14/minijinja-go-port/ — [practitioner direct] Ronacher's align-then-run move — ask the agent how it would validate, then negotiate the validation loop — which Phase 2 inverts by asking backwards from a failure to the validation that would have caught it. **Scoped to the practice, never the vocabulary:** he does not use *reference*, *plan* or *verifier* as names for any of it (full-text and 14-post archive check, 2026-08-01) — a citation-scope note, not a source defect, so the result is OK matching every sibling stamp on this URL. Durable account, `due:none`. fallback: teach the inversion without the attribution; the move stands on the student's own artefact.

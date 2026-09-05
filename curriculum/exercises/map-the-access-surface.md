@@ -103,6 +103,8 @@ The STRIDE exercise invokes the curated STRIDE skill on the map you just built. 
 
 **`check_prompts.md` §43 progress-streaming is deliberately absent from `map-the-access-surface-2` (adjudicated 2026-08-30, non-blocking judge TODO).** The skill run takes a few minutes and the design spends exactly that wait in the m3-quality window; an as-you-go streaming instruction would report to a window nobody is watching, and the return read is already primed in body (skip the narration, look for the saved path). Do not add a streaming line unless the design changes to keep the student in-window.
 
+**This exercise invokes its skill in-thread, and that is the design (Antti 2026-09-04).** M3 dispatches exactly one subagent, at the STRIDE pass, where six categories against every surface would flood the thread. The access-surface pass runs in-thread and the authoring exercise stays conversational, so the module teaches which jobs belong in which thread rather than merely that subagents exist. Do not add a dispatch clause here to match the module's subagent theme.
+
 **View summary:** You invoke a curated security skill on a real feature, then compare its access-surface map with what you know about the codebase. The saved artifact combines broad automated coverage with the codebase-specific delta only you can supply.
 
 **The selective-reading opener chunk.** *Take the ranked ten, leave the rest on disk* sits between the header block and Phase 1 — M3 is where the M1 countermove (tell the agent what output you want) becomes load-bearing: first heavy curated-skill output, two windows. Its claim "prompts route heavy output to disk, chat read short" holds against `map-the-access-surface-2` (saves to temp, reports path) and `-3` ("Concise"); if those prompt bodies change shape, re-check it. A companion prompt-sharpen card (ranked bound on `-3`) is open for maintainer approval.
@@ -111,8 +113,8 @@ The STRIDE exercise invokes the curated STRIDE skill on the map you just built. 
 
 **Skill-introspection (`map-the-access-surface-1`) and map-walkthrough (`map-the-access-surface-3`) prompts kept, not cut.** `-1` was flagged `low-yield`, `-3` `redundant-slot`. Both are light read/introspect beats, not concurrent-heavy execution, so cutting them reclaims none of the load the cull targeted. `-1` goes one level past `/skills` — storage location on disk plus whether skill bodies are loaded into context (the lazy-load lesson the line after it leans on). `-3` is the read-back-and-prime step before the Phase 3 delta, distinct from the map generation in `-2`. Not cut candidates.
 
-**Quality:** compendium-audited 2026-08-29 (writing@4a722813 story@0e4f7c9e technical@8cc00874 behavior@1c765f2 pedagogy@1abb84c6 strategy@1c765f2 slides@0e4f7c9e)
-- judges @4a722813: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-09-05 (writing@08946dd8 story@324b81d7 behavior@1c765f2 pedagogy@1abb84c6 strategy@324b81d7 slides@324b81d7)
+- judges @08946dd8: writing PASS (verify-refuted, 2 todos see instances/ae101--exercise--map-the-access-surface.writing.json), story PASS, technical REVISE (1/2 see instances/ae101--exercise--map-the-access-surface.technical.json), behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS (1 todo see instances/ae101--exercise--map-the-access-surface.slides.json)
 
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply + Evaluate

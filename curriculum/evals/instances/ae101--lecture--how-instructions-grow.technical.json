@@ -1,148 +1,1091 @@
 {
   "class": "technical",
-  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/how-instructions-grow.md",
-  "body_sha": "076eb813ed4bb976ed7f6ea67476d6bb8f9d36f4049d7591bf9306dadfeff838",
-  "shape_hash": "fb2d52597dcd19b3",
-  "verdict": "PASS",
   "training": "ae101",
-  "rules_evaluated": [
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 1, "rule_lead": "Training platform = Claude Code (CLI + Desktop) + Cowork.", "verdict": "PASS", "evidence": "Prompt dest (raw line 46 marker, resolved by expand-md.js) is `**Prompt** *(Claude Code)*`; body never invokes a claude.ai-only or Cowork-only affordance. Consistent with AE101 = CLI+Desktop-only per curriculum/CLAUDE.md §Platform claims.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 2, "rule_lead": "Cloud/remote features carry Git dependency — out of scope for our training dir.", "verdict": "N/A", "evidence": "N/A — no cloud/remote-feature claim anywhere in the file.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 3, "rule_lead": "Local scheduled tasks catch up on wake, but only once, only for runs missed in last 7 days.", "verdict": "N/A", "evidence": "N/A — no scheduled-task claim in this file.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 4, "rule_lead": "Verify capabilities BEFORE asserting, not after.", "verdict": "PASS", "evidence": "The two capability claims (CLAUDE.local.md/CLAUDE.md scope, raw line 6/8/21; skill lazy-load, raw line 8/21) are each backed by a dated source stamp in the backing block (claude-memory, claude-skills, both `[checked:2026-08-04 result:OK due:cohort]`, raw lines 77-78) — 24 days old against today (2026-08-28), inside the trust window, so no re-fetch owed before assertion.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": "4a", "rule_lead": "Maintain living capability notes for both runtimes; consult before asserting.", "verdict": "N/A", "evidence": "N/A — governs the authoring/maintenance PROCESS for cross-file capability notes, not a check applicable to one lecture's body text.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": "4b", "rule_lead": "Compendium platform claims rot at 60 days.", "verdict": "N/A", "evidence": "N/A — governs staleness of claims written INTO the compendium/reference files themselves, not lecture-body claims (those run on check_research_claims.md §11a's per-source stamp system, judged there).", "fix_hint": null, "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": "4c", "rule_lead": "Don't extend known mechanism into adjacent context without verifying it fires there.", "verdict": "N/A", "evidence": "N/A — no cross-runtime template/macro mechanism (e.g. slash-command substitution claimed inside a skill) asserted anywhere in this file.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": "4d", "rule_lead": "Fix the contract, not the broken recovery.", "verdict": "N/A", "evidence": "N/A — no platform-mechanic bug or defensive-recovery pattern present in this file.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 5, "rule_lead": "Practitioner observation beats docs lookup.", "verdict": "N/A", "evidence": "N/A — no docs-vs-observed-behavior conflict raised by this file.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": "5a", "rule_lead": "Live-test beats docs for runtime-behavior claims.", "verdict": "PASS", "evidence": "The auto-load/lazy-load claims (raw lines 6, 8, 21) are consonant with §6d of this same compendium, which is itself sourced from live probes (2026-08-13 sentinel-file cold-start tests), not docs alone — the lecture's claim rests on live-tested fact, not a doc-only read.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 6, "rule_lead": "Known correct Claude Code facts (easy to get wrong):", "verdict": "N/A", "evidence": "N/A — file makes no claim about plan-mode shortcuts, connectors/MCP, scheduling syntax, subagents, or turn-streaming.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": "6b", "rule_lead": "When tool feature behaves differently than expected, update curriculum — not student's workaround.", "verdict": "N/A", "evidence": "N/A — no tool-feature-surprise scenario present in this file.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": "6c", "rule_lead": "PreToolUse/PostToolUse hooks read env from harness, not from agent Bash subshells.", "verdict": "N/A", "evidence": "N/A — file content is unrelated to hook env propagation.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": "6d", "rule_lead": "Auto-load surface = SIX things — four filenames + project `.claude/rules/` + user `~/.claude/rules/`.", "verdict": "PASS", "evidence": "Raw line 21: '`./CLAUDE.local.md` and `./CLAUDE.md` shape every session in their scope.' — both are among §6d's six auto-load surfaces (project CLAUDE.md, project CLAUDE.local.md); the claim correctly scopes to 'in their scope' rather than overclaiming these are the only two surfaces, and doesn't misstate a count anywhere.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": "6e", "rule_lead": "Transcript-by-mtime selection fragile when current session writes target folder.", "verdict": "N/A", "evidence": "N/A — no transcript-selection mechanism referenced.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": "6f", "rule_lead": "Compendium pointers inside files = autoload-redundant.", "verdict": "N/A", "evidence": "N/A — governs our own memory/skill-file pointer bloat, not lecture prose (this file carries no `→ check_X.md` pointer).", "fix_hint": null, "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": "6g", "rule_lead": "Edit-time prompt-edit gate's approval detector MUST parse the transcript deterministically.", "verdict": "N/A", "evidence": "N/A — governs `.claude/hooks/prompt-edit-gate.sh` internals, not lecture content.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 7, "rule_lead": "Sessions = unit of work — write \"start a new session in X,\" not \"open Claude Code in X.\"", "verdict": "PASS", "evidence": "grep -n 'open Claude Code' curriculum/lectures/how-instructions-grow.md → 0 matches; the file never uses the banned phrasing (it doesn't discuss session-opening at all).", "fix_hint": null, "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": "7a", "rule_lead": "CLAUDE.md describes runtime, not just task.", "verdict": "N/A", "evidence": "N/A — no non-default runtime (synced cloud folder, container, network share) referenced.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": "7b", "rule_lead": "Cross-working-directory boundaries always open `new`; evidence travels by disk.", "verdict": "N/A", "evidence": "N/A — no worktree-fork or cross-cwd session-boundary claim in this file.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": "7c", "rule_lead": "Same-cwd recovery defaults to `--resume`, not `new`.", "verdict": "N/A", "evidence": "N/A — no session-recovery guidance in this file.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 8, "rule_lead": "F-Secure curriculum off-limits.", "verdict": "N/A", "evidence": "N/A — no F-Secure or competitor-curriculum content present.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 9, "rule_lead": "No premature infrastructure.", "verdict": "PASS", "evidence": "Raw line 30: 'This training stops short of the full system: rules that prune themselves, evidence that routes itself to the right file, a team deciding what loads for everyone... for your team to automate right, in a way that fits your team workflow.' — the file explicitly declines to prescribe MCP servers/knowledge-graphs/self-pruning tooling, deferring the build to the team rather than proposing infra itself.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 10, "rule_lead": "External org content.", "verdict": "N/A", "evidence": "N/A — no external-org/competitor content referenced.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 11, "rule_lead": "Destructive operations need confirmation.", "verdict": "N/A", "evidence": "N/A — the fenced prompt only reads two named files; no delete/overwrite/force-push action is asked of Claude.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 12, "rule_lead": "No \"as-is\" imports from internet.", "verdict": "N/A", "evidence": "N/A — no external skill/prompt/agent-file import in this file.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 13, "rule_lead": "Pseudo-URI + kill-switch for public/private content split.", "verdict": "N/A", "evidence": "N/A — no `<skill-name>:<filename>` pseudo-URI or private-content reference in this file.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": "13a", "rule_lead": "Bulk workbook rebuilds: derive flags from existing output, never guess \"all.\"", "verdict": "N/A", "evidence": "N/A — not a workbook-rebuild task.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": "13b", "rule_lead": "Before auditing a built artifact ask whether it ships; before acting on a finding, re-measure it.", "verdict": "N/A", "evidence": "N/A — not a built-artifact audit; source .md file, not site/clients output.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 14, "rule_lead": "Internal audit/session-retro directories default-gitignore from creation.", "verdict": "N/A", "evidence": "N/A — no directory-creation proposal in this file.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": "14a", "rule_lead": "Canon is declared, not inferred — and an orphan is not automatically spent.", "verdict": "N/A", "evidence": "N/A — governs canon-doc declaration/archival, not lecture content.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 15, "rule_lead": "Quality gates run at wind-down, not mid-session.", "verdict": "N/A", "evidence": "N/A — process rule for the orchestrator's session cadence, not a lecture-content check.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 16, "rule_lead": "Tooling test layers carry acceptance-test contract.", "verdict": "N/A", "evidence": "N/A — no test-harness design in this file.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 17, "rule_lead": "Script ratchet — every LLM-orchestration tooling surface ratchets toward script-replaceable assertions.", "verdict": "N/A", "evidence": "N/A — no tooling-surface design in this file.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 18, "rule_lead": "Hook lints partition into auto-fix vs warn — main thread sees only judgment.", "verdict": "N/A", "evidence": "N/A — not a hook-design surface.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 19, "rule_lead": "Runner ↔ source pre-flight.", "verdict": "N/A", "evidence": "N/A — no fixture-numbered test runner referenced.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 20, "rule_lead": "Judge must honor script exit codes.", "verdict": "N/A", "evidence": "N/A — no judge-runner script gating in this file; the checks I ran (validate-backing.js, calculate-time.js, curl) were read directly for output.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 21, "rule_lead": "Eval-fire writing-class fires must schema-validate before presenting verdicts.", "verdict": "N/A", "evidence": "N/A — governs eval-fire's own dispatch process, not lecture content.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 22, "rule_lead": "Coverage tools enumerate universe, not index of past work.", "verdict": "N/A", "evidence": "N/A — no coverage-tool design in this file.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 23, "rule_lead": "Cowork sandboxed to its connected working directories.", "verdict": "N/A", "evidence": "N/A — no Cowork-specific content; AE101 is CLI+Desktop-only.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 24, "rule_lead": "`maintainer_acceptance` = JSON-level override for accepted/mitigated judge verdicts.", "verdict": "N/A", "evidence": "N/A — no such override present in this instance; this judge is read-only and does not stamp the file.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": "24a", "rule_lead": "Quality stamps: tooling writes them; the SHA pins committed content.", "verdict": "PASS", "evidence": "Raw line 98: '**Quality:** compendium-audited 2026-08-26 (writing@d065f8bc story@d065f8bc technical@a1ddfae2 behavior@a1ddfae2 pedagogy@a1ddfae2 strategy@8a0ecc18 slides@d065f8bc)' — clean anchor (stage + date + per-class pins), no leftover narrative tail after the date; stamping itself is the orchestrator's job via update-quality.sh, not this judge's.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 25, "rule_lead": "Cowork capability surface — UI surfaces subagent reads; no session rename in Cowork or Desktop.", "verdict": "N/A", "evidence": "N/A — no Cowork content in this file.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 26, "rule_lead": "Audit scope derives from TRAININGS registry + link-walk, not disk dir or tarball.", "verdict": "N/A", "evidence": "N/A — this dispatch names one target file directly; no training-wide scope question here.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 27, "rule_lead": "Acceptance-test contract covers (i) prompt mechanics + (ii) end-state artefacts, NOT (iii) does prompt's executable shell actually work.", "verdict": "N/A", "evidence": "N/A — the prompt contains no shell/git commands (it is a natural-language read-and-name instruction), so axis (iii) never applies.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 28, "rule_lead": "Strategy-doc drift surfaces via judge citation — citation = canary, not verdict.", "verdict": "N/A", "evidence": "N/A — no strategy-doc citation appears in this pass's findings.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 29, "rule_lead": "Portability audits: analyze AGENT'S runtime, not prompt's literal syntax.", "verdict": "N/A", "evidence": "N/A — the fenced prompt carries no shell/OS-specific command, only a natural-language read-and-name instruction; no portability surface to check.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 30, "rule_lead": "Skills at `~/.claude/skills/<name>/` are user-global but per-codebase in content — namespace by SUT.", "verdict": "N/A", "evidence": "N/A — no skill is authored, named, or invoked by this file; naming is deferred to M3 per maintainer block's Placement constraint (raw line 56).", "fix_hint": null, "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 31, "rule_lead": "state.json files written by `run-mN.sh` are convenience caches, not authoritative — read hand-off from in-SUT artefacts.", "verdict": "N/A", "evidence": "N/A — no state.json/hand-off mechanism referenced.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 32, "rule_lead": "tmux-runner sessions must use a per-runner socket (`tmux -L runner-$run_id ...`), not the user-wide default.", "verdict": "N/A", "evidence": "N/A — no tmux-runner content.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 33, "rule_lead": "A killed `run_in_background` Bash wrapper is not evidence the tmux session it launched is dead.", "verdict": "N/A", "evidence": "N/A — no tmux-runner content.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 34, "rule_lead": "Spend on deleting the duplicate, not on guarding it — and a gate that finds nothing is speculation.", "verdict": "N/A", "evidence": "N/A — no duplicate-guard/gate design in this file.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 35, "rule_lead": "`update-quality.sh` takes ALL classes in ONE invocation per file, and not until that file's last judge has returned.", "verdict": "N/A", "evidence": "N/A — this judge does not invoke update-quality.sh; that is the orchestrator's job, after every class on this file has returned.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 36, "rule_lead": "A hash guard is only as good as what it hashes, and a malformed hash disarms it silently.", "verdict": "PASS", "evidence": "Self-check on my own body_sha: `shasum -a 256 curriculum/lectures/how-instructions-grow.md` → 0dfb699112f309aa0b323f61fa1d1e501a4c89b82550653a4d26f47d658d8c03 (64 hex chars, real command output, not fabricated).", "fix_hint": null, "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 37, "rule_lead": "Measure the defect before proposing the fix, and again before repeating it to the maintainer.", "verdict": "N/A", "evidence": "N/A — no punch-list entry evaluated in this dispatch; I ran the falsifying commands directly (validate-backing.js, calculate-time.js, curl, git diff/log, grep) rather than proposing a fix from inference.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 38, "rule_lead": "Prose describing a runtime the room never executes drifts to plausible mechanism — no judge catches it, because no artefact contradicts it.", "verdict": "PASS", "evidence": "Raw line 30's declared-stop paragraph ('rules that prune themselves, evidence that routes itself to the right file, a team deciding what loads for everyone') explicitly disclaims that these exist or run in this training ('This training stops short of the full system... for your team to automate'), rather than asserting them as a functioning mechanism — the opposite of the failure this rule targets. Maintainer block (raw line 52) confirms this is deliberate: 'the slide declares the scaffold rather than hiding it.'", "fix_hint": null, "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 39, "rule_lead": "A judge subagent without evidence is a rubber-stamp, and the summary table cannot tell you which you got.", "verdict": "N/A", "evidence": "N/A — self-methodology rule; addressed by this instance's own evidence discipline (ungrounded_count reported via check-instance-evidence.js at close).", "fix_hint": null, "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 40, "rule_lead": "A gate keyed on the TOOL has a back door; a gate keyed on the FILE does not.", "verdict": "N/A", "evidence": "N/A — no hook/gate design question raised by this file.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 41, "rule_lead": "Harness-side caches drift; the artifact is canonical.", "verdict": "N/A", "evidence": "N/A — no state-cache-vs-artefact question in this file.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 42, "rule_lead": "Before deleting anything, ask what its FIRING would look like — reference-grep can't tell live from abandoned.", "verdict": "N/A", "evidence": "N/A — no deletion proposed anywhere in this review.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 43, "rule_lead": "A hook on a gitignored surface is a rule on ONE machine.", "verdict": "N/A", "evidence": "N/A — no hook-authoring question raised.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 44, "rule_lead": "`git log -1 --date=short -- <path>` on a DELETED file returns the deletion date.", "verdict": "N/A", "evidence": "N/A — no staleness-by-git-log sweep performed here; the file exists and is tracked (confirmed via `git diff a1ddfae2..HEAD` above, which returned a real diff, not a deletion).", "fix_hint": null, "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 45, "rule_lead": "A detector's reading vocabulary must cover the corpus's writing vocabulary — or it reports compliance as rot.", "verdict": "N/A", "evidence": "N/A to this file's body — drift-rule, re-fetched at current wording via `node curriculum/evals/scripts/rule.js platform_and_boundaries 45` this session (confirmed the 2026-08-28 fail-open corollary is present and current). The rule governs how `audit-eval-coverage.js` / `check-instance-evidence.js` PARSE judge instances and rule-index shapes; this lecture is a student-facing body about CLAUDE.md/skills and contains no detector, `rules_evaluated` shape, or coverage-tool reference for the rule to bind to. See `drift_rules_reread`.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 46, "rule_lead": "A verdict has more than one input; a freshness check usually watches one.", "verdict": "N/A", "evidence": "N/A — governs `scan-stale-classes`' own instrumentation, not lecture content.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 47, "rule_lead": "\"It used to be fast\" is a regression report — diagnose it by trajectory, not by architecture.", "verdict": "N/A", "evidence": "N/A — governs how the eval system itself diagnoses a performance regression; no such diagnosis is present in or implied by this lecture's content.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 48, "rule_lead": "A bench is silent about everything it cannot stage, and silence reads exactly like a pass.", "verdict": "N/A", "evidence": "N/A — governs judge-hillclimb benchmark methodology, not lecture content.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_platform_and_boundaries.md", "rule_index": 49, "rule_lead": "An instruction whose violation leaves the output identical is not enforced by wording — it needs a measurement or a test.", "verdict": "N/A", "evidence": "N/A — governs protocol-clause design for tooling/process instructions, not lecture content. (Self-applied to my own dispatch: rows_written_by_you / rows_spliced_by_merge are reported below as the measurement this rule asks for.)", "fix_hint": null, "blocking": false},
-
-    {"compendium": "check_research_claims.md", "rule_index": 1, "rule_lead": "Source URL + type label — mandatory.", "verdict": "PASS", "evidence": "All three backing-block sources (raw lines 77-79) carry URL + label: claude-memory [capability], claude-skills [capability], argyris-double-loop [academic/research]. Labels sit correctly below `<!-- maintainer -->`, not in student-facing body prose (rule's own scope clause). Body scanned for convergence-verb overclaims ('practitioners say', 'entered the vocabulary', 'converge') → 0 matches; backing-block `common-route-not-ladder` claim is tagged `vision`/`none-owed`, not asserted as a counted field-convergence claim.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_research_claims.md", "rule_index": "1a", "rule_lead": "OODA paraphrase ≠ primary source.", "verdict": "PASS", "evidence": "Raw line 17: '[Chris Argyris called the deeper move double-loop learning](url). The first loop corrects the action. The second questions the governing rule or assumption that shaped the action.' — framed as the author's own explanation of Argyris's distinction, no quotation marks presenting it as Argyris's verbatim text, so it is not a paraphrase being laundered as a primary-source quote.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_research_claims.md", "rule_index": 2, "rule_lead": "Freshness rule — 6 months.", "verdict": "PASS", "evidence": "claude-memory and claude-skills stamps both `checked:2026-08-04` — 24 days old against today (2026-08-28), well inside 6 months. Argyris stamp `checked:2026-08-04 result:OK due:none` (durable framework citation, see §2a below).", "fix_hint": null, "blocking": false},
-    {"compendium": "check_research_claims.md", "rule_index": 3, "rule_lead": "Zombie stat guard.", "verdict": "N/A", "evidence": "N/A — grep for round-number failure stats (95%/85%/80%) in the raw file → 0 matches; no statistic of any kind appears in this lecture.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_research_claims.md", "rule_index": 4, "rule_lead": "Hold short OODA loose.", "verdict": "N/A", "evidence": "N/A — no practitioner-count/convergence-threshold claim made anywhere in this file.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_research_claims.md", "rule_index": 5, "rule_lead": "Resist prescriptive post-OODA phrasings.", "verdict": "N/A", "evidence": "N/A — not a research-synthesis-to-curriculum-implication passage.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_research_claims.md", "rule_index": 6, "rule_lead": "Default to asking before folding findings into strategy docs.", "verdict": "N/A", "evidence": "N/A — this file is not updating a strategy doc.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_research_claims.md", "rule_index": 7, "rule_lead": "Vision × Detail split.", "verdict": "PASS", "evidence": "Backing block (raw lines 62-74) correctly splits the two layers: detail claims (`local-rule-scope`, `repo-rule-scope`, `skill-loading`, `claude-files-shape-scope`, `skill-joins-context`) each carry a real KB source; vision claims (`common-route-not-ladder`, `rule-load-quality-ceiling`, `rules-pass-point-missed`, `prohibitions-dont-teach`, `positive-form-compresses`, `good-runs-earn-rules`) are tagged `vision`/`none-owed` and carry no fabricated citation.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_research_claims.md", "rule_index": 8, "rule_lead": "Grep `continuous-research/` and `memory/` before guessing at a name.", "verdict": "N/A", "evidence": "N/A — authoring-process rule, not a lecture-content check. (I did grep continuous-research/ for the three sourced URLs as part of §11a below.)", "fix_hint": null, "blocking": false},
-    {"compendium": "check_research_claims.md", "rule_index": 9, "rule_lead": "Consult research BEFORE generating, not after.", "verdict": "N/A", "evidence": "N/A — authoring-process rule, not verifiable from the shipped artefact alone.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_research_claims.md", "rule_index": 10, "rule_lead": "No \"What research says\" callout boxes.", "verdict": "PASS", "evidence": "grep -n 'research says' curriculum/lectures/how-instructions-grow.md → 0 matches; citation is an inline hyperlink in prose voice (raw line 17), not a callout box.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_research_claims.md", "rule_index": 11, "rule_lead": "Source-verification maintainer block on any student-facing file with practitioner citations.", "verdict": "PASS", "evidence": "Backing block carries a 'Sources' section (raw lines 76-79) listing all three sources with the modern §11a stamp grammar in place of a bare MUST-DO prose checklist, which §11a explicitly supersedes as the operating mechanism. All three Sources lines match the grammar `[checked:YYYY-MM-DD result:RESULT due:DUE] <url> — [label] <claim-anchor>. fallback: <reframe>.` exactly (§11a sub-clause). Cross-checked: `grep -rl 'code.claude.com/docs/en/memory\\|code.claude.com/docs/en/skills\\|hbr.org/1977/09/double-loop' continuous-research/` → one hit, `continuous-research/findings/by-domain/coding-engineering.md`, which independently cites `code.claude.com/docs/en/memory.md` under the same `[capability]` label and the same description (CLAUDE.md=shared/'Who writes it: You' vs auto-memory='Who writes it: Claude') — no divergent due/label to inherit (§11a's inherit-the-research-file's-due clause); argyris-double-loop has no continuous-research hit, consistent with it being a directly-sourced academic citation rather than KB-piped.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_research_claims.md", "rule_index": 12, "rule_lead": "Denominator + axis discipline on every adoption/productivity number.", "verdict": "N/A", "evidence": "N/A — no adoption/productivity percentage anywhere in the file.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_research_claims.md", "rule_index": 13, "rule_lead": "Inference beyond source — absence licenses only absence.", "verdict": "N/A", "evidence": "N/A — the declared-stop paragraph (raw line 30) is an owned design/scope statement ('this training stops short of...'), not a research conclusion drawn from a source's silence; it falls under §7's vision layer, not §13's inference-from-absence failure.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_research_claims.md", "rule_index": 14, "rule_lead": "A green check must measure the fact, not a proxy that co-varies with it.", "verdict": "N/A", "evidence": "N/A — instrument-design rule for verification tooling generally; applied to my own checks (direct curl status codes, direct grep, direct git diff/log) rather than a lecture-content finding.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_research_claims.md", "rule_index": 15, "rule_lead": "A word-presence claim needs an unprimed read.", "verdict": "N/A", "evidence": "N/A — no word-presence claim about an externally fetched page made for this file.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_research_claims.md", "rule_index": 16, "rule_lead": "A candidate that matches the hunt's SHAPE has not answered the hunt's QUESTION.", "verdict": "N/A", "evidence": "N/A — not a research-discovery/candidate-screening task.", "fix_hint": null, "blocking": false},
-
-    {"compendium": "check_pedagogy.md", "rule_index": 16, "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.", "judge_owned": false, "verdict": "PASS", "evidence": "The mechanism the lecture teaches (name skill-worthy parts, or none) lives inside the fence itself (curriculum/prompts/ae101-m2-name-what-moves.md: 'If any parts appear that would be better moved into a skill, name the parts. Or none, if nothing appears that way.'), not left to unenforced body prose. Body prose (raw lines 42-44) only frames/invites ('run it on your own files whenever you like'), it doesn't itself try to encode the mechanism or script a reaction-count.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": 22, "rule_lead": "Rule in memory without forcing function = worse than no rule.", "judge_owned": false, "verdict": "N/A", "evidence": "N/A — this rule governs OUR OWN check_*.md memory entries needing a PDCA/stop-hook/git-gate forcing function, not whether a lecture's taught principle has a student exercise enforcing it. Not applicable to lecture body content.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": 23, "rule_lead": "Short skeptical pushback on \"done\" = re-verify trigger.", "judge_owned": false, "verdict": "N/A", "evidence": "N/A — a generation/judging-workflow rule about re-verify triggers; no surface in a closing lecture's body text.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": 36, "rule_lead": "Verification machinery needs smoke-test before trust.", "judge_owned": false, "verdict": "N/A", "evidence": "N/A — this lecture builds no hook/judge/eval/gating machinery; the fenced prompt is a naming-only demo with no verification apparatus to smoke-test.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": 37, "rule_lead": "Context-loading tiers as staged progression.", "judge_owned": false, "verdict": "PASS", "evidence": "Maintainer block's Placement constraint (raw line 56): 'Skill use and authoring still land at M3. M2 names the destination and its loading behavior but does not invoke, install, or author a skill.' The lecture stays at the auto-load tier (CLAUDE.local.md/CLAUDE.md) and exercises it via the fifth-slide prompt (which reads real files), while only NAMING the lazy-load (skill) tier rather than exercising it — a documented, deliberate deferral to M3, not an unexamined 'lecture about context economy with no surface exposed at all' (which is the anti-pattern this rule bans).", "fix_hint": null, "blocking": false},
-
-    {"compendium": "check_prompts.md", "rule_index": 1, "rule_lead": "No placeholders inside fences.", "verdict": "PASS", "evidence": "Fenced prompt (curriculum/prompts/ae101-m2-name-what-moves.md): 'Check out ./CLAUDE.local.md and the repository ./CLAUDE.md. If any parts appear that would be better moved into a skill, name the parts. Or none, if nothing appears that way.' — read directly via expand-md.js, no `[BRACKETED]` placeholder of any kind.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 2, "rule_lead": "Every prompt block: one-sentence action lead-in.", "verdict": "REVISE", "evidence": "Raw line 44 (the sentence immediately before the `{{prompt:}}` marker on raw line 46): 'This one runs on the screen; run it on your own files whenever you like.' — no command verb summarizing what the PROMPT does (check two named files, name skill-worthy parts); it only states who runs it and when. The prior sentence (raw line 42, 'Moving material between them is also something you ask Claude to do') is closer to a semantic summary but overclaims: the fenced prompt only NAMES candidate parts ('name the parts... Or none') and moves nothing, a distinction the registry entry's own frontmatter makes explicit ('The move named, not performed.'). Harm per §2's stated purpose (a skim-cue for a prompt read before it's fully absorbed) is real but small: a reader skimming only the lead-in sentence would expect this demo to MOVE material, when it only names candidates; the fence itself is short and unambiguous once read (§2a's short-prompt exemption), so no functional misfire results for a student who reads the fence — the gap is in the framing sentence's accuracy, not in what gets pasted. This exact passage was Antti-worded 2026-08-23 and passed technical@a1ddfae2 unchanged, so I score it non-blocking rather than override a deliberately-worded, already-reviewed closing passage.", "fix_hint": "If tightened: 'Ask Claude to check your local and shared rules for parts that would work better as a skill. This one runs on the screen; run it on your own files whenever you like.' — keeps the optional-run invitation as a second clause.", "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 3, "rule_lead": "Canonical shape — lead-in, label with destination, blank line, fence.", "verdict": "PASS", "evidence": "expand-md.js output: body sentence, blank line, '**Prompt** *(Claude Code)*', blank line, fenced block — matches the canonical shape exactly; no 'copy →' prefix, no '(end of prompt)' closer, no blockquote/backtick wrapping.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 4, "rule_lead": "Installed Skills invoke by name, never path.", "verdict": "N/A", "evidence": "N/A — the prompt invokes no installed skill; it reads CLAUDE.local.md/CLAUDE.md and names candidate parts only.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 5, "rule_lead": "Chain by back-reference + deterministic path, never invented alias.", "verdict": "N/A", "evidence": "N/A — the prompt does not chain on a prior prompt's output; it addresses two fixed, deterministic paths (./CLAUDE.local.md, ./CLAUDE.md) directly.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 8, "rule_lead": "Multi-sample methods need structural enforcement.", "verdict": "N/A", "evidence": "N/A — single-sample naming task, not a self-consistency/ensemble/regeneration-diff method.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 9, "rule_lead": "Markdown shout (`**bold**`, `*italic*`) inside fenced prompts = dead weight in Claude Code.", "verdict": "PASS", "evidence": "`grep -o '[*]' curriculum/prompts/ae101-m2-name-what-moves.md | wc -l` → 0. No asterisks inside the fence.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 13, "rule_lead": "Citation discipline — extend cite-or-flag scope + quote supporting sentence.", "verdict": "N/A", "evidence": "N/A — the fenced prompt asks Claude to name file contents, not to cite or verify external claims; no citation task inside the fence.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 22, "rule_lead": "Prompt-body edits require maintainer approval — registry files AND inline blocks.", "verdict": "PASS", "evidence": "Registry frontmatter note: 'Antti-worded 2026-08-23, approved prompt-ok same day.' `ls .claude/prompt-approvals/` → `ae101-m2-name-what-moves.confirmed` present, confirming the marker was written per the approval process; git history shows the registry file and its lecture reference committed cleanly (no uncommitted prompt-body edit).", "fix_hint": null, "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 28, "rule_lead": "Strong-bold prompt label is exactly `**Prompt**` — custom labels break renderer.", "verdict": "PASS", "evidence": "expand-md.js output line: '**Prompt** *(Claude Code)*' — exact match, no custom label text.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 31, "rule_lead": "Prompts live in registry; module/exercise/lecture files reference by marker.", "verdict": "PASS", "evidence": "Raw line 46: `{{prompt:ae101-m2-name-what-moves}}` — correct marker form; registry file curriculum/prompts/ae101-m2-name-what-moves.md exists with well-formed frontmatter (key/dest/runtime/origin/requires/produces/note), and expand-md.js resolved it cleanly with no leftover `{{` markers in the expanded output.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 39, "rule_lead": "Declare `permission-mode:` when paste requires specific Claude Code mode.", "verdict": "N/A", "evidence": "N/A — the prompt's correct behavior does not depend on a specific permission mode; frontmatter correctly omits the field, and no mode chip renders in the expanded output.", "fix_hint": null, "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 45, "rule_lead": "Prompt paths match Builder scope.", "verdict": "N/A", "evidence": "N/A — this rule's subpath convention is explicitly scoped to Agents 101's training-dir structure ('Agents 101 has two scopes'); AE101 uses the student's own repo with no training-imposed subfolder structure (compendium §23's own carve-out), and the prompt's `./`-prefixed root paths match that convention regardless.", "fix_hint": null, "blocking": false}
+  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/how-instructions-grow.md",
+  "verdict": "PASS",
+  "body_sha": "e3b4ff1bb3db31391ff76440b5eb5788e179146115ee6c52f81afe1e884fa689",
+  "shape_hash": "fb2d52597dcd19b3",
+  "notes": "check_pedagogy scoped to the 5 technical sub-rules named in judges/technical.md (16, 22, 23, 36, 37); the pedagogy judge owns the rest. check_prompts scoped to the 5 named 'technical subset' surfaces (action lead-in=2, no-placeholders=1, chain-by-back-reference=5, multi-sample=8, citation-discipline=13) plus the 3 rules this dispatch's drift-audit explicitly assigned (17, 20, 40); the writing/behavior judges own prose-level prompt rules. check_platform_and_boundaries (65) and check_research_claims (17) are evaluated to full completeness per the template's primary-owner contract. Rules 7, 9, 36, 50, 51 of check_platform_and_boundaries were already resolved N/A by shape hash and are parked in the prefill sidecar, not re-derived here.",
+  "drift_check": [
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 2,
+      "verdict": "PASS",
+      "note": "2b (trainer-screen demo fences owe no lead-in) names THIS FILE verbatim as its own calibration example: 'how-instructions-grow.md (\"This one runs on the screen; you can run this too on your files.\") stands lead-in-free — offer grammar, not imperative.' Current body line matches that calibration exactly (word-for-word except a since-landed micro-edit, itself visible in the pinned diff, that only tightened the offer-grammar phrasing)."
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 17,
+      "verdict": "N/A",
+      "note": "Narrowed 2026-09-03 to plan-mode only; everywhere else advisory. This file's prompt runs in default mode (a two-clause read-and-name task), not plan mode, so no suppressor/primer is owed, and no run has shown preamble eating this specific read."
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 20,
+      "verdict": "N/A",
+      "note": "Narrowed 2026-09-03: 'never gates and rarely fires' absent a named run showing a downstream re-run cost. The prompt produces no saved artefact at all ('name the parts... or none' is a chat answer) so the grill-before-save trigger condition (Claude builds/assembles/authors a persisted artefact) is not met in the first place."
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 40,
+      "verdict": "PASS",
+      "note": "The prompt is self-contained by construction: 'Check out ./CLAUDE.local.md and the repository ./CLAUDE.md...' names both files by deterministic path with no back-reference to prior scrollback ('the file you just created', 'the task we scoped') and no curriculum-coined definite-article label (§40b). It is correct whether the session is cold or warm, so the upstream session-boundary check this rule gates has nothing to resolve either way."
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 11,
+      "verdict": "PASS",
+      "note": "The file carries no literal '**Source verification — MUST DO before first cohort:**' heading, but §11a's stamp convention (which supersedes the ad-hoc heading model — 'stop hand-narrating source debt') is fully implemented: all three practitioner/capability citations in the backing block's Sources section carry the `[checked:YYYY-MM-DD result:RESULT due:DUE]` grammar with fallback clauses. Re-read §11 and §11a at current wording and re-checked the body against them; no drift found."
+    }
+  ],
+  "urls_sampled": [
+    {
+      "url": "https://hbr.org/1977/09/double-loop-learning-in-organizations",
+      "alive": true,
+      "note": "200, correct title/author confirmed by fetch; full text paywalled beyond intro, consistent with a durable theory-construct citation (due:none, §2a) that does not need re-verification of a specific number."
+    },
+    {
+      "url": "https://code.claude.com/docs/en/memory",
+      "alive": true,
+      "note": "Live-fetched and confirms the claim: project CLAUDE.md = team-shared, loaded every session; CLAUDE.local.md = personal, loads alongside it."
+    },
+    {
+      "url": "https://code.claude.com/docs/en/skills",
+      "alive": true,
+      "note": "Live-fetched and confirms the claim verbatim in spirit: 'a skill's body loads only when it's used... full skill content only loads when invoked.'"
+    }
   ],
   "platform_claims_checked": [
-    {"claim": "Capture the smallest useful lesson in `./CLAUDE.local.md`... Share a short standing rule through `./CLAUDE.md` when the team should inherit it.", "line": 6, "verdict": "PASS", "source": "compendium"},
-    {"claim": "extract it into a skill: instructions and supporting material Claude loads when that work calls for them.", "line": 8, "verdict": "PASS", "source": "compendium"},
-    {"claim": "`./CLAUDE.local.md` and `./CLAUDE.md` shape every session in their scope. A skill joins context when the work calls for it.", "line": 21, "verdict": "PASS", "source": "compendium"}
+    {
+      "claim": "instructions and supporting material Claude loads when that work calls for them (skill definition)",
+      "line": 7,
+      "verdict": "PASS",
+      "source": "claude-code-guide/WebFetch, code.claude.com/docs/en/skills, live-checked this session"
+    },
+    {
+      "claim": "`./CLAUDE.local.md` and `./CLAUDE.md` shape every session in their scope",
+      "line": 20,
+      "verdict": "PASS",
+      "source": "WebFetch, code.claude.com/docs/en/memory, live-checked this session"
+    },
+    {
+      "claim": "A skill joins context when the work calls for it",
+      "line": 20,
+      "verdict": "PASS",
+      "source": "WebFetch, code.claude.com/docs/en/skills, live-checked this session"
+    }
   ],
-  "citations_checked": [
-    {"line": 17, "claim": "Argyris's double-loop learning distinction (first loop corrects the action; second questions the governing rule)", "label_present": true, "url_present": true, "url_alive": true, "evidence_level_honest": true},
-    {"line": 6, "claim": "CLAUDE.local.md / CLAUDE.md scope (personal vs shared, auto-load)", "label_present": true, "url_present": true, "url_alive": true, "evidence_level_honest": true},
-    {"line": 8, "claim": "Skill loading behavior (lazy-load on invoke)", "label_present": true, "url_present": true, "url_alive": true, "evidence_level_honest": true}
+  "rules_evaluated": [
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 1,
+      "rule_lead": "Training platform = Claude Code (CLI + Desktop) + Cowork.",
+      "verdict": "PASS",
+      "evidence": "grep for 'claude.ai' in body → 0 hits; body only names Claude Code (prompt dest chip '(Claude Code)').",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 2,
+      "rule_lead": "Cloud/remote features carry Git dependency — out of scope for our training dir.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no cloud/remote feature discussed",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 3,
+      "rule_lead": "Local scheduled tasks catch up on wake, but only once, only for runs missed in last 7 days.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no scheduled-task content",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 4,
+      "rule_lead": "Verify capabilities BEFORE asserting, not after.",
+      "verdict": "PASS",
+      "evidence": "Body asserts two capability facts (skill lazy-loading, CLAUDE file scoping). Live WebFetch this session against code.claude.com/docs/en/memory and /skills confirms both — see platform_claims_checked. Harm (asserting from stale training-data prior) is absent: the claims match current shipped docs.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": "4a",
+      "rule_lead": "Maintain living capability notes for both runtimes; consult before asserting.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "process rule for the author's generation-time workflow, not a distinct body claim to audit",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": "4b",
+      "rule_lead": "Compendium platform claims rot at 60 days.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "scoped to compendium/reference files, not lecture body",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": "4c",
+      "rule_lead": "Don't extend known mechanism into adjacent context without verifying it fires there.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no slash-command-to-skill template extension discussed",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": "4d",
+      "rule_lead": "Fix the contract, not the broken recovery.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no defensive-recovery pattern present",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 5,
+      "rule_lead": "Practitioner observation beats docs lookup.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "process rule for research generation, not applicable to this audit",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": "5a",
+      "rule_lead": "Live-test beats docs for runtime-behavior claims.",
+      "verdict": "PASS",
+      "evidence": "Applied this session: rather than trust the 2026-08-04 stamp alone, WebFetched code.claude.com/docs/en/memory and /skills live to re-confirm the two capability claims; both confirmed current.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 6,
+      "rule_lead": "Known correct Claude Code facts (easy to get wrong):",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no claim about plan mode/connectors/scheduling/subagents beyond the memory+skills claims already covered under §4",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": "6b",
+      "rule_lead": "When tool feature behaves differently than expected, update curriculum — not student's workaround.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no scheduled-task behavior discussed",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": "6d",
+      "rule_lead": "Auto-load surface = SIX things — four filenames + project `.claude/rules/` + user `~/.claude/rules/`.",
+      "verdict": "PASS",
+      "evidence": "Body line 20 ('`./CLAUDE.local.md` and `./CLAUDE.md` shape every session in their scope') names two of the six surfaces without asserting exclusivity or a 'starts clean' claim — the harm this rule guards against (an incomplete inventory presented as the whole picture) is not present; it is a scoped claim about the two files a student authors, matching tier (1) of §37 pedagogy's own auto-load/lazy-load split used elsewhere in this file.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": "6e",
+      "rule_lead": "Transcript-by-mtime selection fragile when current session writes target folder.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no transcript-selection content",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": "6f",
+      "rule_lead": "Compendium pointers inside files = autoload-redundant.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "the file's one outbound link is a student-facing supplementary reference, not an internal CLAUDE.md/SKILL.md compendium pointer",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": "6c",
+      "rule_lead": "PreToolUse/PostToolUse hooks read env from harness, not from agent Bash subshells.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no hook/env-var content",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": "6g",
+      "rule_lead": "Edit-time prompt-edit gate's approval detector MUST parse the transcript deterministically (partial-line-tolerant) — never jq/grep under `pipefail`.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "tooling-internal rule, no matching content in this file",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": "7a",
+      "rule_lead": "CLAUDE.md describes runtime, not just task.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no non-default runtime (sync, network share, container) discussed",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": "7b",
+      "rule_lead": "Cross-working-directory boundaries always open `new`; evidence travels by disk.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no cross-worktree/cross-cwd resume content",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": "7c",
+      "rule_lead": "Same-cwd recovery defaults to `--resume`, not `new`.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no session-recovery content",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 8,
+      "rule_lead": "F-Secure curriculum off-limits.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no F-Secure content",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 10,
+      "rule_lead": "External org content.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no external-org content imported",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 11,
+      "rule_lead": "Destructive operations need confirmation.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no destructive operation in body or prompt",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 12,
+      "rule_lead": "No \"as-is\" imports from internet.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no external artifact imported",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 13,
+      "rule_lead": "Pseudo-URI + kill-switch for public/private content split.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no pseudo-URI content",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": "13a",
+      "rule_lead": "Bulk workbook rebuilds: derive flags from existing output, never guess \"all.\"",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no build/rebuild content",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": "13b",
+      "rule_lead": "Before auditing a built artifact ask whether it ships; before acting on a finding, re-measure it.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "target is a curriculum source file, not a built artifact under site/clients",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 14,
+      "rule_lead": "Internal audit/session-retro directories default-gitignore from creation.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "not a directory-creation event",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": "14a",
+      "rule_lead": "Canon is declared, not inferred — and an orphan is not automatically spent.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "not a canon-declaration surface",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 15,
+      "rule_lead": "Quality gates run at wind-down, not mid-session.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "process rule, not lecture content",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 16,
+      "rule_lead": "Tooling test layers carry acceptance-test contract.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "not applicable to lecture body content",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 17,
+      "rule_lead": "Script ratchet — every LLM-orchestration tooling surface ratchets toward script-replaceable assertions.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "tooling-design rule, not lecture content",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 18,
+      "rule_lead": "Hook lints partition into auto-fix vs warn — main thread sees only judgment.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no hook-lint content",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 19,
+      "rule_lead": "Runner ↔ source pre-flight.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no runner/fixture content",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 20,
+      "rule_lead": "Judge must honor script exit codes.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "governs judge/orchestrator behavior, not lecture content — I ran plain node scripts this session (derive-body-view, derive-class-brief, prefill-instance) and read their real stdout, no exit-code laundering",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 21,
+      "rule_lead": "Eval-fire writing-class fires must schema-validate before presenting verdicts.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "governs writing-class dispatch model policy, not this file's content",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 22,
+      "rule_lead": "Coverage tools enumerate universe, not index of past work.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "tooling-design rule, not lecture content",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 23,
+      "rule_lead": "Cowork sandboxed to its connected working directories.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "AE101 is Claude Code CLI/Desktop only, no Cowork content here",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 24,
+      "rule_lead": "`maintainer_acceptance` = JSON-level override for accepted/mitigated judge verdicts.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no maintainer_acceptance override present or needed on this instance",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": "24a",
+      "rule_lead": "Quality stamps: tooling writes them; the SHA pins committed content.",
+      "verdict": "PASS",
+      "evidence": "Line 96: '**Quality:** compendium-audited 2026-09-05 (writing@... slides@c0c37913)' — clean anchor, no leftover narrative tail, matches the canonical stamped shape.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 25,
+      "rule_lead": "Cowork capability surface — UI surfaces subagent reads; no session rename in Cowork or Desktop.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no Cowork content",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 26,
+      "rule_lead": "Audit scope derives from TRAININGS registry + link-walk, not disk dir or tarball.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "single-file dispatch, not a training-scope audit",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 27,
+      "rule_lead": "Acceptance-test contract covers (i) prompt mechanics + (ii) end-state artefacts, NOT (iii) does prompt's executable shell actually work.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "the file's one prompt contains no shell/CLI content to test",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 28,
+      "rule_lead": "Strategy-doc drift surfaces via judge citation — citation = canary, not verdict.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no REVISE citing a strategy doc is filed here",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 29,
+      "rule_lead": "Portability audits: analyze AGENT'S runtime, not prompt's literal syntax.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "the prompt asks the agent to read two named files and report; no OS/shell-specific command is given to the student",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 30,
+      "rule_lead": "Skills at `~/.claude/skills/<name>/` are user-global but per-codebase in content — namespace by SUT.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no skill-authoring/naming collision content",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 31,
+      "rule_lead": "state.json files written by `run-mN.sh` are convenience caches, not authoritative — read hand-off from in-SUT artefacts.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no state.json/hand-off content",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 32,
+      "rule_lead": "tmux-runner sessions must use a per-runner socket (`tmux -L runner-$run_id ...`), not the user-wide default.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no tmux-runner content",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 33,
+      "rule_lead": "A killed `run_in_background` Bash wrapper is not evidence the tmux session it launched is dead.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no background-run content",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 34,
+      "rule_lead": "Spend on deleting the duplicate, not on guarding it — and a gate that finds nothing is speculation.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "tooling/process rule, no matching content",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 35,
+      "rule_lead": "`update-quality.sh` takes ALL classes in ONE invocation per file, and not until that file's last judge has returned.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "governs the orchestrator's stamping step, which happens after all classes return, not this judge's row",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 37,
+      "rule_lead": "Measure the defect before proposing the fix, and again before repeating it to the maintainer.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no punch-list finding is being proposed here to measure",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 38,
+      "rule_lead": "Prose describing a runtime the room never executes drifts to plausible mechanism — no judge catches it, because no artefact contradicts it.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no forward-looking/speculative-automation prose in this file; the memory/skills claims are current-state, not what-a-future-mechanism-could-do",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 39,
+      "rule_lead": "A judge subagent without evidence is a rubber-stamp, and the summary table cannot tell you which you got.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "governs judge dispatch discipline generally (already followed per the dispatch preamble), not a distinct content check on this file",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 40,
+      "rule_lead": "A gate keyed on the TOOL has a back door; a gate keyed on the FILE does not.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no hook-matcher content",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 41,
+      "rule_lead": "Harness-side caches drift; the artifact is canonical.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no harness-cache content",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 42,
+      "rule_lead": "Before deleting anything, ask what its FIRING would look like — reference-grep can't tell live from abandoned.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no deletion decision being made",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 43,
+      "rule_lead": "A hook on a gitignored surface is a rule on ONE machine.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no hook-authoring content",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 44,
+      "rule_lead": "`git log -1 --date=short -- <path>` on a DELETED file returns the deletion date.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no staleness-sweep-by-git-date content",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 45,
+      "rule_lead": "A detector's reading vocabulary must cover the corpus's writing vocabulary — or it reports compliance as rot.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no detector-authoring content",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 46,
+      "rule_lead": "A verdict has more than one input; a freshness check usually watches one.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "governs pin/freshness-tooling design, not this file's content",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 47,
+      "rule_lead": "\"It used to be fast\" is a regression report — diagnose it by trajectory, not by architecture.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no performance-regression content",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 48,
+      "rule_lead": "A bench is silent about everything it cannot stage, and silence reads exactly like a pass.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no benchmark/hillclimb content",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 49,
+      "rule_lead": "An instruction whose violation leaves the output identical is not enforced by wording — it needs a measurement or a test.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no silent-violation-shaped instruction content in this file",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 52,
+      "rule_lead": "Two producers disagreeing about a canonical value, with nothing reconciling them, ARE the defect — and a gate no corpus can pass has stopped being read.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no two-producer canonical-value conflict present in this file",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 1,
+      "rule_lead": "Source URL + type label — mandatory.",
+      "verdict": "PASS",
+      "evidence": "Backing block Sources (lines 75-77) carry [capability] and [academic/research] labels with clickable URLs for all three sourced claims; per §1's own scope carve-out these labels correctly live in the maintainer/backing block, not the student-facing body.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": "1a",
+      "rule_lead": "OODA paraphrase ≠ primary source.",
+      "verdict": "PASS",
+      "evidence": "Backing-block claim 'double-loop-distinction' paraphrase ('The first loop corrects the action. The second questions the governing rule or assumption that shaped the action.') matches the source note's own summary of Argyris's distinction; not a drifted or over-specific rewrite of a quote.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 2,
+      "rule_lead": "Freshness rule — 6 months.",
+      "verdict": "PASS",
+      "evidence": "claude-memory/claude-skills stamps checked 2026-08-04, due:cohort (capability claims, not evidence needing publication+6mo); Argyris citation correctly uses due:none under the theory-construct carve-out (§2a), not the 6-month evidence window.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 3,
+      "rule_lead": "Zombie stat guard.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no round-number failure statistic cited",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 4,
+      "rule_lead": "Hold short OODA loose.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "process rule for research generation, not this file's content",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 5,
+      "rule_lead": "Resist prescriptive post-OODA phrasings.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no post-OODA prescriptive phrasing present",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 6,
+      "rule_lead": "Default to asking before folding findings into strategy docs.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "process rule, not applicable to this audit",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 7,
+      "rule_lead": "Vision × Detail split.",
+      "verdict": "PASS",
+      "evidence": "Backing block's Claims section correctly labels each claim detail/vision/borrowed; every 'detail' claim (local-rule-scope, repo-rule-scope, skill-loading, claude-files-shape-scope, skill-joins-context) carries a KB-backed source (← claude-memory / claude-skills); every 'vision' claim (common-route-not-ladder, rule-load-quality-ceiling, rules-pass-point-missed, prohibitions-dont-teach, positive-form-compresses, good-runs-earn-rules) correctly carries ← none-owed.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 8,
+      "rule_lead": "Grep `continuous-research/` and `memory/` before guessing at a name.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "process rule for research generation, not this file's content",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 9,
+      "rule_lead": "Consult research BEFORE generating, not after.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "process rule, not applicable at audit time",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 10,
+      "rule_lead": "No \"What research says\" callout boxes.",
+      "verdict": "PASS",
+      "evidence": "Citation is inline builder-voice prose ('[Chris Argyris called the deeper move double-loop learning](url)'), not a consultancy-deck callout box.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 11,
+      "rule_lead": "Source-verification maintainer block on any student-facing file with practitioner citations.",
+      "verdict": "PASS",
+      "evidence": "See drift_check entry above: §11a's stamp grammar (which supersedes the literal MUST-DO heading) is fully implemented for all three sources.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 12,
+      "rule_lead": "Denominator + axis discipline on every adoption/productivity number.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no adoption/productivity percentage cited",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 13,
+      "rule_lead": "Inference beyond source — absence licenses only absence.",
+      "verdict": "PASS",
+      "evidence": "The one vision-layer inferential claim without KB backing ('Past a point the context bloats, and quality degrades in ways that are hard to pin', line 25) is explicitly labeled 'vision · ← none-owed' in the backing block, not dressed as a sourced finding — matches the rule's own Vision/Detail carve-out rather than smuggling an unsourced conclusion as evidence.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 14,
+      "rule_lead": "A green check must measure the fact, not a proxy that co-varies with it.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no verification-instrument content in this lecture",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 15,
+      "rule_lead": "A word-presence claim needs an unprimed read.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no word-presence research claim made",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 16,
+      "rule_lead": "A candidate that matches the hunt's SHAPE has not answered the hunt's QUESTION.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no OODA candidate-matching content in this lecture",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 16,
+      "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
+      "verdict": "PASS",
+      "evidence": "The one forcing function this lecture asks for — identify CLAUDE-file parts better moved into a skill, with a legitimate null case — sits entirely inside the fence ('Check out ./CLAUDE.local.md and the repository ./CLAUDE.md. If any parts appear that would be better moved into a skill, name the parts. Or none, if nothing appears that way.'). No scripted-reaction count/instinct language appears in body prose around it.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 22,
+      "rule_lead": "Rule in memory without forcing function = worse than no rule.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "governs authoring new memory/compendium rules; this file is student-facing content, not a compendium rule addition",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 23,
+      "rule_lead": "Short skeptical pushback on \"done\" = re-verify trigger.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "the prompt is a single-turn scan-and-report task with no 'done' declaration moment to skeptically re-verify",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 36,
+      "rule_lead": "Verification machinery needs smoke-test before trust.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no verification machinery (hook/judge/loop/eval/gate) is built or referenced in this lecture",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 37,
+      "rule_lead": "Context-loading tiers as staged progression.",
+      "verdict": "PASS",
+      "evidence": "Body correctly distinguishes tier (1) auto-load ('`./CLAUDE.local.md` and `./CLAUDE.md` shape every session in their scope', line 20) from tier (2) lazy-load ('instructions and supporting material Claude loads when that work calls for them', line 7; 'A skill joins context when the work calls for it', line 20) without conflating them. Per the maintainer block this is the M2 CLOSING lecture recapping 'the context mechanism the student has already used' — the surface-proving run happened in earlier M2 content, so the anti-pattern clause (lecturing without exposing a surface) is judged at the whole-arc grain the rule intends, not against this one closing file in isolation.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 1,
+      "rule_lead": "No placeholders inside fences.",
+      "verdict": "PASS",
+      "evidence": "Fence text: 'Check out ./CLAUDE.local.md and the repository ./CLAUDE.md. If any parts appear that would be better moved into a skill, name the parts. Or none, if nothing appears that way.' — grep for `\\[` bracket-placeholder pattern → 0 hits.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 2,
+      "rule_lead": "Every prompt block: one-sentence action lead-in.",
+      "verdict": "PASS",
+      "evidence": "§2b carve-out (trainer-screen demo fences owe no lead-in) names this exact file as its own calibration example. Body's offer-grammar sentence ('This one runs on the screen; you can run this too on your files.') matches the carve-out's shape; no command-verb lead-in is owed or missing.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 5,
+      "rule_lead": "Chain by back-reference + deterministic path, never invented alias.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "standalone single-prompt lecture; the prompt does not chain on a file an earlier prompt wrote",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 8,
+      "rule_lead": "Multi-sample methods need structural enforcement.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "single deterministic read-and-report task, not a self-consistency/majority-vote/ensemble method",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 13,
+      "rule_lead": "Citation discipline — extend cite-or-flag scope + quote supporting sentence.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "the prompt asks Claude to name file parts, not to cite or support a claim",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 17,
+      "rule_lead": "Preamble before action — design around it.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "narrowed 2026-09-03 to plan-mode only; this prompt runs in default mode, not plan mode",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 20,
+      "rule_lead": "Grill before save — collaborative quality at artefact assembly.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "narrowed 2026-09-03 (never gates absent a named re-run cost); also the trigger condition itself is absent — the prompt saves/persists no artefact",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 40,
+      "rule_lead": "Verify session boundary before deciding prompt's context-carrying.",
+      "verdict": "PASS",
+      "evidence": "Prompt names both target files by deterministic path with no scrollback back-reference and no curriculum-coined definite-article label (§40b); it is correct whether the session is cold or warm.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "technical.md",
+      "rule_index": null,
+      "judge_owned": true,
+      "rule_lead": "Skill availability — any [Skill: <name>] reference must point to a real skill.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "grep for '[Skill:' in body → 0 hits",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "technical.md",
+      "rule_index": null,
+      "judge_owned": true,
+      "rule_lead": "URL liveness — sample 3-5 URLs.",
+      "verdict": "PASS",
+      "evidence": "3/3 sampled alive (all URLs in the file — see urls_sampled): hbr.org double-loop article (200, title/author confirmed), code.claude.com/docs/en/memory (confirms claim), code.claude.com/docs/en/skills (confirms claim).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 7,
+      "rule_lead": "Sessions = unit of work — write \"start a new session in X,\" not \"open Claude Code in X.\"",
+      "verdict": "N/A",
+      "evidence": "N/A — grep -in 'open Claude Code' curriculum/lectures/how-instructions-grow.md → 0 matches; the file never discusses opening/launching a session.",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "60c49c93c68d5367dc6727f439b63ed47238b5d9098cf4c46bda0d9234a00f85",
+      "carried_shape": "fb2d52597dcd19b3"
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 9,
+      "rule_lead": "No premature infrastructure.",
+      "verdict": "N/A",
+      "evidence": "N/A — no MCP/SQLite/knowledge-graph/tooling-layer proposal anywhere in the file; the closest passage (raw line 29, 'rules that prune themselves, evidence that routes itself...') explicitly declines to build any of this and defers it to the reader's own team.",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "60c49c93c68d5367dc6727f439b63ed47238b5d9098cf4c46bda0d9234a00f85",
+      "carried_shape": "fb2d52597dcd19b3"
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 36,
+      "rule_lead": "A hash guard is only as good as what it hashes, and a malformed hash disarms it silently.",
+      "verdict": "N/A",
+      "evidence": "N/A to this file's own content — the rule governs `body_sha`/`phase_sha` fields inside eval-instance JSON and quality-stamp SHA provenance, not lecture prose. Self-check on my own body_sha for this pass: `shasum -a 256 curriculum/lectures/how-instructions-grow.md` → ad68e2dd80479e99681078ce11b765beec2f0b46af889d523f7884e3502d955e (64 hex chars, real command output, not fabricated) — recorded above.",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "60c49c93c68d5367dc6727f439b63ed47238b5d9098cf4c46bda0d9234a00f85",
+      "carried_shape": "fb2d52597dcd19b3"
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 50,
+      "rule_lead": "Thinking-effort levels are a real, named Claude Code control surface — stamped.",
+      "verdict": "N/A",
+      "evidence": "N/A — no thinking-effort/`--effort` claim anywhere in this file.",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "60c49c93c68d5367dc6727f439b63ed47238b5d9098cf4c46bda0d9234a00f85",
+      "carried_shape": "fb2d52597dcd19b3"
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 51,
+      "rule_lead": "A two-file contradiction is not a defect until you have read the code that reconciles them.",
+      "verdict": "N/A",
+      "evidence": "N/A — no cross-file contradiction under investigation in this file; nothing in this lecture reports a prompt/harness disagreement.",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "60c49c93c68d5367dc6727f439b63ed47238b5d9098cf4c46bda0d9234a00f85",
+      "carried_shape": "fb2d52597dcd19b3"
+    }
   ],
-  "skills_referenced": [],
-  "urls_sampled": [
-    {"url": "https://code.claude.com/docs/en/memory", "alive": true, "status_code": 200},
-    {"url": "https://code.claude.com/docs/en/skills", "alive": true, "status_code": 200},
-    {"url": "https://hbr.org/1977/09/double-loop-learning-in-organizations", "alive": true, "status_code": 200}
-  ],
-  "blocking_findings_count": 0,
-  "todos_count": 1,
-  "drift_rules_reread": ["platform_and_boundaries §45 — re-fetched via rule.js this session; current wording (incl. 2026-08-28 fail-open corollary) confirmed. N/A to this file: the rule governs how audit-eval-coverage.js / check-instance-evidence.js parse judge-instance rule-index shapes, and this lecture's body (CLAUDE.md/skills content for students) contains no detector output, rules_evaluated array, or coverage-tool artefact for the rule to bind to. No finding."],
-  "accept_notes_found": [
-    "L52 Lecture meta — rules-ceiling third slide is Antti-directed 2026-08-19; third paragraph (prune clause + declared stop) Antti-directed 2026-08-23; closing-slide reorder Antti-directed 2026-08-23; supplements-link-on-slide exception Antti-directed 2026-08-19; positive-form fourth slide Antti-directed 2026-08-19.",
-    "L54 Time — 7 minutes, includes the +2min live-prompt run added 2026-08-23.",
-    "L77 claude-memory source stamp — [checked:2026-08-04 result:OK due:cohort].",
-    "L78 claude-skills source stamp — [checked:2026-08-04 result:OK due:cohort].",
-    "L79 argyris-double-loop source stamp — [checked:2026-08-04 result:OK due:none].",
-    "L85 Stance stamp — [stance:2026-08-04 level:L2].",
-    "L94 OODA last-run — 2026-08-04.",
-    "L98 Quality stamp — compendium-audited 2026-08-26, technical@a1ddfae2 among the pins (the pin this dispatch supersedes)."
-  ],
-  "notes": "3/3 sampled URLs alive (curl --head -L, this session). validate-backing.js on this file: 0 error, 0 warn, 9 info (all info rows are unrelated theory-plan.md backbone-law-unreached notices, not this file). Only finding: check_prompts.md §2 non-blocking lead-in mismatch on the fifth-slide prompt (see rules_evaluated) — same underlying gap also touches check_prompts.md §38 (body lead-in mirrors prompt's opening phrasing), not filed as a second row to avoid double-counting one root cause; both point at the same fix. check_prompts.md is judged as a technical-mechanical subset (13 rows), matching the prior technical@a1ddfae2 instance's own scope decision and the template's 'technical subset of check_prompts.md' framing — only check_platform_and_boundaries.md and check_research_claims.md carry the full per-rule completeness mandate (67 + 17 rows, all present). check_pedagogy.md scoped per dispatch instructions to items 16/22/23/36/37 only. Out-of-lane, reported not judged: (a) whether the declared-stop paragraph (raw line 30) reads as honest scaffold vs. apology is a mood/story-class call; (b) M2 total runtime — `calculate-time.js --check` this session reports this lecture at 7 min (raw line 54, unchanged) but flags the MODULE total twice, inconsistently ('runs 124' / 'OVER by 4' in one summary line, 'runs 127' / 'OVER by 7' in another within the same run) against both `cohort-2day` and `sitting-2h` 120-min caps — no rule in my four compendiums governs a training-level dosage cap (check_lectures.md territory), and the script's own inconsistency (124 vs 127 for what should be one module total) is itself worth a maintainer glance, flagged here rather than invented as a rule finding.",
-  "todos": [
-    {"rule": "check_prompts.md §2 / §38", "note": "Fifth-slide lead-in ('This one runs on the screen; run it on your own files whenever you like.') describes delivery mode, not the prompt's action, and doesn't mirror the fence's opening clause. Non-blocking given the passage is Antti-worded 2026-08-23 and the fence is short/self-explanatory; worth a maintainer glance next time this slide is touched.", "line": 44}
-  ]
+  "todos_count": 0,
+  "blocking_findings_count": 0
 }

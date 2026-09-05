@@ -18,7 +18,7 @@ What you can read is your own window. `/context` already gives you the breakdown
 
 It helps to see the cost once, in dollars, and then stop worrying about it. In an agent session the whole context is re-sent as input on every turn, so anything you carry is paid again and again across the session.
 
-Ask Claude to price the bloat from current Opus pricing: 100K extra tokens over 20 turns, then what caching does to it.
+Ask Claude to price the bloat at current Opus pricing, then what caching does to it.
 
 **Prompt** *(Claude Code)*
 
@@ -135,8 +135,8 @@ Token efficiency is one lever with two payoffs: a cleaner window thinks better a
 - Entry points: M2 close (final slide of `how-instructions-grow.md`), M3 module close (`earn-the-trust.md`), M4 prework (`run-the-first-experiment.md`).
 - Carries additive calc/exploration prompts (the "price the bloat" cost calc), not primitive demonstrations. `/context` is treated as already-known (it lands in M1 and recurs through the exercises); the page reads it as the instrument the engineer holds, not a move to teach. Do not reintroduce "run `/context`" demonstrations here. Prompts are inline `**Prompt**` blocks (draft form); migrate to registry prompts (`curriculum/prompts/<key>.md`) on wiring, the way `the-agent-loop.md` uses `{{prompt:...}}` includes. Approved-prompt key so far: `ae101-token-efficiency-bloat-cost`.
 
-**Quality:** compendium-audited 2026-08-29 (writing@43e6cae1 story@e11bbeb4 technical@8cc00874 behavior@b3143a4 pedagogy@b55cd28b strategy@b3143a4 slides@43e6cae1)
-- judges @43e6cae1: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-09-05 (writing@324b81d7 story@324b81d7 technical@324b81d7 behavior@b3143a4 pedagogy@b55cd28b strategy@aa1f7826 slides@324b81d7)
+- judges @324b81d7: writing PASS, story PASS, technical PASS (3 todos see instances/ae101--supplementary--the-context-ceiling.technical.json), behavior PASS, pedagogy PASS, strategy PASS (1 todo see instances/ae101--supplementary--the-context-ceiling.strategy.json), slides PASS
 
 **Visible "Sources" list is deliberate.** Linked titles + venue + year (no source-type labels, no ladder vocabulary) = student-facing end-matter, not a "What research says" callout; the no-callout rule bans audit framing inside the prose, not a reading list. Curated to verified URLs only — every entry opened against its byline. Keep the list and the maintainer stamps in sync.
 

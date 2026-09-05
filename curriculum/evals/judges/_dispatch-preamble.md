@@ -83,6 +83,8 @@ node curriculum/evals/scripts/derive-class-brief.js <file> <class>
 
 Every in-scope rule at its full T3 wording, every carve-out, every boundary clause — minus the rules the prefill already resolved. Nothing is condensed: rule text is 92.8% of a compendium's bytes, so a "digest" that keeps the wording IS the compendium, and one that does not is the T1-vs-T3 failure this preamble opens by forbidding. If the brief cannot build, read the compendiums in full and say so in `notes`.
 
+Paths inside rule text are repo-root relative. `scripts/check-slide-size.js` is `<repo>/scripts/check-slide-size.js`, not a file under `curriculum/evals/scripts/`; two story judges in a row reported it missing after looking only there and hand-counted instead.
+
 **3. Rows that turn on SHAPE rather than prose are resolved before you start.**
 
 ```

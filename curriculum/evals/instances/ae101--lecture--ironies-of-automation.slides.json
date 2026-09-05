@@ -3,12 +3,24 @@
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/ironies-of-automation.md",
   "verdict": "PASS",
   "training": "ae101",
-  "body_sha": "f5002dd1ec0ca287d84ab4a80fe5e9739c6d21c0a09197b4800c163fc391dfde",
+  "body_sha": "b22a6b72e2714876797b786d6851ead3dba7fab585b8f5aad13d534bd83ac5f1",
   "shape_hash": "1870b031fbe8c765",
   "chunk_map": [
-    {"index": 0, "heading": "H1: The ironies of automation (no lede)", "lines": "1"},
-    {"index": 1, "heading": "Monitoring and takeover run on the same reps", "lines": "3-9"},
-    {"index": 2, "heading": "Trust and vigilance move in opposite directions", "lines": "10-16"}
+    {
+      "index": 0,
+      "heading": "H1: The ironies of automation (no lede)",
+      "lines": "1"
+    },
+    {
+      "index": 1,
+      "heading": "Monitoring and takeover run on the same reps",
+      "lines": "3-9"
+    },
+    {
+      "index": 2,
+      "heading": "Trust and vigilance move in opposite directions",
+      "lines": "10-16"
+    }
   ],
   "rules_evaluated": [
     {
@@ -17,7 +29,7 @@
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Chunk 1 line 6: 'This is a 1983 argument, not an AI take.' — cataphoric 'This' resolves within the same bullet (continues 'Lisanne Bainbridge... the human keeps exactly two jobs'). Line 7 'Both jobs' -> 'exactly two jobs' named line 6, same chunk. Chunk 2 line 13 'named this **overreliance**: trusting the machine...' — 'this' resolved by the immediately following colon-clause in the same sentence. Chunk 2 line 14 'the agent' (first literal appearance in this file) has no in-file antecedent, but is arc-earned spine vocabulary for the whole AE101 training: verified via grep that 'the agent' is plain body vocabulary from M1 onward (`getting-going.md` lines 17, 33, 57), and this lecture sits at the M4 close, several modules downstream — per check_slides.md's arc-earned-spine-vocabulary carve-out, it does not need re-introduction on this slide. Closest-to-violating candidate: chunk 2 line 15 'The trust... The watching' — both resolve cleanly to 'trust'/'vigilance' named in the header (line 10) and prior bullets, no gap.",
+      "evidence": "Chunk 1 line 6: 'This is a 1983 argument, not an AI take.' — the demonstrative is cataphoric framing resolved by the rest of the same bullet and chunk (Bainbridge's finding, named one clause later in the same sentence). Line 7 'Both jobs' <- 'the human keeps two jobs' named line 6, same chunk. Line 8 'those reps' <- 'the reps of doing the task yourself' named line 7, same chunk. Chunk 2 line 13 'named this **overreliance**' <- resolved by the immediately preceding clause in the same sentence ('your own detection performance degrades'). Line 14 'the agent' is the first literal appearance of that noun IN THIS FILE, but it is arc-earned spine vocabulary: `grep -rn \"\\bthe agent\\b\" curriculum/exercises/*.md curriculum/lectures/*.md | grep -v ironies-of-automation` returns hits from `audit-your-agent.md`, `author-security-skill.md` and dozens more, and `getting-going.md` (the training's M1 file) exists and uses the term from the opening module — this M4-closing lecture sits many modules downstream of where 'the agent' became baseline vocabulary, so the carve-out for the training's own named terms once earned in a prior module applies; it does not need re-introduction on this slide. Closest-to-violating candidate: line 15 'The same observed competence' — resolves cleanly to 'trust'/'competence' named in the header (line 10) and prior bullets of the same chunk, no gap.",
       "fix_hint": null,
       "blocking": true
     },
@@ -27,29 +39,7 @@
       "rule_lead": "Cross-file and positional callbacks.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Scanned every sentence in lines 1-16: no phrase points at another file or names a prior slide/lecture by position (no 'the opening lecture said', 'that story', etc.). All callbacks are within-file (header -> bullet) or attribute Bainbridge/Parasuraman-Riley by name, which is citation, not a positional callback. No candidate even approaches this rule.",
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 3,
-      "rule_lead": "Every backward reference points at a beat that exists.",
-      "verdict": "N/A",
-      "chunks_flagged": [],
-      "evidence": null,
-      "na_reason": "no 'the X you did/saw' backward-beat construction present in the body",
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 4,
-      "rule_lead": "Live-demo beats survive a text read.",
-      "verdict": "N/A",
-      "chunks_flagged": [],
-      "evidence": null,
-      "na_reason": "no guess/predict instruction anywhere in the body — narrative-only lecture, no demo beat",
+      "evidence": "Read every sentence in lines 1-16: no phrase points at another file, module, or prior slide by position (no 'the opening lecture said', 'that story', 'earlier we saw'). Attributions are all by name ('Lisanne Bainbridge', 'the automation-studies literature ... Parasuraman and Riley') — citation of a named source, not a positional callback to another curriculum file. No candidate approaches this rule.",
       "fix_hint": null,
       "blocking": true
     },
@@ -59,7 +49,7 @@
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Chunk 1 (lines 3-9) carries 3 substantive bullets on the two-job mechanism; chunk 2 (lines 10-16) carries 3 substantive bullets on the trust/vigilance mechanism. Neither is a bare wait-state or single context-dependent bullet. Chunk 0 (line 1) is the title-only lede, exempt as the title slide by the template's own chunk-0 convention.",
+      "evidence": "Chunk 1 (lines 3-9) carries 3 substantive bullets on the two-jobs/atrophy mechanism; chunk 2 (lines 10-16) carries 3 substantive bullets on the trust/vigilance mechanism and closes with a standalone question. Neither is a bare wait-state or a single context-dependent bullet. Chunk 0 (line 1, the H1) is the title slide with no `##` content of its own and is not scored as a content chunk under this rule.",
       "fix_hint": null,
       "blocking": false
     },
@@ -69,7 +59,7 @@
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Chunk 1 header 'Monitoring and takeover run on the same reps' (line 3) is proven by its own content (lines 6-8): two jobs, monitor and take over, both riding on reps that daily automation removes. Chunk 2 header 'Trust and vigilance move in opposite directions' (line 10) is restated near-verbatim as the chunk's own line 15 — the strongest possible self-carry, no contradiction in either chunk.",
+      "evidence": "Chunk 1 header 'Monitoring and takeover run on the same reps' (line 3) is proven by lines 6-8: two jobs (monitor, take over), both riding on 'the reps of doing the task yourself' (line 7) — a literal match. Chunk 2 header 'Trust and vigilance move in opposite directions' (line 10) is restated near-verbatim as the chunk's own line 15 opener — the strongest possible self-carry. Neither chunk's content contradicts its header.",
       "fix_hint": null,
       "blocking": false
     },
@@ -79,7 +69,7 @@
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Checked all sub-items across lines 1-16: (a) 'Not X. Not Y. Z.' construction — zero instances. (b) anaphora/epistrophe triples — closest candidate is line 6's pair 'Monitor for the rare failure. Take over when it happens.', a pair not a triple; no triple found anywhere. (c) self-grading superlatives / value-prop leak — none; the file never grades its own usefulness. (d) number + own retraction — the only number present is '1983' (line 6), a plain citation date, never hedged or retracted. (e) abstraction-noun stacks — 'hands-on fluency' (line 7) and 'detection performance' (line 13) are the closest candidates but are ordinary terms carried from the cited literature, not invented noun-stacking. (f) empty-leg verb triplets — none; longest verb chain is the two-verb 'Monitor... Take over' (line 6).",
+      "evidence": "`awk 'NR>=1 && NR<=16' curriculum/lectures/ironies-of-automation.md | grep -inE 'Not [A-Z][a-z]+\\. Not '` -> exit 1, zero hits: no 'Not X. Not Y. Z.' construction. Anaphora check: line 14 has two 'The more X, the worse Y' clauses ('The more tasks the agent lands cleanly...' / 'The more autonomy the agent earns...') but they are separated by a differently-shaped middle sentence, not three consecutive identical-stem clauses, and each carries distinct concrete content (tasks landing vs. autonomy earned) — not the banned triple shape. No self-grading superlative anywhere (the file never grades its own usefulness). Only number present is the plain citation date '1983' (line 6), never hedged or retracted. 'hands-on fluency' (line 7) and 'detection performance' (line 13) are ordinary terms carried from the cited literature, not invented abstraction-stacking. Longest verb chain is the two-verb pair 'Monitor... Take over' (line 6) — no empty-leg triplet anywhere.",
       "fix_hint": null,
       "blocking": true
     },
@@ -89,7 +79,7 @@
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Ran `awk 'NR>=1 && NR<=16' curriculum/lectures/ironies-of-automation.md | grep -inE '\\b(surface|firing|compendium|forcing function|beat|mood|connections)\\b'` -> exit 1, zero matches. The `<!--tier:2-->` markers on lines 4 and 11 are invisible HTML-comment platform chrome (trainer skip-guidance corner token via `site/layouts/slides.js` expandTiers, guarded by `scripts/slides.test.js`), used identically across other AE101 lecture files (`what-packaging-is.md`, `the-machine-you-just-met.md`, `where-the-rule-could-live.md`) — not slide-visible text and not authorial dialect.",
+      "evidence": "`awk 'NR>=1 && NR<=16' curriculum/lectures/ironies-of-automation.md | grep -inE '\\b(surface|firing|compendium|forcing function|beat|mood|connections)\\b'` -> exit 1, zero matches. The `<!--tier:2-->` markers on lines 4 and 11 are invisible HTML-comment platform chrome (trainer-tier skip markup, not slide-rendered text) and carry no vocabulary at all, dialect or otherwise.",
       "fix_hint": null,
       "blocking": true
     },
@@ -99,7 +89,7 @@
       "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "`awk 'NR>=1 && NR<=16' curriculum/lectures/ironies-of-automation.md | grep -c '\\*\\*'` -> 1 (line 13 only: '**overreliance**', a single-word named handle from the Parasuraman-Riley taxonomy). Chunk 1 (lines 3-9): 0 bold spans. Chunk 2 (lines 10-16): 1 bold span, within the ≤1-per-slide budget and the ≲5-word handle cap. Maintainer accept-note at line 23 documents this as the deliberate 2026-07-09 emphasis pass ('all leads de-bolded... One handle survives: overreliance').",
+      "evidence": "`awk 'NR>=1 && NR<=16' curriculum/lectures/ironies-of-automation.md | grep -n '\\*\\*'` -> exactly 1 hit, line 13: '**overreliance**' — a single-word named handle from the Parasuraman-Riley taxonomy. Chunk 1 (lines 3-9): 0 bold spans. Chunk 2 (lines 10-16): 1 bold span, within the ≤1-per-slide budget and well inside the ≲5-word handle cap. Maintainer accept-note at line 23 documents this as the deliberate 2026-07-09 emphasis pass: 'all leads de-bolded ... One handle survives: overreliance'.",
       "fix_hint": null,
       "blocking": false
     },
@@ -109,20 +99,9 @@
       "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "`grep -n \"ironies-of-automation\" curriculum/trainings/agentic-engineering-101/run-the-first-experiment.md` -> line 45 '[Lecture: The ironies of automation](lectures/ironies-of-automation.md)', a standalone-paragraph structural include-link (the standard inline mechanism). `grep -n \"ironies-of-automation\" scripts/build-workbook.js` -> line 163; `sed -n '150,175p' scripts/build-workbook.js` confirms it sits inside the M4 array between 'lectures/what-keeps-a-long-running-session-going' and 'lectures/reading-the-return'. The lecture reaches the composed deck through the same include + registration mechanism as every other AE101 lecture — not a phase-less prose section of the kind rule 10's canonical failure describes.",
+      "evidence": "`grep -n \"ironies-of-automation\" curriculum/trainings/agentic-engineering-101/run-the-first-experiment.md` -> line 45: '[Lecture: The ironies of automation](lectures/ironies-of-automation.md)', a standalone-paragraph include-link, the standard AE101 include mechanism. `grep -n \"ironies-of-automation\" scripts/build-workbook.js` -> line 163, inside the M4 lecture-array entry `'lectures/ironies-of-automation'`. The lecture reaches the composed deck through the same include + registration path every other AE101 lecture uses — not a phase-less prose section of the kind this rule's canonical failure describes.",
       "fix_hint": null,
       "blocking": true
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 11,
-      "rule_lead": "Numbering — position is computed, content ordinals are linted.",
-      "verdict": "N/A",
-      "chunks_flagged": [],
-      "evidence": null,
-      "na_reason": "no '## Phase N:' / '## N.' hand-numbered headers present (mechanically confirmed: `node scripts/check-slide-numbering.js --file curriculum/lectures/ironies-of-automation.md` -> 'OK — 1 files, Phase/Step numbering consistent')",
-      "fix_hint": null,
-      "blocking": false
     },
     {
       "compendium": "check_slides.md",
@@ -136,22 +115,11 @@
     },
     {
       "compendium": "check_slides.md",
-      "rule_index": 13,
-      "rule_lead": "In-deck links work now; whether they EARN their place is open.",
-      "verdict": "N/A",
-      "chunks_flagged": [],
-      "evidence": null,
-      "na_reason": "zero markdown links anywhere in the file (`grep -n '\\[.*\\](' curriculum/lectures/ironies-of-automation.md` -> 0 hits)",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_slides.md",
       "rule_index": 14,
       "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/lectures/ironies-of-automation.md` -> 'files: 1  slides: 2  limits: 210 words / 6 bullets; oversized: 0; every slide is within limits.' Both chunks carry 3 bullets each, well under the 6-bullet cap.",
+      "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/lectures/ironies-of-automation.md` -> 'files: 1  slides: 2  limits: 210 words / 6 bullets; oversized: 0; every slide is within limits.' Both chunks carry 3 bullets each, well under the 6-bullet cap. Maintainer note at line 33 ('Slide split is load-bearing, do not fold ... one folded slide merges the two evidentiary registers and lands ≈275 words vs the ~210 ceiling') explains why the file is two slides rather than one — consistent with the passing size check.",
       "fix_hint": null,
       "blocking": false
     },
@@ -161,7 +129,7 @@
       "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "This is a lecture file, so both `##` headings must be claims, not imperatives/labels. Line 3 'Monitoring and takeover run on the same reps' and line 10 'Trust and vigilance move in opposite directions' are both full declarative sentences stating the slide's law. Neither is an orientation-header or catalogue-entry exemption case; both are load-bearing claims the chunk content proves out (cross-checked against rule 6).",
+      "evidence": "This is a lecture file, so both `##` headings must be claims, not imperatives/labels. Line 3 'Monitoring and takeover run on the same reps' and line 10 'Trust and vigilance move in opposite directions' are both full declarative sentences stating the slide's law, not orientation headers or catalogue-entry labels. Both are content the chunk itself proves out (cross-checked under rule 6).",
       "fix_hint": null,
       "blocking": false
     },
@@ -171,9 +139,57 @@
       "rule_lead": "A bullet earns its slot or dies — three classes that read as rigour and carry nothing.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Checked each of the 6 body bullets (lines 6-8, 13-15) against the three low-value classes. None is a doctrine-restatement of a repo-vocabulary split/lens/law announced with nothing added; none is self-referential design commentary about the curriculum being a pedagogy; none is an aphorism-kicker restating the header with nothing else attached. Closest-to-violating: line 15 opens with 'Trust and vigilance move in opposite directions' — a near-verbatim echo of the chunk-2 header (line 10) — but the same bullet continues into the load-bearing reframe ('The trust is deserved. The watching still has to be engineered.') and the lecture's one closing question, which the backing block names as 'the design's own move, and deliberately the only thing the opener asks the student to do' — so the bullet as a whole earns its slot even though its opening clause echoes the header.",
+      "evidence": "Checked all 6 body bullets (lines 6-8, 13-15) against the three low-value classes. None is doctrine restatement of a repo-vocabulary split/lens/law re-announced with nothing added — every bullet advances the mechanism. None is self-referential design commentary about the curriculum being a pedagogy. Closest candidate for the aphorism-kicker class: line 15 opens 'Trust and vigilance move in opposite directions' — a near-verbatim echo of the chunk-2 header (line 10) — but rather than closing on that echo, the bullet continues into new load-bearing content (the mechanism sentence, 'The trust is deserved. The watching still has to be engineered.', and the lecture's one closing question) which the backing block names as 'the lecture's own synthesis, and the sentence the title is built on' (backing claim `trust-vigilance-opposite`) and 'the design's own move, and deliberately the only thing the lecture asks the student to do' (backing claim `ask-when-by-hand`). The bullet earns its slot; it is not a kicker restating the header with nothing else attached.",
       "fix_hint": null,
       "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 3,
+      "rule_lead": "Every backward reference points at a beat that exists.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no 'the X you did/saw' backward-beat construction present in the body",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "f5002dd1ec0ca287d84ab4a80fe5e9739c6d21c0a09197b4800c163fc391dfde",
+      "carried_shape": "1870b031fbe8c765"
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 4,
+      "rule_lead": "Live-demo beats survive a text read.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no guess/predict instruction anywhere in the body — narrative-only lecture, no demo beat",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "f5002dd1ec0ca287d84ab4a80fe5e9739c6d21c0a09197b4800c163fc391dfde",
+      "carried_shape": "1870b031fbe8c765"
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 11,
+      "rule_lead": "Numbering — position is computed, content ordinals are linted.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no '## Phase N:' / '## N.' hand-numbered headers present (mechanically confirmed: `node scripts/check-slide-numbering.js --file curriculum/lectures/ironies-of-automation.md` -> 'OK — 1 files, Phase/Step numbering consistent')",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "f5002dd1ec0ca287d84ab4a80fe5e9739c6d21c0a09197b4800c163fc391dfde",
+      "carried_shape": "1870b031fbe8c765"
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 13,
+      "rule_lead": "In-deck links work now; whether they EARN their place is open.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "zero markdown links anywhere in the file (`grep -n '\\[.*\\](' curriculum/lectures/ironies-of-automation.md` -> 0 hits)",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "f5002dd1ec0ca287d84ab4a80fe5e9739c6d21c0a09197b4800c163fc391dfde",
+      "carried_shape": "1870b031fbe8c765"
     }
   ],
   "blocking_findings_count": 0,

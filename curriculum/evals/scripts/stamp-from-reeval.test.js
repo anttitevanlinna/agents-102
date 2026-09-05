@@ -8,7 +8,7 @@ const assert = require('node:assert')
 const fs = require('node:fs')
 const os = require('node:os')
 const path = require('node:path')
-const { readResults, adaptSweepRow, stateFor, makeSlugOf, flagName, groupByFile } = require('./stamp-from-reeval.js')
+const { readResults, adaptSweepRow, stateFor, makeSlugOf, makeTodosOf, flagName, groupByFile } = require('./stamp-from-reeval.js')
 
 let n = 0
 function test(name, fn) { fn(); n++; console.log(`ok ${n} - ${name}`) }
@@ -220,3 +220,48 @@ test('makeSlugOf resolves the slug from the instance the judge just wrote', () =
 })
 
 console.log(`1..${n}`)
+
+// The bug this guards: the Quality row's todo count and its `see instances/…`
+// pointer must describe the same file. The count came from the workflow's
+// returned `todos` array and the pointer from the instance on disk, so a judge
+// that returned an observation it did not write as a rule row made the row cite
+// evidence the instance cannot produce. Measured before the fix: 46 of 111
+// counted AE101 rows disagreed with the instance they point at. Counting the
+// instance is not merely more accurate, it is the only number a reader can
+// check — `check-instance-schema.js` already owns the convention (`derivedTodos`),
+// so this reads it rather than keeping a third copy.
+test('the todo count comes from the instance the row points at, not the returned array', () => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'stamp-todos-'))
+  fs.mkdirSync(path.join(dir, 'curriculum/evals/instances'), { recursive: true })
+  fs.writeFileSync(path.join(dir, 'curriculum/evals/instances/ae101--module--m.writing.json'), JSON.stringify({
+    class: 'writing', file: 'curriculum/trainings/x/m.md', verdict: 'PASS_WITH_TODOS',
+    rules_evaluated: [
+      { compendium: 'check_writing.md', rule_index: 3, verdict: 'REVISE', blocking: false },
+      { compendium: 'check_writing.md', rule_index: 20, verdict: 'REVISE', blocking: false },
+      { compendium: 'check_writing.md', rule_index: 1, verdict: 'PASS' },
+    ],
+  }))
+  const out = { result: { summary: [{
+    file: 'curriculum/trainings/x/m.md', class: 'writing', verdict: 'PASS_WITH_TODOS',
+    // three returned, but only two were written down as rule rows
+    todos: [{ rule: 'a' }, { rule: 'b' }, { rule: 'not-a-compendium-rule' }],
+    confirmed: [], refuted: [], unadjudicated: [],
+  }] } }
+  const [r] = readResults(out, makeSlugOf(dir), makeTodosOf(dir))
+  assert.equal(r.todos, 2, 'row must count the rule rows the instance actually holds')
+  assert.equal(stateFor(r), 'PASS:2 todos see instances/ae101--module--m.writing.json')
+})
+
+// Fail-open, deliberately: an unreadable or absent instance leaves the returned
+// array as the only number there is, and a row with a count and no pointer is
+// worse read as zero than as approximate.
+test('an unreadable instance falls back to the returned array rather than reporting zero', () => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'stamp-todos-none-'))
+  fs.mkdirSync(path.join(dir, 'curriculum/evals/instances'), { recursive: true })
+  const out = { result: { summary: [{
+    file: 'curriculum/trainings/x/gone.md', class: 'writing', verdict: 'PASS_WITH_TODOS',
+    todos: [{ rule: 'a' }], confirmed: [], refuted: [], unadjudicated: [],
+  }] } }
+  const [r] = readResults(out, makeSlugOf(dir), makeTodosOf(dir))
+  assert.equal(r.todos, 1)
+})

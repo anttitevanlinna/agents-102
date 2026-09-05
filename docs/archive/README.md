@@ -41,18 +41,15 @@ and points here for the underlying run.
 
 ## curriculum-evals/ — archived 2026-08-19
 
-Two dated AE101 eval reports. `check_writing §3` bans dated report filenames in tracked
-git (one latest report per scope, overwritten on rerun); the maintained standing reports
-are `curriculum/evals/arc-read.ae101.md`, `voice-hunt.ae101.md`, `eval-coverage.ae101.md`.
-
-| Old path | Now |
-|---|---|
-| `curriculum/evals/ae101-full-reeval-2026-07-12.md` | `docs/archive/curriculum-evals/ae101-full-reeval-2026-07-12.md` |
-| `curriculum/evals/ae101-fix-pass-2026-07-26.md` | `docs/archive/curriculum-evals/ae101-fix-pass-2026-07-26.md` |
+`check_writing §3` bans dated report filenames in tracked git — one latest report per
+scope, overwritten on rerun. The maintained standing reports are
+`curriculum/evals/arc-read.ae101.md`, `voice-hunt.ae101.md`, `eval-coverage.ae101.md`.
+The two dated AE101 eval reports that once sat here are gone; git carries them.
 
 Dated records elsewhere (eval instances, compounded entries, maintainer naming
-corrections) still cite the old paths with line numbers. Those are the record of what a
-judge saw, not pointers to follow, so they are left as written; this table is the redirect.
+corrections) cite those reports by path and line number. **Those citations are the record
+of what a judge saw, not pointers to follow** — do not chase them, and do not repair them.
+A verdict's evidence describes the file as it stood; rewriting it falsifies the record.
 
 ## evals-legacy/ — archived 2026-08-19
 
@@ -68,7 +65,7 @@ Twenty-nine megajudge audit reports from the eval system that predates the per-c
 (writing / story / technical). Superseded by the per-class JSON under
 `curriculum/evals/instances/`; kept to trace what each file had previously cleared.
 
-## curriculum-evals/ (scratch, tmux-runner) + module-design/ — archived 2026-08-19
+## curriculum-evals/ (scratch, tmux-runner) — archived 2026-08-19
 
 - `scratch/source-sweep-2026-05-25/`, `scratch/sim-precohort/` — completed sweep and
   simulation working files.
@@ -76,8 +73,6 @@ Twenty-nine megajudge audit reports from the eval system that predates the per-c
   no open items; the lead-in audit declares itself stale on its AE101 half.
 - `tmux-runner/FIX-PLAN`, `RESUME-a101-runner`, `SPECS-m4-m6`, `a101-runner-findings` —
   compaction handoffs and worklists for the Agents 101 runner build.
-- `_punch-list-writing.md`, `module-design/ae101-m6-plan.md` — live-state files for runs
-  that finished.
 
 `scratch/buried-gold-proposals-2026-08-15.md` was not archived: its twenty-one adjudicated
 verdicts fold into `curriculum/trainings/agentic-engineering-101/pre-cohort-todos.md`

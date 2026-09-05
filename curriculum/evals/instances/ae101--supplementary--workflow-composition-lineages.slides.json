@@ -1,13 +1,14 @@
 {
   "class": "slides",
-  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/supplementary/workflow-composition-lineages.md",
-  "body_sha": "0be255cc1f53bc142fdc88b9ad98bb3b02543140b6dc6096acc4c2714c8e9bb6",
-  "verdict": "PASS_WITH_TODOS",
   "training": "ae101",
+  "file": "curriculum/trainings/agentic-engineering-101/supplementary/workflow-composition-lineages.md",
+  "verdict": "PASS_WITH_TODOS",
+  "body_sha": "fab735ef52c4975582d352520d7956fd3bc53383584e6c943c618d70dc76cbde",
+  "shape_hash": "1a75c7b77bffff49",
   "chunk_map": [
     {
       "index": 0,
-      "heading": "Workflow composition lineages (H1 + lede)",
+      "heading": "Workflow composition lineages (lede)",
       "lines": "1-4"
     },
     {
@@ -63,7 +64,7 @@
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Read the full current body this session (raw lines 1-146; NOTE the file moved since the 43e6cae1 pin — three Pocock skill-name renames at lines 30/34/37, a comma-to-dash punctuation fix at line 34, 'Three diagrams'→'Diagrams' at line 133, and source-stamp refreshes past the maintainer cut; none of these touches a pronoun/demonstrative). Chunk boundaries reconfirmed via `grep -n '^## '` against the live file: headers land at 5,15,26,40,54,71,91,104,135, matching the chunk map. Closest-to-violating candidates, each resolves inside its own chunk: chunk 4 line 44 'This is a hard evolution from Cognition's 2025 Don't Build Multi-Agents stance' — 'This' points at the verbatim single-threaded-writes claim quoted the sentence before, same chunk. Chunk 5 line 62 'Amp changed its mind about the whole mechanism' — 'the whole mechanism' resolves to Handoff, named at lines 56/58/60 earlier in the same chunk. Chunk 6 line 83 'Cherny does not publish a unified framework over these moves' — 'these moves' resolves to the bulleted list opening the same chunk (lines 75-81). Chunk 8 line 128 'The dispatcher pattern scales cross-repo' — resolves to the 'CLAUDE.md routing' bullet (line 112) and 'CLAUDE.md as half the system' bullet (line 126), both earlier in the same chunk. Chunk 1's numbered rules (5-14) are each self-contained; no cross-chunk or forward-pointing referent found anywhere in the file.",
+      "evidence": "Closest candidate: chunk 5 (\"Feedback-loopable methodology...\") line 55 opens \"Amp published twice here, with different bylines and different shapes\" — \"here\" is a same-chunk forward reference, resolved within the same slide by the two bolded sub-entries that immediately follow (line 58 **Feedback Loopable**, line 60 **Handoff**); a reader takes in the whole projected slide before moving on, so this isn't a dangling referent. Chunk 8 line 130's \"the two curated security skills from M3\" names the module directly rather than pointing at it by position, covered by the arc-earned spine-vocabulary carve-out. No never-named, vague-with-history, or re-chunk-stranded referent found elsewhere.",
       "fix_hint": null,
       "blocking": true
     },
@@ -73,7 +74,7 @@
       "rule_lead": "Cross-file and positional callbacks.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Ran this session: `grep -niE \"the opening lecture|earlier module|previous module|this module said|as we saw|as covered|as discussed above|the last (module|lecture|exercise)\"` over the raw file → 0 matches, exit 1. No chunk locates another file by position; every external doc is named by title (chunk 2 line 24 the plugin repo, chunk 8 line 133 'Dino's skill stacking system'). Chunk 6 line 88 'the moves listed above' is a within-chunk sequential callback to the same chunk's own bullet list ten lines up (permitted by rule 1, not a cross-file/positional case); confirmed live this session via `node scripts/check-slide-deixis.js --file <path> --report` → `ok ...:88 [moves listed above] — maintainer-attested`, matching the maintainer block's accept-note at current line 149. The 'Supplementary meta' note's pointer to `lectures/composing-the-workflow.md` sits past the maintainer cut (line 163), outside slide scope.",
+      "evidence": "No chunk points at another file by position (\"the opening lecture said...\"). The only cross-reference to training structure is chunk 8 line 130, \"the two curated security skills from M3 (`/access-control-analysis` and `/stride`)\" — named by module label and by the skills' own names, not by position, which is exactly the pattern §2 asks for (\"Name the source by title or by its claim\"). Within-file sequential callbacks (Klaassen/Pocock/Yan/Cognition/Ronacher reused by name across chunks 3, 5, 9) are rule-1 territory and fine, not §2 violations.",
       "fix_hint": null,
       "blocking": true
     },
@@ -83,7 +84,7 @@
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Every chunk (1-9) carries a self-sufficient claim well beyond a bare wait-state or context-dependent bullet. Closest-to-thin: chunk 1 (lines 5-14), three short numbered reading rules — each still states one complete, standalone instruction (framework scope, map-partiality, quote-care), not a fragment leaning on a neighbour slide.",
+      "evidence": "Every chunk carries a self-sufficient claim. Shortest is chunk 0 (lines 1-4), which still states the walk's whole shape in one paragraph (\"One named framework, three architectural stances, one move-catalogue, one counter-position, plus a worked-example case study... Seven entries; not a closed set.\") — not a wait-state or a bare context-dependent bullet.",
       "fix_hint": null,
       "blocking": false
     },
@@ -93,7 +94,7 @@
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Every header previews exactly what its chunk delivers. Closest-to-contradicted: chunk 5's header names two artefacts ('Feedback-loopable methodology and shipped primitives') and line 56 ('Amp published twice here, with different bylines and different shapes') confirms the two-part split the header promises. Chunk 9's header 'How to pick what to study' is answered directly by the three numbered filters under 'Filters that work better than ranking:' (line 137). No header is contradicted by its own chunk's content.",
+      "evidence": "Checked all 10 headers against their chunk bodies. Tightest case: chunk 5's two-part header \"Feedback-loopable methodology and shipped primitives, Sourcegraph Amp\" (line 54) is answered by two distinct bolded entries in the body — Metcalf's methodology (line 58) and the Handoff feature (line 60) — so the compound header isn't overclaiming. No header found whose own chunk content contradicts it.",
       "fix_hint": null,
       "blocking": false
     },
@@ -103,7 +104,7 @@
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Ran this session over the raw file: `grep -n \"Not .*\\. Not .*\\.\"` → 0 matches (exit 1). Self-grading superlative: `grep -niE \"one of the (most|best)|the most (useful|important|valuable)|best-in-class|game.chang\"` → 0 matches (exit 1); hand-checked the one near-miss, line 81 'The single tip Cherny names as most important' — attributes the superlative to Cherny ranking his OWN tip, not the curriculum grading itself, so it is not the banned value-prop leak. Number+retraction: `grep -niE \"could be more|could be less|roughly |about [0-9]\"` → one hit, line 46 'roughly 58%', sitting inside a verbatim attributed Yan quote (a cited stat's own rounding qualifier, not an authored hedge like 'about 10%... could be more, could be less') — not the banned shape. Anaphora/epistrophe: chunk 9 lines 139-143's three 'If you're.../If your team...' clauses each map one distinct scenario to one distinct named practitioner (Klaassen / Pocock / Yan-Cognition, continuing to Metcalf-Amp) — an enumerated lookup, not a hollow rhetorical triple with an empty third leg. No abstraction-noun stacks or empty-leg verb triplets found anywhere in the body.",
+      "evidence": "Checked each sub-item. No \"Not X. Not Y. Z.\" construction (grep clean). Closest to an anaphora triple is line 95's \"No marketplace, no Git-checked-in kit, no orchestrator over the skills\" — three genuinely distinct concrete nouns (distribution / version control / composition), not a repeated subject-verb clause, so it isn't the banned epistrophe shape. No self-grading superlative in curriculum voice (line 81's \"most important\" is inside a direct Cherny quote, not our own praise). Line 46's \"roughly 58%\" carries no self-retraction. No abstraction-noun-stack phrasing found (grepped for candidate patterns, zero hits). No empty-leg verb triplet found.",
       "fix_hint": null,
       "blocking": true
     },
@@ -113,7 +114,7 @@
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Ran this session: `awk 'NR<=146' <file> | grep -niE '\\b(compendium|forcing function|beat|firing|surface)\\b'` → exactly one hit, line 79 \"agent picks up the human's existing tool surface\" — ordinary engineering usage ('tool surface'), matching the rule's own carve-out for 'surface' as ordinary noun, distinct from repo-internal 'writing surface'. No other §8 term (compendium, forcing function, beat, firing, mood, Connections-as-proper-noun) appears anywhere in lines 1-146.",
+      "evidence": "Grepped the body for the named dialect terms (surface, firing, compendium, forcing function, beat, mood, Connections) — one hit, chunk 6 line 79: \"agent picks up the human's existing tool surface.\" Harm check: this reads as ordinary industry usage (attack surface / API surface), a sense an engineer parses instantly and unrelated in denotation to this repo's own \"writing surface\" jargon the rule's example targets. The dialect-smuggling harm (a term the room in the chair cannot parse) is absent here, so this stays a PASS rather than a REVISE.",
       "fix_hint": null,
       "blocking": true
     },
@@ -123,11 +124,10 @@
       "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
       "verdict": "REVISE",
       "chunks_flagged": [
-        8,
-        9
+        8
       ],
-      "evidence": "Ran this session: `awk 'NR>=104 && NR<=134' <file> | grep -noE '\\*\\*[^*]+\\*\\*'` → 8 bold spans in chunk 8 (lines 117 'A single orchestrator', 118 'Phase-organised skill catalogue.', 119 'Design principles', 123 'Front-loaded read-only analysis.', 124 'Mandatory gates fire positionally', 125 'Re-invocation as control flow.', 126 'CLAUDE.md as half the system.', 128 'scales cross-repo'; the 'Explicit load. / Orchestrator composition. / CLAUDE.md routing. / Hand-off pipelines.' list at lines 110-113 uses single-asterisk italics, not bold, and doesn't count). Each span is individually inside the ≲5-word handle cap, but 8 on one slide is well past 'a law/consolidation slide may carry one handle per law' — considered that carve-out and reject it: these are ad hoc descriptive labels the author coined for THIS worked example (single orchestrator, phase-organised catalogue, design principles enforced, etc.), not the curriculum's own named laws/governors (e.g. the file's own backing block reserves 'law:' for things like requisite-variety) — a consolidation slide of the training's LAWS is a narrower thing than a slide that labels several of one practitioner's design choices. Also considered and reject the reading-list/lookup-surface waiver (§9): this chunk is a sequential worked-example narrative meant to be read start-to-finish (file's own 'Supplementary meta' note: '15-25 min student read'), not a page a reader consults to find one row answering a question — 'Scope is the surface, not the file type' cuts against extending the lookup-surface waiver to a narrative case-study slide inside a reading-walk supplementary. So the base §9 budget (≤1 on a narrative slide) applies and 8 bolded labels exceeds it. Chunk 9 (`awk 'NR>=135 && NR<=146'` same grep): 3 bold spans, lines 139 'What shape is your real work?' (6 words), 141 'How much orchestration do you want to author?' (8 words), 143 'What review bandwidth do you have?' (6 words) — each bolds the FULL filter question rather than a ≲5-word label, exceeding the handle cap even under the most generous reading-list/menu waiver, which explicitly keeps the handle cap live ('The ≲5-word handle cap is NOT off') and names exactly this failure ('Bolding mode-plus-title is the pre-2026-07-09 monoculture wearing a list for cover'). Harm: on neither slide does an accept-note cover this; a reader scanning either slide for its one handle finds several full-sentence bolds instead, flattening the bold signal into noise. Standing, non-blocking, unaddressed across multiple prior slides passes on this file.",
-      "fix_hint": "Chunk 8: keep bold on the 1-2 labels the slide most needs (e.g. 'A single orchestrator', 'CLAUDE.md as half the system') and flatten the rest to plain prose. Chunk 9: bold a short label per filter (e.g. **Real-work shape**, **Orchestration load**, **Review bandwidth**) and leave the question/answer prose plain.",
+      "evidence": "Chunk 8 (\"Skill stacking system, Dino: the worked example\", lines 104-134) carries 7 bolded handles across two separate bulleted lists — \"Around those mechanisms:\" (lines 117-119: **A single orchestrator**, **Phase-organised skill catalogue.**, **Design principles**) and \"Distinctive moves stand out:\" (lines 123-126: **Front-loaded read-only analysis.**, **Mandatory gates fire positionally**, **Re-invocation as control flow.**, **CLAUDE.md as half the system.**) — plus one inline bold at line 128 (**scales cross-repo**). Each span is individually a legitimate handle (≤5 words, names a coined design principle), and the file isn't a plain narrative slide, but this is well past \"≤1 bolded element on most slides\" and past even the \"one handle per law\" consolidation allowance, which contemplates a single enumerated set, not two separate lists totalling 7-8 marks on one projected chunk. Chunk 8 already carries a rule-14 \"Slide size accepted\" note acknowledging its density; no equivalent rule-9 accept-note covers the bold count.",
+      "fix_hint": "Trim to the 2-3 strongest handles per list (or one per list) and let the rest read as plain prose/bullets, or add a maintainer accept-note if the density is deliberate for this reading-only page.",
       "blocking": false
     },
     {
@@ -136,7 +136,7 @@
       "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Ran this session: `node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/supplementary/workflow-composition-lineages.md` → 'files: 1  slides: 9 ... oversized: 0'. This file lives under `.../supplementary/` and is a `.phase`-less prose section per its own 'Supplementary meta' note (line 159) — exactly the class the 2026-07-09 incident describes as previously dropped from the composed deck. The checker's own live count of 9 slides for this file is the mechanical proof the section IS reaching the deck (a dropped section reports 0 slides), so presence is confirmed without re-deriving `buildDeckModel` by hand.",
+      "evidence": "Verified against the renderer, not inferred: `site/layouts/slides.js` lines 273-274 document that phase-less sections — \"prework, supplementary, reference — is slide-ified in place under a kind-labelled divider\" — so this supplementary reaches the composed deck under a top-level `section.module` wrapper, not only long-read. Corroborated by the derived body view's `signals.slide_count: 9` and by the file's own maintainer \"Slide size accepted\" notes, which presuppose the content is chunked into slides.",
       "fix_hint": null,
       "blocking": true
     },
@@ -144,11 +144,12 @@
       "compendium": "check_slides.md",
       "rule_index": 11,
       "rule_lead": "Numbering — position is computed, content ordinals are linted.",
-      "verdict": "PASS",
+      "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "Ran this session: `node scripts/check-slide-numbering.js` → 'OK — 60 files, Phase/Step numbering consistent.' No `## Phase N:` / `## N.` step headers exist in this file (headers are practitioner-name/topic labels per the chunk map). The body's own numbered lists (chunk 1's rules 1-3, chunk 9's filters 1-3) are self-contained content lists with no cross-file or cross-section ordinal reference.",
+      "evidence": null,
+      "na_reason": "No `## Phase N:` / `## N.` step headers anywhere in this file; the two in-body numbered lists (reading rules, lines 9-13; filters, lines 139-143) are plain prose ordinals with no cross-file \"Step K\" references. Ran `node scripts/check-slide-numbering.js` → \"OK — 59 files, Phase/Step numbering consistent.\"",
       "fix_hint": null,
-      "blocking": false
+      "blocking": true
     },
     {
       "compendium": "check_slides.md",
@@ -156,7 +157,7 @@
       "rule_lead": "Page geometry dies at the cut; reading order survives.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Ran this session: `node scripts/check-slide-deixis.js --file curriculum/trainings/agentic-engineering-101/supplementary/workflow-composition-lineages.md --report` → `ok  ...:88  [moves listed above] — maintainer-attested`, matching the maintainer block's accept-note at current line 149 (chunk 6 same-chunk pointer to the bullet list ten lines up). Ran a fresh geometry-pointer grep this session (`above|below|further down|at the top of|see below|see above`) over the raw file, filtered to the body region (<=146): the only hit is the attested line-88 case; all other hits (maintainer/backing-block lines) sit past the cut, outside slide scope.",
+      "evidence": "Ran `node scripts/check-slide-deixis.js --file curriculum/trainings/agentic-engineering-101/supplementary/workflow-composition-lineages.md` → \"OK — 1 files, no page-geometry pointers across the slide cut.\" The one candidate phrase, chunk 6 line 88 \"the moves listed above,\" sits in the same `##` chunk as the Read: list it points to (lines 87-89), which is a same-chunk pass, and carries its own dated maintainer accept-note at line 149.",
       "fix_hint": null,
       "blocking": true
     },
@@ -166,7 +167,7 @@
       "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Ran this session: `node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/supplementary/workflow-composition-lineages.md` → 'oversized: 0' / 'every slide is within limits'. The seven `**Slide size accepted:**` declarations in the maintainer block (current lines 151-157: Dino, Amp, Cherny, Ronacher, Klaassen, Pocock, How-to-pick) cover the file's own longest sections; the mechanical checker reports zero over-cap slides regardless, so the accept-notes document intent rather than rescue a failing gate.",
+      "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/supplementary/workflow-composition-lineages.md` → \"files: 1  slides: 9  limits: 210 words / 6 bullets ... oversized: 0 ... every slide is within limits.\" The maintainer block's seven per-section \"Slide size accepted\" notes (lines 151-157) are on record but the mechanical gate currently reports zero oversized slides.",
       "fix_hint": null,
       "blocking": false
     },
@@ -176,7 +177,17 @@
       "rule_lead": "A bullet earns its slot or dies — three classes that read as rigour and carry nothing.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Checked every bulleted list in the body against all three classes. (a) Doctrine restatement: chunk 8's three bullet groups (composition mechanisms lines 110-113; 'Around those mechanisms' lines 117-119; 'Distinctive moves' lines 123-126) and chunk 6's move list (lines 75-81) — each entry names a distinct, concrete move (a different skill, mechanism, or design choice); none re-announces a claim the slide already made. 'The walk is partial' recurs three times across the file (line 3 lede, line 11 chunk-1 rule 2, line 145 chunk-9 closer) but each occurrence does different work — opening framing, mid-body rationale with new grounding ('a small sample... May 2026'), forward call-to-action — not a same-bullet restatement. (b) Self-referential design commentary: no phrase anywhere frames the curriculum's own pedagogy to the student; 'partial by design' at line 145 describes the CONTENT's research scope, not the training's teaching method. (c) Aphorism kicker: closest candidate is chunk 6 line 85 'The unification is in the reader's head, not in his published artefacts' closing a chunk headed 'Practitioner moves without a published framework, Boris Cherny' — passes: the header states an absence, the closer adds a distinct positive claim (WHERE the unification instead lives) rather than echoing the header. No chunk ends on a pure header-echo or koan.",
+      "evidence": "Closest candidate: the \"curation is partial\" idea recurs three times (lede lines 3-4, chunk 1 reading-rule 2 lines 11-12, chunk 9 closer line 145) — a doctrine-restatement pattern in shape. It stays inside because each instance does different structural work: the lede states scope as a disclaimer, reading-rule 2 states it as an explicit rule for how to read the page, and the closer ties it to a fresh, actionable instruction (\"keep an eye out for named frameworks this walk does not yet cover\") rather than re-announcing the idea with nothing attached. No self-referential design commentary (§16b) or aphorism kicker restating its own header (§16c) found in any chunk closer.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 17,
+      "rule_lead": "A retitled slide re-earns its bullets against the new header.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "No maintainer provenance note of the renamed-header shape (e.g. \"(from <old-file>, header his)\") anywhere in this file's maintainer or backing block, and this run's diff against pin 4a722813 touched no `##` header lines. Rule 6's header-vs-body check above (covering all 10 headers) found every bullet still answering its own header's promise, so no stale inherited body from a prior rename is present.",
       "fix_hint": null,
       "blocking": false
     },
@@ -188,7 +199,7 @@
       "evidence": "Ran this session: grep -niE \"you (did|saw|caught|ran|wrote|built|opened|used)\" curriculum/evals/body-views/ae101--supplementary--workflow-composition-lineages.body.txt → 0 matches (exit 1). Progressive-reading supplementary, not an exercise; no 'the X you did/saw' construction of any kind anywhere in the body.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b7fa214ad6deb11f06e3b894f545474ee37bdc1ed96e349bb0f3c61cb455159f",
+      "carried_from": "0be255cc1f53bc142fdc88b9ad98bb3b02543140b6dc6096acc4c2714c8e9bb6",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -199,7 +210,7 @@
       "evidence": "Ran this session: grep -niE \"guess|predict\" curriculum/evals/body-views/ae101--supplementary--workflow-composition-lineages.body.txt → 0 matches (exit 1). No guess-before-reveal / live-demo structure exists in this file; it is a static reading walk.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b7fa214ad6deb11f06e3b894f545474ee37bdc1ed96e349bb0f3c61cb455159f",
+      "carried_from": "0be255cc1f53bc142fdc88b9ad98bb3b02543140b6dc6096acc4c2714c8e9bb6",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -210,7 +221,7 @@
       "evidence": "Review surface, explicitly never a gate per the rule's own text. All body links name the document in their link text (chunk 2 line 24 '[Compound Engineering plugin (`EveryInc/compound-engineering-plugin`)]'; chunk 8 line 133 '[Dino's skill stacking system]'), consistent with the §2/§12 naming discipline already confirmed elsewhere in this instance.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b7fa214ad6deb11f06e3b894f545474ee37bdc1ed96e349bb0f3c61cb455159f",
+      "carried_from": "0be255cc1f53bc142fdc88b9ad98bb3b02543140b6dc6096acc4c2714c8e9bb6",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -221,12 +232,10 @@
       "evidence": "RULE-DRIFT RE-READ (fetched current wording via `node curriculum/evals/scripts/rule.js slides 15` this session, current text last touched 2026-08-19 per its own body). Current wording still scopes the imperative/phase-label-vs-claim split explicitly to two file types: 'Exercise `##` headings = imperative... or phase label...' and 'Lecture headings = claims...'. This file is a training/supplementary progressive-reading page (per its own 'Supplementary meta' note, line 159), neither an exercise nor a lecture — the rule's stated scope does not reach it. Independently, even granting the widest reading of scope, every header in this file (line 15 'Compound Engineering, Kieran Klaassen', line 26 'Composition by invocation, Matt Pocock', line 71 'Practitioner moves without a published framework, Boris Cherny', line 104 'Skill stacking system, Dino: the worked example', etc.) is a practitioner-name/topic label, falling inside the rule's own explicit NOT-violations carve-out for 'catalogue entries naming their subject (Ralph, The numbers, Verification, named)' — this file's whole structure is a practitioner-by-practitioner catalogue. No heading in the file makes a truth-claim the surrounding content could contradict. Same verdict as the prior instance (@b55cd28b); the wording moved (generalised 2026-08-19, law/consolidation-slide clause added) but neither change touches the exercise/lecture scope boundary or the catalogue-entry carve-out this file relies on.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b7fa214ad6deb11f06e3b894f545474ee37bdc1ed96e349bb0f3c61cb455159f",
+      "carried_from": "0be255cc1f53bc142fdc88b9ad98bb3b02543140b6dc6096acc4c2714c8e9bb6",
       "carried_shape": "1a75c7b77bffff49"
     }
   ],
-  "blocking_findings_count": 0,
   "todos_count": 1,
-  "notes": "PIN CORRECTION: dispatched pin was 43e6cae1, but the file changed between 43e6cae1 and HEAD (body_sha bb14be28... at 43e6cae1 vs 44d9f50c... at current HEAD — verified via `git show 43e6cae1:<path>` / `git show HEAD:<path>` piped to shasum, and `diff -u` between them). The two-commit diff (e9c6231e, 5711a601) touches only: three Pocock skill renames (to-prd→to-spec, to-issues→to-tickets, write-a-skill→writing-for-agents) at lines 30/34/37, a comma→dash punctuation fix at line 34, 'Three diagrams'→'Diagrams' at line 133, and source-stamp/Quality-line refreshes past the maintainer cut. None of these touches a referent, a callback, cadence, dialect, geometry pointer, or bullet value — verified all 12 owed rules fresh against the CURRENT body rather than trusting the pin. Separately, the pre-existing instance file this run overwrote carried its own body_sha (b7fa214a...) that matches NEITHER 43e6cae1 nor HEAD — a third, untracked body state, consistent with the multi-session-collision risk this repo's CLAUDE.md warns about. Per the dispatch preamble's cached-trace rule, none of that prior instance's prose or quotes was carried forward; every one of the 12 rows above was re-derived fresh this session against the live file (shasum recorded above, taken at read time). The 4 N/A rows for rules 3/4/13/15 were legitimately merged from the prefill sidecar keyed on `shape_hash` (1a75c7b77bffff49, unchanged by the prose-only diff above) — shape_hash, not body_sha, is prefill's validity gate, and that is by design (rules 3/4/13/15 turn on structural signals the prose diff doesn't touch). Verified this session: `node scripts/check-slide-size.js`, `node scripts/check-slide-numbering.js`, `node scripts/check-slide-deixis.js --report`, plus fresh greps for cadence tics, dialect terms, geometry pointers, and backward-beat phrasing. Sole open item: rule 9 (emphasis budget), non-blocking, chunks 8 and 9 — chunk 8's 8 bolded design-principle labels on one narrative worked-example slide exceed the base ≤1 budget (law/consolidation-slide and lookup-surface waivers both considered and rejected, reasoning in the row); chunk 9's three bolded filter questions (6-8 words each) exceed the ≲5-word handle cap regardless of any waiver, since the handle cap is never waived. No maintainer accept-note covers either. All other 11 owed rules PASS on fresh evidence.",
-  "shape_hash": "1a75c7b77bffff49"
+  "blocking_findings_count": 0
 }

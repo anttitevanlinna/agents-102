@@ -8,7 +8,7 @@
 'use strict'
 const { test } = require('node:test')
 const assert = require('node:assert/strict')
-const { geometry, greps, ruleInventory } = require('./derive-body-view.js')
+const { geometry, greps, ruleInventory, signals } = require('./derive-body-view.js')
 const { shapeHash } = require('./prefill-instance.js')
 
 const BODY = [
@@ -107,4 +107,25 @@ test('rule inventory counts numbered rules and excludes moved stubs', () => {
   assert.ok(w.owed > 0, 'no rules parsed — the completeness count would be wrong')
   assert.ok(Array.isArray(w.moved_stubs))
   assert.equal(new Set(w.indices).size, w.indices.length, 'duplicate rule index')
+})
+
+test('prompt signal reads the body, not a maintainer note quoting a prompt marker', () => {
+  // The behavior judge fires on has_prompt_blocks. A maintainer note that
+  // mentions `{{prompt:x}}` as commentary must not summon it onto a body with
+  // no prompt.
+  const noPrompt = ['# T', '', 'Prose only.', '', '<!-- maintainer -->', '',
+    'The `{{prompt:agents-that-build-agents-handoff}}` section moved out.'].join('\n')
+  let g = geometry(noPrompt)
+  let bodyText = g.bodyLines.map(n => g.lines[n - 1]).join('\n')
+  assert.equal(signals(noPrompt, g, bodyText).has_prompt_blocks, false)
+
+  const withMarker = ['# T', '', 'Ask Claude to do it.', '', '{{prompt:x}}', '', '<!-- maintainer -->'].join('\n')
+  g = geometry(withMarker)
+  bodyText = g.bodyLines.map(n => g.lines[n - 1]).join('\n')
+  assert.equal(signals(withMarker, g, bodyText).has_prompt_blocks, true)
+
+  const withInline = ['# T', '', '**Prompt** (Claude Code)', '', '```', 'do it', '```'].join('\n')
+  g = geometry(withInline)
+  bodyText = g.bodyLines.map(n => g.lines[n - 1]).join('\n')
+  assert.equal(signals(withInline, g, bodyText).has_prompt_blocks, true)
 })

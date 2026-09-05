@@ -1,6 +1,8 @@
 # AE101 M6 — reference artifact
 
-Task-scoped reference for the M6 generation run. Subagents read this first. Pairs with `ae101-m6-plan.md` (state) and `ae101-m6-verifier.md` (quality gate).
+Task-scoped reference for the M6 generation run. Subagents read this first. Pairs with `ae101-m6-verifier.md` (quality gate).
+
+**Dated generation record: history, not a pointer.** It names the file set as it stood on 2026-05-04. Several of those files were renamed or cut in the M6 re-cut, so do not follow its paths or repair them.
 
 ---
 

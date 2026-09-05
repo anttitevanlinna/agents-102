@@ -1,19 +1,20 @@
 {
-  "class": "storytelling",
-  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/learn-from-the-test.md",
-  "body_sha": "86b156ae39de303db17fb2b9f173cde74f2e88101af09894620b5ca4a682179f",
-  "shape_hash": "94301cda9e6a5a78",
-  "verdict": "PASS_WITH_TODOS",
+  "class": "story",
   "training": "ae101",
+  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/learn-from-the-test.md",
+  "verdict": "PASS_WITH_TODOS",
+  "body_sha": "1802109cf389e278e04ccc0ad6a8ed643abb45a705fc9371c3e48c6de48bf61d",
+  "shape_hash": "94301cda9e6a5a78",
   "module_mood_contract": "learning through contrast — \"I can feel what packaging adds now; I couldn't have read it as a lecture.\"",
   "trace_status": "regenerated",
+  "diff_pin": "85515fa0..HEAD",
   "rules_evaluated": [
     {
       "compendium": "check_lectures.md",
       "rule_index": 1,
       "rule_lead": "Meta-frame lectures = closers, not openers.",
       "verdict": "PASS",
-      "evidence": "Reading order on the raw source: L37 [Lecture: Reading the return] (opener — plants the M5 question and the three failure-mode lenses), L47 [Lecture: Hooks always fire] (mid-module vocabulary/mechanism, exactly §1's 'conceptual lectures introducing vocabulary land mid-module'), L49/L51 the two exercise includes, then L55 [Lecture: What packaging is] and L57 [Lecture: The gate is a claim too]. The line closest to violating is L37 — an opener that could have named the pattern. It does not: `grep -nE 'Ronacher|Cherny|three-pattern' lectures/reading-the-return.md` returns 7 hits and every one is at L23+, inside that file's maintainer/backing block, none in its three `##` slide bodies (L3, L9, L16). The naming lives in the closer: `what-packaging-is.md` L24 `## The verifier completes the three-pattern`. Recognition-after-living, not claim-before.",
+      "evidence": "Reading order on current source: L37 [Lecture: Reading the return] (opener, plants the three failure-mode lenses), L48 [Lecture: Hooks always fire] (mid-module vocabulary, mechanism only), L50/L52 the two exercise includes, then L57 [Lecture: What packaging is] and L59 [Lecture: The gate is a claim too] (closers). `grep -nE 'Ronacher|Cherny|three-pattern' lectures/reading-the-return.md` returns hits only at L23/L27/L49/L80/L91/L96, all inside that file's own maintainer/backing/source blocks — none inside its three `##` slide bodies (L3/L9/L16). Naming lands in the closer: `what-packaging-is.md` L24 `## The verifier completes the three-pattern`. This diff touched no lecture file and no lecture include line; unaffected.",
       "fix_hint": null,
       "blocking": false
     },
@@ -22,7 +23,7 @@
       "rule_index": 2,
       "rule_lead": "Minimal lecturing before contrast-mood exercises.",
       "verdict": "PASS",
-      "evidence": "M5 is the canonical contrast-mood module and its pre-exercise lecture load is exactly §2's stated ceiling: spirit + diagnostic lenses (`reading-the-return`, L37) + ONE operational primitive (`hooks-always-fire`, L47 — mechanism only, hooks fire on named events / must-happen vs. taste), nothing else. No named practitioner term leaks upstream: `sed -n '1,121p' <file> | grep -nE 'Ronacher|Cherny|three-pattern|three pattern'` → 0 hits, and `grep -cE 'Ronacher|Cherny|three-pattern' lectures/hooks-always-fire.md` → 0. The line closest to violating is the L39 section itself, *Your mid-run worries hint at missing checks*, which could easily have handed out the failure-mode↔packaging pairing before the exercise diagnosed anything; it stops at one move (L43 'Test that worry against the return'), and the maintainer accept-note at L130/L132 records that the trio pre-announcement was deliberately cut for this reason. At the ceiling, not over it — one more pre-exercise conceptual include would breach.",
+      "evidence": "`sed -n '1,52p' learn-from-the-test.md | grep -inE 'Ronacher|Cherny|three-pattern'` → 0 hits (verified this session). Pre-exercise load stays at spirit + diagnostic lenses (reading-the-return) + one operational primitive (hooks-always-fire, mechanism only) — the ceiling, not over it. The section closest to violating, `## Your mid-run worries hint at missing checks` (L39-48), stops at one move (L44 'Test that worry against the return') and the maintainer note at L138 records the trio pre-announcement was deliberately cut for this reason. This diff added only an invisible `<!--tier:3-->` slide-layout marker inside this section (L40); the rendered text is unchanged from the prior pin.",
       "fix_hint": null,
       "blocking": false
     },
@@ -31,7 +32,7 @@
       "rule_index": 4,
       "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
       "verdict": "PASS",
-      "evidence": "13 `##` headers in the body (`awk 'NR<=121 && /^## /'`), no duplicates. Squint: the two authored (non-template) headers each name their concept — L27 'Say what done-done means' (the move), L39 'Your mid-run worries hint at missing checks' (the claim), L68 'Inspect your results', L102 'Bring to Module 6'. The rest are `module-shape.md` template scaffolding (Big Idea, Prework, What You'll Learn, Start here L20 in the template, Key Concepts, Next), which is structure, not an authored slide claim. Closest to violating is L76 'Back to the map, one last time' — §4 names 'Back to the map' by name as an orientation header carrying position, not concept. It stays inside on §4's own carve-out ('the single orientation beat in a map/closer lecture'): it is the ONE orientation beat in the file and it heads the figure-bearing map close. Truth clause: no unsupported universal in any header; L39's 'hint at' is correctly hedged against a body (L43) that has the artefact adjudicate the worry rather than the worry dictating the check.",
+      "evidence": "`git diff 85515fa0..HEAD -- <file> | grep -E '^[-+]##'` → empty: no header line changed in this diff, so §4 is unaffected by the pinned edits. Spot-check against the rule's new (2026-09-03) bare-arc-label clause: `## Next` (L117) reads on its own as a slot-name, not a concept, which is the failure mode the new clause names — but `curriculum/module-shape.md` L49-57 mandates this exact heading text as the canonical closing section of every module ('`## Next` is the last section of the body'), and `grep -rn '^## Next$' curriculum/trainings/` finds it verbatim in 13 files across both trainings. This is template structure, not a per-file creative header, so I am not filing it as a finding against this file; flagged as a maintainer question in `notes` instead (the clause's reach into template headers looks unintended, and fixing it here alone would desync the file from its own canon). `## Back to the map, one last time` (L78) uses the orientation carve-out once (position, not concept) inside its own variant, which is the ration the rule allows.",
       "fix_hint": null,
       "blocking": false
     },
@@ -40,7 +41,7 @@
       "rule_index": 5,
       "rule_lead": "A slide's BODY is size-bounded, not just its header (§4's sibling).",
       "verdict": "PASS",
-      "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/learn-from-the-test.md --report` this session; exit=0, 'oversized: 0', 11 slides measured against 210 words / 6 bullets. Largest is 'Your mid-run worries hint at missing checks' at 159w / 0 bullets; largest bullet count is 'What You'll Learn' at 5. (Note the script's path is `scripts/check-slide-size.js`, not the `curriculum/evals/scripts/` path §5's prose implies — reported as a TODO, not scored here.)",
+      "evidence": "`node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/learn-from-the-test.md --report` this session: 11 slides checked, 0 oversized, largest is 159 words (`## Your mid-run worries hint at missing checks`) against the 210-word/6-bullet ceiling. The script does not walk the `<!--flag:no-module:...-->` variant, so `## Back to the map, one last time` (the section this diff trimmed) isn't in its report; manual count on the current body (`sed` range L79-L91, figure/flag/tier lines stripped) = 194 words — under the ceiling, and lower than before the edit (the cut sentences alone were ~43 words, which would have put the pre-edit version at ~237, over the line). The edit reduces this row's risk, not increases it.",
       "fix_hint": null,
       "blocking": false
     },
@@ -48,9 +49,9 @@
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 1,
       "rule_lead": "Mood contract named.",
-      "verdict": "PASS",
-      "evidence": "Contract named at L172 ('Mood target: learning through contrast — \"I can feel what packaging adds now; I couldn't have read it as a lecture.\"') and matches the strategy doc's M5-in-detail Mood line verbatim. Regenerated trace (content_sha 86b156ae) scores every teaching beat at or above the floor: 8, 7, 8, [setup, exempt], 8, 9, 8, 8; close 8. One beat at 7 — Phase 2, `## Say what done-done means` (L27-37) — is facilitator-premium, not below-floor, and is filed as TODO 1. Phase 4 (L49-57) is recorded `mood_score: null` under §1's mood-floor carve-out: four include lines plus a reading-posture aside, compressible to a parenthetical without breaking the arc, so it is a sequencing beat judged on clarity (reading order exercises-before-closers is unambiguous on the page) rather than engagement. Student leaves in the state the contract asks for and hands off unresolved into M6.",
-      "fix_hint": "Naming an escape hatch for a closed M4 terminal before the L33 prompt would take Phase 2 from 7 to 8.",
+      "verdict": "REVISE",
+      "evidence": "Mood contract is named and honoured (trace `module_mood_contract` matches the strategy doc's M5 'Mood: learning through contrast' line verbatim). All 7 scored beats sit at or above the 8-floor except phase 2 ('Say what done-done means + Reading the return opener', L27-37), scored 7/10 in the regenerated trace — the rule's own text treats 7 as 'facilitator-premium signature; flag what would take it from 7 to 8' rather than a REVISE-worthy failure, so this row is the flag, not a defect claim. What would take it to 8: L31 ('This one runs in the session you sent off') silently assumes the M4 session is live/resumable, while L9 explicitly blesses arriving with a session that 'ran out of credit'; nothing in the module or the L185 Connections-blocker push-back names the recovery (a fresh-session re-audit against repo state still counts, or point at `/resume`). Pre-existing, unaffected by this diff (both L9 and L31 are untouched), and already flagged at the prior pin — carried forward since it is still open.",
+      "fix_hint": "One clause before the L33 prompt naming the escape hatch for a closed M4 terminal. Body-text edit on a shipped module: card it (check_prompts.md §26), do not apply directly.",
       "blocking": false
     },
     {
@@ -58,7 +59,7 @@
       "rule_index": 2,
       "rule_lead": "Epistemic mood ≠ punitive mood.",
       "verdict": "PASS",
-      "evidence": "The whole module is built on the student reading their own underdelivering run, which is exactly where not-knowing curdles into having-done-wrong. It does not. L29 puts the fault in the repo, not the person: 'The session you sent off declared done at some point. Against what? Nothing in the repo said.' The line closest to violating is L106 — 'Come to Module 6 without the packaged session and you'll have one session to read where the exercise needs two. Your call.' It reads as consequence plus agency, not reprimand: it states what the next exercise needs and hands the decision back, with no evaluative word about the student. Reinforced outside the body by the trainer push at L179 ('the un-packaged run was supposed to underdeliver. The diagnosis is data, not blame.').",
+      "evidence": "Diff's main body change is L85 ('**The wall** is your biggest challenge from here.'). 'Biggest challenge' raises stakes but stays forward/uncertainty-framed (a real thing to do, not a thing done wrong) — no 'you missed', 'you failed', or blame language anywhere in the section. Read against the strategy doc (`content-strategy-agentic-engineering-101.md` L18, M5-in-detail): 'The stance is *prove it on yourself, then promote*' — the doc's own framing is exactly this forward-looking register, not punitive. Whole-file scan for punitive markers (`grep -inE 'you (failed|missed|should have|didn.t)'`) → 0 hits.",
       "fix_hint": null,
       "blocking": false
     },
@@ -67,7 +68,7 @@
       "rule_index": 3,
       "rule_lead": "Lead with discipline, not failure mode.",
       "verdict": "PASS",
-      "evidence": "Title (L1) 'Learn from the test, re-send packaged' and Big Idea (L4) 'Steer your long session' both name positive disciplines — steering, testing, packaging — with the failure modes demoted to the negative case the discipline addresses (L15-16's lenses, named inside a Diagnose/Pair objective rather than in a title). The header closest to violating is L39 'Your mid-run worries hint at missing checks', which opens on a felt failure; it stays inside because the header's predicate is the discipline (finding the missing check) and the worry is the evidence, not the subject. No §3 carve-out is needed here — nothing in this file is failure-named as a canonical handle.",
+      "evidence": "Big Idea (L4, unchanged by this diff): 'Steer your long session' — discipline-led, no failure word in the title or lead. `## Say what done-done means`, `## Your mid-run worries hint at missing checks` — both name a positive move (define, test) with the failure mode as the thing addressed, not the headline.",
       "fix_hint": null,
       "blocking": false
     },
@@ -76,7 +77,16 @@
       "rule_index": 4,
       "rule_lead": "Strategy-fidelity check.",
       "verdict": "PASS",
-      "evidence": "Read `bosser-strategy:content-strategy-agentic-engineering-101.md` §Mood arc (L256-267) and §M5 in detail (L394-448) this session. FOUR FACETS. (a) Front-run check: strategy embargoes the three-pattern to the closer and Cherny's attribution to M6; `sed -n '1,121p' <file> | grep -nE 'Ronacher|Cherny|three-pattern'` → 0 hits, and `grep -cn '\\beval\\b'` on the same range → 0, honouring the L143 maintainer decision that `eval` stays embargoed to M6. (b) Module-to-module arc: strategy says the M6 bridge lives in the module file's `## Next`, and it does — L118 widens from 'did my task pass?' to 'do all our tasks pass, and who reviewed what?', which is M6's stated question (spot gaps, build the loop) and not its answer. (c) Big Idea fidelity: L4 'Steer your long session… the session you already ran is the evidence for what the next one needs' is the strategy's 'the pedagogy is contrast, not prescription' in the module's own words. (d) Mood doesn't resolve early: strategy's arc puts M5 at learning-through-contrast between M4's curious readiness and M6's practitioner fluency; the close (L118, and L73's 'The verifier's green is a claim, not proof' in the no-M6 variant) leaves the gate's fallibility live rather than settling it. Lecture inventory matches the shipped set exactly: reading-the-return (L37), hooks-always-fire (L47), diagnose-and-resend (L51), what-packaging-is (L55), the-gate-is-a-claim (L57). Two doc-currency drifts against the strategy doc, filed as TODO 2 — they are stale in the private doc, not in this body.",
+      "evidence": "Checked both diff-touched beats against `bosser-strategy:content-strategy-agentic-engineering-101.md` (read this session, M5-in-detail + M6-in-detail). (1) The rewritten wall paragraph (L87, 'The rules file, the observations, the verifier, the reference, the plan. All of it on your side. That is the right order and not a shortfall') now tracks the strategy doc's own sentence almost verbatim: 'everything M1–M5 built (rules file, observations, verifier, reference, plan) sits deliberately on the personal side, and that is the right order, not a shortfall' (doc L18) — the edit IMPROVED fidelity over the prior wording, which paraphrased more loosely. (2) The L118/L120 cut ('the question widens from *did my task pass?* to *do all our tasks pass, and who reviewed what?*') removed a forward-reference to a review/reviewer dimension that M6 explicitly does not carry: `spot-gaps-build-the-loop.md` L68 states 'M6 carries no recap of generation speed, review bandwidth and evals buying capacity back either; do not re-add one (Antti 2026-09-02, read against the frame and declined).' The cut brings M5's handoff back in line with what M6 actually delivers post-re-cut ('subtler misses, subtler drift' — retained) instead of front-running a teaching moment M6 no longer owns. No sequencing claim in the doc is violated by either edit; both moved this file closer to the doc, not away from it.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 8,
+      "rule_lead": "Strategy doc carries strategy, not structure — §§1-7 bind curriculum→doc, this one binds doc→curriculum.",
+      "verdict": "N/A",
+      "evidence": "Rule binds the STRATEGY DOC's own content (doc must not restate this file's structure) — it is a constraint on whoever edits `content-strategy-agentic-engineering-101.md`, not a claim this curriculum file can violate. New rule (dated 2026-09-03), not present in the prior pin's brief; no prior-instance row to park it from. Same class-split logic as §5-7 (module-only/doc-only sections): if it applies anywhere it is the strategy judge's row against the doc, not story's row against the module.",
       "fix_hint": null,
       "blocking": false
     },
@@ -85,7 +95,7 @@
       "rule_index": 16,
       "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
       "verdict": "PASS",
-      "evidence": "The module body ships one forcing function and it is inside the fence, not the prose: `{{prompt:ae101-m5-done-done}}` at L33, whose registry body carries the whole move ('Answer per point, with evidence from this session') while the body around it only frames (L29-31) and only compounds (L35). Read prompt-only, the beat still lands. Zero count-scripts in the body — no 'two rounds max', no prescribed instinct. The line closest to violating is L74, 'What recurs names your next check. Build it, send again' — a student move stated in prose with no fence. It stays inside on two grounds: §16's Boundary 2 (light/conversational register where the body ask IS the design), and the file's own maintainer accept-note at L126 ('`## Inspect your results` stays prose, no fence (accepted 2026-08-20)'), which records that the section fires after the sitting ends on artefact paths that do not exist at authoring time, so a fence would have to invent them.",
+      "evidence": "This diff touched no fenced prompt and no `{{prompt:}}` marker (the only one, `{{prompt:ae101-m5-done-done}}` at L33, is byte-unchanged — confirmed it sits outside every diff hunk). The two edited body passages (the wall paragraph, the Next-section cut) are reflective/closing prose with no forcing-function content to misplace; no scripted-reaction count-script was added either.",
       "fix_hint": null,
       "blocking": false
     },
@@ -94,7 +104,7 @@
       "rule_index": 27,
       "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
       "verdict": "PASS",
-      "evidence": "Hard-grep over the body region (L1-121), pattern `discuss with|the room|your neighbou?r|the person next to you|pair up|share (what|with)|tell the room|take [0-9]+ (seconds|minutes) and|compare with` → 0 hits; the same pattern returns 1 against the planted control string 'take 90 seconds and compare with the person next to you', so the zero is real. Cohort-management language exists only below the maintainer fence (L167 'room copy-pastes concurrently', the Push-back moves list L177-185), which §27 explicitly exempts ('Maintainer blocks are NOT runtime scripts'). The line closest to violating is the L53 blockquote, 'Follow the headings; pick the detail that interests you most' — an instruction about how to attend, which could read as pacing. It is about the WORK (how to read the two closer decks) and hands the attention decision to the student rather than scheduling the room; the L153-160 accept-note records the wording as Antti's and its authority-grammar as deliberate. No third-carve-out room-naming line is used in this file, so no ceiling is consumed.",
+      "evidence": "`grep -inE 'discuss with|share with|tell the room|compare with the person|take [0-9]+ (min|second)' <file>` → 0 hits, unchanged by this diff. Both edited passages are about the WORK (the wall, the artefact, the next module) not cohort management. No pause-cue or authored-conversation sentence added.",
       "fix_hint": null,
       "blocking": false
     },
@@ -102,9 +112,9 @@
       "compendium": "check_workshop.md",
       "rule_index": null,
       "judge_owned": true,
-      "rule_lead": "Whole-compendium scope call — check_workshop.md does not apply to this file.",
+      "rule_lead": "Whole-compendium scope call.",
       "verdict": "N/A",
-      "evidence": "The body view's `group_beat_markers` signal is true, but it fires on maintainer-block text below the L122 fence ('room copy-pastes concurrently', L167). Applying §1's own test to every body beat: remove the room and each beat still produces the same artefact — the done-done audit lands in the student's own M4 transcript (L31), the diagnosis reads the student's own return (L43), the verifier and reference are built per-student in `diagnose-and-resend`, and the re-send runs in that student's own worktree. Nothing merges; no artefact belongs to the group. Co-located solo work is not a workshop.",
+      "evidence": "No beat in this file is group-scale — every artefact (done-done audit, verifier, reference, plan.md, packaged re-send) is produced and read by the individual student; removing the room leaves each beat producing the same artefact (check_workshop.md §1's own test). Unaffected by this diff.",
       "fix_hint": null,
       "blocking": false
     },
@@ -116,7 +126,7 @@
       "evidence": "Target is a module file; the rule's own remedy names the module file's `## Next`/`## Bring to Module N` as cross-module sequencing's correct home. `awk` over the raw body above the maintainer fence, `grep -nE 'M[0-9]|Module [0-9]'`: L24 (M1 countermove callback, module's own blockquote), L98/L102/L104/L112 (Bring to Module 6 / Pre-reads before Module 6 / Next — the module's sanctioned close section). No lecture-file body content sits in this file to violate the rule.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6ad2f857f1104390820a25fc953b68b3d5c432f570b982808673586808c14999",
+      "carried_from": "86b156ae39de303db17fb2b9f173cde74f2e88101af09894620b5ca4a682179f",
       "carried_shape": "94301cda9e6a5a78"
     },
     {
@@ -127,7 +137,7 @@
       "evidence": "Rule's scope is `curriculum/lectures/**`; this file is a module and carries no inline `{{prompt:}}` for a lecture. For context (not scored here, since it's the lecture file's own compliance, not this file's): `hooks-always-fire.md`'s prompt (`{{prompt:what-packaging-is-1}}`) carries the exact §6 remedy — body reads 'This one runs on the screen. Watch the list come back rather than typing along,' no second-person imperative asking the room to run it, and its own maintainer note cites §6 by name.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6ad2f857f1104390820a25fc953b68b3d5c432f570b982808673586808c14999",
+      "carried_from": "86b156ae39de303db17fb2b9f173cde74f2e88101af09894620b5ca4a682179f",
       "carried_shape": "94301cda9e6a5a78"
     },
     {
@@ -138,7 +148,7 @@
       "evidence": "Module-only section owned by the strategy judge per this template's class split (storytelling carries §§1-4 only). Key Concepts (L58-63) is outside every hunk in `git diff 39a1454e..HEAD` — unchanged this pin.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6ad2f857f1104390820a25fc953b68b3d5c432f570b982808673586808c14999",
+      "carried_from": "86b156ae39de303db17fb2b9f173cde74f2e88101af09894620b5ca4a682179f",
       "carried_shape": "94301cda9e6a5a78"
     },
     {
@@ -149,7 +159,7 @@
       "evidence": "Same class split as §5, scored by the strategy judge. Key Concepts unchanged this pin (5 bullets, L58-63).",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6ad2f857f1104390820a25fc953b68b3d5c432f570b982808673586808c14999",
+      "carried_from": "86b156ae39de303db17fb2b9f173cde74f2e88101af09894620b5ca4a682179f",
       "carried_shape": "94301cda9e6a5a78"
     },
     {
@@ -160,7 +170,7 @@
       "evidence": "Same class split as §5/§6, scored by the strategy judge. What You'll Learn (L12-18) is outside every hunk in `git diff 39a1454e..HEAD` — unchanged this pin.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "6ad2f857f1104390820a25fc953b68b3d5c432f570b982808673586808c14999",
+      "carried_from": "86b156ae39de303db17fb2b9f173cde74f2e88101af09894620b5ca4a682179f",
       "carried_shape": "94301cda9e6a5a78"
     }
   ],
@@ -178,20 +188,14 @@
     "close_score": 8,
     "any_below_8": true,
     "stealing_the_mood": [
-      "Phase 2 (`## Say what done-done means`, L27-37) at 7 — facilitator-premium, not below-floor. L31 'This one runs in the session you sent off' silently requires a live or resumable M4 session, while L9 explicitly blesses arriving with one that 'ran out of credit'; no escape hatch is named, and the nearest push-back (L178, Connections blocker) prescribes a fresh session that would defeat the transcript-append design this beat exists for. Recoverable in practice via documented /resume, which is why 7 and not below."
+      "Phase 2 (Say what done-done means): 7/10, session-continuity gap at L31 vs L9 — facilitator-premium, not below-floor; carried from the prior pin, unaffected by this diff."
     ]
   },
-  "teaching_moment": "M5's teaching moment is the contrast itself: the student can only say what packaging adds because they read their own un-packaged failure first. It triggers reliably across persona skill variation because the artefact is the student's own and `diagnose-and-resend` Phase 1 forces quoted moments rather than summary — there is no path through the exercise that skips the read. Nothing in this pin touched it. The two body edits since the prior pin (verifier-shape handle background-agent → LLM judge at L17; Key Concepts cut from five bullets to four) are vocabulary and dosage, not sequencing, and both carry Antti accept-notes dated 2026-08-27 (L141, L143). The closer still owns the naming: zero-hit grep for Ronacher/Cherny/three-pattern across the body, verified this session.",
-  "todos": [
-    "Phase 2 session-continuity gap (this judge's lane, check_strategy_tie_in §1 — carried from the prior pin, still open). L31 requires the M4 session to be live or resumable; L9 blesses a session that ran out of credit. Add one clause before the L33 prompt naming the escape hatch — either point at `/resume`, or state that a fresh-session audit against repo state still counts — so a trainer reaching for the L178 Connections-blocker push-back does not silently defeat the transcript-append design. Body-text edit on a module: card it, do not apply.",
-    "Doc-currency drift in `bosser-strategy:content-strategy-agentic-engineering-101.md` §M5 in detail, two items, both stale in the PRIVATE doc rather than in this body (`curriculum/CLAUDE.md` § Alignment). (a) Its 'Five moves' #3 still names the verifier-shape menu as 'background-agent / shell-hook / Ralph re-feed' and still leads 'Build the verifier. First eval, named.' — both superseded by the L143 maintainer decision (Antti 2026-08-27: the handle is *LLM judge*; `eval` stays embargoed to M6). (b) Its 'Delivery shape' bullets place both closers 'in the module's `## Closing` section after Debrief'; this file has no `## Closing` heading and no Debrief body section — the closers are included at L55/L57 under `## Your mid-run worries hint at missing checks`, and Debrief lives as a trainer transition (L168). Reading order is correct either way; only the doc's section names are stale.",
-    "`check_lectures.md` §5 names its enforcer as `scripts/check-slide-size.js`; a judge reading the brief cold reaches for `curriculum/evals/scripts/check-slide-size.js` (where the other named eval scripts live) and gets MODULE_NOT_FOUND. The real path is repo-root `scripts/check-slide-size.js`. Compendium wording fix, not a curriculum fix — the orchestrator applies it directly per the approval gate."
-  ],
+  "teaching_moment": "M5's teaching moment is the contrast itself: the student can only say what packaging adds because they read their own un-packaged failure first, then read it again through the same lenses at close. `diagnose-and-resend` forces quoted moments over summary, so nothing in the exercise path skips the read. This diff touched neither the exercise nor the lenses. The 'wall' beat (no-M6 variant close) is a second, smaller teaching moment — personal-vs-team boundary — and the rewrite strengthens rather than dilutes it (see check_strategy_tie_in §4 evidence).",
   "notes": [
-    "TRACE REGENERATED, not cached. The cached trace at `curriculum/evals/sim-cache/ae101--module--learn-from-the-test.persona.json` carried `content_sha` 6b6300cf (commit 0f46e4a2, two pins stale) against a current body_sha of 86b156ae, and it asserted text this file no longer contains: its phase 5 record read 'Key Concepts (lines 58-63) — five bullets', but the fifth line was cut 2026-08-27 (Antti, training run; accept-note at L141) and the block is four bullets at L59-65. Every quote in this instance is grepped against the live file, not carried from the cache. Two phases were re-verified SHA-identical and their records carried unchanged (phase 2 = 0c5fdfe6, phase 4 = 7ea3e8d4); the other six were re-simulated.",
-    "Out-of-lane, for the pedagogy judge (check_pedagogy §47 — not in storytelling's owned list, carried from the prior pin and still open): the done-done beat at L27-37 ships a forcing function (the L33 fenced prompt) but neither the Push-back moves list (L177-185) nor the Per-phase failure mode + escape hatch table (L225-234) names its dominant failure (closed M4 session) or a matching recovery move. The table's first row is scoped to worktree setup, and the Connections-blocker fix it borrows prescribes a fresh session, which is the wrong move for this beat. Same underlying gap as TODO 1, filed here too because §47 compliance is pedagogy's rule to score.",
-    "Read-only run. No curriculum source file was edited; the only writes were this instance, the prefill sidecar, and the regenerated sim-cache trace."
+    "check_lectures.md §4 gained a new bare-arc-label clause (Antti 2026-09-03) that reads as though it could reach `## Next` — but that exact heading is `curriculum/module-shape.md`'s canonical mandate for every module's closing section (13 files repo-wide use it verbatim). Worth a maintainer call on whether §4's new clause was meant to reach template/structural headers at all, before it starts firing across the corpus; not filed as a finding against this file since the header is not this file's choice.",
+    "Sim trace at curriculum/evals/sim-cache/ae101--module--learn-from-the-test.persona.json was stale (content_sha 86b156ae vs current e97f6cbb) and has been regenerated this session: phases 3/4/7 re-hashed (invisible `<!--tier:>` marker / tier-flip changes only, not re-simulated since no rendered text moved), phase 6 and phase 8 re-simulated (real text changes), phases 1/2/5 verified byte-identical and carried forward. close.final_artifact and phase 8's mood_note previously quoted the now-deleted L118 sentence; corrected."
   ],
   "blocking_findings_count": 0,
-  "todos_count": 3
+  "todos_count": 1
 }

@@ -34,7 +34,7 @@ Push back on the five. The ones you reject sharpen the read as much as the ones 
 
 - Adding a connector is one command per tracker. [MCP and connectors](../trainings/agentic-engineering-101/reference/mcp-and-connectors.md) has them, and it pays back on every session after this one.
 
-Ask Claude to write the close-out, update the ticket, and report what it wrote.
+Ask Claude to update the ticket with a close-out note and report what it wrote.
 
 {{prompt:close-the-ticket-3}}
 
@@ -47,7 +47,7 @@ Ask Claude to write the close-out, update the ticket, and report what it wrote.
 - The ticket is one instance. Anything can be inspected and reverse-engineered with an LLM: a codebase nobody documented, a CI pipeline, a config, an API you did not write, the system your team runs on and cannot explain.
 - Ask Claude to study the pipeline, the config, the undocumented code. Extract a `.md` file. Use that file as context in the next agent.
 
-## What happened
+## Two artefacts from one ticket
 
 Two things came out of one ticket: a close-out note on the bug you shipped, and the conventions your team has been encoding in its fields all along. The loop that started with a failing test closed.
 
@@ -131,5 +131,5 @@ OODA
 
 <!-- /backing -->
 
-**Quality:** compendium-audited 2026-09-02 (writing@9edae2ef story@9edae2ef technical@43e6cae1 behavior@1480362 pedagogy@77991802 strategy@1480362 slides@9edae2ef)
-- judges @9edae2ef: writing PASS (1 todo see instances/ae101--exercise--close-the-ticket.writing.json), story PASS (1 todo see instances/ae101--exercise--close-the-ticket.story.json), technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-09-05 (writing@08946dd8 story@324b81d7 technical@324b81d7 behavior@1480362 pedagogy@324b81d7 strategy@324b81d7 slides@324b81d7)
+- judges @08946dd8: writing PASS (3 todos see instances/ae101--exercise--close-the-ticket.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS (1 todo see instances/ae101--exercise--close-the-ticket.pedagogy.json), strategy PASS, slides PASS

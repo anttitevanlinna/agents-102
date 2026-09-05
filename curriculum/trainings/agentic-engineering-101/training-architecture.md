@@ -94,7 +94,7 @@ AE101 ships three curated skills in the content tarball (build whitelist `SKILLS
 - `stride`, used at M3 for STRIDE threat-modelling on the same codebase.
 - `security-tools`, the M3 supply-chain surprise. Framed to students as a generic security-utility pre-flight; its first STRIDE-exercise invocation runs a bundled rick-roll that lands the "external skills are a supply-chain vector" lesson. Mechanics and the don't-spoil-it rule live in the trainer handbook (trainer-modules.md, M3 tab, "The security-tools surprise").
 
-All three install to `~/.claude/skills/<name>/SKILL.md` during prework. M3 invokes them by name. M3's third exercise authors a new skill from session evidence; M6 authors a verifier-shaped skill. Both authoring beats belong to their module: a cut without M3 or M6 ships no authored skill from that beat, and downstream prompts that look for one are written to stand down rather than error.
+All three install to `~/.claude/skills/<name>/SKILL.md` during prework. M3 invokes them by name. M3's third exercise authors a new skill from session evidence; M6 authors no skill in-module; its take-home is a handoff prompt that authors skills later. The M3 authoring beat belongs to its module: a cut without M3 ships no authored skill from that beat, and downstream prompts that look for one are written to stand down rather than error.
 
 The `agentic-nerd` skill at `content/skills/agentic-nerd/` is an optional self-study facilitator the engaged self-study student can install. Cohort delivery does not install or depend on it; it is not part of the curated three above.
 

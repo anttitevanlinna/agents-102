@@ -1,287 +1,271 @@
 {
- "class": "slides",
- "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/supplementary/the-context-ceiling.md",
- "body_sha": "04d74ff00334a58ec09854a494ca1776375ef014cd05d9a64647f344f8ed1408",
- "verdict": "PASS",
- "training": "ae101",
- "chunk_map": [
-  {
-   "index": 0,
-   "heading": "H1 + lede",
-   "lines": "1-9"
-  },
-  {
-   "index": 1,
-   "heading": "What \"efficient\" actually measures",
-   "lines": "11-16"
-  },
-  {
-   "index": 2,
-   "heading": "Put a number on it",
-   "lines": "17-35"
-  },
-  {
-   "index": 3,
-   "heading": "The craft: keep the window clean",
-   "lines": "37-43"
-  },
-  {
-   "index": 4,
-   "heading": "The craft: spend and route wisely",
-   "lines": "45-53"
-  },
-  {
-   "index": 5,
-   "heading": "More rules, worse edits",
-   "lines": "55-59"
-  },
-  {
-   "index": 6,
-   "heading": "The folklore: numbers that don't survive a second look",
-   "lines": "61-69"
-  },
-  {
-   "index": 7,
-   "heading": "Drivers of inefficient context: the durable ones",
-   "lines": "71-77"
-  },
-  {
-   "index": 8,
-   "heading": "Drivers of inefficient context: the loud ones",
-   "lines": "79-85"
-  },
-  {
-   "index": 9,
-   "heading": "Drivers of inefficient context: fanning out is its own bill",
-   "lines": "87-89"
-  },
-  {
-   "index": 10,
-   "heading": "One lever, two payoffs",
-   "lines": "91-93"
-  },
-  {
-   "index": 11,
-   "heading": "Now go clean your window",
-   "lines": "95-101"
-  },
-  {
-   "index": 12,
-   "heading": "Sources: quality and craft",
-   "lines": "103-110"
-  },
-  {
-   "index": 13,
-   "heading": "Sources: cost and other drivers",
-   "lines": "112-119"
-  }
- ],
- "rules_evaluated": [
-  {
-   "compendium": "check_slides.md",
-   "rule_index": 1,
-   "rule_lead": "Referent resolution under a sequential deck read.",
-   "verdict": "PASS",
-   "chunks_flagged": [],
-   "evidence": "Fresh full sequential read, all 14 chunks, against the CURRENT body (the prior body_sha's only substantive diff was the removal of chunk 4's trailing 'in Module 3' clause -- see rule 2 below). Chunk 4 line 49 now reads 'There is a way to hand it off and get back only the answer, at a price worth knowing before you reach for it.' with no further pointer; 'a price worth knowing' is a plain declarative tease (an unquantified cost, not a pronoun/demonstrative failing to resolve) and does not trip this rule. Continuity checks: chunk 8 line 79 'The other kind' resolves against chunk 7's 'two kinds' named two lines earlier; chunk 9 'a single subagent' and chunk 10 'a subagent doing your noisy reading' resolve against chunk 4's 'Subagent as a firewall'; chunk 10 'starting clean' resolves against chunk 3's 'Start clean'; chunk 11 'the drivers section' resolves against chunks 7-9's own headers. Forward-signposting sentences (chunk 1 line 15 'the rest of this page', chunk 7 line 73 'two kinds... Start with the durable ones') self-define their own category in the same sentence rather than pointing at something that should already be named. Closest call, unchanged from before: chunk 11 line 99 'write the evals' inside the closing italic aside -- never defined anywhere in the body. The maintainer block (line 131) frames the whole aside as a deliberate impressionistic authorial wink, not a claim the reader must decode, and the lesson lands without it. Logged as a TODO, not a REVISE -- see todos.",
-   "fix_hint": null,
-   "blocking": true
-  },
-  {
-   "compendium": "check_slides.md",
-   "rule_index": 2,
-   "rule_lead": "Cross-file and positional callbacks.",
-   "verdict": "PASS",
-   "chunks_flagged": [],
-   "evidence": "The one cross-file callback this rule previously turned on -- chunk 4 line 49's 'You'll meet it properly, mechanism and trade-off both, in Module 3.' -- is GONE from the current body. Diffed against pin e11bbeb4 this session (git diff e11bbeb4..HEAD -- <file>): that clause was removed, and nothing else in the diff touches prose. Re-grepped the whole body for 'Module', 'lecture', 'exercise' used as a cross-file positional pointer: zero hits (confirmed live: grep -n \"Module\" on the file returns nothing). Remaining named-source callbacks (Klaassen's 'the folder is the agent', Sourcegraph Amp's Handoff/Neo, Yegge's Memento) are external citations named by title/author, not curriculum cross-file pointers, and pass §2's own test (named, not located). No cross-file or positional callback of any kind remains in the body. The long verify-refuted history on this exact sentence (pin b55cd28b/534a5e84) is now moot -- the sentence it concerned no longer exists.",
-   "fix_hint": null,
-   "blocking": true
-  },
-  {
-   "compendium": "check_slides.md",
-   "rule_index": 5,
-   "rule_lead": "No orphan slides.",
-   "verdict": "PASS",
-   "chunks_flagged": [],
-   "evidence": "All 14 chunks carry a self-standing claim, cold. Shortest body chunk, 9 (fanning out, lines 87-89), still states its own thesis in three sentences (fan-out is a real but contested, single-source-sourced cost; treat as a ceiling for research-style work, not this training's default) rather than leaning on a wait-state or a bare context-dependent bullet. Corroborated this session: node scripts/check-slide-size.js --file <file> -> 'slides: 13 ... oversized: 0', no near-empty slide flagged.",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_slides.md",
-   "rule_index": 6,
-   "rule_lead": "Header self-carries at projection distance.",
-   "verdict": "PASS",
-   "chunks_flagged": [],
-   "evidence": "Re-checked all 13 '##' headers against their own chunk body on the current text. Chunk 4's header 'The craft: spend and route wisely' still holds after the Module-3 clause was trimmed from its first bullet -- the removed clause was a trailing pointer, not the content that carries the header's claim ('Subagent as a firewall' = spend, 'Route by complexity, not price' = route, 'Keep what you carry lean' = the restraint half covered by the chunk's own frame sentence at line 47). Other headers unchanged from the prior pass and still literally true: line 61 'The folklore: numbers that don't survive a second look' against the two debunked round-number claims that follow; line 91 'One lever, two payoffs' against its own next sentence. No header is contradicted by its chunk.",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_slides.md",
-   "rule_index": 7,
-   "rule_lead": "LLM-cadence caps.",
-   "verdict": "PASS",
-   "chunks_flagged": [],
-   "evidence": "Ran fresh this session: grep -nE 'Not [A-Za-z][^.]*\\. Not [A-Za-z]' on the file -> 0 hits ('Not X. Not Y. Z.' construction absent). Manual per-chunk read for the remaining sub-items on the current body: anaphora/epistrophe triples -- none (chunk 11's 'Discipline shrinks the bloat. It does not abolish it.' is a two-sentence pair, not a triple). Self-grading superlatives -- none target this training's own value; chunk 3 line 41 'the cheapest quality upgrade there is, and the most skipped' grades the /clear habit in general, not this training. Number + own retraction -- checked every figure in the body (18 models L5; 23-54% L9; 100K/20K L19-28; ~$10/~$2/~$1 L33; ~a sixth/~a third L75; ~15x L89): each is stated once with sourcing/scope attached and then USED (e.g. L89's 'but it's a year old, single-source... Treat it as a ceiling for research-style work, not a default for yours' gives a directive, not a self-cancelling retraction). Abstraction-noun stacks -- none; phrasing stays concrete throughout ('the files Claude didn't load' register). Empty-leg verb triplets -- none found.",
-   "fix_hint": null,
-   "blocking": true
-  },
-  {
-   "compendium": "check_slides.md",
-   "rule_index": 8,
-   "rule_lead": "Internal dialect never lands on a slide.",
-   "verdict": "PASS",
-   "chunks_flagged": [],
-   "evidence": "Ran fresh this session: grep -nE '\\b(surface|firing|compendium|forcing function|beat|mood|Connections)\\b' on the file -> two body-region hits, both cleared: line 43 'Boris Cherny has said that beat a vector index' is the ordinary verb (outperformed), not the module-beat noun; line 83 header/body 'The tool and MCP surface' uses the standard SWE sense (interface/attack surface), distinct from the banned repo-internal 'writing surface' (content-authoring) noun the rule names. No compendium/firing/forcing-function/mood/Connections-as-proper-noun anywhere in the body region (lines 1-24, 32-120). 'Compaction' (chunk 6) is a real Claude Code platform feature being taught, not maintainer jargon.",
-   "fix_hint": null,
-   "blocking": true
-  },
-  {
-   "compendium": "check_slides.md",
-   "rule_index": 9,
-   "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
-   "verdict": "PASS",
-   "chunks_flagged": [],
-   "evidence": "Confirmed live this session: site/layouts/curriculum.js line 65 registers this file's slug inside TRAININGS['agentic-engineering-101'].supplementaries -- rule 9's lookup-surface waiver ('The same waiver covers lookup surfaces -- reference and supplementary pages... The per-slide budget is off there') applies file-wide, so the flat per-slide count is not the gate; the handle cap still is. Re-enumerated every bold span in the body region (grep -noE '\\*\\*[^*]+\\*\\*' on the raw file, body-region hits only): line 23 '**Prompt**' (1w, a widget label); chunk 3 '**Start clean.**' (2w), '**Pass paths, not paste.**' (4w); chunk 4 '**Subagent as a firewall.**' (4w), '**Route by complexity, not price.**' (5w), '**Keep what you carry lean.**' (5w); chunk 7 '**The codebase the agent reads.**' (5w), '**Thin memory, both directions.**' (4w); chunk 8 '**The tool and MCP surface.**' (5w), '**Cache invalidation.**' (2w); chunk 9 '**Fanning out too wide.**' (4w) -- all at or under the ~5-word cap. Chunk 6's two folklore-quote handles ('\"Caching saves you 90 percent.\"' 5w, '\"Compaction is always lossy, so always hand off.\"' 8w) sit at/over the word count but carry the file's own maintainer accept-note (line 123: quotes under examination are not decoration, don't trim) -- scored per that accept-note. No bold anywhere in chunks 0, 1, 2 (besides the Prompt label), 5, 10, 11, 12, 13.",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_slides.md",
-   "rule_index": 10,
-   "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
-   "verdict": "PASS",
-   "chunks_flagged": [],
-   "evidence": "Verified the live wrapping mechanism this session: scripts/build-workbook.js line 833 renders every registered supplementary as `<section class=\"phase phase--lecture\" id=\"supplementary-${slug}\">...</section>`; site/layouts/slides.js line 240 `buildDeckModel` selects `.phase--lecture, .phase--exercise` to compose the deck. The file is registered at site/layouts/curriculum.js line 65 in TRAININGS['agentic-engineering-101'].supplementaries, so it reaches the composed deck under the required wrapper -- not omitted.",
-   "fix_hint": null,
-   "blocking": true
-  },
-  {
-   "compendium": "check_slides.md",
-   "rule_index": 12,
-   "rule_lead": "Page geometry dies at the cut; reading order survives.",
-   "verdict": "PASS",
-   "chunks_flagged": [],
-   "evidence": "Ran this session: node scripts/check-slide-deixis.js --file curriculum/trainings/agentic-engineering-101/supplementary/the-context-ceiling.md -> 'OK — 1 files, no page-geometry pointers across the slide cut.' Manual grep this session for above/below/further down/top of this/see below/a few paragraphs -> one hit, line 5 'even far below the window's limit' -- a numeric-threshold sense (below a limit), not page position. Chunk 1 line 15 'the rest of this page is about closing it' and chunk 6 line 69 'check it against your own /context ... before you trust it' are whole-document reading-order references, explicitly allowed by the rule's own list ('the rest of this page').",
-   "fix_hint": null,
-   "blocking": true
-  },
-  {
-   "compendium": "check_slides.md",
-   "rule_index": 14,
-   "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
-   "verdict": "PASS",
-   "chunks_flagged": [],
-   "evidence": "Ran this session: node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/supplementary/the-context-ceiling.md -> 'files: 1   slides: 13   limits: 210 words / 6 bullets   oversized: 0' / '✓ every slide is within limits'. No accept-note needed or present.",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_slides.md",
-   "rule_index": 16,
-   "rule_lead": "A bullet earns its slot or dies — three classes that read as rigour and carry nothing.",
-   "verdict": "N/A",
-   "evidence": "Rule scopes explicitly 'Per bullet'. Grepped the body for literal bulleted list items (`^- `, run this session): the only hits are the two Sources sections (chunks 12-13, lines 105-110 and 114-119) -- citation entries (linked title + venue + year), not doctrine-restatement / self-referential-design-commentary / aphorism-kicker prose, and the file's own maintainer note (line 141) marks that list format as deliberate student-facing end-matter. No other `- `-prefixed or numbered list items exist anywhere in the body; every other section is flowing paragraphs with bolded lead-ins, which is not the bullet shape this rule targets. Nothing for the rule to apply to.",
-   "fix_hint": "",
-   "blocking": false,
-   "carried_from": "3b2eca2a5d79af5bf8cfd8833e563beeb4f819faeb7df878d4a12dcd765e97e3",
-   "carried_shape": "81e57214a612a2af"
-  },
-  {
-   "compendium": "check_slides.md",
-   "rule_index": 3,
-   "rule_lead": "Every backward reference points at a beat that exists.",
-   "verdict": "N/A",
-   "evidence": "This is a supplementary reference page, not a live-session exercise/lecture with a module beat set. Grepped for '(you did|saw|caught|just|built|wrote|made|ran)' across the body: the one hit, chunk 11 line 101 'the one you just let go of', is a generic present-tense metaphor about the reader's own hypothetical action (start-clean/compact), not a backward pointer to a specific prior module beat. No 'the X you did/saw' construction against a module exercise exists in the file. Rule has nothing to apply to.",
-   "fix_hint": "",
-   "blocking": false,
-   "carried_from": "3b2eca2a5d79af5bf8cfd8833e563beeb4f819faeb7df878d4a12dcd765e97e3",
-   "carried_shape": "81e57214a612a2af"
-  },
-  {
-   "compendium": "check_slides.md",
-   "rule_index": 4,
-   "rule_lead": "Live-demo beats survive a text read.",
-   "verdict": "N/A",
-   "evidence": "No guess-before-reveal demo instruction anywhere in the file. The one interactive beat (chunk 2, 'Put a number on it', lines 17-35) is a compute-and-observe prompt (ask Claude to price the bloat), not a guess/predict-then-reveal beat, so there is no reveal-ordering to check.",
-   "fix_hint": "",
-   "blocking": false,
-   "carried_from": "3b2eca2a5d79af5bf8cfd8833e563beeb4f819faeb7df878d4a12dcd765e97e3",
-   "carried_shape": "81e57214a612a2af"
-  },
-  {
-   "compendium": "check_slides.md",
-   "rule_index": 11,
-   "rule_lead": "Numbering — position is computed, content ordinals are linted.",
-   "verdict": "N/A",
-   "evidence": "No hand-numbered `## Phase N:` or `## N.` step headers anywhere in the file (checked all 13 `##` headers, lines 11-112: none carries a leading ordinal or Phase/Step label). Rule's in-file numbering-lint has nothing to apply to. The cross-file 'Module 3' reference (chunk 4, line 49) is the shape rule 11's own clause routes to §2 ('Cross-file phase refs → maintainer block only... already banned per §2'); filed there as the REVISE, not duplicated here.",
-   "fix_hint": "",
-   "blocking": false,
-   "carried_from": "3b2eca2a5d79af5bf8cfd8833e563beeb4f819faeb7df878d4a12dcd765e97e3",
-   "carried_shape": "81e57214a612a2af"
-  },
-  {
-   "compendium": "check_slides.md",
-   "rule_index": 13,
-   "rule_lead": "In-deck links work now; whether they EARN their place is open.",
-   "verdict": "N/A",
-   "evidence": "Grepped body (lines 1-120) for markdown links `](`: zero in-body prose links. The only links in the file are the two Sources sections (chunks 12-13), external https URLs, which the maintainer note explicitly frames as deliberate student-facing end-matter, not audit content. Nothing to inventory under this review surface.",
-   "fix_hint": "",
-   "blocking": false,
-   "carried_from": "3b2eca2a5d79af5bf8cfd8833e563beeb4f819faeb7df878d4a12dcd765e97e3",
-   "carried_shape": "81e57214a612a2af"
-  },
-  {
-   "compendium": "check_slides.md",
-   "rule_index": 15,
-   "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
-   "verdict": "N/A",
-   "evidence": "Rule 15 governs the exercise-imperative vs lecture-claim heading split; its own measurement note scopes it to 'the 15 AE101 exercise files'. This file is neither an exercise nor a lecture but a supplementary reference page. Its own maintainer Meta note attests 'Reference register: declarative section headers, verb-led move lead-ins' as this surface's deliberate register, matching what the headers actually do (a mix of claim-headers like 'More rules, worse edits' and imperative/label headers like 'Put a number on it', 'Now go clean your window'). Rule's exercise/lecture split does not name this file type; scored N/A by scope, not by exemption.",
-   "fix_hint": "",
-   "blocking": false,
-   "carried_from": "3b2eca2a5d79af5bf8cfd8833e563beeb4f819faeb7df878d4a12dcd765e97e3",
-   "carried_shape": "81e57214a612a2af"
-  },
-  {
-   "compendium": "check_writing.md",
-   "rule_index": 1,
-   "rule_lead": "Banned words — grep zero-tolerance.",
-   "verdict": "PASS",
-   "evidence": "mechanical: /\\b(delve|delving|honest|honestly|importantly|crucial|crucially|substrate|synergize|paradigm shift)\\b/ over body projection curriculum/evals/body-views/ae101--supplementary--the-context-ceiling.body.txt → 0 hits; pattern proven against planted violation.",
-   "fix_hint": "",
-   "blocking": false,
-   "prefilled": true
-  },
-  {
-   "compendium": "check_writing.md",
-   "rule_index": 2,
-   "rule_lead": "Ritual / ceremony — hard ban in any curriculum/training surface.",
-   "verdict": "PASS",
-   "evidence": "mechanical: /\\b(ritual|rituals|ceremony|ceremonies)\\b/ over body projection curriculum/evals/body-views/ae101--supplementary--the-context-ceiling.body.txt → 0 hits; pattern proven against planted violation.",
-   "fix_hint": "",
-   "blocking": false,
-   "prefilled": true
-  }
- ],
- "blocking_findings_count": 0,
- "todos_count": 1,
- "todos": [
-  {
-   "rule": "check_slides.md §1",
-   "note": "Chunk 11 line 99, closing italic aside: 'write the evals' is never defined in the body. Not filed as a REVISE -- the maintainer block (line 131) explicitly frames the whole aside as a deliberate impressionistic device where precision isn't owed, and the reader doesn't need to decode 'the evals' to get the point. Worth a maintainer glance only if the phrase is ever touched for other reasons. (Carried forward unchanged from the prior pass -- this passage was not touched by the diff since e11bbeb4.)"
-  }
- ],
- "accept_notes_found": [
-  "L123: Folklore handles are quotes, and quotes do not get trimmed to a word budget (check_slides.md §9 N/A on the two folklore-quote handles in ## The folklore).",
-  "L125: Meta -- audience/register framing for this supplementary.",
-  "L127: Role -- reframes token efficiency as a quality topic; scopes the number-free treatment of instruction-count research.",
-  "L129: Voice -- Boris-flat mechanism, one Rory reframe at the open, no Risto lift at the close.",
-  "L131: Closing italic aside is deliberate -- do not strip as session-biography; keep any figure round/large/self-referential.",
-  "L133: Placement -- registry position, entry points (M2 close / M3 close / M4 prework), inline-Prompt-block-pending-registry-migration note, approved prompt key ae101-token-efficiency-bloat-cost.",
-  "L138: Quality -- compendium-audited 2026-08-28 stamp (writing@e11bbeb4 story@e11bbeb4 technical@8cc00874 behavior@b3143a4 pedagogy@b55cd28b strategy@b3143a4 slides@e11bbeb4).",
-  "L141: Visible \"Sources\" list is deliberate -- student-facing end-matter, not an audit callout; curated to verified URLs only."
- ],
- "notes": "Dispatch reason for this run is the compendium-audited stamp bump to writing/story/technical/slides@e11bbeb4 (2026-08-28) plus a body edit against pin e11bbeb4: git diff e11bbeb4..HEAD -- <file> shows exactly two hunks -- (1) chunk 4 line 49 lost its trailing 'You'll meet it properly, mechanism and trade-off both, in Module 3.' clause, and (2) the maintainer Quality line was bumped. Hunk (1) resolves this file's one long-running rule-2 question (the cross-file 'in Module 3' callback that was previously filed, adversarially refuted, and re-stamped PASS at pin b55cd28b/534a5e84) by removing the sentence entirely -- re-scored PASS on fresh grounds, not on the old refutation. All mechanical checks (banned words, ritual, Not-X-Not-Y, dialect grep, check-slide-deixis.js, check-slide-size.js) were run fresh this session against the current body, not carried from cache. Rules 3, 4, 11, 13, 15, 16 are excluded from rules_evaluated per the class brief (10 kept / 6 dropped) -- their N/A rows are parked in the prefill sidecar (body-views/ae101--supplementary--the-context-ceiling.slides.prefill.json, shape_hash 81e57214a612a2af) and must be spliced in via --merge; do not re-derive them. One flag for the maintainer, not the file: the parked rule-11 N/A row's evidence text (carried forward because shape_hash is unchanged) still says 'The cross-file Module 3 reference (chunk 4, line 49) is the shape rule 11's own clause routes to §2... filed there as the REVISE' -- that clause is now stale prose describing a sentence that no longer exists, though rule 11's own N/A verdict (no hand-numbered ## headers) is still correct on its own merits. Not fixed here (rule 11 is outside my brief, and the shape-hash-based parking contract says a row I did not write always stands); flagging so the sidecar's evidence text gets refreshed next time rule 11 is back in-brief.",
- "shape_hash": "81e57214a612a2af"
+  "class": "slides",
+  "training": "ae101",
+  "file": "curriculum/trainings/agentic-engineering-101/supplementary/the-context-ceiling.md",
+  "verdict": "PASS",
+  "body_sha": "387ec73c0f8cc6a5dfd883cf9afafa2defada277be355a1a029721143263ff49",
+  "shape_hash": "81e57214a612a2af",
+  "chunk_map": [
+    {
+      "index": 0,
+      "heading": "H1/lede",
+      "lines": "1-10"
+    },
+    {
+      "index": 1,
+      "heading": "What \"efficient\" actually measures",
+      "lines": "11-16"
+    },
+    {
+      "index": 2,
+      "heading": "Put a number on it",
+      "lines": "17-36"
+    },
+    {
+      "index": 3,
+      "heading": "The craft: keep the window clean",
+      "lines": "37-44"
+    },
+    {
+      "index": 4,
+      "heading": "The craft: spend and route wisely",
+      "lines": "45-54"
+    },
+    {
+      "index": 5,
+      "heading": "More rules, worse edits",
+      "lines": "55-60"
+    },
+    {
+      "index": 6,
+      "heading": "The folklore: numbers that don't survive a second look",
+      "lines": "61-70"
+    },
+    {
+      "index": 7,
+      "heading": "Drivers of inefficient context: the durable ones",
+      "lines": "71-78"
+    },
+    {
+      "index": 8,
+      "heading": "Drivers of inefficient context: the loud ones",
+      "lines": "79-86"
+    },
+    {
+      "index": 9,
+      "heading": "Drivers of inefficient context: fanning out is its own bill",
+      "lines": "87-90"
+    },
+    {
+      "index": 10,
+      "heading": "One lever, two payoffs",
+      "lines": "91-94"
+    },
+    {
+      "index": 11,
+      "heading": "Now go clean your window",
+      "lines": "95-102"
+    },
+    {
+      "index": 12,
+      "heading": "Sources: quality and craft",
+      "lines": "103-111"
+    },
+    {
+      "index": 13,
+      "heading": "Sources: cost and other drivers",
+      "lines": "112-120"
+    }
+  ],
+  "rules_evaluated": [
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 1,
+      "rule_lead": "Referent resolution under a sequential deck read.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Sequential read of all 13 chunks. Closest-to-violating line: chunk 4 'The craft: spend and route wisely' line 47 'The rest are about what you do with the work once it's in front of you.' — 'the rest' reads as a dangling plural but resolves immediately against that same chunk's own three following bullets (lines 49, 51, 53), the same pattern as chunk 3 line 39 'The first two are about what you let in.' resolving against its own two bullets (41, 43). No referent points forward across a chunk boundary or stays ambiguous with full deck history. Reused terms are same-file earlier-slide reuse, the rule's explicit NOT-violation case: 'the always-loaded file'/'./CLAUDE.md' (ch.4→ch.5), the durable/loud pairing (ch.7→ch.8), subagent-as-firewall (ch.4→ch.9).",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 2,
+      "rule_lead": "Cross-file and positional callbacks.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Grepped body (lines 1-120, case-insensitive) for module/earlier/previous/prior/this module/the exercise/the lecture/M[1-6]/the opening/last module/next module (run this session): one hit, line 57 'earlier than the token count suggests' — a temporal comparative inside one argument (sooner, not a position), not a cross-file callback. Zero occurrences of 'Module' anywhere in the body — the only 'M2 close'/'M3 module close' text lives in the maintainer Placement note past the line-121 cut, out of body scope. No positional or by-title cross-file callback exists in this body.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 5,
+      "rule_lead": "No orphan slides.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "All 13 chunks carry a self-sufficient claim. Smallest is chunk 10 'One lever, two payoffs' (49 words, lines 91-94): 'Token efficiency is one lever with two payoffs... The rest is noticing what you loaded and never used.' — a complete standalone summary, not a wait-state or single context-dependent bullet. Both Sources chunks (12-13) are self-carrying citation lists. No chunk is content-free.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 6,
+      "rule_lead": "Header self-carries at projection distance.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Checked all 13 headers against their chunk content. Closest candidate: chunk 8 header 'Drivers of inefficient context: the loud ones' (line 79) opens 'The other kind is loud but shrinking: it announces itself, and its fix usually already shipped.' — 'loud' and 'shrinking' both cash out in the two named drivers below (MCP surface tokens 'largely solved'; cache-bust 'a version-specific defect a later release patches'), so the header holds. No header is contradicted by its own chunk (e.g. 'More rules, worse edits' ch.5 delivers exactly a rules-ceiling argument; 'Put a number on it' ch.2 delivers a dollar figure).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 7,
+      "rule_lead": "LLM-cadence caps.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Per sub-item, grepped and read the full body (run this session): 'Not X. Not Y. Z.' construction — zero hits. Anaphora/epistrophe triples (3+ repeated 'Every ...' clauses) — zero hits. Self-grading superlatives ('one of the most', 'game-changing', etc.) — zero hits. Number+own-retraction — the only 'about N' figure in-body is line 33 ('about 10 dollars... 2 dollars'), a stated comparison with its label, not the hedge-then-undercut shape rule 9 names as the exception case ('about 10%... could be more, could be less'), which does not occur anywhere in this body. Abstraction-noun stacks and verb triplets with an empty leg — none found; the craft/drivers sections stay in concrete nouns (the files Claude didn't load, a messy repo, a bloated CLAUDE.md).",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 8,
+      "rule_lead": "Internal dialect never lands on a slide.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Grepped body for dialect terms (surface-as-noun, firing, compendium, forcing function, beat, mood, Connections; run this session): two in-body hits, both ordinary usage. Line 43 'Boris Cherny has said that beat a vector index' — 'beat' as the ordinary verb 'outperformed', not the pedagogical-unit noun. Line 83 '**The tool and MCP surface.**' — 'surface' as the common engineering term for exposed API/tool area (cf. 'attack surface'), not the internal 'writing surface' sense the rule names as banned. 'compendium', 'firing', 'forcing function', 'mood', 'Connections' do not occur anywhere in the body (all such text sits past the line-121 maintainer cut).",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 9,
+      "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "13 bold spans in-body, all stopping at the first-sentence boundary (handle only, never a whole lead sentence): 'Start clean.'(2w) 'Pass paths, not paste.'(4w) 'Subagent as a firewall.'(4w) 'Route by complexity, not price.'(5w) 'Keep what you carry lean.'(5w) 'The codebase the agent reads.'(5w) 'Thin memory, both directions.'(4w) 'The tool and MCP surface.'(5w) 'Cache invalidation.'(2w) 'Fanning out too wide.'(4w) — each ≤5 words, each names a distinct craft move/driver inside a 'The craft:'/'Drivers of...' consolidation section, matching the rule's own 'law/consolidation slide may carry one handle per law' exception, so the per-slide ≤1 count does not bind on chunks 3/4/7/8/9. The two folklore quote-handles (line 65 'Caching saves you 90 percent.' 5w; line 67 'Compaction is always lossy, so always hand off.' 8w, over the word cap) are covered by this file's own maintainer accept-note at line 123 ('Folklore handles are quotes... Future judges should score §9 N/A on that section rather than propose a trim') — scored per that instruction, not trimmed.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 10,
+      "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Read site/layouts/slides.js buildDeckModel (lines 265-329, run this session): 'A prose section with no phases — prework, supplementary, reference — is slide-ified in place under a kind-labelled divider' (comment at lines 271-276), which is the shipped fix for the 2026-07-09 drop this rule warns about. The code's own comment at line 294 names this exact file's anchor as the worked example: \"`#supplementary-the-context-ceiling`\". Confirmed mechanically in the renderer, not assumed from long-read.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 12,
+      "rule_lead": "Page geometry dies at the cut; reading order survives.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "`node scripts/check-slide-deixis.js --file curriculum/trainings/agentic-engineering-101/supplementary/the-context-ceiling.md` (run this session) → \"OK — 1 files, no page-geometry pointers across the slide cut.\", exit 0. Manual grep for above/below/further down/top of/see below found one hit, line 5 'even far below the window's limit' — ordinary preposition inside a numeric-scope claim, not a positional page pointer.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 14,
+      "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "`node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/supplementary/the-context-ceiling.md --report` (run this session) → \"oversized: 0\"; largest slide 208 words / 0 bullets ('The folklore: numbers that don't survive a second look'), all 13 slides under the 210-word/6-bullet ceiling. No accept-note needed.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 17,
+      "rule_lead": "A retitled slide re-earns its bullets against the new header.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "`git diff 43e6cae1..HEAD -- <file>` (run this session) shows zero `##` header changes since the pin — only the Quality line and source-freshness stamps moved. shape_hash 81e57214a612a2af matches the parked prior-run hash, confirming heading structure is unchanged since the last full judgment. Rule 6's per-header read independently confirmed no bullet is answering a since-replaced header. No retitle event to check.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 16,
+      "rule_lead": "A bullet earns its slot or dies — three classes that read as rigour and carry nothing.",
+      "verdict": "N/A",
+      "evidence": "Rule scopes explicitly 'Per bullet'. Grepped the body for literal bulleted list items (`^- `, run this session): the only hits are the two Sources sections (chunks 12-13, lines 105-110 and 114-119) -- citation entries (linked title + venue + year), not doctrine-restatement / self-referential-design-commentary / aphorism-kicker prose, and the file's own maintainer note (line 141) marks that list format as deliberate student-facing end-matter. No other `- `-prefixed or numbered list items exist anywhere in the body; every other section is flowing paragraphs with bolded lead-ins, which is not the bullet shape this rule targets. Nothing for the rule to apply to.",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "04d74ff00334a58ec09854a494ca1776375ef014cd05d9a64647f344f8ed1408",
+      "carried_shape": "81e57214a612a2af"
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 3,
+      "rule_lead": "Every backward reference points at a beat that exists.",
+      "verdict": "N/A",
+      "evidence": "This is a supplementary reference page, not a live-session exercise/lecture with a module beat set. Grepped for '(you did|saw|caught|just|built|wrote|made|ran)' across the body: the one hit, chunk 11 line 101 'the one you just let go of', is a generic present-tense metaphor about the reader's own hypothetical action (start-clean/compact), not a backward pointer to a specific prior module beat. No 'the X you did/saw' construction against a module exercise exists in the file. Rule has nothing to apply to.",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "04d74ff00334a58ec09854a494ca1776375ef014cd05d9a64647f344f8ed1408",
+      "carried_shape": "81e57214a612a2af"
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 4,
+      "rule_lead": "Live-demo beats survive a text read.",
+      "verdict": "N/A",
+      "evidence": "No guess-before-reveal demo instruction anywhere in the file. The one interactive beat (chunk 2, 'Put a number on it', lines 17-35) is a compute-and-observe prompt (ask Claude to price the bloat), not a guess/predict-then-reveal beat, so there is no reveal-ordering to check.",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "04d74ff00334a58ec09854a494ca1776375ef014cd05d9a64647f344f8ed1408",
+      "carried_shape": "81e57214a612a2af"
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 11,
+      "rule_lead": "Numbering — position is computed, content ordinals are linted.",
+      "verdict": "N/A",
+      "evidence": "No hand-numbered `## Phase N:` or `## N.` step headers anywhere in the file (checked all 13 `##` headers, lines 11-112: none carries a leading ordinal or Phase/Step label). Rule's in-file numbering-lint has nothing to apply to. The cross-file 'Module 3' reference (chunk 4, line 49) is the shape rule 11's own clause routes to §2 ('Cross-file phase refs → maintainer block only... already banned per §2'); filed there as the REVISE, not duplicated here.",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "04d74ff00334a58ec09854a494ca1776375ef014cd05d9a64647f344f8ed1408",
+      "carried_shape": "81e57214a612a2af"
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 13,
+      "rule_lead": "In-deck links work now; whether they EARN their place is open.",
+      "verdict": "N/A",
+      "evidence": "Grepped body (lines 1-120) for markdown links `](`: zero in-body prose links. The only links in the file are the two Sources sections (chunks 12-13), external https URLs, which the maintainer note explicitly frames as deliberate student-facing end-matter, not audit content. Nothing to inventory under this review surface.",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "04d74ff00334a58ec09854a494ca1776375ef014cd05d9a64647f344f8ed1408",
+      "carried_shape": "81e57214a612a2af"
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 15,
+      "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
+      "verdict": "N/A",
+      "evidence": "Rule 15 governs the exercise-imperative vs lecture-claim heading split; its own measurement note scopes it to 'the 15 AE101 exercise files'. This file is neither an exercise nor a lecture but a supplementary reference page. Its own maintainer Meta note attests 'Reference register: declarative section headers, verb-led move lead-ins' as this surface's deliberate register, matching what the headers actually do (a mix of claim-headers like 'More rules, worse edits' and imperative/label headers like 'Put a number on it', 'Now go clean your window'). Rule's exercise/lecture split does not name this file type; scored N/A by scope, not by exemption.",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "04d74ff00334a58ec09854a494ca1776375ef014cd05d9a64647f344f8ed1408",
+      "carried_shape": "81e57214a612a2af"
+    }
+  ],
+  "todos_count": 0,
+  "blocking_findings_count": 0,
+  "drift_rules_reread": [
+    "slides §1 — re-fetched via rule.js, current wording matches the brief verbatim; body scored PASS (row 1).",
+    "slides §9 — re-fetched via rule.js, current wording (incl. the §34 exception, the reading-list/menu waiver, and the reference/supplementary lookup-surface waiver) matches the brief verbatim; body scored PASS including honoring the file's own maintainer N/A instruction for the two folklore quote-handles (row 9).",
+    "slides §10 — re-fetched via rule.js, current wording matches the brief verbatim; body scored PASS after directly reading site/layouts/slides.js and confirming this file's own anchor is cited as the shipped fix's worked example (row 10)."
+  ],
+  "accept_notes_found": [
+    "L123 (maintainer): \"Folklore handles are quotes, and quotes do not get trimmed to a word budget... Future judges should score §9 N/A on that section rather than propose a trim.\" — undated but explicit; governs rule 9's scoring of the two folklore quote-handles (line 65, 67). Body-view's mechanical accept_notes extraction did not surface this prose note (it only pulled the Quality line and source-freshness stamp lines); found by direct read of the maintainer block.",
+    "L131 (maintainer): \"Closing italic aside is deliberate — do not strip as session-biography.\" — governs writing/story-class scope, not slides; noted for completeness, no slides rule turns on it.",
+    "L141 (maintainer): \"Visible 'Sources' list is deliberate.\" — governs the two Sources chunks' list format; consistent with rule 16's parked N/A (not in my brief) and rule 13's parked N/A."
+  ],
+  "notes": "check_slides.md is PRIMARY owner (11 rules owed to me, 6 parked). Rule 11's parked N/A sidecar row cites a since-fixed cross-file 'Module 3' reference at chunk 4 line 49 as evidence that a §2 REVISE existed elsewhere; no such text exists anywhere in the current body (confirmed by direct grep) — I judged rule 2 fresh against the live body per the dispatch preamble's cached-trace warning and found it clean. That parked row is rule 11's own (not mine to touch), so it was left as-is for --merge."
 }

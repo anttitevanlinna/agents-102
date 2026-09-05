@@ -204,3 +204,23 @@ test('a shape hash that already matches is not rewritten', () => {
   assert.equal(r.shape_hash_stamped, null)
   assert.equal(fs.statSync(inst).mtimeMs, before)
 })
+
+test('a prior N/A with neither evidence nor na_reason is refused, not carried — it falls through to the judge', () => {
+  const { dirs } = sandbox()
+  const shape = writeSidecar(FILE, CLS, dirs).shape_hash
+  fs.writeFileSync(path.join(dirs.instancesDir, `${slug}.${CLS}.json`), JSON.stringify({
+    file: FILE, class: CLS, body_sha: 'x', shape_hash: shape,
+    rules_evaluated: [
+      { compendium: 'check_prompts.md', rule_index: 4, verdict: 'N/A', evidence: null, na_reason: 'no prompt blocks' },
+      { compendium: 'check_prompts.md', rule_index: 5, verdict: 'N/A', evidence: null, na_reason: null },
+      { compendium: 'check_prompts.md', rule_index: 6, verdict: 'N/A', evidence: '   ', na_reason: '' },
+    ],
+  }, null, 2))
+  const doc = writeSidecar(FILE, CLS, dirs)
+  const carried = doc.rows.filter(r => r.verdict === 'N/A')
+  // The contract above the prefill says an unproven row falls through; a row
+  // with no reason recorded is unproven, and carrying it bills the judge for
+  // an emptiness it was told not to re-derive.
+  assert.deepEqual(carried.map(r => r.rule_index), [4])
+  assert.equal(doc.ungrounded_refused, 2)
+})

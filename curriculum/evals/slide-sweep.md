@@ -17,12 +17,10 @@ AE101 renders one `##` = one slide (`site/layouts/slides.js`). The 2026-07-02 sl
 - curriculum/lectures/agents-that-build-agents.md
 - curriculum/lectures/how-this-training-was-built.md
 - curriculum/lectures/painting-the-picture-with-the-llm.md
-- curriculum/lectures/quality-is-grounding.md
 - curriculum/lectures/reading-the-return.md
 - curriculum/lectures/skills-from-the-frontier.md
 - curriculum/lectures/test-and-learn.md
 - curriculum/lectures/the-2-frontiers.md
-- curriculum/lectures/the-loop-has-a-name.md
 - curriculum/lectures/the-machine-you-just-met.md
 - curriculum/lectures/the-wizard-move.md
 - curriculum/lectures/what-packaging-is.md
@@ -32,7 +30,7 @@ AE101 renders one `##` = one slide (`site/layouts/slides.js`). The 2026-07-02 sl
 
 **Tier 2 — everything else AE101 projects as slides (never had a slides pass at all):**
 
-- Remaining AE101-referenced lectures: composing-the-workflow, ironies-of-automation, the-agent-loop, the-far-half, the-gate-is-a-claim, the-loop-half-filled, the-map-filled-in, the-whole-map (all under `curriculum/lectures/`)
+- Remaining AE101-referenced lectures: composing-the-workflow, ironies-of-automation, the-agent-loop, the-far-half, the-gate-is-a-claim, the-loop-half-filled, the-whole-map (all under `curriculum/lectures/`)
 - All 13 AE101-referenced exercises (`curriculum/exercises/`): author-test-strategy-skill, compound-and-close, diagnose-and-resend, extract-the-task-shaping-rule, fix-tests-first, map-the-access-surface, open-the-side-quest, orient-and-introspect, push-back-on-the-plan, spot-gaps-build-the-loop, threat-model-with-stride, walk-and-send-off
 - The 6 AE101 module files + prework (`curriculum/trainings/agentic-engineering-101/`)
 

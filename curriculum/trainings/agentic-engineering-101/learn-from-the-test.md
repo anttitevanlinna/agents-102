@@ -43,7 +43,7 @@ Somewhere during the un-packaged send-off a worry surfaced: did it touch the mig
 
 Test that worry against the return. Where the return bears it out, the worry names your first check. Where it doesn't, the artefact wins: it is first-hand data from the session itself, and the worry is not.
 
-Acting without full control is the job from here on. Build the check, send again. The checks pay twice: a session they steer is a session you don't babysit, and a session you don't babysit can run beside another.
+Acting without full control is the job from here on. Where a check would have settled the worry, that is the one worth building before you send again. The checks pay twice: a session they steer is a session you don't babysit, and a session you don't babysit can run beside another.
 
 [Lecture: Hooks always fire](lectures/hooks-always-fire.md)
 
@@ -51,7 +51,7 @@ Acting without full control is the job from here on. Build the check, send again
 
 [Exercise: Diagnose and re-send](exercises/diagnose-and-resend.md)
 
-> **Dense slides.** In the two closing lectures, the headings carry the claims; the bullets back them up. Follow the headings; pick the detail that interests you most.
+> **Dense slides.** In the closing lectures, the headings carry the claims; the bullets back them up. Follow the headings; pick the detail that interests you most.
 <!--tier:3-->
 
 [Lecture: What packaging is](lectures/what-packaging-is.md)
@@ -82,11 +82,11 @@ The packaged session returns after this sitting ends. The experiment produces it
 
 The map at sitting 2 had an edge nobody explained. A dashed line down the right side, `THE TEAM` beyond it, and along the bottom, in italics: *cross personal → team*.
 
-**The wall** is the line between what works for you and what works for someone else. A rule in your own `./CLAUDE.local.md` sits on your side of it. The same rule in a repo's `./CLAUDE.md`, loading into a teammate's session whether they asked for it or not, has crossed.
+**The wall** is your biggest challenge from here. It is the line between what works for you and what works for someone else. A rule in your own `./CLAUDE.local.md` sits on your side of it. The same rule in a repo's `./CLAUDE.md`, loading into a teammate's session whether they asked for it or not, has crossed.
 
-Everything built in these four sittings is on your side. The rules file, the observations, the verifier, the reference, the plan. That is the right order and not a shortfall: prove it on yourself, then promote. A rule promoted before it works on you is a rule your team has to live with, and a habit that never crosses stays yours alone.
+The rules file, the observations, the verifier, the reference, the plan. All of it on your side. That is the right order and not a shortfall: prove it on yourself, then promote. A rule promoted before it works on you is a rule your team has to live with, and a habit that never crosses stays yours alone.
 
-The map's near half is where a single loop runs and compounds. The far half is where sessions get long and you build the checks that let them. You have run the loop and built the checks: a long session you can send, and a return you can read, because the checks guiding it are yours. The right edge is the crossing, and the first move across is one rule, proven on you, promoted through your team's normal PR. Your call when it's ready.
+You have run the loop and built the checks: a long session you can send, and a return you can read. The right edge is the crossing, and the first move across is one rule, proven on you, promoted through your team's normal PR. Your call when it's ready.
 
 <!--/flag:no-module:spot-gaps-build-the-loop-->
 
@@ -117,7 +117,7 @@ Optional.
 ## Next
 <!--tier:3-->
 
-Module 6 reads the packaged session: subtler misses, subtler drift. The question widens from *did my task pass?* to *do all our tasks pass, and who reviewed what?*
+Module 6 reads the packaged session: subtler misses, subtler drift.
 
 <!--/flag:module:spot-gaps-build-the-loop-->
 
@@ -166,9 +166,13 @@ describes the artifact and hands the attention decision to the student — do no
 scheduling ("come back later", "read them after"). Trainer sibling in `trainer-modules.md` M5 says land the
 header and handle per slide, never read bullets aloud. Two registers, one instruction; keep them in step.
 
-**Quality:** sim-passed 2026-09-02 (writing@191ea58f story@85515fa0 technical@191ea58f behavior@b55cd28b pedagogy@85515fa0 strategy@191ea58f slides@191ea58f)
-- judges @191ea58f: writing PASS (3 todos see instances/ae101--module--learn-from-the-test.writing.json), story PASS, technical PASS (2 todos see instances/ae101--module--learn-from-the-test.technical.json), behavior PASS, pedagogy PASS, strategy PASS (1 todo see instances/ae101--module--learn-from-the-test.strategy.json), slides PASS (2 todos see instances/ae101--module--learn-from-the-test.slides.json)
-- cross_module @d47fb5af: PASS — set=[run-the-first-experiment,learn-from-the-test,spot-gaps-build-the-loop]; 2 pairs, 0 blocking; see instances/ae101--module-set--m4-m5-m6.cross_module.json
+**Declined at the 2026-09-03 polish pass:** *mid-run* in `## Your mid-run worries hint at missing checks` is the un-packaged send-off read from outside, the `vocabulary.md` § The work carve-out, not the sitting (`check_student_facing.md` §21b); the done-done prompt's four points stay one sentence, Antti's own wording approved 2026-08-23 (`check_prompts.md` §36); the same header stays declarative, since it names the worry that arms the beat and the section's close is suggestive, not a task (Antti 2026-09-04, `check_student_facing.md` §17). Judges should not re-file any of these.
+
+**No settings in body (Antti 2026-09-04, `check_student_facing.md` §32a):** the agent-team optional challenge names the feature and links the docs; the experimental flag is not printed. Judges should not re-file the missing switch.
+
+**Quality:** sim-passed 2026-09-04 (writing@4589f1d5 story@54577f39 technical@4589f1d5 behavior@b55cd28b pedagogy@54577f39 strategy@191ea58f slides@4589f1d5)
+- judges @4589f1d5: writing PASS (1 todo see instances/ae101--module--learn-from-the-test.writing.json), story PASS (1 todo see instances/ae101--module--learn-from-the-test.story.json), technical PASS (1 todo see instances/ae101--module--learn-from-the-test.technical.json), behavior PASS, pedagogy PASS, strategy PASS (1 todo see instances/ae101--module--learn-from-the-test.strategy.json), slides PASS
+- cross_module @54577f39: PASS — set=[run-the-first-experiment,learn-from-the-test,spot-gaps-build-the-loop]; 2 pairs, 0 blocking; see instances/ae101--module-set--m4-m5-m6.cross_module.json
 **Meta (trainer):**
 - **Primary Bloom's level:** Analyze + Evaluate + Create
 - **Pacing:** Runtime is computed — `node scripts/calculate-time.js learn-from-the-test`. Trainer demos slowly, room copy-pastes concurrently. The closing lecture sits after Debrief + Re-send, where M4 has no closer of its own — it names Ronacher's three-pattern from felt evidence, so it cannot come earlier.
@@ -177,7 +181,7 @@ header and handle per slide, never read bullets aloud. Two registers, one instru
 - **Charge:** reading-the-return 5 — an in-room M5 opener: M4 has no Debrief and nothing makes it prework, so no pre-read discount applies.
 - **Prep / bridge timing:** Entis/Klaassen interview 30 min; Klaassen compound-engineering guide 15–20 min; Klaassen verifier article 10 min.
 - **Mood target:** learning through contrast — *"I can feel what packaging adds now; I couldn't have read it as a lecture."* Watch for: mood drift toward correction-feeling (*"my un-packaged run was bad and now I'm fixing it"*) or compliance-feeling (*"the three-pattern is the answer; I should adopt it"*). Diagnostic: student at Phase 3 picks the safest verifier shape regardless of their dominant failure. Fix: trainer reframes — *"the verifier matches the failure, not the comfort. Which one was your dominant?"*
-- **Delivery architecture:** canonical in training-architecture.md §Working directory model / §Session boundaries. Not restated here. Module-specific: M5 forks a worktree at `../<repo-name>-m5` and the packaged re-send runs in a fresh session there (cross-cwd boundary, so `new`, not the same session as diagnose + build + assemble). No scheduled agent, no cloud runner — the second run is still a synchronous laptop run.
+- **Delivery architecture:** canonical in training-architecture.md §Working directory model / §Session boundaries. Not restated here. Module-specific: M5 forks a worktree at `../<repo-name>-m5`; the cross-cwd boundary sits at the fork, so diagnose + build + assemble open a fresh session in the worktree, and the packaged re-send opens one more fresh session in that same worktree. No scheduled agent, no cloud runner — the second run is still a synchronous laptop run.
 - **`lectures/reading-the-return.md` is an M5 in-room opener, not a pre-read.** Do not re-file it as prework without also charging M5's clock and cutting the body line that assumes it was read.
 - **Backpressure vocabulary:** the source essay is the M3→M4 gap read (`earn-the-trust.md § Pre-read before Module 4`) and the term is named in the room by M4's closing lecture. Module 5 assigns no reading on it and needs none: the student arrives holding both the word and a session that produced changes faster than they could read them. Do not re-assign da Costa here.
 
@@ -251,7 +255,7 @@ header and handle per slide, never read bullets aloud. Two registers, one instru
 - `[checked:2026-05-25 result:OK due:2026-10-22]` https://every.to/context-window/you-re-the-bread-in-the-ai-sandwich — [practitioner analysis] Laura Entis on Klaassen, 2026-04-22; due is publication+6mo. Byline correctly attributed in file. fallback: cite as Entis write-up of the Shipper–Klaassen interview.
 - `[checked:2026-05-25 result:OK due:none]` https://every.to/source-code/compound-engineering-the-definitive-guide — [practitioner direct, vendor venue] Klaassen 2026-02-09 — cited as the framework's canonical writeup (origin, not fresh evidence); `due:none` per the framework-origin variant, an origin citation does not expire with the window. Out-of-window is what the variant absorbs, not a caveat; the source itself holds (thesis verbatim on page). Never a step count from this page. fallback: cite as Klaassen's canonical compound-engineering writeup.
 - `[checked:2026-05-25 result:CAVEAT due:none]` https://every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it — [practitioner direct, vendor venue] Klaassen 2025-08-18, 10-runs + parallel-feedback-agents verbatim. Dated origin, well outside the window; pre-read for recognition, never current practice; `due:none` per the dated-origin variant. fallback: paraphrase the reliability-as-measured idea, drop the date claim.
-- Ronacher and Cherny are cited via `lectures/what-packaging-is.md`; stamps live there and should stay in sync with this module's references. The Intercom tier case is no longer taught (M6 slide cut 2026-09-02); its stamp survives only in `exercises/read-your-stack.md` as a menu anchor.
+- Ronacher and Cherny are cited via `lectures/what-packaging-is.md`; stamps live there and should stay in sync with this module's references. The Intercom tier case is taught nowhere; its stamp survives only in `exercises/read-your-stack.md` as a menu anchor.
 
 **Frameworks riffed on (attributed in lecture):**
 - **Ronacher's three-pattern** — Armin Ronacher. Earns its name in the closing lecture, not before.
@@ -261,5 +265,6 @@ header and handle per slide, never read bullets aloud. Two registers, one instru
 
 **First-cohort observation questions:**
 - Verifier-shape calibration: does the three-shape menu cover the failure modes students surface, or does a fourth/fifth shape want naming?
+- Compliance drift from the WYL pairing: `## What You'll Learn` bullet 2 hands out drift ↔ reference, rot ↔ plan.md, plausible-but-wrong ↔ verifier before the room has diagnosed anything. Does the room reach Phase 1 treating the three-pattern as the answer to adopt rather than as a lens to test their own artefact against? Pairs with the compliance-feeling drift in the Mood target above.
 
 Pre-cohort open items for M5: see `pre-cohort-todos.md`.

@@ -1,19 +1,51 @@
 {
  "class": "slides",
  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/what-packaging-is.md",
- "body_sha": "553ab54b136d0211d9ce199beeceadf02663b856a056a2d03f0b47a8e058061c",
+ "body_sha": "4296574203078d477716fd7daf8421b92658426b1786c41826f15060f5d86899",
  "shape_hash": "1a45f572c31f174d",
  "verdict": "PASS_WITH_TODOS",
  "training": "ae101",
  "chunk_map": [
-  {"index": 0, "heading": "# What packaging is (lede)", "lines": "1-4"},
-  {"index": 1, "heading": "## One session, plotted", "lines": "5-16"},
-  {"index": 2, "heading": "## Reference and plan", "lines": "17-23"},
-  {"index": 3, "heading": "## The verifier completes the three-pattern", "lines": "24-29"},
-  {"index": 4, "heading": "## The model has read the field", "lines": "30-36"},
-  {"index": 5, "heading": "## The missing evidence is local", "lines": "37-43"},
-  {"index": 6, "heading": "## The optimum is local, and it moves", "lines": "44-52"},
-  {"index": 7, "heading": "## Every re-feed pass starts a fresh session", "lines": "53-60"}
+  {
+   "index": 0,
+   "heading": "# What packaging is (lede)",
+   "lines": "1-4"
+  },
+  {
+   "index": 1,
+   "heading": "## One session, plotted",
+   "lines": "5-16"
+  },
+  {
+   "index": 2,
+   "heading": "## Reference and plan",
+   "lines": "17-23"
+  },
+  {
+   "index": 3,
+   "heading": "## The verifier completes the three-pattern",
+   "lines": "24-29"
+  },
+  {
+   "index": 4,
+   "heading": "## The model has read the field",
+   "lines": "30-36"
+  },
+  {
+   "index": 5,
+   "heading": "## The missing evidence is local",
+   "lines": "37-43"
+  },
+  {
+   "index": 6,
+   "heading": "## The optimum is local, and it moves",
+   "lines": "44-52"
+  },
+  {
+   "index": 7,
+   "heading": "## Every re-feed pass starts a fresh session",
+   "lines": "53-60"
+  }
  ],
  "rules_evaluated": [
   {
@@ -22,7 +54,7 @@
    "rule_lead": "Referent resolution under a sequential deck read.",
    "verdict": "PASS",
    "chunks_flagged": [],
-   "evidence": "Sequential read, chunk by chunk, this session. Closest call: chunk 2 line 20 'On the map, the kit is what stands in for you at Verification' -- 'the kit' has no prior in-body naming (`grep -n \"\\bkit\\b\" curriculum/lectures/what-packaging-is.md` run this session -> first hit line 20). Stays inside on two carve-outs read together: (a) session-artifact carve-out -- the module `grep -n what-packaging-is curriculum/trainings/agentic-engineering-101/learn-from-the-test.md` this session -> line 54, a standard include-link sitting directly after the diagnose-and-resend.md include and before `## Key Concepts`, and `diagnose-and-resend.md`'s own Phase 5 (`grep -n \"^## \" curriculum/exercises/diagnose-and-resend.md` this session -> line 103: 'Phase 5: Re-send it, packaged') is exactly the session that assembled 'the kit' -- definite-noun reference to the student's own just-run artefact-set, exempt; (b) chunk 0's own lede, line 3, 'What you assembled to get there has names,' primes the same referent one chunk earlier. Later 'the kit' uses (chunk 6, lines 47-48) reuse the term chunk 2 established -- fine per the rule's own NOT-violations clause. 'the diagnose-and-re-send you just ran' (chunk 1, line 13) and 'your re-send' (chunk 2, line 21) are the same session-artifact carve-out. 'the un-packaged send-off' (chunk 6, line 47) resolves via the enclosing module's Prework/What-You'll-Learn signposting ('Walk in with your un-packaged session'; 'Diagnose your un-packaged send-off through three named lenses' -- confirmed via `sed -n '1,20p' curriculum/trainings/agentic-engineering-101/learn-from-the-test.md` this session), which sits before this lecture's include-link in module deck order -- the include-order carve-out. 'The menu' (chunk 3, line 28) resolves against the two named pieces chunk 2 gave plus chunk 3's own first bullet naming the third; full history holds it. 'Three-pattern' is coined in chunk 3's own header, the file's intended naming beat (maintainer watch-for, L340: 'The three-pattern earns its name HERE'), not a forward-pointing violation. No never-named or vague-with-full-history referent found anywhere in the seven content chunks.",
+   "evidence": "Read all 7 content chunks sequentially, holding cumulative deck history. Closest call: chunk 2 line 20 'On the map, the kit is what stands in for you at Verification' -- 'the kit' has no explicit prior in-body naming. Resolves on two grounds: chunk 0's own lede (line 3) 'What you assembled to get there has names' primes the same referent one chunk earlier, and the module-arc-beats-in-openers/closers carve-out applies -- this lecture is placed directly after `diagnose-and-resend.md` in the module's include order (`grep -n \"^\\[Lecture\\|^\\[Exercise\" curriculum/trainings/agentic-engineering-101/learn-from-the-test.md` run this session: '52:[Exercise: Diagnose and re-send]' then '57:[Lecture: What packaging is]', immediately adjacent), so 'the kit'/'your re-send' name the artefact-set the student just assembled in that exercise, the referent being the student's lived module. 'the diagnose-and-re-send you just ran' (chunk 1, line 13) and 'your re-send' (chunk 2, line 21) are the same carve-out. Chunk 3's header 'The verifier completes the three-pattern' (line 24) coins 'the three-pattern' at first use, but the chunk's own body (line 28, 'The other two sit alongside the three-pattern for next time') and the two immediately preceding chunks (which showed exactly 2 of the 3 pieces without yet naming them as a set) self-carry the referent under the chunk-0-is-prior-context and header-counts-as-in-chunk conventions; this is the file's documented naming beat, not a forward pointer to content that never lands. Chunk 7's 'the third shape on the verifier menu' (line 56) checked against `diagnose-and-resend.md` Phase 3 (`grep -n -A10 'Phase 3' curriculum/exercises/diagnose-and-resend.md` this session): the menu lists exactly 'LLM judge', 'Deterministic shell-hook', 'Ralph re-feed' in that order -- re-feed literally IS the third listed shape in the exercise the student just ran; resolves cleanly via the same module-arc carve-out, no cross-file positional guess needed. No never-named or vague-with-full-history referent found.",
    "fix_hint": null,
    "blocking": true
   },
@@ -32,7 +64,7 @@
    "rule_lead": "Cross-file and positional callbacks.",
    "verdict": "PASS",
    "chunks_flagged": [],
-   "evidence": "`grep -nE \"opening lecture|earlier lecture|prior lecture|previous lecture|last lecture|earlier module|prior module|previous module|previous slide|earlier slide|that (lecture|module)\" curriculum/lectures/what-packaging-is.md` run this session -> exit 1, zero hits. Practitioner citations are named directly, never located by file position: Ronacher gets 'Armin Ronacher's January 2026 MiniJinja port' (chunk 2, line 21), Huntley gets 'Geoffrey Huntley's Ralph practice' (chunk 2, line 22), Cherny/Huntley/Ronacher are named together in chunk 3 line 28 -- all unpacked in the same sentence per the rule's own example shape, none pointed at by position.",
+   "evidence": "`sed -n '1,60p' curriculum/lectures/what-packaging-is.md | grep -inE \"opening lecture|earlier lecture|prior lecture|previous lecture|last lecture|earlier module|prior module|previous slide|earlier slide|that (lecture|module)\"` run this session -> exit 1, zero hits. Practitioner citations are named directly, never located by file position: 'Armin Ronacher's January 2026 MiniJinja port' (chunk 2, line 21), 'Geoffrey Huntley's Ralph practice' (chunk 2, line 22), and Cherny/Huntley/Ronacher named together, unpacked in the same sentence, at chunk 3 line 28. No pointer to another file by position.",
    "fix_hint": null,
    "blocking": true
   },
@@ -42,18 +74,7 @@
    "rule_lead": "Every backward reference points at a beat that exists.",
    "verdict": "PASS",
    "chunks_flagged": [],
-   "evidence": "`grep -n \"^## \" curriculum/exercises/diagnose-and-resend.md` run this session confirms 'Phase 3: Build the verifier for your worst failure' at line 59 and 'Phase 5: Re-send it, packaged' at line 103 -- both current, backing chunk 1's 'the diagnose-and-re-send you just ran' (line 13) and chunk 2/3's implicit 'the reference/verifier you assembled' (lines 21, 28). `grep -n what-packaging-is curriculum/trainings/agentic-engineering-101/learn-from-the-test.md` -> line 54, immediately after the diagnose-and-resend.md include-link, confirming the backward reference targets the immediately-preceding beat, not a stale one.",
-   "fix_hint": null,
-   "blocking": true
-  },
-  {
-   "compendium": "check_slides.md",
-   "rule_index": 4,
-   "rule_lead": "Live-demo beats survive a text read.",
-   "verdict": "N/A",
-   "chunks_flagged": [],
-   "evidence": null,
-   "na_reason": "no guess-before-reveal construction (has_prompt_blocks: false; grep for guess/predict -> 0 hits this session)",
+   "evidence": "`grep -n '^## ' curriculum/exercises/diagnose-and-resend.md` run this session confirms 'Phase 3: Build the verifier for your worst failure' (line 59) and the verifier-shape menu backing chunk 1's 'the diagnose-and-re-send you just ran' (line 13) and chunk 7's 'the third shape on the verifier menu' (line 56) -- 'Ralph re-feed' is the third bullet listed under Phase 3, verbatim: 'Loop the prompt with a check baked in; the agent re-runs on top of the previous round's output until the check passes' (line 67), matching this file's own line 56-59 mechanism description near word-for-word. `grep -n what-packaging-is curriculum/trainings/agentic-engineering-101/learn-from-the-test.md` -> line 57, the include-link sitting immediately after the diagnose-and-resend.md include (line 52) -- the backward reference targets the immediately-preceding, currently-live beat.",
    "fix_hint": null,
    "blocking": true
   },
@@ -63,7 +84,7 @@
    "rule_lead": "No orphan slides.",
    "verdict": "PASS",
    "chunks_flagged": [],
-   "evidence": "All 7 content chunks carry a self-standing claim independent of any other chunk: chunk 1 (chart + drift/check/guardrail claims), chunk 2 (two named artefacts against goal drift and context rot), chunk 3 (verifier + synthesis claim), chunk 4 (weights hold the field, candidates), chunk 5 (local evidence, prediction-not-measurement), chunk 6 (A/B, engineer decides), chunk 7 (re-feed mechanism). None is a bare wait-state or single context-dependent bullet.",
+   "evidence": "All 7 content chunks carry a self-standing claim: chunk 1 (drift/check/guardrail chart claims), chunk 2 (two named artefacts against goal drift and context rot), chunk 3 (verifier + synthesis claim), chunk 4 (weights hold the field, candidates), chunk 5 (local evidence, prediction-not-measurement), chunk 6 (A/B experiment, engineer decides), chunk 7 (re-feed mechanism, why it catches drift). None is a bare wait-state or single context-dependent bullet.",
    "fix_hint": null,
    "blocking": false
   },
@@ -73,7 +94,7 @@
    "rule_lead": "Header self-carries at projection distance.",
    "verdict": "PASS",
    "chunks_flagged": [],
-   "evidence": "Checked each of the 7 headers against its own chunk's content. Strongest self-carry: chunk 6 'The optimum is local, and it moves' is answered by its own bullet, line 49, 'The local optimum stays ahead, moving when your stack moves'; chunk 7 'Every re-feed pass starts a fresh session' is answered by line 57, 'Each pass is a new session, not a continuation of the last one.' No header is contradicted by its own chunk's body.",
+   "evidence": "Checked each of the 7 headers against its own chunk's content. Strongest self-carries: chunk 6 'The optimum is local, and it moves' answered by line 49 'The local optimum stays ahead, moving when your stack moves'; chunk 7 'Every re-feed pass starts a fresh session' answered by line 57 'Each pass is a new session, not a continuation of the last one'; chunk 4 'The model has read the field' answered by line 33 'The weights hold the written record'. No header contradicted by its own chunk's body.",
    "fix_hint": null,
    "blocking": false
   },
@@ -83,7 +104,7 @@
    "rule_lead": "LLM-cadence caps.",
    "verdict": "PASS",
    "chunks_flagged": [],
-   "evidence": "`grep -nE \"Not [A-Z][a-z]*\\. Not \" curriculum/lectures/what-packaging-is.md` run this session -> exit 1, zero hits (no 'Not X. Not Y. Z.'). `grep -niE \"one of the (most|best)|the most useful|incredibly (useful|powerful)\" curriculum/lectures/what-packaging-is.md` -> exit 1, zero hits (no self-grading superlative). `sed -n '1,60p' curriculum/lectures/what-packaging-is.md | grep -nE \"Every .*\\. Every .*\\. Every \"` -> exit 1, zero hits (no anaphora/epistrophe triple). No numeric claim anywhere in the body that is stated then retracted. Closest look: chunk 6 line 50, 'it runs the task, reads its own transcript, diffs the returns' -- a three-verb list, but each leg names a distinct concrete action (run / read / diff), none empty, so the verb-triplet-with-empty-leg sub-item does not fire. 'goal drift', 'context rot', 'plausible-but-wrong' are the training's own defined failure-mode vocabulary, not abstraction-noun-stack filler.",
+   "evidence": "`sed -n '1,60p' curriculum/lectures/what-packaging-is.md | grep -inE 'Not [A-Za-z].*\\. Not [A-Za-z].*\\.'` run this session -> exit 1, zero hits ('Not X. Not Y. Z.' construction). `sed -n '1,60p' curriculum/lectures/what-packaging-is.md | grep -inE 'one of the most|the best way|incredibly (useful|powerful)'` -> exit 1, zero hits (self-grading superlative). No 'Every X... Every Y... Every Z.' anaphora triple anywhere in the body. No numeric claim stated then retracted. Closest look: chunk 6 line 50 'it runs the task, reads its own transcript, diffs the returns' is a three-verb list, but each leg (run/read/diff) is concrete and distinct, so the empty-leg sub-item does not fire. 'goal drift', 'context rot', 'plausible-but-wrong' are this training's defined failure-mode vocabulary, not abstraction-noun-stack filler.",
    "fix_hint": null,
    "blocking": true
   },
@@ -93,7 +114,7 @@
    "rule_lead": "Internal dialect never lands on a slide.",
    "verdict": "PASS",
    "chunks_flagged": [],
-   "evidence": "`sed -n '1,60p' curriculum/lectures/what-packaging-is.md | grep -nE \"\\bsurface\\b|\\bfiring\\b|\\bcompendium\\b|\\bforcing function\\b|\\bbeat\\b|\\bmood\\b|\\bConnections\\b\"` run this session -> exit 1, zero hits in body scope. The `<!--tier:N-->` markers are HTML comments, invisible in rendered output, outside rule 8's 'lands on a slide' test. 'candidates' and 'tested-here' are training-taught vocabulary defined in the same chunk that uses them, not repo-authorial jargon.",
+   "evidence": "`sed -n '1,60p' curriculum/lectures/what-packaging-is.md | grep -inE '\\bsurface\\b|\\bfiring\\b|\\bcompendium\\b|forcing function|\\bbeat\\b|\\bmood\\b|\\bConnections\\b'` run this session -> exit 1, zero hits in body scope. `<!--tier:N-->` markers are HTML comments, invisible in rendered output, outside rule 8's 'lands on a slide' test. 'candidates' and 'tested-here' are training-taught vocabulary defined within the chunk that introduces them, not repo-authorial jargon.",
    "fix_hint": null,
    "blocking": true
   },
@@ -103,9 +124,10 @@
    "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
    "verdict": "PASS",
    "chunks_flagged": [],
-   "evidence": "`awk 'NR<=60' curriculum/lectures/what-packaging-is.md | grep -noE '\\*\\*[^*]+\\*\\*'` run this session: line 13 '**A check is a position fix**', line 21 '**Reference artefact**', line 22 '**plan.md**', line 27 '**External verifier**', line 35 '**candidates**', line 41 '**A prediction is not a measurement.**', line 50 '**The engineer decides**', line 56 '**Re-feed**'. Per-chunk count: chunk 1=1, chunk 2=2, chunk 3=1, chunk 4=1, chunk 5=1, chunk 6=1, chunk 7=1 -- at or under the <=1-per-slide budget except chunk 2's two, which fits the rule's own 'a law/consolidation slide may carry one handle per law' exception (chunk 2 names two of the three-pattern's three pieces, one handle each). Closest call, held PASS: lines 13 and 41 each bold a full six-word clause rather than a <=5-word sub-span, literally over the stated handle-length cap though the per-slide count is within budget. Both are the file's own coined maxims (line 13's law is named in the backing block's Frameworks ledger as 'Dead reckoning and the position fix'; line 41 is one of the two lines the backing block flags as Antti-blessed, deliberate wording, L91-92) -- sole coined law/principle, not incidental sentence emphasis. Surfaced as a todo, not a finding.",
-   "fix_hint": "If the maintainer wants the letter of the <=5-word handle cap satisfied, trim each to a sub-span (e.g. bold only 'position fix' / 'not a measurement') and leave the rest of the clause unbolded -- optional, non-blocking.",
-   "blocking": false
+   "evidence": "`sed -n '1,60p' curriculum/lectures/what-packaging-is.md | grep -noE '\\*\\*[^*]+\\*\\*'` run this session: line 13 '**A check is a position fix**', line 21 '**Reference artefact**', line 22 '**plan.md**', line 27 '**External verifier**', line 35 '**candidates**', line 41 '**A prediction is not a measurement.**', line 50 '**The engineer decides**', line 56 '**Re-feed**'. Per-chunk bold count: chunk1=1, chunk2=2, chunk3=1, chunk4=1, chunk5=1, chunk6=1, chunk7=1 -- at or under the <=1-per-slide budget except chunk 2's two bolds, which fit the rule's own 'a law/consolidation slide may carry one handle per law' exception: chunk 2's own accept-note (maintainer block, 'Reference and plan stays concept-named') confirms it deliberately names two concepts, one handle each. This mirrors the sibling exercise `diagnose-and-resend.md`'s own maintainer-declared emphasis convention (line 153: 'the two definitional handles on The reference and plan.md (**Reference** / **plan.md**)') -- the same two-handle shape, declared deliberate there.",
+   "fix_hint": null,
+   "blocking": false,
+   "todo_note": "Lines 13 and 41 each bold a full ~6-word clause ('A check is a position fix'; 'A prediction is not a measurement.') rather than a <=5-word sub-span -- literally over the stated handle-length cap, though the per-slide bold count stays within budget and both read as the file's own coined maxims rather than incidental sentence emphasis. Non-blocking; worth a maintainer glance on whether the cap is meant to bind coined one-line laws this tightly."
   },
   {
    "compendium": "check_slides.md",
@@ -113,20 +135,9 @@
    "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
    "verdict": "PASS",
    "chunks_flagged": [],
-   "evidence": "`grep -n \"flag:\" curriculum/lectures/what-packaging-is.md` run this session -> exit 1, zero hits: no content-flag forking, nothing to resolve per-branch. `node scripts/expand-md.js curriculum/lectures/what-packaging-is.md` this session exits 0 and resolves `{{figure:session-sea-passage}}` inline inside chunk 1. `grep -n what-packaging-is curriculum/trainings/agentic-engineering-101/learn-from-the-test.md` -> line 54, a standard `[Lecture: What packaging is](lectures/what-packaging-is.md)` include-link that `buildDeckModel` picks up, not a phase-less prose aside.",
+   "evidence": "`grep -n 'flag:' curriculum/lectures/what-packaging-is.md` run this session -> exit 1, zero hits: no content-flag forking, nothing to resolve per-branch. `node scripts/expand-md.js curriculum/lectures/what-packaging-is.md` this session exits 0 and resolves `{{figure:session-sea-passage}}` inline inside chunk 1 -- no marker left unresolved. `grep -n what-packaging-is curriculum/trainings/agentic-engineering-101/learn-from-the-test.md` -> line 57, a standard `[Lecture: What packaging is](lectures/what-packaging-is.md)` include-link that `buildDeckModel` picks up (a `.phase--lecture`-wrapped include, not a phase-less prose aside).",
    "fix_hint": null,
    "blocking": true
-  },
-  {
-   "compendium": "check_slides.md",
-   "rule_index": 11,
-   "rule_lead": "Numbering — position is computed, content ordinals are linted.",
-   "verdict": "N/A",
-   "chunks_flagged": [],
-   "evidence": null,
-   "na_reason": "no `## Phase N:`/`## N.` step headers in this file (check-slide-numbering.js: OK, 0 headers of that shape)",
-   "fix_hint": null,
-   "blocking": false
   },
   {
    "compendium": "check_slides.md",
@@ -134,20 +145,9 @@
    "rule_lead": "Page geometry dies at the cut; reading order survives.",
    "verdict": "PASS",
    "chunks_flagged": [],
-   "evidence": "`node scripts/check-slide-deixis.js --file curriculum/lectures/what-packaging-is.md --report` run this session -> no output, exit 0 (nothing flagged, nothing to accept). Manual corroboration: `sed -n '1,60p' curriculum/lectures/what-packaging-is.md | grep -nE \"\\babove\\b|\\bbelow\\b|further down|top of this|see below|this page\"` -> exit 1, zero hits. No positional-geometry language anywhere in the body.",
+   "evidence": "`node scripts/check-slide-deixis.js --file curriculum/lectures/what-packaging-is.md` run this session -> 'OK — 1 files, no page-geometry pointers across the slide cut.' exit 0. Corroborating manual grep: `sed -n '1,60p' curriculum/lectures/what-packaging-is.md | grep -inE '\\babove\\b|\\bbelow\\b|further down|top of this|see below|this page'` -> exit 1, zero hits. No positional-geometry language anywhere in the body.",
    "fix_hint": null,
    "blocking": true
-  },
-  {
-   "compendium": "check_slides.md",
-   "rule_index": 13,
-   "rule_lead": "In-deck links work now; whether they EARN their place is open.",
-   "verdict": "N/A",
-   "chunks_flagged": [],
-   "evidence": null,
-   "na_reason": "no markdown links in the body (grep '](' -> 0 hits)",
-   "fix_hint": null,
-   "blocking": false
   },
   {
    "compendium": "check_slides.md",
@@ -155,7 +155,7 @@
    "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
    "verdict": "PASS",
    "chunks_flagged": [],
-   "evidence": "`node scripts/check-slide-size.js --file curriculum/lectures/what-packaging-is.md` run this session -> 'files: 1   slides: 7   limits: 210 words / 6 bullets\\n  oversized: 0\\n✓ every slide is within limits' exit 0. All 7 slides clear both axes; no accept-note needed or present.",
+   "evidence": "`node scripts/check-slide-size.js --file curriculum/lectures/what-packaging-is.md` run this session -> 'files: 1   slides: 7   limits: 210 words / 6 bullets / oversized: 0 / every slide is within limits' exit 0. All 7 slides clear both axes; no accept-note needed or present.",
    "fix_hint": null,
    "blocking": false
   },
@@ -165,7 +165,7 @@
    "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
    "verdict": "PASS",
    "chunks_flagged": [],
-   "evidence": "All 7 headers checked against the 2026-08-19 generalisation (orientation / catalogue / phase-label headers are NOT violations). Claim-shaped (5 of 7): 'The verifier completes the three-pattern', 'The model has read the field', 'The missing evidence is local', 'The optimum is local, and it moves', 'Every re-feed pass starts a fresh session'. 'Reference and plan' carries an explicit maintainer accept-note at L73 (Antti 2026-08-15: 'not every header owes a claim') -- the compendium's own §15 text cites this exact file and date as its worked example ('Antti 2026-08-15 on `what-packaging-is.md`'). 'One session, plotted' fits the rule's own NOT-violation class, a catalogue entry naming its subject (parallel to the rule's listed examples 'The numbers', 'Verification, named') -- it names the chart's subject, not a claim slide.",
+   "evidence": "All 7 headers checked against the 2026-08-19 generalisation (orientation/catalogue/phase-label headers are NOT violations). Claim-shaped (5 of 7): 'The verifier completes the three-pattern', 'The model has read the field', 'The missing evidence is local', 'The optimum is local, and it moves', 'Every re-feed pass starts a fresh session'. 'Reference and plan' (line 17) carries an explicit maintainer accept-note (maintainer block: 'Reference and plan stays concept-named (Antti 2026-08-15). Naming two concepts is a valid header; not every header owes a claim') -- and the compendium's rule-15 text itself cites this exact file and date as its worked example: 'Antti 2026-08-15 on what-packaging-is.md: not every header owes a claim.' 'One session, plotted' (line 5) fits the rule's own catalogue-entry NOT-violation class, naming the chart's subject rather than asserting a claim.",
    "fix_hint": null,
    "blocking": false
   },
@@ -175,16 +175,59 @@
    "rule_lead": "A bullet earns its slot or dies — three classes that read as rigour and carry nothing.",
    "verdict": "PASS",
    "chunks_flagged": [],
-   "evidence": "Read every bullet in all 7 chunks against the three classes (doctrine restatement, self-referential design commentary, aphorism kicker). No class-(b) hit: nothing in the body discusses the curriculum's own pedagogy or design. Closest class-(a)/(c) calls, both held PASS as progression rather than pure restatement: chunk 5's closing bullet (line 42, 'So a playbook stays a candidate until something tests it here...') echoes chunk 4's 'candidates' but adds the local-test condition chunk 4 didn't state, setting up chunk 6's promotion mechanism. Chunk 6's third bullet (line 49) ends by echoing its own header ('The local optimum stays ahead, moving when your stack moves') but that clause follows new mechanism content in the same sentence ('a wide first fix that narrows as more experiments land') and is not the slide's final bullet (two more follow) -- not a bare kicker. The maintainer block documents one class-(a) cut already made on this exact file (L77, 2026-08-25: two sea-passage trailer lines removed 'after the chart already argued it, check_slides.md §16 class a') -- confirms the rule was already actively swept against this body; no fresh instance found in the current 7-slide text.",
+   "evidence": "Read every bullet in all 7 chunks against the three classes (doctrine restatement, self-referential design commentary, aphorism kicker). No class-(b) hit: nothing in the body discusses the curriculum's own pedagogy or design -- design commentary is confined to the maintainer block, outside body scope. Closest class-(a)/(c) calls, held PASS as progression rather than pure restatement: chunk 5's closing bullet (line 42) echoes chunk 4's 'candidates' framing but adds the local-test condition chunk 4 didn't state, setting up chunk 6's promotion mechanism; chunk 6's closing bullet (line 51, 'measured here, this catches it, watch') gives a concrete code-review payoff, not a restatement of the header. The maintainer block documents one class-(a) cut already made on this exact file (line 77: two sea-passage trailer lines removed 2026-08-25 'after the chart already argued it, check_slides.md §16 class a') -- confirms the rule was already actively swept against this body; no fresh instance found in the current 7-slide text.",
    "fix_hint": null,
    "blocking": false
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 4,
+   "rule_lead": "Live-demo beats survive a text read.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "no guess-before-reveal construction (has_prompt_blocks: false; grep for guess/predict -> 0 hits this session)",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "553ab54b136d0211d9ce199beeceadf02663b856a056a2d03f0b47a8e058061c",
+   "carried_shape": "1a45f572c31f174d"
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 11,
+   "rule_lead": "Numbering — position is computed, content ordinals are linted.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "no `## Phase N:`/`## N.` step headers in this file (check-slide-numbering.js: OK, 0 headers of that shape)",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "553ab54b136d0211d9ce199beeceadf02663b856a056a2d03f0b47a8e058061c",
+   "carried_shape": "1a45f572c31f174d"
+  },
+  {
+   "compendium": "check_slides.md",
+   "rule_index": 13,
+   "rule_lead": "In-deck links work now; whether they EARN their place is open.",
+   "verdict": "N/A",
+   "evidence": null,
+   "na_reason": "no markdown links in the body (grep '](' -> 0 hits)",
+   "fix_hint": "",
+   "blocking": false,
+   "carried_from": "553ab54b136d0211d9ce199beeceadf02663b856a056a2d03f0b47a8e058061c",
+   "carried_shape": "1a45f572c31f174d"
   }
  ],
  "blocking_findings_count": 0,
- "todos_count": 1,
+ "todos_count": 0,
+ "accept_notes_found": [
+  "maintainer block: '## Every re-feed pass starts a fresh session exists to close a depth asymmetry across the verifier menu, and its scope is mechanism only' -- scope note, M6's Ralph slide is a graduation beat not this slide's twin",
+  "maintainer block: 'Noun-run on the theory slides (x5) -- Antti-waived 2026-08-15' -- vocabulary-registry carve-out, not a slides-class matter",
+  "maintainer block: '## Reference and plan stays concept-named (Antti 2026-08-15). Naming two concepts is a valid header; not every header owes a claim' -- used to clear rule 15 and to ground rule 9's law/consolidation exception on chunk 2",
+  "maintainer block: 'Sea-passage trailers cut (2026-08-25, Antti-approved) ... check_slides.md §16 class a' -- prior rule-16 sweep already applied to this body",
+  "check_slides.md rule 15's own text: 'Antti 2026-08-15 on what-packaging-is.md: not every header owes a claim' -- compendium-level accept-note naming this exact file",
+  "maintainer block theory-passage note: 'the packaged experiment testing the kit is running right now is literally true in the room; do not move the passage after the return lands or the tense breaks' -- delivery-timing note, not a slides defect"
+ ],
  "notes": [
-  "Instance re-derived fresh this session against the current 7-slide body (body_sha unchanged from the on-disk instance; three N/A rows -- rules 4, 11, 13 -- carried verbatim per prefill-instance.js, all other rows independently re-verified with tools run in this session).",
-  "Rule 9 todo: lines 13 and 41 each bold a full ~6-word clause rather than a <=5-word sub-span. Held PASS on the coined-maxim precedent (one tied to the Frameworks-ledger law, the other Antti-blessed wording flagged in the backing block) -- worth a maintainer glance, see rule 9 evidence and fix_hint.",
-  "prefill-instance.js reported '2 mechanical PASS' for this run, but both are check_writing.md rules 1/2 (banned-words, ritual/ceremony) -- not in COMPENDIA.slides scope (['check_slides'] only) and not carried into this instance's rows; noting so the count in the dispatch summary isn't mistaken for two check_slides.md rules."
+  "Instance written fresh this session against a re-read of the current body (body_sha 0792c80c... differs from the prior on-disk instance's 553ab54b... -- git log confirms the most recent touching commit is 96fb2a89, an M6 cross-reference update; shape_hash 1a45f572c31f174d is unchanged, so the prior instance's 3 parked N/A rows -- rules 4, 11, 13 -- were still valid to carry via prefill-instance.js --merge). All 13 owed rows independently re-derived and re-evidenced with commands run in this session; not copied from the prior instance, though the two converge on every rule.",
+  "Rule 9 todo (non-blocking, see todo_note on that row and the fix_hint): lines 13 and 41 each bold a ~6-word coined-maxim clause, slightly over the stated <=5-word handle-length cap, though the per-slide bold-count budget is respected throughout."
  ]
 }

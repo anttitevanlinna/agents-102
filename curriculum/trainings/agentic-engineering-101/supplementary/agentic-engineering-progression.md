@@ -6,7 +6,7 @@ Agentic engineering is the discipline of progressively extending an engineer's r
 
 Six levels, from assistance to a system you keep improving. Each level holds until it exposes the constraint the next one removes: what moves an engineer up is not ambition, it is a limit met in real work.
 
-Fredrik Wollsén and Jesse McCrosky describe a similar team-scale movement in [The AI-Native Engineering Playbook: Crawl, Walk, Run, Fly](https://positivelyfred.substack.com/p/the-ai-native-engineering-playbook). Their labels differ. The recurring progression is from using the agent inside one task to engineering the conditions behind many tasks.
+In March 2026, Fredrik Wollsén and Jesse McCrosky described a similar team-scale movement in [The AI-Native Engineering Playbook: Crawl, Walk, Run, Fly](https://positivelyfred.substack.com/p/the-ai-native-engineering-playbook). Their labels differ. The recurring progression is from using the agent inside one task to engineering the conditions behind many tasks.
 
 ## Assistance
 
@@ -121,5 +121,5 @@ OODA
 - The progression describes how work is organized, not a score assigned to the person. Session count and autonomy are inputs, not levels.
 - Keep shortcut framing out of the student-facing body.
 
-**Quality:** compendium-audited 2026-08-29 (writing@4a722813 story@e11bbeb4 technical@17446703 behavior@670460b pedagogy@1abb84c6 strategy@670460b slides@17446703)
-- judges @4a722813: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-09-05 (writing@324b81d7 story@324b81d7 technical@324b81d7 behavior@670460b pedagogy@1abb84c6 strategy@324b81d7 slides@324b81d7)
+- judges @324b81d7: writing PASS (2 todos see instances/ae101--supplementary--agentic-engineering-progression.writing.json), story PASS, technical PASS (2 todos see instances/ae101--supplementary--agentic-engineering-progression.technical.json), behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS

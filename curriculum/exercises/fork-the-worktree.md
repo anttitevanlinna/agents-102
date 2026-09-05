@@ -36,7 +36,7 @@ Ask Claude to fork the worktree and copy your gitignored files across.
 
 ## Anchor the fork to the run coordinates
 
-- Claude normally reads the protected `Run coordinates` block in `task.md`, uses the `m4/<slug>` branch named there, and forks from that branch's "M4 starting point" commit.
+- The agent normally reads the protected `Run coordinates` block in `task.md`, uses the `m4/<slug>` branch named there, and forks from that branch's "M4 starting point" commit.
 - If that block is gone or the commit message was rewritten, use the starting-point SHA Claude reported before the send-off rather than guessing from branch names.
 - If you never captured that either, ask Claude to run `git merge-base m4/<slug> <the branch you cut it from>`. That is where the branch left the trunk, a commit or two before the run started, carrying the same code.
 
@@ -58,5 +58,5 @@ Ask Claude to fork the worktree and copy your gitignored files across.
 
 **Phase 1 opens with the moved-in rationale (2026-08-25, Antti-directed).** The module file's `## Set up the worktree` section folded in as the phase's first two bullets: why the work runs in the worktree, and why the gitignored files need the copy (runtime-fork flags intact: `module:spot-gaps-build-the-loop` gates both the "and Module 4" clause and the Module 6 merge-back sentence). The module body's "Before the exercise session, fork the un-packaged session's starting SHA" setup line was dropped as duplicating this file's intro. Do not restore the section to the module body.
 
-**Quality:** compendium-audited 2026-08-29 (writing@7f5ec798 story@441b361f technical@8cc00874 behavior@61e7fc9 pedagogy@1abb84c6 strategy@61e7fc9 slides@0cea7581)
-- judges @7f5ec798: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-09-05 (writing@874f921c story@874f921c technical@874f921c behavior@61e7fc9 pedagogy@1abb84c6 strategy@874f921c slides@874f921c)
+- judges @874f921c: writing PASS (4 todos see instances/ae101--exercise--fork-the-worktree.writing.json), story PASS (verify-refuted), technical PASS, behavior PASS, pedagogy PASS (drift-recheck), strategy PASS (verify-refuted), slides PASS

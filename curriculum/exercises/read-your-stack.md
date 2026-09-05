@@ -1,4 +1,4 @@
-# Read your stack
+# Read your stack, *draw what recurs*
 
 **Time:** 15 minutes.
 
@@ -23,7 +23,7 @@ Same session as the gap map. The ranked gaps and the rule you cut are in scrollb
 
 > **Fast operator?** Lump the next two prompts into one go. Paste them one after another in the same conversation, study the shapes, and let the answers land together. The two moves don't change.
 
-> **Cut the scan when the top patterns are clear enough to use.** The prompt keeps looking because that is its job. Narrow it whenever you like, or say *tell me what you've found so far*. Once two or three recurring kinds of work are clear enough to draw and compare, move on. You do not need a complete inventory.
+> **Cut the scan** when the top patterns are clear enough to use. The prompt keeps looking because that is its job. Narrow it whenever you like, or say *tell me what you've found so far*. If it comes back thin instead, or everything traces to one repo, a *there is more than this, keep going* prompt sends it back out. Once two or three recurring kinds of work are clear enough to draw and compare, move on. You do not need a complete inventory.
 
 Ask Claude to scan your sessions across every project and group the kinds of work that recur.
 
@@ -32,13 +32,13 @@ Ask Claude to scan your sessions across every project and group the kinds of wor
 ## Draw your top work-shapes as diagrams
 
 - What comes back is the work you do over and over, grouped and ranked. Read for the few at the top you actually repeat.
-- A recurring kind of work has a shape. Steps in order, a branch, a loop back. Drawn, the shape is easier to recognise than described.
+- A recurring kind of work has a shape: steps in order, a branch, a loop back.
 
 Ask Claude to draw your top few work-shapes as simple diagrams.
 
 {{prompt:spot-gaps-build-the-loop-shapes}}
 
-> **Want to see the shapes, not read them?** Mermaid comes back as text. Say *give me this in HTML* to open them in a browser.
+> **Want to see the shapes**, not read them? Mermaid comes back as text. Say *give me this in HTML* to open them in a browser.
 
 ## Sidestep: check your menu against the field's
 
@@ -60,19 +60,21 @@ Expect the list to look familiar: test-writing, browser-testing, PR-building, li
 
 <!-- maintainer -->
 
-**Atomic — no phase markers.** One widening scan, drawn; the sidestep is optional and nothing downstream depends on it.
+**Atomic — no phase markers.** One widening scan, drawn, then an optional sidestep.
 
 **View summary:** You read your own session history across every project, group the kinds of work that recur, draw the top few as diagrams, and optionally check your menu of checks against the field's. The stack-map feeds the closing handoff move.
 
+**"The field already runs" stays (Antti 2026-09-02).** The sidestep header and lead-in claim field practice, not convergent vocabulary: the menu Claude returns reflects what is common in the field, and a primitive nobody runs would not surface in it. The Stance's no-convergence-verb row is about naming. Judges should not re-flag the header or the lead-in under `check_research_claims.md` §1.
+
 **Fast-operator batch path (accepted):** *"Fast operator?"* labels the opt-in path for someone who wants both scan prompts in one conversation; it does not set the room's pace or the exercise's completion bar. The separate scan callout is the working-memory stop gate. Preserve both callouts and the label.
 
-**Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** bullet leads de-bolded to plain; widget/label chrome and blockquote callouts untouched, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. (The three bolded shape handles that survived that pass left with the 2026-08-01 authoring-sequence cut.)
+**Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** bullet leads plain; bold only on widget / label chrome and blockquote callout leads, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`.
 
-**Word count:** ~330 words body.
+**Word count:** ~520 words body.
 
 **Primary Bloom's level:** Analyze (the stack scan) + Create (the shapes).
 
-**Placement:** Beat 2 of the three-beat M6 (2026-09-02 split), after the control-loop lecture and before the handoff lecture. Depth is the student's; the optional primitives sidestep closes it and nothing downstream depends on it. This exercise is the one the loop-diagnosis card will reshape.
+**Placement:** Beat 2 of the three-beat M6 (2026-09-02), after the control-loop lecture and before the handoff lecture. Depth is the student's; the optional primitives sidestep closes it and nothing downstream depends on it.
 
 **Mood target:** practitioner fluency — *"I know how to test, I know how to learn, I know what my stack repeats."* Watch-for: compliance-feel (student treats the scan as paperwork) or credibility-performance (*"we map our stack like the pros do"*). Both steal the mood.
 
@@ -82,6 +84,7 @@ Claims
 - `sessions-are-on-disk-and-unread` · vision · "Your Claude Code sessions from every project are sitting on disk, and few engineers ever read them back." ← none-owed
 - `recurring-work-has-a-shape` · vision · "Steps in order, a branch, a loop back. Drawn, the shape is easier to recognise than described." ← none-owed
 - `primitives-will-look-familiar` · vision · "The primitives Claude names are the ones your codebase already runs." ← none-owed
+- `field-already-runs-these-checks` · vision · "the checking primitives the field already runs" ← none-owed — Antti 2026-09-02: the returned menu reflects field prevalence; the header carries the same claim
 
 Sources
 - curran-2x `[checked:2026-05-25 result:CAVEAT due:2026-10-16]` https://ideas.fin.ai/p/2x-nine-months-later — [practitioner direct, vendor venue] Curran (2026-04-16), Intercom's tiered review with auto-approval at the lowest tier. CAVEAT ×2: metrics vendor-self-reported, and the company renamed to Fin on 2026-05-12 — the memo predates the rename; do not silently swap the name (record: kb:observations/intercom.md). Backs the checking-primitives menu as something orgs actually run, not a list we invented. fallback: keep the menu, drop the org names.
@@ -94,7 +97,7 @@ Stance `[stance:2026-08-01 level:L2]`
 - holds: that orgs and solo builders converge on a recognisable set of checking primitives — tests, lint, type-check, review, diff inspection, eval suites. This is the safest convergence claim in the corpus because the primitives predate agents entirely; the exercise is asking the student to recognise their own toolchain, not to accept a finding.
 - contested: **the menu is not convergent practitioner vocabulary.** Two named orgs plus an unnamed category does not clear the L3 bar. The body makes no such claim — it says the primitives are the ones the student's own codebase already runs, which is weaker and true.
 - decided: **no convergence verb attaches to this menu.** The recognition framing carries the whole warrant. Do not reintroduce *"convergent practitioner vocabulary"* from any register. The beat ships as an optional sidestep, so nothing downstream may load-bear on the menu existing.
-- would-move-it: a primitive entering common practice that the menu omits. The list is deliberately unranked and open, so an addition edits one line rather than the phase.
+- would-move-it: a primitive entering common practice that the menu omits. The list is deliberately unranked and open, so an addition edits one line rather than the section.
 
 OODA
 - question: what checking primitives have entered common practice since this menu was written, and does the recognition beat still land for a room whose toolchain has moved?
@@ -103,19 +106,21 @@ OODA
 
 <!-- /backing -->
 
-**Leap test (Monday):** one observable verb the engineer exhibits on their own codebase next working day:
+**Leap test (Monday):** three observable verbs the engineer exhibits on their own codebase next working day:
 - holds a diagrammed map of the work they repeat across their stack, and reads a new task against it before sending the task off
+- names which recurring shape a new task belongs to, or that it belongs to none, before writing the send-off
+- re-runs the stack scan a week later and compares the top shapes against the map, instead of assuming the map still holds
 
 **Failure modes + diagnostics:**
-- **Phase 2 wider-look sprawl** — the study scan reads the whole stack and can throw back a wall. The body stop gate is two or three recurring kinds of work clear enough to draw and compare. Depth is the student's, not a mandate to catalogue. If a student drowns in the scan, point at the ranked head and move on.
+- **Wider-look sprawl** — the study scan reads the whole stack and can throw back a wall. If a student drowns in the scan, point at the ranked head and move on.
 
 **Plug points:**
-- The team's code-review conventions (feeds the sidestep's primitives ranking, where code-review is one of the named primitives, and the handoff prompt that follows). Phase 2 is study plus shapes plus the optional sidestep; nothing in it builds a judge.
+- The team's code-review conventions: where a recurring shape includes review, the conventions are the check that shape calls, and they ride into the handoff prompt that follows. The exercise is study plus shapes plus the optional sidestep; nothing in it builds a judge.
 
 **Decision points (pacing):**
-- **Phase 2 study + shapes run long (>15 min)** — the wider look is a light pass, not a full inventory. Study reads the ranked head; shapes draws two or three. If it eats the clock the student is cataloguing; use the body stop gate and skip the sidestep.
+- **Study + shapes run long (>15 min)** — the wider look is a light pass, not a full inventory. Study reads the ranked head; shapes draws two or three. If it eats the clock the student is cataloguing; use the body stop gate and skip the sidestep.
 
-**Watch-fors (cross-phase):**
-- **Verifier-as-eval terminology leaking** — the closing lecture names evals with full weight (verifier = judge = gate = eval). Phase 2 can use the plain words (verifier, judge); save the explicit naming for the closer.
+**Declined at the 2026-09-03 polish pass:** the *say "tell me what you've found so far"* and *say "give me this in HTML"* callouts stay as written (Antti: *say* and *tell* with a quoted utterance are the training's established prompt triggers; `check_student_facing.md` §31 widened the same day). The four *no preamble* rows on the study, shapes and primitives fences fall under `check_prompts.md` §17 as narrowed to plan mode on 2026-09-03; none of these fences is plan mode. Also declined: *Read your own history first.* stays an imperative (`check_student_facing.md` §9: the mechanism is the bullet below it and the next header); the study, shapes and primitives lead-ins keep their own verbs (`check_prompts.md` §38: the noun-phrases echo); the *Expect the list to look familiar* paragraph keeps its examples (`check_pedagogy.md` §53: it sits after the fence and teaches how to read the answer, and the backing block's holds row carries the convergence claim). Judges should not re-file any of these.
 
-**Pre-cohort open items:** `curriculum/trainings/agentic-engineering-101/pre-cohort-todos.md`.
+**Quality:** compendium-audited 2026-09-04 (writing@4589f1d5 story@289b45a3 technical@289b45a3 behavior@54577f39 pedagogy@289b45a3 strategy@289b45a3 slides@4589f1d5)
+- judges @4589f1d5: writing PASS (1 todo see instances/ae101--exercise--read-your-stack.writing.json), story PASS (1 todo see instances/ae101--exercise--read-your-stack.story.json), technical PASS, behavior PASS (2 todos see instances/ae101--exercise--read-your-stack.behavior.json), pedagogy PASS (1 todo see instances/ae101--exercise--read-your-stack.pedagogy.json), strategy PASS, slides PASS

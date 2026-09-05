@@ -1,32 +1,26 @@
 {
   "class": "technical",
-  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/plan-mode-done-right.md",
-  "body_sha": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
-  "shape_hash": "3bf287f827d6a7ae",
-  "verdict": "PASS_WITH_TODOS",
   "training": "ae101",
-  "confirmation_context": {
-    "pin_re-judged": "43e6cae1",
-    "staleness_reason": "diff-region",
-    "body_diff_summary": "git diff 43e6cae1..HEAD -- this file spans two commits after the last technical stamp. d14613aa (2026-09-01, 'Willison agentic-loops: ceiling ruled') swapped tier markers (<!--tier:N--> on Key Concepts/Optional challenges/Pre-reads/Next, no student-visible text change) and rewrote the Willison-agentic-loops source-verification note to record an explicit 2026-09-01 maintainer ruling that the essay's due:2026-03-30 staleness is deliberate and its ceiling is 'M3 optional pre-read, nothing more.' An earlier commit in the same span upgraded the cloud-session stamp from result:OK to result:CAVEAT, adding research-preview/plan-gating language, and added a 'P5 execution-creep' row to the Push-back moves list (trainer-facing, mirrored in the Per-phase table). None of this touches fenced prompts, LOs, or the body prose a student reads. Treated as a full re-read per dispatch instructions, not diff-scoped.",
-    "note": "Independently live-verified rather than trusted: fetched code.claude.com/docs/en/claude-code-on-the-web directly and confirmed its exact research-preview/seat-gating language now matches the module's L121 CAVEAT stamp word-for-word, and confirmed the mobile-app steering claim; re-ran grep counts for claude.ai/Cowork/zombie-stats/destructive-ops/{{prompt:}}/[Skill:]/Shift+Tab (all clean or as expected), 'No, keep planning' count (5/5, 0 wrong-string hits), reference/claude-code-for-engineers.md anchors (§1 memory hierarchy L13, §9 plan mode at depth L183), `ls ~/.claude/plans/` (real matching filenames), 5 sampled URLs (all 200), and `node scripts/calculate-time.js plan-mode-done-right` (123 min, OVER by 3 — see todos, this figure still diverges from the body's dated claim)."
-  },
+  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/plan-mode-done-right.md",
+  "verdict": "PASS",
+  "body_sha": "58207b3220bb3f0456da5792b6a668d2f1c58748117a35558294101fdd2a4f29",
+  "shape_hash": "3bf287f827d6a7ae",
   "rules_evaluated": [
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": 1,
       "rule_lead": "Training platform = Claude Code (CLI + Desktop) + Cowork.",
       "verdict": "PASS",
-      "evidence": "grep -n 'claude\\.ai' plan-mode-done-right.md → 0 hits (re-run this session). All platform content names Claude Code CLI/Desktop and a Claude Code cloud session steered from the mobile app (L56) — no claude.ai-only feature asserted.",
+      "evidence": "grep -n 'claude\\.ai' plan-mode-done-right.md -> 0 hits; grep -in 'cowork' -> 0 hits (run this session). All platform content names Claude Code (Shift+Tab plan mode, 'No, keep planning') or a Claude Code cloud session steered from the mobile app (L59, optional-challenge only) -- no claude.ai-only or Cowork-only feature asserted as core path.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": 2,
-      "rule_lead": "Cloud/remote features carry Git dependency — out of scope for our training dir.",
+      "rule_lead": "Cloud/remote features carry Git dependency -- out of scope for our training dir.",
       "verdict": "PASS",
-      "evidence": "L56 'Start a Claude Code cloud session...' sits under '## Optional challenges' (L50-61), explicitly opt-in, not the module's core path.",
+      "evidence": "L59 'Start a Claude Code cloud session...' sits under '## Optional challenges' (L52-60), explicitly opt-in, not presented as the module's core deliverable or an upgrade path the training dir depends on.",
       "fix_hint": null,
       "blocking": false
     },
@@ -35,7 +29,7 @@
       "rule_index": 4,
       "rule_lead": "Verify capabilities BEFORE asserting, not after.",
       "verdict": "PASS",
-      "evidence": "Live-fetched code.claude.com/docs/en/claude-code-on-the-web this session (not trusted from the compendium or a prior stamp): the page states verbatim 'Claude Code on the web is in research preview for Pro, Max, and Team users, and for Enterprise users with premium seats or Chat + Claude Code seats' and '...open the session on claude.ai or the Claude mobile app to interact directly. From there you can steer Claude...' — both match the module's L121 CAVEAT stamp ('research preview, not GA — Pro/Max/Team, and Enterprise only with premium or Chat + Claude Code seats') and the L56 mobile-steering claim exactly. Also re-verified: grep -c 'No, keep planning' → 5 (0 of the wrong string 'keep-planning-with-feedback'); Shift+Tab present at L173/L201; reference/claude-code-for-engineers.md anchors confirmed live (§1 L13 'memory hierarchy', §9 L183 'Plan mode at depth', matching the L130 cross-reference and L14 anchor link).",
+      "evidence": "Live-verified this session rather than trusted from memory: curl -o /dev/null -w '%{http_code}' on https://code.claude.com/docs/en/claude-code-on-the-web and https://code.claude.com/docs/en/permission-modes.md both returned 200; grep of curriculum/trainings/agentic-engineering-101/reference/claude-code-for-engineers.md confirmed 'No, keep planning' as the exact push-back button text (line 201: '| **No, keep planning** | Push back with specific items...') and the Shift+Tab cycle mechanics (lines 189, 207) -- both match this file's body (L19, L26) and maintainer block (L145, L173-174, L190, L201) verbatim.",
       "fix_hint": null,
       "blocking": false
     },
@@ -44,7 +38,7 @@
       "rule_index": "5a",
       "rule_lead": "Live-test beats docs for runtime-behavior claims.",
       "verdict": "PASS",
-      "evidence": "Live-tested rather than trusted docs: `ls -la ~/.claude/plans/` on this machine returned real filenames matching the `<slug>-<adjective>-<noun>.md` pattern the artefact-contract table claims (e.g. add-input-validation-and-eager-breeze.md, m2-add-levels-2-3-brisk-heron.md).",
+      "evidence": "Live-tested rather than trusted docs: `ls -la ~/.claude/plans/` on this machine returned real filenames matching the `<slug>-<adjective>-<noun>.md` pattern the artefact-contract table (L183) claims -- e.g. add-input-validation-and-eager-breeze.md, m2-add-levels-2-3-brisk-heron.md -- confirming the claimed default write-location and filename-generation behavior.",
       "fix_hint": null,
       "blocking": false
     },
@@ -53,16 +47,16 @@
       "rule_index": 6,
       "rule_lead": "Known correct Claude Code facts (easy to get wrong).",
       "verdict": "PASS",
-      "evidence": "Shift+Tab cycle for plan mode (L173, L201) and 'No, keep planning' as the exact approval-prompt option text (grep -c → 5/5 correct occurrences, 0 of the old wrong string) both match compendium §6 and reference/claude-code-for-engineers.md:201 exactly — re-verified live this session.",
+      "evidence": "Shift+Tab cycle (maintainer L173, L201) and 'No, keep planning' as the exact approval-prompt option text (body L19, L174; maintainer L145, L190, L201) both match compendium §6 and reference/claude-code-for-engineers.md:189-207 exactly -- re-verified live this session, not carried from a prior stamp.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": "6d",
-      "rule_lead": "Auto-load surface = SIX things — four filenames + project `.claude/rules/` + user `~/.claude/rules/`.",
+      "rule_lead": "Auto-load surface = SIX things -- four filenames + project `.claude/rules/` + user `~/.claude/rules/`.",
       "verdict": "PASS",
-      "evidence": "Plug points (L167-170) and the artefact-contract table (L179-183) correctly name a subset of the six auto-load surfaces (`./CLAUDE.local.md`, `~/.claude/CLAUDE.md`, `.claude/rules/`, `~/.claude/rules/`) as auto-loaded, and correctly mark `~/.claude/memory/<file>.md` / a notes folder as NOT auto-loaded except via `@import` — matches §6d precisely; text unchanged by the diff since the last pin, re-read fresh this session.",
+      "evidence": "Plug points (L169) and the artefact-contract table (L181-183) correctly enumerate a subset of the six auto-load surfaces (`./CLAUDE.local.md`, `~/.claude/CLAUDE.md`, `.claude/rules/`, `~/.claude/rules/`) as auto-loaded, and correctly mark `~/.claude/memory/<file>.md` / a notes folder as NOT auto-loaded except via `@import` -- matches §6d precisely.",
       "fix_hint": null,
       "blocking": false
     },
@@ -71,7 +65,7 @@
       "rule_index": "13b",
       "rule_lead": "Before auditing a built artifact ask whether it ships; before acting on a finding, re-measure it.",
       "verdict": "PASS",
-      "evidence": "Judge-owned self-compliance: rather than trust the pinned 43e6cae1 Quality stamp, this pass ran `git diff 43e6cae1..HEAD` directly, re-ran every grep/ls/curl fresh, live-fetched the cloud-session docs page rather than trusting the compendium's phrasing, and re-ran `node scripts/calculate-time.js plan-mode-done-right` live — which is exactly how it confirmed the runtime-citation drift logged in todos still stands unaddressed.",
+      "evidence": "Judge self-compliance: rather than trust the maintainer's dated 'calculate-time.js 2026-08-26: 125 min' figure (Decision points, L162), this pass re-ran `node scripts/calculate-time.js plan-mode-done-right` live and got 123 min (OVER cap by 3, not 5) -- see `notes` below. Also re-ran every URL curl and the `~/.claude/plans/` listing live rather than trusting the prior technical instance's cached results.",
       "fix_hint": null,
       "blocking": false
     },
@@ -80,52 +74,61 @@
       "rule_index": 23,
       "rule_lead": "Cowork sandboxed to its connected working directories.",
       "verdict": "PASS",
-      "evidence": "grep -in 'cowork' plan-mode-done-right.md → 0 hits, consistent with AE101 training-architecture (CLI+Desktop only, no Cowork per curriculum/CLAUDE.md § Platform claims rule 1).",
+      "evidence": "grep -in 'cowork' plan-mode-done-right.md -> 0 hits, consistent with AE101 training-architecture (CLI+Desktop only, no Cowork, per curriculum/CLAUDE.md § Platform claims rule 1).",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": 38,
-      "rule_lead": "Prose describing a runtime the room never executes drifts to plausible mechanism — no judge catches it, because no artefact contradicts it.",
+      "rule_lead": "Prose describing a runtime the room never executes drifts to plausible mechanism -- no judge catches it, because no artefact contradicts it.",
       "verdict": "PASS",
-      "evidence": "The forward-looking artefact-contract table ('Consumed by: M4 walk-and-fill Phase 1 — audit subagent reads CLAUDE.md/CLAUDE.local.md/observations/... user-level ~/.claude/memory/ is silent unless @import-wired', unchanged by the diff since 43e6cae1) states concrete CONTEXT/reads with no invented 'X against Y' retrieval verb, matching §38's own three-tell test and §6d's @import semantics precisely.",
+      "evidence": "The forward-looking artefact-contract table's 'Consumed by' column (L181-183) states concrete CONTEXT/reads with no invented 'X against Y' retrieval verb -- 'M4 walk-and-fill Phase 1 (audit subagent reads `CLAUDE.md` / `CLAUDE.local.md` / `observations/` repo-level / ADRs / skills; user-level `~/.claude/memory/` is silent unless `@import`-wired...)' -- matching §38's three-tell test and §6d's @import semantics exactly.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": 50,
-      "rule_lead": "Thinking-effort levels are a real, named Claude Code control surface — stamped.",
+      "rule_lead": "Thinking-effort levels are a real, named Claude Code control surface -- stamped.",
       "verdict": "PASS",
-      "evidence": "L3: '> Run this module on medium thinking effort. High and xhigh may feel sluggish on a tight slot like this one.' The compendium rule (live-verified 2026-08-30, within the 6-month trust window per the capability-check shortcut) names this file by filename and quotes almost this exact sentence as the compliant phrasing, and confirms medium/high/xhigh are all valid named `--effort` enum values.",
+      "evidence": "L3: '> Run this module on medium thinking effort. High and xhigh may feel sluggish on a tight slot like this one.' The compendium rule (live-verified 2026-08-30, within the 6-month trust window) names this exact file and quotes almost this exact sentence as the compliant phrasing; medium/high/xhigh are all valid named `--effort` enum values.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 51,
+      "rule_lead": "A two-file contradiction is not a defect until you have read the code that reconciles them.",
+      "verdict": "PASS",
+      "evidence": "This file's delegate-stamp design (L122, L123, L124, L126) explicitly NAMES which sibling file owns each freshness check ('Dated check owned by exercises/open-the-side-quest.md', 'Freshest dated check is lectures/when-a-plan-is-good.md', etc.) rather than leaving an unreconciled two-file claim for an auditor to misjudge -- the ownership line IS the reconciling reference. No auditor-reported cross-file contradiction is present in this file to adjudicate against.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_research_claims.md",
       "rule_index": 1,
-      "rule_lead": "Source URL + type label — mandatory.",
+      "rule_lead": "Source URL + type label -- mandatory.",
       "verdict": "PASS",
-      "evidence": "Body citations (L14, L63, L65, L67, L71, L201, L202) carry no bracket labels, correct per this rule's own scope note (labels are maintainer-block vocabulary, not student vocabulary). The Source-verification block (L117-127) stamps all 7 externally-cited URLs with a [type-label]: [platform docs]×1, [delegated stamp]×4, [practitioner direct]×1, [academic/research]×1 — re-read fresh this session.",
+      "evidence": "Body citations (L14, L67-71) carry no bracket labels -- correct per this rule's own scope note (labels are maintainer-block vocabulary, not student vocabulary). The Source-verification block (L117-127) stamps all 7 externally-linked URLs with a [type-label]: [platform docs]x1, [delegated stamp]x4, [practitioner direct]x1, [academic/research]x1 -- re-read fresh this session.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_research_claims.md",
       "rule_index": 2,
-      "rule_lead": "Freshness rule — 6 months.",
+      "rule_lead": "Freshness rule -- 6 months.",
       "verdict": "PASS",
-      "evidence": "As of today (2026-09-02): of the 7 stamps (L121-127), 5 sit inside the 6-month window (L121 checked 2026-08-15, L123 checked 2026-07-31, L124 checked 2026-07-02, L126 checked 2026-07-30, L127 checked 2026-08-02). The 2 outside it each carry a dated, explicit maintainer-decision exception per §2a/§2b: L122 (Cherny video, checked 2026-05-25, due:none, delegated+historical) and L125 (Willison agentic-loops, checked 2026-07-30, due:2026-03-30). The most recent commit touching this file (d14613aa, 2026-09-01) strengthened L125's exception into a fully-reasoned, dated ruling — 'no §2a durable-account shape, no other compendium rule waives the clock… Ceiling ruled the same day (Antti): at best an M3 optional pre-read, nothing more' — which diverges toward the TIGHTER due date per §2b rather than loosening it. This resolves the hygiene question a prior pass logged as an open todo (whether L125 should match L122's due:none treatment); the answer is now explicit and on the record: no, it stays a deliberate live nag.",
+      "evidence": "Of the 7 stamps (L121-127), 5 sit inside the 6-month window (L121 checked 2026-08-15 due:cohort, L123 checked 2026-07-31 due:none, L124 checked 2026-07-02 due:none, L126 checked 2026-07-30 due:none, L127 checked 2026-08-02 due:cohort). The 2 outside a plain 6-month count each carry an explicit dated exception: L122 (Cherny video, checked 2026-05-25, due:none per §2a durable-account/delegation carve-out) and L125 (Willison Designing agentic loops, checked 2026-07-30, due:2026-03-30 -- deliberately kept past its own due date by a dated 2026-09-01 maintainer ruling quoted in the same paragraph: 'no §2a durable-account shape, no other compendium rule waives the clock... Ceiling ruled the same day (Antti): at best an M3 optional pre-read, nothing more'). This is a documented accept-note (§11a-compliant dated stamp + reasoning), not an unaddressed staleness.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_research_claims.md",
       "rule_index": 7,
-      "rule_lead": "Vision × Detail split.",
+      "rule_lead": "Vision x Detail split.",
       "verdict": "PASS",
-      "evidence": "Key Concepts bullets (L44-50) are vision-layer framing carrying no citation. The practitioner-sourced detail claims (Cherny, Horthy, Willison ×2, da Costa, OWASP, Klaassen) all carry maintainer-block backing (L117-127, L201-202). Roger Martin (L203) is explicitly marked 'Vision-layer attribution, optional at Debrief' with no URL — correct per §7's own vision-layer exemption.",
+      "evidence": "Key Concepts bullets (L45-50) are vision-layer framing carrying no citation. The practitioner-sourced detail claims (Cherny, Horthy, Willison x2, da Costa, OWASP, Klaassen) all carry maintainer-block backing (L117-127, L202). Roger Martin (L203) is explicitly marked 'Vision-layer attribution, optional at Debrief' with no URL -- correct per §7's own vision-layer exemption.",
       "fix_hint": null,
       "blocking": false
     },
@@ -134,7 +137,7 @@
       "rule_index": 10,
       "rule_lead": "No \"What research says\" callout boxes.",
       "verdict": "PASS",
-      "evidence": "No consultancy-deck callout boxes anywhere in the file; all citations are inline in builder voice (L14, L63, L67, L71).",
+      "evidence": "No consultancy-deck callout boxes anywhere in the file; all body citations are inline in builder voice (L14).",
       "fix_hint": null,
       "blocking": false
     },
@@ -143,7 +146,7 @@
       "rule_index": 11,
       "rule_lead": "Source-verification maintainer block on any student-facing file with practitioner citations.",
       "verdict": "PASS",
-      "evidence": "L117-127 'Source verification — freshness stamps' section present, covering all 7 externally-linked URLs the body cites (cloud session, Cherny video, Horthy wsff, Willison ×2, da Costa, OWASP) — re-confirmed present this session.",
+      "evidence": "L117-127 'Source verification -- freshness stamps' section present, covering all 7 externally-linked URLs the body cites. Each stamp follows the §11a grammar (`[checked:YYYY-MM-DD result:RESULT due:DUE]`). Sampled all 5 distinct URLs live this session via curl -- 200 on code.claude.com/docs/en/claude-code-on-the-web, code.claude.com/docs/en/permission-modes.md, simonwillison.net (both essays), owasp.org.",
       "fix_hint": null,
       "blocking": false
     },
@@ -152,7 +155,7 @@
       "rule_index": 16,
       "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
       "verdict": "PASS",
-      "evidence": "This file carries zero fenced {{prompt:}} blocks (grep -c '{{prompt:' → 0, re-run this session; view.json signals confirm has_prompt_blocks:false). The M2-close forcing-function prompts live in exercises/extract-the-task-shaping-rule.md Phases 4-5 (confirmed present), which owns those rows now. What remains in this file's body — the '## Optional challenges' bullets (L52-61: DDD framing, research-system build, cloud-session steering, 'bully plan mode into a bad architecture') — are explicitly optional stretch prompts in body prose, permitted by §16's own carve-out ('optional push-backs / refinements / \"if you want to take this further\" can live in body'). No bare scripted-reaction imperative count found anywhere in the surviving body.",
+      "evidence": "grep -c '{{prompt:' plan-mode-done-right.md -> 0; fence count -> 0 (re-run this session; consistent with view.json's fences=0). This is a thin module-composer file -- the M2 forcing-function prompts live in exercises/push-back-on-the-plan.md and exercises/extract-the-task-shaping-rule.md, which own those rows. The remaining body-resident content (L52-60 '## Optional challenges' bullets: DDD framing, research-system build, cloud-session steering, 'bully plan mode into a bad architecture') are explicitly optional stretch prompts, permitted by §16's own carve-out for 'optional push-backs / refinements / if-you-want-to-take-this-further.'",
       "fix_hint": null,
       "blocking": false
     },
@@ -161,7 +164,7 @@
       "rule_index": 23,
       "rule_lead": "Short skeptical pushback on \"done\" = re-verify trigger.",
       "verdict": "PASS",
-      "evidence": "L147 (Push-back moves) and L192 (Per-phase failure-mode table), both unchanged in substance by the diff since 43e6cae1, correctly encode the P3-softening-on-regeneration pattern: 'did Claude actually sharpen it, or did it acknowledge and re-soften? push back again.' — re-verify, not re-confirm, matching §23 exactly.",
+      "evidence": "Maintainer block Push-back moves (L147, 'P3 softening on regeneration') and the Per-phase failure-mode table (L190) correctly encode 'did Claude actually sharpen it, or did it acknowledge and re-soften? push back again' -- re-verify, not re-confirm, matching §23 exactly.",
       "fix_hint": null,
       "blocking": false
     },
@@ -170,7 +173,7 @@
       "rule_index": 37,
       "rule_lead": "Context-loading tiers as staged progression.",
       "verdict": "PASS",
-      "evidence": "Tier-1 (auto-load) is named conceptually in Key Concepts (L50: 'A rule that doesn't load doesn't exist, and where you put it decides when it fires') and its concrete surfaces are listed in Plug points (L167-170) and the artefact-contract table (L179-183). The actual staged-reveal PROMPT that proves the tier live (the 'are these rules auto-loaded' question) lives in exercises/extract-the-task-shaping-rule.md Phase 4 (confirmed present this session at L84 'Ask Claude whether these rules are auto-loaded into each session' and L134/L138) — this thin module composer correctly names and points to where the proving surface lives rather than re-hosting it.",
+      "evidence": "Tier-1 (auto-load) is named conceptually in Key Concepts (L50: 'A rule that doesn't load doesn't exist, and where you put it decides when it fires') and its concrete surfaces are listed in Plug points (L169) and the artefact-contract table (L181-183). The actual staged-reveal prompt that proves the tier live lives in exercises/extract-the-task-shaping-rule.md -- this thin module composer correctly points to where the proving surface lives rather than re-hosting it.",
       "fix_hint": null,
       "blocking": false
     },
@@ -178,10 +181,10 @@
       "compendium": "check_prompts.md",
       "rule_index": null,
       "judge_owned": true,
-      "rule_lead": "Whole-subset scope call (technical mechanics: action lead-in, no placeholders, chain-by-back-reference, multi-sample enforcement, citation discipline inside prompts) — this file carries no fenced prompt content to check.",
+      "rule_lead": "Whole-subset scope call (technical mechanics: action lead-in, no placeholders, chain-by-back-reference, multi-sample enforcement, citation discipline inside prompts) -- this file carries no fenced prompt content to check.",
       "verdict": "N/A",
       "evidence": null,
-      "na_reason": "grep -c '{{prompt:' plan-mode-done-right.md → 0 (re-run this session; view.json signals confirm has_prompt_blocks:false, fence_ranges:[]). The fenced prompts this module used to carry were relocated to exercises/extract-the-task-shaping-rule.md Phases 4-5 (2026-08-25, maintainer note L109) — that file's own technical judge owns those rows now. Nothing in this class's check_prompts.md subset has a surface to fire against here.",
+      "na_reason": "grep -c '{{prompt:' plan-mode-done-right.md -> 0; fence count ('```') -> 0 (re-run this session; view.json confirms fence_ranges:[]). Every fenced prompt this module used to carry now lives in exercises/push-back-on-the-plan.md and exercises/extract-the-task-shaping-rule.md (maintainer L109), which own those rows. §§17/20/40 re-read at current wording per staleness-reason rule-drift (see drift notes below) -- both narrowed 2026-09-03, neither changes anything here since there is no fence for either to fire against.",
       "fix_hint": null,
       "blocking": false
     },
@@ -194,7 +197,7 @@
       "na_reason": "no scheduled-task content",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "70817d0f51d83e8a1d049ec24a93dbe69f5631f184a094ffc7a19e92fae16c4b",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -206,7 +209,7 @@
       "na_reason": "targets compendium/reference-file rot, not per-artifact content",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "70817d0f51d83e8a1d049ec24a93dbe69f5631f184a094ffc7a19e92fae16c4b",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -218,7 +221,7 @@
       "na_reason": "process rule for maintaining reference files, not a content check",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "70817d0f51d83e8a1d049ec24a93dbe69f5631f184a094ffc7a19e92fae16c4b",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -230,7 +233,7 @@
       "na_reason": "no slash-command/skill $ARGUMENTS-style usage in this file",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "70817d0f51d83e8a1d049ec24a93dbe69f5631f184a094ffc7a19e92fae16c4b",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -242,7 +245,7 @@
       "na_reason": "no defensive-recovery-over-broken-mechanism pattern here",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "70817d0f51d83e8a1d049ec24a93dbe69f5631f184a094ffc7a19e92fae16c4b",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -254,7 +257,7 @@
       "na_reason": "process rule for the author's working method, not a content check",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "70817d0f51d83e8a1d049ec24a93dbe69f5631f184a094ffc7a19e92fae16c4b",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -266,7 +269,7 @@
       "na_reason": "no scheduled-task caveat content",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "70817d0f51d83e8a1d049ec24a93dbe69f5631f184a094ffc7a19e92fae16c4b",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -278,7 +281,7 @@
       "na_reason": "targets SKILL.md/CLAUDE.md/MEMORY.md pointer bloat, not student-facing curriculum",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "70817d0f51d83e8a1d049ec24a93dbe69f5631f184a094ffc7a19e92fae16c4b",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -290,7 +293,7 @@
       "na_reason": "file does no transcript selection",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "70817d0f51d83e8a1d049ec24a93dbe69f5631f184a094ffc7a19e92fae16c4b",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -302,7 +305,7 @@
       "na_reason": "this file is not a hook",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "70817d0f51d83e8a1d049ec24a93dbe69f5631f184a094ffc7a19e92fae16c4b",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -314,7 +317,7 @@
       "na_reason": "tooling-internal, not module content",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "70817d0f51d83e8a1d049ec24a93dbe69f5631f184a094ffc7a19e92fae16c4b",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -326,7 +329,7 @@
       "na_reason": "grep -n 'open Claude Code' → 0 hits; no session-open language to check",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "70817d0f51d83e8a1d049ec24a93dbe69f5631f184a094ffc7a19e92fae16c4b",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -338,7 +341,7 @@
       "na_reason": "no worktree-fork or cross-cwd instruction in this file",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "70817d0f51d83e8a1d049ec24a93dbe69f5631f184a094ffc7a19e92fae16c4b",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -350,7 +353,7 @@
       "na_reason": "no session-recovery instruction in this file",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "70817d0f51d83e8a1d049ec24a93dbe69f5631f184a094ffc7a19e92fae16c4b",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -362,7 +365,7 @@
       "na_reason": "no non-default-runtime content",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "70817d0f51d83e8a1d049ec24a93dbe69f5631f184a094ffc7a19e92fae16c4b",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -374,7 +377,7 @@
       "na_reason": "no F-Secure content",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "70817d0f51d83e8a1d049ec24a93dbe69f5631f184a094ffc7a19e92fae16c4b",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -386,7 +389,7 @@
       "na_reason": "no MCP/SQLite/knowledge-graph proposal",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "70817d0f51d83e8a1d049ec24a93dbe69f5631f184a094ffc7a19e92fae16c4b",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -398,7 +401,7 @@
       "na_reason": "no external-org-content engagement",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "70817d0f51d83e8a1d049ec24a93dbe69f5631f184a094ffc7a19e92fae16c4b",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -410,7 +413,7 @@
       "na_reason": "grep -inE 'rm -rf|force.push|drop table' → 0 hits",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "70817d0f51d83e8a1d049ec24a93dbe69f5631f184a094ffc7a19e92fae16c4b",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -422,7 +425,7 @@
       "na_reason": "no raw external-artifact import discussed",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "70817d0f51d83e8a1d049ec24a93dbe69f5631f184a094ffc7a19e92fae16c4b",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -434,7 +437,7 @@
       "na_reason": "no bosser-strategy pseudo-URI reference",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "70817d0f51d83e8a1d049ec24a93dbe69f5631f184a094ffc7a19e92fae16c4b",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -446,7 +449,7 @@
       "na_reason": "not a workbook-rebuild context",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "70817d0f51d83e8a1d049ec24a93dbe69f5631f184a094ffc7a19e92fae16c4b",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -458,7 +461,7 @@
       "na_reason": "not a directory-creation context",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "70817d0f51d83e8a1d049ec24a93dbe69f5631f184a094ffc7a19e92fae16c4b",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -470,7 +473,7 @@
       "na_reason": "process rule for maintainer sessions, not module content",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "70817d0f51d83e8a1d049ec24a93dbe69f5631f184a094ffc7a19e92fae16c4b",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -482,7 +485,7 @@
       "na_reason": "this file is not a test-layer/harness",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "70817d0f51d83e8a1d049ec24a93dbe69f5631f184a094ffc7a19e92fae16c4b",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -494,7 +497,7 @@
       "na_reason": "not applicable to module content",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "70817d0f51d83e8a1d049ec24a93dbe69f5631f184a094ffc7a19e92fae16c4b",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -506,7 +509,7 @@
       "na_reason": "this file is not a hook",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "70817d0f51d83e8a1d049ec24a93dbe69f5631f184a094ffc7a19e92fae16c4b",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -518,7 +521,7 @@
       "na_reason": "repo-doc-architecture rule, not applicable to this content file",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "70817d0f51d83e8a1d049ec24a93dbe69f5631f184a094ffc7a19e92fae16c4b",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -530,7 +533,7 @@
       "na_reason": "no fixture/runner file-numbering referenced",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "70817d0f51d83e8a1d049ec24a93dbe69f5631f184a094ffc7a19e92fae16c4b",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -542,7 +545,7 @@
       "na_reason": "meta rule for judges/runners; this judge's own greps/curls reported real exit statuses but the rule targets orchestrator behavior, not module content",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "70817d0f51d83e8a1d049ec24a93dbe69f5631f184a094ffc7a19e92fae16c4b",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -554,7 +557,7 @@
       "na_reason": "meta rule for the eval orchestrator, not module content",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "70817d0f51d83e8a1d049ec24a93dbe69f5631f184a094ffc7a19e92fae16c4b",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -566,7 +569,7 @@
       "na_reason": "meta rule about judge-model selection",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "70817d0f51d83e8a1d049ec24a93dbe69f5631f184a094ffc7a19e92fae16c4b",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -578,7 +581,7 @@
       "na_reason": "not applicable to module content",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "70817d0f51d83e8a1d049ec24a93dbe69f5631f184a094ffc7a19e92fae16c4b",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -590,7 +593,7 @@
       "na_reason": "applies to the orchestrator's instance-JSON handling; this instance uses no override",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "70817d0f51d83e8a1d049ec24a93dbe69f5631f184a094ffc7a19e92fae16c4b",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -602,7 +605,7 @@
       "na_reason": "this judge is read-only on the Quality line (L117); its shape (stage + date + per-class shas, no trailing prose) matches the canonical tooling-written format",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "70817d0f51d83e8a1d049ec24a93dbe69f5631f184a094ffc7a19e92fae16c4b",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -614,7 +617,7 @@
       "na_reason": "no Cowork content in this file",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "70817d0f51d83e8a1d049ec24a93dbe69f5631f184a094ffc7a19e92fae16c4b",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -626,7 +629,7 @@
       "na_reason": "meta rule about audit-scope derivation; this dispatch names the file directly",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "70817d0f51d83e8a1d049ec24a93dbe69f5631f184a094ffc7a19e92fae16c4b",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -638,7 +641,7 @@
       "na_reason": "this file now contains zero fenced prompts (grep '{{prompt:' → 0 hits; has_prompt_blocks:false) — the 3 that used to be here (push-back-on-the-plan-4, ae101-m2-integrate-branch, ae101-m2-tidier) relocated to exercises/extract-the-task-shaping-rule.md Phases 4-5 (L97), which owns this row now",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "70817d0f51d83e8a1d049ec24a93dbe69f5631f184a094ffc7a19e92fae16c4b",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -650,7 +653,7 @@
       "na_reason": "this judge cites no strategy doc against the file",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "70817d0f51d83e8a1d049ec24a93dbe69f5631f184a094ffc7a19e92fae16c4b",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -662,7 +665,7 @@
       "na_reason": "same as §27 — no fenced prompts remain in this file to audit for portability; relocated to the exercise file",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "70817d0f51d83e8a1d049ec24a93dbe69f5631f184a094ffc7a19e92fae16c4b",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -674,7 +677,7 @@
       "na_reason": "no skill-authoring content in this module (lands M3+)",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "70817d0f51d83e8a1d049ec24a93dbe69f5631f184a094ffc7a19e92fae16c4b",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -686,7 +689,7 @@
       "na_reason": "mechanical-harness internal",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "70817d0f51d83e8a1d049ec24a93dbe69f5631f184a094ffc7a19e92fae16c4b",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -698,7 +701,7 @@
       "na_reason": "mechanical-harness internal",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "70817d0f51d83e8a1d049ec24a93dbe69f5631f184a094ffc7a19e92fae16c4b",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -710,7 +713,7 @@
       "na_reason": "mechanical-harness internal",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "70817d0f51d83e8a1d049ec24a93dbe69f5631f184a094ffc7a19e92fae16c4b",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -722,7 +725,7 @@
       "na_reason": "targets eval/tooling duplicate-guard design, not module content directly; the underlying content-duplication observation (Push-back moves L131-140 vs Per-phase table L172-185, restating the same P1/P3/P4/P5 trainer lines) is logged as a todo below, not a numbered-rule violation of this tooling-design rule",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "70817d0f51d83e8a1d049ec24a93dbe69f5631f184a094ffc7a19e92fae16c4b",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -734,7 +737,7 @@
       "na_reason": "tooling-internal; this judge does not stamp Quality",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "70817d0f51d83e8a1d049ec24a93dbe69f5631f184a094ffc7a19e92fae16c4b",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -746,7 +749,7 @@
       "na_reason": "self-complied by this judge (body_sha is a real 64-char `shasum -a 256` output), not a rule module content can violate",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "70817d0f51d83e8a1d049ec24a93dbe69f5631f184a094ffc7a19e92fae16c4b",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -758,7 +761,7 @@
       "na_reason": "process discipline this judge followed throughout (live grep/curl/ls/calculate-time.js checks rather than trusting the diff's commit message at face value), not a content rule the module text can itself violate",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "70817d0f51d83e8a1d049ec24a93dbe69f5631f184a094ffc7a19e92fae16c4b",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -770,7 +773,7 @@
       "na_reason": "self-directed at this judge's own dispatch discipline, not a rule module text can violate",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "70817d0f51d83e8a1d049ec24a93dbe69f5631f184a094ffc7a19e92fae16c4b",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -782,7 +785,7 @@
       "na_reason": "hook-design rule, not applicable to module content",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "70817d0f51d83e8a1d049ec24a93dbe69f5631f184a094ffc7a19e92fae16c4b",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -794,7 +797,7 @@
       "na_reason": "not applicable to module content",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "70817d0f51d83e8a1d049ec24a93dbe69f5631f184a094ffc7a19e92fae16c4b",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -806,7 +809,7 @@
       "na_reason": "no deletion proposal in this pass (the section relocation was already Antti-directed and landed before this dispatch)",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "70817d0f51d83e8a1d049ec24a93dbe69f5631f184a094ffc7a19e92fae16c4b",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -818,7 +821,7 @@
       "na_reason": "this file is not a hook",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "70817d0f51d83e8a1d049ec24a93dbe69f5631f184a094ffc7a19e92fae16c4b",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -830,7 +833,7 @@
       "na_reason": "no staleness-by-git-date sweep performed here",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "70817d0f51d83e8a1d049ec24a93dbe69f5631f184a094ffc7a19e92fae16c4b",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -842,7 +845,7 @@
       "na_reason": "the drift rule for this dispatch; re-fetched at current wording (incl. 2026-08-28 fail-open corollary) via rule.js — meta about audit-eval-coverage.js/check-instance-evidence.js reading vocabulary, not module content this file's body could violate",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "70817d0f51d83e8a1d049ec24a93dbe69f5631f184a094ffc7a19e92fae16c4b",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -854,7 +857,7 @@
       "na_reason": "meta rule about scan-stale-classes design, not module content",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "70817d0f51d83e8a1d049ec24a93dbe69f5631f184a094ffc7a19e92fae16c4b",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -866,7 +869,7 @@
       "na_reason": "meta rule about eval-judge cost regression diagnosis, not module content (new since the af3c9106 pin; no prior row existed)",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "70817d0f51d83e8a1d049ec24a93dbe69f5631f184a094ffc7a19e92fae16c4b",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -878,7 +881,7 @@
       "na_reason": "meta rule about judge-hillclimb fixture design, not module content (new since the af3c9106 pin)",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "70817d0f51d83e8a1d049ec24a93dbe69f5631f184a094ffc7a19e92fae16c4b",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -890,7 +893,7 @@
       "na_reason": "meta rule about protocol-clause enforceability in tooling/process prose, not module content (new since the af3c9106 pin)",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "70817d0f51d83e8a1d049ec24a93dbe69f5631f184a094ffc7a19e92fae16c4b",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -902,7 +905,7 @@
       "na_reason": "no verbatim-quote-as-primary-source claim; all body citations are pointer + one-sentence thesis",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "70817d0f51d83e8a1d049ec24a93dbe69f5631f184a094ffc7a19e92fae16c4b",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -914,7 +917,7 @@
       "na_reason": "grep -nE '95%|85%|80%' → 0 hits; no round-number AI failure-rate stat cited",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "70817d0f51d83e8a1d049ec24a93dbe69f5631f184a094ffc7a19e92fae16c4b",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -926,7 +929,7 @@
       "na_reason": "no OODA convergence-count claim in this file",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "70817d0f51d83e8a1d049ec24a93dbe69f5631f184a094ffc7a19e92fae16c4b",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -938,7 +941,7 @@
       "na_reason": "not a research-synthesis document",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "70817d0f51d83e8a1d049ec24a93dbe69f5631f184a094ffc7a19e92fae16c4b",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -950,7 +953,7 @@
       "na_reason": "process rule for the research workflow, not finished curriculum content",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "70817d0f51d83e8a1d049ec24a93dbe69f5631f184a094ffc7a19e92fae16c4b",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -962,7 +965,7 @@
       "na_reason": "process rule for the research generator, not a content check on the shipped file",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "70817d0f51d83e8a1d049ec24a93dbe69f5631f184a094ffc7a19e92fae16c4b",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -974,7 +977,7 @@
       "na_reason": "process rule for the generator, not a content check",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "70817d0f51d83e8a1d049ec24a93dbe69f5631f184a094ffc7a19e92fae16c4b",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -986,7 +989,7 @@
       "na_reason": "no adoption/productivity percentage cited in this file",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "70817d0f51d83e8a1d049ec24a93dbe69f5631f184a094ffc7a19e92fae16c4b",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -998,7 +1001,7 @@
       "na_reason": "no research-conclusion-from-silence claim in this curriculum file",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "70817d0f51d83e8a1d049ec24a93dbe69f5631f184a094ffc7a19e92fae16c4b",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -1010,7 +1013,7 @@
       "na_reason": "meta rule about verification-instrument design; this judge self-complied (live curl/grep/ls/calculate-time.js checks rather than trusting the prior stamp), but the rule targets instruments, not this file's content",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "70817d0f51d83e8a1d049ec24a93dbe69f5631f184a094ffc7a19e92fae16c4b",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -1022,7 +1025,7 @@
       "na_reason": "no fetch-prompt word-presence claim generated for this file",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "70817d0f51d83e8a1d049ec24a93dbe69f5631f184a094ffc7a19e92fae16c4b",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -1034,7 +1037,7 @@
       "na_reason": "no structural-search-candidate discovery in this file",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "70817d0f51d83e8a1d049ec24a93dbe69f5631f184a094ffc7a19e92fae16c4b",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -1046,7 +1049,7 @@
       "na_reason": "this module creates no new check_*.md rule",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "70817d0f51d83e8a1d049ec24a93dbe69f5631f184a094ffc7a19e92fae16c4b",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -1058,155 +1061,15 @@
       "na_reason": "this module builds no hook/judge/loop/gate machinery requiring a smoke-test",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "70817d0f51d83e8a1d049ec24a93dbe69f5631f184a094ffc7a19e92fae16c4b",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     }
   ],
-  "platform_claims_checked": [
-    {
-      "claim": "Enters plan mode (Shift+Tab cycle)",
-      "line": 173,
-      "verdict": "PASS",
-      "source": "compendium (check_platform_and_boundaries.md §6)"
-    },
-    {
-      "claim": "Push back via 'No, keep planning' (What You'll Learn, Push-back moves, Leap test, Per-phase table, Frameworks riffed on)",
-      "line": 19,
-      "verdict": "PASS",
-      "source": "reference/claude-code-for-engineers.md:201 (live-verified this session) + grep -c 'No, keep planning' → 5, grep -c 'keep-planning-with-feedback' → 0"
-    },
-    {
-      "claim": "Claude Code cloud session is in research preview for Pro/Max/Team, and for Enterprise with premium seats or Chat + Claude Code seats; can be opened and steered from the Claude mobile app",
-      "line": 121,
-      "verdict": "PASS",
-      "source": "live fetch of code.claude.com/docs/en/claude-code-on-the-web this session — page text matches the module's CAVEAT stamp and mobile-steering claim word-for-word"
-    },
-    {
-      "claim": "Plan file named `~/.claude/plans/<slug>-<adjective>-<noun>.md`, fixed directory / generated filename",
-      "line": 183,
-      "verdict": "PASS",
-      "source": "live filesystem probe this session (`ls -la ~/.claude/plans/`) — real matching filenames present"
-    },
-    {
-      "claim": "reference/claude-code-for-engineers.md § 1 carries the four-layer rule-file hierarchy; §9 plan mode at depth carries the approval-paths table",
-      "line": 140,
-      "verdict": "PASS",
-      "source": "reference/claude-code-for-engineers.md confirmed live this session: L13 '## 1. The memory hierarchy: where your rules actually live', L183 '## 9. Plan mode at depth'"
-    },
-    {
-      "claim": "Exercise runtime: 5-minute overrun on the Slot line (Decision points, 'calculate-time.js 2026-08-26: 125 min vs the 120 cap')",
-      "line": 162,
-      "verdict": "REVISE",
-      "source": "live re-run this session: `node scripts/calculate-time.js plan-mode-done-right` → 'Total: 123 min ... cohort-2day cap 120 (runs 123) → OVER — by 3 min', NOT 125min/5-min-overrun as the body still asserts. Same drift a prior pass logged (root cause: two lecture files each lost 1 min of Time budget in later, unrelated trim passes after 2026-08-26); still unaddressed as of this pass. Logged as a todo rather than scored against a rules_evaluated row: the owning rule for re-deriving a stale numeric/runtime claim is check_pedagogy.md §61a(e)/§63, outside this class's owned pedagogy subset (16/23/37)."
-    }
-  ],
-  "citations_checked": [
-    {
-      "line": 14,
-      "claim": "Boris Cherny, Mastering Claude Code in 30 minutes",
-      "label_present": true,
-      "url_present": true,
-      "url_alive": null,
-      "evidence_level_honest": true
-    },
-    {
-      "line": 14,
-      "claim": "Dex Horthy, Why Software Factories Fail",
-      "label_present": true,
-      "url_present": true,
-      "url_alive": null,
-      "evidence_level_honest": true
-    },
-    {
-      "line": 56,
-      "claim": "Claude Code cloud session / mobile app",
-      "label_present": true,
-      "url_present": true,
-      "url_alive": true,
-      "evidence_level_honest": true
-    },
-    {
-      "line": 63,
-      "claim": "Simon Willison, The lethal trifecta for AI agents",
-      "label_present": true,
-      "url_present": true,
-      "url_alive": true,
-      "evidence_level_honest": true
-    },
-    {
-      "line": 65,
-      "claim": "Simon Willison, Designing agentic loops",
-      "label_present": true,
-      "url_present": true,
-      "url_alive": null,
-      "evidence_level_honest": true
-    },
-    {
-      "line": 67,
-      "claim": "OWASP Top 10 for LLM Applications",
-      "label_present": true,
-      "url_present": true,
-      "url_alive": true,
-      "evidence_level_honest": true
-    },
-    {
-      "line": 71,
-      "claim": "Lucas F. da Costa, Backpressure Is All You Need",
-      "label_present": true,
-      "url_present": true,
-      "url_alive": true,
-      "evidence_level_honest": true
-    },
-    {
-      "line": 202,
-      "claim": "Kieran Klaassen, compound engineering (Every Inc.)",
-      "label_present": true,
-      "url_present": true,
-      "url_alive": null,
-      "evidence_level_honest": true
-    }
-  ],
-  "skills_referenced": [],
-  "urls_sampled": [
-    {
-      "url": "https://code.claude.com/docs/en/claude-code-on-the-web",
-      "alive": true,
-      "status_code": 200
-    },
-    {
-      "url": "https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/",
-      "alive": true,
-      "status_code": 200
-    },
-    {
-      "url": "https://owasp.org/www-project-top-10-for-large-language-model-applications/",
-      "alive": true,
-      "status_code": 200
-    },
-    {
-      "url": "https://code.claude.com/docs/en/permission-modes.md",
-      "alive": true,
-      "status_code": 200
-    },
-    {
-      "url": "https://www.lucasfcosta.com/blog/backpressure-is-all-you-need",
-      "alive": true,
-      "status_code": 200
-    }
-  ],
+  "todos_count": 0,
   "blocking_findings_count": 0,
-  "todos_count": 2,
-  "todos": [
-    {
-      "note": "Decision-points runtime citation is stale (see platform_claims_checked above): body says '5-minute overrun... calculate-time.js 2026-08-26: 125 min vs the 120 cap'; live re-run this session again returns 123 min, OVER by 3 min. Directionally the same (still over cap) but the specific minute-count a trainer would act on mid-overrun is now 2 minutes off. Not scored as a rules_evaluated REVISE because the owning rule (numeric-claim re-derivation) is check_pedagogy.md §61a(e)/§63, outside this class's technical subset (16/23/37) — flagging for the pedagogy judge or maintainer to action. Carried forward unresolved from the prior instance.",
-      "rule": "check_pedagogy.md §61a/§63 (out of this class's owned subset)",
-      "line": 162
-    },
-    {
-      "note": "Push-back moves (L143-153) and Per-phase failure mode + escape hatch (L185-196) restate the same P1/P3/P3/P3/P4/P4/P5/P5 trainer-push content in two independently-maintained tables (a 'P5 execution-creep' row was added to both in the same recent edit, keeping them in step this time, but the structural duplication remains). Worth a maintainer call on whether the second table can reference the first rather than duplicating it. Carried forward from the prior instance with updated line numbers; re-confirmed present and still duplicated this session.",
-      "rule": "check_platform_and_boundaries.md §34 (judge-owned observation, not a numbered-rule citation on the module)",
-      "line": 185
-    }
-  ],
-  "notes": "Full re-read against pin 43e6cae1 → HEAD (two commits: a cloud-session stamp CAVEAT upgrade + P5 execution-creep row addition, then d14613aa's tier-marker pass + Willison-agentic-loops ruling). All mechanical claims re-verified live in THIS session rather than inherited: grep counts for claude.ai/Cowork/zombie-stats/destructive-ops/{{prompt:}}/[Skill:]/Shift+Tab (all clean or as expected), 'No, keep planning' count (5, 0 wrong-string), reference/claude-code-for-engineers.md anchors (§1 L13, §9 L183), `ls ~/.claude/plans/` (real matching filenames), 5 externally-cited URLs sampled live (all 200), a direct fetch of code.claude.com/docs/en/claude-code-on-the-web confirming the new CAVEAT stamp's exact research-preview/seat-gating language, and `node scripts/calculate-time.js plan-mode-done-right` (still shows the drift). check_prompts.md's technical-mechanics subset collapsed to one judge-owned N/A row given zero fenced prompts in this file. No blocking defect found within this class's owned rule set (check_platform_and_boundaries.md all 10 in-brief rules PASS, incl. the new rule 50 on thinking-effort levels; check_research_claims.md all 5 in-brief rules PASS, with rule 2's Willison-essay hygiene question now resolved by the d14613aa maintainer ruling; check_pedagogy.md technical subset 16/23/37 all PASS — items 22/36 already shape-resolved N/A and left to the prefill merge). Two non-blocking todos carried forward, both still present: the stale runtime-citation number (out of this class's rule-ownership, logged for pedagogy/maintainer) and the duplicate trainer tables (judge-owned observation)."
+  "notes": [
+    "Rule-drift re-read (staleness_reason=rule-drift): check_prompts.md §17 (Preamble before action, narrowed 2026-09-03 to plan-mode-fence-ONLY structural trigger), §20 (Grill before save, narrowed 2026-09-03 to 'raise only where a run actually showed a downstream re-run,' declined-by-default elsewhere), §40 (Verify session boundary, unchanged in substance). None of the three changes this file's verdict: the file carries zero prompt fences (confirmed live this session), so the whole check_prompts.md technical subset stays N/A exactly as before the rules moved -- the body did not move and neither does the verdict.",
+    "Runtime-figure drift noticed while re-measuring per platform §13b: maintainer 'Decision points' (L162) cites 'calculate-time.js 2026-08-26: 125 min vs the 120 cap,' a 5-minute overrun. Live re-run this session (`node scripts/calculate-time.js plan-mode-done-right`) returns 123 min, OVER by 3 min -- directionally the same (still over cap) but the maintainer's own cited minute-count is now 2 minutes stale. Not scored as a rules_evaluated row: the owning rule for re-deriving a stale numeric/runtime claim is check_pedagogy.md §61a(e)/§63, outside this class's owned pedagogy subset (16/23/37). Flagging here per the dispatch preamble's instruction to put cross-class problems in notes, not rules_evaluated.",
+    "Diff since pin 191ea58f touched only the maintainer block (one wording tweak to the Big Idea accept-note: 'It was briefly moved below this fence, then restored' removed, 'below the fence it left' -> 'below the fence it would leave') and the Quality-line bookkeeping (SHAs/todo-counts refreshed). No student-facing body line moved. This is check_writing §3 territory (maintainer block is prose, states-what's-true-now), outside this class's lane -- noted, not scored."
+  ]
 }

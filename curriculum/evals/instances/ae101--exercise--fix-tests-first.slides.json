@@ -1,14 +1,14 @@
 {
   "class": "slides",
-  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/fix-tests-first.md",
-  "body_sha": "1d3f3879c1a9be392a2066ecc079c6aeaca783ae1a95172003f3ad45bbfe5a22",
-  "shape_hash": "694d2ba217c073cc",
-  "verdict": "PASS",
   "training": "ae101",
+  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/fix-tests-first.md",
+  "verdict": "PASS",
+  "body_sha": "c41951220e5a3069f08a61510adf37cde53c47b50c4f9ffbc654845451e617c2",
+  "shape_hash": "694d2ba217c073cc",
   "chunk_map": [
     {
       "index": 0,
-      "heading": "H1/lede",
+      "heading": "H1/lede (Prove the bug, then ship the fix)",
       "lines": "1-12"
     },
     {
@@ -44,7 +44,7 @@
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Closest call is the L27 rewrite: \"the compound step reads this scrollback\" (chunk 2). Both \"the compound step\" and \"this scrollback\" are arc-earned spine vocabulary, verified this session by grep: the enclosing module file getting-going.md's own ## Key Concepts (body, before its L86 maintainer cut) names L55 \"The loop is orient → fix → close → compound\" and L57 \"The scrollback is the machine's reflection; current state lives on disk\" — and getting-going.md includes fix-tests-first.md at L46, after that Key Concepts section, per the carve-out's \"module include-order = deck order\" clause. \"The agent\" (chunk 2, L26) resolves the same way (getting-going.md L17/L33/L57 \"the agent's account/output/self-report\") plus Ex1 orient-and-introspect.md (included at getting-going.md L44, before this file's L46) L23/L62/L72. All other referents resolve in-sentence (\"it\"/\"its\") or via the session-artifact carve-out (\"the bug you brought from prework\" L5, \"the diff\"/\"the fix\"/\"the change\" throughout, \"the PR\" first named L7 and reused L49) or same-file reuse (\"a layer\" chunk 4 L45 reuses \"a layer above it\" coined chunk 3 L31 — explicitly a NOT-violation shape).",
+      "evidence": "Sequential read chunks 0-5: chunk 0 previews 'the bug you brought from prework' / 'the PR' (session-artifact carve-out, both explicitly listed exemplars). Chunk 1 'your bug' (same carve-out). Chunk 2 'Read the diff' resolves against chunk 1's just-run loop (session-artifact carve-out covers 'the diff' by name). Chunk 3 'your test', 'the change', 'the fix' all resolve to work the student's own session just produced. Chunk 4 reuses 'a layer' introduced in chunk 3 (same-file reuse, not a violation). Chunk 5 'the PR' reuses the H1/chunk-0 noun. One soft case: chunk 2 L27 'the compound step reads this scrollback' points forward to Ex4 (compound-and-close), not earned inside this file — but L53 maintainer note ('Carded and kept, then trimmed... the forward mechanism... is the wanted motivation for authentic wording, not a leak') is a dated accept-note on this exact phrase; treated as accepted, not flagged.",
       "fix_hint": null,
       "blocking": true
     },
@@ -54,7 +54,7 @@
       "rule_lead": "Cross-file and positional callbacks.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Only cross-file reference is L5 \"fix the bug you brought from prework\" — names the source by content (\"prework\"), not by page position; passes the navigational-pointer carve-out. No other chunk points at another file or page position.",
+      "evidence": "grep -niE 'opening lecture|earlier module|prior lecture|previous module|the workbook|this training' on body.txt -> 0 hits, run this session. No chunk points at another file/lecture by position; 'from prework' (chunk 0) names the beat by claim/content, not position.",
       "fix_hint": null,
       "blocking": true
     },
@@ -64,7 +64,7 @@
       "rule_lead": "Every backward reference points at a beat that exists.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "L5's \"the bug you brought from prework\" resolves against a live beat, re-verified this session via grep against curriculum/trainings/agentic-engineering-101/prework.md: L58 \"## 5. Pick a trivial bug and confirm Module 1 readiness\", L78 \"## Bring to Module 1\", L114 \"Chosen trivial bug | ... | M1 `fix-tests-first` prompt consumes the selected bug\". No other backward-beat reference occurs.",
+      "evidence": "Chunk 0 L5 'fix the bug you brought from prework' is the file's only backward reference to another beat. Arc block (L131) confirms the beat exists: 'Picks up from: orient-and-introspect — fix happens in the window the student just mapped.' All other 'the X you did' references are in-session (rule-1 carve-out), not cross-beat.",
       "fix_hint": null,
       "blocking": true
     },
@@ -74,7 +74,7 @@
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Every chunk carries a self-standing claim or action, including the shortest, chunk 4 (L43-46): \"There will be a next plausible answer, because the LLM will always try to find what you asked for\" plus \"when to stop digging is your call\" — a full claim, not a bare wait-state.",
+      "evidence": "Shortest two chunks each carry a self-standing claim, not a wait-state: chunk 4 L45 states the machine-nature claim in full ('There will be a next plausible answer... when to stop digging is your call'); chunk 5 L49 is a complete instruction (commit, push, open PR), not a context-dependent fragment.",
       "fix_hint": null,
       "blocking": false
     },
@@ -84,7 +84,7 @@
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "All 6 headers checked fresh against their chunk content: \"Write the failing test and fix the root cause\" (L13) ↔ L15-18; \"Read the diff and push back on a line\" (L24) ↔ L26-27; \"Interrogate the fix for a deeper layer\" (L29) ↔ L31-39; \"There is always a next plausible answer\" (L43) ↔ L45; \"Ship the PR\" (L47) ↔ L49.",
+      "evidence": "Each header is a true summary of its chunk under cover-then-uncover: L13 'Write the failing test and fix the root cause' -> L15 does exactly that; L24 'Read the diff and push back on a line' -> L26-27 do exactly that; L29 'Interrogate the fix for a deeper layer' -> L31-41 do exactly that; L43 'There is always a next plausible answer' (the file's one declarative header, accept-noted L59) -> L45 restates it near-verbatim, header truth guard intact ('try to find', never 'finds'); L47 'Ship the PR' -> L49 does exactly that.",
       "fix_hint": null,
       "blocking": false
     },
@@ -94,7 +94,7 @@
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Checked all six sub-items across all 6 chunks, including the reworded L27 (\"Your own wording matters. No pre-made prompt: the compound step reads this scrollback, so your push-back is what becomes a rule.\"): no \"Not X. Not Y. Z\" construction anywhere; no anaphora/epistrophe triple; no self-grading superlative (L9 \"pushing back is core work\" is a plain widget label, not a superlative); no number+retraction (L3 \"25 minutes\" is a plain unhedged time budget); no abstraction-noun stack (body stays concrete: bug, test, diff, fix, PR, layer, scrollback); no verb triplet with an empty leg.",
+      "evidence": "No 'Not X. Not Y. Z.' construction anywhere. No number+retraction (only number is L3 '25 minutes', no hedge attached). No abstraction-noun stacks (body stays concrete: 'the diff', 'a layer', 'the fix'). No empty-leg verb triplets. Closest candidates, checked and cleared: chunk 4 L45's three sentences ('You can always dig deeper... There will be a next plausible answer... A passing test you trust is what makes a layer real') resemble a triple but each clause carries distinct new content, not anaphora — stays inside. L9 'The point: pushing back is core work' is a stance line, not a self-grading superlative (no 'one of the most useful' comparative-ranking shape) — stays inside.",
       "fix_hint": null,
       "blocking": true
     },
@@ -104,7 +104,7 @@
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Fresh grep this session, `grep -niE 'firing|compendium|forcing function|\\bbeat\\b|\\bmood\\b|Connections\\b|surface\\b'` on body_numbered.txt → one hit, L33 \"what's still surface\" (ordinary adjective, not the banned surface-as-noun). L27's \"the compound step\" is training-taught spine vocabulary, not repo-authoring dialect: named in the enclosing module's own ## Key Concepts (getting-going.md L55 \"orient → fix → close → compound\") and confirmed by the backing block's Framework row (\"The compound ladder · law:the-compound-ladder\") as curriculum content the student is meant to learn, parallel to TDD/five-whys — not a maintainer-authoring term.",
+      "evidence": "grep -niE 'compendium|forcing function|\\\\bbeat\\\\b|\\\\bmood\\\\b|Connections|surface as noun' on body.txt -> 0 hits, run this session. Closest candidate: prompt 3 (chunk 3) 'Now do it properly, TDD-style' — TDD is a named engineering discipline (backing block names it explicitly as borrowed cultural vocab), ordinary register for AE101 engineer ICs, not repo-internal dialect.",
       "fix_hint": null,
       "blocking": true
     },
@@ -114,7 +114,7 @@
       "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Maintainer accept-note now at L57 (2026-07-09, Antti-directed \"go very lightly on the bold\") attests current config: one handle kept bold (**Tests-first, root-cause-driven.**, L15), blockquote lead **Small fix, small test.** (L18) and widget chrome (Time/What you do/What you build/The point/Optional.) named exempt. This diff's L27 reword carries no bold before or after — unaffected.",
+      "evidence": "Chunk 1 carries two bolded spans on one slide (bullet lead 'Tests-first, root-cause-driven' L15, blockquote lead 'Small fix, small test' L18) and chunk 3 repeats the '**Optional.**' label three times (L33, L37, L41) within one chunk. Both are directly covered by the dated L57 maintainer note ('Emphasis pass 2026-07-09... One handle kept bold: Tests-first, root-cause-driven... Widget chrome (Time:, What you do:, What you build:, The point:, What happened:, Optional. labels) and the blockquote callout untouched, per ... check_slides.md §9'). This is a named accept-note covering exactly this shape, not a fresh violation.",
       "fix_hint": null,
       "blocking": false
     },
@@ -124,7 +124,7 @@
       "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Fresh grep this session, `grep -n 'fix-tests-first' curriculum/trainings/agentic-engineering-101/getting-going.md` → L46 \"[Prove the bug, then ship the fix](exercises/fix-tests-first.md)\", the standard bare-path exercise-include pattern that reaches `.phase--exercise` per module-shape.md, same as every other AE101 exercise reaching buildDeckModel.",
+      "evidence": "Structural check (not a rendered dual-layout diff, since no risk signal was present to warrant one): the whole body is a single continuous exercise flow chunked at ## under what is a normal .phase--exercise file — no phase-less prose section, no prework/supplementary/reference-shaped block that could be dropped per the 2026-07-09 incident shape. The pinned diff (43e6cae1..HEAD) touched only two bullet-word swaps and the maintainer Quality line, no tier marker, divider, or chunk restructuring — no reason to suspect a presence break.",
       "fix_hint": null,
       "blocking": true
     },
@@ -134,7 +134,7 @@
       "rule_lead": "Page geometry dies at the cut; reading order survives.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "`node scripts/check-slide-deixis.js --file curriculum/exercises/fix-tests-first.md` (run this session) → \"OK — 1 files, no page-geometry pointers across the slide cut.\" exit 0.",
+      "evidence": "node scripts/check-slide-deixis.js --report -> 'OK — 59 files, no page-geometry pointers across the slide cut.' (run this session; corpus-wide, includes this file). Manual check: chunk 1 L20 'Drop your bug after the colon' points at the prompt block on the SAME chunk (L22) — same-##-chunk use, explicitly a pass per the rule's own carve-out.",
       "fix_hint": null,
       "blocking": true
     },
@@ -144,7 +144,7 @@
       "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "`node scripts/check-slide-size.js --file curriculum/exercises/fix-tests-first.md` (run this session) → \"files: 1  slides: 5  limits: 210 words / 6 bullets ... oversized: 0 ... every slide is within limits\" exit 0.",
+      "evidence": "node scripts/check-slide-size.js --file curriculum/exercises/fix-tests-first.md --report -> largest slide 'Interrogate the fix for a deeper layer' 149 words / 1 bullet; all 5 slides under 210 words and 6 bullets; 'oversized: 0'; '✓ every slide is within limits' (run this session).",
       "fix_hint": null,
       "blocking": false
     },
@@ -154,7 +154,7 @@
       "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Four headings are imperative/phase-style; one, \"There is always a next plausible answer\" (chunk 4, L43), is the deliberate declarative — maintainer accept-note now at L59 (2026-08-07, Antti-directed) attests it directly, and check_slides.md §15 itself names this exact file/heading as one of only two earned declaratives across 15 AE101 exercise files. Header-truth guard holds: body says \"will always try to find\" (L45), never \"finds\".",
+      "evidence": "Four of five ## headings are imperative/phase-label (Write the failing test..., Read the diff..., Interrogate the fix..., Ship the PR) as an exercise requires. The one declarative, L43 'There is always a next plausible answer', is the file's own documented specimen for this convention (L59 maintainer note: 'a deliberate claim-shaped heading — the one non-imperative heading in this file, and that is the point'), matching the compendium's own calibration note naming this exact file as one of two measured declaratives corpus-wide.",
       "fix_hint": null,
       "blocking": false
     },
@@ -164,7 +164,17 @@
       "rule_lead": "A bullet earns its slot or dies — three classes that read as rigour and carry nothing.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Closest call is the reworded L27 bullet: \"Your own wording matters. No pre-made prompt: the compound step reads this scrollback, so your push-back is what becomes a rule.\" Maintainer's newly-added accept-note (L53, 2026-08-29, \"Carded and kept, then trimmed\") attests this directly against class (b) self-referential design commentary: \"the forward mechanism ... is the wanted motivation for authentic wording, not a leak\" — it states an operational fact (this text is later consumed) that changes what the student does, not mere pedagogy-commentary. L31's closing clause stays inside class (a) — it adds a placement claim (where the discipline shows up), not a doctrine restatement. Chunk 4's L45 bullet is substantive causal content, not a class (c) kicker.",
+      "evidence": "No doctrine restatement, self-referential design commentary, or aphorism kicker found. Closest candidate: chunk 2 L27 'the compound step reads this scrollback, so your push-back is what becomes a rule' reads close to (b) self-referential design commentary (naming a later training mechanism), but L53's dated maintainer note reviews and keeps this exact line as 'the wanted motivation for authentic wording, not a leak' — accepted, not a fresh finding. Chunk 3's closing line L31 'The exchange is where root-cause discipline shows up, not in the fix itself' adds a new interpretive claim rather than restating the L29 header — stays inside.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 17,
+      "rule_lead": "A retitled slide re-earns its bullets against the new header.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "git diff 43e6cae1..HEAD -- curriculum/exercises/fix-tests-first.md, run this session, shows no `##` line changed (only two bullet-word swaps 'Claude'->'the agent' and the maintainer Quality-line update) — no retitle occurred in the diff window under review, and no maintainer provenance note of the '(from <old-file>, header his)' shape appears in the maintainer block.",
       "fix_hint": null,
       "blocking": false
     },
@@ -177,7 +187,7 @@
       "na_reason": "no guess/predict instruction in body — grep -ni 'guess|predict' on body_numbered.txt -> 0 hits, run this session",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "8d1fdc9628464196961b4898e37560b6676eef3f54464ac4f0513e7809c9df40",
+      "carried_from": "1d3f3879c1a9be392a2066ecc079c6aeaca783ae1a95172003f3ad45bbfe5a22",
       "carried_shape": "694d2ba217c073cc"
     },
     {
@@ -189,7 +199,7 @@
       "na_reason": "no ## Phase N:/## N. step headers in file — grep 'Phase |## [0-9]\\\\.' on body_numbered.txt -> 0 hits; confirmed via `node scripts/check-slide-numbering.js --file curriculum/exercises/fix-tests-first.md` -> 'OK — 1 files, Phase/Step numbering consistent.' exit 0, run this session",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "8d1fdc9628464196961b4898e37560b6676eef3f54464ac4f0513e7809c9df40",
+      "carried_from": "1d3f3879c1a9be392a2066ecc079c6aeaca783ae1a95172003f3ad45bbfe5a22",
       "carried_shape": "694d2ba217c073cc"
     },
     {
@@ -201,17 +211,11 @@
       "na_reason": "no in-body markdown links — grep '](' on body_numbered.txt -> 0 hits, run this session",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "8d1fdc9628464196961b4898e37560b6676eef3f54464ac4f0513e7809c9df40",
+      "carried_from": "1d3f3879c1a9be392a2066ecc079c6aeaca783ae1a95172003f3ad45bbfe5a22",
       "carried_shape": "694d2ba217c073cc"
     }
   ],
-  "blocking_findings_count": 0,
   "todos_count": 0,
-  "accept_notes_found": [
-    "L53: Carded and kept, then trimmed (Antti 2026-08-29) — attests the reworded push-back bullet's \"compound step\" mention as wanted motivation, not a leak/pre-announcement; grounds check_slides.md §16(b)",
-    "L57: Emphasis pass (2026-07-09, Antti-directed \"go very lightly on the bold\") — attests bold handle + blockquote callout config against check_slides.md §9",
-    "L59: Declaration slide (2026-08-07, Antti-directed) — attests \"There is always a next plausible answer\" as the deliberate one non-imperative heading, per §15",
-    "L61: Lean-intro trim (2026-08-25, Antti-approved) — TDD-rationale sentence cut from the opening bullet; do not restore"
-  ],
-  "notes": "Diff since pin d065f8bc: L27 reworded (\"No pre-made prompt for the pushback. The compound step reads this session's scrollback...\" → \"No pre-made prompt: the compound step reads this scrollback...\", dropping \"session's\"), plus a new maintainer accept-note (L53) and refreshed Quality line (L63). Body line count and shape unchanged (shape_hash 694d2ba217c073cc matches prior). Whether L27's \"the compound step\" premature-use timing (module Key Concepts vs. Ex4 compound-and-close formally teaching it) is clean under check_writing.md §14 is that judge's call, not mine — flagged here for its attention only; slides-class carve-out (arc-earned spine vocabulary, rule 1) routes this exact shape to writing §14, not to slides rule 1, and I found direct grounding (getting-going.md's own Key Concepts already names the loop's \"compound\" step and \"the scrollback\" before this exercise in include order) that clears it on the merits regardless. Rules 4, 11, 13 are parked N/A by the prefill sidecar (shape hash match) and are not re-derived here; splice with --merge."
+  "blocking_findings_count": 0,
+  "notes": "Rules 4, 11, 13 resolved N/A by shape_hash 694d2ba217c073cc and parked in the prefill sidecar (body-views/ae101--exercise--fix-tests-first.slides.prefill.json) — not re-derived here, merged in via --merge after this file was written. Two maintainer accept-notes did real work in this pass: L53 (compound-step forward mention, rules 1/16) and L57 (emphasis pass — two bolds on one slide + repeated 'Optional.' label, rule 9)."
 }

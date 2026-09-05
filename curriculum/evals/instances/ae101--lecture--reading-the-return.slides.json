@@ -1,7 +1,7 @@
 {
  "class": "slides",
  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/reading-the-return.md",
- "body_sha": "046334b685021e44cb759ec284bfedba6878028cb2a0870109cd01033a2c70fa",
+ "body_sha": "bc80f784b974da55c9f4bfc5b2a036b1dbbfa5155cf9f1511102d53d14341338",
  "shape_hash": "1870b031fbe8c765",
  "verdict": "PASS",
  "training": "ae101",
@@ -34,7 +34,7 @@
    "rule_lead": "Referent resolution under a sequential deck read.",
    "verdict": "PASS",
    "chunks_flagged": [],
-   "evidence": "Checked every pronoun/demonstrative/named-referent across all 4 chunks under a sequential read. Chunk 1 line 5 \"You stepped away with the agent working\": no prior in-file naming, but confirmed live that this file is an in-room M5 opener wired directly after the M4 un-packaged send-off -- `grep -n reading-the-return curriculum/trainings/agentic-engineering-101/learn-from-the-test.md` -> line 36 include link, and `learn-from-the-test.md:8` \"Walk in with your un-packaged session\" / :22 \"You sent off an un-packaged session\" already name the referent in the module's own signposting before this lecture is reached -- clears the module-arc-beats-in-openers/closers carve-out and the module-include-order carve-out. Chunk 2 line 11 \"the same three\" resolves against the chunk's own header (\"Three failure modes...\"), in-chunk. Chunk 2 line 15 \"that window\" resolves against \"the working window\" named twice earlier in the SAME chunk (lines 12, 13). Chunk 3 line 19 \"The un-packaged send-off was the test\" -- same module-signposting carve-out, cross-checked live: `grep -rn \"un-packaged send-off\" curriculum/trainings/agentic-engineering-101/ curriculum/exercises/` returns current hits in `learn-from-the-test.md`, `run-the-first-experiment.md` and `walk-and-send-off.md` -- the beat is alive, not stranded. Chunk 3 line 18 \"This module holds that reflex off\" -- \"module\" is never number-named in-file (the file's own convention, confirmed: `grep -noE 'M[0-9]' curriculum/lectures/reading-the-return.md` -> 0 hits, exit 1, i.e. zero `M[0-9]` above the fence), so this reads as a self-locating deictic (\"this module\"/\"this course\") resolvable from the reader's own situation, portable to whichever module includes the file, not a stranded or positional cross-file callback.",
+   "evidence": "Re-read every pronoun/demonstrative/definite-noun across all 4 chunks against the CURRENT body (body_sha c8915afb...). Chunk 1 line 5 \"You stepped away with the agent working\": confirmed live this session -- `grep -n reading-the-return curriculum/trainings/agentic-engineering-101/learn-from-the-test.md` -> line 37, standalone include; `grep -n \"un-packaged\" learn-from-the-test.md` -> hits at lines 9, 15, 23 (all BEFORE the line-37 include) naming \"un-packaged session\" / \"un-packaged send-off\" in the module's own signposting -- clears the module-include-order carve-out. Chunk 2 line 11 \"the same three\" resolves against the chunk's own header. Chunk 2 line 15 \"that window\" resolves against \"the working window\" named twice earlier in the SAME chunk (lines 12-13); \"the window\"/\"the working window\" and \"the machine\"/\"the LLM\" are ordinary AE101 domain vocabulary for this audience of engineer ICs, not curriculum-coined spine terms needing in-file introduction. Chunk 3 line 19 \"The un-packaged send-off was the test\" -- re-verified live: `grep -rn \"un-packaged send-off\" curriculum/trainings/agentic-engineering-101/ curriculum/exercises/` returns current hits in learn-from-the-test.md and run-the-first-experiment.md -- beat alive. **The one referent the prior instance (body_sha 046334b6..., now superseded) flagged at chunk-3 line 18 -- \"This module holds that reflex off\" -- no longer exists in the current body**: that sentence was cut in commit 9a6d906e, and current line 18 reads \"...reach for the next tool. The failures earn the validation that catches them.\", a self-contained in-sentence resolution (\"them\" = \"the failures\"). No new referent problem introduced by the edit.",
    "fix_hint": null,
    "blocking": true
   },
@@ -44,7 +44,7 @@
    "rule_lead": "Cross-file and positional callbacks.",
    "verdict": "PASS",
    "chunks_flagged": [],
-   "evidence": "grep -inE 'the opening lecture|earlier lecture|the previous (module|lecture|exercise)|prework at the top' curriculum/lectures/reading-the-return.md (lines 1-20) -> 0 hits. Closest candidate: chunk 3 line 19, \"The un-packaged send-off was the test\" -- names a real prior activity by role/title, not by page position (never \"above\", \"in the last module\", \"three slides back\"); clears the navigational-pointer carve-out (name it, don't locate it). No sentence points at another file by relative position.",
+   "evidence": "`sed -n '1,20p' curriculum/lectures/reading-the-return.md | grep -inE 'the opening lecture|earlier lecture|the previous (module|lecture|exercise)|prework at the top'` -> 0 hits, exit 1 (run this session against current body). Closest candidate, chunk 3 line 19 \"The un-packaged send-off was the test\", names a prior activity by role/title, not by page position -- clears the navigational-pointer carve-out. Note: the maintainer block's line 36 was edited this cycle to rename a dissolved-file cross-reference (\"the-loop-has-a-name.md\" -> \"the M6 closer's former recognition callback\"), but that text sits inside the `<!-- maintainer -->` block (line 21+), outside this rule's body scope (lines 1-20) entirely.",
    "fix_hint": null,
    "blocking": true
   },
@@ -54,7 +54,7 @@
    "rule_lead": "Every backward reference points at a beat that exists.",
    "verdict": "PASS",
    "chunks_flagged": [],
-   "evidence": "grep -inE \"the .*(you (did|saw|caught|found|ran|sent))\" curriculum/lectures/reading-the-return.md -> 0 hits: no literal \"the X you did\" construction. The one backward-pointing definite reference present, chunk 3 line 19 \"The un-packaged send-off was the test\", verified live: `grep -rn \"un-packaged send-off|un-packaged session\" curriculum/trainings/agentic-engineering-101/ curriculum/exercises/` returns current hits in `learn-from-the-test.md:8,14,22,40` (the host module) and `run-the-first-experiment.md:114` (the M4 exercise that produces it). The beat is alive in the current exercise set, not stranded by a rewrite.",
+   "evidence": "`sed -n '1,20p' curriculum/lectures/reading-the-return.md | grep -inE \"the .*(you (did|saw|caught|found|ran|sent))\"` -> 0 hits, exit 1 (run this session). The one backward-pointing definite reference, chunk 3 line 19 \"The un-packaged send-off was the test\", re-verified live: `grep -rn \"un-packaged send-off|un-packaged session\" curriculum/trainings/agentic-engineering-101/ curriculum/exercises/` -> current hits in learn-from-the-test.md (host module, lines 9/15/23/42), training-architecture.md, run-the-first-experiment.md (the M4 exercise that produces it), fork-the-worktree.md, walk-and-send-off.md, spot-gaps-build-the-loop.md, diagnose-and-resend.md. The beat is alive across the current module and exercise set, not stranded.",
    "fix_hint": null,
    "blocking": true
   },
@@ -64,7 +64,7 @@
    "rule_lead": "No orphan slides.",
    "verdict": "PASS",
    "chunks_flagged": [],
-   "evidence": "Chunk 0 is title-only (H1, no lede) -- the template's designated title-slide shape, not a wait-state fragment. Chunk 1 carries 3 multi-clause bullets each with its own claim (artefact framing, closing-summary warning, driving question). Chunk 2 carries 5 bullets, three of them the named failure-mode handles plus the Horthy quote bullet. Chunk 3 carries 2 bullets (reflex-off principle, test->learn->encode mapping). None is a single context-dependent fragment of the kind the rule bans.",
+   "evidence": "Chunk 0 is the title-only H1 (the template's designated title slide, not a wait-state fragment). Chunk 1 carries 3 multi-clause bullets, each a distinct claim (artefact framing, closing-summary warning, driving question). Chunk 2 carries 5 bullets: the lens-framing bullet, three named failure-mode definitions, and the rules-file/Horthy-quote bullet. Chunk 3 carries 2 bullets (reflex-to-fix reframe, test->learn->encode arc mapping). None is a single context-dependent fragment the rule bans.",
    "fix_hint": null,
    "blocking": false
   },
@@ -74,7 +74,7 @@
    "rule_lead": "Header self-carries at projection distance.",
    "verdict": "PASS",
    "chunks_flagged": [],
-   "evidence": "Chunk 1 header \"What would have caught this earlier?\", lines 3-8: closest candidate to a mismatch, since the chunk poses the question (bullet 3 restates it verbatim) rather than answering it -- but the header is the file's own stated diagnostic device, not a promise of an answer inside this chunk (backing block's `driving-question` claim, L66: \"the file's whole reason to exist, and deliberately a question rather than a checklist\"), so the chunk's content (raw material for asking the question) matches what the header names. Chunk 2 header \"Three failure modes you'll use to read\", lines 9-15: content delivers exactly three named modes plus a related aside on rules files; header holds. Chunk 3 header \"Diagnose first, fix later\", lines 16-19: bullet 1 delivers \"diagnose [first]\" (holding the fix reflex off), bullet 2's \"encode\" step is the deferred \"fix later\"; header not contradicted.",
+   "evidence": "Chunk 1 header \"What would have caught this earlier?\" (lines 3-8): the chunk poses the question rather than answering it, but the header is the file's own stated diagnostic device -- backing block's `driving-question` claim, current line 63: \"the file's whole reason to exist, and deliberately a question rather than a checklist\" -- so a question-posing chunk under a question header is truthful, not a mismatch. Chunk 2 header \"Three failure modes you'll use to read\" (lines 9-15): content delivers exactly three named modes plus a related rules-file aside; holds. Chunk 3 header \"Diagnose first, fix later\" (lines 16-19): bullet 1 delivers \"diagnose [first]\" (naming and holding off the fix reflex), bullet 2's \"encode\" step is the deferred \"fix later\"; not contradicted.",
    "fix_hint": null,
    "blocking": false
   },
@@ -84,7 +84,7 @@
    "rule_lead": "LLM-cadence caps.",
    "verdict": "PASS",
    "chunks_flagged": [],
-   "evidence": "Closest candidate: chunk 1 line 7, \"Not *did the task succeed*. Not *should I have spec'd it tighter*.\" -- reverse of the banned shape (banned = \"Not X. Not Y. Z.\" ending on an affirmed Z; here the affirmed clause -- the driving question -- comes FIRST and nothing follows the two negations), and it is a pair, not a triple, which the epistrophe sub-item explicitly allows. Re-checked against the diff since pin a197cc46: chunk 3 bullet 2 lost the clause \"This is the learn.\" between the test-clause and the encode-clause, which had been forming a three-part \"X was the test. This is the learn. Z turns...\" cadence -- now reads \"The arc is *test -> learn -> encode*. The un-packaged send-off was the test. The encode turns what the read finds into durable checks.\", a clean pair of concrete mappings with no third parallel leg. grep -inE 'one of the most|most useful|particularly (useful|valuable)' curriculum/lectures/reading-the-return.md -> 0 hits (self-grading superlatives, blocking sub-item). No anaphora/epistrophe triples anywhere in the current body. No number-plus-retraction (no numbers in body). No abstraction-noun stacks (\"the working window\", \"the next likely word\" are the file's own defined mechanism terms). No empty-leg verb triplets.",
+   "evidence": "Ran all sub-item greps this session against `sed -n '1,20p'`: self-grading-superlative pattern (`one of the most|most useful|particularly (useful|valuable)`) -> 0 hits, exit 1. Closest candidate to the banned \"Not X. Not Y. Z.\" shape, chunk 1 line 7 \"Not *did the task succeed*. Not *should I have spec'd it tighter*.\" -- reversed and truncated: the affirmed clause (the driving question) comes FIRST, nothing follows the two negations, and it is a pair not a triple. Chunk 3 line 19 -- re-verified the fix already landed: the prior body carried a three-part cadence (\"...was the test. This is the learn. The encode turns...\"); the current body (this cycle's edit) has dropped the middle clause, leaving a clean pair of concrete mappings (test-referent, encode-referent) with no third parallel leg. No anaphora/epistrophe triples anywhere in the current body. No number-plus-retraction (no bare numbers in body). No abstraction-noun stacks beyond the file's own defined mechanism terms (\"the working window\", \"the next likely word\"). No empty-leg verb triplets.",
    "fix_hint": null,
    "blocking": true
   },
@@ -94,7 +94,7 @@
    "rule_lead": "Internal dialect never lands on a slide.",
    "verdict": "PASS",
    "chunks_flagged": [],
-   "evidence": "grep -inE '\\b(surface|firing|compendium|forcing function|beat|mood|connections)\\b' curriculum/lectures/reading-the-return.md (lines 1-20) -> 0 hits (command run, no output, exit 1). \"artefact\", \"session\", \"read\", \"window\", \"module\" are this file's own plain vocabulary or ordinary engineering/curriculum words for its AE101 engineer-IC audience, not repo-internal maintainer dialect.",
+   "evidence": "`sed -n '1,20p' curriculum/lectures/reading-the-return.md | grep -inE '\\b(surface|firing|compendium|forcing function|beat|mood|connections)\\b'` -> 0 hits, exit 1 (run this session). \"artefact\", \"session\", \"read\", \"window\", \"module\", \"the machine\", \"the LLM\" are ordinary AE101 engineer-IC vocabulary or the file's own defined mechanism terms, not repo-internal maintainer dialect.",
    "fix_hint": null,
    "blocking": true
   },
@@ -104,7 +104,7 @@
    "rule_lead": "Emphasis budget -- bold is for handles, and go very lightly.",
    "verdict": "PASS",
    "chunks_flagged": [],
-   "evidence": "grep -n '\\*\\*' curriculum/lectures/reading-the-return.md (lines 1-20) -> exactly 3 hits, all in chunk 2, all at bullet-lead position: **Goal drift.** (line 12), **Context rot.** (line 13), **Plausible-but-wrong.** (line 14) -- each <=5 words, a true handle. Three named failure-mode handles on one slide fits the rule's law/consolidation-slide exception (one handle per law); the maintainer block's Emphasis-pass accept-note (L31, 2026-07-09, \"go very lightly on the bold\"; this file named as the exemplar) confirms this exact reduction was the deliberate outcome of applying §9. Zero bold in chunks 0, 1, 3.",
+   "evidence": "`sed -n '1,20p' curriculum/lectures/reading-the-return.md | grep -n '\\*\\*'` -> exactly 3 hits, run this session: all in chunk 2, all at bullet-lead position, each <=5 words -- **Goal drift.** (line 12), **Context rot.** (line 13), **Plausible-but-wrong.** (line 14). One consolidation slide naming three laws/handles fits \"a law/consolidation slide may carry one handle per law\"; the maintainer's Emphasis-pass accept-note (current line 31, 2026-07-09, \"go very lightly on the bold\", this file named the exemplar) confirms this exact reduction is the deliberate outcome of applying §9. Zero bold in chunks 0, 1, 3.",
    "fix_hint": null,
    "blocking": false
   },
@@ -114,7 +114,7 @@
    "rule_lead": "Presence precedes content -- verify against the composed deck, not long-read.",
    "verdict": "PASS",
    "chunks_flagged": [],
-   "evidence": "Traced the include chain: `grep -n reading-the-return curriculum/trainings/agentic-engineering-101/learn-from-the-test.md` -> line 36, a standalone-paragraph include link `[Lecture: Reading the return](lectures/reading-the-return.md)`. That include shape is generically wrapped as `.phase--lecture` by `build-workbook.js`'s `postProcessIncludes()`, which matches `site/layouts/slides.js`'s `buildDeckModel` selector (`.phase--lecture, .phase--exercise`) that determines composed-deck membership. No phase-less prose sub-section exists in this file (the whole body sits inside `##` chunks within the single lecture wrapper) for the rule's canonical drop-failure to apply to.",
+   "evidence": "`grep -n reading-the-return curriculum/trainings/agentic-engineering-101/learn-from-the-test.md` -> line 37, a standalone-paragraph include link `[Lecture: Reading the return](lectures/reading-the-return.md)` (re-run this session, unchanged from prior verification). That include shape is wrapped as `.phase--lecture` by `build-workbook.js`'s `postProcessIncludes()`, matching `site/layouts/slides.js`'s `buildDeckModel` selector (`.phase--lecture, .phase--exercise`) that determines composed-deck membership. No phase-less prose sub-section exists in this file -- the whole body sits inside `##` chunks within the single lecture wrapper.",
    "fix_hint": null,
    "blocking": false
   },
@@ -124,7 +124,7 @@
    "rule_lead": "Page geometry dies at the cut; reading order survives.",
    "verdict": "PASS",
    "chunks_flagged": [],
-   "evidence": "Ran `node scripts/check-slide-deixis.js --file curriculum/lectures/reading-the-return.md` -> \"OK — 1 files, no page-geometry pointers across the slide cut.\", exit 0 (re-run this session against the current body_sha, not carried forward). Corroborating manual grep -inE 'below|above|further down|top of this|see below' curriculum/lectures/reading-the-return.md (lines 1-20) -> 0 hits.",
+   "evidence": "Ran `node scripts/check-slide-deixis.js --file curriculum/lectures/reading-the-return.md` this session -> \"OK — 1 files, no page-geometry pointers across the slide cut.\", exit implied 0. Corroborating `sed -n '1,20p' curriculum/lectures/reading-the-return.md | grep -inE 'below|above|further down|top of this|see below'` -> 0 hits, exit 1.",
    "fix_hint": null,
    "blocking": true
   },
@@ -134,7 +134,7 @@
    "rule_lead": "Slide size -- 210 words / 6 bullets, and the cap is machine-checked.",
    "verdict": "PASS",
    "chunks_flagged": [],
-   "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/lectures/reading-the-return.md` (re-run this session) -> \"files: 1  slides: 3  limits: 210 words / 6 bullets\" / \"oversized: 0\" / \"✓ every slide is within limits\", exit 0. Matches the maintainer's Slide-size-guard note (L45) that the deliberate mechanism-doubling in the Goal drift / Plausible-but-wrong bullets stays under cap; do-not-cut per that note, not a candidate finding.",
+   "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/lectures/reading-the-return.md` this session -> \"files: 1  slides: 3  limits: 210 words / 6 bullets\" / \"oversized: 0\" / \"✓ every slide is within limits\". Matches the maintainer's Slide-size-guard note (current line 42) that the deliberate mechanism-doubling in the Goal drift / Plausible-but-wrong bullets stays under cap -- do-not-cut per that note, not a candidate finding.",
    "fix_hint": null,
    "blocking": false
   },
@@ -144,7 +144,7 @@
    "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
    "verdict": "PASS",
    "chunks_flagged": [],
-   "evidence": "Closest candidate: chunk 3 header \"Diagnose first, fix later\", line 16 -- verb-initial, the mood the rule reserves for exercise headers. Reads as a durable maxim rather than a literal instruction, however: it is the closer of `learning-through-contrast.md` merged in per the L25 accept-note (2026-08-25), explicitly attested in this file's own backing block as a `vision`-class claim (`diagnose-first-fix-later`, L72) naming the module's approach, and it functions as the beat where the file stops narrating and names a law that outlives the task -- same register as a proverb (\"Look before you leap\"), not an imperative to the reader. Chunk 2 header \"Three failure modes you'll use to read\" is a catalogue entry naming its subject, an explicit NOT-violation shape. Chunk 1 header \"What would have caught this earlier?\" is the file's own driving diagnostic question, attested deliberate by the backing block's `driving-question` entry (L66) -- flattening it into a claim would degrade the file's own stated design.",
+   "evidence": "Closest candidate: chunk 3 header \"Diagnose first, fix later\" (line 16) -- verb-initial, the grammar rule 15 normally reserves for exercise headers. Reads as a durable maxim rather than a literal instruction here: it is the closer merged in from `learning-through-contrast.md` per the maintainer's line-25 accept-note (2026-08-25), and is explicitly attested in this file's own backing block as a `vision`-class claim -- current line 69: \"`diagnose-first-fix-later` · vision · \\\"Diagnose first, fix later\\\" ← none-owed -- anchors on the closing slide's header\" -- naming it a law that outlives the task, same register as a proverb, not a command to the reader. Chunk 2 header \"Three failure modes you'll use to read\" is a catalogue entry naming its subject, an explicit NOT-violation shape. Chunk 1 header \"What would have caught this earlier?\" is the file's own driving diagnostic question, attested deliberate by the backing block's `driving-question` entry (current line 63) -- flattening it into a claim would degrade the file's own stated design.",
    "fix_hint": null,
    "blocking": false
   },
@@ -152,12 +152,10 @@
    "compendium": "check_slides.md",
    "rule_index": 16,
    "rule_lead": "A bullet earns its slot or dies -- three classes that read as rigour and carry nothing.",
-   "verdict": "REVISE",
-   "chunks_flagged": [
-    3
-   ],
-   "evidence": "Chunk 3 \"Diagnose first, fix later\", line 18: \"This module holds that reflex off.\" -- class (b), self-referential design commentary: the sentence tells the student they are inside a deliberate pedagogical withholding, the same shape as the compendium's own cited example (\"un-packaged first is by design\"). The bullet's real payload survives without it: \"the reflex is to fix it immediately... The failures earn the validation that catches them\" already states the practice and its reason; the middle sentence adds only the meta-frame that the module was built this way on purpose (check_student_facing §33 territory, per this rule's own cross-reference), not new teaching content. Not blocking under the class's own principle: the slide is still fully followable without a fix -- \"this could be tighter,\" not \"I cannot follow this.\" Checked the other three candidate bullets against all three classes and cleared them: chunk 1's closing-summary bullet is maintainer-attested deliberate and observation-grade (L33, 2026-08-07 accept-note), not a doctrine restatement; chunk 2's Goal drift / Plausible-but-wrong mechanism sentences are maintainer-attested deliberate doubling (L45 Slide-size-guard note) that the rule's own §7-sibling discipline protects, not empty repetition; chunk 3's test->learn->encode bullet maps each arc stage to a concrete referent (the un-packaged send-off = test; the encode = durable checks) rather than restating the header, and is in fact the sentence the 2026-08-25-to-HEAD diff already trimmed one restating clause (\"This is the learn.\") out of -- confirming the direction of this finding rather than contradicting it.",
-   "fix_hint": "Cut the middle sentence and let the reflex description and its payoff carry the point: \"...the reflex is to fix it immediately: edit the prompt, add a constraint, reach for the next tool. The failures earn the validation that catches them.\"",
+   "verdict": "PASS",
+   "chunks_flagged": [],
+   "evidence": "Re-scanned every bullet in all 4 chunks against the current body for the three low-value classes (doctrine restatement / self-referential design commentary / aphorism kicker). **The prior instance (body_sha 046334b6..., now superseded) filed a REVISE here against chunk-3 line 18: \"This module holds that reflex off.\"** -- classed as self-referential design commentary, the same shape as the compendium's own cited example. That exact sentence is gone from the current body: it was cut in commit 9a6d906e (\"The deck settles: cuts and swaps land, additions die...\"), and line 18 now reads \"...edit the prompt, add a constraint, reach for the next tool. The failures earn the validation that catches them.\" -- the reflex description and its payoff, no meta-frame sentence in between. Re-checked the remaining bullets: chunk 1's closing-summary bullet is maintainer-attested deliberate/observation-grade (current line 33 accept-note); chunk 2's Goal-drift/Plausible-but-wrong mechanism sentences are maintainer-attested deliberate doubling (current line 42 Slide-size-guard note), not empty repetition, and are the same rule's own protected shape; chunk 3's test->learn->encode bullet (line 19) maps each arc stage to a concrete referent (the un-packaged send-off = test; the encode = durable checks) rather than restating the header, and is itself the sentence this cycle's edit already trimmed one restating clause (\"This is the learn.\") out of. No bullet in the current body falls into any of the three classes.",
+   "fix_hint": null,
    "blocking": false
   },
   {
@@ -168,7 +166,7 @@
    "evidence": "grep -inE 'guess|predict' over body lines 1-20 -> 0 hits (command run, no output, exit 1). No guess-before-reveal construction anywhere in body; the file has no live-demo beat for this rule to check.",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "ac496c06dcab1f2855c005164938037cd070ec61cd2e3d8c1ca00ff4bb1380e9",
+   "carried_from": "046334b685021e44cb759ec284bfedba6878028cb2a0870109cd01033a2c70fa",
    "carried_shape": "1870b031fbe8c765"
   },
   {
@@ -179,7 +177,7 @@
    "evidence": "grep -inE '^## (Phase [0-9]|[0-9]+\\.)' over body lines 1-20 -> 0 hits; the file's three `##` headers are all topic labels, not `Phase N`/step-numbered headers. Ran `node scripts/check-slide-numbering.js` -> \"OK — 60 files, Phase/Step numbering consistent.\", exit 0; this file is inside that clean set and has no numbered-ordinal content for the rule to police.",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "ac496c06dcab1f2855c005164938037cd070ec61cd2e3d8c1ca00ff4bb1380e9",
+   "carried_from": "046334b685021e44cb759ec284bfedba6878028cb2a0870109cd01033a2c70fa",
    "carried_shape": "1870b031fbe8c765"
   },
   {
@@ -190,10 +188,10 @@
    "evidence": "grep -coE '\\[[^]]+\\]\\([^)]+\\)' over body lines 1-20 -> 0 (command run, output \"0\"). Zero markdown links of any kind in body -- nothing to review under this non-gating surface.",
    "fix_hint": "",
    "blocking": false,
-   "carried_from": "ac496c06dcab1f2855c005164938037cd070ec61cd2e3d8c1ca00ff4bb1380e9",
+   "carried_from": "046334b685021e44cb759ec284bfedba6878028cb2a0870109cd01033a2c70fa",
    "carried_shape": "1870b031fbe8c765"
   }
  ],
  "blocking_findings_count": 0,
- "todos_count": 1
+ "todos_count": 0
 }

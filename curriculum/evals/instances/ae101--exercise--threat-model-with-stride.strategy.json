@@ -1,83 +1,99 @@
 {
   "class": "strategy",
+  "training": "ae101",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/threat-model-with-stride.md",
   "verdict": "PASS",
-  "training": "ae101",
-  "strategy_doc_section_loaded": "content-strategy-agentic-engineering-101.md — § M3 in detail: earn the trust (Q+S), Exercise 2 paragraph + surrounding rationale (S-first, subagents-deliberately, curated-then-authored, no-menu-shopping); § Mood arc; § Recurring themes 1–6; § M4 in detail (cross-checked ADR forward-reference in M4's walk-what-you've-built step). File carries no ## Big Idea / Key Concepts / What You'll Learn heading of its own (exercise, not module file, per curriculum/CLAUDE.md), so those judgments are marked N/A against this file with the module-level home noted for traceability.",
+  "body_sha": "7c63b5ec747194e601dae7e113a1626c18023e57b85653ab8bf77b8a8432d04f",
+  "shape_hash": "04c8bbd89721df08",
   "rules_evaluated": [
     {
       "compendium": "check_strategy_tie_in.md",
-      "rule_index": null, "judge_owned": true,
-      "rule_lead": "Big Idea match (judge-owned criterion, not a numbered compendium rule)",
-      "verdict": "N/A",
-      "evidence": "File has no ## Big Idea heading — Big Idea is a module-file artifact per curriculum/CLAUDE.md ('Module files: thin: metadata + Bloom LOs + ordered refs'). Checked for drift anyway against the module's Big Idea shape (two curated skills do the security work, one authored skill does the quality work): this exercise is the second curated-skill move, and its framing ('Invoke the curated STRIDE skill... you pick one threat worth hardening against, write the decision as an ADR... The ADR is the artifact your CISO would actually read') tracks the strategy doc's own Ex2 description ('the skill does the breadth... you make one call... write the decision as an ADR in the repo's convention') closely. No drift found.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_strategy_tie_in.md",
       "rule_index": 1,
-      "rule_lead": "Mood contract named",
+      "rule_lead": "Mood contract named.",
       "verdict": "PASS",
-      "evidence": "Maintainer Meta block states 'Mood target: earned trust, deepening' with a named watch-for ('compliance-feeling') and diagnostic ('ADR reads like a checklist item'), matching the strategy doc's Mood arc M3 row. Body actively resists the compliance-feeling risk rather than merely naming it: 'The Decision section should read like one engineer explaining a call to another... If it reads like it was written for a compliance reviewer rather than a future engineer, push back, then save it.' Correctly scoped as the deepening middle beat of a three-exercise arc, handing forward to Ex3 rather than resolving early.",
+      "evidence": "Strategy doc M3 detail names the module mood as 'earned trust' (mood arc: '...grounded competence → earned trust → curious readiness...'), and the maintainer Meta block (L114) states 'Mood target: earned trust, deepening. Student leaves with a real call made under named pressure.' The exercise honours rather than resolves it: it closes (L87-89) on 'You made one call and wrote the ADR, and the decision shipped to the repo... The next exercise authors a test-strategy skill and invokes it on this feature, which is now security-tested.' One sentence: the student leaves having made one defensible, recorded security call under real stakes (earned trust, deepening, not yet closed), which sets up Ex3's quality-authoring beat as the next trust-earning step on the same feature.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 2,
-      "rule_lead": "Epistemic mood ≠ punitive mood",
+      "rule_lead": "Epistemic mood ≠ punitive mood.",
       "verdict": "N/A",
-      "evidence": "Rule's trigger condition is explicit ('When module's mood is \"unease\"'). M3's mood, per both the strategy doc's mood arc and this file's own Meta block, is 'earned trust,' not 'unease' — the rule's diagnostic target doesn't fire here. Checked anyway for punitive flavor: none found. 'Which one keeps you awake — or keeps your staff engineer awake on your behalf? That's the one' frames stakes as professional, not having-done-wrong; 'Student argues with a threat the skill surfaced because they'd already thought about it. Good' rewards prior judgement rather than correcting it.",
+      "evidence": null,
+      "na_reason": "M3's named mood is 'earned trust' (strategy doc mood arc), never 'unease' — the rule's triggering condition doesn't fire here, and a read of the body (e.g. L44-47, L63) confirms no shame-toned language regardless.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 3,
-      "rule_lead": "Lead with discipline, not failure mode",
+      "rule_lead": "Lead with discipline, not failure mode.",
       "verdict": "PASS",
-      "evidence": "Title: 'Pick one threat, record the decision' — positive, decision-led, not a failure word. 'The point' leads with the discipline ('Threat modeling is only useful if it produces a decision... STRIDE's value is that it gives you a structured surface to reject most threats against... so the one you decide to harden is defensible'). STRIDE's own taxonomy words (Spoofing, Tampering, etc.) appear only as Phase 1 domain content, not as the exercise's chosen strategic framing device or section title.",
+      "evidence": "Title (L1) 'Pick one threat, record the decision' and The point (L11) 'STRIDE's value is rejection, not enumeration' both lead with the discipline (deciding, rejecting) rather than a failure word. 'STRIDE' itself stays failure-shaped as a named canonical framework handle, which the carve-out in this rule explicitly permits.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 4,
-      "rule_lead": "Strategy-fidelity check (cross-module sequencing honored, no front-run)",
+      "rule_lead": "Strategy-fidelity check.",
       "verdict": "PASS",
-      "evidence": "Exercise shape matches the strategy doc's Ex2 description point for point, including the ADR-home framing ('sponsor-stated home; default docs/adr/NNNN-slug.md' — verbatim in both). 'What this sets up' hands off correctly to Ex3 ('the hardening decision becomes a test case in the test strategy'), matching the strategy doc's Ex3 rationale ('Abuse cases STRIDE surfaced become test cases'). The M4 forward reference ('Module 4 will tell Claude exactly which artifacts to read at the start of the long-running run, and that explicit list is the lesson') names that M4 owns explicit artifact-loading without teaching M4's mechanics or framework name — forward-arc signalling (carve-out), not front-running. Cross-checked against the strategy doc's current M4 detail ('Claude audits... the root CLAUDE.md + memory files + ADRs + the M3 test-strategy skill + wired connectors against the task') — consistent, ADRs are indeed part of M4's read-list.",
+      "evidence": "Strategy doc M3 detail: 'The ADR's home is the repo's own convention with a stated default — not a sponsor-stated home. AE101 has no sponsor pre-engagement contract; that input was removed 2026-08-23.' The file's Phase 3 body (L53) and maintainer Watch-fors/Plug-points (L127, L131) already say 'your repo's convention' / 'the repo's ADR home' with no sponsor language — confirmed against `git diff 1c765f2..HEAD`, which shows the prior 'Sponsor-stated ADR home' wording was replaced in this file's own history, consistent with the doc's directive (matches MEMORY.md feedback_no_sponsor_prework_contract.md). Doc also states 'The framework picks the threat for you if you have named the worst case right, so there is no menu-shopping' — matches Phase 2 (L36) 'name the worst realistic case first, and the hardening decision is usually obvious from there,' and the maintainer P2-everything-is-high push-back (L119). No front-running found: the auto-load line (L78-79) was trimmed by the 2026-08-25 lean pass from a version that named 'Module 4' explicitly to a generic 'naming exactly what to read at the start of a long-running session' — reduces, not increases, front-run risk relative to the pinned diff.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 5,
-      "rule_lead": "Strategic themes recur (module-specific instances, ≥2–3, per the six-theme AE101 list)",
+      "rule_lead": "Strategic themes recur in Key Concepts.",
       "verdict": "N/A",
-      "evidence": "Rule binds explicitly to a module's ## Key Concepts section ('each module's Key Concepts section... must surface module-specific instance of ≥2-3 themes'). Full heading scan of this file confirms no ## Key Concepts heading — that section is assembled at module level from the M3 exercises collectively, not authored per-exercise. Noting for traceability only, this exercise's language does feed candidate theme-instances upward: capture-your-world ('The agent proposes the incident story; you judge whether it fits... your read of your own codebase decides whether it's real'); non-agentic-default ('STRIDE is a tool, not the only lens... say so in the Alternatives considered section... You decide'); mirror/self-aware ('Ask Claude whether this ADR rides into future sessions automatically... Claude's answer: no'). The rule's formal object (the Key Concepts heading) is not owned by this file.",
+      "evidence": null,
+      "na_reason": "no '## Key Concepts' heading — this is an exercise file, not a module file (grep confirms zero hits).",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 6,
-      "rule_lead": "Key Concepts shape — theme breadcrumbs, not standalone section",
+      "rule_lead": "Key Concepts shape — theme breadcrumbs, not standalone section.",
       "verdict": "N/A",
-      "evidence": "File has no ## Key Concepts heading (confirmed by full heading scan). Key Concepts is a module-level, student-facing section assembled from all M3 exercises, not per-exercise. Nothing on this file for the breadcrumb-formatting/gate judgment to bind to.",
+      "evidence": null,
+      "na_reason": "no Key Concepts section on this exercise file; re-read at current wording per the drift instruction, still gated on §5's signal which is absent here.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 7,
-      "rule_lead": "What You'll Learn shape — capability register, not syllabus",
+      "rule_lead": "What You'll Learn shape — capability register, not syllabus.",
       "verdict": "N/A",
-      "evidence": "File has no ## What You'll Learn heading (confirmed by full heading scan). What You'll Learn lives at the module level; the capability this exercise instantiates is the module's STRIDE/ADR bullet. Nothing on this exercise file itself for the verb-lead/register/apparatus-failure-mode judgment to bind to.",
+      "evidence": null,
+      "na_reason": "no '## What You'll Learn' section — exercise file, not the module file that carries it; re-read at current wording per the drift instruction, still N/A on shape grounds.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 8,
+      "rule_lead": "Strategy doc carries strategy, not structure.",
+      "verdict": "PASS",
+      "evidence": "Doc's M3 section (content-strategy-agentic-engineering-101.md L322-355) states only spirit/why/exclusions for this exercise — 'why S-first,' 'the framework picks the threat for you,' 'not a sponsor-stated home,' 'the supply-chain stunt is M3's most consequential design decision' — and does not restate this file's section names, phase minute-splits, or prompt inventory. No rotted inventory found: the doc names no phase times, prompt count, or heading list for this exercise that could drift out of sync with the body.",
       "fix_hint": null,
       "blocking": false
     }
   ],
+  "todos_count": 0,
   "blocking_findings_count": 0,
-  "todos_count": 0
+  "drift_rules_reread": [
+    "strategy_tie_in §6 — re-fetched current wording via rule.js; N/A stands, file has no Key Concepts section to apply the breadcrumb-shape rule to",
+    "strategy_tie_in §7 — re-fetched current wording via rule.js; N/A stands, file has no What You'll Learn section to apply the capability-register rule to"
+  ],
+  "accept_notes_found": [
+    "L93 Lean pass (2026-08-25) — cuts, do not restore",
+    "L97 Emphasis pass (2026-07-09) — de-bold, widget chrome untouched",
+    "L101-105 M3 supply-chain easter egg — deliberate no-lead-in, do not spoil/fix",
+    "L107 Save-then-diff (2026-08-26) — post-action reporting order, do not add pre-save gate",
+    "L109-110 Quality line — compendium-audited 2026-09-02"
+  ]
 }

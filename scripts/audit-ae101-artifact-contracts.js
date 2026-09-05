@@ -212,13 +212,6 @@ const DETECTORS = [
     trainings: ['agentic-engineering-101'],
   },
   {
-    id: 'pre-engagement-contract',
-    label: 'Pre-engagement contract',
-    regex: /pre-engagement-contract\.md|pre-engagement contract|sponsor-stated homes?/gi,
-    requiresContract: true,
-    trainings: ['agentic-engineering-101'],
-  },
-  {
     id: 'memory',
     label: 'Memory / knowledge home',
     regex: /\.claude\/memory\/|three-block memory|business-rules home|memory pages?/gi,

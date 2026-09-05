@@ -122,7 +122,7 @@ These are the non-obvious rules the system enforces:
 4. **Composition over inheritance.** Skills don't extend or wrap each other. They invoke.
 5. **The loop is re-invocation, not internal recursion.** When a skill stops on a failure, the user fixes and re-invokes. Internal auto-fix loops are tempting but risky: review feedback is interpretive; auto-applying it can regress correct code.
 6. **Fresh sub-agents replace `/clear`.** When a step needs unbiased context (review, audit), spawn a sub-agent rather than asking the user to clear. Same property, no human hand-off.
-7. **CLAUDE.md is half the system.** Half the stacking lives in predicate-dispatch rules in CLAUDE.md, not inside the skills. Skills are handlers; CLAUDE.md is the dispatcher.
+7. **CLAUDE.md is half the system.** Half the stacking lives in predicate-dispatch rules in the project's `./CLAUDE.md`, not inside the skills. Skills are handlers; `./CLAUDE.md` is the dispatcher.
 
 ---
 
@@ -173,10 +173,16 @@ The answer is often "leaf today, route later" or "leaf today, hand-off when the 
 
 <!-- maintainer -->
 
-**Quality:** compendium-audited 2026-08-29 (writing@4a722813 story@e11bbeb4 technical@8cc00874 pedagogy@b55cd28b strategy@c7e8f1e4 slides@0cea7581)
-- judges @4a722813: writing PASS, story PASS, technical PASS, behavior N/A (no student-copied prompt blocks; the only fence is a SKILL.md frontmatter illustration), pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-09-05 (writing@324b81d7 story@324b81d7 technical@324b81d7 pedagogy@b55cd28b strategy@324b81d7 slides@08946dd8)
+- judges @08946dd8: writing PASS (2 todos see instances/ae101--supplementary--skill-stacking.writing.json), story PASS, technical PASS, behavior N/A (no student-copied prompt blocks; the only fence is a SKILL.md frontmatter illustration), pedagogy PASS, strategy PASS, slides PASS (1 todo see instances/ae101--supplementary--skill-stacking.slides.json)
 
-**Runtime fork collapsed 2026-08-19.** `## Map your own kit` used to branch on whether the reader had done M6, and the module branch opened *"You shipped a second skill in M6."* The 2026-08-01 M6 cut removed the in-module second-skill build: M6's close now produces a handoff prompt the student runs later to author skills, so no skill ships inside the module (see `spot-gaps-build-the-loop.md` Artefact contracts). The surviving wording is true for every reader, M6 or not, because an M6 student has still written a skill back at M3. Do not restore the fork without an M6-produced skill to point at.
+**`## Map your own kit` is written for one reader, M6 or not (2026-08-19).** The wording holds either way because an M6 student has written a skill back at M3. M6's close produces a handoff prompt the student runs later to author skills, so a module-conditional branch has no M6-produced skill to point at (see `spot-gaps-build-the-loop.md` Artefact contracts). Do not add one until there is.
+
+**Slide size accepted:** The three-layer model — a supplementary never reaches the composed Slides deck (`check_slides.md` §10), so the 210w/6-bullet cap has no projected page to be a claim about on this file. The three layers are one argument and the `### Layer` seams are its joints; three separate `##` slides would break the model into three unrelated pages on the only layout this file has.
+
+**Slide size accepted:** Skill catalog by phase — nineteen one-line rows are the catalog. It is scanned for a skill name, and a PLAN/BUILD vs VERIFY/SHIP/OPS split cuts the lifecycle the section exists to show whole. Same non-projection ground as above.
+
+**Slide size accepted:** Design principles — seven numbered principles, one over the bullet cap, on a page that never projects. Each names a distinct rule the stack enforces and each is stated once; the list is the section.
 
 **Skill frontmatter is quoted from the shipped docs, not from memory.** The field is `user-invocable` (hyphenated), it defaults to `true`, and it is set `false` to hide a skill from the `/` menu, so the useful example is the negative one. `allowed-tools` pre-approves a tool set for the turn and does NOT restrict access; `disallowed-tools` is the restricting field. Re-verify against code.claude.com/docs/en/skills before editing, never against this note.
 
@@ -190,10 +196,10 @@ Claims
 - `four-composition-mechanisms-are-the-transferable-part` · vision · "The four composition mechanisms this page names are the move." ← none-owed
 
 Sources
-- dino-stack `[checked:2026-07-05 result:ATTESTED due:none]` attested:maintainer 2026-07-05 read the in-repo skill files and the `/ship` orchestrator directly — [maintainer-attested] One engineer's in-repo skill stack, read directly: the skill files, their cross-references, and the `/ship` orchestrator. **`/ship` is Dino's own skill, NOT a Claude Code built-in** — the lecture that points here keeps its orchestrator generic for exactly this reason, and any edit that reads `/ship` as a product feature is wrong. First-hand reading of a real kit, so no URL is owed and no date will stale it. **The page's own framing is its best guard:** it tells the reader this is one stack on one codebase, which is the correct evidence claim for a sample of one. fallback: none; the worked example is the evidence and its scope is stated in the first line.
+- dino-stack `[checked:2026-07-05 result:ATTESTED due:none]` attested:maintainer 2026-07-05 read the in-repo skill files and the `/ship` orchestrator directly — [maintainer-attested] One engineer's in-repo skill stack, read directly: the skill files, their cross-references, and the `/ship` orchestrator. **`/ship` is Dino's own skill, NOT a Claude Code built-in** — the lecture's Dino figure draws `/ship` as this kit's orchestrator; the footprint chart keeps *the pilot* generic, and any edit that reads `/ship` as a product feature is wrong. First-hand reading of a real kit, so no URL is owed and no date will stale it. **The page's own framing is its best guard:** it tells the reader this is one stack on one codebase, which is the correct evidence claim for a sample of one. fallback: none; the worked example is the evidence and its scope is stated in the first line.
 
 Frameworks
-- Composition mechanisms — explicit load, orchestrator, routing, hand-off · [borrow:none] · law:none · ← dino-stack — the four names the lecture teaches; this page is where they are grounded in a real kit
+- Composition mechanisms — explicit load, orchestrator, routing, hand-off · [borrow:none] · law:none · ← dino-stack — the four names; the lecture draws the kit and this page names the mechanisms
 - Orchestrator / leaf · [borrow:distributed systems] · law:none · ← dino-stack
 - The compound ladder · [borrow:none] · law:the-compound-ladder · ← none — a stack is what the ladder's top rung looks like once it exists
 

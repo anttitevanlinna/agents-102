@@ -6,7 +6,7 @@ Flat lookup. How to wire your agent to a ticket tracker (and other outside-the-r
 
 ## Three paths to a work-app action
 
-Three ways an action becomes callable in a Claude Code session:
+An action becomes callable in a Claude Code session:
 
 1. **Path 1, connector inheritance.** A connector added at [claude.ai/customize/connectors](https://claude.ai/customize/connectors) is automatically available when the CLI is logged in to the same account. Best path for Jira and Linear.
 2. **Path 2, `claude mcp add` from the command line.** Install an MCP server directly. Covers connectors not in the Claude.ai directory, project-scoped servers (`.mcp.json` in the repo), and local stdio MCPs.
@@ -148,8 +148,10 @@ Bump the **Last verified** date at the top. Note what changed in the commit mess
 - `[checked:2026-07-26 result:OK due:cohort]` https://cli.github.com — [capability] `gh` CLI homepage, confirms the tool and its scope. fallback: none needed, stable tool identity.
 - `[checked:2026-07-26 result:OK due:cohort]` https://composio.dev/ — [third-party bridge docs] Composio Jira MCP bridge: homepage live; the `/content/jira-mcp-server` deep link that 404'd on 2026-05-25 now resolves (200, "How to connect Jira MCP and Claude Code..."). fallback: link the homepage, not the deep link, if it rots again.
 
+**Plugin-scope precedence carries no stamp and is owed a live probe.** § *Plugins and marketplaces* claims plugin-provided MCP servers sit above Claude.ai connectors and below the user / project / local-CLI scopes, so a Path 2 install wins a URL collision; the section's `plugins-reference` link is all that backs it. `check_platform_and_boundaries.md` §5a owns this shape — settings precedence is one of its named binary behaviours — and prescribes the marker over a stamp nobody ran: probe with a name-colliding plugin plus a manual `claude mcp add` at the next cohort re-verify, then stamp what the probe returns. §38 does not reach it — no *X against Y* retrieval metaphor, no out-of-stage lifecycle noun, no unsourced cadence, and this is present-tense install mechanics rather than a forward-looking automation beat.
+
 **Why a reference file and not inline in the exercise:**
 Claude Code's MCP surface moves. Atlassian deprecates endpoints. New connectors land monthly. If the exercise body carries install specifics, every cohort delivery ships against stale instructions within a quarter. The reference file is the single point of update; exercises point at it; students get current instructions without editorial churn.
 
-**Quality:** compendium-audited 2026-08-29 (writing@4a722813 story@e11bbeb4 technical@8cc00874 behavior@b3143a4 pedagogy@b55cd28b strategy@b3143a4 slides@0cea7581)
-- judges @4a722813: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-09-05 (writing@324b81d7 story@324b81d7 technical@08946dd8 behavior@b3143a4 pedagogy@b55cd28b strategy@324b81d7 slides@08946dd8)
+- judges @08946dd8: writing PASS (1 todo see instances/ae101--reference--mcp-and-connectors.writing.json), story PASS, technical PASS (2 todos see instances/ae101--reference--mcp-and-connectors.technical.json), behavior PASS, pedagogy PASS, strategy PASS, slides PASS

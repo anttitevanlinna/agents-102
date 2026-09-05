@@ -214,7 +214,7 @@ Conversation has a rhythm. The default rhythm between human and agent is form-fi
 
 ---
 
-## Shape the interaction: pacing the questions
+## Shape the interaction: pacing and pressure
 
 ### Batched, not dumped
 
@@ -342,7 +342,7 @@ Example: `ae101-m4-take-task-end-to-end`, `ae101-m5-rerun-packaged`.
 ### The grill-before-save
 *Iteration lock-in + batched-not-dumped + push-back invitation.*
 
-Fires when an artifact needs cross-examination before it persists. *Don't touch the file until I say 'lock it in.' Ask three questions at a time. Push back when my answer is generic.* The lock-in protects the file. The batching keeps the dialog efficient. The push-back instruction tells the agent to drop the niceness tax.
+Fires when an artifact needs cross-examination before it persists. *Don't touch the file until I say 'lock it in.' Ask three questions at a time. Push back when my answer is generic.* The lock-in protects the file. The batching keeps the dialog efficient. The push-back instruction tells the agent to drop the niceness tax. Reach for it where a gap has already cost you a re-run, not by default: the extra round of questions is certain, the saving is not.
 
 Example: `push-back-on-the-plan-2`, `diagnose-and-resend-6`.
 
@@ -386,5 +386,5 @@ A well-shaped prompt has three moves doing the heavy lifting and a handful of ot
 - AE101 prompts surveyed: all M1–M6 module-body + AE101-referenced exercises (`ae101-m*`, plus `push-back-on-the-plan`, `compound-and-close`, `walk-and-send-off`, `diagnose-and-resend`, `orient-and-introspect`, `spot-gaps-build-the-loop`, `author-test-strategy-skill`, `map-the-access-surface`, `threat-model-with-stride`, `open-the-side-quest`, `fix-tests-first`, `extract-the-task-shaping-rule`).
 - Agents 101 prompts surveyed: signal-rich sample (`three-minds-one-synthesis`, `three-retrievers-one-curator`, `self-consistency-after-scoreboard`, `hallucination-bakeoff`, `eval-loop`, `compounding`, `audit-your-agent`, `extend-your-system`, `debugging-stuck-agents`, `author-security-skill`, `build-your-challenge-memory`).
 
-**Quality:** compendium-audited 2026-08-29 (writing@4a722813 story@e11bbeb4 technical@8cc00874 behavior@28a4abc5 pedagogy@1abb84c6 strategy@28a4abc5 slides@e11bbeb4)
-- judges @4a722813: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-09-05 (writing@08946dd8 story@08946dd8 technical@08946dd8 behavior@28a4abc5 pedagogy@1abb84c6 strategy@08946dd8 slides@08946dd8)
+- judges @08946dd8: writing PASS, story PASS (1 todo see instances/ae101--reference--prompt-anatomy.story.json), technical PASS (verify-refuted), behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS (verify-refuted, 1 todo see instances/ae101--reference--prompt-anatomy.slides.json)

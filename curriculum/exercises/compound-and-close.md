@@ -17,7 +17,7 @@ This file is a starter. Everyone sees how this will bloat almost immediately.
 ## Write your rules file from the session
 
 - Claude reviews the whole scrollback in one shot and drafts your rules from how you actually worked.
-- You are not drafting from a blank page. The agent reads the session for you.
+- You are not drafting from a blank page.
 - The tracker conventions count as evidence too. The field rules you read off your own ticket are in this scrollback, and this is where they land on disk.
 
 > **Long session, long read.** If the review stalls or runs past a couple of minutes, interrupt with `Esc`, narrow to the orient and introspect phases first, and say `continue`. It fails the other way too: a summary that arrives fast and reads clean has usually covered the last few turns and skipped the rest. If nothing in it comes from the early part of the session, a `"there's more here"`-prompt buys another pass.
@@ -28,7 +28,7 @@ This file is a starter. Everyone sees how this will bloat almost immediately.
 ## Push back where the summary misreads
 
 - Read Claude's summary. Quote the specific session moment back at Claude.
-- The rules file is yours now. Born from the session, evolved over time.
+- The rules file is yours now.
 
 ## Keep or revert the `.gitignore` edit
 
@@ -72,15 +72,15 @@ Claims
 - `session-is-the-evidence` · vision · "the session is the evidence" ← none-owed
 - `no-three-question-retro` · vision · "No retro questionnaire" ← none-owed
 - `compound-definition-plain` · borrowed · "make the next one easier with what this one taught" ← klaassen-definitive-guide — plain-words paraphrase of the core philosophy. The Compound-step lineage is not anchored here; it sits in Claude's own summary, per the Frameworks note below. Wording per `vocabulary.md` § compound engineering.
-- `not-drafting-from-a-blank-page` · vision · "You are not drafting from a blank page. The agent reads the session for you." ← none-owed
+- `not-drafting-from-a-blank-page` · vision · "You are not drafting from a blank page." ← none-owed
 - `heads-up-before-close-flushes-wip` · detail · "A heads-up that you are about to compact or end the session flushes out work in progress." ← maintainer-attested-flush
 - `quote-the-moment-back` · vision · "Quote the specific session moment back at Claude." ← none-owed
-- `rules-file-is-yours-now` · vision · "Born from the session, evolved over time." ← none-owed
+- `rules-file-is-yours-now` · vision · "The rules file is yours now." ← none-owed
 - `gitignore-edit-is-yours-to-keep` · vision · "Keep or revert the `.gitignore` edit" ← none-owed
 
 Sources
 - maintainer-attested-flush `[checked:2026-08-12 result:ATTESTED due:none]` (no URL — maintainer's own practice) — [house canonical] Telling a session you are about to compact or close it prompts the agent to write out work it has been holding but has not yet committed to disk. Antti's observed working practice, offered as a move rather than a documented platform guarantee, so the body says *flushes out* and never *always*. `due:none` because an attestation does not expire; it is superseded only by the maintainer's own revision. fallback: cut the bullet, the sweep prompt beneath it already does the second pass.
-- klaassen-definitive-guide `[checked:2026-08-23 result:OK due:2026-08-09]` https://every.to/source-code/compound-engineering-the-definitive-guide — [practitioner direct, vendor venue] Klaassen. Verified live 2026-08-23: "The core philosophy of compound engineering is that each unit of engineering work should make subsequent units easier—not harder." The line 11 paraphrase anchors here; wording per `vocabulary.md` § compound engineering. fallback: "make the next one easier with what this one taught" stands unattributed as the training's own phrasing.
+- klaassen-definitive-guide `[checked:2026-08-23 result:OK due:none]` https://every.to/source-code/compound-engineering-the-definitive-guide — [practitioner direct, vendor venue] Klaassen. Verified live 2026-08-23: "The core philosophy of compound engineering is that each unit of engineering work should make subsequent units easier—not harder." The line 11 paraphrase anchors here; wording per `vocabulary.md` § compound engineering. fallback: "make the next one easier with what this one taught" stands unattributed as the training's own phrasing.
 - klaassen-expanded-loop `[checked:2026-07-31 result:OK due:2026-11-29]` https://every.to/p/compound-engineering-gets-an-upgrade — [practitioner direct, vendor venue] Klaassen, 29 May 2026. **The current loop, and the one the body prints.** Verbatim sequence: *"Ideate → brainstorm → plan → work → review → polish → compound → repeat"* — seven named stages plus a cyclical repeat, putting **compound seventh and `work` fourth**. His stated reason is that the middle became reliable (*"the work phase has become boring—in the best way"*), so the new stages restore human judgement at both ends; the sandwich framing is credited to Trevin Chow (*"AI is the stuff in the middle. Humans are the bread on either end"*), which is the same idea as the *Bread in the AI Sandwich* video already pre-read at M5. Presented as evolution under the same name, not retraction. Klaassen's own prose says *"from four steps to eight"*, which only reconciles if `repeat` counts as a stage in the new framing and not the old — **this stamp holds to the printed arrow-sequence, not to his count, and so does the body.** Still current as of *How I Polish Software That Agents Built* (https://every.to/source-code/how-i-polish-software-that-agents-built, 13 Jul 2026), which reuses the stage names and introduces no new one. **Re-read the sequence before a cohort: it has moved once and the body now prints it in full, so a second expansion dates the page rather than a footnote.** fallback: drop the sequence and name only the compound step, which is what the corpus does everywhere the shape is not the lesson.
 - klaassen-compound-run `[checked:2026-07-30 result:CAVEAT due:2026-06-11]` https://every.to/source-code/compound-engineering-how-every-codes-with-agents — [practitioner direct, vendor venue] Shipper & Klaassen (pub 2025-12-11; due = pub+6mo). **The origin, kept for the division of labour rather than for the count.** In the source Plan and Work belong to the agents while Review and Compound belong to the engineer, which is this exercise's move exactly. The four step names live on this page and not on the Definitive Guide. CAVEAT is source-level: Dec 2025 sits outside the 6-month window and the page's four-step form was superseded on 2026-05-29 — cite as origin, never as the current form. The body prints the 2026-05-29 sequence and cites the expansion first; all four names here survive inside it. Single-practitioner-originated with early independent echoes: roughly L1–L2, not converged community vocabulary. kb:platform-watch/coding-agents/runs/2026-04-21-klaasen-compounding-engineering.md fallback: cite for the agent/engineer split only.
 

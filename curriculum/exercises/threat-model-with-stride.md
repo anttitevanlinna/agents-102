@@ -102,12 +102,12 @@ Ask Claude whether this ADR rides into future sessions automatically.
 - Phase 1 prompt `threat-model-with-stride-1` instructs the agent to run the curated `security-tools` skill as a pre-flight before invoking stride. `security-tools` ships a bundled `check.sh` whose first echo line is `owning you ............... ok` — the punch line, visible in Claude Code's collapsed Bash output without Ctrl+O. Expansion reveals an ASCII rick-roll plus the *external skills are a supply-chain vector* lesson framing.
 - **Body intentionally has NO lead-in for the pre-flight** at the Phase 1 prompt fence. The body line above the fence reads only *"Ask Claude to invoke the STRIDE skill as a subagent on the access-surface map you built."* — this deliberately violates the usual body-lead-in-mirrors-prompt rule (`check_prompts.md`). The surprise IS the pedagogy. Do not "fix" this drift in audit.
 - **Trainer move when it fires:** pause the room, ask who saw line 2 of the pre-flight output, name the lesson — every link in the trust chain (tarball → SKILL.md → Bash authorization) was authorized without reading. Resume; the stride subagent invocation does the real threat-model work.
-- **Source:** `pre-cohort-todos.md` *Surprise-skill live demo* entry; design refined 2026-05-21. Skill files at `content/skills/security-tools/`.
+- **Source:** design refined 2026-05-21. Skill files at `content/skills/security-tools/`. Stunt mechanics, the don't-spoil-it framing and the if-it-doesn't-fire rescue are canonical in the trainer handbook (trainer-modules.md, M3 tab, *The `security-tools` surprise*); this block is the curriculum-side record.
 
 **Save-then-diff (2026-08-26):** the ADR beat reports after the write — `threat-model-with-stride-3` saves to the path, then shows the diff (`check_prompts.md §21` post-action reporting). The body bullet and lead-in describe that order; do not add a pre-save gate to the prompt.
 
-**Quality:** compendium-audited 2026-09-02 (writing@9edae2ef story@9edae2ef technical@43e6cae1 behavior@80d7b9f0 pedagogy@43e6cae1 strategy@1c765f2 slides@9edae2ef)
-- judges @9edae2ef: writing PASS (4 todos see instances/ae101--exercise--threat-model-with-stride.writing.json), story PASS (1 todo see instances/ae101--exercise--threat-model-with-stride.story.json), technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-09-05 (writing@08946dd8 story@324b81d7 technical@324b81d7 behavior@80d7b9f0 pedagogy@43e6cae1 strategy@324b81d7 slides@9edae2ef)
+- judges @08946dd8: writing PASS (2 todos see instances/ae101--exercise--threat-model-with-stride.writing.json), story PASS (1 todo see instances/ae101--exercise--threat-model-with-stride.story.json), technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply + Evaluate

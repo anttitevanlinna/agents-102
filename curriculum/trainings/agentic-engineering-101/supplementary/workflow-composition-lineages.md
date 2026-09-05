@@ -142,7 +142,7 @@ Filters that work better than ranking:
 
 3. **What review bandwidth do you have?** Read Ronacher first if the answer is *not much*. Composition without review is the failure mode he names.
 
-Track two or three practitioners and you stay current. Watch what they ship in their own venues, not what third-party write-ups distill from them. You will see the composition conversation keep moving, so read each practitioner for the shape of work they handle: that moves slower and tells you more. Keep an eye out for named frameworks this walk does not yet cover, because the curation is partial by design.
+Track two or three practitioners and you stay current. Watch what they ship in their own venues, not what third-party write-ups distill from them. You will see the composition conversation keep moving, so read each practitioner for the shape of work they handle: that moves slower and tells you more. The curation is partial by design, so you will find named frameworks this walk does not yet cover.
 
 <!-- maintainer -->
 
@@ -160,7 +160,7 @@ Track two or three practitioners and you stay current. Watch what they ship in t
 
 **Time:** 15–25 min student read; not in-room.
 
-**Delivery mode:** Linked from M6's `composing-the-workflow.md` lecture. Optional reading after M6 closes, or pre-read between M6 and post-cohort follow-up.
+**Delivery mode:** In the training index, not linked from the M6 deck. Optional reading after M6 closes, or between M6 and the post-cohort follow-up.
 
 <!-- backing -->
 
@@ -235,5 +235,5 @@ OODA
 - Vision layer: the field is mid-evolution; one published framework + several shapes + one counter-position; candid scope.
 - Detail layer: every URL, every named file path, every quote (each verified against the practitioner's own publication 2026-05-21).
 
-**Quality:** compendium-audited 2026-08-29 (writing@4a722813 story@0cea7581 technical@4a722813 pedagogy@b55cd28b strategy@1071b36b slides@4a722813)
-- judges @4a722813: writing PASS, story PASS, technical PASS, behavior N/A (no prompt blocks on this page), pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-09-05 (writing@324b81d7 story@324b81d7 technical@324b81d7 pedagogy@b55cd28b strategy@324b81d7 slides@324b81d7)
+- judges @324b81d7: writing PASS (2 todos see instances/ae101--supplementary--workflow-composition-lineages.writing.json), story PASS, technical PASS (2 todos see instances/ae101--supplementary--workflow-composition-lineages.technical.json), behavior N/A (no prompt blocks on this page), pedagogy PASS, strategy PASS, slides PASS (1 todo see instances/ae101--supplementary--workflow-composition-lineages.slides.json)

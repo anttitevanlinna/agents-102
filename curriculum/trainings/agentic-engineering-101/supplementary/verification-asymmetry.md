@@ -26,7 +26,7 @@
 
 **STATUS:** slide-format, proper-length bullets per `theory-plan.md` § Slide format. Not an in-room slot; linked as an optional pre-read from `run-the-first-experiment.md § Pre-reads before Module 5`. Audited — see the Quality line below. Tier-1 canon adoption per `theory-audit.md` (practitioner + syllabus lenses convergent; already enacted in M2 body as "find is easier than judge", `exercises/push-back-on-the-plan.md:52` — the body's M2 back-reference is deliberate lineage-naming, kept per the audit's cheap-groundedness call; supplementary surface, not a lecture body, so `check_lectures §3` sequencing ban doesn't bind, and the ref is backward-naming of a lived moment, not sequencing).
 
-**Placement:** supplementary, linked from M4 where the send-off decision makes the asymmetry a governor. Cross-link to [What keeps a long-running session going?](../../../lectures/what-keeps-a-long-running-session-going.md): asymmetry says where checks are cheap; the post-launch closer names what their pushback buys. M5 builds and calibrates those checks; M6 composes them into workflow seams.
+**Placement:** supplementary, linked from `run-the-first-experiment.md` § *Pre-reads before Module 5* — the M4→M5 gap, read while the send-off is already running, not at the send-off decision itself. Cross-link to [What keeps a long-running session going?](../../../lectures/what-keeps-a-long-running-session-going.md): asymmetry says where checks are cheap; the post-launch closer names what their pushback buys. M5 builds and calibrates those checks; M6 composes them into workflow seams.
 
 **Laws carried:** verification-asymmetry / verifier's rule · the delegation governor (cheap-verifier question). Sharpens convergence-triad's "independently verifiable" leg into a cost ratio (see audit — triad itself still owed a durable home). The triad, 0.85ⁿ, and principal–agent stay OUT of this page (M4-adjacent surface; packaging laws earn at M5).
 
@@ -64,5 +64,5 @@ OODA
 - last-run: 2026-08-01
 
 <!-- /backing -->
-**Quality:** compendium-audited 2026-08-29 (writing@4a722813 story@0cea7581 technical@8cc00874 behavior@b3143a4 pedagogy@1abb84c6 strategy@b3143a4 slides@0cea7581)
-- judges @4a722813: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-09-05 (writing@324b81d7 story@324b81d7 technical@324b81d7 behavior@b3143a4 pedagogy@1abb84c6 strategy@61da15ad slides@324b81d7)
+- judges @324b81d7: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS

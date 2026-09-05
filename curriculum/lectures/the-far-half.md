@@ -32,14 +32,14 @@
 
 **Third slide cut (2026-08-29, Antti-approved):** `## Your first un-packaged long session` — its un-packaged-on-purpose bullet restated `test-and-learn.md § The two-session arc`, which says the same thing concretely (*"no plan.md, no verifier, no reference artifact"*) two lectures later. The trust question moved to the tail of the three-concerns slide, beside the Verification bullet it interrogates. The `un-packaged-run-on-purpose` claim went with it. Do not restore a third slide announcing the un-packaged run; the arc slide is where that beat lands.
 
-**Artifact contract (Family B):** the far-half map slot only. Per-law {NAME · MAP-POSITION · MECHANISM · GOVERNOR} for Verification/Absorption/Outcome laws is downstream closer work, not this opener's. Landed shape (2026-07-03): all three far-half phases consolidate at M6 (`the-map-filled-in`); M5 (`what-packaging-is`) map-places the three-pattern only.
+**Artifact contract (Family B):** the far-half map slot only. Per-law {NAME · MAP-POSITION · MECHANISM · GOVERNOR} for Verification/Absorption/Outcome laws is downstream closer work, not this opener's. Landed shape (2026-07-03): all three far-half phases consolidate at M6's map slide (`composing-the-workflow.md` § *The checking loop, drawn solid*, figure only); M5 (`what-packaging-is`) map-places the three-pattern only.
 
 - Family B judged 2026-07-03: B-star durability PASS — container reads whole voice-absent; spine-anchoring exemplary (every far-half phase names its map slot + governor-verb) and worldview-fit textbook recognition-before-naming ("you feel where it bites first"; backpressure is named in the post-launch M4 closer, then built and calibrated in M5 and composed in M6).
 
 **Slide-1 recap bullet cut (2026-08-25, Antti-approved):** *"The near half is behind you. Intent, Context, Work… Every move so far lived there."* — restated `the-whole-map`'s closing slide; the veiled-near-half figure carries the same content visually. The claim row went with it. Do not restore; the figure plus the lit-side bullet are the beat.
 
-**Quality:** compendium-audited 2026-08-29 (writing@43e6cae1 story@43e6cae1 technical@8cc00874 behavior@1c765f2 pedagogy@e9c6231e strategy@1c765f2 slides@43e6cae1)
-- judges @e9c6231e: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-09-05 (writing@43e6cae1 story@08946dd8 technical@08946dd8 behavior@1c765f2 pedagogy@e9c6231e strategy@08946dd8 slides@08946dd8)
+- judges @08946dd8: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS (1 todo see instances/ae101--lecture--the-far-half.strategy.json), slides PASS
 
 <!-- backing -->
 

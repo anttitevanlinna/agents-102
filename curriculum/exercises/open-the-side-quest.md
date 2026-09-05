@@ -62,8 +62,8 @@ Ask Claude to fork a sibling worktree and copy your personal rules across. The p
 
 **Emphasis:** no bold in the body — this file has no named moves or menu handles to mark. Session widgets and the **Time:** / **What you do:** / **What you build:** / **The point:** labels are chrome, not emphasis. Per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`.
 
-**Quality:** compendium-audited 2026-09-02 (writing@9edae2ef story@9edae2ef technical@8cc00874 behavior@1c765f2 pedagogy@1abb84c6 strategy@1c765f2 slides@9edae2ef)
-- judges @9edae2ef: writing PASS, story PASS (3 todos see instances/ae101--exercise--open-the-side-quest.story.json), technical PASS, behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-09-05 (writing@324b81d7 story@324b81d7 technical@324b81d7 behavior@1c765f2 pedagogy@324b81d7 strategy@324b81d7 slides@9edae2ef)
+- judges @324b81d7: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **Atomic — no phase markers.** A single `git worktree add` and a second window; too short to have an inside. Line 3 is authored, not generated.
 

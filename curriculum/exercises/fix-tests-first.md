@@ -15,7 +15,7 @@
 - **Tests-first, root-cause-driven.** Write the test first, watch it fail, then fix the cause, not the symptom.
 - No plan mode here. On a trivial bug, plan mode is overhead.
 
-> **Small fix, small test.** A trivial bug wants one failing test and a tight fix, not a suite and a refactor. If Claude starts spinning up plenty of tests, or the change creeps past the bug, that's sprawl. Steer it back to one test that proves the bug and the smallest fix that passes it.
+> **Small fix, small test.** A trivial bug wants one failing test and a tight fix, not a suite and a refactor. If the agent starts spinning up plenty of tests, or the change creeps past the bug, that's sprawl. Steer it back to one test that proves the bug and the smallest fix that passes it.
 
 Drop your bug after the colon.
 
@@ -28,9 +28,9 @@ Drop your bug after the colon.
 
 ## Interrogate the fix for a deeper layer
 
-- When the agent says done, ask whether the change is the root cause or a layer above it. The first cut usually fixes what makes the test pass; the deeper cut asks whether the test was pointing at the right thing. Name what a deeper edit would touch and see what Claude defends. The exchange is where root-cause discipline shows up, not in the fix itself.
+- When the agent says done, ask whether the change is the root cause or a layer above it. The first cut usually fixes what makes the test pass; the deeper cut asks whether the test was pointing at the right thing. Find what a deeper edit would touch and see what the agent defends. The exchange is where root-cause discipline shows up, not in the fix itself.
 
-**Optional.** Skip if your test already pins the right behaviour and the fix does exactly that, nothing deeper to interrogate. Otherwise, ask Claude to interrogate the fix and name what's still surface.
+**Optional.** Skip if your test already pins the right behaviour and the fix does exactly that, nothing deeper to interrogate. Otherwise, ask the agent to interrogate the fix and name what's still surface.
 
 {{prompt:fix-tests-first-2}}
 
@@ -60,8 +60,8 @@ Drop your bug after the colon.
 
 **Lean-intro trim (2026-08-25, Antti-approved):** the TDD rationale (*"The failing test is what makes the fix checkable. Without it, the fix is a guess that happens to compile."*) cut from the opening bullet — explaining tests-first to engineers. The imperative alone carries the beat; do not restore the why.
 
-**Quality:** compendium-audited 2026-09-02 (writing@9edae2ef story@d065f8bc technical@8cc00874 behavior@1480362 pedagogy@1abb84c6 strategy@1480362 slides@43e6cae1)
-- judges @9edae2ef: writing PASS (3 todos see instances/ae101--exercise--fix-tests-first.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-09-05 (writing@324b81d7 story@324b81d7 technical@324b81d7 behavior@1480362 pedagogy@08946dd8 strategy@324b81d7 slides@324b81d7)
+- judges @08946dd8: writing PASS (2 todos see instances/ae101--exercise--fix-tests-first.writing.json), story PASS (2 todos see instances/ae101--exercise--fix-tests-first.story.json), technical PASS, behavior PASS, pedagogy PASS (1 todo see instances/ae101--exercise--fix-tests-first.pedagogy.json), strategy PASS, slides PASS
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply (tests-first fix) + Analyze (read the diff against what you'd write).
 - **Atomic — no phase markers.** One TDD loop, start to PR; splitting it would name beats the student does not experience as separate. Line 3 is authored, not generated.
@@ -104,6 +104,7 @@ OODA
 **Watch-fors:**
 - **Tests-skipped.** Student pastes the bug and Claude jumps straight to a fix. Common failure mode. Trainer push: *"back up — what's the failing test that would prove this bug exists?"* If the repo has no test infrastructure on this path, log *"no verifier here"* and name it as the first Quality-Gate entry (landing in M4).
 - **Diff rubber-stamp.** Student says *"looks fine"* under 30 seconds. Trainer push: *"find me one line you'd have written differently — not wrong, just different."*
+- **Interrogation rubber-stamp.** Student takes the Optional-skip gate, or the agent's *"nothing deeper here"*, at face value and moves on without sending the interrogation prompt. Trainer push: *"name one input where this fix would still be wrong."*
 
 **Decision points:**
 - **Runs over 35 min.** Bug wasn't trivial. Let it complete; trim the compound exercise, flag for follow-up. Note for M2 — student benefits more from plan-mode-at-depth than average.

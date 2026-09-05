@@ -4,7 +4,7 @@
 
 **Session** *(new, "Module 6 worktree session")*
 
-Open a new Claude Code session in the existing M5 worktree (`../<repo-name>-m5`), no fork. M5's session may still be running the re-send; before this module edits files or cuts rules, decide whether it is done enough, should be stopped, or counts as the partial artefact.
+Open a new Claude Code session in the existing M5 worktree (`../<repo-name>-m5`), no fork. M5's session may still be running the re-send. Before this module edits files or cuts rules, decide whether it is done enough, should be stopped, or counts as the partial artefact.
 
 **What you do:** diff two sessions of the same task.
 
@@ -19,73 +19,72 @@ Open a new Claude Code session in the existing M5 worktree (`../<repo-name>-m5`)
 - You hold two sessions of the same task. The un-packaged session sits on the `m4/<slug>` branch recorded in `task.md`; the packaged re-send sits on the `m5/<slug>` branch recorded in `plan.md`.
 - Read from the recorded coordinates, not a branch or transcript search. Both sessions recorded their transcript paths: M4 in `task.md`, M5 in the protected `Run coordinates` block at the top of `plan.md`.
 
-Ask Claude to read both sessions side by side and name where packaging caught, where it missed, and what new shapes of drift it introduced.
+Ask Claude to read both sessions and walk the diff between them.
 
 {{prompt:spot-gaps-build-the-loop-1}}
 
 ## Read the contrast, push back where it generalises
 
-- Skim past the opening plan. Claude will likely open with a four-dimension plan summary (*"I'll start with repo state across the m4/ branch, then..."*) before any quoted evidence lands. The contrast moments are what you're reading for.
-- Push back where Claude generalises. If Claude writes *"the agent drifted on goal"* without naming which commit, which file, which scrollback line, re-run the prompt with the quote rule re-asserted.
-- Expect over-credit on the packaging. A fair push-back is *"name one thing the verifier missed, concretely."* Close with a ranked gap list of three to five items and a dominant gap.
+- Skim past the opening plan. The agent will likely open with a four-dimension plan summary (*"I'll start with repo state across the m4/ branch, then..."*) before any quoted evidence lands. The contrast moments are what you're reading for.
+- Push back where the agent generalises. If the agent writes *"the agent drifted on goal"* without naming which commit, which file, which scrollback line, re-run the prompt with the quote rule re-asserted.
+- Expect over-credit on the packaging. A fair push-back is *"name one thing the verifier missed, concretely."*
 
 ## Cut one stale rule the diagnosis killed
 
 - Two sessions of the same task were the first real stress-test of `./CLAUDE.local.md`. Diagnosis surfaced rules that turned out wrong, never fired when they should have, or fired and made the session worse.
 - Rules-files have a half-life. Adding rules is only half of it; subtracting the dead ones is the other half.
 
-Ask Claude to cut one rule the two-session diagnosis killed, or to say so and stop if all rules held.
+Ask Claude to read your rules file against the diagnosis and cut the one rule it killed.
 
 {{prompt:spot-gaps-build-the-loop-2}}
 
-## Say go, unless the cut spreads past the one rule
+## Approve, unless the cut spreads past the one rule
 
-- Claude may pause before editing `./CLAUDE.local.md`. A named config file looks risky to modify. If it asks, just say go.
-- Push back if the diff touches more than the one rule you flagged. *"In place"* is loose wording, and Claude may rewrite more than the one stale rule. One rule cut, no more.
-
-**What happened:** A one-screen gap map across memory / verifier / skill and one stale rule cut in place.
+- The agent may pause before editing `./CLAUDE.local.md`. If it asks, approve.
+- Push back if the diff touches more than the one rule you flagged. *"In place"* is loose wording, and the agent may rewrite more than the one stale rule. One rule cut, no more.
 
 <!-- maintainer -->
 
 **Atomic — no phase markers.** One read of two sessions, then one cut; the second move is a consequence of the first, not a phase.
 
-**Lean pass (2026-08-25, Antti-directed M3/M6 shorten, free hands):** session widget condensed 4→2 sentences (wait/stop/accept-partial decision kept; the module file's rescue callout carries the fuller triage); cut "Both are visible via git refs, since the worktree shares `.git`…" (module Start-here states it); "You are not tracing git refs by hand."; "Two sessions means two bodies of evidence, and the teaching is in the contrast." (§16a); "Cleaning is the compound move that keeps the loop fast."; "This is your stack."; "How far you take this is yours." (dup of Phase-2 lead's is-yours); "The recognition is the point." (claim-anchored final sentence carries it). Do not restore.
+**Session verb is *new* in the same cwd, on purpose (`check_platform_and_boundaries.md` §7c):** the module reads M5's session from outside, so resuming would put the diagnosis inside the self-report it diagnoses. Contamination is the reason, not convention.
+
+**Lean pass (2026-08-25, Antti-directed M3/M6 shorten, free hands):** the session widget is two sentences (open in the M5 worktree; the wait / stop / accept-partial decision), and the module's rescue callout carries the fuller triage. Cut, do not restore: *"Both are visible via git refs, since the worktree shares `.git`…"*; *"You are not tracing git refs by hand."*; *"Two sessions means two bodies of evidence, and the teaching is in the contrast."*; *"Cleaning is the compound move that keeps the loop fast."*; *"This is your stack."*; *"How far you take this is yours."*; *"The recognition is the point."*
 
 **View summary:** You compare the un-packaged and packaged runs side by side, quote where the packaging caught and where it missed, rank what the second attempt still left open, and cut one stale rule from your rules-file that the two-session diagnosis killed.
 
-**Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** bullet leads de-bolded to plain; widget/label chrome and blockquote callouts untouched, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. (The three bolded shape handles that survived that pass left with the 2026-08-01 authoring-sequence cut.)
+**Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** bullet leads plain; bold only on widget / label chrome, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`.
 
-**Quality:** compendium-audited 2026-08-29 (writing@4a722813 story@0e4f7c9e technical@0cea7581 behavior@ba5ccf5 pedagogy@0e4f7c9e strategy@1c765f2 slides@0e4f7c9e)
-- judges @4a722813: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS (verify-refuted), slides PASS
-- re-audit @796293b 2026-05-31: writing PASS, pedagogy PASS — steer-callout gained a premature-completion recovery line (§48/§62) + a render-as-HTML affordance callout after the shapes prompt (§50/§53/§62 hold)
+**Declined at the 2026-09-03 polish pass (list shown to Antti, no veto):** *The point* line stays as written; it is scoped to the exercise's own two sessions, a corpus we control, so `check_writing.md` §21's world-claim test does not fire. The Plug-points entry follows the training-wide convention of naming the in-training artefacts an exercise consumes; whether that convention should be renamed is a corpus question (`check_pedagogy.md` §44), not this file's. The first lead-in (*Ask Claude to read both sessions…*) was carded and approved the same pass; `check_prompts.md` §38 does not re-file on it. Judges should not re-file any of these.
 
-**Word count:** ~430 words body.
+**Quality:** compendium-audited 2026-09-04 (writing@4589f1d5 story@54577f39 technical@4589f1d5 behavior@289b45a3 pedagogy@54577f39 strategy@4e0370bc slides@4589f1d5)
+- judges @4589f1d5: writing PASS (2 todos see instances/ae101--exercise--spot-gaps-build-the-loop.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+
+**Word count:** ~420 words body.
 
 **Primary Bloom's level:** Analyze (the two-session diff) + Evaluate (the rule cut).
 
-**Placement:** Beat 1 of the three-beat M6 (2026-09-02 split): the two-session diff and the rule cut, directly after the opener. The stack scan is its own exercise, `read-your-stack.md`, in beat 2.
+**Placement:** Beat 1 of the three-beat M6 (2026-09-02): the two-session diff and the rule cut, directly after the opener. The stack scan is its own exercise, `read-your-stack.md`, in beat 2.
 
 **Mood target:** practitioner fluency — *"I know how to test, I know how to learn."* Watch-for: compliance-feel (student treats the diff as paperwork) or credibility-performance. Both steal the mood.
 
 **Leap test (Monday):** three observable verbs the engineer exhibits on their own codebase next working day:
 - cuts a stale rule from their own `CLAUDE.local.md` once a run's evidence shows it never fired or fired wrong, instead of letting the rules-file rot
 - reads a run's gaps as a ranked list with the dominant one named, instead of treating every miss as equally worth fixing
+- reads a packaged run against the un-packaged one before crediting the packaging, and names what the verifier missed in quotes, not summaries
 
 **Failure modes + diagnostics:**
-- **Phase 1 generalised diff** — student says *"M5 was better"* without quoted moments. Diagnostic: prompt requires quoted moments from BOTH runs. If Claude returns only summaries, re-run with explicit quote enforcement. Echoes M5's Phase 1 diagnostic.
-- **Phase 1 packaging-over-credit** — student treats the packaged run as fully solved and skips the *"what packaging missed"* beat. Diagnostic: the M5 run did drift somewhere; if Phase 1 outputs zero misses, Claude is over-crediting. Trainer push: *"name one thing the verifier missed, concretely. Quote the scrollback."*
-- **Rule-cut dodge** — student accepts *"every rule still holds"* without testing it against the diagnosis. Diagnostic: did any gap in the ranked list trace to a rule that fired wrong or never fired? If yes, the cut was available and got skipped.
+- **Generalised diff** — student says *"M5 was better"* without quoted moments. Diagnostic: prompt requires quoted moments from BOTH runs. If Claude returns only summaries, re-run with explicit quote enforcement. Echoes M5's Phase 1 diagnostic.
+- **Packaging over-credit** — student treats the packaged run as fully solved and skips the *"what packaging missed"* beat. Diagnostic: the M5 run did drift somewhere; if the diff outputs zero misses, Claude is over-crediting. Trainer push: *"name one thing the verifier missed, concretely. Quote the scrollback."*
+- **Rule-cut dodge** — student accepts *"every rule still holds"* without testing it against the diagnosis. Diagnostic: did any gap in the ranked list trace to a rule that fired wrong or never fired? If yes, the cut was available and got skipped. Trainer push: *"take the top gap on your list: which rule should have caught it, and did it fire?"*
 
 **Plug points:**
-- Student's M4 un-packaged artefact + M5 packaged re-run artefact (Phase 1 source material; both already in the repo + session transcripts).
-- Repo's skill home convention if any (install paths + team-kit route → `training-architecture.md` § Skills).
+- Student's M4 un-packaged artefact + M5 packaged re-run artefact (the diff's source material; both already in the repo + session transcripts).
 
 **Decision points (pacing):**
-- **Phase 1 >20 min** — over-diffing. The diff is data for the rule cut, not an essay. Force a rank and move on.
-- **Phase 1 <10 min** — under-engagement. Check if Claude returned only summaries; re-run the prompt with quote enforcement if so.
-- **Whole-room mood below 7** — practitioner fluency isn't landing. Check Phase 1 specificity: did the diagnosis name gaps with quoted moments from BOTH runs? If it stayed generic, the read didn't close.
-
-**Pre-cohort open items:** `curriculum/trainings/agentic-engineering-101/pre-cohort-todos.md`.
+- **Diff >20 min** — over-diffing. The diff is data for the rule cut, not an essay. Force a rank and move on.
+- **Diff <10 min** — under-engagement; same diagnostic as the generalised diff.
+- **Whole-room mood below 7** — practitioner fluency isn't landing. Check the diff's specificity: did the diagnosis name gaps with quoted moments from BOTH runs? If it stayed generic, the read didn't close.
 
 <!-- backing -->
 

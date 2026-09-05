@@ -1,26 +1,28 @@
 {
   "class": "writing",
+  "training": "ae101",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/supplementary/how-the-best-do-ci-cd.md",
   "verdict": "PASS",
-  "training": "ae101",
-  "body_sha": "40c5e58a2ba7b1c2180b3d59ee94f66bf3565c423333ea3679f42eb5d26ee2a1",
-  "shape_hash": "e21a0aad9b40f01c",
+  "body_sha": "856325db9586ff5aca42e6a2df92574f3d2136cee436b1af2b44209fdffff8e5",
+  "shape_hash": "43685ab34d2a22a8",
+  "todos_count": 0,
+  "blocking_findings_count": 0,
   "rules_evaluated": [
     {
       "compendium": "check_writing.md",
       "rule_index": 1,
       "rule_lead": "Banned words — grep zero-tolerance.",
       "verdict": "PASS",
-      "evidence": "mechanical: view.json greps.banned_words (\\b(delve|delving|honest|honestly|importantly|crucial|crucially|substrate|synergize|paradigm shift)\\b) over body_numbered → 0 hits, planted_proof:true, status:CLEAN. greps.leverage_verb → 0, CLEAN. greps.em_dash → 0, CLEAN (the em-dash ban sits in this rule's own text).",
+      "evidence": "view.json greps: banned_words 0 hits (CLEAN, planted_proof true), em_dash 0 hits (CLEAN, planted_proof true) over body lines 1-109.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_writing.md",
       "rule_index": 2,
-      "rule_lead": "Ritual / ceremony — hard ban",
+      "rule_lead": "Ritual / ceremony — hard ban in any curriculum/training surface.",
       "verdict": "PASS",
-      "evidence": "mechanical: view.json greps.ritual_ceremony (\\b(ritual|rituals|ceremony|ceremonies)\\b) → 0 hits, planted_proof:true, status:CLEAN. Own grep for \\bpractice\\b over body.txt → 0 hits, word not used anywhere in body, so the AE101 practice(n) dosage carve-out never engages.",
+      "evidence": "view.json grep ritual_ceremony: 0 hits (CLEAN). Manual grep -inE '\\bexercis' over lines 1-109: 0 hits — word 'exercise' never used loosely; bare 'M6' at line 5 is the flag-conditional module reference, not the banned noun.",
       "fix_hint": null,
       "blocking": false
     },
@@ -29,7 +31,7 @@
       "rule_index": 3,
       "rule_lead": "No stale markers, no \"fixed\" retrospectives, no session biography.",
       "verdict": "PASS",
-      "evidence": "view.json greps.dated_line (\\b20\\d\\d-\\d\\d-\\d\\d\\b) → 0 hits in body, planted_proof:true, status:CLEAN. The prior instance (body_sha e382f2ea…) flagged L103's dead-link parenthetical about a 2026-03-09 Charity Majors post returning 404; the diff since pin 43e6cae1 (commit e9c6231e) replaced that whole sentence — current L103 reads 'Charity Majors, [*Your Data Is Made Powerful By Context (so stop destroying it already)*](https://charity.wtf/p/your-data-is-made-powerful-by-context)', a plain credit with no date, no 404 note, no journey language. That finding is resolved, not carried forward. Checked the maintainer block (L106-173) for the grammatical transition-verb tells (relocated/moved/split/renamed/became/now X rather than Y/predates/since/used to/previously): 0 matches. L170 ('Pre-audit closed 2026-08-07... judges all re-ran clean after the same-day fix pass (em-dash sweep, Stripe self-report qualifier, 8→14 slide split, strategy-doc reconciliation)') reads changelog-shaped but contains none of the named transition verbs, and the rule's own instruction is explicit: 'do not file §3 on a dated provenance header alone. Quote the transition verb, or do not file' — no qualifying verb found, so not filed (flagged as a todo, not a REVISE). The Stance/OODA section (L153-163) is the backing block's designed field 5 per curriculum/backing-format.md §5 ('Stance + OODA'), a structured research ledger whose job is recording what was checked and when — exempt from the journey-ban by the same logic as a compounded entry's example_from_session field, which check_writing §3 names as its own exception.",
+      "evidence": "DRIFT RULE — re-read at current (2026-09-05-dated) wording before judging. Body (1-109): grep for 2026-, caught live, compounded, restructure, extracted from, (MOVED — 0 hits (view.json dated_line grep CLEAN). Maintainer+backing (110-175) DO carry many dated stamps and narrative-shaped lines (e.g. L141 stripe-minions 'the body was right and the TODO was wrong... not quarantined EC2 as the retired note claimed'; L156-159 Stance 'decided:' entries narrating the 2026-08-01/08-02 verification session). Checked these against `curriculum/backing-format.md` (canon, § field 5): the Stance `decided:` field's own spec is \"a closed call, its reasoning, and the trigger that would re-open it\" and the Flagged-clearing table names 'a correction to one source, or a do-not-revert guard on its wording' as the canonical destination — that Sources line. Both flagged passages are exactly this sanctioned shape, not disguised changelog (the KEEP category 'an empirical finding that would otherwise be re-derived' from §3 itself also covers them — without the note, a re-verifier would re-doubt an already-checked count). The 2026-09-03 'Declined at the polish pass... Judges should not re-file' line matches §3's own dated-provenance-header carve-out verbatim (dated attribution + standing constraint + live do-not-reintroduce). Checked the brand-new 2026-09-05 sub-clause (phantom 'do not reintroduce X' where X never existed) against the whole maintainer+backing region: no 'authors no X' / 'is not two Y' phantom-definition sentences found — every do-not-X here (skills-as-CI-check redirect, headers-4-and-5 decline) names a real, currently-live temptation (the CI-surface-vs-kit-accretion ambiguity the section's own title invites; this very judge re-checking header verb-leads). No violation.",
       "fix_hint": null,
       "blocking": false
     },
@@ -38,7 +40,7 @@
       "rule_index": 4,
       "rule_lead": "Register match.",
       "verdict": "PASS",
-      "evidence": "L45-47 (Husain) and L71-73 (arrow/pace) read Boris-direct + Rory-reframe; L79-81 (Wolff close) lands Risto forward-optimism at the arc-closing move. Sub-checks re-run against current body: Retain-this wrapper grep (\\*\\*Remember|Hold onto|Keep in mind|Never forget) → 0. Atmospheric-imagery scan → no isolation/darkness/sleep/body-state/cosmic imagery. Metaphor-keyword valence (cargo/theatre/ritual/tourist/poster) → 0. Negation-callout self-contradiction → N/A, no first-person-plural refusal claim; the only \\b(we|our|us)\\b hits (L23, L95) sit inside verbatim-quoted article titles, not author voice. New L65/L102/L140 Simon Taylor secondary-credit sentence reads in the same practitioner-analysis register as the existing Cherny-via-Jadhav pattern (L51/L99/L143) already passed.",
+      "evidence": "AE101 voice quintet (Boris/Martin/Godin/Sutherland/Siilasmaa). Body reads Boris-direct throughout ('Stripe's own numbers', 'Cloudflare's own numbers', concrete figures + citations) with Sutherland-reframe openers per move ('Treat CI as feedback into the loop, not a gate to pass'). No L&D-coach, cold-tech-only, or motivational-poster register found. Grep for Remember:/Hold onto/Keep in mind/Never forget: 0 hits. Closest candidate: line 71 'Slow deploys with painful rollbacks force teams to gold-plate pre-merge. Fast deploys with cheap rollback let teams ship hot and correct from real signal.' — direct/Boris register, stays inside.",
       "fix_hint": null,
       "blocking": false
     },
@@ -47,7 +49,7 @@
       "rule_index": 6,
       "rule_lead": "Credit original when paraphrasing named technique.",
       "verdict": "PASS",
-      "evidence": "Every named move credited inline with a link at point of use: Klaassen L13, Cursor/Zhao L15, Cloudflare L23, Curran/Intercom L33, Gray/Stripe L37, Husain L47, Cherny-via-Jadhav L51, Shapira L59, Larson L63, Charles/Ramp L65 (secondary credit now Simon Taylor's *Ramp Cracked Enterprise AI*, replacing the file's prior Peter Yang/creatoreconomy citation per the 2026-08-29 source swap — same 'analysis of X's own words' framing as the already-passed Cherny-via-Jadhav pattern), Majors L77, Wolff L79. Creator-name sub-clause: grep \\bAntti\\b|\\bthe creator\\b|\\bthe author\\b|\\bcourse creator\\b|\\btraining creator\\b over body.txt → 0 hits. Author-'we' sub-clause: greps.author_we → 0 hits, CLEAN.",
+      "evidence": "Every named move is inline-credited to its originator with a citation link: Klaassen (L13), Cursor/Zhao (L15), Cloudflare (L23), Curran/Intercom (L33), Gray/Stripe (L37), Husain (L47), Cherny (L51), Shapira (L59), Larson (L63), Taylor/Charles (L65), Majors (L77), Wolff (L79). No uncredited paraphrase of a named technique found.",
       "fix_hint": null,
       "blocking": false
     },
@@ -56,7 +58,7 @@
       "rule_index": 7,
       "rule_lead": "Always \"you\", never \"the student\"; teacher framing stays out of body.",
       "verdict": "PASS",
-      "evidence": "greps.the_student → 0 hits, planted_proof:true, CLEAN. Body addresses the reader as 'you' throughout (L5 'You finished M6 owning the loop...'; L85 'The reader is still you.'). No trainer-delivery-mechanics language.",
+      "evidence": "view.json grep the_student: 0 hits (CLEAN, planted_proof true) over body lines 1-109.",
       "fix_hint": null,
       "blocking": false
     },
@@ -65,7 +67,7 @@
       "rule_index": 8,
       "rule_lead": "Don't smuggle terms of art from maintainer into body.",
       "verdict": "PASS",
-      "evidence": "'Blast radius' (L29-31) glossed in its own sentence. 'Guardrails'/'evaluators' (L45-47) defined in the same sentence via the Husain paraphrase. 'Devbox' (L37) glossed by the quoted Stripe language. No strategy-doc-only vocabulary (self-compound, three-pattern, grill-me) appears unglossed. MCP/CI/PR/AGENTS.md assumed-known for this post-M6 AE101 audience per check_student_facing.md §2 carve-out.",
+      "evidence": "Grepped body for maintainer-only terms of art (self-compound, substrate, three-pattern, grill-me): 0 hits. Body's practitioner-specific vocabulary (devbox, break-glass, blast radius, coordinator agent, Tier-1 auto-approve, Stop hook) is each glossed inline at point of use in the same sentence citing the practitioner (e.g. L37 'isolated devbox instead of auto-merging the lowest-risk slice'), not maintainer-only leakage.",
       "fix_hint": null,
       "blocking": false
     },
@@ -74,7 +76,7 @@
       "rule_index": 9,
       "rule_lead": "Over-hedge detector.",
       "verdict": "PASS",
-      "evidence": "Own grep for the listed reassurance shapes (no penalty, fine way to, it's OK if, no consolation prize, not a downgrade, not a box-check, on the hook) over body.txt → 0 hits. No sentence absolves the reader after describing an agent/human division of labour.",
+      "evidence": "Grep for no penalty/fine way to/it's OK if/no consolation prize/not a downgrade/not a box-check/not on the hook: 0 hits over lines 1-109. Closest candidate: L47 'You almost never use a slow LLM-as-judge as a synchronous guardrail' — this is a descriptive practice claim, not reassurance about the reader's own choice; stays inside.",
       "fix_hint": null,
       "blocking": false
     },
@@ -83,7 +85,7 @@
       "rule_index": 11,
       "rule_lead": "Cap practitioner attribution at one student-side mention per module.",
       "verdict": "PASS",
-      "evidence": "Each named practitioner appears once as an authority: Klaassen L13, Cursor/Zhao L15, Curran L33, Gray L37, Husain L47, Cherny L51, Shapira L59, Larson L63, Charles L65, Majors L77, Wolff L79. Simon Taylor (new secondary credit for the Charles anecdote, L65/L102) also appears exactly once. Cherny and Wolff (both Anthropic-adjacent) are one mention each, matching the maintainer's Org-diversity note (L166-169). No practitioner named a third time.",
+      "evidence": "Cherny (body prose L51) and Wolff (body prose L79) are one body-prose mention each; their Sources-block appearances (L100, L108) are author-before-link citation entries, exempt under the prereads/links carve-out. Matches the file's own maintainer note ('both Cherny and Wolff are one-mention each'). No practitioner named 3+ times in body prose.",
       "fix_hint": null,
       "blocking": false
     },
@@ -92,7 +94,7 @@
       "rule_index": 12,
       "rule_lead": "Punchy framing keeps punch; carve-out lives downstream.",
       "verdict": "PASS",
-      "evidence": "L71-73: 'The arrow most orgs get backwards: feel the speed, panic, invest in more pre-merge gates. Slower pipeline, no safer prod. The sweet pace is not as fast as possible. It's fast enough that correction cost stays low.' is immediately followed by its own boundary paragraph ('Two conditions: reverts are trivial, observability catches bad merges in minutes. If both hold, you run hot.') in Boris-direct voice, exactly the punch-then-boundary-downstream shape this rule asks for.",
+      "evidence": "L73 'The sweet pace is not as fast as possible. It's fast enough that correction cost stays low.' is immediately followed by the carve-out paragraph naming the boundary in concrete terms: 'Two conditions: reverts are trivial, observability catches bad merges in minutes. If both hold, you run hot.' — matches the rule's passing shape exactly.",
       "fix_hint": null,
       "blocking": false
     },
@@ -101,7 +103,7 @@
       "rule_index": 13,
       "rule_lead": "Value-prop / positioning framing belongs in sales copy + project strategy docs, NOT student-facing curriculum body.",
       "verdict": "PASS",
-      "evidence": "Grep for the flag phrases (not an aspirational X / not a vendor Y / this isn't marketing / the real practitioners / unlike consultancy decks / grounded in actual / not theoretical / from the person running it) over body.txt → 0 hits. Grep for \\bvendor\\b over body.txt → 0 hits. The '<org>'s own numbers' labels (L15, L23, L33, L37) are provenance flags for self-reported telemetry per the maintainer's Org-diversity note, not vendor-vs-practitioner defensiveness.",
+      "evidence": "Grep -inE '\\bvendor\\b' over lines 1-109: 0 hits. Grep for 'not an aspirational'/'not a vendor'/'this isn't marketing'/'the real practitioners'/'unlike consultancy decks'/'grounded in actual'/'not theoretical'/'from the person running it': 0 hits.",
       "fix_hint": null,
       "blocking": false
     },
@@ -110,16 +112,16 @@
       "rule_index": 14,
       "rule_lead": "Watch out for planting jargon too early.",
       "verdict": "PASS",
-      "evidence": "File is gated as M6+ reading (L3: 'Supplementary for AE101 Module 6. Read after you've shipped your second skill.'), so the reader has earned CI/PR/verifier/eval/skill vocabulary. Every new term (blast radius, Tier-1 auto-approve, guardrails vs evaluators) is glossed in the same sentence or paragraph it appears in; none is planted ahead of an earning moment. Re-checked the 2026-08-29 revision moment specifically (rule's own second firing-moment clause): the swapped Charles/Ramp and Majors sentences introduce no new jargon, only a different named secondary source, so the revision-must-recheck-its-own-replacement trap doesn't engage here.",
+      "evidence": "File is a take-home supplementary positioned after M6, the last module of the core arc, so the arc's vocabulary ceiling is at its widest. Practitioner-specific terms (devbox, break-glass, Tier-1 auto-approve, coordinator agent, blast radius) are each reported as another company's own terminology inside a cited case study, not planted as the training's own coinage, and each carries enough in-sentence context to parse (e.g. L23 'Human break-glass override fires on 0.6% of reviews'). None of the recognised recurring offenders (statistical default, token, embedding, retrieval, inference, fine-tuning, prompt engineering, orchestration, schema, frontmatter) appear.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_writing.md",
       "rule_index": 15,
-      "rule_lead": "Audit closer when trimming body-prose forcing function.",
+      "rule_lead": "Audit closer when trimming body-prose forcing function; pronoun/metaphor-referent check fires on any closer.",
       "verdict": "PASS",
-      "evidence": "Post-trim-gated clause: N/A, no forcing-function trim in this file. Sibling not-trim-gated clause (fires on any closer): checked every section/callout close. L39 'That's a gap you can close on Monday' resolves to the immediately preceding clause. L85 'they've been at it longer... treating them as one loop' — 'they'/'them' resolve to 'these engineers' and the preceding CI/review/deploy/customer-signal list respectively. L87 'Pick one move. Run it this week' — 'it' resolves to 'one move' in the same sentence. No closer relies on a vague spatial/temporal metaphor for a concrete action.",
+      "evidence": "Checked every section-closing sentence for dangling pronoun/demonstrative referents: L39 'That's a gap you can close on Monday' points at the immediately preceding IC-version-not-yet-published clause; L81 'The other five moves wait on this one' resolves via the numbered move structure (this one = move 6); L87 'Pick one move. Run it this week' — 'it' = 'one move', unambiguous. No unreachable examples or bypass-the-agent punchlines found.",
       "fix_hint": null,
       "blocking": false
     },
@@ -128,7 +130,7 @@
       "rule_index": 17,
       "rule_lead": "No combative verbs about the agent in body prose.",
       "verdict": "PASS",
-      "evidence": "Grep for bark/order/command/whip/force/drag/push around/boss/shout at/snap at/lecture/scold over body.txt → 0 hits. All human-to-agent verbs are peer-flat or warmer (ask, route, share).",
+      "evidence": "Grep -inE '\\b(bark|order|command|whip|drag|boss|shout at|snap at|lecture|scold|force|push around)\\b' over lines 1-109: 0 hits.",
       "fix_hint": null,
       "blocking": false
     },
@@ -137,7 +139,7 @@
       "rule_index": 18,
       "rule_lead": "Headers must be literally true about the mechanism.",
       "verdict": "PASS",
-      "evidence": "Read every `##` header cold against its section: 'Treat CI as feedback into the loop, not a gate to pass' (L7) matches its content. 'Tier by blast radius. Make the Tier-1 case on your own PRs' (L29) matches the Intercom content. 'Stripe bets on the sandbox, not the slice' (L35) matches. No spatial metaphor contradicts a mechanism, no unpaired 'other X'.",
+      "evidence": "Checked all 15 headers (L1,7,11,19,29,35,43,49,55,61,69,75,83,89,95,102) against their section content cold. None use a spatial metaphor contradicting the mechanism, and none use an 'other X'/'the rest of the X' with no primary named. Closest candidate: L29 '## 3. Tier by blast radius' followed by a sub-section (L35) on Stripe's non-tiering sandbox approach — the sub-header 'Stripe bets on the sandbox, not the slice' explicitly marks the contrast, so the parent header stays literally true of what it introduces.",
       "fix_hint": null,
       "blocking": false
     },
@@ -146,7 +148,7 @@
       "rule_index": 19,
       "rule_lead": "Machine-cadence fat — the shape of good prose without the content.",
       "verdict": "PASS",
-      "evidence": "(a) Empty negation: 'not a gate to pass' (L7 header) negates a real prior assumption for this audience, not empty. (b) Deictic drumroll: 'That's a gap you can close on Monday' (L39) resolves a real antecedent one clause back, the rule's own legitimate exception. (c) Bold-label echo: none of the six '**Try this Monday.**' callouts restate their own bold text as the next sentence's subject. (d) Citation/appendix duplication: inline citations carry their own gloss; the Sources list (L89-104) is a bare link list with no restated gloss.",
+      "evidence": "Deictic-drumroll check: L27 'That's a panel', L39 'That's a gap you can close on Monday', L81 'that's the problem worth surfacing' — all three legitimately NAME a concept just introduced and resolve a real antecedent (rule's own legitimate-use test), not empty pointer-then-restate. Bold-label-echo check: 'Try this Monday.' recurs six times (L17,27,41,53,67,81) as a deliberate structural call-to-action heading, never followed by a sentence restating 'this Monday' as its own subject — not the banned pattern. Empty-negation check: L7 header 'not a gate to pass' and L31 'not by who wrote them' both negate a real, plausible prior assumption the reader would hold, not a strawman. Sources sections (L89-107) carry bare author+link entries with no inline-gloss duplication.",
       "fix_hint": null,
       "blocking": false
     },
@@ -155,7 +157,7 @@
       "rule_index": 20,
       "rule_lead": "Don't state a count the adjacent list already holds.",
       "verdict": "PASS",
-      "evidence": "L5 'Six moves recur in the engineers running it best' names the count before any of the six items are visible; they unfold one at a time as `##` headers across the whole file, not as an adjacent bulleted list, so this is the rule's own 'memory handle across distance' carve-out. All numeral-bearing `##` headers are exempt under the explicit header-numeral carve-out. L85 'one loop with six tunable surfaces' is likewise a distance callback in the closer, not adjacent to a visible list.",
+      "evidence": "L5 'Six moves recur' and L85 'one loop with six tunable surfaces' both name the count at a point where the six numbered sections are NOT visible together (dispersed across the whole document, opening and closing respectively) — matches the carve-out's own test ('does the numeral appear where the items are NOT visible? Yes → keep it'), functioning as recall scaffolding across the read rather than a tally sitting adjacent to an enumerated list.",
       "fix_hint": null,
       "blocking": false
     },
@@ -164,25 +166,26 @@
       "rule_index": 21,
       "rule_lead": "A slogan that is false as stated is not punchy framing — run the truth test before reaching for §12.",
       "verdict": "PASS",
-      "evidence": "Own grep for only/always/never/nothing else/the one thing that over body.txt. Candidates: L47 'You almost never use a slow LLM-as-judge as a synchronous guardrail' — already hedged, survives. L53 'run only those' and L5 'None require permission from above' are scoped to this piece's own six moves, not a universal law about the world. No other absolute claim; all percentage/timing claims are scoped to a named org's own measured case.",
+      "evidence": "Grep -inE '\\bonly\\b|\\balways\\b|\\bnever\\b|\\bnothing else\\b|the one thing that' over lines 1-109 returns two hits, both already hedged/scoped: L47 'almost never' (hedged, not a bare absolute) and L53 'run only those on PR-open' inside a quoted student prompt (not a body assertion). No unscoped superlative asserted about how the world works.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_writing.md",
-      "rule_index": 22,
-      "rule_lead": "A claim binds to every body that states it, not just the one holding the stamp.",
-      "verdict": "PASS",
-      "evidence": "Ran grep -rl for every source id this file cites (incl. the two new ids from the 2026-08-29 swap) against curriculum/trainings, curriculum/exercises, curriculum/lectures this session. taylor-fintechbrainfood → only this file. majors-charity-wtf → only this file (id unchanged across the URL fix, so no other file could have carried the stale URL). klaassen-definitive-guide and curran-2x also appear in getting-going.md, compound-and-close.md, push-back-on-the-plan.md, the-machine-you-just-met.md, test-and-learn.md, spot-gaps-build-the-loop.md, skills-from-the-frontier.md, the-loop-has-a-name.md — all cite them with the same scoping this file uses (Klaassen term-only, Curran full self-reported figures), no cross-file drift. cursor-bugbot, cloudflare-ai-review, stripe-minions, husain-guardrails-faq, cherny-via-jadhav, shapira-elementor, larson-compound, wolff-qcon appear in no other curriculum file.",
+      "rule_index": 26,
+      "rule_lead": "A sentence saying how you'd know points at the outcome, not the nearest artifact.",
+      "verdict": "N/A",
+      "evidence": null,
       "fix_hint": null,
-      "blocking": false
+      "blocking": false,
+      "na_reason": "no 'X tells you whether Y' / 'you'll know it worked when' self-witnessing clause anywhere in the body (grepped, 0 hits)"
     },
     {
       "compendium": "check_writing.md",
       "rule_index": 27,
-      "rule_lead": "Say it once, at its most concrete, then at most one sentence that generalises it. Style, not a gate.",
+      "rule_lead": "Say it once, at its most concrete, then at most one sentence that generalises it.",
       "verdict": "PASS",
-      "evidence": "Closest-to-violating passage: section 4 (L43-53) states the fast-lane/slow-lane split three times — the author's own claim (L45), Husain's version (L47), Cherny's version (L49-51). The file's own '## Two proofs the loop compounds' section (L11-17) names paired general-statement-plus-concrete-instance as this piece's established device; each of the three passages adds a distinct concrete mechanism (org-level split / inline-vs-async framing / a specific hook-plus-agent pairing) rather than repeating one sentence at a different altitude. Per the rule's own 'not a REVISE on its own' carve-out, this stays. No (a) abstract-twin, (b) artifact-restatement, or (c) widening-qualifier shapes found elsewhere in body. The 2026-08-29 Ramp/Majors swap touched only citation identity, not argument structure, so this rule's verdict is unaffected by the diff.",
+      "evidence": "This is a supplementary summarising other practitioners' work, the density prior the rule itself names as highest-risk. Checked for the four sub-shapes: no abstract-twin pairs found (each move's thesis sentence has one concrete instance, not a doubled altitude); no restating-an-adjacent-element (no prompt/figure/list is narrated by the surrounding prose); no widening-qualifier hedges; the L83-87 closing paragraph revisits the L5 opening framing but adds the 'six tunable surfaces' synthesis absent from the opener, functioning as an essay's bookend rather than a bare second announcement of the same claim.",
       "fix_hint": null,
       "blocking": false
     },
@@ -191,7 +194,7 @@
       "rule_index": 1,
       "rule_lead": "Aspirational destination, never corrective gap.",
       "verdict": "PASS",
-      "evidence": "L5 'You own the loop at your desk... Six moves recur in the engineers running it best... None require permission from above to start trying' is aspirational, not corrective-gap. No ability-tier language anywhere. No tourist/practitioner identity-criterion split. No pre-prompt verification gates present (N/A sub-case).",
+      "evidence": "Grep for tier-pegging (at your scale/for a beginner/once you're more experienced/a senior would already know/you already think/you're missing) and identity-criterion contrast shapes (tourist/amateur/passenger/the difference is whether/the real test is/you know you've got it when): 0 hits over lines 1-109. Opener (L5) frames the reader as already owning the loop ('You finished M6 owning the loop at your desk'), not as deficient.",
       "fix_hint": null,
       "blocking": false
     },
@@ -200,7 +203,7 @@
       "rule_index": 2,
       "rule_lead": "Earn every technical term on first use.",
       "verdict": "PASS",
-      "evidence": "'Blast radius' (L29-31), 'guardrails vs evaluators' (L45, self-defined in the same sentence), 'Tier-1 auto-approve' (L33, explained by 'routes 19.2% of merges through' in the same clause) each earned in place. MCP/CI/PR/AGENTS.md/repo covered by the assumed-known carve-out for an AE101 engineer audience.",
+      "evidence": "AE101 engineer audience post-M6; per the assumed-known-tracks-audience carve-out, devbox/blast radius/break-glass/coordinator agent/LLM-as-judge/Stop hook are ordinary professional vocabulary for this audience or are glossed in-sentence at first use (e.g. L37 'isolated devbox', L47 'guardrails sit inline and block the response, evaluators run async'). AGENTS.md (L13, L63) lands inside a parallel list with already-known terms ('rules files, skill files, AGENTS.md') which supplies the one-breath context.",
       "fix_hint": null,
       "blocking": false
     },
@@ -209,16 +212,7 @@
       "rule_index": 4,
       "rule_lead": "Memory vs context — use deliberately.",
       "verdict": "PASS",
-      "evidence": "'Memory' used correctly for the persistent artifact (L9, L57). 'Context' used correctly for ambient/runtime state (L45 'context loss'; L77 'context-rich production signal'). No blurring.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 5,
-      "rule_lead": "Golden path only in body — THIS RULE HAS AN EXCEPTION; read to the boundary before cutting anything.",
-      "verdict": "PASS",
-      "evidence": "No troubleshooting/recovery/'what if X fails' branch anywhere in body; calm forward-moving read, no FAQ structure. No time-critical rescue being routed away.",
+      "evidence": "L9 'which memory rule should have caught the mistake', L71 'feeds back into memory and skills' — memory used correctly for the persistent artifact. L45 'context loss' correctly names ambient runtime state lost while the agent idles. L77 'context-rich production signal' uses 'context' in the ordinary-English sense (information-richness), not asserting the technical context-window persists or compounds — no conflation of the two senses found.",
       "fix_hint": null,
       "blocking": false
     },
@@ -227,34 +221,25 @@
       "rule_index": 8,
       "rule_lead": "Don't smuggle another module's voice.",
       "verdict": "PASS",
-      "evidence": "One consistent register (practitioner Boris-direct with Rory reframes) across all six sections; no mismatched module's mood borrowed in.",
+      "evidence": "File maintains one consistent Boris-direct, citation-driven register across all six moves; no M1-joyful or M5-long-running-mood language borrowed in from another module's contract.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
       "rule_index": 9,
-      "rule_lead": "Don't ask student to manually diff or spot-check Claude's output as error-catching.",
+      "rule_lead": "Don't ask student to manually diff or spot-check Claude's output as error-catching; actor+mechanism, object+tell, addressee, and executable-criterion axes.",
       "verdict": "PASS",
-      "evidence": "All six 'Try this Monday' callouts name an actor and a mechanism: L17 'ask Claude...If the answer is none, write the rule'; L27 'ask Claude to review it four times under four hats... Read the four outputs side by side' (comparing Claude's own framings, not manual error-catching); L41 'ask Claude...Build that verifier. Run the slice through it'; L53 'ask Claude...'; L67 'Look at your ~/.claude/skills/. Find a skill that catches something your CI doesn't' (object = student's own folder, tell = catches-something-CI-doesn't); L81 'Time how long it takes...If the number is more than 10 minutes, that's the problem worth surfacing.' Every speech verb names Claude as addressee.",
+      "evidence": "Checked all six 'Try this Monday' callouts (L17,27,41,53,67,81) for actor+mechanism+tell: each names the student's action AND either a concrete artifact produced (a written rule, a built verifier, a cycle-time number, a measured revert time) or a clearly-scoped comparison the student is already the authority on (L27 comparing four already-produced review outputs side by side; L67 finding a gap between the student's own skills and their own CI, where the student is the authority on both). No un-addressed speech verbs (say/name/call/quote/tell/flag with no addressee): every ask is 'ask Claude' with an explicit quoted question. No 'Name X' instruction-smell verb found.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
       "rule_index": 11,
-      "rule_lead": "No \"What research says\" callout boxes",
+      "rule_lead": "No \"What research says\" callout boxes.",
       "verdict": "PASS",
-      "evidence": "All citations are inline, bolded-name-plus-link sentences; no boxed callout device anywhere in body.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 12,
-      "rule_lead": "Student moves stay in conversation with agent.",
-      "verdict": "PASS",
-      "evidence": "Four of six 'Try this Monday' prompts (L17, L27, L41, L53) route explicitly through 'ask Claude...'. The two that don't (L67 inspecting one's own skills folder; L81 timing a real revert) are self-directed practitioner observations appropriate to a take-home supplementary, analogous to this rule's Debrief-tier carve-out for practitioner primitives.",
+      "evidence": "Grep -in 'What research says' over lines 1-109: 0 hits. Citations are inline, one line each, in the established practitioner-credit style.",
       "fix_hint": null,
       "blocking": false
     },
@@ -263,7 +248,7 @@
       "rule_index": 13,
       "rule_lead": "Specify which CLAUDE.md layer — every time.",
       "verdict": "PASS",
-      "evidence": "L17 uses the fully-qualified './CLAUDE.local.md'; grep for a bare unqualified 'CLAUDE.md' reference over body.txt → 0 hits.",
+      "evidence": "L5 and L17 both use the fully-qualified './CLAUDE.local.md'; no unqualified bare 'CLAUDE.md' found (grepped).",
       "fix_hint": null,
       "blocking": false
     },
@@ -272,7 +257,7 @@
       "rule_index": 14,
       "rule_lead": "No em-dashes. Simple sentences.",
       "verdict": "PASS",
-      "evidence": "view.json greps.em_dash → 0 hits in body, planted_proof:true, status:CLEAN.",
+      "evidence": "view.json em_dash grep: 0 hits (CLEAN). Sentence structure throughout is short declaratives and citation lead-ins; no clause-stacking via colons/semicolons beyond what the citation convention already carries.",
       "fix_hint": null,
       "blocking": false
     },
@@ -281,16 +266,7 @@
       "rule_index": 17,
       "rule_lead": "Section headers use command verbs when section is about doing something.",
       "verdict": "PASS",
-      "evidence": "L7/L19/L29/L55/L69 primary numbered headers lead with command verbs (Treat, Fan out/converge, Tier/Make, Skills.../Promote, Get out/Learn). Secondary declarative headers (L11, L35, L43, L49, L61, L75, L83) fall under the lecture/reference-register carve-out: each section's body is expository, and the imperative move lives in the separate 'Try this Monday' callout beneath it.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 20,
-      "rule_lead": "Disambiguate shared-word collisions with Claude Code primitives on first student-authored use.",
-      "verdict": "PASS",
-      "evidence": "'Skill' (L55-65) used consistently for the Claude Code skill concept; the file's own prerequisite (L3) confirms disambiguation already happened upstream. 'Memory', 'rule', 'agent' show no first-use collision moment in this late-arc file. Grep for here/this/above/below next to write/save/note/put/drop → no hits.",
+      "evidence": "Maintainer accept-note (L172): 'Declined at the 2026-09-03 polish pass: headers 4 and 5 stay declarative (check_student_facing.md §17: the numbered move is the convention, the verb is not, and both headers carry their claim). Judges should not re-file.' Honored — L43 and L55 not re-flagged. The remaining numbered move headers (L7, L19, L29, L69) lead with an imperative verb (Treat, Fan out, Tier, Get out). Non-numbered sub-headers (L11, L35, L49, L61, L75, L83) introduce expository/citation content the reader is meant to understand rather than act on, matching the declarative-noun-phrase allowance for reference-style sections.",
       "fix_hint": null,
       "blocking": false
     },
@@ -299,7 +275,7 @@
       "rule_index": 21,
       "rule_lead": "LLM-vs-agent-vs-Claude vocabulary discipline.",
       "verdict": "PASS",
-      "evidence": "'The agent' used consistently for autonomous/execution topics (L9, L21, L37, L45, L71, L77). 'Claude' used consistently only as addressee inside the six 'ask Claude...' callouts. 'LLM' used once (L47), specifically for Husain's guardrails-vs-evaluators point. No assistant-shaped Claude-heavy imbalance.",
+      "evidence": "'The agent' used for autonomous/acting-work contexts (L9, L45, L51, L63); 'Claude' used for addressee/product contexts (L17, L27, L41, L53, L79); 'LLM' used for the reasoning/judge context (L47 'LLM-as-judge'). No misapplied swap found.",
       "fix_hint": null,
       "blocking": false
     },
@@ -308,7 +284,7 @@
       "rule_index": "21b",
       "rule_lead": "Session / task / run split (all trainings).",
       "verdict": "PASS",
-      "evidence": "Noun-'run' survives only in its licensed senses: CI/test-run context ('A failing CI run is signal' L9; '131,246 review runs' L23, a verbatim-quoted figure). 'Session' never used for the reader's own curriculum sitting anywhere in body (the piece operates at org/CI scale throughout).",
+      "evidence": "L5 uses 'session' and 'task' correctly ('Two sessions of the same task'). Every 'run' instance is either verb-form (unrestricted) or the sanctioned execution-record noun sense (CI run: L9, L45) — grepped all 'run' hits, none is a banned noun-run for the agent's sitting.",
       "fix_hint": null,
       "blocking": false
     },
@@ -317,7 +293,7 @@
       "rule_index": 22,
       "rule_lead": "No time-of-day anchors in body prose.",
       "verdict": "PASS",
-      "evidence": "Own grep for tomorrow/overnight/this morning/tonight/next morning/yesterday/last night over body.txt → 0 hits. The six 'Try this Monday' callout labels are not on the banned list; examined as the closest candidate and judged to stay inside, since it reads as a generic workplace-cadence idiom about the reader's own job, not a claim about this training's own session pacing.",
+      "evidence": "Grep -inE '\\b(tomorrow|overnight|this morning|tonight|next morning|yesterday|last night)\\b' over lines 1-109: 0 hits. 'Monday' in 'Try this Monday' is a day-of-week call-to-action label, not a time-of-day anchor the rule targets, and does not assert anything about when the module ran.",
       "fix_hint": null,
       "blocking": false
     },
@@ -326,7 +302,7 @@
       "rule_index": 23,
       "rule_lead": "Reflection beats stay invisible in flow.",
       "verdict": "PASS",
-      "evidence": "Own grep for Pause before you promote/Meta-moment/Step back/Moment of truth/sit with X/let it land/take a moment to/breathe/be present with/pause and reflect over body.txt → 0 hits.",
+      "evidence": "Grep -inE 'sit with|let it land|take a moment|give yourself space|breathe|be present with|pause and reflect|Meta-moment|Step back|Moment of truth' over lines 1-109: 0 hits.",
       "fix_hint": null,
       "blocking": false
     },
@@ -335,16 +311,26 @@
       "rule_index": 26,
       "rule_lead": "Cut NVA: true but not moving student forward.",
       "verdict": "PASS",
-      "evidence": "No maintainer-reasoning-shaped clause in body. The prior instance's closest candidate (L103's now-removed dead-link parenthetical) is resolved by the 2026-08-29 source swap. Re-scanned fresh: the '<org>'s own numbers' provenance tags (L15, L23, L33, L37) change how the reader weighs the adjacent figure (self-report flag), so they carry decision-relevant nuance rather than being NVA. No clause in body restates a fact the structure already carries without adding a next-step.",
+      "evidence": "Scanned for administrative asides / obvious-to-engineers filler. Closest candidates are the per-citation dates ('Jan 2026', 'Aug 2025' etc.) and vendor-attribution parentheticals ('Cursor's own numbers') — these are the corpus's freshness/self-report convention, load-bearing for evaluating the evidence, not NVA filler.",
       "fix_hint": null,
       "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 27,
+      "rule_lead": "Body \"read it\" / \"look at it\" / \"notice X\" after chat-print = dead weight.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "no chat-print artifact moment in this reading-only supplementary (signals: has_prompt_blocks false, has_figures false)"
     },
     {
       "compendium": "check_student_facing.md",
       "rule_index": 28,
       "rule_lead": "Forward-callout closer: student as grammatical subject.",
       "verdict": "PASS",
-      "evidence": "L39 'That's a gap you can close on Monday' — 'you' carries the actionable clause. L81 'that's the problem worth surfacing to your team' — same shape. L87 'Pick one move. Run it this week' is the piece's own closing call-to-action in the established 'Try this Monday' register, not a forward-looking aside about another part of the training. No role-gating/audience-shift language anywhere.",
+      "evidence": "Grep for audience-shift/role-gating (if you came in as/for the ... reading/if you're an? CTO|executive|staff engineer): 0 hits. Closers keep the student as subject: L39 'That's a gap you can close on Monday', L87 'Pick one move. Run it this week.'",
       "fix_hint": null,
       "blocking": false
     },
@@ -353,7 +339,7 @@
       "rule_index": 30,
       "rule_lead": "Echo the training's theory spine before inventing a synonym.",
       "verdict": "PASS",
-      "evidence": "'The loop' used consistently and repeatedly as the training's own theory-spine noun (L5, L7, L9, L11 header, L61 header, L69, L75, L79, L81, L83, L85) rather than an invented synonym.",
+      "evidence": "Body reuses the training's own vocabulary throughout: 'the loop' (title, L5, L9, L63, L85), 'gates'/'gating' (L7, L31, L45). No invented neutral synonym displaces an earned house term.",
       "fix_hint": null,
       "blocking": false
     },
@@ -362,16 +348,7 @@
       "rule_index": 31,
       "rule_lead": "Name the artifact, not the act.",
       "verdict": "PASS",
-      "evidence": "Own grep for typing/type in/say to Claude/tell it to over body.txt → 0 hits. All six agent-directed instructions use the sanctioned 'ask Claude to...' / 'ask Claude \"...\"' prompt-noun convention.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 32,
-      "rule_lead": "Name the outcome; don't walk a professional through trivial mechanics.",
-      "verdict": "PASS",
-      "evidence": "No CLI-recipe walkthrough anywhere in body (no 'run X, then Y, then confirm with Z' mechanics); every action is stated as an outcome or as a question put to Claude.",
+      "evidence": "Grep -inE 'typing |type in|say to Claude|tell it to' over lines 1-109: 0 hits. Every directed message is framed as 'ask Claude \"<quoted question>\"' — the quoted question is the artifact, not narrated as a typing act.",
       "fix_hint": null,
       "blocking": false
     },
@@ -380,25 +357,7 @@
       "rule_index": 33,
       "rule_lead": "The curriculum does not narrate itself — subject test, then deletion test.",
       "verdict": "PASS",
-      "evidence": "L85 'The loop at your desk is the one this training closed' keeps 'The loop at your desk' (a student artifact, this rule's own KEEP example) as its outer grammatical subject; the embedded clause is a completed-past recap, not a forward promise, so it doesn't trip the 2026-08-23 predicate-leak clause either. 'These engineers run the same loop; they've been at it longer.' / 'The shift is not conceptual.' / 'The reader is still you.' / 'The shift is what each move makes possible...' all keep the reader or an abstract 'the shift' as subject, never the training. Own grep for 'this training|this piece|the training|this document|this supplementary|this reading' over body.txt → 1 hit (L85, already analysed as passing). Deletion test on L85 confirms it reads as a completed recap that survives, not cartography about a later beat.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": 3,
-      "rule_lead": "Lead with discipline, not failure mode.",
-      "verdict": "PASS",
-      "evidence": "Every `##` numbered-move header names a positive discipline ('Treat CI as feedback', 'Fan out review; converge on the pattern', 'Tier by blast radius', 'Eval latency is part of the loop', 'Skills don't just live in your kit', 'Get out fast'); none is titled after a failure word.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": 4,
-      "rule_lead": "Strategy-fidelity check.",
-      "verdict": "PASS",
-      "evidence": "Body cites external industry practice (Cloudflare, Intercom, Stripe, Cursor, etc.), not AE101's own forthcoming module content, so it can't front-run a downstream AE101 teaching moment. No per-module sequencing claim is made or contradicted.",
+      "evidence": "L83-87 ('## Where this fits in your AE101 arc') is this standalone supplementary's own closing bridge — its designed job, parallel to a module's Bridge/Next, since a supplementary has no canonical module-shape headers to carry that function. Applied the deletion test to L83's opening clause ('The loop at your desk is the one this training closed'): removing it, the paragraph still opens sensibly on 'These engineers run the same loop; they've been at it longer,' so the clause is thin, but its job (retrospectively anchoring the whole document's premise before the final call to action) matches the file's own stated design ('the IC's next-altitude reading after M6: the same loop, slightly wider lens' — maintainer block) rather than idle cartography about a later beat's job. Stays inside; no predicate-leak (nothing here promises what a later module will do).",
       "fix_hint": null,
       "blocking": false
     },
@@ -407,948 +366,1044 @@
       "rule_index": 5,
       "rule_lead": "Rough-cut drafts for articles.",
       "verdict": "N/A",
-      "evidence": "Fully composed, shipped prose with a Quality line (compendium-audited 2026-08-24); not a rough-cut drafting-stage artifact.",
+      "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
-      "carried_shape": "e21a0aad9b40f01c"
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
     },
     {
       "compendium": "check_writing.md",
       "rule_index": 10,
       "rule_lead": "Verbatim-frame-cite in reference artefact.",
       "verdict": "N/A",
-      "evidence": "No \"Frame to land\" reference-artefact section in this file; not that artefact type.",
+      "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
-      "carried_shape": "e21a0aad9b40f01c"
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
     },
     {
       "compendium": "check_writing.md",
       "rule_index": 16,
-      "rule_lead": "The `**What happened:**` block is OPTIONAL — default is to omit it (Antti-directed 2026-08-12, mandation removed from `curriculum/exercises/README.md`).",
+      "rule_lead": "The `**What happened:**` block is OPTIONAL.",
       "verdict": "N/A",
-      "evidence": "This is a reading, not an exercise; no \"What happened:\" recap block is expected or present.",
+      "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
-      "carried_shape": "e21a0aad9b40f01c"
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 22,
+      "rule_lead": "A claim binds to every body that states it, not just the one holding the stamp.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
     },
     {
       "compendium": "check_writing.md",
       "rule_index": 23,
-      "rule_lead": "A rule set reconstructed at session start goes stale inside the session — re-derive it per target, not per sweep.",
+      "rule_lead": "A rule set reconstructed at session start goes stale inside the session.",
       "verdict": "N/A",
-      "evidence": "Process rule governing multi-file authoring/audit sessions; not evaluable against a single file's static body text.",
+      "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
-      "carried_shape": "e21a0aad9b40f01c"
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
     },
     {
       "compendium": "check_writing.md",
       "rule_index": 24,
       "rule_lead": "One doc per scarce-attention audience; delta-only.",
       "verdict": "N/A",
-      "evidence": "Not a trainer/exec/sponsor-facing artifact; this is a student-facing supplementary.",
+      "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
-      "carried_shape": "e21a0aad9b40f01c"
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
     },
     {
       "compendium": "check_writing.md",
       "rule_index": 25,
       "rule_lead": "Trainer-facing text is self-contained.",
       "verdict": "N/A",
-      "evidence": "Not a trainer-facing file (trainer-guide/trainer-modules).",
+      "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
-      "carried_shape": "e21a0aad9b40f01c"
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 26,
-      "rule_lead": "A sentence saying how you'd know points at the outcome, not the nearest artifact.",
-      "verdict": "N/A",
-      "evidence": "No \"X tells you whether Y\" / \"you'll know it worked when\" self-witnessing clause present in body.",
-      "fix_hint": "",
-      "blocking": false,
-      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
-      "carried_shape": "e21a0aad9b40f01c"
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
     },
     {
       "compendium": "check_student_facing.md",
       "rule_index": 3,
       "rule_lead": "Business-audience word ban (Agents 101 default).",
       "verdict": "N/A",
-      "evidence": "Rule is explicitly scoped \"(Agents 101 default)\" — the SVP-marketing-flinch test for Agents 101's builder-leader audience. This is an AE101 engineer-audience file, governed instead by the AE101-specific vocabulary carve-outs (writing §4 audience contract, student_facing §2 assumed-known carve-out).",
+      "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
-      "carried_shape": "e21a0aad9b40f01c"
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 5,
+      "rule_lead": "Golden path only in body.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
     },
     {
       "compendium": "check_student_facing.md",
       "rule_index": 6,
       "rule_lead": "Trust Claude's defaults for structure.",
       "verdict": "N/A",
-      "evidence": "No fenced prompt content in this file (fence_ranges empty).",
+      "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
-      "carried_shape": "e21a0aad9b40f01c"
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
     },
     {
       "compendium": "check_student_facing.md",
       "rule_index": 7,
-      "rule_lead": "Q1/Q2/Q3 retro interview is banned at every module. Compound-shape varies per module — never repeat same Debrief.",
+      "rule_lead": "Q1/Q2/Q3 retro interview is banned at every module.",
       "verdict": "N/A",
-      "evidence": "No Debrief/retro exercise section in this supplementary.",
+      "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
-      "carried_shape": "e21a0aad9b40f01c"
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
     },
     {
       "compendium": "check_student_facing.md",
       "rule_index": 10,
       "rule_lead": "Simulation personas never alone.",
       "verdict": "N/A",
-      "evidence": "No self-study simulation content in this file.",
+      "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
-      "carried_shape": "e21a0aad9b40f01c"
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 12,
+      "rule_lead": "Student moves stay in conversation with agent.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
     },
     {
       "compendium": "check_student_facing.md",
       "rule_index": 18,
       "rule_lead": "Inline links use target's title, never filename.",
       "verdict": "N/A",
-      "evidence": "All links in this file are external citations to outside articles/blogs (with full descriptive titles), not references to another curriculum surface; the ordinal sub-clause (Step N/Phase N) also has no hits — no \"Step N\"/\"Phase N\"/\"the third bullet\" anywhere in body.",
+      "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
-      "carried_shape": "e21a0aad9b40f01c"
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 20,
+      "rule_lead": "Disambiguate shared-word collisions with Claude Code primitives on first student-authored use.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
     },
     {
       "compendium": "check_student_facing.md",
       "rule_index": 24,
       "rule_lead": "No meta-ask when student has already decided.",
       "verdict": "N/A",
-      "evidence": "No fenced-prompt or meta-ask pattern present (no prompts in this file).",
+      "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
-      "carried_shape": "e21a0aad9b40f01c"
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
     },
     {
       "compendium": "check_student_facing.md",
       "rule_index": 25,
       "rule_lead": "`.md` is default file type for student artifacts across curriculum.",
       "verdict": "N/A",
-      "evidence": "No \"Save it as <filename>\" instruction anywhere in body.",
+      "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
-      "carried_shape": "e21a0aad9b40f01c"
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 27,
-      "rule_lead": "Body \"read it\" / \"look at it\" / \"notice X\" after chat-print = dead weight.",
-      "verdict": "N/A",
-      "evidence": "No chat-print transcript is shown anywhere in this document for body prose to redundantly narrate; L27's \"Read the four outputs side by side\" is a prospective instruction for the reader's own future session, not narration of an already-printed artifact in this document.",
-      "fix_hint": "",
-      "blocking": false,
-      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
-      "carried_shape": "e21a0aad9b40f01c"
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
     },
     {
       "compendium": "check_student_facing.md",
       "rule_index": 29,
       "rule_lead": "Operational reminders live at moment of use, not only where introduced.",
       "verdict": "N/A",
-      "evidence": "No per-module operational setting (thinking-effort, model choice, mode tag, worktree convention) discussed in this file.",
+      "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
-      "carried_shape": "e21a0aad9b40f01c"
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 32,
+      "rule_lead": "Name the outcome; don't walk a professional through trivial mechanics.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
     },
     {
       "compendium": "check_student_facing.md",
       "rule_index": 34,
       "rule_lead": "Four sharing strategies (Agents 101 M7 canonical) — use verbatim.",
       "verdict": "N/A",
-      "evidence": "Agents 101 M7-specific rule; this is an AE101 M6 supplementary.",
+      "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
-      "carried_shape": "e21a0aad9b40f01c"
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
     },
     {
       "compendium": "check_student_facing.md",
       "rule_index": 35,
       "rule_lead": "Agents 101 M2+ Debrief — canonical shape.",
       "verdict": "N/A",
-      "evidence": "Agents 101-specific rule; this is AE101, which has no Q1/Q2/Q3-style Debrief convention to compare against.",
+      "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
-      "carried_shape": "e21a0aad9b40f01c"
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
     },
     {
       "compendium": "check_student_facing.md",
       "rule_index": 36,
       "rule_lead": "Trust the prompt over the scaffold.",
       "verdict": "N/A",
-      "evidence": "No scaffold-vs-prompt decision present in this file (no fenced prompts, no scaffold content).",
+      "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
-      "carried_shape": "e21a0aad9b40f01c"
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
     },
     {
       "compendium": "check_student_facing.md",
       "rule_index": 37,
       "rule_lead": "Mood is a design constraint, not a garnish.",
       "verdict": "N/A",
-      "evidence": "This is a supplementary, not one of the six numbered AE101 modules carrying a canonical per-module \"Mood (deliberate)\" entry in content-strategy.md, so there is no module-level mood target to check the draft against. Qualitatively the piece reads as consistent forward/practitioner-toned throughout and shows none of the named signature wrong-edits (no premature rescue, no eval-as-compliance, no graduation-ceremony framing).",
+      "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
-      "carried_shape": "e21a0aad9b40f01c"
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 38,
+      "rule_lead": "Exercise headers pass the build-squint test.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 1,
       "rule_lead": "No placeholders inside fences.",
       "verdict": "N/A",
-      "evidence": "No fenced prompt blocks or {{prompt:<key>}} markers in this file (fence_ranges: [], has_prompt_blocks: false) — rule governs prompt-block content, which this supplementary carries none of.",
+      "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
-      "carried_shape": "e21a0aad9b40f01c"
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 2,
       "rule_lead": "Every prompt block: one-sentence action lead-in.",
       "verdict": "N/A",
-      "evidence": "No fenced prompt blocks or {{prompt:<key>}} markers in this file (fence_ranges: [], has_prompt_blocks: false) — rule governs prompt-block content, which this supplementary carries none of.",
+      "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
-      "carried_shape": "e21a0aad9b40f01c"
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 3,
       "rule_lead": "Canonical shape — lead-in, label with destination, blank line, fence.",
       "verdict": "N/A",
-      "evidence": "No fenced prompt blocks or {{prompt:<key>}} markers in this file (fence_ranges: [], has_prompt_blocks: false) — rule governs prompt-block content, which this supplementary carries none of.",
+      "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
-      "carried_shape": "e21a0aad9b40f01c"
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 4,
       "rule_lead": "Installed Skills invoke by name, never path.",
       "verdict": "N/A",
-      "evidence": "No fenced prompt blocks or {{prompt:<key>}} markers in this file (fence_ranges: [], has_prompt_blocks: false) — rule governs prompt-block content, which this supplementary carries none of.",
+      "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
-      "carried_shape": "e21a0aad9b40f01c"
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 5,
       "rule_lead": "Chain by back-reference + deterministic path, never invented alias.",
       "verdict": "N/A",
-      "evidence": "No fenced prompt blocks or {{prompt:<key>}} markers in this file (fence_ranges: [], has_prompt_blocks: false) — rule governs prompt-block content, which this supplementary carries none of.",
+      "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
-      "carried_shape": "e21a0aad9b40f01c"
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 6,
       "rule_lead": "Chained-prompt isolation — don't leak downstream pipeline.",
       "verdict": "N/A",
-      "evidence": "No fenced prompt blocks or {{prompt:<key>}} markers in this file (fence_ranges: [], has_prompt_blocks: false) — rule governs prompt-block content, which this supplementary carries none of.",
+      "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
-      "carried_shape": "e21a0aad9b40f01c"
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 7,
       "rule_lead": "No session-resets mid-phase.",
       "verdict": "N/A",
-      "evidence": "No fenced prompt blocks or {{prompt:<key>}} markers in this file (fence_ranges: [], has_prompt_blocks: false) — rule governs prompt-block content, which this supplementary carries none of.",
+      "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
-      "carried_shape": "e21a0aad9b40f01c"
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 8,
       "rule_lead": "Multi-sample methods need structural enforcement.",
       "verdict": "N/A",
-      "evidence": "No fenced prompt blocks or {{prompt:<key>}} markers in this file (fence_ranges: [], has_prompt_blocks: false) — rule governs prompt-block content, which this supplementary carries none of.",
+      "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
-      "carried_shape": "e21a0aad9b40f01c"
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 9,
       "rule_lead": "Markdown shout (`**bold**`, `*italic*`) inside fenced prompts = dead weight in Claude Code.",
       "verdict": "N/A",
-      "evidence": "No fenced prompt blocks or {{prompt:<key>}} markers in this file (fence_ranges: [], has_prompt_blocks: false) — rule governs prompt-block content, which this supplementary carries none of.",
+      "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
-      "carried_shape": "e21a0aad9b40f01c"
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 10,
       "rule_lead": "Runtime-fork prompts: paired divs, shared chip.",
       "verdict": "N/A",
-      "evidence": "No fenced prompt blocks or {{prompt:<key>}} markers in this file (fence_ranges: [], has_prompt_blocks: false) — rule governs prompt-block content, which this supplementary carries none of.",
+      "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
-      "carried_shape": "e21a0aad9b40f01c"
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 11,
       "rule_lead": "Runtime-mechanical scaffolding asymmetry — MORE in less-fluent fork, not less.",
       "verdict": "N/A",
-      "evidence": "No fenced prompt blocks or {{prompt:<key>}} markers in this file (fence_ranges: [], has_prompt_blocks: false) — rule governs prompt-block content, which this supplementary carries none of.",
+      "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
-      "carried_shape": "e21a0aad9b40f01c"
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 12,
       "rule_lead": "Append-vs-integrate — name integration mode on regeneration with new context source.",
       "verdict": "N/A",
-      "evidence": "No fenced prompt blocks or {{prompt:<key>}} markers in this file (fence_ranges: [], has_prompt_blocks: false) — rule governs prompt-block content, which this supplementary carries none of.",
+      "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
-      "carried_shape": "e21a0aad9b40f01c"
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 13,
       "rule_lead": "Citation discipline — extend cite-or-flag scope + quote supporting sentence.",
       "verdict": "N/A",
-      "evidence": "No fenced prompt blocks or {{prompt:<key>}} markers in this file (fence_ranges: [], has_prompt_blocks: false) — rule governs prompt-block content, which this supplementary carries none of.",
+      "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
-      "carried_shape": "e21a0aad9b40f01c"
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 14,
       "rule_lead": "Niceness tax — name the edge or pin the line on regeneration.",
       "verdict": "N/A",
-      "evidence": "No fenced prompt blocks or {{prompt:<key>}} markers in this file (fence_ranges: [], has_prompt_blocks: false) — rule governs prompt-block content, which this supplementary carries none of.",
+      "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
-      "carried_shape": "e21a0aad9b40f01c"
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 15,
       "rule_lead": "Question-dump default — `in turn` too soft; two legal shapes.",
       "verdict": "N/A",
-      "evidence": "No fenced prompt blocks or {{prompt:<key>}} markers in this file (fence_ranges: [], has_prompt_blocks: false) — rule governs prompt-block content, which this supplementary carries none of.",
+      "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
-      "carried_shape": "e21a0aad9b40f01c"
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 16,
       "rule_lead": "Overwrite anxiety — name overwrite default on regeneration.",
       "verdict": "N/A",
-      "evidence": "No fenced prompt blocks or {{prompt:<key>}} markers in this file (fence_ranges: [], has_prompt_blocks: false) — rule governs prompt-block content, which this supplementary carries none of.",
+      "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
-      "carried_shape": "e21a0aad9b40f01c"
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 17,
       "rule_lead": "Preamble before action — design around it.",
       "verdict": "N/A",
-      "evidence": "No fenced prompt blocks or {{prompt:<key>}} markers in this file (fence_ranges: [], has_prompt_blocks: false) — rule governs prompt-block content, which this supplementary carries none of.",
+      "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
-      "carried_shape": "e21a0aad9b40f01c"
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 18,
       "rule_lead": "Self-critique register, not defense, when Claude interrogates own work.",
       "verdict": "N/A",
-      "evidence": "No fenced prompt blocks or {{prompt:<key>}} markers in this file (fence_ranges: [], has_prompt_blocks: false) — rule governs prompt-block content, which this supplementary carries none of.",
+      "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
-      "carried_shape": "e21a0aad9b40f01c"
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 19,
       "rule_lead": "Minimal hand-off + Claude self-augments for send-off prompts.",
       "verdict": "N/A",
-      "evidence": "No fenced prompt blocks or {{prompt:<key>}} markers in this file (fence_ranges: [], has_prompt_blocks: false) — rule governs prompt-block content, which this supplementary carries none of.",
+      "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
-      "carried_shape": "e21a0aad9b40f01c"
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 20,
       "rule_lead": "Grill before save — collaborative quality at artefact assembly.",
       "verdict": "N/A",
-      "evidence": "No fenced prompt blocks or {{prompt:<key>}} markers in this file (fence_ranges: [], has_prompt_blocks: false) — rule governs prompt-block content, which this supplementary carries none of.",
+      "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
-      "carried_shape": "e21a0aad9b40f01c"
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 21,
       "rule_lead": "Tell me what you wrote, not show me what you'll write.",
       "verdict": "N/A",
-      "evidence": "No fenced prompt blocks or {{prompt:<key>}} markers in this file (fence_ranges: [], has_prompt_blocks: false) — rule governs prompt-block content, which this supplementary carries none of.",
+      "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
-      "carried_shape": "e21a0aad9b40f01c"
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 22,
       "rule_lead": "Prompt-body edits require maintainer approval — registry files AND inline blocks.",
       "verdict": "N/A",
-      "evidence": "No fenced prompt blocks or {{prompt:<key>}} markers in this file (fence_ranges: [], has_prompt_blocks: false) — rule governs prompt-block content, which this supplementary carries none of.",
+      "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
-      "carried_shape": "e21a0aad9b40f01c"
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 23,
       "rule_lead": "Artifact destinations are explicit subpaths, never naked filenames (Agents 101-specific).",
       "verdict": "N/A",
-      "evidence": "No fenced prompt blocks or {{prompt:<key>}} markers in this file (fence_ranges: [], has_prompt_blocks: false) — rule governs prompt-block content, which this supplementary carries none of.",
+      "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
-      "carried_shape": "e21a0aad9b40f01c"
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 24,
       "rule_lead": "Don't restate session CWD inside prompt body.",
       "verdict": "N/A",
-      "evidence": "No fenced prompt blocks or {{prompt:<key>}} markers in this file (fence_ranges: [], has_prompt_blocks: false) — rule governs prompt-block content, which this supplementary carries none of.",
+      "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
-      "carried_shape": "e21a0aad9b40f01c"
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 25,
       "rule_lead": "`subagent` allowed in prompt blocks; explain why after prompt.",
       "verdict": "N/A",
-      "evidence": "No fenced prompt blocks or {{prompt:<key>}} markers in this file (fence_ranges: [], has_prompt_blocks: false) — rule governs prompt-block content, which this supplementary carries none of.",
+      "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
-      "carried_shape": "e21a0aad9b40f01c"
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 26,
       "rule_lead": "Maintainer-approval edits — ONE-AT-A-TIME, PRIORITY-ORDERED, FOUR-FIELD cards.",
       "verdict": "N/A",
-      "evidence": "No fenced prompt blocks or {{prompt:<key>}} markers in this file (fence_ranges: [], has_prompt_blocks: false) — rule governs prompt-block content, which this supplementary carries none of.",
+      "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
-      "carried_shape": "e21a0aad9b40f01c"
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 27,
       "rule_lead": "Name consumer at write time — `Save it as <path>` requires downstream reader.",
       "verdict": "N/A",
-      "evidence": "No fenced prompt blocks or {{prompt:<key>}} markers in this file (fence_ranges: [], has_prompt_blocks: false) — rule governs prompt-block content, which this supplementary carries none of.",
+      "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
-      "carried_shape": "e21a0aad9b40f01c"
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 28,
       "rule_lead": "Strong-bold prompt label is exactly `**Prompt**` — custom labels break renderer.",
       "verdict": "N/A",
-      "evidence": "No fenced prompt blocks or {{prompt:<key>}} markers in this file (fence_ranges: [], has_prompt_blocks: false) — rule governs prompt-block content, which this supplementary carries none of.",
+      "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
-      "carried_shape": "e21a0aad9b40f01c"
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 29,
       "rule_lead": "Normal work request before orchestration.",
       "verdict": "N/A",
-      "evidence": "No fenced prompt blocks or {{prompt:<key>}} markers in this file (fence_ranges: [], has_prompt_blocks: false) — rule governs prompt-block content, which this supplementary carries none of.",
+      "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
-      "carried_shape": "e21a0aad9b40f01c"
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 30,
       "rule_lead": "Live-test corrections preserve operator workflow.",
       "verdict": "N/A",
-      "evidence": "No fenced prompt blocks or {{prompt:<key>}} markers in this file (fence_ranges: [], has_prompt_blocks: false) — rule governs prompt-block content, which this supplementary carries none of.",
+      "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
-      "carried_shape": "e21a0aad9b40f01c"
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 31,
       "rule_lead": "Prompts live in registry; module/exercise/lecture files reference by marker.",
       "verdict": "N/A",
-      "evidence": "No fenced prompt blocks or {{prompt:<key>}} markers in this file (fence_ranges: [], has_prompt_blocks: false) — rule governs prompt-block content, which this supplementary carries none of.",
+      "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
-      "carried_shape": "e21a0aad9b40f01c"
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 32,
       "rule_lead": "Module names in prompt prose are fine — they ground the session.",
       "verdict": "N/A",
-      "evidence": "No fenced prompt blocks or {{prompt:<key>}} markers in this file (fence_ranges: [], has_prompt_blocks: false) — rule governs prompt-block content, which this supplementary carries none of.",
+      "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
-      "carried_shape": "e21a0aad9b40f01c"
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 33,
       "rule_lead": "Git-output greps asserting exact-N need multi-result fallback.",
       "verdict": "N/A",
-      "evidence": "No fenced prompt blocks or {{prompt:<key>}} markers in this file (fence_ranges: [], has_prompt_blocks: false) — rule governs prompt-block content, which this supplementary carries none of.",
+      "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
-      "carried_shape": "e21a0aad9b40f01c"
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 34,
       "rule_lead": "Disambiguation, anchors, and decision logic that bind Claude live INSIDE prompt fence.",
       "verdict": "N/A",
-      "evidence": "No fenced prompt blocks or {{prompt:<key>}} markers in this file (fence_ranges: [], has_prompt_blocks: false) — rule governs prompt-block content, which this supplementary carries none of.",
+      "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
-      "carried_shape": "e21a0aad9b40f01c"
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 35,
       "rule_lead": "Repeated Q&A → premature re-edits. Separate iteration from persistence.",
       "verdict": "N/A",
-      "evidence": "No fenced prompt blocks or {{prompt:<key>}} markers in this file (fence_ranges: [], has_prompt_blocks: false) — rule governs prompt-block content, which this supplementary carries none of.",
+      "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
-      "carried_shape": "e21a0aad9b40f01c"
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 36,
       "rule_lead": "Wide prompts split by logical move — paragraph breaks = cheapest scan-affordance.",
       "verdict": "N/A",
-      "evidence": "No fenced prompt blocks or {{prompt:<key>}} markers in this file (fence_ranges: [], has_prompt_blocks: false) — rule governs prompt-block content, which this supplementary carries none of.",
+      "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
-      "carried_shape": "e21a0aad9b40f01c"
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 37,
       "rule_lead": "Orient saved rule by where it FIRES, not surface activity producing it.",
       "verdict": "N/A",
-      "evidence": "No fenced prompt blocks or {{prompt:<key>}} markers in this file (fence_ranges: [], has_prompt_blocks: false) — rule governs prompt-block content, which this supplementary carries none of.",
+      "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
-      "carried_shape": "e21a0aad9b40f01c"
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 38,
       "rule_lead": "Body lead-in mirrors prompt's opening phrasing.",
       "verdict": "N/A",
-      "evidence": "No fenced prompt blocks or {{prompt:<key>}} markers in this file (fence_ranges: [], has_prompt_blocks: false) — rule governs prompt-block content, which this supplementary carries none of.",
+      "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
-      "carried_shape": "e21a0aad9b40f01c"
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 39,
       "rule_lead": "Declare `permission-mode:` when paste requires specific Claude Code mode.",
       "verdict": "N/A",
-      "evidence": "No fenced prompt blocks or {{prompt:<key>}} markers in this file (fence_ranges: [], has_prompt_blocks: false) — rule governs prompt-block content, which this supplementary carries none of.",
+      "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
-      "carried_shape": "e21a0aad9b40f01c"
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 40,
       "rule_lead": "Verify session boundary before deciding prompt's context-carrying.",
       "verdict": "N/A",
-      "evidence": "No fenced prompt blocks or {{prompt:<key>}} markers in this file (fence_ranges: [], has_prompt_blocks: false) — rule governs prompt-block content, which this supplementary carries none of.",
+      "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
-      "carried_shape": "e21a0aad9b40f01c"
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 41,
       "rule_lead": "Artifact-vs-STOP tail ordering — last imperative wins.",
       "verdict": "N/A",
-      "evidence": "No fenced prompt blocks or {{prompt:<key>}} markers in this file (fence_ranges: [], has_prompt_blocks: false) — rule governs prompt-block content, which this supplementary carries none of.",
+      "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
-      "carried_shape": "e21a0aad9b40f01c"
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 42,
       "rule_lead": "Headless-runner discipline — tail every prompt with no-AUQ guard.",
       "verdict": "N/A",
-      "evidence": "No fenced prompt blocks or {{prompt:<key>}} markers in this file (fence_ranges: [], has_prompt_blocks: false) — rule governs prompt-block content, which this supplementary carries none of.",
+      "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
-      "carried_shape": "e21a0aad9b40f01c"
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 43,
       "rule_lead": "Long-running prompts stream progress — never go silent.",
       "verdict": "N/A",
-      "evidence": "No fenced prompt blocks or {{prompt:<key>}} markers in this file (fence_ranges: [], has_prompt_blocks: false) — rule governs prompt-block content, which this supplementary carries none of.",
+      "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
-      "carried_shape": "e21a0aad9b40f01c"
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 44,
       "rule_lead": "A leading-looking line can be a forcing function; prefer the simpler prompt.",
       "verdict": "N/A",
-      "evidence": "No fenced prompt blocks or {{prompt:<key>}} markers in this file (fence_ranges: [], has_prompt_blocks: false) — rule governs prompt-block content, which this supplementary carries none of.",
+      "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
-      "carried_shape": "e21a0aad9b40f01c"
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 45,
       "rule_lead": "Prompt paths match Builder scope.",
       "verdict": "N/A",
-      "evidence": "No fenced prompt blocks or {{prompt:<key>}} markers in this file (fence_ranges: [], has_prompt_blocks: false) — rule governs prompt-block content, which this supplementary carries none of.",
+      "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
-      "carried_shape": "e21a0aad9b40f01c"
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 46,
       "rule_lead": "Output shape — trust Claude's defaults, don't pad.",
       "verdict": "N/A",
-      "evidence": "No fenced prompt blocks or {{prompt:<key>}} markers in this file (fence_ranges: [], has_prompt_blocks: false) — rule governs prompt-block content, which this supplementary carries none of.",
+      "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
-      "carried_shape": "e21a0aad9b40f01c"
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 47,
       "rule_lead": "\"Add X and regenerate\" is a trap.",
       "verdict": "N/A",
-      "evidence": "No fenced prompt blocks or {{prompt:<key>}} markers in this file (fence_ranges: [], has_prompt_blocks: false) — rule governs prompt-block content, which this supplementary carries none of.",
+      "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
-      "carried_shape": "e21a0aad9b40f01c"
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 48,
       "rule_lead": "Vary closings deliberately.",
       "verdict": "N/A",
-      "evidence": "No fenced prompt blocks or {{prompt:<key>}} markers in this file (fence_ranges: [], has_prompt_blocks: false) — rule governs prompt-block content, which this supplementary carries none of.",
+      "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
-      "carried_shape": "e21a0aad9b40f01c"
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 49,
+      "rule_lead": "A take-home prompt asks for one bounded build.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
     },
     {
       "compendium": "check_sales_copy.md",
       "rule_index": 1,
       "rule_lead": "CTO-repeatable test.",
       "verdict": "N/A",
-      "evidence": "Not a sales/marketing-page surface; this is AE101 student-facing curriculum body (an internal supplementary), governed by check_writing/check_student_facing instead.",
+      "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
-      "carried_shape": "e21a0aad9b40f01c"
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
     },
     {
       "compendium": "check_sales_copy.md",
       "rule_index": 2,
       "rule_lead": "No stylized phrase-pairs.",
       "verdict": "N/A",
-      "evidence": "Not a sales/marketing-page surface; this is AE101 student-facing curriculum body (an internal supplementary), governed by check_writing/check_student_facing instead.",
+      "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
-      "carried_shape": "e21a0aad9b40f01c"
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
     },
     {
       "compendium": "check_sales_copy.md",
       "rule_index": 3,
       "rule_lead": "Strip strategy-doc vocabulary.",
       "verdict": "N/A",
-      "evidence": "Not a sales/marketing-page surface; this is AE101 student-facing curriculum body (an internal supplementary), governed by check_writing/check_student_facing instead.",
+      "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
-      "carried_shape": "e21a0aad9b40f01c"
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
     },
     {
       "compendium": "check_sales_copy.md",
       "rule_index": 4,
       "rule_lead": "Earn every term.",
       "verdict": "N/A",
-      "evidence": "Not a sales/marketing-page surface; this is AE101 student-facing curriculum body (an internal supplementary), governed by check_writing/check_student_facing instead.",
+      "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
-      "carried_shape": "e21a0aad9b40f01c"
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
     },
     {
       "compendium": "check_sales_copy.md",
       "rule_index": 5,
       "rule_lead": "No M-number cross-references.",
       "verdict": "N/A",
-      "evidence": "Not a sales/marketing-page surface; this is AE101 student-facing curriculum body (an internal supplementary), governed by check_writing/check_student_facing instead.",
+      "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
-      "carried_shape": "e21a0aad9b40f01c"
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
     },
     {
       "compendium": "check_sales_copy.md",
       "rule_index": 6,
       "rule_lead": "\"What you build\" = 20–30 words.",
       "verdict": "N/A",
-      "evidence": "Not a sales/marketing-page surface; this is AE101 student-facing curriculum body (an internal supplementary), governed by check_writing/check_student_facing instead.",
+      "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
-      "carried_shape": "e21a0aad9b40f01c"
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
     },
     {
       "compendium": "check_sales_copy.md",
       "rule_index": 7,
       "rule_lead": "Describe failure modes, don't name them.",
       "verdict": "N/A",
-      "evidence": "Not a sales/marketing-page surface; this is AE101 student-facing curriculum body (an internal supplementary), governed by check_writing/check_student_facing instead.",
+      "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
-      "carried_shape": "e21a0aad9b40f01c"
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
     },
     {
       "compendium": "check_sales_copy.md",
       "rule_index": 8,
       "rule_lead": "Agency on right noun.",
       "verdict": "N/A",
-      "evidence": "Not a sales/marketing-page surface; this is AE101 student-facing curriculum body (an internal supplementary), governed by check_writing/check_student_facing instead.",
+      "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
-      "carried_shape": "e21a0aad9b40f01c"
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
     },
     {
       "compendium": "check_sales_copy.md",
       "rule_index": 9,
       "rule_lead": "No em dashes on site.",
       "verdict": "N/A",
-      "evidence": "Not a sales/marketing-page surface; this is AE101 student-facing curriculum body (an internal supplementary), governed by check_writing/check_student_facing instead.",
+      "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
-      "carried_shape": "e21a0aad9b40f01c"
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
     },
     {
       "compendium": "check_sales_copy.md",
       "rule_index": 10,
       "rule_lead": "No \"What research says\" callout boxes.",
       "verdict": "N/A",
-      "evidence": "Not a sales/marketing-page surface; this is AE101 student-facing curriculum body (an internal supplementary), governed by check_writing/check_student_facing instead.",
+      "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
-      "carried_shape": "e21a0aad9b40f01c"
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
     },
     {
       "compendium": "check_sales_copy.md",
       "rule_index": 11,
       "rule_lead": "Don't describe mood arc externally.",
       "verdict": "N/A",
-      "evidence": "Not a sales/marketing-page surface; this is AE101 student-facing curriculum body (an internal supplementary), governed by check_writing/check_student_facing instead.",
+      "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
-      "carried_shape": "e21a0aad9b40f01c"
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
     },
     {
       "compendium": "check_sales_copy.md",
       "rule_index": 12,
       "rule_lead": "Ownership claims scope to customer-built artifacts.",
       "verdict": "N/A",
-      "evidence": "Not a sales/marketing-page surface; this is AE101 student-facing curriculum body (an internal supplementary), governed by check_writing/check_student_facing instead.",
+      "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
-      "carried_shape": "e21a0aad9b40f01c"
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
     },
     {
       "compendium": "check_sales_copy.md",
       "rule_index": 13,
       "rule_lead": "Numbers carry their denominator + axis.",
       "verdict": "N/A",
-      "evidence": "Not a sales/marketing-page surface; this is AE101 student-facing curriculum body (an internal supplementary), governed by check_writing/check_student_facing instead.",
+      "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
-      "carried_shape": "e21a0aad9b40f01c"
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 1,
       "rule_lead": "Mood contract named.",
       "verdict": "N/A",
-      "evidence": "Not one of the six numbered AE101 modules carrying a canonical per-module \"Mood (deliberate)\" paragraph in content-strategy.md; this is a supplementary attached to M6, with no module-level mood target of its own to check the draft against.",
+      "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
-      "carried_shape": "e21a0aad9b40f01c"
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 2,
       "rule_lead": "Epistemic mood ≠ punitive mood.",
       "verdict": "N/A",
-      "evidence": "Rule fires specifically \"when module's mood is unease\"; this file has no unease-mood target (see §1) and carries no ashamed/punitive framing of the reader anywhere in body.",
+      "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
-      "carried_shape": "e21a0aad9b40f01c"
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 3,
+      "rule_lead": "Lead with discipline, not failure mode.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 4,
+      "rule_lead": "Strategy-fidelity check.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 5,
       "rule_lead": "Strategic themes recur in Key Concepts.",
       "verdict": "N/A",
-      "evidence": "No `## Key Concepts` section in this file (supplementary, not a module file).",
+      "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
-      "carried_shape": "e21a0aad9b40f01c"
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 6,
       "rule_lead": "Key Concepts shape — theme breadcrumbs, not standalone section.",
       "verdict": "N/A",
-      "evidence": "No `## Key Concepts` section in this file.",
+      "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
-      "carried_shape": "e21a0aad9b40f01c"
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 7,
       "rule_lead": "What You'll Learn shape — capability register, not syllabus.",
       "verdict": "N/A",
-      "evidence": "No `## What You'll Learn` section in this file.",
+      "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "e382f2ea306f3cd73f11479d0d11095d816dcf2fe3242e6425a1c6e0255fe1ce",
-      "carried_shape": "e21a0aad9b40f01c"
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 8,
+      "rule_lead": "Strategy doc carries strategy, not structure.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "583de5734858b67be8dfd619a9d1c4c051a35a68e0f241b2b9b0013393f4286d",
+      "carried_shape": "43685ab34d2a22a8"
     }
   ],
-  "blocking_findings_count": 0,
-  "todos_count": 0
+  "drift_rules_reread": [
+    {
+      "rule": "check_writing.md §3",
+      "verdict": "PASS — re-read at current 2026-09-05-dated wording (phantom do-not-reintroduce sub-clause); body/maintainer/backing checked against curriculum/backing-format.md's canonical field specs for the Stance `decided:` and Sources-correction lines, which name exactly this content as their intended payload. No violation found; see rules_evaluated row check_writing.md#3."
+    }
+  ],
+  "accept_notes_found": [
+    "L172: Declined at the 2026-09-03 polish pass — headers 4 and 5 stay declarative (check_student_facing.md §17); judges should not re-file. Honored on check_student_facing.md#17.",
+    "L168-171: Org-diversity check + vendor-venue-cite note — standing rationale for check_writing.md#11 attribution cap and research-claims vendor-venue flagging; consulted, not itself a body-prose finding surface."
+  ]
 }

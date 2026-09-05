@@ -1,11 +1,11 @@
 {
-  "class": "storytelling",
+  "class": "story",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/supplementary/the-lethal-trifecta.md",
-  "verdict": "REVISE",
   "training": "ae101",
-  "body_sha": "57065e1836c35546515acb8d7ab8a670604e21aac30cf4e3b76ee0d214b2eb7c",
+  "verdict": "PASS",
+  "body_sha": "48b84c755519747be268cae1d8e14b770ab9995b7a6d2f71ebcbde3951c59236",
   "shape_hash": "776191893f0953c7",
-  "module_mood_contract": "Sits after M3's close ('earned trust'), before M4's 'curious readiness' -- structural risk-awareness, not a failure the student caused ('Not risky. Structural.'). Regenerated this session: the prior 2026-07-11 trace described a second firing at M4's send-off that the maintainer block itself records as removed 2026-08-12; that framing does not carry forward. Current reality (see check_strategy_tie_in.md rule 4 finding below): no student-facing surface in the corpus links inline to this page -- it is reachable only by independently finding it in the flat end-of-training supplementary appendix.",
+  "module_mood_contract": "Sits after M3's close ('earned trust'), before M4's 'curious readiness' -- structural risk-awareness, not a failure the student caused ('Not risky. Structural.'). The page is reached from the training index's supplementary row only; M3's own pre-read links Willison's external essay, not this page. That is the documented, current design (Antti 2026-08-12/2026-08-15), not a gap -- the maintainer block was corrected this diff to state it in present tense instead of the stale 'linked from M3' claim a prior story pass caught.",
   "trace_status": "regenerated",
   "rules_evaluated": [
     {
@@ -13,7 +13,101 @@
       "rule_index": 1,
       "rule_lead": "Meta-frame lectures = closers, not openers.",
       "verdict": "PASS",
-      "evidence": "Not a narrative recognition-lecture naming a pattern the student already lived -- it is conceptual/vocabulary content (\"prompt injection\" named once as a searchable field handle, line 13). Rule 1's own placement diagnostic routes conceptual/vocabulary content to 'mid-module where vocab earns itself'; this page is scoped between M3 (earn-the-trust, which teaches the STRIDE/access-map muscle it extends) and M4 (run-the-first-experiment, the first long send-off) -- correct arc position by content type. Whether the student actually ARRIVES at that position is a separate, wiring-level question, filed as a finding under check_strategy_tie_in.md rule 4 below, not a violation of this rule.",
+      "evidence": "Not a narrative recognition-lecture naming a pattern the student already lived -- conceptual/vocabulary content ('prompt injection' named once as a searchable field handle, line 13). The rule's own placement diagnostic routes conceptual/vocabulary content to 'mid-module where vocab earns itself'; this page sits between M3 (earn-the-trust, which teaches the STRIDE/access-map muscle it extends) and M4 (the first long send-off) -- correct arc position by content type.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 3,
+      "rule_lead": "No cross-module sequencing in lecture bodies.",
+      "verdict": "PASS",
+      "evidence": "Ran `grep -niE '\\bM[0-9]\\b|\\bmodule\\b'` against body_regions[1,29] this session -> exit 1, zero hits. Cross-module wiring language (M3, M4, M5) lives entirely below the `<!-- maintainer -->` fence, not in the shared body.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 4,
+      "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
+      "verdict": "PASS",
+      "evidence": "Re-read current wording, which added a 'bare arc labels' failure mode (2026-09-03) since this file was last audited -- none of the four headers is an empty arc-slot label ('Wrap-up', 'Recap', 'What happened'). All four still name a concept or a claim the body licenses: 'Three capabilities that must not meet' (frame, no claim to verify), \"An LLM can't reliably tell instructions from data\" (claim; body line 11 states it with 'reliably' preserved, not dropped, even after the redundant restated lead sentence was trimmed from the bullet this diff), 'The attacker targets the agent, not the system' (claim; body line 17 argues exactly this), 'Removing any one leg breaks the trifecta' (claim; lines 23-26 license 'any one leg' and the closing 'Three legs. Cut one.'). No two headers share phrasing; no unsupported universals ('most agent setups', line 7, stays hedged).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 5,
+      "rule_lead": "A slide's BODY is size-bounded, not just its header (S4's sibling) -- under ~210 readable words AND <=6 bullets, enforced by scripts/check-slide-size.js.",
+      "verdict": "PASS",
+      "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/supplementary/the-lethal-trifecta.md --report` this session -> 'Three capabilities that must not meet' 156w/3b, 'Removing any one leg breaks the trifecta' 152w/4b, \"An LLM can't reliably tell instructions from data\" 116w/3b (down from 124w before the redundant lead sentence was trimmed this diff), 'The attacker targets the agent, not the system' 122w/3b; summary 'oversized: 0 ... every slide is within limits', exit clean.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 27,
+      "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
+      "verdict": "PASS",
+      "evidence": "Ran `grep -niE 'discuss|share|neighbou?r|pair up|tell the room|compare with|take [0-9]+ (second|minute)|\\broom\\b|talk to|trainer'` against body_regions[1,29] this session -> exit 1, zero hits. Every sentence addresses the mechanism and the leg-cutting move; none of the three carve-outs (room-harvest, human-round mode cue, sparing room-naming) is invoked or needed. The body-view's `group_beat_markers: true` signal is a false positive -- the only regex hit anywhere in the file is 'together' in line 5 ('Each leg is useful on its own; together they are a leak an attacker can operate remotely'), describing the three capabilities combining, not a room.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 1,
+      "rule_lead": "Mood contract named.",
+      "verdict": "PASS",
+      "evidence": "Regenerated the sim trace this session (curriculum/evals/sim-cache/ae101--supplementary--the-lethal-trifecta.persona.json) -- the cached content_sha (a912134a...) did not match the current body_sha (8dda55c8...) after the maintainer-block correction and the slide-2 trim, so per dispatch-preamble S51 it was regenerated rather than trusted. Phase 1 mood_score 8/10, close mood_score 8/10, both at the 8+ teaching-beat floor; content-as-read is unchanged in substance by the trim.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 2,
+      "rule_lead": "Epistemic mood != punitive mood.",
+      "verdict": "PASS",
+      "evidence": "Line 6: 'Not risky. Structural. ... No amount of model quality makes the combination safe, because the flaw is in how the model reads, not in how well it behaves.' Line 7: 'Most agent setups assemble all three without anyone deciding to.' Both name the hazard as an ambient system property, never a personal error. Trace's confusion_flags are cross-referencing cost ('a couple of seconds'), not shame-toned.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 3,
+      "rule_lead": "Lead with discipline, not failure mode.",
+      "verdict": "PASS",
+      "evidence": "The title is the rule's own worked example of its carve-out: 'Title that IS the searchable handle of a canonical result / named practice (Bainbridge's Ironies of Automation, the lethal trifecta) stays failure-named.' What the carve-out still requires -- not ending on the failure name with no doable move -- holds: section 4's header is a positive-discipline claim ('Removing any one leg breaks the trifecta'), and the page closes on 'Three legs. Cut one.' / 'Cutting a leg is ordinary engineering' (lines 24, 28).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 4,
+      "rule_lead": "Strategy-fidelity check (consolidates front-run check, module-to-module arc, Big Idea fidelity, mood-doesn't-resolve-early).",
+      "verdict": "PASS",
+      "evidence": "This rule fired REVISE on this file in the prior story pass (body_sha 57065e18) because the maintainer block asserted 'Reached from M3's optional pre-read and from M3's own body' while an exhaustive grep of the corpus showed M3's only outbound link (earn-the-trust.md:16) points at Willison's external essay, not this page. Diffing e11bbeb4..HEAD this session shows that finding's exact fix landed: STATUS (line 34) and Placement (line 38) now read 'Reached from the training index's supplementary row only; M3's body and pre-read link Willison's original piece, not this page' -- present-tense, accurate, and matching the recorded resolution (`resolution.settled: refuted`, 2026-08-28: 'adding the link would violate the do-not-re-add decision... maintainer-block stale claims fixed separately'). Front-run and mood-doesn't-resolve-early re-checked clean: content stays scoped to the injection mechanism and the leg-cutting check, doesn't reach into M5/M6 material.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": null,
+      "judge_owned": true,
+      "rule_lead": "Whole-compendium scope call -- storytelling is not primary owner of check_prompts.md; the template's own Completeness contract obliges full per-rule coverage only for check_lectures.md, plus a named owned subset of check_pedagogy.md/check_strategy_tie_in.md. check_prompts.md is unmentioned there, so no per-rule ledger is owed by story.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "not a story-owned compendium; also structurally moot -- zero fenced prompt blocks / {{prompt:}} markers (has_prompt_blocks: false). Drift-rechecked S2, S17, S20, S40 at current wording per dispatch instructions; none change this file's applicability since none has a fence to bind to.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_workshop.md",
+      "rule_index": null,
+      "judge_owned": true,
+      "rule_lead": "Whole-compendium scope call -- storytelling is not primary owner of check_workshop.md (fires alongside check_pedagogy.md per content-rules.md, pedagogy class owns it); no beat's output belongs to a group here.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "not a story-owned compendium; also structurally moot -- solo reading page, no room-scale adjudication. The body-view's group_beat_markers:true signal is a false positive on the word 'together' in line 5 (three capabilities combining, not a room), confirmed by full-file grep this session.",
       "fix_hint": null,
       "blocking": false
     },
@@ -23,35 +117,10 @@
       "rule_lead": "Minimal lecturing before contrast-mood exercises.",
       "verdict": "N/A",
       "evidence": "This page sits between M3 and M4, neither of which is the contrast-mood (M5-style learn-through-doing-then-name-it) slot the rule targets; site/layouts/curriculum.js registry comment tags it '// M3', and M5 is a separate module two hops downstream. Dosage constraint doesn't bind here.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_lectures.md",
-      "rule_index": 3,
-      "rule_lead": "No cross-module sequencing in lecture bodies.",
-      "verdict": "PASS",
-      "evidence": "Ran `sed -n '1,29p' <file> | grep -niE '\\bM[0-9]\\b|\\bmodule\\b'` this session (body region per view.json body_regions [1,29]) -> zero hits, exit code 1. Cross-module wiring language lives entirely in the maintainer block (below the fence) and in the linking module files' own sections, not in this shared body.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_lectures.md",
-      "rule_index": 4,
-      "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
-      "verdict": "PASS",
-      "evidence": "Four headers re-read cold this session against current rule wording: 'Three capabilities that must not meet' (names the frame, no claim to verify), \"An LLM can't reliably tell instructions from data\" (claim; body line 11 states the identical proposition -- 'reliably' qualifier preserved, not dropped), 'The attacker targets the agent, not the system' (claim; body line 17 argues exactly this shift), 'Removing any one leg breaks the trifecta' (claim; body lines 23-26 license it -- 'any one' matches 'Then cut one' / 'only removing a leg changes the structure'). No two headers share phrasing. No empty containers, no orphan mystery/mood header, no dropped qualifiers, no unsupported universals -- 'most agent setups' (line 7) stays hedged, not 'all'.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_lectures.md",
-      "rule_index": 5,
-      "rule_lead": "A slide's BODY is size-bounded, not just its header (SS4's sibling) -- under ~210 readable words AND <=6 bullets, enforced by scripts/check-slide-size.js.",
-      "verdict": "PASS",
-      "evidence": "Re-read current rule text (drift flag: this rule's wording/threshold was named as possibly moved since the prior audit) and ran the actual enforcement script this session: `node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/supplementary/the-lethal-trifecta.md --report` -> 'Three capabilities that must not meet' 156w/3b, 'Removing any one leg breaks the trifecta' 152w/4b, \"An LLM can't reliably tell instructions from data\" 124w/3b, 'The attacker targets the agent, not the system' 122w/3b; script summary: 'oversized: 0 ... [checkmark] every slide is within limits', exit clean. All four slides sit well under the 210w/6-bullet ceiling; no drift-driven finding on this file.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "57065e1836c35546515acb8d7ab8a670604e21aac30cf4e3b76ee0d214b2eb7c",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_lectures.md",
@@ -59,8 +128,10 @@
       "rule_lead": "A prompt inside a lecture is a trainer show-and-tell, never a room follow-along.",
       "verdict": "N/A",
       "evidence": "Rule fires on `{{prompt:<key>}}` / inline `**Prompt**` blocks. Confirmed zero of either: view.json signals.has_prompt_blocks = false, and `node scripts/expand-md.js <file>` output is byte-identical to source (sha256 a912134a... on both, verified this session) -- no markers to expand. This is a doctrine/reference page with no fenced prompt content at all.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "57065e1836c35546515acb8d7ab8a670604e21aac30cf4e3b76ee0d214b2eb7c",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -68,53 +139,10 @@
       "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
       "verdict": "N/A",
       "evidence": "Zero fenced `**Prompt**` blocks and zero `{{prompt:<key>}}` markers (same expand-md.js check as check_lectures rule 6 above). Pure reference/doctrine page; nothing for a forcing function to live in or leak out of. The three-question leg-audit IS a forcing-function-shaped checklist, but it is authored as this page's own body content (a reading, not an exercise) -- not a student-copied prompt this rule governs. N/A here does not trip the top-level REVISE gate; blocking:true is this rule's category default.",
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_pedagogy.md",
-      "rule_index": 27,
-      "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
-      "verdict": "PASS",
-      "evidence": "Ran `sed -n '1,29p' <file> | grep -niE 'discuss|share|neighbou?r|pair up|tell the room|compare with|take [0-9]+ (second|minute)|\\broom\\b|talk to|trainer'` this session -> zero hits, exit 1. Every sentence addresses the work itself (the mechanism, the legs, the cutting moves); none of the three carve-outs (room-harvest, mode-defining human-round cue, sparing room-naming) is invoked or needed.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": 1,
-      "rule_lead": "Mood contract named.",
-      "verdict": "PASS",
-      "evidence": "Regenerated sim trace this session (curriculum/evals/sim-cache/ae101--supplementary--the-lethal-trifecta.persona.json; prior trace's content_sha 4f0be657... did not match either the current whole-file sha256 (a912134a...) or the current body-only sha256 (3d01d409...), so per dispatch-preamble SS51 it was regenerated rather than trusted). Phase 1 mood_score 8/10, close mood_score 8/10, both at the 8+ teaching-beat floor -- content-as-read still lands (page is a teaching beat throughout, no setup/launch sub-beats to exempt). Note: the regenerated trace's is_me_rating drops to 7 to reflect a reachability concern, filed separately as a blocking finding under rule 4 below rather than scored into mood, since mood measures the felt experience of the content once read, not the odds of arriving at it.",
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": 2,
-      "rule_lead": "Epistemic mood != punitive mood.",
-      "verdict": "PASS",
-      "evidence": "Line 6: 'Not risky. Structural. ... No amount of model quality makes the combination safe, because the flaw is in how the model reads, not in how well it behaves.' Line 7: 'Most agent setups assemble all three without anyone deciding to.' Both name the hazard as an ambient system property, never a personal error or something the student did wrong. Regenerated trace's confusion_flags are cross-referencing costs ('a couple of seconds'), not shame-toned.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": 3,
-      "rule_lead": "Lead with discipline, not failure mode.",
-      "verdict": "PASS",
-      "evidence": "Title is Willison's own coined, sourced, field-adopted term ('the lethal trifecta') -- matches this rule's own named carve-out for 'named canonical results' (explicitly names 'the lethal trifecta' as an example alongside Bainbridge's Ironies of Automation). No module Big Idea section exists on this reference-page surface to separately re-check. What the carve-out still requires -- not ending on the failure name with no doable move -- holds: section 4's header is a positive-discipline claim ('Removing any one leg breaks the trifecta'), and the page closes on 'Three legs. Cut one.' / 'Cutting a leg is ordinary engineering' (lines 24, 28), converting the hazard into an operational move before the reader leaves. The epistemic reframe starts early too -- line 6, two sentences into section 1.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": 4,
-      "rule_lead": "Strategy-fidelity check (consolidates front-run check, module-to-module arc, Big Idea fidelity, mood-doesn't-resolve-early).",
-      "verdict": "REVISE",
-      "evidence": "Front-run and mood-doesn't-resolve-early both check clean: content stays scoped to the injection mechanism and the leg-cutting check, doesn't reach into M5's Ronacher-pattern or M6's skill-encoding material, and leaves M4/M5's real tension (task-difficulty uncertainty, packaged-vs-un-packaged contrast) untouched. MODULE-TO-MODULE ARC fails. The maintainer block asserts (line 34) 'Reached from M3's optional pre-read and from M3's own body; no forward-pointing copy anywhere else' and (line 38) 'linked from M3 (earn-the-trust owns the security beat...)'. Verified this session by exhaustive grep: `grep -rn \"the-lethal-trifecta\" curriculum/ --include='*.md'` and a follow-up grep of every occurrence of 'lethal' inside earn-the-trust.md (the named M3 host) turn up exactly one student-facing line -- earn-the-trust.md:16, 'Optional pre-reads before this module: Simon Willison, [The lethal trifecta for AI agents](https://simonwillison.net/...)' -- which links to WILLISON'S EXTERNAL ESSAY, not to this internal page. No other module, lecture, or reference file in the AE101 corpus contains an inline markdown link to `supplementary/the-lethal-trifecta.md` anywhere above a maintainer fence (the one other corpus hit, curriculum/lectures/ironies-of-automation.md, is below its own `<!-- maintainer -->` line, editorial commentary only). Cross-checked against the site's build path (scripts/build-workbook.js renderStandalone/standaloneHtml, lines ~402-431): all nine registered AE101 supplementaries render as a single flat appendix concatenated AFTER all six modules, with no per-module interleaving or section grouping -- so 'linked from M3' cannot mean appendix position either; it can only mean an inline body pointer, which does not exist. Compared against all eight sibling supplementaries in the same registry, every one of which DOES carry a real inline link from its claimed host: build-a-project-from-zero <- prework.md:34; agentic-engineering-progression <- getting-going.md:75; verification-asymmetry <- run-the-first-experiment.md:80 and learn-from-the-test.md:10; the-context-ceiling <- earn-the-trust.md:106 and run-the-first-experiment.md:12; clean-code-is-steering <- learn-from-the-test.md:10; how-the-best-do-ci-cd <- spot-gaps-build-the-loop.md:78; workflow-composition-lineages and skill-stacking <- curriculum/lectures/composing-the-workflow.md:26,28 (a lecture wired into M6). the-lethal-trifecta is the only one of nine with none. HARM: this rule protects the module-to-module arc the strategy doc encodes -- this page's whole stated job (per its own Placement note) is to 'extend the same muscle' the student just built at M3 before the M4 send-off; if nothing carries the student here, the reinforcement the arc depends on does not happen for a student following the corpus as wired, regardless of how good the page reads once opened (regenerated trace, phase 1 mood 8/10, but is_me_rating 7 -- 'I'd probably never have opened this page at all'). This is not a stale accept-note: the 2026-08-12/08-15 maintainer notes bless REMOVING the M4 double-firing and the M3 `## Next` pre-leash beat, reasoning that 'the pre-read already points at' this page -- but the pre-read (earn-the-trust.md:16) points at Willison's external post, not at this file, so that assumption doesn't hold and nothing in the accept-notes anticipates or blesses a fully unlinked page.",
-      "fix_hint": "Add a real inline link to this page from earn-the-trust.md (its pre-read list or STRIDE/access-map beat), matching the convention every sibling supplementary follows -- OR, if the intent genuinely is 'Willison's original is the pre-read and this page is a pure fallback/backup,' correct the maintainer block's Placement/STATUS lines (34, 38) to stop claiming an inline link that doesn't exist. Module-body edit is card-shaped per check_prompts.md SS26 (student reads it); the maintainer-block correction is not.",
-      "blocking": true
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "57065e1836c35546515acb8d7ab8a670604e21aac30cf4e3b76ee0d214b2eb7c",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_strategy_tie_in.md",
@@ -122,8 +150,10 @@
       "rule_lead": "Strategic themes recur in Key Concepts.",
       "verdict": "N/A",
       "evidence": "Module-only section (`## Key Concepts`); this supplementary reference page has no such heading.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "57065e1836c35546515acb8d7ab8a670604e21aac30cf4e3b76ee0d214b2eb7c",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_strategy_tie_in.md",
@@ -131,8 +161,10 @@
       "rule_lead": "Key Concepts shape -- theme breadcrumbs, not standalone section.",
       "verdict": "N/A",
       "evidence": "No Key Concepts section on this surface type.",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "57065e1836c35546515acb8d7ab8a670604e21aac30cf4e3b76ee0d214b2eb7c",
+      "carried_shape": "776191893f0953c7"
     },
     {
       "compendium": "check_strategy_tie_in.md",
@@ -140,30 +172,10 @@
       "rule_lead": "What You'll Learn shape -- capability register, not syllabus.",
       "verdict": "N/A",
       "evidence": "No What You'll Learn section on this surface type.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": null,
-      "judge_owned": true,
-      "rule_lead": "Whole-compendium scope call -- storytelling is not primary owner of check_prompts.md (behavior/Class B owns it per check_pedagogy.md SS43a's evidence-source partition); this template's own Completeness contract obliges full per-rule coverage only for check_lectures.md, and a named owned subset of check_pedagogy.md/check_strategy_tie_in.md -- check_prompts.md is unmentioned, so no per-rule ledger is owed here.",
-      "verdict": "N/A",
-      "evidence": null,
-      "na_reason": "not story-owned compendium; and structurally moot regardless -- zero fenced prompt blocks / {{prompt:}} markers in this file (has_prompt_blocks: false, confirmed via expand-md.js byte-identical output).",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_workshop.md",
-      "rule_index": null,
-      "judge_owned": true,
-      "rule_lead": "Whole-compendium scope call -- storytelling is not primary owner of check_workshop.md (check_pedagogy.md/pedagogy class owns it per its own eval_classes mapping); no beat's output belongs to the group here.",
-      "verdict": "N/A",
-      "evidence": null,
-      "na_reason": "not story-owned compendium; and structurally moot -- no group beat markers in the body (solo reading page, no room-scale adjudication or attributed contribution).",
-      "fix_hint": null,
-      "blocking": false
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "57065e1836c35546515acb8d7ab8a670604e21aac30cf4e3b76ee0d214b2eb7c",
+      "carried_shape": "776191893f0953c7"
     }
   ],
   "mood_summary": {
@@ -174,11 +186,7 @@
     "any_below_8": false,
     "stealing_the_mood": []
   },
-  "blocking_findings_count": 1,
   "todos_count": 0,
-  "resolution": {
-    "settled": "refuted",
-    "at": "2026-08-28",
-    "note": "Missing M3 link is the documented 2026-08-12 Antti cut (earn-the-trust.md:202); page reachable from the training index supplementary row; adding the link would violate the do-not-re-add decision. Maintainer-block stale claims (L34/L38 reached-from wording) fixed separately."
-  }
+  "blocking_findings_count": 0,
+  "notes": "Drift recheck (rule wording only, not this file's applicability): lectures S4 gained a 'bare arc labels' failure mode 2026-09-03 -- doesn't touch this file's four headers. lectures S6 (parked N/A, prior instance) reconfirmed current text explicitly excludes 'prompts on reference/supplementary pages' -- consistent with the parked verdict. prompts S2/S17/S20/S40 all re-read at current wording (S17 narrowed to plan-mode-only 2026-09-03, S20 narrowed to non-gating 2026-09-03) -- none bind here, file has no prompt fences. strategy_tie_in S6/S7 (parked N/A, prior instance) both substantially reworded/expanded since pin but remain gated on 'Key Concepts'/'What You'll Learn' sections this supplementary doesn't have -- parked verdict still correct, left untouched per merge instructions. strategy_tie_in S8 (new 2026-09-03, doc-carries-strategy-not-structure) is out of story's named ownership (S1-S4 + S5/6/7 N/A only) and is not this class's compendium to score -- left for the strategy judge. Teaching-moment-lands (no rule_index owned per template) is folded into module_mood_contract/mood_summary above: the 'cut a leg' checklist reliably lands for a persona who reaches the page (mood 8/10, close 8/10); the real risk this template flags 'if the persona could skip it, the artefact is fragile' is a reachability question the strategy_tie_in S4 finding already covers and the maintainer has already settled. Non-blocking observation for the writing/technical lane, not filed as a story finding: slide 4's four cutting-mitigations map loosely onto three legs (one bullet covers two legs at once) -- trace calls it 'a couple of seconds, not a real stall', below the bar for a todo on this pass."
 }

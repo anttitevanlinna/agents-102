@@ -1,26 +1,26 @@
 {
   "class": "writing",
-  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/painting-the-picture-with-the-llm.md",
-  "body_sha": "ee31ed57c63316708a9cbedf738956540bf223b8d0cc3b6e21d37580bf562c28",
-  "shape_hash": "1870b031fbe8c765",
-  "verdict": "PASS",
   "training": "ae101",
+  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/painting-the-picture-with-the-llm.md",
+  "verdict": "PASS",
+  "body_sha": "b033a38eb538d971747af1c45dded7178a36dbe4caae9d6ad3fe2eec4ee38a79",
+  "shape_hash": "1870b031fbe8c765",
   "rules_evaluated": [
     {
       "compendium": "check_writing.md",
       "rule_index": 1,
       "rule_lead": "Banned words — grep zero-tolerance.",
       "verdict": "PASS",
-      "evidence": "grep -nE '—|\\bhonest|\\bdelve|\\blandscape\\b|\\bimportantly\\b|\\bcrucial\\b|\\bsubstrate\\b|\\bleverage\\b|\\bsynergize\\b|paradigm shift' over body lines 1-28 -> 0 matches (exit 1). Same grep also run over the whole file (maintainer+backing included) turns up zero em-dashes anywhere in the file.",
+      "evidence": "grep -inE '\\bhonest|\\bdelve|\\blandscape\\b|\\bimportantly\\b|\\bcrucial|\\bsubstrate|\\bleverage\\b|\\bsynergize|\\bparadigm shift' file → 0 hits whole file. Em-dash grep '—' → hits only at L32+ (all below the L30 maintainer cut); body region L1–29 → 0 em-dashes.",
       "fix_hint": null,
-      "blocking": true
+      "blocking": false
     },
     {
       "compendium": "check_writing.md",
       "rule_index": 3,
       "rule_lead": "No stale markers, no \"fixed\" retrospectives, no session biography.",
       "verdict": "PASS",
-      "evidence": "Body (lines 1-28) carries no dated markers, changelog verbs, or session-biography language; all provenance sits below the maintainer cut at line 29. Fresh this session: `awk '/<!-- maintainer -->/{f=1} f' <file> | grep -inE '(relocated|moved|split|renamed|became|now .* rather than|predates|since|used to|previously|settled|retired|no longer|historically|restored after|was softened|renamed from|the old |was changed to)'` returns 4 hits (L37 'the old heading', L54/L56 'settled'/'settles'). L37 sits inside the 2026-07-02 Slides-only-pass note and records a re-chunk verification plus a do-not-reintroduce fact ('no inbound anchors to the old heading') — both explicitly KEPT categories under the rule's own boundary clause, not journey narration. L54/L56's 'settled'/'settles' describe the current state of an open research question in the backing Stance block ('neither side of the individual-level question is settled', 'Neither side settles it'), not the file's own edit history — outside this rule's target. No REVISE.",
+      "evidence": "Closest candidate is the L38 'Slides-only pass (2026-07-02, unaudited)' provenance block, which carries transition verbs (CONVERTED, demoted) but stays inside: dated provenance headers are the corpus's protected convention (84/101 AE101 files per this rule's own text), and this block's content is a standing constraint that still binds ('zero map references (M1 protected)') plus an empirical finding that would otherwise be re-derived ('no inbound anchors to the old heading') — exactly what the rule's own Keep-list allows. Checked the file specifically against the 2026-09-05 phantom-license addition: the 'do not re-hedge / do not strengthen the koan' guards (L40, and the backing Stance block) each anchor to a named, live temptation (a prior editor already added a hedge tag in 2026-07-02 that had to be walked back; a zombie stat is actively 'forming' per the OODA log) — not a phantom ban on something nobody would propose.",
       "fix_hint": null,
       "blocking": false
     },
@@ -29,7 +29,7 @@
       "rule_index": 4,
       "rule_lead": "Register match.",
       "verdict": "PASS",
-      "evidence": "Line 19 ('If you want a shotgun, you have a shotgun. If you want a cannon, you have that too. The sharp engineers stay sharp.') reads as a deliberate Rory-reframe koan (unexplained image, no literalizing), with a maintainer accept-note at L31 naming it a deliberate provocation under the reframe-texture carve-out. Grep checks: no `**Remember`/`Hold onto`/`Keep in mind`/`Never forget` wrapper (0 hits); no negation-callout ('we don't X' / 'we refuse to') anywhere in body (0 hits); no atmospheric/sensory imagery (no isolation, darkness, sleep, body-state, or cosmic-scale metaphor) to tone-scan; no slang requiring the Godin-plausibility test. AE101 voice quintet register (Boris-flat wizard-is-dead opener per Lecture meta L52, Godin on tool/taste L9, Rory-reframe koan L19) matches the maintainer's own stated voice note.",
+      "evidence": "AE101 quintet honored: Boris-flat on the wizard line (L5), Godin credited by name for tool/taste (L9), Rory-style reframe on 'stance is the ceiling' (L11). Punchy koan (shotgun/cannon, 'sharp engineers stay sharp', L20) carries explicit maintainer accept-notes (L32, L40) authorizing no downstream carve-out by design. Zero flinch-grep hits (no 'leash'/'niceness'/'trust the agent'/'just a simple'). No Remember/Hold-onto wrapper (grep 0 hits). No atmospheric-imagery misses (no isolation/darkness/body-state/cosmic metaphor in body).",
       "fix_hint": null,
       "blocking": false
     },
@@ -38,25 +38,25 @@
       "rule_index": 6,
       "rule_lead": "Credit original when paraphrasing named technique.",
       "verdict": "PASS",
-      "evidence": "Line 9: 'Seth Godin has been making that argument about tools for decades.' — cultural-vocabulary attribution, name only, no URL owed, matches the backing block's Frameworks entry (L77: 'Tool and taste · [borrow:marketing] · ... Godin, name-only per check_writing.md §6'). Grep for creator-name/author-we over body: `\\bAntti\\b|\\bthe creator\\b|\\bthe author\\b|\\bcourse creator\\b|\\btraining creator\\b` -> 0 matches; `\\bwe\\b|\\bWe\\b|\\bour\\b|\\bOur\\b|\\bus\\b` over body -> 0 matches (no author-we).",
+      "evidence": "Godin credited by name inline at L9 ('Seth Godin has been making that argument about tools for decades'), matching the backing block's `tool-vs-taste ← cultural-vocab` — name-only, no URL owed, correct per the cultural-vocabulary sub-rule.",
       "fix_hint": null,
-      "blocking": true
+      "blocking": false
     },
     {
       "compendium": "check_writing.md",
       "rule_index": 7,
       "rule_lead": "Always \"you\", never \"the student\"; teacher framing stays out of body.",
       "verdict": "PASS",
-      "evidence": "Body addresses the reader as 'you' throughout (lines 11, 15, 17, 19, 23). `grep -nE '\\bthe student\\b' body -> 0 matches. No delivery-mechanics phrasing ('the trainer shows...', 'before students start...') anywhere in body.",
+      "evidence": "grep 'the student' → 0 hits anywhere in file. Body consistently uses 'you'/'your' for the reader (L11 'It was trained to match you. Your stance is the ceiling.'; L16 'You prime it.'; L20 'If you want a shotgun, you have a shotgun.').",
       "fix_hint": null,
-      "blocking": true
+      "blocking": false
     },
     {
       "compendium": "check_writing.md",
       "rule_index": 8,
       "rule_lead": "Don't smuggle terms of art from maintainer into body.",
       "verdict": "PASS",
-      "evidence": "Body vocabulary (LLM, session, context window, rules file, prompt, agent, setup) is either common working vocabulary or the lecture's own coined term ('stance', title of §1, reused lines 3/7/9/11/15) defined by repeated in-body use, not a maintainer-only term (substrate, self-compound, three-pattern, grill-me) smuggled in.",
+      "evidence": "'LLM' and 'context window' (L16) are pre-approved AE101 assumed-known vocabulary under this same rule's own §4 audience-contract carve-out. 'Stance' is not smuggled from maintainer/strategy prose — it is coined and earned inside this very lecture through repetition and definition-by-use (L7, L9, L11, L16), which is the earning moment itself (this is M1's opener).",
       "fix_hint": null,
       "blocking": false
     },
@@ -65,7 +65,7 @@
       "rule_index": 9,
       "rule_lead": "Over-hedge detector.",
       "verdict": "PASS",
-      "evidence": "Grep for reassurance-shaped phrases (`no penalty`, `it's OK if`, `not a downgrade`, `not a box-check`, `not on the hook`, etc.) over body -> 0 matches. No sentence absolves the reader of anything.",
+      "evidence": "No reassurance-shaped sentences in the 29-line body — no 'no penalty', 'it's OK if', 'not a downgrade' or similar hedges anywhere in the text.",
       "fix_hint": null,
       "blocking": false
     },
@@ -74,7 +74,7 @@
       "rule_index": 11,
       "rule_lead": "Cap practitioner attribution at one student-side mention per module.",
       "verdict": "PASS",
-      "evidence": "Seth Godin named exactly once in body (line 9), well under the one-mention cap; this is a single-lecture file, not a full module, so the cap is trivially satisfied.",
+      "evidence": "Godin named exactly once in body (L9); no other practitioner named in body prose. Within the one-mention cap.",
       "fix_hint": null,
       "blocking": false
     },
@@ -83,7 +83,7 @@
       "rule_index": 12,
       "rule_lead": "Punchy framing keeps punch; carve-out lives downstream.",
       "verdict": "PASS",
-      "evidence": "Line 19 (shotgun/cannon) and line 11 ('Your stance is the ceiling.') carry no downstream carve-out paragraph naming a boundary — the rule's usual remedy. But the maintainer block explicitly overrides that remedy by dated decision: L31 names the unexplained image as 'the point' and forbids literalizing it with a named lever; L39 (Antti 2026-08-14, reaffirmed from 2026-07-29) explicitly states 'Do not re-hedge in the body, and do not strengthen the koan either' — the demotion/carve-out work the rule would otherwise want is deliberately carried by register and by §3's unanswered frontier questions instead of a body paragraph. Documented maintainer accept-note, not an oversight.",
+      "evidence": "Shotgun/cannon pair and 'the sharp engineers stay sharp' (L20) are punchy claims with no downstream carve-out paragraph, but this is a documented, dated maintainer accept-note (L32: 'deliberate provocation beat ... keep'; L40: 'carries no verbal hedge, and does not need one (Antti 2026-08-14)') overriding the default remedy by design. Listed in accept_notes_found.",
       "fix_hint": null,
       "blocking": false
     },
@@ -92,16 +92,16 @@
       "rule_index": 13,
       "rule_lead": "Value-prop / positioning framing belongs in sales copy + project strategy docs, NOT student-facing curriculum body.",
       "verdict": "PASS",
-      "evidence": "grep -nE '\\bvendor\\b|not an aspirational|not theoretical|the real practitioners|not a vendor' over body -> 0 matches. Whole-file grep for `\\bvendor\\b` returns one hit at line 70, inside the backing block's Sources list ('[academic/research, vendor venue]', 'vendor-self-reported'), describing a cited source's methodology, not student-facing body defending against a vendor-story critique — outside this rule's surface.",
+      "evidence": "grep 'vendor' → 1 hit total, inside the backing block's source classification tag ('vendor venue', L71, below the maintainer cut) — not body prose. No defensive/marketing-frame phrases ('not an aspirational X', 'grounded in actual', etc.) present anywhere in body.",
       "fix_hint": null,
-      "blocking": true
+      "blocking": false
     },
     {
       "compendium": "check_writing.md",
       "rule_index": 14,
       "rule_lead": "Watch out for planting jargon too early.",
       "verdict": "PASS",
-      "evidence": "This is the opener lecture of M1 (Lecture meta L50: 'First lecture of M1'). 'context window' (line 15) is on the check_writing.md §4 commonly-known-LLM-vocabulary whitelist. 'stance' is the lecture's own coined concept, established and reused across all three sections rather than a cold jargon drop from a later module. No LLM-internal vocabulary (token, embedding, fine-tuning, schema, frontmatter) appears anywhere in body.",
+      "evidence": "'LLM' and 'context window' are assumed-known industry vocabulary for the AE101 engineer audience (no earning owed). 'Stance' is earned in place at its own first appearance — this file is the M1 opener, the earliest possible position in the arc, so there is no prior module it could pre-empt.",
       "fix_hint": null,
       "blocking": false
     },
@@ -110,7 +110,7 @@
       "rule_index": 17,
       "rule_lead": "No combative verbs about the agent in body prose.",
       "verdict": "PASS",
-      "evidence": "grep -nE '\\b(bark|order|command|whip|force|drag|push around|boss|shout at|snap at|lecture|scold)\\b' over body -> 0 matches. No human-to-agent interaction is described at all in this lecture; the carve-out for a deliberate bad-register probe does not apply (no such beat here).",
+      "evidence": "grep -inE '\\bbark|\\border|\\bcommand|\\bwhip|\\bforce\\b|\\bdrag\\b|\\bpush around|\\bboss\\b|\\bshout at|\\bsnap at|\\blecture\\b|\\bscold' → 0 hits in body region (the two 'lecture' matches found are both below the maintainer cut, in the 'Lecture meta' label).",
       "fix_hint": null,
       "blocking": false
     },
@@ -119,7 +119,7 @@
       "rule_index": 18,
       "rule_lead": "Headers must be literally true about the mechanism.",
       "verdict": "PASS",
-      "evidence": "Three headers: 'The LLM mirrors your stance' (line 3), 'You prime, the LLM scales' (line 13), 'Two frontiers: how fast, and the right things' (line 21). All are literal claims a cold reader can verify against their section's content; no spatial/structural metaphor contradicting the mechanism, no unpaired 'other X'/'the rest of the X'.",
+      "evidence": "All three section headers checked against their content: 'The LLM mirrors your stance' (L3), 'You prime, the LLM scales' (L13), 'Two frontiers: how fast, and the right things' (L22) — no spatial-metaphor contradiction, no unproven 'other X'.",
       "fix_hint": null,
       "blocking": false
     },
@@ -128,7 +128,7 @@
       "rule_index": 19,
       "rule_lead": "Machine-cadence fat — the shape of good prose without the content.",
       "verdict": "PASS",
-      "evidence": "(a) Empty negation: line 15 'Stance and approach matter more now, not less.' negates against a real plausible-misconception (that rising LLM capability makes stance matter less), not an unguessable Y — legitimate, and it is the only negation-shaped sentence in body. (b) Deictic drumroll: grep for 'That is '/'This is ' -> 0 matches. (c) Bold-label echo: zero bold survives in body per the 2026-07-09 emphasis pass (maintainer L35, 'zero bold kept'), so this sub-shape is structurally absent. (d) Citation/appendix duplication: all citations sit below the maintainer cut; body makes no citation reference to duplicate.",
+      "evidence": "Closest candidate: L5 'Auto-complete was a thing. Auto-complete is no longer a thing.' Stays inside — this states a real completed shift the lecture's thesis depends on, not an empty 'X, not Y' negation (no reader's specific wrong guess is being corrected) and no deictic drumroll follows it. No bold-label echoes (all bold was stripped in the 2026-07-09 emphasis pass) and no citation duplication (no citations in body).",
       "fix_hint": null,
       "blocking": false
     },
@@ -137,7 +137,7 @@
       "rule_index": 21,
       "rule_lead": "A slogan that is false as stated is not punchy framing — run the truth test before reaching for §12.",
       "verdict": "PASS",
-      "evidence": "Line 19's 'The sharp engineers stay sharp.' carries no only/always/never superlative and is tagged `vision`-grade, none-owed in the claim ledger (line 65). The backing Stance block (lines 80-87) runs exactly this truth-test analysis at length already: contested-but-decided, maintainer call 2026-07-29 reaffirmed 2026-08-14, that the koan stands at belief strength and the axis-flattening counterevidence (Cui et al., Brynjolfsson et al.) does not refute it because it measures a different axis (percentage-of-own-baseline catch-up, not who-pulls-ahead). No counterexample the koan's own scope would need to survive — it is framed as belief, not as a settled empirical claim, and slide 3's two unanswered frontier questions carry that hedge structurally.",
+      "evidence": "No only/always/never/nothing-else/the-one-thing-that language in body. 'The sharp engineers stay sharp' and 'your stance is the ceiling' are vision/belief-tier design stances (backing block: `sharp-stay-sharp · detail`, `stance-is-ceiling · vision ← none-owed`), not superlative world-claims, so §21's truth test does not bind them the way it binds an only/always assertion.",
       "fix_hint": null,
       "blocking": false
     },
@@ -146,7 +146,7 @@
       "rule_index": 22,
       "rule_lead": "A claim binds to every body that states it, not just the one holding the stamp.",
       "verdict": "PASS",
-      "evidence": "`grep -rl \"sharma-sycophancy-2023\" curriculum/` (excluding generated body-views/instances) returns this file, `curriculum/lectures/the-machine-you-just-met.md`, and `curriculum/trainings/agentic-engineering-101/learn-from-the-test.md`. Read `the-machine-you-just-met.md`'s own citation (its line 117): hedges identically ('driven in part by human preference judgments' / 'do NOT strengthen to sole-cause'), matching this file's line 69 hedge ('a five-word whisper, not a mechanism claim, and must not be strengthened'). This file's backing block explicitly names the cross-file discipline: 'Full stamp + the do-not-strengthen note lives in `the-machine-you-just-met.md`, which owns the payoff; keep the two in step.' No drift found between the two bodies' claim wording.",
+      "evidence": "grep -rl 'sharma-sycophancy-2023' curriculum/ → also curriculum/lectures/the-machine-you-just-met.md. Read that file's matching claim: it carries the fuller sycophancy mechanism with the same hedge register ('driven in part', 'do NOT strengthen to sole-cause'). This file's 'It was trained to match you' (L11) is the documented five-word whisper the two files' backing blocks agree to keep in step with; no contradiction found between the two bodies.",
       "fix_hint": null,
       "blocking": false
     },
@@ -155,26 +155,16 @@
       "rule_index": 27,
       "rule_lead": "Say it once, at its most concrete, then at most one sentence that generalises it. Style, not a gate.",
       "verdict": "PASS",
-      "evidence": "(a) Abstract twin: line 9's Godin sentence (general tool-vs-taste point) is followed by a domain-specific cash-out ('The LLM is the infinite version of it: your stance as input to the session is mirrored in the output') that adds new mechanism, not a second altitude of the same claim — not a twin. (b) Restating an adjacent element: no prompt blocks, figures, or lists exist in this file (signals: has_prompt_blocks=false, has_figures=false) for prose to restate. (c) Widening qualifier: grep for 'or context-dependent'/'or rule' -> 0 matches; no rule in body is bolted with a hedge until it stops ruling. (d) Second announcement: the two-frontier questions (lines 23, 25) are stated once each and explicitly NOT resolved here (maintainer watch-for L99: 'do NOT answer them'); the training resolves them once, by accretion, elsewhere — this file does not pre-announce content another file will restate. This rule is explicitly 'Style, not a gate' per its own text; no candidate found regardless.",
+      "evidence": "Closest candidate: L16 'You prime it. The LLM scales it.' followed by L18 'Whatever you put in front of the LLM is what the LLM scales. The rules file. The prompt. What sits on disk...' Stays inside — this is general-claim-then-concrete-instances (reversed from, and distinct from, the banned abstract-twin shape of two sentences restating one idea at the same job); each sentence after the first adds a new concrete instance rather than repeating the claim.",
       "fix_hint": null,
       "blocking": false
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 26,
-      "rule_lead": "A sentence saying how you'd know points at the outcome, not the nearest artifact.",
-      "verdict": "N/A",
-      "evidence": null,
-      "fix_hint": null,
-      "blocking": false,
-      "na_reason": "No 'X tells you whether Y' / 'you'll know it worked when...' self-witnessing-instrument clause anywhere in body (lines 1-28). The prior instance (pre-rule-drift) recorded this rule_index as a moved-stub N/A when it held different content; this row re-derives it fresh against the CURRENT rule text per this dispatch's rule-drift instruction and reaches the same N/A outcome for a different, correct reason: the rule's target shape simply does not occur here."
     },
     {
       "compendium": "check_student_facing.md",
       "rule_index": 1,
       "rule_lead": "Aspirational destination, never corrective gap.",
       "verdict": "PASS",
-      "evidence": "No corrective-gap phrasing ('you already think', 'you're missing') anywhere in body. No ability-tier phrasing ('at your scale', 'for a beginner', 'a senior would already know'). No tourist/practitioner-style identity-criterion split in this file. No pre-prompt verification gates present at all (nothing to test for plausible-failability).",
+      "evidence": "No corrective-gap phrasing ('you already think...', 'you're missing...'). No ability-tier pegging ('at your scale', 'for a beginner'). No tourist/practitioner-style identity-criterion dichotomy. File is a lecture with no pre-prompt verification gates, so the pre-prompt-plausibly-failable sub-clause has nothing to test.",
       "fix_hint": null,
       "blocking": false
     },
@@ -183,7 +173,7 @@
       "rule_index": 2,
       "rule_lead": "Earn every technical term on first use.",
       "verdict": "PASS",
-      "evidence": "'context window' (line 15) is on the check_writing.md §4 commonly-known-LLM-vocabulary whitelist, reaffirmed for AE101's engineer audience by the 2026-08-18 assumed-known accept-note. 'stance' is the lecture's own coined concept, introduced in the H1 sub-header and repeated across all three sections rather than a cold drop. No bare module abbreviation (M1/M2) appears in body at all.",
+      "evidence": "'LLM' and 'context window' (L16) are pre-approved assumed-known AE101 vocabulary (writing §4 carve-out), owing no earning. 'Stance' is earned in place through its own repeated, contextual introduction across this file (L7, L9, L11, L16) — this lecture is the earning moment. No bare 'M1'-style module abbreviation appears in body (2b n/a).",
       "fix_hint": null,
       "blocking": false
     },
@@ -192,7 +182,7 @@
       "rule_index": 4,
       "rule_lead": "Memory vs context — use deliberately.",
       "verdict": "PASS",
-      "evidence": "Line 15: 'The session bends to what sits in the context window' — correct use of context as ambient runtime state. Line 17: 'The rules file' named as a persistent artifact (memory-shaped) without being mislabelled 'context'. No line blurs the two (no 'your context compounds' shape).",
+      "evidence": "grep 'memory' → 0 hits in body. 'Context window' (L16) is used correctly for ambient runtime state ('The session bends to what sits in the context window'), never conflated with persistent memory.",
       "fix_hint": null,
       "blocking": false
     },
@@ -201,7 +191,7 @@
       "rule_index": 14,
       "rule_lead": "No em-dashes. Simple sentences.",
       "verdict": "PASS",
-      "evidence": "grep -c '—' over the whole file (body + maintainer + backing) -> 0. Body sentences are short declaratives throughout (longest is line 9's three-clause sentence, still simple subject-verb-object structure, no em-dash sub-clauses).",
+      "evidence": "grep '—' body region (L1–29) → 0 hits (all em-dash hits in the file are at L32+, below the L30 maintainer cut).",
       "fix_hint": null,
       "blocking": false
     },
@@ -210,7 +200,7 @@
       "rule_index": 21,
       "rule_lead": "LLM-vs-agent-vs-Claude vocabulary discipline.",
       "verdict": "PASS",
-      "evidence": "Body uses 'the LLM' for thinking/drift topics throughout (lines 3, 5, 7, 9, 13, 15, 17, 23, 25 — mirroring, priming, scaling, learning are all cognitive-behavior claims). 'the agent' appears once (line 17, 'what sits on disk for the agent to read'), correctly naming the acting entity that consumes on-disk context. Zero uses of 'Claude' as a product name; no Claude:agent count inversion since the lecture's entire topic is LLM behavior, not product UI or invocation.",
+      "evidence": "Body topic is entirely thinking/drift/framing (stance, mirroring, priming); 'LLM' is used throughout for exactly that register (L5, L7, L9, L16, L18, L24, L26). No acting/execution content is described in this lecture, so no 'agent' term is owed; no invocation/addressee or UI-surface content, so no 'Claude' term is owed either.",
       "fix_hint": null,
       "blocking": false
     },
@@ -219,7 +209,7 @@
       "rule_index": "21b",
       "rule_lead": "Session / task / run split (all trainings).",
       "verdict": "PASS",
-      "evidence": "'session' used correctly for one sitting (lines 7, 9, 15: 'fits the session', 'input to the session', 'session bends'). grep -nE '\\brun\\b' over body -> 0 matches (no banned noun-run for the agent's sitting). No 'task' language in this file to check against the split.",
+      "evidence": "'Session' used correctly for one sitting (L7 'It will be what fits the session'; L9 'your stance as input to the session'; L16 'The session bends to what sits in the context window'). No banned noun-run usage; no 'task' noun needed in this body.",
       "fix_hint": null,
       "blocking": false
     },
@@ -228,7 +218,7 @@
       "rule_index": 22,
       "rule_lead": "No time-of-day anchors in body prose.",
       "verdict": "PASS",
-      "evidence": "grep -nE '\\b(tomorrow|overnight|this morning|tonight|next morning|yesterday|last night)\\b' over body -> 0 matches.",
+      "evidence": "grep -inE 'tomorrow|overnight|this morning|tonight|next morning|yesterday|last night' → 0 hits.",
       "fix_hint": null,
       "blocking": false
     },
@@ -237,7 +227,7 @@
       "rule_index": 26,
       "rule_lead": "Cut NVA: true but not moving student forward.",
       "verdict": "PASS",
-      "evidence": "Close read against the NVA screens (does this change what student understands/decides/does/notices next? is this obvious to a working engineer?): line 5's autocomplete sentence sets up the concrete evidence for 'a part of high-end engineering skill has been taken on by the LLM' rather than sitting as isolated trivia — it is the concrete half of the header's claim, not an aside. Line 9's Godin credit is independently required by check_writing.md §6 (attribution obligation), so it is not a cuttable aside either. Line 17's three-fragment list ('The rules file. The prompt. What sits on disk for the agent to read.') gives operational meaning to the preceding abstract claim rather than repeating it. This file has already been through two documented NVA-shaped cutting passes (maintainer L33 trainer-feedback pass; L35 emphasis pass) — no further candidate found on this read.",
+      "evidence": "Closest candidate: L5 'Auto-complete was a thing. Auto-complete is no longer a thing.' Stays inside — the contrast is the lecture's own thesis setup (skill migrating to the LLM), not an obvious-to-engineers aside that changes nothing about what the student does next.",
       "fix_hint": null,
       "blocking": false
     },
@@ -246,7 +236,7 @@
       "rule_index": 28,
       "rule_lead": "Forward-callout closer: student as grammatical subject.",
       "verdict": "PASS",
-      "evidence": "The 'Two frontiers' section is the forward-looking callout (training resolves these by accretion per Lecture meta L46). Subject test on both closing questions: 'How fast can your setup learn?' (line 23) — subject = 'your setup', the student's own artifact. 'Can it learn the right things?' (line 25) — subject = 'it' (the setup), same referent. Neither uses training/module/exercise as subject (no value-prop-leak shape), neither uses a bare imperative aimed at the student (no coach-register 'watch for X'), neither shifts to a different role's audience. 'Let's go.' (line 27) is a plain scene-transition kicker naming no future content, outside this rule's target (nothing to subject-test).",
+      "evidence": "'Let's go.' (L28) is a bare transition kicker, not a forward-looking aside about the training's own shape; it triggers none of the four failure modes (no training-as-subject, no coach-imperative, no generic they, no audience-shift). Explicitly protected as a delivery watch-for ('\"Let's go\" closes. No further punchline.').",
       "fix_hint": null,
       "blocking": false
     },
@@ -255,7 +245,7 @@
       "rule_index": 33,
       "rule_lead": "The curriculum does not narrate itself — subject test, then deletion test.",
       "verdict": "PASS",
-      "evidence": "No sentence in body takes a module/training/exercise/arc as its subject. The 'answers by accretion through M1-M6' framing lives only in the maintainer's Lecture meta (line 46, below the cut) and the backing Stance block, never in body. Body's two frontier questions (lines 23, 25) take the student's own setup as subject, satisfying the same subject test rule 28 above already confirmed.",
+      "evidence": "No arc-positioning sentence about the training's/module's own shape appears in body. The two frontier questions (L24, L26) are posed to the reader without any 'the training covers this in M6' self-reference — that framing sits only in the Watch-fors below the maintainer cut.",
       "fix_hint": null,
       "blocking": false
     },
@@ -264,7 +254,17 @@
       "rule_index": 37,
       "rule_lead": "Mood is a design constraint, not a garnish.",
       "verdict": "PASS",
-      "evidence": "Maintainer Meta (line 51) names the target: 'recognition. Stance is now the load-bearing part. No doom, no hype.' Body matches: no doom-shaped language (no failure/threat framing), no hype (the sharp-engineers koan is flagged elsewhere as deliberately unhedged belief, not hype-inflated certainty), and the two frontier questions are posed and explicitly left open rather than resolved — consistent with a recognition mood rather than a resolving one. No signature wrong-edit for this mood type is present.",
+      "evidence": "Maintainer Meta block states the target mood explicitly ('Mood target: recognition. Stance is now the load-bearing part. No doom, no hype.') and role (opener). Body's calm, matter-of-fact register carries no verification/rescue-mood language, consistent with a non-doubt teaching beat.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 49,
+      "rule_lead": "A take-home prompt asks for one bounded build.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "No fenced prompt blocks in this file (body-view signals: has_prompt_blocks=false, fence_ranges=[]).",
       "fix_hint": null,
       "blocking": false
     },
@@ -273,7 +273,7 @@
       "rule_index": 1,
       "rule_lead": "Mood contract named.",
       "verdict": "PASS",
-      "evidence": "Lecture meta (line 46) states the emotional handoff explicitly: '~3 min opener for Module 1, before the wizard-move demo. Sets the two open questions the training answers by accretion through M1-M6.' Combined with the Meta block's mood target ('recognition... No doom, no hype', line 51), this satisfies the one-sentence emotional-state-plus-setup requirement; the mood is honoured, not flattened (body leaves both frontier questions open rather than resolving them prematurely).",
+      "evidence": "Maintainer Meta block states mood target (recognition, no doom/no hype) and role (opener, sets up the wizard-move demo). This is a teaching beat (installs the stance concept), and its tight, purposeful register reads well above the 8/10 mood floor.",
       "fix_hint": null,
       "blocking": false
     },
@@ -282,7 +282,7 @@
       "rule_index": 3,
       "rule_lead": "Lead with discipline, not failure mode.",
       "verdict": "PASS",
-      "evidence": "All three section headers name positive framings ('The LLM mirrors your stance', 'You prime, the LLM scales', 'Two frontiers: how fast, and the right things'); none is failure-word-led (no 'hallucination', 'fabrication', 'violation' as a title). No canonical-named-result carve-out needed since there is no failure-named title to begin with.",
+      "evidence": "Title ('Painting the picture with the LLM') and all three section headers ('The LLM mirrors your stance', 'You prime, the LLM scales', 'Two frontiers: how fast, and the right things') name positive/neutral concepts; no failure-mode-led header.",
       "fix_hint": null,
       "blocking": false
     },
@@ -291,9 +291,43 @@
       "rule_index": 4,
       "rule_lead": "Strategy-fidelity check.",
       "verdict": "PASS",
-      "evidence": "The two open frontier questions (lines 23, 25) are explicitly designed to stay unanswered here per the maintainer's own watch-for (line 99: 'Frontiers section names two open questions — do NOT answer them. The training answers by accretion through M1–M6.'). Body honours this: neither question is resolved, no downstream teaching moment (which module answers which question) is front-run.",
+      "evidence": "Lecture deliberately poses both frontier questions and answers neither (own Watch-fors: 'do NOT answer them'), consistent with not front-running the training's by-accretion sequencing; no skill or downstream practice is named by name in body.",
       "fix_hint": null,
       "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 8,
+      "rule_lead": "Strategy doc carries strategy, not structure — §§1-7 bind curriculum→doc, this one binds doc→curriculum.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Binds the strategy doc's own hygiene (doc→curriculum direction); this file is a leaf lecture, not the strategy doc, so the rule has no direct application here.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 38,
+      "rule_lead": "Exercise headers pass the build-squint test.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "rule targets exercise H1 headers (build-squint reconstructs what an EXERCISE builds; exemplar is curriculum/exercises/diagnose-and-resend.md); this file is a lecture, not an exercise",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
+      "carried_shape": "1870b031fbe8c765"
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": 26,
+      "rule_lead": "A sentence saying how you'd know points at the outcome, not the nearest artifact.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "No 'X tells you whether Y' / 'you'll know it worked when...' self-witnessing-instrument clause anywhere in body (lines 1-28). The prior instance (pre-rule-drift) recorded this rule_index as a moved-stub N/A when it held different content; this row re-derives it fresh against the CURRENT rule text per this dispatch's rule-drift instruction and reaches the same N/A outcome for a different, correct reason: the rule's target shape simply does not occur here.",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
+      "carried_shape": "1870b031fbe8c765"
     },
     {
       "compendium": "check_writing.md",
@@ -304,7 +338,7 @@
       "na_reason": "no ritual/ceremony/practice(n) vocabulary anywhere in body",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -316,7 +350,7 @@
       "na_reason": "\"Two frontiers\" is a header numeral (2026-08-22 carve-out: header numerals are handles, not tallies, exempt) and no prose adjacent to a list restates a count",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -328,7 +362,7 @@
       "na_reason": "rule is Agents-101-default per its own lead; this file's Meta block (below cut) marks it AE101 (engineer audience, Boris-flat/Godin voice mix), not the business-buyer-leader Agents 101 surface",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -340,7 +374,7 @@
       "na_reason": "single self-contained M1 opener lecture; no cross-module voice pattern imported",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -352,7 +386,7 @@
       "na_reason": "no callout boxes of any kind in this three-paragraph-per-section lecture",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -364,7 +398,7 @@
       "na_reason": "this is a lecture (reader's job = understanding, not doing) — rule explicitly permits declarative noun-phrase headers for lectures; all three headers (lines 3, 13, 21) are declarative",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -376,7 +410,7 @@
       "na_reason": "no reflective-pause framing or wellness-coach prefixes anywhere in body",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -387,7 +421,7 @@
       "evidence": "Not an article draft — this is a shipped, audited lecture.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -398,7 +432,7 @@
       "evidence": "Not a reference artefact capturing a maintainer-supplied verbal frame.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -409,7 +443,7 @@
       "evidence": "No forcing-function trim occurred in this pass — the diff against pin 2b5a60a shows the body unchanged.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -420,7 +454,7 @@
       "evidence": "This is a lecture, not an exercise; no What-happened recap block is expected here.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -431,7 +465,7 @@
       "evidence": "Process rule governing sweep methodology, not a body-content check; this dispatch re-read the full check_writing.md + check_student_facing.md compendiums and the six flagged rules at generation time via rule.js, not from a cached checklist.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -442,7 +476,7 @@
       "evidence": "This file is a lecture, not a trainer/exec/sponsor scarce-attention doc.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -453,7 +487,7 @@
       "evidence": "The file's only trainer-facing content ('Watch-fors (delivery)', lines 96-100) sits below the maintainer fence, names no repo path / check_*.md / skill file, and is self-contained in four bullet lines.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -464,7 +498,7 @@
       "evidence": "No troubleshooting / recovery / what-if-X-fails branch present; the body is pure forward narrative.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -475,7 +509,7 @@
       "evidence": "No prompt block in this file — fence grep (```) over the whole file returns 0 matches.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -486,7 +520,7 @@
       "evidence": "Not a Debrief section — this is the M1 opener lecture.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -497,7 +531,7 @@
       "evidence": "No instruction line of any kind in this narrative lecture — no actor+mechanism content exists to test.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -508,7 +542,7 @@
       "evidence": "No simulation described.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -519,7 +553,7 @@
       "evidence": "No student moves of any kind (no exercise, no editor/terminal/file-edit primitive) in this lecture.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -530,7 +564,7 @@
       "evidence": "Line 17's 'The rules file' is descriptive scene-setting inside a conceptual paragraph, not an instruction to author or edit a specific CLAUDE.md layer; no layer-ambiguity is created because no file-writing action is asked of the student here.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -541,7 +575,7 @@
       "evidence": "No markdown links appear in body.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -552,7 +586,7 @@
       "evidence": "No student-authored-write moment triggers a contested term (memory / skill / rule / plan / agent / subagent) in this narrative lecture.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -563,7 +597,7 @@
       "evidence": "No prompt/dialogue content in this lecture.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -574,7 +608,7 @@
       "evidence": "No file-save instruction appears in this lecture.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -585,7 +619,7 @@
       "evidence": "No chat-print / artifact-display moment occurs in this lecture (no prompt output is shown to react to).",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -596,7 +630,7 @@
       "evidence": "No operational setting (thinking-effort level, model choice, mode tag, slash-command, worktree path) is referenced in this lecture.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -607,7 +641,7 @@
       "evidence": "This M1-opener lecture introduces its own new vocabulary (stance, prime/scale, two frontiers) rather than needing to echo an already-earned house frame; nothing here reinvents a synonym for an existing spine term.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -618,7 +652,7 @@
       "evidence": "No prompt-sending / message-typing description occurs in this lecture.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -629,7 +663,7 @@
       "evidence": "No setup/install instruction appears in this lecture.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -640,7 +674,7 @@
       "evidence": "M7-specific and Agents-101-specific; this file is AE101's M1 opener.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -651,7 +685,7 @@
       "evidence": "AE101 file, not Agents 101; not a Debrief.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -662,7 +696,7 @@
       "evidence": "No scaffold or prompt is described in this lecture.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -673,7 +707,7 @@
       "evidence": "Mechanical: grep -c '```' over the whole file → 0 fences. check_prompts.md's own scope line restricts it to 'anything inside a fenced code block with copy-this affordance'; this file has none, so no rule in this compendium has a surface to fire on.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -684,7 +718,7 @@
       "evidence": "Mechanical: grep -c '```' over the whole file → 0 fences. check_prompts.md's own scope line restricts it to 'anything inside a fenced code block with copy-this affordance'; this file has none, so no rule in this compendium has a surface to fire on.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -695,7 +729,7 @@
       "evidence": "Mechanical: grep -c '```' over the whole file → 0 fences. check_prompts.md's own scope line restricts it to 'anything inside a fenced code block with copy-this affordance'; this file has none, so no rule in this compendium has a surface to fire on.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -706,7 +740,7 @@
       "evidence": "Mechanical: grep -c '```' over the whole file → 0 fences. check_prompts.md's own scope line restricts it to 'anything inside a fenced code block with copy-this affordance'; this file has none, so no rule in this compendium has a surface to fire on.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -717,7 +751,7 @@
       "evidence": "Mechanical: grep -c '```' over the whole file → 0 fences. check_prompts.md's own scope line restricts it to 'anything inside a fenced code block with copy-this affordance'; this file has none, so no rule in this compendium has a surface to fire on.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -728,7 +762,7 @@
       "evidence": "Mechanical: grep -c '```' over the whole file → 0 fences. check_prompts.md's own scope line restricts it to 'anything inside a fenced code block with copy-this affordance'; this file has none, so no rule in this compendium has a surface to fire on.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -739,7 +773,7 @@
       "evidence": "Mechanical: grep -c '```' over the whole file → 0 fences. check_prompts.md's own scope line restricts it to 'anything inside a fenced code block with copy-this affordance'; this file has none, so no rule in this compendium has a surface to fire on.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -750,7 +784,7 @@
       "evidence": "Mechanical: grep -c '```' over the whole file → 0 fences. check_prompts.md's own scope line restricts it to 'anything inside a fenced code block with copy-this affordance'; this file has none, so no rule in this compendium has a surface to fire on.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -761,7 +795,7 @@
       "evidence": "Mechanical: grep -c '```' over the whole file → 0 fences. check_prompts.md's own scope line restricts it to 'anything inside a fenced code block with copy-this affordance'; this file has none, so no rule in this compendium has a surface to fire on.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -772,7 +806,7 @@
       "evidence": "Mechanical: grep -c '```' over the whole file → 0 fences. check_prompts.md's own scope line restricts it to 'anything inside a fenced code block with copy-this affordance'; this file has none, so no rule in this compendium has a surface to fire on.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -783,7 +817,7 @@
       "evidence": "Mechanical: grep -c '```' over the whole file → 0 fences. check_prompts.md's own scope line restricts it to 'anything inside a fenced code block with copy-this affordance'; this file has none, so no rule in this compendium has a surface to fire on.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -794,7 +828,7 @@
       "evidence": "Mechanical: grep -c '```' over the whole file → 0 fences. check_prompts.md's own scope line restricts it to 'anything inside a fenced code block with copy-this affordance'; this file has none, so no rule in this compendium has a surface to fire on.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -805,7 +839,7 @@
       "evidence": "Mechanical: grep -c '```' over the whole file → 0 fences. check_prompts.md's own scope line restricts it to 'anything inside a fenced code block with copy-this affordance'; this file has none, so no rule in this compendium has a surface to fire on.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -816,7 +850,7 @@
       "evidence": "Mechanical: grep -c '```' over the whole file → 0 fences. check_prompts.md's own scope line restricts it to 'anything inside a fenced code block with copy-this affordance'; this file has none, so no rule in this compendium has a surface to fire on.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -827,7 +861,7 @@
       "evidence": "Mechanical: grep -c '```' over the whole file → 0 fences. check_prompts.md's own scope line restricts it to 'anything inside a fenced code block with copy-this affordance'; this file has none, so no rule in this compendium has a surface to fire on.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -838,7 +872,7 @@
       "evidence": "Mechanical: grep -c '```' over the whole file → 0 fences. check_prompts.md's own scope line restricts it to 'anything inside a fenced code block with copy-this affordance'; this file has none, so no rule in this compendium has a surface to fire on.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -849,7 +883,7 @@
       "evidence": "Mechanical: grep -c '```' over the whole file → 0 fences. check_prompts.md's own scope line restricts it to 'anything inside a fenced code block with copy-this affordance'; this file has none, so no rule in this compendium has a surface to fire on.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -860,7 +894,7 @@
       "evidence": "Mechanical: grep -c '```' over the whole file → 0 fences. check_prompts.md's own scope line restricts it to 'anything inside a fenced code block with copy-this affordance'; this file has none, so no rule in this compendium has a surface to fire on.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -871,7 +905,7 @@
       "evidence": "Mechanical: grep -c '```' over the whole file → 0 fences. check_prompts.md's own scope line restricts it to 'anything inside a fenced code block with copy-this affordance'; this file has none, so no rule in this compendium has a surface to fire on.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -882,7 +916,7 @@
       "evidence": "Mechanical: grep -c '```' over the whole file → 0 fences. check_prompts.md's own scope line restricts it to 'anything inside a fenced code block with copy-this affordance'; this file has none, so no rule in this compendium has a surface to fire on.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -893,7 +927,7 @@
       "evidence": "Mechanical: grep -c '```' over the whole file → 0 fences. check_prompts.md's own scope line restricts it to 'anything inside a fenced code block with copy-this affordance'; this file has none, so no rule in this compendium has a surface to fire on.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -904,7 +938,7 @@
       "evidence": "Mechanical: grep -c '```' over the whole file → 0 fences. check_prompts.md's own scope line restricts it to 'anything inside a fenced code block with copy-this affordance'; this file has none, so no rule in this compendium has a surface to fire on.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -915,7 +949,7 @@
       "evidence": "Mechanical: grep -c '```' over the whole file → 0 fences. check_prompts.md's own scope line restricts it to 'anything inside a fenced code block with copy-this affordance'; this file has none, so no rule in this compendium has a surface to fire on.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -926,7 +960,7 @@
       "evidence": "Mechanical: grep -c '```' over the whole file → 0 fences. check_prompts.md's own scope line restricts it to 'anything inside a fenced code block with copy-this affordance'; this file has none, so no rule in this compendium has a surface to fire on.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -937,7 +971,7 @@
       "evidence": "Mechanical: grep -c '```' over the whole file → 0 fences. check_prompts.md's own scope line restricts it to 'anything inside a fenced code block with copy-this affordance'; this file has none, so no rule in this compendium has a surface to fire on.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -948,7 +982,7 @@
       "evidence": "Mechanical: grep -c '```' over the whole file → 0 fences. check_prompts.md's own scope line restricts it to 'anything inside a fenced code block with copy-this affordance'; this file has none, so no rule in this compendium has a surface to fire on.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -959,7 +993,7 @@
       "evidence": "Mechanical: grep -c '```' over the whole file → 0 fences. check_prompts.md's own scope line restricts it to 'anything inside a fenced code block with copy-this affordance'; this file has none, so no rule in this compendium has a surface to fire on.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -970,7 +1004,7 @@
       "evidence": "Mechanical: grep -c '```' over the whole file → 0 fences. check_prompts.md's own scope line restricts it to 'anything inside a fenced code block with copy-this affordance'; this file has none, so no rule in this compendium has a surface to fire on.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -981,7 +1015,7 @@
       "evidence": "Mechanical: grep -c '```' over the whole file → 0 fences. check_prompts.md's own scope line restricts it to 'anything inside a fenced code block with copy-this affordance'; this file has none, so no rule in this compendium has a surface to fire on.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -992,7 +1026,7 @@
       "evidence": "Mechanical: grep -c '```' over the whole file → 0 fences. check_prompts.md's own scope line restricts it to 'anything inside a fenced code block with copy-this affordance'; this file has none, so no rule in this compendium has a surface to fire on.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -1003,7 +1037,7 @@
       "evidence": "Mechanical: grep -c '```' over the whole file → 0 fences. check_prompts.md's own scope line restricts it to 'anything inside a fenced code block with copy-this affordance'; this file has none, so no rule in this compendium has a surface to fire on.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -1014,7 +1048,7 @@
       "evidence": "Mechanical: grep -c '```' over the whole file → 0 fences. check_prompts.md's own scope line restricts it to 'anything inside a fenced code block with copy-this affordance'; this file has none, so no rule in this compendium has a surface to fire on.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -1025,7 +1059,7 @@
       "evidence": "Mechanical: grep -c '```' over the whole file → 0 fences. check_prompts.md's own scope line restricts it to 'anything inside a fenced code block with copy-this affordance'; this file has none, so no rule in this compendium has a surface to fire on.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -1036,7 +1070,7 @@
       "evidence": "Mechanical: grep -c '```' over the whole file → 0 fences. check_prompts.md's own scope line restricts it to 'anything inside a fenced code block with copy-this affordance'; this file has none, so no rule in this compendium has a surface to fire on.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -1047,7 +1081,7 @@
       "evidence": "Mechanical: grep -c '```' over the whole file → 0 fences. check_prompts.md's own scope line restricts it to 'anything inside a fenced code block with copy-this affordance'; this file has none, so no rule in this compendium has a surface to fire on.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -1058,7 +1092,7 @@
       "evidence": "Mechanical: grep -c '```' over the whole file → 0 fences. check_prompts.md's own scope line restricts it to 'anything inside a fenced code block with copy-this affordance'; this file has none, so no rule in this compendium has a surface to fire on.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -1069,7 +1103,7 @@
       "evidence": "Mechanical: grep -c '```' over the whole file → 0 fences. check_prompts.md's own scope line restricts it to 'anything inside a fenced code block with copy-this affordance'; this file has none, so no rule in this compendium has a surface to fire on.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -1080,7 +1114,7 @@
       "evidence": "Mechanical: grep -c '```' over the whole file → 0 fences. check_prompts.md's own scope line restricts it to 'anything inside a fenced code block with copy-this affordance'; this file has none, so no rule in this compendium has a surface to fire on.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -1091,7 +1125,7 @@
       "evidence": "Mechanical: grep -c '```' over the whole file → 0 fences. check_prompts.md's own scope line restricts it to 'anything inside a fenced code block with copy-this affordance'; this file has none, so no rule in this compendium has a surface to fire on.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -1102,7 +1136,7 @@
       "evidence": "Mechanical: grep -c '```' over the whole file → 0 fences. check_prompts.md's own scope line restricts it to 'anything inside a fenced code block with copy-this affordance'; this file has none, so no rule in this compendium has a surface to fire on.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -1113,7 +1147,7 @@
       "evidence": "Mechanical: grep -c '```' over the whole file → 0 fences. check_prompts.md's own scope line restricts it to 'anything inside a fenced code block with copy-this affordance'; this file has none, so no rule in this compendium has a surface to fire on.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -1124,7 +1158,7 @@
       "evidence": "Mechanical: grep -c '```' over the whole file → 0 fences. check_prompts.md's own scope line restricts it to 'anything inside a fenced code block with copy-this affordance'; this file has none, so no rule in this compendium has a surface to fire on.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -1135,7 +1169,7 @@
       "evidence": "Mechanical: grep -c '```' over the whole file → 0 fences. check_prompts.md's own scope line restricts it to 'anything inside a fenced code block with copy-this affordance'; this file has none, so no rule in this compendium has a surface to fire on.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -1146,7 +1180,7 @@
       "evidence": "Mechanical: grep -c '```' over the whole file → 0 fences. check_prompts.md's own scope line restricts it to 'anything inside a fenced code block with copy-this affordance'; this file has none, so no rule in this compendium has a surface to fire on.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -1157,7 +1191,7 @@
       "evidence": "Mechanical: grep -c '```' over the whole file → 0 fences. check_prompts.md's own scope line restricts it to 'anything inside a fenced code block with copy-this affordance'; this file has none, so no rule in this compendium has a surface to fire on.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -1168,7 +1202,7 @@
       "evidence": "Mechanical: grep -c '```' over the whole file → 0 fences. check_prompts.md's own scope line restricts it to 'anything inside a fenced code block with copy-this affordance'; this file has none, so no rule in this compendium has a surface to fire on.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -1179,7 +1213,7 @@
       "evidence": "Mechanical: grep -c '```' over the whole file → 0 fences. check_prompts.md's own scope line restricts it to 'anything inside a fenced code block with copy-this affordance'; this file has none, so no rule in this compendium has a surface to fire on.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -1190,7 +1224,7 @@
       "evidence": "Mechanical: grep -c '```' over the whole file → 0 fences. check_prompts.md's own scope line restricts it to 'anything inside a fenced code block with copy-this affordance'; this file has none, so no rule in this compendium has a surface to fire on.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -1201,7 +1235,7 @@
       "evidence": "Not buyer-facing copy. check_sales_copy.md's own scope is 'ai-training site, newsletter, sponsor decks, pricing, LinkedIn marketing'; this file is an internal AE101 curriculum lecture, a different audience and channel entirely — the compendium has no surface here.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -1212,7 +1246,7 @@
       "evidence": "Not buyer-facing copy. check_sales_copy.md's own scope is 'ai-training site, newsletter, sponsor decks, pricing, LinkedIn marketing'; this file is an internal AE101 curriculum lecture, a different audience and channel entirely — the compendium has no surface here.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -1223,7 +1257,7 @@
       "evidence": "Not buyer-facing copy. check_sales_copy.md's own scope is 'ai-training site, newsletter, sponsor decks, pricing, LinkedIn marketing'; this file is an internal AE101 curriculum lecture, a different audience and channel entirely — the compendium has no surface here.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -1234,7 +1268,7 @@
       "evidence": "Not buyer-facing copy. check_sales_copy.md's own scope is 'ai-training site, newsletter, sponsor decks, pricing, LinkedIn marketing'; this file is an internal AE101 curriculum lecture, a different audience and channel entirely — the compendium has no surface here.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -1245,7 +1279,7 @@
       "evidence": "Not buyer-facing copy. check_sales_copy.md's own scope is 'ai-training site, newsletter, sponsor decks, pricing, LinkedIn marketing'; this file is an internal AE101 curriculum lecture, a different audience and channel entirely — the compendium has no surface here.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -1256,7 +1290,7 @@
       "evidence": "Not buyer-facing copy. check_sales_copy.md's own scope is 'ai-training site, newsletter, sponsor decks, pricing, LinkedIn marketing'; this file is an internal AE101 curriculum lecture, a different audience and channel entirely — the compendium has no surface here.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -1267,7 +1301,7 @@
       "evidence": "Not buyer-facing copy. check_sales_copy.md's own scope is 'ai-training site, newsletter, sponsor decks, pricing, LinkedIn marketing'; this file is an internal AE101 curriculum lecture, a different audience and channel entirely — the compendium has no surface here.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -1278,7 +1312,7 @@
       "evidence": "Not buyer-facing copy. check_sales_copy.md's own scope is 'ai-training site, newsletter, sponsor decks, pricing, LinkedIn marketing'; this file is an internal AE101 curriculum lecture, a different audience and channel entirely — the compendium has no surface here.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -1289,7 +1323,7 @@
       "evidence": "Not buyer-facing copy. check_sales_copy.md's own scope is 'ai-training site, newsletter, sponsor decks, pricing, LinkedIn marketing'; this file is an internal AE101 curriculum lecture, a different audience and channel entirely — the compendium has no surface here.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -1300,7 +1334,7 @@
       "evidence": "Not buyer-facing copy. check_sales_copy.md's own scope is 'ai-training site, newsletter, sponsor decks, pricing, LinkedIn marketing'; this file is an internal AE101 curriculum lecture, a different audience and channel entirely — the compendium has no surface here.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -1311,7 +1345,7 @@
       "evidence": "Not buyer-facing copy. check_sales_copy.md's own scope is 'ai-training site, newsletter, sponsor decks, pricing, LinkedIn marketing'; this file is an internal AE101 curriculum lecture, a different audience and channel entirely — the compendium has no surface here.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -1322,7 +1356,7 @@
       "evidence": "Not buyer-facing copy. check_sales_copy.md's own scope is 'ai-training site, newsletter, sponsor decks, pricing, LinkedIn marketing'; this file is an internal AE101 curriculum lecture, a different audience and channel entirely — the compendium has no surface here.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -1333,7 +1367,7 @@
       "evidence": "Not buyer-facing copy. check_sales_copy.md's own scope is 'ai-training site, newsletter, sponsor decks, pricing, LinkedIn marketing'; this file is an internal AE101 curriculum lecture, a different audience and channel entirely — the compendium has no surface here.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -1344,7 +1378,7 @@
       "evidence": "Target mood is 'recognition', not 'unease' — this rule only fires when the module's mood is unease.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -1355,7 +1389,7 @@
       "evidence": "No `## Key Concepts` section — this is a lecture file, not a module file with that canonical section.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -1366,7 +1400,7 @@
       "evidence": "No `## Key Concepts` section in this lecture file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -1377,13 +1411,55 @@
       "evidence": "No `## What You'll Learn` section in this lecture file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "17f193e7919b1bed99996bf5bcfbedabaa9119ba87499b30d17df3ac1db69a72",
+      "carried_from": "2059b6e47621cadbef3ae7e7b41cd95e3befac8f7dc0779edca01f4fec0fc0ce",
       "carried_shape": "1870b031fbe8c765"
     }
   ],
-  "blocking_findings_count": 0,
   "todos_count": 0,
-  "findings": [],
-  "todos": [],
-  "notes": "Re-fire, staleness reason rule-drift, pin d065f8bc. `git diff d065f8bc..HEAD -- curriculum/lectures/painting-the-picture-with-the-llm.md` shows only the maintainer Quality-line SHA stamp changed (writing@d065f8bc -> writing@d065f8bc restamp with new technical/slides pins on 2026-08-28); zero body-region bytes moved. Per this dispatch, re-read check_writing.md §26 at its CURRENT wording via `node curriculum/evals/scripts/rule.js writing 26` ('A sentence saying how you'd know points at the outcome, not the nearest artifact') — this rule_index held different (moved-stub) content in the prior instance, so its old parked N/A row is stale-by-drift rather than stale-by-shape; re-derived fresh in this instance (see rules_evaluated) and confirmed N/A for a different, correct reason: no self-witnessing 'how you'd know' clause exists in this body at all. 31 rules judged fresh this session per derive-class-brief.js (rules_included=31, excluded=99 resolved by shape hash 1870b031fbe8c765, parked in the prefill sidecar, merge run after writing). Plus one extra row (check_writing.md §26) written by me outside the brief specifically because the dispatch named it as the rule-drift reason for this re-fire; per the mechanics contract 'a row you wrote yourself always wins,' so it survives --merge even though the brief did not list it. No REVISE, blocking or non-blocking, found. The file's own maintainer/backing blocks preemptively document and accept-note the two lines a writing judge would otherwise most want to flag: the shotgun/cannon koan + 'the sharp engineers stay sharp' (line 19, check_writing.md §4/§12/§21, check_strategy_tie_in.md §4) — cross-checked against those dated accept-notes rather than flagged fresh."
+  "blocking_findings_count": 0,
+  "accept_notes_found": [
+    "L32: Shotgun/cannon pair — deliberate provocation beat, maintainer's own words, keep (no date given, standing note).",
+    "L34: Trainer-feedback pass (2026-08-04) — two cuts recorded, remaining content confirmed to stay.",
+    "L36: Emphasis pass (2026-07-09, Antti-directed \"go very lightly on the bold\") — bold stripped from all three slides.",
+    "L38: Slides-only pass (2026-07-02, unaudited) — re-chunk record, M1 map-reference protection.",
+    "L40: Amplification koan carries no verbal hedge and does not need one (Antti 2026-08-14) — licenses no carve-out under §12/§21.",
+    "L42: Minor-fix (2026-07-02) — five-word whisper addition explained, cross-referenced to the-machine-you-just-met.md.",
+    "Backing Stance block: decided (maintainer call 2026-07-29, re-affirmed 2026-08-14) — koan stands at belief strength.",
+    "Backing Stance block: decided (2026-07-29) — 'nobody has published the cut' is a gap statement, not a to-do."
+  ],
+  "drift_check": {
+    "pin": "c0c37913",
+    "staleness_reason": "rule-drift",
+    "rules_reread": [
+      {
+        "rule": "prompts §17",
+        "verdict": "N/A for this file — no prompt/fenced content at all (fences=0); narrowing to plan-mode-only doesn't change that."
+      },
+      {
+        "rule": "prompts §20",
+        "verdict": "N/A for this file — no prompt blocks to grill-before-save on."
+      },
+      {
+        "rule": "prompts §40",
+        "verdict": "N/A for this file — no prompt blocks, no session-boundary question to verify."
+      },
+      {
+        "rule": "strategy_tie_in §7",
+        "verdict": "N/A for this file — lecture has no '## What You'll Learn' section; rule governs module WYL bullets only."
+      },
+      {
+        "rule": "student_facing §31",
+        "verdict": "N/A for this file — body contains no directive-to-agent phrasing (no 'typing'/'say to Claude'/'tell it to')."
+      },
+      {
+        "rule": "student_facing §32",
+        "verdict": "N/A for this file — body contains no CLI/setup/flag/env-var content."
+      },
+      {
+        "rule": "writing §3",
+        "verdict": "PASS, re-read at current wording including the 2026-09-05 phantom-license addition — no negative-existential 'X does not exist' constructs found in body or maintainer/backing blocks; the maintainer's 'do not re-hedge/strengthen' guards each anchor to a named, live temptation, not a phantom. Pre-existing dated-provenance journey content (Slides-only pass, Emphasis pass) stays inside per the rule's own corpus-convention protection and empirical-finding carve-out."
+      }
+    ],
+    "note": "None of the six N/A rules changed shape-relevant facts about this file; the file's lack of prompt blocks, WYL section, and directive-to-agent/CLI content pre-dates and post-dates the rule wording changes equally. Only writing §3 required a substantive fresh read against its new clause, and no new violation was found."
+  }
 }

@@ -1,84 +1,114 @@
 {
   "class": "strategy",
+  "training": "ae101",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/extract-the-task-shaping-rule.md",
   "verdict": "PASS",
-  "training": "ae101",
-  "strategy_doc_section_loaded": "content-strategy-agentic-engineering-101.md § 'M2 in detail — plan mode, done right' (Second exercise — extract the task-shaping rule paragraph + Mini-lecture — where the rule could live paragraph + Why both fire here paragraph) + § 'Recurring themes' (capture-your-world #5, non-agentic-default #6, compounding #2, mirror #3, self-aware+grain-of-salt #4) + § 'Woven design rules' #1 (Compound step shape varies — M2 save-if-earned) + § 'Mood arc' (grounded competence)",
+  "body_sha": "248cc0060bbb6322caa1282f483c414cef53d1f28ecb88c90151285d157c7f8a",
+  "shape_hash": "04c8bbd89721df08",
+  "strategy_doc_section_loaded": "content-strategy-agentic-engineering-101.md § 'Recurring themes', § 'Woven design rules' #1 (Compound shape varies — M2 save-if-earned) and #3 (reading contract), § 'Six core modules' table (M2 row), § 'Mood arc', § 'M2 in detail — plan mode, done right' (second-exercise paragraph, ticket-split note 2026-08-12, refinement-retirement note 2026-08-12, 'M2 issues no homework')",
   "rules_evaluated": [
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 1,
-      "rule_lead": "Mood contract named — honour, not flatten",
+      "rule_lead": "Mood contract named.",
       "verdict": "PASS",
-      "evidence": null,
+      "evidence": "Maintainer 'Mood target' (L147): 'extension of grounded competence into capture-and-name... I'm not building it today — and that's the move' matches strategy doc's M2 mood verbatim ('grounded competence... I can feel when a plan is good before approving it') and its own closing instruction ('Closing on the leverage horizon without resolving it is what honours the grounded-competence mood'). Body honours rather than resolves: Phase 3/'Read the shapes' (L75-78) names automation shapes and explicitly defers ('you're not building it today'), matching the doc's 'builds none of it' framing for this exact beat.",
       "fix_hint": null,
-      "blocking": false
+      "blocking": true
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 2,
-      "rule_lead": "Epistemic mood ≠ punitive mood",
+      "rule_lead": "Epistemic mood ≠ punitive mood.",
       "verdict": "N/A",
-      "evidence": "This beat's mood is grounded competence extended into capture-and-name, not 'unease' — rule 2 only fires on unease-mood modules. Push-back language ('the generic rule is the tell') is diagnostic, not shaming, so even read loosely against the spirit of the rule there is no punitive framing to flag.",
+      "evidence": "Module's mood is grounded competence / capture-and-name, not 'unease' — rule only fires on unease-mood modules. Diagnostic language present ('the generic rule is the tell', L27) frames the student's own judgement call, not wrongdoing.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 3,
-      "rule_lead": "Lead with discipline, not failure mode",
+      "rule_lead": "Lead with discipline, not failure mode.",
       "verdict": "PASS",
-      "evidence": null,
+      "evidence": "grep -ni 'fabrication|violation|hallucinat|failure\\b' curriculum/exercises/extract-the-task-shaping-rule.md → 0 hits in body. Phase headings and body lead with positive verbs/disciplines throughout: 'Codify the rules', 'Save the file where you want it', 'Save the rule if it earned itself', 'Leave the repo tidier than you found it'.",
       "fix_hint": null,
       "blocking": true
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 4,
-      "rule_lead": "Strategy-fidelity check — no front-running downstream modules",
+      "rule_lead": "Strategy-fidelity check.",
       "verdict": "PASS",
-      "evidence": null,
+      "evidence": "Cross-checked every doc sequencing claim against current body: (a) doc 2026-08-12 note 'M2 reads a story ticket... same move, different face' → body's new 'Read more rules off one story ticket' phase (L29-37) implements exactly this, and the prior homework fork (`read-the-ticket-rules.md`) no longer exists (find/grep both return nothing) — the doc's 'M2 issues no homework' now holds cleanly where the pre-diff version had drifted into homework. (b) doc's retired-term note ('Refinement... retired 2026-08-12') → grep -ni refinement on body returns only an unrelated maintainer-prose hit ('optional-refinements carve-out', L118), the taught term itself is gone (old Phase 3 line 'Refinement is the backlog-grooming loop' was cut in this diff). (c) doc 'Woven design rule 1': 'M2 save-if-earned (90 sec, optional, no quota)' → Phase 4 (L80-96) is exactly this: integrate one branch only if it earned itself, explicit stop-hatch otherwise. (d) non-front-running: maintainer's own checklist (L149-153) confirms Phase 2 names a .md file not a skill (M3 owns skill-authoring), Phase 3 asks Claude to name automation shapes without inventing or invoking any (M5/M6 territory) — verified against body, holds. No downstream teaching moment front-run.",
       "fix_hint": null,
       "blocking": true
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 5,
-      "rule_lead": "Strategic themes recur in Key Concepts",
+      "rule_lead": "Strategic themes recur in Key Concepts.",
       "verdict": "N/A",
-      "evidence": "No `## Key Concepts` heading in this file — it is an exercise, not a module file. Confirmed by grep on the owning module file (plan-mode-done-right.md line 62), which carries its own `## Key Concepts` section covering the core exercise.",
+      "evidence": "grep -n '^##' on this file returns no 'Key Concepts' heading (headings are Phase 1-5 + two named sub-sections) — this is an exercise file; Key Concepts is owned by the module file (plan-mode-done-right.md, confirmed at its own line 42).",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 6,
-      "rule_lead": "Key Concepts shape — theme breadcrumbs, not standalone section",
+      "rule_lead": "Key Concepts shape — theme breadcrumbs, not standalone section.",
       "verdict": "N/A",
-      "evidence": "Same reason as rule 5 — no `## Key Concepts` heading at this file's scope.",
+      "evidence": "Same structural absence as rule 5 — no `## Key Concepts` heading exists at this file's scope to shape. Re-read at current §6 wording (theme-breadcrumb / no-Remember-label / variety-over-consistency clauses) changes nothing here: the precondition for the rule to fire (a Key Concepts section on this file) still doesn't exist.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 7,
-      "rule_lead": "What You'll Learn shape — capability register, strategic-theme verbs lead",
+      "rule_lead": "What You'll Learn shape — capability register, not syllabus.",
       "verdict": "N/A",
-      "evidence": "No `## What You'll Learn` heading in this file — confirmed by grep on plan-mode-done-right.md line 18, which owns that section at module scope.",
+      "evidence": "grep -n '^##' returns no 'What You'll Learn' heading — owned by the module file (plan-mode-done-right.md line 16). Re-read at current §7 wording (grammar-fit check, theme-verb carve-outs, apparatus failure modes) changes nothing: no WYL bullets exist on this file to score.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 8,
+      "rule_lead": "Strategy doc carries strategy, not structure.",
+      "verdict": "PASS",
+      "evidence": "This file's own structural facts are internally consistent with the doc rather than duplicating it: the doc's M2 section states 'the taxonomy itself is the module file's to state' — checked against plan-mode-done-right.md, whose maintainer block (L169-182, past its own L93 maintainer-cut) carries the authoring-reference Artefact-contracts table; this exercise's student-facing 'Where rules can live' table (L53-59, added 2026-08-13 maintainer-dated, live-probed 2026-08-30) is the pedagogical restatement built from that source, not a second competing authority — both list the same auto-load surfaces (CLAUDE.md variants, .claude/rules, auto-memory, skills, roll-your-own+@import) with no contradiction found. Doc does not restate this file's phase list, slide count, or exact time figure (searched doc for '12 min'/'20 min' near the exercise — no hits), consistent with §8's 'DOC MUST NOT RESTATE ... slide counts, phase lists' now that this file's own **Time:** line (20 min, changed from 12) and phase structure live only here.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "judge-template",
-      "rule_index": null, "judge_owned": true,
-      "rule_lead": "Big Idea match (strategy doc Big Idea vs file) — named as a distinct judgment in the template's Evaluate section, not a numbered compendium rule",
+      "rule_index": null,
+      "judge_owned": true,
+      "rule_lead": "Big Idea match (strategy doc Big Idea vs file) — template Evaluate-section judgment, not a numbered compendium rule",
       "verdict": "N/A",
-      "evidence": "No `## Big Idea` heading in this file (module-scope only, owned by plan-mode-done-right.md line 5). This exercise inherits the module's Big Idea without restating or contradicting it.",
+      "evidence": "No `## Big Idea` heading in this file (module-scope only, owned by plan-mode-done-right.md line 5, confirmed by grep). This exercise inherits the module's Big Idea without asserting or contradicting its own.",
       "fix_hint": null,
       "blocking": true
     }
   ],
   "blocking_findings_count": 0,
   "todos_count": 0,
-  "notes": "Independent re-audit of on-disk state (2026-08-01), cross-checked against the prior strategy.json already on disk — same PASS verdict reached independently, with rule 2 and the Big Idea judgment corrected from PASS to N/A (mood isn't 'unease' here so §2 doesn't fire; file carries no own Big Idea heading so there is nothing to check for drift — both are N/A, not silently-passing PASSes). Exercise file (not module file): Key Concepts (§5/§6) and What You'll Learn (§7) are owned by plan-mode-done-right.md, confirmed live via grep (`## Big Idea` line 5, `## What You'll Learn` line 18, `## Key Concepts` line 62) rather than assumed. Mood (§1): strategy doc names this beat 'grounded competence' extended into 'capture-and-name'; file's maintainer 'Mood target' line states this near-verbatim, and body tone (agency-forward: 'you are not on the hook for remembering it', 'that is where your hand goes on the work') matches without resolving the arc — closes on 'Read the shapes, hold the build', leaving the leverage horizon open, matching the strategy doc's explicit framing ('Honors the grounded-competence mood by closing on the leverage horizon without resolving it'). Lead-with-discipline (§3): headings and body use capture/name/decide/save/rewrite verbs; 'generic' (used diagnostically, once per occurrence) is not a compendium failure-mode word (fabrication/violation/hallucination). Strategy-fidelity (§4): file's own maintainer 'Non-front-running checks' map exactly to strategy doc constraints — Phase 2 names a .md file, not a skill (M3 owns first skill-by-name authoring per the strategy doc's M1/M3 sections); Phase 3 asks Claude to name automation shapes without inventing canonical ones or invoking them (M5 owns verifier-as-eval, M6 owns eval-encoding); the automation-shapes prompt is a deliberate generate-then-reveal setup for the following lecture (where-the-rule-could-live.md), which the strategy doc's own M2 section scripts ('Body ships un-attributed by deliberate choice — at M2 the cohort hasn't met the practitioners yet'). Time (12 min) matches strategy doc's '~12 min' exactly — no drift. Themes: maintainer 'Themes earned' block names capture-your-world (#5), compounding (#2), mirror (#3), self-aware+grain-of-salt (#4) — correctly matched to the strategy doc's canonical six-theme list, no misnaming or invented theme found."
+  "drift_rules_reread": [
+    "strategy_tie_in §6 — re-fetched current wording (theme-breadcrumb shape, no-Remember-label, variety-over-consistency, ceiling-counts-breadcrumbs-not-punchlines clauses added/reworded since the pin). Verdict unchanged: still N/A. The rule's precondition is a `## Key Concepts` section on the judged file; this exercise file has none at any version of the wording, so the rewording is irrelevant to this file's verdict.",
+    "strategy_tie_in §7 — re-fetched current wording (grammar-fit check, theme-verb carve-outs, four apparatus failure modes added/reworded since the pin). Verdict unchanged: still N/A. Same reasoning as §6 — no `## What You'll Learn` section exists on this file to apply the (now more detailed) register rules to."
+  ],
+  "accept_notes_found": [
+    "L114 (2026-08-14, Antti) — no connector/tracker pointer added here; M1's close-the-ticket owns the single pointer to reference/mcp-and-connectors.md.",
+    "L116 (reaffirmed 2026-08-02, standing [watch]) — @import wiring stays in body as a plain bullet, not re-promoted to a Note widget; known accepted pedagogy gap logged in pre-cohort-todos (2026-07-26), fires only on cohort field evidence.",
+    "L118 — the @import ask is fenced as a question, not an automatic action; grounds = wiring stays the student's choice.",
+    "L122 (2026-08-08, Antti-directed) — scrollback-ownership clause: Phase 1's 'question is how you worked, not what is on disk' is the deliberate boundary of M1's scrollback law.",
+    "L124 (2026-08-13, Antti-directed; auto-memory row updated 2026-08-14; live-probed 2026-08-30) — the compact load-map table added to the 'Where rules can live' slide, roster and wording verified against docs/en/memory.md and a live cold-start probe.",
+    "L126 (ticket-kind split dated 2026-08-12 per the same-pass key rename) — scope ends at the automation-shapes read; the bug/story ticket-kind split with M1 is deliberate, not duplication.",
+    "L128 — Phase 3 automation-shapes prompt kept, not cut, despite apparent overlap with the closing lecture's three shapes; decision stands on the no-build/horizon-beat distinction.",
+    "L130 — emphasis-budget note (check_slides.md §9): no bolded bullet handles in body; widget chrome untouched.",
+    "L132 (2026-08-25, Antti-approved) — lean-intro trim of the Phase 1 lead-in sentence.",
+    "L134 — Phase 4's two prompt fences are a short soft-compound close ritual, not a buried exercise.",
+    "L136 (Antti-directed 2026-08-23; moved into this file 2026-08-25) — Phase 5 Boy Scout slide placement and its three-bullet content are Antti's; naming-only, no fix-it prompt.",
+    "L138 (Antti 2026-08-13 / 2026-08-14) — push-back-on-the-plan-4's deliberately short, lowercase, tired-engineer register is intentional and deliberately answerable via the load-map table; not a stylistic outlier to flag."
+  ],
+  "notes": "Full re-judgment, not a diff-scoped read: the diff since pin 1c765f2 rewrote roughly two-thirds of the file (title, time 12→20min, new story-ticket-read phase, new load-map table replacing a Note widget, new Phase 4 soft-compound and Phase 5 Boy Scout close moved in from the module body, and a much-expanded maintainer block). Cross-checked every major structural change against the live strategy doc (content-strategy-agentic-engineering-101.md, read fresh this run, not from cache) rather than trusting the prior 2026-08-01 instance's framing: the doc's own 2026-08-12 dated notes (ticket-split, refinement-retirement, no-homework) and its 'Woven design rule 1' M2 save-if-earned clause independently confirm every major addition in this diff, so the large diff reads as the file catching up to strategy decisions the doc already recorded, not as drift away from it. No blocking findings, no non-blocking todos — did not manufacture a thin §8 doc-precision note into a todo after checking it resolves cleanly (module maintainer block and this file's student table state the same taxonomy at different altitudes, non-contradictory)."
 }

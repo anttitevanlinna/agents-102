@@ -318,9 +318,10 @@ function promptKeys(text) {
 // the rule-drift axis. Absent hook -> throw; empty ledger -> silent, which is
 // what gitIo returns when nobody has run `compendium-drift.js --repin`.
 function requireIo(io, where) {
-  for (const k of ['readFile', 'gitDiff', 'validSha', 'ruleDrift']) {
+  for (const k of ['readFile', 'gitDiff', 'validSha', 'ruleDrift', 'staleFinding']) {
     if (typeof io[k] !== 'function') {
-      throw new TypeError(`${where}: io is missing ${k}(). Build it with gitIo(repo), or pass ${k}: () => new Set() to say so out loud.`)
+      const nul = k === 'staleFinding' ? '() => false' : '() => new Set()'
+      throw new TypeError(`${where}: io is missing ${k}(). Build it with gitIo(repo), or pass ${k}: ${nul} to say so out loud.`)
     }
   }
 }
@@ -387,6 +388,13 @@ function scanFile(relpath, io) {
         const rules = typeof driftCache[sha].get === 'function' ? driftCache[sha].get(cls) : null
         if (rules && rules.length) driftRules[cls] = rules
       }
+      // Third axis: the file and the rule both held still for THIS class, but
+      // the class left an unresolved finding and the body it was written
+      // against has since changed. Neither axis above can see it — a fix inside
+      // the maintainer block routes to no class at all — so the finding becomes
+      // permanent: true when written, unverifiable after, and counted forever.
+      // Reported last, so a class stale for an actionable reason still says so.
+      if (!stale && io.staleFinding(relpath, cls)) { stale = true; reason = 'stale-finding' }
       if (stale) { classes.push(cls); detail[cls] = reason }
     } else if (new RegExp(`${VERDICT_LEAD}${cls} REVISE`).test(row)) {
       classes.push(cls); detail[cls] = 'revise'
@@ -422,7 +430,52 @@ function gitIo(repo) {
       try { when = execFileSync('git', ['show', '-s', '--format=%cs', sha], { cwd: repo, encoding: 'utf8' }).trim() } catch { when = null }
       return (driftMemo[sha] = driftedRules(ledger, when))
     },
+    staleFinding: (rel, cls) => {
+      const idx = findingIndex(repo)
+      const rec = idx.get(`${path.resolve(repo, rel)}|${cls}`)
+      if (!rec) return false
+      const live = fileHash(path.resolve(repo, rel))
+      // No recorded body means we cannot show the finding is stale, and a
+      // guess in either direction is worse than the queue staying quiet.
+      return !!live && !!rec.body_sha && live !== rec.body_sha
+    },
   }
+}
+
+// Instances keyed by (absolute source path, class), carrying only what the
+// staleness question needs: does this class have an unresolved finding, and
+// against which body did it record one. Built once per gitIo.
+let FINDING_INDEX = null
+const isSettled = res => !!(res && typeof res === 'object' && res.settled)
+function resetFindingIndex() { FINDING_INDEX = null }
+function findingIndex(repo) {
+  if (FINDING_INDEX) return FINDING_INDEX
+  FINDING_INDEX = new Map()
+  const dir = path.join(repo, 'curriculum/evals/instances')
+  let names = []
+  try { names = fs.readdirSync(dir) } catch { return FINDING_INDEX }
+  for (const n of names) {
+    if (!n.endsWith('.json')) continue
+    let inst
+    try { inst = JSON.parse(fs.readFileSync(path.join(dir, n), 'utf8')) } catch { continue }
+    if (!inst || !inst.file || !inst.class || !Array.isArray(inst.rules_evaluated)) continue
+    // A recorded resolution settles a finding — on the row for that row, on the
+    // instance for the verdict as a whole. A settled finding is not open, so no
+    // later body edit can make it stale; only the rows still open count here.
+    if (isSettled(inst.resolution)) continue
+    if (!inst.rules_evaluated.some(r => r && typeof r === 'object' && r.verdict === 'REVISE' && !isSettled(r.resolution))) continue
+    FINDING_INDEX.set(`${path.resolve(repo, String(inst.file))}|${inst.class}`, { body_sha: inst.body_sha || null })
+  }
+  return FINDING_INDEX
+}
+
+const HASH_MEMO = new Map()
+function fileHash(abs) {
+  if (HASH_MEMO.has(abs)) return HASH_MEMO.get(abs)
+  let v = null
+  try { v = require('node:crypto').createHash('sha256').update(fs.readFileSync(abs)).digest('hex') } catch { /* gone */ }
+  HASH_MEMO.set(abs, v)
+  return v
 }
 
 // Surface type drives instanceSlug, so it must match the naming
@@ -559,6 +612,6 @@ function main(argv) {
   process.exit(2)
 }
 
-module.exports = { gitIo, requireIo, parseHunks, buildLineMeta, changeTags, extractPins, judgesRow, blockRow, promptKeys, filterItems, scanFile, typeOf, trainingOf, linkFinder, CLASSES, EXTRA_CLASSES, crossRow, panelRow, crossState, panelState }
+module.exports = { gitIo, requireIo, findingIndex, resetFindingIndex, parseHunks, buildLineMeta, changeTags, extractPins, judgesRow, blockRow, promptKeys, filterItems, scanFile, typeOf, trainingOf, linkFinder, CLASSES, EXTRA_CLASSES, crossRow, panelRow, crossState, panelState }
 
 if (require.main === module) main(process.argv.slice(2))

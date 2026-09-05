@@ -24,6 +24,9 @@ function testIo(root, drifted = []) {
     validSha: () => true,
     // A Map, like gitIo returns: .has(cls) routes, .get(cls) names the rules.
     ruleDrift: () => new Map(drifted.map(c => [c, [{ compendium: 'check_x', rule: '1', changed_at: '2026-08-23' }]])),
+    // These fixtures carry no instances, so no class has an open finding to
+    // have gone stale. Said out loud, per requireIo.
+    staleFinding: () => false,
   }
 }
 

@@ -11,7 +11,6 @@
 #        reference each other.)
 #   - content/skills/ whitelisted per AE101 training-architecture: access-control-analysis + stride + security-tools
 #       (agentic-nerd is the optional self-study host, ships only from a self-study target)
-#   - content/pre-engagement-contract.md (template-with-defaults; per-customer overlay at deploy time)
 #   - prompts/ (full registry; consuming files resolve {{prompt:<key>}} markers against this)
 #
 # Maintainer blocks stripped from .md content; SKILL.md files ship verbatim.
@@ -30,7 +29,8 @@ TRAINING_DIR="curriculum/trainings/$TRAINING"
 
 # Per-training skill whitelist. Sourced from training-architecture.md §Skills.
 # `security-tools` carries the M3 "external skills are a supply-chain vector"
-# live demo (rick-roll); see pre-cohort-todos.md "Surprise-skill live demo".
+# live demo (rick-roll); design intent in curriculum/exercises/
+# threat-model-with-stride.md, "M3 supply-chain easter egg" block.
 SKILLS=(access-control-analysis stride security-tools)
 
 # Trainer-only files in the training dir — excluded from reachability walk.
@@ -173,14 +173,6 @@ for name in "${SKILLS[@]}"; do
   fi
 done
 
-# ---- Pre-engagement contract --------------------------------------------
-# Template-with-defaults; per-customer overlay happens at deploy time in the
-# private ai-training-internal repo.
-CONTRACT_SRC="content/pre-engagement-contract.md"
-if [ -f "$CONTRACT_SRC" ]; then
-  cp "$CONTRACT_SRC" "$ROOT/content/pre-engagement-contract.md"
-fi
-
 # ---- Prompt registry -----------------------------------------------------
 # Consuming exercise / lecture / reference / supplementary files keep
 # `{{prompt:<key>}}` markers; resolve against this directory at runtime.
@@ -234,7 +226,6 @@ EXPECTED=(
   "content/skills/stride/SKILL.md"
   "content/skills/security-tools/SKILL.md"
   "content/skills/security-tools/check.sh"
-  "content/pre-engagement-contract.md"
 )
 MISSING=()
 for path in "${EXPECTED[@]}"; do

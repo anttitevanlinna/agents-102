@@ -279,7 +279,7 @@ Scoped, named capabilities. Markdown file with frontmatter + instructions, in a 
 - **Skill:** task-specific, loads on demand, reusable move (*"review this against our security policy"*). Its body stays in context once loaded, so keep it short
 - **Rule:** always-on (or path-scoped), constraints Claude should honour whenever active
 <!--flag:module:earn-the-trust-->
-**AE101 cross-refs:** M3 ships two curated skills (`access-control-analysis`, `stride`) and you author one (`test-strategy`).<!--/flag:module:earn-the-trust--><!--flag:module:spot-gaps-build-the-loop--> M6 authors a second one, the learning-loop skill built from the two-session diff.<!--/flag:module:spot-gaps-build-the-loop-->
+**AE101 cross-refs:** M3 ships two curated skills (`access-control-analysis`, `stride`) and you author one (`test-strategy`).<!--/flag:module:earn-the-trust--><!--flag:module:spot-gaps-build-the-loop--> M6 hands you a handoff prompt that authors more, one per recurring shape in your stack.<!--/flag:module:spot-gaps-build-the-loop-->
 
 Docs: [skills](https://code.claude.com/docs/en/skills).
 
@@ -344,7 +344,7 @@ The scheduler or condition invokes the skill. The skill is the thing that catche
 
 **Continuous polish loop.** `/loop 3m` while editing → prompt reads *"Invoke the `tighten-draft` skill on the current file. Propose changes."* The skill is the move; the loop is the rhythm.
 
-**Rule-drift monitor.** Desktop local task weekly → prompt reads *"Invoke the `rule-drift` skill on the project root. Flag rules in `CLAUDE.md` that the last week of commits contradicted."*<!--flag:module:spot-gaps-build-the-loop--> Your second authored skill from M6 is a strong candidate to wire into a schedule like this one.<!--/flag:module:spot-gaps-build-the-loop--><!--flag:no-module:spot-gaps-build-the-loop--> A skill you author yourself is a strong candidate to wire into a schedule like this one.<!--/flag:no-module:spot-gaps-build-the-loop-->
+**Rule-drift monitor.** Desktop local task weekly → prompt reads *"Invoke the `rule-drift` skill on the project root. Flag rules in `CLAUDE.md` that the last week of commits contradicted."*<!--flag:module:spot-gaps-build-the-loop--> The skills your M6 handoff prompt authors are strong candidates to wire into a schedule like this one.<!--/flag:module:spot-gaps-build-the-loop--><!--flag:no-module:spot-gaps-build-the-loop--> A skill you author yourself is a strong candidate to wire into a schedule like this one.<!--/flag:no-module:spot-gaps-build-the-loop-->
 
 ## 23. Long-running shapes: session lifecycle gotchas
 
@@ -665,5 +665,5 @@ Docs: [memory.md § Troubleshoot memory issues](https://code.claude.com/docs/en/
 
 **Freshness lesson, worth keeping:** `push-back-on-the-plan.md` stamped this same doc `result:OK` on 2026-08-02 and recorded a four-option menu. Thirteen days later it was three. A research preview can be withdrawn between two checks, so cite an option count by shape, not by number, unless the check is fresh.
 
-**Quality:** compendium-audited 2026-08-29 (writing@4a722813 story@4a722813 behavior@bb9c1d5 slides@4a722813)
-- judges @4a722813: writing PASS, story PASS, technical grandfathered, behavior PASS, pedagogy grandfathered, strategy grandfathered, slides PASS
+**Quality:** compendium-audited 2026-09-05 (behavior@bb9c1d5 slides@324b81d7)
+- judges @08946dd8: writing REVISE (2/0 see instances/ae101--reference--claude-code-for-engineers.writing.json), story REVISE (1/0 see instances/ae101--reference--claude-code-for-engineers.story.json), technical grandfathered, behavior PASS, pedagogy grandfathered, strategy grandfathered, slides PASS

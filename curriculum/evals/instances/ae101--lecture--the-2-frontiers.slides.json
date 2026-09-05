@@ -3,17 +3,17 @@
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/the-2-frontiers.md",
   "verdict": "PASS",
   "training": "ae101",
-  "body_sha": "acdfe4a5a26c3fc8ab97ccc893549c1fbff8647e359abbad4a67a016612ef832",
+  "body_sha": "add17d3a226314124bc54ee144426a1c5516a1c25600315f244c86079298f058",
   "shape_hash": "605546789744a58d",
   "chunk_map": [
     {
       "index": 0,
-      "heading": "H1: The 2 frontiers of learning (title, no lede)",
+      "heading": "H1: The two frontiers (title, no lede)",
       "lines": "1-1"
     },
     {
       "index": 1,
-      "heading": "Two frontiers still open: speed and direction",
+      "heading": "Two frontiers",
       "lines": "3-8"
     }
   ],
@@ -24,7 +24,7 @@
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "chunk 1 line 5 \"The agent is building the agentic loop now. Agents building agents.\" is the first mention of \"the agent\"/\"the agentic loop\" IN THIS FILE, but both are arc-earned spine vocabulary (AE101's central subject term, established across every prior module) — carve-out applies, no per-slide re-earning owed. Line 6's \"a system like this\" and line 7's \"it\" resolve to that same antecedent one bullet up — immediate same-chunk continuation, not a forward or never-named reference. The diff since the pin dropped the bullet's opening \"We have come a long way.\" clause entirely, so there is no first-person-plural pronoun left in the body to resolve at all.",
+      "evidence": "Chunk 0 (H1, L1) 'The two frontiers' establishes the topic; chunk 1's own header (L3) repeats it as 'Two frontiers'. Bullet 1 (L5) 'The model's frontier moves without you' — 'the model' is AE101's pervasively-earned core term for the LLM, used across every prior module; not a first use needing per-slide re-earning. Bullet 2 (L6) 'Your frontier' resolves directly against the chunk's own header, which names exactly two frontiers (the model's, and yours) in this same chunk. Bullet 3 (L7) 'your system' is the training's established second-person shorthand for the student's own agentic system, long earned by this M6 capstone opener; 'it' in 'can it learn' resolves to 'your system' one clause earlier in the same sentence. No pronoun or demonstrative in the 8-line body points forward, stays ambiguous with full chunk history, or was stranded by the ## cut (the whole body is one title chunk plus one content chunk, so there is no re-chunked long-read paragraph to strand anything).",
       "fix_hint": null,
       "blocking": true
     },
@@ -34,7 +34,7 @@
       "rule_lead": "Cross-file and positional callbacks.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "No cross-file or positional pointer anywhere in the body (lines 1-8). The maintainer block's M1 cross-reference (now corrected from \"closer\" to \"opener\" at L18/L29) is delivery guidance, not body text, and never reaches a slide.",
+      "evidence": "`grep -nE '\\[[^]]+\\]\\(' curriculum/evals/body-views/ae101--lecture--the-2-frontiers.body.txt` -> 0 hits: no links, no cross-file pointer of any kind in the 8-line body. The maintainer block does name M1's opener by title ('Echoes Module 1's \"Painting the picture\" opener', L18; 'Pairs with M1's opener', L29) but that text sits below the maintainer cut (L9) and never reaches a slide; even read as a body candidate it names the source by title, the passing form the rule itself endorses.",
       "fix_hint": null,
       "blocking": true
     },
@@ -44,7 +44,7 @@
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Chunk 1's three bullets are self-carrying: a recognition line (agents now build the loop themselves) plus two fully spelled-out open questions (speed of learning, direction of learning). Not a wait-state or single context-dependent bullet, even shortened from the pinned version.",
+      "evidence": "Chunk 1 carries three self-standing bullets: a claim about the model's frontier (L5), a contrasting claim about the student's own frontier (L6), and two fully spelled-out open questions (L7) — not a wait-state or single context-dependent line. Chunk 0 is a bare title slide, the ordinary shape every file's chunk 0 takes, not the orphan pattern this rule targets.",
       "fix_hint": null,
       "blocking": false
     },
@@ -54,7 +54,7 @@
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Header \"Two frontiers still open: speed and direction\" (line 3) is literally true of the chunk's content: bullet 2 names frontier one as speed of learning, bullet 3 names frontier two as direction of learning, both left open (unanswered questions). No contradiction between header and body.",
+      "evidence": "Header 'Two frontiers' (L3) is literally true of chunk 1's content: bullet 1 (L5) names the model's frontier, bullet 2 (L6) names 'your' frontier — exactly two frontiers, matching the header's plural noun with no more and no fewer named. No contradiction between header and content.",
       "fix_hint": null,
       "blocking": false
     },
@@ -64,7 +64,7 @@
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Checked chunk 1 against all six sub-items on the current wording: no \"Not X. Not Y. Z.\" construction; bullet 1 is now only two short sentences (\"The agent is building the agentic loop now. Agents building agents.\") — too few, and not a shared-lead/tail pattern, to be an anaphora/epistrophe triple; no self-grading superlative; no number present at all (so no number+retraction); \"the agentic loop\" is a named, concrete spine artifact, not an abstraction-noun stack; no verb-triplet construction anywhere. None of the six tics present.",
+      "evidence": "Checked chunk 1 against all six sub-items. `grep -nE 'Not [A-Za-z].*\\. *Not [A-Za-z]' body.txt` -> 0 hits, no 'Not X. Not Y. Z.' construction. No anaphora/epistrophe triple: the three bullets are independent claims, not a shared-lead/tail repeated construction. No self-grading superlative anywhere. No number appears in the body at all, so no number-plus-retraction. 'Frontier' is not an abstraction-noun-stack filler word being swapped for a concrete thing that exists elsewhere in the sentence — it is the file's own deliberately coined central image (title, H2, and the backing block's named framework 'Learning rate is the ceiling'), not padding. No verb-triplet construction anywhere in three short bullets. None of the six tics present.",
       "fix_hint": null,
       "blocking": false
     },
@@ -74,7 +74,7 @@
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "`grep -nE '\\b(surface|firing|compendium|forcing function|beat|mood)\\b' curriculum/evals/body-views/ae101--lecture--the-2-frontiers.body.txt` → 0 hits. Body vocabulary is plain: agent, agentic loop, frontier, learning.",
+      "evidence": "`grep -niE '\\b(surface|firing|compendium|forcing function|beat|mood|connections)\\b' curriculum/evals/body-views/ae101--lecture--the-2-frontiers.body.txt` -> 0 hits. Body vocabulary (model, frontier, system, learn, expressed) is plain engineer-register English throughout.",
       "fix_hint": null,
       "blocking": true
     },
@@ -84,7 +84,7 @@
       "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "`grep -n '\\*\\*' curriculum/evals/body-views/ae101--lecture--the-2-frontiers.body.txt` → 0 hits. Zero bold markers anywhere in the body, well under the <=1-handle budget. Matches the maintainer's own 2026-07-09 note at L11 (\"single slide de-bolded fully, ... no handle is coined\").",
+      "evidence": "`grep -n '\\*\\*' curriculum/evals/body-views/ae101--lecture--the-2-frontiers.body.txt` -> 0 hits: zero bold markers anywhere in the body, well under the <=1-handle budget. Consistent with the maintainer's own 2026-07-09 accept-note at L11 ('single slide de-bolded fully, bullets kept ... no handle is coined').",
       "fix_hint": null,
       "blocking": false
     },
@@ -94,7 +94,7 @@
       "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "`grep -n \"the-2-frontiers\" curriculum/trainings/agentic-engineering-101/spot-gaps-build-the-loop.md` → line 31: `[The 2 frontiers of learning](lectures/the-2-frontiers.md)`, a standalone-paragraph include, the standard mechanism that wraps every shared lecture in `.phase--lecture` at composition (site/layouts/slides.js buildDeckModel). No phase-less prose section here. `node scripts/check-slide-size.js --file curriculum/lectures/the-2-frontiers.md` independently confirms the pipeline registers exactly `files: 1  slides: 1` for this file, i.e. it reaches the composed deck.",
+      "evidence": "`grep -n \"the-2-frontiers\" curriculum/trainings/agentic-engineering-101/spot-gaps-build-the-loop.md` -> L28: `[The two frontiers](lectures/the-2-frontiers.md)`, a standalone-paragraph line matching `site/layouts/curriculum.js`'s `INCLUDE_LINK_RE` (`^\\[([^\\]]+)\\]\\(((?:exercises|lectures)\\/[a-z0-9-]+)\\.md\\)[ \\t]*$`) exactly — the standard mechanism that wraps every shared lecture/exercise link in `.phase--lecture`/`.phase--exercise` at composition, same pattern as the other four lecture/exercise links in this same module file (L30, 32, 36, 38). The link sits under the module's '## Start here' body, not inside Prework or any other section the deck drops. `node scripts/check-slide-size.js --file curriculum/lectures/the-2-frontiers.md` independently confirms the pipeline registers `files: 1  slides: 1` for this file.",
       "fix_hint": null,
       "blocking": true
     },
@@ -104,7 +104,7 @@
       "rule_lead": "Page geometry dies at the cut; reading order survives.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "`node scripts/check-slide-deixis.js --file curriculum/lectures/the-2-frontiers.md` → \"OK — 1 files, no page-geometry pointers across the slide cut.\" `grep -inE '\\b(below|above|further down|at the top|see below)\\b' curriculum/evals/body-views/ae101--lecture--the-2-frontiers.body.txt` → 0 hits, confirming manually.",
+      "evidence": "`node scripts/check-slide-deixis.js --file curriculum/lectures/the-2-frontiers.md` -> 'OK — 1 files, no page-geometry pointers across the slide cut.' `grep -niE '\\b(below|above|further down|at the top|see below|earlier in this)\\b' curriculum/evals/body-views/ae101--lecture--the-2-frontiers.body.txt` -> 0 hits, confirmed manually.",
       "fix_hint": null,
       "blocking": true
     },
@@ -114,7 +114,7 @@
       "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "`node scripts/check-slide-size.js --file curriculum/lectures/the-2-frontiers.md` → \"files: 1   slides: 1   limits: 210 words / 6 bullets   oversized: 0 ... every slide is within limits.\" One slide, three bullets (shorter than the pinned version, having lost one clause), well under both axes.",
+      "evidence": "`node scripts/check-slide-size.js --file curriculum/lectures/the-2-frontiers.md` -> 'files: 1   slides: 1   limits: 210 words / 6 bullets   oversized: 0 ... every slide is within limits.' One slide, three bullets, 63 words total in the whole body (`wc -w` on the body projection) — well under both axes.",
       "fix_hint": null,
       "blocking": false
     },
@@ -124,7 +124,7 @@
       "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "The file's one `##` heading, \"Two frontiers still open: speed and direction\" (line 3), is elliptical for \"Two frontiers [are] still open: [namely,] speed and direction\" — a genuine declarative claim (subject + predicate: the frontiers ARE open/unresolved), not a bare topic label like the rule's own NOT-violation examples (*Ralph*, *The numbers*). This is a lecture heading, so the general split (\"Lecture headings = claims\") applies. Unaffected by the diff since the pin — heading text is unchanged.",
+      "evidence": "The file's one `##` heading, 'Two frontiers' (L3), is a catalogue-entry-style label naming its subject (no verb, no assertion) — squarely inside the rule's own NOT-violation carve-out ('catalogue entries naming their subject: Ralph, The numbers, Verification, named'), not a claim like 'Passing is not proof'. This is deliberate, not an omission: the maintainer watch-for (L27) reads 'Don't answer the two frontiers. They are the arc's open questions,' and the backing block's stance (L47-50) states 'holds: nothing, by design ... two open questions and one recognition line' and names the failure mode this file guards against as 'a future editor helpfully answering one of the two questions.' A heading that asserted a claim about the frontiers would itself be that failure mode. Label, not claim, is the correct shape here.",
       "fix_hint": null,
       "blocking": false
     },
@@ -134,7 +134,7 @@
       "rule_lead": "A bullet earns its slot or dies — three classes that read as rigour and carry nothing.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Line closest to a violation: bullet 1, line 5, current wording \"The agent is building the agentic loop now. Agents building agents.\" reads, in isolation, like it could be class (a) doctrine restatement (a lens re-announced after already doing its work). It stays inside because: there is no earlier instance of this claim in this file to restate, and its cross-module echo of M1's opener (corrected from \"closer\" at L18: \"Echoes Module 1's 'Painting the picture' opener... The recurrence is the point\"; L29: \"Pairs with M1's opener: same two questions, second time. The recurrence carries\") is maintainer-attested as deliberate design rather than an accidental Nth recitation. It also does new work: it supplies the premise (agents now build agents) that bullets 2-3's two named frontier questions depend on. Bullets 2 and 3 each name a distinct, fully spelled-out open question (speed of learning; direction of learning) — neither is class (b) self-referential pedagogy commentary nor class (c) an aphorism kicker restating the header; there is no closing koan line at all.",
+      "evidence": "Bullet 1 (L5, 'The model's frontier moves without you. Every release, it can do more.') introduces the first frontier — no earlier line in this 8-line body to restate. Bullet 2 (L6, 'Your frontier is what you have expressed. It moves when you write, and only then.') is not doctrine restatement of bullet 1: it names the CONTRASTING mechanism (automatic vendor-side movement vs. authored-only movement), the load-bearing point the piece exists to make. Bullet 3 (L7) converts bullets 1-2 into two open questions rather than restating them verbatim — that conversion is this lecture's actual payload per the backing block ('two open questions and one recognition line'), not a closing koan restating the header or a '**The point:**' line (there is neither in this file). No self-referential design commentary anywhere (no line talks about the training's own pedagogy). None of the three low-value classes present.",
       "fix_hint": null,
       "blocking": false
     },
@@ -147,7 +147,7 @@
       "na_reason": "no definite-noun backward reference (\"the X you did/saw\") in the body; \"We have come a long way\" (line 5) is general sentiment, not a pointer to a specific named beat",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "43f266cd922e5982abe47ef14574ec47687c40bddaecdcd3bf11c501d2433874",
+      "carried_from": "acdfe4a5a26c3fc8ab97ccc893549c1fbff8647e359abbad4a67a016612ef832",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -159,7 +159,7 @@
       "na_reason": "no guess/reveal demo structure in this file",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "43f266cd922e5982abe47ef14574ec47687c40bddaecdcd3bf11c501d2433874",
+      "carried_from": "acdfe4a5a26c3fc8ab97ccc893549c1fbff8647e359abbad4a67a016612ef832",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -171,7 +171,7 @@
       "na_reason": "no hand-numbered header, no `## Phase N:` / `## N.` step heading, no in-file \"Step K\"/\"Phase K\" reference to lint",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "43f266cd922e5982abe47ef14574ec47687c40bddaecdcd3bf11c501d2433874",
+      "carried_from": "acdfe4a5a26c3fc8ab97ccc893549c1fbff8647e359abbad4a67a016612ef832",
       "carried_shape": "605546789744a58d"
     },
     {
@@ -183,18 +183,18 @@
       "na_reason": "zero in-body markdown links in this file's body (lines 1-8) — nothing to inventory",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "43f266cd922e5982abe47ef14574ec47687c40bddaecdcd3bf11c501d2433874",
+      "carried_from": "acdfe4a5a26c3fc8ab97ccc893549c1fbff8647e359abbad4a67a016612ef832",
       "carried_shape": "605546789744a58d"
     }
   ],
   "blocking_findings_count": 0,
   "todos_count": 0,
   "accept_notes_found": [
-    "L11: Emphasis pass (2026-07-09, Antti-directed \"go very lightly on the bold\") — single slide de-bolded fully, no handle coined",
-    "L13: Slides-only pass (2026-07-02, unaudited) — four prose paragraphs converted to one slide, near-verbatim",
-    "L15: Quality: compendium-audited 2026-08-28 stamp line",
-    "L31: Carve-out — first-person-plural \"we\": room-collective at capstone module open, sibling of Agents 101 M8 precedent (note: the body's only \"We\" instance was removed by the diff since the pin, so this accept-note currently covers no live text in the body — flagged in diff_summary, not filed as a slides finding since it is a maintainer-prose/check_writing§3 matter, out of this class's lane)",
-    "L47: Stance `[stance:2026-08-01 level:L0]`",
+    "L11: Emphasis pass (2026-07-09, Antti-directed \"go very lightly on the bold\") — single slide de-bolded fully, no handle coined; still accurate against the current zero-bold body",
+    "L13: Slides-only pass (2026-07-02, unaudited) — four prose paragraphs converted to one slide, near-verbatim; describes the ORIGINAL 2026-07-02 conversion, not today's 2026-09-02 rewrite, so it is a historical record rather than a live accept-note for the current bullets",
+    "L15: Quality: compendium-audited 2026-08-29 stamp line — predates today's 2026-09-02 body rewrite (commit 6cb6c6e3), so the recorded 'slides PASS' there describes a body this instance's body_sha does not match; this instance is the fresh re-check",
+    "L31: 'No we-voiced arrival line in body (2026-08-29, Antti-directed)' — quotes a bullet-1 opening ('The agent is building the agentic loop now') that no longer exists anywhere in the current body (current L5 reads differently); this note, plus L28's watch-for about \"agents building agents\" (also no longer in-body), are maintainer-prose staleness left by today's rewrite. Both are already caught and filed as check_writing.md §3 (non-blocking) in the sibling writing-class instance for this same body_sha — out of this class's lane, not re-filed here.",
+    "L47: Stance `[stance:2026-08-01 level:L0]` — 'holds: nothing, by design' is consistent with the current body (still two open questions, no factual claim)",
     "L55: last-run: 2026-08-01"
   ],
   "drift_rules_reread": []

@@ -87,6 +87,5 @@ Per module, as heard:
 - **M3** — the map-transition line; the worktree LO left unframed; one hardening boundary left unstated.
 - **M4** — opener's bare permission; *"Not a template. A question."*; the gap-analysis credit ABSENCE.
 - **M5** — the merge-base paragraph's idea-sentence; the single-variable reframe buried in Key Concepts; *"mid-flight"*; impersonal worry-narration.
-- **M6** — *"read to the bone"*; the *"Going deeper"* subhead; the Encoding-taxonomy bullet.
 
-**Reader-veto keeps, on the record.** These survived a flag and stay by decision, so a later panel that re-flags them is re-litigating, not finding: *"slightly leaky"* (the cautious reader's delight), *"Despair not."* (the slang-test list), the capstone sign-off (author voice), and shotgun/cannon (the provocation-beat guard is written into the file itself).
+**Reader-veto keeps, on the record.** These survived a flag and stay by decision, so a later panel that re-flags them is re-litigating, not finding: *"slightly leaky"* (the cautious reader's delight), *"Despair not."* (the slang-test list), and shotgun/cannon (the provocation-beat guard is written into the file itself).

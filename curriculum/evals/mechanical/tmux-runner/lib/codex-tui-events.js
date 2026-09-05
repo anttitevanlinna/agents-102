@@ -19,7 +19,10 @@ if (!codexHome) {
 }
 
 let completedTurns = 0;
+let successfulTurns = 0;
+let failedTurns = 0;
 let lastMessage = '';
+let lastCompletion = null;
 const rootRollouts = [];
 
 for (const file of jsonlFiles(path.join(codexHome, 'sessions')).sort()) {
@@ -33,10 +36,27 @@ for (const file of jsonlFiles(path.join(codexHome, 'sessions')).sort()) {
   for (const event of events) {
     if (event.type !== 'event_msg' || event.payload?.type !== 'task_complete') continue;
     completedTurns += 1;
-    if (typeof event.payload.last_agent_message === 'string') {
+    if (event.payload.error) {
+      failedTurns += 1;
+      const error = typeof event.payload.error.message === 'string'
+        ? event.payload.error.message
+        : JSON.stringify(event.payload.error);
+      lastCompletion = { ok: false, error };
+    } else {
+      successfulTurns += 1;
+      lastCompletion = { ok: true, error: null };
+    }
+    if (!event.payload.error && typeof event.payload.last_agent_message === 'string') {
       lastMessage = event.payload.last_agent_message;
     }
   }
 }
 
-process.stdout.write(JSON.stringify({ completedTurns, lastMessage, rootRollouts }));
+process.stdout.write(JSON.stringify({
+  completedTurns,
+  successfulTurns,
+  failedTurns,
+  lastCompletion,
+  lastMessage,
+  rootRollouts,
+}));

@@ -19,4 +19,4 @@ Read ./CLAUDE.local.md and this session's scrollback: the gap list I just ranked
 
 Find the one rule the two-session diagnosis showed is wrong, stale, or never fires when it should. Cut it from ./CLAUDE.local.md in place.
 
-Show me the line you cut, in two sentences why diagnosis killed it. If every rule still holds under diagnosis, say so and stop.
+Show me the line you cut and, in two sentences, why the diagnosis killed it. If every rule still holds under diagnosis, say so and stop.

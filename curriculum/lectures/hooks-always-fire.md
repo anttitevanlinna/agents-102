@@ -44,5 +44,5 @@ Format → `curriculum/backing-format.md`. Rows moved verbatim from `what-packag
 
 <!-- /backing -->
 
-**Quality:** compendium-audited 2026-08-29 (writing@4a722813 story@4a722813 technical@0cea7581 behavior@d5aa7e3d pedagogy@d5aa7e3d strategy@d5aa7e3d slides@4a722813)
-- judges @4a722813: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-09-05 (writing@874f921c story@874f921c technical@874f921c behavior@d5aa7e3d pedagogy@d5aa7e3d strategy@874f921c slides@874f921c)
+- judges @874f921c: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS

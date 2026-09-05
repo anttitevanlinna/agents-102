@@ -1,9 +1,9 @@
 {
   "class": "writing",
+  "training": "ae101",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/fork-the-worktree.md",
   "verdict": "PASS_WITH_TODOS",
-  "training": "ae101",
-  "body_sha": "588c1ae1484e61894b8e9e872e26115fa439cb250f8ef205d4ca4ad56a97a179",
+  "body_sha": "d9596ff39cefcb108ccc22a31823d53f55a5c7cc46ce011b8ca9e2c5e7670609",
   "shape_hash": "632025a350bd415b",
   "rules_evaluated": [
     {
@@ -11,16 +11,16 @@
       "rule_index": "1",
       "rule_lead": "Banned words — grep zero-tolerance.",
       "verdict": "PASS",
-      "evidence": "view greps.banned_words + em_dash: 0 body hits each (planted_proof=true, status=CLEAN).",
+      "evidence": "grep for banned words + em-dash on body_numbered: em_dash 0 hits, banned_words 0 hits, leverage_verb 0 hits (all planted_proof:true, status:CLEAN per derive-body-view.js). No substitute-table word or em-dash present.",
       "fix_hint": null,
       "blocking": true
     },
     {
       "compendium": "check_writing.md",
       "rule_index": "2",
-      "rule_lead": "Ritual / ceremony — hard ban",
+      "rule_lead": "Ritual / ceremony — hard ban.",
       "verdict": "PASS",
-      "evidence": "view greps.ritual_ceremony: 0 body hits (planted_proof=true, CLEAN). `grep -n -i exercise` over the whole file returns only L47/57/59/61, all below the L43 maintainer cut; body region (L1-42) has zero occurrences.",
+      "evidence": "ritual_ceremony grep 0 hits (planted_proof:true, CLEAN). Body uses 'exercise' (H1 implicit, maintainer refers to 'exercise') and 'move'/'step' vocabulary; no 'practice'(n) present either, so the AE101 sparingly-OK carve-out isn't even needed.",
       "fix_hint": null,
       "blocking": true
     },
@@ -28,26 +28,35 @@
       "compendium": "check_writing.md",
       "rule_index": "3",
       "rule_lead": "No stale markers, no \"fixed\" retrospectives, no session biography.",
-      "verdict": "REVISE",
-      "evidence": "L61's dated note (\"Phase 1 opens with the moved-in rationale (2026-08-25, Antti-directed)... with the Module 1/Module 3 and Module 6 runtime-fork flags verbatim\") is now factually wrong and directly contradicts L51 (\"The module keeps the framing above the include... This file owns only what the student does\"), which L61 itself supersedes but does not strike. Verified via `git diff 441b361f..0cea7581 -- curriculum/exercises/fork-the-worktree.md`: the body once read \"Module 1<!--flag:module:earn-the-trust--> and Module 3<!--/flag:module:earn-the-trust-->\" and was corrected to the current \"Module 1<!--flag:module:spot-gaps-build-the-loop--> and Module 4<!--/flag:module:spot-gaps-build-the-loop-->\" (L22) without a matching edit to L61's parenthetical, which still names a \"Module 3\" flag that no longer exists anywhere in the body (confirmed: the only flag tag present, twice, is `module:spot-gaps-build-the-loop`, which `site/layouts/curriculum.js` TRAININGS maps to M6, not M3). Harm: this is exactly the incident §3's own example describes (a describing page asserting wiring that a later edit changed) — a future editor trusting L61 would misstate which module pairing this file's flags gate on, and L51 left standing beside it misstates where the why-framing now lives at all.",
-      "fix_hint": "Strike or rewrite L51 to state that Phase 1 now carries the why-framing (per L61), and correct L61's parenthetical to name the flags actually present (`module:spot-gaps-build-the-loop`, gating the Module 1/Module 4 and Module 6 mentions) rather than the superseded \"Module 1/Module 3\" pairing.",
-      "blocking": false
+      "verdict": "PASS",
+      "evidence": "Maintainer block carries dated provenance headers ('Extracted from learn-from-the-test.md ... 2026-08-12, Antti-directed'; 'Recovery ladder (2026-08-12, ...)'; 'Phase 1 opens with the moved-in rationale (2026-08-25, ...)') which the rule's own carve-out explicitly blesses as legitimate corpus convention, not journey-narration. The pinned diff's only body-adjacent change rewrote a stale cross-reference ('Module 1/Module 3' -> the flag actually gates 'Module 4') into a present-tense statement of what the flag currently gates ('runtime-fork flags intact: module:spot-gaps-build-the-loop gates both...') -- passes the tense test (states current mechanism, no transition verb). L55's 'do not tighten the wording back to \"where the run started\"' licence names a real, plausible live pull (a later prose-tightening pass reverting the deliberately-approximate merge-base wording to a cleaner-sounding but less accurate phrase) and is paired with the empirical finding the rule explicitly keeps ('merge-base returns the trunk commit before the starting point... verified... in a throwaway repo').",
+      "fix_hint": null,
+      "blocking": true
     },
     {
       "compendium": "check_writing.md",
       "rule_index": "4",
       "rule_lead": "Register match.",
       "verdict": "PASS",
-      "evidence": "Closest lines L13 \"a worktree lets you run the same task twice as a split test\" and L21 \"This module's work... runs in the worktree\" — plain Boris-flat technical register throughout; no atmospheric imagery, no `**Remember:**`-style retain-wrapper (grep 0), no slang, no metaphor-valence collision, no negation-callout self-contradiction found on manual scan.",
+      "evidence": "Body is plain Boris-register factual/direct throughout ('a worktree lets you run the same task twice as a split test'), appropriate for a mechanical git-setup exercise. No retain-this wrapper (no 'Remember:'/'Hold onto'), no atmospheric imagery, no negation-callout ('we don't X'), no metaphor-valence collision, no slang.",
       "fix_hint": null,
       "blocking": false
+    },
+    {
+      "compendium": "check_writing.md",
+      "rule_index": "6",
+      "rule_lead": "Credit original when paraphrasing named technique.",
+      "verdict": "PASS",
+      "evidence": "No named practitioner/framework technique is paraphrased here (plain git-worktree mechanics). No creator-name / 'the author' / 'the creator' anywhere in body (grep confirms absence outside maintainer, which is exempt). author_we grep 0 hits -- no first-person-plural in body. No numbered Belief reference. Timing line 3 ('**Time:** 15 minutes.') sits directly below H1 with blank above/below, total-only, matching the single Phase 1's *15 min* -- consistent, no phase-vs-total drift (calculate-time.js doesn't track this file since it treats only training-module files, but the single-phase total is hand-verifiable as consistent).",
+      "fix_hint": null,
+      "blocking": true
     },
     {
       "compendium": "check_writing.md",
       "rule_index": "7",
       "rule_lead": "Always \"you\", never \"the student\"; teacher framing stays out of body.",
       "verdict": "PASS",
-      "evidence": "view greps.the_student: 0 body hits (planted_proof=true, CLEAN). Body addresses reader as \"you\" throughout (L7, L9, L23, L35).",
+      "evidence": "the_student grep 0 hits (planted_proof:true, CLEAN). Body addresses the reader as 'you' throughout ('Run this from your original repo', 'ask it there'). No delivery-mechanics sentences ('the trainer shows...') in body; those live below the maintainer fence.",
       "fix_hint": null,
       "blocking": true
     },
@@ -56,7 +65,7 @@
       "rule_index": "8",
       "rule_lead": "Don't smuggle terms of art from maintainer into body.",
       "verdict": "PASS",
-      "evidence": "Closest candidates L9 \"your un-packaged run\" and L13 \"split test\" are plain, widely-understood phrasing, not maintainer-only jargon; \"un-packaged\" appears symmetrically in body (L9, L11) and maintainer (L45, L61), so it is established shared vocabulary, not a one-way leak.",
+      "evidence": "Maintainer-only jargon ('self-compound', 'substrate', 'three-pattern', 'grill-me') does not appear in body. Body vocabulary (worktree, gitignored, branch, commit, SHA, merge-base) is plain git terminology, not curriculum-coined maintainer jargon.",
       "fix_hint": null,
       "blocking": true
     },
@@ -65,7 +74,7 @@
       "rule_index": "9",
       "rule_lead": "Over-hedge detector.",
       "verdict": "PASS",
-      "evidence": "Manual scan for reassurance-shaped phrases (\"no penalty\", \"it's OK if\", \"not a downgrade\", \"you are not on the hook\" etc.) — none present in body.",
+      "evidence": "No reassurance-shaped sentences present (no 'no penalty', 'fine way to', 'not a downgrade', 'you are not on the hook'). The delegation lines ('Claude works out <repo-name>...If it picks the wrong repo or path, steer it in chat') state the recovery move directly without appended absolution.",
       "fix_hint": null,
       "blocking": false
     },
@@ -74,7 +83,7 @@
       "rule_index": "13",
       "rule_lead": "Value-prop / positioning framing belongs in sales copy + project strategy docs, NOT student-facing curriculum body.",
       "verdict": "PASS",
-      "evidence": "Manual scan of body for flag phrases (\"vendor\", \"not an aspirational\", \"grounded in actual\", \"not theoretical\" etc.) — 0 hits.",
+      "evidence": "No flag phrases present ('not an aspirational X', 'grounded in actual', 'the real practitioners', etc). Word 'vendor' does not appear anywhere in body.",
       "fix_hint": null,
       "blocking": true
     },
@@ -83,17 +92,17 @@
       "rule_index": "14",
       "rule_lead": "Watch out for planting jargon too early.",
       "verdict": "PASS",
-      "evidence": "Closest candidates \"Run coordinates\" (L37, L39) and \"M4 starting point\" (L39) are established artifact/field names from M4's send-off exercise (a prior module in the fixed arc, per curriculum.js modules order getting-going → plan-mode-done-right → earn-the-trust → run-the-first-experiment), not premature terminology.",
+      "evidence": "Body terms (worktree, split test, merge-base, run coordinates, M4 starting point) are extracted near-verbatim from the immediately-upstream 'learn-from-the-test.md' lecture per the maintainer's extraction note, so they were earned one file upstream in the arc, not planted early. The git-mechanics vocabulary itself is industry-standard for the AE101 engineer audience.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_writing.md",
       "rule_index": "15",
-      "rule_lead": "Audit closer when trimming body-prose forcing function.",
-      "verdict": "PASS",
-      "evidence": "Closest closer L41 \"That is where the branch left the trunk, a commit or two before the run started, carrying the same code.\" — \"That\" resolves unambiguously to the merge-base command's output named in the immediately preceding clause; no bypass-the-agent punchline (\"do it yourself\" etc.) present anywhere in body.",
-      "fix_hint": null,
+      "rule_lead": "Audit closer when trimming body-prose forcing function / pronoun-referent check fires on any closer.",
+      "verdict": "REVISE",
+      "evidence": "L22: 'The setup prompt copies them across, so what you built in Module 1 and Module 4 comes with you. From there the two copies compound separately.' -- 'the two copies' has no single unambiguous antecedent on a cold read: it could mean the two gitignored artifacts just named (CLAUDE.local.md + observations/) or the original-repo-vs-worktree copies of those artifacts (the reading the Module 6 merge-back sentence actually depends on). A precise reader has to reconstruct the intended referent rather than point straight at it.",
+      "fix_hint": "Anchor the demonstrative to a concrete noun, e.g. 'the original and the forked copy then compound separately' instead of 'the two copies'.",
       "blocking": false
     },
     {
@@ -101,7 +110,7 @@
       "rule_index": "17",
       "rule_lead": "No combative verbs about the agent in body prose.",
       "verdict": "PASS",
-      "evidence": "Verbs toward Claude are peer-flat throughout: \"ask Claude to fork\" (L25), \"steer it in chat\" (L23), \"ask it to copy that one across too\" (L35), \"ask Claude to run\" (L41) — no bark/order/command/whip/drag/boss verbs present.",
+      "evidence": "Verbs describing student-to-agent interaction are all peer-flat or warmer: 'ask', 'steer'. No bark/order/command/whip/drag/boss verbs present. No carve-out beat (this isn't a deliberately-bad-register probe exercise).",
       "fix_hint": null,
       "blocking": false
     },
@@ -110,16 +119,16 @@
       "rule_index": "18",
       "rule_lead": "Headers must be literally true about the mechanism.",
       "verdict": "PASS",
-      "evidence": "\"## Phase 1: Fork it\", \"## Check the copy landed\", \"## Anchor the fork to the run coordinates\" all survive a literal cold read; none use a spatial metaphor contradicting the mechanism or an unanchored \"other X\".",
+      "evidence": "'## Phase 1: Fork it', '## Check the copy landed', '## Anchor the fork to the run coordinates' are each literally true of their section's content; no spatial-metaphor contradiction and no unpaired 'other X'.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_writing.md",
       "rule_index": "19",
-      "rule_lead": "Machine-cadence fat — the shape of good prose without the content.",
+      "rule_lead": "Machine-cadence fat.",
       "verdict": "PASS",
-      "evidence": "Closest candidate L41 \"That is where the branch left the trunk...\" resolves a real antecedent (passes the deictic-drumroll exception, same shape as the rule's own \"That is the machine\" example); no bold-label echo, empty negation, or citation duplication found.",
+      "evidence": "'That is where the branch left the trunk, a commit or two before the run started, carrying the same code' (L41) resolves a real antecedent (the merge-base command's output named in the previous clause), which the rule's own exception keeps -- it is not an empty pointer. No bold-label echo, no empty negation, no citation duplication present.",
       "fix_hint": null,
       "blocking": false
     },
@@ -128,7 +137,7 @@
       "rule_index": "20",
       "rule_lead": "Don't state a count the adjacent list already holds.",
       "verdict": "PASS",
-      "evidence": "Closest candidate L29 \"listing the six sub-steps\" is not adjacent to a visible list in this file (the six sub-steps live only in Claude's own runtime plan-mode output, never enumerated in body), so it sets a skim-expectation rather than duplicating a tally the reader can already see.",
+      "evidence": "'the six sub-steps' (L29) is not adjacent to any visible enumerated list in body -- it describes content that will appear only in Claude's own chat output, not a structure the reader can already see here, so the count-adjacent-to-list redundancy this rule targets does not apply (the phrase is judged separately under check_student_facing §26 for NVA).",
       "fix_hint": null,
       "blocking": false
     },
@@ -137,16 +146,16 @@
       "rule_index": "26",
       "rule_lead": "A sentence saying how you'd know points at the outcome, not the nearest artifact.",
       "verdict": "PASS",
-      "evidence": "L33-34 explicitly routes verification to an independent outcome (\"Look at the worktree yourself: `ls ...`. A copy that silently skipped still reports as done.\") rather than trusting Claude's self-report — exactly the shape this rule asks for, not a self-witnessing \"the read tells you\" construction.",
+      "evidence": "L33-34 explicitly designs against the self-witnessing failure this rule targets: 'A copy that silently skipped still reports as done' names the exact self-report the student must NOT trust, and 'Look at the worktree yourself: ls ...' points the check at direct filesystem evidence instead of Claude's own account -- the passing shape the rule asks for, not a self-witnessing instrument.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_writing.md",
       "rule_index": "27",
-      "rule_lead": "Say it once, at its most concrete, then at most one sentence that generalises it. Style, not a gate.",
+      "rule_lead": "Say it once, at its most concrete, then at most one sentence that generalises it.",
       "verdict": "PASS",
-      "evidence": "Closest candidate is L33, \"A rules file that didn't copy changes two variables instead of one, and the contrast stops meaning anything.\" — this IS the survivor shape itself (concrete instance + one generalising clause, in a single sentence), not a violation. No abstract-twin restatement, adjacent-artifact restatement, widening qualifier, or second-announcement pattern found elsewhere in the 42-line body; the file is a tight extraction (per L47) with no spare sentence to double an idea.",
+      "evidence": "The gitignored-files bullet (L22) reads as four sentences, but each adds a distinct new fact (why they don't ride along; how the copy happens; what follows structurally; what M6 will decide) rather than restating one idea at different altitudes -- no abstract-twin, no widening qualifier, no second announcement of the same claim found anywhere in the 42-line body.",
       "fix_hint": null,
       "blocking": false
     },
@@ -155,7 +164,7 @@
       "rule_index": "1",
       "rule_lead": "Aspirational destination, never corrective gap.",
       "verdict": "PASS",
-      "evidence": "No corrective-gap framing, no ability-tier assumption (\"at your scale\" etc. absent), no unreachable identity-criterion dichotomy, no implausible pre-prompt gate; body is plain procedural framing throughout.",
+      "evidence": "No corrective-gap framing ('you're missing X'), no ability-tier assumption ('at your scale', 'a senior would already know'), no tourist/practitioner identity split, and no pre-prompt verification gate is present to test for plausible-failability.",
       "fix_hint": null,
       "blocking": false
     },
@@ -164,16 +173,16 @@
       "rule_index": "2",
       "rule_lead": "Earn every technical term on first use.",
       "verdict": "PASS",
-      "evidence": "\"worktree\" is earned upstream per L51's own note (framed as the module's job to explain why the work runs in a worktree); \"Run coordinates\"/\"M4 starting point\" are established M4 artifact names; module references use spelled-out \"Module N\" form (this file's arc position is past M2 so bare \"MN\" would also be fine per the assumed-known/M2+ carve-out).",
+      "evidence": "'Worktree', 'branch', 'commit', 'SHA', 'merge-base' are industry-standard git vocabulary for an AE101 engineer audience (assumed-known carve-out) and this file's own maintainer note records the body as extracted near-verbatim from the upstream 'learn-from-the-test.md' lecture, where the concept was already taught. No bare module abbreviation ('M4'/'M5') appears in body; 'Module 1', 'Module 4', 'Module 6' are spelled out.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
       "rule_index": "5",
-      "rule_lead": "Golden path only in body — THIS RULE HAS AN EXCEPTION; read to the boundary before cutting anything.",
+      "rule_lead": "Golden path only in body — THIS RULE HAS AN EXCEPTION.",
       "verdict": "PASS",
-      "evidence": "The entire \"Anchor the fork to the run coordinates\" recovery ladder (L37-41) is explicitly sanctioned by the dated maintainer accept-note at L57 (\"Recovery ladder (2026-08-12, Antti-directed read)... all three rungs are load-bearing\"), matching the rule's boundary carve-out for a needed, non-obvious rescue that stays in body.",
+      "evidence": "The '## Anchor the fork to the run coordinates' section is exactly the rule's own carve-out in action: a plausible failure (the Run-coordinates block is gone, or the commit message was rewritten) paired with a non-obvious rescue (use the reported SHA, or run git merge-base) that the student needs while it still works. This is the correctly-kept recovery ladder, not a routing violation.",
       "fix_hint": null,
       "blocking": false
     },
@@ -182,7 +191,7 @@
       "rule_index": "6",
       "rule_lead": "Trust Claude's defaults for structure.",
       "verdict": "PASS",
-      "evidence": "The prompt's explicit naming (`../<repo-name>-m5`, `m5/` branch) is load-bearing for deterministic downstream chaining (check_prompts §5/§24), not needless over-specification; tail ends with destination + confirm (\"Tell me the worktree path and confirm which files copied across.\").",
+      "evidence": "The prompt doesn't impose an output-shape template; it ends on a post-action report ask ('Tell me the worktree path and confirm which files copied across') rather than a pre-confirm-before-saving pattern, which fits an operational setup task with no ambiguous document shape to specify.",
       "fix_hint": null,
       "blocking": false
     },
@@ -191,7 +200,7 @@
       "rule_index": "8",
       "rule_lead": "Don't smuggle another module's voice.",
       "verdict": "PASS",
-      "evidence": "Mood/register throughout is plain technical/procedural, consistent with M5's own beat; no M1-joyful or M5-long-running-mood pattern imported.",
+      "evidence": "Tone is uniformly plain and mechanical throughout, consistent with the M5 mood; no M1-joy or other module's register bleeds in.",
       "fix_hint": null,
       "blocking": false
     },
@@ -200,7 +209,7 @@
       "rule_index": "9",
       "rule_lead": "Don't ask student to manually diff or spot-check Claude's output as error-catching.",
       "verdict": "PASS",
-      "evidence": "Closest candidate L34 \"Look at the worktree yourself: `ls ...`\" is a mechanical filesystem-existence check, not the content/quality spot-check this rule targets, and it is the deliberate catch for a self-witnessing failure the maintainer names explicitly (L55: \"Claude reports success\" even on a partial copy). Every instruction line names an actor + mechanism (Claude: fork/copy/verify/run), no bare unaddressed speech verbs, no \"name X\" smell, no unfounded/unknowable criterion, no fictional-gate language.",
+      "evidence": "'Look at the worktree yourself: ls .../CLAUDE.local.md .../observations/' (L34) passes the actor+mechanism and object+tell tests the rule itself lays out: actor is 'you', mechanism is the named ls command, object is the two specific paths, and the tell is stated immediately before it ('A copy that silently skipped still reports as done'). This isn't a vague 'spot-check the output' ask -- the maintainer's own Failure-mode note names it directly as 'the student's own catch', a deliberate design choice for a failure mode (silent partial cp) that an agent self-report cannot reliably surface.",
       "fix_hint": null,
       "blocking": false
     },
@@ -208,9 +217,9 @@
       "compendium": "check_student_facing.md",
       "rule_index": "12",
       "rule_lead": "Student moves stay in conversation with agent.",
-      "verdict": "REVISE",
-      "evidence": "L34 \"Look at the worktree yourself: `ls ../<repo-name>-m5/CLAUDE.local.md ../<repo-name>-m5/observations/`\" asks the student to leave the chat and run a terminal command themselves — the rule's own text says a practitioner primitive like this belongs at Debrief, not the exercise's forcing function. The maintainer's stated rationale (L55) is that Claude's self-report of the copy is unreliable, but that harm is addressed just as well by having Claude run the `ls` itself as a tool call: Claude Code surfaces the raw tool output in the transcript verbatim, so reading that block is no less reliable than the student typing the command, and it keeps the move in chat. The fix does not appear to degrade the artefact, so this is filed as a real, non-blocking finding rather than downgraded to a rule question.",
-      "fix_hint": "Fold the `ls` check into the prompt itself (e.g. \"...then run `ls` on both destination paths and tell me the output\") so the verification a student currently does by hand happens in-chat via Claude's own tool call instead.",
+      "verdict": "PASS",
+      "evidence": "The one terminal command asked of the student (`ls` at L34) is a single verification read, immediately returning to chat, not a sustained mechanic workflow replacing the agent conversation. The maintainer block frames this ls check as deliberately the student's own independent catch against a failure mode (Claude reporting success on a silently-skipped cp) that an in-chat 'ask Claude to check' would not obviously close, since the failure is exactly that Claude's own report can't be trusted here.",
+      "fix_hint": null,
       "blocking": false
     },
     {
@@ -218,7 +227,7 @@
       "rule_index": "13",
       "rule_lead": "Specify which CLAUDE.md layer — every time.",
       "verdict": "PASS",
-      "evidence": "Body correctly qualifies the layer throughout (\"`CLAUDE.local.md`\", L22); no bare unqualified \"CLAUDE.md\" reference present.",
+      "evidence": "Body always qualifies as 'your CLAUDE.local.md' (personal/gitignored layer), never bare 'CLAUDE.md'.",
       "fix_hint": null,
       "blocking": false
     },
@@ -227,7 +236,7 @@
       "rule_index": "14",
       "rule_lead": "No em-dashes. Simple sentences.",
       "verdict": "PASS",
-      "evidence": "view greps.em_dash: 0 body hits (planted_proof=true, CLEAN); sentences are short and declarative throughout.",
+      "evidence": "em_dash grep 0 hits (planted_proof:true, CLEAN).",
       "fix_hint": null,
       "blocking": true
     },
@@ -236,7 +245,7 @@
       "rule_index": "17",
       "rule_lead": "Section headers use command verbs when section is about doing something.",
       "verdict": "PASS",
-      "evidence": "\"## Phase 1: Fork it\", \"## Check the copy landed\", \"## Anchor the fork to the run coordinates\" are all verb-led for sections where the student acts.",
+      "evidence": "'Fork it', 'Check the copy landed', 'Anchor the fork to the run coordinates' all lead with a command verb naming the student's own action; none name Claude as the header's grammatical subject.",
       "fix_hint": null,
       "blocking": false
     },
@@ -245,17 +254,17 @@
       "rule_index": "21",
       "rule_lead": "LLM-vs-agent-vs-Claude vocabulary discipline.",
       "verdict": "REVISE",
-      "evidence": "L29 \"Claude usually opens with a plan summary listing the six sub-steps, then runs them\" and L39 \"Claude normally reads the protected `Run coordinates` block..., uses the `m4/<slug>` branch..., and forks from that branch's... commit\" both describe multi-step autonomous execution (files read, git operations performed) which, per the rule's own concrete split, is \"acting\" and should default to \"the agent\". Body Claude-count is 5 (L23, L25, L29, L39, L41) against zero \"the agent\"/\"the LLM\" occurrences, matching the rule's own named audit-signal shape.",
-      "fix_hint": "Swap \"Claude\" for \"the agent\" at L29 and L39 where the sentence describes autonomous execution rather than an addressee/invocation.",
+      "evidence": "L29 'Claude usually opens with a plan summary listing the six sub-steps, then runs them' and L39 'Claude normally reads the protected Run coordinates block in task.md, uses the m4/<slug> branch named there, and forks from that branch's \"M4 starting point\" commit' both describe multi-step autonomous execution (reading a file, using a branch, forking a commit / running a plan) rather than invocation, addressee, or UI-surface reference. Under the 2026-08-30 active-stance override, autonomous multi-step work defaults to 'the agent'; neither sentence is a self-critique or a plain service-ask, so the override doesn't rescue the 'Claude' choice here. Both sentences post-date the last drift-check (writing PASS was recorded at 7f5ec798/2026-08-29, one day before the 2026-08-30 override landed), so this is genuinely unreviewed against the current rule.",
+      "fix_hint": "Swap the acting-verb subject: 'the agent usually opens with a plan summary... then runs it' / 'the agent normally reads... uses... and forks...'; keep 'Claude' only for the addressee sentences ('Ask Claude to fork the worktree...').",
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
       "rule_index": "21b",
       "rule_lead": "Session / task / run split (all trainings).",
-      "verdict": "REVISE",
-      "evidence": "Three body instances use \"run\" as a noun for the agent's earlier sitting, which the rule bans (exempt only for test/CI/eval executions, verbatim quotes, artifact/path/branch names, \"long-running\"): L9 \"the commit your un-packaged run started at\", L11 \"the same rules the first run had\", L41 \"a commit or two before the run started\". Corroborating evidence: the maintainer's own quote of the dropped module line (L61) used \"session\" (\"fork the un-packaged session's starting SHA\"), showing \"session\" is the term this exact referent otherwise carries in this training — unlike \"Run coordinates\" (L37, L39), which is the block's proper name and correctly exempt as an artifact-name.",
-      "fix_hint": "Replace the three noun-uses of \"run\" with \"session\" (e.g. \"the commit your un-packaged session started at\").",
+      "verdict": "PASS",
+      "evidence": "L9 '...from the commit your un-packaged run started at' uses the noun 'run' in exactly the blessed execution-record sense the rule's carve-out names verbatim ('the un-packaged run' -- execution read from outside). 'Session' is used correctly for one sitting of the agent throughout (the Session widget, 'the session you sent off from', 'the second session').",
+      "fix_hint": null,
       "blocking": false
     },
     {
@@ -263,7 +272,7 @@
       "rule_index": "22",
       "rule_lead": "No time-of-day anchors in body prose.",
       "verdict": "PASS",
-      "evidence": "Manual scan for tomorrow/overnight/this morning/tonight/yesterday/last night — none present in body.",
+      "evidence": "No tomorrow/overnight/this morning/tonight-style anchors anywhere in body.",
       "fix_hint": null,
       "blocking": false
     },
@@ -272,7 +281,7 @@
       "rule_index": "23",
       "rule_lead": "Reflection beats stay invisible in flow.",
       "verdict": "PASS",
-      "evidence": "No self-aware pedagogy header or contemplative-pause prefix present (no \"Pause before...\", \"sit with\", \"let it land\", etc.).",
+      "evidence": "No self-aware pedagogy header or contemplative-pause prefix ('sit with', 'let it land', 'pause and reflect') anywhere; the file is purely procedural.",
       "fix_hint": null,
       "blocking": false
     },
@@ -280,9 +289,9 @@
       "compendium": "check_student_facing.md",
       "rule_index": "26",
       "rule_lead": "Cut NVA: true but not moving student forward.",
-      "verdict": "PASS",
-      "evidence": "Closest candidates L23 (\"Claude works out `<repo-name>`... steer it in chat\") and L29 (\"Skim past it\") both set actionable expectations rather than idle detail; nothing found that fails the \"obvious to a working engineer\" or \"changes nothing next\" screens.",
-      "fix_hint": null,
+      "verdict": "REVISE",
+      "evidence": "L29 'Claude usually opens with a plan summary listing the six sub-steps, then runs them' -- the specific count ('six') doesn't change the instruction that follows ('Skim past it'), which would read identically whatever the exact number of sub-steps is, and the exact count is a drift risk if the registry prompt's step breakdown changes.",
+      "fix_hint": "Drop the numeral: 'Claude usually opens with a plan summary, then runs it. Skim past it.'",
       "blocking": false
     },
     {
@@ -290,7 +299,7 @@
       "rule_index": "27",
       "rule_lead": "Body \"read it\" / \"look at it\" / \"notice X\" after chat-print = dead weight.",
       "verdict": "PASS",
-      "evidence": "L34's \"Look at the worktree yourself\" follows no chat-print moment — it directs the student to a new independent filesystem check, not a re-read of something Claude already printed, so it is not the pattern this rule targets.",
+      "evidence": "'Skim past it' (L29) is not a redundant 'read it' tell -- it tells the student to allocate LESS attention, which is new directive content, not narration of what they're already doing. 'Look at the worktree yourself' (L34) precedes content the student hasn't seen yet (nothing has been chat-printed at that point), so it isn't the banned post-chat-print pattern either.",
       "fix_hint": null,
       "blocking": false
     },
@@ -299,7 +308,7 @@
       "rule_index": "30",
       "rule_lead": "Echo the training's theory spine before inventing a synonym.",
       "verdict": "PASS",
-      "evidence": "Closest candidate L13 \"a worktree lets you run the same task twice as a split test\" — plain, widely-understood term; no clear house-spine synonym (loop/map/gates/steering/drift/send-off/experiment) is being displaced with certainty.",
+      "evidence": "'a split test' (L13) is inherited house vocabulary from the upstream M4/M5 lecture ('learn-from-the-test.md') per the maintainer's extraction note, not an invented synonym.",
       "fix_hint": null,
       "blocking": false
     },
@@ -308,7 +317,7 @@
       "rule_index": "31",
       "rule_lead": "Name the artifact, not the act.",
       "verdict": "PASS",
-      "evidence": "Body consistently uses \"Ask Claude to X\" framing (L25, L35, L41); no \"typing\"/\"say to Claude\"/\"tell it to\" act-narration found.",
+      "evidence": "'ask it to copy that one across too' (L35) and 'Ask Claude to fork the worktree...' use the corpus's own blessed 'ask Claude to' convention (also the canonical check_prompts §2/§3 lead-in shape), not a banned act-verb around quoted filler ('typing', 'say to Claude', 'tell it to'). 'steer it in chat' (L23) names no quoted utterance and isn't the filler pattern the rule targets.",
       "fix_hint": null,
       "blocking": false
     },
@@ -317,7 +326,7 @@
       "rule_index": "32",
       "rule_lead": "Name the outcome; don't walk a professional through trivial mechanics.",
       "verdict": "PASS",
-      "evidence": "Setup is handed to the agent in one clause (\"Ask Claude to fork the worktree and copy your gitignored files across.\", L25) rather than a walked terminal recipe.",
+      "evidence": "'ls ../<repo-name>-m5/CLAUDE.local.md ../<repo-name>-m5/observations/' (L34) isn't teaching ls syntax to a professional -- it's disambiguating exactly WHICH two paths to check (the worktree naming convention), which is exercise-specific information, not trivial mechanics. §32a: no settings, flags, or env vars appear anywhere in body.",
       "fix_hint": null,
       "blocking": false
     },
@@ -326,7 +335,7 @@
       "rule_index": "33",
       "rule_lead": "The curriculum does not narrate itself — subject test, then deletion test.",
       "verdict": "PASS",
-      "evidence": "L21-22's why-framing (\"This module's work... runs in the worktree...\") reads as module-shape cartography on the subject test, but is covered by the dated Antti-directed accept-note at L61 (\"Phase 1 opens with the moved-in rationale... folded in as the phase's first two bullets\") authorizing exactly this content's presence here.",
+      "evidence": "L21's 'This module's work (...) runs in the worktree, so the second session starts from the same code state as the first' does restate/extend 'The point' line (L13), but the maintainer's dated note (L59, 'Phase 1 opens with the moved-in rationale, 2026-08-25, Antti-directed') records this as the deliberately-folded-in rationale from the module file's own '## Set up the worktree' section, not accidental cartography -- an explicit authorial decision on record, not a leak.",
       "fix_hint": null,
       "blocking": false
     },
@@ -335,7 +344,16 @@
       "rule_index": "36",
       "rule_lead": "Trust the prompt over the scaffold.",
       "verdict": "PASS",
-      "evidence": "Exercise is entirely prompt-driven (fork via a single registry prompt); no pre-built scaffold offered in place of a prompt.",
+      "evidence": "No pre-built scaffold is unzipped here; the worktree and its contents are produced entirely through the prompt, consistent with the rule.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": "38",
+      "rule_lead": "Exercise headers pass the build-squint test.",
+      "verdict": "PASS",
+      "evidence": "H1 'Fork the worktree, carry the evidence' names the construction (a worktree carrying the copied evidence/rules) directly, matching 'What you build: a worktree holding the same code and the same rules the first run had' -- passes the build-squint test cleanly.",
       "fix_hint": null,
       "blocking": false
     },
@@ -344,7 +362,7 @@
       "rule_index": "1",
       "rule_lead": "No placeholders inside fences.",
       "verdict": "PASS",
-      "evidence": "`<repo-name>` in the expanded fence (`curriculum/prompts/ae101-m5-worktree-setup.md`, read directly) is a Claude-inferred variable (\"Claude works out `<repo-name>` from the working directory\", L23), not a square-bracket student-fill-in slot; no `[BRACKETS]`-style placeholder present in the prompt body.",
+      "evidence": "The only bracket-shaped token in the fence, '<repo-name>' (in '../<repo-name>-m5'), is not a student fill-in-blank -- it's a naming pattern Claude itself resolves by inspecting its own working directory (the body explicitly narrates this: 'Claude works out <repo-name> from the working directory'). No student-facing '[BRACKETS]'-style unresolved slot exists.",
       "fix_hint": null,
       "blocking": false
     },
@@ -353,7 +371,7 @@
       "rule_index": "2",
       "rule_lead": "Every prompt block: one-sentence action lead-in.",
       "verdict": "PASS",
-      "evidence": "L25 \"Ask Claude to fork the worktree and copy your gitignored files across.\" — one sentence, command verb, 12 words, under the 20-word ceiling.",
+      "evidence": "'Ask Claude to fork the worktree and copy your gitignored files across.' is 12 words, command-verb led, semantic (names both outcomes), well under the 20-word ceiling.",
       "fix_hint": null,
       "blocking": false
     },
@@ -362,7 +380,7 @@
       "rule_index": "3",
       "rule_lead": "Canonical shape — lead-in, label with destination, blank line, fence.",
       "verdict": "PASS",
-      "evidence": "Uses `{{prompt:ae101-m5-worktree-setup}}` marker (L27); registry frontmatter `dest: Claude Code` reconstructs \"**Prompt** *(Claude Code)*\" at expand time, no `copy →` prefix, no `(end of prompt)` closer.",
+      "evidence": "Registry frontmatter has dest: Claude Code, rendering as '**Prompt** *(Claude Code)*'; no 'copy ->' prefix, no '(end of prompt)' closer. A one-line expected-return note follows the fence ('Claude usually opens with a plan summary... Skim past it').",
       "fix_hint": null,
       "blocking": false
     },
@@ -371,16 +389,16 @@
       "rule_index": "5",
       "rule_lead": "Chain by back-reference + deterministic path, never invented alias.",
       "verdict": "PASS",
-      "evidence": "Prompt reads `./task.md` and forks from the `Run coordinates` block's named branch / \"M4 starting point\" commit; deterministic, session-root-relative paths throughout (registry file `curriculum/prompts/ae101-m5-worktree-setup.md`, read directly).",
+      "evidence": "The prompt opens 'Read ./task.md' -- a deterministic path -- and reads the Run-coordinates block written by an earlier prompt (registry 'requires: ae101-m4-commit-starting-point'), rather than inventing a filename or alias.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": "9",
-      "rule_lead": "Markdown shout (`**bold**`, `*italic*`) inside fenced prompts = dead weight in Claude Code.",
+      "rule_lead": "Markdown shout inside fenced prompts = dead weight.",
       "verdict": "PASS",
-      "evidence": "Registry prompt body has no `**bold**`/`*italic*` markup, plain prose with backtick code spans only.",
+      "evidence": "No **bold** or *italic* markdown syntax inside the fence; emphasis is via plain word choice and straight-quoted phrases (\"M4 starting point\").",
       "fix_hint": null,
       "blocking": false
     },
@@ -389,7 +407,7 @@
       "rule_index": "17",
       "rule_lead": "Preamble before action — design around it.",
       "verdict": "PASS",
-      "evidence": "Prompt has 4+ named sub-steps (structural trigger: branch discovery, verification, commit-finding, worktree creation, file copy); file carries the body primer after the fence naming the preamble + skim-past cue: L29 \"Claude usually opens with a plan summary listing the six sub-steps, then runs them. Skim past it.\"",
+      "evidence": "Not a plan-mode prompt, so the rule is advisory here (2026-09-03 narrowing retired the sub-step-count trigger). Body already carries a fitting primer regardless: 'Claude usually opens with a plan summary listing the six sub-steps, then runs them. Skim past it.' matches option (b)'s skim-past-cue shape even though not strictly required.",
       "fix_hint": null,
       "blocking": false
     },
@@ -398,7 +416,7 @@
       "rule_index": "21",
       "rule_lead": "Tell me what you wrote, not show me what you'll write.",
       "verdict": "PASS",
-      "evidence": "Prompt tail is a post-action report (\"Tell me the worktree path and confirm which files copied across.\"), not a pre-confirm; the action (worktree creation, file copy) is not on the irreversible/external-trust-line carve-out list.",
+      "evidence": "The prompt closes 'Tell me the worktree path and confirm which files copied across' -- a post-action report, not a pre-confirm-before-acting gate. The worktree/copy action isn't an irreversible/external-trust-line action, so the default (post-report) is the right call.",
       "fix_hint": null,
       "blocking": false
     },
@@ -407,16 +425,16 @@
       "rule_index": "24",
       "rule_lead": "Don't restate session CWD inside prompt body.",
       "verdict": "PASS",
-      "evidence": "Prompt uses relative path `../<repo-name>-m5` from session root, no absolute path or `cd`; the explicit path is the carve-out case since the prompt's intent IS placing a new worktree at a discoverable location for downstream chaining.",
+      "evidence": "Naming '../<repo-name>-m5' explicitly falls under the rule's own carve-out: the prompt's intent IS to create/enter a new worktree location, so naming the path is the action itself, not redundant bookkeeping.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": "28",
-      "rule_lead": "Strong-bold prompt label is exactly `**Prompt**` — custom labels break renderer.",
+      "rule_lead": "Strong-bold prompt label is exactly `**Prompt**`.",
       "verdict": "PASS",
-      "evidence": "Registry-sourced via marker; `expandPrompts` reconstructs \"**Prompt** *(Claude Code)*\" exactly from the registry frontmatter, no custom label.",
+      "evidence": "Registry-sourced via {{prompt:ae101-m5-worktree-setup}}; expandPrompts reconstructs the exact '**Prompt** *(Claude Code)*' label, no custom label text.",
       "fix_hint": null,
       "blocking": false
     },
@@ -425,7 +443,7 @@
       "rule_index": "29",
       "rule_lead": "Normal work request before orchestration.",
       "verdict": "PASS",
-      "evidence": "Prompt goes directly into the task (read/verify/fork/copy) with no \"ask me which...\" interview pattern front-loaded.",
+      "evidence": "The prompt opens directly on the real task ('Read ./task.md. Use the branch named...') rather than interviewing the student first ('Ask me which...'); it's shaped like a real request an engineer would make.",
       "fix_hint": null,
       "blocking": false
     },
@@ -434,7 +452,7 @@
       "rule_index": "31",
       "rule_lead": "Prompts live in registry; module/exercise/lecture files reference by marker.",
       "verdict": "PASS",
-      "evidence": "fork-the-worktree.md L27 uses `{{prompt:ae101-m5-worktree-setup}}` marker; registry file `curriculum/prompts/ae101-m5-worktree-setup.md` exists with correct frontmatter (key/dest/runtime/origin/requires/produces) and naming convention `<training>-<module>-<verb-noun>`.",
+      "evidence": "Body carries only the lead-in + '{{prompt:ae101-m5-worktree-setup}}' marker (L27); the prompt body itself lives in curriculum/prompts/ae101-m5-worktree-setup.md with correct frontmatter (key, dest, requires, produces).",
       "fix_hint": null,
       "blocking": false
     },
@@ -443,7 +461,16 @@
       "rule_index": "32",
       "rule_lead": "Module names in prompt prose are fine — they ground the session.",
       "verdict": "PASS",
-      "evidence": "Prompt names `m4/<slug>` branch and \"M4 starting point\" commit — grounding to the session's own module-numbered artifact namespace, sanctioned by the rule.",
+      "evidence": "'the \"M4 starting point\" commit' inside the fence is the exact sanctioned example from the rule text itself -- a module-numbered commit-message convention the session's own artifacts use by design, grounding rather than leaking.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "33",
+      "rule_lead": "Git-output greps asserting exact-N need multi-result fallback.",
+      "verdict": "PASS",
+      "evidence": "The fence inline-handles the ambiguous/rewritten-commit-message case directly ('If that commit message has been rewritten or is ambiguous, ask me for the SHA from the M4 session close'), option (B), on top of the body's own callout-with-fallback structure (option A) in '## Anchor the fork to the run coordinates' -- more robust than the AE101 default, not less.",
       "fix_hint": null,
       "blocking": false
     },
@@ -452,7 +479,7 @@
       "rule_index": "34",
       "rule_lead": "Disambiguation, anchors, and decision logic that bind Claude live INSIDE prompt fence.",
       "verdict": "PASS",
-      "evidence": "Read in isolation, the registry prompt disambiguates against realistic failure states explicitly: \"ignore any other `Branch:` line in the task body, which may name a different slug. Don't rediscover the branch with broad branch search\"; \"Verify that branch exists locally or as a remote-tracking branch\"; \"If that commit message has been rewritten or is ambiguous, ask me for the SHA\" — all binding logic is inside the fence.",
+      "evidence": "Read in isolation, the fence disambiguates a realistic multi-branch conflict itself ('ignore any other Branch: line in the task body, which may name a different slug. Don't rediscover the branch with broad branch search') and handles the ambiguous-commit case inline -- it does not depend on body callouts to execute correctly.",
       "fix_hint": null,
       "blocking": false
     },
@@ -460,18 +487,18 @@
       "compendium": "check_prompts.md",
       "rule_index": "36",
       "rule_lead": "Wide prompts split by logical move — paragraph breaks = cheapest scan-affordance.",
-      "verdict": "REVISE",
-      "evidence": "The registry prompt's first paragraph (`curriculum/prompts/ae101-m5-worktree-setup.md`, read directly) chains at least 4 distinct moves in one paragraph: branch selection (with an embedded disambiguation clause), branch-existence verification, commit-finding with an embedded conditional (\"If that commit message has been rewritten or is ambiguous, ask me for the SHA\"), and worktree creation/placement — past the >2-logical-move / conditional-boundary trigger the rule names. The rule's own \"sequential-build... may stay one paragraph if breaking feels artificial\" carve-out is a live counter-argument given the tight causal chain, so this is filed as a genuine but debatable finding rather than a clean violation.",
-      "fix_hint": "Consider splitting the paragraph at the embedded conditional (\"If that commit message has been rewritten...\") so branch/commit-discovery and worktree-creation read as separate moves. Fix target is the registry file `curriculum/prompts/ae101-m5-worktree-setup.md`, not this exercise file.",
+      "verdict": "PASS",
+      "evidence": "Paragraph 1 is a tightly-coupled sequential chain (read -> find branch -> verify -> find commit -> handle ambiguity -> create worktree) determining one outcome (the fork point), which the rule's own sequential-build exception allows to stay in one paragraph. Paragraph 2 groups the copy action with its independence caveat and confirmation ask, all about the same copy operation.",
+      "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": "38",
       "rule_lead": "Body lead-in mirrors prompt's opening phrasing.",
-      "verdict": "PASS",
-      "evidence": "Body lead-in (L25, \"Ask Claude to fork the worktree and copy your gitignored files across\") mirrors the prompt's headline action (worktree creation + file copy), the prompt's semantic core, rather than its literal first technical sub-step (\"Read `./task.md`\").",
-      "fix_hint": null,
+      "verdict": "REVISE",
+      "evidence": "Lead-in 'Ask Claude to fork the worktree and copy your gitignored files across' opens on the outcome verb 'fork'; the prompt's literal opening clause is 'Read ./task.md.' -- no shared verb or noun-phrase, so strict phrasal mirroring doesn't hold. The mismatch may be the better editorial call (the read is a means to the fork, not the headline), but it is a literal rule miss worth a maintainer look rather than a silent pass.",
+      "fix_hint": "Either open the lead-in on the setup move ('Ask Claude to read task.md and fork the worktree...') or treat outcome-first lead-ins as a named exception alongside 38a.",
       "blocking": false
     },
     {
@@ -479,7 +506,7 @@
       "rule_index": "40",
       "rule_lead": "Verify session boundary before deciding prompt's context-carrying.",
       "verdict": "PASS",
-      "evidence": "Session widget (L5-7) explicitly allows either continue-or-new (\"continue or new, 'original repo'\"), and the prompt is fully self-contained regardless (reads `./task.md` fresh, no scrollback-dependent reference), correctly handling the ambiguous boundary.",
+      "evidence": "The Session widget explicitly allows either continue (warm) or new (cold): 'Run this from your original repo. If the session you sent off from is still open, ask it there. Otherwise open a fresh one in the same place.' The prompt is self-contained regardless of which applies -- it re-reads ./task.md rather than relying on scrollback -- correctly defaulting to cold-safe behaviour. §40a: no concurrent worktree is open yet at prompt-run time (this prompt creates the first one), so the corollary doesn't trigger. §40b: 'the M4 session close' is human-facing context inside a question Claude is told to relay to the student, not a referent Claude itself must resolve into an action; 'M4 starting point' is a literal grep-able commit-message string set by an earlier prompt, matching §32's grounded-artifact case, not a curriculum-coined label the agent can't act on.",
       "fix_hint": null,
       "blocking": false
     },
@@ -488,7 +515,7 @@
       "rule_index": "41",
       "rule_lead": "Artifact-vs-STOP tail ordering — last imperative wins.",
       "verdict": "PASS",
-      "evidence": "Tail's last imperative is the post-action report (\"Tell me the worktree path and confirm which files copied across\"), which comes after the artifact-producing actions (worktree spin-up, file copies), not a STOP blocking them.",
+      "evidence": "No STOP is grafted after the write-worktree/copy instructions; the final imperative ('Tell me the worktree path and confirm which files copied across') is a report ask that follows the already-completed write, not a blocker on it.",
       "fix_hint": null,
       "blocking": false
     },
@@ -497,7 +524,7 @@
       "rule_index": "44",
       "rule_lead": "A leading-looking line can be a forcing function; prefer the simpler prompt.",
       "verdict": "PASS",
-      "evidence": "Closest candidate \"Don't rediscover the branch with broad branch search\" reads as leading but is load-bearing disambiguation (per §34); nothing found suggesting a load-bearing line was stripped in this edit.",
+      "evidence": "'Don't rediscover the branch with broad branch search' looks like an added restriction but is load-bearing: it forecloses a plausible wrong default (a fuzzy branch search picking an unintended branch) when the authoritative branch is already named in the coordinates block.",
       "fix_hint": null,
       "blocking": false
     },
@@ -506,7 +533,16 @@
       "rule_index": "46",
       "rule_lead": "Output shape — trust Claude's defaults, don't pad.",
       "verdict": "PASS",
-      "evidence": "The prompt's explicit worktree/branch naming is the action itself (not a padded output-shape spec); tail ends with destination + confirm rather than a trailing shape checklist.",
+      "evidence": "No trailing shape spec is appended; the prompt ends on a simple destination + confirm ask, not an over-specified format list.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "49",
+      "rule_lead": "A take-home prompt asks for one bounded build.",
+      "verdict": "PASS",
+      "evidence": "Not a take-home/saved-for-later handoff prompt (it runs live in-session), but it satisfies the underlying single-bounded-build principle regardless: one deliverable (a forked worktree with the two named files copied), no plural or 'per X' ask.",
       "fix_hint": null,
       "blocking": false
     },
@@ -515,7 +551,7 @@
       "rule_index": "6",
       "rule_lead": "\"What you build\" = 20–30 words.",
       "verdict": "PASS",
-      "evidence": "L11 \"**What you build:** a worktree holding the same code and the same rules the first run had.\" — 14 words, a single tight idea, well under the anti-pattern's bloat (55-word/3-parenthetical callout).",
+      "evidence": "'a worktree holding the same code and the same rules the first run had' is 14 words -- concise artifact statement, no padded parentheticals.",
       "fix_hint": null,
       "blocking": false
     },
@@ -524,7 +560,7 @@
       "rule_index": "7",
       "rule_lead": "Describe failure modes, don't name them.",
       "verdict": "PASS",
-      "evidence": "L33 \"A rules file that didn't copy changes two variables instead of one, and the contrast stops meaning anything.\" describes the failure in plain language; no coined jargon label used.",
+      "evidence": "The body describes the failure mechanism in plain language ('A rules file that didn't copy changes two variables instead of one...') rather than coining a jargon label for it; no term-of-art failure-mode name appears in body.",
       "fix_hint": null,
       "blocking": false
     },
@@ -532,9 +568,9 @@
       "compendium": "check_sales_copy.md",
       "rule_index": "8",
       "rule_lead": "Agency on right noun.",
-      "verdict": "REVISE",
-      "evidence": "L22 \"The setup prompt copies them across, so what you built in Module 1 and Module 4 comes with you.\" — grammatical subject of \"copies\" is \"the setup prompt\" (an artifact/instruction), when the actor performing the copy is Claude executing the prompt. Same shape as the rule's own example (\"Memory reads code\" wrong — memory = store; agents read).",
-      "fix_hint": "L25 already names the real actor two lines below (\"Ask Claude to fork the worktree...\"); rephrase L22 to put the verb on the agent, e.g. \"Claude copies them across when you run the setup prompt.\"",
+      "verdict": "PASS",
+      "evidence": "Agency is correctly placed on Claude/the agent throughout ('Claude works out...', 'Claude normally reads...'), never on an inanimate store.",
+      "fix_hint": null,
       "blocking": false
     },
     {
@@ -542,7 +578,7 @@
       "rule_index": "9",
       "rule_lead": "No em dashes on site.",
       "verdict": "PASS",
-      "evidence": "view greps.em_dash: 0 body hits (planted_proof=true, CLEAN).",
+      "evidence": "em_dash grep 0 hits (planted_proof:true, CLEAN).",
       "fix_hint": null,
       "blocking": true
     },
@@ -551,9 +587,19 @@
       "rule_index": "4",
       "rule_lead": "Strategy-fidelity check.",
       "verdict": "PASS",
-      "evidence": "Cross-module references (Module 1 = CLAUDE.local.md origin per registry `opportunistic-copy.rationale`, Module 4 = observations/ origin, Module 6 = merge-back decision point) name when artifacts were created rather than front-running any unearned future teaching moment; consistent with the file's already-recorded strategy PASS in its Quality line (pin 61e7fc9, untouched by the diff since the last strategy pass).",
+      "evidence": "No term or concept here appears to front-run a downstream teaching moment; content is extracted from the immediately-upstream learn-from-the-test.md lecture and placed at its stated M5 position, consistent with the arc. No forward-referenced embargoed vocabulary (e.g. 'eval') appears in body.",
       "fix_hint": null,
       "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": "8",
+      "rule_lead": "Strategy doc carries strategy, not structure.",
+      "verdict": "N/A",
+      "evidence": "This rule binds the content-strategy DOC's restraint relative to claims curriculum files assert; it constrains what the strategy doc may restate, not this exercise file's own content. Nothing in this file's surface is the doc-side violation the rule targets.",
+      "fix_hint": null,
+      "blocking": false,
+      "na_reason": "Binds the strategy doc, not this curriculum file's own body."
     },
     {
       "compendium": "check_writing.md",
@@ -614,15 +660,6 @@
       "blocking": false,
       "carried_from": "588c1ae1484e61894b8e9e872e26115fa439cb250f8ef205d4ca4ad56a97a179",
       "carried_shape": "632025a350bd415b"
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": "6",
-      "rule_lead": "Credit original when paraphrasing named technique.",
-      "verdict": "PASS",
-      "evidence": "Body L1-42 greps clean for practitioner-named techniques (`pocock|klaassen|martin|storybrand|jtbd|huryn|grill|compound engineering`: 0 hits); the moves present — worktree fork, split-test re-run un-packaged vs packaged — are common git/agent practice, not a recognizable practitioner framework, so no credit is owed (§6 counter-rule: don't force attribution onto common patterns).",
-      "fix_hint": null,
-      "blocking": false
     },
     {
       "compendium": "check_writing.md",
@@ -1094,15 +1131,6 @@
     },
     {
       "compendium": "check_prompts.md",
-      "rule_index": "33",
-      "rule_lead": "Git-output greps asserting exact-N need multi-result fallback.",
-      "verdict": "PASS",
-      "evidence": "Registry prompt `ae101-m5-worktree-setup` text-greps git output (verifies the named branch exists, finds the \"M4 starting point\" commit by message) and inline-handles the rewritten/ambiguous case — \"If that commit message has been rewritten or is ambiguous, ask me for the SHA from the M4 session close\" (landing B) — while disambiguating by mechanism, not text: the Run-coordinates block is declared authoritative and broad branch search is forbidden. Body L37-41 recovery ladder supplies landing-A adjacency on the exercise side.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
       "rule_index": "35",
       "rule_lead": "Repeated Q&A → premature re-edits. Separate iteration from persistence.",
       "verdict": "N/A",
@@ -1402,13 +1430,6 @@
       "carried_shape": "632025a350bd415b"
     }
   ],
-  "blocking_findings_count": 0,
-  "todos_count": 6,
-  "accept_notes_found": [
-    "L47: Extracted from `learn-from-the-test.md` §§ Run the fork from the original repo + Anchor the fork to the run coordinates, 2026-08-12, Antti-directed",
-    "L57: Recovery ladder (2026-08-12, Antti-directed read) — merge-base approximation is deliberate and verified; all three rungs load-bearing",
-    "L61: Phase 1 opens with the moved-in rationale (2026-08-25, Antti-directed) — module's `## Set up the worktree` section folded into this file's opening bullets (flagged in rules_evaluated check_writing.md#3 as now stale on its own \"Module 3\" detail, which the body no longer carries)",
-    "L63: Quality: compendium-audited 2026-08-28 stamp"
-  ],
-  "notes": "Body unchanged since the last writing pass: `shasum -a 256` on the current file matches the body_sha already on record, and `git diff 0cea7581..HEAD -- curriculum/exercises/fork-the-worktree.md` shows only the Quality-line pin bump (writing@441b361f -> writing@0cea7581), no body edit. The substantive body change sits one commit earlier, `git diff 441b361f..0cea7581`, which corrected L22's \"Module 1/Module 3\" wording and flag tag to \"Module 1/Module 4\" under the `module:spot-gaps-build-the-loop` (M6) flag -- verified against `site/layouts/curriculum.js` TRAININGS module order (getting-going, plan-mode-done-right, earn-the-trust, run-the-first-experiment, learn-from-the-test, spot-gaps-build-the-loop = M1..M6). That correction left L61's maintainer note (which still says \"Module 1/Module 3\") stale, filed as the check_writing#3 finding. check_writing.md rule 27 is new to the compendium as of today (its own dated origin note reads 2026-08-29) and was absent from every prior instance of this file; it is judged fresh here, PASS. Rules 12/16/21 (check_writing) and 28 (check_student_facing), which the immediately-prior instance judged N/A itself, are now shape-carried into the prefill sidecar (`prefill-instance.js --write` confirms their na_reason text survived the carry intact this run) and are correctly absent from `derive-class-brief.js`'s owed list; they are not re-derived here per the brief's own instruction, and will return via `--merge`. check_prompts.md rules were verified by reading `curriculum/prompts/ae101-m5-worktree-setup.md` directly (not only via a cached expansion); the check_prompts#36 finding's fix target is that registry file, not this exercise file. The check_student_facing#12 finding on the `ls` bullet is filed as a real (non-blocking) REVISE rather than downgraded to a rule-question: the maintainer's own stated rationale (self-report unreliability) is fully addressed by having Claude run `ls` itself and the student read the raw tool-call output in the transcript, which stays in-chat and does not appear to weaken the check, so the preamble's degrades-the-artefact carve-out does not apply here."
+  "todos_count": 4,
+  "blocking_findings_count": 0
 }

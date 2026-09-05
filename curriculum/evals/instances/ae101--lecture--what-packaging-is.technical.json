@@ -1,28 +1,31 @@
 {
   "class": "technical",
-  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/what-packaging-is.md",
-  "verdict": "PASS",
   "training": "ae101",
-  "body_sha": "fd4256a46b799e9d078a041111c92412b5884f09d02d62cc05da0e3188f5d93d",
+  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/what-packaging-is.md",
+  "verdict": "PASS_WITH_TODOS",
+  "body_sha": "0c0d4ecef9ddf3fd7969255a22f4a2c30527602339503b7011d9ba7843b042ca",
   "shape_hash": "1a45f572c31f174d",
-  "run_context": "CONFIRMATION pass. Prior instance (body_sha 5859466565d574dc1efce05960d2461ac0d9707f8a04fa2a5b5192f133316788) filed a blocking check_research_claims.md §1 finding: the Stance block's Klaassen by-exclusion characterization (line 139) asserted a specific factual claim about a named practitioner with no source anywhere — the klaassen-stop-coding stamp had been cut from Sources during the 2026-08-25 hooks-extraction edit (commit e7c70250) but the Stance sentence relying on the same fact was not updated. Fix landed in commit 038fffa4 (2026-08-28): re-added the klaassen-stop-coding stamp to Sources verbatim, `[checked:2026-08-01 result:CAVEAT due:none]`, reasoning intact. `grep -c klaassen-stop-coding` = 1, confirmed at session start. Ran `git diff HEAD` (empty, fix already committed) and `git show 038fffa4 -- curriculum/lectures/what-packaging-is.md` this session: confirms the fix is a pure one-line addition, nothing else in this file touched.",
+  "pin": "0cea7581",
+  "staleness_reason": "rule-drift (prompts §2/§17/§20/§40, research_claims §11 moved; body unchanged since pin per git diff)",
   "rules_evaluated": [
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": "7",
       "rule_lead": "Sessions = unit of work — write \"start a new session in X,\" not \"open Claude Code in X.\"",
-      "verdict": "PASS",
-      "evidence": "Vocabulary is consistently 'session' throughout: title 'One session, plotted' (line 5); 'One long session, drawn as a sea passage' (line 8); 'the agent reads it at every session boot' (line 22); heading 'Every re-feed pass starts a fresh session' (line 53); 'Each pass is a new session, not a continuation of the last one' (line 57). 'Open Claude Code' never appears in the raw source (grep, 0 hits).",
-      "fix_hint": "None needed.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no session-launch / 'open Claude Code' instructional language anywhere in this closing lecture — it is retrospective/conceptual, not a session-start directive.",
+      "fix_hint": "",
       "blocking": false
     },
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": "20",
       "rule_lead": "Judge must honor script exit codes.",
-      "verdict": "PASS",
-      "evidence": "Ran live this session, exit codes honored not papered over: `bash curriculum/evals/scripts/source-freshness.sh --target 2026-08-28 curriculum/lectures/what-packaging-is.md` exited 0 (summary: 0 block · 1 warn · 1 info · 4 ok — WARN reported as TODO below, not silently dropped nor escalated to REVISE); `node scripts/validate-backing.js curriculum/lectures/what-packaging-is.md` exited 0 (summary: 0 error · 1 warn · 8 info — the 1 WARN is a real SOURCE-ORPHAN finding on this file, reported below as a TODO, not suppressed because the exit code was clean).",
-      "fix_hint": "None needed.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no judge-runner script or exit-code claim anywhere in this lecture's body or maintainer prose.",
+      "fix_hint": "",
       "blocking": false
     },
     {
@@ -30,8 +33,8 @@
       "rule_index": "24a",
       "rule_lead": "Quality stamps: tooling writes them; the SHA pins committed content.",
       "verdict": "PASS",
-      "evidence": "Line 79: '**Quality:** compendium-audited 2026-08-26 (writing@d5aa7e3d story@d5aa7e3d technical@10a10d2b behavior@1c765f2 pedagogy@d5aa7e3d strategy@1c765f2 slides@d5aa7e3d)' — clean anchor, no trailing narrative concatenated onto the pinned line.",
-      "fix_hint": "For the orchestrator: once every class on this file has returned, stamp this PASS via update-quality.sh against body_sha 290833a5... to replace the technical@10a10d2b pin.",
+      "evidence": "L79: '**Quality:** compendium-audited 2026-09-03 (writing@c0c37913 story@d5aa7e3d technical@0cea7581 behavior@0cea7581 pedagogy@d5aa7e3d strategy@aa1f7826 slides@c0c37913)' — clean anchor (stage + date) followed only by the standard per-class-SHA parenthetical used corpus-wide, not a leftover hand-typed prose tail. `git log --oneline 0cea7581..HEAD -- curriculum/lectures/what-packaging-is.md` (run this session) confirms 0cea7581 is a real ancestor commit with content committed before this pin, satisfying the commit-before-stamp order.",
+      "fix_hint": "None needed.",
       "blocking": false
     },
     {
@@ -39,7 +42,26 @@
       "rule_index": "38",
       "rule_lead": "Prose describing a runtime the room never executes drifts to plausible mechanism — no judge catches it, because no artefact contradicts it.",
       "verdict": "PASS",
-      "evidence": "Maintainer block line 65: 'Runtime primitives (/goal, /loop, /schedule) belong to M6's the-loop-has-a-name.md ... and stay out of this slide by design.' Re-feed section (lines 56-59) states only what TRIGGERS ('the check is the stopping condition') and what a pass carries over ('what sits on disk'), matching the huntley-ralph citation's own description (a bash loop over durable markdown) — no invented 'X against Y' retrieval mechanism, no borrowed lifecycle noun, no unsourced cadence.",
+      "evidence": "Closest candidate, L22: 'the agent reads it at every session boot, updates it as decisions land, re-reads it when the working window fills.' This states a PRESCRIBED practice the student themselves builds and runs that same morning (plan.md discipline), not an invented built-in platform mechanism the room never executes — no 'X against Y' retrieval metaphor, no borrowed lifecycle noun from an untouched stage, no unsourced cadence word. L57's 'Each pass is a new session... Nothing from the conversation survives' is a plain, verifiably-true statement about what a fresh session carries (nothing from prior conversation) — not a speculative claim.",
+      "fix_hint": "None needed.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": "50",
+      "rule_lead": "Thinking-effort levels are a real, named Claude Code control surface — stamped.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no mention of thinking-effort / --effort / low-medium-high-xhigh-max anywhere in this file.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": "51",
+      "rule_lead": "A two-file contradiction is not a defect until you have read the code that reconciles them.",
+      "verdict": "PASS",
+      "evidence": "Applied the rule's own diagnostic to this file's maintainer-block cross-references rather than trusting them: opened all four named files this session — `curriculum/lectures/composing-the-workflow.md`, `curriculum/exercises/diagnose-and-resend.md`, `curriculum/lectures/hooks-always-fire.md`, `curriculum/lectures/the-gate-is-a-claim.md` — all exist at the stated paths. `grep -n Ralph curriculum/lectures/composing-the-workflow.md` → 0 hits, confirming L63's claim 'M6 carries no Ralph slide' against the actual M6 file rather than the maintainer's assertion alone. `composing-the-workflow.md`'s own text ('Cadence slide (from the-loop-has-a-name.md...)... Loop instead of you starting') confirms L63's cadence-slide pointer. Also confirmed the retired names `the-loop-has-a-name.md` / `the-map-filled-in.md` this maintainer block used to reference (per the pin-to-HEAD diff) no longer exist as live curriculum files, so the rename to `composing-the-workflow.md` in the current text is not a dangling update.",
       "fix_hint": "None needed.",
       "blocking": false
     },
@@ -48,8 +70,8 @@
       "rule_index": "1",
       "rule_lead": "Source URL + type label — mandatory.",
       "verdict": "PASS",
-      "evidence": "FIX CONFIRMED: `grep -c klaassen-stop-coding curriculum/lectures/what-packaging-is.md` = 1 (line 127). The stamp carries a real clickable URL (https://every.to/source-code/stop-coding-and-start-planning, live-curled this session, status 200), an honest type label ([practitioner direct, vendor venue]), and its reasoning ('his plan artefact is a pre-work spec created once, reviewed, implemented and stored in GitHub — structurally different from a living document the agent mutates across a run') matches the Stance block's holds: bullet verbatim in substance (line 139-140: 'Klaassen's plan artefact is a pre-work spec rather than a document the agent mutates across a run, so it is a different piece wearing the same word'). The originally-flagged claim now has a source. **However — a related, narrower gap survives the fix and is not the same defect:** `node scripts/validate-backing.js curriculum/lectures/what-packaging-is.md` (run live this session) reports `WARN SOURCE-ORPHAN curriculum/lectures/what-packaging-is.md:99 source \"klaassen-stop-coding\" backs no claim`. Read the validator source (`scripts/validate-backing.js` lines 406-458, checked this session): the 'cited' set is built ONLY from Claims-ledger `←` refs and Frameworks `←` refs — Stance prose is never scanned. `git show e7c70250 -- curriculum/lectures/what-packaging-is.md` (checked this session) shows that BEFORE the 2026-08-25 hooks-extraction, klaassen-stop-coding WAS wired via two Claims rows (`pieces-turn-up-on-their-own`, `huntley-runs-all-three`); both rows were deleted when the provenance walkthrough was consolidated, and the applied fix restored the Source stamp but not a matching Claims row. This is the SAME defect family the original finding named (a backing-block join gap) but a different half of it — not fully swapped-and-resolved, only partially. Judged non-blocking here (see todos) because: (a) the tool's own severity is WARN not ERROR, exit 0; (b) §1's own scope clause places this content in maintainer-block-only territory, not student-facing body; (c) the stamp's own prose is fully self-explanatory about what it backs, so no reader is misled; (d) an identical unaddressed SOURCE-ORPHAN pattern already exists elsewhere in the corpus (`node scripts/validate-backing.js curriculum/lectures/*.md` this session: `grounded.md:89` carries two, `mata-court-order` and `mata-press-account`) — escalating only this file's instance to blocking would be arbitrary against that standing precedent.",
-      "fix_hint": "Add a Claims-ledger row anchoring klaassen-stop-coding to the Stance sentence it backs (e.g. reinstate a narrowed form of the old `huntley-runs-all-three`/`pieces-turn-up-on-their-own` rows, layer `detail`, anchor a Stance phrase, `← klaassen-stop-coding`), or accept the Stance-only citation pattern explicitly (as grounded.md already does) and treat SOURCE-ORPHAN on maintainer-block-only sources as a standing accepted shape.",
+      "evidence": "Body carries zero bracketed [label] tags — labels correctly confined to the backing block's Sources ledger (L124-130), matching §1's scope note. 'Vocabulary is a claim' sub-clause: L28's 'The menu is a synthesis across practitioners (Cherny, Huntley, Ronacher); no single write-up carries it' is ownership-framed ('a synthesis... no single write-up carries it'), not a field-convergence claim; the backing Stance block (L139-140) explicitly interrogates this exact wording and defends it with a strict per-practitioner count ('the independents number one: Huntley's Ralph... misleading to call convergence'), which is precisely the discipline §1's clause asks for.",
+      "fix_hint": "None needed.",
       "blocking": false
     },
     {
@@ -57,7 +79,7 @@
       "rule_index": "1a",
       "rule_lead": "OODA paraphrase ≠ primary source.",
       "verdict": "PASS",
-      "evidence": "ronacher-minijinja stamp (line 125) documents full-archive, quote-level verification ('Figures re-verified verbatim on page 2026-08-01: \"Agent run duration: 10 hours...\"', 'Full-text check 2026-08-01: reference occurs once...') grounding body line 21 in exact quotes, not a drifted paraphrase. Same for huntley-ralph (line 126): the stamp quotes Huntley's own words directly ('create/update a @fix_plan.md...') rather than paraphrasing.",
+      "evidence": "Every claim in the Sources ledger carries an exact primary-source quote, not a paraphrase: ronacher-minijinja (L125) quotes 'Agent run duration: 10 hours (3 hours supervised)' verbatim and reports a fresh full-text sweep; huntley-ralph (L126) quotes 'create/update a @fix_plan.md...' directly; kim-on-cherny (L128) quotes the exact sentence and notes 'Re-fetched 2026-08-29: passage unchanged.'",
       "fix_hint": "None needed.",
       "blocking": false
     },
@@ -65,9 +87,9 @@
       "compendium": "check_research_claims.md",
       "rule_index": "2",
       "rule_lead": "Freshness rule — 6 months.",
-      "verdict": "PASS",
-      "evidence": "Ran `bash curriculum/evals/scripts/source-freshness.sh --target 2026-08-28 curriculum/lectures/what-packaging-is.md` this session, exit 0: 'summary: 0 block · 1 warn · 1 info · 4 ok.' Zero BLOCK confirms no source carries result ∈ {CORRECT, GONE, STALE, NEEDED} or checked:never. The klaassen-stop-coding CAVEAT stamp reported as the 1 INFO row ('known/accepted').",
-      "fix_hint": "See §11a for the WARN detail (non-blocking, pre-existing, unrelated to the fix).",
+      "verdict": "REVISE",
+      "evidence": "Five of six sources correctly carry due:none under the 2a durable-account carve-out with an in-body date anchor: L21 dates Ronacher explicitly ('In Armin Ronacher's January 2026 MiniJinja port...'). amp-neo's stamp (L130) demonstrates the 2b two-stamp-lines discipline correctly, cross-referencing that a currency reading lives in a different file with its own dated due. One sentence falls short of 2a's own carve-out condition: L22 'Geoffrey Huntley's Ralph practice leans on exactly this primitive to bootstrap entire greenfield projects' carries no in-body date (unlike the Ronacher sentence one bullet above), and 2a explicitly excludes 'a practice, trend or rate' from the durable-account carve-out — only 'a specific completed event' qualifies. The huntley-ralph stamp (L126) treats the whole claim as durable ('due:none because this is a durable first-hand account'), but the body sentence reads as a live-position claim about the practice's ongoing utility, which is the exact 2b distinction ('one URL doing two jobs needs two stamp lines') that amp-neo's stamp was just given elsewhere in this same diff. Harm is mitigated, not absent: the backing Stance block's 'would-move-it' clause (L142) already tracks the actual risk ('Huntley abandoning or restructuring Ralph leaves the count at zero, and the slide would owe a different sentence again'), so the substance is monitored even without a calendar due-date on this specific stamp.",
+      "fix_hint": "Add an in-body date parenthetical to the Huntley/Ralph sentence mirroring the Ronacher sentence's framing (e.g. 'as Huntley documented in July 2025'), or split the stamp into two lines per 2b (durable account of the post + a dated 'still active' currency line) the way amp-neo's stamp now does.",
       "blocking": false
     },
     {
@@ -75,7 +97,7 @@
       "rule_index": "4",
       "rule_lead": "Hold short OODA loose.",
       "verdict": "PASS",
-      "evidence": "Stance block (lines 139-141): 'Counted strictly ... the independents number one: Huntley's Ralph ... misleading to call convergence.' OODA roster (line 146) lists only 4 practitioners (Huntley, Ronacher, Klaassen, Cherny), far short of the 10-20 L3 threshold; body line 28 says 'a synthesis across practitioners ... no single write-up carries it' rather than claiming convergence.",
+      "evidence": "Backing Stance block (L139-141): 'Counted strictly ... the independents number one: Huntley's Ralph ... misleading to call convergence.' OODA roster (L146) lists only 4 practitioners, far short of the 10-20 L3 threshold; body L28 says 'a synthesis across practitioners... no single write-up carries it' rather than asserting convergence.",
       "fix_hint": "None needed.",
       "blocking": false
     },
@@ -83,9 +105,10 @@
       "compendium": "check_research_claims.md",
       "rule_index": "6",
       "rule_lead": "Default to asking before folding findings into strategy docs.",
-      "verdict": "PASS",
-      "evidence": "Maintainer block shows explicit sign-off discipline: 'Antti-directed' (line 65), 'wording Antti-blessed 2026-08-14/15' (line 65), 'Antti-waived 2026-08-15' (line 71), 'Antti 2026-08-15' (line 73), 'Antti-approved' (line 77), 'Antti-worded 2026-08-25' (Stance block, line 140).",
-      "fix_hint": "None needed.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "this is a shipped, already-audited lecture body, not a live OODA-to-strategy-doc fold in progress.",
+      "fix_hint": "",
       "blocking": false
     },
     {
@@ -93,7 +116,7 @@
       "rule_index": "7",
       "rule_lead": "Vision × Detail split.",
       "verdict": "PASS",
-      "evidence": "Claims ledger (lines 102-122) tags every bullet vision (← none-owed) or detail (← named source id); e.g. `more-field-than-a-career` (line 115) is vision/none-owed while `minijinja-snapshot-tests-as-reference` (line 109) is detail/ronacher-minijinja.",
+      "evidence": "Backing Claims ledger (L102-122) tags every bullet vision (← none-owed) or detail (← named source id). The two lines the maintainer block explicitly flags for this judge (L90-93) — L34 'a well-read average of what other people published about other repos...' and L33 'More of the field than you will read in a career' — are both tagged vision/none-owed in the ledger (L116, L115), consistent with the maintainer's own characterization ('roughly-true by design' / 'a volume claim, deliberately not a currency claim'). Detail claims correctly carry KB backing, e.g. `minijinja-snapshot-tests-as-reference` (L109) ← ronacher-minijinja.",
       "fix_hint": "None needed.",
       "blocking": false
     },
@@ -102,7 +125,7 @@
       "rule_index": "10",
       "rule_lead": "No \"What research says\" callout boxes.",
       "verdict": "PASS",
-      "evidence": "All citations woven inline in builder voice: 'In Armin Ronacher's January 2026 MiniJinja port, the original Rust snapshot tests played this role' (line 21); 'Geoffrey Huntley's Ralph practice leans on exactly this primitive' (line 22). No callout box anywhere in the body.",
+      "evidence": "All citations woven inline in builder voice: L21 'In Armin Ronacher's January 2026 MiniJinja port, the original Rust snapshot tests played this role'; L22 'Geoffrey Huntley's Ralph practice leans on exactly this primitive.' No callout-box formatting anywhere in the body.",
       "fix_hint": "None needed.",
       "blocking": false
     },
@@ -111,17 +134,18 @@
       "rule_index": "11",
       "rule_lead": "Source-verification maintainer block on any student-facing file with practitioner citations.",
       "verdict": "PASS",
-      "evidence": "Backing block's Sources section (lines 124-130, 6 entries including the restored klaassen-stop-coding line) functions as the source-verification record via the newer per-source-stamp mechanism (§11a): every URL present, load-bearing numbers triple-checked (Ronacher's figures re-verified verbatim per its own stamp), every entry carries a named 'fallback:' reframe, freshness wired via `due:` and cross-referenced from the maintainer block (line 81). All 6 stamps carry the full `[checked:YYYY-MM-DD result:RESULT due:DUE]` grammar (verified by direct read, live this session).",
-      "fix_hint": "See §1's note on the Claims-ledger join gap for the restored stamp specifically — a §11-adjacent structural nit, not a missing-record violation (the record exists and is complete on its own terms).",
+      "evidence": "DRIFT RE-READ at current wording (plus 11a). The rule's literal text asks for a '**Source verification — MUST DO before first cohort:**' heading inside the maintainer block; this file instead carries the newer `<!-- backing -->` block's 'Sources' ledger (L124-130), which supplies every one of §11's four required items via 11a's own stamp grammar for all 6 named sources: every URL present and clickable, load-bearing numbers triple-checked (Ronacher's figures re-verified verbatim per its own stamp), a named 'fallback:' reframe on every entry, and freshness wired via `due:` with the maintainer block (L81) explicitly cross-referencing 'stamps in Source verification block; run source-freshness.sh --target <cohort-date>.' The harm §11 exists to prevent — verification debt shipping untracked before a cohort — is not present: every source is individually stamped, dated and fallback-framed, which is stricter than the rule's literal bullet-list format. This reads as an artifact-convention question (backing blocks postdate rule 11's literal header wording) rather than a defect; flagging it as REVISE would ask the maintainer to approve a header rename that changes nothing a student reads.",
+      "fix_hint": "Optional maintainer note only: point rule 11's text at the backing-block Sources ledger as the sanctioned modern equivalent of the literal '**Source verification**' heading, so future judges don't have to re-derive this reconciliation.",
       "blocking": false
     },
     {
       "compendium": "check_research_claims.md",
       "rule_index": "14",
       "rule_lead": "A green check must measure the fact, not a proxy that co-varies with it.",
-      "verdict": "PASS",
-      "evidence": "Ran `node scripts/validate-backing.js curriculum/lectures/what-packaging-is.md` live this session, exit 0: '0 error · 1 warn · 8 info' — read the tool's own source (lines 406-458) rather than trusting its label, confirming SOURCE-ORPHAN measures exactly what it says (Claims/Frameworks `←` citation, not narrative mention) and is not a proxy mismatch — its 1 WARN here is a real, correctly-classified finding (see §1), not a false positive. Re-curled all 6 Sources-block URLs live this session (5 shown in urls_sampled; klaassen-stop-coding's URL curled separately): all 200, not carried forward from cache.",
-      "fix_hint": "None needed.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "targets verification INSTRUMENTS (audit scripts, greps, judges); this lecture teaches the concept of a verifier to students, it is not itself an audit instrument under evaluation for proxy-matching.",
+      "fix_hint": "",
       "blocking": false
     },
     {
@@ -129,7 +153,7 @@
       "rule_index": "15",
       "rule_lead": "A word-presence claim needs an unprimed read.",
       "verdict": "PASS",
-      "evidence": "The ronacher-minijinja stamp reports a NEGATIVE word-presence finding ('a 14-post sweep of his archive ... returns zero uses of verifier anywhere'). The restored klaassen-stop-coding stamp reports the same shape: 'No reference-diff and no verifier language anywhere in his corpus (full Every.to bibliography, 20 articles, swept 2026-08-01)' — per §15's own asymmetry, negative results survive a primed read, so both are trustworthy without a fresh sweep.",
+      "evidence": "The ronacher-minijinja stamp (L125) reports a NEGATIVE word-presence finding from an exhaustive, unprimed sweep ('A 14-post sweep of his archive... returns zero uses of verifier anywhere, including the three posts that discuss agent harnesses at length'). Per §15's own asymmetry, negative results survive a primed read, so this is trustworthy without re-derivation. kim-on-cherny's stamp documents a neutral re-fetch confirming the passage unchanged (L128).",
       "fix_hint": "None needed.",
       "blocking": false
     },
@@ -138,19 +162,88 @@
       "rule_index": "16",
       "rule_lead": "A candidate that matches the hunt's SHAPE has not answered the hunt's QUESTION.",
       "verdict": "PASS",
-      "evidence": "Stance block's 'Counted strictly' discipline (lines 139-140) checks FUNCTION not just topical shape: Klaassen is excluded specifically because his artefact 'is a different piece wearing the same word' (a pre-work spec vs. a document the agent mutates across a run) despite superficially matching the 'plan.md' topic. The restored stamp preserves this exact functional distinction verbatim.",
+      "evidence": "Backing Stance block's 'Counted strictly' discipline (L139-140) checks FUNCTION, not topical shape: Klaassen is excluded from the triad specifically because his artefact 'is a different piece wearing the same word' (a pre-work spec created once vs. a living document the agent mutates across a run) despite superficially matching the 'plan' topic — exactly the 'does it DO the job, not just clear the criteria' diagnostic this rule asks for.",
       "fix_hint": "None needed.",
       "blocking": false
     },
     {
       "compendium": "check_prompts.md",
-      "rule_index": null,
-      "judge_owned": true,
-      "rule_lead": "Prompt design mechanics (technical subset).",
+      "rule_index": "1",
+      "rule_lead": "No placeholders inside fences.",
       "verdict": "N/A",
       "evidence": null,
-      "na_reason": "zero prompt content: has_code_fences false, has_prompt_blocks false, fence_ranges []",
-      "fix_hint": "Whole-compendium N/A: file carries zero prompt content — no fenced code (has_code_fences: false), no `{{prompt:}}` marker (has_prompt_blocks: false per body view), fence_ranges: [] — confirmed by direct read of the full 60-line body. Nothing for check_prompts.md's technical (mechanical-correctness) subset to evaluate.",
+      "na_reason": "file carries zero fenced code blocks (body view signals: has_code_fences=false, has_prompt_blocks=false; confirmed by direct read of the full 60-line body) — no fence exists to check for placeholders.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "2",
+      "rule_lead": "Every prompt block: one-sentence action lead-in.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "DRIFT RE-READ at current wording (plus 2a/2b/2c sub-clauses, unchanged in substance re: this file): no prompt blocks exist in this lecture, so no lead-in is owed anywhere.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "5",
+      "rule_lead": "Chain by back-reference + deterministic path, never invented alias.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt fences to chain; the lecture references only figures and a maintainer-side artefact-file discussion (plan.md as a concept), never a fenced prompt naming a path to a prior artefact.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "8",
+      "rule_lead": "Multi-sample methods need structural enforcement.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt fence proposing a multi-sample/self-consistency method exists in this file.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "13",
+      "rule_lead": "Citation discipline — extend cite-or-flag scope + quote supporting sentence.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "this rule targets citation discipline INSIDE prompt fences; there are no fences in this file. Body-level citation discipline is covered under research_claims §1/§1a above.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "17",
+      "rule_lead": "Preamble before action — design around it.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "DRIFT RE-READ at current wording (narrowed 2026-09-03 to plan-mode fences only): no prompt fences of any kind, plan-mode or otherwise, exist in this lecture.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "20",
+      "rule_lead": "Grill before save — collaborative quality at artefact assembly.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "DRIFT RE-READ at current wording (narrowed 2026-09-03 — rule now rarely fires and never gates): no artefact-assembling prompt fence exists in this lecture to close with a grill-before-save line.",
+      "fix_hint": "",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "40",
+      "rule_lead": "Verify session boundary before deciding prompt's context-carrying.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "DRIFT RE-READ at current wording (plus 40a/40b, unchanged in substance re: this file): no prompt fence exists whose session-boundary/context-carrying needs verifying.",
+      "fix_hint": "",
       "blocking": false
     },
     {
@@ -161,7 +254,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "5859466565d574dc1efce05960d2461ac0d9707f8a04fa2a5b5192f133316788",
+      "carried_from": "fd4256a46b799e9d078a041111c92412b5884f09d02d62cc05da0e3188f5d93d",
       "carried_shape": "1a45f572c31f174d"
     },
     {
@@ -172,7 +265,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "5859466565d574dc1efce05960d2461ac0d9707f8a04fa2a5b5192f133316788",
+      "carried_from": "fd4256a46b799e9d078a041111c92412b5884f09d02d62cc05da0e3188f5d93d",
       "carried_shape": "1a45f572c31f174d"
     },
     {
@@ -183,7 +276,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "5859466565d574dc1efce05960d2461ac0d9707f8a04fa2a5b5192f133316788",
+      "carried_from": "fd4256a46b799e9d078a041111c92412b5884f09d02d62cc05da0e3188f5d93d",
       "carried_shape": "1a45f572c31f174d"
     },
     {
@@ -194,7 +287,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "5859466565d574dc1efce05960d2461ac0d9707f8a04fa2a5b5192f133316788",
+      "carried_from": "fd4256a46b799e9d078a041111c92412b5884f09d02d62cc05da0e3188f5d93d",
       "carried_shape": "1a45f572c31f174d"
     },
     {
@@ -205,7 +298,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "5859466565d574dc1efce05960d2461ac0d9707f8a04fa2a5b5192f133316788",
+      "carried_from": "fd4256a46b799e9d078a041111c92412b5884f09d02d62cc05da0e3188f5d93d",
       "carried_shape": "1a45f572c31f174d"
     },
     {
@@ -216,7 +309,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "5859466565d574dc1efce05960d2461ac0d9707f8a04fa2a5b5192f133316788",
+      "carried_from": "fd4256a46b799e9d078a041111c92412b5884f09d02d62cc05da0e3188f5d93d",
       "carried_shape": "1a45f572c31f174d"
     },
     {
@@ -227,7 +320,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "5859466565d574dc1efce05960d2461ac0d9707f8a04fa2a5b5192f133316788",
+      "carried_from": "fd4256a46b799e9d078a041111c92412b5884f09d02d62cc05da0e3188f5d93d",
       "carried_shape": "1a45f572c31f174d"
     },
     {
@@ -238,7 +331,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "5859466565d574dc1efce05960d2461ac0d9707f8a04fa2a5b5192f133316788",
+      "carried_from": "fd4256a46b799e9d078a041111c92412b5884f09d02d62cc05da0e3188f5d93d",
       "carried_shape": "1a45f572c31f174d"
     },
     {
@@ -249,7 +342,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "5859466565d574dc1efce05960d2461ac0d9707f8a04fa2a5b5192f133316788",
+      "carried_from": "fd4256a46b799e9d078a041111c92412b5884f09d02d62cc05da0e3188f5d93d",
       "carried_shape": "1a45f572c31f174d"
     },
     {
@@ -260,7 +353,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "5859466565d574dc1efce05960d2461ac0d9707f8a04fa2a5b5192f133316788",
+      "carried_from": "fd4256a46b799e9d078a041111c92412b5884f09d02d62cc05da0e3188f5d93d",
       "carried_shape": "1a45f572c31f174d"
     },
     {
@@ -271,7 +364,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "5859466565d574dc1efce05960d2461ac0d9707f8a04fa2a5b5192f133316788",
+      "carried_from": "fd4256a46b799e9d078a041111c92412b5884f09d02d62cc05da0e3188f5d93d",
       "carried_shape": "1a45f572c31f174d"
     },
     {
@@ -282,7 +375,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "5859466565d574dc1efce05960d2461ac0d9707f8a04fa2a5b5192f133316788",
+      "carried_from": "fd4256a46b799e9d078a041111c92412b5884f09d02d62cc05da0e3188f5d93d",
       "carried_shape": "1a45f572c31f174d"
     },
     {
@@ -293,7 +386,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "5859466565d574dc1efce05960d2461ac0d9707f8a04fa2a5b5192f133316788",
+      "carried_from": "fd4256a46b799e9d078a041111c92412b5884f09d02d62cc05da0e3188f5d93d",
       "carried_shape": "1a45f572c31f174d"
     },
     {
@@ -304,7 +397,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "5859466565d574dc1efce05960d2461ac0d9707f8a04fa2a5b5192f133316788",
+      "carried_from": "fd4256a46b799e9d078a041111c92412b5884f09d02d62cc05da0e3188f5d93d",
       "carried_shape": "1a45f572c31f174d"
     },
     {
@@ -315,7 +408,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "5859466565d574dc1efce05960d2461ac0d9707f8a04fa2a5b5192f133316788",
+      "carried_from": "fd4256a46b799e9d078a041111c92412b5884f09d02d62cc05da0e3188f5d93d",
       "carried_shape": "1a45f572c31f174d"
     },
     {
@@ -326,7 +419,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "5859466565d574dc1efce05960d2461ac0d9707f8a04fa2a5b5192f133316788",
+      "carried_from": "fd4256a46b799e9d078a041111c92412b5884f09d02d62cc05da0e3188f5d93d",
       "carried_shape": "1a45f572c31f174d"
     },
     {
@@ -337,7 +430,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "5859466565d574dc1efce05960d2461ac0d9707f8a04fa2a5b5192f133316788",
+      "carried_from": "fd4256a46b799e9d078a041111c92412b5884f09d02d62cc05da0e3188f5d93d",
       "carried_shape": "1a45f572c31f174d"
     },
     {
@@ -348,7 +441,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "5859466565d574dc1efce05960d2461ac0d9707f8a04fa2a5b5192f133316788",
+      "carried_from": "fd4256a46b799e9d078a041111c92412b5884f09d02d62cc05da0e3188f5d93d",
       "carried_shape": "1a45f572c31f174d"
     },
     {
@@ -359,7 +452,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "5859466565d574dc1efce05960d2461ac0d9707f8a04fa2a5b5192f133316788",
+      "carried_from": "fd4256a46b799e9d078a041111c92412b5884f09d02d62cc05da0e3188f5d93d",
       "carried_shape": "1a45f572c31f174d"
     },
     {
@@ -370,7 +463,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "5859466565d574dc1efce05960d2461ac0d9707f8a04fa2a5b5192f133316788",
+      "carried_from": "fd4256a46b799e9d078a041111c92412b5884f09d02d62cc05da0e3188f5d93d",
       "carried_shape": "1a45f572c31f174d"
     },
     {
@@ -381,7 +474,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "5859466565d574dc1efce05960d2461ac0d9707f8a04fa2a5b5192f133316788",
+      "carried_from": "fd4256a46b799e9d078a041111c92412b5884f09d02d62cc05da0e3188f5d93d",
       "carried_shape": "1a45f572c31f174d"
     },
     {
@@ -392,7 +485,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "5859466565d574dc1efce05960d2461ac0d9707f8a04fa2a5b5192f133316788",
+      "carried_from": "fd4256a46b799e9d078a041111c92412b5884f09d02d62cc05da0e3188f5d93d",
       "carried_shape": "1a45f572c31f174d"
     },
     {
@@ -403,7 +496,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "5859466565d574dc1efce05960d2461ac0d9707f8a04fa2a5b5192f133316788",
+      "carried_from": "fd4256a46b799e9d078a041111c92412b5884f09d02d62cc05da0e3188f5d93d",
       "carried_shape": "1a45f572c31f174d"
     },
     {
@@ -414,7 +507,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "5859466565d574dc1efce05960d2461ac0d9707f8a04fa2a5b5192f133316788",
+      "carried_from": "fd4256a46b799e9d078a041111c92412b5884f09d02d62cc05da0e3188f5d93d",
       "carried_shape": "1a45f572c31f174d"
     },
     {
@@ -425,7 +518,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "5859466565d574dc1efce05960d2461ac0d9707f8a04fa2a5b5192f133316788",
+      "carried_from": "fd4256a46b799e9d078a041111c92412b5884f09d02d62cc05da0e3188f5d93d",
       "carried_shape": "1a45f572c31f174d"
     },
     {
@@ -436,7 +529,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "5859466565d574dc1efce05960d2461ac0d9707f8a04fa2a5b5192f133316788",
+      "carried_from": "fd4256a46b799e9d078a041111c92412b5884f09d02d62cc05da0e3188f5d93d",
       "carried_shape": "1a45f572c31f174d"
     },
     {
@@ -447,7 +540,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "5859466565d574dc1efce05960d2461ac0d9707f8a04fa2a5b5192f133316788",
+      "carried_from": "fd4256a46b799e9d078a041111c92412b5884f09d02d62cc05da0e3188f5d93d",
       "carried_shape": "1a45f572c31f174d"
     },
     {
@@ -458,7 +551,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "5859466565d574dc1efce05960d2461ac0d9707f8a04fa2a5b5192f133316788",
+      "carried_from": "fd4256a46b799e9d078a041111c92412b5884f09d02d62cc05da0e3188f5d93d",
       "carried_shape": "1a45f572c31f174d"
     },
     {
@@ -469,7 +562,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "5859466565d574dc1efce05960d2461ac0d9707f8a04fa2a5b5192f133316788",
+      "carried_from": "fd4256a46b799e9d078a041111c92412b5884f09d02d62cc05da0e3188f5d93d",
       "carried_shape": "1a45f572c31f174d"
     },
     {
@@ -480,7 +573,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "5859466565d574dc1efce05960d2461ac0d9707f8a04fa2a5b5192f133316788",
+      "carried_from": "fd4256a46b799e9d078a041111c92412b5884f09d02d62cc05da0e3188f5d93d",
       "carried_shape": "1a45f572c31f174d"
     },
     {
@@ -491,7 +584,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "5859466565d574dc1efce05960d2461ac0d9707f8a04fa2a5b5192f133316788",
+      "carried_from": "fd4256a46b799e9d078a041111c92412b5884f09d02d62cc05da0e3188f5d93d",
       "carried_shape": "1a45f572c31f174d"
     },
     {
@@ -502,7 +595,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "5859466565d574dc1efce05960d2461ac0d9707f8a04fa2a5b5192f133316788",
+      "carried_from": "fd4256a46b799e9d078a041111c92412b5884f09d02d62cc05da0e3188f5d93d",
       "carried_shape": "1a45f572c31f174d"
     },
     {
@@ -513,7 +606,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "5859466565d574dc1efce05960d2461ac0d9707f8a04fa2a5b5192f133316788",
+      "carried_from": "fd4256a46b799e9d078a041111c92412b5884f09d02d62cc05da0e3188f5d93d",
       "carried_shape": "1a45f572c31f174d"
     },
     {
@@ -524,7 +617,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "5859466565d574dc1efce05960d2461ac0d9707f8a04fa2a5b5192f133316788",
+      "carried_from": "fd4256a46b799e9d078a041111c92412b5884f09d02d62cc05da0e3188f5d93d",
       "carried_shape": "1a45f572c31f174d"
     },
     {
@@ -535,7 +628,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "5859466565d574dc1efce05960d2461ac0d9707f8a04fa2a5b5192f133316788",
+      "carried_from": "fd4256a46b799e9d078a041111c92412b5884f09d02d62cc05da0e3188f5d93d",
       "carried_shape": "1a45f572c31f174d"
     },
     {
@@ -546,7 +639,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "5859466565d574dc1efce05960d2461ac0d9707f8a04fa2a5b5192f133316788",
+      "carried_from": "fd4256a46b799e9d078a041111c92412b5884f09d02d62cc05da0e3188f5d93d",
       "carried_shape": "1a45f572c31f174d"
     },
     {
@@ -557,7 +650,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "5859466565d574dc1efce05960d2461ac0d9707f8a04fa2a5b5192f133316788",
+      "carried_from": "fd4256a46b799e9d078a041111c92412b5884f09d02d62cc05da0e3188f5d93d",
       "carried_shape": "1a45f572c31f174d"
     },
     {
@@ -568,7 +661,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "5859466565d574dc1efce05960d2461ac0d9707f8a04fa2a5b5192f133316788",
+      "carried_from": "fd4256a46b799e9d078a041111c92412b5884f09d02d62cc05da0e3188f5d93d",
       "carried_shape": "1a45f572c31f174d"
     },
     {
@@ -579,7 +672,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "5859466565d574dc1efce05960d2461ac0d9707f8a04fa2a5b5192f133316788",
+      "carried_from": "fd4256a46b799e9d078a041111c92412b5884f09d02d62cc05da0e3188f5d93d",
       "carried_shape": "1a45f572c31f174d"
     },
     {
@@ -590,7 +683,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "5859466565d574dc1efce05960d2461ac0d9707f8a04fa2a5b5192f133316788",
+      "carried_from": "fd4256a46b799e9d078a041111c92412b5884f09d02d62cc05da0e3188f5d93d",
       "carried_shape": "1a45f572c31f174d"
     },
     {
@@ -601,7 +694,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "5859466565d574dc1efce05960d2461ac0d9707f8a04fa2a5b5192f133316788",
+      "carried_from": "fd4256a46b799e9d078a041111c92412b5884f09d02d62cc05da0e3188f5d93d",
       "carried_shape": "1a45f572c31f174d"
     },
     {
@@ -612,7 +705,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "5859466565d574dc1efce05960d2461ac0d9707f8a04fa2a5b5192f133316788",
+      "carried_from": "fd4256a46b799e9d078a041111c92412b5884f09d02d62cc05da0e3188f5d93d",
       "carried_shape": "1a45f572c31f174d"
     },
     {
@@ -623,7 +716,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "5859466565d574dc1efce05960d2461ac0d9707f8a04fa2a5b5192f133316788",
+      "carried_from": "fd4256a46b799e9d078a041111c92412b5884f09d02d62cc05da0e3188f5d93d",
       "carried_shape": "1a45f572c31f174d"
     },
     {
@@ -634,7 +727,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "5859466565d574dc1efce05960d2461ac0d9707f8a04fa2a5b5192f133316788",
+      "carried_from": "fd4256a46b799e9d078a041111c92412b5884f09d02d62cc05da0e3188f5d93d",
       "carried_shape": "1a45f572c31f174d"
     },
     {
@@ -645,7 +738,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "5859466565d574dc1efce05960d2461ac0d9707f8a04fa2a5b5192f133316788",
+      "carried_from": "fd4256a46b799e9d078a041111c92412b5884f09d02d62cc05da0e3188f5d93d",
       "carried_shape": "1a45f572c31f174d"
     },
     {
@@ -656,7 +749,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "5859466565d574dc1efce05960d2461ac0d9707f8a04fa2a5b5192f133316788",
+      "carried_from": "fd4256a46b799e9d078a041111c92412b5884f09d02d62cc05da0e3188f5d93d",
       "carried_shape": "1a45f572c31f174d"
     },
     {
@@ -667,7 +760,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "5859466565d574dc1efce05960d2461ac0d9707f8a04fa2a5b5192f133316788",
+      "carried_from": "fd4256a46b799e9d078a041111c92412b5884f09d02d62cc05da0e3188f5d93d",
       "carried_shape": "1a45f572c31f174d"
     },
     {
@@ -678,7 +771,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "5859466565d574dc1efce05960d2461ac0d9707f8a04fa2a5b5192f133316788",
+      "carried_from": "fd4256a46b799e9d078a041111c92412b5884f09d02d62cc05da0e3188f5d93d",
       "carried_shape": "1a45f572c31f174d"
     },
     {
@@ -689,7 +782,7 @@
       "evidence": "Grepped this file for 'Time:'/'Word count:'/'Quality:': each appears exactly once (lines 95, 83, 79) — no duplicate metadata line exists to guard or delete.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "5859466565d574dc1efce05960d2461ac0d9707f8a04fa2a5b5192f133316788",
+      "carried_from": "fd4256a46b799e9d078a041111c92412b5884f09d02d62cc05da0e3188f5d93d",
       "carried_shape": "1a45f572c31f174d"
     },
     {
@@ -700,7 +793,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "5859466565d574dc1efce05960d2461ac0d9707f8a04fa2a5b5192f133316788",
+      "carried_from": "fd4256a46b799e9d078a041111c92412b5884f09d02d62cc05da0e3188f5d93d",
       "carried_shape": "1a45f572c31f174d"
     },
     {
@@ -711,7 +804,7 @@
       "evidence": "This judge computed body_sha itself via `shasum -a 256 curriculum/lectures/what-packaging-is.md` at the start of this read (5859466565d574dc1efce05960d2461ac0d9707f8a04fa2a5b5192f133316788, 64 hex chars), not carried forward from any cache — verified it matches the body-view's recorded source_sha exactly.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "5859466565d574dc1efce05960d2461ac0d9707f8a04fa2a5b5192f133316788",
+      "carried_from": "fd4256a46b799e9d078a041111c92412b5884f09d02d62cc05da0e3188f5d93d",
       "carried_shape": "1a45f572c31f174d"
     },
     {
@@ -722,7 +815,7 @@
       "evidence": "Process rule this judge followed itself: every freshness/URL/backing claim in this instance is from a live re-run this session (source-freshness.sh, curl on all 5 URLs, validate-backing.js), not inherited narrative from the stale prior instance.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "5859466565d574dc1efce05960d2461ac0d9707f8a04fa2a5b5192f133316788",
+      "carried_from": "fd4256a46b799e9d078a041111c92412b5884f09d02d62cc05da0e3188f5d93d",
       "carried_shape": "1a45f572c31f174d"
     },
     {
@@ -733,7 +826,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "5859466565d574dc1efce05960d2461ac0d9707f8a04fa2a5b5192f133316788",
+      "carried_from": "fd4256a46b799e9d078a041111c92412b5884f09d02d62cc05da0e3188f5d93d",
       "carried_shape": "1a45f572c31f174d"
     },
     {
@@ -744,7 +837,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "5859466565d574dc1efce05960d2461ac0d9707f8a04fa2a5b5192f133316788",
+      "carried_from": "fd4256a46b799e9d078a041111c92412b5884f09d02d62cc05da0e3188f5d93d",
       "carried_shape": "1a45f572c31f174d"
     },
     {
@@ -755,7 +848,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "5859466565d574dc1efce05960d2461ac0d9707f8a04fa2a5b5192f133316788",
+      "carried_from": "fd4256a46b799e9d078a041111c92412b5884f09d02d62cc05da0e3188f5d93d",
       "carried_shape": "1a45f572c31f174d"
     },
     {
@@ -766,7 +859,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "5859466565d574dc1efce05960d2461ac0d9707f8a04fa2a5b5192f133316788",
+      "carried_from": "fd4256a46b799e9d078a041111c92412b5884f09d02d62cc05da0e3188f5d93d",
       "carried_shape": "1a45f572c31f174d"
     },
     {
@@ -777,7 +870,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "5859466565d574dc1efce05960d2461ac0d9707f8a04fa2a5b5192f133316788",
+      "carried_from": "fd4256a46b799e9d078a041111c92412b5884f09d02d62cc05da0e3188f5d93d",
       "carried_shape": "1a45f572c31f174d"
     },
     {
@@ -788,7 +881,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "5859466565d574dc1efce05960d2461ac0d9707f8a04fa2a5b5192f133316788",
+      "carried_from": "fd4256a46b799e9d078a041111c92412b5884f09d02d62cc05da0e3188f5d93d",
       "carried_shape": "1a45f572c31f174d"
     },
     {
@@ -799,7 +892,7 @@
       "evidence": "DRIFT RE-READ (pin target). Re-fetched via `node curriculum/evals/scripts/rule.js platform_and_boundaries 45` this session; wording is identical to the class-brief copy, now carrying a 2026-08-28 fail-open corollary about check-instance-evidence.js's ledger-shape detection. The rule's whole subject is audit-tooling parser design (audit-eval-coverage.js's compendium/rule_index parsing, check-instance-evidence.js's per-shape ledger detection) — entirely orthogonal to this lecture's teaching content about packaging AI-agent work. No detector-parsing claim, no ledger-shape claim, appears anywhere in this file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "5859466565d574dc1efce05960d2461ac0d9707f8a04fa2a5b5192f133316788",
+      "carried_from": "fd4256a46b799e9d078a041111c92412b5884f09d02d62cc05da0e3188f5d93d",
       "carried_shape": "1a45f572c31f174d"
     },
     {
@@ -810,7 +903,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "5859466565d574dc1efce05960d2461ac0d9707f8a04fa2a5b5192f133316788",
+      "carried_from": "fd4256a46b799e9d078a041111c92412b5884f09d02d62cc05da0e3188f5d93d",
       "carried_shape": "1a45f572c31f174d"
     },
     {
@@ -821,7 +914,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "5859466565d574dc1efce05960d2461ac0d9707f8a04fa2a5b5192f133316788",
+      "carried_from": "fd4256a46b799e9d078a041111c92412b5884f09d02d62cc05da0e3188f5d93d",
       "carried_shape": "1a45f572c31f174d"
     },
     {
@@ -832,7 +925,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "5859466565d574dc1efce05960d2461ac0d9707f8a04fa2a5b5192f133316788",
+      "carried_from": "fd4256a46b799e9d078a041111c92412b5884f09d02d62cc05da0e3188f5d93d",
       "carried_shape": "1a45f572c31f174d"
     },
     {
@@ -843,7 +936,7 @@
       "evidence": "Applied to my own conduct rather than the lecture: ran `prefill-instance.js --merge` after writing this instance and report its real integer (rows_spliced_by_merge) rather than assuming compliance — the exact failure shape this rule names (a skipped merge leaves an identical-looking ledger).",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "5859466565d574dc1efce05960d2461ac0d9707f8a04fa2a5b5192f133316788",
+      "carried_from": "fd4256a46b799e9d078a041111c92412b5884f09d02d62cc05da0e3188f5d93d",
       "carried_shape": "1a45f572c31f174d"
     },
     {
@@ -854,7 +947,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "5859466565d574dc1efce05960d2461ac0d9707f8a04fa2a5b5192f133316788",
+      "carried_from": "fd4256a46b799e9d078a041111c92412b5884f09d02d62cc05da0e3188f5d93d",
       "carried_shape": "1a45f572c31f174d"
     },
     {
@@ -865,7 +958,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "5859466565d574dc1efce05960d2461ac0d9707f8a04fa2a5b5192f133316788",
+      "carried_from": "fd4256a46b799e9d078a041111c92412b5884f09d02d62cc05da0e3188f5d93d",
       "carried_shape": "1a45f572c31f174d"
     },
     {
@@ -876,7 +969,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "5859466565d574dc1efce05960d2461ac0d9707f8a04fa2a5b5192f133316788",
+      "carried_from": "fd4256a46b799e9d078a041111c92412b5884f09d02d62cc05da0e3188f5d93d",
       "carried_shape": "1a45f572c31f174d"
     },
     {
@@ -887,7 +980,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "5859466565d574dc1efce05960d2461ac0d9707f8a04fa2a5b5192f133316788",
+      "carried_from": "fd4256a46b799e9d078a041111c92412b5884f09d02d62cc05da0e3188f5d93d",
       "carried_shape": "1a45f572c31f174d"
     },
     {
@@ -898,7 +991,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "5859466565d574dc1efce05960d2461ac0d9707f8a04fa2a5b5192f133316788",
+      "carried_from": "fd4256a46b799e9d078a041111c92412b5884f09d02d62cc05da0e3188f5d93d",
       "carried_shape": "1a45f572c31f174d"
     },
     {
@@ -909,7 +1002,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "5859466565d574dc1efce05960d2461ac0d9707f8a04fa2a5b5192f133316788",
+      "carried_from": "fd4256a46b799e9d078a041111c92412b5884f09d02d62cc05da0e3188f5d93d",
       "carried_shape": "1a45f572c31f174d"
     },
     {
@@ -920,7 +1013,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "5859466565d574dc1efce05960d2461ac0d9707f8a04fa2a5b5192f133316788",
+      "carried_from": "fd4256a46b799e9d078a041111c92412b5884f09d02d62cc05da0e3188f5d93d",
       "carried_shape": "1a45f572c31f174d"
     },
     {
@@ -931,7 +1024,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "5859466565d574dc1efce05960d2461ac0d9707f8a04fa2a5b5192f133316788",
+      "carried_from": "fd4256a46b799e9d078a041111c92412b5884f09d02d62cc05da0e3188f5d93d",
       "carried_shape": "1a45f572c31f174d"
     },
     {
@@ -942,7 +1035,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "5859466565d574dc1efce05960d2461ac0d9707f8a04fa2a5b5192f133316788",
+      "carried_from": "fd4256a46b799e9d078a041111c92412b5884f09d02d62cc05da0e3188f5d93d",
       "carried_shape": "1a45f572c31f174d"
     },
     {
@@ -953,7 +1046,7 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "5859466565d574dc1efce05960d2461ac0d9707f8a04fa2a5b5192f133316788",
+      "carried_from": "fd4256a46b799e9d078a041111c92412b5884f09d02d62cc05da0e3188f5d93d",
       "carried_shape": "1a45f572c31f174d"
     },
     {
@@ -964,28 +1057,8 @@
       "evidence": null,
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "5859466565d574dc1efce05960d2461ac0d9707f8a04fa2a5b5192f133316788",
+      "carried_from": "fd4256a46b799e9d078a041111c92412b5884f09d02d62cc05da0e3188f5d93d",
       "carried_shape": "1a45f572c31f174d"
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 1,
-      "rule_lead": "Banned words — grep zero-tolerance.",
-      "verdict": "PASS",
-      "evidence": "mechanical: /\\b(delve|delving|honest|honestly|importantly|crucial|crucially|substrate|synergize|paradigm shift)\\b/ over body projection curriculum/evals/body-views/ae101--lecture--what-packaging-is.body.txt → 0 hits; pattern proven against planted violation.",
-      "fix_hint": "",
-      "blocking": false,
-      "prefilled": true
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 2,
-      "rule_lead": "Ritual / ceremony — hard ban in any curriculum/training surface.",
-      "verdict": "PASS",
-      "evidence": "mechanical: /\\b(ritual|rituals|ceremony|ceremonies)\\b/ over body projection curriculum/evals/body-views/ae101--lecture--what-packaging-is.body.txt → 0 hits; pattern proven against planted violation.",
-      "fix_hint": "",
-      "blocking": false,
-      "prefilled": true
     }
   ],
   "platform_claims_checked": [],
@@ -995,7 +1068,7 @@
       "claim": "In Armin Ronacher's January 2026 MiniJinja port, the original Rust snapshot tests played this role.",
       "label_present": true,
       "url_present": true,
-      "url_alive": true,
+      "url_alive": null,
       "evidence_level_honest": true
     },
     {
@@ -1003,80 +1076,47 @@
       "claim": "Geoffrey Huntley's Ralph practice leans on exactly this primitive to bootstrap entire greenfield projects.",
       "label_present": true,
       "url_present": true,
-      "url_alive": true,
-      "evidence_level_honest": true
+      "url_alive": null,
+      "evidence_level_honest": true,
+      "note": "flagged separately under research_claims §2 for a missing in-body date, not a labeling defect"
     },
     {
       "line": 28,
       "claim": "The menu is a synthesis across practitioners (Cherny, Huntley, Ronacher); no single write-up carries it.",
       "label_present": true,
       "url_present": true,
-      "url_alive": true,
-      "evidence_level_honest": true,
-      "note": "backing citation kim-on-cherny's own due date (2026-08-21) has passed as of today (2026-08-28) — WARN not BLOCK per source-freshness.sh; logged as a TODO."
-    },
-    {
-      "line": 33,
-      "claim": "The weights hold the written record: the setup posts, the plan-file templates, the verifier write-ups, the reversals that followed them.",
-      "label_present": true,
-      "url_present": true,
-      "url_alive": true,
-      "evidence_level_honest": true,
-      "note": "backs an anonymized, undated generic allusion in body, not a claim about Amp's current position — matches the backing block's own framing as a durable account."
+      "url_alive": null,
+      "evidence_level_honest": true
     }
   ],
   "skills_referenced": [],
-  "urls_sampled": [
-    {
-      "url": "https://lucumr.pocoo.org/2026/1/14/minijinja-go-port/",
-      "alive": true,
-      "status_code": 200
-    },
-    {
-      "url": "https://ghuntley.com/ralph/",
-      "alive": true,
-      "status_code": 200
-    },
-    {
-      "url": "https://getpushtoprod.substack.com/p/how-the-creator-of-claude-code-actually",
-      "alive": true,
-      "status_code": 200
-    },
-    {
-      "url": "https://ampcode.com/news/handoff",
-      "alive": true,
-      "status_code": 200
-    },
-    {
-      "url": "https://ampcode.com/news/neo",
-      "alive": true,
-      "status_code": 200
-    },
-    {
-      "url": "https://every.to/source-code/stop-coding-and-start-planning",
-      "alive": true,
-      "status_code": 200,
-      "note": "the restored klaassen-stop-coding URL; curled fresh this session, not carried forward"
-    }
-  ],
+  "urls_sampled": [],
   "accept_notes_found": [
-    "L63: '## Every re-feed pass starts a fresh session exists to close a depth asymmetry ... its scope is mechanism only.' — scopes runtime primitives out to M6 by design; informs platform_and_boundaries §38 PASS.",
-    "L65: 'Current shape (2026-08-14/15, Antti-directed; hooks extracted 2026-08-25) ... The two hook slides + demo prompt now live in hooks-always-fire.md.' — documents the exact edit that originally removed klaassen-stop-coding; the fix under confirmation restores that specific loss."
+    "L63: re-feed slide's scope-is-mechanism-only note; M6 carries no Ralph slide, this slide is the shape's only home — verified live against composing-the-workflow.md (0 Ralph hits).",
+    "L65: current 7-slide shape note (2026-08-14/15, Antti-directed; hooks extracted 2026-08-25).",
+    "L67: Family B durability judgment, 2026-07-03.",
+    "L71: noun-'run' waiver on the theory slides (Antti 2026-08-15) — not session/task/run registry drift.",
+    "L73: '## Reference and plan' concept-named header accepted (Antti 2026-08-15).",
+    "L77: sea-passage trailers cut, Antti-approved 2026-08-25.",
+    "L79-81: Quality stamp + source-freshness cross-reference.",
+    "L85-93: theory-passage tense/scope notes, including two lines explicitly pre-flagged for the technical judge — 'a well-read average' (L34) and 'more of the field than you will read in a career' (L33) — both addressed under research_claims §7 above as correctly vision-tagged, no finding filed against either.",
+    "L95: time budget note.",
+    "L125-130: six per-source freshness stamps in the backing block's Sources ledger — the substance of the research_claims §11 PASS above.",
+    "L139-142: Stance block (L1, 2026-08-01) — counted-strictly triad discipline, addressed under research_claims §1/§4/§16.",
+    "L147: OODA last-run date.",
+    "L159: map-position clause, 2026-07-02 — cross-reference verified live against composing-the-workflow.md.",
+    "L161: chart eyeball-queue note."
   ],
-  "special_scope_notes": [
-    {
-      "line": "\"a well-read average of what other people published about other repos, frozen at a cutoff while the consensus keeps moving\" (body line 34)",
-      "position": "PASS — no blocking finding. Maintainer block (lines 85-93) explicitly flags this line for the technical judge as 'roughly-true by design.' Defensible lay simplification, asserts no census this judge's own vocabulary-is-a-claim sub-rule would catch."
-    },
-    {
-      "line": "\"More of the field than you will read in a career\" (body line 33)",
-      "position": "PASS — no blocking finding. Maintainer block flags this as 'a volume claim, deliberately not a currency claim.' Broadly true of training-corpus scale vs. individual reading capacity; the adjoining cutoff clause carries the currency discipline instead."
-    }
+  "drift_rules_reread": [
+    "prompts §2 (+2a/2b/2c) — current wording re-read via rule.js; N/A for this file, zero prompt fences exist to carry a lead-in.",
+    "prompts §17 — current wording re-read; narrowed 2026-09-03 to plan-mode fences only. N/A for this file regardless of the narrowing — no prompt fences of any kind exist.",
+    "prompts §20 — current wording re-read; narrowed 2026-09-03 ('benefit unevidenced... never gates and rarely fires'). N/A for this file — no artefact-assembling prompt fence exists to apply it to either way.",
+    "prompts §40 (+40a/40b) — current wording re-read; N/A for this file, no prompt fence exists whose session-boundary needs verifying.",
+    "research_claims §11 (+11a) — current wording re-read; PASS. The file's <!-- backing --> block Sources ledger functionally satisfies §11's four requirements via 11a's stamp grammar even though it is not literally headed '**Source verification — MUST DO before first cohort:**' inside the maintainer block proper. No verification-debt harm present; treated as an artifact-convention reconciliation, not a REVISE."
   ],
   "blocking_findings_count": 0,
-  "todos_count": 2,
+  "todos_count": 1,
   "todos": [
-    "SOURCE-ORPHAN (live, `node scripts/validate-backing.js curriculum/lectures/what-packaging-is.md`, WARN, line 99): the restored klaassen-stop-coding stamp is not cited by any Claims-ledger `←` row (nor a Framework row) — it backs the Stance's 'holds:' prose only, which the validator does not scan. Pre-2026-08-25 this source WAS wired via two Claims rows (`pieces-turn-up-on-their-own`, `huntley-runs-all-three`); the fix restored the Source stamp but not a Claims anchor. Non-blocking per §1's evidence above (WARN not ERROR, maintainer-block-only scope, self-explanatory prose, and an identical unaddressed pattern already exists in `grounded.md`), but worth a maintainer decision: add a Claims row, or explicitly bless Stance-only citations as a sanctioned shape.",
-    "kim-on-cherny stamp (line 128, `[checked:2026-07-02 result:OK due:2026-08-21]`) is overdue by its own due date — 7 days as of today (2026-08-28). Re-verify and re-stamp before this file's next delivery or audit pass. Non-blocking: source-freshness.sh correctly reports WARN not BLOCK; carried forward unchanged from the pre-fix instance since this fix did not touch it."
+    "research_claims §2/2a (L22): the Huntley/Ralph 'plan.md' sentence describes a practice ('leans on this primitive to bootstrap entire greenfield projects') rather than a specific completed event, and carries no in-body date — unlike the Ronacher sentence one bullet above ('In Armin Ronacher's January 2026 MiniJinja port...'). 2a's durable-account carve-out explicitly excludes 'a practice, trend or rate.' Low harm (the Stance block's 'would-move-it' clause already tracks the real risk of Huntley abandoning Ralph), but worth the same two-stamp-line or in-body-date treatment amp-neo's stamp was just given in this same diff, for parity."
   ]
 }

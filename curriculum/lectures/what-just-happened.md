@@ -12,7 +12,7 @@ The site was the visible surface. The durable thing is the behavior you can now 
 
 ## Why the look-back was kind to you
 
-One moment from the exercise is worth a second of suspicion. In the look-back phase you asked Claude to find three generic claims in a site it had written itself, and the picks came back gentle.
+One moment from the exercise is worth a second of suspicion. In the look-back phase you asked the agent to find three generic claims in a site it had written itself, and the picks came back gentle.
 
 Agreeable answers won the round the model was tuned on. Being helpful and warm is what it learned to do well, and grading its own paragraph is one more chance to be helpful and warm. The self-report is the same kind of output as the thing it is reporting on.
 
@@ -24,7 +24,7 @@ You have the thing it hasn't got: you were in the room while the work happened. 
 
 ## You were the only check in the room
 
-Nothing in the last hour verified anything. Claude generated, you looked, you decided. The site reads as yours because your own knowledge of the subject stood between the generic draft and the page, and nothing else did.
+Nothing in the last hour verified anything. The agent generated, you looked, you decided. The site reads as yours because your own knowledge of the subject stood between the generic draft and the page, and nothing else did.
 
 That is the right way round for this work. Nobody in the room could have caught a wrong line about you except you, which is exactly why your own profile is the thing worth starting on.
 
@@ -36,7 +36,7 @@ Two beats worth naming, because the mechanism you just used is older than AI.
 
 **Mental models only come from doing.** Before today, you had a vocabulary. Now you have a little piece of felt experience.
 
-Now: five minutes with Claude. The debrief.
+Now: five minutes with the agent. The debrief.
 
 <!-- maintainer -->
 

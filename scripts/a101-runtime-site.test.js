@@ -159,6 +159,16 @@ test('Agents 101 runtime CSS selects one generated prompt profile', () => {
   }
 });
 
+test('Agents 101 runtime CSS selects only the active runtime family prose', () => {
+  const cssPath = path.join(ROOT, 'site/layouts/a101-runtimes.css');
+  const css = fs.readFileSync(cssPath, 'utf8');
+  assert.match(css, /body\.runtime-codex-desktop[^}]*\.rt-claude/);
+  assert.match(css, /body\.runtime-codex-cli[^}]*\.rt-claude/);
+  assert.match(css, /body\.runtime-cowork[^}]*\.rt-codex/);
+  assert.match(css, /body\.runtime-desktop[^}]*\.rt-codex/);
+  assert.match(css, /body\.runtime-cli[^}]*\.rt-codex/);
+});
+
 test('workbook and SPA select the extension only for Agents 101', () => {
   const buildSource = fs.readFileSync(path.join(ROOT, 'scripts/build-workbook.js'), 'utf8');
   const spaSource = fs.readFileSync(path.join(ROOT, 'site/layouts/curriculum-spa.js'), 'utf8');

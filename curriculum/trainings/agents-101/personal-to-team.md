@@ -17,7 +17,7 @@ After this module, you will be able to:
 
 ## Start here
 
-Start a fresh <span class="rt-code">Claude Code session</span><span class="rt-cowork">Cowork task</span> at `~/Documents/agents-101/`.
+Start a fresh session or task at `~/Documents/agents-101/`.
 
 You start with the agent system you built across Modules 2-6. By the end, `module-7/` holds the sharing plan and `module-7/monday.md` holds the next move.
 
@@ -39,17 +39,17 @@ Two questions to warm up: who's the one person who came to mind just now? And wh
 
 ## Debrief
 
-Five minutes. Claude reviews the sharing deliverable and sharpens whichever sharing-artifact file you produced (a skill file, an interface description, an output schedule, a context export). The evidence is what's in your Module 7 folder: your JTBD outcome statement, the patterns you picked, the technical plan, the people plan, assumptions, and failure stories. Claude reviews, rewrites the sharing artifact in place, reports what changed. You push back on anything that's off.
+Five minutes. The agent reviews the sharing deliverable and sharpens whichever sharing-artifact file you produced (a skill file, an interface description, an output schedule, a context export). The evidence is what's in your Module 7 folder: your JTBD outcome statement, the patterns you picked, the technical plan, the people plan, assumptions, and failure stories. The agent reviews, rewrites the sharing artifact in place, and reports what changed. You push back on anything that's off.
 
 {{prompt:a101-m7-debrief-sharing-artifact}}
 
-> **Watch for slowness.** When you push back on the rewrite, Claude should Edit the section you flagged, not rewrite the whole file. The prompt above tells it to. If Claude reaches for Write on the whole artifact anyway, push back: *"Edit just the section I named."*
+> **Watch for slowness.** When you push back on the rewrite, the agent should edit the section you flagged, not rewrite the whole file. The prompt above tells it to. If the agent reaches for a full rewrite anyway, push back: *"Edit just the section I named."*
 
 Notice what this prompt insists on: name the path, overwrite in place, quote the before-and-after for every claim. When you're sharpening something for another person to use, "what got sharpened" without the actual lines is a draft pretending to be a finished thing. The before-and-after quote is how you know the sharpening reached the file, not just the summary.
 
 ## Push back on the summary
 
-Push back where Claude's summary is wrong. *"The teammate's job wasn't vague, you just didn't see it"* / *"you pulled too much out of the skill, put the edge cases back."* The artifact: the sharpened sharing file itself, plus one line in your Module 7 next-step file naming the first move. Save the conversation. It's the bridge to when work resumes.
+Push back where the agent's summary is wrong. *"The teammate's job wasn't vague, you just didn't see it"* / *"you pulled too much out of the skill, put the edge cases back."* The artifact: the sharpened sharing file itself, plus one line in your Module 7 next-step file naming the first move. Save the conversation. It's the bridge to when work resumes.
 
 ## Key Concepts
 - The job comes first, the candidate second; the outcome sentence is the contract.
@@ -63,7 +63,7 @@ Push back where Claude's summary is wrong. *"The teammate's job wasn't vague, yo
 
 Come to Module 8 without one tested assumption or named person and you'll be reconstructing the contact while the opening exercise is already using the evidence. Your call.
 
-Once the evidence is written down, end this module's <span class="rt-code">session</span><span class="rt-cowork">task</span>; Module 8 starts fresh at `~/Documents/agents-101/`.
+Once the evidence is written down, end this module's session or task. Module 8 starts fresh at `~/Documents/agents-101/`.
 
 ## Next
 

@@ -22,7 +22,7 @@ Six months from now, the teammate went back to the incumbent. The agent writes t
 
 {{prompt:share-your-work-6}}
 
-Claude carries the strongest failure pressure into `module-7/monday.md`: one person, one question about how they do the job today, and one selected assumption with its test.
+The agent carries the strongest failure pressure into `module-7/monday.md`: one person, one question about how they do the job today, and one selected assumption with its test.
 
 ## Take the transferable move with you
 

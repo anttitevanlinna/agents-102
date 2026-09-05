@@ -4,11 +4,9 @@
 
 **Session** *(new, "Module 4 - Security audit")*
 
-<span class="rt-code">Start a new Claude Code session at your training-directory root. The personal skill you saved in Exercise 1 autoloads.</span><span class="rt-cowork">Start a new Cowork task with your training-directory root as the working folder. The personal skill you saved in Exercise 1 autoloads.</span>
+Start a new session or task at your training-directory root. The personal skill you saved in Exercise 1 loads in this project.
 
-```
-/rename m4-security-audit
-```
+Name it `m4-security-audit` if your runtime supports session names.
 
 **What you do:**
 
@@ -36,7 +34,7 @@ Do not run a toy verification on one file. The first loaded use is the real audi
 
 *12 min*
 
-Ask Claude to apply the packaged policy lens to your full module-3 system and produce one report. This is not the same as the raw run. The raw report came straight from `module-4/policies/`; this report comes through the reusable lens you shaped.
+Ask the agent to apply the packaged policy lens to your full module-3 system and produce one report. This is not the same as the raw run. The raw report came straight from `module-4/policies/`; this report comes through the reusable lens you shaped.
 
 <div class="rt-cowork">
 
@@ -48,17 +46,17 @@ Cowork doesn't always engage `/security-audit` from pasted prompt text alone. If
 
 While the report runs, stay with it. The report is more useful when you read it cold. Expect the reusable check to find things you did not think about, and to leave things "I can't tell" you thought were settled.
 
-Read Claude's three lists. Then open `outputs/policy-report.md` and find the rows Claude flagged. You are reading with a hypothesis, not row-by-row from scratch. Notice which of Claude's surprises match yours and which do not. That mismatch is data.
+Read the agent's three lists. Then open `outputs/policy-report.md` and find the rows it flagged. You are reading with a hypothesis, not row-by-row from scratch. Notice which of the agent's surprises match yours and which do not. That mismatch is data.
 
 ## Phase 3: Run the agent-risk audit
 
 *10 min*
 
-In the same session, ask Claude to apply the agent-security lens and write the ranked risk report.
+In the same session, ask the agent to apply the agent-security lens and write the ranked risk report.
 
 {{prompt:audit-your-agent-2}}
 
-Now work the risks. List them, have Claude explain each, what it means in this system, why the rank landed where it did, what the failure would actually look like, and prepare to pick one. No prompt for this; you drive the conversation.
+Now work the risks. List them, have the agent explain each, what it means in this system, why the rank landed where it did, what the failure would actually look like, and prepare to pick one. No prompt for this; you drive the conversation.
 
 Feel free to glance at the reports and compare. Two different lenses; some risks will overlap, some will not. That is correct.
 
@@ -70,11 +68,11 @@ You now have the assessment half of the loop. The uncomfortable feeling is the e
 
 Look at the two reports. Pick one risk to mitigate. Not the easiest, not the scariest. The one that bugs you on the second skim. Your gut is data here. This is about running the loop once, not solving the worst problem on your list.
 
-Tell Claude the risk in one sentence, then paste the prompt. You are steering by judgment, not by technical detail. Claude picks the mitigation shape, applies the change, and walks you through what landed and why.
+Tell the agent the risk in one sentence, then paste the prompt. You are steering by judgment, not by technical detail. The agent picks the mitigation shape, applies the change, and walks you through what landed and why.
 
 {{prompt:audit-your-agent-3}}
 
-Claude applies the mitigation and walks you through what changed. If the shape does not fit, tell Claude and iterate. Re-run the check. Read the residual section in `outputs/security-report.md`.
+The agent applies the mitigation and walks you through what changed. If the shape does not fit, tell the agent and iterate. Re-run the check. Read the residual section in `outputs/security-report.md`.
 
 The risk did not go away. That is expected. A mitigation reduces, it does not eliminate. The residual section is part of the report. Name it, accept it on record, and stop there.
 

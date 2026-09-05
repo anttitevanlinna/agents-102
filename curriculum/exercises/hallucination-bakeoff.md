@@ -4,11 +4,9 @@
 
 **Session** *(new, "Module 5 - Hallucination benchmark")*
 
-<span class="rt-code">Start a new Claude Code session at your training-directory root.</span><span class="rt-cowork">Start a new Cowork task with your training-directory root as the working folder.</span>
+Start a new session or task at your training-directory root.
 
-```
-/rename m5-hallucination-benchmark
-```
+Name it `m5-hallucination-benchmark` if your runtime supports session names.
 
 **What you do:**
 
@@ -24,9 +22,9 @@ Four phases. The work is mostly done by the claim extractor, the four detectors,
 
 Your target is the ungrounded briefing from Module 3. You'll reuse the Module 3 synthesized answer as the test corpus: your sources, your retrievals, your stances, your real question. The briefing already lives somewhere on the edge of ungroundedness; that's why it's the right test.
 
-First, produce a fresh briefing so every detector sees the same output. The target is roughly 10% fabrication or misrepresentation. Claude cannot actually dial that number in, of course. The 10% is a slight joke: enough wrongness for the detectors to have a job, not so much that the briefing becomes nonsense.
+First, produce a fresh briefing so every detector sees the same output. The target is roughly 10% fabrication or misrepresentation. The LLM cannot actually dial that number in, of course. The 10% is a slight joke: enough wrongness for the detectors to have a job, not so much that the briefing becomes nonsense.
 
-Ask Claude to choose a bounded evidence roster, generate the overreaching briefing in a separate worker, and save both without previewing the briefing.
+Ask the agent to choose a bounded evidence roster, generate the overreaching briefing in a separate worker, and save both without previewing the briefing.
 
 Why the evidence roster first? Because `memory/` is the curated layer. `sources/` is raw material behind it. The roster keeps this run bounded and teaches the quiet discipline underneath quality work: before you judge an output, decide what evidence surface the judgment is allowed to stand on.
 
@@ -47,7 +45,7 @@ Save it. **Don't open it yet.** The claim pool is the measuring surface. Keep th
 
 ## Extract the claim pool
 
-Now extract the claims. Claude scans the briefing and pulls out a varied claim pool for the detectors. Thirty claims is not statistical. It is enough to start seeing the pattern without creating much processing work.
+Now extract the claims. The agent scans the briefing and pulls out a varied claim pool for the detectors. Thirty claims is not statistical. It is enough to start seeing the pattern without creating much processing work.
 
 {{prompt:hallucination-bakeoff-2}}
 
@@ -58,7 +56,7 @@ The claim pool is input material. You have not judged anything yet.
 
 *8 min*
 
-Four detectors, four different methods, run in parallel on the same claim pool. Each is a <span class="rt-code">subagent</span><span class="rt-cowork">agent</span> with a specific lens. Each writes to its own file. You don't read them yet. The scorer does that work in Phase 3.
+Four detectors, four different methods, run in parallel on the same claim pool. Each is a helper agent with a specific lens. Each writes to its own file. You don't read them yet. The scorer does that work in Phase 3.
 
 In your main session:
 
@@ -74,7 +72,7 @@ In your main session:
 </div>
 
 
-Watch the four <span class="rt-code">subagent</span><span class="rt-cowork">agent</span> lines scroll past. Same claim pool, four lenses. Four files in a minute or two. Now the scorer runs.
+Watch the four helper-agent lines scroll past. Same claim pool, four lenses. Four files in a minute or two. Now the scorer runs.
 
 ## Phase 3: Scorer runs the benchmark
 
@@ -87,7 +85,7 @@ A fifth agent (the scorer) reads the claim pool and all four detector files, adj
 
 Watch the scoreboard land. You can now see which method actually worked on your output. Not intuition. Measurement.
 
-The columns are labelled `Precision` and `Recall`. They're standard eval vocabulary, and now you have a concrete example in front of you. Ask Claude to explain them using your own rows.
+The columns are labelled `Precision` and `Recall`. They're standard eval vocabulary, and now you have a concrete example in front of you. Ask the agent to explain them using your own rows.
 
 {{prompt:hallucination-bakeoff-6}}
 
@@ -96,7 +94,7 @@ The columns are labelled `Precision` and `Recall`. They're standard eval vocabul
 
 Four detectors read the same claim pool. One method caught more of what the scorer adjudicated as ungrounded. Another caught less but with higher precision. A third caught something the others missed. Maybe the citation-integrity detector caught a broken citation that source-triangulation couldn't, or the counter-evidence search surfaced a claim that looked fine to everyone else until the disconfirming source turned up. The scoreboard IS the explanation. You can point at a row and say *this is why I'm keeping this one*.
 
-Before Phase 4, ask Claude to contrast what you just did with the classic way. Then one sentence on what surprised you in the scoreboard.
+Before Phase 4, ask the agent to contrast what you just did with the classic way. Then one sentence on what surprised you in the scoreboard.
 
 {{prompt:hallucination-bakeoff-7}}
 

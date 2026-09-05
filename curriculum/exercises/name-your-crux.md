@@ -4,11 +4,9 @@
 
 **Session** *(new, "Module 3 - Multi-agent systems")*
 
-<span class="rt-code">Start a new Claude Code session at your training-directory root.</span><span class="rt-cowork">Start a new Cowork task with your training-directory root as the working folder.</span>
+Start a new session or task at your training-directory root.
 
-```
-/rename m3-multi-agent-systems
-```
+Name it `m3-multi-agent-systems` if your runtime supports session names.
 
 **What you do:**
 
@@ -16,7 +14,7 @@ Module 2 produced a memory full of what you've gathered about your challenge. Mo
 
 Module 3 opens cold. Module 2's `memory/` is on disk; this exercise reads from it. The retrievers in the next exercise go to connectors and the open web, Module 2's curation becomes the thing you'll compare their fresh findings against during synthesis.
 
-Ask Claude to read the memory and name the crux. Push back hard when the first answer is a problem restatement.
+Ask the agent to read the memory and name the crux. Push back hard when the first answer is a problem restatement.
 
 {{prompt:name-your-crux-1}}
 
@@ -25,7 +23,7 @@ Revise by iterating; save when good enough.
 
 The crux is the obstacle. Now name the decision the crux blocks, the call you'd stay late to make. Cruxes describe; decisions act.
 
-Ask Claude to name the sharpest decision the crux blocks and append it to the same file.
+Ask the agent to name the sharpest decision the crux blocks and append it to the same file.
 
 {{prompt:name-your-crux-2}}
 

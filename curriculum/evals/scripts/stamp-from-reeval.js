@@ -39,7 +39,7 @@ const INSTANCES = 'curriculum/evals/instances'
 // three buckets and only `confirmed` survives adjudication outright; folding
 // `unadjudicated` into the refuted pile would turn a dead refuter into a PASS,
 // which is the one direction a verification failure must never resolve.
-function adaptSweepRow(s, slugOf = () => null) {
+function adaptSweepRow(s, slugOf = () => null, todosOf = () => null) {
   const confirmed = (s.confirmed || []).length
   const refuted = (s.refuted || []).length
   const unadjudicated = (s.unadjudicated || []).length
@@ -50,27 +50,53 @@ function adaptSweepRow(s, slugOf = () => null) {
   // stamps nothing rather than silently claiming the one file it can see.
   const isSet = s.class === 'cross_module'
   const targets = isSet ? (s.module_set || []) : [s.file]
+  const slug = s.instanceSlug || slugOf(s.file, s.class, s.module_set)
+  // Fail-open: with no readable instance the returned array is the only number
+  // there is, and an approximate count beats silently reporting none.
+  const recorded = todosOf(slug, s.class)
   return {
     file: s.file,
     targets,
     cls: s.class,
     setName: s.set_name || null,
     moduleSet: s.module_set || null,
-    instanceSlug: s.instanceSlug || slugOf(s.file, s.class, s.module_set),
+    instanceSlug: slug,
     verdict: s.verdict,
     blocking,
-    todos: (s.todos || []).length,
+    todos: recorded === null || recorded === undefined ? (s.todos || []).length : recorded,
     verify: refuted && !blocking ? { verdict: 'REFUTED', confirmed: 0 }
       : blocking && refuted ? { verdict: 'PARTIAL', confirmed: blocking }
         : null,
   }
 }
 
-function readResults(out, slugOf) {
+function readResults(out, slugOf, todosOf) {
   const r = out.result || out
   if (Array.isArray(r.results)) return r.results
-  if (Array.isArray(r.summary)) return r.summary.map(s => adaptSweepRow(s, slugOf))
+  if (Array.isArray(r.summary)) return r.summary.map(s => adaptSweepRow(s, slugOf, todosOf))
   return null
+}
+
+// The row's count and the row's pointer have to describe the same file. They
+// did not: the count came from the workflow's returned `todos` array, the
+// pointer from the instance the judge wrote, and a judge that returns an
+// observation without a matching rule row makes the row cite evidence the
+// instance cannot produce. Measured across AE101 before this landed: 46 of 111
+// counted rows disagreed with the instance beside them.
+//
+// `check-instance-schema.js` already owns the counting convention and is the
+// gate that reports the disagreement, so read its `derivedTodos` rather than
+// keeping a third copy — a rule with two implementations is the shape that put
+// `storytelling` and `story` on opposite sides of two gates in the same repo.
+function makeTodosOf(repo) {
+  const { derivedTodos } = require('./check-instance-schema.js')
+  return (slug, cls) => {
+    if (!slug || !cls) return null
+    try {
+      const inst = JSON.parse(fs.readFileSync(path.join(repo, INSTANCES, `${slug}.${cls}.json`), 'utf8'))
+      return derivedTodos(inst)
+    } catch { return null }   // absent or unreadable: the caller falls back
+  }
 }
 
 // The sweep's summary drops the slug it dispatched with, and a REVISE note that
@@ -192,7 +218,7 @@ function main() {
   }
 
   const out = JSON.parse(fs.readFileSync(outPath, 'utf8'))
-  const results = readResults(out, makeSlugOf(repo))
+  const results = readResults(out, makeSlugOf(repo), makeTodosOf(repo))
   if (!Array.isArray(results)) {
     process.stderr.write('no .result.results and no .result.summary in output file — not a re-eval or eval-sweep output\n')
     process.exit(1)
@@ -245,4 +271,4 @@ function main() {
 
 if (require.main === module) main()
 
-module.exports = { readResults, adaptSweepRow, stateFor, makeSlugOf, flagName, groupByFile }
+module.exports = { readResults, adaptSweepRow, stateFor, makeSlugOf, makeTodosOf, flagName, groupByFile }

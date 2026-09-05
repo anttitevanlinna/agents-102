@@ -11,8 +11,10 @@ test('Codex copy audit classifies Claude-only paths, names, tools, and mechanics
     'Write CLAUDE.md.',
     'Install the package in .claude/skills/security-audit/.',
     'Open Claude Code and call AskUserQuestion.',
-    'Hey Claude — revise the page.',
-    'Spawn a Claude-only subagent.',
+    "Run searches through Claude's connector.",
+    'Open this task in Cowork.',
+    '/security-audit — load the skill',
+    'Spawn a subagent.',
   ].join('\n');
 
   const findings = scanText(text, 'prompt', 'fixture', []);
@@ -22,10 +24,11 @@ test('Codex copy audit classifies Claude-only paths, names, tools, and mechanics
     [
       ['CLAUDE.md', 'artifact-path'],
       ['.claude/skills', 'skill-path'],
-      ['Claude Code', 'runtime-name'],
+      ['Claude', 'runtime-name'],
       ['AskUserQuestion', 'tool-name'],
-      ['Hey Claude', 'runtime-name'],
-      ['subagent', 'interaction-mechanic'],
+      ["Claude's", 'runtime-name'],
+      ['Cowork', 'runtime-name'],
+      ['/security-audit', 'interaction-mechanic'],
     ]
   );
 });
@@ -52,7 +55,7 @@ test('an exact allowlist entry suppresses comparison prose and requires rational
   const allowlist = [{
     surface: 'student-copy',
     keyOrFile: 'comparison.md',
-    term: 'Claude Code',
+    term: 'Claude',
     rationale: 'Intentional provider comparison in a runtime-neutral lecture.',
   }];
 
@@ -62,7 +65,7 @@ test('an exact allowlist entry suppresses comparison prose and requires rational
   );
   assert.throws(
     () => scanText(text, 'student-copy', 'comparison.md', [{
-      surface: 'student-copy', keyOrFile: 'comparison.md', term: 'Claude Code', rationale: ''
+      surface: 'student-copy', keyOrFile: 'comparison.md', term: 'Claude', rationale: ''
     }]),
     /rationale/
   );

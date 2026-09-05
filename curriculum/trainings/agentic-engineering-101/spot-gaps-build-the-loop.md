@@ -21,7 +21,7 @@ Open a fresh session in the Module 5 worktree, `../<repo-name>-m5`.
 
 You walk in holding two sessions of the same task. The un-packaged Module 4 send-off. The packaged Module 5 re-send.
 
-> **Packaged session thin or missing?** You can still rescue it. If the M5 session is alive but stalled, nudge it once; a *"continue"*-prompt is usually enough. If it crashed or never started, paste the packaged re-send against your worktree fresh; let it catch up while you read on. M6 starts by reading; before it writes, decide whether to wait, stop M5, or accept the partial session as the artefact. If the room starts the lecture while you are still getting a session going, stay with the rescue and read the lecture afterwards.
+> **Packaged session thin or missing?** You can still rescue it. If the M5 session is alive but stalled, nudge it once; a *"continue"*-prompt is usually enough. If it crashed or never started, paste the packaged re-send against your worktree fresh; let it catch up while you read on. You start by reading; before the first prompt asks you to write, decide whether to wait, stop M5, or accept the partial session as the artefact. If the room starts the lecture while you are still getting a session going, stay with the rescue and read the lecture afterwards.
 
 > **Just can't get the M5 session working?** You lose a bit of value but you can still do this module's exercises. Despair not.
 

@@ -5,7 +5,7 @@ With the right guardrails, you create output that's genuinely yours, not generic
 
 ## Prework
 
-Set up Claude Code or Cowork. Build a snake game as HTML. Connect your calendar (M365 / Google Workspace / screenshot fallback) and save a 5-line summary of this week's meetings. Read [What is an Agent, LLM vs chat](trainings/agents-101/supplementary/what-is-an-agent.md#llm-vs-chat).
+Set up your agent runtime. Build a snake game as HTML. Connect your calendar (M365 / Google Workspace / screenshot fallback) and save a 5-line summary of this week's meetings. Read [What is an Agent, LLM vs chat](trainings/agents-101/supplementary/what-is-an-agent.md#llm-vs-chat).
 
 ## What You'll Learn
 After this module, you will be able to:
@@ -16,11 +16,11 @@ After this module, you will be able to:
 
 ## Start here
 
-Start a fresh <span class="rt-code">Claude Code session</span><span class="rt-cowork">Cowork task</span> at `~/Documents/agents-101/`.
+Start a fresh session or task at `~/Documents/agents-101/`.
 
 This module's outputs land in `module-1/`.
 
-**The question, to you:** when you've used ChatGPT or Claude for your own work (a bio, a pitch, a post), where did the output come out generic? Was there ever a moment where it actually felt like yours, and if so, what made the difference?
+**The question, to you:** when you've used an LLM for your own work (a bio, a pitch, a post), where did the output come out generic? Was there ever a moment where it actually felt like yours, and if so, what made the difference?
 
 **Context is king.** You steer your agent by the context you give it. You paint by choosing the brush.
 
@@ -32,14 +32,14 @@ This module's outputs land in `module-1/`.
 
 ## Debrief
 
-Five minutes. A retro, and **the second pass on your rules file.** You wrote the first version of `module-1/personal-brand-generation.md` at the close of the exercise, capturing what you noticed *while doing the work*. The retro is Claude reading the file against the actual session. A different lens, surfacing what landed, what fell flat, what to keep, what to drop. Two passes; the second is where the file starts compounding.
+Five minutes. A retro, and **the second pass on your rules file.** You wrote the first version of `module-1/personal-brand-generation.md` at the close of the exercise, capturing what you noticed *while doing the work*. The retro is the agent reading the file against the actual session. A different lens, surfacing what landed, what fell flat, what to keep, what to drop. Two passes; the second is where the file starts compounding.
 
-Ask Claude to retro your rules file.
+Ask the agent to retro your rules file.
 
 {{prompt:a101-m1-debrief-rules-retro}}
 
 
-Claude runs the retro and updates the file, then summarises what changed in chat. You may be surprised by how much still changes in the generation rules. First pass is pretty much never exactly right.
+The agent runs the retro and updates the file, then summarises what changed in chat. You may be surprised by how much still changes in the generation rules. First pass is pretty much never exactly right.
 
 ## Push back on what the retro missed
 
@@ -49,16 +49,16 @@ Push back on anything that doesn't match your sense of the work. That's the patt
 
 ## Get a cold read
 
-**Then, Claude as cold critic.** Now that you've reflected on your own experience, get an unbiased verdict.
+**Then, use a cold critic.** Now that you've reflected on your own experience, get an unbiased verdict.
 
-Ask Claude to open a second, independent reader with only the site as context. <span class="rt-code">Claude Code calls that reader a subagent.</span><span class="rt-cowork">Cowork calls that reader an agent.</span>
+Ask the agent to open a second, independent reader with only the site as context. That helper agent gets no access to the warm conversation that produced the site.
 
 {{prompt:a101-m1-debrief-cold-critic}}
 
 
-One pattern to watch. Asked the most-uniquely-you line first, the LLM warms into appreciation. The praise carries forward into the generic-line call. Both picks come back softer than they probably should. Your own gut on what's uniquely you and what's generic carries more weight than Claude's.
+One pattern to watch. Asked the most-uniquely-you line first, the LLM warms into appreciation. The praise carries forward into the generic-line call. Both picks come back softer than they probably should. Your own gut on what's uniquely you and what's generic carries more weight than the agent's.
 
-Compare Claude's picks to what you expected. Where cold-Claude sees generic, your context is still thin; add one more sharp detail there. Then ask Claude to regenerate the site. Where Claude's pick of *"uniquely you"* matches your own gut: solid ground.
+Compare the cold critic's picks to what you expected. Where the critic sees generic, your context is still thin; add one more sharp detail there. Then ask the agent to regenerate the site. Where its pick of *"uniquely you"* matches your own gut: solid ground.
 
 ## Key Concepts
 - Guardrails are structured context, not a checklist
@@ -79,7 +79,7 @@ Karpathy's LLM Wiki post, and the candidate Lindenberg memory-architecture piece
 
 [Module 2 prework](lectures/module-2-prework.md)
 
-Once the prework is saved, end this module's <span class="rt-code">session</span><span class="rt-cowork">task</span>; Module 2 starts fresh at `~/Documents/agents-101/`.
+Once the prework is saved, end this module's session or task. Module 2 starts fresh at `~/Documents/agents-101/`.
 
 ## Next
 The output now travels with a file the agent can re-read next time. Module 2 systematises that compounding move through memory, agents, and room rules so every future module builds on the work before it.

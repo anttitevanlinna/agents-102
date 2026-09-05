@@ -12,7 +12,7 @@ Multi-agent's first shape: separate sessions on shared files. Each agent runs in
 
 The crux and the decision question both live in `./crux.md` from the opening exercise. Retrievers and the synthesizer all read it.
 
-<span class="rt-code">Open your training directory in up to four Claude Code sessions.</span><span class="rt-cowork">Open up to four Cowork tasks on this connected folder.</span> Three retrievers fetch raw material into `sources/`; a fourth concurrent session synthesizes the retrievals into your `memory/` as they arrive. Three retrievers is the default; if you can't get one running today (no wiki connector, no doc store reachable, network locked), skip it and proceed with what you have. The lesson works with two retrievers, even one. Each session reads the same rules (your root `CLAUDE.md`) and writes into the same folder tree. They don't talk to each other. They work side by side.
+Open your training directory in up to four sessions or tasks. Three retrievers fetch raw material into `sources/`; a fourth concurrent session synthesizes the retrievals into your `memory/` as they arrive. Three retrievers is the default; if you can't get one running today (no wiki connector, no doc store reachable, network locked), skip it and proceed with what you have. The lesson works with two retrievers, even one. Each session reads the same root instructions and writes into the same folder tree. They don't talk to each other. They work side by side.
 
 Four sessions for one question is more than the work strictly needs, two retrievers plus you reading them would produce the same files with less choreography. The four is for the feeling. Agent heavy-lifting goes sequential by default, and sequential gets slow fast on real work; better to know the parallel option early than discover it under deadline.
 
@@ -20,12 +20,12 @@ The retrievers go live, connectors and the open web. The synthesizer is the one 
 
 <div class="rt-code">
 
-*Keep your existing crux session open, that becomes Session 4 (synthesizer; also your main session through the next exercise). Open three more Claude Code sessions in the training directory: Session 1 (wiki retriever), Session 2 (docs retriever), Session 3 (internet retriever). Desktop users: open three app sessions alongside the existing one. CLI users: three more terminal sessions, each running `claude` from the training directory. Self-study: Teacher Claude walks you through this if you stall.*
+*Keep your existing crux session open. That becomes Session 4, the synthesizer and your lead session through the next exercise. Open three more sessions or tasks in the training directory: Session 1 (wiki retriever), Session 2 (docs retriever), Session 3 (internet retriever). Desktop users open three app sessions alongside the existing one. CLI users open three more terminal sessions from the training directory.*
 
 </div>
 <div class="rt-cowork">
 
-*Keep your existing crux task open, that becomes Task 4 (synthesizer; also your main task through the next exercise). In Claude Desktop's *Cowork* tab, start three more tasks pointed at your training directory: Task 1 (wiki retriever), Task 2 (docs retriever), Task 3 (internet retriever). You'll have four tabs (or four windows, whichever your desktop layout prefers) running side by side. They share the filesystem; they don't share scrollback, so each one is its own conversation. Self-study: Teacher Claude walks you through this if you stall.*
+*Keep your existing crux task open, that becomes Task 4 (synthesizer; also your main task through the next exercise). In the desktop app's *Cowork* tab, start three more tasks pointed at your training directory: Task 1 (wiki retriever), Task 2 (docs retriever), Task 3 (internet retriever). You'll have four tabs (or four windows, whichever your desktop layout prefers) running side by side. They share the filesystem; they don't share scrollback, so each one is its own conversation.*
 
 </div>
 
@@ -41,21 +41,21 @@ In Session 1, tell this session to act as your wiki retriever and stream finding
 
 {{prompt:three-retrievers-one-curator-1}}
 
-If Claude asks for ten search terms or a broad wiki tour, narrow it: *"Use the 6-8 terms you proposed, search only the wiki I named, and append findings as you go."*
+If the agent asks for ten search terms or a broad wiki tour, narrow it: *"Use the 6-8 terms you proposed, search only the wiki I named, and append findings as you go."*
 
 
 In Session 2, tell this session to act as your docs retriever and stream findings into `sources/docs-retrieval.md`.
 
 {{prompt:three-retrievers-one-curator-2}}
 
-If Claude asks for vague clues, give one person, one document title, and one drive/site. If it starts smoothing disagreement, push back: *"Quote the contradiction raw before you interpret it."*
+If the agent asks for vague clues, give one person, one document title, and one drive/site. If it starts smoothing disagreement, push back: *"Quote the contradiction raw before you interpret it."*
 
 
 In Session 3, tell this session to act as your internet retriever and stream practitioner findings into `sources/internet-retrieval.md`.
 
 {{prompt:three-retrievers-one-curator-3}}
 
-If Claude rubber-stamps a weak author list, push back before fetching: *"Replace second-hand architecture summaries with dated first-person accounts from people running the work."*
+If the agent rubber-stamps a weak author list, push back before fetching: *"Replace second-hand architecture summaries with dated first-person accounts from people running the work."*
 
 
 Heads-up: retrievers tend to wrap up early. A clean-looking *Conflicts and gaps* section reads like the work is done; usually it isn't. If the file feels thinner than the question deserves, the prompt below is your nudge to keep them chugging.

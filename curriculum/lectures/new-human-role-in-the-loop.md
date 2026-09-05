@@ -2,7 +2,7 @@
 
 Think back to the first thing you made in this training.
 
-Claude wrote a snake game. Then it wrote a page that sounded more like you after you gave it better context. In Module 2, it read sources and wrote memory files. In Module 3, four sessions worked through the same folder, and three agents wrote different stances into files. In Module 5, a benchmark produced a judge. In Module 6, that judge started running inside a loop.
+The agent wrote a snake game. Then it wrote a page that sounded more like you after you gave it better context. In Module 2, it read sources and wrote memory files. In Module 3, four sessions worked through the same folder, and three agents wrote different stances into files. In Module 5, a benchmark produced a judge. In Module 6, that judge started running inside a loop.
 
 Most of that did not feel like dramatic tool use. It looked like files appearing on disk.
 
@@ -70,7 +70,7 @@ Sometimes the right answer is draft only. Sometimes it is send after review. Som
 
 That is not an AI policy slide. That is operational judgment.
 
-The question is no longer: can Claude write the mail?
+The question is no longer: can the agent write the mail?
 
 Of course it can write the mail.
 
@@ -80,7 +80,7 @@ The question is: have you designed the loop that would make sending it responsib
 
 Before you close Module 6, create one steering eval for the kind of internal mail you might actually want an agent to help with.
 
-This one is yours to run. Ask Claude to build it with you:
+This one is yours to run. Ask the agent to build it with you:
 
 {{prompt:new-human-role-in-the-loop-1}}
 

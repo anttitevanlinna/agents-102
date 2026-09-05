@@ -4,11 +4,9 @@
 
 **Session** *(new, "Module 6 - Evaluations")*
 
-Start a new Claude session at your training-directory root.
+Start a new session or task at your training-directory root.
 
-```
-/rename m6-evaluations
-```
+Name it `m6-evaluations` if your runtime supports session names.
 
 **What you do:**
 
@@ -18,9 +16,9 @@ Now you stop running it by hand.
 
 **Eval as infrastructure:** the judge is a fixed yardstick. It doesn't move. What moves is the thing being measured. You set up a loop where a generator produces a briefing from its tactic, the judge scores it and writes per-claim feedback, and the main session rewrites the tactic for the next round. Run at least three rounds under the same judge, then continue until the next round no longer improves meaningfully. The score goes up because the generation tactic learns what the yardstick punishes. The measuring stick never shifts. A yardstick you rewrite is not a yardstick.
 
-**Subagents** are isolated Claude sessions that run inside the same project, each gets fresh context for its own job, no cross-contamination.
+**Helper agents** are isolated workers inside the same project. Each gets fresh context for its own job, with no cross-contamination.
 
-First, write the generation tactic and run the judge once by hand on its first briefing. See what it catches. Then ask Claude to run the loop: generation and judging happen in separate subagents; the main session owns the tactic rewrite between rounds.
+First, write the generation tactic and run the judge once by hand on its first briefing. See what it catches. Then ask the lead agent to run the loop: generation and judging happen in separate helpers; the lead session owns the tactic rewrite between rounds.
 
 You will come back to a short run note: *round 1 flagged 11 claims, round 2 flagged 6 after the generation tactic tightened numeric sourcing, round 3 flagged 3 after probability-plus-timeline claims got banned.* The generation tactic you left with is sharper than the one you started with, under the exact same judge you started with.
 
@@ -30,7 +28,7 @@ You will come back to a short run note: *round 1 flagged 11 claims, round 2 flag
 
 One move before you automate. See what your judge does on a fresh output, end to end, with no loop in the middle.
 
-Ask Claude to generate one briefing and score it with the judge from Module 5.
+Ask the agent to generate one briefing and score it with the judge from Module 5.
 
 {{prompt:eval-loop-1}}
 
@@ -42,11 +40,11 @@ Now make that happen three times without you feeding the output back by hand.
 
 *30 min*
 
-Ask Claude to run the loop. Generation and judging should happen in separate subagents; the main session reads the judgment and rewrites `./generation-tactic.md` between rounds.
+Ask the lead agent to run the loop. Generation and judging should happen in separate helpers; the lead session reads the judgment and rewrites `./generation-tactic.md` between rounds.
 
 {{prompt:eval-loop-2}}
 
-Now step away. The point is not to watch Claude type. The point is to come back to a generator that has been tightened by a judge you did not move.
+Now step away. The point is not to watch the agent type. The point is to come back to a generator that has been tightened by a judge you did not move.
 
 **Bonus prompts while the loop runs.**
 
@@ -62,7 +60,7 @@ Then ask for the model-training analogy in small pieces:
 
 *10 min*
 
-Ask Claude to show the loop result and the final generation tactic.
+Ask the agent to show the loop result and the final generation tactic.
 
 {{prompt:eval-loop-5}}
 
@@ -94,7 +92,7 @@ This is what "we can automate the loop" actually means. Not a scheduled script. 
 
 Any judge you own becomes infrastructure the moment you stop editing it and start improving what it scores.
 
-Ask Claude to set up the loop around a different judge:
+Ask the agent to set up the loop around a different judge:
 
 {{prompt:eval-loop-6}}
 

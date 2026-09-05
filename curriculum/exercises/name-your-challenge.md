@@ -4,15 +4,13 @@
 
 **Session** *(new, "Module 2 - Building agent systems")*
 
-<span class="rt-code">Start a new Claude Code session at your training-directory root.</span><span class="rt-cowork">Start a new Cowork task with your training-directory root as the working folder.</span>
+Start a new session or task at your training-directory root.
 
-```
-/rename m2-building-agent-systems
-```
+Name it `m2-building-agent-systems` if your runtime supports session names.
 
 **What you do:**
 
-Module 2 builds you a memory: a folder of your own notes and source material that Claude reads before answering, so it's grounded in *your* world, not the open internet. Think of it as a curated library Claude checks first. It helps you think through a real, live problem you're currently wrestling with. Before anything gets built, the problem gets pinned.
+Module 2 builds you a memory: a folder of your own notes and source material that the agent reads before answering, so it's grounded in *your* world, not the open internet. Think of it as a curated library the agent checks first. It helps you think through a real, live problem you're currently wrestling with. Before anything gets built, the problem gets pinned.
 
 *You've read two pieces on this move in prework. One showed the pattern on a personal scale: LLM as librarian, not answerer. The other argued that the same move scales to company knowledge: files, not wikis; version it like code. In this opener you name the one challenge it all aims at.*
 
@@ -44,18 +42,18 @@ Pick the one you'll be carrying anyway over the next few weeks. If two are tied,
 
 The brief lands at your training-directory root as `./challenge.md`, where every later module reads from.
 
-Ask Claude to interview you with three focusing questions and write the brief to `./challenge.md`.
+Ask the agent to interview you with three focusing questions and write the brief to `./challenge.md`.
 
 {{prompt:name-your-challenge-1}}
 
 
-Claude asks, you answer, the brief lands. If it shows all three questions at once, push back and ask for one at a time. Read the brief. If it doesn't sound like the thing actually keeping you up, edit it. You're the domain expert.
+The agent asks, you answer, the brief lands. If it shows all three questions at once, push back and ask for one at a time. Read the brief. If it doesn't sound like the thing actually keeping you up, edit it. You're the domain expert.
 
 **Preview your sources.**
 
 The memory will be built from three kinds of raw material: pages from your company's Confluence (or wiki), docs and emails from Office365, and a few practitioner articles from the open web. Next phase you'll actually pull them. Right now you're scouting.
 
-Ask Claude to suggest where you'd go scouting for raw material on this challenge.
+Ask the agent to suggest where you'd go scouting for raw material on this challenge.
 
 {{prompt:name-your-challenge-2}}
 

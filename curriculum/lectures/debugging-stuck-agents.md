@@ -8,7 +8,7 @@ Start by prompting your own stuck system to find the root cause.
 
 {{prompt:debugging-stuck-agents-1}}
 
-This is rather long. Make your own variant. The important move is not the wording; it is asking Claude to diagnose whether the bug lives in the sources, the processing, or the boundary before you start fixing things.
+This is rather long. Make your own variant. The important move is not the wording; it is asking the agent to diagnose whether the bug lives in the sources, the processing, or the boundary before you start fixing things.
 
 Then use the answer.
 
@@ -20,7 +20,7 @@ Then use the answer.
 
 4. **Shrink the rerun.** Do not rerun the whole system first. Rerun the smallest step that should now behave differently: one retriever, one stance, one synthesis, one file.
 
-5. **Write down the lesson.** If the same failure could happen again, add a rule to `./CLAUDE.md`: what to read first, what not to smooth over, what file shape the next agent must produce, or when to stop and ask.
+5. **Write down the lesson.** If the same failure could happen again, add a rule to the root instructions file: what to read first, what not to smooth over, what file shape the next agent must produce, or when to stop and ask.
 
 Start with diagnosis before repair. That's the habit.
 

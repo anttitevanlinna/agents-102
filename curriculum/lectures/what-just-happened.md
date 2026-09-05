@@ -16,7 +16,7 @@ Two beats worth naming, because the mechanism you just used is older than AI.
 
 Everything in the next seven modules is more of this. More reaching, more watching, more adjusting, more rules that make the next session start smarter. Don't expect a lecture to replace the doing. There isn't one.
 
-Now: five minutes with Claude. The debrief.
+Now: five minutes with the agent. The debrief.
 
 <!-- maintainer -->
 

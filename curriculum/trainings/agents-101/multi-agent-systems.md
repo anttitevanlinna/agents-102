@@ -10,16 +10,16 @@ Hire three agents to search. Three more to decide. The filesystem is the meeting
 ## What You'll Learn
 After this module, you will be able to:
 - **Design** a multi-agent setup in two shapes: independent agents finding sources into shared files and helper agents returning different views to one lead task
-- **Build** three source-finding agents, each speaking its own source's dialect, and a synthesizer that coordinates three <span class="rt-code">subagent</span><span class="rt-cowork">agent</span> personas
+- **Build** three source-finding agents, each speaking its own source's dialect, and a synthesizer that coordinates three helper-agent personas
 - **Analyze** handoff failure modes (where conflicts get papered over, dialects clash, the synthesizer averages to beige)
 - **Create** a framework-guided answer to a real strategic question about your own challenge
 - **Evaluate** when splitting earns its keep, when independent tasks beat forked helpers, and when one good agent with a good prompt wins
 
 ## Start here
 
-Start a fresh <span class="rt-code">Claude Code session</span><span class="rt-cowork">Cowork task</span> at `~/Documents/agents-101/`.
+Start a fresh session or task at `~/Documents/agents-101/`.
 
-Module 3 writes its working outputs under `module-3/` and sharpens the root `./CLAUDE.md` in the Debrief, building on what Module 2 created at the training-directory root (`./CLAUDE.md`, `memory/`, `sources/`, `agents/`).
+Module 3 writes its working outputs under `module-3/` and sharpens the root instructions file in the Debrief, building on what Module 2 created at the training-directory root: instructions, `memory/`, `sources/`, and `agents/`.
 
 Last module you were the librarian. You searched Confluence, pulled from OneDrive, chased down practitioner articles (by hand). Today you hire three agents to do that search, and three more to decide what it means. What do you expect will get lost between them?
 
@@ -39,16 +39,16 @@ First, a small boundary shift. Most of this training's working artifacts are tex
 
 ## Debrief
 
-Five minutes. Claude reviews the session and sharpens the rules that govern how your agents divide the work. The evidence is the four agent prompts, the retrieval files, the synthesizer's briefing, and the conversation. Claude reviews them, rewrites the training-dir root rules file (`./CLAUDE.md`) in place, reports what changed. You push back on anything that's off.
+Five minutes. The agent reviews the session and sharpens the rules that govern how your agents divide the work. The evidence is the four agent prompts, the retrieval files, the synthesizer's briefing, and the conversation. The agent reviews them, rewrites the training-directory root instructions file in place, and reports what changed. You push back on anything that's off.
 
 {{prompt:a101-m3-debrief-handoff-rules}}
 
 
-Notice what this prompt insists on: harsh audit, two seams minimum, specific evidence (file, pass, what was lost). That last clause is the work. Without it, Claude's review settles into the diplomatic shape it likes: three things went well, one mild wobble, here's the cleaner version. Diplomatic is the failure mode at a handoff seam. The place where things actually go wrong is exactly where the model rounds the corner. The harder ask forces a real audit. You'll get fewer comfortable summaries and more uncomfortable specifics, which is what you want when the rules file has to govern next session's agents.
+Notice what this prompt insists on: harsh audit, two seams minimum, specific evidence (file, pass, what was lost). That last clause is the work. Without it, the LLM's review settles into the diplomatic shape it likes: three things went well, one mild wobble, here's the cleaner version. Diplomatic is the failure mode at a handoff seam. The place where things actually go wrong is exactly where the model rounds the corner. The harder ask forces a real audit. You'll get fewer comfortable summaries and more uncomfortable specifics, which is what you want when the rules file has to govern next session's agents.
 
 ## Push back on the summary
 
-Read Claude's summary. Push back where it's wrong. *"No, the planner and the reframer really did need to be separate."* *"You missed where the Confluence retriever kept normalising before writing."* The unease you feel about the synthesized briefing is not something to close today. It stays. Hold it as a question, not a fix.
+Read the agent's summary. Push back where it's wrong. *"No, the planner and the reframer really did need to be separate."* *"You missed where the Confluence retriever kept normalising before writing."* The unease you feel about the synthesized briefing is not something to close today. It stays. Hold it as a question, not a fix.
 
 ## Optional memory check before Module 4
 
@@ -59,10 +59,10 @@ Read Claude's summary. Push back where it's wrong. *"No, the planner and the ref
 Memory is a working artefact, sharpened by what it bumps into.
 
 ## Key Concepts
-- **Two multi-agent shapes.** Independent tasks on shared files (long-running, separate, visible). Forked <span class="rt-code">subagents</span><span class="rt-cowork">agents</span> returning to one lead task (quick parallel thinking, bounded return). Different shapes, different territories.
+- **Two multi-agent shapes.** Independent tasks on shared files (long-running, separate, visible). Forked helper agents returning to one lead task (quick parallel thinking, bounded return). Different shapes, different territories.
 - **Splitting earns its keep when the agents genuinely can't be one.** Different source access, different dialect, different stance. Faking multi-agent with one prompt is the tell that you didn't need to split.
 - **Seams are where it fails.** Conflicts get dropped, dialects clash, the synthesizer averages everything into beige. Where the pieces meet is what to watch.
-- **Three stances beat one summarizer.** Three <span class="rt-code">subagents</span><span class="rt-cowork">agents</span> (a backward-from-end planner, a *what-would-have-to-be-true* experimenter, and a counterintuitive reframer, the Rory seat) each interrogate the retrieved material from a different angle, harder to do well in one head, in one pass. A fourth <span class="rt-code">subagent</span><span class="rt-cowork">agent</span>, the synthesizer, combines them.
+- **Three stances beat one summarizer.** Three helper agents (a backward-from-end planner, a *what-would-have-to-be-true* experimenter, and a counterintuitive reframer, the Rory seat) each interrogate the retrieved material from a different angle, harder to do well in one head, in one pass. A fourth helper agent, the synthesizer, combines them.
 - **Frameworks are the synthesizer's spine.** Without one, it tends to summarise. With a framework (a strategy kernel by default), it picks.
 
 ## Pre-reads before Module 4
@@ -71,7 +71,7 @@ Memory is a working artefact, sharpened by what it bumps into.
 
 [Before Module 4](lectures/module-4-prework.md)
 
-Once the optional check and pre-reads are handled, end this module's <span class="rt-code">session</span><span class="rt-cowork">task</span>; Module 4 starts fresh at `~/Documents/agents-101/`.
+Once the optional check and pre-reads are handled, end this module's session or task. Module 4 starts fresh at `~/Documents/agents-101/`.
 
 ## Next
 You just built something that works across the systems you connected. Which means it gained access to those systems. What's the worst thing it could do with that?

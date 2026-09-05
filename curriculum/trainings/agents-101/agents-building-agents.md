@@ -9,14 +9,14 @@ Run `module-7/monday.md`, test one assumption, ask for one name, and talk to one
 
 ## What You'll Learn
 After this module, you will be able to:
-- **Use** your Claude runtime to generate a new agent that extends your system
+- **Use** your agent runtime to generate a new agent that extends your system
 - **Orchestrate** three thinking disciplines at room scale against a real company question
 - **Produce** a strategy kernel, suggested agent set, and two-week plan grounded in your actual files
 - **Explain** how the deliberation cycle sharpens the strategy kernel and the next agent set
 
 ## Start here
 
-Start a fresh <span class="rt-code">Claude Code session</span><span class="rt-cowork">Cowork task</span> at `~/Documents/agents-101/`. That local session reads the full agent system and `module-7/monday.md`; the room-scale exercise uses a separate shared deliberation folder so participant files do not blur into the local stack.
+Start a fresh session or task at `~/Documents/agents-101/`. That local session reads the full agent system and `module-7/monday.md`; the room-scale exercise uses a separate shared deliberation folder so participant files do not blur into the local stack.
 
 At the start, the shared folder is nearly empty: each participant gets one folder named after them, the buyer/sponsor seeds `challenge.md`, and one or two central synthesizer agents write the selection, agent-set, and plan files at the shared root.
 
@@ -38,11 +38,11 @@ The three thinking disciplines you applied in Module 7 on your own sharing probl
 
 ## Debrief
 
-Five minutes. Claude reviews the session and sharpens whichever file carried the load: the central synthesizer's rules, the strategy kernel, the agent set, the plan, or the rules that governed how the agents argued. The evidence is what you produced: the context manifests, stances, cross-checks, proposals, selection board, synthesizer-injected midpoint instructions, critiques, pushbacks, kernel, agent set, and plan. Claude reviews, rewrites the most load-bearing file in place, reports what changed. You push back on anything that's off.
+Five minutes. The agent reviews the session and sharpens whichever file carried the load: the central synthesizer's rules, the strategy kernel, the agent set, the plan, or the rules that governed how the agents argued. The evidence is what you produced: the context manifests, stances, cross-checks, proposals, selection board, synthesizer-injected midpoint instructions, critiques, pushbacks, kernel, agent set, and plan. The agent reviews, rewrites the most load-bearing file in place, and reports what changed. You push back on anything that's off.
 
 {{prompt:a101-m8-debrief-flywheel-sharpen}}
 
-> **Watch for slowness.** When you push back on the rewrite, Claude should Edit the section you flagged, not rewrite the whole file. Kernel and agent-set files run large; full-file rewrites per pushback turn drag. If Claude reaches for Write on the whole file anyway, push back: *"Edit just the section I named."*
+> **Watch for slowness.** When you push back on the rewrite, the agent should edit the section you flagged, not rewrite the whole file. Kernel and agent-set files run large; full-file rewrites per pushback turn drag. If the agent reaches for a full rewrite anyway, push back: *"Edit just the section I named."*
 
 Notice what this prompt insists on: name the file before rewriting, quote the before-and-after for every claim, surface stalls even if the round felt smooth. The flywheel amplifies specificity the same way it amplifies everything else. Precision compounds. So does blur.
 
@@ -50,14 +50,14 @@ Notice what this prompt insists on: name the file before rewriting, quote the be
 
 This is a self-audit of a live agent round. Convenient, not neutral. If the summary sounds too clean, ask the harsher read: *"Name one critique raised in the session that did not change the rewritten file. Quote the critique and the unchanged line."*
 
-Read Claude's summary. Push back where it's wrong. Some of what didn't resolve shouldn't resolve. It's the live edge of the work. The flywheel that sharpened the file just now is the one that will sharpen it again after Agents 101, on the next problem, on the one after that, on the one you don't yet know you have. You just watched it compound.
+Read the agent's summary. Push back where it's wrong. Some of what didn't resolve shouldn't resolve. It's the live edge of the work. The flywheel that sharpened the file just now is the one that will sharpen it again after Agents 101, on the next problem, on the one after that, on the one you don't yet know you have. You just watched it compound.
 
 ## Key Concepts
 
 - **Self-improvement**: each cycle sharpens the next. Proposals read sharper than initial stances because the agents cross-check before publishing, then critiques sharpen the synthesizer's selection.
 - **Org capability**: many agents reading and proposing in parallel produce a kernel, agent set, and plan with every recommendation traceable to the file it came from.
 - **The three predictable walls past the laptop loop**: data access, runtime platform, discoverability. The plan already names which wall bites first for your company. Seeing them is the sign the kernel works.
-- **Thinking disciplines you take home as named moves.** Crux, *what would have to be true?*, pre-mortem aren't props and they aren't installed skills. They're portable disciplines you ask Claude to run on any decision too big to eyeball.
+- **Thinking disciplines you take home as named moves.** Crux, *what would have to be true?*, pre-mortem aren't props and they aren't installed skills. They're portable disciplines you ask the agent to run on any decision too big to eyeball.
 - **Grounding when agents read agents.** Every agent publishes what it read, what it couldn't find, and what it inferred without a source. Every claim cites the file it came from. Without that rule, agents reading agents smoothly hallucinate each other's memory.
 
 ## Next

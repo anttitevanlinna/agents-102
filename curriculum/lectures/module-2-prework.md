@@ -4,7 +4,7 @@
 
 **What you do:**
 
-Bring one live challenge, check what Claude can read about it, learn plan mode, and leave yourself a three-line readiness note. In Cowork, learn the prompt-level version that simulates the same control point.
+Bring one live challenge, check what the agent can read about it, use a plan-first control, and leave yourself a three-line readiness note.
 
 Module 1 was a contained creation. Module 2 turns toward work that already has history: meetings, notes, decisions, half-written documents, wiki pages, people, constraints. The point is not to prepare a perfect brief. The point is to arrive with enough real material that the memory can start from your world instead of generic internet shape.
 
@@ -12,46 +12,34 @@ Module 1 was a contained creation. Module 2 turns toward work that already has h
 
 Module 2 builds a **memory**: a folder of notes and source material the agent reads before answering. For that to work, the challenge has to be real. Bring a decision you're making, a bet you're placing, or a piece of work where the shape is still unclear.
 
-Do not write the brief yet. Module 2 pins it down in class, with Claude asking three questions and turning your rough challenge into a short brief. For now, just know the challenge you want to use. Good candidates are open enough to need thought, narrow enough that 5-8 topic pages could cover them, and present enough that your calendar or recent files already contain clues.
+Do not write the brief yet. Module 2 pins it down in class, with the agent asking three questions and turning your rough challenge into a short brief. For now, just know the challenge you want to use. Good candidates are open enough to need thought, narrow enough that 5-8 topic pages could cover them, and present enough that your calendar or recent files already contain clues.
 
 If nothing comes to mind, scan the next two weeks of your calendar. The biggest unresolved thing on it is usually the challenge.
 
-## Check what Claude can read
+## Check what the agent can read
 
-Module 2 works best when Claude can read at least one source connected to your challenge: a calendar, a document store, a wiki, or a shared drive. You already checked Microsoft 365 or Google Workspace in the main prework. Now check whether your company wiki or document system is available too.
+Module 2 works best when the agent can read at least one source connected to your challenge: a calendar, a document store, a wiki, or a shared drive. You already checked Microsoft 365 or Google Workspace in the main prework. Now check whether your company wiki or document system is available too.
 
 **Connectors** are connections to places where your work lives, Microsoft 365, Google Workspace, Confluence, SharePoint, OneDrive, Google Drive, or whatever your company actually uses.
 
-In Claude Code Desktop, click the **+** next to the prompt, then **Settings → Connectors**. In Cowork, open **Customize → Connectors**. Look for Microsoft 365, Google Workspace, Confluence, SharePoint, OneDrive, Google Drive, or the system your company actually uses.
+If your runtime offers connectors, open its connector settings. Look for Microsoft 365, Google Workspace, Confluence, SharePoint, OneDrive, Google Drive, or the system your company actually uses.
 
 If a connector asks for admin approval, tell the training coordinator. Keep going even if it is not ready. A connector makes Module 2 richer, but the memory can still start from files, pasted excerpts, and the sources you bring into the training directory.
 
-## Learn plan mode
+## Put a plan before action
 
 Module 2 asks the agent to create and update multiple files. Before it does that, you want to see the shape of the work.
 
-<span class="rt-code">In Claude Code, that control point is **plan mode**. You turn it on, Claude writes a plan instead of touching files, and you approve or revise the plan before it runs.</span><span class="rt-cowork">Cowork does not have a plan-mode toggle. Module 2 simulates the same control point in the prompt: ask Claude to write the plan first and wait for approval before it touches files.</span>
+Before the agent touches files, ask it to write a plan and wait for your approval. Some runtimes expose that control as a mode; in others, the prompt supplies it. The control point is the same: approve or revise the proposed work before it runs.
 
 Reach for this when the next step may write several files, edit anything you care about, or compound its output over multiple steps. Skip it for quick one-turn work where you would simply re-run the prompt.
 
 Pick one route through the primer:
 
-<div class="rt-code">
+- **Read** the [Runtime quick reference](../trainings/agents-101/reference/claude-quick-reference.md). Start with planning before action, then try the planning control your runtime offers.
+- **Watch** Matt Pocock's [video about planning before execution](https://www.youtube.com/watch?v=WNx-s-RxVxk) on YouTube. A working practitioner showing how it feels in the hands, not a doc page.
 
-- **Read** the [Claude quick reference](../trainings/agents-101/reference/claude-quick-reference.md). Start with *"Plan mode, look before you leap,"* then try the toggle in Claude Code and notice how the footer changes.
-- **Watch** Matt Pocock's [*"I was an AI skeptic. Then I tried plan mode"*](https://www.youtube.com/watch?v=WNx-s-RxVxk) on YouTube. A working practitioner showing how it feels in the hands, not a doc page.
-
-Either way: know where the toggle is, what the footer says when it's on, and why you'd reach for it.
-
-</div>
-<div class="rt-cowork">
-
-- **Read** the [Claude quick reference](../trainings/agents-101/reference/claude-quick-reference.md). Skim the planning section. Cowork has no plan-mode toggle, so Module 2 uses a prompt-level simulation. A line like *"Before you write any files, lay out a plan as a numbered list and ask me to approve it"* creates the review point.
-- **Watch** Matt Pocock's [*"I was an AI skeptic. Then I tried plan mode"*](https://www.youtube.com/watch?v=WNx-s-RxVxk) on YouTube. The demo is in Code, but the move is the same one you'll ask for in Cowork.
-
-Either way: know what the plan-mode simulation looks like, and why you'd reach for it before anything that writes more than one file.
-
-</div>
+Either way: know what the control looks like in your runtime and why you'd reach for it.
 
 ---
 
@@ -60,8 +48,8 @@ Either way: know what the plan-mode simulation looks like, and why you'd reach f
 Create `prework/module-2-start.md` in your training directory. Add:
 
 - the live challenge you are bringing;
-- the first source Claude can read about it, or the fallback you will use (identify it here; Module 2 handles the content);
-- the planning control you will use before Claude writes files: plan mode in Claude Code, or a plan-first request in Cowork.
+- the first source the agent can read about it, or the fallback you will use (identify it here; Module 2 handles the content);
+- the planning control you will use before the agent writes files.
 
 This file is the first handoff into your system. Module 2 will build `./challenge.md` from the challenge line, start its memory from the source line, and use the planning-control line before its first multi-file write. The note is not a spare checklist: each line has a named consumer, and the file stays behind as the record of where the system started.
 

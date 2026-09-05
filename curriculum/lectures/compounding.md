@@ -2,7 +2,7 @@
 
 You just did something a chat can't do.
 
-Not the ingestion, a long enough prompt ingests. Not the task, a good prompt does tasks. The thing you did that a chat can't do is **Phase 3**. You dropped new sources into the folder, asked Claude to update the memory, and three topic pages *got sharper instead of longer*. The second batch made the first batch better. That's compounding. And you can't picture it from a description, you had to see it.
+Not the ingestion, a long enough prompt ingests. Not the task, a good prompt does tasks. The thing you did that a chat can't do is **Phase 3**. You dropped new sources into the folder, asked the agent to update the memory, and three topic pages *got sharper instead of longer*. The second batch made the first batch better. That's compounding. And you can't picture it from a description, you had to see it.
 
 ## Two words, held together
 
@@ -17,7 +17,7 @@ In the full agent picture, Module 2 adds shelf life. Context stops being somethi
 
 ## Why the sharpening happens
 
-When you added the second batch, Claude didn't start over. It read the existing topic pages first, as *context*, then read the new sources, then integrated. The existing memory was part of the prompt for updating the memory. That's why pages got sharper: the old claims and the new claims met each other, and the ones that couldn't survive the meeting got cut.
+When you added the second batch, the agent didn't start over. It read the existing topic pages first, as *context*, then read the new sources, then integrated. The existing memory was part of the prompt for updating the memory. That's why pages got sharper: the old claims and the new claims met each other, and the ones that couldn't survive the meeting got cut.
 
 This is the same mechanism from Module 1: context shapes output, run at system scale. The context for this work is what the previous work produced. The context for the next session will be what this work produced. The loop is the product.
 
@@ -39,13 +39,13 @@ Every module after this leans on the memory you just built. Multi-agent systems 
 
 ## One more compounding turn
 
-Back in Phase 1 you asked Claude to flag pages a competitor could write about themselves. Phase 3 sharpened them. That's the discipline: if the answer to *"could a competitor claim this?"* is ever yes, the memory is growing but not compounding.
+Back in Phase 1 you asked the agent to flag pages a competitor could write about themselves. Phase 3 sharpened them. That's the discipline: if the answer to *"could a competitor claim this?"* is ever yes, the memory is growing but not compounding.
 
 Spot what's still generic and sharpen it.
 
 {{prompt:compounding-1}}
 
-Claude comes back with three pointed requests. Answer one. Let it update the page. The memory just got a fourth round of compounding. You steer; the system maintains; the loop runs.
+The agent comes back with three pointed requests. Answer one. Let it update the page. The memory just got a fourth round of compounding. You steer; the system maintains; the loop runs.
 
 <!-- maintainer -->
 

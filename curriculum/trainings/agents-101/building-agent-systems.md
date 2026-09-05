@@ -11,14 +11,14 @@ A system remembers, grows, and compounds. Chat doesn't. Your next big challenge 
 After this module, you will be able to:
 - **Build** an LLM memory on your next big challenge, curated from internal wikis, recent work, and practitioner methods
 - **Build** your first custom agent (a markdown file of instructions) and run it on your memory against the challenge
-<span class="rt-code">- **Use** Claude Code's plan mode to review multi-step agent actions before they run</span><span class="rt-cowork">- **Ask** Claude to write a plan first, and review multi-step agent actions before they run</span>
+- **Review** a proposed plan before the agent takes multi-step action
 - **See** the three layers of the system, raw sources, memory, rules file, and why plain text beats a database here
 - **Evaluate** whether the memory is compounding or merely growing
 
 ## Start here
-Start a fresh <span class="rt-code">Claude Code session</span><span class="rt-cowork">Cowork task</span> at `~/Documents/agents-101/`. The fresh start keeps Module 1's personal-site scrollback out of the way.
+Start a fresh session or task at `~/Documents/agents-101/`. The fresh start keeps Module 1's personal-site scrollback out of the way.
 
-Module 2 turns to your real challenge. The empty `memory/`, `sources/`, and `agents/` folders are already there from prework, ready to fill. Your Module 1 generation-rules file stays scoped to `module-1/`; neither it nor `module-1/site.html` is an input to this build. The wider root `CLAUDE.md` doesn't exist yet. You'll write your first version at the end of this module (Debrief), grounded in what actually happens during the exercise.
+Module 2 turns to your real challenge. The empty `memory/`, `sources/`, and `agents/` folders are already there from prework, ready to fill. Your Module 1 generation-rules file stays scoped to `module-1/`; neither it nor `module-1/site.html` is an input to this build. The wider root instructions file doesn't exist yet. You'll write your first version at the end of this module (Debrief), grounded in what actually happens during the exercise.
 
 Module 1 was the rehearsal. A site, a voice sharpened, fabrication caught by the only person in the room who could catch it. Now the training turns to work. The rest of it builds on the challenge you actually get paid to move, because that's where the system has to stand up.
 
@@ -36,7 +36,7 @@ Connectors let the agent combine clues that normally live apart: a wiki page, a 
 
 [Exercise: Name your next big challenge](exercises/name-your-challenge.md)
 
-Keep the same <span class="rt-code">session</span><span class="rt-cowork">task</span> running for the next exercise. Claude already has your challenge in scrollback; no need to re-read.
+Keep the same session or task running for the next exercise. The agent already has your challenge in scrollback; no need to re-read.
 
 [Exercise: Build your challenge memory](exercises/build-your-challenge-memory.md)
 
@@ -44,16 +44,16 @@ Keep the same <span class="rt-code">session</span><span class="rt-cowork">task</
 
 ## Debrief
 
-Five minutes. A retro, **and the first `./CLAUDE.md` at this directory.** Module 2 opened on an empty training-dir root: no rules file. The memory flow ran end to end (curate → ingest → build → update → maintain), and the rules that actually matter for YOUR agent are now visible, visible in what worked, what rubbed, what got repeated. Claude writes the rules file from the session. You push back on anything off.
+Five minutes. A retro, **and the first root instructions file in this directory.** Module 2 opened on an empty training-dir root: no rules file. The memory flow ran end to end (curate → ingest → build → update → maintain), and the rules that actually matter for YOUR agent are now visible, visible in what worked, what rubbed, what got repeated. The agent writes the rules file from the session. You push back on anything off.
 
 {{prompt:a101-m2-debrief-claude-md}}
 
 
 ## Push back on the summary
 
-Read Claude's summary. Push back on anything that doesn't match your sense of the work. *"No, that rule's too strict."* *"You missed the bit where we had to regenerate three times because of X."* Same move Module 1 landed on your guardrails file: do the work, let the agent capture the rules, push back where the agent got it wrong. Module 2 lands your first wider rules file at the training-dir root (`./CLAUDE.md`), the one every subsequent module extends.
+Read the agent's summary. Push back on anything that doesn't match your sense of the work. *"No, that rule's too strict."* *"You missed the bit where we had to regenerate three times because of X."* Same move Module 1 landed on your guardrails file: do the work, let the agent capture the rules, push back where the agent got it wrong. Module 2 lands your first wider root instructions file, the one every subsequent module extends.
 
-What Claude leaves out is often the signal. A clean summary that names three rules and skips the messy fourth, the one where the work bent and you re-prompted twice, is the tell. Compounding rules files are not tidy.
+What the agent leaves out is often the signal. A clean summary that names three rules and skips the messy fourth, the one where the work bent and you re-prompted twice, is the tell. Compounding rules files are not tidy.
 
 ## Sharpen where it bends
 
@@ -62,7 +62,7 @@ What Claude leaves out is often the signal. A clean summary that names three rul
 Watching where it bends is continuous improvement, done by hand. Every miss turns into a line of context that stops the next miss. Later in the training you'll learn the move that bends the curve: the agent spots its own misses and proposes its own fixes. You stop being the only pair of eyes.
 
 ## Key Concepts
-- **Three layers**: raw sources (the originals, untouched) → the memory (maintained by the agent, sharpens over time) → the rules file (`CLAUDE.md`) that keeps the shape consistent
+- **Three layers**: raw sources (the originals, untouched) → the memory (maintained by the agent, sharpens over time) → the root instructions file that keeps the shape consistent
 - **Plain text beats databases here** because language models are strongest at reading and writing text. No setup, no extra tools.
 - **Persistence + automation = system.** Neither alone is enough.
 
@@ -80,7 +80,7 @@ Come to Module 3 without a week of agent runs and you'll be reconstructing that 
 
 [Before Module 3](exercises/module-3-prework.md)
 
-Once the scheduled run and prework are saved, end this module's <span class="rt-code">session</span><span class="rt-cowork">task</span>; Module 3 starts fresh at `~/Documents/agents-101/`.
+Once the scheduled run and prework are saved, end this module's session or task. Module 3 starts fresh at `~/Documents/agents-101/`.
 
 ## Next
 You have an agent doing real work on your challenge. But the job is getting too big for one agent. What do you split?

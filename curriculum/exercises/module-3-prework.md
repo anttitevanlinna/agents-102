@@ -1,6 +1,6 @@
 # Exercise: Prework before Module 3
 
-**Time:** 40 minutes total. 25 reading, 5 noting takeaways, 10 on the <span class="rt-code">subagent</span><span class="rt-cowork">agent</span> primer.
+**Time:** 40 minutes total. 25 reading, 5 noting takeaways, 10 on the helper-agent primer.
 
 **What you do:**
 
@@ -8,39 +8,39 @@ Two reads. Both prime moves the Module 3 exercise leans on. Neither asks you to 
 
 **Reading 1. Five practitioners, automating their work.**
 
-Before you build multi-agent, see what a single well-shaped agent already does in the wild. Not toy demos. Working practitioners who've folded Claude Code into daily research, writing, and shipping.
+Before you build multi-agent, see what a single well-shaped agent already does in the wild. Not toy demos. Working practitioners who've folded coding agents into daily research, writing, and shipping.
 
 Five people worth knowing. **Pick three. Read one piece each.**
 
-1. **Simon Willison.** Browse his current [Claude Code field notes](https://simonwillison.net/tags/claude-code/). Pick one worked example where he shows the prompt, artifact, test, or correction rather than only announcing a feature.
-2. **Edward Harker.** Read [How I use Claude Code](https://edwardharker.com/2026/05/16/how-i-use-claude-code/) (16 May 2026). Look for the operating routine around the agent, not a magic prompt.
+1. **Simon Willison.** Browse his current [coding-agent field notes](https://simonwillison.net/tags/claude-code/). Pick one worked example where he shows the prompt, artifact, test, or correction rather than only announcing a feature.
+2. **Edward Harker.** Read his [coding-agent operating notes](https://edwardharker.com/2026/05/16/how-i-use-claude-code/) (16 May 2026). Look for the operating routine around the agent, not a magic prompt.
 3. **Armin Ronacher.** Read [The Coming Loop](https://lucumr.pocoo.org/2026/6/23/the-coming-loop/) (23 June 2026). Notice what changes when the human designs the loop and its feedback instead of driving every step.
 4. **Thariq Shihipar.** Read [The unreasonable effectiveness of HTML](https://claude.com/blog/using-claude-code-the-unreasonable-effectiveness-of-html) (20 May 2026). Track why changing the review artifact changes how closely the human stays in the work.
-5. **Daniel Bilsborough.** Read [Claude Code: The Practitioner's Guide](https://partner.danielbilsborough.com/claude-code) (updated 6 August 2026). Look for the plain-text memory and the boundary where consequential work still needs a person.
+5. **Daniel Bilsborough.** Read [The Practitioner's Guide to Coding Agents](https://partner.danielbilsborough.com/claude-code) (updated 6 August 2026). Look for the plain-text memory and the boundary where consequential work still needs a person.
 
 For each one you pick, note one thing in plain language: *what is this person automating that they used to do by hand, and what's the move that made it work?* Three bullets, one per practitioner. Keep the note somewhere you'll see on training day.
 
 This isn't about copying their setups. It's about calibrating the ceiling: how much one agent, well-shaped, can already do. So that when Module 3 adds three more, you know what the added coordination is buying you.
 
-**Reading 2. <span class="rt-code">Claude Code's subagents</span><span class="rt-cowork">Cowork's agents</span>, in plain language.**
+**Reading 2. Helper agents, in plain language.**
 
-Module 3 Phase 2 spawns three <span class="rt-code">subagents</span><span class="rt-cowork">agents</span> in one <span class="rt-code">session</span><span class="rt-cowork">task</span>. Ten minutes of orientation saves you from learning the mechanic cold in the room.
+Module 3 Phase 2 spawns three helper agents in one session or task. Ten minutes of orientation saves you from learning the mechanic cold in the room.
 
-*What it is.* <span class="rt-code">A subagent in Claude Code</span><span class="rt-cowork">An agent in Cowork</span> is a helper the main agent dispatches to do one focused job. It gets:
+*What it is.* A helper agent is one the lead agent dispatches to do one focused job. It gets:
 
 - its own **instructions** (what it's for, what rules it follows);
 - its own **context window** (a clean slate, so its work doesn't clutter yours);
-- access to the same **filesystem** (it reads and writes in your working directory, same as the main <span class="rt-code">session</span><span class="rt-cowork">task</span>).
+- access to the same **filesystem** (it reads and writes in your working directory, same as the lead session or task).
 
 When the job is done, it returns a single result to the main agent and disappears. You can dispatch several in parallel.
 
-*How to launch one.* You don't type a special command. You ask Claude, in plain language, to use one. *"Launch <span class="rt-code">a subagent</span><span class="rt-cowork">an agent</span> to review the three retrieval files and write its take to `module-3/stances/planner.md`."* Claude picks it up and dispatches. To run several at once: *"Launch these three <span class="rt-code">subagents</span><span class="rt-cowork">agents</span> in parallel,"* and list them. Claude fires them together, waits for all three to return, then continues.
+*How to launch one.* You don't type a special command. You ask the lead agent, in plain language, to use one. *"Launch a helper agent to review the three retrieval files and write its take to `module-3/stances/planner.md`."* The lead agent dispatches it. To run several at once: *"Launch these three helper agents in parallel,"* and list them. The lead agent fires them together, waits for all three to return, then continues.
 
-*What you'll see.* While <span class="rt-code">a subagent</span><span class="rt-cowork">an agent</span> is working, it appears in your transcript as a running **Task** or **Agent** block (usually collapsed, with a short description of what it's doing). You can't chat with it; it's running its own conversation separately. When it finishes, the block closes with a short result, and Claude's main <span class="rt-code">session</span><span class="rt-cowork">task</span> picks up from there. In the Phase 2 exercise, three Task blocks will run side by side, each one writing a stance file to `module-3/stances/` as it completes.
+*What you'll see.* While a helper agent is working, your runtime shows a running task or agent entry with a short description. It runs its own conversation separately. When it finishes, the lead session or task receives the result and continues. In the Phase 2 exercise, three helpers run side by side, each one writing a stance file to `module-3/stances/` as it completes.
 
-*What you don't need.* You don't need to write an agent definition file for Module 3. You don't need to use the `/agents` slash command. Defining your own reusable <span class="rt-code">subagents</span><span class="rt-cowork">agents</span> is a later move; launching ones that the main <span class="rt-code">session</span><span class="rt-cowork">task</span> describes on the fly is what Phase 2 uses, and plain-language prompting is enough.
+*What you don't need.* You don't need to write an agent definition file for Module 3 or learn a special command. Defining your own reusable helpers is a later move; launching ones that the lead session or task describes on the fly is what Phase 2 uses, and plain-language prompting is enough.
 
-For the full reference, <span class="rt-code">open Anthropic's [subagent documentation](https://code.claude.com/docs/en/sub-agents)</span><span class="rt-cowork">open Claude's in-app help and search for *agents*</span>. You're after the shape: *helper with instructions, own context, returns a result. You summon it by asking.*
+For the full reference, <span class="rt-claude rt-code">open the [Claude Code helper-agent documentation](https://code.claude.com/docs/en/sub-agents)</span><span class="rt-codex rt-code">open the [Codex helper-agent documentation](https://learn.chatgpt.com/docs/agent-configuration/subagents)</span><span class="rt-cowork">open the in-app help and search for *agents*</span>. You're after the shape: *helper with instructions, own context, returns a result. You summon it by asking.*
 
 **What to bring to class:** the three one-line practitioner takeaways. That's it. Module 3 runs on the memory you already built in Module 2.
 
@@ -53,7 +53,7 @@ For the full reference, <span class="rt-code">open Anthropic's [subagent documen
 - Ceiling-before-addition — see what ONE agent does well before adding coordination, so the cost of coordination is visible.
 
 **Prerequisites:**
-- Claude Code installed (same as prior modules).
+- An approved agent runtime installed (same as prior modules).
 - Module 2 completed; memory in place.
 - Web access — all five practitioner sites are public.
 
@@ -64,6 +64,7 @@ For the full reference, <span class="rt-code">open Anthropic's [subagent documen
 - `[checked:2026-08-23 result:OK due:2026-11-20]` https://claude.com/blog/using-claude-code-the-unreasonable-effectiveness-of-html — [vendor practitioner direct] Thariq Shihipar's dated account of changing the review artifact to stay in the loop. fallback: use another dated Claude Code team workflow account.
 - `[checked:2026-08-23 result:OK due:cohort]` https://partner.danielbilsborough.com/claude-code — [practitioner direct, maintained] dated account of plain-text memory, long-running work, and human review boundaries. fallback: replace if the maintained page loses its visible update date.
 - `[checked:2026-08-23 result:OK due:cohort]` https://code.claude.com/docs/en/sub-agents — [vendor docs, capability] isolated context, delegation, natural-language invocation, and return to the main conversation. fallback: use the documentation index at https://code.claude.com/docs/llms.txt and locate the current subagents page.
+- `[checked:2026-09-05 result:OK due:cohort]` https://learn.chatgpt.com/docs/agent-configuration/subagents — [vendor docs, capability] Codex helper-agent workflows, explicit natural-language delegation, parallel execution, and results returned to the lead task. fallback: open the current Codex documentation and locate the subagents page.
 
 **Capability notes (confirmed, no check owed):**
 - Subagent launch phrasing ("Launch a subagent to…" / "Launch these three subagents in parallel") confirmed by Antti as working reliably in current Claude Code — no `claude-code-guide` check needed.

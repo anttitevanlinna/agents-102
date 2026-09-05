@@ -1,18 +1,16 @@
 # Prework
 
-Land at Module 1 with <span class="rt-code">Claude Code</span><span class="rt-cowork">Cowork</span> working, your work calendar connected or ready as a screenshot, a snake game, a meetings summary, and a 2-page read. About 50 minutes.
+Land at Module 1 with your agent runtime working, your work calendar connected or ready as a screenshot, a snake game, a meetings summary, and a 2-page read. About 50 minutes.
 
-## 1. Set up <span class="rt-code">Claude Code</span><span class="rt-cowork">Cowork</span> (5 min)
+## 1. Set up your agent runtime (5 min)
 
-You need a Claude account at claude.ai. Then create an empty folder at `~/Documents/agents-101/` (right-click in Finder or File Explorer → *New Folder*). This is your training directory; everything you produce over the eight modules lands here.
+Make sure you can access the agent runtime you selected. Then create an empty folder at `~/Documents/agents-101/` (right-click in Finder or File Explorer → *New Folder*). This is your training directory; everything you produce over the eight modules lands here.
 
 **Session** *(new, "Prework")*
 
-<span class="rt-code">Install Claude Code (CLI or Desktop). Pick whichever fits your habits; all the exercises work in both. Start a new session at `~/Documents/agents-101/`.</span><span class="rt-cowork">Open the *Cowork* tab next to *Chat* in your Claude Desktop app. Click *New task* and select `~/Documents/agents-101/` as the working folder. No terminal required.</span>
+<span class="rt-code">Open your code agent in the interface you selected. Start a new session at `~/Documents/agents-101/`.</span><span class="rt-cowork">Open the *Cowork* tab next to *Chat* in your desktop app. Click *New task* and select `~/Documents/agents-101/` as the working folder. No terminal required.</span>
 
-```
-/rename agents-101-prework
-```
+Name it `agents-101-prework` if your runtime supports session names.
 
 ## 2. Connect your work apps (5 min)
 
@@ -20,19 +18,19 @@ Connect either Microsoft 365 or Google Workspace before the first module if your
 
 Other connectors are optional. If your company uses a wiki, Confluence, Jira, Linear, SharePoint, Google Drive, or a similar shared knowledge base, connect it if you already have access. Those sources become useful later when your agent starts reading company material instead of only the files in the training directory.
 
-<span class="rt-code">In Claude Code, click the **+** button next to the prompt, then **Settings → Connectors**.</span><span class="rt-cowork">In Claude Desktop, open **Customize → Connectors**. The connector list is shared across Claude Desktop and Cowork.</span> Sign in with your work account and enable Microsoft 365 or Google Workspace if it appears.
+If your runtime offers connectors, open its connector settings. Sign in with your work account and enable Microsoft 365 or Google Workspace if it appears.
 
-If your IT admin has not approved the connector yet, keep going. The calendar screenshot path in Task 4 gives you the same teaching moment with less automation. For click-paths and troubleshooting, see [Claude quick reference](../../trainings/agents-101/reference/claude-quick-reference.md).
+If your IT admin has not approved the connector yet, keep going. The calendar screenshot path in Task 4 gives you the same teaching moment with less automation. For click-paths and troubleshooting, see [Runtime quick reference](../../trainings/agents-101/reference/claude-quick-reference.md).
 
 ## 3. Install the training folder (3 min)
 
 Get the starter file set into your training directory. The starter file set ships the folders and reference material used later in the training: `memory/`, `sources/`, `agents/`, the Module 4 policy files, a library of the prompts the training uses, and the personal-to-team patterns for a later module.
 
-[Download the starter file set](<CONTENT_URL>) and save it directly into `~/Documents/agents-101/`. You should see `agents-101-starter.tar.gz` land there in Finder or File Explorer. Then ask Claude to unpack it.
+[Download the starter file set](<CONTENT_URL>) and save it directly into `~/Documents/agents-101/`. You should see `agents-101-starter.tar.gz` land there in Finder or File Explorer. Then ask the agent to unpack it.
 
 {{prompt:a101-prework-extract-tarball}}
 
-*Proof: you placed the file; Claude unpacked it. Two visible steps, no magic.*
+*Proof: you placed the file; the agent unpacked it. Two visible steps, no magic.*
 
 ## 4. Build a snake game (10 min)
 
@@ -40,15 +38,15 @@ Why a snake game? Because you can tell if it works. No ambiguity (either the sna
 
 {{prompt:a101-prework-snake-game}}
 
-Claude writes the file. Open `prework/snake.html` in your browser. On macOS, double-click it in Finder; on Windows, right-click → Open with → your browser. Play.
+The agent writes the file. Open `prework/snake.html` in your browser. On macOS, double-click it in Finder; on Windows, right-click → Open with → your browser. Play.
 
 Keep the file. It's yours.
 
-*Proof: Claude can create a working file and save it on your machine.*
+*Proof: the agent can create a working file and save it on your machine.*
 
 ## 5. Summarize your week in meetings (10 min)
 
-Quick concept first. **A *connector* is a way for Claude to talk directly to one of your work apps (your calendar, your email, your files).** When a connector is on, Claude can fetch your real data ("list my meetings this week") instead of you having to copy-paste it.
+Quick concept first. **A *connector* is a way for the agent to talk directly to one of your work apps (your calendar, your email, your files).** When a connector is on, the agent can fetch your real data ("list my meetings this week") instead of you having to copy-paste it.
 
 Two paths. Pick the one that matches what you saw.
 
@@ -76,9 +74,9 @@ Take a screenshot of your calendar week view, then:
 
 </div>
 
-*Proof: Claude can read your real work data and save a useful summary on your machine.*
+*Proof: the agent can read your real work data and save a useful summary on your machine.*
 
-Stuck on the connector or want specific click-paths? See [Claude quick reference](../../trainings/agents-101/reference/claude-quick-reference.md).
+Stuck on the connector or want specific click-paths? See [Runtime quick reference](../../trainings/agents-101/reference/claude-quick-reference.md).
 
 ## 6. Read the mental frame (10 min)
 
@@ -90,9 +88,9 @@ Open [What is an Agent, LLM vs chat](trainings/agents-101/supplementary/what-is-
 
 ## Bring to Module 1
 
-You walk into Module 1 with <span class="rt-code">Claude Code</span><span class="rt-cowork">Cowork</span> working, calendar access checked, a snake game, a meetings summary, and a 2-page read. Five things. Not nothing. Module 1 just gets going.
+You walk into Module 1 with your agent runtime working, calendar access checked, a snake game, a meetings summary, and a 2-page read. Five things. Not nothing. Module 1 just gets going.
 
-Once those five things are ready, end the prework <span class="rt-code">session</span><span class="rt-cowork">task</span>; Module 1 starts fresh at `~/Documents/agents-101/`.
+Once those five things are ready, end the prework session or task. Module 1 starts fresh at `~/Documents/agents-101/`.
 
 <!-- maintainer -->
 

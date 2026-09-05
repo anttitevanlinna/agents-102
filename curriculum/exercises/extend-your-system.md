@@ -4,11 +4,9 @@
 
 **Session** *(new, "Module 8 - Agents building agents")*
 
-<span class="rt-code">Start a new Claude Code session at your training-directory root.</span><span class="rt-cowork">Start a new Cowork task with your training-directory root as the working folder.</span>
+Start a new session or task at your training-directory root.
 
-```
-/rename m8-agents-building-agents
-```
+Name it `m8-agents-building-agents` if your runtime supports session names.
 
 **What you do:**
 
@@ -46,7 +44,7 @@ If the brief takes more than five minutes, your gap is too big. Narrow it.
 
 *5 min*
 
-Claude ran your new agent. Look at the output. Don't read it to admire it. Read it to find the weakness.
+The lead agent ran your new agent. Look at the output. Don't read it to admire it. Read it to find the weakness.
 
 Push back in chat:
 - *"Cite the memory file for the second claim. That felt generic."*

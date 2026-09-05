@@ -12,17 +12,17 @@ This is optional, and it runs on the screen by default: watch the two briefings 
 
 Two runs is a demo, not a measurement. With N=2, a claim that appears in both could still be the model's bias toward a popular framing. A claim that drifts could be an edge case in the next sample. The signal starts to firm up around N=5 to 10. Patterns emerge from the noise. For a production check (the kind Module 6's eval loop wires up), you'd want N=20 to 30, where stability across runs starts to mean something. Today's two-run is an illustration of a different kind of uncertainty, not yet the full technique you'd ship.
 
-Claude spawns a subagent that generates a second briefing from the same evidence set, blind to the first run.
+The lead agent spawns a helper that generates a second briefing from the same evidence set, blind to the first run.
 
 {{prompt:self-consistency-after-scoreboard-1}}
 
-Claude compares the first and second briefing in chat, naming what stayed, what drifted, and what the groundedness detectors didn't catch.
+The agent compares the first and second briefing in chat, naming what stayed, what drifted, and what the groundedness detectors didn't catch.
 
 {{prompt:self-consistency-after-scoreboard-2}}
 
 The take-home move is not "always run self-consistency." The take-home move is: have a multi-method judge ready for outputs you ship. Point the same shape at a customer email, a pricing memo, a positioning draft, anything you'd want a check on before it goes out.
 
-Claude builds a multi-method judge against any other output you want to quality-control.
+The agent builds a multi-method judge against any other output you want to quality-control.
 
 {{prompt:self-consistency-after-scoreboard-3}}
 

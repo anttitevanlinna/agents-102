@@ -18,7 +18,7 @@ After this module, you will be able to:
 
 ## Start here
 
-Start a fresh <span class="rt-code">Claude Code session</span><span class="rt-cowork">Cowork task</span> at `~/Documents/agents-101/`.
+Start a fresh session or task at `~/Documents/agents-101/`.
 
 In Module 3 the synthesized answer sat at an uneasy distance: you'd stake your reputation on some of it without knowing which. Your Module 4 residuals stay named, not solved; that is a different axis.
 
@@ -36,22 +36,22 @@ This module measures what the system actually says inside its scope. Four detect
 
 ## Debrief
 
-Five minutes. Claude reviews the benchmark and compounds the useful part into the training-root `CLAUDE.md`: when future sessions should run a groundedness check before trusting or using an output. The evidence is what the scoreboard produced: the evidence roster, claim pool, adjudicated claims, detector outputs, scoreboard, and the judge you saved. Claude updates the operating rules, reports what changed, and you push back on anything that's off.
+Five minutes. The agent reviews the benchmark and compounds the useful part into the root instructions file: when future sessions should run a groundedness check before trusting or using an output. The evidence is what the scoreboard produced: the evidence roster, claim pool, adjudicated claims, detector outputs, scoreboard, and the judge you saved. The agent updates the operating rules, reports what changed, and you push back on anything that's off.
 
-Ask Claude to review the session and update `./CLAUDE.md` with groundedness operating rules.
+Ask the agent to review the session and update the root instructions file with groundedness operating rules.
 
 {{prompt:a101-m5-debrief-groundedness-rules}}
 
 
 ## Notice what the prompt insists on
 
-Notice what this prompt insists on: touch only the Groundedness checks section, preserve every other section verbatim, then read back what you wrote and confirm each rule landed. Both moves do work the model wouldn't volunteer. Left to itself, Claude treats `./CLAUDE.md` as a clean canvas. A small edit becomes a full rewrite, your earlier rules quietly drift, the diff is uglier than it needed to be. Reading back the section against the file is a separate problem: the report Claude writes describes what it intended, not what landed. The verify-at-artifact step closes the gap. Two different patterns from the same family. Name the boundary, then check the work. Once you have them, you'll start seeing where to apply them in every prompt that asks Claude to edit a file you care about.
+Notice what this prompt insists on: touch only the Groundedness checks section, preserve every other section verbatim, then read back what you wrote and confirm each rule landed. Both moves do work the model wouldn't volunteer. Left to itself, the agent treats the root instructions file as a clean canvas. A small edit becomes a full rewrite, your earlier rules quietly drift, and the diff is uglier than it needed to be. Reading back the section against the file is a separate problem: the report the agent writes describes what it intended, not what landed. The verify-at-artifact step closes the gap. Two different patterns from the same family. Name the boundary, then check the work. Once you have them, you'll start seeing where to apply them in every prompt that asks an agent to edit a file you care about.
 
 ## Push back on the summary
 
-Read Claude's summary. Push back where it's wrong: *"run the check only for external-facing claims, not every note"* / *"that rule is too vague; name the evidence roster"* / *"this should say when to stop and ask for sources."* Two things now travel: the reusable judge file exists, and `./CLAUDE.md` tells future sessions when groundedness checking is required.
+Read the agent's summary. Push back where it's wrong: *"run the check only for external-facing claims, not every note"* / *"that rule is too vague; name the evidence roster"* / *"this should say when to stop and ask for sources."* Two things now travel: the reusable judge file exists, and the root instructions file tells future sessions when groundedness checking is required.
 
-> Consider automating some of these checks. Not everything. Start with the repeatable, high-cost misses: numbers in external notes, customer names in account summaries, policy claims in internal advice, source citations in briefings. If a future session should never trust that shape of output without a check, write the trigger into `./CLAUDE.md` now. Module 6 turns that trigger into a loop.
+> Consider automating some of these checks. Not everything. Start with the repeatable, high-cost misses: numbers in external notes, customer names in account summaries, policy claims in internal advice, source citations in briefings. If a future session should never trust that shape of output without a check, write the trigger into the root instructions file now. Module 6 turns that trigger into a loop.
 
 ## Agent Actions
 
@@ -73,7 +73,7 @@ Having added the checking step before acting, this is also the suitable place to
 
 Ethan Mollick, "Garbage Can and Bitter Lesson."
 
-Once the judge and pre-read are ready, end this module's <span class="rt-code">session</span><span class="rt-cowork">task</span>; Module 6 starts fresh at `~/Documents/agents-101/`.
+Once the judge and pre-read are ready, end this module's session or task. Module 6 starts fresh at `~/Documents/agents-101/`.
 
 ## Next
 The benchmark ran once. Thirty claims, four detectors, one judge. Now imagine the benchmark has three hundred claims, the judge runs on every build, and the generation tactic absorbs the judge's feedback between rounds. That's evals.

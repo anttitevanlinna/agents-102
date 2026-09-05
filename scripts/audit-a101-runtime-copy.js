@@ -11,6 +11,7 @@ const ROOT = path.resolve(__dirname, '..');
 const TRAINING_KEY = 'agents-101';
 const MAINTAINER_MARKER = '<!-- maintainer -->';
 const INCLUDE_RE = /^\[[^\]]+\]\(((?:exercises|lectures)\/[a-z0-9-]+)\.md\)[ \t]*$/gm;
+const LINKED_A101_RE = /(?:\.\.\/)*(trainings\/agents-101\/(?:supplementary|reference)\/[a-z0-9-]+\.md)(?:#[^)]+)?/g;
 
 const RULES = Object.freeze([
   { regex: /CLAUDE\.md/g, category: 'artifact-path' },
@@ -20,7 +21,7 @@ const RULES = Object.freeze([
   { regex: /AskUserQuestion/g, category: 'tool-name' },
   { regex: /^\/[a-z][a-z0-9-]*\b/g, category: 'interaction-mechanic' },
   { regex: /Customize\s*(?:→|->)\s*Skills/g, category: 'interaction-mechanic' },
-  { regex: /\/(?:agents|rename)\b/g, category: 'interaction-mechanic' },
+  { regex: /(?:^|(?<=[\s`]))\/(?:agents|rename)\b/g, category: 'interaction-mechanic' },
   { regex: /\bplan mode\b/gi, category: 'interaction-mechanic' },
 ]);
 
@@ -128,6 +129,10 @@ function collectStudentFiles() {
     let match;
     while ((match = INCLUDE_RE.exec(text)) !== null) {
       queue.push(path.join(ROOT, 'curriculum', `${match[1]}.md`));
+    }
+    LINKED_A101_RE.lastIndex = 0;
+    while ((match = LINKED_A101_RE.exec(text)) !== null) {
+      queue.push(path.join(ROOT, 'curriculum', match[1]));
     }
   }
   return files;

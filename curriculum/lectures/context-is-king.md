@@ -4,11 +4,11 @@ The same question. Two answers. What makes the difference?
 
 ## The demo you're about to see
 
-Two Claude chat windows.
+Two LLM chat windows.
 
-In one, the first prompt is *"What is the capital of Italy?"* Claude answers *Rome.* Then the second prompt: *"What should we have for dinner?"* Claude suggests something Italian: pasta, osso buco, risotto.
+In one, the first prompt is *"What is the capital of Italy?"* The LLM answers *Rome.* Then the second prompt: *"What should we have for dinner?"* The LLM suggests something Italian: pasta, osso buco, risotto.
 
-In the other window, the first prompt is *"What is the largest lake in Finland?"* Claude answers *Saimaa.* Then the same second prompt as before. Claude suggests something Finnish: salmon, rye bread, meatballs.
+In the other window, the first prompt is *"What is the largest lake in Finland?"* The LLM answers *Saimaa.* Then the same second prompt as before. The LLM suggests something Finnish: salmon, rye bread, meatballs.
 
 Same words. Different answer. The first exchange became part of context, and the context colored everything after.
 
@@ -16,7 +16,7 @@ Before you watch the second session run, take a guess. What will it suggest? You
 
 ## What just happened
 
-Claude isn't looking your question up in a database. It reads the whole conversation every time and generates the next response from all of it. Your first prompt and its answer are now *part of the input* to the second prompt. Change the front, change the back.
+The LLM isn't looking your question up in a database. It reads the whole conversation every time and generates the next response from all of it. Your first prompt and its answer are now *part of the input* to the second prompt. Change the front, change the back.
 
 That's context. Unglamorous, isn't it? And yet every useful thing in this training is built on this one idea.
 
@@ -28,7 +28,7 @@ One more window. The first prompt: *"I'm a cardiologist preparing dinner for my 
 
 Then the same second prompt about dinner.
 
-The suggestion shifts again. Heart-healthy. Low-sodium. Vegetable-forward. Not because Claude knows medicine better than Italian cooking. You told it who you are, and every answer after took that into account.
+The suggestion shifts again. Heart-healthy. Low-sodium. Vegetable-forward. Not because the LLM knows medicine better than Italian cooking. You told it who you are, and every answer after took that into account.
 
 Context is whatever you tell it. A fact. A role. A preference. A constraint. All of it colors what comes next.
 

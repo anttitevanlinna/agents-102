@@ -6,9 +6,7 @@
 
 <span class="rt-code">Start a new agent session at your training-directory root.</span><span class="rt-cowork">Start a new Cowork task with your training-directory root as the working folder.</span>
 
-```
-/rename m4-security-skill
-```
+Name it `m4-security-skill` if your runtime supports session names.
 
 **What you do:**
 
@@ -74,9 +72,9 @@ Ask the agent to install the authored source.
 
 <div class="rt-cowork">
 
-One place skill-creation lives in Claude Desktop is *Customize* → *Skills* → *New* → *Create with Claude*, useful to know exists. You don't need it here. The work session you've been in already has the authored source on disk; the skill-creator skill can draft the personal skill from this session.
+One place skill creation lives in the desktop app is *Customize* → *Skills* → *New* → *Create with Claude*, useful to know exists. You don't need it here. The work session you've been in already has the authored source on disk; the skill-creator skill can draft the personal skill from this session.
 
-Cowork can't write into your personal Claude directories. When skill-creator finishes drafting, it surfaces a Save button. You press Save, that's the moment the personal skill lands.
+This task interface can't write into your runtime's personal directories. When skill-creator finishes drafting, it surfaces a Save button. You press Save, that's the moment the personal skill lands.
 
 {{prompt:author-security-skill-6}}
 

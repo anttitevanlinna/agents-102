@@ -3,6 +3,8 @@ const assert = require('node:assert/strict');
 
 const {
   applyRuntimeVisibility,
+  audit,
+  collectStudentFiles,
   scanText,
 } = require('./audit-a101-runtime-copy.js');
 
@@ -33,6 +35,21 @@ test('Codex copy audit classifies Claude-only paths, names, tools, and mechanics
   );
 });
 
+test('slash-command detection does not classify Agents 101 file paths', () => {
+  const text = [
+    'Open `~/Documents/agents-101/`.',
+    'Read [the guide](trainings/agents-101/reference/runtime.md).',
+    'Then use `/agents` to inspect helpers.',
+  ].join('\n');
+
+  const findings = scanText(text, 'student-copy', 'fixture.md', []);
+
+  assert.deepEqual(
+    findings.map(({ term, category }) => [term, category]),
+    [['/agents', 'interaction-mechanic']]
+  );
+});
+
 test('runtime visibility removes Cowork copy from Codex CLI scanning', () => {
   const source = [
     '<span class="rt-cowork">Open Claude Code and write CLAUDE.md.</span>',
@@ -48,6 +65,17 @@ test('runtime visibility removes Cowork copy from Codex CLI scanning', () => {
   assert.match(visible, /Continue in this session/);
   assert.match(visible, /Use the command line/);
   assert.deepEqual(findings, []);
+});
+
+test('student-copy collection follows linked Agents 101 supplementary and reference pages', () => {
+  const files = collectStudentFiles().map((file) => file.replaceAll('\\', '/'));
+
+  assert.ok(files.some((file) => file.endsWith(
+    '/curriculum/trainings/agents-101/supplementary/what-is-an-agent.md'
+  )));
+  assert.ok(files.some((file) => file.endsWith(
+    '/curriculum/trainings/agents-101/reference/claude-quick-reference.md'
+  )));
 });
 
 test('an exact allowlist entry suppresses comparison prose and requires rationale', () => {
@@ -69,4 +97,10 @@ test('an exact allowlist entry suppresses comparison prose and requires rational
     }]),
     /rationale/
   );
+});
+
+test('live Agents 101 student copy is runtime-clean for both Codex profiles', () => {
+  for (const profile of ['codex-cli', 'codex-desktop']) {
+    assert.deepEqual(audit(profile), [], `${profile} exposes Claude-only student copy`);
+  }
 });

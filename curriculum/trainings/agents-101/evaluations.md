@@ -16,7 +16,7 @@ After this module, you will be able to:
 
 ## Start here
 
-Start a fresh <span class="rt-code">Claude Code session</span><span class="rt-cowork">Cowork task</span> at `~/Documents/agents-101/`.
+Start a fresh session or task at `~/Documents/agents-101/`.
 
 Did you read Ethan Mollick's [*The Bitter Lesson versus The Garbage Can*](https://www.oneusefulthing.org/p/the-bitter-lesson-versus-the-garbage)?
 
@@ -42,18 +42,18 @@ The question shifts at Module 6. What if the work kept getting sharper, not beca
 
 ## Debrief
 
-Five minutes. Claude reviews the eval loop's run and sharpens the generator's tactic file one more time. The evidence is the round-by-round trail: what changed in the tactic, what the judge kept catching, what the tactic never absorbed. Claude reviews, rewrites the tactic in place, reports what changed. The judge file stays untouched. That's the integrity of the loop. You push back on anything that's off.
+Five minutes. The agent reviews the eval loop's run and sharpens the generator's tactic file one more time. The evidence is the round-by-round trail: what changed in the tactic, what the judge kept catching, what the tactic never absorbed. The agent reviews, rewrites the tactic in place, and reports what changed. The judge file stays untouched. That's the integrity of the loop. You push back on anything that's off.
 
-Ask Claude to read the round trail and sharpen the generator's tactic beyond what the loop reached.
+Ask the agent to read the round trail and sharpen the generator's tactic beyond what the loop reached.
 
 {{prompt:a101-m6-debrief-tactic-sharpen}}
 
 
 ## Push back on the summary
 
-Read Claude's summary. Push back where it's wrong. *"That rule is too vague, make it observable"* / *"you added a rule the tactic already had after round 2."* The artifact: the sharpened `./generation-tactic.md` plus one line added to the Module 6 eval-notes file naming the first always-on eval you'll run when work resumes. This is the module's thesis made literal. The work got sharper across rounds because the same judge kept catching the same kinds of misses and the tactic kept absorbing them.
+Read the agent's summary. Push back where it's wrong. *"That rule is too vague, make it observable"* / *"you added a rule the tactic already had after round 2."* The artifact: the sharpened `./generation-tactic.md` plus one line added to the Module 6 eval-notes file naming the first always-on eval you'll run when work resumes. This is the module's thesis made literal. The work got sharper across rounds because the same judge kept catching the same kinds of misses and the tactic kept absorbing them.
 
-This is Claude auditing a tactic it helped sharpen. That is acceptable here because the round files and judge notes are the evidence. If the summary sounds too kind, ask the sharper follow-up: *"Which rule did you claim to remove but actually kept under another name? Quote both lines."*
+This is the agent auditing a tactic it helped sharpen. That is acceptable here because the round files and judge notes are the evidence. If the summary sounds too kind, ask the sharper follow-up: *"Which rule did you claim to remove but actually kept under another name? Quote both lines."*
 
 ## Key Concepts
 - **Eval as infrastructure.** The judge moves from object to live machinery. It's not inspected, it's watched.
@@ -72,7 +72,7 @@ The [Cookbook for Agent System Design](../../trainings/agents-101/supplementary/
 
 Keep [What is an Agent](../../trainings/agents-101/supplementary/what-is-an-agent.md) as an optional lookup. Its words now point at things you have actually built: context, memory, tools, other agents, boundaries, judges, loops, and autonomy rungs. Neither document is Module 7 prework; the single access-without-use example is the whole load.
 
-Once the trigger is written, end this module's <span class="rt-code">session</span><span class="rt-cowork">task</span>; Module 7 starts fresh at `~/Documents/agents-101/`.
+Once the trigger is written, end this module's session or task. Module 7 starts fresh at `~/Documents/agents-101/`.
 
 ## Next
 You just built an eval that improves itself. The system can now keep pressure on its own output when you are not watching every step. The close is not "trust the agent." The close is "trust the loop you can inspect."

@@ -8,13 +8,13 @@ A chat forgets. A memory remembers.
 
 You've just pinned your challenge in `./challenge.md` (the opener). Now you build a memory around it, scoped to the **next big challenge** you're wrestling with at work. The board paper due in three weeks. The re-org you're shaping. The vendor decision on your desk. Narrow enough that 5–8 topic pages cover it.
 
-The empty `sources/`, `memory/`, and `agents/` folders are already in place from prework. Keep the same <span class="rt-code">session (the chat window you opened in the opener)</span><span class="rt-cowork">task (the workspace you opened in the opener)</span> running. Claude already has your challenge in scrollback, and `./challenge.md` is on disk. Four phases: curate, put to work, compound, self-maintain.
+The empty `sources/`, `memory/`, and `agents/` folders are already in place from prework. Keep the same session or task running. The agent already has your challenge in scrollback, and `./challenge.md` is on disk. Four phases: curate, put to work, compound, self-maintain.
 
 ## Phase 1: Curate, ingest, build
 
 *20 min*
 
-A memory is only as good as what goes into it. Most people sabotage this step by shovelling in whatever's nearest. Don't. Three beats: Claude helps you curate a plan, then Claude pulls in (or points at) the content for `sources/`, then Claude builds `memory/` from what's on disk.
+A memory is only as good as what goes into it. Most people sabotage this step by shovelling in whatever's nearest. Don't. Three beats: the agent helps you curate a plan, then pulls in (or points at) the content for `sources/`, then builds `memory/` from what's on disk.
 
 **Always comply with your company's AI policy.** Whatever rules your org has about what can and can't go through an LLM (enterprise agreement, data classification, regulated-data carve-outs) those hold here. If in doubt, check before uploading.
 
@@ -22,13 +22,13 @@ A memory is only as good as what goes into it. Most people sabotage this step by
 
 ## Keep the heavy reads under control
 
-Heavy reads ahead. Several phases re-read all of `sources/` or `memory/` and rewrite multiple files at once. Plan mode (named in Beat 3) is your primary control. If a non-plan-mode prompt starts reading the world, stop it, steer narrower (what to skip, where to focus), then say *"continue"*. If you want something simple, give a hard cap: *"10 sources max, or even fewer"*.
+Heavy reads ahead. Several phases re-read all of `sources/` or `memory/` and rewrite multiple files at once. A plan-first request is your primary control. If the agent starts reading the world before showing the plan, stop it, steer narrower (what to skip, where to focus), then say *"continue"*. If you want something simple, give a hard cap: *"10 sources max, or even fewer"*.
 
 ---
 
 ## Curate the source plan
 
-**Beat 1. Curate.** Claude surveys what's available and asks about your world.
+**Beat 1. Curate.** The agent surveys what's available and asks about your world.
 
 {{prompt:build-your-challenge-memory-1}}
 
@@ -37,47 +37,38 @@ Push back, sharpen, add what's missing. The plan is the list. Nothing's in `sour
 
 ## Ingest the sources
 
-**Beat 2. Ingest.** Now Claude pulls in (or points at) the content for `sources/`. Agent does the heavy lifting; you don't copy-paste.
+**Beat 2. Ingest.** Now the agent pulls in (or points at) the content for `sources/`. It does the heavy lifting; you don't copy-paste.
 
-**A note on what Claude reads.** <span class="rt-cli">Claude Code CLI reads any path you name. For sources outside the training folder, give Claude the absolute path; it reads the file directly.</span><span class="rt-desktop">Claude Code Desktop reads files you attach via the **+** button at the prompt. For sources outside the training folder, attach them with **+** before sending the prompt.</span><span class="rt-cowork">Cowork reads files in the working folders you've selected for this task. Add another folder (your downloads, a notes directory) via the **+** button. To attach a single file for one message, also **+**.</span>
+**A note on what the agent reads.** <span class="rt-cli">The CLI agent reads any path you name. For sources outside the training folder, give the absolute path.</span><span class="rt-desktop">The desktop agent reads files you attach at the prompt. Attach sources outside the training folder before sending the prompt.</span><span class="rt-cowork">The agent reads files in the working folders you've selected for this task. Add another folder (your downloads, a notes directory) or attach a single file for one message.</span>
 
 {{prompt:build-your-challenge-memory-2}}
 
 
-Look at Claude's three lists. Anything in list (3), the NOT REACHABLE pile, stays a reference file unless you decide to include it. In that case share the file with Claude (your runtime knows how); Claude will save the content into `sources/`. Never type or paste content yourself; that's the agent's job. Aim for 8–10 items with real content or local-path links between lists (1) and (2); list (3) can be empty, and usually is.
+Look at the agent's three lists. Anything in list (3), the NOT REACHABLE pile, stays a reference file unless you decide to include it. In that case share the file with the agent; it will save the content into `sources/`. Never type or paste content yourself; that's the agent's job. Aim for 8–10 items with real content or local-path links between lists (1) and (2); list (3) can be empty, and usually is.
 
 ## Build the memory under a plan
 
-**Beat 3. Build memory.** Now the memory gets built from what's actually on disk. <span class="rt-code">Turn on plan mode first. Claude writes out what it's about to do before touching files, you approve, nothing commits until you say go. Tell Claude *"Enable plan mode."* (Alternatives: pick *Plan* from the mode dropdown at the bottom of the Claude Code desktop app, or press Shift+Tab to cycle.) The footer should read *plan mode*.</span><span class="rt-cowork">Before you do anything, ask Claude to write a plan first. It writes what it's about to do before touching files, so you can review and steer before files commit.</span>
+**Beat 3. Build memory.** Now the memory gets built from what's actually on disk. Ask the agent to write a plan first and wait for your approval before touching files. Review the topic split, steer it, then approve the work.
 
-<div class="rt-code">
-
-Heads up on what happens at the end of the plan: Claude will pause and ask *"Claude has written up a plan and is ready to execute. Would you like to proceed?"* For this exercise, **Yes, and use auto mode** is the friendly default if the plan's topic split looks right. If two topics should merge, or something's missing, pick **No, keep planning** and type one sentence of feedback; Claude rewrites the plan. The remaining option walks you through each file write one at a time, which this exercise doesn't need. Your first option may be worded a little differently depending on your account, so pick by wording rather than by position. Full rundown in the [quick reference](../trainings/agents-101/reference/claude-quick-reference.md).
-
-</div>
-<div class="rt-cowork">
-
-Heads up: when Claude finishes the plan, read it before saying go. If the topic split looks right, tell Claude to proceed. If two topics should merge or something's missing, type one sentence of feedback and ask Claude to rewrite the plan before executing.
-
-</div>
+Heads up: when the agent finishes the plan, read it before saying go. If the topic split looks right, tell the agent to proceed. If two topics should merge or something's missing, type one sentence of feedback and ask for a revised plan before execution. Your runtime may phrase the approval choices differently, so choose by meaning rather than position. The [Runtime quick reference](../trainings/agents-101/reference/claude-quick-reference.md) covers the available controls.
 
 {{prompt:build-your-challenge-memory-3}}
 
 
 ## Review the plan, then have the memory audit itself
 
-Claude returns a plan. Read it. Does the topic split match how you actually think about the challenge? If two topics should be one, say so. If something's missing, add it.
+The agent returns a plan. Read it. Does the topic split match how you actually think about the challenge? If two topics should be one, say so. If something's missing, add it.
 
-Approve. Claude writes the files.
+Approve. The agent writes the files.
 
-Now ask Claude to audit itself:
+Now ask the agent to audit itself:
 
 {{prompt:build-your-challenge-memory-4}}
 
 
 That list is your first quality check. You'll sharpen those pages in Phase 3.
 
-<span class="rt-code">**What plan mode just did for you.** The memory build wrote 5–8 files in one shot. That's the kind of multi-file, multi-step work where catching a wrong topic split in a bullet list is ten times cheaper than catching it in seven written files. That's plan mode's job: make Claude think before it makes extensive output, give you one review point instead of many. Plan mode exits automatically after an approved plan runs, so the footer is already back to *default*. Rule of thumb going forward: plan mode for anything that touches many files or compounds over steps; skip it when a single focused prompt will do.</span><span class="rt-cowork">**What asking for a plan just did for you.** The memory build wrote 5–8 files in one shot. That's the kind of multi-file, multi-step work where catching a wrong topic split in a bullet list is ten times cheaper than catching it in seven written files. That's the job of asking Claude to plan first: make Claude think before it makes extensive output, give you one review point instead of many. Rule of thumb going forward: ask for a plan first on anything that touches many files or compounds over steps; skip it when a single focused prompt will do.</span>
+**What planning first just did for you.** The memory build wrote 5–8 files in one shot. That's the kind of multi-file, multi-step work where catching a wrong topic split in a bullet list is ten times cheaper than catching it in seven written files. Planning first gives you one review point before extensive output. Rule of thumb going forward: ask for a plan on anything that touches many files or compounds over steps; skip it when a single focused prompt will do.
 
 ## Phase 2: Your first custom agent
 
@@ -90,27 +81,27 @@ An agent, at its simplest, is a markdown file: instructions the model reads at t
 {{prompt:build-your-challenge-memory-5}}
 
 
-Claude asks. You answer. The agent file lands in `agents/`.
+The agent asks. You answer. The instruction file lands in `agents/`.
 
 Now use it. Fresh message.
 
 {{prompt:build-your-challenge-memory-6}}
 
 
-Answer with a real task from your challenge. Claude reads the agent file, reads the memory, cites sources, stays inside its rules. The citations tell you whether the memory earned its keep or whether Claude filled in from training data. Quietly, you just made a reusable capability. Same agent, next week's task.
+Answer with a real task from your challenge. The agent reads its instruction file, reads the memory, cites sources, and stays inside its rules. The citations tell you whether the memory earned its keep or whether the LLM filled in from training data. Quietly, you just made a reusable capability. Same agent, next week's task.
 
 ## Phase 3: Compound
 
 *7 min*
 
-A dumb knowledge base grows. A good one *sharpens*, pages get tighter as new sources land, not longer. Phase 3 proves it: drop one new source in and watch the existing pages get sharper. You pick the source; Claude integrates.
+A dumb knowledge base grows. A good one *sharpens*, pages get tighter as new sources land, not longer. Phase 3 proves it: drop one new source in and watch the existing pages get sharper. You pick the source; the agent integrates.
 
-Pick one source that fills a gap (a practitioner article, a skipped doc, an email thread, a local file you can share). Tell Claude to integrate it into the memory, then paste the link or path after the `New source:` line in the prompt.
+Pick one source that fills a gap (a practitioner article, a skipped doc, an email thread, a local file you can share). Tell the agent to integrate it into the memory, then paste the link or path after the `New source:` line in the prompt.
 
 {{prompt:build-your-challenge-memory-7}}
 
 
-Read Claude's report. Push back if a claim "got sharper" but the top didn't actually change. Second batch made the first batch better. Chat literally cannot do this.
+Read the agent's report. Push back if a claim "got sharper" but the top didn't actually change. Second batch made the first batch better. Chat literally cannot do this.
 
 ## Phase 4: Let it maintain itself
 
@@ -119,7 +110,7 @@ Read Claude's report. Push back if a claim "got sharper" but the top didn't actu
 {{prompt:build-your-challenge-memory-8}}
 
 
-Go through Claude's proposals. Some will be right. Some will miss. Reject those. The ones you approve, Claude applies. The memory's now the version you steered, not the version Claude landed alone.
+Go through the agent's proposals. Some will be right. Some will miss. Reject those. The ones you approve, the agent applies. The memory's now the version you steered, not the version the agent landed alone.
 
 ## Phase 5: Close, put it to work
 
@@ -148,7 +139,7 @@ Two things combined make a system: *persistence* (it remembers) and *automation*
 
 Every module after this one uses the memory you just built.
 
-You just ran **Recipe 2** end-to-end: the three layers (sources, memory, rules file), curate-then-ingest-then-build, plan-mode review on the multi-file write, memory that audits itself. After Agents 101, when the next challenge wants the same shape, the [Cookbook for Agent System Design](../trainings/agents-101/supplementary/cookbook-for-agent-system-design.md) is where the moves and components live without the training scaffolding.
+You just ran **Recipe 2** end-to-end: the three layers (sources, memory, rules file), curate-then-ingest-then-build, plan-first review on the multi-file write, memory that audits itself. After Agents 101, when the next challenge wants the same shape, the [Cookbook for Agent System Design](../trainings/agents-101/supplementary/cookbook-for-agent-system-design.md) is where the moves and components live without the training scaffolding.
 
 <!-- maintainer -->
 

@@ -273,10 +273,19 @@ const SUFFIX_TO_CLASS = { writing: 'writing', pedagogy: 'pedagogy', story: 'stor
 // storytelling-mapped compendiums regardless of field spelling).
 const CLASS_ALIASES = { storytelling: 'story' };
 const normClass = c => CLASS_ALIASES[c] || c;
-// Canonical `class` FIELD value the judge template emits, keyed by file suffix.
-// The story judge emits "storytelling" (story.md:101); the suffix is "story".
-// Any .story.json carrying class:"story" is drift to flag (not alias away).
-const CANONICAL_FIELD = { writing: 'writing', pedagogy: 'pedagogy', story: 'storytelling', strategy: 'strategy', technical: 'technical', behavior: 'behavior', cross_module: 'cross_module' };
+// Canonical `class` FIELD value, keyed by file suffix: the field agrees with
+// the suffix on every class, story included. Every tool globs `.<class>.json`,
+// which is why `check-instance-schema.js` resolves a disagreement by writing
+// the suffix (`patch.class = fileClass`) and the sweep dispatcher tells the
+// judge `class "story" — exactly this`.
+//
+// This map used to hold `story: 'storytelling'` on the strength of a
+// `story.md:101` citation that no longer says it. The cost was not a cosmetic
+// mismatch: the two gates contradicted each other, since schema `--fix` wrote
+// the value this auditor then reported as a structural bug, and `--gate`
+// therefore failed on a corpus no instance could have satisfied. `storytelling`
+// remains readable for COVERAGE via CLASS_ALIASES; here it is legacy drift.
+const CANONICAL_FIELD = { writing: 'writing', pedagogy: 'pedagogy', story: 'story', strategy: 'strategy', technical: 'technical', behavior: 'behavior', cross_module: 'cross_module' };
 
 // eval_classes appears in two frontmatter shapes across the compendia:
 //   inline bracket   → `eval_classes: [strategy, writing, storytelling]`

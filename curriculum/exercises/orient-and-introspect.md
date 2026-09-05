@@ -28,7 +28,7 @@ Ask Claude to read your repo deliberately and report what it finds.
 
 {{prompt:orient-and-introspect-1}}
 
-## Ask what Claude skipped, and why
+## Ask what the agent skipped, and why
 
 - Every read has a shadow: the files Claude didn't load. The skipped slice is where the surprises hide.
 - Claude can introspect on what it did and why, including what it chose not to read.
@@ -52,7 +52,7 @@ Run `/context` to see how much of the window is used and what fills it.
 
 (`/context` is oldskool; a status line shows the same thing continuously. Use [ccstatusline](https://github.com/sirmalloc/ccstatusline), or ask Claude to build your own with `/statusline`.)
 
-## The slice Claude didn't load
+## The slice the agent didn't load
 
 - What you want is the least context that holds exactly what the task needs. `/context` tells you what you are carrying; accuracy on the next task tells you whether it is the right load.
 - The slice Claude didn't load stays real. The window holds only so much; going forward, you choose what fills it.
@@ -61,7 +61,7 @@ Run `/context` to see how much of the window is used and what fills it.
 
 **View summary:** You direct the agent's first read of your real repository, ask what it skipped and why, spot-check that self-report against the files themselves, and close on the `/context` number naming how much of your codebase never entered the window at all.
 
-**Closing beat is `## The slice Claude didn't load`.** The beat correctly carries **no prompt**: the `/context` run is the move, and this slide is the closing claim about context economy — a header that commands a read of a number `/context` already printed is dead weight (`check_student_facing.md` §27, `check_slides.md` §6). `getting-going.md`'s leap test names the target as the *unread-slice number*, not a set of files, so do not add a file-opening instruction — that invents a beat the design does not have and contradicts the leap test. Built workbooks under `site/clients/**` carry the older `id="read-the-unread-slice"` anchor until regenerated. The result is a practical map of what the agent loaded, what it skipped, and where your steering begins.
+**Closing beat is `## The slice the agent didn't load`.** The beat correctly carries **no prompt**: the `/context` run is the move, and this slide is the closing claim about context economy — a header that commands a read of a number `/context` already printed is dead weight (`check_student_facing.md` §27, `check_slides.md` §6). `getting-going.md`'s leap test names the target as the *unread-slice number*, not a set of files, so do not add a file-opening instruction — that invents a beat the design does not have and contradicts the leap test. Built workbooks under `site/clients/**` carry the older `id="read-the-unread-slice"` anchor until regenerated. The result is a practical map of what the agent loaded, what it skipped, and where your steering begins.
 
 **Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** All bullet leads de-bolded to plain bullets; no named laws or coined terms in this body, so no handles kept. Widget chrome (`**Time:**`, `**Session**`, `**What you do:**`, `**What you build:**`, `**The point:**`) and the blockquote callout untouched, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Wording near-verbatim; no claims added or cut.
 

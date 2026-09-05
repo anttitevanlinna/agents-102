@@ -68,7 +68,7 @@ A fill looks like one of these shapes (the audit tags each gap with one):
 - **Wire a connector:** if the task needs something only a connector reaches (issue tracker, staging logs, internal API), wire it now while the task is on your mind, not mid-send-off. Claude Code action, not a file write.
 - **Bring the material in:** if the task turns on business rules the repo doesn't carry (customer segments, regulatory scope, team commitments), fetch them. Paste the section, export the Notion page, save the PDF, give Claude the link if it can reach it. Tell Claude to land what you bring in `observations/`. A pointer the agent can't open is not context.
 
-## Push back when Claude drifts from the codebase
+## Push back when the agent drifts from the codebase
 
 - If Claude says something about your codebase you didn't tell it, ask where it read that.
 

@@ -446,6 +446,8 @@ function gitIo(repo) {
 // staleness question needs: does this class have an unresolved finding, and
 // against which body did it record one. Built once per gitIo.
 let FINDING_INDEX = null
+const isSettled = res => !!(res && typeof res === 'object' && res.settled)
+function resetFindingIndex() { FINDING_INDEX = null }
 function findingIndex(repo) {
   if (FINDING_INDEX) return FINDING_INDEX
   FINDING_INDEX = new Map()
@@ -457,7 +459,11 @@ function findingIndex(repo) {
     let inst
     try { inst = JSON.parse(fs.readFileSync(path.join(dir, n), 'utf8')) } catch { continue }
     if (!inst || !inst.file || !inst.class || !Array.isArray(inst.rules_evaluated)) continue
-    if (!inst.rules_evaluated.some(r => r && typeof r === 'object' && r.verdict === 'REVISE')) continue
+    // A recorded resolution settles a finding — on the row for that row, on the
+    // instance for the verdict as a whole. A settled finding is not open, so no
+    // later body edit can make it stale; only the rows still open count here.
+    if (isSettled(inst.resolution)) continue
+    if (!inst.rules_evaluated.some(r => r && typeof r === 'object' && r.verdict === 'REVISE' && !isSettled(r.resolution))) continue
     FINDING_INDEX.set(`${path.resolve(repo, String(inst.file))}|${inst.class}`, { body_sha: inst.body_sha || null })
   }
   return FINDING_INDEX
@@ -606,6 +612,6 @@ function main(argv) {
   process.exit(2)
 }
 
-module.exports = { gitIo, requireIo, parseHunks, buildLineMeta, changeTags, extractPins, judgesRow, blockRow, promptKeys, filterItems, scanFile, typeOf, trainingOf, linkFinder, CLASSES, EXTRA_CLASSES, crossRow, panelRow, crossState, panelState }
+module.exports = { gitIo, requireIo, findingIndex, resetFindingIndex, parseHunks, buildLineMeta, changeTags, extractPins, judgesRow, blockRow, promptKeys, filterItems, scanFile, typeOf, trainingOf, linkFinder, CLASSES, EXTRA_CLASSES, crossRow, panelRow, crossState, panelState }
 
 if (require.main === module) main(process.argv.slice(2))

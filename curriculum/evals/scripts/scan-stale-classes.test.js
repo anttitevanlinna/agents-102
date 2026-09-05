@@ -815,3 +815,35 @@ test('changeTags: maintainer-only deletion still tags nothing', () => {
   assert.deepStrictEqual([...r.tags].sort(), [],
     `a maintainer-only deletion must stale nothing, got ${JSON.stringify([...r.tags])}`)
 })
+
+// --- findingIndex: a recorded resolution settles the finding ---
+/* The stale-finding axis exists to re-open a class whose finding can no longer
+ * be verified against the body it was written on. A finding the maintainer has
+ * already settled — `resolution` on the row, or on the instance for the verdict
+ * as a whole — is not open, so a body edit after it cannot make it stale. Without
+ * this, every refuted or fixed finding re-queues its class on the next edit and
+ * the queue reports work that a judge would only re-close. */
+{
+  const fs = require('node:fs')
+  const os = require('node:os')
+  const path = require('node:path')
+  const { findingIndex, resetFindingIndex } = require('./scan-stale-classes.js')
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'ssc-findings-'))
+  const dir = path.join(root, 'curriculum/evals/instances')
+  fs.mkdirSync(dir, { recursive: true })
+  const settled = { settled: 'fixed', at: '2026-09-05', note: 'a note long enough to satisfy the gate' }
+  const REV = (extra = {}) => ({ compendium: 'check_writing.md', rule_index: 1, verdict: 'REVISE', blocking: false, evidence: 'L3', ...extra })
+  const put = (name, inst) => fs.writeFileSync(path.join(dir, name), JSON.stringify(inst))
+  put('t--lecture--open.writing.json', { file: 'curriculum/lectures/open.md', class: 'writing', body_sha: 'a', rules_evaluated: [REV()] })
+  put('t--lecture--rowres.writing.json', { file: 'curriculum/lectures/rowres.md', class: 'writing', body_sha: 'a', rules_evaluated: [REV({ resolution: settled })] })
+  put('t--lecture--topres.writing.json', { file: 'curriculum/lectures/topres.md', class: 'writing', body_sha: 'a', verdict: 'REVISE', resolution: { ...settled, settled: 'refuted' }, rules_evaluated: [REV()] })
+  put('t--lecture--mixed.writing.json', { file: 'curriculum/lectures/mixed.md', class: 'writing', body_sha: 'a', rules_evaluated: [REV({ resolution: settled }), REV({ rule_index: 2 })] })
+  const key = slug => `${path.resolve(root, `curriculum/lectures/${slug}.md`)}|writing`
+  resetFindingIndex()
+  const idx = findingIndex(root)
+  test('findingIndex: an unresolved REVISE row is a live finding', () => assert.ok(idx.has(key('open'))))
+  test('findingIndex: a row-level resolution settles the finding', () => assert.ok(!idx.has(key('rowres'))))
+  test('findingIndex: an instance-level resolution settles every finding it holds', () => assert.ok(!idx.has(key('topres'))))
+  test('findingIndex: one open row beside a settled one keeps the class live', () => assert.ok(idx.has(key('mixed'))))
+  resetFindingIndex()
+}

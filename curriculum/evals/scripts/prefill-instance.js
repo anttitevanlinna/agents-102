@@ -113,7 +113,7 @@ function prefill(fileArg, cls, { instancesDir = INSTANCES } = {}) {
   const out = {
     file: view.file, slug: view.slug, class: cls,
     source_sha: view.source_sha, shape_hash: shape,
-    carried: [], mechanical: [], owed_to_judge: null,
+    carried: [], mechanical: [], owed_to_judge: null, ungrounded_refused: 0,
     reason: null,
   }
 
@@ -146,6 +146,10 @@ function prefill(fileArg, cls, { instancesDir = INSTANCES } = {}) {
     if (row.verdict !== 'N/A') continue          // PASS is a claim about prose; only N/A is about shape
     if (row.rule_index === null || row.rule_index === undefined) continue
     if (!inScope.has(row.compendium)) continue
+    // A row with neither evidence nor na_reason is unproven, and the contract
+    // above says unproven falls through to the judge. Carrying it parks a hole
+    // the judge is told not to re-derive and the evidence check then bills.
+    if (!has(row.evidence) && !has(row.na_reason)) { out.ungrounded_refused++; continue }
     out.carried.push({
       compendium: row.compendium, rule_index: row.rule_index, rule_lead: row.rule_lead,
       verdict: 'N/A', evidence: row.evidence, na_reason: row.na_reason, fix_hint: '', blocking: false,
@@ -234,6 +238,7 @@ function backfill({ apply = false, quietMinutes = 10 } = {}) {
 function sidecarPath(slug, cls, viewsDir = VIEWS) { return path.join(viewsDir, `${slug}.${cls}.prefill.json`) }
 
 const rowKey = r => `${r.compendium}|${r.rule_index}`
+const has = v => typeof v === 'string' && v.trim().length > 0
 
 function writeSidecar(fileArg, cls, { viewsDir = VIEWS, instancesDir = INSTANCES } = {}) {
   const { out } = prefill(fileArg, cls, { instancesDir })
@@ -242,6 +247,7 @@ function writeSidecar(fileArg, cls, { viewsDir = VIEWS, instancesDir = INSTANCES
     file: out.file, slug: out.slug, class: cls,
     source_sha: out.source_sha, shape_hash: out.shape_hash,
     reason: out.reason, owed_to_judge: out.owed_to_judge,
+    ungrounded_refused: out.ungrounded_refused,
     rows,
   }
   fs.mkdirSync(viewsDir, { recursive: true })
@@ -333,5 +339,5 @@ if (require.main === module) {
   }
   const { out } = prefill(file, cls)
   if (rest.includes('--json')) { console.log(JSON.stringify(out, null, 1)); process.exit(0) }
-  console.log(`${out.slug}.${cls}: ${out.carried.length} N/A carried · ${out.mechanical.length} mechanical PASS · ${out.owed_to_judge ?? '?'} owed to judge  [${out.reason}]`)
+  console.log(`${out.slug}.${cls}: ${out.carried.length} N/A carried · ${out.ungrounded_refused} ungrounded N/A refused · ${out.mechanical.length} mechanical PASS · ${out.owed_to_judge ?? '?'} owed to judge  [${out.reason}]`)
 }

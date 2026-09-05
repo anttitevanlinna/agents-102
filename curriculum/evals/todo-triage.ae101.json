@@ -359,7 +359,13 @@
   "anchor": "curriculum/prompts/ae101-m5-rerun-packaged.md, the 'Rules:' line",
   "before": "Rules: run the verifier per plan.md cadence; don't paper over failures; if you get stuck, write into RUN-NOTES.md and try a different angle; I'm walking away.",
   "after": "Rules: run the verifier per plan.md cadence; don't paper over failures; if you get stuck, write into RUN-NOTES.md and try a different angle; I'm walking away.\n\n**As you go, say in a line or two what you just finished and anything that surprised you. If I check in mid-run, tell me where you are and keep going.**",
-  "risk": "Three. (1) It pulls against the fence's own closing discipline — 'Report back as three lists, no narrative, no hedging' exists to stop exactly the running commentary this invites, and a chatty run may seed the hedged summary the three-list format was built to suppress. (2) The wording must NOT route progress into RUN-NOTES.md: that artefact's frontmatter is `conditional: agent-got-stuck` and its note records a 2026-08-31 fix where declaring it unconditional made a smooth run list it under 'did NOT ship' and failed the M5 chain's PC gate — an 'as you go, write into RUN-NOTES.md' phrasing regresses that. (3) It adds a fifth paragraph to an already-wide fence; §36 is satisfied (the addition is its own move) but the prompt grows. If you would rather decline, the decline belongs in diagnose-and-resend.md's maintainer block as a §43 accept-note, since L68 of set-the-markers currently reads as pointing the shape here."
+  "risk": "Three. (1) It pulls against the fence's own closing discipline — 'Report back as three lists, no narrative, no hedging' exists to stop exactly the running commentary this invites, and a chatty run may seed the hedged summary the three-list format was built to suppress. (2) The wording must NOT route progress into RUN-NOTES.md: that artefact's frontmatter is `conditional: agent-got-stuck` and its note records a 2026-08-31 fix where declaring it unconditional made a smooth run list it under 'did NOT ship' and failed the M5 chain's PC gate — an 'as you go, write into RUN-NOTES.md' phrasing regresses that. (3) It adds a fifth paragraph to an already-wide fence; §36 is satisfied (the addition is its own move) but the prompt grows. If you would rather decline, the decline belongs in diagnose-and-resend.md's maintainer block as a §43 accept-note, since L68 of set-the-markers currently reads as pointing the shape here.",
+  "card": {
+   "order": null,
+   "outcome": "declined",
+   "note": "Unattended by design — nobody is at the machine and the not-knowing is the lesson. check_prompts §43 gained the carve-out; decline recorded in the maintainer block; instance carries a resolution.",
+   "at": "2026-09-05"
+  }
  },
  {
   "target_file": "curriculum/exercises/diagnose-and-resend.md",
@@ -463,7 +469,13 @@
   "anchor": "L9, the '**Issue webhook.**' bullet on slide 1",
   "before": "The agent runs with the file in context: it proposes labels, asks for missing info, or splits the issue into smaller tickets. **The file decides what a well-shaped ticket looks like.**",
   "after": "The agent runs with the file in context: it proposes labels, asks for missing info, or splits the issue into smaller tickets. **It judges a well-shaped ticket against the file.**",
-  "risk": "The three shape bullets are rhythmically parallel and each lands on a short payoff sentence — 'You arrive to a proposal, not a queue.' closes the third — so the replacement has to stay short or the bullet sags. 'It judges ... against the file' also shifts the emphasis from the file's authority to the agent's act, which is the point of the fix but slightly dims the bullet's job of showing the file doing work in a second runtime; a non-agentive alternative that keeps the file as topic is 'A well-shaped ticket is whatever the file says it is.' — same fix, different register, your call which reads more like the room. Nothing downstream breaks: no backing claim quotes this sentence."
+  "risk": "The three shape bullets are rhythmically parallel and each lands on a short payoff sentence — 'You arrive to a proposal, not a queue.' closes the third — so the replacement has to stay short or the bullet sags. 'It judges ... against the file' also shifts the emphasis from the file's authority to the agent's act, which is the point of the fix but slightly dims the bullet's job of showing the file doing work in a second runtime; a non-agentive alternative that keeps the file as topic is 'A well-shaped ticket is whatever the file says it is.' — same fix, different register, your call which reads more like the room. Nothing downstream breaks: no backing claim quotes this sentence.",
+  "card": {
+   "order": null,
+   "outcome": "declined",
+   "note": "The beat is the agent helping MAKE tickets, not evaluating them, and judge is embargoed before the M5 closer. Sentence stands; vocabulary.md gained the judge row; decline recorded in the maintainer block.",
+   "at": "2026-09-05"
+  }
  },
  {
   "target_file": "curriculum/exercises/fix-tests-first.md",
@@ -2078,7 +2090,13 @@
   "why": "§17's actor clause is unambiguous — \"The student is a header's only actor — Claude does not act in a header\" — and its worked ban, *\"Read the shapes\"*, never *\"Read the shapes Claude proposes\"*, is structurally identical to this header: student verb plus an embedded clause in which Claude acts. The compounded entry's rationale is satisfied by the swap rather than violated by it: \"the body names Claude's part, the header names yours\", and the body one line down already says \"Ask Claude what it read and what it skipped\" (L36), so no information is lost. Carded rather than applied directly because §17 supplies eight candidate replacements and none for this sentence — \"what got skipped\" / \"what the read skipped\" / \"what didn't get read\" all work, the header is a projected slide title, and the choice is voice, not geometry.",
   "risk": "A header rename changes the slide title and the generated anchor id; built workbooks under site/clients/** hold the old anchor until regenerated (this file's own maintainer block already records exactly that situation for the closing beat's `id=\"read-the-unread-slice\"`). Two sibling headers carry the identical shape and are deliberately NOT swept here — walk-and-send-off.md L71 (\"Push back when Claude drifts from the codebase\") and module-2-prework.md L19 (\"Check what Claude can read\"); if Antti takes this one, those two owe the same call.",
   "evidence": "Ran `node curriculum/evals/scripts/rule.js student_facing 17` and read the actor clause plus the canonical-section carve-out (this is a non-canonical author-added section, so the carve-out does not reach it). Read the compounded entry memory/compounded/2026-09-02-student_facing-headers-never-claude-as-subject.md in full — Antti's veto is on the wording shape, not only on the referent fix. Read the exercise's maintainer block: no note covers L31 (the L64 note covers only the closing beat `## The slice Claude didn't load`, and only its no-prompt/no-verb status). Corpus scope: `grep -rn \"^#\\{2,3\\} .*Claude\" curriculum/exercises/ curriculum/lectures/ curriculum/trainings/agentic-engineering-101/*.md` returns 7 hits, of which 3 carry this exact student-verb-plus-Claude-clause shape. `grep -cF \"## Ask what Claude skipped, and why\"` = 1. No internal link targets the anchor (`grep -rn \"ask-what-claude-skipped\" curriculum/ scripts/` empty; hits only in already-built site/clients HTML).",
-  "anchor": "## Ask what Claude skipped, and why"
+  "anchor": "## Ask what Claude skipped, and why",
+  "card": {
+   "order": null,
+   "outcome": "applied",
+   "note": "Antti supplied the wording (the agent). Swept every AE101-owned header with the shape; §17 narrowed to ban the product name, not any non-student actor.",
+   "at": "2026-09-05"
+  }
  },
  {
   "target_file": "curriculum/exercises/orient-and-introspect.md",
@@ -2119,7 +2137,13 @@
   "why": "§20's adjacency test decides it: the numeral sits in the sentence directly before the two items it counts, so the memory-handle carve-out (which requires the count to be reused where the items are NOT visible) does not apply, and neither does the header carve-out — this is body prose, not a `##`. §20's body-prose default is explicit: \"often counting is just NVA\" (Antti 2026-08-22), drop it and do not reach for a replacement quantifier. The proposed fix cuts the whole lead sentence rather than just the numeral, because the judge's own \"Signatures, earned.\" leaves three sentences in a `## Next` that `check_slides.md`'s Next rule caps at two — cutting resolves both open todos on this section with one edit, and the house default on a curriculum line-read is CUT before rewrite. What the sentence asserted survives whole in the clause that follows it.",
   "risk": "\"Two signatures, earned.\" is the module's mood beat — it lands the earned-trust mood target verbatim (\"something my staff engineer and my CISO can sign off on\"), and the closer loses its drumroll. If Antti wants the beat kept, §20 is still satisfied by dropping only the numeral, and the `## Next` sentence count then needs its own accept-note.",
   "evidence": "Ran `node curriculum/evals/scripts/rule.js writing 20` and read the header carve-out (Antti 2026-08-22, which names `## Five things a good plan has`, not body prose), the memory-handle carve-out, and the body-prose default. Read L106-111 as rendered. `grep -cF \"Two signatures, earned. Your staff engineer\"` = 1. Cross-checked against the slides todo on the same section (ae101--module--earn-the-trust.slides.json, rule_index null) which independently flags this sentence as a third sentence in `## Next`; the two findings converge on one span.",
-  "anchor": "Two signatures, earned. Your staff engineer sees a test-strategy skill tuned to this codebase, your CISO sees a STRIDE decision with an ADR."
+  "anchor": "Two signatures, earned. Your staff engineer sees a test-strategy skill tuned to this codebase, your CISO sees a STRIDE decision with an ADR.",
+  "card": {
+   "order": null,
+   "outcome": "applied",
+   "note": "Cut the whole lead sentence, clearing writing §20 and the ## Next two-sentence cap together.",
+   "at": "2026-09-05"
+  }
  },
  {
   "target_file": "curriculum/trainings/agentic-engineering-101/earn-the-trust.md",

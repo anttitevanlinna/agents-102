@@ -70,10 +70,34 @@ The sharpest instance of the same shape sits in `judges/prompt-behavior.md:125`:
 
 One was held back and is now settled. `klaassen-definitive-guide` on `push-back-on-the-plan.md` was ruled a theory-construct `due:none`; the corpus carried both that and a lapsed publication-anchored `due`, so applying the edit to one file alone would have relocated the contradiction rather than closing it. Antti ruled it 2026-09-05: `due:none` in every body, no expiration date. The ruling is canon at `source-freshness-format.md` § Theory-construct variant, which names the URL, and every stamp on it now agrees.
 
+## The card queue
+
+Antti takes cards **one at a time, highest value first**. Value here means what a room feels: a prompt that misbehaves during the exercise, then a projected header, then a self-contradiction on adjacent slides, then body-prose nits. Ties break toward CUTS — additions and synonym swaps near-auto-reject.
+
+Per-card state lives in the JSON on a `card` object (`outcome`: applied · declined, plus the reason). Cards without one have not been presented.
+
+**Open the card with what the beat is FOR.** Two of the first four were declined because the fix matched the rule's words and missed the sentence's job, and a third needed Antti's own wording. State in one line what the student is doing at that moment and what it builds toward; if that line will not come, the card is not ready. → `compounded/2026-09-05-student_facing-ask-what-the-beat-is-for-before-proposing-wording.md`
+
+Settled so far, each leaving a durable artefact behind it:
+
+| Card | Call | What it left |
+|---|---|---|
+| `ae101-m5-rerun-packaged` §43 streaming | declined | `check_prompts §43` UNATTENDED BY DESIGN carve-out |
+| `where-the-rule-could-live:9` §8 agency | declined | `vocabulary.md` gained the `judge` row, embargoed before the M5 closer |
+| `earn-the-trust:109` §20 count | applied | cut cleared §20 and the `## Next` sentence cap together |
+| `orient-and-introspect:31` §17 header | applied | §17 narrowed to the product name; every AE101 header swept |
+
+Next up, unpresented: `close-the-ticket.md:54` (`student_facing §33`, *"The next exercise sweeps this whole session."* — cartography, pure cut).
+
+**Standing question, unanswered:** batch the remaining pure-cut `§33` cartography cards into one card, since they are the same call, or keep one at a time?
+
 ## Open
 
 - **One anchor resolves nowhere** — `cross_module §2` against `earn-the-trust.md`, proposing a homework-placement string present in neither the module file nor the strategy doc. Re-derive at apply time or drop the row.
 - **The behavior class's 50 todos are untriaged.** The fan-out read rule rows only. Their disposition depends on the `:125` call above, so triaging them first would be work done against a rule that may move.
 - **The cards**, plus three promoted from the direct-edit pile (two prompt-registry paragraph splits, one mixed cut). Listed in the JSON with BEFORE / AFTER / WHY / RISK. None sits on a supplementary or reference page — those are standing-exempt and were applied, so every card is on a module, an exercise, a lecture, or a prompt body a student copies.
 - **26 findings returned from REFUTE** need a disposition that is not an accept-note.
+- **`compound-and-close` owes two things, to be taken together:** a behavior judge, because `compound-and-close-1` took an Antti-approved copy-edit (`fc8cd9eb`, *"flag it in the summary below"* → *"flag it in your summary"*), and its open `check_prompts §43` row, which **survives** the new carve-out — that run is attended, the student is sitting there reviewing, so §43 fires legitimately.
+- **The behavior class's TODO rubric** (`judges/prompt-behavior.md:125`) mints a TODO for every low-confidence risk, and `:89` makes low confidence the marker for an *applied carve-out*, so most behavior todos record that a judge considered something and dismissed it. Reserving TODO for med-confidence would drop them without touching curriculum. Maintainer call, open.
+- **The Amp card**, `diagnose-and-resend.md:119` — drop *"Amp's manual-handoff camp"*, keep Ralph's. `what-packaging-is.md:130`'s source stamp records Amp killing the feature 2026-05-06 (*"So handoff is out. Compaction is in."*) with both Amp citations scoped "never current". Open since before the card queue started.
 - **`skills-from-the-frontier.md:112`** trips the writing-class lint on every edit to that file: a `[found:2026-08-02 resolved]` marker in the research-log block. The block uses `[found:…]` as its own convention, so this is a question about whether a resolved entry is deleted or kept, not a stray marker to sweep.

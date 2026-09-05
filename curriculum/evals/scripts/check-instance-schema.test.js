@@ -86,7 +86,7 @@ test('blocking rows are counted apart from todos', () => {
 // todo(s) and records none" while recording every one of them — 48 AE101 todos
 // that no report could name and no triage could reach.
 test('the behavior class records its ledger under its own name', () => {
-  const finding = v => ({ prompt_index: 1, verdict: v, load_bearing: v === 'REVISE' })
+  const finding = v => ({ prompt_index: 1, verdict: v, load_bearing: v === 'REVISE', risks_fired: [{ pattern_id: 'question-dump', confidence: 'low', evidence: 'l. 3', fix_hint: 'name the recovery move beside the fence' }] })
   const inst = base({
     class: 'behavior', verdict: 'PASS_WITH_TODOS', todos_count: 2, blocking_findings_count: 1,
     prompts_findings: [finding('TODO'), finding('PASS'), finding('TODO'), finding('REVISE')],
@@ -111,9 +111,10 @@ test('the behavior class records its ledger under its own name', () => {
 // the same thing rot apart whatever they are named, so the third ledger is held
 // to the same standard as the first two rather than quietly winning.
 test('prompts_findings is a third ledger, not an override', () => {
+  const todo = () => ({ prompt_index: 1, verdict: 'TODO', risks_fired: [{ pattern_id: 'question-dump', confidence: 'low', evidence: 'l. 3', fix_hint: 'name the recovery move beside the fence' }] })
   const p = checkInstance('ae101--exercise--a.behavior.json', base({
     class: 'behavior', verdict: 'PASS_WITH_TODOS', todos_count: 0,
-    prompts_findings: [{ prompt_index: 1, verdict: 'TODO' }],
+    prompts_findings: [todo()],
     rules_evaluated: [passRow()],
   }))
   assert.ok(codes(p).includes('RIVAL_LEDGERS'), 'the contradiction is reported')
@@ -124,8 +125,64 @@ test('prompts_findings is a third ledger, not an override', () => {
   // Agreeing is legal, same as the todos[] case it sits beside.
   assert.deepStrictEqual(checkInstance('ae101--exercise--a.behavior.json', base({
     class: 'behavior', verdict: 'PASS_WITH_TODOS', todos_count: 1,
-    prompts_findings: [{ prompt_index: 1, verdict: 'TODO' }],
+    prompts_findings: [todo()],
     rules_evaluated: [todoRow()],
+  })), [])
+})
+
+// The behavior judge's verdict rules used to mint a TODO for any risk at
+// `confidence: low`, while the carve-out section told it to mark an APPLIED
+// carve-out at exactly that confidence. Deciding a risk was harmless is what
+// filed it as owed work — 41 of the AE101 class's 54 todos fire nothing but
+// low-confidence risks, and 28 of those fire only patterns that have a named
+// carve-out. The rubric now wants a `carve_out` marker to tell the two apart,
+// and a TODO that names a fix.
+//
+// The hint lives on the RISK. The finding carries prompt_index, verdict,
+// load_bearing and risks_fired, and no fix_hint of its own — a check written
+// against the finding flags all 54 and means nothing by any of them.
+//
+// Reported, never gating, same as COUNT_WITHOUT_LIST beside it: no arithmetic
+// here can invent a fix the judge declined to name.
+test('a todo that names no fix is a record of deliberation, not work', () => {
+  const risk = hint => ({ pattern_id: 'preamble-before-action', confidence: 'low', evidence: 'l. 4', fix_hint: hint })
+  const inst = base({
+    class: 'behavior', verdict: 'PASS_WITH_TODOS', todos_count: 2,
+    prompts_findings: [
+      { prompt_index: 1, verdict: 'TODO', risks_fired: [risk('add a one-at-a-time pushback line')] },
+      { prompt_index: 2, verdict: 'TODO', risks_fired: [risk('   '), risk('')] },
+    ],
+  })
+  const p = checkInstance('ae101--exercise--a.behavior.json', inst)
+  assert.deepStrictEqual(codes(p), ['TODO_WITHOUT_FIX'])
+  assert.match(p[0].detail, /prompt 2/)
+  assert.doesNotMatch(p[0].detail, /prompt 1/, 'one risk naming a fix is enough')
+  assert.strictEqual(sev(p, 'TODO_WITHOUT_FIX'), 'debt')
+
+  // It stays in the count. Which findings are real is the judge's call, and
+  // dropping one here would close a row nobody decided to close.
+  assert.strictEqual(derivedTodos(inst), 2)
+
+  // No risks at all reads the same as risks that name nothing.
+  assert.deepStrictEqual(codes(checkInstance('ae101--exercise--a.behavior.json', base({
+    class: 'behavior', verdict: 'PASS_WITH_TODOS', todos_count: 1,
+    prompts_findings: [{ prompt_index: 3, verdict: 'TODO' }],
+  }))), ['TODO_WITHOUT_FIX'])
+
+  // Only TODO rows are held to it. A PASS finding has nothing to fix by
+  // definition, and a REVISE one is already blocking and reported elsewhere.
+  assert.deepStrictEqual(checkInstance('ae101--exercise--a.behavior.json', base({
+    class: 'behavior', prompts_findings: [{ prompt_index: 1, verdict: 'PASS' }],
+  })), [])
+
+  // The shape the corpus actually holds stays silent. If this ever goes red on
+  // real data, the gate is measuring the wrong field again.
+  assert.deepStrictEqual(checkInstance('ae101--exercise--a.behavior.json', base({
+    class: 'behavior', verdict: 'PASS_WITH_TODOS', todos_count: 1,
+    prompts_findings: [{
+      prompt_index: 1, prompt_lead: 'Read the repo', verdict: 'TODO', load_bearing: false,
+      risks_fired: [{ pattern_id: 'preamble-before-action', confidence: 'low', evidence: 'l. 2', fix_hint: 'name the artifact first' }],
+    }],
   })), [])
 })
 

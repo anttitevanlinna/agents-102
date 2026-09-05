@@ -30,6 +30,14 @@
  *                         row promises were never written down.
  *   RIVAL_LEDGERS         `todos[]` and `rules_evaluated[]` both present and
  *                         disagreeing. One record, or the two rot apart.
+ *   TODO_WITHOUT_FIX      a behavior finding filed TODO none of whose fired
+ *                         risks names a fix. The judge's own output contract
+ *                         puts `fix_hint` on the risk, and a todo nobody can
+ *                         act on still lands on the Quality row, still counts,
+ *                         and survives every triage that opens it looking for
+ *                         something to do. Currently fires on nothing in AE101
+ *                         — it guards the rubric line that now demands it,
+ *                         which is the point of writing it down before it rots.
  *   FIELD_MISMATCH        `class` / `training` disagreeing with the filename the
  *                         coverage audit looks instances up by.
  *   BAD_VERDICT           a verdict outside the enum the stamper can act on.
@@ -135,7 +143,18 @@ function patchText(text, patch) {
 // by any amount of arithmetic here, and they clear when that class is re-judged
 // under a schema that forbids the omission. Gating on debt would only mean
 // switching the gate off.
-const DEBT = new Set(['RIVAL_LEDGERS', 'COUNT_WITHOUT_LIST']);
+const DEBT = new Set(['RIVAL_LEDGERS', 'COUNT_WITHOUT_LIST', 'TODO_WITHOUT_FIX']);
+
+// A todo whose author can name no fix is not work. It reads on the Quality row
+// exactly like one that is, so it survives every triage that goes looking for
+// something to do and finds nothing to do. The hint lives on the risk, not on
+// the finding — the finding carries only the verdict — so a check written
+// against the finding would flag all 54 AE101 todos and mean nothing by it.
+// Missing key and empty string are the same statement; catching one spelling
+// and not the other is how a ledger this size drifts.
+const hasFix = r => !!r && typeof r === 'object' && typeof r.fix_hint === 'string' && r.fix_hint.trim() !== '';
+const namesNoFix = f => isPromptTodo(f)
+  && !(Array.isArray(f.risks_fired) && f.risks_fired.some(hasFix));
 
 function checkInstance(name, inst) {
   const problems = [];
@@ -187,6 +206,17 @@ function checkInstance(name, inst) {
       code: 'COUNT_MISMATCH', severity: rivals ? 'debt' : 'gate',
       detail: `todos_count says ${declared}, ${derived} recorded${rivals ? ' (ledgers disagree)' : ''}`,
     });
+  }
+
+  // Counted, not dropped. Which of these findings is real is the judge's call,
+  // and silently reinterpreting one here would close a row nobody decided to
+  // close — the same move the resolution-block rule forbids on a verdict.
+  if (Array.isArray(inst.prompts_findings)) {
+    const mute = inst.prompts_findings.filter(namesNoFix);
+    if (mute.length) {
+      add('TODO_WITHOUT_FIX', `${mute.length} TODO(s) name no fix — prompt `
+        + mute.map(f => (f.prompt_index === undefined ? '?' : f.prompt_index)).join(', '));
+    }
   }
 
   const declaredBlocking = asInt(inst.blocking_findings_count);

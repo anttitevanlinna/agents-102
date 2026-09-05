@@ -86,7 +86,9 @@ Carve-outs (extend as compounded knowledge grows):
 
   Third axis in the overwrite-anxiety family: regeneration (`memory/compounded/2026-04-27-prompts-overwrite-anxiety.md`), personal-scope-integrate-verb (`memory/compounded/2026-05-03-pedagogy-integrate-verb-personal-scope-carveout.md`), fresh-install-context (this carve-out).
 
-When you apply a carve-out, record it in the trace's `risks_fired` entry with `confidence: low` and evidence pointing at the callout/marker line, OR omit the risk entirely. Either way, do not let the carve-out path produce a BLOCKING verdict.
+When you apply a carve-out, record it in the trace's `risks_fired` entry with `confidence: low`, **`carve_out: "<the carve-out's name>"`**, and evidence pointing at the callout/marker line — OR omit the risk entirely. Either way, do not let the carve-out path produce a BLOCKING verdict.
+
+**The `carve_out` marker is not decoration.** Without it, `confidence: low` says two incompatible things at once: *this signal is weak* and *this signal is real and I have already ruled it harmless*. The verdict rules below read the second as owed work, so applying a carve-out correctly is what files it. Mark the entry and the ruling stays a ruling.
 
 ## Cache lookup
 
@@ -108,7 +110,7 @@ When you apply a carve-out, record it in the trace's `risks_fired` entry with `c
       "prompt_lead": "<first 80 chars of the prompt>",
       "expected_response_shape": "<one line>",
       "risks_fired": [
-        {"pattern_id": "<from catalog>", "confidence": "high|med|low", "evidence": "<line in the prompt>"}
+        {"pattern_id": "<from catalog>", "confidence": "high|med|low", "carve_out": "<name, only when one was applied>", "evidence": "<line in the prompt>"}
       ],
       "failure_modes": ["<one line each>"],
       "recovery_paths": ["<one line each>"],
@@ -122,8 +124,10 @@ When you apply a carve-out, record it in the trace's `risks_fired` entry with `c
 For each prompt:
 - **REVISE** if any risk fires with `confidence: high` AND `load_bearing: true`.
 - **REVISE** if two or more risks fire with `confidence: med` AND `load_bearing: true`.
-- **TODO** if any risk fires with `confidence: med` AND `load_bearing: false`, OR `confidence: low` regardless.
-- **PASS** otherwise.
+- **TODO** if any risk fires with `confidence: med` AND `load_bearing: false`, OR with `confidence: low` **and no `carve_out` marker**.
+- **PASS** otherwise — including a prompt whose only fired risks all carry `carve_out`. You already decided those.
+
+**A TODO owes a `fix_hint` naming the edit.** Not the risk restated, not "consider whether" — the words you would change and to what. If you cannot name one, you are not looking at owed work, and the verdict is PASS. A todo nobody can act on still lands on the Quality row, still shows up in every count, and survives every triage that opens it looking for something to do.
 
 Top-level verdict:
 - `verdict: REVISE` if any prompt's per-prompt verdict is REVISE.

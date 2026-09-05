@@ -265,5 +265,6 @@ header and handle per slide, never read bullets aloud. Two registers, one instru
 
 **First-cohort observation questions:**
 - Verifier-shape calibration: does the three-shape menu cover the failure modes students surface, or does a fourth/fifth shape want naming?
+- Compliance drift from the WYL pairing: `## What You'll Learn` bullet 2 hands out drift ↔ reference, rot ↔ plan.md, plausible-but-wrong ↔ verifier before the room has diagnosed anything. Does the room reach Phase 1 treating the three-pattern as the answer to adopt rather than as a lens to test their own artefact against? Pairs with the compliance-feeling drift in the Mood target above.
 
 Pre-cohort open items for M5: see `pre-cohort-todos.md`.

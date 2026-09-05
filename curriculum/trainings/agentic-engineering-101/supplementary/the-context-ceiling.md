@@ -18,7 +18,7 @@ What you can read is your own window. `/context` already gives you the breakdown
 
 It helps to see the cost once, in dollars, and then stop worrying about it. In an agent session the whole context is re-sent as input on every turn, so anything you carry is paid again and again across the session.
 
-Ask Claude to price the bloat from current Opus pricing: 100K extra tokens over 20 turns, then what caching does to it.
+Ask Claude to price the bloat at current Opus pricing, then what caching does to it.
 
 **Prompt** *(Claude Code)*
 

@@ -214,7 +214,7 @@ Conversation has a rhythm. The default rhythm between human and agent is form-fi
 
 ---
 
-## Shape the interaction: pacing the questions
+## Shape the interaction: pacing and pressure
 
 ### Batched, not dumped
 
@@ -342,7 +342,7 @@ Example: `ae101-m4-take-task-end-to-end`, `ae101-m5-rerun-packaged`.
 ### The grill-before-save
 *Iteration lock-in + batched-not-dumped + push-back invitation.*
 
-Fires when an artifact needs cross-examination before it persists. *Don't touch the file until I say 'lock it in.' Ask three questions at a time. Push back when my answer is generic.* The lock-in protects the file. The batching keeps the dialog efficient. The push-back instruction tells the agent to drop the niceness tax.
+Fires when an artifact needs cross-examination before it persists. *Don't touch the file until I say 'lock it in.' Ask three questions at a time. Push back when my answer is generic.* The lock-in protects the file. The batching keeps the dialog efficient. The push-back instruction tells the agent to drop the niceness tax. Reach for it where a gap has already cost you a re-run, not by default: the extra round of questions is certain, the saving is not.
 
 Example: `push-back-on-the-plan-2`, `diagnose-and-resend-6`.
 

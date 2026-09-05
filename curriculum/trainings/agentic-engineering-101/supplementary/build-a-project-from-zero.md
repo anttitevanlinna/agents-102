@@ -1,6 +1,6 @@
 # No repo to bring? Build one.
 
-The training runs on a repo you already ship to. No such repo you can use here? Build one. A repo you grow from zero is a clean instrument. Every decision is yours, every bug is legibly your own, and nothing inherited needs explaining away.
+You bring a repo you already ship to. No such repo you can use here? Build one. A repo you grow from zero is a clean instrument. Every decision is yours, every bug is legibly your own, and nothing inherited needs explaining away.
 
 You'll build a small Lemmings game in the browser (the 1991 classic: little creatures you guide across a level). By the end of the first session it runs, it has a test or two, and it has real commit history. That's a project.
 
@@ -48,10 +48,6 @@ The running game, the test suite, the commit history, and the one bug you spotte
 **Placement:** Linked from `prework.md` §1 (the fallback line). Read once, before Module 1, only by students who need it. Heavier than the standard 30-min prework path; the extra time is the game build.
 
 **Voice:** AE101 quintet. Rory reframe in the open (empty repo as clean instrument, not consolation prize), Boris-flat on the build steps.
-
-**Open decisions for maintainer:**
-- How this interlocks with the existing trainer-handed fallback repo in `prework.md` §1. Build-your-own vs clone-a-canned-one are different flavours; pick one as default or offer both.
-- Whether to wire the `prework.md` §1 fallback line to link here (edits a done-done prework file with cross_module contracts; not done in this draft).
 
 <!-- backing -->
 

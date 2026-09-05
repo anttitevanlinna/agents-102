@@ -36,7 +36,7 @@ Ask Claude to fork the worktree and copy your gitignored files across.
 
 ## Anchor the fork to the run coordinates
 
-- Claude normally reads the protected `Run coordinates` block in `task.md`, uses the `m4/<slug>` branch named there, and forks from that branch's "M4 starting point" commit.
+- The agent normally reads the protected `Run coordinates` block in `task.md`, uses the `m4/<slug>` branch named there, and forks from that branch's "M4 starting point" commit.
 - If that block is gone or the commit message was rewritten, use the starting-point SHA Claude reported before the send-off rather than guessing from branch names.
 - If you never captured that either, ask Claude to run `git merge-base m4/<slug> <the branch you cut it from>`. That is where the branch left the trunk, a commit or two before the run started, carrying the same code.
 

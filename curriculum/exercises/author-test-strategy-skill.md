@@ -46,7 +46,7 @@ Ask Claude to invoke the skill on this codebase and grade what it produced in th
 ## Sharpen the skill from what came back
 
 - Before you ship, ask the skill itself to name its own weakest part: the assumption most likely wrong for this codebase, or what a teammate would push back on first. Push back on what it names; don't settle for reassurance.
-- The grade is biased by design. Claude invoked the skill it just helped author, then graded the result in the same context window: same-window self-charity.
+- The grade is biased by design. The agent invoked the skill it just helped author, then graded the result in the same context window: same-window self-charity.
 - Want a harsher read of the output too? Run it as two prompts. Invoke first, read the output, then a second prompt: *"Read that output as if you'd never seen the SKILL.md. Does it fit this codebase, or does it read generic?"*
 - If the strategy reads generic, sharpen the skill, not the output. A weak output is usually a weak skill.
 - Then decide: re-invoke if the sharpen was substantive, or ship with a one-line TODO at the top naming what's unresolved. A skill that names its own gap is more useful to a teammate than one that pretends it's finished.

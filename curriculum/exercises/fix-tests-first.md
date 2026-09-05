@@ -15,7 +15,7 @@
 - **Tests-first, root-cause-driven.** Write the test first, watch it fail, then fix the cause, not the symptom.
 - No plan mode here. On a trivial bug, plan mode is overhead.
 
-> **Small fix, small test.** A trivial bug wants one failing test and a tight fix, not a suite and a refactor. If Claude starts spinning up plenty of tests, or the change creeps past the bug, that's sprawl. Steer it back to one test that proves the bug and the smallest fix that passes it.
+> **Small fix, small test.** A trivial bug wants one failing test and a tight fix, not a suite and a refactor. If the agent starts spinning up plenty of tests, or the change creeps past the bug, that's sprawl. Steer it back to one test that proves the bug and the smallest fix that passes it.
 
 Drop your bug after the colon.
 
@@ -104,6 +104,7 @@ OODA
 **Watch-fors:**
 - **Tests-skipped.** Student pastes the bug and Claude jumps straight to a fix. Common failure mode. Trainer push: *"back up — what's the failing test that would prove this bug exists?"* If the repo has no test infrastructure on this path, log *"no verifier here"* and name it as the first Quality-Gate entry (landing in M4).
 - **Diff rubber-stamp.** Student says *"looks fine"* under 30 seconds. Trainer push: *"find me one line you'd have written differently — not wrong, just different."*
+- **Interrogation rubber-stamp.** Student takes the Optional-skip gate, or the agent's *"nothing deeper here"*, at face value and moves on without sending the interrogation prompt. Trainer push: *"name one input where this fix would still be wrong."*
 
 **Decision points:**
 - **Runs over 35 min.** Bug wasn't trivial. Let it complete; trim the compound exercise, flag for follow-up. Note for M2 — student benefits more from plan-mode-at-depth than average.

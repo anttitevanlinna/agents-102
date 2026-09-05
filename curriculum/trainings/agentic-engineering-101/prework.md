@@ -93,8 +93,8 @@ The opening question at Module 1: *what's your favourite Claude Code trick that 
 
 - `[checked:2026-07-30 result:OK due:none]` https://simonwillison.net/2025/Oct/7/vibe-engineering/ — [practitioner direct] (Willison, 2025-10-07). Outside the 6-month window by decision: named framing piece, dated in body, same treatment as the Cherny video exception in `getting-going.md` — `due:none` on the same variant those parallel stamps use. fallback: drop the pre-read; Module 1 stands alone.
 
-**Quality:** compendium-audited 2026-09-02 (writing@01592193 story@01592193 technical@01592193 behavior@7fb973dd pedagogy@01592193 strategy@01592193 slides@01592193)
-- judges @01592193: writing PASS (3 todos see instances/ae101--module--prework.writing.json), story PASS (3 todos see instances/ae101--module--prework.story.json), technical PASS (2 todos see instances/ae101--module--prework.technical.json), behavior PASS, pedagogy PASS (2 todos see instances/ae101--module--prework.pedagogy.json), strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-09-05 (writing@324b81d7 story@324b81d7 technical@324b81d7 behavior@7fb973dd pedagogy@01592193 strategy@324b81d7 slides@01592193)
+- judges @324b81d7: writing PASS (2 todos see instances/ae101--module--prework.writing.json), story PASS, technical PASS (2 todos see instances/ae101--module--prework.technical.json), behavior PASS, pedagogy PASS (2 todos see instances/ae101--module--prework.pedagogy.json), strategy PASS, slides PASS
 - cross_module @01592193: PASS — set=[prework,getting-going,plan-mode-done-right,earn-the-trust]; 3 pairs, 0 blocking; see instances/ae101--module-set--prework-m3.cross_module.json
 
 **Meta:**

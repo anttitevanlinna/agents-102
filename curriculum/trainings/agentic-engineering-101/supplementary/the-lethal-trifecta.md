@@ -77,5 +77,5 @@ OODA
 - last-run: 2026-08-01
 
 <!-- /backing -->
-**Quality:** compendium-audited 2026-08-29 (writing@4a722813 story@e11bbeb4 technical@8cc00874 behavior@b3143a4 pedagogy@1abb84c6 strategy@b3143a4 slides@e11bbeb4)
-- judges @4a722813: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-09-05 (writing@324b81d7 story@324b81d7 technical@324b81d7 behavior@b3143a4 pedagogy@1abb84c6 strategy@324b81d7 slides@324b81d7)
+- judges @324b81d7: writing PASS (1 todo see instances/ae101--supplementary--the-lethal-trifecta.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS

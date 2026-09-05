@@ -1,16 +1,17 @@
 {
   "class": "technical",
-  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/supplementary/skill-stacking.md",
-  "body_sha": "924c1e8c9c0af62237263796da530a9f76f12a36d36290337cbbce2b398bc125",
-  "verdict": "PASS",
   "training": "ae101",
+  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/supplementary/skill-stacking.md",
+  "verdict": "PASS",
+  "body_sha": "196fb9d84f5d10af80fcda76b0636abf7fbf7636d1829153c9ec0b5fb83ae9a9",
+  "shape_hash": "c4e97cd8f53c9097",
   "rules_evaluated": [
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": 1,
       "rule_lead": "Training platform = Claude Code (CLI + Desktop) + Cowork.",
       "verdict": "PASS",
-      "evidence": "File describes Claude Code skill mechanics generically (personal skills ~/.claude/skills/, project skills ./.claude/skills/, SKILL.md frontmatter, slash commands, subagents, plan mode, Chrome MCP, git worktrees) with no claude.ai-only feature presented as usable in our training runtime; the whole page is framed as one practitioner's Claude Code CLI kit ('Read for the patterns, not for copying').",
+      "evidence": "File describes Claude Code skill mechanics generically (personal skills ~/.claude/skills/, project skills ./.claude/skills/, SKILL.md frontmatter, slash commands, subagents, plan mode, Chrome MCP, git worktrees, Linear) with no claude.ai-only feature presented as usable in our training runtime; whole page is framed explicitly as one practitioner's Claude Code kit ('Read for the patterns, not for copying').",
       "fix_hint": null,
       "blocking": false
     },
@@ -19,8 +20,8 @@
       "rule_index": 4,
       "rule_lead": "Verify capabilities BEFORE asserting, not after.",
       "verdict": "PASS",
-      "evidence": "Re-verified live this dispatch (2026-08-28, WebFetch of https://code.claude.com/docs/en/skills, independent of the maintainer note and of the prior instance's 2026-08-19 fetch) against all three frontmatter facts the maintainer block (L181) asserts: (1) 'user-invocable ... Default: `true`' and 'Set to false when only Claude should invoke the skill: Claude Code hides it from the / menu' — matches 'defaults to true... set false to hide a skill from the / menu'; (2) 'allowed-tools ... Tools Claude can use without asking permission during the turn... It does not restrict which tools are available: every tool remains callable' — matches 'pre-approves a tool set for the turn and does NOT restrict access'; (3) 'disallowed-tools ... Tools removed from Claude's available pool while this skill is active' — matches 'disallowed-tools is the restricting field'. All three current. Also verified L3's 'personal skills ~/.claude/skills/, project skills ./.claude/skills/' against the docs' 'Where skills live' table — correct paths, correct scope split.",
-      "fix_hint": "L3's 'the harness merges them at runtime; they're indistinguishable to the model' is a defensible model's-eye-view simplification (Claude Code presents one flat resolved catalog), but current docs describe an explicit precedence on name collision ('personal overrides project') the sentence doesn't acknowledge — non-blocking, logged as a todo, not a finding.",
+      "evidence": "Live WebFetch of https://code.claude.com/docs/en/skills run this dispatch (independent of the maintainer note's own attestation and of any prior instance's fetch), verifying all three frontmatter facts the maintainer block (L181) asserts: (1) 'user-invocable ... Default: true ... false hides it from the / menu' — matches current docs verbatim; (2) 'allowed-tools ... pre-approves tools ... does NOT restrict access; every tool remains callable' — matches ('does not restrict which tools are available: every tool remains callable'); (3) 'disallowed-tools ... removes tools from the available pool while the skill is active' — matches. Also verified L3's '~/.claude/skills/, ./.claude/skills/' paths against the docs' location table — correct.",
+      "fix_hint": "L3's 'the harness merges them at runtime; they're indistinguishable to the model' omits the collision-precedence rule the same docs state (enterprise > personal > project) — not false, just silent on an edge case; low-stakes since the page teaches composition patterns, not name-collision precedence. Non-blocking.",
       "blocking": false
     },
     {
@@ -28,7 +29,7 @@
       "rule_index": "5a",
       "rule_lead": "Live-test beats docs for runtime-behavior claims.",
       "verdict": "PASS",
-      "evidence": "The three re-verified facts are frontmatter API-shape/default-value facts (documented, stable config semantics), not live runtime-timing behavior — the rule's own carve-out names doc-derived answers as 'reliable for API shape, vocabulary, feature existence' and reserves live-testing for behavior/negative claims. No workaround or fallback logic is built on an assumed absence here (the negative-claim corollary's trigger), so doc-tier verification is the correct-cost check.",
+      "evidence": "The three re-verified facts are documented frontmatter API-shape/default-value facts, not live runtime-timing behavior — the rule's own carve-out names doc-derived answers as reliable for 'API shape, vocabulary, feature existence' and reserves live-testing for behavior/negative claims. No workaround or fallback logic is built on an assumed absence here (the negative-claim corollary's trigger), so doc-tier verification is the correct-cost check.",
       "fix_hint": null,
       "blocking": false
     },
@@ -37,7 +38,7 @@
       "rule_index": 10,
       "rule_lead": "External org content.",
       "verdict": "PASS",
-      "evidence": "'Dino' is a pseudonymized first-hand practitioner example, not a competitor training or product (backing block: 'dino-stack ... attested:maintainer ... read the in-repo skill files ... directly'); maintainer block explicitly guards the exact confusion this rule targets: '`/ship` is Dino's own skill, NOT a Claude Code built-in — the lecture that points here keeps its orchestrator generic for exactly this reason.'",
+      "evidence": "'Dino' is a maintainer-attested first-hand practitioner example (backing block: 'dino-stack ... attested:maintainer ... read the in-repo skill files ... directly'), not a competitor training or product. Maintainer block explicitly guards the exact confusion this rule targets: '`/ship` is Dino's own skill, NOT a Claude Code built-in' (L193).",
       "fix_hint": null,
       "blocking": false
     },
@@ -46,25 +47,25 @@
       "rule_index": 12,
       "rule_lead": "No \"as-is\" imports from internet.",
       "verdict": "PASS",
-      "evidence": "Page describes skill NAMES and PURPOSES from a practitioner's real kit (maintainer-attested first-hand reading), never reproduces a skill's actual body/prompt text; L5 states the page's own posture directly: 'Read for the patterns, not for copying... map your own.' No internet artifact is imported as-is.",
+      "evidence": "Page names skill NAMES and PURPOSES from a practitioner's real kit (maintainer-attested first-hand reading), never reproduces a skill's actual body/prompt text; body states the page's own posture directly (L5): 'Read for the patterns, not for copying... map your own.' No internet artifact is imported as-is.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_platform_and_boundaries.md",
-      "rule_index": 45,
-      "rule_lead": "A detector's reading vocabulary must cover the corpus's writing vocabulary — or it reports compliance as rot.",
+      "rule_index": 50,
+      "rule_lead": "Thinking-effort levels are a real, named Claude Code control surface — stamped.",
       "verdict": "N/A",
-      "evidence": "RULE-DRIFT: re-fetched full current text via `node curriculum/evals/scripts/rule.js platform_and_boundaries 45` this dispatch (text includes the 2026-08-28 'Fail-open corollary' addendum, added since this rule was last judged on this file). Both halves of the rule (original: a narrow parser mis-reads a compliant record as rot; addendum: a guard fails OPEN on a shape it has never met) describe THIS repo's own audit tooling (audit-eval-coverage.js, check-instance-evidence.js, update-quality.sh) — how it parses rule_index citations, compendium names, and instance shapes. skill-stacking.md is a student-facing supplementary page about a practitioner's Claude Code skill kit; it is not detector output, an eval instance, or audit-tooling documentation, and has no subject matter the rule's harm (a tool mis-scoring compliance/rot) could attach to. Verdict unchanged from the pre-addendum N/A. Applied the addendum reflexively to my own output: this instance uses the standard rules_evaluated array shape (not the prompt-keyed/module_pairs shapes the addendum names as fail-open triggers), so check-instance-evidence.js reads it as a known, ownable ledger rather than defaulting to clean — confirmed by running it after writing (see notes).",
+      "evidence": "Grepped body for 'thinking effort' / '--effort' / 'effortLevel' — zero hits. File never discusses thinking-effort levels; this rule's four named curriculum files (prework, getting-going, plan-mode-done-right, earn-the-trust) don't include this one.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_platform_and_boundaries.md",
-      "rule_index": 49,
-      "rule_lead": "An instruction whose violation leaves the output identical is not enforced by wording — it needs a measurement or a test.",
-      "verdict": "N/A",
-      "evidence": "Rule targets internal memory/rule-authorship discipline (compounded entries, compendium clauses, dispatch flags) — ensuring a written instruction has a companion that proves it fired. skill-stacking.md is student-facing curriculum prose about a practitioner's skill stack, not a memory entry, rule clause, or process instruction; it authors no such clause for this rule to check.",
+      "rule_index": 51,
+      "rule_lead": "A two-file contradiction is not a defect until you have read the code that reconciles them.",
+      "verdict": "PASS",
+      "evidence": "The file itself demonstrates the rule's correct discipline rather than exhibiting an unreconciled contradiction: the maintainer block's 'Runtime fork collapsed 2026-08-19' note (L179) names the specific reconciling fact (the 2026-08-01 M6 cut, 'spot-gaps-build-the-loop.md Artefact contracts') rather than leaving the old M6-branching language as a dangling apparent contradiction with current M6 content. No cross-file contradiction is left unresolved in this file for a reader to misjudge.",
       "fix_hint": null,
       "blocking": false
     },
@@ -73,7 +74,7 @@
       "rule_index": 1,
       "rule_lead": "Source URL + type label — mandatory.",
       "verdict": "PASS",
-      "evidence": "Scope carve-out: label lives in maintainer-block provenance, not body (confirmed absent from body prose). Backing block Sources: \"dino-stack `[checked:2026-07-05 result:ATTESTED due:none]` attested:maintainer 2026-07-05 read the in-repo skill files and the `/ship` orchestrator directly — [maintainer-attested]\" (L193) — correct label, complete attested:<who> <date> <context> token, no URL owed. 'Vocabulary is a claim' subclause: body makes no convergence-verb claim ('practitioners say', 'entered the vocabulary'); backing block's own stance line pre-empts it — 'contested: whether these four are the complete set. Nobody has enumerated composition mechanisms across kits, so four is what one careful reading found rather than a closed list' (L202) — the definition/ownership framing the subclause prescribes, not an invented census.",
+      "evidence": "Scope carve-out applies: label lives in maintainer-block provenance, confirmed absent from body prose. Backing block Sources line: \"dino-stack `[checked:2026-07-05 result:ATTESTED due:none]` attested:maintainer 2026-07-05 ... — [maintainer-attested]\" (L193) — correct label, complete attested:<who> <date> <context> token, no URL owed under the maintainer-attested carve-out. Vocabulary-is-a-claim subclause: body's TL;DR was edited since the last pin from 'Four composition mechanisms stitch them' to 'Composition mechanisms stitch them' (removing the bare-count phrasing), and the backing block's own stance line already states the boundary — 'Nobody has enumerated composition mechanisms across kits, so four is what one careful reading found rather than a closed list' (L202) — an ownership framing, not an invented census.",
       "fix_hint": null,
       "blocking": false
     },
@@ -82,7 +83,7 @@
       "rule_index": 2,
       "rule_lead": "Freshness rule — 6 months.",
       "verdict": "PASS",
-      "evidence": "Source stamp dated 2026-07-05 (L193), 54 days before today (2026-08-28) — inside the 6-month window on its face, and independently the durable-account carve-out (§2a) applies cleanly: first-hand (maintainer's own reading, not a digest), a specific completed act (reading the skill files and orchestrator on that date), dated in the citing stamp. §2b check: body never uses the source for a live-position claim ('this is what Dino's kit looks like now'); stance block scopes it as a snapshot ('Evidence is a sample of one... in the page's first line', L201) and body itself warns 'your kit will look different' (L5) — due:none is correctly scoped to the one-time reading, not doing double duty as a currency claim.",
+      "evidence": "Source stamp dated 2026-07-05 (L193), inside the 6-month window on its face. Independently qualifies for the durable-account carve-out (§2a): first-hand (maintainer's own reading, not a digest), a specific completed act (reading the skill files and orchestrator on that date), dated in the citing stamp. §2b check: body never uses the source for a live-position claim ('this is what Dino's kit looks like now'); stance block scopes it as a one-time sample ('Evidence is a sample of one... in the page's first line', L201) and body itself warns 'your kit will look different' (L5).",
       "fix_hint": null,
       "blocking": false
     },
@@ -91,7 +92,7 @@
       "rule_index": 4,
       "rule_lead": "Hold short OODA loose.",
       "verdict": "PASS",
-      "evidence": "n=1 throughout, labeled as such at both body (L5: 'one engineer's stack on one codebase') and backing (L201: 'Evidence is a sample of one, stated as a sample of one'); OODA roster (L207) lists four other practitioners + docs as an OPEN research question ('has anyone else published a full skill stack in enough detail to check the four mechanisms against?'), not as corroborating instances. No convergence overclaim.",
+      "evidence": "n=1 throughout, labeled as such at both body (L5: 'one engineer's stack on one codebase') and backing (L201: 'Evidence is a sample of one, stated as a sample of one'); OODA roster (L207) lists four other practitioners + docs as an OPEN research question, not as corroborating instances. No convergence overclaim.",
       "fix_hint": null,
       "blocking": false
     },
@@ -115,6 +116,15 @@
     },
     {
       "compendium": "check_research_claims.md",
+      "rule_index": 11,
+      "rule_lead": "Source-verification maintainer block on any student-facing file with practitioner citations.",
+      "verdict": "PASS",
+      "evidence": "RULE-DRIFT re-check at current wording (fetched full §11+§11a plus the compendium's closing note via rule.js and direct file read this dispatch). Current wording's own closing directive supersedes the numbered lead's literal 'Source verification — MUST DO before first cohort' heading: 'Debt goes in a stamp, never in a prose checkbox... sitting in the backing block beside the claim it threatens... an unticked MUST-DO box has already reached a shipped supplementary'. `curriculum/backing-format.md` (read this dispatch) confirms the backing block 'Absorbs and replaces ... **Source verification …** — do not keep a second copy', and is 'Pointer from check_research_claims.md §11'. This file carries no legacy MUST-DO heading (correctly, per that directive) and instead carries the required §11a-grammar stamp inside its `<!-- backing -->` Sources field: '`[checked:2026-07-05 result:ATTESTED due:none]` ... [maintainer-attested]' (L193) — RESULT/DUE vocabulary matches §11a exactly, ATTESTED+due:none is the correct pairing for a maintainer-witnessed source per §11a's own vocabulary note. The strict trigger ('named practitioner + specific URL + load-bearing number') is also not fully met here (no URL, no load-bearing number — Dino is pseudonymized and the citation is attested, not URL-sourced), so even a literal reading of the numbered lead would not obligate the retired MUST-DO section. Either reading lands on PASS.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
       "rule_index": 13,
       "rule_lead": "Inference beyond source — absence licenses only absence.",
       "verdict": "PASS",
@@ -126,11 +136,33 @@
       "compendium": "check_prompts.md",
       "rule_index": null,
       "judge_owned": true,
-      "rule_lead": "Whole-compendium scope call: check_prompts.md's 48 rules govern fenced **Prompt** blocks and {{prompt:}} markers.",
+      "rule_lead": "Whole-compendium scope call: check_prompts.md's 49 rules govern fenced **Prompt** blocks and {{prompt:}} markers.",
       "verdict": "N/A",
-      "evidence": "Body view signal has_prompt_blocks=false, re-derived fresh this dispatch against current body_sha da482b4963d.... The file's only code fence (L21-25) is a SKILL.md frontmatter illustration ('name + description... user-invocable: false... allowed-tools:...'), not a student-copied **Prompt** block or {{prompt:}} marker — matches the standing behavior-class N/A note on this file ('no student-copied prompt blocks; the only fence is a SKILL.md frontmatter illustration'). No individual rule in this 48-rule compendium has a subject to attach to on this file.",
+      "evidence": "RULE-DRIFT re-check of the four specifically flagged sub-rules at current wording (§2 incl. 2a/2b/2c, §17 narrowed 2026-09-03 to plan-mode fences, §20 narrowed 2026-09-03, §40 incl. 40a/40b) plus the whole compendium: view.json signal has_prompt_blocks=false, confirmed by direct grep against the raw source this dispatch — zero '{{prompt:' hits, zero '**Prompt**' hits, zero '[Skill:' bracket references, zero URLs (has_urls=false). fence_ranges shows exactly one fence (L21-25), the SKILL.md frontmatter illustration quoted in body prose, not a student-copied prompt or destination-chip block. None of the narrowings landed since this file's last pin change the outcome: there is no fence for a lead-in to attach to (§2), no plan-mode fence to carry a preamble suppressor (§17, now plan-mode-only), no artefact-assembling prompt to close with a grill (§20), and no prompt whose warm/cold session-carrying needs verifying (§40) — the file has no prompt fence of any kind for any of the 49 rules to attach to.",
       "fix_hint": null,
       "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 45,
+      "rule_lead": "A detector's reading vocabulary must cover the corpus's writing vocabulary — or it reports compliance as rot.",
+      "verdict": "N/A",
+      "evidence": "RULE-DRIFT: re-fetched full current text via `node curriculum/evals/scripts/rule.js platform_and_boundaries 45` this dispatch (text includes the 2026-08-28 'Fail-open corollary' addendum, added since this rule was last judged on this file). Both halves of the rule (original: a narrow parser mis-reads a compliant record as rot; addendum: a guard fails OPEN on a shape it has never met) describe THIS repo's own audit tooling (audit-eval-coverage.js, check-instance-evidence.js, update-quality.sh) — how it parses rule_index citations, compendium names, and instance shapes. skill-stacking.md is a student-facing supplementary page about a practitioner's Claude Code skill kit; it is not detector output, an eval instance, or audit-tooling documentation, and has no subject matter the rule's harm (a tool mis-scoring compliance/rot) could attach to. Verdict unchanged from the pre-addendum N/A. Applied the addendum reflexively to my own output: this instance uses the standard rules_evaluated array shape (not the prompt-keyed/module_pairs shapes the addendum names as fail-open triggers), so check-instance-evidence.js reads it as a known, ownable ledger rather than defaulting to clean — confirmed by running it after writing (see notes).",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "924c1e8c9c0af62237263796da530a9f76f12a36d36290337cbbce2b398bc125",
+      "carried_shape": "c4e97cd8f53c9097"
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 49,
+      "rule_lead": "An instruction whose violation leaves the output identical is not enforced by wording — it needs a measurement or a test.",
+      "verdict": "N/A",
+      "evidence": "Rule targets internal memory/rule-authorship discipline (compounded entries, compendium clauses, dispatch flags) — ensuring a written instruction has a companion that proves it fired. skill-stacking.md is student-facing curriculum prose about a practitioner's skill stack, not a memory entry, rule clause, or process instruction; it authors no such clause for this rule to check.",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "924c1e8c9c0af62237263796da530a9f76f12a36d36290337cbbce2b398bc125",
+      "carried_shape": "c4e97cd8f53c9097"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -140,7 +172,7 @@
       "evidence": "File names no cloud/remote Claude Code feature.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "da482b4963dc258c971e1e40c8b2b3a3390ad5d92968d5b330c3d06a48ad6d3c",
+      "carried_from": "924c1e8c9c0af62237263796da530a9f76f12a36d36290337cbbce2b398bc125",
       "carried_shape": "c4e97cd8f53c9097"
     },
     {
@@ -151,7 +183,7 @@
       "evidence": "File does not discuss scheduled tasks.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "da482b4963dc258c971e1e40c8b2b3a3390ad5d92968d5b330c3d06a48ad6d3c",
+      "carried_from": "924c1e8c9c0af62237263796da530a9f76f12a36d36290337cbbce2b398bc125",
       "carried_shape": "c4e97cd8f53c9097"
     },
     {
@@ -162,7 +194,7 @@
       "evidence": "Maintenance-workflow rule for memory/reference files, not a content defect check for this file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "da482b4963dc258c971e1e40c8b2b3a3390ad5d92968d5b330c3d06a48ad6d3c",
+      "carried_from": "924c1e8c9c0af62237263796da530a9f76f12a36d36290337cbbce2b398bc125",
       "carried_shape": "c4e97cd8f53c9097"
     },
     {
@@ -173,7 +205,7 @@
       "evidence": "Governs compendium/reference files, not this supplementary page.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "da482b4963dc258c971e1e40c8b2b3a3390ad5d92968d5b330c3d06a48ad6d3c",
+      "carried_from": "924c1e8c9c0af62237263796da530a9f76f12a36d36290337cbbce2b398bc125",
       "carried_shape": "c4e97cd8f53c9097"
     },
     {
@@ -184,7 +216,7 @@
       "evidence": "File makes no cross-runtime template/macro extension claim.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "da482b4963dc258c971e1e40c8b2b3a3390ad5d92968d5b330c3d06a48ad6d3c",
+      "carried_from": "924c1e8c9c0af62237263796da530a9f76f12a36d36290337cbbce2b398bc125",
       "carried_shape": "c4e97cd8f53c9097"
     },
     {
@@ -195,7 +227,7 @@
       "evidence": "No defensive-recovery pattern discussed.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "da482b4963dc258c971e1e40c8b2b3a3390ad5d92968d5b330c3d06a48ad6d3c",
+      "carried_from": "924c1e8c9c0af62237263796da530a9f76f12a36d36290337cbbce2b398bc125",
       "carried_shape": "c4e97cd8f53c9097"
     },
     {
@@ -206,7 +238,7 @@
       "evidence": "No conflicting practitioner-vs-docs observation in scope.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "da482b4963dc258c971e1e40c8b2b3a3390ad5d92968d5b330c3d06a48ad6d3c",
+      "carried_from": "924c1e8c9c0af62237263796da530a9f76f12a36d36290337cbbce2b398bc125",
       "carried_shape": "c4e97cd8f53c9097"
     },
     {
@@ -217,7 +249,7 @@
       "evidence": "None of these five listed facts are referenced in the file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "da482b4963dc258c971e1e40c8b2b3a3390ad5d92968d5b330c3d06a48ad6d3c",
+      "carried_from": "924c1e8c9c0af62237263796da530a9f76f12a36d36290337cbbce2b398bc125",
       "carried_shape": "c4e97cd8f53c9097"
     },
     {
@@ -228,7 +260,7 @@
       "evidence": "No behavior-mismatch scenario present.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "da482b4963dc258c971e1e40c8b2b3a3390ad5d92968d5b330c3d06a48ad6d3c",
+      "carried_from": "924c1e8c9c0af62237263796da530a9f76f12a36d36290337cbbce2b398bc125",
       "carried_shape": "c4e97cd8f53c9097"
     },
     {
@@ -239,7 +271,7 @@
       "evidence": "File doesn't discuss hooks or env propagation.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "da482b4963dc258c971e1e40c8b2b3a3390ad5d92968d5b330c3d06a48ad6d3c",
+      "carried_from": "924c1e8c9c0af62237263796da530a9f76f12a36d36290337cbbce2b398bc125",
       "carried_shape": "c4e97cd8f53c9097"
     },
     {
@@ -250,7 +282,7 @@
       "evidence": "File doesn't make an auto-load-surface claim; it discusses skill *loading* (a different, correctly-scoped mechanism per docs 'Where skills live').",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "da482b4963dc258c971e1e40c8b2b3a3390ad5d92968d5b330c3d06a48ad6d3c",
+      "carried_from": "924c1e8c9c0af62237263796da530a9f76f12a36d36290337cbbce2b398bc125",
       "carried_shape": "c4e97cd8f53c9097"
     },
     {
@@ -261,7 +293,7 @@
       "evidence": "Not discussed.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "da482b4963dc258c971e1e40c8b2b3a3390ad5d92968d5b330c3d06a48ad6d3c",
+      "carried_from": "924c1e8c9c0af62237263796da530a9f76f12a36d36290337cbbce2b398bc125",
       "carried_shape": "c4e97cd8f53c9097"
     },
     {
@@ -272,7 +304,7 @@
       "evidence": "Applies to our own memory/CLAUDE.md files, not curriculum content.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "da482b4963dc258c971e1e40c8b2b3a3390ad5d92968d5b330c3d06a48ad6d3c",
+      "carried_from": "924c1e8c9c0af62237263796da530a9f76f12a36d36290337cbbce2b398bc125",
       "carried_shape": "c4e97cd8f53c9097"
     },
     {
@@ -283,7 +315,7 @@
       "evidence": "Internal tooling rule, unrelated to this file's subject.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "da482b4963dc258c971e1e40c8b2b3a3390ad5d92968d5b330c3d06a48ad6d3c",
+      "carried_from": "924c1e8c9c0af62237263796da530a9f76f12a36d36290337cbbce2b398bc125",
       "carried_shape": "c4e97cd8f53c9097"
     },
     {
@@ -294,7 +326,7 @@
       "evidence": "File contains no session-start or resume instructional language.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "da482b4963dc258c971e1e40c8b2b3a3390ad5d92968d5b330c3d06a48ad6d3c",
+      "carried_from": "924c1e8c9c0af62237263796da530a9f76f12a36d36290337cbbce2b398bc125",
       "carried_shape": "c4e97cd8f53c9097"
     },
     {
@@ -305,7 +337,7 @@
       "evidence": "File contains no session-start or resume instructional language.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "da482b4963dc258c971e1e40c8b2b3a3390ad5d92968d5b330c3d06a48ad6d3c",
+      "carried_from": "924c1e8c9c0af62237263796da530a9f76f12a36d36290337cbbce2b398bc125",
       "carried_shape": "c4e97cd8f53c9097"
     },
     {
@@ -316,7 +348,7 @@
       "evidence": "File contains no session-start or resume instructional language.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "da482b4963dc258c971e1e40c8b2b3a3390ad5d92968d5b330c3d06a48ad6d3c",
+      "carried_from": "924c1e8c9c0af62237263796da530a9f76f12a36d36290337cbbce2b398bc125",
       "carried_shape": "c4e97cd8f53c9097"
     },
     {
@@ -327,7 +359,7 @@
       "evidence": "File contains no session-start or resume instructional language.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "da482b4963dc258c971e1e40c8b2b3a3390ad5d92968d5b330c3d06a48ad6d3c",
+      "carried_from": "924c1e8c9c0af62237263796da530a9f76f12a36d36290337cbbce2b398bc125",
       "carried_shape": "c4e97cd8f53c9097"
     },
     {
@@ -338,7 +370,7 @@
       "evidence": "No F-Secure content or comparison.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "da482b4963dc258c971e1e40c8b2b3a3390ad5d92968d5b330c3d06a48ad6d3c",
+      "carried_from": "924c1e8c9c0af62237263796da530a9f76f12a36d36290337cbbce2b398bc125",
       "carried_shape": "c4e97cd8f53c9097"
     },
     {
@@ -349,7 +381,7 @@
       "evidence": "File proposes no infrastructure; it documents an existing practitioner's kit.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "da482b4963dc258c971e1e40c8b2b3a3390ad5d92968d5b330c3d06a48ad6d3c",
+      "carried_from": "924c1e8c9c0af62237263796da530a9f76f12a36d36290337cbbce2b398bc125",
       "carried_shape": "c4e97cd8f53c9097"
     },
     {
@@ -360,7 +392,7 @@
       "evidence": "No destructive operations described.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "da482b4963dc258c971e1e40c8b2b3a3390ad5d92968d5b330c3d06a48ad6d3c",
+      "carried_from": "924c1e8c9c0af62237263796da530a9f76f12a36d36290337cbbce2b398bc125",
       "carried_shape": "c4e97cd8f53c9097"
     },
     {
@@ -371,7 +403,7 @@
       "evidence": "Not relevant to this file's content.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "da482b4963dc258c971e1e40c8b2b3a3390ad5d92968d5b330c3d06a48ad6d3c",
+      "carried_from": "924c1e8c9c0af62237263796da530a9f76f12a36d36290337cbbce2b398bc125",
       "carried_shape": "c4e97cd8f53c9097"
     },
     {
@@ -382,7 +414,7 @@
       "evidence": "Not relevant to this file's content.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "da482b4963dc258c971e1e40c8b2b3a3390ad5d92968d5b330c3d06a48ad6d3c",
+      "carried_from": "924c1e8c9c0af62237263796da530a9f76f12a36d36290337cbbce2b398bc125",
       "carried_shape": "c4e97cd8f53c9097"
     },
     {
@@ -393,7 +425,7 @@
       "evidence": "Not relevant to this file's content.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "da482b4963dc258c971e1e40c8b2b3a3390ad5d92968d5b330c3d06a48ad6d3c",
+      "carried_from": "924c1e8c9c0af62237263796da530a9f76f12a36d36290337cbbce2b398bc125",
       "carried_shape": "c4e97cd8f53c9097"
     },
     {
@@ -404,7 +436,7 @@
       "evidence": "Not applicable to a student-facing supplementary page.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "da482b4963dc258c971e1e40c8b2b3a3390ad5d92968d5b330c3d06a48ad6d3c",
+      "carried_from": "924c1e8c9c0af62237263796da530a9f76f12a36d36290337cbbce2b398bc125",
       "carried_shape": "c4e97cd8f53c9097"
     },
     {
@@ -415,7 +447,7 @@
       "evidence": "About this repo's own canon-declaration mechanics, not this file's subject matter.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "da482b4963dc258c971e1e40c8b2b3a3390ad5d92968d5b330c3d06a48ad6d3c",
+      "carried_from": "924c1e8c9c0af62237263796da530a9f76f12a36d36290337cbbce2b398bc125",
       "carried_shape": "c4e97cd8f53c9097"
     },
     {
@@ -426,7 +458,7 @@
       "evidence": "Process rule for this repo's own workflow.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "da482b4963dc258c971e1e40c8b2b3a3390ad5d92968d5b330c3d06a48ad6d3c",
+      "carried_from": "924c1e8c9c0af62237263796da530a9f76f12a36d36290337cbbce2b398bc125",
       "carried_shape": "c4e97cd8f53c9097"
     },
     {
@@ -437,7 +469,7 @@
       "evidence": "Internal repo-tooling/process rule (audit machinery, tmux runners, quality-stamp mechanics, hook wiring); no matching subject matter in this practitioner-reference file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "da482b4963dc258c971e1e40c8b2b3a3390ad5d92968d5b330c3d06a48ad6d3c",
+      "carried_from": "924c1e8c9c0af62237263796da530a9f76f12a36d36290337cbbce2b398bc125",
       "carried_shape": "c4e97cd8f53c9097"
     },
     {
@@ -448,7 +480,7 @@
       "evidence": "Internal repo-tooling/process rule (audit machinery, tmux runners, quality-stamp mechanics, hook wiring); no matching subject matter in this practitioner-reference file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "da482b4963dc258c971e1e40c8b2b3a3390ad5d92968d5b330c3d06a48ad6d3c",
+      "carried_from": "924c1e8c9c0af62237263796da530a9f76f12a36d36290337cbbce2b398bc125",
       "carried_shape": "c4e97cd8f53c9097"
     },
     {
@@ -459,7 +491,7 @@
       "evidence": "Internal repo-tooling/process rule (audit machinery, tmux runners, quality-stamp mechanics, hook wiring); no matching subject matter in this practitioner-reference file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "da482b4963dc258c971e1e40c8b2b3a3390ad5d92968d5b330c3d06a48ad6d3c",
+      "carried_from": "924c1e8c9c0af62237263796da530a9f76f12a36d36290337cbbce2b398bc125",
       "carried_shape": "c4e97cd8f53c9097"
     },
     {
@@ -470,7 +502,7 @@
       "evidence": "Internal repo-tooling/process rule (audit machinery, tmux runners, quality-stamp mechanics, hook wiring); no matching subject matter in this practitioner-reference file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "da482b4963dc258c971e1e40c8b2b3a3390ad5d92968d5b330c3d06a48ad6d3c",
+      "carried_from": "924c1e8c9c0af62237263796da530a9f76f12a36d36290337cbbce2b398bc125",
       "carried_shape": "c4e97cd8f53c9097"
     },
     {
@@ -481,7 +513,7 @@
       "evidence": "Internal repo-tooling/process rule (audit machinery, tmux runners, quality-stamp mechanics, hook wiring); no matching subject matter in this practitioner-reference file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "da482b4963dc258c971e1e40c8b2b3a3390ad5d92968d5b330c3d06a48ad6d3c",
+      "carried_from": "924c1e8c9c0af62237263796da530a9f76f12a36d36290337cbbce2b398bc125",
       "carried_shape": "c4e97cd8f53c9097"
     },
     {
@@ -492,7 +524,7 @@
       "evidence": "Internal repo-tooling/process rule (audit machinery, tmux runners, quality-stamp mechanics, hook wiring); no matching subject matter in this practitioner-reference file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "da482b4963dc258c971e1e40c8b2b3a3390ad5d92968d5b330c3d06a48ad6d3c",
+      "carried_from": "924c1e8c9c0af62237263796da530a9f76f12a36d36290337cbbce2b398bc125",
       "carried_shape": "c4e97cd8f53c9097"
     },
     {
@@ -503,7 +535,7 @@
       "evidence": "Internal repo-tooling/process rule (audit machinery, tmux runners, quality-stamp mechanics, hook wiring); no matching subject matter in this practitioner-reference file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "da482b4963dc258c971e1e40c8b2b3a3390ad5d92968d5b330c3d06a48ad6d3c",
+      "carried_from": "924c1e8c9c0af62237263796da530a9f76f12a36d36290337cbbce2b398bc125",
       "carried_shape": "c4e97cd8f53c9097"
     },
     {
@@ -514,7 +546,7 @@
       "evidence": "Internal repo-tooling/process rule (audit machinery, tmux runners, quality-stamp mechanics, hook wiring); no matching subject matter in this practitioner-reference file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "da482b4963dc258c971e1e40c8b2b3a3390ad5d92968d5b330c3d06a48ad6d3c",
+      "carried_from": "924c1e8c9c0af62237263796da530a9f76f12a36d36290337cbbce2b398bc125",
       "carried_shape": "c4e97cd8f53c9097"
     },
     {
@@ -525,7 +557,7 @@
       "evidence": "Internal repo-tooling/process rule (audit machinery, tmux runners, quality-stamp mechanics, hook wiring); no matching subject matter in this practitioner-reference file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "da482b4963dc258c971e1e40c8b2b3a3390ad5d92968d5b330c3d06a48ad6d3c",
+      "carried_from": "924c1e8c9c0af62237263796da530a9f76f12a36d36290337cbbce2b398bc125",
       "carried_shape": "c4e97cd8f53c9097"
     },
     {
@@ -536,7 +568,7 @@
       "evidence": "Internal repo-tooling/process rule (audit machinery, tmux runners, quality-stamp mechanics, hook wiring); no matching subject matter in this practitioner-reference file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "da482b4963dc258c971e1e40c8b2b3a3390ad5d92968d5b330c3d06a48ad6d3c",
+      "carried_from": "924c1e8c9c0af62237263796da530a9f76f12a36d36290337cbbce2b398bc125",
       "carried_shape": "c4e97cd8f53c9097"
     },
     {
@@ -547,7 +579,7 @@
       "evidence": "Internal repo-tooling/process rule (audit machinery, tmux runners, quality-stamp mechanics, hook wiring); no matching subject matter in this practitioner-reference file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "da482b4963dc258c971e1e40c8b2b3a3390ad5d92968d5b330c3d06a48ad6d3c",
+      "carried_from": "924c1e8c9c0af62237263796da530a9f76f12a36d36290337cbbce2b398bc125",
       "carried_shape": "c4e97cd8f53c9097"
     },
     {
@@ -558,7 +590,7 @@
       "evidence": "Internal repo-tooling/process rule (audit machinery, tmux runners, quality-stamp mechanics, hook wiring); no matching subject matter in this practitioner-reference file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "da482b4963dc258c971e1e40c8b2b3a3390ad5d92968d5b330c3d06a48ad6d3c",
+      "carried_from": "924c1e8c9c0af62237263796da530a9f76f12a36d36290337cbbce2b398bc125",
       "carried_shape": "c4e97cd8f53c9097"
     },
     {
@@ -569,7 +601,7 @@
       "evidence": "Internal repo-tooling/process rule (audit machinery, tmux runners, quality-stamp mechanics, hook wiring); no matching subject matter in this practitioner-reference file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "da482b4963dc258c971e1e40c8b2b3a3390ad5d92968d5b330c3d06a48ad6d3c",
+      "carried_from": "924c1e8c9c0af62237263796da530a9f76f12a36d36290337cbbce2b398bc125",
       "carried_shape": "c4e97cd8f53c9097"
     },
     {
@@ -580,7 +612,7 @@
       "evidence": "Internal repo-tooling/process rule (audit machinery, tmux runners, quality-stamp mechanics, hook wiring); no matching subject matter in this practitioner-reference file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "da482b4963dc258c971e1e40c8b2b3a3390ad5d92968d5b330c3d06a48ad6d3c",
+      "carried_from": "924c1e8c9c0af62237263796da530a9f76f12a36d36290337cbbce2b398bc125",
       "carried_shape": "c4e97cd8f53c9097"
     },
     {
@@ -591,7 +623,7 @@
       "evidence": "Rule §30 governs a namespace-collision failure mode across SUTs authoring test-strategy-style skills in THIS repo's own tooling; the file's mention of ~/.claude/skills/ vs ./.claude/skills/ is a correct, separately-verified factual claim (see rule 1/4 above), not an instance of the collision pattern this rule addresses.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "da482b4963dc258c971e1e40c8b2b3a3390ad5d92968d5b330c3d06a48ad6d3c",
+      "carried_from": "924c1e8c9c0af62237263796da530a9f76f12a36d36290337cbbce2b398bc125",
       "carried_shape": "c4e97cd8f53c9097"
     },
     {
@@ -602,7 +634,7 @@
       "evidence": "Internal repo-tooling/process rule (audit machinery, tmux runners, quality-stamp mechanics, hook wiring); no matching subject matter in this practitioner-reference file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "da482b4963dc258c971e1e40c8b2b3a3390ad5d92968d5b330c3d06a48ad6d3c",
+      "carried_from": "924c1e8c9c0af62237263796da530a9f76f12a36d36290337cbbce2b398bc125",
       "carried_shape": "c4e97cd8f53c9097"
     },
     {
@@ -613,7 +645,7 @@
       "evidence": "Internal repo-tooling/process rule (audit machinery, tmux runners, quality-stamp mechanics, hook wiring); no matching subject matter in this practitioner-reference file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "da482b4963dc258c971e1e40c8b2b3a3390ad5d92968d5b330c3d06a48ad6d3c",
+      "carried_from": "924c1e8c9c0af62237263796da530a9f76f12a36d36290337cbbce2b398bc125",
       "carried_shape": "c4e97cd8f53c9097"
     },
     {
@@ -624,7 +656,7 @@
       "evidence": "Internal repo-tooling/process rule (audit machinery, tmux runners, quality-stamp mechanics, hook wiring); no matching subject matter in this practitioner-reference file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "da482b4963dc258c971e1e40c8b2b3a3390ad5d92968d5b330c3d06a48ad6d3c",
+      "carried_from": "924c1e8c9c0af62237263796da530a9f76f12a36d36290337cbbce2b398bc125",
       "carried_shape": "c4e97cd8f53c9097"
     },
     {
@@ -635,7 +667,7 @@
       "evidence": "Internal repo-tooling/process rule (audit machinery, tmux runners, quality-stamp mechanics, hook wiring); no matching subject matter in this practitioner-reference file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "da482b4963dc258c971e1e40c8b2b3a3390ad5d92968d5b330c3d06a48ad6d3c",
+      "carried_from": "924c1e8c9c0af62237263796da530a9f76f12a36d36290337cbbce2b398bc125",
       "carried_shape": "c4e97cd8f53c9097"
     },
     {
@@ -646,7 +678,7 @@
       "evidence": "Internal repo-tooling/process rule (audit machinery, tmux runners, quality-stamp mechanics, hook wiring); no matching subject matter in this practitioner-reference file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "da482b4963dc258c971e1e40c8b2b3a3390ad5d92968d5b330c3d06a48ad6d3c",
+      "carried_from": "924c1e8c9c0af62237263796da530a9f76f12a36d36290337cbbce2b398bc125",
       "carried_shape": "c4e97cd8f53c9097"
     },
     {
@@ -657,7 +689,7 @@
       "evidence": "Internal repo-tooling/process rule (audit machinery, tmux runners, quality-stamp mechanics, hook wiring); no matching subject matter in this practitioner-reference file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "da482b4963dc258c971e1e40c8b2b3a3390ad5d92968d5b330c3d06a48ad6d3c",
+      "carried_from": "924c1e8c9c0af62237263796da530a9f76f12a36d36290337cbbce2b398bc125",
       "carried_shape": "c4e97cd8f53c9097"
     },
     {
@@ -668,7 +700,7 @@
       "evidence": "Internal repo-tooling/process rule (audit machinery, tmux runners, quality-stamp mechanics, hook wiring); no matching subject matter in this practitioner-reference file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "da482b4963dc258c971e1e40c8b2b3a3390ad5d92968d5b330c3d06a48ad6d3c",
+      "carried_from": "924c1e8c9c0af62237263796da530a9f76f12a36d36290337cbbce2b398bc125",
       "carried_shape": "c4e97cd8f53c9097"
     },
     {
@@ -679,7 +711,7 @@
       "evidence": "Internal repo-tooling/process rule (audit machinery, tmux runners, quality-stamp mechanics, hook wiring); no matching subject matter in this practitioner-reference file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "da482b4963dc258c971e1e40c8b2b3a3390ad5d92968d5b330c3d06a48ad6d3c",
+      "carried_from": "924c1e8c9c0af62237263796da530a9f76f12a36d36290337cbbce2b398bc125",
       "carried_shape": "c4e97cd8f53c9097"
     },
     {
@@ -690,7 +722,7 @@
       "evidence": "Internal repo-tooling/process rule (audit machinery, tmux runners, quality-stamp mechanics, hook wiring); no matching subject matter in this practitioner-reference file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "da482b4963dc258c971e1e40c8b2b3a3390ad5d92968d5b330c3d06a48ad6d3c",
+      "carried_from": "924c1e8c9c0af62237263796da530a9f76f12a36d36290337cbbce2b398bc125",
       "carried_shape": "c4e97cd8f53c9097"
     },
     {
@@ -701,7 +733,7 @@
       "evidence": "Internal repo-tooling/process rule (audit machinery, tmux runners, quality-stamp mechanics, hook wiring); no matching subject matter in this practitioner-reference file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "da482b4963dc258c971e1e40c8b2b3a3390ad5d92968d5b330c3d06a48ad6d3c",
+      "carried_from": "924c1e8c9c0af62237263796da530a9f76f12a36d36290337cbbce2b398bc125",
       "carried_shape": "c4e97cd8f53c9097"
     },
     {
@@ -712,7 +744,7 @@
       "evidence": "Internal repo-tooling/process rule (audit machinery, tmux runners, quality-stamp mechanics, hook wiring); no matching subject matter in this practitioner-reference file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "da482b4963dc258c971e1e40c8b2b3a3390ad5d92968d5b330c3d06a48ad6d3c",
+      "carried_from": "924c1e8c9c0af62237263796da530a9f76f12a36d36290337cbbce2b398bc125",
       "carried_shape": "c4e97cd8f53c9097"
     },
     {
@@ -723,7 +755,7 @@
       "evidence": "Internal repo-tooling/process rule (audit machinery, tmux runners, quality-stamp mechanics, hook wiring); no matching subject matter in this practitioner-reference file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "da482b4963dc258c971e1e40c8b2b3a3390ad5d92968d5b330c3d06a48ad6d3c",
+      "carried_from": "924c1e8c9c0af62237263796da530a9f76f12a36d36290337cbbce2b398bc125",
       "carried_shape": "c4e97cd8f53c9097"
     },
     {
@@ -734,7 +766,7 @@
       "evidence": "Internal repo-tooling/process rule (audit machinery, tmux runners, quality-stamp mechanics, hook wiring); no matching subject matter in this practitioner-reference file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "da482b4963dc258c971e1e40c8b2b3a3390ad5d92968d5b330c3d06a48ad6d3c",
+      "carried_from": "924c1e8c9c0af62237263796da530a9f76f12a36d36290337cbbce2b398bc125",
       "carried_shape": "c4e97cd8f53c9097"
     },
     {
@@ -745,7 +777,7 @@
       "evidence": "Internal repo-tooling/process rule (audit machinery, tmux runners, quality-stamp mechanics, hook wiring); no matching subject matter in this practitioner-reference file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "da482b4963dc258c971e1e40c8b2b3a3390ad5d92968d5b330c3d06a48ad6d3c",
+      "carried_from": "924c1e8c9c0af62237263796da530a9f76f12a36d36290337cbbce2b398bc125",
       "carried_shape": "c4e97cd8f53c9097"
     },
     {
@@ -756,7 +788,7 @@
       "evidence": "No OODA-subagent paraphrase is transcribed into body prose as a primary-source claim; the whole page IS the primary-source write-up (maintainer's own direct reading, per source stamp).",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "da482b4963dc258c971e1e40c8b2b3a3390ad5d92968d5b330c3d06a48ad6d3c",
+      "carried_from": "924c1e8c9c0af62237263796da530a9f76f12a36d36290337cbbce2b398bc125",
       "carried_shape": "c4e97cd8f53c9097"
     },
     {
@@ -767,7 +799,7 @@
       "evidence": "File contains no round-number AI failure/success statistic.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "da482b4963dc258c971e1e40c8b2b3a3390ad5d92968d5b330c3d06a48ad6d3c",
+      "carried_from": "924c1e8c9c0af62237263796da530a9f76f12a36d36290337cbbce2b398bc125",
       "carried_shape": "c4e97cd8f53c9097"
     },
     {
@@ -778,7 +810,7 @@
       "evidence": "File is reference content, not a research-synthesis-to-curriculum-implication handoff.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "da482b4963dc258c971e1e40c8b2b3a3390ad5d92968d5b330c3d06a48ad6d3c",
+      "carried_from": "924c1e8c9c0af62237263796da530a9f76f12a36d36290337cbbce2b398bc125",
       "carried_shape": "c4e97cd8f53c9097"
     },
     {
@@ -789,7 +821,7 @@
       "evidence": "Not a strategy-doc-authoring action.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "da482b4963dc258c971e1e40c8b2b3a3390ad5d92968d5b330c3d06a48ad6d3c",
+      "carried_from": "924c1e8c9c0af62237263796da530a9f76f12a36d36290337cbbce2b398bc125",
       "carried_shape": "c4e97cd8f53c9097"
     },
     {
@@ -800,7 +832,7 @@
       "evidence": "Process rule for the authoring session, not a content property of the shipped file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "da482b4963dc258c971e1e40c8b2b3a3390ad5d92968d5b330c3d06a48ad6d3c",
+      "carried_from": "924c1e8c9c0af62237263796da530a9f76f12a36d36290337cbbce2b398bc125",
       "carried_shape": "c4e97cd8f53c9097"
     },
     {
@@ -811,18 +843,7 @@
       "evidence": "Process rule for the authoring session.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "da482b4963dc258c971e1e40c8b2b3a3390ad5d92968d5b330c3d06a48ad6d3c",
-      "carried_shape": "c4e97cd8f53c9097"
-    },
-    {
-      "compendium": "check_research_claims.md",
-      "rule_index": 11,
-      "rule_lead": "Source-verification maintainer block on any student-facing file with practitioner citations.",
-      "verdict": "N/A",
-      "evidence": "Trigger requires 'named practitioner + specific URL + load-bearing number'; Dino is a pseudonym (not a named real practitioner), the source is result:ATTESTED (no URL owed per §1's maintainer-attested carve-out), and no numeric claim is load-bearing — so the MUST-DO verification section is not owed here.",
-      "fix_hint": "",
-      "blocking": false,
-      "carried_from": "da482b4963dc258c971e1e40c8b2b3a3390ad5d92968d5b330c3d06a48ad6d3c",
+      "carried_from": "924c1e8c9c0af62237263796da530a9f76f12a36d36290337cbbce2b398bc125",
       "carried_shape": "c4e97cd8f53c9097"
     },
     {
@@ -833,7 +854,7 @@
       "evidence": "File carries no adoption/productivity percentage.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "da482b4963dc258c971e1e40c8b2b3a3390ad5d92968d5b330c3d06a48ad6d3c",
+      "carried_from": "924c1e8c9c0af62237263796da530a9f76f12a36d36290337cbbce2b398bc125",
       "carried_shape": "c4e97cd8f53c9097"
     },
     {
@@ -844,7 +865,7 @@
       "evidence": "Rule targets verification-instrument design, not a property of this content file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "da482b4963dc258c971e1e40c8b2b3a3390ad5d92968d5b330c3d06a48ad6d3c",
+      "carried_from": "924c1e8c9c0af62237263796da530a9f76f12a36d36290337cbbce2b398bc125",
       "carried_shape": "c4e97cd8f53c9097"
     },
     {
@@ -855,7 +876,7 @@
       "evidence": "File makes no word-presence claim about another source.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "da482b4963dc258c971e1e40c8b2b3a3390ad5d92968d5b330c3d06a48ad6d3c",
+      "carried_from": "924c1e8c9c0af62237263796da530a9f76f12a36d36290337cbbce2b398bc125",
       "carried_shape": "c4e97cd8f53c9097"
     },
     {
@@ -866,7 +887,7 @@
       "evidence": "Not a discovery/search-audit scenario.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "da482b4963dc258c971e1e40c8b2b3a3390ad5d92968d5b330c3d06a48ad6d3c",
+      "carried_from": "924c1e8c9c0af62237263796da530a9f76f12a36d36290337cbbce2b398bc125",
       "carried_shape": "c4e97cd8f53c9097"
     },
     {
@@ -877,7 +898,7 @@
       "evidence": "File contains no {{prompt:}} markers or fenced prompt blocks (verified: `grep -c '{{prompt:' skill-stacking.md` → 0) — it is a progressive-reading reference page with no student-performed exercise turns, so the prompt-vs-body split doesn't apply.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "da482b4963dc258c971e1e40c8b2b3a3390ad5d92968d5b330c3d06a48ad6d3c",
+      "carried_from": "924c1e8c9c0af62237263796da530a9f76f12a36d36290337cbbce2b398bc125",
       "carried_shape": "c4e97cd8f53c9097"
     },
     {
@@ -888,7 +909,7 @@
       "evidence": "File is student-facing curriculum content, not a memory/rule entry.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "da482b4963dc258c971e1e40c8b2b3a3390ad5d92968d5b330c3d06a48ad6d3c",
+      "carried_from": "924c1e8c9c0af62237263796da530a9f76f12a36d36290337cbbce2b398bc125",
       "carried_shape": "c4e97cd8f53c9097"
     },
     {
@@ -899,7 +920,7 @@
       "evidence": "File contains no 'done' declaration or pushback exchange.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "da482b4963dc258c971e1e40c8b2b3a3390ad5d92968d5b330c3d06a48ad6d3c",
+      "carried_from": "924c1e8c9c0af62237263796da530a9f76f12a36d36290337cbbce2b398bc125",
       "carried_shape": "c4e97cd8f53c9097"
     },
     {
@@ -910,7 +931,7 @@
       "evidence": "File introduces no verification machinery (hook/judge/loop/gate).",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "da482b4963dc258c971e1e40c8b2b3a3390ad5d92968d5b330c3d06a48ad6d3c",
+      "carried_from": "924c1e8c9c0af62237263796da530a9f76f12a36d36290337cbbce2b398bc125",
       "carried_shape": "c4e97cd8f53c9097"
     },
     {
@@ -921,7 +942,7 @@
       "evidence": "File documents Dino's own composition mechanisms (explicit load / orchestrator / routing / hand-off), a different taxonomy from this rule's Claude-Code-specific auto-load/lazy-load/explicit-load teaching progression; it is a supplementary reference page, not an exercise beat revealing one tier at a time.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "da482b4963dc258c971e1e40c8b2b3a3390ad5d92968d5b330c3d06a48ad6d3c",
+      "carried_from": "924c1e8c9c0af62237263796da530a9f76f12a36d36290337cbbce2b398bc125",
       "carried_shape": "c4e97cd8f53c9097"
     },
     {
@@ -932,7 +953,7 @@
       "evidence": "Rule is a diagnostic method for the eval-system's own cost regressions (rules_evaluated row-count growth over time); it names no property of a curriculum artifact for a judge to check against this file's content.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "da482b4963dc258c971e1e40c8b2b3a3390ad5d92968d5b330c3d06a48ad6d3c",
+      "carried_from": "924c1e8c9c0af62237263796da530a9f76f12a36d36290337cbbce2b398bc125",
       "carried_shape": "c4e97cd8f53c9097"
     },
     {
@@ -943,7 +964,7 @@
       "evidence": "Rule governs how to evaluate a judge-hillclimb fixture's blind spots; it is about the eval-instrument's own bench design, not a claim this supplementary page makes.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "da482b4963dc258c971e1e40c8b2b3a3390ad5d92968d5b330c3d06a48ad6d3c",
+      "carried_from": "924c1e8c9c0af62237263796da530a9f76f12a36d36290337cbbce2b398bc125",
       "carried_shape": "c4e97cd8f53c9097"
     },
     {
@@ -954,7 +975,7 @@
       "evidence": "Governs this repo's own Quality-stamp writing mechanics (update-quality.sh), not a content property of the student-facing file itself; this judge does not write the Quality line per its own out-of-scope instructions.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "da482b4963dc258c971e1e40c8b2b3a3390ad5d92968d5b330c3d06a48ad6d3c",
+      "carried_from": "924c1e8c9c0af62237263796da530a9f76f12a36d36290337cbbce2b398bc125",
       "carried_shape": "c4e97cd8f53c9097"
     },
     {
@@ -965,61 +986,11 @@
       "evidence": "Internal-tooling rule about scan-stale-classes.js freshness-check blind spots, unrelated to this file's subject matter.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "da482b4963dc258c971e1e40c8b2b3a3390ad5d92968d5b330c3d06a48ad6d3c",
+      "carried_from": "924c1e8c9c0af62237263796da530a9f76f12a36d36290337cbbce2b398bc125",
       "carried_shape": "c4e97cd8f53c9097"
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 1,
-      "rule_lead": "Banned words — grep zero-tolerance.",
-      "verdict": "PASS",
-      "evidence": "mechanical: /\\b(delve|delving|honest|honestly|importantly|crucial|crucially|substrate|synergize|paradigm shift)\\b/ over body projection curriculum/evals/body-views/ae101--supplementary--skill-stacking.body.txt → 0 hits; pattern proven against planted violation.",
-      "fix_hint": "",
-      "blocking": false,
-      "prefilled": true
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 2,
-      "rule_lead": "Ritual / ceremony — hard ban in any curriculum/training surface.",
-      "verdict": "PASS",
-      "evidence": "mechanical: /\\b(ritual|rituals|ceremony|ceremonies)\\b/ over body projection curriculum/evals/body-views/ae101--supplementary--skill-stacking.body.txt → 0 hits; pattern proven against planted violation.",
-      "fix_hint": "",
-      "blocking": false,
-      "prefilled": true
     }
   ],
-  "platform_claims_checked": [
-    {
-      "claim": "user-invocable: false ← optional, hides it from the / menu (default true)",
-      "line": 23,
-      "verdict": "PASS",
-      "source": "https://code.claude.com/docs/en/skills (live WebFetch 2026-08-28)"
-    },
-    {
-      "claim": "allowed-tools: ← pre-approves tools for the turn (disallowed-tools restricts)",
-      "line": 24,
-      "verdict": "PASS",
-      "source": "https://code.claude.com/docs/en/skills (live WebFetch 2026-08-28)"
-    },
-    {
-      "claim": "Personal skills live in ~/.claude/skills/, project skills in ./.claude/skills/.",
-      "line": 3,
-      "verdict": "PASS",
-      "source": "https://code.claude.com/docs/en/skills (live WebFetch 2026-08-28) — 'Where skills live' table"
-    },
-    {
-      "claim": "Skill frontmatter is quoted from the shipped docs ... field is user-invocable (hyphenated), it defaults to true ... allowed-tools pre-approves a tool set for the turn and does NOT restrict access; disallowed-tools is the restricting field.",
-      "line": 181,
-      "verdict": "PASS",
-      "source": "https://code.claude.com/docs/en/skills (live WebFetch 2026-08-28), re-derived independently of the maintainer note and of the prior 2026-08-19 fetch"
-    }
-  ],
-  "citations_checked": [],
-  "skills_referenced": [],
-  "urls_sampled": [],
-  "blocking_findings_count": 0,
   "todos_count": 0,
-  "notes": "RULE-DRIFT + STALENESS RE-AUDIT (pin b55cd28b, staleness reason: rule-drift). `git diff b55cd28b..HEAD -- <file>` is two lines, both inside the maintainer block: the Quality header advanced its sha stamps (technical remained @b55cd28b — still the pin this judgment covers), and the 'Skill frontmatter is quoted from the shipped docs' note dropped its trailing clause 'All three were wrong here until 2026-08-19 and were corrected against' — a session-biography trim (check_writing.md §3 territory, not technical's), leaving the verification claim and the re-verify-instruction intact. No technical-class fact changed in the diff itself.\n\nDrift rule re-read at CURRENT wording (2026-08-28, including the same-day 'Fail-open corollary' addendum): platform_and_boundaries §45, full text re-fetched via rule.js. Both halves describe this repo's own audit tooling, not a property skill-stacking.md's content could exhibit. Verdict N/A, unchanged from the pre-addendum reading. Applied the addendum's spirit reflexively to this instance's own shape (standard rules_evaluated array, not an exotic shape) — confirmed by running check-instance-evidence.js after writing: clean, 91 rows, 0 ungrounded.\n\nSurface 1 (platform-capability claims) is the load-bearing surface here. All three frontmatter facts in the maintainer note (L181) plus the L3 personal/project-skill-path claim were re-verified against a fresh WebFetch of https://code.claude.com/docs/en/skills this dispatch (2026-08-28), independent of the prior run's 2026-08-19 fetch and of the note's own text — all four match current shipped docs verbatim in substance (see platform_claims_checked). One non-blocking nuance logged as a todo, not a finding: L3's 'the harness merges them at runtime; they're indistinguishable to the model' is defensible as the model's-eye view after resolution (Claude Code presents one flat catalog), but current docs describe an explicit precedence on name collision ('personal overrides project') the sentence doesn't acknowledge. Low stakes: the page teaches composition patterns, not precedence rules, and nothing downstream depends on the claim's precision.\n\nSurfaces 2/3/5 (citations, [Skill: name] refs, URLs) are structurally empty (view.json signals: has_urls=false; no bracket-skill references in body). Surface 4 (check_prompts.md) is a single whole-compendium N/A scope row, re-confirmed against the current body_sha.\n\ncheck_pedagogy.md: this class's five owned technical sub-rules (§16/22/23/36/37) were all resolved N/A in the prior instance under the SAME shape_hash and are absent from this cycle's class-brief — parked, not re-derived, per dispatch mechanics; spliced back via --merge.\n\nMID-SESSION COLLISION, recorded for traceability: this judge's earliest `shasum` of the target file (taken before its first full Read) returned ae556fa9f9...4af4, not the da482b4963d... recorded as body_sha above. A concurrent colleague session committed the exact two-line diff described above (commit 534a5e84) between this judge's early shasum and its first full-file Read; `git status` now shows the .md file clean at da482b... (matches `git show HEAD`). Body-view, class-brief, and prefill sidecar were all re-derived AFTER that landing so nothing here judges against stale content. Separately, this instance file itself was found already modified in the working tree (uncommitted) with body_sha=da482... and a notes field describing this same pin/diff/drift-check — apparently a duplicate or concurrent dispatch of this exact task. Its rows were checked line-by-line against this judge's own independent analysis (same seven owed platform rules, same six owed research rules, same §45 re-derivation, same prompts scope row) and agreed on every verdict and every cited line; check-instance-evidence.js against it also reported clean. This write supersedes it with this judge's own independently-gathered evidence (fresh WebFetch, fresh git diff, fresh rule.js fetch) rather than adopting its text verbatim.",
-  "shape_hash": "c4e97cd8f53c9097"
+  "blocking_findings_count": 0,
+  "notes": "STALENESS RE-AUDIT, pin 8cc00874, reason: rule-drift. `git diff 8cc00874..HEAD -- <file>` (grep -E '^[-+]' | grep -vE '^(\\+\\+\\+|---)') shows five changed lines, none a technical-class fact: (1) TL;DR sentence reworded — 'Four composition mechanisms' → 'Composition mechanisms' (drops the bare count) and 'the last four commands' → 'the closing commands' — writing-register tightening, check_writing territory, no platform/citation claim changed; (2) workflow-table row E caption 'Three postures' → 'Different postures' — same, prose precision; (3) Quality header advanced its per-class SHA stamps (bookkeeping, not owed to this judge to alter); (4) backing-block maintainer sentence swapped which in-training artifact keeps '/ship' generic (the lecture's Dino figure vs. a footprint chart) — still correctly guards check_platform_and_boundaries §10, no capability claim touched; (5) Frameworks gloss line reworded, same claim. No rule_index in this class's ownership was affected by the body diff itself.\n\nDrift was in the RULES, not the body, per dispatch: re-fetched research_claims §11 (+ its closing 'debt goes in a stamp, never a prose checkbox' note) and backing-format.md fresh this dispatch — verdict PASS, written fresh above, overriding the prefill sidecar's stale parked N/A for this rule_index (that parked row predates the §11 wording this dispatch read; my own row wins per dispatch mechanics and the merge will not duplicate it). Re-fetched check_prompts.md §2/§17/§20/§40 at current wording (including the 2026-09-03 §17/§20 narrowings) — all four resolve N/A a fortiori under the pre-existing whole-compendium N/A scope call, since the file has zero prompt fences of any kind; no individual override needed for these four (unlike §11, the narrowings only shrink an already-empty trigger set).\n\ncheck_pedagogy.md: this class's five owned technical sub-rules (§16/22/23/36/37) are absent from this cycle's class-brief (parked under matching shape_hash, confirmed in the prefill sidecar) — left alone, not re-derived, per dispatch mechanics; spliced back via --merge. The other 57 numbered check_pedagogy.md rules the class-brief also assembled verbatim are outside this class's ownership per the technical judge template ('For check_pedagogy, evaluate only the technical sub-rules listed above') and the dispatch preamble ('Evaluate ONLY the compendiums your template puts in scope') — no rows written for them.\n\nSurfaces 3/5 (skill-bracket references, URL liveness) are structurally empty: zero '[Skill:' references, zero URLs in body (view.json has_urls=false, confirmed by direct grep)."
 }

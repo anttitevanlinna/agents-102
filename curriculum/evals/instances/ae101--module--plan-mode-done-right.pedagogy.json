@@ -1,17 +1,17 @@
 {
   "class": "pedagogy",
+  "training": "ae101",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/plan-mode-done-right.md",
-  "body_sha": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
+  "body_sha": "58207b3220bb3f0456da5792b6a668d2f1c58748117a35558294101fdd2a4f29",
   "shape_hash": "3bf287f827d6a7ae",
   "verdict": "PASS_WITH_TODOS",
-  "training": "ae101",
   "rules_evaluated": [
     {
       "compendium": "check_pedagogy.md",
       "rule_index": 3,
       "rule_lead": "Trust the agentic design — no human backstops.",
       "verdict": "PASS",
-      "evidence": "Grepped body_numbered this session for 'antti observes', 'manually verif', 'human review before' — zero hits. No sentence installs a human backstop on an agent flow; the P5 'approve, stop, do not execute' gate (raw L150 Push-back moves, L195-196 Per-phase failure table) is the module's own trust-line exception (an irreversible move into generation), not a manual-check substitute for agent judgment.",
+      "evidence": "grep -niE 'antti observes|manually verif|human review before' against the body projection this session: zero hits. The one confirmation gate in the file, raw L150/L195-196 'approve, stop, do not execute,' is the module's own irreversible-action trust-line exception (generation is the irreversible step), not a manual human-backstop substituting for agent judgment.",
       "fix_hint": null,
       "blocking": false
     },
@@ -20,7 +20,7 @@
       "rule_index": 7,
       "rule_lead": "Modules composable across variants.",
       "verdict": "PASS",
-      "evidence": "grep -n 'flag:module:earn-the-trust|flag:no-module:earn-the-trust' this session: opens/closes at raw L62/L73 (Pre-reads before Module 3 block) and L74/L80 (Pre-reads before Module 4 block), plus a second balanced pair inline at L85 (both flags open) closing at L85/L91 (## Next branch). Two matched VARIANT-flag pairs, single file, no forked full-file duplication — the rule's own shape.",
+      "evidence": "Two matched VARIANT-flag pairs in the current body: raw L62/73 (module:earn-the-trust — Pre-reads before Module 3) and raw L74/80 (no-module:earn-the-trust — Pre-reads before Module 4), plus the L85/85 and L85/91 pair splitting the ## Next close. ~80% shared body outside the flags, no forked full-file duplication.",
       "fix_hint": null,
       "blocking": false
     },
@@ -29,7 +29,7 @@
       "rule_index": 8,
       "rule_lead": "Three-level completeness.",
       "verdict": "PASS",
-      "evidence": "Artefact-contracts table (raw L177-183) carries the strategy frame (Big Idea, raw L6) through to a runtime artefact the student holds (plan file, task-shaping rule file) with a Consumed-by cell reaching into M3. Cross-checked this session: earn-the-trust.md L12 reads 'The plan file Claude Code wrote during plan mode is what M3 reads (you noted the path at M2 close)' — matches the contract row's forward claim.",
+      "evidence": "Artefact-contracts table (raw L177-183) carries the Big Idea (raw L6) through to two runtime artefacts (plan file, task-shaping rule file) the trainer/student hold, each with a Consumed-by cell reaching into M3. Re-checked this session: earn-the-trust.md L12 ('The plan file Claude Code wrote during plan mode is what M3 reads') matches the contract row's forward claim.",
       "fix_hint": null,
       "blocking": false
     },
@@ -38,7 +38,7 @@
       "rule_index": 9,
       "rule_lead": "Pattern-recognition LOs need n≥2 instances with contrast.",
       "verdict": "PASS",
-      "evidence": "LO at raw L21, 'Spot approval inflation in a plan whose structure makes it look decided,' is a pattern-recognition verb. Re-read curriculum/exercises/push-back-on-the-plan.md this session (current body): Phase 5 'Stop, then surface the patterns' (its L93) plus 'Compare what each read caught' (its L103-107) still contrasts what the human push-back caught against what the agent's second-pass walk-down caught, landing on the named pattern 'Plan-mode approval inflation' (its L107) — n≥2 contrasting instances genuinely present in the live linked file.",
+      "evidence": "LO at raw L21 ('Spot approval inflation in a plan whose structure makes it look decided') is a pattern-recognition verb. Re-read exercises/push-back-on-the-plan.md this session (current body): Phase 5 'Stop, then surface the patterns' plus 'Compare what each read caught' (its own L93-107) contrasts what the human push-back caught against what the agent's second-pass walk-down caught, naming 'Plan-mode approval inflation' (its L107) — genuine n≥2 contrasting instances in the live linked file.",
       "fix_hint": null,
       "blocking": false
     },
@@ -47,7 +47,7 @@
       "rule_index": 10,
       "rule_lead": "Student agency — adults decide.",
       "verdict": "PASS",
-      "evidence": "Grepped body_numbered this session for forced-pacing imperatives ('must', 'required to', 'sit for', \"don't scan\") — the only 'must' hit (raw L70, inside the optional M3 pre-read excerpt) is about what the AGENT must not touch, not student pacing. Explicit opt-in language throughout: raw L14 'Optional reading before this module'; raw L52-55 '## Optional challenges — Pick one when plan mode feels too comfortable'; raw L63/66 'Optional. The security frame Module 3 works in' / 'Optional. The thinking Module 4 asks you to do.'",
+      "evidence": "grep -niE for forced-pacing imperatives (\\bmust\\b, required to, sit for [0-9], don't scan) against the body projection this session: the only 'must' hit is raw L70, inside the optional M3 pre-read excerpt, and is about what the AGENT must not touch — not student pacing. Explicit opt-in language throughout: raw L14 'Optional reading before this module'; raw L52-55 '## Optional challenges — Pick one when plan mode feels too comfortable'; raw L63/66/78 'Optional.'",
       "fix_hint": null,
       "blocking": false
     },
@@ -56,7 +56,7 @@
       "rule_index": 12,
       "rule_lead": "Split mega-exercise when phases = distinct skills + distinct artifacts.",
       "verdict": "PASS",
-      "evidence": "Two separate exercise files linked (raw L34, L36: Push back on the plan / Extract the task-shaping rule) — distinct skills (push-back-and-approve vs. rule-extraction-and-placement), a natural pause between (two closing lectures sit after both), chained by artefact per the Artefact-contracts table (raw L177-183: Exercise 2 'reads M2 scrollback' produced by Exercise 1). The internal phase-count decision inside each linked file is that file's own call, out of this index file's scope.",
+      "evidence": "Two separate exercise files linked (raw L34, L36) — distinct skills (push-back-and-approve vs. rule-extraction-and-placement), distinct artefacts per the Artefact-contracts table (raw L177-183, Exercise 2 consumes Exercise 1's scrollback), a natural pause (two closing lectures) between them. Each linked file's own internal phase count is that file's call, out of scope here.",
       "fix_hint": null,
       "blocking": false
     },
@@ -65,7 +65,7 @@
       "rule_index": 13,
       "rule_lead": "Artifact-realism check.",
       "verdict": "PASS",
-      "evidence": "Verified on disk this session: all six linked lecture/exercise files exist (the-whole-map.md, when-a-plan-is-good.md, push-back-on-the-plan.md, extract-the-task-shaping-rule.md, where-the-rule-could-live.md, how-instructions-grow.md), both reference/supplementary pages exist (agentic-engineering-progression.md, multi-session-git.md, claude-code-for-engineers.md), and the deep anchor resolves — grep confirms '## 9. Plan mode at depth' at claude-code-for-engineers.md:183. No unshipped connector/tool named in body.",
+      "evidence": "Verified on disk this session: all six linked lecture/exercise files exist, both reference/supplementary pages exist, and the deep anchor resolves — `grep -n '^## 9\\.' reference/claude-code-for-engineers.md` → '183:## 9. Plan mode at depth'. No unshipped connector/tool named in body.",
       "fix_hint": null,
       "blocking": false
     },
@@ -74,7 +74,7 @@
       "rule_index": 14,
       "rule_lead": "Teach principle + technique — default.",
       "verdict": "PASS",
-      "evidence": "The one named-but-potentially-unexplained term, 'Argyris called double-loop learning' (raw L50, Key Concepts), is a post-hoc NAME for a move the same sentence just walked ('Fixing the plan is the first loop; changing the rule that shaped it is the second') — the orientation carve-out (naming what was just demonstrated, not invoking a black box). No unexplained technique is asked of the student anywhere in this file's body.",
+      "evidence": "The one named-but-unexplained-looking term, 'Argyris called double-loop learning' (raw L50), is a post-hoc NAME for a move the same sentence just walked ('Fixing the plan is the first loop; changing the rule that shaped it is the second') — orientation carve-out, not an invoked black box. No unexplained technique is asked of the student anywhere in this file's own body.",
       "fix_hint": null,
       "blocking": false
     },
@@ -83,7 +83,7 @@
       "rule_index": 15,
       "rule_lead": "Auto-fire sim+eval after significant rewrite.",
       "verdict": "PASS",
-      "evidence": "Diffed this session's body against the last audited body (git show d14613aa): the only changes are slide-tier markers flipping (tier:3→tier:1 on three optional sections, a new tier:3 on ## Next) and a maintainer-block sentence tightening the Willison source-freshness ruling. Neither touches phase structure, LOs, mood contract, a new practitioner artifact/skill, or a forcing-function mechanic — none of §15's own trigger conditions fired, so no auto-fire was owed for this drift; this dispatched pedagogy re-read is itself the correct response to the file's touch, not a gap in the auto-fire discipline.",
+      "evidence": "git diff 191ea58f..HEAD -- this file, run this session: the only change is the maintainer block's Big-Idea note losing one clause ('It was briefly moved below this fence, then restored') and the Quality-block stamp updating. Neither touches phase structure, LOs, mood contract, a new practitioner artifact/skill, or a forcing-function mechanic — no §15 trigger fired since the pin, so no auto-fire was owed; this dispatched pedagogy re-read is the correct response to the file's touch.",
       "fix_hint": null,
       "blocking": false
     },
@@ -92,7 +92,7 @@
       "rule_index": 16,
       "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
       "verdict": "PASS",
-      "evidence": "This file's own body carries zero {{prompt:}} fences (view signal has_prompt_blocks=false, confirmed by grep this session) and correspondingly no scripted-reaction count sitting in place of a fence. The LO 'Push back twice on the plan' (raw L19) names the taught outcome in the What-You'll-Learn register, not an in-body imperative replacing the exercise's own fenced push-back mechanic (which lives, and is genuinely gated, in push-back-on-the-plan.md Phase 3). The one candidate forcing-function-shaped body line, raw L60 ('Try to bully plan mode into a bad architecture... record where Claude pushes back and where it caves'), sits inside '## Optional challenges' (raw L52-55, explicitly pick-one-if-you-want) — matching §16's Boundary 2 carve-out for light, non-load-bearing student moves. The stopping condition at raw L28 ('you stop when another answer would no longer sharpen the plan') is a qualitative calibration, not a bare imperative count.",
+      "evidence": "This file carries zero {{prompt:}} fences (view signal has_prompt_blocks=false, confirmed by grep this session) and no scripted-reaction count standing in for one. LO 'Push back twice on the plan' (raw L19) names the taught outcome in the What-You'll-Learn register; the fenced, gated mechanic lives in push-back-on-the-plan.md Phase 3 ('Two messages, then move on'). The one body-level candidate, raw L60 ('Try to bully plan mode into a bad architecture... record where Claude pushes back and where it caves'), sits inside '## Optional challenges' (raw L52-55, pick-one-if-you-want) — Boundary 2's light-move carve-out. The stopping condition at raw L28 ('you stop when another answer would no longer sharpen the plan') is a qualitative calibration, not a bare imperative count.",
       "fix_hint": null,
       "blocking": false
     },
@@ -101,7 +101,7 @@
       "rule_index": 17,
       "rule_lead": "Corporate infra = nice-to-have, never forcing function.",
       "verdict": "PASS",
-      "evidence": "Prework (raw L10) names the tracker as one of three equal options — 'From your tracker, your head, or in conversation with Claude, your choice' — never framed as default or fallback from a 'real' path. The rules-home bullet under Plug points (raw L169) lists personal options (./CLAUDE.local.md, ~/.claude/CLAUDE.md) first and a team rules dir as one more option, not a required corporate surface. No MCP/shared-repo/ADR/SSO/connector is framed as required anywhere in the current body.",
+      "evidence": "Prework (raw L10) names the tracker as one of three equal options — 'From your tracker, your head, or in conversation with Claude, your choice' — never a fallback from a 'real' path. The rules-home bullet under Plug points (raw L169) lists personal options first, a team rules dir as one more option, not a required corporate surface. No MCP/shared-repo/ADR/SSO/connector is framed as required anywhere in the current body.",
       "fix_hint": null,
       "blocking": false
     },
@@ -110,7 +110,7 @@
       "rule_index": 19,
       "rule_lead": "Measure silent failure, not just friction.",
       "verdict": "PASS",
-      "evidence": "Mood target (raw L139) names the exact silent-failure shape by design: 'Watch for: mood drift toward \"the second read did everything; my push-back was pointless.\"' paired with a diagnostic ('student at P5 reports the second-pass read caught the interesting stuff') and a named fix (trainer surfaces the contrast) — satisfies the rule's 'name silent failure distinctly' requirement rather than treating frictionlessness as automatically good.",
+      "evidence": "Mood target (raw L139) names the exact silent-failure shape by design: 'Watch for: mood drift toward \"the second read did everything; my push-back was pointless.\"' paired with a diagnostic (student at P5 reports the second-pass read caught the interesting stuff) and a named trainer fix — satisfies 'name silent failure distinctly' rather than treating frictionlessness as automatically good.",
       "fix_hint": null,
       "blocking": false
     },
@@ -128,7 +128,7 @@
       "rule_index": 24,
       "rule_lead": "Cohort execution is trainer-paced + concurrent, not sequential.",
       "verdict": "PASS",
-      "evidence": "Pacing line (raw L135) states the model verbatim: 'Runtime is computed... Trainer demos slowly, room copy-pastes concurrently. Self-study follow-along runs comparably; simple-prompting beats are quick.' 'No charge on push-back-on-the-plan' (raw L137) correctly delegates the one long-agent-wait exception's rationale to the exercise file rather than restating a sequential sum here.",
+      "evidence": "Pacing line (raw L135) states the model verbatim: 'Runtime is computed... Trainer demos slowly, room copy-pastes concurrently. Self-study follow-along runs comparably; simple-prompting beats are quick.' 'No charge on push-back-on-the-plan' (raw L137) delegates the one long-agent-wait exception's rationale to the exercise file rather than restating a sequential sum here.",
       "fix_hint": null,
       "blocking": false
     },
@@ -137,7 +137,7 @@
       "rule_index": 25,
       "rule_lead": "Host-skill optional; maintainer blocks trainer-only.",
       "verdict": "PASS",
-      "evidence": "Push-back moves (raw L143-153) and Per-phase failure mode table (raw L187-196) name 'Trainer' as sole actor throughout ('Trainer runs three-candidate conversation', 'Trainer: ...', 'Trainer push: ...'). Grepped for host-skill / Nerd-push / dual-actor language this session: zero hits.",
+      "evidence": "grep -niE 'nerd push|trainer / nerd|\\(trainer in cohort' against the body/maintainer text this session: zero hits. Push-back moves (raw L143-153) and Per-phase failure table (raw L187-196) name 'Trainer' as sole actor throughout.",
       "fix_hint": null,
       "blocking": false
     },
@@ -146,7 +146,7 @@
       "rule_index": 27,
       "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
       "verdict": "PASS",
-      "evidence": "Grepped body_numbered this session for discuss-with/pair-up/share-with/the-room/group-of/everyone — zero hits (group_beat_markers signal is a false positive from 'teammate' at raw L85 and 'woven together' at raw L89, neither a room-share cue). Every live body sentence names work (task, prompt, artefact, next action); no authored pause-cue or trainer-cue sentence in body.",
+      "evidence": "grep -niE 'discuss with|pair up|share with|the room|group of|everyone' against the body projection this session: zero hits. The group_beat_markers signal is a false positive — the only near-matches are 'teammate' (raw L85, naming who reads a written artefact, not a room cue) and 'woven together' (raw L89, describing requirements in a task, not people). Every live body sentence names work (task, prompt, artefact, next action); no authored pause-cue or trainer-cue sentence in body.",
       "fix_hint": null,
       "blocking": false
     },
@@ -155,7 +155,7 @@
       "rule_index": 32,
       "rule_lead": "Offered structures need forced-engagement mechanic.",
       "verdict": "PASS",
-      "evidence": "§32(b) plan-mode approval: this module's LO 2 (raw L19, 'Push back twice on the plan via No, keep planning') is backed by a genuine forced mechanic verified live in curriculum/exercises/push-back-on-the-plan.md this session — Phase 3 requires 'Send two push-backs on two different axes' with a note-box gate ('Two messages, then move on... plus one check that the regeneration held'). §32(a) offered-defaults has no candidate left in this file's own body (the rewrite-the-generic-rule fence lives in the other exercise).",
+      "evidence": "§32(b) plan-mode approval: LO 2 (raw L19, 'Push back twice on the plan via No, keep planning') is backed by a genuine forced mechanic re-read live in exercises/push-back-on-the-plan.md this session — Phase 3 requires 'Send two push-backs on two different axes' gated by a note-box ('Two messages, then move on... plus one check that the regeneration held'). §32(a) offered-defaults has no candidate in this file's own body (the rewrite-the-generic-rule fence lives in the other exercise).",
       "fix_hint": null,
       "blocking": false
     },
@@ -164,7 +164,7 @@
       "rule_index": 34,
       "rule_lead": "Task selection drives outcome → name floor AND ceiling.",
       "verdict": "PASS",
-      "evidence": "Two mandated bolded anti-pattern lines present and unsoftened: raw L12 '**A task that spans a few files. Not an epic.**' (Prework) and raw L87 '**Pick one scoped task you'd send off rather than nudge bit by bit: a real slice. Bigger than a typo-fix, smaller than an epic.**' (Next). Both name floor AND ceiling, no minimizer language. Already logged accepted-by-design in this file's own maintainer block (raw L105) against a sibling slides-judge false positive; independently re-confirmed correct here.",
+      "evidence": "Two mandated bolded anti-pattern lines present and unsoftened: raw L12 '**A task that spans a few files. Not an epic.**' (Prework) and raw L87 '**Pick one scoped task you'd send off rather than nudge bit by bit: a real slice. Bigger than a typo-fix, smaller than an epic.**' (Next). Both name floor AND ceiling, no minimizer language. Maintainer block (raw L105) already logs this accepted-by-design against a sibling slides-judge false positive; independently re-confirmed correct.",
       "fix_hint": null,
       "blocking": false
     },
@@ -173,7 +173,7 @@
       "rule_index": "34b",
       "rule_lead": "Maintainer-block hedge naming section's own failure mode = cut-signal, not warning.",
       "verdict": "PASS",
-      "evidence": "Scanned every maintainer-block hedge/caveat line this session. The one candidate — raw L127's OWASP 'Scope caveat that will matter at re-check' (org rename to GenAI Security Project) — passes the premise-test: removing the hedge, the optional-deeper-scan link (raw L72) is still fully defensible ('Broader checklist covering prompt injection, insecure output handling, data leakage'). Source-freshness bookkeeping on a stable, still-resolving link, not a hedge propping up a shaky pedagogical claim.",
+      "evidence": "Every maintainer-block hedge/caveat re-scanned this session. The one candidate — raw L127's OWASP 'Scope caveat that will matter at re-check' (org rename to GenAI Security Project) — passes the premise-test: removing the hedge, the optional-deeper-scan link (raw L72) is still fully defensible ('Broader checklist covering prompt injection, insecure output handling, data leakage'). Source-freshness bookkeeping on a stable, still-resolving link, not a hedge propping up a shaky pedagogical claim.",
       "fix_hint": null,
       "blocking": false
     },
@@ -191,7 +191,7 @@
       "rule_index": 37,
       "rule_lead": "Context-loading tiers as staged progression.",
       "verdict": "PASS",
-      "evidence": "Key Concepts bullet (raw L50, 'A rule that doesn't load doesn't exist, and where you put it decides when it fires') primes the tier concept; the proving surface lives in the linked exercise — verified this session that extract-the-task-shaping-rule.md's own leap test and P2 push-back name the auto-load/lazy-load/@import distinction explicitly ('names the loading mechanism (auto-load vs lazy-load vs @import) when deciding where a rule belongs'; 'the location is reversible... anywhere else fires only when a prompt names the path or an @import line wires it in'). This file correctly frames, the linked exercise correctly proves.",
+      "evidence": "Key Concepts bullet (raw L50, 'A rule that doesn't load doesn't exist, and where you put it decides when it fires') primes the tier concept; the proving surface lives in the linked exercise — re-verified this session in extract-the-task-shaping-rule.md, which names the auto-load/lazy-load/@import distinction explicitly against a real prompt. This file frames, the linked exercise proves.",
       "fix_hint": null,
       "blocking": false
     },
@@ -200,7 +200,7 @@
       "rule_index": 39,
       "rule_lead": "Removals are strategic — ask before cutting.",
       "verdict": "PASS",
-      "evidence": "Every removal logged in the maintainer block carries an explicit Antti-directed attribution and date: raw L95 'stands, Antti-directed 2026-08-23', raw L99 'cut, Antti-directed 2026-08-23', raw L101 'cut from four sentences to one, Antti-directed 2026-08-12', raw L109 'moved into exercises/extract-the-task-shaping-rule.md as Phases 4-5 (2026-08-25, Antti-directed)'.",
+      "evidence": "Every removal logged in the maintainer block carries an explicit Antti-directed attribution and date: raw L95 'stands, Antti-directed 2026-08-23', raw L99 'cut, Antti-directed 2026-08-23', raw L101 'cut from four sentences to one, Antti-directed 2026-08-12' (this session's own diff trims one further clause from the SAME already-attributed note, not a fresh unattributed cut — the note's own 2026-08-12 attribution still governs the paragraph), raw L109 'moved... (2026-08-25, Antti-directed)'.",
       "fix_hint": null,
       "blocking": false
     },
@@ -209,7 +209,7 @@
       "rule_index": 42,
       "rule_lead": "Load-bearing platform feature = no fallback. Gate or redesign.",
       "verdict": "PASS",
-      "evidence": "Grepped this session for 'if your environment doesn't support' dilution language — zero hits. Plan mode, the load-bearing feature, carries no fallback anywhere. The one environment-dependent beat (cloud session + mobile steering, raw L59) sits under '## Optional challenges' (not load-bearing), and its source stamp (raw L121) names a fallback correctly scoped to that optional challenge only ('replace the cloud-and-mobile challenge with a local Remote Control handoff').",
+      "evidence": "grep -ni 'if your environment doesn.t support' against the body this session: zero hits. Plan mode, the load-bearing feature, carries no fallback anywhere. The one environment-dependent beat (cloud session + mobile steering, raw L59) sits under '## Optional challenges' (not load-bearing), and its own source stamp (raw L121) correctly scopes a fallback to that optional challenge only.",
       "fix_hint": null,
       "blocking": false
     },
@@ -236,7 +236,7 @@
       "rule_index": 47,
       "rule_lead": "Per-phase failure mode + escape hatch.",
       "verdict": "PASS",
-      "evidence": "Re-verified this session (the prior pedagogy pass on this file, body_sha 3365d672…, filed a REVISE-but-non-blocking todo here: the Per-phase failure table still carried a stale 'Compound' row after that beat moved out on 2026-08-25). Grepped this file for 'Compound' this session: only two unrelated hits remain (raw L169 'Compound step' rules-home bullet, raw L202 'Compound engineering' framework attribution) — the stale table row itself is gone (git show d77fb074 confirms the deletion commit). Raw L185-196's Per-phase failure mode table now covers exactly the eight forcing functions still authored in THIS file's own linked exercises (P1/P3×3/P4×2/P5×2), and the departed Compound/Boy-Scout beats now carry their own failure-mode + escape hatch in the destination file's own idiom — verified live in extract-the-task-shaping-rule.md this session: 'P4 compound-skip — student skips the integrate when a branch DID earn itself. Trainer push: ...' and 'P4 overwrite — ./CLAUDE.local.md replaced instead of appended... Trainer push: ...' (that file's own Push-back moves / Watch-fors). The prior finding is resolved, not superseded by a new one.",
+      "evidence": "grep -n 'Compound' on the current body this session: only two unrelated hits remain (raw L169 'Compound step' rules-home bullet, raw L202 'Compound engineering' framework attribution) — the previously-stale table row naming a departed beat is gone (git show d77fb074 confirms the deletion commit landed before the pin). Raw L185-196's Per-phase failure mode table covers exactly the eight forcing functions authored in THIS file's own linked exercises (P1/P3x3/P4x2/P5x2); the departed Compound/Boy-Scout beats carry their own failure-mode + escape-hatch rows in extract-the-task-shaping-rule.md's own Push-back moves (re-confirmed present there this session).",
       "fix_hint": null,
       "blocking": false
     },
@@ -245,7 +245,7 @@
       "rule_index": 49,
       "rule_lead": "Save belongs with authoring, not loading.",
       "verdict": "PASS",
-      "evidence": "Plan-file save happens at push-back-on-the-plan.md Phase 3 (approval) inside M2 itself; student notes the path at module close (Artefact-contracts raw L183). The personal-rules save happens at the close of extract-the-task-shaping-rule.md's own Phase 4 (its last teaching phase) — still save-at-authoring, not shifted to a later USE-exercise's open. Verified against earn-the-trust.md L12 this session: M3 opens as a pure consumer of the plan file.",
+      "evidence": "Plan-file save happens at push-back-on-the-plan.md Phase 3 (approval) inside M2 itself; student notes the path at module close (Artefact-contracts raw L183). The personal-rules save happens at the close of extract-the-task-shaping-rule.md's own Phase 4 — still save-at-authoring, not shifted to a later USE-exercise's open. Re-checked earn-the-trust.md L12 this session: M3 opens as a pure consumer of the plan file, no re-save asked of the student there.",
       "fix_hint": null,
       "blocking": false
     },
@@ -254,7 +254,7 @@
       "rule_index": 51,
       "rule_lead": "Deliberate-antipattern prompts = class-judge exempt, flagged-by-design.",
       "verdict": "PASS",
-      "evidence": "Raw L60, 'Try to bully plan mode into a bad architecture... record where Claude pushes back and where it caves,' is a deliberate-antipattern probe — the risk (pressing a bad idea) IS the teaching moment. Maintainer note (raw L95) already logs this accepted-by-design against a sibling writing-class flag on the combative verb; independently confirmed here that pedagogy should not re-flag it either — restructuring or a body-callout would defuse the exact felt-evidence the probe produces.",
+      "evidence": "Raw L60, 'Try to bully plan mode into a bad architecture... record where Claude pushes back and where it caves,' is a deliberate-antipattern probe — the risk (pressing a bad idea) IS the teaching moment. Maintainer note (raw L95) logs this accepted-by-design against a sibling writing-class flag on the combative verb; independently confirmed pedagogy should not re-flag it either — restructuring or a body-callout would defuse the exact felt-evidence the probe produces.",
       "fix_hint": null,
       "blocking": false
     },
@@ -263,7 +263,7 @@
       "rule_index": 53,
       "rule_lead": "Body prose must not supply an answer its prompt asks for — position is not the test (widened 2026-08-12).",
       "verdict": "PASS",
-      "evidence": "This file's body carries no fenced prompts of its own, so no pre-emption of a prompt's payoff is possible directly. Key Concepts (raw L44-50) declares takeaways that overlap with what push-back-on-the-plan.md's Phase 5 lets the student discover live (e.g. raw L46, 'A human read and an agent's walk-down catch different misses') — this matches §53's sanctioned shape ('declare the non-obvious outcome up front... the discovery beat keeps the walk to it, not its existence'), the same pattern this file's own maintainer note (raw L101) already applies to the Big Idea/What-You'll-Learn pairing.",
+      "evidence": "This file carries no fenced prompts of its own, so no pre-emption of a prompt's payoff is possible directly. Key Concepts (raw L44-50) declares takeaways that overlap with what push-back-on-the-plan.md's Phase 5 lets the student discover live (e.g. raw L46, 'A human read and an agent's walk-down catch different misses') — matches §53's sanctioned shape (declare the non-obvious outcome up front; the discovery beat keeps the walk to it, not its existence), the same pattern this file's own maintainer note (raw L101) applies to the Big Idea/What-You'll-Learn pairing.",
       "fix_hint": null,
       "blocking": false
     },
@@ -272,8 +272,8 @@
       "rule_index": "61a",
       "rule_lead": "Acting on a flagged item (punchlist entry / audit finding / eval BLOCK) — verify before fixing; its prescribed fix is a hypothesis, not an instruction.",
       "verdict": "REVISE",
-      "evidence": "§61a(e): fires on ANY inbound number, re-derived from primary sources. PRESENT: raw L162 (Decision-points, trainer-only content below the maintainer fence) states '...this module has no buffer transition, and the 5-minute overrun on the Slot line (calculate-time.js 2026-08-26: 125 min vs the 120 cap) is already spent.' Ran `node scripts/calculate-time.js plan-mode-done-right` this session (2026-09-02): Total 123 min; both `cohort-2day` and `sitting-2h` caps (120 min) report OVER by 3 min, not 5. The cited 2026-08-26 figure (125) is now 2 minutes stale — consistent with the two lecture-slide trims logged in training-architecture.md's 'Landed so far' list (the-whole-map § You are here; when-a-plan-is-good § Two reads, paired), both dated after 2026-08-26, which reduced the module's own lecture Time lines. HARM: a trainer using this line on a real overrun day to decide how much to cut from Bridge/Debrief is working from a baseline overrun 2 minutes larger than the module currently runs — the exact stale-number-propagation risk §61a(e) exists to catch, even though the note is careful to date-stamp its source (an improvement over the prior instance's un-dated '7-minute' claim, but the underlying number still drifted past the date it cites).",
-      "fix_hint": "Update raw L162 to '3-minute overrun (calculate-time.js re-run 2026-09-02: 123 min vs the 120 cap)', or point at the script's live output rather than a dated snapshot, so the next lecture-timing trim doesn't silently re-stale this line a third time.",
+      "evidence": "§61a(e) fires on ANY inbound number, re-derived from primary sources. PRESENT: raw L162 (Decision-points, trainer-only content below the maintainer fence) states '...this module has no buffer transition, and the 5-minute overrun on the Slot line (calculate-time.js 2026-08-26: 125 min vs the 120 cap) is already spent.' Ran `node scripts/calculate-time.js plan-mode-done-right` this session: Total 123 min; both `cohort-2day` and `sitting-2h` caps (120 min) report OVER by 3 min, not 5. The git diff since the 191ea58f pin (run this session) touches only the maintainer block's Big-Idea note and the Quality stamp — raw L162 itself is untouched, so this is a pre-existing drift, not a regression from this edit. HARM: a trainer using this line on a real overrun day works from a baseline overrun 2 minutes larger than the module currently runs — the exact stale-number-propagation risk §61a(e) exists to catch.",
+      "fix_hint": "Update raw L162 to '3-minute overrun (calculate-time.js re-run 2026-09-05: 123 min vs the 120 cap)', or point at the script's live output rather than a dated snapshot, so the next lecture-timing trim doesn't silently re-stale this line again.",
       "blocking": false
     },
     {
@@ -281,7 +281,7 @@
       "rule_index": 64,
       "rule_lead": "Maintainer blocks point, don't restate. Link architecture doc where they touch delivery.",
       "verdict": "PASS",
-      "evidence": "Re-verified this session (the prior pedagogy pass on this file filed a REVISE-but-non-blocking todo here: two near-duplicate notes both asserted the overwrite-recovery sentence 'stays in body' in THIS file when it had already moved to extract-the-task-shaping-rule.md). Current maintainer block carries exactly ONE such note (raw L115): 'The overwrite-recovery sentence — `exercises/extract-the-task-shaping-rule.md`, Phase 4 callout — stays in body; maintainer call 2026-08-02,' correctly naming the sentence's real home. Confirmed via git show 31b62371 this session: the duplicate note (formerly in the Push-back-moves section) was deleted in the same commit that corrected this one's wording — the fix landed. Delivery-architecture line (raw L140) remains a clean one-line pointer to training-architecture.md, not a restatement. No other maintainer-block sentence restates a cross-cutting mechanic with a canonical home listed in §64.",
+      "evidence": "grep -n 'overwrite-recovery|old rules are still' this session: the sentence itself lives in exercises/extract-the-task-shaping-rule.md L92 (its own body, confirmed by direct read), and this file's maintainer block (raw L115) carries exactly one correctly-worded pointer note naming that real home — no duplicate, no restatement. Delivery-architecture line (raw L140) remains a clean one-line pointer to training-architecture.md. No other maintainer-block sentence restates a cross-cutting mechanic with a canonical home listed in §64.",
       "fix_hint": null,
       "blocking": false
     },
@@ -293,7 +293,9 @@
       "evidence": null,
       "na_reason": "no group-scale beat authored in this file; rule's own removal test (remove the room — same artefact?) reads yes for both linked exercises, which are individual work throughout",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
+      "carried_shape": "3bf287f827d6a7ae"
     },
     {
       "compendium": "check_workshop.md",
@@ -303,7 +305,9 @@
       "evidence": null,
       "na_reason": "no group-scale beat exists to name a room-level artefact; both artefacts in the contracts table are individually produced",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
+      "carried_shape": "3bf287f827d6a7ae"
     },
     {
       "compendium": "check_workshop.md",
@@ -313,7 +317,9 @@
       "evidence": null,
       "na_reason": "no room-scale authoring-from-blank beat; all authoring here is the individual student's own",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
+      "carried_shape": "3bf287f827d6a7ae"
     },
     {
       "compendium": "check_workshop.md",
@@ -323,7 +329,9 @@
       "evidence": null,
       "na_reason": "no day-of pre-assembled workshop material this module's beats depend on",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
+      "carried_shape": "3bf287f827d6a7ae"
     },
     {
       "compendium": "check_workshop.md",
@@ -333,7 +341,9 @@
       "evidence": null,
       "na_reason": "no shared record or peer-attribution beat in this module",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
+      "carried_shape": "3bf287f827d6a7ae"
     },
     {
       "compendium": "check_workshop.md",
@@ -343,7 +353,9 @@
       "evidence": null,
       "na_reason": "no shared record participants contribute to; personal rules-file overwrite risk is an individual-session concern (covered under check_student_facing §5, not a room record)",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
+      "carried_shape": "3bf287f827d6a7ae"
     },
     {
       "compendium": "check_workshop.md",
@@ -353,7 +365,9 @@
       "evidence": null,
       "na_reason": "no participant-facing filing-into-a-shared-structure beat; the student's own rules-file save is individual authorship, not room filing cost",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
+      "carried_shape": "3bf287f827d6a7ae"
     },
     {
       "compendium": "check_workshop.md",
@@ -363,7 +377,9 @@
       "evidence": null,
       "na_reason": "no live room-contribution beat with sharing tiers; the personal-vs-team rules-home choice is a private authoring decision, not a room contribution",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
+      "carried_shape": "3bf287f827d6a7ae"
     },
     {
       "compendium": "check_workshop.md",
@@ -373,7 +389,9 @@
       "evidence": null,
       "na_reason": "no group decision beat in this module",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
+      "carried_shape": "3bf287f827d6a7ae"
     },
     {
       "compendium": "check_workshop.md",
@@ -383,7 +401,9 @@
       "evidence": null,
       "na_reason": "no group decision beat in this module",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
+      "carried_shape": "3bf287f827d6a7ae"
     },
     {
       "compendium": "check_workshop.md",
@@ -393,7 +413,9 @@
       "evidence": null,
       "na_reason": "the Debrief here is individual self-compounding (student names a pattern from their own session), not an authored group round",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
+      "carried_shape": "3bf287f827d6a7ae"
     },
     {
       "compendium": "check_workshop.md",
@@ -403,7 +425,9 @@
       "evidence": null,
       "na_reason": "no room-scale workshop mechanic to hand off; the module's trainer mechanics (per-phase pushback, escape hatches) are individual-exercise rescue, covered under check_pedagogy §25/§47",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
+      "carried_shape": "3bf287f827d6a7ae"
     },
     {
       "compendium": "check_workshop.md",
@@ -413,7 +437,9 @@
       "evidence": null,
       "na_reason": "no group-sized beat in this module",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
+      "carried_shape": "3bf287f827d6a7ae"
     },
     {
       "compendium": "check_workshop.md",
@@ -423,7 +449,9 @@
       "evidence": null,
       "na_reason": "no group beat where an assumption about prior optional work could break; each student works their own repo and task",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
+      "carried_shape": "3bf287f827d6a7ae"
     },
     {
       "compendium": "check_workshop.md",
@@ -433,7 +461,9 @@
       "evidence": null,
       "na_reason": "no room-scale beat; time-protection here is individual-exercise overrun handling, covered by this file's own Decision-points section under check_pedagogy",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
+      "carried_shape": "3bf287f827d6a7ae"
     },
     {
       "compendium": "check_workshop.md",
@@ -443,7 +473,9 @@
       "evidence": null,
       "na_reason": "no room-scale beat exists that mechanical coverage would miss; both linked exercises are individually fenced-prompt-driven and are within tmux-runner's reach",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
+      "carried_shape": "3bf287f827d6a7ae"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -454,7 +486,7 @@
       "na_reason": "walk-away mechanic lives in linked exercise files, not this file's own body",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "3365d672b0fa4af79105fa3512df36cc969cb4e623a0a8409f09f781a81f7c30",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -466,7 +498,7 @@
       "na_reason": "scoped M3–M8; this is M2",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "3365d672b0fa4af79105fa3512df36cc969cb4e623a0a8409f09f781a81f7c30",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -478,7 +510,7 @@
       "na_reason": "quality-rung scoring is editorial, not this read's derivation",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "3365d672b0fa4af79105fa3512df36cc969cb4e623a0a8409f09f781a81f7c30",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -490,7 +522,7 @@
       "na_reason": "file authors no exercise body of its own; links only",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "3365d672b0fa4af79105fa3512df36cc969cb4e623a0a8409f09f781a81f7c30",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -502,7 +534,7 @@
       "na_reason": "compound move no longer authored in this file's body (moved 2026-08-25)",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "3365d672b0fa4af79105fa3512df36cc969cb4e623a0a8409f09f781a81f7c30",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -514,7 +546,7 @@
       "na_reason": "no 'ask Claude to X' step authored in this file's own body",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "3365d672b0fa4af79105fa3512df36cc969cb4e623a0a8409f09f781a81f7c30",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -526,7 +558,7 @@
       "na_reason": "no personal-vs-team promotion decision authored in this file",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "3365d672b0fa4af79105fa3512df36cc969cb4e623a0a8409f09f781a81f7c30",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -538,7 +570,7 @@
       "na_reason": "evaluation-methodology rule; not this file's content",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "3365d672b0fa4af79105fa3512df36cc969cb4e623a0a8409f09f781a81f7c30",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -550,7 +582,7 @@
       "na_reason": "general eval-tier ordering rule; no verification-layer claim here",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "3365d672b0fa4af79105fa3512df36cc969cb4e623a0a8409f09f781a81f7c30",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -562,7 +594,7 @@
       "na_reason": "governs check_*.md rule-authoring, not curriculum content",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "3365d672b0fa4af79105fa3512df36cc969cb4e623a0a8409f09f781a81f7c30",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -574,7 +606,7 @@
       "na_reason": "governs judge/generator conversational behavior, not file content",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "3365d672b0fa4af79105fa3512df36cc969cb4e623a0a8409f09f781a81f7c30",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -586,7 +618,7 @@
       "na_reason": "no reflection-file-write beat authored here (moved 2026-08-25)",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "3365d672b0fa4af79105fa3512df36cc969cb4e623a0a8409f09f781a81f7c30",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -598,7 +630,7 @@
       "na_reason": "no eval-scorer loop described in this file",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "3365d672b0fa4af79105fa3512df36cc969cb4e623a0a8409f09f781a81f7c30",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -610,7 +642,7 @@
       "na_reason": "no verification-reading ask authored in this file's body (moved 2026-08-25)",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "3365d672b0fa4af79105fa3512df36cc969cb4e623a0a8409f09f781a81f7c30",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -622,7 +654,7 @@
       "na_reason": "no self-report/self-audit prompt authored in this file's body (moved 2026-08-25)",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "3365d672b0fa4af79105fa3512df36cc969cb4e623a0a8409f09f781a81f7c30",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -634,7 +666,7 @@
       "na_reason": "no heterogeneous source-folder ingestion beat in this module",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "3365d672b0fa4af79105fa3512df36cc969cb4e623a0a8409f09f781a81f7c30",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -646,7 +678,7 @@
       "na_reason": "no new verification machinery introduced; plan mode is an existing shipped feature",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "3365d672b0fa4af79105fa3512df36cc969cb4e623a0a8409f09f781a81f7c30",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -658,7 +690,7 @@
       "na_reason": "no dual-runtime fork appears in this file",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "3365d672b0fa4af79105fa3512df36cc969cb4e623a0a8409f09f781a81f7c30",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -670,7 +702,7 @@
       "na_reason": "governs eval-judge system architecture, not curriculum content",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "3365d672b0fa4af79105fa3512df36cc969cb4e623a0a8409f09f781a81f7c30",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -682,7 +714,7 @@
       "na_reason": "zero fenced prompts in this file's body; nothing to fan out",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "3365d672b0fa4af79105fa3512df36cc969cb4e623a0a8409f09f781a81f7c30",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -694,7 +726,7 @@
       "na_reason": "zero fenced prompts in this file's body (moved 2026-08-25)",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "3365d672b0fa4af79105fa3512df36cc969cb4e623a0a8409f09f781a81f7c30",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -706,7 +738,7 @@
       "na_reason": "zero Session widgets; bare link-run house shape",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "3365d672b0fa4af79105fa3512df36cc969cb4e623a0a8409f09f781a81f7c30",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -718,7 +750,7 @@
       "na_reason": "zero {{prompt:}} fences remain in this file's body (moved 2026-08-25)",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "3365d672b0fa4af79105fa3512df36cc969cb4e623a0a8409f09f781a81f7c30",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -730,7 +762,7 @@
       "na_reason": "no Session/HOX/Note widget in this file",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "3365d672b0fa4af79105fa3512df36cc969cb4e623a0a8409f09f781a81f7c30",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -742,7 +774,7 @@
       "na_reason": "scoped to AE101 exercise files' lead-in slots; this is a module-index file",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "3365d672b0fa4af79105fa3512df36cc969cb4e623a0a8409f09f781a81f7c30",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -754,7 +786,7 @@
       "na_reason": "same scope reason as §52c",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "3365d672b0fa4af79105fa3512df36cc969cb4e623a0a8409f09f781a81f7c30",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -766,7 +798,7 @@
       "na_reason": "audit-fix beat moved to linked exercise 2026-08-25",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "3365d672b0fa4af79105fa3512df36cc969cb4e623a0a8409f09f781a81f7c30",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -778,7 +810,7 @@
       "na_reason": "no new multi-session mechanic mid-arc",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "3365d672b0fa4af79105fa3512df36cc969cb4e623a0a8409f09f781a81f7c30",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -790,7 +822,7 @@
       "na_reason": "no /clear cue anywhere in this file",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "3365d672b0fa4af79105fa3512df36cc969cb4e623a0a8409f09f781a81f7c30",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -802,7 +834,7 @@
       "na_reason": "no reference-page restructuring performed by this module",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "3365d672b0fa4af79105fa3512df36cc969cb4e623a0a8409f09f781a81f7c30",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -814,7 +846,7 @@
       "na_reason": "judge-meta instruction to auditors, not module content",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "3365d672b0fa4af79105fa3512df36cc969cb4e623a0a8409f09f781a81f7c30",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -826,7 +858,7 @@
       "na_reason": "no SKILL.md/framework-mechanism change proposed here",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "3365d672b0fa4af79105fa3512df36cc969cb4e623a0a8409f09f781a81f7c30",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -838,7 +870,7 @@
       "na_reason": "prompt-adjacent callout moved to linked exercise 2026-08-25",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "3365d672b0fa4af79105fa3512df36cc969cb4e623a0a8409f09f781a81f7c30",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -850,7 +882,7 @@
       "na_reason": "no long-lived punchlist bullet referenced here",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "3365d672b0fa4af79105fa3512df36cc969cb4e623a0a8409f09f781a81f7c30",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -862,7 +894,7 @@
       "na_reason": "M2's only M1-dependency is repo continuity, no artefact rescue needed",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "3365d672b0fa4af79105fa3512df36cc969cb4e623a0a8409f09f781a81f7c30",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     },
     {
@@ -874,24 +906,11 @@
       "na_reason": "file is post-ship revision, well past Pass 3",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "3365d672b0fa4af79105fa3512df36cc969cb4e623a0a8409f09f781a81f7c30",
+      "carried_from": "ff1c329cc3205c4a1958d0c266e749da6d0240cfd40181de8dc4fed7b8d53099",
       "carried_shape": "3bf287f827d6a7ae"
     }
   ],
   "blocking_findings_count": 0,
   "todos_count": 1,
-  "notes": "One non-blocking REVISE row (§61a: the Decision-points 'already spent' overrun figure has drifted 2 minutes stale against a live calculate-time.js re-run, from a since-fixed 2026-08-26 baseline). Two rules the prior pedagogy pass (body_sha 3365d672…) filed as non-blocking REVISE todos — §47 (a stale Per-phase-failure-mode row naming a beat that had moved out) and §64 (a duplicate maintainer note still claiming the overwrite-recovery sentence lived in this file after it moved) — are both independently re-verified PASS this session: git show d77fb074 and 31b62371 confirm both were fixed in commits between the prior pin and HEAD, and the destination file (extract-the-task-shaping-rule.md) now carries its own matching failure-mode/escape-hatch rows for the relocated beats. check_workshop.md's 16 numbered rules are all judged N/A rather than collapsed into one scope-level row: this file authors no room-scale beat (the group_beat_markers signal is a false positive from 'teammate' and 'woven together' in ordinary prose, verified by direct grep), so every rule's own no-group-beat carve-out applies individually. All evidence in this instance was independently re-derived against the current raw file and its live-linked exercise/lecture files this session (grep, file-existence checks, and a live calculate-time.js run) — none is carried forward from the prior instance's cached quotes.",
-  "accept_notes_found": [
-    "L95: \"Try to bully plan mode into a bad architecture\" stands, Antti-directed 2026-08-23 — check_writing §17 combative-verb carve-out for this deliberate probe.",
-    "L99: Willison pre-read's trailing M3-framing sentence cut, Antti-directed 2026-08-23 — check_student_facing §33 predicate-leak clause.",
-    "L101: Big Idea cut to one sentence, Antti-directed 2026-08-12 — module-shape.md Big Idea ceiling; below-fence rejected because it's the divider-slide subtitle.",
-    "L103: Both Start-here connectives cut, same pass; the two-reads paragraph under Start here is NOT arc-positioning and does not orphan (2026-08-28, Antti-directed).",
-    "L105: The two bolded task-sizing callouts (Prework and Next) are check_pedagogy §34-mandated, not a slides §9 emphasis-budget violation — accepted-by-design, do not re-raise.",
-    "L107: The six-module Next branch's missing stakes line is correct (Antti, 2026-08-22) — M3's prework accepts several artefact substitutes, so no consequence exists to name.",
-    "L109: Save-the-rule and Boy Scout beats moved into extract-the-task-shaping-rule.md as Phases 4-5 (2026-08-25, Antti-directed).",
-    "L111: M2 issues no homework — the ticket-read split is by ticket kind (story vs bug), not a second exercise (2026-08-12, maintainer-directed).",
-    "L113: The 10% Key-Concepts line carries M1's attested hedge/prior deliberately, not a floor claim — do not harden to 'at least'.",
-    "L115: The overwrite-recovery sentence stays in exercises/extract-the-task-shaping-rule.md's Phase 4 body (maintainer call 2026-08-02) — do not cut, do not route below the fence.",
-    "L117-127: Source-verification stamps for four body-cited sources plus two delegated/owned stamps, each with a fallback."
-  ]
+  "notes": "31 check_pedagogy.md rules are owed to and emitted by me per the class brief; the remaining 52 check_pedagogy.md rules plus all check_workshop.md rules were already resolved N/A by shape hash 3bf287f827d6a7ae and sit parked in the prefill sidecar (body-views/ae101--module--plan-mode-done-right.pedagogy.prefill.json) — not re-derived here, spliced in by `prefill-instance.js --merge` run after this instance was written. Body substance is unchanged since the 191ea58f pin — the only diff is the maintainer block losing one clause from the already-attributed Big-Idea note and the Quality stamp updating to this dispatch; every rule above was independently re-verified against the CURRENT raw file this session (fresh greps, fresh file-existence checks, a fresh calculate-time.js run), not carried from the prior (now-stale-body-sha) instance's cached quotes. One non-blocking REVISE stands: §61a, a 2-minute-stale runtime figure in the Decision-points trainer note, pre-existing and untouched by the pin-to-HEAD diff."
 }

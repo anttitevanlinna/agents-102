@@ -235,5 +235,5 @@ OODA
 - Vision layer: the field is mid-evolution; one published framework + several shapes + one counter-position; candid scope.
 - Detail layer: every URL, every named file path, every quote (each verified against the practitioner's own publication 2026-05-21).
 
-**Quality:** compendium-audited 2026-08-29 (writing@4a722813 story@0cea7581 technical@4a722813 pedagogy@b55cd28b strategy@1071b36b slides@4a722813)
-- judges @4a722813: writing PASS, story PASS, technical PASS, behavior N/A (no prompt blocks on this page), pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-09-05 (writing@324b81d7 story@324b81d7 technical@324b81d7 pedagogy@b55cd28b strategy@324b81d7 slides@324b81d7)
+- judges @324b81d7: writing PASS (2 todos see instances/ae101--supplementary--workflow-composition-lineages.writing.json), story PASS, technical PASS (2 todos see instances/ae101--supplementary--workflow-composition-lineages.technical.json), behavior N/A (no prompt blocks on this page), pedagogy PASS, strategy PASS, slides PASS (1 todo see instances/ae101--supplementary--workflow-composition-lineages.slides.json)

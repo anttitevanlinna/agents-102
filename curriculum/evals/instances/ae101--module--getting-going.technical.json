@@ -1,25 +1,18 @@
 {
-  "file": "curriculum/trainings/agentic-engineering-101/getting-going.md",
   "class": "technical",
-  "body_sha": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
-  "verdict": "PASS",
   "training": "ae101",
-  "staleness_sweep": {
-    "pin_checked": null,
-    "staleness_reason": "rule-drift",
-    "drift_rules_reread": [
-      "check_prompts.md §2 (action lead-in) — N/A, re-verified current wording (incl. 2a/2b/2c sub-clauses). This module-index file carries zero fenced `**Prompt**` blocks or `{{prompt:}}` markers (`grep -n '\\*\\*Prompt\\*\\*\\|{{prompt:' getting-going.md` = 0 hits live), so §2's action-lead-in requirement has no fence to attach to anywhere in this file.",
-      "check_research_claims.md §11/§11a (source-verification maintainer block + freshness stamps) — PASS, re-verified current wording against the live maintainer block. All 6 distinct externally-cited URLs (scheduled-tasks, routines, wsff.md, every.to compound-engineering, Willison vibe-engineering, Cherny video) carry `[checked:...result:...due:...]` stamps with fallback framing (lines 106-114). Ran `bash curriculum/evals/scripts/source-freshness.sh --target 2026-09-01` live: this file's 8 stamp lines land as 3 WARN (due:cohort — ordinary re-test-before-delivery, not a defect) plus OK/CAVEAT `due:none` delegated lines; the corpus's single BLOCK is on an unrelated file (`curriculum/lectures/the-wizard-move.md:58`), not this one."
-    ]
-  },
+  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/getting-going.md",
+  "verdict": "PASS_WITH_TODOS",
+  "body_sha": "7cdbe223c084248e6c9af874451d57179bdb7761a324181fca98eab3f26bc0a3",
+  "shape_hash": "188fc017d1e174ac",
   "rules_evaluated": [
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": 1,
       "rule_lead": "Training platform = Claude Code (CLI + Desktop) + Cowork.",
       "verdict": "PASS",
-      "evidence": "AE101 training-architecture.md scopes this training to Claude Code CLI+Desktop, no Cowork. `grep -n 'claude\\.ai\\|Cowork' getting-going.md` = 0 hits; the file never names claude.ai or a Cowork-only affordance.",
-      "fix_hint": "",
+      "evidence": "grep 'claude\\.ai' curriculum/trainings/agentic-engineering-101/getting-going.md → 0 hits; every named surface (`/context` L58, `/loop` L69, routines L70, `CLAUDE.local.md` L20/L61) is a Claude Code CLI/Desktop feature.",
+      "fix_hint": null,
       "blocking": false
     },
     {
@@ -27,8 +20,192 @@
       "rule_index": 4,
       "rule_lead": "Verify capabilities BEFORE asserting, not after.",
       "verdict": "PASS",
-      "evidence": "Every platform-capability assertion in this file traces to a verified fact: line 3 `high` thinking effort (rule 50, live-verified 2026-08-30); line 58 `/context` + ccstatusline aside (delegated stamp, maintainer block line 111, checked 2026-08-03); line 69 `/loop` PR-babysit challenge (maintainer stamp line 108, checked 2026-08-15 result:OK, matches rule 6's canonical /loop facts); line 70 Jira-triage routine challenge (maintainer stamp line 109, checked 2026-08-15 result:OK, correctly scopes Jira as \"the challenge's chosen connected source, not a capability claim made by the page\"); artefact-contracts table line 166 `./CLAUDE.local.md` \"auto-loads at session-cold start\" (matches rule 6d surface #2). None asserted from memory without a dated check.",
-      "fix_hint": "",
+      "evidence": "Every capability assertion in the body is backed by a dated maintainer-block stamp: `/loop` (L69) and routines (L70) → stamps L108-109 result:OK; `high` thinking effort (L3) → rule 50's own live-verified enum names `high` as a real value; the CLAUDE.local.md auto-load claim in the artefact-contract table (L166) matches rule 6d's surface (2) exactly.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 6,
+      "rule_lead": "Known correct Claude Code facts (easy to get wrong):",
+      "verdict": "PASS",
+      "evidence": "grep 'Shift+P' → 0 hits; no plan-mode shortcut, MCP-install mechanism, or subagent-YAML claim appears in this file at all — the only named surfaces (`/loop`, routines, `/context`) match rule 6's own description.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": "6d",
+      "rule_lead": "Auto-load surface = SIX things — four filenames + project `.claude/rules/` + user `~/.claude/rules/`.",
+      "verdict": "PASS",
+      "evidence": "Artefact-contract table (L166) states `./CLAUDE.local.md` '(auto-loads at session-cold start)' — matches surface (2) verbatim; the file makes no broader auto-load claim (no mention of `.claude/rules/` or managed policy) that would need the fuller six-surface accounting.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 7,
+      "rule_lead": "Sessions = unit of work — write \"start a new session in X,\" not \"open Claude Code in X.\"",
+      "verdict": "PASS",
+      "evidence": "L10 reads 'You'll open the first session in the repo you picked' — session-first phrasing; grep 'open Claude Code' → 0 hits in body.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 34,
+      "rule_lead": "Spend on deleting the duplicate, not on guarding it — and a gate that finds nothing is speculation.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "No hand-authored duplicate of a generated value; L127 explicitly defers runtime to the generated script rather than hardcoding a copy.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 38,
+      "rule_lead": "Prose describing a runtime the room never executes drifts to plausible mechanism — no judge catches it, because no artefact contradicts it.",
+      "verdict": "PASS",
+      "evidence": "Optional-challenge automation bullets (L69-72) are each backed by dated stamps (L108-109 result:OK) or read as plain student tasks naming no invented mechanism; the maintainer note on L109 explicitly disclaims the routines bullet as 'not a capability claim made by the page' — the exact discipline this rule asks for. No 'X against Y' phrasing, no borrowed lifecycle noun, no unsourced cadence found.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 50,
+      "rule_lead": "Thinking-effort levels are a real, named Claude Code control surface — stamped.",
+      "verdict": "PASS",
+      "evidence": "L3 'Run Module 1 on `high` thinking effort (the training default)' uses a named value from rule 50's live-verified enum (`low, medium, high, xhigh, max`, Claude Code 2.1.250).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": 51,
+      "rule_lead": "A two-file contradiction is not a defect until you have read the code that reconciles them.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "No two-file content contradiction surfaced in this pass that would need the reconciling-layer methodology.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 1,
+      "rule_lead": "Source URL + type label — mandatory.",
+      "verdict": "PASS",
+      "evidence": "Body citations (Willison L12, Horthy L81, Cherny L83) carry no bracketed source-type label, correct per this rule's own scope clause ('maintainer-block only, not student-facing body'); the corresponding maintainer-block stamps (L110, L113, L114) each carry a `[label]`.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": "1a",
+      "rule_lead": "OODA paraphrase ≠ primary source.",
+      "verdict": "PASS",
+      "evidence": "L81's Horthy summary ('Tests tell you in seconds... no benchmark scores a model on keeping a codebase maintainable') is unquoted prose presented as our own paraphrase, not dressed as a verbatim quote; maintainer stamp L110 lists matching claim-anchors ('no benchmark measures codebase-quality maintenance; tests-in-seconds vs architecture-cost-in-months'), so the paraphrase tracks the verified anchor.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 2,
+      "rule_lead": "Freshness rule — 6 months.",
+      "verdict": "PASS",
+      "evidence": "All 7 source-verification lines (L108-114) carry a `[checked:... due:...]` stamp inside the 6-month discipline or an explicitly justified due:none/exception (see 2a/2b rows below for detail).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": "2a",
+      "rule_lead": "The clock is on the CLAIM, not the source's age — durable-account carve-out.",
+      "verdict": "PASS",
+      "evidence": "The only candidate durable-account (Horthy essay, L81) is correctly NOT stamped due:none — L110 gives it a real due:2027-01-27, treating the bottleneck argument as a live claim about a moving world rather than misusing the durable-account carve-out on a non-'specific completed event' claim.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": "2b",
+      "rule_lead": "`due:none` scopes the CITATION, not the SOURCE — one URL doing two jobs needs two stamp lines.",
+      "verdict": "PASS",
+      "evidence": "The four due:none stamps (status-line L111, Klaassen L112, Willison L113, Cherny L114) each state in body what they are durable FOR (term/framing/date-anchor) and assert no live-position claim of their own; the Cherny stamp additionally names an explicit dated freshness-rule exception (L134) rather than a silent due:none with an unopenable fallback.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 7,
+      "rule_lead": "Vision × Detail split.",
+      "verdict": "PASS",
+      "evidence": "Big Idea (L5-6) and Key Concepts (L54-62) are unbacked vision-layer framing, correctly carrying no citation; the four detail-layer practitioner claims (Horthy/Cherny/Klaassen/Willison) all carry maintainer-block KB backing.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 10,
+      "rule_lead": "No \"What research says\" callout boxes.",
+      "verdict": "PASS",
+      "evidence": "grep -i 'what research says' → 0 hits; citations run inline in builder voice, no callout box.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 11,
+      "rule_lead": "Source-verification maintainer block on any student-facing file with practitioner citations.",
+      "verdict": "PASS",
+      "evidence": "Maintainer block carries a 'Source verification — freshness stamps' section (L106-114) listing every practitioner/platform URL with a stamp and a fallback reframe.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": "11a",
+      "rule_lead": "Each listed source carries a freshness STAMP, not just a to-do.",
+      "verdict": "REVISE",
+      "evidence": "4 of 7 stamps (status-line L111, Klaassen L112, Willison L113, Cherny L114) use a '[delegated stamp]' label with due:none, pointing at another curriculum file's own dated check rather than restating the check inline. I verified all four delegate targets live in-repo: exercises/orient-and-introspect.md L112-113 (ccstatusline + statusline-builtin, both result:OK due:cohort), exercises/push-back-on-the-plan.md L161 + exercises/compound-and-close.md L83 (Klaassen, result:OK), prework.md L94 (Willison, result:OK due:none), exercises/open-the-side-quest.md L104 (Cherny, result:CAVEAT due:none) — each currently carries a live, correct, dated stamp for the same URL, so the harm this rule's addendum names (silent staleness when the delegate's stamp is later edited or removed, since `source-freshness.sh` audits stamp syntax and never opens what a stamp points at) is not present today. But the rule's own later text reads as a direct instruction against exactly this pattern ('A stamp records its own check... Cross-file reference = corroboration note beside the record, never the record; restate the check inline... accept the duplication as the cheaper failure'), and the pattern is not a one-off in this file: it recurs verbatim ('[delegated stamp]' + the same 'due:none because a delegation does not expire' sentence) across 9 curriculum files (getting-going, plan-mode-done-right, run-the-first-experiment, learn-from-the-test, earn-the-trust, reference/multi-session-git, extract-the-task-shaping-rule, lectures/reading-the-return, lectures/composing-the-workflow) — and `curriculum/source-freshness-format.md` never documents '[delegated stamp]' as a sanctioned category at all.",
+      "fix_hint": "Corpus-wide maintainer call, not a single-file fix: either add a documented 'delegated stamp' variant to source-freshness-format.md (the pattern behaves consistently and every spot-check here resolved live and current), or apply the newer inline-restatement instruction and duplicate the four checks into this file's own block — either answer settles all 9 files at once, not just this one.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_research_claims.md",
+      "rule_index": 14,
+      "rule_lead": "A green check must measure the fact, not a proxy that co-varies with it.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "No verification instrument, grep, or gate is asserted or exercised within this student-facing overview file's prose.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 37,
+      "rule_lead": "Context-loading tiers as staged progression.",
+      "verdict": "PASS",
+      "evidence": "Key Concepts bullet (L58) recaps `/context` as the explicit-surface tier after Ex1 (orient-and-introspect, linked L44) is where the student actually runs the command — the tier is earned via the exercise the module links to, not lectured abstractly here.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 44,
+      "rule_lead": "Plug points + UX.",
+      "verdict": "PASS",
+      "evidence": "Plug Points (maintainer L151-153) name concrete kinds ('the team's ticket tracker (Linear / Jira / GitHub Issues)', 'Bug Claude surfaced in prework') rather than vague slots. All 9 linked lecture/exercise/reference/supplementary paths (L40-52, L79, L85) resolved to real files on disk on direct file-existence check.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 49,
+      "rule_lead": "A take-home prompt asks for one bounded build.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "File carries no fenced take-home prompt of its own (has_prompt_blocks: false) — it is a module index/overview page linking out to exercises that carry their own prompts.",
+      "fix_hint": null,
       "blocking": false
     },
     {
@@ -38,34 +215,9 @@
       "verdict": "N/A",
       "evidence": "No doc- or subagent-derived NEGATIVE capability claim (\"X is absent/impossible\") appears anywhere in this file for this rule's live-test-vs-docs tension to attach to.",
       "fix_hint": "",
-      "blocking": false
-    },
-    {
-      "compendium": "check_platform_and_boundaries.md",
-      "rule_index": 6,
-      "rule_lead": "Known correct Claude Code facts (easy to get wrong):",
-      "verdict": "PASS",
-      "evidence": "The only canon-adjacent facts this file asserts are /loop (session-scoped repeated prompting, PR-babysit example) and cloud routines (schedules + connectors) at lines 69-70; both match this rule's own canonical account verbatim per the maintainer's dated stamps. No plan-mode shortcut, MCP-add syntax, subagent-authoring, or turn-streaming claim is made here to drift from canon.",
-      "fix_hint": "",
-      "blocking": false
-    },
-    {
-      "compendium": "check_platform_and_boundaries.md",
-      "rule_index": "6d",
-      "rule_lead": "Auto-load surface = SIX things — four filenames + project `.claude/rules/` + user `~/.claude/rules/`.",
-      "verdict": "PASS",
-      "evidence": "Artefact-contracts table (line 166): \"Every future session in this repo (auto-loads at session-cold start)\" for `./CLAUDE.local.md` — matches surface #2 of the six-surface inventory exactly (walked up from cwd, gitignored). No other auto-load surface is claimed.",
-      "fix_hint": "",
-      "blocking": false
-    },
-    {
-      "compendium": "check_platform_and_boundaries.md",
-      "rule_index": 7,
-      "rule_lead": "Sessions = unit of work — write \"start a new session in X,\" not \"open Claude Code in X.\"",
-      "verdict": "PASS",
-      "evidence": "Line 10: \"You'll open the first session in the repo you picked.\" Uses session-as-unit-of-work phrasing correctly. `grep -n 'open Claude Code' getting-going.md` = 0 hits.",
-      "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -74,7 +226,9 @@
       "verdict": "N/A",
       "evidence": "This file makes no cross-working-directory / session-resume claim of its own — line 85 only cross-references the separate `multi-session-git.md` reference page (a distinct file, audited under its own instance), and describes no worktree-resume mechanic inline.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -83,7 +237,9 @@
       "verdict": "N/A",
       "evidence": "No external training/product or competitor curriculum is referenced anywhere in this file.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -92,16 +248,9 @@
       "verdict": "N/A",
       "evidence": "No skill/prompt/agent-file/rules-file import-from-internet activity is described in this file's body or optional challenges.",
       "fix_hint": "",
-      "blocking": false
-    },
-    {
-      "compendium": "check_platform_and_boundaries.md",
-      "rule_index": 34,
-      "rule_lead": "Spend on deleting the duplicate, not on guarding it — and a gate that finds nothing is speculation.",
-      "verdict": "REVISE",
-      "evidence": "Re-measured live, not carried forward on trust. Lines 136-148 (\"Push-back moves\", trainer-delivered bullet list) and lines 170-183 (\"Per-phase failure mode + escape hatch\" table, required by `check_pedagogy.md` §47) independently carry the same fact for 9 of the table's 10 rows. Confirmed byte-identical text still present: line 138 (\"Ex1 `/context` skipped — slash command read as prose, not as a command. Trainer push: 'type /context in the chat — look at the number.'\") vs line 175 (\"Ex1 — `/context` as command, not prose | `/context` skipped — slash command read as prose | Trainer push: 'type /context in the chat — look at the number.'\"). `grep -n '^\\*\\*Push-back moves\\|^\\*\\*Per-phase failure mode' curriculum/trainings/agentic-engineering-101/*.md` (run live this session) shows both structures still co-occurring in 5 of 6 AE101 module files (getting-going, plan-mode-done-right, earn-the-trust, learn-from-the-test, run-the-first-experiment) — but the corpus has moved since the prior technical pass: `plan-mode-done-right.md:185` now reads \"each failure mode below is named exactly as its Push-back move above, which holds the escape hatch — one home, no second copy (check_pedagogy.md §64)\" and `learn-from-the-test.md:184` now reads \"Paired with the check_pedagogy.md §47 per-phase table below — same eight pushes, one spoken list and one audit grid. Edit both or neither.\" Two of the five siblings have already adopted a dedup or explicit-pairing fix; getting-going.md and earn-the-trust.md and run-the-first-experiment.md have not. Still the currently-agreeing §34(b) case (not yet broken), so non-blocking — but the fix is now cheaper to apply than last cycle, since a precedent exists in this same file's own training.",
-      "fix_hint": "Adopt the pattern two siblings already use: either point \"Per-phase failure mode\" at \"Push-back moves\" as the single home for the trainer-push text (plan-mode-done-right's approach), or add learn-from-the-test's explicit \"edit both or neither\" pairing note so the duplication is acknowledged rather than silent. Training-wide question — raise once, not per file.",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -110,16 +259,9 @@
       "verdict": "N/A",
       "evidence": "This rule targets an auditor's own reporting discipline. Applied to myself this session for the §34 finding above (re-grepped current line numbers and the current 5-file figure rather than trusting the prior instance's count, and discovered the count's composition changed) rather than a claim this file's body content itself makes.",
       "fix_hint": "",
-      "blocking": false
-    },
-    {
-      "compendium": "check_platform_and_boundaries.md",
-      "rule_index": 38,
-      "rule_lead": "Prose describing a runtime the room never executes drifts to plausible mechanism — no judge catches it, because no artefact contradicts it.",
-      "verdict": "PASS",
-      "evidence": "The forward-looking automation prose lives in \"Optional challenges\" (lines 69-72): /loop PR-babysit, Jira-triage routine, 100-PR-comment sweep, rule-compounding automation. Three-tells check: (a) no invented \"X against Y\" retrieval mechanism — each challenge names a real, cited platform surface (/loop, routines) or a plain agentic task (sweep, compound), never a fabricated cross-reference mechanism; (b) no unsourced cadence asserted as platform guarantee — \"morning routine\" is the student's own scheduling choice inside a routine the student configures, not a claim the platform enforces a morning cadence; (c) no lifecycle-noun mismatch. Each challenge is additionally backed by a maintainer stamp (lines 108-109) naming exactly what the cited docs page supports plus an honest fallback if it doesn't hold.",
-      "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -128,7 +270,9 @@
       "verdict": "N/A",
       "evidence": "Meta-rule about the freshness-instrument's own blind spots (rule text, not body). Not a claim this file's content makes.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -137,7 +281,9 @@
       "verdict": "N/A",
       "evidence": "Meta-rule about diagnosing tooling-cost regressions. Not applicable to this file's content.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -146,7 +292,9 @@
       "verdict": "N/A",
       "evidence": "Meta-rule about benchmark/fixture design for judge-hillclimbing. Not applicable to this file's content.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -155,43 +303,9 @@
       "verdict": "N/A",
       "evidence": "Meta-rule about protocol-clause enforceability. Not a claim this student-facing file makes; this judge's own compliance with the merge step is reported separately (`rows_spliced_by_merge`).",
       "fix_hint": "",
-      "blocking": false
-    },
-    {
-      "compendium": "check_platform_and_boundaries.md",
-      "rule_index": 50,
-      "rule_lead": "Thinking-effort levels are a real, named Claude Code control surface — stamped.",
-      "verdict": "PASS",
-      "evidence": "Line 3: \"Run Module 1 on `high` thinking effort (the training default).\" `high` is a live-verified named `--effort` level (2026-08-30, Claude Code 2.1.250). Cross-checked against the other three files this rule names: `prework.md:5` (\"Run modules on `high` thinking effort by default... Module 2 runs on medium instead, because high feels sluggish\"), `plan-mode-done-right.md:3` (\"Run this module on medium thinking effort. High and xhigh may feel sluggish\"), `earn-the-trust.md:3` (\"Run M3 on `high` thinking effort (the training default)\"). getting-going.md correctly stays at the training default `high` for Module 1; the rule's own illustrative quote (\"medium ... may feel sluggish\") is Module 2's phrasing, not a mismatch with this file.",
-      "fix_hint": "",
-      "blocking": false
-    },
-    {
-      "compendium": "check_research_claims.md",
-      "rule_index": 1,
-      "rule_lead": "Source URL + type label — mandatory.",
-      "verdict": "PASS",
-      "evidence": "Scope is maintainer-block only (not body). All 6 distinct URLs in the Source-verification section (lines 106-114) carry a URL + type label: `[platform docs]` ×2, `[practitioner direct, vendor venue]` ×1, `[delegated stamp]` ×3. No convergence-count or \"practitioners say X\" vocabulary-claim appears anywhere in the file; the Frameworks entry attributes Compound Engineering to Klaassen individually, not to a field consensus.",
-      "fix_hint": "",
-      "blocking": false
-    },
-    {
-      "compendium": "check_research_claims.md",
-      "rule_index": "1a",
-      "rule_lead": "OODA paraphrase ≠ primary source.",
-      "verdict": "PASS",
-      "evidence": "The Horthy claim-anchor (maintainer line 110: \"no benchmark measures codebase-quality maintenance; tests-in-seconds vs architecture-cost-in-months; fix = human review + upfront planning\") matches the body's own summary at line 81 without adding specificity the source doesn't support. The Cherny video description (line 83) names only general topics (plan mode, verification loops, parallel worktrees, CLAUDE.md compounding, slash commands, subagent map-reduce, finish-the-migration rule) with no invented quote or number attributed to Cherny.",
-      "fix_hint": "",
-      "blocking": false
-    },
-    {
-      "compendium": "check_research_claims.md",
-      "rule_index": 2,
-      "rule_lead": "Freshness rule — 6 months.",
-      "verdict": "PASS",
-      "evidence": "The two dated exceptions (Cherny video, May 2025; Willison post, Oct 2025) are both explicitly recorded as maintainer-decided exceptions (line 114's `due:none` note + the Meta block's own \"Freshness-rule exception\" line 134), not silent staleness. The wsff.md source (checked 2026-07-30, due 2027-01-27) sits inside the window. Delegated URLs (`due:none`) correctly point at the file that owns the dated check rather than re-asserting a fresh date of their own.",
-      "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_research_claims.md",
@@ -200,43 +314,9 @@
       "verdict": "N/A",
       "evidence": "No round-number AI-failure statistic (95%/85%/80%-shaped) appears anywhere in this file.",
       "fix_hint": "",
-      "blocking": false
-    },
-    {
-      "compendium": "check_research_claims.md",
-      "rule_index": 7,
-      "rule_lead": "Vision × Detail split.",
-      "verdict": "PASS",
-      "evidence": "The Detail-layer claims (Horthy, Cherny, Klaassen, Willison) all carry KB backing via the maintainer block's delegated/dated stamps; no unbacked practitioner number is asserted in body prose.",
-      "fix_hint": "",
-      "blocking": false
-    },
-    {
-      "compendium": "check_research_claims.md",
-      "rule_index": 10,
-      "rule_lead": "No \"What research says\" callout boxes.",
-      "verdict": "PASS",
-      "evidence": "Citations run as inline builder-voice prose (\"Dex Horthy, [Why Software Factories Fail]... Tests tell you in seconds...\"), never as a boxed \"research says\" callout.",
-      "fix_hint": "",
-      "blocking": false
-    },
-    {
-      "compendium": "check_research_claims.md",
-      "rule_index": 11,
-      "rule_lead": "Source-verification maintainer block on any student-facing file with practitioner citations.",
-      "verdict": "PASS",
-      "evidence": "The `**Source verification — freshness stamps**` section (lines 106-114) is present below `<!-- maintainer -->` and lists all 6 URLs with fallback framing for each (e.g. line 108: \"fallback: keep the challenge but remove the feature name and ask Claude to poll the PR manually\"). No numeric hour/token/percentage/org-size claim appears in body needing a separate triple-check line.",
-      "fix_hint": "",
-      "blocking": false
-    },
-    {
-      "compendium": "check_research_claims.md",
-      "rule_index": 14,
-      "rule_lead": "A green check must measure the fact, not a proxy that co-varies with it.",
-      "verdict": "PASS",
-      "evidence": "Checked sub-clause (d) — half-updated annotation where a machine field moved and a human qualifier didn't. Line 114's Cherny stamp (`checked:2026-05-25 result:CAVEAT due:none`) carries the qualifier \"the May 2025 date sits outside the 6-month window by maintainer decision — recorded in the Meta block below\", and the Meta block (line 134) does in fact carry that exact exception note — the two halves still agree, no orphaned qualifier found. The wsff.md stamp's date arithmetic (`checked:2026-07-30 ... due:2027-01-27`, \"due is publication+6mo\" off a stated \"Jul 2026 repo doc\") checks out arithmetically.",
-      "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_prompts.md",
@@ -245,7 +325,9 @@
       "verdict": "N/A",
       "evidence": "This module-index file carries zero fenced prompt blocks (`has_prompt_blocks:false`, `fence_ranges:[]` per body-view; confirmed live via `grep -n '\\*\\*Prompt\\*\\*\\|{{prompt:' getting-going.md` = 0 hits). It links out to exercise/lecture files that carry their own prompts; this rule's target shape (fenced prompt content) is absent from this file.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_prompts.md",
@@ -254,7 +336,9 @@
       "verdict": "N/A",
       "evidence": "This module-index file carries zero fenced prompt blocks (`has_prompt_blocks:false`, `fence_ranges:[]` per body-view; confirmed live via `grep -n '\\*\\*Prompt\\*\\*\\|{{prompt:' getting-going.md` = 0 hits). It links out to exercise/lecture files that carry their own prompts; this rule's target shape (fenced prompt content) is absent from this file.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_prompts.md",
@@ -263,7 +347,9 @@
       "verdict": "N/A",
       "evidence": "This module-index file carries zero fenced prompt blocks (`has_prompt_blocks:false`, `fence_ranges:[]` per body-view; confirmed live via `grep -n '\\*\\*Prompt\\*\\*\\|{{prompt:' getting-going.md` = 0 hits). It links out to exercise/lecture files that carry their own prompts; this rule's target shape (fenced prompt content) is absent from this file.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_prompts.md",
@@ -272,7 +358,9 @@
       "verdict": "N/A",
       "evidence": "This module-index file carries zero fenced prompt blocks (`has_prompt_blocks:false`, `fence_ranges:[]` per body-view; confirmed live via `grep -n '\\*\\*Prompt\\*\\*\\|{{prompt:' getting-going.md` = 0 hits). It links out to exercise/lecture files that carry their own prompts; this rule's target shape (fenced prompt content) is absent from this file.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_prompts.md",
@@ -281,7 +369,9 @@
       "verdict": "N/A",
       "evidence": "This module-index file carries zero fenced prompt blocks (`has_prompt_blocks:false`, `fence_ranges:[]` per body-view; confirmed live via `grep -n '\\*\\*Prompt\\*\\*\\|{{prompt:' getting-going.md` = 0 hits). It links out to exercise/lecture files that carry their own prompts; this rule's target shape (fenced prompt content) is absent from this file.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_prompts.md",
@@ -290,7 +380,9 @@
       "verdict": "N/A",
       "evidence": "This module-index file carries zero fenced prompt blocks (`has_prompt_blocks:false`, `fence_ranges:[]` per body-view; confirmed live via `grep -n '\\*\\*Prompt\\*\\*\\|{{prompt:' getting-going.md` = 0 hits). It links out to exercise/lecture files that carry their own prompts; this rule's target shape (fenced prompt content) is absent from this file.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_prompts.md",
@@ -299,7 +391,9 @@
       "verdict": "N/A",
       "evidence": "This module-index file carries zero fenced prompt blocks (`has_prompt_blocks:false`, `fence_ranges:[]` per body-view; confirmed live via `grep -n '\\*\\*Prompt\\*\\*\\|{{prompt:' getting-going.md` = 0 hits). It links out to exercise/lecture files that carry their own prompts; this rule's target shape (fenced prompt content) is absent from this file.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_prompts.md",
@@ -308,7 +402,9 @@
       "verdict": "N/A",
       "evidence": "This module-index file carries zero fenced prompt blocks (`has_prompt_blocks:false`, `fence_ranges:[]` per body-view; confirmed live via `grep -n '\\*\\*Prompt\\*\\*\\|{{prompt:' getting-going.md` = 0 hits). It links out to exercise/lecture files that carry their own prompts; this rule's target shape (fenced prompt content) is absent from this file.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_prompts.md",
@@ -317,7 +413,9 @@
       "verdict": "N/A",
       "evidence": "This module-index file carries zero fenced prompt blocks (`has_prompt_blocks:false`, `fence_ranges:[]` per body-view; confirmed live via `grep -n '\\*\\*Prompt\\*\\*\\|{{prompt:' getting-going.md` = 0 hits). It links out to exercise/lecture files that carry their own prompts; this rule's target shape (fenced prompt content) is absent from this file.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_prompts.md",
@@ -326,7 +424,9 @@
       "verdict": "N/A",
       "evidence": "This module-index file carries zero fenced prompt blocks (`has_prompt_blocks:false`, `fence_ranges:[]` per body-view; confirmed live via `grep -n '\\*\\*Prompt\\*\\*\\|{{prompt:' getting-going.md` = 0 hits). It links out to exercise/lecture files that carry their own prompts; this rule's target shape (fenced prompt content) is absent from this file.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_prompts.md",
@@ -335,7 +435,9 @@
       "verdict": "N/A",
       "evidence": "This module-index file carries zero fenced prompt blocks (`has_prompt_blocks:false`, `fence_ranges:[]` per body-view; confirmed live via `grep -n '\\*\\*Prompt\\*\\*\\|{{prompt:' getting-going.md` = 0 hits). It links out to exercise/lecture files that carry their own prompts; this rule's target shape (fenced prompt content) is absent from this file.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_prompts.md",
@@ -344,7 +446,9 @@
       "verdict": "N/A",
       "evidence": "This module-index file carries zero fenced prompt blocks (`has_prompt_blocks:false`, `fence_ranges:[]` per body-view; confirmed live via `grep -n '\\*\\*Prompt\\*\\*\\|{{prompt:' getting-going.md` = 0 hits). It links out to exercise/lecture files that carry their own prompts; this rule's target shape (fenced prompt content) is absent from this file.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_prompts.md",
@@ -353,7 +457,9 @@
       "verdict": "N/A",
       "evidence": "This module-index file carries zero fenced prompt blocks (`has_prompt_blocks:false`, `fence_ranges:[]` per body-view; confirmed live via `grep -n '\\*\\*Prompt\\*\\*\\|{{prompt:' getting-going.md` = 0 hits). It links out to exercise/lecture files that carry their own prompts; this rule's target shape (fenced prompt content) is absent from this file.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_prompts.md",
@@ -362,7 +468,9 @@
       "verdict": "N/A",
       "evidence": "This module-index file carries zero fenced prompt blocks (`has_prompt_blocks:false`, `fence_ranges:[]` per body-view; confirmed live via `grep -n '\\*\\*Prompt\\*\\*\\|{{prompt:' getting-going.md` = 0 hits). It links out to exercise/lecture files that carry their own prompts; this rule's target shape (fenced prompt content) is absent from this file.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_prompts.md",
@@ -371,7 +479,9 @@
       "verdict": "N/A",
       "evidence": "This module-index file carries zero fenced prompt blocks (`has_prompt_blocks:false`, `fence_ranges:[]` per body-view; confirmed live via `grep -n '\\*\\*Prompt\\*\\*\\|{{prompt:' getting-going.md` = 0 hits). It links out to exercise/lecture files that carry their own prompts; this rule's target shape (fenced prompt content) is absent from this file.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_prompts.md",
@@ -380,7 +490,9 @@
       "verdict": "N/A",
       "evidence": "This module-index file carries zero fenced prompt blocks (`has_prompt_blocks:false`, `fence_ranges:[]` per body-view; confirmed live via `grep -n '\\*\\*Prompt\\*\\*\\|{{prompt:' getting-going.md` = 0 hits). It links out to exercise/lecture files that carry their own prompts; this rule's target shape (fenced prompt content) is absent from this file.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_prompts.md",
@@ -389,7 +501,9 @@
       "verdict": "N/A",
       "evidence": "This module-index file carries zero fenced prompt blocks (`has_prompt_blocks:false`, `fence_ranges:[]` per body-view; confirmed live via `grep -n '\\*\\*Prompt\\*\\*\\|{{prompt:' getting-going.md` = 0 hits). It links out to exercise/lecture files that carry their own prompts; this rule's target shape (fenced prompt content) is absent from this file.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_prompts.md",
@@ -398,7 +512,9 @@
       "verdict": "N/A",
       "evidence": "This module-index file carries zero fenced prompt blocks (`has_prompt_blocks:false`, `fence_ranges:[]` per body-view; confirmed live via `grep -n '\\*\\*Prompt\\*\\*\\|{{prompt:' getting-going.md` = 0 hits). It links out to exercise/lecture files that carry their own prompts; this rule's target shape (fenced prompt content) is absent from this file.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_prompts.md",
@@ -407,7 +523,9 @@
       "verdict": "N/A",
       "evidence": "This module-index file carries zero fenced prompt blocks (`has_prompt_blocks:false`, `fence_ranges:[]` per body-view; confirmed live via `grep -n '\\*\\*Prompt\\*\\*\\|{{prompt:' getting-going.md` = 0 hits). It links out to exercise/lecture files that carry their own prompts; this rule's target shape (fenced prompt content) is absent from this file.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_prompts.md",
@@ -416,7 +534,9 @@
       "verdict": "N/A",
       "evidence": "This module-index file carries zero fenced prompt blocks (`has_prompt_blocks:false`, `fence_ranges:[]` per body-view; confirmed live via `grep -n '\\*\\*Prompt\\*\\*\\|{{prompt:' getting-going.md` = 0 hits). It links out to exercise/lecture files that carry their own prompts; this rule's target shape (fenced prompt content) is absent from this file.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_prompts.md",
@@ -425,7 +545,9 @@
       "verdict": "N/A",
       "evidence": "This module-index file carries zero fenced prompt blocks (`has_prompt_blocks:false`, `fence_ranges:[]` per body-view; confirmed live via `grep -n '\\*\\*Prompt\\*\\*\\|{{prompt:' getting-going.md` = 0 hits). It links out to exercise/lecture files that carry their own prompts; this rule's target shape (fenced prompt content) is absent from this file.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_prompts.md",
@@ -434,7 +556,9 @@
       "verdict": "N/A",
       "evidence": "This module-index file carries zero fenced prompt blocks (`has_prompt_blocks:false`, `fence_ranges:[]` per body-view; confirmed live via `grep -n '\\*\\*Prompt\\*\\*\\|{{prompt:' getting-going.md` = 0 hits). It links out to exercise/lecture files that carry their own prompts; this rule's target shape (fenced prompt content) is absent from this file.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_prompts.md",
@@ -443,7 +567,9 @@
       "verdict": "N/A",
       "evidence": "This module-index file carries zero fenced prompt blocks (`has_prompt_blocks:false`, `fence_ranges:[]` per body-view; confirmed live via `grep -n '\\*\\*Prompt\\*\\*\\|{{prompt:' getting-going.md` = 0 hits). It links out to exercise/lecture files that carry their own prompts; this rule's target shape (fenced prompt content) is absent from this file.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_prompts.md",
@@ -452,7 +578,9 @@
       "verdict": "N/A",
       "evidence": "This module-index file carries zero fenced prompt blocks (`has_prompt_blocks:false`, `fence_ranges:[]` per body-view; confirmed live via `grep -n '\\*\\*Prompt\\*\\*\\|{{prompt:' getting-going.md` = 0 hits). It links out to exercise/lecture files that carry their own prompts; this rule's target shape (fenced prompt content) is absent from this file.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_prompts.md",
@@ -461,7 +589,9 @@
       "verdict": "N/A",
       "evidence": "This module-index file carries zero fenced prompt blocks (`has_prompt_blocks:false`, `fence_ranges:[]` per body-view; confirmed live via `grep -n '\\*\\*Prompt\\*\\*\\|{{prompt:' getting-going.md` = 0 hits). It links out to exercise/lecture files that carry their own prompts; this rule's target shape (fenced prompt content) is absent from this file.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_prompts.md",
@@ -470,7 +600,9 @@
       "verdict": "N/A",
       "evidence": "This module-index file carries zero fenced prompt blocks (`has_prompt_blocks:false`, `fence_ranges:[]` per body-view; confirmed live via `grep -n '\\*\\*Prompt\\*\\*\\|{{prompt:' getting-going.md` = 0 hits). It links out to exercise/lecture files that carry their own prompts; this rule's target shape (fenced prompt content) is absent from this file.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_prompts.md",
@@ -479,7 +611,9 @@
       "verdict": "N/A",
       "evidence": "This module-index file carries zero fenced prompt blocks (`has_prompt_blocks:false`, `fence_ranges:[]` per body-view; confirmed live via `grep -n '\\*\\*Prompt\\*\\*\\|{{prompt:' getting-going.md` = 0 hits). It links out to exercise/lecture files that carry their own prompts; this rule's target shape (fenced prompt content) is absent from this file.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_prompts.md",
@@ -488,7 +622,9 @@
       "verdict": "N/A",
       "evidence": "This module-index file carries zero fenced prompt blocks (`has_prompt_blocks:false`, `fence_ranges:[]` per body-view; confirmed live via `grep -n '\\*\\*Prompt\\*\\*\\|{{prompt:' getting-going.md` = 0 hits). It links out to exercise/lecture files that carry their own prompts; this rule's target shape (fenced prompt content) is absent from this file.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_prompts.md",
@@ -497,7 +633,9 @@
       "verdict": "N/A",
       "evidence": "This module-index file carries zero fenced prompt blocks (`has_prompt_blocks:false`, `fence_ranges:[]` per body-view; confirmed live via `grep -n '\\*\\*Prompt\\*\\*\\|{{prompt:' getting-going.md` = 0 hits). It links out to exercise/lecture files that carry their own prompts; this rule's target shape (fenced prompt content) is absent from this file.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_prompts.md",
@@ -506,7 +644,9 @@
       "verdict": "N/A",
       "evidence": "This module-index file carries zero fenced prompt blocks (`has_prompt_blocks:false`, `fence_ranges:[]` per body-view; confirmed live via `grep -n '\\*\\*Prompt\\*\\*\\|{{prompt:' getting-going.md` = 0 hits). It links out to exercise/lecture files that carry their own prompts; this rule's target shape (fenced prompt content) is absent from this file.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_prompts.md",
@@ -515,7 +655,9 @@
       "verdict": "N/A",
       "evidence": "This module-index file carries zero fenced prompt blocks (`has_prompt_blocks:false`, `fence_ranges:[]` per body-view; confirmed live via `grep -n '\\*\\*Prompt\\*\\*\\|{{prompt:' getting-going.md` = 0 hits). It links out to exercise/lecture files that carry their own prompts; this rule's target shape (fenced prompt content) is absent from this file.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_prompts.md",
@@ -524,7 +666,9 @@
       "verdict": "N/A",
       "evidence": "This module-index file carries zero fenced prompt blocks (`has_prompt_blocks:false`, `fence_ranges:[]` per body-view; confirmed live via `grep -n '\\*\\*Prompt\\*\\*\\|{{prompt:' getting-going.md` = 0 hits). It links out to exercise/lecture files that carry their own prompts; this rule's target shape (fenced prompt content) is absent from this file.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_prompts.md",
@@ -533,7 +677,9 @@
       "verdict": "N/A",
       "evidence": "This module-index file carries zero fenced prompt blocks (`has_prompt_blocks:false`, `fence_ranges:[]` per body-view; confirmed live via `grep -n '\\*\\*Prompt\\*\\*\\|{{prompt:' getting-going.md` = 0 hits). It links out to exercise/lecture files that carry their own prompts; this rule's target shape (fenced prompt content) is absent from this file.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_prompts.md",
@@ -542,7 +688,9 @@
       "verdict": "N/A",
       "evidence": "This module-index file carries zero fenced prompt blocks (`has_prompt_blocks:false`, `fence_ranges:[]` per body-view; confirmed live via `grep -n '\\*\\*Prompt\\*\\*\\|{{prompt:' getting-going.md` = 0 hits). It links out to exercise/lecture files that carry their own prompts; this rule's target shape (fenced prompt content) is absent from this file.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_prompts.md",
@@ -551,7 +699,9 @@
       "verdict": "N/A",
       "evidence": "This module-index file carries zero fenced prompt blocks (`has_prompt_blocks:false`, `fence_ranges:[]` per body-view; confirmed live via `grep -n '\\*\\*Prompt\\*\\*\\|{{prompt:' getting-going.md` = 0 hits). It links out to exercise/lecture files that carry their own prompts; this rule's target shape (fenced prompt content) is absent from this file.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_prompts.md",
@@ -560,7 +710,9 @@
       "verdict": "N/A",
       "evidence": "This module-index file carries zero fenced prompt blocks (`has_prompt_blocks:false`, `fence_ranges:[]` per body-view; confirmed live via `grep -n '\\*\\*Prompt\\*\\*\\|{{prompt:' getting-going.md` = 0 hits). It links out to exercise/lecture files that carry their own prompts; this rule's target shape (fenced prompt content) is absent from this file.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_prompts.md",
@@ -569,7 +721,9 @@
       "verdict": "N/A",
       "evidence": "This module-index file carries zero fenced prompt blocks (`has_prompt_blocks:false`, `fence_ranges:[]` per body-view; confirmed live via `grep -n '\\*\\*Prompt\\*\\*\\|{{prompt:' getting-going.md` = 0 hits). It links out to exercise/lecture files that carry their own prompts; this rule's target shape (fenced prompt content) is absent from this file.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_prompts.md",
@@ -578,7 +732,9 @@
       "verdict": "N/A",
       "evidence": "This module-index file carries zero fenced prompt blocks (`has_prompt_blocks:false`, `fence_ranges:[]` per body-view; confirmed live via `grep -n '\\*\\*Prompt\\*\\*\\|{{prompt:' getting-going.md` = 0 hits). It links out to exercise/lecture files that carry their own prompts; this rule's target shape (fenced prompt content) is absent from this file.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_prompts.md",
@@ -587,7 +743,9 @@
       "verdict": "N/A",
       "evidence": "This module-index file carries zero fenced prompt blocks (`has_prompt_blocks:false`, `fence_ranges:[]` per body-view; confirmed live via `grep -n '\\*\\*Prompt\\*\\*\\|{{prompt:' getting-going.md` = 0 hits). It links out to exercise/lecture files that carry their own prompts; this rule's target shape (fenced prompt content) is absent from this file.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_prompts.md",
@@ -596,7 +754,9 @@
       "verdict": "N/A",
       "evidence": "This module-index file carries zero fenced prompt blocks (`has_prompt_blocks:false`, `fence_ranges:[]` per body-view; confirmed live via `grep -n '\\*\\*Prompt\\*\\*\\|{{prompt:' getting-going.md` = 0 hits). It links out to exercise/lecture files that carry their own prompts; this rule's target shape (fenced prompt content) is absent from this file.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_prompts.md",
@@ -605,7 +765,9 @@
       "verdict": "N/A",
       "evidence": "This module-index file carries zero fenced prompt blocks (`has_prompt_blocks:false`, `fence_ranges:[]` per body-view; confirmed live via `grep -n '\\*\\*Prompt\\*\\*\\|{{prompt:' getting-going.md` = 0 hits). It links out to exercise/lecture files that carry their own prompts; this rule's target shape (fenced prompt content) is absent from this file.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_prompts.md",
@@ -614,7 +776,9 @@
       "verdict": "N/A",
       "evidence": "This module-index file carries zero fenced prompt blocks (`has_prompt_blocks:false`, `fence_ranges:[]` per body-view; confirmed live via `grep -n '\\*\\*Prompt\\*\\*\\|{{prompt:' getting-going.md` = 0 hits). It links out to exercise/lecture files that carry their own prompts; this rule's target shape (fenced prompt content) is absent from this file.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_prompts.md",
@@ -623,7 +787,9 @@
       "verdict": "N/A",
       "evidence": "This module-index file carries zero fenced prompt blocks (`has_prompt_blocks:false`, `fence_ranges:[]` per body-view; confirmed live via `grep -n '\\*\\*Prompt\\*\\*\\|{{prompt:' getting-going.md` = 0 hits). It links out to exercise/lecture files that carry their own prompts; this rule's target shape (fenced prompt content) is absent from this file.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_prompts.md",
@@ -632,7 +798,9 @@
       "verdict": "N/A",
       "evidence": "This module-index file carries zero fenced prompt blocks (`has_prompt_blocks:false`, `fence_ranges:[]` per body-view; confirmed live via `grep -n '\\*\\*Prompt\\*\\*\\|{{prompt:' getting-going.md` = 0 hits). It links out to exercise/lecture files that carry their own prompts; this rule's target shape (fenced prompt content) is absent from this file.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_prompts.md",
@@ -641,7 +809,9 @@
       "verdict": "N/A",
       "evidence": "This module-index file carries zero fenced prompt blocks (`has_prompt_blocks:false`, `fence_ranges:[]` per body-view; confirmed live via `grep -n '\\*\\*Prompt\\*\\*\\|{{prompt:' getting-going.md` = 0 hits). It links out to exercise/lecture files that carry their own prompts; this rule's target shape (fenced prompt content) is absent from this file.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_prompts.md",
@@ -650,7 +820,9 @@
       "verdict": "N/A",
       "evidence": "This module-index file carries zero fenced prompt blocks (`has_prompt_blocks:false`, `fence_ranges:[]` per body-view; confirmed live via `grep -n '\\*\\*Prompt\\*\\*\\|{{prompt:' getting-going.md` = 0 hits). It links out to exercise/lecture files that carry their own prompts; this rule's target shape (fenced prompt content) is absent from this file.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_prompts.md",
@@ -659,7 +831,9 @@
       "verdict": "N/A",
       "evidence": "This module-index file carries zero fenced prompt blocks (`has_prompt_blocks:false`, `fence_ranges:[]` per body-view; confirmed live via `grep -n '\\*\\*Prompt\\*\\*\\|{{prompt:' getting-going.md` = 0 hits). It links out to exercise/lecture files that carry their own prompts; this rule's target shape (fenced prompt content) is absent from this file.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_prompts.md",
@@ -668,7 +842,9 @@
       "verdict": "N/A",
       "evidence": "This module-index file carries zero fenced prompt blocks (`has_prompt_blocks:false`, `fence_ranges:[]` per body-view; confirmed live via `grep -n '\\*\\*Prompt\\*\\*\\|{{prompt:' getting-going.md` = 0 hits). It links out to exercise/lecture files that carry their own prompts; this rule's target shape (fenced prompt content) is absent from this file.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -677,7 +853,9 @@
       "verdict": "N/A",
       "evidence": "Outside technical class's owned pedagogy sub-rules. This template's Completeness contract scopes check_pedagogy to items 16/22/23/36/37 (of which 16/22/23/36 are parked N/A this cycle) plus this file's established technical set {44, 56}; this rule is pedagogy-judge primary-ownership territory (its own instance: ae101--module--getting-going.pedagogy.json), not a platform-capability, citation, skill, prompt-mechanics, or URL-liveness property this class checks.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -686,7 +864,9 @@
       "verdict": "N/A",
       "evidence": "Outside technical class's owned pedagogy sub-rules. This template's Completeness contract scopes check_pedagogy to items 16/22/23/36/37 (of which 16/22/23/36 are parked N/A this cycle) plus this file's established technical set {44, 56}; this rule is pedagogy-judge primary-ownership territory (its own instance: ae101--module--getting-going.pedagogy.json), not a platform-capability, citation, skill, prompt-mechanics, or URL-liveness property this class checks.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -695,7 +875,9 @@
       "verdict": "N/A",
       "evidence": "Outside technical class's owned pedagogy sub-rules. This template's Completeness contract scopes check_pedagogy to items 16/22/23/36/37 (of which 16/22/23/36 are parked N/A this cycle) plus this file's established technical set {44, 56}; this rule is pedagogy-judge primary-ownership territory (its own instance: ae101--module--getting-going.pedagogy.json), not a platform-capability, citation, skill, prompt-mechanics, or URL-liveness property this class checks.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -704,7 +886,9 @@
       "verdict": "N/A",
       "evidence": "Outside technical class's owned pedagogy sub-rules. This template's Completeness contract scopes check_pedagogy to items 16/22/23/36/37 (of which 16/22/23/36 are parked N/A this cycle) plus this file's established technical set {44, 56}; this rule is pedagogy-judge primary-ownership territory (its own instance: ae101--module--getting-going.pedagogy.json), not a platform-capability, citation, skill, prompt-mechanics, or URL-liveness property this class checks.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -713,7 +897,9 @@
       "verdict": "N/A",
       "evidence": "Outside technical class's owned pedagogy sub-rules. This template's Completeness contract scopes check_pedagogy to items 16/22/23/36/37 (of which 16/22/23/36 are parked N/A this cycle) plus this file's established technical set {44, 56}; this rule is pedagogy-judge primary-ownership territory (its own instance: ae101--module--getting-going.pedagogy.json), not a platform-capability, citation, skill, prompt-mechanics, or URL-liveness property this class checks.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -722,7 +908,9 @@
       "verdict": "N/A",
       "evidence": "Outside technical class's owned pedagogy sub-rules. This template's Completeness contract scopes check_pedagogy to items 16/22/23/36/37 (of which 16/22/23/36 are parked N/A this cycle) plus this file's established technical set {44, 56}; this rule is pedagogy-judge primary-ownership territory (its own instance: ae101--module--getting-going.pedagogy.json), not a platform-capability, citation, skill, prompt-mechanics, or URL-liveness property this class checks.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -731,7 +919,9 @@
       "verdict": "N/A",
       "evidence": "Outside technical class's owned pedagogy sub-rules. This template's Completeness contract scopes check_pedagogy to items 16/22/23/36/37 (of which 16/22/23/36 are parked N/A this cycle) plus this file's established technical set {44, 56}; this rule is pedagogy-judge primary-ownership territory (its own instance: ae101--module--getting-going.pedagogy.json), not a platform-capability, citation, skill, prompt-mechanics, or URL-liveness property this class checks.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -740,7 +930,9 @@
       "verdict": "N/A",
       "evidence": "Outside technical class's owned pedagogy sub-rules. This template's Completeness contract scopes check_pedagogy to items 16/22/23/36/37 (of which 16/22/23/36 are parked N/A this cycle) plus this file's established technical set {44, 56}; this rule is pedagogy-judge primary-ownership territory (its own instance: ae101--module--getting-going.pedagogy.json), not a platform-capability, citation, skill, prompt-mechanics, or URL-liveness property this class checks.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -749,7 +941,9 @@
       "verdict": "N/A",
       "evidence": "Outside technical class's owned pedagogy sub-rules. This template's Completeness contract scopes check_pedagogy to items 16/22/23/36/37 (of which 16/22/23/36 are parked N/A this cycle) plus this file's established technical set {44, 56}; this rule is pedagogy-judge primary-ownership territory (its own instance: ae101--module--getting-going.pedagogy.json), not a platform-capability, citation, skill, prompt-mechanics, or URL-liveness property this class checks.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -758,7 +952,9 @@
       "verdict": "N/A",
       "evidence": "Outside technical class's owned pedagogy sub-rules. This template's Completeness contract scopes check_pedagogy to items 16/22/23/36/37 (of which 16/22/23/36 are parked N/A this cycle) plus this file's established technical set {44, 56}; this rule is pedagogy-judge primary-ownership territory (its own instance: ae101--module--getting-going.pedagogy.json), not a platform-capability, citation, skill, prompt-mechanics, or URL-liveness property this class checks.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -767,7 +963,9 @@
       "verdict": "N/A",
       "evidence": "Outside technical class's owned pedagogy sub-rules. This template's Completeness contract scopes check_pedagogy to items 16/22/23/36/37 (of which 16/22/23/36 are parked N/A this cycle) plus this file's established technical set {44, 56}; this rule is pedagogy-judge primary-ownership territory (its own instance: ae101--module--getting-going.pedagogy.json), not a platform-capability, citation, skill, prompt-mechanics, or URL-liveness property this class checks.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -776,7 +974,9 @@
       "verdict": "N/A",
       "evidence": "Outside technical class's owned pedagogy sub-rules. This template's Completeness contract scopes check_pedagogy to items 16/22/23/36/37 (of which 16/22/23/36 are parked N/A this cycle) plus this file's established technical set {44, 56}; this rule is pedagogy-judge primary-ownership territory (its own instance: ae101--module--getting-going.pedagogy.json), not a platform-capability, citation, skill, prompt-mechanics, or URL-liveness property this class checks.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -785,7 +985,9 @@
       "verdict": "N/A",
       "evidence": "Outside technical class's owned pedagogy sub-rules. This template's Completeness contract scopes check_pedagogy to items 16/22/23/36/37 (of which 16/22/23/36 are parked N/A this cycle) plus this file's established technical set {44, 56}; this rule is pedagogy-judge primary-ownership territory (its own instance: ae101--module--getting-going.pedagogy.json), not a platform-capability, citation, skill, prompt-mechanics, or URL-liveness property this class checks.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -794,7 +996,9 @@
       "verdict": "N/A",
       "evidence": "Outside technical class's owned pedagogy sub-rules. This template's Completeness contract scopes check_pedagogy to items 16/22/23/36/37 (of which 16/22/23/36 are parked N/A this cycle) plus this file's established technical set {44, 56}; this rule is pedagogy-judge primary-ownership territory (its own instance: ae101--module--getting-going.pedagogy.json), not a platform-capability, citation, skill, prompt-mechanics, or URL-liveness property this class checks.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -803,7 +1007,9 @@
       "verdict": "N/A",
       "evidence": "Outside technical class's owned pedagogy sub-rules. This template's Completeness contract scopes check_pedagogy to items 16/22/23/36/37 (of which 16/22/23/36 are parked N/A this cycle) plus this file's established technical set {44, 56}; this rule is pedagogy-judge primary-ownership territory (its own instance: ae101--module--getting-going.pedagogy.json), not a platform-capability, citation, skill, prompt-mechanics, or URL-liveness property this class checks.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -812,7 +1018,9 @@
       "verdict": "N/A",
       "evidence": "Outside technical class's owned pedagogy sub-rules. This template's Completeness contract scopes check_pedagogy to items 16/22/23/36/37 (of which 16/22/23/36 are parked N/A this cycle) plus this file's established technical set {44, 56}; this rule is pedagogy-judge primary-ownership territory (its own instance: ae101--module--getting-going.pedagogy.json), not a platform-capability, citation, skill, prompt-mechanics, or URL-liveness property this class checks.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -821,7 +1029,9 @@
       "verdict": "N/A",
       "evidence": "Outside technical class's owned pedagogy sub-rules. This template's Completeness contract scopes check_pedagogy to items 16/22/23/36/37 (of which 16/22/23/36 are parked N/A this cycle) plus this file's established technical set {44, 56}; this rule is pedagogy-judge primary-ownership territory (its own instance: ae101--module--getting-going.pedagogy.json), not a platform-capability, citation, skill, prompt-mechanics, or URL-liveness property this class checks.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -830,7 +1040,9 @@
       "verdict": "N/A",
       "evidence": "Outside technical class's owned pedagogy sub-rules. This template's Completeness contract scopes check_pedagogy to items 16/22/23/36/37 (of which 16/22/23/36 are parked N/A this cycle) plus this file's established technical set {44, 56}; this rule is pedagogy-judge primary-ownership territory (its own instance: ae101--module--getting-going.pedagogy.json), not a platform-capability, citation, skill, prompt-mechanics, or URL-liveness property this class checks.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -839,7 +1051,9 @@
       "verdict": "N/A",
       "evidence": "Outside technical class's owned pedagogy sub-rules. This template's Completeness contract scopes check_pedagogy to items 16/22/23/36/37 (of which 16/22/23/36 are parked N/A this cycle) plus this file's established technical set {44, 56}; this rule is pedagogy-judge primary-ownership territory (its own instance: ae101--module--getting-going.pedagogy.json), not a platform-capability, citation, skill, prompt-mechanics, or URL-liveness property this class checks.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -848,7 +1062,9 @@
       "verdict": "N/A",
       "evidence": "Outside technical class's owned pedagogy sub-rules. This template's Completeness contract scopes check_pedagogy to items 16/22/23/36/37 (of which 16/22/23/36 are parked N/A this cycle) plus this file's established technical set {44, 56}; this rule is pedagogy-judge primary-ownership territory (its own instance: ae101--module--getting-going.pedagogy.json), not a platform-capability, citation, skill, prompt-mechanics, or URL-liveness property this class checks.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -857,7 +1073,9 @@
       "verdict": "N/A",
       "evidence": "Outside technical class's owned pedagogy sub-rules. This template's Completeness contract scopes check_pedagogy to items 16/22/23/36/37 (of which 16/22/23/36 are parked N/A this cycle) plus this file's established technical set {44, 56}; this rule is pedagogy-judge primary-ownership territory (its own instance: ae101--module--getting-going.pedagogy.json), not a platform-capability, citation, skill, prompt-mechanics, or URL-liveness property this class checks.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -866,7 +1084,9 @@
       "verdict": "N/A",
       "evidence": "Outside technical class's owned pedagogy sub-rules. This template's Completeness contract scopes check_pedagogy to items 16/22/23/36/37 (of which 16/22/23/36 are parked N/A this cycle) plus this file's established technical set {44, 56}; this rule is pedagogy-judge primary-ownership territory (its own instance: ae101--module--getting-going.pedagogy.json), not a platform-capability, citation, skill, prompt-mechanics, or URL-liveness property this class checks.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -875,7 +1095,9 @@
       "verdict": "N/A",
       "evidence": "Outside technical class's owned pedagogy sub-rules. This template's Completeness contract scopes check_pedagogy to items 16/22/23/36/37 (of which 16/22/23/36 are parked N/A this cycle) plus this file's established technical set {44, 56}; this rule is pedagogy-judge primary-ownership territory (its own instance: ae101--module--getting-going.pedagogy.json), not a platform-capability, citation, skill, prompt-mechanics, or URL-liveness property this class checks.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -884,7 +1106,9 @@
       "verdict": "N/A",
       "evidence": "Outside technical class's owned pedagogy sub-rules. This template's Completeness contract scopes check_pedagogy to items 16/22/23/36/37 (of which 16/22/23/36 are parked N/A this cycle) plus this file's established technical set {44, 56}; this rule is pedagogy-judge primary-ownership territory (its own instance: ae101--module--getting-going.pedagogy.json), not a platform-capability, citation, skill, prompt-mechanics, or URL-liveness property this class checks.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -893,7 +1117,9 @@
       "verdict": "N/A",
       "evidence": "Outside technical class's owned pedagogy sub-rules. This template's Completeness contract scopes check_pedagogy to items 16/22/23/36/37 (of which 16/22/23/36 are parked N/A this cycle) plus this file's established technical set {44, 56}; this rule is pedagogy-judge primary-ownership territory (its own instance: ae101--module--getting-going.pedagogy.json), not a platform-capability, citation, skill, prompt-mechanics, or URL-liveness property this class checks.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -902,7 +1128,9 @@
       "verdict": "N/A",
       "evidence": "Outside technical class's owned pedagogy sub-rules. This template's Completeness contract scopes check_pedagogy to items 16/22/23/36/37 (of which 16/22/23/36 are parked N/A this cycle) plus this file's established technical set {44, 56}; this rule is pedagogy-judge primary-ownership territory (its own instance: ae101--module--getting-going.pedagogy.json), not a platform-capability, citation, skill, prompt-mechanics, or URL-liveness property this class checks.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -911,7 +1139,9 @@
       "verdict": "N/A",
       "evidence": "Outside technical class's owned pedagogy sub-rules. This template's Completeness contract scopes check_pedagogy to items 16/22/23/36/37 (of which 16/22/23/36 are parked N/A this cycle) plus this file's established technical set {44, 56}; this rule is pedagogy-judge primary-ownership territory (its own instance: ae101--module--getting-going.pedagogy.json), not a platform-capability, citation, skill, prompt-mechanics, or URL-liveness property this class checks.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -920,7 +1150,9 @@
       "verdict": "N/A",
       "evidence": "Outside technical class's owned pedagogy sub-rules. This template's Completeness contract scopes check_pedagogy to items 16/22/23/36/37 (of which 16/22/23/36 are parked N/A this cycle) plus this file's established technical set {44, 56}; this rule is pedagogy-judge primary-ownership territory (its own instance: ae101--module--getting-going.pedagogy.json), not a platform-capability, citation, skill, prompt-mechanics, or URL-liveness property this class checks.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -929,7 +1161,9 @@
       "verdict": "N/A",
       "evidence": "Outside technical class's owned pedagogy sub-rules. This template's Completeness contract scopes check_pedagogy to items 16/22/23/36/37 (of which 16/22/23/36 are parked N/A this cycle) plus this file's established technical set {44, 56}; this rule is pedagogy-judge primary-ownership territory (its own instance: ae101--module--getting-going.pedagogy.json), not a platform-capability, citation, skill, prompt-mechanics, or URL-liveness property this class checks.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -938,7 +1172,9 @@
       "verdict": "N/A",
       "evidence": "Outside technical class's owned pedagogy sub-rules. This template's Completeness contract scopes check_pedagogy to items 16/22/23/36/37 (of which 16/22/23/36 are parked N/A this cycle) plus this file's established technical set {44, 56}; this rule is pedagogy-judge primary-ownership territory (its own instance: ae101--module--getting-going.pedagogy.json), not a platform-capability, citation, skill, prompt-mechanics, or URL-liveness property this class checks.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -947,7 +1183,9 @@
       "verdict": "N/A",
       "evidence": "Outside technical class's owned pedagogy sub-rules. This template's Completeness contract scopes check_pedagogy to items 16/22/23/36/37 (of which 16/22/23/36 are parked N/A this cycle) plus this file's established technical set {44, 56}; this rule is pedagogy-judge primary-ownership territory (its own instance: ae101--module--getting-going.pedagogy.json), not a platform-capability, citation, skill, prompt-mechanics, or URL-liveness property this class checks.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -956,7 +1194,9 @@
       "verdict": "N/A",
       "evidence": "Outside technical class's owned pedagogy sub-rules. This template's Completeness contract scopes check_pedagogy to items 16/22/23/36/37 (of which 16/22/23/36 are parked N/A this cycle) plus this file's established technical set {44, 56}; this rule is pedagogy-judge primary-ownership territory (its own instance: ae101--module--getting-going.pedagogy.json), not a platform-capability, citation, skill, prompt-mechanics, or URL-liveness property this class checks.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -965,7 +1205,9 @@
       "verdict": "N/A",
       "evidence": "Outside technical class's owned pedagogy sub-rules. This template's Completeness contract scopes check_pedagogy to items 16/22/23/36/37 (of which 16/22/23/36 are parked N/A this cycle) plus this file's established technical set {44, 56}; this rule is pedagogy-judge primary-ownership territory (its own instance: ae101--module--getting-going.pedagogy.json), not a platform-capability, citation, skill, prompt-mechanics, or URL-liveness property this class checks.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -974,7 +1216,9 @@
       "verdict": "N/A",
       "evidence": "Outside technical class's owned pedagogy sub-rules. This template's Completeness contract scopes check_pedagogy to items 16/22/23/36/37 (of which 16/22/23/36 are parked N/A this cycle) plus this file's established technical set {44, 56}; this rule is pedagogy-judge primary-ownership territory (its own instance: ae101--module--getting-going.pedagogy.json), not a platform-capability, citation, skill, prompt-mechanics, or URL-liveness property this class checks.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -983,7 +1227,9 @@
       "verdict": "N/A",
       "evidence": "Outside technical class's owned pedagogy sub-rules. This template's Completeness contract scopes check_pedagogy to items 16/22/23/36/37 (of which 16/22/23/36 are parked N/A this cycle) plus this file's established technical set {44, 56}; this rule is pedagogy-judge primary-ownership territory (its own instance: ae101--module--getting-going.pedagogy.json), not a platform-capability, citation, skill, prompt-mechanics, or URL-liveness property this class checks.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -992,7 +1238,9 @@
       "verdict": "N/A",
       "evidence": "Outside technical class's owned pedagogy sub-rules. This template's Completeness contract scopes check_pedagogy to items 16/22/23/36/37 (of which 16/22/23/36 are parked N/A this cycle) plus this file's established technical set {44, 56}; this rule is pedagogy-judge primary-ownership territory (its own instance: ae101--module--getting-going.pedagogy.json), not a platform-capability, citation, skill, prompt-mechanics, or URL-liveness property this class checks.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -1001,7 +1249,9 @@
       "verdict": "N/A",
       "evidence": "Outside technical class's owned pedagogy sub-rules. This template's Completeness contract scopes check_pedagogy to items 16/22/23/36/37 (of which 16/22/23/36 are parked N/A this cycle) plus this file's established technical set {44, 56}; this rule is pedagogy-judge primary-ownership territory (its own instance: ae101--module--getting-going.pedagogy.json), not a platform-capability, citation, skill, prompt-mechanics, or URL-liveness property this class checks.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -1010,7 +1260,9 @@
       "verdict": "N/A",
       "evidence": "Outside technical class's owned pedagogy sub-rules. This template's Completeness contract scopes check_pedagogy to items 16/22/23/36/37 (of which 16/22/23/36 are parked N/A this cycle) plus this file's established technical set {44, 56}; this rule is pedagogy-judge primary-ownership territory (its own instance: ae101--module--getting-going.pedagogy.json), not a platform-capability, citation, skill, prompt-mechanics, or URL-liveness property this class checks.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -1019,7 +1271,9 @@
       "verdict": "N/A",
       "evidence": "Outside technical class's owned pedagogy sub-rules. This template's Completeness contract scopes check_pedagogy to items 16/22/23/36/37 (of which 16/22/23/36 are parked N/A this cycle) plus this file's established technical set {44, 56}; this rule is pedagogy-judge primary-ownership territory (its own instance: ae101--module--getting-going.pedagogy.json), not a platform-capability, citation, skill, prompt-mechanics, or URL-liveness property this class checks.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -1028,7 +1282,9 @@
       "verdict": "N/A",
       "evidence": "Outside technical class's owned pedagogy sub-rules. This template's Completeness contract scopes check_pedagogy to items 16/22/23/36/37 (of which 16/22/23/36 are parked N/A this cycle) plus this file's established technical set {44, 56}; this rule is pedagogy-judge primary-ownership territory (its own instance: ae101--module--getting-going.pedagogy.json), not a platform-capability, citation, skill, prompt-mechanics, or URL-liveness property this class checks.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -1037,7 +1293,9 @@
       "verdict": "N/A",
       "evidence": "Outside technical class's owned pedagogy sub-rules. This template's Completeness contract scopes check_pedagogy to items 16/22/23/36/37 (of which 16/22/23/36 are parked N/A this cycle) plus this file's established technical set {44, 56}; this rule is pedagogy-judge primary-ownership territory (its own instance: ae101--module--getting-going.pedagogy.json), not a platform-capability, citation, skill, prompt-mechanics, or URL-liveness property this class checks.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -1046,7 +1304,9 @@
       "verdict": "N/A",
       "evidence": "Outside technical class's owned pedagogy sub-rules. This template's Completeness contract scopes check_pedagogy to items 16/22/23/36/37 (of which 16/22/23/36 are parked N/A this cycle) plus this file's established technical set {44, 56}; this rule is pedagogy-judge primary-ownership territory (its own instance: ae101--module--getting-going.pedagogy.json), not a platform-capability, citation, skill, prompt-mechanics, or URL-liveness property this class checks.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -1055,7 +1315,9 @@
       "verdict": "N/A",
       "evidence": "Outside technical class's owned pedagogy sub-rules. This template's Completeness contract scopes check_pedagogy to items 16/22/23/36/37 (of which 16/22/23/36 are parked N/A this cycle) plus this file's established technical set {44, 56}; this rule is pedagogy-judge primary-ownership territory (its own instance: ae101--module--getting-going.pedagogy.json), not a platform-capability, citation, skill, prompt-mechanics, or URL-liveness property this class checks.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -1064,7 +1326,9 @@
       "verdict": "N/A",
       "evidence": "Outside technical class's owned pedagogy sub-rules. This template's Completeness contract scopes check_pedagogy to items 16/22/23/36/37 (of which 16/22/23/36 are parked N/A this cycle) plus this file's established technical set {44, 56}; this rule is pedagogy-judge primary-ownership territory (its own instance: ae101--module--getting-going.pedagogy.json), not a platform-capability, citation, skill, prompt-mechanics, or URL-liveness property this class checks.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -1073,7 +1337,9 @@
       "verdict": "N/A",
       "evidence": "Outside technical class's owned pedagogy sub-rules. This template's Completeness contract scopes check_pedagogy to items 16/22/23/36/37 (of which 16/22/23/36 are parked N/A this cycle) plus this file's established technical set {44, 56}; this rule is pedagogy-judge primary-ownership territory (its own instance: ae101--module--getting-going.pedagogy.json), not a platform-capability, citation, skill, prompt-mechanics, or URL-liveness property this class checks.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -1082,7 +1348,9 @@
       "verdict": "N/A",
       "evidence": "Outside technical class's owned pedagogy sub-rules. This template's Completeness contract scopes check_pedagogy to items 16/22/23/36/37 (of which 16/22/23/36 are parked N/A this cycle) plus this file's established technical set {44, 56}; this rule is pedagogy-judge primary-ownership territory (its own instance: ae101--module--getting-going.pedagogy.json), not a platform-capability, citation, skill, prompt-mechanics, or URL-liveness property this class checks.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -1091,7 +1359,9 @@
       "verdict": "N/A",
       "evidence": "Outside technical class's owned pedagogy sub-rules. This template's Completeness contract scopes check_pedagogy to items 16/22/23/36/37 (of which 16/22/23/36 are parked N/A this cycle) plus this file's established technical set {44, 56}; this rule is pedagogy-judge primary-ownership territory (its own instance: ae101--module--getting-going.pedagogy.json), not a platform-capability, citation, skill, prompt-mechanics, or URL-liveness property this class checks.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -1100,7 +1370,9 @@
       "verdict": "N/A",
       "evidence": "Outside technical class's owned pedagogy sub-rules. This template's Completeness contract scopes check_pedagogy to items 16/22/23/36/37 (of which 16/22/23/36 are parked N/A this cycle) plus this file's established technical set {44, 56}; this rule is pedagogy-judge primary-ownership territory (its own instance: ae101--module--getting-going.pedagogy.json), not a platform-capability, citation, skill, prompt-mechanics, or URL-liveness property this class checks.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -1109,7 +1381,9 @@
       "verdict": "N/A",
       "evidence": "Outside technical class's owned pedagogy sub-rules. This template's Completeness contract scopes check_pedagogy to items 16/22/23/36/37 (of which 16/22/23/36 are parked N/A this cycle) plus this file's established technical set {44, 56}; this rule is pedagogy-judge primary-ownership territory (its own instance: ae101--module--getting-going.pedagogy.json), not a platform-capability, citation, skill, prompt-mechanics, or URL-liveness property this class checks.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -1118,7 +1392,9 @@
       "verdict": "N/A",
       "evidence": "Outside technical class's owned pedagogy sub-rules. This template's Completeness contract scopes check_pedagogy to items 16/22/23/36/37 (of which 16/22/23/36 are parked N/A this cycle) plus this file's established technical set {44, 56}; this rule is pedagogy-judge primary-ownership territory (its own instance: ae101--module--getting-going.pedagogy.json), not a platform-capability, citation, skill, prompt-mechanics, or URL-liveness property this class checks.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -1127,7 +1403,9 @@
       "verdict": "N/A",
       "evidence": "Outside technical class's owned pedagogy sub-rules. This template's Completeness contract scopes check_pedagogy to items 16/22/23/36/37 (of which 16/22/23/36 are parked N/A this cycle) plus this file's established technical set {44, 56}; this rule is pedagogy-judge primary-ownership territory (its own instance: ae101--module--getting-going.pedagogy.json), not a platform-capability, citation, skill, prompt-mechanics, or URL-liveness property this class checks.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -1136,7 +1414,9 @@
       "verdict": "N/A",
       "evidence": "Outside technical class's owned pedagogy sub-rules. This template's Completeness contract scopes check_pedagogy to items 16/22/23/36/37 (of which 16/22/23/36 are parked N/A this cycle) plus this file's established technical set {44, 56}; this rule is pedagogy-judge primary-ownership territory (its own instance: ae101--module--getting-going.pedagogy.json), not a platform-capability, citation, skill, prompt-mechanics, or URL-liveness property this class checks.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -1145,7 +1425,9 @@
       "verdict": "N/A",
       "evidence": "Outside technical class's owned pedagogy sub-rules. This template's Completeness contract scopes check_pedagogy to items 16/22/23/36/37 (of which 16/22/23/36 are parked N/A this cycle) plus this file's established technical set {44, 56}; this rule is pedagogy-judge primary-ownership territory (its own instance: ae101--module--getting-going.pedagogy.json), not a platform-capability, citation, skill, prompt-mechanics, or URL-liveness property this class checks.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -1154,7 +1436,9 @@
       "verdict": "N/A",
       "evidence": "Outside technical class's owned pedagogy sub-rules. This template's Completeness contract scopes check_pedagogy to items 16/22/23/36/37 (of which 16/22/23/36 are parked N/A this cycle) plus this file's established technical set {44, 56}; this rule is pedagogy-judge primary-ownership territory (its own instance: ae101--module--getting-going.pedagogy.json), not a platform-capability, citation, skill, prompt-mechanics, or URL-liveness property this class checks.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -1163,7 +1447,9 @@
       "verdict": "N/A",
       "evidence": "Outside technical class's owned pedagogy sub-rules. This template's Completeness contract scopes check_pedagogy to items 16/22/23/36/37 (of which 16/22/23/36 are parked N/A this cycle) plus this file's established technical set {44, 56}; this rule is pedagogy-judge primary-ownership territory (its own instance: ae101--module--getting-going.pedagogy.json), not a platform-capability, citation, skill, prompt-mechanics, or URL-liveness property this class checks.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -1172,7 +1458,9 @@
       "verdict": "N/A",
       "evidence": "Outside technical class's owned pedagogy sub-rules. This template's Completeness contract scopes check_pedagogy to items 16/22/23/36/37 (of which 16/22/23/36 are parked N/A this cycle) plus this file's established technical set {44, 56}; this rule is pedagogy-judge primary-ownership territory (its own instance: ae101--module--getting-going.pedagogy.json), not a platform-capability, citation, skill, prompt-mechanics, or URL-liveness property this class checks.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -1181,7 +1469,9 @@
       "verdict": "N/A",
       "evidence": "Outside technical class's owned pedagogy sub-rules. This template's Completeness contract scopes check_pedagogy to items 16/22/23/36/37 (of which 16/22/23/36 are parked N/A this cycle) plus this file's established technical set {44, 56}; this rule is pedagogy-judge primary-ownership territory (its own instance: ae101--module--getting-going.pedagogy.json), not a platform-capability, citation, skill, prompt-mechanics, or URL-liveness property this class checks.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -1190,25 +1480,9 @@
       "verdict": "N/A",
       "evidence": "Outside technical class's owned pedagogy sub-rules. This template's Completeness contract scopes check_pedagogy to items 16/22/23/36/37 (of which 16/22/23/36 are parked N/A this cycle) plus this file's established technical set {44, 56}; this rule is pedagogy-judge primary-ownership territory (its own instance: ae101--module--getting-going.pedagogy.json), not a platform-capability, citation, skill, prompt-mechanics, or URL-liveness property this class checks.",
       "fix_hint": "",
-      "blocking": false
-    },
-    {
-      "compendium": "check_pedagogy.md",
-      "rule_index": 37,
-      "rule_lead": "Context-loading tiers as staged progression.",
-      "verdict": "PASS",
-      "evidence": "This module doesn't lecture the abstract 3-tier framework (auto-load/lazy-load/explicit-load) at all — it only touches the auto-load tier's `./CLAUDE.local.md` surface, hands-on, through Ex4's compound exercise (Key Concepts line 61, artefact-contracts line 166). No abstract exposition of context-loading tiers appears in body prose; the anti-pattern (\"lecturing context economy without exposing surfaces\") has nothing to attach to here.",
-      "fix_hint": "",
-      "blocking": false
-    },
-    {
-      "compendium": "check_pedagogy.md",
-      "rule_index": 44,
-      "rule_lead": "Plug points + UX.",
-      "verdict": "PASS",
-      "evidence": "Plug points (maintainer block, lines 150-154) name integration commitments, not vague slots: student's own repo, the bug Claude surfaced, \"the team's ticket tracker (Linear / Jira / GitHub Issues)\" with Ex3 explicitly reverse-engineering that tracker's own vocabulary — each has body-level insertion (Ex3's tracker-convention prompt genuinely changes based on the org's tracker). UX walk-through: all 9 linked files (2 lectures + 4 exercises + 1 supplementary + 1 reference, checked live via file-existence test) resolve to real paths; no megaprompt (this file has zero prompt fences); no orphaned hand-off naming an uncreated artifact.",
-      "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -1217,7 +1491,9 @@
       "verdict": "N/A",
       "evidence": "This rule constrains the FIX-SHAPE this judge would propose for a blocking finding; the one finding this review raises (`check_platform_and_boundaries.md` §34) is explicitly non-blocking and its fix_hint already defaults to a body/structure edit (point one section at the other), not a new forcing-function prompt — consistent with this rule, but there is no blocking audit finding here for the rule to gate.",
       "fix_hint": "",
-      "blocking": false
+      "blocking": false,
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
+      "carried_shape": "188fc017d1e174ac"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -1227,7 +1503,7 @@
       "evidence": "File names no cloud/remote feature as a business-audience upgrade path; the one cloud-adjacent mention (Remote Routines, line 67) is an optional engineer-audience side quest with its own capability caveats in the maintainer block, not a claim this rule targets.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b0931d9f3ab811b984691c8e09d6df7def7e700b580859d5656b7d582fcc028d",
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
       "carried_shape": "188fc017d1e174ac"
     },
     {
@@ -1238,7 +1514,7 @@
       "evidence": "The optional-challenge routine mention (line 67) names no wake/catch-up behavior; the rule's specific fact isn't asserted here.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b0931d9f3ab811b984691c8e09d6df7def7e700b580859d5656b7d582fcc028d",
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
       "carried_shape": "188fc017d1e174ac"
     },
     {
@@ -1249,7 +1525,7 @@
       "evidence": "Applies to the compendium-authoring workflow, not this student-facing file's content.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b0931d9f3ab811b984691c8e09d6df7def7e700b580859d5656b7d582fcc028d",
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
       "carried_shape": "188fc017d1e174ac"
     },
     {
@@ -1260,7 +1536,7 @@
       "evidence": "Rule targets compendium/reference files, not curriculum body.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b0931d9f3ab811b984691c8e09d6df7def7e700b580859d5656b7d582fcc028d",
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
       "carried_shape": "188fc017d1e174ac"
     },
     {
@@ -1271,7 +1547,7 @@
       "evidence": "No slash-command/skill template-substitution mechanic described in this file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b0931d9f3ab811b984691c8e09d6df7def7e700b580859d5656b7d582fcc028d",
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
       "carried_shape": "188fc017d1e174ac"
     },
     {
@@ -1282,7 +1558,7 @@
       "evidence": "No defensive-recovery mechanic authored here.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b0931d9f3ab811b984691c8e09d6df7def7e700b580859d5656b7d582fcc028d",
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
       "carried_shape": "188fc017d1e174ac"
     },
     {
@@ -1293,7 +1569,7 @@
       "evidence": "No docs-vs-observation conflict present in this file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b0931d9f3ab811b984691c8e09d6df7def7e700b580859d5656b7d582fcc028d",
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
       "carried_shape": "188fc017d1e174ac"
     },
     {
@@ -1304,7 +1580,7 @@
       "evidence": "No tool-behavior-vs-expectation gap present.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b0931d9f3ab811b984691c8e09d6df7def7e700b580859d5656b7d582fcc028d",
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
       "carried_shape": "188fc017d1e174ac"
     },
     {
@@ -1315,7 +1591,7 @@
       "evidence": "No hook/env content in this file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b0931d9f3ab811b984691c8e09d6df7def7e700b580859d5656b7d582fcc028d",
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
       "carried_shape": "188fc017d1e174ac"
     },
     {
@@ -1326,7 +1602,7 @@
       "evidence": "No transcript-selection mechanic described.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b0931d9f3ab811b984691c8e09d6df7def7e700b580859d5656b7d582fcc028d",
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
       "carried_shape": "188fc017d1e174ac"
     },
     {
@@ -1337,7 +1613,7 @@
       "evidence": "Rule scopes compendium/CLAUDE.md/SKILL.md pointer bloat; this is a student module page, not a memory-authoring surface.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b0931d9f3ab811b984691c8e09d6df7def7e700b580859d5656b7d582fcc028d",
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
       "carried_shape": "188fc017d1e174ac"
     },
     {
@@ -1348,7 +1624,7 @@
       "evidence": "Tooling-internal rule, not a claim this file makes.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b0931d9f3ab811b984691c8e09d6df7def7e700b580859d5656b7d582fcc028d",
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
       "carried_shape": "188fc017d1e174ac"
     },
     {
@@ -1359,7 +1635,7 @@
       "evidence": "No non-default runtime (sync folder, container, network share) referenced.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b0931d9f3ab811b984691c8e09d6df7def7e700b580859d5656b7d582fcc028d",
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
       "carried_shape": "188fc017d1e174ac"
     },
     {
@@ -1370,7 +1646,7 @@
       "evidence": "No mid-session recovery scenario described.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b0931d9f3ab811b984691c8e09d6df7def7e700b580859d5656b7d582fcc028d",
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
       "carried_shape": "188fc017d1e174ac"
     },
     {
@@ -1381,7 +1657,7 @@
       "evidence": "No F-Secure content referenced.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b0931d9f3ab811b984691c8e09d6df7def7e700b580859d5656b7d582fcc028d",
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
       "carried_shape": "188fc017d1e174ac"
     },
     {
@@ -1392,7 +1668,7 @@
       "evidence": "No infra (MCP server, DB, knowledge graph) proposed.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b0931d9f3ab811b984691c8e09d6df7def7e700b580859d5656b7d582fcc028d",
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
       "carried_shape": "188fc017d1e174ac"
     },
     {
@@ -1403,7 +1679,7 @@
       "evidence": "No destructive operation described.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b0931d9f3ab811b984691c8e09d6df7def7e700b580859d5656b7d582fcc028d",
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
       "carried_shape": "188fc017d1e174ac"
     },
     {
@@ -1414,7 +1690,7 @@
       "evidence": "No cross-repo private-content (`bosser-strategy:` etc.) link in this file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b0931d9f3ab811b984691c8e09d6df7def7e700b580859d5656b7d582fcc028d",
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
       "carried_shape": "188fc017d1e174ac"
     },
     {
@@ -1425,7 +1701,7 @@
       "evidence": "No workbook-rebuild instruction in this file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b0931d9f3ab811b984691c8e09d6df7def7e700b580859d5656b7d582fcc028d",
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
       "carried_shape": "188fc017d1e174ac"
     },
     {
@@ -1436,7 +1712,7 @@
       "evidence": "This is a tracked source file that ships (`git ls-files` includes it), not a gitignored build target. This judge re-measured (not trusted) the one carried-forward §34 finding — see staleness_sweep.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b0931d9f3ab811b984691c8e09d6df7def7e700b580859d5656b7d582fcc028d",
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
       "carried_shape": "188fc017d1e174ac"
     },
     {
@@ -1447,7 +1723,7 @@
       "evidence": "No new audit/retro directory proposed.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b0931d9f3ab811b984691c8e09d6df7def7e700b580859d5656b7d582fcc028d",
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
       "carried_shape": "188fc017d1e174ac"
     },
     {
@@ -1458,7 +1734,7 @@
       "evidence": "This student-facing module file neither declares canon nor is an orphan candidate — it is canonically listed in `curriculum/CLAUDE.md` § Directory / the TRAININGS registry. The removed lecture link ('How this training was built') points at content that no longer exists as a distinct lecture file (only a stale cross-reference in `curriculum/evals/eval-coverage.ae101.md` remains, outside this file); its removal here leaves nothing dangling in this file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b0931d9f3ab811b984691c8e09d6df7def7e700b580859d5656b7d582fcc028d",
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
       "carried_shape": "188fc017d1e174ac"
     },
     {
@@ -1469,7 +1745,7 @@
       "evidence": "Process rule about session cadence, not a content claim in this file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b0931d9f3ab811b984691c8e09d6df7def7e700b580859d5656b7d582fcc028d",
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
       "carried_shape": "188fc017d1e174ac"
     },
     {
@@ -1480,7 +1756,7 @@
       "evidence": "Tooling-internal rule, not this student page.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b0931d9f3ab811b984691c8e09d6df7def7e700b580859d5656b7d582fcc028d",
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
       "carried_shape": "188fc017d1e174ac"
     },
     {
@@ -1491,7 +1767,7 @@
       "evidence": "Tooling-internal rule.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b0931d9f3ab811b984691c8e09d6df7def7e700b580859d5656b7d582fcc028d",
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
       "carried_shape": "188fc017d1e174ac"
     },
     {
@@ -1502,7 +1778,7 @@
       "evidence": "Tooling-internal rule.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b0931d9f3ab811b984691c8e09d6df7def7e700b580859d5656b7d582fcc028d",
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
       "carried_shape": "188fc017d1e174ac"
     },
     {
@@ -1513,7 +1789,7 @@
       "evidence": "No file-number-addressed runner referenced.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b0931d9f3ab811b984691c8e09d6df7def7e700b580859d5656b7d582fcc028d",
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
       "carried_shape": "188fc017d1e174ac"
     },
     {
@@ -1524,7 +1800,7 @@
       "evidence": "Tooling-internal rule; the scripts this judge ran this session (`source-freshness.sh`, `curl`) exited/returned as reported and were honored literally — `source-freshness.sh` exit 0, 0 block, read as-is.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b0931d9f3ab811b984691c8e09d6df7def7e700b580859d5656b7d582fcc028d",
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
       "carried_shape": "188fc017d1e174ac"
     },
     {
@@ -1535,7 +1811,7 @@
       "evidence": "Tooling-internal rule about the eval system, not this file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b0931d9f3ab811b984691c8e09d6df7def7e700b580859d5656b7d582fcc028d",
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
       "carried_shape": "188fc017d1e174ac"
     },
     {
@@ -1546,7 +1822,7 @@
       "evidence": "Tooling-internal rule.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b0931d9f3ab811b984691c8e09d6df7def7e700b580859d5656b7d582fcc028d",
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
       "carried_shape": "188fc017d1e174ac"
     },
     {
@@ -1557,7 +1833,7 @@
       "evidence": "No Cowork-specific mechanic described in this CLI/Desktop-only training module.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b0931d9f3ab811b984691c8e09d6df7def7e700b580859d5656b7d582fcc028d",
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
       "carried_shape": "188fc017d1e174ac"
     },
     {
@@ -1568,7 +1844,7 @@
       "evidence": "No deliberate-antipattern content in this file needing acceptance-override treatment; this judge's own instance carries no maintainer_acceptance field.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b0931d9f3ab811b984691c8e09d6df7def7e700b580859d5656b7d582fcc028d",
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
       "carried_shape": "188fc017d1e174ac"
     },
     {
@@ -1579,7 +1855,7 @@
       "evidence": "Out of scope for a verdict-only judge per this template's own instruction; the orchestrator stamps via update-quality.sh after this verdict returns.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b0931d9f3ab811b984691c8e09d6df7def7e700b580859d5656b7d582fcc028d",
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
       "carried_shape": "188fc017d1e174ac"
     },
     {
@@ -1590,7 +1866,7 @@
       "evidence": "No Cowork mechanic described.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b0931d9f3ab811b984691c8e09d6df7def7e700b580859d5656b7d582fcc028d",
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
       "carried_shape": "188fc017d1e174ac"
     },
     {
@@ -1601,7 +1877,7 @@
       "evidence": "Auditor-workflow rule; not a claim this file makes.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b0931d9f3ab811b984691c8e09d6df7def7e700b580859d5656b7d582fcc028d",
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
       "carried_shape": "188fc017d1e174ac"
     },
     {
@@ -1612,7 +1888,7 @@
       "evidence": "This module file carries no fenced prompt of its own (`has_prompt_blocks: false`, `fence_ranges: []` per body-view); it links out to exercises.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b0931d9f3ab811b984691c8e09d6df7def7e700b580859d5656b7d582fcc028d",
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
       "carried_shape": "188fc017d1e174ac"
     },
     {
@@ -1623,7 +1899,7 @@
       "evidence": "No strategy-doc citation made in this review; no REVISE-citing-doc finding to route.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b0931d9f3ab811b984691c8e09d6df7def7e700b580859d5656b7d582fcc028d",
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
       "carried_shape": "188fc017d1e174ac"
     },
     {
@@ -1634,7 +1910,7 @@
       "evidence": "No fenced prompt with shell syntax present in this module file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b0931d9f3ab811b984691c8e09d6df7def7e700b580859d5656b7d582fcc028d",
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
       "carried_shape": "188fc017d1e174ac"
     },
     {
@@ -1645,7 +1921,7 @@
       "evidence": "No skill authored or referenced by name; `grep -n '\\[Skill' getting-going.md` returns no matches.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b0931d9f3ab811b984691c8e09d6df7def7e700b580859d5656b7d582fcc028d",
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
       "carried_shape": "188fc017d1e174ac"
     },
     {
@@ -1656,7 +1932,7 @@
       "evidence": "No hand-off-coordinate mechanic in this file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b0931d9f3ab811b984691c8e09d6df7def7e700b580859d5656b7d582fcc028d",
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
       "carried_shape": "188fc017d1e174ac"
     },
     {
@@ -1667,7 +1943,7 @@
       "evidence": "Tooling-internal rule.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b0931d9f3ab811b984691c8e09d6df7def7e700b580859d5656b7d582fcc028d",
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
       "carried_shape": "188fc017d1e174ac"
     },
     {
@@ -1678,7 +1954,7 @@
       "evidence": "Tooling-internal rule.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b0931d9f3ab811b984691c8e09d6df7def7e700b580859d5656b7d582fcc028d",
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
       "carried_shape": "188fc017d1e174ac"
     },
     {
@@ -1689,7 +1965,7 @@
       "evidence": "Tooling-internal; this judge does not invoke update-quality.sh.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b0931d9f3ab811b984691c8e09d6df7def7e700b580859d5656b7d582fcc028d",
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
       "carried_shape": "188fc017d1e174ac"
     },
     {
@@ -1700,7 +1976,7 @@
       "evidence": "Tooling-internal rule about instance/persona hashing; this judge's own `body_sha` was computed live via `shasum -a 256`, not fabricated.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b0931d9f3ab811b984691c8e09d6df7def7e700b580859d5656b7d582fcc028d",
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
       "carried_shape": "188fc017d1e174ac"
     },
     {
@@ -1711,7 +1987,7 @@
       "evidence": "Tooling-internal rule about judge dispatch discipline; this judge's own evidence contract is what §39/the dispatch preamble require, satisfied throughout this instance.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b0931d9f3ab811b984691c8e09d6df7def7e700b580859d5656b7d582fcc028d",
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
       "carried_shape": "188fc017d1e174ac"
     },
     {
@@ -1722,7 +1998,7 @@
       "evidence": "Tooling-internal hook-design rule; no hook authored or discussed in this file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b0931d9f3ab811b984691c8e09d6df7def7e700b580859d5656b7d582fcc028d",
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
       "carried_shape": "188fc017d1e174ac"
     },
     {
@@ -1733,7 +2009,7 @@
       "evidence": "No harness-side cache (state.json, hook queue) referenced in this file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b0931d9f3ab811b984691c8e09d6df7def7e700b580859d5656b7d582fcc028d",
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
       "carried_shape": "188fc017d1e174ac"
     },
     {
@@ -1744,7 +2020,7 @@
       "evidence": "This diff removes one lecture link ('How this training was built') from the module's Start-here list; the target is not a live pedagogical mechanism this file relies on downstream, and no other line in this file references it.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b0931d9f3ab811b984691c8e09d6df7def7e700b580859d5656b7d582fcc028d",
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
       "carried_shape": "188fc017d1e174ac"
     },
     {
@@ -1755,7 +2031,7 @@
       "evidence": "No hook authored or discussed in this file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b0931d9f3ab811b984691c8e09d6df7def7e700b580859d5656b7d582fcc028d",
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
       "carried_shape": "188fc017d1e174ac"
     },
     {
@@ -1766,7 +2042,7 @@
       "evidence": "No staleness-by-date sweep performed on a deleted-file set in this review; this file exists and is tracked (`git status --short` on it returns empty, confirming clean/tracked).",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b0931d9f3ab811b984691c8e09d6df7def7e700b580859d5656b7d582fcc028d",
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
       "carried_shape": "188fc017d1e174ac"
     },
     {
@@ -1777,7 +2053,7 @@
       "evidence": "Tooling-internal rule about audit-eval-coverage.js's parser, not a claim in this file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b0931d9f3ab811b984691c8e09d6df7def7e700b580859d5656b7d582fcc028d",
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
       "carried_shape": "188fc017d1e174ac"
     },
     {
@@ -1788,7 +2064,7 @@
       "evidence": "No convergence-count claim ('N practitioners', 'Level 3') made anywhere in this file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b0931d9f3ab811b984691c8e09d6df7def7e700b580859d5656b7d582fcc028d",
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
       "carried_shape": "188fc017d1e174ac"
     },
     {
@@ -1799,7 +2075,7 @@
       "evidence": "No post-OODA design-prescription language present; this is a shipped module page.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b0931d9f3ab811b984691c8e09d6df7def7e700b580859d5656b7d582fcc028d",
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
       "carried_shape": "188fc017d1e174ac"
     },
     {
@@ -1810,7 +2086,7 @@
       "evidence": "No strategy-doc fold-in performed by this file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b0931d9f3ab811b984691c8e09d6df7def7e700b580859d5656b7d582fcc028d",
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
       "carried_shape": "188fc017d1e174ac"
     },
     {
@@ -1821,7 +2097,7 @@
       "evidence": "Process rule for the author at generation time, not a checkable property of the shipped file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b0931d9f3ab811b984691c8e09d6df7def7e700b580859d5656b7d582fcc028d",
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
       "carried_shape": "188fc017d1e174ac"
     },
     {
@@ -1832,7 +2108,7 @@
       "evidence": "Process rule for the author at generation time, not a checkable property of the shipped file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b0931d9f3ab811b984691c8e09d6df7def7e700b580859d5656b7d582fcc028d",
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
       "carried_shape": "188fc017d1e174ac"
     },
     {
@@ -1843,7 +2119,7 @@
       "evidence": "No adoption/productivity percentage or study-within-study claim appears anywhere in this file, so neither the parent rule nor 12a's nested-axis re-fire has anything to check.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b0931d9f3ab811b984691c8e09d6df7def7e700b580859d5656b7d582fcc028d",
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
       "carried_shape": "188fc017d1e174ac"
     },
     {
@@ -1854,7 +2130,7 @@
       "evidence": "No absence-of-evidence conclusion drawn anywhere in this file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b0931d9f3ab811b984691c8e09d6df7def7e700b580859d5656b7d582fcc028d",
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
       "carried_shape": "188fc017d1e174ac"
     },
     {
@@ -1865,7 +2141,7 @@
       "evidence": "No word-presence/vocabulary-hunt claim made in this file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b0931d9f3ab811b984691c8e09d6df7def7e700b580859d5656b7d582fcc028d",
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
       "carried_shape": "188fc017d1e174ac"
     },
     {
@@ -1876,7 +2152,7 @@
       "evidence": "No structural-match research candidate evaluated in this file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b0931d9f3ab811b984691c8e09d6df7def7e700b580859d5656b7d582fcc028d",
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
       "carried_shape": "188fc017d1e174ac"
     },
     {
@@ -1887,7 +2163,7 @@
       "evidence": "This module-index file has no fenced exercise prompts of its own (`has_prompt_blocks: false`); prompts live in the linked exercise files, out of this file's scope.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b0931d9f3ab811b984691c8e09d6df7def7e700b580859d5656b7d582fcc028d",
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
       "carried_shape": "188fc017d1e174ac"
     },
     {
@@ -1898,7 +2174,7 @@
       "evidence": "This rule targets compendium/memory-entry authoring, not a claim this student-facing module file makes.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b0931d9f3ab811b984691c8e09d6df7def7e700b580859d5656b7d582fcc028d",
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
       "carried_shape": "188fc017d1e174ac"
     },
     {
@@ -1909,7 +2185,7 @@
       "evidence": "The Push-back moves section is trainer-delivered classroom content owned by the story/pedagogy classes; the technical angle of this rule (re-verify vs re-confirm at generation time) isn't a property a static student-facing file exhibits.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b0931d9f3ab811b984691c8e09d6df7def7e700b580859d5656b7d582fcc028d",
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
       "carried_shape": "188fc017d1e174ac"
     },
     {
@@ -1920,7 +2196,7 @@
       "evidence": "No verification machinery (hook, judge, gating skill) is built or referenced by this module file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b0931d9f3ab811b984691c8e09d6df7def7e700b580859d5656b7d582fcc028d",
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
       "carried_shape": "188fc017d1e174ac"
     },
     {
@@ -1931,7 +2207,7 @@
       "evidence": "`grep -n '\\*\\*Session\\*\\*\\|{{prompt:'` against the raw file returns no match — this module-index file carries no Session widget and no undischarged `{{prompt:}}` fence.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b0931d9f3ab811b984691c8e09d6df7def7e700b580859d5656b7d582fcc028d",
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
       "carried_shape": "188fc017d1e174ac"
     },
     {
@@ -1942,130 +2218,10 @@
       "evidence": "No skill/framework/tool-change surgery is proposed anywhere in this file's content.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "b0931d9f3ab811b984691c8e09d6df7def7e700b580859d5656b7d582fcc028d",
+      "carried_from": "1a95711244923ff5e490bbfdc45005f8d76e30094661d9b17b9c867a8c814c85",
       "carried_shape": "188fc017d1e174ac"
     }
   ],
-  "platform_claims_checked": [
-    {
-      "claim": "Run Module 1 on `high` thinking effort (the training default).",
-      "line": 3,
-      "verdict": "PASS",
-      "source": "compendium"
-    },
-    {
-      "claim": "`/context` shows what landed in the window ... ccstatusline, or ask Claude to set up the built-in status line.",
-      "line": 58,
-      "verdict": "PASS",
-      "source": "compendium"
-    },
-    {
-      "claim": "Use `/loop` to babysit one PR until its checks pass and its review threads are quiet.",
-      "line": 69,
-      "verdict": "PASS",
-      "source": "maintainer-stamp"
-    },
-    {
-      "claim": "Create a morning routine that triages new Jira issues, investigates likely root causes, and leaves an evidence trail.",
-      "line": 70,
-      "verdict": "PASS",
-      "source": "maintainer-stamp"
-    },
-    {
-      "claim": "Every future session in this repo (auto-loads at session-cold start) [artefact contracts, `./CLAUDE.local.md`]",
-      "line": 166,
-      "verdict": "PASS",
-      "source": "compendium"
-    }
-  ],
-  "citations_checked": [
-    {
-      "line": 12,
-      "claim": "Simon Willison, Vibe engineering — optional pre-read pointer",
-      "label_present": true,
-      "url_present": true,
-      "url_alive": true,
-      "evidence_level_honest": true
-    },
-    {
-      "line": 69,
-      "claim": "/loop scheduled-tasks docs (optional challenge)",
-      "label_present": true,
-      "url_present": true,
-      "url_alive": true,
-      "evidence_level_honest": true
-    },
-    {
-      "line": 70,
-      "claim": "Cloud routines docs (optional challenge)",
-      "label_present": true,
-      "url_present": true,
-      "url_alive": true,
-      "evidence_level_honest": true
-    },
-    {
-      "line": 81,
-      "claim": "Dex Horthy, Why Software Factories Fail (HumanLayer)",
-      "label_present": true,
-      "url_present": true,
-      "url_alive": true,
-      "evidence_level_honest": true
-    },
-    {
-      "line": 83,
-      "claim": "Boris Cherny, Mastering Claude Code in 30 minutes",
-      "label_present": true,
-      "url_present": true,
-      "url_alive": null,
-      "evidence_level_honest": true
-    },
-    {
-      "line": 85,
-      "claim": "Cherny on parallel worktrees — cross-reference to multi-session-git.md, no inline URL of its own",
-      "label_present": false,
-      "url_present": false,
-      "url_alive": null,
-      "evidence_level_honest": true
-    },
-    {
-      "line": 187,
-      "claim": "Kieran Klaassen, Compound Engineering: The Definitive Guide",
-      "label_present": true,
-      "url_present": true,
-      "url_alive": true,
-      "evidence_level_honest": true
-    }
-  ],
-  "skills_referenced": [],
-  "urls_sampled": [
-    {
-      "url": "https://simonwillison.net/2025/Oct/7/vibe-engineering/",
-      "alive": true,
-      "status_code": 200
-    },
-    {
-      "url": "https://code.claude.com/docs/en/scheduled-tasks",
-      "alive": true,
-      "status_code": 200
-    },
-    {
-      "url": "https://code.claude.com/docs/en/routines",
-      "alive": true,
-      "status_code": 200
-    },
-    {
-      "url": "https://github.com/humanlayer/advanced-context-engineering-for-coding-agents/blob/main/wsff.md",
-      "alive": true,
-      "status_code": 200
-    },
-    {
-      "url": "https://every.to/source-code/compound-engineering-the-definitive-guide",
-      "alive": true,
-      "status_code": 200
-    }
-  ],
-  "blocking_findings_count": 0,
   "todos_count": 1,
-  "notes": "Full 134-row completeness pass against the current class brief (shape_hash 188fc017d1e174ac), not a diff-region re-fire. check_prompts.md (48 rules) is N/A wholesale — this module-index file has zero fenced prompt content of its own. check_pedagogy.md's 61 unresolved-by-shape rows split into 58 outside this class's owned sub-rule set (16/22/23/36/37 base list, plus this file's established technical set {44,56}) and 3 evaluated directly (37 PASS, 44 PASS, 56 N/A — no blocking finding to gate). One non-blocking finding carries forward, re-measured rather than trusted: check_platform_and_boundaries.md §34 — the 'Push-back moves' list and the check_pedagogy §47 per-phase table still duplicate trainer-push wording verbatim for 9 of 10 overlapping phases (re-confirmed live at current line numbers 138 vs 175). The training-wide picture has moved since the last technical pass, though: 2 of the 5 AE101 files that used to carry this bare duplication (plan-mode-done-right.md, learn-from-the-test.md) have since adopted a dedup-or-acknowledge fix; getting-going.md, earn-the-trust.md, and run-the-first-experiment.md have not. Still non-urgent per §34(b)'s currently-agreeing carve-out, and a precedent now exists in-corpus for fixing it cheaply.",
-  "shape_hash": "188fc017d1e174ac"
+  "blocking_findings_count": 0
 }

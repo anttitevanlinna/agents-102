@@ -1,9 +1,10 @@
 {
   "class": "story",
-  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/supplementary/workflow-composition-lineages.md",
-  "body_sha": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
-  "verdict": "PASS",
   "training": "ae101",
+  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/supplementary/workflow-composition-lineages.md",
+  "verdict": "PASS",
+  "body_sha": "fab735ef52c4975582d352520d7956fd3bc53383584e6c943c618d70dc76cbde",
+  "shape_hash": "1a75c7b77bffff49",
   "module_mood_contract": "practitioner fluency — 'I know how to test, I know how to learn, I know how to encode'; competence-as-posture; field-mapping that supports 'I know how to learn' without resolving the field's debate",
   "trace_status": "regenerated",
   "rules_evaluated": [
@@ -12,7 +13,7 @@
       "rule_index": 4,
       "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
       "verdict": "PASS",
-      "evidence": "All nine `##` headers re-walked cold this session (lines 5, 15, 26, 40, 54, 71, 91, 104, 135): each names a practitioner plus a concept or shape ('Compound Engineering, Kieran Klaassen'; 'Single writer with advisor agents, Walden Yan and Cognition'; 'Counter-position, Armin Ronacher') — none is an empty container, none is orphan mystery, no two share text. Truth clause holds against the current body: the Pocock header doesn't claim the 'composition by invocation' label as Pocock's own — line 34 says explicitly it's the curriculum's; the Cherny header says 'without a published framework', matching line 85's 'the unification is in the reader's head, not in his published artefacts'. This pass's one diff (line 137, 'Three filters' → 'Filters that work better than ranking:') doesn't touch a `##` header at all — it's body prose inside the 'How to pick what to study' section, which is unchanged by this rule's scope. No violation.",
+      "evidence": "All nine `##` headers re-walked cold against the current body (lines 5, 15, 26, 40, 54, 71, 91, 104, 135), unchanged by the diff since pin 0cea7581: each names a practitioner plus a concept or shape ('Compound Engineering, Kieran Klaassen'; 'Single writer with advisor agents, Walden Yan and Cognition'; 'Counter-position, Armin Ronacher') — none is an empty container, none is orphan mystery, no two share text. Truth clause holds against current body content: the Pocock header doesn't claim 'composition by invocation' as Pocock's own (line 34 says explicitly it's the curriculum's, now with the router quote re-attributed to 'The repo's README describes'); the Cherny header says 'without a published framework', matching line 85. The diff since pin (Pocock skill renames to-spec/to-tickets/writing-for-agents, delivery-mode maintainer-line correction, citation-stamp refreshes) touches no `##` header.",
       "fix_hint": null,
       "blocking": false
     },
@@ -21,7 +22,7 @@
       "rule_index": 5,
       "rule_lead": "A slide's BODY is size-bounded, not just its header (§4's sibling).",
       "verdict": "PASS",
-      "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/supplementary/workflow-composition-lineages.md --report` fresh this session → 9 slides, 7 over the 210-word default ceiling (Dino 609w, Amp 362w, Cherny 336w, Pocock 284w, Ronacher 261w, Klaassen 251w, How-to-pick 226w — one word lighter than the prior pass's 227w, consistent with this pass dropping one word, 'Three'), gate summary line reads 'oversized: 0'. The maintainer block (lines 149-157) carries exactly seven `**Slide size accepted:**` lines and each heading text is an exact character match against its live `##` heading — the script's own `acceptedSlides()` regex only suppresses on exact-text match, and the 0-oversized result proves all seven matched. This pass's only body edit (dropping 'Three' from the How-to-pick intro) is net word-count-negative inside an already-accepted section; it creates no eighth oversized slide.",
+      "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/supplementary/workflow-composition-lineages.md --report` fresh this session → 9 slides, gate summary 'oversized: 0'. Seven sections sit over the 210-word default (Dino 608w, Amp 362w, Cherny 336w, Pocock 287w, Ronacher 261w, Klaassen 251w, How-to-pick 226w — Pocock moved 284→287w from the skill-rename diff, all others unchanged), each with an exact-text-matching `**Slide size accepted:**` line in the maintainer block (lines 149-157, unchanged by this diff). The 0-oversized result proves all seven still match.",
       "fix_hint": null,
       "blocking": false
     },
@@ -30,7 +31,7 @@
       "rule_index": 27,
       "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room outside text.",
       "verdict": "PASS",
-      "evidence": "Grepped the full body for authored-conversation tells this session: `grep -inE \"discuss with|share with|tell the room|compare with the person|neighbor|neighbour|pair up|turn to your|talk to your|the room harvests\"` → 0 matches (exit 1). The file is self-study reading material throughout (Delivery-mode line, unchanged: 'Linked from M6's composing-the-workflow.md lecture. Optional reading after M6 closes, or pre-read between M6 and post-cohort follow-up') — every sentence is field-content prose (what a practitioner published, what it means for the reader's own kit), none is cohort-management prose. The body-view's `group_beat_markers: true` signal is a false positive on this file: re-grepped its own trigger pattern (`group|team|room|together|shared record|adjudicat`) against the raw file and every hit is either ordinary work-context prose ('If your team is wrestling with parallel-writer chaos', line 139/141; 'design principles that hold it together', line 106/157) or a maintainer-block delivery-mode annotation ('not in-room', line 161) below the `<!-- maintainer -->` fence — zero hits inside the actual body region for any conversation-cue or room-management shape. Unchanged by this pass's one-word diff.",
+      "evidence": "Fresh grep this session against the current body: `grep -inE \"discuss with|share with|tell the room|compare with the person|neighbor|neighbour|pair up|turn to your|talk to your|the room harvests\"` → 0 matches (exit 1). File is self-study reading material throughout — every sentence is field-content prose (what a practitioner published, what it means for the reader's kit), none is cohort-management prose. The diff since pin touches only citation detail and a maintainer-region delivery note; no body-region conversation cue anywhere.",
       "fix_hint": null,
       "blocking": false
     },
@@ -39,7 +40,7 @@
       "rule_index": 1,
       "rule_lead": "Mood contract named.",
       "verdict": "PASS",
-      "evidence": "Regenerated sim trace this session (content_sha now 3cc5c557…, matching current body): phase-1 mood_score=8, close.mood_score=8 — both meet the 8+/10 teaching-beat floor. This is a TEACHING beat (the field-mapping walk IS the pedagogical move), so the floor applies, not the setup-exemption. Pulled `content-strategy-agentic-engineering-101.md` line 475 via the bosser-strategy skill fresh this session: M6's mood is named 'practitioner fluency' — \"I know how to test, I know how to learn, I know how to encode\" — matching the trace's `module_mood_contract` field verbatim. This pass's only body change (dropping 'Three' from the How-to-pick intro, line 137) is copy-tightening with no register shift: the trace's mood_note attributes the score to the same honest-cartography register as the prior pass. Harm the rule guards against (resolved-too-early or flattened mood) is absent.",
+      "evidence": "Trace regenerated this session (content_sha now d96fe5d5…, matching current body): phase-1 mood_score=8, close.mood_score=8, both meeting the 8+/10 teaching-beat floor (this is a TEACHING beat — the field-mapping walk IS the pedagogical move). Pulled `content-strategy-agentic-engineering-101.md` line 460 fresh this session: M6's mood is 'practitioner fluency — \"I know how to test, I know how to learn, I know how to encode\"' — matches the trace's `module_mood_contract` verbatim. The diff since pin (skill renames, a citation-attribution clarity fix, freshness-stamp dates, and a maintainer-region delivery-mode correction the student never reads) is accuracy-only with no register shift.",
       "fix_hint": null,
       "blocking": true
     },
@@ -48,7 +49,7 @@
       "rule_index": 2,
       "rule_lead": "Epistemic mood ≠ punitive mood.",
       "verdict": "PASS",
-      "evidence": "Lines 3, 9-13 (the scope note: 'The map is partial... almost certainly other named frameworks this walk never reached') and line 145's close ('the curation is partial by design') frame the field's incompleteness as not-yet-known, never as reader error. Independently re-grepped the full body for shame-register language ('you failed', 'mistake', 'wrong of you', 'shame') → 0 hits. This pass's one diff (line 137) is a numeral drop with no register content at all. Harm absent.",
+      "evidence": "Lines 3, 9-13 and line 145's close frame the field's incompleteness as not-yet-known, never as reader error ('almost certainly other named frameworks this walk never reached'; 'the curation is partial by design'). Fresh grep for shame-register language ('you failed', 'mistake', 'wrong of you', 'shame') → 0 hits. Diff since pin carries no register content.",
       "fix_hint": null,
       "blocking": false
     },
@@ -57,7 +58,7 @@
       "rule_index": 3,
       "rule_lead": "Lead with discipline, not failure mode.",
       "verdict": "PASS",
-      "evidence": "All nine `##` headers unchanged by this diff, all practitioner-plus-positive-shape ('Compound Engineering, Kieran Klaassen' line 15; 'Feedback-loopable methodology and shipped primitives, Sourcegraph Amp' line 54). 'Counter-position, Armin Ronacher' (line 91) is a stance name, not a shame word — carve-out territory even if it were read as failure-adjacent, which it isn't. The M6 mood name itself, 'practitioner fluency' (strategy doc line 475, re-pulled this session), is a positive discipline, and this walk's own close ('Filters that work better than ranking', line 137) names a constructive frame (picking what resembles your work) rather than a failure mode.",
+      "evidence": "All nine `##` headers unchanged by this diff, all practitioner-plus-positive-shape ('Compound Engineering, Kieran Klaassen' line 15; 'Feedback-loopable methodology and shipped primitives, Sourcegraph Amp' line 54). 'Counter-position, Armin Ronacher' (line 91) is a stance name, not a shame word — carve-out territory even read literally. M6's mood name itself ('practitioner fluency') is a positive discipline.",
       "fix_hint": null,
       "blocking": false
     },
@@ -66,7 +67,7 @@
       "rule_index": 4,
       "rule_lead": "Strategy-fidelity check.",
       "verdict": "PASS",
-      "evidence": "Pulled `content-strategy-agentic-engineering-101.md` line 787 fresh this session via the bosser-strategy skill: 'workflow-composition-lineages.md walks seven practitioner lineages on how workflows compose — Cognition's 2025→2026 reversal, Amp's retired Handoff primitive, Every's compound loop, Dino's /ship stack — and refuses to rank them. Its thesis is that the field is unsettled and a vendor's docs can disagree with its shipped behaviour in public for a quarter.' — matches the current body's own structure and Stance block (lines 206-210) exactly, unchanged by this pass. Consolidated check per story.md template (front-run / module-to-module arc / Big Idea fidelity / mood-doesn't-resolve-early): no front-run — the strategy doc (line 262, 483) places this file's mood ('practitioner fluency') as the CLOSE of the M1-M6 core arc, with M7/M8 marked optional-when-appetite, so there is no downstream teaching moment in scope for this supplementary to steal. The file's own Delivery-mode line (unchanged) confirms optional post-M6 placement. This pass's one diff (line 137, 'Three filters' → 'Filters') is a copy-tightening edit inside the closing section; it touches no sequencing claim, no Big Idea framing, and no module-to-module hand-off language.",
+      "evidence": "Pulled `content-strategy-agentic-engineering-101.md` fresh this session: line 773 ('workflow-composition-lineages.md walks seven practitioner lineages... refuses to rank them... thesis is that the field is unsettled') matches current body structure and Stance block (lines 206-210) exactly; line 468 confirms 'M6 is the real last module... no forward tee' — this supplementary is optional post-M6 reading with no downstream module in scope to front-run, consistent with its own Delivery-mode line. Verified the one substantive change since pin 0cea7581 that touches placement: the maintainer-region Delivery-mode line changed from 'Linked from M6's composing-the-workflow.md lecture' to 'In the training index, not linked from the M6 deck.' Cross-checked `curriculum/lectures/composing-the-workflow.md` line 57 fresh this session: its own maintainer note says the two supplementaries 'sit in the training index and are not linked from the deck' — the file's new line now matches the lecture's own record verbatim; the old line was the stale one. No doc-vs-body conflict: the strategy doc (grepped fresh, lines 396/434/464/773/891) never asserts a specific link mechanism for this file, so §8's split test isn't implicated either way. This is a correction, not a regression.",
       "fix_hint": null,
       "blocking": true
     },
@@ -76,7 +77,7 @@
       "judge_owned": true,
       "rule_lead": "Whole-compendium scope call.",
       "verdict": "N/A",
-      "evidence": "Grepped the raw file this session for `**Prompt**` and fenced code blocks (```` ``` ````) → 0 hits both; body-view signals confirm `has_prompt_blocks: false`, `has_code_fences: false`. No student-copied prompt anywhere in the file — whole compendium out of scope.",
+      "evidence": "Grepped the raw file fresh this session for `**Prompt**`, `{{prompt:`, fenced code blocks, `**Session**`, and `HOX` → 0 hits (exit 1). No student-copied prompt anywhere in the file. Whole compendium out of scope, including the four rules named in this dispatch's rule-drift list (§2, §17, §20, §40 — none has a prompt fence to bind to).",
       "fix_hint": null,
       "blocking": false
     },
@@ -86,7 +87,7 @@
       "judge_owned": true,
       "rule_lead": "Whole-compendium scope call.",
       "verdict": "N/A",
-      "evidence": "check_workshop.md fires only when a beat's output belongs to the group, not a participant. This file is a solo self-study reading walk with no group beat anywhere. The body-view's `group_beat_markers: true` signal is a false positive here — re-grepped its trigger pattern against the raw file (see check_pedagogy §27 evidence above for the full breakdown): every hit is ordinary prose ('team', 'together') or a maintainer-block delivery annotation ('not in-room'), none is a room/group/pair/adjudication beat. Whole compendium out of scope.",
+      "evidence": "check_workshop.md fires only when a beat's output belongs to the group, not a participant. Fresh grep this session for room/group/pair/adjudication cues → 0 hits (same pattern as check_pedagogy §27 above). Solo self-study reading walk throughout. Whole compendium out of scope.",
       "fix_hint": null,
       "blocking": false
     },
@@ -98,7 +99,7 @@
       "evidence": "Supplementary file, no `## Key Concepts` section. Module-only rule.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -109,7 +110,7 @@
       "evidence": "Same as §5 — no Key Concepts section; module-only rule.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -120,7 +121,7 @@
       "evidence": "No `What You'll Learn` section on this supplementary; module-only rule.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -131,7 +132,7 @@
       "evidence": "Supplementary reading file (curriculum/trainings/agentic-engineering-101/supplementary/), not a lecture — no opener/closer placement decision for this rule to bind. Bonus check: the file's own Delivery-mode line (line 163, unchanged) positions it as optional reading after M6 closes or a pre-read into post-cohort follow-up, consistent with the closer-shaped placement this rule would want if it applied.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -142,7 +143,7 @@
       "evidence": "No exercise follows this file — it is optional reading after M6's exercises have already run and the module has closed.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -153,7 +154,7 @@
       "evidence": "Rule is textually scoped to 'lecture bodies' (shared-library files meant to stay re-placeable across trainings); this is an AE101-training-specific supplementary, not shared library. The file's one module-numbered reference ('the two curated security skills from M3', line 130) sits inside a `<!--flag:module:earn-the-trust-->...<!--/flag:module:earn-the-trust-->` build-conditional wrapper — the same mechanism used identically in AE101's own module files (learn-from-the-test.md, run-the-first-experiment.md, plan-mode-done-right.md, per grep across curriculum/trainings/agentic-engineering-101/) to keep a passage in sync with whether that module is in a given cohort's cut. This is a training-internal cross-reference inside an established variant-handling pattern, not a lecture-body bridge sentence, and is unchanged by this diff.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -164,7 +165,7 @@
       "evidence": "No `**Prompt**` blocks or `{{prompt:}}` markers anywhere in the file (confirmed by grep and by the file's own Quality line, line 240: 'behavior N/A (no prompt blocks on this page)'), and the surface is a supplementary, not a lecture, so the rule's trigger condition (a prompt inside curriculum/lectures/**) does not fire here regardless.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
     },
     {
@@ -175,18 +176,8 @@
       "evidence": "No student-copied prompt fences and no exercise phases anywhere in the file — pure reading material with 'Read:' link lists per section. Nothing for this rule to bind to.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "fe1d82daba91f477abe9ff0fd8d37158fbecdc008666876295b02f2f377bcdb1",
+      "carried_from": "fd3768aa9740026270a2d023072969a4bc42624c3d2bc69dbcd2b9ee1b9e5fe5",
       "carried_shape": "1a75c7b77bffff49"
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 2,
-      "rule_lead": "Ritual / ceremony — hard ban in any curriculum/training surface.",
-      "verdict": "PASS",
-      "evidence": "mechanical: /\\b(ritual|rituals|ceremony|ceremonies)\\b/ over body projection curriculum/evals/body-views/ae101--supplementary--workflow-composition-lineages.body.txt → 0 hits; pattern proven against planted violation.",
-      "fix_hint": "",
-      "blocking": false,
-      "prefilled": true
     }
   ],
   "mood_summary": {
@@ -200,10 +191,19 @@
   "blocking_findings_count": 0,
   "todos_count": 0,
   "accept_notes_found": [
-    "Slide deixis accepted (check_slides.md §12): 'moves listed above' (line 88) — the Cherny moves sit in the same `##` chunk as the Read: list that references it, ten lines up on one slide. Re-confirmed this session, unchanged.",
-    "Slide size accepted × 7 (check_lectures.md §5): Skill stacking system Dino / Feedback-loopable methodology Amp / Practitioner moves Cherny / Counter-position Ronacher / Compound Engineering Klaassen / Composition by invocation Pocock / How to pick what to study — re-verified this session via `check-slide-size.js --report`: exactly the same seven sections over the 210-word default, accept-note heading text an exact match to each live `##` heading.",
+    "Slide deixis accepted (check_slides.md §12): 'moves listed above' (line 88) — the Cherny moves sit in the same `##` chunk as the Read: list that references it, ten lines up on one slide. Unchanged by this diff.",
+    "Slide size accepted × 7 (check_lectures.md §5): Skill stacking system Dino / Feedback-loopable methodology Amp / Practitioner moves Cherny / Counter-position Ronacher / Compound Engineering Klaassen / Composition by invocation Pocock / How to pick what to study — re-verified this session via `check-slide-size.js --report`, 0 oversized.",
     "Attribution-cap exception (check_writing.md rule 11, line 219 — not story's compendium, noted for completeness): this supplementary is a practitioner-by-practitioner walk, one dedicated section per practitioner; the cap-at-one-per-module rule is stated as not re-flaggable by future judges."
   ],
-  "notes": "Pin e11bbeb4, staleness reason diff-region. `git diff e11bbeb4..HEAD -- <file>` is exactly two hunks: (1) line 137, 'Three filters that work better than ranking:' → 'Filters that work better than ranking:' — the same leading-numeral drop this file has undergone repeatedly elsewhere (lines 7, 56, 106, 130), consistent with the file's own established pattern, immediately followed by a 3-item numbered list that already carries the count; (2) the maintainer-block Quality line's own stamp bump (not a claim a student reads). Confirmed via `grep -E '^[-+]' | grep -vE '^(\\+\\+\\+|---)'` per this dispatch's warning about the naive filter dropping bullet lines. Neither hunk touches a `##` header, a claim quote, or any storytelling-scope prose beyond the one intro line. `body_sha` (3cc5c557…) matches the file on disk at read time and matches HEAD (`git diff` against the working tree is empty — no live peer mid-edit on this file). `shape_hash` (1a75c7b77bffff49) confirmed via a fresh `prefill-instance.js --write` this session: 9 rows parked (8 N/A carried by real rule_index, 1 mechanical check_writing.md §2 PASS that the prefill parks class-agnostically — check_writing.md is not in story's compendium set per its own `eval_classes:` frontmatter and per the class brief's 'compendiums assembled' list, so that ninth parked row is out of my lane; I neither wrote nor claim it, and note it here so the merge step's addition doesn't read as an unexplained scope creep). The sim-cache persona trace was stale (`content_sha` a46ccdaf… didn't match the current body) — regenerated this session: updated `content_sha`/`phase_sha` to the current body, added the one-line diff to `persona_action`, left `mood_score`/`close.mood_score` at 8 (grounded via direct re-read: the diff is register-inert), wrote the merged trace back to `curriculum/evals/sim-cache/ae101--supplementary--workflow-composition-lineages.persona.json`. Per story.md's completeness contract: story is PRIMARY owner of check_lectures.md and carries both its in-brief rules (§4, §5) in full; for check_pedagogy.md and check_strategy_tie_in.md, story evaluates only the rules named under 'Specific judgments storytelling owns' (check_pedagogy §27 and, already prefill-resolved as N/A, §16; check_strategy_tie_in §1-§4 in full) — the other 64 check_pedagogy.md rules nominally in the class brief (mechanically assembled from the compendium's `eval_classes:` membership) belong to the pedagogy judge's own instance and are not re-judged here. check_prompts.md and check_workshop.md carry no such narrowing in the template, so both are evaluated at whole-compendium scope — and both resolve N/A here on structural grounds (no prompt fences anywhere; no group beat anywhere), recorded as single judge-owned rows per the dispatch preamble's own worked example rather than as 48+16 individually-N/A'd rows. Teaching-moment-lands (no `check_strategy_tie_in` rule_index, per template instruction to record here rather than as a row): holds. Seven independent sections each carry the field's-still-moving thesis on their own (Klaassen's plugin/prose drift, Pocock's absent-then-arrived router, Cognition's reversal, Amp's retired Handoff, Ronacher's counter-position) — a persona could skip any one section and still land the close ('several live lineages, no winner'); the Amp reversal and the maintainer's own decided-note (archived guide still describing a dead feature) are the sharpest single illustration, but the moment does not depend on that one section landing. Full body re-read this session, not diff-scoped; nothing outside the one intro-line change reads as a storytelling-class concern anywhere in the file.",
-  "shape_hash": "1a75c7b77bffff49"
+  "drift_rules_reread": [
+    "lectures §4 — re-fetched current wording (squint + truth clause, carve-outs unchanged in substance); headers untouched by the diff since pin; PASS holds.",
+    "lectures §6 — re-fetched current wording (2026-08-20 trainer-show-and-tell rule, scoped to `curriculum/lectures/**` prompt blocks); this file is a supplementary with zero prompt fences (fresh grep, 0 hits); N/A holds, parked and merged from prior instance.",
+    "prompts §2 (incl. 2a/2b/2c) — re-read full current text in the class brief; no prompt fences exist in this file at all, so the rule (and its sub-clauses) has nothing to bind to; covered by the check_prompts.md whole-compendium N/A row.",
+    "prompts §17 — re-read current text: narrowed 2026-09-03 to plan-mode-only preambles. No prompt blocks in this file — N/A either under the old or the narrowed wording.",
+    "prompts §20 — re-read current text: narrowed 2026-09-03, now advisory-only pending an evidenced re-run cost. No prompt blocks in this file — N/A either way.",
+    "prompts §40 (incl. 40a/40b) — re-read current text (warm/cold session-boundary + referent-presence check). No prompt blocks in this file — N/A either way.",
+    "strategy_tie_in §6 — re-fetched current wording (Key Concepts breadcrumb shape, run-after-§3/4/5 discipline, no-Remember-label rule). This file has no `## Key Concepts` section (it's a supplementary, module-only rule); N/A holds, parked and merged from prior instance.",
+    "strategy_tie_in §7 — re-fetched current wording (What You'll Learn capability-register shape, theme-verb grammar-fit check). This file has no `What You'll Learn` section; N/A holds, parked and merged from prior instance."
+  ],
+  "notes": "Pin 0cea7581, staleness reason rule-drift, per dispatch. `git diff 0cea7581..HEAD -- <file>` (using `grep -E '^[-+]' | grep -vE '^(\\+\\+\\+|---)'` per the dispatch's warning against the naive bullet-dropping filter) shows real content movement beyond what the prior story instance (body_sha fd3768aa…, its own pin e11bbeb4) had already accounted for: three Pocock skill renames (to-prd→to-spec, to-issues→to-tickets, write-a-skill→writing-for-agents) matching the live `mattpocock/skills` repo, a router-quote attribution clarification, the maintainer-region Delivery-mode line correcting itself to match `composing-the-workflow.md`'s own record (verified cross-file, see check_strategy_tie_in §4 evidence), and a batch of citation-freshness stamp updates (checked/due dates, several to `due:cohort`). None of this is story-scope prose in the sense of mood/arc/Big-Idea — it's factual/citation precision plus one delivery-metadata self-correction — so the sim trace regenerated this session (new content_sha d96fe5d5…, written to `curriculum/evals/sim-cache/ae101--supplementary--workflow-composition-lineages.persona.json`) holds mood at 8/8, matching both prior cached passes, with the reasoning re-grounded against the current diff rather than carried over unexamined. `body_sha` taken at start of this session; confirmed matching the file on disk (`shasum -a 256`) and matching HEAD (`git diff` against working tree empty — no live peer mid-edit). `shape_hash` (1a75c7b77bffff49) confirmed via `prefill-instance.js --write` this session: 8 rows parked (check_strategy_tie_in §5/§6/§7, check_lectures §1/§2/§3/§6, check_pedagogy §16 — all structural N/A, module-only or no-prompts-exist gates unaffected by the diff). Per story.md's completeness contract: story is primary owner of check_lectures.md (both in-brief rules §4/§5 carried in full); for check_pedagogy.md and check_strategy_tie_in.md, story evaluates only the rules under 'Specific judgments storytelling owns' (check_pedagogy §27 here; check_pedagogy §16 already prefill-resolved N/A; check_strategy_tie_in §1-§4 in full) — the remaining ~62 check_pedagogy rules nominally in the class brief belong to the pedagogy judge's own instance and are not re-judged here. check_prompts.md and check_workshop.md carry no such narrowing in the template and are evaluated at whole-compendium scope, both resolving N/A on structural grounds (fresh greps, 0 hits both) and recorded as single judge-owned rows rather than 49+16 individually-N/A'd rows, matching the prior instance's approach. Teaching-moment-lands (no check_strategy_tie_in rule_index, per template instruction to record here rather than as a row): holds — seven independent sections each carry the field's-still-moving thesis on their own; a persona could skip any one section and still land the close ('several live lineages, no winner'), and the Amp reversal is the sharpest single illustration without being the only load-bearing one. Full body re-read this session, not diff-scoped; nothing outside the itemized diff reads as a storytelling-class concern anywhere in the file. No blocking findings, no todos."
 }

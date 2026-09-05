@@ -106,8 +106,8 @@ The next module opens with what came back, or what you caught before it went fur
 
 **The nudge-count accept-note lives with the line, in `exercises/set-the-markers-send-it-off.md`** (2026-08-12, send-off extraction): the §16 boundary argument defending *"Past ten or so, you've become the agent"* is stated there once. Do not re-add a copy here (`check_pedagogy.md` §64: maintainer blocks point, they do not restate); a judge auditing this file never reads the exercise body, so it cannot flag the line from here.
 
-**Quality:** compendium-audited 2026-09-02 (writing@191ea58f story@191ea58f technical@191ea58f behavior@17446703 pedagogy@191ea58f strategy@191ea58f slides@191ea58f)
-- judges @191ea58f: writing PASS (1 todo see instances/ae101--module--run-the-first-experiment.writing.json), story PASS, technical PASS (1 todo see instances/ae101--module--run-the-first-experiment.technical.json), behavior PASS, pedagogy PASS (1 todo see instances/ae101--module--run-the-first-experiment.pedagogy.json), strategy PASS (1 todo see instances/ae101--module--run-the-first-experiment.strategy.json), slides PASS
+**Quality:** compendium-audited 2026-09-05 (writing@324b81d7 story@324b81d7 technical@324b81d7 behavior@17446703 pedagogy@191ea58f strategy@324b81d7 slides@191ea58f)
+- judges @324b81d7: writing PASS, story PASS, technical PASS (1 todo see instances/ae101--module--run-the-first-experiment.technical.json), behavior PASS, pedagogy PASS (1 todo see instances/ae101--module--run-the-first-experiment.pedagogy.json), strategy PASS (1 todo see instances/ae101--module--run-the-first-experiment.strategy.json), slides PASS
 - cross_module @d47fb5af: PASS — set=[earn-the-trust,run-the-first-experiment]; 1 pair, 0 blocking; see instances/ae101--module-set--m3-m4.cross_module.json
 - cross_module @54577f39: PASS — set=[run-the-first-experiment,learn-from-the-test,spot-gaps-build-the-loop]; 2 pairs, 0 blocking; see instances/ae101--module-set--m4-m5-m6.cross_module.json
 

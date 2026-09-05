@@ -64,5 +64,5 @@ OODA
 - last-run: 2026-08-01
 
 <!-- /backing -->
-**Quality:** compendium-audited 2026-09-03 (writing@4a722813 story@0cea7581 technical@8cc00874 behavior@b3143a4 pedagogy@1abb84c6 strategy@61da15ad slides@0cea7581)
-- judges @61da15ad: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-09-05 (writing@324b81d7 story@324b81d7 technical@324b81d7 behavior@b3143a4 pedagogy@1abb84c6 strategy@61da15ad slides@324b81d7)
+- judges @324b81d7: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS

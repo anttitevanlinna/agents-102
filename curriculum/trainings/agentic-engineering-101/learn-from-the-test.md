@@ -75,7 +75,7 @@ The packaged session returns after this sitting ends. The experiment produces it
 - The verifier's green is a claim, not proof. Ask the agent to show what the gate checked and what sat outside its view before you credit the kit.
 - What recurs names your next check. Build it, send again: the loop you just ran is yours to keep running.
 
-## Back to the map, one last time
+## The whole map?
 <!--tier:3-->
 
 {{figure:map-engine-m4-open}}

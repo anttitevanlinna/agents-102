@@ -20,6 +20,8 @@
 //
 //   --check          report drift vs the ledger (exit 1 if any). Default.
 //   --repin [--date] record current hashes; date-stamp what moved.
+//     --procedural <compendium>:<rule>[,...]  these moved, but only in how a
+//       finding is fixed, not in what is filed: new hash, prior date kept.
 //   --json           machine-readable report on stdout
 //   --ledger <p>     override ledger path
 //   --mem <p>        override compendium directory
@@ -111,14 +113,20 @@ function diffLedger(ledger, current) {
 // class corpus-wide for one new rule is the over-broad v2 behaviour this
 // scanner exists to replace — route at the resolution the finer instrument
 // already has. Baselines (a compendium's first pin) stale nothing either.
-function repin(ledger, current, date) {
+//
+// `procedural` names rules (`<compendium>:<rule>`) whose current edit changes
+// how a maintainer FIXES a finding, not what a judge FILES. Such a rule takes
+// its new hash and keeps its prior date: dating it would re-owe every class
+// pinned before today, corpus-wide, for a re-read that files nothing new. The
+// call is the operator's and is made at repin time, when the edit is in hand.
+function repin(ledger, current, date, { procedural = new Set() } = {}) {
   const next = { compendia: {} }
   for (const [name, cur] of Object.entries(current)) {
     const prev = (ledger.compendia || {})[name]
     const rules = {}
     for (const r of cur.rules) {
       const p = prev && prev.rules[r.id]
-      const moved = !!(p && p.h !== r.h)
+      const moved = !!(p && p.h !== r.h) && !procedural.has(`${name}:${r.id}`)
       rules[r.id] = { h: r.h, changed_at: moved ? date : (p ? p.changed_at : null) }
     }
     next.compendia[name] = { classes: cur.classes, rules }
@@ -195,7 +203,12 @@ function main(argv) {
 
   if (argv.includes('--repin')) {
     const date = arg('--date', new Date().toISOString().slice(0, 10))
-    fs.writeFileSync(ledgerPath, JSON.stringify(encodeLedger(repin(ledger, current, date)), null, 1) + '\n')
+    const procedural = new Set((arg('--procedural', '') || '').split(',').map(s => s.trim()).filter(Boolean))
+    for (const key of procedural) {
+      const [name, rule] = key.split(':')
+      if (!current[name] || !current[name].rules.some(r => r.id === rule)) throw new Error(`--procedural ${key}: no such rule in ${mem}`)
+    }
+    fs.writeFileSync(ledgerPath, JSON.stringify(encodeLedger(repin(ledger, current, date, { procedural })), null, 1) + '\n')
     process.stderr.write(`repinned ${Object.keys(current).length} compendia -> ${path.relative(REPO, ledgerPath)}\n`)
     for (const [n, r] of Object.entries(report)) {
       process.stderr.write(`  ${n}: ${r.unpinned ? 'baseline' : `+${r.added.length} ~${r.changed.length} -${r.removed.length} (stamped ${date})`}\n`)

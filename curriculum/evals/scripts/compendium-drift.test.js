@@ -191,3 +191,33 @@ test('driftedClasses stays a Set of exactly the classes driftedRules keys', () =
   const ledger = { compendia: { check_p: { classes: ['pedagogy', 'story'], rules: { 1: { h: 'a', changed_at: '2026-08-23' } } } } }
   assert.deepEqual([...D.driftedClasses(ledger, '2026-08-01')].sort(), [...D.driftedRules(ledger, '2026-08-01').keys()].sort())
 })
+
+test('repin --procedural: a named rule that moved takes the new hash but keeps its prior date', () => {
+  // A clause that changes how a maintainer FIXES a finding, not what a judge
+  // FILES, still moves the hash. Dating it re-owes every class pinned before
+  // that day, corpus-wide, for a re-read that files nothing new. The operator
+  // names the rule as procedural at repin time; the ledger records the edit
+  // and leaves the last substantive date where it was.
+  const ledger = { compendia: { check_x: { classes: ['story'], rules: {
+    1: { h: 'aaa', changed_at: '2026-08-01' },
+    2: { h: 'bbb', changed_at: null },
+    3: { h: 'ccc', changed_at: '2026-08-02' },
+  } } } }
+  const current = { check_x: { classes: ['story'], rules: [
+    { id: '1', h: 'aaa2' }, { id: '2', h: 'bbb2' }, { id: '3', h: 'ccc' },
+  ] } }
+  const next = D.repin(ledger, current, '2026-09-05', { procedural: new Set(['check_x:1', 'check_x:2', 'check_x:3']) })
+  assert.deepEqual(next.compendia.check_x.rules, {
+    1: { h: 'aaa2', changed_at: '2026-08-01' },   // moved, held at its prior date
+    2: { h: 'bbb2', changed_at: null },           // moved, held at baseline
+    3: { h: 'ccc', changed_at: '2026-08-02' },    // did not move — the flag is a no-op
+  })
+})
+
+test('repin --procedural: an unnamed rule that moved is still dated', () => {
+  const ledger = { compendia: { check_x: { classes: ['story'], rules: { 1: { h: 'aaa', changed_at: null }, 2: { h: 'bbb', changed_at: null } } } } }
+  const current = { check_x: { classes: ['story'], rules: [{ id: '1', h: 'aaa2' }, { id: '2', h: 'bbb2' }] } }
+  const next = D.repin(ledger, current, '2026-09-05', { procedural: new Set(['check_x:1']) })
+  assert.equal(next.compendia.check_x.rules[1].changed_at, null)
+  assert.equal(next.compendia.check_x.rules[2].changed_at, '2026-09-05')
+})

@@ -86,6 +86,40 @@ test('Agents 101 scheduled-agent run reads the selected root instructions', () =
   assert.match(prompt.runtimeVariants['codex-cli'].text, /root AGENTS\.md/);
 });
 
+test('Agents 101 downstream rule prompts resolve the root instructions for Codex', () => {
+  const registry = compile.loadRegistry();
+  const keys = [
+    'a101-m3-debrief-handoff-rules',
+    'author-security-skill-1',
+    'author-security-skill-2',
+    'audit-your-agent-1',
+    'a101-m4-debrief-security-rules',
+    'a101-m5-debrief-groundedness-rules',
+  ];
+
+  for (const key of keys) {
+    assert.match(registry[key].runtimeVariants.cli.text, /CLAUDE\.md/, key);
+    assert.doesNotMatch(registry[key].runtimeVariants['codex-cli'].text, /CLAUDE\.md/, key);
+    assert.match(registry[key].runtimeVariants['codex-cli'].text, /AGENTS\.md/, key);
+  }
+});
+
+test('Agents 101 portable judge and reflection prompts do not address one provider', () => {
+  const registry = compile.loadRegistry();
+  const keys = [
+    'hallucination-bakeoff-8',
+    'self-consistency-after-scoreboard-3',
+    'eval-loop-3',
+    'eval-loop-4',
+  ];
+
+  for (const key of keys) {
+    for (const profile of ['cli', 'codex-cli']) {
+      assert.doesNotMatch(registry[key].runtimeVariants[profile].text, /\bClaude\b/, `${key}/${profile}`);
+    }
+  }
+});
+
 test('capability blocks keep matching mechanics and remove non-matching mechanics', (t) => {
   const dir = promptDir({
     mechanics: `---

@@ -24,8 +24,8 @@ You can extract any rules into their own `.md` file. Eventually your Claude file
 
 **Slides-only pass (2026-07-02, unaudited):** file is lede + two slides. Slide 1 runs one bullet per shape, capability-grounded — Slack app / `@Claude`-to-web routing, GitHub Actions `issues` events, scheduled agent; do not imply Claude Code runs inside Slack. Slide 2's first bullet carries the steady-part / policy / spec triplet. The module's `## Next` owns the M3 bridge. The ticket-pair paragraph depended on `extract-the-task-shaping-rule-4`, itself a `{{cut:}}` candidate; if the cull reverses, the exercise carries the connection.
 
-**Quality:** compendium-audited 2026-09-02 (writing@0c5cacc8 story@0c5cacc8 technical@8cc00874 behavior@1c765f2 pedagogy@5df71aa6 strategy@1c765f2 slides@c0c37913)
-- judges @0c5cacc8: writing PASS (2 todos see instances/ae101--lecture--where-the-rule-could-live.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-09-05 (writing@08946dd8 story@08946dd8 technical@08946dd8 behavior@1c765f2 pedagogy@5df71aa6 strategy@08946dd8 slides@c0c37913)
+- judges @08946dd8: writing PASS (1 todo see instances/ae101--lecture--where-the-rule-could-live.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS
 - cohorts: none yet
 
 **Lecture meta:** *Meta-frame closer, now deck-shaped. ~3 min reading-aloud. Forward-looking; voice tilts Risto (Siilasmaa) on slide 2 — points at what becomes possible, cues the move now. Mood-arc check: M2 is grounded competence — Risto-tilt appropriate at the closer; the lecture defers application rather than promising it. Slide 2 is the naming beat, placed AFTER the shapes so it lands as recognition (`check_lectures §1`).*

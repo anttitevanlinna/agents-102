@@ -666,4 +666,4 @@ Docs: [memory.md § Troubleshoot memory issues](https://code.claude.com/docs/en/
 **Freshness lesson, worth keeping:** `push-back-on-the-plan.md` stamped this same doc `result:OK` on 2026-08-02 and recorded a four-option menu. Thirteen days later it was three. A research preview can be withdrawn between two checks, so cite an option count by shape, not by number, unless the check is fresh.
 
 **Quality:** compendium-audited 2026-09-05 (behavior@bb9c1d5 slides@324b81d7)
-- judges @324b81d7: writing REVISE (2/0 see instances/ae101--reference--claude-code-for-engineers.writing.json), story REVISE (1/0 see instances/ae101--reference--claude-code-for-engineers.story.json), technical grandfathered, behavior PASS, pedagogy grandfathered, strategy grandfathered, slides PASS
+- judges @08946dd8: writing REVISE (2/0 see instances/ae101--reference--claude-code-for-engineers.writing.json), story REVISE (1/0 see instances/ae101--reference--claude-code-for-engineers.story.json), technical grandfathered, behavior PASS, pedagogy grandfathered, strategy grandfathered, slides PASS

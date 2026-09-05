@@ -130,9 +130,9 @@ Optional, when your sessions start running heavy: [The context ceiling and token
 **Session-close convergence prompt (`ae101-m3-ready-to-clear`) kept, not cut.** Flagged `low-yield`. It's the converge-before-clear beat (`check_pedagogy.md §58`): the student signals wrap-up, the agent surfaces anything still loose before the `/clear`. A light one-line ask carrying a lead-in and its own "good enough" callout, not concurrent-heavy load. Not a cut candidate.
 
 **Quality:** compendium-audited 2026-09-05 (writing@324b81d7 story@324b81d7 technical@324b81d7 behavior@1c765f2 pedagogy@324b81d7 slides@324b81d7)
-- judges @324b81d7: writing PASS (7 todos see instances/ae101--module--earn-the-trust.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS (2 todos see instances/ae101--module--earn-the-trust.pedagogy.json), strategy REVISE (2/1 see instances/ae101--module--earn-the-trust.strategy.json), slides PASS (2 todos see instances/ae101--module--earn-the-trust.slides.json)
-- cross_module @d47fb5af: PASS — set=[earn-the-trust,run-the-first-experiment]; 1 pair, 0 blocking; see instances/ae101--module-set--m3-m4.cross_module.json
+- judges @08946dd8: writing PASS (7 todos see instances/ae101--module--earn-the-trust.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS (2 todos see instances/ae101--module--earn-the-trust.pedagogy.json), strategy REVISE (1/1 see instances/ae101--module--earn-the-trust.strategy.json), slides PASS (2 todos see instances/ae101--module--earn-the-trust.slides.json)
 - cross_module @01592193: PASS — set=[prework,getting-going,plan-mode-done-right,earn-the-trust]; 3 pairs, 0 blocking; see instances/ae101--module-set--prework-m3.cross_module.json
+- cross_module @08946dd8: PASS — set=[earn-the-trust,run-the-first-experiment]; 1 pair, 0 blocking; see instances/ae101--module-set--m3-m4.cross_module.json
 
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply + Evaluate + Create

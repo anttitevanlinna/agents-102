@@ -47,8 +47,8 @@ Ask how the agent knows what tools it can call.
 
 **Plural round shape (Antti-directed, 2026-08-01).** A single round carries as many tool calls as the step needs, and independent calls go out together. Bullet 1 reads *"uses tools"*; bullet 3 reads *"tool calls → results"*. Bullet 2 was always plural (*"executes the tool calls… feeds results back in"*) and is untouched. Do not re-singularise any of the three: a student watching an hour-long run sees batched calls on screen, and a serial machine on the slide would be contradicted inside the same module. Stamp: `parallel-tool-calls`, maintainer-attested.
 
-**Quality:** compendium-audited 2026-09-02 (writing@c0c37913 story@c0c37913 technical@0cea7581 behavior@c0c37913 pedagogy@d5aa7e3d strategy@1c765f2 slides@c0c37913)
-- judges @c0c37913: writing PASS, story PASS (1 todo see instances/ae101--lecture--the-agent-loop.story.json), technical PASS, behavior PASS (2 todos see instances/ae101--lecture--the-agent-loop.behavior.json), pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-09-05 (writing@08946dd8 story@08946dd8 technical@08946dd8 behavior@c0c37913 pedagogy@d5aa7e3d strategy@08946dd8 slides@c0c37913)
+- judges @08946dd8: writing PASS (3 todos see instances/ae101--lecture--the-agent-loop.writing.json), story PASS (1 todo see instances/ae101--lecture--the-agent-loop.story.json), technical PASS, behavior PASS (2 todos see instances/ae101--lecture--the-agent-loop.behavior.json), pedagogy PASS, strategy PASS, slides PASS
 
 **Meta:** *M4 teaching lecture, ~5 minutes projected. Audience: the engineer about to send a multi-hour task off in this same session. The three prompts demonstrate the loop on the student's live session; that's the teaching move — the anatomy slide is scaffolding for the prompts, not the lesson.*
 

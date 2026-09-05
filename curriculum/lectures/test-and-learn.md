@@ -29,8 +29,8 @@ You're new to this country. A tourist runs an agent and hopes; a practitioner ru
 
 - section-3 sweep 2026-07-02: 0 refs remaining to fix — the plan's 5 M5-refs (plus M1–M4 hits) were already removed by the same-day slides-only pass above; verified zero `M[0-9]`/module-name hits above the fence. 3 arc-temporal phrases judged not-sequencing ("from here on", "every future hand-off", the two-run arc — no module named; exercise-internal arc). Owning module `run-the-first-experiment.md` confirmed carrying the dropped sequencing in `## Start here` (short-loops contrast) and `## Next` ("Module 5 opens with...").
 
-**Quality:** compendium-audited 2026-08-29 (writing@43e6cae1 story@43e6cae1 technical@8cc00874 behavior@1c765f2 pedagogy@02dcad0b strategy@1c765f2 slides@43e6cae1)
-- judges @43e6cae1: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-09-05 (writing@08946dd8 story@08946dd8 technical@8cc00874 behavior@1c765f2 pedagogy@02dcad0b strategy@08946dd8 slides@43e6cae1)
+- judges @08946dd8: writing PASS (2 todos see instances/ae101--lecture--test-and-learn.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS (1 todo see instances/ae101--lecture--test-and-learn.strategy.json), slides PASS
 **Lecture meta:** *~10 min lecture, deck-shaped (3 slides + kicker). Sets up M4's walk-and-send-off exercise. Names the spirit of the two-session arc; the gap-analysis naming rides with the exercise.*
 **Word count:** ~280 words body.
 

@@ -1,184 +1,219 @@
 {
- "class": "slides",
- "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/the-whole-map.md",
- "body_sha": "937289ef8075501c097d7bce42fadaeb01569ee647ab2fc0af0b189965c55567",
- "verdict": "PASS",
- "training": "ae101",
- "shape_hash": "06b03968b9651b64",
- "chunk_map": [
-  {
-   "index": 0,
-   "heading": "H1 (title slide, no lede)",
-   "lines": "1-2"
-  },
-  {
-   "index": 1,
-   "heading": "Every task maps onto the same six phases",
-   "lines": "3-17"
-  }
- ],
- "rules_evaluated": [
-  {
-   "compendium": "check_slides.md",
-   "rule_index": 1,
-   "rule_lead": "Referent resolution under a sequential deck read.",
-   "verdict": "PASS",
-   "chunks_flagged": [],
-   "evidence": "Harm: a referent nobody can resolve breaks comprehension mid-deck. This file now carries exactly one content slide (the *You are here* slide was cut 2026-08-29, maintainer note line 30) so there is no cross-chunk resolution to test. Chunk 1: 'them' (line 5, \"The loops drawn across them all run the same shape\") resolves to 'six phases' named in the chunk's own header (line 3, header counts as in-chunk per this rule's text); the six bold-led bullets (lines 9-14) each define their own term inline (Intent/Context/Work/Verification/Absorption/Outcome) with no forward reference; the closer 'The phases are places, not a pipeline' (line 16) resolves 'The phases' to the six just enumerated immediately above. No never-named, vague, or re-chunk-stranded referent anywhere in the body. Harm absent.",
-   "fix_hint": null,
-   "blocking": true
-  },
-  {
-   "compendium": "check_slides.md",
-   "rule_index": 2,
-   "rule_lead": "Cross-file and positional callbacks.",
-   "verdict": "PASS",
-   "chunks_flagged": [],
-   "evidence": "Harm: a callback that only resolves if you know which file/slide the deck happens to start on. No 'the opening lecture said' / 'as file X showed' / any pointer to another document by position occurs anywhere in the body (raw lines 1-17) — the file contains zero markdown links (`grep -n '\\[.*\\](' curriculum/lectures/the-whole-map.md` -> no output) and zero prose references to another named file. Harm absent.",
-   "fix_hint": null,
-   "blocking": true
-  },
-  {
-   "compendium": "check_slides.md",
-   "rule_index": 3,
-   "rule_lead": "Every backward reference points at a beat that exists.",
-   "verdict": "N/A",
-   "chunks_flagged": [],
-   "evidence": "na_reason: the M1/'You are here' beat that carried the only backward reference in this file was cut from the body 2026-08-29 (maintainer note line 30: \"say it over the map, do not give it a slide\") and now lives only as trainer narration in the maintainer block, which is out of body scope. The remaining body (lines 1-17) contains no 'the X you did/saw' construction naming any prior exercise, lecture, or module beat.",
-   "fix_hint": null,
-   "blocking": true
-  },
-  {
-   "compendium": "check_slides.md",
-   "rule_index": 4,
-   "rule_lead": "Live-demo beats survive a text read.",
-   "verdict": "N/A",
-   "chunks_flagged": [],
-   "evidence": "na_reason: no guess-before-reveal instruction (\"take a guess before...\") occurs anywhere in this container lecture; it is a 5-minute map opener, not a live-demo beat.",
-   "fix_hint": null,
-   "blocking": true
-  },
-  {
-   "compendium": "check_slides.md",
-   "rule_index": 5,
-   "rule_lead": "No orphan slides.",
-   "verdict": "PASS",
-   "chunks_flagged": [],
-   "evidence": "Chunk 1 (lines 3-17) carries the lede sentence, the full six-column figure, six defined phases, and a places-not-pipeline closer — a dense, fully self-carrying slide, not a bare wait-state or single context-dependent bullet.",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_slides.md",
-   "rule_index": 6,
-   "rule_lead": "Header self-carries at projection distance.",
-   "verdict": "PASS",
-   "chunks_flagged": [],
-   "evidence": "Header 'Every task maps onto the same six phases' (line 3) is confirmed by the chunk's own line 5 ('Every piece of agentic work maps onto the same cycle...') and the six-bullet enumeration (lines 9-14) that immediately follows — a literally true summary of everything else on the slide. Nothing in the chunk contradicts it.",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_slides.md",
-   "rule_index": 7,
-   "rule_lead": "LLM-cadence caps.",
-   "verdict": "PASS",
-   "chunks_flagged": [],
-   "evidence": "Per sub-item, over body lines 1-17 plus the figure's label text (`node scripts/expand-md.js curriculum/lectures/the-whole-map.md`, all `<text>` content): (a) 'Not X. Not Y. Z.' construction — none. (b) Anaphora/epistrophe triples — none; the figure's short verb chains ('act · read the result · correct', 'run · let it fail · shape the verifier · re-run', 'read · judge · gate what ships · by hand for now') are mechanism lists of 3-4 items, not repeated sentence-opener/closer triples. (c) Self-grading superlatives — none ('one of the most useful' etc. does not occur; the figure's italic cap 'Trusted shipped change' is a stated outcome, not a claim about this training's own quality). (d) Number + own retraction — 'six phases' now appears only in the header (line 3), stated once, never hedged or walked back in the body; the diff since the pin removed the redundant 'Six phases.' sentence from line 5, leaving exactly one clean statement of the number (maintainer note line 52 confirms this is deliberate, not drift). (e) Abstraction-noun stacks — none; the six phase definitions (lines 9-14) name concrete objects (files, rules, memory; tests, checks, reads, judges) rather than stacked abstractions. (f) Verb triplets with an empty leg — 'acts, reads the result, corrects, goes again' (line 11) and every figure verb chain cited above: each leg is independently concrete and answers 'what does this mean?' on its own. No cadence tic anywhere on the one slide.",
-   "fix_hint": null,
-   "blocking": true
-  },
-  {
-   "compendium": "check_slides.md",
-   "rule_index": 8,
-   "rule_lead": "Internal dialect never lands on a slide.",
-   "verdict": "PASS",
-   "chunks_flagged": [],
-   "evidence": "Harm: maintainer/repo vocabulary landing where a room of engineers can't parse it. No repo-internal dialect term (surface-as-noun, firing, compendium, forcing function, beat-as-noun, mood-as-noun, Connections) appears anywhere in the body (lines 1-17) or the figure's label text. The nine loop-strand tags in the figure (THE CONTEXT LOOP, THE PLAN LOOP · CORE, THE SECURITY LOOP, THE PROTOTYPING LOOP, THE BUILD LOOP, THE AGENT'S OWN LOOP, THE CHECKING LOOP, THE COMPOUNDING LOOP, CROSSING THE WALL) are this training's own coined arc/Field-Guide vocabulary, not maintainer-editorial dialect, and 'loop' / 'compounding' read as ordinary shop vocabulary to an engineer audience regardless. Harm absent. (Whether any of these coined names is used before the module that formally earns it is a check_writing.md §14 / arc-vocabulary question — this rule's own carve-out for rule 1 explicitly routes 'planted before earning' to the writing class, not here; noted for the record in `notes`, not scored under this rule.)",
-   "fix_hint": null,
-   "blocking": true
-  },
-  {
-   "compendium": "check_slides.md",
-   "rule_index": 9,
-   "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
-   "verdict": "PASS",
-   "chunks_flagged": [],
-   "evidence": "The one content slide (lines 9-14) carries exactly six bolded handles, one per bullet (**Intent.** **Context.** **Work.** **Verification.** **Absorption.** **Outcome.** — each a single word, well inside the ≲5-word handle cap): `grep -c '^\\- \\*\\*[A-Za-z]*\\.\\*\\*' <(sed -n '1,17p' curriculum/lectures/the-whole-map.md)` -> 6. No other bold span exists anywhere in the body. This is the compendium's own 'a law/consolidation slide may carry one handle per law' allowance applied to a six-term definition slide, and it is explicitly pre-cleared in this file's own maintainer block (raw line 37): \"the six phase-definition bullets keep theirs (**Intent.** through **Outcome.** — the map's handles), and nothing else on the slide takes any.\"",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_slides.md",
-   "rule_index": 10,
-   "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
-   "verdict": "PASS",
-   "chunks_flagged": [],
-   "evidence": "Harm: content invisible to the deck a trainer actually projects. Ran `grep -rn \"the-whole-map\" curriculum/trainings/` -> `curriculum/trainings/agentic-engineering-101/plan-mode-done-right.md:30: [Lecture: The whole map](lectures/the-whole-map.md)`, the corpus's standard include-link shape that `buildDeckModel` wraps in `.phase--lecture` (per `memory/compounded/2026-07-09-student_facing-verify-content-presence-in-both-layouts.md`'s own fix). Confirmed `plan-mode-done-right` is registered as AE101's first module (`grep -n \"agentic-engineering-101\" site/layouts/curriculum.js` -> module list starts with `{ slug: 'plan-mode-done-right', ... }`), so the include reaches a real, currently-shipping module. The body sits entirely under one ordinary `##` heading with no phase-less orphan section outside the wrapper — the rule 10 threat model this rule targets. Not independently re-rendered in headless Chrome this run; resting on the include-link mechanism plus the module-registry lookup.",
-   "fix_hint": null,
-   "blocking": true
-  },
-  {
-   "compendium": "check_slides.md",
-   "rule_index": 11,
-   "rule_lead": "Numbering — position is computed, content ordinals are linted.",
-   "verdict": "N/A",
-   "chunks_flagged": [],
-   "evidence": "na_reason: no `## Phase N:` / `## N.` step header or in-file \"Phase K\"/\"Step K\" cross-reference occurs in this file's single `##` heading. Ran `node scripts/check-slide-numbering.js` -> `OK — 60 files, Phase/Step numbering consistent.`, exit 0 (corpus-wide script; this file contributes none of the checked constructs).",
-   "fix_hint": null,
-   "blocking": true
-  },
-  {
-   "compendium": "check_slides.md",
-   "rule_index": 12,
-   "rule_lead": "Page geometry dies at the cut; reading order survives.",
-   "verdict": "PASS",
-   "chunks_flagged": [],
-   "evidence": "Ran `node scripts/check-slide-deixis.js --file curriculum/lectures/the-whole-map.md` -> `OK — 1 files, no page-geometry pointers across the slide cut.`, exit 0. No 'below / above / further down / at the top of this page' construction anywhere in the body.",
-   "fix_hint": null,
-   "blocking": true
-  },
-  {
-   "compendium": "check_slides.md",
-   "rule_index": 13,
-   "rule_lead": "In-deck links work now; whether they EARN their place is open.",
-   "verdict": "N/A",
-   "chunks_flagged": [],
-   "evidence": "na_reason: no in-body markdown link `[text](...)` occurs anywhere in the body (`grep -n '\\[.*\\](' curriculum/lectures/the-whole-map.md` -> no output); the single structural include is the module file pointing INTO this lecture, not a link inside this file's own body.",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_slides.md",
-   "rule_index": 14,
-   "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
-   "verdict": "PASS",
-   "chunks_flagged": [],
-   "evidence": "Ran `node scripts/check-slide-size.js --report | grep -i whole-map` -> `174  6  Every task maps onto the same six phases  lectures/the-whole-map.md` (174/210 words, 6/6 bullets — at the bullet ceiling, not over it). Ran `node scripts/check-slide-size.js --file curriculum/lectures/the-whole-map.md` -> `oversized: 0`, `✓ every slide is within limits`. Both axes clear on the file's one slide; no maintainer accept-note needed or present.",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_slides.md",
-   "rule_index": 15,
-   "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
-   "verdict": "PASS",
-   "chunks_flagged": [],
-   "evidence": "This is a lecture, so `##` headings must be claims, not imperative/label. 'Every task maps onto the same six phases' (line 3) is a declarative claim the chunk then substantiates (six defined phases, a places-not-pipeline closer) — satisfies the claim requirement cleanly. The file's only other former heading, 'You are here' (an orientation-header NOT-violation example the rule text names verbatim), was cut from the body 2026-08-29 and is no longer present to score.",
-   "fix_hint": null,
-   "blocking": false
-  },
-  {
-   "compendium": "check_slides.md",
-   "rule_index": 16,
-   "rule_lead": "A bullet earns its slot or dies — three classes that read as rigour and carry nothing.",
-   "verdict": "PASS",
-   "chunks_flagged": [],
-   "evidence": "Checked every bullet on the one remaining slide (lines 9-14) plus the trailing closer sentence (line 16) against the three classes. (a) Doctrine restatement: none of the six phase bullets re-announces a split/lens/law already stated earlier in this file — each is a first-time naming of a distinct phase with its own content. (b) Self-referential design commentary: no bullet talks about the training's own pedagogy or design choices (the M1/'you are here' material that most risked this class was cut from the body entirely 2026-08-29). (c) Aphorism kicker: line 16, 'The phases are places, not a pipeline. A real task sits in several at once.' is the closest candidate for a closing koan — it stays inside because it adds a genuinely new architectural claim (phases overlap rather than run in sequence) rather than restating the header ('...maps onto the same six phases') or any stated point line; it is load-bearing for the map's own non-linear framing, not decorative. No bullet fails all three tests.",
-   "fix_hint": null,
-   "blocking": false
-  }
- ],
- "blocking_findings_count": 0,
- "todos_count": 0
+  "class": "slides",
+  "training": "ae101",
+  "file": "curriculum/lectures/the-whole-map.md",
+  "verdict": "PASS",
+  "body_sha": "94bae1c420431d2fecca1f0af39eaac9855981b6156da198decc0d205f6c7a2d",
+  "shape_hash": "06b03968b9651b64",
+  "chunk_map": [
+    {
+      "index": 0,
+      "heading": "The whole map (H1, title slide)",
+      "lines": "1-2"
+    },
+    {
+      "index": 1,
+      "heading": "Every task maps onto the same six phases",
+      "lines": "3-17"
+    }
+  ],
+  "rules_evaluated": [
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 1,
+      "rule_lead": "Referent resolution under a sequential deck read.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Only one file-only chunk (chunk 1) exists beyond the title slide, so all referents must resolve within it plus its own header. Closest call: line 5 \"The loops drawn across them all run the same shape\" — \"them\" has no separate antecedent sentence of its own, but the chunk's own header (\"...maps onto the same six phases\") plus the immediately preceding clause (\"maps onto the same cycle\") jointly establish the referent before the pronoun fires; a reader holding the header resolves \"them\" to the cycle's six phases. Every other pronoun (\"it\" in the Context/Work bullets referring to \"the agent\", \"the result\" in Verification/Absorption referring to the immediately-prior Work/Verification bullet, \"several\" in the closing sentence referring to \"the phases\") resolves against material stated earlier in the same six-bullet list, which is cumulative in-chunk context, not a forward or cross-file pointer.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 2,
+      "rule_lead": "Cross-file and positional callbacks.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Chunk 1 opens with fresh content (\"Every piece of agentic work maps onto the same cycle...\") rather than any backward pointer at another slide or file. No construction of the form \"the opening lecture said\" / \"that story\" / \"as discussed\" appears anywhere in the body (lines 1-17). This is the training's first map reveal (per the maintainer's Placement note), so there is nothing upstream in this training for it to point at even informally.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 5,
+      "rule_lead": "No orphan slides.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Chunk 1 carries a lede sentence, the map figure, six developed definition bullets, and a closing generalization (\"The phases are places, not a pipeline. A real task sits in several at once.\") — a fully self-carrying claim on its own, not a wait-state or single context-dependent bullet. Chunk 0 is the bare H1 title slide (\"# The whole map\", no lede before the `##`); by the template's own convention this is prior context for chunk 1, not itself evaluated as an orphan candidate.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 6,
+      "rule_lead": "Header self-carries at projection distance.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Header \"Every task maps onto the same six phases\" (line 3) is literally verified by the chunk's own content: exactly six bolded bullet leads follow (Intent, Context, Work, Verification, Absorption, Outcome), and the closing sentence reaffirms \"The phases are places...\". Header + bolded leads read as a true summary under the sequential read; nothing in the chunk contradicts the header's count or claim.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 7,
+      "rule_lead": "LLM-cadence caps.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Checked all six sub-items against chunk 1: no \"Not X. Not Y. Z.\" construction anywhere; no anaphora/epistrophe triple (the six bullets are structurally parallel as a definition list, which is the list format itself, not a repeated rhetorical construction on one slide); no self-grading superlative (nothing like \"one of the most useful moves\"); no number-plus-retraction (the count \"six phases\" is stated plainly once, never hedged or walked back); no abstraction-noun stack (bullet prose is plain — \"What you point the work at\", \"How you know the result is any good\" — not stacked abstractions); the verb triplet in the Work bullet (\"acts, reads the result, corrects, goes again\") has every verb answer \"what does this concretely mean?\" on its own (perform an action / read what happened / adjust / repeat) — no empty leg.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 8,
+      "rule_lead": "Internal dialect never lands on a slide.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Grepped the raw body region (lines 1-17, confirmed via curriculum/evals/body-views/ae101--lecture--the-whole-map.body.txt) for the compendium's named dialect terms (surface-as-noun, firing, compendium, forcing function, beat, mood, Connections, container) — zero hits. All repo/authorial vocabulary (container discipline, Family B, near/far, the-loop-half-filled cross-refs) sits entirely in the maintainer/backing blocks below the cut, never in the student-facing body.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 9,
+      "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "The body bolds exactly six spans, each a single coined phase-name (\"**Intent.**\", \"**Context.**\", \"**Work.**\", \"**Verification.**\", \"**Absorption.**\", \"**Outcome.**\"), one per bullet, each well under the 5-word handle cap, and nothing else on the slide is bolded. This is the handle-per-item definition-list shape the rule's own worked exception for `## What You'll Learn` bullets (`- **[verb]** [thing]`, five one-word handles by template) explicitly treats as N/A-by-construction, not the banned monoculture of a bolded LEAD SENTENCE opening every bullet. The maintainer block's own \"Bold budget\" standing constraint (line 37) states and cites this exact shape against `check_slides.md §9` directly, functioning as a dated accept-note on the passage.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 10,
+      "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Ran `node scripts/check-slide-size.js --report` (no --file filter, so it walks the actual composed deck across the full AE101 corpus) -> output includes the row `174  6  Every task maps onto the same six phases  lectures/the-whole-map.md`, confirming the deck-builder itself resolves this file's `##` chunk into the composed deck (44 files / 245 slides total this run). The lecture is transcluded via the standard `[Lecture: The whole map](lectures/the-whole-map.md)` link in `curriculum/trainings/agentic-engineering-101/plan-mode-done-right.md:30`, which the renderer wraps in `.phase--lecture` (grepped `site/layouts/slides.js` for the wrapper class used by `buildDeckModel`) — the mechanism `buildDeckModel` requires for deck reachability.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 12,
+      "rule_lead": "Page geometry dies at the cut; reading order survives.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Ran `node scripts/check-slide-deixis.js --report` and grepped the output for \"the-whole-map\" -> no lines returned, i.e. zero flagged or accepted-and-cleared deixis phrases for this file. Independently, no positional phrase (\"below\", \"above\", \"at the top\", \"see below\") occurs anywhere in the body text (lines 1-17); the single figure reference is a same-chunk `{{figure:map-engine}}` embed with no separate pointer sentence.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 14,
+      "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/lectures/the-whole-map.md` -> \"files: 1  slides: 1  limits: 210 words / 6 bullets  oversized: 0 / ✓ every slide is within limits\". The corpus-wide `--report` run shows the exact figures: 174 words, 6 bullets (at, not over, the bullet ceiling) for this slide. No `**Slide size accepted:**` note is present or needed.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 15,
+      "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "This is a lecture, so its `##` heading must be a claim, not a label. \"Every task maps onto the same six phases\" is a full declarative assertion about how work behaves, not a bare topic label or imperative — it makes the same kind of claim as the rule's own examples (\"Passing is not proof\", \"Gates decay\").",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 16,
+      "rule_lead": "A bullet earns its slot or dies — three classes that read as rigour and carry nothing.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "Checked all six phase-definition bullets plus the closing sentence against the three low-value classes: none is a doctrine restatement (each bullet defines new, non-overlapping content for its own phase, nothing re-announced after already doing its work); none is self-referential design commentary (no bullet talks about the curriculum's own pedagogy or design intent); none is an aphorism kicker restating the header (the closing sentence \"The phases are places, not a pipeline. A real task sits in several at once.\" adds a genuinely new claim — concurrency rather than sequence — that the six isolated bullet definitions do not otherwise state, so it is not a redundant koan).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 17,
+      "rule_lead": "A retitled slide re-earns its bullets against the new header.",
+      "verdict": "N/A",
+      "chunks_flagged": [],
+      "evidence": null,
+      "na_reason": "no rename occurred on this file's own `##` header — `git diff 43e6cae1..HEAD -- curriculum/lectures/the-whole-map.md` shows edits confined to the maintainer and backing blocks (provenance updates for `the-map-filled-in.md`'s removal, source-stamp refreshes); line 3's heading is untouched, and no maintainer provenance note of the shape `(from <old-file>, header his)` exists for the body header.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 3,
+      "rule_lead": "Every backward reference points at a beat that exists.",
+      "verdict": "N/A",
+      "evidence": "na_reason: the M1/'You are here' beat that carried the only backward reference in this file was cut from the body 2026-08-29 (maintainer note line 30: \"say it over the map, do not give it a slide\") and now lives only as trainer narration in the maintainer block, which is out of body scope. The remaining body (lines 1-17) contains no 'the X you did/saw' construction naming any prior exercise, lecture, or module beat.",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "937289ef8075501c097d7bce42fadaeb01569ee647ab2fc0af0b189965c55567",
+      "carried_shape": "06b03968b9651b64"
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 4,
+      "rule_lead": "Live-demo beats survive a text read.",
+      "verdict": "N/A",
+      "evidence": "na_reason: no guess-before-reveal instruction (\"take a guess before...\") occurs anywhere in this container lecture; it is a 5-minute map opener, not a live-demo beat.",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "937289ef8075501c097d7bce42fadaeb01569ee647ab2fc0af0b189965c55567",
+      "carried_shape": "06b03968b9651b64"
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 11,
+      "rule_lead": "Numbering — position is computed, content ordinals are linted.",
+      "verdict": "N/A",
+      "evidence": "na_reason: no `## Phase N:` / `## N.` step header or in-file \"Phase K\"/\"Step K\" cross-reference occurs in this file's single `##` heading. Ran `node scripts/check-slide-numbering.js` -> `OK — 60 files, Phase/Step numbering consistent.`, exit 0 (corpus-wide script; this file contributes none of the checked constructs).",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "937289ef8075501c097d7bce42fadaeb01569ee647ab2fc0af0b189965c55567",
+      "carried_shape": "06b03968b9651b64"
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 13,
+      "rule_lead": "In-deck links work now; whether they EARN their place is open.",
+      "verdict": "N/A",
+      "evidence": "na_reason: no in-body markdown link `[text](...)` occurs anywhere in the body (`grep -n '\\[.*\\](' curriculum/lectures/the-whole-map.md` -> no output); the single structural include is the module file pointing INTO this lecture, not a link inside this file's own body.",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "937289ef8075501c097d7bce42fadaeb01569ee647ab2fc0af0b189965c55567",
+      "carried_shape": "06b03968b9651b64"
+    }
+  ],
+  "todos_count": 0,
+  "blocking_findings_count": 0,
+  "drift_rules_reread": [
+    {
+      "rule": "slides §1",
+      "verdict": "current wording re-read via class brief; PASS against body — see rules_evaluated[0]"
+    },
+    {
+      "rule": "slides §9",
+      "verdict": "current wording re-read via class brief (incl. 2026-08-13 lookup-surface and LO-bullet waivers); PASS against body — see rules_evaluated[6]"
+    },
+    {
+      "rule": "slides §10",
+      "verdict": "current wording re-read via class brief (incl. 2026-08-30 symmetric-attention addendum); PASS against body — see rules_evaluated[7], confirmed live against the composed deck, not inferred"
+    }
+  ],
+  "accept_notes_found": [
+    "L37 maintainer: \"Bold budget: the six phase-definition bullets keep theirs... and nothing else on the slide takes any\" — cites check_slides.md §9 directly; honored in rule 9's PASS above.",
+    "L30 maintainer: the *You are here* slide cut (2026-08-29, Antti-directed) — relevant to rule 3, which the prefill sidecar already parked N/A (no backward-reference beat remains in body).",
+    "L52 maintainer: \"`six phases` in the slide-3 header is the §20 memory-handle carve-out, not drift... Do not re-flag.\" — no independent slides-class rule in this brief turns on that phrase; noted so it is not mistaken for an open question.",
+    "L34/L36 maintainer: no-three-altitudes and no-`?`-glyph/no-backpressure-phrasing standing constraints — verified against the expanded figure SVG (single `?` glyph sits on the unrelated dashed prototyping-loop ellipse, not on the checking-loop ellipse the constraint governs); no body-text violation either way."
+  ]
 }

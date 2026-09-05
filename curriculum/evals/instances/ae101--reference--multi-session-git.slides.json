@@ -1,14 +1,16 @@
 {
   "class": "slides",
+  "training": "ae101",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/trainings/agentic-engineering-101/reference/multi-session-git.md",
   "verdict": "PASS",
-  "training": "ae101",
-  "body_sha": "a5c9e952f4030d1cc3e7d065d87ff9d2adcd1a2c1e4479c0320373e47036d1c9",
+  "body_sha": "6c116b35b9367337b8742fc2b924fbb386e5db864568ca1857af38872f51838e",
   "shape_hash": "8820c127e8f3ecfe",
+  "pin": "43e6cae1",
+  "diff_summary": "Since 43e6cae1: added §When-NOT item 4 'Coupled writes, shared decisions' (new numbered situation, bolded lead) plus its attribution line in the maintainer block; refreshed the two source-verification stamps (dates/due, re-confirmed via search-index) and the Quality line's per-class SHAs/pins. No header renamed, no chunk removed or reordered.",
   "chunk_map": [
     {
       "index": 0,
-      "heading": "H1/lede — Multi-session and Git: survival guide",
+      "heading": "Multi-session and Git: survival guide (H1 + lede)",
       "lines": "1-6"
     },
     {
@@ -39,12 +41,12 @@
     {
       "index": 6,
       "heading": "When NOT to run multi-session",
-      "lines": "78-87"
+      "lines": "78-89"
     },
     {
       "index": 7,
       "heading": "Close",
-      "lines": "88-91"
+      "lines": "90-93"
     }
   ],
   "rules_evaluated": [
@@ -54,7 +56,7 @@
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Full sequential read, chunk 0-7. Chunk1 line13 introduces \"Worktrees\"; chunk2 line23 \"**Worktrees** are the middle path\" reuses it (fine, established earlier same file). Chunk2 line29 \"That creates a sibling directory\" — \"That\" = the fenced command on line26, same chunk. Chunk3 line51 fence `../repo-bug-fix` reuses the name coined at line39 in the SAME chunk's numbered flow. Chunk4 lines56-57 \"the bug-fix session\"/\"the feature session\" reuse the worktree examples named in chunk3 lines39-41 (bug/issue-412, feature/export-csv) — term introduced on an earlier slide and reused, not a violation; fence lines61-63 reuses `../repo-feature` from chunk3 line41, same pattern. Chunk4 line68 \"Agent committed to the wrong branch\" is self-contained, no dangling referent. Chunk6 line86 \"**New to the loop.**\" / \"Land the single-session loop first\" — \"the loop\" is AE101 arc-earned spine vocabulary (orient->fix->close->compound), named repeatedly in body text of getting-going.md, learn-from-the-test.md, spot-gaps-build-the-loop.md, earn-the-trust.md well before this optional M1-M2 homework page (lede line3: \"Optional homework between M1 and M2\") — carve-out applies. No never-named, no vague-with-history, no re-chunk-stranded referent found anywhere in the body.",
+      "evidence": "Closest candidate: chunk 4 line 56 'A helper function you wrote in the bug-fix session is exactly what the feature session needs.' 'the bug-fix session' / 'the feature session' read as fresh labels but resolve against chunk 3's own worktree examples two slides back ('bug/issue-412 ../repo-bug-fix', 'feature/export-csv ../repo-feature', lines 39/41) — same-file reuse, not a dangling reference. Harm (reader can't follow) is absent: the descriptive names are self-explanatory even without the chunk-3 tie. Every other pronoun/demonstrative in the file (chunk1 'this', chunk2 'that directory'/'That creates', chunk5 'This is the one place') resolves to the immediately preceding noun inside the same chunk.",
       "fix_hint": null,
       "blocking": true
     },
@@ -64,7 +66,7 @@
       "rule_lead": "Cross-file and positional callbacks.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "No chunk points at another file's content by position. Line3 \"Optional homework between M1 and M2\" states this file's own place in the sequence (scheduling), not a callback into another file's argument (\"the opening lecture said...\"). No other cross-file reference exists in the body.",
+      "evidence": "No chunk names another lecture/exercise/module by position. The only cross-doc reference ('Referenced from AE101 M1 homework') sits in the maintainer block below the cut, out of the judged surface. Every callback in the body (worktrees, conflict/merge, 'the loop' in chunk 6 item 3) points at earlier content in THIS file, which rule 1 governs, not rule 2.",
       "fix_hint": null,
       "blocking": true
     },
@@ -74,7 +76,7 @@
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Every chunk (0-7) carries multiple sentences or a list, each with its own self-carrying claim. Shortest is chunk7 \"Close\" (lines88-91, 3 sentences): milestone / habit / grown-into are three distinct claims, not a bare wait-state or single context-dependent bullet.",
+      "evidence": "Closest candidate: chunk 0 (title + 2-sentence lede) and chunk 7 'Close' (3 short sentences) are the shortest chunks. Chunk 0 sets the file's scope and tone ('Optional homework... no rush') — a self-carrying framing claim, not a wait-state. Chunk 7 carries its own claim (sessions-in-parallel is a skill you grow into, stated as a 3-step progression) rather than depending on the prior chunk to mean anything. Neither is context-dependent.",
       "fix_hint": null,
       "blocking": false
     },
@@ -84,7 +86,7 @@
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Re-checked the one prior finding on this file (2026-08-24/28 instances, rule6 REVISE non-blocking): chunk4's header was \"Stashing and switching between sessions\" while its closing beat (lines68-69, wrong-branch-commit recovery) wasn't covered by the header's noun phrase. Since that pin the header was rewritten to \"Stashing, switching, and small recoveries between sessions\" (current line54) — \"small recoveries\" now literally covers the wrong-branch-commit tip. Re-read all 8 headers against their chunk content: chunk1 \"Why multi-session, why Git\" matches its two-paragraph why-argument; chunk2 \"Worktrees vs. branches vs. clones\" matches the three-way comparison; chunk3 \"Opening N Claude Code sessions on the same codebase\" matches open-flow + the agent-level trap + closing a session (session lifecycle, on-topic); chunk4 now matches per above; chunk5/6/7 headers are literal restatements of their content. No header the chunk's own content contradicts.",
+      "evidence": "Closest candidate: chunk 4 header 'Stashing, switching, and small recoveries between sessions' — 'switching' is only lightly covered (one clause, 'switch branches, re-commit on the right one' at line 68) versus stash/pop and reset --soft carrying most of the chunk. Still true, not contradicted: the chunk is a stash workflow plus a small recovery, and 'switching' names the recovery's last step. All other headers (chunk1 'Why multi-session, why Git', chunk2 'Worktrees vs. branches vs. clones', chunk3, chunk5, chunk6) are summarized exactly by their bodies.",
       "fix_hint": null,
       "blocking": false
     },
@@ -94,9 +96,9 @@
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Closest candidates: chunk3 line44 \"Each session has its own scrollback, its own working directory, its own branch\" and chunk2 line29 \"Two folders, two branches, zero checkout churn\" are anaphoric triples, but each third leg is a distinct concrete noun (branch; checkout churn), inside the exception. Chunk7 line90 \"Two sessions is a milestone. Five is a habit. Ten is something you grow into.\" — three-part parallel with a distinct, non-formulaic third leg. No \"Not X. Not Y. Z.\" construction anywhere; no self-grading superlative; no number-with-retraction (line11's \"Nothing committed is silently overwritten\" is a plain declarative, not a number-then-hedge); no abstraction-noun stack; no verb-triplet with an empty leg.",
+      "evidence": "Checked all 6 sub-tics against every chunk. 'Not X. Not Y. Z.' — zero hits (grep). Self-grading superlative — zero hits (grep for 'one of the most/best', 'most useful' etc). Number-with-retraction — none; every number in the file (line 82-88's minute counts, chunk 7's 'Two/Five/Ten') is stated once, not hedged then walked back. Abstraction-noun stacks / verb-triplet-with-empty-leg — none, prose stays concrete throughout (worktrees, branches, stash, merge). Closest to the anaphora/epistrophe ban: chunk 7 line 92 'Two sessions is a milestone. Five is a habit. Ten is something you grow into.' Stays inside: the three legs are not repeated phrasing (no shared opening or closing words), and the third leg carries new concrete content — a shift from 'crossing a threshold' (milestone) and 'repetition' (habit) to an open-ended, longer-horizon claim ('something you grow into') rather than a third numeric restatement.",
       "fix_hint": null,
-      "blocking": false
+      "blocking": true
     },
     {
       "compendium": "check_slides.md",
@@ -104,7 +106,7 @@
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "`grep -inE '\\bsurface\\b|\\bfiring\\b|\\bcompendium\\b|forcing function|\\bbeat\\b|\\bmood\\b|Connections' curriculum/trainings/agentic-engineering-101/reference/multi-session-git.md` -> one hit, line108, the maintainer-block Quality line (below the maintainer cut at line92, out of body scope). Zero hits in the body (lines1-91). \"the loop\" (chunk6 line86) is arc-earned training vocabulary per rule1's own carve-out, not maintainer-internal dialect.",
+      "evidence": "grep -niE '\\b(surface|firing|compendium|forcing function|beat|mood|Connections)\\b' over the body region: 0 hits (the two hits the pattern matched, lines 102 and 113, sit in the maintainer block below the line-94 cut). Chunk 6 item 3 uses 'the loop' (line 86) but that is arc-earned spine vocabulary per the rule's own carve-out (this file is AE101 M1 homework, and 'the loop' is the training's central named artifact, not repo-internal dialect like 'compendium' or 'surface'-as-noun).",
       "fix_hint": null,
       "blocking": true
     },
@@ -114,7 +116,7 @@
       "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "This file is a reference/lookup page (curriculum/trainings/agentic-engineering-101/reference/multi-session-git.md), so the per-slide <=1-bold budget is waived per the rule's own reference-page carve-out; the ~5-word handle cap still binds. All 6 bold spans in the body: line19 \"**Branches**\", line21 \"**Clones**\", line23 \"**Worktrees**\" (1 word each); line82 \"**Ordering dependencies.**\" (2 words); line84 \"**Greedy parallelism on a small task.**\" (6-word noun phrase, no finite verb — a label, not a bolded clause); line86 \"**New to the loop.**\" (4 words). Each is a noun-phrase label matching the rule's handle definition, not a bolded whole sentence.",
+      "evidence": "All body bold spans (grep '\\*\\*'): chunk 2 lines 19/21/23 — **Branches**, **Clones**, **Worktrees** (1-word handles, one per approach on a 3-way comparison slide); chunk 6 lines 82/84/86/88 — **Ordering dependencies.**, **Greedy parallelism on a small task.** (5 words, at the ≲5 cap), **New to the loop.**, **Coupled writes, shared decisions.** (one handle per numbered situation, 4 laws on one consolidation slide). Both chunks fall under 'a law/consolidation slide may carry one handle per law' — each bold names one of several parallel, distinct concepts on an enumeration slide, not a whole lead sentence repeated bullet-to-bullet. No bold appears in narrative/demo-narration prose elsewhere in the body. Maintainer-block bold (Canonical home, Read time, Attribution, Quality — lines 96-113) is below the cut, out of scope.",
       "fix_hint": null,
       "blocking": false
     },
@@ -124,7 +126,7 @@
       "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "`site/layouts/slides.js` lines255-256 (comment in buildDeckModel): phase-less content \"prework, supplementary, reference\" is \"slide-ified in place under a kind-labelled divider\" — reference pages ARE composed into the deck. This file is reached via training include links: `getting-going.md:81` (\"**Read:** [Multi-session and Git: survival guide](trainings/agentic-engineering-101/reference/multi-session-git.md)\") and `plan-mode-done-right.md:14`, so it is not a phase-less orphan stranded from the deck.",
+      "evidence": "Ran `node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/reference/multi-session-git.md` -> 'files: 1 slides: 7 ... oversized: 0' — the checker slide-ified the file, proving it reaches a deck. Read `site/layouts/slides.js` buildDeckModel: this file has no `.phase--lecture/.phase--exercise`, so as a standalone page it takes the `buildSingleDoc` single-doc path (line 265-268), and inside the composed whole-handbook deck it is slide-ified in place under an 'R' (reference) kind-labelled divider per the 2026-07-09 fix (lines 273-276, 281-289) rather than being dropped. Both layouts reach this content.",
       "fix_hint": null,
       "blocking": true
     },
@@ -134,7 +136,7 @@
       "rule_lead": "Page geometry dies at the cut; reading order survives.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "`node scripts/check-slide-deixis.js --file curriculum/trainings/agentic-engineering-101/reference/multi-session-git.md` -> \"OK — 1 files, no page-geometry pointers across the slide cut.\" (exit 0). Own read confirms no \"below/above/further down/at the top of this page\" phrasing in the body.",
+      "evidence": "grep -niE '\\b(below|above|further down|at the top|see below|a few paragraphs|this page)\\b' over the body region: 0 hits (both matches, lines 102 and 113, are maintainer-block, below the cut). Confirmed mechanically: `node scripts/check-slide-deixis.js --report` lists 5 accepted matches repo-wide and this file is not among them — no positional-deixis phrase in this file at all, accepted or otherwise.",
       "fix_hint": null,
       "blocking": true
     },
@@ -144,7 +146,7 @@
       "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "`node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/reference/multi-session-git.md --report` -> largest slide 187 words / 0 bullets (\"Worktrees vs. branches vs. clones\"); \"files: 1  slides: 7  limits: 210 words / 6 bullets  oversized: 0 — every slide is within limits\" (exit 0).",
+      "evidence": "`node scripts/check-slide-size.js --file curriculum/trainings/agentic-engineering-101/reference/multi-session-git.md` -> 'files: 1 slides: 7 limits: 210 words / 6 bullets ... oversized: 0 ... every slide is within limits'.",
       "fix_hint": null,
       "blocking": false
     },
@@ -152,9 +154,10 @@
       "compendium": "check_slides.md",
       "rule_index": 15,
       "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
-      "verdict": "PASS",
+      "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "This file is a flat quick-reference page, neither exercise nor lecture, so rule15's imperative-vs-claim binding split doesn't structurally apply. All 7 `##` headings are topic/subject labels (\"Why multi-session, why Git\", \"Worktrees vs. branches vs. clones\", \"Opening N Claude Code sessions on the same codebase\", \"Stashing, switching, and small recoveries between sessions\", \"Conflict recovery when two sessions edited the same file\", \"When NOT to run multi-session\", \"Close\"), matching the rule's own NOT-violation example \"catalogue entries naming their subject.\" No candidate declarative-vs-label mismatch found. Classified blocking:false here per the compendium's own note that this rule \"only ever produces notes\" on non-exercise/lecture files — a mis-scoped-as-gate concern, not a comprehension failure (the principle test: a label-vs-claim register mismatch is \"could be tighter,\" not \"cannot follow\").",
+      "evidence": null,
+      "na_reason": "rule's binary (exercise=imperative/phase-label, lecture=claim) addresses exercise and lecture files; this is a quick-reference page and its 7 body headers are topical/catalogue labels naming their subject ('Worktrees vs. branches vs. clones', 'Conflict recovery when two sessions edited the same file'), matching the carve-out's 'catalogue entries naming their subject' shape, not an imperative-vs-claim choice",
       "fix_hint": null,
       "blocking": false
     },
@@ -164,7 +167,18 @@
       "rule_lead": "A bullet earns its slot or dies — three classes that read as rigour and carry nothing.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "No literal `- ` bullets in the body; checked the numbered-list items instead (chunk3 flow steps1-4, lines39-42; chunk6 situations1-3, lines82-86) against the three low-value classes. Each item adds a distinct concrete move or scenario with its own reasoning — none is doctrine restatement, self-referential design commentary about the curriculum, or an aphorism kicker restating its header/a `**The point:**` line. Closest candidate: chunk7 line90 \"Two sessions is a milestone. Five is a habit. Ten is something you grow into.\" reads as a closer but carries its own new numeric-progression content, not a restatement of the \"Close\" header (a label, not a claim to restate).",
+      "evidence": "Scanned all 4 numbered items in chunk 6 (only bulleted/enumerated content in the body) against the 3 classes: (a) doctrine restatement — none, each of the 4 situations (ordering deps, greedy parallelism, new-to-the-loop, coupled writes) is a distinct case, not a re-announcement of a split already stated; item 4's merge-collision point is new (implicit design-call collision, distinct from chunk 5's explicit line-conflict case). (b) self-referential design commentary — none, no line narrates the curriculum's own pedagogy. (c) aphorism kicker restating its own header or a '**The point:**' line — chunk 7's closer introduces new content (the milestone/habit/grow-into progression) rather than restating 'Close' or any stated point line; file has no '**The point:**' line anywhere.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 17,
+      "rule_lead": "A retitled slide re-earns its bullets against the new header.",
+      "verdict": "N/A",
+      "chunks_flagged": [],
+      "evidence": null,
+      "na_reason": "diff since pin 43e6cae1 shows no header line changed (only a new item 4 added under the existing 'When NOT to run multi-session' header, plus source-stamp/Quality-line edits below the cut); no maintainer provenance note of the shape '(from <old-file>, header his)' anywhere in the file",
       "fix_hint": null,
       "blocking": false
     },
@@ -177,7 +191,7 @@
       "na_reason": "file contains no \"the X you did/saw\" backward references to a module exercise/lecture beat",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "852ae35da3e616d7155073864cdac445c58f63d6b32b4c88a9e0acc0909955b0",
+      "carried_from": "a5c9e952f4030d1cc3e7d065d87ff9d2adcd1a2c1e4479c0320373e47036d1c9",
       "carried_shape": "8820c127e8f3ecfe"
     },
     {
@@ -189,7 +203,7 @@
       "na_reason": "no guess/predict-then-reveal beat in this reference page",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "852ae35da3e616d7155073864cdac445c58f63d6b32b4c88a9e0acc0909955b0",
+      "carried_from": "a5c9e952f4030d1cc3e7d065d87ff9d2adcd1a2c1e4479c0320373e47036d1c9",
       "carried_shape": "8820c127e8f3ecfe"
     },
     {
@@ -201,7 +215,7 @@
       "na_reason": "no \"Phase N:\"/\"N.\" step headers; the numbered lists (chunk3's flow, chunk6's three situations) are ordinary bullets, not header-level ordinals",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "852ae35da3e616d7155073864cdac445c58f63d6b32b4c88a9e0acc0909955b0",
+      "carried_from": "a5c9e952f4030d1cc3e7d065d87ff9d2adcd1a2c1e4479c0320373e47036d1c9",
       "carried_shape": "8820c127e8f3ecfe"
     },
     {
@@ -213,30 +227,16 @@
       "na_reason": "body has zero in-page or cross-doc links (signals.has_urls: false); the only links live in the maintainer block, below the cut",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "852ae35da3e616d7155073864cdac445c58f63d6b32b4c88a9e0acc0909955b0",
+      "carried_from": "a5c9e952f4030d1cc3e7d065d87ff9d2adcd1a2c1e4479c0320373e47036d1c9",
       "carried_shape": "8820c127e8f3ecfe"
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 1,
-      "rule_lead": "Banned words — grep zero-tolerance.",
-      "verdict": "PASS",
-      "evidence": "mechanical: /\\b(delve|delving|honest|honestly|importantly|crucial|crucially|substrate|synergize|paradigm shift)\\b/ over body projection curriculum/evals/body-views/ae101--reference--multi-session-git.body.txt → 0 hits; pattern proven against planted violation.",
-      "fix_hint": "",
-      "blocking": false,
-      "prefilled": true
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 2,
-      "rule_lead": "Ritual / ceremony — hard ban in any curriculum/training surface.",
-      "verdict": "PASS",
-      "evidence": "mechanical: /\\b(ritual|rituals|ceremony|ceremonies)\\b/ over body projection curriculum/evals/body-views/ae101--reference--multi-session-git.body.txt → 0 hits; pattern proven against planted violation.",
-      "fix_hint": "",
-      "blocking": false,
-      "prefilled": true
     }
   ],
+  "todos_count": 0,
   "blocking_findings_count": 0,
-  "todos_count": 0
+  "accept_notes_found": [
+    "L104-108: Source verification MUST-DO block (re-open both URLs before first cohort; re-confirm X-thread quote verbatim; re-confirm Pragmatic Engineer piece still lacks 'worktree'; two named fallbacks) — maintainer-block content, out of judged scope, no body claim rests unguarded by it",
+    "L109: [checked:2026-08-31 result:OK due:2026-07-31] Cherny X-thread stamp, re-confirmed via search-index title (oEmbed/TwStalker workaround noted) — due date already past pub+6mo per the stamp's own note, flagged as maintainer's own freshness bookkeeping, not a slides-class concern",
+    "L110: [checked:2026-07-12 result:OK due:2026-09-04] Pragmatic Engineer stamp, corroborates parallel-checkouts framing only",
+    "L111: [checked:2026-08-30 result:OK due:none] delegated stamp to supplementary/workflow-composition-lineages.md for item 4's single-writer shape lineage"
+  ]
 }

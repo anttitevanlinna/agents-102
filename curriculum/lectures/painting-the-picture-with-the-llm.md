@@ -41,8 +41,8 @@ Let's go.
 
 **Minor-fix (2026-07-02, theory-completeness-review minor #5 "design, not a flaw unearned"):** added a five-word whisper ("It was trained to match you.") to the slide-1 closing bullet — earns "design" as training without teaching the mechanism; `the-machine-you-just-met.md` (M1 closer) owns the full preference-tuning payoff and already calls this bullet back.
 
-**Quality:** compendium-audited 2026-09-02 (writing@c0c37913 story@d065f8bc technical@8cc00874 behavior@1480362 pedagogy@77991802 strategy@1480362 slides@c0c37913)
-- judges @c0c37913: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-09-05 (writing@08946dd8 story@08946dd8 technical@08946dd8 behavior@1480362 pedagogy@77991802 strategy@08946dd8 slides@c0c37913)
+- judges @08946dd8: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **Lecture meta:** *~3 min opener for Module 1, before the wizard-move demo. Sets the two open questions the training answers by accretion through M1–M6.*
 

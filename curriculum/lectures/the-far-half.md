@@ -38,8 +38,8 @@
 
 **Slide-1 recap bullet cut (2026-08-25, Antti-approved):** *"The near half is behind you. Intent, Context, Work… Every move so far lived there."* — restated `the-whole-map`'s closing slide; the veiled-near-half figure carries the same content visually. The claim row went with it. Do not restore; the figure plus the lit-side bullet are the beat.
 
-**Quality:** compendium-audited 2026-08-29 (writing@43e6cae1 story@43e6cae1 technical@8cc00874 behavior@1c765f2 pedagogy@e9c6231e strategy@1c765f2 slides@43e6cae1)
-- judges @e9c6231e: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-09-05 (writing@43e6cae1 story@08946dd8 technical@08946dd8 behavior@1c765f2 pedagogy@e9c6231e strategy@08946dd8 slides@08946dd8)
+- judges @08946dd8: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS (1 todo see instances/ae101--lecture--the-far-half.strategy.json), slides PASS
 
 <!-- backing -->
 

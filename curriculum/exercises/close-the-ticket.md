@@ -131,5 +131,5 @@ OODA
 
 <!-- /backing -->
 
-**Quality:** compendium-audited 2026-09-05 (writing@324b81d7 story@324b81d7 technical@324b81d7 behavior@1480362 pedagogy@324b81d7 strategy@324b81d7 slides@324b81d7)
-- judges @324b81d7: writing PASS (4 todos see instances/ae101--exercise--close-the-ticket.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS (1 todo see instances/ae101--exercise--close-the-ticket.pedagogy.json), strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-09-05 (writing@08946dd8 story@324b81d7 technical@324b81d7 behavior@1480362 pedagogy@324b81d7 strategy@324b81d7 slides@324b81d7)
+- judges @08946dd8: writing PASS (3 todos see instances/ae101--exercise--close-the-ticket.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS (1 todo see instances/ae101--exercise--close-the-ticket.pedagogy.json), strategy PASS, slides PASS

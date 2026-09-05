@@ -1,10 +1,10 @@
 {
   "class": "slides",
+  "training": "ae101",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/the-wizard-move.md",
-  "body_sha": "bc41b91978d40668ac9b66b90e4dadb79ae94c8ba39bdbb2b9265800fa2b3e84",
+  "body_sha": "a64be3f405ea264b6b96ba403bcd5e2b9f4fd928e60540b732de1a6c948822aa",
   "shape_hash": "1870b031fbe8c765",
   "verdict": "PASS",
-  "training": "ae101",
   "chunk_map": [
     {
       "index": 0,
@@ -29,7 +29,7 @@
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm: a referent that does not resolve strands the reader mid-slide. Closest candidates checked: chunk 1 (3-9) line 5 'In one, the first prompt is' and line 7 'In the other session' both resolve against 'Two Claude Code sessions' named at line 3, same chunk; line 7 'Take a guess before it runs' resolves 'it' against 'the same second prompt: dinner' two clauses earlier, same chunk; line 9 'The first exchange became part of context' resolves against 'the first prompt' named twice in the same chunk. Chunk 2 (11-15) line 13 'Context is whatever you tell it' — 'it' = Claude, a proper noun introduced by name four times in chunk 1 (lines 5, 5, 7, 7) and reused here, which is the compendium's explicit NOT-a-violation case (term introduced on an earlier slide, reused). Line 15 'The move is loading the right context before the question' reads as the chunk's own header ('You steer the answer by loading context') restated in the same chunk, not a dangling forward or backward pointer. No never-named, vague-with-history, or re-chunk-stranded referent anywhere in the current 2-chunk body. PASS.",
+      "evidence": "Harm: an unresolved referent strands the reader mid-slide. Chunk 1 (3-9): 'the first prompt' (5,7), 'it runs'/'Claude suggest' (7), and 'the first exchange'/'context colored everything after' (9) all resolve inside the same chunk against 'Two Claude Code sessions' (5) and the two named prompts. Chunk 2 (11-15): line 13 'Context is whatever you tell it' — 'it' = Claude, named four times in chunk 1, a term introduced on an earlier slide and reused, the compendium's explicit NOT-a-violation case; line 15 'The move is loading the right context before the question' restates the chunk's own header (11) and the 'dinner question' narrated in chunk 1 — within-file continuation, not a dangling pointer. No never-named, vague-with-history, or re-chunk-stranded referent in the current 2-chunk body.",
       "fix_hint": null,
       "blocking": true
     },
@@ -41,7 +41,7 @@
       "chunks_flagged": [
         1
       ],
-      "evidence": "Harm: a reveal narrated before its guess kills the live demo's payoff. Chunk 1 (3-9): guess instruction at line 7 ('Take a guess before it runs. What does Claude suggest now?') precedes the reveal at line 9 ('Something Finnish: salmon, rye bread, meatballs.') — guess before outcome, same chunk, correct order. Matches the maintainer block's own accept-note (L21: 'Guess before reveal. The guess paragraph precedes the Finnish-dinner answer.'). PASS.",
+      "evidence": "Harm: a reveal narrated before its guess kills the demo's payoff. Chunk 1 (3-9): guess at line 7 ('Take a guess before it runs. What does Claude suggest now?') precedes the reveal at line 9 ('Something Finnish: salmon, rye bread, meatballs.') — correct order, same chunk. Matches the maintainer block's own accept-note (L21: 'Guess before reveal. The guess paragraph precedes the Finnish-dinner answer. Both sessions get narrated before the live run.').",
       "fix_hint": null,
       "blocking": true
     },
@@ -51,7 +51,7 @@
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm: a chunk whose only content is a wait-state or one context-dependent bullet projects as a slide that says nothing standalone. Chunk 1 (3-9) carries the full demo plus reveal; chunk 2 (11-15) carries the steering claim plus its restatement. Both self-carry. Chunk 0 is the title-only opener (no lede, per the maintainer block's own standing constraint 'Openers carry no setup lede') — that is the template's defined title-slide shape, not the wait-state/context-dependent-bullet failure this rule targets. PASS, no orphan.",
+      "evidence": "Harm: a chunk whose only content is a wait-state or one context-dependent bullet says nothing standalone. Chunk 1 (3-9) carries the full two-session demo plus reveal; chunk 2 (11-15) carries the steering claim and its restatement. Chunk 0 is the title-only H1 with no lede, the standard title-slide shape (matches maintainer standing constraint 'Openers carry no setup lede'), not the wait-state/context-dependent-bullet failure this rule targets.",
       "fix_hint": null,
       "blocking": false
     },
@@ -61,7 +61,7 @@
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm: a header the chunk's own content contradicts misleads a reader skimming only headers. 'Context is King' (chunk 1) is delivered exactly: the same second question gets two different answers depending on what came before. 'You steer the answer by loading context' (chunk 2) is restated near-verbatim at line 15 ('The move is loading the right context before the question'). Both headers are true summaries of their chunk's content. PASS.",
+      "evidence": "Harm: a header the chunk's own content contradicts misleads a header-only skim. 'Context is King' (chunk 1) is delivered exactly: the same second question gets two different answers depending on what came before. 'You steer the answer by loading context' (chunk 2) is restated near-verbatim at line 15 ('The move is loading the right context before the question'). Both headers are true summaries of their own chunk.",
       "fix_hint": null,
       "blocking": false
     },
@@ -71,7 +71,7 @@
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm: a cadence tic reads as authorial clutter under slide density. Checked all six sub-patterns across chunks 0-2 (lines 1-15): (1) 'Not X. Not Y. Z.' triple — grep -inE 'Not [A-Za-z][^.]*\\. *Not [A-Za-z]' on the body view → 0 hits (the pre-existing 'Not by reading about it.' line lived only in the now-removed 'The loop is what you repeat' section per the d065f8bc..HEAD diff and is absent from the current body). (2) anaphora/epistrophe triples — none. (3) self-grading superlatives — grep -inE 'one of the (most|best)' → 0 hits. (4) number + own retraction — body prose contains zero digits (grep -noE '[0-9]+' against the body view matches nothing). (5) abstraction-noun stacks — body stays concrete throughout (capital of Italy, pasta/osso buco/risotto, largest lake in Finland, salmon/rye bread/meatballs). (6) verb triplets with an empty leg — none. PASS on all sub-items; no self-grading-superlative hit, so this row carries no value-prop-leak blocking instance.",
+      "evidence": "Checked all six sub-patterns against the body (lines 1-15): (1) 'Not X. Not Y. Z.' triple — none; (2) anaphora/epistrophe triples — none; (3) self-grading superlatives — none (grep -inE 'one of the (most|best)' -> 0 hits); (4) number + own retraction — body prose contains zero digits (grep -noE '[0-9]+' on lines 1-15 -> no matches); (5) abstraction-noun stacks — body stays concrete throughout (capital of Italy, pasta/osso buco/risotto, largest lake in Finland, salmon/rye bread/meatballs); (6) verb triplets with an empty leg — none. No sub-item hit, no self-grading-superlative instance either, so no blocking value-prop-leak.",
       "fix_hint": null,
       "blocking": false
     },
@@ -81,7 +81,7 @@
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm: repo/maintainer vocabulary projected on a wall is unparsable to the room. Ran: grep -inE '\\b(surface|firing|compendium|forcing function|beat|mood|Connections)\\b' curriculum/evals/body-views/ae101--lecture--the-wizard-move.body.txt -> no output, exit 1 (zero matches). No dialect term anywhere in the 2-chunk body. PASS.",
+      "evidence": "Harm: repo/maintainer vocabulary projected on a wall is unparsable to the room. Ran: sed -n '1,16p' curriculum/lectures/the-wizard-move.md | grep -inE '\\b(surface|firing|compendium|forcing function|beat|mood|Connections)\\b' -> no output, zero matches. No dialect term anywhere in the body.",
       "fix_hint": null,
       "blocking": true
     },
@@ -91,7 +91,7 @@
       "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm: bold-as-claim-bullets swamps a slide with false handles. Ran: grep -n '\\*\\*' curriculum/lectures/the-wizard-move.md — first hit at line 19, i.e. inside the maintainer block (maintainer_cut = 17); zero bold spans in the body (lines 1-16). Matches the maintainer's own standing constraint (L20: 'Zero bold on the narrative and demo slides ... go very lightly on the bold'). PASS.",
+      "evidence": "Harm: bold-as-claim-bullets swamps a slide with false handles. Ran: sed -n '1,16p' curriculum/lectures/the-wizard-move.md | grep -c '\\*\\*' -> 0. Zero bold spans anywhere in the body (first '**' in the file is inside the maintainer block, line 19, past the cut at line 17). Matches the maintainer's own standing constraint (L20: 'Zero bold on the narrative and demo slides ... go very lightly on the bold').",
       "fix_hint": null,
       "blocking": false
     },
@@ -101,7 +101,7 @@
       "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm: content present in long-read but absent from the composed deck silently strands a reader who toggled to Slides. Registry-confirmed: curriculum/trainings/agentic-engineering-101/getting-going.md:42 includes this file via a plain include-link ('[The wizard move](lectures/the-wizard-move.md)'), the standard shape that reaches phase--lecture wrapping in the deck. Ran: node scripts/check-slide-size.js --file curriculum/lectures/the-wizard-move.md -> 'files: 1  slides: 2' — matches the 2 '##' chunks read from the current source; the file has no phase-less prework/supplementary block that could be silently dropped. PASS.",
+      "evidence": "Harm: content present in long-read but absent from the composed deck silently strands a reader who toggled to Slides. Ran: node scripts/check-slide-size.js --file curriculum/lectures/the-wizard-move.md -> 'files: 1  slides: 2' — matches the file's 2 '##' chunks exactly, confirming both sections reach buildDeckModel. This is a straightforward lecture body under the standard .phase--lecture wrapper (no phase-less prework/supplementary block that could be silently dropped, the 2026-07-09 failure mode).",
       "fix_hint": null,
       "blocking": true
     },
@@ -111,7 +111,7 @@
       "rule_lead": "Page geometry dies at the cut; reading order survives.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm: a positional pointer ('below', 'above', 'at the top') aims at a wall once the renderer cuts at ##. Ran: node scripts/check-slide-deixis.js --file curriculum/lectures/the-wizard-move.md -> exact output: 'OK — 1 files, no page-geometry pointers across the slide cut.' PASS.",
+      "evidence": "Harm: a positional pointer ('below', 'above', 'at the top') aims at a wall once the renderer cuts at ##. Ran: node scripts/check-slide-deixis.js --file curriculum/lectures/the-wizard-move.md -> exact output: 'OK — 1 files, no page-geometry pointers across the slide cut.'",
       "fix_hint": null,
       "blocking": true
     },
@@ -121,7 +121,7 @@
       "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm: an oversized chunk overflows a single projected slide. Ran: node scripts/check-slide-size.js --file curriculum/lectures/the-wizard-move.md -> exact output: 'files: 1   slides: 2   limits: 210 words / 6 bullets ... oversized: 0 ... ✓ every slide is within limits'. PASS, no accept-note needed.",
+      "evidence": "Harm: an oversized chunk overflows a single projected slide. Ran: node scripts/check-slide-size.js --file curriculum/lectures/the-wizard-move.md -> exact output: 'files: 1   slides: 2   limits: 210 words / 6 bullets ... oversized: 0 ... every slide is within limits'. No accept-note needed.",
       "fix_hint": null,
       "blocking": false
     },
@@ -131,7 +131,17 @@
       "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm: a label-shaped header on a lecture wastes the beat where a law should be named. This file is a lecture, so headings owe claims: 'Context is King' (a maxim/claim) and 'You steer the answer by loading context' (a claim about reader agency) — both claims, neither a bare label or phase tag. This rule postdates the template's explicit blocking/non-blocking partition (added after the rules-9-14 gap noted in the template); applying the stated principle (\"I cannot follow this\" = blocking, \"this could be tighter\" = TODO), a label-shaped header would cost the reveal-a-law beat, not comprehension — classified non-blocking, consistent with header-adjacent rule 6. PASS, no violation either way.",
+      "evidence": "Harm: a label-shaped header on a lecture wastes the beat where a law should be named. This file is a lecture, so headings owe claims: 'Context is King' (a maxim/claim) and 'You steer the answer by loading context' (a claim about reader agency) — both claims, neither a bare label nor a phase tag. Classified non-blocking per the template's stated principle (postdates the explicit rules 1/2/3/4/8/10/12 blocking list): a label-shaped header would cost the reveal-a-law beat, not comprehension, consistent with header-adjacent rule 6's non-blocking status. No violation present either way.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 17,
+      "rule_lead": "A retitled slide re-earns its bullets against the new header.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no retitle event on either current heading",
       "fix_hint": null,
       "blocking": false
     },
@@ -143,7 +153,7 @@
       "evidence": "Harm: a callback to another file by position stops resolving once deck start position shifts. Scanned all 3 body chunks (lines 1-22): no reference to another lecture, module, or document by name or position — consistent with the maintainer block's own 'Zero map references. M1 is protected.' N/A, no cross-file callback present.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "2afd1c048bea72fa90a7bf08742db9971e56ee81a79f384acb1fc05c30eb33bd",
+      "carried_from": "bc41b91978d40668ac9b66b90e4dadb79ae94c8ba39bdbb2b9265800fa2b3e84",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -154,7 +164,7 @@
       "evidence": "Harm: a backward 'the X you did/saw' pointing at a dead beat strands the reader. This file is the M1 opener (registry-confirmed: curriculum/trainings/agentic-engineering-101/getting-going.md:42 includes it via a plain include-link, and the maintainer block states 'Placement: M1 opener, after Connections, before the exercise') — there is no prior module beat available to reference, and body carries no 'you did/saw' construction anywhere. N/A.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "2afd1c048bea72fa90a7bf08742db9971e56ee81a79f384acb1fc05c30eb33bd",
+      "carried_from": "bc41b91978d40668ac9b66b90e4dadb79ae94c8ba39bdbb2b9265800fa2b3e84",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -165,7 +175,7 @@
       "evidence": "Harm: hand-numbered headers drift out of sync with the renderer's computed position. This file has no '## Phase N:' or '## N.' step headers (headings are 'Context is King' / 'You steer the answer by loading context' / 'The loop is what you repeat' — none numbered). Ran node scripts/check-slide-numbering.js --file curriculum/lectures/the-wizard-move.md → exact output: 'OK — 1 files, Phase/Step numbering consistent.' N/A, mechanically confirmed.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "2afd1c048bea72fa90a7bf08742db9971e56ee81a79f384acb1fc05c30eb33bd",
+      "carried_from": "bc41b91978d40668ac9b66b90e4dadb79ae94c8ba39bdbb2b9265800fa2b3e84",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -176,7 +186,7 @@
       "evidence": "Harm: a dead in-deck link strands a click. Scanned body (lines 1-22) for markdown link syntax (grep -no '\\[.*\\](.*)') → 0 hits. Body carries zero links. N/A.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "2afd1c048bea72fa90a7bf08742db9971e56ee81a79f384acb1fc05c30eb33bd",
+      "carried_from": "bc41b91978d40668ac9b66b90e4dadb79ae94c8ba39bdbb2b9265800fa2b3e84",
       "carried_shape": "1870b031fbe8c765"
     },
     {
@@ -187,32 +197,22 @@
       "evidence": "Rule fires on bullets specifically. Ran grep -n '^\\s*-\\s' against the body view (lines 1-22) → 0 hits. Body is entirely prose paragraphs, no bullet list anywhere. N/A, no bullet shape present.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "2afd1c048bea72fa90a7bf08742db9971e56ee81a79f384acb1fc05c30eb33bd",
+      "carried_from": "bc41b91978d40668ac9b66b90e4dadb79ae94c8ba39bdbb2b9265800fa2b3e84",
       "carried_shape": "1870b031fbe8c765"
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 1,
-      "rule_lead": "Banned words — grep zero-tolerance.",
-      "verdict": "PASS",
-      "evidence": "mechanical: /\\b(delve|delving|honest|honestly|importantly|crucial|crucially|substrate|synergize|paradigm shift)\\b/ over body projection curriculum/evals/body-views/ae101--lecture--the-wizard-move.body.txt → 0 hits; pattern proven against planted violation.",
-      "fix_hint": "",
-      "blocking": false,
-      "prefilled": true
-    },
-    {
-      "compendium": "check_writing.md",
-      "rule_index": 2,
-      "rule_lead": "Ritual / ceremony — hard ban in any curriculum/training surface.",
-      "verdict": "PASS",
-      "evidence": "mechanical: /\\b(ritual|rituals|ceremony|ceremonies)\\b/ over body projection curriculum/evals/body-views/ae101--lecture--the-wizard-move.body.txt → 0 hits; pattern proven against planted violation.",
-      "fix_hint": "",
-      "blocking": false,
-      "prefilled": true
     }
   ],
   "blocking_findings_count": 0,
   "todos_count": 0,
-  "notes": "Prefill --write parked 5 N/A check_slides.md rows (2, 3, 11, 13, 16) plus 2 check_writing.md mechanical PASS rows (1, 2) at shape_hash 1870b031fbe8c765, matching the current file. Brief kept 11 rules (1, 4, 5, 6, 7, 8, 9, 10, 12, 14, 15) — all judged fresh above against the CURRENT body, which is now 2 body '##' chunks (down from the 3-chunk / 'The loop is what you repeat' shape the previous on-disk instance, body_sha 2afd1c04..., described). Diff vs pin d065f8bc..HEAD confirms the 'The loop is what you repeat' section was removed and replaced by a maintainer-block bullet ('The loop-over-the-fix beat belongs to the M1 closer, not here'), plus a Time-stamp edit (10min->8min) and a Quality-line date bump — all outside body_regions [[1,16]] and outside this class's scope except that they retire the chunk-3 rows the prior instance carried; this instance replaces those in full rather than carrying them forward. Cross-file observation, NOT filed as a slides rule on this file (no compendium row owns it, and the target of the drift is a different file): curriculum/trainings/agentic-engineering-101/trainer-modules.md:83 still reads 'three fresh Claude Code sessions, a new empty folder each' — stale against this lecture's current two-session demo (body lines 3-9; maintainer L39 'Two sessions is the dose'; getting-going.md:121 already reads 'two fresh Claude Code sessions'). Flagging in notes for whichever pass next touches trainer-modules.md.",
-  "rule_questions": []
+  "notes": "Diff since pin 17446703 (git diff 17446703..HEAD -- curriculum/lectures/the-wizard-move.md) touches ONLY the maintainer block: appends 'Confirmed against the module's Big Idea + LO (Antti, 2026-09-01).' to the no-plan-mode standing constraint, removes the now-resolved 'Open:' line, and bumps the Quality-line dates/SHAs. Body (lines 1-16) is byte-identical to the previously-judged version; body_sha changed only because it covers the whole file. Rule-drift check: fetched slides §1, §9, §10 fresh via rule.js and diffed against the class-brief text — verbatim match, no wording change since the prior judgment; re-read against the current (unchanged) body, all three still PASS. Rule 17 is new since the prior instance (absent from that file's rule set entirely) and is judged fresh here: N/A, no retitle event found via `git log --follow -p` on either current heading. git history confirms this file previously carried additional sections ('Who this is for', 'The loop is what you repeat', etc.) that were later deleted outright (not retitled) in earlier passes predating this pin — not a rule-17 case. Prior on-disk instance (body_sha bc41b919...) additionally carried two check_writing.md rows (1, 2); the current class brief assembles only check_slides.md, so those are out of this class's scope and dropped, per 'emit rows only for rules your brief contains.'",
+  "accept_notes_found": [
+    "L20: 'Zero bold on the narrative and demo slides' — restates compliant state for §9, not an override (no bold present to waive)",
+    "L21: 'Guess before reveal. The guess paragraph precedes the Finnish-dinner answer.' — restates compliant state for §4, not an override",
+    "L22: 'No plan mode on this surface ... Confirmed against the module's Big Idea + LO (Antti, 2026-09-01)' — content-decision note, not a slides-rule override",
+    "No dated 'Slide size accepted:' / 'Slide deixis accepted:' / dialect accept-note present — none needed, no violations found that require one"
+  ],
+  "drift_rules_reread": [
+    "slides §1 — fetched via rule.js, verbatim-matches class brief; body's referent resolutions (see rule-1 row) still PASS under current wording",
+    "slides §9 — fetched via rule.js, verbatim-matches class brief; body carries zero bold in-region (see rule-9 row), still PASS under current wording",
+    "slides §10 — fetched via rule.js, verbatim-matches class brief; deck presence confirmed via check-slide-size.js (see rule-10 row), still PASS under current wording"
+  ]
 }

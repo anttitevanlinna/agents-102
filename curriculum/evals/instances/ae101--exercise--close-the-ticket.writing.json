@@ -3,18 +3,23 @@
   "training": "ae101",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/close-the-ticket.md",
   "verdict": "PASS_WITH_TODOS",
-  "body_sha": "8817fa67174bd6ac191f38356e8ee3c97f188dd1b1c75554b44afd02e1b0aff6",
+  "body_sha": "4045cbc83af40d99e7e41068e3c8c36e29d8755a1bfffaecf4bb365bf99aa87c",
   "shape_hash": "04c8bbd89721df08",
-  "pin": "9edae2ef",
+  "pin": "324b81d7",
   "staleness_reason": "diff-region",
-  "diff_reviewed": "git diff 9edae2ef..HEAD -- curriculum/exercises/close-the-ticket.md: (1) L37 prompt-3 lead-in reworded from 'Ask Claude to write the close-out, update the ticket, and report what it wrote.' to 'Ask Claude to update the ticket with a close-out note and report what it wrote.'; (2) heading L50 renamed '## What happened' -> '## Two artefacts from one ticket'; (3) the Quality line restamped.",
+  "diff_reviewed": "git diff 324b81d7..HEAD -- curriculum/exercises/close-the-ticket.md: the only hunk is the Quality line itself (compendium-audited date 2026-09-02 -> 2026-09-05, per-class SHAs bumped from 9edae2ef/43e6cae1/77991802 to 324b81d7, writing todo count 1->4, pedagogy gains 1 todo, story/strategy lose their todo). No body, maintainer, or backing content changed between the pin and HEAD; re-judged the whole file fresh rather than trusting that stamp.",
   "accept_notes_found": [
-    "L62 - connector is assumed-known vocabulary (Antti 2026-08-18); check_writing SS8 / check_student_facing SS2 findings on it overruled, do not re-file",
-    "L64 - connector install named-not-taught, cut three-routes bullet 2026-08-12 as NVA, 'Do not restore it' (licensed Cut-date/Do-not-restore shape under check_writing SS3)",
-    "L115 - maintainer-frame source stamp [checked:2026-08-03 result:ATTESTED due:none], maintainer-attested per check_research_claims SS1, notes one LLM->the agent reshape on the action steps",
-    "L122-124 - Stance block: 'contested: the reach of anything... do not file the missing bullet as a defect, and do not add one' - directly covers the closing-slide 'Anything can be inspected and reverse-engineered' universal claim",
-    "L130 - OODA last-run date stamp (legitimate per check_writing SS3 date-stamp exception)",
-    "L134 - Quality line eval-pass log stamp (legitimate per check_writing SS3 date-stamp exception)"
+    "L62 - \"Connector\" ruled assumed-known vocabulary (Antti 2026-08-18); check_writing SS8 / check_student_facing SS2 findings on it are overruled, do not re-file.",
+    "L64 - Connector install named-not-taught; three-routes bullet cut 2026-08-12 as NVA, licensed 'Cut (date) ... Do not restore' shape under check_writing SS3.",
+    "L66 - Trainer plug-point caveat on admin-only connector provisioning, deliberately not in the body; routes to trainer-facing material by design.",
+    "L115 - maintainer-frame source stamp [checked:2026-08-03 result:ATTESTED due:none], maintainer-attested per check_research_claims SS1; documents a deliberate LLM->the agent reshape on the three action steps, capability sentence keeps LLM.",
+    "L122-125 - Stance block: 'contested: the reach of anything ... do not file the missing bullet as a defect, and do not add one' - directly forecloses a check_writing SS12/SS21 finding on the L47 'Anything can be reverse-engineered' universal claim.",
+    "L130 - OODA last-run date stamp (legitimate per check_writing SS3 date-stamp exception).",
+    "L134 - Quality line eval-pass log stamp (legitimate per check_writing SS3 date-stamp exception)."
+  ],
+  "notes": [
+    "Rule-question, not filed as a row: L58 '**View summary:** The student reads one real ticket, has the agent reverse-engineer...' is below the maintainer fence but check_student_facing SS5's View-summary exception says to treat that one line as student-facing wherever the fence is the routing test. Read literally, third-person 'The student reads...' matches check_writing SS7's banned shape ('the student wants X'). Judged PASS on check_writing SS7 anyway: this line ships as a buyer/trainer-facing handbook card blurb (catalog register, third-party reader), not in-exercise address to the student, so SS7's harm (leaking teacher-framing into the student's own reading experience) is not present. Flagging for a maintainer call on whether the View-summary exception should be read that literally.",
+    "L35 link path '../trainings/agentic-engineering-101/reference/mcp-and-connectors.md' uses a depth-counted relative prefix. check_writing SS18 (link TEXT only) explicitly disclaims path-form as out of its scope, routing path-form to curriculum/module-shape.md SS Cross-doc links, which is not one of this class's compendiums. Not filed as a writing-class row; belongs to whichever surface owns module-shape.md."
   ],
   "rules_evaluated": [
     {
@@ -22,7 +27,7 @@
       "rule_index": 1,
       "rule_lead": "Banned words — grep zero-tolerance.",
       "verdict": "PASS",
-      "evidence": "view.json greps on body (lines 1-55): em_dash pattern — body_hits 0, planted_proof true, status CLEAN; banned_words pattern \\b(delve|delving|honest|honestly|importantly|crucial|crucially|substrate|synergize|paradigm shift)\\b — body_hits 0, CLEAN; leverage_verb pattern \\bleverag(e|es|ing)\\b — body_hits 0, CLEAN.",
+      "evidence": "body-view greps on lines 1-55: em_dash pattern — 0 hits, planted_proof true, CLEAN; banned_words \\b(delve|delving|honest|honestly|importantly|crucial|crucially|substrate|synergize|paradigm shift)\\b — 0 hits, CLEAN; leverage_verb \\bleverag(e|es|ing)\\b — 0 hits, CLEAN. Manually re-ran `grep -n — curriculum/exercises/close-the-ticket.md` this session: every hit lands at L62/64/115/123/124, all below the L56 maintainer cut.",
       "fix_hint": null,
       "blocking": true
     },
@@ -31,7 +36,7 @@
       "rule_index": 2,
       "rule_lead": "Ritual / ceremony — hard ban",
       "verdict": "PASS",
-      "evidence": "view.json grep ritual_ceremony pattern \\b(ritual|rituals|ceremony|ceremonies)\\b — body_hits 0, planted_proof true, CLEAN. Body's own use of the licensed substitute word is at L54 'The next exercise sweeps this whole session.'",
+      "evidence": "body-view grep ritual_ceremony \\b(ritual|rituals|ceremony|ceremonies)\\b — 0 hits in body, planted_proof true, CLEAN. Body's own licensed substitute word appears correctly at L54 'The next exercise sweeps this whole session.'",
       "fix_hint": null,
       "blocking": true
     },
@@ -40,16 +45,16 @@
       "rule_index": 3,
       "rule_lead": "No stale markers, no \"fixed\" retrospectives, no session biography.",
       "verdict": "PASS",
-      "evidence": "Body (L1-55): view.json greps session_biography (\\b(caught live|now fixed|previously|used to say|MOVED)\\b) and dated_line (\\b20\\d\\d-\\d\\d-\\d\\d\\b) both body_hits 0, CLEAN, planted-proven. Per this dispatch's explicit instruction, maintainer + backing blocks are also in scope for SS3 (a block states what is TRUE NOW). Read L58-131: closest candidate is L64 'The three-routes bullet (gh / inherited connector / paste) was cut 2026-08-12 as NVA... Do not restore it.' — this is the rule's own licensed 'Cut (date) … Do not restore' accept-note shape ('cut stays out of the alternation — the licensed accept-note carries it by design'), stays inside. Quality line (L134-135) and OODA last-run (L130) are the explicitly-excepted eval-pass/verification date stamps. The Sources entry's 'One reshape on the record: LLM → the agent...' (L115) is borderline but reads as a translation note needed to interpret the verbatim-quote-vs-paraphrase fidelity of the maintainer-attested source, not a journey narration of an edit to this file's own standing content — flagged as a rule question in notes, not filed.",
+      "evidence": "Body L1-55: dated_line and session_biography greps both 0 hits, CLEAN, planted_proof true. This rule's extension to maintainer/backing prose is in scope per this dispatch's own instruction, so I read L58-135 for the tense test rather than exempting it. L62 and L64 are dated maintainer notes stating a standing constraint plus a licensed 'Cut (date) ... Do not restore' shape the rule's own text names as legitimate-by-design; neither narrates a journey beyond the licensed frame. L116's 'One reshape on the record: LLM -> the agent' documents a translation-fidelity fact about the quoted source (why the body wording differs from the verbatim quote), which is the kind of empirical finding the rule says to keep, not a changelog entry. L122-125 stance block, L130 OODA last-run, L134 Quality line are all licensed dated fields (stance/OODA/eval-pass log). No transition verb (restored/softened/used to sit/renamed/swapped) found anywhere in the file.",
       "fix_hint": null,
-      "blocking": true
+      "blocking": false
     },
     {
       "compendium": "check_writing.md",
       "rule_index": 4,
       "rule_lead": "Register match.",
       "verdict": "PASS",
-      "evidence": "AE101 voice quintet judgement: body reads Boris-direct/factual throughout (L27 'Ask Claude to reverse-engineer how your team handles bugs and propose five bug rules.'), no retain-this wrapper (grep for 'Remember:'/'Hold onto'/'Keep in mind'/'Never forget' — none found), no atmospheric/sensory imagery, no metaphor-valence collision (no cargo/theatre/ritual/tourist/poster), no slang requiring the Godin-plausibility test, no we-refuse/we-don't negation-callout to check for self-contradiction (author-we is banned and unused, see SS6). Stays inside register.",
+      "evidence": "Body reads Boris-direct throughout ('Open the ticket...', 'Ask Claude to...') with one Rory-style generalizing reframe at L45-47 ('Anything can be inspected and reverse-engineered with an LLM: a codebase nobody documented, a CI pipeline, a config, an API you did not write...'). No L&D-coach, motivational-poster, or cold-tech-only register slips. No **Remember:**/Hold onto/Keep in mind/Never forget wrapper anywhere (grepped, 0 hits). No atmospheric/isolation/body-state/cosmic imagery. No metaphor-keyword valence collision (cargo/theatre/ritual/tourist/poster all absent). No negation-callout ('we refuse'/'we don't') present to contradict. This is the closest-to-violating line and it stays inside the quintet.",
       "fix_hint": null,
       "blocking": false
     },
@@ -58,7 +63,7 @@
       "rule_index": 6,
       "rule_lead": "Credit original when paraphrasing named technique.",
       "verdict": "PASS",
-      "evidence": "No named practitioner technique (Pocock/Klaassen/Martin/etc.) is paraphrased in body without credit — the body asserts no named external method. Creator-name ban: grep of body (L1-55) for 'Antti'/'the creator'/'the author' — zero hits (manual read confirms; the only 'Antti' occurrences are below the maintainer cut at L62/64/124, which the rule explicitly exempts: 'Maintainer blocks below <!-- maintainer --> no restriction'). Author-we ban: view.json grep author_we pattern ^\\s*(We|we)\\b(?!.*\\b(you|your)\\b) — body_hits 0, CLEAN.",
+      "evidence": "No recognizable named practitioner technique is paraphrased in body (nothing to credit). Cultural-vocab sub-clause: N/A, none used. Creator-name ban: grepped body (L1-55) for Antti/the creator/the author/training creator — 0 hits; the only 'Antti' mentions are below the maintainer cut (L62, L64/L115/L123/L124, all exempt). Author-we ban: body-view author_we grep 0 hits, and a manual scan of L1-55 finds no first-person-plural at all. Belief-name sub-clause: N/A, no belief reference in this file. Timing-location sub-clause: L1 H1, L2 blank, L3 '**Time:** 20 minutes.', L4 blank — matches the required line-3 placement exactly; file is atomic (maintainer Meta: 'Atomic — no phase markers. Line 3 is authored, not generated.'), so hand-authored total is correct per the rule's atomic-exercise carve-out. Lecture-authorial-meta sub-clause: N/A, this is an exercise file, not a lecture.",
       "fix_hint": null,
       "blocking": true
     },
@@ -67,7 +72,7 @@
       "rule_index": 7,
       "rule_lead": "Always \"you\", never \"the student\"; teacher framing stays out of body.",
       "verdict": "PASS",
-      "evidence": "view.json grep the_student pattern \\bthe student\\b — body_hits 0, planted_proof true, CLEAN. No delivery-mechanics narration ('the trainer shows...', 'before students start...') appears in body; all such content is correctly below the maintainer cut (e.g. L76-79 Push-back moves, L82 Decision points).",
+      "evidence": "body-view the_student grep 0 hits in body, CLEAN, planted_proof true; every instruction in L1-55 addresses 'you' directly. Below the fence, L58's View summary ('The student reads one real ticket...') is third-person, and check_student_facing SS5 explicitly says to treat View summary as student-facing wherever the fence is the routing test — flagged as a rule-question in top-level `notes` rather than filed here, because that line ships as buyer/trainer handbook catalog copy (third-party reader), not in-exercise address to the student the rule exists to protect.",
       "fix_hint": null,
       "blocking": true
     },
@@ -76,7 +81,7 @@
       "rule_index": 8,
       "rule_lead": "Don't smuggle terms of art from maintainer into body.",
       "verdict": "PASS",
-      "evidence": "Body's only maintainer-adjacent term is 'connector' (L35), explicitly overruled by the maintainer accept-note at L62 ('check_writing SS8 / check_student_facing SS2 earned-vocabulary findings on it are overruled — do not re-file'). No other maintainer-only term-of-art (self-compound, substrate, three-pattern, grill-me) appears in body.",
+      "evidence": "Only candidate is 'connector' (L35), covered by the L62 accept-note which explicitly overrules a check_writing SS8 finding on it ('do not re-file'). No other maintainer-only term (self-compound, substrate, three-pattern, grill-me) appears in body. 'Reverse-engineer' is introduced and used consistently within this file's own body, not smuggled from the maintainer block.",
       "fix_hint": null,
       "blocking": true
     },
@@ -85,7 +90,7 @@
       "rule_index": 9,
       "rule_lead": "Over-hedge detector.",
       "verdict": "PASS",
-      "evidence": "Manual scan of body for the flagged reassurance shapes (no penalty, fine way to, it's OK if, no consolation prize, not a downgrade, not a box-check, you are not on the hook for X) — none present. Closest candidate, L14 'The agent will offer to create one.', is a plain division-of-labour statement with no appended absolution clause, matching the already-swept-to-zero pattern rather than reintroducing it.",
+      "evidence": "No reassurance-shaped sentence (no penalty / fine way to / it's OK if / not a downgrade / you are not on the hook) anywhere in body. Closest candidate is L23 'One ticket gives a sample of your team's rules, not the policy' — this is a real scope boundary (guards against over-trusting one data point), not a defensive absolution, so it stays.",
       "fix_hint": null,
       "blocking": false
     },
@@ -94,7 +99,7 @@
       "rule_index": 12,
       "rule_lead": "Punchy framing keeps punch; carve-out lives downstream.",
       "verdict": "PASS",
-      "evidence": "Closest candidate is L47 'Anything can be inspected and reverse-engineered with an LLM' — the backing block's own Stance entry (L124) explicitly rules this in: 'The slide states it bare with no caveat bullet — deliberate... do not file the missing bullet as a defect, and do not add one.' No carve-out is owed here by maintainer direction. L9 'the agent can reverse-engineer your team's rules' is scoped to this exercise's own claim (backing Claims list, vision, none-owed) and does not overreach.",
+      "evidence": "L45-47's 'Anything can be inspected and reverse-engineered with an LLM' is the one punchy universal claim in the file. The backing block's Stance section (L124) is a dated maintainer ruling directly on this line: 'a boundary bullet is not valuable enough to ship ... do not file the missing bullet as a defect, and do not add one.' That forecloses filing a missing-carve-out finding here; honored as an accept-note per this dispatch's instruction to check the maintainer/backing block before flagging.",
       "fix_hint": null,
       "blocking": false
     },
@@ -103,7 +108,7 @@
       "rule_index": 13,
       "rule_lead": "Value-prop / positioning framing belongs in sales copy + project strategy docs, NOT student-facing curriculum body.",
       "verdict": "PASS",
-      "evidence": "Manual scan of body for flag phrases (not an aspirational X, not a vendor Y, this isn't marketing, the real practitioners, unlike consultancy decks, grounded in actual, not theoretical, from the person running it) and for the word 'vendor' — zero hits in body.",
+      "evidence": "Grepped body for 'vendor' and the flag-phrase list (not an aspirational X / not a vendor Y / this isn't marketing / the real practitioners / unlike consultancy decks / grounded in actual / not theoretical / from the person running it) — 0 hits. No defensive-against-marketing framing anywhere in L1-55.",
       "fix_hint": null,
       "blocking": true
     },
@@ -112,7 +117,7 @@
       "rule_index": 14,
       "rule_lead": "Watch out for planting jargon too early.",
       "verdict": "PASS",
-      "evidence": "No LLM-internal vocabulary (statistical default, token, embedding, retrieval, inference, fine-tuning, prompt engineering, orchestration, schema, frontmatter) appears in body. 'connector' (L35) is covered by the assumed-known accept-note (L62), not a premature-jargon case.",
+      "evidence": "'Connector' is audience-assumed-known per the L62 accept-note (not an arc-position coinage). No LLM-internal vocabulary (statistical default, token, embedding, retrieval, inference, fine-tuning, prompt engineering, orchestration, schema, frontmatter) appears anywhere in body. 'Reverse-engineer' is ordinary professional vocabulary for this engineer audience, not a curriculum coinage requiring earned placement.",
       "fix_hint": null,
       "blocking": false
     },
@@ -121,7 +126,7 @@
       "rule_index": 15,
       "rule_lead": "Audit closer when trimming body-prose forcing function.",
       "verdict": "PASS",
-      "evidence": "Closer scan (L52-54): 'The loop that started with a failing test closed.' — 'the loop' has a concrete, nameable referent (the TDD loop from the same-session fix-tests-first exercise per the maintainer Arc note). 'The field rules stay in the scrollback. The next exercise sweeps this whole session.' — 'this whole session' and 'the next exercise' are both concrete, not ambiguous pronouns with >1 possible referent. No bypass-the-agent punchline present.",
+      "evidence": "Checked every section closer for dangling pronoun/demonstrative and vague spatial metaphor. L14 'The agent will offer to create one' -> 'one' = ticket, unambiguous singular antecedent. L24 'One the agent just wrote' -> 'One' = ticket, clear. L48 'Use that file as context' -> 'that file' = the just-mentioned .md file, clear. L52 'The loop that started with a failing test closed' -> 'the loop' anchors to the M1 arc (fix-tests-first's failing test), a concrete referent, not a vague metaphor standing in for an action. No closer fails the cold-read test.",
       "fix_hint": null,
       "blocking": false
     },
@@ -130,7 +135,7 @@
       "rule_index": 16,
       "rule_lead": "The `**What happened:**` block is OPTIONAL — default is to omit it (Antti-directed 2026-08-12, mandation removed from `curriculum/exercises/README.md`).",
       "verdict": "PASS",
-      "evidence": "This diff renamed the closing '## What happened' heading to '## Two artefacts from one ticket' (L50), dropping the literal bold-inline `**What happened:**` widget entirely in favour of a plain section. The section still follows the standard three-move shape: (1) count+noun subject 'Two things came out of one ticket: a close-out note..., and the conventions...' (L52); (2) qualifier on what makes it theirs ('your team has been encoding... all along'); (3) lands on the destination — L54 'The field rules stay in the scrollback. The next exercise sweeps this whole session.' names where the artifact lives and what reads it next. Past-tense recap narration confirmed (came out of, you shipped, closed); present tense reserved for the still-existing artifact (stay) and a stable forward fact, both licensed exceptions.",
+      "evidence": "File omits the literal '**What happened:**' bold-label block and instead closes on a custom '## Two artefacts from one ticket' header (git history: commit de4a638d retitled this closer to name what the student carries out). L52's opening 'Two things came out of one ticket: a close-out note on the bug you shipped, and the conventions your team has been encoding...' independently matches the prescribed three-move shape (count+noun opening, qualifier 'on the bug you shipped' / 'has been encoding ... all along', landing on destination 'stay in the scrollback' at L54). Past tense correctly used for what happened ('came out', 'you shipped', 'closed'); present tense correctly reserved for still-true state ('stay in the scrollback') and forward reference ('sweeps').",
       "fix_hint": null,
       "blocking": false
     },
@@ -139,7 +144,7 @@
       "rule_index": 17,
       "rule_lead": "No combative verbs about the agent in body prose.",
       "verdict": "PASS",
-      "evidence": "All three human-to-agent verbs in body are 'ask' (L27, L37, L43 'tell Claude'). No combative verb (bark/order/command/whip/force/drag/push around/boss/shout at/snap at/lecture/scold) present.",
+      "evidence": "grepped body for bark/order/command/whip/force/drag/push around/boss/shout at/snap at/lecture/scold — 0 hits. Every human->agent verb in body is peer-flat or warmer: 'Ask Claude to...' (L27, L37), 'tell Claude which line' (L43), 'Push back on the five' (L31, an established curriculum push-back move, not a combative verb).",
       "fix_hint": null,
       "blocking": false
     },
@@ -148,7 +153,7 @@
       "rule_index": 18,
       "rule_lead": "Headers must be literally true about the mechanism.",
       "verdict": "PASS",
-      "evidence": "All six headers (L1, L11, L20, L33, L41, L45, L50) are literal descriptions of their section's action or content; none uses a spatial/structural metaphor contradicting the mechanism, and none uses 'other X' / 'the rest of X' without a named primary.",
+      "evidence": "All six ## headers (Read the ticket for your bug / Read the conventions off the ticket / Write the close-out and send it / Double-check the voice / Anything can be reverse-engineered / Two artefacts from one ticket) are literally true of their section content on a cold read; none uses a spatial metaphor that contradicts the mechanism, and none uses 'other X' with no primary X named.",
       "fix_hint": null,
       "blocking": false
     },
@@ -157,7 +162,7 @@
       "rule_index": 19,
       "rule_lead": "Machine-cadence fat — the shape of good prose without the content.",
       "verdict": "PASS",
-      "evidence": "Scanned body for the four shapes: (a) empty negation 'X, not Y' — none found; (b) deictic drumroll 'That is the X.'/'This is the Y.' — none found; (c) bold-label echo — the bold widget labels (**Time:**, **What you do:**, **What you build:**, **The point:**) are the canonical architecture-mandated widget chrome, not label-restated-as-subject echoes, and none is followed by a sentence restating the label as its own subject; (d) citation/appendix duplication — body carries no inline citation to duplicate.",
+      "evidence": "No empty negation (checked L23 'not the policy' — a real scope boundary against an actual misconception, not empty). No deictic drumroll ('That is the X'/'This is the Y') anywhere in body. No bold-label echo: the widget chrome bolds (**Time:**, **What you do:**, **What you build:**, **The point:**) are structurally exempt per the file's own Emphasis-budget note (L68) and none restate their label as the following sentence's subject. No citation/appendix duplication (body cites no practitioner inline).",
       "fix_hint": null,
       "blocking": false
     },
@@ -166,7 +171,7 @@
       "rule_index": 20,
       "rule_lead": "Don't state a count the adjacent list already holds.",
       "verdict": "PASS",
-      "evidence": "No numeral sits above a separate visible bulleted/structured list in body. The candidate at L50/52 (header 'Two artefacts from one ticket' + body opening 'Two things came out of one ticket') is not a numeral-above-a-list construction (the two items are named inline within the same sentence, not a following bulleted list) — this is instead judged as a header/body restatement under SS27 below, not this rule.",
+      "evidence": "The one candidate is L50/L52: header 'Two artefacts from one ticket' (header numeral, exempt by this rule's own carve-out) followed by 'Two things came out of one ticket: a close-out note ..., and the conventions ...'. This is not a redundant tally next to a rendered bulleted list — it is the count+noun recap opening rule 16 explicitly prescribes, and it cashes out WHAT the two things are (new information the header alone didn't give), rather than re-tallying a visible enumeration. 'propose five bug rules' (L27) and 'Push back on the five' (L31) specify a task parameter for the agent to produce in chat, not a restatement of a count against a body-rendered list.",
       "fix_hint": null,
       "blocking": false
     },
@@ -175,7 +180,7 @@
       "rule_index": 21,
       "rule_lead": "A slogan that is false as stated is not punchy framing — run the truth test before reaching for §12.",
       "verdict": "PASS",
-      "evidence": "L47 'Anything can be inspected and reverse-engineered with an LLM' is the only universal-quantifier candidate and is explicitly covered by the maintainer's own Stance accept-note (L124: 'do not file the missing bullet as a defect, and do not add one'). L22 'Every field carries a convention' is immediately qualified by the next bullet (L23: 'One ticket gives a sample of your team's rules, not the policy'), reads as a teaching heuristic scoped to the student's own tracker rather than a world-claim, and no corpus counterexample was found.",
+      "evidence": "The one superlative in body is L47 'Anything can be inspected and reverse-engineered with an LLM.' The backing block's dated Stance ruling (L124, quoted in accept_notes_found) directly addresses this exact universal claim and instructs judges not to file a missing-boundary finding against it. Honored as an accept-note. No other only/always/never/nothing-else construction found in body.",
       "fix_hint": null,
       "blocking": false
     },
@@ -184,7 +189,7 @@
       "rule_index": 22,
       "rule_lead": "A claim binds to every body that states it, not just the one holding the stamp.",
       "verdict": "PASS",
-      "evidence": "Ran: grep -rn \"maintainer-frame\" curriculum/ (excluding this file) — hits only in curriculum/evals/bench/fixtures/writing-5plant.md and writing-5judge.md, both judge-hillclimb test fixtures, not live training content, so no live sibling body shares this exact source-id claim. Ran: grep -rln \"access-trust-gap\" and \"blast-radius-error-budget\" across curriculum/ — both laws are cited by several other exercises/lectures/supplementaries, but each carries its own file-local justification clause after its own '←' (this file's is 'a write into the team's tracker is the first irreversible-in-public action of the training'), which is independent framework reuse rather than a shared verbatim source-quote needing sync.",
+      "evidence": "Ran `grep -rl` this session for all 7 backing-block claim ids (agent-reverse-engineers-unwritten-rules, each-field-carries-a-convention, conventions-read-shapes-the-close-out-voice, one-ticket-gives-rules-not-policy, rejected-rules-sharpen-the-read, anything-can-be-reverse-engineered, study-extract-carry-forward) across curriculum/: only this file itself, plus non-body eval fixtures/instances, matched. No sibling curriculum body restates any of these claim ids, so there is no cross-file correction-propagation obligation on this file today.",
       "fix_hint": null,
       "blocking": false
     },
@@ -193,7 +198,7 @@
       "rule_index": 26,
       "rule_lead": "A sentence saying how you'd know points at the outcome, not the nearest artifact.",
       "verdict": "PASS",
-      "evidence": "Closest candidate, L43 'Does it sound like the comments already on the ticket? If the wording feels off or wrong, tell Claude which line and how you'd write it.' — this points at a real external observable (matching the tracker's own existing comments), not a self-witnessing instrument judging itself, so it stays inside.",
+      "evidence": "Closest candidate is L43 'Does it sound like the comments already on the ticket?' — this points at an external, independently-checkable observation (the ticket's own real prior comment history), not a self-witnessing loop where the agent grades its own output. Passes the rule's own diagnostic cleanly.",
       "fix_hint": null,
       "blocking": false
     },
@@ -201,9 +206,9 @@
       "compendium": "check_writing.md",
       "rule_index": 27,
       "rule_lead": "Say it once, at its most concrete, then at most one sentence that generalises it. Style, not a gate.",
-      "verdict": "REVISE",
-      "evidence": "L50 header '## Two artefacts from one ticket' is immediately followed by L52's opening clause 'Two things came out of one ticket: a close-out note on the bug you shipped, and the conventions your team has been encoding in its fields all along.' — the body restates exactly what its own just-read header already said before adding anything new, matching class (b) of this rule verbatim ('restating an adjacent artifact... a bullet opening with its own ## header'). This pairing is new in this diff (the header was '## What happened' before this edit), so the restatement was introduced by the same change that renamed the heading.",
-      "fix_hint": "Open the paragraph on what the header does not already say — drop the 'Two things came out of one ticket:' lead and let the two clauses stand as the elaboration, e.g. 'A close-out note on the bug you shipped. The conventions your team has been encoding in its fields all along.'",
+      "verdict": "PASS",
+      "evidence": "No abstract-twin duplication found (each sentence in L22-25 and L31 adds distinct new information). L52's count+noun opening does not restate the L50 header without adding information (see rule 20 evidence) so it is not the (b) restating-an-adjacent-artifact shape. No widening qualifier ('or rule', 'or context-dependent') and no second-announcement-across-files check performed (out of this file's single-file scope).",
+      "fix_hint": null,
       "blocking": false
     },
     {
@@ -211,7 +216,7 @@
       "rule_index": 1,
       "rule_lead": "Aspirational destination, never corrective gap.",
       "verdict": "PASS",
-      "evidence": "No corrective-gap phrasing ('you already think you're using X', 'you're missing Y'), no ability-tier assumption ('at your scale', 'for a beginner'), no unreachable identity criterion (tourist/practitioner split). Pre-prompt checks (L13-14, L24) are plausibly-failable for this audience (no ticket of one's own; no ticket at all), not defaults the audience already lives with.",
+      "evidence": "No 'you already think you're using X' / 'you're missing Y' framing. No ability-tier assumption (no 'at your scale', 'for a beginner'). No tourist/practitioner-style identity split with an unreachable criterion. L13-14's ticket-or-none branch and L24's own-ticket-or-any-ticket branch are both plausibly-failable, real conditions for this audience, not manufactured anxiety.",
       "fix_hint": null,
       "blocking": false
     },
@@ -220,7 +225,7 @@
       "rule_index": 2,
       "rule_lead": "Earn every technical term on first use.",
       "verdict": "PASS",
-      "evidence": "The one jargon-shaped term in body, 'connector' (L35), is covered by the assumed-known-vocabulary accept-note (L62). 'MCP' appears only as the display title of a link, not as running-prose vocabulary. No curriculum load-bearing term (compounding, the loop, the move, the practice) is used ahead of its earning module; L52's 'The loop' use is itself the earned house term, not a premature plant.",
+      "evidence": "'Connector' (L35) is covered by the L62 accept-note (assumed-known for this engineer audience, earning findings on it overruled). No M1-M8 abbreviation used in body. No other curriculum-load-bearing term (compounding/the loop/the practice) introduced before its earning module; 'the loop' at L52 refers to this file's own M1 arc, used after the fact it names, not before.",
       "fix_hint": null,
       "blocking": false
     },
@@ -229,7 +234,7 @@
       "rule_index": 3,
       "rule_lead": "Business-audience word ban (Agents 101 default).",
       "verdict": "PASS",
-      "evidence": "Ran: grep -inE against body (L1-55) for the jargon-ban canonical list plus common SVP-flinch business jargon (synergy, paradigm, bandwidth, circle back, deep dive, actionable, low-hanging fruit, move the needle, touch base, robust, seamless, streamline, holistic, ecosystem, game-changing) — zero hits.",
+      "evidence": "Body's vocabulary throughout (open, paste, read, ask, push back, write, send) is plain and concrete; nothing on curriculum/evals/lints/jargon-ban.md's list appears. Passes the SVP-flinch test trivially even though the rule's own parenthetical scopes its default to Agents 101, not AE101's engineer audience.",
       "fix_hint": null,
       "blocking": false
     },
@@ -238,7 +243,7 @@
       "rule_index": 5,
       "rule_lead": "Golden path only in body — THIS RULE HAS AN EXCEPTION; read to the boundary before cutting anything.",
       "verdict": "PASS",
-      "evidence": "Two fallback branches sit in body: L14 'If there is no ticket for this bug, say so in the chat.' and L24 'No ticket of your own to read? Any other real ticket from your tracker works.' Both pass the base test (plausible failure + non-obvious rescue) and are needed in-body rescues, not deletable to the maintainer tail (which the workbook build strips before any student or trainer sees it). The rarer/deeper contingency (tracker unreachable by Claude Code) is correctly routed to the maintainer 'Decision points' (L81-82), matching the routing convention.",
+      "evidence": "L14 ('If there is no ticket for this bug, say so in the chat. The agent will offer to create one.') and L24 ('No ticket of your own to read? Any other real ticket ... works.') are plausible-failure, non-obvious-rescue branches correctly kept IN body per the rule's base test. The tenant-can't-reach-tracker contingency (maintainer Decision points, L81-82) is correctly routed to trainer-facing material: AE101 is a facilitator-led cohort delivery (per training-architecture.md and this file's own Meta), so the maintainer block's Decision points section is read by the trainer via trainer-modules.md — exactly the 'live support / trailing facilitator notes' destination the rule names as legitimate, not a case where 'neither trainer nor student reads below the fence.'",
       "fix_hint": null,
       "blocking": false
     },
@@ -247,17 +252,7 @@
       "rule_index": 6,
       "rule_lead": "Trust Claude's defaults for structure.",
       "verdict": "PASS",
-      "evidence": "None of the three prompts append a trailing output-shape spec; prompt 1 and 2's named field categories (reporter/description/comments; status/labels/severity/etc.) are the teaching content itself (the exercise IS the field-convention read), not padding. Prompt 3 ends 'Tell me what you wrote' — the ask+destination pattern this rule wants.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 7,
-      "rule_lead": "Q1/Q2/Q3 retro interview is banned at every module. Compound-shape varies per module — never repeat same Debrief.",
-      "verdict": "N/A",
-      "na_reason": "not a compound/Debrief-shaped beat; the file's own Arc note hands the compound move to compound-and-close downstream",
-      "evidence": null,
+      "evidence": "Prompt 2's field list (status, labels, severity or priority, component, owner, repro steps, acceptance criteria, comments, links, custom fields) is the exercise's actual teaching content (the fields ARE what conventions are read off), not decorative output-shape padding — legitimate under the rule's own 'specify shape only when the teaching moment depends on it' carve-out. Prompt 3 ends with a plain 'Tell me what you wrote' report, no trailing format spec.",
       "fix_hint": null,
       "blocking": false
     },
@@ -266,7 +261,7 @@
       "rule_index": 8,
       "rule_lead": "Don't smuggle another module's voice.",
       "verdict": "PASS",
-      "evidence": "Body mood is practical/energetic throughout, consistent with the maintainer-stated 'In-class M1 exercise, third of four' (L60) placement; no long-running-mood or deeper-unease framing from a later module is borrowed.",
+      "evidence": "No borrowed pattern from another module's mood or register is detectable in this file's body.",
       "fix_hint": null,
       "blocking": false
     },
@@ -274,19 +269,9 @@
       "compendium": "check_student_facing.md",
       "rule_index": 9,
       "rule_lead": "Don't ask student to manually diff or spot-check Claude's output as error-catching.",
-      "verdict": "PASS",
-      "evidence": "The compendium names this exact file's 'Double-check the voice' section (L41-43) as the historical exemption-trap ('the register beat in close-the-ticket sits inside this rule's own exemption... never checking that the same rule's actor-and-mechanism requirement was unmet'), so all axes were re-run rather than stopping at the register exemption. L43: 'Does it sound like the comments already on the ticket? If the wording feels off or wrong, tell Claude which line and how you'd write it.' Register-read is licensed (reading for tone match, not error-catching). Re-checking the remaining axes on the same sentence: actor+mechanism = student, via 'tell Claude which line and how you'd write it' (explicit addressee 'Claude', explicit mechanism); object+tell = the object is Claude's close-out draft (anaphoric 'it' resolves to the just-described report at L37) and the tell is 'feels off or wrong'; executable = yes, complete on naming the line and rewrite; reachable criterion = the student is the sole authority on whether wording matches their own team's register (parallel to the rule's own passing example, 'push back when the screen misses something you know about the codebase'); no fictional gate is asserted here. All axes clear.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": 11,
-      "rule_lead": "No \"What research says\" callout boxes",
-      "verdict": "N/A",
-      "na_reason": "no callout boxes of any kind in this exercise",
-      "evidence": null,
-      "fix_hint": null,
+      "verdict": "REVISE",
+      "evidence": "Re-ran the compendium's own worked example against this file (this rule's text names 'close-the-ticket' as the historical case where the register exemption at L41-43 caused a judge to stop checking the actor+mechanism sub-test in the same sentence). L43 'tell Claude which line and how you'd write it' currently DOES satisfy actor+mechanism (actor=you, mechanism=telling Claude) and object+tell (object = the ticket's real prior comments, tell = 'wording feels off or wrong') — confirmed compliant, not re-flagging it. But L48 'Extract a `.md` file. Use that file as context in the next agent.' has the exact no-actor-named shape the rule bans: the governing clause two sentences up is 'Ask Claude to study the pipeline...' but 'Extract' and 'Use' drop the subject, and the file's own established convention elsewhere (bare imperatives = student action, 'Ask Claude to X' = agent action) makes 'Extract a .md file' readable as the STUDENT manually writing a file rather than Claude continuing to act. Harm: a student who reads this as their own manual step breaks the stay-in-conversation-with-the-agent principle this same compendium enforces via rule 12, for a sentence whose whole point (per the backing block) is that the AGENT does the study/extract/carry-forward move.",
+      "fix_hint": "Make the actor explicit across all three verbs, e.g. 'Ask Claude to study the pipeline, the config, the undocumented code, extract a `.md` file, and note where a next agent could use it as context' — or split into 'Ask Claude to study X and extract a `.md` file.' + a separate sentence naming what the STUDENT does with that file.",
       "blocking": false
     },
     {
@@ -294,7 +279,7 @@
       "rule_index": 12,
       "rule_lead": "Student moves stay in conversation with agent.",
       "verdict": "PASS",
-      "evidence": "Every forcing-function move in body is a chat ask ('Ask Claude to...', 'tell Claude...'). The one CLI-adjacent mention, connectors (L35), is explicitly named in the maintainer block as enhancement-never-forcing-function (L64), routed to a reference page rather than performed as a body step.",
+      "evidence": "No editor/terminal/manual-git primitive asked of the student. L13's 'paste its link' is a browser+chat action, not a mechanic step. The L48 ambiguity is filed once under rule 9 above rather than duplicated here.",
       "fix_hint": null,
       "blocking": false
     },
@@ -303,7 +288,7 @@
       "rule_index": 14,
       "rule_lead": "No em-dashes. Simple sentences.",
       "verdict": "PASS",
-      "evidence": "view.json grep em_dash pattern — body_hits 0, planted_proof true, CLEAN. Sentences are short-to-medium; the one longer sentence (L47) is a single comma-separated list after a colon, not a chained em-dash construction.",
+      "evidence": "Same em_dash grep as check_writing SS1: 0 hits in body, CLEAN, planted_proof true.",
       "fix_hint": null,
       "blocking": false
     },
@@ -312,8 +297,8 @@
       "rule_index": 17,
       "rule_lead": "Section headers use command verbs when section is about doing something.",
       "verdict": "REVISE",
-      "evidence": "L45 '## Anything can be reverse-engineered' is a declarative noun-phrase header, but its own section body instructs the student to act: L48 'Ask Claude to study the pipeline, the config, the undocumented code. Extract a `.md` file. Use that file as context in the next agent.' Per the rule's diagnostic ('section body tells student to do something? Yes → lead header with verb'), this header should be verb-led. Not covered by the lecture/reference declarative-header carve-out (this is an exercise section with an acting bullet) nor by the canonical-section-name carve-out (not one of the architecture-mandated names).",
-      "fix_hint": "Lead with the verb the bullet actually asks for, e.g. 'Reverse-engineer anything' or 'Try it on something else.'",
+      "evidence": "'## Two artefacts from one ticket' (L50) is correctly declarative: its section body (L52-54) contains zero student instructions, pure recap, so no verb is owed by the rule's own test. '## Anything can be reverse-engineered' (L45), by contrast, sits over a section whose body DOES tell the student to act ('Ask Claude to study the pipeline, the config, the undocumented code' at L48), which is the rule's literal trigger for a command-verb header. This is not a canonical module-shape section name, so the structural-name carve-out doesn't cover it, and it isn't a lecture/reference file where declarative headers are licensed. Harm is mild (the section reads as a closing insight, not a forcing function, and the instruction beneath it is unambiguous on its own), which is why this stays a todo rather than a block.",
+      "fix_hint": "Rename to a command-verb form that keeps the Rory-reframe energy, e.g. '## Reverse-engineer anything' or '## Try it on anything else'.",
       "blocking": false
     },
     {
@@ -321,7 +306,7 @@
       "rule_index": 18,
       "rule_lead": "Inline links use target's title, never filename.",
       "verdict": "PASS",
-      "evidence": "L35 link text 'MCP and connectors' matches the target page's H1 'MCP and connectors: reference' (verified by reading curriculum/trainings/agentic-engineering-101/reference/mcp-and-connectors.md L1), dropping only the generic ': reference' suffix — a reasonable sentence-case paraphrase, not a filename or code-span path. (Path-form of that same link uses a depth-counted `../` relative prefix, which is module-shape.md's Cross-doc-links rule, out of this compendium's scope — noted separately, not filed here.)",
+      "evidence": "L35 link text 'MCP and connectors' matches the target's actual H1 ('# MCP and connectors: reference', confirmed by reading the file this session) with the generic ': reference' type-suffix dropped — a legitimate sentence-case paraphrase, not a filename. No ordinal/Step-N cross-reference used anywhere in this file.",
       "fix_hint": null,
       "blocking": false
     },
@@ -330,17 +315,7 @@
       "rule_index": 21,
       "rule_lead": "LLM-vs-agent-vs-Claude vocabulary discipline.",
       "verdict": "PASS",
-      "evidence": "Autonomous-work framing consistently uses 'the agent' (L9, L14, L23, L25); invocation/addressee consistently uses 'Claude' (L27, L37, L43, L48); the one capability/thinking claim uses 'an LLM' (L47). No stance-override case applies (no self-critique framing present); the pattern matches the rule's own worked calibration exactly.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": "21b",
-      "rule_lead": "Session / task / run split (all trainings).",
-      "verdict": "N/A",
-      "na_reason": "body contains no noun-form 'session'/'task'/'run' usage to check (the only 'session' references are below the maintainer cut, which is exempt)",
-      "evidence": null,
+      "evidence": "'the agent' used correctly for autonomous work (L5, L9, L14, L23, L24). 'Claude' used correctly as addressee (L27, L37, L43). L47's 'reverse-engineered with an LLM' is a general capability claim, and the backing block's Sources note (L116) documents this as a deliberate keep: 'the capability sentence keeps LLM' while the three action-step sentences were reshaped to 'the agent'. Confirmed the body matches that documented split exactly.",
       "fix_hint": null,
       "blocking": false
     },
@@ -349,7 +324,7 @@
       "rule_index": 22,
       "rule_lead": "No time-of-day anchors in body prose.",
       "verdict": "PASS",
-      "evidence": "Ran: grep -inE '\\b(tomorrow|overnight|this morning|tonight|next morning|yesterday|last night)\\b' curriculum/exercises/close-the-ticket.md — zero matches.",
+      "evidence": "Grepped body for tomorrow/overnight/this morning/tonight/next morning/yesterday/last night — 0 hits.",
       "fix_hint": null,
       "blocking": false
     },
@@ -358,7 +333,7 @@
       "rule_index": 23,
       "rule_lead": "Reflection beats stay invisible in flow.",
       "verdict": "PASS",
-      "evidence": "No pedagogy-aware header or wellness-coach prefix present (grep-checked mentally for Pause before/Meta-moment/Step back/Moment of truth/sit with/let it land/take a moment/breathe/be present). L41-43's 'Double-check the voice' is a concrete action header with a command verb, not a self-aware reflection label.",
+      "evidence": "No self-aware pedagogy header or wellness-coach prefix (Pause before you promote / Meta-moment / sit with X / let it land / take a moment to / breathe) anywhere in body.",
       "fix_hint": null,
       "blocking": false
     },
@@ -367,7 +342,7 @@
       "rule_index": 24,
       "rule_lead": "No meta-ask when student has already decided.",
       "verdict": "PASS",
-      "evidence": "No prompt asks the student to restate a decision already made in body (face one); no promptless body section carries an LO/leap-test-shaped restatement of what a prompt already returned (face two) — L31's push-back sentence and L41-43's register-check both introduce a genuinely new evaluative act, not a restatement.",
+      "evidence": "L31 'Push back on the five' is the live decision instruction itself, not a redundant restatement request after the fact. No prompt asks the student to restate something the body already established, and no body section merely re-declares what a prompt already produced.",
       "fix_hint": null,
       "blocking": false
     },
@@ -376,7 +351,7 @@
       "rule_index": 26,
       "rule_lead": "Cut NVA: true but not moving student forward.",
       "verdict": "PASS",
-      "evidence": "Closest candidate, L35's 'and it pays back on every session after this one' — stays inside because the connector is explicitly optional/enhancement-only (maintainer L64), so this clause is doing real persuasive work (motivating an unrequired investment) rather than restating an obvious fact the student's next action already depends on.",
+      "evidence": "Closest candidate is L35's trailing clause 'and it pays back on every session after this one' — this is the motivational reason for clicking through to the connector reference now rather than later, functional rather than pure trivia, so it stays. No implementation detail, administrative aside, or extra source trivia found elsewhere in body.",
       "fix_hint": null,
       "blocking": false
     },
@@ -385,7 +360,7 @@
       "rule_index": 27,
       "rule_lead": "Body \"read it\" / \"look at it\" / \"notice X\" after chat-print = dead weight.",
       "verdict": "PASS",
-      "evidence": "L43 'Does it sound like the comments already on the ticket?' names a specific comparison (register match against existing comments) with an explicit follow-on action, not a generic 'read it'/'look at it' with no direction — matches the rule's own carve-out.",
+      "evidence": "L43 'Does it sound like the comments already on the ticket?' names a specific comparison (close-out note vs. the ticket's real prior comments) and gives a follow-on action, not a bare 'read it'/'look at it'.",
       "fix_hint": null,
       "blocking": false
     },
@@ -394,7 +369,7 @@
       "rule_index": 28,
       "rule_lead": "Forward-callout closer: student as grammatical subject.",
       "verdict": "PASS",
-      "evidence": "No closing sentence in body exhibits the four named failure shapes (training-as-subject-with-value-prop-tone; coach-register imperative; unanchored they/them; audience/role shift). L54's 'The next exercise sweeps this whole session' is judged instead under check_writing... under check_student_facing SS33 (arc-positioning/cartography), not this rule — it carries no value-prop or salesy tone, no imperative directed at the reader, no they/them, and no role-shift, so the four SS28 failure modes specifically do not fire on it.",
+      "evidence": "No training/curriculum-as-subject salesy framing, no coach-register imperative ('watch for X'), no generic they/them, no audience-shift. L54's 'The next exercise sweeps this whole session' is filed separately under check_student_facing SS33 as a cartography concern rather than here, since its defect is predicate-leak (promising a later beat's function), not subject-test failure (it's plain informative continuity, not a sales pitch).",
       "fix_hint": null,
       "blocking": false
     },
@@ -403,7 +378,7 @@
       "rule_index": 30,
       "rule_lead": "Echo the training's theory spine before inventing a synonym.",
       "verdict": "PASS",
-      "evidence": "L52 'The loop that started with a failing test closed' correctly reaches for the training's own house term ('the loop') rather than inventing a neutral synonym. No other candidate needing a house-term swap was found.",
+      "evidence": "L52 uses the house term 'the loop' correctly ('The loop that started with a failing test closed') rather than inventing a neutral synonym. No missed opportunity found elsewhere in body.",
       "fix_hint": null,
       "blocking": false
     },
@@ -412,7 +387,7 @@
       "rule_index": 31,
       "rule_lead": "Name the artifact, not the act.",
       "verdict": "PASS",
-      "evidence": "L16 'Drop the ticket link after the colon.' is the canonical open-hook input-instruction shape this rule and check_prompts SS1 both license verbatim, not an act-verb framing of a message to the agent. No 'typing X'/'saying X'/'tell it to X' construction appears elsewhere in body.",
+      "evidence": "L16's open-hook 'Drop the ticket link after the colon' is the sanctioned open-hook phrasing (check_prompts SS1d), not an act-verb like 'type' or 'say to Claude'. L43's 'tell Claude which line and how you'd write it' names content to communicate, not a hollow act; no filler act-verb ('type continue', 'tell it to continue') present anywhere.",
       "fix_hint": null,
       "blocking": false
     },
@@ -421,16 +396,7 @@
       "rule_index": 32,
       "rule_lead": "Name the outcome; don't walk a professional through trivial mechanics.",
       "verdict": "PASS",
-      "evidence": "L35 'Adding a connector is one command per tracker' names the outcome and points to the reference page rather than writing out the actual command or step sequence in body.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_student_facing.md",
-      "rule_index": "32a",
-      "rule_lead": "No settings, flags or env vars in body (Antti 2026-09-04).",
-      "verdict": "PASS",
-      "evidence": "Body contains no env var, settings.json key, CLI flag, or permission-mode toggle. The one concrete switch (`claude mcp add --transport http <name> <url>`) is correctly confined to the maintainer block (L64), which this rule explicitly permits.",
+      "evidence": "L35 states the outcome ('Adding a connector is one command per tracker') without spelling out the recipe; the actual `claude mcp add --transport http <name> <url>` command lives only in the maintainer block (L64), which is exempt scope for body/32a's settings-in-body ban. No CLI flag, env var, or settings.json key appears in body.",
       "fix_hint": null,
       "blocking": false
     },
@@ -439,17 +405,16 @@
       "rule_index": 33,
       "rule_lead": "The curriculum does not narrate itself — subject test, then deletion test.",
       "verdict": "REVISE",
-      "evidence": "L54's second sentence 'The next exercise sweeps this whole session.' has 'the next exercise' (a later beat) as its grammatical subject and its predicate promises what that later beat will do — the exact 'subject test has a predicate leak' shape this rule names ('Any clause promising what a later beat will do is cartography however the sentence starts, and it is a cheque that beat must cash'). Deletion test: cutting it and reading 'The field rules stay in the scrollback.' alone loses nothing actionable for the student in this exercise. Not shielded by the canonical-section exemption (this is a plain '## Two artefacts from one ticket' section, not one of ## What You'll Learn / ## Connections / ## Bridge / ## Next / ## Prework / **The point:**).",
-      "fix_hint": "Cut the sentence and end on 'The field rules stay in the scrollback.', or restate it as a present fact about this session rather than a promise about compound-and-close's mechanism.",
+      "evidence": "L54's second sentence 'The next exercise sweeps this whole session' makes a promise about what a LATER beat (compound-and-close) will do — the exact predicate-leak shape this rule's own compounded corollary names ('any clause promising what a later beat will do is cartography however the sentence starts, and it is a cheque that beat must cash'). Deletion test: removing it leaves 'The field rules stay in the scrollback.' as the closer, which reads complete and loses no actionable information for THIS exercise. The first sentence, 'The field rules stay in the scrollback,' is fine on its own (subject = the student's own artifact, a 'keep' per the rule's subject test); it's only the second sentence's forward promise about the next exercise's job that is cartography.",
+      "fix_hint": "Cut 'The next exercise sweeps this whole session.' and end on 'The field rules stay in the scrollback.' (or on the prior sentence, 'The loop that started with a failing test closed.'); let compound-and-close's own opening state what it does.",
       "blocking": false
     },
     {
       "compendium": "check_student_facing.md",
-      "rule_index": 36,
-      "rule_lead": "Trust the prompt over the scaffold.",
-      "verdict": "N/A",
-      "na_reason": "no pre-built scaffold or starter directory is involved in this exercise",
-      "evidence": null,
+      "rule_index": 37,
+      "rule_lead": "Mood is a design constraint, not a garnish.",
+      "verdict": "PASS",
+      "evidence": "Third of four in-class M1 exercises (maintainer L60); body stays peer-warm and generous (L31's push-back framing, L45-48's expansive 'anything can be reverse-engineered' insight) without drifting into the M1 signature wrong-edit (flat tech-warm-up). Did not independently re-derive M1's exact canonical mood label from bosser-strategy:content-strategy.md this session; judged on the holistic read against the wrong-edit description available in check_writing SS4.",
       "fix_hint": null,
       "blocking": false
     },
@@ -458,7 +423,7 @@
       "rule_index": 38,
       "rule_lead": "Exercise headers pass the build-squint test.",
       "verdict": "PASS",
-      "evidence": "Cold-squint over the header set alone (H1 'Close the ticket your team's way'; 'Read the ticket for your bug'; 'Read the conventions off the ticket'; 'Write the close-out and send it'; 'Double-check the voice'; 'Anything can be reverse-engineered'; 'Two artefacts from one ticket') reconstructs the two real deliverables (a close-out note; a set of reverse-engineered field-convention rules) that the View summary (L58) also names.",
+      "evidence": "Header set alone (Read the ticket for your bug / Read the conventions off the ticket / Write the close-out and send it / Double-check the voice / Anything can be reverse-engineered / Two artefacts from one ticket) reconstructs the build: a ticket read, conventions extracted, a close-out written and voice-checked, generalized, landing on two artifacts. H1 'Close the ticket your team's way' names the deliverable, not a technique.",
       "fix_hint": null,
       "blocking": false
     },
@@ -467,7 +432,7 @@
       "rule_index": 1,
       "rule_lead": "No placeholders inside fences.",
       "verdict": "PASS",
-      "evidence": "Ran: grep -n '\\[' on all three registry prompt bodies (post-frontmatter) — zero hits in prompt text (the only '[' hits are YAML 'consumed-by: []' in frontmatter, outside the prompt body). Prompt 1 ends on an open-hook dangling colon ('Ticket:'), the preferred shape (1d) for student-supplied input.",
+      "evidence": "Prompt 1 ends on a dangling 'Ticket:' colon (open-hook shape, rule 1d), matching L16's lead-in exactly. Prompts 2 and 3 contain zero bracketed placeholders; both rely on scrollback for their inputs, correctly.",
       "fix_hint": null,
       "blocking": false
     },
@@ -476,7 +441,7 @@
       "rule_index": 2,
       "rule_lead": "Every prompt block: one-sentence action lead-in.",
       "verdict": "PASS",
-      "evidence": "Lead-in 1, L16 'Drop the ticket link after the colon.' matches this rule's own dangling-colon sub-case (2a) example verbatim ('Drop your bug after the colon.'). Lead-in 2, L27, 14 words, under the 20-word ceiling. Lead-in 3, L37, 15 words, under the ceiling, and now opens on the same verb as its fence (see SS38 below — fixed by this diff).",
+      "evidence": "Prompt 1's fence ends in a dangling colon, so its lead-in (L16, 'Drop the ticket link after the colon.') correctly follows the SS2a mechanical-trigger sub-case (naming only what to drop in) rather than summarizing the read-the-ticket action, which the header (SS2c) already carries. Prompt 2 lead-in (L27) = 14 words, matches the prompt's content. Prompt 3 lead-in (L37) = 14 words, matches. All under the 20-word ceiling.",
       "fix_hint": null,
       "blocking": false
     },
@@ -485,7 +450,7 @@
       "rule_index": 3,
       "rule_lead": "Canonical shape — lead-in, label with destination, blank line, fence.",
       "verdict": "PASS",
-      "evidence": "Confirmed via scripts/expand-md.js output: all three blocks render as '**Prompt** *(Claude Code)*' followed by a blank line then a fenced block, no 'copy →' prefix, no '(end of prompt)' closer, no blockquote/backtick-path wrapping.",
+      "evidence": "Confirmed via `node scripts/expand-md.js`: all three markers expand to 'lead-in / blank / **Prompt** *(Claude Code)* / blank / fence' with no copy-> prefix and no '(end of prompt)' closer.",
       "fix_hint": null,
       "blocking": false
     },
@@ -493,8 +458,9 @@
       "compendium": "check_prompts.md",
       "rule_index": 5,
       "rule_lead": "Chain by back-reference + deterministic path, never invented alias.",
-      "verdict": "PASS",
-      "evidence": "No file paths are produced or chained between these three prompts (registry frontmatter: all 'produces' entries are 'scrollback' or 'external', no repo file). Chaining is via natural-language back-reference only ('the bug we just fixed', 'the ticket', 'the PR'), the rule's own preferred scrollback-review-chain fallback.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "None of the three fenced prompts chains on a file an earlier prompt wrote; all three chain via the ticket/tracker state and warm-session scrollback, which the rule itself names as the preferred alternative.",
       "fix_hint": null,
       "blocking": false
     },
@@ -503,17 +469,7 @@
       "rule_index": 6,
       "rule_lead": "Chained-prompt isolation — don't leak downstream pipeline.",
       "verdict": "PASS",
-      "evidence": "Prompt 1 (read the ticket) does not mention rule-extraction or close-out; Prompt 2 (propose five rules) does not mention or defer to the close-out step; Prompt 3 (close-out) does not redo rule-extraction. Each prompt's fence produces its output as if the downstream step doesn't exist yet.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 7,
-      "rule_lead": "No session-resets mid-phase.",
-      "verdict": "N/A",
-      "na_reason": "no prompt offers /clear or a new-session option anywhere in this file",
-      "evidence": null,
+      "evidence": "Read all three registry prompt bodies this session. Prompt 1 (read the ticket) does not pre-empt prompt 2's conventions task or prompt 3's close-out task. Prompt 2 (extract conventions) does not mention the close-out at all. Prompt 3 (write the close-out) does not reference the five proposed rules from prompt 2. Each produces its output as if the downstream step didn't exist.",
       "fix_hint": null,
       "blocking": false
     },
@@ -522,17 +478,7 @@
       "rule_index": 9,
       "rule_lead": "Markdown shout (`**bold**`, `*italic*`) inside fenced prompts = dead weight in Claude Code.",
       "verdict": "PASS",
-      "evidence": "Ran: for each of close-the-ticket-1/2/3.md, awk-stripped the YAML frontmatter and grepped the remaining prompt body for '*' — zero hits in all three.",
-      "fix_hint": null,
-      "blocking": false
-    },
-    {
-      "compendium": "check_prompts.md",
-      "rule_index": 16,
-      "rule_lead": "Overwrite anxiety — name overwrite default on regeneration.",
-      "verdict": "N/A",
-      "na_reason": "none of the three prompts regenerates an existing repo file; ticket create-vs-update is a different (already self-contained, see SS34) decision, not file-overwrite ambiguity",
-      "evidence": null,
+      "evidence": "Read all three registry prompt bodies this session: none contain `**bold**` or `*italic*` markdown syntax; all use plain prose and commas/colons for structure.",
       "fix_hint": null,
       "blocking": false
     },
@@ -541,7 +487,7 @@
       "rule_index": 21,
       "rule_lead": "Tell me what you wrote, not show me what you'll write.",
       "verdict": "PASS",
-      "evidence": "Prompt 3 has a real side effect (updating the external ticket) and ends 'Tell me what you wrote.' — the exact canonical post-action-report shape this rule prescribes, not a pre-confirm.",
+      "evidence": "Prompt 3 (an update to a real tracker ticket, a side-effecting action) ends 'Tell me what you wrote' — post-action report, matching the default exactly. Updating a bug ticket is not in the irreversible/external-trust-line carve-out (production deploy, mass email, payment), so the default correctly applies rather than the pre-confirm exception.",
       "fix_hint": null,
       "blocking": false
     },
@@ -550,7 +496,7 @@
       "rule_index": 28,
       "rule_lead": "Strong-bold prompt label is exactly `**Prompt**` — custom labels break renderer.",
       "verdict": "PASS",
-      "evidence": "Confirmed via expand-md.js output: all three registry-sourced prompts render the label as exactly '**Prompt** *(Claude Code)*' via expandPrompts, no custom label text.",
+      "evidence": "All three markers expand via the registry (rule 31) to the exact label '**Prompt**' with a destination parenthetical, never a custom label.",
       "fix_hint": null,
       "blocking": false
     },
@@ -559,7 +505,7 @@
       "rule_index": 29,
       "rule_lead": "Normal work request before orchestration.",
       "verdict": "PASS",
-      "evidence": "Prompt 1 ('Read the ticket for the bug we just fixed. Tell me what it says...') is a direct, natural request built on state body prose already established (L13-14), not an orchestration interview ('Ask me which files...').",
+      "evidence": "Prompt 1 opens 'Read the ticket for the bug we just fixed' — assumes the context the body already established (which bug) rather than asking 'which ticket should I read?'. No prompt in this file opens with an orchestration-bloat interview question.",
       "fix_hint": null,
       "blocking": false
     },
@@ -568,7 +514,7 @@
       "rule_index": 31,
       "rule_lead": "Prompts live in registry; module/exercise/lecture files reference by marker.",
       "verdict": "PASS",
-      "evidence": "Body uses {{prompt:close-the-ticket-1}}, {{prompt:close-the-ticket-2}}, {{prompt:close-the-ticket-3}} markers (L18, L29, L39); registry files curriculum/prompts/close-the-ticket-{1,2,3}.md exist with correct frontmatter (key, dest, runtime, origin, requires, produces).",
+      "evidence": "Confirmed via source read: body contains only `{{prompt:close-the-ticket-1/2/3}}` markers (L18, L29, L39) plus their lead-ins; all three prompt bodies live in curriculum/prompts/close-the-ticket-{1,2,3}.md with correct frontmatter (key, dest, requires, produces), read directly this session.",
       "fix_hint": null,
       "blocking": false
     },
@@ -577,7 +523,7 @@
       "rule_index": 34,
       "rule_lead": "Disambiguation, anchors, and decision logic that bind Claude live INSIDE prompt fence.",
       "verdict": "PASS",
-      "evidence": "Read each fence in isolation: Prompt 1 carries its own 'can't find it / can't open it' fallback logic inline; Prompt 2 carries its own 'created this ourselves / can't open it' fallback inline; Prompt 3 carries its own 'needed to create the ticket just now' conditional inline. None relies on a body callout to supply runtime disambiguation.",
+      "evidence": "Verified all three fences carry their own runtime logic rather than relying on body callouts: Prompt 1's fence repeats the no-ticket / can't-open fallback from L13-14 inside the fence itself; Prompt 2's fence repeats the own-ticket-carries-no-conventions caveat from L24 inside the fence; Prompt 3's fence handles the create-if-needed case inline ('If we needed to create the ticket just now, create it first, then update.'). Read in isolation, each fence executes correctly.",
       "fix_hint": null,
       "blocking": false
     },
@@ -585,9 +531,9 @@
       "compendium": "check_prompts.md",
       "rule_index": 36,
       "rule_lead": "Wide prompts split by logical move — paragraph breaks = cheapest scan-affordance.",
-      "verdict": "REVISE",
-      "evidence": "Ran: word count on curriculum/prompts/close-the-ticket-3.md prompt body (post-frontmatter) = 48 words; paragraph count (blank-line separated) = 1. The prompt carries 3 logical moves in that one paragraph: (1) write the close-out note + link PR/branch, (2) conditional fallback 'If we needed to create the ticket just now, create it first, then update.', (3) 'Tell me what you wrote.' This exceeds the <=30-word/<=2-move short-prompt exemption, and the conditional clause matches the rule's own listed move-boundary that earns a split ('If X, do A; if Y, do B'). Its siblings close-the-ticket-1 (3 paragraphs) and close-the-ticket-2 (4 paragraphs) both correctly split their own conditional fallback into a separate paragraph; close-the-ticket-3 does not.",
-      "fix_hint": "In curriculum/prompts/close-the-ticket-3.md, break the 'If we needed to create the ticket just now, create it first, then update.' conditional into its own paragraph, matching the pattern already used in prompts 1 and 2.",
+      "verdict": "PASS",
+      "evidence": "Read raw registry files this session. Prompt 1 (3 paragraphs: ask+report / fallback branches / open-hook) and prompt 2 (4 paragraphs: task+fields / fallback / confidence-split / final ask) are already split by move. Prompt 3 is one paragraph, ~46 words, 3 tightly-coupled clauses (main update, conditional create-first, trailing report) — within the 'sequential-build ... may stay one paragraph if breaking feels artificial' exception; splitting a report tag ('Tell me what you wrote') into its own paragraph would be artificial for a prompt this short.",
+      "fix_hint": null,
       "blocking": false
     },
     {
@@ -595,7 +541,7 @@
       "rule_index": 38,
       "rule_lead": "Body lead-in mirrors prompt's opening phrasing.",
       "verdict": "PASS",
-      "evidence": "This diff fixed the prior finding recorded against this exact rule (previous instance body_sha 69d149da..., REVISE on SS38 with fix_hint 'Reorder the P3 lead-in to open on the same verb as the fence, e.g. \"Ask Claude to update the ticket with a close-out note and report what it wrote.\"'). Current L37 reads exactly that fixed text; its opening clause 'update the ticket with a close-out note' now shares verb ('update') + noun-phrase ('the ticket') with Prompt 3's own opening clause 'Update the ticket: short close-out note...'. Lead-in 2 (L27) already shared 'reverse-engineer how your/this team handles bugs' with Prompt 2's opening. Lead-in 1 (L16) is exempt under SS2a's dangling-colon sub-case, which replaces the normal mirrored summary with the input-instruction line only.",
+      "evidence": "Prompt 1: header 'Read the ticket for your bug' (L11, which per SS2c IS the lead-in here) mirrors the prompt's opening 'Read the ticket for the bug we just fixed' — same verb, same noun-phrase. Prompt 2: lead-in 'Ask Claude to reverse-engineer how your team handles bugs and propose five bug rules' (L27) mirrors the prompt's 'Reverse-engineer how this team handles bugs ... propose five basic rules'. Prompt 3: lead-in 'Ask Claude to update the ticket with a close-out note and report what it wrote' (L37) mirrors the prompt's 'Update the ticket: short close-out note ... Tell me what you wrote'.",
       "fix_hint": null,
       "blocking": false
     },
@@ -604,7 +550,7 @@
       "rule_index": 40,
       "rule_lead": "Verify session boundary before deciding prompt's context-carrying.",
       "verdict": "PASS",
-      "evidence": "Module body (maintainer L74) confirms this is a warm session ('runs in the same M1 session as the fix and the PR, so \"the bug we just fixed\" resolves from warm scrollback'). Walking each definite reference against SS40b: 'the bug we just fixed' (P1) and 'the PR if you opened one' (P3) are both real artifacts produced earlier in the same warm session (per the file's own Arc note: 'Picks up from: fix-tests-first — the shipped PR is what the close-out links to'), not curriculum-coined phase-heading nouns absent from scrollback. No worktree-parallel setup (SS40a n/a).",
+      "evidence": "Verified by reading the module/exercise body: maintainer's 'Session continuity' note (L74) states this exercise runs in the same M1 session as fix-tests-first, confirming WARM. Given warm, back-references ('the bug we just fixed', 'if you opened one' referring to the PR) are appropriate and are genuinely present in scrollback, not curriculum-coined labels (40b) — no coined event/exercise label leaks into any fence. No concurrent-worktree structure in this exercise (40a N/A).",
       "fix_hint": null,
       "blocking": false
     },
@@ -613,29 +559,105 @@
       "rule_index": 46,
       "rule_lead": "Output shape — trust Claude's defaults, don't pad.",
       "verdict": "PASS",
-      "evidence": "No prompt appends a trailing output-shape spec (headers, bullet format, etc.); all three end on an open question or a plain report instruction ('Tell me what it says...', 'propose five basic rules', 'Tell me what you wrote').",
+      "evidence": "No trailing shape spec (no 'clear title, a Rules section, plain markdown, no header block') on any of the three prompts. Prompt 2's field list is teaching content, not shape-padding (see SF SS6 evidence). Prompts end on plain report/destination instructions.",
       "fix_hint": null,
       "blocking": false
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 7,
+      "rule_lead": "Q1/Q2/Q3 retro interview is banned at every module. Compound-shape varies per module — never repeat same Debrief.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "not a compound/Debrief-shaped beat; the file's own Arc note hands the compound move to compound-and-close downstream",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8817fa67174bd6ac191f38356e8ee3c97f188dd1b1c75554b44afd02e1b0aff6",
+      "carried_shape": "04c8bbd89721df08"
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 11,
+      "rule_lead": "No \"What research says\" callout boxes",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no callout boxes of any kind in this exercise",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8817fa67174bd6ac191f38356e8ee3c97f188dd1b1c75554b44afd02e1b0aff6",
+      "carried_shape": "04c8bbd89721df08"
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": "21b",
+      "rule_lead": "Session / task / run split (all trainings).",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "body contains no noun-form 'session'/'task'/'run' usage to check (the only 'session' references are below the maintainer cut, which is exempt)",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8817fa67174bd6ac191f38356e8ee3c97f188dd1b1c75554b44afd02e1b0aff6",
+      "carried_shape": "04c8bbd89721df08"
+    },
+    {
+      "compendium": "check_student_facing.md",
+      "rule_index": 36,
+      "rule_lead": "Trust the prompt over the scaffold.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no pre-built scaffold or starter directory is involved in this exercise",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8817fa67174bd6ac191f38356e8ee3c97f188dd1b1c75554b44afd02e1b0aff6",
+      "carried_shape": "04c8bbd89721df08"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 7,
+      "rule_lead": "No session-resets mid-phase.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt offers /clear or a new-session option anywhere in this file",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8817fa67174bd6ac191f38356e8ee3c97f188dd1b1c75554b44afd02e1b0aff6",
+      "carried_shape": "04c8bbd89721df08"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 16,
+      "rule_lead": "Overwrite anxiety — name overwrite default on regeneration.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "none of the three prompts regenerates an existing repo file; ticket create-vs-update is a different (already self-contained, see SS34) decision, not file-overwrite ambiguity",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8817fa67174bd6ac191f38356e8ee3c97f188dd1b1c75554b44afd02e1b0aff6",
+      "carried_shape": "04c8bbd89721df08"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 49,
       "rule_lead": "A take-home prompt asks for one bounded build.",
       "verdict": "N/A",
-      "na_reason": "none of these prompts is a take-home/saved-for-later handoff; all three run immediately in the same session",
       "evidence": null,
-      "fix_hint": null,
-      "blocking": false
+      "na_reason": "none of these prompts is a take-home/saved-for-later handoff; all three run immediately in the same session",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8817fa67174bd6ac191f38356e8ee3c97f188dd1b1c75554b44afd02e1b0aff6",
+      "carried_shape": "04c8bbd89721df08"
     },
     {
       "compendium": "check_strategy_tie_in.md",
       "rule_index": 8,
       "rule_lead": "Strategy doc carries strategy, not structure — §§1-7 bind curriculum→doc, this one binds doc→curriculum",
       "verdict": "N/A",
-      "na_reason": "this rule audits the strategy doc's restatement of a leaf file's structure; close-the-ticket.md is the leaf being correctly pointed-at, not the doc under audit",
       "evidence": null,
-      "fix_hint": null,
-      "blocking": false
+      "na_reason": "this rule audits the strategy doc's restatement of a leaf file's structure; close-the-ticket.md is the leaf being correctly pointed-at, not the doc under audit",
+      "fix_hint": "",
+      "blocking": false,
+      "carried_from": "8817fa67174bd6ac191f38356e8ee3c97f188dd1b1c75554b44afd02e1b0aff6",
+      "carried_shape": "04c8bbd89721df08"
     },
     {
       "compendium": "check_prompts.md",
@@ -645,7 +667,7 @@
       "evidence": "None of the three prompts contains a 'Save it as <path>' instruction — P1/P2 leave output in scrollback, P3 updates the external tracker. The rule's trigger condition does not fire on this file; registry frontmatter's consumed-by fields are informative but not what this rule tests.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "69d149da480f1221d49c5ac62368b65281e33d12bd813b331ead97f1a6950104",
+      "carried_from": "8817fa67174bd6ac191f38356e8ee3c97f188dd1b1c75554b44afd02e1b0aff6",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -656,7 +678,7 @@
       "evidence": "Finished curriculum exercise body, not an article rough-cut draft.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "69d149da480f1221d49c5ac62368b65281e33d12bd813b331ead97f1a6950104",
+      "carried_from": "8817fa67174bd6ac191f38356e8ee3c97f188dd1b1c75554b44afd02e1b0aff6",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -667,7 +689,7 @@
       "evidence": "No user-supplied verbatim frame being captured into a reference artefact in this file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "69d149da480f1221d49c5ac62368b65281e33d12bd813b331ead97f1a6950104",
+      "carried_from": "8817fa67174bd6ac191f38356e8ee3c97f188dd1b1c75554b44afd02e1b0aff6",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -678,7 +700,7 @@
       "evidence": "Body names no practitioner at all (the OODA roster naming Klaassen/Huntley/Horthy sits only in the exempt backing block).",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "69d149da480f1221d49c5ac62368b65281e33d12bd813b331ead97f1a6950104",
+      "carried_from": "8817fa67174bd6ac191f38356e8ee3c97f188dd1b1c75554b44afd02e1b0aff6",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -689,7 +711,7 @@
       "evidence": "Process rule for authors running multi-file sweeps; not a body-prose lint on a single file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "69d149da480f1221d49c5ac62368b65281e33d12bd813b331ead97f1a6950104",
+      "carried_from": "8817fa67174bd6ac191f38356e8ee3c97f188dd1b1c75554b44afd02e1b0aff6",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -700,7 +722,7 @@
       "evidence": "Governs single-consolidated-doc design for trainer/exec/sponsor readers; does not apply to an exercise file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "69d149da480f1221d49c5ac62368b65281e33d12bd813b331ead97f1a6950104",
+      "carried_from": "8817fa67174bd6ac191f38356e8ee3c97f188dd1b1c75554b44afd02e1b0aff6",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -711,7 +733,7 @@
       "evidence": "Governs built trainer-guide/trainer-modules pages; this file's own maintainer block is a source document, not a delivered trainer page.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "69d149da480f1221d49c5ac62368b65281e33d12bd813b331ead97f1a6950104",
+      "carried_from": "8817fa67174bd6ac191f38356e8ee3c97f188dd1b1c75554b44afd02e1b0aff6",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -722,7 +744,7 @@
       "evidence": "Body never uses \"memory\" or \"context\" as terms; no discrimination to check.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "69d149da480f1221d49c5ac62368b65281e33d12bd813b331ead97f1a6950104",
+      "carried_from": "8817fa67174bd6ac191f38356e8ee3c97f188dd1b1c75554b44afd02e1b0aff6",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -733,7 +755,7 @@
       "evidence": "No self-study simulation persona referenced in this file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "69d149da480f1221d49c5ac62368b65281e33d12bd813b331ead97f1a6950104",
+      "carried_from": "8817fa67174bd6ac191f38356e8ee3c97f188dd1b1c75554b44afd02e1b0aff6",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -744,7 +766,7 @@
       "evidence": "No CLAUDE.md reference in body (the maintainer note's `./CLAUDE.local.md` reference sits below the cut, exempt).",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "69d149da480f1221d49c5ac62368b65281e33d12bd813b331ead97f1a6950104",
+      "carried_from": "8817fa67174bd6ac191f38356e8ee3c97f188dd1b1c75554b44afd02e1b0aff6",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -755,7 +777,7 @@
       "evidence": "No first-time student-authored use of a collision word (memory/skill/rule/plan/agent-as-artifact) occurs in this file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "69d149da480f1221d49c5ac62368b65281e33d12bd813b331ead97f1a6950104",
+      "carried_from": "8817fa67174bd6ac191f38356e8ee3c97f188dd1b1c75554b44afd02e1b0aff6",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -766,7 +788,7 @@
       "evidence": "No student file-save action occurs in this exercise (all outputs stay in scrollback or the external tracker).",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "69d149da480f1221d49c5ac62368b65281e33d12bd813b331ead97f1a6950104",
+      "carried_from": "8817fa67174bd6ac191f38356e8ee3c97f188dd1b1c75554b44afd02e1b0aff6",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -777,7 +799,7 @@
       "evidence": "No thinking-effort/model/mode/worktree setting is load-bearing for this exercise.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "69d149da480f1221d49c5ac62368b65281e33d12bd813b331ead97f1a6950104",
+      "carried_from": "8817fa67174bd6ac191f38356e8ee3c97f188dd1b1c75554b44afd02e1b0aff6",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -788,7 +810,7 @@
       "evidence": "Wrong training and module (Agents 101 M7 canonical list); this file is AE101 M1.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "69d149da480f1221d49c5ac62368b65281e33d12bd813b331ead97f1a6950104",
+      "carried_from": "8817fa67174bd6ac191f38356e8ee3c97f188dd1b1c75554b44afd02e1b0aff6",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -799,7 +821,7 @@
       "evidence": "Wrong training (Agents 101-specific); this file is also not a module Debrief section.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "69d149da480f1221d49c5ac62368b65281e33d12bd813b331ead97f1a6950104",
+      "carried_from": "8817fa67174bd6ac191f38356e8ee3c97f188dd1b1c75554b44afd02e1b0aff6",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -810,7 +832,7 @@
       "evidence": "No skill invocation in any of the three prompts.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "69d149da480f1221d49c5ac62368b65281e33d12bd813b331ead97f1a6950104",
+      "carried_from": "8817fa67174bd6ac191f38356e8ee3c97f188dd1b1c75554b44afd02e1b0aff6",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -821,7 +843,7 @@
       "evidence": "No self-consistency/ensemble/regeneration-diff method used by any of the three prompts.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "69d149da480f1221d49c5ac62368b65281e33d12bd813b331ead97f1a6950104",
+      "carried_from": "8817fa67174bd6ac191f38356e8ee3c97f188dd1b1c75554b44afd02e1b0aff6",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -832,7 +854,7 @@
       "evidence": "AE101 is Code-only; rule explicitly states AE101 ignores this Agents-101/Cowork-fork pattern.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "69d149da480f1221d49c5ac62368b65281e33d12bd813b331ead97f1a6950104",
+      "carried_from": "8817fa67174bd6ac191f38356e8ee3c97f188dd1b1c75554b44afd02e1b0aff6",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -843,7 +865,7 @@
       "evidence": "Agents-101/Cowork-specific rule; AE101 has no Cowork fork.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "69d149da480f1221d49c5ac62368b65281e33d12bd813b331ead97f1a6950104",
+      "carried_from": "8817fa67174bd6ac191f38356e8ee3c97f188dd1b1c75554b44afd02e1b0aff6",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -854,7 +876,7 @@
       "evidence": "No regeneration-with-new-context-source pattern in any of the three prompts.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "69d149da480f1221d49c5ac62368b65281e33d12bd813b331ead97f1a6950104",
+      "carried_from": "8817fa67174bd6ac191f38356e8ee3c97f188dd1b1c75554b44afd02e1b0aff6",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -865,7 +887,7 @@
       "evidence": "No cite-or-flag instruction in any of the three prompts.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "69d149da480f1221d49c5ac62368b65281e33d12bd813b331ead97f1a6950104",
+      "carried_from": "8817fa67174bd6ac191f38356e8ee3c97f188dd1b1c75554b44afd02e1b0aff6",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -876,7 +898,7 @@
       "evidence": "No anti-positioning/edge-paragraph regeneration in these prompts.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "69d149da480f1221d49c5ac62368b65281e33d12bd813b331ead97f1a6950104",
+      "carried_from": "8817fa67174bd6ac191f38356e8ee3c97f188dd1b1c75554b44afd02e1b0aff6",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -887,7 +909,7 @@
       "evidence": "No multi-question walkthrough sequence in any of the three prompts.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "69d149da480f1221d49c5ac62368b65281e33d12bd813b331ead97f1a6950104",
+      "carried_from": "8817fa67174bd6ac191f38356e8ee3c97f188dd1b1c75554b44afd02e1b0aff6",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -898,7 +920,7 @@
       "evidence": "None of the three prompts has 4+ named sub-steps or invokes plan mode; the structural trigger does not fire.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "69d149da480f1221d49c5ac62368b65281e33d12bd813b331ead97f1a6950104",
+      "carried_from": "8817fa67174bd6ac191f38356e8ee3c97f188dd1b1c75554b44afd02e1b0aff6",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -909,7 +931,7 @@
       "evidence": "None of the three prompts asks Claude to interrogate its own prior work.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "69d149da480f1221d49c5ac62368b65281e33d12bd813b331ead97f1a6950104",
+      "carried_from": "8817fa67174bd6ac191f38356e8ee3c97f188dd1b1c75554b44afd02e1b0aff6",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -920,7 +942,7 @@
       "evidence": "None of the three prompts is a long-running walk-away send-off.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "69d149da480f1221d49c5ac62368b65281e33d12bd813b331ead97f1a6950104",
+      "carried_from": "8817fa67174bd6ac191f38356e8ee3c97f188dd1b1c75554b44afd02e1b0aff6",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -931,7 +953,7 @@
       "evidence": "No build/assemble-then-save artefact pattern; the close-out ships via post-action report (rule 21) instead.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "69d149da480f1221d49c5ac62368b65281e33d12bd813b331ead97f1a6950104",
+      "carried_from": "8817fa67174bd6ac191f38356e8ee3c97f188dd1b1c75554b44afd02e1b0aff6",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -942,7 +964,7 @@
       "evidence": "Read-only judging pass; no prompt-body edit was made or proposed by this judge.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "69d149da480f1221d49c5ac62368b65281e33d12bd813b331ead97f1a6950104",
+      "carried_from": "8817fa67174bd6ac191f38356e8ee3c97f188dd1b1c75554b44afd02e1b0aff6",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -953,7 +975,7 @@
       "evidence": "Agents-101-scoped rule; this is an AE101 file, and none of the three prompts saves a file at all.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "69d149da480f1221d49c5ac62368b65281e33d12bd813b331ead97f1a6950104",
+      "carried_from": "8817fa67174bd6ac191f38356e8ee3c97f188dd1b1c75554b44afd02e1b0aff6",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -964,7 +986,7 @@
       "evidence": "No CWD-restating or `cd` pattern in any of the three prompts.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "69d149da480f1221d49c5ac62368b65281e33d12bd813b331ead97f1a6950104",
+      "carried_from": "8817fa67174bd6ac191f38356e8ee3c97f188dd1b1c75554b44afd02e1b0aff6",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -975,7 +997,7 @@
       "evidence": "No `subagent` invocation in any of the three prompts.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "69d149da480f1221d49c5ac62368b65281e33d12bd813b331ead97f1a6950104",
+      "carried_from": "8817fa67174bd6ac191f38356e8ee3c97f188dd1b1c75554b44afd02e1b0aff6",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -986,7 +1008,7 @@
       "evidence": "Process rule governing how an editor surfaces prompt-body edits to the maintainer; not a content lint, and no edit was proposed this pass.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "69d149da480f1221d49c5ac62368b65281e33d12bd813b331ead97f1a6950104",
+      "carried_from": "8817fa67174bd6ac191f38356e8ee3c97f188dd1b1c75554b44afd02e1b0aff6",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -997,7 +1019,7 @@
       "evidence": "No live-test-session correction context applies to this pass.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "69d149da480f1221d49c5ac62368b65281e33d12bd813b331ead97f1a6950104",
+      "carried_from": "8817fa67174bd6ac191f38356e8ee3c97f188dd1b1c75554b44afd02e1b0aff6",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -1008,7 +1030,7 @@
       "evidence": "No module number appears inside any of the three prompt bodies.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "69d149da480f1221d49c5ac62368b65281e33d12bd813b331ead97f1a6950104",
+      "carried_from": "8817fa67174bd6ac191f38356e8ee3c97f188dd1b1c75554b44afd02e1b0aff6",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -1019,7 +1041,7 @@
       "evidence": "None of the three prompts greps git output for a branch/log count.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "69d149da480f1221d49c5ac62368b65281e33d12bd813b331ead97f1a6950104",
+      "carried_from": "8817fa67174bd6ac191f38356e8ee3c97f188dd1b1c75554b44afd02e1b0aff6",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -1030,7 +1052,7 @@
       "evidence": "None of the three prompts sets up a multi-turn dialog against a persisted artifact.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "69d149da480f1221d49c5ac62368b65281e33d12bd813b331ead97f1a6950104",
+      "carried_from": "8817fa67174bd6ac191f38356e8ee3c97f188dd1b1c75554b44afd02e1b0aff6",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -1041,7 +1063,7 @@
       "evidence": "No save-a-rule-to-CLAUDE.md pattern in any of the three prompts.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "69d149da480f1221d49c5ac62368b65281e33d12bd813b331ead97f1a6950104",
+      "carried_from": "8817fa67174bd6ac191f38356e8ee3c97f188dd1b1c75554b44afd02e1b0aff6",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -1052,7 +1074,7 @@
       "evidence": "None of the three prompts' correct behavior depends on a non-default permission mode; registry frontmatter declares none, correctly.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "69d149da480f1221d49c5ac62368b65281e33d12bd813b331ead97f1a6950104",
+      "carried_from": "8817fa67174bd6ac191f38356e8ee3c97f188dd1b1c75554b44afd02e1b0aff6",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -1063,7 +1085,7 @@
       "evidence": "No STOP-tail construct grafted onto a write-artifact prompt in this file.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "69d149da480f1221d49c5ac62368b65281e33d12bd813b331ead97f1a6950104",
+      "carried_from": "8817fa67174bd6ac191f38356e8ee3c97f188dd1b1c75554b44afd02e1b0aff6",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -1074,7 +1096,7 @@
       "evidence": "These are standard classroom-delivered exercise prompts, not headless-runner/tmux-runner prompts.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "69d149da480f1221d49c5ac62368b65281e33d12bd813b331ead97f1a6950104",
+      "carried_from": "8817fa67174bd6ac191f38356e8ee3c97f188dd1b1c75554b44afd02e1b0aff6",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -1085,7 +1107,7 @@
       "evidence": "None of the three prompts is long-running (each is a single, quick, focused action).",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "69d149da480f1221d49c5ac62368b65281e33d12bd813b331ead97f1a6950104",
+      "carried_from": "8817fa67174bd6ac191f38356e8ee3c97f188dd1b1c75554b44afd02e1b0aff6",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -1096,7 +1118,7 @@
       "evidence": "Advisory to editors performing a fix pass; no fix pass performed this session.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "69d149da480f1221d49c5ac62368b65281e33d12bd813b331ead97f1a6950104",
+      "carried_from": "8817fa67174bd6ac191f38356e8ee3c97f188dd1b1c75554b44afd02e1b0aff6",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -1107,7 +1129,7 @@
       "evidence": "No file path appears inside any of the three prompt fences (the tracker is external, not a local path).",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "69d149da480f1221d49c5ac62368b65281e33d12bd813b331ead97f1a6950104",
+      "carried_from": "8817fa67174bd6ac191f38356e8ee3c97f188dd1b1c75554b44afd02e1b0aff6",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -1118,7 +1140,7 @@
       "evidence": "No add-X-and-regenerate pattern in any of the three prompts.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "69d149da480f1221d49c5ac62368b65281e33d12bd813b331ead97f1a6950104",
+      "carried_from": "8817fa67174bd6ac191f38356e8ee3c97f188dd1b1c75554b44afd02e1b0aff6",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -1129,7 +1151,7 @@
       "evidence": "Cross-file variety rule; this file's own closing mechanic (\"## Double-check the voice\", a solo self-check) is consistent with the corpus's variety principle but not verifiable in isolation from sibling M1 exercises.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "69d149da480f1221d49c5ac62368b65281e33d12bd813b331ead97f1a6950104",
+      "carried_from": "8817fa67174bd6ac191f38356e8ee3c97f188dd1b1c75554b44afd02e1b0aff6",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -1140,7 +1162,7 @@
       "evidence": "Surface is a student-facing curriculum exercise (curriculum/exercises/close-the-ticket.md), not buyer-facing copy (site/newsletter/sponsor deck/pricing) — the compendium's whole scope does not fire here.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "69d149da480f1221d49c5ac62368b65281e33d12bd813b331ead97f1a6950104",
+      "carried_from": "8817fa67174bd6ac191f38356e8ee3c97f188dd1b1c75554b44afd02e1b0aff6",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -1151,7 +1173,7 @@
       "evidence": "Surface is a student-facing curriculum exercise (curriculum/exercises/close-the-ticket.md), not buyer-facing copy (site/newsletter/sponsor deck/pricing) — the compendium's whole scope does not fire here.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "69d149da480f1221d49c5ac62368b65281e33d12bd813b331ead97f1a6950104",
+      "carried_from": "8817fa67174bd6ac191f38356e8ee3c97f188dd1b1c75554b44afd02e1b0aff6",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -1162,7 +1184,7 @@
       "evidence": "Surface is a student-facing curriculum exercise (curriculum/exercises/close-the-ticket.md), not buyer-facing copy (site/newsletter/sponsor deck/pricing) — the compendium's whole scope does not fire here.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "69d149da480f1221d49c5ac62368b65281e33d12bd813b331ead97f1a6950104",
+      "carried_from": "8817fa67174bd6ac191f38356e8ee3c97f188dd1b1c75554b44afd02e1b0aff6",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -1173,7 +1195,7 @@
       "evidence": "Surface is a student-facing curriculum exercise (curriculum/exercises/close-the-ticket.md), not buyer-facing copy (site/newsletter/sponsor deck/pricing) — the compendium's whole scope does not fire here.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "69d149da480f1221d49c5ac62368b65281e33d12bd813b331ead97f1a6950104",
+      "carried_from": "8817fa67174bd6ac191f38356e8ee3c97f188dd1b1c75554b44afd02e1b0aff6",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -1184,7 +1206,7 @@
       "evidence": "Surface is a student-facing curriculum exercise (curriculum/exercises/close-the-ticket.md), not buyer-facing copy (site/newsletter/sponsor deck/pricing) — the compendium's whole scope does not fire here.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "69d149da480f1221d49c5ac62368b65281e33d12bd813b331ead97f1a6950104",
+      "carried_from": "8817fa67174bd6ac191f38356e8ee3c97f188dd1b1c75554b44afd02e1b0aff6",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -1195,7 +1217,7 @@
       "evidence": "Surface is a student-facing curriculum exercise (curriculum/exercises/close-the-ticket.md), not buyer-facing copy (site/newsletter/sponsor deck/pricing) — the compendium's whole scope does not fire here.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "69d149da480f1221d49c5ac62368b65281e33d12bd813b331ead97f1a6950104",
+      "carried_from": "8817fa67174bd6ac191f38356e8ee3c97f188dd1b1c75554b44afd02e1b0aff6",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -1206,7 +1228,7 @@
       "evidence": "Surface is a student-facing curriculum exercise (curriculum/exercises/close-the-ticket.md), not buyer-facing copy (site/newsletter/sponsor deck/pricing) — the compendium's whole scope does not fire here.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "69d149da480f1221d49c5ac62368b65281e33d12bd813b331ead97f1a6950104",
+      "carried_from": "8817fa67174bd6ac191f38356e8ee3c97f188dd1b1c75554b44afd02e1b0aff6",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -1217,7 +1239,7 @@
       "evidence": "Surface is a student-facing curriculum exercise (curriculum/exercises/close-the-ticket.md), not buyer-facing copy (site/newsletter/sponsor deck/pricing) — the compendium's whole scope does not fire here.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "69d149da480f1221d49c5ac62368b65281e33d12bd813b331ead97f1a6950104",
+      "carried_from": "8817fa67174bd6ac191f38356e8ee3c97f188dd1b1c75554b44afd02e1b0aff6",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -1228,7 +1250,7 @@
       "evidence": "Surface is a student-facing curriculum exercise (curriculum/exercises/close-the-ticket.md), not buyer-facing copy (site/newsletter/sponsor deck/pricing) — the compendium's whole scope does not fire here.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "69d149da480f1221d49c5ac62368b65281e33d12bd813b331ead97f1a6950104",
+      "carried_from": "8817fa67174bd6ac191f38356e8ee3c97f188dd1b1c75554b44afd02e1b0aff6",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -1239,7 +1261,7 @@
       "evidence": "Surface is a student-facing curriculum exercise (curriculum/exercises/close-the-ticket.md), not buyer-facing copy (site/newsletter/sponsor deck/pricing) — the compendium's whole scope does not fire here.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "69d149da480f1221d49c5ac62368b65281e33d12bd813b331ead97f1a6950104",
+      "carried_from": "8817fa67174bd6ac191f38356e8ee3c97f188dd1b1c75554b44afd02e1b0aff6",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -1250,7 +1272,7 @@
       "evidence": "Surface is a student-facing curriculum exercise (curriculum/exercises/close-the-ticket.md), not buyer-facing copy (site/newsletter/sponsor deck/pricing) — the compendium's whole scope does not fire here.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "69d149da480f1221d49c5ac62368b65281e33d12bd813b331ead97f1a6950104",
+      "carried_from": "8817fa67174bd6ac191f38356e8ee3c97f188dd1b1c75554b44afd02e1b0aff6",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -1261,7 +1283,7 @@
       "evidence": "Surface is a student-facing curriculum exercise (curriculum/exercises/close-the-ticket.md), not buyer-facing copy (site/newsletter/sponsor deck/pricing) — the compendium's whole scope does not fire here.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "69d149da480f1221d49c5ac62368b65281e33d12bd813b331ead97f1a6950104",
+      "carried_from": "8817fa67174bd6ac191f38356e8ee3c97f188dd1b1c75554b44afd02e1b0aff6",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -1272,7 +1294,7 @@
       "evidence": "Surface is a student-facing curriculum exercise (curriculum/exercises/close-the-ticket.md), not buyer-facing copy (site/newsletter/sponsor deck/pricing) — the compendium's whole scope does not fire here.",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "69d149da480f1221d49c5ac62368b65281e33d12bd813b331ead97f1a6950104",
+      "carried_from": "8817fa67174bd6ac191f38356e8ee3c97f188dd1b1c75554b44afd02e1b0aff6",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -1283,7 +1305,7 @@
       "evidence": "Fires on Big Idea / Mood (deliberate) / Key Concepts sections; this exercise file carries none of those sections (that's the parent module file's job).",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "69d149da480f1221d49c5ac62368b65281e33d12bd813b331ead97f1a6950104",
+      "carried_from": "8817fa67174bd6ac191f38356e8ee3c97f188dd1b1c75554b44afd02e1b0aff6",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -1294,7 +1316,7 @@
       "evidence": "Fires on Big Idea / Mood (deliberate) / Key Concepts sections; this exercise file carries none of those sections (that's the parent module file's job).",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "69d149da480f1221d49c5ac62368b65281e33d12bd813b331ead97f1a6950104",
+      "carried_from": "8817fa67174bd6ac191f38356e8ee3c97f188dd1b1c75554b44afd02e1b0aff6",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -1305,7 +1327,7 @@
       "evidence": "Fires on Big Idea / Mood (deliberate) / Key Concepts sections; this exercise file carries none of those sections (that's the parent module file's job).",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "69d149da480f1221d49c5ac62368b65281e33d12bd813b331ead97f1a6950104",
+      "carried_from": "8817fa67174bd6ac191f38356e8ee3c97f188dd1b1c75554b44afd02e1b0aff6",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -1316,7 +1338,7 @@
       "evidence": "Fires on Big Idea / Mood (deliberate) / Key Concepts sections; this exercise file carries none of those sections (that's the parent module file's job).",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "69d149da480f1221d49c5ac62368b65281e33d12bd813b331ead97f1a6950104",
+      "carried_from": "8817fa67174bd6ac191f38356e8ee3c97f188dd1b1c75554b44afd02e1b0aff6",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -1327,7 +1349,7 @@
       "evidence": "Fires on Big Idea / Mood (deliberate) / Key Concepts sections; this exercise file carries none of those sections (that's the parent module file's job).",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "69d149da480f1221d49c5ac62368b65281e33d12bd813b331ead97f1a6950104",
+      "carried_from": "8817fa67174bd6ac191f38356e8ee3c97f188dd1b1c75554b44afd02e1b0aff6",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -1338,7 +1360,7 @@
       "evidence": "Fires on Big Idea / Mood (deliberate) / Key Concepts sections; this exercise file carries none of those sections (that's the parent module file's job).",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "69d149da480f1221d49c5ac62368b65281e33d12bd813b331ead97f1a6950104",
+      "carried_from": "8817fa67174bd6ac191f38356e8ee3c97f188dd1b1c75554b44afd02e1b0aff6",
       "carried_shape": "04c8bbd89721df08"
     },
     {
@@ -1349,15 +1371,10 @@
       "evidence": "Fires on Big Idea / Mood (deliberate) / Key Concepts sections; this exercise file carries none of those sections (that's the parent module file's job).",
       "fix_hint": "",
       "blocking": false,
-      "carried_from": "69d149da480f1221d49c5ac62368b65281e33d12bd813b331ead97f1a6950104",
+      "carried_from": "8817fa67174bd6ac191f38356e8ee3c97f188dd1b1c75554b44afd02e1b0aff6",
       "carried_shape": "04c8bbd89721df08"
     }
   ],
-  "todos_count": 4,
-  "blocking_findings_count": 0,
-  "notes": [
-    "check_writing SS3: the backing block's Sources entry (L115) 'One reshape on the record: LLM -> the agent on the three action steps...' is a borderline case — read as a translation note documenting fidelity to a maintainer-attested verbatim quote rather than journey-narration of an edit to this file's own content, so not filed. If a future pass disagrees, the rule question is which reading of SS3's 'empirical finding that would otherwise be re-derived' exception applies to a paraphrase-fidelity note.",
-    "Not filed under writing class, flagged for the owning class instead: the backing note at L115 says a specific reshape was 'LLM -> the agent' on the three action steps, but the current body's action-step sentence (L48) reads 'Ask Claude to study...', i.e. 'Claude' rather than 'the agent' — possible drift between the backing note's claim and the live body wording; a research_claims/technical-class or backing-block-validation pass should check curriculum/exercises/close-the-ticket.md L115 against L47-48 and scripts/validate-backing.js.",
-    "Out of class scope, noted only: L35's link path '../trainings/agentic-engineering-101/reference/mcp-and-connectors.md' uses a depth-counted relative prefix, which curriculum/module-shape.md SS Cross-doc-links disallows in source; check_student_facing SS18 governs link TEXT only and is satisfied. Flagging for whichever class/pass owns module-shape.md path-form compliance."
-  ]
+  "todos_count": 3,
+  "blocking_findings_count": 0
 }

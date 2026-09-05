@@ -85,5 +85,5 @@ When your agent stops for missing information, check whether there was a way for
 
 <!-- /backing -->
 
-**Quality:** compendium-audited 2026-09-02 (writing@c0c37913 story@c0c37913 technical@8cc00874 behavior@93bb807 pedagogy@02dcad0b strategy@93bb807 slides@c0c37913)
-- judges @c0c37913: writing PASS (2 todos see instances/ae101--lecture--what-keeps-a-long-running-session-going.writing.json), story PASS (1 todo see instances/ae101--lecture--what-keeps-a-long-running-session-going.story.json), technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-09-05 (writing@08946dd8 story@08946dd8 technical@08946dd8 behavior@93bb807 pedagogy@08946dd8 strategy@08946dd8 slides@c0c37913)
+- judges @08946dd8: writing PASS (1 todo see instances/ae101--lecture--what-keeps-a-long-running-session-going.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS (1 todo see instances/ae101--lecture--what-keeps-a-long-running-session-going.pedagogy.json), strategy PASS, slides PASS

@@ -60,8 +60,8 @@ Drop your bug after the colon.
 
 **Lean-intro trim (2026-08-25, Antti-approved):** the TDD rationale (*"The failing test is what makes the fix checkable. Without it, the fix is a guess that happens to compile."*) cut from the opening bullet — explaining tests-first to engineers. The imperative alone carries the beat; do not restore the why.
 
-**Quality:** compendium-audited 2026-09-05 (writing@324b81d7 story@324b81d7 technical@324b81d7 behavior@1480362 pedagogy@324b81d7 strategy@324b81d7 slides@324b81d7)
-- judges @324b81d7: writing PASS (2 todos see instances/ae101--exercise--fix-tests-first.writing.json), story PASS (2 todos see instances/ae101--exercise--fix-tests-first.story.json), technical PASS, behavior PASS, pedagogy PASS (1 todo see instances/ae101--exercise--fix-tests-first.pedagogy.json), strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-09-05 (writing@324b81d7 story@324b81d7 technical@324b81d7 behavior@1480362 pedagogy@08946dd8 strategy@324b81d7 slides@324b81d7)
+- judges @08946dd8: writing PASS (2 todos see instances/ae101--exercise--fix-tests-first.writing.json), story PASS (2 todos see instances/ae101--exercise--fix-tests-first.story.json), technical PASS, behavior PASS, pedagogy PASS (1 todo see instances/ae101--exercise--fix-tests-first.pedagogy.json), strategy PASS, slides PASS
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply (tests-first fix) + Analyze (read the diff against what you'd write).
 - **Atomic — no phase markers.** One TDD loop, start to PR; splitting it would name beats the student does not experience as separate. Line 3 is authored, not generated.

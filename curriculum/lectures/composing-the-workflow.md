@@ -48,7 +48,7 @@
 - A **workflow** is skills composed around one task.
 - Each skill carries the best instructions for its one step, and nothing else's.
 - Which skills are in, and in what order, is composed per task and recomposed when the task changes.
-- Your job moves from reading every intermediate output to designing the checks, routes, and exceptions that deserve your judgment.
+- Your job moves from reading every intermediate output to choosing the skills, their order, and the instructions each one carries.
 
 <!-- maintainer -->
 
@@ -120,7 +120,7 @@ Claims
 - `workflow-is-skills-composed-around-one-task` · vision · "A **workflow** is skills composed around one task." ← none-owed — Antti's definition 2026-09-05: composition and per-step instructions, checks are not part of it
 - `skill-carries-instructions-for-its-one-step` · vision · "Each skill carries the best instructions for its one step, and nothing else's." ← none-owed
 - `composition-per-task-recomposed` · vision · "Which skills are in, and in what order, is composed per task and recomposed when the task changes." ← none-owed
-- `workflow-designer-owns-checks-routes-exceptions` · vision · "Your job moves from reading every intermediate output to designing the checks, routes, and exceptions that deserve your judgment." ← none-owed
+- `workflow-designer-composes-skills-order-instructions` · vision · "Your job moves from reading every intermediate output to choosing the skills, their order, and the instructions each one carries." ← none-owed
 
 Sources
 - cc-scheduling-primitives `[checked:2026-04-24 result:OK due:cohort]` https://code.claude.com/docs/en/ — [capability] The body names three scheduling primitives and distinguishes local Routines from `/schedule`'s cloud-backed remote Routines. The check ran 2026-04-24 against the current documentation and is recorded here: `/schedule` is Routines, remote and cloud-backed; Desktop local tasks are a separate primitive. **A capability stamp records its own check.** A pointer at a paragraph in another file is only as durable as that file's next edit. fallback: teach the pattern (a kit skill is what the scheduled agent invokes) and name only the primitives a re-test confirms.

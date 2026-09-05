@@ -68,24 +68,39 @@ const VERDICTS = new Set(['PASS', 'PASS_WITH_TODOS', 'REVISE', 'N/A']);
 const isTodoRow = r => !!r && typeof r === 'object' && r.verdict === 'REVISE' && r.blocking === false;
 const isBlockingRow = r => !!r && typeof r === 'object' && r.verdict === 'REVISE' && r.blocking === true;
 
+// Class B (simulation-behavior) never writes rule rows. It scores prompts, and
+// each finding lands in `prompts_findings` carrying its own verdict — TODO for
+// a non-blocking one, REVISE for a blocking one. The mapping is not a guess:
+// across the 106 instances holding the field, count(REVISE) equals the declared
+// blocking_findings_count on every single one, and count(TODO) equals the
+// declared todos_count on 103. The three that disagree all declare zero over
+// recorded TODOs, which is the direction this gate exists to catch.
+const isPromptTodo = f => !!f && typeof f === 'object' && f.verdict === 'TODO';
+const isPromptBlocking = f => !!f && typeof f === 'object' && f.verdict === 'REVISE';
+
 function ledgers(inst) {
   const list = Array.isArray(inst.todos) ? inst.todos.length : null;
   const rows = Array.isArray(inst.rules_evaluated) ? inst.rules_evaluated.filter(isTodoRow).length : null;
-  return { list, rows };
+  const prompts = Array.isArray(inst.prompts_findings) ? inst.prompts_findings.filter(isPromptTodo).length : null;
+  return { list, rows, prompts };
 }
 
 // `todos[]` is the older, thinner record and `rules_evaluated` the one five
-// tools already read, so the ledger wins a tie. Where only the list exists it is
-// still the evidence, and counting it is not the same as blessing the shape.
+// tools already read, so the ledger wins a tie. `prompts_findings` sits between
+// them: it is a whole class's only record, so it counts wherever no rule rows
+// exist. Where only the list exists it is still the evidence, and counting it
+// is not the same as blessing the shape.
 function derivedTodos(inst) {
-  const { list, rows } = ledgers(inst);
+  const { list, rows, prompts } = ledgers(inst);
   if (rows !== null) return rows;
+  if (prompts !== null) return prompts;
   return list;
 }
 
 function derivedBlocking(inst) {
-  if (!Array.isArray(inst.rules_evaluated)) return null;
-  return inst.rules_evaluated.filter(isBlockingRow).length;
+  if (Array.isArray(inst.rules_evaluated)) return inst.rules_evaluated.filter(isBlockingRow).length;
+  if (Array.isArray(inst.prompts_findings)) return inst.prompts_findings.filter(isPromptBlocking).length;
+  return null;
 }
 
 const asInt = v => (typeof v === 'number' && Number.isInteger(v) ? v
@@ -140,9 +155,22 @@ function checkInstance(name, inst) {
     add('BAD_VERDICT', `${JSON.stringify(inst.verdict)} is not one of ${[...VERDICTS].join(' / ')}`);
   }
 
-  const { list, rows } = ledgers(inst);
-  if (list !== null && rows !== null && list !== rows) {
-    add('RIVAL_LEDGERS', `todos[] holds ${list}, rules_evaluated holds ${rows} non-blocking REVISE rows`);
+  // Any two ledgers present at once are compared. Three names for one number is
+  // not redundancy; they rot apart and each reader picks whichever it was
+  // written against.
+  const { list, rows, prompts } = ledgers(inst);
+  const present = [
+    ['todos[]', list], ['prompts_findings', prompts], ['rules_evaluated', rows],
+  ].filter(([, n]) => n !== null);
+  let rivals = false;
+  for (let i = 0; i < present.length; i++) {
+    for (let j = i + 1; j < present.length; j++) {
+      const [an, av] = present[i]; const [bn, bv] = present[j];
+      if (av === bv) continue;
+      rivals = true;
+      add('RIVAL_LEDGERS', `${an} holds ${av}, ${bn} holds ${bv}`
+        + (bn === 'rules_evaluated' ? ' non-blocking REVISE rows' : ''));
+    }
   }
 
   const declared = asInt(inst.todos_count);
@@ -152,10 +180,9 @@ function checkInstance(name, inst) {
   } else if (derived === null) {
     if (declared > 0) add('COUNT_WITHOUT_LIST', `declares ${declared} todo(s) and records none`);
   } else if (declared !== derived) {
-    // With two ledgers disagreeing there is no count to be right about, so the
+    // With the ledgers disagreeing there is no count to be right about, so the
     // mismatch is a symptom of the rivalry and travels with it rather than
     // failing a build that cannot be made green without a judgement call.
-    const rivals = list !== null && rows !== null && list !== rows;
     problems.push({
       code: 'COUNT_MISMATCH', severity: rivals ? 'debt' : 'gate',
       detail: `todos_count says ${declared}, ${derived} recorded${rivals ? ' (ledgers disagree)' : ''}`,
@@ -228,8 +255,10 @@ function repairs(name, inst) {
     : (name.includes('--') ? name.split('--')[0] : null);
   if (derivedTraining && inst.training !== derivedTraining) patch.training = derivedTraining;
 
-  const { list, rows } = ledgers(inst);
-  const single = !(list !== null && rows !== null && list !== rows);
+  // Arithmetic is only settled while every ledger present agrees. One dissenter
+  // among three makes the count a judgement, same as it does among two.
+  const counts = Object.values(ledgers(inst)).filter(n => n !== null);
+  const single = new Set(counts).size < 2;
   if (single) {
     const d = derivedTodos(inst);
     if (d !== null && asInt(inst.todos_count) !== d) patch.todos_count = d;

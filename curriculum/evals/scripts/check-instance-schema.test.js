@@ -79,6 +79,56 @@ test('blocking rows are counted apart from todos', () => {
   assert.match(wrong[0].detail, /blocking_findings_count says 0, 2 recorded/)
 })
 
+// Class B (simulation-behavior) does not record rule rows at all. It scores each
+// prompt and writes `prompts_findings`, one entry per finding, carrying its own
+// verdict: TODO for a non-blocking one, REVISE for a blocking one. The counter
+// only knew Class A's shape, so all 106 behavior instances read as "declares N
+// todo(s) and records none" while recording every one of them — 48 AE101 todos
+// that no report could name and no triage could reach.
+test('the behavior class records its ledger under its own name', () => {
+  const finding = v => ({ prompt_index: 1, verdict: v, load_bearing: v === 'REVISE' })
+  const inst = base({
+    class: 'behavior', verdict: 'PASS_WITH_TODOS', todos_count: 2, blocking_findings_count: 1,
+    prompts_findings: [finding('TODO'), finding('PASS'), finding('TODO'), finding('REVISE')],
+  })
+  assert.strictEqual(derivedTodos(inst), 2, 'TODO entries are the todos')
+  assert.strictEqual(derivedBlocking(inst), 1, 'REVISE entries are the blocking findings')
+  assert.deepStrictEqual(checkInstance('ae101--exercise--a.behavior.json', inst), [])
+
+  // The three instances this was hiding: a declared zero over recorded TODOs.
+  // Under-counting is the direction that matters — it is how a finding leaves
+  // the ledger without anyone deciding it should.
+  const under = checkInstance('ae101--exercise--a.behavior.json', Object.assign({}, inst, { todos_count: 0 }))
+  assert.deepStrictEqual(codes(under), ['COUNT_MISMATCH'])
+  assert.match(under[0].detail, /todos_count says 0, 2 recorded/)
+
+  // An empty run is a clean pass, not a missing ledger.
+  assert.deepStrictEqual(checkInstance('ae101--exercise--a.behavior.json',
+    base({ class: 'behavior', prompts_findings: [] })), [])
+})
+
+// Eight instances carry prompts_findings AND a rule-row array. Two records of
+// the same thing rot apart whatever they are named, so the third ledger is held
+// to the same standard as the first two rather than quietly winning.
+test('prompts_findings is a third ledger, not an override', () => {
+  const p = checkInstance('ae101--exercise--a.behavior.json', base({
+    class: 'behavior', verdict: 'PASS_WITH_TODOS', todos_count: 0,
+    prompts_findings: [{ prompt_index: 1, verdict: 'TODO' }],
+    rules_evaluated: [passRow()],
+  }))
+  assert.ok(codes(p).includes('RIVAL_LEDGERS'), 'the contradiction is reported')
+  assert.match(p.find(x => x.code === 'RIVAL_LEDGERS').detail,
+    /prompts_findings holds 1, rules_evaluated holds 0/)
+  assert.strictEqual(sev(p, 'RIVAL_LEDGERS'), 'debt', 'which ledger is right is a judgement')
+
+  // Agreeing is legal, same as the todos[] case it sits beside.
+  assert.deepStrictEqual(checkInstance('ae101--exercise--a.behavior.json', base({
+    class: 'behavior', verdict: 'PASS_WITH_TODOS', todos_count: 1,
+    prompts_findings: [{ prompt_index: 1, verdict: 'TODO' }],
+    rules_evaluated: [todoRow()],
+  })), [])
+})
+
 // 61 of the 79 AE101 instances carrying both ledgers disagreed with each other.
 // Two records of the same thing do not average out; they rot apart and the
 // reader picks whichever one it happened to be written against.

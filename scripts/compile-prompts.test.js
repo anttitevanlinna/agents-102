@@ -142,6 +142,16 @@ test('Agents 101 security skill installs once at the selected project-skills pat
   assert.equal(registry['author-security-skill-5'], undefined);
 });
 
+test('Agents 101 invokes the installed security skill with runtime-native syntax', () => {
+  const registry = compile.loadRegistry();
+  const prompt = registry['audit-your-agent-1'];
+
+  assert.match(prompt.runtimeVariants.cli.text, /^\s*\/security-audit — load the skill/);
+  assert.doesNotMatch(prompt.runtimeVariants.cli.text, /^\$security-audit/m);
+  assert.match(prompt.runtimeVariants['codex-cli'].text, /^\s*\$security-audit — load the skill/);
+  assert.doesNotMatch(prompt.runtimeVariants['codex-cli'].text, /^\/security-audit/m);
+});
+
 test('capability blocks keep matching mechanics and remove non-matching mechanics', (t) => {
   const dir = promptDir({
     mechanics: `---

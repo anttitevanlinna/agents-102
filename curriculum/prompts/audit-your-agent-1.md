@@ -14,7 +14,12 @@ produces:
   - id: policy-report
     location: outputs/policy-report.md
 ---
+{{#capability:claude}}
 /security-audit — load the skill
+{{/capability:claude}}
+{{#capability:codex}}
+$security-audit — load the skill
+{{/capability:codex}}
 
 Apply the policy lens to the agent system: the memory in memory/, the sources in sources/, the agent files in agents/, the root {{artifact:root-instructions}}, and the multi-agent runs in module-3/stances/.
 

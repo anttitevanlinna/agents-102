@@ -150,10 +150,8 @@ restating them is a duplicate, not a recap.
 
 **Multisession permission carrier (Antti 2026-08-15): M5 alone, one line** at the close of *Your mid-run
 worries hint at missing checks* — control → no babysitting → a second session beside this one. M4 declined (its
-stamps stay current). Ledger corrections that travel with this: `training-architecture.md` row 7 (parallel
-sessions date to M3+, where `open-the-side-quest` first runs two), and the commitment-table row #11 in
-`bosser-strategy:content-strategy-agentic-engineering-101.md` — row #11 corrected in place, and the strategy
-doc's M4 beat bullet records the decline (landed 2026-08-31).
+stamps stay current). `training-architecture.md` row 7 and the strategy doc's commitment-table row #11 date
+parallel sessions to M3+, where `open-the-side-quest` first runs two.
 
 **Slide deixis accepted:** "the bullets back" — verb phrase ("back them up"), not a spatial pointer.
 

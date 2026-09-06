@@ -11,6 +11,7 @@ User questions and comments steer research as Tier 0 priority.
 
 ## Open
 
+- [2026-09-06](comments/2026-09-06-human-gate-as-grounded-learning.md) — The human gate in a learning agent is both a control boundary and the gradual teaching interface; accept, reject, edit, and rationale are the grounded signals that should shape later candidate rules.
 - [2026-08-05](comments/2026-08-05-stage-practitioner-principles-before-curriculum.md) — Stage practitioner-derived operating principles in continuous research before promoting them into curriculum; discuss sequence and teaching shape only after evidence, freshness, and coverage are visible. **Cycle 174 update:** indexed coverage map created at `synthesis/practitioner-operating-principles.md`; curriculum placement remains deliberately open.
 - [2026-07-26](comments/2026-07-26-agentic-behavior-change-measurement.md) — Day-30 post-training measurement: recalled-before/current self-report + blinded transcript comparison under a public rubric; governing model = calibrated delegation frontier, with four episode states and compounding as trajectory; calibration anchored to PR-layer outcomes (review comments, merge time, rework).
 - [2026-07-26](questions/2026-07-26-agentic-work-transcript-kpis.md) — Can transcripts estimate movement across four reach × calibration states and show the calibrated delegation frontier expanding without loss of control?

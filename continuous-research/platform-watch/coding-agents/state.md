@@ -1,11 +1,19 @@
 # Coding Agent Platforms — Platform State
 
-Last updated: 2026-07-26 (cycle 173)
-OODA cycles: 29
+Last updated: 2026-09-06 (cycle 177)
+OODA cycles: 32
 
 ## Focus
 
 Coding agents as the **meta-platform** for the agentic transformation. This is NOT a developer tools category — it's the factory that builds the factories. Coding agents build the MCP servers, the business agents, the evals, the integrations. Every other platform watch category depends on this one. Copilot Studio can't build another Copilot Studio agent. Agentforce can't extend Agentforce. Coding agents compound — each cycle makes the next cycle faster.
+
+## Key Verdict (as of 2026-09-06)
+
+**CYCLES 175–177 — LEARNING CODING AGENTS: THE PIECES ARE REAL; THE COMPLETE HUMAN-GATED, MEASURED LOOP IS NOT YET A PRACTITIONER STANDARD (L2).** Every's current Compound Engineering implementation can mine current and selected historical sessions, write a grounded learning under `docs/solutions/`, maintain that store, and make later planning search it. Google Research's ReasoningBank implements and measures automatic trace → memory → later SWE-bench reuse. Ruflo's DREAM cycle demonstrates a durable baseline/candidate ledger plus real human rejection, remediation, and merge. None joins explicit human feedback → reviewed candidate rule → versioned agent instruction → automatic fresh-session load → controlled comparable-task improvement. ([Every `ce-compound`](https://github.com/EveryInc/compound-engineering-plugin/blob/b159e1fa4c70efa995742269d38269bcc7524dd2/skills/ce-compound/SKILL.md) — [practitioner direct]; [ReasoningBank implementation](https://github.com/google-research/reasoning-bank/blob/ed80611788292ea739f1effd31f16c53823b8a0d/third_party/src/minisweagent/run/extra/swebench.py) — [academic/research]; [Ruflo DREAM ledger](https://github.com/ruvnet/ruflo/blob/277c7bc03ad192eef6d6f57e59ab7bab69a5728d/docs/dream-cycle/LEDGER.md) — [practitioner direct])
+
+**The distinction is externalized learning versus improvement.** A durable note or rule proves only that evidence was stored. Improvement requires a fresh agent, selective loading, an executable outcome, a no-rule baseline, and separate counts for repairs and regressions. Recent experiments support trace-derived external artifacts, but frozen SWE transfer can be small and uneven, memory can lose to a token-matched vanilla agent, and utility can rise alongside unsafe behavior. ([Agentic Harness Engineering](https://arxiv.org/abs/2604.25850) — [academic]; [SkillGen](https://arxiv.org/abs/2605.10999) — [academic]; [Budget-Constrained Web Agents](https://arxiv.org/abs/2606.15017) — [academic]; [Auditing Self-Evolution in Financial Agents](https://arxiv.org/abs/2608.17684) — [academic])
+
+**Operational shape worth testing:** trace + verified outcome + human correction → small candidate with provenance and expected effect → paired no-rule/rule test → explicit accept/reject → versioned store → selective fresh-session load → repair/regression/cost measure → refresh or rollback. Call this controlled external artifact improvement, not autonomous model learning. Evidence remains L2: several independent mechanisms and experiments, no 10–20-practitioner convergence and no end-to-end replicated implementation.
 
 ## Key Verdict (as of 2026-07-26)
 
@@ -51,7 +59,7 @@ Sol GPT-5.6 Day 14 (July 23): Zero named enterprise production deployments found
 
 **CYCLE 169 UPDATE — Compound Engineering "Compound" step mechanism (Every/lethain.com, L2): automated wiki-to-planning feedback loop is what separates compounding from linear gains; Opus 5 July 21 window missed (10 days remain).**
 
-**Compound Engineering — the specific mechanism for compounding (lethain.com/everyinc, 2026):** Will Larson's practitioner analysis of Every's compound engineering methodology names the distinguishing fourth step absent from most compound-engineering descriptions. Four steps: (1) Plan — decouple research from implementation; (2) Work — agentic coding; (3) Review — agents evaluate against best-practices; **(4) Compound — agent summarizes its learnings from each completed task into a structured wiki, automatically consulted by all future iterations.** The mechanism: a closed feedback loop between Compound and Plan where knowledge captured from task N automatically enters task N+1's planning context. This is not manual documentation — it is automated organizational learning. Without the Compound step, coding agent use produces iteration-by-iteration gains. The Compound step is what converts those into compounding gains. CTO implication: this resolves part of the "what comes after 2X" user signal. The 2X is the adoption jump; the further gains come from depth of the compound mechanism. Larson notes this will be absorbed into mainstream tools "within months," becoming invisible infrastructure. **Evidence level: L2** (practitioner analysis of a named company's method; not Larson's own deployment; independent confirmation not yet documented). ([lethain.com/everyinc-compound-engineering 2026](https://lethain.com/everyinc-compound-engineering/) — [practitioner analysis])
+**Compound Engineering — the specific mechanism for compounding (lethain.com/everyinc, 2026):** Will Larson's practitioner analysis of Every's methodology names the distinguishing fourth step: capture a completed task's learning in a structured store that later planning can consult. **Correction from cycles 175–177 (2026-09-06 code audit):** the current primary implementation writes qualifying learnings under `docs/solutions/`; CE planning and ideation paths search that store, but arbitrary future agent sessions do not automatically load it. The implementation proves an invocation-driven external-knowledge return edge, not “automated organizational learning” or measured improvement by itself. **Evidence level: L2** (one current single-team mechanism plus practitioner analysis; no controlled later-task outcome or independent end-to-end replication). ([Every `ce-compound`](https://github.com/EveryInc/compound-engineering-plugin/blob/b159e1fa4c70efa995742269d38269bcc7524dd2/skills/ce-compound/SKILL.md) — [practitioner direct]; [Every `ce-plan` research](https://github.com/EveryInc/compound-engineering-plugin/blob/b159e1fa4c70efa995742269d38269bcc7524dd2/skills/ce-plan/references/research.md) — [practitioner direct]; [Larson](https://lethain.com/everyinc-compound-engineering/) — [practitioner analysis])
 
 **Watch: Opus 5 "Honeycomb" end-of-July window (10 days remain; pre-clearance delay risk); Sol Day 33 (positive enterprise production report threshold still unmet); August 2026 (Polaris GitHub Copilot default); Q3 2026 (Cursor/SpaceX close).**
 
@@ -619,7 +627,7 @@ Every Inc. published the compound engineering methodology and released it as a C
 1. **Plan** — 80% of time. Decouples research from implementation. Agent analyzes codebase, gathers context, proposes approach.
 2. **Work** — 20% of time. Execution against the plan. Agent implements while human reviews.
 3. **Review** — Parallel review with 12 subagents checking security, performance, over-engineering, etc.
-4. **Compound** — Learnings feed back into CLAUDE.md and project context, making the next cycle faster.
+4. **Compound** — Qualifying learnings are written under `docs/solutions/`; later CE planning and ideation search the store. A discoverability pointer may be added to `AGENTS.md` or `CLAUDE.md`, but the learning itself is not written there. Whether the next cycle is better still requires measurement. **Corrected 2026-09-06 from current implementation audit.**
 
 ([Every Inc.](https://every.to/chain-of-thought/compound-engineering-how-every-codes-with-agents) — [practitioner direct]; [GitHub plugin](https://github.com/EveryInc/compound-engineering-plugin) — [practitioner direct]; [Will Larson / Irrational Exuberance](https://lethain.com/everyinc-compound-engineering/) — [practitioner analysis])
 

@@ -76,6 +76,8 @@ User questions and comments steer research as Tier 0 priority.
 
 - [2026-08-08](comments/2026-08-08-parallel-session-ceiling-is-contested.md) — Two named practitioners, an order of magnitude apart on the same axis, four months apart: one runs "30 to 40 sessions open… 10 to 15 actively managed" and calls parallelism the place the economics change; the other caps at "three to four threads" and argues cognitive bandwidth does not parallelize. Neither instrumented anything. **Gap:** no measurement of the one-operator concurrent-session ceiling exists — every source is self-report. Second gap: the first practitioner's blockage sits *downstream of review* (merged output nobody takes up), which the absorption-bottleneck sequence has no station for.
 
+- [2026-09-06](questions/2026-09-06-learning-coding-agents-from-traces.md) — How are practitioners harvesting rules from coding-agent traces and human corrections, then proving improvement in a later run? **Cycle 175–177 update:** capture, human trace review, executable checks, and external memory all exist, but no independently replicated end-to-end method joins them with a measured comparable-task rerun. Evidence is L2.
+
 ## Resolved
 
 - [2026-03-28](questions/2026-03-28-leading-platforms.md) — Which platforms are truly agentic? (answered well, no gap)

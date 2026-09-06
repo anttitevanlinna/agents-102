@@ -55,6 +55,8 @@ The field rules stay in the scrollback. The next exercise sweeps this whole sess
 
 <!-- maintainer -->
 
+**The closer's *"The next exercise sweeps this whole session"* stays, under §33's motivating-forward-reference carve-out (Antti 2026-09-06, ruled on the sibling case in `set-the-markers-send-it-off.md`).** It is the reason the preceding sentence is acceptable: the field rules stay in the scrollback *because* the next exercise sweeps them, so a student who would otherwise stop to save them has their answer. Cartography tells the student where they are; this tells them why they can leave something undone. A judge meeting the clause again reads this note and files nothing.
+
 **§9's actor clause fires on L48's middle sentence and is declined (Antti 2026-09-06: *"no. Longer. Direct 'you do it' format also fully acceptable"*).** *Extract a `.md` file* is the student's own step, stated the way this corpus states student steps, and naming an actor on it only lengthens a line whose staccato is the maintainer frame at `maintainer-frame`. §9 now carries the carve-out; a judge meeting the bare imperative again reads this note and files nothing.
 
 **View summary:** The student reads one real ticket, has the agent reverse-engineer the team's field conventions from it, and closes the bug's ticket with a close-out note written in that register. Two artifacts: bug rules headed for the rules file, and a close-out note in the team's tracker.

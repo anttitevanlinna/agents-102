@@ -55,6 +55,8 @@ The field rules stay in the scrollback. The next exercise sweeps this whole sess
 
 <!-- maintainer -->
 
+**§9's actor clause fires on L48's middle sentence and is declined (Antti 2026-09-06: *"no. Longer. Direct 'you do it' format also fully acceptable"*).** *Extract a `.md` file* is the student's own step, stated the way this corpus states student steps, and naming an actor on it only lengthens a line whose staccato is the maintainer frame at `maintainer-frame`. §9 now carries the carve-out; a judge meeting the bare imperative again reads this note and files nothing.
+
 **View summary:** The student reads one real ticket, has the agent reverse-engineer the team's field conventions from it, and closes the bug's ticket with a close-out note written in that register. Two artifacts: bug rules headed for the rules file, and a close-out note in the team's tracker.
 
 **In-class M1 exercise, third of four.** Runs after `fix-tests-first` (the PR is shipped) and before `compound-and-close`, so the field rules the agent surfaces here are session evidence the compound sweep picks up. No separate fold step, and no rules-file write in this exercise.

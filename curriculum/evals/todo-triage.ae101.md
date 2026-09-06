@@ -97,6 +97,12 @@ node -e 'const d=require("./curriculum/evals/todo-triage.ae101.json");const r=Ar
 
 One-at-a-time is the right protocol against a gradient. Where the ladder is flat it is pure overhead, and the recommendation on record is: rule individually on the rank-3 cards, then take the rest as one batch.
 
+**The cut-sweep batch is a batch by construction.** Every row whose `gate_triage.batch` is `cut-sweep-2026-09-06` is a sentence-level `check_writing §27` cut on a lecture slide that survived a counterweight refuter (`curriculum/evals/cut-sweep.ae101.md` § *Open*), plus two factual flags from the same readers. Each carries the beat it sits in, the earlier line that already says it, and its anchor cost. AFTER is shorter than BEFORE on all of them. Take the high-confidence, no-anchor-cost rows as one call, then the rows that cost a claim (each names the backing row that moves with it), then the judgement calls. List them with:
+
+```
+node -e 'const r=require("./curriculum/evals/todo-triage.ae101.json").filter(x=>(x.gate_triage||{}).batch==="cut-sweep-2026-09-06"&&!(x.card&&x.card.outcome));for(const x of r)console.log(x.confidence,"|",x.target_file.split("/").pop(),"|",x.before.slice(0,90),"|",x.risk.slice(0,60))'
+```
+
 **A gate-discharge pass was run and returned nothing.** Every open card was re-tested against the narrower question *has Antti already made this call* — the §17 narrowing, the §43 carve-out, the vocabulary-registry sweep — with a skeptic per proposed discharge arguing the gate still applies. No card discharged. The standing exemptions are narrower than they look from a rule's headline, and a finding that merely touches §17 or §43 is not covered by what he ruled on a different shape.
 
 ## The finish line, and why the ledger is not it

@@ -4,7 +4,7 @@
 
 **What you do:** surface task-shaping rules from the session you just ran, then read more off one story ticket.
 
-**What you build:** one rules file from two sources: how you shaped this task, and how your team writes stories.
+**What you build:** rules and guardrails for future agents that shape tasks the way you would.
 
 **The point:** find a place for your rules.
 

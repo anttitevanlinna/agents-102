@@ -4,7 +4,7 @@ domain: cross-domain
 evidence_level: null
 platforms: []
 nordic: true
-updated: 2026-08-05
+updated: 2026-09-06
 answers:
   - "how to research effectively?"
   - "what has the system learned about researching?"
@@ -591,3 +591,9 @@ For learning-agent research, audit six separate return-edge questions instead of
 Second observation: treat **artifact integrity** and **behavior improvement** as different claims. A valid, grounded, discoverable rule proves storage and retrieval. Improvement requires a fresh executor, a no-rule baseline, an executable outcome, repairs and regressions counted separately, and total reflection/retrieval cost included. This distinction prevents “the agent learned” from becoming an unmeasured synonym for “the agent wrote Markdown.”
 
 Third observation: the strongest candidate training pattern emerged by composing three independently evidenced mechanisms without pretending the composition itself is proven: Every supplies grounded session capture and store maintenance; human-first error analysis supplies the judgment and promotion gate; paired experimental methods supply fresh-run verification and rollback. Label the assembled method as an L2 experiment until one implementation and independent replications measure the full chain end to end.
+
+### Cycle 178 — 2026-09-06
+
+“Correctness” produced useful evidence only after being split into four claims: proposal quality, authorization, verified state transition, and recoverability. Practitioner sources were strongest for the operating stack; formal papers were strongest for exposing exactly where a hard guarantee ends. Reading them together prevents a cryptographically valid execution trace from being misreported as proof that the human asked for the right outcome.
+
+Production zero-failure numbers need a selection-boundary check. Intercom's results are meaningful because the workflow is real, but the decisive design fact is that broad PRs are refused and small reversible PRs form the auto-approval pool. Future calibration research should ask what was routed out, how false negatives were measured, and whether the boundary survives a model or repository change—not just how the accepted slice performed.

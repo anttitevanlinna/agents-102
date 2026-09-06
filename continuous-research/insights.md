@@ -4,7 +4,7 @@ domain: cross-domain
 evidence_level: 3
 platforms: [salesforce, microsoft, google, openai, anthropic, servicenow, sap]
 nordic: true
-updated: 2026-03-24
+updated: 2026-09-06
 answers:
   - "what compressed arguments work for CTOs?"
   - "what patterns emerge across platforms?"
@@ -1130,6 +1130,22 @@ The implication is uncomfortable: most "human review" in traditional engineering
 **Applies to:** training, advisory conversations on governance, newsletter content on what AI-native actually means
 **Source:** Cloudflare engineering blog (https://blog.cloudflare.com/ai-code-review/, Apr 20, 2026) [practitioner direct] — Ryan Skidmore, Cloudflare; confirmed against iMARS post (https://blog.cloudflare.com/internal-ai-engineering-stack/, Apr 21, 2026)
 **Date:** 2026-04-27
+
+---
+
+## Calibrate the Delegation Boundary, Not the Agent's Confidence
+
+**Thesis:** Safe autonomy comes from calibrating which actions the system may execute under which evidence—not from making the model sound or score more confident.
+
+Current practice separates evidence, authority, execution, and recovery. A reviewer or judge can recommend; it does not thereby acquire mutation rights. A tool response can succeed; it does not thereby prove that the intended state changed. A trace can be cryptographically valid; it does not thereby prove that the human's goal was correctly specified.
+
+This makes “absolute correctness” a bounded engineering claim. Tests, types, policy predicates, preconditions, state readback, and signed execution traces can make declared properties deterministic. Semantic intent remains outside that boundary. The system should therefore expand autonomy only where it can prove the required invariants and contain failure; everywhere else it asks or abstains.
+
+**The implication for CTOs:** Define an explicit `auto / ask / deny` frontier for each action class. Measure both sides—correct action and correct abstention—and never allow a model-generated confidence score to grant its own authority.
+
+**Applies to:** Agents 101 modules 9–10, agent governance, deployment architecture
+**Source:** OODA cycle 178 — Every `ce-code-review`, Böckeler, Husain/Shankar, Intercom, AgentAbstain, Proof of Execution, and C-Trace
+**Date:** 2026-09-06
 
 ---
 

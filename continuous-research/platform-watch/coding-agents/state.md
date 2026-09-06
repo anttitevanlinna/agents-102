@@ -1,11 +1,19 @@
 # Coding Agent Platforms — Platform State
 
-Last updated: 2026-09-06 (cycle 177)
-OODA cycles: 32
+Last updated: 2026-09-06 (cycle 178)
+OODA cycles: 33
 
 ## Focus
 
 Coding agents as the **meta-platform** for the agentic transformation. This is NOT a developer tools category — it's the factory that builds the factories. Coding agents build the MCP servers, the business agents, the evals, the integrations. Every other platform watch category depends on this one. Copilot Studio can't build another Copilot Studio agent. Agentforce can't extend Agentforce. Coding agents compound — each cycle makes the next cycle faster.
+
+## Key Verdict (as of 2026-09-06)
+
+**CYCLE 178 — ACTION CORRECTNESS: CALIBRATE THE DELEGATION BOUNDARY, NOT THE MODEL'S CONFIDENCE (L2).** Current practice separates four things that broad “agent confidence” language collapses: evidence that a proposed action is right, authority to perform it, proof that the intended state transition occurred, and recovery if the outcome is bad. Current implementations assemble narrow typed tools, explicit `auto / ask / deny` routes, precondition and postcondition checks, computational sensors in-session and in CI, small reversible changes, causal logs, monitoring, and rollback. Every's current code-review pipeline makes the crucial separation explicit: severity and fixability do not grant apply authority; report is the default, mutation is separately authorized, and push is never implied. ([Every `ce-code-review` guide](https://github.com/EveryInc/compound-engineering-plugin/blob/main/docs/guides/ce-code-review.md), inspected Sep 2026 — [practitioner direct]; [Husain/Shankar evals FAQ](https://hamel.dev/blog/posts/evals-faq/), modified Sep 2026 — [practitioner direct]; [Böckeler](https://martinfowler.com/articles/harness-engineering.html), Apr 2026 — [practitioner direct])
+
+**The strongest public production case is a selected frontier, not a universal guarantee.** Intercom auto-approves only narrow PRs, decomposes review across specialist agents, permits human escalation, logs all evidence, and retains human rollout/rollback accountability. A pilot of more than 100 AI-approved PRs had zero reverts and 6–16× faster p75 approval; 497 PRs ran fully autonomously in the first four broader-rollout weeks. This is credible L2 production evidence, but the public report does not expose the selection boundary, false-negative rate, or independent replication—and revert rate cannot establish semantic correctness. ([Intercom](https://www.intercom.com/blog/ai-is-approving-our-pull-requests-heres-how-we-made-it-safe/), Apr 2026 — [practitioner direct, vendor venue])
+
+**“Absolute correctness” is available only for declared machine-checkable properties.** AgentAbstain's best model managed 59.5% paired accuracy across matched should-act/should-abstain tasks and sometimes abstained only after irreversible action, so capability and verbal certainty are not sufficient controls. Runtime-proof research can guarantee narrower properties—authorization, path compliance, trace integrity, null effect on deny, and replayability—under explicit assumptions. C-Trace's 0% attack success under perfect policy extraction rose to at most 12% under 10% extractor noise, showing that formal enforcement inherits specification quality. The defensible target is therefore: automatic action only where authorization, preconditions, expected transition, postconditions, and rollback are engineered; otherwise ask or abstain. ([AgentAbstain](https://arxiv.org/abs/2607.10059), Jul 2026 — [academic]; [Proof of Execution](https://arxiv.org/abs/2607.05397), Apr 2026 — [academic]; [C-Trace](https://arxiv.org/abs/2606.19242), Jun 2026 — [academic])
 
 ## Key Verdict (as of 2026-09-06)
 

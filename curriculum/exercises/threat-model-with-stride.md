@@ -34,7 +34,7 @@ Ask Claude to invoke the STRIDE skill as a subagent on the access-surface map yo
 *8 min*
 
 - One threat, not five. The move: name the worst realistic case first, and the hardening decision is usually obvious from there.
-- The agent proposes the incident story; you judge whether it fits. You are not inventing the worst case from scratch. Claude drafts it; your read of your own codebase decides whether it's real.
+- The agent proposes the incident story; you assess whether it fits.
 
 Ask Claude to propose the most plausible incident story and walk you through the STRIDE pick from there.
 

@@ -2,9 +2,9 @@
 
 **Time:** 15 minutes.
 
-**What you do:** let Claude review the whole session and write your `./CLAUDE.local.md` from session evidence. Push back where it misread.
+**What you do:** let Claude review the whole session and write your `./CLAUDE.local.md` from session evidence.
 
-**What you build:** a rules file written from session evidence. Concrete, specific, yours, and read at the top of every future session in this repo.
+**What you build:** a rules file written from session evidence.
 
 **The point:** every push-back is a hint toward your own rules.
 

@@ -174,8 +174,8 @@ header and handle per slide, never read bullets aloud. Two registers, one instru
 
 **`## Next` is one sentence (Antti 2026-09-05).** The student-carries half the slides addendum asks for is the first line of M6's own opener, so it is not repeated here. Judges should not re-file `check_slides.md`'s Next addendum on it.
 
-**Quality:** sim-passed 2026-09-05 (writing@fb797e3b story@fb797e3b technical@4589f1d5 behavior@b55cd28b pedagogy@54577f39 strategy@fb797e3b slides@fb797e3b)
-- judges @fb797e3b: writing PASS (1 todo see instances/ae101--module--learn-from-the-test.writing.json), story PASS (1 todo see instances/ae101--module--learn-from-the-test.story.json), technical PASS (1 todo see instances/ae101--module--learn-from-the-test.technical.json), behavior PASS, pedagogy PASS, strategy PASS, slides PASS (2 todos see instances/ae101--module--learn-from-the-test.slides.json)
+**Quality:** sim-passed 2026-09-06 (writing@5a52c2b9 story@5a52c2b9 technical@4589f1d5 behavior@b55cd28b pedagogy@5a52c2b9 strategy@fb797e3b slides@5a52c2b9)
+- judges @5a52c2b9: writing PASS (1 todo see instances/ae101--module--learn-from-the-test.writing.json), story PASS (1 todo see instances/ae101--module--learn-from-the-test.story.json), technical PASS (1 todo see instances/ae101--module--learn-from-the-test.technical.json), behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - cross_module @fb797e3b: PASS — set=[run-the-first-experiment,learn-from-the-test,spot-gaps-build-the-loop]; 2 pairs, 0 blocking; see instances/ae101--module-set--m4-m5-m6.cross_module.json
 **Meta (trainer):**
 - **Primary Bloom's level:** Analyze + Evaluate + Create

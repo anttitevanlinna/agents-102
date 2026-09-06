@@ -86,13 +86,37 @@ const SHAPE_KEYS = [
   'has_prompt_blocks', 'has_figures', 'has_backing_block', 'has_maintainer_block',
   'has_urls', 'has_source_stamps', 'has_code_fences', 'group_beat_markers',
 ]
-function shapeHash(signals) {
+function shapeHash(signals, headers = null) {
   const shape = {}
   for (const k of SHAPE_KEYS) shape[k] = signals[k]
   // Slide count is structural, but a single added `##` should not invalidate
   // every N/A on the file, so it is bucketed rather than exact.
   shape.slide_bucket = Math.floor((signals.slide_count || 0) / 5)
+  // Header TEXT is shape too: the slides rules judge a header against its
+  // body, and the writing rules judge its verb, so a rename voids the N/A a
+  // prior judge wrote against the old wording. Hashed, not listed, so the
+  // instance field stays one short token.
+  shape.headers = headers === null ? 'unknown'
+    : crypto.createHash('sha256').update(headers.join('\n')).digest('hex').slice(0, 16)
   return crypto.createHash('sha256').update(JSON.stringify(shape)).digest('hex').slice(0, 16)
+}
+
+// The `##` lines of the body projection, above the maintainer cut, in order.
+// A cached view carries no `body_numbered_text`, so the projection file it
+// names is read instead; when neither can be read the headers are UNKNOWN
+// (null), and the shape hash then matches nothing — no carry, judge decides.
+function headersOf(view) {
+  let text = view.body_numbered_text
+  if (!text && view.projections && view.projections.body_numbered) {
+    try { text = fs.readFileSync(path.resolve(REPO, view.projections.body_numbered), 'utf8') } catch { text = null }
+  }
+  if (!text) return null
+  const out = []
+  for (const line of String(text).split('\n')) {
+    const m = /^\s*\d+\t## (.*)$/.exec(line)
+    if (m) out.push(m[1].trim())
+  }
+  return out
 }
 
 // Mechanical rules: fully decided by a grep whose pattern carries a planted
@@ -107,7 +131,7 @@ const MECHANICAL = {
 
 function prefill(fileArg, cls, { instancesDir = INSTANCES } = {}) {
   const view = derive(fileArg, { write: true })
-  const shape = shapeHash(view.signals)
+  const shape = shapeHash(view.signals, headersOf(view))
   const instPath = path.join(instancesDir, `${view.slug}.${cls}.json`)
 
   const out = {
@@ -188,7 +212,7 @@ function prefill(fileArg, cls, { instancesDir = INSTANCES } = {}) {
   return { view, out }
 }
 
-module.exports = { prefill, shapeHash, SHAPE_KEYS }
+module.exports = { prefill, shapeHash, headersOf, SHAPE_KEYS }
 
 // One-time backfill. Every instance on disk predates `shape_hash`, so a cold
 // first sweep would carry nothing and the whole saving would arrive one sweep
@@ -220,7 +244,7 @@ function backfill({ apply = false, quietMinutes = 10 } = {}) {
     const { derive: d2 } = require('./derive-body-view.js')
     const v = d2(d.file, { write: false })
     if (apply) {
-      d.shape_hash = shapeHash(v.signals)
+      d.shape_hash = shapeHash(v.signals, headersOf(v))
       writeJsonPreservingIndent(p, d)
     }
     rows.stamped++

@@ -13,7 +13,7 @@ const assert = require('node:assert/strict')
 const fs = require('node:fs')
 const os = require('node:os')
 const path = require('node:path')
-const { writeSidecar, mergeIntoInstance, sidecarPath } = require('./prefill-instance.js')
+const { writeSidecar, mergeIntoInstance, sidecarPath, shapeHash } = require('./prefill-instance.js')
 const { derive } = require('./derive-body-view.js')
 
 const REPO = path.resolve(__dirname, '..', '..', '..')
@@ -223,4 +223,26 @@ test('a prior N/A with neither evidence nor na_reason is refused, not carried �
   // an emptiness it was told not to re-derive.
   assert.deepEqual(carried.map(r => r.rule_index), [4])
   assert.equal(doc.ungrounded_refused, 2)
+})
+
+test('a header rename changes the shape, so every carried N/A is re-owed', () => {
+  // shape_hash bucketed the slide COUNT and never read the header TEXT, so a
+  // renamed slide kept every N/A the prior judge wrote against the old header
+  // — including check_slides §17, the rule that exists for exactly a rename.
+  const { headersOf } = require('./prefill-instance.js')
+  const { dirs } = sandbox()
+  const view = derive(FILE, { write: false })
+  const headers = headersOf(view)
+  assert.ok(headers.length > 0, 'the fixture file has ## headers')
+  const same = shapeHash(view.signals, headers)
+  const renamed = shapeHash(view.signals, headers.map((h, i) => (i === 0 ? `${h} (renamed)` : h)))
+  assert.notEqual(same, renamed)
+  fs.writeFileSync(path.join(dirs.instancesDir, `${slug}.${CLS}.json`), JSON.stringify({
+    file: FILE, class: CLS, body_sha: 'x', shape_hash: renamed,
+    rules_evaluated: [ROW('check_prompts.md', 4)],
+  }, null, 2))
+  const doc = writeSidecar(FILE, CLS, dirs)
+  assert.equal(doc.rows.filter(r => r.verdict === 'N/A').length, 0)
+  assert.match(doc.reason, /shape changed/)
+  assert.equal(doc.shape_hash, same)
 })

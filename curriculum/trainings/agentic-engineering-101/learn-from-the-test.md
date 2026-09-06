@@ -172,6 +172,8 @@ header and handle per slide, never read bullets aloud. Two registers, one instru
 
 **No resume instruction on the done-done beat (Antti 2026-09-05).** *This one runs in the session you sent off* stays as two sentences; this audience knows how to resume a closed session, and a line saying so is text without value. Judges should not re-file `check_strategy_tie_in.md` §1 or `check_prompts.md` §40 on the beat.
 
+**`## Next` is one sentence (Antti 2026-09-05).** The student-carries half the slides addendum asks for is the first line of M6's own opener, so it is not repeated here. Judges should not re-file `check_slides.md`'s Next addendum on it.
+
 **Quality:** sim-passed 2026-09-05 (writing@fb797e3b story@fb797e3b technical@4589f1d5 behavior@b55cd28b pedagogy@54577f39 strategy@fb797e3b slides@fb797e3b)
 - judges @fb797e3b: writing PASS (1 todo see instances/ae101--module--learn-from-the-test.writing.json), story PASS (1 todo see instances/ae101--module--learn-from-the-test.story.json), technical PASS (1 todo see instances/ae101--module--learn-from-the-test.technical.json), behavior PASS, pedagogy PASS, strategy PASS, slides PASS (2 todos see instances/ae101--module--learn-from-the-test.slides.json)
 - cross_module @fb797e3b: PASS — set=[run-the-first-experiment,learn-from-the-test,spot-gaps-build-the-loop]; 2 pairs, 0 blocking; see instances/ae101--module-set--m4-m5-m6.cross_module.json

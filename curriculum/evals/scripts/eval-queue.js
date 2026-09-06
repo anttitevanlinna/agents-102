@@ -130,6 +130,9 @@ function collect(repo, io, want) {
       // Which rules a drifted class owes a re-read of. A dispatcher fires those
       // rules against this body instead of re-running the whole class.
       driftRules: r.driftRules || {},
+      // Per-class short shas from the Quality line. eval-sweep.js reads
+      // `pins[cls]` for its pinned diff; absent, a judge runs with no diff.
+      pins: r.pins || {},
     })
   }
   return { items, scope, unowned, unreadable, scanned }

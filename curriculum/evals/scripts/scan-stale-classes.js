@@ -409,7 +409,9 @@ function scanFile(relpath, io) {
     if (st.reason) extra[cls] = st.reason
     if (st.sha || st.set) extraDetail[cls] = st
   }
-  return { classes, detail, driftRules, extra, extraDetail }
+  // The pins ride out with the verdict: a dispatcher diffs `<pin>..HEAD` per
+  // class and would otherwise parse the Quality line a second time.
+  return { classes, detail, driftRules, extra, extraDetail, pins }
 }
 
 // The compendiums are untracked, so no git diff can see a rule move. The ledger

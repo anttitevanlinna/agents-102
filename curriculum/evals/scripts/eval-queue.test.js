@@ -238,6 +238,23 @@ test('collect items carry the reason per class, so --json can tell a dispatcher 
   assert.deepStrictEqual(Object.keys(ex.driftRules), ['pedagogy'])
 })
 
+test('collect items carry the per-class pins, so a dispatcher can diff from the pin without re-reading the file', () => {
+  // eval-sweep.js runs `git diff <pin>..HEAD` per (file, class) and the stamper
+  // routes drift from the same sha. The queue already parsed the Quality line
+  // to decide staleness; handing the parsed pins on saves every dispatcher a
+  // second parse, and every hand-built dispatch that skipped it ran judges
+  // with no diff at all.
+  const root = fixture()
+  const { items } = collect(root, testIo(root, ['pedagogy']), 'all')
+  const ex = items.find(i => i.slug === 'pinned-module')
+  assert.strictEqual(ex.pins.pedagogy, 'abc1234')
+  assert.strictEqual(ex.pins.writing, 'abc1234')
+  // A file with no Quality line owes every class and has no sha to diff from;
+  // the dispatcher must see an empty object, not a missing field.
+  const never = items.find(i => i.slug === 'do-a-thing')
+  assert.deepStrictEqual(never.pins, {})
+})
+
 test('collect: `scanned` counts the wanted training, not the whole universe', () => {
   // The board prints "<scanned> surfaces scanned" directly under a header that
   // names one training, so a universe-wide count reads as that training's own

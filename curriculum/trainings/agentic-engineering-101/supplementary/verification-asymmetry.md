@@ -4,7 +4,7 @@
 
 - Some tasks are far cheaper to check than to do. Reviewing a diff against a failing test versus writing the feature. Checking a sudoku versus solving it. The gap between doing-cost and checking-cost is the asymmetry.
 - Some are the reverse. A fact-dense report reads clean whether it is true or not; checking it costs as much as writing it. No asymmetry, no discount.
-- Jason Wei named the pattern: "some tasks are much easier to verify than to solve." His corollary, **the verifier's rule**: the ease of training AI to solve a task is proportional to how verifiable the task is, because a cheap check is exactly the feedback signal training and eval loops run on. His own example is code: tedious to read for correctness, fast to check when the test coverage is there.
+- Jason Wei named the pattern: "some tasks are much easier to verify than to solve." His corollary, **the verifier's rule**: the ease of training AI to solve a task is proportional to how verifiable the task is, because a cheap check is exactly the feedback signal training and checking loops run on. His own example is code: tedious to read for correctness, fast to check when the test coverage is there.
 
 ## Why this decides what to delegate
 

@@ -34,7 +34,7 @@ Once one task runs without your constant attention, another runs beside it. Work
 
 ## Encoding checked loops
 
-Recurring work becomes a loop with its own checks: the task shape is written down, the gate that judges the result is part of it, and a session can run it end to end. You review outcomes instead of keystrokes.
+Recurring work becomes a loop with its own checks: the task shape is written down, the gate that checks the result is part of it, and a session can run it end to end. You review outcomes instead of keystrokes.
 
 **Moves you up:** a working loop no longer improves when you prompt harder; it improves when its surroundings do. The door is trust in the gates' own verdicts, held by calibration, the checking of the checks. The way up is working on the surroundings: the rules, the memory, the checks every session starts from.
 

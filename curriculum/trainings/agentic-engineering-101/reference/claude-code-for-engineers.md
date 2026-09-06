@@ -338,7 +338,7 @@ Use for polling during a work block, watching a build, monitoring a long-running
 
 ## 22. Long-running shapes: composing with an authored skill
 
-The scheduler or condition invokes the skill. The skill is the thing that catches the gap, judges the output, or packages the move. The scheduler tells it when; `/goal` tells it until-what.
+The scheduler or condition invokes the skill. The skill is the thing that catches the gap, checks the output, or packages the move. The scheduler tells it when; `/goal` tells it until-what.
 
 **Nightly verifier run.** Desktop local task at 2:00am → prompt reads *"Invoke the `commit-verifier` skill on the last 24h of commits. Report anything the skill flags."* The skill is the check; the schedule is the cadence.
 
@@ -649,7 +649,7 @@ Docs: [memory.md § Troubleshoot memory issues](https://code.claude.com/docs/en/
 - **M2 Plan mode, done right:** §§ 9–10, plus Pocock `grill-me` skill as second-pass read
 <!--flag:module:earn-the-trust-->- **M3 Earn the trust:** §§ 11–12 (subagents), 13–15 (skills); first skill use + first authoring
 <!--/flag:module:earn-the-trust-->- **M4 Run the first experiment:** §§ 2 (personal compound target), 12 (subagent audit), 24 (session-left-running for un-packaged send-off), 25–29 (transcript as trace)
-- **M5 Learn from the test, re-send packaged:** §§ 10 (plan.md authoring), 13–15 (verifier as eval), 24 (send-off), 28 (read transcript plus git), 34–37 (hooks: the always-fire partition and the shell-hook verifier shape)
+- **M5 Learn from the test, re-send packaged:** §§ 10 (plan.md authoring), 13–15 (verifier), 24 (send-off), 28 (read transcript plus git), 34–37 (hooks: the always-fire partition and the shell-hook verifier shape)
 <!--flag:module:spot-gaps-build-the-loop-->- **M6 Spot gaps, build the loop:** §§ 17–19 (the *Loop instead of you starting* slide: `/loop`, Desktop local tasks, `/schedule`), 29 (compare two session transcripts)
 <!--/flag:module:spot-gaps-build-the-loop-->
 

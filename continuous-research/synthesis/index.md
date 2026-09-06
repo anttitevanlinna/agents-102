@@ -14,7 +14,7 @@ Topic files, each self-contained. Read this first, then go to the file that answ
 | [cto-answer.md](cto-answer.md) | Which platform for what? What to do? Executive summary. | Cross-platform |
 | [platform-trajectories.md](platform-trajectories.md) | Where is each platform headed? What's their strategy? | Per-platform |
 | [domain-convergence.md](domain-convergence.md) | Which business domains have crossed the agent threshold? | Level 3-4 |
-| [enterprise-reality.md](enterprise-reality.md) | Can any platform pass the enterprise integration test? | Cross-platform |
+| [enterprise-reality.md](enterprise-reality.md) | Can any platform pass the enterprise integration test, including safe GitHub/AWS action? | Cross-platform |
 | [patterns.md](patterns.md) | What cross-platform patterns has the research established? | Level 2-4 |
 | [nordic-landscape.md](nordic-landscape.md) | What's happening with agents in the Nordics? | Nordic-specific |
 | [practitioner-operating-principles.md](practitioner-operating-principles.md) | Which operating principles leading agentic-engineering practitioners emphasize, with evidence limits and open questions. | Mixed L1–L3; per-principle |

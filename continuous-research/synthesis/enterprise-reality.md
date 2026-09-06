@@ -1,8 +1,27 @@
 ---
 type: synthesis
 domain: platform
-updated: 2026-07-22
-answers: ["enterprise readiness", "multi-system orchestration", "agent security", "RBAC", "agent memory", "EU AI Act compliance", "Article 50 transparency"]
+updated: 2026-09-06
+answers: ["enterprise readiness", "multi-system orchestration", "agent security", "RBAC", "agent memory", "EU AI Act compliance", "Article 50 transparency", "safe DevSecOps ticket automation", "GitHub AWS remediation governance"]
+---
+
+## CYCLE 181 ADDITION (September 6, 2026): The Ticket Is a Case File, Not a Permission Slip
+
+For a central DevSecOps team serving a roughly 1,000-person software unit, the viable target is not one company-wide remediation agent with GitHub and AWS administration. It is a federated evidence-and-authority system:
+
+- **Central DevSecOps owns:** finding and ticket schemas, risk classes, routing policy, identities, reusable workflows/runbooks, evidence requirements, audit, and promotion of shared rules.
+- **Repository and service teams own:** intended behaviour, local tests, code-owner review, deployment context, and application-specific risk acceptance.
+- **The agent owns:** enrichment, historical retrieval, candidate classification, proposed disposition, a bot-branch patch or non-executed runbook plan, and an evidence package.
+- **The control plane owns:** whether the candidate may merge or execute.
+
+The enforceable shape uses separate identities for observation, patch preparation, verification, merge/deployment policy, and each narrow AWS remediation role. GitHub rulesets can require pull requests, named checks and code-owner review; protected environments can prevent self-review; OIDC conditions can bind AWS role assumption to a repository, branch, environment or reusable workflow ([rulesets](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/available-rules-for-rulesets), [environments](https://docs.github.com/en/actions/reference/workflows-and-actions/deployments-and-environments), [OIDC for AWS](https://docs.github.com/en/actions/how-tos/secure-your-work/security-harden-deployments/oidc-in-aws) — [vendor documentation], checked 2026-09-06). AWS Systems Manager supplies authenticated approvals, failure branches, resource-state assertions and fleet rate controls ([`aws:approve`](https://docs.aws.amazon.com/systems-manager/latest/userguide/automation-action-approve.html), [Automation actions](https://docs.aws.amazon.com/systems-manager/latest/userguide/automation-actions.html), [rate controls](https://docs.aws.amazon.com/us_en/systems-manager/latest/userguide/running-automations-scale-controls.html) — [vendor documentation], checked 2026-09-06).
+
+The decisive failure mode is **false closure**, not only destructive execution. In a reproducible public GitLab.com engineering work item, an analyzer handoff on an unchanged commit caused 71 of an approximately 94-finding baseline to be auto-resolved, including a critical SSRF finding, although no code changed ([GitLab #620336](https://gitlab.com/gitlab-org/gitlab/-/work_items/620336), observed 2026-08-22 — [practitioner direct], L2 single incident). Therefore `contained`, `no longer reported`, `analyzer handoff`, `accepted risk`, and `resolved` must be separate states. Resolution requires independent evidence from the originating detector or an explicitly equivalent check plus functional postconditions and observed live state.
+
+Autonomy should expand **per action class**, through shadow → suggest → prepare → one-target canary → narrow automatic execution. A model, scanner, policy, repository, workflow, or runbook change should reduce or reset earned authority. The useful metrics include sampled false negatives, reopen and rollback rates, escaped incidents, overrides, evidence completeness, and correct abstention. Merge rate or agreement on the cases an agent accepted cannot calibrate the cases it silently routed out.
+
+**Evidence boundary:** L2 overall. The control primitives ship, but they are L0 vendor-documented capability. The strongest independent signal is one reproducible false-closure incident. No public 10–20-company convergence demonstrates the full ticket → GitHub/AWS action → independent verification → closure loop, and no public large software unit reports both false-negative triage rate and harmful-action rate.
+
 ---
 
 ## CYCLE 170 ADDITION (July 22, 2026): EU AI Act August 2 — The Regulatory Reality Test

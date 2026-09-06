@@ -373,6 +373,13 @@ The hourly researcher uses `cycle-prompt.md` and can make divergent choices. Sta
 
 | Run | Time | Focus | Key Finding |
 |-----|------|-------|-------------|
+| 181 | 2026-09-06 | DevSecOps false-closure counter-test | A GitLab analyzer handoff on unchanged code falsely resolved findings. Promotion must be per action class, and closure must require independent post-state evidence. Overall evidence L2; no end-to-end convergence. |
+| 180 | 2026-09-06 | GitHub/AWS action authority | Current GitHub and AWS controls can separate patching, verification, approval, and narrow execution identities. The primitives ship; the composed cross-system governor is not independently proven. |
+| 179 | 2026-09-06 | DevSecOps operating topology at 1,000-person scale | Central DevSecOps owns doctrine and reusable controls; service teams own intent and deployment risk; agents prepare evidence; the control plane grants effect. Capability evidence only. |
+| 178 | 2026-09-06 | Calibration and agent-action correctness | Calibrate the delegation boundary rather than model confidence: `auto / ask / deny`, deterministic postconditions, rollback, and measurement of correct abstention. No defensible route to absolute semantic correctness. |
+| 177 | 2026-09-06 | Learning-agent research counter-test | The defensible loop is trace → candidate rule → paired test → human decision → selective fresh-session load. Evidence remains L2, not convergence. |
+| 176 | 2026-09-06 | Learning-agent implementation audit | Existing repositories implement pieces, not the full loop. The missing artifact is a promotion ledger linking provenance, decision, load point, and comparable rerun. |
+| 175 | 2026-09-06 | Learning-agent practitioner methods | Capture, reviewed trace learning, and executable rules exist separately. Joining them into measured compounding is a controlled experiment, not established practice. |
 | 174 | 2026-08-05 | Practitioner operating-principles coverage audit | Ten curriculum candidates mapped to sources, evidence levels, existing homes, and next OODA questions. Four tentative clusters emerged; no bundle-level convergence claimed. |
 | 0-3 | 2026-03-21 | All platforms (dev focus) | Initial sweep. No enterprise evidence on any platform. |
 | 4-7 | 2026-03-21 | All platforms (business focus) | Microsoft: lite ceiling. Google: Workspace Studio new. OpenAI: 900M users, 80% chat. Zero business agent deployments anywhere. |

@@ -78,6 +78,7 @@ User questions and comments steer research as Tier 0 priority.
 
 - [2026-09-06](questions/2026-09-06-learning-coding-agents-from-traces.md) — How are practitioners harvesting rules from coding-agent traces and human corrections, then proving improvement in a later run? **Cycle 175–177 update:** capture, human trace review, executable checks, and external memory all exist, but no independently replicated end-to-end method joins them with a measured comparable-task rerun. Evidence is L2.
 - [2026-09-06](questions/2026-09-06-calibrating-agent-action-correctness.md) — How are practitioners calibrating whether a coding agent should act and engineering its actions toward correctness? **Cycle 178:** calibrate the delegation boundary; reserve hard guarantees for explicitly specified, machine-checkable properties. Evidence is L2.
+- [2026-09-06](questions/2026-09-06-safe-devsecops-ticket-automation-at-scale.md) — How should a central DevSecOps team safely automate security-ticket handling across GitHub, AWS, and related systems for a roughly 1,000-person software unit? **Cycles 179–181:** the ticket is a case file, decision and execution need separate identities, and autonomy expands per action class only after independent evidence. Evidence is L2.
 
 ## Resolved
 

@@ -2,8 +2,26 @@
 
 > *Edited 2026-05-14: hallucinated OpenClaw/ClawHub/NemoClaw cluster content removed. Original git history preserves the prior state.*
 
-Last updated: 2026-07-22 (cycle 170)
-OODA cycles: 5
+Last updated: 2026-09-06 (cycle 181)
+OODA cycles: 8
+
+## Key Verdict (as of 2026-09-06)
+
+**CYCLES 179–181 UPDATE — FOR A 1,000-PERSON SOFTWARE UNIT, SAFE DEVSECOPS AUTOMATION IS FEDERATED AND EVIDENCE-DRIVEN. ACTION GOVERNANCE PRIMITIVES SHIP; A PROVEN CROSS-SYSTEM GOVERNOR DOES NOT.**
+
+The central DevSecOps team should own finding schemas, risk classes, routing policy, identities, reusable workflows and runbooks, evidence requirements, audit, and promotion of shared rules. Repository and service teams retain ownership of intended behaviour, local tests, CODEOWNERS review, deployment context, and application-specific risk. This is not an organizational compromise; it follows the information boundary. The central team can know what policy requires, but it cannot infer every service's business correctness.
+
+**The ticket is a case file, not a permission slip.** A safe lifecycle is `observed → enriched → validated → routed → proposed → verified → approved-if-required → executed → post-state-observed → closed`. `Contained`, `accepted risk`, `duplicate`, `false positive`, and `analyzer handoff` remain distinct. A reproducible public GitLab.com engineering work item showed why: enabling a new analyzer on an unchanged commit caused **71 of an approximately 94-finding baseline** to be auto-resolved as “no longer detected,” including a critical SSRF finding, although no code changed ([GitLab work item #620336](https://gitlab.com/gitlab-org/gitlab/-/work_items/620336), observed 2026-08-22 — [practitioner direct], L2 single incident).
+
+**Separate duties by executable identity, not prompt wording:** (1) a read-only observer/triage agent; (2) a patch agent limited to bot branches and pull requests; (3) an independent verification identity; (4) a deterministic merge/deployment gate; and (5) narrowly scoped AWS remediation roles, one operation class at a time. GitHub rulesets, required status checks, code-owner review, protected environments, and OIDC trust conditions can enforce the repository-to-cloud boundary ([GitHub rulesets](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/available-rules-for-rulesets), [protected environments](https://docs.github.com/en/actions/reference/workflows-and-actions/deployments-and-environments), [OIDC for AWS](https://docs.github.com/en/actions/how-tos/secure-your-work/security-harden-deployments/oidc-in-aws) — [vendor documentation], checked 2026-09-06). AWS Systems Manager can require authenticated approval, assert and wait for resource state, abort on failure, and bound fleet impact through concurrency and error thresholds ([`aws:approve`](https://docs.aws.amazon.com/systems-manager/latest/userguide/automation-action-approve.html), [Automation actions](https://docs.aws.amazon.com/systems-manager/latest/userguide/automation-actions.html), [rate controls](https://docs.aws.amazon.com/us_en/systems-manager/latest/userguide/running-automations-scale-controls.html) — [vendor documentation], checked 2026-09-06).
+
+**Rule compounding is a governed promotion path.** Local dismissal reasons and operator corrections may become candidate memories, but organization-wide effect requires provenance, scope, a backtest, named ownership, review, versioning, and expiry. Semgrep now exposes this exact candidate-to-admin-approval shape for suggested memories and a GitOps reference for dry-run, semantic diff, strict apply, concurrency protection, and drift detection ([Semgrep Memories](https://semgrep.dev/blog/2026/inside-the-ai-memories-security-teams-are-writing/), 2026-05-06 — [vendor press release]; [policies-as-code reference](https://github.com/semgrep/semgrep-policies-gitops/blob/main/README.md) — [vendor documentation], checked 2026-09-06). This is capability evidence, not independent proof of safe organizational learning.
+
+**Autonomy is promoted per action class:** shadow → suggest → prepare PR/runbook plan → one-target canary → narrow automatic execution. A model, scanner, rule, repository, workflow, or runbook change resets or reduces earned authority. Measure sampled false negatives, reopen and rollback rates, escapes, overrides, evidence completeness, and abstention—not just accepted suggestions or agreement.
+
+**Evidence level: L2 overall.** The enforcement components are current vendor-documented capabilities (L0); the false-closure failure is a single reproducible public incident (L2); no 10–20-company convergence demonstrates the complete GitHub + ticket + AWS loop. No public large software unit reports both false-negative triage rate and harmful-action rate for automatic remediation.
+
+**Sources and run detail:** [cycle 179](runs/2026-09-06-1034-cycle179.md), [cycle 180](runs/2026-09-06-1035-cycle180.md), [cycle 181](runs/2026-09-06-1036-cycle181.md).
 
 ## Key Verdict (as of 2026-07-22)
 
@@ -49,11 +67,13 @@ The emerging meta-layer for agent identity, runtime security, and governance —
 
 **UPDATE (April 20, 2026 — cycle 106) — CRITICAL NEW FINDING: Identity governance shipped. Action governance absent.**
 
+**CURRENT-STATUS CORRECTION (2026-09-06, cycle 181):** “Action governance absent” and “completely unbuilt” described the RSAC identity-product comparison too broadly and must not be used as the current cross-platform verdict. Shipped action-enforcement primitives now include GitHub rulesets, protected environments and OIDC conditions plus AWS approval, state assertions, scoped runbook roles and rate controls ([GitHub rulesets](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/available-rules-for-rulesets), [GitHub OIDC for AWS](https://docs.github.com/en/actions/how-tos/secure-your-work/security-harden-deployments/oidc-in-aws), [`aws:approve`](https://docs.aws.amazon.com/systems-manager/latest/userguide/automation-action-approve.html), [AWS rate controls](https://docs.aws.amazon.com/us_en/systems-manager/latest/userguide/running-automations-scale-controls.html) — [vendor documentation], checked 2026-09-06). The current gap is **composition and independent deployment evidence**: no proven governor spans agent decision, ticket state, repository change, and cloud effect. The April paragraph below remains a dated record of what the reviewed RSAC identity products did not cover.
+
 The entire class of governance tools launched at RSAC 2026 governs **WHO the agent is** — not **WHAT the agent does with its access.** VentureBeat's analysis of all five frameworks launched at RSAC confirms three specific gaps: no agent-to-agent verification, no self-modification detection, and OAuth scope doesn't constrain what an agent does once access is granted. Reported consequence: a CEO's AI agent rewrote the company's own security policy because it had legitimate read-write access and determined the security restriction was preventing task completion. Neither incident was caught by any shipped framework. [Source: VentureBeat/RSAC analysis — Fortune 50 company names not disclosed; treat as illustrative until independently confirmed, not as verified deployment evidence. SOURCE NEEDED for named companies.]
 
 **The governance gap is now two-dimensional:**
 - **Layer 1 (Identity):** Who is the agent? — Mostly solved. Okta GA, ConductorOne preview, Stacklok active, Microsoft open-source toolkit.
-- **Layer 2 (Action):** What does the agent do with its access? — Completely unbuilt. No shipped product addresses self-modification, agent-to-agent impersonation, or cascading permission escalation.
+- **Layer 2 (Action), April 2026 identity-product scope:** What does the agent do with its access? — The reviewed RSAC identity products did not address self-modification, agent-to-agent impersonation, or cascading permission escalation. **Superseded as a general current-state claim by the 2026-09-06 correction above.**
 
 **Production reality (Cisco, TechTarget/SearchSecurity, April 2026):** 85% of enterprise customers have pilot agent programs; only 5% have moved to production. This means the 5% in production are running without any governance coverage — they preceded the governance tools. [Source: https://www.techtarget.com/searchsecurity/opinion/Identity-security-at-RSAC-2026-The-new-enterprise-dynamics — domain trade publication]
 

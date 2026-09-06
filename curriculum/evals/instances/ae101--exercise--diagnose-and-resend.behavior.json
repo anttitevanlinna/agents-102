@@ -1,157 +1,1185 @@
 {
   "class": "behavior",
-  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/diagnose-and-resend.md",
-  "body_sha": "0653b629895d904bebd0c26f95d13b3d98d211f0938d4fcc521556a9e6ff9d24",
-  "shape_hash": "0d572e3ebce46a4c",
-  "verdict": "PASS",
   "training": "ae101",
-  "trace_status": "cached",
-  "regen_note": "Re-verified 2026-09-02 against current HEAD (commit range since the last judged body_sha runs through 6c637ba3). Ran scripts/expand-md.js fresh and extracted all 10 fenced blocks (8 **Prompt** blocks + 2 Session-widget /rename fences, which the template excludes). All 8 prompt fences hash byte-identical to the cached sim-cache entries at curriculum/evals/sim-cache/ae101--exercise--diagnose-and-resend.behavior.json once trailing-newline is normalized the way the registry-body extraction already does (confirmed prompt 4's apparent mismatch — raw fence sha 54ae36e6... vs cached 8430e03c... — is exactly a trailing-newline artefact of my own extraction regex, not a content change: stripping trailing whitespace reproduces the cached sha exactly). So no prompt content changed since the last full pass; every risks_fired row below is carried forward unmodified except prompt 6's default-acceptance row. `git diff` of the file since the last-judged commit shows only body/maintainer-block churn outside any fence: Time 60->53min, Phase 4 timing 17->10min, a placeholder-name cosmetic edit (`<repo>-m5` -> `<repo-name>-m5`), a lead-in trim on prompt 4 ('Ask Claude to build the verifier shape...' folded into the dangling-colon cut, prompts-class territory not behavior), a new 'Timebox check' body callout added to Phase 4, and several maintainer-block edits including one dated 2026-08-25 that CUTS the '## Check both files are for the agent, not you' body callout the prior instance's prompt-6 default-acceptance evidence was quoting. That callout no longer exists in the body (grep-confirmed against the live raw source, lines 82-105) — the prior instance's evidence was already stale when written on 2026-08-27, since the cut predates it. Corrected prompt 6's default-acceptance row below to cite what is actually present (the fence's own task-specificity language plus the maintainer's 2026-08-25 accept-note, which explicitly reasons the cut callout was redundant with the grill-note's own judgement). The correction does not change prompt 6's per-prompt verdict (still TODO, driven by the med-confidence load-bearing preamble-before-action risk plus two low-confidence risks) or the file's top-level verdict.",
-  "prompts_evaluated": 8,
-  "prompts_findings": [
+  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/diagnose-and-resend.md",
+  "verdict": "PASS",
+  "body_sha": "b09f2feafb150fe01b27ae0249730757c3e62c164999270ad88f2565619a8844",
+  "shape_hash": "fc8773576f55979c",
+  "accept_notes_found": [
+    "L147: 'ae101-m5-rerun-packaged takes no progress-streaming clause — maintainer call 2026-09-05 (Antti)' — names check_prompts.md §43's walk-away/unattended-by-design carve-out (added to §43 itself 2026-09-05) as the reason prompt 8 carries no as-you-go clause; this file IS the carve-out's canonical named example.",
+    "L149: 'The 10% recall ... is the prior's third and last statement, by design' — a maintainer-authored check_pedagogy.md §9b (progression-with-variations) analysis, tracing the M1→plan-mode-done-right→here lineage of the 10%-misrepresentation prior and declaring it earned, not a banned refrain.",
+    "L151: '## Check both files are for the agent, not you is cut (2026-08-25, Antti: little value add)' — records a deliberate cut of a body callout whose push-back tells were judged redundant with the Phase-4 grill-note; grounds why no separate genericness-callout exists on prompt 6.",
+    "L153: 'The M4 return is never framed as a failed run (Antti 2026-08-27, training run)' — a vocabulary/framing decision (M4's un-packaged send-off is designed to underdeliver, not to fail) that the body's Phase 1 header and lead-in must match; a writing/pedagogy-class concern, noted for completeness.",
+    "L167: 'Phase 4 runs 10 (Antti 2026-08-30)' — caps the grill's time budget; a timing/pacing decision, not a behavior-class concern.",
+    "L187: three-failure-modes source stamp — 'Not convergent practitioner vocabulary' — an evidence-ladder/attribution note (research_claims-class territory), not a behavior finding.",
+    "L188: kim-on-cherny source stamp — 'The three-shape taxonomy is Kim's synthesis, not Cherny's own' — same, evidence-ladder territory backing the verifier-shape menu prompt 4 offers."
+  ],
+  "cache_verification": "curriculum/evals/sim-cache/ae101--exercise--diagnose-and-resend.behavior.json's content_sha (e35c0db5...) does NOT match sha256 of a fresh `node scripts/expand-md.js curriculum/exercises/diagnose-and-resend.md` run (26ddd3dd...), so per the dispatch preamble ('a content_sha that does not match the current body means REGENERATE, not proceed') the cached full-file trace cannot be trusted as-is. Investigated via git rather than trusting either extraction's byte-level fence hash (my own re-extraction disagreed with the cache on 7 of 8 prompts' sha, and the cache's own prior instance already documented one such extraction-artefact mismatch on prompt 4 in 2026-08-27 — this hashing method is not stable across sessions and is not treated as authoritative here). Ground truth used instead: `git log --format='%H %ad %s' <last-full-regen-commit>..HEAD -- 'curriculum/prompts/diagnose-and-resend-*.md' 'curriculum/prompts/ae101-m5-*.md'` from b1ba9165 (2026-08-27, the trace's own last full regen, which already accounts for prompt 4's background-agent->judge rename) to HEAD returns exactly one commit (2f711b2a, 2026-08-31), and `git show 2f711b2a -- <same paths>` shows it touches only ae101-m5-rerun-packaged.md's YAML frontmatter `produces:` block (adding `conditional: agent-got-stuck` to the run-notes entry) — zero lines of any prompt's BODY (the fenced text a student pastes) changed. `git diff b1ba9165 HEAD -- curriculum/exercises/diagnose-and-resend.md` confirms every change to the exercise file itself is body-prose-around-prompts or maintainer-block (two `##` header rewords, two lead-in rewords, a flag-block collapse to one sentence, several maintainer-note edits, the Quality-line refresh) — no `{{prompt:...}}` marker line moved or was added/removed. Conclusion: all 8 prompts' actual fenced content is unchanged since the 2026-08-27 full regen and the 2026-09-02 partial-verify instance (which independently reached the same conclusion one step earlier in this same commit range); the full-file content_sha drift is entirely explained by body/maintainer prose that carries no fence. Judged directly against the current raw source with this as the standing evidence base, not by replaying the cache's per-prompt risk fields uninspected.",
+  "rules_evaluated": [
     {
-      "prompt_index": 1,
-      "prompt_lead": "I'm working in a fresh worktree. A run I sent off earlier left its `task.md` at ",
-      "verdict": "TODO",
-      "load_bearing": false,
-      "risks_fired": [
-        {
-          "pattern_id": "preamble-before-action",
-          "confidence": "low",
-          "evidence": "The prompt may produce one sentence of narration before the deterministic path check. The rule protects the student's highest-attention response slot; that harm is not materially present in this short setup response.",
-          "fix_hint": "No edit warranted; the likely preamble is brief and this is housekeeping."
-        }
-      ]
+      "compendium": "check_prompts.md",
+      "rule_index": "1",
+      "rule_lead": "No placeholders inside fences.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "static prompt mechanics (bracket-placeholder scan) — technical class's lens per this template's own scope line",
+      "fix_hint": null,
+      "blocking": false
     },
     {
-      "prompt_index": 2,
-      "prompt_lead": "I sent off a long-running task un-packaged — no plan.md, no verifier, no referen",
-      "verdict": "TODO",
-      "load_bearing": true,
-      "risks_fired": [
-        {
-          "pattern_id": "preamble-before-action",
-          "confidence": "med",
-          "evidence": "Transcript read, branch inspection, three lenses, quotes, and dominant-failure choice will often elicit a plan-summary opener. The proxy fires, but the likely harm is a skimmable opening sentence rather than added student work; the evidence begins at the first quoted moment.",
-          "fix_hint": "No edit warranted for current cognitive-load goals; treat opening narration as skimmable run-up."
-        },
-        {
-          "pattern_id": "self-audit-charity",
-          "confidence": "low",
-          "evidence": "The audit is grounded in the transcript, branch state, and specific quotes; the nearby body (line 43-44: 'Push back where Claude generalises... Ask Claude to show you where two or three of its quotes appear in the transcript') still tells Claude to locate two or three quoted moments and tells the student to push back on generalisation. The evidence-backed Debrief carve-out neutralises blocking harm.",
-          "fix_hint": "No edit; the prompt and body already turn charity into an evidence-checkable claim."
-        }
-      ]
+      "compendium": "check_prompts.md",
+      "rule_index": "2",
+      "rule_lead": "Every prompt block: one-sentence action lead-in.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "static lead-in-length/shape mechanics — technical class's lens",
+      "fix_hint": null,
+      "blocking": false
     },
     {
-      "prompt_index": 3,
-      "prompt_lead": "For each of the three failures we just named, walk it backwards: what specific v",
-      "verdict": "TODO",
-      "load_bearing": true,
-      "risks_fired": [
-        {
-          "pattern_id": "default-acceptance",
-          "confidence": "low",
-          "evidence": "The three-category menu can invite formulaic matching, but the prompt still requires task-specific content and firing time ('Be specific: not \"a re-readable spec\" generically, but what THAT spec would have said to catch THIS particular goal-drift moment'), and the adjacent body (line 58: 'Your decision is narrower: which failure cost most... leave the rest at summary depth') narrows the human decision to the dominant failure and explicitly permits summary depth on the rest. Harm (rote category-name filling with no pushback route) is not present.",
-          "fix_hint": "No edit; specificity in the fence plus summary-depth permission in the body is sufficient."
-        },
-        {
-          "pattern_id": "preamble-before-action",
-          "confidence": "low",
-          "evidence": "A short mapping preamble remains possible, but the supplied answer shape compresses it and the student is told to act only on the dominant failure. No material working-memory harm is present.",
-          "fix_hint": "No edit."
-        }
-      ],
-      "regression_check": "Re-verified 2026-09-02: fence content byte-identical to the last-judged version (sha match). The 'Practitioners... converge on... often mention' framing remains fully absent, replaced by the bare 'Validation for multi-hour agent runs groups into three categories. Use these as the answer shape:' opener. Standing answer holds: the forcing mechanism is the three concretely-defined, scoped bullets, not the practitioner-population framing; no regression."
+      "compendium": "check_prompts.md",
+      "rule_index": "3",
+      "rule_lead": "Canonical shape — lead-in, label with destination, blank line, fence.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "static rendered-shape mechanics — technical class's lens",
+      "fix_hint": null,
+      "blocking": false
     },
     {
-      "prompt_index": 4,
-      "prompt_lead": "Build the verifier for my dominant failure, scoped to the task we ran un-package",
-      "verdict": "TODO",
-      "load_bearing": true,
-      "risks_fired": [
-        {
-          "pattern_id": "overwrite-anxiety",
-          "confidence": "low",
-          "evidence": "Claude may pause around persistence, but the prompt deliberately says to show the verifier before saving and the student supplies the shape ('judge' / 'shell-hook' / 'Ralph re-feed'). This is the required collaboration gate, not harmful overwrite ambiguity.",
-          "fix_hint": "No edit; preserve the show-before-save gate."
-        },
-        {
-          "pattern_id": "preamble-before-action",
-          "confidence": "low",
-          "evidence": "The open-hook shape selection and concrete build request make a long plan opener unlikely; any brief narration does not add a decision for the student. Fence content unchanged since the last pass (sha match); the body lead-in above the fence was independently trimmed to just 'Drop the shape name after the colon...' (check_prompts.md §2's dangling-colon sub-case, prompts-class territory) but that does not touch this risk assessment.",
-          "fix_hint": "No edit."
-        }
-      ]
+      "compendium": "check_prompts.md",
+      "rule_index": "4",
+      "rule_lead": "Installed Skills invoke by name, never path.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no skill invocation appears in any of the 8 fences (read all 8 registry files directly: diagnose-and-resend-1..6, ae101-m5-clear-before-rerun, ae101-m5-rerun-packaged)",
+      "fix_hint": null,
+      "blocking": false
     },
     {
-      "prompt_index": 5,
-      "prompt_lead": "Smoke-test the verifier you just built. Fire it on two synthetic inputs: one des",
-      "verdict": "TODO",
-      "load_bearing": true,
-      "risks_fired": [
-        {
-          "pattern_id": "self-report-inflation",
-          "confidence": "low",
-          "evidence": "Claude is reporting on its own verifier, but the PASS/FAIL pair, actual fired outputs, missing-wiring check, and required fix provide artifact-level evidence. The self-report proxy fires; inflated unsupported success is unlikely.",
-          "fix_hint": "No edit; the paired smoke test is the recovery."
-        }
-      ]
+      "compendium": "check_prompts.md",
+      "rule_index": "5",
+      "rule_lead": "Chain by back-reference + deterministic path, never invented alias.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "static back-reference/deterministic-path mechanics — technical class's lens",
+      "fix_hint": null,
+      "blocking": false
     },
     {
-      "prompt_index": 6,
-      "prompt_lead": "Build me two task-scoped artefacts for re-running the un-packaged task packaged.",
-      "verdict": "TODO",
-      "load_bearing": true,
-      "risks_fired": [
-        {
-          "pattern_id": "preamble-before-action",
-          "confidence": "med",
-          "evidence": "The two artefact schemas (5 + 6 named sub-items) plus lock-in grill often elicit a polished plan-summary opener. The rule protects working memory from low-value narration; the real risk here is bounded because the adjacent stop gate (line 97: 'Cut the grill when the package is good enough to re-send... Then say lock it in') and the newly-added timebox callout (line 99: 'Two or three rounds fit the slot... take the recommended answers for the rest, say lock it in') tell the student exactly what 'good enough' means and when to end the grill.",
-          "fix_hint": "No prompt edit warranted after body mitigation; skim the opener and use the explicit good-enough threshold."
-        },
-        {
-          "pattern_id": "overwrite-anxiety",
-          "confidence": "low",
-          "evidence": "The no-write-until-lock-in instruction can make Claude cautious, but that caution is deliberate: the body repeats that neither file should change between turns and gives the student the lock-in trigger. The harm the rule prevents — confused file state — is absent.",
-          "fix_hint": "No edit; keep the explicit write gate."
-        },
-        {
-          "pattern_id": "default-acceptance",
-          "confidence": "low",
-          "evidence": "CORRECTED 2026-09-02: the prior instance's evidence here quoted a '## Check both files are for the agent, not you' body callout ('Push back if the reference reads like generic long-running advice...') that no longer exists — the maintainer block records it cut 2026-08-25, before the prior instance was even generated. What actually mitigates the risk now: (a) the fence's own task-specificity demands ('Pointers to the memory pages... most relevant to THIS task'; 'the constraints the verifier we just built will enforce'; tests 'scoped to this task's core paths') push against generic template-filling; (b) the maintainer's 2026-08-25 accept-note explicitly reasons the cut callout's push-back tells 'duplicate judgement the grill-note above already exercises' and states the design intent that a genericness tell belongs 'in the Phase-4 prompt, not a body slide' if it recurs — i.e. this is an accepted-by-design reduction, not an unnoticed gap. Confidence held at low; the maintainer's own reasoning is the mitigation, not a body callout that has since been removed.",
-          "fix_hint": "No edit; the 2026-08-25 accept-note already settles this — genericness-catching is deliberately concentrated in the fence + grill, not a separate body slide."
-        }
-      ]
-    },
-    {
-      "prompt_index": 7,
-      "prompt_lead": "/clear",
+      "compendium": "check_prompts.md",
+      "rule_index": "6",
+      "rule_lead": "Chained-prompt isolation — don't leak downstream pipeline.",
       "verdict": "PASS",
-      "load_bearing": false,
-      "risks_fired": []
+      "evidence": "The one candidate leak is prompt 2's closing line: 'End with: which of the three was the DOMINANT failure mode? You'll build the verifier against that one.' This names what the ranking is FOR, but does not pre-grill/pre-build the verifier, does not defer any of prompt 2's own diagnostic work to prompt 4 ('the verifier will catch it'), and does not invoke a named skill early. It reads as motivation for doing the ranking carefully, not as a shortcut around it. Prompts 3, 4, 5 each produce their own output (validation mapping / verifier / smoke-test) without referencing what comes after. Prompt 6 does reference prior artefacts ('the verifier we just built') but that is upstream back-reference (§5's territory), not downstream leakage.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
     },
     {
-      "prompt_index": 8,
-      "prompt_lead": "Before you start, write a protected block at the top of `plan.md` headed `Run co",
-      "verdict": "TODO",
-      "load_bearing": true,
-      "risks_fired": [
-        {
-          "pattern_id": "preamble-before-action",
-          "confidence": "low",
-          "evidence": "STANDING RULE QUESTION, RE-CHECKED 2026-09-02 — check_prompts.md §17's 4+ sub-step structural trigger fires (protected-block write, confirm-before-write, self-augment invitation, run-task, three-list report), and no in-fence suppressor or post-fence body primer directly names preamble/skim-past. No walk-away/send-off carve-out has landed in check_prompts.md since the last run (grepped compounded/ and check_prompts.md for 'walk-away'/'send-off' — none §17-adjacent). Position holds: the harm the rule guards against (narration eating the student's highest-attention top-of-response reading) is largely absent here because the fence itself says 'I'm walking away' — this is a send-and-leave prompt the student is not sitting and reading closely for a plan.",
-          "fix_hint": "Still a rule question for the maintainer, not a defect on this file: should §17 carry an explicit walk-away/send-off carve-out (paired with §19's minimal-hand-off shape) the way default-acceptance and overwrite-anxiety already have named carve-outs, so future judges don't have to re-derive this same low-confidence downgrade file by file?"
-        },
-        {
-          "pattern_id": "self-report-inflation",
-          "confidence": "low",
-          "evidence": "'Report back as three lists, no narrative, no hedging... If any list is empty, say \"none.\"' is the artifact-level, anti-inflation structure the pattern calls for; the adjacent post-fence body para (line 133-135, unchanged) also names the RLHF-agreeableness risk directly ('RLHF is a big part of why: agreeable answers won the preference round') and gives the student a verbatim-verifier-output push-back move.",
-          "fix_hint": "No edit; the report-back format and the adjacent body callout already do the work."
-        }
-      ]
+      "compendium": "check_prompts.md",
+      "rule_index": "7",
+      "rule_lead": "No session-resets mid-phase.",
+      "verdict": "PASS",
+      "evidence": "The only session-reset offered is prompt 7 (`/clear`), and it sits exactly at the Phase 4->5 boundary, not mid-phase — raw L121 ('Prefer to stay in the exercise session? Drop the scrollback in place instead:') presents it as the in-session alternative to opening a brand-new session (raw L111-117), both explicitly designed for a COLD Phase 5. Phase 5's own prompt (8) is written to run cold by design (raw L127: 'the re-send prompt below stands alone: Claude finds the packaging in the worktree and reads it cold'), so there is no downstream phase referencing 'this session'/'what we just discussed' that a reset would strand.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "8",
+      "rule_lead": "Multi-sample methods need structural enforcement.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no self-consistency/majority-vote/ensemble method is asked for anywhere; prompt 5's PASS+FAIL smoke test is two deterministic synthetic cases, not N independent samples measuring variance",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "9",
+      "rule_lead": "Markdown shout (`**bold**`, `*italic*`) inside fenced prompts = dead weight in Claude Code.",
+      "verdict": "PASS",
+      "evidence": "`awk 'BEGIN{fm=0} /^---$/{fm++; next} fm>=2' <file> | grep -nE '\\*\\*|\\*[A-Za-z]'` run against all 8 registry files' bodies (frontmatter stripped) -> 0 hits in every file, exit 1 each. All lens/shape/artefact lists inside fences use plain `-` bullets and backtick code spans, no bold/italic.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "10",
+      "rule_lead": "Runtime-fork prompts: paired divs, shared chip.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "AE101 is Code-only, no dual-runtime fork (curriculum/CLAUDE.md); no `.rt-*` divs anywhere in this file",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "11",
+      "rule_lead": "Runtime-mechanical scaffolding asymmetry — MORE in less-fluent fork, not less.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no Agents-101 Cowork fork present; AE101-only file",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "12",
+      "rule_lead": "Append-vs-integrate — name integration mode on regeneration with new context source.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt regenerates an existing artefact with a newly-added context source; prompt 6 first-creates reference+plan.md, prompt 8 mutates plan.md only inside its own pre-named protected block",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "13",
+      "rule_lead": "Citation discipline — extend cite-or-flag scope + quote supporting sentence.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no external-fact citation shape in any fence; prompt 3 explicitly does the opposite ('Don't name frameworks or practitioners by label') and every quote demanded (prompt 2) is from the student's own transcript/repo, not an external source",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "14",
+      "rule_lead": "Niceness tax — name the edge or pin the line on regeneration.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no anti-positioning/edge prose is being regenerated by any of these 8 prompts",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "15",
+      "rule_lead": "Question-dump default — `in turn` too soft; two legal shapes.",
+      "verdict": "PASS",
+      "evidence": "Prompt 6's grill line reads 'Ask three questions at a time. For each, recommend an answer.' — this is the explicit structural-prompt shape rule 15(a) asks for (a named batch size), not the vague 'ask these in turn' phrasing the rule warns collapses to a full dump. No other prompt sets up a multi-question sequence at all.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "16",
+      "rule_lead": "Overwrite anxiety — name overwrite default on regeneration.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no full-artefact regenerate-or-new decision anywhere: prompt 6 is a first-create with proposed (not pre-named) paths, and prompt 8 writes only into a pre-agreed protected block of an already-approved plan.md",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "17",
+      "rule_lead": "Preamble before action — design around it.",
+      "verdict": "PASS",
+      "evidence": "§17 was narrowed 2026-09-03: 'The 4+-named-sub-steps half is retired ... Structural trigger (narrowed): plan mode ONLY.' Checked all 8 registry files' frontmatter directly: none declares `permission-mode: plan` (or any permission-mode at all — confirmed separately under §39). So the mandatory suppressor/primer obligation never fires on this file, including on prompt 6 (11 named sub-items across two artefacts) and prompt 8 (protected-block write + self-augment + run + 3-list report), both of which the file's own 2026-09-02 predecessor instance flagged under the now-retired sub-step-count reading. Under the current rule text, §17 here is advisory only ('fix the file where a run actually showed preamble eating the read; never sweep the corpus counting sub-steps') and no such run is on record for this file, so no edit is owed.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "18",
+      "rule_lead": "Self-critique register, not defense, when Claude interrogates own work.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt asks Claude to critique work it produced earlier in THIS session — prompts 2/3 diagnose a DIFFERENT (M4) session's run using neutral analytic verbs (read, quote, walk, map), not defend/justify framing on same-session output",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "19",
+      "rule_lead": "Minimal hand-off + Claude self-augments for send-off prompts.",
+      "verdict": "PASS",
+      "evidence": "Prompt 8 (ae101-m5-rerun-packaged) matches all 4 named sections: (1) task+paths — 'Run the task at `./task.md` using the packaging in this worktree ... find them by listing the worktree'; (2) rules — 'run the verifier per plan.md cadence; don't paper over failures; if you get stuck, write into RUN-NOTES.md and try a different angle; I'm walking away'; (3) self-augment invitation — 'Then ask for or write anything else you want for the session' (near-verbatim match to the rule's own model phrasing); (4) report-back — 'Report back as three lists, no narrative, no hedging: shipped / did NOT ship / verifier ... last output line'.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "20",
+      "rule_lead": "Grill before save — collaborative quality at artefact assembly.",
+      "verdict": "PASS",
+      "evidence": "Prompt 6 already carries the sanctioned shape unprompted: 'Before lock-in, grill me on missing details that could ruin the smooth run. Ask three questions at a time.' §20 was separately narrowed 2026-09-03 to advisory-only (unevidenced benefit, 'never gates and rarely fires') — this file needs no credit from that narrowing since the grill is present regardless; noted only so a future re-read doesn't treat the narrowing as license to demand more grilling than is already here.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "21",
+      "rule_lead": "Tell me what you wrote, not show me what you'll write.",
+      "verdict": "PASS",
+      "evidence": "Prompt 8's close is pure post-action report ('Report back as three lists ... shipped / did NOT ship / verifier'), the sanctioned default for a side-effecting run. Prompts 4 and 6 DO gate on a pre-confirm ('Show me the verifier before you save anything', 'Show me both files in prose ... Don't touch either file until I say lock it in') — but these are the foundational, load-bearing scaffolding artefacts the rest of the module depends on, and §35's 5-element grill/lock-in shape (evaluated separately below) is the more specific, deliberately-sanctioned pattern governing exactly this artefact-assembly case; §21's general default doesn't override a more specific rule its own compendium also states for this shape.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "22",
+      "rule_lead": "Prompt-body edits require maintainer approval — registry files AND inline blocks.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "process rule governing how prompt-body edits get approved; not a content-risk property of the existing, already-approved prompts being graded",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "23",
+      "rule_lead": "Artifact destinations are explicit subpaths, never naked filenames (Agents 101-specific).",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "rule is explicitly Agents-101-scoped; AE101 uses the student's own repo/worktree with no training-imposed subfolder tree",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "24",
+      "rule_lead": "Don't restate session CWD inside prompt body.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "static CWD/path-restatement hygiene — technical class's lens (no fence restates an absolute path or a `cd` command; all references are relative: `./task.md`, `plan.md`, `RUN-NOTES.md`)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "25",
+      "rule_lead": "`subagent` allowed in prompt blocks; explain why after prompt.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "'subagent' mechanism is not invoked for any prompt's own execution here. Prompt 4 names 'sub-task dispatch' only as one of three candidate invocation MECHANISMS for the student's future verifier (a choice for later, not Claude using a subagent to do prompt 4's own work now)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "26",
+      "rule_lead": "Maintainer-approval edits — ONE-AT-A-TIME, PRIORITY-ORDERED, FOUR-FIELD cards.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "maintainer-approval-card process rule; not applicable to grading existing prompt content",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "27",
+      "rule_lead": "Name consumer at write time — `Save it as <path>` requires downstream reader.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no fence uses the literal 'Save it as <path>' shape the rule's trigger names — prompt 6 says 'Propose the file paths' (Claude proposes, doesn't dictate), prompt 4 says 'tell me where it lives'; downstream consumers are named via frontmatter `consumed-by:` chains instead, which is a different (technical/registry) surface",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "28",
+      "rule_lead": "Strong-bold prompt label is exactly `**Prompt**` — custom labels break renderer.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "rendered-label format compliance, governed by the `{{prompt:<key>}}` marker/expander system — technical class's lens",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "29",
+      "rule_lead": "Normal work request before orchestration.",
+      "verdict": "PASS",
+      "evidence": "`grep -inE 'ask me which|ask me what' curriculum/exercises/diagnose-and-resend.md` -> 0 hits, exit 1. Every prompt opens from state already established by the exercise body or a prior prompt in the same chain (prompt 1: 'I'm working in a fresh worktree. A run I sent off earlier left its task.md...'; prompt 6: 'Build me two task-scoped artefacts for re-running the un-packaged task packaged.') — direct work requests, not interview-first wrappers around context/task selection the body already resolved.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "30",
+      "rule_lead": "Live-test corrections preserve operator workflow.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "not a live-test maintainer-correction scenario",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "31",
+      "rule_lead": "Prompts live in registry; module/exercise/lecture files reference by marker.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "registry-marker structural compliance ({{prompt:<key>}}) — technical class's lens (all 8 prompts confirmed to live at curriculum/prompts/*.md and be referenced by marker in the raw source)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "32",
+      "rule_lead": "Module names in prompt prose are fine — they ground the session.",
+      "verdict": "PASS",
+      "evidence": "Prompt 2 names the '\"M4 starting point\" commit' — a literal commit message the student made in M4, a real on-disk referent, not a bare curricular label. Prompts reference `m4/` and `m5/` as actual git branch-name prefixes (lowercase, grounding real artefacts), never as bare prose 'Module 4'/'Module 5' event labels with no in-session referent. No fence contains the boundary case §32 itself warns against (a curricular EVENT reference like 'after Module 6').",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "33",
+      "rule_lead": "Git-output greps asserting exact-N need multi-result fallback.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no fence text-greps git output asserting an exact-N result; the design deliberately replaced branch/transcript grep-search with recorded run-coordinates blocks in task.md/plan.md instead (git log 608704e7, 'AE101 M4-M6: record run coordinates in task.md/plan.md, delete branch+transcript search') — the exact failure mode §33 targets was designed out upstream of this file",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "34",
+      "rule_lead": "Disambiguation, anchors, and decision logic that bind Claude live INSIDE prompt fence.",
+      "verdict": "PASS",
+      "evidence": "Read each of the 8 fences cold, in isolation from body context. Prompt 1 names `task.md`, the `m4/` branch, and the `.jsonl` transcript inside the fence itself. Prompt 2 repeats the `./task.md` coordinates and the 'M4 starting point' commit inside its own fence rather than relying on prompt 1's surrounding body. Prompt 4 gives three fully self-contained branches (shell-hook / judge / Ralph re-feed), each naming its own concrete deliverable, with no ambiguity resolvable only from body prose. Prompt 8 names `plan.md`, `git branch --show-current`, the `CLAUDE_CODE_SESSION_ID` env var, and `RUN-NOTES.md` explicitly inside the fence, plus an explicit stop-and-tell-me fallback ('if you can't determine the path, stop and tell me rather than guessing') for the one genuinely ambiguous step. Each fence executes correctly against realistic machine state without needing the surrounding body.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "35",
+      "rule_lead": "Repeated Q&A → premature re-edits. Separate iteration from persistence.",
+      "verdict": "PASS",
+      "evidence": "Prompt 6 matches all 5 named elements: (a) explicit operator trigger gates writes — \"Don't touch either file until I say 'lock it in.'\"; (b) sectional edits when writes happen — 'When you do edit either file, use Edit on the changed section, not Write on the whole file.'; (c) batch Q&A cadence, three-at-a-time — 'Ask three questions at a time. For each, recommend an answer.' (the rule's own preferred cadence, verbatim); (d) slowness-watch body callout right after the fence, naming the gate and the push-back move — raw L97 blockquote: 'Cut the grill when the package is good enough to re-send ... Until then, neither file should change; push back if the agent rewrites between turns.'; (e) explicit '## Approve' section giving the operational trigger a home — raw L101-103: '## Approve — Say lock it in. The agent writes both files.'",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "36",
+      "rule_lead": "Wide prompts split by logical move — paragraph breaks = cheapest scan-affordance.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "paragraph/logical-move density is a static structural property — technical class's lens",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "37",
+      "rule_lead": "Orient saved rule by where it FIRES, not surface activity producing it.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt here saves a RULE to an auto-loaded file (CLAUDE.md/CLAUDE.local.md); this file adds no rules, only task-scoped artefacts",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "38",
+      "rule_lead": "Body lead-in mirrors prompt's opening phrasing.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "phrasal congruence between body lead-in and a prompt's opening clause is writing class's lens on reader continuity, not agent-response distribution",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "39",
+      "rule_lead": "Declare `permission-mode:` when paste requires specific Claude Code mode.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "read all 8 registry files' frontmatter directly — none declares `permission-mode:`, and none structurally requires plan/acceptEdits/bypassPermissions mode to behave correctly",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "40",
+      "rule_lead": "Verify session boundary before deciding prompt's context-carrying.",
+      "verdict": "PASS",
+      "evidence": "Verified via the module/exercise body, not the frontmatter `context:` hint. Session 1 opens cold (raw L5 'Session (new, \"Module 5 worktree session\")') -> prompt 1 correctly carries its own file/branch context rather than assuming scrollback. Prompts 2-6 run warm in that same session and correctly back-reference prior outputs without restating them ('the path you just found', 'the three failures we just named', 'the dominant failure', 'the verifier you just built', 'the verifier we just built') — no curriculum-coined Phase-heading label with no in-session referent appears inside any fence (checked against §40b's own failure shape: nothing like 'do the second-pass read' appears). Session 2 opens deliberately cold (raw L111 'Session (new, \"M5 long-run\")'), or the scrollback is wiped in-session via prompt 7; either path lands on prompt 8, which is written to be fully self-contained (names plan.md, the branch, the session-id env var, RUN-NOTES.md explicitly) and is confirmed by the surrounding body to be designed exactly this way (raw L127: 'the re-send prompt below stands alone ... reads it cold'). No single-worktree/parallel-window crossing exists to trip §40a.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "41",
+      "rule_lead": "Artifact-vs-STOP tail ordering — last imperative wins.",
+      "verdict": "PASS",
+      "evidence": "No fence exhibits the write-then-STOP anti-pattern. Prompt 8's tail runs Rules -> Run the task -> Report back, ending on the report instruction with no STOP grafted after a write imperative. Prompt 6's tail ends on 'For each, recommend an answer' (the grill), with the actual file writes correctly deferred behind the separate 'lock it in' trigger rather than raced against a same-response STOP.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "42",
+      "rule_lead": "Headless-runner discipline — tail every prompt with no-AUQ guard.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "interactive classroom/self-study exercise (Session widgets, human 'lock it in' gate, human push-back moves), not a headless tmux-runner/CI context",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "43",
+      "rule_lead": "Long-running prompts stream progress — never go silent.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "§43 carries an explicit 2026-09-05 carve-out ('UNATTENDED BY DESIGN ... Canonical case: AE101 M5 (ae101-m5-rerun-packaged, fence says \"I'm walking away\")') that names prompt 8 in this exact file as the rule's own worked example; the maintainer block's L147 accept-note independently records the same call. Scores N/A per the rule's own text, not a residual risk.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "44",
+      "rule_lead": "A leading-looking line can be a forcing function; prefer the simpler prompt.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "advisory rule for an editor weighing a proposed cut against current text; not a defect-detection check on already-shipped content",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "45",
+      "rule_lead": "Prompt paths match Builder scope.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "rule is scoped to Agents 101's training-directory material-distribution convention (prework/module-N/ bare-vs-prefixed paths); AE101 exercises run inside the student's own repo/worktree with no training-imposed subfolder tree (same carve-out already used for §23)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "46",
+      "rule_lead": "Output shape — trust Claude's defaults, don't pad.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "output-shape/over-specification-padding check is a static prompt-mechanics property — technical class's lens",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "47",
+      "rule_lead": "\"Add X and regenerate\" is a trap.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no 'add X and regenerate' shape anywhere; prompt 8's plan.md edit is a scoped protected-block insertion, not a whole-artefact regenerate-with-new-context",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "48",
+      "rule_lead": "Vary closings deliberately.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "this file's closing move is a solo build-then-run send-off, not a social/reflective closing mechanic (cold-critic/pair/group/solo-retro/show-work) this rule is choosing between",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "49",
+      "rule_lead": "A take-home prompt asks for one bounded build.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "prompt 8 is the exercise's own within-sitting walk-away send-off (student may step away but returns to the same class/session flow), not a prompt SAVED to be run cold on a later day the way the rule's named examples (agents-that-build-agents-handoff) are; were the shape to apply, it already asks for exactly one bounded task re-run against one verifier, not a plural/kit-shaped ask",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "1",
+      "rule_lead": "Walk-away test (M2+).",
+      "verdict": "PASS",
+      "evidence": "Phase 5 is explicitly walk-away-shaped: raw L135 'Manual nudges are part of the session; when nudging turns into typing every step, the agent isn't the agent any more, that's a result worth reading.' names the exact failure mode (reading every reply and pasting back = still prompting) the rule targets, and raw L133-134 frames stopping-when-the-trace-is-enough as the legitimate outcome rather than requiring the student to babysit every turn.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "2",
+      "rule_lead": "50% magic rule (M3–M8).",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "cross-module aggregate magic-moment metric, not single-file evaluable",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "3",
+      "rule_lead": "Trust the agentic design — no human backstops.",
+      "verdict": "PASS",
+      "evidence": "`grep -inE 'antti observ|manually observ|exhaustive' curriculum/exercises/diagnose-and-resend.md` -> 0 hits, exit 1. Claude is given real judgment authority throughout (which quotes matter, which failure dominates within the student's chosen scope, verifier implementation per chosen shape, proposed file paths) with no exhaustive if-then ruleset substituting for it. The two places a human confirmation gate DOES appear (prompt 4/6 show-before-save) are exactly the rule's own stated exception: irreversible-feeling, foundational, load-bearing artefacts the rest of the module depends on.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "4",
+      "rule_lead": "Quality ladder.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "cross-module quality-rubric aggregate, not per-file",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "6",
+      "rule_lead": "One exercise = one bounded activity.",
+      "verdict": "PASS",
+      "evidence": "This file has 5 internal `## Phase N` headers (do -> observe -> adjust -> observe: diagnose, map, build, smoke-test, package+resend) inside ONE exercise file, with no exercise sub-numbering ('5a'/'5b') anywhere — matches the rule's own shape ('Internal arc ... is ONE exercise') rather than the banned alternative of splitting into separately-numbered exercises.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "7",
+      "rule_lead": "Modules composable across variants.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no VARIANT markers or audience-fork content in this file",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "8",
+      "rule_lead": "Three-level completeness.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "strategy-frame/runtime-artifact/sendable-asset completeness is a module/training-architecture check, not per-exercise",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "9",
+      "rule_lead": "Pattern-recognition LOs need n≥2 instances with contrast.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "this exercise's LO is construct/build (assemble a verifier + reference + plan.md against ONE diagnosed run), not a spot/recognize LO requiring n>=2 contrastive instances",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "9b",
+      "rule_lead": "Progression-with-variations is the spine.",
+      "verdict": "PASS",
+      "evidence": "The maintainer block already carries this exact analysis at raw L149: 'Three instances, roughly two modules apart, a different artefact each time, each carrying its own action: progression-with-variation, not the refrain check_pedagogy.md §9b bans. This is the beat that earns it.' — tracing the 10%-misrepresentation prior from orient-and-introspect.md (repo) through plan-mode-done-right.md (a plan) to this file (a run transcript). Verified the claim rather than taking it on trust: each of the three placements does apply the prior to a genuinely different artefact type, satisfying variation-not-repetition.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "10",
+      "rule_lead": "Student agency — adults decide.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "student-agency/pacing register is a writing/design-lens concern on HOW instructions are worded, not Claude's response-distribution",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "11",
+      "rule_lead": "Delegation — student brings, Claude screens.",
+      "verdict": "PASS",
+      "evidence": "`grep -inE 'jira|linear|\\bwiki\\b|team chat|\\bslack\\b' curriculum/exercises/diagnose-and-resend.md` -> 0 hits, exit 1. Every surface Claude is asked to read (task.md, session transcripts, git branch state, the student's own repo) is something Claude Code already has direct access to. The judgment split matches the rule's default: the STUDENT decides which failure matters most (raw L58: 'Your decision is narrower: which failure cost most, and why the other two pieces belong'), while Claude does the fit-screen/mapping/drafting work (walking failures to validation categories, drafting the verifier).",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "12",
+      "rule_lead": "Split mega-exercise when phases = distinct skills + distinct artifacts.",
+      "verdict": "PASS",
+      "evidence": "The 5 phases chain mechanically toward one artefact set (diagnosis -> validation mapping -> verifier -> smoke-test -> reference+plan.md -> one resend), matching the rule's own 'stays one' counter-condition rather than 'N phases, N skills, N artifacts, natural pause between'. The maintainer block also records this as a deliberate placement call, not an oversight: raw L169 'Placement: the re-send is Phase 5 of this exercise, not a module-level beat; the module file must not carry a second one.'",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "13",
+      "rule_lead": "Artifact-realism check.",
+      "verdict": "PASS",
+      "evidence": "Read all 8 registry prompt files' `requires:` frontmatter directly. Every dependency traces to a named producing prompt: m5-worktree <- ae101-m5-worktree-setup; m4-run-coordinates/un-packaged-run-artefact/m4-session-transcript <- ae101-m4-commit-starting-point / ae101-m4-take-task-end-to-end; the M1/M3/M4 optional context sources (claude-local-md, stride-adr, test-strategy-skill, observations-folder) are each correctly marked `conditional: m1-completed` / `m3-completed` / `m4-completed` rather than assumed unconditionally present. No invented tool, connector, or unshipped capability appears in any fence. (Verifying that each named upstream prompt actually SHIPS its declared artefact end-to-end is a cross_module concern beyond a single-file judge's reach; noted, not re-derived here.)",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "14",
+      "rule_lead": "Teach principle + technique — default.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "whole-exercise WHY+HOW balance is pedagogy class's own structural-design lens, not a per-prompt response-distribution property",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "15",
+      "rule_lead": "Auto-fire sim+eval after significant rewrite.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "process rule governing when to dispatch eval/sim; this dispatch itself is the auto-fire, not a content property to grade",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "16",
+      "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "fence-vs-body forcing-function placement is pedagogy class's own structural lens, not behavior's per-prompt response-distribution risk",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "17",
+      "rule_lead": "Corporate infra = nice-to-have, never forcing function.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no corporate-infra (MCP/shared-repo/SSO/connector) dependency introduced anywhere in this file; every surface is local git/filesystem/Claude Code",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "18",
+      "rule_lead": "Personal-first, team promotion via human conversation.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no CLAUDE.local.md/personal-preference file is touched, and no team-infra promotion (PR, shared kit) is proposed; the reference/plan.md are task-scoped working artefacts, a different axis than this rule's personal-vs-team distinction",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "19",
+      "rule_lead": "Measure silent failure, not just friction.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "cohort-level silent-failure measurement is a facilitator/evaluation-program metric, not a single-file/per-prompt check",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "20",
+      "rule_lead": "Don't pre-set categories before experiment runs.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "rule targets research/evaluation methodology (pre-specifying data-analysis buckets before results arrive); the three failure-mode lenses and three verifier shapes are a pedagogical framework taught to the student to APPLY, not an evaluator's pre-set data-coding categories",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "21",
+      "rule_lead": "Verification layers sample DIFFERENT error distributions — not belt-and-braces.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "eval-system verification-layer architecture meta-rule, not applicable to grading this file's content",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "21b",
+      "rule_lead": "Cheap-before-expensive verification ordering.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "eval-system tiering meta-rule (compendium -> sim -> mechanical -> cohort -> battle), not a content property of this curriculum file",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "22",
+      "rule_lead": "Rule in memory without forcing function = worse than no rule.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "memory-entry/compendium-hygiene rule about compounded rules naming their own forcing function; not applicable to grading exercise content",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "23",
+      "rule_lead": "Short skeptical pushback on \"done\" = re-verify trigger.",
+      "verdict": "PASS",
+      "evidence": "Raw L133: 'If the summary reads polished, ask the agent to list the artifacts that didn't ship and quote the verifier output verbatim where it fired. You decide whether to push.' is exactly a skeptical re-verify trigger against a claimed-done report, aimed at prompt 8's self-report.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "24",
+      "rule_lead": "Cohort execution is trainer-paced + concurrent, not sequential.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "cohort time-budget/pacing-math modeling is a facilitator-logistics concern, not a per-prompt behavioral-risk property",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "25",
+      "rule_lead": "Host-skill optional; maintainer blocks trainer-only.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no host-skill (agentic-nerd, Teacher Claude) referenced anywhere in this file",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "26",
+      "rule_lead": "Reflection beats: in-chat over file-write.",
+      "verdict": "PASS",
+      "evidence": "Every file write in this exercise has a real downstream reader, verified against the registry frontmatter: the verifier is consumed by prompts 5/6/8/spot-gaps-build-the-loop-1; the reference/plan.md are consumed by ae101-m5-rerun-packaged and spot-gaps-build-the-loop-1; RUN-NOTES.md (conditional on getting stuck) is consumed by spot-gaps-build-the-loop-1. No file exists solely to prove reflection happened.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "27",
+      "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
+      "verdict": "PASS",
+      "evidence": "`grep -inE '\\bpair\\b|\\bgroup\\b|room-share|discuss with|share and discuss|whole.room' curriculum/exercises/diagnose-and-resend.md` -> 1 hit, at raw L233 ('Whole-room mood below 7 — learning through contrast isn't landing'). That line sits inside the maintainer-only Decision-points/pacing section (below the maintainer_cut at L143, per the body-view geometry) — trainer-facing facilitation guidance, not student-facing body prose the rule restricts. Grepped the STUDENT body (lines 1-142) alone with the same pattern -> 0 hits.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "29",
+      "rule_lead": "Eval = fixed yardstick; thing measured learns.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "rule targets keeping a scorer FIXED across ROUNDS of an iterative eval loop; prompt 5's smoke test calibrates/debugs the verifier ONCE, before it is ever used to score the packaged re-send — a genuine pre-use fix, not a scorer being rewritten mid-loop to inflate scores, and no round-over-round scoring loop exists in this file",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "30",
+      "rule_lead": "Reading burden for verification = banned. Claude audits Claude.",
+      "verdict": "PASS",
+      "evidence": "'Read what Claude proposes. Push back if the verifier covers the wrong shape' (raw L74) asks the student for an architectural FIT judgment (right shape for the failure), not a manual correctness proofread. Actual correctness verification is routed through the verifier itself (prompt 5's PASS/FAIL smoke test) and through the agent's own report (prompt 8), never through the student manually checking Claude's output line by line.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "31",
+      "rule_lead": "Self-report + self-audit charity — verify at artifact, over-flag or fresh-session for critique.",
+      "verdict": "PASS",
+      "evidence": "(a) Self-report inflation on prompt 8 is well-covered: the report format itself is artifact-level and anti-inflation ('three lists, no narrative, no hedging ... If any list is empty, say \"none\"'), and the adjacent body (raw L133-135) names the RLHF-agreeableness mechanism directly and gives a verbatim-push-back move. (b) Self-audit charity on prompt 2's read of a DIFFERENT session's run is covered by the evidence-backed-Debrief carve-out: per-lens quoting is mandatory ('quote a specific moment from the artefact'), and the adjacent body (raw L43-44) tells the student to push back on generalisation and has Claude locate its own quotes in the transcript. (c) Prompt 5's self-report on its own verifier is artifact-anchored via the mandatory PASS+FAIL pair plus a named wiring-gap check. No prompt asks Claude to grade its own work with no evidence, quotes, or recovery move attached.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "32",
+      "rule_lead": "Offered structures need forced-engagement mechanic.",
+      "verdict": "PASS",
+      "evidence": "Prompt 6 offers a dense structured schema (5 reference sub-items + 6 plan.md sub-items) but pairs it with forced-engagement: every listed item demands task-specific substance ('Pointers to the memory pages ... most relevant to THIS task', 'scoped to this task's core paths'), and the grill ('Ask three questions at a time. For each, recommend an answer.') requires the student to actively accept-or-redirect each recommendation rather than silently inheriting a template. No plan-mode approval-inflation risk applies (no permission-mode: plan declared anywhere, confirmed under §39).",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "33",
+      "rule_lead": "Source-type blindness on ingestion.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no heterogeneous slide-format (PPTX/PDF) source ingestion anywhere; inputs are git commits and Claude Code session transcripts",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "34",
+      "rule_lead": "Task selection drives outcome → name floor AND ceiling.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no task-selection moment in this file — raw L109 states the task is inherited unchanged from M4 ('Same task, packaged this time, and notice the prompt: it shrank while the task stayed the same')",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "34b",
+      "rule_lead": "Maintainer-block hedge naming section's own failure mode = cut-signal, not warning.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no maintainer hedge props up an otherwise-undefensible section premise; the closest candidates (raw L187-190's source-attribution notes on three-failure-modes/kim-on-cherny) are honest sourcing disclosures for a claim that remains defensible on its own terms ('which is all this exercise needs'), not a hedge holding up a shaky one",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "35",
+      "rule_lead": "Audience tier determines authoring substrate.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "audience-tier authoring-substrate is a training-level decision already established for AE101; this file introduces no new substrate choice",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "36",
+      "rule_lead": "Verification machinery needs smoke-test before trust.",
+      "verdict": "PASS",
+      "evidence": "Prompt 5 is the smoke-test this rule requires, near-verbatim: 'Smoke-test the verifier you just built. Fire it on two synthetic inputs: one designed to PASS ... and one designed to FAIL ... Show me what fired, what each input returned, and what would have to change ... If a wiring step ... is missing, name it and fix it before we move on.' Built-but-untested is explicitly not trusted; the fence forces the fix before Phase 4 begins.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "37",
+      "rule_lead": "Context-loading tiers as staged progression.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no new context-loading tier is introduced or taught; raw L113's mention of the worktree's auto-loaded rules references an already-established mechanism, not a new-tier reveal",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "39",
+      "rule_lead": "Removals are strategic — ask before cutting.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "authoring-process rule for an editor about to remove content mid-edit; not a property of the finished file being judged",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "41",
+      "rule_lead": "Symmetric visible-mechanics > runtime fork when dual-runtime constraints break agentic move.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no dual-runtime fork in this AE101, Code-only file",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "42",
+      "rule_lead": "Load-bearing platform feature = no fallback. Gate or redesign.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no 'if your environment doesn't support X, just do Y instead' fallback language anywhere; the worktree/fresh-session mechanics used are assumed present, not offered with a dilution fallback",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "43",
+      "rule_lead": "Eval architecture — partition by evidence source, not criterion count.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "this rule describes the eval-system's own judge-partitioning architecture (the mechanism this dispatch is itself executing), not a content property of the curriculum file under judgment",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "44",
+      "rule_lead": "Plug points + UX.",
+      "verdict": "PASS",
+      "evidence": "(a) Raw L223-226's '**Plug points:**' names concrete integration commitments, not vague slots: 'Student's own M4 artefact (Phase 1 source material)', 'Repo's existing CI / hook / pre-commit conventions (Phase 3 shell-hook integration)', 'Task-scoped folder convention (Phase 4 file paths)' — each is a KIND of org context a downstream prompt structurally depends on. (b) UX: walked prompt-to-prompt as a fast operator; the one genuine 'wait, where do I put this' moment (task-scoped folder location) is resolved by having Claude PROPOSE and show the path rather than assuming the student already knows it, and prompt 4's three shape-branches each name where their artefact lives in the repo's existing conventions.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "45",
+      "rule_lead": "Per-exercise leap test — 3 observable Monday outcomes.",
+      "verdict": "PASS",
+      "evidence": "Raw L162-165 names exactly 3 observable verbs: 'builds a verifier scoped to one diagnosed failure mode before trusting a delegated run's output, instead of re-reading the whole return'; 'writes a task-scoped reference + plan.md before any multi-hour delegated run, pointing at the codebase rules rather than restating them'; 'fires the verifier once as a smoke test before relying on it, so the check is checked before it gates anything'. All three are concrete Monday-testable actions (builds/writes/fires), not abstract competency claims.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "47",
+      "rule_lead": "Per-phase failure mode + escape hatch.",
+      "verdict": "PASS",
+      "evidence": "The maintainer-only '**Failure modes + diagnostics:**' section (raw L210-221) gives every phase at least one dominant-student-failure + escape-hatch pair: Phase 1 (generalised diagnosis / dominant-failure dodge, each with a diagnostic or trainer push); Phase 2 (prescription-jumping / full-map overload, each with a diagnostic + trainer push); Phase 3 (verifier-shape mismatch / verifier-as-test-suite, each with a diagnostic + trainer push); Phase 4 (reference-as-codebase-rules / plan.md-as-project-plan / grill overrun, each with a diagnostic + trainer push); Phase 5 (polished-report acceptance / re-send from the wrong place, each with a diagnostic + trainer push or fix).",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "48",
+      "rule_lead": "Heavy fan-out prompts get body recovery callout.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt here fans out to N>2 parallel subagents or an unbounded scan; every read is bounded to one known transcript plus one known branch's commit history",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "49",
+      "rule_lead": "Save belongs with authoring, not loading.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "single-runtime (Code-only) file, no cross-runtime create/use asymmetry to check",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "50",
+      "rule_lead": "Convenience-driven prompts with known shape-bias → body acknowledgment callout.",
+      "verdict": "PASS",
+      "evidence": "The one real candidate (prompt 6's dense schema inviting template-fill convenience) is already addressed, but via the fence's own grill mechanism rather than a separate body callout — and the maintainer block explicitly reasons about exactly this choice (raw L151): 'The flow runs prompt -> grill-note -> Approve ... if a cohort ships agent-facing files written for humans, the tell belongs in the Phase-4 prompt, not a body slide.' The grill's live, per-answer follow-up functions as the 'offer a harsher alternative' beat dynamically rather than as a static opt-in line, which is a legal instance of the rule's own stated preference ('minimal prompt edits are preferred over forcing every risk into the fenced block').",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "51",
+      "rule_lead": "Deliberate-antipattern prompts = class-judge exempt, flagged-by-design.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "this file is the 'packaged' (post-antipattern) side of the M4->M5 contrast; no prompt here is itself engineered to exhibit a behavioral risk as the lesson — that role belongs to M4's own un-packaged send-off file",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "52",
+      "rule_lead": "Session widget — `**Session** *(verb, \"name\")*` shape; place by learning flow.",
+      "verdict": "PASS",
+      "evidence": "Raw L5 '**Session** *(new, \"Module 5 worktree session\")*' and raw L111 '**Session** *(new, \"M5 long-run\")*' both match the canonical shape exactly, each immediately followed by an inner rename fence (`/rename m5-diagnose-resend`, `/rename m5-long-run`) — pattern (d), a mid-exercise re-fork naming the reason (fresh context for the packaged re-send).",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "52b",
+      "rule_lead": "Widgets carry semantics, not just emphasis — match the widget to MEANING, never to how loud it renders.",
+      "verdict": "PASS",
+      "evidence": "Raw L13 '**HOX** You should be in the worktree now. Make sure you are not continuing in the original repo or on its branch.' guards an imminent, specific mistake (wrong-repo continuation) — exactly HOX's defined job. Both **Session** widgets (L5, L111) correctly mark genuine session-start/re-fork moments, not a focus-switch dressed up as a session cue.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "52a",
+      "rule_lead": "Module prose carrying a `**Session**` widget or a `{{prompt:}}` fence is an exercise that has not been extracted.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "this IS already an extracted exercise file at curriculum/exercises/, not module prose carrying an inline widget/prompt that should have been split out",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "52c",
+      "rule_lead": "Exercise lead-in trio — three slots, three tenses. A slot filled past its label is this corpus's most common defect.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "body-architecture/lead-in-drafting rule (how the What-you-do/build/point slots are worded) is writing/pedagogy class's lens on prose content, not a per-prompt behavioral-risk pattern; see top-level `notes` for a pointer worth that class's attention",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "52d",
+      "rule_lead": "Finding the point — four moves, learned writing M1's set 2026-08-12.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "concerns how the '**The point:**' slot is drafted/sharpened — writing/pedagogy class's lens, not a per-prompt behavioral-risk pattern",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "53",
+      "rule_lead": "Body prose must not supply an answer its prompt asks for — position is not the test (widened 2026-08-12).",
+      "verdict": "PASS",
+      "evidence": "Walked the body sentence(s) immediately around all 8 prompts against the 3-axis + (d) diagnostic. Every callout found names ACTIVITY/CONSTRAINT (raw L27-29, L36, L50-51, L63-69, L82-87) or teaches how to READ / what a BAD answer looks like — the two explicitly-legal shapes (raw L43-44's 10%-misrepresentation prior; raw L74's shape-mismatch push-back; raw L133's RLHF-charity naming). None pre-announces the SPECIFIC content a prompt's output will contain: raw L133's 'Expect partial failures framed as partial successes' names a generic, non-obvious RISK PATTERN worth watching for (the sanctioned 'name what a bad answer looks like' shape), not the actual facts of what will or won't have shipped in THIS student's run.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "56",
+      "rule_lead": "Engineer-audience audit fixes default to body callout, not forcing function.",
+      "verdict": "PASS",
+      "evidence": "Every mitigated risk in this file (self-audit-charity on prompt 2, self-report-inflation on prompt 8, shape-mismatch on prompt 4, convenience-shape-bias on prompt 6) is fixed at body-callout tier (raw L43-44, L74, L133-135, plus the in-fence grill) rather than an added forcing-function prompt or pre-flight check — the correct default for AE101's engineer audience given each risk is recoverable within the same exchange (<1 min), not a slow silent accumulation that would need §63's forcing-function exception.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "57",
+      "rule_lead": "Multi-session (any new mechanic mid-arc) ships as packaging, not new primitive.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "this file consumes the worktree container already packaged by ae101-m5-worktree-setup (per its `requires:` chain); it doesn't itself introduce a new mid-arc mechanic needing packaging treatment",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "58",
+      "rule_lead": "`/clear` = tool, not ceremony.",
+      "verdict": "PASS",
+      "evidence": "Applied the rule's own two-question diagnostic to prompt 7's `/clear`: (1) anything compounds not yet on disk? No — by this point in Phase 5 the reference/plan.md/verifier are already locked-in and saved; nothing further needs capturing, so correctly NO convergence prompt is paired with the clear. (2) does the session continue with fresh context afterward? Yes, that is the entire point (dropping the heavy exercise scrollback before the packaged re-send). Matches the rule's 'clear with nothing to capture = no ceremony needed' case exactly.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "59",
+      "rule_lead": "Inbound links preserve pedagogical beat across reference restructuring.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no reference-page restructuring (merge/split/rename/delete) event is present in this file's current state",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "60",
+      "rule_lead": "Scan at the unit the rule names, not convenient larger one.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "meta-instruction to auditors about scan granularity when applying OTHER rules; not itself a gradable content property of this file",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "61",
+      "rule_lead": "Verify mechanism before proposing surgery.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "process rule for an editor proposing a SKILL/framework/tool change; not applicable to grading finished exercise content",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "61a",
+      "rule_lead": "Acting on a flagged item (punchlist entry / audit finding / eval BLOCK) — verify before fixing; its prescribed fix is a hypothesis, not an instruction.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "meta-rule governing how an auditor should verify a flagged item's premise before fixing; not itself a content property of this file. (Applied its discipline throughout this judgment instead — e.g. verifying the cache mismatch by git history rather than trusting either extraction's raw sha, and re-checking §17/§20's 2026-09-03 narrowing before scoring preamble/grill risk against the CURRENT rule text rather than the prior instance's now-superseded reasoning.)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "62",
+      "rule_lead": "Callouts next to prompts: steer, don't pre-empt.",
+      "verdict": "PASS",
+      "evidence": "All three body callouts near prompts describe evergreen, generalisable risks rather than a since-patched mechanical bug: raw L43-44 (push back on generalisation, a permanent live risk of any agent self-report), raw L74 (verifier-shape mismatch is always possible regardless of current prompt wording), raw L133-135 (RLHF-driven report-charity is a standing property of the model, not tied to a specific prompt phrasing that could later fix it). None warns against a failure mode the CURRENT fence already structurally prevents.",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "63",
+      "rule_lead": "Persistent TODO surfaces stale by default — audit before acting.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "process rule for verifying punchlist/pre-cohort-todos entries before acting on them; not applicable to this file's own content",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "64",
+      "rule_lead": "Maintainer blocks point, don't restate. Link architecture doc where they touch delivery.",
+      "verdict": "PASS",
+      "evidence": "The maintainer block correctly points rather than restates: raw L169 'This file owns only its own **Time:** line ... the module total is computed — node scripts/calculate-time.js learn-from-the-test' (pointer, not a duplicated number), and raw L246 'Pre-cohort open items: see curriculum/trainings/agentic-engineering-101/pre-cohort-todos.md' (pointer, not inline restatement). No cross-cutting delivery mechanic is duplicated here beyond content unique to this file (its own design decisions, source citations, backing block).",
+      "na_reason": null,
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "65",
+      "rule_lead": "Cross-module prerequisite rescue: run it late, never fabricate.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "this is an exercise file, not the module document; the module-level '## Start here' rescue architecture for a thin/absent M4 artefact belongs there, out of this file's scope. This file correctly assumes M4's artefact exists (per its own `requires:` chain naming ae101-m4-commit-starting-point / ae101-m4-take-task-end-to-end as producers) rather than fabricating a stand-in",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "66",
+      "rule_lead": "Three-pass build — finish each pass across ALL modules before starting the next.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "whole-curriculum authoring-sequence methodology; not a property of one already-shipped file",
+      "fix_hint": null,
+      "blocking": false
     }
   ],
+  "todos_count": 0,
   "blocking_findings_count": 0,
-  "todos_count": 7
+  "notes": [
+    "Out-of-lane, for the writing/pedagogy judges, not filed as a behavior finding: check_pedagogy.md §52c gained a new sub-clause TODAY (2026-09-06, Antti) — \"'What you build:' names what the artifact ENABLES, not only the artifact\" — and this file's raw L17 ('a verifier, a reference, and a plan.md, each built against a failure you actually read') names the three artifacts plus their grounding, but not what having them lets the student's next delegated run DO differently, the way the rule's own worked example does ('rules and guardrails for future agents that shape tasks the way you would'). Not re-derived or scored here since §52c is explicitly a body-prose-drafting rule outside this class's lens (see the §52c row's na_reason)."
+  ]
 }

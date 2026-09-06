@@ -1,57 +1,79 @@
 {
   "class": "behavior",
-  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/map-the-access-surface.md",
-  "verdict": "PASS",
   "training": "ae101",
-  "trace_status": "cached",
+  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/map-the-access-surface.md",
+  "verdict": "PASS_WITH_TODOS",
+  "body_sha": "5c8b48faa6d4ae8e98bfddf002774d295d2577b7821786f70b7d2c85efdb4692",
+  "shape_hash": "1b7965156c82fee5",
   "prompts_evaluated": 5,
-  "prompts_findings": [
+  "trace_status": "cached",
+  "rules_evaluated": [
     {
-      "prompt_index": 1,
-      "prompt_lead": "List my installed skills. Tell me also their storage location and whether or not",
+      "compendium": "check_prompts.md",
+      "rule_index": 17,
+      "rule_lead": "Preamble before action — design around it.",
       "verdict": "PASS",
-      "load_bearing": true,
-      "risks_fired": []
+      "evidence": "Prompt 2 (curriculum/prompts/map-the-access-surface-2.md:21, 'Invoke the access-control-analysis skill... Save the surface map to a temp directory and tell me the path... don't prompt me to customize') is a multi-step action fence with no in-fence 'No preamble.' suppressor — the near-miss. It stays inside because exercise.md L47 ('Claude narrates what the skill is doing before the map appears; skip past the opening and look for the saved path when it lands.') is the body-callout mitigation the class template names for this pattern; carve_out: body-callout-mitigation. Prompt 3 (curriculum/prompts/map-the-access-surface-3.md:11) is also a non-plan-mode conversational ask; §17 was narrowed 2026-09-03 to make the structural fix (in-fence 'No preamble' / body primer) owed ONLY in plan mode, advisory everywhere else, explicitly rejecting step-count-based flags on ordinary fences ('every hit it produced was a true count attached to a false premise'). Neither prompt is plan mode, so the harm the rule guards (top-of-response slot contested) is not the live concern.",
+      "fix_hint": null,
+      "blocking": false
     },
     {
-      "prompt_index": 2,
-      "prompt_lead": "Invoke the access-control-analysis skill on the feature I'll name. Save the surf",
-      "verdict": "TODO",
-      "load_bearing": true,
-      "risks_fired": [
-        {"pattern_id": "preamble-before-action", "confidence": "low", "evidence": "'Invoke the access-control-analysis skill... Save the surface map to a temp directory and tell me the path' is a multi-step action prompt with no in-fence preamble suppressor.", "fix_hint": "Already mitigated by the post-fence 'skip past the opening, look for the saved path' primer; no edit needed unless narration grows heavier."}
-      ]
+      "compendium": "check_pedagogy.md",
+      "rule_index": 31,
+      "rule_lead": "Self-report + self-audit charity — verify at artifact, over-flag or fresh-session for critique.",
+      "verdict": "REVISE",
+      "evidence": "Prompt 3 (curriculum/prompts/map-the-access-surface-3.md:11) asks Claude to rank 'the two or three findings that stood out most' from its own just-completed subagent's map — self-characterization of just-produced work. The evidence-backed self-report-inflation carve-out (prompt-behavior.md) clears fully only when BOTH a concrete evidence surface is named AND nearby prose names the charity risk with a pushback move. Only the first holds here: the prompt forces a read of the saved FILE at a named path (not a from-memory summary), but no adjacent line names the self-flattery risk or asks for a harsher ranking basis. Partial mitigation, not a full clear — the carve-out's own text offers 'downgrade to TODO or PASS' for this case, and only one of its two conditions is met.",
+      "fix_hint": "Add one clause to the map-the-access-surface-3 prompt fence: 'Rank by risk to the codebase, not by how complete the analysis looks.'",
+      "blocking": false
     },
     {
-      "prompt_index": 3,
-      "prompt_lead": "Read the surface map you wrote at the path you told me. Walk me through it in ch",
-      "verdict": "TODO",
-      "load_bearing": true,
-      "risks_fired": [
-        {"pattern_id": "preamble-before-action", "confidence": "low", "evidence": "'Ten lines, then stop' caps total length but doesn't forbid an opening narration sentence before the ranked list starts.", "fix_hint": "Add an in-fence 'No preamble.' line if the ten-line cap ever starts absorbing an opening sentence."},
-        {"pattern_id": "self-report-inflation", "confidence": "low", "evidence": "'the two or three findings that stood out most' asks Claude to characterise its own just-run subagent's output.", "fix_hint": "If ranking drifts toward flattering the skill's own thoroughness, add 'rank by risk to the codebase, not by how complete the analysis looks.'"}
-      ]
+      "compendium": "check_prompts.md",
+      "rule_index": 12,
+      "rule_lead": "Append-vs-integrate — name integration mode on regeneration with new context source.",
+      "verdict": "PASS",
+      "evidence": "Prompt 4 (curriculum/prompts/map-the-access-surface-4.md:16) names the mode explicitly — 'integrate the delta... pull the item to the top of its category' — and prompt 5 (curriculum/prompts/map-the-access-surface-5.md:16) equally explicitly uses 'Add a new surface' for a genuine addition. Both satisfy rule 12's diagnostic (integration mode named, no middle ground), which is also why the append-vs-integrate / file-preservation-gap risk doesn't fire on either as an authoring-shape defect.",
+      "fix_hint": null,
+      "blocking": false
     },
     {
-      "prompt_index": 4,
-      "prompt_lead": "Update the surface-map file in the temp directory to integrate the delta below —",
-      "verdict": "TODO",
-      "load_bearing": true,
-      "risks_fired": [
-        {"pattern_id": "file-preservation-gap", "confidence": "low", "evidence": "'Update the surface-map file in the temp directory to integrate the delta' — integrate-verb personal-scope carve-out applies (Claude-owned scratch file, ephemeral, outside the repo).", "fix_hint": "Covered by the carve-out plus the show-diff gate; no action needed."},
-        {"pattern_id": "overwrite-anxiety", "confidence": "low", "evidence": "'Show me the diff' is a post-action report rather than a pre-write confirmation ask.", "fix_hint": "Show-diff-after-write already substitutes for a pre-confirm; no action needed."}
-      ]
+      "compendium": "check_prompts.md",
+      "rule_index": 16,
+      "rule_lead": "Overwrite anxiety — name overwrite default on regeneration.",
+      "verdict": "PASS",
+      "evidence": "Prompts 4 and 5 both close with 'Show me the diff' — a post-action report (rule 21) rather than a pre-write confirmation ask, structurally discouraging the hesitate-then-ask pattern rule 16 names. Both also target the same Claude-owned temp-dir scratch file (maintainer 'Scratch path' note), which independently triggers the integrate-verb personal-scope carve-out recorded in the judge-owned row below.",
+      "fix_hint": null,
+      "blocking": false
     },
     {
-      "prompt_index": 5,
-      "prompt_lead": "Add a new surface to the map that the skill didn't catch but matters in this cod",
-      "verdict": "TODO",
-      "load_bearing": true,
-      "risks_fired": [
-        {"pattern_id": "default-acceptance", "confidence": "low", "evidence": "'one sentence on why the skill missed it (likely codebase-specific...)' can default to a generic reason absent pushback.", "fix_hint": "Already covered by the immediately-following 'Push back until the reason names your codebase' callout; no action needed."}
-      ]
+      "compendium": "curriculum/evals/judges/prompt-behavior.md",
+      "rule_index": null,
+      "judge_owned": true,
+      "rule_lead": "file-preservation-gap and overwrite-anxiety — integrate-verb personal-scope carve-out",
+      "verdict": "PASS",
+      "evidence": "Prompts 4 and 5's target is the temp-dir surface-map file — a Claude-owned, single-session scratch artifact living outside the repo (maintainer 'Scratch path' note: 'Kept deliberately outside the repo — this is session scratch, not the durable tier'), edited iteratively across Phase 3-4 at the student's own direction. That satisfies the carve-out's personal-scope marker ('the surrounding section describes a compounding / iterative move where the file is the student's evolving record'), and both prompts use integrate/add verbs on it, so file-preservation-gap and overwrite-anxiety are marked carve_out rather than left open.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 43,
+      "rule_lead": "Long-running prompts stream progress — never go silent.",
+      "verdict": "PASS",
+      "evidence": "Maintainer accept-note at exercise.md L104 (dated 2026-08-30) explicitly declines a streaming line for prompt 2's skill dispatch: the wait is deliberately spent in the m3-quality window, not watched, and the return read is already primed ('skip the narration, look for the saved path'). Documented accept-note honored, not re-flagged.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 48,
+      "rule_lead": "Heavy fan-out prompts get body recovery callout.",
+      "verdict": "PASS",
+      "evidence": "The opener chunk (exercise.md L15-20, 'Take the ranked ten, leave the rest on disk') is the body recovery callout §48 asks for ahead of the heavy-output prompts 2 and 3: names the run growing big, gives the recovery action (ranked short list to chat, rest to disk). Maintainer accept-note at L102 (dated 2026-08-15) records the premature-stop half as deliberately absent from this specific callout, reasoned against Phase 2's already-built read-back step — documented, not re-flagged. Maintainer note at L106 also confirms the dispatch is a single subagent, not the N>2-parallel shape §48's signal list targets.",
+      "fix_hint": null,
+      "blocking": false
     }
   ],
+  "todos_count": 1,
   "blocking_findings_count": 0,
-  "todos_count": 4
+  "notes": "Scope: behavior class evaluates the 5 registry prompts against the 15-pattern catalog (curriculum/evals/simulation-behavior.md); check_prompts.md/check_pedagogy.md rows are limited to rules directly adjacent to a fired-or-considered catalog pattern (per prompt-behavior.md's own compendium scope), not a full 116-rule sweep — the other 109 rules belong to sibling classes' lanes. Cached sim-trace (curriculum/evals/sim-cache/ae101--exercise--map-the-access-surface.behavior.json, dated 2026-08-01) was read for cache lookup only, per this dispatch's read-only instruction; all 5 prompt_sha values still match the live registry files (recomputed and verified), so no prompt content drifted, but the trace's own risks_fired entries predate the class template's carve_out-marker discipline and the 2026-09-03 narrowing of check_prompts.md §17 — this instance re-derives verdicts fresh against current rule text rather than reusing the cache's stale confidence/verdict pairing. Per this dispatch's file-write restriction ('the only file you write is your own instance JSON'), the sim-cache trace file itself was left unwritten even though the class template asks the judge to merge and persist it."
 }

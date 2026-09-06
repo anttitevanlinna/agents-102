@@ -94,5 +94,5 @@ If the agent stalls, ask it to keep going. The nudge reads as encouragement and 
 
 **Lean-intro trim (2026-08-25, Antti-approved):** Phase 1's stance bullet (*"Your rules files, memory, ADRs and skills are what they are… shows up when you read what comes back."*) cut — `test-and-learn` installed that stance a lecture earlier; this slide's job is the two markers. Do not restore.
 
-**Quality:** compendium-audited 2026-09-05 (writing@324b81d7 story@324b81d7 technical@324b81d7 behavior@61e7fc9 pedagogy@1abb84c6 strategy@324b81d7 slides@324b81d7)
-- judges @324b81d7: writing PASS (3 todos see instances/ae101--exercise--set-the-markers-send-it-off.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-09-06 (writing@324b81d7 story@324b81d7 technical@324b81d7 behavior@64d17eea pedagogy@1abb84c6 strategy@324b81d7 slides@324b81d7)
+- judges @64d17eea: writing PASS (3 todos see instances/ae101--exercise--set-the-markers-send-it-off.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS

@@ -1,68 +1,1157 @@
 {
   "class": "behavior",
-  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/author-test-strategy-skill.md",
-  "body_sha": "59b06b83a43d62463f6033dafe0e303432400d5215c3ab67520ea0c4f822d5b7",
-  "shape_hash": null,
-  "verdict": "PASS",
   "training": "ae101",
-  "trace_status": "full_regen",
-  "generated_at": "2026-08-28T00:00:00.000Z",
-  "content_sha": "e27db0745a4fc4ccd18d44debb9b0073d460fa8a3d65660f7831d604323bcfa2",
+  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/author-test-strategy-skill.md",
+  "verdict": "PASS_WITH_TODOS",
+  "body_sha": "823085bf7f28968ffd37df1fc334ff428670679e8cb85ae87ae4a336ff7f49b0",
+  "shape_hash": "f6d62aaf26972051",
   "prompts_evaluated": 2,
-  "blocking_findings_count": 0,
-  "todos_count": 2,
-  "prompts_findings": [
+  "prompts_summary": [
     {
       "prompt_index": 1,
       "prompt_lead": "I want to author a test-strategy skill for this codebase. Ask me the questions y",
-      "verdict": "TODO",
+      "expected_response_shape": "Claude opens an AskUserQuestion interview covering framework/mocking/integration-boundary/flakiness/regression-scope/load-bearing-tests/not-worth-testing, one question per call, drafts and shows the SKILL.md before saving.",
       "load_bearing": true,
-      "risks_fired": [
-        {
-          "pattern_id": "question-dump",
-          "confidence": "low",
-          "evidence": "In-fence structural enforcement, verbatim: 'Use the AskUserQuestion tool to interview me: one question per tool call, wait for my answer, then the next.' This is the catalog's strongest legal shape (a mechanical tool-call constraint), stronger than the body-callout carve-out in the template. Harm the rule guards against (Claude dumping all 7 topics as one form) is not present: the fence names the mechanism (tool, cadence) rather than just the outcome.",
-          "fix_hint": "None needed; this is the reference-quality shape for the pattern."
-        },
-        {
-          "pattern_id": "default-acceptance",
-          "confidence": "low",
-          "evidence": "In-fence 'Push back if my answer is generic' addresses Claude pushing on the STUDENT's answers. The body-callout mitigation for the complementary direction (Claude offering a weak default, student not pushing back) sits in the very next section: 'Push back when Claude offers a default you don't like. \"No, we don't mock the database...\" The push-back is where the skill gets its codebase truth.' Names the failure mode and the recovery move per the template's default-acceptance carve-out.",
-          "fix_hint": "None needed; both directions of the pattern are named on the page (in-fence for student-answer generic-ness, in-body for Claude-offered defaults)."
-        },
-        {
-          "pattern_id": "overwrite-anxiety",
-          "confidence": "low",
-          "evidence": "'Show me before saving' gates a first-time write to `~/.claude/skills/test-strategy/SKILL.md`; nothing in this exercise or the module sequence establishes that file as pre-existing before this phase (the maintainer block's install-mechanic note treats the ship-destination bullet as the sole canonical statement of this path, and nowhere frames it as a re-run). Fresh-install-context carve-out logic applies by analogy even though this is authored-not-installed: no collision norm exists to imply.",
-          "fix_hint": "None needed on the modal path; would only need a preserve-vs-replace clause if a future revision lets students re-run this exercise against an already-authored SKILL.md."
-        }
-      ]
+      "per_prompt_verdict": "PASS"
     },
     {
       "prompt_index": 2,
       "prompt_lead": "Invoke the `test-strategy` skill on this codebase and repository, on the code as",
-      "verdict": "TODO",
+      "expected_response_shape": "Claude invokes the skill, produces the test strategy against the real repo, then in the same turn answers the four self-grading diagnostic questions.",
       "load_bearing": true,
-      "risks_fired": [
-        {
-          "pattern_id": "self-report-inflation",
-          "confidence": "low",
-          "evidence": "Evidence-backed Debrief carve-out applies: the fence asks Claude to grade a concrete artifact it just produced (\"read the strategy you just produced\") against four pointed diagnostic questions (generic-vs-specific, load-bearing tests named, integration boundary named, teammate-adequacy), and the body paragraph immediately after the fence names the bias mechanism by name ('same-window self-charity') and offers a concrete recovery move (the two-prompt fresh-read alternative, quoted verbatim in body). Harm the rule guards against (an unchallenged inflated self-grade) is closed by the named recovery move, not merely gestured at.",
-          "fix_hint": "None needed; carve-out is fully satisfied — concrete artifact, pointed diagnostic questions, named bias, and a concrete alternative path."
-        },
-        {
-          "pattern_id": "self-audit-charity",
-          "confidence": "low",
-          "evidence": "Same body callout as self-report-inflation above satisfies this pattern's carve-out too: 'The grade is biased by design... same-window self-charity' names the charity mechanism directly, and the subsequent 'Sharpen the skill, not the output' + fresh-read alternative gives the student an actionable recovery.",
-          "fix_hint": "None needed; same carve-out basis as self-report-inflation."
-        },
-        {
-          "pattern_id": "niceness-tax",
-          "confidence": "low",
-          "evidence": "The self-grading questions in the fence are diagnostic/comparative rather than open praise-inviting ('does it read generic?', 'would a teammate... ask for more?'), which structurally discourages a softened answer. The adjacent body callout names the self-charity bias mechanism but does not use language like 'be blunt' or 'don't soften the answer' — it addresses the same-window bias, not tone specifically. Residual gap: a diplomatically-worded self-grade could still pass the stated questions without genuinely surfacing weakness.",
-          "fix_hint": "Optional: one clause alongside the existing self-charity callout naming the softening/bluntness risk directly (e.g. 'be blunt about what's weak — a diplomatic answer defeats the exercise'). Not filed as blocking: the diagnostic question shape already resists praise-only answers, and Phase 2's body text goes on to ask the student to push on the skill's self-named weakest part, which is a second, independent check on the same failure."
-        }
-      ]
+      "per_prompt_verdict": "PASS"
     }
-  ]
+  ],
+  "accept_notes_found": [
+    "L75 Lean pass (2026-08-25, Antti-directed M3/M6 shorten): named cuts, 'Do not restore.'",
+    "L81 Emphasis pass (2026-07-09, Antti-directed 'go very lightly on the bold'): de-bolded bullet leads, widget/label chrome untouched.",
+    "L103 Accept-with-mitigation (check_pedagogy.md §56): no dedicated push-back move for a skipped self-critique ask — the body line is the fix, not every miss needs a trainer catch too.",
+    "L77 Install mechanic is stated once — ship-destination bullet is canonical, do not restate the install path elsewhere in body.",
+    "check_prompts.md §20 (compendium-level, dated 2026-09-03): grill-before-save explicitly declined for this exact prompt ('author-test-strategy-skill-1'), do not re-raise.",
+    "check_prompts.md §17 (compendium-level, dated 2026-09-03): preamble-before-action narrowed to plan-mode only; this file carries no plan-mode prompt so the rule is advisory-only here."
+  ],
+  "rules_evaluated": [
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 1,
+      "rule_lead": "No placeholders inside fences.",
+      "verdict": "PASS",
+      "evidence": "grep '\\[' across both registry prompt bodies (author-test-strategy-skill-1.md, -2.md), frontmatter included → 0 matches (exit 1). No [BRACKETS]-style placeholder anywhere in either fence.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 2,
+      "rule_lead": "Every prompt block: one-sentence action lead-in.",
+      "verdict": "PASS",
+      "evidence": "Line 25: \"Ask Claude to author the skill, asking one question at a time.\" (command verb, 12 words, <20). Line 42: \"Ask Claude to invoke the skill on this codebase and grade what it produced in the same turn.\" (18 words). Neither enumerates the fence's internal clauses (2a — the short-lead-in test); no dangling-colon sub-case; no trainer-demo (2b) or command-verb-header (2c) alternative needed since both already carry a standalone lead-in.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 3,
+      "rule_lead": "Canonical shape — lead-in, label with destination, blank line, fence.",
+      "verdict": "PASS",
+      "evidence": "expand-md.js output: '**Prompt** *(Claude Code)*' + blank line + fence for both prompts (expanded-view lines 27, 54). No 'copy →' prefix, no '(end of prompt)' closer, no blockquote/backtick wrapping.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 4,
+      "rule_lead": "Installed Skills invoke by name, never path.",
+      "verdict": "PASS",
+      "evidence": "Prompt 2: \"Invoke the `test-strategy` skill on this codebase and repository\" — by name; no `~/.claude/skills/...` path appears in the invocation fence (the path only appears in Prompt 1's WRITE instruction, which is the authoring act itself, not an invocation).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 5,
+      "rule_lead": "Chain by back-reference + deterministic path, never invented alias.",
+      "verdict": "PASS",
+      "evidence": "Prompt 1 writes to the deterministic path `~/.claude/skills/test-strategy/SKILL.md`; Prompt 2 chains via the skill's NAME (`test-strategy`), Claude Code's native auto-discovery mechanism (rule 4) rather than a file back-reference — a stronger binding since the identifier is asserted identically in both prompt fences and in the registry frontmatter's produces/requires ids.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 6,
+      "rule_lead": "Chained-prompt isolation — don't leak downstream pipeline.",
+      "verdict": "PASS",
+      "evidence": "Prompt 1 (the authoring/planner prompt) never mentions invocation, grading, or Phase 2 — stays self-contained to the interview-and-draft task; no pre-grilling of the downstream step.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 7,
+      "rule_lead": "No session-resets mid-phase.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "neither prompt offers a `/clear`/new-session option; both run inside the same continuous side-quest window (line 5, 'All phases run here')",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 8,
+      "rule_lead": "Multi-sample methods need structural enforcement.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no self-consistency/ensemble/multi-sample method in this exercise",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 9,
+      "rule_lead": "Markdown shout (`**bold**`, `*italic*`) inside fenced prompts = dead weight.",
+      "verdict": "PASS",
+      "evidence": "grep for `**`/`*emphasis*` inside both fence bodies (frontmatter excluded via awk) → 0 matches. Both prompts use straight double-quotes for emphasis (e.g. \"flaky\", \"write unit tests first\"), not markdown.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 10,
+      "rule_lead": "Runtime-fork prompts: paired divs, shared chip.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "AE101 is Code-only; grep for rt-code/rt-cowork/rt-cli/rt-desktop in the file → 0 matches, per the rule's own AE101 carve-out",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 11,
+      "rule_lead": "Runtime-mechanical scaffolding asymmetry.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no Cowork fork present (AE101 Code-only)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 12,
+      "rule_lead": "Append-vs-integrate — name integration mode on regeneration with new context source.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no regeneration-with-new-context-source prompt; Prompt 1 is first-time authoring, not a rewrite of an existing artifact",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 13,
+      "rule_lead": "Citation discipline — extend cite-or-flag scope + quote supporting sentence.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no factual/citation claims requested in either prompt; artifact is codebase-testing convention, not a sourced document",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 14,
+      "rule_lead": "Niceness tax — name the edge or pin the line on regeneration.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "rule's mechanism is edge-softening on REGENERATION of anti-positioning copy; not applicable to first-time-authored content. (The distinct self-grading-softness risk from the 15-pattern catalog is judged under check_pedagogy.md §31/§50, the compendium's actual home for self-assessment charity.)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 15,
+      "rule_lead": "Question-dump default — `in turn` too soft; two legal shapes.",
+      "verdict": "PASS",
+      "evidence": "Prompt 1, para 3: \"Use the AskUserQuestion tool to interview me: one question per tool call, wait for my answer, then the next.\" — matches legal shape (a) at reference quality: tool named, cadence named, explicit wait.",
+      "fix_hint": null,
+      "blocking": false,
+      "risk_pattern": "question-dump",
+      "confidence": "low",
+      "carve_out": "structural-prompt-enforcement-15a"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 16,
+      "rule_lead": "Overwrite anxiety — name overwrite default on regeneration.",
+      "verdict": "PASS",
+      "evidence": "Prompt 1 targets a deterministic, first-time-creation path (`~/.claude/skills/test-strategy/SKILL.md`); nothing in the exercise or its plug points implies this file might already exist, so no overwrite-vs-new ambiguity arises for Claude to pause on. Not a regeneration prompt, so the rule's core scenario doesn't apply.",
+      "fix_hint": null,
+      "blocking": false,
+      "risk_pattern": "overwrite-anxiety",
+      "confidence": "low",
+      "carve_out": "fresh-install-context (analogous — first-time creation, no prior-install marker)"
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 17,
+      "rule_lead": "Preamble before action — design around it.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "narrowed 2026-09-03 to plan-mode ONLY; neither registry file declares `permission-mode: plan` (grep confirmed 0 matches for `permission-mode` in both files), so §17 is advisory-only here, not a sweep target",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 18,
+      "rule_lead": "Self-critique register, not defense, when Claude interrogates own work.",
+      "verdict": "PASS",
+      "evidence": "Line 48: \"ask the skill itself to name its own weakest part... Push back on what it names; don't settle for reassurance\" uses self-critique verbs (name, push back), not defense verbs; Prompt 2's grading questions are diagnostic ('does it read generic?'), not adversarial-defense framed.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 19,
+      "rule_lead": "Minimal hand-off + Claude self-augments for send-off prompts.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "neither prompt is a long-running walk-away send-off; both run in a supervised 20-minute in-session exercise",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 20,
+      "rule_lead": "Grill before save — collaborative quality at artefact assembly.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "rule text explicitly declines this exact prompt by name: 'Declined under this narrowing, do not re-raise: author-test-strategy-skill-1'",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 21,
+      "rule_lead": "Tell me what you wrote, not show me what you'll write.",
+      "verdict": "PASS",
+      "evidence": "Prompt 1 ends 'Show me before saving' — a pre-confirm shape, but on a reversible, local, first-time file write, not the rule's target class of external/side-effect actions (post/email/commit/push). The pre-save review is pedagogically load-bearing: it's the mechanism behind the maintainer's own 'P1 missed detail' push-back ('you said X earlier — is that in the skill?'), which only works if the student sees the draft before it's persisted — parallels the same design logic that got the closely-related §20 (grill-before-save) concern explicitly declined for this same prompt.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 22,
+      "rule_lead": "Prompt-body edits require maintainer approval — registry files AND inline blocks.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "process/gate rule about editing the prompt; not a content defect to find by reading the shipped artifact — no edit is being proposed here",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 23,
+      "rule_lead": "Artifact destinations are explicit subpaths, never naked filenames (Agents 101-specific).",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "rule is explicitly scoped to Agents 101 ('AE101 uses student's existing repo... naked filenames there fine'); this is an AE101 file",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 24,
+      "rule_lead": "Don't restate session CWD inside prompt body.",
+      "verdict": "PASS",
+      "evidence": "`~/.claude/skills/test-strategy/SKILL.md` is a fixed Claude-Code user-scope system path (per rule 4), not a restatement of the session's repo-relative CWD — categorically different from the pattern this rule targets.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 25,
+      "rule_lead": "`subagent` allowed in prompt blocks; explain why after prompt.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "neither prompt mentions 'subagent'",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 26,
+      "rule_lead": "Maintainer-approval edits — ONE-AT-A-TIME, PRIORITY-ORDERED, FOUR-FIELD cards.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "process rule for how I would surface an edit; I have no edit to card against this file",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 27,
+      "rule_lead": "Name consumer at write time — `Save it as <path>` requires downstream reader.",
+      "verdict": "PASS",
+      "evidence": "Prompt 1's write is heavily consumer-named: Phase 1 bullet (line 22, 'auto-discovered in every session you run, across every repo'), Phase 2 lead-in (line 39, 'the skill is auto-discovered right here'), and the registry frontmatter's produces.consumed-by list (prompt:author-test-strategy-skill-2, prompt:walk-and-send-off-2, prompt:diagnose-and-resend-6, module:spot-gaps-build-the-loop).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 28,
+      "rule_lead": "Strong-bold prompt label is exactly `**Prompt**` — custom labels break renderer.",
+      "verdict": "PASS",
+      "evidence": "grep '\\*\\*Prompt\\*\\* \\*(Claude Code)\\*' on the expanded view → 2 exact matches (lines 27, 54).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 29,
+      "rule_lead": "Normal work request before orchestration.",
+      "verdict": "PASS",
+      "evidence": "Prompt 1 opens 'I want to author a test-strategy skill for this codebase' — a first-person work request an engineer would actually type, not a manufactured 'Ask me which files...' meta-instruction.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 30,
+      "rule_lead": "Live-test corrections preserve operator workflow.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "not a live-test-correction context",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 31,
+      "rule_lead": "Prompts live in registry; module/exercise/lecture files reference by marker.",
+      "verdict": "PASS",
+      "evidence": "Exercise file uses `{{prompt:author-test-strategy-skill-1}}` / `{{prompt:author-test-strategy-skill-2}}` markers (lines 27, 44) with lead-ins above each; registry files exist at curriculum/prompts/author-test-strategy-skill-{1,2}.md with correct frontmatter (key, dest, runtime, origin, requires, produces).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 32,
+      "rule_lead": "Module names in prompt prose are fine — they ground the session.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no module numbers appear inside either fence",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 33,
+      "rule_lead": "Git-output greps asserting exact-N need multi-result fallback.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "neither prompt parses git output",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 34,
+      "rule_lead": "Disambiguation, anchors, and decision logic that bind Claude live INSIDE prompt fence.",
+      "verdict": "PASS",
+      "evidence": "Both fences are self-contained read in isolation: Prompt 1's 'this codebase' resolves via the dedicated single-purpose side-quest worktree; Prompt 2 explicitly anchors to 'this codebase and repository, on the code as it stands in this worktree.'",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 35,
+      "rule_lead": "Repeated Q&A → premature re-edits. Separate iteration from persistence.",
+      "verdict": "PASS",
+      "evidence": "Prompt 1 defers the write to the END of the interview ('When you have enough, write...') rather than per-answer — no mid-dialog premature persistence risk; the 5-element enforcement shape isn't needed because the design already avoids the failure mode.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 36,
+      "rule_lead": "Wide prompts split by logical move — paragraph breaks = cheapest scan-affordance.",
+      "verdict": "PASS",
+      "evidence": "Prompt 1 is four paragraphs, one move each (approach / coverage-list / interview-mechanism / write-and-show); Prompt 2 is two paragraphs (invoke-and-produce / grade-in-same-response). Read-aloud diagnostic: each natural pause lands at a paragraph break, not mid-clause.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 37,
+      "rule_lead": "Orient saved rule by where it FIRES, not surface activity producing it.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no CLAUDE.local.md/CLAUDE.md rule-saving instruction in this exercise",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 38,
+      "rule_lead": "Body lead-in mirrors prompt's opening phrasing.",
+      "verdict": "PASS",
+      "evidence": "Lead-in 'Ask Claude to author the skill...' mirrors Prompt 1's opening 'I want to author a test-strategy skill...' (shared verb 'author', shared noun 'skill'). Lead-in 'Ask Claude to invoke the skill on this codebase...' mirrors Prompt 2's opening 'Invoke the `test-strategy` skill on this codebase...' almost verbatim. No surprise-pedagogy carve-out (38a) needed — no maintainer easter-egg note present.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 39,
+      "rule_lead": "Declare `permission-mode:` when paste requires specific Claude Code mode.",
+      "verdict": "PASS",
+      "evidence": "Neither registry file declares `permission-mode` (grep confirmed 0 matches); neither prompt's correct behavior depends on a specific mode, so omission is correct, not a gap.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 40,
+      "rule_lead": "Verify session boundary before deciding prompt's context-carrying.",
+      "verdict": "PASS",
+      "evidence": "Phase 2 runs warm relative to Phase 1 (continuous side-quest window per line 5, no `/clear` between), but warmth is moot here: skill invocation (Prompt 2) is filesystem-discovered per rule 4, not scrollback-dependent, so it would work cold too. No dangling curriculum-coined referent (§40b): 'the strategy you just produced' (Prompt 2) refers to Claude's own same-turn output. §40a satisfied: Prompt 2 explicitly targets 'this worktree', not a sibling.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 41,
+      "rule_lead": "Artifact-vs-STOP tail ordering — last imperative wins.",
+      "verdict": "PASS",
+      "evidence": "Prompt 1's tail is 'write `<path>`... Show me before saving' — a deliberate draft-then-review-then-persist sequence, not an unrelated STOP grafted after a write instruction competing for recency. This is the rule's legitimate 'review gate' shape, not its target failure (a STOP silently cancelling a load-bearing write).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 42,
+      "rule_lead": "Headless-runner discipline — tail every prompt with no-AUQ guard.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "live interactive cohort session (not tmux-runner/CI); Prompt 1 explicitly wants AskUserQuestion to fire — the opposite of the headless-suppression scenario",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 43,
+      "rule_lead": "Long-running prompts stream progress — never go silent.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "student is present throughout (20-min live exercise, not a walk-away send-off); neither prompt matches the cross-project-scan/big-read/send-off trigger shapes",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 44,
+      "rule_lead": "A leading-looking line can be a forcing function; prefer the simpler prompt.",
+      "verdict": "PASS",
+      "evidence": "Prompt 1's 'Push back if my answer is generic. A test-strategy skill that says \"write unit tests first\" is useless.' is exactly this rule's load-bearing-roughness shape and is intact in the shipped text — nothing strips it.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 45,
+      "rule_lead": "Prompt paths match Builder scope.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Agents-101-scoped rule; this is AE101, and the one path present (`~/.claude/skills/...`) is a fixed system location outside the training-directory convention this rule governs",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 46,
+      "rule_lead": "Output shape — trust Claude's defaults, don't pad.",
+      "verdict": "PASS",
+      "evidence": "Prompt 1 names only the structurally-necessary shape ('frontmatter with `name` + `description`, then instructions') — the minimum needed for a valid SKILL.md, not a padded template spec.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 47,
+      "rule_lead": "\"Add X and regenerate\" is a trap.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no append-vs-integrate regeneration scenario in this exercise",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 48,
+      "rule_lead": "Vary closings deliberately.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "this exercise's close ('Decide if it graduates to the team') imposes none of the five enumerated closing mechanics (cold-critic/pair/group/solo-retro/show-work) — it defers to a later, off-session human conversation, so there is no closing-mechanic choice to grade for variety here",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 49,
+      "rule_lead": "A take-home prompt asks for one bounded build.",
+      "verdict": "PASS",
+      "evidence": "Neither prompt is a take-home/cold-session handoff (both run live), but applied loosely: Prompt 1 asks for exactly one artifact (the test-strategy skill) — no plural deliverable, no 'per-shape' clause, no unresolved 'worth packaging' qualifier.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 1,
+      "rule_lead": "Walk-away test (M2+).",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "student is present throughout this exercise; not a walk-away shape",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 2,
+      "rule_lead": "50% magic rule (M3-M8).",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "corpus-level dosage metric across modules, not evaluable from a single file's prompts",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 3,
+      "rule_lead": "Trust the agentic design — no human backstops.",
+      "verdict": "PASS",
+      "evidence": "Neither prompt imposes a manual backstop or exhaustive if-then ruleset; both grant Claude judgment authority (interview design in Prompt 1, self-grading in Prompt 2) with human review layered on top rather than substituting for it.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 4,
+      "rule_lead": "Quality ladder.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "corpus-level rubric (7/8/9 across modules), not evaluable from a single file's prompts",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 6,
+      "rule_lead": "One exercise = one bounded activity.",
+      "verdict": "PASS",
+      "evidence": "File is one exercise with an internal arc (author → answer → invoke → sharpen → ship) across three Phase headers, not sub-numbered into separate exercise files.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 7,
+      "rule_lead": "Modules composable across variants.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "corpus-level library-structure rule, not a per-prompt behavior check",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 8,
+      "rule_lead": "Three-level completeness.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "corpus-level completeness frame, not a prompt-behavior rule",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 9,
+      "rule_lead": "Pattern-recognition LOs need n≥2 instances with contrast.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "the pattern-recognition LO (if any) is declared at module level per module-shape.md convention, not in this exercise file; the file does offer an optional second evaluative pass (line 50's fresh-read alternative) but carries no formal LO statement to check n≥2 compliance against",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "9b",
+      "rule_lead": "Progression-with-variations is the spine.",
+      "verdict": "PASS",
+      "evidence": "Maintainer's own Watch-fors note ties this exercise's personal-first-then-team-PR pattern explicitly to M1's CLAUDE.local.md ('Personal-first is the through-line, matches M1's CLAUDE.local.md') — a named variation of a recurring move, not verbatim repetition.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 10,
+      "rule_lead": "Student agency — adults decide.",
+      "verdict": "PASS",
+      "evidence": "Neither prompt uses paternalistic forced-pacing language ('sit N min, don't scan'); the mandatory Q&A in Prompt 1 is exempt under the rule's own carve-out (artifact feeds Phase 2 directly).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 11,
+      "rule_lead": "Delegation — student brings, Claude screens.",
+      "verdict": "PASS",
+      "evidence": "Prompt 1 asks only about the student's OWN codebase knowledge (student brings), with Claude organizing/drafting (Claude screens) — no reliance on inaccessible external systems (Jira/wikis/team chat).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 12,
+      "rule_lead": "Split mega-exercise when phases = distinct skills + distinct artifacts.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "the three phases chain mechanically toward ONE artifact (the skill file), matching the rule's own 'stays one' counter-case, not the split trigger",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 13,
+      "rule_lead": "Artifact-realism check.",
+      "verdict": "PASS",
+      "evidence": "AskUserQuestion tool exists and is available; Skills/user-scope auto-discovery is a verified capability (backing block's cc-skills-user-scope source, checked 2026-05-15); `test-strategy` is authored IN this exercise, not a prework-dependent prerequisite.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 14,
+      "rule_lead": "Teach principle + technique — default.",
+      "verdict": "PASS",
+      "evidence": "Skill auto-discovery mechanism is explained (line 22: '~/.claude/skills/test-strategy/SKILL.md, auto-discovered in every session you run, across every repo') before Prompt 2 invokes it by name — technique isn't a black box.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 15,
+      "rule_lead": "Auto-fire sim+eval after significant rewrite.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "process rule about my own dispatch triggering, not a content check of the file",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 16,
+      "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
+      "verdict": "PASS",
+      "evidence": "The two load-bearing mechanics (one-question-at-a-time interview; invoke-and-grade-in-same-turn) both live IN the fence, not just body prose; no numeric count-script imperative found in body (e.g. no 'push back exactly twice').",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 17,
+      "rule_lead": "Corporate infra = nice-to-have, never forcing function.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no external corporate infra (MCP/team ADRs/SSO) is load-bearing here; entirely personal-scope",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 18,
+      "rule_lead": "Personal-first, team promotion via human conversation.",
+      "verdict": "PASS",
+      "evidence": "Exact match to the rule's canonical shape: ships to `~/.claude/skills/test-strategy/SKILL.md` (personal, no auto-promote), team-PR explicitly deferred to a later human conversation (lines 62-64: 'Ask two teammates... Agents don't unilaterally change shared team infrastructure. You do.').",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 19,
+      "rule_lead": "Measure silent failure, not just friction.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "cohort-evaluation methodology rule for the trainer/researcher, not a per-file content check",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 20,
+      "rule_lead": "Don't pre-set categories before experiment runs.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "evaluation-methodology rule, not applicable to a static shipped file",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 21,
+      "rule_lead": "Verification layers sample DIFFERENT error distributions.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "about not skipping verification layers in the overall eval process; not a content defect the file itself exhibits",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "21b",
+      "rule_lead": "Cheap-before-expensive verification ordering.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "process rule for eval sequencing, not a file-content check",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 22,
+      "rule_lead": "Rule in memory without forcing function = worse than no rule.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "about memory-entry authoring discipline; not applicable to this exercise file",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 23,
+      "rule_lead": "Short skeptical pushback on \"done\" = re-verify trigger.",
+      "verdict": "PASS",
+      "evidence": "Line 48 ('ask the skill itself to name its own weakest part... don't settle for reassurance') is exactly this rule's re-verify-not-re-confirm pattern.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 24,
+      "rule_lead": "Cohort execution is trainer-paced + concurrent, not sequential.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "delivery-timing-model rule, not evaluable from prompt content alone",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 25,
+      "rule_lead": "Host-skill optional; maintainer blocks trainer-only.",
+      "verdict": "PASS",
+      "evidence": "Maintainer block's Push-back moves section uses 'Trainer push:'/'Trainer checks:' consistently, never a dual Nerd/Trainer split — correct format.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 26,
+      "rule_lead": "Reflection beats: in-chat over file-write.",
+      "verdict": "PASS",
+      "evidence": "Prompt 2's grading happens 'in the same response' (in-chat), not written to a separate reflection file; no superfluous proof-of-reflection artifact proposed anywhere.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 27,
+      "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
+      "verdict": "PASS",
+      "evidence": "Line 63 ('Ask two teammates who'd use it...') describes the student's own post-training real-world workflow with their actual teammates, not an in-room 'turn to your neighbour' cohort-management cue — passes the WORK-vs-COHORT-MANAGEMENT diagnostic.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 29,
+      "rule_lead": "Eval = fixed yardstick; thing measured learns.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no eval-loop/scorer described in this exercise",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 30,
+      "rule_lead": "Reading burden for verification = banned. Claude audits Claude.",
+      "verdict": "PASS",
+      "evidence": "Prompt 2 has Claude grade its own output (Claude-on-Claude); the student's read (line 40, 'you read the strategy... and whether either one reads generic') is a gut-check/reaction read, not a manual correctness-verification burden.",
+      "fix_hint": null,
+      "blocking": false,
+      "risk_pattern": "reading-burden",
+      "confidence": "n/a — pattern does not fire"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 31,
+      "rule_lead": "Self-report + self-audit charity — verify at artifact, over-flag or fresh-session for critique.",
+      "verdict": "PASS",
+      "evidence": "(a) self-report-inflation: Prompt 2 asks Claude to grade a concrete artifact it just produced ('read the strategy you just produced') against four pointed diagnostic questions — evidence-backed-Debrief carve-out satisfied. (b) self-audit-charity: same carve-out; additionally line 49 names the bias by name ('same-window self-charity') and line 50 offers a concrete fresh-session-style alternative ('Read that output as if you'd never seen the SKILL.md').",
+      "fix_hint": null,
+      "blocking": false,
+      "risk_pattern": "self-report-inflation, self-audit-charity",
+      "confidence": "low",
+      "carve_out": "evidence-backed-debrief-carveout"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 32,
+      "rule_lead": "Offered structures need forced-engagement mechanic.",
+      "verdict": "PASS",
+      "evidence": "(a) offered defaults: Prompt 1's 'Push back if my answer is generic' plus body line 32 ('Push back when Claude offers a default you don't like') forces engagement on BOTH directions (student's answers and Claude's offered defaults) — matches the rule's own fix shape. (b) plan-mode approval: not applicable, no plan mode used.",
+      "fix_hint": null,
+      "blocking": false,
+      "risk_pattern": "default-acceptance",
+      "confidence": "low",
+      "carve_out": "forced-customization-present"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 33,
+      "rule_lead": "Source-type blindness on ingestion.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no heterogeneous source-folder/slide-format ingestion in this exercise",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 34,
+      "rule_lead": "Task selection drives outcome → name floor AND ceiling.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "not a task-selection/sizing exercise",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "34b",
+      "rule_lead": "Maintainer-block hedge naming section's own failure mode = cut-signal, not warning.",
+      "verdict": "PASS",
+      "evidence": "No disqualifying hedge found in the maintainer block; the 'Accept-with-mitigation' and 'Install mechanic' notes are stated as confident design decisions, not crutch-hedges propping up a shaky premise.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 35,
+      "rule_lead": "Audience tier determines authoring substrate.",
+      "verdict": "PASS",
+      "evidence": "AE101 = engineer tier with full Claude Code CLI access; authoring + auto-discovering a Skill on Day 1 costs no stolen teaching moment, consistent with the tier's install-capability diagnostic.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 36,
+      "rule_lead": "Verification machinery needs smoke-test before trust.",
+      "verdict": "PASS",
+      "evidence": "Phase 2 IS the smoke-test the rule requires: line 38 ('Authoring without invocation is theatre') directly enacts 'authoring judge ≠ invoking judge' — the exercise's two-phase design instantiates this rule rather than merely complying with it incidentally.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 37,
+      "rule_lead": "Context-loading tiers as staged progression.",
+      "verdict": "PASS",
+      "evidence": "Exercise proves the LAZY-LOAD tier (Skills: names/descriptions eager, body on invoke) by running it: Phase 1 creates the surface, Phase 2 invokes it BY NAME, matching 'each tier earned through running the surface.'",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 39,
+      "rule_lead": "Removals are strategic — ask before cutting.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "process rule governing my own conduct as an editor; I am proposing no cuts against this file",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 41,
+      "rule_lead": "Symmetric visible-mechanics > runtime fork when dual-runtime constraints break agentic move.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no dual-runtime fork present (AE101 Code-only)",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 42,
+      "rule_lead": "Load-bearing platform feature = no fallback. Gate or redesign.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "the cross-window Skills-auto-discovery dependency this rule would examine belongs to the SIBLING file (backing block: 'Same stamp carries open-the-side-quest.md; re-test both together') — within THIS file, Phase 2 invokes in the SAME worktree it was authored in, so no cross-window platform dependency is exercised here",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 43,
+      "rule_lead": "Eval architecture — partition by evidence source, not criterion count.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "architecture rule for how judges are organized, not a content check of this file",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 44,
+      "rule_lead": "Plug points + UX.",
+      "verdict": "PASS",
+      "evidence": "(a) Plug points name concrete org-context kinds ('This codebase/repository in the m3-quality worktree', 'The codebase's test framework / mocking policy / CI gate convention'), not vague slots, and Prompt 1's interview structurally invites their insertion. (b) UX: both prompts paste-and-run with no invented setup, no path-finding (skill invoked by name), no re-reading a previous module needed.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 45,
+      "rule_lead": "Per-exercise leap test — 3 observable Monday outcomes.",
+      "verdict": "PASS",
+      "evidence": "All three leap-test bullets are independently verifiable yes/no actions (invokes the skill on a real feature within a week; runs one self-critique+re-invoke loop; opens a team-PR conversation with ≥1 teammate) — none is an unfalsifiable competency claim.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 47,
+      "rule_lead": "Per-phase failure mode + escape hatch.",
+      "verdict": "PASS",
+      "evidence": "Push-back moves cover all three phases (P1 question-dump/generic-answers/missed-detail, P2 invoke-skip/invoke-output-weak, P3 ship-confusion), each with a quoted trainer escape hatch; the one phase-1 gap (skipped self-critique ask) is explicitly logged via the compendium's own 'Accept-with-mitigation (§56)' exemption rather than left silent.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 48,
+      "rule_lead": "Heavy fan-out prompts get body recovery callout.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "neither prompt fans out (no N>2 parallel subagents, no polling loop, no read-everything-in-X); Prompt 2 reads one codebase via one skill invocation",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 49,
+      "rule_lead": "Save belongs with authoring, not loading.",
+      "verdict": "PASS",
+      "evidence": "Exact match: the skill's SAVE happens in Phase 1 (authoring); Phase 3 ('The skill is already shipped... There is no separate install step') confirms the USE phase opens with verification only, per the rule's canonical shape.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 50,
+      "rule_lead": "Convenience-driven prompts with known shape-bias → body acknowledgment callout.",
+      "verdict": "PASS",
+      "evidence": "All three required beats present for Prompt 2's same-turn self-grade: (a) bias named ('same-window self-charity', line 49); (b) convenience choice implicit in the same-turn framing; (c) harsher alternative offered as explicit opt-in (line 50, paste-ready two-prompt wording). Per the rule's own text ('Behavior-class judges read fence only → keep flagging on re-fire; treat as accepted-with-mitigation'), this is the intended steady state, not a fresh gap.",
+      "fix_hint": null,
+      "blocking": false,
+      "risk_pattern": "niceness-tax (self-grading softness)",
+      "confidence": "low",
+      "carve_out": "convenience-acknowledgment-present"
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 51,
+      "rule_lead": "Deliberate-antipattern prompts = class-judge exempt, flagged-by-design.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "neither prompt is engineered to exhibit a behavioral risk as the teaching point (unlike an M4→M5 before/after contrast); both are meant to work well",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 52,
+      "rule_lead": "Session widget — placement.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no `**Session**` widget in this file; correctly absent since the side-quest window was opened by an earlier exercise (line 5, 'All phases run here'), not forked anew",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "52a",
+      "rule_lead": "Module prose carrying a `**Session**` widget or a `{{prompt:}}` fence is an exercise that has not been extracted.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "this IS already an extracted exercise file (curriculum/exercises/...), not module prose — the rule targets the opposite direction",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "52b",
+      "rule_lead": "Widgets carry semantics, not just emphasis.",
+      "verdict": "PASS",
+      "evidence": "Single `**Note**` widget (line 71) is used for a must-not-be-missed caveat about worktree drift — correct semantic match, not a mis-grabbed Session/HOX.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "52c",
+      "rule_lead": "Exercise lead-in trio — three slots, three tenses.",
+      "verdict": "REVISE",
+      "evidence": "Line 9 'What you build:' reads 'one SKILL.md tuned to how your codebase actually tests, living in your personal skills folder.' — names the artifact and its tuning/location but not what it ENABLES downstream (per the rule's 2026-09-06 addendum: 'names what the artifact ENABLES, not only the artifact... any session can end with a file'). The current sentence stops at describing the artifact rather than the capability it confers to a future session or a teammate. This addendum is dated TODAY and likely not yet swept across the corpus — flagging for the author's pass, not because this file was singled out.",
+      "fix_hint": "Rephrase 'What you build' to name what the tuned SKILL.md enables, e.g. 'one SKILL.md that gives any future session — yours or a teammate's — a test strategy shaped by how this codebase actually tests, not a generic pyramid,' rather than stopping at the artifact + its storage location.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "52d",
+      "rule_lead": "Finding the point — four moves.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "'The point' line (8 words, contestable claim, doesn't hoist a later reveal) already satisfies this rule's shape on inspection; the specific writing-craft judgment this rule asks for sits outside behavior's prompt-response-risk lens and is the pedagogy/writing class's primary call — noted here only for ledger completeness, no defect found",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 53,
+      "rule_lead": "Body prose must not supply an answer its prompt asks for — position is not the test.",
+      "verdict": "PASS",
+      "evidence": "Line 40 ('whether either one reads generic') poses a diagnostic QUESTION the student will judge, not an asserted outcome — matches the rule's legal 'how to read the answer coming' shape, not a spoiler; body after Prompt 2 (lines 46-52) offers next-step guidance, not a preview of a later fenced prompt (Phase 3 has none).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 56,
+      "rule_lead": "Engineer-audience audit fixes default to body callout, not forcing function.",
+      "verdict": "PASS",
+      "evidence": "Applied to my own fix-hints in this instance: the residual self-grading-softness risk (§31/§50) is resolved via the existing body callout, not a proposed new forcing-function prompt — consistent with this rule's AE101 default; my one actionable finding (§52c) is likewise a wording fix, not a new prompt.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 57,
+      "rule_lead": "Multi-session (any new mechanic mid-arc) ships as packaging, not new primitive.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no new multi-session mechanic introduced by this file; the side-quest window was packaged elsewhere",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 58,
+      "rule_lead": "`/clear` = tool, not ceremony.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "`/clear` is not mentioned anywhere in this file",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 59,
+      "rule_lead": "Inbound links preserve pedagogical beat across reference restructuring.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no reference-page restructuring involved",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 60,
+      "rule_lead": "Scan at the unit the rule names, not convenient larger one.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "methodology rule for the auditor (me); applied by scanning at prompt-level per the behavior class's own scope, not a file defect",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 61,
+      "rule_lead": "Verify mechanism before proposing surgery.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "process rule for me before proposing a skill/framework change; no surgery is being proposed against this file",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "61a",
+      "rule_lead": "Acting on a flagged item — verify before fixing; its prescribed fix is a hypothesis, not an instruction.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "methodology rule for handling PRIOR findings against this file; applied its spirit directly by verifying the §17/§20 declines against their own compendium text before treating them as settled rather than re-raising",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 62,
+      "rule_lead": "Callouts next to prompts: steer, don't pre-empt.",
+      "verdict": "PASS",
+      "evidence": "Lines 31-32's callout ('not how a diagram says it should'... 'Push back when Claude offers a default you don't like') coaches the STUDENT's own answering behavior and Claude's offered defaults, not a Claude-response pre-emption tied to specific prompt mechanics that would rot if the prompt's wording changed — the underlying concern (generic vs. codebase-specific) is the exercise's own stated Point (line 11), not a mechanics-dependent warning.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 63,
+      "rule_lead": "Persistent TODO surfaces stale by default — audit before acting.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "about auditing OTHER long-lived punchlists (pre-cohort-todos.md etc.), not this file",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 64,
+      "rule_lead": "Maintainer blocks point, don't restate. Link architecture doc where they touch delivery.",
+      "verdict": "PASS",
+      "evidence": "Maintainer block explicitly points rather than restates: 'Install paths and the team-kit route are canonical in training-architecture.md § Skills... so the pointer lives here and not in body' — textbook compliance.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 65,
+      "rule_lead": "Cross-module prerequisite rescue: run it late, never fabricate.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "this exercise doesn't load-bear on a prior module's send-off artefact",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 66,
+      "rule_lead": "Three-pass build — finish each pass across ALL modules before starting the next.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "authoring-process rule for building NEW modules; not applicable to reviewing an already-shipped, already-through-all-passes file",
+      "fix_hint": null,
+      "blocking": false
+    }
+  ],
+  "todos_count": 1,
+  "blocking_findings_count": 0
 }

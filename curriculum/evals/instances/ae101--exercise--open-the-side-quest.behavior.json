@@ -1,70 +1,1200 @@
 {
   "class": "behavior",
+  "training": "ae101",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/open-the-side-quest.md",
   "verdict": "PASS",
-  "training": "ae101",
+  "body_sha": "44033d98e4658fa6115c6b80180b08be918c9e167dd020a44003efcdc6ff91c2",
+  "shape_hash": "3cf5ace7aa38ed0f",
   "trace_status": "full_regen",
   "prompts_evaluated": 2,
   "prompts_findings": [
     {
       "prompt_index": 1,
       "prompt_lead": "Fork a sibling worktree. Default path `../<repo-name>-m3-quality`, default branc",
-      "verdict": "TODO",
+      "verdict": "PASS",
       "load_bearing": true,
       "risks_fired": [
-        {"pattern_id": "preamble-before-action", "confidence": "low", "evidence": "Fence carries two shell actions (git worktree add, cp) plus a report-back ask ('Tell me the absolute path to the new worktree directory and which files copied across.') with no in-fence 'No preamble' suppressor; a short narration line before the tool calls is plausible but not forced.", "fix_hint": "Optional in-fence 'No preamble.' opener; not warranted at current confidence given the prompt is short and concrete."},
-        {"pattern_id": "default-acceptance", "confidence": "low", "evidence": "Body callout two paragraphs above the fence names the choice explicitly and gives the student an action before paste: 'Decide where to base the side worktree... Clean main is the safe default. If you want another base, switch to it before you fork.' Satisfies the body-callout mitigation carve-out.", "fix_hint": "No edit needed — carve-out already satisfied by the pre-fence body paragraph."},
-        {"pattern_id": "overwrite-anxiety", "confidence": "low", "evidence": "'cp ./CLAUDE.local.md ../<repo-name>-m3-quality/  (if it exists)' writes into a worktree the same prompt just created via `git worktree add` one line earlier — stronger than the fresh-install-context carve-out, since the target directory is structurally guaranteed to have no prior contents.", "fix_hint": "No edit needed — target freshness is guaranteed by prompt order, not by convention."}
+        {
+          "pattern_id": "preamble-before-action",
+          "confidence": "low",
+          "carve_out": "check_prompts.md-17-narrowed-non-plan-mode-2026-09-03",
+          "evidence": "No in-fence 'No preamble' suppressor, but the fence declares no permission-mode: plan, and #17's 2026-09-03 narrowing retired the non-plan-mode structural trigger.",
+          "fix_hint": "No edit owed -- would be sweeping a retired trigger."
+        },
+        {
+          "pattern_id": "default-acceptance",
+          "confidence": "low",
+          "carve_out": "body-callout-mitigation",
+          "evidence": "Body callout names the base-branch choice and gives an action before paste: 'Decide where to base the side worktree... Clean main is the safe default. If you want another base, switch to it before you fork.'",
+          "fix_hint": "No edit owed -- carve-out already satisfied."
+        },
+        {
+          "pattern_id": "overwrite-anxiety",
+          "confidence": "low",
+          "carve_out": "fresh-install-context-extended",
+          "evidence": "The cp target is a worktree the same prompt created one line earlier via git worktree add -- structurally guaranteed fresh.",
+          "fix_hint": "No edit owed -- freshness is guaranteed by prompt order."
+        }
       ]
     },
     {
       "prompt_index": 2,
       "prompt_lead": "Confirm worktree state:",
-      "verdict": "TODO",
+      "verdict": "PASS",
       "load_bearing": true,
       "risks_fired": [
-        {"pattern_id": "preamble-before-action", "confidence": "low", "evidence": "Four bulleted check-items (directory, branch, CLAUDE.md/CLAUDE.local.md load state, git ls-files visibility) with no in-fence 'No preamble' suppressor; the closing 'Report the four lines back. Then wait.' is a strong directive anchor that keeps the risk low rather than forcing it.", "fix_hint": "Optional in-fence 'No preamble.' would fully suppress; not required given the directive close already does most of the work."}
+        {
+          "pattern_id": "preamble-before-action",
+          "confidence": "low",
+          "carve_out": "check_prompts.md-17-narrowed-non-plan-mode-2026-09-03",
+          "evidence": "Not a plan-mode fence; #17's 2026-09-03 narrowing applies. Closing 'Report the four lines back. Then wait.' is a strong directive anchor regardless.",
+          "fix_hint": "No edit owed."
+        }
       ]
     }
   ],
-  "blocking_findings_count": 0,
-  "todos_count": 2,
-  "rules_evaluated": {
-    "note": "Completeness ledger scoped to the 15-pattern behavioral catalog (simulation-behavior.md) — the operative rubric this judge class grades against per curriculum/evals/judges/prompt-behavior.md. check_prompts.md and check_pedagogy.md are consulted as 'adjacent rules' context (carve-out sourcing, fresh-install-context carve-out) rather than enumerated rule-by-rule, per the template's own compendium framing ('COMPENDIUMS (read on demand for adjacent rules)').",
-    "prompt_1": [
-      {"pattern_id": "file-preservation-gap", "status": "not-fired", "reason": "cp ./CLAUDE.local.md writes into a brand-new worktree directory just created by git worktree add — fresh-install-context carve-out (compounded/2026-05-24-prompts-overwrite-anxiety-fresh-install-carveout.md) applies; nothing pre-existing to preserve-vs-replace."},
-      {"pattern_id": "reading-burden", "status": "not-applicable", "reason": "no manual proofreading of Claude's output asked; report-back is a factual confirmation (path + file list), not error-catching."},
-      {"pattern_id": "niceness-tax", "status": "not-applicable", "reason": "no evaluative/self-critique content for RLHF softening to mask."},
-      {"pattern_id": "question-dump", "status": "not-applicable", "reason": "no sequence of questions posed to the student."},
-      {"pattern_id": "overwrite-anxiety", "status": "fired", "confidence": "low"},
-      {"pattern_id": "preamble-before-action", "status": "fired", "confidence": "low"},
-      {"pattern_id": "append-vs-integrate", "status": "not-applicable", "reason": "no existing document/section is being added to."},
-      {"pattern_id": "plan-mode-preamble-bloat", "status": "not-applicable", "reason": "no permission-mode: plan frontmatter, no plan-mode language."},
-      {"pattern_id": "citation-gap-asymmetry", "status": "not-applicable", "reason": "no factual/citation claims requested."},
-      {"pattern_id": "self-report-inflation", "status": "not-fired", "reason": "'Tell me the absolute path... and which files copied across' asks for objectively checkable facts, not a self-graded quality summary."},
-      {"pattern_id": "default-acceptance", "status": "fired", "confidence": "low"},
-      {"pattern_id": "plan-mode-approval-inflation", "status": "not-applicable", "reason": "no plan-mode plan produced."},
-      {"pattern_id": "source-type-blindness", "status": "not-applicable", "reason": "no source ingestion/classification task."},
-      {"pattern_id": "citation-cargo-cult", "status": "not-applicable", "reason": "no citations requested."},
-      {"pattern_id": "self-audit-charity", "status": "not-applicable", "reason": "no self-critique of own work requested."}
-    ],
-    "prompt_2": [
-      {"pattern_id": "file-preservation-gap", "status": "not-applicable", "reason": "no file write in this prompt — pure read/report of environment state."},
-      {"pattern_id": "reading-burden", "status": "not-applicable", "reason": "student reads the four-line report for orientation/hand-off, not to manually catch Claude's errors."},
-      {"pattern_id": "niceness-tax", "status": "not-applicable", "reason": "purely factual checklist (cwd, branch, file-load status, ls-files); no evaluative content to soften."},
-      {"pattern_id": "question-dump", "status": "not-applicable", "reason": "the four bullets are items Claude checks about its own environment and reports back, not a sequence of questions posed to the student."},
-      {"pattern_id": "overwrite-anxiety", "status": "not-applicable", "reason": "no file write."},
-      {"pattern_id": "preamble-before-action", "status": "fired", "confidence": "low"},
-      {"pattern_id": "append-vs-integrate", "status": "not-applicable", "reason": "no document editing."},
-      {"pattern_id": "plan-mode-preamble-bloat", "status": "not-applicable", "reason": "no plan mode invoked."},
-      {"pattern_id": "citation-gap-asymmetry", "status": "not-applicable", "reason": "no citations."},
-      {"pattern_id": "self-report-inflation", "status": "not-fired", "reason": "all four report items are objectively checkable (directory, branch, file-load state, git ls-files), not a self-graded claim of work quality."},
-      {"pattern_id": "default-acceptance", "status": "not-applicable", "reason": "no defaults offered in this prompt."},
-      {"pattern_id": "plan-mode-approval-inflation", "status": "not-applicable", "reason": "no plan-mode plan produced."},
-      {"pattern_id": "source-type-blindness", "status": "not-applicable", "reason": "no source ingestion."},
-      {"pattern_id": "citation-cargo-cult", "status": "not-applicable", "reason": "no citations."},
-      {"pattern_id": "self-audit-charity", "status": "not-applicable", "reason": "no self-critique asked."}
-    ]
-  },
-  "summary": "PASS at top level. Both prompt SHAs and the file-level content_sha mismatched the prior cache (dated 2026-07-10) — full regeneration ran against the current on-disk exercise. Prompt 1 (fork the sibling worktree) fires three low-confidence risks: preamble-before-action (unmitigated but low-stakes), default-acceptance (neutralised by the pre-fence body callout naming the base-branch decision), and overwrite-anxiety (neutralised — the copy target is a worktree the same prompt just created, so no prior-file collision is structurally possible). Prompt 2 (confirm worktree state) fires only low-confidence preamble-before-action, damped by the directive close 'Report the four lines back. Then wait.' No high or med-confidence risk fires on either prompt, so blocking_findings_count is 0. Per the verdict rules ('TODO if... confidence: low regardless'), each prompt still routes to a per-prompt TODO (2 total) even though every fired risk is low-confidence or carve-out-mitigated — expected non-blocking outcome, not a defect needing action before ship. Refreshed sim-cache written to curriculum/evals/sim-cache/ae101--exercise--open-the-side-quest.behavior.json."
+  "rules_evaluated": [
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "1",
+      "rule_lead": "No placeholders inside fences.",
+      "verdict": "PASS",
+      "evidence": "Prompt 1 carries `<repo-name>` in three places inside the fence with no fence-internal resolution instruction. This exact shape (angle-bracket `<repo-name>` in this same prompt) was already litigated as a technical-judge false positive against rule 1's literal wording (compounded/2026-05-03-platform-technical-judge-fp-square-vs-angle-and-scrollback-chain.md: 'That suggestion has been checked before. See how M4 works really' -- Antti). Claude Code sessions know their own cwd and reliably substitute the folder-basename convention; no square-bracket-style unresolved placeholder is present.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "2",
+      "rule_lead": "Every prompt block: one-sentence action lead-in.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Static prompt mechanics ('action lead-in') are named explicitly in this class's own template as the technical judge's territory, not behavior's probabilistic lens.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "3",
+      "rule_lead": "Canonical shape — lead-in, label with destination, blank line, fence.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Static rendering-shape rule (technical judge's territory); registry-sourced markers already reconstruct canonical shape mechanically per rule 31.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "4",
+      "rule_lead": "Installed Skills invoke by name, never path.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "No skill invocation appears anywhere in this file (test-strategy skill is authored in the sibling exercise, not here).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "5",
+      "rule_lead": "Chain by back-reference + deterministic path, never invented alias.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Prompt 2 does not chain on a file prompt 1 wrote -- it chains on the student physically opening a new session inside the worktree's cwd, which is the referenced artifact by construction (covered by §40's session-boundary check, not §5's file back-reference).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "6",
+      "rule_lead": "Chained-prompt isolation — don't leak downstream pipeline.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Not a multi-phase P2→P3→P4 pipeline with a downstream grading/deciding stage; two independent setup prompts only.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "7",
+      "rule_lead": "No session-resets mid-phase.",
+      "verdict": "PASS",
+      "evidence": "Neither fence offers `/clear` or 'start a new session'. The two NEW sessions in this file (m3-security, m3-quality) are the exercise's own deliberate infrastructure, opened via Session widgets outside the fences, not a mid-phase reset that would sever a scrollback dependency.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "8",
+      "rule_lead": "Multi-sample methods need structural enforcement.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "'Sampling shape' is named in this class's template as the technical judge's territory; no self-consistency/majority-vote/ensemble method is present anyway.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "9",
+      "rule_lead": "Markdown shout (`**bold**`, `*italic*`) inside fenced prompts = dead weight in Claude Code.",
+      "verdict": "PASS",
+      "evidence": "Direct read of both fenced bodies (expand-md.js output): no `**` or `*` markdown appears inside either fence -- only backticks for paths/commands and plain `-` bullets in prompt 2.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "10",
+      "rule_lead": "Runtime-fork prompts: paired divs, shared chip.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "AE101 is Code-only; rule explicitly states 'AE101 Code-only, ignores pattern.'",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "11",
+      "rule_lead": "Runtime-mechanical scaffolding asymmetry — MORE in less-fluent fork, not less.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Cowork/Agents-101-specific dual-runtime rule; AE101 has no Cowork fork.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "12",
+      "rule_lead": "Append-vs-integrate — name integration mode on regeneration with new context source.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "No regeneration-with-new-context-source scenario present; the cp step is a one-time copy of a personal file, not a rewrite-through-new-context task.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "13",
+      "rule_lead": "Citation discipline — extend cite-or-flag scope + quote supporting sentence.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "No citation or fact-sourcing task in either prompt.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "14",
+      "rule_lead": "Niceness tax — name the edge or pin the line on regeneration.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "No regeneration-with-deliberate-edge scenario present.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "15",
+      "rule_lead": "Question-dump default — `in turn` too soft; two legal shapes.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Prompt 2's four bullets are items Claude checks about its own environment and reports back in one message by design ('Report the four lines back') -- not a sequence of questions posed TO the student that risk batch-dumping.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "16",
+      "rule_lead": "Overwrite anxiety — name overwrite default on regeneration.",
+      "verdict": "PASS",
+      "evidence": "'cp ./CLAUDE.local.md ../<repo-name>-m3-quality/ (if it exists)' writes into a worktree the SAME fence created one line earlier via `git worktree add` -- the target is structurally guaranteed empty, stronger than the named fresh-install-context carve-out (compounded/2026-05-24-prompts-overwrite-anxiety-fresh-install-carveout.md).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "17",
+      "rule_lead": "Preamble before action — design around it.",
+      "verdict": "PASS",
+      "evidence": "The rule's 2026-09-03 narrowing (Antti) retires the structural trigger outside plan-mode: 'Everywhere else §17 is advisory: fix the file where a run actually showed preamble eating the read; never sweep the corpus counting sub-steps.' Neither prompt declares `permission-mode: plan`, and no run evidence exists showing preamble ate a read on either fence here.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "18",
+      "rule_lead": "Self-critique register, not defense, when Claude interrogates own work.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Neither prompt asks Claude to look at its own prior work.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "19",
+      "rule_lead": "Minimal hand-off + Claude self-augments for send-off prompts.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Not a long-running send-off (M4-walk-away / M5-packaged-rerun shape) -- this is a ~5-minute synchronous setup; maintainer block confirms 'Atomic -- no phase markers.'",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "20",
+      "rule_lead": "Grill before save — collaborative quality at artefact assembly.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Neither prompt assembles a downstream-dependent artefact (no plan.md/SKILL.md/verifier authored here).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "21",
+      "rule_lead": "Tell me what you wrote, not show me what you'll write.",
+      "verdict": "PASS",
+      "evidence": "Prompt 1 closes with 'Tell me the absolute path to the new worktree directory and which files copied across.' -- post-action report, not pre-confirm.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "22",
+      "rule_lead": "Prompt-body edits require maintainer approval — registry files AND inline blocks.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Process/governance rule about the editing workflow; this is a read-only judging pass proposing no prompt-body edit.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "23",
+      "rule_lead": "Artifact destinations are explicit subpaths, never naked filenames (Agents 101-specific).",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Rule text is explicitly scoped to Agents 101's training-imposed subfolder tree; AE101 uses the student's own existing repo, out of scope by the rule's own text.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "24",
+      "rule_lead": "Don't restate session CWD inside prompt body.",
+      "verdict": "PASS",
+      "evidence": "Neither fence restates an absolute path or `cd`s unnecessarily; relative paths (`../<repo-name>-m3-quality`, `./CLAUDE.local.md`) are used throughout. Where a path IS named explicitly (the new worktree's location), the rule's own carve-out applies: 'when prompt's intent IS to change directory... name path explicitly because that IS the action.'",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "25",
+      "rule_lead": "`subagent` allowed in prompt blocks; explain why after prompt.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Neither prompt uses the word `subagent`.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "26",
+      "rule_lead": "Maintainer-approval edits — ONE-AT-A-TIME, PRIORITY-ORDERED, FOUR-FIELD cards.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Process/governance rule for how the orchestrator surfaces edits; not a property of the shipped file, and this judge is read-only.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "27",
+      "rule_lead": "Name consumer at write time — `Save it as <path>` requires downstream reader.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Neither prompt contains a 'Save it as <path>' instruction -- worktree creation is a directory operation, and the CLAUDE.local.md copy is a personal-file carry-over, not a chat-output-to-disk write.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "28",
+      "rule_lead": "Strong-bold prompt label is exactly `**Prompt**` — custom labels break renderer.",
+      "verdict": "PASS",
+      "evidence": "Both prompts are registry-sourced via `{{prompt:<key>}}` markers (verified against curriculum/prompts/ae101-m3-fork-quality-side.md and ae101-m3-quality-side-orient.md); `expandPrompts` reconstructs the canonical `**Prompt** *(Claude Code)*` label mechanically per rule 31, so label shape is not author-controlled here.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "29",
+      "rule_lead": "Normal work request before orchestration.",
+      "verdict": "PASS",
+      "evidence": "Both prompts read as genuine work requests an engineer would actually send ('Fork a sibling worktree...', 'Confirm worktree state...') -- neither manufactures an interview protocol around a choice already made in body prose.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "30",
+      "rule_lead": "Live-test corrections preserve operator workflow.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Not a live-test-correction scenario; no maintainer-observed runtime report is being incorporated here.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "31",
+      "rule_lead": "Prompts live in registry; module/exercise/lecture files reference by marker.",
+      "verdict": "PASS",
+      "evidence": "Verified directly: `curriculum/prompts/ae101-m3-fork-quality-side.md` and `curriculum/prompts/ae101-m3-quality-side-orient.md` both exist with correct frontmatter (key/dest/runtime/origin/requires/produces), and the exercise file references them only via `{{prompt:<key>}}` markers on their own line after a lead-in sentence, per canonical shape.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "32",
+      "rule_lead": "Module names in prompt prose are fine — they ground the session.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Neither fence names a module number or curriculum event label; nothing to judge either direction.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "33",
+      "rule_lead": "Git-output greps asserting exact-N need multi-result fallback.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Neither fence text-greps git output asserting a singular match; `git worktree add` creates, `git ls-files | head` previews, neither searches/counts.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "34",
+      "rule_lead": "Disambiguation, anchors, and decision logic that bind Claude live INSIDE prompt fence.",
+      "verdict": "PASS",
+      "evidence": "Applying the rule's own diagnostic (read the fence in isolation against realistic student machine state): prompt 1 runs from the repo root the student has occupied continuously since M1/M2 (AE101's established single-repo, root-cwd convention — see check_prompts.md §45's own framing that AE101 has no training-imposed subfolder structure to navigate away from), so `<repo-name>` and `../<repo-name>-m3-quality` resolve correctly against that realistic state without a nested-cwd ambiguity. Prompt 2 is fully self-contained (four checkable environment facts, no external reference).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "35",
+      "rule_lead": "Repeated Q&A → premature re-edits. Separate iteration from persistence.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Neither prompt sets up a multi-turn dialog that can affect a persisted artifact file.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "36",
+      "rule_lead": "Wide prompts split by logical move — paragraph breaks = cheapest scan-affordance.",
+      "verdict": "PASS",
+      "evidence": "Prompt 1 splits its four moves (fork command / copy command / no-sync caveat / report-back ask) into four separate paragraphs. Prompt 2 splits into a bulleted checklist plus a one-sentence close. Read-aloud diagnostic: each natural breath lands at a paragraph or bullet break, not mid-clause.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "37",
+      "rule_lead": "Orient saved rule by where it FIRES, not surface activity producing it.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "No 'save this rule to CLAUDE.local.md/CLAUDE.md' instruction appears in either prompt.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "38",
+      "rule_lead": "Body lead-in mirrors prompt's opening phrasing.",
+      "verdict": "PASS",
+      "evidence": "Prompt 1 lead-in 'Ask Claude to fork a sibling worktree and copy your personal rules across' mirrors the fence's opening 'Fork a sibling worktree' (verb 'fork' + noun 'sibling worktree'). Prompt 2 lead-in 'Ask Claude to confirm the worktree state, then wait' mirrors the fence's opening 'Confirm worktree state:' exactly.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "39",
+      "rule_lead": "Declare `permission-mode:` when paste requires specific Claude Code mode.",
+      "verdict": "PASS",
+      "evidence": "Neither registry frontmatter declares `permission-mode:`, and correctly so -- neither prompt's correct behavior depends on plan vs default mode; both are ordinary default-mode actions.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "40",
+      "rule_lead": "Verify session boundary before deciding prompt's context-carrying.",
+      "verdict": "PASS",
+      "evidence": "Prompt 2 runs in a genuinely cold, fresh session (new window, new worktree cwd per body: 'Start a second Claude Code session in another window, in the sibling worktree directory Claude just named') and is written fully self-contained -- no back-reference to the main lane's scrollback or to any curriculum-coined label (§40b: no definite-article phrase like 'the second-pass read' appears). §40a's concurrent-worktree corollary also holds: prompt 2 targets only the current worktree's own state, never the sibling window's artifacts.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "41",
+      "rule_lead": "Artifact-vs-STOP tail ordering — last imperative wins.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Neither prompt pairs a load-bearing artifact-write instruction with a trailing STOP/wait clause that could block it -- prompt 1's report-back ask is the last imperative with no write after it, and prompt 2 writes nothing at all.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "42",
+      "rule_lead": "Headless-runner discipline — tail every prompt with no-AUQ guard.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "This is an interactive classroom/self-study exercise with the student present at both windows ('Set the two windows side by side... Arrange them so neither disappears behind the other'), not a headless/tmux-runner/CI context.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "43",
+      "rule_lead": "Long-running prompts stream progress — never go silent.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Neither prompt runs more than a couple of seconds (git worktree add, cp, four environment checks) -- not a long-running-prompt shape.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "44",
+      "rule_lead": "A leading-looking line can be a forcing function; prefer the simpler prompt.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "No leading-witness line or over-engineered decision logic is present in either fence to evaluate in either direction; both prompts are already plain, minimal asks.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "45",
+      "rule_lead": "Prompt paths match Builder scope.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Rule body is scoped entirely to Agents 101's training-imposed directory tree (prework/M1 bare filenames vs M2+ module-N/ convention); AE101 has no such structure per curriculum/CLAUDE.md.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "46",
+      "rule_lead": "Output shape — trust Claude's defaults, don't pad.",
+      "verdict": "PASS",
+      "evidence": "Neither prompt appends a trailing shape spec (no forced headers/sections); prompt 1 ends with a plain report ask, prompt 2's four-line report shape is teaching-moment-load-bearing (a verification checklist), which the rule explicitly permits ('Specify shape ONLY where the teaching moment depends on it').",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "47",
+      "rule_lead": "\"Add X and regenerate\" is a trap.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "No voice/stance-shaping 'add X and regenerate' scenario present.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "48",
+      "rule_lead": "Vary closings deliberately.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "This is a plumbing/setup exercise, not a feedback-closing exercise choosing among cold-critic/pair-exchange/group-discussion/solo-retro/show-your-work mechanics.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": "49",
+      "rule_lead": "A take-home prompt asks for one bounded build.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Neither prompt is a take-home/handoff prompt saved and run later -- both execute synchronously in the room.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "1",
+      "rule_lead": "Walk-away test (M2+).",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Out of behavior lens (module/pedagogy-architecture rule; the template scopes check_pedagogy.md to self-report-inflation/default-acceptance/plan-mode-approval-inflation/source-type-blindness/self-audit-charity plus prompt-shape rules §16/§42/§48/§50/§51, all separately evaluated). No walk-away moment is claimed by this quick synchronous setup regardless.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "2",
+      "rule_lead": "50% magic rule (M3–M8).",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Out of behavior lens; also a module/arc-level dosage metric, not scoreable against one 5-minute setup exercise.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "3",
+      "rule_lead": "Trust the agentic design — no human backstops.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Out of behavior lens per template scope.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "4",
+      "rule_lead": "Quality ladder.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Out of behavior lens; module/arc-level rubric, not per-file.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "6",
+      "rule_lead": "One exercise = one bounded activity.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Out of behavior lens per template scope (pedagogy/story judge's territory).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "7",
+      "rule_lead": "Modules composable across variants.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Out of behavior lens per template scope.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "8",
+      "rule_lead": "Three-level completeness.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Out of behavior lens per template scope.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "9",
+      "rule_lead": "Pattern-recognition LOs need n≥2 instances with contrast.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Out of behavior lens per template scope.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "9b",
+      "rule_lead": "Progression-with-variations is the spine.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Out of behavior lens per template scope.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "10",
+      "rule_lead": "Student agency — adults decide.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Out of behavior lens per template scope.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "11",
+      "rule_lead": "Delegation — student brings, Claude screens.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Out of behavior lens per template scope.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "12",
+      "rule_lead": "Split mega-exercise when phases = distinct skills + distinct artifacts.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Out of behavior lens per template scope.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "13",
+      "rule_lead": "Artifact-realism check.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Out of behavior lens per template scope.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "14",
+      "rule_lead": "Teach principle + technique — default.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Out of behavior lens per template scope.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "15",
+      "rule_lead": "Auto-fire sim+eval after significant rewrite.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Out of behavior lens; process rule about the authoring workflow, not shipped content.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "16",
+      "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
+      "verdict": "PASS",
+      "evidence": "Both forcing functions (fork+copy the worktree; confirm state then wait) live correctly in the two prompt fences, not scripted into body prose. Body prose carries no bare count-scripts (no 'two rounds max'-style imperative); the one figure-shaped line, 'Arrange them so neither disappears behind the other,' is a spatial-setup instruction, not a count-script.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "17",
+      "rule_lead": "Corporate infra = nice-to-have, never forcing function.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Out of behavior lens per template scope; also no corporate/external infra dependency present -- git worktree + local filesystem only.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "18",
+      "rule_lead": "Personal-first, team promotion via human conversation.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Out of behavior lens per template scope.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "19",
+      "rule_lead": "Measure silent failure, not just friction.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Out of behavior lens; cohort-evaluation methodology rule, not a content-authoring check.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "20",
+      "rule_lead": "Don't pre-set categories before experiment runs.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Out of behavior lens; research-design methodology rule.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "21",
+      "rule_lead": "Verification layers sample DIFFERENT error distributions — not belt-and-braces.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Out of behavior lens; meta-rule about the audit system's own composition.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "21b",
+      "rule_lead": "Cheap-before-expensive verification ordering.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Out of behavior lens; meta-rule about audit sequencing.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "22",
+      "rule_lead": "Rule in memory without forcing function = worse than no rule.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Out of behavior lens; meta-rule about the compendium system.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "23",
+      "rule_lead": "Short skeptical pushback on \"done\" = re-verify trigger.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Out of behavior lens; general session-behavior discipline, no such moment is scoped in this exercise.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "24",
+      "rule_lead": "Cohort execution is trainer-paced + concurrent, not sequential.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Out of behavior lens; delivery-timing-methodology rule.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "25",
+      "rule_lead": "Host-skill optional; maintainer blocks trainer-only.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Out of behavior lens; also no host-skill (agentic-nerd/Teacher Claude) referenced in this file.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "26",
+      "rule_lead": "Reflection beats: in-chat over file-write.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Out of behavior lens; also no reflective file-write beat present.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "27",
+      "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Out of behavior lens per template scope (pedagogy/story judge's territory).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "29",
+      "rule_lead": "Eval = fixed yardstick; thing measured learns.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Out of behavior lens; meta-rule about eval-scoring methodology.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "30",
+      "rule_lead": "Reading burden for verification = banned. Claude audits Claude.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Out of behavior lens per template scope.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "31",
+      "rule_lead": "Self-report + self-audit charity — verify at artifact, over-flag or fresh-session for critique.",
+      "verdict": "PASS",
+      "evidence": "Prompt 1 asks for objectively-checkable facts ('the absolute path... and which files copied across'), not a qualitative self-grade of work done. Prompt 2 asks for four objectively-checkable environment facts (cwd, branch, load state, visibility), not a self-critique of own output. Neither self-report-inflation nor self-audit-charity's triggering shape (Claude grading or critiquing its own qualitative work) is present.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "32",
+      "rule_lead": "Offered structures need forced-engagement mechanic.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "The offered default ('Clean main is the safe default... switch to it before you fork') is a low-stakes infrastructure convenience default, not an articulation-goal exercise where verbatim-copying defeats a customization learning purpose; no plan-mode plan is produced either.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "33",
+      "rule_lead": "Source-type blindness on ingestion.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "No source-ingestion/classification task present in either prompt.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "34",
+      "rule_lead": "Task selection drives outcome → name floor AND ceiling.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Out of behavior lens; also no task-selection prompt present ('pick a task from your backlog').",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "34b",
+      "rule_lead": "Maintainer-block hedge naming section's own failure mode = cut-signal, not warning.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Out of behavior lens per template scope.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "35",
+      "rule_lead": "Audience tier determines authoring substrate.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Out of behavior lens per template scope.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "36",
+      "rule_lead": "Verification machinery needs smoke-test before trust.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Out of behavior lens; also no new verification machinery is built in this file.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "37",
+      "rule_lead": "Context-loading tiers as staged progression.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Out of behavior lens per template scope (pedagogy/story judge's territory).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "39",
+      "rule_lead": "Removals are strategic — ask before cutting.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Out of behavior lens; generation-time authoring rule, not applicable to auditing already-shipped content.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "41",
+      "rule_lead": "Symmetric visible-mechanics > runtime fork when dual-runtime constraints break agentic move.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "AE101 is Code-only; no dual-runtime fork scenario.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "42",
+      "rule_lead": "Load-bearing platform feature = no fallback. Gate or redesign.",
+      "verdict": "PASS",
+      "evidence": "Worktrees + user-scope skill discovery are load-bearing for this file's design with no inappropriate sequential/single-session fallback offered anywhere in body ('if your environment doesn't support X, just do Y instead' does not appear). The dependency is tracked via the file's own backing block: cc-skills-user-scope is named explicitly as 'the load-bearing platform claim of the exercise' with a dated re-verification loop (checked:2026-05-15, due:cohort), which is the rule's option (a)/(b) path, not the dilution path (c).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "43",
+      "rule_lead": "Eval architecture — partition by evidence source, not criterion count.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Out of behavior lens; meta-rule about the judge system's own architecture.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "44",
+      "rule_lead": "Plug points + UX.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Plug-points content-completeness sits with pedagogy/story judge's territory (out of behavior lens); the UX prompt-to-prompt walk-through half overlaps check_prompts.md §34, already evaluated there.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "45",
+      "rule_lead": "Per-exercise leap test — 3 observable Monday outcomes.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Out of behavior lens per template scope (story/pedagogy judge's territory).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "47",
+      "rule_lead": "Per-phase failure mode + escape hatch.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Out of behavior lens per template scope (story/pedagogy judge's territory).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "48",
+      "rule_lead": "Heavy fan-out prompts get body recovery callout.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Neither prompt fans out -- no N>2 parallel subagents, polling loops, or multi-file rewrites are present.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "49",
+      "rule_lead": "Save belongs with authoring, not loading.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "No create-then-use artefact pairing appears in this file; the test-strategy skill's authoring+save happens in the sibling exercise.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "50",
+      "rule_lead": "Convenience-driven prompts with known shape-bias → body acknowledgment callout.",
+      "verdict": "PASS",
+      "evidence": "No unacknowledged shape-bias risk remains after §16/§31's analysis: overwrite-vs-append ambiguity is structurally absent (fresh worktree), and no self-charity risk exists (both reports are objectively-checkable facts) -- so no acknowledgment callout is owed for a risk that isn't there.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "51",
+      "rule_lead": "Deliberate-antipattern prompts = class-judge exempt, flagged-by-design.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "No maintainer-block note flags either prompt as an intentional cross-module antipattern demo; not applicable here.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "52",
+      "rule_lead": "Session widget — `**Session** *(verb, \"name\")*` shape; place by learning flow.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Out of behavior lens per template scope (widget-shape/placement is a story/pedagogy concern).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "52b",
+      "rule_lead": "Widgets carry semantics, not just emphasis.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Out of behavior lens per template scope.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "52a",
+      "rule_lead": "Module prose carrying a `**Session**` widget or a `{{prompt:}}` fence is an exercise that has not been extracted.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "This rule targets module-file prose; this file IS the already-extracted exercise file, not a module.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "52c",
+      "rule_lead": "Exercise lead-in trio — three slots, three tenses.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Out of behavior lens per template scope (writing/pedagogy judge's territory).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "52d",
+      "rule_lead": "Finding the point — four moves, learned writing M1's set 2026-08-12.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Out of behavior lens per template scope.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "53",
+      "rule_lead": "Body prose must not supply an answer its prompt asks for — position is not the test.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Out of behavior lens per template scope (writing/pedagogy judge's territory).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "56",
+      "rule_lead": "Engineer-audience audit fixes default to body callout, not forcing function.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Out of behavior lens per template scope.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "57",
+      "rule_lead": "Multi-session (any new mechanic mid-arc) ships as packaging, not new primitive.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Out of behavior lens per template scope; this is exactly the pattern the maintainer block already documents as satisfied ('Packages M3's existing Q+S split into two windows').",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "58",
+      "rule_lead": "`/clear` = tool, not ceremony.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Out of behavior lens; also no `/clear` instruction appears in this file.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "59",
+      "rule_lead": "Inbound links preserve pedagogical beat across reference restructuring.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Out of behavior lens; no reference-page restructuring is at issue here.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "60",
+      "rule_lead": "Scan at the unit the rule names, not convenient larger one.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Out of behavior lens; meta-rule about audit methodology, not shipped content.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "61",
+      "rule_lead": "Verify mechanism before proposing surgery.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Out of behavior lens; no framework/tool-change proposal is being made against this file.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "61a",
+      "rule_lead": "Acting on a flagged item — verify before fixing; its prescribed fix is a hypothesis, not an instruction.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Out of behavior lens; meta-rule about how to act on audit findings, not a property of this file.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "62",
+      "rule_lead": "Callouts next to prompts: steer, don't pre-empt.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Out of behavior lens per template scope; also no failure-mode-naming callout appears next to either prompt to evaluate.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "63",
+      "rule_lead": "Persistent TODO surfaces stale by default — audit before acting.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Out of behavior lens; not a punchlist-item audit.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "64",
+      "rule_lead": "Maintainer blocks point, don't restate. Link architecture doc where they touch delivery.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Out of behavior lens per template scope (writing/pedagogy judge's territory).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "65",
+      "rule_lead": "Cross-module prerequisite rescue: run it late, never fabricate.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Out of behavior lens; also this exercise doesn't load-bear on a prior module's send-off artefact.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "66",
+      "rule_lead": "Three-pass build — finish each pass across ALL modules before starting the next.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "Out of behavior lens; generation-workflow rule, not a shipped-content property.",
+      "fix_hint": null,
+      "blocking": false
+    }
+  ],
+  "todos_count": 0,
+  "blocking_findings_count": 0
 }

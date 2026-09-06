@@ -1,88 +1,1171 @@
 {
-  "body_sha": "0b6ecaf5dfc8f6efa5cc3280456bace96372a623ba2104b6f574b9d8c2e97adc",
   "class": "behavior",
-  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/push-back-on-the-plan.md",
-  "verdict": "REVISE",
   "training": "ae101",
-  "trace_status": "full_regen",
-  "prompts_evaluated": 5,
-  "prompts_findings": [
+  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/push-back-on-the-plan.md",
+  "verdict": "PASS_WITH_TODOS",
+  "body_sha": "02663c19cda284673826c24312bc62e7fca89de4dd55a778b951bbde71988ea2",
+  "shape_hash": "ce3cd395bea5c86d",
+  "rules_evaluated": [
     {
-      "prompt_index": 1,
-      "prompt_lead": "Plan the task I describe below. Explore the files you need to understand the sco",
-      "verdict": "TODO",
-      "load_bearing": true,
-      "risks_fired": [
-        {
-          "pattern_id": "plan-mode-preamble-bloat",
-          "confidence": "low",
-          "evidence": "curriculum/prompts/push-back-on-the-plan-1.md, closing clause: \"Detail over brevity.\" nudges toward a denser plan than a small task needs.",
-          "fix_hint": "Already mitigated: raw lines 39-43 (\"Read the right stuff first\" / \"Scan the plan before you push back\") cap attention on the 2-3 highest-value decisions regardless of plan length (\"That does not make every line equally important\", \"Start with the two or three places where a sharper answer would most change execution\"). No prompt edit owed."
-        }
-      ]
+      "compendium": "check_prompts.md",
+      "rule_index": 1,
+      "rule_lead": "No placeholders inside fences.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "static prompt-mechanics rule; out of behavior-class scope per simulation-behavior.md §Scope (\"No static-rule grading\"); technical judge holds a fresh per-rule verdict for this file (technical.json).",
+      "fix_hint": null,
+      "blocking": false
     },
     {
-      "prompt_index": 2,
-      "prompt_lead": "Do a second-pass read of the current plan. Walk down every unresolved branch of ",
-      "verdict": "TODO",
-      "load_bearing": true,
-      "risks_fired": [
-        {
-          "pattern_id": "default-acceptance",
-          "confidence": "low",
-          "evidence": "curriculum/prompts/push-back-on-the-plan-2.md: \"For each question, recommend an answer\" invites rubber-stamping the recommendation.",
-          "fix_hint": "Already mitigated: raw line 91 (\"Answer the branches that change what 'done' means\", the section immediately after this fence) names the exact recovery move verbatim -- \"reject the recommended answer and give a different one.\" No prompt edit owed."
-        }
-      ]
+      "compendium": "check_prompts.md",
+      "rule_index": 2,
+      "rule_lead": "Every prompt block: one-sentence action lead-in.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "static prompt-mechanics rule; out of behavior-class scope per simulation-behavior.md §Scope (\"No static-rule grading\"); technical judge holds a fresh per-rule verdict for this file (technical.json).",
+      "fix_hint": null,
+      "blocking": false
     },
     {
-      "prompt_index": 3,
-      "prompt_lead": "Switch to AskUserQuestion for the rest of the walk-down. Keep going through the ",
-      "verdict": "TODO",
-      "load_bearing": false,
-      "risks_fired": [
-        {
-          "pattern_id": "default-acceptance",
-          "confidence": "med",
-          "evidence": "curriculum/prompts/push-back-on-the-plan-2-askuserquestion.md: \"with your recommended answer marked\" pre-selects an option in a picker UI, which lowers rubber-stamp friction below prompt 2's free-text form. The reject-the-recommendation instruction (raw line 91) sits after prompt 2's fence, two sections and one callout back from this fence (raw line 99); the body immediately before THIS fence, raw line 97 (\"Switch to a picker if you prefer one\"), does not repeat it.",
-          "fix_hint": "Repeat the reject-the-recommendation reminder in this prompt's own lead-in (raw line 97), since the upstream instruction is not adjacent to this fence. Not blocking -- verdict rule needs 2+ med risks at load_bearing:true to REVISE, and this prompt is an explicit opt-in alternate format (\"if you prefer\"), not new required content -- load_bearing false."
-        }
-      ]
+      "compendium": "check_prompts.md",
+      "rule_index": 3,
+      "rule_lead": "Canonical shape — lead-in, label with destination, blank line, fence.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "static prompt-mechanics rule; out of behavior-class scope per simulation-behavior.md §Scope (\"No static-rule grading\"); technical judge holds a fresh per-rule verdict for this file (technical.json).",
+      "fix_hint": null,
+      "blocking": false
     },
     {
-      "prompt_index": 4,
-      "prompt_lead": "Interview me relentlessly about every aspect of this plan until we reach a share",
-      "verdict": "TODO",
-      "load_bearing": false,
-      "risks_fired": [
-        {
-          "pattern_id": "default-acceptance",
-          "confidence": "low",
-          "evidence": "curriculum/prompts/push-back-on-the-plan-2-original.md: \"For each question, provide your recommended answer\" repeats the recommend-an-answer shape, but the body immediately above the fence (raw line 95, \"Optional:\") frames this as a knowing opt-in escalation for a student who wants the full hour.",
-          "fix_hint": "Optional and self-selecting -- a student who reaches for the full grill-me has already opted into the heavier discipline. No prompt edit owed."
-        }
-      ]
+      "compendium": "check_prompts.md",
+      "rule_index": 4,
+      "rule_lead": "Installed Skills invoke by name, never path.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "static prompt-mechanics rule; out of behavior-class scope per simulation-behavior.md §Scope (\"No static-rule grading\"); technical judge holds a fresh per-rule verdict for this file (technical.json).",
+      "fix_hint": null,
+      "blocking": false
     },
     {
-      "prompt_index": 5,
-      "prompt_lead": "Looking back at this session: what new information and decisions did the second-",
+      "compendium": "check_prompts.md",
+      "rule_index": 5,
+      "rule_lead": "Chain by back-reference + deterministic path, never invented alias.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "static prompt-mechanics rule; out of behavior-class scope per simulation-behavior.md §Scope (\"No static-rule grading\"); technical judge holds a fresh per-rule verdict for this file (technical.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 6,
+      "rule_lead": "Chained-prompt isolation — don't leak downstream pipeline.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "static prompt-mechanics rule; out of behavior-class scope per simulation-behavior.md §Scope (\"No static-rule grading\"); technical judge holds a fresh per-rule verdict for this file (technical.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 7,
+      "rule_lead": "No session-resets mid-phase.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "static prompt-mechanics rule; out of behavior-class scope per simulation-behavior.md §Scope (\"No static-rule grading\"); technical judge holds a fresh per-rule verdict for this file (technical.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 8,
+      "rule_lead": "Multi-sample methods need structural enforcement.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "static prompt-mechanics rule; out of behavior-class scope per simulation-behavior.md §Scope (\"No static-rule grading\"); technical judge holds a fresh per-rule verdict for this file (technical.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 9,
+      "rule_lead": "Markdown shout (`**bold**`, `*italic*`) inside fenced prompts = dead weight in Claude Code.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "static prompt-mechanics rule; out of behavior-class scope per simulation-behavior.md §Scope (\"No static-rule grading\"); technical judge holds a fresh per-rule verdict for this file (technical.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 10,
+      "rule_lead": "Runtime-fork prompts: paired divs, shared chip.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "static prompt-mechanics rule; out of behavior-class scope per simulation-behavior.md §Scope (\"No static-rule grading\"); technical judge holds a fresh per-rule verdict for this file (technical.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 11,
+      "rule_lead": "Runtime-mechanical scaffolding asymmetry — MORE in less-fluent fork, not less.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "static prompt-mechanics rule; out of behavior-class scope per simulation-behavior.md §Scope (\"No static-rule grading\"); technical judge holds a fresh per-rule verdict for this file (technical.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 12,
+      "rule_lead": "Append-vs-integrate — name integration mode on regeneration with new context source.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "static prompt-mechanics rule; out of behavior-class scope per simulation-behavior.md §Scope (\"No static-rule grading\"); technical judge holds a fresh per-rule verdict for this file (technical.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 13,
+      "rule_lead": "Citation discipline — extend cite-or-flag scope + quote supporting sentence.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "static prompt-mechanics rule; out of behavior-class scope per simulation-behavior.md §Scope (\"No static-rule grading\"); technical judge holds a fresh per-rule verdict for this file (technical.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 14,
+      "rule_lead": "Niceness tax — name the edge or pin the line on regeneration.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "none of the 5 prompts regenerates anti-positioning/edge content; no niceness-tax surface present.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 15,
+      "rule_lead": "Question-dump default — `in turn` too soft; two legal shapes.",
+      "verdict": "PASS",
+      "evidence": "All three walk-down variants use option-(a) structural enforcement, not the soft 'in turn': push-back-on-the-plan-2 (raw L57) says 'Ask me three questions at a time... I'll confirm or correct three at a time' (explicit batch-of-3, not a dumped list); push-back-on-the-plan-2-askuserquestion (raw L72) routes pacing through the AskUserQuestion tool itself, 'one option set per branch'; push-back-on-the-plan-2-original (raw L85) says 'Ask the questions one at a time.' — the strictest legal shape. No prompt says 'ask these questions' followed by a bare list.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 16,
+      "rule_lead": "Overwrite anxiety — name overwrite default on regeneration.",
+      "verdict": "PASS",
+      "evidence": "push-back-on-the-plan-2 and push-back-on-the-plan-2-askuserquestion (raw L57, L72) both carry the explicit gate: \"Don't touch the plan file until I say 'lock it in.' When you do edit the plan, use Edit on the changed section, not Write on the whole file.\" This is reinforced by a hard platform guarantee the catalog pattern doesn't usually get: all four plan-mode prompts run inside plan mode (⟦M:plan⟧ chip), and Claude Code's plan mode blocks Edit/Write tool calls until the student exits plan mode by approving — so the risk this pattern names (Claude pauses to ask overwrite-or-new, or writes prematurely) is structurally prevented at the runtime layer, not only by prompt wording.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 17,
+      "rule_lead": "Preamble before action — design around it.",
+      "verdict": "PASS",
+      "evidence": "Dated maintainer accept-note at raw L117 directly adjudicates this rule's current (2026-09-03-narrowed) plan-mode-only trigger against all four plan-mode fences (push-back-on-the-plan-1/2/2-askuserquestion/2-original) and rules the suppressor/primer absent-by-design: the plan-mode wait is booked socially (8-12 min, raw L31), and the Scan slide (raw L33-37) already routes the read to the plan FILE with the chat summary named secondary, which the note calls 'mitigation (b) in substance.' The note also confirms push-back-on-the-plan-1 ends on an open-hook colon, so an in-fence 'No preamble.' suppressor cannot land there without breaking the open-hook shape (rule 1d).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 18,
+      "rule_lead": "Self-critique register, not defense, when Claude interrogates own work.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt here asks Claude to interrogate its own PRIOR artifact with defense-vs-critique framing; the nearest analog (push-back-on-the-plan-3's session comparison) is a factual-delta question, not a self-critique-register scenario — covered under check_pedagogy.md §31 instead.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 19,
+      "rule_lead": "Minimal hand-off + Claude self-augments for send-off prompts.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "static prompt-mechanics rule; out of behavior-class scope per simulation-behavior.md §Scope (\"No static-rule grading\"); technical judge holds a fresh per-rule verdict for this file (technical.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 20,
+      "rule_lead": "Grill before save — collaborative quality at artefact assembly.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "static prompt-mechanics rule; out of behavior-class scope per simulation-behavior.md §Scope (\"No static-rule grading\"); technical judge holds a fresh per-rule verdict for this file (technical.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 21,
+      "rule_lead": "Tell me what you wrote, not show me what you'll write.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "static prompt-mechanics rule; out of behavior-class scope per simulation-behavior.md §Scope (\"No static-rule grading\"); technical judge holds a fresh per-rule verdict for this file (technical.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 22,
+      "rule_lead": "Prompt-body edits require maintainer approval — registry files AND inline blocks.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "static prompt-mechanics rule; out of behavior-class scope per simulation-behavior.md §Scope (\"No static-rule grading\"); technical judge holds a fresh per-rule verdict for this file (technical.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 23,
+      "rule_lead": "Artifact destinations are explicit subpaths, never naked filenames (Agents 101-specific).",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "static prompt-mechanics rule; out of behavior-class scope per simulation-behavior.md §Scope (\"No static-rule grading\"); technical judge holds a fresh per-rule verdict for this file (technical.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 24,
+      "rule_lead": "Don't restate session CWD inside prompt body.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "static prompt-mechanics rule; out of behavior-class scope per simulation-behavior.md §Scope (\"No static-rule grading\"); technical judge holds a fresh per-rule verdict for this file (technical.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 25,
+      "rule_lead": "`subagent` allowed in prompt blocks; explain why after prompt.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "static prompt-mechanics rule; out of behavior-class scope per simulation-behavior.md §Scope (\"No static-rule grading\"); technical judge holds a fresh per-rule verdict for this file (technical.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 26,
+      "rule_lead": "Maintainer-approval edits — ONE-AT-A-TIME, PRIORITY-ORDERED, FOUR-FIELD cards.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "static prompt-mechanics rule; out of behavior-class scope per simulation-behavior.md §Scope (\"No static-rule grading\"); technical judge holds a fresh per-rule verdict for this file (technical.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 27,
+      "rule_lead": "Name consumer at write time — `Save it as <path>` requires downstream reader.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "static prompt-mechanics rule; out of behavior-class scope per simulation-behavior.md §Scope (\"No static-rule grading\"); technical judge holds a fresh per-rule verdict for this file (technical.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 28,
+      "rule_lead": "Strong-bold prompt label is exactly `**Prompt**` — custom labels break renderer.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "static prompt-mechanics rule; out of behavior-class scope per simulation-behavior.md §Scope (\"No static-rule grading\"); technical judge holds a fresh per-rule verdict for this file (technical.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 29,
+      "rule_lead": "Normal work request before orchestration.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "static prompt-mechanics rule; out of behavior-class scope per simulation-behavior.md §Scope (\"No static-rule grading\"); technical judge holds a fresh per-rule verdict for this file (technical.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 30,
+      "rule_lead": "Live-test corrections preserve operator workflow.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "static prompt-mechanics rule; out of behavior-class scope per simulation-behavior.md §Scope (\"No static-rule grading\"); technical judge holds a fresh per-rule verdict for this file (technical.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 31,
+      "rule_lead": "Prompts live in registry; module/exercise/lecture files reference by marker.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "static prompt-mechanics rule; out of behavior-class scope per simulation-behavior.md §Scope (\"No static-rule grading\"); technical judge holds a fresh per-rule verdict for this file (technical.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 32,
+      "rule_lead": "Module names in prompt prose are fine — they ground the session.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "static prompt-mechanics rule; out of behavior-class scope per simulation-behavior.md §Scope (\"No static-rule grading\"); technical judge holds a fresh per-rule verdict for this file (technical.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 33,
+      "rule_lead": "Git-output greps asserting exact-N need multi-result fallback.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "static prompt-mechanics rule; out of behavior-class scope per simulation-behavior.md §Scope (\"No static-rule grading\"); technical judge holds a fresh per-rule verdict for this file (technical.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 34,
+      "rule_lead": "Disambiguation, anchors, and decision logic that bind Claude live INSIDE prompt fence.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "static prompt-mechanics rule; out of behavior-class scope per simulation-behavior.md §Scope (\"No static-rule grading\"); technical judge holds a fresh per-rule verdict for this file (technical.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 35,
+      "rule_lead": "Repeated Q&A → premature re-edits. Separate iteration from persistence.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "static prompt-mechanics rule; out of behavior-class scope per simulation-behavior.md §Scope (\"No static-rule grading\"); technical judge holds a fresh per-rule verdict for this file (technical.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 36,
+      "rule_lead": "Wide prompts split by logical move — paragraph breaks = cheapest scan-affordance.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "static prompt-mechanics rule; out of behavior-class scope per simulation-behavior.md §Scope (\"No static-rule grading\"); technical judge holds a fresh per-rule verdict for this file (technical.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 37,
+      "rule_lead": "Orient saved rule by where it FIRES, not surface activity producing it.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "static prompt-mechanics rule; out of behavior-class scope per simulation-behavior.md §Scope (\"No static-rule grading\"); technical judge holds a fresh per-rule verdict for this file (technical.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 38,
+      "rule_lead": "Body lead-in mirrors prompt's opening phrasing.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "static prompt-mechanics rule; out of behavior-class scope per simulation-behavior.md §Scope (\"No static-rule grading\"); technical judge holds a fresh per-rule verdict for this file (technical.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 39,
+      "rule_lead": "Declare `permission-mode:` when paste requires specific Claude Code mode.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "static prompt-mechanics rule; out of behavior-class scope per simulation-behavior.md §Scope (\"No static-rule grading\"); technical judge holds a fresh per-rule verdict for this file (technical.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 40,
+      "rule_lead": "Verify session boundary before deciding prompt's context-carrying.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "static prompt-mechanics rule; out of behavior-class scope per simulation-behavior.md §Scope (\"No static-rule grading\"); technical judge holds a fresh per-rule verdict for this file (technical.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 41,
+      "rule_lead": "Artifact-vs-STOP tail ordering — last imperative wins.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "static prompt-mechanics rule; out of behavior-class scope per simulation-behavior.md §Scope (\"No static-rule grading\"); technical judge holds a fresh per-rule verdict for this file (technical.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 42,
+      "rule_lead": "Headless-runner discipline — tail every prompt with no-AUQ guard.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "static prompt-mechanics rule; out of behavior-class scope per simulation-behavior.md §Scope (\"No static-rule grading\"); technical judge holds a fresh per-rule verdict for this file (technical.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 43,
+      "rule_lead": "Long-running prompts stream progress — never go silent.",
       "verdict": "REVISE",
-      "load_bearing": true,
-      "risks_fired": [
-        {
-          "pattern_id": "self-report-inflation",
-          "confidence": "high",
-          "evidence": "curriculum/prompts/push-back-on-the-plan-3.md (raw exercise line 113): \"what new information and decisions did the second-pass read surface that my two push-backs didn't?\" is a WHAT question, not a WHETHER question -- it presupposes the second-pass read (Claude's own turn) surfaced something of value, so Claude is structurally pulled to construct an account of its own contribution even when the true answer is 'not much.' This is Claude grading the comparative value of its own second-pass read against the student's manual push-backs -- the textbook self-report-inflation shape. Checked the check_prompts.md evidence-backed-Debrief carve-out's three conditions against the current body and found none satisfied: (1) the prompt itself names no concrete evidence surface (file/quote/scoreboard) to ground the report against; (2) it doesn't require artifact-level reporting; (3) the body immediately after the fence, raw lines 115-119 (\"Compare what each read caught\"), no longer names the charity risk with a pushback move -- its 3 bullets are general theory about what each read catches (\"branches you didn't notice\", \"Plan-mode approval inflation is the thing this pairing defeats\"), none instructing the student to check Claude's specific P5 answer against the plan file or their own P3 messages. Verified this is a real regression, not always-been-so: `git show 96b3554:curriculum/exercises/push-back-on-the-plan.md | grep -n \"quote one thing\"` -> line 119, \"If the second read looks like it did all the work, quote one thing your push-back caught that it would have missed.\" `grep -c \"quote one thing\" curriculum/exercises/push-back-on-the-plan.md` (current file) -> 0. `git log -p -- curriculum/exercises/push-back-on-the-plan.md | grep -n \"quote one thing\"` shows the bullet present through three earlier revisions then removed by commit 7f1b192c (2026-08-14, \"M2's line read: the lecture stops promising a file the exercise no longer makes\") with no replacement instruction. Read the full current maintainer block (raw lines 121-147): three notes discuss that same commit's header rename (Stop, then surface the patterns) and other edits, but none documents or defends dropping the quote-evidence bullet -- no accept-note covers this specific cut, so check_pedagogy.md §61a's deliberate-roughness check does not clear it. The cut also removed the one place in the file where the coined term two bullets below (\"Plan-mode approval inflation ... structured plans get rubber-stamped because they look like decisions\") was practiced rather than just stated -- the P5 recap itself is now unguarded against the exact rubber-stamping the exercise names. Per the carve-out's own text: \"Block only when Claude is asked to grade its own work without evidence, quotes, or recovery\" -- that is the current state.",
-          "fix_hint": "Restore a verify-at-evidence instruction after the P5 fence, e.g. reinstate (or reword) the deleted 'quote one thing your push-back caught that it would have missed' bullet, or point the student back to their own P3 messages / the plan file before taking Claude's P5 account at face value. Author reconciles wording; this judge only names the gap. Student-facing body text under a decision Antti has not (yet) re-made on this specific line -- card it per root CLAUDE.md Approval gate rather than auto-applying."
-        }
-      ]
+      "evidence": "The maintainer's own Decision-points log (raw L197) documents a real single-turn overrun that is exactly this pattern's trigger: \"A single Q-and-A turn can eat 10+ min when the codebase-read fallback fires (2026-05-15 dry-run: 13m15s + 37.7K tokens on one turn).\" All three walk-down prompts (push-back-on-the-plan-2, -2-askuserquestion, -2-original, raw L57/L72/L85) tell Claude to read the codebase instead of asking when it can (\"If a question can be answered by reading the codebase, read the codebase instead of asking me\"), which is precisely the fallback that produced the logged 13-minute silent turn. The exercise's overall Q&A IS interactive, but that doesn't cover a single fallback-triggered turn running 10+ minutes with nothing shown — the student is attending (not a walk-away-by-design case, so §43's carve-out doesn't apply), and none of the three fences carries an in-fence progress-narration instruction. The adjacent 'If it feels slow, ask why' callout (raw L59) is the reactive/recovery half (check_pedagogy.md §48's territory) and doesn't substitute for the proactive streaming habit this rule asks for. Note: the sibling technical-class instance for this file carries a stale carried-forward N/A on this exact rule (reasoning: 'not a silent multi-minute unattended run') that does not engage with this dry-run evidence; flagged in this instance's top-level `notes`.",
+      "fix_hint": "Add a light in-fence clause to push-back-on-the-plan-2 (and -2-original) — e.g. 'if a codebase read is taking a while, say what you've checked so far before asking your three questions' — pairing the existing reactive 'ask why it's slow' callout with a proactive streaming habit.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 44,
+      "rule_lead": "A leading-looking line can be a forcing function; prefer the simpler prompt.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "static prompt-mechanics rule; out of behavior-class scope per simulation-behavior.md §Scope (\"No static-rule grading\"); technical judge holds a fresh per-rule verdict for this file (technical.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 45,
+      "rule_lead": "Prompt paths match Builder scope.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "static prompt-mechanics rule; out of behavior-class scope per simulation-behavior.md §Scope (\"No static-rule grading\"); technical judge holds a fresh per-rule verdict for this file (technical.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 46,
+      "rule_lead": "Output shape — trust Claude's defaults, don't pad.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "static prompt-mechanics rule; out of behavior-class scope per simulation-behavior.md §Scope (\"No static-rule grading\"); technical judge holds a fresh per-rule verdict for this file (technical.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 47,
+      "rule_lead": "\"Add X and regenerate\" is a trap.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "static prompt-mechanics rule; out of behavior-class scope per simulation-behavior.md §Scope (\"No static-rule grading\"); technical judge holds a fresh per-rule verdict for this file (technical.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 48,
+      "rule_lead": "Vary closings deliberately.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "static prompt-mechanics rule; out of behavior-class scope per simulation-behavior.md §Scope (\"No static-rule grading\"); technical judge holds a fresh per-rule verdict for this file (technical.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 49,
+      "rule_lead": "A take-home prompt asks for one bounded build.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "static prompt-mechanics rule; out of behavior-class scope per simulation-behavior.md §Scope (\"No static-rule grading\"); technical judge holds a fresh per-rule verdict for this file (technical.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 1,
+      "rule_lead": "Walk-away test (M2+).",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "design-correctness rule, not a probabilistic-response/behavioral-risk concern; pedagogy judge holds full fresh coverage of this rule for this file (pedagogy.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 2,
+      "rule_lead": "50% magic rule (M3–M8).",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "design-correctness rule, not a probabilistic-response/behavioral-risk concern; pedagogy judge holds full fresh coverage of this rule for this file (pedagogy.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 3,
+      "rule_lead": "Trust the agentic design — no human backstops.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "design-correctness rule, not a probabilistic-response/behavioral-risk concern; pedagogy judge holds full fresh coverage of this rule for this file (pedagogy.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 4,
+      "rule_lead": "Quality ladder.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "design-correctness rule, not a probabilistic-response/behavioral-risk concern; pedagogy judge holds full fresh coverage of this rule for this file (pedagogy.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 6,
+      "rule_lead": "One exercise = one bounded activity.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "design-correctness rule, not a probabilistic-response/behavioral-risk concern; pedagogy judge holds full fresh coverage of this rule for this file (pedagogy.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 7,
+      "rule_lead": "Modules composable across variants.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "design-correctness rule, not a probabilistic-response/behavioral-risk concern; pedagogy judge holds full fresh coverage of this rule for this file (pedagogy.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 8,
+      "rule_lead": "Three-level completeness.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "design-correctness rule, not a probabilistic-response/behavioral-risk concern; pedagogy judge holds full fresh coverage of this rule for this file (pedagogy.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 9,
+      "rule_lead": "Pattern-recognition LOs need n≥2 instances with contrast.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "design-correctness rule, not a probabilistic-response/behavioral-risk concern; pedagogy judge holds full fresh coverage of this rule for this file (pedagogy.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "9b",
+      "rule_lead": "Progression-with-variations is the spine.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "design-correctness rule, not a probabilistic-response/behavioral-risk concern; pedagogy judge holds full fresh coverage of this rule for this file (pedagogy.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 10,
+      "rule_lead": "Student agency — adults decide.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "design-correctness rule, not a probabilistic-response/behavioral-risk concern; pedagogy judge holds full fresh coverage of this rule for this file (pedagogy.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 11,
+      "rule_lead": "Delegation — student brings, Claude screens.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "design-correctness rule, not a probabilistic-response/behavioral-risk concern; pedagogy judge holds full fresh coverage of this rule for this file (pedagogy.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 12,
+      "rule_lead": "Split mega-exercise when phases = distinct skills + distinct artifacts.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "design-correctness rule, not a probabilistic-response/behavioral-risk concern; pedagogy judge holds full fresh coverage of this rule for this file (pedagogy.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 13,
+      "rule_lead": "Artifact-realism check.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "design-correctness rule, not a probabilistic-response/behavioral-risk concern; pedagogy judge holds full fresh coverage of this rule for this file (pedagogy.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 14,
+      "rule_lead": "Teach principle + technique — default.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "design-correctness rule, not a probabilistic-response/behavioral-risk concern; pedagogy judge holds full fresh coverage of this rule for this file (pedagogy.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 15,
+      "rule_lead": "Auto-fire sim+eval after significant rewrite.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "design-correctness rule, not a probabilistic-response/behavioral-risk concern; pedagogy judge holds full fresh coverage of this rule for this file (pedagogy.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 16,
+      "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "design-correctness rule, not a probabilistic-response/behavioral-risk concern; pedagogy judge holds full fresh coverage of this rule for this file (pedagogy.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 17,
+      "rule_lead": "Corporate infra = nice-to-have, never forcing function.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "design-correctness rule, not a probabilistic-response/behavioral-risk concern; pedagogy judge holds full fresh coverage of this rule for this file (pedagogy.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 18,
+      "rule_lead": "Personal-first, team promotion via human conversation.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "design-correctness rule, not a probabilistic-response/behavioral-risk concern; pedagogy judge holds full fresh coverage of this rule for this file (pedagogy.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 19,
+      "rule_lead": "Measure silent failure, not just friction.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "design-correctness rule, not a probabilistic-response/behavioral-risk concern; pedagogy judge holds full fresh coverage of this rule for this file (pedagogy.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 20,
+      "rule_lead": "Don't pre-set categories before experiment runs.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "design-correctness rule, not a probabilistic-response/behavioral-risk concern; pedagogy judge holds full fresh coverage of this rule for this file (pedagogy.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 21,
+      "rule_lead": "Verification layers sample DIFFERENT error distributions — not belt-and-braces.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "design-correctness rule, not a probabilistic-response/behavioral-risk concern; pedagogy judge holds full fresh coverage of this rule for this file (pedagogy.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "21b",
+      "rule_lead": "Cheap-before-expensive verification ordering.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "design-correctness rule, not a probabilistic-response/behavioral-risk concern; pedagogy judge holds full fresh coverage of this rule for this file (pedagogy.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 22,
+      "rule_lead": "Rule in memory without forcing function = worse than no rule.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "design-correctness rule, not a probabilistic-response/behavioral-risk concern; pedagogy judge holds full fresh coverage of this rule for this file (pedagogy.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 23,
+      "rule_lead": "Short skeptical pushback on \"done\" = re-verify trigger.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "design-correctness rule, not a probabilistic-response/behavioral-risk concern; pedagogy judge holds full fresh coverage of this rule for this file (pedagogy.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 24,
+      "rule_lead": "Cohort execution is trainer-paced + concurrent, not sequential.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "design-correctness rule, not a probabilistic-response/behavioral-risk concern; pedagogy judge holds full fresh coverage of this rule for this file (pedagogy.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 25,
+      "rule_lead": "Host-skill optional; maintainer blocks trainer-only.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "design-correctness rule, not a probabilistic-response/behavioral-risk concern; pedagogy judge holds full fresh coverage of this rule for this file (pedagogy.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 26,
+      "rule_lead": "Reflection beats: in-chat over file-write.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "design-correctness rule, not a probabilistic-response/behavioral-risk concern; pedagogy judge holds full fresh coverage of this rule for this file (pedagogy.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 27,
+      "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "design-correctness rule, not a probabilistic-response/behavioral-risk concern; pedagogy judge holds full fresh coverage of this rule for this file (pedagogy.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 29,
+      "rule_lead": "Eval = fixed yardstick; thing measured learns.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "design-correctness rule, not a probabilistic-response/behavioral-risk concern; pedagogy judge holds full fresh coverage of this rule for this file (pedagogy.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 30,
+      "rule_lead": "Reading burden for verification = banned. Claude audits Claude.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "none of the 5 prompts asks the student to manually proofread Claude's code/diff for correctness; Phase 3's plan-scan is a design-quality read (pedagogy.json §30 already covers this as legitimate M2 foreshadowing).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 31,
+      "rule_lead": "Self-report + self-audit charity — verify at artifact, over-flag or fresh-session for critique.",
+      "verdict": "REVISE",
+      "evidence": "Two distinct self-report-inflation instances live in this file. (1) Phase-3 plan-regeneration: raw L48's 'read the flagged steps in the revised plan, not the agent's report of them' is a direct verify-at-artifact instruction — well covered (pedagogy.json §31 already confirms this instance PASS; deferred here, not re-derived). (2) Phase-5 push-back-on-the-plan-3 (raw L101): 'what new information and decisions did the second-pass read surface that my two push-backs didn't?' asks Claude to characterize the VALUE of a run it just performed, inviting self-serving inflation of the walk-down's contribution. The evidence-backed-Debrief carve-out this class recognizes needs the fence to require artifact-level reporting or nearby body prose to name the charity risk with a pushback move; the current 'Compare what each read caught' section right after the fence (raw L103-107) states a comparison RUBRIC (what a human catches vs. what the agent catches) but does not ask the student to check Claude's claim against a specific plan-file line or quote, and does not name the self-serving-inflation risk with a recovery move. A dated maintainer note (raw L123) confirms the value-claim was deliberately relocated to this Compare beat in a 2026-08-02/2026-08-12 rewrite sequence — plausibly the point at which a stronger concrete-evidence anchor (of the kind rule 31(a) asks for) was traded away for narrative placement.",
+      "fix_hint": "Add one clause to push-back-on-the-plan-3's fence or the immediately-following Compare section asking Claude to name the SPECIFIC plan step or decision the second-pass read changed, so the self-comparison stays checkable against the actual revised plan file rather than resting on Claude's own characterization.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 32,
+      "rule_lead": "Offered structures need forced-engagement mechanic.",
+      "verdict": "REVISE",
+      "evidence": "At the macro level, Phase 3's forced two-push-back gate before approval is exactly this rule's (b) plan-mode-approval remedy in full (pedagogy.json §32 already confirms this PASS; deferred, not re-derived). At the finer grain of push-back-on-the-plan-2-askuserquestion (raw L72) specifically, the fence asks Claude to present 'one option set per branch, with your recommended answer marked' — a picker UI pre-selection, which lowers click-through friction below prompt-2's free-text form (rule (b)'s own diagnostic: '~90% take verbatim because structure signals competence,' and a marked recommendation is exactly the kind of structure that signals competence). The nearest forced-engagement reminder — 'A few will surface decisions the plan was silently making for you; reject the recommended answer and give a different one' (raw L63, under 'Answer the branches that change what \"done\" means') — sits two section-headers upstream of this specific fence ('Switch to a picker if you prefer one', raw L67-70), not directly adjacent to it.",
+      "fix_hint": "Add one clause in the 'Switch to a picker if you prefer one' section (raw L67-70) or right after push-back-on-the-plan-2-askuserquestion's fence, restating that the marked option is a suggestion to weigh, not a default to click through.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 33,
+      "rule_lead": "Source-type blindness on ingestion.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no heterogeneous source-folder/slide ingestion in any of the 5 prompts.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 34,
+      "rule_lead": "Task selection drives outcome → name floor AND ceiling.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "design-correctness rule, not a probabilistic-response/behavioral-risk concern; pedagogy judge holds full fresh coverage of this rule for this file (pedagogy.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "34b",
+      "rule_lead": "Maintainer-block hedge naming section's own failure mode = cut-signal, not warning.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "design-correctness rule, not a probabilistic-response/behavioral-risk concern; pedagogy judge holds full fresh coverage of this rule for this file (pedagogy.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 35,
+      "rule_lead": "Audience tier determines authoring substrate.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "design-correctness rule, not a probabilistic-response/behavioral-risk concern; pedagogy judge holds full fresh coverage of this rule for this file (pedagogy.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 36,
+      "rule_lead": "Verification machinery needs smoke-test before trust.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "design-correctness rule, not a probabilistic-response/behavioral-risk concern; pedagogy judge holds full fresh coverage of this rule for this file (pedagogy.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 37,
+      "rule_lead": "Context-loading tiers as staged progression.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "design-correctness rule, not a probabilistic-response/behavioral-risk concern; pedagogy judge holds full fresh coverage of this rule for this file (pedagogy.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 39,
+      "rule_lead": "Removals are strategic — ask before cutting.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "design-correctness rule, not a probabilistic-response/behavioral-risk concern; pedagogy judge holds full fresh coverage of this rule for this file (pedagogy.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 41,
+      "rule_lead": "Symmetric visible-mechanics > runtime fork when dual-runtime constraints break agentic move.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "design-correctness rule, not a probabilistic-response/behavioral-risk concern; pedagogy judge holds full fresh coverage of this rule for this file (pedagogy.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 42,
+      "rule_lead": "Load-bearing platform feature = no fallback. Gate or redesign.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "design-correctness rule, not a probabilistic-response/behavioral-risk concern; pedagogy judge holds full fresh coverage of this rule for this file (pedagogy.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 43,
+      "rule_lead": "Eval architecture — partition by evidence source, not criterion count.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "design-correctness rule, not a probabilistic-response/behavioral-risk concern; pedagogy judge holds full fresh coverage of this rule for this file (pedagogy.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 44,
+      "rule_lead": "Plug points + UX.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "design-correctness rule, not a probabilistic-response/behavioral-risk concern; pedagogy judge holds full fresh coverage of this rule for this file (pedagogy.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 45,
+      "rule_lead": "Per-exercise leap test — 3 observable Monday outcomes.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "design-correctness rule, not a probabilistic-response/behavioral-risk concern; pedagogy judge holds full fresh coverage of this rule for this file (pedagogy.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 47,
+      "rule_lead": "Per-phase failure mode + escape hatch.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "design-correctness rule, not a probabilistic-response/behavioral-risk concern; pedagogy judge holds full fresh coverage of this rule for this file (pedagogy.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 48,
+      "rule_lead": "Heavy fan-out prompts get body recovery callout.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "trigger signal is parallel subagents / multi-source retrievers / full-memory fan-out; the walk-down is a single-threaded codebase read, below that trigger shape. The same underlying 'runs long' concern is filed instead under check_prompts.md §43, whose trigger (any prompt running >a couple minutes) the maintainer's own logged dry-run does match.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 49,
+      "rule_lead": "Save belongs with authoring, not loading.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "design-correctness rule, not a probabilistic-response/behavioral-risk concern; pedagogy judge holds full fresh coverage of this rule for this file (pedagogy.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 50,
+      "rule_lead": "Convenience-driven prompts with known shape-bias → body acknowledgment callout.",
+      "verdict": "PASS",
+      "evidence": "Same evidence as §32's macro finding: push-back-on-the-plan-2's 'For each question, recommend an answer' (raw L57) is a convenience-driven shape-bias, and raw L63's 'reject the recommended answer and give a different one' is the required nearby acknowledgment-plus-escalation. The gap this ledger actually files is narrower (§32, the AskUserQuestion variant specifically) and doesn't re-open this rule's macro PASS.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 51,
+      "rule_lead": "Deliberate-antipattern prompts = class-judge exempt, flagged-by-design.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "design-correctness rule, not a probabilistic-response/behavioral-risk concern; pedagogy judge holds full fresh coverage of this rule for this file (pedagogy.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 52,
+      "rule_lead": "Session widget — `**Session** *(verb, \"name\")*` shape; place by learning flow.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "design-correctness rule, not a probabilistic-response/behavioral-risk concern; pedagogy judge holds full fresh coverage of this rule for this file (pedagogy.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "52a",
+      "rule_lead": "Module prose carrying a `**Session**` widget or a `{{prompt:}}` fence is an exercise that has not been extracted.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "design-correctness rule, not a probabilistic-response/behavioral-risk concern; pedagogy judge holds full fresh coverage of this rule for this file (pedagogy.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "52b",
+      "rule_lead": "Widgets carry semantics, not just emphasis — match the widget to MEANING, never to how loud it renders.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "design-correctness rule, not a probabilistic-response/behavioral-risk concern; pedagogy judge holds full fresh coverage of this rule for this file (pedagogy.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "52c",
+      "rule_lead": "Exercise lead-in trio — three slots, three tenses. A slot filled past its label is this corpus's most common defect.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "design-correctness rule, not a probabilistic-response/behavioral-risk concern; pedagogy judge holds full fresh coverage of this rule for this file (pedagogy.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "52d",
+      "rule_lead": "Finding the point — four moves, learned writing M1's set 2026-08-12.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "design-correctness rule, not a probabilistic-response/behavioral-risk concern; pedagogy judge holds full fresh coverage of this rule for this file (pedagogy.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 53,
+      "rule_lead": "Body prose must not supply an answer its prompt asks for — position is not the test (widened 2026-08-12).",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "design-correctness rule, not a probabilistic-response/behavioral-risk concern; pedagogy judge holds full fresh coverage of this rule for this file (pedagogy.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 56,
+      "rule_lead": "Engineer-audience audit fixes default to body callout, not forcing function.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "self-check on this ledger's own proposed fixes rather than a property of the shipped file: the two owed fixes above (§31, §32) are both body/lead-in callout additions, already matching this rule's AE101 default, not new forcing-function prompts.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 57,
+      "rule_lead": "Multi-session (any new mechanic mid-arc) ships as packaging, not new primitive.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "design-correctness rule, not a probabilistic-response/behavioral-risk concern; pedagogy judge holds full fresh coverage of this rule for this file (pedagogy.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 58,
+      "rule_lead": "`/clear` = tool, not ceremony.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "design-correctness rule, not a probabilistic-response/behavioral-risk concern; pedagogy judge holds full fresh coverage of this rule for this file (pedagogy.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 59,
+      "rule_lead": "Inbound links preserve pedagogical beat across reference restructuring.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "design-correctness rule, not a probabilistic-response/behavioral-risk concern; pedagogy judge holds full fresh coverage of this rule for this file (pedagogy.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 60,
+      "rule_lead": "Scan at the unit the rule names, not convenient larger one.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "design-correctness rule, not a probabilistic-response/behavioral-risk concern; pedagogy judge holds full fresh coverage of this rule for this file (pedagogy.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 61,
+      "rule_lead": "Verify mechanism before proposing surgery.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "design-correctness rule, not a probabilistic-response/behavioral-risk concern; pedagogy judge holds full fresh coverage of this rule for this file (pedagogy.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "61a",
+      "rule_lead": "Acting on a flagged item (punchlist entry / audit finding / eval BLOCK) — verify before fixing; its prescribed fix is a hypothesis, not an instruction.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "design-correctness rule, not a probabilistic-response/behavioral-risk concern; pedagogy judge holds full fresh coverage of this rule for this file (pedagogy.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 62,
+      "rule_lead": "Callouts next to prompts: steer, don't pre-empt.",
+      "verdict": "PASS",
+      "evidence": "The two existing mitigation callouts near these prompts are both steering-shaped, not pre-empting-shaped: raw L59 'If it feels slow, ask why. Stop the turn, ask Claude what's making it crawl, then relax that requirement' (notice → diagnose-with-agent → loosen) and raw L65 'Too many low-level questions? Steer up... tell it: ask me about requirements, not low-level design' (notice → redirect). Neither names one specific mechanic-dependent failure that would rot when the prompt's internals change.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 63,
+      "rule_lead": "Persistent TODO surfaces stale by default — audit before acting.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "design-correctness rule, not a probabilistic-response/behavioral-risk concern; pedagogy judge holds full fresh coverage of this rule for this file (pedagogy.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 64,
+      "rule_lead": "Maintainer blocks point, don't restate. Link architecture doc where they touch delivery.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "design-correctness rule, not a probabilistic-response/behavioral-risk concern; pedagogy judge holds full fresh coverage of this rule for this file (pedagogy.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 65,
+      "rule_lead": "Cross-module prerequisite rescue: run it late, never fabricate.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "design-correctness rule, not a probabilistic-response/behavioral-risk concern; pedagogy judge holds full fresh coverage of this rule for this file (pedagogy.json).",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 66,
+      "rule_lead": "Three-pass build — finish each pass across ALL modules before starting the next.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "design-correctness rule, not a probabilistic-response/behavioral-risk concern; pedagogy judge holds full fresh coverage of this rule for this file (pedagogy.json).",
+      "fix_hint": null,
+      "blocking": false
     }
   ],
-  "blocking_findings_count": 1,
-  "todos_count": 4,
-  "resolution": {
-    "settled": "refuted",
-    "at": "2026-08-24",
-    "note": "Two independent refuters killed the one blocking finding; both cited mechanical checks that I re-ran and confirmed. (1) The finding quoted sentence 1 of the three-sentence P5 prompt and concluded no deflation gate exists; sentence 2 of curriculum/prompts/push-back-on-the-plan-3.md is \"Would any of them have mattered in execution?\", answerable \"none of them\", applied item-by-item to whatever sentence 1 produced. (2) The blocking clause was attributed to a check_prompts.md carve-out that does not exist there: grep -c \"evidence-backed\" on that compendium returns 0 and \"Block only when\" returns 0 across all of memory/; the text lives only at curriculum/evals/judges/prompt-behavior.md:77, the judge template, and reads \"and/or\" -- disjunctive, scored as conjunctive. (3) The recovery move the finding called missing was de-duplicated, not deleted: it sits verbatim at plan-mode-done-right.md:170 and :217 and predates the cut (git show 7f1b192c^ finds both). Behavior class stamps PASS; the four low/med-confidence prompt observations are banked as TODOs, not gates."
-  }
+  "todos_count": 3,
+  "blocking_findings_count": 0,
+  "prompts_evaluated": 5,
+  "trace_status": "full_regen",
+  "notes": [
+    "check_prompts.md and check_pedagogy.md are both in this class's compendium scope per curriculum/evals/judges/prompt-behavior.md, but most of their numbered rules are static prompt-mechanics or pedagogy-design-correctness concerns that simulation-behavior.md's own §Scope assigns to the technical and pedagogy judges respectively ('No static-rule grading... those = technical judge'). Those rows are marked N/A here with a one-line deferral to the sibling class's fresh per-rule coverage on this same file, rather than re-derived, per the dispatch preamble's ban on reaching into a sibling class's lane. Real behavior-class rows are limited to the rules that map directly onto the 15-pattern catalog (simulation-behavior.md): check_prompts.md §14/15/16/17/18/43, check_pedagogy.md §30/31/32/33/48/50/56/62.",
+    "check_prompts.md §43 (REVISE/TODO in this instance) contradicts a carried-forward N/A on the same rule in the sibling technical-class instance for this file (ae101--exercise--push-back-on-the-plan.technical.json), which is stamped `carried_from`/`carried_shape` (i.e. inherited from an older shape-matched instance, not freshly re-derived this run) and whose reasoning does not engage with the maintainer's own logged 2026-05-15 dry-run overrun (raw L197). Recommend the technical judge re-examine §43 fresh against current body content rather than trust the carry-forward.",
+    "The cached sim-trace at curriculum/evals/sim-cache/ae101--exercise--push-back-on-the-plan.behavior.json was stale (content_sha be01f373... vs current 690f65d6...) even though all 5 per-prompt fenced-content SHAs matched byte-for-byte (the file changed only in surrounding body/maintainer prose). Several of the stale trace's cited recovery-path quotes no longer exist in the current body (e.g. a 'Read for the decisions that matter' section, a 'quote one thing your push-back caught' requirement) — this instance's findings were re-derived fresh against the current file rather than carried from that trace, and the trace file has been regenerated to match."
+  ]
 }

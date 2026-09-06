@@ -1,4 +1,96 @@
-{"class":"behavior","file":"/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/fix-tests-first.md","body_sha":"3c008d2f1ea1e6c97eafa71d8bc36bc7fd1826190c2a2964664cafc968800bd6","verdict":"PASS","training":"ae101","trace_status":"full_regen","prompts_evaluated":3,"prompts_findings":[{"prompt_index":1,"prompt_lead":"Find the root cause of this bug by writing the tests that would reveal it. Run t","verdict":"PASS","load_bearing":true,"risks_fired":[{"pattern_id":"preamble-before-action","confidence":"med","evidence":"Five chained actions—write/run failing tests, fix, rerun, show diff—invite a short plan before action; no suppressor is present.","fix_hint":"Add a no-preamble cue or adjacent skim-past instruction if this behavior appears live."}]},{"prompt_index":2,"prompt_lead":"Was the change you just made the root cause of the bug, or a layer above it? If ","verdict":"TODO","load_bearing":false,"risks_fired":[{"pattern_id":"self-audit-charity","confidence":"low","evidence":"Claude is asked to reread its own diff, but must name what remains surface; the student decides whether the answer holds.","fix_hint":"No change required; optional fresh-context critique would strengthen it."},{"pattern_id":"preamble-before-action","confidence":"med","evidence":"The four requested checks can elicit a narrated preamble; the prompt is explicitly optional, so it is non-load-bearing.","fix_hint":"Optional no-preamble cue."}]},{"prompt_index":3,"prompt_lead":"Now do it properly, TDD-style. Write the failing test that names the deeper issu","verdict":"TODO","load_bearing":false,"risks_fired":[{"pattern_id":"preamble-before-action","confidence":"med","evidence":"The optional second TDD loop has five chained actions and no preamble suppressor.","fix_hint":"Optional no-preamble cue shared with the first TDD prompt."}]}],"blocking_findings_count":0,"todos_count":2,"rules_evaluated":{"prompt_1":[
-{"pattern_id":"file-preservation-gap","status":"not-applicable","evidence":"No existing file is updated by the prompt itself."},{"pattern_id":"reading-burden","status":"not-applicable","evidence":"Claude runs tests and shows a diff; the student is not assigned proofreading."},{"pattern_id":"niceness-tax","status":"not-applicable","evidence":"No critique is softened."},{"pattern_id":"question-dump","status":"not-applicable","evidence":"No student interview is requested."},{"pattern_id":"overwrite-anxiety","status":"not-applicable","evidence":"No ambiguous file write destination is requested."},{"pattern_id":"preamble-before-action","status":"fired","confidence":"med","evidence":"Five chained actions with no no-preamble cue."},{"pattern_id":"append-vs-integrate","status":"not-applicable","evidence":"No document integration is requested."},{"pattern_id":"plan-mode-preamble-bloat","status":"not-applicable","evidence":"Prompt explicitly says no plan mode in surrounding body."},{"pattern_id":"citation-gap-asymmetry","status":"not-applicable","evidence":"No citations are requested."},{"pattern_id":"self-report-inflation","status":"not-applicable","evidence":"Test results and diff are artifact evidence, not a self-grade."},{"pattern_id":"default-acceptance","status":"not-applicable","evidence":"No substantive default is offered."},{"pattern_id":"plan-mode-approval-inflation","status":"not-applicable","evidence":"No plan is produced."},{"pattern_id":"source-type-blindness","status":"not-applicable","evidence":"No sources are ingested."},{"pattern_id":"citation-cargo-cult","status":"not-applicable","evidence":"No citations are requested."},{"pattern_id":"self-audit-charity","status":"not-applicable","evidence":"The prompt does not ask Claude to self-critique."}],
-"prompt_2":[{"pattern_id":"file-preservation-gap","status":"not-applicable","evidence":"No file write is requested."},{"pattern_id":"reading-burden","status":"not-applicable","evidence":"The diff is an evidence surface, not proofreading."},{"pattern_id":"niceness-tax","status":"not-applicable","evidence":"No diplomatic defect report is requested."},{"pattern_id":"question-dump","status":"not-applicable","evidence":"No student question sequence is requested."},{"pattern_id":"overwrite-anxiety","status":"not-applicable","evidence":"No file write is requested."},{"pattern_id":"preamble-before-action","status":"fired","confidence":"med","evidence":"Four requested checks can attract narration before the answer."},{"pattern_id":"append-vs-integrate","status":"not-applicable","evidence":"No integration request."},{"pattern_id":"plan-mode-preamble-bloat","status":"not-applicable","evidence":"No plan mode."},{"pattern_id":"citation-gap-asymmetry","status":"not-applicable","evidence":"No citations."},{"pattern_id":"self-report-inflation","status":"not-applicable","evidence":"The diff is a concrete artifact and no quality grade is requested."},{"pattern_id":"default-acceptance","status":"not-applicable","evidence":"No offered default."},{"pattern_id":"plan-mode-approval-inflation","status":"not-applicable","evidence":"No plan."},{"pattern_id":"source-type-blindness","status":"not-applicable","evidence":"No source ingestion."},{"pattern_id":"citation-cargo-cult","status":"not-applicable","evidence":"No citation ask."},{"pattern_id":"self-audit-charity","status":"fired","confidence":"low","evidence":"Claude critiques its own diff; the concrete diff and deeper-layer question reduce charity risk."}],
-"prompt_3":[{"pattern_id":"file-preservation-gap","status":"not-applicable","evidence":"No existing document is updated."},{"pattern_id":"reading-burden","status":"not-applicable","evidence":"The student receives test and diff evidence, not a proofreading assignment."},{"pattern_id":"niceness-tax","status":"not-applicable","evidence":"No critique is requested."},{"pattern_id":"question-dump","status":"not-applicable","evidence":"No interview sequence."},{"pattern_id":"overwrite-anxiety","status":"not-applicable","evidence":"No ambiguous file destination."},{"pattern_id":"preamble-before-action","status":"fired","confidence":"med","evidence":"Five chained TDD actions lack a no-preamble cue; the prompt is optional."},{"pattern_id":"append-vs-integrate","status":"not-applicable","evidence":"No integration."},{"pattern_id":"plan-mode-preamble-bloat","status":"not-applicable","evidence":"No plan mode."},{"pattern_id":"citation-gap-asymmetry","status":"not-applicable","evidence":"No citations."},{"pattern_id":"self-report-inflation","status":"not-applicable","evidence":"Fail/pass test output and diff are concrete evidence."},{"pattern_id":"default-acceptance","status":"not-applicable","evidence":"No default."},{"pattern_id":"plan-mode-approval-inflation","status":"not-applicable","evidence":"No plan."},{"pattern_id":"source-type-blindness","status":"not-applicable","evidence":"No source ingestion."},{"pattern_id":"citation-cargo-cult","status":"not-applicable","evidence":"No citation ask."},{"pattern_id":"self-audit-charity","status":"not-applicable","evidence":"No self-critique is requested in this prompt."}]}}
+{
+  "class": "behavior",
+  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/fix-tests-first.md",
+  "training": "ae101",
+  "verdict": "PASS",
+  "body_sha": "6c5fc597b9391e19f47587330d94db40df8899fe6029579e6da6cc493de334f1",
+  "shape_hash": "9fb98f5fd48507ae",
+  "trace_status": "partial_regen",
+  "prompts_evaluated": 3,
+  "prompts_findings": [
+    {
+      "prompt_index": 1,
+      "prompt_lead": "Find the root cause of this bug by writing the tests that would reveal it. Run t",
+      "verdict": "PASS",
+      "load_bearing": true,
+      "risks_fired": []
+    },
+    {
+      "prompt_index": 2,
+      "prompt_lead": "Was the change you just made the root cause of the bug, or a layer above it? If ",
+      "verdict": "PASS",
+      "load_bearing": true,
+      "risks_fired": [
+        {
+          "pattern_id": "self-audit-charity",
+          "confidence": "low",
+          "carve_out": "evidence-backed-self-audit",
+          "evidence": "Grounded in the just-produced diff; requires artifact-level reporting (\"re-read your own diff and tell me what's still surface\"); the file's own maintainer Watch-for already names this exact failure with a trainer pushback (\"Interrogation rubber-stamp... Trainer push: name one input where this fix would still be wrong.\").",
+          "fix_hint": "None owed. prompt-behavior.md's evidence-backed self-report/self-audit-charity carve-out applies: concrete evidence surface (the diff), required artifact-level report, and an adjacent named pushback move."
+        }
+      ]
+    },
+    {
+      "prompt_index": 3,
+      "prompt_lead": "Now do it properly, TDD-style. Write the failing test that names the deeper issu",
+      "verdict": "PASS",
+      "load_bearing": true,
+      "risks_fired": []
+    }
+  ],
+  "blocking_findings_count": 0,
+  "todos_count": 0,
+  "rules_evaluated": {
+    "prompt_1": [
+      {"pattern_id": "file-preservation-gap", "status": "not-applicable", "evidence": "The fix edits existing source in place; no ambiguous 'update this file' instruction."},
+      {"pattern_id": "reading-burden", "status": "not-applicable", "evidence": "check_pedagogy.md §30 exempts early modules that foreshadow M5/M6 Claude-on-Claude verification; the diff-read discipline lives in body prose (Phase 2), not in this fenced prompt."},
+      {"pattern_id": "niceness-tax", "status": "not-applicable", "evidence": "No critique is softened; the prompt only runs tests and shows a diff."},
+      {"pattern_id": "question-dump", "status": "not-applicable", "evidence": "No student-facing question sequence."},
+      {"pattern_id": "overwrite-anxiety", "status": "not-applicable", "evidence": "No ambiguous save destination; the fix edits existing repo source."},
+      {"pattern_id": "preamble-before-action", "status": "not-applicable", "evidence": "check_prompts.md §17, narrowed 2026-09-03: the structural trigger is plan-mode only, and body explicitly disables plan mode here (\"No plan mode here\"). §17 names this exact prompt, fix-tests-first-1, as declined under the narrowing and instructs not to re-raise it absent observed run evidence, of which there is none."},
+      {"pattern_id": "append-vs-integrate", "status": "not-applicable", "evidence": "No document section is being added."},
+      {"pattern_id": "plan-mode-preamble-bloat", "status": "not-applicable", "evidence": "Plan mode is off for this phase."},
+      {"pattern_id": "citation-gap-asymmetry", "status": "not-applicable", "evidence": "No citations requested."},
+      {"pattern_id": "self-report-inflation", "status": "not-applicable", "evidence": "The test run and diff are checkable artifacts, not a self-graded summary."},
+      {"pattern_id": "default-acceptance", "status": "not-applicable", "evidence": "No offered default for the student to accept."},
+      {"pattern_id": "plan-mode-approval-inflation", "status": "not-applicable", "evidence": "No plan is produced."},
+      {"pattern_id": "source-type-blindness", "status": "not-applicable", "evidence": "No source ingestion."},
+      {"pattern_id": "citation-cargo-cult", "status": "not-applicable", "evidence": "No citations requested."},
+      {"pattern_id": "self-audit-charity", "status": "not-applicable", "evidence": "Claude is not asked to critique its own work in this prompt (that is prompt 2)."}
+    ],
+    "prompt_2": [
+      {"pattern_id": "file-preservation-gap", "status": "not-applicable", "evidence": "No file write is requested."},
+      {"pattern_id": "reading-burden", "status": "not-applicable", "evidence": "The student is not assigned manual proofreading; Claude answers the root-cause question against its own diff."},
+      {"pattern_id": "niceness-tax", "status": "not-applicable", "evidence": "No diplomatic softening beyond self-audit-charity, scored separately below."},
+      {"pattern_id": "question-dump", "status": "not-applicable", "evidence": "No student interview sequence."},
+      {"pattern_id": "overwrite-anxiety", "status": "not-applicable", "evidence": "No file write requested (\"Don't change anything yet\")."},
+      {"pattern_id": "preamble-before-action", "status": "not-applicable", "evidence": "check_prompts.md §17, narrowed 2026-09-03 to a plan-mode-only trigger. This prompt is default-mode with no observed run evidence of preamble eating the read, so the risk is not raised (same narrowing that names fix-tests-first-1 and fix-tests-first-3 by slug covers this file's non-plan-mode prompts on the same reasoning)."},
+      {"pattern_id": "append-vs-integrate", "status": "not-applicable", "evidence": "No document integration requested."},
+      {"pattern_id": "plan-mode-preamble-bloat", "status": "not-applicable", "evidence": "No plan mode."},
+      {"pattern_id": "citation-gap-asymmetry", "status": "not-applicable", "evidence": "No citations."},
+      {"pattern_id": "self-report-inflation", "status": "not-applicable", "evidence": "Claude is asked a diagnostic question, not to summarize accomplishments."},
+      {"pattern_id": "default-acceptance", "status": "not-applicable", "evidence": "No offered default."},
+      {"pattern_id": "plan-mode-approval-inflation", "status": "not-applicable", "evidence": "No plan."},
+      {"pattern_id": "source-type-blindness", "status": "not-applicable", "evidence": "No source ingestion."},
+      {"pattern_id": "citation-cargo-cult", "status": "not-applicable", "evidence": "No citations."},
+      {"pattern_id": "self-audit-charity", "status": "fired", "confidence": "low", "carve_out": "evidence-backed-self-audit", "evidence": "Grounded in the just-produced diff, requires artifact-level reporting, and the maintainer's own Watch-for (\"Interrogation rubber-stamp\") already names this exact failure with a trainer pushback line. PASS, not blocking, under the template's evidence-backed self-audit-charity carve-out."}
+    ],
+    "prompt_3": [
+      {"pattern_id": "file-preservation-gap", "status": "not-applicable", "evidence": "The second TDD pass edits existing repo source in place."},
+      {"pattern_id": "reading-burden", "status": "not-applicable", "evidence": "Same as prompt 1 — check_pedagogy.md §30's early-module foreshadowing exemption; the diff-read lives in body prose, not this fence."},
+      {"pattern_id": "niceness-tax", "status": "not-applicable", "evidence": "No critique is softened."},
+      {"pattern_id": "question-dump", "status": "not-applicable", "evidence": "No student-facing question sequence."},
+      {"pattern_id": "overwrite-anxiety", "status": "not-applicable", "evidence": "No ambiguous destination; the second pass edits the same in-repo source."},
+      {"pattern_id": "preamble-before-action", "status": "not-applicable", "evidence": "check_prompts.md §17, narrowed 2026-09-03, explicitly names fix-tests-first-3 as declined: the plan-mode-only trigger does not fire on this optional, default-mode second TDD prompt, and no run evidence of preamble eating the read exists here."},
+      {"pattern_id": "append-vs-integrate", "status": "not-applicable", "evidence": "No document integration requested."},
+      {"pattern_id": "plan-mode-preamble-bloat", "status": "not-applicable", "evidence": "No plan mode."},
+      {"pattern_id": "citation-gap-asymmetry", "status": "not-applicable", "evidence": "No citations requested."},
+      {"pattern_id": "self-report-inflation", "status": "not-applicable", "evidence": "The test pass/fail result and diff are checkable artifacts."},
+      {"pattern_id": "default-acceptance", "status": "not-applicable", "evidence": "No offered default."},
+      {"pattern_id": "plan-mode-approval-inflation", "status": "not-applicable", "evidence": "No plan is produced."},
+      {"pattern_id": "source-type-blindness", "status": "not-applicable", "evidence": "No source ingestion."},
+      {"pattern_id": "citation-cargo-cult", "status": "not-applicable", "evidence": "No citations requested."},
+      {"pattern_id": "self-audit-charity", "status": "not-applicable", "evidence": "No self-critique is requested in this prompt."}
+    ]
+  }
+}

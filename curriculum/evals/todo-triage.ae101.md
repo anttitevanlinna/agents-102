@@ -99,6 +99,18 @@ One-at-a-time is the right protocol against a gradient. Where the ladder is flat
 
 **A gate-discharge pass was run and returned nothing.** Every open card was re-tested against the narrower question *has Antti already made this call* — the §17 narrowing, the §43 carve-out, the vocabulary-registry sweep — with a skeptic per proposed discharge arguing the gate still applies. No card discharged. The standing exemptions are narrower than they look from a rule's headline, and a finding that merely touches §17 or §43 is not covered by what he ruled on a different shape.
 
+## The finish line, and why the ledger is not it
+
+A todo is a row a judge wrote. **Fixing the prose does not remove the row** — only a re-judge does, and a re-judge of a changed body is owed anyway. So the ledger cannot be driven to zero by editing; it drains in one direction only, and the order is fixed:
+
+1. **Antti rules the open cards.** Everything else waits on this, because a judge fired before a body settles pins a sha that is stale on arrival.
+2. **Apply, and adjudicate what was declined.** A declined finding leaves for good only when the reason is written where the next judge reads it — the file's maintainer block, or the rule itself. An argument in a chat window is not a disposition.
+3. **Re-judge every owing pair.** `npm run board -- --training ae101` names them; `Workflow({scriptPath: '.claude/workflows/eval-sweep.js', args: {items}})` fires them. Do not hand-write dispatch.
+4. **Regenerate the sim traces the board reports as body-moved or unanchored**, before any behavior or story re-fire reuses them.
+5. **Stamp** with `stamp-from-reeval.js`, then confirm `--gate` exits 0.
+
+The reachable end state is not an empty ledger. It is: no blocking findings, gates green, and every open row either adjudicated where a judge will read it or sitting on a card in front of Antti. That state is stable. Zero rows is not — a clean judging round still deposits notes, because a todo is by definition a finding the judge chose not to gate on.
+
 ## Open
 
 - **One anchor resolves nowhere** — `cross_module §2` against `earn-the-trust.md`, proposing a homework-placement string present in neither the module file nor the strategy doc. Re-derive at apply time or drop the row.

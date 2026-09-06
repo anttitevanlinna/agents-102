@@ -121,7 +121,6 @@ const TRAINER_ONLY = new Set(['pre-cohort-todos.md']);
 //
 // Grouped by module beat. One entry per line — strike or add a line to trim.
 //   'lectures/<slug>'      → curriculum/lectures/<slug>.md
-//   'supplementary/<slug>' → curriculum/trainings/<training>/supplementary/<slug>.md
 //   'exercises/<slug>'     → H1 + `View summary` metadata from curriculum/exercises/<slug>.md
 // Dual-wired lectures appear once, at their owning module. Duplicates and
 // missing files fail the build.
@@ -152,7 +151,6 @@ const THEORY_HANDBOOK_MANIFEST = {
       'exercises/threat-model-with-stride',
       'exercises/author-test-strategy-skill',
       'lectures/the-loop-half-filled',
-      'supplementary/the-lethal-trifecta',
     ]],
     ['M4', [
       'lectures/the-far-half',
@@ -162,7 +160,6 @@ const THEORY_HANDBOOK_MANIFEST = {
       'lectures/what-keeps-a-long-running-session-going',
       'lectures/ironies-of-automation',
       'lectures/reading-the-return',
-      'supplementary/verification-asymmetry',
     ]],
     ['M5', [
       'lectures/hooks-always-fire',
@@ -178,9 +175,6 @@ const THEORY_HANDBOOK_MANIFEST = {
       'lectures/the-handoff-prompt',
       'lectures/story-of-module-6',
       'lectures/agents-that-build-agents',
-      'supplementary/clean-code-is-steering',
-      'supplementary/skill-stacking',
-      'supplementary/workflow-composition-lineages',
     ]],
   ],
 };
@@ -441,6 +435,12 @@ ${buildToc(contentKey, t)}
 
 // ── Inline assets ───────────────────────────────────────────────────────────
 const SPA_CSS = fs.readFileSync(path.join(ROOT, 'site/layouts/curriculum.css'), 'utf8');
+const THEORY_HANDBOOK_CSS = fs.readFileSync(
+  path.join(ROOT, 'site/layouts/theory-handbook.css'), 'utf8');
+const THEORY_HANDBOOK_JS = fs.readFileSync(
+  path.join(ROOT, 'site/layouts/theory-handbook.js'), 'utf8');
+const STUDENT_HANDBOOK_PRINT_CSS = fs.readFileSync(
+  path.join(ROOT, 'site/layouts/student-handbook-print.css'), 'utf8');
 const SPA_JS = fs.readFileSync(path.join(ROOT, 'site/layouts/curriculum.js'), 'utf8');
 // The slide viewer (Long-read ⇄ Slides). Inlined so the handbook keeps working
 // offline; inert until the reader toggles Slides.
@@ -915,14 +915,18 @@ function buildTheoryBody(trainingKey, recipient) {
   const dedication = recipient
     ? `\n  <p class="lede">Prepared for ${CR.esc(recipient)}</p>`
     : '';
+  const coverPath = CR.expandFigures(
+    '{{figure:session-sea-passage}}', FIGURE_REGISTRY, { strict: true });
   // Standing cover blurb: says what this artifact is and hands the reading
   // order to the reader. Ships personalised or not.
   const blurb = `The theory portions of ${t.label} distilled into a single doc. `
     + 'Browse what you find interesting. Make your own connections to what you already know.';
   const cover = `
 <header class="workbook-cover" id="top">
-  <p class="eyebrow">${CR.esc(t.label)}</p>
-  <h1 class="cover-title">Theory handbook</h1>${dedication}
+  <p class="theory-cover-brand">Bosser</p>
+  <div class="theory-cover-path" aria-hidden="true">${coverPath}</div>
+  <p class="eyebrow">Theory handbook</p>
+  <h1 class="cover-title">${CR.esc(t.label)}</h1>${dedication}
   <p class="cover-blurb">${CR.esc(blurb)}</p>
 </header>
 `;
@@ -944,10 +948,12 @@ function theoryHandbookTemplate(trainingKey, content, recipient) {
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>${title}</title>
 <style>${SPA_CSS}</style>
+<style data-theory-handbook>${THEORY_HANDBOOK_CSS}</style>
 </head>
-<body class="runtime-${CR.esc(runtime)} workbook" data-training="${trainingKey}">
+<body class="runtime-${CR.esc(runtime)} workbook theory-handbook" data-training="${trainingKey}">
 ${content}
 <script>${SPA_JS}</script>
+<script data-theory-handbook>${THEORY_HANDBOOK_JS}</script>
 <script>${TRAINER_GUIDE_INIT_JS}</script>
 </body>
 </html>
@@ -1068,9 +1074,10 @@ function template(title, content, trainingKey) {
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>${CR.esc(title)}</title>
 <style>${SPA_CSS}</style>
+<style data-student-handbook-print>${STUDENT_HANDBOOK_PRINT_CSS}</style>
 <style>${SLIDES_CSS}</style>
 </head>
-<body class="runtime-${CR.esc(runtime)} workbook" data-training="${trainingKey}"${deck}>
+<body class="runtime-${CR.esc(runtime)} workbook student-handbook" data-training="${trainingKey}"${deck}>
 ${content}
 <script>${SPA_JS}</script>
 <script>${SLIDES_JS}</script>

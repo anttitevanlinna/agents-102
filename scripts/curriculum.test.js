@@ -19,6 +19,7 @@ const { execSync } = require('node:child_process');
 const fs = require('node:fs');
 const path = require('node:path');
 const { marked } = require('marked');
+const { JSDOM } = require('jsdom');
 
 const {
   expandPrompts,
@@ -415,7 +416,8 @@ test('theory handbook build', async (t) => {
 
   const handbookRaw = fs.readFileSync(theoryFile, 'utf8');
   const handbook = contentOnly(handbookRaw);
-  const workbook = contentOnly(fs.readFileSync(path.join(trainingDir, 'index.html'), 'utf8'));
+  const workbookRaw = fs.readFileSync(path.join(trainingDir, 'index.html'), 'utf8');
+  const workbook = contentOnly(workbookRaw);
 
   await t.test('contains theory lecture H1s rendered by the normal pipeline', () => {
     // Same section wrapper + heading-id shape the workbook's include pipeline emits.
@@ -438,6 +440,12 @@ test('theory handbook build', async (t) => {
     }
     // Dual-wired across modules in the workbook — exactly once here.
     assert.equal((handbook.match(/id="lectures-reading-the-return"/g) || []).length, 1);
+  });
+
+  await t.test('omits supplementary readings from the theory handbook', () => {
+    assert.doesNotMatch(handbook, /id="supplementary-/);
+    assert.doesNotMatch(handbook, /<div class="phase-kicker">Supplementary<\/div>/);
+    assert.doesNotMatch(handbook, /id="verification-asymmetry"/);
   });
 
   await t.test('renders thirteen slim exercise summaries, not exercise bodies', () => {
@@ -522,6 +530,103 @@ test('theory handbook build', async (t) => {
 
   await t.test('the whole-map inline SVG survives', () => {
     assert.match(handbook, /<svg viewBox="0 0 1200 560"/);
+  });
+
+  await t.test('isolates the white print treatment to the theory handbook', () => {
+    assert.match(handbookRaw, /<style data-theory-handbook>/);
+    assert.match(handbookRaw, /<body class="runtime-cli workbook theory-handbook"/);
+    assert.match(
+      handbookRaw,
+      /body\.theory-handbook main > section\.module::after\s*\{\s*display:\s*none !important;/,
+      'theory handbook must suppress the shared Agents 101 per-module print footer'
+    );
+    assert.match(
+      handbookRaw,
+      /body\.theory-handbook \.curriculum-footer\s*\{[\s\S]*?display:\s*block !important;/,
+      'theory handbook must restore the real legal footer hidden by shared print CSS'
+    );
+    assert.doesNotMatch(workbookRaw, /<style data-theory-handbook>/);
+    assert.doesNotMatch(workbookRaw, /\btheory-handbook\b/);
+  });
+
+  await t.test('removes repeated phase rules from both print handbooks only', () => {
+    const theoryDom = new JSDOM(handbookRaw);
+    const studentDom = new JSDOM(workbookRaw);
+    const theoryStyle = theoryDom.window.document.querySelector('style[data-theory-handbook]');
+    const studentStyle = studentDom.window.document.querySelector('style[data-student-handbook-print]');
+
+    assert.ok(studentStyle, 'student handbook needs an isolated print stylesheet');
+    assert.match(workbookRaw, /<body class="runtime-cli workbook student-handbook"/);
+
+    function printPhaseRule(style) {
+      const media = [...style.sheet.cssRules].find(rule =>
+        rule.constructor.name === 'CSSMediaRule' && rule.conditionText === 'print');
+      assert.ok(media, 'isolated stylesheet needs a print media block');
+      return [...media.cssRules].find(rule =>
+        /body\.(?:theory-handbook|student-handbook) \.phase/.test(rule.selectorText || ''));
+    }
+
+    const theoryPhase = printPhaseRule(theoryStyle);
+    const studentPhase = printPhaseRule(studentStyle);
+    assert.ok(theoryPhase, 'theory print phase override missing');
+    assert.ok(studentPhase, 'student print phase override missing');
+    assert.equal(theoryPhase.style.getPropertyValue('border-top'), '0px');
+    assert.equal(theoryPhase.style.getPropertyValue('border-bottom'), '0px');
+    assert.equal(studentPhase.style.getPropertyValue('border-top'), '0px');
+    assert.equal(studentPhase.style.getPropertyValue('border-bottom'), '0px');
+
+    const studentPrintMedia = [...studentStyle.sheet.cssRules].find(rule =>
+      rule.constructor.name === 'CSSMediaRule' && rule.conditionText === 'print');
+    const studentModuleHero = [...studentPrintMedia.cssRules].find(rule =>
+      rule.selectorText === 'body.student-handbook .module-hero');
+    assert.ok(studentModuleHero, 'student print module divider override missing');
+    assert.equal(studentModuleHero.style.getPropertyValue('border-bottom'), '2pt solid rgb(17, 17, 17)');
+    assert.equal(studentModuleHero.style.getPropertyPriority('border-bottom'), 'important');
+
+    assert.ok(
+      [...studentStyle.sheet.cssRules].every(rule => rule.constructor.name === 'CSSMediaRule'),
+      'student handbook cleanup must not affect screen rendering'
+    );
+    theoryDom.window.close();
+    studentDom.window.close();
+  });
+
+  await t.test('uses the material sea-passage SVG as the cover path', () => {
+    const cover = handbook.match(/<header class="workbook-cover"[\s\S]*?<\/header>/);
+    assert.ok(cover, 'theory handbook cover missing');
+    assert.match(cover[0], /class="theory-cover-path"/);
+    assert.match(cover[0], /One agent session plotted as a sea passage/);
+    assert.match(
+      cover[0],
+      /<p class="eyebrow">Theory handbook<\/p>\s*<h1 class="cover-title">Agentic Engineering 101<\/h1>/,
+      'training name must be the dominant cover title'
+    );
+    assert.doesNotMatch(cover[0], /<img\b/);
+  });
+
+  await t.test('collapses handbook prompts and recolors the cover passage at runtime', async () => {
+    const dom = new JSDOM(handbookRaw, {
+      runScripts: 'dangerously',
+      pretendToBeVisual: true,
+      url: 'https://handbook.test/'
+    });
+    await new Promise(resolve => dom.window.addEventListener('load', resolve, { once: true }));
+
+    const document = dom.window.document;
+    const disclosures = [...document.querySelectorAll('details.theory-prompt')];
+    assert.equal(disclosures.length, 7, 'expected every theory-handbook prompt to collapse');
+    for (const disclosure of disclosures) {
+      assert.equal(disclosure.open, false, 'prompt disclosure must start closed');
+      assert.ok(disclosure.querySelector(':scope > summary'), 'collapsed prompt needs a visible summary');
+      assert.ok(disclosure.querySelector('.prompt-block__pre'), 'prompt body must remain expandable on screen');
+    }
+
+    const passage = document.querySelector('.theory-cover-path');
+    const route = passage.querySelector('[stroke="#2f6b6b"]');
+    const hazard = passage.querySelector('[stroke="#a05a2c"]');
+    assert.equal(dom.window.getComputedStyle(route).stroke, 'rgb(255, 107, 53)');
+    assert.equal(dom.window.getComputedStyle(hazard).stroke, 'rgb(184, 184, 178)');
+    dom.window.close();
   });
 
   await t.test('normal workbook build is unaffected', () => {
@@ -644,7 +749,7 @@ test('personalised theory handbook', async (t) => {
 
   await t.test('dedication line on the cover, escaped', () => {
     assert.match(contentOnly(raw),
-      /<h1 class="cover-title">Theory handbook<\/h1>\s*<p class="lede">Prepared for Ada &lt;Countess&gt; Lovelace<\/p>/);
+      /<h1 class="cover-title">Agentic Engineering 101<\/h1>\s*<p class="lede">Prepared for Ada &lt;Countess&gt; Lovelace<\/p>/);
   });
 
   await t.test('recipient leads the <title> so print/PDF carries it', () => {

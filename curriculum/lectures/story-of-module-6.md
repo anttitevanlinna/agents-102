@@ -20,13 +20,13 @@ The end-state that was not. Early in planning I asked Claude to draft the lectur
 
 The sims and evals I did not run. When the verifier loop stopped clean, Claude wrote a done summary. I read it. I asked: *"You must run the evals and simulations too and fix all todos."* Claude had not run them. The reference artefact had flagged them as pre-first-cohort work. Claude had accepted that framing without pressing on it. I had to name the gap. When Claude ran them (three personas, a judge pass, source-verify, a capability check) they caught ten things worth fixing. That is a Claude-miss, not a rule-leak. The rule was right. Claude did not apply it.
 
-The three-phrase closer I didn't catch. The closing lecture ended with a three-phrase benediction: *"You know how to test. You know how to learn. You know how to encode."* Exactly the framing I said, a few paragraphs above, we would cut. Four LLM instances wrote and verified that closer. None caught the contradiction with what they had also read. A senior-engineer persona sim read the two files and named it in one pass: *"direct violation of what this opener promised to avoid. Either cut or pull the fang from it."* We cut. The contradiction was plain to a fresh human reader. It was invisible across four LLMs that had just produced it.
+The three-phrase closer I didn't catch. The closing lecture ended with a three-phrase benediction: *"You know how to test. You know how to learn. You know how to encode."* Exactly the framing I said, a few paragraphs above, we would cut. Four LLM instances wrote and verified that closer. None caught the contradiction with what they had also read. A senior-engineer persona sim read the two files and named it in one pass: *"direct violation of what this opener promised to avoid. Either cut or pull the fang from it."* We cut. The contradiction was plain to a keen reader. It was invisible across four LLMs that had just produced it.
 
 The paraphrase I shipped as a quote. The closer's Ramp paragraph attributed a framing to Ramp's own engineers: *"the harness was the bottleneck, not the model."* That was not what Geoff Charles said. Source verification against our research observations found Charles's actual line: *"The models were good enough. The harness wasn't."* Close enough in meaning that Claude did not notice the drift at write time. Specific enough in wording that a source-verify pass caught it in one read. Claude had written a paraphrase and presented it as attribution.
 
 The frame I did not cite. Turn seven of planning, verbatim: *"everyone struggles. Surprises happen. The LLM is not a deterministic machine."* Three blunt sentences from me. The draft that came back wrapped that frame in 150 words of philosophising and dropped *Surprises happen* entirely. I asked: *"Remember the exact frame with my words that I gave for the lecture? Cite them and compare with text style. It is too abstract."* The frame was in the session notes. It was not in the reference artefact as a verbatim check. Claude had it, but not in a shape that would force the comparison at ship time. The rule was loaded. The check never ran.
 
-## The generalisation
+## A rule in context is not a rule in the output
 
 Everyone struggles.
 
@@ -36,7 +36,7 @@ The LLM is not a deterministic machine.
 
 The rules were loaded every time: the rules file, the tone brief, the session-timing plan, all sitting in context before the first turn. Claude typed the banned word anyway. It recommended the flattering end-state anyway, and its first proposal came out chat-shaped despite every one of those rules being right there. The subagents leaked the same banned word again. The loop caught what the subagents missed. I caught what the loop missed. You will catch what I missed.
 
-A rule in context is not a rule in the output. Taste closes the gap.
+Taste closes the gap.
 
 ## Then I compounded the session
 
@@ -52,7 +52,7 @@ A rule you wrote last module will not apply this session. That is the thing. The
 
 Your job is not to stop the drift. Your job is to catch it and encode what you learned.
 
-I made this module live, running the move I am asking you to run. I drifted in every one of the ways this story just walked. I fixed what I caught. The loop caught what I missed. A senior-persona sim caught what the loop missed. I pushed back on "done" a few times before it actually was.
+I made this module live, running the move I am asking you to run. I drifted in every one of the ways this story just walked. I fixed what I caught. The loop caught what I missed. A senior-persona sim caught what the loop missed.
 
 Your turn.
 
@@ -100,7 +100,7 @@ Claims
 - `everyone-struggles` · vision · "Everyone struggles." ← none-owed
 - `llm-is-not-deterministic` · vision · "The LLM is not a deterministic machine." ← none-owed
 - `post-training-warmth-read` · vision · "Our read: much is caused by post-training preferring warmth over directness." ← none-owed — an owned inference, labeled as one in body. The literature edge (Sharma et al. on sycophancy) lives in painting-the-picture-with-the-llm's ledger, where the "driven in part by" hedge is marked load-bearing; do not strengthen here either.
-- `rule-in-context-is-not-rule-in-output` · vision · "A rule in context is not a rule in the output. Taste closes the gap." ← none-owed — **no closing superlative after it (`check_writing §21`, 2026-08-30):** *"Nothing else does."* is a world-claim the memo refutes four times over (grep pass, verifier loop, persona sim, and § *Then I compounded the session*'s skills that block "done" — forcing functions, not taste). Do not restore it or hedge it back in; §21 rules the hedge worse than the superlative. Taste-upstream-of-all-four-catchers is a different sentence, unwritten.
+- `rule-in-context-is-not-rule-in-output` · vision · "A rule in context is not a rule in the output" ← none-owed — **no closing superlative after it (`check_writing §21`, 2026-08-30):** *"Nothing else does."* is a world-claim the memo refutes four times over (grep pass, verifier loop, persona sim, and § *Then I compounded the session*'s skills that block "done" — forcing functions, not taste). Do not restore it or hedge it back in; §21 rules the hedge worse than the superlative. Taste-upstream-of-all-four-catchers is a different sentence, unwritten.
 - `rule-in-memory-that-does-not-force` · vision · "A rule in memory that does not force is worse than no rule." ← none-owed
 - `loop-exists-because-llms-drift` · vision · "The loop exists because LLMs drift. The loop exists because rules leak." ← none-owed
 - `catch-it-and-encode-it` · vision · "Your job is not to stop the drift. Your job is to catch it and encode what you learned." ← none-owed

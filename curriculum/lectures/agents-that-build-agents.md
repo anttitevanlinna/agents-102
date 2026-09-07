@@ -13,7 +13,7 @@ Nobody reviews 500K lines by hand. Some of the early agentic engineering demos w
 
 Spec and tests were the first things those engineers wrote down. Writing things down is not the whole of it. The goal is giving the system the right information, and nobody has that part figured out yet.
 
-Nobody can hand you the right information about your customers, your direction, your domain. You find it one run at a time.
+Nobody can hand you the right information about your customers, your direction, your domain. You find it one session at a time.
 
 ## You make agentic happen
 <!--tier:2-->
@@ -34,6 +34,8 @@ The training closes.
 **Quality:** compendium-audited 2026-09-05 (writing@fb797e3b story@289b45a3 technical@94fcca2d behavior@4e0370bc pedagogy@4e0370bc strategy@fb797e3b slides@289b45a3)
 - judges @fb797e3b: writing PASS (1 todo see instances/ae101--lecture--agents-that-build-agents.writing.json), story PASS (1 todo see instances/ae101--lecture--agents-that-build-agents.story.json), technical PASS (1 todo see instances/ae101--lecture--agents-that-build-agents.technical.json), behavior PASS (1 todo see instances/ae101--lecture--agents-that-build-agents.behavior.json), pedagogy PASS (3 todos see instances/ae101--lecture--agents-that-build-agents.pedagogy.json), strategy PASS, slides PASS
 - sim-passed 2026-05-31 (three-persona sim). Per-class instances at `curriculum/evals/instances/ae101--lecture--agents-that-build-agents.<class>.json`.
+
+**Bullet 2's *It stops exactly where the writing stops and your judgement takes over* stays (Antti 2026-09-07):** the border is stated on purpose; §27b restates-the-header cut refused, do not re-file.
 
 **Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** bold only on the three order handles of *You make agentic happen*; every other slide plain, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. The closing slide is two bullets plus a kicker, below the 3-bullet floor by design: the arc-final beat is two claims, and padding would be restatement.
 
@@ -62,7 +64,7 @@ Claims
 - `500k-lines-in-weeks` · detail · "Some of the early agentic engineering demos were single devs shipping 500K lines of code in weeks" ← antti-agentics-helsinki, luma-agentics-helsinki
 - `spec-and-tests-was-the-theme` · detail · "every generated line had to correspond to a spec, every feature had to be tested" ← antti-agentics-helsinki
 - `writing-down-is-not-the-whole-of-it` · vision · "Writing things down is not the whole of it. The goal is giving the system the right information, and nobody has that part figured out yet." ← none-owed
-- `right-information-is-found-one-run-at-a-time` · vision · "Nobody can hand you the right information about your customers, your direction, your domain. You find it one run at a time." ← none-owed
+- `right-information-is-found-one-session-at-a-time` · vision · "Nobody can hand you the right information about your customers, your direction, your domain. You find it one session at a time." ← none-owed
 - `you-make-agentic-happen` · vision · "You make agentic happen" ← none-owed
 - `possibly-to-i-have-something` · vision · "Acting is the move from *possibly* to *I have something*." ← none-owed
 - `pathways-show-the-next-level` · vision · "The pathways you build show you the next level." ← none-owed

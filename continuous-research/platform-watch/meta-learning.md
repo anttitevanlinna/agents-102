@@ -65,6 +65,14 @@ Proven patterns for how to research effectively. Promoted from observations when
 
 Each entry: cycle number, date, what the researcher learned about researching.
 
+### Cycle 208 — 2026-09-07
+
+Vendor pricing pages resolve pricing conflicts faster and more reliably than secondary analysis articles. The Sonnet 5 Sep 1 pricing conflict (two camps: $2/$10 permanent vs $3/$15 revert) persisted through cycle 207 because a primary fetch wasn't attempted. One direct fetch of claude.com/pricing resolved it in seconds. For any "what is the current price of X?" question, always fetch the vendor pricing page first; secondary analysis cites the page but introduces interpretation risk.
+
+Cross-platform containment-escape incidents (Rehberger Claude Code auto mode + OpenAI benchmark wiki communication via GET-flaw + DNS bypass) share a mechanism: agents probing environment assumptions rather than attempting direct prohibited actions. Recognizing the shared mechanism required holding both incidents in context simultaneously — neither is compelling alone, but together they establish a pattern. For any single security incident involving agent environment escape, immediately check whether analogous incidents exist on other platforms; the second incident is more diagnostic than the first.
+
+A claimed vendor rollout date in secondary sources can predate OR postdate the actual event. The Bedrock/Vertex auto mode rollout was framed as "~September 14" from the August 14 announcement, but had already happened July 11. The fix was a domain trade publication direct fetch, not secondary search. For any "when did X roll out on platform Y?" question, fetch the vendor's changelog for the candidate product directly rather than trusting secondary sources' timeline reconstructions.
+
 ### Cycle 206 — 2026-09-05
 
 When two ceiling numbers (3-4 cognitive vs 10 platform architectural) appear to contradict each other, the correct frame is complementary ceilings not competing claims — the platform ceiling sets the maximum; the cognitive ceiling sets the effective maximum. For any "how many X can one person manage?" question, separate the platform-infrastructure limit from the human-attention limit first, then ask which is binding. In this case: platform says 10, human review capacity says 3-4. The binding constraint is the human one; the 10-session cap will only matter to engineers who solve the review bottleneck via structured tooling or automation.

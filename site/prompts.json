@@ -975,8 +975,8 @@
     "dest": "Claude Code",
     "context": "same session, at the close after the stack scan",
     "runtime": "any",
-    "origin": "lectures/agents-that-build-agents",
-    "text": "This session we drew the recurring shapes in my work. The shapes are in your context right now.\n\nWrite me a handoff prompt I can save and run in a fresh session later to build the kit: one skill per recurring shape worth packaging, across my whole stack. Carry the shapes we just named into the prompt so it starts from them, not from scratch. For each shape: study the work, pick the check that fits, author through conversation, push back, invoke to verify.\n\nThe prompt runs later in a cold session, so bake in what that session won't have. Tell it to re-study my repos for these shapes, and name the shapes inside it.",
+    "origin": "lectures/the-handoff-prompt",
+    "text": "This session we drew the recurring shapes in my work. The shapes are in your context right now.\n\nWrite me a handoff prompt I can save and run in a fresh session later. It does three things, in order.\n\nIt scans my work for the kinds of work I repeat, starting from the shapes named here.\n\nIt picks with me the one skill most worth building, and builds it.\n\nIt makes sure the work that skill produces has efficient checks on its quality: checks I can run, not reviews I have to do.\n\nThe fresh session will not have this context, so name the shapes inside the prompt and tell it what to re-read.",
     "requires": [
       {
         "id": "recurring-shape-diagrams",
@@ -986,7 +986,7 @@
     "produces": [
       {
         "id": "workflow-skills-handoff-prompt",
-        "location": "scrollback (standalone handoff prompt the student saves and runs later; drives study then diagram then author across their whole stack)"
+        "location": "scrollback (standalone handoff prompt the student saves and runs later; scans the work, picks one skill with the student and builds it, then puts efficient checks on the work that skill produces)"
       }
     ]
   },
@@ -1979,7 +1979,7 @@
     "context": "",
     "runtime": "any",
     "origin": "exercises/extract-the-task-shaping-rule",
-    "text": "Read this session end-to-end. Propose three to five rules about what makes a multi-file task plan-mode-able on this codebase. Phrase each as a one-liner I could re-read tomorrow. Anchor each rule in a specific moment from the session: the task I picked, what the second-pass read surfaced, what my push-backs caught, where the plan factored cleanly and where it didn't. Rules about task shape, not about plan-reading craft. After proposing, stop and ask which one I want to rewrite and which one I want to reject. Wait for my answer before continuing.",
+    "text": "Read this session end-to-end. Propose three to five rules about what makes a multi-file task plan-mode-able on this codebase. Phrase each as a one-liner I could re-read tomorrow. Anchor each rule in a specific moment from the session: the task I picked, what the second-pass read surfaced, what my push-backs caught, where the plan factored cleanly and where it didn't. Rules about task shape, not about plan-reading craft.\n\nAfter proposing, stop and ask which one I want to rewrite and which one I want to reject. Wait for my answer before continuing.",
     "requires": [
       {
         "id": "m2-session-scrollback",
@@ -3363,8 +3363,8 @@
     "dest": "Claude Code",
     "context": "",
     "runtime": "any",
-    "origin": "exercises/spot-gaps-build-the-loop",
-    "text": "Expand my menu of checks before I read my own map against it.\n\nList 5–10 atomic verification primitives a software engineer uses to check agentic work (test-writing, browser-testing, PR-building, lint-gates, ...) — the moves themselves, not the agent context. For each, name in one line what it checks and where it fires (pre-session / mid-session / post-session / continuous).\n\nThen evaluate fit for the dominant gap I named in Phase 1. Which 2–3 primitives would most likely have caught it? Recommend the primitives, and say which of the recurring shapes we drew each one pairs with.\n\nBe concrete. Generic \"tests\" doesn't make the cut; \"unit test against the changed function\" does.",
+    "origin": "exercises/read-your-stack",
+    "text": "Expand my menu of checks before I read my own map against it.\n\nList 5–10 atomic verification primitives a software engineer uses to check agentic work (test-writing, browser-testing, PR-building, lint-gates, ...) — the moves themselves, not the agent context. For each, name in one line what it checks and where it fires (pre-session / mid-session / post-session / continuous).\n\nThen evaluate fit for the dominant gap I named. Which 2–3 primitives would most likely have caught it? Recommend the primitives, and say which of the recurring shapes we drew each one pairs with.\n\nBe concrete. Generic \"tests\" doesn't make the cut; \"unit test against the changed function\" does.",
     "requires": [
       {
         "id": "two-run-gap-map",
@@ -3387,7 +3387,7 @@
     "dest": "Claude Code",
     "context": "",
     "runtime": "any",
-    "origin": "exercises/spot-gaps-build-the-loop",
+    "origin": "exercises/read-your-stack",
     "text": "Take the recurring groups you just named. For the top few, draw each one as a mermaid diagram of how that kind of work flows: the steps in order, where it branches, where it loops back, what hands off to what.\n\nKeep each diagram to 30 nodes at most. The point is to recognise the shape of the work, not to document every case. If a shape needs more than 30 nodes, it is really two shapes, split it.",
     "requires": [
       {
@@ -3410,7 +3410,7 @@
     "dest": "Claude Code",
     "context": "",
     "runtime": "any",
-    "origin": "exercises/spot-gaps-build-the-loop",
+    "origin": "exercises/read-your-stack",
     "text": "Go through my work across everything I do, not just this repo. I want to see the kinds of work I do over and over.\n\nMy Claude Code sessions across every project live under `~/.claude/projects/`, one folder per repo I've worked in. Read across them. If there are other repos you should look at that aren't in there, ask me where they are.\n\nThis is a big read and will run a while. As you go, keep me posted: every thirty seconds or so, drop a quick line on which repos you've covered, the groups starting to show, and anything that surprises you. Don't go quiet and hand me everything at the end.\n\nIf I cut in to point you at one kind of work, or to ask what you've found so far, answer me and then pick up where you left off.\n\nGroup what you find by the kind of work it is, the way of working that repeats, not the feature. For each group, give it a short name and quote an instance or two so I can see it's real. Don't filter to what looks important. Show me what actually recurs, including the dull stuff. Rank the groups by how often they show up and give me the top six or so, the ones I actually repeat, not the ones that look impressive.",
     "requires": [
       {

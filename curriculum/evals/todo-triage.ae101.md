@@ -78,15 +78,6 @@ Per-card state lives in the JSON on a `card` object (`outcome`: applied · decli
 
 **Open the card with what the beat is FOR.** Two of the first four were declined because the fix matched the rule's words and missed the sentence's job, and a third needed Antti's own wording. State in one line what the student is doing at that moment and what it builds toward; if that line will not come, the card is not ready. → `compounded/2026-09-05-student_facing-ask-what-the-beat-is-for-before-proposing-wording.md`
 
-Settled so far, each leaving a durable artefact behind it:
-
-| Card | Call | What it left |
-|---|---|---|
-| `ae101-m5-rerun-packaged` §43 streaming | declined | `check_prompts §43` UNATTENDED BY DESIGN carve-out |
-| `where-the-rule-could-live:9` §8 agency | declined | `vocabulary.md` gained the `judge` row, embargoed before the M5 closer |
-| `earn-the-trust:109` §20 count | applied | cut cleared §20 and the `## Next` sentence cap together |
-| `orient-and-introspect:31` §17 header | applied | §17 narrowed to the product name; every AE101 header swept |
-
 **Presented and awaiting a call (2026-09-06):** `compound-and-close.md:7`, `pedagogy §52c`. Current *"a rules file written from session evidence"* → *"a rules file that improves your next session on this repo."* The current tail repeats the What-you-do line above it word for word; the replacement is the file's own maintainer summary. Longer than the line as it stands, shorter than what shipped that morning. **This defect is mine** — an earlier card cut the slot down to a bare artifact name, and the §52c amendment later that day made bare artifact names fail.
 
 **Ruled since the queue opened**, each leaving a durable artefact so the finding stops recurring:
@@ -104,6 +95,13 @@ Settled so far, each leaving a durable artefact behind it:
 | `threat-model-with-stride:37` §27 | applied | three sentences to one; *assess*, not *judge* |
 | `compound-and-close:5,7` §52c | applied | both trailing duplicates cut |
 | `extract-the-task-shaping-rule:7` §52c | applied | §52c amended: the slot names what the artifact ENABLES |
+| `story-of-module-6:29` §15 header | applied | the law slide states its claim; the close line keeps *Taste closes the gap* |
+| `agents-that-build-agents:16` §21b noun-run | applied | Antti's noun: *one session at a time* |
+| `agents-that-build-agents:7` §27b | declined | keep-note: the border is stated on purpose |
+| `composing-the-workflow:10` §27a | declined | keep-note: the sentence says which way is up |
+| `composing-the-workflow:33` §27a | declined | keep-note: the tool-independent line outlives the primitive names |
+| `story-of-module-6:55` §27d | applied | the close ends on the sim catch, then *Your turn* |
+| `story-of-module-6:23` research §1 | applied | Antti's wording: *a keen reader* |
 
 **The §52c sweep of the sixteen AE101 lead-ins:** eight want a rewrite, seven stand, a skeptic overturned three proposed rewrites. Two of the eight are suppressed and should not be presented as they are — `spot-gaps-build-the-loop` grows the line, and `diagnose-and-resend` proposes *"in minutes, not hours"*, a quantified claim with no source. `read-your-stack` STANDS.
 

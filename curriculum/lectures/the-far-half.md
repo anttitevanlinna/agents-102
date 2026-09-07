@@ -9,7 +9,7 @@
 ## Long-running work adds three new concerns
 
 - Long-running is not more of the same. So far you sat inside every loop: you read each reply, caught each wobble as it happened. When the agent runs for an hour without you watching, that quick feedback goes quiet.
-- **Verification** tells you whether the result is any good. Tests, checks, reads, judges: everything that pushes back on the work before you accept it. On a long session, this stops being a glance and becomes a job.
+- **Verification** tells you whether the result is any good. Tests, checks, reads: everything that pushes back on the work before you accept it. On a long session, this stops being a glance and becomes a job.
 - **Absorption** determines how much of the output you can actually take up. Generating is fast; reading, judging, and merging are not. On a long session the gap between the two decides your real throughput.
 - **Outcome** determines what survives the session. The fix you keep, the rule it taught you, and whether any of it crosses the wall from you to the team.
 - One question to carry into the session: when the agent takes a hundred steps alone, what makes you trust the result at the end?
@@ -48,7 +48,7 @@ Format → `curriculum/backing-format.md`. Figure provenance: derived from `the-
 **Claims**
 - `soil-line` · vision · "act under uncertainty · competence sets the ceiling · cross personal → team" ← none-owed
 - `long-running-is-not-more-of-the-same` · vision · "When the agent runs for an hour without you watching, that quick feedback goes quiet." ← none-owed
-- `verification-tests-result` · detail · "**Verification** tells you whether the result is any good. Tests, checks, reads, judges: everything that pushes back on the work before you accept it." ← osmani-outer-loop
+- `verification-tests-result` · detail · "**Verification** tells you whether the result is any good. Tests, checks, reads: everything that pushes back on the work before you accept it." ← osmani-outer-loop
 - `verification-becomes-a-job` · vision · "On a long session, this stops being a glance and becomes a job." ← none-owed
 - `absorption-sets-take-up` · detail · "**Absorption** determines how much of the output you can actually take up. Generating is fast; reading, judging, and merging are not." ← osmani-outer-loop, osmani-software-factories
 - `absorption-gap-decides-throughput` · vision · "On a long session the gap between the two decides your real throughput." ← none-owed

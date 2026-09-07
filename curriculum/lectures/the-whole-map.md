@@ -9,7 +9,7 @@ Every piece of agentic work maps onto the same cycle. The loops drawn across the
 - **Intent.** What you point the work at. Which task, and what done means, before a single step runs.
 - **Context.** What the agent knows going in. The files, rules, and memory that decide whether it acts on your system or on a guess about your system.
 - **Work.** The agent runs the loop: acts, reads the result, corrects, goes again. Everything you would call "using the agent" happens in this phase.
-- **Verification.** How you know the result is any good. Tests, checks, reads, judges: everything that pushes back on the work before you accept it.
+- **Verification.** How you know the result is any good. Tests, checks, reads: everything that pushes back on the work before you accept it.
 - **Absorption.** How much of the result you can actually take up. What gets read, judged, and merged, not just what gets produced.
 - **Outcome.** What you keep. What survives the session and compounds into the next one.
 

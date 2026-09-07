@@ -370,21 +370,17 @@ A well-shaped prompt has three moves doing the heavy lifting and a handful of ot
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-09-05 (writing@08946dd8 story@08946dd8 technical@08946dd8 behavior@28a4abc5 pedagogy@1abb84c6 strategy@08946dd8 slides@08946dd8)
+- judges @08946dd8: writing PASS, story PASS (1 todo see instances/ae101--reference--prompt-anatomy.story.json), technical PASS (verify-refuted), behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS (verify-refuted, 1 todo see instances/ae101--reference--prompt-anatomy.slides.json)
+
 **Authoring contract:** prompt frontmatter may carry `anchors` metadata later, but the current renderer does not surface hover highlights. If highlight mode ships, add the frontmatter anchors and renderer support in the same change. Until then, this page is the lookup surface and the examples are the binding.
 
-**Source-of-truth:** the canonical rule-set behind these moves lives in `memory/check_prompts.md` (private). This page is the student-facing surface. The rules file is the author-facing surface. If they drift, the rules file wins and this page updates to match.
+**Source-of-truth:** `memory/check_prompts.md` (private, author-facing) wins on drift; this page is the student-facing surface and updates to match.
 
-**Voice rotation:** Sutherland-tinged across families. Rory for input / interaction / continuity. Boris for output / execution. Roger for target / boundary / three-move patterns. Per-entry shape: bold lead-in carrying both definition and first beat of the why; plain continuation; italicised quote from a real prompt. *What it does / Why it pays / In the wild* labels deliberately stripped. They were training-wheels prose.
+**Voice rotation:** Sutherland-tinged across families. Rory: input / interaction / continuity. Boris: output / execution. Roger: target / boundary / three-move patterns.
 
 **Examples-in-the-wild:** drawn from real Agents 101 and AE101 prompts. When a referenced prompt changes substantively, audit the example here. Verbatim drift breaks the lookup contract.
 
-**Em-dash discipline (per `check_student_facing.md` §14):** body prose carries zero em-dashes. Splits to two sentences, parenthetical (rare), or comma-clause are the legal restructures. One em-dash inside the *multi-result fallback* example is verbatim from a real prompt and stays.
+**Em-dash (`check_student_facing.md` §14):** body carries none; the one inside the *multi-result fallback* example is verbatim from a real prompt and stays.
 
-**Count audit:** 33 entries across 7 families (input 4 / target 4 / output 8 / execution 6 / interaction 4 / boundary 5 / continuity 2) plus 6 three-move patterns.
-
-**Sweep coverage:**
-- AE101 prompts surveyed: all M1–M6 module-body + AE101-referenced exercises (`ae101-m*`, plus `push-back-on-the-plan`, `compound-and-close`, `walk-and-send-off`, `diagnose-and-resend`, `orient-and-introspect`, `spot-gaps-build-the-loop`, `author-test-strategy-skill`, `map-the-access-surface`, `threat-model-with-stride`, `open-the-side-quest`, `fix-tests-first`, `extract-the-task-shaping-rule`).
-- Agents 101 prompts surveyed: signal-rich sample (`three-minds-one-synthesis`, `three-retrievers-one-curator`, `self-consistency-after-scoreboard`, `hallucination-bakeoff`, `eval-loop`, `compounding`, `audit-your-agent`, `extend-your-system`, `debugging-stuck-agents`, `author-security-skill`, `build-your-challenge-memory`).
-
-**Quality:** compendium-audited 2026-09-05 (writing@08946dd8 story@08946dd8 technical@08946dd8 behavior@28a4abc5 pedagogy@1abb84c6 strategy@08946dd8 slides@08946dd8)
-- judges @08946dd8: writing PASS, story PASS (1 todo see instances/ae101--reference--prompt-anatomy.story.json), technical PASS (verify-refuted), behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS (verify-refuted, 1 todo see instances/ae101--reference--prompt-anatomy.slides.json)
+**Count audit:** the body's *thirty-three / seven families / six* claim and each family intro's count re-earn on every entry add or cut: `awk -F': ' '/^## /{f=$1}/^### /{c[f]++}END{for(k in c)print c[k],k}' prompt-anatomy.md`.

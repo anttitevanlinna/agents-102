@@ -63,15 +63,18 @@ The progression and the leverage model describe the same thing. Every **Moves yo
 
 <!-- maintainer -->
 
+**Quality:** compendium-audited 2026-09-05 (writing@324b81d7 story@324b81d7 technical@324b81d7 behavior@670460b pedagogy@1abb84c6 strategy@324b81d7 slides@324b81d7)
+- judges @324b81d7: writing PASS (2 todos see instances/ae101--supplementary--agentic-engineering-progression.writing.json), story PASS, technical PASS (2 todos see instances/ae101--supplementary--agentic-engineering-progression.technical.json), behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS
+
 **Time:** ~5 min.
 
-**Meta:** *AE101 supplementary. Part 1 gives the engineer-active progression, one slide per level, each closing on a `**Moves you up:**` constraint. Part 2 gives the leverage model. First linked from M1's pre-reads; linked again from M4's `## Prework` section.*
+**Meta:** *AE101 supplementary. Part 1 = the engineer-active progression, one slide per level; Part 2 = the leverage model.*
 
 **Role:** Names a recurring progression in how engineers use AI, then gives the calibrated delegation frontier for reasoning about leverage. The engineer remains the actor throughout.
 
-**Placement:** Primary link from M1 (`getting-going.md`) under `## Pre-reads before Module 2`. Reappears at the start of M4 (`run-the-first-experiment.md`) as an optional forward look.
+**Placement:** M1 `getting-going.md` `## Pre-reads before Module 2` (primary); M2 `plan-mode-done-right.md` `## Prework` (optional reading); M4 `run-the-first-experiment.md` `## Prework` (optional forward look).
 
-**Voice:** Direct, compact, engineer-active. Each level slide states the work in second person and closes on the constraint that opens the next level; the leverage model gets the page's only diagram.
+**Voice:** Direct, compact, engineer-active; level slides in second person; the leverage model gets the page's only diagram.
 
 <!-- backing -->
 
@@ -113,13 +116,9 @@ OODA
 
 <!-- /backing -->
 **Watch-fors (delivery):**
-- Part 1 is one slide per level (Antti-directed 2026-08-14). Each slide carries the level's substance and ends with a `**Moves you up:**` seam in three beats (Antti-directed 2026-08-19): the limit met in real work, then a `The door is trust …, held by <holder>` sentence, then a `The way up is …` sentence naming the concrete move. The door is always the level of control, calibration and trust earned — never the artifact; the artifact (eyes and a test run, the packaged done-evidence, durable files, a written check, calibrated gates) is the HOLDER of that control, named after `held by`. The closing slide's "Read the doors again" sentence depends on every door staying trust-shaped. Keep the levels describing work, and keep each seam naming a limit and a trust state, never a rank or a score.
+- Part 1 is one slide per level (Antti-directed 2026-08-14), each = the level's substance + a `**Moves you up:**` seam in three beats (Antti-directed 2026-08-19): the limit met in real work → `The door is trust …, held by <holder>` → `The way up is …` naming the concrete move. Door = the control/calibration/trust earned, never the artifact; the artifact (eyes and a test run, done-evidence, durable files, a written check, calibrated gates) is the HOLDER, named after `held by`. The closing slide's "Read the doors again" depends on every door staying trust-shaped.
 - Part 2 owns the leverage model. Do not add a module-by-module explanation around it.
-- The closing slide names the Part 1 ↔ Part 2 identity: each `**Moves you up:**` is calibration licensing reach, and levels can be lost. It stays short, stays LAST, and the level slides carry only quiet clues toward it (the "you read everything" echo of the diagram's low-reach label, the return-on-unfamiliar-codebase line, the second-task-shaped-well-enough clause). Do not spell the connection out inside Part 1; the reveal is the smart reader's to make first.
-- The diagram is a deliberate duplicate of `curriculum/lectures/the-gate-is-a-claim.md`; keep the model and labels synchronized.
+- The closing slide names the Part 1 ↔ Part 2 identity: each `**Moves you up:**` is calibration licensing reach, and levels can be lost. It stays short, stays LAST, and the level slides carry only quiet clues toward it (the "you read everything" echo of the diagram's low-reach label, the return-on-unfamiliar-codebase line, the shaping-a-second-task clause). Do not spell the connection out inside Part 1; the reveal is the smart reader's to make first.
+- The diagram is `{{figure:delegation-frontier}}`, single-sourced from `curriculum/figures/delegation-frontier.md`; the same marker renders in `lectures/the-gate-is-a-claim.md` (M5 closer) and `lectures/when-a-plan-is-good.md` (M2), so labels cannot drift between pages.
 - This page deliberately gives away M5's delegation-frontier reveal. Repetition can teach better than preserving one big reveal; M5 deepens and operationalizes the model rather than depending on first exposure.
 - The progression describes how work is organized, not a score assigned to the person. Session count and autonomy are inputs, not levels.
-- Keep shortcut framing out of the student-facing body.
-
-**Quality:** compendium-audited 2026-09-05 (writing@324b81d7 story@324b81d7 technical@324b81d7 behavior@670460b pedagogy@1abb84c6 strategy@324b81d7 slides@324b81d7)
-- judges @324b81d7: writing PASS (2 todos see instances/ae101--supplementary--agentic-engineering-progression.writing.json), story PASS, technical PASS (2 todos see instances/ae101--supplementary--agentic-engineering-progression.technical.json), behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS

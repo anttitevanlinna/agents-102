@@ -93,22 +93,16 @@ Two sessions is a milestone. Five is a habit. Ten is something you grow into.
 
 <!-- maintainer -->
 
-**Canonical home:** `curriculum/trainings/agentic-engineering-101/reference/multi-session-git.md`. Referenced from AE101 M1 homework.
+**Quality:** compendium-audited 2026-09-05 (writing@08946dd8 story@08946dd8 technical@08946dd8 behavior@b3143a4 pedagogy@43e6cae1 strategy@08946dd8 slides@08946dd8)
+- judges @08946dd8: writing PASS (2 todos see instances/ae101--reference--multi-session-git.writing.json), story PASS, technical PASS (verify-refuted, 1 todo see instances/ae101--reference--multi-session-git.technical.json), behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
-**Read time:** ~10 min.
+**Canonical home:** `curriculum/trainings/agentic-engineering-101/reference/multi-session-git.md`. Referenced from AE101 M1 homework.
 
 **Attribution:** Cherny frames parallel worktrees as "the single biggest productivity unlock" in his [Jan 2026 X thread](https://x.com/bcherny/status/2017742743125299476) [practitioner direct]. Separately, [Gergely Orosz on Boris Cherny, *Building Claude Code with Boris Cherny*](https://newsletter.pragmaticengineer.com/p/building-claude-code-with-boris-cherny), Mar 4 2026 [practitioner analysis] — Cherny there describes running five parallel Claude Code instances across separate checkouts, corroborating parallel-session workflows generally, not the "productivity unlock" framing or the "worktrees" word.
 
 **Attribution, item 4 of § When NOT:** the reads-parallelise / single-writer shape is Cognition's (Walden Yan, *Multi-Agents: What's Actually Working*); quotes, lineage and the dated stamp live in `supplementary/workflow-composition-lineages.md` § *Single writer with advisor agents*. The body carries the shape without the name: this page teaches the student's own session topology, not multi-agent architecture.
 
-**Source verification — MUST DO before first cohort:**
-- Open both URLs against original. Re-confirm the X-thread quote verbatim (X posts can be edited or deleted) and re-confirm the Pragmatic Engineer piece still doesn't use "worktree"/"worktrees" before letting it stand as corroboration of anything beyond parallel-checkout workflows.
-- The phrase "single biggest productivity unlock" and the word "worktrees" ride on the X thread only. Do not let the interview citation imply it independently corroborates either.
-- Fallback if the X thread no longer resolves/confirms: drop the single attribution and reframe as "some practitioners describe parallel worktrees as a major productivity unlock" without naming Cherny.
-- Fallback if the interview no longer supports even the parallel-checkouts framing: drop the second citation and let the X thread stand alone.
+**Source verification:**
 - `[checked:2026-08-31 result:OK due:2026-07-31]` https://x.com/bcherny/status/2017742743125299476 — [practitioner direct] Cherny "single biggest productivity unlock" quote; verbatim text + byline re-confirmed 2026-08-31 via search-index title of the canonical URL (oEmbed 402s and TwStalker mirrors 403 — see `memory/reference_x_content_fetch_workaround.md`), post dated 2026-01-31 per snowflake; due = pub+6mo, past — cited for the dated quote. fallback: if unconfirmable at next check, reframe as unattributed "some practitioners" framing.
 - `[checked:2026-07-12 result:OK due:2026-09-04]` https://newsletter.pragmaticengineer.com/p/building-claude-code-with-boris-cherny — [practitioner analysis: Gergely Orosz on Boris Cherny] describes 5 parallel Claude Code instances via separate checkouts; full-text search for "worktree"/"worktrees"/"productivity unlock" returns zero hits. Cited only for parallel-session workflows, never for the word "worktrees." fallback: drop this citation if it no longer supports even the checkouts framing.
-- `[checked:2026-08-30 result:OK due:none]` `supplementary/workflow-composition-lineages.md:cognition-multi-agents-working` — [delegated stamp] Item 4's single-writer shape; the dated live check (currently 2026-05-25, due 2026-11-25) is owned by the supplementary. `due:none`, a delegation does not expire. fallback: keep the item, it stands as ordinary merge-hygiene advice without the lineage.
-
-**Quality:** compendium-audited 2026-09-05 (writing@08946dd8 story@08946dd8 technical@08946dd8 behavior@b3143a4 pedagogy@43e6cae1 strategy@08946dd8 slides@08946dd8)
-- judges @08946dd8: writing PASS (2 todos see instances/ae101--reference--multi-session-git.writing.json), story PASS, technical PASS (verify-refuted, 1 todo see instances/ae101--reference--multi-session-git.technical.json), behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+- `[checked:2026-08-30 result:OK due:none]` `supplementary/workflow-composition-lineages.md:cognition-multi-agents-working` — [delegated stamp] Item 4's single-writer shape; the dated live check is owned by the supplementary. `due:none`, a delegation does not expire. fallback: keep the item, it stands as ordinary merge-hygiene advice without the lineage.

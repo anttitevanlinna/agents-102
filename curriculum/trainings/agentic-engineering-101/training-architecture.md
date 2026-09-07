@@ -12,8 +12,6 @@ Today AE101 ships only on Claude Code (CLI + Desktop). Gemini CLI is the planned
 
 **Jules and other async cloud agents are out of scope.** AE101 teaches a synchronous loop where the engineer reads what the agent did and steers in real time. Async PR-back agents fit a different pedagogy.
 
-**Planned: Gemini CLI** as alternate runtime. See §Future TODO.
-
 ## Material distribution
 
 Two artefacts per student:
@@ -26,7 +24,7 @@ No persistent training-directory state. No `module-N/` folders. If a student ask
 
 ## Content flags
 
-Two flag kinds let one shared source serve every cut without forking — forked copies are how the five deleted autumn files drifted. Guarded by `scripts/content-flags.test.js`; stock AE101's prework build verified byte-identical when the mechanism landed (2026-07-28).
+Two flag kinds let one shared source serve every cut without forking (forked copies drift). Guarded by `scripts/content-flags.test.js`.
 
 - **Declared flags.** `flags: { payload: false }` on the registry entry strips passages wrapped in `<!--flag:payload-->` from the shared source. Registry-side rather than a CLI switch on purpose: the publishing side builds a cut from its own clone with one command, and a variant whose correctness depends on remembering an extra argument ships wrong the first time someone forgets it. The build renumbers the surviving `## N.` steps consecutively and rewrites every surviving "Step N" reference to match; a reference left outside the flag that points at a removed step fails the build rather than shipping.
 - **Module flags.** `<!--flag:module:earn-the-trust-->` (and the inverse `flag:no-module:`) resolve against the cut's own `modules` list rather than a boolean someone maintains: a passage preparing the student for a module survives exactly when that module is in the cut, and a cut that later restores the module gets its passages back for free. Prefer this over a declared boolean whenever the dependency really is a module — a boolean is a second copy of a fact the registry already holds. A caller that supplies no module list keeps every module-flagged passage: absence of information is not evidence a module was dropped.
@@ -69,7 +67,7 @@ AE101 ships two defined rule layers: personal and team. It does not prescribe a 
 
 The in-repo knowledge home is repo-root `observations/` for a separate mechanical reason: `.claude/memory/` collides with Claude Code's own memory name and location. The knowledge home does not create a third rule layer; §Knowledge-home rename below owns its mechanics.
 
-### Knowledge-home rename: `.claude/memory/` → `observations/` (applied 2026-05-26; runner + compendiums tail)
+### Knowledge-home rename: `.claude/memory/` → `observations/` (2026-05-26)
 
 **Problem, reproduced 2026-05-26.** The in-repo `.claude/memory/` convention fails two ways, both traced to its name and location, not to the model behind it:
 
@@ -84,17 +82,15 @@ The in-repo knowledge home is repo-root `observations/` for a separate mechanica
 
 **Why not the platform's auto-memory.** Routing is unpredictable (above), and the feature is user-scoped and per-machine, the wrong scope for codebase knowledge that must travel with the repo and the worktree fork. Some engineers also disable it. The in-repo file model is the deliberate teaching model; the rename only stops it colliding with the platform feature.
 
-**Sweep surface** (own session): prompt registry (~8 keys touching `.claude/memory/`), exercise + module + lecture bodies (~25 files), mechanical runner (`run-m4.sh` `proj_mem_dir`, `classify_memory_write` in `lib/assertions.sh`, M4/M6 scenarios), compendiums (`check_platform_and_boundaries.md §6d`, the student-facing memory-disambiguation rule), the per-runtime path table below (the knowledge-home row), and the `pre-cohort-todos.md` line-24 bullet. Touching student-facing files auto-degrades Quality per-class, so a `curriculum-pre-ship-audit` pass follows the sweep.
-
 ## Skills
 
 AE101 ships three curated skills in the content tarball (build whitelist `SKILLS=()` in `scripts/build-ae101-content-tarball.sh`). **All three are M3-only, so a cut without M3 installs none of them** — see §Material distribution for what goes with the tarball:
 
 - `access-control-analysis`, used at M3 to analyze the engineer's own codebase access surface.
 - `stride`, used at M3 for STRIDE threat-modelling on the same codebase.
-- `security-tools`, the M3 supply-chain surprise. Framed to students as a generic security-utility pre-flight; its first STRIDE-exercise invocation runs a bundled rick-roll that lands the "external skills are a supply-chain vector" lesson. Mechanics and the don't-spoil-it rule live in the trainer handbook (trainer-modules.md, M3 tab, "The security-tools surprise").
+- `security-tools`, the M3 supply-chain surprise. Framed to students as a generic security-utility pre-flight; its first STRIDE-exercise invocation runs a bundled rick-roll that lands the "external skills are a supply-chain vector" lesson. Mechanics and the don't-spoil-it rule live in the trainer handbook (trainer-modules.md, M3 tab, "The `security-tools` stunt").
 
-All three install to `~/.claude/skills/<name>/SKILL.md` during prework. M3 invokes them by name. M3's third exercise authors a new skill from session evidence; M6 authors no skill in-module; its take-home is a handoff prompt that authors skills later. The M3 authoring beat belongs to its module: a cut without M3 ships no authored skill from that beat, and downstream prompts that look for one are written to stand down rather than error.
+All three install to `~/.claude/skills/<name>/SKILL.md` during prework. M3 invokes them by name. M3's third exercise authors a new skill from session evidence; M6's take-home is a handoff prompt that authors skills later. The M3 authoring beat belongs to its module: a cut without M3 ships no authored skill from that beat, and downstream prompts that look for one are written to stand down rather than error.
 
 The `agentic-nerd` skill at `content/skills/agentic-nerd/` is an optional self-study facilitator the engaged self-study student can install. Cohort delivery does not install or depend on it; it is not part of the curated three above.
 
@@ -120,13 +116,11 @@ Prework is agentic end-to-end. The student unzips the content folder, points the
 
 Repo change mid-training is supported, not remedial. The student replays M1 → M(current) on the new repo in an evening. Replay is artifact regeneration, not re-learning, the pedagogy already landed. The trainer fast-paths replay.
 
-Every module's exercises must produce artefacts deterministically enough to replay. Modules with a room-scale moment (M7 deliberation, optional) or a multi-day wait (M5 send-off) carry an explicit replay-variant path.
+Every module's exercises must produce artefacts deterministically enough to replay.
 
 ## Local-only work
 
 The student's repo lives wherever the team's code actually lives. If the repo is on a synced folder (OneDrive, Dropbox, Google Drive), the repo's `CLAUDE.md` opens with a one-line runtime-naming rule per `check_platform_and_boundaries.md` §7a, *"You are working in a OneDrive-synced folder. Assume eventual consistency on cross-folder reads."* Most engineering repos live on local disk; the rule fires when they don't.
-
-No persistent training-dir state. Everything you need after M1 lives in either your repo (compounding artefacts) or your head (the pedagogy).
 
 ## Variant: Northwind Team Track
 
@@ -140,28 +134,25 @@ stands in for both.
 the tarball and the curated skills in §Material distribution and §Skills, the single worktree fork
 in §Rule files, the four-beat reading arc in §Reading contract, the sitting shape in
 §Delivery-shape variants. Read those sections as written; each names what a cut without M3 or M6
-does instead. The gap-and-seam inventory that steered this cut (`autumn-gaps.md`) is retired —
-the plan it tracked completed, and git history holds the full inventory (removed 2026-08-29).
-Its facts that stay load-bearing:
+does instead. Standing facts:
 
-- **Thirteen deleted files have no recoverable history, deliberately.** Five autumn module files,
-  an autumn prework page, four forked exercises, one forked lecture and two workshop exercises:
-  the commits that added them and the commit that removed them were squashed into one before
-  anything was pushed, because the workshop material is the customer's IPR under the ownership
-  split. Anything worth keeping was re-authored in surviving files; nothing points back at them.
+- **The autumn module files, the forked exercises and lecture, and the two workshop exercises have no recoverable history, deliberately.**
+  The commits that added them and the commit that removed them
+  were squashed into one before anything was pushed, because the workshop material is the customer's
+  IPR under the ownership split. Anything worth keeping was re-authored in surviving files; nothing
+  points back at them.
 - **The two workshops were read for their contracts, not their pedagogy** — what the customer
   loses by re-authoring them from scratch was never priced.
-- **The eight supplementaries were checked for dropped-module references only** (not for whether
-  their sequencing assumptions survive a four-sitting arc), and as of the 2026-08 inventory no
-  live delivery had run against this cut — every cost in it was derived from the text.
+- **The supplementaries were checked for dropped-module references only** (not for whether
+  their sequencing assumptions survive a four-sitting arc), and as of 2026-08 no live delivery
+  had run against this cut — every cost in it was derived from the text.
 
 **Mechanically validated, not just read off source.**
 `curriculum/evals/mechanical/tmux-runner/chain-lemmings-northwind.sh` drives M1→M2→M4→M5 on the
 lemmings SUT with M3/M6 absent from the topology (M4 positions from M2's ending SHA instead of
 M3's now-nonexistent ADR commit). Full PASS, 2026-07-28: M4's audit turn carries no hard dependency
 on M3's ADR or the `test-strategy-lemmings` skill; M5's `verify-by-hand-judge` correctly stands down
-("nothing to judge") when that skill is absent from disk, rather than erroring. This confirms at
-runtime what the retired autumn-gaps inventory's source-level read had only predicted. Full account:
+("nothing to judge") when that skill is absent from disk, rather than erroring. Full account:
 `curriculum/evals/mechanical/tmux-runner/lemmings-chain-runbook.md` § *Northwind variant*.
 
 ## Delivery-shape variants (six-module, 2-day)
@@ -187,19 +178,8 @@ survives be the thing the exercise actually needs.
 ### Goal 1 — every module reaches its first exercise in under 15 minutes
 
 M3 does it in 10 with zero pre-exercise lecture slides, which is the proof it is reachable. Run
-`node scripts/calculate-time.js` for current numbers; do not retype them from here.
-
-| Module | to first exercise | module total (cap 120) |
-|---|---|---|
-| getting-going | 21m | 113 |
-| plan-mode-done-right | 24m | 123 — OVER by 3 |
-| earn-the-trust | **10m** | 112 |
-| run-the-first-experiment | 30m | 103 |
-| learn-from-the-test | 17m | 127 — OVER by 7 |
-| spot-gaps-build-the-loop | 26m | 113 |
-
-M5's overrun is at the back (35m of closers), not the front. A move is time-neutral against the
-cap; only a cut helps there.
+`node scripts/calculate-time.js` for the per-module numbers (time to first exercise, total, OVER/FITS);
+do not retype them here. A move is time-neutral against the cap; only a cut helps a module that is over.
 
 **The tell, and it repeats.** The last slide before an exercise is where authors put the bridge —
 *here is why this matters, here is what you are about to do*. It is nearly always cuttable, because
@@ -209,82 +189,58 @@ already lives in the module's closer. Diagnostic on any pre-exercise slide:
 test it is an assertion that costs minutes and buys nothing, and it spends the closer's payoff in
 advance.
 
-**Landed so far.** Three cuts, all the same shape, none of them tagged as theory:
-`the-wizard-move` § *The loop is what you repeat* (58e8a506) — previewed the loop-over-the-fix beat
-that `the-machine-you-just-met` lands after four exercises. `when-a-plan-is-good` § *Two reads,
-paired* (8cc00874) — key message kept, three sentences under `plan-mode-done-right` § Start here.
-`the-whole-map` § *You are here* (3f219e43) — arc-positioning that `the-loop-half-filled` (M3
-close) already lands as lived ground; beat survives as trainer narration in that file's maintainer
-block.
-
-**Open, carded, awaiting a call:** the two `T2` slides closing `when-a-plan-is-good` (3.7m, M2), and
-`the-agent-loop` § *The agent, the harness, the loop* (M4). All three are the goal-2 violations below.
-
 ### Goal 2 — a barebones edition without T2/T3 slides
 
-**The switch is built (2026-08-30); the tagging is not.** `site/layouts/slides.js` already defines the
+**The switch is built (2026-08-30).** `site/layouts/slides.js` defines the
 vocabulary and renders a badge plus a nav-rail class per tier:
 
 - **T1** — *Core; the work ahead depends on this slide*
 - **T2** — *Recognition; names what the room already did, skippable under time pressure*
 - **T3** — *Story / extra theory, skip freely*
 
-Coverage, re-measured 2026-08-31: **86 tagged slides — 52 T2, 34 T3 — across 23 files**,
-against ~450 `##` sections in the shared library (M3's `earn-the-trust` included; every module's
-pre-reads section carries a tag). Hiding T2/T3 today removes just under a fifth of the deck, not the
-theory. The proof from the cut pass still holds: every slide cut on 2026-08-29 was untagged and
-would have survived a barebones cut intact.
-**The step-1 audit is landed** — `curriculum/evals/tier-audit.ae101.md` (2026-08-30, standing report)
-sweeps the deck slide-by-slide; what remains of the gap is its seven untagged unsure calls, each a
-maintainer ruling, listed there.
+Coverage: `node scripts/check-slide-tiers.js --coverage` (every module's pre-reads section carries a
+tag). Hiding T2/T3 removes a minority of the deck, not the theory: every slide the 2026-08-29 cut
+pass removed was untagged and would have survived a barebones cut intact.
+`curriculum/evals/tier-audit.ae101.md` (standing report) sweeps the deck slide-by-slide; its untagged
+unsure calls are maintainer rulings, listed there.
 
-Re-measure, do not trust these numbers after any tagging work:
+T2/T3 split, anchored to line start because eval-instance JSON and maintainer blocks quote the marker
+as text:
 ```
 grep -rho "^<!--tier:2-->" curriculum/lectures curriculum/exercises curriculum/trainings | wc -l
 grep -rho "^<!--tier:3-->" curriculum/lectures curriculum/exercises curriculum/trainings | wc -l
 ```
-A bare `grep -r "<!--tier:"` over `curriculum/` returns ~126 and is wrong: eval-instance JSON and
-maintainer blocks quote the marker as text. Anchor the pattern to line start.
 
 **T2's definition is goal 1 in different words.** A slide that *"names what the room already did"*
 cannot sit before the exercise — the room has not done it yet. So a `T2` before a module's first
-exercise is a category error, and it is greppable. **Two files, three slides, verified 2026-08-29:**
-`when-a-plan-is-good.md` (2 × T2, M2) and `the-agent-loop.md` (1 × T2, M4). Both are the open cards
-above. The check, per module, on refs before the first `exercises/` link:
+exercise is a category error, and it is greppable. The check, per module, on refs before the first
+`exercises/` link:
 ```
 awk '/\]\(exercises\//{exit} /\]\(lectures\//{print}' <module>.md \
   | grep -o "lectures/[a-z0-9-]*\.md" | sed 's#lectures/##' \
   | while read l; do echo "$l $(grep -c '^<!--tier:[23]-->' curriculum/lectures/$l)"; done
 ```
 Do not filter module refs on a literal `[Exercise` prefix — M1's refs do not use it, and that
-false-positives its closer (`the-machine-you-just-met.md`, 7 tags, correctly placed after all four
+false-positives its closer (`the-machine-you-just-met.md`, tagged, correctly placed after all four
 exercises). Match the `exercises/` path, not the link text.
 
-**Three steps, in order:**
+**Audit, do not bulk-tag.** Rubric `curriculum/evals/tier-rubric.md`, written before dispatch; report
+`curriculum/evals/tier-audit.ae101.md`. **Runtime toggle, not a build variant** (below). **Lint:**
+`scripts/check-slide-tiers.js`, running in `test:gates`; `--coverage` prints tagged-vs-total, because a
+clean gate over an untagged corpus proves nothing.
 
-1. **Audit, do not bulk-tag. — LANDED 2026-08-30.** Six read-only subagents, one per module, against
-   a rubric written before dispatch (`curriculum/evals/tier-rubric.md`). 158 slides ruled; 84 now
-   tagged, up from 38; coverage 14% → 32%. Report: `curriculum/evals/tier-audit.ae101.md`.
-2. **Runtime toggle, not a build variant. — LANDED 2026-08-30.** Details below.
-3. **Lint it. — LANDED 2026-08-30.** `scripts/check-slide-tiers.js`, green, running in `test:gates`.
-   `--coverage` prints tagged-vs-total, because a clean gate over an untagged corpus proves nothing.
+**T2 is a claim about position, not a synonym for "droppable" — T3 is the droppable tier.** Every
+"T2 before the first exercise" finding so far was a mis-tag, not a mis-placement (new mechanism → T1,
+or a slide the maintainer's own note already called skippable → T3); audit the tag before moving the
+slide. Do not reach for T2 to make a slide skippable; that is what T3 is for.
 
-**What the audit changed, and it was not what the programme predicted.** All three known "T2 before
-the first exercise" violations were **mis-tags, not mis-placements** — two were teaching new mechanism
-(→ T1) and one the maintainer's own note already called skippable (→ T3).
-The mechanism: **T2 was being used as a synonym for "droppable"** — T3 is the droppable tier, and T2 is
-a claim about position. Do
-not reach for T2 to make a slide skippable; that is what T3 is for.
-
-**The rubric's one real gap, now closed.** A slide can recognise work from an EARLIER module while
-sitting before this module's first exercise — M6's *Five moves, one quality discipline* recognised
-M1–M5 (the slide was cut 2026-09-02; the rubric point stands). Nothing mechanical separates that from recognising an exercise that has not run, so the file
-declares it in its own maintainer block, one heading at a time:
+**A slide may recognise work from an EARLIER module while sitting before this module's first exercise.**
+Nothing mechanical separates that from recognising an exercise that has not run, so the
+file declares it in its own maintainer block, one heading at a time:
 `**Pre-exercise T2 accepted:** "<header>" — <reason>`. Same shape and scope as the deixis check's hatch.
 
-**Where the time is.** M5's two closers are 4×T2/3×T3 and 4×T2/2×T3 — no T1 between them, so barebones
-drops both wholesale: 13 slides, **20 of the 35 minutes of closers**, against a module at 127/120. M4's
-30-minute front half has no such lever: five of its six pre-exercise slides are genuinely T1.
+**Where the time is.** M5's closers carry the densest T2/T3 tagging in the deck, so barebones is M5's
+lever; M4's pre-exercise slides are almost all T1, so barebones is no lever there.
 **M4 is a dosage problem, not a padding problem** — a scope call, not a tier call.
 
 #### The switch (step 2, shipped)
@@ -292,41 +248,36 @@ drops both wholesale: 13 slides, **20 of the 35 minutes of closers**, against a 
 `CurriculumSlides.open(el, { maxTier })` — `3` (default) is the full deck, `1` is barebones. A
 **Barebones / Full deck** button sits in the deck bar next to the long-read exit, `B` on the
 keyboard, remembered per reader in `localStorage` under `curriculumMaxTier`. Wired in both hosts
-(`scripts/build-workbook.js` inline script, `site/layouts/curriculum-spa.js`); nine tests in
+(`scripts/build-workbook.js` inline script, `site/layouts/curriculum-spa.js`); tested in
 `scripts/slides.test.js`.
 
 Four decisions worth not re-litigating:
 
-- **Absent tier is now `'1'`, not `null`.** Step 1's renderer change landed with step 2, because the
-  filter needs a total function. The badge still renders only for an author's own marker
-  (`tierTagged`), or 450 core slides would each wear a "T1".
+- **Absent tier is `'1'`, not `null`** — the filter needs a total function. The badge renders only for
+  an author's own marker (`tierTagged`), or every core slide would wear a "T1".
 - **Filter over the model, not CSS.** Hiding slides in place would leave `go()`, the counter, the
   progress bar and the rail counting slides nobody can reach. One filter pass in `buildDeckModel`
   drops the slides, renumbers `secNum` within each section, and remaps the anchor map.
 - **Structure is not content.** Section dividers always survive, or a filtered module loses its own
-  title. A DOC cover goes when nothing survives beneath it — flagged as an untested edge when the
-  filter landed, made live by the audit (M5's two closers empty completely), fixed and tested.
+  title. A DOC cover goes when nothing survives beneath it; tested.
 - **A cut anchor resolves forward.** An in-deck link into a dropped slide lands on the next survivor
-  rather than dying silently. This forced heading anchors to be claimed *before* the filter — claim
+  rather than dying silently. Heading anchors are therefore claimed *before* the filter — claim
   them after and a link into a dropped slide is simply absent from the map, and the click falls
   through to a browser with nothing to scroll.
 
 Toggling rebuilds the deck and carries the reader's place across on `srcIndex` (position in the
 unfiltered deck — the only handle stable across a rebuild).
 
-**What it does today** (re-measured after the 2026-08-30 audit): the composed AE101 deck goes
-**531 → 433 slides**, 98 fewer, including 15 covers of lectures that emptied out entirely. The corpus
-is 264 slides across six modules — the earlier "~450" counted the whole shared library, agents-101
-included. Re-measure with `node scripts/check-slide-tiers.js --coverage`.
+**What it does:** barebones drops every T2/T3 slide and the DOC covers of lectures that empty out
+entirely. Re-measure with `node scripts/check-slide-tiers.js --coverage`.
 
 **Naming hazard.** "Tier" already means three unrelated things in this repo: slide tiers here, file
 priority in `curriculum/evals/slide-sweep.md`, and rule-index tiers T0–T3 in
 `.claude/rules/content-rules.md`. Do not mint a fourth sense for the barebones edition.
 
-**Tooling note.** `scan-stale-classes.js` was fail-open on exactly this work until 2026-08-28
-(58e8a506): a body cut ending at the maintainer fence anchored onto the fence and staled nothing, so
-deleting a whole `##` slide reported clean. Fixed and regression-tested. Cuts made before that date
-may carry unjudged classes.
+**Tooling note.** `scan-stale-classes.js` stales the classes of a body cut that ends at the maintainer
+fence (fail-open before 58e8a506, 2026-08-28; regression-tested since). Whole-`##` slide cuts older than
+that commit may carry unjudged classes.
 
 ---
 
@@ -338,7 +289,7 @@ may carry unjudged classes.
 
 ### Why supportable at all
 
-The fork-test for "real fork vs. cosmetic rename" is *missing subagents OR different memory hierarchy*. Gemini CLI passes both: native subagents (`@agent-name`, parallel dispatch) and a memory hierarchy (project + global + subdir + `@import`). Capability map below shows 19 of 20 dependencies present, one workaround needed (personal-memory layer is convention, not native), and one acceptable gap (`/loop`, only used in unshipped reference material).
+The fork-test for "real fork vs. cosmetic rename" is *missing subagents OR different memory hierarchy*. Gemini CLI passes both: native subagents (`@agent-name`, parallel dispatch) and a memory hierarchy (project + global + subdir + `@import`). Capability map and tally below.
 
 ### Capability map (verified against official docs, 2026-05-08)
 
@@ -367,7 +318,7 @@ Verified by direct WebFetch on `geminicli.com` (the official Google docs site, c
 | 19 | Settings file | hooks setup | ✅ `~/.claude/settings.json` | ✅ `~/.gemini/settings.json` (user) + `.gemini/settings.json` (project) + `/etc/gemini-cli/settings.json` (system) | `geminicli.com/docs/hooks/` |
 | 20 | Desktop app companion | prework | ✅ | ❌ no first-party desktop; third-party wrappers exist | n/a |
 
-**Tally: 12 ✅, 5 ⚠️, 3 ❌.** Five ⚠️ rows mean "supported with caveat" (different verb, convention workaround, docs lag, slightly different shape). Three ❌ rows are real gaps; only #9 (`/context` percent) and #11 (`/loop`) touch AE101 body, and #11 is in unshipped reference material. #20 (desktop) is a prework-mechanic difference.
+**Tally: 12 ✅, 5 ⚠️, 3 ❌.** Five ⚠️ rows mean "supported with caveat" (different verb, convention workaround, docs lag, slightly different shape). Three ❌ rows are real gaps; only #9 (`/context` percent) and #11 (`/loop`) touch AE101 body, and #11 is reference-page material only. #20 (desktop) is a prework-mechanic difference.
 
 **Original-research errors corrected by direct verification (2026-05-08):**
 
@@ -420,7 +371,7 @@ The cheap, durable shape: write body prose abstractly, push runtime-specific pat
 
 ### Risks to watch
 
-- **Pre-1.0 schema drift.** Gemini CLI ships sub-monthly minors as of 2026-05-08 (latest stable 0.40.0). Hooks and skills schemas have moved between 0.3x and 0.4x. The dual-format skills and any hook references in the reference page need re-validation on each Gemini-cohort delivery.
+- **Pre-1.0 schema drift.** Gemini CLI ships sub-monthly minors (as of 2026-05-08). Hooks and skills schemas have moved between 0.3x and 0.4x. The dual-format skills and any hook references in the reference page need re-validation on each Gemini-cohort delivery.
 - **`./GEMINI.local.md` is convention, not native.** If a student forgets the gitignore + `@import` setup, their personal rules end up in the team file or aren't loaded at all. The prework install paragraph has to handle this idempotently.
 - **Tool-agnostic prose can read awkwardly**, *"your personal rules file"* repeated ten times in a body becomes noise. Pilot on M1 before sweeping; if the prose suffers, fall back to per-prompt runtime divs and accept the higher edit surface.
 - **Mid-training repo move across runtimes is unsupported.** A student starting on Claude Code and switching to Gemini CLI mid-cohort would carry a stale path map. Replay covers it (the M1 compound exercise re-runs and rewrites the map for the new runtime); not a designed feature.

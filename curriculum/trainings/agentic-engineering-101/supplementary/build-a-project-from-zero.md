@@ -36,9 +36,9 @@ The running game, the test suite, the commit history, and the one bug you spotte
 **Quality:** compendium-audited 2026-09-05 (writing@324b81d7 story@324b81d7 technical@324b81d7 behavior@148adf6 pedagogy@324b81d7 strategy@324b81d7 slides@324b81d7)
 - judges @324b81d7: writing PASS (2 todos see instances/ae101--supplementary--build-a-project-from-zero.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
-**Meta:** *Opt-in prework alternative for the student who arrives without a usable repo. ~200 words. Golden-path only. Replaces the thin "ask your trainer for a fallback repo" escape hatch in `prework.md` §1 with a self-service build. The Lemmings game is the same SUT the test-harness uses (`arrange-lemmings.sh`, `test-strategy-lemmings`), so a student who builds it lands on a codebase the harness already understands.*
+**Meta:** *Opt-in prework alternative for the student who arrives without a usable repo. Golden-path only. The Lemmings game is the SUT the test-harness uses (`arrange-lemmings.sh`, `test-strategy-lemmings`), so a student who builds it lands on a codebase the harness already understands.*
 
-**Role:** Bootstraps a code+tests+history codebase for the no-repo student so the four task sizes in `prework.md` §What-to-bring have somewhere to land. The build is deliberately minimal: the first session produces a running game with a couple of tests and a few commits, and the six modules supply the growth. Not a full game build up front.
+**Role:** Bootstraps a code+tests+history codebase for the no-repo student so the four task sizes in `prework.md` `## Bring real work` have somewhere to land. Deliberately minimal: the first session produces a running game with a couple of tests and a few commits; the six modules supply the growth.
 
 **Build sizing (why these numbers):**
 - **Sonnet build** (`/model sonnet`) — clean first version, so the residual bugs are small and few. Enough to seed M1, not enough to bury the student in debugging on setup. Matches the training default (`prework.md` top blockquote: Sonnet runs every exercise).
@@ -67,7 +67,7 @@ Frameworks
 
 Stance `[stance:2026-08-01 level:L0]`
 - holds: nothing about the field. This is a fallback path for a student with no repo to bring, and it asserts one product affordance and a set of design choices about what makes a good practice codebase.
-- contested: nothing. **The one judgement worth recording is that the seeded project is deliberately made to break in specific ways** — a data-touching feature is planted so M3's security work has a real access surface, which is a curriculum decision rather than a claim.
+- contested: nothing; the planted data-touching feature is a curriculum decision (M3 needs a real access surface), not a claim.
 - would-move-it: nothing published. If the model lineup changes, the Sonnet instruction needs a name swap, not a rethink.
 
 OODA

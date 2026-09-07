@@ -106,14 +106,12 @@ The more powerful the coding agent, the more important the steering system.
 
 <!-- maintainer -->
 
-**The CRAP gloss sits where `check_writing.md` §19 and `check_slides.md` §1 pull opposite ways.** §19 reads a sentence opening with the bold label's own noun as a label echo. §1 requires the chunk to name its referent, and with two nouns in the label a bare *"One"* or *"It"* is ambiguous cold. Naming CRAP is the resolution: the sentence defines the metric rather than restating the label, which is the thing §19 exists to prevent. Judges should score §19 PASS here on that reading rather than proposing a pronoun, and a pronoun proposal should be read as the ping-pong it is.
-
-**The nine `##` sections bookend their own headers by design.** Each section's opening or closing sentence returns to its header's claim after the middle sentences supply the mechanism: header previews, paragraph proves, close returns. `check_writing.md` §27 reads a header echo as restatement only where nothing new lands in between; here the echo is the essay's structural scaffolding, applied consistently across all nine sections. Score §27 PASS on that reading, and do not flatten the echoes section by section.
-
-**Source-access note:** original X pages may require login or be intermittently inaccessible; the X messages are linked in context in the body. Research pass also used public mirrors, a Security Now transcript, Uncle Bob's `arch-view` repository, and adjacent practitioner writing from Simon Willison and Armin Ronacher.
-
 **Quality:** compendium-audited 2026-09-05 (writing@324b81d7 story@324b81d7 technical@324b81d7 behavior@b3143a4 pedagogy@b55cd28b strategy@324b81d7 slides@324b81d7)
 - judges @324b81d7: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+
+**CRAP gloss (`## Metrics are the dashboard, not the wheel`): `check_writing.md` §19 PASS by design.** Two nouns in the bold label, so a bare *"It"*/*"One"* fails `check_slides.md` §1 cold; opening on *CRAP* defines the metric rather than echoing the label. A pronoun proposal is the ping-pong; do not file.
+
+**Every `##` section bookends its own header by design.** Opening or closing sentence returns to the header's claim after the middle supplies the mechanism: header previews, paragraph proves, close returns. `check_writing.md` §27 reads a header echo as restatement only where nothing new lands between; here the echo is the essay's scaffolding, applied to every section. Score §27 PASS on that reading; do not flatten the echoes section by section.
 
 <!-- backing -->
 
@@ -152,7 +150,7 @@ Frameworks
 - Good regulator · [borrow:cybernetics] · law:good-regulator · ← cultural-vocab — the human keeps the model of the system; the agent does not have one
 
 Stance `[stance:2026-08-01 level:L1]`
-- holds: that classic Clean Code practices become steering instruments under agentic development. One named practitioner, working through it in public, with seven verified posts behind him. The body is careful about this — it frames his arc as a learning journey rather than as a verdict the field reached.
+- holds: that classic Clean Code practices become steering instruments under agentic development. One named practitioner, working through it in public, every post stamped below. The body is careful about this — it frames his arc as a learning journey rather than as a verdict the field reached.
 - contested: **the mapping between his seven posts and this page's nine sections, which is looser than the section headings imply.** The six-fundamentals post carries most of the load; acceptance tests, TDD and mutation testing are the discipline he has taught for decades rather than things he said about agents in these posts. That is legitimate synthesis of a body of work and it is not the same as quotation. The title *Reading Uncle Bob's Agent Experiments* promises exactly what the page does; do not retitle toward an *Insights from Uncle Bob* shape, which would promise recent claims the posts don't carry — the looseness is real and stays named here.
 - would-move-it: Martin publishing a position that contradicts the steering framing, or a second practitioner of his standing arriving at the same reframe independently, which would take it to L2 and let the page stop leaning on one figure.
 

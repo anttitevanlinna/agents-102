@@ -20,15 +20,18 @@
 
 <!-- maintainer -->
 
-**Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** handles kept bold: **the verifier's rule** (Wei's coinage at its naming) and **find is easier than judge** (the named M2 law at its recall); all other bullet leads de-bolded, Wei quote plain, governor question plain, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Wording near-verbatim; no claims added or cut.
+**Quality:** compendium-audited 2026-09-05 (writing@324b81d7 story@324b81d7 technical@324b81d7 behavior@b3143a4 pedagogy@1abb84c6 strategy@61da15ad slides@324b81d7)
+- judges @324b81d7: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS
 
-**Naming (2026-07-26):** Wei's principle is **the verifier's rule**, not "law" — live re-fetch of jasonwei.net on 2026-07-26 confirms the post's H1 ("Asymmetry of verification and verifier's rule") and the in-body named-principle heading ("Verifier's rule"). "Law" survives only in the URL slug (asymmetry-of-verification-and-verifiers-law), the real, unchangeable URL, and stays as-is there. Body and maintainer block say *rule* throughout; do not reintroduce "law" outside the URL.
+**Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** two bold handles, **the verifier's rule** (Wei's coinage at its naming) and **find is easier than judge** (the M2 law at its recall); bullet leads, Wei quote, governor question all plain, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`.
 
-**STATUS:** slide-format, proper-length bullets per `theory-plan.md` § Slide format. Not an in-room slot; linked as an optional pre-read from `run-the-first-experiment.md § Pre-reads before Module 5`. Audited — see the Quality line below. Tier-1 canon adoption per `theory-audit.md` (practitioner + syllabus lenses convergent; already enacted in M2 body as "find is easier than judge", `exercises/push-back-on-the-plan.md:52` — the body's M2 back-reference is deliberate lineage-naming, kept per the audit's cheap-groundedness call; supplementary surface, not a lecture body, so `check_lectures §3` sequencing ban doesn't bind, and the ref is backward-naming of a lived moment, not sequencing).
+**Naming (2026-07-26):** Wei's principle is **the verifier's rule** — the post's H1 ("Asymmetry of verification and verifier's rule") and in-body heading ("Verifier's rule") both say *rule*; "law" survives only in the URL slug, which stays verbatim. Do not reintroduce "law" outside the URL.
+
+**STATUS:** slide-format, proper-length bullets per `theory-plan.md` § Slide format; not an in-room slot. Tier-1 canon adoption per `theory-audit.md` (practitioner + syllabus lenses convergent). The move is enacted in M2 (`exercises/push-back-on-the-plan.md`) unnamed — that file's own Frameworks row keeps the house name out of its body — so this page's M2 back-reference is deliberate lineage-naming, kept per the audit's cheap-groundedness call; supplementary surface, not a lecture body, so the `check_lectures §3` sequencing ban does not bind (backward-naming of a lived moment, not sequencing).
 
 **Placement:** supplementary, linked from `run-the-first-experiment.md` § *Pre-reads before Module 5* — the M4→M5 gap, read while the send-off is already running, not at the send-off decision itself. Cross-link to [What keeps a long-running session going?](../../../lectures/what-keeps-a-long-running-session-going.md): asymmetry says where checks are cheap; the post-launch closer names what their pushback buys. M5 builds and calibrates those checks; M6 composes them into workflow seams.
 
-**Laws carried:** verification-asymmetry / verifier's rule · the delegation governor (cheap-verifier question). Sharpens convergence-triad's "independently verifiable" leg into a cost ratio (see audit — triad itself still owed a durable home). The triad, 0.85ⁿ, and principal–agent stay OUT of this page (M4-adjacent surface; packaging laws earn at M5).
+**Laws carried:** verification-asymmetry / verifier's rule · the delegation governor (cheap-verifier question). Sharpens convergence-triad's "independently verifiable" leg into a cost ratio. The triad, 0.85ⁿ, and principal–agent stay OUT of this page (M4-adjacent surface; packaging laws earn at M5).
 
 <!-- backing -->
 
@@ -45,7 +48,7 @@ Claims
 - `each-verifier-converts-a-task-family` · vision · "Every verifier you write converts one more task family from delegation-trap to delegation-win." ← none-owed
 
 Sources
-- wei-asymmetry `[checked:2026-07-26 result:OK due:none]` https://www.jasonwei.net/blog/asymmetry-of-verification-and-verifiers-law — [practitioner direct] Jason Wei, 2025-07-15. A dated framework piece, not a freshness-bound evidence claim, so **`due:none` under the durable-account variant** — the previous `due:2027-01-26` would have re-opened a published essay on a calendar rather than on a reason. Re-verified verbatim 2026-07-26, correcting the 2026-07-02 check: **Wei's own H1 and in-body heading both read "Verifier's rule," not "law"** — "law" survives only in the stale URL slug, and body plus maintainer block now say *rule* throughout. Also re-confirms the coding example (*"if you have test cases with ample coverage, you can quickly check any given solution"*), which is exactly what the body's example bullet is scoped to. **The post does NOT claim coding fell to AI early, so the body does not either.** fallback: teach the asymmetry unattributed as a field observation; drop the "verifier's rule" naming.
+- wei-asymmetry `[checked:2026-07-26 result:OK due:none]` https://www.jasonwei.net/blog/asymmetry-of-verification-and-verifiers-law — [practitioner direct] Jason Wei, 2025-07-15. Dated framework piece, not a freshness-bound evidence claim → **`due:none`, durable-account variant**. H1 and in-body heading both read "Verifier's rule" (see Naming note). Coding example confirmed (*"if you have test cases with ample coverage, you can quickly check any given solution"*), which is exactly what the body's example bullet is scoped to. **The post does NOT claim coding fell to AI early, so the body does not either.** fallback: teach the asymmetry unattributed as a field observation; drop the "verifier's rule" naming.
 
 Frameworks
 - Verification asymmetry / the verifier's rule · [borrow:none] · law:none · ← wei-asymmetry — practitioner-coined, credited by name in body
@@ -54,7 +57,7 @@ Frameworks
 - Convergence triad · [borrow:none] · law:convergence-triad · ← none — this page sharpens the triad's *independently verifiable* leg into a per-task question
 
 Stance `[stance:2026-08-01 level:L1]`
-- holds: the asymmetry itself, which Wei named and which is closer to an observation about problem classes than a claim about the field. One named practitioner is L1, and the body attributes accordingly rather than saying practitioners converge — **a discipline this corpus learned the hard way elsewhere and got right here first.**
+- holds: the asymmetry itself, which Wei named and which is closer to an observation about problem classes than a claim about the field. One named practitioner is L1, and the body attributes accordingly rather than saying practitioners converge.
 - contested: nothing in the asymmetry. What is genuinely open is the corollary's strong form — that verifiability predicts what AI solves next — which is a forecast, and the body carries it as Wei's corollary rather than as our prediction.
 - would-move-it: a task class that is cheap to check and stubbornly unsolved, which would weaken the corollary without touching the delegation advice. The delegation half stands on its own arithmetic.
 
@@ -64,5 +67,3 @@ OODA
 - last-run: 2026-08-01
 
 <!-- /backing -->
-**Quality:** compendium-audited 2026-09-05 (writing@324b81d7 story@324b81d7 technical@324b81d7 behavior@b3143a4 pedagogy@1abb84c6 strategy@61da15ad slides@324b81d7)
-- judges @324b81d7: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS

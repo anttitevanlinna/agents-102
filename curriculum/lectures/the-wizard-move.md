@@ -16,25 +16,25 @@ The move is loading the right context before the question, not a clever prompt o
 
 <!-- maintainer -->
 
-**Standing constraints:**
-- **Zero bold on the narrative and demo slides** (Antti: *"go very lightly on the bold"*). Prose paragraphs, not bolded-claim bullets. `theory-plan.md § Slide format — emphasis budget` + `check_slides §9`.
-- **Guess before reveal.** The guess paragraph precedes the Finnish-dinner answer. Both sessions get narrated before the live run. `check_slides §4`.
-- **No plan mode on this surface.** M1's fix runs tests-first; plan mode earns its keep at M2. Any phrasing like *"with plan mode used deliberately"* is drift. Confirmed against the module's Big Idea + LO (Antti, 2026-09-01).
-- **The loop-over-the-fix beat belongs to the M1 closer, not here.** `the-machine-you-just-met.md` lands it after the four exercises as recognition (`## You just ran the same loop`, kicker *"The loop is the shape. The bug today was the excuse."*). This opener carries the context mechanism and stops. Do not restore a third slide that previews the loop, and do not steal the kicker.
-- **Zero map references.** M1 is protected; the map arrives at M2.
-- Openers carry no setup lede.
-
 **Quality:** compendium-audited 2026-09-05 (writing@08946dd8 story@08946dd8 technical@08946dd8 behavior@1480362 pedagogy@17446703 strategy@08946dd8 slides@08946dd8)
 - judges @08946dd8: writing PASS (1 todo see instances/ae101--lecture--the-wizard-move.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - compendium-audited 2026-04-26 (check_writing voice-quartet Seth-Rory-Risto, check_student_facing #14, check_lectures opener, check_strategy_tie_in)
+
+**Standing constraints:**
+- **Zero bold on the narrative and demo slides** (Antti: *"go very lightly on the bold"*). Prose paragraphs, not bolded-claim bullets. `check_slides §9` (spec: `theory-plan.md § Slide format + dosage`).
+- **Guess before reveal.** The guess paragraph precedes the Finnish-dinner answer. Both sessions get narrated before the live run. `check_slides §4`.
+- **No plan mode on this surface.** M1's fix runs tests-first; plan mode earns its keep at M2. Any phrasing like *"with plan mode used deliberately"* is drift. Confirmed against the module's Big Idea + LO (Antti, 2026-09-01).
+- **The loop-over-the-fix beat belongs to the M1 closer, not here.** `the-machine-you-just-met.md` lands it after the four exercises as recognition (`## You just ran the same loop`, kicker *"The loop is the shape. The bug today was the excuse."*). This opener carries the context mechanism and stops; no loop preview, no borrowed kicker.
+- **Zero map references.** M1 is protected; the map arrives at M2.
+- Openers carry no setup lede.
+
 **Meta:**
 - **Placement:** M1 opener, after Connections, before the exercise.
-- **Time:** 8 min. 5 min lecture prose + 3 min live two-session demo in Claude Code. The demo runs in Claude Code, not claude.ai (Antti, 2026-08-23); the dinner question is deliberately not about code.
+- **Time:** 8 min. 5 min lecture prose + 3 min live two-session demo in Claude Code, not claude.ai (Antti, 2026-08-23).
 - **Voice:** Seth × Rory × Risto — warm + counterintuitive + direct.
 
-**The Context is King demo (stolen from Agents 101, trimmed to two sessions):**
-- Two Claude Code sessions. Capital-of-Italy → pasta suggestion. Largest-lake-of-Finland → Finnish dinner. Same second prompt, different answer, because the first exchange became part of context.
-- **Two sessions is the dose (Antti 2026-08-25): the cardiologist role-example is cut — do not reintroduce it in body or demo.** The fact-vs-fact contrast carries the mechanism; a third example restates it.
+**The Context is King demo:**
+- **Two sessions is the dose (Antti 2026-08-25); Agents 101's third, cardiologist role-example stays out of body and demo.** The fact-vs-fact contrast carries the mechanism; a third example restates it.
 - Not adapted for engineers. The universality is the point — the lesson lands because it is not about code. Engineers come in expecting a clever-prompt flex and get a 60-second demo that reframes the whole training.
 
 **Demo watch-fors:**
@@ -63,7 +63,7 @@ Format → `curriculum/backing-format.md`.
 **Stance** `[stance:2026-08-01 level:L2]`
 - holds: the mechanism is foundational and not in doubt — prior text in the window conditions the next output, with no weight update (Brown et al. 2020). Note what that does and does not cover. The literature on file backs the *mechanism*. What backs the *specific* effect the demo shows, an unrelated earlier exchange colouring a later question, is the demo. For a claim the room watches happen in 60 seconds, a live check is the stronger warrant anyway, which is why this is taught as a demo and not as a citation. The product side is a standing precondition: the demo runs in fresh Claude Code sessions in an empty directory outside any repo, so nothing directory-keyed loads. The trainer's own user-scope rules load anyway and are the part that needs checking (instruction + salvage in Demo watch-fors).
 - contested: whether the demo still fires cleanly on a current model — a model that has got better at ignoring irrelevant prior context weakens the Finland beat, which the body already hedges as the less reliable of the two.
-- decided: **`context-conditions-next-answer` stays `detail` on a mechanism-plus-attestation pairing, 2026-08-02.** Brown et al. 2020 backs *prior text conditions the next output*; the demo's specific effect — an unrelated earlier exchange colouring a later, different question — is attested by our own run, and one pass found no paper testing exactly that. That is a finding about the search, not about the world, so do not read it as "nobody has studied this." The pairing is sound and the stamps carry the split; naming it out loud because a `detail` claim whose specific form rests on our own demo deserves to be visible.
+- decided: **`context-conditions-next-answer` stays `detail` on a mechanism-plus-attestation pairing (2026-08-02).** Brown et al. carries the mechanism, the attested run carries the specific effect; the stamps carry the split. One pass found no paper testing the two-turn effect exactly — a finding about the search, not the world; do not read it as "nobody has studied this."
 - would-move-it: the demo failing to produce a Finnish answer on a current model, or Claude Code starting to load cross-directory state into a fresh session in an empty directory. Either one makes this a rebuild, not an edit — the opener's whole job is that the room watches the effect happen.
 
 **OODA**

@@ -16,9 +16,12 @@ A menu, not a checklist.
 
 <!-- maintainer -->
 
-**Origin (2026-08-25, Antti-directed, extracted from `what-packaging-is.md`):** doable for laymen, and it helps complete the exercise — the student meets the hook primitive before Phase 3 asks them to pick a verifier shape and wire one. Included from `learn-from-the-test.md` after `reading-the-return`, before the exercises. The two verifier references read generically (*"a verifier"*, not *"the verifier you just wrote"*) because at this placement the student has not built one yet; do not restore back-reference wording. Untiered: core material, not a skippable tail.
+**Quality:** compendium-audited 2026-09-06 (writing@874f921c story@874f921c technical@874f921c behavior@64d17eea pedagogy@d5aa7e3d strategy@874f921c slides@874f921c)
+- judges @64d17eea: writing PASS, story PASS, technical PASS, behavior PASS (1 todo see instances/ae101--lecture--hooks-always-fire.behavior.json), pedagogy PASS, strategy PASS, slides PASS
 
-**Slide 2 shape (2026-08-29, Antti-directed):** primitive + prompt + one line, nothing else. Repo-specificity lives in the prompt's own third paragraph (cross-reference against this repo, say when one does not apply) — do not add a repo-specificity line to the slide while that paragraph stands. No stage direction: the teacher runs it and the room can see. The tail carries the one thing neither slide nor prompt says: the five plausible hooks are a menu, not a to-do list (Phase 3's pick is one verifier shape of three; a hook is one of the three).
+**Origin (2026-08-25, Antti-directed, extracted from `what-packaging-is.md`):** doable for laymen, and it helps complete the exercise — the student meets the hook primitive before Phase 3 asks them to pick a verifier shape and wire one. Verifier references read generically (*"a verifier"*, not *"the verifier you just wrote"*) because at this placement the student has not built one yet; do not restore back-reference wording. Untiered: core material, not a skippable tail.
+
+**Slide 2 shape (2026-08-29, Antti-directed):** primitive + prompt + one line, nothing else. Repo-specificity lives in the prompt's own third paragraph (cross-reference against this repo, say when one does not apply) — do not add a repo-specificity line to the slide while that paragraph stands. The tail carries the one thing neither slide nor prompt says: the five plausible hooks are a menu, not a to-do list (Phase 3's pick is one verifier shape of three; a hook is one of the three).
 
 **Placement:** M5, after the reading-the-return opener, before `fork-the-worktree`. Teaching lecture, mechanism only; the verifier-shape menu stays in `diagnose-and-resend.md` Phase 3 and the re-feed mechanism stays in `what-packaging-is.md`.
 
@@ -28,7 +31,7 @@ A menu, not a checklist.
 
 <!-- backing -->
 
-Format → `curriculum/backing-format.md`. Rows moved verbatim from `what-packaging-is.md`'s ledger with their slides, 2026-08-25.
+Format → `curriculum/backing-format.md`.
 
 **Claims**
 - `hook-fires-on-named-events` · detail · "Session start, prompt submit, before each tool call, after each tool call, on stop, plus a few more." ← cc-hooks-docs
@@ -43,6 +46,3 @@ Format → `curriculum/backing-format.md`. Rows moved verbatim from `what-packag
 (none — the hook is a platform primitive, not a borrowed frame.)
 
 <!-- /backing -->
-
-**Quality:** compendium-audited 2026-09-06 (writing@874f921c story@874f921c technical@874f921c behavior@64d17eea pedagogy@d5aa7e3d strategy@874f921c slides@874f921c)
-- judges @64d17eea: writing PASS, story PASS, technical PASS, behavior PASS (1 todo see instances/ae101--lecture--hooks-always-fire.behavior.json), pedagogy PASS, strategy PASS, slides PASS

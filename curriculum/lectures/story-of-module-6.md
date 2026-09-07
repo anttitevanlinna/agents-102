@@ -60,21 +60,20 @@ Antti
 
 <!-- maintainer -->
 
-**Slide deixis accepted:** "paragraphs above" (check_slides.md §12) — *"the framing I said, a few paragraphs above, we would cut"* points inside its own `## Things that went sideways` chunk, two paragraphs up on the same slide, at § *The end-state that was not*. Story lecture, read not projected; the geometry is true where it stands.
-
 **Quality:** compendium-audited 2026-09-05 (writing@fb797e3b story@289b45a3 technical@289b45a3 behavior@b3143a4 pedagogy@1abb84c6 strategy@fb797e3b slides@289b45a3)
 - judges @fb797e3b: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS (1 todo see instances/ae101--lecture--story-of-module-6.slides.json)
-**Time:** 8 min at read-aloud pace. ~1200 words body. **Voice timing:** the opening framing line is read by the trainer aloud as setup; the body is then read as the memo, signed at close.
 
-§ *Things that went sideways* stays open-ended (no count locked): the thesis is that surprises keep happening.
+**Slide deixis accepted:** "paragraphs above" (check_slides.md §12) — *"the framing I said, a few paragraphs above, we would cut"* points inside its own `## Things that went sideways` chunk, two paragraphs up on the same slide, at § *The end-state that was not*. Story lecture, read not projected; the geometry is true where it stands.
 
-**Catalogue discipline:** § *Things that went sideways* carries one paragraph per distinct failure mechanism, never a second worked instance of one already told. Seven stand: the chat-shaped opening, the banned word across four instances, the flattering end-state, the unrun sims, the self-contradicting closer, the paraphrase shipped as attribution, the uncited frame. *"The rule was loaded. The check never ran."* is the catalogue's one repeated formula and lands once, in the uncited-frame entry, where the three-sentence frame Claude blurred is the frame § *The generalisation* then delivers. An eighth entry that restates a mechanism is length, not evidence — the open-ended section above is an invitation to add new mechanisms, not new examples.
+**Time:** 8 min at read-aloud pace. **Voice timing:** the opening framing line is read by the trainer aloud as setup; the body is then read as the memo, signed at close.
+
+**Catalogue discipline:** § *Things that went sideways* stays open-ended (no count locked — the thesis is that surprises keep happening) and carries one paragraph per distinct failure mechanism, never a second worked instance of one already told: the chat-shaped opening, the banned word across four instances, the flattering end-state, the unrun sims, the self-contradicting closer, the paraphrase shipped as attribution, the uncited frame. *"The rule was loaded. The check never ran."* is the catalogue's one repeated formula and lands once, in the uncited-frame entry, where the three-sentence frame Claude blurred is the frame § *The generalisation* then delivers. A new entry earns its place by a new mechanism, not a new example.
 
 **Delivery:** In-room for M6, after the handoff lecture (*Agents that build agents*) and before the Human close (Antti 2026-08-30 / 2026-09-02; the module file's order is the decision); permission-giving, not credibility-performance.
 
 **Voice:** First-person singular past tense, Antti's memo. Risto epistemic directness, not Rory wit. Rough-cut blunt lines per `check_writing §5` until Antti's final-voice pass. Do NOT polish past a read-aloud direct memo (8 min, see **Time**): polish moves it toward the credibility-performance framing the memo rejects at *The end-state that was not*.
 
-**§21 ratio accept-note (Antti, 2026-09-02):** memoir carve-out — a first-person session narrative reports its named actor, so *"Claude opened the session"* is the accurate account and *"the agent"* would be less true to the memo form. The Claude:agent:LLM ratio (16:1:8) stands as written; `check_student_facing` §21 judges do not re-raise on this file.
+**§21 ratio accept-note (Antti, 2026-09-02):** memoir carve-out — a first-person session narrative reports its named actor, so *"Claude opened the session"* is the accurate account and *"the agent"* would be less true to the memo form. The Claude-heavy Claude:agent:LLM ratio stands as written; `check_student_facing` §21 judges do not re-raise on this file.
 
 **Source (the session tally):** the 2026-04-24 M6 generation session, run by Antti. The running notes are not retained; this block is the record every number in the memo pulls from.
 
@@ -101,7 +100,7 @@ Claims
 - `everyone-struggles` · vision · "Everyone struggles." ← none-owed
 - `llm-is-not-deterministic` · vision · "The LLM is not a deterministic machine." ← none-owed
 - `post-training-warmth-read` · vision · "Our read: much is caused by post-training preferring warmth over directness." ← none-owed — an owned inference, labeled as one in body. The literature edge (Sharma et al. on sycophancy) lives in painting-the-picture-with-the-llm's ledger, where the "driven in part by" hedge is marked load-bearing; do not strengthen here either.
-- `rule-in-context-is-not-rule-in-output` · vision · "A rule in context is not a rule in the output. Taste closes the gap." ← none-owed — **the closing superlative ("Nothing else does.") was cut 2026-08-30 under `check_writing §21`.** It is a world-claim this memo refutes four times over: the grep pass caught each banned-word leak, the verifier loop caught two more, a persona sim caught what the loop missed, and § *Then I compounded the session* moves the rules into skills that block "done" — forcing functions, not taste. Do not restore, and do not hedge it back in; §21 rules the hedge worse than the superlative. If the intended reading is that taste is upstream of all four catchers, that is a different sentence and needs writing, not a restored absolute.
+- `rule-in-context-is-not-rule-in-output` · vision · "A rule in context is not a rule in the output. Taste closes the gap." ← none-owed — **no closing superlative after it (`check_writing §21`, 2026-08-30):** *"Nothing else does."* is a world-claim the memo refutes four times over (grep pass, verifier loop, persona sim, and § *Then I compounded the session*'s skills that block "done" — forcing functions, not taste). Do not restore it or hedge it back in; §21 rules the hedge worse than the superlative. Taste-upstream-of-all-four-catchers is a different sentence, unwritten.
 - `rule-in-memory-that-does-not-force` · vision · "A rule in memory that does not force is worse than no rule." ← none-owed
 - `loop-exists-because-llms-drift` · vision · "The loop exists because LLMs drift. The loop exists because rules leak." ← none-owed
 - `catch-it-and-encode-it` · vision · "Your job is not to stop the drift. Your job is to catch it and encode what you learned." ← none-owed

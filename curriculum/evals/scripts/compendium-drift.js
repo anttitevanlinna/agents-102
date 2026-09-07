@@ -20,8 +20,8 @@
 //
 //   --check          report drift vs the ledger (exit 1 if any). Default.
 //   --repin [--date] record current hashes; date-stamp what moved.
-//     --procedural <compendium>:<rule>[,...]  these moved, but only in how a
-//       finding is fixed, not in what is filed: new hash, prior date kept.
+//     --procedural <compendium>:<rule>[,...]  these moved without putting a new
+//       finding in front of any judge: new hash, prior date kept.
 //   --json           machine-readable report on stdout
 //   --ledger <p>     override ledger path
 //   --mem <p>        override compendium directory
@@ -114,11 +114,20 @@ function diffLedger(ledger, current) {
 // scanner exists to replace — route at the resolution the finer instrument
 // already has. Baselines (a compendium's first pin) stale nothing either.
 //
-// `procedural` names rules (`<compendium>:<rule>`) whose current edit changes
-// how a maintainer FIXES a finding, not what a judge FILES. Such a rule takes
-// its new hash and keeps its prior date: dating it would re-owe every class
-// pinned before today, corpus-wide, for a re-read that files nothing new. The
-// call is the operator's and is made at repin time, when the edit is in hand.
+// `procedural` names rules (`<compendium>:<rule>`) whose current edit puts no
+// new finding in front of a judge. Two shapes qualify. One: the edit changes
+// how a maintainer FIXES a finding, not what a judge FILES. Two: the edit is a
+// carve-out, so what a judge files strictly SHRINKS — nobody re-read under the
+// new wording can file anything they could not have filed before. Either way
+// the rule takes its new hash and keeps its prior date, because dating it would
+// re-owe every class pinned before today, corpus-wide, for a re-read that
+// surfaces nothing new.
+//
+// A carve-out does void findings already on the ledger, and those do not clear
+// themselves. Retire them by name — the rule's own live rows are findable with
+// a grep over `instances/` and there are usually a handful — never by dating
+// the pin and billing three classes across the corpus to reach them. The call
+// is the operator's and is made at repin time, when the edit is in hand.
 function repin(ledger, current, date, { procedural = new Set() } = {}) {
   const next = { compendia: {} }
   for (const [name, cur] of Object.entries(current)) {

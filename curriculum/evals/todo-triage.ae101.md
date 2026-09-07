@@ -87,7 +87,25 @@ Settled so far, each leaving a durable artefact behind it:
 | `earn-the-trust:109` §20 count | applied | cut cleared §20 and the `## Next` sentence cap together |
 | `orient-and-introspect:31` §17 header | applied | §17 narrowed to the product name; every AE101 header swept |
 
-Presented and awaiting a call: `what-keeps-a-long-running-session-going.md:37` (`student_facing §9` — the kicker names an object and no tell, while the maintainer block at L47 already holds one). Its risk section carries the three mechanics Antti needs: the sentence is his own 2026-08-14 wording, his note deliberately kept it lighter than a `**Note**` widget, and it appears verbatim in body, maintainer note and backing claim, so an edit moves all three or `validate-backing.js` breaks.
+**Presented and awaiting a call (2026-09-06):** `compound-and-close.md:7`, `pedagogy §52c`. Current *"a rules file written from session evidence"* → *"a rules file that improves your next session on this repo."* The current tail repeats the What-you-do line above it word for word; the replacement is the file's own maintainer summary. Longer than the line as it stands, shorter than what shipped that morning. **This defect is mine** — an earlier card cut the slot down to a bare artifact name, and the §52c amendment later that day made bare artifact names fail.
+
+**Ruled since the queue opened**, each leaving a durable artefact so the finding stops recurring:
+
+| Card | Call | What it left |
+|---|---|---|
+| `ae101-m5-rerun-packaged` §43 streaming | declined | `check_prompts §43` UNATTENDED BY DESIGN carve-out |
+| `where-the-rule-could-live:9` §8 agency | declined | `vocabulary.md` gained the `judge` row |
+| `earn-the-trust:109` §20 count | applied | one cut cleared §20 and the `## Next` cap together |
+| `orient-and-introspect:31` §17 header | applied | §17 narrowed to the product name |
+| `what-keeps-a-long-running-session-going:37` §9 tell | declined | §9 carve-out: a direct *"you do it"* is acceptable |
+| `close-the-ticket:48` §9 actor | declined | same carve-out, plus *the fix is never more words* |
+| `set-the-markers-send-it-off:38` §33 | declined | §33 carve-out: a forward reference that motivates the step in hand |
+| `close-the-ticket:54` §33 | closed by that carve-out | reversible on request |
+| `threat-model-with-stride:37` §27 | applied | three sentences to one; *assess*, not *judge* |
+| `compound-and-close:5,7` §52c | applied | both trailing duplicates cut |
+| `extract-the-task-shaping-rule:7` §52c | applied | §52c amended: the slot names what the artifact ENABLES |
+
+**The §52c sweep of the sixteen AE101 lead-ins:** eight want a rewrite, seven stand, a skeptic overturned three proposed rewrites. Two of the eight are suppressed and should not be presented as they are — `spot-gaps-build-the-loop` grows the line, and `diagnose-and-resend` proposes *"in minutes, not hours"*, a quantified claim with no source. `read-your-stack` STANDS.
 
 **The queue is ordered but the ladder is flat.** Every open card was value-ranked 1–5 for what a room feels; none reached 4, and the `room_cost` field says *nothing visible* or *almost nothing visible* on most of them. Regenerate the distribution rather than trusting a number written here:
 
@@ -116,6 +134,20 @@ A todo is a row a judge wrote. **Fixing the prose does not remove the row** — 
 5. **Stamp** with `stamp-from-reeval.js`, then confirm `--gate` exits 0.
 
 The reachable end state is not an empty ledger. It is: no blocking findings, gates green, and every open row either adjudicated where a judge will read it or sitting on a card in front of Antti. That state is stable. Zero rows is not — a clean judging round still deposits notes, because a todo is by definition a finding the judge chose not to gate on.
+
+## Three sessions on one tree
+
+The lane split with `m6-clear`, agreed 2026-09-06: **this session owns `[mod]` and `[exr]`; they own `[lec]`, `[sup]`, `[ref]` and the three cross-module sets.** A third agent is cleaning M1 and is not reachable from either session.
+
+The collision that matters is not the instance files — judges write their own class and read the body, so two classes on one file are safe. **It is the `Quality:` line**, which one orchestrator stamps and the other overwrites. Whoever holds a file's stamp holds the file.
+
+Held across the boundary right now:
+
+- **`the-context-ceiling` is not released.** Its behavior judge died on a session limit, so the instance still carries a pre-rubric verdict. `m6-clear` is holding six maintainer edits and one body swap on it until the re-fire lands.
+- **Four behavior judges owe a re-fire** — `prework`, `earn-the-trust`, `learn-from-the-test`, `the-context-ceiling`. All four died on the same limit and keep their old verdicts.
+- **The three cross-module sets are held** by `m6-clear` until this session's module lane stops moving, so they do not re-drift. Their rows land on module Quality lines, which is why they wait.
+
+A stamp re-points every sibling instance's `body_sha` by one line. That is the machinery, not a judge: a Quality line is not body prose, and without the re-point every class on a stamped file reads stale.
 
 ## Open
 

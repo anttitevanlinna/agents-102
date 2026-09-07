@@ -1166,6 +1166,23 @@ The enforceable design separates identities: observe, prepare, verify, authorize
 
 ---
 
+## Memory Is a Write Boundary Before It Is a Retrieval Problem
+
+**Thesis:** A learning agent is a change-control system for its future substrate: deciding what may be written, under whose authority, for which scope, and with what path to reversal.
+
+The executor can start fresh. Its accumulated behavior lives in instructions, rules, skills, memories, evals, and harness code. Those artifacts do not carry equal force. An observation can inform a search; a verified rule can guide behavior; a test can block a change; a permission can authorize an effect. Flattening them into “memory” lets low-authority evidence become high-authority policy.
+
+Recent research makes the failure concrete. Persistent-file content can affect later Claude Code and Codex sessions; memory consolidation routinely drops source authority; successful trajectories can produce unsafe reusable skills; and memory extraction can erase unresolved conflict. Better semantic retrieval does not repair any of those failures.
+
+**The implication for CTOs:** Put the human gate at the promotion boundary, not merely before execution. Require provenance, authority, scope, replay evidence, an owner, expiry, and rollback for every promoted artifact—and make permissions explicitly non-learnable.
+
+**Applies to:** Agents 101 module 9, learning-agent architecture, DevSecOps governance
+**Sources:** [Claude Code memory](https://code.claude.com/docs/en/memory) — [vendor documentation], checked 2026-09-07; [Bad Memory](https://arxiv.org/abs/2607.14611), [AuthMem-Bench](https://arxiv.org/abs/2608.01679), [SkillMisevo](https://arxiv.org/abs/2608.12851), and [TANGLE](https://arxiv.org/abs/2608.13921) — [academic/research], Jul–Aug 2026. Full evidence in OODA cycle 182.
+**Evidence boundary:** L2 research convergence across recent preprints, with platform capability at L0. No production convergence.
+**Date:** 2026-09-07
+
+---
+
 Copy this for new insights:
 
 ```

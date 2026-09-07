@@ -1,11 +1,17 @@
 # Coding Agent Platforms — Platform State
 
-Last updated: 2026-09-06 (cycle 178)
-OODA cycles: 33
+Last updated: 2026-09-07 (cycle 182)
+OODA cycles: 34
 
 ## Focus
 
 Coding agents as the **meta-platform** for the agentic transformation. This is NOT a developer tools category — it's the factory that builds the factories. Coding agents build the MCP servers, the business agents, the evals, the integrations. Every other platform watch category depends on this one. Copilot Studio can't build another Copilot Studio agent. Agentforce can't extend Agentforce. Coding agents compound — each cycle makes the next cycle faster.
+
+## Key Verdict (as of 2026-09-07)
+
+**CYCLE 182 — MEMORY IS A WRITE BOUNDARY BEFORE IT IS A RETRIEVAL PROBLEM (L2).** Claude Code and Codex headless runs can be disposable because learning persists in an external substrate: versioned instructions, rules, skills, memories, evals, and harness code. Current platform memory is context rather than enforcement. Recent research adds the missing safety constraint: Bad Memory shows planted persistent files can attack later Claude Code and Codex sessions; AuthMem-Bench observed source-authority loss in 48 of 49 consolidator/model configurations; SkillMisevo found unsafe artifacts in all 21 evolving configurations and fresh-session harm in 15. A successful trace therefore cannot promote itself. ([Claude Code memory](https://code.claude.com/docs/en/memory), checked Sep 2026 — [vendor documentation]; [Codex memories](https://learn.chatgpt.com/docs/customization/memories.md), checked Sep 2026 — [vendor documentation]; [Bad Memory](https://arxiv.org/abs/2607.14611), Jul 2026 — [academic/research]; [AuthMem-Bench](https://arxiv.org/abs/2608.01679), Aug 2026 — [academic/research]; [SkillMisevo](https://arxiv.org/abs/2608.12851), Aug 2026 — [academic/research])
+
+**Operational implication:** treat each durable update as a governed deployment. Preserve source, authority, scope, time, expected effect, verifier, owner, and expiry; retain conflicted, rejected, superseded, and rolled-back states. TANGLE shows why conflict cannot safely be summarized into one canonical answer; MOSS shows a research-scale alternative in which candidate substrate changes run in ephemeral replay workers, require user-consent promotion, and retain health-probe rollback. No production implementation in this sweep governs all update classes or demonstrates reliable forgetting. ([TANGLE](https://arxiv.org/abs/2608.13921), Aug 2026 — [academic/research]; [MOSS](https://arxiv.org/abs/2605.22794), May 2026 — [academic/research])
 
 ## Key Verdict (as of 2026-09-06)
 

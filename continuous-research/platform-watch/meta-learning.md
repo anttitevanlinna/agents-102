@@ -605,3 +605,7 @@ For cross-system safety research, split the investigation into three OODA questi
 The highest-value source was a public engineering work item with an unchanged commit, exact pipeline IDs, finding counts, and a critical example. Searching for “harmful agent actions” would not have found it because the failure was a deterministic policy doing exactly what it was configured to do. Future safety sweeps should search for **state-conflation incidents**—resolved vs no-longer-detected, contained vs fixed, succeeded call vs achieved outcome—alongside overt agent failures.
 
 Large-organization research also needs a selection-boundary check at two levels: which tickets the agent accepts, and which repositories/accounts the central team is competent to govern. Vendor agreement rates and accepted-fix metrics reveal neither boundary; require sampled abstentions and false negatives before claiming calibration.
+
+### Cycle 182 — 2026-09-07
+
+The productive query was not “agent memory accuracy” but a boundary audit: what becomes writable, whose authority survives summarization, and what a later executor is allowed to infer from the result. Reading platform documentation beside security and conflict benchmarks separated capability from evidence and exposed a failure class that retrieval benchmarks omit. Future learning-agent sweeps should trace one candidate through authoring, authority preservation, conflict handling, promotion, retrieval, and rollback.

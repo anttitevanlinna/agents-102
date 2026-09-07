@@ -373,6 +373,7 @@ The hourly researcher uses `cycle-prompt.md` and can make divergent choices. Sta
 
 | Run | Time | Focus | Key Finding |
 |-----|------|-------|-------------|
+| 182 | 2026-09-07 | Headless learning-agent substrate and admission | The executor can be disposable; the durable substrate learns. Memory admission is authorization, so source authority, conflict, replay, promotion, expiry, and rollback must survive. Evidence L2; no production convergence. |
 | 181 | 2026-09-06 | DevSecOps false-closure counter-test | A GitLab analyzer handoff on unchanged code falsely resolved findings. Promotion must be per action class, and closure must require independent post-state evidence. Overall evidence L2; no end-to-end convergence. |
 | 180 | 2026-09-06 | GitHub/AWS action authority | Current GitHub and AWS controls can separate patching, verification, approval, and narrow execution identities. The primitives ship; the composed cross-system governor is not independently proven. |
 | 179 | 2026-09-06 | DevSecOps operating topology at 1,000-person scale | Central DevSecOps owns doctrine and reusable controls; service teams own intent and deployment risk; agents prepare evidence; the control plane grants effect. Capability evidence only. |

@@ -86,7 +86,7 @@ Ask Claude whether this ADR rides into future sessions automatically.
 
 **What happened:** You made one call and wrote the ADR, and the decision shipped to the repo. The rest of the STRIDE output stayed in the session as evidence, not on disk.
 
-**What this sets up:** The next exercise authors a test-strategy skill and invokes it on this feature, which is now security-tested. The hardening decision becomes a test case in the test strategy.
+**What this sets up:** The next exercise authors a test-strategy skill and invokes it on this codebase.
 
 <!-- maintainer -->
 

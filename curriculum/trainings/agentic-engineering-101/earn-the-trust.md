@@ -23,7 +23,7 @@ After this module, you will be able to:
 - **Invoke** curated access-control-analysis and STRIDE skills on a feature you're shipping (each as a subagent, fresh context): name what your first read missed, pick one threat worth hardening against, and write the decision as an ADR in your repo's convention
 - **Split** jobs between subagent and main thread, breadth-first curated reads with long structured output go to a subagent; one-question-at-a-time authoring and interactive steering stay in the main thread
 - **Author** a test-strategy skill through conversation with Claude (one question at a time), tuned to your codebase's actual testing conventions
-- **Test** the authored skill: ask it to disclose its own weakest part, push back on the critique, then invoke it on the security-tested feature and ask Claude whether the test strategy is any good
+- **Test** the authored skill: ask it to disclose its own weakest part, push back on the critique, then invoke it on this codebase and ask Claude whether the test strategy is any good
 - **Ship** one authored skill personal-first, and know when it's a team PR
 
 ## Start here
@@ -151,7 +151,7 @@ Optional, when your sessions start running heavy: [The context ceiling and token
 - **Ex2 missing ADR** — student decides but doesn't write. Trainer push: *"write the decision before you forget why. One paragraph, alternatives considered, the constraint you picked."*
 - **Ex3 question-dump** — Claude dumps all five authoring questions at once. Trainer reminds student to push back: *"one at a time — answer this one, ask the next."*
 - **Ex3 default-acceptance on first SKILL.md** — student ships Claude's first draft. Trainer runs the self-critique move: *"ask the skill to disclose its weakest part before you ship."*
-- **Ex3 invocation skip** — student ships without invoking on the feature. Trainer push: *"before team kit, run the skill on the feature you just security-tested. Ask Claude — is the test strategy any good?"*
+- **Ex3 invocation skip** — student ships without invoking at all. Trainer push: *"before team kit, run the skill on this codebase. Ask Claude — is the test strategy any good?"*
 - **Debrief generic rule** — Claude writes "always use curated skills" or similar boilerplate. Trainer push: *"name a branch, not a rule — what specifically about THIS codebase did today's session surface?"*
 
 **Watch-fors (cross-phase):**
@@ -195,7 +195,7 @@ Optional, when your sessions start running heavy: [The context ceiling and token
 | Ex2 *"pick THE threat worth hardening, write the ADR"* | Ex2 menu-shopping — student picks a threat because it's easy, not because it's real | Trainer push: *"name the worst thing this feature could do. The threat worth hardening is usually adjacent to that answer."* |
 | Ex3 *"one question at a time"* (Claude asks; student answers from codebase) | Ex3 question-dump — Claude dumps all five authoring questions at once | Trainer reminds student to push back: *"one at a time — answer this one, ask the next."* |
 | Ex3 *"ask the skill to disclose its weakest part before shipping"* | Ex3 default-acceptance on first SKILL.md — student ships Claude's first draft | Trainer runs the self-critique move: *"ask the skill to disclose its weakest part before you ship."* |
-| Ex3 *"invoke on the feature you just security-tested"* | Ex3 invocation skip — student ships without invoking on the feature | Trainer push: *"before team kit, run the skill on the feature you just security-tested. Ask Claude — is the test strategy any good?"* |
+| Ex3 *"invoke it on this codebase"* | Ex3 invocation skip — student ships without invoking at all | Trainer push: *"before team kit, run the skill on this codebase. Ask Claude — is the test strategy any good?"* |
 | Debrief *"name a branch, not a rule"* | Debrief generic rule — Claude writes "always use curated skills" or boilerplate | Trainer push: *"name a branch, not a rule — what specifically about THIS codebase did today's session surface?"* (escape hatch IS the forcing function — restated as recovery) |
 | Module body, `ae101-m3-sharpen-skill` *"sharpen the skill's weakest section from invocation evidence"* | Same-window self-audit under-flags — student takes the first answer, and a cosmetic rewrite passes as a meaningful one | Already in student-facing body at `## Read the sharpen with a skeptical eye`, and it is what the trainer escalates to: ask Claude to over-flag, tell it to skip preamble and lead with the before/after diff, or fresh-session it as a subagent with the SKILL.md pasted cold |
 | Module body, `ae101-m3-ready-to-clear` *"Ready to clear? All learnings in?"* | The light ask gets a light answer (the section's own callout says it "might be slightly leaky") and the student reads that back as all-clear | The recovery sits one line below the fence: if the agent names something missed, decide to compound it now or accept the loss out loud. Trainer push: *"name the one thing it flagged, and say which way you went."* |

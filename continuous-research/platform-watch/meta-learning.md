@@ -609,3 +609,7 @@ Large-organization research also needs a selection-boundary check at two levels:
 ### Cycle 182 — 2026-09-07
 
 The productive query was not “agent memory accuracy” but a boundary audit: what becomes writable, whose authority survives summarization, and what a later executor is allowed to infer from the result. Reading platform documentation beside security and conflict benchmarks separated capability from evidence and exposed a failure class that retrieval benchmarks omit. Future learning-agent sweeps should trace one candidate through authoring, authority preservation, conflict handling, promotion, retrieval, and rollback.
+
+### Cycle 183 — 2026-09-07
+
+Library research became legible only after classifying the object each project persists—workflow state, facts, relationships, identity, experience, procedure, or evaluation. GitHub stars were useful for a current attention shortlist but could not support production-adoption rankings; vendor benchmarks were even less comparable because the systems optimize different memory objects. Future stack surveys should begin from the query and write contract, then inspect the smallest library that satisfies it.

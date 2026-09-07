@@ -1,11 +1,17 @@
 # Coding Agent Platforms — Platform State
 
-Last updated: 2026-09-07 (cycle 182)
-OODA cycles: 34
+Last updated: 2026-09-07 (cycle 183)
+OODA cycles: 35
 
 ## Focus
 
 Coding agents as the **meta-platform** for the agentic transformation. This is NOT a developer tools category — it's the factory that builds the factories. Coding agents build the MCP servers, the business agents, the evals, the integrations. Every other platform watch category depends on this one. Copilot Studio can't build another Copilot Studio agent. Agentforce can't extend Agentforce. Coding agents compound — each cycle makes the next cycle faster.
+
+## Key Verdict (as of 2026-09-07)
+
+**CYCLE 183 — THE MEMORY STACK HAS THREE LAYERS, AND ONLY ONE IS “LEARNING” (L2).** Current frameworks such as LangGraph, OpenAI Agents SDK, and Google ADK provide execution state, resume, tracing, and human pauses. Specialist systems provide searchable context: Mem0/LangMem/Supermemory for facts and preferences; Graphiti/Cognee for temporal or relational knowledge; Letta for long-lived identity; Hindsight for facts, experiences, observations, and coding-session/git ingestion; Memvid for portable versioned context. For coding agents, the behavior-changing layer is still mostly file-native procedural and evaluative memory—`CLAUDE.md`/`AGENTS.md`, scoped rules, skills, tests, hooks, and harness code. ([LangGraph](https://github.com/langchain-ai/langgraph), [LangMem](https://github.com/langchain-ai/langmem), [Mem0](https://github.com/mem0ai/mem0), [Graphiti](https://github.com/getzep/graphiti), [Cognee](https://github.com/topoteretes/cognee), [Letta](https://github.com/letta-ai/letta), [Hindsight](https://github.com/vectorize-io/hindsight), [Supermemory](https://github.com/supermemoryai/supermemory), [Memvid](https://github.com/memvid/memvid) — [practitioner direct], inspected Sep 2026)
+
+**The practical default for a Claude Code/Codex bug agent is files + Git + evals, not a memory server.** Keep raw traces and outcomes as episodic evidence; propose small versioned rules, skills, sensors, or harness changes; require a human promotion record and a paired fresh-run comparison. Every supplies the most visible coding-specific compound loop in this sweep and ReasoningBank the clearest research reference, but no mainstream library closes candidate → authority-aware human gate → paired replay → promotion → expiry/retirement. Add a workflow framework only for real orchestration needs and a specialist memory layer only for a concrete retrieval problem. ([Every compound engineering](https://github.com/EveryInc/compound-engineering-plugin) — [practitioner direct]; [ReasoningBank](https://github.com/google-research/reasoning-bank) — [academic/research])
 
 ## Key Verdict (as of 2026-09-07)
 

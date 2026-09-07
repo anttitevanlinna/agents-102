@@ -28,7 +28,7 @@ You sent off an un-packaged session. You walk in with the artefact in front of y
 
 The session you sent off declared done at some point. Against what? Nothing in the repo said. A done-done definition is a small context trick that buys repeated fast verification: every run, and every check you build, measures against the same line.
 
-This one runs in the session you sent off. Its answer lands in the transcript you are about to read.
+This one runs in the session you sent off. Resume it if it's not still open. Its answer lands in the transcript you are about to read.
 
 {{prompt:ae101-m5-done-done}}
 
@@ -124,6 +124,8 @@ Module 6 reads the packaged session: subtler misses, subtler drift.
 <!-- maintainer -->
 
 **No rescue callout at `## Start here` — the asymmetry with M6's is deliberate (Antti 2026-08-30; overrides `check_pedagogy.md` §65's M4→M5 example, `check_cross_module.md` §6 is permissive).** M6 load-bears on a two-run contrast, so a missing packaged run guts it and earns body rescue. M5 load-bears on a trace, and the bar sits on the producing side: M4's `## Bring to Module 5` says a stopped session counts and the trace is the artefact, so a thin return is inside the contract and the diagnosis is built to read it. The truly-absent case is room-scale triage — the Connections-blocker push, per §65(b): compressed re-run, late, never a loaner artefact. Do not re-file §6 on the missing callout, and do not add rescue blockquotes to the body.
+
+**The done-done beat carries a resume clause, and that note does not reach it (Antti 2026-09-07).** L31 reads *"Resume it if it's not still open."* The no-rescue call above is scoped to `## Start here`, where the artefact is what M5 needs and a stopped session already supplies it. This beat is the one place in the module that needs the session rather than its trace: the note below records the trick as the transcript inspecting itself *with the original context still live*, and the Connections-blocker recovery opens a fresh session, which recovers the artefact and cannot recover that. Without the clause, a student arriving on M4's blessed stopped-session path pastes the prompt into a new window and the beat no-ops silently. One sentence, no blockquote, and it is not a rescue callout in the §65 sense. A judge meeting it files nothing.
 
 **Stakes line is substantively `check_cross_module.md` §8-compliant in a non-canonical shape (Antti 2026-08-30):** reshaping to the canonical "scrambling for Y while Z" form buys no student-visible gain. Do not re-file on shape.
 

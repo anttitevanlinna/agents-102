@@ -73,7 +73,7 @@ Ask Claude to integrate the over-call into the map.
 
 {{prompt:map-the-access-surface-4}}
 
-Then ask Claude to add the surface the skill missed but you know matters.
+Then ask Claude to add the miss.
 
 {{prompt:map-the-access-surface-5}}
 

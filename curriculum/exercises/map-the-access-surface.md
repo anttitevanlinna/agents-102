@@ -69,7 +69,7 @@ The plan path you noted at Module 2's close is the best input here: it names the
 - **The miss.** What's missing that you know matters? Often the "weird bit" of your feature, the part you'd describe as not-quite-standard.
 - If neither is obvious from a quick scan, ask Claude in chat to propose two or three candidates per side with a one-line reason each. Pick from those; push back if the reasons read generic.
 
-Ask Claude to integrate the surface the skill called out harder than you would have into the map.
+Ask Claude to integrate the over-call into the map.
 
 {{prompt:map-the-access-surface-4}}
 

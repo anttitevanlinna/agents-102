@@ -6,7 +6,7 @@
 
 **What you do:** author a test-strategy skill for your codebase through conversation with Claude, not by typing markdown.
 
-**What you build:** one SKILL.md tuned to how your codebase actually tests, living in your personal skills folder.
+**What you build:** one SKILL.md that stops you re-explaining how this codebase tests.
 
 **The point:** test strategy authored generically is a pyramid diagram.
 

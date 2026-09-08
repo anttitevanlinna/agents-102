@@ -4,7 +4,7 @@
 
 **What you do:** let Claude review the whole session and write your `./CLAUDE.local.md` from session evidence.
 
-**What you build:** a rules file written from session evidence.
+**What you build:** a rules file that improves your next session on this repo.
 
 **The point:** every push-back is a hint toward your own rules.
 

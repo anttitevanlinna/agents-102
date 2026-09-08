@@ -73,7 +73,7 @@ Return ONE JSON object, exactly this shape:
     }
   ],
   "blocking_findings_count": <int>,
-  "suggestions_count": <int>
+  "nonblocking_findings_count": <int>
 }
 
 `blocking: true` for: Big Idea drift, Key Concepts shape violations (§§3/4/5 gates), What-You'll-Learn shape violations (§§3/4 gates + lead-with-strategic-verb), strategy-fidelity (cross-module sequencing front-run), lead-with-discipline.

@@ -14,10 +14,15 @@
       "prompt_lead": "Download the AE101 content tarball to `~/Downloads/ae101-content.tar.gz` using c",
       "registry_source": "curriculum/prompts/ae101-prework-download-tarball.md:12-16",
       "marker_line_raw": 47,
-      "verdict": "TODO",
+      "verdict": "PASS",
       "load_bearing": false,
       "risks_fired": [
-        {"pattern_id": "preamble-before-action", "confidence": "low", "evidence": "Single curl action plus a conditional 401-retry branch; a brief opener is possible but costs one line on a housekeeping step with no teaching moment riding on the reply's first sentence.", "fix_hint": "No edit needed — housekeeping step, manual-download fallback already covers a hard curl failure."}
+        {
+          "pattern_id": "preamble-before-action",
+          "confidence": "low",
+          "evidence": "Single curl action plus a conditional 401-retry branch; a brief opener is possible but costs one line on a housekeeping step with no teaching moment riding on the reply's first sentence.",
+          "fix_hint": "No edit needed — housekeeping step, manual-download fallback already covers a hard curl failure."
+        }
       ]
     },
     {
@@ -25,13 +30,33 @@
       "prompt_lead": "I'm starting a training called Agentic Engineering 101. Walk these in order, ask",
       "registry_source": "curriculum/prompts/ae101-prework-extract-and-install.md:28-41",
       "marker_line_raw": 55,
-      "verdict": "TODO",
+      "verdict": "PASS",
       "load_bearing": true,
       "risks_fired": [
-        {"pattern_id": "preamble-before-action", "confidence": "med", "evidence": "extract-and-install.md:28 opens with a scene-setting clause ('I'm starting a training called Agentic Engineering 101') before the 3 numbered steps — invites a confirmatory opener despite the same line's own 'no preamble' clause.", "fix_hint": "Optional: trim the scene-setting clause so 'no preamble' sits at the very front — low value on a 3-step mechanical setup, not required (structural trigger in check_prompts.md §17 is 4+ sub-steps or plan-mode; this prompt has 3)."},
-        {"pattern_id": "overwrite-anxiety", "confidence": "low", "evidence": "CARVE-OUT (memory/compounded/2026-05-24-prompts-overwrite-anxiety-fresh-install-carveout.md). Steps 1 and 3 write to ~/Documents/ae101-content and ~/.claude/skills/ with no stated overwrite behavior, but this is curriculum-delivered first-bundle-encounter prework (body: 'Get the content folder onto your laptop'); the collision-pause path isn't modal here.", "fix_hint": "No edit needed — carve-out satisfied."},
-        {"pattern_id": "self-report-inflation", "confidence": "low", "evidence": "extract-and-install.md:41 'Report success on each step and tell me what you did' is self-reported, but each step already names a falsifiable check (subfolder names, absolute SKILL.md paths) rather than a qualitative self-grade.", "fix_hint": "No edit needed — falsifiable per-step checks already ground the summary."},
-        {"pattern_id": "default-acceptance", "confidence": "low", "evidence": "extract-and-install.md:30 'Use ~/Documents/ae101-content unless there is a good reason not to' offers an unscrutinized default, but it's a low-stakes path convention that the Artefact-contracts table (prework.md:112) treats as the stable identifier, not a substantive judgment call.", "fix_hint": "No edit needed — default is intentional and matches downstream artefact contracts."}
+        {
+          "pattern_id": "preamble-before-action",
+          "confidence": "med",
+          "evidence": "extract-and-install.md:28 opens with a scene-setting clause ('I'm starting a training called Agentic Engineering 101') before the 3 numbered steps — invites a confirmatory opener despite the same line's own 'no preamble' clause.",
+          "fix_hint": "Optional: trim the scene-setting clause so 'no preamble' sits at the very front — low value on a 3-step mechanical setup, not required (structural trigger in check_prompts.md §17 is 4+ sub-steps or plan-mode; this prompt has 3)."
+        },
+        {
+          "pattern_id": "overwrite-anxiety",
+          "confidence": "low",
+          "evidence": "CARVE-OUT (memory/compounded/2026-05-24-prompts-overwrite-anxiety-fresh-install-carveout.md). Steps 1 and 3 write to ~/Documents/ae101-content and ~/.claude/skills/ with no stated overwrite behavior, but this is curriculum-delivered first-bundle-encounter prework (body: 'Get the content folder onto your laptop'); the collision-pause path isn't modal here.",
+          "fix_hint": "No edit needed — carve-out satisfied."
+        },
+        {
+          "pattern_id": "self-report-inflation",
+          "confidence": "low",
+          "evidence": "extract-and-install.md:41 'Report success on each step and tell me what you did' is self-reported, but each step already names a falsifiable check (subfolder names, absolute SKILL.md paths) rather than a qualitative self-grade.",
+          "fix_hint": "No edit needed — falsifiable per-step checks already ground the summary."
+        },
+        {
+          "pattern_id": "default-acceptance",
+          "confidence": "low",
+          "evidence": "extract-and-install.md:30 'Use ~/Documents/ae101-content unless there is a good reason not to' offers an unscrutinized default, but it's a low-stakes path convention that the Artefact-contracts table (prework.md:112) treats as the stable identifier, not a substantive judgment call.",
+          "fix_hint": "No edit needed — default is intentional and matches downstream artefact contracts."
+        }
       ]
     },
     {
@@ -39,13 +64,33 @@
       "prompt_lead": "Walk these in order, ask one question at a time if you need to, no preamble.",
       "registry_source": "curriculum/prompts/ae101-prework-screen-and-ready.md:21-27",
       "marker_line_raw": 64,
-      "verdict": "TODO",
+      "verdict": "PASS",
       "load_bearing": true,
       "risks_fired": [
-        {"pattern_id": "question-dump", "confidence": "low", "evidence": "CARVE-OUT (memory/compounded/2026-04-27-prompts-question-dump.md). screen-and-ready.md:23 names four screening criteria in one sentence, risk-shaped, but prework.md:62 (pre-prompt) and prework.md:66 (post-prompt) both name the failure mode + a one-at-a-time recovery + student agency — carve-out shape satisfied twice over, plus Prompt 4 operationalizes the AskUserQuestion switch.", "fix_hint": "No edit needed — carve-out satisfied."},
-        {"pattern_id": "preamble-before-action", "confidence": "low", "evidence": "screen-and-ready.md:21 states 'no preamble' explicitly and Step 1 itself opens by asking the student a question, which suppresses plan-talk naturally.", "fix_hint": "No edit needed."},
-        {"pattern_id": "default-acceptance", "confidence": "low", "evidence": "screen-and-ready.md:23 'Help me pick the most trivial-and-visible one' risks rubber-stamping the first candidate, offset by the adjacent body callout at prework.md:62 restating the size bar.", "fix_hint": "No edit needed — body callout already reinforces the bar."},
-        {"pattern_id": "self-report-inflation", "confidence": "low", "evidence": "screen-and-ready.md:25 readiness read is self-reported, but the closing clause 'Flag anything that would get in my way' invites a problem-list rather than a clean bill of health.", "fix_hint": "No edit needed."}
+        {
+          "pattern_id": "question-dump",
+          "confidence": "low",
+          "evidence": "CARVE-OUT (memory/compounded/2026-04-27-prompts-question-dump.md). screen-and-ready.md:23 names four screening criteria in one sentence, risk-shaped, but prework.md:62 (pre-prompt) and prework.md:66 (post-prompt) both name the failure mode + a one-at-a-time recovery + student agency — carve-out shape satisfied twice over, plus Prompt 4 operationalizes the AskUserQuestion switch.",
+          "fix_hint": "No edit needed — carve-out satisfied."
+        },
+        {
+          "pattern_id": "preamble-before-action",
+          "confidence": "low",
+          "evidence": "screen-and-ready.md:21 states 'no preamble' explicitly and Step 1 itself opens by asking the student a question, which suppresses plan-talk naturally.",
+          "fix_hint": "No edit needed."
+        },
+        {
+          "pattern_id": "default-acceptance",
+          "confidence": "low",
+          "evidence": "screen-and-ready.md:23 'Help me pick the most trivial-and-visible one' risks rubber-stamping the first candidate, offset by the adjacent body callout at prework.md:62 restating the size bar.",
+          "fix_hint": "No edit needed — body callout already reinforces the bar."
+        },
+        {
+          "pattern_id": "self-report-inflation",
+          "confidence": "low",
+          "evidence": "screen-and-ready.md:25 readiness read is self-reported, but the closing clause 'Flag anything that would get in my way' invites a problem-list rather than a clean bill of health.",
+          "fix_hint": "No edit needed."
+        }
       ]
     },
     {
@@ -53,15 +98,19 @@
       "prompt_lead": "Use the AskUserQuestion tool for speeding up screening and making suggestions. O",
       "registry_source": "curriculum/prompts/ae101-prework-one-at-a-time.md:10",
       "marker_line_raw": 68,
-      "verdict": "TODO",
+      "verdict": "PASS",
       "load_bearing": false,
       "risks_fired": [
-        {"pattern_id": "preamble-before-action", "confidence": "low", "evidence": "One-liner tool-switch command carrying no in-fence 'no preamble' of its own; a brief acknowledgement line is possible but this prompt is itself a fallback recovery move offered contingent on Prompt 3 misbehaving, not a fresh teaching-moment risk.", "fix_hint": "No edit needed."}
+        {
+          "pattern_id": "preamble-before-action",
+          "confidence": "low",
+          "evidence": "One-liner tool-switch command carrying no in-fence 'no preamble' of its own; a brief acknowledgement line is possible but this prompt is itself a fallback recovery move offered contingent on Prompt 3 misbehaving, not a fresh teaching-moment risk.",
+          "fix_hint": "No edit needed."
+        }
       ]
     }
   ],
   "blocking_findings_count": 0,
-  "todos_count": 0,
   "rules_total": 6,
   "rules_evaluated": [
     {
@@ -108,5 +157,79 @@
       "evidence": "10 of the 15 catalog patterns have no surface to fire on in this file's 4 prompts: self-audit-charity, source-type-blindness, citation-gap-asymmetry, citation-cargo-cult, niceness-tax (no self-critique, source-ingestion, citation, or edge/stance content is asked for anywhere in these 4 fences); reading-burden (no manual proofreading asked of the student — self-reports are named-artifact-grounded per rule 31 above); file-preservation-gap, append-vs-integrate (no prompt regenerates or updates an existing student-authored artifact — Steps 1 and 3 create fresh state); plan-mode-preamble-bloat, plan-mode-approval-inflation (no prompt invokes plan mode). N/A, not silently dropped."
     }
   ],
-  "notes": "In-scope compendiums for this class: check_prompts.md, check_pedagogy.md (per prompt-behavior.md's compendium_paths). Sim-cache at curriculum/evals/sim-cache/ae101--module--prework.behavior.json was fully stale (content_sha and all 4 prompt_sha values mismatched the current file — none of my independently-computed SHAs matched the cache) and has been fully regenerated in this pass; trace_status full_regen. Maintainer-block accept-notes checked and respected: (1) 2026-08-13 note declining a licence/network pre-check (out of my class's scope, noted for completeness); (2) 2026-08-13 note accepting the two {{prompt:}} fences under check_pedagogy.md §52a as by-design, not an unextracted exercise — that is a pedagogy-class call, not mine, but it corroborates that this section's shape is a maintainer decision, not drift. Out-of-lane observation for the pedagogy/technical judges, not filed here: Prompt 2's registry file (ae101-prework-extract-and-install.md) had its `produces.location` frontmatter edited since the pin (dropped '(or sponsor-stated path)') — frontmatter-only, not a body edit, so it never entered my scope, but the Artefact-contracts table at prework.md:112 still reads '(or student-confirmed equivalent)' — a wording drift between the two, cosmetic, not a behavioral-risk finding."
+  "notes": "In-scope compendiums for this class: check_prompts.md, check_pedagogy.md (per prompt-behavior.md's compendium_paths). Sim-cache at curriculum/evals/sim-cache/ae101--module--prework.behavior.json was fully stale (content_sha and all 4 prompt_sha values mismatched the current file — none of my independently-computed SHAs matched the cache) and has been fully regenerated in this pass; trace_status full_regen. Maintainer-block accept-notes checked and respected: (1) 2026-08-13 note declining a licence/network pre-check (out of my class's scope, noted for completeness); (2) 2026-08-13 note accepting the two {{prompt:}} fences under check_pedagogy.md §52a as by-design, not an unextracted exercise — that is a pedagogy-class call, not mine, but it corroborates that this section's shape is a maintainer decision, not drift. Out-of-lane observation for the pedagogy/technical judges, not filed here: Prompt 2's registry file (ae101-prework-extract-and-install.md) had its `produces.location` frontmatter edited since the pin (dropped '(or sponsor-stated path)') — frontmatter-only, not a body edit, so it never entered my scope, but the Artefact-contracts table at prework.md:112 still reads '(or student-confirmed equivalent)' — a wording drift between the two, cosmetic, not a behavioral-risk finding.",
+  "nonblocking_findings_count": 0,
+  "suggestions": [
+    {
+      "from": "prompts_findings TODO",
+      "rule": "preamble-before-action",
+      "prompt_index": 1,
+      "note": "No edit needed — housekeeping step, manual-download fallback already covers a hard curl failure.",
+      "evidence": "Single curl action plus a conditional 401-retry branch; a brief opener is possible but costs one line on a housekeeping step with no teaching moment riding on the reply's first sentence."
+    },
+    {
+      "from": "prompts_findings TODO",
+      "rule": "preamble-before-action",
+      "prompt_index": 2,
+      "note": "Optional: trim the scene-setting clause so 'no preamble' sits at the very front — low value on a 3-step mechanical setup, not required (structural trigger in check_prompts.md §17 is 4+ sub-steps or plan-mode; this prompt has 3).",
+      "evidence": "extract-and-install.md:28 opens with a scene-setting clause ('I'm starting a training called Agentic Engineering 101') before the 3 numbered steps — invites a confirmatory opener despite the same line's own 'no preamble' clause."
+    },
+    {
+      "from": "prompts_findings TODO",
+      "rule": "overwrite-anxiety",
+      "prompt_index": 2,
+      "note": "No edit needed — carve-out satisfied.",
+      "evidence": "CARVE-OUT (memory/compounded/2026-05-24-prompts-overwrite-anxiety-fresh-install-carveout.md). Steps 1 and 3 write to ~/Documents/ae101-content and ~/.claude/skills/ with no stated overwrite behavior, but this is curriculum-delivered first-bundle-encounter prework (body: 'Get the content folder onto your laptop'); the collision-pause path isn't modal here."
+    },
+    {
+      "from": "prompts_findings TODO",
+      "rule": "self-report-inflation",
+      "prompt_index": 2,
+      "note": "No edit needed — falsifiable per-step checks already ground the summary.",
+      "evidence": "extract-and-install.md:41 'Report success on each step and tell me what you did' is self-reported, but each step already names a falsifiable check (subfolder names, absolute SKILL.md paths) rather than a qualitative self-grade."
+    },
+    {
+      "from": "prompts_findings TODO",
+      "rule": "default-acceptance",
+      "prompt_index": 2,
+      "note": "No edit needed — default is intentional and matches downstream artefact contracts.",
+      "evidence": "extract-and-install.md:30 'Use ~/Documents/ae101-content unless there is a good reason not to' offers an unscrutinized default, but it's a low-stakes path convention that the Artefact-contracts table (prework.md:112) treats as the stable identifier, not a substantive judgment call."
+    },
+    {
+      "from": "prompts_findings TODO",
+      "rule": "question-dump",
+      "prompt_index": 3,
+      "note": "No edit needed — carve-out satisfied.",
+      "evidence": "CARVE-OUT (memory/compounded/2026-04-27-prompts-question-dump.md). screen-and-ready.md:23 names four screening criteria in one sentence, risk-shaped, but prework.md:62 (pre-prompt) and prework.md:66 (post-prompt) both name the failure mode + a one-at-a-time recovery + student agency — carve-out shape satisfied twice over, plus Prompt 4 operationalizes the AskUserQuestion switch."
+    },
+    {
+      "from": "prompts_findings TODO",
+      "rule": "preamble-before-action",
+      "prompt_index": 3,
+      "note": "No edit needed.",
+      "evidence": "screen-and-ready.md:21 states 'no preamble' explicitly and Step 1 itself opens by asking the student a question, which suppresses plan-talk naturally."
+    },
+    {
+      "from": "prompts_findings TODO",
+      "rule": "default-acceptance",
+      "prompt_index": 3,
+      "note": "No edit needed — body callout already reinforces the bar.",
+      "evidence": "screen-and-ready.md:23 'Help me pick the most trivial-and-visible one' risks rubber-stamping the first candidate, offset by the adjacent body callout at prework.md:62 restating the size bar."
+    },
+    {
+      "from": "prompts_findings TODO",
+      "rule": "self-report-inflation",
+      "prompt_index": 3,
+      "note": "No edit needed.",
+      "evidence": "screen-and-ready.md:25 readiness read is self-reported, but the closing clause 'Flag anything that would get in my way' invites a problem-list rather than a clean bill of health."
+    },
+    {
+      "from": "prompts_findings TODO",
+      "rule": "preamble-before-action",
+      "prompt_index": 4,
+      "note": "No edit needed.",
+      "evidence": "One-liner tool-switch command carrying no in-fence 'no preamble' of its own; a brief acknowledgement line is possible but this prompt is itself a fallback recovery move offered contingent on Prompt 3 misbehaving, not a fresh teaching-moment risk."
+    }
+  ],
+  "suggestions_count": 10
 }

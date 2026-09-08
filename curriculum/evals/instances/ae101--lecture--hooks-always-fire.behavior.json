@@ -2,7 +2,7 @@
   "class": "behavior",
   "training": "ae101",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/hooks-always-fire.md",
-  "verdict": "PASS_WITH_TODOS",
+  "verdict": "PASS",
   "body_sha": "4152c29900226b29b4c957055099a0145cf39ad244107dd6c21f0824bfe9ad7f",
   "shape_hash": "5c20e18b3d5c6c2f",
   "content_sha": "76d26ccee7859bbc37aeba5a3525919f5649dd52d8f37c304b380d2c5bdd35b4",
@@ -12,7 +12,7 @@
     {
       "prompt_index": 1,
       "prompt_lead": "Name the top five hooks you see people actually using with Claude Code, beyond formatting and linting.",
-      "verdict": "TODO",
+      "verdict": "PASS",
       "load_bearing": true,
       "risks_fired": [
         {
@@ -25,24 +25,112 @@
     }
   ],
   "catalog_coverage": [
-    {"pattern_id": "file-preservation-gap", "status": "not_fired", "prompt_indices": [], "why": "The prompt writes nothing; it is a name-and-cross-reference query with no target file to preserve or overwrite."},
-    {"pattern_id": "reading-burden", "status": "not_fired", "prompt_indices": [], "why": "The room reads the returned list for pattern-recognition against the tail's menu line (\"A menu, not a checklist\"), which is the lecture's designed teaching moment, not a manual-error-catch the student is on the hook for."},
-    {"pattern_id": "niceness-tax", "status": "not_fired", "prompt_indices": [], "why": "check_prompts.md #14's failure shape is a regeneration drifting away from a deliberate edge/anti-positioning stance; this prompt asks for a factual name-and-cross-reference list with no stance or positioning at stake for RLHF softening to erode."},
-    {"pattern_id": "question-dump", "status": "not_fired", "prompt_indices": [], "why": "One compound request (name five, cross-reference each), not a sequence of questions posed to the student."},
-    {"pattern_id": "overwrite-anxiety", "status": "not_fired", "prompt_indices": [], "why": "No file destination or overwrite decision is in play."},
-    {"pattern_id": "preamble-before-action", "status": "not_fired", "prompt_indices": [], "why": "check_prompts.md #17 (narrowed 2026-09-03) fires structurally on plan-mode fences only; this prompt declares no permission-mode and the in-fence \"No preamble. List them.\" suppressor is present regardless, so the pattern is advisory-only here and not live."},
-    {"pattern_id": "append-vs-integrate", "status": "not_fired", "prompt_indices": [], "why": "No \"add X and regenerate\" instruction; nothing is being appended to or integrated into an existing artifact."},
-    {"pattern_id": "plan-mode-preamble-bloat", "status": "not_fired", "prompt_indices": [], "why": "No permission-mode declared in the registry frontmatter (runtime: any) and no plan-mode invocation in the fence."},
-    {"pattern_id": "citation-gap-asymmetry", "status": "not_fired", "prompt_indices": [], "why": "The fence requires cross-referencing EACH of the five hooks uniformly, with an explicit honest-negative escape (\"If one doesn't apply to this repo, say so\") -- it structurally forecloses the asymmetric some-cited-some-not shape the pattern describes."},
-    {"pattern_id": "self-report-inflation", "status": "not_fired", "prompt_indices": [], "why": "Claude is not grading its own prior work; it names externally-known hooks and reads the live repo fresh."},
-    {"pattern_id": "default-acceptance", "status": "not_fired", "prompt_indices": [], "why": "No default artefact or default set is being offered for the student to accept as-is; this is an observed demo list read against a menu line, not installed verbatim into anyone's repo."},
-    {"pattern_id": "plan-mode-approval-inflation", "status": "not_fired", "prompt_indices": [], "why": "No plan-mode plan is produced or approved."},
-    {"pattern_id": "source-type-blindness", "status": "not_fired", "prompt_indices": [], "why": "No heterogeneous source-folder ingestion (slides/PDFs/decks); this is a direct live-repo read plus general knowledge."},
-    {"pattern_id": "citation-cargo-cult", "status": "fired", "confidence": "low", "prompt_indices": [1], "why": "Repo-grounded specifics requested with no explicit verify-first clause; see prompts_findings for full evidence, mitigation, and fix_hint."},
-    {"pattern_id": "self-audit-charity", "status": "not_fired", "prompt_indices": [], "why": "The prompt does not ask Claude to critique its own prior session work; it names external practice and cross-references a repo it did not author in this session."}
+    {
+      "pattern_id": "file-preservation-gap",
+      "status": "not_fired",
+      "prompt_indices": [],
+      "why": "The prompt writes nothing; it is a name-and-cross-reference query with no target file to preserve or overwrite."
+    },
+    {
+      "pattern_id": "reading-burden",
+      "status": "not_fired",
+      "prompt_indices": [],
+      "why": "The room reads the returned list for pattern-recognition against the tail's menu line (\"A menu, not a checklist\"), which is the lecture's designed teaching moment, not a manual-error-catch the student is on the hook for."
+    },
+    {
+      "pattern_id": "niceness-tax",
+      "status": "not_fired",
+      "prompt_indices": [],
+      "why": "check_prompts.md #14's failure shape is a regeneration drifting away from a deliberate edge/anti-positioning stance; this prompt asks for a factual name-and-cross-reference list with no stance or positioning at stake for RLHF softening to erode."
+    },
+    {
+      "pattern_id": "question-dump",
+      "status": "not_fired",
+      "prompt_indices": [],
+      "why": "One compound request (name five, cross-reference each), not a sequence of questions posed to the student."
+    },
+    {
+      "pattern_id": "overwrite-anxiety",
+      "status": "not_fired",
+      "prompt_indices": [],
+      "why": "No file destination or overwrite decision is in play."
+    },
+    {
+      "pattern_id": "preamble-before-action",
+      "status": "not_fired",
+      "prompt_indices": [],
+      "why": "check_prompts.md #17 (narrowed 2026-09-03) fires structurally on plan-mode fences only; this prompt declares no permission-mode and the in-fence \"No preamble. List them.\" suppressor is present regardless, so the pattern is advisory-only here and not live."
+    },
+    {
+      "pattern_id": "append-vs-integrate",
+      "status": "not_fired",
+      "prompt_indices": [],
+      "why": "No \"add X and regenerate\" instruction; nothing is being appended to or integrated into an existing artifact."
+    },
+    {
+      "pattern_id": "plan-mode-preamble-bloat",
+      "status": "not_fired",
+      "prompt_indices": [],
+      "why": "No permission-mode declared in the registry frontmatter (runtime: any) and no plan-mode invocation in the fence."
+    },
+    {
+      "pattern_id": "citation-gap-asymmetry",
+      "status": "not_fired",
+      "prompt_indices": [],
+      "why": "The fence requires cross-referencing EACH of the five hooks uniformly, with an explicit honest-negative escape (\"If one doesn't apply to this repo, say so\") -- it structurally forecloses the asymmetric some-cited-some-not shape the pattern describes."
+    },
+    {
+      "pattern_id": "self-report-inflation",
+      "status": "not_fired",
+      "prompt_indices": [],
+      "why": "Claude is not grading its own prior work; it names externally-known hooks and reads the live repo fresh."
+    },
+    {
+      "pattern_id": "default-acceptance",
+      "status": "not_fired",
+      "prompt_indices": [],
+      "why": "No default artefact or default set is being offered for the student to accept as-is; this is an observed demo list read against a menu line, not installed verbatim into anyone's repo."
+    },
+    {
+      "pattern_id": "plan-mode-approval-inflation",
+      "status": "not_fired",
+      "prompt_indices": [],
+      "why": "No plan-mode plan is produced or approved."
+    },
+    {
+      "pattern_id": "source-type-blindness",
+      "status": "not_fired",
+      "prompt_indices": [],
+      "why": "No heterogeneous source-folder ingestion (slides/PDFs/decks); this is a direct live-repo read plus general knowledge."
+    },
+    {
+      "pattern_id": "citation-cargo-cult",
+      "status": "fired",
+      "confidence": "low",
+      "prompt_indices": [
+        1
+      ],
+      "why": "Repo-grounded specifics requested with no explicit verify-first clause; see prompts_findings for full evidence, mitigation, and fix_hint."
+    },
+    {
+      "pattern_id": "self-audit-charity",
+      "status": "not_fired",
+      "prompt_indices": [],
+      "why": "The prompt does not ask Claude to critique its own prior session work; it names external practice and cross-references a repo it did not author in this session."
+    }
   ],
   "blocking_findings_count": 0,
-  "todos_count": 1,
   "evidence": "Read curriculum/lectures/hooks-always-fire.md in full at the raw source (16-line maintainer-cut body per derive-body-view.js; body_sha 5994c4a7... taken at start of read) and the expanded view via `node scripts/expand-md.js curriculum/lectures/hooks-always-fire.md` (content_sha 76d26cce...) since signals.has_prompt_blocks=true. One `{{prompt:what-packaging-is-1}}` marker resolves to one **Prompt** fenced block; verified the registry body at curriculum/prompts/what-packaging-is-1.md matches the expanded output exactly (prompt_sha ae064a89... computed against the exact fenced text). Ran `node curriculum/evals/scripts/prefill-instance.js curriculum/lectures/hooks-always-fire.md behavior --write` -- sidecar reports 'prior instance has no rules_evaluated array' and parks 0 rows, because the prior instance (2026-08-25) is written in this class's own prompts_findings/catalog_coverage shape rather than the generic rules_evaluated ledger the prefill script looks for; per check-instance-schema.js's own documented split ('Class B never writes rule rows... each finding lands in prompts_findings') this is expected, not a defect, and every row here is freshly judged rather than carried forward. Read check_prompts.md in full (49 rules, including the 2026-09-03 narrowing of #17 to plan-mode-only) and check_pedagogy.md in full (67 rules) per the template's compendium_paths; none of check_pedagogy.md's owned patterns (self-report-inflation, default-acceptance, plan-mode-approval-inflation, source-type-blindness, self-audit-charity) fire on this single factual cross-reference prompt. Checked the maintainer block for accept-notes before flagging anything -- all six dated lines are about placement/timing/slide-shape/delivery-cue, none neutralises or bears on citation-cargo-cult, so no conflict. Diverged from the prior (2026-08-25) instance on two of its three low-confidence risks: that instance listed niceness-tax and preamble-before-action as 'fired (low)' with fix_hint 'No edit warranted' -- but the class template states a TODO owes a fix_hint naming an edit, and 'no edit warranted' names none, which means those two should have been not_fired rather than fired-with-a-contradiction; re-derived both as not_fired against the current rule text (niceness-tax's failure shape needs a positioning/edge stance at stake, absent here; #17's 2026-09-03 narrowing restricts the pattern to plan-mode fences, which this is not). The remaining risk, citation-cargo-cult, gets a genuine actionable fix_hint (quote-the-line clause per #13b) so it correctly stays a TODO. Wrote the sim-cache trace (curriculum/evals/sim-cache/ae101--lecture--hooks-always-fire.behavior.json, generated_first_time -- none existed before this run). Ran `git diff d5aa7e3d -- curriculum/lectures/hooks-always-fire.md` (d5aa7e3d is the Quality line's last-recorded behavior pin) to see what changed under that pin: the prompt's closing line moved from \"The ones worth keeping are tied to a specific file, convention, or failure mode in this repo, not a generic team-could-want-this.\" to \"A menu, not a checklist.\" (2026-08-29, Antti-directed per the maintainer block's Slide-2-shape note, documented and dated). That earlier line functioned as a de facto specificity check the room could read the returned list against; the current line addresses a different concern entirely (menu vs. mandatory checklist) and does not touch citation quality. The maintainer's dated rationale explains the menu framing but does not address citation-cargo-cult, so this diff removed an incidental mitigation without a replacement -- which is why citation-cargo-cult survives as a live TODO here rather than closing out.",
-  "notes": "Single-prompt file. In-lane scope only (check_prompts.md/check_pedagogy.md); the prompt's static mechanics (action lead-in, no placeholders, sampling shape) belong to the technical judge per this template's own scope note and are not re-derived here. rows_written_by_you=1 (the one prompts_findings entry); rows_spliced_by_merge=0 (prefill sidecar parked nothing -- behavior class carries no rules_evaluated ledger for the merge mechanism to park rows into)."
+  "notes": "Single-prompt file. In-lane scope only (check_prompts.md/check_pedagogy.md); the prompt's static mechanics (action lead-in, no placeholders, sampling shape) belong to the technical judge per this template's own scope note and are not re-derived here. rows_written_by_you=1 (the one prompts_findings entry); rows_spliced_by_merge=0 (prefill sidecar parked nothing -- behavior class carries no rules_evaluated ledger for the merge mechanism to park rows into).",
+  "nonblocking_findings_count": 0,
+  "suggestions": [
+    {
+      "from": "prompts_findings TODO",
+      "rule": "citation-cargo-cult",
+      "prompt_index": 1,
+      "note": "Add one clause after \"this repo\": \"name the exact file and line/setting you found, or say you could not verify one\" -- the quote-the-sentence discipline check_prompts.md #13(b) prescribes for citation-cargo-cult.",
+      "evidence": "\"Cross-reference each with this repo: the event it fires on, and the specific file, convention, or failure mode here it would catch\" (line 18 of the expanded fence) asks for five repo-grounded specifics with no explicit verify-or-quote-the-line clause -- check_prompts.md #13(b)'s own prescribed fix for this exact pattern (\"quote the sentence in cited file that supports it; if you can't find one, mark [CITATION UNSUPPORTED]\"). Mitigating but not neutralising: this runs inside a live agentic Claude Code session with full tool access to the actual repo (not an offline citation task), and the repo genuinely has real hook config to find (check_prompts.md #22 names `.claude/hooks/prompt-edit-gate.sh` and `.githooks/pre-commit` as this repo's own PreToolUse/pre-commit hooks), so a well-behaved run has real material to ground on without inventing. \"No preamble. List them.\" optimises for a terse final answer, which could suppress the visible grep/read narration a careful run would otherwise show, but does not itself stop the tool calls from happening first. Confidence stays low (catalog band: \"allows but scaffold mitigates; <30%\") because the scaffold here is Claude Code's own default tool-using behaviour, not anything the prompt text itself supplies."
+    }
+  ],
+  "suggestions_count": 1
 }

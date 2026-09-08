@@ -9,7 +9,7 @@
     {
       "prompt_index": 1,
       "prompt_lead": "Based on material in this folder, make a 1 page briefing.",
-      "verdict": "TODO",
+      "verdict": "PASS",
       "load_bearing": true,
       "risks_fired": [
         {
@@ -29,7 +29,7 @@
     {
       "prompt_index": 2,
       "prompt_lead": "Run a separate fact-checking subagent on `source-answer.md`.",
-      "verdict": "TODO",
+      "verdict": "PASS",
       "load_bearing": true,
       "risks_fired": [
         {
@@ -134,5 +134,36 @@
     }
   ],
   "blocking_findings_count": 3,
-  "todos_count": 2
+  "nonblocking_findings_count": 0,
+  "suggestions": [
+    {
+      "from": "prompts_findings TODO",
+      "rule": "source-type-blindness",
+      "prompt_index": 1,
+      "note": "Add an extraction-depth check line: 'for each source file, rate how much content you extracted (1-10); flag any under 6'.",
+      "evidence": "Based on material in this folder"
+    },
+    {
+      "from": "prompts_findings TODO",
+      "rule": "preamble-before-action",
+      "prompt_index": 1,
+      "note": "Short single-action prompt; preamble risk is low and structural suppressor is not warranted here.",
+      "evidence": "Based on material in this folder, make a 1 page briefing."
+    },
+    {
+      "from": "prompts_findings TODO",
+      "rule": "preamble-before-action",
+      "prompt_index": 2,
+      "note": "Add a body primer after the fence: 'Claude will narrate briefly before dispatching; skip past the opening sentence and look for the fact-check findings.'",
+      "evidence": "Run a separate fact-checking subagent on `source-answer.md`. Give the checker this job: [4 sub-steps] After the checker finishes, summarize the findings in chat:"
+    },
+    {
+      "from": "prompts_findings TODO",
+      "rule": "self-audit-charity",
+      "prompt_index": 2,
+      "note": "Fresh-context subagent carve-out applies; risk is mitigated. No action needed.",
+      "evidence": "Run a separate fact-checking subagent on `source-answer.md`. Give the checker this job:"
+    }
+  ],
+  "suggestions_count": 4
 }

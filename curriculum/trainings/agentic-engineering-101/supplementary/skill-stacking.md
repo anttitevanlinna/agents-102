@@ -174,7 +174,7 @@ The answer is often "leaf today, route later" or "leaf today, hand-off when the 
 <!-- maintainer -->
 
 **Quality:** compendium-audited 2026-09-05 (writing@324b81d7 story@324b81d7 technical@324b81d7 pedagogy@b55cd28b strategy@324b81d7 slides@08946dd8)
-- judges @08946dd8: writing PASS (2 todos see instances/ae101--supplementary--skill-stacking.writing.json), story PASS, technical PASS, behavior N/A (no student-copied prompt blocks; the only fence is a SKILL.md frontmatter illustration), pedagogy PASS, strategy PASS, slides PASS (1 todo see instances/ae101--supplementary--skill-stacking.slides.json)
+- judges @08946dd8: writing PASS (2 findings see instances/ae101--supplementary--skill-stacking.writing.json), story PASS, technical PASS, behavior N/A (no student-copied prompt blocks; the only fence is a SKILL.md frontmatter illustration), pedagogy PASS, strategy PASS, slides PASS (1 finding see instances/ae101--supplementary--skill-stacking.slides.json)
 
 **`## Map your own kit` is written for one reader, M6 or not (2026-08-19).** The wording holds either way because an M6 student has written a skill back at M3. M6's close produces a handoff prompt the student runs later to author skills, so a module-conditional branch has no M6-produced skill to point at (see `spot-gaps-build-the-loop.md` Artefact contracts). Do not add one until there is.
 

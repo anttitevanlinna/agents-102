@@ -40,7 +40,7 @@ Go.
 <!-- maintainer -->
 
 **Quality:** compendium-audited 2026-09-05 (writing@08946dd8 story@08946dd8 technical@08946dd8 behavior@1c765f2 pedagogy@08946dd8 strategy@08946dd8 slides@08946dd8)
-- judges @08946dd8: writing PASS (2 todos see instances/ae101--lecture--skills-from-the-frontier.writing.json), story PASS, technical PASS (1 todo see instances/ae101--lecture--skills-from-the-frontier.technical.json), behavior PASS, pedagogy PASS (1 todo see instances/ae101--lecture--skills-from-the-frontier.pedagogy.json), strategy PASS (1 todo see instances/ae101--lecture--skills-from-the-frontier.strategy.json), slides PASS (1 todo see instances/ae101--lecture--skills-from-the-frontier.slides.json)
+- judges @08946dd8: writing PASS (2 findings see instances/ae101--lecture--skills-from-the-frontier.writing.json), story PASS, technical PASS (1 finding see instances/ae101--lecture--skills-from-the-frontier.technical.json), behavior PASS, pedagogy PASS (1 finding see instances/ae101--lecture--skills-from-the-frontier.pedagogy.json), strategy PASS (1 finding see instances/ae101--lecture--skills-from-the-frontier.strategy.json), slides PASS (1 finding see instances/ae101--lecture--skills-from-the-frontier.slides.json)
 
 **STRIDE at L7 is assumed-known (Antti 2026-08-30):** the cold first use one slide before its Kohnfelder/Shostack earning stands under the 2026-08-18 assumed-known carve-out for this audience. `check_student_facing.md` §2 judges should not re-flag it.
 

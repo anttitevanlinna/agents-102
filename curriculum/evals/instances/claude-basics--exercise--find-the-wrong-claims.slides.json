@@ -3,7 +3,7 @@
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/find-the-wrong-claims.md",
   "body_sha": "3ac2b271961dc337b55fe912b7cde5fa0a785bf0a3ff831b75740886d22c3901",
   "shape_hash": "a4681750bc0b283b",
-  "verdict": "PASS_WITH_TODOS",
+  "verdict": "PASS",
   "training": "claude-basics",
   "chunk_map": [
     {
@@ -129,7 +129,7 @@
     {
       "compendium": "check_slides.md",
       "rule_index": 9,
-      "rule_lead": "Emphasis budget \u2014 bold is for handles, and go very lightly.",
+      "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
       "verdict": "PASS",
       "chunks_flagged": [],
       "evidence": "Bold inventory per chunk, this session: chunk 0 has `**Time:**` (universal exercise metadata label -- confirmed against 29 other `curriculum/exercises/*.md` files opening the identical way) and `**Session**` (author-typed widget marker per `curriculum/widgets.md`, which the renderer's `decorateSessions` consumes into an amber chip, dropping the label `<strong>` the way `decorateHox` does -- not rendered bold prose text at all, so it sits outside this rule's inline-bold accounting). That leaves one true inline bold on chunk 0 (`Time:`), within the <=1 budget. Chunks 1, 4, 5 each carry only the `**Prompt**` widget marker (same widget exemption, 0 counted). Chunk 3 carries `**Prompt**` + `**Session**` (both widgets, 0 counted). Chunk 2 carries `**Prompt**` (widget) + `**Subagent:**` (a one-word coined-term label, well inside the <=5-word handle cap) -- 1 counted bold. Chunk 6 carries `**Prompt**` (widget) + `**Caveat:**` (one-word label handle) -- 1 counted bold. No chunk exceeds the <=1-per-slide budget once widget markers are excluded, and every counted bold is a short handle, never a whole sentence.",
@@ -139,7 +139,7 @@
     {
       "compendium": "check_slides.md",
       "rule_index": 10,
-      "rule_lead": "Presence precedes content \u2014 verify against the composed deck, not long-read.",
+      "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
       "verdict": "PASS",
       "chunks_flagged": [],
       "evidence": "Not rendered this session (no headless-Chrome diff run against this file). Judged on structure instead: the entire body sits under six ordinary `##` headings with no phase-less prose section of the kind that dropped in the 2026-07-09 incident (no un-wrapped prework/supplementary/reference block, no standalone content outside the exercise's own heading structure). This file is included via the ordinary structural include-link `[Exercise: Find the wrong claims](exercises/find-the-wrong-claims.md)` in `homework-build-and-verify.md`, the same pattern every other inlined exercise in the corpus uses. No risk signal present that would put a section at risk of falling outside `.phase--exercise`.",
@@ -149,10 +149,10 @@
     {
       "compendium": "check_slides.md",
       "rule_index": 11,
-      "rule_lead": "Numbering \u2014 position is computed, content ordinals are linted.",
+      "rule_lead": "Numbering — position is computed, content ordinals are linted.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Ran, this session: `node scripts/check-slide-numbering.js --file curriculum/exercises/find-the-wrong-claims.md` -> \"OK \u2014 1 files, Phase/Step numbering consistent.\" Phase 1 through Phase 6 headers run consecutively with no gaps; no in-file prose references a phase by number out of step with this order.",
+      "evidence": "Ran, this session: `node scripts/check-slide-numbering.js --file curriculum/exercises/find-the-wrong-claims.md` -> \"OK — 1 files, Phase/Step numbering consistent.\" Phase 1 through Phase 6 headers run consecutively with no gaps; no in-file prose references a phase by number out of step with this order.",
       "fix_hint": null,
       "blocking": false
     },
@@ -162,7 +162,7 @@
       "rule_lead": "Page geometry dies at the cut; reading order survives.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Ran, this session: `node scripts/check-slide-deixis.js --file curriculum/exercises/find-the-wrong-claims.md` -> \"OK \u2014 1 files, no page-geometry pointers across the slide cut.\" Confirmed manually against the body projection: `\\b(above|below|further down|at the top|see below)\\b` (case-insensitive) -> 0 hits.",
+      "evidence": "Ran, this session: `node scripts/check-slide-deixis.js --file curriculum/exercises/find-the-wrong-claims.md` -> \"OK — 1 files, no page-geometry pointers across the slide cut.\" Confirmed manually against the body projection: `\\b(above|below|further down|at the top|see below)\\b` (case-insensitive) -> 0 hits.",
       "fix_hint": null,
       "blocking": true
     },
@@ -179,10 +179,10 @@
     {
       "compendium": "check_slides.md",
       "rule_index": 14,
-      "rule_lead": "Slide size \u2014 210 words / 6 bullets, and the cap is machine-checked.",
+      "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Ran, this session: `node scripts/check-slide-size.js --file curriculum/exercises/find-the-wrong-claims.md` -> \"files: 1  slides: 6  limits: 210 words / 6 bullets \u2014 oversized: 0 \u2014 every slide is within limits.\"",
+      "evidence": "Ran, this session: `node scripts/check-slide-size.js --file curriculum/exercises/find-the-wrong-claims.md` -> \"files: 1  slides: 6  limits: 210 words / 6 bullets — oversized: 0 — every slide is within limits.\"",
       "fix_hint": null,
       "blocking": false
     },
@@ -199,7 +199,7 @@
     {
       "compendium": "check_slides.md",
       "rule_index": 16,
-      "rule_lead": "A bullet earns its slot or dies \u2014 three classes that read as rigour and carry nothing.",
+      "rule_lead": "A bullet earns its slot or dies — three classes that read as rigour and carry nothing.",
       "verdict": "PASS",
       "chunks_flagged": [],
       "evidence": "Audited every body paragraph/line against the three classes. Closest call: chunk 6 lines 154-157, the two closing blockquotes (\"Even after this, the answer might still contain errors... human oversight is what keeps the operation truthful\" / \"Your source files may not be 100% accurate either... Not everything can be fixed by fixing the generation.\") -- reads kicker-adjacent by position (last beat in the file) but holds inside because it introduces new substantive content not stated anywhere earlier (the limits of self-checking loops and the possibility that the ground truth itself is wrong), rather than restating chunk 6's own header or an established `**The point:**` line -- this file has neither a doctrine phrase nor a `**The point:**` line to restate. Line 65 (\"The useful result is often not 'wrong.' It is 'not in the sources' or 'too broad.'\") and line 87 (\"The rule does not make Claude perfect. It gives the folder a better default move.\") are each their chunk's first statement of that specific nuance, not a re-announcement of a prior claim. No doctrine-restatement, self-referential design-commentary, or aphorism-kicker bullet found anywhere in the body.",
@@ -208,14 +208,15 @@
     }
   ],
   "blocking_findings_count": 0,
-  "todos_count": 1,
-  "todos": [
+  "notes": [
+    "No prior instance existed for this (file, class) pair -- `prefill-instance.js --write` reported \"0 rows parked ... [no prior instance]\" and the class brief included all 16 check_slides.md rules verbatim (0 excluded as already-resolved), so every row above is freshly derived, none carried. Mechanical checks run this session and passing on this file: check-slide-numbering.js, check-slide-deixis.js, check-slide-size.js (all exit clean). `node scripts/expand-md.js` produces byte-identical output to the raw source (no `{{prompt:}}`/`{{figure:}}` markers to resolve; this file's Prompt widgets are pre-migration inline fenced blocks) -- line numbers cited above are the raw-source line numbers directly.",
     {
-      "rule": "check_slides.md \u00a71",
+      "from": "todos[]",
+      "rule": "check_slides.md §1",
       "chunk": 6,
       "line": 154,
       "note": "\"The loop\" (line 154) is never named anywhere earlier in this file -- it resolves cleanly under the sequential-deck-read harm test (only one plausible referent once the reader has performed the whole cycle), but it is a bare inference from an enacted structure, not a term the file itself ever coined. Non-blocking: no reader confusion is plausible given the six-phase walk-through immediately preceding it. Fix, if ever touched: name the cycle explicitly once earlier (e.g. in the opening framing or a phase header) so \"the loop\" at the close is a reused term rather than a first, unintroduced use."
     }
   ],
-  "notes": "No prior instance existed for this (file, class) pair -- `prefill-instance.js --write` reported \"0 rows parked ... [no prior instance]\" and the class brief included all 16 check_slides.md rules verbatim (0 excluded as already-resolved), so every row above is freshly derived, none carried. Mechanical checks run this session and passing on this file: check-slide-numbering.js, check-slide-deixis.js, check-slide-size.js (all exit clean). `node scripts/expand-md.js` produces byte-identical output to the raw source (no `{{prompt:}}`/`{{figure:}}` markers to resolve; this file's Prompt widgets are pre-migration inline fenced blocks) -- line numbers cited above are the raw-source line numbers directly."
+  "nonblocking_findings_count": 0
 }

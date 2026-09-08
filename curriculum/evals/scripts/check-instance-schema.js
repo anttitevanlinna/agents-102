@@ -4,7 +4,7 @@
  * check-instance-schema.js — gate the eval-instance record itself.
  *
  * An instance is the only durable evidence a judge ran. The Quality row cites it
- * by name ("PASS:3 todos see instances/<slug>.<cls>.json"), so whatever the
+ * by name ("PASS:3 findings see instances/<slug>.<cls>.json"), so whatever the
  * instance fails to record, the row asserts anyway.
  *
  * Nothing has ever checked that record. The judge dispatch prompt asks for the
@@ -22,7 +22,7 @@
  *
  * What this gate enforces:
  *
- *   COUNT_MISMATCH        todos_count / blocking_findings_count must equal the
+ *   COUNT_MISMATCH        nonblocking_findings_count / blocking_findings_count must equal the
  *                         entries actually recorded. A count is derived, never
  *                         authored — an authored count drifts from its list and
  *                         nothing notices.
@@ -68,11 +68,13 @@ const { execFileSync } = require('node:child_process');
 
 const REL_DIR = 'curriculum/evals/instances';
 const NAME_RE = /^(.+)\.([a-z_]+)\.json$/;
-const VERDICTS = new Set(['PASS', 'PASS_WITH_TODOS', 'REVISE', 'N/A']);
+const VERDICTS = new Set(['PASS', 'REVISE', 'N/A']);
 
-// A todo is a finding the judge chose not to gate on. In the ledger shape it is
-// a rule row that came back REVISE without blocking; in the older shape it is an
-// entry in `todos[]`. Both are counted the same way so the two can be compared.
+// A non-blocking finding is one the judge chose not to gate on. It is still
+// OWED — it enters the card queue — which is why the count kept the word
+// `findings` when `todos` was retired from judge output on 2026-09-08 and did
+// NOT become `suggestions`: relabelling the backlog optional would have made
+// the whole queue disappear by vocabulary.
 const isTodoRow = r => !!r && typeof r === 'object' && r.verdict === 'REVISE' && r.blocking === false;
 const isBlockingRow = r => !!r && typeof r === 'object' && r.verdict === 'REVISE' && r.blocking === true;
 
@@ -83,11 +85,15 @@ const isBlockingRow = r => !!r && typeof r === 'object' && r.verdict === 'REVISE
 // blocking_findings_count on every single one, and count(TODO) equals the
 // declared todos_count on 103. The three that disagree all declare zero over
 // recorded TODOs, which is the direction this gate exists to catch.
+// Pre-2026-09-08 behavior instances carried `verdict: 'TODO'` per prompt. The
+// migration rewrote those to PASS + suggestions[], so nothing should match any
+// more; the predicate stays so a stale instance is counted rather than silently
+// read as a pass.
 const isPromptTodo = f => !!f && typeof f === 'object' && f.verdict === 'TODO';
 const isPromptBlocking = f => !!f && typeof f === 'object' && f.verdict === 'REVISE';
 
 function ledgers(inst) {
-  const list = Array.isArray(inst.todos) ? inst.todos.length : null;
+  const list = Array.isArray(inst.todos) ? inst.todos.length : null; // legacy; migrated to notes[]
   const rows = Array.isArray(inst.rules_evaluated) ? inst.rules_evaluated.filter(isTodoRow).length : null;
   const prompts = Array.isArray(inst.prompts_findings) ? inst.prompts_findings.filter(isPromptTodo).length : null;
   return { list, rows, prompts };
@@ -143,7 +149,7 @@ function patchText(text, patch) {
 // by any amount of arithmetic here, and they clear when that class is re-judged
 // under a schema that forbids the omission. Gating on debt would only mean
 // switching the gate off.
-const DEBT = new Set(['RIVAL_LEDGERS', 'COUNT_WITHOUT_LIST', 'TODO_WITHOUT_FIX']);
+const DEBT = new Set(['RIVAL_LEDGERS', 'COUNT_WITHOUT_LIST', 'FINDING_WITHOUT_FIX']);
 
 // A todo whose author can name no fix is not work. It reads on the Quality row
 // exactly like one that is, so it survives every triage that goes looking for
@@ -192,19 +198,19 @@ function checkInstance(name, inst) {
     }
   }
 
-  const declared = asInt(inst.todos_count);
+  const declared = asInt(inst.nonblocking_findings_count ?? inst.todos_count);
   const derived = derivedTodos(inst);
   if (declared === null) {
-    add('COUNT_MISMATCH', `todos_count is ${JSON.stringify(inst.todos_count)}, not an integer`);
+    add('COUNT_MISMATCH', `nonblocking_findings_count is ${JSON.stringify(inst.nonblocking_findings_count ?? inst.todos_count)}, not an integer`);
   } else if (derived === null) {
-    if (declared > 0) add('COUNT_WITHOUT_LIST', `declares ${declared} todo(s) and records none`);
+    if (declared > 0) add('COUNT_WITHOUT_LIST', `declares ${declared} non-blocking finding(s) and records none`);
   } else if (declared !== derived) {
     // With the ledgers disagreeing there is no count to be right about, so the
     // mismatch is a symptom of the rivalry and travels with it rather than
     // failing a build that cannot be made green without a judgement call.
     problems.push({
       code: 'COUNT_MISMATCH', severity: rivals ? 'debt' : 'gate',
-      detail: `todos_count says ${declared}, ${derived} recorded${rivals ? ' (ledgers disagree)' : ''}`,
+      detail: `nonblocking_findings_count says ${declared}, ${derived} recorded${rivals ? ' (ledgers disagree)' : ''}`,
     });
   }
 
@@ -214,7 +220,7 @@ function checkInstance(name, inst) {
   if (Array.isArray(inst.prompts_findings)) {
     const mute = inst.prompts_findings.filter(namesNoFix);
     if (mute.length) {
-      add('TODO_WITHOUT_FIX', `${mute.length} TODO(s) name no fix — prompt `
+      add('FINDING_WITHOUT_FIX', `${mute.length} stale TODO(s) name no fix — prompt `
         + mute.map(f => (f.prompt_index === undefined ? '?' : f.prompt_index)).join(', '));
     }
   }
@@ -291,7 +297,7 @@ function repairs(name, inst) {
   const single = new Set(counts).size < 2;
   if (single) {
     const d = derivedTodos(inst);
-    if (d !== null && asInt(inst.todos_count) !== d) patch.todos_count = d;
+    if (d !== null && asInt(inst.nonblocking_findings_count) !== d) patch.nonblocking_findings_count = d;
     const b = derivedBlocking(inst);
     if (b !== null && asInt(inst.blocking_findings_count) !== b) patch.blocking_findings_count = b;
   }

@@ -17,7 +17,7 @@
 <!-- maintainer -->
 
 **Quality:** compendium-audited 2026-09-05 (writing@43e6cae1 story@08946dd8 technical@08946dd8 behavior@1c765f2 pedagogy@e9c6231e strategy@08946dd8 slides@08946dd8)
-- judges @08946dd8: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS (1 todo see instances/ae101--lecture--the-far-half.strategy.json), slides PASS
+- judges @08946dd8: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS (1 finding see instances/ae101--lecture--the-far-half.strategy.json), slides PASS
 
 **Map figure (2026-07-10, Antti-directed "complete the text→pictures replacement", unreviewed):** `figures/map-engine-m4-open.md`, derived from `the-whole-map.md`'s canvas. Deltas vs the parent, each load-bearing on a re-derive: ids prefixed `fh-` (theory handbook renders several copies on one page; duplicate ids break defs); cream veil rect (opacity 0.55) hazes the NEAR half (x≤600, below the phase-header row — all six phase names stay legible); the three seam-straddling Work labels (build loop, agent's own loop, prototyping ghost — tags + subs) re-emitted above the veil with a cream erase-stroke at `fill-opacity="0.45"` so each reads uniformly dimmed instead of half-cut by the veil edge; two caption strips at y=522: `NEAR HALF · DONE: INTENT · CONTEXT · WORK` (veiled side) and `THE FAR HALF · AHEAD` (lit side); checking loop stays a dashed ghost with its `by hand for now` sub; soil strip (parent's bottom-center italic line, y=534) paints last, above the veil, lit in both halves — keep it last in element order. Parent canvas changes → re-derive this copy.
 

@@ -9,7 +9,7 @@
     {
       "prompt_index": 1,
       "prompt_lead": "I'm building a knowledge memory for one specific challenge I'm working on. Do th",
-      "verdict": "TODO",
+      "verdict": "PASS",
       "load_bearing": true,
       "risks_fired": [
         {
@@ -35,7 +35,7 @@
     {
       "prompt_index": 2,
       "prompt_lead": "For every source in the curation plan we just agreed, create one file in sources",
-      "verdict": "TODO",
+      "verdict": "PASS",
       "load_bearing": true,
       "risks_fired": [
         {
@@ -61,7 +61,7 @@
     {
       "prompt_index": 3,
       "prompt_lead": "Read every real-content file in sources/. For each major topic you find, create ",
-      "verdict": "TODO",
+      "verdict": "PASS",
       "load_bearing": true,
       "risks_fired": [
         {
@@ -119,7 +119,7 @@
     {
       "prompt_index": 5,
       "prompt_lead": "Help me create my first custom agent as a markdown file in agents/. Ask me these",
-      "verdict": "TODO",
+      "verdict": "PASS",
       "load_bearing": true,
       "risks_fired": [
         {
@@ -145,7 +145,7 @@
     {
       "prompt_index": 6,
       "prompt_lead": "Read the agent file you just created, apply its role and rules, and use my memor",
-      "verdict": "TODO",
+      "verdict": "PASS",
       "load_bearing": true,
       "risks_fired": [
         {
@@ -165,7 +165,7 @@
     {
       "prompt_index": 7,
       "prompt_lead": "Take the source below and integrate it into the memory. Steps:  1. Read the sour",
-      "verdict": "TODO",
+      "verdict": "PASS",
       "load_bearing": true,
       "risks_fired": [
         {
@@ -217,7 +217,7 @@
     {
       "prompt_index": 9,
       "prompt_lead": "Using my memory and the rules in the agent file, answer this question, citing wh",
-      "verdict": "TODO",
+      "verdict": "PASS",
       "load_bearing": true,
       "risks_fired": [
         {
@@ -242,5 +242,155 @@
     }
   ],
   "blocking_findings_count": 0,
-  "todos_count": 7
+  "nonblocking_findings_count": 0,
+  "suggestions": [
+    {
+      "from": "prompts_findings TODO",
+      "rule": "preamble-before-action",
+      "prompt_index": 1,
+      "note": "Prime the student: 'Claude will narrate before acting; skim past the opening sentence and look for the connector list.'",
+      "evidence": "Three-beat numbered instruction with complex sub-questions; Claude narrates the approach before acting on beat 1."
+    },
+    {
+      "from": "prompts_findings TODO",
+      "rule": "question-dump",
+      "prompt_index": 1,
+      "note": "No fix needed; guard is structural. Residual only if Claude interprets guard as ordering rather than interleaving.",
+      "evidence": "Beat 2 asks multiple sub-questions; hardening added 'Ask one question at a time. Wait for my answer before asking the next. Do not show me the question list.' — structural guard in place."
+    },
+    {
+      "from": "prompts_findings TODO",
+      "rule": "source-type-blindness",
+      "prompt_index": 1,
+      "note": "Extend: 'For each practitioner source, state whether they have built the thing they are describing or are commenting on it.'",
+      "evidence": "Beat 3 asks for '2–3 working practitioners or specific articles worth reading (not vendor blogs)' but provides no evidence-level classification instruction."
+    },
+    {
+      "from": "prompts_findings TODO",
+      "rule": "preamble-before-action",
+      "prompt_index": 2,
+      "note": "Prime the student: 'Claude will recap the rules before starting; skim to the three lists.' (Residual med — intentional by design; audit IS the lesson.)",
+      "evidence": "Multi-step instruction with four branching rules per source; Claude narrates the approach before acting."
+    },
+    {
+      "from": "prompts_findings TODO",
+      "rule": "overwrite-anxiety",
+      "prompt_index": 2,
+      "note": "Add: 'If a file already exists at that path, overwrite it.' (Residual med — intentional by design; audit IS the lesson.)",
+      "evidence": "Prompt creates files at 'sources/<slug>.md' but specifies no overwrite behavior; Claude may pause if a file already exists from an earlier attempt."
+    },
+    {
+      "from": "prompts_findings TODO",
+      "rule": "niceness-tax",
+      "prompt_index": 2,
+      "note": "Pin the exact string 'NOT REACHABLE' inside the sources/<slug>.md file format spec so Claude cannot paraphrase.",
+      "evidence": "'NOT REACHABLE — share with me when you want this included' may be softened to a vague 'I wasn't able to reach this' without the explicit action cue."
+    },
+    {
+      "from": "prompts_findings TODO",
+      "rule": "plan-mode-preamble-bloat",
+      "prompt_index": 3,
+      "note": "Prime the student: 'Look for the topic list in the plan; the file-writing steps are Claude's job, not yours to review.' (Residual med — intentional by design.)",
+      "evidence": "Prompt runs in plan mode; plan may inflate to 10+ bullet items before the student reviews, burying the topic split."
+    },
+    {
+      "from": "prompts_findings TODO",
+      "rule": "plan-mode-approval-inflation",
+      "prompt_index": 3,
+      "note": "Outer prose already has the forcing function ('Does the topic split match how you actually think about the challenge?'); residual risk is students skimming it. (Intentional by design.)",
+      "evidence": "A well-structured plan signals competence; students approve without checking whether the topic split matches how they think about the challenge."
+    },
+    {
+      "from": "prompts_findings TODO",
+      "rule": "citation-cargo-cult",
+      "prompt_index": 3,
+      "note": "Extend rule 2: 'Quote the sentence from the cited file that supports the claim on the same line after the citation marker.' (Residual med — intentional by design.)",
+      "evidence": "Rule 2 requires '[sources/<filename>]' per claim; Claude formats citations correctly but may cite files that don't contain the specific claim when a topic is thin."
+    },
+    {
+      "from": "prompts_findings TODO",
+      "rule": "citation-gap-asymmetry",
+      "prompt_index": 3,
+      "note": "Add: 'Cite-or-flag applies to every factual claim, including industry-truism claims; if you can't cite, move to open questions.'",
+      "evidence": "Rule 3 targets generic observations but does not extend cite-or-flag to conventional-wisdom claims Claude treats as common knowledge."
+    },
+    {
+      "from": "prompts_findings TODO",
+      "rule": "question-dump",
+      "prompt_index": 5,
+      "note": "Guard is present; residual only if Claude interprets 'one at a time' as ordering rather than interleaving.",
+      "evidence": "Hardening added 'Wait for my answer before asking the next. Do not show me the question list.' after 'Ask me these one at a time:' — full structural guard now present."
+    },
+    {
+      "from": "prompts_findings TODO",
+      "rule": "default-acceptance",
+      "prompt_index": 5,
+      "note": "Sharpen: 'Change at least one rule so it reflects a real constraint from your situation — not a rephrasing of the same rule.'",
+      "evidence": "Starter rules offered with 'Change at least one so it's actually mine' — forced-customization mechanic present but mild; student may change a single word and satisfy the requirement."
+    },
+    {
+      "from": "prompts_findings TODO",
+      "rule": "overwrite-anxiety",
+      "prompt_index": 5,
+      "note": "Design-intentional; no fix needed.",
+      "evidence": "'Show me the file before saving' creates an intentional confirm loop — by design, not a defect."
+    },
+    {
+      "from": "prompts_findings TODO",
+      "rule": "preamble-before-action",
+      "prompt_index": 6,
+      "note": "Prime the student: 'Claude will confirm it read the files before asking; look for the question, not the preamble.' (Residual med — intentional by design; audit IS the lesson.)",
+      "evidence": "Prompt asks Claude to read two resources then ask for a task; Claude narrates confirmation of both reads before proceeding."
+    },
+    {
+      "from": "prompts_findings TODO",
+      "rule": "citation-cargo-cult",
+      "prompt_index": 6,
+      "note": "Add push-back instruction in outer prose: 'If a claim cites a memory file, ask Claude to quote the sentence in that file that supports it.' (Residual med — intentional by design.)",
+      "evidence": "'Cite which memory file each claim came from' without a sentence-level integrity check; citations format correctly but substance may not hold."
+    },
+    {
+      "from": "prompts_findings TODO",
+      "rule": "append-vs-integrate",
+      "prompt_index": 7,
+      "note": "Outer prose already has the push-back mechanic; residual risk is low.",
+      "evidence": "Prompt explicitly says 'Integrate its claims into existing pages (sharpen, don't append)' and 'Rewrite tops in place. Replace old framing; don't preserve it above a new section.' — strong structural enforcement reduces append drift significantly."
+    },
+    {
+      "from": "prompts_findings TODO",
+      "rule": "self-report-inflation",
+      "prompt_index": 7,
+      "note": "Add: 'For each page you name, quote the old top claim and the new one.' (Residual med — intentional by design; audit IS the lesson.)",
+      "evidence": "'Tell me three pages that got sharper (not longer)' — Claude self-selects the reported pages and will favor any page where it made a change, not necessarily where the top claim actually improved."
+    },
+    {
+      "from": "prompts_findings TODO",
+      "rule": "niceness-tax",
+      "prompt_index": 7,
+      "note": "'Drop any claim the source contradicts' is explicit; residual risk is low.",
+      "evidence": "'One claim that got dropped or replaced' — Claude may report a claim was 'updated' when it should have been cut."
+    },
+    {
+      "from": "prompts_findings TODO",
+      "rule": "citation-cargo-cult",
+      "prompt_index": 9,
+      "note": "Add after the colon: 'For each citation, quote the sentence from that file that supports the claim.' (Residual med — intentional by design; audit IS the lesson.)",
+      "evidence": "'Citing which memory file each claim came from' without a sentence-level integrity check; citations format correctly but may not contain the specific claim."
+    },
+    {
+      "from": "prompts_findings TODO",
+      "rule": "citation-gap-asymmetry",
+      "prompt_index": 9,
+      "note": "Extend: 'Cite or flag every factual claim, including general observations — if you can't point to a memory file, mark it [FROM TRAINING DATA].' (Residual med — intentional by design.)",
+      "evidence": "Prompt does not extend cite-or-flag to conventional-wisdom claims; Claude may leave industry-truism claims uncited."
+    },
+    {
+      "from": "prompts_findings TODO",
+      "rule": "preamble-before-action",
+      "prompt_index": 9,
+      "note": "Brevity mitigates; no fix needed.",
+      "evidence": "Short prompt; Claude may narrate 'Reading your agent file and memory now...' before answering. Low risk given the prompt's brevity."
+    }
+  ],
+  "suggestions_count": 21
 }

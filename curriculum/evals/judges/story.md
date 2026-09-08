@@ -138,7 +138,7 @@ Return ONE JSON object, exactly this shape:
     "stealing_the_mood": ["<one-line per beat below 8>"]
   },
   "blocking_findings_count": <int>,
-  "suggestions_count": <int>
+  "nonblocking_findings_count": <int>
 }
 
 `blocking: true` for: mood lands (any beat <7), teaching moment lands, mood-doesn't-resolve-early, Big Idea fidelity, forcing-function-in-prompt. Other rules are TODO unless severe.

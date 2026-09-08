@@ -7,24 +7,84 @@
   "prompts_evaluated": 0,
   "prompts_findings": [],
   "blocking_findings_count": 0,
-  "todos_count": 0,
   "catalog_coverage": [
-    {"pattern_id": "file-preservation-gap", "status": "not_fired", "why": "No **Prompt** fenced blocks in file."},
-    {"pattern_id": "reading-burden", "status": "not_fired", "why": "No **Prompt** fenced blocks in file."},
-    {"pattern_id": "niceness-tax", "status": "not_fired", "why": "No **Prompt** fenced blocks in file."},
-    {"pattern_id": "question-dump", "status": "not_fired", "why": "No **Prompt** fenced blocks in file."},
-    {"pattern_id": "overwrite-anxiety", "status": "not_fired", "why": "No **Prompt** fenced blocks in file."},
-    {"pattern_id": "preamble-before-action", "status": "not_fired", "why": "No **Prompt** fenced blocks in file."},
-    {"pattern_id": "append-vs-integrate", "status": "not_fired", "why": "No **Prompt** fenced blocks in file."},
-    {"pattern_id": "plan-mode-preamble-bloat", "status": "not_fired", "why": "No **Prompt** fenced blocks in file."},
-    {"pattern_id": "citation-gap-asymmetry", "status": "not_fired", "why": "No **Prompt** fenced blocks in file."},
-    {"pattern_id": "self-report-inflation", "status": "not_fired", "why": "No **Prompt** fenced blocks in file."},
-    {"pattern_id": "default-acceptance", "status": "not_fired", "why": "No **Prompt** fenced blocks in file."},
-    {"pattern_id": "plan-mode-approval-inflation", "status": "not_fired", "why": "No **Prompt** fenced blocks in file."},
-    {"pattern_id": "source-type-blindness", "status": "not_fired", "why": "No **Prompt** fenced blocks in file."},
-    {"pattern_id": "citation-cargo-cult", "status": "not_fired", "why": "No **Prompt** fenced blocks in file."},
-    {"pattern_id": "self-audit-charity", "status": "not_fired", "why": "No **Prompt** fenced blocks in file."}
+    {
+      "pattern_id": "file-preservation-gap",
+      "status": "not_fired",
+      "why": "No **Prompt** fenced blocks in file."
+    },
+    {
+      "pattern_id": "reading-burden",
+      "status": "not_fired",
+      "why": "No **Prompt** fenced blocks in file."
+    },
+    {
+      "pattern_id": "niceness-tax",
+      "status": "not_fired",
+      "why": "No **Prompt** fenced blocks in file."
+    },
+    {
+      "pattern_id": "question-dump",
+      "status": "not_fired",
+      "why": "No **Prompt** fenced blocks in file."
+    },
+    {
+      "pattern_id": "overwrite-anxiety",
+      "status": "not_fired",
+      "why": "No **Prompt** fenced blocks in file."
+    },
+    {
+      "pattern_id": "preamble-before-action",
+      "status": "not_fired",
+      "why": "No **Prompt** fenced blocks in file."
+    },
+    {
+      "pattern_id": "append-vs-integrate",
+      "status": "not_fired",
+      "why": "No **Prompt** fenced blocks in file."
+    },
+    {
+      "pattern_id": "plan-mode-preamble-bloat",
+      "status": "not_fired",
+      "why": "No **Prompt** fenced blocks in file."
+    },
+    {
+      "pattern_id": "citation-gap-asymmetry",
+      "status": "not_fired",
+      "why": "No **Prompt** fenced blocks in file."
+    },
+    {
+      "pattern_id": "self-report-inflation",
+      "status": "not_fired",
+      "why": "No **Prompt** fenced blocks in file."
+    },
+    {
+      "pattern_id": "default-acceptance",
+      "status": "not_fired",
+      "why": "No **Prompt** fenced blocks in file."
+    },
+    {
+      "pattern_id": "plan-mode-approval-inflation",
+      "status": "not_fired",
+      "why": "No **Prompt** fenced blocks in file."
+    },
+    {
+      "pattern_id": "source-type-blindness",
+      "status": "not_fired",
+      "why": "No **Prompt** fenced blocks in file."
+    },
+    {
+      "pattern_id": "citation-cargo-cult",
+      "status": "not_fired",
+      "why": "No **Prompt** fenced blocks in file."
+    },
+    {
+      "pattern_id": "self-audit-charity",
+      "status": "not_fired",
+      "why": "No **Prompt** fenced blocks in file."
+    }
   ],
   "note": "curriculum/lectures/where-the-rule-could-live.md is the AE101 M2 meta-frame closer, deck-shaped since the 2026-07-02 slides-only pass (lede + two prose slides: 'Three shapes for the file' / 'The file is steady; the agent moves'), lightly emphasis-edited 2026-07-09. Ran `node scripts/expand-md.js curriculum/lectures/where-the-rule-could-live.md` per the template's expansion step; piped output SHA-256 (230fb47c3767fe22c045d2a2469e19d5e3519bbb5c3000fb82bfcf8170f1c3a9) is byte-identical to the raw file's SHA-256, confirming zero `{{prompt:<key>}}` markers and zero inline **Prompt** fenced blocks -- a direct grep for triple-backtick fences in the source also returns no matches. The file is pure prose (three bulleted trigger shapes plus a closing frame) with no copy-this affordance for a student, so the per-prompt evaluation unit this template defines ('For each **Prompt** fenced code block in the body ... reason about...') has zero instances to score. This is a legitimate N/A for the behavior class, not an omission -- prompts_evaluated: 0 and prompts_findings: [] is the complete ledger. All 15 catalog patterns logged not_fired for completeness. The prior sim-cache trace at this path carried a stale content_sha (2168c287...) left over from before the current run's re-verification; the file itself is git-clean (no working-tree diff against HEAD for this path), so the mismatch was a prior stamping gap, not a body edit -- corrected here to the actual current SHA. check_prompts.md and check_pedagogy.md were read for adjacent-rule context per the compendium_paths input; per their own eval_classes frontmatter neither owns the behavior class primarily, so the 15-pattern catalog in simulation-behavior.md (catalog_coverage above) is the correct owned ledger, consistent with the zero-prompt precedent already on file for this lecture and the equivalent case at ae101--reading-the-return.behavior.json.",
-  "summary": "PASS -- curriculum/lectures/where-the-rule-could-live.md has zero **Prompt** fenced blocks (verified both in raw source and in the scripts/expand-md.js expanded view, byte-identical SHA-256, and by direct grep for fences). It is a deck-shaped meta-frame closer lecture with nothing for the prompt-behavior class to evaluate. prompts_evaluated: 0, prompts_findings: [] is the complete and correct ledger under the template's per-prompt unit. All 15 catalog patterns logged not_fired for completeness. Sim-cache trace refreshed with the current, correct content_sha. No blocking findings, no TODOs, top-level verdict PASS."
+  "summary": "PASS -- curriculum/lectures/where-the-rule-could-live.md has zero **Prompt** fenced blocks (verified both in raw source and in the scripts/expand-md.js expanded view, byte-identical SHA-256, and by direct grep for fences). It is a deck-shaped meta-frame closer lecture with nothing for the prompt-behavior class to evaluate. prompts_evaluated: 0, prompts_findings: [] is the complete and correct ledger under the template's per-prompt unit. All 15 catalog patterns logged not_fired for completeness. Sim-cache trace refreshed with the current, correct content_sha. No blocking findings, no TODOs, top-level verdict PASS.",
+  "nonblocking_findings_count": 0
 }

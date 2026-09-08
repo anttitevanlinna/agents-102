@@ -9,7 +9,7 @@
     {
       "prompt_index": 1,
       "prompt_lead": "Draft a one-page HTML answer I can use in my own work.\n\nFirst read the base mate",
-      "verdict": "TODO",
+      "verdict": "PASS",
       "load_bearing": true,
       "risks_fired": [
         {
@@ -23,7 +23,7 @@
     {
       "prompt_index": 2,
       "prompt_lead": "Audit the styling choices you made. For five choices, tell me:\n- what default or",
-      "verdict": "TODO",
+      "verdict": "PASS",
       "load_bearing": true,
       "risks_fired": [
         {
@@ -37,7 +37,7 @@
     {
       "prompt_index": 3,
       "prompt_lead": "Use the style audit from this chat.\n\nUse the website or style source I give you ",
-      "verdict": "TODO",
+      "verdict": "PASS",
       "load_bearing": true,
       "risks_fired": [
         {
@@ -51,7 +51,7 @@
     {
       "prompt_index": 4,
       "prompt_lead": "Regenerate the HTML in `response.html`.\n\nRead the base materials again and use t",
-      "verdict": "TODO",
+      "verdict": "PASS",
       "load_bearing": true,
       "risks_fired": [
         {
@@ -96,5 +96,36 @@
     }
   ],
   "blocking_findings_count": 1,
-  "todos_count": 4
+  "nonblocking_findings_count": 0,
+  "suggestions": [
+    {
+      "from": "prompts_findings TODO",
+      "rule": "preamble-before-action",
+      "prompt_index": 1,
+      "note": "Add 'No preamble. Start with the HTML.' as the last fence line, or add a body primer after the fence naming the narration and the skim-past cue.",
+      "evidence": "Prompt has 4+ named sub-steps (read materials / use no saved rules / create HTML / save as response.html) with no 'No preamble.' suppressor at the fence end and no body primer after the fence."
+    },
+    {
+      "from": "prompts_findings TODO",
+      "rule": "self-audit-charity",
+      "prompt_index": 2,
+      "note": "Add an over-flag directive inside the fence ('Assume generic web-default unless you can cite a specific constraint from my source material; flag at least 3 of the 5 as generic') or run the audit in a fresh subagent with the HTML pasted cold.",
+      "evidence": "'whether the choice is specific to my task or generic web-default' asks Claude to categorize its own styling choices; RLHF charity biases toward 'specific to your task' rather than a clean generic-default verdict."
+    },
+    {
+      "from": "prompts_findings TODO",
+      "rule": "preamble-before-action",
+      "prompt_index": 3,
+      "note": "Add 'No preamble. Start with the proposed styling-rules.md.' as the last fence line, or add a body primer directing the student to skip the opening plan narration and look for the first heading.",
+      "evidence": "Prompt has 5 distinct sub-steps (use audit / access style source / propose styling-rules in chat / save styling-rules.md / propose and save CLAUDE.md) with no suppressor and no body primer after the fence."
+    },
+    {
+      "from": "prompts_findings TODO",
+      "rule": "overwrite-anxiety",
+      "prompt_index": 4,
+      "note": "Change 'Save the updated file.' to 'Overwrite `response.html` with the updated version.' to eliminate the overwrite-or-new ambiguity.",
+      "evidence": "'Save the updated file.' does not specify overwrite; Claude may pause to ask whether to overwrite response.html or create a new file."
+    }
+  ],
+  "suggestions_count": 4
 }

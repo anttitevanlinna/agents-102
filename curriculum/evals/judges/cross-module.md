@@ -81,7 +81,7 @@ Return ONE JSON object, exactly this shape:
     }
   ],
   "blocking_findings_count": <int>,
-  "suggestions_count": <int>
+  "nonblocking_findings_count": <int>
 }
 
 `blocking: true` for: artefact-contract violations (§3, §5), session-boundary ambiguity (§4), between-module reading missing (§2), bring-or-scramble violations (§8).

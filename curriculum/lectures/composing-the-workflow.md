@@ -53,7 +53,7 @@
 <!-- maintainer -->
 
 **Quality:** compendium-audited 2026-09-05 (writing@31cb69d7 story@31cb69d7 technical@31cb69d7 behavior@1c765f2 pedagogy@31cb69d7 strategy@31cb69d7 slides@31cb69d7)
-- judges @31cb69d7: writing PASS, story PASS (verify-refuted), technical PASS (1 todo see instances/ae101--lecture--composing-the-workflow.technical.json), behavior PASS, pedagogy PASS, strategy PASS (1 todo see instances/ae101--lecture--composing-the-workflow.strategy.json), slides PASS
+- judges @31cb69d7: writing PASS, story PASS (verify-refuted), technical PASS (1 finding see instances/ae101--lecture--composing-the-workflow.technical.json), behavior PASS, pedagogy PASS, strategy PASS (1 finding see instances/ae101--lecture--composing-the-workflow.strategy.json), slides PASS
 
 **Eval bullet 2's *That is how you know a change to the system was a change for the better* stays (Antti 2026-09-07):** it says which way is up; §27a abstract-twin cut refused, do not re-file.
 

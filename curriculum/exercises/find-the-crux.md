@@ -203,7 +203,7 @@ Whenever the group says stop, stop. The artifact is the synthesis file plus what
 - **Pre-cohort TODO:** run the reshaped Phase 3 cross-pollination prompt as a pre-ship system test before the first Claude Basics cohort. (The actor/judge mechanical harness was removed 2026-06-01 and the tmux-runner doesn't yet cover Claude Basics, so this is a watched manual run for now — mechanical is no longer a recorded Quality rung.) Capability is maintainer-accepted; the run confirms the prompt mechanics (detection, narration cap, stop behavior) actually fire as designed
 
 **Quality:** compendium-audited 2026-09-02 (writing@eb1168f story@eb1168f technical@eb1168f pedagogy@eb1168f strategy@eb1168f slides@3552e8c2)
-- judges @3552e8c2: writing PASS, story PASS, technical PASS, behavior REVISE (see-instances/claude-basics--find-the-crux.behavior.json), pedagogy PASS, strategy PASS, slides PASS (verify-refuted, 1 todo see instances/claude-basics--exercise--find-the-crux.slides.json)
+- judges @3552e8c2: writing PASS, story PASS, technical PASS, behavior REVISE (see-instances/claude-basics--find-the-crux.behavior.json), pedagogy PASS, strategy PASS, slides PASS (verify-refuted, 1 finding see instances/claude-basics--exercise--find-the-crux.slides.json)
 
 **Strategy reference:** `bosser-strategy:content-strategy-claude-basics.md` § *Where is this all going?*
 

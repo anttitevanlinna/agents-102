@@ -91,7 +91,7 @@
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm checked: a chunk with nothing standalone to say. Closest call: chunk 4 'Live Demo' (L24-26) is only a header plus one structural include link. Scored PASS, not a wait-state fragment: it is the universal module-file 'ordered refs' pattern (curriculum/CLAUDE.md \u00a7 Directory: module files are 'thin: metadata + Bloom LOs + ordered refs') -- the identical shape appears at `where-is-this-all-going.md` L24-26 ('## Live Work' + one exercise link) -- and rule 13 explicitly rules structural include-links out of scope because they are how the file gets inlined: in the composed deck the linked lecture's own slides project immediately after this header, so the chunk is not left saying nothing. Chunks 0-3, 5, 6 each carry a developed sentence or a list of concrete bullets.",
+      "evidence": "Harm checked: a chunk with nothing standalone to say. Closest call: chunk 4 'Live Demo' (L24-26) is only a header plus one structural include link. Scored PASS, not a wait-state fragment: it is the universal module-file 'ordered refs' pattern (curriculum/CLAUDE.md § Directory: module files are 'thin: metadata + Bloom LOs + ordered refs') -- the identical shape appears at `where-is-this-all-going.md` L24-26 ('## Live Work' + one exercise link) -- and rule 13 explicitly rules structural include-links out of scope because they are how the file gets inlined: in the composed deck the linked lecture's own slides project immediately after this header, so the chunk is not left saying nothing. Chunks 0-3, 5, 6 each carry a developed sentence or a list of concrete bullets.",
       "fix_hint": null,
       "blocking": false
     },
@@ -121,24 +121,24 @@
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Harm checked: repo/maintainer vocabulary a room can't parse. `grep -inE '\\bcompendium\\b|\\bforcing function\\b|\\bsurface\\b|\\bbeat[s]?\\b|\\bmood\\b|Connections|\\bfiring\\b' curriculum/evals/body-views/claude-basics--module--agentic-systems-repo-demo.body.txt` run this session -> 0 hits. Closest call: chunk 2 L16 'compound' as the seventh verb in 'the loop that makes the system improve: rules, inspect, plan, edit, check, build, compound.' Scored PASS under the \u00a78 display-vs-communicate test: this module's entire premise is showing the student the actual repo/system that produced the workbook (maintainer 'Demo spine' ends on 'checks -> compounding'), so the loop is exhibited as an observed fact of the real system the live demo shows, not planted as vocabulary the student is expected to adopt; the word itself ('build on itself over time') is also plain enough English for the rollout-custodian audience, unlike compendium/forcing-function-class shorthand. 'customer versions' (L7), 'customer workbook' (L34), and 'build scripts' (L7) are ordinary IT-audience vocabulary, not repo-internal terms.",
+      "evidence": "Harm checked: repo/maintainer vocabulary a room can't parse. `grep -inE '\\bcompendium\\b|\\bforcing function\\b|\\bsurface\\b|\\bbeat[s]?\\b|\\bmood\\b|Connections|\\bfiring\\b' curriculum/evals/body-views/claude-basics--module--agentic-systems-repo-demo.body.txt` run this session -> 0 hits. Closest call: chunk 2 L16 'compound' as the seventh verb in 'the loop that makes the system improve: rules, inspect, plan, edit, check, build, compound.' Scored PASS under the §8 display-vs-communicate test: this module's entire premise is showing the student the actual repo/system that produced the workbook (maintainer 'Demo spine' ends on 'checks -> compounding'), so the loop is exhibited as an observed fact of the real system the live demo shows, not planted as vocabulary the student is expected to adopt; the word itself ('build on itself over time') is also plain enough English for the rollout-custodian audience, unlike compendium/forcing-function-class shorthand. 'customer versions' (L7), 'customer workbook' (L34), and 'build scripts' (L7) are ordinary IT-audience vocabulary, not repo-internal terms.",
       "fix_hint": null,
       "blocking": true
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 9,
-      "rule_lead": "Emphasis budget \u2014 bold is for handles, and go very lightly.",
+      "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "`grep -n '\\*\\*'` on the body -> exactly 4 hits, all in chunk 2 (L13-16): **Recognise**, **Explain**, **Connect**, **Notice** -- one bolded Bloom verb per bullet, each a single word, well inside the <=5-word handle cap. Scored under the \u00a79 'What You'll Learn bullets' carve-out even though this training's heading reads 'What This Workshop Builds' rather than the generic template name: `curriculum/trainings/claude-basics/where-is-this-all-going.md` L7-14 uses the identical heading with the identical `- **[verb]** [thing]` shape (module-shape.md's LO template), confirming this is claude-basics's own name for the canonical LO section, not a different kind of list. The bolded verb IS the template; the per-slide count is the template's doing, not an authored emphasis choice. Zero bold anywhere in chunks 0, 1, 3, 4, 5, 6.",
+      "evidence": "`grep -n '\\*\\*'` on the body -> exactly 4 hits, all in chunk 2 (L13-16): **Recognise**, **Explain**, **Connect**, **Notice** -- one bolded Bloom verb per bullet, each a single word, well inside the <=5-word handle cap. Scored under the §9 'What You'll Learn bullets' carve-out even though this training's heading reads 'What This Workshop Builds' rather than the generic template name: `curriculum/trainings/claude-basics/where-is-this-all-going.md` L7-14 uses the identical heading with the identical `- **[verb]** [thing]` shape (module-shape.md's LO template), confirming this is claude-basics's own name for the canonical LO section, not a different kind of list. The bolded verb IS the template; the per-slide count is the template's doing, not an authored emphasis choice. Zero bold anywhere in chunks 0, 1, 3, 4, 5, 6.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 10,
-      "rule_lead": "Presence precedes content \u2014 verify against the composed deck, not long-read.",
+      "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
       "verdict": "PASS",
       "chunks_flagged": [],
       "evidence": "Harm checked: a phase-less section silently absent from the composed Slides deck. This file is a top-level module file (`section.module` in the renderer), not a prework/supplementary/reference page -- the shape this rule's history concerns. `grep -n 'flag:module\\|flag:no-module'` on the file -> 0 hits, no runtime fork gates any section out. `node scripts/check-slide-size.js --file curriculum/trainings/claude-basics/agentic-systems-repo-demo.md` run this session -> 'slides: 6 ... oversized: 0', matching the body view's own `signals.slide_count: 6` exactly -- all six `##` sections reach the composed deck model, nothing dropped.",
@@ -148,11 +148,11 @@
     {
       "compendium": "check_slides.md",
       "rule_index": 11,
-      "rule_lead": "Numbering \u2014 position is computed, content ordinals are linted.",
+      "rule_lead": "Numbering — position is computed, content ordinals are linted.",
       "verdict": "N/A",
       "chunks_flagged": [],
       "evidence": null,
-      "na_reason": "no hand-numbered or Phase/Step headers (grep -n '^## Phase\\|^## [0-9]\\|^## Step' on file -> 0 hits); confirmed also by `node scripts/check-slide-numbering.js` run this session -> 'OK \u2014 62 files, Phase/Step numbering consistent' (this file contributes no Phase/Step headers to that count)",
+      "na_reason": "no hand-numbered or Phase/Step headers (grep -n '^## Phase\\|^## [0-9]\\|^## Step' on file -> 0 hits); confirmed also by `node scripts/check-slide-numbering.js` run this session -> 'OK — 62 files, Phase/Step numbering consistent' (this file contributes no Phase/Step headers to that count)",
       "fix_hint": null,
       "blocking": false
     },
@@ -162,7 +162,7 @@
       "rule_lead": "Page geometry dies at the cut; reading order survives.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "`node scripts/check-slide-deixis.js --file curriculum/trainings/claude-basics/agentic-systems-repo-demo.md` run this session -> 'OK \u2014 1 files, no page-geometry pointers across the slide cut.' Manual corroboration: `grep -niE '\\b(below|above|further down|at the top of this|see below)\\b'` on body -> 0 hits.",
+      "evidence": "`node scripts/check-slide-deixis.js --file curriculum/trainings/claude-basics/agentic-systems-repo-demo.md` run this session -> 'OK — 1 files, no page-geometry pointers across the slide cut.' Manual corroboration: `grep -niE '\\b(below|above|further down|at the top of this|see below)\\b'` on body -> 0 hits.",
       "fix_hint": null,
       "blocking": true
     },
@@ -173,14 +173,14 @@
       "verdict": "N/A",
       "chunks_flagged": [],
       "evidence": null,
-      "na_reason": "explicitly non-gating review surface per the compendium's own text ('There is no rule here'); the file's one in-body link is a structural include (never in scope) and was already scored named-not-located under \u00a72",
+      "na_reason": "explicitly non-gating review surface per the compendium's own text ('There is no rule here'); the file's one in-body link is a structural include (never in scope) and was already scored named-not-located under §2",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_slides.md",
       "rule_index": 14,
-      "rule_lead": "Slide size \u2014 210 words / 6 bullets, and the cap is machine-checked.",
+      "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
       "verdict": "PASS",
       "chunks_flagged": [],
       "evidence": "`node scripts/check-slide-size.js --file curriculum/trainings/claude-basics/agentic-systems-repo-demo.md` run this session -> 'files: 1 slides: 6 limits: 210 words / 6 bullets oversized: 0 ... every slide is within limits.' No `**Slide size accepted:**` escape hatch present or needed.",
@@ -201,7 +201,7 @@
     {
       "compendium": "check_slides.md",
       "rule_index": 16,
-      "rule_lead": "A bullet earns its slot or dies \u2014 three classes that read as rigour and carry nothing.",
+      "rule_lead": "A bullet earns its slot or dies — three classes that read as rigour and carry nothing.",
       "verdict": "PASS",
       "chunks_flagged": [],
       "evidence": "Harm checked: a bullet that reads as rigour but adds nothing the slide does not already hold. Checked all 9 bullets (chunk 2 L13-16, chunk 5 L30-34) against the three named classes. (a) doctrine restatement: chunk 5 L30 'A chat is a conversation. A system is...' was the closest candidate -- it draws a chat-vs-system contrast that is NOT stated in the Big Idea (chunk 1 lists artifacts, never names 'chat' as the contrast term), so it introduces the frame the remaining four What-to-Notice bullets exemplify, rather than re-announcing something that already did its work. (b) self-referential design commentary: none of the 9 bullets describe the training's own pedagogy to the student (grep -niE 'by design|before the training names|encounter the problem' -> 0 hits). (c) aphorism kicker: L34 (the section's last bullet) states a new build/deploy fact, not a koan restating the 'What to Notice' header or a **The point:** line -- no such line exists in this file. No bullet scored as carrying nothing.",
@@ -210,5 +210,5 @@
     }
   ],
   "blocking_findings_count": 0,
-  "todos_count": 0
+  "nonblocking_findings_count": 0
 }

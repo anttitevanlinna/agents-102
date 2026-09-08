@@ -39,7 +39,7 @@ When your agent stops for missing information, check whether there was a way for
 <!-- maintainer -->
 
 **Quality:** compendium-audited 2026-09-05 (writing@08946dd8 story@08946dd8 technical@08946dd8 behavior@93bb807 pedagogy@08946dd8 strategy@08946dd8 slides@c0c37913)
-- judges @08946dd8: writing PASS (1 todo see instances/ae101--lecture--what-keeps-a-long-running-session-going.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS (1 todo see instances/ae101--lecture--what-keeps-a-long-running-session-going.pedagogy.json), strategy PASS, slides PASS
+- judges @08946dd8: writing PASS (1 finding see instances/ae101--lecture--what-keeps-a-long-running-session-going.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS (1 finding see instances/ae101--lecture--what-keeps-a-long-running-session-going.pedagogy.json), strategy PASS, slides PASS
 
 **Lecture meta:** *~5 min, four slides. Post-send-off read while the un-packaged session remains active. The session is the specimen: each slide turns attention toward durable state, downstream feedback, and boundaries already present.*
 

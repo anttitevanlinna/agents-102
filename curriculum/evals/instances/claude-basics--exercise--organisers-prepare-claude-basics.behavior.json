@@ -9,7 +9,7 @@
     {
       "prompt_index": 1,
       "prompt_lead": "Use the `rollout-notes.md` file you just created in the first-name folder from t",
-      "verdict": "TODO",
+      "verdict": "PASS",
       "load_bearing": true,
       "risks_fired": [
         {
@@ -29,7 +29,7 @@
     {
       "prompt_index": 2,
       "prompt_lead": "Scan `shared/` for the group rollout synthesis file created by the group-driver",
-      "verdict": "TODO",
+      "verdict": "PASS",
       "load_bearing": true,
       "risks_fired": [
         {
@@ -48,5 +48,36 @@
     }
   ],
   "blocking_findings_count": 0,
-  "todos_count": 2
+  "nonblocking_findings_count": 0,
+  "suggestions": [
+    {
+      "from": "prompts_findings TODO",
+      "rule": "preamble-before-action",
+      "prompt_index": 1,
+      "note": "Add a one-sentence body primer after the fence naming the preamble; or add 'No preamble. Start with the first file creation.' as the prompt's last line.",
+      "evidence": "Four named sub-steps (use-as-pattern, create three files, keep same shape, list after saving) with no in-fence suppressor and no body primer."
+    },
+    {
+      "from": "prompts_findings TODO",
+      "rule": "self-report-inflation",
+      "prompt_index": 1,
+      "note": "Body callout after the prompt: organiser should scan the folder directly rather than relying on Claude's list.",
+      "evidence": "After saving, list the three files you created."
+    },
+    {
+      "from": "prompts_findings TODO",
+      "rule": "preamble-before-action",
+      "prompt_index": 2,
+      "note": "Add body primer: 'Claude will describe what it found before writing; skip the scan summary and look for the creation confirmations.'",
+      "evidence": "Five sequential sub-steps (scan, conditional stop, read, create two files, list after saving) with no in-fence suppressor and no body primer."
+    },
+    {
+      "from": "prompts_findings TODO",
+      "rule": "self-report-inflation",
+      "prompt_index": 2,
+      "note": "Body callout: organiser confirms files in shared/ directly given OneDrive eventual-consistency.",
+      "evidence": "After saving, list the two files you created."
+    }
+  ],
+  "suggestions_count": 4
 }

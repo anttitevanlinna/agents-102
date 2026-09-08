@@ -11,7 +11,7 @@
     {
       "prompt_index": 1,
       "prompt_lead": "Read `./task.md`. Use the branch named in its `Run coordinates (do not rewrite or ",
-      "verdict": "TODO",
+      "verdict": "PASS",
       "load_bearing": true,
       "risks_fired": [
         {
@@ -42,23 +42,90 @@
     }
   ],
   "blocking_findings_count": 0,
-  "todos_count": 1,
   "catalog_coverage": [
-    { "pattern_id": "file-preservation-gap", "status": "fired", "confidence": "low", "prompt_index": 1, "why": "Fresh worktree destination -- no prior file to preserve or replace." },
-    { "pattern_id": "reading-burden", "status": "not_fired", "why": "The 'Check the copy landed' section asks for a narrow filesystem existence check on two named paths (ls), not a manual proofread of Claude's prose output for correctness." },
-    { "pattern_id": "niceness-tax", "status": "fired", "confidence": "low", "prompt_index": 1, "why": "Fence's closing confirmation could gloss a silent skip; mitigated by the artifact-level ls check right after." },
-    { "pattern_id": "question-dump", "status": "not_fired", "why": "The only clarifying ask in the fence ('ask me for the SHA') is a single fallback question, not a batch interview." },
-    { "pattern_id": "overwrite-anxiety", "status": "fired", "confidence": "low", "prompt_index": 1, "why": "Fresh worktree destination created by the same fence; nothing pre-existing to collide with." },
-    { "pattern_id": "preamble-before-action", "status": "fired", "confidence": "low", "prompt_index": 1, "why": "6+ named sub-steps outside plan mode; mitigated by the observed-preamble body primer + skim-past cue right after the fence." },
-    { "pattern_id": "append-vs-integrate", "status": "not_fired", "why": "The fence creates a new worktree and copies files into it; it never asks Claude to add a section to an existing document." },
-    { "pattern_id": "plan-mode-preamble-bloat", "status": "not_fired", "why": "No plan mode is declared or invoked (no permission-mode: plan frontmatter, no plan-the-task framing)." },
-    { "pattern_id": "citation-gap-asymmetry", "status": "not_fired", "why": "No citation-bearing claim is requested anywhere in the fence." },
-    { "pattern_id": "self-report-inflation", "status": "not_fired", "why": "The closing report is a narrow factual existence claim about two named files, not an inflatable self-graded quality summary of generated content." },
-    { "pattern_id": "default-acceptance", "status": "not_fired", "why": "The fence offers no default the student should push back on." },
-    { "pattern_id": "plan-mode-approval-inflation", "status": "not_fired", "why": "Plan mode is not invoked." },
-    { "pattern_id": "source-type-blindness", "status": "not_fired", "why": "No heterogeneous source ingestion happens in this fence." },
-    { "pattern_id": "citation-cargo-cult", "status": "not_fired", "why": "No citations are requested." },
-    { "pattern_id": "self-audit-charity", "status": "not_fired", "why": "Claude is not asked to critique its own prior generation anywhere in this fence." }
+    {
+      "pattern_id": "file-preservation-gap",
+      "status": "fired",
+      "confidence": "low",
+      "prompt_index": 1,
+      "why": "Fresh worktree destination -- no prior file to preserve or replace."
+    },
+    {
+      "pattern_id": "reading-burden",
+      "status": "not_fired",
+      "why": "The 'Check the copy landed' section asks for a narrow filesystem existence check on two named paths (ls), not a manual proofread of Claude's prose output for correctness."
+    },
+    {
+      "pattern_id": "niceness-tax",
+      "status": "fired",
+      "confidence": "low",
+      "prompt_index": 1,
+      "why": "Fence's closing confirmation could gloss a silent skip; mitigated by the artifact-level ls check right after."
+    },
+    {
+      "pattern_id": "question-dump",
+      "status": "not_fired",
+      "why": "The only clarifying ask in the fence ('ask me for the SHA') is a single fallback question, not a batch interview."
+    },
+    {
+      "pattern_id": "overwrite-anxiety",
+      "status": "fired",
+      "confidence": "low",
+      "prompt_index": 1,
+      "why": "Fresh worktree destination created by the same fence; nothing pre-existing to collide with."
+    },
+    {
+      "pattern_id": "preamble-before-action",
+      "status": "fired",
+      "confidence": "low",
+      "prompt_index": 1,
+      "why": "6+ named sub-steps outside plan mode; mitigated by the observed-preamble body primer + skim-past cue right after the fence."
+    },
+    {
+      "pattern_id": "append-vs-integrate",
+      "status": "not_fired",
+      "why": "The fence creates a new worktree and copies files into it; it never asks Claude to add a section to an existing document."
+    },
+    {
+      "pattern_id": "plan-mode-preamble-bloat",
+      "status": "not_fired",
+      "why": "No plan mode is declared or invoked (no permission-mode: plan frontmatter, no plan-the-task framing)."
+    },
+    {
+      "pattern_id": "citation-gap-asymmetry",
+      "status": "not_fired",
+      "why": "No citation-bearing claim is requested anywhere in the fence."
+    },
+    {
+      "pattern_id": "self-report-inflation",
+      "status": "not_fired",
+      "why": "The closing report is a narrow factual existence claim about two named files, not an inflatable self-graded quality summary of generated content."
+    },
+    {
+      "pattern_id": "default-acceptance",
+      "status": "not_fired",
+      "why": "The fence offers no default the student should push back on."
+    },
+    {
+      "pattern_id": "plan-mode-approval-inflation",
+      "status": "not_fired",
+      "why": "Plan mode is not invoked."
+    },
+    {
+      "pattern_id": "source-type-blindness",
+      "status": "not_fired",
+      "why": "No heterogeneous source ingestion happens in this fence."
+    },
+    {
+      "pattern_id": "citation-cargo-cult",
+      "status": "not_fired",
+      "why": "No citations are requested."
+    },
+    {
+      "pattern_id": "self-audit-charity",
+      "status": "not_fired",
+      "why": "Claude is not asked to critique its own prior generation anywhere in this fence."
+    }
   ],
   "accept_notes_found": [
     "L47: extraction provenance note (learn-from-the-test.md, 2026-08-12, Antti-directed) -- editorial/provenance, no bearing on prompt-behavior risk.",
@@ -67,5 +134,37 @@
     "L61: Quality stamp line -- bookkeeping, not an accept-note bearing on this class's rules."
   ],
   "note": "Single fenced prompt block ({{prompt:ae101-m5-worktree-setup}} at raw line 27). Cache lookup: recomputed shasum -a 256 on the fence's content directly from `node scripts/expand-md.js`'s live output (no trailing newline, matching the cache's own convention) and got 9d923df71485db012c5b6a466209e47e3e0536c7bbb04c4c741cced062752351 -- byte-identical to the cached prompt_sha, independently verified rather than trusted. Reused the cached per-prompt trace entry per the cache-lookup rule; content_sha updated in the sim-cache to the current expanded file's hash (56badd17...) since body prose around the prompt changed even though the fence itself did not. Diff against the previously-audited body (git diff 61e7fc9 -- curriculum/exercises/fork-the-worktree.md): the point line lost its trailing clause, two rationale bullets were folded into Phase 1 before the fence, an explicit `ls`-based artifact check was added under 'Check the copy landed', the 'If the coordinates are missing' section was renamed and reworded without changing its three-rung recovery ladder, and the maintainer block gained a Leap test, a Failure-mode+escape-hatch note, a Recovery-ladder rationale note, and a Phase-1-provenance note. None of these touch the fence's own text; the ls-check bullet strengthens the niceness-tax mitigation already on file. Verdict and per-risk confidences are otherwise unchanged from the last audit (behavior@61e7fc9): all four catalog risks remain low-confidence, mitigated, no carve_out marker used (none of the five named carve-outs in the judge template match this fence's shape precisely -- the mitigation is a plain absence-of-harm read, consistent with how this repo's other behavior instances (e.g. walk-and-send-off) record equivalent fresh-destination reasoning as an ordinary low-confidence TODO rather than a formal carve-out).",
-  "summary": "PASS with 1 non-blocking TODO. One fenced prompt (worktree fork + gitignored-file copy), all four fired risks at low confidence with harm-absent or already-mitigated reasoning: preamble-before-action mitigated by an observed-preamble primer + skim-past cue; niceness-tax mitigated by a newly-added filesystem-level ls check (stronger than the prior audit's summary-only check); overwrite-anxiety and file-preservation-gap both moot because the copy destination is a worktree the same fence just created. blocking_findings_count 0, todos_count 1, top-level PASS."
+  "summary": "PASS with 1 non-blocking TODO. One fenced prompt (worktree fork + gitignored-file copy), all four fired risks at low confidence with harm-absent or already-mitigated reasoning: preamble-before-action mitigated by an observed-preamble primer + skim-past cue; niceness-tax mitigated by a newly-added filesystem-level ls check (stronger than the prior audit's summary-only check); overwrite-anxiety and file-preservation-gap both moot because the copy destination is a worktree the same fence just created. blocking_findings_count 0, todos_count 1, top-level PASS.",
+  "nonblocking_findings_count": 0,
+  "suggestions": [
+    {
+      "from": "prompts_findings TODO",
+      "rule": "preamble-before-action",
+      "prompt_index": 1,
+      "note": "No action needed -- the line right after the fence already gives the primer + skim-past cue the narrowed rule asks for on an observed-preamble case.",
+      "evidence": "Fence carries 6+ named sub-steps (read task.md, resolve branch from the Run coordinates block, verify branch existence, find the M4-starting-point commit, conditionally ask for the SHA, create the worktree, conditional-copy two files, report) in a non-plan-mode fence. check_prompts.md #17 (narrowed 2026-09-03, Antti) retired sub-step counting as a trigger outside plan mode, but raw line 29's body callout -- 'Claude usually opens with a plan summary listing the six sub-steps, then runs them. Skim past it.' -- documents an actually-observed preamble on THIS prompt, which is exactly #17's surviving carve-out ('fix the file where a run actually showed preamble eating the read'). Harm (narration eating the top-of-response attention slot before the coordinate-resolution read lands) is real but already met with the primer + skim-past cue #17(b) asks for."
+    },
+    {
+      "from": "prompts_findings TODO",
+      "rule": "niceness-tax",
+      "prompt_index": 1,
+      "note": "Optional tightening only -- have the fence itself name each of the two paths and say whether each existed, rather than leaning on the student's own ls check. Not required to ship; the body check already catches the exact failure mode the maintainer block names ('cp skips a missing source, Claude reports success').",
+      "evidence": "Fence's closing line 'Tell me the worktree path and confirm which files copied across' doesn't force Claude to distinguish 'absent, so skipped by design' from a silent copy failure. Harm is present in the fence's own shape but mitigated by a stronger check added since the last audit at raw line 34: 'Look at the worktree yourself: `ls ../<repo-name>-m5/CLAUDE.local.md ../<repo-name>-m5/observations/`. A copy that silently skipped still reports as done.' -- this is an artifact-level (filesystem) check, not a re-read of Claude's own summary, and it is a strictly stronger mitigation than what the prior audit relied on (which only had the 'output should name both paths' line at raw line 33)."
+    },
+    {
+      "from": "prompts_findings TODO",
+      "rule": "overwrite-anxiety",
+      "prompt_index": 1,
+      "note": "No action needed -- destination is fresh by construction; nothing to overwrite.",
+      "evidence": "cp targets `../<repo-name>-m5/`, a worktree directory the SAME fence creates via `git worktree add` moments earlier in its own instructions -- there is no pre-existing file at the destination to collide with, so the stop-and-ask pause this pattern names has no trigger condition here. Each cp line is additionally guarded in-fence with '(if it exists)' / '(if observations/ exists in the original repo)'."
+    },
+    {
+      "from": "prompts_findings TODO",
+      "rule": "file-preservation-gap",
+      "prompt_index": 1,
+      "note": "No action needed -- same fresh-destination reasoning as overwrite-anxiety.",
+      "evidence": "Same fresh-destination reasoning as overwrite-anxiety: a worktree the fence just created has no prior version of CLAUDE.local.md or observations/ inside it, so the preserve-vs-replace ambiguity this pattern guards against cannot arise."
+    }
+  ],
+  "suggestions_count": 4
 }

@@ -60,7 +60,7 @@ Ask Claude to read your rules file against the diagnosis and cut the one rule it
 **No push-back bullet for the no-cut branch (Antti 2026-09-05).** The second prompt's *if every rule still holds, say so and stop* is taken at its word; the exercise does not account for self-audit charity there. Judges should not re-file `check_pedagogy.md` §31 or §50 on it.
 
 **Quality:** compendium-audited 2026-09-05 (writing@fb797e3b story@fb797e3b technical@4589f1d5 behavior@9696da99 pedagogy@fb797e3b strategy@fb797e3b slides@fb797e3b)
-- judges @9696da99: writing PASS, story PASS, technical PASS, behavior PASS (2 todos see instances/ae101--exercise--spot-gaps-build-the-loop.behavior.json), pedagogy PASS, strategy PASS, slides PASS
+- judges @9696da99: writing PASS, story PASS, technical PASS, behavior PASS (2 findings see instances/ae101--exercise--spot-gaps-build-the-loop.behavior.json), pedagogy PASS, strategy PASS, slides PASS
 
 **Word count:** ~420 words body.
 

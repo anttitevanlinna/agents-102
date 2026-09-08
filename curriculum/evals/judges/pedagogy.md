@@ -76,7 +76,7 @@ Return ONE JSON object, exactly this shape:
     }
   ],
   "blocking_findings_count": <int>,
-  "suggestions_count": <int>
+  "nonblocking_findings_count": <int>
 }
 
 `blocking: true` for architecture violations (PDCA shape, one-bounded-activity, forcing-function-in-prompt, primitive budget overflow, delegation-boundary violation). Other rules are TODO unless severe.

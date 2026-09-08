@@ -9,9 +9,9 @@
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": 7,
-      "rule_lead": "Sessions = unit of work \u2014 write \"start a new session in X,\" not \"open Claude Code in X.\"",
+      "rule_lead": "Sessions = unit of work — write \"start a new session in X,\" not \"open Claude Code in X.\"",
       "verdict": "PASS",
-      "evidence": "grep -in 'session' on raw body lines 1-17 \u2192 one hit, L14: \"What survives the session and compounds into the next one.\" \u2014 generic noun-phrase use, no 'open Claude Code' phrasing anywhere in the file.",
+      "evidence": "grep -in 'session' on raw body lines 1-17 → one hit, L14: \"What survives the session and compounds into the next one.\" — generic noun-phrase use, no 'open Claude Code' phrasing anywhere in the file.",
       "fix_hint": "None needed.",
       "blocking": false
     },
@@ -20,7 +20,7 @@
       "rule_index": "24a",
       "rule_lead": "Quality stamps: tooling writes them; the SHA pins committed content.",
       "verdict": "PASS",
-      "evidence": "L109-110: \"**Quality:** compendium-audited 2026-08-29 (writing@43e6cae1 ... technical@8cc00874 ...)\" / \"- judges @e9c6231e: writing PASS, story PASS, technical PASS, ...\" \u2014 clean anchor (stage + date + per-class @sha) followed by a judges row, the tooling-written shape; no hand-typed narrative tail appended after the date.",
+      "evidence": "L109-110: \"**Quality:** compendium-audited 2026-08-29 (writing@43e6cae1 ... technical@8cc00874 ...)\" / \"- judges @e9c6231e: writing PASS, story PASS, technical PASS, ...\" — clean anchor (stage + date + per-class @sha) followed by a judges row, the tooling-written shape; no hand-typed narrative tail appended after the date.",
       "fix_hint": "None needed. Not touched by this judge (read-only).",
       "blocking": false
     },
@@ -29,7 +29,7 @@
       "rule_index": 36,
       "rule_lead": "A hash guard is only as good as what it hashes, and a malformed hash disarms it silently.",
       "verdict": "PASS",
-      "evidence": "Ran `shasum -a 256 curriculum/lectures/the-whole-map.md` at read-start and again before writing this instance \u2192 both runs returned `61b9fe0a9f7711d634a2ec1e89915a81941f77c91a8c0b3f38f2d66c9598ad4a` (64 hex chars, stable \u2014 no concurrent edit during this read).",
+      "evidence": "Ran `shasum -a 256 curriculum/lectures/the-whole-map.md` at read-start and again before writing this instance → both runs returned `61b9fe0a9f7711d634a2ec1e89915a81941f77c91a8c0b3f38f2d66c9598ad4a` (64 hex chars, stable — no concurrent edit during this read).",
       "fix_hint": "None needed.",
       "blocking": false
     },
@@ -38,14 +38,14 @@
       "rule_index": 38,
       "rule_lead": "Prose describing a runtime the room never executes drifts to plausible mechanism.",
       "verdict": "PASS",
-      "evidence": "L36 (maintainer): \"The checking loop stays a ghost \u2014 dashed across Verification/Absorption ... No `?` glyph: `?` means frontier-unknown, and this ghost means not-yet-built.\"",
-      "fix_hint": "The one forward-looking/not-yet-built beat is labeled as a state description (not-yet-built, manual 'by hand for now') rather than an invented mechanism \u2014 this is what the rule asks for, not a violation.",
+      "evidence": "L36 (maintainer): \"The checking loop stays a ghost — dashed across Verification/Absorption ... No `?` glyph: `?` means frontier-unknown, and this ghost means not-yet-built.\"",
+      "fix_hint": "The one forward-looking/not-yet-built beat is labeled as a state description (not-yet-built, manual 'by hand for now') rather than an invented mechanism — this is what the rule asks for, not a violation.",
       "blocking": false
     },
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": 50,
-      "rule_lead": "Thinking-effort levels are a real, named Claude Code control surface \u2014 stamped.",
+      "rule_lead": "Thinking-effort levels are a real, named Claude Code control surface — stamped.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": "No 'thinking effort' / '--effort' content anywhere in this file; it is not one of the four files the rule names (prework, getting-going, plan-mode-done-right, earn-the-trust).",
@@ -67,7 +67,7 @@
       "rule_index": 52,
       "rule_lead": "Two producers disagreeing about a canonical value, with nothing reconciling them, ARE the defect.",
       "verdict": "N/A",
-      "evidence": "Spot-checked the maintainer block's two cross-file claims directly: `ls curriculum/lectures/the-map-filled-in.md` \u2192 no such file (confirms 2026-09-02 removal claim at L42/L52); `grep -n 'control-loop' curriculum/lectures/composing-the-workflow.md` \u2192 hit at L96 (confirms the L91 claim that composing-the-workflow.md carries the control-loop slide).",
+      "evidence": "Spot-checked the maintainer block's two cross-file claims directly: `ls curriculum/lectures/the-map-filled-in.md` → no such file (confirms 2026-09-02 removal claim at L42/L52); `grep -n 'control-loop' curriculum/lectures/composing-the-workflow.md` → hit at L96 (confirms the L91 claim that composing-the-workflow.md carries the control-loop slide).",
       "fix_hint": "No undetected two-producer disagreement found; the file's cross-references to sibling files check out live. Not this rule's subject matter otherwise.",
       "blocking": false,
       "na_reason": "No undetected two-producer disagreement found; the file's cross-references to sibling files check out live. Not this rule's subject matter otherwise."
@@ -75,7 +75,7 @@
     {
       "compendium": "check_research_claims.md",
       "rule_index": 1,
-      "rule_lead": "Source URL + type label \u2014 mandatory.",
+      "rule_lead": "Source URL + type label — mandatory.",
       "verdict": "PASS",
       "evidence": "L60-93. Every Sources-list entry (L74-87) carries a URL + honest [label], or a valid carve-out (groundwork-value-cycle L74 = [maintainer-attested] due:none; user-signal-* L85-86 = [maintainer-attested]; ausubel L87 = [academic/research], DOI present, result:BLOCKED handled per rule). Convergence-verb check: the Stance 'holds' section (L96) scopes its one 'L3' claim to a named 4-practitioner set (Willison/Osmani/Ronacher/Klaassen) with quotes, not an uncounted 'practitioners converge' claim; groundwork-value-cycle (L74) explicitly disclaims a field census ('nobody publishes this decomposition... the map is an assembly, and the assembly is ours') rather than inventing one.",
       "fix_hint": "None needed.",
@@ -84,18 +84,18 @@
     {
       "compendium": "check_research_claims.md",
       "rule_index": "1a",
-      "rule_lead": "OODA paraphrase \u2260 primary source.",
+      "rule_lead": "OODA paraphrase ≠ primary source.",
       "verdict": "PASS",
-      "evidence": "L75-84: every practitioner claim in the Sources list is a direct quotation in quotation marks (Willison, Cursor/Lin, Karpathy, Klaassen, Ronacher, Osmani \u00d73), not a paraphrase presented as a finding.",
+      "evidence": "L75-84: every practitioner claim in the Sources list is a direct quotation in quotation marks (Willison, Cursor/Lin, Karpathy, Klaassen, Ronacher, Osmani ×3), not a paraphrase presented as a finding.",
       "fix_hint": "None needed.",
       "blocking": false
     },
     {
       "compendium": "check_research_claims.md",
       "rule_index": 2,
-      "rule_lead": "Freshness rule \u2014 6 months.",
+      "rule_lead": "Freshness rule — 6 months.",
       "verdict": "PASS",
-      "evidence": "Ran `bash curriculum/evals/scripts/source-freshness.sh curriculum/lectures/the-whole-map.md` \u2192 exit 0, \"summary: 0 block \u00b7 1 warn \u00b7 1 info \u00b7 12 ok\". The 1 WARN (L75, willison-subagents, due:cohort) is a living-guide stamp working as designed, not staleness \u2014 its own prose names why ('no stable pub anchor... re-read against the current revision before a room leans on them'). The 1 INFO (L87, ausubel, BLOCKED/paywalled) is already accepted per the rule's academic-source handling. The prior instance's one open item \u2014 ronacher-final-bottleneck's due date having passed (2026-08-13) \u2014 is now fixed in this diff: L84 shows `[checked:2026-08-31 result:OK due:none]`, re-opened and re-stamped as a durable dated-origin account.",
+      "evidence": "Ran `bash curriculum/evals/scripts/source-freshness.sh curriculum/lectures/the-whole-map.md` → exit 0, \"summary: 0 block · 1 warn · 1 info · 12 ok\". The 1 WARN (L75, willison-subagents, due:cohort) is a living-guide stamp working as designed, not staleness — its own prose names why ('no stable pub anchor... re-read against the current revision before a room leans on them'). The 1 INFO (L87, ausubel, BLOCKED/paywalled) is already accepted per the rule's academic-source handling. The prior instance's one open item — ronacher-final-bottleneck's due date having passed (2026-08-13) — is now fixed in this diff: L84 shows `[checked:2026-08-31 result:OK due:none]`, re-opened and re-stamped as a durable dated-origin account.",
       "fix_hint": "None needed.",
       "blocking": false
     },
@@ -113,14 +113,14 @@
       "rule_index": 5,
       "rule_lead": "Resist prescriptive post-OODA phrasings.",
       "verdict": "PASS",
-      "evidence": "L100 (would-move-it): \"That is the standing falsifier and it did not appear this cycle\" / \"it should be defended knowingly\" \u2014 tentative, not directive.",
+      "evidence": "L100 (would-move-it): \"That is the standing falsifier and it did not appear this cycle\" / \"it should be defended knowingly\" — tentative, not directive.",
       "fix_hint": "None needed.",
       "blocking": false
     },
     {
       "compendium": "check_research_claims.md",
       "rule_index": 7,
-      "rule_lead": "Vision \u00d7 Detail split.",
+      "rule_lead": "Vision × Detail split.",
       "verdict": "PASS",
       "evidence": "L60-71: claims ledger correctly tags vision-layer claims ('vision', 'none-owed', e.g. `intent-names-done-first` L63) separately from borrowed/detail claims carrying real citations (`six-phase-cycle` L61, `work-is-act-read-correct` L65, `absorption-is-the-taking-up` L67).",
       "fix_hint": "None needed.",
@@ -140,16 +140,16 @@
       "rule_index": 11,
       "rule_lead": "Source-verification maintainer block on any student-facing file with practitioner citations.",
       "verdict": "PASS",
-      "evidence": "Drift-recheck (rule re-read at current wording). L58-107 use the `<!-- backing -->` block convention, not the older '**Source verification \u2014 MUST DO before first cohort:**' heading. Confirmed via `curriculum/backing-format.md:17`: \"Absorbs and replaces `Frameworks riffed on:` / `Frameworks attributed:` / `**Source verification \u2026**` \u2014 do not keep a second copy.\" \u2014 the backing block is the canonical successor this rule's older heading form has been retired in favour of. Ran `source-freshness.sh` \u2192 exit 0, clean.",
-      "fix_hint": "None needed. Sub-clause 11a (freshness-stamp grammar) satisfied too: every source line (L74-87) carries `[checked:\u2026 result:\u2026 due:\u2026]` with valid RESULT/DUE enum values, parsed cleanly by the audit script.",
+      "evidence": "Drift-recheck (rule re-read at current wording). L58-107 use the `<!-- backing -->` block convention, not the older '**Source verification — MUST DO before first cohort:**' heading. Confirmed via `curriculum/backing-format.md:17`: \"Absorbs and replaces `Frameworks riffed on:` / `Frameworks attributed:` / `**Source verification …**` — do not keep a second copy.\" — the backing block is the canonical successor this rule's older heading form has been retired in favour of. Ran `source-freshness.sh` → exit 0, clean.",
+      "fix_hint": "None needed. Sub-clause 11a (freshness-stamp grammar) satisfied too: every source line (L74-87) carries `[checked:… result:… due:…]` with valid RESULT/DUE enum values, parsed cleanly by the audit script.",
       "blocking": false
     },
     {
       "compendium": "check_research_claims.md",
       "rule_index": 13,
-      "rule_lead": "Inference beyond source \u2014 absence licenses only absence.",
+      "rule_lead": "Inference beyond source — absence licenses only absence.",
       "verdict": "PASS",
-      "evidence": "L74: \"checked this cycle across four rosters... nobody publishes this decomposition\" states only the negative finding. L100: \"did not appear this cycle\" \u2014 same, no inference about why or what would surface it.",
+      "evidence": "L74: \"checked this cycle across four rosters... nobody publishes this decomposition\" states only the negative finding. L100: \"did not appear this cycle\" — same, no inference about why or what would surface it.",
       "fix_hint": "None needed.",
       "blocking": false
     },
@@ -158,7 +158,7 @@
       "rule_index": 15,
       "rule_lead": "A word-presence claim needs an unprimed read.",
       "verdict": "PASS",
-      "evidence": "L74, L100: both word-presence-shaped claims in this file are negative findings ('nobody publishes this decomposition'; 'did not appear this cycle') \u2014 per the rule's own asymmetry clause, priming inflates presence claims, never absence claims, so these survive without a re-check.",
+      "evidence": "L74, L100: both word-presence-shaped claims in this file are negative findings ('nobody publishes this decomposition'; 'did not appear this cycle') — per the rule's own asymmetry clause, priming inflates presence claims, never absence claims, so these survive without a re-check.",
       "fix_hint": "None needed.",
       "blocking": false
     },
@@ -167,7 +167,7 @@
       "rule_index": 16,
       "rule_lead": "A candidate that matches the hunt's SHAPE has not answered the hunt's QUESTION.",
       "verdict": "PASS",
-      "evidence": "L102-103: the OODA question is stated functionally (\"does anyone name a stage of agentic work the six columns cannot hold \u2014 and does Absorption survive as a place separate from Verification\"), not structurally; the Stance engages Ronacher's counter-model on whether it functionally removes the human stage, not on topology alone.",
+      "evidence": "L102-103: the OODA question is stated functionally (\"does anyone name a stage of agentic work the six columns cannot hold — and does Absorption survive as a place separate from Verification\"), not structurally; the Stance engages Ronacher's counter-model on whether it functionally removes the human stage, not on topology alone.",
       "fix_hint": "None needed.",
       "blocking": false
     },
@@ -177,14 +177,14 @@
       "rule_lead": "Every prompt block: one-sentence action lead-in.",
       "verdict": "N/A",
       "evidence": null,
-      "fix_hint": "Drift-recheck (rule reread at current wording incl. 2a/2b/2c sub-clauses). File carries zero prompt fences (signals: has_prompt_blocks=false, fence_ranges=[]) \u2014 nothing for a lead-in to precede.",
+      "fix_hint": "Drift-recheck (rule reread at current wording incl. 2a/2b/2c sub-clauses). File carries zero prompt fences (signals: has_prompt_blocks=false, fence_ranges=[]) — nothing for a lead-in to precede.",
       "blocking": false,
-      "na_reason": "Drift-recheck (rule reread at current wording incl. 2a/2b/2c sub-clauses). File carries zero prompt fences (signals: has_prompt_blocks=false, fence_ranges=[]) \u2014 nothing for a lead-in to precede."
+      "na_reason": "Drift-recheck (rule reread at current wording incl. 2a/2b/2c sub-clauses). File carries zero prompt fences (signals: has_prompt_blocks=false, fence_ranges=[]) — nothing for a lead-in to precede."
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": 17,
-      "rule_lead": "Preamble before action \u2014 design around it.",
+      "rule_lead": "Preamble before action — design around it.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": "Drift-recheck: rule narrowed 2026-09-03 to fire on plan-mode fenced prompts only. File has no fences of any kind, plan-mode or otherwise. Still N/A under the narrower current wording.",
@@ -194,7 +194,7 @@
     {
       "compendium": "check_prompts.md",
       "rule_index": 20,
-      "rule_lead": "Grill before save \u2014 collaborative quality at artefact assembly.",
+      "rule_lead": "Grill before save — collaborative quality at artefact assembly.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": "Drift-recheck: rule narrowed 2026-09-03, now requires an artefact-assembling prompt to even raise. No prompt of any kind exists in this file.",
@@ -257,7 +257,7 @@
       "blocking": false,
       "carried_from": "b05b3167274d6033e45dc48ed26060831f2afe9a46789a28e773957c24b4de2a",
       "carried_shape": "06b03968b9651b64",
-      "na_reason": "Grep of the raw body for Claude Code/Desktop/Cowork/MCP/skill/session/hook/subagent vocabulary returns zero hits outside generic 'session' (see \u00a77 row) \u2014 no assertion exists to verify."
+      "na_reason": "Grep of the raw body for Claude Code/Desktop/Cowork/MCP/skill/session/hook/subagent vocabulary returns zero hits outside generic 'session' (see §7 row) — no assertion exists to verify."
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -346,7 +346,7 @@
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": "6b",
-      "rule_lead": "Tool feature differs from expected \u2192 update curriculum not workaround.",
+      "rule_lead": "Tool feature differs from expected → update curriculum not workaround.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": "",
@@ -586,7 +586,7 @@
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": 17,
-      "rule_lead": "Script ratchet \u2014 LLM-orchestration surfaces move toward scripts.",
+      "rule_lead": "Script ratchet — LLM-orchestration surfaces move toward scripts.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": "",
@@ -610,7 +610,7 @@
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": "14a",
-      "rule_lead": "Canon is declared, not inferred \u2014 and an orphan is not automatically spent.",
+      "rule_lead": "Canon is declared, not inferred — and an orphan is not automatically spent.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": "",
@@ -622,7 +622,7 @@
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": 19,
-      "rule_lead": "Runner \u2194 source pre-flight.",
+      "rule_lead": "Runner ↔ source pre-flight.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": "",
@@ -694,7 +694,7 @@
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": 25,
-      "rule_lead": "Cowork capability surface \u2014 UI reads; no rename.",
+      "rule_lead": "Cowork capability surface — UI reads; no rename.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": "",
@@ -802,7 +802,7 @@
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": 34,
-      "rule_lead": "Spend on deleting the duplicate, not on guarding it \u2014 and a gate that finds nothing is speculation.",
+      "rule_lead": "Spend on deleting the duplicate, not on guarding it — and a gate that finds nothing is speculation.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": "",
@@ -910,9 +910,9 @@
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": 45,
-      "rule_lead": "A detector's reading vocabulary must cover the corpus's writing vocabulary \u2014 or it reports compliance as rot.",
+      "rule_lead": "A detector's reading vocabulary must cover the corpus's writing vocabulary — or it reports compliance as rot.",
       "verdict": "N/A",
-      "evidence": "grep -inE for detector/auditor/parser/vocabulary-coverage terms against curriculum/evals/body-views/ae101--lecture--the-whole-map.body.txt \u2192 0 matches (this is the DRIFT-recheck rule; re-read at current wording including the 2026-08-28 fail-open corollary)",
+      "evidence": "grep -inE for detector/auditor/parser/vocabulary-coverage terms against curriculum/evals/body-views/ae101--lecture--the-whole-map.body.txt → 0 matches (this is the DRIFT-recheck rule; re-read at current wording including the 2026-08-28 fail-open corollary)",
       "fix_hint": "",
       "blocking": false,
       "carried_from": "b05b3167274d6033e45dc48ed26060831f2afe9a46789a28e773957c24b4de2a",
@@ -933,7 +933,7 @@
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": 47,
-      "rule_lead": "\"It used to be fast\" is a regression report \u2014 diagnose it by trajectory, not by architecture.",
+      "rule_lead": "\"It used to be fast\" is a regression report — diagnose it by trajectory, not by architecture.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": "",
@@ -957,7 +957,7 @@
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": 49,
-      "rule_lead": "An instruction whose violation leaves the output identical is not enforced by wording \u2014 it needs a measurement or a test.",
+      "rule_lead": "An instruction whose violation leaves the output identical is not enforced by wording — it needs a measurement or a test.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": "",
@@ -1048,7 +1048,7 @@
       "blocking": false,
       "carried_from": "b05b3167274d6033e45dc48ed26060831f2afe9a46789a28e773957c24b4de2a",
       "carried_shape": "06b03968b9651b64",
-      "na_reason": "This lecture is a 6-min projected container/opener with no student prompt fence at all (has_prompt_blocks: false) \u2014 nothing to check against the prompt-vs-body split."
+      "na_reason": "This lecture is a 6-min projected container/opener with no student prompt fence at all (has_prompt_blocks: false) — nothing to check against the prompt-vs-body split."
     },
     {
       "compendium": "check_pedagogy.md",
@@ -1099,22 +1099,22 @@
     }
   ],
   "drift_rules_reread": [
-    "prompts \u00a72 (+2a/2b/2c) \u2014 current wording read in full; N/A, no prompt fence in file.",
-    "prompts \u00a717 \u2014 current wording read in full, incl. the 2026-09-03 narrowing to plan-mode-only; N/A, no fence of any kind.",
-    "prompts \u00a720 \u2014 current wording read in full, incl. the 2026-09-03 narrowing (benefit unevidenced, rarely fires); N/A, no artefact-assembling prompt present.",
-    "prompts \u00a740 (+40a/40b) \u2014 current wording read in full; N/A, no prompt fence to verify session-boundary against.",
-    "research_claims \u00a711 (+11a) \u2014 current wording read in full; PASS. The `<!-- backing -->` block is the confirmed canonical successor to the rule's older 'Source verification' heading (curriculum/backing-format.md:17), and this file's backing block satisfies both \u00a711's structure and \u00a711a's per-source stamp grammar; source-freshness.sh runs clean."
+    "prompts §2 (+2a/2b/2c) — current wording read in full; N/A, no prompt fence in file.",
+    "prompts §17 — current wording read in full, incl. the 2026-09-03 narrowing to plan-mode-only; N/A, no fence of any kind.",
+    "prompts §20 — current wording read in full, incl. the 2026-09-03 narrowing (benefit unevidenced, rarely fires); N/A, no artefact-assembling prompt present.",
+    "prompts §40 (+40a/40b) — current wording read in full; N/A, no prompt fence to verify session-boundary against.",
+    "research_claims §11 (+11a) — current wording read in full; PASS. The `<!-- backing -->` block is the confirmed canonical successor to the rule's older 'Source verification' heading (curriculum/backing-format.md:17), and this file's backing block satisfies both §11's structure and §11a's per-source stamp grammar; source-freshness.sh runs clean."
   ],
   "accept_notes_found": [
-    "L30 \u2014 'You are here' slide cut 2026-08-29 (Antti-directed): say it over the map, don't give it a slide; explicit 'do not restore the slide' instruction.",
-    "L34 \u2014 No three-altitudes framing here; that wording belongs to the M3 close's beat, not this file.",
-    "L42 \u2014 Derived copies note: the-map-filled-in.md removed 2026-09-02, replaced by composing-the-workflow.md \u2014 verified live (file absent at old path, present at new path).",
-    "L52 \u2014 'six phases' slide-3 header is the \u00a720 memory-handle carve-out, not drift; 'do not re-flag.'",
-    "L54 \u2014 Family B (durability without voice) \u2014 PASS, judged 2026-07-03; re-read after the You-are-here cut, 2026-08-29.",
-    "L74-87 \u2014 14 dated source-verification stamps under the backing block, per curriculum/source-freshness-format.md grammar.",
-    "L91 \u2014 Closed-loop control dose note: exactly one jargon-free naming at M6 (composing-the-workflow's control-loop slide) \u2014 verified live via grep.",
-    "L95-100 \u2014 Stance block [stance:2026-07-31 level:L2] with holds/contested/decided/would-move-it structure.",
-    "L105 \u2014 OODA last-run: 2026-07-31."
+    "L30 — 'You are here' slide cut 2026-08-29 (Antti-directed): say it over the map, don't give it a slide; explicit 'do not restore the slide' instruction.",
+    "L34 — No three-altitudes framing here; that wording belongs to the M3 close's beat, not this file.",
+    "L42 — Derived copies note: the-map-filled-in.md removed 2026-09-02, replaced by composing-the-workflow.md — verified live (file absent at old path, present at new path).",
+    "L52 — 'six phases' slide-3 header is the §20 memory-handle carve-out, not drift; 'do not re-flag.'",
+    "L54 — Family B (durability without voice) — PASS, judged 2026-07-03; re-read after the You-are-here cut, 2026-08-29.",
+    "L74-87 — 14 dated source-verification stamps under the backing block, per curriculum/source-freshness-format.md grammar.",
+    "L91 — Closed-loop control dose note: exactly one jargon-free naming at M6 (composing-the-workflow's control-loop slide) — verified live via grep.",
+    "L95-100 — Stance block [stance:2026-07-31 level:L2] with holds/contested/decided/would-move-it structure.",
+    "L105 — OODA last-run: 2026-07-31."
   ],
   "urls_sampled": [
     {
@@ -1138,7 +1138,7 @@
       "status_code": 200
     }
   ],
-  "notes": "Scope decision, consistent with the prior accepted instance (0 check_prompts rows, 5 check_pedagogy rows): this class is PRIMARY owner of check_platform_and_boundaries.md and check_research_claims.md (full coverage carried below + merged from the prefill sidecar) and owns only the 5 named technical sub-rules of check_pedagogy.md (16, 22, 23, 36, 37) \u2014 those 5 were already resolved N/A at this shape_hash and are parked in the sidecar, not re-derived here. check_pedagogy's other ~57 rules belong to the pedagogy judge and are intentionally not scored here. check_prompts.md: the file carries zero prompt fences (has_prompt_blocks:false), so its mechanical-correctness rules (this class's slice of that compendium) are structurally N/A across the board; rather than filing 49 near-identical N/A rows for a compendium this class does not primarily own, only the 4 rules this dispatch explicitly flagged as rule-drift (\u00a72, \u00a717, \u00a720, \u00a740) are recorded above. Skills-referenced: none (`[Skill: ...]` pattern not present in file). Platform-capability claims in body: none (body is a pure six-phase conceptual map with a figure; no Claude Code/Desktop/Cowork mechanic is asserted).",
-  "todos_count": 0,
-  "blocking_findings_count": 0
+  "notes": "Scope decision, consistent with the prior accepted instance (0 check_prompts rows, 5 check_pedagogy rows): this class is PRIMARY owner of check_platform_and_boundaries.md and check_research_claims.md (full coverage carried below + merged from the prefill sidecar) and owns only the 5 named technical sub-rules of check_pedagogy.md (16, 22, 23, 36, 37) — those 5 were already resolved N/A at this shape_hash and are parked in the sidecar, not re-derived here. check_pedagogy's other ~57 rules belong to the pedagogy judge and are intentionally not scored here. check_prompts.md: the file carries zero prompt fences (has_prompt_blocks:false), so its mechanical-correctness rules (this class's slice of that compendium) are structurally N/A across the board; rather than filing 49 near-identical N/A rows for a compendium this class does not primarily own, only the 4 rules this dispatch explicitly flagged as rule-drift (§2, §17, §20, §40) are recorded above. Skills-referenced: none (`[Skill: ...]` pattern not present in file). Platform-capability claims in body: none (body is a pure six-phase conceptual map with a figure; no Claude Code/Desktop/Cowork mechanic is asserted).",
+  "blocking_findings_count": 0,
+  "nonblocking_findings_count": 0
 }

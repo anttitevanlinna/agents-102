@@ -30,7 +30,7 @@ Three legs. Cut one.
 <!-- maintainer -->
 
 **Quality:** compendium-audited 2026-09-05 (writing@324b81d7 story@324b81d7 technical@324b81d7 behavior@b3143a4 pedagogy@1abb84c6 strategy@324b81d7 slides@324b81d7)
-- judges @324b81d7: writing PASS (1 todo see instances/ae101--supplementary--the-lethal-trifecta.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS
+- judges @324b81d7: writing PASS (1 finding see instances/ae101--supplementary--the-lethal-trifecta.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS
 
 **Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** one bold handle, **prompt injection** (field handle at its naming, mechanism slide); bullet leads, three-leg enumeration, Willison constraint quote, kicker all plain, per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`.
 

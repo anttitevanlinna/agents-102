@@ -22,7 +22,7 @@ You're new to this country. A tourist runs an agent and hopes; a practitioner ru
 <!-- maintainer -->
 
 **Quality:** compendium-audited 2026-09-05 (writing@08946dd8 story@08946dd8 technical@8cc00874 behavior@1c765f2 pedagogy@02dcad0b strategy@08946dd8 slides@43e6cae1)
-- judges @08946dd8: writing PASS (2 todos see instances/ae101--lecture--test-and-learn.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS (1 todo see instances/ae101--lecture--test-and-learn.strategy.json), slides PASS
+- judges @08946dd8: writing PASS (2 findings see instances/ae101--lecture--test-and-learn.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS (1 finding see instances/ae101--lecture--test-and-learn.strategy.json), slides PASS
 
 **Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** slide 1 (spirit opener) is prose paragraphs, the tourist/practitioner koan plain; the other slides carry bullets with zero bold. Per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`.
 

@@ -11,7 +11,7 @@ What comes back is a prompt, not a plan. Save it where you will find it.
 <!-- maintainer -->
 
 **Quality:** compendium-audited 2026-09-05 (writing@fb797e3b story@fb797e3b technical@4589f1d5 behavior@4589f1d5 pedagogy@4589f1d5 strategy@fb797e3b slides@54577f39)
-- judges @fb797e3b: writing PASS, story PASS (1 todo see instances/ae101--lecture--the-handoff-prompt.story.json), technical PASS (1 todo see instances/ae101--lecture--the-handoff-prompt.technical.json), behavior PASS (1 todo see instances/ae101--lecture--the-handoff-prompt.behavior.json), pedagogy PASS (1 todo see instances/ae101--lecture--the-handoff-prompt.pedagogy.json), strategy PASS, slides PASS
+- judges @fb797e3b: writing PASS, story PASS (1 finding see instances/ae101--lecture--the-handoff-prompt.story.json), technical PASS (1 finding see instances/ae101--lecture--the-handoff-prompt.technical.json), behavior PASS (1 finding see instances/ae101--lecture--the-handoff-prompt.behavior.json), pedagogy PASS (1 finding see instances/ae101--lecture--the-handoff-prompt.pedagogy.json), strategy PASS, slides PASS
 
 **Time:** 3 minutes.
 

@@ -30,132 +30,950 @@
     }
   ],
   "rules_evaluated": [
-    {"compendium": "check_prompts.md", "rule_index": 1, "rule_lead": "No placeholders inside fences.", "verdict": "PASS", "evidence": "Fenced content grepped for `[` bracket-placeholder shape: none. Fence names two real, always-present paths (`./CLAUDE.local.md`, `./CLAUDE.md`) — no fill-in slot.", "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 2, "rule_lead": "Every prompt block: one-sentence action lead-in.", "verdict": "PASS", "evidence": "L42 lead-in ('This one runs on the screen; you can run this too on your files.') is the §2b calibration case named verbatim in the rule itself for this exact file — trainer-screen demo fences owe no command-verb lead-in, and offer-grammar ('you can... too') rather than imperative is the tell that it isn't one.", "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 3, "rule_lead": "Canonical shape — lead-in, label with destination, blank line, fence.", "verdict": "PASS", "evidence": "Expanded output (scripts/expand-md.js): lead-in, blank line, `**Prompt** *(Claude Code)*`, blank line, fence. No `copy →` prefix, no `(end of prompt)` closer, no blockquote/indent wrapping.", "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 4, "rule_lead": "Installed Skills invoke by name, never path.", "verdict": "N/A", "evidence": "no skill invoked in this fence", "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 5, "rule_lead": "Chain by back-reference + deterministic path, never invented alias.", "verdict": "N/A", "evidence": "not chained to a prior prompt's output — references pre-existing repo files, not an artifact this training's own earlier prompt wrote this session", "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 6, "rule_lead": "Chained-prompt isolation — don't leak downstream pipeline.", "verdict": "N/A", "evidence": "standalone single prompt, not a P2→P3→P4 chain", "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 7, "rule_lead": "No session-resets mid-phase.", "verdict": "N/A", "evidence": "no session-reset offered anywhere near this prompt", "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 8, "rule_lead": "Multi-sample methods need structural enforcement.", "verdict": "N/A", "evidence": "not a self-consistency/ensemble/regeneration-diff method — single read, single pass", "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 9, "rule_lead": "Markdown shout (`**bold**`, `*italic*`) inside fenced prompts = dead weight in Claude Code.", "verdict": "PASS", "evidence": "Grepped registry fence body for `**`/`*`/bullet/numeral markers: zero hits. Plain prose sentence, no rendered-markdown assumption.", "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 10, "rule_lead": "Runtime-fork prompts: paired divs, shared chip.", "verdict": "N/A", "evidence": "AE101 is Code-only per training-architecture.md; no Agents-101-style dual-runtime fork applies", "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 11, "rule_lead": "Runtime-mechanical scaffolding asymmetry — MORE in less-fluent fork, not less.", "verdict": "N/A", "evidence": "Agents-101/Cowork-specific; AE101 has no Cowork fork", "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 12, "rule_lead": "Append-vs-integrate — name integration mode on regeneration with new context source.", "verdict": "N/A", "evidence": "no regeneration-with-new-source instruction — the fence is a read-and-name task, nothing is being appended or rewritten", "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 13, "rule_lead": "Citation discipline — extend cite-or-flag scope + quote supporting sentence.", "verdict": "N/A", "evidence": "no citation instruction in this fence", "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 14, "rule_lead": "Niceness tax — name the edge or pin the line on regeneration.", "verdict": "N/A", "evidence": "not a regeneration of edge/anti-positioning prose", "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 15, "rule_lead": "Question-dump default — `in turn` too soft; two legal shapes.", "verdict": "N/A", "evidence": "single ask, no sequence of questions posed to the student", "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 16, "rule_lead": "Overwrite anxiety — name overwrite default on regeneration.", "verdict": "N/A", "evidence": "no write/regenerate action — read-only naming task, nothing is saved", "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 17, "rule_lead": "Preamble before action — design around it.", "verdict": "PASS", "evidence": "§17's structural trigger, narrowed 2026-09-03, is plan-mode ONLY. This fence declares no permission-mode and is two clauses (read the files / name parts or none) — the harm §17 prevents (2-4 sentences of narration burying a multi-item plan in the top-attention slot) needs a plan-mode return to bury; this is a short live-demo answer the trainer reads aloud. Residual low-confidence risk logged in sim-cache, not a rule violation.", "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 18, "rule_lead": "Self-critique register, not defense, when Claude interrogates own work.", "verdict": "N/A", "evidence": "not asking Claude to critique its own prior work/diff — reading two config files for extraction candidates is not self-critique-register territory", "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 19, "rule_lead": "Minimal hand-off + Claude self-augments for send-off prompts.", "verdict": "N/A", "evidence": "not a long-running send-off/walk-away prompt — quick trainer-demo read", "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 20, "rule_lead": "Grill before save — collaborative quality at artefact assembly.", "verdict": "N/A", "evidence": "no artefact is built or saved here", "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 21, "rule_lead": "Tell me what you wrote, not show me what you'll write.", "verdict": "N/A", "evidence": "no side-effect action (post/send/commit/push) — naming only, nothing persists", "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 22, "rule_lead": "Prompt-body edits require maintainer approval — registry files AND inline blocks.", "verdict": "PASS", "evidence": "Registry key `ae101-m2-name-what-moves` frontmatter note reads 'Antti-worded 2026-08-23, approved prompt-ok same day.' Confirmed on disk: `.claude/prompt-approvals/ae101-m2-name-what-moves.confirmed` exists (gitignored marker, per design — `git log --all` on that path returns empty, consistent with an untracked approval record rather than a missing one).", "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 23, "rule_lead": "Artifact destinations are explicit subpaths, never naked filenames (Agents 101-specific).", "verdict": "N/A", "evidence": "rule is explicitly Agents-101-scoped; AE101 uses the student's own repo with no training-imposed subfolder convention, and this fence writes nothing regardless", "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 24, "rule_lead": "Don't restate session CWD inside prompt body.", "verdict": "PASS", "evidence": "Fence uses `./CLAUDE.local.md` and `./CLAUDE.md`, root-relative per rule 45's own `./`-prefix convention — no absolute path, no `cd`.", "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 25, "rule_lead": "`subagent` allowed in prompt blocks; explain why after prompt.", "verdict": "N/A", "evidence": "no subagent invoked", "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 26, "rule_lead": "Maintainer-approval edits — ONE-AT-A-TIME, PRIORITY-ORDERED, FOUR-FIELD cards.", "verdict": "N/A", "evidence": "this dispatch surfaces zero blocking findings against the file, so no card is owed; rule governs how findings are surfaced to the maintainer, not file content itself", "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 27, "rule_lead": "Name consumer at write time — `Save it as <path>` requires downstream reader.", "verdict": "N/A", "evidence": "no `Save it as` instruction — nothing is written to disk", "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 28, "rule_lead": "Strong-bold prompt label is exactly `**Prompt**` — custom labels break renderer.", "verdict": "PASS", "evidence": "Expanded output shows exact `**Prompt** *(Claude Code)*` — registry expansion guarantees canonical label shape (rule 31's `expandPrompts` reconstructs it, author never hand-writes it).", "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 29, "rule_lead": "Normal work request before orchestration.", "verdict": "PASS", "evidence": "Fence goes straight to the task ('Check out ./CLAUDE.local.md and the repository ./CLAUDE.md...') — no 'ask me which files' or 'ask me what I want' orchestration-bloat preamble.", "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 30, "rule_lead": "Live-test corrections preserve operator workflow.", "verdict": "N/A", "evidence": "not editing a maintainer-reported live-test correction in this pass", "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 31, "rule_lead": "Prompts live in registry; module/exercise/lecture files reference by marker.", "verdict": "PASS", "evidence": "L44 body carries `{{prompt:ae101-m2-name-what-moves}}` marker, not an inline block; registry file `curriculum/prompts/ae101-m2-name-what-moves.md` exists with full frontmatter (key/dest/runtime/origin/requires/produces/note) and naming follows `<training>-<module>-<verb-noun>` convention.", "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 32, "rule_lead": "Module names in prompt prose are fine — they ground the session.", "verdict": "N/A", "evidence": "no module number named inside this fence", "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 33, "rule_lead": "Git-output greps asserting exact-N need multi-result fallback.", "verdict": "N/A", "evidence": "no git-log/branch grepping in this fence", "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 34, "rule_lead": "Disambiguation, anchors, and decision logic that bind Claude live INSIDE prompt fence.", "verdict": "PASS", "evidence": "Read the fence in isolation, no body context: 'Check out ./CLAUDE.local.md and the repository ./CLAUDE.md. If any parts appear that would be better moved into a skill, name the parts. Or none, if nothing appears that way.' Both paths are literal and always resolvable regardless of student machine state — no branch-name, worktree, or prior-session ambiguity to bind.", "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 35, "rule_lead": "Repeated Q&A → premature re-edits. Separate iteration from persistence.", "verdict": "N/A", "evidence": "not a multi-turn dialog that can affect an artifact file — single ask, no write", "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 36, "rule_lead": "Wide prompts split by logical move — paragraph breaks = cheapest scan-affordance.", "verdict": "PASS", "evidence": "Fence is ~30 words, one paragraph, ≤2 logical moves (check the files / name parts-or-none) — stays under the rule's own short-prompt exception (≤30 words / ≤2 moves stay one paragraph).", "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 37, "rule_lead": "Orient saved rule by where it FIRES, not surface activity producing it.", "verdict": "N/A", "evidence": "no 'save this as a rule' instruction or output in this fence", "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 38, "rule_lead": "Body lead-in mirrors prompt's opening phrasing.", "verdict": "N/A", "evidence": "§2b already establishes this lead-in's job as naming the runner (trainer vs. student), not summarizing the fence's opening clause — §38's phrasal-congruence check presupposes an action lead-in in the §2 sense, which §2b explicitly exempts this line from being; no §38a surprise-pedagogy carve-out is in play either (nothing is hidden).", "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 39, "rule_lead": "Declare `permission-mode:` when paste requires specific Claude Code mode.", "verdict": "PASS", "evidence": "Registry frontmatter omits `permission-mode:` — correctly, since behavior doesn't depend on plan/other mode; default-mode read-and-report, no chip owed.", "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 40, "rule_lead": "Verify session boundary before deciding prompt's context-carrying.", "verdict": "PASS", "evidence": "Read the module body: this is a same-session trainer demo (no `/clear`, no worktree switch, no Agent sub-task named). Even so the fence is self-contained regardless of warm/cold — it names two real on-disk paths, not a scrollback-dependent referent, so §40's verification doesn't change the outcome. §40b check: no curriculum-coined event/exercise label (e.g. 'the second-pass read') appears inside the fence — both nouns are literal filenames.", "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 41, "rule_lead": "Artifact-vs-STOP tail ordering — last imperative wins.", "verdict": "N/A", "evidence": "no STOP/wait tail grafted onto this prompt, no artifact-write to order against it", "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 42, "rule_lead": "Headless-runner discipline — tail every prompt with no-AUQ guard.", "verdict": "N/A", "evidence": "runs interactively in a trainer-observed Claude Code session, not a headless/tmux/CI runner", "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 43, "rule_lead": "Long-running prompts stream progress — never go silent.", "verdict": "N/A", "evidence": "quick two-file read-and-report, not a multi-minute scan/build", "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 44, "rule_lead": "A leading-looking line can be a forcing function; prefer the simpler prompt.", "verdict": "N/A", "evidence": "no leading/loaded clause in this plain fence to second-guess removing", "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 45, "rule_lead": "Prompt paths match Builder scope.", "verdict": "N/A", "evidence": "destination is `Claude Code`, not `Builder Claude` — rule targets Agents 101's Builder-reopen path structure (prework+M1 bare vs M2+ single-segment), which doesn't exist in AE101's delivery model", "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 46, "rule_lead": "Output shape — trust Claude's defaults, don't pad.", "verdict": "PASS", "evidence": "Fence ends naturally on 'name the parts. Or none, if nothing appears that way' — no trailing shape spec (no 'clear title, a Rules section...' padding).", "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 47, "rule_lead": "\"Add X and regenerate\" is a trap.", "verdict": "N/A", "evidence": "no 'add X and regenerate' instruction in this fence", "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 48, "rule_lead": "Vary closings deliberately.", "verdict": "N/A", "evidence": "this is a lecture demo prompt, not an exercise closing-mechanic choice (pair/group/solo-retro/show-work)", "blocking": false},
-    {"compendium": "check_prompts.md", "rule_index": 49, "rule_lead": "A take-home prompt asks for one bounded build.", "verdict": "N/A", "evidence": "not a take-home/handoff artifact-builder prompt — live read, no save, no plural deliverable", "blocking": false},
-
-    {"compendium": "check_pedagogy.md", "rule_index": 1, "rule_lead": "Walk-away test (M2+).", "verdict": "N/A", "evidence": "quick interactive trainer-run demo, not a walk-away unattended agent run", "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": 2, "rule_lead": "50% magic rule (M3–M8).", "verdict": "N/A", "evidence": "rule scopes M3–M8 modules; this is an M2 lecture", "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": 3, "rule_lead": "Trust the agentic design — no human backstops.", "verdict": "PASS", "evidence": "Fence trusts Claude's own judgement on what 'would be better moved' into a skill — no exhaustive if-then criteria list, no 'Antti checks manually' backstop.", "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": 4, "rule_lead": "Quality ladder.", "verdict": "N/A", "evidence": "arc-level exercise-quality-tier rule, not a per-prompt behavior check", "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": 6, "rule_lead": "One exercise = one bounded activity.", "verdict": "N/A", "evidence": "this file is a lecture, not an exercise", "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": 7, "rule_lead": "Modules composable across variants.", "verdict": "N/A", "evidence": "no variant-forking concern in this single prompt", "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": 8, "rule_lead": "Three-level completeness.", "verdict": "N/A", "evidence": "prompt produces no artifact (naming only) — the strategy→runtime→sendable-asset chain this rule checks doesn't apply", "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": 9, "rule_lead": "Pattern-recognition LOs need n≥2 instances with contrast.", "verdict": "N/A", "evidence": "single-instance demo, not a pattern-recognition LO exercise requiring paired-contrast reads", "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": "9b", "rule_lead": "Progression-with-variations is the spine.", "verdict": "N/A", "evidence": "cross-module move-repetition design concern, outside single-prompt behavior scope", "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": 10, "rule_lead": "Student agency — adults decide.", "verdict": "PASS", "evidence": "L42 'you can run this too on your files' is offer-grammar, not a forced pacing instruction; running the prompt on the student's own repo is clearly optional.", "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": 11, "rule_lead": "Delegation — student brings, Claude screens.", "verdict": "PASS", "evidence": "Task is fit-screen-against-criteria ('does this look skill-shaped?') on files Claude already has access to via the working directory — matches the rule's own agent-default ('Fit-screen against criteria... → agent'), no inaccessible connector named.", "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": 12, "rule_lead": "Split mega-exercise when phases = distinct skills + distinct artifacts.", "verdict": "N/A", "evidence": "single-prompt lecture demo, not a multi-phase exercise", "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": 13, "rule_lead": "Artifact-realism check.", "verdict": "PASS", "evidence": "Registry `requires:` names `claude-local-md` sourced from `prompt:compound-and-close-1`, with a note tracing the demo repo's seeded copy and a student's own M1-born file. `./CLAUDE.md` carries no requires entry, but the fence's own null case ('Or none, if nothing appears that way') absorbs an empty repo file gracefully.", "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": 14, "rule_lead": "Teach principle + technique — default.", "verdict": "PASS", "evidence": "Principle (WHY) already taught two slides earlier at L7 ('extract it into a skill... when that work calls for them') and L25/27 (the ceiling, why lean files matter); this fence exercises the technique (HOW: naming candidates against that exact criterion) rather than inviting a fresh black-box invocation.", "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": 15, "rule_lead": "Auto-fire sim+eval after significant rewrite.", "verdict": "N/A", "evidence": "generation-workflow process rule, not a student-facing content check", "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": 16, "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.", "verdict": "PASS", "evidence": "Read the fence alone, ignoring body: the ask ('name the parts... or none') is entirely inside the fence itself — nothing load-bearing sits only in body prose. No count-script imperative present either.", "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": 17, "rule_lead": "Corporate infra = nice-to-have, never forcing function.", "verdict": "N/A", "evidence": "no external tooling (MCP, shared repo, SSO, connector) referenced — only local CLAUDE files", "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": 18, "rule_lead": "Personal-first, team promotion via human conversation.", "verdict": "PASS", "evidence": "Fence touches both `./CLAUDE.local.md` (personal) and `./CLAUDE.md` (team) but only asks Claude to NAME skill-extraction candidates — it does not instruct Claude to move content between them or promote anything into shared infra unilaterally.", "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": 19, "rule_lead": "Measure silent failure, not just friction.", "verdict": "N/A", "evidence": "cohort-evaluation methodology rule, not a single-prompt content check", "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": 20, "rule_lead": "Don't pre-set categories before experiment runs.", "verdict": "N/A", "evidence": "evaluation-methodology rule about data collection, not applicable to prompt content", "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": 21, "rule_lead": "Verification layers sample DIFFERENT error distributions — not belt-and-braces.", "verdict": "N/A", "evidence": "meta rule about the audit system's own layering, not this file's content", "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": "21b", "rule_lead": "Cheap-before-expensive verification ordering.", "verdict": "N/A", "evidence": "meta rule about audit-tier sequencing, not this file's content", "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": 22, "rule_lead": "Rule in memory without forcing function = worse than no rule.", "verdict": "N/A", "evidence": "concerns internal memory-compounding practice, not this lecture's student-facing prompt", "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": 23, "rule_lead": "Short skeptical pushback on \"done\" = re-verify trigger.", "verdict": "N/A", "evidence": "no 'are you sure/done' moment anywhere near this fence", "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": 24, "rule_lead": "Cohort execution is trainer-paced + concurrent, not sequential.", "verdict": "PASS", "evidence": "L42 explicitly frames this as trainer-run ('This one runs on the screen') with optional concurrent student execution — matches the rule's own trainer-demos-room-copy-pastes-concurrently shape.", "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": 25, "rule_lead": "Host-skill optional; maintainer blocks trainer-only.", "verdict": "PASS", "evidence": "Maintainer block reads 'Trainer runs the prompt on the demo repo and reads the return aloud' — names the trainer as actor directly, no host-skill/Nerd parenthetical or dual-column format.", "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": 26, "rule_lead": "Reflection beats: in-chat over file-write.", "verdict": "PASS", "evidence": "Prompt reports findings in chat only — no `module-N/X.md` write, no proof-of-reflection artifact.", "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": 27, "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.", "verdict": "PASS", "evidence": "L42 lead-in is about WORK (who runs the prompt), not cohort management — no 'discuss with your neighbour' or pause-cue. Body-view's `group_beat_markers: true` signal is a false positive from generic 'team' mentions in L5/L29 describing what `./CLAUDE.md` is for (repo-shared ownership), not an authored group activity — no carve-out needed because no group beat exists to carve out.", "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": 29, "rule_lead": "Eval = fixed yardstick; thing measured learns.", "verdict": "N/A", "evidence": "not an eval-loop / scorer-fixed mechanism in this file", "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": 30, "rule_lead": "Reading burden for verification = banned. Claude audits Claude.", "verdict": "PASS", "evidence": "Claude reads the two files itself and reports; the student is not asked to manually proofread Claude's output for correctness/errors.", "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": 31, "rule_lead": "Self-report + self-audit charity — verify at artifact, over-flag or fresh-session for critique.", "verdict": "PASS", "evidence": "Claude reads the two named files live and reports what it finds — it is not summarizing/grading a report of its own prior work from memory, the shape §31 exists to catch. The rule's own 'verify at artifact' remedy is structurally how this prompt already works. Residual low-confidence charity risk (Claude under-naming candidates in a file it partly helped seed via M1's compound step) logged in sim-cache at low confidence under the template's evidence-backed carve-out, not blocking.", "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": 32, "rule_lead": "Offered structures need forced-engagement mechanic.", "verdict": "N/A", "evidence": "no offered-defaults or plan-mode-approval structure in this single quick prompt", "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": 33, "rule_lead": "Source-type blindness on ingestion.", "verdict": "N/A", "evidence": "two plain local markdown files, not a heterogeneous slide/PDF source folder", "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": 34, "rule_lead": "Task selection drives outcome → name floor AND ceiling.", "verdict": "N/A", "evidence": "not a task-scoping-criteria exercise", "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": "34b", "rule_lead": "Maintainer-block hedge naming section's own failure mode = cut-signal, not warning.", "verdict": "PASS", "evidence": "Read the maintainer block's Watch-for-shaped content in isolation: it is dated design rationale (Antti-directed decisions, figure contract, placement constraint) with no hedge language propping up an otherwise-undefensible premise — nothing to cut.", "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": 35, "rule_lead": "Audience tier determines authoring substrate.", "verdict": "PASS", "evidence": "AE101 = engineer tier = Claude Code prompt (not a chat-only .md paste, not a plugin-install ask) — correct substrate for this tier and for a naming-only demo with nothing to install.", "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": 36, "rule_lead": "Verification machinery needs smoke-test before trust.", "verdict": "N/A", "evidence": "not building verification machinery (hook/judge/eval/Ralph loop) — simple read-and-name task", "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": 37, "rule_lead": "Context-loading tiers as staged progression.", "verdict": "PASS", "evidence": "Prompt runs the real auto-load surface (`./CLAUDE.local.md`, `./CLAUDE.md`) live to spot lazy-load (skill) candidates — exercises the auto-load-vs-lazy-load distinction taught at L7/L20 against the actual surface, not lecturing about tiers in the abstract (the anti-pattern the rule names).", "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": 39, "rule_lead": "Removals are strategic — ask before cutting.", "verdict": "N/A", "evidence": "generation-time editorial rule about removing content; not applicable to reviewing an existing steady-state prompt's behavior", "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": 41, "rule_lead": "Symmetric visible-mechanics > runtime fork when dual-runtime constraints break agentic move.", "verdict": "N/A", "evidence": "AE101 has no dual-runtime (Cowork) fork at all", "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": 42, "rule_lead": "Load-bearing platform feature = no fallback. Gate or redesign.", "verdict": "N/A", "evidence": "reading local files is universal — no plan-mode/concurrent-session/plugin-install dependency to fall back from", "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": 43, "rule_lead": "Eval architecture — partition by evidence source, not criterion count.", "verdict": "N/A", "evidence": "meta rule about how the judging system itself is organized, not this file's content", "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": 44, "rule_lead": "Plug points + UX.", "verdict": "PASS", "evidence": "(a) no `## Plug Points` section in this lecture, N/A. (b) UX: student pastes the fence without inventing setup and both named files sit at a discoverable, already-existing root path per the registry's requires-note (`./CLAUDE.local.md` born in M1) — no 'wait, what?' moment.", "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": 45, "rule_lead": "Per-exercise leap test — 3 observable Monday outcomes.", "verdict": "N/A", "evidence": "lecture, not an exercise — lecture maintainer blocks don't carry (and aren't required to carry) a leap-test", "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": 47, "rule_lead": "Per-phase failure mode + escape hatch.", "verdict": "N/A", "evidence": "targets exercise phases with forcing functions; this is a single lecture-embedded demo, not a phased exercise structure", "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": 48, "rule_lead": "Heavy fan-out prompts get body recovery callout.", "verdict": "N/A", "evidence": "two-file read, not a heavy fan-out (no N>2 subagents, no polling loop, no full-memory audit)", "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": 49, "rule_lead": "Save belongs with authoring, not loading.", "verdict": "N/A", "evidence": "no create-then-use pair / no save-then-load sequence here", "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": 50, "rule_lead": "Convenience-driven prompts with known shape-bias → body acknowledgment callout.", "verdict": "PASS", "evidence": "The fence already self-mitigates its low self-audit-charity risk via its own built-in null case ('Or none, if nothing appears that way') — restructure-in-fence, which the rule prefers over a body callout when free ('Restructure first when free; callout when restructure costs').", "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": 51, "rule_lead": "Deliberate-antipattern prompts = class-judge exempt, flagged-by-design.", "verdict": "N/A", "evidence": "not a deliberately-broken/antipattern demo prompt (no M4-style intentionally-thin baseline)", "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": 52, "rule_lead": "Session widget — `**Session** *(verb, \"name\")*` shape; place by learning flow.", "verdict": "N/A", "evidence": "no `**Session**` widget used anywhere in this file", "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": "52b", "rule_lead": "Widgets carry semantics, not just emphasis — match the widget to MEANING, never to how loud it renders.", "verdict": "N/A", "evidence": "no widget-selection question arises — no widget is used at all", "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": "52a", "rule_lead": "Module prose carrying a `**Session**` widget or a `{{prompt:}}` fence is an exercise that has not been extracted.", "verdict": "N/A", "evidence": "this rule targets MODULE index files improperly growing exercise content; `how-instructions-grow.md` is a LECTURE file, which the canon (curriculum/CLAUDE.md) explicitly inlines by design", "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": "52c", "rule_lead": "Exercise lead-in trio — three slots, three tenses.", "verdict": "N/A", "evidence": "lecture file, not an exercise — the What-you-do/What-you-build/The-point trio doesn't apply", "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": "52d", "rule_lead": "Finding the point — four moves, learned writing M1's set 2026-08-12.", "verdict": "N/A", "evidence": "lecture file, not an exercise — no `**The point:**` slot exists here to sharpen", "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": 53, "rule_lead": "Body prose must not supply an answer its prompt asks for — position is not the test.", "verdict": "PASS", "evidence": "Prose before the fence (L42) names only who runs it, not what it will find. Prose after the fence (L46) forward-links to a different topic (the context-ceiling supplement), not a preview of this fence's return. No pre-announced payoff on either side.", "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": 56, "rule_lead": "Engineer-audience audit fixes default to body callout, not forcing function.", "verdict": "N/A", "evidence": "no audit finding is being fix-shaped here; §50's row above already resolves the one candidate risk via in-fence self-mitigation, avoiding double-counting", "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": 57, "rule_lead": "Multi-session (any new mechanic mid-arc) ships as packaging, not new primitive.", "verdict": "N/A", "evidence": "no new mid-arc mechanic is being packaged by this single lecture prompt", "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": 58, "rule_lead": "`/clear` = tool, not ceremony.", "verdict": "N/A", "evidence": "`/clear` is not offered or relevant anywhere in this short lecture", "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": 59, "rule_lead": "Inbound links preserve pedagogical beat across reference restructuring.", "verdict": "N/A", "evidence": "no reference-page restructuring event (merge/split/rename/delete) is in scope for this judgment — the supplement link at L46 is a stable existing pointer, not a fresh restructure", "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": 60, "rule_lead": "Scan at the unit the rule names, not convenient larger one.", "verdict": "N/A", "evidence": "process/methodology guidance on how to apply other rules, not itself a content defect check; applied throughout this sweep at the single-prompt / single-fence unit each rule names", "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": 61, "rule_lead": "Verify mechanism before proposing surgery.", "verdict": "N/A", "evidence": "no SKILL.md/framework/tool-change proposal is being evaluated here", "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": "61a", "rule_lead": "Acting on a flagged item (punchlist entry / audit finding / eval BLOCK) — verify before fixing.", "verdict": "N/A", "evidence": "meta rule about handling OTHER audit findings before acting on them; this dispatch is originating a fresh verdict, not acting on a prior flagged item", "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": 62, "rule_lead": "Callouts next to prompts: steer, don't pre-empt.", "verdict": "N/A", "evidence": "no failure-mode callout is adjacent to this prompt to check for pre-emption-vs-steering shape (none is needed given the low-confidence, carved-out risk profile)", "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": 63, "rule_lead": "Persistent TODO surfaces stale by default — audit before acting.", "verdict": "N/A", "evidence": "not evaluating a punchlist bullet in this dispatch", "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": 64, "rule_lead": "Maintainer blocks point, don't restate. Link architecture doc where they touch delivery.", "verdict": "PASS", "evidence": "Maintainer block is entirely lecture-specific design rationale (slide order, dated decisions, figure contract, placement constraint) — no restated cross-cutting delivery/build/session mechanics that should instead be a pointer to `training-architecture.md`.", "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": 65, "rule_lead": "Cross-module prerequisite rescue: run it late, never fabricate.", "verdict": "N/A", "evidence": "the `./CLAUDE.local.md` dependency on M1's compound step is tracked via registry `requires:` and absorbed by the fence's own null case, not a hard cross-module load-bear needing a rescue callout in the M4→M5/M5→M6 sense this rule targets", "blocking": false},
-    {"compendium": "check_pedagogy.md", "rule_index": 66, "rule_lead": "Three-pass build — finish each pass across ALL modules before starting the next.", "verdict": "N/A", "evidence": "generation-workflow rule for building NEW modules; not applicable to auditing this already-shipped, steady-state lecture", "blocking": false},
-
-    {"compendium": "prompt-behavior.md", "rule_index": null, "judge_owned": true, "rule_lead": "Class-level 15-pattern catalog sweep", "verdict": "PASS", "evidence": "Full walk of all 15 catalog patterns (curriculum/evals/simulation-behavior.md) against the file's single fenced prompt: 13 of 15 don't reach this fence at all (no write/regenerate, no citations, no plan mode, no question sequence, no multi-sample method, no append-vs-integrate, no fan-out). 2 fire at low confidence — preamble-before-action and self-audit-charity — both carved out per prompt-behavior.md's carve-out list (§17's 2026-09-03 plan-mode-only narrowing; the evidence-backed self-audit-charity carve-out) and marked with `carve_out` in the sim-cache trace this run. Per-prompt verdict PASS, top-level PASS, 0 blocking, 0 todos.", "blocking": false}
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 1,
+      "rule_lead": "No placeholders inside fences.",
+      "verdict": "PASS",
+      "evidence": "Fenced content grepped for `[` bracket-placeholder shape: none. Fence names two real, always-present paths (`./CLAUDE.local.md`, `./CLAUDE.md`) — no fill-in slot.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 2,
+      "rule_lead": "Every prompt block: one-sentence action lead-in.",
+      "verdict": "PASS",
+      "evidence": "L42 lead-in ('This one runs on the screen; you can run this too on your files.') is the §2b calibration case named verbatim in the rule itself for this exact file — trainer-screen demo fences owe no command-verb lead-in, and offer-grammar ('you can... too') rather than imperative is the tell that it isn't one.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 3,
+      "rule_lead": "Canonical shape — lead-in, label with destination, blank line, fence.",
+      "verdict": "PASS",
+      "evidence": "Expanded output (scripts/expand-md.js): lead-in, blank line, `**Prompt** *(Claude Code)*`, blank line, fence. No `copy →` prefix, no `(end of prompt)` closer, no blockquote/indent wrapping.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 4,
+      "rule_lead": "Installed Skills invoke by name, never path.",
+      "verdict": "N/A",
+      "evidence": "no skill invoked in this fence",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 5,
+      "rule_lead": "Chain by back-reference + deterministic path, never invented alias.",
+      "verdict": "N/A",
+      "evidence": "not chained to a prior prompt's output — references pre-existing repo files, not an artifact this training's own earlier prompt wrote this session",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 6,
+      "rule_lead": "Chained-prompt isolation — don't leak downstream pipeline.",
+      "verdict": "N/A",
+      "evidence": "standalone single prompt, not a P2→P3→P4 chain",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 7,
+      "rule_lead": "No session-resets mid-phase.",
+      "verdict": "N/A",
+      "evidence": "no session-reset offered anywhere near this prompt",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 8,
+      "rule_lead": "Multi-sample methods need structural enforcement.",
+      "verdict": "N/A",
+      "evidence": "not a self-consistency/ensemble/regeneration-diff method — single read, single pass",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 9,
+      "rule_lead": "Markdown shout (`**bold**`, `*italic*`) inside fenced prompts = dead weight in Claude Code.",
+      "verdict": "PASS",
+      "evidence": "Grepped registry fence body for `**`/`*`/bullet/numeral markers: zero hits. Plain prose sentence, no rendered-markdown assumption.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 10,
+      "rule_lead": "Runtime-fork prompts: paired divs, shared chip.",
+      "verdict": "N/A",
+      "evidence": "AE101 is Code-only per training-architecture.md; no Agents-101-style dual-runtime fork applies",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 11,
+      "rule_lead": "Runtime-mechanical scaffolding asymmetry — MORE in less-fluent fork, not less.",
+      "verdict": "N/A",
+      "evidence": "Agents-101/Cowork-specific; AE101 has no Cowork fork",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 12,
+      "rule_lead": "Append-vs-integrate — name integration mode on regeneration with new context source.",
+      "verdict": "N/A",
+      "evidence": "no regeneration-with-new-source instruction — the fence is a read-and-name task, nothing is being appended or rewritten",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 13,
+      "rule_lead": "Citation discipline — extend cite-or-flag scope + quote supporting sentence.",
+      "verdict": "N/A",
+      "evidence": "no citation instruction in this fence",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 14,
+      "rule_lead": "Niceness tax — name the edge or pin the line on regeneration.",
+      "verdict": "N/A",
+      "evidence": "not a regeneration of edge/anti-positioning prose",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 15,
+      "rule_lead": "Question-dump default — `in turn` too soft; two legal shapes.",
+      "verdict": "N/A",
+      "evidence": "single ask, no sequence of questions posed to the student",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 16,
+      "rule_lead": "Overwrite anxiety — name overwrite default on regeneration.",
+      "verdict": "N/A",
+      "evidence": "no write/regenerate action — read-only naming task, nothing is saved",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 17,
+      "rule_lead": "Preamble before action — design around it.",
+      "verdict": "PASS",
+      "evidence": "§17's structural trigger, narrowed 2026-09-03, is plan-mode ONLY. This fence declares no permission-mode and is two clauses (read the files / name parts or none) — the harm §17 prevents (2-4 sentences of narration burying a multi-item plan in the top-attention slot) needs a plan-mode return to bury; this is a short live-demo answer the trainer reads aloud. Residual low-confidence risk logged in sim-cache, not a rule violation.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 18,
+      "rule_lead": "Self-critique register, not defense, when Claude interrogates own work.",
+      "verdict": "N/A",
+      "evidence": "not asking Claude to critique its own prior work/diff — reading two config files for extraction candidates is not self-critique-register territory",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 19,
+      "rule_lead": "Minimal hand-off + Claude self-augments for send-off prompts.",
+      "verdict": "N/A",
+      "evidence": "not a long-running send-off/walk-away prompt — quick trainer-demo read",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 20,
+      "rule_lead": "Grill before save — collaborative quality at artefact assembly.",
+      "verdict": "N/A",
+      "evidence": "no artefact is built or saved here",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 21,
+      "rule_lead": "Tell me what you wrote, not show me what you'll write.",
+      "verdict": "N/A",
+      "evidence": "no side-effect action (post/send/commit/push) — naming only, nothing persists",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 22,
+      "rule_lead": "Prompt-body edits require maintainer approval — registry files AND inline blocks.",
+      "verdict": "PASS",
+      "evidence": "Registry key `ae101-m2-name-what-moves` frontmatter note reads 'Antti-worded 2026-08-23, approved prompt-ok same day.' Confirmed on disk: `.claude/prompt-approvals/ae101-m2-name-what-moves.confirmed` exists (gitignored marker, per design — `git log --all` on that path returns empty, consistent with an untracked approval record rather than a missing one).",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 23,
+      "rule_lead": "Artifact destinations are explicit subpaths, never naked filenames (Agents 101-specific).",
+      "verdict": "N/A",
+      "evidence": "rule is explicitly Agents-101-scoped; AE101 uses the student's own repo with no training-imposed subfolder convention, and this fence writes nothing regardless",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 24,
+      "rule_lead": "Don't restate session CWD inside prompt body.",
+      "verdict": "PASS",
+      "evidence": "Fence uses `./CLAUDE.local.md` and `./CLAUDE.md`, root-relative per rule 45's own `./`-prefix convention — no absolute path, no `cd`.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 25,
+      "rule_lead": "`subagent` allowed in prompt blocks; explain why after prompt.",
+      "verdict": "N/A",
+      "evidence": "no subagent invoked",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 26,
+      "rule_lead": "Maintainer-approval edits — ONE-AT-A-TIME, PRIORITY-ORDERED, FOUR-FIELD cards.",
+      "verdict": "N/A",
+      "evidence": "this dispatch surfaces zero blocking findings against the file, so no card is owed; rule governs how findings are surfaced to the maintainer, not file content itself",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 27,
+      "rule_lead": "Name consumer at write time — `Save it as <path>` requires downstream reader.",
+      "verdict": "N/A",
+      "evidence": "no `Save it as` instruction — nothing is written to disk",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 28,
+      "rule_lead": "Strong-bold prompt label is exactly `**Prompt**` — custom labels break renderer.",
+      "verdict": "PASS",
+      "evidence": "Expanded output shows exact `**Prompt** *(Claude Code)*` — registry expansion guarantees canonical label shape (rule 31's `expandPrompts` reconstructs it, author never hand-writes it).",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 29,
+      "rule_lead": "Normal work request before orchestration.",
+      "verdict": "PASS",
+      "evidence": "Fence goes straight to the task ('Check out ./CLAUDE.local.md and the repository ./CLAUDE.md...') — no 'ask me which files' or 'ask me what I want' orchestration-bloat preamble.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 30,
+      "rule_lead": "Live-test corrections preserve operator workflow.",
+      "verdict": "N/A",
+      "evidence": "not editing a maintainer-reported live-test correction in this pass",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 31,
+      "rule_lead": "Prompts live in registry; module/exercise/lecture files reference by marker.",
+      "verdict": "PASS",
+      "evidence": "L44 body carries `{{prompt:ae101-m2-name-what-moves}}` marker, not an inline block; registry file `curriculum/prompts/ae101-m2-name-what-moves.md` exists with full frontmatter (key/dest/runtime/origin/requires/produces/note) and naming follows `<training>-<module>-<verb-noun>` convention.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 32,
+      "rule_lead": "Module names in prompt prose are fine — they ground the session.",
+      "verdict": "N/A",
+      "evidence": "no module number named inside this fence",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 33,
+      "rule_lead": "Git-output greps asserting exact-N need multi-result fallback.",
+      "verdict": "N/A",
+      "evidence": "no git-log/branch grepping in this fence",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 34,
+      "rule_lead": "Disambiguation, anchors, and decision logic that bind Claude live INSIDE prompt fence.",
+      "verdict": "PASS",
+      "evidence": "Read the fence in isolation, no body context: 'Check out ./CLAUDE.local.md and the repository ./CLAUDE.md. If any parts appear that would be better moved into a skill, name the parts. Or none, if nothing appears that way.' Both paths are literal and always resolvable regardless of student machine state — no branch-name, worktree, or prior-session ambiguity to bind.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 35,
+      "rule_lead": "Repeated Q&A → premature re-edits. Separate iteration from persistence.",
+      "verdict": "N/A",
+      "evidence": "not a multi-turn dialog that can affect an artifact file — single ask, no write",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 36,
+      "rule_lead": "Wide prompts split by logical move — paragraph breaks = cheapest scan-affordance.",
+      "verdict": "PASS",
+      "evidence": "Fence is ~30 words, one paragraph, ≤2 logical moves (check the files / name parts-or-none) — stays under the rule's own short-prompt exception (≤30 words / ≤2 moves stay one paragraph).",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 37,
+      "rule_lead": "Orient saved rule by where it FIRES, not surface activity producing it.",
+      "verdict": "N/A",
+      "evidence": "no 'save this as a rule' instruction or output in this fence",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 38,
+      "rule_lead": "Body lead-in mirrors prompt's opening phrasing.",
+      "verdict": "N/A",
+      "evidence": "§2b already establishes this lead-in's job as naming the runner (trainer vs. student), not summarizing the fence's opening clause — §38's phrasal-congruence check presupposes an action lead-in in the §2 sense, which §2b explicitly exempts this line from being; no §38a surprise-pedagogy carve-out is in play either (nothing is hidden).",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 39,
+      "rule_lead": "Declare `permission-mode:` when paste requires specific Claude Code mode.",
+      "verdict": "PASS",
+      "evidence": "Registry frontmatter omits `permission-mode:` — correctly, since behavior doesn't depend on plan/other mode; default-mode read-and-report, no chip owed.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 40,
+      "rule_lead": "Verify session boundary before deciding prompt's context-carrying.",
+      "verdict": "PASS",
+      "evidence": "Read the module body: this is a same-session trainer demo (no `/clear`, no worktree switch, no Agent sub-task named). Even so the fence is self-contained regardless of warm/cold — it names two real on-disk paths, not a scrollback-dependent referent, so §40's verification doesn't change the outcome. §40b check: no curriculum-coined event/exercise label (e.g. 'the second-pass read') appears inside the fence — both nouns are literal filenames.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 41,
+      "rule_lead": "Artifact-vs-STOP tail ordering — last imperative wins.",
+      "verdict": "N/A",
+      "evidence": "no STOP/wait tail grafted onto this prompt, no artifact-write to order against it",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 42,
+      "rule_lead": "Headless-runner discipline — tail every prompt with no-AUQ guard.",
+      "verdict": "N/A",
+      "evidence": "runs interactively in a trainer-observed Claude Code session, not a headless/tmux/CI runner",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 43,
+      "rule_lead": "Long-running prompts stream progress — never go silent.",
+      "verdict": "N/A",
+      "evidence": "quick two-file read-and-report, not a multi-minute scan/build",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 44,
+      "rule_lead": "A leading-looking line can be a forcing function; prefer the simpler prompt.",
+      "verdict": "N/A",
+      "evidence": "no leading/loaded clause in this plain fence to second-guess removing",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 45,
+      "rule_lead": "Prompt paths match Builder scope.",
+      "verdict": "N/A",
+      "evidence": "destination is `Claude Code`, not `Builder Claude` — rule targets Agents 101's Builder-reopen path structure (prework+M1 bare vs M2+ single-segment), which doesn't exist in AE101's delivery model",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 46,
+      "rule_lead": "Output shape — trust Claude's defaults, don't pad.",
+      "verdict": "PASS",
+      "evidence": "Fence ends naturally on 'name the parts. Or none, if nothing appears that way' — no trailing shape spec (no 'clear title, a Rules section...' padding).",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 47,
+      "rule_lead": "\"Add X and regenerate\" is a trap.",
+      "verdict": "N/A",
+      "evidence": "no 'add X and regenerate' instruction in this fence",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 48,
+      "rule_lead": "Vary closings deliberately.",
+      "verdict": "N/A",
+      "evidence": "this is a lecture demo prompt, not an exercise closing-mechanic choice (pair/group/solo-retro/show-work)",
+      "blocking": false
+    },
+    {
+      "compendium": "check_prompts.md",
+      "rule_index": 49,
+      "rule_lead": "A take-home prompt asks for one bounded build.",
+      "verdict": "N/A",
+      "evidence": "not a take-home/handoff artifact-builder prompt — live read, no save, no plural deliverable",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 1,
+      "rule_lead": "Walk-away test (M2+).",
+      "verdict": "N/A",
+      "evidence": "quick interactive trainer-run demo, not a walk-away unattended agent run",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 2,
+      "rule_lead": "50% magic rule (M3–M8).",
+      "verdict": "N/A",
+      "evidence": "rule scopes M3–M8 modules; this is an M2 lecture",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 3,
+      "rule_lead": "Trust the agentic design — no human backstops.",
+      "verdict": "PASS",
+      "evidence": "Fence trusts Claude's own judgement on what 'would be better moved' into a skill — no exhaustive if-then criteria list, no 'Antti checks manually' backstop.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 4,
+      "rule_lead": "Quality ladder.",
+      "verdict": "N/A",
+      "evidence": "arc-level exercise-quality-tier rule, not a per-prompt behavior check",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 6,
+      "rule_lead": "One exercise = one bounded activity.",
+      "verdict": "N/A",
+      "evidence": "this file is a lecture, not an exercise",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 7,
+      "rule_lead": "Modules composable across variants.",
+      "verdict": "N/A",
+      "evidence": "no variant-forking concern in this single prompt",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 8,
+      "rule_lead": "Three-level completeness.",
+      "verdict": "N/A",
+      "evidence": "prompt produces no artifact (naming only) — the strategy→runtime→sendable-asset chain this rule checks doesn't apply",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 9,
+      "rule_lead": "Pattern-recognition LOs need n≥2 instances with contrast.",
+      "verdict": "N/A",
+      "evidence": "single-instance demo, not a pattern-recognition LO exercise requiring paired-contrast reads",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "9b",
+      "rule_lead": "Progression-with-variations is the spine.",
+      "verdict": "N/A",
+      "evidence": "cross-module move-repetition design concern, outside single-prompt behavior scope",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 10,
+      "rule_lead": "Student agency — adults decide.",
+      "verdict": "PASS",
+      "evidence": "L42 'you can run this too on your files' is offer-grammar, not a forced pacing instruction; running the prompt on the student's own repo is clearly optional.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 11,
+      "rule_lead": "Delegation — student brings, Claude screens.",
+      "verdict": "PASS",
+      "evidence": "Task is fit-screen-against-criteria ('does this look skill-shaped?') on files Claude already has access to via the working directory — matches the rule's own agent-default ('Fit-screen against criteria... → agent'), no inaccessible connector named.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 12,
+      "rule_lead": "Split mega-exercise when phases = distinct skills + distinct artifacts.",
+      "verdict": "N/A",
+      "evidence": "single-prompt lecture demo, not a multi-phase exercise",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 13,
+      "rule_lead": "Artifact-realism check.",
+      "verdict": "PASS",
+      "evidence": "Registry `requires:` names `claude-local-md` sourced from `prompt:compound-and-close-1`, with a note tracing the demo repo's seeded copy and a student's own M1-born file. `./CLAUDE.md` carries no requires entry, but the fence's own null case ('Or none, if nothing appears that way') absorbs an empty repo file gracefully.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 14,
+      "rule_lead": "Teach principle + technique — default.",
+      "verdict": "PASS",
+      "evidence": "Principle (WHY) already taught two slides earlier at L7 ('extract it into a skill... when that work calls for them') and L25/27 (the ceiling, why lean files matter); this fence exercises the technique (HOW: naming candidates against that exact criterion) rather than inviting a fresh black-box invocation.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 15,
+      "rule_lead": "Auto-fire sim+eval after significant rewrite.",
+      "verdict": "N/A",
+      "evidence": "generation-workflow process rule, not a student-facing content check",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 16,
+      "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
+      "verdict": "PASS",
+      "evidence": "Read the fence alone, ignoring body: the ask ('name the parts... or none') is entirely inside the fence itself — nothing load-bearing sits only in body prose. No count-script imperative present either.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 17,
+      "rule_lead": "Corporate infra = nice-to-have, never forcing function.",
+      "verdict": "N/A",
+      "evidence": "no external tooling (MCP, shared repo, SSO, connector) referenced — only local CLAUDE files",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 18,
+      "rule_lead": "Personal-first, team promotion via human conversation.",
+      "verdict": "PASS",
+      "evidence": "Fence touches both `./CLAUDE.local.md` (personal) and `./CLAUDE.md` (team) but only asks Claude to NAME skill-extraction candidates — it does not instruct Claude to move content between them or promote anything into shared infra unilaterally.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 19,
+      "rule_lead": "Measure silent failure, not just friction.",
+      "verdict": "N/A",
+      "evidence": "cohort-evaluation methodology rule, not a single-prompt content check",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 20,
+      "rule_lead": "Don't pre-set categories before experiment runs.",
+      "verdict": "N/A",
+      "evidence": "evaluation-methodology rule about data collection, not applicable to prompt content",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 21,
+      "rule_lead": "Verification layers sample DIFFERENT error distributions — not belt-and-braces.",
+      "verdict": "N/A",
+      "evidence": "meta rule about the audit system's own layering, not this file's content",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "21b",
+      "rule_lead": "Cheap-before-expensive verification ordering.",
+      "verdict": "N/A",
+      "evidence": "meta rule about audit-tier sequencing, not this file's content",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 22,
+      "rule_lead": "Rule in memory without forcing function = worse than no rule.",
+      "verdict": "N/A",
+      "evidence": "concerns internal memory-compounding practice, not this lecture's student-facing prompt",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 23,
+      "rule_lead": "Short skeptical pushback on \"done\" = re-verify trigger.",
+      "verdict": "N/A",
+      "evidence": "no 'are you sure/done' moment anywhere near this fence",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 24,
+      "rule_lead": "Cohort execution is trainer-paced + concurrent, not sequential.",
+      "verdict": "PASS",
+      "evidence": "L42 explicitly frames this as trainer-run ('This one runs on the screen') with optional concurrent student execution — matches the rule's own trainer-demos-room-copy-pastes-concurrently shape.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 25,
+      "rule_lead": "Host-skill optional; maintainer blocks trainer-only.",
+      "verdict": "PASS",
+      "evidence": "Maintainer block reads 'Trainer runs the prompt on the demo repo and reads the return aloud' — names the trainer as actor directly, no host-skill/Nerd parenthetical or dual-column format.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 26,
+      "rule_lead": "Reflection beats: in-chat over file-write.",
+      "verdict": "PASS",
+      "evidence": "Prompt reports findings in chat only — no `module-N/X.md` write, no proof-of-reflection artifact.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 27,
+      "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
+      "verdict": "PASS",
+      "evidence": "L42 lead-in is about WORK (who runs the prompt), not cohort management — no 'discuss with your neighbour' or pause-cue. Body-view's `group_beat_markers: true` signal is a false positive from generic 'team' mentions in L5/L29 describing what `./CLAUDE.md` is for (repo-shared ownership), not an authored group activity — no carve-out needed because no group beat exists to carve out.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 29,
+      "rule_lead": "Eval = fixed yardstick; thing measured learns.",
+      "verdict": "N/A",
+      "evidence": "not an eval-loop / scorer-fixed mechanism in this file",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 30,
+      "rule_lead": "Reading burden for verification = banned. Claude audits Claude.",
+      "verdict": "PASS",
+      "evidence": "Claude reads the two files itself and reports; the student is not asked to manually proofread Claude's output for correctness/errors.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 31,
+      "rule_lead": "Self-report + self-audit charity — verify at artifact, over-flag or fresh-session for critique.",
+      "verdict": "PASS",
+      "evidence": "Claude reads the two named files live and reports what it finds — it is not summarizing/grading a report of its own prior work from memory, the shape §31 exists to catch. The rule's own 'verify at artifact' remedy is structurally how this prompt already works. Residual low-confidence charity risk (Claude under-naming candidates in a file it partly helped seed via M1's compound step) logged in sim-cache at low confidence under the template's evidence-backed carve-out, not blocking.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 32,
+      "rule_lead": "Offered structures need forced-engagement mechanic.",
+      "verdict": "N/A",
+      "evidence": "no offered-defaults or plan-mode-approval structure in this single quick prompt",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 33,
+      "rule_lead": "Source-type blindness on ingestion.",
+      "verdict": "N/A",
+      "evidence": "two plain local markdown files, not a heterogeneous slide/PDF source folder",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 34,
+      "rule_lead": "Task selection drives outcome → name floor AND ceiling.",
+      "verdict": "N/A",
+      "evidence": "not a task-scoping-criteria exercise",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "34b",
+      "rule_lead": "Maintainer-block hedge naming section's own failure mode = cut-signal, not warning.",
+      "verdict": "PASS",
+      "evidence": "Read the maintainer block's Watch-for-shaped content in isolation: it is dated design rationale (Antti-directed decisions, figure contract, placement constraint) with no hedge language propping up an otherwise-undefensible premise — nothing to cut.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 35,
+      "rule_lead": "Audience tier determines authoring substrate.",
+      "verdict": "PASS",
+      "evidence": "AE101 = engineer tier = Claude Code prompt (not a chat-only .md paste, not a plugin-install ask) — correct substrate for this tier and for a naming-only demo with nothing to install.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 36,
+      "rule_lead": "Verification machinery needs smoke-test before trust.",
+      "verdict": "N/A",
+      "evidence": "not building verification machinery (hook/judge/eval/Ralph loop) — simple read-and-name task",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 37,
+      "rule_lead": "Context-loading tiers as staged progression.",
+      "verdict": "PASS",
+      "evidence": "Prompt runs the real auto-load surface (`./CLAUDE.local.md`, `./CLAUDE.md`) live to spot lazy-load (skill) candidates — exercises the auto-load-vs-lazy-load distinction taught at L7/L20 against the actual surface, not lecturing about tiers in the abstract (the anti-pattern the rule names).",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 39,
+      "rule_lead": "Removals are strategic — ask before cutting.",
+      "verdict": "N/A",
+      "evidence": "generation-time editorial rule about removing content; not applicable to reviewing an existing steady-state prompt's behavior",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 41,
+      "rule_lead": "Symmetric visible-mechanics > runtime fork when dual-runtime constraints break agentic move.",
+      "verdict": "N/A",
+      "evidence": "AE101 has no dual-runtime (Cowork) fork at all",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 42,
+      "rule_lead": "Load-bearing platform feature = no fallback. Gate or redesign.",
+      "verdict": "N/A",
+      "evidence": "reading local files is universal — no plan-mode/concurrent-session/plugin-install dependency to fall back from",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 43,
+      "rule_lead": "Eval architecture — partition by evidence source, not criterion count.",
+      "verdict": "N/A",
+      "evidence": "meta rule about how the judging system itself is organized, not this file's content",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 44,
+      "rule_lead": "Plug points + UX.",
+      "verdict": "PASS",
+      "evidence": "(a) no `## Plug Points` section in this lecture, N/A. (b) UX: student pastes the fence without inventing setup and both named files sit at a discoverable, already-existing root path per the registry's requires-note (`./CLAUDE.local.md` born in M1) — no 'wait, what?' moment.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 45,
+      "rule_lead": "Per-exercise leap test — 3 observable Monday outcomes.",
+      "verdict": "N/A",
+      "evidence": "lecture, not an exercise — lecture maintainer blocks don't carry (and aren't required to carry) a leap-test",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 47,
+      "rule_lead": "Per-phase failure mode + escape hatch.",
+      "verdict": "N/A",
+      "evidence": "targets exercise phases with forcing functions; this is a single lecture-embedded demo, not a phased exercise structure",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 48,
+      "rule_lead": "Heavy fan-out prompts get body recovery callout.",
+      "verdict": "N/A",
+      "evidence": "two-file read, not a heavy fan-out (no N>2 subagents, no polling loop, no full-memory audit)",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 49,
+      "rule_lead": "Save belongs with authoring, not loading.",
+      "verdict": "N/A",
+      "evidence": "no create-then-use pair / no save-then-load sequence here",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 50,
+      "rule_lead": "Convenience-driven prompts with known shape-bias → body acknowledgment callout.",
+      "verdict": "PASS",
+      "evidence": "The fence already self-mitigates its low self-audit-charity risk via its own built-in null case ('Or none, if nothing appears that way') — restructure-in-fence, which the rule prefers over a body callout when free ('Restructure first when free; callout when restructure costs').",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 51,
+      "rule_lead": "Deliberate-antipattern prompts = class-judge exempt, flagged-by-design.",
+      "verdict": "N/A",
+      "evidence": "not a deliberately-broken/antipattern demo prompt (no M4-style intentionally-thin baseline)",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 52,
+      "rule_lead": "Session widget — `**Session** *(verb, \"name\")*` shape; place by learning flow.",
+      "verdict": "N/A",
+      "evidence": "no `**Session**` widget used anywhere in this file",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "52b",
+      "rule_lead": "Widgets carry semantics, not just emphasis — match the widget to MEANING, never to how loud it renders.",
+      "verdict": "N/A",
+      "evidence": "no widget-selection question arises — no widget is used at all",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "52a",
+      "rule_lead": "Module prose carrying a `**Session**` widget or a `{{prompt:}}` fence is an exercise that has not been extracted.",
+      "verdict": "N/A",
+      "evidence": "this rule targets MODULE index files improperly growing exercise content; `how-instructions-grow.md` is a LECTURE file, which the canon (curriculum/CLAUDE.md) explicitly inlines by design",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "52c",
+      "rule_lead": "Exercise lead-in trio — three slots, three tenses.",
+      "verdict": "N/A",
+      "evidence": "lecture file, not an exercise — the What-you-do/What-you-build/The-point trio doesn't apply",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "52d",
+      "rule_lead": "Finding the point — four moves, learned writing M1's set 2026-08-12.",
+      "verdict": "N/A",
+      "evidence": "lecture file, not an exercise — no `**The point:**` slot exists here to sharpen",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 53,
+      "rule_lead": "Body prose must not supply an answer its prompt asks for — position is not the test.",
+      "verdict": "PASS",
+      "evidence": "Prose before the fence (L42) names only who runs it, not what it will find. Prose after the fence (L46) forward-links to a different topic (the context-ceiling supplement), not a preview of this fence's return. No pre-announced payoff on either side.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 56,
+      "rule_lead": "Engineer-audience audit fixes default to body callout, not forcing function.",
+      "verdict": "N/A",
+      "evidence": "no audit finding is being fix-shaped here; §50's row above already resolves the one candidate risk via in-fence self-mitigation, avoiding double-counting",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 57,
+      "rule_lead": "Multi-session (any new mechanic mid-arc) ships as packaging, not new primitive.",
+      "verdict": "N/A",
+      "evidence": "no new mid-arc mechanic is being packaged by this single lecture prompt",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 58,
+      "rule_lead": "`/clear` = tool, not ceremony.",
+      "verdict": "N/A",
+      "evidence": "`/clear` is not offered or relevant anywhere in this short lecture",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 59,
+      "rule_lead": "Inbound links preserve pedagogical beat across reference restructuring.",
+      "verdict": "N/A",
+      "evidence": "no reference-page restructuring event (merge/split/rename/delete) is in scope for this judgment — the supplement link at L46 is a stable existing pointer, not a fresh restructure",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 60,
+      "rule_lead": "Scan at the unit the rule names, not convenient larger one.",
+      "verdict": "N/A",
+      "evidence": "process/methodology guidance on how to apply other rules, not itself a content defect check; applied throughout this sweep at the single-prompt / single-fence unit each rule names",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 61,
+      "rule_lead": "Verify mechanism before proposing surgery.",
+      "verdict": "N/A",
+      "evidence": "no SKILL.md/framework/tool-change proposal is being evaluated here",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": "61a",
+      "rule_lead": "Acting on a flagged item (punchlist entry / audit finding / eval BLOCK) — verify before fixing.",
+      "verdict": "N/A",
+      "evidence": "meta rule about handling OTHER audit findings before acting on them; this dispatch is originating a fresh verdict, not acting on a prior flagged item",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 62,
+      "rule_lead": "Callouts next to prompts: steer, don't pre-empt.",
+      "verdict": "N/A",
+      "evidence": "no failure-mode callout is adjacent to this prompt to check for pre-emption-vs-steering shape (none is needed given the low-confidence, carved-out risk profile)",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 63,
+      "rule_lead": "Persistent TODO surfaces stale by default — audit before acting.",
+      "verdict": "N/A",
+      "evidence": "not evaluating a punchlist bullet in this dispatch",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 64,
+      "rule_lead": "Maintainer blocks point, don't restate. Link architecture doc where they touch delivery.",
+      "verdict": "PASS",
+      "evidence": "Maintainer block is entirely lecture-specific design rationale (slide order, dated decisions, figure contract, placement constraint) — no restated cross-cutting delivery/build/session mechanics that should instead be a pointer to `training-architecture.md`.",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 65,
+      "rule_lead": "Cross-module prerequisite rescue: run it late, never fabricate.",
+      "verdict": "N/A",
+      "evidence": "the `./CLAUDE.local.md` dependency on M1's compound step is tracked via registry `requires:` and absorbed by the fence's own null case, not a hard cross-module load-bear needing a rescue callout in the M4→M5/M5→M6 sense this rule targets",
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 66,
+      "rule_lead": "Three-pass build — finish each pass across ALL modules before starting the next.",
+      "verdict": "N/A",
+      "evidence": "generation-workflow rule for building NEW modules; not applicable to auditing this already-shipped, steady-state lecture",
+      "blocking": false
+    },
+    {
+      "compendium": "prompt-behavior.md",
+      "rule_index": null,
+      "judge_owned": true,
+      "rule_lead": "Class-level 15-pattern catalog sweep",
+      "verdict": "PASS",
+      "evidence": "Full walk of all 15 catalog patterns (curriculum/evals/simulation-behavior.md) against the file's single fenced prompt: 13 of 15 don't reach this fence at all (no write/regenerate, no citations, no plan mode, no question sequence, no multi-sample method, no append-vs-integrate, no fan-out). 2 fire at low confidence — preamble-before-action and self-audit-charity — both carved out per prompt-behavior.md's carve-out list (§17's 2026-09-03 plan-mode-only narrowing; the evidence-backed self-audit-charity carve-out) and marked with `carve_out` in the sim-cache trace this run. Per-prompt verdict PASS, top-level PASS, 0 blocking, 0 todos.",
+      "blocking": false
+    }
   ],
   "blocking_findings_count": 0,
-  "todos_count": 0,
   "accept_notes_found": [
     "L50 Lecture meta: dated slide-order and content decisions (Antti-directed 2026-08-19, 2026-08-23) — none touch prompt behavior.",
     "L54 Placement constraint: skill authoring stays at M3; this lecture's prompt only names candidates, doesn't invoke/install/author — consistent, no conflict.",
     "L58-93 backing block: registry note on the prompt itself ('Antti-worded 2026-08-23, approved prompt-ok same day') is the operative accept-note for §22; verified against the on-disk `.confirmed` marker."
   ],
-  "notes": "Behavior class scope is check_prompts.md + check_pedagogy.md only; two out-of-lane observations noticed in passing and left for their owning classes rather than scored here: (1) the maintainer block's declared-stop paragraph (context-lifecycle automation) is a strategy/pedagogy-doctrine call, not a prompt-behavior one; (2) the M2 lecture's stated 7-minute budget is check_lectures.md territory, not check_prompts.md/check_pedagogy.md. Sim-cache trace reused (prompt_sha matched cached entry) and rewritten only to add explicit `carve_out` markers per prompt-behavior.md's requirement that a carve-out be marked, not merely reasoned about in the evidence prose — the two fired risks were being carried as ambiguous low-confidence without the marker in the prior cache entry."
+  "notes": "Behavior class scope is check_prompts.md + check_pedagogy.md only; two out-of-lane observations noticed in passing and left for their owning classes rather than scored here: (1) the maintainer block's declared-stop paragraph (context-lifecycle automation) is a strategy/pedagogy-doctrine call, not a prompt-behavior one; (2) the M2 lecture's stated 7-minute budget is check_lectures.md territory, not check_prompts.md/check_pedagogy.md. Sim-cache trace reused (prompt_sha matched cached entry) and rewritten only to add explicit `carve_out` markers per prompt-behavior.md's requirement that a carve-out be marked, not merely reasoned about in the evidence prose — the two fired risks were being carried as ambiguous low-confidence without the marker in the prior cache entry.",
+  "nonblocking_findings_count": 0
 }

@@ -61,7 +61,7 @@ Antti
 <!-- maintainer -->
 
 **Quality:** compendium-audited 2026-09-05 (writing@fb797e3b story@289b45a3 technical@289b45a3 behavior@b3143a4 pedagogy@1abb84c6 strategy@fb797e3b slides@289b45a3)
-- judges @fb797e3b: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS (1 todo see instances/ae101--lecture--story-of-module-6.slides.json)
+- judges @fb797e3b: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS (1 finding see instances/ae101--lecture--story-of-module-6.slides.json)
 
 **Slide deixis accepted:** "paragraphs above" (check_slides.md §12) — *"the framing I said, a few paragraphs above, we would cut"* points inside its own `## Things that went sideways` chunk, two paragraphs up on the same slide, at § *The end-state that was not*. Story lecture, read not projected; the geometry is true where it stands.
 

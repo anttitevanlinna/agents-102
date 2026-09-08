@@ -70,14 +70,14 @@ test('adaptSweepRow: a finding the refuters never reached stays blocking', () =>
 // non-blocking todo had to report REVISE, and the orchestrator read it as a gate.
 test('stateFor: PASS_WITH_TODOS pins as a PASS that still carries its count', () => {
   const s = stateFor({ cls: 'slides', verdict: 'PASS_WITH_TODOS', todos: 3, blocking: 0, instanceSlug: 'cb--lecture--a' })
-  assert.strictEqual(s, 'PASS:3 todos see instances/cb--lecture--a.slides.json')
+  assert.strictEqual(s, 'PASS:3 findings see instances/cb--lecture--a.slides.json')
   assert.ok(s.startsWith('PASS'), 'a non-blocking note must not stamp the class red')
   assert.strictEqual(
     stateFor({ cls: 'slides', verdict: 'PASS_WITH_TODOS', todos: 0, blocking: 0, instanceSlug: 'x' }), 'PASS',
     'no todos means no note to carry')
   assert.strictEqual(
     stateFor({ cls: 'slides', verdict: 'PASS_WITH_TODOS', todos: 1, blocking: 0, instanceSlug: 'x' }),
-    'PASS:1 todo see instances/x.slides.json', 'one todo is not "1 todos"')
+    'PASS:1 finding see instances/x.slides.json', 'one finding is not "1 findings"')
 })
 
 // The bug this guards: judges file todos under BOTH pass verdicts, and a bare
@@ -88,7 +88,7 @@ test('stateFor: PASS_WITH_TODOS pins as a PASS that still carries its count', ()
 test('stateFor: a plain PASS still carries the todos filed under it', () => {
   assert.strictEqual(
     stateFor({ cls: 'technical', verdict: 'PASS', todos: 2, blocking: 0, instanceSlug: 'ae101--module--x' }),
-    'PASS:2 todos see instances/ae101--module--x.technical.json')
+    'PASS:2 findings see instances/ae101--module--x.technical.json')
   assert.strictEqual(
     stateFor({ cls: 'technical', verdict: 'PASS', todos: 0, blocking: 0, instanceSlug: 'ae101--module--x' }), 'PASS',
     'a clean PASS stays a bare PASS — no note invented to look thorough')
@@ -100,7 +100,7 @@ test('stateFor: a refuted finding passes, and does not swallow the todos beside 
     'PASS:verify-refuted')
   assert.strictEqual(
     stateFor({ cls: 'slides', verdict: 'REVISE', todos: 3, blocking: 0, instanceSlug: 'x', verify: { verdict: 'REFUTED', confirmed: 0 } }),
-    'PASS:verify-refuted, 3 todos see instances/x.slides.json',
+    'PASS:verify-refuted, 3 findings see instances/x.slides.json',
     'the finding died, the three notes beside it did not')
   assert.strictEqual(stateFor({ cls: 'slides', verdict: 'AGENT-LOST' }), null, 'a lost agent stamps nothing at all')
 })
@@ -216,7 +216,7 @@ test('makeSlugOf resolves the slug from the instance the judge just wrote', () =
   // A slug it could not resolve drops the pointer rather than writing a path
   // that resolves nowhere — a note pointing at a missing file reads as evidence.
   assert.strictEqual(
-    stateFor({ cls: 'slides', verdict: 'PASS_WITH_TODOS', todos: 2, blocking: 0, instanceSlug: null }), 'PASS:2 todos')
+    stateFor({ cls: 'slides', verdict: 'PASS_WITH_TODOS', todos: 2, blocking: 0, instanceSlug: null }), 'PASS:2 findings')
 })
 
 console.log(`1..${n}`)
@@ -249,7 +249,7 @@ test('the todo count comes from the instance the row points at, not the returned
   }] } }
   const [r] = readResults(out, makeSlugOf(dir), makeTodosOf(dir))
   assert.equal(r.todos, 2, 'row must count the rule rows the instance actually holds')
-  assert.equal(stateFor(r), 'PASS:2 todos see instances/ae101--module--m.writing.json')
+  assert.equal(stateFor(r), 'PASS:2 findings see instances/ae101--module--m.writing.json')
 })
 
 // Fail-open, deliberately: an unreadable or absent instance leaves the returned

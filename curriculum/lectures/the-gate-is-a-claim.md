@@ -49,7 +49,7 @@
 <!-- maintainer -->
 
 **Quality:** compendium-audited 2026-09-05 (writing@874f921c story@874f921c technical@874f921c behavior@1c765f2 pedagogy@d5aa7e3d strategy@874f921c slides@c0c37913)
-- judges @874f921c: writing PASS, story PASS, technical PASS (2 todos see instances/ae101--lecture--the-gate-is-a-claim.technical.json), behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+- judges @874f921c: writing PASS, story PASS, technical PASS (2 findings see instances/ae101--lecture--the-gate-is-a-claim.technical.json), behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** all five law slides kept bullets; every bolded lead de-bolded. Two handles kept, at their naming sub-spans: **Goodhart's law** (Gates decay slide) and **tampering** (Deming, Change-on-recurrence slide); slides 1, 2, and 4 carry zero bold (headers carry the laws). Lede + closing line untouched. Per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`. Wording near-verbatim; no claims added or cut.
 

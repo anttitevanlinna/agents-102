@@ -100,7 +100,7 @@ Return ONE JSON object, exactly this shape:
     {"url": "<url>", "alive": true|false, "status_code": <int|null>}
   ],
   "blocking_findings_count": <int>,
-  "suggestions_count": <int>
+  "nonblocking_findings_count": <int>
 }
 
 `blocking: true` for: dead URL on load-bearing claim, missing source-type label on a fact claim, zombie stat used as evidence, skill referenced but not installed, capability claim that contradicts shipped reality. Non-blocking: stylistic prompt-mechanic nits.

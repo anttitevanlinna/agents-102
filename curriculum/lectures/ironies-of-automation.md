@@ -17,7 +17,7 @@
 <!-- maintainer -->
 
 **Quality:** compendium-audited 2026-09-05 (writing@324b81d7 story@08946dd8 technical@08946dd8 behavior@1c765f2 pedagogy@1abb84c6 strategy@08946dd8 slides@c0c37913)
-- judges @08946dd8: writing PASS (1 todo see instances/ae101--lecture--ironies-of-automation.writing.json), story PASS, technical PASS (2 todos see instances/ae101--lecture--ironies-of-automation.technical.json), behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS
+- judges @08946dd8: writing PASS (1 finding see instances/ae101--lecture--ironies-of-automation.writing.json), story PASS, technical PASS (2 findings see instances/ae101--lecture--ironies-of-automation.technical.json), behavior PASS, pedagogy PASS (drift-recheck), strategy PASS, slides PASS
 
 **Bainbridge is an argument, not a result.** The body reads *"This is a 1983 argument, not an AI take."* Bainbridge 1983 is filed in *Automatica* as a **Brief Paper**: a synthesis essay, no participants, no methods section, no data of its own, resting on Mackworth 1950 (sustained attention) and Edwards & Lees 1974 (experienced vs inexperienced operators). *Result* would claim an evidentiary form the paper does not have, in the one sentence whose job is to borrow its authority. **Writing/story judges: do not "restore the punch."** `essay` reads as a downgrade mid-projection and invites *"so it's just an opinion piece?"*; an explanatory clause spends a 2–3 min framing budget on epistemology this lecture does not teach. The disarming clause *not an AI take* is what does the work in the room.
 

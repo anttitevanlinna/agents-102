@@ -1344,7 +1344,6 @@
       "carried_shape": "1870b031fbe8c765"
     }
   ],
-  "todos_count": 0,
   "blocking_findings_count": 0,
   "notes": [
     "PIN & STALENESS REASON: pinned at d065f8bc, staleness reason rule-drift. `git diff d065f8bc..HEAD -- curriculum/lectures/painting-the-picture-with-the-llm.md` (correct filter: `grep -E '^[-+]' | grep -vE '^(\\+\\+\\+|---)'`) shows exactly one BODY-region change since the pin — a `<!--tier:3-->` HTML comment inserted after the '## You prime, the LLM scales' heading (L14). Investigated: this is the slide-tier machinery (`curriculum/evals/tier-rubric.md`, TIER_INFO in site/layouts/slides.js), a system outside all 5 compendiums in this class's scope (check_lectures/pedagogy/prompts/strategy_tie_in/workshop) — it belongs to the slides eval class, not story. It is an invisible HTML comment (never rendered to a reader), so it does not affect the squint/truth test, slide-size count, or M[0-9] grep, all re-run fresh this session and all clean. Flagging for the slides judge: only 1 of this file's 3 headed slides carries a tier tag, which may reflect an in-progress corpus-wide tagging pass rather than a completed per-file decision — not a story-class finding.",
@@ -1353,5 +1352,6 @@
     "Sim trace re-validated, not blindly reused: computed sha256 of the body region under two independent extractions (`derive-body-view.js`'s body.txt, and `sed -n '1,29p'` on the raw source) and neither matches the trace's stored content_sha (8c47ea3c...) — traced the delta to the new tier:3 comment (see above), confirmed via `git show d065f8bc:<file> | sed -n '1,29p' | shasum` matching the OLDER trace-era text exactly. Treated as still valid for mood/comprehension purposes because the delta is an invisible comment a reading persona never encounters, not a regeneration skipped out of convenience — recorded here rather than silently reused.",
     "Maintainer accept-notes found and respected, none re-litigated: shotgun/cannon deliberate provocation (L32); 2026-08-04 trainer-feedback cuts (chameleon line, restated design line) — kept cut; 2026-07-09 emphasis pass (zero bold intentional); 2026-07-02 slides-only re-chunk (three slides + kicker is the designed shape); 2026-08-14 'amplification koan carries no verbal hedge, and does not need one' — explicitly forbids re-adding a hedge word or the old 'So the bet goes' tag, body carries neither; 2026-07-02 minor-fix adding 'It was trained to match you' — intact.",
     "check_pedagogy.md, check_prompts.md, and check_workshop.md are given full per-rule completeness this run (one row per numbered rule the brief listed as owed), not the whole-compendium single-row shortcut the 2026-08-24 predecessor instance used for check_prompts/check_workshop — the current class-brief tooling lists every rule in all 5 in-scope compendiums as individually owed (140 total), and `scripts/audit-eval-coverage.js` keys coverage on (compendium, rule_index), so a null-indexed judge-owned row would read every one of those numbers as an uncovered hole."
-  ]
+  ],
+  "nonblocking_findings_count": 0
 }

@@ -27,7 +27,7 @@ Ask how the agent knows what tools it can call.
 <!-- maintainer -->
 
 **Quality:** compendium-audited 2026-09-06 (writing@08946dd8 story@08946dd8 technical@08946dd8 behavior@64d17eea pedagogy@d5aa7e3d strategy@08946dd8 slides@c0c37913)
-- judges @64d17eea: writing PASS (3 todos see instances/ae101--lecture--the-agent-loop.writing.json), story PASS (1 todo see instances/ae101--lecture--the-agent-loop.story.json), technical PASS, behavior PASS (1 todo see instances/ae101--lecture--the-agent-loop.behavior.json), pedagogy PASS, strategy PASS, slides PASS
+- judges @64d17eea: writing PASS (3 findings see instances/ae101--lecture--the-agent-loop.writing.json), story PASS (1 finding see instances/ae101--lecture--the-agent-loop.story.json), technical PASS, behavior PASS (1 finding see instances/ae101--lecture--the-agent-loop.behavior.json), pedagogy PASS, strategy PASS, slides PASS
 
 **Emphasis pass (2026-07-09, Antti-directed "go very lightly on the bold"):** bold = the three defined terms as sub-spans — **agent** · **agent harness** · **agent loop**; the fourth bullet and the prompts slide carry none; `{{prompt:}}` refs byte-intact. Per `theory-plan.md § Slide format — emphasis budget` + `check_slides.md §9`.
 

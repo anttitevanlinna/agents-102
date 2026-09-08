@@ -184,10 +184,13 @@ function buildFixture(name, plantIds) {
 
 // ---------------------------------------------------------------------------
 // Scoring. Reads the instance a judge wrote and asks, per planted defect,
-// whether ANY finding / todo / REVISE row names it. Deliberately generous about
-// WHERE the judge said it: findings, todos and revised rule rows all count,
-// because a judge that files a planted banned word as a non-blocking todo has
-// still found it. Missing it entirely is the failure being measured.
+// whether ANY finding / suggestion / note / REVISE row names it. Deliberately
+// generous about WHERE the judge said it, because a judge that files a planted
+// banned word as a suggestion has still found it. Missing it entirely is the
+// failure being measured. `todos` is read too: it is retired from judge output
+// (2026-09-08) but a bench fixture written before then is still a valid test
+// input, and a scorer that quietly stopped seeing it would report a regression
+// the judges never had.
 // ---------------------------------------------------------------------------
 function scoreInstance(instancePath, truth) {
   const d = JSON.parse(fs.readFileSync(instancePath, 'utf8'))
@@ -198,7 +201,9 @@ function scoreInstance(instancePath, truth) {
   for (const r of rows) {
     if (r.verdict === 'REVISE') claims.push({ where: `rule ${r.compendium} §${r.rule_index}`, text: `${r.evidence || ''} ${r.fix_hint || ''}`, line: null })
   }
-  for (const t of (d.todos || [])) claims.push({ where: 'todo', text: `${t.rule || ''} ${t.note || ''}`, line: t.line ?? null })
+  for (const t of (d.suggestions || [])) claims.push({ where: 'suggestion', text: `${t.rule || ''} ${t.note || ''} ${t.now || ''} ${t.proposed || ''}`, line: t.line ?? null })
+  for (const t of (d.notes || [])) { if (t && typeof t === 'object') claims.push({ where: 'note', text: `${t.rule || ''} ${t.note || ''}`, line: t.line ?? null }) }
+  for (const t of (d.todos || [])) claims.push({ where: 'todo (legacy fixture)', text: `${t.rule || ''} ${t.note || ''}`, line: t.line ?? null })
   for (const f of (d.findings || [])) claims.push({ where: 'finding', text: `${f.rule || ''} ${f.quote || ''} ${f.harm || ''}`, line: f.line ?? null })
 
   const hits = []

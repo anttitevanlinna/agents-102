@@ -19,8 +19,8 @@
 //
 // Stamp rules:
 //   PASS                                → --<cls> PASS
-//   PASS_WITH_TODOS                     → --<cls> PASS:<NT> todos see instances/<slug>.<cls>.json
-//   REVISE + verify REFUTED            → --<cls> PASS:verify-refuted[, <NT> todos …]
+//   PASS (with suggestions)             → --<cls> PASS:<N> suggestions see instances/<slug>.<cls>.json
+//   REVISE + verify REFUTED            → --<cls> PASS:verify-refuted[, <N> suggestions …]
 //   REVISE + verify PARTIAL            → --<cls> REVISE:<confirmed>/<NT> see instances/<slug>.<cls>.json
 //   REVISE + verify CONFIRMED/missing  → --<cls> REVISE:<NB>/<NT> see instances/<slug>.<cls>.json
 //   AGENT-LOST                         → no stamp (class stays stale)
@@ -134,7 +134,9 @@ function makeSlugOf(repo) {
 }
 
 const pointer = r => (r.instanceSlug ? ` see instances/${r.instanceSlug}.${r.cls}.json` : '')
-const plural = n => `${n} todo${n === 1 ? '' : 's'}`
+// 'todo' was retired from judge output on 2026-09-08; these are non-blocking
+// REVISE rows, which are OWED work and enter the card queue.
+const plural = n => `${n} finding${n === 1 ? '' : 's'}`
 
 // The class is snake, update-quality.sh's flag is kebab. One character, and the
 // whole run dies on an unrecognised argument.
@@ -163,8 +165,8 @@ function stateFor(r, meta = null) {
   // one had to report REVISE, and the orchestrator read that as red — which is
   // how a clean file with a note on it stopped a ship.
   //
-  // PASS and PASS_WITH_TODOS share this branch on purpose. Judges use both while
-  // filing todos, and the verdict word is theirs to choose — but a row reading a
+  // PASS_WITH_TODOS is retired (2026-09-08) but still accepted here: a workflow
+  // returning an old verdict word must stamp, not crash. A row reading a
   // bare `PASS` over an instance holding four notes points nobody at them, and a
   // note nobody can find is a note nobody wrote. The verdict is not rewritten;
   // only the pointer is added.

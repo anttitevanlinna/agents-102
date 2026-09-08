@@ -89,7 +89,7 @@ Return ONE JSON object, exactly this shape:
     }
   ],
   "blocking_findings_count": <int>,
-  "suggestions_count": <int>
+  "nonblocking_findings_count": <int>
 }
 
 `blocking: true` for: rule 1 banned words, rule 2 hard-banned, rule 6 creator-name + author-we, rule 7 always-you, rule 13 value-prop leak, rule 8 maintainer-vocabulary-leak, all hard-grep items the hook would auto-fix. `blocking: false` for register-match nuance, atmospheric phrasing, over-hedge detector — register failures are TODOs unless severe.
@@ -99,7 +99,7 @@ Return ONE JSON object, exactly this shape:
 - If `blocking_findings_count > 0` → top-level `verdict: REVISE`.
 - If `blocking_findings_count == 0` → top-level `verdict: PASS`, regardless of how many non-blocking REVISE rules exist. Non-blocking REVISEs are TODOs, not blockers — the top verdict reflects ship-readiness, not perfection.
 
-`suggestions_count` = count where `verdict: REVISE` AND `blocking: false`.
+`nonblocking_findings_count` = count where `verdict: REVISE` AND `blocking: false`.
 
 Common mistake on early runs: setting top-level `verdict: REVISE` because the file has multiple non-blocking REVISEs and "feels" like it needs work. Don't. Compute the count, apply the rule.
 

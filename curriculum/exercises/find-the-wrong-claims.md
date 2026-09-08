@@ -162,6 +162,6 @@ After saving, tell me:
 - **Core method:** separate generator from checker. The checker uses source support and overreach against known local material.
 
 **Quality:** compendium-audited 2026-09-02 (story@eb1168f pedagogy@eb1168f strategy@eb1168f slides@3552e8c2)
-- judges @3552e8c2: writing REVISE (see-instances/claude-basics--find-the-wrong-claims.writing.json), story PASS, technical REVISE (see-instances/claude-basics--find-the-wrong-claims.technical.json), behavior REVISE (see-instances/claude-basics--find-the-wrong-claims.behavior.json), pedagogy PASS (accept-rule-16-self-study-low-prob), strategy PASS, slides PASS (1 todo see instances/claude-basics--exercise--find-the-wrong-claims.slides.json)
+- judges @3552e8c2: writing REVISE (see-instances/claude-basics--find-the-wrong-claims.writing.json), story PASS, technical REVISE (see-instances/claude-basics--find-the-wrong-claims.technical.json), behavior REVISE (see-instances/claude-basics--find-the-wrong-claims.behavior.json), pedagogy PASS (accept-rule-16-self-study-low-prob), strategy PASS, slides PASS (1 finding see instances/claude-basics--exercise--find-the-wrong-claims.slides.json)
 
 **Strategy reference:** `bosser-strategy:content-strategy-claude-basics.md` § *Homework: build and verify*

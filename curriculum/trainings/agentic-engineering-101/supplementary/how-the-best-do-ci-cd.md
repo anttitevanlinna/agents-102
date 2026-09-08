@@ -110,7 +110,7 @@ Pick one move. Run it this week.
 <!-- maintainer -->
 
 **Quality:** compendium-audited 2026-09-05 (writing@324b81d7 story@54577f39 technical@4589f1d5 behavior@da65157 pedagogy@54577f39 strategy@324b81d7 slides@4589f1d5)
-- judges @324b81d7: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS (1 todo see instances/ae101--supplementary--how-the-best-do-ci-cd.strategy.json), slides PASS
+- judges @324b81d7: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS (1 finding see instances/ae101--supplementary--how-the-best-do-ci-cd.strategy.json), slides PASS
 
 **Move 5 = skills-as-CI-check, not kit accretion.** A skill earns its place here by becoming a check, a verifier or a rule the loop runs; do not broaden it to general-purpose kit growth.
 

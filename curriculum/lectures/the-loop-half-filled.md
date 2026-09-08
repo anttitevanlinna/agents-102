@@ -54,7 +54,7 @@
 <!-- maintainer -->
 
 **Quality:** compendium-audited 2026-09-05 (writing@08946dd8 story@08946dd8 behavior@1c765f2 pedagogy@77991802 strategy@08946dd8 slides@c0c37913)
-- judges @08946dd8: writing PASS (2 todos see instances/ae101--lecture--the-loop-half-filled.writing.json), story PASS (1 todo see instances/ae101--lecture--the-loop-half-filled.story.json), technical REVISE (1/0 see instances/ae101--lecture--the-loop-half-filled.technical.json), behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+- judges @08946dd8: writing PASS (2 findings see instances/ae101--lecture--the-loop-half-filled.writing.json), story PASS (1 finding see instances/ae101--lecture--the-loop-half-filled.story.json), technical REVISE (1/0 see instances/ae101--lecture--the-loop-half-filled.technical.json), behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 
 **Lean pass (2026-08-25):** *"This close puts names on the ground covered."* cut — forward narration; the name-is-a-handle bullet carries the naming beat. Do not restore.
 

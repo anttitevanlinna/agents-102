@@ -4,7 +4,7 @@
 // What is tested is the count arithmetic and the ledger comparison, because
 // those are the two places where an instance can lie quietly. A wrong verdict
 // enum or a missing file fails loudly the moment something reads it; a
-// todos_count of 3 over an empty list reads as evidence forever.
+// A nonblocking_findings_count of 3 over an empty list reads as evidence forever.
 'use strict'
 const assert = require('node:assert')
 const fs = require('node:fs')
@@ -21,7 +21,7 @@ const todoRow = () => ({ compendium: 'check_writing.md', rule_index: 3, verdict:
 const blockingRow = () => ({ compendium: 'check_writing.md', rule_index: 9, verdict: 'REVISE', blocking: true })
 const passRow = () => ({ compendium: 'check_writing.md', rule_index: 1, verdict: 'PASS', blocking: true })
 const base = extra => Object.assign({
-  class: 'writing', training: 'ae101', verdict: 'PASS', todos_count: 0, blocking_findings_count: 0,
+  class: 'writing', training: 'ae101', verdict: 'PASS', nonblocking_findings_count: 0, blocking_findings_count: 0,
 }, extra)
 const NAME = 'ae101--exercise--a.writing.json'
 
@@ -31,33 +31,33 @@ const NAME = 'ae101--exercise--a.writing.json'
 // that does not contain them. 49 AE101 instances were in this state, carrying
 // 134 todos that exist as an integer and as no text anywhere.
 test('a count with nothing behind it is the whole point of the gate', () => {
-  const p = checkInstance(NAME, base({ verdict: 'PASS_WITH_TODOS', todos_count: 3 }))
+  const p = checkInstance(NAME, base({ verdict: 'PASS', nonblocking_findings_count: 3 }))
   assert.deepStrictEqual(codes(p), ['COUNT_WITHOUT_LIST'])
-  assert.match(p[0].detail, /declares 3 todo\(s\) and records none/)
+  assert.match(p[0].detail, /declares 3 non-blocking finding\(s\) and records none/)
   // Reported, never gating: no arithmetic here can recover a todo nobody wrote,
   // so failing the build on it would only get the build's gate switched off.
   assert.strictEqual(sev(p, 'COUNT_WITHOUT_LIST'), 'debt')
 
   // Zero todos and no ledger is not a defect — it is a clean pass.
-  assert.deepStrictEqual(checkInstance(NAME, base({ todos_count: 0 })), [])
+  assert.deepStrictEqual(checkInstance(NAME, base({ nonblocking_findings_count: 0 })), [])
 })
 
 test('the count must equal the rows recorded, in both directions', () => {
   const over = checkInstance(NAME, base({
-    verdict: 'PASS_WITH_TODOS', todos_count: 4,
+    verdict: 'PASS', nonblocking_findings_count: 4,
     rules_evaluated: [passRow(), todoRow(), todoRow(), todoRow()],
   }))
   assert.deepStrictEqual(codes(over), ['COUNT_MISMATCH'])
-  assert.match(over[0].detail, /todos_count says 4, 3 recorded/)
+  assert.match(over[0].detail, /nonblocking_findings_count says 4, 3 recorded/)
   // One ledger, so the count is simply wrong and cheap to correct: this one fails the build.
   assert.strictEqual(sev(over, 'COUNT_MISMATCH'), 'gate')
 
   // Under-counting hides a finding just as effectively as over-counting invents one.
-  const under = checkInstance(NAME, base({ todos_count: 1, rules_evaluated: [todoRow(), todoRow()] }))
+  const under = checkInstance(NAME, base({ nonblocking_findings_count: 1, rules_evaluated: [todoRow(), todoRow()] }))
   assert.deepStrictEqual(codes(under), ['COUNT_MISMATCH'])
 
   const right = checkInstance(NAME, base({
-    verdict: 'PASS_WITH_TODOS', todos_count: 2, rules_evaluated: [passRow(), todoRow(), todoRow()],
+    verdict: 'PASS', nonblocking_findings_count: 2, rules_evaluated: [passRow(), todoRow(), todoRow()],
   }))
   assert.deepStrictEqual(right, [])
 })
@@ -67,7 +67,7 @@ test('the count must equal the rows recorded, in both directions', () => {
 // the difference between a red row and a clean one.
 test('blocking rows are counted apart from todos', () => {
   const inst = base({
-    verdict: 'REVISE', todos_count: 1, blocking_findings_count: 2,
+    verdict: 'REVISE', nonblocking_findings_count: 1, blocking_findings_count: 2,
     rules_evaluated: [todoRow(), blockingRow(), blockingRow(), passRow()],
   })
   assert.deepStrictEqual(checkInstance(NAME, inst), [])
@@ -88,7 +88,7 @@ test('blocking rows are counted apart from todos', () => {
 test('the behavior class records its ledger under its own name', () => {
   const finding = v => ({ prompt_index: 1, verdict: v, load_bearing: v === 'REVISE', risks_fired: [{ pattern_id: 'question-dump', confidence: 'low', evidence: 'l. 3', fix_hint: 'name the recovery move beside the fence' }] })
   const inst = base({
-    class: 'behavior', verdict: 'PASS_WITH_TODOS', todos_count: 2, blocking_findings_count: 1,
+    class: 'behavior', verdict: 'PASS', nonblocking_findings_count: 2, blocking_findings_count: 1,
     prompts_findings: [finding('TODO'), finding('PASS'), finding('TODO'), finding('REVISE')],
   })
   assert.strictEqual(derivedTodos(inst), 2, 'TODO entries are the todos')
@@ -98,9 +98,9 @@ test('the behavior class records its ledger under its own name', () => {
   // The three instances this was hiding: a declared zero over recorded TODOs.
   // Under-counting is the direction that matters — it is how a finding leaves
   // the ledger without anyone deciding it should.
-  const under = checkInstance('ae101--exercise--a.behavior.json', Object.assign({}, inst, { todos_count: 0 }))
+  const under = checkInstance('ae101--exercise--a.behavior.json', Object.assign({}, inst, { nonblocking_findings_count: 0 }))
   assert.deepStrictEqual(codes(under), ['COUNT_MISMATCH'])
-  assert.match(under[0].detail, /todos_count says 0, 2 recorded/)
+  assert.match(under[0].detail, /nonblocking_findings_count says 0, 2 recorded/)
 
   // An empty run is a clean pass, not a missing ledger.
   assert.deepStrictEqual(checkInstance('ae101--exercise--a.behavior.json',
@@ -113,7 +113,7 @@ test('the behavior class records its ledger under its own name', () => {
 test('prompts_findings is a third ledger, not an override', () => {
   const todo = () => ({ prompt_index: 1, verdict: 'TODO', risks_fired: [{ pattern_id: 'question-dump', confidence: 'low', evidence: 'l. 3', fix_hint: 'name the recovery move beside the fence' }] })
   const p = checkInstance('ae101--exercise--a.behavior.json', base({
-    class: 'behavior', verdict: 'PASS_WITH_TODOS', todos_count: 0,
+    class: 'behavior', verdict: 'PASS', nonblocking_findings_count: 0,
     prompts_findings: [todo()],
     rules_evaluated: [passRow()],
   }))
@@ -124,7 +124,7 @@ test('prompts_findings is a third ledger, not an override', () => {
 
   // Agreeing is legal, same as the todos[] case it sits beside.
   assert.deepStrictEqual(checkInstance('ae101--exercise--a.behavior.json', base({
-    class: 'behavior', verdict: 'PASS_WITH_TODOS', todos_count: 1,
+    class: 'behavior', verdict: 'PASS', nonblocking_findings_count: 1,
     prompts_findings: [todo()],
     rules_evaluated: [todoRow()],
   })), [])
@@ -147,17 +147,17 @@ test('prompts_findings is a third ledger, not an override', () => {
 test('a todo that names no fix is a record of deliberation, not work', () => {
   const risk = hint => ({ pattern_id: 'preamble-before-action', confidence: 'low', evidence: 'l. 4', fix_hint: hint })
   const inst = base({
-    class: 'behavior', verdict: 'PASS_WITH_TODOS', todos_count: 2,
+    class: 'behavior', verdict: 'PASS', nonblocking_findings_count: 2,
     prompts_findings: [
       { prompt_index: 1, verdict: 'TODO', risks_fired: [risk('add a one-at-a-time pushback line')] },
       { prompt_index: 2, verdict: 'TODO', risks_fired: [risk('   '), risk('')] },
     ],
   })
   const p = checkInstance('ae101--exercise--a.behavior.json', inst)
-  assert.deepStrictEqual(codes(p), ['TODO_WITHOUT_FIX'])
+  assert.deepStrictEqual(codes(p), ['FINDING_WITHOUT_FIX'])
   assert.match(p[0].detail, /prompt 2/)
   assert.doesNotMatch(p[0].detail, /prompt 1/, 'one risk naming a fix is enough')
-  assert.strictEqual(sev(p, 'TODO_WITHOUT_FIX'), 'debt')
+  assert.strictEqual(sev(p, 'FINDING_WITHOUT_FIX'), 'debt')
 
   // It stays in the count. Which findings are real is the judge's call, and
   // dropping one here would close a row nobody decided to close.
@@ -165,9 +165,9 @@ test('a todo that names no fix is a record of deliberation, not work', () => {
 
   // No risks at all reads the same as risks that name nothing.
   assert.deepStrictEqual(codes(checkInstance('ae101--exercise--a.behavior.json', base({
-    class: 'behavior', verdict: 'PASS_WITH_TODOS', todos_count: 1,
+    class: 'behavior', verdict: 'PASS', nonblocking_findings_count: 1,
     prompts_findings: [{ prompt_index: 3, verdict: 'TODO' }],
-  }))), ['TODO_WITHOUT_FIX'])
+  }))), ['FINDING_WITHOUT_FIX'])
 
   // Only TODO rows are held to it. A PASS finding has nothing to fix by
   // definition, and a REVISE one is already blocking and reported elsewhere.
@@ -178,7 +178,7 @@ test('a todo that names no fix is a record of deliberation, not work', () => {
   // The shape the corpus actually holds stays silent. If this ever goes red on
   // real data, the gate is measuring the wrong field again.
   assert.deepStrictEqual(checkInstance('ae101--exercise--a.behavior.json', base({
-    class: 'behavior', verdict: 'PASS_WITH_TODOS', todos_count: 1,
+    class: 'behavior', verdict: 'PASS', nonblocking_findings_count: 1,
     prompts_findings: [{
       prompt_index: 1, prompt_lead: 'Read the repo', verdict: 'TODO', load_bearing: false,
       risks_fired: [{ pattern_id: 'preamble-before-action', confidence: 'low', evidence: 'l. 2', fix_hint: 'name the artifact first' }],
@@ -191,7 +191,7 @@ test('a todo that names no fix is a record of deliberation, not work', () => {
 // reader picks whichever one it happened to be written against.
 test('two ledgers that disagree are a defect, not a redundancy', () => {
   const p = checkInstance(NAME, base({
-    verdict: 'PASS_WITH_TODOS', todos_count: 2,
+    verdict: 'PASS', nonblocking_findings_count: 2,
     todos: [{ rule: 'x' }, { rule: 'y' }],
     rules_evaluated: [todoRow(), passRow()],
   }))
@@ -205,7 +205,7 @@ test('two ledgers that disagree are a defect, not a redundancy', () => {
   // Agreeing duplicates are legal for now — the migration collapses them, and a
   // gate that failed on them would go red on history it is meant to survive.
   assert.deepStrictEqual(checkInstance(NAME, base({
-    verdict: 'PASS_WITH_TODOS', todos_count: 1, todos: [{ rule: 'x' }], rules_evaluated: [todoRow()],
+    verdict: 'PASS', nonblocking_findings_count: 1, todos: [{ rule: 'x' }], rules_evaluated: [todoRow()],
   })), [])
 })
 
@@ -219,7 +219,7 @@ test('class and training must match the filename they are found under', () => {
 test('a verdict the stamper cannot act on is rejected', () => {
   assert.deepStrictEqual(codes(checkInstance(NAME, base({ verdict: 'APPROVE' }))), ['BAD_VERDICT'])
   assert.deepStrictEqual(codes(checkInstance(NAME, base({ verdict: undefined }))), ['BAD_VERDICT'])
-  for (const v of ['PASS', 'PASS_WITH_TODOS', 'REVISE', 'N/A']) {
+  for (const v of ['PASS', 'REVISE', 'N/A']) {
     assert.deepStrictEqual(checkInstance(NAME, base({ verdict: v })), [], `${v} is a real verdict`)
   }
 })
@@ -228,8 +228,8 @@ test('a verdict the stamper cannot act on is rejected', () => {
 // worth a second error code — but it must still be compared as a number, or
 // "3" !== 3 turns every one of them into a phantom mismatch.
 test('a numeric string count is compared as a number', () => {
-  assert.deepStrictEqual(checkInstance(NAME, base({ todos_count: '2', rules_evaluated: [todoRow(), todoRow()] })), [])
-  assert.deepStrictEqual(codes(checkInstance(NAME, base({ todos_count: 'two' }))), ['COUNT_MISMATCH'])
+  assert.deepStrictEqual(checkInstance(NAME, base({ nonblocking_findings_count: '2', rules_evaluated: [todoRow(), todoRow()] })), [])
+  assert.deepStrictEqual(codes(checkInstance(NAME, base({ nonblocking_findings_count: 'two' }))), ['COUNT_MISMATCH'])
 })
 
 // --fix must repair only what one reading settles. The dangerous direction is a
@@ -255,15 +255,15 @@ test('repairs settle the mechanical defects and refuse the rest', () => {
 
   // A count over one ledger is arithmetic.
   assert.deepStrictEqual(
-    repairs(NAME, base({ todos_count: 9, rules_evaluated: [todoRow(), passRow()] })), { todos_count: 1 })
+    repairs(NAME, base({ nonblocking_findings_count: 9, rules_evaluated: [todoRow(), passRow()] })), { nonblocking_findings_count: 1 })
 
   // Two ledgers disagreeing is not arithmetic, and a missing verdict is not
   // inferable from a count. Both refuse, so the report keeps them.
   assert.strictEqual(
-    repairs(NAME, base({ todos_count: 2, todos: [{ rule: 'x' }, { rule: 'y' }], rules_evaluated: [todoRow()] })),
+    repairs(NAME, base({ nonblocking_findings_count: 2, todos: [{ rule: 'x' }, { rule: 'y' }], rules_evaluated: [todoRow()] })),
     null, 'picking a ledger is a judgement — leave it for one')
   assert.strictEqual(
-    repairs(NAME, base({ verdict: null, todos_count: 0 })), null,
+    repairs(NAME, base({ verdict: null, nonblocking_findings_count: 0 })), null,
     'a verdict is never derived from the counts beneath it')
 
   assert.strictEqual(repairs(NAME, base({})), null, 'a clean instance is never rewritten')
@@ -276,15 +276,15 @@ test('repairs settle the mechanical defects and refuse the rest', () => {
 // rewrite, and it buries the change it was made for.
 test('a repair edits the line, not the file', () => {
   const { patchText } = require('./check-instance-schema.js')
-  const oneSpace = '{\n "class": "storytelling",\n "todos_count": 4,\n "rules_evaluated": [\n  {\n   "class": "nested"\n  }\n ]\n}\n'
-  const out = patchText(oneSpace, { class: 'story', todos_count: 1 })
-  assert.strictEqual(out, '{\n "class": "story",\n "todos_count": 1,\n "rules_evaluated": [\n  {\n   "class": "nested"\n  }\n ]\n}\n')
+  const oneSpace = '{\n "class": "storytelling",\n "nonblocking_findings_count": 4,\n "rules_evaluated": [\n  {\n   "class": "nested"\n  }\n ]\n}\n'
+  const out = patchText(oneSpace, { class: 'story', nonblocking_findings_count: 1 })
+  assert.strictEqual(out, '{\n "class": "story",\n "nonblocking_findings_count": 1,\n "rules_evaluated": [\n  {\n   "class": "nested"\n  }\n ]\n}\n')
   assert.ok(out.includes('"class": "nested"'), 'a same-named key nested deeper is not the one being patched')
   assert.strictEqual(out.split('\n').length, oneSpace.split('\n').length, 'no line is added or lost')
 
   // Four-space files exist too, and the indent is read from the file itself.
   assert.strictEqual(
-    patchText('{\n    "todos_count": 9\n}\n', { todos_count: 0 }), '{\n    "todos_count": 0\n}\n')
+    patchText('{\n    "nonblocking_findings_count": 9\n}\n', { nonblocking_findings_count: 0 }), '{\n    "nonblocking_findings_count": 0\n}\n')
 
   // A key that is not where it was expected fails rather than falling back to a
   // reformat — the caller reports it and the file is left exactly as found.
@@ -298,9 +298,9 @@ test('scan reads the record for the training, not the filename', () => {
   const dir = path.join(repo, 'curriculum/evals/instances')
   fs.mkdirSync(dir, { recursive: true })
   fs.writeFileSync(path.join(dir, 'ae101--exercise--ok.writing.json'), JSON.stringify(base({})))
-  fs.writeFileSync(path.join(dir, 'ae101--exercise--bad.writing.json'), JSON.stringify(base({ todos_count: 5 })))
+  fs.writeFileSync(path.join(dir, 'ae101--exercise--bad.writing.json'), JSON.stringify(base({ nonblocking_findings_count: 5 })))
   fs.writeFileSync(path.join(dir, 'agents-101--exercise--bad.writing.json'),
-    JSON.stringify(base({ training: 'agents-101', todos_count: 9 })))
+    JSON.stringify(base({ training: 'agents-101', nonblocking_findings_count: 9 })))
   fs.writeFileSync(path.join(dir, 'broken.writing.json'), '{ not json')
 
   const ae = scan(repo, 'ae101').map(f => f.name)

@@ -68,7 +68,7 @@ Return ONE JSON object, exactly the writing judge's schema with `"class": "slide
     }
   ],
   "blocking_findings_count": <int>,
-  "suggestions_count": <int>
+  "nonblocking_findings_count": <int>
 }
 
 `blocking: true` for rules 1, 2, 3, 4, 8, 10, and 12, plus rule 7's self-grading-superlative sub-item (value-prop leak). `blocking: false` for rules 5, 6, 9, 11, 13, 14, and the remaining rule-7 sub-items — those are TODOs.

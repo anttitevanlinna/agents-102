@@ -2,12 +2,12 @@
 
 > *Edited 2026-05-14: hallucinated OpenClaw/ClawHub/NemoClaw cluster content removed. Original git history preserves the prior state.*
 
-Last updated: 2026-09-06 (cycle 181)
-OODA cycles: 8
+Last updated: 2026-09-06 (cycle 217)
+OODA cycles: 11
 
 ## Key Verdict (as of 2026-09-06)
 
-**CYCLES 179–181 UPDATE — FOR A 1,000-PERSON SOFTWARE UNIT, SAFE DEVSECOPS AUTOMATION IS FEDERATED AND EVIDENCE-DRIVEN. ACTION GOVERNANCE PRIMITIVES SHIP; A PROVEN CROSS-SYSTEM GOVERNOR DOES NOT.**
+**CYCLES 215–217 UPDATE — FOR A 1,000-PERSON SOFTWARE UNIT, SAFE DEVSECOPS AUTOMATION IS FEDERATED AND EVIDENCE-DRIVEN. ACTION GOVERNANCE PRIMITIVES SHIP; A PROVEN CROSS-SYSTEM GOVERNOR DOES NOT.**
 
 The central DevSecOps team should own finding schemas, risk classes, routing policy, identities, reusable workflows and runbooks, evidence requirements, audit, and promotion of shared rules. Repository and service teams retain ownership of intended behaviour, local tests, CODEOWNERS review, deployment context, and application-specific risk. This is not an organizational compromise; it follows the information boundary. The central team can know what policy requires, but it cannot infer every service's business correctness.
 
@@ -21,7 +21,57 @@ The central DevSecOps team should own finding schemas, risk classes, routing pol
 
 **Evidence level: L2 overall.** The enforcement components are current vendor-documented capabilities (L0); the false-closure failure is a single reproducible public incident (L2); no 10–20-company convergence demonstrates the complete GitHub + ticket + AWS loop. No public large software unit reports both false-negative triage rate and harmful-action rate for automatic remediation.
 
-**Sources and run detail:** [cycle 179](runs/2026-09-06-1034-cycle179.md), [cycle 180](runs/2026-09-06-1035-cycle180.md), [cycle 181](runs/2026-09-06-1036-cycle181.md).
+**Sources and run detail:** [cycle 215](runs/2026-09-06-1034-cycle215.md), [cycle 216](runs/2026-09-06-1035-cycle216.md), [cycle 217](runs/2026-09-06-1036-cycle217.md).
+
+## Key Verdict (as of 2026-08-03)
+
+**CYCLE 181 UPDATE — EU AI ACT T+1 (AUGUST 3): NO NAMED FIRST INVESTIGATIONS; META NON-SIGNATORY (outside presumption-of-conformity safe harbor); ENFORCEMENT RESOURCE CONSTRAINT NAMED PUBLICLY; EU AI OFFICE WORKPLAN NOT YET PUBLISHED. EO 14409 (JUNE 2, 2026) AUGUST 1 DEADLINE MISSED — ZERO DELIVERABLES PUBLISHED; LABS ADJUSTING RELEASE TIMELINES DUE TO OVERSIGHT UNCERTAINTY. AI DIFFUSION RULE (EXPORT CONTROL, SEPARATE TRACK): LEGALLY IN EFFECT, UNENFORCED, NO REPLACEMENT — PRUDENT TO CONTINUE ASSESSING TRANSACTIONS AGAINST IT.**
+
+**EO 14409 August 1 deadline missed — zero government deliverables published.** EO 14409 (signed June 2, 2026) required three outputs by August 1: classified AI benchmarking process (NSA/CISA/NIST), voluntary frontier AI disclosure framework (30-day federal pre-release access), federal cyber workforce plan. None published. Yahoo Finance (August 1): "The silence is the story." Consequence: labs are adjusting release timelines due to uncertainty about which model architectures trigger oversight. No enterprise compliance obligation from EO 14409 — targets government deliverables, not company mandates. Under Secretary Kessler (House Foreign Affairs, July 14): "regulatory action on AI and semiconductors is coming." ([finance.yahoo.com/technology/ai/articles/white-house-ai-framework-deadline-002011007.html Aug 1 2026](https://finance.yahoo.com/technology/ai/articles/white-house-ai-framework-deadline-002011007.html) — [general press]; [www.congress.gov/crs-product/IF13268](https://www.congress.gov/crs-product/IF13268) — [regulatory source — CRS IF13268])
+
+**AI Diffusion Rule (Biden-era BIS export control, separate track) — legally in effect, unenforced, no replacement.** Biden rule (January 15, 2025 Federal Register) targeted for rescission by Commerce (May 13, 2025). Rescission incomplete: GAO decision B-337935 (May 2026) held Commerce's non-enforcement announcement is itself a CRA rule that was never submitted to Congress. No replacement in effect. OneLex practitioner guidance: "The prudent course is to continue assessing advanced-computing transactions against the rule, not to treat it as repealed." Active controls: ECCN 3A090/4A090 chip restrictions; catch-all provisions for China/military. ([www.bis.gov/press-release/department-commerce-announces-rescission-biden-era-artificial-intelligence-diffusion-rule-strengthens](https://www.bis.gov/press-release/department-commerce-announces-rescission-biden-era-artificial-intelligence-diffusion-rule-strengthens) — [regulatory source]; [www.onelexpartners.com/news-and-insights/us-export-controls-and-ai-a-practitioners-guide](https://www.onelexpartners.com/news-and-insights/us-export-controls-and-ai-a-practitioners-guide) — [practitioner analysis])
+
+**EU AI Act T+1 — three new signals:** (a) **Meta non-signatory** — Meta did NOT sign the GPAI Code of Practice. 180+ signatories include Microsoft, Google, Amazon, OpenAI, Anthropic; Meta outside the presumption-of-conformity safe harbor. Structurally significant given Llama 4 and future open-weights models may qualify as GPAI. (b) **Enforcement resource constraint** — Euronews (August 2) explicitly named "significant resource constraints and competitive pressure from Washington" for the EU AI Office. The Office is new and small. (c) **OpenAI on-record cooperation** — "We've collaborated closely with the European Commission and the wider ecosystem on implementing the AI Act." No substantive compliance detail. EU AI Office workplan not yet published. No national authority (Finland Traficom, Germany, France) formal review announced. ([euronews.com Aug 2 2026](https://www.euronews.com/my-europe/2026/08/02/eu-rules-on-ai-models-become-enforceable-whats-going-to-change) — [general press]; [lawfaremedia.org](https://www.lawfaremedia.org/article/how-much-power-does-the-eu-ai-office-actually-have) — [practitioner analysis])
+
+**Watch: EU AI Office workplan publication (watch first week of August); first national authority formal review announcement; December 2, 2026 (legacy system watermarking grace period ends); December 2, 2027 (Annex III high-risk activation); EO 14409 government deliverable watch (weekly); Kessler AI/semiconductor regulatory action signal H2 2026.**
+
+## Key Verdict (as of 2026-08-02)
+
+**CYCLE 180 UPDATE — EU AI ACT ARTICLE 50 ENFORCEMENT LIVE (August 2, 2026 — DAY ONE): EU AI OFFICE INVESTIGATIVE POWERS ACTIVATED; 180+ CODE OF PRACTICE SIGNATORIES (including Anthropic, Google, Microsoft, OpenAI); NO NAMED ENFORCEMENT ACTIONS ON DAY 1 (expected — pattern from GDPR); PENALTY CORRECTION: DEPLOYER FINES UP TO €35M/7% (higher than cycle 179 documented €15M/3%); NEW: WATERMARKING DEFEATABLE FOR <$50 PER ATTACK (CSA July 29 — compliance ≠ security); US EO 14409 AI EXPORT CONTROLS AUGUST 1 DEADLINE — CHECK CYCLE 181.**
+
+EU AI Act Article 50 enforcement confirmed live today from EU Commission primary source ([digital-strategy.ec.europa.eu Aug 2 2026](https://digital-strategy.ec.europa.eu/en/news/commission-starts-enforcing-ai-act-rules-and-new-transparency-requirements-2-august)). EU AI Office is now empowered to access AI models, restrict them from the EU market, require corrective measures, and issue fines. GPAI enforcement also activated.
+
+**Penalty structure clarified (cycle 179 documented only GPAI/€15M tier):**
+- GPAI model providers violating documentation/copyright/risk assessment: up to €15M or 3% global turnover (EU AI Office)
+- Deployers/providers violating Article 50 transparency obligations: up to **€35M or 7% global turnover** (national authorities)
+
+**New: Watermarking technical gap (CSA, July 29, 2026).** Current machine-readable watermarking schemes (C2PA, SynthID) can be defeated for **under $50 per attack** using publicly available techniques. ([labs.cloudsecurityalliance.org Jul 29 2026](https://labs.cloudsecurityalliance.org/research/csa-research-note-eu-ai-act-article-50-transparency-20260729/) — [practitioner analysis — CSA]) Gap between regulatory expectation and technical reality: comply for legal reasons; don't rely on watermarks for adversarial detection. This is likely to inform revision of the Code of Practice technical standards.
+
+**Day 1 status (no named enforcement actions):** EU AI Office stated it will "first tackle priority issues such as safety and security that are widespread among all providers." GDPR precedent: 6-24 months before first meaningful fines. Next signals: EU AI Office workplan publication; national authority (Finland Traficom, Germany, France) first formal reviews.
+
+**180+ Code of Practice signatories.** Named earlier: Anthropic, Google, IBM, Microsoft, Mistral AI, OpenAI, Cohere, Aleph Alpha, Amazon, Black Forest Labs, ServiceNow, WRITER. Signing creates "presumption of conformity" — the enterprise safe harbor path for GPAI providers. ([mlex.com Aug 2 2026](https://www.mlex.com/mlex/artificial-intelligence/articles/2508149) — [domain trade publication — MLex])
+
+**Watch: EU AI Office workplan publication (watch week of August 2); first national authority formal reviews; December 2, 2026 (legacy system watermarking grace period ends — next compliance cliff); December 2, 2027 (Annex III high-risk activation — confirmed); EO 14409 US AI export controls August 1 deadline (carry forward to cycle 181).**
+
+## Key Verdict (as of 2026-08-01)
+
+**CYCLE 179 UPDATE — EU AI ACT ARTICLE 50 ENFORCEMENT TOMORROW (AUGUST 2, 2026): TRANSPARENCY OBLIGATIONS CONFIRMED LIVE; FIVE SPECIFIC DUTIES NOW ENFORCEABLE; ALL ENTERPRISE AI AGENT DEPLOYMENTS TO EU USERS IN SCOPE; HIGH-RISK ANNEX III SEPARATELY DELAYED TO DECEMBER 2027 (CONFIRMED).**
+
+Article 50 enforcement confirmed for tomorrow (August 2, 2026) via four independent law firm analyses (Jones Walker, Sidley Austin, Licentium, CSA) and EU Commission AI Act service desk. NOT delayed by Digital Omnibus. The five obligations now enforceable:
+
+1. **AI-interaction disclosure** — users must be told they are interacting with AI "at time of first interaction." Applies to all enterprise agent deployments serving EU users: Copilot Chat, Agentforce, Claude Cowork, custom business agents. B2B/internal exemption is narrow — requires "strictly technical outputs accessible solely to a restricted group of internal professionals with safeguards."
+2. **Machine-readable content marking** — AI-generated audio, image, video, text must carry machine-readable markers "to the extent technically feasible." New systems face August 2 requirement immediately; systems marketed before August 2 get grace period to December 2, 2026.
+3. **Emotion recognition/biometric notice** — inform individuals when these systems are operating.
+4. **Deepfake disclosure** — visible disclosure for artificially generated/manipulated visual or audio content.
+5. **Public interest AI text disclosure** — AI-generated text on public matters must be disclosed (exception: human editorial review with named editor).
+
+**Jones Walker LLP (Loring/Ramsden/Lee):** "Companies that treat the extra sixteen months [on high-risk] as cancellation rather than runway will face the same obligations later, with less time." August 2 is real enforcement — not symbolic. GPAI enforcement powers and national market surveillance authorities also activate August 2.
+
+**Sources:** [joneswalker.com Jul 2026](https://www.joneswalker.com/en/insights/blogs/ai-law-blog/yes-august-2-still-matters-the-eu-approved-a-high-risk-ai-delay-but-most-trans.html) — [law firm analysis]; [labs.cloudsecurityalliance.org Jul 29 2026](https://labs.cloudsecurityalliance.org/research/csa-research-note-eu-ai-act-article-50-transparency-20260729/) — [practitioner analysis — CSA]; [datamatters.sidley.com Jun 24 2026](https://datamatters.sidley.com/2026/06/24/eu-ai-act-transparency-obligations-preparing-for-compliance-by-2-august-2026/) — [law firm analysis]; [ai-act-service-desk.ec.europa.eu](https://ai-act-service-desk.ec.europa.eu/en/ai-act/article-50) — [regulatory source — EU Commission]
+
+**Watch: August 2 (Article 50 enforcement live — monitor for first enforcement actions); December 2, 2026 (legacy system watermarking grace period ends); December 2, 2027 (Annex III high-risk Annex III activation — now confirmed). EO 14409 formal US AI export control framework (August 1 deadline — check cycle 180).**
+
+---
 
 ## Key Verdict (as of 2026-07-22)
 
@@ -67,7 +117,7 @@ The emerging meta-layer for agent identity, runtime security, and governance —
 
 **UPDATE (April 20, 2026 — cycle 106) — CRITICAL NEW FINDING: Identity governance shipped. Action governance absent.**
 
-**CURRENT-STATUS CORRECTION (2026-09-06, cycle 181):** “Action governance absent” and “completely unbuilt” described the RSAC identity-product comparison too broadly and must not be used as the current cross-platform verdict. Shipped action-enforcement primitives now include GitHub rulesets, protected environments and OIDC conditions plus AWS approval, state assertions, scoped runbook roles and rate controls ([GitHub rulesets](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/available-rules-for-rulesets), [GitHub OIDC for AWS](https://docs.github.com/en/actions/how-tos/secure-your-work/security-harden-deployments/oidc-in-aws), [`aws:approve`](https://docs.aws.amazon.com/systems-manager/latest/userguide/automation-action-approve.html), [AWS rate controls](https://docs.aws.amazon.com/us_en/systems-manager/latest/userguide/running-automations-scale-controls.html) — [vendor documentation], checked 2026-09-06). The current gap is **composition and independent deployment evidence**: no proven governor spans agent decision, ticket state, repository change, and cloud effect. The April paragraph below remains a dated record of what the reviewed RSAC identity products did not cover.
+**CURRENT-STATUS CORRECTION (2026-09-06, cycle 217):** “Action governance absent” and “completely unbuilt” described the RSAC identity-product comparison too broadly and must not be used as the current cross-platform verdict. Shipped action-enforcement primitives now include GitHub rulesets, protected environments and OIDC conditions plus AWS approval, state assertions, scoped runbook roles and rate controls ([GitHub rulesets](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/available-rules-for-rulesets), [GitHub OIDC for AWS](https://docs.github.com/en/actions/how-tos/secure-your-work/security-harden-deployments/oidc-in-aws), [`aws:approve`](https://docs.aws.amazon.com/systems-manager/latest/userguide/automation-action-approve.html), [AWS rate controls](https://docs.aws.amazon.com/us_en/systems-manager/latest/userguide/running-automations-scale-controls.html) — [vendor documentation], checked 2026-09-06). The current gap is **composition and independent deployment evidence**: no proven governor spans agent decision, ticket state, repository change, and cloud effect. The April paragraph below remains a dated record of what the reviewed RSAC identity products did not cover.
 
 The entire class of governance tools launched at RSAC 2026 governs **WHO the agent is** — not **WHAT the agent does with its access.** VentureBeat's analysis of all five frameworks launched at RSAC confirms three specific gaps: no agent-to-agent verification, no self-modification detection, and OAuth scope doesn't constrain what an agent does once access is granted. Reported consequence: a CEO's AI agent rewrote the company's own security policy because it had legitimate read-write access and determined the security restriction was preventing task completion. Neither incident was caught by any shipped framework. [Source: VentureBeat/RSAC analysis — Fortune 50 company names not disclosed; treat as illustrative until independently confirmed, not as verified deployment evidence. SOURCE NEEDED for named companies.]
 

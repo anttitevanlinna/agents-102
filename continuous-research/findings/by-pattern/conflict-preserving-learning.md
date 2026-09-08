@@ -64,4 +64,4 @@ Husain and Shankar's annotator process makes the outer loop explicit: label shar
 
 This is an L2 synthesis. The field has one reported coding-rule conflict, one inspectable knowledge-maintenance mechanism, a maintained practitioner disagreement method, a synthetic memory benchmark, and mature control-composition primitives. No public large-company system joins them and measures the complete conflict-to-action loop.
 
-Full evidence: [OODA cycle 186](../../platform-watch/coding-agents/runs/2026-09-08-1437-cycle186.md).
+Full evidence: [OODA cycle 222](../../platform-watch/coding-agents/runs/2026-09-08-1437-cycle222.md).

@@ -14,8 +14,18 @@ answers:
 
 # Vertical SaaS Agent Platforms — Platform State
 
-Last updated: 2026-07-24 (cycle 145 + cycle 145 remote from July 14)
-OODA cycles: 31
+Last updated: 2026-09-04 (cycle 205)
+OODA cycles: 32
+
+**Cycle 205 updates (September 4, 2026) — Agentforce multi-agent T+12 weeks evidence desert / ServiceNow IT Specialists Pattern 31 T+10 weeks / SAP Joule governance vacuum named / Nordic absence holds:**
+
+**Agentforce multi-agent orchestration — evidence desert confirmed at T+12 weeks post-GA (June 15).** Zero independent named production deployments found. Sirocco Group (May 29, 2026) documents the N² debugging surface: "three agents produce something closer to nine times the debugging surface." Hard limits unchanged: 20-agent org max, 15 topics/15 actions, 60s timeout. Pattern 31 confirmed. Agentforce CS single-agent has named customers (Wiley 213% ROI via vendor case study, Engie 83% autonomous resolution aggregated, Heathrow "Hallie" 95% accuracy, Reddit 46% deflection, OpenTable 70%, Pandora 60%) — all Level 1 via vendor-hosted channels. CS crosses chasm; multi-agent orchestration does not. ([siroccogroup.com May 2026](https://www.siroccogroup.com/agentforce-multi-agent-the-seam-problem/) — [practitioner analysis]; [salesforce.com/customer-stories/wiley](https://www.salesforce.com/customer-stories/wiley/) — [vendor case study])
+
+**ServiceNow IT Specialists — Pattern 31 confirmed at T+10 weeks past June 30 deadline.** AIOps Specialist, SRE Specialist, Asset Lifecycle Specialist, Portfolio Planning Specialist: no GA announcement, release notes entry, or trade publication GA coverage found as of September 4. Release notes (Australia release, last updated March 12, 2026): no IT Specialist GA entry. All September 2026 search results return May 2026 announcement language only. Security/Risk Specialists (preview June, GA September) on different track. Rolls-Royce "Merlin" (Now Assist) deployment as of Aug 2025: 12,000 employees, 5,000 hours efficiency savings, 54% deflection — Level 1 (named at vendor event, not independently corroborated). ([diginomica.com Knowledge 2026](https://diginomica.com/servicenow-knowledge-2026-ai-control-tower-expands-autonomous-workforce-reaches-every-function-and) — [domain trade publication]; [servicenow.com release notes](https://www.servicenow.com/docs/r/release-notes/new-features-changes.html) — [vendor documentation])
+
+**SAP Joule — 3% ceiling holds; governance vacuum named as deployment blocker.** DSAG survey (1,200+ German-speaking SAP user group members): 3% production, 77% active AI users using non-SAP platforms. No change from cycle 130. New mechanism named: EU AI Act governance vacuum for autonomous ERP decisions (liability frameworks and approval protocols undefined) — structural blocker beyond technical gap. ECC end-of-support deadline (Dec 31, 2027) is real forcing function; Joule access is byproduct of RISE/GROW migration, not primary driver. Joule Studio 2.0 / 200 agents: Sapphire 2026 vendor announcement, zero independent deployment evidence. SAP API Policy v4 external-agent restriction unchanged. ([innobu.com Apr 2026](https://www.innobu.com/en/articles/sap-joule-2026-agentic-enterprise-ai.html) — [practitioner analysis])
+
+**Nordic vertical SaaS — absence holds.** Finnair "exploring" Agentforce & Data Cloud (community activity signal — not deploying). Salesforce Stockholm office (now largest in Nordics) — structural expansion, no deployment evidence. Zero named Nordic production Agentforce or ServiceNow autonomous-agent deployments. Nordic vertical SaaS production absence is a confirmed pattern.
 
 **Cycle 145 updates (July 14, 2026) — ServiceNow IT Specialists Pattern 31 miss CONFIRMED / Agentforce multi-agent 5 weeks post-GA, evidence desert pattern holding / SAP 3% adoption / Pattern 48 cluster three named enterprise cases:**
 

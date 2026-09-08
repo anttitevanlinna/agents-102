@@ -4,7 +4,7 @@ domain: cross-domain
 evidence_level: null
 platforms: [microsoft, google, openai, anthropic, aws, vertical-saas, open-source-frameworks, rpa-to-agent, collaboration-platforms, agent-infrastructure, ai-native-startups, coding-agents]
 nordic: false
-updated: 2026-04-02
+updated: 2026-09-08
 answers:
   - "how does the platform watch research cycle work?"
   - "what are the research rules and priorities?"
@@ -39,6 +39,10 @@ This prompt drives each incremental research cycle. Run with `/loop 60m` or manu
 **Related: Domain practitioner research** (separate system, `../README.md` + `../search-logs/` + `../source-roster.md`). Tracks what practitioners are actually doing per business function (sales, finance, HR, compliance, operations, product). Domain findings live in `../findings/by-domain/` (one file per domain, evidence-leveled). Cross-domain patterns live in `../findings/by-pattern/`. When you find a practitioner doing real agentic work, note which platform they're using — that feeds back into this system. When you find a platform gap, note which business function it blocks — that feeds the domain research.
 
 ## Cycle Execution
+
+### Step 0: Allocate the cycle number globally
+
+Before writing, fetch the remote refs and find the highest cycle number in both the current checkout and every active continuous-research branch. Use `max + 1`. Never infer the next number from one platform state file or from local history alone: scheduled and user-driven research share one global sequence. Record the chosen number once and reuse it in the run file, state, synthesis, user-signal, and meta-learning updates.
 
 ### Step 1: Read current state and meta-learning
 

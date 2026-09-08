@@ -1,13 +1,17 @@
 # Coding Agent Platforms — Platform State
 
-Last updated: 2026-09-08 (cycle 185)
-OODA cycles: 37
+Last updated: 2026-09-08 (cycle 186)
+OODA cycles: 38
 
 ## Focus
 
 Coding agents as the **meta-platform** for the agentic transformation. This is NOT a developer tools category — it's the factory that builds the factories. Coding agents build the MCP servers, the business agents, the evals, the integrations. Every other platform watch category depends on this one. Copilot Studio can't build another Copilot Studio agent. Agentforce can't extend Agentforce. Coding agents compound — each cycle makes the next cycle faster.
 
 ## Key Verdict (as of 2026-09-08)
+
+**CYCLE 186 — DISAGREEMENT IS A FIRST-CLASS MEMORY STATE AND A DOUBLE-LOOP TRIGGER (L2).** Aggarwal and Ghalaty's one reported rule conflict was factual: review showed a general disposal rule needed a framework-specific scope qualifier. Every's current refresh mechanic handles the harder maintenance shape by detecting contradictions before ordinary drift, preserving independently supported guidance when code diverges, and marking ambiguous unattended cases stale rather than guessing. Husain and Shankar turn annotator disagreement into rubric repair and relabeling. These are real partial mechanisms, not a complete multi-team conflict governor. ([Aggarwal and Ghalaty](https://arxiv.org/html/2607.13091v1), Jul 2026 — [academic/research]; [Every](https://github.com/EveryInc/compound-engineering-plugin/blob/8df67793b9733d2220fa9a7fc37139931471af62/docs/guides/ce-compound-refresh.md), checked Sep 2026 — [practitioner direct]; [Husain and Shankar](https://hamel.dev/blog/posts/evals-faq/index.html), modified Sep 2026 — [practitioner direct])
+
+**Operational boundary:** classify conflict as factual, contextual, temporal, or authority/policy. Verify and remove factual contradictions; preserve and conditionalize legitimate differences; route policy choices through the authority graph from cycle 185. TANGLE shows why the substrate must retain conflict relations: complete conflict survived extraction in 91.7% of Letta cases, 69.1% of Mem0, 47.0% of A-mem, and 46.2% of MemOS in its 541-case synthetic benchmark. Its useful action vocabulary is commit / conditionalize / clarify / verify / defer / reversible trial. Restrictive precedence is safe for enforcement—GitHub most-restrictive layering and AWS explicit deny—not as a universal truth-selection rule. ([TANGLE](https://arxiv.org/html/2608.13921v1), Aug 2026 — [academic/research]; [GitHub](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/about-rulesets) and [AWS](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html), checked Sep 2026 — [vendor documentation])
 
 **CYCLE 185 — THE TEACHER IS AN AUTHORITY GRAPH, NOT A UNIVERSAL HUMAN GATE (L2).** Human input grounds a learning agent, but a valid source of feedback is not automatically authorized to promote that feedback at every scope. Aggarwal and Ghalaty let the engineer receiving feedback decide whether it becomes a team rule, then use normal pull-request review; they explicitly leave multi-team governance open. Semgrep exposes a sharper security split: a developer's dismissal rationale becomes a candidate memory for admin approval, while AppSec authors may write security memories directly. GitHub supplies the enforceable shape—enterprise baselines plus additive organization/repository rules and CODEOWNERS routing. ([Aggarwal and Ghalaty](https://arxiv.org/html/2607.13091v1), Jul 2026 — [academic/research]; [Semgrep](https://semgrep.dev/blog/2026/inside-the-ai-memories-security-teams-are-writing/), May 2026 — [vendor press release]; [GitHub](https://docs.github.com/en/copilot/tutorials/roll-out-at-scale/govern-at-scale/maintain-codebase-standards), checked Sep 2026 — [vendor documentation])
 

@@ -621,3 +621,7 @@ Re-reading a maintained practitioner's repository changed the answer more than s
 ### Cycle 185 — 2026-09-08
 
 “Who is the human?” became answerable only after separating the person who supplied evidence, the domain owner who can judge meaning, and the control owner who can authorize effect. Practitioner accounts often describe feedback loops while omitting who may merge changes to the shared guidance; that omission is itself a governance-evidence gap, not permission to infer a universal approver. For future multi-team learning research, search for the actual instruction repository, CODEOWNERS, promotion workflow, and exception process—not just claims that engineers “teach” the system.
+
+### Cycle 186 — 2026-09-08
+
+Conflict research became legible only after separating contradictions that evidence can resolve from disagreements that are valid under different contexts, times, or authorities. The same precedence rule cannot serve both: “most restrictive wins” is useful for controls, while semantic learning needs preserved alternatives and a resolving variable. Future memory-library reviews should test whether extraction retains the conflict relation and source/scope metadata, not merely whether both sentences can be retrieved independently.

@@ -18,6 +18,7 @@ What distinguishes this from "person uses AI to code faster":
 - `ce-compound` can inspect current and selected historical coding sessions, then capture one verified learning into `docs/solutions/` when the final code, tests, or existing docs do not already preserve it.
 - Later ideation and planning read that store; the return edge is invocation-driven, not ambient memory in every arbitrary session.
 - `ce-compound-refresh` now maintains the store through Keep, Update, Consolidate, Replace, Delete, and stale-marking outcomes. Ambiguous cases keep a human judgment path.
+- Contradictions outrank ordinary drift. If independently supported guidance conflicts with current code, the refresh skill preserves the guidance and reports a possible product regression; it does not silently make the implementation the truth. Ambiguous unattended conflicts become explicitly stale.
 - Non-interactive capture may write the solution store, but does not silently edit `AGENTS.md` or `CLAUDE.md`.
 
 ## The Role Blur
@@ -40,7 +41,7 @@ When AI handles implementation, the remaining human work blurs PM + UX + Enginee
 
 ## Key Insight
 
-**The return edge is the contribution.** Every has operationalized capture, historical-session search, later retrieval, and knowledge retirement. That proves a maintainable learning substrate can be built from files and Git; it does not yet prove that each captured item improves later behavior.
+**The return edge is the contribution, and ambiguity is a retained state.** Every has operationalized capture, historical-session search, later retrieval, knowledge retirement, and conservative conflict handling. That proves a maintainable learning substrate can be built from files and Git; it does not yet prove that each captured item improves later behavior or solve multi-team policy arbitration.
 
 ---
 

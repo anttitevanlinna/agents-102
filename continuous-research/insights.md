@@ -1217,6 +1217,23 @@ Every candidate therefore needs three preserved roles: its source, the semantic 
 
 ---
 
+## A Mature Learning System Learns Its Disagreements
+
+**Thesis:** A learning agent should preserve disagreement long enough to discover whether the defect is in the rule, its scope, or the governance that promoted it.
+
+Factual conflicts should disappear after evidence sharpens an over-broad rule. Legitimate context, time, or authority conflicts should not. Compressing those into one canonical sentence destroys the condition that makes each lesson valid. The durable object is therefore a conflict record: both claims, provenance, scope, time, evidence, missing decision variable, owners, safe interim action, and eventual resolution lineage.
+
+This is where double-loop learning becomes concrete. The inner loop fixes or scopes a rule. The outer loop asks why the disagreement was possible: was the rubric missing an example, was ownership unclear, did retrieval erase source authority, or did a local rule escape its namespace? Repairing that mechanism is more valuable than merely settling the one case.
+
+**The implication for CTOs:** Measure whether the memory pipeline preserves and routes disagreement, not only whether it retrieves a plausible answer. Use fail-closed precedence for permissions and controls; never confuse it with a universal method for deciding product truth.
+
+**Applies to:** Agents 101 modules 9–10, learning-agent architecture, DevSecOps governance
+**Sources:** [Aggarwal and Ghalaty](https://arxiv.org/html/2607.13091v1) — [academic/research], 2026-07-13; [Every](https://github.com/EveryInc/compound-engineering-plugin/blob/8df67793b9733d2220fa9a7fc37139931471af62/docs/guides/ce-compound-refresh.md) — [practitioner direct], checked 2026-09-08; [Husain and Shankar](https://hamel.dev/blog/posts/evals-faq/index.html) — [practitioner direct], modified 2026-09-01; [TANGLE](https://arxiv.org/html/2608.13921v1) — [academic/research], 2026-08-14. Full evidence in OODA cycle 186.
+**Evidence boundary:** L2 synthesis. No large-company implementation demonstrates the complete conflict-preserving promotion and action loop.
+**Date:** 2026-09-08
+
+---
+
 Copy this for new insights:
 
 ```

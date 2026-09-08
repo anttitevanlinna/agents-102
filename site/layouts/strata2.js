@@ -131,17 +131,37 @@
             var authorDetailText = authorDetail ? authorDetail.textContent : '';
 
             cover.innerHTML =
-                '<div class="print-cover-phase-bar">' +
-                    '<span class="bar-1"></span><span class="bar-2"></span>' +
-                    '<span class="bar-3"></span><span class="bar-4"></span>' +
-                '</div>' +
+                '<div class="print-cover-brand">Bosser</div>' +
+                '<div class="print-cover-path" aria-hidden="true"></div>' +
+                '<div class="print-cover-kicker">Essay collection</div>' +
                 '<div class="print-cover-title">' + titleText + '</div>' +
                 (subtitleText ? '<div class="print-cover-subtitle">' + subtitleText + '</div>' : '') +
-                '<div class="print-cover-author">' + authorText + '</div>' +
-                (authorDetailText ? '<div class="print-cover-org">' + authorDetailText + '</div>' : '') +
-                '<div class="print-cover-footer">bosser.consulting</div>';
+                '<div class="print-cover-meta">' +
+                    '<div>' +
+                        '<div class="print-cover-author">' + authorText + '</div>' +
+                        (authorDetailText ? '<div class="print-cover-org">' + authorDetailText + '</div>' : '') +
+                    '</div>' +
+                    '<div class="print-cover-mark">Bosser</div>' +
+                '</div>';
 
             wrap.insertBefore(cover, wrap.firstChild);
+
+            // Reuse the compiled curriculum figure rather than maintaining a
+            // second copy of the sea-passage drawing in this layout.
+            fetch('figures.json')
+                .then(function (response) {
+                    if (!response.ok) throw new Error('Could not load print-cover figure');
+                    return response.json();
+                })
+                .then(function (figures) {
+                    var passage = figures['session-sea-passage'];
+                    var coverPath = cover.querySelector('.print-cover-path');
+                    if (passage && coverPath) coverPath.innerHTML = passage;
+                })
+                .catch(function () {
+                    // The typography remains a complete cover if the decorative
+                    // figure cannot be loaded (for example from a raw file URL).
+                });
 
             // ── Table of contents ──
             var toc = document.createElement('div');

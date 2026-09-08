@@ -24,7 +24,7 @@ Start clean at your repo root. The task here is bigger than anything so far. Bef
 
 - Bring one or two candidates: a real slice you'd send off rather than nudge bit by bit. **Bigger than a typo-fix, smaller than a big epic.**
 
-Ask Claude to screen your candidates, scope the winner, and add them after the colon.
+Ask Claude to screen your candidates and scope the winner. Drop them after the colon.
 
 {{prompt:walk-and-send-off-1}}
 

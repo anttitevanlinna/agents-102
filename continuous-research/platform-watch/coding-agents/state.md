@@ -1,11 +1,17 @@
 # Coding Agent Platforms — Platform State
 
-Last updated: 2026-09-08 (cycle 184)
-OODA cycles: 36
+Last updated: 2026-09-08 (cycle 185)
+OODA cycles: 37
 
 ## Focus
 
 Coding agents as the **meta-platform** for the agentic transformation. This is NOT a developer tools category — it's the factory that builds the factories. Coding agents build the MCP servers, the business agents, the evals, the integrations. Every other platform watch category depends on this one. Copilot Studio can't build another Copilot Studio agent. Agentforce can't extend Agentforce. Coding agents compound — each cycle makes the next cycle faster.
+
+## Key Verdict (as of 2026-09-08)
+
+**CYCLE 185 — THE TEACHER IS AN AUTHORITY GRAPH, NOT A UNIVERSAL HUMAN GATE (L2).** Human input grounds a learning agent, but a valid source of feedback is not automatically authorized to promote that feedback at every scope. Aggarwal and Ghalaty let the engineer receiving feedback decide whether it becomes a team rule, then use normal pull-request review; they explicitly leave multi-team governance open. Semgrep exposes a sharper security split: a developer's dismissal rationale becomes a candidate memory for admin approval, while AppSec authors may write security memories directly. GitHub supplies the enforceable shape—enterprise baselines plus additive organization/repository rules and CODEOWNERS routing. ([Aggarwal and Ghalaty](https://arxiv.org/html/2607.13091v1), Jul 2026 — [academic/research]; [Semgrep](https://semgrep.dev/blog/2026/inside-the-ai-memories-security-teams-are-writing/), May 2026 — [vendor press release]; [GitHub](https://docs.github.com/en/copilot/tutorials/roll-out-at-scale/govern-at-scale/maintain-codebase-standards), checked Sep 2026 — [vendor documentation])
+
+**Operational boundary:** retain three roles for every candidate: source, semantic owner, and effect owner. Requesters can teach case intent; service owners can promote repository behavior; security owners can promote control interpretation; platform teams can change the learning machinery; IAM/cloud owners alone can change action authority under external change control. Cross-boundary promotion needs both semantic and effect ownership. The agent may capture, cluster, propose, replay, and route, but never approve its own authority. Fin says good shared skills have owners, expert evaluators, maintained evals, and session-derived refresh; Intercom and Spotify divide central machinery from local outcome accountability. None publishes a complete shared-guidance approval model, and no public 1,000-person software unit demonstrates this authority graph end to end. ([Brian Scanlan / Fin](https://ideas.fin.ai/p/claude-code-good-skills-bad-skills), Jul 2026 — [practitioner direct]; [Intercom](https://www.intercom.com/blog/ai-is-approving-our-pull-requests-heres-how-we-made-it-safe/), Apr 2026 — [practitioner direct]; [Spotify](https://engineering.atspotify.com/2026/4/background-coding-agents-dataset-migrations-honk-part-4), Apr 2026 — [practitioner direct])
 
 ## Key Verdict (as of 2026-09-08)
 

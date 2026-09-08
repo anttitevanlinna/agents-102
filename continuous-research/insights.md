@@ -1200,6 +1200,23 @@ The workable automation boundary follows that force. Raw evidence can be capture
 
 ---
 
+## The Teacher Is an Authority Graph, Not a Human Gate
+
+**Thesis:** Human feedback grounds a learning agent, but promotion authority must follow the lesson's domain, artifact, scope, and operational effect—not the generic fact that a human approved it.
+
+A requester can explain intent. A developer can expose a repository convention. A security engineer can interpret a control. A platform team can change the learning machinery. An IAM owner can authorize an execution role. These are different teaching powers. Flattening them into one approval button lets local feedback silently become organization-wide policy or action authority.
+
+Every candidate therefore needs three preserved roles: its source, the semantic owner who can judge whether it is true and generalizable, and the effect owner who can authorize its blast radius. One person may hold all three for a private rule; cross-team security or infrastructure changes require them to separate. The agent may capture, cluster, propose, replay, and route the lesson, but it may not approve its own future authority.
+
+**The implication for CTOs:** Build the human learning gate as versioned ownership and routing—normally CODEOWNERS, rulesets, domain review, and external IAM change control—not as a universal queue of undifferentiated approvals.
+
+**Applies to:** Agents 101 module 9, learning-agent governance, DevSecOps operating model
+**Sources:** [Aggarwal and Ghalaty](https://arxiv.org/html/2607.13091v1) — [academic/research], 2026-07-13; [Brian Scanlan / Fin](https://ideas.fin.ai/p/claude-code-good-skills-bad-skills) — [practitioner direct], 2026-07-15; [Intercom](https://www.intercom.com/blog/ai-is-approving-our-pull-requests-heres-how-we-made-it-safe/) and [Spotify](https://engineering.atspotify.com/2026/4/background-coding-agents-dataset-migrations-honk-part-4) — [practitioner direct], Apr 2026; [GitHub](https://docs.github.com/en/copilot/tutorials/roll-out-at-scale/govern-at-scale/maintain-codebase-standards) — [vendor documentation], checked 2026-09-08; [Semgrep](https://semgrep.dev/blog/2026/inside-the-ai-memories-security-teams-are-writing/) — [vendor press release], 2026-05-06. Full evidence in OODA cycle 185.
+**Evidence boundary:** L2. The role separation is a design inference from one-team and single-company cases plus shipped controls; no public multi-team implementation proves the complete authority graph.
+**Date:** 2026-09-08
+
+---
+
 Copy this for new insights:
 
 ```

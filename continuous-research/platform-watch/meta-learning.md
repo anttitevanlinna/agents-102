@@ -617,3 +617,7 @@ Library research became legible only after classifying the object each project p
 ### Cycle 184 — 2026-09-08
 
 Re-reading a maintained practitioner's repository changed the answer more than searching for another framework: Every had added explicit capture eligibility, cross-agent session-history probing, and a separate refresh/retirement skill since the earlier snapshot. For learning-agent research, inspect the current write target and maintenance path, not only the branded method or an old commit. A people-first roster also needs artifact-level verbs—who captures traces, who promotes rules, who writes evals, who builds sensors—because saying several practitioners "do memory" hides the actual evidence.
+
+### Cycle 185 — 2026-09-08
+
+“Who is the human?” became answerable only after separating the person who supplied evidence, the domain owner who can judge meaning, and the control owner who can authorize effect. Practitioner accounts often describe feedback loops while omitting who may merge changes to the shared guidance; that omission is itself a governance-evidence gap, not permission to infer a universal approver. For future multi-team learning research, search for the actual instruction repository, CODEOWNERS, promotion workflow, and exception process—not just claims that engineers “teach” the system.

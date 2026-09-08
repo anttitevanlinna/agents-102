@@ -1,3 +1,3 @@
 How should a central DevSecOps team safely automate security-ticket handling across GitHub, AWS, and related systems for a roughly 1,000-person software unit?
 
-**Cycles 179–181:** Treat the ticket as a case file, separate decision from execution by identity, and promote autonomy per action class only after independent closure and outcome evidence. Current evidence is L2; the control primitives ship, but independent end-to-end production convergence does not.
+**Cycles 179–181 and 185:** Treat the ticket as a case file, separate decision from execution by identity, and promote autonomy per action class only after independent closure and outcome evidence. The human learning gate is role- and scope-specific: requesters supply intent, service owners teach local semantics, security owners teach controls, platform teams teach mechanism, and IAM owners retain authority. Current evidence is L2; no end-to-end multi-team production model is public.

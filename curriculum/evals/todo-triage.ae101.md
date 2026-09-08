@@ -64,6 +64,10 @@ Wave E re-judged 22 of the 98 todo-carrying instances. All 22 came back carrying
 
 **The staleness scanner routed a §52c fix away from the class that owns §52c.** `scan-stale-classes.js` tagged only `**Time` in the lead-in trio, so editing `**What you do:` / `**What you build:` / `**The point:` / `**What happened:` staled writing, story and slides, and left the pinned pedagogy verdict standing over the prose the pedagogy rule had just moved. Fixed 2026-09-08, test first — the fixture pins all five slots plus the bulleted `- **Time:**` lecture form, and pins that ordinary phase prose stays off pedagogy. The class that owns a rule now re-judges its own fix, which is the whole point of per-class routing.
 
+**And it did the same to source stamps.** A `[checked:…]` stamp lives only in the backing block, which the scanner classes as maintainer region and returns early on — so the routing table's own `[checked: → technical` line was dead code, and editing a stamp's result, due date or URL staled nothing while the pinned technical verdict stood. Fixed 2026-09-08, test first, matching the stamp shape rather than a bare URL so that maintainer prose quoting a link does not bill a re-judge for bookkeeping.
+
+**Both bugs are one bug.** The scanner's job is to notice when a class's own surface moved, and in both cases it was blind to the surface the class exists to check — pedagogy's lead-in trio, technical's source stamps. A staleness scanner that under-reports does not look broken; it looks like a corpus that is up to date. **When a fix here lands, re-read the routing table against the judge rubrics rather than against the diff** — the question is which surface each class owns, and whether an edit there wakes it.
+
 The sharpest instance of the same shape sits in `judges/prompt-behavior.md:125`: **TODO** fires on any risk at `confidence: low`, *regardless* — and `:89` makes `confidence: low` the marker a judge uses when it applies a carve-out. So an applied carve-out is filed under the same label as owed work. 41 of the behavior class's 54 TODO findings fire only low-confidence risks; 32 say in their own `fix_hint` that no edit is warranted. Reserving TODO for `confidence: med` and recording low-confidence risks as PASS-with-carve-out drops 41 rows without touching a word of curriculum. Maintainer call, open.
 
 ## Applied
@@ -121,6 +125,9 @@ Per-card state lives in the JSON on a `card` object (`outcome`: applied · decli
 | `compound-and-close:7` §52c | applied | the View summary's own answer, shortened; *from session evidence* was said three times in eleven lines |
 | `threat-model-with-stride:9` §52c | applied as a cut | the sweep's premise was wrong — a *decision* is not a bare artifact noun; §52c carved out |
 | `author-test-strategy-skill:9` §52c | applied | the opener was the closer minus its parenthetical; a SKILL.md does owe the *for what* |
+| `the-gate-is-a-claim:15` §2a | applied | *In 2024, on one product's judge* — Antti vetoed *engagement*, and *test / simulation / case* with it |
+| `fork-the-worktree:22` §15 | applied | three readings, not two — the audit's own fix picked a third; landed *the worktree's copies* |
+| `getting-going:24-26` §9 | applied | de-bold ×3; §9's own named open case, settled by the sibling slide that carries none |
 
 **A third rung, 2026-09-08: one card = one edit.** Presenting the four §2a lead-ins as a single card was rejected — *"wrongly shown. One card at time with proper card each."* The one exception is edits that are INSEPARABLE: one claim stated on several surfaces, where fixing one alone leaves the corpus contradicting itself, which is why the M3 invocation seam was accepted as a three-surface card the same week. Test: can each edit stand alone without leaving a contradiction? Yes → one card each, in sequence, each with its own full BEFORE / AFTER / WHY / RISK. **And show enough context to judge the beat** — the whole slide in both states, not the changed line alone (Antti, same day: *"Show the whole lead in both before and after including previous paragraph(s)"*). Two cards had to be re-shown for want of it.
 

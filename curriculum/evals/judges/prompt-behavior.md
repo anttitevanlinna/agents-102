@@ -53,7 +53,7 @@ For each `**Prompt**` fenced code block in the body (above any `<!-- maintainer 
 
 Some risks have an established **body-callout** alternative legal shape recorded in compounded knowledge. When this carve-out applies, the body callout neutralises the risk and the verdict is PASS, NOT REVISE — even when the prompt's text alone would invite the pattern.
 
-Before flagging a risk as `confidence: high` or `med` and BLOCKING, scan the **body prose immediately surrounding the prompt** (the paragraph before the `**Prompt**` label and the paragraph or two after the closing fence) for an explicit student-agency callout that addresses the risk. If the callout is present, downgrade the risk to TODO or drop it.
+Before flagging a risk as `confidence: high` or `med` and BLOCKING, scan the **body prose immediately surrounding the prompt** (the paragraph before the `**Prompt**` label and the paragraph or two after the closing fence) for an explicit student-agency callout that addresses the risk. If the callout is present, drop the risk or carry it as a suggestion.
 
 Carve-outs (extend as compounded knowledge grows):
 
@@ -74,7 +74,7 @@ Carve-outs (extend as compounded knowledge grows):
 
   Pairs with `memory/compounded/2026-04-27-prompts-append-vs-integrate-default.md` — that entry is the *author-side* rule (name the integration mode explicitly when adding context); this carve-out is the *judge-side* complement (respect personal-scope integrate-verbs as deliberate).
 
-- **`self-report-inflation` and `self-audit-charity` — evidence-backed Debrief carve-out.** Not every self-audit is a defect. Agents 101 Debriefs deliberately ask Claude to review session evidence with the student in the loop. If the prompt names concrete evidence surfaces (files, reports, scoreboards, round notes, before/after quotes), requires artifact-level reporting, and/or nearby body prose names the charity risk with a pushback move, downgrade to TODO or PASS. Block only when Claude is asked to grade its own work without evidence, quotes, or recovery.
+- **`self-report-inflation` and `self-audit-charity` — evidence-backed Debrief carve-out.** Not every self-audit is a defect. Agents 101 Debriefs deliberately ask Claude to review session evidence with the student in the loop. If the prompt names concrete evidence surfaces (files, reports, scoreboards, round notes, before/after quotes), requires artifact-level reporting, and/or nearby body prose names the charity risk with a pushback move, downgrade to PASS, with a suggestion if you can write the replacement. Block only when Claude is asked to grade its own work without evidence, quotes, or recovery.
 
 - **`default-acceptance`, `preamble-before-action`, and heavy-run risks — body-callout mitigation.** Adjacent prose can mitigate a probabilistic behavior risk when it names the failure mode and gives the student an action after the prompt. Minimal prompt edits are preferred over forcing every risk into the fenced block.
 
@@ -124,14 +124,17 @@ When you apply a carve-out, record it in the trace's `risks_fired` entry with `c
 For each prompt:
 - **REVISE** if any risk fires with `confidence: high` AND `load_bearing: true`.
 - **REVISE** if two or more risks fire with `confidence: med` AND `load_bearing: true`.
-- **TODO** if any risk fires with `confidence: med` AND `load_bearing: false`, OR with `confidence: low` **and no `carve_out` marker**.
 - **PASS** otherwise — including a prompt whose only fired risks all carry `carve_out`. You already decided those.
 
-**A TODO owes a `fix_hint` naming the edit.** Not the risk restated, not "consider whether" — the words you would change and to what. If you cannot name one, you are not looking at owed work, and the verdict is PASS. A todo nobody can act on still lands on the Quality row, still shows up in every count, and survives every triage that opens it looking for something to do.
+**Everything below REVISE is a PASS carrying suggestions, not a third verdict.** A risk firing at `confidence: med` AND `load_bearing: false`, or at `confidence: low` with no `carve_out` marker, does not change the verdict — it earns a row in `suggestions[]` and the prompt still passes. There are two verdicts here for the same reason there are two in the preamble: `verdict` answers whether anything is owed, and the answer to that is yes or no.
+
+**A suggestion owes its replacement.** `rule`, `line`, `now`, `proposed` — not the risk restated, not "consider whether", but the words you would change and what they would become. If you cannot write the replacement, drop the row: a suggestion nobody can act on still lands on the Quality row, still shows up in every count, and survives every triage that opens it looking for something to do.
+
+**`carve_out` is required on every `confidence: low` risk, not optional (2026-09-08).** Measured across the corpus that day: 9 low-confidence risks carried the marker and 75 did not, which is what an optional guard always measures. So the marker is now the price of the confidence level — a low-confidence risk either names the carve-out it applied or it is not low-confidence, and a judge that cannot name one should raise the confidence or drop the risk. `check-instance-schema.js` counts the unmarked ones.
 
 Top-level verdict:
 - `verdict: REVISE` if any prompt's per-prompt verdict is REVISE.
-- `verdict: PASS` otherwise (per-prompt TODOs roll up to top-level `todos_count`).
+- `verdict: PASS` otherwise. Per-prompt suggestions roll up to top-level `suggestions_count`, which never affects the verdict.
 
 ## Output format
 
@@ -148,7 +151,7 @@ Return ONE JSON object, exactly this shape:
     {
       "prompt_index": <int>,
       "prompt_lead": "<first 80 chars>",
-      "verdict": "PASS" | "REVISE" | "TODO",
+      "verdict": "PASS" | "REVISE",
       "load_bearing": true | false,
       "risks_fired": [
         {"pattern_id": "<id>", "confidence": "high|med|low", "evidence": "<line>", "fix_hint": "<one-line — suggestion from this judge's narrow lens; NOT a recipe. The author reconciles in an authoring turn, not here.>"}
@@ -156,11 +159,11 @@ Return ONE JSON object, exactly this shape:
     }
   ],
   "blocking_findings_count": <int>,
-  "todos_count": <int>
+  "suggestions_count": <int>
 }
 
 `blocking_findings_count` = number of prompts with `verdict: REVISE`.
-`todos_count` = number of prompts with `verdict: TODO`.
+`suggestions_count` = total rows in `suggestions[]` across all prompts. A file may pass with a non-zero count; that is the normal case, not a defect.
 
 OUTPUT ONLY THE JSON. No prose preamble, no markdown fence.
 ```

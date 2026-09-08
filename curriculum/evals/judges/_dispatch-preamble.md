@@ -107,6 +107,18 @@ If the prefill reports `no prior instance`, `shape changed` or `predates shape_h
 - A rule you mark **PASS on a mechanical check** cites the view's grep result — the pattern and its count — and nothing more.
 - A rule you mark **PASS on judgement** still quotes the line closest to violating it, with line number, and says why it stays inside. This is where the class earns its keep and it is not abbreviated.
 - A **finding** carries full evidence, always. Nothing here relaxes that.
-- Non-blocking observations go in `todos` and the verdict is `PASS_WITH_TODOS`. Do not report REVISE to make an observation visible: REVISE means a gate, and a TODO escalated to a gate costs a maintainer decision that was never owed.
+- Non-blocking observations go in `suggestions` and the verdict stays `PASS`. Do not report REVISE to make an observation visible: REVISE means a gate, and a suggestion escalated to a gate costs a maintainer decision that was never owed.
+
+**There are two verdicts, and suggestions are not a third (Antti 2026-09-08).** `verdict` answers one question — is something owed? — so it has exactly two live values, plus `N/A` for a rule that does not apply to this file. `suggestions` is a separate channel that rides ALONGSIDE the verdict and is independent of it: a PASS may carry suggestions, a REVISE may carry suggestions, and most rows carry none. A third status would only have to be triaged, which is how the retired `TODO` became a queue nobody could drain.
+
+- **`verdict: REVISE`** — a maintainer decision or an edit is owed. Enters the card queue. Ends only in an applied edit or a written refutation.
+- **`verdict: PASS`** — nothing is owed.
+- **`suggestions[]`** — concrete swaps the maintainer may take or ignore. Never enters the queue, never counted against a file, never promoted to REVISE by a later pass, and **silence is a complete answer**. No adjudication is ever owed on one.
+
+**A suggestion carries its replacement or it is not emitted.** Four fields: `rule`, `line`, `now` (the sentence as it stands), `proposed` (the sentence you would put there). Not "consider tightening this", not the finding restated as advice — the words you would change and what they would become. If you cannot write the replacement you do not have a suggestion, you have a feeling, and it goes in `notes` or nowhere. This replaces the free-text `todos` array, which carried ten different field shapes across the corpus and some rows that were bare strings: an unschema'd channel is where a judge puts what it did not want to commit to, so it filled with carve-outs, cross-class observations and unfinished thoughts.
+
+**A rule that says it is advisory cannot be filed as REVISE.** Where a compendium rule's own body says *not a REVISE on its own*, *style, not a gate*, or *the default move, not the law*, the rule has already named its own ceiling: `verdict: PASS`, and put the observation in `suggestions` if you can write the replacement. `check_writing.md` §27 carried that sentence while judges filed 34 REVISE rows against it across 13 files — half a queue built out of a rule nobody read to the end. `curriculum/evals/scripts/check-advisory-verdicts.js` enforces this and exits 1.
+
+**`TODO` is retired from judge output.** It labelled owed work and *"I checked and nothing is owed"* with one word, so it could not be read. TODO and WATCH remain live in the maintainer's own tracking surfaces (`pre-cohort-todos.md`, `IMPROVEMENTS.md`), where a human is recording follow-up rather than a judge deferring a decision. Never write either into an instance.
 
 Reading is unchanged and total. Do not skim the compendium because your output is shorter.

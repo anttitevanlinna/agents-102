@@ -60,6 +60,48 @@ function tagsFor(hunks) {
   return changeTags(meta, hunks).tags
 }
 
+// The lead-in trio is pedagogy's own surface (§52c owns the three slots, §52d
+// the point). It sits pre-first-`##`, so opener already buys `story` — the bug
+// this fixture pins is that editing a slot bought pedagogy nothing, i.e. the
+// class that owns the rule never re-judged its own fix. Bulleted `- **Time:**`
+// is the lecture form and must route the same as the bare one.
+const TRIO = [
+  '# Sharpen the plan',                            // 1
+  '',                                              // 2
+  '**Time:** 57 minutes.',                         // 3
+  '',                                              // 4
+  '**What you do:** push back twice on the plan.', // 5
+  '',                                              // 6
+  '**What you build:** a sharpened plan file.',    // 7
+  '',                                              // 8
+  '**The point:** the first pass is plausible.',   // 9
+  '',                                              // 10
+  '- **Time:** 12 minutes',                        // 11
+  '',                                              // 12
+  '**What happened:** you read two plans.',        // 13
+  '',                                              // 14
+  '## Phase 1',                                    // 15
+  'phase prose',                                   // 16
+].join('\n')
+
+function trioTags(line) {
+  return changeTags(buildLineMeta(TRIO), [{ oldStart: line, oldLen: 1, start: line, len: 1 }]).tags
+}
+
+test('changeTags: every lead-in trio slot → pedagogy', () => {
+  for (const L of [3, 5, 7, 9, 11, 13]) {
+    assert(trioTags(L).has('pedagogy'), `line ${L} of TRIO must stale pedagogy`)
+  }
+})
+test('changeTags: trio slots do not over-tag', () => {
+  const t = trioTags(7)
+  assert(t.has('writing') && t.has('slides') && t.has('story')) // story via opener
+  assert(!t.has('strategy') && !t.has('technical') && !t.has('behavior'))
+})
+test('changeTags: prose in the trio region stays off pedagogy', () => {
+  assert(!trioTags(16).has('pedagogy'))
+})
+
 test('changeTags: plain mid-file prose → writing+slides only', () => {
   const t = tagsFor([{ oldStart: 9, oldLen: 1, start: 9, len: 1 }])
   assert.deepStrictEqual([...t].sort(), ['slides', 'writing'])

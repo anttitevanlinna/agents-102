@@ -13,7 +13,7 @@
 //   Bridge / Homework / Next / Plug Points / Prework section → + pedagogy, story
 //   {{prompt:key}} line      → + behavior, technical, pedagogy
 //   URL / [checked: stamp    → + technical
-//   **Time line              → + pedagogy
+//   lead-in trio slot line   → + pedagogy (Time / What you do / build / happened / The point)
 //   >15 changed body lines   → + story, pedagogy (bulk rewrite shifts arc + architecture)
 //   behavior extra: any consumed curriculum/prompts/<key>.md changed since pin → behavior
 //   rule-drift: a compendium rule edited after the pin's commit date → that
@@ -134,7 +134,12 @@ function tagLine(m, tags) {
   if (m.section) for (const s of SECTION_TAGS) if (s.re.test(m.section)) s.tags.forEach(t => tags.add(t))
   if (/\{\{prompt:/.test(m.text)) { tags.add('behavior'); tags.add('technical'); tags.add('pedagogy') }
   if (/https?:\/\/|\[checked:/.test(m.text)) tags.add('technical')
-  if (/\*\*Time/.test(m.text)) tags.add('pedagogy')
+  // The lead-in trio, not just `**Time`. §52c owns the three slots and §52d the
+  // point, so a slot edit IS a pedagogy edit — routing only `**Time` meant the
+  // class that owns the rule never re-judged its own fix. Leading `-`/`>` stay
+  // allowed: lectures bullet the Time row, and `> **Time check.**` already
+  // routed here.
+  if (/^[-*>\s]*\*\*(Time|What you do|What you build|What happened|The point)\b/.test(m.text)) tags.add('pedagogy')
   return 1
 }
 

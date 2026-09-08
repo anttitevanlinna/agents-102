@@ -102,6 +102,47 @@ test('changeTags: prose in the trio region stays off pedagogy', () => {
   assert(!trioTags(16).has('pedagogy'))
 })
 
+// Source stamps are the technical class's own surface, and they only ever live
+// inside the backing block — which is maintainer region, where tagLine returns
+// early. So the routing table's `[checked: -> technical` line was dead: editing
+// a stamp's result, due date or URL staled nothing and the pinned technical
+// verdict stood unchallenged. A bare URL in ordinary maintainer prose stays
+// untagged, so a note that merely mentions a link does not bill a re-judge.
+const STAMPED = [
+  '# Lecture',                                        // 1
+  'body prose',                                       // 2
+  '',                                                 // 3
+  '<!-- maintainer -->',                              // 4
+  '**Note:** see https://example.com for background', // 5  prose mentioning a URL
+  '',                                                 // 6
+  '<!-- backing -->',                                 // 7
+  '',                                                 // 8
+  'Sources',                                          // 9
+  '- src-key `[checked:2026-09-08 result:OK due:none]` https://example.com/post — [practitioner direct] blah', // 10
+  '',                                                 // 11
+  '<!-- /backing -->',                                // 12
+].join('\n')
+
+function stampTags(line) {
+  return changeTags(buildLineMeta(STAMPED), [{ oldStart: line, oldLen: 1, start: line, len: 1 }]).tags
+}
+
+test('changeTags: a source stamp in the backing block stales technical', () => {
+  const t = stampTags(10)
+  assert(t.has('technical'), 'a [checked: stamp must stale technical')
+})
+test('changeTags: a stamp edit stales technical ONLY, never body classes', () => {
+  const t = stampTags(10)
+  assert(!t.has('writing') && !t.has('slides') && !t.has('story') && !t.has('pedagogy'))
+})
+test('changeTags: a bare URL in maintainer prose still stales nothing', () => {
+  assert.strictEqual(stampTags(5).size, 0)
+})
+test('changeTags: a stamp line counts as no changed body line', () => {
+  const r = changeTags(buildLineMeta(STAMPED), [{ oldStart: 10, oldLen: 1, start: 10, len: 1 }])
+  assert.strictEqual(r.changedBody, 0)
+})
+
 test('changeTags: plain mid-file prose → writing+slides only', () => {
   const t = tagsFor([{ oldStart: 9, oldLen: 1, start: 9, len: 1 }])
   assert.deepStrictEqual([...t].sort(), ['slides', 'writing'])

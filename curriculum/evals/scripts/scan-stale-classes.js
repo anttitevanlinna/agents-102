@@ -12,7 +12,9 @@
 //   Key Concepts / What You'll Learn / Connections → + strategy
 //   Bridge / Homework / Next / Plug Points / Prework section → + pedagogy, story
 //   {{prompt:key}} line      → + behavior, technical, pedagogy
-//   URL / [checked: stamp    → + technical
+//   URL in body              → + technical
+//   `[checked: stamp         → technical only (backing block is maintainer region;
+//                              matched by stamp shape, not by a bare URL mention)
 //   lead-in trio slot line   → + pedagogy (Time / What you do / build / happened / The point)
 //   >15 changed body lines   → + story, pedagogy (bulk rewrite shifts arc + architecture)
 //   behavior extra: any consumed curriculum/prompts/<key>.md changed since pin → behavior
@@ -126,7 +128,14 @@ function buildLineMeta(text) {
 
 // Tag one line into `tags`; returns 1 if it counts as a changed body line.
 function tagLine(m, tags) {
-  if (!m || m.region === 'maintainer' || m.region === 'frontmatter') return 0
+  if (!m) return 0
+  // A source stamp is the technical class's own surface and lives ONLY in the
+  // backing block, i.e. inside maintainer region — so the early return below
+  // was swallowing it and the `[checked: -> technical` route never fired. Match
+  // the stamp shape, not a bare URL: maintainer prose quotes links constantly
+  // and re-judging on every mention would bill the class for bookkeeping.
+  if (m.region === 'maintainer' && /`\[checked:/.test(m.text)) { tags.add('technical'); return 0 }
+  if (m.region === 'maintainer' || m.region === 'frontmatter') return 0
   if (m.region === 'fence') { tags.add('technical'); return 0 }
   tags.add('writing'); tags.add('slides')
   if (m.heading) { tags.add('story'); tags.add('pedagogy') }

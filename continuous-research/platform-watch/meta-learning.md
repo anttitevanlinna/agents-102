@@ -65,6 +65,14 @@ Proven patterns for how to research effectively. Promoted from observations when
 
 Each entry: cycle number, date, what the researcher learned about researching.
 
+### Cycle 209 — 2026-09-08
+
+A practitioner-direct HN launch thread (confirmed URL, multiple named commenters) reached L3 convergence in one fetch — the entire Opus 5 prose-quality pain point and Fable 5.1 resolution was documented there and missed by nine cycles of practitioner-blog search. Lesson: for any major model launch, the HN item is the first mandatory fetch; the community thread accumulates practitioner-direct convergence faster than individual blog posts (Cycle 186 Fable 5 lesson was not applied to Fable 5.1). One HN thread outperformed several days of blog-monitoring this cycle.
+
+The Cycle 208 "Willison using Codex" signal was a single-action inference error — reading a task-specific tool choice as a preference shift without checking the surrounding weekly context. By checking the blog index for the surrounding days (Sep 1 and Sep 7 posts), the pattern became clear: both tools in parallel for different task shapes. For any "practitioner X chose tool Y" signal, always check the practitioner's output from the adjacent 3-5 days before classifying it as directional.
+
+Loop Engineering Stage 3 4th voice was found by the subagent searching concept-keyword queries ("loop engineering governance layer"), not by person-name search — confirming the Cycle 174 heuristic: for governance/failure patterns, concept-name searches find the "fourth voice" that person-name searches miss. The Oller article had been public for 77 days before this cycle found it. Absence of a finding in prior cycles was a method limitation, not an evidence absence.
+
 ### Cycle 208 — 2026-09-07
 
 Vendor pricing pages resolve pricing conflicts faster and more reliably than secondary analysis articles. The Sonnet 5 Sep 1 pricing conflict (two camps: $2/$10 permanent vs $3/$15 revert) persisted through cycle 207 because a primary fetch wasn't attempted. One direct fetch of claude.com/pricing resolved it in seconds. For any "what is the current price of X?" question, always fetch the vendor pricing page first; secondary analysis cites the page but introduces interpretation risk.

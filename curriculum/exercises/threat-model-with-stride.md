@@ -6,7 +6,7 @@
 
 **What you do:** invoke the curated STRIDE skill on the map you built, then pick one threat worth hardening against.
 
-**What you build:** one recorded hardening decision, written as an ADR (Architecture Decision Record) in your repo's convention.
+**What you build:** one hardening decision, written as an ADR (Architecture Decision Record).
 
 **The point:** STRIDE's value is rejection, not enumeration.
 

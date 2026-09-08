@@ -1,11 +1,17 @@
 # Coding Agent Platforms — Platform State
 
-Last updated: 2026-09-07 (cycle 183)
-OODA cycles: 35
+Last updated: 2026-09-08 (cycle 184)
+OODA cycles: 36
 
 ## Focus
 
 Coding agents as the **meta-platform** for the agentic transformation. This is NOT a developer tools category — it's the factory that builds the factories. Coding agents build the MCP servers, the business agents, the evals, the integrations. Every other platform watch category depends on this one. Copilot Studio can't build another Copilot Studio agent. Agentforce can't extend Agentforce. Coding agents compound — each cycle makes the next cycle faster.
+
+## Key Verdict (as of 2026-09-08)
+
+**CYCLE 184 — LEARNING SURFACES FORM AN AUTHORITY LADDER (L2).** Named practitioners are changing different external artifacts, not retraining the base model. Every's current `ce-compound` harvests current and selected historical coding sessions into a validated `docs/solutions/` store that later planning retrieves; `ce-compound-refresh` adds Keep, Update, Consolidate, Replace, Delete, and stale-marking. Aditya Aggarwal and Nahid Farhady Ghalaty report accepted human review comments becoming version-controlled behavioral rules and self-review checks in one 35-plus-service team. Hamel Husain and Shreya Shankar turn human-labeled trace failures into evals; Birgitta Böckeler turns objective expectations into executable sensors. ([Every capture](https://github.com/EveryInc/compound-engineering-plugin/blob/8df67793b9733d2220fa9a7fc37139931471af62/docs/guides/ce-compound.md) and [refresh](https://github.com/EveryInc/compound-engineering-plugin/blob/8df67793b9733d2220fa9a7fc37139931471af62/docs/guides/ce-compound-refresh.md), checked Sep 2026 — [practitioner direct]; [Aggarwal and Ghalaty](https://arxiv.org/abs/2607.13091), Jul 2026 — [academic/research]; [Husain and Shankar](https://hamel.dev/blog/posts/evals-faq/how-many-examples-do-i-need-for-an-eval.html), modified Sep 2026 — [practitioner direct]; [Böckeler](https://www.martinfowler.com/articles/sensors-for-coding-agents.html), May 2026 — [practitioner direct])
+
+**Operational boundary:** capture raw evidence automatically; let the agent propose scoped observations and candidate rules; require human-owned, versioned promotion for active rules, skills, tests, and evaluators; treat harness changes like production code with comparative evaluation and rollback; keep permissions, credentials, and approval authority non-learnable. Will Larson's direct account confirms that Imprint implemented Compound Engineering in its frontend and backend monorepos, while Paweł Huryn reports a personal observation → hypothesis → rule system that produced 24 rules in a month. Neither supplies controlled later-task evidence. No public system closes the complete promotion loop across multiple teams. ([Larson](https://lethain.com/everyinc-compound-engineering/), Apr 2026 — [practitioner direct for Imprint implementation]; [Huryn](https://www.productcompass.pm/p/claude-md-snippets), Mar 2026 — [practitioner direct])
 
 ## Key Verdict (as of 2026-09-07)
 

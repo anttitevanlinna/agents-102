@@ -1183,6 +1183,23 @@ Recent research makes the failure concrete. Persistent-file content can affect l
 
 ---
 
+## Learning Surfaces Form an Authority Ladder
+
+**Thesis:** The stronger an artifact's effect on future action, the harder its promotion gate must be.
+
+Current practitioners do not update one undifferentiated thing called memory. They capture traces and outcomes, write scoped solution notes and hypotheses, promote accepted review comments into versioned behavioral rules, turn confirmed failures into eval cases, and encode objective expectations as executable sensors. These artifacts carry different force: a trace is evidence, a rule steers behavior, a test can block change, and a permission authorizes an effect.
+
+The workable automation boundary follows that force. Raw evidence can be captured automatically. Candidate knowledge can be generated automatically when it retains source and scope. Active rules, skills, tests, and evaluators need human-owned promotion and version history. Harness changes need comparative evaluation and rollback. Permissions and approval authority remain external policy, never a learned artifact.
+
+**The implication for CTOs:** Design the learning loop as several promotion paths, not one memory write API. Grant automation by artifact class and blast radius.
+
+**Applies to:** Agents 101 module 9, learning-agent architecture, DevSecOps operating model
+**Sources:** [Every `ce-compound`](https://github.com/EveryInc/compound-engineering-plugin/blob/8df67793b9733d2220fa9a7fc37139931471af62/docs/guides/ce-compound.md) and [`ce-compound-refresh`](https://github.com/EveryInc/compound-engineering-plugin/blob/8df67793b9733d2220fa9a7fc37139931471af62/docs/guides/ce-compound-refresh.md) — [practitioner direct], checked 2026-09-08; [Aggarwal and Ghalaty](https://arxiv.org/abs/2607.13091) — [academic/research], 2026-07-13; [Husain and Shankar](https://hamel.dev/blog/posts/evals-faq/how-many-examples-do-i-need-for-an-eval.html) — [practitioner direct], modified 2026-09-01; [Böckeler](https://www.martinfowler.com/articles/sensors-for-coding-agents.html) — [practitioner direct], 2026-05-27. Full evidence in OODA cycle 184.
+**Evidence boundary:** L2. The individual mechanisms are real, but their composition is a design inference and no multi-team production implementation closes every promotion path.
+**Date:** 2026-09-08
+
+---
+
 Copy this for new insights:
 
 ```

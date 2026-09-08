@@ -33,7 +33,7 @@ Klaassen argues that spending most of your time typing code means you're doing i
 Before any agent writes code, produce a markdown plan with data models, file references, architectural decisions — detailed enough that a human or another agent could execute it without asking a question. Tests are written *from the plan*; testability is a planning output, not a post-hoc add-on.
 
 - Dan Shipper **and** Kieran Klaassen, *Compound Engineering: How Every Codes With Agents* (Every, Dec 11 2025) `[practitioner direct, vendor venue]` — https://every.to/source-code/compound-engineering-how-every-codes-with-agents. Byline checked 2026-07-30: the page carries `authors: [Dan Shipper, Kieran Klaassen]` and is first-person-plural throughout (*"we've created," "We run five software products"*). Genuine co-authorship, not a journalist writing up a practitioner — **do not label this one `[practitioner analysis]`.** The `source-code/` path above is the one verified to resolve; a `chain-of-thought/` path for the same slug has not been tested. This page also carries a vendor-self-reported metric — *"a single developer can do the work of five developers a few years ago, based on our experience at Every"* — Level 0, do not promote.
-- Will Larson on Klaassen, *Learning from Every's Compound Engineering* (Apr 2026) `[practitioner analysis]` — https://lethain.com/everyinc-compound-engineering/. Larson writes about the plan-as-artifact step holding up against a real monorepo at Imprint. **Open question, do not resolve by assumption:** whether he deployed it there himself (which would make this a genuine second data point, and him `[practitioner direct]` for that claim) or is arguing it would hold from his own read. Until someone reads the piece closely enough to say, treat him as one analyst commenting on one org — **not** a second company replicating the pattern.
+- Will Larson on Klaassen, *Learning from Every's Compound Engineering* (Apr 2026) — https://lethain.com/everyinc-compound-engineering/. Read directly 2026-09-08: Larson says implementation in Imprint's frontend and backend monorepos took about an hour. Treat the page as `[practitioner direct]` for Imprint's implementation and `[practitioner analysis]` for his interpretation of Every. This is a genuine second organization adopting the mechanics, but it reports installation and fit rather than later-task outcomes.
 
 ## Parallel reviewer agents — fan-out instead of one bottleneck
 
@@ -45,13 +45,17 @@ Specialised reviewer agents running in parallel, each looking for a different cl
 - Klaassen, *My AI Had Already Fixed the Code Before I Saw It* — describes asking Claude to run a test 10 times and analysing the failures (*"it's able to identify a frustrated user nine times out of 10"*). That is iteration against a flaky detector on one feature, **not** "iterate a verifier until 10 consecutive passes" and not a general reliability benchmark. Do not restate it as either.
 - Klaassen, *How I Polish Software That Agents Built* (Every / Source Code, 2026-07-13) `[practitioner direct, vendor venue]` — https://every.to/source-code/how-i-polish-software-that-agents-built. The pattern is still live in his most recent writing on the thread: *"Review fans out parallel reviewers, each looking for a different class of issue."* Also describes `/ce-compound` codifying a stated preference into a rule the system then applies unprompted on the next relevant feature. Still **[L2 single case]** — same practitioner, same org; recency is not independence.
 
-## The compound step — writing learnings back into CLAUDE.md
+## The compound step — durable reasoning enters a retrieval loop
 
-The difference between "I used an agent today" and "my codebase compounds" is one file. After every loop, capture the preference, bug-pattern, or architectural rule into CLAUDE.md / AGENTS.md / skill files. The next session starts there.
+The current plugin does not flatten every lesson into `CLAUDE.md`. It routes machine-enforceable behavior toward a test, type, or assertion; local rationale toward code comments; change history toward commits or PRs; and durable cross-boundary reasoning toward `docs/solutions/`. Later ideation and planning read that store. Full capture can inspect current and selected historical sessions; non-interactive mode can write a qualifying learning automatically, but it will not silently edit `AGENTS.md` or `CLAUDE.md` for discoverability.
 
+`ce-compound-refresh` adds the missing maintenance edge inside that solution store: Keep, Update, Consolidate, Replace, Delete, or mark an ambiguous unattended case stale. This is explicit forgetting and contradiction handling for knowledge documents, not autonomous promotion into higher-authority rules or permissions.
+
+- Current `ce-compound` guide (checked 2026-09-08) `[practitioner direct]` — https://github.com/EveryInc/compound-engineering-plugin/blob/8df67793b9733d2220fa9a7fc37139931471af62/docs/guides/ce-compound.md
+- Current `ce-compound-refresh` guide (checked 2026-09-08) `[practitioner direct]` — https://github.com/EveryInc/compound-engineering-plugin/blob/8df67793b9733d2220fa9a7fc37139931471af62/docs/guides/ce-compound-refresh.md
 - Klaassen, *My AI Had Already Fixed the Code Before I Saw It* (single case, L2 — labelled below) — link above
 - Klaassen, *The Folder Is the Agent* (Every / Source Code, 2026-04-13) `[practitioner direct, vendor venue]` — https://every.to/source-code/the-folder-is-the-agent. Names the instruction file **"load-bearing"** and characterises what it holds as *"conventions and standards," "institutional knowledge," "operational memory."* The strongest first-person statement on file that the persistence mechanism is central rather than decorative.
-- Larson (L1 analyst) characterises the compound step as "the one pattern many practitioners have intuited but have not found a consistent mechanism to implement" — single analyst opinion, not independent practitioner replication — https://lethain.com/everyinc-compound-engineering/
+- Larson characterises the compound step as "the one pattern many practitioners have intuited but have not found a consistent mechanism to implement" — L1 analysis of Every. His separate first-person statement that Imprint implemented it is L2 adoption evidence, not effectiveness evidence — https://lethain.com/everyinc-compound-engineering/
 - Peter Yang on Klaassen, *How to Make Claude Code Better Every Time You Use It* (Behind the Craft podcast, Feb 2026) — [domain trade publication] — https://podcasts.apple.com/ky/podcast/how-to-make-claude-code-better-every-time-you-use-it/id1736359687?i=1000748776547. The episode title is the module.
 
 ## Operational scale — two engineers, five products
@@ -74,7 +78,7 @@ Cora, Monologue, Sparkle, Spiral, and Every.to run with primarily single-person 
 
 - **Tests are a planning output, not a coding output.** The plan specifies the tests; the agent writes them first.
 - **Klaassen treats reviewer reliability as measurable rather than assumed** — he re-runs a check to see how often it actually fires. The specific "10 times" figure is one example on one feature, not a threshold he prescribes.
-- **Klaassen and Larson both name the compound step as the hard one.** Plan and Review are legible; Compound requires writing the lesson down when the feature already shipped. Larson *agrees* with Klaassen's own self-assessment — one analyst reading one org is not confirmation in the evidentiary sense. **Whether most teams fail at this step is unestablished**: no study, survey, or count of teams is cited anywhere in this file, and one org plus one commentator licenses no claim about a general population.
+- **Klaassen and Larson both name the compound step as the hard one.** Plan and Review are legible; Compound requires writing the lesson down when the feature already shipped. Larson's Imprint implementation establishes a second organization adopting the mechanics, not a second measured effectiveness result. **Whether most teams fail at this step is unestablished**: no study, survey, or count of teams is cited anywhere in this file.
 - **Taste is the non-automatable layer**, on Klaassen's argument. Not romantic — division-of-labour. His claim is that agents can't tell which of three correct solutions matches the vision in your head; that is his stated view, not an established property of agents.
 - **One plugin, many stacks.** Same loop in Claude Code, Codex, Cursor, Gemini CLI, Copilot. Factor practice from tool.
 
@@ -86,7 +90,7 @@ Larson, reading the four-step form, takes three of those four steps to be well-k
 
 <!-- maintainer -->
 
-**Last updated:** 2026-07-30
+**Last updated:** 2026-09-08
 
 **Source verification — re-run before this file is cited anywhere:**
 

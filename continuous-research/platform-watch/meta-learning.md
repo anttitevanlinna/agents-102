@@ -613,3 +613,7 @@ The productive query was not “agent memory accuracy” but a boundary audit: w
 ### Cycle 183 — 2026-09-07
 
 Library research became legible only after classifying the object each project persists—workflow state, facts, relationships, identity, experience, procedure, or evaluation. GitHub stars were useful for a current attention shortlist but could not support production-adoption rankings; vendor benchmarks were even less comparable because the systems optimize different memory objects. Future stack surveys should begin from the query and write contract, then inspect the smallest library that satisfies it.
+
+### Cycle 184 — 2026-09-08
+
+Re-reading a maintained practitioner's repository changed the answer more than searching for another framework: Every had added explicit capture eligibility, cross-agent session-history probing, and a separate refresh/retirement skill since the earlier snapshot. For learning-agent research, inspect the current write target and maintenance path, not only the branded method or an old commit. A people-first roster also needs artifact-level verbs—who captures traces, who promotes rules, who writes evals, who builds sensors—because saying several practitioners "do memory" hides the actual evidence.

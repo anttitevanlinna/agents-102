@@ -54,7 +54,7 @@ Ask Claude to sharpen the skill's weakest section from invocation evidence. Then
 
 Claude is reading the skill file fresh and your m3-security scrollback. Useful (file content survived the side-quest /clear and carries the encoded conventions) but charitable (same-context-window self-audit under-flags). Other tells to watch for: Claude may open with a plan before showing the diff, and sycophancy can dress up a cosmetic edit as a meaningful one. You can make the grill hotter: ask Claude to over-flag (*"be harsher than necessary, find at least two sections that underdelivered, assume it's worse than it looks"*), tell it to skip preamble and lead with the before/after diff, or fresh-session it (dispatch a subagent with the SKILL.md pasted cold, no scrollback). The default keeps it in-session for evidence access; opt up if the read matters.
 
-Three modules of loop work sit behind you. Before you clear the session, the near half of the map, seen whole with its parts named.
+Before you clear the session, the near half of the map, seen whole with its parts named.
 
 [Lecture: The loop half, filled in](lectures/the-loop-half-filled.md)
 
@@ -107,8 +107,6 @@ Optional. One read.
 <!--tier:3-->
 
 Your staff engineer sees a test-strategy skill tuned to this codebase, your CISO sees a STRIDE decision with an ADR. Module 4 turns the discipline inward: a real task walked against everything you have built so far, the test-strategy conventions and the access-surface facts and the hardening decision included.
-
-Optional, when your sessions start running heavy: [The context ceiling and token efficiency](trainings/agentic-engineering-101/supplementary/the-context-ceiling.md) on keeping the context window lean.
 
 <!-- maintainer -->
 

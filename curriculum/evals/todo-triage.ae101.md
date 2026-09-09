@@ -158,6 +158,16 @@ node -e 'const r=require("./curriculum/evals/todo-triage.ae101.json").filter(x=>
 
 **A gate-discharge pass was run and returned nothing.** Every open card was re-tested against the narrower question *has Antti already made this call* — the §17 narrowing, the §43 carve-out, the vocabulary-registry sweep — with a skeptic per proposed discharge arguing the gate still applies. No card discharged. The standing exemptions are narrower than they look from a rule's headline, and a finding that merely touches §17 or §43 is not covered by what he ruled on a different shape.
 
+## The verdict vocabulary changed, and half the queue went with it
+
+`TODO` is retired from judge output (Antti 2026-09-08). `verdict` answers one question — is anything owed — so it carries two live values, PASS and REVISE, plus `N/A`. **`suggestions[]` is a separate channel riding alongside, not a third status**: a PASS may carry suggestions, a REVISE may carry them, most rows carry none, and silence on one is a complete answer. A suggestion states `rule`, `line`, `now`, `proposed`, or it is not emitted — if you cannot write the replacement you have a feeling, not a suggestion. TODO and WATCH stay canonical in `pre-cohort-todos.md`, where a human records follow-up rather than a judge deferring a decision.
+
+**Naming trap worth not repeating.** In the seven rule-row classes the old `todos_count` always meant *REVISE with `blocking: false`* — the open card queue, not optional advice. It is `nonblocking_findings_count`. Renaming it `suggestions_count` would have made the entire backlog disappear by vocabulary; only the behavior class genuinely counts suggestions.
+
+**What this retired.** `check_writing.md` §27 says in its own body that it is *"not a REVISE on its own"* and *"the default move, not the law"*, and had collected 34 REVISE rows across 13 files — half the queue, built from a rule read to its prohibition and not to its end. Those closed without anyone reading a sentence of prose. `check-advisory-verdicts.js` now exits 1 on any REVISE citing a rule whose body calls itself advisory, so the class cannot regenerate. **Antti's bar on §27, recorded because it is not derivable from the rule:** not even a suggestion worth reading unless three things say the same, and not automatically then — he declined the first sampled triple because its middle sentence was the bridge.
+
+**Migration state.** 818 instances migrated; legacy `todos[]` moved to `notes[]` whole, since a suggestion owes a replacement and no legacy row carried one. Rubrics, `check-instance-schema.js`, `stamp-from-reeval.js`, `judge-bench.js`, the three workflow dispatch schemas and 63 `Quality:` lines all speak the new vocabulary. ae101's schema gate exits 0; the other two trainings carry 14 pre-existing count mismatches, down from 25. → `compounded/2026-09-08-platform-a-schema-outranks-a-rulebook.md`
+
 ## The finish line, and why the ledger is not it
 
 A todo is a row a judge wrote. **Fixing the prose does not remove the row** — only a re-judge does, and a re-judge of a changed body is owed anyway. So the ledger cannot be driven to zero by editing; it drains in one direction only, and the order is fixed:

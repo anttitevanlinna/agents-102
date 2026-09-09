@@ -4,7 +4,7 @@ domain: cross-domain
 evidence_level: null
 platforms: []
 nordic: true
-updated: 2026-08-08
+updated: 2026-09-09
 answers:
   - "how to research effectively?"
   - "what has the system learned about researching?"
@@ -64,6 +64,12 @@ Proven patterns for how to research effectively. Promoted from observations when
 ## Cycle Observations
 
 Each entry: cycle number, date, what the researcher learned about researching.
+
+### Cycle 210 — 2026-09-09
+
+Dynamic Workflows (3 months post-launch) confirmed the SEO saturation anti-pattern at scale: the launch generated so many explainer articles that practitioner-direct signals are buried within the first 3-5 pages of any topic search. Platform-filtered queries (`site:x.com`, `site:news.ycombinator.com`, `-site:anthropic.com`) are the only reliable recovery path for practitioner signal in a saturated topic. For any feature >2 months old with high SEO competition, skip unfiltered web search entirely and go directly to HN + practitioner site search.
+
+The Fable 5.1 improvement claim downgrade (L3→L2) reveals a source-concentration failure mode: when multiple independent practitioners comment in the same HN thread on the same day, it looks like convergence but is actually temporally concentrated single-event evidence. True L3 requires temporal distribution across multiple venues and dates — same-thread same-day commenters count as one voice cluster, not 10 voices. This distinction should be applied retroactively when any convergence claim was established entirely from one thread.
 
 ### Cycle 209 — 2026-09-08
 

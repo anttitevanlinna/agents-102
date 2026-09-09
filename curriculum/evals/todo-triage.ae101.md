@@ -107,6 +107,7 @@ Per-card state lives in the JSON on a `card` object (`outcome`: applied · decli
 | `composing-the-workflow:10` §27a | declined | keep-note: the sentence says which way is up |
 | `composing-the-workflow:33` §27a | declined | keep-note: the tool-independent line outlives the primitive names |
 | `story-of-module-6:55` §27d | applied | the close ends on the sim catch, then *Your turn* |
+| `prework:60` §2 lead-in | applied | the lead-in asks *you*, and no longer confirms a branch check the fence never runs |
 | `story-of-module-6:23` research §1 | applied | Antti's wording: *a keen reader* |
 | `walk-and-send-off-2:26` §40 carry-clause | declined | `§40b` carve-out: THE FENCE HAS TWO READERS — run the deletion test twice |
 | `extract-the-task-shaping-rule-1` §36 | applied | one blank line before the stop-and-wait; 92 words either side |

@@ -207,14 +207,14 @@ Each subagent returns structured JSON (see `curriculum/evals/judges/<class>.md` 
 ### <file-1>
 - Verdict: PASS | REVISE
 - Blocking findings: K
-- TODOs: J
+- Non-blocking findings: J
 - (Per-rule lines if REVISE — quoted from JSON `rules_evaluated[]` where `verdict: REVISE`)
 
 ### <file-2>
 - ...
 
 ### Summary
-N files, K total blocking, J total TODOs.
+N files, K total blocking, J total non-blocking findings.
 ```
 
 Do NOT inline the entire JSON — extract REVISE rules and quote evidence. The full JSON is logged to `curriculum/evals/instances/<training>--<surface-type>--<file-slug>.<class>.json`, where `<surface-type>` is derived from the file's parent directory (`curriculum/trainings/<t>/` → `module`, `curriculum/exercises/` → `exercise`, `curriculum/lectures/` → `lecture`, `curriculum/trainings/<t>/supplementary/` → `supplementary`, `curriculum/trainings/<t>/reference/` → `reference`) — e.g. `ae101--module--getting-going.pedagogy.json` (overwrite per-class per-file per the no-dated-reports rule in `check_writing.md`). Directory-derived, not basename-keyed, so a module and an exercise that share a slug (`spot-gaps-build-the-loop` is both) never collide.

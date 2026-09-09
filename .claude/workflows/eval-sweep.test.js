@@ -39,10 +39,10 @@ const cleanJudge = async (_prompt, opts) => {
   const label = opts.label || '';
   if (label.startsWith('refute-')) return { refuted: true, reasoning: 'stub' };
   if (label.startsWith('cross_module:')) {
-    return { file: 'a.md; b.md', class: 'cross_module', verdict: 'PASS', findings: [], todos: [] };
+    return { file: 'a.md; b.md', class: 'cross_module', verdict: 'PASS', findings: [], suggestions: [] };
   }
   const cls = label.replace(/^confirm:/, '').split(':')[0];
-  return { file: `curriculum/x/${label.split(':').pop()}.md`, class: cls, verdict: 'PASS', findings: [], todos: [] };
+  return { file: `curriculum/x/${label.split(':').pop()}.md`, class: cls, verdict: 'PASS', findings: [], suggestions: [] };
 };
 
 const ARGS = {
@@ -120,9 +120,9 @@ test('a surviving finding is reported; a refuted one is not', async () => {
   const withFinding = (refuted) => async (prompt, opts) => {
     const label = opts.label || '';
     if (label.startsWith('refute-')) return { refuted, reasoning: 'stub' };
-    if (label.startsWith('cross_module:')) return { file: 'a.md', class: 'cross_module', verdict: 'PASS', findings: [], todos: [] };
+    if (label.startsWith('cross_module:')) return { file: 'a.md', class: 'cross_module', verdict: 'PASS', findings: [], suggestions: [] };
     if (label.startsWith('behavior:')) return { file: 'curriculum/exercises/e.md', class: 'behavior', verdict: 'REVISE', findings: [finding], todos: [] };
-    return { file: 'curriculum/lectures/l.md', class: 'technical', verdict: 'PASS', findings: [], todos: [] };
+    return { file: 'curriculum/lectures/l.md', class: 'technical', verdict: 'PASS', findings: [], suggestions: [] };
   };
   const killed = await run(ARGS, withFinding(true));
   assert.equal(killed.summary.reduce((n, s) => n + s.confirmed.length, 0), 0);
@@ -170,16 +170,17 @@ test('the default dispatch carries every mechanic the hillclimb validated', asyn
 // The bug this guards is the one that produced every other instance bug. The
 // dispatch used to say "in the shape already there" — imitate the nearest
 // example — which is replication with mutation and no selection: 810 instances,
-// 60+ top-level keys, three spellings of the drift note, and 134 AE101 todos
+// 60+ top-level keys, three spellings of the drift note, and 134 AE101 findings
 // counted onto Quality rows and written down nowhere. A schema the judge cannot
 // read is not a schema, so it has to travel in the prompt.
 test('the judge is given the instance schema, not an example to imitate', async () => {
   const p = await promptFor({});
   assert.doesNotMatch(p, /shape already there/, 'imitating the neighbour is what bred the dialects');
   assert.match(p, /rules_evaluated {2}one row per rule/, 'the ledger is named field by field');
-  assert.match(p, /PASS \| PASS_WITH_TODOS \| REVISE \| N\/A/, 'the verdict enum is stated, not assumed');
+  assert.match(p, /PASS \| REVISE \| N\/A/, 'the verdict enum is stated, not assumed');
+  assert(!/PASS_WITH_TODOS/.test(p), 'the retired rung must not be offered back to judges');
   assert.match(p, /derived from `rules_evaluated`, never authored/, 'a count beside a list drifts from it');
-  assert.match(p, /did not write down is a todo that does not exist/, 'the failure is named, not implied');
+  assert.match(p, /did not write down is a finding that does not exist/, 'the failure is named, not implied');
   assert.match(p, /Do not write a `todos` array/, 'one ledger — the second one contradicted it 61 times in 79');
   assert.match(p, /check-instance-schema\.js --training \S+ --quiet/, 'and the judge must run the gate on itself');
 });

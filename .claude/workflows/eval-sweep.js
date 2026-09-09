@@ -14,7 +14,7 @@ export const meta = {
 // Six of these were hand-built in one session (set-a … set-g). Each copy drifted:
 // one lost the read-only clause and five verdicts died to a sibling write-race;
 // one crashed on a refuter that returned null; one forced a binary PASS/REVISE
-// schema so a judge with a non-blocking TODO had to report REVISE, and the
+// schema so a judge with a non-blocking observation had to report REVISE, and the
 // orchestrator read that as a gate. Agent-written dispatch drifts exactly like
 // agent-written prose does, and the fix is the same: one artefact, edited.
 // ---------------------------------------------------------------------------
@@ -173,10 +173,13 @@ const VERDICT_SCHEMA = {
     // problem, but a corpus-wide one to settle deliberately, not per sweep.)
     file: { type: 'string', description: 'the curriculum file you judged, as an ABSOLUTE path (the corpus convention — `/Users/…/agents-102/curriculum/…`), exactly as the header names it — NOT the instance JSON you wrote' },
     class: { type: 'string' },
-    // PASS_WITH_TODOS is the rung a binary schema kept collapsing into REVISE.
-    // A judge with a non-blocking observation must be able to say so without
-    // the orchestrator reading it as a gate.
-    verdict: { enum: ['PASS', 'PASS_WITH_TODOS', 'REVISE'] },
+    // Two verdicts, and suggestions are not a third (2026-09-08). `verdict`
+    // answers whether anything is OWED, which is yes or no; a non-blocking
+    // observation rides in `suggestions` alongside a PASS. The retired
+    // PASS_WITH_TODOS rung existed because a binary schema kept collapsing
+    // observations into REVISE — the separate channel is what fixes that, not a
+    // third enum value the orchestrator then has to triage.
+    verdict: { enum: ['PASS', 'REVISE'] },
     body_sha: { type: 'string', description: 'shasum -a 256 of the file, first 64 hex, taken when you START reading' },
     // §49's companion. Re-deriving the parked rows costs only time, so it is
     // invisible in a finished instance: same ledger, same verdict, same hash.
@@ -197,13 +200,13 @@ const VERDICT_SCHEMA = {
         properties: { rule: { type: 'string' }, line: { type: 'integer' }, quote: { type: 'string' }, harm: { type: 'string' }, fix: { type: 'string' } },
       },
     },
-    todos: {
+    suggestions: {
       type: 'array',
-      description: 'Non-blocking observations. Reported, never refuted, never a gate.',
+      description: 'Concrete swaps the maintainer may take or ignore. Never a gate, never refuted, never re-filed as REVISE, and silence is a complete answer. Emit one ONLY if you can write the replacement — no `proposed`, no row.',
       items: {
         type: 'object',
-        required: ['rule', 'note'],
-        properties: { rule: { type: 'string' }, line: { type: 'integer' }, note: { type: 'string' } },
+        required: ['rule', 'now', 'proposed'],
+        properties: { rule: { type: 'string' }, line: { type: 'integer' }, now: { type: 'string' }, proposed: { type: 'string' } },
       },
     },
   },
@@ -218,12 +221,12 @@ const READ_ONLY = `## You are READ-ONLY on the target file
 
 Do not edit it at all — not the body, not the maintainer block, not a backing block, not a source stamp. Other judges are reading this same file right now. On an earlier run judges were allowed to fix maintainer notes; five verdicts were then thrown away because a sibling wrote the file mid-read and the recorded \`body_sha\` matched no commit. Scope-of-content is not scope-of-concurrency: the sha covers the whole file.
 
-Anything you would have fixed goes in \`findings\` (blocking) or \`todos\` (not). The orchestrator applies them after every class on this file has returned. The only file you write is your own instance JSON.`
+Anything you would have fixed goes in \`findings\` (blocking) or \`suggestions\` (not owed — and only if you can write the replacement). The orchestrator applies them after every class on this file has returned. The only file you write is your own instance JSON.`
 
 const EVIDENCE_FULL = `## Verdict discipline
 
 - **A blocking finding owes a harm statement** — what goes wrong in the room or on the page. "Violates §N" with no harm is a citation, not a finding. A rule firing is not the harm arriving.
-- **Non-blocking goes in \`todos\`, and the verdict is PASS_WITH_TODOS.** Do not report REVISE to make an observation visible; REVISE means a gate, and a TODO escalated to a gate costs a maintainer decision that was never owed.
+- **A non-blocking rule finding is still a REVISE row with \`blocking: false\`, and it is still owed** — it enters the card queue. What is NOT owed goes in \`suggestions\`, alongside a \`verdict: PASS\`. Do not report a blocking REVISE to make an observation visible; and do not demote a real finding to a suggestion to avoid the queue.
 - **A PASS owes evidence too.** A mechanically-checkable rule marked PASS carries the command result; a judgement rule marked PASS quotes the line closest to violating it, with line number, and says why it stays inside; a rule that does not apply is N/A with a one-clause reason. Nothing is PASS by default. Validate your own greps against a planted test string before trusting a zero.
 - **No citing a tool you did not run.** If your evidence names a script, command or exit code, you must have RUN it in this session; paste the exact command and its real output. Never report that a checker "confirms" something from inference about what it probably does.
 - **Stay in your class.** Evaluate only the compendiums your template puts in scope. A verdict outside your lane is not extra coverage, it is an unowned claim that outranks nothing and can contradict something. Put it in \`todos\`.`
@@ -367,18 +370,18 @@ Overwrite \`curriculum/evals/instances/${j.slug}.${j.cls}.json\`. Do NOT copy th
 class            "${j.cls}"                     exactly this — it is what every tool globs on
 training         "${j.training || ''}"
 file             absolute path of the file you judged
-verdict          PASS | PASS_WITH_TODOS | REVISE | N/A     — no other word
+verdict          PASS | REVISE | N/A                       — no other word
 body_sha         sha256 of the FULL file
 shape_hash       as supplied in your brief
 rules_evaluated  one row per rule you touched: {compendium, rule_index, rule_lead,
                  verdict, evidence, fix_hint, blocking}
-todos_count      how many rules_evaluated rows are verdict REVISE + blocking false
+nonblocking_findings_count   how many rules_evaluated rows are verdict REVISE + blocking false
 blocking_findings_count   how many are verdict REVISE + blocking true
 \`\`\`
 
-**A todo you counted but did not write down is a todo that does not exist.** The Quality row copies \`todos_count\` and appends "see instances/${j.slug}.${j.cls}.json", so a count with no row behind it makes the row cite evidence that is not in the file. 134 AE101 todos were lost exactly this way. Both counts are derived from \`rules_evaluated\`, never authored beside it — write the rows first and count them second.
+**A finding you counted but did not write down is a finding that does not exist.** The Quality row copies \`nonblocking_findings_count\` and appends "see instances/${j.slug}.${j.cls}.json", so a count with no row behind it makes the row cite evidence that is not in the file. 134 AE101 todos were lost exactly this way. Both counts are derived from \`rules_evaluated\`, never authored beside it — write the rows first and count them second.
 
-Do not write a \`todos\` array. It is a second ledger for the same thing, and where both existed they disagreed in 61 of 79 instances.
+Do not write a \`todos\` array — the field is retired (2026-09-08). It was a second ledger for the same thing, and where both existed they disagreed in 61 of 79 instances. \`suggestions\` is not its replacement: it is a different channel, for swaps nothing is owed on, and it carries \`now\` and \`proposed\` or it is not written.
 
 Then run BOTH and report the real integers:
 \`\`\`
@@ -537,7 +540,7 @@ return {
     diff_summary: v.diff_summary,
     drift_rules_reread: v.drift_rules_reread || [],
     accept_notes_found: v.accept_notes_found || [],
-    todos: v.todos || [],
+    suggestions: v.suggestions || [],
     refuter_deaths: v.refuter_deaths || 0,
     confirmed: (v.confirmed || []).map(c => ({ rule: c.rule, line: c.line, quote: c.quote, harm: c.harm, fix: c.fix })),
     unadjudicated: (v.adjudicated || []).filter(a => a.unadjudicated).map(a => ({ rule: a.rule, line: a.line, votes: a.votes.length })),

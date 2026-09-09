@@ -112,10 +112,10 @@ const SCHEMA = {
   type: 'object',
   required: ['verdict', 'rows_written', 'started_at', 'ended_at'],
   properties: {
-    verdict: { enum: ['PASS', 'PASS_WITH_TODOS', 'REVISE'] },
+    verdict: { enum: ['PASS', 'REVISE'] },
     rows_written: { type: 'integer' },
     findings_count: { type: 'integer' },
-    todos_count: { type: 'integer' },
+    nonblocking_findings_count: { type: 'integer' },
     started_at: { type: 'integer', description: 'unix seconds from `date +%s` run as your first action' },
     ended_at: { type: 'integer', description: 'unix seconds from `date +%s` run as your last action' },
     notes: { type: 'string' },

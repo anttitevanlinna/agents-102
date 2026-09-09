@@ -97,7 +97,7 @@ Return ONE JSON object, exactly this shape:
 **Top-level `verdict` is computed deterministically — do NOT override with intuition:**
 - Count rules where `verdict: REVISE` AND `blocking: true` → that's `blocking_findings_count`.
 - If `blocking_findings_count > 0` → top-level `verdict: REVISE`.
-- If `blocking_findings_count == 0` → top-level `verdict: PASS`, regardless of how many non-blocking REVISE rules exist. Non-blocking REVISEs are TODOs, not blockers — the top verdict reflects ship-readiness, not perfection.
+- If `blocking_findings_count == 0` → top-level `verdict: PASS`, regardless of how many non-blocking REVISE rules exist. A non-blocking REVISE is still owed work that enters the card queue; it is simply not a blocker, and the top verdict reflects ship-readiness rather than perfection.
 
 `nonblocking_findings_count` = count where `verdict: REVISE` AND `blocking: false`.
 

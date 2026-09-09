@@ -146,12 +146,12 @@ const SCORE_SCHEMA = {
 
 const VERDICT = {
   type: 'object',
-  required: ['verdict', 'rows_written', 'findings_count', 'todos_count'],
+  required: ['verdict', 'rows_written', 'findings_count', 'nonblocking_findings_count'],
   properties: {
-    verdict: { enum: ['PASS', 'PASS_WITH_TODOS', 'REVISE'] },
+    verdict: { enum: ['PASS', 'REVISE'] },
     rows_written: { type: 'integer' },
     findings_count: { type: 'integer' },
-    todos_count: { type: 'integer' },
+    nonblocking_findings_count: { type: 'integer' },
     notes: { type: 'string' },
   },
 }

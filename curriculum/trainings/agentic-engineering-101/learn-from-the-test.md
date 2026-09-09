@@ -13,7 +13,7 @@ Optional prep while it's still running: read Ethan Mollick, [The Bitter Lesson v
 ## What You'll Learn
 After this module, you will be able to:
 - **Diagnose** your un-packaged send-off through three named lenses, goal drift, context rot, plausible-but-wrong, grounded in quoted moments from the return
-- **Pair** each failure mode with the packaging that catches it: drift ↔ reference artefact, rot ↔ plan.md, plausible-but-wrong ↔ external verifier
+- **Pair** each failure mode with the packaging that catches it
 - **Build** a verifier shaped against your dominant failure (LLM judge, shell-hook, or Ralph re-feed)
 - **Assemble** the reference artefact + plan.md in conversation, scoped to the same task you sent off
 - **Re-send** the packaged version of the same task
@@ -269,6 +269,5 @@ header and handle per slide, never read bullets aloud. Two registers, one instru
 
 **First-cohort observation questions:**
 - Verifier-shape calibration: does the three-shape menu cover the failure modes students surface, or does a fourth/fifth shape want naming?
-- Compliance drift from the WYL pairing: `## What You'll Learn` bullet 2 hands out drift ↔ reference, rot ↔ plan.md, plausible-but-wrong ↔ verifier before the room has diagnosed anything. Does the room reach Phase 1 treating the three-pattern as the answer to adopt rather than as a lens to test their own artefact against? Pairs with the compliance-feeling drift in the Mood target above.
 
 Pre-cohort open items for M5: see `pre-cohort-todos.md`.

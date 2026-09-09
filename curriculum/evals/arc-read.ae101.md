@@ -70,16 +70,6 @@ Claim: M1's *loop* is orient → fix → close → compound (Key Concepts, close
 
 Fix direction: say what closed, the ticket or the fix landing where the team reads, not *"the loop"*.
 
-### B4 · reveal-early · severity 2 · card-shaped (module LO)
-
-File: `curriculum/trainings/agentic-engineering-101/learn-from-the-test.md:16`.
-
-Quote: *"**Pair** each failure mode with the packaging that catches it: drift ↔ reference artefact, rot ↔ plan.md, plausible-but-wrong ↔ external verifier"*
-
-Claim: the M5 LO slide hands out all three pieces and their pairings before the return is read, while the module body honours the embargo (the worries beat carries no trio pre-announcement; diagnose-and-resend Phase 2 paraphrases the pieces on purpose). The maintainer block (line 270) logs this as a first-cohort observation question, not a decision, so it is open rather than declined.
-
-Fix direction: name the move, not the pieces: pair each diagnosed failure with the check that would have caught it, and let what-packaging-is keep the names. LO4 (*"Assemble the reference artefact + plan.md"*) can stay beside an LO2 that names the move only.
-
 ### B5 · contradiction · severity 1 · maintainer-side (canon; apply directly)
 
 Files: `bosser-strategy:content-strategy-agentic-engineering-101.md:142` (Woven rule 3) and `:266` (Mood arc); `curriculum/trainings/agentic-engineering-101/learn-from-the-test.md:138` (maintainer block, the body's stance).
@@ -115,25 +105,12 @@ Fix direction: re-point the accept-note from M4 to M6's rule cut.
 - **B11, re-teach (skill definition on composing-the-workflow's footprint slide).** All three lenses: the maintainer block rules bold **skill** as one of three permitted handles (Antti, emphasis pass) and the bullet as the once-earned move = skill bridge; the registry's wording is lifted from the slide, not the reverse.
 - **B12, promise (the reach × calibration payoff twin owed an M6 home).** All three lenses: the promise chain below records the miss as canon-side and why the closer's expression frontier does not discharge it; `theory-plan.md:65` rules the twin design-side; the-gate-is-a-claim's accept-note keeps it deliberately withheld.
 
-## Findings: resolved (maintainer-adjudicated)
+## Refuted in earlier runs: do not re-file
 
-### 2026-09-03
-
-1. **WOBBLE, M5 → M6 signpost: FIXED.** The M6-cohort variant of `diagnose-and-resend.md` told the student *"the walk-away report at the close is what Module 6 opens on"*; M6 opens on the two transcripts read from the coordinates in `task.md` / `plan.md`, and no M6 student text mentions the report. One sentence now serves both cuts: *"The session closes with the agent's own report of what it did."*
-2. **NIT, a first name on a slide: FIXED.** *Dino's skill stack* was the only place the name appeared on the student's path; every other practitioner arrives with a surname. The heading reads *Dino Repo's skill stack*.
-3. **Closer pays the frame with additive examples only: REFUTED (precedent + design).** Subtraction lives in the rule cut and the second-loop figure's *add a rule · cut a rule* by Antti's 2026-09-02 ruling; the canon assigns the frame to the closer's first slide and the mechanisms elsewhere. Do not re-file.
-4. **Story's cut benediction sits directly before the closer's imperatives: REFUTED (text + design).** The module places the Human close between them, a deliberate ten-to-fifteen-minute human round; and the cut benediction was second-person credentialing, which the closer's imperatives are not. Do not re-file.
-
-### 2026-07-09 (still binding)
-
-1. **ARC-BREAK, eval reveal spent early: FIXED as consolidation.** Maintainer ruling: M5 talking evals is fine; the M6 reveal wasn't valuable. M6 consolidates (*Eval* slide in `composing-the-workflow.md`, measurement-first), M5 `## Next` tease matches.
-2. **Mood-label drift (compendium vs modules): FIXED at root.** Strategy doc + modules agree; `check_writing §4` points at the canonical source instead of quoting labels.
-3. **Self-charity recipe taught once.** The self-critique move (ask the skill for its weakest part, push back) lives at M3: the earn-the-trust LO and `author-test-strategy-skill.md`. M6 carries no re-teach.
-4. **Pacing sags: FIXED.** M5 reordered; M4's opening stack is three lectures.
-5. **Plan-file promise under-delivered: FIXED.** `map-the-access-surface` names the M2-noted plan path as the best input.
-6. **Leash stray in M3: FIXED.** M3 body carries no leash; the trifecta pre-leash beat is recorded as removed in earn-the-trust's maintainer block.
-7. **Klaassen dose + duplicated pre-read list: KEPT, maintainer decision.** Don't re-flag. Covers the `compound-and-close-1` roster line (A6 above).
-8. **Bare M1/M2 in prework: FIXED.** Prework body carries none; the maintainer block's module handles are not student text.
+- **Closer pays the frame with additive examples only (2026-09-03).** Subtraction lives in the rule cut and the second-loop figure's *add a rule · cut a rule* by Antti's 2026-09-02 ruling; the canon assigns the frame to the closer's first slide and the mechanisms elsewhere.
+- **Story's cut benediction sits directly before the closer's imperatives (2026-09-03).** The module places the Human close between them, a deliberate ten-to-fifteen-minute human round; and the cut benediction was second-person credentialing, which the closer's imperatives are not.
+- **Klaassen dose + duplicated pre-read list (2026-07-09).** Maintainer decision, kept. Covers the `compound-and-close-1` roster line (A6 above).
+- **Self-charity recipe re-teach (2026-07-09).** The self-critique move (ask the skill for its weakest part, push back) lives at M3, in the earn-the-trust LO and `author-test-strategy-skill.md`; M6 carries none.
 
 ## Promise chain
 

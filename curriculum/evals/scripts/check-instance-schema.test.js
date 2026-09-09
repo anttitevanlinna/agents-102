@@ -291,6 +291,46 @@ test('a repair edits the line, not the file', () => {
   assert.strictEqual(patchText('{\n "class": "story"\n}\n', { verdict: 'PASS' }), null)
 })
 
+// The refusal above is right for `verdict` and `class`, where absence means the
+// judge never said and a script must not decide. It was wrong for the two
+// counts, and the wrongness hid behind honest-looking words: `--fix` reported
+// five instances "left for a judge" when nothing about them needed judging —
+// their ledgers were right there, and patchText simply could not write a key
+// that was not already on the page. A queue that cannot drain reads exactly like
+// a queue that nobody has got to yet.
+//
+// So the counts, and only the counts, may be inserted. That is not a loosening:
+// this gate's whole doctrine is that a count is DERIVED, never authored, which
+// makes an absent count a gap in the record rather than a maintainer's silence.
+test('a missing count is inserted; a missing judgement is still refused', () => {
+  const { patchText } = require('./check-instance-schema.js')
+
+  const noCount = '{\n "class": "writing",\n "verdict": "PASS",\n "rules_evaluated": []\n}\n'
+  const out = patchText(noCount, { nonblocking_findings_count: 0 })
+  assert.ok(out, 'an absent count is insertable')
+  assert.strictEqual(JSON.parse(out).nonblocking_findings_count, 0)
+  assert.strictEqual(JSON.parse(out).verdict, 'PASS', 'nothing else moves')
+  assert.strictEqual(out.split('\n').length, noCount.split('\n').length + 1, 'exactly one line is added')
+  assert.ok(/"verdict": "PASS",\n "nonblocking_findings_count": 0,/.test(out),
+    'the count lands beside the verdict it qualifies, at the file\'s own indent')
+
+  // Both counts at once, on a file whose last key is the one being followed.
+  const two = patchText('{\n  "verdict": "PASS"\n}\n',
+    { nonblocking_findings_count: 2, blocking_findings_count: 1 })
+  assert.deepStrictEqual(
+    [JSON.parse(two).nonblocking_findings_count, JSON.parse(two).blocking_findings_count], [2, 1],
+    'a trailing key gains the comma it now needs')
+
+  // No verdict line to anchor to: the count still lands, at the end.
+  const anchorless = patchText('{\n "class": "writing"\n}\n', { blocking_findings_count: 0 })
+  assert.strictEqual(JSON.parse(anchorless).blocking_findings_count, 0)
+  assert.strictEqual(JSON.parse(anchorless).class, 'writing')
+
+  // The guard that matters is untouched: a verdict nobody recorded stays absent.
+  assert.strictEqual(patchText('{\n "class": "story"\n}\n', { verdict: 'PASS' }), null)
+  assert.strictEqual(patchText('{\n "verdict": "PASS"\n}\n', { class: 'story' }), null)
+})
+
 // One training's backlog must not gate another's work — the whole reason the
 // flag has no default.
 test('scan reads the record for the training, not the filename', () => {

@@ -53,7 +53,12 @@
  * `--fix` repairs only what one reading of the data can settle: a class field
  * disagreeing with the filename every tool globs on, a training field disagreeing
  * with the path of the file the instance says it judged, and a count disagreeing
- * with the single ledger beneath it. It will not invent a missing verdict and it
+ * with — or missing from — the single ledger beneath it. A count is the one thing
+ * it will write onto a page that lacks it, because a count is derived and its
+ * ledger is right there; until 2026-09-09 it could not, and reported those
+ * instances as "left for a judge", which is the most expensive kind of wrong: a
+ * queue nothing can drain looks exactly like a queue nobody has reached yet.
+ * It will not invent a missing verdict and it
  * will not choose between two ledgers — those want a judge, not a script. It
  * skips any instance with uncommitted changes, because a neighbouring session
  * writing that file is the likeliest reason it looks wrong right now.
@@ -130,13 +135,44 @@ const asInt = v => (typeof v === 'number' && Number.isInteger(v) ? v
 // indent, so a same-named key nested inside rules_evaluated is never touched.
 // Returns null when a key is not found where expected — the caller reports it
 // rather than falling back to a reformat.
+// The only keys this script may write onto a page that does not already carry
+// them. Both are derived — the ledger underneath decides their value, so an
+// absent one is a hole in the record, not a maintainer declining to answer.
+// `verdict` and `class` stay out: absence there is silence, and a script that
+// breaks silence invents evidence. Keeping the refusal narrow is the whole
+// point; widening this set is how a repair tool becomes an author.
+const INSERTABLE = new Set(['nonblocking_findings_count', 'blocking_findings_count']);
+
+// Put a derived count beside the verdict it qualifies, or last if there is no
+// verdict line to anchor to. Anywhere deterministic would do; next to the
+// verdict is where a reader already looks for it.
+function insertKey(text, indent, k, v) {
+  const line = `${indent}"${k}": ${JSON.stringify(v)}`;
+  const anchor = new RegExp(`^${indent}"verdict": [^\\n]*$`, 'm').exec(text);
+  if (anchor) {
+    const trailing = anchor[0].endsWith(',');
+    const head = trailing ? anchor[0] : `${anchor[0]},`;
+    return text.slice(0, anchor.index) + head + '\n' + line + (trailing ? ',' : '')
+      + text.slice(anchor.index + anchor[0].length);
+  }
+  const close = text.lastIndexOf('\n}');
+  if (close < 0) return null;
+  const before = text.slice(0, close);
+  return before + (/[^{[\s]$/.test(before) ? ',' : '') + '\n' + line + text.slice(close);
+}
+
 function patchText(text, patch) {
   const indent = (/\n(\s+)"/.exec(text) || [, '  '])[1];
   let out = text;
   for (const [k, v] of Object.entries(patch)) {
     const re = new RegExp(`^${indent}"${k}": [^\\n]*$`, 'm');
     const hit = re.exec(out);
-    if (!hit) return null;
+    if (!hit) {
+      if (!INSERTABLE.has(k)) return null;
+      out = insertKey(out, indent, k, v);
+      if (out === null) return null;
+      continue;
+    }
     const comma = hit[0].endsWith(',') ? ',' : '';
     out = out.slice(0, hit.index) + `${indent}"${k}": ${JSON.stringify(v)}${comma}` + out.slice(hit.index + hit[0].length);
   }

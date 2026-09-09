@@ -145,8 +145,10 @@ Per-card state lives in the JSON on a `card` object (`outcome`: applied · decli
 **The queue is ordered but the ladder is flat.** Every open card was value-ranked 1–5 for what a room feels; none reached 4, and the `room_cost` field says *nothing visible* or *almost nothing visible* on most of them. Regenerate the distribution rather than trusting a number written here:
 
 ```
-node -e 'const d=require("./curriculum/evals/todo-triage.ae101.json");const r=Array.isArray(d)?d:Object.values(d).find(Array.isArray);const o=r.filter(x=>(x.disposition||"").toUpperCase()==="CARD"&&!(x.card&&x.card.outcome));const b={};o.forEach(x=>{const v=(x.gate_triage||x.survivor_disposition||{}).value_rank||"?";b[v]=(b[v]||0)+1});console.log(o.length,b)'
+npm run evals:cards -- --training ae101
 ```
+
+That reader owns this ledger — `curriculum/evals/scripts/open-cards.js`, also the `CARDS` section of `npm run board`. It prints the open cards by rule and by value_rank, and separately the prepped maintainer edits, classified by **reading the target file** rather than trusting a status field: `pending` applies now, `moved` means the anchor changed underneath it, `applied` means it already landed and nobody marked the row. Until it existed this paragraph was the interface, and the one-liner it carried was rebuilt by hand each time — once with the wrong denominator, because `card.outcome` is written only on CARD rows and reading its absence as the backlog counts every refuted and stale row as open work.
 
 One-at-a-time is the right protocol against a gradient. Where the ladder is flat it is pure overhead, and the recommendation on record is: rule individually on the rank-3 cards, then take the rest as one batch.
 

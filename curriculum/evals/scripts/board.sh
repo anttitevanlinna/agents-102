@@ -17,9 +17,14 @@
 # Usage:
 #   curriculum/evals/scripts/board.sh [--training ae101] [--gate]
 #
-# --gate: exit 1 if any GATE-class reader failed (verdict agreement, instance
-# names, trace names). The queue and the freshness readers are reports, never
-# gates: owing a judge is a to-do list, not a broken repo.
+# --gate: exit 1 if any GATE-class reader failed (instance schema, verdict
+# agreement, instance names, trace names). The queue, the cards and the freshness
+# readers are reports, never gates: owing a judge or a decision is a to-do list,
+# not a broken repo.
+#
+# Two questions, two readers, both above the gates: eval-queue answers what owes
+# a JUDGE, open-cards answers what owes a HUMAN. Neither derives the other's
+# half, and a status question that reads only one of them undercounts.
 set -uo pipefail
 cd "$(dirname "$0")/../../.." || exit 2
 
@@ -40,13 +45,20 @@ fails=0
 
 # Reports first: what still owes work. Never gates.
 rule "QUEUE — what owes a judge"
-node curriculum/evals/scripts/eval-queue.js "${SCOPE[@]}"
+node curriculum/evals/scripts/eval-queue.js ${SCOPE[@]+"${SCOPE[@]}"}
+
+# The other half of "what's open". Until 2026-09-09 only the judge half had a
+# reader, and the human half was answered by copy-pasting a `node -e` one-liner
+# out of the prose of an unreferenced 29K report — which is how a 26-card queue
+# got read as 131.
+rule "CARDS — what owes a human"
+node curriculum/evals/scripts/open-cards.js ${SCOPE[@]+"${SCOPE[@]}"}
 
 rule "SIM TRACES — caches that no longer describe their file"
-node curriculum/evals/scripts/sim-freshness.js "${SCOPE[@]}" | tail -n 4
+node curriculum/evals/scripts/sim-freshness.js ${SCOPE[@]+"${SCOPE[@]}"} | tail -n 4
 
 rule "MOOD — persona scores against the ship bar"
-node curriculum/evals/scripts/sim-freshness.js --mood "${SCOPE[@]}" | tail -n 20
+node curriculum/evals/scripts/sim-freshness.js --mood ${SCOPE[@]+"${SCOPE[@]}"} | tail -n 20
 
 # A gate whose exit code is read through a pipe is not a gate: `$?` after
 # `node x | tail` belongs to tail, which always succeeds. That mistake was made
@@ -63,6 +75,20 @@ gate() {
 }
 
 # Gates second: what is internally inconsistent RIGHT NOW. These fail closed.
+
+# This one was missing until 2026-09-09, and its absence was the expensive kind:
+# the board printed "gates clean" while check-instance-schema was exiting 1 on
+# fifteen instances whose counts disagreed with their own ledgers. A gate that is
+# never called cannot report red, and a green board over a red checker is the
+# same lie whether the exit code was swallowed or never asked for. It needs a
+# training — the three have independent histories and one must not hold another
+# hostage — so with no --training there is nothing to check rather than
+# everything.
+if [ -n "$TRAINING" ]; then
+  gate "INSTANCE SCHEMA — counts against the ledgers beneath them" all \
+    node curriculum/evals/scripts/check-instance-schema.js --training "$TRAINING"
+fi
+
 gate "VERDICT AGREEMENT — instance JSON vs the Quality row citing it" all \
   node curriculum/evals/scripts/check-verdict-agreement.js --quiet
 

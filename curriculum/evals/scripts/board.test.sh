@@ -68,5 +68,23 @@ out="$(bash -c "
 echo "$out" | grep -q 'FAILS=2' || die "a red gate must not stop the ones behind it (got: $out)"
 ok "two red gates both report; neither masks the other"
 
+# ---- The unscoped board -------------------------------------------------------
+# `--training` is documented as optional, and without it the board died on its
+# very first reader: under `set -u`, "${SCOPE[@]}" on an EMPTY array is an
+# unbound variable in bash 3.2, which is what macOS ships. So `npm run board`
+# printed one header and exited 1. It went unnoticed because the scoped call is
+# the one anybody actually types — the broken path was the one in the usage line.
+out="$(bash -uo pipefail -c 'SCOPE=(); n() { echo "args=$#"; }; n ${SCOPE[@]+"${SCOPE[@]}"}; SCOPE=(--training ae101); n ${SCOPE[@]+"${SCOPE[@]}"}' 2>&1)"
+[ "$out" = "$(printf 'args=0\nargs=2')" ] || die "the guarded expansion must pass nothing when empty and both words when set (got: $out)"
+ok "an empty scope expands to no arguments instead of exploding"
+
+# Every line that expands SCOPE must carry the `+` guard. Matching the bare
+# string alone will not do — the guarded form CONTAINS it, so a naive grep
+# passes on the broken file and fails on the fixed one.
+bare="$(grep -n 'SCOPE\[@\]' board.sh | grep -v 'SCOPE\[@\]+' || true)"
+[ -z "$bare" ] || die "board.sh expands SCOPE without the +guard; with no --training that is an unbound variable under set -u:
+$bare"
+ok "every SCOPE expansion carries the empty-array guard"
+
 echo
 echo "1..$n"

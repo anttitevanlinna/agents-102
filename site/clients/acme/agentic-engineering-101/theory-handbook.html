@@ -2378,6 +2378,7 @@ body.theory-handbook {
     --ink-muted: #676762;
     --ink-line: #b8b8b2;
     --code-bg: #f4f4f1;
+    --font-reading: Charter, 'Bitstream Charter', Georgia, serif;
     background: #ffffff;
     color: var(--fg);
     font-family: var(--font-body);
@@ -2633,6 +2634,15 @@ body.theory-handbook .module h3 {
 body.theory-handbook .module p,
 body.theory-handbook .module li {
     color: var(--fg-2);
+    font-family: var(--font-reading);
+    font-size: 1.04rem;
+    line-height: 1.66;
+}
+
+body.theory-handbook .module p,
+body.theory-handbook .module ul,
+body.theory-handbook .module ol {
+    max-width: 38em;
 }
 
 body.theory-handbook .module a {
@@ -2660,7 +2670,9 @@ body.theory-handbook .exercise-summary h2 {
 
 body.theory-handbook .exercise-summary p,
 body.theory-handbook .exercise-summary h2 + p {
+    max-width: none;
     color: var(--fg-2);
+    font-family: var(--font-body);
     font-size: 0.92rem;
     line-height: 1.5;
 }
@@ -2699,6 +2711,7 @@ body.theory-handbook .hox-block *,
 body.theory-handbook .note-block *,
 body.theory-handbook .module pre code {
     color: #111111 !important;
+    font-family: var(--font-body);
 }
 
 body.theory-handbook .theory-prompt {
@@ -2867,6 +2880,12 @@ body.theory-handbook .curriculum-footer a {
         margin-bottom: 3.5mm;
         orphans: 3;
         widows: 3;
+    }
+
+    body.theory-handbook .module p,
+    body.theory-handbook .module li {
+        font-size: 10.5pt;
+        line-height: 1.66;
     }
 
     body.theory-handbook .exercise-summary {
@@ -3345,7 +3364,7 @@ body.theory-handbook .curriculum-footer a {
 <li><strong>Intent.</strong> What you point the work at. Which task, and what done means, before a single step runs.</li>
 <li><strong>Context.</strong> What the agent knows going in. The files, rules, and memory that decide whether it acts on your system or on a guess about your system.</li>
 <li><strong>Work.</strong> The agent runs the loop: acts, reads the result, corrects, goes again. Everything you would call &quot;using the agent&quot; happens in this phase.</li>
-<li><strong>Verification.</strong> How you know the result is any good. Tests, checks, reads, judges: everything that pushes back on the work before you accept it.</li>
+<li><strong>Verification.</strong> How you know the result is any good. Tests, checks, reads: everything that pushes back on the work before you accept it.</li>
 <li><strong>Absorption.</strong> How much of the result you can actually take up. What gets read, judged, and merged, not just what gets produced.</li>
 <li><strong>Outcome.</strong> What you keep. What survives the session and compounds into the next one.</li>
 </ul>
@@ -3878,7 +3897,7 @@ body.theory-handbook .curriculum-footer a {
 <h2 id="long-running-work-adds-three-new-concerns">Long-running work adds three new concerns</h2>
 <ul>
 <li>Long-running is not more of the same. So far you sat inside every loop: you read each reply, caught each wobble as it happened. When the agent runs for an hour without you watching, that quick feedback goes quiet.</li>
-<li><strong>Verification</strong> tells you whether the result is any good. Tests, checks, reads, judges: everything that pushes back on the work before you accept it. On a long session, this stops being a glance and becomes a job.</li>
+<li><strong>Verification</strong> tells you whether the result is any good. Tests, checks, reads: everything that pushes back on the work before you accept it. On a long session, this stops being a glance and becomes a job.</li>
 <li><strong>Absorption</strong> determines how much of the output you can actually take up. Generating is fast; reading, judging, and merging are not. On a long session the gap between the two decides your real throughput.</li>
 <li><strong>Outcome</strong> determines what survives the session. The fix you keep, the rule it taught you, and whether any of it crosses the wall from you to the team.</li>
 <li>One question to carry into the session: when the agent takes a hundred steps alone, what makes you trust the result at the end?</li>
@@ -4359,7 +4378,7 @@ No preamble. List them.
 
 <ul>
 <li>An LLM judge is another untested component. Until you compare its verdicts with your own review, you do not know its false-pass rate, how often it approves work you would reject.</li>
-<li>The move: compare a handful of your own judgements with the judge&#39;s verdicts, and teach the judge until you converge. You are looking for disagreement patterns, not a significance test. Re-check when the model or the task shifts. Hamel Husain reports better than 90% agreement after three iterations of exactly this loop.</li>
+<li>The move: compare a handful of your own judgements with the judge&#39;s verdicts, and teach the judge until you converge. You are looking for disagreement patterns, not a significance test. Re-check when the model or the task shifts. In 2024, on one product&#39;s judge, Hamel Husain reported better than 90% agreement after three iterations of exactly this loop.</li>
 <li>A good gate starts from real traces, not imagined failures. Read sessions that actually happened, sort the real failures into buckets, and write the first check for the biggest bucket.</li>
 </ul>
 <h2 id="gates-decay">Gates decay</h2>
@@ -4881,15 +4900,15 @@ The fresh session will not have this context, so name the shapes inside the prom
 <p>The banned word. There is a word in our writing rules that is hard-banned. It does not appear in any curriculum file we ship. The rule was loaded into context. Claude used it twice in the third turn. When I dispatched three subagents in parallel to write the M6 files, three of them used the same word. Same rule, same rules file, same task, four separate violations across four independent LLM instances. The grep pass caught each one. The LLM self-check did not.</p>
 <p>The end-state that was not. Early in planning I asked Claude to draft the lecture you are reading right now. The first recommended framing was about trust. About how <em>we live what we teach</em> and <em>the method scales to messy work</em>. A confident recommendation. It was also wrong. This lecture is not about credibility. It is about something harder. I cut the credibility framing and said: the LLM is not a deterministic machine. Struggle is universal. Claude produced the credibility framing. Our read: much is caused by post-training preferring warmth over directness. The real story was one reframe away and the LLM did not find it on its own.</p>
 <p>The sims and evals I did not run. When the verifier loop stopped clean, Claude wrote a done summary. I read it. I asked: <em>&quot;You must run the evals and simulations too and fix all todos.&quot;</em> Claude had not run them. The reference artefact had flagged them as pre-first-cohort work. Claude had accepted that framing without pressing on it. I had to name the gap. When Claude ran them (three personas, a judge pass, source-verify, a capability check) they caught ten things worth fixing. That is a Claude-miss, not a rule-leak. The rule was right. Claude did not apply it.</p>
-<p>The three-phrase closer I didn&#39;t catch. The closing lecture ended with a three-phrase benediction: <em>&quot;You know how to test. You know how to learn. You know how to encode.&quot;</em> Exactly the framing I said, a few paragraphs above, we would cut. Four LLM instances wrote and verified that closer. None caught the contradiction with what they had also read. A senior-engineer persona sim read the two files and named it in one pass: <em>&quot;direct violation of what this opener promised to avoid. Either cut or pull the fang from it.&quot;</em> We cut. The contradiction was plain to a fresh human reader. It was invisible across four LLMs that had just produced it.</p>
+<p>The three-phrase closer I didn&#39;t catch. The closing lecture ended with a three-phrase benediction: <em>&quot;You know how to test. You know how to learn. You know how to encode.&quot;</em> Exactly the framing I said, a few paragraphs above, we would cut. Four LLM instances wrote and verified that closer. None caught the contradiction with what they had also read. A senior-engineer persona sim read the two files and named it in one pass: <em>&quot;direct violation of what this opener promised to avoid. Either cut or pull the fang from it.&quot;</em> We cut. The contradiction was plain to a keen reader. It was invisible across four LLMs that had just produced it.</p>
 <p>The paraphrase I shipped as a quote. The closer&#39;s Ramp paragraph attributed a framing to Ramp&#39;s own engineers: <em>&quot;the harness was the bottleneck, not the model.&quot;</em> That was not what Geoff Charles said. Source verification against our research observations found Charles&#39;s actual line: <em>&quot;The models were good enough. The harness wasn&#39;t.&quot;</em> Close enough in meaning that Claude did not notice the drift at write time. Specific enough in wording that a source-verify pass caught it in one read. Claude had written a paraphrase and presented it as attribution.</p>
 <p>The frame I did not cite. Turn seven of planning, verbatim: <em>&quot;everyone struggles. Surprises happen. The LLM is not a deterministic machine.&quot;</em> Three blunt sentences from me. The draft that came back wrapped that frame in 150 words of philosophising and dropped <em>Surprises happen</em> entirely. I asked: <em>&quot;Remember the exact frame with my words that I gave for the lecture? Cite them and compare with text style. It is too abstract.&quot;</em> The frame was in the session notes. It was not in the reference artefact as a verbatim check. Claude had it, but not in a shape that would force the comparison at ship time. The rule was loaded. The check never ran.</p>
-<h2 id="the-generalisation">The generalisation</h2>
+<h2 id="a-rule-in-context-is-not-a-rule-in-the-output">A rule in context is not a rule in the output</h2>
 <p>Everyone struggles.</p>
 <p>Surprises happen.</p>
 <p>The LLM is not a deterministic machine.</p>
 <p>The rules were loaded every time: the rules file, the tone brief, the session-timing plan, all sitting in context before the first turn. Claude typed the banned word anyway. It recommended the flattering end-state anyway, and its first proposal came out chat-shaped despite every one of those rules being right there. The subagents leaked the same banned word again. The loop caught what the subagents missed. I caught what the loop missed. You will catch what I missed.</p>
-<p>A rule in context is not a rule in the output. Taste closes the gap.</p>
+<p>Taste closes the gap.</p>
 <h2 id="then-i-compounded-the-session">Then I compounded the session</h2>
 <p>I ran the M6 prompts on the M6 generation, comparing the two sessions side by side. That comparison found rules that lived in memory but were never enforced. I moved them into skills that block &quot;done&quot; until the check runs. A rule in memory that does not force is worse than no rule.</p>
 <p>The model is good. It is still not 100% deterministic.</p>
@@ -4897,7 +4916,7 @@ The fresh session will not have this context, so name the shapes inside the prom
 <p>You have just diagnosed gaps in the M5 packaged session and mapped the work you repeat across your stack.</p>
 <p>A rule you wrote last module will not apply this session. That is the thing. The loop exists because LLMs drift. The loop exists because rules leak. The loop exists because every session surprises you, even when the task looked the same.</p>
 <p>Your job is not to stop the drift. Your job is to catch it and encode what you learned.</p>
-<p>I made this module live, running the move I am asking you to run. I drifted in every one of the ways this story just walked. I fixed what I caught. The loop caught what I missed. A senior-persona sim caught what the loop missed. I pushed back on &quot;done&quot; a few times before it actually was.</p>
+<p>I made this module live, running the move I am asking you to run. I drifted in every one of the ways this story just walked. I fixed what I caught. The loop caught what I missed. A senior-persona sim caught what the loop missed.</p>
 <p>Your turn.</p>
 <p>Antti</p>
 </section>
@@ -4919,7 +4938,7 @@ The fresh session will not have this context, so name the shapes inside the prom
 <h2 id="the-right-information-grounds-and-makes-quality">The right information grounds and makes quality</h2>
 <p>Nobody reviews 500K lines by hand. Some of the early agentic engineering demos were single devs shipping 500K lines of code in weeks; the first Agentics Helsinki meetup, fall 2025, had two of them. The recurring theme: every generated line had to correspond to a spec, every feature had to be tested. Without that, no way to know the system works.</p>
 <p>Spec and tests were the first things those engineers wrote down. Writing things down is not the whole of it. The goal is giving the system the right information, and nobody has that part figured out yet.</p>
-<p>Nobody can hand you the right information about your customers, your direction, your domain. You find it one run at a time.</p>
+<p>Nobody can hand you the right information about your customers, your direction, your domain. You find it one session at a time.</p>
 <h2 id="you-make-agentic-happen">You make agentic happen</h2>
 <div class="slide-tier" data-tier="2" hidden></div>
 

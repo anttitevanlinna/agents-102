@@ -571,7 +571,7 @@ body.light-article .article-body {
    Each phase starts on a new page. Phase tints carry into print.
    ══════════════════════════════════════════════════════════════════════════ */
 
-@page { margin: 25mm 20mm 28mm 22mm; }
+@page { size: A4; margin: 25mm 20mm 28mm 22mm; }
 
 /* ── Print cover page (hidden on screen) ── */
 
@@ -607,68 +607,129 @@ body.light-article .article-body {
     .print-cover {
         display: flex !important;
         flex-direction: column;
-        justify-content: center;
         align-items: flex-start;
-        min-height: 85vh;
+        min-height: 240mm;
         page-break-after: always;
-        padding: 0 1rem;
+        padding: 3mm 0 0;
+        background: #ffffff !important;
     }
 
-    .print-cover-phase-bar {
-        display: flex;
-        gap: 4px;
-        margin-bottom: 3rem;
+    .print-cover-brand {
+        color: #111111;
+        font-family: Inter, -apple-system, sans-serif;
+        font-size: 15pt;
+        font-weight: 700;
+        line-height: 1;
+        letter-spacing: -0.04em;
     }
-    .print-cover-phase-bar span {
-        width: 40px;
-        height: 5px;
+
+    .print-cover-path {
+        width: 100%;
+        height: 70mm;
+        margin: 16mm 0 10mm;
+        overflow: hidden;
+    }
+
+    .print-cover-path .diagram {
+        width: 134%;
+        margin: -18mm 0 0 -17%;
+        transform: none;
+        opacity: 0.9;
+    }
+
+    .print-cover-path svg {
         display: block;
+        width: 100%;
+        height: auto;
+        background: #ffffff !important;
+        border: 0 !important;
+        border-radius: 0 !important;
     }
-    .print-cover-phase-bar .bar-1 { background: #3d6e99; }
-    .print-cover-phase-bar .bar-2 { background: #a06928; }
-    .print-cover-phase-bar .bar-3 { background: #9e3535; }
-    .print-cover-phase-bar .bar-4 { background: #d4571a; }
+
+    .print-cover-path svg > rect:first-of-type,
+    .print-cover-path [fill="#efe6d2"] { fill: #ffffff !important; }
+    .print-cover-path [stroke="#efe6d2"] { stroke: #ffffff !important; }
+    .print-cover-path [stroke="#2f6b6b"] { stroke: #ff6b35 !important; }
+    .print-cover-path [fill="#2f6b6b"] { fill: #ff6b35 !important; }
+    .print-cover-path [stroke="#a05a2c"],
+    .print-cover-path [stroke="#8a3a2a"] { stroke: #b8b8b2 !important; }
+    .print-cover-path [fill="#a05a2c"],
+    .print-cover-path [fill="#8a3a2a"] { fill: #92928c !important; }
+    .print-cover-path [stroke="#786c56"] { stroke: #d1d1cc !important; }
+    .print-cover-path [fill="#786c56"],
+    .print-cover-path [fill="#4a4234"] { fill: #92928c !important; }
+    .print-cover-path [fill="#1f1a13"] { fill: #676762 !important; }
+    .print-cover-path [fill="#e5dcc3"] { fill: #f4f4f1 !important; }
+    .print-cover-path circle[cx="758"][cy="352"][r="9.5"],
+    .print-cover-path circle[cx="1078"][cy="130"] { stroke: #ff6b35 !important; }
+    .print-cover-path circle[cx="1078"][cy="130"][r="2"] { fill: #ff6b35 !important; }
+
+    .print-cover-kicker {
+        margin: 0 0 3mm;
+        color: #ff6b35;
+        font-family: Inter, -apple-system, sans-serif;
+        font-size: 8pt;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+    }
 
     .print-cover-title {
-        font-family: Charter, 'Bitstream Charter', Georgia, serif;
-        font-size: 36pt;
-        font-weight: 200;
-        line-height: 1.1;
-        letter-spacing: -0.02em;
-        color: #1a1a1a;
-        margin: 0 0 1.5rem 0;
+        max-width: 160mm;
+        margin: 0;
+        color: #111111;
+        font-family: Inter, -apple-system, sans-serif;
+        font-size: 38pt;
+        font-weight: 700;
+        line-height: 0.9;
+        letter-spacing: -0.055em;
+        text-transform: uppercase;
     }
 
     .print-cover-subtitle {
-        font-family: Charter, 'Bitstream Charter', Georgia, serif;
-        font-size: 14pt;
+        max-width: 125mm;
+        margin: 6mm 0 0;
+        color: #676762;
+        font-family: Inter, -apple-system, sans-serif;
+        font-size: 9pt;
         font-weight: 400;
-        color: #4a4a4a;
         line-height: 1.5;
-        max-width: 28em;
-        margin: 0 0 3rem 0;
     }
 
     .print-cover-author {
         font-family: Inter, -apple-system, sans-serif;
-        font-size: 11pt;
-        color: #4a4a4a;
-        margin: 0 0 0.3rem 0;
+        font-size: 8pt;
+        font-weight: 700;
+        color: #111111;
+        margin: 0 0 1mm;
     }
 
     .print-cover-org {
         font-family: Inter, -apple-system, sans-serif;
-        font-size: 10pt;
-        color: #a0a09a;
+        max-width: 125mm;
+        font-size: 7pt;
+        line-height: 1.35;
+        color: #676762;
         margin: 0;
     }
 
-    .print-cover-footer {
+    .print-cover-meta {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 8mm;
+        width: 100%;
         margin-top: auto;
-        padding-top: 3rem;
+        padding-top: 4mm;
+        border-top: 2px solid #111111;
+    }
+
+    .print-cover-mark {
+        flex: 0 0 auto;
+        color: #ff6b35;
         font-family: Inter, -apple-system, sans-serif;
-        font-size: 9pt;
-        color: #a0a09a;
+        font-size: 8pt;
+        font-weight: 700;
     }
 
     /* ── TABLE OF CONTENTS ── */

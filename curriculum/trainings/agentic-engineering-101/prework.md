@@ -57,7 +57,7 @@ Mechanical setup. The agent needs to write outside the repo (`~/Documents/ae101-
 <!--/flag:payload-->
 ## 5. Pick a trivial bug and confirm Module 1 readiness
 
-Now the interactive step. The agent walks three trivial bug candidates from your repo's backlog, helps you pick one, then confirms the repo can test, branch, commit, and open a PR.
+Ask Claude to screen three trivial bug candidates and confirm the repo is ready for Module 1.
 
 When the agent gets to the bug screen, push back if it dumps all four criteria at once. One bug at a time, then the next. Trivial means a few lines here and there, not a multi-file refactor.
 
@@ -90,6 +90,10 @@ The opening question at Module 1: *what's your favourite Claude Code trick that 
 **Pre-read wiring (2026-07-30):** `## Pre-read before Module 1` (Willison, *Vibe engineering*) is optional and sits outside the 30-min prework runtime target (~15 min if taken).
 
 **`check_pedagogy.md` §34's bolded floor-and-ceiling callout belongs where a task gets picked, not here.** §34's *prework* placement in AE101 is a module's own `## Prework` section at the previous module's close: `plan-mode-done-right.md` carries *"A task that spans a few files. Not an epic."* for the M3 task and `earn-the-trust.md` carries *"A feature you could ship in a few hours. Not a quarter-long epic."* for M4's. `## Bring real work` here is an inventory across four tiers, and each bullet states its own ceiling in prose — a few lines here and there · a few files wide · shippable in a few hours · 30 to 120 minutes of the agent working. Pedagogy judges: no bolded not-an-epic line is owed on this page.
+
+**`## Pre-read before Module 1` is architecture-mandated and exempt from `check_student_facing.md` §17 (adjudicated and adversarially verified 2026-09-05).** §17's own carve-out list is a stale snapshot of the module template, not the boundary — it still enumerates `## Lectures` / `## Exercises`, which `module-shape.md` abolishes, and omits headers the template now prescribes. `curriculum/module-shape.md` prescribes `## Pre-reads before Module [N]` and names this file's singular form in its own Placement note; the template plus eleven header instances across AE101 and Agents 101 carry the string. §17's carve-out exempts canonical module-architecture section names for exactly this reason — a per-file rename breaks the file-shape contract and the renderer's section recognition. Writing judges: do not file §17 here, and do not rename it to *Read before Module 1*. (§33's separate ruling that this section does not inherit `## Prework`'s exemption governs its content, not its header string.)
+
+**`check_prompts.md` §38 is satisfied on Prompt C's fence (adversarially verified 2026-09-05).** §38 asks whether a lead-in shares a verb and noun-phrase with the prompt's own opening, and the sentence under test is the last one that is actually a lead-in — L60, not the push-back paragraph sitting against the fence. That paragraph is neither: its verb acts on how the student handles the screen mid-run, so it is not a lead-in, and it is not a §38b pre-paste guard either, which acts on the environment before the paste. L60 (*"**Ask** Claude to screen **three trivial bug candidates**…"*) shares both with Step 1's *"**Ask** me for **three trivial-and-visible candidate bugs**."* Writing judges: do not file §38 here, and run the rhyme test against L60.
 
 **Source verification — freshness stamps (`source-freshness.sh`; format `curriculum/source-freshness-format.md`).**
 

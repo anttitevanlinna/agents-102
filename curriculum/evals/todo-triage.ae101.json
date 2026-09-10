@@ -145,32 +145,6 @@
  },
  {
   "target_file": "curriculum/trainings/agentic-engineering-101/prework.md",
-  "instance": "ae101--module--prework.pedagogy.json",
-  "rule": "pedagogy 34",
-  "claim": "The file's task-tier bullets (L15-18) carry no explicit \"not an epic\"-shaped negative example; a future judge could misfire a REVISE because §34 names \"prework\" as a placement.",
-  "disposition": "MAINTAINER",
-  "confidence": "high",
-  "why": "The judge is right that the rule resolves elsewhere and right that the ambiguity invites a re-file. §34 names two placements, \"prework + Phase 1 commit\", and in AE101 the prework placement is each module's own `## Prework` section at the previous module's close, not this M0 setup page — `plan-mode-done-right.md` `## Prework` carries the mandated bolded line for M3's task and `earn-the-trust.md` carries its own. This file's job is inventory across four tiers, and each tier already states a ceiling in prose. The note lands in the maintainer block, which no student reads, so it applies directly. Wording states present fact and a standing constraint only — no transition verb, per `check_writing.md` §3's fact-or-transition test.",
-  "evidence": "Read prework.md L1-118 in full. Task tiers at L15-18 each carry a ceiling: \"a few lines here and there\" · \"a few files wide\" · \"shippable in a few hours\" · \"Roughly 30 to 120 minutes of the agent working\". Verified the mandated callout lives at M2's close: `sed -n '/^## Prework/,/^## /p' curriculum/trainings/agentic-engineering-101/plan-mode-done-right.md` prints \"**A task that spans a few files. Not an epic.**\"; `sed -n '10,14p' curriculum/trainings/agentic-engineering-101/earn-the-trust.md` prints \"**A feature you could ship in a few hours. Not a quarter-long epic.**\". plan-mode-done-right.md L105 already records the same reading maintainer-side (\"The bolded task-sizing callouts in `## Prework` AND `## Next` are mandated, not stylistic\"). `node curriculum/evals/scripts/rule.js pedagogy 34` read in full. Anchor uniqueness: `grep -c '^\\*\\*Pre-read wiring (2026-07-30):\\*\\*' prework.md` = 1.",
-  "old_string": "**Pre-read wiring (2026-07-30):** `## Pre-read before Module 1` (Willison, *Vibe engineering*) is optional and sits outside the 30-min prework runtime target (~15 min if taken).",
-  "new_string": "**Pre-read wiring (2026-07-30):** `## Pre-read before Module 1` (Willison, *Vibe engineering*) is optional and sits outside the 30-min prework runtime target (~15 min if taken).\n\n**`check_pedagogy.md` §34's bolded floor-and-ceiling callout belongs where a task gets picked, not here.** §34's *prework* placement in AE101 is a module's own `## Prework` section at the previous module's close: `plan-mode-done-right.md` carries *\"A task that spans a few files. Not an epic.\"* for the M3 task and `earn-the-trust.md` carries *\"A feature you could ship in a few hours. Not a quarter-long epic.\"* for M4's. `## Bring real work` here is an inventory across four tiers, and each bullet states its own ceiling in prose — a few lines here and there · a few files wide · shippable in a few hours · 30 to 120 minutes of the agent working. Pedagogy judges: no bolded not-an-epic line is owed on this page.",
-  "surface": "maintainer-block"
- },
- {
-  "target_file": "curriculum/trainings/agentic-engineering-101/prework.md",
-  "instance": "ae101--module--prework.pedagogy.json",
-  "rule": "pedagogy 52a",
-  "claim": "The L88 accept-note names only Step 5's two fences; the single fences in Steps 3 and 4 pass the same harm-test but are not named, so a future judge re-derives them.",
-  "disposition": "MAINTAINER",
-  "confidence": "high",
-  "why": "Correct and cheap. §52a's trigger is greppable — \"Module prose carrying a `**Session**` widget or a `{{prompt:}}` fence\" — so it reads on all four fences in this file, while the existing shield covers two. The unnamed pair are single setup prompts (download, extract-and-install), each under its own numbered command-verb header, neither carrying a `**Session**` widget and neither having beats to split, so they fail §52a's stated harm (\"a `##`-cut layout gives the unbroken section one giant slide and the individual moves have nothing to land on\") even more clearly than Step 5 does. Widening the existing note is a maintainer-block edit; nobody but the maintainer and the judges reads it. Present-tense state, no transition verb.",
-  "evidence": "Read prework.md L1-118. Four fences confirmed: L47 `{{prompt:ae101-prework-download-tarball}}` under `## 3. Get the content folder onto your laptop`; L55 `{{prompt:ae101-prework-extract-and-install}}` under `## 4. Extract the bundle and install the curated skills`; L64 and L68 under `## 5.`. The only `**Session**` widget is at L38, under Step 2, which carries no fence. Existing accept-note read at L88. `node curriculum/evals/scripts/rule.js pedagogy 52a` read in full. Anchor uniqueness: `grep -c 'Accepted-by-design 2026-08-13 (Antti-directed): do not extract, do not re-raise.'` = 1.",
-  "old_string": "Accepted-by-design 2026-08-13 (Antti-directed): do not extract, do not re-raise.",
-  "new_string": "Accepted-by-design 2026-08-13 (Antti-directed): do not extract, do not re-raise. The same acceptance covers the single fences under `## 3. Get the content folder onto your laptop` and `## 4. Extract the bundle and install the curated skills` — one setup prompt each, under its own command-verb header, no `**Session**` widget, no beats for a split to land on.",
-  "surface": "maintainer-block"
- },
- {
-  "target_file": "curriculum/trainings/agentic-engineering-101/prework.md",
   "instance": "ae101--module--prework.writing.json",
   "rule": "student_facing 17",
   "claim": "`## Pre-read before Module 1` is a noun label rather than a command verb and is not on §17's canonical-exemption list.",
@@ -593,45 +567,6 @@
    "note": "The beat is the agent helping MAKE tickets, not evaluating them, and judge is embargoed before the M5 closer. Sentence stands; vocabulary.md gained the judge row; decline recorded in the maintainer block.",
    "at": "2026-09-05"
   }
- },
- {
-  "target_file": "curriculum/exercises/fix-tests-first.md",
-  "instance": "ae101--exercise--fix-tests-first.pedagogy.json",
-  "rule": "pedagogy 47",
-  "claim": "The third forcing function (root-cause interrogation, prompts 2-3) has no Watch-for naming its dominant failure mode plus an escape hatch; only Tests-skipped and Diff rubber-stamp are covered.",
-  "disposition": "MAINTAINER",
-  "confidence": "high",
-  "why": "§47 requires, for each phase carrying a forcing function per §16, that the maintainer block name (a) the dominant student failure mode and (b) one escape hatch; 'Either unanswered -> REVISE'. §16's carve-out for optional beats governs LOCATION (body vs fence), not whether the beat counts as a forcing function, so the Optional label does not exempt it. The beat is load-bearing: leap-test item 3 (L123) promises 'Runs root-cause interrogation before accepting Claude's first fix' as a Monday-morning outcome, which is exactly the §47/§45 pairing the rule polices. Fix lands in the Watch-fors list at L104-106, which sits below `<!-- maintainer -->` (L51) and is stripped from the student build — derive-body-view.js cuts everything from the maintainer marker to EOF — so it applies directly, not as a card. New entry uses 'the agent' to match the beat's own body prose at L31/L33 (student_facing §21).",
-  "evidence": "Read curriculum/exercises/fix-tests-first.md in full (124 lines). Watch-fors at L104-106 hold exactly two entries; grep -c 'Diff rubber-stamp' = 1 (unique anchor). Maintainer marker at L51, no closing marker, and curriculum/evals/scripts/derive-body-view.js:108-114 sets the body cut at the maintainer line, confirming L104-106 is non-student-facing. Read `node curriculum/evals/scripts/rule.js pedagogy 47` and `pedagogy 16` in full for the carve-outs.",
-  "old_string": "- **Diff rubber-stamp.** Student says *\"looks fine\"* under 30 seconds. Trainer push: *\"find me one line you'd have written differently — not wrong, just different.\"*",
-  "new_string": "- **Diff rubber-stamp.** Student says *\"looks fine\"* under 30 seconds. Trainer push: *\"find me one line you'd have written differently — not wrong, just different.\"*\n- **Interrogation rubber-stamp.** Student takes the Optional-skip gate, or the agent's *\"nothing deeper here\"*, at face value and moves on without sending the interrogation prompt. Trainer push: *\"name one input where this fix would still be wrong.\"*",
-  "surface": "maintainer-block"
- },
- {
-  "target_file": "curriculum/exercises/fix-tests-first.md",
-  "instance": "ae101--exercise--fix-tests-first.story.json",
-  "rule": "pedagogy 47",
-  "claim": "The interrogation forcing function (fix-tests-first-2/3) has no named failure mode and no escape hatch in the Watch-fors list.",
-  "disposition": "MAINTAINER",
-  "confidence": "high",
-  "why": "Same defect as the pedagogy instance's §47 row — two sibling judges filed the identical finding against the same two lines, with the same suggested shape ('Interrogation rubber-stamp'). One edit clears both rows; the orchestrator should apply this old_string/new_string ONCE and mark both todos cleared, not attempt it twice (the second application will fail on a missing anchor, which is the correct signal that it already landed). Disposition rationale identical: §47's failure-mode + escape-hatch pair is genuinely absent for the third forcing function, the Optional label does not exempt it under §16, and the Watch-fors list is below the maintainer cut so it applies directly.",
-  "evidence": "Both instances quote the same two existing Watch-fors and the same missing third; story.json evidence names 'fix-tests-first-2/3' and pedagogy.json names 'prompts 2-3' — same beat. grep -c 'Diff rubber-stamp' curriculum/exercises/fix-tests-first.md = 1, so the anchor is unique and single-use.",
-  "old_string": "- **Diff rubber-stamp.** Student says *\"looks fine\"* under 30 seconds. Trainer push: *\"find me one line you'd have written differently — not wrong, just different.\"*",
-  "new_string": "- **Diff rubber-stamp.** Student says *\"looks fine\"* under 30 seconds. Trainer push: *\"find me one line you'd have written differently — not wrong, just different.\"*\n- **Interrogation rubber-stamp.** Student takes the Optional-skip gate, or the agent's *\"nothing deeper here\"*, at face value and moves on without sending the interrogation prompt. Trainer push: *\"name one input where this fix would still be wrong.\"*",
-  "surface": "maintainer-block"
- },
- {
-  "target_file": "curriculum/exercises/fix-tests-first.md",
-  "instance": "ae101--exercise--fix-tests-first.writing.json",
-  "rule": "student_facing 21",
-  "claim": "L18 says 'If Claude starts spinning up plenty of tests' — an autonomous-acting topic that §21 assigns to 'the agent', inconsistent with the file's own correct L31/L33 usage.",
-  "disposition": "MAINTAINER",
-  "confidence": "high",
-  "why": "Real and mechanical. §21's concrete contextual split routes 'autonomous work' (files written, tests written, execution) to **the agent**; none of the three Claude carve-outs apply — this is not product/version grounding, not UI surface, and not addressee grammar (it is third-person description of what the agent does on its own). The file already models the correct term for the identical beat twice, at L31 ('see what the agent defends') and L33 ('ask the agent to interrogate the fix'), so the call is already made by the file itself plus the registry (curriculum/vocabulary.md, and CLAUDE.md's 'term change = registry first, then one sweep pass'). The swap leaves claim, voice and ask untouched — one noun, same sentence, same callout — so it is a mechanical sweep edit, not card-shaped, per the §26 standing exemption. Referent check: the following sentence's 'Steer it back' still resolves after the swap. No backing-block Claims row quotes L18 (claims quote L15, L16, L26, L27, L31, L45), so no anchor sync is owed.",
-  "evidence": "Read the file in full. L18 is the only 'Claude starts spinning up' occurrence: grep -c 'If Claude starts spinning up plenty of tests' = 1. Body (L1-50) term counts: Claude at L18/L41x2/L49x2 = 5, agent at L26x3/L31x2/L33 = 6 — no 'Claude-count >> agent-count' audit signal, so this is a single local drift rather than assistant-shaped framing. Read `rule.js student_facing 21` in full including the 2026-08-30 active-stance override and its calibration pair. Checked the maintainer block L51-69 and L53/L57/L59/L61: no note authorises 'Claude' at L18.",
-  "old_string": "If Claude starts spinning up plenty of tests, or the change creeps past the bug, that's sprawl.",
-  "new_string": "If the agent starts spinning up plenty of tests, or the change creeps past the bug, that's sprawl.",
-  "surface": "student-facing-body"
  },
  {
   "target_file": "curriculum/exercises/fix-tests-first.md",
@@ -1354,19 +1289,6 @@
   "evidence": "`grep -rn \"Claude's first read\" curriculum/` returns hits only in curriculum/evals/body-views/*.txt|.md (build outputs) and three instance JSONs — zero hits in curriculum/lectures/the-machine-you-just-met.md. The live body at L47 reads 'The agent's first read was partly wrong.' and the backing block at L110 quotes the same new wording. `git show 0c5cacc8:curriculum/lectures/the-machine-you-just-met.md | sed -n '47p'` shows the old 'Claude's first read' at the writing pin (2026-09-02 20:39). `git log -S\"The agent's first read was partly wrong\"` → 94fcca2d (2026-09-03 08:10). Read check_student_facing §21 to confirm the swap direction matches the 2026-08-30 override rather than merely one judge's taste."
  },
  {
-  "target_file": "curriculum/lectures/the-machine-you-just-met.md",
-  "instance": "ae101--lecture--the-machine-you-just-met.story.json",
-  "rule": "writing 3",
-  "claim": "The maintainer Placement line calls compound-and-close 'Ex3'; M1's own Start here order makes it Ex4.",
-  "disposition": "MAINTAINER",
-  "confidence": "high",
-  "why": "A stale locator inside a maintainer block — nobody but the maintainer and the judges reads the string, and the swap is mechanical: only the ordinal moves, while the line's actual claims (final lecture of M1, sits after compound-and-close) are correct and untouched. The story judge was right to refuse it as a story finding and right that it belongs to a direct fix. Verified against the module rather than inferred: getting-going.md's '## Start here' lists orient-and-introspect, fix-tests-first, close-the-ticket, compound-and-close, then this lecture — so compound-and-close is the fourth exercise and Ex3 is close-the-ticket.",
-  "evidence": "Extracted the full '## Start here' section of curriculum/trainings/agentic-engineering-101/getting-going.md: [Orient and map the window](exercises/orient-and-introspect.md), [Prove the bug, then ship the fix](exercises/fix-tests-first.md), [Close the ticket](exercises/close-the-ticket.md), [Compound and close](exercises/compound-and-close.md), [The machine you just met](lectures/the-machine-you-just-met.md) — four exercises, compound-and-close fourth. Flagged line is at curriculum/lectures/the-machine-you-just-met.md:75, inside the block opened by `<!-- maintainer -->` at L65. `grep -c` on the old_string = 1, and `grep -rn 'compound-and-close` (Ex' curriculum/` finds no other occurrence of the pattern anywhere in the corpus, so there is no twin to fix. Read check_writing §3's maintainer-block clauses to confirm a dated provenance header is legitimate and only the wrong ordinal needs touching.",
-  "old_string": "**Placement:** M1's final lecture, after `compound-and-close` (Ex3).",
-  "new_string": "**Placement:** M1's final lecture, after `compound-and-close` (Ex4).",
-  "surface": "maintainer-block"
- },
- {
   "target_file": "curriculum/trainings/agentic-engineering-101/supplementary/how-the-best-do-ci-cd.md",
   "instance": "ae101--supplementary--how-the-best-do-ci-cd.strategy.json",
   "rule": "strategy_tie_in 8",
@@ -1974,19 +1896,6 @@
    "reason": "The refutation holds, and holds on stronger ground than the triage used: `curriculum/evals/IMPROVEMENTS.md:30` (commit 11ee4a27, 2026-08-30 — the §11a reconcile itself) records \"After the 2026-08-30 §11a reconcile, the ~15 rows it still prints are deliberate reason-on-line splits (durable-origin `due:none` vs currency-use dated due on one URL; claim-scoped falsifier CAVEATs in `the-agent-loop.md`; **delegated stamps**) — **each lawful, each carrying its reason**.\" That is the maintainer adjudicating delegated stamps as lawful ON the same date §11a's clause landed, which settles the apparent conflict with §11a's broader \"Cross-file reference = corroboration note beside the record, never the record.\" I verified all four delegates carry live dated stamps rather than prose: orient-and-introspect.md:112-113 (`[checked:2026-08-02]`, `[checked:2026-08-03]`), push-back-on-the-plan.md:161 (`[checked:2026-07-30]`), prework.md:94 (`[checked:2026-07-30]`), open-the-side-quest.md:104 (`[checked:2026-05-25]`). But the note's closing sentence — \"**§11a judges do not re-raise on this file**\" — silences an entire rule across an entire module file when what was adjudicated is four `[delegated stamp]` rows. §11a also governs the three NON-delegated stamps sitting in the same block (two `[platform docs]` rows and the Horthy `due:2027-01-27` row), plus due arithmetic (\"Never `checked`+6mo\"), the inherit-from-`continuous-research/` clause, and the ATTESTED vocabulary tell. Narrowing is also live work, not hypothetical: the Klaassen delegate at push-back-on-the-plan.md:161 is `due:2026-08-09` and now past due, so a delegated row's delegate can and does decay — a future judge must stay able to file that.",
    "note_fix": "**Delegated-stamp accept-note (2026-09-05):** `[delegated stamp]` is the documented variant at `curriculum/backing-format.md` § *Delegated variant* — a pointer at another file's own dated stamp, `due:none`, because the delegation does not expire and `source-freshness.sh` walks the delegate's stamp directly. `check_research_claims.md` §11a's restate-inline instruction addresses a stamp whose evidence is another file's BODY PROSE, which the audit never opens; a pointer at a stamp aims at exactly what the audit does read, and `curriculum/evals/IMPROVEMENTS.md` records delegated stamps among the lawful reason-on-line splits surviving the 2026-08-30 §11a reconcile itself. The four delegates here — `orient-and-introspect.md`, `push-back-on-the-plan.md`, `prework.md`, `open-the-side-quest.md` — each carried a live dated check at adjudication. The line that binds: a delegated stamp names a delegate stamp, never a delegate paragraph. **Scope:** this settles §11a's restate-inline clause against these four `[delegated stamp]` rows only. §11a still binds every other stamp in this block — due arithmetic, result vocabulary, the inherit-from-`continuous-research/` clause — and a delegated row whose delegate has stopped carrying a live, in-date stamp is a new finding, not this one."
   }
- },
- {
-  "target_file": "curriculum/trainings/agentic-engineering-101/getting-going.md",
-  "instance": "ae101--module--getting-going.writing.json",
-  "rule": "student_facing 13",
-  "claim": "L83 carries a bare, unqualified `CLAUDE.md` with no layer named, inside the Cherny video's topic list.",
-  "disposition": "MAINTAINER",
-  "confidence": "medium",
-  "why": "The finding is right and §13 has no carve-out — its body is four sentences and says 'Always name layer', listing `./CLAUDE.md` (team, PR-gated) as the sanctioned notation for the repo file. The fix is mechanical, not card-shaped: adding the `./` prefix is the rule's own notation, it is the convention this same file already uses at L20 and L61 (`./CLAUDE.local.md`) and at L145 ('team `./CLAUDE.md`'), and it asserts nothing new about the video's content — Cherny's CLAUDE.md is the repo-root file. Claim, voice and ask are untouched; this is a locator normalisation, which the approval gate's standing exemption covers. If Antti would rather qualify in prose ('the team's CLAUDE.md compounding'), it becomes a card — but that costs words the sentence does not need.",
-  "evidence": "`node curriculum/evals/scripts/rule.js student_facing 13` — full body read, no exception clause. `grep -c '`CLAUDE.md` compounding' curriculum/trainings/agentic-engineering-101/getting-going.md` -> 1 (unique anchor). Read L83 in the current file: the bare hit sits in the Cherny pre-read annotation. Qualified siblings confirmed at L20, L61, L145. Maintainer block L92-L122 read: no note covers this reference.",
-  "old_string": "parallel worktrees, `CLAUDE.md` compounding, slash commands",
-  "new_string": "parallel worktrees, `./CLAUDE.md` compounding, slash commands",
-  "surface": "student-facing-body"
  },
  {
   "target_file": "curriculum/trainings/agentic-engineering-101/getting-going.md",

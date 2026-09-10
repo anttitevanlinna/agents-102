@@ -175,7 +175,7 @@ Use the `Agent` tool with:
 - `subagent_type: "general-purpose"`
 - `model:` **sonnet for every judge class.** Writing ran on haiku until 2026-08-19; it passed the schema gate and failed on judgement (out-of-lane rules, cross-file false positives), which no JSON validation catches. A 2026-08-26 hillclimb re-confirmed it on a planted-defect bench: haiku held mechanical recall at 5/5 and fell to 3/5 on judgement, dropping exactly the unearned term of art and the slogan shipped without its carve-out. Haiku belongs on the mechanical batteries (`check_platform_and_boundaries.md` §16/§17), where a wrong answer shows in the output's shape. → `check_platform_and_boundaries.md` §21a
 - `description:` `"<class>-class judge: <basename>"` per file
-- `prompt:` the Step 3 header, with `.claude/rules/content-rules.md` prepended verbatim (per the subagent rule-injection convention in project CLAUDE.md)
+- `prompt:` the Step 3 header, verbatim and alone. Do NOT prepend `.claude/rules/content-rules.md` — it auto-loads for every subagent, so a copy in the prompt is a second copy, and CLAUDE.md § *Subagent rule injection* names it by name as the thing not to prepend. What a judge is owed instead is already in the header: the full `memory/check_*.md` compendiums at T3, because judges cite rule numbers and adjudicate carve-outs that the `_index/` leads drop.
 
 For `story --personas N > 1`, append a single line `personas: N` — the judge interprets it.
 

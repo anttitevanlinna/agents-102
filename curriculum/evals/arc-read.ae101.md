@@ -50,16 +50,6 @@ Dissent (precedent, one of three): commit 7f1b192c (Antti, 2026-08-14) rewrote p
 
 Fix direction: amend the backing note to register the prompt as the second deliberate survivor (maintainer-side, apply directly). Rewording the prompt instead (*"drive automated backlog splitting"*) re-opens Antti's own wording and would be a card.
 
-### A10 · vocabulary · severity 1 · card-shaped
-
-File: `curriculum/exercises/close-the-ticket.md:52`.
-
-Quote: *"The loop that started with a failing test closed."*
-
-Claim: M1's *loop* is orient → fix → close → compound (Key Concepts, closer). Exercise 3 declares the loop closed one step early, before compound runs; Exercise 4 then closes it and the M1 closer lands *"You just ran the same loop"*. In the module whose one job is installing the loop, the word should not name a different loop.
-
-Fix direction: say what closed, the ticket or the fix landing where the team reads, not *"the loop"*.
-
 ### B5 · contradiction · severity 1 · maintainer-side (canon; apply directly)
 
 Files: `bosser-strategy:content-strategy-agentic-engineering-101.md:142` (Woven rule 3) and `:266` (Mood arc); `curriculum/trainings/agentic-engineering-101/learn-from-the-test.md:138` (maintainer block, the body's stance).

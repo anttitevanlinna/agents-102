@@ -57,7 +57,7 @@ After this module, you will be able to:
 - The loop is orient → fix → close → compound
 - `/context` shows what landed in the window. What didn't land is real, and you choose what fills the next round. (Oldskool: ccstatusline or `/statusline` runs it live.) Context is what you put in it.
 - The agent's self-report is a hypothesis, not ground truth. Read it as the agent's account of the repo and the session, not the things themselves. The scrollback is the machine's reflection; current state lives on disk.
-- A failing test is what makes the fix checkable. Without it, the fix is a guess that happens to compile
+- A failing, then passing test is what keeps the agent honest as the codebase evolves
 - A `./CLAUDE.local.md` built from session evidence reads different from one drafted blank: concrete, specific, yours. Personal layer first; team-worthy rules earn their own PR. It is the simplest personal store, and a starter. Everyone sees how it will bloat almost immediately.
 - The loop ends outside the code. The close-out lands in the tracker your team reads, and that tracker encodes conventions living in the tickets. One ticket is enough to start reading them back
 

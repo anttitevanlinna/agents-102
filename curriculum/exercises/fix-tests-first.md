@@ -64,8 +64,8 @@ Drop your bug after the colon.
 
 **The `What you build:` list stays as three objects (Antti 2026-09-08: *"original was better - more tangible before the exercise"*).** The slot is read before the work, where its job is telling a student what they will be holding afterwards. A failing test, the smallest fix, a shipped PR: three things they can picture. §52c carries the boundary — the enablement test never buys abstraction, and a concrete list that already tells the student what they get is the slot doing its job. Do not re-file the colon-list tell here.
 
-**Quality:** compendium-audited 2026-09-10 (writing@0d65ff01 story@0d65ff01 technical@0d65ff01 behavior@64d17eea pedagogy@0d65ff01 strategy@324b81d7 slides@0d65ff01)
-- judges @0d65ff01: writing PASS (2 findings see instances/ae101--exercise--fix-tests-first.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-09-10 (writing@c8bb1a71 story@0d65ff01 technical@0d65ff01 behavior@64d17eea pedagogy@0d65ff01 strategy@324b81d7 slides@0d65ff01)
+- judges @c8bb1a71: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply (tests-first fix) + Analyze (read the diff against what you'd write).
 - **Atomic — no phase markers.** One TDD loop, start to PR; splitting it would name beats the student does not experience as separate. Line 3 is authored, not generated.

@@ -223,4 +223,41 @@ test('a resolution on an agreeing instance is harmless', () => {
   assert.strictEqual(settled, 0)   // nothing to settle: the two sides already agree
 })
 
+test('a row that names a finding count the instance contradicts is a disagreement', () => {
+  const root = repo()
+  // The shape that shipped: a PASS row citing an instance that filed nothing.
+  // The verdicts agree, so the verdict comparison stays silent and the false
+  // count rides forward on every stamp — `update-quality.sh` preserves an
+  // unstamped axis row verbatim, which is exactly how it survives.
+  lecture(root, 'counted', '- judges @abc: pedagogy PASS (2 findings see instances/ae101--lecture--counted.pedagogy.json)')
+  instance(root, 'ae101--lecture--counted.pedagogy.json', {
+    file: path.join(root, 'curriculum/lectures/counted.md'), class: 'pedagogy', verdict: 'PASS',
+    blocking_findings_count: 0, nonblocking_findings_count: 0,
+  })
+  const { findings } = scan(root)
+  assert.strictEqual(findings.length, 1)
+  assert.strictEqual(findings[0].kind, 'count')
+  assert.match(findings[0].detail, /row says 2/)
+})
+
+test('a count that matches, or is absent, says nothing', () => {
+  const root = repo()
+  lecture(root, 'agrees', '- judges @abc: pedagogy PASS (2 findings see instances/ae101--lecture--agrees.pedagogy.json)')
+  instance(root, 'ae101--lecture--agrees.pedagogy.json', {
+    file: path.join(root, 'curriculum/lectures/agrees.md'), class: 'pedagogy', verdict: 'PASS',
+    blocking_findings_count: 1, nonblocking_findings_count: 1,
+  })
+  lecture(root, 'bare', '- judges @abc: writing PASS')
+  instance(root, 'ae101--lecture--bare.writing.json', {
+    file: path.join(root, 'curriculum/lectures/bare.md'), class: 'writing', verdict: 'PASS',
+    blocking_findings_count: 3, nonblocking_findings_count: 0,
+  })
+  // An instance with no count fields at all cannot be compared against.
+  lecture(root, 'uncounted', '- judges @abc: behavior PASS (1 finding see instances/x.json)')
+  instance(root, 'ae101--lecture--uncounted.behavior.json', {
+    file: path.join(root, 'curriculum/lectures/uncounted.md'), class: 'behavior', verdict: 'PASS',
+  })
+  assert.strictEqual(scan(root).findings.length, 0)
+})
+
 console.log(`\n1..${n}`)

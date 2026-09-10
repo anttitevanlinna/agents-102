@@ -59,6 +59,31 @@ function compare(instanceVerdict, rowVerdict) {
   };
 }
 
+// A row may also carry a COUNT — `pedagogy PASS (2 findings see instances/…)`.
+// The verdict comparison above is blind to it: both sides say PASS, so a note
+// claiming findings the instance never filed rides forward untouched, and
+// `update-quality.sh` preserves an unstamped axis row verbatim, so every later
+// stamp re-copies it. A count nobody can reproduce is worse than no count —
+// it reads as a measurement. Silent unless the row states a number AND the
+// instance states its own; an instance with no count fields (the behavior
+// class keeps a fires-only ledger and owes none) is not a disagreement.
+const ROW_COUNT_RE = /^(\d+)\s+finding/;
+
+function compareCounts(j, rowVerdict) {
+  if (!rowVerdict || !rowVerdict.note) return null;
+  const m = ROW_COUNT_RE.exec(String(rowVerdict.note).trim());
+  if (!m) return null;
+  const b = j.blocking_findings_count, n = j.nonblocking_findings_count;
+  if (typeof b !== 'number' && typeof n !== 'number') return null;
+  const filed = (typeof b === 'number' ? b : 0) + (typeof n === 'number' ? n : 0);
+  const claimed = Number(m[1]);
+  if (filed === claimed) return null;
+  return {
+    kind: 'count',
+    detail: `row says ${claimed} finding(s), instance filed ${filed} (blocking ${b ?? 0}, non-blocking ${n ?? 0})`,
+  };
+}
+
 // The way out that is not falsification. `verdict` stays what the judge wrote —
 // overwriting it to match the row would delete the only record that a finding
 // was ever filed. `resolution` records how the disagreement was settled, so the
@@ -167,7 +192,7 @@ function scan(repo) {
     const row = classVerdict(txt, cls);
     if (!row) { skipped.push({ base, reason: `class \`${cls}\` carries no verdict on the judges row` }); continue; }
     checked++;
-    const c = compare(j.verdict, row);
+    const c = compare(j.verdict, row) || compareCounts(j, row);
     if (file(findings, base, { file: rel, class: cls }, c, j) === 'settled') settled++;
   }
   return { findings, skipped, checked, settled };
@@ -191,5 +216,5 @@ function main(argv) {
   return 0;
 }
 
-module.exports = { classVerdict, compare, scan };
+module.exports = { classVerdict, compare, compareCounts, scan };
 if (require.main === module) process.exit(main(process.argv.slice(2)));

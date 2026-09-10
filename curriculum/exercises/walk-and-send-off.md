@@ -43,6 +43,7 @@ Ask Claude to screen your candidates and scope the winner. Drop them after the c
 
 Ask Claude to run the audit as a subagent and return a ranked top-five.
 
+
 {{prompt:walk-and-send-off-2}}
 
 ## Correct the list and reprioritise it
@@ -84,6 +85,8 @@ A fill looks like one of these shapes (the audit tags each gap with one):
 **Phase 1 carries the §34 ceiling in one bullet, not two (2026-08-14, Antti-directed).** `check_pedagogy.md` §34 mandates the ceiling at both placements (*"prework + Phase 1 commit"*); here it sits as a bolded tail on the single sizing bullet, where the student actually picks. The module prework and the previous module's `## Next` already carry the sizing line, so it is not printed a third time. Do not re-merge the ceiling away, and do not split it back into two bullets.
 
 **View summary:** You choose a task large enough to expose drift, ask the agent to find the thinnest parts of your existing context, fill only the worst gaps, and send the task off un-packaged. That first run becomes evidence for the next module.
+
+**`walk-and-send-off-2` keeps its isolation rationale inside the fence.** `check_prompts.md` §25 waives the after-fence sentence where the surrounding setup already makes the subagent obvious, and eight words the student reads on the page before pasting are that setup. The clause is also load-bearing for the agent composing the sub-task brief, so moving it out weakens the fence to buy a body sentence that restates it. Do not move it out and do not add the duplicate.
 
 **`Wire a connector` stays, and owes no setup teaching.** (Antti 2026-08-13, closing a maintainer-call.) The objection was that AE101 never teaches connector setup, so the fill menu asks for a move the training has not equipped. The call: assume this audience already knows how to add a connector. It is ordinary working knowledge for the engineers in the room, not a curriculum coinage, so teaching it would be earning a term they already own — the failure mode `check_student_facing.md` §2 warns about, where over-applying the earn rule strips out the language that makes the material sound written by someone in the trade. Do not cut the shape, do not add a setup beat, and do not re-raise: the other three fills are file writes, this one is not, and that asymmetry is fine.
 

@@ -50,16 +50,6 @@ Dissent (precedent, one of three): commit 7f1b192c (Antti, 2026-08-14) rewrote p
 
 Fix direction: amend the backing note to register the prompt as the second deliberate survivor (maintainer-side, apply directly). Rewording the prompt instead (*"drive automated backlog splitting"*) re-opens Antti's own wording and would be a card.
 
-### A9 · re-teach · severity 1 · card-shaped
-
-Files: `curriculum/trainings/agentic-engineering-101/getting-going.md:58` (Key Concepts); `curriculum/exercises/orient-and-introspect.md:53`.
-
-Quote (getting-going, line 58): *"(`/context` is oldskool; ccstatusline, or ask Claude to set up the built-in status line.)"*
-
-Claim: the same status-line aside, joke included, appears in orient-and-introspect and again in the module's Key Concepts recap twenty minutes later. A KC recap restates claims; restating a tool-tip parenthetical makes it read as a line the training is fond of.
-
-Fix direction: keep the aside in the exercise where the beat is taught; the KC bullet drops the parenthetical and keeps *"Context is what you put in it."*
-
 ### A10 · vocabulary · severity 1 · card-shaped
 
 File: `curriculum/exercises/close-the-ticket.md:52`.

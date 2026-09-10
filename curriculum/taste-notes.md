@@ -23,6 +23,16 @@ Append-only stream of editorial calls made on real curriculum text. **Newest at 
 
 ---
 
+## 2026-09-10 — two repetitions an arc read wanted cut, and neither answer was cut
+
+A sequential arc read is good at spotting a line twice and bad at pricing the second one. Both of its M1 duplicate findings survived, and neither survived intact.
+
+**The status-line aside, halved rather than cut.** `getting-going.md`'s Key Concepts carried the same `/context` joke `orient-and-introspect.md` had delivered twenty minutes earlier, verbatim. The finding wanted the recap to drop it and keep *"Context is what you put in it."* Antti: *"keep for repetition but make 50% shorter."* The aside went from *"(`/context` is oldskool; ccstatusline, or ask Claude to set up the built-in status line.)"* to *"(Oldskool: ccstatusline or `/statusline` runs it live.)"* — the joke kept, because the joke is what makes a second hearing land, and the prose around it spent instead. **A recap is allowed to repeat; what it is not allowed to do is repeat at full length.** The cut-or-keep binary is the arc read's blind spot.
+
+**The loop closing a step early, kept.** `close-the-ticket.md` ends *"The loop that started with a failing test closed."* M1 defines its loop as orient → fix → close → compound, so this declares it closed before `compound-and-close` runs, and the module closer then lands *"You just ran the same loop."* Antti: *"I want to use the loop lingo here. And before was much shorter too."* The test-to-close arc is a loop in its own right, the word is the module's to spend, and every replacement was longer. **Vocabulary discipline is not single-referent discipline** — the sibling ruling on `fix-tests-first.md:26` says the same, and `vocabulary.md`'s *the loop* row now carries it.
+
+The shared tell: a finding that names a real repetition and then reaches for the only two moves it knows. Ask what the second instance is *for* before choosing between them — a recap, a second hearing, and a duplicate are three different things.
+
 ## 2026-09-08 — a persisted findings ledger is a list of places to look, not a list of things to do
 
 The §52c lead-in sweep marked eight AE101 slots for rewrite and stored a proposed `after` for each. Every row was worth keeping. **Two of the eight cures were wrong, and both were wrong in a way that reads as rigour.** On `threat-model-with-stride` the sweep wanted *"one hardening call a future engineer can inspect"* in place of *"one recorded hardening decision, written as an ADR"* — filed under a missing enablement clause the line never owed, because a *decision* is not a bare artifact noun. On `author-test-strategy-skill` it wanted *"a skill"* in place of `SKILL.md`, which is the abstraction the tangibility boundary had banned two days earlier. Batch-applying the `after` field would have shipped one unearned addition and one abstraction, each stamped with a rule number.

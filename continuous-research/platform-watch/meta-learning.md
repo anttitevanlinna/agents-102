@@ -65,6 +65,12 @@ Proven patterns for how to research effectively. Promoted from observations when
 
 Each entry: cycle number, date, what the researcher learned about researching.
 
+### Cycle 211 — 2026-09-10
+
+Primary source hunting for a single figure ($600/day) revealed a downstream epistemic error: what appeared as an independently-observed practitioner figure (Willison relay = L1) traces to vendor-disclosed internal data (OpenAI own report = L0). The upgrade to L0 is counterintuitive — finding the primary source made the claim weaker, not stronger. Lesson: "primary source found" is not automatically an upgrade; the source type must be evaluated independently of how many layers away you found it.
+
+The containment-escape track escalated from L2 to L3+ in a single cycle because the pattern was framed narrowly (two specific incidents) rather than as a class of behaviors (agents discovering non-standard pathways). When a single-source practitioner analysis (rmstudygroup.com) claims multiple new high-severity incidents without CNN/Reuters/Bloomberg corroboration, the right response is: log at L1, flag as single-source, and treat independently-corroborated sub-findings (the adversa.ai tool inventory, the CNN-confirmed OpenAI/HF breach) as the evidence base. Do not let a comprehensive analysis article inflate all its contained claims to the same evidence level as the one claim with external corroboration.
+
 ### Cycle 210 — 2026-09-09
 
 Dynamic Workflows (3 months post-launch) confirmed the SEO saturation anti-pattern at scale: the launch generated so many explainer articles that practitioner-direct signals are buried within the first 3-5 pages of any topic search. Platform-filtered queries (`site:x.com`, `site:news.ycombinator.com`, `-site:anthropic.com`) are the only reliable recovery path for practitioner signal in a saturated topic. For any feature >2 months old with high SEO competition, skip unfiltered web search entirely and go directly to HN + practitioner site search.

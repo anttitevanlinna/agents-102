@@ -55,7 +55,7 @@ Subagents inherit the full CLAUDE.md hierarchy + `.claude/rules/`; built-in Expl
 
 ## Approval gate
 
-Card ONLY **student-facing body text + prompt bodies students copy** (`check_prompts.md §26`) **still carrying a decision Antti has not made.** Format: BEFORE/AFTER/WHY/RISK, changed spans **bolded** in both BEFORE and AFTER (insertion = bold only in AFTER), one at a time, wait for the call.
+Card ONLY **student-facing body text + prompt bodies students copy** (`check_prompts.md §26`) **still carrying a decision Antti has not made.** Format: BEFORE/AFTER/WHY/RISK, changed spans **bolded** in both BEFORE and AFTER — **always, every card, no exceptions** (insertion = bold only in AFTER; deletion = bold the cut span in BEFORE **and** the text that now closes over it in AFTER, so the join is visible). One at a time, wait for the call.
 
 **Not card-shaped though a student reads it** (§26 standing exemptions):
 

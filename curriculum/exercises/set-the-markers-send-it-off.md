@@ -55,7 +55,7 @@ Ask Claude to take the scoped task end-to-end in this same session.
 - Nudge by hand: answer a question, correct a path, push back on visible drift. Past ten or so interventions, you have become the agent; call it and read the transcript.
 - If the session goes completely off the rails, stop it. The trace is the evidence either way.
 
-If the agent stalls, ask it to keep going. The nudge reads as encouragement and lands as a taunt.
+If the agent stalls, ask it to continue. The nudge reads as encouragement and lands as a taunt.
 
 {{prompt:ae101-m4-nudge-continue}}
 

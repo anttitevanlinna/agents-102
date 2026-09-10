@@ -90,7 +90,7 @@ Read what Claude proposes. Push back if the verifier covers the wrong shape (a g
 
 *10 min*
 
-Ask Claude to assemble both, scoped to the same task, in conversation.
+Ask Claude to build both, scoped to the same task, in conversation.
 
 {{prompt:diagnose-and-resend-6}}
 

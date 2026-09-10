@@ -26,7 +26,7 @@ Ask Claude to fork the worktree and copy your gitignored files across.
 
 {{prompt:ae101-m5-worktree-setup}}
 
-- Claude usually opens with a plan summary listing the six sub-steps, then runs them. Skim past it.
+- Claude usually opens with a plan summary, then runs it. Skim past it.
 
 ## Check the copy landed
 

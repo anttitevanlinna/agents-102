@@ -60,6 +60,8 @@ Drop your bug after the colon.
 
 **Lean-intro trim (2026-08-25, Antti-approved):** the TDD rationale (*"The failing test is what makes the fix checkable. Without it, the fix is a guess that happens to compile."*) cut from the opening bullet — explaining tests-first to engineers. The imperative alone carries the beat; do not restore the why.
 
+**Prompt 3's lead-in is action-verb enough as it stands (Antti 2026-09-10).** *Send only if the interrogation surfaced a deeper layer worth a second TDD pass.* opens on the student's command verb — *send* — which is what `check_prompts.md` §2 asks for; a judge reading it as condition-only has missed the verb in the first word. Any expansion is also longer, and the shorter line wins. Do not add an action summary here.
+
 **The `What you build:` list stays as three objects (Antti 2026-09-08: *"original was better - more tangible before the exercise"*).** The §52c sweep proposed the View summary's own closing clause, *"working code whose evidence you have read and challenged"* — nine words against nineteen, and truer about what the exercise teaches. Declined because the slot is read before the work, where its job is telling a student what they will be holding afterwards. A failing test, the smallest fix, a shipped PR: three things they can picture. The replacement describes a quality of the result and names nothing they could hold. §52c now carries the boundary — the enablement test never buys abstraction, and a concrete list that already tells the student what they get is the slot doing its job. Do not re-file the colon-list tell here.
 
 **Quality:** compendium-audited 2026-09-06 (writing@324b81d7 story@324b81d7 technical@324b81d7 behavior@64d17eea pedagogy@08946dd8 strategy@324b81d7 slides@324b81d7)

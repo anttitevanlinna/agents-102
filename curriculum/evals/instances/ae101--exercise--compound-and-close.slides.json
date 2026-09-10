@@ -1,36 +1,16 @@
 {
   "class": "slides",
-  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/compound-and-close.md",
-  "body_sha": "d6699d35f6b3c87b16be7c03066026c7d9d803b6005372c7b23c27d25775bb67",
-  "shape_hash": "0f7defa9943cfa44",
-  "verdict": "PASS",
   "training": "ae101",
+  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/compound-and-close.md",
+  "verdict": "PASS",
+  "body_sha": "dd3a88f112e872922522cdc45f6ea32b8f4b2e2b18394b7921702619d12dc967",
+  "shape_hash": "9f10138b6ab93d8d",
   "chunk_map": [
-    {
-      "index": 0,
-      "heading": "H1 + lede (title slide)",
-      "lines": "1-16"
-    },
-    {
-      "index": 1,
-      "heading": "Write your rules file from the session",
-      "lines": "17-27"
-    },
-    {
-      "index": 2,
-      "heading": "Push back where the summary misreads",
-      "lines": "28-32"
-    },
-    {
-      "index": 3,
-      "heading": "Keep or revert the `.gitignore` edit",
-      "lines": "33-36"
-    },
-    {
-      "index": 4,
-      "heading": "Sweep the session into your rules file one more time",
-      "lines": "37-49"
-    }
+    {"index": 0, "heading": "H1 + lede", "lines": "1-16"},
+    {"index": 1, "heading": "Write your rules file from the session", "lines": "17-27"},
+    {"index": 2, "heading": "Push back where the summary misreads", "lines": "28-32"},
+    {"index": 3, "heading": "Keep or revert the `.gitignore` edit", "lines": "33-36"},
+    {"index": 4, "heading": "Sweep the session into your rules file one more time", "lines": "37-49"}
   ],
   "rules_evaluated": [
     {
@@ -39,7 +19,7 @@
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Sequential re-read, chunk by chunk. Chunk 0 line 11 'The PR shipped and the ticket is closed' resolves via the session-artifact carve-out (student's own just-run Ex2/Ex3 work); 'the next one'/'this one' same sentence = 'the session'; line 13 'It'/'it' (x2) = `./CLAUDE.local.md`, named line 5 and opening the same sentence; line 15 'This file'/'this' = same file, named line 13. Chunk 1 line 21 'this is where they land on disk' = the rules file, named repeatedly by this point; line 23 blockquote 'the orient and introspect phases' resolves against the student's own just-run session (module-arc-beat carve-out, confirmed via `getting-going.md:44` — Ex1 `orient-and-introspect` sits directly before this file in include order) AND the session-artifact carve-out (the prompt at line 25 itself instructs Claude to review 'the orientation and introspection'). Chunk 2 line 30 'Claude's summary'/'it misreads' = the retro output the chunk-1 prompt produced. Chunk 3 line 35 'it'/'That'/'it' resolve within two sentences to CLAUDE.local.md and the .gitignore edit. Chunk 4 line 39 'the first compound pass' = chunk 1's action, named 'compound' throughout the file. Closest call: chunk 4 line 46 'your rules files' (plural) — the deck has already named a second, distinct rules-file concept by this point (chunk 0 line 13 'a team's rules and guardrails'), so the plural resolves to that named personal+team pair rather than dangling. Holds.",
+      "evidence": "Closest candidate: chunk 1 line 23 blockquote \"narrow to the orient and introspect phases first\" precedes the prompt fence at line 25 which is where \"the orientation and introspection\" and \"the TDD bug fix\" are actually spelled out (expanded view line 28). Both sit in the SAME chunk (whole slide renders as one visual unit, per template's \"chunk's own header counts as in-chunk\" instruction), so the callout resolves against the fence two lines below on the same slide rather than pointing at a later chunk. \"Orient and introspect\" is also arc-earned: the module's first exercise (`orient-and-introspect.md`, include-order-verified via `getting-going.md` line 44) names its own session \"Module 1 - Orient and introspect,\" three exercises before this one in the same module's include order. Session-artifact terms throughout (\"the session,\" \"Claude's summary,\" \"your own ticket,\" \"the compound step,\" \"the push-backs\") fall under the session-artifacts carve-out. No never-named or vague-with-full-history referent found.",
       "fix_hint": null,
       "blocking": true
     },
@@ -49,7 +29,7 @@
       "rule_lead": "Cross-file and positional callbacks.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "No sentence in lines 1-49 points at another file by position. The only backward references (line 11's PR/ticket) resolve via the session-artifact carve-out (rule 1), not a cross-file callback. No 'the opening lecture said' / positional phrasing anywhere in the body.",
+      "evidence": "No candidate pointer at another file by position anywhere in body (lines 1-49). Closest case, chunk 1 line 21 \"The tracker conventions count as evidence too. The field rules you read off your own ticket are in this scrollback\" — names the artifact by content (\"your own ticket,\" \"this scrollback\"), never locates it by file/page position, so it reads as the navigational-pointer carve-out, not a §2 violation. The maintainer block's own Arc section names `close-the-ticket` explicitly, but that block sits below the maintainer cut and is out of body scope.",
       "fix_hint": null,
       "blocking": true
     },
@@ -59,7 +39,18 @@
       "rule_lead": "Every backward reference points at a beat that exists.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Line 11: 'The PR shipped and the ticket is closed.' Re-verified this session against `curriculum/trainings/agentic-engineering-101/getting-going.md`: line 46 lists Ex2 `fix-tests-first.md`, line 48 lists Ex3 `close-the-ticket.md`, line 50 lists this file (Ex4) immediately after; line 131 spells the include order explicitly ('Ex2 (fix-tests-first) TDD bug fix, ship the PR -> Ex3 (close-the-ticket) ... close the bug's ticket'). Both referenced beats currently exist and sit directly before this file.",
+      "evidence": "Backward references checked: \"the orient and introspect phases\" / \"the orientation and introspection\" (chunk 1) -> exercise 1 `orient-and-introspect.md`; \"the TDD bug fix\" (chunk 1 prompt) -> exercise 2 `fix-tests-first.md`; \"the bug rules read off the ticket\" / \"your own ticket\" (chunk 1) -> exercise 3 `close-the-ticket.md`; \"the compound step\" (chunk 3) -> this file's own chunk 1; \"the first compound pass\" / \"the push-backs\" (chunk 4) -> this file's chunks 1-2. All verified present in `getting-going.md`'s current include order (lines 44-50: orient-and-introspect, fix-tests-first, close-the-ticket, compound-and-close). No dead beat found.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 4,
+      "rule_lead": "Live-demo beats survive a text read.",
+      "verdict": "N/A",
+      "chunks_flagged": [],
+      "evidence": null,
+      "na_reason": "No guess-before-reveal / live-demo structure in this file — it is a retro/compound exercise, not a session with a prediction beat.",
       "fix_hint": null,
       "blocking": true
     },
@@ -69,7 +60,7 @@
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Smallest chunk is chunk 3 (lines 33-36): 'If `CLAUDE.local.md` wasn't already ignored, the compound step added it to your `.gitignore`. That is an uncommitted change now; commit it, or drop it.' A self-carrying instruction with a decision the student must make on its own, not a wait-state or context-dependent bullet. No chunk in the file is content-free.",
+      "evidence": "Closest case: chunk 3 (\"## Keep or revert the `.gitignore` edit\", lines 33-36) carries a single bullet, but it states a self-contained decision (\"That is an uncommitted change now; commit it, or drop it.\"), not a wait-state or context-dependent fragment — it stands on its own without the neighbouring slides.",
       "fix_hint": null,
       "blocking": false
     },
@@ -79,7 +70,7 @@
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Chunk 1 'Write your rules file from the session' -> body writes the rules file (lines 19-21, prompt at 25). Chunk 2 'Push back where the summary misreads' -> body pushes back on the summary (lines 30-31). Chunk 3 'Keep or revert the `.gitignore` edit' -> body does exactly that (line 35). Chunk 4 'Sweep the session into your rules file one more time' -> second-sweep prompt (39-44) plus the token-cost aside (46) and escape-hatch note (48). Chunk 0's H1 'Compound and close the loop' covers the lede (compounding, the rules-file choice, the bloat warning). No header the chunk's own content contradicts.",
+      "evidence": "All 4 headers checked against their own chunk content: \"Write your rules file from the session\" (ch1: reviews scrollback, drafts rules) matches; \"Push back where the summary misreads\" (ch2: read summary, quote the moment, push back) matches; \"Keep or revert the `.gitignore` edit\" (ch3: decide commit or drop the gitignore change) matches exactly; \"Sweep the session into your rules file one more time\" (ch4: second pass, sweep prompt, integrate) matches. No header contradicted by its own body.",
       "fix_hint": null,
       "blocking": false
     },
@@ -89,9 +80,9 @@
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Ran `grep -nE 'Not [A-Za-z].*\\. Not [A-Za-z].*\\.' curriculum/evals/body-views/ae101--exercise--compound-and-close.body.txt` -> 0 hits (exit 1). Manual sub-item read of the rest: no anaphora/epistrophe triple (line 11's 'a test, a doc, a check' and line 13's 'one file, gitignored, read at the top of every session' are plain asyndetic lists, not repeated-clause rhetoric); no self-grading superlative (closest is line 9's '**The point:** every push-back is a hint toward your own rules' — a claim about the student's own action, not a rating of the exercise); no number-plus-retraction (line 3's 'Time: 15 minutes' is a plain metadata field); no abstraction-noun stack (vocabulary stays concrete: tracker, ticket, scrollback, gitignore, tokens); no verb triplet with an empty leg.",
+      "evidence": "Checked each sub-item across all 4 chunks: no \"Not X. Not Y. Z.\" construction; no anaphora/epistrophe triple; no self-grading superlative (\"one of the most useful...\") anywhere in body; no number-with-retraction pattern (that shape lives in the sibling file `orient-and-introspect.md`, out of scope); no abstraction-noun stack; no empty-leg verb triplet. Closest passage, line 15, \"This file is a starter. Everyone sees how this will bloat almost immediately.\" is two short declaratives on different claims, not a tic construction.",
       "fix_hint": null,
-      "blocking": true
+      "blocking": false
     },
     {
       "compendium": "check_slides.md",
@@ -99,7 +90,7 @@
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Ran `grep -nE '\\b(surface|firing|compendium|forcing function|beat|mood|Connections)\\b' curriculum/evals/body-views/ae101--exercise--compound-and-close.body.txt` -> 0 hits (exit 1). Also checked the expanded prompt fences (`node scripts/expand-md.js`) for the same terms -- none present ('the shape of the loop we ran', practitioner names, no repo dialect). 'compound' / 'compound step' / 'compound pass' is the training's own registered kit term (`vocabulary.md` § compound engineering, per the backing block's own 'Wording per vocabulary.md § compound engineering'), not maintainer-internal shorthand.",
+      "evidence": "Grepped body for maintainer/repo vocabulary (surface-as-noun, firing, compendium, forcing function, beat, mood, Connections-as-proper-noun) — zero hits in lines 1-49. \"compound\" is the exercise's own named practitioner term (Klaassen), not repo-internal dialect. \"scrollback\" is ordinary engineer vocabulary for the AE101 audience. \"Phase\" / \"beat\" language appears only in the maintainer block (Meta, Leap test, Per-phase failure mode), below the cut.",
       "fix_hint": null,
       "blocking": true
     },
@@ -109,7 +100,7 @@
       "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Chunk 0 carries 4 bold spans (**Time:**, **What you do:**, **What you build:**, **The point:**) -- house exercise-header widget-chrome, explicitly cleared by this file's own maintainer note at line 56 ('widget chrome ... stays bold; body bullet leads de-bolded; no named-term handles remain in this file'). Chunk 1's blockquote lead '**Long session, long read.**' (line 23) and chunk 4's '**The escape hatch is deliberate.**' (line 48) are one handle each, within the <=1 non-chrome-per-chunk budget. No other bold anywhere in lines 11-15, 19-21, 30-31, 35, 39-46, matching the maintainer note's own claim.",
+      "evidence": "Grep of `**` in body (lines 1-49): widget chrome only — `**Time:**`, `**What you do:**`, `**What you build:**`, `**The point:**` (chunk 0, all ≤3-word labels) plus two blockquote handles, `**Long session, long read.**` (ch1, 4 words) and `**The escape hatch is deliberate.**` (ch4, 5 words) — each the sole bold on its slide, each ≤5 words. No bullet lead is bolded anywhere. This matches the maintainer block's own attestation verbatim: \"widget chrome... stays bold; body bullet leads de-bolded; no named-term handles remain in this file.\"",
       "fix_hint": null,
       "blocking": false
     },
@@ -119,9 +110,20 @@
       "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "`curriculum/trainings/agentic-engineering-101/getting-going.md` line 50 includes this file as a standalone-paragraph include-link ('[Compound and close](exercises/compound-and-close.md)'), the mechanism that reaches `.phase--exercise` and the composed deck. Ran `node scripts/check-slide-size.js --report --file curriculum/exercises/compound-and-close.md` this session -> 'files: 1  slides: 4', matching the file's four current `##` sections exactly.",
+      "evidence": "Exercise files are wrapped in `.phase--exercise` by the include mechanism, so the whole file reaches the composed deck (`buildDeckModel`) as a matter of file type — unlike module-level phase-less prose sections (Prework, Key Concepts) this rule's headline incident concerned. No phase-less prose section exists in this file outside the wrapper; nothing to drop.",
       "fix_hint": null,
       "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 11,
+      "rule_lead": "Numbering — position is computed, content ordinals are linted.",
+      "verdict": "N/A",
+      "chunks_flagged": [],
+      "evidence": null,
+      "na_reason": "No `## Phase N:` / `## N.` headers or in-body \"Step K\"/\"Phase K\" references present; confirmed clean by `node scripts/check-slide-numbering.js` (\"OK — 59 files, Phase/Step numbering consistent\", exit 0).",
+      "fix_hint": null,
+      "blocking": false
     },
     {
       "compendium": "check_slides.md",
@@ -129,9 +131,20 @@
       "rule_lead": "Page geometry dies at the cut; reading order survives.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Ran `node scripts/check-slide-deixis.js --file curriculum/exercises/compound-and-close.md --report` this session -> 'ok   curriculum/exercises/compound-and-close.md:48  [the line back] — maintainer-attested'. That one match is line 48's 'have Claude take the line back out of the file', already covered by the maintainer's own accept-note at line 54 ('idiom ... not page geometry'). No other above/below/at-the-top-of-this-page phrasing anywhere in the body.",
+      "evidence": "Ran `node scripts/check-slide-deixis.js --report`: only hit for this file is line 48 \"the line back\" -> `ok ... [the line back] — maintainer-attested`, matching the maintainer block's own \"Slide deixis accepted\" note (idiom, not page geometry). No other below/above/further-down/at-the-top-of-this-page phrasing found in body.",
       "fix_hint": null,
       "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 13,
+      "rule_lead": "In-deck links work now; whether they EARN their place is open.",
+      "verdict": "N/A",
+      "chunks_flagged": [],
+      "evidence": null,
+      "na_reason": "No links in body (`has_urls: false` in body view; no `[text](...)` markdown links present in lines 1-49).",
+      "fix_hint": null,
+      "blocking": false
     },
     {
       "compendium": "check_slides.md",
@@ -139,7 +152,7 @@
       "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Ran `node scripts/check-slide-size.js --report --file curriculum/exercises/compound-and-close.md` this session -> largest slide 139 words/2 bullets ('Sweep the session...'), then 134/3 ('Write your rules file...'), 26/2 ('Push back...'), 24/1 ('Keep or revert...'); 'oversized: 0'. All four current slides within the 210-word/6-bullet cap; no accept-note needed.",
+      "evidence": "`node scripts/check-slide-size.js --file curriculum/exercises/compound-and-close.md` -> \"files: 1  slides: 4  limits: 210 words / 6 bullets ... oversized: 0 ... every slide is within limits\".",
       "fix_hint": null,
       "blocking": false
     },
@@ -149,7 +162,7 @@
       "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "All four `##` headers are plain exercise imperatives -- 'Write your rules file from the session', 'Push back where the summary misreads', 'Keep or revert the `.gitignore` edit', 'Sweep the session into your rules file one more time'. This file's own maintainer note ('Atomic -- no phase markers. One retro pass into one rules file; the push-back and the second sweep are moves inside it, not beats beside it') confirms there is no law/consolidation beat here that would need a declarative header. Neither of the rule's own two named corpus declaratives (`close-the-ticket.md`, `fix-tests-first.md`) is this file. No heading here is a candidate declaration under the rule's proposal-time test.",
+      "evidence": "All 4 `##` headings are imperative per the exercise convention: \"Write your rules file from the session,\" \"Push back where the summary misreads,\" \"Keep or revert the `.gitignore` edit,\" \"Sweep the session into your rules file one more time.\" None is a mislabeled declarative-claim-as-label or vice versa.",
       "fix_hint": null,
       "blocking": false
     },
@@ -157,55 +170,24 @@
       "compendium": "check_slides.md",
       "rule_index": 16,
       "rule_lead": "A bullet earns its slot or dies — three classes that read as rigour and carry nothing.",
-      "verdict": "REVISE",
-      "chunks_flagged": [
-        1,
-        2
-      ],
-      "evidence": "Two bullets add nothing over what the slide already holds. Chunk 1, line 20: 'You are not drafting from a blank page. The agent reads the session for you.' -- restates line 19 ('Claude reviews the whole scrollback in one shot and drafts your rules from how you actually worked') from the student's vantage point; no new move/object/tell/priority, class (a) doctrine-restatement shape at small scale. Chunk 2, line 31 second sentence: 'Born from the session, evolved over time.' -- a closing flourish restating the 'the session is the evidence' theme already stated at chunk 0 line 11 and again by 'The rules file is yours now' in the same bullet; class (c) aphorism-kicker shape (closes the chunk by re-announcing a point already made). Non-blocking: the slide is still followable without either sentence, it just carries two lines that do no work.",
-      "fix_hint": "Cut line 20's second sentence (or fold it into line 19); cut 'Born from the session, evolved over time.' from line 31, leaving 'The rules file is yours now.'",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "No doctrine-restatement, self-referential design commentary, or aphorism-kicker bullet found in the current body. Notably, the pinned diff (9edae2ef..HEAD) already cut four candidates of exactly this shape: \"Push back where it misread.\" (redundant with the ch2 header, cut from line 5), \"Concrete, specific, yours, and read at the top of every future session in this repo.\" (cut from line 7), \"The agent reads the session for you.\" (cut trailing sentence, line 19-20), \"Born from the session, evolved over time.\" (cut aphorism-kicker trailing clause, line 41) — consistent with the prior slides instance's 1 recorded finding now landed. Closest remaining case, line 15 \"This file is a starter. Everyone sees how this will bloat almost immediately.\" is practical information about the artifact the student is building, not pedagogy-commentary or a kicker restating the header/point line.",
+      "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_slides.md",
-      "rule_index": 4,
-      "rule_lead": "Live-demo beats survive a text read.",
-      "verdict": "N/A",
-      "evidence": "No guess-before-reveal instruction anywhere in the body; this exercise is a compound/retro loop, not a live-demo beat.",
-      "fix_hint": "",
-      "blocking": false,
-      "carried_from": "35ddab3eadd33044c6421a7f32a144025a3ad6b1bc2c4c74d274954b0b4c2871",
-      "carried_shape": "0f7defa9943cfa44"
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 11,
-      "rule_lead": "Numbering — position is computed, content ordinals are linted.",
-      "verdict": "N/A",
-      "evidence": "Ran `node scripts/check-slide-numbering.js curriculum/exercises/compound-and-close.md` -> 'OK — 61 files, Phase/Step numbering consistent.' File contains no hand-numbered headers or Phase/Step refs at all (headers are plain imperatives); rule does not apply to this file's content.",
-      "fix_hint": "",
-      "blocking": false,
-      "carried_from": "35ddab3eadd33044c6421a7f32a144025a3ad6b1bc2c4c74d274954b0b4c2871",
-      "carried_shape": "0f7defa9943cfa44"
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 13,
-      "rule_lead": "In-deck links work now; whether they EARN their place is open.",
-      "verdict": "N/A",
-      "evidence": "`grep -n '\\[.*\\](' curriculum/exercises/compound-and-close.md` returns no matches — no markdown links anywhere in the body. Nothing to inventory.",
-      "fix_hint": "",
-      "blocking": false,
-      "carried_from": "35ddab3eadd33044c6421a7f32a144025a3ad6b1bc2c4c74d274954b0b4c2871",
-      "carried_shape": "0f7defa9943cfa44"
+      "rule_index": 17,
+      "rule_lead": "A retitled slide re-earns its bullets against the new header.",
+      "verdict": "PASS",
+      "chunks_flagged": [],
+      "evidence": "No `##` header line changed in the pinned diff (9edae2ef..HEAD) — only trims inside chunk 0/1/2 body text. `git log --oneline -- curriculum/exercises/compound-and-close.md` shows no recent header-rename commit for this file, and rule 6's header-vs-content check above found every current header still matches its own bullets, so no stale post-rename residue is present.",
+      "fix_hint": null,
+      "blocking": false
     }
   ],
   "blocking_findings_count": 0,
-  "accept_notes_found": [
-    "L54: **Slide deixis accepted:** \"the line back\" — idiom, not page geometry (clears rule 12 on line 48)",
-    "L56: **Emphasis budget (check_slides.md §9):** widget chrome stays bold; body bullet leads de-bolded; no named-term handles remain (clears rule 9 on chunk 0's four widget-chrome bolds)",
-    "L58: Quality line — compendium-audited 2026-08-29, slides@d065f8bc (predates this re-judge; body_sha differs because only the out-of-scope backing block changed since, per `git diff 11ee4a27^..11ee4a27 -- curriculum/exercises/compound-and-close.md`)",
-    "L82-85, L91-95, L101: dated source-freshness / stance stamps in the backing block — outside slides-class scope entirely (below the maintainer cut, body_regions = [[1,49]] only)"
-  ],
-  "nonblocking_findings_count": 1
+  "nonblocking_findings_count": 0,
+  "notes": "Diff-region pin 9edae2ef..HEAD contains only body trims inside chunks 0-2 (removing redundant trailing clauses from \"What you do\"/\"What you build\"/two bullets) plus a maintainer-block-only addition (the §40b accept-note, below the cut, out of slides scope) and Quality-row/source-stamp updates (also below the cut). No slides-class regression introduced by this diff; the trims read as rule-16 cleanup already applied."
 }

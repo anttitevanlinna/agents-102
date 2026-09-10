@@ -99,8 +99,8 @@ The opening question at Module 1: *what's your favourite Claude Code trick that 
 
 - `[checked:2026-07-30 result:OK due:none]` https://simonwillison.net/2025/Oct/7/vibe-engineering/ — [practitioner direct] (Willison, 2025-10-07). Outside the 6-month window by decision: named framing piece, dated in body, same treatment as the Cherny video exception in `getting-going.md` — `due:none` on the same variant those parallel stamps use. fallback: drop the pre-read; Module 1 stands alone.
 
-**Quality:** sim-passed 2026-09-10 (writing@299bd354 story@96b5ca1e technical@96b5ca1e behavior@96b5ca1e pedagogy@96b5ca1e strategy@324b81d7 slides@299bd354)
-- judges @96b5ca1e: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** sim-passed 2026-09-10 (writing@0d65ff01 story@96b5ca1e technical@96b5ca1e behavior@96b5ca1e pedagogy@96b5ca1e strategy@324b81d7 slides@0d65ff01)
+- judges @0d65ff01: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - cross_module @01592193: PASS — set=[prework,getting-going,plan-mode-done-right,earn-the-trust]; 3 pairs, 0 blocking; see instances/ae101--module-set--prework-m3.cross_module.json
 
 **Meta:**

@@ -16,7 +16,7 @@ This file is a starter. Everyone sees how this will bloat almost immediately.
 
 ## Write your rules file from the session
 
-- Claude reviews the whole scrollback in one shot and drafts your rules from how you actually worked.
+- The agent reviews the whole scrollback in one shot and drafts your rules from how you actually worked.
 - You are not drafting from a blank page.
 - The tracker conventions count as evidence too. The field rules you read off your own ticket are in this scrollback, and this is where they land on disk.
 
@@ -57,8 +57,8 @@ You can check the recurring cost by asking Claude how many tokens your rules fil
 
 **The five phase labels in `compound-and-close-1` stay, under `§40b`'s two-readers carve-out (2026-09-08).** *the orientation and introspection* and *the TDD bug fix* are curriculum-coined and were never typed at Claude verbatim, so §40b's warm-but-referent-absent shape does fire. Its cure order then asks what deleting them changes, and the answer differs by reader. For the agent: little. The fence opens *"Review this session end-to-end"*, which carries the scope on its own, and the glosses describe work an agent reading the scrollback can see happened — a repo read, a self-report on what was skipped, a tests-first fix. For the student: the list is the module's receipt, five phases of their morning enumerated at the beat that closes it. One nothing and one something is a keep. Do not delete the list, and do not paraphrase the labels either — §40b forbids the like-for-like swap, which would spend a fresh term to preserve the same defect.
 
-**Quality:** compendium-audited 2026-09-06 (writing@9edae2ef story@d065f8bc technical@8cc00874 behavior@64d17eea pedagogy@7fb973dd strategy@1480362 slides@9edae2ef)
-- judges @64d17eea: writing PASS, story PASS, technical PASS, behavior PASS (4 findings see instances/ae101--exercise--compound-and-close.behavior.json), pedagogy PASS, strategy PASS, slides PASS (1 finding see instances/ae101--exercise--compound-and-close.slides.json)
+**Quality:** compendium-audited 2026-09-10 (writing@0d65ff01 story@0d65ff01 technical@0d65ff01 behavior@0d65ff01 pedagogy@0d65ff01 strategy@0d65ff01 slides@0d65ff01)
+- judges @0d65ff01: writing PASS (1 finding see instances/ae101--exercise--compound-and-close.writing.json), story PASS, technical PASS, behavior PASS (2 findings see instances/ae101--exercise--compound-and-close.behavior.json), pedagogy PASS (1 finding see instances/ae101--exercise--compound-and-close.pedagogy.json), strategy PASS, slides PASS
 **Meta (trainer):**
 - **Primary Bloom's level:** Analyze (read the retro summary against session moments) + Apply (integrate the rules file from evidence).
 - **Atomic — no phase markers.** One retro pass into one rules file; the push-back and the second sweep are moves inside it, not beats beside it. Line 3 is authored, not generated.
@@ -105,9 +105,6 @@ OODA
 <!-- /backing -->
 **Watch-fors:**
 - **Retro confabulation.** Claude's 3–5 line summary name-drops moments without quoting. Trainer push: *"quote the specific session moment that made you add rule X. If you can't, take it out."*
-
-**Plug points:**
-- Push-back moves at retro (trainer delivers).
 
 **Arc:**
 - Picks up from: `close-the-ticket` — the shipped PR, the closed ticket and the tracker-convention rules kept there are all session evidence this sweep reads.

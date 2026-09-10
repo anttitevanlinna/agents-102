@@ -3,110 +3,169 @@
   "training": "ae101",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/the-wizard-move.md",
   "verdict": "PASS",
-  "body_sha": "a64be3f405ea264b6b96ba403bcd5e2b9f4fd928e60540b732de1a6c948822aa",
+  "body_sha": "fed4b01bfc8fa9a4db8ac9cdaeda4aa129f7b3566c75296a6ba220d74e913d6c",
   "shape_hash": "34646fe0875901f8",
   "trace_status": "cached",
-  "trace_path": "curriculum/evals/sim-cache/ae101--lecture--the-wizard-move.persona.json",
   "module_mood_contract": "joyful creation — 'it works, on my repo' (getting-going.md L120 Meta block; content-strategy-agentic-engineering-101.md M1 row)",
-  "mood_summary": {
-    "phase_scores": [
-      9
-    ],
-    "close_score": 9,
-    "any_below_8": false,
-    "stealing_the_mood": []
-  },
-  "teaching_moment_lands": "PASS — the named moment (context conditions the next answer) is a trainer-run demo, not a student-executed prompt, so it does not vary with persona skill; the persona trace (mood_score 9, is_me_rating 9) confirms the fact/fact contrast lands without requiring the student to do anything. The live-fires-cleanly precondition is tracked as its own dated source stamp (demo-fires-live, result:NEEDED due:cohort, L58) in this file's own backing block — an owed pre-cohort dry-run, not a storytelling defect.",
   "rules_evaluated": [
     {
       "compendium": "check_lectures.md",
-      "rule_index": "1",
+      "rule_index": 1,
       "rule_lead": "Meta-frame lectures = closers, not openers.",
       "verdict": "PASS",
-      "evidence": "L1-16 is a demo lecture showing a mechanism/ceiling (two-session context-conditioning contrast), not a meta-frame naming a pattern the student already lived through — the rule's own diagnostic classes 'demo lectures showing a ceiling' as openers. Maintainer block states 'Placement: M1 opener, after Connections, before the exercise' (L31), and the AE101 strategy doc's M1-in-detail section names this exact file (lectures/the-wizard-move.md) ahead of the three M1 exercises.",
-      "fix_hint": null,
-      "blocking": true
-    },
-    {
-      "compendium": "check_lectures.md",
-      "rule_index": "3",
-      "rule_lead": "No cross-module sequencing in lecture bodies.",
-      "verdict": "PASS",
-      "evidence": "Body (L1-16, above the maintainer fence at L17) carries zero module-number references or forward-pointers ('M3 reads this...', 'gets its full name at M5'). Every M1/M2 mention in the file (e.g. L22-L24, L31-L37) sits below the maintainer fence, out of body scope by construction.",
+      "evidence": "This is a DEMO lecture showing a ceiling (two-session context-conditioning demo), not a meta-frame lecture naming a pattern the student already lived through. Rule's own text: 'Demo lectures showing a ceiling go at beginning.' Maintainer Meta block: 'Placement: M1 opener, after Connections, before the exercise' — correct slot for this lecture type.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_lectures.md",
-      "rule_index": "4",
-      "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
+      "rule_index": 2,
+      "rule_lead": "Minimal lecturing before contrast-mood exercises.",
       "verdict": "PASS",
-      "evidence": "'## Context is King' (L3) and '## You steer the answer by loading context' (L11) both name the ONE concept a squinting reader walks away with (context dominates the next answer / you actively load it), neither is an empty container or bare arc label, and no two slides share a header. Truth clause: L3's claim is licensed by the fact/fact demo at L5-L9; L11's claim is licensed by the generalization at L13 and the discipline-name close at L15 — no unsupported universal, no dropped qualifier ('not as reliably' at L9 is kept, not smoothed away), no category error. Neither header is a command-verb imperative (declarative claims, per the §17 lecture carve-out).",
+      "evidence": "Diagnostic (teaches vs arms): body names zero practitioner terms, maps no framework to a problem, explains no tradeoff with reasons — it demos the phenomenon (two sessions, two dinner answers) and states one operational primitive ('load the right context before the question'). That is 'spirit + lens + one move', the arms shape, regardless of whether M1 itself is classed contrast-mood.",
       "fix_hint": null,
-      "blocking": true
+      "blocking": false
     },
     {
       "compendium": "check_lectures.md",
-      "rule_index": "5",
+      "rule_index": 3,
+      "rule_lead": "No cross-module sequencing in lecture bodies.",
+      "verdict": "PASS",
+      "evidence": "Mechanical: grep -nE 'M[0-9]' curriculum/evals/body-views/ae101--lecture--the-wizard-move.body.txt → 0 hits (ran this session). Body carries no module numbering, no forward/back references. Maintainer block independently confirms this is deliberate: 'Zero map references. M1 is protected; the map arrives at M2.'",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 4,
+      "rule_lead": "Slide/lecture headers pass the squint test AND the truth clause.",
+      "verdict": "PASS",
+      "evidence": "Two headers, L3 'Context is King' and L11 'You steer the answer by loading context'. Squint: both are claims the slide argues, not empty containers ('The move'/'The names') and not bare arc labels. Truth: 'Context is King' is a metaphorical title the body substantiates (context conditions every subsequent answer, demonstrated live); 'You steer the answer by loading context' is a plain declarative the body's own next sentences support verbatim. Neither drops a qualifier or asserts an unsupported universal. Inherit checks: em-dash grep CLEAN (0 hits, body-view greps), no pedagogy/contemplative phrasing in either header, both are noun/declarative-claim shaped not command verbs.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 5,
       "rule_lead": "A slide's BODY is size-bounded, not just its header (§4's sibling).",
       "verdict": "PASS",
-      "evidence": "Mechanical: `node scripts/check-slide-size.js --file curriculum/lectures/the-wizard-move.md` → 'files: 1 slides: 2 limits: 210 words / 6 bullets — oversized: 0 — every slide is within limits.' Direct word count confirms: slide 1 (L3-9) = 104 words, slide 2 (L11-15) = 58 words; both are pure prose with 0 bullets.",
+      "evidence": "Mechanical, ran this session: `node scripts/check-slide-size.js --file curriculum/lectures/the-wizard-move.md` → 'files: 1  slides: 2  limits: 210 words / 6 bullets  oversized: 0 ... every slide is within limits', exit 0. Manual word counts confirm: slide 1 (L3-9) = 115 words, slide 2 (L11-15) = 71 words, both well under the 210-word cap; zero bullets in either (prose only).",
       "fix_hint": null,
-      "blocking": true
+      "blocking": false
+    },
+    {
+      "compendium": "check_lectures.md",
+      "rule_index": 6,
+      "rule_lead": "A prompt inside a lecture is a trainer show-and-tell, never a room follow-along.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt blocks or fences in this file at all (signal: has_prompt_blocks=false, fence_ranges=[]) — the demo runs live in Claude Code, narrated in prose, not via a {{prompt:}} fence.",
+      "fix_hint": null,
+      "blocking": false
     },
     {
       "compendium": "check_pedagogy.md",
-      "rule_index": "27",
+      "rule_index": 16,
+      "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "no prompt fences and no student-executed exercise phase exist in this file (signal: has_prompt_blocks=false) — the rule's antecedent (body prose explaining a forcing function a fence should enact) does not arise on a trainer-run demo lecture.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 27,
       "rule_lead": "Classroom = default delivery; body teaches work, trainer manages room.",
       "verdict": "PASS",
-      "evidence": "Only candidate cue in the body is L7's 'Take a guess before it runs. What does Claude suggest now?' — this is a rhetorical prediction device woven into the demo's own narrative structure (guess-before-reveal), not a cohort-management instruction ('discuss with your neighbor', a timed pause, a share-out). It carries a standing maintainer accept-note: 'Guess before reveal. The guess paragraph precedes the Finnish-dinner answer. Both sessions get narrated before the live run.' (L21, filed under check_slides §4). No group/pair/room-share language appears anywhere in the body.",
+      "evidence": "Body carries zero authored conversation/pause cues (grep for 'discuss with', 'share with', 'tell the room', 'compare with the person next to you' → 0 hits across L1-16). Every sentence is about the WORK — the demo mechanism and its generalization ('Context is whatever you tell it... The move is loading the right context before the question') — not about cohort pacing or comparing. None of the file's three carve-outs (Connections-opener room-harvest, mode-defining human-round cue, sparingly-named room) apply or are invoked here.",
       "fix_hint": null,
-      "blocking": true
+      "blocking": false
+    },
+    {
+      "compendium": "check_pedagogy.md",
+      "rule_index": 61,
+      "rule_lead": "Verify mechanism before proposing surgery.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "drift check (rule re-read at current wording per dispatch): §61 governs proposing a SKILL.md/framework/tool change before verifying the mechanism already handles the case. This file proposes no such change — it is a stable, previously-shipped lecture body with no skill-authoring or framework content. Rule's antecedent does not arise; body is unaffected by this rule's current wording.",
+      "fix_hint": null,
+      "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
-      "rule_index": "1",
+      "rule_index": 1,
       "rule_lead": "Mood contract named.",
       "verdict": "PASS",
-      "evidence": "Sim trace (content_sha 6f166edd... matches this file's current body_sha, cached and current — no regeneration needed) scores the single phase at mood_score 9 and the close at mood_score 9, both above the 8-floor for a TEACHING beat. This whole lecture IS the teaching beat (not setup/launch), so the floor applies and is cleared.",
+      "evidence": "Sim trace (fresh-body-matched, see trace_status): phase 1 mood_score=9, close mood_score=9, both well above the 8-floor for a TEACHING beat (this whole lecture IS the teaching beat — it is not setup/launch prose). module_mood_contract = 'joyful creation — it works, on my repo' (content-strategy-agentic-engineering-101.md M1 row). Trace mood_note: 'Strong joyful-creation landing... Nothing reads truncated or missing... No gap-fix or corrective framing anywhere.'",
       "fix_hint": null,
-      "blocking": true
+      "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
-      "rule_index": "2",
+      "rule_index": 2,
       "rule_lead": "Epistemic mood ≠ punitive mood.",
       "verdict": "PASS",
-      "evidence": "The only hedge in the body — 'But not as reliably.' (L9) — reads as a not-knowing/curiosity note about the mechanism's reliability, never a 'you did something wrong' framing. Trace mood_note confirms: 'No gap-fix or corrective framing anywhere... holds end to end.'",
+      "evidence": "Trace phase mood_note: persona 'recognizes the hedge from their own sessions... without them noticing why' and close mood_note: persona 'leaves curious rather than corrected'. The unease implied by 'But not as reliably' reads as not-knowing/curiosity, never as having-done-wrong. No shame-register language anywhere in body (L1-16).",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
-      "rule_index": "3",
+      "rule_index": 3,
       "rule_lead": "Lead with discipline, not failure mode.",
       "verdict": "PASS",
-      "evidence": "Both slide headers (L3 'Context is King', L11 'You steer the answer by loading context') name a positive discipline. The failure case — the Finnish answer landing less reliably (L9) — is presented as the addressed negative case inside the body, never as a title.",
+      "evidence": "Both section headers name a positive discipline — 'Context is King' (L3) and 'You steer the answer by loading context' (L11) — not a failure word. No 'fabrication'/'violation'/'hallucination'-shaped title anywhere in the file.",
       "fix_hint": null,
       "blocking": false
     },
     {
       "compendium": "check_strategy_tie_in.md",
-      "rule_index": "4",
+      "rule_index": 4,
       "rule_lead": "Strategy-fidelity check.",
       "verdict": "PASS",
-      "evidence": "AE101 strategy doc (content-strategy-agentic-engineering-101.md, § M1 in detail) names this exact file as part of M1's flow ('the Nerd... reads lectures/the-wizard-move.md and the three M1 exercise files') and states 'No plan mode in M1' — matching this file's own maintainer accept-note (L22) that no plan-mode phrasing appears here. Mood contract (joyful creation, 'it works, on my repo') matches the persona trace's module_mood_contract. Nothing here front-runs M2's plan-mode-at-depth teaching (plan mode is never mentioned) or resolves a later module's unease early — this is the arc's opening beat.",
+      "evidence": "Consolidated per template §4 (front-run + module-arc + Big-Idea fidelity + mood-doesn't-resolve-early). Front-run: 0 M[0-9] hits in body (ran this session, see check_lectures §3 row); maintainer block: 'Zero map references. M1 is protected; the map arrives at M2.' Big-Idea fidelity: matches M1's joyful-creation mood contract per trace (mood 9/9). Module arc: close is deliberately mood-only, no forward-hook to the exercise or to M1's closer beat — maintainer block explicitly bars this ('This opener carries the context mechanism and stops; no loop preview, no borrowed kicker'), and trace confirms the implicit handoff reads correctly ('the lecture itself never names the exercises — the handoff is implicit... which is the correct posture for a re-placeable shared-library lecture'). Mood-doesn't-resolve-early: N/A to this beat's position — that clause governs the M3-unease-through-M5-rescue arc; M1's opener sits outside it.",
       "fix_hint": null,
-      "blocking": true
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 5,
+      "rule_lead": "Strategic themes recur in Key Concepts.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "lecture file, no module-only Key Concepts section exists on this surface.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 6,
+      "rule_lead": "Key Concepts shape — theme breadcrumbs, not standalone section.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "lecture file, no module-only Key Concepts section exists on this surface.",
+      "fix_hint": null,
+      "blocking": false
+    },
+    {
+      "compendium": "check_strategy_tie_in.md",
+      "rule_index": 7,
+      "rule_lead": "What You'll Learn shape — capability register, not syllabus.",
+      "verdict": "N/A",
+      "evidence": null,
+      "na_reason": "lecture file, no module-only What You'll Learn section exists on this surface.",
+      "fix_hint": null,
+      "blocking": false
     },
     {
       "compendium": "check_workshop.md",
       "rule_index": null,
       "judge_owned": true,
-      "rule_lead": "check_workshop does not apply: no beat's output belongs to the group.",
+      "rule_lead": "Whole-compendium scope call.",
       "verdict": "N/A",
       "evidence": null,
-      "na_reason": "signals.group_beat_markers: false; this is a trainer-narrated demo lecture read/watched individually, not a room-scale adjudication, attribution, or team-deliberation beat.",
+      "na_reason": "check_workshop does not apply: this is solo trainer-narrated demo prose, not a room-scale beat whose output belongs to the group (signal: group_beat_markers=false). No beat here is a group beat co-located solo work is not a workshop.",
       "fix_hint": null,
       "blocking": false
     },
@@ -114,85 +173,36 @@
       "compendium": "check_prompts.md",
       "rule_index": null,
       "judge_owned": true,
-      "rule_lead": "check_prompts does not apply: no student-copied prompt fence exists in this file.",
+      "rule_lead": "Whole-compendium scope call.",
       "verdict": "N/A",
       "evidence": null,
-      "na_reason": "signals.has_prompt_blocks: false, confirmed by direct read — no {{prompt:<key>}} marker or **Prompt** fence anywhere in the body. All 49 rules in this compendium presuppose a prompt fence.",
+      "na_reason": "check_prompts does not apply: this file has no {{prompt:}} fences, inline **Prompt** blocks, or registry entries at all (signal: has_prompt_blocks=false, fence_ranges=[]) — the compendium's 49 rules govern fenced-prompt craft that has no instance here.",
       "fix_hint": null,
       "blocking": false
-    },
-    {
-      "compendium": "check_lectures.md",
-      "rule_index": "2",
-      "rule_lead": "Minimal lecturing before contrast-mood exercises.",
-      "verdict": "N/A",
-      "evidence": null,
-      "fix_hint": "",
-      "blocking": false,
-      "carried_from": "bc41b91978d40668ac9b66b90e4dadb79ae94c8ba39bdbb2b9265800fa2b3e84",
-      "carried_shape": "1870b031fbe8c765"
-    },
-    {
-      "compendium": "check_lectures.md",
-      "rule_index": "6",
-      "rule_lead": "A prompt inside a lecture is a trainer show-and-tell, never a room follow-along.",
-      "verdict": "N/A",
-      "evidence": null,
-      "fix_hint": "",
-      "blocking": false,
-      "carried_from": "bc41b91978d40668ac9b66b90e4dadb79ae94c8ba39bdbb2b9265800fa2b3e84",
-      "carried_shape": "1870b031fbe8c765"
-    },
-    {
-      "compendium": "check_pedagogy.md",
-      "rule_index": "16",
-      "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
-      "verdict": "N/A",
-      "evidence": null,
-      "fix_hint": "",
-      "blocking": false,
-      "carried_from": "bc41b91978d40668ac9b66b90e4dadb79ae94c8ba39bdbb2b9265800fa2b3e84",
-      "carried_shape": "1870b031fbe8c765"
-    },
-    {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": "5",
-      "rule_lead": "Strategic themes recur in Key Concepts.",
-      "verdict": "N/A",
-      "evidence": null,
-      "fix_hint": "",
-      "blocking": false,
-      "carried_from": "bc41b91978d40668ac9b66b90e4dadb79ae94c8ba39bdbb2b9265800fa2b3e84",
-      "carried_shape": "1870b031fbe8c765"
-    },
-    {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": "6",
-      "rule_lead": "Key Concepts shape — theme breadcrumbs, not standalone section.",
-      "verdict": "N/A",
-      "evidence": null,
-      "fix_hint": "",
-      "blocking": false,
-      "carried_from": "bc41b91978d40668ac9b66b90e4dadb79ae94c8ba39bdbb2b9265800fa2b3e84",
-      "carried_shape": "1870b031fbe8c765"
-    },
-    {
-      "compendium": "check_strategy_tie_in.md",
-      "rule_index": "7",
-      "rule_lead": "What You'll Learn shape — capability register, not syllabus.",
-      "verdict": "N/A",
-      "evidence": null,
-      "fix_hint": "",
-      "blocking": false,
-      "carried_from": "bc41b91978d40668ac9b66b90e4dadb79ae94c8ba39bdbb2b9265800fa2b3e84",
-      "carried_shape": "1870b031fbe8c765"
     }
   ],
-  "blocking_findings_count": 0,
-  "accept_notes_respected": [
-    "L21 guess-before-reveal (check_slides §4) — honored, cited under check_pedagogy §27",
-    "L22 no-plan-mode-on-this-surface (Antti 2026-09-01) — honored, cited under check_strategy_tie_in §4",
-    "L37 two-sessions-is-the-dose / cardiologist example stays cut (Antti 2026-08-25) — confirmed absent from body"
+  "mood_summary": {
+    "phase_scores": [9],
+    "close_score": 9,
+    "any_below_8": false,
+    "stealing_the_mood": []
+  },
+  "teaching_moment_lands": "PASS — sim trace (fresh, phase_sha matches live body byte-for-byte, verified this session) shows the persona getting the two-session fact/fact contrast, guessing correctly, registering the reliability hedge, and generalizing to 'a fact, a role, a preference, a constraint' unprompted. mood 9/9 throughout; close mood_note: 'Joyful-creation contract holds through the close.'",
+  "drift_rules_reread": [
+    "pedagogy §61 — re-read at current wording. Governs verifying a mechanism before proposing a SKILL.md/framework/tool change. This file proposes no such change (stable lecture body, no skill authoring). N/A to this file; no body impact from the rule's current wording. Recorded as a rules_evaluated row above."
   ],
+  "accept_notes_found": [
+    "L19-21: Quality stamp (compendium-audited 2026-09-05) + prior 2026-04-26 stamp — bookkeeping, not a content accept-note.",
+    "L26: No plan-mode on this surface — confirmed against Big Idea + LO (Antti 2026-09-01).",
+    "L27: Loop-over-the-fix beat belongs to M1 closer, not here — opener stops at the context mechanism, no loop preview or borrowed kicker.",
+    "L28: Zero map references — M1 protected, map arrives at M2.",
+    "L33: Time budget 8 min, demo runs in Claude Code not claude.ai (Antti 2026-08-23).",
+    "L37: Two sessions is the dose (Antti 2026-08-25) — Agents 101's third cardiologist example stays out of body and demo.",
+    "L38: Not adapted for engineers — universality is the point, deliberate.",
+    "L41: Session-independence standing instruction — two fresh empty-directory sessions, --setting-sources project, dry-run before cohort, salvage line for a Finnish-adjacent miss.",
+    "L42: Room wants code-specific content up front — hold; opener stays abstract by design.",
+    "Backing block L48-72: claims/sources/stance/OODA all carry dated verification stamps (demo-fires-live checked 2026-09-06 result:OK; two OODA absences banked 2026-07-30, not to be re-hunted)."
+  ],
+  "blocking_findings_count": 0,
   "nonblocking_findings_count": 0
 }

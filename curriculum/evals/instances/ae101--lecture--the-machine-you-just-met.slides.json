@@ -1,51 +1,19 @@
 {
   "class": "slides",
   "training": "ae101",
-  "file": "curriculum/lectures/the-machine-you-just-met.md",
+  "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/lectures/the-machine-you-just-met.md",
   "verdict": "PASS",
-  "body_sha": "893ec69f8d32760a0228c387e775d0456a9f83fafe96cce666c5a21db6a86923",
-  "shape_hash": "088c670417fb5bc6",
+  "body_sha": "479999865419033487b35783210f07fe5d66d17c2d17afbf167f079a88d7066f",
+  "shape_hash": "d9c9026c980c282e",
   "chunk_map": [
-    {
-      "index": 0,
-      "heading": "H1 + lede",
-      "lines": "1-3"
-    },
-    {
-      "index": 1,
-      "heading": "Agreeable answers won the preference round",
-      "lines": "5-11"
-    },
-    {
-      "index": 2,
-      "heading": "The scrollback is not the work",
-      "lines": "13-18"
-    },
-    {
-      "index": 3,
-      "heading": "A check resets the chain",
-      "lines": "20-26"
-    },
-    {
-      "index": 4,
-      "heading": "The LLM answers in essays",
-      "lines": "28-33"
-    },
-    {
-      "index": 5,
-      "heading": "The machine is steerable",
-      "lines": "35-42"
-    },
-    {
-      "index": 6,
-      "heading": "You just ran the same loop",
-      "lines": "44-49"
-    },
-    {
-      "index": 7,
-      "heading": "What compounds",
-      "lines": "51-63"
-    }
+    {"index": 0, "heading": "The machine you just met (H1 + lede)", "lines": "1-4"},
+    {"index": 1, "heading": "Agreeable answers won the preference round", "lines": "5-12"},
+    {"index": 2, "heading": "The scrollback is not the work", "lines": "13-19"},
+    {"index": 3, "heading": "A check resets the chain", "lines": "20-27"},
+    {"index": 4, "heading": "The LLM answers in essays", "lines": "28-34"},
+    {"index": 5, "heading": "The machine is steerable", "lines": "35-43"},
+    {"index": 6, "heading": "You just ran the same loop", "lines": "44-50"},
+    {"index": 7, "heading": "What compounds", "lines": "51-64"}
   ],
   "rules_evaluated": [
     {
@@ -54,7 +22,7 @@
       "rule_lead": "Referent resolution under a sequential deck read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Closest candidates: chunk 6 line 47 \"The agent's first read was partly wrong\" and chunk 7 line 61 \"The file you wrote today is the smallest unit that qualifies\" — both definite references to the student's own just-completed exercise artifacts (the bug/fix from fix-tests-first, the CLAUDE.local.md file from compound-and-close). This lecture is M1's closer placed directly after all four M1 exercises (confirmed via curriculum/trainings/agentic-engineering-101/getting-going.md include order: orient-and-introspect → fix-tests-first → close-the-ticket → compound-and-close), so the module-arc-beats-in-openers/closers carve-out applies throughout: the referent is the student's lived module, not a missing slide. \"the opening lecture's mirror\" (chunk 1 line 10) is a term this file defines in the same sentence and then reuses at chunk 5 (\"The mirror is steered by...\") — same-file reuse, not-a-violation per the rule's own example. No pronoun/demonstrative anywhere lacks an in-chunk, in-file, or carve-out-backed antecedent.",
+      "evidence": "Closest calls, both resolve via named carve-outs: (a) chunk 5 L38 \"The mirror is steered by what you bring\" reuses the metaphor chunk 1 L10 introduced (\"the opening lecture's mirror. The LLM flatters you...\") — same-file reuse of an earlier-slide term, NOT a violation per rule 1's own list. (b) chunk 4/6/7 \"the bug\" (L32, L47, L63) resolves under the module-arc-beats-in-openers/closers carve-out (this lecture sits directly after the module's own bug-fixing exercises, Ex1-4). \"The agent\" (L11) and \"the file you wrote today\" (L61) resolve the same way. Chunk-0 \"the machine\" (L3) reuses the H1 title noun, explicitly NOT a violation.",
       "fix_hint": null,
       "blocking": true
     },
@@ -64,7 +32,7 @@
       "rule_lead": "Cross-file and positional callbacks.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "chunk 1 line 10: \"This is the machinery under the opening lecture's mirror: the LLM that flatters you, calls unfinished work progress, mirrors your stance.\" Names the source by its claim, fully unpacked in the same sentence — structurally matches this rule's own PASS exemplar (\"the opening lecture's infinite chameleon: the LLM that flatters you…\"). No bare positional pointer (\"The opening lecture said…\") appears anywhere in the file. No other cross-file callback found.",
+      "evidence": "Only cross-file reference in body: chunk 1 L10 \"the opening lecture's mirror. The LLM flatters you, calls unfinished work progress, mirrors your stance.\" — names the source (\"the opening lecture\") AND unpacks the claim in the same sentence, matching the rule's own worked PASS example (\"the opening lecture's infinite chameleon: the LLM that flatters you...\") almost verbatim. No other file is referenced by position.",
       "fix_hint": null,
       "blocking": true
     },
@@ -74,7 +42,18 @@
       "rule_lead": "Every backward reference points at a beat that exists.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "chunk 6 line 44/47 \"Orient, fix, close, compound. You just ran that loop.\" maps 1:1 to the four M1 exercise files, confirmed live: `ls curriculum/exercises/` returns orient-and-introspect.md, fix-tests-first.md, close-the-ticket.md, compound-and-close.md. chunk 7 line 61 \"The file you wrote today\" resolves to compound-and-close.md's CLAUDE.local.md deliverable, confirmed by this file's own maintainer block: \"The file is owned by compound-and-close (which writes it).\" All backward references resolve to beats that exist in the module's current exercise set.",
+      "evidence": "This rule's own compendium text documents chunk 1 L10 as the specimen and the landed cure (colon -> full stop, 22 words to 21). git diff 08946dd8..HEAD confirms the cure is live in the body: '-...mirror: the LLM that flatters...' -> '+...mirror. The LLM flatters...'. No other stranded backward references found; 'that loop' (chunk 6 L46) and Klaassen's four-bullet definition (chunk 7) both resolve against beats that exist in this module's arc.",
+      "fix_hint": null,
+      "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 4,
+      "rule_lead": "Live-demo beats survive a text read.",
+      "verdict": "N/A",
+      "chunks_flagged": [],
+      "evidence": null,
+      "na_reason": "no guess-before-reveal demo beat in this file (recognition-closer lecture, no 'take a guess' construction found in body)",
       "fix_hint": null,
       "blocking": true
     },
@@ -84,7 +63,7 @@
       "rule_lead": "No orphan slides.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "All 7 chunks carry 3-4 substantive bullets or a full paragraph with an independent claim. Thinnest case: chunk 6 (one paragraph, no bullets) still self-carries — names the loop, describes what happened in it, attributes the coined term — not a wait-state or context-dependent fragment.",
+      "evidence": "Every chunk (0-7) carries a substantive, self-standing claim or bullet set (mechanism explanation, definition, or synthesis) — none is a bare wait-state or single context-dependent bullet. Closest-to-thin chunk is 0 (lede only, 2 sentences) but it states the lecture's whole claim (\"can be steered... What you bring, what you build, and what you ask for all change the work\") and functions as the title slide.",
       "fix_hint": null,
       "blocking": false
     },
@@ -94,7 +73,7 @@
       "rule_lead": "Header self-carries at projection distance.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Every header is a true summary of its chunk under the sequential read, e.g. chunk 4 header \"The LLM answers in essays\" against its own line 31 \"The fix was small; the answers around it were pages\" — direct match. No header is contradicted by its chunk's body.",
+      "evidence": "Checked each of the 7 headers against its chunk's content: all match without contradiction (e.g. chunk 3 'A check resets the chain' L20 is stated near-verbatim as the chunk's own closing bullet L25 'A check from outside the session resets the chain'; chunk 5 'The machine is steerable' L35 is delivered by the mirror/chain/output triad underneath it). No header is contradicted by its own chunk.",
       "fix_hint": null,
       "blocking": false
     },
@@ -104,7 +83,7 @@
       "rule_lead": "LLM-cadence caps.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Checked all sub-items across all 7 chunks. (i) \"Not X. Not Y. Z.\" — grep -nE '\\bNot [A-Za-z].*\\.\\s*Not [A-Za-z]' on the body → 0 hits. (ii) anaphora/epistrophe triple — closest candidate chunk 5 lines 38-40 (\"The mirror is steered by what you bring… is steered by what you build… is steered by what you ask for\") is a parallel construction, not a repeated-phrase tic, and each of its three legs carries genuinely distinct concrete content (posture/tests/output-shape, each tied back to chunks 1/3/4) — clears the rule's own \"third leg carries new content\" test even scored as a triple. (iii) self-grading superlative — grep -niE 'one of the (most|best)|most (useful|important|powerful|valuable)|best (way|tool|move)' → 0 hits. (iv) number+retraction — chunk 3 line 24 \"nine times in ten… seven-step chain… The numbers are an illustration, not a measurement\" IS the shape, but this file's own maintainer block (line 85, \"Laws carried\") explicitly attests it deliberate: \"a worded subjunctive illustration… Zombie-stat guard: do NOT let edits promote it to a measured constant\" — matches the rule's own EXCEPT clause. (v) abstraction-noun stacks — none found; language stays concrete (the agent's report, the failing test, the code). (vi) verb triplets with an empty leg — none found.",
+      "evidence": "Per sub-item: 'Not X. Not Y. Z.' — 0 hits (checked full body). Anaphora triple — chunk 5's 'X is steered by what you Y' recurs 3x (L38-40) but each leg carries genuinely distinct content anchored to a different earlier chunk (mirror=chunk1, chain=chunks3-4, output=chunk4); this is the maintainer-attested bring/build/ask triad (maintainer L78), not a repeated-idea tic. Self-grading superlative — 0 hits. Number+retraction — chunk 3 L24 'nine times in ten... The numbers are an illustration, not a measurement' has a live maintainer accept-note (L86: 'The nine-in-ten / seven-steps line is a worded subjunctive illustration... Zombie-stat guard') matching the rule's own attested-exception shape. Abstraction-noun stacks — 0 hits. Verb triplet with empty leg — chunk 1 L10 'flatters you, calls unfinished work progress, mirrors your stance' — all three legs are concrete and distinct, none empty.",
       "fix_hint": null,
       "blocking": true
     },
@@ -114,7 +93,7 @@
       "rule_lead": "Internal dialect never lands on a slide.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "grep -niE for the compendium's own dialect list (surface-as-noun, firing, compendium, forcing function, beat, mood, Connections) over the body → 0 hits. \"The agent\" is the training's standard term for the AI system throughout the corpus, not repo-internal maintainer jargon.",
+      "evidence": "grep -nE '\\b(surface|firing|compendium|forcing function|beat|mood|Connections)\\b' body.txt -> 0 hits. 'Session' recurs throughout (e.g. L23, L26, L39, L47) but is controlled AE101 curriculum vocabulary (vocabulary.md), not repo-internal dialect.",
       "fix_hint": null,
       "blocking": true
     },
@@ -124,9 +103,9 @@
       "rule_lead": "Emphasis budget — bold is for handles, and go very lightly.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "Bold count per chunk: chunk1=1 (**sycophancy**), chunk2=0, chunk3=1 (**error cascade**), chunk4=0, chunk5=0, chunk6=1 (**compound engineering**), chunk7=0. Every bolded span is a coined-term handle at its naming moment, ≤1 per slide. Matches maintainer accept-notes: line 71 (2026-07-09 emphasis pass) \"bold survives only on the two coined-term handles at their naming moments\" and line 81 \"Loop slides stay prose paragraphs; the only bold handle on them is **compound engineering** at its naming.\"",
+      "evidence": "grep -noE '\\*\\*[^*]+\\*\\*' body.txt -> exactly 3 spans: L9 **sycophancy** (chunk 1), L24 **error cascade** (chunk 3), L49 **compound engineering** (chunk 6) — one per chunk, at most 1 bold per slide, each a coined-term handle at its naming moment, matching the maintainer's Emphasis-pass note (L74) exactly. No other chunk carries any bold.",
       "fix_hint": null,
-      "blocking": true
+      "blocking": false
     },
     {
       "compendium": "check_slides.md",
@@ -134,9 +113,20 @@
       "rule_lead": "Presence precedes content — verify against the composed deck, not long-read.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "File is a standard lecture entry in curriculum/trainings/agentic-engineering-101/getting-going.md's module include list (line 52), rendered under the ordinary .phase--lecture wrapper — not a prework/supplementary/reference section, the shape this rule warns can be dropped from the deck. `node scripts/check-slide-size.js --file curriculum/lectures/the-machine-you-just-met.md` → \"slides: 7\", matching my manual chunk count exactly; that script resolves slides through the renderer's own chunking/flag-resolution logic, so the match confirms all 7 `##` chunks reach the composed deck model.",
+      "evidence": "This is a whole lecture file (curriculum/lectures/), inlined wholesale under a .phase--lecture wrapper by the module composer — it carries no mixed phase-less prose section (no prework/supplementary/reference content), so the 2026-07-09 failure mode (a phase-less section silently dropped from the deck) has no surface here. node scripts/check-slide-tiers.js curriculum/lectures/the-machine-you-just-met.md -> 'OK — no T2 before a first exercise' confirms the file's tier markers (<!--tier:1/2-->), the one deck-shaped structural element in this file, are mechanically clean. Judgment call, not a full Chrome render-diff (not warranted: no partial-inclusion risk in a single-lecture file).",
       "fix_hint": null,
       "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 11,
+      "rule_lead": "Numbering — position is computed, content ordinals are linted.",
+      "verdict": "N/A",
+      "chunks_flagged": [],
+      "evidence": null,
+      "na_reason": "no '## Phase N:' or '## N.' step headers in this file (all 7 headers are claim-style prose); node scripts/check-slide-numbering.js -> OK, 59 files",
+      "fix_hint": null,
+      "blocking": false
     },
     {
       "compendium": "check_slides.md",
@@ -144,9 +134,20 @@
       "rule_lead": "Page geometry dies at the cut; reading order survives.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "`node scripts/check-slide-deixis.js --file curriculum/lectures/the-machine-you-just-met.md` → \"OK — 1 files, no page-geometry pointers across the slide cut.\" Manual grep for above/below/further down/at the top of this page/see below/this page → only false-positive hit is \"fall below a coin flip\" (line 24, a magnitude comparison, not a spatial pointer).",
+      "evidence": "grep -nE '\\b(below|above|further down|top of this page|see below)\\b' body.txt -> 1 hit, L24 'would fall below a coin flip' — a mathematical comparison, not a page-geometry pointer (false positive on the word 'below'). node scripts/check-slide-deixis.js -> 'OK — 59 files, no page-geometry pointers across the slide cut' (covers this file). No positional pointer in body.",
       "fix_hint": null,
       "blocking": true
+    },
+    {
+      "compendium": "check_slides.md",
+      "rule_index": 13,
+      "rule_lead": "In-deck links work now; whether they EARN their place is open.",
+      "verdict": "N/A",
+      "chunks_flagged": [],
+      "evidence": null,
+      "na_reason": "no in-deck links in body — grep -noE '\\[[^]]+\\]\\([^)]+\\)' body.txt -> 0 hits, consistent with signal has_urls:false",
+      "fix_hint": null,
+      "blocking": false
     },
     {
       "compendium": "check_slides.md",
@@ -154,7 +155,7 @@
       "rule_lead": "Slide size — 210 words / 6 bullets, and the cap is machine-checked.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "`node scripts/check-slide-size.js --file curriculum/lectures/the-machine-you-just-met.md` → \"oversized: 0\", \"every slide is within limits\" against the 210-word/6-bullet ceiling.",
+      "evidence": "node scripts/check-slide-size.js --file curriculum/lectures/the-machine-you-just-met.md -> 'files: 1  slides: 7  limits: 210 words / 6 bullets  oversized: 0 ... every slide is within limits'.",
       "fix_hint": null,
       "blocking": false
     },
@@ -164,7 +165,7 @@
       "rule_lead": "Heading grammar is the mood switch, and it is load-bearing.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "All 7 headers are declarative claims (e.g. \"The scrollback is not the work\", \"A check resets the chain\"). Closest call: chunk 7 \"What compounds\" reads as a topic-naming phrase rather than a full assertion, but the maintainer block calls this \"the definitional slide\" (line 79) opening a quoted four-bullet definition — parallel to the rule's own catalogue-entry carve-out (\"The numbers\", \"Verification, named\") for a slide naming its subject.",
+      "evidence": "6 of 7 headers are unambiguous declarative claims (e.g. 'A check resets the chain', 'The machine is steerable'). Closest call: chunk 7 'What compounds' (L51) is a topic-naming phrase rather than subject+predicate. It parallels the rule's own NOT-violation example 'The numbers' (catalogue entry naming its subject) — the actual claim (Klaassen's definition) is delivered in the bulleted body underneath, and the maintainer block (L82) frames this as the deliberate 'definitional slide' with 'the one bulleted-definition slide in the pair, accepted'. Read as within the catalogue-entry-naming-subject carve-out, not a violation.",
       "fix_hint": null,
       "blocking": false
     },
@@ -174,7 +175,7 @@
       "rule_lead": "A bullet earns its slot or dies — three classes that read as rigour and carry nothing.",
       "verdict": "PASS",
       "chunks_flagged": [],
-      "evidence": "No doctrine-restatement, self-referential design commentary, or aphorism-kicker bullets found. Closest calls: chunk 5's closer (\"That is the machine. The rest is steering.\", line 42) is the first and only full synthesis of the three levers introduced across chunks 1/3/4, not a re-announcement — it is the slide's designed payoff. chunk 7's closer (\"The loop is the shape. The bug today was the excuse.\", line 63) is the maintainer-attested lecture-ending kicker (line 75: \"The loop kicker… stays the lecture's last line and the designed hand-off into ## Next\") and reframes rather than restates its own header.",
+      "evidence": "Checked all 3 classes across every chunk. No doctrine restatement (chunk 1 L10's mirror-mechanism bullet adds new 'why' content, not a re-announcement). No self-referential design commentary (nothing tells the student they are inside a pedagogy). Kickers checked against rule 16c (aphorism restating own header): chunk 5 kicker L42 'That is the machine. The rest is steering.' bookends the LEDE (L3), not a redundant restatement of its own immediate header; chunk 7's final kicker L63 'The loop is the shape. The bug today was the excuse.' adds a new reframing move (the specific bug was incidental) beyond chunk 6's header, matching the maintainer's explicit designed-handoff note (L78).",
       "fix_hint": null,
       "blocking": false
     },
@@ -182,49 +183,26 @@
       "compendium": "check_slides.md",
       "rule_index": 17,
       "rule_lead": "A retitled slide re-earns its bullets against the new header.",
-      "verdict": "PASS",
+      "verdict": "N/A",
       "chunks_flagged": [],
-      "evidence": "`git diff c0c37913..HEAD -- curriculum/lectures/the-machine-you-just-met.md` shows no `##` header text changed since the last slides pin. The two highest-risk slides for this rule (\"## You just ran the same loop\", \"## What compounds\") carry maintainer-dated content constraints (line 78, 2026-09-01; line 79, 2026-08-23) confirming their bullets were checked against their current headers and the stale old-header content (\"the way this training was built\" opener, \"./CLAUDE.local.md\" by name) was already cut — neither phrase appears in the current body. Covered-header test on both: header promises what happened in the loop / what compounds respectively, and every bullet beneath answers exactly that.",
+      "evidence": null,
+      "na_reason": "no '##' header rename event in this file's diff or maintainer-block provenance notes since pin 08946dd8 — only maintainer-block prose and one body sentence (rule 3) changed",
       "fix_hint": null,
       "blocking": false
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 4,
-      "rule_lead": "Live-demo beats survive a text read.",
-      "verdict": "N/A",
-      "evidence": null,
-      "na_reason": "no guess-before-reveal shape; grep -niE '\\bguess\\b|\\bpredict' body → only unrelated line 8 'predict the next likely word'",
-      "fix_hint": "",
-      "blocking": false,
-      "carried_from": "63afe6484e0ece458fed832b1358573da575dc2ebf277895dab77deb493676de",
-      "carried_shape": "088c670417fb5bc6"
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 11,
-      "rule_lead": "Numbering — position is computed, content ordinals are linted.",
-      "verdict": "N/A",
-      "evidence": null,
-      "na_reason": "no Phase/Step ordinal headers; `node scripts/check-slide-numbering.js --file curriculum/lectures/the-machine-you-just-met.md` → 'OK — 1 files, Phase/Step numbering consistent.' exit 0",
-      "fix_hint": "",
-      "blocking": false,
-      "carried_from": "63afe6484e0ece458fed832b1358573da575dc2ebf277895dab77deb493676de",
-      "carried_shape": "088c670417fb5bc6"
-    },
-    {
-      "compendium": "check_slides.md",
-      "rule_index": 13,
-      "rule_lead": "In-deck links work now; whether they EARN their place is open.",
-      "verdict": "N/A",
-      "evidence": null,
-      "na_reason": "no in-body links; `grep -nE '\\[.*\\]\\(|https?://' <file>` restricted to lines 1-64 → 0 hits, matches signals.has_urls:false",
-      "fix_hint": "",
-      "blocking": false,
-      "carried_from": "63afe6484e0ece458fed832b1358573da575dc2ebf277895dab77deb493676de",
-      "carried_shape": "088c670417fb5bc6"
     }
   ],
+  "nonblocking_findings_count": 0,
   "blocking_findings_count": 0,
-  "nonblocking_findings_count": 0
+  "accept_notes_found": [
+    "L67: Quality compendium-audited 2026-09-05 (slides@08946dd8, prior verdict PASS)",
+    "L70: Scrollback slide (2026-08-08, Antti-directed) — near-verbatim maintainer-frame guard notes for chunk 2",
+    "L72: Output-shape slide (2026-07-10, Antti-directed) — placement + mechanism-observation-grade guard for chunk 4",
+    "L74: Emphasis pass (2026-07-09, Antti-directed 'go very lightly on the bold') — bold-only-on-coined-terms note, matches rule 9 grep",
+    "L76: STATUS — new lecture (2026-07-02), slide format spec (lede + slides + kicker)",
+    "L78: Placement — M1 final lecture after compound-and-close (Ex4); do-not-restore note for the dissolved how-this-training-was-built lecture",
+    "L81: Loop-slide constraint — '## You just ran the same loop' names no artifact/build story (Antti-directed 2026-09-01)",
+    "L82: Loop-slide constraint — '## What compounds' is the definitional slide (Antti-directed 2026-08-23) — used to resolve rule 15's closest call",
+    "L86: 'Laws carried' zombie-stat guard on the nine-in-ten/seven-steps illustration — used to resolve rule 7's number+retraction sub-item"
+  ],
+  "notes": "Body content is unchanged in substance since pin 08946dd8 except the one sentence rule 3 documents as already-cured (colon -> full stop, verified in diff); the rest of the diff is maintainer-block reorganisation (Quality line, dated notes reworded/reordered), out of check_slides.md's scope. prefill-instance --write reported shape changed (088c670417fb5bc6 -> d9c9026c980c282e), so all 17 rows are freshly judged here, not parked; ran --merge after writing per the merge-is-not-optional instruction (spliced 0, as expected when nothing was parked)."
 }

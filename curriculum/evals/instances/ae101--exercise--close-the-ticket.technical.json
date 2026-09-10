@@ -3,15 +3,15 @@
   "training": "ae101",
   "file": "/Users/anttitevanlinna/Projects/agents-102/curriculum/exercises/close-the-ticket.md",
   "verdict": "PASS",
-  "body_sha": "4045cbc83af40d99e7e41068e3c8c36e29d8755a1bfffaecf4bb365bf99aa87c",
-  "shape_hash": "04c8bbd89721df08",
+  "body_sha": "3d6421552035ba222c2b226796a03adb21cb365688c96e294409b8e1b45807bb",
+  "shape_hash": "e452e88bf93d5241",
   "rules_evaluated": [
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": "1",
       "rule_lead": "Training platform = Claude Code (CLI + Desktop) + Cowork.",
       "verdict": "PASS",
-      "evidence": "All three expanded prompt chips read '**Prompt** *(Claude Code)*'; no claude.ai-only feature named or leaned on anywhere in the body.",
+      "evidence": "All three expanded prompt chips read '**Prompt** *(Claude Code)*'; no claude.ai-only feature named or leaned on anywhere in the body (has_urls:false, no claude.ai mention).",
       "fix_hint": "none",
       "blocking": false
     },
@@ -40,7 +40,7 @@
       "rule_index": "4",
       "rule_lead": "Verify capabilities BEFORE asserting, not after.",
       "verdict": "PASS",
-      "evidence": "Live-verified this session: `claude mcp add --help` (installed Claude Code 2.1.259) prints the exact syntax the maintainer block cites (`claude mcp add --transport http sentry https://mcp.sentry.dev/mcp`); a fresh WebFetch of code.claude.com/docs/en/mcp today quotes both the connector-inheritance sentence and the Team/Enterprise admin-gating sentence verbatim (see platform_claims_checked).",
+      "evidence": "Live-verified this session: `claude mcp add --help` (installed Claude Code 2.1.263) prints exactly the syntax the maintainer block's claim rests on; a fresh WebFetch of code.claude.com/docs/en/mcp today quotes both the connector-inheritance sentence ('MCP servers you've added in claude.ai...are automatically available in Claude Code') and the Team/Enterprise admin-gating sentence ('On Team and Enterprise plans, only admins can add servers') verbatim — see platform_claims_checked.",
       "fix_hint": "none",
       "blocking": false
     },
@@ -52,7 +52,7 @@
       "evidence": null,
       "fix_hint": "none",
       "blocking": false,
-      "na_reason": "rule binds compendium/reference-file authorship; the reference page it points to (mcp-and-connectors.md) carries its own [checked:2026-07-26 due:cohort] stamps, 41 days old today and independently re-confirmed live this session"
+      "na_reason": "rule binds compendium/reference-file authorship; the reference page it points to (mcp-and-connectors.md) carries its own [checked:2026-07-26 due:cohort] stamps and was independently re-confirmed live this session"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -62,7 +62,7 @@
       "evidence": null,
       "fix_hint": "none",
       "blocking": false,
-      "na_reason": "no Cowork-vs-Code capability-notes question; AE101 is Code-only"
+      "na_reason": "no Cowork-vs-Code capability-notes question; AE101 is Code-only per curriculum/CLAUDE.md"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -99,7 +99,7 @@
       "rule_index": "5a",
       "rule_lead": "Live-test beats docs for runtime-behavior claims.",
       "verdict": "PASS",
-      "evidence": "Applied directly this session: ran `claude mcp add --help` live and cross-checked with a fresh WebFetch rather than trusting the dated stamp alone.",
+      "evidence": "Applied directly this session: ran `claude mcp add --help` live and cross-checked with a fresh WebFetch rather than trusting the dated maintainer stamp alone.",
       "fix_hint": "none",
       "blocking": false
     },
@@ -108,7 +108,7 @@
       "rule_index": "6",
       "rule_lead": "Known correct Claude Code facts (easy to get wrong).",
       "verdict": "PASS",
-      "evidence": "Live `claude mcp add --help` output today matches the compendium's canonical connector syntax; fresh WebFetch of code.claude.com/docs/en/mcp confirms the same basic syntax the maintainer block cites.",
+      "evidence": "Live `claude mcp add --help` output today matches the compendium's canonical connector syntax (§6: 'Connectors/MCP servers = claude mcp add (CLI)...'); WebFetch of code.claude.com/docs/en/mcp confirms the same.",
       "fix_hint": "none",
       "blocking": false
     },
@@ -175,9 +175,9 @@
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": "7",
-      "rule_lead": "Sessions = unit of work — write \"start a new session in X,\" not \"open Claude Code in X.\"",
+      "rule_lead": "Sessions = unit of work.",
       "verdict": "PASS",
-      "evidence": "Raw maintainer line 74: 'runs in the same M1 session as the fix and the PR' — correct session-as-unit vocabulary; no 'open Claude Code' phrasing anywhere in the file.",
+      "evidence": "Raw maintainer line 78: 'runs in the same M1 session as the fix and the PR' — correct session-as-unit vocabulary; no 'open Claude Code' phrasing anywhere in the file.",
       "fix_hint": "none",
       "blocking": false
     },
@@ -248,7 +248,7 @@
       "evidence": null,
       "fix_hint": "none",
       "blocking": false,
-      "na_reason": "updating a ticket's close-out note is not a destructive local operation; check_prompts §21's post-action-report pattern governs the write instead, correctly used (prompt 3 reports after acting)"
+      "na_reason": "updating a ticket's close-out note is a normal write, not rm/drop/force-push; check_prompts §21's post-action-report pattern governs it instead, and prompt 3 correctly reports after acting"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -268,7 +268,7 @@
       "evidence": null,
       "fix_hint": "none",
       "blocking": false,
-      "na_reason": "the one cross-file reference (line 35) is a plain relative markdown link, not a pseudo-URI"
+      "na_reason": "the one cross-file reference (line 35) is a plain relative markdown link to a local reference page, not a pseudo-URI"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -323,7 +323,7 @@
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": "17",
-      "rule_lead": "Script ratchet — every LLM-orchestration tooling surface ratchets toward script-replaceable assertions.",
+      "rule_lead": "Script ratchet.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": "none",
@@ -343,7 +343,7 @@
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": "14a",
-      "rule_lead": "Canon is declared, not inferred — and an orphan is not automatically spent.",
+      "rule_lead": "Canon is declared, not inferred.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": "none",
@@ -358,7 +358,7 @@
       "evidence": null,
       "fix_hint": "none",
       "blocking": false,
-      "na_reason": "no fixture-numbered test runner discussed"
+      "na_reason": "targets fixture-numbered test-harness drift; this file's registry-marker mechanics are governed by check_prompts §31 instead, checked there"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -408,14 +408,14 @@
       "evidence": null,
       "fix_hint": "none",
       "blocking": false,
-      "na_reason": "governs the eval-instance JSON mechanism, not file content"
+      "na_reason": "governs the eval-instance JSON mechanism; no accepted-by-design deviation is being flagged in this instance"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": "24a",
       "rule_lead": "Quality stamps: tooling writes them; the SHA pins committed content.",
       "verdict": "PASS",
-      "evidence": "Line 134's Quality line is a clean anchor (`**Quality:** compendium-audited 2026-09-02 (...)`) with no leftover narrative tail after the pin list; this judge is read-only and left it untouched.",
+      "evidence": "Line 138's Quality line is a clean anchor with no leftover narrative tail after the pin list; this judge is read-only and left it untouched, per the dispatch's read-only instruction.",
       "fix_hint": "none",
       "blocking": false
     },
@@ -442,17 +442,17 @@
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": "27",
-      "rule_lead": "Acceptance-test contract covers (i) prompt mechanics + (ii) end-state artefacts, NOT (iii) shell execution.",
+      "rule_lead": "Acceptance-test contract covers (i)+(ii), NOT (iii) shell execution.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": "none",
       "blocking": false,
-      "na_reason": "none of the three prompts contain executable shell for a runner to test"
+      "na_reason": "none of the three prompts contain a shell snippet for the student to type into their own terminal"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": "28",
-      "rule_lead": "Strategy-doc drift surfaces via judge citation — citation = canary, not verdict.",
+      "rule_lead": "Strategy-doc drift surfaces via judge citation.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": "none",
@@ -472,7 +472,7 @@
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": "30",
-      "rule_lead": "Skills at `~/.claude/skills/<name>/` are user-global but per-codebase in content — namespace by SUT.",
+      "rule_lead": "Skills at `~/.claude/skills/<name>/` are per-codebase in content — namespace by SUT.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": "none",
@@ -512,12 +512,12 @@
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": "34",
-      "rule_lead": "Spend on deleting the duplicate, not on guarding it — and a gate that finds nothing is speculation.",
+      "rule_lead": "Spend on deleting the duplicate, not on guarding it.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": "none",
       "blocking": false,
-      "na_reason": "no guard/duplicate/verification instrument discussed; line 3's Time value is explicitly authored-not-generated per maintainer line 72, so there is no generated/authored pair to diverge"
+      "na_reason": "no guard/duplicate/verification instrument discussed; line 3's Time value is explicitly authored-not-generated per maintainer line 76"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -532,16 +532,16 @@
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": "36",
-      "rule_lead": "A hash guard is only as good as what it hashes, and a malformed hash disarms it silently.",
+      "rule_lead": "A hash guard is only as good as what it hashes.",
       "verdict": "PASS",
-      "evidence": "This judge's own body_sha, computed via `shasum -a 256` at read time, is 64 lowercase hex characters — valid shape, not a malformed hash.",
+      "evidence": "This judge's own body_sha, computed via `shasum -a 256` at read time, is 64 lowercase hex characters — a valid, non-malformed shape.",
       "fix_hint": "none",
       "blocking": false
     },
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": "37",
-      "rule_lead": "Measure the defect before proposing the fix, and again before repeating it to the maintainer.",
+      "rule_lead": "Measure the defect before proposing the fix.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": "none",
@@ -553,7 +553,7 @@
       "rule_index": "38",
       "rule_lead": "Prose describing a runtime the room never executes drifts to plausible mechanism.",
       "verdict": "PASS",
-      "evidence": "The maintainer block's connector claims were re-verified live this session (CLI help + WebFetch), not invented forward-looking mechanism prose; both match current shipped behavior exactly.",
+      "evidence": "The maintainer block's connector claims were re-verified live this session (CLI --help + WebFetch), not invented forward-looking mechanism prose; both match current shipped behavior exactly. The closer's 'anything can be reverse-engineered' passage (lines 45-48) carries no 'X against Y' retrieval-mechanism smuggling, no lifecycle-noun mismatch, and no unsourced cadence — it stays a bare capability claim, which the backing block's own stance section (line 128) deliberately declines to qualify further.",
       "fix_hint": "none",
       "blocking": false
     },
@@ -565,7 +565,7 @@
       "evidence": null,
       "fix_hint": "none",
       "blocking": false,
-      "na_reason": "governs judge-dispatch practice generally; this instance supplies live-run evidence per the dispatch-preamble contract"
+      "na_reason": "governs judge-dispatch practice generally; this instance itself supplies live-run evidence per the dispatch-preamble contract"
     },
     {
       "compendium": "check_platform_and_boundaries.md",
@@ -620,7 +620,7 @@
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": "45",
-      "rule_lead": "A detector's reading vocabulary must cover the corpus's writing vocabulary — or it reports compliance as rot.",
+      "rule_lead": "A detector's reading vocabulary must cover the corpus's writing vocabulary.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": "none",
@@ -640,7 +640,7 @@
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": "47",
-      "rule_lead": "\"It used to be fast\" is a regression report — diagnose it by trajectory, not by architecture.",
+      "rule_lead": "\"It used to be fast\" is a regression report.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": "none",
@@ -650,7 +650,7 @@
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": "48",
-      "rule_lead": "A bench is silent about everything it cannot stage, and silence reads exactly like a pass.",
+      "rule_lead": "A bench is silent about everything it cannot stage.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": "none",
@@ -660,7 +660,7 @@
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": "49",
-      "rule_lead": "An instruction whose violation leaves the output identical is not enforced by wording — it needs a measurement or a test.",
+      "rule_lead": "An instruction whose violation leaves the output identical is not enforced by wording.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": "none",
@@ -670,19 +670,39 @@
     {
       "compendium": "check_platform_and_boundaries.md",
       "rule_index": "50",
-      "rule_lead": "Thinking-effort levels are a real, named Claude Code control surface — stamped.",
+      "rule_lead": "Thinking-effort levels are a real, named Claude Code control surface.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": "none",
       "blocking": false,
-      "na_reason": "'thinking effort' / `--effort` is not mentioned anywhere in this file"
+      "na_reason": "'thinking effort'/`--effort` is not mentioned anywhere in this file"
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": "51",
+      "rule_lead": "A two-file contradiction is not a defect until you have read the code that reconciles them.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "none",
+      "blocking": false,
+      "na_reason": "no cross-file contradiction is reported by this instance"
+    },
+    {
+      "compendium": "check_platform_and_boundaries.md",
+      "rule_index": "52",
+      "rule_lead": "Two producers disagreeing about a canonical value ARE the defect.",
+      "verdict": "N/A",
+      "evidence": null,
+      "fix_hint": "none",
+      "blocking": false,
+      "na_reason": "no dual-producer canonical-value question appears in this file"
     },
     {
       "compendium": "check_research_claims.md",
       "rule_index": "1",
       "rule_lead": "Source URL + type label — mandatory.",
       "verdict": "PASS",
-      "evidence": "Sources block (line 115) carries `[maintainer-attested]` with `[checked:2026-08-03 result:ATTESTED due:none]`, matching §1's maintainer-attested carve-out exactly; no `[label]` vocabulary leaks into student-facing body prose.",
+      "evidence": "Sources block (line 119) carries `[maintainer-attested]` with `[checked:2026-08-03 result:ATTESTED due:none]`, matching §1's maintainer-attested carve-out exactly; no `[label]` vocabulary leaks into student-facing body prose (scope: maintainer-block only, per §1's own text).",
       "fix_hint": "none",
       "blocking": false
     },
@@ -694,14 +714,14 @@
       "evidence": null,
       "fix_hint": "none",
       "blocking": false,
-      "na_reason": "the Sources entry quotes Antti's own frame verbatim in quotation marks; it is not an OODA subagent's paraphrase of a fetched URL"
+      "na_reason": "the Sources entry quotes Antti's own frame verbatim in quotation marks, with the one reshape (LLM→the agent) explicitly disclosed; it is not an OODA subagent's paraphrase of a fetched URL"
     },
     {
       "compendium": "check_research_claims.md",
       "rule_index": "2",
       "rule_lead": "Freshness rule — 6 months.",
       "verdict": "PASS",
-      "evidence": "The maintainer-attested source carries `due:none` under the maintainer-attested carve-out, exempt from the 6-month clock by design; the Stance block is separately dated 2026-08-03, 33 days old today.",
+      "evidence": "The maintainer-attested source carries `due:none` under §1's maintainer-attested carve-out (not the §2a durable-account carve-out, which would require a specific completed event rather than an ongoing working practice — §1's carve-out doesn't need that). Stance block is separately dated 2026-08-03, 38 days before this read.",
       "fix_hint": "none",
       "blocking": false
     },
@@ -720,7 +740,7 @@
       "rule_index": "4",
       "rule_lead": "Hold short OODA loose.",
       "verdict": "PASS",
-      "evidence": "Stance block explicitly holds the claim at L1 ('Single-practitioner origin, maintainer-attested, so L1 and not higher') rather than inflating a one-source origin toward convergence language; OODA roster (line 129) is named as an open question, not treated as a convergence count.",
+      "evidence": "Stance block explicitly holds the claim at L1 ('Single-practitioner origin, maintainer-attested, so L1 and not higher') rather than inflating a one-source origin toward convergence language; OODA roster (line 133) is named as an open future question, not treated as a convergence count.",
       "fix_hint": "none",
       "blocking": false
     },
@@ -732,7 +752,7 @@
       "evidence": null,
       "fix_hint": "none",
       "blocking": false,
-      "na_reason": "no 'the module should X' prescriptive phrasing appears; OODA question (line 128) is phrased as an open question"
+      "na_reason": "no 'the module should X' prescriptive phrasing appears; OODA question (line 132) is phrased as an open question, not a directive"
     },
     {
       "compendium": "check_research_claims.md",
@@ -749,7 +769,7 @@
       "rule_index": "7",
       "rule_lead": "Vision × Detail split.",
       "verdict": "PASS",
-      "evidence": "All seven Claims rows (lines 106-112) are correctly tagged vision (none-owed) or detail (maintainer-frame, sourced); no unsourced detail-layer claim appears.",
+      "evidence": "All seven Claims rows (lines 110-116) are correctly tagged vision (← none-owed) or detail (← maintainer-frame, sourced); no unsourced detail-layer claim appears.",
       "fix_hint": "none",
       "blocking": false
     },
@@ -771,7 +791,7 @@
       "evidence": null,
       "fix_hint": "none",
       "blocking": false,
-      "na_reason": "pre-generation process rule; the OODA roster (line 129) is listed as an open future question, not a used source needing this check"
+      "na_reason": "pre-generation process rule; the OODA roster (line 133) is listed as an open future question, not a used source needing this check"
     },
     {
       "compendium": "check_research_claims.md",
@@ -790,7 +810,7 @@
       "evidence": null,
       "fix_hint": "none",
       "blocking": false,
-      "na_reason": "re-read at current wording, incl. 11a sub-clause (drift-flagged rule) — the file's only citation is the maintainer-attested frame, not a named external practitioner + URL + load-bearing number, so §11's trigger condition is not met; the Sources section's own line 116 says the same ('No other source owed... asserts no platform capability beyond the frame above'). Where a source IS present (the maintainer-attested line itself), it already satisfies 11a: `[checked:2026-08-03 result:ATTESTED due:none]` (line 115) matches the grammar in curriculum/source-freshness-format.md exactly."
+      "na_reason": "re-read at current wording, incl. its 11a freshness-stamp sub-clause — the file's only citation is the maintainer-attested frame, not a named external practitioner + URL + load-bearing number, so §11's trigger condition (practitioner citations) is not met; the Sources section's own line 120 says the same ('No other source owed... asserts no platform capability beyond the frame above'). Where a source IS present (the maintainer-attested line), it already satisfies 11a's stamp grammar: `[checked:2026-08-03 result:ATTESTED due:none]` (line 119) matches curriculum/source-freshness-format.md exactly."
     },
     {
       "compendium": "check_research_claims.md",
@@ -807,7 +827,7 @@
       "rule_index": "13",
       "rule_lead": "Inference beyond source — absence licenses only absence.",
       "verdict": "PASS",
-      "evidence": "The Stance block's 'contested'/'would-move-it' language (lines 124-125) confines the unresolved question (the reach of 'anything') to an explicit open question rather than asserting a conclusion the single source doesn't support.",
+      "evidence": "Stance block's 'contested'/'would-move-it' language (lines 128-129) confines the unresolved question (the reach of 'anything') to an explicit open question rather than asserting a conclusion the single source doesn't support.",
       "fix_hint": "none",
       "blocking": false
     },
@@ -846,7 +866,7 @@
       "rule_index": "16",
       "rule_lead": "Forcing functions stay, scripted reactions go. Forcing functions live in prompts, not body prose.",
       "verdict": "PASS",
-      "evidence": "All three forcing moves (read the ticket, reverse-engineer conventions, write the close-out) live inside the three prompt fences; body's 'Push back on the five' (line 31) and 'Double-check the voice' (line 43) are optional push-backs, which the rule's own carve-out permits in body; no bare imperative count-script found.",
+      "evidence": "All three forcing moves (read the ticket, reverse-engineer conventions, write the close-out) live inside the three prompt fences; body's 'Push back on the five' (line 31) and 'Double-check the voice' (line 43) are optional push-backs, which the rule's own carve-out explicitly permits in body; no bare imperative count-script (e.g. 'two rounds max') found anywhere.",
       "fix_hint": "none",
       "blocking": false
     },
@@ -858,14 +878,14 @@
       "evidence": null,
       "fix_hint": "none",
       "blocking": false,
-      "na_reason": "governs check_*.md rule-authorship discipline in the eval/memory system; this exercise authors no memory rule (line 60 explicitly: 'no rules-file write in this exercise')"
+      "na_reason": "governs check_*.md rule-authorship discipline in the eval/memory system; this exercise authors no memory rule (line 64 explicitly: 'no rules-file write in this exercise')"
     },
     {
       "compendium": "check_pedagogy.md",
       "rule_index": "23",
       "rule_lead": "Short skeptical pushback on \"done\" = re-verify trigger.",
       "verdict": "PASS",
-      "evidence": "Maintainer's push-back table (lines 96-101) and body's voice-check (line 43) both use the short-skeptical-pushback shape ('which of the five did the agent guess at?', 'does it sound like the same team wrote it?').",
+      "evidence": "Maintainer's push-back table (lines 100-105) and body's voice-check (line 43) both use the short-skeptical-pushback shape ('which of the five did the agent guess at?', 'does it sound like the same team wrote it?') rather than a re-confirm-with-more-confidence pattern.",
       "fix_hint": "none",
       "blocking": false
     },
@@ -877,7 +897,7 @@
       "evidence": null,
       "fix_hint": "none",
       "blocking": false,
-      "na_reason": "no verification machinery (hook, judge, Ralph loop, eval, gate) is built or invoked by this exercise"
+      "na_reason": "no verification machinery (hook, judge, Ralph loop, eval, gating skill) is built or invoked by this exercise"
     },
     {
       "compendium": "check_pedagogy.md",
@@ -887,14 +907,14 @@
       "evidence": null,
       "fix_hint": "none",
       "blocking": false,
-      "na_reason": "no auto-load/lazy-load/explicit-load context-tier lesson here; the connector command is a one-liner pointer, not a context-tier reveal"
+      "na_reason": "no auto-load/lazy-load/explicit-load context-tier lesson here; the connector reference is a one-liner pointer, not a context-tier reveal (that's M2's job)"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": "1",
       "rule_lead": "No placeholders inside fences.",
       "verdict": "PASS",
-      "evidence": "No `[BRACKETS]`-style placeholder in any of the three fences; prompt 1 uses the open-hook dangling-colon shape (§1d) correctly for the one genuinely student-supplied input (the ticket link).",
+      "evidence": "No `[BRACKETS]`-style placeholder in any of the three fences; prompt 1 correctly uses the open-hook dangling-colon shape (§1's rule-1d) for the one genuinely student-supplied input (the ticket link).",
       "fix_hint": "none",
       "blocking": false
     },
@@ -903,7 +923,7 @@
       "rule_index": "2",
       "rule_lead": "Every prompt block: one-sentence action lead-in.",
       "verdict": "PASS",
-      "evidence": "All three lead-ins present, all under 20 words: 'Drop the ticket link after the colon.' (line 16, the exact dangling-colon sub-case §2a describes — prompt-1's registry body ends 'Ticket:'), 'Ask Claude to reverse-engineer how your team handles bugs and propose five bug rules.' (line 27, ~14 words), 'Ask Claude to update the ticket with a close-out note and report what it wrote.' (line 37, ~15 words, changed since the pinned diff — the new wording mirrors prompt-3's own opening clause more closely than the prior text did).",
+      "evidence": "All three lead-ins present, all under 20 words: 'Drop the ticket link after the colon.' (line 16 — the exact dangling-colon worked example §2a itself gives, since prompt-1's registry body ends 'Ticket:'), 'Ask Claude to reverse-engineer how your team handles bugs and propose five bug rules.' (line 27, 14 words), 'Ask Claude to update the ticket with a close-out note and report what it wrote.' (line 37, 15 words).",
       "fix_hint": "none",
       "blocking": false
     },
@@ -912,7 +932,7 @@
       "rule_index": "3",
       "rule_lead": "Canonical shape — lead-in, label with destination, blank line, fence.",
       "verdict": "PASS",
-      "evidence": "Re-expanded this session (scripts/expand-md.js): all three markers resolve to '**Prompt** *(Claude Code)*' + blank line + fence, no stray prefix or closer text.",
+      "evidence": "Re-expanded this session (scripts/expand-md.js): all three markers resolve to '**Prompt** *(Claude Code)*' + blank line + fence, no stray 'copy →' prefix or '(end of prompt)' closer.",
       "fix_hint": "none",
       "blocking": false
     },
@@ -921,7 +941,7 @@
       "rule_index": "5",
       "rule_lead": "Chain by back-reference + deterministic path, never invented alias.",
       "verdict": "PASS",
-      "evidence": "Prompt 3 back-references 'the ticket' read in prompt 1 via warm same-session scrollback (maintainer line 74); the artefact chained on is a tracker ticket, not a file, so no deterministic path is owed — a scrollback-review chain is exactly what §5 prefers when available.",
+      "evidence": "Prompt 2's 'if we created this ticket ourselves a moment ago' and prompt 3's 'the ticket'/'just now' back-reference the same warm-session artefact read in prompt 1 (maintainer line 78 confirms same-session continuity); the chained artefact is a tracker ticket, not a file, so no deterministic path is owed — a scrollback-review chain is exactly what §5 prefers when available, and registry frontmatter (`requires: ticket-summary source: prompt:close-the-ticket-1`) declares the mechanical chain correctly.",
       "fix_hint": "none",
       "blocking": false
     },
@@ -930,7 +950,7 @@
       "rule_index": "6",
       "rule_lead": "Chained-prompt isolation — don't leak downstream pipeline.",
       "verdict": "PASS",
-      "evidence": "Prompt 1 doesn't reveal that convention-extraction or close-out writing come next; prompt 2 doesn't reveal the close-out write; prompt 3 references nothing beyond its own task.",
+      "evidence": "Prompt 1 doesn't reveal that convention-extraction or close-out writing come next; prompt 2 doesn't reveal the close-out write; prompt 3 references nothing beyond its own task. Each prompt's output stands as if downstream didn't exist.",
       "fix_hint": "none",
       "blocking": false
     },
@@ -939,7 +959,7 @@
       "rule_index": "7",
       "rule_lead": "No session-resets mid-phase.",
       "verdict": "PASS",
-      "evidence": "No `/clear` or 'start a new session' offered between the three prompts; maintainer line 74 confirms they run in one continuing M1 session.",
+      "evidence": "No `/clear` or 'start a new session' offered between the three prompts; maintainer line 78 confirms they run in one continuing M1 session, and prompt 2/3 both back-reference in-session state accordingly.",
       "fix_hint": "none",
       "blocking": false
     },
@@ -951,14 +971,14 @@
       "evidence": null,
       "fix_hint": "none",
       "blocking": false,
-      "na_reason": "no self-consistency/ensemble/regeneration-diff method is used anywhere in this exercise — a single ticket read and a single agent proposing five rules, not a multi-sample detector"
+      "na_reason": "no self-consistency/ensemble/regeneration-diff method anywhere in this exercise — a single ticket read and a single agent proposing five rules, not a multi-sample detector"
     },
     {
       "compendium": "check_prompts.md",
       "rule_index": "9",
       "rule_lead": "Markdown shout (`**bold**`, `*italic*`) inside fenced prompts = dead weight in Claude Code.",
       "verdict": "PASS",
-      "evidence": "No `**bold**`/`*italic*` markdown inside any of the three fences (checked the re-expanded output).",
+      "evidence": "No `**bold**`/`*italic*` markdown inside any of the three fences, checked against the re-expanded output.",
       "fix_hint": "none",
       "blocking": false
     },
@@ -990,7 +1010,7 @@
       "evidence": null,
       "fix_hint": "none",
       "blocking": false,
-      "na_reason": "none of the three prompts asks Claude to cite external facts or documents; the convention-inference task in prompt 2 already separates 'strong signals' from 'guesses' by its own design, not via a cite-or-flag mechanism this rule governs"
+      "na_reason": "none of the three prompts asks Claude to cite external facts or documents; the convention-inference task in prompt 2 separates 'strong signals' from 'guesses' by its own design, not via a cite-or-flag mechanism"
     },
     {
       "compendium": "check_prompts.md",
@@ -1009,7 +1029,7 @@
       "evidence": null,
       "fix_hint": "none",
       "blocking": false,
-      "na_reason": "re-read at current wording (2026-09-03 narrowing to plan-mode ONLY, drift-flagged rule) — none of the three prompts run in or invoke plan mode, so the trigger condition no longer applies"
+      "na_reason": "re-read at current wording (2026-09-03 narrowing to plan-mode ONLY) — none of the three prompts run in or invoke plan mode, so the trigger condition doesn't apply and §17 is advisory everywhere else per the 2026-09-08 update"
     },
     {
       "compendium": "check_prompts.md",
@@ -1019,7 +1039,7 @@
       "evidence": null,
       "fix_hint": "none",
       "blocking": false,
-      "na_reason": "re-read at current wording (2026-09-03 narrowing — 'never gates and rarely fires', requires a named run showing downstream re-run cost) — no such run is claimed or evidenced for this file, and prompt 3 already uses the preferred post-action-report pattern (§21) rather than a pre-save grill"
+      "na_reason": "re-read at current wording (2026-09-03 narrowing — 'never gates and rarely fires', requires a named run evidencing a downstream re-run cost) — no such run is claimed for this file, and prompt 3 already uses the preferred post-action-report pattern (§21) rather than a pre-save grill"
     },
     {
       "compendium": "check_prompts.md",
@@ -1036,7 +1056,7 @@
       "rule_index": "28",
       "rule_lead": "Strong-bold prompt label is exactly `**Prompt**` — custom labels break renderer.",
       "verdict": "PASS",
-      "evidence": "Re-expanded output uses exactly `**Prompt**` for all three labels, parenthetical `*(Claude Code)*` only.",
+      "evidence": "Re-expanded output uses exactly `**Prompt**` for all three labels, parenthetical `*(Claude Code)*` only, no custom text inside the bold span.",
       "fix_hint": "none",
       "blocking": false
     },
@@ -1045,7 +1065,7 @@
       "rule_index": "31",
       "rule_lead": "Prompts live in registry; module/exercise/lecture files reference by marker.",
       "verdict": "PASS",
-      "evidence": "Raw source contains exactly three `{{prompt:close-the-ticket-N}}` markers (lines 18, 29, 39); `curriculum/prompts/close-the-ticket-1.md`, `-2.md`, `-3.md` all exist with matching frontmatter keys, and expand-md.js resolves all three with no leftover marker.",
+      "evidence": "Raw source contains exactly three `{{prompt:close-the-ticket-N}}` markers (lines 18, 29, 39); `curriculum/prompts/close-the-ticket-1.md`, `-2.md`, `-3.md` all exist with matching frontmatter keys and correct `requires`/`consumed-by` chaining, and expand-md.js resolves all three with no leftover marker.",
       "fix_hint": "none",
       "blocking": false
     },
@@ -1073,7 +1093,7 @@
       "rule_index": "38",
       "rule_lead": "Body lead-in mirrors prompt's opening phrasing.",
       "verdict": "PASS",
-      "evidence": "Line 27 ('reverse-engineer how your team handles bugs') mirrors prompt-2's opening ('Reverse-engineer how this team handles bugs'); line 37 ('update the ticket with a close-out note') mirrors prompt-3's opening ('Update the ticket: short close-out note') — the wording changed since the pinned diff and now tracks the prompt's own clause order more closely than before. Line 16 is the open-hook dangling-colon lead-in (§2's own worked sub-case), whose job is naming the fill-in slot rather than mirroring prompt-1's opening clause — a scoped carve-out, not a miss.",
+      "evidence": "Line 27 ('reverse-engineer how your team handles bugs') mirrors prompt-2's opening ('Reverse-engineer how this team handles bugs'); line 37 ('update the ticket with a close-out note') mirrors prompt-3's opening ('Update the ticket: short close-out note'). Line 16 is the open-hook dangling-colon lead-in (§2's own worked sub-case), whose job is naming the fill-in slot rather than mirroring prompt-1's opening clause — a scoped carve-out (§2's dangling-colon sub-case), not a miss under §38.",
       "fix_hint": "none",
       "blocking": false
     },
@@ -1092,45 +1112,46 @@
       "rule_index": "40",
       "rule_lead": "Verify session boundary before deciding prompt's context-carrying.",
       "verdict": "PASS",
-      "evidence": "Re-read at current wording (drift-flagged rule, includes 40a/40b) — maintainer line 74 establishes a warm same-session boundary ('runs in the same M1 session as the fix and the PR'); prompt-1's 'the bug we just fixed' and prompt-3's implicit back-reference to 'the ticket' and 'the PR' both resolve against real in-session scrollback per the arc (fix-tests-first ships the PR this same session); no dangling curriculum-coined event label (§40b) appears inside any fence.",
+      "evidence": "Re-read at current wording (incl. 40a/40b sub-clauses) — maintainer line 78 establishes a warm same-session boundary ('runs in the same M1 session as the fix and the PR'); prompt-1's 'the bug we just fixed' and prompt-3's back-reference to 'the ticket' both resolve against real in-session scrollback per the arc (fix-tests-first ships the PR in this same session, per maintainer's Arc block line 97); no dangling curriculum-coined event label (§40b) appears inside any fence.",
       "fix_hint": "none",
       "blocking": false
     },
     {
       "compendium": "check_prompts.md",
-      "rule_index": "45",
-      "rule_lead": "Prompt paths match Builder scope.",
+      "rule_index": "43",
+      "rule_lead": "Long-running prompts stream progress — never go silent.",
       "verdict": "N/A",
       "evidence": null,
       "fix_hint": "none",
       "blocking": false,
-      "na_reason": "rule is scoped to Agents 101's Builder-open-location split; this AE101 file's prompts reference the student's own repo/tracker with no training-imposed subfolder convention, and no local file path appears in any of the three fences"
+      "na_reason": "drift-flagged rule, re-read at current wording (incl. the 2026-09-09 dose-first addendum) — none of the three prompts is a long-running/cross-project/walk-away prompt by default duration; each is a single short ticket-read, propose-five-rules, or close-out-write action within a 20-minute exercise, so the trigger (default duration > a couple of minutes) is not met"
     }
   ],
   "blocking_findings_count": 0,
+  "nonblocking_findings_count": 0,
   "platform_claims_checked": [
     {
       "claim": "`claude mcp add --transport http <name> <url>` is a single command",
-      "line": 64,
+      "line": 68,
       "verdict": "PASS",
-      "source": "live-verified this session: `claude mcp add --help` (installed Claude Code 2.1.259)"
+      "source": "live-verified this session: `claude mcp add --help` (installed Claude Code 2.1.263)"
     },
     {
       "claim": "A connector added at the Claude account's connector surface inherits into a logged-in Claude Code session",
-      "line": 64,
+      "line": 68,
       "verdict": "PASS",
-      "source": "live-verified this session via WebFetch of code.claude.com/docs/en/mcp: quotes 'MCP servers you've added in claude.ai...are automatically available in Claude Code' verbatim"
+      "source": "live-verified this session via WebFetch of code.claude.com/docs/en/mcp: quotes \"MCP servers you've added in claude.ai...are automatically available in Claude Code\" verbatim"
     },
     {
       "claim": "On Team and Enterprise Claude.ai plans only admins can add at the connector surface",
-      "line": 66,
+      "line": 70,
       "verdict": "PASS",
-      "source": "live-verified this session via WebFetch of code.claude.com/docs/en/mcp: 'On Team and Enterprise plans, only admins can add servers.'"
+      "source": "live-verified this session via WebFetch of code.claude.com/docs/en/mcp: \"On Team and Enterprise plans, only admins can add servers.\""
     }
   ],
   "citations_checked": [
     {
-      "line": 115,
+      "line": 119,
       "claim": "Antti's maintainer-attested working frame on study-extract-carry-forward",
       "label_present": true,
       "url_present": false,
@@ -1147,17 +1168,14 @@
     }
   ],
   "drift_rules_reread": [
-    "prompts §2 (current wording incl. 2026-08-12/2026-08-30 sub-clauses) — checked against all three body lead-ins; all PASS, incl. the exact dangling-colon worked example at line 16.",
-    "prompts §17 (narrowed 2026-09-03 to plan-mode ONLY) — no plan-mode prompt in this file; N/A, no defect.",
-    "prompts §20 (narrowed 2026-09-03, 'never gates and rarely fires') — no named run evidences a re-run cost for this file; N/A, no defect.",
-    "prompts §40 (current wording incl. 40a/40b) — warm same-session boundary confirmed (maintainer line 74); all in-fence references resolve to real scrollback; PASS.",
-    "research_claims §11 (current wording) — file's only citation is maintainer-attested, not a named-practitioner+URL+load-bearing-number citation, so the Source-verification-block trigger is not met; N/A, matches the file's own 'No other source owed' note."
+    "prompts §43 (re-read at current wording, incl. 2026-09-05 unattended-by-design carve-out and 2026-09-09 dose-first addendum) — none of the file's three prompts is long-running by default duration; N/A, no defect. Body is unchanged since pin 324b81d7 (confirmed via `git diff 324b81d7..HEAD -- curriculum/exercises/close-the-ticket.md`: only maintainer-block additions and the Quality-stamp update), so this class is stale purely on the rule-drift axis, not a body-drift axis."
   ],
   "accept_notes_found": [
-    "Raw line 62: '\"Connector\" is assumed-known vocabulary (Antti 2026-08-18)' — overrules check_writing §8 / check_student_facing §2 earned-vocabulary findings on 'connector'. Writing/student_facing-scoped; no technical finding was in tension with it.",
-    "Raw line 64: 'The three-routes bullet (gh / inherited connector / paste) was cut 2026-08-12 as NVA... Do not restore it.' — pedagogy/story-scoped deliberate-cut note; no technical finding was in tension with it.",
-    "Raw line 124: 'the reach of anything... deliberate (Antti 2026-08-30: a boundary bullet is not valuable enough to ship)' — research_claims/writing-scoped stance decision (see backing block); no technical finding was in tension with it."
+    "L58: The closer's 'The next exercise sweeps this whole session' stays under §33's motivating-forward-reference carve-out (Antti 2026-09-06). Writing/story-scoped; no technical finding was in tension with it.",
+    "L60: §9's actor clause on L48's 'Extract a `.md` file' is declined (Antti 2026-09-06: 'no. Longer. Direct you do it format also fully acceptable'). Writing-scoped (check_writing §9); no technical finding was in tension with it.",
+    "L66: 'Connector' is assumed-known vocabulary (Antti 2026-08-18) — overrules check_writing §8 / check_student_facing §2 earned-vocabulary findings on 'connector'. Writing/student_facing-scoped; no technical finding was in tension with it.",
+    "L68: Connector install is named, not taught, because it is a one-liner. The three-routes bullet (gh / inherited connector / paste) was cut 2026-08-12 as NVA — do not restore it. Pedagogy/story-scoped deliberate-cut note; also directly supports this instance's PASS on platform_and_boundaries §1/§4/§6 (the claim it documents was independently re-verified live this session).",
+    "L128: the reach of 'anything' is deliberately left bare with no boundary bullet (Antti 2026-08-30: 'a boundary bullet is not valuable enough to ship'). research_claims/writing-scoped stance decision; directly supports this instance's PASS on research_claims §13 (inference beyond source)."
   ],
-  "notes": "check_pedagogy.md scope held to the template's named technical sub-rules only (16, 22, 23, 36, 37); the remaining ~62 pedagogy rules are the pedagogy judge's lane. check_prompts.md scope held to the template's named mechanical-correctness items (placeholders/lead-in/chain-by-back-reference/multi-sample/citation-discipline = rules 1,2,5,8,13), the five dispatch-mandated drift re-reads (2,17,20,40 plus 11 under research_claims), and directly-mechanical sibling rules the file's own shape triggers (canonical shape, chained-isolation, session-resets, markdown-shout, runtime-fork N/A checks, overwrite-anxiety, write-consumer-naming, strong-bold label, registry-marker mechanics, git-grep fallback, in-fence disambiguation, lead-in/prompt phrasal mirror, permission-mode declaration, builder-scope paths) — all mechanical-correctness, none of the prose-level rules (niceness-tax §14, question-dump §15, self-critique-register §18, vary-closings §48, leading-line §44) that check_writing owns.",
-  "nonblocking_findings_count": 0
+  "notes": "check_pedagogy.md scope held to the template's named technical sub-rules only (16, 22, 23, 36, 37); the remaining ~63 pedagogy rules are the pedagogy judge's lane. check_prompts.md scope held to mechanical-correctness rules (the template's named examples — placeholders/lead-in/chain-by-back-reference/multi-sample/citation-discipline = rules 1,2,5,8,13 — plus sibling structural-mechanics rules the file's own shape triggers: canonical shape, chained-isolation, session-resets, markdown-shout, runtime-fork applicability, overwrite-anxiety, preamble/grill drift re-reads, write-consumer-naming, strong-bold label, registry-marker mechanics, git-grep fallback, in-fence disambiguation, lead-in/prompt phrasal mirror, permission-mode declaration, session-boundary verification, and the dispatch-mandated §43 drift re-read) — none of the prose-register rules (niceness-tax §14, question-dump §15, self-critique-register §18, tell-me-what-you-wrote framing §21, iteration-vs-persistence §35, tail-ordering §41, headless-runner AUQ §42 [no tmux-runner content here], leading-line judgment §44, output-shape padding §46, append-vs-integrate framing §47, vary-closings §48) that check_writing/check_behavior own. check_platform_and_boundaries.md and check_research_claims.md are judged to full completeness (70 and 17 rules respectively) as this class's primary-owned compendiums; nearly all rows land N/A because this is a 55-line exercise with one platform-capability assertion (independently re-verified live this session) and zero body citations (the sole citation lives in the maintainer-attested backing block, scoped out of body per research_claims §1)."
 }

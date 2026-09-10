@@ -124,7 +124,7 @@ Module 2 is where plan mode earns its keep: multi-file work, and a second pass t
 
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply + Analyze
-- **Pacing:** Runtime is computed — `node scripts/calculate-time.js getting-going`. The two room-agreement slides and the Connections trick-share share the opening allocation. Trainer demos slowly, room copy-pastes concurrently.
+- **Pacing:** Runtime is computed — `node scripts/calculate-time.js getting-going`. The two room-agreement slides and the Connections trick-share share the opening allocation; room agreement is protected, and the trick-share shrinks to as many tricks as fit, one included. Trainer demos slowly, room copy-pastes concurrently.
 - **Transitions:** opening 10 @start "Opening: two room-agreement slides + trick-share" · bridge 5 @end "Bridge"
 - **Prep timing:** prework 30 min; optional progression page 5 min; optional Cherny video 30 min; optional multi-session reference 10 min; optional factory essay 15 min.
 - **Mood target:** joyful creation — *"it works, on my repo."* Watch for: mood drift toward technical warm-up (the bug feels arbitrary, the loop feels mechanical, "this is just a TDD fix I do anyway"). Diagnostic: student narrates Ex2 as a generic engineering move with no surprise. Fix: trainer surfaces the agentic specificity — *"the loop you just ran was orient → fix → close → compound on YOUR repo, with a close-out written in your team's own register and a rules file born from how YOU just worked. That's not a bug fix; that's the instrument starting to play your music."*
@@ -134,9 +134,10 @@ Module 2 is where plan mode earns its keep: multi-file work, and a second pass t
 - **Freshness-rule exception — Cherny *Mastering Claude Code in 30 minutes* (May 2025).** Kept outside the 6-month window by decision; pedagogy match unbeaten by successors.
 
 **Push-back moves** (trainer delivers):
+- **Trick-share runs dead** — nobody volunteers a trick. Trainer offers theirs first, then asks what prework surfaced. One trick opens the room.
 - **Ex1 introspection skip** — student reads Claude's repo summary and moves to the bug fix without running the second prompt. Trainer push: *"before we move on — what did Claude choose not to read, and does that match what you'd have expected?"*
 - **Ex1 `/context` skipped** — slash command read as prose, not as a command. Trainer push: *"type /context in the chat — look at the number."*
-- **Ex1 spot-check skipped** — no fence forces it, and it is the only beat paying the account-versus-actual-state LO. Trainer push: *"pick a file Claude said it read. Quote a function back at it — is that really what's in there?"*
+- **Ex1 spot-check skipped** — no fence forces it. Trainer push: *"pick a file Claude said it read. Quote a function back at it — is that really what's in there?"*
 - **Ex1 drifted bug** — student has drifted from prework choice. Trainer runs fresh bug-surfacing conversation. Criteria unchanged.
 - **Ex2 tests-skipped** — student pastes bug and Claude jumps to a fix. Trainer push: *"back up — what's the failing test that would prove this bug exists?"* (If no test infrastructure on this path, log "no verifier here" as a note that lands in M4.)
 - **Ex2 diff rubber-stamp** — student says "looks fine" under 30 seconds. Trainer push: *"find me one line you'd have written differently — not wrong, just different."*
@@ -190,6 +191,6 @@ The shipped PR and the closed ticket are both produced this module and both live
 
 **`## Next` is templated, so `check_lectures §4` does not reach it (2026-09-08).** §4's bare-arc-label clause governs headers an author chose. This one is fixed by `curriculum/module-shape.md`, which names the section and pins it as the last thing in the body; five AE101 modules carry it verbatim. Charging this file for it would be charging it for obeying the template, the seam `check_slides §9` already settled on the bold budget. §4 now carries the same carve-out. A rename here is a change to `module-shape.md` and to all five modules at once, never a per-file card. Do not re-file.
 
-**Quality:** compendium-audited 2026-09-05 (writing@324b81d7 story@324b81d7 technical@324b81d7 behavior@1480362 pedagogy@85515fa0 strategy@324b81d7 slides@324b81d7)
-- judges @324b81d7: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-09-10 (writing@0d65ff01 story@0d65ff01 technical@0d65ff01 behavior@1480362 pedagogy@0d65ff01 strategy@0d65ff01 slides@0d65ff01)
+- judges @0d65ff01: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS (verify-refuted, 2 findings see instances/ae101--module--getting-going.pedagogy.json), strategy PASS (verify-refuted), slides PASS
 - cross_module @01592193: PASS — set=[prework,getting-going,plan-mode-done-right,earn-the-trust]; 3 pairs, 0 blocking; see instances/ae101--module-set--prework-m3.cross_module.json

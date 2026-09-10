@@ -46,7 +46,7 @@ Drop your bug after the colon.
 
 ## Ship the PR
 
-- How far you let Claude drive Git is your choice. Ask Claude to commit, push a branch, and open the PR.
+- How far you let the agent drive Git is your choice. Ask Claude to commit, push a branch, and open the PR.
 
 <!-- maintainer -->
 
@@ -62,10 +62,10 @@ Drop your bug after the colon.
 
 **Prompt 3's lead-in is action-verb enough as it stands (Antti 2026-09-10).** *Send only if the interrogation surfaced a deeper layer worth a second TDD pass.* opens on the student's command verb — *send* — which is what `check_prompts.md` §2 asks for; a judge reading it as condition-only has missed the verb in the first word. Any expansion is also longer, and the shorter line wins. Do not add an action summary here.
 
-**The `What you build:` list stays as three objects (Antti 2026-09-08: *"original was better - more tangible before the exercise"*).** The §52c sweep proposed the View summary's own closing clause, *"working code whose evidence you have read and challenged"* — nine words against nineteen, and truer about what the exercise teaches. Declined because the slot is read before the work, where its job is telling a student what they will be holding afterwards. A failing test, the smallest fix, a shipped PR: three things they can picture. The replacement describes a quality of the result and names nothing they could hold. §52c now carries the boundary — the enablement test never buys abstraction, and a concrete list that already tells the student what they get is the slot doing its job. Do not re-file the colon-list tell here.
+**The `What you build:` list stays as three objects (Antti 2026-09-08: *"original was better - more tangible before the exercise"*).** The slot is read before the work, where its job is telling a student what they will be holding afterwards. A failing test, the smallest fix, a shipped PR: three things they can picture. §52c carries the boundary — the enablement test never buys abstraction, and a concrete list that already tells the student what they get is the slot doing its job. Do not re-file the colon-list tell here.
 
-**Quality:** compendium-audited 2026-09-06 (writing@324b81d7 story@324b81d7 technical@324b81d7 behavior@64d17eea pedagogy@08946dd8 strategy@324b81d7 slides@324b81d7)
-- judges @64d17eea: writing PASS (2 findings see instances/ae101--exercise--fix-tests-first.writing.json), story PASS (2 findings see instances/ae101--exercise--fix-tests-first.story.json), technical PASS, behavior PASS, pedagogy PASS (1 finding see instances/ae101--exercise--fix-tests-first.pedagogy.json), strategy PASS, slides PASS
+**Quality:** compendium-audited 2026-09-10 (writing@0d65ff01 story@0d65ff01 technical@0d65ff01 behavior@64d17eea pedagogy@0d65ff01 strategy@324b81d7 slides@0d65ff01)
+- judges @0d65ff01: writing PASS (2 findings see instances/ae101--exercise--fix-tests-first.writing.json), story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply (tests-first fix) + Analyze (read the diff against what you'd write).
 - **Atomic — no phase markers.** One TDD loop, start to PR; splitting it would name beats the student does not experience as separate. Line 3 is authored, not generated.

@@ -19,7 +19,7 @@ One long session, drawn as a sea passage.
 
 - On the map, the kit is what stands in for you at Verification.
 - **Reference artefact**, against goal drift. A spec the agent reads and re-reads: success criteria, pointers at the relevant memory, named constraints. The spec on disk stays readable mid-session when the buried instructions in the conversation no longer are. In Armin Ronacher's January 2026 MiniJinja port, the original Rust snapshot tests played this role; in your re-send, the reference you assembled plays it.
-- **plan.md** the agent owns and mutates, against context rot. A working document that holds durable state across the task: the agent reads it at every session boot, updates it as decisions land, re-reads it when the working window fills. What got ruled out an hour ago is written down, not remembered. Geoffrey Huntley's Ralph practice leans on exactly this primitive to bootstrap entire greenfield projects.
+- **plan.md** the agent owns and mutates, against context rot. A working document that holds durable state across the task: the agent reads it at every session boot, updates it as decisions land, re-reads it when the working window fills. What got ruled out an hour ago is written down, not remembered. Geoffrey Huntley's Ralph loop leaned on exactly this primitive to bootstrap entire greenfield projects.
 
 ## The verifier completes the three-pattern
 <!--tier:1-->
@@ -95,7 +95,7 @@ Claims
 - `reference-artefact-against-goal-drift` · vision · "**Reference artefact**, against goal drift." ← none-owed
 - `minijinja-snapshot-tests-as-reference` · detail · "the original Rust snapshot tests played this role" ← ronacher-minijinja
 - `plan-md-against-context-rot` · vision · "**plan.md** the agent owns and mutates, against context rot." ← none-owed
-- `ralph-bootstraps-greenfield` · detail · "Geoffrey Huntley's Ralph practice leans on exactly this primitive to bootstrap entire greenfield projects" ← huntley-ralph
+- `ralph-bootstraps-greenfield` · detail · "Geoffrey Huntley's Ralph loop leaned on exactly this primitive to bootstrap entire greenfield projects" ← huntley-ralph
 - `external-verifier-against-plausible-but-wrong` · vision · "**External verifier**, against plausible-but-wrong." ← none-owed
 - `re-read-cost-buys-a-clean-session` · vision · "That cost is the point: it buys a session with no drift in it." ← none-owed
 - `weights-hold-the-written-record` · detail · "The weights hold the written record: the setup posts, the plan-file templates, the verifier write-ups, the reversals that followed them." ← amp-handoff, amp-neo

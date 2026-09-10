@@ -136,6 +136,7 @@ Module 2 is where plan mode earns its keep: multi-file work, and a second pass t
 **Push-back moves** (trainer delivers):
 - **Ex1 introspection skip** — student reads Claude's repo summary and moves to the bug fix without running the second prompt. Trainer push: *"before we move on — what did Claude choose not to read, and does that match what you'd have expected?"*
 - **Ex1 `/context` skipped** — slash command read as prose, not as a command. Trainer push: *"type /context in the chat — look at the number."*
+- **Ex1 spot-check skipped** — the self-report beat carries no prompt fence, so nothing forces it, and it is the only beat paying the *"Distinguish the agent's account from the repo's actual state"* LO. Trainer push: *"pick one file Claude said it read. Quote a function out of it back at Claude and ask whether that is really what's in there."*
 - **Ex1 drifted bug** — student has drifted from prework choice. Trainer runs fresh bug-surfacing conversation. Criteria unchanged.
 - **Ex2 tests-skipped** — student pastes bug and Claude jumps to a fix. Trainer push: *"back up — what's the failing test that would prove this bug exists?"* (If no test infrastructure on this path, log "no verifier here" as a note that lands in M4.)
 - **Ex2 diff rubber-stamp** — student says "looks fine" under 30 seconds. Trainer push: *"find me one line you'd have written differently — not wrong, just different."*

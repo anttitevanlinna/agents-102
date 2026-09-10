@@ -4291,5 +4291,118 @@
    "at": "2026-09-10",
    "note": "Applied 2026-09-10. The colon becomes a full stop, so the sentence stops presenting all three behaviours as what the opener established and states them in its own right. Verified against the opener's body rather than the finding's summary: painting-the-picture-with-the-llm teaches the mirror and carries the sycophancy stamps, and \"calls unfinished work progress\" appears nowhere in it. The filed fix was to cut the third item; that loses the sycophancy-to-self-report bridge the scrollback-is-not-the-work slide needs two beats later, so the claim stays and only the attribution changes. 22 words to 21."
   }
+ },
+ {
+  "target_file": "curriculum/exercises/close-the-ticket.md",
+  "instance": "ae101--exercise--close-the-ticket (M1 readiness sweep 2026-09-10 (wf_9300bb4a-87b))",
+  "rule": "student_facing 17",
+  "disposition": "CARD",
+  "confidence": "high",
+  "gate_triage": {
+   "value_rank": 3
+  },
+  "claim": "A declarative header sits over a body that instructs. The rule test: section body tells the student to do something? Yes -> lead the header with a verb.",
+  "before": "## Anything can be reverse-engineered",
+  "after": "## Reverse-engineer anything",
+  "why": "student_facing 17 — the body is two imperatives (\"Ask Claude to study the pipeline, the config, the undocumented code. Extract a `.md` file.\"). Not a canonical module-shape section name, and an exercise, which is the rule stated especially-applies surface. The sibling closer \"## Two artefacts from one ticket\" is correctly exempt: its body is pure recap.",
+  "risk": "The header is doing reframe work, not instruction work — the generalisation (the ticket was one instance of a move that works on anything) is the beat. The verb form keeps both, but a shorter header carries less of the reframe. The judge also offered \"## Turn anything into a rule file\", which is wrong on the artifact: the body extracts a context `.md`, not a rule file.",
+  "evidence": "close-the-ticket.md:45 header; :47-48 body"
+ },
+ {
+  "target_file": "curriculum/exercises/fix-tests-first.md",
+  "instance": "ae101--exercise--fix-tests-first (M1 readiness sweep 2026-09-10 (wf_9300bb4a-87b))",
+  "rule": "student_facing 21",
+  "disposition": "CARD",
+  "confidence": "medium",
+  "gate_triage": {
+   "value_rank": 2
+  },
+  "claim": "Two rules collide on the same phrase. The 21 active-stance override says self-critique is the agent; rule 9 supplies \"Claude’s view of code quality\" verbatim as its own canonical fix.",
+  "before": "**Optional.** Once the fix is in, dig into **Claude's** view of code quality and structure. Ask **Claude**: *did you make it better? Why yes. Why no.* You steer; might take a few nudges.",
+  "after": "**Optional.** Once the fix is in, dig into **the agent's** view of code quality and structure. Ask **the agent**: *did you make it better? Why yes. Why no.* You steer; might take a few nudges.",
+  "why": "student_facing 21 active-stance override (2026-08-30, Antti): say *the agent* whenever the harness+LLM takes an active stance, even inside addressee grammar. Its calibration pair is \"Ask the agent what is weakest about its own output\" — self-critique. *did you make it better?* is the same shape.",
+  "risk": "student_facing 9 uses this exact line as its worked example of naming the object: *\"dig into code quality\"* -> *\"dig into Claude’s view of code quality\"*. Applying 21 rewrites a rule own illustration, so the compendium wants the same edit if this lands. Leaving it means the file reads *Claude* where the corpus now says *the agent*.",
+  "evidence": "fix-tests-first.md:41; check_student_facing 21 calibration pair; check_student_facing 9 LOOK-line example"
+ },
+ {
+  "target_file": "curriculum/exercises/orient-and-introspect.md",
+  "instance": "ae101--exercise--orient-and-introspect (M1 readiness sweep 2026-09-10 (wf_9300bb4a-87b))",
+  "rule": "student_facing 9",
+  "disposition": "CARD",
+  "confidence": "low",
+  "gate_triage": {
+   "value_rank": 1
+  },
+  "claim": "A LOOK-line names its object and its mechanism but not its tell — the student is told how to spot-check and not what a miss looks like.",
+  "before": "- You can spot-check it. Quote a specific file or function back and ask Claude to confirm it read what it claims.",
+  "after": "- You can spot-check it. Quote a specific file or function back and ask Claude to confirm it read what it claims. **If what comes back does not match what is really there, that is the gap.**",
+  "why": "student_facing 9 sibling rule for LOOK-lines — name the OBJECT and the TELL. The object is right (the claim about the file, not the file). The tell is absent.",
+  "risk": "Rule 9 says of its own actor axis, in its own words, \"the fix is never more words\", and records two cards dying on exactly that with \"longer with very little value add\" and \"no. Longer.\" This proposal is 16 words longer. The tell may also be self-evident: a student who quotes a function back and hears a confirmation that does not match has already found the gap. Filed low so it can be declined in one word.",
+  "evidence": "orient-and-introspect.md:43; check_student_facing 9"
+ },
+ {
+  "target_file": "curriculum/prompts/compound-and-close-1.md",
+  "instance": "ae101--exercise--compound-and-close (M1 readiness sweep 2026-09-10 (wf_9300bb4a-87b))",
+  "rule": "pedagogy 11 + 13",
+  "disposition": "CARD",
+  "confidence": "high",
+  "gate_triage": {
+   "value_rank": 3
+  },
+  "surface": "prompt registry body — check_prompts 22 gated",
+  "claim": "The fence names an artifact unconditionally that its own frontmatter classifies as optional. A no-ticket-path student is asked to review scrollback that does not exist.",
+  "before": "Review this session end-to-end: the orientation and introspection, the /context read, the TDD bug fix, the diff push-back if I made one, the bug rules read off the ticket.",
+  "after": "Review this session end-to-end: the orientation and introspection, the /context read, the TDD bug fix, the diff push-back if I made one, the bug rules read off the ticket **if I had one**.",
+  "why": "pedagogy 11/13 — the same sentence already hedges its other optional item (*the diff push-back if I made one*). compound-and-close-1 frontmatter puts bug-rules under opportunistic-copy, not requires, with the note that close-the-ticket runs off a tracker the student may not reach. The fence and the access model disagree.",
+  "risk": "Prompt registry body: hard-gated by the PreToolUse hook, and the token is prompt-ok. Practical harm today is low — the same fence says *not rules that sound good*, so the agent should flag the gap rather than invent it. Adds four words to a fence.",
+  "evidence": "curriculum/prompts/compound-and-close-1.md:13-16 frontmatter, :32 body"
+ },
+ {
+  "target_file": "curriculum/trainings/agentic-engineering-101/getting-going.md",
+  "instance": "ae101--module--getting-going (M1 readiness sweep 2026-09-10 (wf_9300bb4a-87b))",
+  "rule": "writing 27",
+  "disposition": "CARD",
+  "confidence": "medium",
+  "gate_triage": {
+   "value_rank": 2
+  },
+  "claim": "A closing flourish restates, at its least concrete, what the three preceding clauses already said concretely.",
+  "before": "Reach for them when one session is waiting on a long run and another piece of work is ready to move, when you want to try two approaches to the same problem side by side, or when a review task can run alongside the build. **The instinct earns itself in use.**",
+  "after": "Reach for them when one session is waiting on a long run and another piece of work is ready to move, when you want to try two approaches to the same problem side by side, **or** when a review task can run alongside the build.",
+  "why": "writing 27 — say it once, at its most concrete. The three when-clauses are the concrete form; the closer asserts the same thing as a maxim.",
+  "risk": "The line does a small permission job: it tells a student who reads the three cases and thinks *not yet* that they are not behind. The file already carries a maintainer accept-note holding that pre-read annotation length is the point and is not to be trimmed to a bare link — that note is scoped to the Module 2 pre-reads, but the stance is the same block.",
+  "evidence": "getting-going.md:85"
+ },
+ {
+  "target_file": "curriculum/trainings/agentic-engineering-101/prework.md",
+  "instance": "ae101--module--prework (M1 readiness sweep 2026-09-10 (wf_9300bb4a-87b))",
+  "rule": "writing 14",
+  "disposition": "CARD",
+  "confidence": "low",
+  "gate_triage": {
+   "value_rank": 1
+  },
+  "claim": "Two sentences state one size constraint; the judge proposes merging them.",
+  "before": "- **A small multi-file task**: work you'd ship today if you had the hour. **Plan mode wants something a few files wide.**",
+  "after": "- **A small multi-file task**: work you'd ship today if you had the hour, **spanning a few files.**",
+  "why": "writing 14 — one claim, one sentence.",
+  "risk": "The merge drops the only mention of Plan mode in the bullet, and that is the whole reason this row exists: the student is picking a task for a specific instrument they meet in M2. Original may well be better. Filed low; declining costs a word.",
+  "evidence": "prework.md:16"
+ },
+ {
+  "target_file": "curriculum/lectures/the-wizard-move.md",
+  "instance": "ae101--lecture--the-wizard-move (M1 readiness sweep 2026-09-10 (wf_9300bb4a-87b))",
+  "rule": "writing 27",
+  "disposition": "CARD",
+  "confidence": "medium",
+  "gate_triage": {
+   "value_rank": 2
+  },
+  "claim": "A summary sentence sits between the list it summarises and the sentence that says the same thing better.",
+  "before": "Context is whatever you tell it. A fact. A role. A preference. A constraint. **All of it colors what comes next.** You, in a way, compel the right output by having the right stuff in the context.",
+  "after": "Context is whatever you tell it. A fact. A role. A preference. A constraint. **You**, in a way, compel the right output by having the right stuff in the context.",
+  "why": "writing 27 — say it once, at its most concrete. *All of it colors what comes next* is the abstract version of *you compel the right output by having the right stuff in the context*, one sentence later.",
+  "risk": "The four-fragment list lands harder with a beat after it; cutting runs the fragments straight into the compel sentence. This is a lecture, so it is read aloud — the cut changes pacing in the room, not only on the page.",
+  "evidence": "the-wizard-move.md:13"
  }
 ]

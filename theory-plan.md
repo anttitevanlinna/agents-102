@@ -263,6 +263,28 @@ exists**, and the ratchet between them is the delegation frontier moving as fast
 **Open (frame):** maintenance-machinery visibility (the training that says *the field moves* while
 running dated stamps against a cohort date makes the argument twice).
 
+## Trust, control and earned predictability — adoption hypothesis
+
+**Status:** future theory notes; training frozen (Antti, 2026-09-10). No student-facing placement or curriculum change commissioned. Evidence below = dated practitioner accounts, not independent convergence or proof of a general adoption mechanism.
+
+**Audience problem.** Highly capable engineers may already believe agents can discover useful improvements. The unresolved question is whether they can distinguish an improvement from a convincing mistake, retain understanding, and remain responsible for correctness. Surprising output alone can increase the review burden. Treat reservations as engineering concerns to investigate, not a deficit to overcome.
+
+**Candidate aha:** *I can give the agent more freedom without lowering my standard for accepting its work.* Felt outcome: *I still know why this change is acceptable even though I did not direct every step.* Permission to explore and acceptance of the resulting change are separate decisions. A worktree isolates edits; it does not prove correctness. Tests and review provide evidence within their coverage, not blanket assurance.
+
+### Practitioner journeys
+
+- **Mitchell Hashimoto — confidence through comparison.** In his February 5, 2026 account, early agent use felt slower than manual work. He deliberately reproduced his manual commits with an agent that could not see his solution, learning task boundaries and useful verification. He then delegated familiar, suitable work while doing other work himself. Disabling notifications kept him in control of attention switching. His reported turning point combined calibrated task selection with protected focus, not maximum parallelism. Historical account of his adoption journey, not a claim about his present workflow. [My AI Adoption Journey](https://mitchellh.com/writing/my-ai-adoption-journey) — [practitioner direct], checked 2026-09-10.
+
+- **Cat Wu — confidence earned by bounded scope.** In Simon Willison's July 21, 2026 interview with Wu and Thariq Shihipar, Wu describes a six-plus-month progression from human review of everything to automated review of selected areas. Incident-causing PRs feed the review eval set; critical areas retain human code owners. This is the vendor team's own operational account, not independent validation of its review accuracy. The relevant mechanism is evidence for withdrawing particular human checks, rather than one global decision to trust the agent. [Willison's interview and edited transcript, code review at 14:20](https://simonwillison.net/2026/Jul/21/cat-and-thariq/) — [practitioner direct, interview transcript; vendor self-report], checked 2026-09-10.
+
+- **Armin Ronacher — success with unresolved reservations.** In his June 23, 2026 reflection, he reports successful loop use for porting and values loops for experimentation, while remaining uneasy about loops producing lasting code whose structure people cease to understand. His concern is preservation of judgement, comprehension and responsibility. Counterweight to a conversion story: substantial agentic practice and serious reservations can coexist. [The Coming Loop](https://lucumr.pocoo.org/2026/6/23/the-coming-loop/) — [practitioner direct], checked 2026-09-10.
+
+### Interpretation to test
+
+**Earned predictability** = candidate house synthesis, not an established theory or a phrase attributed to the sources. Adoption may depend on repeated evidence that lets the engineer identify what can run unattended, what evidence to demand, and when to intervene. The shift can be gradual and task-specific; a single dramatic aha is not required. Connects the calibrated delegation frontier to the engineer's felt control over correctness, understanding and attention.
+
+**Discriminating observation for future design:** after a bounded run, can the engineer explain what they would delegate again, why the returned evidence supports acceptance, and what still needs their judgement? Increased autonomy paired with lost understanding or unexamined green checks would not support this hypothesis. Unknown: which factor matters most for a given engineer, and whether the experience transfers beyond the demonstrated task. These accounts generate the hypothesis; they do not establish causality.
+
 ## The social layer — why 1000 agents cannot be told "fix everything" (2026-08-15, Antti musing + session synthesis; candidate — house-thesis, validate adversarially)
 
 **Origin frame (verbatim, Antti):** look at the "local" as *"the company, which is a social network.

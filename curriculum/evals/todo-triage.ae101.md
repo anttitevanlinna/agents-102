@@ -80,7 +80,7 @@ One was held back and is now settled. `klaassen-definitive-guide` on `push-back-
 
 Antti takes cards **one at a time, highest value first**. Value here means what a room feels: a prompt that misbehaves during the exercise, then a projected header, then a self-contradiction on adjacent slides, then body-prose nits. Ties break toward CUTS — additions and synonym swaps near-auto-reject.
 
-Per-card state lives in the JSON on a `card` object (`outcome`: applied · declined, plus the reason). Cards without one have not been presented.
+Per-card state lives in the JSON on a `card` object (`outcome`: applied · declined · dropped · stale, plus the reason), written by `settle-card.js`. A row he saw and put down carries `presented: {at, ruling}` instead: deferral is a ruling, it just does not change the corpus, and it takes the row off the queue exactly as a decline does. `open-cards.js` prints those under SEEN AND DEFERRED so an empty queue is not read as an empty ledger. Quote his words there and leave the reason field empty unless he gave one — an invented reason in a durable file becomes the fact the next judge cites. A row carrying neither has not been presented.
 
 **Open the card with what the beat is FOR.** Two of the first four were declined because the fix matched the rule's words and missed the sentence's job, and a third needed Antti's own wording. State in one line what the student is doing at that moment and what it builds toward; if that line will not come, the card is not ready. → `compounded/2026-09-05-student_facing-ask-what-the-beat-is-for-before-proposing-wording.md`
 

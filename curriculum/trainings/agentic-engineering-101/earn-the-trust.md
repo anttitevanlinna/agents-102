@@ -20,7 +20,7 @@ If you want the primitives this module uses at a glance, [subagents in the refer
 ## What You'll Learn
 After this module, you will be able to:
 - **Fork** a sibling git worktree and run two Claude Code sessions on the same history side by side, one window per lane, working the idle window while the other runs a long prompt
-- **Invoke** curated access-control-analysis and STRIDE skills on a feature you're shipping (each as a subagent, fresh context): name what your first read missed, pick one threat worth hardening against, and write the decision as an ADR in your repo's convention
+- **Invoke** curated access-control-analysis and STRIDE skills on a feature you're shipping (each as a subagent, fresh context): spot what your first read missed, pick one threat worth hardening against, and write the decision as an ADR in your repo's convention
 - **Split** jobs between subagent and main thread, breadth-first curated reads with long structured output go to a subagent; one-question-at-a-time authoring and interactive steering stay in the main thread
 - **Author** a test-strategy skill through conversation with Claude (one question at a time), tuned to your codebase's actual testing conventions
 - **Test** the authored skill: ask it to disclose its own weakest part, push back on the critique, then invoke it on this codebase and ask Claude whether the test strategy is any good
@@ -52,7 +52,7 @@ Ask Claude to sharpen the skill's weakest section from invocation evidence. Then
 
 ## Read the sharpen with a skeptical eye
 
-Claude is reading the skill file fresh and your m3-security scrollback. Useful (file content survived the side-quest /clear and carries the encoded conventions) but charitable (same-context-window self-audit under-flags). Other tells to watch for: Claude may open with a plan before showing the diff, and sycophancy can dress up a cosmetic edit as a meaningful one. You can make the grill hotter: ask Claude to over-flag (*"be harsher than necessary, find at least two sections that underdelivered, assume it's worse than it looks"*), tell it to skip preamble and lead with the before/after diff, or fresh-session it (dispatch a subagent with the SKILL.md pasted cold, no scrollback). The default keeps it in-session for evidence access; opt up if the read matters.
+The agent is reading the skill file fresh and your m3-security scrollback. Useful (file content survived the side-quest /clear and carries the encoded conventions) but charitable (same-context-window self-audit under-flags). Other tells to watch for: Claude may open with a plan before showing the diff, and sycophancy can dress up a cosmetic edit as a meaningful one. You can make the grill hotter: ask Claude to over-flag (*"be harsher than necessary, find at least two sections that underdelivered, assume it's worse than it looks"*), tell it to skip preamble and lead with the before/after diff, or fresh-session it (dispatch a subagent with the SKILL.md pasted cold, no scrollback). The default keeps it in-session for evidence access; opt up if the read matters.
 
 Before you clear the session, the near half of the map, seen whole with its parts named.
 

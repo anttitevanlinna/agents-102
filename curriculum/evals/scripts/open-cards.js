@@ -65,6 +65,14 @@ function rows(ledger) {
 const settled = r => !!(r.card && r.card.outcome)
 const disp = r => String(r.disposition || '').toUpperCase()
 
+// A row he has already seen and put down. `card.outcome` covers the four words
+// that mean RULED — applied / declined / dropped / stale — and none of them
+// fits "valid, but not at this time". That is also a ruling; it just does not
+// change the corpus. Recorded as `presented`, it comes off the queue for the
+// same reason a decline does: the queue answers what he can rule on today, and
+// a row he ruled on yesterday is not that. Off the queue, still in the ledger.
+const deferred = r => !settled(r) && !!(r.presented && r.presented.ruling)
+
 // A file scope is a substring, matched against the target_file AND the judged
 // instance. Both, because a triage row sometimes targets a different document
 // than the file that tripped the rule (strategy_tie_in binds the strategy doc,
@@ -75,8 +83,9 @@ function matchesFile(r, needle) {
   return `${r.target_file || ''}\n${r.instance || ''}`.toLowerCase().includes(needle.toLowerCase())
 }
 
-// A card is open when triage made it a card and nobody has ruled on it.
-const isOpenCard = r => disp(r) === 'CARD' && !settled(r)
+// A card is open when triage made it a card and he has neither ruled on it nor
+// already put it down.
+const isOpenCard = r => disp(r) === 'CARD' && !settled(r) && !deferred(r)
 
 // Ground truth for a prepped edit is the file, not the ledger.
 function editState(r, repo, read) {
@@ -93,6 +102,7 @@ function summarise(ledger, { repo = process.cwd(), readFile, file } = {}) {
   const read = readFile || (p => { try { return fs.readFileSync(p, 'utf8') } catch { return null } })
   const all = rows(ledger).filter(r => matchesFile(r, file))
   const cards = all.filter(isOpenCard)
+  const deferredCards = all.filter(r => disp(r) === 'CARD' && deferred(r))
 
   const byRule = {}
   for (const r of cards) byRule[r.rule || '(no rule)'] = (byRule[r.rule || '(no rule)'] || 0) + 1
@@ -117,7 +127,7 @@ function summarise(ledger, { repo = process.cwd(), readFile, file } = {}) {
     dispositions[k] = (dispositions[k] || 0) + 1
   }
 
-  return { total: all.length, cards, byRule, byRank, prepped, dispositions, scope: file }
+  return { total: all.length, cards, deferred: deferredCards, byRule, byRank, prepped, dispositions, scope: file }
 }
 
 function render(s, training, scope = s.scope) {
@@ -147,6 +157,18 @@ function render(s, training, scope = s.scope) {
       : '  none — every card triage raised has been ruled on')
   }
   out.push('')
+
+  // Printed so an empty queue cannot be read as an empty ledger. These are
+  // findings he has seen and put down; the row keeps them, the queue does not.
+  if (s.deferred.length) {
+    out.push(`SEEN AND DEFERRED — ${s.deferred.length} · do NOT re-present`)
+    for (const r of s.deferred) {
+      const p = r.presented || {}
+      out.push(`  ${r.rule}  ${r.target_file || '(no target)'}`)
+      out.push(`      ${p.at || '(undated)'} — "${p.ruling}"`)
+    }
+    out.push('')
+  }
 
   const p = s.prepped
   out.push(`PREPPED EDITS — written out, state read from the file itself`)
@@ -188,7 +210,8 @@ function main(argv) {
   }
   if (argv.includes('--json')) {
     process.stdout.write(JSON.stringify({
-      training, scope: scope || null, open_cards: s.cards.length, by_rule: s.byRule, by_value_rank: s.byRank,
+      training, scope: scope || null, open_cards: s.cards.length, deferred: s.deferred.length,
+      by_rule: s.byRule, by_value_rank: s.byRank,
       prepped: Object.fromEntries(Object.entries(s.prepped).map(([k, v]) => [k, v.length])),
       dispositions: s.dispositions, ledger_rows: s.total,
     }, null, 2) + '\n')

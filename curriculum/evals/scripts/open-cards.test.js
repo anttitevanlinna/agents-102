@@ -117,4 +117,52 @@ test('a scoped report names the scope and shows each card\'s claim', () => {
     'scoped to one file there is room for the finding itself, not just a rule number')
 })
 
+test('a card he has already seen and deferred is OFF the queue', () => {
+  // The queue answers one question: what can he rule on today. Its four
+  // outcome words (applied / declined / dropped / stale) all mean ruled, and
+  // all take a row off. "Valid, but not at this time" is also a thing he said,
+  // and a row carrying it is not awaiting a ruling — it HAS one. Leaving it in
+  // is how the same card gets carried back to him a second time.
+  const shown = card({
+    rule: 'prompts 2', target_file: 'x/fix-tests-first.md',
+    presented: { at: '2026-09-02', ruling: 'These were valid. But not at this time.' },
+  })
+  const fresh = card({ rule: 'writing 3', target_file: 'x/other.md' })
+  const s = summarise([shown, fresh])
+
+  assert.strictEqual(s.cards.length, 1, 'only the card nobody has shown him is awaiting a ruling')
+  assert.strictEqual(s.cards[0].rule, 'writing 3')
+  assert.ok(!isOpenCard(shown), 'deferred is a ruling, not a silence')
+
+  // Off the queue is not out of the ledger. Losing the row loses the finding.
+  assert.strictEqual(s.deferred.length, 1)
+  assert.strictEqual(s.deferred[0].rule, 'prompts 2')
+})
+
+test('a deferred row is reported, quoted, and kept out of the ranking', () => {
+  const s = summarise([card({
+    rule: 'prompts 2', target_file: 'x/fix-tests-first.md',
+    gate_triage: { value_rank: 3 },
+    presented: { at: '2026-09-02', ruling: 'These were valid. But not at this time.' },
+  })])
+  assert.deepStrictEqual(s.byRank, {}, 'a deferred card does not inflate the value-rank ladder')
+  assert.deepStrictEqual(s.byRule, {}, 'nor the by-rule tally')
+
+  const out = render(s, 'ae101')
+  assert.ok(/CARDS AWAITING A RULING — 0/.test(out), 'the queue reads empty, because it is')
+  assert.ok(/deferred/i.test(out), 'and says why a row is missing from it')
+  assert.ok(out.includes('These were valid. But not at this time.'),
+    'his words verbatim — a paraphrase becomes the reason he never gave')
+})
+
+test('a settled row is not also counted as deferred', () => {
+  const s = summarise([card({
+    presented: { at: '2026-09-02', ruling: 'not at this time' },
+    card: { outcome: 'declined', at: '2026-09-09', note: 'x' },
+  })])
+  assert.strictEqual(s.cards.length, 0)
+  assert.strictEqual(s.deferred.length, 0, 'a ruled row is settled, not deferred')
+  assert.strictEqual(s.dispositions['settled:declined'], 1)
+})
+
 console.log(`1..${n}`)

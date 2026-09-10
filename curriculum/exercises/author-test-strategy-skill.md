@@ -66,13 +66,13 @@ Ask Claude to invoke the skill on this codebase and grade what it produced in th
 
 **What happened:** One SKILL.md tuned to your codebase's actual testing conventions (framework, mocking policy, integration boundary, flakiness patterns, regression scope), living in your personal skills folder. Shipped.
 
-## What this sets up
+## Handle what's left in the worktree
 
 **Note** The side-quest worktree may still hold changes the agent made here: code, tests, scratch files. Its copy of `CLAUDE.local.md` came over at the fork and may have drifted from the one in your main repo. The skill crossed back on its own (it lives at user scope); everything else stays in the worktree. Those changes are yours to handle later: keep them, carry the useful parts to your main repo, or delete the worktree.
 
 <!-- maintainer -->
 
-**Lean pass (2026-08-25, Antti-directed M3/M6 shorten, free hands):** cut "You are not typing markdown into an editor." (widget header carries it); "The reasons for personal-first land in Phase 3…" (forward narration); "The skill proves itself only when it runs on real code." (restates theatre line); "One paste, one wait, one read, convenient over rigorous."; "Sharpen the SKILL.md, then re-invoke." (decide-bullet owns re-invoke); decide-bullet trimmed, "The authoring muscle is what Module 3 installs." out (§16b); "That's the ship."; team-PR bullet lost coffee/channel color + "sharpen the skill, ship it sharper"; "Not every skill graduates to a shared kit."; What-this-sets-up bullet 2 (personal-first + coffee dup). Do not restore.
+**Lean pass (2026-08-25, Antti-directed M3/M6 shorten, free hands):** cut "You are not typing markdown into an editor." (widget header carries it); "The reasons for personal-first land in Phase 3…" (forward narration); "The skill proves itself only when it runs on real code." (restates theatre line); "One paste, one wait, one read, convenient over rigorous."; "Sharpen the SKILL.md, then re-invoke." (decide-bullet owns re-invoke); decide-bullet trimmed, "The authoring muscle is what Module 3 installs." out (§16b); "That's the ship."; team-PR bullet lost coffee/channel color + "sharpen the skill, ship it sharper"; "Not every skill graduates to a shared kit."; the worktree-leftovers section's bullet 2 (personal-first + coffee dup). Do not restore.
 
 **Install mechanic is stated once.** The ship-destination bullet is the canonical statement of the skill's home and auto-discovery; the backing block cites it as `personal-skills-folder-auto-discovered`, so it must stay verbatim. Do not restate the install path anywhere else in body. Install paths and the team-kit route are canonical in `training-architecture.md` § Skills, which is a planning artefact and not a student page, so the pointer lives here and not in body.
 

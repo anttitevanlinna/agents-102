@@ -84,7 +84,7 @@ Run `/context` to see how much of the window is used and what fills it.
 **Watch-fors:**
 - **Introspection skipped.** Student reads Claude's repo summary and moves to the bug fix without the second prompt. Trainer push: *"before we move on — what did Claude choose not to read, and does that match what you'd have expected?"*
 - **`/context` skipped.** The slash command reads as prose, not as a command to type. Trainer push: *"type /context in the chat — look at the number."*
-- **Spot-check skipped.** `## Read the self-report, then spot-check it` is the only beat in this exercise with no prompt fence, so nothing forces it, and it is the one beat that touches the repo's actual state rather than the agent's account of it. The module LO *"Distinguish the agent's account of your repo from the repo's actual state"* is paid here and nowhere else, and the closer then tells the student they did it (*"You found the useful wrongness and corrected it"*). Trainer push: *"pick one file Claude said it read. Quote a function out of it back at Claude and ask whether that is really what's in there."*
+- **Spot-check skipped.** The one beat here with no fence, and the only one paying the account-versus-actual-state LO. Trainer push: *"pick a file Claude said it read. Quote a function back at it — is that really what's in there?"*
 
 **Plug points:**
 - Student's own repo (chosen in prework).

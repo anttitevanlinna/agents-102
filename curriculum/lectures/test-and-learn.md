@@ -15,7 +15,7 @@ You're new to this country. A tourist runs an agent and hopes; a practitioner ru
 
 ## Cancel is legitimate; traces are data
 
-- If twenty minutes in you can see Claude hallucinating file paths, contradicting its own earlier steps, or missing a requirement that wasn't in the prompt, stop it. You have the data you came for.
+- If twenty minutes in you can see the agent hallucinating file paths, contradicting its own earlier steps, or missing a requirement that wasn't in the prompt, stop it. You have the data you came for.
 - A short session with useful observations beats hours of trace you can't read.
 - For this first session, fifteen to thirty minutes is enough. Session length follows the task and how well your checks guide it.
 

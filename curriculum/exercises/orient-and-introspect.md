@@ -30,10 +30,10 @@ Ask Claude to read your repo deliberately and report what it finds.
 
 ## Ask what the agent skipped, and why
 
-- Every read has a shadow: the files Claude didn't load. The skipped slice is where the surprises hide.
-- Claude can introspect on what it did and why, including what it chose not to read.
+- Every read has a shadow: the files the agent didn't load. The skipped slice is where the surprises hide.
+- The agent can introspect on what it did and why, including what it chose not to read.
 
-Ask Claude what it read and what it skipped.
+Ask the agent what it read and what it skipped.
 
 {{prompt:orient-and-introspect-2}}
 
@@ -102,7 +102,7 @@ Run `/context` to see how much of the window is used and what fills it.
 Claims
 - `context-window-is-not-the-codebase` · vision · "the context window is not your codebase" ← none-owed
 - `every-read-has-a-shadow` · vision · "Every read has a shadow: the files Claude didn't load. The skipped slice is where the surprises hide." ← none-owed
-- `agent-can-introspect-on-what-it-skipped` · detail · "Claude can introspect on what it did and why, including what it chose not to read." ← self-report-is-not-a-log
+- `agent-can-introspect-on-what-it-skipped` · detail · "The agent can introspect on what it did and why, including what it chose not to read." ← self-report-is-not-a-log
 - `spot-check-the-self-report` · vision · "Read the self-report, then spot-check it" ← none-owed
 - `status-line-shows-context-continuously` · detail · "a status line shows the same thing continuously" ← ccstatusline, statusline-builtin
 - `claude-builds-the-status-line` · detail · "ask Claude to build your own with `/statusline`" ← statusline-builtin

@@ -63,7 +63,7 @@ Roll your own is often facilitated by hooks and router skills: a hook injects it
 - If the picked path only loads when named, ask for the `@import` line before you move on. Without it the file sits unread.
 - [Claude Code for engineers](../trainings/agentic-engineering-101/reference/claude-code-for-engineers.md) is the long form: precedence, walk-up, the managed layer.
 
-## Phase 3: What this file could automate later
+## Phase 3: Explore what this file could automate later
 
 *3 min*
 
@@ -132,6 +132,8 @@ Ask Claude whether it met any of these.
 **Lean-intro trim (2026-08-25, Antti-approved):** Phase 1's *"Each decision in the plan read carries indirect information about the rules you already work by"* cut — restated the bullet's first sentence at lower proof. Do not re-elaborate the lead-in.
 
 **Phase 4's two `{{prompt:}}` fences are a short soft-compound close ritual, not a buried exercise.** Ask whether the rules auto-load, then integrate one branch or say so and stop.
+
+**Lead-ins mirror their fence on the noun, not the verb — `check_prompts.md` §38 is satisfied here.** *"Ask Claude for the rules."* pairs with what its fence actually asks for (*"Propose three to five rules…"*), not with the fence's context-setting opening sentence. The verb split is this file's convention: every lead-in names the student's act (*ask*, *drop*, *decide*), every fence opens on Claude's (*read*, *reverse-engineer*, *suppose*) — the actor split `check_student_facing.md` §17 keeps for headers. Phase 1 is not the outlier a judge takes it for; *"Drop a story ticket link after the colon."* shares no verb with its fence either. Do not expand a lead-in to carry its fence's first verb.
 
 **Phase 5 Boy Scout slide (Antti-directed 2026-08-23; moved here 2026-08-25).** Sits after the save-the-rule phase because compounding had drifted toward rules; the push-back exercise just produced the evidence that the repo's own context was the defect. Three bullets (planning gaps, conflicting information, other context) are Antti's; the slide names the fix at source as the compound that loads nothing. `ae101-m2-tidier` is naming-only with the "or none" hatch, reads the session, no file dependency. Fixing is the student's call, in-session or never; do not add a fix-it prompt or a done-means criterion. The Boy Scout rule is used as a folk idiom, unattributed on purpose; citing Martin's *Clean Code* coinage would owe a stamp for a line that carries no claim.
 

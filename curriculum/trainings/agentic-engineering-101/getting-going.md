@@ -124,7 +124,7 @@ Module 2 is where plan mode earns its keep: multi-file work, and a second pass t
 
 **Meta (trainer):**
 - **Primary Bloom's level:** Apply + Analyze
-- **Pacing:** Runtime is computed — `node scripts/calculate-time.js getting-going`. The two room-agreement slides and the Connections trick-share share the opening allocation. Trainer demos slowly, room copy-pastes concurrently. M1 is sold into a longer slot than the rest of the arc, and the four-exercise arc is what fills it.
+- **Pacing:** Runtime is computed — `node scripts/calculate-time.js getting-going`. The two room-agreement slides and the Connections trick-share share the opening allocation. Trainer demos slowly, room copy-pastes concurrently.
 - **Transitions:** opening 10 @start "Opening: two room-agreement slides + trick-share" · bridge 5 @end "Bridge"
 - **Prep timing:** prework 30 min; optional progression page 5 min; optional Cherny video 30 min; optional multi-session reference 10 min; optional factory essay 15 min.
 - **Mood target:** joyful creation — *"it works, on my repo."* Watch for: mood drift toward technical warm-up (the bug feels arbitrary, the loop feels mechanical, "this is just a TDD fix I do anyway"). Diagnostic: student narrates Ex2 as a generic engineering move with no surprise. Fix: trainer surfaces the agentic specificity — *"the loop you just ran was orient → fix → close → compound on YOUR repo, with a close-out written in your team's own register and a rules file born from how YOU just worked. That's not a bug fix; that's the instrument starting to play your music."*
@@ -191,5 +191,5 @@ The shipped PR and the closed ticket are both produced this module and both live
 **`## Next` is templated, so `check_lectures §4` does not reach it (2026-09-08).** §4's bare-arc-label clause governs headers an author chose. This one is fixed by `curriculum/module-shape.md`, which names the section and pins it as the last thing in the body; five AE101 modules carry it verbatim. Charging this file for it would be charging it for obeying the template, the seam `check_slides §9` already settled on the bold budget. §4 now carries the same carve-out. A rename here is a change to `module-shape.md` and to all five modules at once, never a per-file card. Do not re-file.
 
 **Quality:** compendium-audited 2026-09-05 (writing@324b81d7 story@324b81d7 technical@324b81d7 behavior@1480362 pedagogy@85515fa0 strategy@324b81d7 slides@324b81d7)
-- judges @324b81d7: writing PASS (2 findings see instances/ae101--module--getting-going.writing.json), story PASS (1 finding see instances/ae101--module--getting-going.story.json), technical PASS (1 finding see instances/ae101--module--getting-going.technical.json), behavior PASS, pedagogy PASS, strategy PASS, slides PASS (1 finding see instances/ae101--module--getting-going.slides.json)
+- judges @324b81d7: writing PASS, story PASS, technical PASS, behavior PASS, pedagogy PASS, strategy PASS, slides PASS
 - cross_module @01592193: PASS — set=[prework,getting-going,plan-mode-done-right,earn-the-trust]; 3 pairs, 0 blocking; see instances/ae101--module-set--prework-m3.cross_module.json

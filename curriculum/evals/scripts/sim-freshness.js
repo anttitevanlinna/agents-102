@@ -187,14 +187,55 @@ function historyShas(repo, rel) {
   return out
 }
 
-function classify(repo, rel, trace, current) {
+// Expand one historical blob the way contentView expands the working file.
+// Spawns the real expander unless the caller injects one (the tests do, so a
+// fixture repo need not carry site/layouts + the prompt registry).
+const EXPANDED = new Map()
+function expandHistorical(repo, text, expand) {
+  if (expand) return expand(text)
+  const key = `${repo}\u0000${sha256(text)}`
+  if (EXPANDED.has(key)) return EXPANDED.get(key)
+  let out = null
+  try {
+    out = execFileSync(process.execPath, [path.join(repo, 'scripts/expand-md.js'), '-'], {
+      cwd: repo, input: text, encoding: 'utf8', maxBuffer: 64 * 1024 * 1024,
+    })
+  } catch { out = null }
+  EXPANDED.set(key, out)
+  return out
+}
+
+function classify(repo, rel, trace, current, opts = {}) {
+  const { cls, expand } = opts
   if (!trace.content_sha) return { verdict: 'unanchored', note: 'trace records no content_sha' }
   if (typeof trace.content_sha !== 'string' || !/^[0-9a-f]{64}$/.test(trace.content_sha)) {
     return { verdict: 'unanchored', note: `content_sha is not a sha256: ${String(trace.content_sha).slice(0, 24)}` }
   }
   if (sha256(current) === trace.content_sha) return { verdict: 'fresh', note: '' }
 
-  const hit = historyShas(repo, rel).find(h => h.sha === trace.content_sha)
+  const history = historyShas(repo, rel)
+  let hit = history.find(h => h.sha === trace.content_sha)
+
+  // A behavior trace is anchored to the EXPANDED view — contentView runs
+  // expand-md for that class — while historyShas hashes raw blobs. Comparing
+  // the two can only miss, so before 2026-09-10 every behavior trace on a file
+  // carrying a `{{prompt:…}}` marker reported unanchored however cleanly it was
+  // anchored, and each one cost a regeneration nobody owed. Walk the history a
+  // second time through the expander, stopping at the first match. Registry
+  // drift is the residual gap: the expander is today's, so a trace taken
+  // against a since-edited prompt body still reads unanchored — which is the
+  // safe direction, since that trace really does describe absent text.
+  if (!hit && cls === 'behavior') {
+    for (const h of history) {
+      const raw = git(repo, ['show', `${h.commit}:${rel}`])
+      // No marker means expansion is the identity, and the raw pass above
+      // already tried that sha. Spawning the expander to learn nothing is the
+      // whole cost of this pass, so skip it here rather than in the loop body.
+      if (!raw || !raw.includes('{{prompt:')) continue
+      const view = expandHistorical(repo, raw, expand)
+      if (view != null && sha256(view) === trace.content_sha) { hit = h; break }
+    }
+  }
   if (!hit) return { verdict: 'unanchored', note: 'sha matches no committed version of this file' }
 
   const tagged = changeTags(buildLineMeta(current), parseHunks(git(repo, ['diff', hit.commit, '--', rel])))
@@ -244,7 +285,7 @@ function collect(repo, want) {
     catch (e) { rows.push({ name, cls, file: rel, training, verdict: 'unresolved', note: `unparseable: ${e.message.slice(0, 60)}` }); continue }
 
     const current = contentView(repo, rel, cls)
-    const { verdict, note } = classify(repo, rel, trace, current)
+    const { verdict, note } = classify(repo, rel, trace, current, { cls })
     const row = { name, cls, file: rel, training, generated_at: (trace.generated_at || '').slice(0, 10) || null, verdict, note }
     if (cls === 'persona') row.mood = { contract: trace.module_mood_contract || null, beats: moodBeats(trace), exempt: moodExemptions(trace) }
     rows.push(row)

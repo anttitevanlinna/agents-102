@@ -9,7 +9,7 @@ requires:
   - id: context-window-read
     source: prompt:orient-and-introspect-3
   - id: shipped-bug-fix
-    source: prompt:fix-tests-first-3
+    source: external (shipped by body prose at exercises/fix-tests-first § Ship the PR, which runs on every path; both fenced TDD prompts above it are Optional)
 opportunistic-copy:
   - id: bug-rules
     source: prompt:close-the-ticket-2

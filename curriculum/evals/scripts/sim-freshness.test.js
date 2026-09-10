@@ -394,3 +394,65 @@ test('behavior freshness reads the expanded prompt-registry view', () => {
   assert.strictEqual(contentView(repo, rel, 'behavior'), expanded)
   assert.strictEqual(contentView(repo, rel, 'persona'), raw)
 })
+
+// --- the view mismatch -------------------------------------------------------
+// classify() hashes the EXPANDED view for a behavior trace (contentView runs
+// expand-md, which inlines `{{prompt:<key>}}`), while historyShas() hashes the
+// RAW blob at each commit. The two can never agree, so every behavior trace
+// whose file carries a prompt marker read `unanchored` — "cannot be aged, only
+// regenerated" — no matter how cleanly it was anchored. Measured 2026-09-10:
+// 5 of M1's behavior traces, 2 of which were really stamp-only and needed no
+// regeneration at all. An unanchored verdict costs a regeneration; a wrong one
+// costs a regeneration nobody owed, and hides the stamp-only reuse.
+function promptFixture() {
+  const repo = fs.mkdtempSync(path.join(os.tmpdir(), 'simfresh-x-'))
+  const rel = 'curriculum/exercises/an-exercise.md'
+  fs.mkdirSync(path.join(repo, path.dirname(rel)), { recursive: true })
+  const git = (...a) => execFileSync('git', a, { cwd: repo, encoding: 'utf8', stdio: 'pipe' })
+  git('init', '-q'); git('config', 'user.email', 't@t'); git('config', 'user.name', 't')
+
+  const v1 = '# An exercise\n\nThe original body.\n\n{{prompt:do-the-thing}}\n\n<!-- maintainer -->\n**Quality:** writing PASS\n'
+  fs.writeFileSync(path.join(repo, rel), v1)
+  git('add', rel); git('commit', '-qm', 'v1')
+  const v2 = v1.replace('writing PASS', 'writing PASS, story PASS')
+  fs.writeFileSync(path.join(repo, rel), v2)
+  git('add', rel); git('commit', '-qm', 'v2 stamp only')
+  return { repo, rel, v1, v2 }
+}
+
+// Stand-in for expand-md: inline the marker the way the real expander does.
+const fakeExpand = s => s.replace(/\{\{prompt:([a-z0-9-]+)\}\}/g, '**Prompt** *(agent)*\n\n```\nrun $1\n```')
+
+test('a behavior trace anchored to an expanded view is aged, not called unanchored', () => {
+  const { repo, rel, v1, v2 } = promptFixture()
+  const currentExpanded = fakeExpand(v2)
+  const v = classify(repo, rel, { content_sha: sha256(fakeExpand(v1)) }, currentExpanded,
+    { cls: 'behavior', expand: fakeExpand })
+  assert.strictEqual(v.verdict, 'stamp-only',
+    'only the Quality line moved between v1 and v2, so the trace is reusable')
+})
+
+test('a behavior trace anchored to an expanded body-moved view reports body-moved', () => {
+  const { repo, rel, v2 } = promptFixture()
+  const git = (...a) => execFileSync('git', a, { cwd: repo, encoding: 'utf8', stdio: 'pipe' })
+  const v3 = v2.replace('The original body.', 'The body, rewritten.')
+  fs.writeFileSync(path.join(repo, rel), v3)
+  git('add', rel); git('commit', '-qm', 'v3 body')
+  const v = classify(repo, rel, { content_sha: sha256(fakeExpand(v2)) }, fakeExpand(v3),
+    { cls: 'behavior', expand: fakeExpand })
+  assert.strictEqual(v.verdict, 'body-moved')
+})
+
+test('a genuinely unknown sha stays unanchored even with the expanded pass', () => {
+  const { repo, rel, v2 } = promptFixture()
+  const v = classify(repo, rel, { content_sha: sha256('a view this repo never held') }, fakeExpand(v2),
+    { cls: 'behavior', expand: fakeExpand })
+  assert.strictEqual(v.verdict, 'unanchored',
+    'the expanded pass widens what can be matched, it must not make unanchored unreachable')
+})
+
+test('a persona trace is unaffected — raw is its view', () => {
+  const { repo, rel, v1, v2 } = promptFixture()
+  const v = classify(repo, rel, { content_sha: sha256(v1) }, v2, { cls: 'persona' })
+  assert.strictEqual(v.verdict, 'stamp-only')
+})

@@ -5,7 +5,7 @@ runtime: any
 origin: exercises/close-the-ticket
 requires:
   - id: shipped-bug-fix
-    source: prompt:fix-tests-first-3
+    source: external (shipped by body prose at exercises/fix-tests-first § Ship the PR, which runs on every path; both fenced TDD prompts above it are Optional)
   - id: ticket-tracker
     source: external (Linear / Jira / GitHub Issues; student pastes the ticket, or the agent reads it where it can already reach the tracker)
 produces:

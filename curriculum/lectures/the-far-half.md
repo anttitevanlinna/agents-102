@@ -4,7 +4,7 @@
 
 {{figure:map-engine-m4-open}}
 
-- The map lights its other side now. Verification, Absorption, Outcome. The rest of the training goes there, starting with the session you send off in this module.
+- The map lights its other side now. Verification, Absorption, Outcome. You start there with the session you send off in this module.
 
 ## Long-running work adds three new concerns
 

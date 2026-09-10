@@ -32,7 +32,7 @@
 ## Reading was never the control
 <!--tier:2-->
 
-- The outputs in this module were the biggest yet, and control never came from reading them whole. It came from three moves you already made.
+- The outputs in this module were the biggest yet, and control never came from reading them whole. It came from moves you already made.
 - The delta note held the access map against what you already knew of the codebase, in both directions. A probe, not a read. The one-threat pick rejected most of the STRIDE walk with a named reason. The skill critique made the artifact name its own weakest part before it earned trust.
 - **Control is interrogation.** Ranked list first, probe where you know most, make the output name its weak spot. The full record stays on disk. You can always read more; you can never read all.
 

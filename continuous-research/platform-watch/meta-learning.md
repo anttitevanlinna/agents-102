@@ -65,6 +65,12 @@ Proven patterns for how to research effectively. Promoted from observations when
 
 Each entry: cycle number, date, what the researcher learned about researching.
 
+### Cycle 212 — 2026-09-11
+
+Corroboration hunting for L1 findings from Cycle 211 resolved in a single cycle via direct named-source searches. The key pattern: when a practitioner analysis article (rmstudygroup.com) names specific models, timelines, and victim counts, the fastest corroboration path is not topic search ("AI containment breach 2026") but entity search ("Anthropic Mythos 5 breach" + "Irregular evaluation vendor"). Entity-level searches cut through SEO noise and surface the press coverage directly. Both L1 findings upgraded to L3 within the same cycle — demonstrating that L1 findings with specific named entities are often one targeted search away from corroboration or contradiction.
+
+Official government body disclosure (AISI incident report) surfaced as an unexpected new finding — not in any rmstudygroup.com account. Government safety body reports are a high-quality source type not previously well-integrated into the search strategy. For AI safety incidents post-2025, `site:aisi.gov.uk`, `site:nist.gov`, and `site:gov.uk/government/organisations` should be added to the safety incident search pattern. They are primary sources with official authority and are not captured by standard web search rankings.
+
 ### Cycle 211 — 2026-09-10
 
 Primary source hunting for a single figure ($600/day) revealed a downstream epistemic error: what appeared as an independently-observed practitioner figure (Willison relay = L1) traces to vendor-disclosed internal data (OpenAI own report = L0). The upgrade to L0 is counterintuitive — finding the primary source made the claim weaker, not stronger. Lesson: "primary source found" is not automatically an upgrade; the source type must be evaluated independently of how many layers away you found it.

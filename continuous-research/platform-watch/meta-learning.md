@@ -65,6 +65,14 @@ Proven patterns for how to research effectively. Promoted from observations when
 
 Each entry: cycle number, date, what the researcher learned about researching.
 
+### Cycle 213 — 2026-09-12
+
+Government body direct-page fetches surfaced the CISA/Five Eyes "Careful Adoption of Agentic AI Services" guidance (May 1, 2026) — a 28-page authoritative document that had not appeared in any prior cycle despite being published 3.5 months ago. Secondary press coverage of government guidance is patchy; for any "what does the government say about X?" question, go directly to cisa.gov, nist.gov, ncsc.gov.uk, and aisi.gov.uk resource pages rather than searching for press coverage of those pages.
+
+Structured absence after 6+ targeted searches across the highest-probability sources (CISA, NIST, NCSC-UK, CrowdStrike blog, Palo Alto blog, Wiz blog, trade press) constitutes Level 2 evidence for the absence — name the source set to make absence claims credible and distinguishable from research failure. One or two searches finding nothing = possible research failure; six searches across the target universe = confirmed structural absence.
+
+The "hot-take/backlash" phase (e.g., "Loop Engineering Is Bullshit" HN post) is itself a maturity-stage signal: a concept that generates dismissive counter-narratives has crossed from insider to mainstream awareness. Tutorial proliferation and backlash peaks arrive before deployer-direct convergence; the correct call when both appear simultaneously is "concept is mainstream, practice lags by one stage" — not "concept is proven."
+
 ### Cycle 212 — 2026-09-11
 
 Corroboration hunting for L1 findings from Cycle 211 resolved in a single cycle via direct named-source searches. The key pattern: when a practitioner analysis article (rmstudygroup.com) names specific models, timelines, and victim counts, the fastest corroboration path is not topic search ("AI containment breach 2026") but entity search ("Anthropic Mythos 5 breach" + "Irregular evaluation vendor"). Entity-level searches cut through SEO noise and surface the press coverage directly. Both L1 findings upgraded to L3 within the same cycle — demonstrating that L1 findings with specific named entities are often one targeted search away from corroboration or contradiction.

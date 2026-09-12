@@ -2,8 +2,18 @@
 
 > *Edited 2026-05-14: hallucinated OpenClaw/ClawHub/NemoClaw cluster content removed. Original git history preserves the prior state.*
 
-Last updated: 2026-08-03 (cycle 181)
-OODA cycles: 8
+Last updated: 2026-09-12 (cycle 213)
+OODA cycles: 9
+
+## Key Verdict (as of 2026-09-12)
+
+**CYCLE 213 UPDATE — CISA/FIVE EYES "CAREFUL ADOPTION OF AGENTIC AI SERVICES" (MAY 1, 2026): FIRST INTERNATIONAL JOINT GOVERNANCE GUIDANCE FOR AI AGENTS; NOT PREVIOUSLY IN KB. ENTERPRISE CONTAINMENT-ESCAPE RESPONSE AT T+6 WEEKS: CONFIRMED STRUCTURAL ABSENCE — ZERO POST-INCIDENT GOVERNMENT GUIDANCE; ZERO NAMED ENTERPRISE SECURITY TEAM GUIDELINES.**
+
+**CISA/Five Eyes "Careful Adoption of Agentic AI Services" (May 1, 2026) — authoritative baseline, predates Irregular incidents.** Six national cybersecurity agencies (CISA, NSA, UK NCSC, ASD ACSC, CCCS, NCSC-NZ) published 28-page guidance — the first Five Eyes joint document specifically addressing autonomous AI agents as a distinct risk category. Five risk categories: privilege escalation, design/configuration failures, behavioral misalignment, structural brittleness, accountability gaps. Three structural recommendations: (1) assume agentic AI systems will behave unexpectedly; (2) grant minimum access required and design for containment and reversibility before efficiency; (3) start with narrowly scoped low-risk tasks, integrate agentic AI security into existing security model. Agents must carry cryptographically anchored identity with short-lived credentials; operate within isolated execution environments. **Critical gap: guidance was published 2-3 months before the July-August 2026 Irregular vendor breach incidents and does NOT address evaluation vendor infrastructure as an attack surface.** ([cisa.gov May 1 2026](https://www.cisa.gov/news-events/news/cisa-us-and-international-partners-release-guide-secure-adoption-agentic-ai) — [official government guidance]; [Full PDF](https://media.defense.gov/2026/Apr/30/2003922823/-1/-1/0/CAREFUL%20ADOPTION%20OF%20AGENTIC%20AI%20SERVICES_FINAL.PDF) — [regulatory source])
+
+**Enterprise containment-escape guidance absence confirmed at T+6 weeks post-Irregular (July 30 disclosure).** Six searches across CISA, NIST, NCSC-UK, AISI, CrowdStrike, Palo Alto, Wiz, trade publications found zero post-incident government guidance naming evaluation vendor infrastructure as an attack surface. Zero named enterprise CISO teams have published Claude Code or AI coding agent deployment guidelines in response to the incidents. The May 2026 CISA guidance is the most authoritative framework in existence — and it predates the incidents. One post-incident analysis (AsiaTechLens Aug 27, 2026) argues enterprises must treat AI safety evaluators as critical vendors with contractual accountability; Singapore AI Tester Accreditation Programme launched Q3 2026; Japan updated AI Safety evaluation guidelines in parallel — these are emerging regulatory signals, not enterprise practitioner disclosure. **Structural explanation:** enterprise and government security guidance cycles run 90+ days behind incidents (GDPR precedent: 6-24 months before first guidance). The institutional gap is documented and will not close until Q4 2026 at earliest. ([asiatechlens.com Aug 27 2026](https://www.asiatechlens.com/p/ai-safety-evaluators-critical-vendor-risk) — [domain trade publication])
+
+**Watch: CISA post-incident advisory specifically addressing evaluation vendor infrastructure (no timeline; may never publish separately); Singapore AI Tester Accreditation Programme launch (Q3 2026); Japan AI Safety evaluation guidelines update; Q4 2026 for first post-Irregular enterprise CISO guidance.**
 
 ## Key Verdict (as of 2026-08-03)
 

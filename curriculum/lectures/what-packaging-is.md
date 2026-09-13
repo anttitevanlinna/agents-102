@@ -21,9 +21,9 @@ An unchecked session arrives confident, and wrong. Same start, no fixes, one wed
 ## Reference and plan
 <!--tier:1-->
 
-- On the map, the kit is what stands in for you at Verification.
-- **Reference artefact**, against goal drift. A spec the agent reads and re-reads: success criteria, pointers at the relevant memory, named constraints. The spec on disk stays readable mid-session when the buried instructions in the conversation no longer are. In Armin Ronacher's January 2026 MiniJinja port, the original Rust snapshot tests played this role; in your re-send, the reference you assembled plays it.
-- **plan.md** the agent owns and mutates, against context rot. A working document that holds durable state across the task: the agent reads it at every session boot, updates it as decisions land, re-reads it when the working window fills. What got ruled out an hour ago is written down, not remembered. Geoffrey Huntley's Ralph loop leaned on exactly this primitive to bootstrap entire greenfield projects.
+**Reference artefact**, against goal drift. A spec the agent reads and re-reads: success criteria, pointers at the relevant memory, named constraints. The spec on disk stays readable mid-session when the buried instructions in the conversation no longer are. In Armin Ronacher's January 2026 MiniJinja port, the original Rust snapshot tests played this role; in your re-send, the reference you assembled plays it.
+
+**plan.md** the agent owns and mutates, against context rot. A working document that holds durable state across the task: the agent reads it at every session boot, updates it as decisions land, re-reads it when the working window fills. What got ruled out an hour ago is written down, not remembered. Geoffrey Huntley's Ralph loop leaned on exactly this primitive to bootstrap entire greenfield projects.
 
 ## The verifier completes the three-pattern
 <!--tier:1-->
@@ -111,7 +111,6 @@ Claims
 - `guardrails-at-irreversible-edges` · vision · "Guardrails belong where damage cannot be undone. Fence the reef, not the open water." ← none-owed
 - `unchecked-run-confident-and-wrong` · vision · "An unchecked session arrives confident, and wrong." ← none-owed
 - `three-pattern-is-a-synthesis` · detail · "The menu is a synthesis across practitioners (Cherny, Huntley, Ronacher); no single write-up carries it" ← kim-on-cherny, huntley-ralph, ronacher-minijinja — ownership-form wording (`check_research_claims.md §1` vocabulary-is-a-claim: synthesis owned, no field convergence asserted); each named practitioner's pieces are on the stamps.
-- `kit-stands-in-at-verification` · vision · "the kit is what stands in for you at Verification" ← none-owed
 - `reference-artefact-against-goal-drift` · vision · "**Reference artefact**, against goal drift." ← none-owed
 - `minijinja-snapshot-tests-as-reference` · detail · "the original Rust snapshot tests played this role" ← ronacher-minijinja
 - `plan-md-against-context-rot` · vision · "**plan.md** the agent owns and mutates, against context rot." ← none-owed
@@ -164,6 +163,6 @@ OODA
 
 **Philosophy callouts:** none. The naming is the beat; further philosophy tagging dilutes.
 
-**Map position (2026-07-02):** `## Reference and plan`'s lead bullet places the kit on the Field Map as *"what stands in for you at Verification"* — deliberately NOT an all-three-live-there claim (reference and plan.md guard the run mid-flight; the verifier is the piece that IS Verification). Pairs with M6's map slide (`composing-the-workflow.md` § *The checking loop, drawn solid*).
+**Map position (2026-07-02; lead bullet CUT 2026-09-13, Antti-directed):** `## Reference and plan` no longer places the kit on the Field Map in body; the map claim for Verification lives with the figure slides and the far-half lectures.
 
 **Chart (eyeball queue):** the "One session, plotted" slide embeds the dead-reckoning chart from `protos/m4-run-chart-02-passage.html`, chosen by Antti 2026-07-02; protos 01 (terrain) and 03 (orienteering) remain in `protos/` as alternates. Only the svg carried over; the proto page's header strip did not (it names the drift wedge with a two-word label this lecture bans, so the wedge is described here without it). Pattern id renamed to `ps-reefhatch` to avoid collisions with other inlined charts. Slide count is 7 (9 before the 2026-08-25 hooks extraction; 7 before the 2026-07-06 size-split; `Reference and plan` and `Hooks always fire` each shed a slide); the budget question is eyeball queue #1. Open option: graft proto 03's course card (named gates per control: TESTS GREEN, SPEC STILL TRUE, NOTHING LEAKED, DIFF READS CLEAN) onto this chart if Antti wants gates named on-chart.

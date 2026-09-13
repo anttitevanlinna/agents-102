@@ -1,6 +1,6 @@
-# The loop half, filled in
+# The near half of the map
 
-## Back to the map: near half filled
+## Three modules on the near half: Intent, Context, Work
 <!--tier:2-->
 
 Three modules in, the near half is lived ground. M1 stepped into the territory without the map, on purpose. The map arrived at M2, and everything since has landed on its near half: Intent, Context, Work, and how a loop compounds.

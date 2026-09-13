@@ -6,9 +6,12 @@
 
 ## Eval
 
-- An **eval** is a measurement. You hold agent-produced work against a fixed yardstick, across enough runs to get a number: a pass rate, a score, how often one drift shape shows up. One run tells you what happened. The measurement tells you what the system does.
-- The yardstick stays put and the system learns against it. Add a rule, cut a rule, sharpen a check, and the number moves or it does not. That is how you know a change to the system was a change for the better.
-- The checks you built are the instruments inside it. *Verifier* when deterministic: tests, lint, a hook that returns true or false. *Judge* when an LLM reads the work. *Gate* when the same check sits in CI and blocks the merge.
+An **eval** is a measurement. You hold agent-produced work against a fixed yardstick, across enough runs to get a number: a pass rate, a score, how often one drift shape shows up. One run tells you what happened. The measurement tells you what the system does.
+
+The yardstick stays put and the system learns against it. Add a rule, cut a rule, sharpen a check, and the number moves or it does not. That is how you know a change to the system was a change for the better.
+
+The checks you built are the instruments inside it. *Verifier* when deterministic: tests, lint, a hook that returns true or false. *Judge* when an LLM reads the work. *Gate* when the same check sits in CI and blocks the merge.
+
 
 ## The second loop
 
@@ -27,19 +30,23 @@
 
 {{figure:map-engine-filled}}
 
-## Loop instead of you starting
+## Loop it, instead of you starting it
 <!--tier:3-->
 
-- A kit skill can run on a schedule. Claude Code ships three ways to do it: local routines (from the Routines sidebar) for standing work on your laptop, `/loop` for in-session repetition, `/schedule` for cloud-backed remote Routines. The pattern is the same across all three: a skill from your kit is the thing the scheduled agent invokes.
-- Left running, the loop squashes the recurring things. Add what each run taught to the kit, and the same loop starts cracking harder work.
+A kit skill can run on a schedule. Claude Code ships three ways to do it: local routines (from the Routines sidebar) for standing work on your laptop, `/loop` for in-session repetition, `/schedule` for cloud-backed remote Routines. The pattern is the same across all three: a skill from your kit is the thing the scheduled agent invokes.
+
+Left running, the loop squashes the recurring things. Add what each run taught to the kit, and the same loop starts cracking harder work.
+
 
 ## A skill's footprint is where its job lands
 <!--tier:3-->
 
 {{figure:skill-sea-passage}}
 
-- A **skill** is a named move you reach for. Single purpose, reusable, invoked by name.
-- One move takes a single fix at a turning point. Another carries a whole leg. A third runs at the pier, before the first leg. You never size a skill in advance. The job sizes it.
+A **skill** is a named move you reach for. Single purpose, reusable, invoked by name.
+
+One move takes a single fix at a turning point. Another carries a whole leg. A third runs at the pier, before the first leg. You never size a skill in advance. The job sizes it.
+
 
 ## From skills to a workflow
 <!--tier:3-->
@@ -101,7 +108,7 @@
 
 **Accumulation claim (2026-08-09, Antti-directed; buried-gold item):** carried by the second-loop figure, not a bullet: what a session gets right unattended is set by the accumulated surround (same model, same harness, only the surround differed, so by the M4 four-part definition "two different agents" is literal). Guards: (a) NOT a new law, no coined name, no bold; (b) claim altitude only, the four artifact classes stay bare; (c) it is the system-side twin of the closer's frontier slide (engineer-side), the twins lean on each other by deck order and neither restates the other; (d) `the-agent-loop.md` ("A long-running session is this same loop, iterated") stays the setup, the payoff lands here. Design-side name *Accumulated, not enabled* (`theory-plan.md` §3) stays off slides. Trainer line: *asking the product for more autonomy adds nothing the surround has not already earned.*
 
-**Cadence slide (from `the-loop-has-a-name.md`, Antti 2026-09-02, header his):** *Loop instead of you starting* opens the T3 tail after the filled map (low value sits at the end): a check on cadence is the loop closing with nobody pressing start.
+**Cadence slide (from `the-loop-has-a-name.md`, Antti 2026-09-02, header his):** *Loop it, instead of you starting it* (header reworded 2026-09-13, Antti-directed, verb kept) opens the T3 tail after the filled map (low value sits at the end): a check on cadence is the loop closing with nobody pressing start.
 
 **Watch-for (delivery):**
 - Scheduled-agents stays one slide, not a mini-lecture: the three ways to run a kit skill on a schedule, then the line that the loop squashes the recurring and, fed its own lessons, cracks harder work (Antti 2026-09-03). If the slide grows past 90 seconds in rehearsal, cut.

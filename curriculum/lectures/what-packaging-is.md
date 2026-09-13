@@ -9,10 +9,14 @@ One long session, drawn as a sea passage.
 
 {{figure:session-sea-passage}}
 
-- Drift grows with distance since the last check. The agent steers each step from its own previous step, so small errors compound silently until something outside the session measures position. On the chart that is the wedge: everywhere the session might be.
-- **A check is a position fix**. At a fix the wedge of possible states collapses to a point, and the next leg starts from a known position instead of an assumption. The diagnose-and-re-send you just ran was exactly this move: measure where the session actually is, then aim the next leg from there.
-- Guardrails belong where damage cannot be undone. Fence the reef, not the open water. At an irreversible edge a standing check stays lit whether anyone remembers to look or not; where redo is cheap, let the session sail.
-- An unchecked session arrives confident, and wrong. Same start, no fixes, one wedge widening the whole way. The success report comes from the wrong harbor.
+Drift grows with distance since the last check. The agent steers each step from its own previous step, so small errors compound silently until something outside the session measures position. On the chart that is the wedge: everywhere the session might be.
+
+**A check is a position fix**. At a fix the wedge of possible states collapses to a point, and the next leg starts from a known position instead of an assumption. The diagnose-and-re-send you just ran was exactly this move: measure where the session actually is, then aim the next leg from there.
+
+Guardrails belong where damage cannot be undone. Fence the reef, not the open water. At an irreversible edge a standing check stays lit whether anyone remembers to look or not; where redo is cheap, let the session sail.
+
+An unchecked session arrives confident, and wrong. Same start, no fixes, one wedge widening the whole way. The success report comes from the wrong harbor.
+
 
 ## Reference and plan
 <!--tier:1-->
@@ -24,39 +28,55 @@ One long session, drawn as a sea passage.
 ## The verifier completes the three-pattern
 <!--tier:1-->
 
-- **External verifier**, against plausible-but-wrong. An automated check that decides whether a piece of agent-produced work meets a quality bar. Your job is to spot when quality is passable and nudge the agent along to done-done.
-- The menu is a synthesis across practitioners (Cherny, Huntley, Ronacher); no single write-up carries it. You built one against your dominant failure. The other two sit alongside the three-pattern for next time.
+**External verifier**, against plausible-but-wrong. An automated check that decides whether a piece of agent-produced work meets a quality bar. You set the bar; the verifier nudges the agent along to done-done.
+
+The menu is a synthesis across practitioners (Cherny, Huntley, Ronacher); no single write-up carries it. You built one against your dominant failure. The other two sit alongside the three-pattern for next time.
+
 
 ## The model has read the field
 <!--tier:3-->
 
-- The weights hold the written record: the setup posts, the plan-file templates, the verifier write-ups, the reversals that followed them. More of the field than you will read in a career.
-- Ask for best practice and that is what answers: a well-read average of what other people published about other repos, frozen at a cutoff while the consensus keeps moving. Steer it as hard as you like: what it holds about your next run is a forecast.
-- Whether this field ever settles into a real best practice is an open question. Either way, today's playbooks are **candidates**.
+The weights hold the written record: the setup posts, the plan-file templates, the verifier write-ups, the reversals that followed them. More of the field than you will read in a career.
+
+Ask for best practice and that is what answers: a well-read average of what other people published about other repos, frozen at a cutoff while the consensus keeps moving. Steer it as hard as you like: what it holds about your next run is a forecast.
+
+Whether this field ever settles into a real best practice is an open question. Either way, today's playbooks are **candidates**.
+
 
 ## The missing evidence is local
 <!--tier:3-->
 
-- Much of what shapes your setup is on the record, and the agent can survey it: the test suite's shape, the merge rules in CI, the age of everything in git.
-- What no survey returns: how this task, this model, this repository and this setup behave together in a run. No document holds it because, until the run, there is nothing to document. Asked ahead, the model predicts. **A prediction is not a measurement.**
-- So a playbook stays a candidate until something tests it here, and nothing published can run that local test for you.
+Much of what shapes your setup is on the record, and the agent can survey it: the test suite's shape, the merge rules in CI, the age of everything in git.
+
+What no survey returns: how this task, this model, this repository and this setup behave together in a run. No document holds it because, until the run, there is nothing to document. Asked ahead, the model predicts. **A prediction is not a measurement.**
+
+So a playbook stays a candidate until something tests it here, and nothing published can run that local test for you.
+
 
 ## The optimum is local, and it moves
 <!--tier:3-->
 
-- An A/B on your own repo: the same task without the kit, then with it. The un-packaged send-off is the baseline; the packaged experiment testing the kit is running right now.
-- Where the two sessions disagree, you'll know something no write-up could have told you: which failure the kit catches here, and which still recurs.
-- The experiment promotes a candidate to tested-here: a wide first fix that narrows as more experiments land. The local optimum stays ahead, moving when your stack moves.
-- The agent makes the evidence cheap: it runs the task, reads its own transcript, diffs the returns. **The engineer decides**: what counts, what the evidence means, what earns promotion into durable practice.
-- What's tested holds in review: *"measured here, this catches it, watch."*
+An A/B on your own repo: the same task without the kit, then with it. The un-packaged send-off is the baseline; the packaged experiment testing the kit is running right now.
+
+Where the two sessions disagree, you'll know something no write-up could have told you: which failure the kit catches here, and which still recurs.
+
+The experiment promotes a candidate to tested-here: a wide first fix that narrows as more experiments land. The local optimum stays ahead, moving when your stack moves.
+
+The agent makes the evidence cheap: it runs the task, reads its own transcript, diffs the returns. **The engineer decides**: what counts, what the evidence means, what earns promotion into durable practice.
+
+What's tested holds in review: *"measured here, this catches it, watch."*
+
 
 ## Every re-feed pass starts a fresh session
 <!--tier:2-->
 
-- **Re-feed**, the third shape on the verifier menu: loop the same prompt with a check baked in, and the agent re-runs on top of the previous round's output until the check passes.
-- Each pass is a new session, not a continuation of the last one. What carries over is what sits on disk: the work the previous pass wrote, and the check that judged it. Nothing from the conversation survives.
-- That is why it catches drift. Drift lives in the conversation, and the conversation is what the loop throws away. Re-run inside the same session and you compound the drift; re-feed and the next pass reads the goal cold.
-- The check is the stopping condition, so a verifier that can never fail makes an infinite loop. Every pass also pays to re-read its context from scratch. That cost is the point: it buys a session with no drift in it.
+**Re-feed**, the third shape on the verifier menu: loop the same prompt with a check baked in, and the agent re-runs on top of the previous round's output until the check passes.
+
+Each pass is a new session, not a continuation of the last one. What carries over is what sits on disk: the work the previous pass wrote, and the check that judged it. Nothing from the conversation survives.
+
+That is why it catches drift. Drift lives in the conversation, and the conversation is what the loop throws away. Re-run inside the same session and you compound the drift; re-feed and the next pass reads the goal cold.
+
+The check is the stopping condition, so a verifier that can never fail makes an infinite loop. Every pass also pays to re-read its context from scratch. That cost is the point: it buys a session with no drift in it.
 
 <!-- maintainer -->
 

@@ -3,9 +3,12 @@
 ## The agent stops where your judgement begins
 <!--tier:2-->
 
-- The agent cannot read your mind. It runs on what you have expressed: the spec, the rules, the checks, the plan. What is written down, it can act on. What is still in your head, it cannot.
-- That is the frontier, and you set it. Not the model. What you can express is how far the agent runs. It stops exactly where the writing stops and your judgement takes over.
-- Judgement becomes expression one piece at a time. A push-back becomes a rule. A "not like that" becomes a check. Each one moves the line, and the agent runs one step further on its own. The line never goes away. You keep finding the next thing you know and have not yet said.
+The agent cannot read your mind. It runs on what you have expressed: the spec, the rules, the checks, the plan. What is written down, it can act on. What is still in your head, it cannot.
+
+That is the frontier, and you set it. Not the model. What you can express is how far the agent runs. It stops exactly where the writing stops and your judgement takes over.
+
+Judgement becomes expression one piece at a time. A push-back becomes a rule. A "not like that" becomes a check. Each one moves the line, and the agent runs one step further on its own. The line never goes away. You keep finding the next thing you know and have not yet said.
+
 
 ## The right information grounds and makes quality
 
@@ -24,8 +27,9 @@ Nobody can hand you the right information about your customers, your direction, 
 
 ## There is no last turn
 
-- There is no last turn. Each session surfaces the next gap. Each gap proposes the next move. Each move makes the next session cheaper.
-- The kit compounds; the model rotates.
+There is no last turn. Each session surfaces the next gap. Each gap proposes the next move. Each move makes the next session cheaper.
+
+The kit compounds; the model rotates.
 
 The training closes.
 

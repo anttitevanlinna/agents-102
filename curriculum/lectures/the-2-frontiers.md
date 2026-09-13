@@ -2,9 +2,11 @@
 
 ## Two frontiers
 
-- The model's frontier moves without you. Every release, it can do more.
-- Your frontier is what you have expressed. It moves when you write, and only then.
-- Two questions sit on your frontier. Can your system learn fast, and can it learn the right things?
+The model's frontier moves without you. Every release, it can do more.
+
+Your frontier is what you have expressed. It moves when you write, and only then.
+
+Two questions sit on your frontier. Can your system learn fast, and can it learn the right things?
 
 <!-- maintainer -->
 

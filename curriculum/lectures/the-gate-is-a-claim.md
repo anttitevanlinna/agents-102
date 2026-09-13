@@ -3,48 +3,67 @@
 ## Passing is not proof
 <!--tier:2-->
 
-- A gate only means what the gate can see. Green is a claim about the check, not a fact about the work. A result passes for three different reasons that look identical from outside: the judge is miscalibrated, the gate got gamed, or the session was a lucky sample.
-- The check you built is itself a claim that wants verifying. The same scrutiny you point at the agent's work points at the thing that judges the work. A gate nobody has verified is a gate trusted on vibes.
-- Those three failure modes have different countermoves: compare the judge with your own judgements, keep a separate check the agent never sees, or repeat the task across several sessions. You do not need to build these today; ask your agent to walk you through the relevant one when you need it.
-- The three countermoves share one property: independence. Each rests the verdict on something the system under test does not control: judgements the judge never produced, a check the agent never sees, sessions beyond this one. A same-window double-check has none of it; the second read inherits the first one's framing: shared framing, shared blind spots.
+A gate only means what the gate can see. Green is a claim about the check, not a fact about the work. A result passes for three different reasons that look identical from outside: the judge is miscalibrated, the gate got gamed, or the session was a lucky sample.
+
+The check you built is itself a claim that wants verifying. The same scrutiny you point at the agent's work points at the thing that judges the work. A gate nobody has verified is a gate trusted on vibes.
+
+Those three failure modes have different countermoves: compare the judge with your own judgements, keep a separate check the agent never sees, or repeat the task across several sessions. You do not need to build these today; ask your agent to walk you through the relevant one when you need it.
+
+The three countermoves share one property: independence. Each rests the verdict on something the system under test does not control: judgements the judge never produced, a check the agent never sees, sessions beyond this one. A same-window double-check has none of it; the second read inherits the first one's framing: shared framing, shared blind spots.
+
 
 ## The judge needs calibrating against your own judgement
 <!--tier:2-->
 
-- An LLM judge is another untested component. Until you compare its verdicts with your own review, you do not know its false-pass rate, how often it approves work you would reject.
-- The move: compare a handful of your own judgements with the judge's verdicts, and teach the judge until you converge. You are looking for disagreement patterns, not a significance test. Re-check when the model or the task shifts. In 2024, on one product's judge, Hamel Husain reported better than 90% agreement after three iterations of exactly this loop.
-- A good gate starts from real traces, not imagined failures. Read sessions that actually happened, sort the real failures into buckets, and write the first check for the biggest bucket.
+An LLM judge is another untested component. Until you compare its verdicts with your own review, you do not know its false-pass rate, how often it approves work you would reject.
+
+The move: compare a handful of your own judgements with the judge's verdicts, and teach the judge until you converge. You are looking for disagreement patterns, not a significance test. Re-check when the model or the task shifts. In 2024, on one product's judge, Hamel Husain reported better than 90% agreement after three iterations of exactly this loop.
+
+A good gate starts from real traces, not imagined failures. Read sessions that actually happened, sort the real failures into buckets, and write the first check for the biggest bucket.
+
 
 ## Gates decay
 <!--tier:2-->
 
-- **Goodhart's law:** when a measure becomes a target, it ceases to be a good measure. The agent is an optimizer aimed straight at your gate: it may special-case tests, keyword-stuff work for the judge, or edit assertions until they pass. No malice needed: optimization pressure finds the cheapest path to green.
-- When work clears the gate and still is not what you meant, the gate has decayed into a target. That is a reason to refresh the gate, not to shrug.
-- The countermoves are a hold-out and an integrity check. Keep a check the agent never sees, so nothing can optimize against it. After a suspicious pass, inspect the gate itself (the test file, the judge prompt, the asserts), not only its verdict.
+**Goodhart's law:** when a measure becomes a target, it ceases to be a good measure. The agent is an optimizer aimed straight at your gate: it may special-case tests, keyword-stuff work for the judge, or edit assertions until they pass. No malice needed: optimization pressure finds the cheapest path to green.
+
+When work clears the gate and still is not what you meant, the gate has decayed into a target. That is a reason to refresh the gate, not to shrug.
+
+The countermoves are a hold-out and an integrity check. Keep a check the agent never sees, so nothing can optimize against it. After a suspicious pass, inspect the gate itself (the test file, the judge prompt, the asserts), not only its verdict.
+
 
 ## One session is a sample
 <!--tier:3-->
 
-- The agent's behavior is a distribution, not a property. Reachable and dependable are different claims: passing once shows the task is reachable, passing again and again shows it is dependable.
-- Before crediting an improvement, run it repeatedly. A new rule, a new prompt, a new gate: judge it on pass rates across several sessions, not on the one session that followed the change.
+The agent's behavior is a distribution, not a property. Reachable and dependable are different claims: passing once shows the task is reachable, passing again and again shows it is dependable.
+
+Before crediting an improvement, run it repeatedly. A new rule, a new prompt, a new gate: judge it on pass rates across several sessions, not on the one session that followed the change.
+
 
 ## Change on recurrence, not on noise
 <!--tier:3-->
 
-- One stochastic miss is not a process failure. A system with session-to-session variance produces the odd miss even when nothing is wrong. W. Edwards Deming called this **tampering**: chasing ordinary variance case by case adds noise of its own.
-- React on recurrence. The same failure shape returning is signal. That is when the rule changes, the gate refreshes, or the skill ships.
-- Watch the regression-to-the-mean trap. After a bad session, the next session is usually better with no change at all. A tweak made right after a failure looks effective even when it did nothing.
+One stochastic miss is not a process failure. A system with session-to-session variance produces the odd miss even when nothing is wrong. W. Edwards Deming called this **tampering**: chasing ordinary variance case by case adds noise of its own.
+
+React on recurrence. The same failure shape returning is signal. That is when the rule changes, the gate refreshes, or the skill ships.
+
+Watch the regression-to-the-mean trap. After a bad session, the next session is usually better with no change at all. A tweak made right after a failure looks effective even when it did nothing.
+
 
 ## The delegation frontier
 <!--tier:1-->
 
 {{figure:delegation-frontier}}
 
-- Every task you hand off sits on two axes. Reach is how much you delegated: the size of the task, the distance between checks. Calibration is whether your trust in what came back was earned by a check you have verified.
-- Four states fall out. Low reach is chat-shaped work or controlled assistance: you read everything, so trust is not the question yet. High reach splits on calibration alone. Calibrated agency when the gates behind the green are ones you have measured, reckless autonomy when they are not. From outside, the two look identical.
-- The model limits the difficulty of the challenge you can delegate; the gates limit whether you can trust the result. Useful delegation stops at whichever limit comes first. A stronger model behind an unverified gate still leaves you with work you cannot safely accept.
-- The frontier moves outward only as fast as the gates behind it. Push reach past your calibration and you are not delegating more. You are checking less.
-- Sutton's **bitter lesson**: built-in human knowledge wins today and loses to the next model. Today's right procedure, your gates and workflow, yours or the agent's, is superseded too. Retire what the next model outgrows, add what it needs.
+Every task you hand off sits on two axes. Reach is how much you delegated: the size of the task, the distance between checks. Calibration is whether your trust in what came back was earned by a check you have verified.
+
+Four states fall out. Low reach is chat-shaped work or controlled assistance: you read everything, so trust is not the question yet. High reach splits on calibration alone. Calibrated agency when the gates behind the green are ones you have measured, reckless autonomy when they are not. From outside, the two look identical.
+
+The model limits the difficulty of the challenge you can delegate; the gates limit whether you can trust the result. Useful delegation stops at whichever limit comes first. A stronger model behind an unverified gate still leaves you with work you cannot safely accept.
+
+The frontier moves outward only as fast as the gates behind it. Push reach past your calibration and you are not delegating more. You are checking less.
+
+Sutton's **bitter lesson**: built-in human knowledge wins today and loses to the next model. Today's right procedure, your gates and workflow, yours or the agent's, is superseded too. Retire what the next model outgrows, add what it needs.
 
 <!-- maintainer -->
 

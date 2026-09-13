@@ -2,13 +2,16 @@
 
 ## Hooks always fire
 
-- A **hook** fires on a named event, and the agent has no say in whether it runs. Session start, prompt submit, before each tool call, after each tool call, on stop, plus a few more. The runtime fires the script whether or not the model remembers it exists.
-- Hooks exist because the LLM is forgetful. Drift, half-remembered rules: the longer the session runs, the less you can trust the agent to hit a step that "should" happen every time. Hooks don't forget.
+A **hook** fires on a named event, and the agent has no say in whether it runs. Session start, prompt submit, before each tool call, after each tool call, on stop, plus a few more. The runtime fires the script whether or not the model remembers it exists.
+
+Hooks exist because the LLM is forgetful. Drift, half-remembered rules: the longer the session runs, the less you can trust the agent to hit a step that "should" happen every time. Hooks don't forget.
+
 
 ## Hooks for must-happen, prompts for taste
 
-- **Must happen goes in a hook**; recommended stays in a prompt. Anything that breaks the work if it skips belongs in a hook: a verifier, a pre-commit guard, a session-start context loader. Anything taste-shaped stays in a prompt.
-- A verifier against one failure is one hook. The same primitive covers everything else that must happen every time.
+**Must happen goes in a hook**; recommended stays in a prompt. Anything that breaks the work if it skips belongs in a hook: a verifier, a pre-commit guard, a session-start context loader. Anything taste-shaped stays in a prompt.
+
+A verifier against one failure is one hook. The same primitive covers everything else that must happen every time.
 
 {{prompt:what-packaging-is-1}}
 

@@ -2,8 +2,10 @@
 
 ## A skill outlives the thread it came from
 
-- A **skill** is a named, scoped capability the agent can invoke. A markdown file with a frontmatter header and a set of instructions, living in `.claude/skills/<name>/SKILL.md` or an equivalent team-kit home. Claude Code discovers it by name and pulls the body in when the work calls for it.
-- Skills are one of the ways agentic knowledge compounds across teammates. A Slack thread about "how to threat-model our webhook paths" dies in 48 hours. A STRIDE skill tuned to your stack lives as long as the repo.
+A **skill** is a named, scoped capability the agent can invoke. A markdown file with a frontmatter header and a set of instructions, living in `.claude/skills/<name>/SKILL.md` or an equivalent team-kit home. Claude Code discovers it by name and pulls the body in when the work calls for it.
+
+Skills are one of the ways agentic knowledge compounds across teammates. A Slack thread about "how to threat-model our webhook paths" dies in 48 hours. A STRIDE skill tuned to your stack lives as long as the repo.
+
 
 ## Borrowed judgement, or your own
 
@@ -13,25 +15,34 @@
 ## Your authored skill starts personal, then compounds
 <!--tier:3-->
 
-- The skill you author ships to your personal `~/.claude/skills/test-strategy/`, auto-discovered in every session you run. Personal-first is the pattern your kit already follows: your `./CLAUDE.local.md` rules file is personal and gitignored, and the first authored skill lands the same way. Promotion to a team home is a human conversation and then a PR, later.
-- A team kit is built from engineers' own skills. The 267-skill plugin repo at Fin (Intercom) grew exactly that way, skill by skill, engineer by engineer: 153 contributors, 31% of R&D headcount active, by the company's own count, as of April 2026. Not a central team writing for everyone else.
+The skill you author ships to your personal `~/.claude/skills/test-strategy/`, auto-discovered in every session you run. Personal-first is the pattern your kit already follows: your `./CLAUDE.local.md` rules file is personal and gitignored, and the first authored skill lands the same way. Promotion to a team home is a human conversation and then a PR, later.
+
+A team kit is built from engineers' own skills. The 267-skill plugin repo at Fin (Intercom) grew exactly that way, skill by skill, engineer by engineer: 153 contributors, 31% of R&D headcount active, by the company's own count, as of April 2026. Not a central team writing for everyone else.
+
 
 ## Two curated, one authored
 
-- The proportion is a claim about what you can produce well on a Tuesday afternoon. You build what you know best, which is your own system.
-- Three authored skills, and you'd be reinventing STRIDE on a Tuesday. Decades of threat-modeling judgement don't get re-derived in twenty minutes; they get invoked.
-- Three curated skills, and the team kit is never born here. You'd leave with nothing authored, and the skill only your team can write would still not exist.
-- **Don't make general what you don't practice yourself.** That's the principle underneath the split. The curated skills come from people who did the work; the one you author covers what only you do.
+The proportion is a claim about what you can produce well on a Tuesday afternoon. You build what you know best, which is your own system.
+
+Three authored skills, and you'd be reinventing STRIDE on a Tuesday. Decades of threat-modeling judgement don't get re-derived in twenty minutes; they get invoked.
+
+Three curated skills, and the team kit is never born here. You'd leave with nothing authored, and the skill only your team can write would still not exist.
+
+**Don't make general what you don't practice yourself.** That's the principle underneath the split. The curated skills come from people who did the work; the one you author covers what only you do.
+
 
 ## Three trust artifacts the next engineer checks
 
-- By the module's end, things exist that your staff engineer and your CISO would actually read: a mapped access surface for the feature you're shipping, an ADR naming one hardening decision under STRIDE pressure, and a test-strategy skill codifying how testing actually works on your system.
-- None of them are compliance artifacts. Each is the thinking, written down: what was considered, what was decided, and under which constraint.
-- The test for trust is the next engineer: whoever touches this feature next can see the reasoning and check it against the code.
+By the module's end, things exist that your staff engineer and your CISO would actually read: a mapped access surface for the feature you're shipping, an ADR naming one hardening decision under STRIDE pressure, and a test-strategy skill codifying how testing actually works on your system.
+
+None of them are compliance artifacts. Each is the thinking, written down: what was considered, what was decided, and under which constraint.
+
+The test for trust is the next engineer: whoever touches this feature next can see the reasoning and check it against the code.
+
 
 ## The tool flags; you make the call
 
-- What the access-control skill got right, what it underweighted, what it missed that you know matters. Agreement is not the job; the delta is.
+- Note what the access-control skill got right, what it underweighted, what it missed that you know matters. Agreement is not the job; the delta is.
 - STRIDE does the breadth; you make one call. Resist the urge to harden against everything. Pick one threat worth the work and write the decision down as an ADR.
 - The authoring conversation will offer a generic test-pyramid default. Your codebase is not a pyramid. Push back until the skill reflects how your tests actually work.
 

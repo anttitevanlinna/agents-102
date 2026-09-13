@@ -2,8 +2,6 @@
 
 ## See the loop in your live session
 
-Dig into whatever catches you.
-
 Ask for the loop as a diagram.
 
 {{prompt:ae101-agent-loop-ascii}}

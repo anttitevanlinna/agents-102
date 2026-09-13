@@ -2,9 +2,12 @@
 
 ## What would have caught this earlier?
 
-- Whatever came back is the artefact. You stepped away with the agent working. The session finished, hit its budget, or was stopped because enough was seen. All three are readable results.
-- The closing summary is not the artefact. The machine would rather produce something than admit nothing: a stuck session invents a plausible way forward, and a thin result arrives described as progress.
-- The question that drives the read: *what would have caught this earlier in the session?* Not *did the task succeed*. Not *should I have spec'd it tighter*.
+Whatever came back is the artefact. You stepped away with the agent working. The session finished, hit its budget, or was stopped because enough was seen. All three are readable results.
+
+The closing summary is not the artefact. The machine would rather produce something than admit nothing: a stuck session invents a plausible way forward, and a thin result arrives described as progress.
+
+The question that drives the read: *what would have caught this earlier in the session?* Not *did the task succeed*. Not *should I have spec'd it tighter*.
+
 
 ## Three failure modes you'll use to read
 
@@ -15,8 +18,9 @@
 - Your rules file is in that window too. Dex Horthy, on the failure: *"The longer your file gets, the more Claude seems to treat individual sections as optional."*
 ## Diagnose first, fix later
 
-- When an agent gets something wrong, the reflex is to fix it immediately: edit the prompt, add a constraint, reach for the next tool. The failures earn the validation that catches them.
-- The arc is *test → learn → encode*. The un-packaged send-off was the test. The encode turns what the read finds into durable checks.
+When an agent gets something wrong, the reflex is to fix it immediately: edit the prompt, add a constraint, reach for the next tool. Diagnose first: each failure you find earns the check that would have caught it.
+
+The arc is *test → learn → encode*. The un-packaged send-off was the test. The encode turns what the read finds into durable checks.
 
 <!-- maintainer -->
 

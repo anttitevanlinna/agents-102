@@ -5,31 +5,41 @@ The session is working. Watch what already helps it continue, and where it still
 ## Durable state keeps the place
 <!--tier:1-->
 
-- A long-running session needs a place it can recover its position from. The live context moves and eventually fills; files on disk survive.
-- Compaction makes room by summarising that live context. An unattended session relies on automatic compaction and whatever it can re-read from disk.
-- Your rules, observations, task coordinates, current files, and transcript are the durable state this session has today. They do different jobs, but they all outlast a turn in the conversation.
-- Durable state needs a home and an owner. A file that loads everywhere and belongs to nobody is not memory the system can trust.
+A long-running session needs a place it can recover its position from. The live context moves and eventually fills; files on disk survive.
+
+Compaction makes room by summarising that live context. An unattended session relies on automatic compaction and whatever it can re-read from disk.
+
+Your rules, observations, task coordinates, current files, and transcript are the durable state this session has today. They do different jobs, but they all outlast a turn in the conversation.
+
+Durable state needs a home and an owner. A file that loads everywhere and belongs to nobody is not memory the system can trust.
 
 > **Subagents isolate context.** A bounded search or noisy investigation can run in a separate context and return only its summary to the main session.
+
 
 ## Feedback keeps the direction
 <!--tier:1-->
 
-- The session can produce changes faster than you can judge them. Every unread diff joins a queue downstream of the agent.
-- Flow engineering calls the push from a slower downstream stage **backpressure**: slow down, stop, or redirect when the next stage cannot safely accept more.
-- During the handoff, feedback has to come from the system itself. You judge the result when you return.
+The session can produce changes faster than you can judge them. Every unread diff joins a queue downstream of the agent.
+
+Flow engineering calls the push from a slower downstream stage **backpressure**: slow down, stop, or redirect when the next stage cannot safely accept more.
+
+During the handoff, feedback has to come from the system itself. You judge the result when you return.
+
 
 ## A boundary decides whether to continue
 <!--tier:2-->
 
-- Some boundaries already stand without you: tests, types, lint, permission limits, and explicit stop or ask conditions. Each can catch a problem and send the work back for correction before later steps build on it.
-- The question is not how many checks the repo has. It is what notices first when this particular session goes wrong.
-- Watch what catches problems, where the session waits for you, and where nothing pushes back. That is part of the result you bring back.
+Some boundaries already stand without you: tests, types, lint, permission limits, and explicit stop or ask conditions. Each can catch a problem and send the work back for correction before later steps build on it.
+
+The question is not how many checks the repo has. It is what notices first when this particular session goes wrong.
+
+Watch what catches problems, where the session waits for you, and where nothing pushes back. That is part of the result you bring back.
+
 
 ## What stops a long-running session before done-done
 <!--tier:1-->
 
-- It stops and waits. Sometimes on you: a decision it will not take alone, posed as a question, with nobody there to answer. Sometimes on the world: a ticket it cannot open, a credential it does not have, information it decides is out of reach, so it stops rather than guesses. Whether that information was truly unreachable is your call on return, not its.
+- It stops and waits. Sometimes on you: a decision it will not take alone, posed as a question, with nobody there to answer. Sometimes on the world: a ticket it cannot open, a credential it does not have, information it decides is out of reach, so it stops rather than guesses. Whether that information was truly unreachable is your call on return, not the agent's.
 - It declares done on the part it managed. Tests pass, the summary is confident, and the piece it quietly dropped goes unmentioned. You find this one on return, not during.
 - It blocks on something that never returns. A dev server started in the foreground, a test suite waiting on a keypress. Not stuck on the problem, stuck on the terminal, and from the outside that looks the same as hard thinking.
 - It spends the whole session on one obstacle. The same failing fix, re-attempted with variations, while the rest of the task goes untouched. This one never stopped at all.

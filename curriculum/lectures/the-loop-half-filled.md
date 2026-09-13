@@ -3,11 +3,14 @@
 ## Back to the map: near half filled
 <!--tier:2-->
 
-- Three modules in, the near half is lived ground. M1 stepped into the territory without the map, on purpose. The map arrived at M2, and everything since has landed on its near half: Intent, Context, Work, and how a loop compounds.
-- **One loop, three sizes.** The agent's act-observe-correct inside a session; your orient, act, verify, compound around each session (M1's orient, fix, close, compound cut at different joints); and the slow loop that carries a win from you to the team. Same shape at three altitudes; the strands the map draws (context, plan, build, checking) are the same shape again, each wearing different work.
-- A name is a handle, not a lesson. Every law coming up is a move already made. Naming it makes the move findable on Tuesday, transferable to a teammate, and checkable when it stops working.
+Three modules in, the near half is lived ground. M1 stepped into the territory without the map, on purpose. The map arrived at M2, and everything since has landed on its near half: Intent, Context, Work, and how a loop compounds.
+
+**One loop, three sizes.** The agent's act-observe-correct inside a session; your orient, act, verify, compound around each session (M1's orient, fix, close, compound cut at different joints); and the slow loop that carries a win from you to the team. Same shape at three altitudes; the strands the map draws (context, plan, build, checking) are the same shape again, each wearing different work.
+
+A name is a handle, not a lesson. Every law coming up is a move already made. Naming it makes the move findable on Tuesday, transferable to a teammate, and checkable when it stops working.
 
 {{figure:map-engine-m3-close}}
+
 
 ## The loop and the model it runs on
 <!--tier:2-->
@@ -25,31 +28,43 @@
 ## The governor you carry forward
 <!--tier:2-->
 
-- **A governor is a pre-action question.** The smallest usable form of theory: it fires before the session, costs one sentence, and steers everything after. Laws explain what happened; a governor decides what happens next.
-- **Name the uncertainty before you move.** (Intent) Aim the work at the unknown that will teach you the most. It is the question that opens every good plan, and it is the near half's one governor.
-- It travels. It prices a plan read, picks the feature worth agent time, and tells you when a skill is worth authoring. A task that can't answer "what does this settle?" isn't aimed yet.
+**A governor is a pre-action question.** The smallest usable form of theory: it fires before the session, costs one sentence, and steers everything after. Laws explain what happened; a governor decides what happens next.
+
+**Name the uncertainty before you move.** (Intent) Aim the work at the unknown that will teach you the most. It is the question that opens every good plan, and it is the near half's one governor.
+
+It travels. It prices a plan read, picks the feature worth agent time, and tells you when a skill is worth authoring. A task that can't answer "what does this settle?" isn't aimed yet.
+
 
 ## Reading was never the control
 <!--tier:2-->
 
-- The outputs in this module were the biggest yet, and control never came from reading them whole. It came from moves you already made.
-- The delta note held the access map against what you already knew of the codebase, in both directions. A probe, not a read. The one-threat pick rejected most of the STRIDE walk with a named reason. The skill critique made the artifact name its own weakest part before it earned trust.
-- **Control is interrogation.** Ranked list first, probe where you know most, make the output name its weak spot. The full record stays on disk. You can always read more; you can never read all.
+The outputs in this module were the biggest yet, and control never came from reading them whole. It came from moves you already made.
+
+The delta note held the access map against what you already knew of the codebase, in both directions. A probe, not a read. The one-threat pick rejected most of the STRIDE walk with a named reason. The skill critique made the artifact name its own weakest part before it earned trust.
+
+**Control is interrogation.** Ranked list first, probe where you know most, make the output name its weak spot. The full record stays on disk. You can always read more; you can never read all.
+
 
 ## The branch is the permission
 <!--tier:2-->
 
-- The side quest ran on its own branch all module and never merged. That is the shape, not an accident.
-- On a branch, acting without full control is safe: the blast radius is the branch. Let the agent run, read what your judgment flags, and leave the rest on disk.
-- Control is exercised at the merge. The interrogation happens there, and the merge waits until the work survives it.
-- An un-merged branch is not unfinished work. Holding the merge until control is earned is the control working.
+The side quest ran on its own branch all module and never merged. That is the shape, not an accident.
+
+On a branch, acting without full control is safe: the blast radius is the branch. Let the agent run, read what your judgment flags, and leave the rest on disk.
+
+Control is exercised at the merge. The interrogation happens there, and the merge waits until the work survives it.
+
+An un-merged branch is not unfinished work. Holding the merge until control is earned is the control working.
+
 
 ## The far half goes quiet
 <!--tier:2-->
 
-- The near half ran on quick feedback. Every move so far returned a result you could read within minutes: a diff, a plan, a test run. You were the feedback signal, and you were never far from the loop.
-- The far half is what happens when that goes quiet. Verification, Absorption, Outcome: the phases that govern work that runs long and alone. Different country, different rules. M4 opens it.
-- Nothing from the near half retires. The loop, the model in the files, the ladder, and the governor keep running underneath. The far half adds the question the near half never made you ask: how do you trust work you didn't watch?
+The near half ran on quick feedback. Every move so far returned a result you could read within minutes: a diff, a plan, a test run. You were the feedback signal, and you were never far from the loop.
+
+The far half is what happens when that goes quiet. Verification, Absorption, Outcome: the phases that govern work that runs long and alone. Different country, different rules. M4 opens it.
+
+Nothing from the near half retires. The loop, the model in the files, the ladder, and the governor keep running underneath. The far half adds the question the near half never made you ask: how do you trust work you didn't watch?
 
 <!-- maintainer -->
 
